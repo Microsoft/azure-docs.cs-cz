@@ -1,22 +1,22 @@
 ---
 title: Správa tajných kódů při práci s vývojovým prostorem Azure
 services: azure-dev-spaces
-ms.date: 05/11/2018
+ms.date: 12/03/2019
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 49f53683b2499e790414d139dcb0bc0833005647
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b184f72dfbbfe093443ab8a9b79bafbece3a3d51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280013"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790171"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s vývojovým prostorem Azure
 
 Vaše služby můžou vyžadovat určitá hesla, připojovací řetězce a další tajné kódy, například pro databáze nebo jiné zabezpečené služby Azure. Nastavením hodnot těchto tajných kódů v konfiguračních souborech je můžete zpřístupnit v kódu jako proměnné prostředí.  Ty je třeba zpracovat pečlivě, aby nedošlo k ohrožení zabezpečení tajných kódů.
 
-Azure Dev Spaces poskytuje dvě Doporučené, zjednodušené možnosti pro ukládání tajných kódů v Helm grafech generovaných klientskými nástroji Azure Dev Spaces: v souboru Values. dev. yaml a přímo v azds. yaml. Nedoporučujeme ukládat tajné klíče do hodnot Values. yaml. Mimo dva přístupy k Helm grafům generovaných klientskými nástroji definovanými v tomto článku, pokud vytvoříte vlastní graf Helm, můžete použít graf Helm přímo ke správě a ukládání tajných klíčů.
+Azure Dev Spaces poskytuje dvě Doporučené, zjednodušené možnosti pro ukládání tajných kódů v Helm grafech generovaných nástroji Azure Dev Spaces klienta: v souboru `values.dev.yaml` a přímo v `azds.yaml`. Nedoporučujeme ukládat tajné klíče do `values.yaml`. Mimo dva přístupy k Helm grafům generovaných klientskými nástroji definovanými v tomto článku, pokud vytvoříte vlastní graf Helm, můžete použít graf Helm přímo ke správě a ukládání tajných klíčů.
 
 ## <a name="method-1-valuesdevyaml"></a>Metoda 1: hodnoty. dev. yaml
 1. Otevřete VS Code s vaším projektem, který je povolený pro Azure Dev Spaces.
@@ -62,7 +62,7 @@ Azure Dev Spaces poskytuje dvě Doporučené, zjednodušené možnosti pro uklá
 7. Ujistěte se, že do souboru _. gitignore_ přidáte _hodnoty. dev. yaml_ , abyste se vyhnuli potvrzování tajných kódů ve správě zdrojového kódu.
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>Metoda 2: vložená přímo do azds. yaml
+## <a name="method-2-azdsyaml"></a>Metoda 2: azds. yaml
 1.  V _azds. yaml_nastavte tajné klíče v části YAML konfigurace/vývoj/instalace. I když můžete zadat tajné hodnoty přímo tam, nedoporučuje se, protože _azds. yaml_ se kontroluje do správy zdrojového kódu. Místo toho přidejte zástupné symboly pomocí syntaxe "$PLACEHOLDER".
 
     ```yaml
@@ -104,6 +104,44 @@ Azure Dev Spaces poskytuje dvě Doporučené, zjednodušené možnosti pro uklá
     ```
     kubectl get secret --namespace default -o yaml
     ```
+
+## <a name="passing-secrets-as-build-arguments"></a>Předávání tajných klíčů jako argumentů sestavení
+
+Předchozí části ukázaly, jak předat tajné klíče k použití v době běhu kontejneru. Můžete také předat tajný klíč v době sestavení kontejneru, jako je například heslo pro privátní NuGet, a to pomocí `azds.yaml`.
+
+V `azds.yaml`nastavte tajné klíče času sestavení v souboru *configurations. vývoj. Build. args* pomocí syntaxe `<variable name>: ${secret.<secret name>.<secret key>}`. Například:
+
+```yaml
+configurations:
+  develop:
+    build:
+      dockerfile: Dockerfile.develop
+      useGitIgnore: true
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
+        MYTOKEN: ${secret.mynugetsecret.pattoken}
+```
+
+Ve výše uvedeném příkladu je *mynugetsecret* stávající tajný klíč a *pattoken* je existující klíč.
+
+>[!NOTE]
+> Tajné názvy a klíče mohou obsahovat `.` znak. `.` při předávání tajných klíčů jako argumentů sestavení použijte `\`. Například pro předání tajného kódu s názvem *foo. bar* klíčem *token*: `MYTOKEN: ${secret.foo\.bar.token}`. Kromě toho je možné tajné klíče vyhodnotit pomocí předpony a textu přípony. Například, `MYURL: eus-${secret.foo\.bar.token}-version1`. Tajné kódy, které jsou k dispozici v nadřazených a prarodičích, můžou být také předány jako argumenty sestavení.
+
+Ve vašem souboru Dockerfile Použijte direktivu *arg* pro použití tajného klíče a pak použijte stejnou proměnnou později v souboru Dockerfile. Například:
+
+```dockerfile
+...
+ARG MYTOKEN
+...
+ARG NUGET_EXTERNAL_FEED_ENDPOINTS="{'endpointCredentials': [{'endpoint':'PRIVATE_NUGET_ENDPOINT', 'password':'${MYTOKEN}'}]}"
+...
+```
+
+Aktualizujte služby spuštěné v clusteru pomocí těchto změn. Na příkazovém řádku spusťte příkaz:
+
+```
+azds up
+```
 
 ## <a name="next-steps"></a>Další kroky
 

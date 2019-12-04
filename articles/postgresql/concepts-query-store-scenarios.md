@@ -1,17 +1,17 @@
 ---
-title: Scénáře použití úložiště dotazů v Azure Database for PostgreSQL – jeden server
+title: Scénáře úložiště dotazů – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje některé scénáře pro úložiště dotazů na serveru Azure Database for PostgreSQL-Single.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 3cdb0d4e00e667b0369cdf612662830f18dc5fb8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764280"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768346"
 ---
 # <a name="usage-scenarios-for-query-store"></a>Scénáře použití pro úložiště dotazů
 
@@ -19,7 +19,7 @@ ms.locfileid: "70764280"
 
 Úložiště dotazů můžete použít v nejrůznějších scénářích, ve kterých je sledování a udržování předvídatelného výkonu úloh velmi důležité. Vezměte v úvahu následující příklady: 
 - Identifikace a ladění hlavních náročných dotazů 
-- A / B testování 
+- Testování A/B 
 - Udržení stabilního výkonu během upgradů 
 - Identifikace a vylepšení úloh ad hoc 
 
@@ -38,7 +38,7 @@ Pokud identifikujete dotaz s optimálním výkonem, záleží na tom, jakou akci
 - Zvažte přepsání drahých dotazů. Můžete například využít výhod dotazů Parametrizace a snížit používání dynamického jazyka SQL. Implementujte optimální logiku při čtení dat, jako je použití filtrování dat na straně databáze, nikoli na straně aplikace. 
 
 
-## <a name="ab-testing"></a>A / B testování 
+## <a name="ab-testing"></a>Testování A/B 
 Použijte úložiště dotazů pro porovnání výkonu úloh před a po změně plánu, který chcete zavést. Příklady scénářů použití úložiště dotazů k vyhodnocení dopadu změny prostředí nebo aplikace na výkon úlohy: 
 - Zavedení nové verze aplikace 
 - Přidání dalších prostředků na server. 
@@ -57,5 +57,5 @@ Některé úlohy nemají dominantní dotazy, které můžete ladit pro zlepšen�
  
 Pokud ovládáte kód aplikace, můžete zvážit přepsání vrstvy přístupu k datům, aby bylo možné použít uložené procedury nebo parametrizované dotazy. Tato situace se ale dá taky zlepšit bez změn aplikace tím, že se vynutí Parametrizace dotazů pro celou databázi (všechny dotazy) nebo pro jednotlivé šablony dotazů se stejnou hodnotou hash dotazu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [osvědčených postupech pro používání úložiště dotazů](concepts-query-store-best-practices.md)

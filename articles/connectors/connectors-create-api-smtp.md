@@ -1,28 +1,24 @@
 ---
-title: Připojení k SMTP z Azure Logic Apps | Microsoft Docs
+title: Připojení k SMTP z Azure Logic Apps
 description: Automatizace úloh a pracovních postupů, které odesílají e-maily prostřednictvím účtu SMTP (Simple Mail Transfer Protocol) pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050739"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789150"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Odeslání e-mailu z účtu SMTP pomocí Azure Logic Apps
 
 Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) můžete vytvářet automatizované úlohy a pracovní postupy, které odesílají e-maily z vašeho účtu SMTP. Můžete také použít další akce výstup z akcí SMTP. Například po odeslání e-mailu prostřednictvím protokolu SMTP můžete týmu Odeslat výstrahu do časové rezervy pomocí konektoru časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -47,19 +43,19 @@ Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) může
 1. V posledním kroku, kam chcete přidat akci SMTP, vyberte **Nový krok**. 
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+   Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte jako filtr "SMTP". V seznamu akce vyberte akci, kterou chcete.
 
 1. Po zobrazení výzvy zadejte tyto informace o připojení:
 
-   | Vlastnost | Požadováno | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Název připojení** | Ano | Název připojení k serveru SMTP | 
    | **Adresa serveru SMTP** | Ano | Adresa serveru SMTP | 
    | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro váš účet SMTP | 
    | **Heslo** | Ano | Heslo pro váš účet SMTP | 
-   | **SMTP Server Port** | Ne | Konkrétní port na serveru SMTP, který chcete použít | 
+   | **Port serveru SMTP** | Ne | Konkrétní port na serveru SMTP, který chcete použít | 
    | **Povolit SSL?** | Ne | Zapněte nebo vypněte šifrování SSL. | 
    |||| 
 

@@ -1,20 +1,17 @@
 ---
-title: Přístup ke zdrojům dat místně – Azure Logic Apps
+title: Přístup ke zdrojům dat místně
 description: Připojení k místním zdrojům dat z Azure Logic Apps vytvořením prostředku místní brány dat Azure
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: arthii, LADocs
+ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068895"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792041"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -53,7 +50,7 @@ Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connect
 
 Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations). I když samotné brány neúčtují další náklady, [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md) se vztahuje na tyto konektory a další operace v Azure Logic Apps.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Místní brána dat je už v místním počítači nainstalovaná](../logic-apps/logic-apps-gateway-install.md).
 
@@ -153,7 +150,7 @@ Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jin
 
 1. Pokud jste to ještě neučinili, vyberte v nabídce prostředku brány místní **bránu dat**. Na panelu nástrojů prostředek brány vyberte **Odstranit**.
 
-   Příklad:
+   Například:
 
    ![Odstranění prostředku brány v Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 

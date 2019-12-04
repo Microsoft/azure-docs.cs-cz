@@ -1,19 +1,18 @@
 ---
-title: Dávkové zpracování zpráv EDI jako Azure Logic Apps skupiny
+title: Dávkové zpracování zpráv EDI jako skupiny
 description: Posílání a přijímání zpráv EDI jako dávek, skupin nebo kolekcí v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680186"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792997"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Posílání zpráv EDI v dávkách obchodním partnerům pomocí Azure Logic Apps
 
@@ -168,9 +167,9 @@ Nyní vytvořte jednu nebo více aplikací logiky, které odesílají zprávy do
 
       ![Výběr aplikace logiky pro přijímače v dávce](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Vyberte tuto akci: **Batch_messages-<*vašeho-Batch-pøijímaèe* >**
+   4. Vyberte tuto akci: **Batch_messages-<*vaše-Batch-Receiver*>**
 
-      ![Vybrat akci "Batch_messages"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
+      ![Vybrat akci Batch_messages](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
 4. Nastavte vlastnosti odesilatele dávky.
 

@@ -1,20 +1,17 @@
 ---
-title: Příklady & běžných scénářích – Azure Logic Apps
+title: Příklady & běžných scénářů
 description: Najděte si příklady, běžné scénáře, kurzy a návody pro Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 9e245d1a0054d9de5b8b524416c8c92eb02353a7
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025524"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792135"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, ukázky, kurzy a návody pro Azure Logic Apps
 

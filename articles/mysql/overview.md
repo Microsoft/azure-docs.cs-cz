@@ -1,18 +1,18 @@
 ---
-title: Přehled služby Azure Database for MySQL relačních databází
+title: Přehled – Azure Database for MySQL
 description: Přečtěte si o službě Azure Database for MySQL, službě relačních databází v cloudu Microsoftu na základě verze MySQL Community Edition.
 author: ajlam
 ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
-ms.date: 11/25/2019
-ms.openlocfilehash: 680b5e9ef8e7e8ed59d3b502b49fc1b45d016e80
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: b7b29a07e9d56a9b961192352d0bfa13a8986d7a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483513"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775113"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database for MySQL?
 
@@ -47,7 +47,7 @@ Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete využít integrova
 ## <a name="keep-your-app-and-business-running"></a>Udržujte své aplikace a podnikáni v chodu
 Dostupnost služby Azure se smlouvou o úrovní služeb (SLA) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. U každého serveru Azure Database for MySQL můžete využít integrované zabezpečení, odolnost proti chybám a ochranu dat, které byste jinak museli kupovat nebo navrhovat, sestavovat a spravovat. V Azure Database for MySQL můžete použít obnovení k určitému bodu v čase k obnovení serveru do dřívějšího stavu, a to až 35 dní.
 
-## <a name="secure-your-data"></a>Zabezpečení dat
+## <a name="secure-your-data"></a>Zabezpečte svoje data
 Služba Azure Database Services má tradici zabezpečení dat, která Azure Database for MySQL zachovává, s funkcemi, které omezují přístup, chrání neaktivní a nepohybovaná data a umožňuje sledovat aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/trustcenter/security). Další informace o funkcích zabezpečení Azure Database for MySQL najdete v [přehledu zabezpečení](concepts-security.md).
 
 ## <a name="contacts"></a>Kontakty

@@ -1,19 +1,19 @@
 ---
-title: Zabezpečení v Azure Database for MariaDB – jeden server
-description: Přehled funkcí zabezpečení v Azure Database for MariaDB-jednom serveru.
+title: Zabezpečení – Azure Database for MariaDB
+description: Přehled funkcí zabezpečení v Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 1a2d7ac449c131519473afaa80eb3a57c287eb28
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485182"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772143"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Zabezpečení v Azure Database for MariaDB – jeden server
+# <a name="security-in-azure-database-for-mariadb"></a>Zabezpečení ve službě Azure Database for MariaDB
 
 K ochraně dat na vašem serveru Azure Database for MariaDB je k dispozici několik vrstev zabezpečení. Tento článek popisuje tyto možnosti zabezpečení.
 

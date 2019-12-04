@@ -1,193 +1,191 @@
 ---
-title: Ověření XML se schématy – Azure Logic Apps | Dokumentace Microsoftu
-description: Přidání schémat pro ověření XML dokumenty v Azure Logic Apps sadou Enterprise Integration Pack
+title: Ověření XML pomocí schémat
+description: Přidání schémat pro ověřování dokumentů XML v Azure Logic Apps pomocí Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 02/06/2019
-ms.openlocfilehash: 3cca995b353b88cc481cbda68df4211a724f7f09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60846305"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792404"
 ---
-# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověření XML se schématy v Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověří XML pomocí schémat v Azure Logic Apps s Enterprise Integration Pack
 
-Pokud chcete zkontrolovat, že dokumenty používají platný kód XML a mají očekávaná data v předdefinované formát pro podnikové scénáře integrace v Azure Logic Apps, můžete použít svou aplikaci logiky schémata. Schéma můžete také ověřit zprávy, které aplikacím logiky systému exchange ve scénářích business-to-business (B2B).
+Pokud chcete ověřit, že dokumenty používají platný kód XML a mají očekávaná data v předdefinovaném formátu pro scénáře podnikové integrace v Azure Logic Apps, vaše aplikace logiky může používat schémata. Schéma může také ověřit zprávy, které aplikace Logic Apps vyměňuje ve scénářích B2B (Business-to-Business).
 
-Omezení související s účty pro integraci a součásti, jako jsou schémata najdete v tématu [omezení a konfigurační informace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
+Omezení související s integračními účty a artefakty, jako jsou schémata, najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
-* [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kam ukládat vaše schémata a další artefakty pro podnikovou integraci a řešení business-to-business (B2B). 
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , kam uložíte schémata a další artefakty pro podnikovou integraci a řešení B2B (Business-to-Business). 
 
-  Pokud je schéma [2 MB nebo méně](#smaller-schema), schéma můžete přidat k účtu pro integraci přímo z portálu Azure portal. Nicméně pokud schéma je větší než 2 MB, ale ne větší než [limit velikosti schématu](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), schéma můžete nahrát do účtu služby Azure storage. 
-  Pokud chcete přidat toto schéma účtu integrace, si můžete propojit k vašemu účtu úložiště z vašeho účtu integrace. 
-  Pro tuto úlohu Zde jsou položky, které budete potřebovat: 
+  Pokud je vaše schéma [2 MB nebo menší](#smaller-schema), můžete do svého účtu pro integraci přidat své schéma přímo z Azure Portal. Pokud je ale vaše schéma větší než 2 MB, ale není větší než [limit velikosti schématu](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), můžete své schéma nahrát do účtu úložiště Azure. 
+  Pokud chcete toto schéma přidat do účtu pro integraci, můžete ho propojit s účtem úložiště z účtu pro integraci. 
+  Pro tuto úlohu se tady zobrazí položky, které potřebujete: 
 
-  * [Účet úložiště Azure](../storage/common/storage-account-overview.md) kde vytvořit kontejner objektů blob pro schéma. Zjistěte, jak [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md). 
+  * [Účet služby Azure Storage](../storage/common/storage-account-overview.md) , kde vytvoříte kontejner objektů BLOB pro vaše schéma. Naučte se [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md). 
 
-  * Kontejner objektů blob pro ukládání vašeho schématu. Zjistěte, jak [vytvořte kontejner objektů blob](../storage/blobs/storage-quickstart-blobs-portal.md). 
-  Budete potřebovat identifikátor URI obsahu vašeho kontejneru později přidáte schéma účtu integrace.
+  * Kontejner objektů BLOB pro ukládání schématu Přečtěte si, jak [vytvořit kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). 
+  Identifikátor URI obsahu kontejneru budete potřebovat později při přidávání schématu do účtu pro integraci.
 
-  * [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md), který můžete použít ke správě účtů úložiště a kontejnery objektů blob. 
-  Pokud chcete použít Průzkumníka služby Storage, zvolte jednu z možností tady:
+  * [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md), které můžete použít ke správě účtů úložiště a kontejnerů objektů BLOB. 
+  Pokud chcete použít Průzkumník služby Storage, vyberte jednu z možností:
   
-    * Na webu Azure Portal vyhledejte a vyberte svůj účet úložiště. 
-    V nabídce účtu úložiště, vyberte **Průzkumníka služby Storage**.
+    * V Azure Portal vyhledejte a vyberte svůj účet úložiště. 
+    V nabídce účtu úložiště vyberte **Průzkumník služby Storage**.
 
-    * Pro desktopová verze [stažení a instalace Průzkumníka služby Azure Storage](https://www.storageexplorer.com/). 
-    Potom propojení Průzkumníka služby Storage do účtu úložiště pomocí následujících kroků v [Začínáme se Storage Explorerem](../vs-azure-tools-storage-manage-with-storage-explorer.md). 
-    Další informace najdete v tématu [rychlý start: Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
+    * Pro verzi desktopu [si stáhněte a nainstalujte Průzkumník služby Azure Storage](https://www.storageexplorer.com/). 
+    Potom připojte Průzkumník služby Storage k účtu úložiště podle kroků uvedených v části [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). 
+    Další informace najdete v tématu [rychlý Start: vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
 
-Není nutné aplikaci logiky po vytvoření a přidání schémat. Ale chcete-li využívají schéma, aplikace logiky potřebuje propojení účtu pro integraci kam se ukládají tohoto schématu. Přečtěte si [postup propojení aplikace logiky s účty pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Pokud ještě nemáte aplikace logiky, přečtěte si [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Při vytváření a přidávání schémat nepotřebujete aplikaci logiky. Pokud ale chcete použít schéma, vaše aplikace logiky potřebuje propojit s integračním účtem, kam toto schéma ukládáte. Přečtěte si, [Jak propojit Logic Apps s účty pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Pokud ještě nemáte aplikaci logiky, přečtěte si, [jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="add-schemas"></a>Přidání schémat
+## <a name="add-schemas"></a>Přidat schémata
 
 1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a> pomocí přihlašovacích údajů svého účtu Azure.
 
-1. K vyhledání a otevření účtu pro integraci, v hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte "účet integrace". Vyberte **účty pro integraci**.
+1. Pokud chcete najít a otevřít účet pro integraci, v hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "účet pro integraci". Vyberte **účty pro integraci**.
 
-   ![Najít účet integrace](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
+   ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
 
-1. Vyberte účet integrace, ve které chcete přidat schéma, například:
+1. Vyberte účet pro integraci, do kterého chcete přidat schéma, například:
 
-   ![Vyberte účet pro integraci](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
+   ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-1. V účtu integrace **přehled** stránce v části **součásti**, vyberte **schémata** dlaždici.
+1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty**dlaždici **schémata** .
 
-   ![Vyberte "Schémata"](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
+   ![Vybrat schémata](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
-1. Po **schémata** otevře se stránka, zvolit **přidat**.
+1. Po otevření stránky **schémata** klikněte na tlačítko **Přidat**.
 
-   ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
+   ![Zvolit přidat](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
 
-Podle velikosti souboru schématu (XSD), postupujte podle kroků pro nahrávání schématu, který je buď [až 2 MB](#smaller-schema) nebo [více než 2 MB, 8 MB](#larger-schema).
+V závislosti na velikosti souboru schématu (. XSD) postupujte podle kroků pro nahrání schématu, které je buď až [2 MB](#smaller-schema) [, nebo více než 2 MB, až 8 MB](#larger-schema).
 
 <a name="smaller-schema"></a>
 
-### <a name="add-schemas-up-to-2-mb"></a>Přidání schémat až 2 MB
+### <a name="add-schemas-up-to-2-mb"></a>Přidat schémata až do 2 MB
 
-1. V části **přidat schéma**, zadejte název vašeho schématu. 
-   Zachovat **malý soubor** vybrané. Vedle položky **schématu** vyberte ikonu složky. Vyhledejte a vyberte schéma, které jste při odesílání, například:
+1. V části **Přidat schéma**zadejte název schématu. 
+   Ponechat vybraný **malý soubor** . Vedle pole **schéma** vyberte ikonu složky. Vyhledejte a vyberte schéma, které nahráváte, například:
 
-   ![Nahrát menší schématu](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
+   ![Nahrání menšího schématu](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
 
-1. Jakmile budete připraveni, zvolte **OK**.
+1. Až budete připraveni, klikněte na **tlačítko OK**.
 
-   Po dokončení nahrávání schématu schématu se zobrazí v **schémata** seznamu.
+   Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata** .
 
 <a name="larger-schema"></a>
 
 ### <a name="add-schemas-more-than-2-mb"></a>Přidat schémata více než 2 MB
 
-K přidání větší schémat, můžete nahrát schéma do kontejneru objektů blob v Azure ve vašem účtu úložiště Azure. Vaše kroky pro přidání schémat se liší v závislosti, zda má veřejné oprávnění ke čtení kontejneru objektů blob. Proto nejprve zkontrolujte, jestli má váš kontejner objektů blob veřejné oprávnění ke čtení pomocí následujících kroků: [Nastavte úroveň veřejného přístupu pro kontejner objektů blob](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+Chcete-li přidat větší schémata, můžete své schéma nahrát do kontejneru objektů blob Azure v účtu úložiště Azure. Postup přidání schémat se liší v závislosti na tom, jestli má váš kontejner objektů BLOB veřejný přístup pro čtení. Nejdřív ověřte, jestli má váš kontejner objektů BLOB veřejný přístup pro čtení, a to pomocí následujících kroků: [Nastavení úrovně veřejného přístupu pro kontejner objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
-#### <a name="check-container-access-level"></a>Zkontrolujte úroveň přístupu kontejneru
+#### <a name="check-container-access-level"></a>Kontrolovat úroveň přístupu kontejneru
 
-1. Otevřete Průzkumníka služby Azure Storage. V okně Průzkumníka rozbalte vaše předplatné Azure, pokud ještě není rozbalen.
+1. Otevřete Průzkumník služby Azure Storage. V okně Průzkumníka rozbalte své předplatné Azure, pokud ještě není rozbalené.
 
-1. Rozbalte **účty úložiště** > {*svůj účet úložiště*} > **kontejnery objektů Blob**. Vyberte kontejner objektů blob.
+1. Rozbalte položku **účty úložiště** > {*Your-Storage-Account*} > **kontejnerů objektů BLOB**. Vyberte kontejner objektů BLOB.
 
-1. V kontejneru objektů blob v místní nabídce vyberte **nastavte úroveň veřejného přístupu**.
+1. V místní nabídce kontejneru objektů BLOB vyberte **nastavit úroveň veřejného přístupu**.
 
-   * Pokud alespoň veřejné oprávnění ke kontejneru objektů blob, zvolte **zrušit**a postupujte podle těchto kroků později na této stránce: [Odešlete do kontejneru s veřejného přístupu](#public-access)
+   * Pokud má váš kontejner objektů BLOB aspoň veřejný přístup, klikněte na **Zrušit**a pak na této stránce použijte následující postup: [nahrání do kontejnerů s veřejným přístupem](#public-access)
 
      ![Veřejný přístup](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Pokud váš kontejner objektů blob nemá veřejný přístup, zvolte **zrušit**a postupujte podle těchto kroků později na této stránce: [Odešlete do kontejneru bez veřejného přístupu](#public-access)
+   * Pokud Váš kontejner objektů BLOB nemá veřejný přístup, klikněte na **Zrušit**a pak na této stránce proveďte následující kroky: [nahrání do kontejnerů bez veřejného přístupu](#public-access) .
 
-     ![Žádný veřejný přístup](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+     ![Bez veřejného přístupu](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
 <a name="public-access"></a>
 
-#### <a name="upload-to-containers-with-public-access"></a>Odešlete do kontejneru s veřejného přístupu
+#### <a name="upload-to-containers-with-public-access"></a>Odeslat do kontejnerů s veřejným přístupem
 
-1. Nahrajte schéma do účtu úložiště. 
+1. Nahrajte schéma do svého účtu úložiště. 
    V pravém okně vyberte **nahrát**.
 
-1. Po dokončení nahrávání, vyberte nahrané schématu. Na panelu nástrojů zvolte **kopírování adresy URL** tak, že zkopírujete adresu URL schématu.
+1. Po dokončení nahrávání vyberte nahrané schéma. Na panelu nástrojů vyberte možnost **Kopírovat adresu URL** , abyste ZKOPÍROVALI adresu URL schématu.
 
-1. Vraťte se do portálu Azure portal kde **přidat schéma** je otevřeno podokno. 
-   Zadejte název vašeho sestavení. 
-   Zvolte **velký soubor (větší než 2 MB)** . 
+1. Vraťte se do Azure Portal, kde je otevřeno podokno **Přidat schéma** . 
+   Zadejte název pro sestavení. 
+   Vyberte **velký soubor (větší než 2 MB)** . 
 
-   **Identifikátor URI obsahu** pole se teď zobrazí, spíše než **schématu** pole.
+   Nyní se zobrazí okno **identifikátor URI obsahu** , nikoli pole **schématu** .
 
-1. V **identifikátor URI obsahu** pole, vložte adresu URL vašeho schématu. 
-   Dokončit přidávání vašeho schématu.
+1. Do pole **identifikátor URI obsahu** vložte adresu URL vašeho schématu. 
+   Dokončete přidání vašeho schématu.
 
-Po dokončení nahrávání schématu schématu se zobrazí v **schémata** seznamu. V účtu integrace **přehled** stránce v části **součásti**, **schémata** dlaždice nyní zobrazuje počet nahraných schémata.
+Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty**na dlaždici **schémata** zobrazuje počet nahraných schémat.
 
 <a name="no-public-access"></a>
 
-#### <a name="upload-to-containers-without-public-access"></a>Odešlete do kontejneru bez veřejného přístupu
+#### <a name="upload-to-containers-without-public-access"></a>Odeslat do kontejnerů bez přístupu veřejnosti
 
-1. Nahrajte schéma do účtu úložiště. 
+1. Nahrajte schéma do svého účtu úložiště. 
    V pravém okně vyberte **nahrát**.
 
-1. Po dokončení nahrávání se vygenerujte sdílený přístupový podpis (SAS) pro schéma. 
-   V místní nabídce vašeho schématu, vyberte **získat sdílený přístupový podpis**.
+1. Po dokončení nahrávání vygenerujte sdílený přístupový podpis (SAS) pro vaše schéma. 
+   V místní nabídce schématu vyberte **získat sdílený přístupový podpis**.
 
-1. V **sdílený přístupový podpis** vyberte **generovat úrovni kontejneru sdíleného přístupového podpisu URI** > **vytvořit**. 
-   Po získá vygenerování adres URL SAS, vedle položky **URL** zvolte **kopírování**.
+1. V podokně **sdílený přístupový podpis** vyberte možnost **generovat identifikátor URI sdíleného přístupového podpisu na úrovni kontejneru** > **vytvořit**. 
+   Po vygenerování adresy URL SAS klikněte vedle pole **Adresa URL** na možnost **Kopírovat**.
 
-1. Vraťte se do portálu Azure portal kde **přidat schéma** je otevřeno podokno. Zvolte **velkých souborů**.
+1. Vraťte se do Azure Portal, kde je otevřeno podokno **Přidat schéma** . Vyberte možnost **velký soubor**.
 
-   **Identifikátor URI obsahu** pole se teď zobrazí, spíše než **schématu** pole.
+   Nyní se zobrazí okno **identifikátor URI obsahu** , nikoli pole **schématu** .
 
-1. V **identifikátor URI obsahu** vložte dříve vygenerovaný identifikátor URI SAS. Dokončit přidávání vašeho schématu.
+1. Do pole **identifikátor URI obsahu** vložte identifikátor URI SAS, který jste předtím vygenerovali. Dokončete přidání vašeho schématu.
 
-Po dokončení nahrávání schématu schématu se zobrazí v **schémata** seznamu. V účtu integrace **přehled** stránce v části **součásti**, **schémata** dlaždice nyní zobrazuje počet nahraných schémata.
+Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty**na dlaždici **schémata** zobrazuje počet nahraných schémat.
 
 ## <a name="edit-schemas"></a>Upravit schémata
 
-Aktualizovat stávající schéma, budete muset nahrát nový soubor schématu, který má požadované změny. Je však nejprve stáhnout existující schéma pro úpravy.
+Chcete-li aktualizovat existující schéma, je nutné nahrát nový soubor schématu, který obsahuje požadované změny. Můžete si ale nejdřív stáhnout existující schéma pro úpravy.
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, najít a otevřete svůj účet integrace, pokud není otevřen.
+1. V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>vyhledejte a otevřete účet pro integraci, pokud ještě není otevřený.
 
-1. V hlavní nabídce Azure zvolte **všechny služby**. 
-   Do vyhledávacího pole zadejte "účet integrace". 
+1. V hlavní nabídce Azure vyberte **všechny služby**. 
+   Do vyhledávacího pole zadejte "účet pro integraci". 
    Vyberte **účty pro integraci**.
 
-1. Vyberte, ve které chcete aktualizovat schéma účtu integrace.
+1. Vyberte účet pro integraci, ve kterém chcete schéma aktualizovat.
 
-1. V účtu integrace **přehled** stránce v části **součásti**, vyberte **schémata** dlaždici.
+1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty**dlaždici **schémata** .
 
-1. Po **schémata** otevře se stránka, vyberte schéma. 
-   Chcete-li stáhnout a upravit schéma nejprve, zvolte **Stáhnout**a uložit schéma.
+1. Po otevření stránky **schémata** vyberte své schéma. 
+   Chcete-li nejprve stáhnout a upravit schéma, klikněte na tlačítko **Stáhnout**a uložte schéma.
 
-1. Až budete připravení nahrát aktualizace schématu na **schémata** stránky, vyberte schéma, kterou chcete aktualizovat a zvolte **aktualizovat**.
+1. Až budete připraveni na nahrání aktualizovaného schématu, vyberte na stránce **schémata** schéma, které chcete aktualizovat, a zvolte **aktualizovat**.
 
 1. Vyhledejte a vyberte aktualizované schéma, které chcete nahrát. 
-   Po dokončení nahrávání souboru schématu, zobrazí se v aktualizované schéma **schémata** seznamu.
+   Po nahrání souboru schématu se v seznamu **schémat** zobrazí aktualizované schéma.
 
 ## <a name="delete-schemas"></a>Odstranit schémata
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, najít a otevřete svůj účet integrace, pokud není otevřen.
+1. V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>vyhledejte a otevřete účet pro integraci, pokud ještě není otevřený.
 
-1. V hlavní nabídce Azure zvolte **všechny služby**. 
-   Do vyhledávacího pole zadejte "účet integrace". 
+1. V hlavní nabídce Azure vyberte **všechny služby**. 
+   Do vyhledávacího pole zadejte "účet pro integraci". 
    Vyberte **účty pro integraci**.
 
-1. Vyberte, ve které chcete odstranit schéma účtu integrace.
+1. Vyberte účet pro integraci, ve kterém chcete schéma odstranit.
 
-1. V účtu integrace **přehled** stránce v části **součásti**, vyberte **schémata** dlaždici.
+1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty**dlaždici **schémata** .
 
-1. Po **schémata** otevře se stránka, vyberte schéma a zvolte **odstranit**.
+1. Po otevření stránky **schémata** vyberte schéma a zvolte **Odstranit**.
 
-1. Pokud chcete potvrdit, že chcete odstranit schéma, zvolte **Ano**.
+1. Chcete-li potvrdit, že chcete schéma odstranit, klikněte na tlačítko **Ano**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
-* [Další informace o mapování](../logic-apps/logic-apps-enterprise-integration-maps.md)
+* [Další informace o mapách](../logic-apps/logic-apps-enterprise-integration-maps.md)
 * [Další informace o transformacích](../logic-apps/logic-apps-enterprise-integration-transform.md)

@@ -1,27 +1,27 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: e42292f7848eba0b4545b713f7bbc491f35fe4a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175261"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789358"
 ---
-1. Do vyhledávacího pole zadejte jako filtr "outlook.com". V tomto příkladu vyberte tento trigger: **Při přijetí nového e-mailu**
+1. Do vyhledávacího pole zadejte "outlook.com" jako filtr. V tomto příkladu vyberte tuto aktivační událost: **při přijetí nového e-mailu** .
 
-   ![Najít Outlook.com aktivační události nebo akce](./media/connectors-create-api-outlook/select-outlook.png)
+   ![Najít triggery a akce Outlook.com](./media/connectors-create-api-outlook/select-outlook.png)
 
-1. Po výběru aktivační události (nebo akce), budete vyzváni k přihlášení ke svému účtu Outlook.com, pokud již není přihlásíte. Zvolte **přihlášení**.
+1. Po výběru triggeru (nebo akce) se zobrazí výzva, abyste se přihlásili k účtu Outlook.com, pokud jste se už nedostali. Vyberte možnost **Přihlásit se**.
 
-   ![Přihlaste se ke svému účtu Outlook.com](./media/connectors-create-api-outlook/sign-in-outlook.png)  
+   ![Přihlaste se ke svému účtu Outlook.com.](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
-3. Vyberte přihlašovací údaje účtu Outlook.com.
+1. Vyberte přihlašovací údaje účtu Outlook.com.
 
-   ![Vyberte přihlašovací účet](./media/connectors-create-api-outlook/outlook-sign-in.png)  
+   ![Vybrat účet pro přihlášení](./media/connectors-create-api-outlook/outlook-sign-in.png)  
 
-   Vaše přihlašovací údaje se používají pro připojení a zpřístupnění dat pro váš účet Outlook.com.
-   Toto připojení s jakoukoli jinou aplikaci logiky můžete znovu použít ve vašem předplatném Azure. 
+   Vaše přihlašovací údaje se používají pro připojení k datům účtu Outlook.com a k jejich přístupu.
+   Toto připojení můžete znovu použít u jakékoli jiné aplikace logiky ve vašem předplatném Azure. 

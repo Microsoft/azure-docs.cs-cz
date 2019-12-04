@@ -1,19 +1,19 @@
 ---
-title: Zabezpečení v Azure Database for MySQL – jeden server
-description: Přehled funkcí zabezpečení v Azure Database for MySQL-jednom serveru.
+title: Zabezpečení – Azure Database for MySQL
+description: Přehled funkcí zabezpečení v Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 06f895d2e8cd7936141c9f35c5ed0c81fb7e3e15
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485052"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764963"
 ---
-# <a name="security-in-azure-database-for-mysql---single-server"></a>Zabezpečení v Azure Database for MySQL – jeden server
+# <a name="security-in-azure-database-for-mysql"></a>Zabezpečení ve službě Azure Database for MySQL
 
 K ochraně dat na vašem serveru Azure Database for MySQL je k dispozici několik vrstev zabezpečení. Tento článek popisuje tyto možnosti zabezpečení.
 

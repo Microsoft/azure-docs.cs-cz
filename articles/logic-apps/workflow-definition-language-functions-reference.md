@@ -1,20 +1,17 @@
 ---
-title: Referenční příručka pro funkce ve výrazech – Azure Logic Apps
+title: Referenční příručka pro funkce ve výrazech
 description: Referenční příručka k funkcím ve výrazech pro Azure Logic Apps a automatizaci
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 08/23/2019
-ms.openlocfilehash: db33708fb96ff3e1982579c11a3928750a076f65
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e449eed0a8ae9ed6e1847ea70db6968bf9ede9bd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582678"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784523"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -93,7 +90,7 @@ Funkce řetězce fungují pouze v řetězcích.
 | [podřetězec](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Vrátí znaky z řetězce počínaje od zadané pozice. |
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Vrátí řetězec ve formátu s malými písmeny. |
 | [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Vrátí řetězec ve formátu velkými písmeny. |
-| [trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Odstraňte úvodní a koncové mezery z řetězce a vraťte aktualizovaný řetězec. |
+| [sklon](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Odstraňte úvodní a koncové mezery z řetězce a vraťte aktualizovaný řetězec. |
 |||
 
 <a name="collection-functions"></a>
@@ -491,7 +488,7 @@ add(<summand_1>, <summand_2>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2*> | Ano | Integer, float nebo mixed | Čísla, která mají být přidána |
+| <*summand_1*> <*summand_2*> | Ano | Integer, float nebo mixed | Čísla, která mají být přidána |
 |||||
 
 | Návratová hodnota | Typ | Popis |
@@ -1000,7 +997,7 @@ A vrátí tento výsledek: `"hello"`
 
 <a name="binary"></a>
 
-### <a name="binary"></a>Tvaru
+### <a name="binary"></a>tvaru
 
 Vrátí binární verzi řetězce.
 
@@ -1124,7 +1121,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*>, <*object_2*>,... | Ano | Libovolný, můžou kombinovat typy. | Jedna nebo více položek pro kontrolu hodnoty null |
+| <*object_1*> <*object_2*>... | Ano | Libovolný, můžou kombinovat typy. | Jedna nebo více položek pro kontrolu hodnoty null |
 |||||
 
 | Návratová hodnota | Typ | Popis |
@@ -1150,7 +1147,7 @@ A vrátí tyto výsledky:
 
 <a name="concat"></a>
 
-### <a name="concat"></a>spojuje
+### <a name="concat"></a>Spojuje
 
 Kombinací dvou nebo více řetězců a vrácení kombinovaného řetězce.
 
@@ -1180,7 +1177,7 @@ A vrátí tento výsledek: `"HelloWorld"`
 
 <a name="contains"></a>
 
-### <a name="contains"></a>Zobrazí
+### <a name="contains"></a>zobrazí
 
 Kontroluje, zda kolekce obsahuje konkrétní položku.
 Vrátí hodnotu true, pokud se položka najde, nebo vrátí hodnotu false, pokud nebyla nalezena.
@@ -1771,7 +1768,7 @@ A vrátí tyto výsledky:
 
 <a name="endswith"></a>
 
-### <a name="endswith"></a>EndsWith
+### <a name="endswith"></a>endsWith
 
 Zkontroluje, jestli řetězec končí určitým podřetězcem.
 Vrátí hodnotu true, pokud se podřetězec najde, nebo vrátí hodnotu false, pokud nebyla nalezena.
@@ -1814,7 +1811,7 @@ A vrátí tento výsledek: `false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>Rovná
+### <a name="equals"></a>rovná
 
 Zkontroluje, jestli jsou hodnoty, výrazy nebo objekty ekvivalentní.
 Vrátí hodnotu true, pokud jsou obě ekvivalentní, nebo vrátí hodnotu false, pokud nejsou ekvivalentní.
@@ -1849,7 +1846,7 @@ A vrátí tyto výsledky:
 
 <a name="first"></a>
 
-### <a name="first"></a>První
+### <a name="first"></a>první
 
 Vrátí první položku z řetězce nebo pole.
 
@@ -2171,7 +2168,7 @@ A vrátí tyto výsledky:
 
 <a name="guid"></a>
 
-### <a name="guid"></a>Hlavních
+### <a name="guid"></a>hlavních
 
 Vygenerujte globálně jedinečný identifikátor (GUID) jako řetězec, například "c2ecc88d-88c8-4096-912c-d6f2e2b138ce":
 
@@ -2513,7 +2510,7 @@ A vrátí tento výsledek:
 
 <a name="intersection"></a>
 
-### <a name="intersection"></a>Průnik
+### <a name="intersection"></a>průnik
 
 Vrátí kolekci, která má v zadaných kolekcích *jenom* společné položky.
 Aby se položka zobrazila ve výsledku, musí se objevit ve všech kolekcích předaných této funkci.
@@ -2577,7 +2574,7 @@ A vrátí tento výsledek: `"a.b.c"`
 
 <a name="last"></a>
 
-### <a name="last"></a>Posledního
+### <a name="last"></a>posledního
 
 Vrátí poslední položku z kolekce.
 
@@ -2926,7 +2923,7 @@ multipartBody('<actionName>', <index>)
 
 <a name="not"></a>
 
-### <a name="not"></a>Mění
+### <a name="not"></a>mění
 
 Zkontroluje, jestli je výraz nepravdivý.
 Vrátí hodnotu true, pokud má výraz hodnotu false, nebo vrátí hodnotu false, pokud má hodnotu true.
@@ -3576,7 +3573,7 @@ split('<text>', '<delimiter>')
 
 | Návratová hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| [<*subřetěze*>, <*subřetěze*>,...] | Pole | Pole, které obsahuje podřetězce z původního řetězce oddělené čárkami |
+| [<*subřetězec1*>, <*subřetězec2*>,...] | Pole | Pole, které obsahuje podřetězce z původního řetězce oddělené čárkami |
 ||||
 
 *Příklad*
@@ -3727,7 +3724,7 @@ A vrátí tento výsledek: `false`
 
 <a name="string"></a>
 
-### <a name="string"></a>řetězec
+### <a name="string"></a>string
 
 Vrátí verzi řetězce pro hodnotu.
 
@@ -3875,7 +3872,7 @@ A vrátí tento výsledek pomocí volitelného formátu "D": `"Monday, January, 
 
 <a name="take"></a>
 
-### <a name="take"></a>Nezbytná
+### <a name="take"></a>nezbytná
 
 Vrátí položky od začátku kolekce.
 
@@ -3932,7 +3929,7 @@ ticks('<timestamp>')
 
 <a name="toLower"></a>
 
-### <a name="tolower"></a>toLower
+### <a name="tolower"></a>ToLower
 
 Vrátí řetězec ve formátu s malými písmeny. Pokud znak v řetězci nemá malá verze, tento znak zůstane ve vráceném řetězci beze změny.
 
@@ -3962,7 +3959,7 @@ A vrátí tento výsledek: `"hello world"`
 
 <a name="toUpper"></a>
 
-### <a name="toupper"></a>toUpper
+### <a name="toupper"></a>ToUpper
 
 Vrátí řetězec ve formátu velkými písmeny. Pokud znak v řetězci nemá velké písmeno, tento znak zůstane ve vráceném řetězci beze změny.
 
@@ -3992,7 +3989,7 @@ A vrátí tento výsledek: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
-### <a name="trigger"></a>Signálu
+### <a name="trigger"></a>signálu
 
 Vrátí výstup triggeru za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON, které můžete přiřadit k výrazu.
 
@@ -4129,7 +4126,7 @@ triggerOutputs()
 
 <a name="trim"></a>
 
-### <a name="trim"></a>trim
+### <a name="trim"></a>sklon
 
 Odstraňte úvodní a koncové mezery z řetězce a vraťte aktualizovaný řetězec.
 
@@ -4468,7 +4465,7 @@ A vrátí tento výsledek: `"http"`
 
 <a name="utcNow"></a>
 
-### <a name="utcnow"></a>UtcNow
+### <a name="utcnow"></a>utcNow
 
 Vrátí aktuální časové razítko.
 

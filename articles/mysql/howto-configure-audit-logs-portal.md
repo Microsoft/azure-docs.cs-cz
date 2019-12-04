@@ -1,17 +1,17 @@
 ---
-title: Konfigurace a přístup k protokolům auditu – Azure Database for MySQL
+title: Přístup k protokolům auditu-Azure Portal-Azure Database for MySQL
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům auditu v Azure Database for MySQL z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 2a2d2a697f0e41fb296c61c01909a814678f8277
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.date: 12/02/2019
+ms.openlocfilehash: ff1a6c63b6eb99acdef955806a138e3e22b8902a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350407"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773706"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu pro Azure Database for MySQL v Azure Portal
 
@@ -20,7 +20,7 @@ Z Azure Portal můžete nakonfigurovat [protokoly auditu Azure Database for MySQ
 > [!IMPORTANT]
 > Funkce protokolu auditu je momentálně ve verzi Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete projít tento průvodce, budete potřebovat:
 
@@ -30,9 +30,9 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 
 Povolte a nakonfigurujte protokolování auditu.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-1. Vyberte váš server Azure Database for MySQL.
+1. Vyberte server Azure Database for MySQL.
 
 1. V části **Nastavení** na bočním panelu vyberte **parametry serveru**.
     ![Parametry serveru](./media/howto-configure-audit-logs-portal/server-parameters.png)

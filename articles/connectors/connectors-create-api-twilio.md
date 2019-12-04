@@ -1,28 +1,24 @@
 ---
-title: Připojte se k Twilio z Azure Logic Apps | Microsoft Docs
+title: Připojení k Twilio z Azure Logic Apps
 description: Automatizace úloh a pracovních postupů, které spravují globální zprávy SMS, MMS a IP, prostřednictvím účtu Twilio pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 09d4a6acf93f5fb01c70f9e9bd935c404c5abf50
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050702"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789099"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Správa zpráv v Twilio pomocí Azure Logic Apps
 
 Pomocí Azure Logic Apps a konektoru Twilio můžete vytvářet automatizované úlohy a pracovní postupy, které získávají, odesílají a vypisovat zprávy v Twilio, které zahrnují globální zprávy SMS, MMS a IP. Tyto akce můžete použít k provádění úloh s účtem Twilio. Můžete také použít jiné akce výstup z akcí Twilio. Například při doručení nové zprávy můžete odeslat obsah zprávy pomocí konektoru časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -31,7 +27,7 @@ Pomocí Azure Logic Apps a konektoru Twilio můžete vytvářet automatizované 
   * ID účtu Twilio a [ověřovací token](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), který najdete na řídicím panelu Twilio
 
     Vaše přihlašovací údaje opravňují aplikaci logiky vytvořit připojení a přistupovat k účtu Twilio z vaší aplikace logiky. 
-    Pokud používáte zkušební účet Twilio, můžete server SMS odeslat jenom pro ověřená telefonní čísla.
+    Pokud používáte zkušební účet Twilio, můžete server SMS odeslat jenom pro *ověřená* telefonní čísla.
 
   * Ověřený Twilio telefonní číslo, které může poslat SMS
 
@@ -54,7 +50,7 @@ Pomocí Azure Logic Apps a konektoru Twilio můžete vytvářet automatizované 
        -nebo-
 
      * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-     Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+     Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
      
        Do vyhledávacího pole zadejte "Twilio" jako filtr. 
        V seznamu akce vyberte akci, kterou chcete.
@@ -76,6 +72,6 @@ Technické podrobnosti o aktivačních událostech, akcích a omezeních, které
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

@@ -1,146 +1,145 @@
 ---
-title: Testování aplikací logiky s využitím mock dat – Azure Logic Apps
-description: Nastavení statické výsledky pro testování aplikací logiky s využitím mock data, aniž to ovlivní produkční prostředí
+title: Testování aplikací logiky s použitím cvičných dat
+description: Nastavení statických výsledků pro testování aplikací logiky s využitím převedených dat bez vlivu na produkční prostředí
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
-ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597207"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790276"
 ---
-# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím mock data nastavením statické výsledky
+# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím povedených dat nastavením statických výsledků
 
-Při testování aplikace logiky, nemusí být připraveni skutečně volání nebo přístupu k aplikacím, služby a systémy z různých důvodů. Obvykle v těchto scénářích platí, budete možná muset spustit různé podmínky cesty, vynutit chyby, poskytují konkrétní zprávu těla odpovědi nebo se ani nepokusí přeskočí některé kroky. Nastavením statické výsledky akce ve vaší aplikaci logiky můžete napodobení výstupní data z této akce. Povolení statické výsledky na akci, která není spuštěna akce, ale místo toho vrátí mock data.
+Při testování vašich aplikací logiky možná nebudete připraveni na skutečné volání aplikací, služeb a systémů a získat z nich různé důvody. V těchto scénářích může být nutné spustit různé cesty k podmínkám, vynutit chyby, zadat konkrétní texty odpovědí na zprávy nebo dokonce zkusit přeskočit některé kroky. Nastavením statických výsledků pro akci v aplikaci logiky můžete z této akce napodobovat výstupní data. Povolení statických výsledků akce nespustí akci, ale místo toho vrátí napodobná data.
 
-Pokud jste nastavili statickou výsledky pro Outlooku 365 odeslat akci e-mailu, modul Logic Apps jenom vrací mock data, která jste zadali jako statické výsledky, spíše než volání Outlooku a odeslat e-mailu.
+Pokud jste například nastavili statické výsledky pro akci odeslat poštu v aplikaci Outlook 365, modul Logic Apps vrátí pouze ta data, která jste zadali jako statické výsledky, nikoli volat Outlook a odeslat e-mail.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete nastavit statickou výsledky
+* Aplikace logiky, ve které chcete nastavit statické výsledky
 
 <a name="set-up-static-results"></a>
 
-## <a name="set-up-static-results"></a>Nastavení statické výsledky
+## <a name="set-up-static-results"></a>Nastavení statických výsledků
 
-1. Pokud jste tak dosud neučinili, v [webu Azure portal](https://portal.azure.com), otevřete aplikaci logiky v návrháři pro Logic Apps.
+1. Pokud jste to ještě neudělali, v [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v Návrháři Logic Apps.
 
-1. Na akce, ve které chcete nastavit statickou výsledky postupujte podle těchto kroků: 
+1. Na akci, kde chcete nastavit statické výsledky, postupujte takto: 
 
-   1. V pravém horním rohu akce, klikněte na trojtečku ( *...* ) tlačítko a vyberte **statické výsledek**, například:
+   1. V pravém horním rohu akce zvolte tlačítko se třemi tečkami ( *...* ) a vyberte **statický výsledek**, například:
 
-      ![Vyberte "Statické výsledek" > "Povolit statickou výsledek"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
+      ![Vyberte "statický výsledek" > "Povolit statický výsledek"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
-   1. Zvolte **povolit statickou výsledek**. Pro vlastnosti požadované (*) zadejte hodnoty mock výstup, který chcete vrátit akce odpovědi.
+   1. Vyberte možnost **Povolit statický výsledek**. U povinných vlastností (*) zadejte modely výstupních hodnot, které chcete vrátit pro odpověď akce.
 
-      Například tady jsou požadované vlastnosti pro akci HTTP:
+      Tady jsou například požadované vlastnosti pro akci HTTP:
 
       | Vlastnost | Popis |
       |----------|-------------|
-      | **Stav** | Stav akce vrátit |
-      | **Stavový kód** | Konkrétní stavový kód, který má vrátit |
-      | **Hlavičky** | Obsah hlavičky pro vrácení |
+      | **Stav** | Stav akce, která se má vrátit |
+      | **Stavový kód** | Konkrétní stavový kód, který se má vrátit |
+      | **Hlavičky** | Obsah záhlaví, který se má vrátit |
       |||
 
-      ![Vyberte možnost "Povolit statickou výsledek"](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
+      ![Vyberte Povolit statický výsledek.](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      Chcete-li zadat mock data ve formátu JavaScript Object Notation (JSON), zvolte **přepnout na režim JSON** (![zvolit "Přepnout do režimu JSON"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)).
+      Pokud chcete zadat tvarovaná data ve formátu JavaScript Object Notation (JSON), vyberte **Přepnout do režimu JSON** (![vyberte přepnout do režimu JSON](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)).
 
-   1. Volitelné vlastnosti otevřít **vyberte volitelná pole** seznam a vyberte vlastnosti, které chcete napodobení.
+   1. U volitelných vlastností otevřete seznam **vybrat volitelná pole** a vyberte vlastnosti, které chcete napisovat.
 
-      ![Vyberte volitelné vlastnosti](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
+      ![Vybrat volitelné vlastnosti](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. Jakmile budete připraveni na Uložit, zvolte **provádí**.
+1. Až budete připraveni na uložení, klikněte na **Hotovo**.
 
-   V pravém horním rohu akce, záhlaví nyní zobrazuje ikona kádinky testu (![ikonu pro statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)), což znamená, že jste povolili statické výsledky.
+   V pravém horním rohu se v záhlaví akce nyní zobrazuje ikona kádinky testu (ikona![pro statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)), která označuje, že jste povolili statické výsledky.
 
-   ![Ikona znázorňující povolené statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
+   ![Ikona ukazující povolené statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
-   Předchozí spuštění využívající mock dat najdete v tématu [najít spuštění, které používají statické výsledky](#find-runs-mock-data) dále v tomto tématu.
+   Pokud chcete najít předchozí spuštění, která používají podobná data, přečtěte si téma [hledání spuštění, které používá statické výsledky](#find-runs-mock-data) dále v tomto tématu.
 
 <a name="reuse-sample-outputs"></a>
 
-## <a name="reuse-previous-outputs"></a>Opakované použití předchozích výstupy
+## <a name="reuse-previous-outputs"></a>Znovu použít předchozí výstupy
 
-Pokud má vaše aplikace logiky předchozí spuštění s výstupy, které můžete znovu použít jako mock výstupy, je můžete zkopírovat a vložit výstup z, která spustí.
+Pokud vaše aplikace logiky obsahuje předchozí běh s výstupy, můžete je použít jako výstupy na výstupu, takže můžete kopírovat a vkládat výstupy z tohoto běhu.
 
-1. Pokud jste tak dosud neučinili, v [webu Azure portal](https://portal.azure.com), otevřete aplikaci logiky v návrháři pro Logic Apps.
+1. Pokud jste to ještě neudělali, v [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v Návrháři Logic Apps.
 
-1. V hlavní nabídce aplikace logiky, vyberte **přehled**.
+1. V hlavní nabídce aplikace logiky vyberte **Přehled**.
 
-1. V **historie běhů** části, vyberte aplikaci logiky běh, který chcete.
+1. V části **historie spuštění** vyberte požadovaný běh aplikace logiky.
 
-1. V pracovním postupu vaší aplikace logiky vyhledejte a rozbalte akci, která obsahuje výstupy, které chcete.
+1. V pracovním postupu aplikace logiky vyhledejte a rozbalte akci, která má požadované výstupy.
 
-1. Zvolte **zobrazit nezpracované výstupy** odkaz.
+1. Vyberte odkaz **Zobrazit nezpracované výstupy** .
 
-1. Zkopírujte celý objekt JavaScript Object Notation (JSON) nebo konkrétní dílčí část, kterou chcete použít, například, část Outputs následujícím nebo jenom část záhlaví.
+1. Zkopírujte buď objekt JSON (Complete JavaScript Object Notation), nebo konkrétní dílčí oddíl, který chcete použít, například část výstupy nebo dokonce pouze část záhlaví.
 
-1. Postupujte podle pokynů k prvnímu **statické výsledek** pole pro vaši akci ve [nastavit statickou výsledky](#set-up-static-results).
+1. Postupujte podle kroků pro otevření pole **statický výsledek** pro akci v [Nastavení statických výsledků](#set-up-static-results).
 
-1. Po **statické výsledek** otevře, zvolte buď krok:
+1. Po otevření pole **statický výsledek** vyberte buď krok:
 
-   * Chcete-li vložit kompletní objekt JSON, zvolte **přepnout na režim JSON** (![zvolit "Přepnout do režimu JSON"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)):
+   * Chcete-li vložit úplný objekt JSON, vyberte možnost **Přepnout do režimu JSON** (![vyberte přepnout do režimu JSON](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)):
 
-     ![Zvolte možnost "Přepnout do režimu JSON" pro celý objekt](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
+     ![Pro úplný objekt vyberte přepnout do režimu JSON.](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
-   * Chcete-li vložit pouze JSON oddíl, vedle popisku této části zvolte **přepnout na režim JSON** pro tuto část, například:
+   * Chcete-li vložit pouze oddíl JSON, klikněte vedle popisku této části na příkaz **Přepnout do režimu JSON** pro tuto část, například:
 
-     ![Zvolte možnost "Přepnout do režimu JSON" pro výstupy](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
+     ![Pro výstupy vyberte přepnout do režimu JSON.](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
 
-1. V editoru JSON vložte váš dříve zkopírovaný kód JSON.
+1. V editoru JSON vložte dříve zkopírovaný formát JSON.
 
    ![Režim JSON](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. Jakmile budete hotovi, zvolte **Done** (Hotovo). Nebo se vraťte do návrháře, zvolte **přepnout Editor režimu** (![zvolit "Přepnout režim editoru"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
+1. Jakmile budete hotovi, zvolte **Done** (Hotovo). Nebo chcete-li se vrátit k návrháři, vyberte možnost **režim editoru přepnutí** (![vyberte "režim editoru přepnutí"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
 
 <a name="find-runs-mock-data"></a>
 
-## <a name="find-runs-that-use-static-results"></a>Spuštění, které používají statické výsledky hledání
+## <a name="find-runs-that-use-static-results"></a>Hledání spuštění, která používají statické výsledky
 
-Historie spuštění aplikace logiky identifikuje spuštění, kde použít statické výsledky akce. K vyhledání těchto spuštění, postupujte podle těchto kroků:
+Historie spuštění vaší aplikace logiky identifikuje spuštění, kde akce používají statické výsledky. K vyhledání těchto spuštění použijte následující postup:
 
-1. V hlavní nabídce aplikace logiky, vyberte **přehled**. 
+1. V hlavní nabídce aplikace logiky vyberte **Přehled**. 
 
-1. V pravém podokně v části **historie běhů**, Najít **statické výsledky** sloupce. 
+1. V pravém podokně v části **historie spuštění**vyhledejte sloupec **statických výsledků** . 
 
-   Jakékoli spuštění obsahující akce s výsledky se **statické výsledky** sloupec nastaven na **povoleno**, například:
+   Každý běh, který zahrnuje akce s výsledky, má sloupec **statických výsledků** nastavený na **povoleno**, například:
 
-   ![Historie - spuštění statické výsledky sloupec](./media/test-logic-apps-mock-data-static-results/run-history.png)
+   ![Historie spuštění – sloupec statických výsledků](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-1. Chcete-li zobrazit akce, které používají statické výsledky, vyberte spustit, kam chcete **statické výsledky** sloupec je nastaven na **povoleno**.
+1. Pokud chcete zobrazit akce, které používají statické výsledky, vyberte požadované spuštění, ve kterém je sloupec **statických výsledků** nastavený na **povoleno**.
 
-   Akce, které používají statické výsledky zobrazit kádinky testu (![ikonu pro statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) ikona, například:
+   U akcí, které používají statické výsledky, se zobrazí ikona zkušební kádinka (ikona![pro statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)), například:
 
-   ![Historie - spuštění akce, které používají statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
+   ![Historie spuštění – akce, které používají statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
 ## <a name="disable-static-results"></a>Zakázat statické výsledky
 
-Vypnutí statické výsledky nebude zbavovat hodnoty z poslední instalace. Takže když zapnete statické výsledky při příštím, můžete pokračovat v používání předchozí hodnoty.
+Vypnutím statických výsledků nedojde k vygenerování hodnot z poslední instalace. Takže při příštím zapnutí statických výsledků můžete dál používat předchozí hodnoty.
 
-1. Najdete akce, ve které chcete zakázat statické výstupy. V pravém horním rohu akce, zvolte ikonu kádinky testu (![ikonu pro statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)).
+1. Vyhledejte akci, ve které chcete zakázat statické výstupy. V pravém horním rohu akce vyberte ikonu kádinky testu (![ikonu pro statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)).
 
    ![Zakázat statické výsledky](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. Zvolte **zakázat statické výsledek** > **provádí**.
+1. Vyberte možnost **Zakázat statický výsledek** > **Hotovo**.
 
    ![Zakázat statické výsledky](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
 ## <a name="reference"></a>Referenční informace
 
-Další informace o tomto nastavení ve vaší základní definice pracovního postupu najdete v tématu [statické výsledky – referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md#static-results) a [runtimeConfiguration.staticResult – modul Runtime nastavení konfigurace](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
+Další informace o tomto nastavení najdete v příslušných definicích pracovních postupů v tématu [statické výsledky – referenční informace ke schématu pro jazyk pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md#static-results) a [runtimeConfiguration. staticResult – nastavení konfigurace modulu runtime.](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Azure Logic Apps](../logic-apps/logic-apps-overview.md)

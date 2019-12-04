@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112573"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790497"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Jak nastavit přírůstkové indexování obohacených dokumentů v Azure Kognitivní hledání
 
@@ -41,13 +41,32 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>Krok 2: Přidání vlastnosti cache
 
-Upravte odpověď z požadavku GET a přidejte do indexeru vlastnost `cache`. Objekt mezipaměti vyžaduje pouze jednu vlastnost, která je připojovacím řetězcem k účtu Azure Storage.
+< < < < < < < HEAD upravte odpověď z požadavku GET, aby se do indexeru přidala vlastnost `cache`. Objekt mezipaměti vyžaduje jenom jednu vlastnost, `storageConnectionString` což je připojovací řetězec k účtu úložiště. = = = = = = = Upravit odpověď z požadavku GET pro přidání vlastnosti `cache` do indexeru. Objekt mezipaměti vyžaduje pouze jednu vlastnost, která je připojovacím řetězcem k účtu Azure Storage.
+>>>>>>> 3519a330aa86b6827d31403690529105825b1b16
 
 ```json
-    "cache": {
-        "storageConnectionString": "[your storage connection string]"
+{
+    "name": "myIndexerName",
+    "targetIndexName": "myIndex",
+    "dataSourceName": "myDatasource",
+    "skillsetName": "mySkillset",
+    "cache" : {
+        "storageConnectionString" : "Your storage account connection string",
+        "enableReprocessing": true,
+        "id" : "Auto generated Id you do not need to set"
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": {
+        "configuration": {
+            "enableAnnotationCache": true
+        }
     }
+}
 ```
+#### <a name="enable-reporocessing"></a>Povolit reporocessing
+
+Volitelně můžete nastavit vlastnost Boolean `enableReprocessing` v mezipaměti, která je standardně nastavená na hodnotu true. Příznak `enableReprocessing` umožňuje řídit chování indexeru. Ve scénářích, kde chcete, aby indexer přidával do indexu nové dokumenty, byste příznak nastavili na false. Jakmile se indexer zachytí s novými dokumenty, převrácení příznaku na hodnotu true by pak indexeru umožnil zahájit řízení stávajících dokumentů na konečnou konzistenci. V období, kdy je příznak `enableReprocessing` nastaven na hodnotu false, indexer zapíše pouze do mezipaměti, ale nezpracuje žádné existující dokumenty na základě identifikovaných změn kanálu rozšíření.
 
 ### <a name="step-3-reset-the-indexer"></a>Krok 3: resetování indexeru
 

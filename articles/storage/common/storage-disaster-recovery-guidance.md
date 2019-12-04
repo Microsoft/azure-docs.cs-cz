@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889791"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775924"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage
 
@@ -139,7 +139,7 @@ Connect-AzAccount -SubscriptionId <subscription-id>
 Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
-Získání schválení pro verzi Preview může trvat 1-2 dní. Chcete-li ověřit, zda byla registrace schválena, spusťte následující příkaz:
+Získání schválení pro verzi Preview může trvat 5-7 dní. Chcete-li ověřit, zda byla registrace schválena, spusťte následující příkaz:
 
 ```powershell
 Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
@@ -186,7 +186,7 @@ Pokud je váš účet úložiště nakonfigurovaný pro RA-GRS, máte k datům p
 
 V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné havárie, může společnost Microsoft zahájit místní převzetí služeb při selhání. V takovém případě není nutná žádná akce s vaší částí. Dokud neproběhne převzetí služeb při selhání spravované Microsoftem, nebudete mít k účtu úložiště přístup pro zápis. Vaše aplikace se můžou číst ze sekundární oblasti, pokud je váš účet úložiště nakonfigurovaný pro RA-GRS. 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Iniciovat převzetí služeb při selhání účtu (Preview)](storage-initiate-account-failover.md)
 * [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)

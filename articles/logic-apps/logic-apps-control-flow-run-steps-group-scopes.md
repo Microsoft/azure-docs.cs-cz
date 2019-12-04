@@ -1,20 +1,17 @@
 ---
-title: Seskupit a spustit akce podle oboru – Azure Logic Apps
+title: Seskupit a spustit akce podle oboru
 description: Vytvoření vymezených akcí, které se spouštějí na základě stavu skupiny v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b0f53d1dbcd5b8bbbe38ffe3dd9ba62087ed3432
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680004"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791489"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -78,8 +75,8 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
 
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
-      | **Bod na trase 1** | <*spuštění* > | Zadejte původ trasy. | 
-      | **Bod na trase 2** | <*ukončení* > | Zadejte cíl trasy. | 
+      | **Bod na trase 1** | <*spuštění*> | Zadejte původ trasy. | 
+      | **Bod na trase 2** | <*ukončení*> | Zadejte cíl trasy. | 
       | **Vyloučit** | Žádné | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizovat** | timeWithTraffic | Vyberte parametr pro optimalizaci trasy, například vzdálenost, čas s aktuálními informacemi o provozu a tak dále. V tomto příkladu se používá tato hodnota: "timeWithTraffic" | 
       | **Jednotka vzdálenosti** | <*vaše-volba*> | Zadejte jednotku ke vzdálenosti pro výpočet trasy. V tomto příkladu se používá tato hodnota: km. | 
@@ -150,7 +147,7 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
   
        Vaše pole **tělo** teď vypadá jako v tomto příkladu:
 
-       ![Finished pole "tělo" ](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![bylo dokončeno pole "tělo"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. Uložte svou aplikaci logiky.

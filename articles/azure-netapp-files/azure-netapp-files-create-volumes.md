@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906233"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773547"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
@@ -32,9 +32,6 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 [Delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="considerations"></a>Požadavky 
-
-> [!IMPORTANT] 
-> Přístup k funkci NFSv 4.1 vyžaduje přidávání do seznamu povolených.  Pokud chcete požádat o přidávání na seznam povolených, odešlete žádost, která se <anffeedback@microsoft.com>. 
 
 * Rozhodnutí o tom, která verze systému souborů NFS se má použít  
   NFSv3 dokáže zvládnout širokou škálu případů použití a je běžně nasazená ve většině podnikových aplikací. Měli byste ověřit, jakou verzi (NFSv3 nebo NFSv 4.1) vaše aplikace vyžaduje, a vytvořit svazek s použitím příslušné verze. Pokud například používáte [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), doporučuje se zamykání souborů s nfsv 4.1 nad NFSv3. 

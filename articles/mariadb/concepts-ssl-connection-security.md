@@ -1,30 +1,30 @@
 ---
-title: Připojení SSL pro službu Azure Database pro MariaDB
-description: Informace pro konfiguraci – Azure Database pro MariaDB a přidružené aplikace pro správné použití připojení SSL
+title: Připojení SSL – Azure Database for MariaDB
+description: Informace o konfiguraci Azure Database for MariaDB a přidružených aplikací pro správné používání připojení SSL
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 15bb28846b3409dd31bcdf8d42990facc94fd06d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: b7206db24c813c8f273dd57407c43974932ff110
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332682"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772023"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>Připojení SSL ve službě Azure Database pro MariaDB
-Azure Database pro MariaDB podporuje připojení databázový server pro klientské aplikace pomocí vrstvy SSL (Secure Sockets). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
+# <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>Připojení SSL v Azure Database for MariaDB
+Azure Database for MariaDB podporuje připojení vašeho databázového serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
 
 ## <a name="default-settings"></a>Výchozí nastavení
-Ve výchozím nastavení databázová služba musí být nakonfigurovaný tak, aby vyžadovala připojení SSL při připojování k MariaDB.  Doporučujeme, aby bylo zabráněno zakázání možnost SSL, kdykoli je to možné.
+Ve výchozím nastavení by databázová služba měla být nakonfigurovaná tak, aby při připojení k MariaDB vyžadovala připojení SSL.  Doporučujeme, abyste se vyhnuli vypnutí možnosti SSL, kdykoli to bude možné.
 
-Při zřizování novou službu Azure Database pro MariaDB server na webu Azure portal a rozhraní příkazového řádku, je standardně povolená vynucení připojení SSL.
+Při zřizování nového serveru Azure Database for MariaDB prostřednictvím Azure Portal a CLI je vynucování připojení SSL ve výchozím nastavení povolené.
 
-Připojovací řetězce pro různé programovací jazyky jsou uvedeny na webu Azure Portal. Tyto řetězce připojení obsahovat požadované parametry protokolu SSL pro připojení k vaší databázi. Na webu Azure Portal vyberte svůj server. V části **nastavení** záhlaví, vyberte **připojovací řetězce**. Parametr SSL se liší v závislosti na konektoru, třeba "ssl = true" nebo "sslmode = vyžadují" nebo "sslmode = požadované" a další varianty konfigurací.
+V Azure Portal se zobrazují připojovací řetězce pro různé programovací jazyky. Tyto připojovací řetězce zahrnují požadované parametry SSL pro připojení k vaší databázi. V Azure Portal vyberte svůj server. V záhlaví **Nastavení** vyberte **připojovací řetězce**. Parametr SSL se liší v závislosti na konektoru, například "SSL = true" nebo "sslmode = vyžadovat" nebo "sslmode = Required" a další variace.
 
-Zjistěte, jak povolit nebo zakázat připojení protokolem SSL při vývoji aplikací, najdete v tématu [konfigurace SSL](howto-configure-ssl.md).
+Informace o tom, jak povolit nebo zakázat připojení SSL při vývoji aplikace, najdete v tématu [Postup konfigurace protokolu SSL](howto-configure-ssl.md).
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [pravidla brány firewall serveru](concepts-firewall-rules.md)
-- Zjistěte, jak [konfigurace protokolu SSL](howto-configure-ssl.md).
+## <a name="next-steps"></a>Další kroky
+- Další informace o [pravidlech brány firewall serveru](concepts-firewall-rules.md)
+- Přečtěte si, jak [nakonfigurovat SSL](howto-configure-ssl.md).

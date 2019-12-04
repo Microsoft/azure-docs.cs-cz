@@ -1,21 +1,18 @@
 ---
-title: Připojení k boxu – Azure Logic Apps
+title: Připojit k boxu
 description: Vytváření a Správa souborů s rozhraními REST API a Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 5fbc64194182c41a70eb27a4049234973c39fffe
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 38e061e918d445de07961af1789891f44c59090a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050926"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789863"
 ---
 # <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Vytváření a Správa souborů v krabici pomocí Azure Logic Apps
 
@@ -30,7 +27,7 @@ Tento článek ukazuje, jak můžete vytvářet a spravovat soubory v krabicích
   Když tyto akce obdrží odpověď, zpřístupní výstup pro jiné akce. 
   Například když se změní soubor v poli, můžete tento soubor poslat e-mailem pomocí Office 365.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Účet box](https://www.box.com/home)
 
@@ -45,6 +42,6 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
 Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/box/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

@@ -1,17 +1,17 @@
 ---
-title: Architektura připojení v Azure Database for MySQL
+title: Architektura připojení – Azure Database for MySQL
 description: Popisuje architekturu připojení pro server Azure Database for MySQL.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: c4fecfadefedf10f7e11534b4efbd197c4d7fdae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: 22c77bee95533606156ec6cc337af1d743018005
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213143"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765320"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -31,8 +31,8 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Austrálie – východ | 13.75.149.87 | 40.79.161.1 |
 | Austrálie – jihovýchod | 191.239.192.109 | 13.73.109.251 |
 | Brazílie – jih | 104.41.11.5 | |
-| Střední Kanada | 40.85.224.249 | |
-| Východní Kanada | 40.86.226.166 | |
+| Kanada – střed | 40.85.224.249 | |
+| Kanada – východ | 40.86.226.166 | |
 | Střední USA | 23.99.160.139 | 13.67.215.62 |
 | Čína – východ 1 | 139.219.130.35 | |
 | Čína – východ 2 | 40.73.82.1 | |
@@ -48,8 +48,8 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Indie – západ | 104.211.160.80 | |
 | Japonsko – východ | 191.237.240.43 | 13.78.61.196 |
 | Japonsko – západ | 191.238.68.11 | 104.214.148.156 |
-| Jižní Korea – střed | 52.231.32.42 | |
-| Jižní Korea – jih | 52.231.200.86 |  |
+| Korea – střed | 52.231.32.42 | |
+| Korea – jih | 52.231.200.86 |  |
 | Středoseverní USA | 23.98.55.75 | 23.96.178.199 |
 | Severní Evropa | 191.235.193.75 | 40.113.93.91 |
 | Středojižní USA | 23.98.162.75 | 13.66.62.124 |
@@ -57,8 +57,8 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Jižní Afrika – sever | 102.133.152.0 | |
 | Jižní Afrika – západ | 102.133.24.0 | |
 | Spojené arabské emiráty – sever | 65.52.248.0 | |
-| Spojené království – jih | 51.140.184.11 | |
-| Spojené království – západ | 51.141.8.11| |
+| Velká Británie – jih | 51.140.184.11 | |
+| Velká Británie – západ | 51.141.8.11| |
 | Západní Evropa | 191.237.232.75 | 40.68.37.158 |
 | Západní USA 1 | 23.99.34.75 | 104.42.238.205 |
 | Západní USA 2 | 13.66.226.202 | |
@@ -66,14 +66,6 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 
 > [!NOTE]
 > *Východní USA 2a* má také terciární IP adresu `52.167.104.0`.
-
-## <a name="connection-redirection"></a>Přesměrování připojení
-
-Azure Database for MySQL podporuje další zásady připojení, **přesměrování**, která pomáhá snižovat latenci sítě mezi klientskými aplikacemi a servery MySQL. Po navázání počáteční relace protokolu TCP na Azure Database for MySQL server vrátí tato funkce server back-end uzel, který hostuje server MySQL, do klienta. Následně se všechny následné pakety nasměrují přímo na server a vynechá bránu. Jako tok paketů přímo na server, latence a propustnost vylepší výkon.
-
-Tato funkce je podporovaná v Azure Database for MySQL serverech s verzemi modulu 5,6, 5,7 a 8,0.
-
-Podpora verze Preview pro přesměrování je dostupná v rozšíření [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) , vyvinuté Microsoftem a je k dispozici na [PECL](https://pecl.php.net/package/mysqlnd_azure). Další informace o tom, jak používat přesměrování ve svých aplikacích, najdete v článku [konfigurace přesměrování](./howto-redirection.md) . 
 
 ## <a name="next-steps"></a>Další kroky
 

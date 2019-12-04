@@ -1,19 +1,19 @@
 ---
-title: Query Performance Insight v Azure Database for PostgreSQL – jeden server
+title: Query Performance Insight – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci Query Performance Insight v rámci Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764438"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768380"
 ---
-# <a name="query-performance-insight"></a>Query Performance Insight 
+# <a name="query-performance-insight"></a>Přehled o výkonu dotazů 
 
 **Platí pro:** Azure Database for PostgreSQL – jeden server verze 9,6, 10, 11
 
@@ -22,7 +22,7 @@ Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dota
 ## <a name="permissions"></a>Oprávnění
 K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Aby Query Performance Insight fungoval, musí existovat data v [úložišti dotazů](concepts-query-store.md).
 
 ## <a name="viewing-performance-insights"></a>Zobrazení přehledů výkonu

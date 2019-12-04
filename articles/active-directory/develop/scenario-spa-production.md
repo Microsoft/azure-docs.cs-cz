@@ -1,6 +1,6 @@
 ---
-title: Jednostránková aplikace (Přesun do produkčního prostředí) – platforma identit Microsoft
-description: Další informace o vytváření jednostránkové aplikace (Přesun do produkčního prostředí)
+title: Jednostránkové aplikace (přesunout na produkční prostředí) – Microsoft Identity Platform
+description: Naučte se vytvářet jednostránkové aplikace (přechod na produkční prostředí).
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,42 +15,38 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a04f5d62ec750cfbe44765e833552bd694654d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2dbb481c75323304d71f85a722fc45a9b634055
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075007"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766102"
 ---
-# <a name="single-page-application---move-to-production"></a>Jednostránková aplikace – Přesun do produkčního prostředí
+# <a name="single-page-application-move-to-production"></a>Jednostránkové aplikace: Přesun do produkčního prostředí
 
-Teď, když víte, jak k získání tokenu pro volání webových rozhraní API, zjistěte, jak přejít do produkčního prostředí.
+Když teď víte, jak získat token pro volání webových rozhraní API, přečtěte si, jak přejít do produkčního prostředí.
 
-## <a name="improve-your-app"></a>Zlepšení vaší aplikace
+## <a name="improve-your-app"></a>Vylepšení aplikace
 
-Postupujte podle kroků, které jsou potřebné k tomu aplikace v produkčním prostředí připraveno.
+[Povolením protokolování](msal-logging.md) zajistěte přípravu vaší aplikace.
 
-- [Povolení protokolování](msal-logging.md) ve vaší aplikaci.
+## <a name="test-your-integration"></a>Otestování integrace
 
-## <a name="test-your-integration"></a>Otestovat integraci vašich
+Otestujte integraci podle [kontrolního seznamu integrace Microsoft Identity Platform](identity-platform-integration-checklist.md).
 
-- Otestovat integraci vašich podle [kontrolní seznam k Microsoft identity platform integrace](identity-platform-integration-checklist.md).
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
+Hluboká podrobně ukázky pro rychlý Start, která vysvětluje kód pro přihlášení uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph pomocí MSAL. js:
 
-Tady je několik dalších ukázky a kurzy:
+> [!div class="nextstepaction"]
+> [Kurz pro JavaScript SPA](./tutorial-v2-javascript-spa.md)
 
-- Podrobné informace z tohoto rychlého startu ukázkový, který vysvětluje kód pro přihlášení uživatelů a získání přístupového tokenu pro volání rozhraní Graph API MS využitím MSAL.js
+Ukázka, která ukazuje, jak získat tokeny pro vlastní back-endové webové rozhraní API pomocí MSAL. js:
 
-    > [!div class="nextstepaction"]
-    > [Kurz jazyka JavaScript SPA](./tutorial-v2-javascript-spa.md)
+> [!div class="nextstepaction"]
+> [SPA s back-end ASP.NET](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
 
-- Ukázka představením toho, jak získat tokeny pro vlastní back-endové webové rozhraní API pomocí MSAL.js
+Ukázka, která ukazuje, jak pomocí MSAL. js přihlašovat uživatele v aplikaci, která je zaregistrovaná ve službě Azure Active Directory B2C (Azure AD B2C):
 
-     > [!div class="nextstepaction"]
-     > [Jednostránková aplikace s back-endu ASP.NET](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
-
-- Ukázky ukazují, jak používat MSAL.js k přihlášení uživatelů v aplikaci registrovanou pomocí Azure AD B2C
-
-    > [!div class="nextstepaction"]
-    > [Jednostránková aplikace pomocí Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+> [!div class="nextstepaction"]
+> [SPA s Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)

@@ -1,23 +1,18 @@
 ---
-title: Automatizace pracovních postupů úloh v aplikaci Visual Studio – Azure Logic Apps
+title: Automatizace pracovních postupů úloh v aplikaci Visual Studio
 description: Vytváření, plánování a spouštění opakovaných pracovních postupů pro podnikovou integraci pomocí Azure Logic Apps a sady Visual Studio
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: azure-vs
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.manager: carmonm
+ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: e7ce31f489ae274eddb02c1bfb7e57eb486f5851
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 49269cf2171269063de4a3cf5de1f22ebc545005
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796973"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790821"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý Start: vytvoření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -31,7 +26,7 @@ V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual 
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -85,9 +80,9 @@ Začněte vytvořením [projektu skupiny prostředků Azure](../azure-resource-m
 
    Pokud používáte Visual Studio 2019, postupujte podle následujících kroků:
 
-   1. V poli **vytvořit nový projekt** vyberte projekt **skupiny prostředků Azure** pro Visual C# nebo Visual Basic. Vyberte **Next** (Další).
+   1. V poli **vytvořit nový projekt** vyberte projekt **skupiny prostředků Azure** pro Visual C# nebo Visual Basic. Vyberte **Další**.
 
-   1. Zadejte název skupiny prostředků Azure, kterou chcete použít, a další informace o projektu. Vyberte **Vytvořit**.
+   1. Zadejte název skupiny prostředků Azure, kterou chcete použít, a další informace o projektu. Vyberte **Create** (Vytvořit).
 
 1. V seznamu šablon vyberte šablonu **Aplikace logiky** . Vyberte **OK**.
 

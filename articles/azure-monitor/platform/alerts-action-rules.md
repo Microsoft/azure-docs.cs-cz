@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: a858388a11cfdf36bacb1e5840f00fc6ef097867
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555706"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767683"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -22,7 +22,7 @@ Pravidla akcí vám pomůžou definovat nebo potlačit akce v jakémkoli oboru A
 
 ### <a name="suppression-of-alerts"></a>Potlačení výstrah
 
-Existuje mnoho scénářů, kde je vhodné potlačit oznámení, která generují výstrahy. Tyto scénáře jsou v rozsahu od potlačení při plánovaném časovém období údržby, aby se potlačily během nepracovních hodin. Například tým zodpovědný za **ContosoVM** chce potlačit oznámení o výstrahách pro nadcházející víkend, protože **ContosoVM** provádí plánovanou údržbu. 
+Existuje mnoho scénářů, kde je vhodné potlačit oznámení, která generují výstrahy. Tyto scénáře jsou v rozsahu od potlačení při plánovaném časovém období údržby, aby se potlačily v nepracovních hodinách. Například tým zodpovědný za **ContosoVM** chce potlačit oznámení o výstrahách pro nadcházející víkend, protože **ContosoVM** provádí plánovanou údržbu. 
 
 I když tým může zakázat každé pravidlo upozornění, které je nakonfigurováno na **ContosoVM** ručně (a znovu ho povolit po údržbě), není to jednoduchý proces. Pravidla akcí vám pomůžou definovat potlačení výstrah ve velkém měřítku s možností pružně konfigurovat dobu potlačení. V předchozím příkladu může tým definovat jedno pravidlo pro akci na **ContosoVM** , které potlačí všechna oznámení o upozorněních na víkend.
 

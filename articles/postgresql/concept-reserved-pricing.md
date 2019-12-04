@@ -1,17 +1,17 @@
 ---
-title: Platba za Azure Database for PostgreSQL výpočetních prostředků s rezervovanou kapacitou
+title: Rezervované ceny za výpočetní prostředky – Azure Database for PostgreSQL – jeden server
 description: Platba za Azure Database for PostgreSQL výpočetních prostředků s rezervovanou kapacitou
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 753d962cbefd38ec991fb9e63805760fe07a8f2d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 634ab645ea49c29bb5624afd82e549dfbc8d0fdf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123874"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769893"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Platba za Azure Database for PostgreSQL výpočetních prostředků s rezervovanou kapacitou
 
@@ -25,10 +25,10 @@ Nemusíte přiřadit rezervaci konkrétním Azure Database for PostgreSQLm serve
 V [Azure Portal](https://portal.azure.com/)si můžete koupit Azure Database for PostgreSQL rezervovanou kapacitu. Zakoupení rezervované kapacity:
 
 * Musíte být v roli vlastníka alespoň u jednoho podnikového nebo individuálního předplatného s tarify průběžných plateb.
-* U předplatných se smlouvou Enterprise musí být na webu **EA Portal** povolená možnost [Přidat rezervované instance](https://ea.azure.com/). Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
+* U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
 * V případě programu Cloud Solution Provider (CSP) mohou Azure Database for PostgreSQL rezervované kapacity koupit pouze agenti správce nebo prodejní agenti. </br>
 
-Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši podnikovou registraci](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) a [pochopení využití rezervace Azure pro vaše průběžné platby. předplatné](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši podnikovou registraci](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) a [pochopení využití rezervace Azure pro vaše předplatné](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)s průběžnými platbami.
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>Určení správné velikosti serveru před nákupem
@@ -40,7 +40,7 @@ Předpokládejme například, že máte spuštěný jeden z obecných účelů, 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Koupit Azure Database for PostgreSQL rezervovanou kapacitu
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Všechny služby** > **Rezervace**.
 3. Vyberte **Přidat** a potom v podokně rezervace nákupu vyberte **Azure Database for PostgreSQL** a Zakupte novou rezervaci pro databáze PostgreSQL.
 4. Vyplňte požadovaná pole. Stávající nebo nové databáze, které odpovídají atributům, které vyberete, mají nárok na získání rezervované slevy kapacity. Skutečný počet serverů Azure Database for PostgreSQL, které získávají slevu, závisí na zvoleném rozsahu a množství.
@@ -55,10 +55,10 @@ V následující tabulce jsou popsána povinná pole.
 | :------------ | :------- |
 | Předplatné   | Předplatné použité pro platbu Azure Database for PostgreSQL rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity Azure Database for PostgreSQL. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.
 | Rozsah | Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, Azure Database for PostgreSQL na servery běžící v rámci vašeho fakturačního kontextu se použije sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> Pro Azure Database for PostgreSQL servery v tomto **předplatném**se použije sleva za rezervované Vcore. </br></br> **Jedna skupina prostředků**, použije se sleva rezervace pro Azure Database for PostgreSQL servery ve vybraném předplatném a v rámci daného předplatného.
-| Region (Oblast) | Oblast Azure, která je pokrytá rezervací rezervované kapacity Azure Database for PostgreSQL.
+| Oblast | Oblast Azure, která je pokrytá rezervací rezervované kapacity Azure Database for PostgreSQL.
 | Typ nasazení | Typ prostředku Azure Database for PostgreSQL, pro který chcete zakoupit rezervaci.
 | Úroveň výkonu | Vrstva služby pro servery Azure Database for PostgreSQL.
-| Označení | Jeden rok
+| Doba účinnosti | Jeden rok
 | Množství | Množství výpočetních prostředků, které se zakoupí v rámci rezervace rezervované kapacity Azure Database for PostgreSQL. Množství je počet virtuální jádra ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit Azure Database for PostgreSQL servery s celkovou výpočetní kapacitou Gen5 16 virtuální jádra v oblasti Východní USA, pak byste zadali množství na 16, aby se zajistilo zvýšení výhod pro všechny servery.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
@@ -69,7 +69,7 @@ Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. 
 
 flexibilita velikosti vCore vám pomůže škálovat směrem nahoru nebo dolů v rámci úrovně výkonu a oblasti, aniž by došlo ke ztrátě výhod vyhrazené kapacity. 
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

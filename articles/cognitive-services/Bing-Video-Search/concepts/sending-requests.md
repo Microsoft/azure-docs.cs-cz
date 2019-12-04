@@ -3,19 +3,19 @@ title: Odeslat žádosti o vyhledávání rozhraní API Bingu pro vyhledávání
 titleSuffix: Azure Cognitive Services
 description: Tento článek popisuje parametry a atributy požadavků odeslaných do rozhraní API Bingu pro vyhledávání videí a také objekt odpovědi JSON, který vrátí.
 services: cognitive-services
-author: aahi
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.author: aahill
-ms.openlocfilehash: 869a14c4787507f89f0a39860972a5076f02f90c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/03/2019
+ms.author: aahi
+ms.openlocfilehash: b27aa1409d543c157069d2701c49ef54a097e552
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110584"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766544"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání videí
 
@@ -39,10 +39,10 @@ https://api.cognitive.microsoft.com/bing/v7.0/videos/search
    
 Požadavek musí používat protokol HTTPS.
 
-Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup kyberzločinců. Volání ze serveru také poskytuje jediný bod upgradu pro budoucí verze rozhraní API.
+Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup škodlivých třetích stran. Volání ze serveru také poskytuje jediný bod upgradu pro budoucí verze rozhraní API.
 
   
-Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr dotazu [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt), který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu, jako `pricing`, naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
+Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) dotazu, který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu, jako `pricing`, naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
   
 Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:  
   
@@ -51,9 +51,9 @@ Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.mi
 -   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
 -   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
 
-Adresa IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.  
+IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.  
 
-Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v tématu [Hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers).
 
 ## <a name="example-search-request"></a>Příklad požadavku hledání
 

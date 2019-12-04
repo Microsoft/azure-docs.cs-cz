@@ -1,27 +1,23 @@
 ---
-title: Ukázky operací s daty – Azure Logic Apps
+title: Ukázky operací s daty
 description: Ukázky kódu pro akce operací s daty v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: d59e461fab52bddf9cb1f881d52a751931c7312b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179142"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793082"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Ukázky kódu operací s daty pro Azure Logic Apps
 
 Tady jsou ukázky kódu pro definice akcí operací s daty v článku, které [provádějí operace s daty](../logic-apps/logic-apps-perform-data-operations.md). Tyto ukázky můžete použít pro případy, kdy chcete vyzkoušet příklady s vlastní definicí pracovního postupu aplikace logiky, předplatným Azure a připojením rozhraní API. Jednoduše zkopírujte a vložte tyto definice akcí do editoru zobrazení kódu pro definici pracovního postupu vaší aplikace logiky a pak upravte definice pro konkrétní pracovní postup. 
 
-Na základě standardů JavaScript Object Notation (JSON) se tyto definice akcí zobrazují v abecedním pořadí. V návrháři aplikace logiky se však každá definice zobrazí ve správném pořadí v rámci pracovního postupu, protože každá `runAfter` vlastnost definice akce určuje pořadí spuštění.
+Na základě standardů JavaScript Object Notation (JSON) se tyto definice akcí zobrazují v abecedním pořadí. V návrháři aplikace logiky se však každá definice zobrazí ve správném pořadí v rámci pracovního postupu, protože každá vlastnost `runAfter` definice akce určuje pořadí spuštění.
 
 <a name="compose-action-example"></a>
 

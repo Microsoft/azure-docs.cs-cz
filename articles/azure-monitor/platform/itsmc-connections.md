@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: c7e102b6b8976f8caf7676fd456e6c23488c935a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd9f659589b222350fe688ee4da876801a65226a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932280"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769961"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů/služeb ke službě IT Service Management Connector
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -192,7 +192,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
     - [Nastavte OAuth pro Istanbul.](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavte OAuth pro Helsinky.](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavte OAuth pro Ženeva.](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+    - [Nastavit OAuth pro New York](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 
 - Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Vytvoření role uživatele integrace pro uživatelskou aplikaci nainstalovanou. [Tady najdete](#create-integration-user-role-in-servicenow-app)informace o tom, jak vytvořit roli uživatele Integration.

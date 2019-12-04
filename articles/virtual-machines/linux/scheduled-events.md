@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 1e348adc06a970fcd7222ce612c13f0ff3e01585
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 818ebbf15cdbc985c7a1cc14597dc538e62894cf
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035105"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793386"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače se systémem Linux
 
@@ -48,9 +48,9 @@ Scheduled Events poskytuje události v následujících případech použití:
 - [Údržba iniciovaná platformou](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (například restartování virtuálního počítače, migrace za provozu nebo zachovávání aktualizací v paměti pro hostitele)
 - Snížený hardware
 - Údržba iniciované uživatelem (například uživatel restartuje nebo znovu nasadí virtuální počítač)
-- [Vyřazení virtuálních počítačů s nízkou prioritou](https://azure.microsoft.com/blog/low-priority-scale-sets) v sadách škálování
+- Vyřazení instancí [sad](../../virtual-machine-scale-sets/use-spot.md) [virtuálních počítačů](spot-vms.md) a škálování na místě
 
-## <a name="the-basics"></a>Základní informace  
+## <a name="the-basics"></a>Základy  
 
   Metadata Service zpřístupňuje informace o spuštěných virtuálních počítačích pomocí koncového bodu REST, který je přístupný z virtuálního počítače. Tyto informace jsou k dispozici prostřednictvím nonroutable IP adresy, aby se nezobrazovaly mimo virtuální počítač.
 
@@ -76,9 +76,9 @@ Služba Scheduled Events má verzi. Verze jsou povinné. aktuální verze je `20
 
 | Version | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - | 
-| 2017-11-01 | Všeobecná dostupnost | Vše | <li> Přidala se podpora pro vyřazení virtuálních počítačů s nízkou prioritou, EventType.<br> | 
-| 2017-08-01 | Všeobecná dostupnost | Vše | <li> Z názvů prostředků pro virtuální počítače s IaaS se odebraly předpony s podtržítkem.<br><li>Požadavek na hlavičku metadat vynutil pro všechny požadavky | 
-| 2017-03-01 | Preview | Vše | <li>Původní vydaná verze
+| 2017-11-01 | Všeobecná dostupnost | Všechno | <li> Přidala se podpora pro vyřazení virtuálních počítačů s nízkou prioritou, EventType.<br> | 
+| 2017-08-01 | Všeobecná dostupnost | Všechno | <li> Z názvů prostředků pro virtuální počítače s IaaS se odebraly předpony s podtržítkem.<br><li>Požadavek na hlavičku metadat vynutil pro všechny požadavky | 
+| 2017-03-01 | Preview | Všechno | <li>Původní vydaná verze
 
 
 > [!NOTE] 
@@ -131,7 +131,7 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | Typ | Dopad této události způsobí. <br><br> Hodnoty: <br><ul><li> `Freeze`: u virtuálního počítače se naplánovalo pozastavení na několik sekund. Může být pozastaveno připojení k procesoru a k síti, ale neexistuje žádný vliv na paměť nebo otevřené soubory.<li>`Reboot`: pro virtuální počítač je naplánován restart (netrvalá paměť). <li>`Redeploy`: virtuální počítač má naplánovaný přesun na jiný uzel (dočasné disky se ztratí). <li>`Preempt`: odstraňuje se virtuální počítač s nízkou prioritou (dojde ke ztrátě dočasných disků).|
 | ResourceType | Typ prostředku, na který tato událost ovlivňuje. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
-| Prostředky| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Materiály| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve vlastnosti `NotBefore`.<li>`Started`: Tato událost je spuštěná.</ul> Není k dispozici žádný `Completed` ani podobný stav. Událost již není vrácena po dokončení události.
 | NotBefore| Čas, po kterém může být tato událost spuštěna. <br><br> Příklad: <br><ul><li> Pondělí 19. září 2016 18:29:47 GMT  |
 

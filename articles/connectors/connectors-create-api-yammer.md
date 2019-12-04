@@ -1,22 +1,18 @@
 ---
-title: Připojení k Yammeru z Azure Logic Apps | Microsoft Docs
+title: Připojení k Yammeru z Azure Logic Apps
 description: Automatizujte úlohy a pracovní postupy, které sledují, účtují a spravují zprávy, informační kanály a další ve službě Yammer pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 9228a94dcf27d8987b16e2caa2681cf973db0657
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 194c08d034d44ba0a4472b3b516fc45d1d262d28
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050638"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789065"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Monitorování a Správa účtu Yammer pomocí Azure Logic Apps
 
@@ -28,7 +24,7 @@ Pomocí Azure Logic Apps a konektoru služby Yammer můžete vytvářet automati
 
 Můžete použít triggery, které získávají odpovědi z vašeho účtu Yammer, a zpřístupnit výstup ostatním akcím. Můžete použít akce, které provádějí úlohy s vaším účtem Yammeru. V akcích služby Yammer můžete také použít další akce. Například když se nové zprávy zobrazí v části informační kanály nebo skupiny, můžete tyto zprávy sdílet s konektorem časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -60,7 +56,7 @@ Můžete použít triggery, které získávají odpovědi z vašeho účtu Yamme
        -nebo-
 
      * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-     Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+     Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
      
        Do vyhledávacího pole zadejte jako filtr "Yammer". 
        V seznamu akce vyberte akci, kterou chcete.

@@ -1,22 +1,18 @@
 ---
-title: Připojení k SQL Server nebo Azure SQL Database Azure Logic Apps
+title: Připojení k SQL Server nebo Azure SQL Database
 description: Automatizace úloh pro databáze SQL místně nebo v cloudu pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam; LADocs
-manager: carmonm
+ms.reviewer: klam; logicappspm
 ms.topic: conceptual
-tags: connectors
 ms.date: 11/08/2019
-ms.openlocfilehash: a6367e5897e9bd548550b099c0bd2e6186845d6d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+tags: connectors
+ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826330"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789187"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro SQL Server nebo Azure SQL Database pomocí Azure Logic Apps
 
@@ -26,7 +22,7 @@ Můžete vytvářet aplikace logiky, které se spouštějí při aktivaci událo
 
 Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informace o technických informacích, omezeních a známých problémech specifických pro konektor najdete na [stránce s referenčními informacemi pro konektor SQL Server](https://docs.microsoft.com/connectors/sql/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

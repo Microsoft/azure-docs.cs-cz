@@ -1,36 +1,36 @@
 ---
-title: Restartovat – Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
-description: Tento článek popisuje, jak je možné restartovat službu Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
+title: Restart serveru – Azure CLI – Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje, jak můžete restartovat server s Azure Database for PostgreSQL pomocí Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 0a7cd815724fcebd6311860576e620eb9273523b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13b26b545f9e95ce2457e4f8d9cf32da59cd91e6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068978"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770148"
 ---
-# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Restartovat – Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
-Toto téma popisuje, jak je možné restartovat serveru Azure Database for PostgreSQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Restartování Azure Database for PostgreSQL – jeden server pomocí Azure CLI
+Toto téma popisuje, jak můžete restartovat server Azure Database for PostgreSQL. Možná budete muset restartovat server z důvodů údržby, což způsobí krátký výpadek, protože server tuto operaci provede.
 
-Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Například služba může zpracovávat dříve požadovaná operace, jako je například škálování virtuálních jader.
+Pokud je služba zaneprázdněná, restart serveru se zablokuje. Například služba může zpracovávat dříve požadovanou operaci, jako je například škálování virtuální jádra.
  
-Čas potřebný k dokončení restartování závisí na proces obnovení PostgreSQL. Pokud chcete snížit čas restartování, doporučujeme, abyste že minimalizovali množství aktivit, k nimž došlo na serveru ještě před jejich restartování.
+Čas potřebný k dokončení restartování závisí na procesu obnovení PostgreSQL. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
 
-## <a name="prerequisites"></a>Požadavky
-K dokončení této příručce s postupy, potřebujete:
-- [– Azure Database for postgresql – server](quickstart-create-server-up-azure-cli.md)
+## <a name="prerequisites"></a>Předpoklady
+K dokončení tohoto průvodce budete potřebovat:
+- [Server Azure Database for PostgreSQL](quickstart-create-server-up-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Tato příručka vyžaduje použití Azure CLI verze 2.0 nebo novější. K potvrzení verze příkazového řádku Azure CLI, zadejte `az --version`. Pro instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že na příkazovém řádku Azure CLI zadáte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 
-## <a name="restart-the-server"></a>Restartujte server
+## <a name="restart-the-server"></a>Restartování serveru
 
 Restartujte server pomocí následujícího příkazu:
 
@@ -38,6 +38,6 @@ Restartujte server pomocí následujícího příkazu:
 az postgres server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [jak nastavit parametry ve službě Azure Database for PostgreSQL](howto-configure-server-parameters-using-cli.md)
+Informace o [Nastavení parametrů v Azure Database for PostgreSQL](howto-configure-server-parameters-using-cli.md)

@@ -1,18 +1,18 @@
 ---
-title: Postup zálohování a obnovení serveru v Azure Database for PostgreSQL – jeden server
-description: Naučte se, jak zálohovat a obnovit server v Azure Database for PostgreSQL-Single server pomocí Azure CLI.
+title: Zálohování a obnovení – Azure CLI – Azure Database for PostgreSQL – jeden server
+description: Naučte se nastavovat konfigurace zálohování a obnovovat Server v Azure Database for PostgreSQL-Single server pomocí Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: c1706f72f894baa7d07c49880a82dc96ef03d7cf
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965802"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775687"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Postup zálohování a obnovení serveru na serveru Azure Database for PostgreSQL pomocí Azure CLI
 
@@ -114,7 +114,7 @@ Příkaz `az postgres server georestore` vyžaduje následující parametry:
 |jméno | mydemoserver – geograficky obnovené | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy jsou používány. |
 |location | eastus | Umístění nového serveru. |
-|sku-name| GP_Gen4_8 | Tento parametr nastaví cenovou úroveň, generaci výpočtů a počet virtuální jádra nového serveru. GP_Gen4_8 se mapuje na server Pro obecné účely pro obecné 4 s 8 virtuální jádra.|
+|sku-name| GP_Gen4_8 | Tento parametr nastaví cenovou úroveň, generaci výpočtů a počet virtuální jádra nového serveru. GP_Gen4_8 se mapuje na server s Pro obecné účely a gen 4 s 8 virtuální jádra.|
 
 Při vytváření nového serveru geografickým obnovením se zdědí stejná velikost úložiště a cenová úroveň jako na zdrojovém serveru. Tyto hodnoty nelze během vytváření změnit. Po vytvoření nového serveru se velikost úložiště dá škálovat.
 

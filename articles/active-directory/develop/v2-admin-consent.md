@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa63b1343fcc981629dd96e2209bf26ec2cc2bd5
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b820be5631d207a32cbf14aa1eec9f3f6de2af52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326223"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766051"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Souhlas správce na platformě Microsoft identity
 
 Některá oprávnění vyžadují souhlas od správce, aby je bylo možné udělit v rámci tenanta.  K udělení oprávnění celému klientovi můžete také použít koncový bod pro souhlas správce.  
 
-## <a name="recommended-sign-the-user-into-your-app"></a>Doporučené: Podepsat uživatele do aplikace
+## <a name="recommended-sign-the-user-into-your-app"></a>Doporučeno: podepsat uživatele do aplikace
 
 Při vytváření aplikace, která používá koncový bod souhlasu správce, obvykle aplikace potřebuje stránku nebo zobrazení, ve kterém může správce schválit oprávnění aplikace. Tato stránka může být součástí toku registrace aplikace, části nastavení aplikace nebo může být vyhrazeným tokem "Connect". V mnoha případech má aplikace smysl zobrazit toto zobrazení "připojit" až po přihlášení uživatele pomocí pracovní nebo školní účet Microsoft.
 
@@ -53,14 +53,14 @@ Až budete připraveni požádat o oprávnění od správce vaší organizace, m
 
 | Parametr     | Podmínka     | Popis                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
-| `tenant` | Požadováno | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se zadat v GUID nebo ve formátu popisného názvu nebo obecně odkazovaného `common` , jak je vidět v příkladu. |
-| `client_id` | Požadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
-| `redirect_uri` | Požadováno |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
+| `tenant` | Požaduje se | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazované pomocí `organizations`, jak je vidět v příkladu. Nepoužívejte "Common", protože osobní účty nemůžou poskytovat souhlas správce, s výjimkou kontextu tenanta. Aby se zajistila nejlepší kompatibilita s osobními účty, které spravují klienty, použijte ID tenanta, pokud je to možné. |
+| `client_id` | Požaduje se | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `redirect_uri` | Požaduje se |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
 | `state` | Doporučené | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-|`scope`        | Požadováno      | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statickou hodnotu (pomocí/.Default) nebo dynamické obory.  To může zahrnovat obory OIDC (`openid`, `profile`, `email`). | 
+|`scope`        | Požaduje se      | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statickou hodnotu (pomocí/.Default) nebo dynamické obory.  To může zahrnovat OIDC obory (`openid`, `profile`, `email`). | 
 
 
-V tomto okamžiku Azure AD vyžaduje, aby se k dokončení žádosti přihlásil správce tenanta. Správce se vyzve ke schválení všech oprávnění, která jste si vyžádali v `scope` parametru.  Pokud jste použili statickou hodnotu (`/.default`), bude fungovat jako koncový bod souhlasu správce v 1.0 a souhlas se žádostí pro všechny obory nalezené v požadovaných oprávněních pro danou aplikaci.
+V tomto okamžiku Azure AD vyžaduje, aby se k dokončení žádosti přihlásil správce tenanta. Správce se vyzve ke schválení všech oprávnění, která jste si vyžádali v parametru `scope`.  Pokud jste použili statickou (`/.default`) hodnotu, bude fungovat jako koncový bod souhlasu správce v 1.0 a žádost o souhlas pro všechny obory nalezené v požadovaných oprávněních pro danou aplikaci.
 
 ### <a name="successful-response"></a>Úspěšná odpověď
 
@@ -89,7 +89,7 @@ Při přidání k parametrům zobrazeným v úspěšné odpovědi se zobrazí pa
 | `error_description`| Konkrétní chybová zpráva, která může vývojářům pomáhat určit hlavní příčinu chyby.|
 | `tenant`| Tenant adresáře, který vaší aplikaci udělil požadovaná oprávnění, ve formátu identifikátoru GUID.|
 | `state`           | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Stav se používá ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází.|
-| `admin_consent`   | Bude nastaveno `True` na, aby označovali, že k této odezvě došlo v toku souhlasu správce.|
+| `admin_consent`   | Bude nastaveno na `True`, aby označovala, že k této odezvě došlo v toku souhlasu správce.|
 
 ## <a name="next-steps"></a>Další kroky
 - Podívejte se, [Jak převést aplikaci na více tenantů](howto-convert-app-to-be-multi-tenant.md) .

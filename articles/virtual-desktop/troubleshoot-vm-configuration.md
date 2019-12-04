@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607393"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791157"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -123,7 +123,7 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 1. Stáhněte si novou verzi agenta na virtuálním počítači hostitele relace.
 2. Spusťte Správce úloh a na kartě Služba zastavte službu RDAgentBootLoader.
 3. Spusťte instalační program pro novou verzi agenta virtuálního počítače s Windows.
-4. Po zobrazení výzvy k registraci registračního tokenu odeberte položku INVALID_TOKEN a stiskněte Next (nový token se nevyžaduje).
+4. Po zobrazení výzvy k registraci registračního tokenu odeberte položku INVALID_TOKEN a stiskněte Další (nový token se nevyžaduje).
 5. Dokončete Průvodce instalací nástroje.
 6. Otevřete Správce úloh a spusťte službu RDAgentBootLoader.
 
@@ -201,7 +201,7 @@ Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty s
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Chyba: O_REVERSE_CONNECT_STACK_FAILURE
 
-![Kód chyby O_REVERSE_CONNECT_STACK_FAILURE](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Kód chyby O_REVERSE_CONNECT_STACK_FAILURE.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Příčina:** Souběžná sada není nainstalovaná na virtuálním počítači hostitele relace.
 
@@ -309,7 +309,7 @@ Pokud se zobrazí některá z těchto zpráv, znamená to, že bitová kopie nem
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Zakázat nastavení zásad skupiny pro režim licencování vzdálené plochy
 
-Ověřte nastavení zásad skupiny tak, že otevřete Editor Zásady skupiny ve virtuálním počítači a přejdete na **Šablony pro správu** > **součásti Windows** > **vzdálené plochy** > **hostitel relace vzdálené plochy** > **licencování** > **nastavit režim licencování vzdálené plochy**. Pokud je nastavení zásad skupiny **povolené**, změňte ho na **disabled (zakázáno**). Pokud je už zakázaná, nechte ji tak, jak je.
+Ověřte nastavení zásad skupiny tak, že otevřete Editor Zásady skupiny ve virtuálním počítači a přejdete **na Šablony pro správu** > **součásti systému Windows** >  > **hostitel relace vzdálené plochy** > **licencování** ** > ** **nastavit režim licencování vzdálené plochy**. Pokud je nastavení zásad skupiny **povolené**, změňte ho na **disabled (zakázáno**). Pokud je už zakázaná, nechte ji tak, jak je.
 
 >[!NOTE]
 >Pokud jste v doméně nastavili zásady skupiny, zakažte toto nastavení u zásad, které cílí na tyto virtuální počítače s Windows 10 Enterprise s více relacemi.
@@ -333,7 +333,7 @@ Pokud číslo verze říká 1809, nainstalujte [aktualizaci KB4516077](https://s
 
 ### <a name="version-1903"></a>Verze 1903
 
-Pokud číslo verze říká 1903, nainstalujte [aktualizaci KB4517211](https://support.microsoft.com/help/4517211).
+Znovu nasaďte hostitelský operační systém pomocí nejnovější verze image Windows 10 verze 1903 z Galerie Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

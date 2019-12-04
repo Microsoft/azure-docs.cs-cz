@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0cfcbdaee5a39a947bd89c677f49214c8c3cb98a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fdb7d9ed5164171407443596de256df02cb7e8de
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162843"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790598"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatizované zálohování pro SQL Server 2014 Virtual Machines (Správce prostředků)
 
@@ -116,13 +116,12 @@ $resourcegroupname = "resourcegroupname"
 
 Pokud je nainstalované rozšíření agenta SQL Server IaaS, mělo by se zobrazit jako "SqlIaaSAgent" nebo "SQLIaaSExtension". **ProvisioningState** pro rozšíření by se měla zobrazit také jako "úspěch".
 
-Pokud není nainstalovaná nebo se nepovedlo zřídit, můžete si ho nainstalovat pomocí následujícího příkazu. Kromě názvu virtuálního počítače a skupiny prostředků musíte taky určit oblast ( **$region**), ve které se virtuální počítač nachází.
+Pokud není nainstalovaná nebo se nepovedlo zřídit, můžete si ho nainstalovat pomocí následujícího příkazu. Kromě názvu virtuálního počítače a skupiny prostředků musíte taky určit oblast ( **$region**), ve které se virtuální počítač nachází. Zadejte typ licence pro váš virtuální počítač s SQL Server, a to pomocí [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/), ať už máte licenci s průběžnými platbami nebo použitím vlastní licence. Další informace o licencování najdete v tématu [licencování modelu](virtual-machines-windows-sql-ahb.md). 
 
 ```powershell
-$region = "EASTUS2"
-Set-AzVMSqlServerExtension -VMName $vmname `
-    -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+New-AzSqlVM  -Name $vmname `
+    -ResourceGroupName $resourcegroupname `
+    -Location $region -LicenseType <PAYG/AHUB>
 ```
 
 > [!IMPORTANT]
@@ -191,7 +190,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 Instalace a konfigurace agenta SQL Server IaaS může trvat několik minut.
 
 > [!NOTE]
-> K dispozici jsou další nastavení pro **New-AzVMSqlServerAutoBackupConfig** , která se vztahují pouze na SQL Server 2016 a automatizované zálohování v2. SQL Server 2014 nepodporuje následující nastavení: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**a  **LogBackupFrequencyInMinutes**. Pokud se pokusíte nakonfigurovat tato nastavení na virtuálním počítači s SQL Server 2014, nebude k dispozici žádná chyba, ale nastavení se nepoužije. Pokud chcete tato nastavení použít na virtuálním počítači s SQL Server 2016, přečtěte si téma [automatizovaná záloha v2 pro SQL Server 2016 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
+> K dispozici jsou další nastavení pro **New-AzVMSqlServerAutoBackupConfig** , která se vztahují pouze na SQL Server 2016 a automatizované zálohování v2. SQL Server 2014 nepodporuje následující nastavení: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours**a **LogBackupFrequencyInMinutes**. Pokud se pokusíte nakonfigurovat tato nastavení na virtuálním počítači s SQL Server 2014, nebude k dispozici žádná chyba, ale nastavení se nepoužije. Pokud chcete tato nastavení použít na virtuálním počítači s SQL Server 2016, přečtěte si téma [automatizovaná záloha v2 pro SQL Server 2016 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
 
 Pokud chcete povolit šifrování, upravte předchozí skript tak, aby předával parametr **EnableEncryption** spolu s heslem (zabezpečeným řetězcem) pro parametr **CertificatePassword** . Následující skript povolí nastavení automatizovaného zálohování v předchozím příkladu a přidá šifrování.
 
@@ -237,7 +236,7 @@ $retentionperiod = 10
 
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+    -Version "2.0" -Location $region
 
 # Creates/use a storage account to store the backups
 
@@ -266,11 +265,11 @@ Pokud chcete monitorovat automatizované zálohování na SQL Server 2014, máte
 Nejprve můžete dotazovat stav voláním [msdb. smart_admin. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql). Nebo dotaz na funkci vracející tabulku [msdb. smart_admin. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) .
 
 > [!NOTE]
-> Schéma pro spravovanou zálohu v SQL Server 2014 je **msdb. smart_admin**. V SQL Server 2016 se změnil na **msdb. managed_backup**a referenční témata používají toto novější schéma. U SQL Server 2014 ale musíte i nadále používat schéma **smart_admin** pro všechny spravované objekty zálohování.
+> Schéma pro spravovanou zálohu v SQL Server 2014 je **msdb. smart_admin**. V SQL Server 2016 se změnil na **msdb. managed_backup**a referenční témata používají toto novější schéma. U SQL Server 2014 ale musíte i nadále používat **smart_admin** schéma pro všechny spravované objekty zálohování.
 
 Další možností je využít integrované funkce Databázová pošta pro oznámení.
 
-1. Zavolejte uloženou proceduru [msdb. smart_admin. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) , abyste přiřadili e-mailovou adresu parametru **SSMBackup2WANotificationEmailIds** . 
+1. Chcete-li přiřadit e-mailovou adresu parametru **SSMBackup2WANotificationEmailIds** , zavolejte uloženou proceduru [msdb. smart_admin. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) . 
 1. Povolí [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) odesílání e-mailů z virtuálního počítače Azure.
 1. Pro konfiguraci Databázová pošta použijte server SMTP a uživatelské jméno. Databázová pošta můžete nakonfigurovat v SQL Server Management Studio nebo pomocí příkazů jazyka Transact-SQL. Další informace najdete v tématu [databázová pošta](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail).
 1. [Nakonfigurujte agenta SQL Server pro použití databázová pošta](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).

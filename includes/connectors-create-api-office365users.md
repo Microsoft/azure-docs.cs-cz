@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: ebae0fac5edc0bb79e6a19d8bdc741960f0b0e20
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 3ca8d631110f8b175e7dc68d61cc6da4ac87d375
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175265"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789510"
 ---
-### <a name="prerequisites"></a>Požadavky
-* [Uživatelé Office 365](https://office365.com) účtu  
+## <a name="prerequisites"></a>Předpoklady
 
-Předtím, než v aplikaci logiky můžete používat svůj účet uživatelé Office 365, musí autorizovat aplikaci logiky se připojit ke svému účtu uživatelé Office 365. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal.  
+* Účet [uživatelů Office 365](https://office365.com)  
 
-Tady jsou kroky k autorizaci aplikace logiky se připojit ke svému účtu uživatelé Office 365:  
+Než budete moct používat účet uživatele Office 365 v aplikaci logiky, musíte aplikaci logiky autorizovat, aby se připojila k vašemu účtu uživatele Office 365. Naštěstí to můžete provést snadno v rámci aplikace logiky na webu Azure Portal.  
 
-1. Chcete-li vytvořit připojení k uživatelům Office 365, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *uživatelé Office 365* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
-   ![Krok vytvoření připojení uživatelé Office 365](./media/connectors-create-api-office365users/office365users-1.png)  
-2. Pokud jste ještě nevytvořili žádná připojení k uživatelům Office 365 před, zobrazí výzva k zadání přihlašovacích údajů vaši uživatelé Office 365. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky se připojit k a přístup k datům v účtu uživatelé Office 365:  
-   ![Krok vytvoření připojení uživatelé Office 365](./media/connectors-create-api-office365users/office365users-2.png)  
-3. Zadejte své uživatelé Office 365 uživatelské jméno a heslo k autorizaci aplikace logiky:  
-   ![Krok vytvoření připojení uživatelé Office 365](./media/connectors-create-api-office365users/office365users-3.png)  
-4. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
-   ![Krok vytvoření připojení uživatelé Office 365](./media/connectors-create-api-office365users/office365users-4.png)  
+Tady jsou kroky pro autorizaci aplikace logiky pro připojení k účtu uživatelů Office 365:  
+
+1. Pokud chcete vytvořit připojení k uživatelům Office 365, v návrháři aplikace logiky vyberte v rozevíracím seznamu **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte *Uživatelé Office 365* . Vyberte aktivační událost nebo akci, kterou chcete použít:  
+   ![kroku vytvoření připojení uživatelů Office 365](./media/connectors-create-api-office365users/office365users-1.png)  
+2. Pokud jste ještě nevytvořili žádná připojení k uživatelům Office 365, zobrazí se výzva k zadání přihlašovacích údajů uživatele Office 365. Tyto přihlašovací údaje budou sloužit k autorizaci aplikace logiky pro připojení a přístup k datům účtu uživatelů Office 365:  
+   ![Krok vytvoření připojení uživatelé sady Office 365](./media/connectors-create-api-office365users/office365users-2.png)  
+3. Poskytněte uživatelské jméno a heslo uživatelů Office 365 k autorizaci vaší aplikace logiky:  
+   ![Krok vytvoření připojení uživatelé sady Office 365](./media/connectors-create-api-office365users/office365users-3.png)  
+4. Všimněte si, že připojení bylo vytvořeno a vy teď můžete pokračovat dalšími kroky ve vaší aplikaci logiky:  
+   ![Krok vytvoření připojení uživatelé sady Office 365](./media/connectors-create-api-office365users/office365users-4.png)  
 

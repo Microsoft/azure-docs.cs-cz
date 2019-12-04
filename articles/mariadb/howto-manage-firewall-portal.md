@@ -1,59 +1,59 @@
 ---
-title: Vytvoření a Správa pravidel brány firewall MariaDB ve službě Azure Database pro MariaDB
-description: Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal
+title: Správa pravidel brány firewall-Azure Portal-Azure Database for MariaDB
+description: Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure Portal
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: e9ab243692f5a4a1ec7de25774f5bad867698fc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 70e6611cc3006424bcd1bc3a0f0838ad40c09634
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746211"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766017"
 ---
-# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal
-Pravidla brány firewall na úrovni serveru umožňuje spravovat přístup ke službě Azure Database pro MariaDB serveru ze zadaná IP adresa nebo rozsah IP adres.
+# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure Portal
+Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for MariaDB ze zadané IP adresy nebo rozsahu IP adres.
 
-Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-portal.md).
+Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přístupu k serveru. Přečtěte si další informace o [vytváření a správě Virtual Networkch koncových bodů a pravidel služby pomocí Azure Portal](howto-manage-vnet-portal.md).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru na webu Azure Portal
 
-1. Na stránce server MariaDB, v části Nastavení záhlaví, klikněte na tlačítko **zabezpečení připojení** otevřete stránku zabezpečení připojení pro službu Azure Database pro MariaDB.
+1. Na stránce MariaDB serveru klikněte v části nastavení na **zabezpečení připojení** a otevřete stránku zabezpečení připojení pro Azure Database for MariaDB.
 
-   ![Portál Azure – zabezpečení připojení klikněte na](./media/howto-manage-firewall-portal/1-connection-security.png)
+   ![Azure Portal – kliknutí na zabezpečení připojení](./media/howto-manage-firewall-portal/1-connection-security.png)
 
-2. Klikněte na tlačítko **přidat moji IP adresu** na panelu nástrojů. Tím automaticky se vytvoří pravidlo brány firewall s veřejnou IP adresu počítače, vnímanou systému Azure.
+2. Na panelu nástrojů klikněte na **Přidat moji IP adresu** . Tím se automaticky vytvoří pravidlo brány firewall s veřejnou IP adresou vašeho počítače, jak je znázorněno v systému Azure.
 
-   ![Azure portal – klikněte na tlačítko Přidat Moje IP adresa](./media/howto-manage-firewall-portal/2-add-my-ip.png)
+   ![Azure Portal klikněte na Přidat moji IP adresu.](./media/howto-manage-firewall-portal/2-add-my-ip.png)
 
-3. Před uložením konfiguraci ověřte vaši IP adresu. V některých případech IP adresu prostřednictvím webu Azure portal se liší od IP adresu používat při přístupu k Internetu a servery Azure. Proto budete muset změnit počáteční IP adresa a koncová IP adresa, aby pravidlo fungují podle očekávání.
+3. Před uložením konfigurace ověřte svoji IP adresu. V některých situacích se IP adresa zjištěná Azure Portal liší od IP adresy používané při přístupu k Internetu a k serverům Azure. Proto může být nutné změnit počáteční IP adresu a koncovou IP adresu, aby funkce pravidla fungovala podle očekávání.
 
-   Pomocí vyhledávacího webu nebo jiný nástroj pro online zkontrolujte svou vlastní IP adresu. Například hledání "jaká je Moje IP adresa".
+   Použijte vyhledávací modul nebo jiný online nástroj ke kontrole vlastní IP adresy. Vyhledejte například "Co je moje IP adresa".
 
-4. Přidejte další adresní rozsahy adres. V pravidlech brány firewall pro službu Azure Database pro MariaDB můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete omezit platnost pravidla pro jednu IP adresu, zadejte stejnou adresu do pole Počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správci, uživatelé a aplikace pro přístup k libovolné databázi na serveru MariaDB, ke kterému mají platné přihlašovací údaje.
+4. Přidejte další rozsahy adres. V pravidlech brány firewall pro Azure Database for MariaDB můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete pravidlo omezit na jednu IP adresu, zadejte stejnou adresu do polí Počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správcům, uživatelům a aplikacím přístup k libovolné databázi na serveru MariaDB, ke které mají platné přihlašovací údaje.
 
-   ![Azure portal – pravidla brány firewall](./media/howto-manage-firewall-portal/4-specify-addresses.png)
+   ![Azure Portal – pravidla brány firewall](./media/howto-manage-firewall-portal/4-specify-addresses.png)
 
-5. Klikněte na tlačítko **Uložit** na panelu nástrojů uložte toto pravidlo brány firewall na úrovni serveru. Čekání na potvrzení, jestli aktualizace, která se pravidla brány firewall se úspěšně dokončila.
+5. Kliknutím na **Uložit** na panelu nástrojů uložte toto pravidlo brány firewall na úrovni serveru. Počkejte, až se potvrdí, že aktualizace pravidel firewallu proběhla úspěšně.
 
-   ![Azure portal – klikněte na možnost Uložit](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
+   ![Azure Portal – klikněte na Uložit.](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Připojení z Azure
-Chcete-li umožnit aplikacím z Azure připojení k Azure Database pro MariaDB server, musí být povolená připojení Azure. Například pro hostování aplikace Azure Web Apps nebo aplikace, která běží ve Virtuálním počítači Azure nebo k připojení ze Brána pro správu dat Azure Data Factory. Prostředky se nemusíte být ve stejné virtuální síti (VNet) nebo skupinu prostředků pro pravidlo brány firewall, aby tato připojení. Když se aplikace z Azure pokusí připojit k vašemu databázovému serveru, brána firewall ověří, zda jsou povolená připojení Azure. Existuje několik metod, které chcete povolit tyto typy připojení. Nastavení brány firewall s počáteční i koncovou adresou odpovídající 0.0.0.0 znamená, že jsou tato připojení povolená. Alternativně můžete nastavit **povolit přístup ke službám Azure** umožňuje **ON** portálu ze **zabezpečení připojení** podokně a klepněte na **Uložit**. Pokud pokus o připojení není povolený, požadavek vůbec nedostane Azure Database pro MariaDB server.
+Pokud chcete aplikacím z Azure povolit připojení k vašemu Azure Database for MariaDB serveru, musí být povolená připojení Azure. Například pro hostování aplikace Web Apps v Azure nebo aplikace, která běží na virtuálním počítači Azure, nebo pro připojení z Azure Data Factory brány pro správu dat. Aby se tato připojení dala povolit, nemusíte být prostředky ve stejné Virtual Network (virtuální síti) nebo skupině prostředků pro pravidlo brány firewall. Když se aplikace z Azure pokusí připojit k vašemu databázovému serveru, brána firewall ověří, zda jsou povolená připojení Azure. K dispozici je několik metod, jak tyto typy připojení povolit. Nastavení brány firewall s počáteční i koncovou adresou odpovídající 0.0.0.0 znamená, že jsou tato připojení povolená. Alternativně můžete na portálu v podokně **zabezpečení připojení** nastavit možnost **Povolení přístupu ke službám Azure** na **zapnuto** a klikněte na **Uložit**. Pokud se pokus o připojení nepovoluje, požadavek nedosáhne serveru Azure Database for MariaDB.
 
 > [!IMPORTANT]
 > Touto možností se brána firewall nakonfiguruje tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup pouze na autorizované uživatele.
 > 
 
-## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Správa stávajících pravidel brány firewall na webu Azure Portal
-Opakováním těchto kroků můžete spravovat pravidla brány firewall.
-* Chcete-li přidat aktuální počítač, klikněte na tlačítko **+ přidat moji IP adresu**. Kliknutím na **Uložit** uložte změny.
-* Chcete-li přidat další IP adresy, zadejte **název pravidla**, **počáteční IP adresa**, a **KONCOVÁ IP adresa**. Kliknutím na **Uložit** uložte změny.
-* Pokud chcete upravit stávající pravidlo, klikněte na libovolné pole pravidla a potom upravte. Kliknutím na **Uložit** uložte změny.
-* Pokud chcete odstranit stávající pravidlo, klikněte na tlačítko se třemi tečkami [...] a pak klikněte na **odstranit**. Kliknutím na **Uložit** uložte změny.
+## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Spravovat existující pravidla brány firewall v Azure Portal
+Opakováním kroků spravujte pravidla brány firewall.
+* Chcete-li přidat aktuální počítač, klikněte na tlačítko **+ Přidat moji IP adresu**. Kliknutím na **Uložit** uložte změny.
+* Pokud chcete přidat další IP adresy, zadejte **název pravidla**, **Počáteční IP adresu**a **koncovou IP adresu**. Kliknutím na **Uložit** uložte změny.
+* Pokud chcete upravit stávající pravidlo, klikněte na libovolné pole v pravidle a pak na Upravit. Kliknutím na **Uložit** uložte změny.
+* Pokud chcete odstranit stávající pravidlo, klikněte na tlačítko se třemi tečkami [...] a pak klikněte na **Odstranit**. Kliknutím na **Uložit** uložte změny.
 
-## <a name="next-steps"></a>Další postup
- - Podobně můžete používat skripty pro [vytvořit a spravovat Azure Database pro MariaDB pravidla brány firewall pomocí Azure CLI](howto-manage-firewall-cli.md).
- - Dále zabezpečit přístup k vašemu serveru pomocí [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-portal.md).
+## <a name="next-steps"></a>Další kroky
+ - Podobně můžete vytvořit skript pro [vytváření a správu pravidel brány firewall Azure Database for MariaDB pomocí Azure CLI](howto-manage-firewall-cli.md).
+ - [Vytvořením a správou koncových bodů a pravidel služby Virtual Network a pomocí Azure Portal](howto-manage-vnet-portal.md)můžete lépe zabezpečit přístup k vašemu serveru.

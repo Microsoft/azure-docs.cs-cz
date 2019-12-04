@@ -1,6 +1,6 @@
 ---
-title: Použití PHP k připojení k Azure Database for PostgreSQL – jeden Server
-description: V tomto rychlém startu najdete vzorový kód PHP, které můžete použít k připojení a dotazování dat ze služby Azure Database for PostgreSQL – jeden Server.
+title: Připojení pomocí PHP-Azure Database for PostgreSQL-Single server
+description: V tomto rychlém startu najdete vzorový kód PHP, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,17 +8,17 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: c6320eabd4d5808e8cfe1d39ec4a72bbbce42f77
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067345"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766374"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden Server: Použití PHP k připojení a dotazování dat
+# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden server: použití PHP pro připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [PHP](https://secure.php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí PHP a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md)
@@ -215,6 +215,6 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
 ?>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./howto-migrate-using-export-and-import.md)

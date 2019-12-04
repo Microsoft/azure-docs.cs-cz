@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489071"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790548"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Hromadné registraci virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -222,7 +222,7 @@ Chyby se zaznamenávají do souboru protokolu s názvem `VMsNotRegisteredDueToEr
 
 Při registraci SQL Server virtuálních počítačů pomocí poskytovatele prostředků pomocí poskytnutého skriptu Vezměte v úvahu následující skutečnosti:
 
-- Registrace u poskytovatele prostředků vyžaduje, aby na virtuálním počítači s SQL Server spuštěný Agent hosta. Image Windows serveru 2008 nemají agenta hosta, takže tyto virtuální počítače selžou a musí být zaregistrované ručně pomocí [režimu správy Neagentů](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms).
+- Registrace u poskytovatele prostředků vyžaduje, aby na virtuálním počítači s SQL Server spuštěný Agent hosta. Image Windows serveru 2008 nemají agenta hosta, takže tyto virtuální počítače selžou a musí být zaregistrované ručně pomocí [režimu správy Neagentů](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes).
 - K překonání transparentních chyb je integrovaná logika opakování. Pokud je virtuální počítač úspěšně zaregistrován, jedná se o rychlou operaci. Pokud se ale registrace nezdaří, bude se každý virtuální počítač opakovat.  V takovém případě byste měli pro dokončení procesu registrace poskytnout značnou dobu – i když je požadavek na skutečný čas závislý na typu a počtu chyb. 
 
 ## <a name="full-script"></a>Celý skript

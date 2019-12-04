@@ -1,20 +1,17 @@
 ---
-title: Přidat smyčky pro opakování akcí – Azure Logic Apps
+title: Přidat smyčky pro opakování akcí
 description: Vytvořte cykly, které opakují akce pracovního postupu nebo zpracuje pole v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 31885749a7194a94a403e5c156220b3fceab951d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680450"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791748"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvořte cykly, které opakují akce pracovního postupu nebo zpracuje pole v Azure Logic Apps
 
@@ -235,9 +232,9 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Komu** | *\@domain \<email-Address >* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
+      | **Komu** | *\<e-mailové adresy\@doméně >* | e-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
       | **Předmět** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
-      | **Text** | <*e-mailu-obsah* > | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
+      | **Text** | <*e-mailu-obsah*> | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
       |||| 
 
 1. Uložte svou aplikaci logiky. Pokud chcete aplikaci logiky otestovat ručně, na panelu nástrojů návrháře klikněte na **Spustit**.

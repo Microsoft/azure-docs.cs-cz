@@ -1,71 +1,69 @@
 ---
-title: Dekódování X12 zprávy – Azure Logic Apps | Dokumentace Microsoftu
-description: Ověřování EDI a generování potvrzení s X12 dekodér zpráv ve službě Azure Logic Apps sadou Enterprise Integration Pack
+title: Dekódovat zprávy X12
+description: Ověřte EDI a generujte potvrzení pomocí dekodéru zpráv X12 v Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: 4a19462f4f849602fd14fe1204f1c7e3c01e6ec4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701445"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792371"
 ---
-# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekódování X12 zpráv ve službě Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekódovat zprávy X12 v Azure Logic Apps pomocí Enterprise Integration Pack
 
-S konektorem dekódování X12 zpráva můžete ověřovat obálky proti smlouvy s obchodním partnerem, ověření EDI a vlastnosti specifické pro partnera, rozdělit výměn do sad transakcí nebo zachovat celý výměn a generovat potvrzení pro zpracování transakcí. Pokud chcete použít tento konektor, musí přidání konektoru do existující aktivační událost ve své aplikaci logiky.
+S dekódovaným konektorem zpráv X12 můžete tuto obálku ověřit na základě smlouvy s obchodním partnerem, ověřit vlastnosti EDI a konkrétního partnera, rozdělit vzájemnou změnu na sady transakcí nebo zachovat celá propojení a generovat potvrzení. pro zpracované transakce. Pokud chcete použít tento konektor, musíte přidat konektor k existující triggeru ve vaší aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Tady je položky, které budete potřebovat:
+Tady jsou položky, které potřebujete:
 
-* Účet Azure. můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free)
-* [Účtu pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který již má definovaný a spojené s předplatným Azure. Musíte mít účtu pro integraci k používání konektoru X12 dekódování zprávy.
-* Alespoň dva [partnery](logic-apps-enterprise-integration-partners.md) , která jsou již definovány v účtu integrace
-* [X12 smlouvy](logic-apps-enterprise-integration-x12.md) , která je již definována v účtu integrace
+* Účet Azure; Můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free) .
+* [Účet pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který je už definovaný a přidružený k vašemu předplatnému Azure. Abyste mohli použít dekódovaný konektor zpráv X12, musíte mít účet pro integraci.
+* Alespoň dva [partneři](logic-apps-enterprise-integration-partners.md) , kteří jsou již definováni v účtu integrace
+* [Smlouva X12](logic-apps-enterprise-integration-x12.md) , která je už definovaná v účtu integrace
 
-## <a name="decode-x12-messages"></a>Dekódování X12 zprávy
+## <a name="decode-x12-messages"></a>Dekódovat zprávy X12
 
-1. [Vytvoření aplikace logiky](quickstart-create-first-logic-app-workflow.md).
+1. [Vytvořte aplikaci logiky](quickstart-create-first-logic-app-workflow.md).
 
-2. Konektor dekódování X12 zpráva nemá aktivačních událostí, proto musíte přidat aktivační událost pro spuštění aplikace logiky jako trigger požadavku. V návrháři aplikace logiky přidávat aktivační události a pak přidat akci do aplikace logiky.
+2. Dekódovaný konektor zpráv X12 neobsahuje triggery, takže musíte přidat Trigger pro spuštění aplikace logiky, jako je Trigger žádosti. V návrháři aplikace logiky přidejte Trigger a pak přidejte akci do aplikace logiky.
 
-3.  Do vyhledávacího pole zadejte "x12" filtr. Vyberte **X12 – dekódování X12 zpráva**.
+3.  Do vyhledávacího pole zadejte "X12" pro svůj filtr. Vyberte **X12-dekódovat X12 zprávu**.
    
-    ![Vyhledejte "x12"](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
+    ![Vyhledejte "X12"](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
-3. Pokud jste nevytvořili dříve všechna připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení. Název připojení a vyberte účet pro integraci, kterou chcete připojit. 
+3. Pokud jste dříve nevytvořili žádná připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení nyní. Zadejte název připojení a vyberte účet pro integraci, který chcete připojit. 
 
-    ![Zadat podrobnosti připojení účtu integrace](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
+    ![Zadat podrobnosti připojení účtu pro integraci](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
 
-    Vyžadují se vlastnosti s hvězdičkou.
+    Jsou vyžadovány vlastnosti s hvězdičkou.
 
     | Vlastnost | Podrobnosti |
     | --- | --- |
-    | Název připojení * |Zadejte libovolný název vašeho připojení. |
-    | Účet integrace * |Zadejte název účtu pro integraci. Ujistěte se, že integrační účet a logiku aplikace jsou ve stejném umístění Azure. |
+    | Název připojení * |Zadejte libovolný název připojení. |
+    | Účet pro integraci * |Zadejte název účtu pro integraci. Ujistěte se, že váš účet pro integraci a aplikace logiky jsou ve stejném umístění Azure. |
 
-5.  Až budete hotovi, vaše podrobnosti připojení by měl vypadat podobně jako tento příklad. Chcete-li dokončit vytváření připojení, zvolte **vytvořit**.
+5.  Až budete hotovi, vaše podrobnosti o připojení by měly vypadat podobně jako v tomto příkladu. Chcete-li dokončit vytváření připojení, klikněte na tlačítko **vytvořit**.
    
-    ![Podrobnosti připojení účtu integrace](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
+    ![podrobnosti připojení účtu pro integraci](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
-6. Po připojení se vytvoří, jak je znázorněno v tomto příkladu, vyberte X12 zpráva plochého souboru k dekódování.
+6. Po vytvoření připojení, jak je znázorněno v tomto příkladu, vyberte zprávu X12 Flat File, která se má dekódovat.
 
-    ![Vytvoření připojení k účtu integrace](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
+    ![vytvořilo se připojení k účtu pro integraci.](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
-    Příklad:
+    Například:
 
-    ![Vyberte X12 zpráva plochého souboru k dekódování](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+    ![Pro dekódování vybrat zprávu plochý soubor X12](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
    > [!NOTE]
-   > Obsah zprávy skutečné nebo datovou část zprávy pole dobré a špatné, je kódování base64. Ano je nutné zadat výraz, který zpracuje tento obsah.
-   > Tady je příklad, který zpracovává obsah ve formátu XML, které můžete zadat v kódu zobrazit nebo pomocí Tvůrce výrazů v návrháři.
+   > Skutečný nebo chybný obsah zprávy nebo datové části pro pole zpráv je kódovaný v kódování Base64. Proto je nutné zadat výraz, který tento obsah zpracovává.
+   > Tady je příklad, který zpracovává obsah jako XML, který můžete zadat v zobrazení kódu nebo pomocí Tvůrce výrazů v návrháři.
    > ``` json
    > "content": "@xml(base64ToBinary(item()?['Payload']))"
    > ```
@@ -73,37 +71,37 @@ Tady je položky, které budete potřebovat:
    >
 
 
-## <a name="x12-decode-details"></a>X12 dekódování podrobnosti
+## <a name="x12-decode-details"></a>Podrobnosti dekódování X12
 
-X12 dekódování connector provádí tyto úlohy:
+Konektor dekódování X12 provádí tyto úlohy:
 
-* Ověří obálky proti obchodování smlouvu pro partnery
-* Ověří EDI a vlastnosti specifické pro partnera
-  * Strukturální ověřování EDI a rozšířeného schématu ověřování
+* Ověří obálku proti smlouvě s obchodním partnerem.
+* Ověří vlastnosti EDI a pro konkrétní partnery.
+  * Strukturální ověřování EDI a rozšířené ověřování schématu
   * Ověření struktury obálky výměny.
-  * Ověření schématu obálky ovládacího prvku schématu.
-  * Ověření schématu datové sady transakcí prvky proti schématu zprávy.
-  * Ověřování EDI provedla sada transakcí datových prvků 
-* Ověřuje, že kontrolní čísla sady výměny, skupiny a transakce nejsou duplicitní položky
-  * Ověří proti dříve přijaté výměn kontrolní číslo výměny.
-  * Ověří proti dalších kontrolních čísel skupiny v výměna kontrolní číslo skupiny.
-  * Ověří, že kontrolní číslo sady transakcí pro ostatní transakce sada kontrolních čísel v této skupině.
-* Rozdělí výměna do sady transakcí nebo zachová celý výměny:
-  * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: Výměna rozdělí do transakce nastaví a Parsuje každá sada transakcí. 
-  X12 dekódování akce vypíše pouze ty transakce sad, které neúspěšné ověření na `badMessages`a nastaví zbývající transakce na výstupy `goodMessages`.
-  * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: Výměna rozdělí do transakce nastaví a Parsuje každá sada transakcí. 
-  Pokud je jeden nebo více transakcí nastaví v výměna neúspěšné ověření, X12 dekódování akce vypíše všechny transakce nastaví v této výměny na `badMessages`.
-  * Zachovat výměnu – pozastavit sady transakcí při chybě: Zachovat výměnu a celé výměně dávkové zpracování. 
-  X12 dekódování akce vypíše pouze ty transakce sad, které neúspěšné ověření na `badMessages`a nastaví zbývající transakce na výstupy `goodMessages`.
-  * Zachovat výměnu – pozastavit výměnu při chybě: Zachovat výměnu a celé výměně dávkové zpracování. 
-  Pokud je jeden nebo více transakcí nastaví v výměna neúspěšné ověření, X12 dekódování akce vypíše všechny transakce nastaví v této výměny na `badMessages`. 
-* Generuje technické a/nebo funkční potvrzení (je-li konfigurováno).
-  * Technické potvrzení vygeneruje jako výsledek ověření záhlaví. Technické potvrzení hlásí stav zpracování výměny záhlaví a koncová část adresy příjemce.
-  * Funkční potvrzení vygeneruje jako výsledek ověření textu. Funkční potvrzení sestavy každou došlo k chybě při zpracování přijatých dokumentu
+  * Ověřování schématu obálky na základě schématu ovládacího prvku
+  * Ověřování schématu datových prvků pro transakci sady pro schéma zprávy
+  * Ověřování EDI provedené v datových prvcích sady transakcí 
+* Ověřuje, že čísla pro výměnu, skupinu a řízení sady transakcí nejsou duplicitní.
+  * Kontroluje kontrolní číslo výměny proti dříve přijatým změnám.
+  * Kontroluje číslo řízení skupiny proti jiným řídicím číslům skupiny ve výměně.
+  * Kontroluje kontrolní číslo sady transakcí s jinými čísly řízení sady transakcí v této skupině.
+* Rozdělí výměnu na sady transakcí nebo zachová celý výměnu:
+  * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: rozdělí výměnu na sady transakcí a analyzuje každou sadu transakcí. 
+  Akce dekódovat X12 vrátí pouze sady transakcí, které neúspěšné ověření pro `badMessages`, a vytvoří výstup zbývajících transakcí do `goodMessages`.
+  * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: rozděluje výměnu do sad transakcí a analyzuje každou sadu transakcí. 
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages`.
+  * Zachovat výměnu – pozastavit sady transakcí při chybě: zachovejte výměnu a zpracujte celý dávkový vydaný výměnný. 
+  Akce dekódovat X12 vrátí pouze sady transakcí, které neúspěšné ověření pro `badMessages`, a vytvoří výstup zbývajících transakcí do `goodMessages`.
+  * Zachovat výměnu – pozastavit výměnu při chybě: zachovejte výměnu a zpracujte celý dávkový výměnný. 
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages`. 
+* Generuje technické nebo funkční potvrzení (Pokud je nakonfigurováno).
+  * Technické potvrzení vygeneruje výsledek ověřování hlaviček. Technické potvrzení oznamuje stav zpracování záhlaví a přípojného vozidla pro přijímač adres.
+  * Funkční potvrzení generuje výsledek ověření těla. Funkční potvrzení oznamuje každou chybu, ke které došlo při zpracování přijatého dokumentu.
 
-## <a name="view-the-swagger"></a>Zobrazení swaggeru
-Zobrazit [swagger podrobnosti](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Zobrazit Swagger
+Podívejte se na [Podrobnosti Swagger](/connectors/x12/). 
 
-## <a name="next-steps"></a>Další postup
-[Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack") 
+## <a name="next-steps"></a>Další kroky
+[Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack") 
 

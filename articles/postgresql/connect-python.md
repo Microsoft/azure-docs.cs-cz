@@ -1,5 +1,5 @@
 ---
-title: Použití Pythonu pro připojení k Azure Database for PostgreSQL – jeden server
+title: Připojení pomocí Pythonu-Azure Database for PostgreSQL-Single server
 description: V tomto rychlém startu najdete ukázky kódu v Pythonu, které můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
@@ -8,17 +8,17 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 441ff1ebeffde36d1940520404050f6cc29ea53e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066303"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766391"
 ---
 # <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 Tento rychlý Start ukazuje, jak pracovat s Azure Database for PostgreSQL pomocí Pythonu na macOS, Ubuntu Linux nebo Windows. V tomto rychlém startu se dozvíte, jak se připojit k databázi a použít příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat. Článek předpokládá, že jste obeznámeni s Pythonem, ale novinkou pro práci s Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Azure Database for PostgreSQL – jeden server vytvořený pomocí kroků v [části rychlý Start: vytvoření serveru Azure Database for PostgreSQL v Azure Portal](quickstart-create-server-database-portal.md) nebo [rychlém startu: vytvoření Azure Database for POSTGRESQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md). 
   
 - [Python](https://www.python.org/downloads/) 2.7.9 + nebo 3.4 +.

@@ -1,17 +1,17 @@
 ---
-title: Řešení potíží s výkonem dotazů v Azure Database for MariaDB
+title: Řešení potíží s výkonem dotazů – Azure Database for MariaDB
 description: Naučte se používat vysvětlení pro řešení potíží s výkonem dotazů v Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a2f5e7e7c9ca39c092e13242ecdac2675b09fc0d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 36571cc1ac4fbdcd5c0c6a4007a6c43858c97193
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973511"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770981"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak používat vysvětlení k profilování výkonu dotazů v Azure Database for MariaDB
 **Vysvětlujeme** užitečný nástroj pro optimalizaci dotazů. Příkaz vysvětlit lze použít k získání informací o tom, jak jsou příkazy jazyka SQL provedeny. Následující výstup ukazuje příklad provedení VYSVĚTLUJÍCÍho příkazu.

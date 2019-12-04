@@ -1,5 +1,5 @@
 ---
-title: Co je Automated ML/automl
+title: Co je Automated ML/AutoML
 titleSuffix: Azure Machine Learning
 description: Přečtěte si, jak Azure Machine Learning může automaticky vybrat algoritmus a vytvořit z něj model, který vám umožní ušetřit čas pomocí parametrů a kritérií, které zadáte pro výběr nejlepšího algoritmu pro váš model.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 1320448b88fa3851196a3dfcb3107921721d364d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4ed27009a3549757881c84d92b3b29b60ecbfbc1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707685"
+ms.locfileid: "74790563"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatizované strojové učení?
 
@@ -100,8 +100,58 @@ K dispozici jsou také další rozšířené předzpracování a featurization, 
 
 + Python SDK: určení `"feauturization": auto' / 'off' / FeaturizationConfig` pro [třídu`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py).
 
+## <a name="prevent-over-fitting"></a>Zabránit přebudování
+
+K naplnění ve strojovém učení dochází, když model přesně odpovídá školicím datům, a v důsledku toho nemůže přesně odhadnout data nefungujících testů. Jinými slovy, model jednoduše zapamatovaných konkrétní vzorky a šum ve školicích datech, ale není dostatečně flexibilní, aby předpovědi na skutečná data. Ve většině případů egregious bude převedený model předpokládat, že kombinace hodnot funkcí zobrazených během školení vždy způsobí přesný stejný výstup pro cíl. 
+
+Nejlepším způsobem, jak zabránit přebudování, je sledovat osvědčené postupy ML, včetně těchto:
+
+* Používání dalších školicích dat a odstraňování statistického posunu
+* Zabránění úniku cíle
+* Použití méně funkcí
+* **Pravidelná optimalizace a optimalizace parametrů**
+* **Omezení složitosti modelu**
+* **Křížové ověření**
+
+V kontextu automatizovaného ML jsou první tři výše uvedené položky **osvědčené postupy, které implementujete**. Poslední tři tučné položky jsou **osvědčenými postupy automatizovaného** STANDARDu ml, které se ve výchozím nastavení implementují k ochraně před umísťováním. V jiných nastaveních než automatizované ML se za každých šest osvědčených postupů doporučuje, abyste se vyhnuli modelům přebudování.
+
+### <a name="best-practices-you-implement"></a>Osvědčené postupy, které implementujete
+
+Použití **většího množství dat** je nejjednodušší a nejlepší možný způsob, jak zabránit převzetí služeb při selhání, protože přidaný bonus obvykle zvyšuje přesnost. Když použijete více dat, bude model mnohem obtížnější, aby nepamatují přesné vzory a bylo nuceno dosáhnout řešení, která jsou pružnější, aby se vešly další podmínky. Je také důležité rozpoznat **statistickou bias**, abyste zajistili, že vaše školicí data neobsahují izolované vzory, které neexistují v datech živé předpovědi. Tento scénář může být obtížné vyřešit, protože nemůžete překládat mezi vlakem a sadami testů, ale ve srovnání s živými testovacími daty může být přítomno více.
+
+Netěsnost cíle je podobný problém, ve kterém se možná nezobrazuje přemístění mezi sadami vlaků a testování, ale místo toho se zobrazí v době předpovědi. K úniku cíle dojde, když během školení model "podvádět" použijete přístup k datům, která by neměla být normálně v době předpovědi. Například pokud váš problém má předpovídat pondělí, jakou má cena za komoditu v pátek, ale jedna z vašich funkcí omylem zahrnovala data z čtvrtek, která by byla data modelu, nebude mít v čase předpovědi, protože nemůže být v budoucnu. Prosakování cíle představuje snadnou chybu, ale často je charakterizována neobvyklou vysokou přesností pro váš problém. Pokud se pokoušíte odhadnout cenu akcií a vyškolený model s 95% přesností, je ve vašich funkcích velmi pravděpodobný únik cíle.
+
+Odebrání funkcí může také pomáhat s převzetím, protože brání modelu v použití příliš velkého množství polí k nepamatujíí specifických vzorů, což způsobí, že bude pružnější. Může být obtížné změřit kvantitativní měření, ale pokud můžete odebrat funkce a zachovat stejnou přesnost, pravděpodobně jste model lépe flexibilní a snížili rizika při přebudování.
+
+### <a name="best-practices-automated-ml-implements"></a>Osvědčené postupy automatizovaného ML – implementace
+
+Pravidelná operace je proces minimalizace nákladové funkce k postihu složitých a namontovaných modelů. Existují různé typy probíhající funkce, ale obecně všechny postihují velikost modelu, rozptyl a složitost. Automatizované ML používá L1 (laso), L2 (Ridge) a ElasticNet (L1 a L2 současně) v různých kombinacích s různými nastaveními parametrů modelu, které ovládají přizpůsobení. V jednoduchých výrazech se automatizovaná ML bude lišit v tom, kolik modelu je regulováno, a zvolit nejlepší výsledek.
+
+Automatizované ML také implementuje explicitní omezení složitosti modelu, aby se zabránilo přebudování. Ve většině případů to platí konkrétně pro rozhodovací strom nebo algoritmy doménové struktury, kde je maximální hloubka jednotlivého stromu omezená a celkový počet stromů použitých v doménové struktuře nebo v technikách kompletování jsou omezené.
+
+Křížové ověření (CV) je proces, který zabírá mnoho podmnožin vašich úplných školicích dat a školení modelu v každé podmnožině. Nápad je, že model by mohl získat "štěstí" a mít skvělou přesnost s jednou podmnožinou, ale s využitím mnoha dílčích sad model nedosáhne pokaždé, když se vyhodnotí. Při provádění CV zadáte datovou sadu pro blokování ověřování, určíte vaše přeložená omezení (počet podmnožin) a automatizovaná ML nasadí váš model a optimalizuje parametry pro minimalizaci chyby v sadě ověřování. Jedno přeložení CV může být příliš velké, ale s využitím mnoha z nich snižuje pravděpodobnost, že je finální model vyhodnocený. Kompromisy jsou v tom, že CV má za následek delší dobu školení, takže větší náklady, protože místo toho, abyste model provedli jednou, je pro každou *n* -podmnožinu CV jednou vyškolí.
+
+> [!NOTE]
+> Křížové ověření není ve výchozím nastavení povolené. musí být nakonfigurovaný v nastavení automatizovaného ML. Po dokončení konfigurace CV a zadání ověřovací sady dat je proces pro vás automatizovaný.
+
+### <a name="identifying-over-fitting"></a>Identifikace přebudování
+
+Vezměte v úvahu následující vyškolené modely a jejich odpovídající přesností a testování.
+
+| Model | Přesnost vlaku | Přesnost testu |
+|-------|----------------|---------------|
+| A | 99,9 % | 95% |
+| B | 87% | 87% |
+| C | 99,9 % | 45% |
+
+Zvažujeme model **a**, pokud je přesnost testu u nezobrazených dat nižší než přesnost školení, model je přemontovaný. Přesnost testu by však měla být vždy menší než přesnost školení a rozlišení pro převzetí služeb při selhání, které je vhodné, bude mít za *cíl méně přesné* . 
+
+Při porovnávání modelů **a** a **B**model **a** je lepší model, protože má vyšší přesnost testování, i když je přesnost testu mírně nižší v 95%, nejedná se o významný rozdíl, který navrhuje přemístění, je k dispozici. Model **B** byste nezvolili jednoduše proto, že vlak a test přesností jsou bližší dohromady.
+
+Model **C** představuje nejasný případ přeložení; přesnost školení je velmi vysoká, ale přesnost testu není nikde blízko nejvyšší úrovně. Tento rozdíl je trochu subjektivní, ale pochází ze znalostí o vašem problému a datech a o tom, jaké množství chyb je přijatelné. 
 
 ## <a name="time-series-forecasting"></a>Předvídání časových řad
+
 Vytváření prognóz je nedílnou součástí jakékoli firmy, ať už jde o výnosy, inventář, prodej nebo poptávku zákazníků. Pomocí automatizovaného ML můžete kombinovat techniky a přístupy a získat doporučenou a vysoce kvalitní předpověď časových řad.
 
 Automatický experiment s časovou řadou se považuje za problém lineární regrese. Hodnoty za časovou řadou jsou "pivoted" a stanou se dalšími dimenzemi pro regresor společně s jinými koproměnnými. Tento přístup, na rozdíl od metod klasických časových řad, má výhodu přirozeně zahrnující více kontextových proměnných a jejich vzájemný vztah během školení. Automatizovaná ML seznámí s jedním, ale často interně rozvětveným modelem pro všechny položky v datové sadě a horizontech předpovědi. K dispozici jsou proto další data k odhadování parametrů modelu a generalizace na nedostupné řady.

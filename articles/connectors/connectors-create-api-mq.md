@@ -1,142 +1,141 @@
 ---
-title: Připojení k IBM MQ server – Azure Logic Apps
-description: Odesílat a přijímat zprávy pomocí Azure nebo místním IBM MQ server a Azure Logic Apps
+title: Připojit k serveru IBM MQ
+description: Posílání a načítání zpráv pomocí Azure nebo místního serveru IBM MQ a Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: valrobb
 ms.author: valthom
-ms.reviewer: chrishou, LADocs
+ms.reviewer: chrishou, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: a2894799946d069916b27a4f5bcc7bd3244705b2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273121"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789572"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Připojení k IBM MQ serveru z Azure Logic Apps
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Připojení k serveru IBM MQ z Azure Logic Apps
 
-Konektor IBM MQ odešle a načítá zprávy, uloženy na serveru IBM MQ místně nebo v Azure. Tento konektor zahrnuje Microsoft MQ klienta, který komunikuje se vzdáleným serverem IBM MQ přes síť TCP/IP. Tento článek obsahuje úvodní příručka k používání konektoru MQ. Můžete spustit tak, že přejdete do jedné zprávy do fronty a potom zkuste jiné akce.
+Konektor IBM MQ odesílá a načítá zprávy uložené na serveru IBM MQ místně nebo v Azure. Tento konektor zahrnuje klienta Microsoft MQ, který komunikuje se vzdáleným serverem IBM MQ napříč sítí TCP/IP. Tento článek poskytuje Úvodní příručku k používání konektoru MQ. Můžete začít procházením jedné zprávy ve frontě a následným pokusem o další akce.
 
-Konektor IBM MQ zahrnuje tyto akce, ale poskytuje žádné aktivační události:
+Konektor IBM MQ zahrnuje tyto akce, ale neposkytuje žádné triggery:
 
-- Přejděte do jedné zprávy bez odstranění zprávy ze serveru IBM MQ
-- Procházet dávku zpráv bez odstranění zprávy ze serveru IBM MQ
-- Do jedné zprávy přijme a odstraní zprávu z IBM MQ server
-- Přijetí dávku zpráv a odstranění zprávy ze serveru IBM MQ
-- Odesílání do jedné zprávy na server IBM MQ
+- Procházení jedné zprávy bez odstranění zprávy ze serveru IBM MQ
+- Projděte si dávku zpráv, aniž byste museli odstraňovat zprávy ze serveru IBM MQ.
+- Doručení jedné zprávy a odstranění zprávy ze serveru IBM MQ
+- Příjem dávky zpráv a odstranění zpráv ze serveru IBM MQ
+- Odeslat jednu zprávu na server IBM MQ
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Pokud používáte MQ místnímu serveru [instalace místní brány dat](../logic-apps/logic-apps-gateway-install.md) na serveru ve vaší síti. Server, kde je nainstalována na místní bránu dat musí mít také rozhraní .NET Framework 4.6 nainstalovaný konektor Magic Quadrant pro práci. Pro místní bránu dat musíte také vytvořit prostředek v Azure. Další informace najdete v tématu [nastavení připojení brány data](../logic-apps/logic-apps-gateway-connection.md).
+* Pokud používáte místní server MQ, [nainstalujte místní bránu dat](../logic-apps/logic-apps-gateway-install.md) na server v rámci vaší sítě. Server, na kterém je nainstalovaná místní brána dat, musí mít nainstalovanou .NET Framework 4,6, aby mohl konektor MQ fungovat. Pro místní bránu dat musíte také vytvořit prostředek v Azure. Další informace najdete v tématu [nastavení připojení pro bránu dat](../logic-apps/logic-apps-gateway-connection.md).
 
-  Nicméně pokud je MQ server nebo veřejně dostupné v rámci Azure, nemusíte použijte bránu data gateway.
+  Pokud je ale váš server MQ veřejně dostupný nebo dostupný v Azure, nemusíte používat bránu data Gateway.
 
-* Oficiálně podporované IBM WebSphere MQ verze:
+* Oficiálně podporované verze IBM WebSphere MQ:
 
-  * MQ 7.5
-  * MQ 8.0
-  * MQ 9.0
+  * MQ 7,5
+  * MQ 8,0
+  * MQ 9,0
 
-* Aplikace logiky, ve které chcete přidat akci MQ. Tato aplikace logiky musí používat stejné umístění jako místní datové brány připojení a musíte již mít trigger, který se spustí pracovní postup. 
+* Aplikace logiky, do které chcete přidat akci MQ. Tato aplikace logiky musí používat stejné umístění jako místní připojení brány dat a musí mít Trigger, který spouští váš pracovní postup. 
 
-  Konektor MQ nemá žádné aktivační události, proto je nutné přidat aktivační událost nejprve do své aplikace logiky. Můžete například použít trigger opakování. Pokud se službou logic Apps teprve začínáte, zkuste to [rychlý start k vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+  Konektor MQ nemá žádné triggery, takže musíte nejdřív přidat Trigger do aplikace logiky. Můžete například použít Trigger opakování. Pokud s Logic Apps začínáte, vyzkoušejte si tento [rychlý Start, abyste vytvořili svoji první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
-## <a name="browse-a-single-message"></a>Přejděte do jedné zprávy
+## <a name="browse-a-single-message"></a>Procházet jednu zprávu
 
-1. Ve vaší aplikaci logiky, v rámci aktivační události nebo jiné akce, zvolte **nový krok**. 
+1. V aplikaci logiky pod triggerem nebo jinou akcí klikněte na možnost **Nový krok**. 
 
-1. Do vyhledávacího pole zadejte "mq" a vyberte tuto akci: **Procházení zpráv**
+1. Do vyhledávacího pole zadejte "MQ" a vyberte tuto akci: **zpráva procházení**
 
-   ![Procházení zpráv](media/connectors-create-api-mq/Browse_message.png)
+   ![Procházet zprávu](media/connectors-create-api-mq/Browse_message.png)
 
-1. Pokud nemáte připojení k existující Magic Quadrant, vytvořte připojení:  
+1. Pokud nemáte existující připojení MQ, vytvořte připojení:  
 
-   1. V akci, vyberte **připojit přes místní bránu dat**.
+   1. V akci vyberte **připojit přes místní bránu dat**.
    
-   1. Zadejte vlastnosti pro váš server MQ.  
+   1. Zadejte vlastnosti serveru MQ.  
 
-      Pro **Server**, můžete zadat název serveru Magic Quadrant, nebo zadejte IP adresu, za nímž následuje dvojtečka a číslo portu.
+      Pro **Server**můžete zadat název serveru MQ nebo zadat IP adresu následovaný dvojtečkou a číslem portu.
     
-   1. Otevřít **brány** seznam, který zobrazuje všechny dříve nakonfigurované připojení brány. Vyberte bránu.
+   1. Otevřete seznam **Brána** , ve kterém se zobrazí všechna dříve konfigurovaná připojení brány. Vyberte bránu.
     
    1. Jakmile budete hotoví, vyberte **Vytvořit**. 
    
-      Připojení bude vypadat jako v tomto příkladu:
+      Vaše připojení vypadá jako v tomto příkladu:
 
       ![Vlastnosti připojení](media/connectors-create-api-mq/Connection_Properties.png)
 
 1. Nastavte vlastnosti akce:
 
-   * **fronty**: Zadejte frontu, která se liší od připojení.
+   * **Queue**: zadejte frontu, která se liší od připojení.
 
-   * **ID zprávy**, **CorrelationId**, **GroupId**a další vlastnosti: Procházet zprávy na základě různých vlastností zprávu MQ
+   * **MessageID**, **ID korelace**, **GroupID**a další vlastnosti: Vyhledejte zprávu na základě různých vlastností zprávy MQ.
 
-   * **IncludeInfo**: Zadejte **True** zahrnout informace o dalších zpráv ve výstupu. Nebo zadejte **False** tak, aby nezahrnovala informace o dalších zpráv ve výstupu.
+   * **IncludeInfo**: zadejte **hodnotu true** , pokud chcete do výstupu zahrnout další informace o zprávě. Případně můžete zadat **hodnotu false** , chcete-li do výstupu přidat další informace o zprávě.
 
-   * **Časový limit**: Zadejte hodnotu k určení jak dlouho čekat zprávy dorazí v prázdné frontě. Pokud je zadán nic, se načte první zprávu ve frontě a neexistuje žádný čas strávený čekáním zprávu zobrazit.
+   * **Timeout**: zadejte hodnotu, která určuje, jak dlouho se má čekat na doručení zprávy do prázdné fronty. Pokud nezadáte žádnou hodnotu, načte se první zpráva ve frontě a nestrávená doba čekání na zobrazení zprávy.
 
      ![Procházet vlastnosti zprávy](media/connectors-create-api-mq/Browse_message_Props.png)
 
-1. **Uložit** změny a potom **spustit** svou aplikaci logiky.
+1. **Uložte** změny a pak **Spusťte** aplikaci logiky.
 
    ![Uložit a spustit](media/connectors-create-api-mq/Save_Run.png)
 
-   Po dokončení běhu, jsou uvedeny kroky ze spuštění a najdete ve výstupu.
+   Po dokončení běhu se zobrazí kroky z běhu a můžete si prohlédnout výstup.
 
-1. Pokud chcete podívat na podrobnosti pro jednotlivé kroky, vyberte zelenou značku zaškrtnutí. Chcete-li zobrazit další informace o výstupní data, zvolte **zobrazit nezpracované výstupy**.
+1. Chcete-li zobrazit podrobnosti o jednotlivých krocích, vyberte zelenou značku zaškrtnutí. Chcete-li si přečíst další informace o výstupních datech, vyberte možnost **Zobrazit nezpracované výstupy**.
 
-   ![Procházet výstup zpráv](media/connectors-create-api-mq/Browse_message_output.png)  
+   ![Procházet výstup zprávy](media/connectors-create-api-mq/Browse_message_output.png)  
 
-   Tady je některé nezpracovaná ukázkový výstup:
+   Zde je ukázkový nezpracovaný výstup:
 
-   ![Procházení zpráv nezpracovaného výstupu](media/connectors-create-api-mq/Browse_message_raw_output.png)
+   ![Procházet nezpracovaný výstup zprávy](media/connectors-create-api-mq/Browse_message_raw_output.png)
 
-1. Pokud nastavíte **IncludeInfo** na hodnotu true, následující se zobrazí výstup:
+1. Pokud nastavíte **IncludeInfo** na hodnotu true, zobrazí se následující výstup:
 
-   ![Procházet zpráva obsahovat informace o](media/connectors-create-api-mq/Browse_message_Include_Info.png)
+   ![Procházet informace o zahrnutí zprávy](media/connectors-create-api-mq/Browse_message_Include_Info.png)
 
 ## <a name="browse-multiple-messages"></a>Procházet více zpráv
 
-**Procházet zprávy** obsahuje akce **BatchSize** možnost určit, kolik zpráv má být vrácen z fronty.  Pokud **BatchSize** nemá žádný záznam se vrátí všechny zprávy. Vrácené výstupem je pole zpráv.
+Akce **Procházet zprávy** obsahuje možnost **BatchSize** , která určuje, kolik zpráv by mělo být vráceno z fronty.  Pokud **BatchSize** nemá žádnou položku, budou vráceny všechny zprávy. Vrácený výstup je pole zpráv.
 
-1. Když přidáte **procházet zprávy** akce, první dříve nakonfigurované připojení je standardně vybraná. Chcete-li vytvořit nové připojení, zvolte **změnit připojení**. Nebo vyberte jiné připojení.
+1. Když přidáte akci **Procházet zprávy** , ve výchozím nastavení je vybraná první dřív nakonfigurované připojení. Chcete-li vytvořit nové připojení, klikněte na tlačítko **změnit připojení**. Případně vyberte jiné připojení.
 
-1. Po dokončení běh aplikace logiky, tady je několik ukázkový výstup z **procházet zprávy** akce:
+1. Po dokončení spuštění aplikace logiky je zde uveden ukázkový výstup z akce **Procházet zprávy** :
 
-   ![Procházet výstupní zprávy](media/connectors-create-api-mq/Browse_messages_output.png)
+   ![Výstup procházení zpráv](media/connectors-create-api-mq/Browse_messages_output.png)
 
-## <a name="receive-single-message"></a>Zobrazí se jedné zpráva
+## <a name="receive-single-message"></a>Přijmout jednu zprávu
 
-**Přijímání zpráv** akce se stejnými vstupy a výstupy jako **procházet zpráva** akce. Při použití **přijímání zpráv**, odstraní zprávu z fronty.
+Akce **přijmout zprávu** má stejné vstupy a výstupy jako akce **procházení zprávy** . Při použití **zprávy Receive**se zpráva z fronty odstraní.
 
-## <a name="receive-multiple-messages"></a>Přijmout více zpráv
+## <a name="receive-multiple-messages"></a>Přijímání více zpráv
 
-**Přijímat zprávy** akce se stejnými vstupy a výstupy jako **procházet zprávy** akce. Při použití **přijímat zprávy**, odstraní se zprávy z fronty.
+Akce **přijmout zprávy** má stejné vstupy a výstupy jako akce **Procházet zprávy** . Při použití **zprávy Receive**se zprávy z fronty odstraňují.
 
-Pokud nejsou žádné zprávy ve frontě, při provádění prohlížení nebo příjmu, tohoto kroku se nepovede se tento výstup:  
+Pokud ve frontě nejsou žádné zprávy při procházení nebo přijímání, krok se nezdařil s tímto výstupem:  
 
-![Chyba č MQ Message](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
+![MQ – chyba zprávy](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
 
-## <a name="send-message"></a>Odeslání zprávy
+## <a name="send-message"></a>Odeslat zprávu
 
-Když přidáte **odesílat zprávy** akce, první dříve nakonfigurované připojení je standardně vybraná. Chcete-li vytvořit nové připojení, zvolte **změnit připojení**. Nebo vyberte jiné připojení.
+Když přidáte akci **Odeslat zprávy** , ve výchozím nastavení je vybráno první dřív nakonfigurované připojení. Chcete-li vytvořit nové připojení, klikněte na tlačítko **změnit připojení**. Případně vyberte jiné připojení.
 
-1. Vyberte typ platná zpráva: **Datagram**, **odpověď**, nebo **žádosti**  
+1. Vyberte platný typ zprávy: **datagram**, **Reply**nebo **Request** .  
 
-   ![Odeslat zprávu Props](media/connectors-create-api-mq/Send_Msg_Props.png)
+   ![Poslat zprávu props](media/connectors-create-api-mq/Send_Msg_Props.png)
 
-1. Po ukončení aplikace logiky, tady je několik ukázkový výstup z **odeslat zprávu** akce:
+1. Až se aplikace logiky dokončí, tady je ukázkový výstup z akce **Odeslat zprávu** :
 
-   ![Msg – výstup](media/connectors-create-api-mq/Send_Msg_Output.png)
+   ![Odeslat výstup zprávy](media/connectors-create-api-mq/Send_Msg_Output.png)
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o akcích a omezení, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/mq/).
+Technické podrobnosti o akcích a omezeních, které jsou popsány v popisu OpenAPI (dříve Swagger) konektoru, najdete na [referenční stránce](/connectors/mq/)konektoru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

@@ -1,18 +1,18 @@
 ---
-title: Postup zálohování a obnovení serveru v Azure Database for MariaDB
+title: Zálohování a obnovení – Azure CLI – Azure Database for MariaDB
 description: Naučte se zálohovat a obnovovat Server v Azure Database for MariaDB pomocí Azure CLI.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: ae2e8049c58be312eed380fe2197985e61d28a26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 4564aff5e8fe2119a494af33e71ff927718646db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965223"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765847"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
 
@@ -117,7 +117,7 @@ Příkaz `az mariadb server georestore` vyžaduje následující parametry:
 |jméno | mydemoserver – geograficky obnovené | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy jsou používány. |
 |location | eastus | Umístění nového serveru. |
-|sku-name| GP_Gen5_8 | Tento parametr nastaví cenovou úroveň, generaci výpočtů a počet virtuální jádra nového serveru. GP_Gen5_8 mapuje na Pro obecné účely, Gen 5 Server s 8 virtuální jádra.|
+|sku-name| GP_Gen5_8 | Tento parametr nastaví cenovou úroveň, generaci výpočtů a počet virtuální jádra nového serveru. GP_Gen5_8 se mapuje na Pro obecné účely, Gen 5 Server s 8 virtuální jádra.|
 
 Při vytváření nového serveru geografickým obnovením se zdědí stejná velikost úložiště a cenová úroveň jako na zdrojovém serveru. Tyto hodnoty nelze během vytváření změnit. Po vytvoření nového serveru se velikost úložiště dá škálovat.
 

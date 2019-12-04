@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819339"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784591"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování Java v Application Insights
 Pokud pro trasování používáte Logback nebo Log4J (v 1.2 nebo v 2.0), můžete mít k dispozici automatické odesílání protokolů trasování, které Application Insights, kde je můžete prozkoumat a vyhledat.
@@ -22,27 +22,41 @@ Pokud pro trasování používáte Logback nebo Log4J (v 1.2 nebo v 2.0), může
 
 ## <a name="using-the-application-insights-java-agent"></a>Použití Application Insightsho agenta Java
 
-Můžete nakonfigurovat Application Insights agenta Java pro automatické zachycení protokolů tím, že povolíte funkci v souboru `AI-Agent.xml`:
+Ve výchozím nastavení agent Application Insights Java automaticky zachycuje protokolování provedené na úrovni `WARN` a výše.
+
+Můžete změnit prahovou hodnotu protokolování zaznamenaného pomocí `AI-Agent.xml` souboru:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsightsAgent>
    <Instrumentation>
-      <BuiltIn enabled="true">
-         <Logging enabled="true" />
+      <BuiltIn>
+         <Logging threshold="info"/>
       </BuiltIn>
    </Instrumentation>
-   <AgentLogger />
 </ApplicationInsightsAgent>
 ```
 
-Případně můžete postupovat podle následujících pokynů.
+Můžete zakázat zachytávání protokolování agenta Java pomocí souboru `AI-Agent.xml`:
 
-## <a name="install-the-java-sdk"></a>Instalace sady Java SDK
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>Případně (na rozdíl od použití agenta Java) můžete postupovat podle následujících pokynů.
+
+### <a name="install-the-java-sdk"></a>Instalace sady Java SDK
 
 Podle pokynů nainstalujte [sadu Application Insights SDK pro jazyk Java][java], pokud jste to ještě neudělali.
 
-## <a name="add-logging-libraries-to-your-project"></a>Přidání knihoven protokolování do projektu
+### <a name="add-logging-libraries-to-your-project"></a>Přidání knihoven protokolování do projektu
 *Zvolte vhodný způsob pro váš projekt.*
 
 #### <a name="if-youre-using-maven"></a>Pokud používáte Maven...
@@ -90,7 +104,7 @@ Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
 ```
 
 #### <a name="if-youre-using-gradle"></a>Pokud používáte Gradle...
-Pokud je váš projekt již nastaven na použití Gradle pro sestavení, přidejte do skupiny `dependencies` v souboru Build. Gradle jeden z následujících řádků:
+Pokud je váš projekt již nastaven na použití Gradle pro sestavení, přidejte jeden z následujících řádků do skupiny `dependencies` v souboru Build. Gradle:
 
 Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
 
@@ -123,7 +137,7 @@ Postupujte podle pokynů pro ruční instalaci Application Insights Java SDK, St
 | Log4j v 1.2 |[Log4J v 1.2 – JAR pro přidávání](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |ApplicationInsights-Logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Přidání připojení do protokolovacího rozhraní
+### <a name="add-the-appender-to-your-logging-framework"></a>Přidání připojení do protokolovacího rozhraní
 Chcete-li začít získávat trasování, slučte příslušný fragment kódu do konfiguračního souboru Log4J nebo Logback: 
 
 *Logback*

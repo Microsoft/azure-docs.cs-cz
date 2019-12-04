@@ -1,17 +1,17 @@
 ---
-title: Správa Azure Database for MySQL-Azure Portal
+title: Správa serveru-Azure Portal-Azure Database for MySQL
 description: Naučte se spravovat Azure Database for MySQL server z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 286209673e5743d08ddaa2fed2f507f84d622ea6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/02/2019
+ms.openlocfilehash: 553234410a7b8b798d26f0e2fee6132a2602b1cc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534062"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770505"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Správa serveru Azure Database for MySQL pomocí Azure Portal
 V tomto článku se dozvíte, jak spravovat databázi Afire pro servery MySQL. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
@@ -79,7 +79,7 @@ Můžete změnit heslo role správce pomocí Azure Portal.
 
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
-   ![Resetovat heslo](./media/howto-create-manage-server-portal/reset-password.png)
+   ![resetovat heslo](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kliknutím na **tlačítko OK** uložte nové heslo.
 

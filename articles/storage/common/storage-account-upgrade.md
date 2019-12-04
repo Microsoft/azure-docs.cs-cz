@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495976"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791699"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely v2
 
-Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Pro většinu scénářů úložišť se doporučuje používat účty pro obecné účely v2. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů.
+Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Pro většinu scénářů úložišť se doporučuje používat účty pro obecné účely v2. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů. Účty obecné – účely v2 podporují úrovně přístupu na úrovni Standard pro přístup z horké, studené a archivní vrstvy na úrovni objektů BLOB.
 
 Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné účely v1 nebo BLOB Storage je jednoduchý. Můžete upgradovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
@@ -40,19 +40,19 @@ Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné úč
 
 Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí PowerShellu, nejdřív aktualizujte PowerShell tak, aby používal nejnovější verzi modulu **AZ. Storage** . Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-V dalším kroku zavolejte následující příkaz pro upgrade účtu a nahraďte název vaší skupiny prostředků a účtu úložiště:
+Potom zavolejte následující příkaz pro upgrade účtu, kde nahradíte název skupiny prostředků, název účtu úložiště a požadovanou úroveň přístupu k účtu.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete upgradovat účet pro obecné účely V1 na účet pro obecné účely v2 pomocí Azure CLI, nejdřív nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-V dalším kroku zavolejte následující příkaz pro upgrade účtu a nahraďte název vaší skupiny prostředků a účtu úložiště:
+Potom zavolejte následující příkaz pro upgrade účtu, kde nahradíte název skupiny prostředků, název účtu úložiště a požadovanou úroveň přístupu k účtu.
 
 ```cli
-az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
 ---
@@ -72,7 +72,7 @@ V obou případech má první priorita odhadnout náklady na ukládání, přís
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Upgrade účtu úložiště V1 na účet pro obecné účely v2 je zdarma. Změna úrovně přístupu k úložišti ale může mít za následek změny ve vaší faktuře. 
+Upgrade účtu úložiště V1 na účet pro obecné účely v2 je zdarma. Během procesu upgradu můžete určit požadovanou úroveň účtu. Pokud při upgradu není zadána úroveň účtu, bude `Hot`výchozí úroveň účtu upgradovaného účtu. Změna úrovně přístupu úložiště ale může mít za následek změny ve vyúčtování, takže se při upgradu doporučuje zadat novou úroveň účtu.
 
 Všechny účty úložiště vycházejí z cenového modelu úložiště objektů blob založeného na úrovních jednotlivých objektů blob. Při použití účtu úložiště je potřeba vzít v úvahu tyto fakturační podmínky:
 

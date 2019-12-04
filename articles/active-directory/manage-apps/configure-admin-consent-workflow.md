@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d1654556df455accb7f615442d3a97952c5e50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180417"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786431"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurace pracovního postupu pro vyjádření souhlasu správce (Preview)
 
@@ -33,10 +33,10 @@ Aby bylo možné schválit žádosti, kontrolor musí být globální správce, 
 
 Pokud chcete povolit pracovní postup souhlasu správce a zvolit kontrolory:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce.
-2. V horní části levé navigační nabídky klikněte na **všechny služby** . Otevře se  **rozšíření Azure Active Directory** .
-3. Do vyhledávacího pole filtru zadejte text "**Azure Active Directory**" a vyberte **Azure Active Directory** položku.
-4. V navigační nabídce klikněte na **podnikové aplikace**. 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
+2. V horní části levé navigační nabídky klikněte na **všechny služby** . Otevře se **rozšíření Azure Active Directory** .
+3. Do vyhledávacího pole filtru zadejte "**Azure Active Directory**" a vyberte položku **Azure Active Directory** .
+4. V navigační nabídce klikněte na **podnikové aplikace**. 
 5. V části **Spravovat**vyberte **uživatelská nastavení**.
 6. V části **žádosti o souhlas správce (Preview)** **můžou uživatelé požádat o souhlas správce na aplikace** , které nemůžou udělit souhlas s **Ano**.
 
@@ -49,7 +49,7 @@ Pokud chcete povolit pracovní postup souhlasu správce a zvolit kontrolory:
    * **Vybraní uživatelé budou dostávat připomenutí vypršení platnosti žádosti**. Umožňuje povolit nebo zakázat e-mailová oznámení připomenutí kontrolorům, když žádost brzy vyprší.  
    * **Platnost žádosti o souhlas vyprší po (dny)** . Zadejte, jak dlouho zůstanou požadavky platné.
 
-7. Vyberte **Uložit**. Může trvat až hodinu, než se funkce aktivuje.
+7. Vyberte **Save** (Uložit). Může trvat až hodinu, než se funkce aktivuje.
 
 > [!NOTE]
 > Revidující pro tento pracovní postup můžete přidat nebo odebrat tak, že upravíte seznam **kontroloři žádosti o souhlas správce** . Všimněte si, že aktuální omezení této funkce je, že Recenzenti mohou zachovat možnost kontrolovat žádosti, které byly provedeny v době, kdy byly označeny jako kontrolor.
@@ -74,10 +74,10 @@ Po povolení pracovního postupu pro vyjádření souhlasu správce můžou uži
 
 Chcete-li zkontrolovat žádosti o souhlas správce a provést akci:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako jeden z registrovaných kontrolorů pracovního postupu správce souhlasu.
-2. V horní části nabídky navigace na levé straně vyberte **všechny služby** . Otevře se  **rozšíření Azure Active Directory** .
-3. Do vyhledávacího pole filtru zadejte text "**Azure Active Directory**" a vyberte **Azure Active Directory** položku.
-4. V navigační nabídce klikněte na **podnikové aplikace**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako jeden z registrovaných kontrolorů pracovního postupu správce souhlasu.
+2. V horní části levé navigační nabídky vyberte **všechny služby** . Otevře se **rozšíření Azure Active Directory** .
+3. Do vyhledávacího pole filtru zadejte "**Azure Active Directory**" a vyberte položku **Azure Active Directory** .
+4. V navigační nabídce klikněte na **podnikové aplikace**.
 5. V části **aktivita**vyberte **správce žádosti o souhlas (Preview)** .
 
    > [!NOTE]
@@ -120,14 +120,14 @@ Následující tabulka popisuje scénáře a hodnoty auditu, které jsou k dispo
 
 |Scénář  |Služba Audit  |Kategorie auditu  |Aktivita auditu  |Objekt actor auditu  |Omezení protokolu auditu  |
 |---------|---------|---------|---------|---------|---------|
-|Správce, který povoluje pracovní postup žádosti o souhlas        |Kontroly přístupu           |UserManagement           |Vytvořit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.            |
-|Správce zakázal pracovní postup žádosti o souhlas.       |Kontroly přístupu           |UserManagement           |Odstranit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
-|Správce aktualizuje Konfigurace pracovního postupu souhlasu.        |Kontroly přístupu           |UserManagement           |Aktualizovat šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
-|Koncový uživatel, který vytváří žádost o souhlas správce pro aplikaci       |Kontroly přístupu           |Zásada         |Vytvořit žádost           |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
-|Kontroloři, kteří schvalují žádost o souhlas správce       |Kontroly přístupu           |UserManagement           |Schválit všechny požadavky v podnikovém toku          |Kontext aplikace            |V současné době nemůžete najít kontext uživatele nebo ID aplikace, kterým byl udělen souhlas správce.           |
-|Kontroloři odmítající žádost o souhlas správce       |Kontroly přístupu           |UserManagement           |Schválit všechny požadavky v podnikovém toku          |Kontext aplikace            | V současné době nemůžete najít kontext uživatele objektu actor, který zamítl žádost o souhlas správce.          |
+|Správce, který povoluje pracovní postup žádosti o souhlas        |Kontroly přístupu           |UserManagement           |Vytvořit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.            |
+|Správce zakázal pracovní postup žádosti o souhlas.       |Kontroly přístupu           |UserManagement           |Odstranit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
+|Správce aktualizuje Konfigurace pracovního postupu souhlasu.        |Kontroly přístupu           |UserManagement           |Aktualizovat šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
+|Koncový uživatel, který vytváří žádost o souhlas správce pro aplikaci       |Kontroly přístupu           |Zásady         |Vytvořit žádost           |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
+|Kontroloři, kteří schvalují žádost o souhlas správce       |Kontroly přístupu           |UserManagement           |Schválit všechny požadavky v podnikovém toku          |Kontext aplikace            |V současné době nemůžete najít kontext uživatele nebo ID aplikace, kterým byl udělen souhlas správce.           |
+|Kontroloři odmítající žádost o souhlas správce       |Kontroly přístupu           |UserManagement           |Schválit všechny požadavky v podnikovém toku          |Kontext aplikace            | V současné době nemůžete najít kontext uživatele objektu actor, který zamítl žádost o souhlas správce.          |
 
-## <a name="faq"></a>Nejčastější dotazy 
+## <a name="faq"></a>Časté otázky 
 
 **Mám zapnutý tento pracovní postup, ale když testujete jeho funkčnost, nemůžete mi zobrazit, že se výzva k schválení vyžaduje?**
 

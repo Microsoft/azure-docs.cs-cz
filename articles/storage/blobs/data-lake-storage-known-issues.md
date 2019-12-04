@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3ea77eb5dd8a03f877164179e3accc3a6f6d0aef
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548319"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793358"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -48,14 +48,12 @@ Nespravované disky virtuálních počítačů nejsou podporované v účtech, k
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>Obor rozhraní API pro Data Lake Storage klientskou knihovnu pro sadu SDK, PowerShell a rozhraní příkazového řádku
-
-### <a name="filesystem-support-in-sdks"></a>Podpora systému souborů v sadách SDK
+## <a name="filesystem-support-in-sdks"></a>Podpora systému souborů v sadách SDK
 
 - .NET, Java a Python jsou ve verzi Public Preview. Jiné sady SDK se aktuálně nepodporují.
 - Operace get a set ACL nejsou aktuálně rekurzivní.
 
-### <a name="filesystem-support-in-powershell-and-azure-cli"></a>Podpora systému souborů v prostředí PowerShell a rozhraní příkazového řádku Azure
+## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Podpora systému souborů v prostředí PowerShell a rozhraní příkazového řádku Azure
 
 Operace get a set ACL nejsou aktuálně rekurzivní.
 
@@ -77,7 +75,6 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 | **Protokolování diagnostiky** |Diagnostické protokoly jsou podporovány (Preview).<br><br>Povolení protokolů v Azure Portal není aktuálně podporováno. Tady je příklad, jak povolit protokoly pomocí PowerShellu. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Nezapomeňte zadat `Blob` jako hodnotu parametru `-ServiceType`, jak je znázorněno v tomto příkladu. <br><br>V současné době nelze Průzkumník služby Azure Storage použít pro zobrazení diagnostických protokolů. Pokud chcete zobrazit protokoly, použijte prosím AzCopy nebo sady SDK.
 | **Neměnné úložiště** |Zatím nepodporováno <br><br>Neměnné úložiště poskytuje možnost ukládat data v [červech (jeden způsob zápisu, čtení mnoha)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Vrstvy na úrovni objektů** |Jsou podporovány studené a archivní úrovně. Archivní úroveň je ve verzi Preview. Všechny ostatní úrovně přístupu ještě nejsou podporované. <br><br> V současné době dochází k nějakým chybám, které mají vliv na úroveň přístupu archivu.  Zaregistrujte si verzi Preview úrovně přístupu archivu [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).|
-| **Podpora PowerShellu a rozhraní příkazového řádku** | Omezená funkčnost <br><br>Jsou podporovány operace objektů BLOB. Práce s adresáři a nastavování seznamů řízení přístupu (ACL) ještě není podporovaná. |
 | **Statické weby** |Zatím nepodporováno <br><br>Konkrétně možnost poskytovat soubory [statickým webům](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
 | **Aplikace třetích stran** | Omezená podpora <br><br>Aplikace třetích stran, které používají rozhraní REST API k práci, budou fungovat i v případě, že je použijete s Data Lake Storage Gen2. <br>Aplikace, které volají rozhraní API objektů blob, budou nejspíš fungovat.|
 |**Obnovitelné odstranění** |Zatím nepodporováno|

@@ -1,20 +1,17 @@
 ---
-title: Referenční dokumentace schématu pro triggery a typy akcí – Azure Logic Apps
+title: Referenční dokumentace schématu pro události typu Trigger a Action
 description: Referenční příručka schématu pro Trigger jazyka definice pracovního postupu a typy akcí v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 7b4267f672ab5ad902c0f96dd7ba7e377316e4f5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a847e08f0249bd968060d10f7686b0e04ba037ca
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839777"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790852"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Referenční příručka schématu pro typy triggerů a akcí v Azure Logic Apps
 
@@ -154,7 +151,7 @@ Tato aktivační událost zkontroluje nebo provede *dotaz* na koncový bod pomoc
 
 *Výstupy*
  
-| Prvek | Typ | Popis |
+| Element | Typ | Popis |
 |---------|------|-------------|
 | záhlaví | Objekt JSON | Hlavičky z odpovědi |
 | těles | Objekt JSON | Tělo odpovědi |
@@ -329,7 +326,7 @@ Tato aktivační událost pošle požadavek na zadaný koncový bod HTTP nebo HT
 
 *Výstupy*
 
-| Prvek | Typ | Popis |
+| Element | Typ | Popis |
 |---------|------|-------------| 
 | záhlaví | Objekt JSON | Hlavičky z odpovědi | 
 | těles | Objekt JSON | Tělo odpovědi | 
@@ -424,7 +421,7 @@ Některé hodnoty, například <*metody typu*>, jsou k dispozici pro objekty `"s
 
 *Výstupy* 
 
-| Prvek | Typ | Popis |
+| Element | Typ | Popis |
 |---------|------|-------------| 
 | záhlaví | Objekt JSON | Hlavičky z odpovědi | 
 | těles | Objekt JSON | Tělo odpovědi | 
@@ -1704,7 +1701,7 @@ Tato definice akce vytvoří tabulku HTML z proměnné "myItemArray". Výraz pou
 
 Tady je tabulka HTML, kterou tato akce vytvoří: 
 
-<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Jablk</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
+<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Jablk</td></tr><tr><td>1\. místo</td><td>Oranges</td></tr></tbody></table>
 
 *Příklad 3*
 
@@ -1733,7 +1730,7 @@ Tato definice akce vytvoří tabulku HTML z proměnné "myItemArray". Tento př�
 
 Tady je tabulka HTML, kterou tato akce vytvoří: 
 
-<table><thead><tr><th>Stock_ID</th><th>Popis</th></tr></thead><tbody><tr><td>0</td><td>Organické jablka</td></tr><tr><td>1</td><td>Organické pomeranče</td></tr></tbody></table>
+<table><thead><tr><th>Stock_ID</th><th>Popis</th></tr></thead><tbody><tr><td>0</td><td>Organické jablka</td></tr><tr><td>1\. místo</td><td>Organické pomeranče</td></tr></tbody></table>
 
 <a name="terminate-action"></a>
 

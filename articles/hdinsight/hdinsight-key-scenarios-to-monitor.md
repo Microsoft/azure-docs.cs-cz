@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104405"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777544"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
 
@@ -30,10 +30,10 @@ Pokud se chcete podívat na nejvyšší úroveň uzlů clusteru a jejich načít
 | Barva | Popis |
 | --- | --- |
 | Červená | Nejméně jedna hlavní součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
-| Oranžová | Nejméně jedna sekundární součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
-| Žlutá | Server Ambari neobdržel prezenční signál od hostitele po dobu delší než 3 minuty. |
+| Orange | Nejméně jedna sekundární součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
+| Žlutá | Server Ambari nedostal od hostitele prezenční signál po dobu delší než 3 minuty. |
 | Zelená | Normální stav spuštění. |
-
+ 
 Zobrazí se také sloupce zobrazující počet jader a velikost paměti RAM pro každého hostitele a využití disku a průměr zatížení.
 
 ![Přehled karty hostitelé Apache Ambari](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -72,7 +72,7 @@ V uživatelském rozhraní Správce prostředků v nabídce na levé straně vyb
 
 ## <a name="storage-throttling"></a>Omezování úložiště
 
-Kritické body výkonu clusteru se můžou vyskytnout na úrovni úložiště. Tento typ kritických míst je nejčastěji způsobený tím, že *blokuje* operace vstupu a výstupu (v/v), ke kterým dochází, když vaše spuštěné úlohy odesílají více vstupně-výstupních operací, než dokáže služba úložiště zvládnout. Toto blokování vytvoří frontu požadavků v/v, které čekají na zpracování až po zpracování aktuální IOs. Bloky jsou způsobené *omezením úložiště*, což není fyzický limit, ale místo omezení služby úložiště pomocí smlouvy o úrovni služeb (SLA). Tento limit zajistí, že nemůžete monopolizovatovat žádného jednoho klienta ani klienta služby. Smlouva SLA omezuje počet IOs za sekundu (IOPS) pro Azure Storage. Podrobnosti najdete v tématu [Azure Storage škálovatelnost a cíle výkonu](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+Kritické body výkonu clusteru se můžou vyskytnout na úrovni úložiště. Tento typ kritických míst je nejčastěji kvůli *blokujícím* vstupně-výstupním operacím (v/v), ke kterým dochází, když spuštěné úlohy odesílají více vstupně-výstupních operací, než dokáže služba úložiště zvládnout. Toto blokování vytvoří frontu požadavků v/v, které čekají na zpracování až po zpracování aktuální IOs. Bloky jsou z důvodu *omezování úložiště*, což není fyzický limit, ale místo omezení služby úložiště pomocí smlouvy SLA (Service level agreement). Tento limit zajistí, že nemůžete monopolizovatovat žádného jednoho klienta ani klienta služby. Smlouva SLA omezuje počet IOs za sekundu (IOPS) pro Azure Storage. Podrobnosti najdete v tématu [Azure Storage škálovatelnost a cíle výkonu](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
 
 Pokud používáte Azure Storage, přečtěte si informace o monitorování potíží souvisejících s úložištěm, včetně omezení, najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 

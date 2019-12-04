@@ -1,20 +1,19 @@
 ---
-title: Převod dat JSON pomocí kapalinových transformací – Azure Logic Apps | Microsoft Docs
+title: Převod dat JSON pomocí kapalinových transformací
 description: Vytváření transformací nebo mapování pro pokročilé transformace JSON pomocí Logic Apps a kapalné šablony
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900663"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792508"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Provádění pokročilých transformací JSON pomocí tekutých šablon v Azure Logic Apps
 
@@ -22,9 +21,9 @@ V Logic Apps můžete provádět základní transformace JSON s akcemi nativníc
 
 Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nutné nejprve definovat mapování JSON na JSON s šablonou Liquid a uložit tuto mapu v účtu integrace. V tomto článku se dozvíte, jak vytvořit a použít tuto šablonu nebo mapu kapalné. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Případně si [můžete zaregistrovat předplatné s](https://azure.microsoft.com/pricing/purchase-options/)průběžnými platbami.
+* Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Případně si [můžete zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -58,7 +57,7 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
    }
    ```
 
-2. Přihlaste se k webu [Azure Portal](https://portal.azure.com). V hlavní nabídce Azure vyberte **všechny prostředky**. Ve vyhledávacím poli vyhledejte a vyberte účet pro integraci.
+2. Přihlaste se na web [Azure Portal](https://portal.azure.com). V hlavní nabídce Azure vyberte **všechny prostředky**. Ve vyhledávacím poli vyhledejte a vyberte účet pro integraci.
 
    ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -68,7 +67,7 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
 
 4. Klikněte na tlačítko **Přidat** a zadejte následující údaje pro mapu:
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------|
    | **Název** | JsonToJsonTemplate | Název pro mapu, která je v tomto příkladu "JsonToJsonTemplate" | 
    | **Typ mapy** | **ukazuje** | Typ pro mapu. Pro transformaci JSON na JSON musíte vybrat možnost **Liquid**. | 
@@ -84,7 +83,7 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
 2. V návrháři aplikace logiky přidejte [Trigger žádosti](../connectors/connectors-native-reqres.md#add-request) do vaší aplikace logiky.
 
 3. V části Trigger vyberte **Nový krok**. 
-   Do vyhledávacího pole zadejte jako filtr "Liquid" a vyberte tuto akci: **Transformovat JSON na JSON – Liquid**
+   Do vyhledávacího pole zadejte jako filtr "Liquid" a vyberte tuto akci: **transformační JSON pro JSON – Liquid**
 
    ![Najít a vybrat kapalinovou akci](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -125,7 +124,7 @@ Kapalina není omezena pouze na transformace JSON. Tady jsou další dostupné a
   
    ![Příklad výstupu JSON na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* Převést XML na JSON
+* Transformovat XML na JSON
   
   Zde je šablona kapalin použitá v tomto příkladu:
    
@@ -152,6 +151,6 @@ Kapalina není omezena pouze na transformace JSON. Tady jsou další dostupné a
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o Enterprise Integration Pack] (../logic-apps/logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack")  
-* [Další informace o mapách] (../logic-apps/logic-apps-enterprise-integration-maps.md "Další informace o službě Enterprise Integration Maps")  
+* [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack")  
+* [Další informace o mapách](../logic-apps/logic-apps-enterprise-integration-maps.md "Další informace o službě Enterprise Integration Maps")  
 

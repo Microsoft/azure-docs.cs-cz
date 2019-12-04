@@ -1,17 +1,17 @@
 ---
-title: Přehled koncového bodu služby virtuální sítě Azure Database for MariaDB serveru | Microsoft Docs
+title: Koncové body služby virtuální sítě – Azure Database for MariaDB
 description: Popisuje způsob fungování koncových bodů služby VNet pro server Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 5ca7a62ed6b9cd132e0cae226c2123043c833ffa
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 12/02/2019
+ms.openlocfilehash: 72d8e58d1f4ca2955ed2469d061277949751d8b3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610415"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772694"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Použití koncových bodů a pravidel služby Virtual Network pro Azure Database for MariaDB
 
@@ -30,9 +30,9 @@ Aby bylo možné vytvořit pravidlo virtuální sítě, musí nejprve existovat 
 
 **Virtuální síť:** Můžete mít virtuální sítě přidružené k vašemu předplatnému Azure.
 
-**Podsíť** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
+**Podsíť:** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
 
-**Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network][vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database. Tato značka služby platí také pro služby Azure Database for MariaDB, MySQL a PostgreSQL. Při použití značky služby **Microsoft. SQL** pro koncový bod služby virtuální sítě je důležité si uvědomit, že nakonfiguruje provoz koncového bodu služby pro všechny Azure SQL Database, Azure Database for MariaDB, Azure Database for MySQL a Azure Database for PostgreSQL servery v podsíti.
+**Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network][vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database. Tato značka služby platí také pro služby Azure Database for MariaDB, MySQL a PostgreSQL. Je důležité si uvědomit, že pokud použijete značku služby **Microsoft. SQL** pro koncový bod služby virtuální sítě, nakonfiguruje se provoz koncového bodu služby pro všechny Azure SQL Database, Azure Database for MariaDB, Azure Database for MySQL a Azure Database for PostgreSQL servery v podsíti.
 
 **Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro server Azure Database for MariaDB je podsíť, která je uvedená v seznamu řízení přístupu (ACL) vašeho serveru Azure Database for MariaDB. Aby byl v seznamu ACL pro váš Azure Database for MariaDB Server, podsíť musí obsahovat název typu **Microsoft. SQL** .
 
@@ -50,7 +50,7 @@ Pravidlo virtuální sítě přikáže serveru Azure Database for MariaDB, aby p
 
 Dokud neprovedete akci, virtuální počítače v podsítích nebudou moct komunikovat se serverem Azure Database for MariaDB. Jedna akce, která stanovuje komunikaci, je vytvoření pravidla virtuální sítě. Odůvodnění výběru přístupu pravidla virtuální sítě vyžaduje diskuzi o porovnání a kontrastu zahrnující konkurenční možnosti zabezpečení nabízené bránou firewall.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Povolit přístup ke službám Azure
+### <a name="a-allow-access-to-azure-services"></a>A. Povolení přístupu ke službám Azure
 
 Podokno zabezpečení připojení má tlačítko **pro zapnutí/vypnutí** , které je označeno jako **povolený přístup ke službám Azure**. Nastavení **on** umožňuje komunikaci ze všech IP adres Azure a všech podsítí Azure. Tyto IP adresy nebo podsítě Azure možná nevlastníte. Toto **Nastavení** je pravděpodobně více otevřené, než požadujete, aby byla databáze Azure Database for MariaDB. Funkce pravidla virtuální sítě nabízí mnohem přesnější kontrolu.
 
@@ -88,8 +88,8 @@ Každé pravidlo virtuální sítě se vztahuje na celý Azure Database for Mari
 
 V rámci správy koncových bodů služby Virtual Network je oddělení rolí zabezpečení. Pro každou z následujících rolí se vyžaduje akce:
 
-- **Správce sítě:** &nbsp;Zapněte koncový bod.
-- **Správce databáze:** &nbsp;Aktualizujte seznam řízení přístupu (ACL), chcete-li přidat danou podsíť do serveru Azure Database for MariaDB.
+- **Správce sítě:** &nbsp; zapnout koncový bod.
+- **Správce databáze:** &nbsp; aktualizovat seznam řízení přístupu (ACL) pro přidání dané podsítě do serveru Azure Database for MariaDB.
 
 *Alternativa RBAC:*
 
@@ -115,9 +115,9 @@ Pro Azure Database for MariaDB funkce pravidla virtuální sítě má následuj�
 
 - Pravidla virtuální sítě se vztahují jenom na Azure Resource Manager virtuální sítě; a ne pro [model nasazení Classic][resource-manager-deployment-model-568f] .
 
-- Zapnutím koncových bodů služby virtuální sítě pro Azure Database for MariaDB pomocí značky služby **Microsoft. SQL** se taky povolí koncové body pro všechny databázové služby Azure: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database a Azure SQL Data Warehouse.
+- Zapnutím koncových bodů služby virtuální sítě pro Azure Database for MariaDB pomocí značky služby **Microsoft. SQL** se taky povolí koncové body pro všechny služby Azure Database services: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database a Azure SQL Data Warehouse.
 
-- Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
+- Podpora koncových bodů služby virtuální sítě je určená jenom pro Pro obecné účely a paměťově optimalizované servery.
 
 - V bráně firewall se rozsahy IP adres vztahují na následující síťové položky, ale pravidla virtuální sítě ne:
     - [Virtuální privátní síť (VPN) typu Site-to-Site (S2S)][vpn-gateway-indexmd-608y]
@@ -139,7 +139,7 @@ Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI n
 - [Virtuální sítě Azure][vm-virtual-network-overview]
 - [Koncové body služby virtuální sítě Azure][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Články o vytváření pravidel virtuální sítě najdete v těchto tématech:
 - [Vytvoření a Správa pravidel Azure Database for MariaDB VNet pomocí Azure Portal](howto-manage-vnet-portal.md)
  

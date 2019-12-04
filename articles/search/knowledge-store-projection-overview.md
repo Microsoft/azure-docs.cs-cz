@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326595"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790004"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Práce s projekcemi ve znalostní bázi v Azure Kognitivní hledání
 
@@ -28,11 +28,11 @@ Projekce můžou být tabulkové, s daty uloženými v řádcích a sloupcích v
 
 Znalostní databáze podporuje tři typy projekce:
 
-+ **Tabulky**: u dat, která jsou nejlépe reprezentovaná jako řádky a sloupce, vám umožňují definovat schematized tvar nebo projekci v úložišti tabulek.
++ **Tabulky**: u dat, která jsou nejlépe reprezentovaná jako řádky a sloupce, vám umožňují definovat schematized tvar nebo projekci v úložišti tabulek. Jako tabulky lze promítnout pouze platné objekty JSON, obohacený dokument může obsahovat uzly, které nejsou pojmenované objekty JSON, a při projekci těchto objektů vytvořit platný objekt JSON s dovedností Shaper nebo s vloženým tvarem.
 
-+ **Objekty**: Pokud potřebujete reprezentace JSON vašich dat a rozšíření, jsou projekce objektů uloženy jako objekty blob.
++ **Objekty**: Pokud potřebujete reprezentace JSON vašich dat a rozšíření, jsou projekce objektů uloženy jako objekty blob. Pouze platné objekty JSON mohou být probíhají jako objekty, obohacený dokument může obsahovat uzly, které nejsou pojmenované objekty JSON, a při projekci těchto objektů vytvořit platný objekt JSON s Shaper dovedností nebo včleněným tvarem.
 
-+ **Soubory**: Pokud potřebujete uložit obrázky extrahované z dokumentů, projekce souborů vám umožní uložit normalizované bitové kopie.
++ **Soubory**: Pokud potřebujete uložit obrázky extrahované z dokumentů, projekce souborů vám umožní ukládat normalizované image do úložiště objektů BLOB.
 
 Pokud chcete zobrazit projekce definované v kontextu, Projděte si téma [jak začít s úložištěm Knowledge Store](knowledge-store-howto.md).
 
@@ -47,7 +47,7 @@ Tato nezávislost znamená, že můžete mít stejný tvar dat, který se v kaž
 
 ### <a name="relatedness"></a>Příbuznost
 
-Skupiny projekce teď umožňují při zachovávání vztahů mezi typy projekce promítnout dokumenty mezi typy projekce. Veškerý obsah, který se promítá v rámci jedné skupiny projekce, zachovává vztahy v rámci dat napříč typy projekcí. V tabulkách jsou relace založeny na vygenerovaném klíči a každý podřízený uzel uchovává odkaz na nadřazený uzel. V různých typech (tabulky, objekty a soubory) se vztahy uchovávají, pokud je jeden uzel rozložený napříč různými typy. Představte si například scénář, ve kterém máte dokument obsahující obrázky a text. Můžete promítnout text na tabulky nebo objekty a obrázky do souborů, kde tabulky nebo objekty mají vlastnost obsahující adresu URL souboru.
+Skupiny projekce teď umožňují při zachovávání vztahů mezi typy projekce promítnout dokumenty mezi typy projekce. Veškerý obsah, který se promítá v rámci jedné skupiny projekce, zachovává vztahy v rámci dat napříč typy projekcí. V tabulkách jsou relace založeny na vygenerovaném klíči a každý podřízený uzel uchovává odkaz na nadřazený uzel. V různých typech (tabulky, objekty a soubory) se vztahy uchovávají, pokud je jeden uzel rozložený napříč různými typy. Představte si například scénář, ve kterém máte dokument obsahující obrázky a text. Text můžete promítnout do tabulek nebo objektů a obrázků do souborů, kde tabulky nebo objekty mají sloupec nebo vlastnost obsahující adresu URL souboru.
 
 ## <a name="input-shaping"></a>Vstupní tvarování
 

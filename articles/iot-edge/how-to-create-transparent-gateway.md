@@ -1,6 +1,6 @@
 ---
-title: Vytvoření transparentní brány zařízení – Azure IoT Edge | Dokumentace Microsoftu
-description: Použití zařízení Azure IoT Edge jako transparentní brána, která dokáže zpracovávat informace ze zařízení příjem dat
+title: Vytvořit zařízení transparentní brány – Azure IoT Edge | Microsoft Docs
+description: Použít zařízení Azure IoT Edge jako transparentní bránu, která může zpracovávat informace ze zařízení pro příjem dat
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,21 +8,21 @@ ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d0ac7fa3a1dbb1c91da5b9919bc2c62de74213b5
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c005dcd91412552e2b10c27a7809ca4bc46d4709
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456785"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792336"
 ---
-# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
+# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení IoT Edge pro fungování jako transparentní brány
 
 Tento článek poskytuje podrobné pokyny ke konfiguraci IoT Edge zařízení pro fungování jako transparentní brány pro jiná zařízení, která budou komunikovat s IoT Hub. V tomto článku se pojem *IoT Edge brána* vztahuje na IoT Edge zařízení, které se používá jako transparentní brána. Další informace najdete v tématu [jak se dá zařízení IoT Edge použít jako brána](./iot-edge-as-gateway.md).
 
 >[!NOTE]
->Aktuálně:
-> * Hraniční zařízení nemůže připojit k brány IoT Edge. 
-> * Příjem dat zařízení nemohou použít nahrávání souboru.
+>Aktuálně
+> * Zařízení s podporou Edge se nemůžou připojit k IoT Edge branám. 
+> * Podřízená zařízení nemůžou používat nahrávání souborů.
 
 Existují tři obecné kroky k nastavení úspěšného transparentního připojení brány. Tento článek popisuje první krok:
 
@@ -31,47 +31,47 @@ Existují tři obecné kroky k nastavení úspěšného transparentního připoj
 3. Zařízení pro příjem dat musí být schopné se bezpečně připojit k zařízení brány. Další informace najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
 
 
-Aby zařízení fungovalo jako brána, musí být schopné bezpečně se připojit ke svým zařízením pro příjem dat. Azure IoT Edge umožňuje používat infrastrukturu veřejných klíčů (PKI) nastavení zabezpečeného připojení mezi zařízeními. V tomto případě jsme se umožní příjem dat zařízení pro připojení k zařízení IoT Edge sloužit jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení brány. Tato kontrolu identity zabraňuje zařízením v připojení k potenciálně škodlivým branám.
+Aby zařízení fungovalo jako brána, musí být schopné bezpečně se připojit ke svým zařízením pro příjem dat. Azure IoT Edge umožňuje použít infrastrukturu veřejných klíčů (PKI) k nastavení zabezpečených připojení mezi zařízeními. V tomto případě umožníme, aby se pro zařízení s IoT Edge připojila k zařízení, které funguje jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení brány. Tato kontrolu identity zabraňuje zařízením v připojení k potenciálně škodlivým branám.
 
-Pro podřízené zařízení v transparentní bráně může být libovolná aplikace nebo platforma, která má identitu vytvořenou pomocí cloudové služby [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) . V mnoha případech tyto aplikace používají [sadu SDK pro zařízení Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Pro všechny praktické účely může být podřízený zařízení i aplikace běžící na samotném zařízení brány IoT Edge. IoT Edge zařízení ale nemůže být podřízená bráně IoT Edge. 
+Pro podřízené zařízení v transparentní bráně může být libovolná aplikace nebo platforma, která má identitu vytvořenou pomocí cloudové služby [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) . V mnoha případech tyto aplikace používají [sadu SDK pro zařízení Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). V případě všech praktických účelů může být jako aplikace spuštěná na samotném zařízení IoT Edge brány. IoT Edge zařízení ale nemůže být podřízená bráně IoT Edge. 
 
-Můžete vytvořit jakékoli infrastrukturu certifikátů, která umožňuje důvěryhodnosti vyžadované pro topologii zařízení brány. V tomto článku se předpokládáme, že použijete stejné nastavení certifikátu, které byste použili k povolení [zabezpečení CA x. 509](../iot-hub/iot-hub-x509ca-overview.md) v IoT Hub, což zahrnuje certifikát CA x. 509, který je přidružený ke konkrétnímu centru IoT (KOŘENová CA služby IoT Hub), sérii certifikátů podepsaných touto certifikační autoritou a certifikační autoritou pro IoT Edge zařízení.
+Můžete vytvořit jakoukoli infrastrukturu certifikátů, která umožňuje důvěryhodnost potřebnou pro topologii zařízení a brány. V tomto článku se předpokládáme, že použijete stejné nastavení certifikátu, které byste použili k povolení [zabezpečení CA x. 509](../iot-hub/iot-hub-x509ca-overview.md) v IoT Hub, což zahrnuje certifikát CA x. 509, který je přidružený ke konkrétnímu centru IoT (KOŘENová CA služby IoT Hub), sérii certifikátů podepsaných touto certifikační autoritou a certifikační autoritou pro IoT Edge zařízení.
 
-![Instalace certifikátu brány](./media/how-to-create-transparent-gateway/gateway-setup.png)
+![Nastavení certifikátu brány](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 >[!NOTE]
 >Pojem "Kořenová certifikační autorita", který se používá v celém tomto článku, odkazuje na veřejný certifikát certifikační autority certifikátu PKI, a ne nutně na kořen certifikátu pro syndikátní certifikační autoritu. V mnoha případech je ve skutečnosti veřejný certifikát zprostředkující certifikační autority. 
 
 Brána při zahájení připojení prezentuje své IoT Edge certifikát CA zařízení. Zařízení pro příjem dat zkontroluje, že certifikát CA IoT Edge zařízení je podepsaný certifikátem kořenové certifikační autority. V rámci tohoto procesu může zařízení pro příjem dat potvrdit, že brána pochází z důvěryhodného zdroje.
 
-Následující kroky vás provedou procesem vytvoření certifikátů a jejich instalací do správných míst v bráně. Můžete použít libovolný počítač, čímž vygenerujete certifikáty a potom zkopírovat je do zařízení IoT Edge. 
+Následující kroky vás provedou procesem vytvoření certifikátů a jejich instalací do správných míst v bráně. K vygenerování certifikátů můžete použít libovolný počítač a pak je zkopírovat do zařízení IoT Edge. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojový počítač pro vytváření certifikátů. 
-* Zařízení Azure IoT Edge jako bránu nakonfigurovat. Použijte postup instalace IoT Edge pro jeden z následujících operačních systémů:
+* Azure IoT Edge zařízení, které se má nakonfigurovat jako brána. Použijte postup instalace IoT Edge pro jeden z následujících operačních systémů:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
 
-## <a name="generate-certificates-with-windows"></a>Generování certifikátů s Windows
+## <a name="generate-certificates-with-windows"></a>Generování certifikátů v systému Windows
 
 Pomocí kroků v této části můžete vygenerovat testovací certifikáty ve Windows. K vygenerování certifikátů můžete použít počítač s Windows a pak je zkopírovat do libovolného IoT Edge zařízení, které běží na jakémkoli podporovaném operačním systému. 
 
-Certifikáty generované v této části jsou určeny pouze pro účely testování. 
+Certifikáty vygenerované v této části jsou určené pouze pro účely testování. 
 
-### <a name="install-openssl"></a>Nainstalujte OpenSSL
+### <a name="install-openssl"></a>Nainstalovat OpenSSL
 
-Nainstalujte OpenSSL pro Windows na počítači, který používáte, čímž vygenerujete certifikáty. Pokud jste již na zařízení s Windows nainstalovali OpenSSL, můžete tento krok přeskočit, ale zajistěte, aby byl v proměnné prostředí PATH k dispozici OpenSSL. exe. 
+Nainstalujte OpenSSL pro Windows na počítači, který používáte k vygenerování certifikátů. Pokud jste již na zařízení s Windows nainstalovali OpenSSL, můžete tento krok přeskočit, ale zajistěte, aby byl v proměnné prostředí PATH k dispozici OpenSSL. exe. 
 
 Existuje několik způsobů, jak nainstalovat OpenSSL, včetně:
 
-* **Jednodušší:** Stáhněte si a nainstalujte všechny [binární soubory OpenSSL třetích stran](https://wiki.openssl.org/index.php/Binaries), například z [OpenSSL v sourceforge](https://sourceforge.net/projects/openssl/). Přidejte úplná cesta k openssl.exe do proměnné prostředí PATH. 
+* **Jednodušší:** Stáhněte si a nainstalujte všechny [binární soubory OpenSSL třetích stran](https://wiki.openssl.org/index.php/Binaries), například z [OpenSSL v sourceforge](https://sourceforge.net/projects/openssl/). Přidejte úplnou cestu k souboru OpenSSL. exe do proměnné prostředí PATH. 
    
-* **Doporučené:** Stáhněte si zdrojový kód OpenSSL a sestavte binární soubory na svém počítači sami nebo prostřednictvím [vcpkg](https://github.com/Microsoft/vcpkg). Níže uvedené pokyny používají vcpkg stáhnout zdrojový kód, kompilace a nainstalujte OpenSSL na svůj počítač s Windows pomocí jednoduchých kroků.
+* **Doporučené:** Stáhněte si zdrojový kód OpenSSL a sestavte binární soubory na svém počítači sami nebo prostřednictvím [vcpkg](https://github.com/Microsoft/vcpkg). Níže uvedené pokyny používají vcpkg ke stažení zdrojového kódu, kompilaci a instalaci OpenSSL na počítači s Windows pomocí jednoduchých kroků.
 
    1. Přejděte do adresáře, kam chcete nainstalovat vcpkg. Do tohoto adresáře odkazujeme jako *\<VCPKGDIR >* . Podle pokynů stáhněte a nainstalujte [vcpkg](https://github.com/Microsoft/vcpkg).
    
-   2. Po instalaci vcpkg spusťte následující příkaz z příkazového řádku PowerShellu a nainstalujte balíček OpenSSL pro Windows x64. Instalace obvykle trvá přibližně 5 minut na dokončení.
+   2. Po instalaci vcpkg spusťte následující příkaz z příkazového řádku PowerShellu a nainstalujte balíček OpenSSL pro Windows x64. Dokončení instalace obvykle trvá přibližně 5 minut.
 
       ```powershell
       .\vcpkg install openssl:x64-windows
@@ -82,9 +82,9 @@ Existuje několik způsobů, jak nainstalovat OpenSSL, včetně:
 
 Azure IoT Edge úložiště Git obsahuje skripty, které můžete použít k vygenerování testovacích certifikátů. V této části naklonujte úložiště IoT Edge a spustíte skripty. 
 
-1. Otevřete okno Powershellu v režimu správce. 
+1. Otevřete okno PowerShellu v režimu správce. 
 
-2. Naklonujte úložiště git, který obsahuje skripty pro generování certifikátů nevýrobní prostředí. Tyto skripty vám pomůžou vytvořit potřebné certifikáty pro nastavení transparentní brány. Použijte příkaz `git clone` nebo [Stáhněte soubor zip](https://github.com/Azure/iotedge/archive/master.zip). 
+2. Naklonujte úložiště Git obsahující skripty pro generování neprodukčních certifikátů. Tyto skripty vám pomůžou vytvořit potřebné certifikáty pro nastavení transparentní brány. Použijte příkaz `git clone` nebo [Stáhněte soubor zip](https://github.com/Azure/iotedge/archive/master.zip). 
 
    ```powershell
    git clone https://github.com/Azure/iotedge.git
@@ -107,7 +107,7 @@ Azure IoT Edge úložiště Git obsahuje skripty, které můžete použít k vyg
     $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
     ```
 -->
-5. Povolte spouštění skriptů prostředí PowerShell.
+5. Povolte prostředí PowerShell ke spouštění skriptů.
 
    ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
@@ -121,7 +121,7 @@ Azure IoT Edge úložiště Git obsahuje skripty, které můžete použít k vyg
 
    V okně PowerShellu se zobrazí upozornění, že certifikáty generované tímto skriptem jsou jenom pro účely testování a neměly by se používat v produkčních scénářích.
 
-8. Ověřte, že je OpenSSL správně nainstalovaný, a ujistěte se, že se nejedná o kolizi názvů se stávajícími certifikáty. Pokud dochází k problémům, by měl skript popisují, jak je opravit ve vašem systému.
+8. Ověřte, že je OpenSSL správně nainstalovaný, a ujistěte se, že se nejedná o kolizi názvů se stávajícími certifikáty. Pokud se vyskytnou problémy, skript by měl popsat, jak je opravit v systému.
 
    ```powershell
    Test-CACertsPrerequisites
@@ -129,7 +129,7 @@ Azure IoT Edge úložiště Git obsahuje skripty, které můžete použít k vyg
 
 ### <a name="create-certificates"></a>Vytvoření certifikátů
 
-V této části vytvoříte tři certifikáty a připojit je v řetězu. Uvedení certifikáty v řetězu souboru umožňuje snadno nainstalovat na všechny podřízené zařízeních a vaše zařízení brány IoT Edge.  
+V této části vytvoříte tři certifikáty a pak je připojíte v řetězci. Umístění certifikátů do souboru s řetězem vám umožní jejich instalaci snadno na zařízení IoT Edge brány a na všechna zařízení s podřízenou platností.  
 
 1. Vytvořte certifikát kořenové certifikační autority a podepište ho jako jeden zprostředkující certifikát. Certifikáty jsou umístěné v pracovním adresáři.
 
@@ -155,17 +155,17 @@ V této části vytvoříte tři certifikáty a připojit je v řetězu. Uveden�
 
 Teď, když máte certifikáty, přeskočte k [instalaci certifikátů v bráně](#install-certificates-on-the-gateway)
 
-## <a name="generate-certificates-with-linux"></a>Generování certifikátů s Linuxem
+## <a name="generate-certificates-with-linux"></a>Generování certifikátů se systémem Linux
 
 Pomocí kroků v této části můžete vygenerovat testovací certifikáty v systému Linux. K vygenerování certifikátů můžete použít počítač se systémem Linux a pak je zkopírovat do libovolného IoT Edge zařízení, které běží na jakémkoli podporovaném operačním systému. 
 
-Certifikáty generované v této části jsou určeny pouze pro účely testování. 
+Certifikáty vygenerované v této části jsou určené pouze pro účely testování. 
 
 ### <a name="prepare-creation-scripts"></a>Příprava skriptů pro vytvoření
 
 Azure IoT Edge úložiště Git obsahuje skripty, které můžete použít k vygenerování testovacích certifikátů. V této části naklonujte úložiště IoT Edge a spustíte skripty. 
 
-1. Naklonujte úložiště git, který obsahuje skripty pro generování certifikátů nevýrobní prostředí. Tyto skripty vám pomůžou vytvořit potřebné certifikáty pro nastavení transparentní brány. 
+1. Naklonujte úložiště Git obsahující skripty pro generování neprodukčních certifikátů. Tyto skripty vám pomůžou vytvořit potřebné certifikáty pro nastavení transparentní brány. 
 
    ```bash
    git clone https://github.com/Azure/iotedge.git
@@ -190,7 +190,7 @@ Azure IoT Edge úložiště Git obsahuje skripty, které můžete použít k vyg
 
 ### <a name="create-certificates"></a>Vytvoření certifikátů
 
-V této části vytvoříte tři certifikáty a připojit je v řetězu. Uvedení certifikáty v řetězu souboru umožňuje snadno je instalovat na vaše zařízení brány IoT Edge a všechny podřízené zařízení.  
+V této části vytvoříte tři certifikáty a pak je připojíte v řetězci. Umístění certifikátů do souboru s řetězem umožňuje jejich snadné instalaci do zařízení IoT Edge brány a všech podřízených zařízení.  
 
 1. Vytvořte certifikát kořenové certifikační autority a jeden zprostředkující certifikát. Tyto certifikáty jsou umístěné v *\<WRKDIR >* .
 
@@ -216,11 +216,11 @@ V této části vytvoříte tři certifikáty a připojit je v řetězu. Uveden�
    >[!TIP]
    >Pokud zadáte jiný název než **MyEdgeDeviceCA**, pak certifikáty a klíče vytvořené tímto příkazem budou tento název zobrazovat. 
 
-## <a name="install-certificates-on-the-gateway"></a>Instalace certifikátů na bráně
+## <a name="install-certificates-on-the-gateway"></a>Instalace certifikátů na bránu
 
-Teď, když jste provedli řetěz certifikátů, budete muset nainstalovat na zařízení brány IoT Edge a nakonfigurovat modul runtime IoT Edge tak, aby odkazovaly na nové certifikáty. 
+Teď, když jste provedli řetěz certifikátů, musíte ho nainstalovat na zařízení IoT Edge brány a nakonfigurovat IoT Edge modul runtime tak, aby odkazoval na nové certifikáty. 
 
-1. Zkopírujte následující soubory z *\<WRKDIR >* . Uložte kamkoli na vašem zařízení IoT Edge. Jako *>\<CERTDIR*odkazujeme na cílový adresář na vašem zařízení IoT Edge. 
+1. Zkopírujte následující soubory z *\<WRKDIR >* . Uložte je kdekoli na zařízení IoT Edge. Jako *\<CERTDIR*odkazujeme na cílový adresář na vašem zařízení IoT Edge. 
 
    * Certifikát certifikační autority zařízení – `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
    * Privátní klíč certifikační autority zařízení – `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
@@ -228,7 +228,7 @@ Teď, když jste provedli řetěz certifikátů, budete muset nainstalovat na za
 
    K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .  Pokud jste certifikáty vygenerovali na samotném IoT Edge zařízení, můžete tento krok přeskočit a použít cestu k pracovnímu adresáři.
 
-2. Otevřete konfigurační soubor démon zabezpečení IoT Edge. 
+2. Otevřete konfigurační soubor démona zabezpečení IoT Edge. 
 
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
@@ -256,7 +256,7 @@ Teď, když jste provedli řetěz certifikátů, budete muset nainstalovat na za
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>Nasazení EdgeHub do brány
 
-Při první instalaci IoT Edge na zařízení se automaticky spustí pouze jeden systémový modul: Agent IoT Edge. Pro vaše zařízení k práci jako brána budete potřebovat oba moduly systému. Pokud jste do zařízení brány ještě nenainstalovali žádné moduly, vytvořte počáteční nasazení pro vaše zařízení a spusťte druhý systémový modul, Centrum IoT Edge. Nasazení bude vypadat prázdné, protože do Průvodce nepřidáte žádné moduly, ale zajistěte, aby byly spuštěny oba systémové moduly. 
+Při první instalaci IoT Edge na zařízení se automaticky spustí pouze jeden systémový modul: Agent IoT Edge. Aby vaše zařízení fungovalo jako brána, budete potřebovat oba systémové moduly. Pokud jste do zařízení brány ještě nenainstalovali žádné moduly, vytvořte počáteční nasazení pro vaše zařízení a spusťte druhý systémový modul, Centrum IoT Edge. Nasazení bude vypadat prázdné, protože do Průvodce nepřidáte žádné moduly, ale zajistěte, aby byly spuštěny oba systémové moduly. 
 
 Pomocí příkazu `iotedge list`můžete zjistit, které moduly jsou spuštěné na zařízení. Pokud seznam vrátí jenom modul **edgeAgent** bez **edgeHub**, použijte následující postup:
 
@@ -266,7 +266,7 @@ Pomocí příkazu `iotedge list`můžete zjistit, které moduly jsou spuštěné
 
 3. Vyberte **Nastavit moduly**.
 
-4. Vyberte **Next** (Další).
+4. Vyberte **Další**.
 
 5. Na stránce **zadat trasy** byste měli mít výchozí trasu, která odesílá všechny zprávy ze všech modulů do IoT Hub. Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
 
@@ -284,18 +284,18 @@ Pomocí příkazu `iotedge list`můžete zjistit, které moduly jsou spuštěné
 
 Zařízení Standard IoT Edge nepotřebují žádné příchozí připojení, protože veškerá komunikace s IoT Hub se provádí prostřednictvím odchozích připojení. Zařízení brány jsou odlišná, protože potřebují přijímat zprávy ze svých podřízených zařízení. Pokud je brána firewall mezi zařízeními pro příjem dat a zařízením brány, musí být komunikace také možná přes bránu firewall.
 
-Aby mohl scénář brány fungovat, musí být aspoň jeden z podporovaných protokolů centra IoT Edge otevřený pro příchozí provoz ze zařízení se systémem. Podporované protokoly jsou MQTT, AMQP a HTTPS. 
+Aby mohl scénář brány fungovat, musí být aspoň jeden z podporovaných protokolů centra IoT Edge otevřený pro příchozí provoz ze zařízení se systémem. Podporované protokoly jsou MQTT, AMQP, HTTPS, MQTT přes WebSockets a AMQP přes objekty WebSockets. 
 
 | Port | Protocol (Protokol) |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |
-| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
+| 443 | HTTPS <br> MQTT + WS <br> AMQP + WS | 
 
-## <a name="route-messages-from-downstream-devices"></a>Směrování zpráv ze zařízení příjem dat
-Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příjem dat, stejně jako zprávy odeslané moduly. Tato funkce umožňuje provádět analýzy v modulu spuštěném v bráně před odesláním dat do cloudu. 
+## <a name="route-messages-from-downstream-devices"></a>Směrování zpráv ze zařízení pro příjem dat
+Modul runtime IoT Edge může směrovat zprávy odesílané ze zařízení pro příjem dat stejně jako zprávy odesílané moduly. Tato funkce umožňuje provádět analýzy v modulu spuštěném v bráně před odesláním dat do cloudu. 
 
-V současné době je tak, jak směrovat zprávy odesílané zařízeními podřízené rozlišení na zprávy odeslané moduly. Zprávy odesílané modulem All obsahují vlastnost systému nazvanou **connectionModuleId** , ale zprávy odesílané ze zařízení pro příjem dat nejsou. Klauzule WHERE trasy můžete vyloučit všechny zprávy, které obsahují tuto vlastnost systému. 
+V současné době je způsob směrování zpráv odesílaných pomocí navazujících zařízení odlišený od zpráv odesílaných moduly. Zprávy odesílané modulem All obsahují vlastnost systému nazvanou **connectionModuleId** , ale zprávy odesílané ze zařízení pro příjem dat nejsou. Klauzuli WHERE trasy můžete použít k vyloučení všech zpráv, které obsahují tuto vlastnost systému. 
 
 Níže uvedený postup slouží jako příklad, který by odesílal zprávy ze všech podřízených zařízení do modulu s názvem `ai_insights`a potom z `ai_insights` na IoT Hub.
 
@@ -321,4 +321,4 @@ Chcete-li povolit rozšířené možnosti offline, navažte vztah mezi nadřazen
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte zařízení IoT Edge funguje jako transparentní brána, musíte pro příjem dat zařízení důvěřovat brány a odesílat zprávy do něj. Pokračujte tím, že na [Azure IoT Hub ověříte zařízení pro příjem dat](how-to-authenticate-downstream-device.md) s dalšími kroky v části nastavení vašeho transparentního scénáře brány. 
+Teď, když máte zařízení IoT Edge pracující jako transparentní bránu, musíte nakonfigurovat zařízení pro příjem dat tak, aby důvěřovala bráně a odesílala do ní zprávy. Pokračujte tím, že na [Azure IoT Hub ověříte zařízení pro příjem dat](how-to-authenticate-downstream-device.md) s dalšími kroky v části nastavení vašeho transparentního scénáře brány. 

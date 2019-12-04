@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 02d87ed5f26d36b7cd438b0d818c7bdcce43520d
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464125"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762698"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
 
@@ -30,9 +30,9 @@ Pomocí RBAC můžete použít a vytvořit role v rámci vašeho týmu zabezpeč
 
 Existují tři konkrétní předdefinované role Sentinel Azure.  
 **Všechny předdefinované role Azure Sentinel udělují přístup pro čtení k datům v pracovním prostoru Sentinel Azure.**
-- **Čtečka Sentinel Azure**: Další informace najdete v tématu [předdefinované role](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) .
-- **Respondér služby Azure Sentinel**: Další informace najdete v tématu [předdefinované role](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) .
-- **Přispěvatel Sentinel Azure**: Další informace najdete v tématu [předdefinované role](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) .
+- [Čtečka Sentinel Azure](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- [Respondér služby Azure Sentinel](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- [Přispěvatel Sentinel Azure](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
 Kromě vyhrazených rolí RBAC v Azure jsou k dispozici role RBAC Azure a Log Analytics, které jim umožňují poskytnout širší sadu oprávnění, která zahrnují přístup k vašemu pracovnímu prostoru Azure Sentinel a dalším prostředkům:
 

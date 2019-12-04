@@ -1,31 +1,31 @@
 ---
-title: Připojení aplikace ke službě Azure Database for MySQL
-description: Tento dokument obsahuje seznam aktuálně podporovaných připojovacích řetězců pro aplikace pro připojení s využitím Azure Database for MySQL, včetně technologie ADO.NET (C#), JDBC, Node.js, rozhraní ODBC, PHP, Python nebo Ruby.
+title: Připojovací řetězce – Azure Database for MySQL
+description: Tento dokument obsahuje seznam aktuálně podporovaných připojovacích řetězců pro aplikace pro připojení k Azure Database for MySQL, včetně ADO.NETC#(), JDBC, Node. js, ODBC, php, Pythonu a Ruby.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 503b7764ba7958a5448903b217b00e204ffcbf61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: bee98accd8ac404eb223975571b082dae754571a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459262"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770488"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Postup připojení aplikací k Azure Database for MySQL
-Toto téma uvádí typy řetězce připojení, které jsou podporovány službou Azure Database for MySQL, spolu s příklady a šablony. V připojovacím řetězci může mít různé parametry a nastavení.
+Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azure Database for MySQL, spolu se šablonami a příklady. V připojovacím řetězci můžete mít různé parametry a nastavení.
 
-- Pokud chcete získat certifikát, najdete v článku [konfigurace SSL](./howto-configure-ssl.md).
-- {your_host} = \<servername>.mysql.database.azure.com
-- {your_user}@{servername} správně = formát ID uživatele pro ověřování.  Pokud používáte pouze ID uživatele, ověření se nezdaří.
+- Informace o získání certifikátu najdete v tématu [Jak konfigurovat protokol SSL](./howto-configure-ssl.md).
+- {your_host} = \<servername >. MySQL. Database. Azure. com
+- {your_user} @ {servername} = formát userID pro ověřování správně.  Pokud použijete identifikátor userID, ověření se nezdaří.
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-V tomto příkladu je název serveru `mydemoserver`, název databáze je `wpdb`, uživatelské jméno je `WPAdmin`, a heslo je `mypassword!2`. V důsledku toho by měl být připojovací řetězec:
+V tomto příkladu je název serveru `mydemoserver`, název databáze je `wpdb`, uživatelské jméno `WPAdmin`a heslo je `mypassword!2`. V důsledku toho by měl být připojovací řetězec:
 
 ```ado.net
 Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -61,10 +61,10 @@ cnx = mysql.connector.connect(user={username@servername}, password={your_passwor
 client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o řetězci připojení z webu Azure portal
-V [webu Azure portal](https://portal.azure.com), přejděte na váš server Azure Database for MySQL a pak klikněte na tlačítko **připojovací řetězce** zobrazíte seznam řetězců pro vaši instanci: ![V podokně připojovací řetězce na webu Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o připojovacím řetězci z Azure Portal
+V [Azure Portal](https://portal.azure.com)přejděte na Azure Database for MySQL server a pak klikněte na **připojovací řetězce** . zobrazí se seznam řetězců pro vaši instanci: ![podokně připojovací řetězce v Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-Řetězec obsahuje podrobnosti, jako jsou ovladače, server a další databáze parametry připojení. Upravte tyto příklady použití vlastní parametry, jako je například název databáze, heslo a tak dále. Potom můžete tento řetězec pro připojení k serveru z vašeho kódu a aplikací.
+Řetězec poskytuje podrobnosti, jako je například ovladač, server a další parametry připojení databáze. Upravte tyto příklady tak, aby používaly vlastní parametry, jako je třeba název databáze, heslo a tak dále. Pak můžete použít tento řetězec pro připojení k serveru z kódu a aplikací.
 
-## <a name="next-steps"></a>Další postup
-- Další informace o knihovnách připojení, najdete v části [Principy – knihovny připojení](./concepts-connection-libraries.md).
+## <a name="next-steps"></a>Další kroky
+- Další informace o knihovnách připojení najdete v tématu [Koncepty – knihovny připojení](./concepts-connection-libraries.md).

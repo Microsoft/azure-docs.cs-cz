@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: cf0deffb6fe484f7e3ee38b95f285bb4b7cc809c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 07426e096858dec61f501581be565dc4137d6316
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072564"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773349"
 ---
 # <a name="inspect-custom-speech-data"></a>Kontrola Custom Speech dat
 
@@ -37,9 +37,11 @@ Při vytváření testu postupujte podle těchto pokynů:
 3. Klikněte na **Přidat test**.
 4. Vyberte možnost **kontrolovat kvalitu (jenom zvuková data)** . Dejte testu název, popis a vyberte vaši zvukovou datovou sadu.
 5. Vyberte až dva modely, které chcete testovat.
-6. Klikněte na možnost **Vytvořit**.
+6. Klikněte na **Vytvořit**.
 
 Po úspěšném vytvoření testu můžete porovnat modely vedle sebe.
+
+[!INCLUDE [service-pricing-advisory](includes/service-pricing-advisory.md)]
 
 ## <a name="side-by-side-model-comparisons"></a>Porovnání modelů souběžného sdílení
 

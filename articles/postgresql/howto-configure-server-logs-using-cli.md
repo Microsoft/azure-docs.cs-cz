@@ -1,23 +1,23 @@
 ---
-title: Konfigurace a přístup k protokolům serveru pro PostgreSQL-Single server pomocí Azure CLI
-description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru v Azure Database for PostgreSQL-Single server pomocí příkazového řádku Azure CLI.
+title: Správa protokolů – Azure CLI-Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru (soubory. log) v Azure Database for PostgreSQL-Single server pomocí Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023624"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763568"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům serveru pomocí Azure CLI
 Protokoly chyb serveru PostgreSQL můžete stáhnout pomocí rozhraní příkazového řádku (Azure CLI). Přístup k protokolům transakcí ale není podporovaný. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Server Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
 - Nástroj příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči

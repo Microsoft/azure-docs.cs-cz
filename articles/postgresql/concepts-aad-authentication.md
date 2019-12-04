@@ -1,17 +1,17 @@
 ---
-title: Ověřování Azure Active Directory s využitím Azure Database for PostgreSQL-Single server
+title: Ověřování služby Active Directory – Azure Database for PostgreSQL – jeden server
 description: Přečtěte si o konceptech Azure Active Directory pro ověřování pomocí Azure Database for PostgreSQL-Single server
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 47637396581beeafb0748066cd6a66f011e8eaa1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518733"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769910"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
 
@@ -86,7 +86,7 @@ Po ověření vůči službě Active Directory načtěte token. Tento token je v
 > [!NOTE]
 > Přihlášení k odstraněnému uživateli Azure AD se pořád může vykonat do vypršení platnosti tokenu (až 60 minut od vydání tokenu).  Pokud také odeberete uživatele z Azure Database for PostgreSQL tento přístup se okamžitě odvolá.
 - Pokud se správce Azure AD odebere ze serveru, server už nebude přidružený k tenantovi Azure AD, takže všechna přihlášení k Azure AD budou pro tento server zakázaná. Když se přidá nový správce Azure AD ze stejného tenanta, znovu se povolí přihlášení služby Azure AD.
-- Azure Database for PostgreSQL odpovídá přístupovým tokenům k roli Azure Database for PostgreSQL pomocí jedinečného ID uživatele Azure AD, a to na rozdíl od použití uživatelského jména. To znamená, že pokud se uživatel Azure AD odstraní v Azure AD a vytvoří se nový uživatel se stejným názvem, Azure Database for PostgreSQL považuje za jiného uživatele. Proto pokud se uživatel z Azure AD odstraní a pak se nový uživatel s tímto názvem přidal, nový uživatel se nebude moct připojit k existující roli. Aby to bylo možné, Azure Database for PostgreSQL správce Azure AD musí odvolat a potom udělit uživateli roli "azure_ad_user", aby aktualizovala ID uživatele Azure AD.
+- Azure Database for PostgreSQL odpovídá přístupovým tokenům k roli Azure Database for PostgreSQL pomocí jedinečného ID uživatele Azure AD, a to na rozdíl od použití uživatelského jména. To znamená, že pokud se uživatel Azure AD odstraní v Azure AD a vytvoří se nový uživatel se stejným názvem, Azure Database for PostgreSQL považuje za jiného uživatele. Proto pokud se uživatel z Azure AD odstraní a pak se nový uživatel s tímto názvem přidal, nový uživatel se nebude moct připojit k existující roli. Aby to bylo možné, Azure Database for PostgreSQL správce Azure AD musí odvolat a potom udělit roli "azure_ad_user" uživateli aktualizovat ID uživatele Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 

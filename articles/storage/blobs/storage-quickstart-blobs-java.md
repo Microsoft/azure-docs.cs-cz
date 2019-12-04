@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 27fbd0084f9f8c91ee83802efe6a96213363b78f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: b5a59e51190fc8309d35445fba7ef4a2dd22b970
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422052"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770437"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro jazyk Java
 
@@ -33,7 +33,7 @@ Použijte klientskou knihovnu služby Azure Blob Storage V12 pro jazyk Java:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší
 * [Apache Maven](https://maven.apache.org/download.cgi)
@@ -46,7 +46,7 @@ Tato část vás provede přípravou projektu pro práci s klientskou knihovnou 
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci Java Core s názvem *BLOB-Start-V12*.
+Vytvořte aplikaci Java s názvem *BLOB-Start-V12*.
 
 1. V okně konzoly (například cmd, PowerShell nebo bash) použijte Maven a vytvořte novou konzolovou aplikaci s názvem *objekt BLOB-rychlý Start-V12*. Pro vytvoření jednoduchého "Hello World!" zadejte na jeden řádek následující příkaz **MVN** . Projekt Java. Tento příkaz se zobrazí na více řádcích pro čitelnost.
 
@@ -204,7 +204,7 @@ String connectStr = System.getenv("CONNECT_STR");
 Určete název nového kontejneru. Následující kód připojí hodnotu UUID k názvu kontejneru, aby bylo zajištěno, že je jedinečný.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 Dále vytvořte instanci třídy [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) a potom zavolejte metodu [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) , která ve skutečnosti vytvoří kontejner v účtu úložiště.
 

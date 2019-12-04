@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099755"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775734"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -22,7 +22,7 @@ ms.locfileid: "73099755"
 V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) nakonfigurovat [novější výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. V [této sadě typů prostředků](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)jsou aktuálně k dispozici novější výstrahy metriky.
 
 > [!IMPORTANT]
-> Šablona prostředku pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Šablona prostředku pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces`vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Základní postup je následující:
 
@@ -551,9 +551,11 @@ az group deployment create \
 >
 > I když se upozornění na metriku dá vytvořit v jiné skupině prostředků jako cílový prostředek, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
 
-## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>Šablona pro pokročilejší výstrahu metriky se statickou prahovou hodnotou
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Šablona pro výstrahu metriky statického prahového hodnoty, která monitoruje více kritérií
 
-Novější výstrahy metrik podporují upozorňování na multidimenzionální metriky a podporují více kritérií. Následující šablonu můžete použít k vytvoření pokročilejší výstrahy metriky pro multidimenzionální metriky a zadat více kritérií.
+Novější výstrahy metrik podporují upozorňování na multidimenzionální metriky a podporují více kritérií. Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro multidimenzionální metriky a zadat více kritérií.
+
+Všimněte si, že pokud pravidlo výstrahy obsahuje více kritérií, je použití dimenzí omezeno na jednu hodnotu na dimenzi v rámci každého kritéria.
 
 Následující kód JSON uložte jako advancedstaticmetricalert. JSON pro účely tohoto Názorného postupu.
 
@@ -784,13 +786,243 @@ az group deployment create \
 
 >[!NOTE]
 >
-> I když se upozornění na metriku dá vytvořit v jiné skupině prostředků jako cílový prostředek, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
+> Pokud pravidlo výstrahy obsahuje více kritérií, je použití dimenzí omezeno na jednu hodnotu na dimenzi v rámci každého kritéria.
 
-## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>Šablona pro pokročilejší upozornění na metriku s dynamickými prahovými hodnotami
+## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Šablona pro statickou výstrahu metriky, která monitoruje více dimenzí
 
-Následující šablonu můžete použít k vytvoření pokročilejšího upozornění na metriku dynamických prahových hodnot pro dimenzionální metriky. Více kritérií není aktuálně podporováno.
+Pomocí následující šablony můžete vytvořit pravidlo statické výstrahy metriky pro multidimenzionální metriky.
 
-Pravidlo upozornění na dynamické prahové hodnoty může vytvořit přizpůsobené prahové hodnoty pro stovky řady metrik (dokonce i různých typů), což vede k menšímu počtu pravidel upozornění pro správu.
+Jedno pravidlo výstrahy může sledovat několik časových řad metrik najednou, což má za následek méně pravidel upozornění, která se mají spravovat.
+
+V následujícím příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí **ResponseType** a **ApiName** dimenzí pro metriku **transakcí** :
+1. **ResponsType** – použití zástupného znaku "\*" znamená, že pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se různou časovou řadou monitorují jednotlivě.
+2. **ApiName** -jiná časová řada bude monitorována pouze pro hodnoty dimenze **getblob** a **PutBlob** .
+
+Například několik možných časových řad, které se budou monitorovat pomocí tohoto pravidla upozornění, jsou tyto:
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
+
+Následující kód JSON uložte jako multidimensionalstaticmetricalert. JSON pro účely tohoto Názorného postupu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
+            }
+        },
+        "criterion":{
+            "type": "object",
+            "metadata": {
+                "description": "Criterion includes metric name, dimension values, threshold and an operator. The alert rule fires when ALL criteria are met"
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": { 
+        "criteria": "[array(parameters('criterion'))]"
+     },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": "[variables('criteria')]"
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
+
+Uložte a upravte JSON níže jako multidimensionalstaticmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New multi-dimensional metric alert rule (replace with your alert name)"
+        },
+        "alertDescription": {
+            "value": "New multi-dimensional metric alert rule created via template (replace with your alert description)"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
+        },
+        "criterion": {
+            "value": {
+                    "name": "Criterion",
+                    "metricName": "Transactions",
+                    "dimensions": [
+                        {
+                            "name":"ResponseType",
+                            "operator": "Include",
+                            "values": ["*"]
+                        },
+                        {
+                "name":"ApiName",
+                            "operator": "Include",
+                            "values": ["GetBlob", "PutBlob"]    
+                        }
+                    ],
+                    "operator": "GreaterThan",
+                    "threshold": "5",
+                    "timeAggregation": "Total"
+                }
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
+        }
+    }
+}
+```
+
+
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+
+Použití Azure Powershell
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
+  -TemplateFile multidimensionalstaticmetricalert.json -TemplateParameterFile multidimensionalstaticmetricalert.parameters.json
+```
+
+
+
+Použití Azure CLI
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupofTargetResource \
+    --template-file multidimensionalstaticmetricalert.json \
+    --parameters @multidimensionalstaticmetricalert.parameters.json
+```
+
+
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Šablona pro upozornění na dynamické prahové hodnoty, která monitoruje více dimenzí
+
+Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky s dynamickými prahovými hodnotami pro multidimenzionální metriky.
+
+Jedno pravidlo výstrahy s jedním dynamickými prahovými hodnotami může vytvořit přizpůsobené prahové hodnoty pro stovky časových řad (dokonce i různých typů), což vede k menšímu počtu pravidel upozornění, která se mají spravovat.
+
+V následujícím příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí **ResponseType** a **ApiName** dimenzí pro metriku **transakcí** :
+1. **ResponsType** – pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se různou časovou řadou monitorují samostatně.
+2. **ApiName** -jiná časová řada bude monitorována pouze pro hodnoty dimenze **getblob** a **PutBlob** .
+
+Například několik možných časových řad, které se budou monitorovat pomocí tohoto pravidla upozornění, jsou tyto:
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
+- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
 
 Následující kód JSON uložte jako advanceddynamicmetricalert. JSON pro účely tohoto Názorného postupu.
 
@@ -936,7 +1168,7 @@ Uložte a upravte JSON níže jako advanceddynamicmetricalert. Parameters. JSON 
         "resourceId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
         },
-        "criterion1": {
+        "criterion": {
             "value": {
                     "criterionType": "DynamicThresholdCriterion",
                     "name": "1st criterion",
@@ -945,12 +1177,12 @@ Uložte a upravte JSON níže jako advanceddynamicmetricalert. Parameters. JSON 
                         {
                             "name":"ResponseType",
                             "operator": "Include",
-                            "values": ["Success"]
+                            "values": ["*"]
                         },
                         {
                             "name":"ApiName",
                             "operator": "Include",
-                            "values": ["GetBlob"]
+                            "values": ["GetBlob", "PutBlob"]
                         }
                     ],
                     "operator": "GreaterOrLessThan",
@@ -961,7 +1193,7 @@ Uložte a upravte JSON níže jako advanceddynamicmetricalert. Parameters. JSON 
                     },
                     "timeAggregation": "Total"
                 }
-        }
+        },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
         }
@@ -997,11 +1229,11 @@ az group deployment create \
 
 >[!NOTE]
 >
-> I když se upozornění na metriku dá vytvořit v jiné skupině prostředků jako cílový prostředek, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
+> Pro pravidla upozornění metrik, která používají dynamické prahové hodnoty, se aktuálně nepodporují více kritérií.
 
-## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Šablona pro upozornění metriky, která monitoruje více prostředků
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Šablona výstrahy metriky, která monitoruje více prostředků
 
-Předchozí části popisují ukázkovou Azure Resource Manager šablon pro vytváření výstrah metrik, které sledují jeden prostředek. Azure Monitor teď podporuje monitorování více prostředků s jedním pravidlem upozornění na metriku. Tato funkce je momentálně podporovaná jenom ve veřejném cloudu Azure a jenom pro virtuální počítače a zařízení Databox Edge.
+Předchozí části popisují ukázkovou Azure Resource Manager šablon pro vytváření výstrah metrik, které sledují jeden prostředek. Azure Monitor teď podporuje monitorování více prostředků s jedním pravidlem upozornění na metriku. Tato funkce je momentálně podporovaná jenom ve veřejném cloudu Azure a jenom pro virtuální počítače, databáze SQL, elastické fondy SQL a Databox hraniční zařízení.
 
 Pravidlo upozornění na dynamické prahové hodnoty může také vytvořit přizpůsobené prahové hodnoty pro stovky řady metrik (dokonce i různých typů), což vede k menšímu počtu pravidel upozornění, která se mají spravovat.
 
@@ -1836,6 +2068,7 @@ Následující kód JSON uložte jako all-VM-in-Subscription-static. JSON pro ú
             "type": "string",
             "defaultValue": "PT1M",
             "allowedValues": [
+                "PT1M",
                 "PT5M",
                 "PT15M",
                 "PT30M",

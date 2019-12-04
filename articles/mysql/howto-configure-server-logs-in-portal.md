@@ -1,31 +1,31 @@
 ---
-title: Konfigurace a přístup k protokolům pomalým dotazům v Azure Database for MySQL z Azure Portal
+title: Přístup k protokolům pomalým dotazům-Azure Portal-Azure Database for MySQL
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k pomalým protokolům v Azure Database for MySQL z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 7eeeb729973e484e9acb26f3ac8cc42693f72eea
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 12/02/2019
+ms.openlocfilehash: 52d219a94676e0f1ce4ceac31b0b50c9d36665ba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841582"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770573"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům z Azure Portal
 
 V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly pomalých dotazů Azure Database for MySQL](concepts-server-logs.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Postup v tomto článku vyžaduje, abyste měli [Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md).
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Nakonfigurujte přístup k protokolu pomalého dotazu MySQL. 
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte váš server Azure Database for MySQL.
+2. Vyberte server Azure Database for MySQL.
 
 3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. 
    ![snímek obrazovky s možnostmi protokolu serveru](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
@@ -45,7 +45,7 @@ Po zahájení protokolování můžete zobrazit seznam dostupných protokolů po
 
 1. Otevřete web Azure Portal.
 
-2. Vyberte váš server Azure Database for MySQL.
+2. Vyberte server Azure Database for MySQL.
 
 3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. Stránka zobrazuje seznam souborů protokolu.
 

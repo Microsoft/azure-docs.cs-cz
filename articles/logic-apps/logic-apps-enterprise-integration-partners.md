@@ -1,112 +1,111 @@
 ---
-title: Přidat obchodní partneři pro B2B integrace – Azure Logic Apps
-description: Vytvořit obchodní partneři v integračním účtu pro použití s Azure Logic Apps
+title: Přidání obchodních partnerů pro integraci B2B
+description: Vytváření obchodních partnerů v účtu pro integraci pro použití s Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 681f16132c1de2ec5f3b27f80633d32879b0746c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330136"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792443"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Přidání obchodní partneři pro účty pro integraci pro Azure Logic Apps
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Přidání obchodních partnerů do integračních účtů pro Azure Logic Apps
 
-V [Azure Logic Apps](../logic-apps/logic-apps-overview.md), automatizovaných business-to-business (B2B) integraci pracovních postupů můžete vytvořit pomocí [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) s logic apps. K reprezentaci vaší organizace a další, vytvořte a přidejte obchodní partneři jako artefakty ke svému účtu integrace. Partneři jsou entity, které se účastní transakce B2B a výměnu zpráv mezi sebou.
+V [Azure Logic Apps](../logic-apps/logic-apps-overview.md)můžete vytvářet automatizované pracovní postupy integrace B2B (Business-to-Business) pomocí [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) s vašimi Logic Apps. Pro reprezentaci vaší organizace a dalších uživatelů můžete vytvořit a přidat obchodní partnery jako artefakty do účtu pro integraci. Partneři jsou entity, které se účastní transakcí B2B a zprávy Exchange.
 
-Před vytvořením tito partneři, ujistěte se, že projednat a sdílet informace s partnery o tom, jak identifikovat a ověřit, druhý odesílá zprávy. Po odsouhlasení tyto podrobnosti jste připraveni vytvořit partnery v účtu integrace.
+Před vytvořením těchto partnerů nezapomeňte diskutovat a sdílet informace s vašimi partnery o tom, jak identifikovat a ověřit zprávy, které druhý odesílá. Jakmile souhlasíte s těmito podrobnostmi, jste připraveni vytvořit partnery v účtu pro integraci.
 
-## <a name="partner-roles-in-integration-accounts"></a>Partner role v účty pro integraci
+## <a name="partner-roles-in-integration-accounts"></a>Role partnerů v integračních účtech
 
-Zadat podrobnosti o zprávách vyměňují se svými partnery s, vytvoříte a přidáte [smlouvy](../logic-apps/logic-apps-enterprise-integration-agreements.md) jako artefakty k vašemu účtu integrace. Smlouvy o vyžadují aspoň dva partneři v účtu integrace. Vaše organizace je vždy *partner s identitou hostitele* ve smlouvě. Organizace, který vyměňuje zprávy s vaší organizací *partner s identitou hosta*. Partner s identitou hosta může být jiné společnosti, nebo dokonce oddělení ve vaší vlastní organizaci. Po přidání těchto partnerů můžete vytvořit smlouvu.
+Pokud chcete definovat podrobnosti o zprávách vyměňovaných s vašimi partnery, vytvořte a přidejte [smlouvy](../logic-apps/logic-apps-enterprise-integration-agreements.md) jako artefakty do účtu pro integraci. Smlouvy vyžadují aspoň dva partnery v účtu pro integraci. Vaše organizace je vždy *hostitelským partnerem* v rámci smlouvy. Organizace, která vyměňuje zprávy ve vaší organizaci, je *partnerem hosta*. Partner hosta může být jiná společnost nebo dokonce oddělení ve vaší organizaci. Po přidání těchto partnerů můžete vytvořit smlouvu.
 
-Ve smlouvě zadejte podrobnosti pro zpracování příchozích a odchozích zpráv z pohledu hostitele partnera. Pro příchozí zprávy **přijímat nastavení** určit, jak partner s identitou hostitele přijímá zprávy od partnera hostovaného ve smlouvě. Pro odchozí zprávy **odeslat nastavení** určit, jak partner s identitou hostitele odesílá zprávy do partner s identitou hosta.
+V rámci smlouvy zadáte podrobnosti pro zpracování příchozích a odchozích zpráv z perspektivy hostitelského partnera. U příchozích zpráv **Nastavení příjmu** určují, jak má hostitelský partner dostávat zprávy od hostovaného partnera v rámci smlouvy. U odchozích zpráv **nastavení odesílání** určuje způsob, jakým hostující partner odesílá zprávy hostovanému partnerovi.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte ještě předplatné Azure [zaregistrovat si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) pro ukládání vašich partnerů, smluv a jiných artefaktů B2B. Tato integrační účet musí být přidružený k vašemu předplatnému Azure.
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) pro ukládání partnerů, smluv a dalších artefaktů B2B. Tento účet integrace musí být přidružený k vašemu předplatnému Azure.
 
-## <a name="create-partner"></a>Vytvoření partnera
+## <a name="create-partner"></a>Vytvořit partnera
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-1. V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte "integrace" a vyberte **účty pro integraci**.
+1. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "Integration" a vyberte **účty pro integraci**.
 
-   ![Vyberte "Integračních účtů"](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
+   ![Vyberte účty pro integraci.](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
 
-1. V části **účty pro integraci**, vyberte účet integrace, ve které chcete přidat vaši partneři.
+1. V části **účty pro integraci**vyberte účet pro integraci, do kterého chcete přidat své partnery.
 
-   ![Vyberte účet pro integraci](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
+   ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
 
-1. Zvolte **partneři** dlaždici.
+1. Vyberte dlaždici **partneři** .
 
-   ![Zvolte dlaždici "Partnerů."](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![Vybrat dlaždici partneři](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
-1. V části **partneři**, zvolte **přidat**. V části **přidat partnera**, zadejte podrobnosti partnera, jak je popsáno v následující tabulce.
+1. V části **partneři**klikněte na možnost **Přidat**. V části **Přidat partnera**zadejte podrobnosti o partnerovi, jak je popsáno v následující tabulce.
 
-   ![Zvolte "Přidat" a zadejte podrobnosti o partnerovi](./media/logic-apps-enterprise-integration-partners/add-partners.png)
+   ![Klikněte na tlačítko Přidat a zadejte podrobnosti o partnerovi.](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
    | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Název** | Ano | Na název partnera |
-   | **Kvalifikátor** | Ano | Ověřovací subjekt, který obsahuje jedinečné obchodní identity pro organizace, například **D-U-N-S (Dun & Bradstreet)** . <p>Partneři můžou rozhodnout pro vzájemně definované obchodní identity. Pro tyto scénáře vyberte **vzájemně definované** pro EDIFACT nebo **vzájemně definované (X12)** pro X12. <p>RosettaNet, vyberte pouze **DUNS**, což je standard. |
-   | **Hodnota** | Ano | Hodnota, která identifikuje dokumenty, které přijímají své aplikace logiky. <p>Pro RosettaNet tato hodnota musí být devět číslic, který odpovídá číslu DUNS. |
+   | **Název** | Ano | Název partnera |
+   | **Kvalifikátor** | Ano | Ověřovací text, který poskytuje organizacím jedinečné obchodní identity, například **D-U-N-S (Dun & Bradstreet)** . <p>Partneři se můžou rozhodnout pro vzájemně definovanou obchodní identitu. U těchto scénářů vyberte možnost **vzájemně definované** pro EDIFACT nebo **vzájemně definované (X12)** pro X12. <p>Pro RosettaNet vyberte pouze **Duns**, což je standard. |
+   | **Hodnota** | Ano | Hodnota, která identifikuje dokumenty, které vaše aplikace logiky obdrží. <p>Pro RosettaNet musí být tato hodnota devět číslic, které odpovídají číslu DUNS. |
    ||||
 
    > [!NOTE]
-   > Pro partnery, které používají RosettaNet, můžete zadat další informace o první vytvořením tito partneři a potom [upravovat později](#edit-partner).
+   > Pro partnery, kteří používají RosettaNet, můžete zadat další informace tak, že nejdřív vytvoříte tyto partnery a následně [je upravíte](#edit-partner).
 
-1. Jakmile budete hotovi, zvolte **OK**.
+1. Až budete hotovi, klikněte na **OK**.
 
-   Váš nový partner ochrany se zobrazí na **partneři** seznamu. Také **partneři** dlaždice aktualizuje aktuální počet partnerů.
+   Nový partner se teď zobrazí v seznamu **partneři** . Dlaždice **partneři** také aktualizuje aktuální počet partnerů.
 
-   ![Nový partner ochrany](./media/logic-apps-enterprise-integration-partners/new-partner.png)
+   ![Nový partner](./media/logic-apps-enterprise-integration-partners/new-partner.png)
 
 <a name="edit-partner"></a>
 
 ## <a name="edit-partner"></a>Upravit partnera
 
-1. V [webu Azure portal](https://portal.azure.com)vyhledejte a vyberte svůj účet integrace.
-Zvolte **partneři** dlaždici.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte účet pro integraci.
+Vyberte dlaždici **partneři** .
 
-   ![Zvolte dlaždici "Partnerů."](./media/logic-apps-enterprise-integration-partners/edit.png)
+   ![Vybrat dlaždici partneři](./media/logic-apps-enterprise-integration-partners/edit.png)
 
-1. V části **partneři**, vyberte partnera, který chcete upravit a zvolte **upravit**. V části **upravit**, proveďte požadované změny.
+1. V části **partneři**vyberte partnera, který chcete upravit, a klikněte na tlačítko **Upravit**. V části **Upravit**proveďte změny.
 
-   ![Ujistěte se a uložte provedené změny](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
+   ![Udělejte změny a uložte je.](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
 
-   Pro RosettaNet v části **RosettaNet partnera vlastnosti**, můžete zadat tyto další informace:
+   V případě RosettaNet můžete v části **vlastnosti partnerů RosettaNet**zadat tyto další informace:
 
    | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Klasifikace partnera** | Ne | Typ organizace partnera |
-   | **Kód dodavatelský řetězec** | Ne | Partnerské organizace dodavatelského řetězce kódu, například "Informačních technologií" nebo "Elektronických komponent" |
-   | **Jméno kontaktu** | Ne | Jméno kontaktní osoby partnerské organizace |
-   | **E-mailu** | Ne | E-mailovou adresu partnera |
-   | **Fax** | Ne | Partnerské organizace faxové číslo |
-   | **Telefon** | Ne | Partnerské organizace telefonní číslo |
+   | **Klasifikace partnerů** | Ne | Typ organizace partnera |
+   | **Kód dodavatelského řetězce** | Ne | Kód dodavatelského řetězce partnera, například "informační technologie" nebo "elektronické součásti" |
+   | **Jméno kontaktu** | Ne | Jméno kontaktní osoby partnera |
+   | **E-mail** | Ne | E-mailová adresa partnera |
+   | **Fax** | Ne | Faxové číslo partnera |
+   | **Link** | Ne | Telefonní číslo partnera |
    ||||
 
-1. Jakmile budete hotovi, zvolte **OK** uložte provedené změny.
+1. Až budete hotovi, uložte změny kliknutím na **tlačítko OK** .
 
 ## <a name="delete-partner"></a>Odstranit partnera
 
-1. V [webu Azure portal](https://portal.azure.com)vyhledejte a vyberte svůj účet integrace. Zvolte **partneři** dlaždici.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte účet pro integraci. Vyberte dlaždici **partneři** .
 
-   ![Zvolte dlaždici "Partnerů."](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![Vybrat dlaždici partneři](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
-1. V části **partnery**, vyberte partnera, který chcete odstranit. Zvolte **odstranit**.
+1. V části **partneři**vyberte partnera, kterého chcete odstranit. Vyberte **Odstranit**.
 
    ![Odstranit partnera](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o [smlouvy](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* Další informace o [smlouvách](../logic-apps/logic-apps-enterprise-integration-agreements.md)

@@ -1,36 +1,36 @@
 ---
-title: Restartování – Azure Database pro MariaDB serveru pomocí rozhraní příkazového řádku Azure
-description: Tento článek popisuje, jak je možné restartovat serveru Azure Database for MariaDB pomocí Azure CLI.
+title: Restart serveru – Azure CLI – Azure Database for MariaDB
+description: Tento článek popisuje, jak můžete restartovat server Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure CLI.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: a6e0509d941d9bfdfe6db7a8b93ee49c5bece1a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 9c3b86cb278d25b6200753f2f418c5aa82ca86ce
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171437"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771049"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Restartování – Azure Database pro MariaDB serveru pomocí rozhraní příkazového řádku Azure
-Toto téma popisuje, jak můžete Azure Database pro MariaDB server restartovat. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
+# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Restartování serveru Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
+Toto téma popisuje, jak můžete restartovat server Azure Database for MariaDB. Možná budete muset restartovat server z důvodů údržby, což způsobí krátký výpadek, protože server tuto operaci provede.
 
-Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Například služba může zpracovávat dříve požadovaná operace, jako je například škálování virtuálních jader.
+Pokud je služba zaneprázdněná, restart serveru se zablokuje. Například služba může zpracovávat dříve požadovanou operaci, jako je například škálování virtuální jádra.
 
-Čas potřebný k dokončení restartování závisí na MariaDB proces obnovení. Pokud chcete snížit čas restartování, doporučujeme, abyste že minimalizovali množství aktivit, k nimž došlo na serveru ještě před jejich restartování.
+Čas potřebný k dokončení restartování závisí na procesu obnovení MariaDB. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
 
-## <a name="prerequisites"></a>Požadavky
-K dokončení této příručce s postupy, potřebujete:
-- [– Azure Database pro MariaDB serveru](quickstart-create-mariadb-server-database-using-azure-cli.md)
+## <a name="prerequisites"></a>Předpoklady
+K dokončení tohoto průvodce budete potřebovat:
+- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Tato příručka vyžaduje použití Azure CLI verze 2.0 nebo novější. K potvrzení verze příkazového řádku Azure CLI, zadejte `az --version`. Pro instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že na příkazovém řádku Azure CLI zadáte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 
-## <a name="restart-the-server"></a>Restartujte server
+## <a name="restart-the-server"></a>Restartování serveru
 
 Restartujte server pomocí následujícího příkazu:
 
@@ -38,6 +38,6 @@ Restartujte server pomocí následujícího příkazu:
 az mariadb server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [jak nastavit parametry ve službě Azure Database pro MariaDB](howto-configure-server-parameters-cli.md)
+Informace o [Nastavení parametrů v Azure Database for MariaDB](howto-configure-server-parameters-cli.md)

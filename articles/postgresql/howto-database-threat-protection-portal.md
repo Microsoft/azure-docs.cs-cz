@@ -1,66 +1,66 @@
 ---
-title: Advanced Threat Protection – Azure Database for PostgreSQL – jeden Server
-description: Ochrana před internetovými útoky detekuje neobvyklé databázové aktivity značící potenciální ohrožení zabezpečení databáze.
-author: bolzmj
-ms.author: mbolz
+title: Použití rozšířené ochrany před internetovými útoky – Azure Database for PostgreSQL – jeden server
+description: Ochrana před hrozbami detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a69a8b651188b9566fdbec4bc6de09a8fec164c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067472"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776139"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection pro Azure Database for PostgreSQL – jeden Server
+# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL – jeden server
 
 Služba Advanced Threat Protection pro Azure Database for PostgreSQL detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
 
-Rozšířená ochrana před internetovými útoky je součástí nabídky Rozšířené zabezpečení dat, která je jednotný balíček pro pokročilé možnosti zabezpečení. Rozšířená ochrana před internetovými útoky jde přistupovat a spravovat přes [webu Azure portal](https://portal.azure.com) a je aktuálně ve verzi preview.
+Rozšířená ochrana před internetovými útoky je součástí rozšířené nabídky zabezpečení dat, což je jednotný balíček pro pokročilé funkce zabezpečení. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím [Azure Portal](https://portal.azure.com) a je aktuálně ve verzi Preview.
 
 > [!NOTE]
-> Funkce Advanced Threat Protection je **není** dostupná v oblastech suverénních cloudů a Azure government pro následující: (Gov) – Iowa, USA, Arizona, USA (gov) US Gov Texas, USA (gov) – Virginia, US DoD – východ, US DoD – střed, Německo – střed, Německo – sever, Čína – východ, Čína – východ 2. Navštivte prosím [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) pro obecnou dostupnost.
+> Funkce rozšířené ochrany před internetovými útoky **není dostupná v** těchto oblastech cloudu Azure a v svrchovaném cloudu: US Gov – Texas, US Gov – Arizona, US gov – Iowa, US, gov) – virginia, US DoD – východ, US DoD – střed, Německo Central, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
 >
 
 > [!NOTE]
-> Tato funkce je dostupná ve všech oblastech Azure, ve kterém je nasazená – Azure Database for PostgreSQL pro servery pro obecné účely a optimalizovaný pro paměť.
+> Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for PostgreSQL nasazeny pro Pro obecné účely a paměťově optimalizované servery.
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
-1. Spuštění webu Azure portal na [ https://portal.azure.com ](https://portal.azure.com).
-2. Přejděte na stránku konfigurace služby Azure Database for PostgreSQL, který chcete chránit. V nastavení zabezpečení, vyberte **Advanced Threat Protection (Preview)** .
-3. Na **Advanced Threat Protection (Preview)** stránka konfigurace:
+1. [https://portal.azure.com](https://portal.azure.com)spusťte Azure Portal.
+2. Přejděte na stránku konfigurace serveru Azure Database for PostgreSQL, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)** .
+3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 
-   - Povolte rozšířenou ochranu před internetovými útoky na serveru.
-   - V **Upřesnit nastavení ochrany před internetovými útoky**v **odeslat výstrahy Komu** text zadejte seznam e-mailů přijímat výstrahy zabezpečení po detekci neobvyklých databázových aktivit.
+   - Povolit rozšířenou ochranu před internetovými útoky na serveru.
+   - V části **Upřesnit nastavení ochrany před internetovými útoky**zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
   
    ![Nastavení detekce hrozeb](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
-## <a name="explore-anomalous-database-activities"></a>Prozkoumejte neobvyklé databázové aktivity
+## <a name="explore-anomalous-database-activities"></a>Prozkoumejte aktivity databáze neobvyklé
 
-Obdržíte e-mailové oznámení po detekci neobvyklých databázových aktivit. E-mailu obsahuje informace o podezřelé události zabezpečení včetně povahy neobvyklých aktivit, název databáze, název serveru, název aplikace a čas události. Kromě toho e-mail obsahuje informace o možných příčinách a doporučených akcích pro šetření a zmírnění potenciálního ohrožení databáze.
+Po detekci neobvykléch databázových aktivit obdržíte e-mailové oznámení. E-mail obsahuje informace o podezřelé události zabezpečení, včetně povahy aktivit neobvyklé, názvu databáze, názvu serveru, názvu aplikace a času události. Kromě toho e-mail poskytuje informace o možných příčinách a doporučených akcích k prošetření a zmírnění potenciální hrozby pro databázi.
     
-1. Klikněte na tlačítko **zobrazené poslední výstrahy** odkaz v e-mailu můžete spustit na portálu Azure portal a zobrazení stránky s upozorněními Azure Security Center, která obsahuje základní informace o aktivní zjištěných hrozeb na SQL database.
+1. Kliknutím na odkaz **Zobrazit nedávné výstrahy** v e-mailu spustíte Azure Portal a zobrazí se stránka Azure Security Center výstrahy, která poskytuje přehled aktivních hrozeb zjištěných v databázi SQL.
     
-    ![Sestava neobvyklých aktivit](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    ![Sestava aktivity neobvyklé](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
 
     Zobrazit aktivní hrozby:
 
-    ![aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![Aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
 
-2. Kliknutím na konkrétní výstrahu zobrazíte další podrobnosti a akce pro zkoumání této hrozby a oprava budoucími hrozbami.
+2. Kliknutím na konkrétní výstrahu získáte další podrobnosti a akce pro šetření této hrozby a opravaí budoucích hrozeb.
     
-    ![Konkrétní výstrahy](./media/howto-database-threat-protection-portal/specific-alert.png)
+    ![Konkrétní výstraha](./media/howto-database-threat-protection-portal/specific-alert.png)
 
-## <a name="explore-threat-detection-alerts"></a>Prozkoumejte výstrahy detekce hrozeb
+## <a name="explore-threat-detection-alerts"></a>Prozkoumat výstrahy detekce hrozeb
 
-Rozšířená ochrana před internetovými útoky integruje jeho výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/). 
+Rozšířená ochrana před internetovými útoky integruje své výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/). 
 
-Klikněte na tlačítko **výstrahy zabezpečení** pod **ochrana před internetovými útoky** spustit Azure Security Center oznámení stránce a získejte přehled o aktivní hrozby SQL v databázi nalezen.
+Kliknutím na **výstrahy zabezpečení** v části **Ochrana před hrozbami** otevřete stránku Azure Security Center výstrahy a Získejte přehled o aktivních hrozbách SQL zjištěných v databázi.
 
-  ![Asc ochrany před internetovými útoky](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  ![Zabezpečení před hrozbami – ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Další informace o cenách najdete v tématu [– Azure Database for PostgreSQL ceník](https://azure.microsoft.com/pricing/details/postgresql/)  
+* Další informace o cenách najdete na stránce s [cenami Azure Database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/) .  

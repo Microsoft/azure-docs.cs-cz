@@ -1,17 +1,17 @@
 ---
-title: Repliky pro čtení ve službě Azure Database for MariaDB
+title: Čtení replik – Azure Database for MariaDB
 description: 'Přečtěte si o replikách pro čtení v Azure Database for MariaDB: výběr oblastí, vytváření replik, připojení k replikám, monitorování replikace a zastavení replikace.'
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: f761cb1c4e895cd0960a0a07033e609acf9ef601
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: 7e63afee87d69a80a656ba7c5923b6f313268e2f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158408"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790455"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -45,7 +45,9 @@ Hlavní server můžete mít v libovolné [Azure Database for MariaDB oblasti](h
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
 Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Mezi podporované oblasti univerzální repliky patří:
 
-Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2.
+Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, západní USA.
+
+\* Západní USA 2 není dočasně k dispozici jako umístění repliky mezi oblastmi.
 
 
 ### <a name="paired-regions"></a>Spárované oblasti
@@ -151,7 +153,7 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 
 Parametr [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) je na serverech repliky uzamčen.
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 
 - Vytvoření repliky repliky není podporováno.
 - Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie MariaDB pro replikaci.

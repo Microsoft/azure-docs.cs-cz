@@ -1,20 +1,19 @@
 ---
-title: Monitorování aplikací logiky pomocí Azure Monitor-Azure Logic Apps
+title: Monitorování aplikací logiky pomocí Azure Monitor
 description: Získání přehledů a ladění dat pro řešení potíží a diagnostiku spuštění aplikace logiky s protokoly Azure Monitor
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/29/2019
-ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 305b50c86a468354f049fcc57fcb79b537e8dfed
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138691"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791896"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>Získání přehledů a ladění dat pro Logic Apps pomocí Azure Monitorch protokolů
 
@@ -25,13 +24,13 @@ V tomto tématu se dozvíte, jak nastavit protokoly Azure Monitor při vytváře
 > [!NOTE]
 > Na této stránce se dřív popsal postup provedení těchto úloh s Microsoft Operations Management Suite (OMS), která se využívala [v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), a nahrazuje tyto kroky pomocí [protokolů Azure monitor](../azure-monitor/platform/data-platform-logs.md), které nahradily Log Analytics. Data protokolu se pořád ukládají do Log Analyticsho pracovního prostoru a pořád se shromažďují a analyzují pomocí stejné služby Log Analytics. Další informace najdete v tématu [Azure monitor změny terminologie](../azure-monitor/terminology.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, potřebujete Log Analytics pracovní prostor. Naučte [se, jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="turn-on-logging-for-new-logic-apps"></a>Zapnutí protokolování pro nové aplikace logiky
 
-1. V [Azure Portal](https://portal.azure.com)vytvořte aplikaci logiky. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **Integration** > **Logic App**.
+1. V [Azure Portal](https://portal.azure.com)vytvořte aplikaci logiky. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **integraci** > **Aplikace logiky**.
 
    ![Vytvoření nové aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/create-new-logic-app.png)
 
@@ -65,7 +64,7 @@ Pokud jste už při vytváření aplikace logiky nastavili protokoly Azure Monit
 
    ![Vyberte svůj pracovní prostor Log Analytics](./media/logic-apps-monitor-your-logic-apps-oms/select-log-analytics-workspace.png)
 
-1. V podokně Přehled v části Začínáme **s Log Analytics** > **Konfigurace řešení monitorování**vyberte **Zobrazit řešení**.
+1. V podokně Přehled v části Začínáme **se službou Log Analytics** > **Konfigurace řešení monitorování**vyberte **Zobrazit řešení**.
 
    ![Vyberte Zobrazit řešení.](media/logic-apps-monitor-your-logic-apps-oms/log-analytics-workspace.png)
 
@@ -95,7 +94,7 @@ Pokud jste už při vytváření aplikace logiky nastavili protokoly Azure Monit
 
 Po spuštění aplikace logiky můžete zobrazit stav a počet těchto běhů na dlaždici **správa Logic Apps** .
 
-1. Přejdete do pracovního prostoru Log Analytics a vyberete možnost Souhrn > **Logic Apps Správa** **pracovního prostoru**.
+1. Přejít do pracovního prostoru Log Analytics a vyberte možnost **Souhrn pracovního prostoru** > **Správa Logic Apps**.
 
    ![Stav a počet spuštění aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-runs-summary.png)
 
@@ -111,23 +110,23 @@ Po spuštění aplikace logiky můžete zobrazit stav a počet těchto běhů na
 
    Tato stránka obsahuje rozšířené možnosti: 
 
-   * Sloupec **sledovaných vlastností** : V případě aplikace logiky, kde jste nastavili sledované vlastnosti, které jsou seskupené podle akcí, můžete tyto vlastnosti zobrazit z tohoto sloupce. Chcete-li zobrazit tyto sledované vlastnosti, vyberte možnost **Zobrazit**. Chcete-li vyhledat sledované vlastnosti, použijte filtr sloupce.
+   * Sloupec **sledovaných vlastností** : u aplikace logiky, kde jste nastavili sledované vlastnosti, které jsou seskupené podle akcí, můžete tyto vlastnosti zobrazit z tohoto sloupce. Chcete-li zobrazit tyto sledované vlastnosti, vyberte možnost **Zobrazit**. Chcete-li vyhledat sledované vlastnosti, použijte filtr sloupce.
 
       ![Zobrazení sledovaných vlastností aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
       Jakékoli nově přidané sledované vlastnosti mohou trvat 10-15 minut, než se budou zobrazovat poprvé. Přečtěte si, [jak přidat sledované vlastnosti do aplikace logiky](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-   * **Znovu odeslat**: Můžete znovu odeslat jednu nebo více spuštění Logic Apps, která se nezdařila, byla úspěšná nebo stále běží. Zaškrtněte políčka pro spuštění, která chcete znovu odeslat, a pak vyberte znovu **Odeslat**.
+   * **Znovu odeslat**: můžete znovu odeslat jednu nebo více spuštěných aplikací logiky, které selhaly, byly úspěšné nebo stále spuštěné. Zaškrtněte políčka pro spuštění, která chcete znovu odeslat, a pak vyberte znovu **Odeslat**.
 
      ![Znovu spustit běhy aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 1. Pokud chcete filtrovat výsledky, můžete provést filtrování na straně klienta i na straně serveru.
 
-   * **Filtr na straně klienta**: U každého sloupce vyberte filtry, které chcete, například:
+   * **Filtr na straně klienta**: u každého sloupce vyberte filtry, které chcete, například:
 
      ![Příklady filtrů sloupců](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
 
-   * **Filtr na straně serveru**: Chcete-li vybrat konkrétní časový interval nebo omezit počet zobrazených běhů, použijte ovládací prvek rozsah v horní části stránky. Ve výchozím nastavení se zobrazují jenom 1 000 záznamů.
+   * **Filtr na straně serveru**: Pokud chcete vybrat konkrétní časový interval nebo omezit počet zobrazených běhů, použijte ovládací prvek rozsah v horní části stránky. Ve výchozím nastavení se zobrazují jenom 1 000 záznamů.
 
      ![Změna časového intervalu](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
 

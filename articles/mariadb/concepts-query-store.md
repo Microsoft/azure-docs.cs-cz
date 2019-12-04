@@ -1,17 +1,17 @@
 ---
-title: Úložiště dotazů v Azure Database for MariaDB
+title: Úložiště dotazů – Azure Database for MariaDB
 description: Přečtěte si o funkci úložiště dotazů v Azure Database for MariaDB, která vám pomůžou sledovat výkon v průběhu času.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: fbc814b5d263e20cea1d961891afb19894b78965
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604003"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772212"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorování výkonu Azure Database for MariaDB s využitím úložiště dotazů
 
@@ -89,7 +89,7 @@ Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující 
 
 | **Ukazatele** | **Popis** | **Výchozí** | **Rozsah** |
 |---|---|---|---|
-| query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTý, zapnutí query_store_capture_mode zapíná performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | VŠEM | ŽÁDNÉ, VŠE |
+| query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTá, zapnutí query_store_capture_mode zapnete performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | VŠEM | ŽÁDNÉ, VŠE |
 | query_store_capture_interval | Interval zachycení úložiště dotazů je v řádu minut. Umožňuje zadat interval, ve kterém jsou metriky dotazu agregovány. | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Zapnutí nebo vypnutí zaznamenání všech obslužných dotazů, které jsou spuštěny v systému. | NO | ANO, NE |
 | query_store_retention_period_in_days | Časový interval ve dnech, po který se mají uchovávat data v úložišti dotazů | 7 | 1 - 30 |
@@ -102,7 +102,7 @@ Následující možnosti platí konkrétně pro čekání na statistiku.
 | query_store_wait_sampling_frequency | Mění frekvenci příkazu Wait-vzorkování v sekundách. 5 až 300 sekund. | 30 | 5-300 |
 
 > [!NOTE]
-> V současné době **query_store_capture_mode** nahrazuje tuto konfiguraci, a to znamená, že **query_store_capture_mode** i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** musí být povolené pro všechny, aby statistiky čekání fungovaly. Pokud je **query_store_capture_mode** vypnutý, vyčkejte na vypínání statistik, protože statistiky čekání využívají performance_schema Enabled a query_text zachycené úložištěm dotazů.
+> V současné době **query_store_capture_mode** nahrazuje tuto konfiguraci, což znamená, že je nutné povolit obě **QUERY_STORE_CAPTURE_MODE** a **query_store_wait_sampling_capture_mode** všem, aby statistiky čekání fungovaly. Pokud je **query_store_capture_mode** vypnutý, vystaví se nevyřízená statistika, protože statistiky čekání využívají performance_schema povolené a query_text zachycené úložištěm dotazů.
 
 Použijte [Azure Portal](howto-server-parameters.md) k získání nebo nastavení jiné hodnoty pro parametr.
 

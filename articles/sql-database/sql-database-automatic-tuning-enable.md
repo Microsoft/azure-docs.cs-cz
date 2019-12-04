@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/03/2019
+ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821917"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767768"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Povolení automatického ladění pro monitorování dotazů a zlepšení výkonu úloh
 
@@ -34,7 +34,7 @@ Automatické ladění lze povolit na serveru nebo na úrovni databáze prostřed
 
 Na úrovni serveru můžete zvolit dědění konfigurace automatického ladění z "výchozí hodnoty Azure" nebo Nedědit konfiguraci. Ve výchozím nastavení Azure jsou povolené FORCE_LAST_GOOD_PLAN, CREATE_INDEX je povolené a DROP_INDEX je zakázané.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Pokud chcete povolit automatické ladění Azure SQL Database logického **serveru**, přejděte na server v Azure Portal a pak v nabídce vyberte **Automatické ladění** .
 
@@ -48,7 +48,7 @@ Vyberte možnosti automatického ladění, které chcete povolit, a vyberte **po
 
 Možnosti automatického ladění na serveru se aplikují na všechny databáze na tomto serveru. Ve výchozím nastavení dědí všechny databáze konfiguraci ze svého nadřazeného serveru, ale dá se přepsat a zadat pro každou databázi samostatně.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Další informace o použití REST API k povolení automatického ladění na serveru najdete v tématu [SQL Server aktualizace automatického ladění a získání metod http](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
 
@@ -60,7 +60,7 @@ Azure SQL Database vám umožní individuálně zadat konfiguraci automatického
 > Obecně se doporučuje spravovat konfiguraci automatického ladění na **úrovni serveru** , aby bylo možné v každé databázi automaticky použít stejné nastavení konfigurace. Automatické ladění můžete nakonfigurovat v individuální databázi jenom v případě, že potřebujete, aby tato databáze měla různá nastavení, než ostatní dědí nastavení ze stejného serveru.
 >
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Pokud chcete povolit automatické ladění pro izolovanou **databázi**, přejděte do databáze v Azure Portal a vyberte **Automatické ladění**.
 
@@ -92,7 +92,7 @@ Pokud chcete nakonfigurovat jednotlivé možnosti automatického ladění prost�
 ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
 ```
 
-Když nastavíte možnost jednotlivého ladění na ZAPNUTo, přepíše se všechna nastavení, která databáze zdědila, a povolení možnosti optimalizace. Nastavení je vypnuto, přepíše také všechna nastavení, která databáze zdědila, a zakáže možnost optimalizace. Možnost automatického ladění, pro kterou je zadaná výchozí hodnota, zdědí konfiguraci z nastavení automatického ladění na úrovni databáze.  
+Když nastavíte možnost jednotlivého ladění na ZAPNUTo, přepíše se všechna nastavení, která databáze zdědila, a povolení možnosti optimalizace. Nastavení je vypnuto, přepíše také všechna nastavení, která databáze zdědila, a zakáže možnost optimalizace. Možnost automatického ladění, pro kterou je zadaná výchozí hodnota, zdědí konfiguraci automatického ladění z nastavení na úrovni serveru.  
 
 > [!IMPORTANT]
 > V případě [aktivní geografické replikace](sql-database-auto-failover-group.md)je nutné nakonfigurovat automatické ladění pouze v primární databázi. Automaticky použité akce optimalizace, například index Create nebo DELETE, se automaticky replikují do sekundárního režimu určeného jen pro čtení. Při pokusu o povolení automatického ladění přes T-SQL u sekundárního počítače jen pro čtení dojde k selhání, protože v sekundárním počítači určeném jen pro čtení není podporovaná jiná konfigurace ladění.

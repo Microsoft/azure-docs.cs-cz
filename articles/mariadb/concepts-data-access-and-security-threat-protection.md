@@ -1,17 +1,17 @@
 ---
-title: Rozšířená ochrana před internetovými útoky – Azure Database for MariaDB | Microsoft Docs
+title: Rozšířená ochrana před internetovými útoky – Azure Database for MariaDB
 description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: a96d8c3b9f9e3f9b1aedf269bce141da3e4ccf42
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 12/02/2019
+ms.openlocfilehash: 164457444fc097c0b1322909110f705726df1083
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869687"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772841"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>Azure Database for MariaDB Rozšířená ochrana před internetovými útoky
 
@@ -23,7 +23,7 @@ Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
 Rozšířená ochrana před internetovými útoky je součástí rozšířené nabídky zabezpečení dat, což je jednotný balíček pro pokročilé funkce zabezpečení. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím [Azure Portal](https://portal.azure.com). Tato funkce je k dispozici pro Pro obecné účely a paměťově optimalizované servery.
 
 > [!NOTE]
-> Funkce rozšířené ochrany před internetovými  útoky není dostupná v následujících oblastech cloudu Azure pro státní správu a svrchované oblasti: US Gov – Texas, US Gov – Arizona, US Gov – Iowa, US, gov) – Virginia, US DoD – východ, US DoD – střed, Německo – střed, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
+> Funkce rozšířené ochrany před internetovými útoky **není dostupná v** těchto oblastech cloudu Azure a v svrchovaném cloudu: US Gov – Texas, US Gov – Arizona, US gov – Iowa, US, gov) – virginia, US DoD – východ, US DoD – střed, Německo Central, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
 
 
 ## <a name="what-is-advanced-threat-protection"></a>Co je rozšířená ochrana před internetovými útoky?
@@ -37,10 +37,10 @@ Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
 - **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MariaDB, kde se někdo přihlásil k serveru Azure Database for MariaDB z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
 - **Přístup z neobvyklého datového centra Azure**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MariaDB, kde se někdo přihlásil k serveru z neobvyklého datového centra Azure, které bylo na tomto serveru vidět během posledního období. V některých případech výstraha detekuje legitimní akci (novou aplikaci v Azure, Power BI). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).
 - **Přístup z neznámého objektu zabezpečení**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MariaDB, kde se někdo přihlásil k serveru pomocí neobvyklého objektu zabezpečení (Azure Database for MariaDB uživatel). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
-- **Přístup z potenciálně škodlivé aplikace**: Tato výstraha se aktivuje, když se pro přístup k databázi používá potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
-- **Přihlašovací údaje pro hrubou silou Azure Database for MariaDB**: Tato výstraha se aktivuje, když dojde k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
+- **Přístup z potenciálně škodlivé aplikace:** Tato výstraha se aktivuje, pokud je pro přístup k databázi použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
+- **Azure Database for MariaDB přihlašovací údaje hrubou silou**: Tato výstraha se aktivuje, když dojde k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * Další informace o cenách najdete na stránce s [cenami Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/) . 

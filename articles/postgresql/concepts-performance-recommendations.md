@@ -1,17 +1,17 @@
 ---
-title: Doporučení týkající se výkonu v Azure Database for PostgreSQL – jeden server
+title: Doporučení pro výkon – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci doporučení výkonu na serveru Azure Database for PostgreSQL-Single.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764675"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768465"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Doporučení týkající se výkonu v Azure Database for PostgreSQL – jeden server
 
@@ -39,7 +39,7 @@ Doporučení se nepoužívají automaticky. Pokud chcete doporučení použít, 
 
 ## <a name="recommendation-types"></a>Typy doporučení
 
-V současné době jsou podporovány dva typy doporučení: *Vytvořte index* a *vyřaďte index*.
+V současné době jsou podporovány dva typy doporučení: *Create index* a *drop index*.
 
 ### <a name="create-index-recommendations"></a>Vytvořit doporučení indexu
 Doporučení *vytvořit index* návrhy nových indexů vám umožní zrychlit nejčastěji spouštěné nebo časově náročné dotazy v zatížení. Tento typ doporučení vyžaduje, aby [úložiště dotazů](concepts-query-store.md) bylo povolené. Úložiště dotazů shromažďuje informace o dotazech a poskytuje podrobné běhové dotazy a statistické údaje o četnosti, které analýza používá, aby provedla doporučení.
@@ -49,6 +49,6 @@ Kromě detekce chybějících indexů Azure Database for PostgreSQL analyzuje v�
 
 ## <a name="considerations"></a>Požadavky
 * Doporučení k výkonu nejsou pro [repliky čtení](concepts-read-replicas.md)k dispozici.
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [sledování a ladění ](concepts-monitoring.md) ve službě Azure Database for PostgreSQL.
 

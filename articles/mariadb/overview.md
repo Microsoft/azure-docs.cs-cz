@@ -1,18 +1,18 @@
 ---
-title: Přehled služby relačních databází Azure Database for MariaDB
+title: Přehled – Azure Database for MariaDB
 description: Přečtěte si o službě Azure Database for MariaDB, službě relačních databází v cloudu Microsoftu na základě verze MySQL Community Edition.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/25/2019
-ms.openlocfilehash: aed2e090a1e3a6a4c80f70ba25da9a903a6192c1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: f2dc6ec2fb99addc6a2c050c072e0221fd2c8e0b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484153"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769077"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Co je Azure Database for MariaDB?
 
@@ -53,7 +53,7 @@ Smlouva SLA o špičkové 99,99% dostupnosti v oboru Azure využívá globální
 
 ## <a name="secure-your-data"></a>Zabezpečte svoje data
 
-Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for MariaDB zachovává. Azure Database for MariaDB nabízí funkce, které omezují přístup, chrání přenášená i neaktivní uložená data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/trustcenter/security). Další informace o funkcích zabezpečení Azure Database for MySQL najdete v [přehledu zabezpečení](concepts-security.md).
+Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for MariaDB zachovává. Azure Database for MariaDB nabízí funkce, které omezují přístup, chrání přenášená i neaktivní uložená data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/trustcenter/security). Další informace o funkcích zabezpečení Azure Database for MariaDB najdete v [přehledu zabezpečení](concepts-security.md).
 
 ## <a name="contacts"></a>Kontakty
 

@@ -1,17 +1,17 @@
 ---
-title: Vytváření a Správa replik pro čtení v Azure Database for MariaDB – AZURE CLI REST API
+title: Správa replik čtení – Azure CLI, REST API-Azure Database for MariaDB
 description: Tento článek popisuje, jak nastavit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure a REST API.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 8b3572182832dc7692f6475be44281f56cf58571
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 12/02/2019
+ms.openlocfilehash: e9353bb5d472cc8dc798e7e09aed2183e48124ed
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122760"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765830"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure a REST API
 
@@ -20,31 +20,31 @@ V tomto článku se naučíte, jak vytvářet a spravovat repliky pro čtení ve
 ## <a name="azure-cli"></a>Azure CLI
 Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazového řádku Azure CLI.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - [Nainstalujte Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md) , který se bude používat jako hlavní server. 
 
 > [!IMPORTANT]
-> Funkce replika čtení je k dispozici pouze pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že se že hlavní server je v jednom z těchto cenové úrovně.
+> Funkce replika čtení je k dispozici pouze pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je hlavní server v jedné z těchto cenových úrovní.
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
-Server repliky pro čtení můžete vytvořit pomocí následujícího příkazu:
+Server repliky pro čtení se dá vytvořit pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica create` Příkaz vyžaduje následující parametry:
+Příkaz `az mariadb server replica create` vyžaduje následující parametry:
 
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, ve kterém server repliky bude vytvořena.  |
-| jméno | mydemoreplicaserver | Název nového serveru repliky, který je vytvořen. |
-| source-server | mydemoserver | Název nebo ID existující hlavní server pro replikaci z. |
+| resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
+| jméno | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| source-server | mydemoserver | Název nebo ID existujícího hlavního serveru, ze kterého se má replikovat. |
 
-Chcete-li vytvořit repliku čtení ve více oblastech `--location` , použijte parametr. 
+Chcete-li vytvořit repliku čtení ve více oblastech, použijte parametr `--location`. 
 
 > [!NOTE]
 > Replikace mezi oblastmi je ve verzi Preview.
@@ -59,40 +59,40 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 > Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 
 
 > [!NOTE]
-> Repliky pro čtení jsou vytvořeny se stejnou konfigurací serveru na hlavní server. Konfigurace serveru repliky můžete po jejím vytvoření změnit. Doporučuje se, že konfigurace serveru repliky by udržováno na hodnoty roven nebo větší než hlavní Ujistěte se, že je replika schopné udržovat tempo s hlavní.
+> Repliky čtení se vytvářejí se stejnou konfigurací serveru jako hlavní. Konfiguraci serveru repliky je možné po vytvoření změnit. Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než hlavní, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
 
-### <a name="list-replicas-for-a-master-server"></a>Seznam replik pro hlavní server
+### <a name="list-replicas-for-a-master-server"></a>Vypíše repliky pro hlavní server.
 
-Chcete-li zobrazit všechny repliky pro danou hlavní server, spusťte následující příkaz: 
+Chcete-li zobrazit všechny repliky pro daný hlavní server, spusťte následující příkaz: 
 
 ```azurecli-interactive
 az mariadb server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica list` Příkaz vyžaduje následující parametry:
+Příkaz `az mariadb server replica list` vyžaduje následující parametry:
 
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, ve kterém server repliky bude vytvořena.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | název-serveru | mydemoserver | Název nebo ID hlavního serveru. |
 
-### <a name="stop-replication-to-a-replica-server"></a>Zastavuje se replikace na serveru repliky
+### <a name="stop-replication-to-a-replica-server"></a>Zastavení replikace na server repliky
 
 > [!IMPORTANT]
-> Zastavuje se replikace na server je nevratná operace. Jakmile se zastaví replikace mezi hlavní a repliky, nejde vrátit. Server repliky pak stane samostatným serverem a nyní podporuje čtení a zápisu. Tento server nelze je převést na repliku znovu.
+> Zastavení replikace na serveru je nevratné. Po zastavení replikace mezi hlavním serverem a replikou nelze vrátit zpět. Server repliky se pak stal samostatným serverem a teď podporuje čtení i zápis. Tento server nelze znovu vytvořit do repliky.
 
-Replikace na server repliky pro čtení lze zastavit pomocí následujícího příkazu:
+Replikaci na server repliky pro čtení lze zastavit pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az mariadb server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica stop` Příkaz vyžaduje následující parametry:
+Příkaz `az mariadb server replica stop` vyžaduje následující parametry:
 
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, které se nachází serveru repliky.  |
-| jméno | mydemoreplicaserver | Název na zastavení replikace na serveru repliky. |
+| resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje server repliky.  |
+| jméno | mydemoreplicaserver | Název serveru repliky, na kterém má být replikace zastavena. |
 
 ### <a name="delete-a-replica-server"></a>Odstranění serveru repliky
 
@@ -102,10 +102,10 @@ Odstranění serveru repliky pro čtení se dá provést spuštěním příkazu 
 az mariadb server delete --resource-group myresourcegroup --name mydemoreplicaserver
 ```
 
-### <a name="delete-a-master-server"></a>Odstranit hlavního serveru
+### <a name="delete-a-master-server"></a>Odstranění hlavního serveru
 
 > [!IMPORTANT]
-> Odstraňuje se hlavní server zastaví se replikace na všechny servery repliky a odstraní hlavní samotný server. Servery repliky se samostatnými servery, které nyní podporují čtení a zápisu.
+> Odstraněním hlavního serveru se zastaví replikace na všechny servery replik a odstraní se samotný hlavní server. Ze serverů replik se stanou samostatné servery, které teď podporují čtení i zápis.
 
 Pokud chcete odstranit hlavní server, můžete spustit příkaz **[AZ MariaDB Server Delete](/cli/azure/mariadb/server)** .
 
@@ -113,7 +113,7 @@ Pokud chcete odstranit hlavní server, můžete spustit příkaz **[AZ MariaDB S
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 Repliky pro čtení můžete vytvářet a spravovat pomocí [REST API Azure](/rest/api/azure/).
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
@@ -136,7 +136,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 
 
-Pokud jste `azure.replication_support` nenastavili parametr na repliku na pro obecné účely nebo paměťově optimalizovaném hlavním serveru a server restartovali, zobrazí se chyba. Před vytvořením repliky tyto dva kroky proveďte.
+Pokud jste nenastavili parametr `azure.replication_support` na **repliku** v pro obecné účely nebo paměťově optimalizovaném hlavním serveru a restartujete server, zobrazí se chyba. Před vytvořením repliky tyto dva kroky proveďte.
 
 Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
 
@@ -151,7 +151,7 @@ Seznam replik hlavního serveru můžete zobrazit pomocí [rozhraní API seznamu
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Zastavuje se replikace na serveru repliky
+### <a name="stop-replication-to-a-replica-server"></a>Zastavení replikace na server repliky
 Replikaci mezi hlavním serverem a replikou pro čtení můžete zastavit pomocí [rozhraní API pro aktualizaci](/rest/api/mariadb/servers/update).
 
 Po zastavení replikace na hlavní server a repliku pro čtení ji nejde vrátit zpět. Replika čtení se stal samostatným serverem, který podporuje čtení i zápis. Samostatný server se nedá znovu vytvořit do repliky.
@@ -180,4 +180,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [čtení replik](concepts-read-replicas.md)
+- Další informace o [replikách pro čtení](concepts-read-replicas.md)

@@ -1,17 +1,17 @@
 ---
-title: Protokolování auditu pomocí pgAudit v Azure Database for PostgreSQL – jeden server
+title: Protokolování auditu – Azure Database for PostgreSQL – jeden server
 description: Koncepty pro protokolování auditu pgAudit v Azure Database for PostgreSQL-Single server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 49ad7334c418e29c821320608be729e060b4a8ae
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331334"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764555"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu Azure Database for PostgreSQL – jeden server
 

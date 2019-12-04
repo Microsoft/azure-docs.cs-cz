@@ -1,17 +1,17 @@
 ---
-title: Protokoly serveru pro Azure Database for MariaDB
+title: Protokoly pomalých dotazů – Azure Database for MariaDB
 description: V této části najdete popis protokolů dostupných v Azure Database for MariaDB a dostupných parametrů pro povolení různých úrovní protokolování.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 10dbd4d7fa838ee7f8a3f70b3caadb570877d685
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 12/02/2019
+ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259969"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772100"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
 V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -36,7 +36,7 @@ Ve výchozím nastavení je protokol pomalého dotazu zakázán. Pokud ho chcete
 Mezi další parametry, které můžete upravit, patří:
 
 - **long_query_time**: Pokud dotaz trvá déle než long_query_time (v sekundách), dotaz se zaznamená do protokolu. Výchozí hodnota je 10 sekund.
-- **log_slow_admin_statements**: Pokud on zahrnuje příkazy pro správu jako ALTER_TABLE a ANALYZE_TABLE v příkazech zapsaných do slow_query_log.
+- **log_slow_admin_statements**: Pokud on zahrnuje příkazy pro správu, jako je ALTER_TABLE a ANALYZE_TABLE v příkazech zapsaných do slow_query_log.
 - **log_queries_not_using_indexes**: Určuje, zda jsou dotazy, které nepoužívají indexy, protokolovány do slow_query_log
 - **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví, když je log_queries_not_using_indexes nastaveno na ZAPNUTo.
 
@@ -54,18 +54,18 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 |---|---|
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Vždy `AzureDiagnostics` |
+| `TimeGenerated` [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
+| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Název serveru |
-| `start_time_t`UTC | Čas, kdy dotaz začal |
+| `start_time_t` [UTC] | Čas, kdy dotaz začal |
 | `query_time_s` | Celkový čas, kdy se dotaz trvalo spustit |
 | `lock_time_s` | Celkový čas, kdy byl dotaz uzamčen |
 | `user_host_s` | Uživatelské jméno |

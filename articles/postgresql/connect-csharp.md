@@ -1,6 +1,6 @@
 ---
-title: Použití C# k připojení k Azure Database for PostgreSQL – jeden Server
-description: Tento rychlý Start obsahuje C# ukázku kódu (.NET) můžete použít k připojení a dotazování dat ze služby Azure Database for PostgreSQL – jeden Server.
+title: Připojit se C# s-Azure Database for PostgreSQL – jeden server
+description: V C# tomto rychlém startu najdete vzorový kód (.NET), který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jeden server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,17 +8,17 @@ ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 546626b1bf655ce6755e0a34ae8d8a85bcf6990f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4ac462873d34faa5ffa9d1e1bd873734be88e442
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067340"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767972"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden Server: Použití .NET (C#) k připojení a dotazování dat
+# <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden server: k připojení aC#dotazování dat použít .NET ()
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v C#. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí C# a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – rozhraní příkazového řádku](quickstart-create-server-database-azure-cli.md)
@@ -297,6 +297,6 @@ namespace Driver
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./howto-migrate-using-export-and-import.md)

@@ -1,22 +1,22 @@
 ---
-title: Migrace databáze pomocí importu a exportu Azure Database for PostgreSQL-Single server
+title: Migrace databáze-Azure Database for PostgreSQL – jeden server
 description: Popisuje, jak extrahovat databázi PostgreSQL do souboru skriptu a importovat data do cílové databáze z daného souboru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 0803f56312ca9b650987c2203c4271cff21df9f8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: f7cf5d245383b8a58f03e2e3610750866a2f4b5a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260368"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770199"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migrace databáze PostgreSQL pomocí exportu a importu
-[Pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) můžete použít k extrakci databáze PostgreSQL do souboru skriptu a [psql](https://www.postgresql.org/docs/current/static/app-psql.html) pro import dat do cílové databáze z daného souboru.
+K extrakci databáze PostgreSQL do souboru skriptu a [psql](https://www.postgresql.org/docs/current/static/app-psql.html) pro import dat do cílové databáze z tohoto souboru můžete použít [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md) s pravidly brány firewall pro povolení přístupu a databáze pod ní.
 - nainstalovaný nástroj příkazového řádku [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html)

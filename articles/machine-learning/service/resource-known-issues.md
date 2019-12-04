@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286983"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784608"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -44,11 +44,11 @@ Před opravou můžete datovou sadu připojit k jakémukoli modulu transformace 
 
 Následující obrázek ukazuje, jak: ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
 
-## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
+## <a name="sdk-installation-issues"></a>Problémy s instalací sady SDK
 
 **Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
 
-Azure Machine Learning SDK pro Python: PyYAML je projekt distutils nainstalované. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
+Azure Machine Learning SDK pro Python: PyYAML je distutils nainstalovaný projekt. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK a tuto chybu ignorovat, použijte:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -62,13 +62,13 @@ conda create -n <env-name> python=3.7.3
 ```
 Díky tomu vytvoří prostředí conda s využitím Pythonu 3.7.3, ve kterém není problém instalace přítomen v 3.7.4.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Problémy s vytvářením, Azure Machine Learning Compute
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Problémy při vytváření Azure Machine Learning COMPUTE
 
-Je vzácné pravděpodobné, že někteří uživatelé, kteří si vytvořili jejich pracovního prostoru Azure Machine Learning z portálu Azure portal před verze GA nemusí být možné vytvořit Azure Machine Learning Compute v daném pracovním prostoru. Můžete zvýšit žádost o podporu na službu nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo pomocí sady SDK pro odblokování sami okamžitě.
+Je pravděpodobné, že někteří uživatelé, kteří vytvořili svůj Azure Machine Learning pracovní prostor z Azure Portal před vydáním GA, nemusí být schopni vytvořit Azure Machine Learning COMPUTE v daném pracovním prostoru. Můžete buď vyvolat žádost o podporu na službu, nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo sadu SDK pro okamžité odblokování.
 
-## <a name="image-building-failure"></a>Chyba vytváření bitové kopie
+## <a name="image-building-failure"></a>Chyba při vytváření obrázku
 
-Obrázek po nasazení webové služby vytvářet selhání. Alternativním řešením je přidat "pynacl == 1.2.1" jako pip závislosti systému Conda v souboru konfigurace image.
+Při nasazování webové služby došlo k chybě sestavení obrázku. Alternativním řešením je přidat "pynacl = = 1.2.1" jako závislost PIP k souboru conda pro konfiguraci bitové kopie.
 
 ## <a name="deployment-failure"></a>Selhání nasazení
 
@@ -76,7 +76,7 @@ Pokud zjistíte `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died 
 
 ## <a name="fpgas"></a>FPGA
 
-Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai
+Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
@@ -108,7 +108,7 @@ pip install --upgrade azureml-dataprep
 
 ## <a name="databricks"></a>Databricks
 
-Problémy s Databricks a Azure Machine Learning.
+Datacihly a Azure Machine Learning problémy.
 
 ### <a name="failure-when-installing-packages"></a>Chyba při instalaci balíčků
 
@@ -159,13 +159,13 @@ Pokud se při čtení dat v clusteru Azure Databricks zobrazí chyba `FailToSend
 * Přidejte `azureml-dataprep` verze 1.1.8 nebo novější.
 * Přidejte `pyarrow` verze 0,11 nebo vyšší.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure
 
-Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledat název pracovního prostoru.
+Pokud přejdete přímo k pracovnímu prostoru z odkazu pro sdílení ze sady SDK nebo portálu, nebudete moci zobrazit stránku normální přehled s informacemi o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledat název pracovního prostoru.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Pokud chcete zobrazit některé protokoly, přejděte na web [Azure Machine Learning Studio](https://ml.azure.com) , přejděte do svého pracovního prostoru a vyberte **pracovní prostor > experiment > Spustit protokoly >** .  
+V některých případech může být užitečné, pokud při dotazování na nápovědu poskytnete diagnostické informace. Pokud chcete zobrazit některé protokoly, přejděte na web [Azure Machine Learning Studio](https://ml.azure.com) , přejděte do svého pracovního prostoru a vyberte **pracovní prostor > experiment > Spustit protokoly >** .  
 
 > [!NOTE]
 > Azure Machine Learning v průběhu školení protokolovat informace z nejrůznějších zdrojů, jako je například AutoML nebo kontejner Docker, který spouští školicí úlohu. Mnohé z těchto protokolů nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
@@ -278,10 +278,10 @@ Toto je známé omezení aktuální verze.
 
 Aktualizujte stránku ručně. Inicializace by měla pokračovat zhruba o 20 databody za sekundu. Nedostatečná možnost AutoRefresh je známý problém. 
 
-### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>Ohraničující rámeček se nedá vykreslit celým způsobem pro pravou hranu obrázku. 
-
-Zkuste změnit velikost okna prohlížeče. Zkoumáme, abychom zjistili příčinu tohoto chování. 
-
 ### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>Při kontrole imagí se nezobrazují nově označené obrázky.
 
 Chcete-li načíst všechny označené obrázky, klikněte na tlačítko **první** . **První** tlačítko se vrátí zpět na začátek seznamu, ale načte všechna označená data.
+
+### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Stisknutí klávesy ESC při označení pro detekci objektu vytvoří popisek nulové velikosti v levém horním rohu. Odesílání popisků v tomto stavu se nezdařilo.
+
+Odstraňte popisek kliknutím na křížek vedle něj.

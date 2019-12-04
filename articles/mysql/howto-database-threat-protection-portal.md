@@ -1,33 +1,33 @@
 ---
-title: Rozšířená ochrana před internetovými útoky – Azure Database for MySQL
+title: Rozšířená ochrana před internetovými útoky – Azure Portal-Azure Database for MySQL
 description: Přečtěte si, jak nakonfigurovat rozšířenou ochranu před internetovými útoky pro detekci neobvykléch databázových aktivit, které indikují potenciální ohrožení zabezpečení databáze.
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: fe058433cfe4c6c9f89f14d2c74e33ff1b8372ac
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 11ac05c710f7daf709ffbc29aebff706aea704d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970487"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765042"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL
+# <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection pro Azure Database for MySQL
 
 Služba Advanced Threat Protection pro Azure Database for MySQL detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
 
 Rozšířená ochrana před internetovými útoky je součástí rozšířené nabídky zabezpečení dat, což je jednotný balíček pro pokročilé funkce zabezpečení. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím [Azure Portal](https://portal.azure.com) a je aktuálně ve verzi Preview.
 
 > [!NOTE]
-> Funkce rozšířené ochrany před internetovými **útoky není k dispozici v** následujících oblastech cloudu Azure a svrchovaného cloudu: US Gov – Texas, US Gov – Arizona, US gov – Iowa, US, gov) – virginia, US DoD – východ, US DoD – střed, Německo Central, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
+> Funkce rozšířené ochrany před internetovými útoky **není dostupná v** těchto oblastech cloudu Azure a v svrchovaném cloudu: US Gov – Texas, US Gov – Arizona, US gov – Iowa, US, gov) – virginia, US DoD – východ, US DoD – střed, Německo Central, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
 >
 
 > [!NOTE]
 > Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for MySQL nasazeny pro Pro obecné účely a paměťově optimalizované servery.
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+1. [https://portal.azure.com](https://portal.azure.com)spusťte Azure Portal.
 2. Přejděte na stránku konfigurace serveru Azure Database for MySQL, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)** .
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 

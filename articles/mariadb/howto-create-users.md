@@ -1,35 +1,35 @@
 ---
-title: Vytvoření uživatelů ve službě Azure Database pro MariaDB server
-description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty k interakci se službou Azure Database pro MariaDB server.
+title: Vytvoření uživatelů – Azure Database for MariaDB
+description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci se serverem Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ed373cfa0ac755d56e7bc2601c65e0e6482ff6d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: cbfcb097b4fda30bdeed940a5acb609b02f5d788
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038867"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764265"
 ---
-# <a name="create-users-in-azure-database-for-mariadb"></a>Vytvoření uživatelů ve službě Azure Database pro MariaDB 
-Tento článek popisuje, jak vytvořit uživatele ve službě Azure Database pro MariaDB.
+# <a name="create-users-in-azure-database-for-mariadb"></a>Vytváření uživatelů v Azure Database for MariaDB 
+Tento článek popisuje, jak můžete vytvářet uživatele v Azure Database for MariaDB.
 
-Při prvním vytvoření Azure Database pro MariaDB, jste zadali přihlašovací uživatelské jméno správce serveru a heslo. Další informace, můžete postupovat podle [rychlý Start](quickstart-create-mariadb-server-database-using-azure-portal.md). Můžete vyhledat vaše přihlašovací jméno správce serveru uživatele z portálu Azure portal.
+Při prvním vytvoření Azure Database for MariaDB jste zadali přihlašovací uživatelské jméno a heslo správce serveru. Další informace najdete v [rychlém](quickstart-create-mariadb-server-database-using-azure-portal.md)startu. Přihlašovací uživatelské jméno správce serveru můžete najít z Azure Portal.
 
-Uživatel správce serveru získá určitá privilegia, pro váš server, jak je uvedeno: VYBRAT, VLOŽIT, AKTUALIZOVAT, ODSTRANIT, VYTVOŘIT, VYŘADIT, ZNOVU NAČÍST, ZPRACOVÁNÍ, ODKAZY, INDEX, ALTER, ZOBRAZTE DATABÁZE, VYTVOŘIT DOČASNÉ TABULKY, UZAMKNOUT TABULKY, SPUŠTĚNÍ, VYTVOŘIT PODŘÍZENÝ SERVER REPLIKACE, KLIENT REPLIKACE, ZOBRAZENÍ, ZOBRAZENÍ, VYTVOŘENÍ RUTINNÍ, ALTER RUTINU, VYTVOŘTE UŽIVATELE , UDÁLOSTI, AKTIVAČNÍ UDÁLOSTI
+Uživatel správce serveru získá určitá oprávnění pro váš server, jak je uvedeno níže: vybrat, vložit, aktualizovat, odstranit, vytvořit, vyřadit, znovu načíst, zpracovat, odkazy, INDEXovat, změnit, Zobrazit databáze, vytvořit dočasné tabulky, zamknout tabulky, provést, replikace PODŘÍZENÝch, replikace KLIENT, VYTVOŘIT ZOBRAZENÍ, ZOBRAZIT ZOBRAZENÍ, VYTVOŘIT RUTINU, ZMĚNIT RUTINU, VYTVOŘIT UŽIVATELE, UDÁLOST, AKTIVAČNÍ UDÁLOST
 
-Po vytvoření Azure Database pro MariaDB server slouží k vytvoření dalších uživatelů a udělit přístup správce k nim první účet uživatele správce serveru. Také účet správce serveru slouží k vytvoření méně privilegovaným uživatele, kteří mají přístup k jednotlivým databázových schématech.
+Po vytvoření serveru Azure Database for MariaDB můžete pomocí prvního uživatelského účtu správce serveru vytvořit další uživatele a udělit jim přístup správce. Účet správce serveru se taky dá použít k vytvoření méně privilegovaných uživatelů, kteří mají přístup k jednotlivým schématům databáze.
 
-## <a name="create-additional-admin-users"></a>Vytvořit další uživatele
-1. Získejte název uživatelské informace a Správce připojení.
-   Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Můžete snadno vyhledat název serveru a přihlašovací údaje ze serveru **přehled** stránky nebo **vlastnosti** stránky na webu Azure Portal. 
+## <a name="create-additional-admin-users"></a>Vytvoření dalších uživatelů správce
+1. Získejte informace o připojení a uživatelské jméno správce.
+   Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Název serveru a přihlašovací informace můžete snadno vyhledat na stránce **Přehled** serveru nebo na stránce **vlastnosti** v Azure Portal. 
 
-2. Použijte účet správce a heslo pro připojení k vašemu databázovému serveru. Použijte váš upřednostňovaný klientském nástroji, jako aplikace MySQL Workbench, mysql.exe, HeidiSQL nebo ostatním uživatelům. 
-   Pokud si nejste jistí, jak se připojit, přečtěte si téma [pomocí aplikace MySQL Workbench k připojení a dotazování dat](./connect-workbench.md)
+2. K připojení k databázovému serveru použijte účet správce a heslo. Použijte preferovaný klientský nástroj, jako je MySQL Workbench, MySQL. exe, HeidiSQL nebo jiné. 
+   Pokud si nejste jistí, jak se připojit, přečtěte si téma [použití aplikace MySQL Workbench pro připojení a dotazování dat](./connect-workbench.md) .
 
-3. Upravit a spuštěním následujícího kódu SQL. Nahraďte nové uživatelské jméno pro hodnotu zástupného symbolu `new_master_user`. Tato syntaxe uděluje oprávnění uvedená na databázových schématech ( *.* ) pro uživatelské jméno (new_master_user v tomto příkladu). 
+3. Upravte a spusťte následující kód SQL. Nahraďte nové uživatelské jméno pro hodnotu zástupného symbolu `new_master_user`. Tato syntaxe uděluje uvedená oprávnění na všech schématech databáze ( *.* ) k uživatelskému jménu (new_master_user v tomto příkladu). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -39,7 +39,7 @@ Po vytvoření Azure Database pro MariaDB server slouží k vytvoření dalšíc
    FLUSH PRIVILEGES;
    ```
 
-4. Ověřte, uděluje 
+4. Ověřit granty 
    ```sql
    USE sys;
    
@@ -48,15 +48,15 @@ Po vytvoření Azure Database pro MariaDB server slouží k vytvoření dalšíc
 
 ## <a name="create-database-users"></a>Vytvoření uživatelů databáze
 
-1. Získejte název uživatelské informace a Správce připojení.
-   Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Můžete snadno vyhledat název serveru a přihlašovací údaje ze serveru **přehled** stránky nebo **vlastnosti** stránky na webu Azure Portal. 
+1. Získejte informace o připojení a uživatelské jméno správce.
+   Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Název serveru a přihlašovací informace můžete snadno vyhledat na stránce **Přehled** serveru nebo na stránce **vlastnosti** v Azure Portal. 
 
-2. Použijte účet správce a heslo pro připojení k vašemu databázovému serveru. Použijte váš upřednostňovaný klientském nástroji, jako aplikace MySQL Workbench, mysql.exe, HeidiSQL nebo ostatním uživatelům. 
-   Pokud si nejste jistí, jak se připojit, přečtěte si téma [pomocí aplikace MySQL Workbench k připojení a dotazování dat](./connect-workbench.md)
+2. K připojení k databázovému serveru použijte účet správce a heslo. Použijte preferovaný klientský nástroj, jako je MySQL Workbench, MySQL. exe, HeidiSQL nebo jiné. 
+   Pokud si nejste jistí, jak se připojit, přečtěte si téma [použití aplikace MySQL Workbench pro připojení a dotazování dat](./connect-workbench.md) .
 
-3. Upravit a spuštěním následujícího kódu SQL. Nahraďte hodnotu zástupného symbolu `db_user` zamýšlený novým uživatelským jménem a zástupnou hodnotu `testdb` nahraďte vlastním názvem databáze.
+3. Upravte a spusťte následující kód SQL. Nahraďte hodnotu zástupného symbolu `db_user` vaším zamýšleným novým uživatelským jménem a zástupnou hodnotou `testdb` s vlastním názvem databáze.
 
-   Tato syntaxe kódu sql vytvoří novou databázi s názvem testdb pro účely tohoto příkladu. Vytvoří nového uživatele ve službě Azure Database pro MariaDB službu a uděluje všechna oprávnění na nové schéma databáze (testdb.\*) pro daného uživatele. 
+   Tato syntaxe kódu SQL vytvoří pro ukázkové účely novou databázi s názvem TestDB. Potom vytvoří nového uživatele ve službě Azure Database for MariaDB a udělí pro tohoto uživatele všechna oprávnění k novému schématu databáze (TestDB.\*). 
 
    ```sql
    CREATE DATABASE testdb;
@@ -68,21 +68,21 @@ Po vytvoření Azure Database pro MariaDB server slouží k vytvoření dalšíc
    FLUSH PRIVILEGES;
    ```
 
-4. Ověřte podpory v rámci databáze.
+4. Ověřte granty v rámci databáze.
    ```sql
    USE testdb;
    
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Přihlaste se k serveru zadáním určené databázi pomocí nové uživatelské jméno a heslo. Tento příklad ukazuje příkazového řádku mysql. Pomocí tohoto příkazu budete vyzváni k zadání hesla pro uživatelské jméno. Nahraďte vlastní název serveru, název databáze a uživatelské jméno.
+5. Přihlaste se k serveru a určete určenou databázi pomocí nového uživatelského jména a hesla. Tento příklad ukazuje příkazový řádek MySQL. Pomocí tohoto příkazu se zobrazí výzva k zadání hesla pro uživatelské jméno. Nahraďte vlastní název serveru, název databáze a uživatelské jméno.
 
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-   Další informace týkající se správy uživatelských účtů, najdete v dokumentaci MariaDB pro [Správa uživatelských účtů](https://mariadb.com/kb/en/library/user-account-management/), [udělení syntaxe](https://mariadb.com/kb/en/library/grant/), a [oprávnění](https://mariadb.com/kb/en/library/grant/#privilege-levels).
+   Další informace o správě uživatelských účtů najdete v dokumentaci k MariaDB pro [správu uživatelských účtů](https://mariadb.com/kb/en/library/user-account-management/), [udělení syntaxe](https://mariadb.com/kb/en/library/grant/)a [oprávnění](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
-## <a name="next-steps"></a>Další postup
-Otevření brány firewall pro IP adresy počítačů novým uživatelům povolit jim připojení: [Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal](howto-manage-firewall-portal.md)  
+## <a name="next-steps"></a>Další kroky
+Otevřete bránu firewall pro IP adresy nových uživatelských počítačů, aby se mohly připojit: [vytváření a správa Azure Database for MariaDB pravidel brány firewall pomocí Azure Portal](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

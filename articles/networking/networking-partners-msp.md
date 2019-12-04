@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824366"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766478"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
-[Partnerský program poskytovatele spravovaných služeb sítě Azure (MSP)](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) umožňuje síťové služby zaměřené na účastníci programu MSP, telcos a integrátory systémů (SIs), které nabízejí cloudové a hybridní síťové služby, které se centrují s portfoliom síťových produktů Azure. a služby.
+[Partnerský program pro poskytovatele spravované služby Azure Networking Service Provider (MSP)](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) umožňuje síťové služby zaměřené na účastníci programu MSP, telcos a integrátory (SIs), které nabízejí cloudové a hybridní síťové služby, které se centrují s portfoliom síťových produktů a služeb Azure.
 
 Azure Networking účastníci programu MSP jsou specializovaná sada poskytovatelů spravovaných služeb, které řeší potřeby a problémy podnikového cloudového přístupu napříč všemi aspekty cloudových a hybridních sítí. Spravované síťové služby zahrnují jednu nebo více následujících služeb: architektura sítě, plánování, nasazení, provoz, údržba a optimalizace.
 
@@ -28,12 +28,13 @@ Zákazníci si můžou koupit služby spravované MSP v Azure Marketplace nebo p
 
 Odkazy v této části použijte, pokud chcete získat další informace o službách spravovaného cloudu, které nabízejí partneři Azure sítě MSP. Pokud Váš partner cloudových síťových služeb není uveden v níže uvedené části, obraťte se na nás poskytovatele. Můžou nás kontaktovat odesláním e-mailu ManagedVirtualWAN@microsoft.com. 
 
-| **MSP** | **Služba transformace cloudových sítí** | **Spravované ExpressRoute** | **Spravovaná virtuální síť WAN** | **Služby zabezpečení spravované sítě** |**Výpočetní hranice spravované sítě** |
+| **MSP** | **Služba transformace cloudových sítí** | **Spravované ExpressRoute** | **Spravovaná virtuální síť WAN** | **Služby zabezpečení spravované sítě** |**Spravovaná výpočetní hranice pro Vícenásobný přístup** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||Ano|
 |[Skupina ANS UK](https://www.ans.co.uk/)|Ano|Ano||||
 |[Aryaka Networks sítě](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|Ano |Ano |Ano | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|Ano|Ano|Ano|||
+|[Spoluvývoj](https://www.coevolve.com/services/azure-networking-services/)|Ano||Ano|Ano||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|Ano|||||
 |[Data dimenze](https://www.dimensiondata.com/)|Ano|||||
 |[Equinix](https://www.equinix.com/)|Ano|Ano||||

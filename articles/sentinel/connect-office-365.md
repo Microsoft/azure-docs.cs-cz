@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: a38beb0700e470d325545a2523143ecdab9f6dfb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240664"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777413"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Připojení dat z protokolů Office 365
 
@@ -30,7 +30,7 @@ Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin
 > [!IMPORTANT]
 > Pokud máte licenci E3, musíte předtím, než budete mít přístup k datům prostřednictvím rozhraní API aktivity správy sady Office 365, povolit jednotné protokolování auditu pro vaši organizaci sady Office 365. Provedete to tak, že zapnete protokol auditu Office 365. Pokyny najdete v tématu [Zapnutí nebo vypnutí prohledávání protokolu auditu systému Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off). Další informace najdete v referenčních informacích k [rozhraní API pro správu Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte být globálním správcem nebo správcem zabezpečení vašeho tenanta.
 - V počítači, ze kterého jste se přihlásili ke službě Azure Sentinel pro vytvoření připojení, se ujistěte, že je port 4433 otevřený pro webový provoz. Po úspěšném připojení se tento port může zavřít znovu.
@@ -42,7 +42,7 @@ Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin
 
 1. V Azure Sentinel vyberte **datové konektory** a pak klikněte na dlaždici **Office 365** .
 
-2. Pokud jste ho ještě nepovolili, v části **připojení** použijte tlačítko **Povolit** , aby bylo možné řešení Office 365 povolit. Pokud už je povolená, bude se identifikovat na obrazovce připojení, jak už je povolené.
+2. Pokud jste to ještě nepovolili, můžete to udělat tak, že v okně **datové konektory** vyberete konektor **Office 365** . Tady můžete kliknout na **stránku Open Connector** a v části konfigurační oddíl **povolit řešení Office 365 ve vašem pracovním prostoru** pomocí tlačítka **instalovat řešení** . Pokud už je povolená, bude se identifikovat na obrazovce připojení, jak už je povolené.
 1. Office 365 umožňuje streamovat data z několika tenantů do Azure Sentinel. Pro každého tenanta, ke kterému se chcete připojit, přidejte tenanta v části **připojit klienty k Azure Sentinel**. 
 1. Otevře se obrazovka služby Active Directory. Zobrazí se výzva k ověření pomocí globálního správce pro každého tenanta, kterého se chcete připojit ke službě Azure Sentinel, a poskytněte oprávnění službě Azure Sentinel pro čtení protokolů. 
 5. V části streamování protokolů aktivit Office 365 klikněte na **Vybrat** a vyberte typy protokolů, které chcete streamovat do Azure Sentinel. Služba Azure Sentinel v současné době podporuje Exchange a SharePoint.

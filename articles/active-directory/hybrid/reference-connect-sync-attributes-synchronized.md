@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e95b230d4f9699f15296ba94946c7063cabd0516
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847194"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766085"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect synchronizace: atributy synchronizované s Azure Active Directory
 Toto téma obsahuje seznam atributů synchronizovaných pomocí Azure AD Connect synchronizace.  
@@ -52,7 +52,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | userPrincipalName (Hlavní název uživatele) |× |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
+| Název atributu | Uživatel | Kontaktovat | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |× | | |Definuje, jestli je účet povolený. |
 | pomocníka |× |× | | |
@@ -175,7 +175,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | wWWHomePage |× |× | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
+| Název atributu | Uživatel | Kontaktovat | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |× | | |Definuje, jestli je účet povolený. |
 | authOrig |× |× |× | |
@@ -209,7 +209,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | hideDLMembership | | |× | |
 | homePhone |× |× | | |
 | příjemce |× |× |× | |
-| Iniciály |× |× | | |
+| iniciály |× |× | | |
 | ipPhone |× |× | | |
 | l |× |× | | |
 | modul |× |× |× | |
@@ -257,7 +257,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | wWWHomePage |× |× | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Týmy a Skype pro firmy online
-| Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
+| Název atributu | Uživatel | Kontaktovat | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |× | | |Definuje, jestli je účet povolený. |
 | r |× |× | | |
@@ -305,7 +305,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | wWWHomePage |× |× | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
+| Název atributu | Uživatel | Kontaktovat | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |× | | |Definuje, jestli je účet povolený. |
 | CN |× | |× |Běžný název nebo alias. Nejčastěji se jedná o předponu hodnoty [mail]. |
@@ -320,7 +320,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | userPrincipalName (Hlavní název uživatele) |× | | |Tento hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="intune"></a>Intune
-| Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
+| Název atributu | Uživatel | Kontaktovat | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |× | | |Definuje, jestli je účet povolený. |
 | r |× |× | | |
@@ -338,7 +338,7 @@ V takovém případě začněte seznamem atributů v tomto tématu a Identifikuj
 | userPrincipalName (Hlavní název uživatele) |× | | |Hlavní název uživatele (UPN) je přihlašovací ID pro uživatele. Nejčastěji se shoduje s hodnotou [mail]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
+| Název atributu | Uživatel | Kontaktovat | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |× | | |Definuje, jestli je účet povolený. |
 | r |× |× | | |
@@ -377,7 +377,7 @@ Tato skupina je sadou atributů používaných jako minimální atributy, které
 
 Tato skupina je sadou atributů, které se dají použít, pokud se adresář služby Azure AD nepoužívá k podpoře Office 365, Dynamics nebo Intune. Má malou sadu základních atributů.
 
-| Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
+| Název atributu | Uživatel | Kontaktovat | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |× | | |Definuje, jestli je účet povolený. |
 | CN |× | |× | |
@@ -422,7 +422,7 @@ Tyto atributy pro **uživatele** jsou kromě dalších vybraných aplikací.
 ## <a name="exchange-hybrid-writeback"></a>Hybridní zpětný zápis systému Exchange
 Tyto atributy se napíší zpátky z Azure AD do místní služby Active Directory, když vyberete možnost povolit službu **Exchange Hybrid**. V závislosti na verzi systému Exchange může být synchronizovaný méně atributů.
 
-| Název atributu (místní služba AD) | Název atributu (připojit uživatelské rozhraní) | Uživatel | Kontakt | Skupina | Poznámka |
+| Název atributu (místní služba AD) | Název atributu (připojit uživatelské rozhraní) | Uživatel | Kontaktovat | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| MS-DS-External-Directory-Object-ID |× | | |Je odvozeno od cloudAnchor ve službě Azure AD. Tento atribut je v systémech Exchange 2016 a Windows Server 2016 AD nový. |
 | msExchArchiveStatus| MS-Exch-ArchiveStatus |× | | |Online archiv: umožňuje zákazníkům archivovat poštu. |
@@ -430,7 +430,7 @@ Tyto atributy se napíší zpátky z Azure AD do místní služby Active Directo
 | msExchSafeRecipientsHash| MS-Exch-SafeRecipientsHash  |× | | |Filtrování: zapisuje zpět místní filtrování a online bezpečná a blokovaná data odesílatele od klientů. |
 | msExchSafeSendersHash| MS-Exch-SafeSendersHash  |× | | |Filtrování: zapisuje zpět místní filtrování a online bezpečná a blokovaná data odesílatele od klientů. |
 | msExchUCVoiceMailSettings| MS-Exch-UCVoiceMailSettings |× | | |Povolit Unified Messaging (UM) – online hlasová pošta: používá se integrací Microsoft Lync serveru k tomu, aby se na serveru Lync používala hlasová pošta v online služby. |
-| msExchUserHoldPolicies| MS-EXC – hUserHoldPolicies |× | | |Blokování sporů: umožňuje cloudovým službám určit, kteří uživatelé jsou v rámci sporů. |
+| msExchUserHoldPolicies| MS-Exch-UserHoldPolicies |× | | |Blokování sporů: umožňuje cloudovým službám určit, kteří uživatelé jsou v rámci sporů. |
 | proxyAddresses| proxyAddresses |× |× |× |Je vložena pouze adresa x500 z Exchange Online. |
 | publicDelegates| MS-Exch – veřejné – Delegáti  |× | | |Umožňuje poštovní schránce Exchange Online udělit uživatelům s místní poštovní schránkou Exchange SendOnBehalfTo práva. Vyžaduje Azure AD Connect Build 1.1.552.0 nebo After. |
 

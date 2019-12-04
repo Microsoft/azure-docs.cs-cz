@@ -1,24 +1,24 @@
 ---
-title: Připojení k Azure Database for MariaDB z aplikace MySQL Workbench
+title: Připojení pomocí aplikace MySQL Workbench – Azure Database for MariaDB
 description: V tomto rychlém startu najdete postup pro použití aplikace MySQL Workbench k připojení a dotazování dat ze služby Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 8f2ae27e19acb5bf324202b463d2b3027ad2ea5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2018
+ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60936201"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772057"
 ---
-# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Použití aplikace MySQL Workbench k připojení a dotazování dat
+# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Připojení a dotazování dat pomocí aplikace MySQL Workbench
 
 Tento rychlý start ukazuje, jak se připojit k instanci Azure Database for MariaDB pomocí aplikace MySQL Workbench. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z následujících průvodců:
 
@@ -33,7 +33,7 @@ Tento rychlý start využívá jako výchozí bod prostředky vytvořené v něk
 
 Získejte informace potřebné pro připojení k instanci Azure Database for MariaDB. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky**. Vyhledejte server, který jste vytvořili (například **mydemoserver**).
 
@@ -57,7 +57,7 @@ Připojení k serveru Azure Database for MariaDB pomocí aplikace MySQL Workbenc
    | Způsob připojení | **Standard (TCP/IP)** | Standard (TCP/IP) je dostačující. |
    | Název hostitele | *název serveru* | Zadejte hodnotu názvu serveru, kterou jste použili při vytváření instance Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (\*.mariadb.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.  |
    | Port | **3306** | Při připojování ke službě Azure Database for MariaDB vždy používejte port 3306. |
-   | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření instance Azure Database for MariaDB. Náš příklad uživatelské jméno je **myadmin\@mydemoserver**. Pokud si přihlašovací jméno správce serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
+   | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření instance Azure Database for MariaDB. Naše ukázkové uživatelské jméno je **myadmin\@mydemoserver**. Pokud si přihlašovací jméno správce serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username\@servername*.
    | Heslo | *Vaše heslo* | Výběrem možnosti **Uložit v trezoru** heslo uložte. |
 
    ![Nastavení nového připojení](./media/connect-workbench/2-setup-new-connection.png)

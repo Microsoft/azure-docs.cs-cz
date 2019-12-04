@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258675a343387eb6930cd3511bf885bf510050c6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404213"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785853"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -41,11 +41,14 @@ Povoleno pomocí Azure AD Identity Protection – tato metoda používá zásady
 
 Uživatelské účty v Azure Multi-Factor Authentication mají následující tři různé stavy:
 
+> [!IMPORTANT]
+> Povolení Azure MFA prostřednictvím zásad podmíněného přístupu nezmění stav uživatele. Nezobrazují se výstražné uživatele jako zakázané. Podmíněný přístup nezmění stav. **Organizace by neměly povolit ani vymáhat uživatele, pokud používají zásady podmíněného přístupu.**
+
 | Stav | Popis | Neprohlížečové aplikace ovlivněny | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
-|:---:|:---:|:---:|:--:|:--:|
-| Zakázáno |Výchozí stav nového uživatele, který není zaregistrovaný v Azure MFA. |Ne |Ne |Ne |
-| Povoleno |Uživatel je zaregistrovaný v Azure MFA, ale není zaregistrovaný. Obdrží výzvu k registraci při příštím přihlášení. |Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Ano. Po vypršení platnosti relace se vyžaduje registrace Azure MFA.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure MFA. |
-| Vynuceno |Uživatel je zaregistrovaný a dokončil proces registrace pro Azure MFA. |Ano. Aplikace vyžadují hesla aplikací. |Ano. Při přihlášení se vyžaduje Azure MFA. | Ano. Při přihlášení se vyžaduje Azure MFA. |
+|:---:| --- |:---:|:--:|:--:|
+| Zakázáno | Výchozí stav nového uživatele, který není zaregistrovaný v Azure MFA. | Ne | Ne | Ne |
+| Povoleno | Uživatel je zaregistrovaný v Azure MFA, ale není zaregistrovaný. Obdrží výzvu k registraci při příštím přihlášení. | Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Ano. Po vypršení platnosti relace se vyžaduje registrace Azure MFA.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure MFA. |
+| Vynuceno | Uživatel je zaregistrovaný a dokončil proces registrace pro Azure MFA. | Ano. Aplikace vyžadují hesla aplikací. | Ano. Při přihlášení se vyžaduje Azure MFA. | Ano. Při přihlášení se vyžaduje Azure MFA. |
 
 Stav uživatele odráží, jestli ho správce zaregistroval v Azure MFA, a jestli dokončil proces registrace.
 
@@ -78,7 +81,7 @@ Pro přístup ke stránce, kde můžete zobrazit a spravovat stavy uživatelů, 
 
 Jakmile povolíte uživatele, upozorněte je e-mailem. Sdělte jim, že se budou požádáni, aby se zaregistrovali při příštím přihlášení. Pokud vaše organizace používá neprohlížečové aplikace, které nepodporují moderní ověřování, musí také vytvářet hesla aplikací. Můžete také přidat odkaz na [Průvodce koncovými uživateli Azure MFA](../user-help/multi-factor-authentication-end-user.md) , který jim pomůže začít.
 
-### <a name="use-powershell"></a>Použití prostředí PowerShell
+### <a name="use-powershell"></a>Použití PowerShellu
 
 Pokud chcete změnit stav uživatele pomocí [Azure AD PowerShellu](/powershell/azure/overview), změňte `$st.State`. Existují tři možné stavy:
 

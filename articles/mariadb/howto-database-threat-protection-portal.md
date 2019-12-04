@@ -1,17 +1,17 @@
 ---
-title: Rozšířená ochrana před internetovými útoky – Azure Database for MariaDB | Microsoft Docs
+title: Rozšířená ochrana před internetovými útoky – Azure Portal-Azure Database for MariaDB
 description: Ochrana před hrozbami detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: f77d9f105d5c2ff10753f2b4b1ecc962c84eee6e
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 12/02/2019
+ms.openlocfilehash: 1d6eafd38d418066ddf5933139bd4caf6e69ddea
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869648"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766969"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
 
@@ -23,10 +23,10 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
 > Rozšířená ochrana před internetovými útoky je ve verzi Public Preview. Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for MariaDB nasazeny pro Pro obecné účely a paměťově optimalizované servery.
 
 > [!NOTE]
-> Funkce rozšířené ochrany před internetovými  útoky není dostupná v následujících oblastech cloudu Azure pro státní správu a svrchované oblasti: US Gov – Texas, US Gov – Arizona, US Gov – Iowa, US, gov) – Virginia, US DoD – východ, US DoD – střed, Německo – střed, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
+> Funkce rozšířené ochrany před internetovými útoky **není dostupná v** těchto oblastech cloudu Azure a v svrchovaném cloudu: US Gov – Texas, US Gov – Arizona, US gov – Iowa, US, gov) – virginia, US DoD – východ, US DoD – střed, Německo Central, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+1. [https://portal.azure.com](https://portal.azure.com)spusťte Azure Portal.
 2. Přejděte na stránku konfigurace serveru Azure Database for MariaDB, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)** .
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 
@@ -60,7 +60,7 @@ Kliknutím na **výstrahu detekce hrozeb** spustíte stránku Azure Security Cen
    ![Výstraha detekce hrozeb](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * Další informace o cenách najdete na stránce s [cenami Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/) .  

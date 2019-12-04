@@ -1,20 +1,19 @@
 ---
-title: Zotavení po havárii pro účty pro integraci – Azure Logic Apps
+title: Zotavení po havárii pro účty pro integraci
 description: Nastavení zotavení po havárii mezi oblastmi pro účty pro integraci v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 321bfb673bab748176d75db7bcf21d76ddf0c819
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 5ab0b14a190461d4dfba74e277f3d2ec30d9981a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680399"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793132"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Nastavení zotavení po havárii mezi oblastmi pro účty pro integraci v Azure Logic Apps
 
@@ -113,7 +112,7 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
    ![Přidat nebo aktualizovat řídicí čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. Pokud chcete připojit akci k účtu pro integraci sekundární oblasti, vyberte **změnit připojení**  > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**. 
+7. Pokud chcete připojit akci k účtu pro integraci sekundární oblasti, vyberte **změnit připojení** > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**. 
 
    ![Název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -168,7 +167,7 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
    ![Přidat nebo aktualizovat řídicí čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. Pokud chcete připojit akci k účtu pro integraci sekundární oblasti, vyberte **změnit připojení**  > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**.
+8. Pokud chcete připojit akci k účtu pro integraci sekundární oblasti, vyberte **změnit připojení** > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**.
 
    ![Název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -220,7 +219,7 @@ Provozní kontinuita pro dokumenty, které používají protokol AS2, je založe
 
    ![Přidání nebo aktualizace MIC](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. Pokud chcete připojit akci k sekundárnímu účtu pro integraci, vyberte **změnit připojení**  > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**.
+7. Pokud chcete připojit akci k sekundárnímu účtu pro integraci, vyberte **změnit připojení** > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**.
 
    ![Název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

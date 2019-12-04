@@ -3,21 +3,21 @@ title: Pokyny pro návrh zpřístupnění
 titleSuffix: Azure Cognitive Services
 description: Úvod do pokynů pro návrh zpřístupnění a posouzení úrovně zpřístupnění.
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837382"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776381"
 ---
-# <a name="disclosure-design-guidelines"></a>Pokyny pro návrh zpřístupnění
+# <a name="disclosure-design-guidelines"></a>Zpřístupnění pokynů pro návrh
 Naučte se vytvářet a udržovat vztahy důvěryhodnosti se zákazníky transparentním z hlediska syntetické povahy hlasového prostředí.
 
 ## <a name="what-is-disclosure"></a>Co je zpřístupnění?

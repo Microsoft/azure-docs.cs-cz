@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – vytvoření Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
-description: Úvodní příručka k vytvoření a správa Azure Database for PostgreSQL – jeden Server pomocí Azure CLI (rozhraní příkazového řádku).
+title: 'Rychlý Start: vytvoření serveru – Azure CLI-Azure Database for PostgreSQL-Single server'
+description: Průvodce rychlým startem pro vytvoření serveru Azure Database for PostgreSQL-Single pomocí Azure CLI (rozhraní příkazového řádku).
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,32 +8,32 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: d8e5ddf0820c789150f264aa4f7d6bd291adb3af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 54e31f206057207a9ed396c8980c6a3986d5ece4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443134"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766918"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL-Single pomocí rozhraní příkazového řádku Azure
 
 > [!TIP]
-> Zvažte použití jednodušší [az postgres nahoru](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) rozhraní příkazového řádku Azure (aktuálně ve verzi preview). Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
+> Zvažte použití jednoduššího příkazu [AZ Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI (aktuálně ve verzi Preview). Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
 
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak vytvořit server Azure Database for PostgreSQL ve [skupině prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rozhraní CLI Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
-Pokud používáte rozhraní příkazového řádku místně, musíte se přihlásit ke svému účtu pomocí [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) příkazu. Poznámka: **ID** vlastnost z výstupu příkazu pro odpovídající název předplatného.
+Pokud spouštíte rozhraní příkazového řádku místně, musíte se přihlásit ke svému účtu pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) . Poznamenejte si vlastnost **ID** z výstupu příkazu pro odpovídající název předplatného.
 ```azurecli-interactive
 az login
 ```
 
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Náhradní **ID** vlastnost z **az login** výstupu pro vaše předplatné do zástupnou hodnotu ID předplatného.
+Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Nahraďte vlastnost **ID** z výstupu **AZ Login** pro vaše předplatné na zástupný symbol ID předplatného.
 ```azurecli-interactive
 az account set --subscription <subscription id>
 ```
@@ -56,17 +56,17 @@ jméno | mydemoserver | Zvolte jedinečný název serveru, který identifikuje v
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.
 sku-name | GP_Gen5_2 | Název skladové jednotky. Dodržuje konvenci {cenová úroveň}\_{výpočetní generace}\_{virtuální jádra} ve zkráceném zápisu. Další informace o parametru sku-name najdete pod touto tabulkou.
 backup-retention | 7 | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah je 7 až 35. 
-geo-redundant-backup | Zakázáno | Určuje, jestli pro tento server mají nebo nemají být povolené geograficky redundantní zálohy. Povolené hodnoty: Povolený, zakázaný.
+geo-redundant-backup | Zakázáno | Určuje, jestli pro tento server mají nebo nemají být povolené geograficky redundantní zálohy. Povolené hodnoty: Enabled, Disabled.
 location | westus | Lokace Azure pro server.
-ssl-enforcement | Povoleno | Určuje, jestli pro tento server má nebo nemá být povolený protokol SSL. Povolené hodnoty: Povolený, zakázaný.
+ssl-enforcement | Povoleno | Určuje, jestli pro tento server má nebo nemá být povolený protokol SSL. Povolené hodnoty: Enabled, Disabled.
 velikost úložiště | 51200 | Kapacita úložiště serveru (jednotkou jsou megabajty). Platná velikost úložiště je minimálně 5 120 MB a navyšuje se v přírůstcích 1 024 MB. Další informace o limitech velikosti úložiště najdete v dokumentu o [cenových úrovních](./concepts-pricing-tiers.md). 
 version | 9.6 | Hlavní verze PostgreSQL.
 admin-user | myadmin | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser**, **admin**, **administrátor**, **root**, **host** nebo  **public**.
-admin-password | *bezpečné heslo* | Heslo uživatele, který je správcem. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, čísla a jiné než alfanumerické znaky.
+admin-password | *bezpečné heslo* | Heslo uživatele, který je správcem. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 
 
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_1` mapuje se na Basic, obecné 5 a 1 virtuální jádro. Tato možnost je k dispozici nejmenší SKU.
++ `--sku-name B_Gen5_1` se mapuje na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
@@ -78,14 +78,14 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 ```
 
 > [!NOTE]
-> Zvažte použití cenové úrovni Basic Pokud nízký výpočetní a vstupně-výstupní operace jsou dostatečné pro vaši úlohu. Všimněte si, že servery vytvořené v cenové úrovni Basic nelze později škálovat pro obecné účely nebo optimalizované pro paměť. Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) Další informace.
+> Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) .
 > 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru
 
 Pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) vytvořte pravidlo brány firewall na úrovni serveru Azure PostgreSQL. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je třeba [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) nebo [PgAdmin](https://www.pgadmin.org/), aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure PostgreSQL. 
 
-Abyste se mohli připojit z vaší sítě, můžete nastavit pravidlo brány firewall, které pokrývá rozsah IP adres. Následující příklad vytvoří pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) pravidlo brány firewall `AllowMyIP` pro jednu IP adresu.
+Pokud se chcete připojovat ze své sítě, můžete nastavit pravidlo brány firewall, které pokrývá rozsah IP adres. Následující příklad vytvoří pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) pravidlo brány firewall `AllowMyIP` pro jednu IP adresu.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
@@ -146,7 +146,7 @@ Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se p
    ```
 
    > [!TIP]
-   > Pokud chcete použít cestu adresy URL pro připojení k Postgres, kódování URL uživatelské jméno se symbolem @ `%40`. Například by být připojovací řetězec pro psql,
+   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL: kódování @ uživatelského jména pomocí `%40`. Například připojovací řetězec pro psql by byl,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -183,12 +183,12 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
     Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény ( **\*.postgres.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
     Port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL. 
     Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
-    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
+    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username\@servername*.
     Heslo | Vaše heslo správce | Heslo, které jste si zvolili při vytváření serveru dříve v tomto rychlém startu.
     Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
-    Režim SSL | *Vyžadovat* | Na kartě SSL nástroje pgAdmin můžete nastavit režim SSL. Ve výchozím nastavení jsou všechny servery Azure Database for PostgreSQL vytvořené se zapnutým vynucováním SSL. Pokud chcete vynucování SSL vypnout, přečtěte si téma popisující [vynucování SSL](./concepts-ssl-connection-security.md).
+    Režim SSL | *Vyžadovat* | Režim SSL můžete nastavit na kartě SSL v pgAdmin. Ve výchozím nastavení jsou všechny servery Azure Database for PostgreSQL vytvořené se zapnutým vynucováním SSL. Pokud chcete vynucování SSL vypnout, přečtěte si téma popisující [vynucování SSL](./concepts-ssl-connection-security.md).
     
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 6. V levém podokně **Prohlížeč** rozbalte uzel **Servery**. Vyberte server, například **mydemoserver**. Kliknutím se k němu připojte.
 
@@ -225,7 +225,7 @@ Pokud chcete odstranit jenom nově vytvořený server, můžete spustit příkaz
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./howto-migrate-using-export-and-import.md)
 

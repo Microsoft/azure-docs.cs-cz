@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69781b7c5187bd9166946a96a8b47233d0f77208
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100679"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790911"
 ---
-# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače se systémy Windows a SQL Server v prostředí Azure PowerShell
+# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem pomocí Azure PowerShellu
 
 Tento rychlý start vás provede vytvořením virtuálního počítače s SQL Serverem v prostředí Azure PowerShell.
 
@@ -120,7 +120,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-the-sql-vm"></a>Vytvoření virtuálního počítače pro SQL
 
-1. Definujte přihlašovací údaje pro přihlášení k virtuálnímu počítači. Uživatelské jméno je "azureadmin". Před spuštěním příkazu je \<třeba změnit heslo >.
+1. Definujte přihlašovací údaje pro přihlášení k virtuálnímu počítači. Uživatelské jméno je "azureadmin". Před spuštěním příkazu se ujistěte, že jste změnili \<heslo >.
 
    ``` PowerShell
    # Define a credential object
@@ -151,7 +151,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete nainstalovat agenta na nový virtuální počítač, spusťte po vytvoření virtuálního počítače následující příkaz.
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
    ```
 
 ## <a name="remote-desktop-into-the-vm"></a>Připojení k virtuálnímu počítači pomocí Vzdálené plochy
@@ -188,7 +188,7 @@ Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 
 Pomocí příkazu **Remove-AzResourceGroup** můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači. Tím se trvale odstraní i virtuální počítač, takže tento příkaz používejte opatrně.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili virtuální počítač se systémem SQL Server 2017 pomocí prostředí Azure PowerShell. Další informace o tom, jak na tento nový SQL Server migrovat data, najdete v následujícím článku.
 

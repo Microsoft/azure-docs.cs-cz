@@ -1,17 +1,17 @@
 ---
-title: Koncepty serveru v Azure Database for PostgreSQL – jeden server
+title: Servery – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje informace a pokyny pro konfiguraci a správu Azure Database for PostgreSQL-Single server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029964"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768159"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – jeden server
 Tento článek popisuje informace a pokyny pro práci s Azure Database for PostgreSQLm na jednom serveru.
@@ -48,7 +48,7 @@ Azure Database for PostgreSQL servery můžete spravovat pomocí [Azure Portal](
 
 Při vytváření serveru nastavíte přihlašovací údaje pro uživatele správce. Uživatel s oprávněními správce je nejvyšší oprávnění, které máte na serveru. Patří do role azure_pg_admin. Tato role nemá úplná oprávnění uživatele. 
 
-Atribut PostgreSQL-User je přiřazen k azure_superuser, který patří do spravované služby. K této roli nemáte přístup.
+Atribut PostgreSQL-User je přiřazen k azure_superuser, která patří do spravované služby. K této roli nemáte přístup.
 
 Server Azure Database for PostgreSQL má výchozí databáze: 
 - **Postgres** – výchozí databáze, ke které se můžete připojit, až se server vytvoří.

@@ -1,24 +1,21 @@
 ---
-title: Vytváření šablon aplikací logiky pro nasazení – Azure Logic Apps
+title: Vytváření šablon aplikací logiky pro nasazení
 description: Naučte se vytvářet Azure Resource Manager šablony pro automatizaci nasazení v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 57e9cec16326068cc7de74b8f7266fbe47808fed
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845446"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793203"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytvoření šablon Azure Resource Manager pro automatizaci nasazení pro Azure Logic Apps
 
-Tento článek popisuje způsoby, jak můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro aplikaci logiky, která vám umožní automatizovat vytváření a nasazení aplikace logiky. Přehled struktury a syntaxe pro šablonu, která obsahuje definici pracovního postupu a další prostředky nezbytné pro nasazení, najdete v tématu [přehled: Automatizujte nasazení Logic Apps pomocí šablon](logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
+Tento článek popisuje způsoby, jak můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro aplikaci logiky, která vám umožní automatizovat vytváření a nasazení aplikace logiky. Přehled struktury a syntaxe pro šablonu, která obsahuje definici pracovního postupu a další prostředky nezbytné pro nasazení, najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md).
 
 Azure Logic Apps poskytuje [předem vytvořenou šablonu Azure Resource Manager aplikace logiky](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) , kterou můžete použít, nejen pro vytváření aplikací logiky, ale také k definování prostředků a parametrů, které se mají použít pro nasazení. Tuto šablonu můžete použít pro vlastní obchodní scénáře nebo šablonu přizpůsobit, aby splňovala vaše požadavky.
 
@@ -52,10 +49,10 @@ Předpokládejme například, že máte aplikaci logiky, která přijímá zprá
 
 Tyto ukázky ukazují, jak vytvořit a nasadit Logic Apps pomocí Azure Resource Manager šablon, Azure Pipelines v Azure DevOps a Azure PowerShell:
 
-* [Ukázka: Připojení k Azure Service Bus frontám z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: Připojení k Azure Storage účtům z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: Nastavení akce aplikace Function App pro Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Ukázka: Připojit se k účtu pro integraci z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Ukázka: připojení k Azure Service Bus frontám z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: připojení k Azure Storage účtům z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: nastavte akci aplikace Function App pro Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: připojení k účtu pro integraci z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>Nainstalovat moduly PowerShellu
 
@@ -79,7 +76,7 @@ Pokud chcete nainstalovat ručně, postupujte podle kroků v části GitHub pro 
 
 Aby modul LogicAppTemplate fungoval s jakýmkoli přístupovým tokenem tenanta Azure a předplatným, nainstalujte [nástroj Azure Resource Manager Client](https://github.com/projectkudu/ARMClient), což je jednoduchý nástroj příkazového řádku, který volá rozhraní API Azure Resource Manager.
 
-Když `Get-LogicAppTemplate` příkaz spustíte s tímto nástrojem, příkaz nejprve získá přístupový token prostřednictvím nástroje ARMClient, předává token do skriptu PowerShellu a vytvoří šablonu jako soubor JSON. Další informace o tomto nástroji najdete v tomto [článku o nástroji Azure Resource Manager Client](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html).
+Když spustíte příkaz `Get-LogicAppTemplate` s tímto nástrojem, příkaz nejprve získá přístupový token prostřednictvím nástroje ARMClient, předává token do skriptu PowerShellu a vytvoří šablonu jako soubor JSON. Další informace o tomto nástroji najdete v tomto [článku o nástroji Azure Resource Manager Client](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html).
 
 ### <a name="generate-template-with-powershell"></a>Generování šablony pomocí PowerShellu
 
@@ -89,7 +86,7 @@ Pokud chcete vygenerovat šablonu po instalaci modulu LogicAppTemplate a rozhran
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-Pokud chcete postupovat podle doporučení pro potrubí v tokenu z [nástroje Azure Resource Manager Client](https://github.com/projectkudu/ARMClient), spusťte tento příkaz místo `$SubscriptionId` toho, kde je vaše ID předplatného Azure:
+Pokud chcete postupovat podle doporučení pro potrubí v tokenu z [nástroje Azure Resource Manager Client](https://github.com/projectkudu/ARMClient), spusťte tento příkaz místo toho, kde `$SubscriptionId` je vaše ID předplatného Azure:
 
 ```text
 PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
@@ -107,10 +104,10 @@ Pro extrakci pomocí Azure Key Vault odkazů (pouze statické) spusťte tento p�
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| Parametry | Požadováno | Popis |
+| Parametry | Požaduje se | Popis |
 |------------|----------|-------------|
 | TemplateFile | Ano | Cesta k souboru šablony |
-| KeyVault | Ne | Výčet, který popisuje, jak zpracovat možné hodnoty trezoru klíčů. Výchozí hodnota je `None`. |
+| KeyVault | Ne | Výčet, který popisuje, jak zpracovat možné hodnoty trezoru klíčů. Výchozí formát je `None`. |
 ||||
 
 ## <a name="next-steps"></a>Další kroky

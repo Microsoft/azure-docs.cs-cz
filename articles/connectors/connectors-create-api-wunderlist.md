@@ -1,22 +1,18 @@
 ---
-title: Připojte se k Wunderlistu z Azure Logic Apps | Microsoft Docs
+title: Připojení k Wunderlistu z Azure Logic Apps
 description: Automatizujte úlohy a pracovní postupy, které sledují a spravují seznamy, úkoly, připomenutí a další v účtu Wunderlistu pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: d57ab4a7b655a7d49a7120d358dccc627099e5fd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 5ac13595bd77238aaede5fa3bdc3a35ef69e8504
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050656"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789116"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitorování a Správa Wunderlistu pomocí Azure Logic Apps
 
@@ -29,7 +25,7 @@ Pomocí Azure Logic Apps a konektoru Wunderlistu můžete vytvářet automatizov
 
 [Wunderlistu](https://www.wunderlist.com/) je služba, která vám pomůže plánovat, spravovat a dokončí vaše projekty, seznamy úkolů a úkoly – na jakémkoli zařízení, kdekoli. Můžete použít triggery, které získávají odpovědi z vašeho účtu Wunderlistu, a zpřístupnit výstup ostatním akcím. Můžete použít akce, které provádějí úlohy s účtem Wunderlistu. Můžete také použít jiné akce výstup z akcí Wunderlistu. Například když jsou nové úlohy splatné, můžete zprávy odesílat pomocí konektoru časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -61,7 +57,7 @@ Pomocí Azure Logic Apps a konektoru Wunderlistu můžete vytvářet automatizov
        -nebo-
 
      * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-     Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+     Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
      
        Do vyhledávacího pole zadejte "wunderlistu" jako filtr. 
        V seznamu akce vyberte akci, kterou chcete.
@@ -79,6 +75,6 @@ Technické podrobnosti o aktivačních událostech, akcích a omezeních, které
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

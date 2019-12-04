@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 752c43604349a2361a8f5b26cd6d0bce7b516bc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: a7290e46a0c5e228689dd1f1a0dc7f9a1182ad60
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175268"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789644"
 ---
-### <a name="prerequisites"></a>Požadavky
-* A [MailChimp](https://www.MailChimp.com/) účtu 
+## <a name="prerequisites"></a>Předpoklady
 
-Předtím, než v aplikaci logiky můžete používat svůj účet MailChimp, musíte se autorizovat aplikaci logiky pro připojení k vašemu účtu MailChimp. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal. 
+* Účet [MailChimp](https://www.MailChimp.com/) 
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k vašemu účtu MailChimp:
+Než budete moct účet MailChimp použít v aplikaci logiky, musíte autorizovat aplikaci logiky, abyste se připojili k vašemu účtu MailChimp. Naštěstí to můžete provést snadno v rámci aplikace logiky na webu Azure Portal. 
 
-1. Chcete-li vytvořit připojení k Mailchimpu, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *MailChimp* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
-   ![Krok 1 MailChimp](./media/connectors-create-api-mailchimp/mailchimp-1.png)
-2. Pokud jste ještě nevytvořili žádná připojení k Mailchimpu před, zobrazí výzva k poskytování svých přihlašovacích údajů. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky se připojit k a přístup k vašemu účtu MailChimp dat:  
-   ![Krok 2 MailChimp](./media/connectors-create-api-mailchimp/mailchimp-2.png)
-3. Zadejte své MailChimp uživatelské jméno a heslo k autorizaci aplikace logiky:  
-   ![Krok 3 MailChimp](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
-4. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
-   ![Krok 4 MailChimp](./media/connectors-create-api-mailchimp/mailchimp-4.png)
+Tady je postup, jak autorizovat aplikaci logiky pro připojení k účtu MailChimp:
+
+1. Pokud chcete vytvořit připojení k MailChimp, v návrháři aplikace logiky vyberte v rozevíracím seznamu **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte *MailChimp* . Vyberte aktivační událost nebo akci, kterou chcete použít:  
+   ![MailChimp krok 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
+2. Pokud jste ještě nevytvořili žádná připojení k MailChimp, zobrazí se výzva k zadání přihlašovacích údajů MailChimp. Tyto přihlašovací údaje budou použity k autorizaci aplikace logiky k připojení a k datům účtu MailChimp:  
+   ![MailChimp krok 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
+3. Zadejte své uživatelské jméno a heslo MailChimp k autorizaci vaší aplikace logiky:  
+   ![MailChimp – krok 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
+4. Všimněte si, že připojení bylo vytvořeno a vy teď můžete pokračovat dalšími kroky ve vaší aplikaci logiky:  
+   ![MailChimp krok 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
 

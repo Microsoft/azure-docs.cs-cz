@@ -1,20 +1,17 @@
 ---
-title: Zabezpečený přístup a Azure Logic Apps dat
+title: Zabezpečení přístupu a dat
 description: Přidejte zabezpečení pro ochranu vstupů, výstupů, triggerů založených na požadavcích, historie spouštění, úloh správy a přístupu k dalším prostředkům v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: c9dfc4ed6fce186fea9474222875a072edb32f59
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084731"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792907"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -627,7 +624,7 @@ Pokud je k dispozici možnost [základní](../active-directory-b2c/active-direct
 
 | Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Ověřování** | `type` | Ano | Basic | Typ ověřování, který se má použít |
+| **Ověřování** | `type` | Ano | Úroveň Basic | Typ ověřování, který se má použít |
 | **Uživatelské jméno** | `username` | Ano | <*jméno uživatele*>| Uživatelské jméno pro ověřování přístupu k cílovému koncovému bodu služby |
 | **Heslo** | `password` | Ano | <*hesla*> | Heslo pro ověřování přístupu k cílovému koncovému bodu služby |
 ||||||
@@ -699,13 +696,13 @@ Pokud je k dispozici možnost [Active Directory OAuth](../active-directory/devel
 |---------------------|-----------------|----------|-------|-------------|
 | **Ověřování** | `type` | Ano | **Protokol OAuth pro Active Directory** <br>nebo <br>`ActiveDirectoryOAuth` | Typ ověřování, který se má použít. Logic Apps v současnosti následuje [protokol OAuth 2,0](../active-directory/develop/v2-overview.md). |
 | **Tenant** | `tenant` | Ano | <*tenant-ID*> | ID tenanta pro tenanta Azure AD |
-| **Osoby** | `audience` | Ano | <*resource-to-authorize*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
-| **ID klienta** | `clientId` | Ano | <*client-ID*> | ID klienta pro aplikaci požadující autorizaci |
-| **Typ přihlašovacích údajů** | `credentialType` | Ano | Certifikát <br>nebo <br>Secret | Typ přihlašovacích údajů, který klient používá k vyžádání autorizace. Tato vlastnost a hodnota se nezobrazí v základní definici vaší aplikace logiky, ale určuje vlastnosti, které se zobrazí pro vybraný typ přihlašovacích údajů. |
+| **Osoby** | `audience` | Ano | <*prostředku k autorizaci*> | Prostředek, který chcete použít pro autorizaci, například `https://management.core.windows.net/` |
+| **ID klienta** | `clientId` | Ano | <*Client-ID*> | ID klienta pro aplikaci požadující autorizaci |
+| **Typ přihlašovacích údajů** | `credentialType` | Ano | Certifikát <br>nebo <br>Tajný kód | Typ přihlašovacích údajů, který klient používá k vyžádání autorizace. Tato vlastnost a hodnota se nezobrazí v základní definici vaší aplikace logiky, ale určuje vlastnosti, které se zobrazí pro vybraný typ přihlašovacích údajů. |
 | **Tajný kód** | `secret` | Ano, ale jenom pro typ přihlašovacích údajů tajného klíče | <> *tajného klienta* | Tajný klíč klienta pro vyžádání autorizace |
 | **PFX** | `pfx` | Ano, ale pouze pro typ přihlašovacích údajů certifikát | <*kódovaný soubor-PFX-Content-content*> | Obsah kódovaný v kódování Base64 ze souboru PFX (Personal Information Exchange) |
 | **Heslo** | `password` | Ano, ale pouze pro typ přihlašovacích údajů certifikát | <*hesla-pro-soubor pfx*> | Heslo pro přístup k souboru PFX |
-| **Dohled** | `authority` | Ne | <*URL-for-authority-token-issuer*> | Adresa URL pro autoritu, která poskytuje ověřovací token. Ve výchozím nastavení je tato hodnota `https://login.windows.net`. <p>**Poznámka**: Chcete-li tuto vlastnost zviditelnit v návrháři, otevřete u triggeru nebo akce seznam **Přidat nový parametr** a vyberte možnost **autorita**. |
+| **Dohled** | `authority` | Ne | <*Adresa URL –> vystavitele tokenu* | Adresa URL pro autoritu, která poskytuje ověřovací token. Ve výchozím nastavení je tato hodnota `https://login.windows.net`. <p>**Poznámka**: Chcete-li tuto vlastnost zviditelnit v návrháři, otevřete u triggeru nebo akce seznam **Přidat nový parametr** a vyberte možnost **autorita**. |
 |||||
 
 Když použijete [zabezpečené parametry](#secure-action-parameters) k obsluze a ochraně citlivých informací, například v [šabloně Azure Resource Manager pro automatizaci nasazení](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), můžete použít výrazy pro přístup k těmto hodnotám parametrů za běhu. Tato ukázka definice akce HTTP určuje `type` ověřování jako `ActiveDirectoryOAuth`, typ přihlašovacích údajů jako `Secret`a pomocí [funkce Parameters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) Získá hodnoty parametrů:
@@ -751,7 +748,7 @@ V aktivační události nebo akci, která podporuje nezpracované ověřování,
 
 | Property – vlastnost (Designer) | Property (JSON) | Požaduje se | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Ověřování** | `type` | Ano | získání | Typ ověřování, který se má použít |
+| **Ověřování** | `type` | Ano | Získání | Typ ověřování, který se má použít |
 | **Hodnota** | `value` | Ano | *autorizace <– hodnota hlavičky*> | Hodnota hlavičky autorizace, která se má použít pro ověřování |
 ||||||
 

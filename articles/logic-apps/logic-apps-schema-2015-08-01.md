@@ -1,49 +1,47 @@
 ---
-title: Aktualizace schématu pro 1. srpna 2015 preview – Azure Logic Apps | Dokumentace Microsoftu
-description: Aktualizované schéma verze 2015-08-01-preview pro definic aplikací logiky v Azure Logic Apps
+title: Aktualizace schématu pro srpen-1-2015 Preview
+description: Aktualizované schéma verze 2015-08-01-Preview pro definice aplikací logiky v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/31/2016
-ms.openlocfilehash: 92f522c72f69218e55b1ee4cfff74511a30288b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b6746baaede777eb8c2afcae9eb3fe80b669c468
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60553755"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792838"
 ---
-# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Aktualizace schématu pro Azure Logic Apps - 1. srpna 2015 preview
+# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Aktualizace schématu pro Azure Logic Apps – 1. srpna 2015 Preview
 
-Toto schéma a rozhraní API verze pro Azure Logic Apps zahrnuje klíčových vylepšení, které spolehlivější a usnadňuje používání logic apps:
+Toto schéma a verze rozhraní API pro Azure Logic Apps obsahují klíčová vylepšení, která umožňují spolehlivější a snazší používání Logic Apps:
 
-* **APIApp** typ akce je teď jmenuje [ **APIConnection**](#api-connections).
-* **Opakujte** akce je teď jmenuje [ **Foreach**](#foreach).
-* [ **Naslouchací proces protokolu HTTP** aplikace API](#http-listener) se už nevyžaduje.
-* Používá volání podřízených pracovních postupů [nové schéma](#child-workflows).
+* Typ akce **vstupech apiapp** má nyní název [**vstupech apiconnection**](#api-connections).
+* Akce **Opakovat** je nyní pojmenována [**foreach**](#foreach).
+* [Aplikace API **naslouchacího procesu http** ](#http-listener) už není potřeba.
+* Volání podřízených pracovních postupů používá [nové schéma](#child-workflows).
 
 <a name="api-connections"></a>
 
-## <a name="move-to-api-connections"></a>Přesunout připojení rozhraní API
+## <a name="move-to-api-connections"></a>Přesunout na připojení rozhraní API
 
-Největší změnou je, že již nemusíte nasazovat aplikace API do vašeho předplatného Azure, aby mohli používat rozhraní API. Tady je způsoby, které můžete použít rozhraní API:
+Největší změnou je, že už nemusíte nasazovat API Apps do předplatného Azure, abyste mohli používat rozhraní API. Tady je způsob, jak můžete používat rozhraní API:
 
-* Spravované rozhraní API
-* Vlastní webová rozhraní API.
+* Spravovaná rozhraní API
+* Vaše vlastní webová rozhraní API
 
-Jednotlivé možnosti přinesou je zpracovávané trochu jinak, protože se liší jejich správa a hostování modely. Jednou z výhod tohoto modelu je, že jste se k prostředkům, které jsou nasazené ve vaší skupině prostředků Azure již nejsou omezené. 
+Každý způsob je zpracováván mírně jinak, protože jejich modely správy a hostování jsou odlišné. Jednou z výhod tohoto modelu je, že už nejste omezeni na prostředky, které jsou nasazené ve vaší skupině prostředků Azure. 
 
-### <a name="managed-apis"></a>Spravované rozhraní API
+### <a name="managed-apis"></a>Spravovaná rozhraní API
 
-Některá rozhraní API za vás, jako je Office 365, Salesforce, Twitter a FTP spravuje Microsoft. Můžete použít některá spravovaná rozhraní API jako-, jako je Bing přeložit, zatímco jiné vyžadují konfiguraci, zkratka *připojení*.
+Společnost Microsoft spravuje některá rozhraní API vaším jménem, například Office 365, Salesforce, Twitter a FTP. Některá spravovaná rozhraní API můžete použít tak, jak jsou, jako je například překlad Bingu, zatímco jiné vyžadují konfiguraci, která se označuje také jako *připojení*.
 
-Například pokud používáte Office 365, musí vytvořit připojení, která zahrnuje Office 365 přihlašovací token. Váš token je bezpečně uložená a aktualizovat tak, aby vaše aplikace logiky můžete vždy volat rozhraní API Office 365. Pokud se chcete připojit k serveru SQL nebo FTP, musíte vytvořit připojení, které obsahuje připojovací řetězec. 
+Pokud například používáte Office 365, musíte vytvořit připojení, které zahrnuje token pro přihlášení k Office 365. Váš token je bezpečně uložený a aktualizovaný, takže aplikace logiky může vždycky volat rozhraní API pro Office 365. Pokud se chcete připojit k serveru SQL nebo FTP, je nutné vytvořit připojení s připojovacím řetězcem. 
 
-V této definici, se nazývají tyto akce `APIConnection`. Tady je příklad připojení, která volá Office 365 k odesílání e-mailu:
+V této definici se tyto akce nazývají `APIConnection`. Tady je příklad připojení, které volá Office 365 k odeslání e-mailu:
 
 ``` json
 {
@@ -72,20 +70,20 @@ V této definici, se nazývají tyto akce `APIConnection`. Tady je příklad př
 }
 ```
 
-`host` Objektu je součástí vstupy, které jsou jedinečné pro připojení rozhraní API a obsahuje tyto části: `api` a `connection`. `api` Objekt určuje modulu runtime prostředí adresu URL, kde spravované rozhraní API. Voláním této metody můžete zobrazit všechny dostupné spravované API:
+Objekt `host` je součástí vstupů, které jsou jedinečné pro připojení rozhraní API a obsahují tyto části: `api` a `connection`. Objekt `api` Určuje adresu URL modulu runtime, kde je toto spravované rozhraní API hostované. Můžete zobrazit všechna dostupná spravovaná rozhraní API voláním této metody:
 
 ```text
 GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
 ```
 
-Při použití rozhraní API, toto rozhraní API může nebo nemusí mít definované žádné *parametry připojení*. Takže pokud rozhraní API nedefinuje tyto parametry, je nutné žádné připojení. Pokud rozhraní API definovat tyto parametry, musíte vytvořit spojení se zadaným názvem.  
-Pak odkazovat tento název v `connection` objektu `host` objektu. Chcete-li vytvořit připojení ve skupině prostředků, volání této metody:
+Když použijete rozhraní API, toto rozhraní API může nebo nemusí mít definovány žádné *parametry připojení*. Takže pokud rozhraní API tyto parametry nedefinuje, není nutné žádné připojení. Pokud rozhraní API definuje tyto parametry, je nutné vytvořit připojení se zadaným názvem.  
+Pak se na tento název odkazuje v objektu `connection` uvnitř objektu `host`. Pokud chcete ve skupině prostředků vytvořit připojení, zavolejte tuto metodu:
 
 ```text
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview
 ```
 
-Spolu s následujícím textem:
+S následujícím textem:
 
 ``` json
 {
@@ -101,10 +99,10 @@ Spolu s následujícím textem:
 }
 ```
 
-### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Nasazení spravovaných rozhraní API v šabloně Azure Resource Manageru
+### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Nasazení spravovaných rozhraní API v šabloně Azure Resource Manager
 
-Při interaktivním přihlášení se vyžaduje, můžete vytvořit úplnou aplikaci pomocí šablony Resource Manageru.
-Pokud přihlášení je potřeba, můžete stále použít šablonu Resource Manageru, ale budete muset autorizovat připojení na webu Azure portal. 
+Pokud se interaktivní přihlášení nevyžaduje, můžete vytvořit úplnou aplikaci pomocí šablony Správce prostředků.
+Pokud je vyžadováno přihlášení, můžete přesto použít šablonu Správce prostředků, ale je nutné autorizovat připojení prostřednictvím Azure Portal. 
 
 ``` json
 "resources": [ {
@@ -194,13 +192,13 @@ Pokud přihlášení je potřeba, můžete stále použít šablonu Resource Man
 } ]
 ```
 
-Zobrazí se v tomto příkladu, že připojení jsou jenom prostředky, které za provozu ve vaší skupině prostředků. Odkazují spravovaných rozhraní API k dispozici v rámci vašeho předplatného.
+V tomto příkladu vidíte, že připojení jsou pouze prostředky, které jsou ve vaší skupině prostředků živé. Odkazují na spravovaná rozhraní API, která jsou k dispozici v rámci vašeho předplatného.
 
-### <a name="your-custom-web-apis"></a>Vlastní webová rozhraní API.
+### <a name="your-custom-web-apis"></a>Vaše vlastní webová rozhraní API
 
-Pokud používáte vlastní rozhraní API než ty spravovaných microsoftem, použít integrovaný **HTTP** akce pro volání rozhraní API. V ideálním případě byste měli poskytnout koncového bodu Swaggeru pro vaše rozhraní API. Tento koncový bod pomáhá návrhář aplikace logiky zobrazit vstupy a výstupy vašeho rozhraní API. Bez koncového bodu Swaggeru návrháře můžete jenom zobrazit vstupy a výstupy jako neprůhledný objekty JSON.
+Pokud používáte vlastní rozhraní API namísto spravovaných společností Microsoft, použijte k volání rozhraní API vestavěnou akci **http** . V ideálním případě byste měli pro své rozhraní API zadat koncový bod Swagger. Tento koncový bod pomáhá návrháři aplikace logiky zobrazit vstupy a výstupy vašeho rozhraní API. Bez koncového bodu Swagger může Návrhář zobrazit pouze vstupy a výstupy jako neprůhledné objekty JSON.
 
-Tady je příklad ukazující nový `metadata.apiDefinitionUrl` vlastnost:
+Tady je příklad, který ukazuje novou vlastnost `metadata.apiDefinitionUrl`:
 
 ``` json
 "actions": {
@@ -217,12 +215,12 @@ Tady je příklad ukazující nový `metadata.apiDefinitionUrl` vlastnost:
 }
 ```
 
-Pokud hostujete vaše webové rozhraní API ve službě Azure App Service, vaše webové rozhraní API se automaticky zobrazí v seznamu akcí, které jsou k dispozici v návrháři. V opačném případě budete muset vložit přímo v adrese URL. Koncový bod Swaggeru musí neověřené má být použitelná v návrháři aplikace logiky, i když můžete zabezpečit samotné rozhraní API pomocí libovolné metody, které podporuje Swagger.
+Pokud vaše webové rozhraní API hostuje na Azure App Service, vaše webové rozhraní API se automaticky zobrazí v seznamu akcí, které jsou k dispozici v návrháři. V takovém případě je nutné přímo vložit adresu URL. Aby bylo možné použít koncový bod Swagger v návrháři aplikace logiky, je nutné, aby bylo možné toto rozhraní API zabezpečit bez ohledu na to, jaké metody podporuje Swagger.
 
-### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Volání nasazené rozhraní API aplikací s 2015-08-01-preview
+### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Volání nasazených aplikací API s 2015-08-01 – Preview
 
-Pokud jste předtím nasadili aplikaci API, můžete volat tuto aplikaci se **HTTP** akce.
-Pokud používáte Dropboxu do seznamu souborů, například vaše **2014-12-01-preview** definici verze schématu může mít vypadat:
+Pokud jste předtím nasadili aplikaci API, můžete tuto aplikaci zavolat pomocí akce **http** .
+Pokud například použijete Dropbox k vypsání souborů, může definice verze schématu **2014-12-01-Preview** vypadat přibližně takto:
 
 ``` json
 "definition": {
@@ -263,7 +261,7 @@ Pokud používáte Dropboxu do seznamu souborů, například vaše **2014-12-01-
 }
 ```
 
-Nyní, teď můžete sestavit podobné akce HTTP a nechte definici aplikace logiky `parameters` beze změny části, například:
+Nyní teď můžete vytvořit podobnou akci HTTP a nechat nezměněnou sekci `parameters` definice aplikace logiky, například:
 
 ``` json
 "actions": {
@@ -288,24 +286,24 @@ Nyní, teď můžete sestavit podobné akce HTTP a nechte definici aplikace logi
 }
 ```
 
-Provede jednu po druhé tyto vlastnosti:
+Procházení těchto vlastností po jednom:
 
-| Vlastnosti akce | Popis |
+| Action – vlastnost | Popis |
 | --- | --- |
-| `type` | `Http` Namísto `APIapp` |
-| `metadata.apiDefinitionUrl` | Pokud chcete použít tuto akci v návrháři aplikace logiky, patří koncový bod metadat, která je vytvořená z: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` | Vytvořený z: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
-| `inputs.method` | Vždy `POST` |
+| `type` | `Http` místo `APIapp` |
+| `metadata.apiDefinitionUrl` | Pokud chcete tuto akci použít v návrháři aplikace logiky, zahrňte koncový bod metadat, který je vytvořený z: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` | Vyrobeno z: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `inputs.method` | Vždycky `POST` |
 | `inputs.body` | Stejné jako parametry aplikace API |
-| `inputs.authentication` | Stejné jako ověření aplikace API |
+| `inputs.authentication` | Stejné jako ověřování API App |
 
-Tento přístup by měla fungovat pro všechny akce aplikace API. Nezapomeňte však, že tato předchozí API Apps již nejsou podporovány. Proto byste měli přejít na dvou dalších předchozí možnosti, spravované rozhraní API nebo hostování vlastního rozhraní Web API.
+Tento přístup by měl fungovat pro všechny akce aplikace API. Nezapomeňte však, že tyto předchozí API Apps již nejsou podporovány. Proto byste měli přejít na jednu z dalších dvou předchozích možností, spravované rozhraní API nebo hostování vlastního webového rozhraní API.
 
 <a name="foreach"></a>
 
-## <a name="renamed-repeat-to-foreach"></a>Přejmenovat 'opakovat' na 'foreach.
+## <a name="renamed-repeat-to-foreach"></a>Opakovat přejmenování na foreach
 
-Pro předchozí verzi schématu, dostali jsme spoustu zpětné vazby od zákazníků, který **opakujte** název akce byl nepřehledný a neměli zachycení správně, který **opakujte** znamenalo smyčky for-each. Proto jsme přejmenovali `repeat` k `foreach`. Dříve měli byste napsat tuto akci, jako v tomto příkladu:
+U předchozí verze schématu jsme obdrželi spoustu názorů zákazníků, že název akce **opakování** byl matoucí, a nedokázal správně zachytit toto **opakování** ve skutečnosti pro každou smyčku. Proto jsme přejmenovali `repeat` na `foreach`. Dříve jste tuto akci napsali jako v tomto příkladu:
 
 ``` json
 "actions": {
@@ -320,7 +318,7 @@ Pro předchozí verzi schématu, dostali jsme spoustu zpětné vazby od zákazn�
 }
 ```
 
-Nyní byste napsat tuto verzi místo toho:
+Nyní zapíšete tuto verzi:
 
 ``` json
 "actions": {
@@ -335,13 +333,13 @@ Nyní byste napsat tuto verzi místo toho:
 }
 ```
 
-Také `repeatItem()` funkce, který odkazuje položka, která zpracovává během aktuální iteraci smyčky, přejmenovává `item()`. 
+Také funkce `repeatItem()`, která odkazovala na položku, kterou smyčka zpracovává během aktuální iterace, je nyní přejmenována `item()`. 
 
-### <a name="reference-outputs-from-foreach"></a>Odkaz na výstupy z "foreach.
+### <a name="reference-outputs-from-foreach"></a>Výstupy odkazů z příkazu foreach
 
-Pro zjednodušení, výstupy z `foreach` akce jsou už zabalené v objektu s názvem `repeatItems`. Navíc se tyto změny `repeatItem()`, `repeatBody()`, a `repeatOutputs()` funkce jsou odebrány.
+Z důvodu zjednodušení nejsou výstupy z `foreach` akcí již zabaleny do objektu s názvem `repeatItems`. Pomocí těchto změn se navíc odeberou funkce `repeatItem()`, `repeatBody()`a `repeatOutputs()`.
 
-Ano, pomocí předchozího `repeat` například získat tyto výstupy:
+Takže pomocí předchozího `repeat` příklad získáte tyto výstupy:
 
 ``` json
 "repeatItems": [ {
@@ -358,7 +356,7 @@ Ano, pomocí předchozího `repeat` například získat tyto výstupy:
 } ]
 ```
 
-Teď získáte tyto výstupy místo:
+Nyní získáte tyto výstupy:
 
 ``` json
 [ {
@@ -375,7 +373,7 @@ Teď získáte tyto výstupy místo:
 } ]
 ```
 
-Dříve Chcete-li získat `body` z akce při odkazování na tyto výstupy:
+Dříve pro získání `body` z akce při odkazování na tyto výstupy:
 
 ``` json
 "actions": {
@@ -391,7 +389,7 @@ Dříve Chcete-li získat `body` z akce při odkazování na tyto výstupy:
 }
 ```
 
-Tato verze teď můžete použít místo toho:
+Teď můžete místo toho použít tuto verzi:
 
 ``` json
 "actions": {
@@ -409,17 +407,17 @@ Tato verze teď můžete použít místo toho:
 
 <a name="http-listener"></a>
 
-## <a name="native-http-listener"></a>Nativní naslouchací proces protokolu HTTP
+## <a name="native-http-listener"></a>Nativní naslouchací proces HTTP
 
-Funkce naslouchací proces protokolu HTTP jsou teď integrované, takže nebudete muset nasazovat aplikace API naslouchací proces protokolu HTTP. Další informace, přečtěte si postup [vytvořit váš koncový bod aplikace logiky volatelných](../logic-apps/logic-apps-http-endpoint.md). 
+Funkce naslouchacího procesu HTTP jsou teď integrované, takže nemusíte nasazovat aplikaci API pro naslouchací proces HTTP. Další informace najdete v tématu Postup při pokusu o [zpřístupnění koncového bodu aplikace logiky](../logic-apps/logic-apps-http-endpoint.md). 
 
-S těmito změnami se nahradí Logic Apps `@accessKeys()` pracovat `@listCallbackURL()` funkce, která získá koncový bod, pokud je to nezbytné. Navíc teď musíte definovat alespoň jednu aktivační událost ve své aplikaci logiky. Pokud chcete `/run` pracovního postupu, je nutné použít jeden z těchto typů aktivační události: `Manual`, `ApiConnectionWebhook`, nebo `HttpWebhook`
+Pomocí těchto změn Logic Apps nahradí funkci `@accessKeys()` funkcí `@listCallbackURL()`, která v případě potřeby získá koncový bod. V aplikaci logiky teď musíte definovat alespoň jednu Trigger. Chcete-li `/run` pracovní postup, je třeba použít jeden z těchto typů triggerů: `Manual`, `ApiConnectionWebhook`nebo `HttpWebhook`
 
 <a name="child-workflows"></a>
 
-## <a name="call-child-workflows"></a>Volat podřízené pracovních postupů
+## <a name="call-child-workflows"></a>Volání podřízených pracovních postupů
 
-Volání podřízených pracovních postupů vyžaduje dříve, že přejdete do pracovního postupu, získání přístupového tokenu a vložení tokenu v definici aplikace logiky, ve kterém chcete volat tuto podřízený pracovní postup. Pomocí tohoto schématu modul Logic Apps automaticky vygeneruje sdílený přístupový podpis za běhu pro podřízený pracovní postup, není potřeba vkládat jakýchkoli tajných kódů do v definici. Zde naleznete příklad:
+Dříve se volání podřízených pracovních postupů vyžadovalo v pracovním postupu, získání přístupového tokenu a vložení tokenu do definice aplikace logiky, kde chcete zavolat tento podřízený pracovní postup. V tomto schématu Logic Apps modul automaticky generuje SAS za běhu pro podřízený pracovní postup, takže nemusíte vkládat žádné tajné kódy do definice. Zde naleznete příklad:
 
 ``` json
 "myNestedWorkflow": {
@@ -445,20 +443,20 @@ Volání podřízených pracovních postupů vyžaduje dříve, že přejdete do
 }
 ```
 
-Podřízené pracovní postupy získáte také úplný přístup k příchozího požadavku. Ano, můžete předávat parametry v `queries` části a v `headers` objektu. Můžete také plně definovat celou `body` oddílu.
+Podřízené pracovní postupy také získají úplný přístup k příchozímu požadavku. Takže můžete předat parametry v části `queries` a v objektu `headers`. Můžete také úplně definovat celou část `body`.
 
-Nakonec podřízených pracovních postupů jsou tyto požadované změny. I když může dříve a volat přímo podřízený pracovní postup, je musí definovat koncový bod aktivační událost v pracovním postupu pro nadřazenou položku k volání. Obecně platí, přidáte trigger, který se má `Manual` zadejte a pak pomocí této aktivační události v definici nadřazené. `host` Konkrétně má vlastnost `triggerName` protože vždy je nutné zadat aktivační událost voláte.
+V konečném případě mají podřízené pracovní postupy tyto požadované změny. I když jste mohli dříve a přímo volat podřízený pracovní postup, musíte nyní definovat koncový bod triggeru v pracovním postupu pro volání nadřazených objektů. Obecně byste přidali Trigger, který má `Manual` Type, a potom použít tuto aktivační událost v definici nadřazené položky. Vlastnost `host` specificky má `triggerName`, protože je vždy nutné zadat Trigger, který zavoláte.
 
 ## <a name="other-changes"></a>Další změny
 
-### <a name="new-queries-property"></a>Nové vlastnosti 'dotazy.
+### <a name="new-queries-property"></a>Nová vlastnost dotazy
 
-Všechny typy akcí teď podporují nové vstupu volá `queries`. Tento vstup může být strukturovaný objekt, spíše než by bylo nutné sestavit řetězec ručně.
+Všechny typy akcí teď podporují nový vstup s názvem `queries`. Tento vstup může být strukturovaným objektem, nikoli sestavovat řetězec ručně.
 
-### <a name="renamed-parse-function-to-json"></a>Přejmenované "parse()" funkce "json().
+### <a name="renamed-parse-function-to-json"></a>Přejmenovaná funkce Parse () na JSON ()
 
-`parse()` Funkce přejmenovává `json()` funkce pro budoucí typy obsahu.
+Funkce `parse()` nyní přejmenována `json()` funkce pro budoucí typy obsahu.
 
-## <a name="enterprise-integration-apis"></a>Podnikové integrace rozhraní API
+## <a name="enterprise-integration-apis"></a>Rozhraní API pro Podniková integrace
 
-Toto schéma zatím nepodporuje spravované verze pro podnikové integrace rozhraní API, jako je například AS2. Můžete však použít existující nasazené rozhraním API BizTalku prostřednictvím akce HTTP. Další informace najdete v tématu "Pomocí aplikace již nasazené rozhraní API" v [integrace plán](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Toto schéma zatím nepodporuje spravované verze pro rozhraní Podniková integrace API, jako je AS2. Můžete však použít existující nasazená rozhraní API BizTalk prostřednictvím akce HTTP. Další informace najdete v tématu "použití již nasazených aplikací API" v rámci [Průvodce integrací](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 

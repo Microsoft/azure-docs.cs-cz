@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706225"
+ms.locfileid: "74786414"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -90,11 +90,11 @@ V tomto příkladu se uživatelé a skupiny vytvoří v databázi HR připojené
 
 1. Uživatelé nebo skupiny se vytvářejí v místní aplikaci nebo systému pro personální řízení, jako je například SAP. 
 
-1. Agent Azure AD Connect spouští naplánované synchronizace identit (uživatelů a skupin) z místní služby AD do Azure AD.
+1. **Agent Azure AD Connect** spouští naplánované synchronizace identit (uživatelů a skupin) z místní služby AD do Azure AD.
 
-1. Služba zřizování Azure AD zahajuje [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) proti zdrojovému systému a cílovému systému. 
+1. **Služba zřizování Azure AD** zahajuje [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) proti zdrojovému systému a cílovému systému. 
 
-1. Služba zřizování Azure AD se dotáže zdrojového systému na všechny uživatele a skupiny, které se od počátečního cyklu změnily, a vloží změny do [přírůstkových cyklů](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. **Služba zřizování Azure AD** se dotáže zdrojového systému na všechny uživatele a skupiny, které se od počátečního cyklu změnily, a vloží změny do [přírůstkových cyklů](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatické zřizování uživatelů jenom pro cloudové podniky
 
@@ -106,9 +106,9 @@ V tomto příkladu dojde k vytvoření uživatele ve službě Azure AD a služba
 
 1. Uživatelé nebo skupiny se vytvářejí ve službě Azure AD.
 
-1. Služba zřizování Azure AD zahajuje [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) proti zdrojovému systému a cílovému systému. 
+1. **Služba zřizování Azure AD** zahajuje [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) proti zdrojovému systému a cílovému systému. 
 
-1. Služba zřizování Azure AD se dotáže zdrojového systému na všechny uživatele a skupiny aktualizované od počátečního cyklu a provede všechny [přírůstkové cykly](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. **Služba zřizování Azure AD** se dotáže zdrojového systému na všechny uživatele a skupiny aktualizované od počátečního cyklu a provede všechny [přírůstkové cykly](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatické zřizování uživatelů pro cloudové aplikace HR 
 

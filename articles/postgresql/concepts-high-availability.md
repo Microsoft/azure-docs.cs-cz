@@ -1,36 +1,36 @@
 ---
-title: Koncepty vysoké dostupnosti ve službě Azure Database for PostgreSQL – jeden Server
-description: Tento článek obsahuje informace o vysoké dostupnosti při používání Azure Database for PostgreSQL – jeden Server.
+title: Vysoká dostupnost – Azure Database for PostgreSQL – jeden server
+description: Tento článek poskytuje informace o vysoké dostupnosti v Azure Database for PostgreSQL jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: f54c83099957b4d8795c4049be52d70e8a0e2a61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073440"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768567"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Koncepty vysoké dostupnosti ve službě Azure Database for PostgreSQL – jeden Server
-Služba Azure Database for PostgreSQL poskytuje zaručenou vysokou dostupnost. Je žádnou finančně zajištěnou smlouvu o úrovni služeb (SLA) 99,99 % při všeobecné dostupnosti. Neexistuje žádná aplikace prakticky časové prodlevy při používání této služby.
+# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Koncepty vysoké dostupnosti v Azure Database for PostgreSQL – jeden server
+Služba Azure Database for PostgreSQL poskytuje zaručenou vysokou úroveň dostupnosti. Finančně zajištěná smlouva o úrovni služeb (SLA) je po všeobecné dostupnosti 99,99%. Při používání této služby nedochází k neprovozuschopnému použití.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
-Model vysoké dostupnosti (HA) je založen na převzetí služeb při selhání vestavěné mechanismy, když dojde k přerušení úrovni uzlu. Přerušení úrovni uzlu mohlo dojít z důvodu selhání hardwaru nebo v reakci na nasazení služby.
+Model vysoké dostupnosti (HA) vychází z vestavěných mechanismů převzetí služeb při selhání, když dojde k přerušení na úrovni uzlu. Přerušení na úrovni uzlu může vzniknout kvůli selhání hardwaru nebo v reakci na nasazení služby.
 
-Po celou dobu změny provedené v Azure Database for PostgreSQL databázový server dochází v kontextu transakce. Změny se zaznamenávají synchronně ve službě Azure storage, když je transakce potvrzena. Pokud dojde k přerušení úrovni uzlu, serveru databáze automaticky vytvoří nový uzel a připojí úložiště dat do nového uzlu. Každé aktivní propojení se zahodí a nejsou potvrzeny všechny probíhající transakce.
+Změny provedené u Azure Database for PostgreSQL databázového serveru se projeví v kontextu transakce. Změny se zaznamenávají synchronně ve službě Azure Storage, když je transakce potvrzena. Pokud dojde k přerušení na úrovni uzlu, databázový server automaticky vytvoří nový uzel a připojí úložiště dat k novému uzlu. Všechna aktivní připojení jsou vyřazena a všechny transakce v transakci nejsou potvrzeny.
 
-## <a name="application-retry-logic-is-essential"></a>Je základní aplikace logiky opakování
-Je důležité, že PostgreSQL databáze aplikace se vytvářejí ke zjišťování a zkuste to znovu přerušení připojení a transakce se nezdařilo. Když aplikace opakování, připojení vaší aplikace transparentně přesměrují na nově vytvořená instance, která má pro chybné instance.
+## <a name="application-retry-logic-is-essential"></a>Logika opakování aplikace je zásadní.
+Je důležité, aby databázové aplikace PostgreSQL byly sestaveny tak, aby zjistily a opakovaly přerušená připojení a neúspěšné transakce. Když se aplikace opakuje, připojení aplikace se transparentně přesměruje na nově vytvořenou instanci, která převezme služby pro neúspěšnou instanci.
 
-Interně v Azure, brány slouží k přesměrování připojení k nové instanci. Celý proces převzetí služeb při selhání při přerušení, obvykle trvá desítky vteřin. Protože přesměrování interně zpracována třídou brány, externí připojovací řetězec zůstává pro klientské aplikace.
+Interně v Azure se k přesměrování připojení k nové instanci používá brána. Po přerušení bude celý proces převzetí služeb při selhání obvykle trvat desítky sekund. Vzhledem k tomu, že je přesměrování zpracováváno interně bránou, externí připojovací řetězec pro klientské aplikace zůstane stejný.
 
-## <a name="scaling-up-or-down"></a>Škálování směrem nahoru nebo dolů
-Podobně jako u modelu vysokou dostupnost, když Azure Database for PostgreSQL je vertikálně navýšit nebo snížit, je vytvořena nová instance serveru s zadané velikosti. Je stávající úložiště dat je odpojena od původní instance a připojena k nové instanci.
+## <a name="scaling-up-or-down"></a>Vertikální navýšení nebo snížení kapacity
+Podobně jako Azure Database for PostgreSQL při horizontálním navýšení nebo snížení kapacity v modelu HA se vytvoří nová instance serveru se zadanou velikostí. Stávající úložiště dat je odpojené od původní instance a připojené k nové instanci.
 
-Během operace škálování dojde k přerušení připojení databáze. Nejste připojení klientských aplikací a otevřít nepotvrzené transakce se zrušila. Jakmile se klientská aplikace opakuje připojení, nebo vytvoří nové připojení, brány směruje připojení na nově velikosti instance. 
+Během operace škálování dojde k přerušení připojení k databázi. Klientské aplikace jsou odpojené a otevřené nepotvrzené transakce se zruší. Jakmile klientská aplikace znovu požádá o připojení nebo vytvoří nové připojení, brána nasměruje připojení k instanci nově nastavené velikosti. 
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [zpracování připojení přechodných chyb](concepts-connectivity.md)
-- Zjistěte, jak [replikujte svá data pomocí repliky pro čtení](howto-read-replicas-portal.md)
+## <a name="next-steps"></a>Další kroky
+- Další informace o [zpracování chyb s přechodným připojením](concepts-connectivity.md)
+- Naučte [se replikovat data pomocí replik pro čtení](howto-read-replicas-portal.md) .

@@ -1,24 +1,24 @@
 ---
-title: Migrace databáze MariaDB pomocí výpisu a obnovení v Azure Database for MariaDB
+title: Migrace pomocí výpisu a obnovení Azure Database for MariaDB
 description: Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MariaDB pomocí nástrojů, jako jsou mysqldump, MySQL Workbench a PHPMyAdmin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 05626535a2ab2d8da29b8c817ebfe84c257c76aa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 12/02/2019
+ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845060"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776001"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrace databáze MariaDB do Azure Database for MariaDB pomocí výpisu a obnovení
 Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MariaDB
 - Výpis a obnovení z příkazového řádku (pomocí mysqldump) 
 - Výpis a obnovení pomocí PHPMyAdmin
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Pokud chcete projít tento průvodce, musíte mít:
 - [Vytvoření serveru Azure Database for MariaDB – Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - na počítači je nainstalovaný nástroj příkazového řádku [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) .
@@ -39,18 +39,18 @@ Pomocí nástrojů MySQL, jako je mysqldump a mysqlpump, můžete vypsat a nač�
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- Abyste se při výpisu databází vyhnuli problémům s kompatibilitou, ujistěte se, že zdrojový i cílový systém používají stejnou verzi MariaDB. Pokud například váš stávající server MariaDB má verzi 10,2, měli byste migrovat na Azure Database for MariaDB nakonfigurovanou na run verze 10,2. `mysql_upgrade` Příkaz nefunguje na Azure Database for MariaDBm serveru a není podporovaný. Pokud potřebujete upgradovat přes MariaDB verze, nejdřív vypíšete nebo exportujte databázi nižší verze do vyšší verze MariaDB ve vašem vlastním prostředí. Potom spusťte `mysql_upgrade`příkaz, než se pokusíte o migraci do Azure Database for MariaDB.
+- Abyste se při výpisu databází vyhnuli problémům s kompatibilitou, ujistěte se, že zdrojový i cílový systém používají stejnou verzi MariaDB. Pokud například váš stávající server MariaDB má verzi 10,2, měli byste migrovat na Azure Database for MariaDB nakonfigurovanou na run verze 10,2. Příkaz `mysql_upgrade` nefunguje na serveru Azure Database for MariaDB a není podporovaný. Pokud potřebujete upgradovat přes MariaDB verze, nejdřív vypíšete nebo exportujte databázi nižší verze do vyšší verze MariaDB ve vašem vlastním prostředí. Pak spusťte `mysql_upgrade`před pokusem o migraci do Azure Database for MariaDB.
 
 ## <a name="performance-considerations"></a>Otázky výkonu
 Pro optimalizaci výkonu si všimněte těchto doporučení při dumpingu velkých databází:
--   Při ukládání databází použijte možnostvmysqldump.`exclude-triggers` Vylučte triggery ze souborů s výpisem paměti, aby nedocházelo k příkazům triggeru během obnovování dat. 
--   `single-transaction` Pomocí možnosti nastavte režim izolace transakce na možnost opakované čtení a odešlete příkaz spustit transakci SQL serveru před výpisy dat. Dumpingové množství tabulek v rámci jedné transakce způsobí, že se během obnovování spotřebuje nějaké dodatečné úložiště. `single-transaction` Možnost`lock-tables` a možnost se vzájemně vylučují, protože uzamčené tabulky způsobují implicitní potvrzení všech čekajících transakcí. Pokud chcete vypsat velké tabulky, `single-transaction` Zkombinujte možnost `quick` s možností. 
--   Použijte syntaxi s více řádky, která obsahuje několik seznamů hodnot. `extended-insert` Výsledkem je menší soubor výpisu paměti a při opětovném načtení souboru se urychlí vložení.
--  Při výpisu databází použijte možnostmysqldump,abysedatavyužívalavpořadíprimárníhoklíče.`order-by-primary`
--   Pokud chcete před načtením zakázat omezení cizího klíče, použijte možnostvmysqldump.`disable-keys` Zakázání kontrol cizích klíčů poskytuje nárůst výkonu. Povolte omezení a ověřte data po zatížení, abyste zajistili referenční integritu.
+-   Při ukládání databází použijte možnost `exclude-triggers` v mysqldump. Vylučte triggery ze souborů s výpisem paměti, aby nedocházelo k příkazům triggeru během obnovování dat. 
+-   Pomocí možnosti `single-transaction` nastavte režim izolace transakcí na možnost opakované čtení a odešlete příkaz spustit transakci SQL serveru před výpisy dat. Dumpingové množství tabulek v rámci jedné transakce způsobí, že se během obnovování spotřebuje nějaké dodatečné úložiště. Možnost `single-transaction` a možnost `lock-tables` se vzájemně vylučují, protože uzamčené tabulky způsobují implicitní potvrzení všech čekajících transakcí. Chcete-li vypsat velké tabulky, kombinaci možnosti `single-transaction` s možností `quick`. 
+-   Použijte `extended-insert` syntaxi na více řádků, která obsahuje několik seznamů hodnot. Výsledkem je menší soubor výpisu paměti a při opětovném načtení souboru se urychlí vložení.
+-  Při výpisu databází použijte možnost `order-by-primary` v mysqldump, aby se data využívala v pořadí primárního klíče.
+-   Pokud chcete před načtením zakázat omezení cizího klíče, použijte možnost `disable-keys` v mysqldump. Zakázání kontrol cizích klíčů poskytuje nárůst výkonu. Povolte omezení a ověřte data po zatížení, abyste zajistili referenční integritu.
 -   V případě potřeby použijte dělené tabulky.
 -   Načtěte data paralelně. Vyhněte se příliš moc paralelismu, protože by došlo k dosažení limitu prostředků a monitorování prostředků pomocí metrik dostupných v Azure Portal. 
--   `defer-table-indexes` Použijte možnost v mysqlpump při vytváření dumpingových databází, aby se vytvoření indexu stalo po načtení dat tabulky.
+-   Použijte možnost `defer-table-indexes` v mysqlpump při vytváření dumpingových databází, aby se vytvoření indexu stalo po načtení dat tabulky.
 -   Zkopírujte záložní soubory do objektu blob Azure nebo do úložiště a proveďte obnovení z tohoto místa, což by mělo být mnohem rychlejší než provádění obnovení přes Internet.
 
 ## <a name="create-a-backup-file"></a>Vytvoření záložního souboru
@@ -66,7 +66,7 @@ K dispozici jsou následující parametry:
 - [souborzálohy. SQL] název souboru pro zálohování databáze 
 - [--opt] Možnost mysqldump 
 
-Pokud například chcete zálohovat databázi s názvem ' TestDB ' na serveru MariaDB s uživatelským jménem ' testuser ' a bez hesla k souboru testdb_backup. SQL, použijte následující příkaz. Příkaz zálohuje `testdb` databázi do souboru s názvem `testdb_backup.sql`, který obsahuje všechny příkazy SQL potřebné k opětovnému vytvoření databáze. 
+Pokud například chcete zálohovat databázi s názvem ' TestDB ' na serveru MariaDB s uživatelským jménem ' testuser ' a bez hesla k souboru testdb_backup. SQL, použijte následující příkaz. Příkaz zálohuje databázi `testdb` do souboru s názvem `testdb_backup.sql`, který obsahuje všechny příkazy SQL potřebné k opětovnému vytvoření databáze. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -114,12 +114,12 @@ K exportu můžete použít nástroj Common Tool phpMyAdmin, který jste už mo�
 Import databáze je podobný exportu. Proveďte následující akce:
 1. Otevřete phpMyAdmin. 
 2. Na stránce instalace phpMyAdmin klikněte na **Přidat** a přidejte server Azure Database for MariaDB. Zadejte podrobnosti připojení a přihlašovací informace.
-3. Vytvořte odpovídající pojmenovanou databázi a vyberte ji na levé straně obrazovky. Chcete-li přepsat existující databázi, klikněte na název databáze, zaškrtněte políčka vedle názvů tabulek a vyberte možnost Odstranit pro odstranění existujících tabulek. 
+3. Vytvořte odpovídající pojmenovanou databázi a vyberte ji na levé straně obrazovky. Chcete-li přepsat existující databázi, klikněte na název databáze, zaškrtněte políčka vedle názvů tabulek a **Vyberte možnost Odstranit pro odstranění** existujících tabulek. 
 4. Kliknutím na odkaz **SQL** zobrazíte stránku, kde můžete zadat příkazy SQL, nebo nahrát soubor SQL. 
 5. K vyhledání databázového souboru použijte tlačítko **Procházet** . 
 6. Kliknutím na tlačítko **Přejít** Exportujte zálohu, spusťte příkazy SQL a znovu vytvořte databázi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Připojte aplikace k Azure Database for MariaDB](./howto-connection-string.md).
  
 <!--

@@ -1,22 +1,18 @@
 ---
-title: Připojení k Vyhledávání Bingu-Azure Logic Apps
+title: Připojení k Vyhledávání Bingu
 description: Hledání zpráv pomocí rozhraní REST API Vyhledávání Bingu a Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026770"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789949"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Hledání zpráv pomocí Vyhledávání Bingu a Azure Logic Apps
 
@@ -27,7 +23,7 @@ Například můžete vyhledat položky zpráv na základě kritérií hledání 
 Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Technické informace specifické pro konektor najdete v referenčních informacích ke [konektoru vyhledávání Bingu](https://docs.microsoft.com/connectors/bingsearch/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Účet Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md)
 
@@ -56,14 +52,14 @@ Nebo, pokud připojení již existuje, zadejte potřebné informace pro aktivač
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | Search Query | Ano | <*search-words*> | Zadejte klíčová slova pro hledání, která chcete použít. |
-   | Market | Ano | <> *národního prostředí* | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
-   | Safe Search | Ano | <*search-level*> | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
-   | Počet | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
-   | Posun | Ne | <*skip-value*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
+   | Vyhledávací dotaz | Ano | <*vyhledávání – slova*> | Zadejte klíčová slova pro hledání, která chcete použít. |
+   | Trh | Ano | <> *národního prostředí* | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
+   | Bezpečné vyhledávání | Ano | <> *na úrovni hledání* | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
+   | Počet | Ne | < *– počet výsledků*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
+   | Posun | Ne | <*Skip-value*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
    |||||
 
-   Příklad:
+   Například:
 
    ![Nastavení triggeru](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
@@ -107,11 +103,11 @@ V seznamu akce vyberte akci, kterou chcete.
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | Search Query | Ano | <*search-expression*> | Zadejte výraz pro dotazování na výsledky triggeru. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořit výraz pomocí Tvůrce výrazů. |
-   | Market | Ano | <> *národního prostředí* | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
-   | Safe Search | Ano | <*search-level*> | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
-   | Počet | Ne | <*results-count*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
-   | Posun | Ne | <*skip-value*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
+   | Vyhledávací dotaz | Ano | <*Search – výraz*> | Zadejte výraz pro dotazování na výsledky triggeru. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořit výraz pomocí Tvůrce výrazů. |
+   | Trh | Ano | <> *národního prostředí* | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
+   | Bezpečné vyhledávání | Ano | <> *na úrovni hledání* | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
+   | Počet | Ne | < *– počet výsledků*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
+   | Posun | Ne | <*Skip-value*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
    |||||
 
    Předpokládejme například, že chcete, aby výsledky, jejichž název kategorie obsahuje slovo "tech".
@@ -159,7 +155,7 @@ V seznamu akce vyberte akci, kterou chcete.
    | Klíč rozhraní API | Ano | *rozhraní <API-key*> | Vyhledávání Bingu klíč rozhraní API, který jste získali dříve. Pokud klíč nemáte, Získejte [hned svůj klíč rozhraní API](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
-   Příklad:
+   Například:
 
    ![Vytvoření připojení](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 

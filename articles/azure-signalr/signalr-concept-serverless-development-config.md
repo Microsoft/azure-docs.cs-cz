@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74157649"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786771"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions vývoj a konfigurace pomocí služby Azure Signal Service
 
@@ -40,7 +40,7 @@ Klientská aplikace vyžaduje pro připojení ke službě Azure Signal Service p
 
 Pomocí funkce Azure aktivované protokolem HTTP a vstupní vazbou *SignalRConnectionInfo* vygenerujte objekt informace o připojení. Funkce musí mít trasu HTTP, která končí na `/negotiate`.
 
-Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
+Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service.md#input).
 
 Další informace o tom, jak vytvořit ověřený token, najdete v tématu [použití ověřování App Service](#using-app-service-authentication).
 
@@ -50,7 +50,7 @@ Pomocí výstupní vazby *signálu* můžete odesílat zprávy klientům připoj
 
 Uživatele lze přidat do jedné nebo více skupin. Výstupní vazbu *signálu* můžete také použít k přidání nebo odebrání uživatelů do nebo ze skupin.
 
-Další informace najdete v odkazu na [výstupní vazbu *signálu* ](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+Další informace najdete v odkazu na [výstupní vazbu *signálu* ](../azure-functions/functions-bindings-signalr-service.md#output).
 
 ### <a name="signalr-hubs"></a>Rozbočovače signálu
 

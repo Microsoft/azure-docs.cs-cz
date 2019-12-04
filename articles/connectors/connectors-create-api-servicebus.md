@@ -1,21 +1,18 @@
 ---
-title: Zprávy Exchange s Azure Service Bus – Azure Logic Apps
+title: Zprávy Exchange s Azure Service Bus
 description: Posílání a přijímání zpráv pomocí Azure Service Bus v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 477fdc2291d875c57bfb0ae3cb87b6df9bd41398
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024296"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789392"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -32,7 +29,7 @@ Můžete použít triggery, které získávají odpovědi z Service Bus a zpří
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -48,7 +45,7 @@ Můžete použít triggery, které získávají odpovědi z Service Bus a zpří
 
 Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu oboru názvů Service Bus.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Přejít na *obor názvů*Service Bus. Na stránce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 

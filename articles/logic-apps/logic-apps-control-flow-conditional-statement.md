@@ -1,91 +1,88 @@
 ---
-title: Přidat podmíněné příkazy pro pracovní postupy – Azure Logic Apps | Dokumentace Microsoftu
+title: Přidání podmíněných příkazů do pracovních postupů
 description: Vytvoření podmínek, které řídí akce v pracovních postupech v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684760"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793248"
 ---
-# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Vytvoření podmíněné příkazy, které řídí akce pracovního postupu ve službě Azure Logic Apps
+# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Vytvořte podmíněné příkazy, které řídí akce pracovního postupu v Azure Logic Apps
 
-Chcete-li spustit konkrétní akce ve vaší aplikaci logiky pouze po úspěšném zadaná podmínka, přidejte *podmíněný příkaz*. Tato struktura ovládací prvek porovnává data ve svém pracovním postupu proti konkrétní hodnoty nebo pole. Potom můžete zadat různé akce, které běží v závislosti na tom, zda data splní podmínku. Je možné vnořovat podmínkách v navzájem.
+Pokud chcete spustit konkrétní akce v aplikaci logiky až po předání zadané podmínky, přidejte *podmíněný příkaz*. Tato struktura ovládacího prvku porovnává data v pracovním postupu s konkrétními hodnotami nebo poli. Pak můžete zadat různé akce, které se spustí na základě toho, jestli data splňují podmínky. Podmínky můžete vnořovat mezi sebou.
 
-Předpokládejme například, že budete mít aplikaci logiky, která odesílá příliš moc e-mailů, když se v informačním kanálu RSS webu objeví nové položky. Můžete přidat podmíněný příkaz pro odeslání e-mailu pouze v případě, že nová položka obsahuje konkrétní řetězec. 
+Předpokládejme například, že máte aplikaci logiky, která posílá příliš mnoho e-mailů, když se nové položky zobrazí v informačním kanálu RSS webu. Můžete přidat podmíněný příkaz k odeslání e-mailu pouze v případě, že nová položka obsahuje konkrétní řetězec. 
 
 > [!TIP]
-> Spustit různé kroky podle různých konkrétní hodnoty, použijte [ *switch – příkaz* ](../logic-apps/logic-apps-control-flow-switch-statement.md) místo.
+> Pro spuštění různých kroků na základě různých specifických hodnot použijte místo toho [*příkaz switch*](../logic-apps/logic-apps-control-flow-switch-statement.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* V našem příkladu v tomto článku [vytvořte Tato ukázková aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) pomocí účtu Outlook.com nebo Office 365 Outlook.
+* Pokud chcete postupovat podle příkladu v tomto článku, [vytvořte tuto ukázkovou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) s účtem Outlook.com nebo Office 365 Outlook.
 
 ## <a name="add-condition"></a>Přidat podmínku
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, otevřete v návrháři aplikace logiky aplikace logiky.
+1. V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V umístění, které chcete přidáte podmínku. 
+1. Přidejte podmínku do umístění, které chcete. 
 
-   Přidání podmínky mezi kroky, přesuňte ukazatel nad šipku, ve které chcete přidat podmínku. Zvolte **znaménko plus** ( **+** ), který se zobrazí, klikněte na tlačítko **přidat akci**. Příklad:
+   Chcete-li přidat podmínku mezi kroky, přesuňte ukazatel myši na šipku, kam chcete podmínku přidat. Zvolte znaménko **plus** ( **+** ), které se zobrazí, a pak zvolte **přidat akci**. Například:
 
-   ![Přidání akce mezi kroky](./media/logic-apps-control-flow-conditional-statement/add-action.png)
+   ![Přidat akci mezi kroky](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   Pokud chcete přidat podmínku na konci pracovního postupu, v dolní části aplikace logiky zvolte **nový krok** > **přidat akci**.
+   Pokud chcete přidat podmínku na konci pracovního postupu, v dolní části aplikace logiky vyberte **Nový krok** > **přidat akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "podmínku". Vyberte tuto akci: **Podmínka – ovládací prvek**
+1. Do vyhledávacího pole zadejte jako filtr "podmínka". Vyberte tuto akci: **řízení podmínek**
 
    ![Přidat podmínku](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
-1. V **podmínku** pole, sestavování, vaše podmínka. 
+1. V poli **Podmínka** si sestavte podmínku. 
 
-   1. V levé pole zadejte data nebo pole, které chcete porovnat.
+   1. V levém poli zadejte data nebo pole, které chcete porovnat.
 
-      Po kliknutí do levého pole se zobrazí seznam dynamického obsahu, tak ve vaší aplikaci logiky můžete vybrat výstupy z předchozích kroků. 
+      Když kliknete dovnitř levého pole, zobrazí se seznam dynamického obsahu, abyste mohli vybírat výstupy z předchozích kroků v aplikaci logiky. 
       V tomto příkladu vyberte souhrn informačního kanálu RSS.
 
       ![Sestavení podmínky](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
-   1. V prostředním poli vyberte operaci provést. 
-   V tomto příkladu vyberte "**obsahuje**". 
+   1. V prostředním poli vyberte operaci, kterou chcete provést. 
+   V tomto příkladu vyberte "**Contains**". 
 
-   1. V pravé pole zadejte hodnotu nebo pole jako kritéria. 
+   1. Do pravého pole zadejte hodnotu nebo pole jako kritéria. 
    V tomto příkladu zadejte tento řetězec: **Microsoft**
 
-   Tady je Dokončená podmínka:
+   Tady je kompletní podmínka:
 
    ![Dokončená podmínka](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   Chcete-li přidat další řádek do vaše podmínky, zvolte **přidat** > **přidat řádek**. 
-   Chcete-li přidat skupinu pomocí subconditions, zvolte **přidat** > **přidat skupinu**. 
-   Seskupení existující řádků, zaškrtněte políčka pro řádky, klikněte na tlačítko se třemi tečkami (...) pro každý řádek a pak zvolte **Zkontrolujte skupiny**.
+   Pokud chcete do podmínky přidat další řádek, vyberte **přidat** > **Přidat řádek**. 
+   Chcete-li přidat skupinu s podpodmínkami, vyberte možnost **přidat** > **Přidat skupinu**. 
+   Pokud chcete seskupit existující řádky, zaškrtněte políčka pro tyto řádky, klikněte na tlačítko se třemi tečkami (...) pro libovolný řádek a pak zvolte **vytvořit skupinu**.
 
-1. V části **při hodnotě true** a **případě hodnoty false**, přidat kroky nutné k provedení na základě na, jestli je splněná podmínka. Příklad:
+1. V části Pokud je nastaveno na **hodnotu true** a **Pokud má hodnotu false**, přidejte kroky k provedení na základě toho, zda je podmínka splněna. Například:
 
-   ![Podmínka s "při hodnotě true" a "Pokud je false" cesty](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
+   ![Podmínka s cestami "if true" a "if false"](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > Můžete přetáhnout do existující akce **při hodnotě true** a **případě hodnoty false** cesty.
+   > Existující akce lze přetáhnout do **hodnoty if true** a pokud se jedná o **falešnou** cestu.
 
 1. Uložte svou aplikaci logiky.
 
-Tato aplikace logiky teď odešle e-mailu jenom v případě, že splňují vaše podmínka nových položek v informačním kanálu RSS.
+Tato aplikace logiky teď odesílá poštu jenom v případě, že nové položky v informačním kanálu RSS splňují vaši podmínku.
 
 ## <a name="json-definition"></a>Definice JSON
 
-Tady je podrobný kód definice za podmíněný příkaz:
+Tady je definice kódu vysoké úrovně za podmíněným příkazem:
 
 ``` json
 "actions": {
@@ -114,11 +111,11 @@ Tady je podrobný kód definice za podmíněný příkaz:
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Odeslání návrhu nebo hlasování o funkcích a návrhy, najdete v tématu [webu zpětné vazby uživatelů Azure Logic Apps](https://aka.ms/logicapps-wish).
+* Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Spustit kroky na základě různých hodnot (příkazů přepínače)](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Spuštění a opakujte kroky (cykly)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Spuštění nebo sloučit paralelními kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Spustit kroky na základě stavu seskupené akce (obory)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Spuštění kroků na základě různých hodnot (příkazy Switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Spuštění a opakování kroků (cykly)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Spustit nebo sloučit paralelní kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Spuštění kroků na základě seskupeného stavu akce (obory)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

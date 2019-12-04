@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 04c4192293cbfa96eefcc1c84083dd54042ebe8f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484088"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762713"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -40,8 +40,8 @@ Můžete auditovat následující podporované operace.
 |----|----|
 |Vytvořit nebo aktualizovat sešit  |Microsoft. Insights/sešity|
 |Odstranit sešit    |Microsoft. Insights/sešity|
-|Nastavit pracovní postup   |Microsoft.Logic/workflows|
-|Odstranit pracovní postup    |Microsoft.Logic/workflows|
+|Nastavit pracovní postup   |Microsoft. Logic/Workflows|
+|Odstranit pracovní postup    |Microsoft. Logic/Workflows|
 |Vytvořit uložené výsledky hledání    |Microsoft. OperationalInsights/pracovní prostory/savedSearches|
 |Odstranit uložené výsledky hledání    |Microsoft. OperationalInsights/pracovní prostory/savedSearches|
 |Nastavit řídicí panel  |Microsoft. Portal/řídicí panely|

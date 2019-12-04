@@ -1,26 +1,23 @@
 ---
-title: Volání aplikací logiky pomocí Azure Functions-Azure Logic Apps
+title: Volání aplikací logiky s využitím Azure Functions
 description: Vytvoření Azure Functions, které volají nebo spouštějí Logic Apps naslouchání Azure Service Bus
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jehollan, klam, LADocs
+ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: c65a0464bbad6dbaca51dbc5bbc0d84adbd605d7
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 66f0e0cd2bd09e22260574992f92f7210bd6aa51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904661"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792942"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Volání nebo spuštění Logic Apps pomocí Azure Functions a Azure Service Bus
 
 Můžete použít [Azure Functions](../azure-functions/functions-overview.md) pro aktivaci aplikace logiky, pokud potřebujete nasadit dlouhodobě spuštěný naslouchací proces nebo úlohu. Můžete například vytvořit funkci Azure, která naslouchá ve frontě [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) a hned spustí aplikaci logiky jako Trigger push.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

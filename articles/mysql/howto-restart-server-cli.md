@@ -1,36 +1,36 @@
 ---
-title: Restartovat – Azure Database for MySQL pomocí Azure CLI
-description: Tento článek popisuje, jak je možné restartovat Azure Database for MySQL pomocí Azure CLI.
+title: Restart serveru – Azure CLI – Azure Database for MySQL
+description: Tento článek popisuje, jak můžete restartovat server Azure Database for MySQL pomocí rozhraní příkazového řádku Azure CLI.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: d00aa35437f93c010ce48f3036b4a684910702c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 146c531805ff22544797c44c8df32b0e5d1e83b0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160433"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774189"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Restartovat – Azure Database for MySQL pomocí Azure CLI
-Toto téma popisuje, jak je možné restartovat serveru Azure Database for MySQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
+# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Restartování serveru Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
+Toto téma popisuje, jak můžete restartovat server Azure Database for MySQL. Možná budete muset restartovat server z důvodů údržby, což způsobí krátký výpadek, protože server tuto operaci provede.
 
-Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Například služba může zpracovávat dříve požadovaná operace, jako je například škálování virtuálních jader.
+Pokud je služba zaneprázdněná, restart serveru se zablokuje. Například služba může zpracovávat dříve požadovanou operaci, jako je například škálování virtuální jádra.
 
-Čas potřebný k dokončení restartování závisí na proces obnovení MySQL. Pokud chcete snížit čas restartování, doporučujeme, abyste že minimalizovali množství aktivit, k nimž došlo na serveru ještě před jejich restartování.
+Čas potřebný k dokončení restartování závisí na procesu obnovení MySQL. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
 
-## <a name="prerequisites"></a>Požadavky
-K dokončení této příručce s postupy, potřebujete:
-- [– Azure Database for MySQL serveru](quickstart-create-server-up-azure-cli.md)
+## <a name="prerequisites"></a>Předpoklady
+K dokončení tohoto průvodce budete potřebovat:
+- [Server Azure Database for MySQL](quickstart-create-server-up-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Tato příručka vyžaduje použití Azure CLI verze 2.0 nebo novější. K potvrzení verze příkazového řádku Azure CLI, zadejte `az --version`. Pro instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI]( /cli/azure/install-azure-cli).
+> Tento návod vyžaduje použití Azure CLI verze 2,0 nebo novější. Verzi ověříte tak, že na příkazovém řádku Azure CLI zadáte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 
-## <a name="restart-the-server"></a>Restartujte server
+## <a name="restart-the-server"></a>Restartování serveru
 
 Restartujte server pomocí následujícího příkazu:
 
@@ -38,6 +38,6 @@ Restartujte server pomocí následujícího příkazu:
 az mysql server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [jak nastavit parametry ve službě Azure Database for MySQL](howto-configure-server-parameters-using-cli.md)
+Informace o [Nastavení parametrů v Azure Database for MySQL](howto-configure-server-parameters-using-cli.md)

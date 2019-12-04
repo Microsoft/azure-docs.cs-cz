@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226703"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784710"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -109,12 +109,12 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. V souboru `/etc/apt/sources.list.d/dotnetdev.list` vyhledejte jeden z odpovídajících řetězců verze Linux uvedených níže:
 
-    | Linuxové distribuce | Version |
+    | Distribuce systému Linux | Version |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
-    | Ubuntu 18.10    | `cosmic`    |
+    | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
     | Ubuntu 16.04/Linux mentolová 18    | `xenial`  |
@@ -133,7 +133,7 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. Pokud neplánujete použít [sad rozšíření], nainstalujte [sadu .NET Core 2. x SDK pro Linux](https://www.microsoft.com/net/download/linux).
 
-## <a name="create-a-local-functions-project"></a>Vytvořte projekt místní funkce
+## <a name="create-a-local-functions-project"></a>Vytvoření projektu místní funkce
 
 Adresář projektu Functions obsahuje soubory [Host. JSON](functions-host-json.md) a [Local. Settings. JSON](#local-settings-file)spolu s podsložkami, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikace Function App v Azure. Další informace o struktuře složek Functions najdete v příručce pro [vývojáře Azure Functions](functions-reference.md#folder-structure).
 
@@ -238,7 +238,7 @@ I když používáte emulátor úložiště pro vývoj, budete možná chtít te
 
 ## <a name="create-func"></a>Vytvoření funkce
 
-Vytvořit funkci, spusťte následující příkaz:
+Chcete-li vytvořit funkci, spusťte následující příkaz:
 
 ```bash
 func new
@@ -517,7 +517,7 @@ Tento typ protokolů streamování vyžaduje, abyste [povolili Application Insig
 
 ## <a name="next-steps"></a>Další kroky
 
-Azure Functions Core Tools je [Open Source a hostovaný na GitHubu](https://github.com/azure/azure-functions-cli).  
+Naučte se vyvíjet, testovat a publikovat Azure Functions pomocí Azure Functions Core Tools [modulu Microsoft učení](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools je [Open Source a hostovaný na GitHubu](https://github.com/azure/azure-functions-cli).  
 Pokud chcete zaslat žádost o chybu nebo funkci, [otevřete problém GitHubu](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->

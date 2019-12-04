@@ -1,17 +1,17 @@
 ---
-title: Čtení replik v Azure Database for PostgreSQL – jeden server
+title: Čtení replik – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci pro čtení repliky na serveru Azure Database for PostgreSQL-Single.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 5d3d752f549fe336f584fa3534b61cb5a009c3bd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158802"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792302"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -40,7 +40,9 @@ Hlavní server můžete mít v libovolné [Azure Database for PostgreSQL oblasti
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
 Repliku pro čtení můžete vždy vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Jedná se o oblasti univerzální repliky:
 
-Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2.
+Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, západní USA.
+
+\* Západní USA 2 není dočasně k dispozici jako umístění repliky mezi oblastmi.
 
 
 ### <a name="paired-regions"></a>Spárované oblasti
@@ -146,7 +148,7 @@ Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili p
 
 V této části najdete přehled informací o funkci Replika čtení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Před vytvořením repliky pro čtení musí být parametr `azure.replication_support` na hlavním serveru nastaven na **replika** . Pokud se tento parametr změní, je nutné restartovat server, aby se změna projevila. Parametr `azure.replication_support` se vztahuje pouze na vrstvy optimalizované pro Pro obecné účely a paměť.
 
 ### <a name="new-replicas"></a>Nové repliky

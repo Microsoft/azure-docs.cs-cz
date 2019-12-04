@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 12/03/2019
 ms.author: lahugh
-ms.openlocfilehash: d6fcbcb7f5d1b6bb25840ad1bddc5327b068c15d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6f03826bf0b82150fa89ad6e17cbcb76f98bb835
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075465"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790034"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -35,7 +35,7 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Řady B-Series](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
 * Řady [Dsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) a [Dsv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
-* [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
+* [Esv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
 * [Řady GS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Řady s více procesory](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
@@ -53,15 +53,12 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 
 Virtuální počítače generace 2 podporují následující image na webu Marketplace:
 
-* Windows Server 2019 Datacenter
-* Windows Server 2016 Datacenter
-* Windows Server 2012 R2 Datacenter
-* Windows Server 2012 Datacenter
+* Windows Server 2019, 2016, 2012 R2, 2012
+* Windows 10
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04, 18.04, 19,04, 19,10
-* RHEL 8.0
-
+* Ubuntu Server 16,04, 18,04, 19,04, 19,10 
+* RHEL 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní a Azure generace 2 – virtuální počítače
 
@@ -82,8 +79,8 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 | Funkce | Generace 1 | Generace 2 |
 |---------|--------------|--------------|
 | Spouštění             | PCAT                      | UEFI                               |
-| Řadiče disku | IDE – integrované vývojové prostředí                       | SCSI                               |
-| Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
+| Řadiče disku | IDE                       | SCSI                               |
+| Velikosti virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 vs. generace 2 – možnosti
 
@@ -103,7 +100,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 V Azure Portal nebo Azure CLI můžete vytvořit virtuální počítače 2. generace z image Marketplace, která podporuje spouštění pomocí UEFI.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure
 
 Image generace 2 pro Windows a SLES jsou součástí stejné nabídky serveru jako image Gen1. Z hlediska toků to znamená, že vyberete nabídku a SKU z portálu pro váš virtuální počítač. Pokud SKU podporuje jak image generace 1, tak i generace 2, můžete vybrat vytvoření virtuálního počítače generace 2 z karty *Upřesnit* v toku vytváření virtuálních počítačů.
 

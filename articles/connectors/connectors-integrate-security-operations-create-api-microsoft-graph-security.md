@@ -1,21 +1,20 @@
 ---
-title: Integrace a Správa operací zabezpečení – Azure Logic Apps & Microsoft Graph zabezpečení
+title: Integrace a Správa operací zabezpečení & zabezpečení Microsoft Graph
 description: Vylepšete ochranu před hrozbami, detekci a reakci vaší aplikace pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: preetikr
 ms.author: preetikr
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
-ms.openlocfilehash: 845f57d84f49bdd964cc6f61790faff093f59466
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7e9cc2d8d38af7e5e6cf26ccc3659ee58ef17e59
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679095"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789048"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 
@@ -81,7 +80,7 @@ Tady najdete konkrétnější podrobnosti o používání různých akcí, kter�
 
 ### <a name="manage-alerts"></a>Správa upozornění
 
-Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/v1.0/security/alerts` nebo operaci `GET` nebo `PATCH`. Tady je konkrétní příklad, který zobrazuje parametry pro akci **získat výstrahy** , když chcete zobrazit seznam s výstrahami s vysokou závažností:
+Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/v1.0/security/alerts`nebo operaci `GET` nebo `PATCH`. Tady je konkrétní příklad, který zobrazuje parametry pro akci **získat výstrahy** , když chcete zobrazit seznam s výstrahami s vysokou závažností:
 
 `Filter alerts value as Severity eq 'high'`
 

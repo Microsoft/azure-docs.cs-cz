@@ -1,17 +1,17 @@
 ---
-title: Správa Azure Database for MariaDB-Azure Portal
+title: Správa serveru-Azure Portal-Azure Database for MariaDB
 description: Naučte se spravovat Azure Database for MariaDB Server z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 7e09db9308f9ecf623ce0ab0d948ed1056dd21b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/02/2019
+ms.openlocfilehash: b70b4810f32941938b6afe217f94e18a0f2f3523
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534327"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767122"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Správa serveru Azure Database for MariaDB pomocí Azure Portal
 V tomto článku se dozvíte, jak spravovat servery Azure Database for MariaDB. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
@@ -79,7 +79,7 @@ Můžete změnit heslo role správce pomocí Azure Portal.
 
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
-   ![Resetovat heslo](./media/howto-create-manage-server-portal/reset-password.png)
+   ![resetovat heslo](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kliknutím na **tlačítko OK** uložte nové heslo.
 

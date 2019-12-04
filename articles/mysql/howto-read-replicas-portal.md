@@ -1,17 +1,17 @@
 ---
-title: Vytvoření & Správa replik čtení (Azure Portal) – Azure Database for MySQL
+title: Spravovat repliky čtení-Azure Portal-Azure Database for MySQL
 description: Naučte se, jak nastavit a spravovat repliky pro čtení v Azure Database for MySQL pomocí Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: a90e9cccf8b59dabbee8415818c0e819ba1b26c3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 56dc2df243c7ebc8e6aedf655795173c478ef99b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972879"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762602"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MySQL pomocí Azure Portal
 

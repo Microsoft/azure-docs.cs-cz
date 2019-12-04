@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113640"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790897"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Dovednosti koncepty a kompozice v Azure Kognitivní hledání
 
@@ -43,9 +43,9 @@ Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a 
 
 |Režim Source\Parsing dat|Výchozí|JSON, řádky JSON & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|neuvedeno |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|neuvedeno|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
+|SQL|/document/{column1}<br>/document/{column2}<br>...|Nevztahuje se |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|Nevztahuje se|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. Můžete selektivně zachovat jenom podmnožinu obohacení na index nebo úložiště znalostní báze.
 
@@ -65,7 +65,7 @@ Každá dovednost vyžaduje kontext. Kontext určuje:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` se používá jenom v [dovednostech](cognitive-search-skill-shaper.md) a [projekce](knowledge-store-projection-overview.md)Shaper. Slouží k vytváření víceúrovňových vnořených objektů. `sourceContext` umožňuje vytvořit hierarchický, anonymní typ objektu, který by vyžadoval více dovedností v případě, že jste používali pouze kontext. V další části se zobrazuje použití `sourceContext`.
+`sourceContext` se používá jenom v dovednostech a [proprojektech](knowledge-store-projection-overview.md). Slouží k vytváření víceúrovňových vnořených objektů. Je možné, že budete muset vytvořit novou Oject, aby se předávala jako vstup do odbornosti nebo projektu do znalostní báze. V případě, že uzly obohacení nemusí být platný objekt JSON ve stromu obohacení a refrencing uzel ve stromové struktuře vrátí pouze tento stav uzlu při jeho vytvoření, použití rozšíření jako vstupů dovedností nebo projekce vyžaduje vytvoření objektu JSON ve správném formátu. `sourceContext` umožňuje vytvořit hierarchický, anonymní typ objektu, který by vyžadoval více dovedností v případě, že jste používali pouze kontext. V další části se zobrazuje použití `sourceContext`. Podívejte se na výstup dovedností, který vygeneroval rozšíření, aby bylo možné zjistit, zda se jedná o platný objekt JSON a nikoli primitivní typ.
 
 ### <a name="projections"></a>Projekce
 

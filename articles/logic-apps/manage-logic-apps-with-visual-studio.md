@@ -1,21 +1,18 @@
 ---
-title: Správa aplikací logiky pomocí sady Visual Studio – Azure Logic Apps
+title: Správa aplikací logiky pomocí sady Visual Studio
 description: Správa aplikací logiky a dalších prostředků Azure pomocí sady Visual Studio s Průzkumníkem cloudu
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: e10683bcd5612db788d6dd5675425fec4130ffeb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 29b1235ee319567e103267b9054b8c6b244e1ca7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796591"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790834"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Správa aplikací logiky pomocí sady Visual Studio
 
@@ -26,7 +23,7 @@ I když můžete vytvářet, upravovat, spravovat a nasazovat Logic Apps v [Azur
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -66,7 +63,7 @@ V aplikaci Visual Studio můžete najít všechny aplikace logiky, které jsou p
 
 1. Otevřete sadu Visual Studio. V nabídce **zobrazení** vyberte **Průzkumník cloudu**.
 
-1. V Průzkumníku cloudu vyberte **Správa účtů**. Vyberte předplatné Azure přidružené k vašim Logic Apps a pak vyberte **použít**. Příklad:
+1. V Průzkumníku cloudu vyberte **Správa účtů**. Vyberte předplatné Azure přidružené k vašim Logic Apps a pak vyberte **použít**. Například:
 
    ![Vyberte Správa účtů.](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -229,7 +226,7 @@ Chcete-li zkontrolovat stav a diagnostikovat problémy s spuštěním aplikace l
 
    ![Otevření historie spuštění aplikace logiky](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. Chcete-li zobrazit podrobnosti o konkrétním spuštění, dvakrát klikněte na spuštění. Příklad:
+1. Chcete-li zobrazit podrobnosti o konkrétním spuštění, dvakrát klikněte na spuštění. Například:
 
    ![Zobrazit informace o konkrétním běhu](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   

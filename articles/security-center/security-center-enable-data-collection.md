@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: ae645f15672693466ba87f2364c756ed164ce629
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 795661912633f0d225aef4de8ea7620a8766e096
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669172"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766986"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat v Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent Log Analytics také kopíruje soubory s výpisem stavu systému do vašeho pracovního prostoru.
@@ -304,7 +304,12 @@ Můžete ručně nainstalovat agenta Log Analytics, aby Security Center mohl shr
 -  Informace o tom, jak identifikovat požadavky na síť agenta monitorování, najdete v tématu [řešení potíží s požadavky na síť agenta](security-center-troubleshooting-guide.md#mon-network-req)
 -   Pokud chcete identifikovat problémy ručního připojování, přečtěte si téma řešení potíží s [připojováním Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
-- Pokud chcete zjistit problémy s nemonitorovanými virtuálními počítači a počítači, přečtěte si téma [nemonitorované virtuální počítače a počítače](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers).
+- Identifikace problémů nemonitorovaných virtuálních počítačů a počítačů:
+
+    VIRTUÁLNÍ počítač nebo počítač se nemonitoruje Security Center, pokud počítač nepoužívá rozšíření Microsoft Monitoring Agent. Počítač může mít již nainstalovaný místní agent, například agenta OMS Direct nebo Agent System Center Operations Manager. Počítače s těmito agenty jsou označeny jako nemonitorované, protože tito agenti nejsou v Security Center plně podporovaná. Pokud chcete naplno využívat všechny schopnosti služby Security Center, potřebujete rozšíření Microsoft Monitoring Agent.
+
+    Další informace o důvodech, Security Center nelze úspěšně monitorovat virtuální počítače a počítače inicializované pro Automatické zřizování, najdete v tématu [monitorování problémů se stavem agenta](security-center-troubleshooting-guide.md#mon-agent).
+
 
 ## <a name="next-steps"></a>Další kroky
 Tento článek ukazuje, jak funguje shromažďování dat a Automatické zřizování v Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:

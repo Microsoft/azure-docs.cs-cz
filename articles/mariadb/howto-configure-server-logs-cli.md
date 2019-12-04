@@ -1,23 +1,23 @@
 ---
-title: Přístup k protokolům serveru v Azure Database for MariaDB pomocí Azure CLI
-description: Tento článek popisuje, jak získat přístup k protokolům serveru v Azure Database for MariaDB pomocí nástroje příkazového řádku Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+title: Přístup k protokolům pomalým dotazům – Azure CLI-Azure Database for MariaDB
+description: Tento článek popisuje, jak získat přístup k pomalým protokolům v Azure Database for MariaDB pomocí nástroje příkazového řádku Azure CLI.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: ffc724ef5133ee25643a966d2b6d8448a4c3a920
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023608"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767377"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům serveru pomocí Azure CLI
-Protokoly Azure Database for MariaDB serveru můžete stáhnout pomocí Azure CLI, nástroje příkazového řádku Azure.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům pomalým dotazům pomocí Azure CLI
+Protokoly pomalých dotazů Azure Database for MariaDB můžete stáhnout pomocí Azure CLI, nástroje příkazového řádku Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči

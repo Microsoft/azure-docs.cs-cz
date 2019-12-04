@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e9d484da1b59c456b30cf0b465ec6de5af77d1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014302"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786363"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
 
@@ -181,7 +181,8 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |90051| Neplatný token delegování Je zadané neplatné národní ID cloudu ({cloudId}).|
 |90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlaste se a znovu se přihlaste s jiným účtem služby Azure AD.|
 |90094| Udělení vyžaduje oprávnění správce. Požádejte správce tenanta o poskytnutí souhlasu této aplikace.|
-|500021|Tenant je omezený proxy společností. Odepřete přístup k prostředkům.|
+|500011| Objekt zabezpečení prostředku s názvem <site address> nebyl nalezen v tenantovi s názvem <tenant ID>. K tomu může dojít, pokud aplikace nebyla nainstalována správcem tenanta nebo odsouhlasena žádným uživatelem v tenantovi. Možná jste odeslali žádost o ověření do nesprávného tenanta.|
+|500021| Tenant je omezený proxy společností. Odepřete přístup k prostředkům.|
 |500121| Během žádosti o silný požadavek na ověření došlo k chybě ověřování.|
 |500133| Kontrolní výraz není v rámci platného časového rozsahu. Před použitím tohoto kontrolního výrazu pro uživatele Ověřte, zda nevypršela platnost přístupového tokenu, nebo požádejte o nový token.|
 |530021|Aplikace nesplňuje požadavky na aplikace schválené pro podmíněný přístup.|

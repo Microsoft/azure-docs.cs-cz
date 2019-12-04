@@ -1,18 +1,18 @@
 ---
 title: Platba za službu Azure Průzkumník dat Markup za účelem úspory peněz
 description: Naučte se, jak koupit rezervovanou kapacitu Azure Průzkumník dat, abyste ušetřili náklady na Azure Průzkumník dat.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 66c5644df7d796669105693d08788548334ae93a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681625"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769094"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Platba za služby Azure Průzkumník dat označení jednotek pomocí Azure Průzkumník dat rezervované kapacity
 
@@ -23,7 +23,7 @@ Zakoupením rezervované rezervace platíte za náklady na označení po dobu je
 V [Azure Portal](https://portal.azure.com)si můžete koupit rezervovanou kapacitu Azure Průzkumník dat. Zakoupení rezervované kapacity Azure Průzkumník dat:
 
 * Musíte být vlastníkem aspoň jednoho předplatného organizace nebo předplatného s průběžnými platbami.
-* U předplatných se smlouvou Enterprise musí být na webu **EA Portal** povolená možnost [Přidat rezervované instance](https://ea.azure.com). Případně, pokud je toto nastavení zakázáno, musíte být správce EA v předplatném.
+* U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com) povolená možnost **Přidat rezervované instance**. Případně, pokud je toto nastavení zakázáno, musíte být správce EA v předplatném.
 * V případě programu Cloud Solution Provider (CSP) si můžou koupit službu Azure Průzkumník dat rezervovanou kapacitu jenom agenti pro správu nebo prodejní agenty.
 
 Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete tady:
@@ -36,7 +36,7 @@ Velikost rezervace by měla být založená na celkovém počtu jednotek služby
 
 ## <a name="buy-azure-data-explorer-reserved-capacity"></a>Koupit rezervovanou kapacitu Azure Průzkumník dat
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyberte **všechny služby** > **rezervacích** > **koupit nyní**. Vyberte **Přidat**.
 1. V podokně **Vybrat typ produktu** vyberte **Azure Průzkumník dat** , abyste si koupili novou rezervaci pro jednotky značek Azure Průzkumník dat. 
 1. Vybrat **Nákup**

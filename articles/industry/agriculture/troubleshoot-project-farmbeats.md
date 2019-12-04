@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 22c304b26eddaee4444f6eb12957e2a6fedf7810
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672588"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793283"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
@@ -34,12 +34,12 @@ Pokud potřebujete další nápovědu, napište do nás na farmbeatssupport@micr
 
 **Nápravná opatření**: navštivte Azure Portal a postupujte podle těchto kroků:
 
-1. Přejít do skupiny prostředků FarmBeats data hub.   
-2. Vybrat **centrum událostí** (DatafeedEventHubNamespace....)  a vyhledejte počet příchozích zpráv.   
+1. Přejít do skupiny prostředků FarmBeats data hub.   
+2. Vyberte **centrum událostí** (DatafeedEventHubNamespace....) a vyhledejte počet příchozích zpráv.   
 3. V případě, že nejsou k dispozici **žádné příchozí zprávy**, obraťte se na partnera zařízení.  
 4. V případě **příchozích zpráv**se obraťte farmbeatssupport@microsoft.com s protokoly datového centra a akcelerátory a zachycená telemetrie.
 
-V [části protokoly](#collect-logs-manually) v dokumentu najdete informace o tom, jak stahovat protokoly.  
+V [části protokoly](#collect-logs-manually) v dokumentu najdete informace o tom, jak stahovat protokoly.  
 
 ### <a name="dont-have-the-eventhub-connection-string"></a>Nemáte připojovací řetězec Eventhub.
 
@@ -55,7 +55,7 @@ V [části protokoly](#collect-logs-manually) v dokumentu najdete informace o to
 
 **Příznaky**: zařízení jsou nainstalována a propojení FarmBeats s partnerem zařízení. Zařízení jsou online a odesílají data telemetrie, ale jsou v režimu offline.
 
-**Nápravné opatření**: interval vytváření sestav není pro toto zařízení nakonfigurovaný. Obraťte se na výrobce zařízení a nastavte interval hlášení. 
+**Nápravné opatření**: interval vytváření sestav není pro toto zařízení nakonfigurovaný. Obraťte se na výrobce zařízení a nastavte interval hlášení. 
 
 ### <a name="error-deleting-a-resource"></a>Chyba při odstraňování prostředku
 
@@ -135,44 +135,44 @@ Zavřete všechny karty prohlížeče, které mají akcelerátor otevřený a za
 
 **Nápravné akce**: znovu spustit neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5-7 dní a ověřte, jestli je úloha úspěšná.
 
-### <a name="sentinel-hub-wrongurlor-not-accessible"></a>Ověřovací centrum Sentinel má nesprávnou adresu URL nebo není přístupný. 
+### <a name="sentinel-hub-wrong-url-or-not-accessible"></a>Ověřovací centrum Sentinel má nesprávnou adresu URL nebo není přístupný. 
 
-**Zpráva o selhání úlohy**: bohužel došlo k nějakému problému. Stránka, ke které jste se pokusili získat přístup, je (dočasně) nedostupná. 
+**Zpráva o selhání úlohy**: bohužel došlo k nějakému problému. Stránka, ke které jste se pokusili získat přístup, je (dočasně) nedostupná. 
 
 **Nápravná opatření**:
-1.  Otevřete adresu URL Sentinel (https://scihub.copernicus.eu/dhus/) v prohlížeči a ověřte, jestli je web přístupný. 
-2.  Pokud web není přístupný, podívejte se, jestli brána firewall/podniková síť atd. Tento web blokuje a přijímá potřebné kroky, aby výše uvedené adresy URL bylo povolené. 
+1.  Otevřete adresu URL Sentinel (https://scihub.copernicus.eu/dhus/) v prohlížeči a ověřte, jestli je web přístupný. 
+2.  Pokud web není přístupný, podívejte se, jestli brána firewall/podniková síť atd. Tento web blokuje a přijímá potřebné kroky, aby výše uvedené adresy URL bylo povolené. 
 3.  Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5-7 dní a ověřte, jestli je úloha úspěšná.  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Vypnutí serveru Sentinel za účelem údržby
 
-**Zpráva o selhání úlohy**: Copernicus otevřít centrum přístupu bude brzy! Omlouváme se za nepříjemnosti. v tuto chvíli provádíme údržbu. Za chvilku budeme zpátky online! 
+**Zpráva o selhání úlohy**: Copernicus otevřít centrum přístupu bude brzy! Omlouváme se za nepříjemnosti. v tuto chvíli provádíme údržbu. Za chvilku budeme zpátky online! 
 
 **Nápravná opatření**:
 
-1.  K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějaké aktivity údržby. 
-2.  Pokud dojde k chybě jakékoli úlohy nebo kanálu z výše uvedeného důvodu, odešlete úlohu znovu po nějaké době. 
-3.  Uživatel může navštívit https://scihub.copernicus.eu/news/, aby zkontroloval informace o všech plánovaných a neplánovaných aktivitách údržby ověřovacích informací.  
+1.  K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějaké aktivity údržby. 
+2.  Pokud dojde k chybě jakékoli úlohy nebo kanálu z výše uvedeného důvodu, odešlete úlohu znovu po nějaké době. 
+3.  Uživatel může navštívit https://scihub.copernicus.eu/news/, aby zkontroloval informace o všech plánovaných a neplánovaných aktivitách údržby ověřovacích informací.  
 4.  Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5-7 dní a ověřte, jestli je úloha úspěšná.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Bylo dosaženo maximálního počtu připojení Sentinel.
 
-**Zpráva o selhání úlohy**: maximální počet dvou souběžných toků dosažených uživatelem "<username>". 
+**Zpráva o selhání úlohy**: maximální počet dvou souběžných toků dosažených uživatelem "<username>". 
 
 **Nápravná opatření**
-1.  Pokud dojde k chybě jakékoli úlohy s výše uvedeným důvodem, používá se stejný účet Sentinel v jiném nasazení nebo softwaru. 
+1.  Pokud dojde k chybě jakékoli úlohy s výše uvedeným důvodem, používá se stejný účet Sentinel v jiném nasazení nebo softwaru. 
 2.  Uživatel může vytvořit nový účet Sentinel a znovu spustit instalační program pro upgrade centra dat s novým uživatelským jménem a heslem Sentinel.  
 3.  Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5-7 dní a ověřte, jestli je úloha úspěšná.
 
-### <a name="sentinel-server-refused-connection"></a>Ověřovací server odmítl připojení. 
+### <a name="sentinel-server-refused-connection"></a>Ověřovací server odmítl připojení. 
 
 **Zpráva o selhání úlohy**:
 
-Server odmítl připojení: http://172.30.175.69:8983/solr/dhus 
+Server odmítl připojení: http://172.30.175.69:8983/solr/dhus 
 
-**Nápravná opatření**: k tomuto problému může dojít, pokud se na ověřovacím serveru provádí nějaké aktivity údržby. 
-1.  Pokud dojde k chybě jakékoli úlohy nebo kanálu z výše uvedeného důvodu, odešlete úlohu znovu po nějaké době. 
-2.  Uživatel může navštívit https://scihub.copernicus.eu/news/, aby zkontroloval informace o všech plánovaných a neplánovaných aktivitách údržby ověřovacích informací.  
+**Nápravná opatření**: k tomuto problému může dojít, pokud se na ověřovacím serveru provádí nějaké aktivity údržby. 
+1.  Pokud dojde k chybě jakékoli úlohy nebo kanálu z výše uvedeného důvodu, odešlete úlohu znovu po nějaké době. 
+2.  Uživatel může navštívit https://scihub.copernicus.eu/news/, aby zkontroloval informace o všech plánovaných a neplánovaných aktivitách údržby ověřovacích informací.  
 3.  Znovu spusťte neúspěšnou úlohu nebo spusťte úlohu satelitních indexů pro rozsah dat 5-7 dní a ověřte, jestli je úloha úspěšná.
 
 
@@ -281,11 +281,11 @@ Na řídicím panelu skupiny prostředků vyhledejte účet úložiště (datahu
 
 ## <a name="high-cpu-usage"></a>Vysoké využití procesoru
 
-**Chyba**: dostanete e-mailové upozornění odkazující na výstrahu vysokého využití procesoru. 
+**Chyba**: dostanete e-mailové upozornění odkazující na výstrahu vysokého využití procesoru. 
 
-**Nápravná opatření**: 
+**Nápravná opatření**: 
 1.  Přejít do skupiny prostředků FarmBeats data hub.
-2.  Vyberte službu App Service.  
+2.  Vyberte službu App Service.  
 3.  Přejít na horizontální navýšení kapacity (App Service plán) a výběr vhodné [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
 ## <a name="next-steps"></a>Další kroky

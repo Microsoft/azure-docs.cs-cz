@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b75d9e9fc88cabacab912efa17938708eb061b99
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8c5b932a1b44169cc50c8c7214d3f3410c581f4e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232439"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792260"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -33,7 +33,7 @@ Zotavení po havárii fyzických serverů | Replikace místních fyzických serv
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 vCenter Server | Verze 6,7, 6,5, 6,0 nebo 5,5 | V nasazení zotavení po havárii doporučujeme použít Server vCenter.
-vSphere hostitelé | Verze 6,7, 6,5, 6,0 nebo 5,5 | Doporučujeme, aby se hostitelé vSphere a vCenter servery nacházely ve stejné síti jako procesový Server. Ve výchozím nastavení běží procesový Server na konfiguračním serveru. [Další informace](vmware-physical-azure-config-process-server-overview.md)
+vSphere hostitelé | Verze 6,7, 6,5, 6,0 nebo 5,5 | Doporučujeme, aby se hostitelé vSphere a vCenter servery nacházely ve stejné síti jako procesový Server. Ve výchozím nastavení běží procesový Server na konfiguračním serveru. [Další informace](vmware-physical-azure-config-process-server-overview.md).
 
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery konfigurační server
@@ -57,7 +57,7 @@ Role Windows Serveru | Nepovolujte Active Directory Domain Services; Internetov�
 Zásady skupiny| – Zabraňte přístupu k příkazovému řádku. <br/> – Zabraňte přístup k nástrojům pro úpravu registru. <br/> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br/> -Zapnout provádění skriptu. <br/> - další [informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Ujistěte se, že:<br/><br/> – Nemáte existující výchozí web. <br/> -Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br/> – Už nemusíte na portu 443 naslouchat předem existující web nebo aplikaci.<br/>
 Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware)
-Typ IP adresy | Static
+Typ IP adresy | Statický
 Porty | 443 použito pro orchestraci řídicích kanálů<br/>9443 pro přenos dat
 
 ## <a name="replicated-machines"></a>Replikované počítače
@@ -70,14 +70,14 @@ Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném po�
 **Komponenta** | **Podrobnosti**
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky Azure](#azure-vm-requirements).
-Zatížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném počítači. [Další informace](https://aka.ms/asr_workload)
-Windows Server. 2019 | Podporováno z [kumulativní aktualizace 34](https://support.microsoft.com/help/4490016) (verze 9,22 služby mobility) a vyšší.
+Zatížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném počítači. [Další informace](https://aka.ms/asr_workload).
+Windows Server 2019 | Podporováno z [kumulativní aktualizace 34](https://support.microsoft.com/help/4490016) (verze 9,22 služby mobility) a vyšší.
 Windows Server 2016 64 – bit | Podporováno pro jádro serveru, server s desktopovým prostředím.
 Windows Server 2012 R2/Windows Server 2012 | Podporuje se.
-Windows Server 2008 R2 s aktualizací SP1 a vyšší. | Podporuje se.<br/><br/> Od verze 9.30. x. x (očekávaná verze od listopadu 2019) agenta služby mobility potřebujete aktualizaci [zásobníku cestou nadřazené (Servicing)](https://support.microsoft.com/help/4490628) a [aktualizaci SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 2008 R2 s aktualizací SP1 nebo novější. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Další informace o [požadavcích a upgradu SHA-2](https://aka.ms/SHA-2KB)
-Windows Server 2008 s aktualizací SP2 nebo novější (64bitová/32bitová verze) |  Podporováno pouze pro migraci. [Další informace](migrate-tutorial-windows-server-2008.md)<br/><br/> Od verze 9.30. x. x (očekávaná verze od listopadu 2019) agenta služby mobility potřebujete aktualizaci Service [Stack (cestou nadřazené)](https://support.microsoft.com/help/4493730) a [aktualizaci SHA-2](h https://support.microsoft.com/help/4474419) nainstalovanou na počítačích s Windows 2008 SP2. ISHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Další informace o [požadavcích a upgradu SHA-2](https://aka.ms/SHA-2KB)
+Windows Server 2008 R2 s aktualizací SP1 a vyšší. | Podporuje se.<br/><br/> Od verze 9.30. x. x (očekávaná verze od listopadu 2019) agenta služby mobility potřebujete aktualizaci [zásobníku cestou nadřazené (Servicing)](https://support.microsoft.com/help/4490628) a [aktualizaci SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 2008 R2 s aktualizací SP1 nebo novější. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
+Windows Server 2008 s aktualizací SP2 nebo novější (64bitová/32bitová verze) |  Podporováno pouze pro migraci. [Další informace](migrate-tutorial-windows-server-2008.md).<br/><br/> Od verze 9.30. x. x (očekávaná verze od listopadu 2019) agenta služby mobility potřebujete aktualizaci Service [Stack (cestou nadřazené)](https://support.microsoft.com/help/4493730) a [aktualizaci SHA-2](h https://support.microsoft.com/help/4474419) nainstalovanou na počítačích s Windows 2008 SP2. ISHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
 Windows 10, Windows 8.1, Windows 8 | Podporuje se.
-Windows 7 s aktualizací SP1 64-bit | Podporováno z [kumulativní aktualizace 36](https://support.microsoft.com/help/4503156) (verze 9,22 služby mobility) a vyšší. </br></br> Od verze 9.30. x. x (očekávaná verze od listopadu 2019) agenta služby mobility potřebujete [aktualizaci zásobníku cestou nadřazené (Servicing)](https://support.microsoft.com/help/4490628) a [aktualizaci SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 7 SP1.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Další informace o [požadavcích a upgradu SHA-2](https://aka.ms/SHA-2KB)
+Windows 7 s aktualizací SP1 64-bit | Podporováno z [kumulativní aktualizace 36](https://support.microsoft.com/help/4503156) (verze 9,22 služby mobility) a vyšší. </br></br> Od verze 9.30. x. x (očekávaná verze od listopadu 2019) agenta služby mobility potřebujete [aktualizaci zásobníku cestou nadřazené (Servicing)](https://support.microsoft.com/help/4490628) a [aktualizaci SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 7 SP1.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
 Linux | Podporuje se jenom 64-bit systému. 32 bitový systém není podporován.<br/><br/>Na každém serveru se systémem Linux by měly být nainstalovány [komponenty pro Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Po testovacím převzetí služeb při selhání nebo převzetí služeb při selhání se vyžaduje spuštění serveru v Azure. Pokud chybí komponenty aplikace LIS, před povolením replikace pro počítače, které se mají spustit v Azure, zajistěte instalaci těchto [součástí](https://www.microsoft.com/download/details.aspx?id=55106) . <br/><br/> Site Recovery orchestrovat převzetí služeb při selhání, aby se spouštěly servery Linux v Azure. Dodavatelé systému Linux ale můžou omezit podporu jenom na distribuční verze, které nedosáhly konce životního cyklu.<br/><br/> V distribucích systému Linux jsou podporovány pouze základní jádra, která jsou součástí verze distribuce nebo aktualizace dílčí verze distribuce.<br/><br/> Upgrade chráněných počítačů v rámci velkých verzí pro distribuci systému Linux není podporován. Pokud chcete upgradovat, zakažte replikaci, upgradujte operační systém a pak znovu povolte replikaci.<br/><br/> [Přečtěte si další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) o podpoře pro Linux a open source technologie v Azure.
 Linux Red Hat Enterprise | 5,2 až 5,11</b><br/> 6,1 až 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, [7,5, 7,6](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) , [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), 8,0 <br/> Servery se systémem Red Hat Enterprise Linux 5.2-5,11 & 6.1-6.10 nemají předem nainstalované [komponenty Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Před povolením replikace pro počítače, které se mají spustit v Azure, nezapomeňte nainstalovat tyto [součásti](https://www.microsoft.com/download/details.aspx?id=55106) .
 Linux: CentOS | 5,2 až 5,11</b><br/> 6,1 až 6,10</b><br/> 7,0 až 7,6<br/> <br/> Servery, na kterých běží CentOS 5.2-5,11 & 6.1-6.10, nemají předem nainstalované [komponenty pro Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) . Před povolením replikace pro počítače, které se mají spustit v Azure, nezapomeňte nainstalovat tyto [součásti](https://www.microsoft.com/download/details.aspx?id=55106) .
@@ -86,6 +86,8 @@ Debian | Debian 7/Debian 8 [(kontrola podporovaných verzí jádra)](#debian-ker
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(kontrola podporovaných verzí jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Upgrade replikovaných počítačů z SUSE Linux Enterprise Server 11 SP3 na SP4 se nepodporuje. Pokud chcete upgradovat, zakažte replikaci a po upgradu ji znovu povolte.
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4 [, 7,5, 7,6, 7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5) 
 
+> [!Note]
+> Pro každou verzi Windows Azure Site Recovery podporuje jenom sestavení [LTSC (Long-Term Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) .  [Pololetní verze kanálů](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) v tuto chvíli nejsou aktuálně podporovány.
 
 ### <a name="ubuntu-kernel-versions"></a>Verze jádra Ubuntu
 
@@ -134,8 +136,8 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,25][9.25 UR] | SP1 3.1
 Systémy souborů | ext3, ext4, XFS
 Správce svazků | – LVM je podporováno.<br/> –/Boot v LVM se podporuje z [kumulativní aktualizace 31](https://support.microsoft.com/help/4478871/) (verze 9,20 služby mobility) a vyšší. Není podporovaný ve starších verzích služby mobility.<br/> -Více disků s operačním systémem se nepodporuje.
 Zařízení úložiště paravirtualizovanými | Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
-Blokové vstupně-výstupní operace s více frontami | Není podporováno.
-Fyzické servery s řadičem úložiště HP CCISS | Není podporováno.
+Blokové vstupně-výstupní operace s více frontami | Nepodporuje se.
+Fyzické servery s řadičem úložiště HP CCISS | Nepodporuje se.
 Konvence pojmenování zařízení/přípojných bodů | Název zařízení nebo přípojný bod by měl být jedinečný.<br/> Zajistěte, aby v žádném ze dvou zařízení/přípojných bodů nebyly rozlišována velká a malá písmena. Například pojmenování zařízení pro stejný virtuální počítač jako *zařízení1* a *zařízení1* se nepodporuje.
 Adresáře | Pokud používáte verzi služby mobility, která je starší než verze 9,20 (vydaná v [kumulativní aktualizaci 31](https://support.microsoft.com/help/4478871/)), platí tato omezení:<br/><br/> – Tyto adresáře (Pokud se nastavují jako samostatné oddíly/souborové systémy) musí být na stejném disku s operačním systémem na zdrojovém serveru:/(root),/Boot,/usr,/usr/local,/var,/etc.</br> – Adresář/Boot by měl být na disku a nesmí být svazkem LVM.<br/><br/> Z verze 9,20 a vyšší se tato omezení nevztahují. 
 Spouštěcí adresář | – Spouštěcí disky nesmí být ve formátu oddílu GPT. Toto je omezení architektury Azure. Disky GPT jsou podporovány jako datové disky.<br/><br/> Víc spouštěcích disků na virtuálním počítači se nepodporuje.<br/><br/> –/Boot na svazku LVM na více než jednom disku se nepodporuje.<br/> – Počítač bez spouštěcího disku nejde replikovat.
@@ -148,7 +150,7 @@ BTRFS | BTRFS se podporuje z [kumulativní aktualizace 34](https://support.micro
 **Akce** | **Podrobnosti**
 --- | ---
 Změna velikosti disku na replikovaném virtuálním počítači | Podporuje se.
-Přidat disk na replikovaný virtuální počítač | Není podporováno.<br/> Zakažte replikaci pro virtuální počítač, přidejte disk a pak znovu povolte replikaci.
+Přidat disk na replikovaný virtuální počítač | Nepodporuje se.<br/> Zakažte replikaci pro virtuální počítač, přidejte disk a pak znovu povolte replikaci.
 
 ## <a name="network"></a>Síť
 
@@ -171,7 +173,7 @@ Síť s více síťovými kartami Host/Server | Ano.
 **Komponenta** | **Podporuje se**
 --- | ---
 Azure ExpressRoute | Ano
-ILB | Ano
+INTERNÍHO nástroje | Ano
 ELB | Ano
 Azure Traffic Manager | Ano
 Více síťových karet | Ano
@@ -181,14 +183,14 @@ Zachovat zdrojovou IP adresu | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
 Urychlení sítě | Ne
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 **Komponenta** | **Podporuje se**
 --- | ---
 Dynamický disk | Disk s operačním systémem musí být základní disk. <br/><br/>Datové disky můžou být dynamické disky.
 Konfigurace disku Docker | Ne
-Host NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
+Hostitelský systém souborů NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
 SÍŤ SAN hostitele (iSCSI/FC) | Ano
-Host vSAN | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
+Síti vSAN hostitele | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Funkce Multipath (MPIO) hostitele | Ano, Testováno pomocí Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON
 Virtuální svazky hostitele (VVols) | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 VMDK nebo server typu Host | Ano
@@ -253,13 +255,13 @@ Místní virtuální počítače replikované do Azure musí splňovat požadavk
 Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated-machines) pro replikované počítače. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost disku operačního systému | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Počet disků operačního systému | 1\. místo | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 8 192 GB při replikaci na spravovaný disk (9,26 verze a vyšší)<br></br>Až 4 095 GB při replikaci do účtu úložiště| Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
-Sdílený virtuální pevný disk | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Disk FC | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-BitLocker | Není podporováno. | Před povolením replikace pro počítač musí být BitLocker zakázán. |
+Sdílený virtuální pevný disk | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán. |
 název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
 
 ## <a name="resource-group-limits"></a>Omezení skupiny prostředků

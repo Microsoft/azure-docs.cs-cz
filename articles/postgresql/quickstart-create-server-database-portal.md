@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – vytvoření serveru Azure Database for PostgreSQL-Single pomocí Azure Portal
+title: 'Rychlý Start: vytvoření serveru-Azure Portal-Azure Database for PostgreSQL-Single server'
 description: Úvodní příručka k vytvoření a správě Azure Database for PostgreSQL-Single serveru pomocí uživatelského rozhraní Azure Portal
 author: rachel-msft
 ms.author: raagyema
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.openlocfilehash: f9a729376baeb03656b7b54fcb8e10a865d1f364
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fa4b9fb9be6ac4f541448abef1f676875a7ddcfc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195142"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774979"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for PostgreSQL na webu Azure Portal
 
@@ -44,15 +44,15 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    Subscription|Název vašeho předplatného|Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
-    Resource group|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
+    Předplatné|Název vašeho předplatného|Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
+    Skupina prostředků|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
     Název serveru |*mydemoserver*|Jedinečný název, který identifikuje váš server Azure Database for PostgreSQL. K zadanému názvu serveru se připojí název domény *postgres.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat z 3 až 63 znaků.
-    Zdroj dat | *Žádné* | Pokud chcete vytvořit nový server úplně od začátku, vyberte *žádný* . (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for PostgreSQL, vyberte *Záloha*.)
+    Zdroj dat | *NTato* | Pokud chcete vytvořit nový server úplně od začátku, vyberte *žádný* . (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for PostgreSQL, vyberte *Záloha*.)
     Uživatelské jméno správce |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nemůže začínat na **pg_** .
-    Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0 až 9) a jiné než alfanumerické znaky (!, $, #,% atd.).
-    Location|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
+    Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
+    Umístění|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
     Version|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
-    Výpočty a úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. Potom vyberte kartu **Obecné účely**. Výchozími hodnotami pro **výpočetní**výkon, **Vcore**, **úložiště**a **dobu uchování zálohy**jsou *Obecné 5*, *4 virtuální jádra*, *100 GB*a *7 dní* . Tyto posuvníky můžete ponechat beze změny nebo je upravit. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Výpočty a úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. V dalším kroku vyberte kartu **pro obecné účely** . *5*, *4 virtuální jádra*, *100 GB*a *7 dní* jsou výchozími hodnotami pro **výpočetní generaci**, **Vcore**, **úložiště**a **dobu uchovávání záloh**. Tyto posuvníky můžete ponechat beze změny nebo je upravit. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
    > [!NOTE]
    > Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) .
@@ -115,7 +115,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
    ```
 
    > [!TIP]
-   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL kódování @ uživatelského jména pomocí `%40`. Například připojovací řetězec pro psql by byl, 
+   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL: kódování @ uživatelského jména pomocí `%40`. Například připojovací řetězec pro psql by byl, 
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -136,7 +136,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
    > [!TIP]
    > Pokud brána firewall není nakonfigurovaná k povolení IP adresy vašeho klienta, dojde k následující chybě:
    > 
-   > "psql: Závažná chyba: žádná položka pg_hba. conf `<IP address>`pro hostitele, User "myadmin", Database "Postgres", SSL má závažnou hodnotu SSL: Vyžaduje se připojení SSL. Zadejte možnosti SSL a zkuste to znovu.
+   > "psql: závažná chyba: žádná pg_hba. conf pro `<IP address>`hostitele, uživatele" myadmin ", databázi" Postgres ", SSL má ZÁVAŽNou hodnotu SSL, je třeba připojení SSL. Zadejte možnosti SSL a zkuste to znovu.
    > 
    > Ověřte, že je v kroku pravidla brány firewall povolená IP adresa klienta.
 
@@ -170,17 +170,17 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
    ![Karta Připojení](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    Parametr pgAdmin |Value|Popis
+    Parametr pgAdmin |Hodnota|Popis
     ---|---|---
     Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény ( **\*.postgres.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
     Port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL. 
     Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
-    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName\@servername*.
+    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username\@servername*.
     Heslo | Vaše heslo správce | Heslo, které jste si zvolili při vytváření serveru dříve v tomto rychlém startu.
     Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
-    Režim SSL | *Vyžadovat* | Na kartě SSL nástroje pgAdmin můžete nastavit režim SSL. Ve výchozím nastavení jsou všechny servery Azure Database for PostgreSQL vytvořené se zapnutým vynucováním SSL. Pokud chcete vynucování SSL vypnout, přečtěte si téma popisující [vynucování SSL](./concepts-ssl-connection-security.md).
+    Režim SSL | *Vyžadovat* | Režim SSL můžete nastavit na kartě SSL v pgAdmin. Ve výchozím nastavení jsou všechny servery Azure Database for PostgreSQL vytvořené se zapnutým vynucováním SSL. Pokud chcete vynucování SSL vypnout, přečtěte si téma popisující [vynucování SSL](./concepts-ssl-connection-security.md).
     
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 6. V levém podokně **Prohlížeč** rozbalte uzel **Servery**. Vyberte server, například **mydemoserver**, abyste se k němu mohli připojit.
 

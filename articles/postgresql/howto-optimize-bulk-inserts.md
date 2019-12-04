@@ -1,40 +1,40 @@
 ---
-title: Optimalizace Hromadná vložení ve službě Azure Database for PostgreSQL – jeden Server
-description: Tento článek popisuje, jak můžete optimalizovat operace hromadného vložení ve službě Azure Database for PostgreSQL – jeden Server.
+title: Optimalizace hromadných vložení – Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje, jak můžete optimalizovat operace hromadného vkládání na Azure Database for PostgreSQL jednom serveru.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c1ae29f7c498a79af09aaaf6d7aeae29561aa500
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067035"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770131"
 ---
-# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Optimalizujte operace hromadného vložení a používat přechodné data ve službě Azure Database for PostgreSQL – jeden Server 
-Tento článek popisuje, jak můžete optimalizovat operace hromadného vložení a přechodné data ve službě Azure Database použít pro PostgreSQL server.
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Optimalizujte hromadné vkládání a používejte přechodná data na Azure Database for PostgreSQL-jednom serveru. 
+Tento článek popisuje, jak můžete optimalizovat operace hromadného vkládání a používat přechodná data na serveru Azure Database for PostgreSQL.
 
-## <a name="use-unlogged-tables"></a>Použití neprotokolovaného tabulek
-Pokud máte operace úlohy, které zahrnují přechodných dat nebo, který hromadné vložení velkých datových sad, zvažte použití neprotokolovaného tabulky.
+## <a name="use-unlogged-tables"></a>Použití neprotokolovaných tabulek
+Pokud máte operace s úlohami, které zahrnují přechodná data nebo hromadné vkládání velkých datových sad, zvažte použití neprotokolovaných tabulek.
 
-Neprotokolovaného tabulek je funkce, PostgreSQL, která umožňuje efektivní optimalizaci Hromadná vložení. PostgreSQL využívá dávky zápisu protokolování (WAL). Ve výchozím nastavení poskytuje atomicitu a odolnost. Atomicitu, konzistence, izolace a odolnost tvoří vlastnosti ACID. 
+Neprotokolované tabulky jsou funkcí PostgreSQL, která se dá efektivně použít k optimalizaci hromadných vložení. PostgreSQL používá protokolování zápisu předem (WAL). Ve výchozím nastavení zajišťuje nedělitelnost a odolnost. Nedělitelnost, konzistence, izolace a odolnost tvoří vlastnosti KYSELosti. 
 
-Vkládání do prostředku neprotokolovaného tabulky této PostgreSQL vloží bez zápisu do transakce protokolu, která sama se vstupně-výstupní operace. V důsledku toho se tyto tabulky výrazně rychlejší než běžné tabulky.
+Vložením do neprotokolované tabulky znamená, že PostgreSQL vloží bez zápisu do transakčního protokolu, který je sám operací I/O. V důsledku toho jsou tyto tabulky mnohem rychlejší než běžné tabulky.
 
-K vytvoření neprotokolovaného tabulky pomocí následujících možností:
-- Vytvořit novou tabulku neprotokolovaného pomocí syntaxe `CREATE UNLOGGED TABLE <tableName>`.
-- Převést existující přihlášení tabulky na tabulku neprotokolovaného pomocí syntaxe `ALTER TABLE <tableName> SET UNLOGGED`.  
+K vytvoření neprotokolované tabulky použijte následující možnosti:
+- Vytvořte novou nehlášenou tabulku pomocí `CREATE UNLOGGED TABLE <tableName>`syntaxe.
+- Převeďte existující protokolovaných tabulek na neprotokolovaný stůl pomocí `ALTER TABLE <tableName> SET UNLOGGED`syntaxe.  
 
-Chcete-li se vrátit do, použijte syntaxi `ALTER TABLE <tableName> SET LOGGED`.
+Chcete-li obrátit proces, použijte syntaxi `ALTER TABLE <tableName> SET LOGGED`.
 
-## <a name="unlogged-table-tradeoff"></a>Kompromis neprotokolovaného tabulky
-Neprotokolovaného tabulky nejsou bezpečné při selhání. Neprotokolovaného tabulky automaticky zkrácen po zhroucení nebo v souladu vypnuly. Obsah neprotokolovaného tabulky také se nereplikují do pohotovostního servery. Všechny indexy vytvořené na neprotokolovaného tabulky jsou také automaticky neprotokolovaného. Po vložení operace dokončí, převeďte tabulku protokolování tak, aby byla odolná insert.
+## <a name="unlogged-table-tradeoff"></a>Neprotokolovaný kompromis v tabulkách
+Neprotokolované tabulky nejsou bezpečné pro selhání. Neprotokolovaná tabulka se automaticky zkrátí po chybě nebo v důsledku nečistého vypnutí. Obsah nezaznamenané tabulky se také nereplikuje na pohotovostní servery. Všechny indexy vytvořené v neprotokolovaných tabulkách jsou také automaticky odhlášeny. Po dokončení operace vložení převeďte tabulku do protokolu, aby bylo vkládání trvalé.
 
-Některé úlohy zákazníka došlo přibližně 15 až 20 procent zkrátil při neprotokolovaného tabulky byly použity.
+U některých úloh zákazníků se při použití neprotokolovaných tabulek vyskytlo přibližně 15 procent až 20 procent zlepšení výkonu.
 
-## <a name="next-steps"></a>Další postup
-Zkontrolujte vaše úlohy pro použití přechodných dat a velké Hromadná vložení. V následující dokumentaci k PostgreSQL:
+## <a name="next-steps"></a>Další kroky
+Projděte si úlohy pro použití přechodných dat a velkých hromadných vložení. Podívejte se na následující dokumentaci k PostgreSQL:
  
-- [Vytvoření tabulky SQL příkazy](https://www.postgresql.org/docs/current/static/sql-createtable.html)
+- [Příkazy CREATE TABLE SQL](https://www.postgresql.org/docs/current/static/sql-createtable.html)

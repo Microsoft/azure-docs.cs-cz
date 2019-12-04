@@ -1,57 +1,57 @@
 ---
-title: Připojení Azure Kubernetes Service (AKS) se službou Azure Database for PostgreSQL – jeden Server
-description: Další informace o připojení služby Azure Kubernetes s využitím Azure Database for PostgreSQL – jeden Server
+title: Připojení k Azure Kubernetes Service – Azure Database for PostgreSQL-Single server
+description: Seznamte se s připojením služby Azure Kubernetes Service (AKS) s Azure Database for PostgreSQLm na jeden server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.date: 5/6/2019
 ms.topic: conceptual
-ms.openlocfilehash: a98d9b89db0406d67d1b067c3e53eb5c3dae7957
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068943"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769876"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Připojení Azure Kubernetes Service a Azure Database for PostgreSQL – jeden Server
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Připojení služby Azure Kubernetes a serveru Azure Database for PostgreSQL-Single server
 
-Azure Kubernetes Service (AKS) poskytuje spravovaného clusteru Kubernetes, který můžete použít v Azure. V následující tabulce jsou některé možnosti, které je třeba zvážit při použití společně AKS a Azure Database for postgresql – vytvoření aplikace.
+Služba Azure Kubernetes Service (AKS) poskytuje spravovaný cluster Kubernetes, který můžete použít v Azure. Níže jsou uvedeny některé možnosti, které je třeba vzít v úvahu při použití AKS a Azure Database for PostgreSQL dohromady k vytvoření aplikace.
 
 
 ## <a name="accelerated-networking"></a>Urychlení sítě
-Použití urychlení sítě povolené základní virtuální počítače v clusteru AKS. Pokud akcelerovaných síťových služeb je povoleno na virtuálním počítači, je nižší latenci, zmenšit zpoždění a snížit využití procesoru na virtuálním počítači. Další informace o akcelerovaných síťových funguje, podporované verze operačního systému a podporované instance virtuálních počítačů pro [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
+V clusteru AKS použijte urychlené základní virtuální počítače s podporou sítě. Když je na virtuálním počítači povolené urychlení sítě, dojde k nižší latenci, snížení kolísání a snížení využití procesoru na VIRTUÁLNÍm počítači. Přečtěte si další informace o tom, jak akcelerovaná síť funguje, podporované verze operačního systému a podporované instance virtuálních počítačů pro [Linux](../virtual-network/create-vm-accelerated-networking-cli.md).
 
-Od listopadu 2018 AKS podporuje akcelerované síťové služby na tyto podporované instance virtuálních počítačů. Ve výchozím nastavení nových clusterů AKS, které používají tyto virtuální počítače je povolená akcelerované síťové služby.
+Od listopadu 2018 podporuje AKS urychlené síťové služby na těchto podporovaných instancích virtuálních počítačů. Akcelerované síťové služby jsou ve výchozím nastavení povolené v nových clusterech AKS, které tyto virtuální počítače používají.
 
-Můžete ověřit, zda váš cluster AKS akcelerovanými síťovými službami:
-1. Přejděte na web Azure Portal a vyberte svůj cluster AKS.
-2. Vyberte na kartě Vlastnosti.
-3. Zkopírujte název **skupina prostředků infrastruktury**.
-4. Najděte a otevřete skupinu prostředků infrastruktury pomocí panelu hledání portálu.
-5. Vyberte virtuální počítač v příslušné skupině prostředků.
-6. Přejděte do Virtuálního počítače **sítě** kartu.
-7. Ověřte, zda **akcelerované síťové služby** "Zapnutý."
+Můžete potvrdit, jestli cluster AKS má urychlené síťové služby:
+1. Přejít na Azure Portal a vybrat cluster AKS.
+2. Vyberte kartu Vlastnosti.
+3. Zkopírujte název **skupiny prostředků infrastruktury**.
+4. Pomocí panelu hledání na portálu vyhledejte a otevřete skupinu prostředků infrastruktury.
+5. Vyberte virtuální počítač v této skupině prostředků.
+6. Přejít na kartu **síť** virtuálního počítače.
+7. Potvrďte, jestli je povolená možnost **akcelerované síťové služby** .
 
-Nebo přes rozhraní příkazového řádku Azure pomocí následujících příkazů:
+Nebo přes rozhraní příkazového řádku Azure CLI pomocí následujících dvou příkazů:
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
 ```
-Výstup bude skupina generované prostředků, který vytvoří AKS obsahující síťové rozhraní. Vezme název "nodeResourceGroup" a použít ho v dalším příkazu. **EnableAcceleratedNetworking** buď bude true nebo false:
+Výstupem bude vygenerovaná skupina prostředků, kterou AKS vytvoří, obsahující síťové rozhraní. Použijte název "nodeResourceGroup" a použijte ho v dalším příkazu. **EnableAcceleratedNetworking** bude buď true, nebo false:
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 ## <a name="open-service-broker-for-azure"></a>Technologie Open Service Broker for Azure 
-[Otevřete Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) umožňuje zřizovat služby Azure přímo z Kubernetes nebo Cloud Foundry. Jde [otevřená rozhraní API služby Service Broker](https://www.openservicebrokerapi.org/) implementace pro Azure.
+[Open Service Broker pro Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) vám umožní zřídit služby Azure přímo z Kubernetes nebo Cloud Foundry. Jedná se o [Open Service Broker implementaci rozhraní API](https://www.openservicebrokerapi.org/) pro Azure.
 
-Osba můžete vytvořit serveru Azure Database for PostgreSQL a svázat cluster AKS pomocí Kubernetes' rodném jazyce. Další informace o tom, jak používat OSBA a Azure Database for PostgreSQL společně na [stránku Githubu OSBA](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
+Pomocí OSBA můžete vytvořit server Azure Database for PostgreSQL a vytvořit jeho propojení s clusterem AKS pomocí nativního jazyka Kubernetes. Přečtěte si, jak používat OSBA a Azure Database for PostgreSQL společně na [stránce GitHubu OSBA](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
 
 
 ## <a name="connection-pooling"></a>Sdružování připojení
-Pro sdružování připojení minimalizuje náklady a čas přidružený k vytváření a uzavírání nová připojení k databázi. Fond je kolekce připojení, které je možné využít znovu. 
+Pooler připojení minimalizuje náklady a čas spojený s vytvářením a uzavíráním nových připojení k databázi. Fond je kolekce připojení, která se dají znovu použít. 
 
-Existuje více poolers připojení, která vám pomůže s PostgreSQL. Jedním z nich je [PgBouncer](https://pgbouncer.github.io/). V registru kontejneru Microsoft zajišťuje zjednodušené kontejnerizovaných PgBouncer, který lze použít v sajdkáru k fondu připojení z AKS ke službě Azure Database for PostgreSQL. Přejděte [stránka centra dockeru](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/) se naučíte přistupovat a používat tuto bitovou kopii. 
+S PostgreSQL můžete používat víc fondů připojení. Jedna z těchto [PgBouncer](https://pgbouncer.github.io/). V Microsoft Container Registry poskytujeme odlehčenou kontejnerovou PgBounceri, která se dá použít v postranním vozíku pro vytvoření fondu připojení z AKS k Azure Database for PostgreSQL. Navštivte [stránku Docker Hub](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/) , kde se dozvíte, jak tento obrázek získat a jak ho používat. 
 
 
-## <a name="next-steps"></a>Další postup
--  [Vytvoření clusteru Azure Kubernetes Service](../aks/kubernetes-walkthrough.md)
+## <a name="next-steps"></a>Další kroky
+-  [Vytvoření clusteru služby Azure Kubernetes](../aks/kubernetes-walkthrough.md)

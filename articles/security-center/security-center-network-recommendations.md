@@ -13,15 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: bf33fe29b18b09bf903e1fc331f1c378eacb3e17
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21feed73d025e0c0a4b2c7bb07d23f450780126e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201714"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766782"
 ---
-# <a name="protect-your-network-resources-in-azure-security-center"></a>Ochrana síťových prostředků v Azure Security Center
+# <a name="protect-your-network-resources"></a>Ochrana síťových prostředků
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
+
+Tento článek vysvětluje stránku **síť** v části věnované zabezpečení prostředků v Azure Security Center a některá z doporučení, která tady vidíte.
+
+Úplný seznam doporučení pro sítě najdete v tématu [doporučení pro sítě](recommendations-network.md).
 
 Tento článek se zabývá doporučeními, která se vztahují na vaše prostředky Azure z hlediska zabezpečení sítě. Doporučení pro sítě – centrum pro brány firewall nové generace, skupiny zabezpečení sítě, přístup k virtuálnímu počítači JIT přes povolující pravidla příchozího provozu a další. Seznam doporučení k síti a nápravné akce najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
@@ -59,7 +63,7 @@ Výchozí zobrazení mapy topologie zobrazuje:
 
 ## <a name="understanding-the-network-map"></a>Princip mapy sítě
 
-Mapa sítě může zobrazit vaše prostředky Azure v zobrazení **topologie** a v zobrazení přenosů .
+Mapa sítě může zobrazit vaše prostředky Azure v zobrazení **topologie** a v zobrazení **přenosů** .
 
 ### <a name="the-topology-view"></a>Zobrazení topologie
 
@@ -75,9 +79,9 @@ Vzhledem k tomu, že je mapa interaktivní a dynamická, na každý uzel lze kli
 
 1. To, co vidíte na mapě sítě, můžete změnit pomocí filtrů v horní části. Mapu můžete zaměřit na:
 
-   -  **Stav zabezpečení**: Mapu můžete filtrovat na základě závažnosti (vysoká, střední, nízká) prostředků Azure.
-   - **Doporučení**: Můžete vybrat, které prostředky se zobrazí v závislosti na tom, která doporučení jsou na těchto prostředcích aktivní. Můžete například zobrazit pouze prostředky, pro které Security Center doporučuje povolit skupiny zabezpečení sítě.
-   - **Síťové zóny**: Ve výchozím nastavení Mapa zobrazuje jenom internetové prostředky, můžete vybrat taky interní virtuální počítače.
+   -  **Stav zabezpečení**: mapu můžete filtrovat podle závažnosti (vysoká, střední, nízká) vašich prostředků Azure.
+   - **Doporučení**: můžete vybrat, které prostředky se zobrazí v závislosti na tom, která doporučení jsou na těchto prostředcích aktivní. Můžete například zobrazit pouze prostředky, pro které Security Center doporučuje povolit skupiny zabezpečení sítě.
+   - **Síťové zóny**: ve výchozím nastavení se na mapě zobrazí jenom internetové prostředky, můžete vybrat taky interní virtuální počítače.
  
 2. Kliknutím na **resetovat** v levém horním rohu můžete kdykoli vrátit mapu do výchozího stavu.
 
@@ -131,31 +135,8 @@ V tomto zobrazení topologie zobrazuje první úroveň virtuální sítě. Druh�
 
 Třetí úroveň zobrazuje virtuální počítače, které jsou podobné tomu, co bylo popsáno dříve. Kliknutím na libovolný prostředek můžete získat další informace nebo použít požadovaný ovládací prvek zabezpečení nebo konfiguraci.
 
-## <a name="network-recommendations"></a>Doporučení pro síť
-
-|Název doporučení|Popis|severity|Bezpečnostní skóre|Typ prostředku|
-|----|----|----|----|----|----|
-|Měly by být povolené skupiny zabezpečení sítě na úrovni podsítě.|Povolte skupinám zabezpečení sítě řídit síťový přístup k prostředkům nasazeným v podsítích.|Vysoká/střední|30|Subnet|
-|Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.|Povolte skupinám zabezpečení sítě řízení přístupu k síti virtuálních počítačů.|Vysoká/střední|30|Virtuální počítač|
-|Přístup by měl být omezený na povolující skupiny zabezpečení sítě u virtuálních počítačů s přístupem k Internetu.|Tím, že omezíte přístup ke stávajícím pravidlům povolení, posílíte skupiny zabezpečení sítě vašich virtuálních počítačů s přístupem k Internetu.|Vysoká|20|Virtuální počítač|
-|Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by se měla posílit.|Posílit zabezpečení skupiny zabezpečení sítě (NSG) virtuálních počítačů, na kterých běží webové aplikace, s pravidly NSG, která jsou přesná, s ohledem na porty webových aplikací.|Vysoká|20|Virtuální počítač|
-|Přístup k App Services by měl být omezený.|Omezte přístup k vašemu App Services změnou konfigurace sítě tak, aby odepřela příchozí provoz z rozsahů, které jsou příliš široké.|Vysoká|10|App Service|
-|Porty pro správu by měly být uzavřeny na virtuálních počítačích|Posílení skupiny zabezpečení sítě virtuálních počítačů pro omezení přístupu k portům pro správu.|Vysoká|10|Virtuální počítač|
-Měla by být povolená DDoS Protection Standard.|Chraňte virtuální sítě obsahující aplikace s veřejnými IP adresami tím, že povolíte službu DDoS Protection Service Standard. DDoS Protection umožňuje zmírnit snižování objemu sítě a útoků protokolu.|Vysoká|10|Virtuální síť|
-|Předávání IP na virtuálním počítači by mělo být zakázané.|Zakažte předávání IP. Když je na síťové kartě virtuálního počítače povolené předávání IP, může tento počítač přijímat přenosy adresované do jiných cílů. Předávání IP adres se nevyžaduje zřídka (například při použití virtuálního počítače jako síťového virtuálního zařízení), a proto by mělo být přezkoumáno týmem zabezpečení sítě.|Střední|10|Virtuální počítač|
-|Webová aplikace by měla být přístupná jen přes HTTPS|Povolí přístup pouze HTTPS k webovým aplikacím. Použití protokolu HTTPS zajišťuje ověřování serveru nebo služby a chrání data při přenosu z útoků s odposloucháváním síťové vrstvy.|Střední|20|Webová aplikace|
-|Na virtuálních počítačích by se mělo použít řízení přístupu k síti za běhu|Použijte řízení přístupu k virtuálnímu počítači JIT (just-in-time) k trvalému uzamčení přístupu k vybraným portům a povolte oprávněným uživatelům, aby je mohli otevřít přes JIT, jenom po omezené množství času.|Vysoká|20|Virtuální počítač|
-|Aplikace Function app by měly být přístupné jenom přes HTTPS|Povolte přístup pouze HTTPS pro aplikace Function App. Použití protokolu HTTPS zajišťuje ověřování serveru nebo služby a chrání data při přenosu z útoků s odposloucháváním síťové vrstvy.|Střední|20|Function App|
-|Zabezpečený přenos do účtů úložiště by měl být povolený.|Povolte zabezpečený přenos do účtů úložiště. Zabezpečený přenos je možnost, která vynutí, aby váš účet úložiště přijímal požadavky jenom od zabezpečených připojení (HTTPS). Použití protokolu HTTPS zajišťuje ověřování mezi serverem a službou a chrání přenášená data z útoků síťové vrstvy, jako jsou například útoky prostředníkem, odposlouchávání a napadení relace.|Vysoká|20|Účet úložiště|
-
-## <a name="see-also"></a>Viz také:
-Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
+## <a name="see-also"></a>Další informace najdete v tématech
+Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících tématech:
 
 * [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
-
-Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
-
-* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
+* [Ochrana služby Azure SQL Service v Azure Security Center](security-center-sql-service-recommendations.md)

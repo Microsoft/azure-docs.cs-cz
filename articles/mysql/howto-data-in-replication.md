@@ -1,56 +1,56 @@
 ---
-title: Konfigurace replikace dat k replikaci dat do služby Azure Database for MySQL.
-description: Tento článek popisuje, jak nastavit dat replikace pro službu Azure Database for MySQL.
+title: Konfigurace replikace dat – Azure Database for MySQL
+description: Tento článek popisuje, jak nastavit Replikace vstupních dat pro Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/31/2018
-ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: eaebcf50084223e1c1f4df30294bece96cffda6d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459040"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774292"
 ---
-# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace pro replikaci dat MySQL v Azure Database
+# <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
-V tomto článku se dozvíte, jak nastavit replikaci dat v Azure Database for MySQL služby díky konfiguraci serverů master a repliky. Replikace dat umožňuje synchronizovat data z hlavního serveru MySQL spuštěné místně, v databázi služby hostované jiných poskytovatelů cloudových služeb do repliky v Azure Database for MySQL – služba nebo virtuálních počítačích. 
+V tomto článku se dozvíte, jak nastavit Replikace vstupních dat v Azure Database for MySQL službě konfigurací serverů hlavní servery a repliky. Replikace vstupních dat umožňuje synchronizovat data z hlavního serveru MySQL běžícího místně, na virtuálních počítačích nebo databázových služeb hostovaných jinými poskytovateli cloudu, do repliky ve službě Azure Database for MySQL. 
 
-Tento článek předpokládá, že máte alespoň nějaké zkušenosti s MySQL servery a databáze.
+V tomto článku se předpokládá, že máte minimálně některé předchozí zkušenosti se servery a databázemi MySQL.
 
-## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Vytvoření serveru MySQL se použije jako repliky
+## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Vytvoření serveru MySQL, který se bude používat jako replika
 
-1. Vytvořte nový server Azure Database for MySQL
+1. Vytvořit nový Azure Database for MySQL server
 
-   Vytvoření nového serveru MySQL (např.) "replica.mysql.database.azure.com"). Odkazovat na [vytvoření serveru Azure Database for MySQL pomocí webu Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md) pro vytvoření serveru. Tímto serverem je server "replika" v dat replikace.
+   Vytvořte nový server MySQL (např. "replica.mysql.database.azure.com"). Informace o [vytvoření serveru Azure Database for MySQL pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) pro vytvoření serveru. Tento server je server repliky v Replikace vstupních dat.
 
    > [!IMPORTANT]
-   > Azure Database for MySQL server musí být vytvořeny v obecné účely nebo k paměťově optimalizovaným cenové úrovně.
+   > Azure Database for MySQL server musí být vytvořený v cenové úrovni optimalizované pro Pro obecné účely nebo paměť.
    > 
 
-2. Vytváření stejných uživatelských účtů a odpovídající oprávnění
+2. Vytváření stejných uživatelských účtů a odpovídajících oprávnění
 
-   Uživatelské účty se nereplikují z hlavního serveru serverem repliky. Pokud plánujete, že uživatel s přístupem k serveru repliky, musíte ručně vytvořit všechny účty a odpovídající oprávnění na tuto nově vytvořenou databázi Azure pro MySQL server.
+   Uživatelské účty se nereplikují z hlavního serveru na server repliky. Pokud plánujete poskytnout uživatelům přístup k serveru repliky, budete muset ručně vytvořit všechny účty a odpovídající oprávnění na tomto nově vytvořeném serveru Azure Database for MySQL.
 
 ## <a name="configure-the-master-server"></a>Konfigurace hlavního serveru
-Následující kroky připravte a nakonfigurujte MySQL server hostované místně, v virtuálního počítače nebo databáze služba hostovaná společností jiných poskytovatelů cloudových služeb pro Data replikace. Tento server je "hlavní" v dat replikace. 
+Následující kroky připravují a konfigurují hostovaný Server MySQL v místním prostředí, ve virtuálním počítači nebo databázové službě hostované jinými poskytovateli cloudu pro Replikace vstupních dat. Tento server je "hlavní" v rámci replikace dat. 
 
-1. Zapnout v binární protokolování
+1. Zapnout binární protokolování
 
-   Zaškrtněte, pokud chcete zobrazit, pokud je binární protokolování povoleno na hlavním serveru spuštěním následujícího příkazu: 
+   Spuštěním následujícího příkazu zkontrolujte, jestli je v hlavní části povolené binární protokolování. 
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Pokud proměnná [ `log_bin` ](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) je vrácen s hodnotou "ON", je na serveru zapnuté binární protokolování. 
+   Pokud se proměnná [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) vrátí s hodnotou "on", binární protokolování je na vašem serveru povolené. 
 
-   Pokud `log_bin` se vrátila hodnotu "OFF", zapnout protokolování tak, že upravíte soubor my.cnf tak binární soubor, který `log_bin=ON` a restartujte server se změna projevila.
+   Pokud se `log_bin` vrátí s hodnotou "OFF", zapněte binární protokolování úpravou souboru my. CNF tak, aby `log_bin=ON` a restartovala server, aby se změna projevila.
 
 2. Nastavení hlavního serveru
 
-   Replikace dat vyžaduje parametr `lower_case_table_names` bude konzistentní napříč servery master a repliky. Tento parametr je 1 ve výchozím nastavení ve službě Azure Database for MySQL. 
+   Replikace vstupních dat vyžaduje, aby `lower_case_table_names` parametrů byly konzistentní mezi hlavním serverem a serverem repliky. Tento parametr ve výchozím nastavení ve Azure Database for MySQL je 1. 
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -58,24 +58,24 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
 
 3. Vytvoření nové role replikace a nastavení oprávnění
 
-   Vytvoření uživatelského účtu na hlavním serveru, který je nakonfigurovaný s oprávněními pro replikaci. To můžete udělat pomocí příkazů SQL nebo nástroje, jako je aplikace MySQL Workbench. Zvažte, zda máte v úmyslu na replikaci s protokolem SSL, jak to bude potřeba zadat při vytváření uživatele. MySQL dokumentaci o tom, jak [přidejte uživatelské účty](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) na hlavní server. 
+   Vytvořte uživatelský účet na hlavním serveru, který je nakonfigurovaný s oprávněními replikace. To se dá udělat prostřednictvím příkazů SQL nebo nástroje jako MySQL Workbench. Zvažte, jestli plánujete replikaci s protokolem SSL, protože při vytváření uživatele je potřeba zadat. V dokumentaci MySQL najdete informace o tom, jak [Přidat uživatelské účty](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) na hlavní server. 
 
-   V níže uvedených příkazů nové role replikace vytvořili má přístup k hlavnímu serveru z libovolného počítače, ne jenom počítač, který hostuje hlavní server sám. To se provádí tak, že zadáte "syncuser@'%" "v příkazu pro vytvoření uživatele. Naleznete v dokumentaci k MySQL zobrazit další informace o [určující názvy účtů](https://dev.mysql.com/doc/refman/5.7/en/account-names.html).
+   V následujících příkazech je nově vytvořená role replikace schopná získat přístup k hlavnímu serveru z libovolného počítače, nikoli jenom z počítače, který hostuje hlavní server. To se provádí zadáním "syncuser@ '% ' v příkazu CREATE USER. Další informace o [zadávání názvů účtů](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)najdete v dokumentaci k MySQL.
 
    **Příkaz SQL**
 
    *Replikace s protokolem SSL*
 
-   Pokud chcete vyžadovat protokol SSL pro všechna připojení uživatele, použijte následující příkaz pro vytvoření uživatele: 
+   Chcete-li pro všechna připojení uživatelů vyžadovat protokol SSL, použijte následující příkaz k vytvoření uživatele: 
 
    ```sql
    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
    GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%' REQUIRE SSL;
    ```
 
-   *Replikace bez protokolu SSL*
+   *Replikace bez SSL*
 
-   Pokud není protokol SSL vyžaduje pro všechna připojení, použijte následující příkaz pro vytvoření uživatele:
+   Pokud pro všechna připojení není vyžadován protokol SSL, vytvořte uživatele pomocí následujícího příkazu:
 
    ```sql
    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -84,48 +84,48 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
 
    **MySQL Workbench**
 
-   Chcete-li vytvořit role replikace v aplikaci MySQL Workbench, otevřete **uživatelů a oprávnění** panelu z **správu** panelu. Potom klikněte na **přidat účet**. 
+   Chcete-li vytvořit roli replikace v aplikaci MySQL Workbench, otevřete panel **Uživatelé a oprávnění** na panelu **Správa** . Pak klikněte na **Přidat účet**. 
  
-   ![Uživatele a oprávnění](./media/howto-data-in-replication/users_privileges.png)
+   ![Uživatelé a oprávnění](./media/howto-data-in-replication/users_privileges.png)
 
-   Zadejte uživatelské jméno do **přihlašovací jméno** pole. 
+   Do pole **přihlašovací jméno** zadejte uživatelské jméno. 
 
    ![Synchronizovat uživatele](./media/howto-data-in-replication/syncuser.png)
  
-   Klikněte na **správních rolí** panelu a pak vyberte **podřízený server replikace** ze seznamu **globální oprávnění**. Potom klikněte na **použít** vytvoření role replikace.
+   Klikněte na panel **role pro správu** a potom v seznamu **globálních oprávnění**vyberte **replikace podřízená** . Pak kliknutím na **použít** vytvořte roli replikace.
 
-   ![Podřízený server replikace](./media/howto-data-in-replication/replicationslave.png)
+   ![Replikace podřízených](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Nastavte hlavní server do režimu jen pro čtení
+4. Nastavení hlavního serveru na režim jen pro čtení
 
-   Před zahájením pro výpis na databázi, server musí být umístěny v režimu jen pro čtení. V režimu jen pro čtení, bude hlavní server nemůže zpracovat žádné transakce zápisu. Vyhodnotit její dopad na vaši firmu a naplánování okna jen pro čtení v dobu mimo špičku v případě potřeby.
+   Než začnete s vypsáním paměti v databázi, musí být server umístěn v režimu jen pro čtení. V režimu jen pro čtení nebude hlavním serverem možné zpracovat žádné transakce zápisu. V případě potřeby vyhodnoťte dopad na vaši firmu a v případě potřeby Naplánujte okno jen pro čtení v době mimo špičku.
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
    SET GLOBAL read_only = ON;
    ```
 
-5. Získání názvu souboru binárního protokolu a posun
+5. Získat název a posun binárního souboru protokolu
 
-   Spustit [ `show master status` ](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) příkazu zjistěte aktuální název souboru binárního protokolu a posun.
+   Spusťte příkaz [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) a určete aktuální binární název a posun souboru protokolu.
     
    ```sql
    show master status;
    ```
-   Výsledky by měly být jako následující. Ujistěte se, jak se použije v dalších krocích, poznamenejte si název binárního souboru.
+   Výsledky by měly vypadat podobně jako následující. Nezapomeňte si poznamenat název binárního souboru, jak bude použit v pozdějších krocích.
 
-   ![Hlavní stav výsledky](./media/howto-data-in-replication/masterstatus.png)
+   ![Výsledky hlavního stavu](./media/howto-data-in-replication/masterstatus.png)
  
-## <a name="dump-and-restore-master-server"></a>Výpisu a obnovení hlavního serveru
+## <a name="dump-and-restore-master-server"></a>Výpis a obnovení hlavního serveru
 
 1. Vypsat všechny databáze z hlavního serveru
 
-   Mysqldump můžete použít k databázím s výpisem paměti z vašeho hlavního serveru. Podrobnosti najdete v [výpisu a obnovení](concepts-migrate-dump-restore.md). Není nutné vypsat knihovny MySQL a testovací knihovnou.
+   Pomocí mysqldump můžete vypsat databáze z hlavní větve. Podrobnosti najdete v tématu věnovaném [výpisu & obnovení](concepts-migrate-dump-restore.md). Není nutné vypsat knihovnu MySQL a knihovnu testů.
 
-2. Nastavte hlavní server do režimu pro čtení a zápis
+2. Nastavení hlavního serveru na režim pro čtení a zápis
 
-   Jakmile byl zálohované databáze, změnit hlavní MySQL server zpátky do režimu pro čtení a zápisu.
+   Jakmile je databáze v režimu dumpingu, změňte hlavní server MySQL zpátky na režim pro čtení/zápis.
 
    ```sql
    SET GLOBAL read_only = OFF;
@@ -134,36 +134,36 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
 
 3. Obnovit soubor s výpisem paměti na nový server
 
-   Obnovte soubor s výpisem paměti server vytvořený v služba Azure Database for MySQL. Odkazovat na [výpisu a obnovení](concepts-migrate-dump-restore.md) jak obnovit soubor s výpisem paměti na MySQL server. Pokud je soubor s výpisem paměti velký, nahrajte ho do virtuálního počítače v Azure v rámci stejné oblasti jako server repliky. Obnovte server Azure Database for MySQL z virtuálního počítače.
+   Obnovte soubor s výpisem paměti na server vytvořený ve službě Azure Database for MySQL. Informace o tom, jak obnovit soubor s výpisem paměti na server MySQL, najdete v tématu [výpis & obnovení](concepts-migrate-dump-restore.md) . Pokud je soubor s výpisem paměti velký, nahrajte ho do virtuálního počítače v Azure ve stejné oblasti jako server repliky. Obnovte ji na Azure Database for MySQL server z virtuálního počítače.
 
-## <a name="link-master-and-replica-servers-to-start-data-in-replication"></a>Hlavní a repliky servery odkaz ke spuštění replikace dat
+## <a name="link-master-and-replica-servers-to-start-data-in-replication"></a>Spustit Replikace vstupních dat hlavní servery a repliky
 
-1. Nastaví hlavní server
+1. Nastavit hlavní server
 
-   Všechny funkce replikace dat provádí uložené procedury. Můžete najít všechny postupy v [Data v uložené procedury replikace](reference-data-in-stored-procedures.md). Uložené procedury lze spustit v prostředí MySQL nebo MySQL Workbench. 
+   Všechny funkce Replikace vstupních dat jsou prováděny uloženými procedurami. Všechny postupy najdete v [replikace vstupních dat uložených procedurách](reference-data-in-stored-procedures.md). Uložené procedury lze spustit v prostředí MySQL nebo MySQL Workbench. 
 
-   K propojení dvou serverů a spuštění replikace, přihlášení k cílovému serveru repliky v Azure DB pro službu MySQL a nastavit externí instanci jako hlavní server. To se provádí pomocí `mysql.az_replication_change_master` uloženou proceduru v Azure DB for MySQL server.
+   Pokud chcete propojit dva servery a spustit replikaci, přihlaste se k cílovému serveru repliky ve službě Azure DB for MySQL a nastavte externí instanci jako hlavní server. K tomu je potřeba použít uloženou proceduru `mysql.az_replication_change_master` na serveru Azure DB for MySQL.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
 
    - master_host: název hostitele hlavního serveru
-   - master_user: uživatelské jméno nadřazeného serveru
-   - master_password: heslo nadřazeného serveru
-   - master_log_file: název souboru binárního protokolu spuštění `show master status`
-   - master_log_pos: pozice binární protokol spuštění `show master status`
-   - master_ssl_ca: Certifikát certifikační Autority kontextu. Pokud nepoužíváte protokol SSL, se předá prázdný řetězec.
-       - Je doporučeno předat tento parametr jako proměnnou. Podívejte se na následující příklady pro další informace.
+   - master_user: uživatelské jméno pro hlavní server
+   - master_password: heslo pro hlavní server
+   - master_log_file: název souboru binárního protokolu se spouští `show master status`
+   - master_log_pos: umístění binárního protokolu ze spouštění `show master status`
+   - master_ssl_ca: kontext certifikátu certifikační autority. Pokud nepoužíváte protokol SSL, předejte prázdný řetězec.
+       - Doporučuje se tento parametr předat jako proměnnou. Další informace najdete v následujících příkladech.
 
 > [!NOTE]
-> Pokud hlavní server je hostovaný na Virtuálním počítači Azure, nastavení "Povolit přístup ke službám Azure" na "ON" Povolit servery master a repliky pro komunikaci mezi sebou. Toto nastavení můžete změnit z **zabezpečení připojení** možnosti. Odkazovat na [Správa pravidel brány firewall pomocí portálu](howto-manage-firewall-using-portal.md) Další informace.
+> Pokud je hlavní server hostovaný na virtuálním počítači Azure, nastavte "povolení přístupu ke službám Azure" na "ZAPNUTo", aby mohly servery hlavní a repliky komunikovat mezi sebou. Toto nastavení se dá změnit z možností **zabezpečení připojení** . Další informace najdete [v tématu Správa pravidel brány firewall pomocí portálu](howto-manage-firewall-using-portal.md) .
 
    **Příklady**
 
    *Replikace s protokolem SSL*
 
-   Proměnná `@cert` je vytvořené spuštěním následujících příkazů MySQL: 
+   Proměnná `@cert` je vytvořena spuštěním následujících příkazů MySQL: 
 
    ```sql
    SET @cert = '-----BEGIN CERTIFICATE-----
@@ -171,62 +171,62 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
    -----END CERTIFICATE-----'
    ```
 
-   Replikace s protokolem SSL je nastavená mezi hlavní server, který je hostován v doméně "SpolecnostA.cz" a serverem repliky hostované ve službě Azure Database for MySQL. Tuto uloženou proceduru se spouští v replice. 
+   Replikace s protokolem SSL je nastavená mezi hlavním serverem hostovaným v doméně "companya.com" a serverem repliky hostovaným v Azure Database for MySQL. Tato uložená procedura se spouští na replice. 
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
    ```
-   *Replikace bez protokolu SSL*
+   *Replikace bez SSL*
 
-   Replikace bez SSL je nastavená mezi hlavní server, který je hostován v doméně "SpolecnostA.cz" a serverem repliky hostované ve službě Azure Database for MySQL. Tuto uloženou proceduru se spouští v replice.
+   Replikace bez protokolu SSL je nastavená mezi hlavním serverem hostovaným v doméně "companya.com" a serverem repliky hostovaným v Azure Database for MySQL. Tato uložená procedura se spouští na replice.
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
    ```
 
-1. Počáteční replikace
+1. Spustit replikaci
 
-   Volání `mysql.az_replication_start` uložené procedury k zahájení replikace.
+   Chcete-li zahájit replikaci, zavolejte `mysql.az_replication_start` uloženou proceduru.
 
    ```sql
    CALL mysql.az_replication_start;
    ```
 
-1. Zkontrolovat stav replikace
+1. Zkontroluje stav replikace.
 
-   Volání [ `show slave status` ](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) příkaz na serveru repliky, chcete-li zobrazit stav replikace.
+   Chcete-li zobrazit stav replikace, zavolejte na serveru repliky příkaz [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) .
     
    ```sql
    show slave status;
    ```
 
-   Pokud státu `Slave_IO_Running` a `Slave_SQL_Running` jsou "Ano" a hodnota `Seconds_Behind_Master` je "0", dobře funguje replikace. `Seconds_Behind_Master` Určuje, jak pozdní repliky. Pokud hodnota je "0", znamená to, že je replika zpracování aktualizací. 
+   Pokud je stav `Slave_IO_Running` a `Slave_SQL_Running` "Ano" a hodnota `Seconds_Behind_Master` je "0", replikace funguje dobře. `Seconds_Behind_Master` určuje, jak pozdě je replika. Pokud hodnota není "0", znamená to, že replika zpracovává aktualizace. 
 
-## <a name="other-stored-procedures"></a>Dalších uložených procedur
+## <a name="other-stored-procedures"></a>Jiné uložené procedury
 
 ### <a name="stop-replication"></a>Zastavení replikace
 
-Pokud chcete zastavit replikaci mezi serverem pro hlavní a repliku, použijte následující uložené procedury:
+Pokud chcete zastavit replikaci mezi hlavním serverem a serverem repliky, použijte následující uloženou proceduru:
 
 ```sql
 CALL mysql.az_replication_stop;
 ```
 
-### <a name="remove-replication-relationship"></a>Odeberte vztah replikace
+### <a name="remove-replication-relationship"></a>Odebrat vztah replikace
 
-Pokud chcete odebrat vztah mezi serverem pro hlavní a repliky, použijte následující uložené procedury:
+Chcete-li odebrat vztah mezi hlavním serverem a serverem repliky, použijte následující uloženou proceduru:
 
 ```sql
 CALL mysql.az_replication_remove_master;
 ```
 
-### <a name="skip-replication-error"></a>Přeskočit replikace – chyba
+### <a name="skip-replication-error"></a>Přeskočit chybu replikace
 
-Chcete-li přeskočit Chyba replikace a povolení replikace, aby bylo možné pokračovat, použijte následující uložené procedury:
+Pokud chcete přeskočit chybu replikace a pokračovat v replikaci, použijte následující uloženou proceduru:
     
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [replikace dat](concepts-data-in-replication.md) pro službu Azure Database for MySQL. 
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si další informace o [replikace vstupních dat](concepts-data-in-replication.md) pro Azure Database for MySQL. 

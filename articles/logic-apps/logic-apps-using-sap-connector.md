@@ -1,21 +1,20 @@
 ---
-title: Připojení k systémům SAP – Azure Logic Apps
+title: Připojení k systémům SAP
 description: Automatizace pracovních postupů pomocí Azure Logic Apps pro přístup k prostředkům SAP a jejich správa
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 90348ad05879aff75dadab85af4e905d92228a2d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a9cf818e8b31ea2efb2f2ef2f0848a759e017dfa
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287113"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790872"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -40,7 +39,7 @@ V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které s
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
@@ -301,7 +300,7 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDOCs z paketu pom
 
 1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu [nastavte aplikaci logiky pomocí triggeru SAP](#receive-from-sap).
 
-   Příklad:
+   Například:
 
    ![Přidání triggeru SAP do aplikace logiky](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 

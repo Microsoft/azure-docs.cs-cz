@@ -1,26 +1,25 @@
 ---
-title: Přesunout aplikace z BizTalk Services do Azure Logic Apps | Microsoft Docs
+title: Přesunout aplikace z BizTalk Services do Azure Logic Apps
 description: Migrace z Azure BizTalk Services (MABS) do Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: jonfancey
 ms.author: jonfan
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: dfc0aa4fa7c70ae91f25f97671b15dacfe991594
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273181"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791877"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Migrace z BizTalk Services na Azure Logic Apps
 
 Vyřazení z Microsoft Azure BizTalk Services (MABS). Pokud chcete přesunout řešení pro integraci MABS do [Azure Logic Apps](../logic-apps/logic-apps-overview.md), postupujte podle pokynů v tomto článku. 
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
 BizTalk Services se skládá ze dvou podslužby:
 
@@ -35,8 +34,8 @@ Tato tabulka mapuje BizTalk Services možností Logic Apps.
 
 | BizTalk Services   | Logic Apps            | Účel                      |
 | ------------------ | --------------------- | ---------------------------- |
-| Spojovací čára          | Spojovací čára             | Odesílání a příjem dat   |
-| Bridge             | Aplikace logiky             | Procesor kanálu           |
+| Konektor          | Konektor             | Odesílání a příjem dat   |
+| Bridge             | Logická aplikace             | Procesor kanálu           |
 | Ověřit fázi     | Akce ověřování XML | Ověření dokumentu XML proti schématu | 
 | Fáze obohacení       | Datové tokeny           | Zvýšení úrovně vlastností na zprávy nebo pro rozhodování o směrování |
 | Fáze transformace    | Akce transformace      | Převod zpráv XML z jednoho formátu na jiný |
@@ -96,17 +95,17 @@ BizTalk Services provede rozhodnutí směrování, ke kterému koncovému bodu n
 
 V BizTalk Services platí, že pokud jsou k dispozici pouze dvě možnosti, použití *podmínky* je nejlepším způsobem, jak převést filtry směrování v BizTalk Services. Pokud existuje více než dva, použijte **přepínač**.
 
-Logic Apps poskytuje sofistikované možnosti logiky a pokročilý tok řízení a směrování s podmíněnými [příkazy](../logic-apps/logic-apps-control-flow-conditional-statement.md) a [příkazy Switch](../logic-apps/logic-apps-control-flow-switch-statement.md).
+Logic Apps poskytuje sofistikované možnosti logiky a pokročilý tok řízení a směrování s [podmíněnými příkazy](../logic-apps/logic-apps-control-flow-conditional-statement.md) a [příkazy Switch](../logic-apps/logic-apps-control-flow-switch-statement.md).
 
 ### <a name="enrich"></a>Rozšiřování
 
-Při zpracování BizTalk Services přidá fáze obohacení vlastnosti do kontextu zprávy přidruženého k přijímaným datům. Například zvýšení úrovně vlastnosti pro použití při směrování z vyhledávání databáze nebo extrakcí hodnoty pomocí výrazu XPath. Logic Apps poskytuje přístup ke všem datovým výstupům kontextových dat z předchozích akcí, takže je snadné replikovat stejné chování. Například pomocí `Get Row` akce připojení SQL vrátíte data z databáze SQL Server a použijete data v rozhodovací akci pro směrování. Stejně tak vlastnosti příchozích Service Bus zpráv ve frontě pomocí triggeru jsou adresovatelné a také XPath pomocí výrazu jazyka definice pracovního postupu XPath.
+Při zpracování BizTalk Services přidá fáze obohacení vlastnosti do kontextu zprávy přidruženého k přijímaným datům. Například zvýšení úrovně vlastnosti pro použití při směrování z vyhledávání databáze nebo extrakcí hodnoty pomocí výrazu XPath. Logic Apps poskytuje přístup ke všem datovým výstupům kontextových dat z předchozích akcí, takže je snadné replikovat stejné chování. Například pomocí akce `Get Row` SQL připojení vrátíte data z databáze SQL Server a použijete data v rozhodovací akci pro směrování. Stejně tak vlastnosti příchozích Service Bus zpráv ve frontě pomocí triggeru jsou adresovatelné a také XPath pomocí výrazu jazyka definice pracovního postupu XPath.
 
 ### <a name="run-custom-code"></a>Spustit vlastní kód
 
 BizTalk Services umožňuje [Spustit vlastní kód](https://msdn.microsoft.com/library/azure/dn232389.aspx) , který se nahraje ve vlastních sestaveních. Tuto funkci implementuje rozhraní [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) . Každá fáze v mostu obsahuje dvě vlastnosti (při kontrole a při ukončení), které poskytují typ rozhraní .NET, který jste vytvořili, který implementuje toto rozhraní. Vlastní kód umožňuje provádět složitější zpracování dat a umožňuje znovu použít existující kód v sestaveních, která provádějí běžné obchodní logiky. 
 
-Logic Apps poskytuje dva základní způsoby, jak spustit vlastní kód: Azure Functions a API Apps. Azure Functions lze vytvořit a volat z Logic Apps. Přečtěte si téma [Přidání a spuštění vlastního kódu pro Logic Apps prostřednictvím Azure Functions](../logic-apps/logic-apps-azure-functions.md). K vytvoření vlastních triggerů a akcí použijte API Apps, součást Azure App Service. Přečtěte si další informace o [Vytvoření vlastního rozhraní API pro použití s Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
+Logic Apps poskytuje dva hlavní způsoby spouštění vlastního kódu: Azure Functions a API Apps. Azure Functions lze vytvořit a volat z Logic Apps. Přečtěte si téma [Přidání a spuštění vlastního kódu pro Logic Apps prostřednictvím Azure Functions](../logic-apps/logic-apps-azure-functions.md). K vytvoření vlastních triggerů a akcí použijte API Apps, součást Azure App Service. Přečtěte si další informace o [Vytvoření vlastního rozhraní API pro použití s Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
 
 Pokud máte vlastní kód v sestaveních, které voláte z BizTalk Services, můžete buď přesunout tento kód do Azure Functions, nebo vytvořit vlastní rozhraní API s API Apps, v závislosti na tom, co implementujete. Například pokud máte kód, který zabalí jinou službu, pro kterou Logic Apps nemá konektor, vytvořte aplikaci API a použijte akce, které vaše aplikace API poskytuje v rámci vaší aplikace logiky. Pokud máte pomocné funkce nebo knihovny, pak Azure Functions pravděpodobně nejlépe.
 
@@ -134,7 +133,7 @@ Pro zajištění vysoké dostupnosti v BizTalk Services můžete sdílet zatíž
 
 V BizTalk Services zotavení po havárii mimo oblast pro zpracování B2B vyžaduje proces zálohování a obnovení. Pro zajištění kontinuity podnikových služeb Logic Apps nabízí aktivní a pasivní [funkce zotavení po havárii](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md)mezi oblastmi, které umožňují synchronizaci dat B2B napříč účty pro integraci v různých oblastech.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Co je Logic Apps?](../logic-apps/logic-apps-overview.md)
 * [Vytvořte první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) nebo můžete rychle začít pomocí [předem připravené šablony](../logic-apps/logic-apps-create-logic-apps-from-templates.md).  

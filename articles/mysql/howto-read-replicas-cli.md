@@ -1,17 +1,17 @@
 ---
-title: Vytvoření & Správa replik čtení – Azure Database for MySQL
+title: Správa replik čtení – Azure CLI, REST API-Azure Database for MySQL
 description: Naučte se, jak nastavit a spravovat repliky pro čtení v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure CLI nebo REST API.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/14/2019
-ms.openlocfilehash: 741b50bdb2ec9c8d29a9f759e46209856de3a49c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 56ba530c4f684bf89db9c5b87306592fbfeee7fa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970310"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774090"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure a REST API
 
@@ -44,7 +44,7 @@ Příkaz `az mysql server replica create` vyžaduje následující parametry:
 | jméno | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
 | source-server | mydemoserver | Název nebo ID existujícího hlavního serveru, ze kterého se má replikovat. |
 
-Pokud chcete vytvořit repliku čtení ve více oblastech, použijte parametr `--location`. Níže uvedený příklad rozhraní příkazového řádku vytvoří repliku v Západní USA.
+Chcete-li vytvořit repliku čtení ve více oblastech, použijte parametr `--location`. Níže uvedený příklad rozhraní příkazového řádku vytvoří repliku v Západní USA.
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus

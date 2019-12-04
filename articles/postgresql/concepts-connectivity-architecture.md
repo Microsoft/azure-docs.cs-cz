@@ -1,17 +1,17 @@
 ---
-title: Architektura připojení v Azure Database for PostgreSQL
-description: Popisuje architekturu připojení pro server Azure Database for PostgreSQL.
+title: Architektura připojení – Azure Database for PostgreSQL – jeden server
+description: Popisuje architekturu připojení k vašemu serveru Azure Database for PostgreSQL.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 5288c3025e523e767082f4ab7cfbb08805a74eaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cbb3c3b3b91bf5111efcf6f2a53cfb40b48f3fe7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500089"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768873"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura připojení v Azure Database for PostgreSQL
 Tento článek popisuje architekturu připojení Azure Database for PostgreSQL a také způsob, jakým se přesměruje přenos do vaší Azure Database for PostgreSQL instance databáze od klientů v rámci i mimo Azure.

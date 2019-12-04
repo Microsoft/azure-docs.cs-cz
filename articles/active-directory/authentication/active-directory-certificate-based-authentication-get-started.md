@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 90dc42ed6ca16947902622cba0e5a81a2bc900e3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382028"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785990"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním pomocí certifikátů v Azure Active Directory
 
@@ -36,13 +36,16 @@ Toto téma:
 
 Chcete-li nakonfigurovat ověřování na základě certifikátu, musí být splněny následující příkazy:
 
-- Ověřování založené na certifikátech (certifikátů) je podporované jenom pro federované prostředí pro aplikace v prohlížeči nebo pro nativní klienty používající moderní ověřování (ADAL). Jedinou výjimkou je Exchange Active Sync (EAS) pro Exchange Online (EXO), která se dá použít pro federované a spravované účty.
+- Ověřování založené na certifikátech (certifikátů) je podporované jenom pro federované prostředí pro aplikace v prohlížeči, nativní klienty používající moderní ověřování (ADAL) nebo knihovny MSAL. Jedinou výjimkou je Exchange Active Sync (EAS) pro Exchange Online (EXO), která se dá použít pro federované a spravované účty.
 - Kořenová certifikační autorita a jakékoli zprostředkující certifikační autority musí být nakonfigurované v Azure Active Directory.
 - Každá certifikační autorita musí mít seznam odvolaných certifikátů (CRL), na který se dá odkazovat přes internetovou adresu URL.
 - V Azure Active Directory musíte mít nakonfigurovanou aspoň jednu certifikační autoritu. Související kroky najdete v části [Konfigurace certifikačních autorit](#step-2-configure-the-certificate-authorities) .
 - U klientů Exchange ActiveSync musí mít klientský certifikát směrovatelné e-mailové adresy uživatele v Exchangi Online buď v hlavním názvu, nebo v hodnotě názvu RFC822 pole Alternativní název subjektu. Azure Active Directory mapuje hodnotu RFC822 na atribut adresy proxy v adresáři.
 - Klientské zařízení musí mít přístup k alespoň jedné certifikační autoritě, která vydává klientské certifikáty.
 - Klientský certifikát pro ověření klienta musí být vystavený klientovi.
+
+>[!IMPORTANT]
+>Maximální velikost seznamu CRL pro Azure Active Directory pro úspěšné stažení a ukládání do mezipaměti je 20MB a doba potřebná ke stažení seznamu odvolaných certifikátů nesmí přesáhnout 10 sekund.  Pokud Azure Active Directory nemůže stáhnout seznam CRL, ověřování na základě certifikátů pomocí certifikátů vydaných příslušnou certifikační autoritou se nezdaří. Osvědčené postupy pro zajištění, že se soubory CRL nacházejí v rámci omezení velikosti, je zachování životnosti certifikátů v rámci přiměřených limitů a vyčištění certifikátů s vypršenou platností. 
 
 ## <a name="step-1-select-your-device-platform"></a>Krok 1: vyberte platformu zařízení
 
@@ -108,7 +111,7 @@ K načtení důvěryhodných certifikačních autorit, které jsou definovány v
 
     Get-AzureADTrustedCertificateAuthority
 
-### <a name="add"></a>Přidejte
+### <a name="add"></a>Přidat
 
 Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
 
@@ -119,7 +122,7 @@ Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [Ne
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-### <a name="remove"></a>odebrat
+### <a name="remove"></a>Odebrat
 
 K odebrání důvěryhodné certifikační autority použijte rutinu [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) :
 

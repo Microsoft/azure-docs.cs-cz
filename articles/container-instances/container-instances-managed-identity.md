@@ -3,12 +3,12 @@ title: Povolit spravovanou identitu ve skupině kontejnerů
 description: Naučte se, jak v Azure Container Instances povolit spravovanou identitu, která se dá ověřit u jiných služeb Azure.
 ms.topic: article
 ms.date: 10/22/2018
-ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ccf754fac0d884c8a2af9db01578f97b73d54ac4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533685"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776506"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravovaných identit s Azure Container Instances
 
@@ -31,7 +31,7 @@ Přizpůsobte si příklady a povolte a používejte identity v Azure Container 
 Pomocí spravované identity ve spuštěném kontejneru proveďte ověření u libovolné [služby, která podporuje ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) bez nutnosti spravovat přihlašovací údaje v kódu kontejneru. Pro služby, které nepodporují ověřování AD, můžete tajné klíče ukládat do Azure Key Vault a použít spravovanou identitu pro přístup k Key Vault k získání přihlašovacích údajů. Další informace o použití spravované identity najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit. V současné době se spravované identity podporují jenom pro instance kontejnerů Linux.
+> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit. V současné době se spravované identity v Azure Container Instances podporují jenom s kontejnery Linux a ještě nejsou s kontejnery Windows.
 >  
 
 ### <a name="enable-a-managed-identity"></a>Povolení spravované identity

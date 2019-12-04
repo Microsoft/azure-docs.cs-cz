@@ -1,22 +1,18 @@
 ---
-title: Připojte se k SendGrid z Azure Logic Apps | Microsoft Docs
+title: Připojení k SendGrid z Azure Logic Apps
 description: Automatizace úloh a pracovních postupů, které odesílají e-maily a spravují poštovní seznamy v SendGrid pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 4f5efd73ef2a08069e3b9f2c7d60be99c209ddca
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 998020c5e39c8d50e8a14c74c43b7b435752f43d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050811"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789303"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Posílání e-mailů a Správa poštovních seznamů v SendGrid pomocí Azure Logic Apps
 
@@ -31,7 +27,7 @@ K provedení těchto úloh můžete použít akce SendGrid ve svých aplikacích
 Tento konektor nabízí jenom akce, takže můžete spustit aplikaci logiky pomocí samostatné triggeru, jako je například Trigger **opakování** . Pokud například do seznamů často přidáte příjemce, můžete odeslat e-maily o příjemci a seznamech pomocí konektoru Office 365 Outlook Connector nebo konektoru Outlook.com.
 Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -56,7 +52,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](.
      -nebo-
 
    * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+   Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte "SendGrid" jako filtr. V seznamu akce vyberte akci, kterou chcete.
 
@@ -75,6 +71,6 @@ Technické podrobnosti o aktivačních událostech, akcích a omezeních, které
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

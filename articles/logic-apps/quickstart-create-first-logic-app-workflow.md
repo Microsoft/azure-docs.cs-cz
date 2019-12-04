@@ -1,22 +1,18 @@
 ---
-title: Vytvoření prvního automatizovaného pracovního postupu – Azure Logic Apps
+title: Vytvoření prvního automatizovaného pracovního postupu
 description: Rychlý Start – sestavení prvního automatizovaného pracovního postupu pomocí Azure Logic Apps pro řešení Integration System a Enterprise Application Integration (EAI)
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: b6222747e352f446dab33314729f7f697e328909
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 45b9cdc74fc57e53ca2cd76f8b1f98671f5bbc7e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824905"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791858"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps-Azure Portal
 
@@ -84,7 +80,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Adresa URL informačního kanálu RSS** | `http://feeds.reuters.com/reuters/topNews` | Odkaz na informační kanál RSS, který chcete monitorovat |
-   | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Interval** | 1\. místo | Počet intervalů, po které se má čekat mezi kontrolami |
    | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami  |
    ||||
 

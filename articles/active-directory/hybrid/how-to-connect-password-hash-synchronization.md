@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: dfb4b7d2cb34855208eb54c6d30b29e4bbff636b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539007"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766612"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -123,13 +123,9 @@ Je typický vynutit, aby uživatel při prvním přihlášení změnil heslo, ze
   
 Funkce dočasného hesla pomáhá zajistit, že přenos vlastnictví přihlašovacích údajů se při prvním použití dokončí, aby se minimalizovala doba, během které má více než jedna osoba znalosti o těchto přihlašovacích údajích.
 
-Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uživatele, můžete povolit funkci *ForcePasswordResetOnLogonFeature* spuštěním následujícího příkazu na serveru Azure AD Connect a nahrazením <AAD Connector Name> názvem konektoru, který je specifický pro vaše prostředí:
+Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uživatele, můžete povolit funkci *ForcePasswordResetOnLogonFeature* spuštěním následujícího příkazu na vašem serveru Azure AD Connect:
 
-`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
-
-K určení názvu konektoru můžete použít následující příkaz:
-
-`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
 Upozornění: vynucení změny hesla uživateli při příštím přihlášení vyžaduje změnu hesla ve stejnou dobu.  Služba AD Connect nevybere sám sebe příznak změny hesla, takže se doplní zjištěná Změna hesla, ke které dojde během synchronizace hodnot hash hesel.
 

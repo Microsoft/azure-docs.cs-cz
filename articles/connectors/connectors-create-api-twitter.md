@@ -1,22 +1,18 @@
 ---
-title: Připojení k Twitteru z Azure Logic Apps | Microsoft Docs
+title: Připojení k Twitteru z Azure Logic Apps
 description: Automatizujte úlohy a pracovní postupy, které sledují a spravují tweety, a navíc získáte data o sledujících, sledovaných uživatelích, dalších uživatelích, časových osách a dalších z účtu Twitteru pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 22b75b2d2b47dbd496eda06c09b418ae66f6403a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050698"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789082"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Monitorování a Správa Twitteru pomocí Azure Logic Apps
 
@@ -27,7 +23,7 @@ Pomocí Azure Logic Apps a konektoru Twitteru můžete vytvářet automatizovan�
 
 Můžete použít triggery, které získávají odpovědi z vašeho účtu na Twitteru, a zpřístupnit výstup ostatním akcím. Můžete použít akce, které provádějí úlohy s vaším účtem Twitter. Můžete také použít další akce výstup z akcí Twitteru. Například když se objeví nový disk s určitým hashtagem, můžete odesílat zprávy pomocí konektoru časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -59,7 +55,7 @@ Můžete použít triggery, které získávají odpovědi z vašeho účtu na Tw
        -nebo-
 
      * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-     Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+     Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
      
        Do vyhledávacího pole zadejte jako filtr "Twitter". 
        V seznamu akce vyberte akci, kterou chcete.
@@ -70,15 +66,15 @@ Můžete použít triggery, které získávají odpovědi z vašeho účtu na Tw
 
 ## <a name="examples"></a>Příklady
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Aktivační událost Twitteru: Když se publikuje nový disk
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Spouštěč Twitteru: když se publikuje nový disk
 
 Tato aktivační událost spustí pracovní postup aplikace logiky, když Trigger detekuje nový přímnožinu, například s hashtagem, #Seattle. Pokud se například najde tyto tweety, můžete do úložiště přidat soubor s obsahem tweety, jako je například účet Dropboxu pomocí konektoru Dropboxu. 
 
 Volitelně můžete zahrnout podmínku, kterou musí tweety nárokovat od uživatelů s alespoň stanoveným počtem sledujících.
 
-**Příklad organizace**: Pomocí této aktivační události můžete monitorovat tweety o vaší společnosti a nahrát obsah tweety do databáze SQL.
+**Příklad v podniku**: pomocí této aktivační události můžete monitorovat tweety o vaší společnosti a nahrát obsah tweety do databáze SQL.
 
-### <a name="twitter-action-post-a-tweet"></a>Akce Twitteru: Publikovat tweet
+### <a name="twitter-action-post-a-tweet"></a>Akce Twitteru: odeslání proložit
 
 Tato akce odešle soubor s přístavou, ale můžete nastavit akci tak, aby provedla obsah z tweety nalezeného dříve popsaným triggerem. 
 

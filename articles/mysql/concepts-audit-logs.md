@@ -1,17 +1,17 @@
 ---
-title: Protokoly auditu pro Azure Database for MySQL
+title: Protokoly auditu – Azure Database for MySQL
 description: V této části najdete popis protokolů auditu dostupných v Azure Database for MySQL a dostupných parametrů pro povolení úrovní protokolování.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.openlocfilehash: 42881fcb12f29ec14bbdc0ec4942b2eef17c7312
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 12/02/2019
+ms.openlocfilehash: ea536742b6481cb06fbd3130279ca5d08ba1bc08
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434398"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773564"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Protokoly auditu v Azure Database for MySQL
 
@@ -29,11 +29,11 @@ Mezi další parametry, které můžete upravit, patří:
 - `audit_log_events`: řídí události, které mají být protokolovány. Konkrétní události auditu najdete v níže uvedené tabulce.
 - `audit_log_include_users`: je potřeba zahrnout uživatele MySQL pro protokolování. Výchozí hodnota pro tento parametr je prázdná, což bude zahrnovat všechny uživatele pro protokolování. Má vyšší prioritu než `audit_log_exclude_users`. Maximální délka parametru je 512 znaků.
 > [!Note]
-> `audit_log_include_users` má vyšší prioritu než `audit_log_exclude_users`, například pokud audit_log_include_users = `demouser` a audit_log_exclude_users = `demouser`, bude auditovat protokoly, protože `audit_log_include_users` má vyšší prioritu.
+> `audit_log_include_users` má vyšší prioritu `audit_log_exclude_users` například pokud audit_log_include_users = `demouser` a audit_log_exclude_users = `demouser`, bude auditovat protokoly, protože `audit_log_include_users` má vyšší prioritu.
 - `audit_log_exclude_users`: uživatelé MySQL budou vyloučeni z protokolování. Maximální délka parametru je 512 znaků.
 
 > [!Note]
-> V případě `sql_text` se protokol zkrátí, pokud je delší než 2048 znaků.
+> V případě `sql_text`se protokol zkrátí, pokud překračuje 2048 znaků.
 
 | **Události** | **Popis** |
 |---|---|
@@ -44,7 +44,7 @@ Mezi další parametry, které můžete upravit, patří:
 | `DDL` | Dotazy, jako je "DROP DATABASE" |
 | `DCL` | Dotazy jako "udělení oprávnění" |
 | `ADMIN` | Dotazy jako "Zobrazit stav" |
-| `GENERAL` | Vše v DML_SELECT, DML_NONSELECT, DML, DDL, DCL a ADMIN |
+| `GENERAL` | Vše v DML_SELECT, DML_NONSELECT, DML, DDL, DCL a správce |
 | `TABLE_ACCESS` | – Dostupné jenom pro MySQL 5,7 <br> – Příkazy pro čtení z tabulky, jako je například SELECT nebo INSERT INTO... VYBRALI <br> – Příkazy DELETE v tabulce, jako je například DELETE nebo TRUNCATE TABLE <br> – Příkazy INSERT v tabulce, jako je INSERT nebo Replace <br> – Příkazy aktualizace tabulky, jako je například aktualizace |
 
 ## <a name="access-audit-logs"></a>Přístup k protokolům auditu
@@ -62,10 +62,10 @@ V následujících částech najdete popis toho, co je výstupem protokolů audi
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Always `AzureDiagnostics` |
+| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Always `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -73,7 +73,7 @@ V následujících částech najdete popis toho, co je výstupem protokolů audi
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Název serveru |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT` `CHANGE USER` (k dispozici pouze pro MySQL 5,7) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT``CHANGE USER` (k dispozici pouze pro MySQL 5,7) |
 | `connection_id_d` | Jedinečné ID připojení generované MySQL |
 | `host_s` | Prázdné |
 | `ip_s` | IP adresa klienta připojujícího se k MySQL |
@@ -83,17 +83,17 @@ V následujících částech najdete popis toho, co je výstupem protokolů audi
 
 ### <a name="general"></a>Obecné
 
-Níže uvedené schéma platí pro typy událostí obecné, DML_SELECT, DML_NONSELECT, DML, DDL, DCL a ADMIN.
+Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, DDL, DCL a typy událostí správce.
 
 | **Vlastnost** | **Popis** |
 |---|---|
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Always `AzureDiagnostics` |
+| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Always `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -101,9 +101,9 @@ Níže uvedené schéma platí pro typy událostí obecné, DML_SELECT, DML_NONS
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Název serveru |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`, `ERROR` `RESULT` (k dispozici pouze pro MySQL 5,6) |
+| `event_subclass_s` | `LOG`, `ERROR``RESULT` (k dispozici pouze pro MySQL 5,6) |
 | `event_time` | Čas spuštění dotazu v časovém razítku UTC |
-| `error_code_d` | Kód chyby, pokud se dotaz nezdařil. `0` znamená, že nedojde k žádné chybě |
+| `error_code_d` | Kód chyby, pokud se dotaz nezdařil. `0` neznamenají žádnou chybu. |
 | `thread_id_d` | ID vlákna, které provedlo dotaz |
 | `host_s` | Prázdné |
 | `ip_s` | IP adresa klienta připojujícího se k MySQL |
@@ -118,10 +118,10 @@ Níže uvedené schéma platí pro typy událostí obecné, DML_SELECT, DML_NONS
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Always `AzureDiagnostics` |
+| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Always `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -129,7 +129,7 @@ Níže uvedené schéma platí pro typy událostí obecné, DML_SELECT, DML_NONS
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Název serveru |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` nebo `DELETE` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`nebo `DELETE` |
 | `connection_id_d` | Jedinečné ID připojení generované MySQL |
 | `db_s` | Název databázového přistupu |
 | `table_s` | Název přistupované tabulky |

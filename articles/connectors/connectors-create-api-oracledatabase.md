@@ -1,134 +1,130 @@
 ---
-title: Připojení k databázi Oracle – Azure Logic Apps | Dokumentace Microsoftu
-description: Vložit a ke správě záznamů pomocí rozhraní REST API Oracle Database a Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 03/29/2017
-ms.topic: article
-ms.service: logic-apps
+title: Připojení k Oracle Database
+description: Vkládání a Správa záznamů pomocí Oracle Database rozhraní REST API a Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 03/29/2017
 tags: connectors
-ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 99abd48bde97c2a2e085688cdfbb365e5e4cfd56
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453544"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789422"
 ---
-# <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem databáze Oracle
+# <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem Oracle Database
 
-Pomocí konektoru rozhraní Oracle Database, můžete vytvořit organizační pracovních postupů, které používají data ve stávající databázi. Tento konektor můžou připojit k databázi Oracle místní nebo virtuální počítač Azure se k databázi Oracle nainstalovanou. Pomocí tohoto konektoru můžete:
+Pomocí konektoru Oracle Database vytvoříte organizační pracovní postupy, které používají data ve stávající databázi. Tento konektor se může připojit k místnímu Oracle Database nebo virtuálnímu počítači Azure s nainstalovaným Oracle Database. Pomocí tohoto konektoru můžete:
 
-* Vytvoření pracovního postupu přidáním nového zákazníka na databázi zákazníků nebo aktualizací objednávky v databázi objednávek.
-* Pomocí akce získat řádek dat vložte nový řádek a dokonce i odstranit. Například při vytvoření záznamu v Dynamics CRM Online (aktivační procedura), potom vložte řádek v databázi Oracle (akce). 
+* Sestavte pracovní postup přidáním nového zákazníka do databáze zákazníků nebo aktualizací objednávky v databázi objednávek.
+* Použijte akce pro získání řádku dat, vložení nového řádku a dokonce i odstranění. Například když se v Dynamics CRM Online vytvoří záznam (trigger), vloží se řádek do Oracle Database (akce). 
 
-Tento článek ukazuje, jak použít konektor Oracle Database v aplikaci logiky.
+V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci logiky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Podporované verze Oracle: 
     * Oracle 9 a novější
     * Klientský software Oracle 8.1.7 a novější
 
-* Instalace místní brány dat. [Připojení k místním datům z aplikace logiky](../logic-apps/logic-apps-gateway-connection.md) jsou uvedené kroky. Brána se nejde připojit k databázi Oracle v místním nebo Virtuálním počítači Azure s Oracle DB nainstalovaný. 
+* Nainstalujte místní bránu dat. [Připojení k místním datům z Logic Apps](../logic-apps/logic-apps-gateway-connection.md) uvádí postup. Brána se musí připojit k místnímu Oracle Database nebo virtuálnímu počítači Azure s nainstalovaným Oracle DB. 
 
     > [!NOTE]
-    > Místní brána dat funguje jako most a poskytuje zabezpečený přenos dat mezi místními daty (data, která nejsou v cloudu) a logic apps. S několika službami a více zdrojů dat je možné stejnou bránu. Proto může stačí jednou nainstalovat bránu.
+    > Místní brána dat funguje jako most a poskytuje zabezpečený přenos dat mezi místními daty (data, která nejsou v cloudu) a vašimi Logic Apps. Stejnou bránu je možné použít s několika službami a více zdroji dat. Proto může být nutné bránu nainstalovat jenom jednou.
 
-* Na počítači, kam jste nainstalovali na místní bránu dat instalace klienta Oracle. Nezapomeňte nainstalovat 64bitového poskytovatele dat Oracle pro .NET ze Oracle:  
+* Do počítače, kam jste nainstalovali místní bránu dat, nainstalujte klienta Oracle. Nezapomeňte nainstalovat 64 Oracle Zprostředkovatel dat pro .NET z Oracle:  
 
-  [64bitové součásti ODAC 12c verze 4 (12.1.0.2.4) pro Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
+  [64 ODAC 12c verze 4 (12.1.0.2.4) pro Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > Pokud není klient Oracle nainstalovaný, dojde k chybě při pokusu o vytvoření nebo připojení. V tématu běžné chyby v tomto článku.
+    > Pokud není nainstalován klient Oracle, při pokusu o vytvoření nebo použití připojení dojde k chybě. Podívejte se na nejčastější chyby v tomto článku.
 
 
-## <a name="add-the-connector"></a>Přidat konektor
+## <a name="add-the-connector"></a>Přidání konektoru
 
 > [!IMPORTANT]
-> Tento konektor nemá žádné aktivační události. Má pouze akce přechodu. Takže když vytvoříte aplikaci logiky, přidat další trigger spustit aplikaci logiky, například **plán – opakování**, nebo **žádosti / odpověď – odpověď**. 
+> Tento konektor neobsahuje žádné triggery. Obsahuje jenom akce. Takže když vytvoříte aplikaci logiky, přidejte další Trigger pro spuštění aplikace logiky, jako je například **opakování plánu**nebo **požadavek/odpověď-odpověď**. 
 
-1. V [webu Azure portal](https://portal.azure.com), vytvoření prázdné aplikace logiky.
+1. V [Azure Portal](https://portal.azure.com)vytvořte prázdnou aplikaci logiky.
 
-2. Při spuštění aplikace logiky, vyberte **požadavku / odpovědi – žádost o** aktivační události: 
+2. Na začátku vaší aplikace logiky vyberte Trigger **požadavek/odpověď-žádost** : 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. Vyberte **Uložit**. Při ukládání, adresa URL požadavku není automaticky vygenerován. 
+3. Vyberte **Save** (Uložit). Při uložení se automaticky vygeneruje adresa URL požadavku. 
 
-4. Vyberte **nový krok**a vyberte **přidat akci**. Zadejte `oracle` zobrazíte dostupné akce: 
+4. Vyberte **Nový krok**a vyberte **přidat akci**. Zadáním `oracle` zobrazíte dostupné akce: 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
-    > Také je to nejrychlejší způsob, jak zobrazit triggery a akce, které jsou k dispozici pro konektory. Zadejte v části název konektoru, třeba `oracle`. Návrhář jsou uvedeny žádné aktivační události a všechny akce. 
+    > To je také nejrychlejší způsob, jak zobrazit triggery a akce, které jsou k dispozici pro libovolný konektor. Zadejte část názvu konektoru, například `oracle`. Návrhář zobrazí seznam všech triggerů a akcí. 
 
-5. Vyberte jednu z akcí, jako je například **Oracle Database - Get řádek**. Vyberte **připojit přes místní bránu dat**. Zadejte název serveru Oracle, metodu ověřování, uživatelské jméno, heslo a vyberte bránu:
+5. Vyberte jednu z akcí, například **Oracle Database-získat řádek**. Vyberte **připojit přes místní bránu dat**. Zadejte název serveru Oracle, metodu ověřování, uživatelské jméno, heslo a vyberte bránu:
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
-6. Jakmile budete připojeni, vyberte tabulku ze seznamu a zadejte ID řádku do tabulky. Je potřeba vědět identifikátor do tabulky. Pokud si nejste jisti, obraťte se na správce systému Oracle DB a získat výstup z `select * from yourTableName`. To poskytuje údaje, které potřebujete, aby bylo možné pokračovat.
+6. Po připojení vyberte v seznamu tabulku a zadejte ID řádku do tabulky. Musíte znát identifikátor v tabulce. Pokud to neznáte, obraťte se na správce Oracle DB a získejte výstup z `select * from yourTableName`. Získáte tak identifikovatelné informace, které potřebujete k tomu, abyste mohli pokračovat.
 
-    V následujícím příkladu se vrací data úlohy z databáze lidských zdrojů: 
+    V následujícím příkladu se data úlohy vracejí z databáze lidských zdrojů: 
 
     ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. V tomto kroku můžete použít některý z jiných konektorů k sestavení pracovního postupu. Pokud chcete otestovat získávání dat od Oraclu, pak pošlete sami sobě e-mail s Oracle data pomocí jedné z e-mailové konektory odeslat, odpovídající Office 365 nebo Gmail. Použití dynamické tokenů z tabulky Oracle k sestavení `Subject` a `Body` e-mailu:
+7. V tomto dalším kroku můžete k sestavení pracovního postupu použít kterýkoli z dalších konektorů. Pokud chcete testovat získávání dat od Oracle, pošlete sami sobě e-mail s daty Oracle pomocí jedné z konektorů pro odesílání e-mailů, například Office 365 nebo Gmail. Pomocí dynamických tokenů z tabulky Oracle Sestavte `Subject` a `Body` svého e-mailu:
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **Uložit** vaší aplikaci logiky a pak vyberte **spustit**. Zavřít návrháře a podívejte se na spuštění historie stavu. Pokud selže, vyberte řádek zprávy se nezdařilo. Otevře se Návrhář a ukazuje, které krok se nepovedlo a také zobrazuje informace o této chybě. Pokud se aktivace podaří, měli byste obdržet e-mail s informací, které jste přidali.
+8. **Uložte** aplikaci logiky a pak vyberte **Spustit**. Zavřete návrháře a podívejte se na historii spuštění daného stavu. Pokud dojde k chybě, vyberte řádek zprávy, která selhala. Otevře se Návrhář a ukáže vám, který krok se nezdařil, a také zobrazí informace o chybě. Pokud bude úspěšná, měli byste obdržet e-mail s informacemi, které jste přidali.
 
 
-### <a name="workflow-ideas"></a>Nápady pracovního postupu
+### <a name="workflow-ideas"></a>Návrhy pracovního postupu
 
-* Chcete monitorovat pomocí hashtagu #oracle a vložit tweety, které se v databázi tak, že se jde dotazovat a použít uvnitř jiných aplikací. V aplikaci logiky, přidejte `Twitter - When a new tweet is posted` aktivovat a zadejte **#oracle** hashtagem. Pak přidejte `Oracle Database - Insert row` akce a vyberte vaše tabulka:
+* Chcete monitorovat #oracle hashtag a umístit tweety do databáze, aby se mohly dotazovat a používat v jiných aplikacích. V aplikaci logiky přidejte aktivační událost `Twitter - When a new tweet is posted` a zadejte **#oracle** hashtag. Pak přidejte `Oracle Database - Insert row` akci a vyberte tabulku:
 
     ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
-* Zprávy jsou odesílány do fronty služby Service Bus. Chcete získat tyto zprávy a umístit je do databáze. V aplikaci logiky, přidejte `Service Bus - when a message is received in a queue` aktivovat a vyberte frontu. Pak přidejte `Oracle Database - Insert row` akce a vyberte vaše tabulka:
+* Zprávy jsou odesílány do fronty Service Bus. Tyto zprávy chcete získat a umístit je do databáze. V aplikaci logiky přidejte aktivační událost `Service Bus - when a message is received in a queue` a vyberte frontu. Pak přidejte `Oracle Database - Insert row` akci a vyberte tabulku:
 
     ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>Běžné chyby
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Chyba:** Nelze navázat spojení s bránou
+#### <a name="error-cannot-reach-the-gateway"></a>**Chyba**: Nelze se připojit k bráně
 
-**Příčina:** Místní brána dat není možné se připojit ke cloudu. 
+**Příčina**: místní brána dat se nemůže připojit ke cloudu. 
 
-**Zmírnění dopadů**: Ujistěte se, že je brána spuštěna na místním počítači, kde jste nainstalovali, a že se může připojit k Internetu.  Doporučujeme vám, Ne instalaci brány na počítači, který může být vypnuté nebo v režimu spánku. Můžete také restartovat místní služba brány dat (PBIEgwService).
+**Zmírnění**: Ujistěte se, že je brána spuštěná na místním počítači, na kterém je nainstalovaná, a že se může připojit k Internetu.  Doporučujeme neinstalovat bránu na počítač, který může být vypnutý nebo v režimu spánku. Můžete také restartovat službu místní brány dat (PBIEgwService).
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Chyba:** Použitý zprostředkovatel je zastaralý: "System.Data.OracleClient vyžaduje software klienta Oracle version 8.1.7 nebo vyšší.". Zobrazit [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) a nainstalujte si oficiálního zprostředkovatele.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Chyba**: použitý zprostředkovatel je zastaralý: System. data. OracleClient vyžaduje, aby byl klientský software Oracle verze 8.1.7 nebo vyšší. Oficiálního poskytovatele najdete v tématu [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) .
 
-**Příčina:** Sada SDK klienta Oracle není nainstalovaná na počítači, kde je spuštěná na místní bránu dat.  
+**Příčina**: sada SDK klienta Oracle není nainstalovaná na počítači, na kterém je spuštěná místní brána dat.  
 
-**Rozlišení**: Stáhněte a nainstalujte na stejném počítači jako místní brána dat sada SDK klienta Oracle.
+**Řešení**: Stáhněte a nainstalujte sadu SDK klienta Oracle do stejného počítače, ve kterém je místní brána dat.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Chyba:** Tabulka '[Tablename]' nedefinuje žádné klíčové sloupce
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Chyba**: tabulka ' [TableName] ' nedefinuje žádné klíčové sloupce.
 
-**Příčina:** Tabulka nemá primární klíč.  
+**Příčina**: tabulka neobsahuje žádný primární klíč.  
 
-**Rozlišení**: Konektor Oracle Database vyžaduje použít tabulku se sloupcem primárního klíče.
+**Řešení**: konektor Oracle Database vyžaduje, aby se použila tabulka se sloupcem primárního klíče.
 
-#### <a name="currently-not-supported"></a>Aktuálně nejsou podporovány
+#### <a name="currently-not-supported"></a>Aktuálně není podporováno
 
 * Zobrazení 
-* Všechny tabulky pomocí složených klíčů
-* Vnořené typy objektu v tabulkách
+* Libovolná tabulka se složenými klíči
+* Typy vnořených objektů v tabulkách
  
-## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
+## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
-Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/oracle/). 
+Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezení v [podrobnostech konektoru](/connectors/oracle/). 
 
-## <a name="get-some-help"></a>Získat pomoc
+## <a name="get-some-help"></a>Získat nápovědu
 
-[Fóru Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) je skvělé místo, kde můžete klást otázky, odpovídat na otázky a poučit jiných uživatelů Logic Apps se. 
+[Fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) je skvělé místo, kde můžete klást otázky, odpovídat na otázky a zjistit, co dělají jiní uživatelé Logic Apps. 
 
-Vám může pomoct vylepšit Logic Apps a konektorů hlasování a odešlete své nápady na [ https://aka.ms/logicapps-wish ](https://aka.ms/logicapps-wish). 
+Můžete pomoci vylepšit Logic Apps a konektory hlasováním a odesláním nápadů na [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish). 
 
 
-## <a name="next-steps"></a>Další postup
-[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)a projděte si dostupné konektory v Logic Apps na [rozhraní API seznamu](apis-list.md).
+## <a name="next-steps"></a>Další kroky
+[Vytvořte aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)a Prozkoumejte dostupné konektory v Logic Apps v [seznamu rozhraní API](apis-list.md).

@@ -1,20 +1,19 @@
 ---
-title: Segmenty UNH 2,5 ve zprávách EDIFACT – Azure Logic Apps
+title: Segmenty UNH 2,5 v EDIFACT zprávách
 description: Řešení zpráv EDIFACT s segmenty UNH 2.5 v Azure Logic Apps s využitím Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: c30c35375a45171c938f80e94dd7d9be4c3ee8b1
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679918"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792534"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Zpracování dokumentů EDIFACT s segmenty UNH 2.5 v Azure Logic Apps
 

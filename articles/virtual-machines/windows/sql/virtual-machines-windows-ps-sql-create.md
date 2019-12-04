@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 072c58377645c807328bfcd79028daad70df7338
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102112"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790636"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak zřídit SQL Server virtuálních počítačů s Azure PowerShell
 
@@ -103,7 +103,7 @@ $OSDiskName = $VMName + "OSDisk"
 
 Pomocí následujících proměnných definujte SQL Server Image, která se má použít pro virtuální počítač. 
 
-1. Nejprve vypíšete všechny nabídky SQL Server obrázků pomocí `Get-AzVMImageOffer` příkazu. Tento příkaz vypíše aktuální image, které jsou k dispozici na webu Azure Portal, a také starší bitové kopie, které lze nainstalovat pouze pomocí prostředí PowerShell:
+1. Nejprve uveďte všechny nabídky SQL Server obrázků pomocí příkazu `Get-AzVMImageOffer`. Tento příkaz vypíše aktuální image, které jsou k dispozici na webu Azure Portal, a také starší bitové kopie, které lze nainstalovat pouze pomocí prostředí PowerShell:
 
    ```powershell
    Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -337,12 +337,13 @@ Virtuální počítač se vytvoří.
 > Pokud se při diagnostice spouštění zobrazí chyba, můžete ji ignorovat. Pro diagnostiku spouštění se vytvoří standardní účet úložiště, protože zadaný účet úložiště pro disk virtuálního počítače je účtem Premium Storage.
 
 ## <a name="install-the-sql-iaas-agent"></a>Instalace agenta SQL IaaS
-SQL Server virtuální počítače podporují automatizované funkce správy s [rozšířením agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Chcete-li nainstalovat agenta na nový virtuální počítač, spusťte následující příkaz po jeho vytvoření.
+SQL Server virtuální počítače podporují automatizované funkce správy s [rozšířením agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete nainstalovat agenta na nový virtuální počítač a zaregistrovat ho u poskytovatele prostředků, spusťte po vytvoření virtuálního počítače příkaz [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) . Zadejte typ licence pro váš virtuální počítač s SQL Server, a to pomocí [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/), ať už máte licenci s průběžnými platbami nebo použitím vlastní licence. Další informace o licencování najdete v tématu [licencování modelu](virtual-machines-windows-sql-ahb.md). 
 
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
 
 ## <a name="stop-or-remove-a-vm"></a>Zastavení nebo odebrání virtuálního počítače
 
@@ -419,8 +420,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $Publis
 # Create the VM in Azure
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
-# Add the SQL IaaS Extension
-Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+# Add the SQL IaaS Extension, and choose the license type
+New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
 ## <a name="next-steps"></a>Další kroky

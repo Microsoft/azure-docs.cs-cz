@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 20729d1e73dd0ff9010201a1c6597b616b364a09
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: c0dcba2dd003dfebdd9ce67bf4d78082c32824ba
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175264"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789477"
 ---
-### <a name="prerequisites"></a>Požadavky
-* A [Office 365 Video](https://support.office.com/article/Meet-Office-365-Video-ca1cc1a9-a615-46e1-b6a3-40dbd99939a6) účtu  
+## <a name="prerequisites"></a>Předpoklady
 
-Předtím, než v aplikaci logiky můžete používat svůj účet Office 365 Video, musíte se autorizovat aplikaci logiky pro připojení k vašemu účtu Office 365 Video. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal.  
+* Účet [videa Office 365](https://support.office.com/article/Meet-Office-365-Video-ca1cc1a9-a615-46e1-b6a3-40dbd99939a6)  
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k vašemu účtu Office 365 Video:  
+Než budete moct použít svůj účet videa Office 365 v aplikaci logiky, musíte autorizovat aplikaci logiky, abyste se připojili k vašemu účtu videa Office 365. Naštěstí to můžete provést snadno v rámci aplikace logiky na webu Azure Portal.  
 
-1. Chcete-li vytvořit připojení k Office 365 Video, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *Office 365 Video* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
-   ![Krok vytvoření připojení Office 365 Video](./media/connectors-create-api-office365video/office365video-1.png)  
-2. Pokud jste ještě nevytvořili žádná připojení k Office 365 Video před, zobrazí výzva k zadání přihlašovacích údajů Office 365 Video. Tyto přihlašovací údaje se použijí k autorizaci aplikace logiky pro připojení k a přístup k datům vašeho účtu Office 365 Video:  
-   ![Krok vytvoření připojení Office 365 Video](./media/connectors-create-api-office365video/office365video-2.png)  
-3. Zadejte svoje přihlašovací údaje pro připojení k Office 365 Video:  
-   ![Krok vytvoření připojení Office 365 Video](./media/connectors-create-api-office365video/office365video-3.png)  
-4. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
-   ![Krok vytvoření připojení Office 365 Video](./media/connectors-create-api-office365video/office365video-4.png)  
+Tady je postup, jak autorizovat aplikaci logiky pro připojení k vašemu účtu videa Office 365:  
+
+1. Pokud chcete vytvořit připojení k videu Office 365, v návrháři aplikace logiky vyberte v rozevíracím seznamu **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte *video Office 365* . Vyberte aktivační událost nebo akci, kterou chcete použít:  
+   ![kroku vytvoření připojení videa pro Office 365](./media/connectors-create-api-office365video/office365video-1.png)  
+2. Pokud jste ještě nevytvořili žádná připojení k sadě Office 365 video, zobrazí se výzva k zadání přihlašovacích údajů pro video Office 365. Tyto přihlašovací údaje budou sloužit k autorizaci aplikace logiky k připojení a přístup k datům vašeho účtu videa Office 365:  
+   ![Krok vytvoření připojení videa pro Office 365](./media/connectors-create-api-office365video/office365video-2.png)  
+3. Zadejte přihlašovací údaje pro připojení k videu Office 365:  
+   ![Krok vytvoření připojení videa pro Office 365](./media/connectors-create-api-office365video/office365video-3.png)  
+4. Všimněte si, že připojení bylo vytvořeno a vy teď můžete pokračovat dalšími kroky ve vaší aplikaci logiky:  
+   ![Krok vytvoření připojení videa pro Office 365](./media/connectors-create-api-office365video/office365video-4.png)  
 

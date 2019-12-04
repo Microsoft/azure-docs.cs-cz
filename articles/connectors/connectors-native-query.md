@@ -1,27 +1,21 @@
 ---
-title: Přidat akci dotazu do aplikace Logic Apps | Microsoft Docs
-description: Přehled akce dotazu pro provádění akcí, jako je pole filtru.
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
-ms.service: logic-apps
+title: Přidat akci dotazu do aplikace Logic Apps
+description: Přehled akce dotazu pro provádění akcí, jako je pole filtru
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/20/2016
-ms.author: jehollan
-ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+tags: connectors
+ms.openlocfilehash: 2e5c9d371a280b776699b2e10d3e8e94b5f41f6f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973752"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787128"
 ---
 # <a name="get-started-with-the-query-action"></a>Začněte s akcí dotazu
+
 Pomocí akce dotazu můžete pracovat s dávkami a poli a provádět pracovní postupy:
 
 * Vytvoří úkol pro všechny záznamy s vysokou prioritou z databáze.
@@ -30,6 +24,7 @@ Pomocí akce dotazu můžete pracovat s dávkami a poli a provádět pracovní p
 Chcete-li začít používat akci dotazu v aplikaci logiky, přečtěte si téma [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-query-action"></a>Použít akci dotazu
+
 Akce je operace, kterou provede pracovní postup, který je definovaný v aplikaci logiky. 
 [Přečtěte si další informace o akcích](../connectors/apis-list.md).  
 
@@ -50,7 +45,7 @@ Tady je postup, jak ho můžete přidat do aplikace logiky:
     Akce vytvoří výstup nového pole, které obsahuje pouze výsledky, které splňují požadavky filtru.
 6. Kliknutím na levý horní roh panelu nástrojů ho uložíte a vaše aplikace logiky bude ukládat i publikovat (aktivovat).
 
-\* Pokud voláte koncový bod HTTP a dostanete odpověď JSON, použijte akci _analyzovat JSON_ pro analýzu odpovědi JSON. Bez provedení tohoto kroku uvidí _pole Filter_ pouze tělo a nebude rozumět struktuře datové části JSON.
+\* Pokud voláte koncový bod HTTP a dostanete odpověď JSON, použijte akci _analyzovat JSON_ k analýze odpovědi JSON. Bez provedení tohoto kroku uvidí _pole Filter_ pouze tělo a nebude rozumět struktuře datové části JSON.
 
 ## <a name="query-action"></a>Akce dotazu
 Zde jsou uvedeny podrobnosti o akci, kterou tento konektor podporuje. Konektor má jednu možnou akci.

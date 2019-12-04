@@ -1,19 +1,19 @@
 ---
-title: Rychlý Start – přehled služby Azure Table Storage
+title: Rychlý Start – vytvoření tabulky Azure Storage v Azure Portal
 description: V tomto rychlém startu vytvořte v Azure Portal tabulku Table service služby Azure Storage.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/23/2018
+ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5f397505c4b9d4b41353021fd9ab1f4d6a36ecfc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cfb44964b06c811d6d587f2a406cdcfb8048a42
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702380"
+ms.locfileid: "74793338"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rychlý start: Vytvoření tabulky Azure Storage na webu Azure Portal 
 

@@ -1,72 +1,72 @@
 ---
-title: Konfigurace a přístup k protokolům auditu pro službu Azure Database pro MariaDB na webu Azure portal
-description: Tento článek popisuje, jak nakonfigurovat a získat přístup k protokolům auditování ve službě Azure Database pro MariaDB z portálu Azure portal.
+title: Přístup k protokolům auditu-Azure Portal-Azure Database for MariaDB
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům auditu v Azure Database for MariaDB z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 8fadcc8cb418063662df45d4134bef0578ffccda
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 12/02/2019
+ms.openlocfilehash: e3c87143652895c57b464cba229a0e68049ffeb2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444818"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767513"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu na portálu Azure portal
+# <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu v Azure Portal
 
-Můžete nakonfigurovat [– Azure Database pro MariaDB protokoly auditu](concepts-audit-logs.md) a nastavení diagnostiky na webu Azure Portal.
+Z Azure Portal můžete nakonfigurovat [protokoly auditu Azure Database for MariaDB](concepts-audit-logs.md) a nastavení diagnostiky.
 
 > [!IMPORTANT]
-> Funkce protokolu auditu je aktuálně ve verzi preview.
+> Funkce protokolu auditu je momentálně ve verzi Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro jednotlivé kroky v této příručce s postupy, musíte:
+Pokud chcete projít tento průvodce, budete potřebovat:
 
-- [Azure Database pro MariaDB server](quickstart-create-mariadb-server-database-using-azure-portal.md)
+- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 
-Povolit a konfigurovat protokolování auditu.
+Povolte a nakonfigurujte protokolování auditu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-1. Vyberte váš server Azure Database for MariaDB.
+1. Vyberte server Azure Database for MariaDB.
 
-1. V části **nastavení** části na bočním panelu, vyberte **parametry serveru**.
+1. V části **Nastavení** na bočním panelu vyberte **parametry serveru**.
     ![Parametry serveru](./media/howto-configure-audit-logs-portal/server-parameters.png)
 
-1. Aktualizace **audit_log_enabled** parametr ON.
-    ![Povolení protokolů auditu](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
+1. Aktualizujte parametr **audit_log_enabled** na zapnuto.
+    ![povolit protokoly auditu](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. Vyberte [typy událostí](concepts-audit-logs.md#configure-audit-logging) zaznamenávané aktualizací **audit_log_events** parametru.
-    ![Události protokolu auditu](./media/howto-configure-audit-logs-portal/audit-log-events.png)
+1. Vyberte [typy událostí](concepts-audit-logs.md#configure-audit-logging) , které se mají protokolovat, pomocí aktualizace parametru **audit_log_events** .
+    události protokolu auditu ![](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
-1. Přidejte všechny uživatele MariaDB, které se mají vyloučit z protokolování aktualizací **audit_log_exclude_users** parametru. Určení uživatelů tím, že poskytuje jejich MariaDB uživatelskému jménu.
-    ![Vyloučit uživatele protokolu auditu](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
+1. Pomocí aktualizace parametru **audit_log_exclude_users** přidejte všechny uživatele MariaDB, kteří budou vyloučení z protokolování. Určete uživatele zadáním svého uživatelského jména MariaDB.
+    ![vyloučení uživatelů v protokolu auditu](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
 
-1. Jakmile změníte parametry, můžete kliknout na **Uložit**. Nebo můžete **zahodit** provedené změny.
+1. Po změně parametrů můžete kliknout na **Uložit**. Nebo můžete změny **Zrušit** .
     ![Uložit](./media/howto-configure-audit-logs-portal/save-parameters.png)
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
-1. V části **monitorování** části na bočním panelu, vyberte **nastavení diagnostiky**.
+1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**.
 
-1. Klikněte na "+ přidat nastavení diagnostiky" ![přidejte nastavení diagnostiky](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Kliknutím na + Přidat nastavení diagnostiky ![přidat nastavení diagnostiky](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. Zadejte název nastavení diagnostiky.
 
-1. Určete, jaká data jímky k odeslání protokolů auditu (účet úložiště, Centrum událostí, a/nebo pracovní prostor Log Analytics).
+1. Určete, která datová jímka se mají Odeslat protokoly auditu (účet úložiště, centrum událostí a pracovní prostor Log Analytics).
 
-1. Vyberte "MySqlAuditLogs" jako typ protokolu.
-![Konfigurace nastavení diagnostiky](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
+1. Jako typ protokolu vyberte "MySqlAuditLogs".
+![konfigurace nastavení diagnostiky](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
 
-1. Po konfiguraci datových jímek do kanálu protokoly auditu chcete, můžete kliknout na **Uložit**.
+1. Po nakonfigurování datových umyvadel pro přesměrování protokolů auditu na můžete kliknout na **Uložit**.
 ![Uložit nastavení diagnostiky](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
 
-1. Přístup k protokolům auditu, ve kterých je v datové jímky, které jste nakonfigurovali. Může trvat až 10 minut na protokoly, kde se zobrazí.
+1. Přihlaste se k protokolům auditu jejich zkoumáním v datových jímkach, které jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [protokoly auditu](concepts-audit-logs.md) ve službě Azure Database pro MariaDB.
+- Přečtěte si další informace o [protokolech auditu](concepts-audit-logs.md) v Azure Database for MariaDB.

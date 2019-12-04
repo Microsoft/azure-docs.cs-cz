@@ -1,17 +1,17 @@
 ---
-title: Úložiště dotazů na serveru Azure Database for PostgreSQL – jeden server
+title: Úložiště dotazů – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci úložiště dotazů na Azure Database for PostgreSQL jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331320"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768261"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorování výkonu pomocí úložiště dotazů
 
@@ -91,18 +91,18 @@ Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Parametr** | **Popis** | **Default** | **Rozsah**|
+| **Ukazatele** | **Popis** | **Výchozí** | **Rozsah**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Nastaví, které příkazy jsou sledovány. | Žádná | žádné, nahoře, vše |
-| pg_qs.max_query_text_length | Nastaví maximální délku dotazu, kterou lze uložit. Delší dotazy budou zkráceny. | 6000 | 100 – 10 000 |
-| pg_qs.retention_period_in_days | Nastaví dobu uchování. | 7 | 1 - 30 |
-| pg_qs.track_utility | Nastaví, jestli se mají sledovat příkazy nástrojů. | zapnuté | zapnuto, vypnuto |
+| pg_qs. query_capture_mode | Nastaví, které příkazy jsou sledovány. | Žádná | žádné, nahoře, vše |
+| pg_qs. max_query_text_length | Nastaví maximální délku dotazu, kterou lze uložit. Delší dotazy budou zkráceny. | 6000 | 100 – 10 000 |
+| pg_qs. retention_period_in_days | Nastaví dobu uchování. | 7 | 1 - 30 |
+| pg_qs. track_utility | Nastaví, jestli se mají sledovat příkazy nástrojů. | pnete | zapnuto, vypnuto |
 
 Následující možnosti platí konkrétně pro čekání na statistiku.
 
-| **Parametr** | **Popis** | **Default** | **Rozsah**|
+| **Ukazatele** | **Popis** | **Výchozí** | **Rozsah**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Nastaví, které příkazy jsou sledovány pro statistiku čekání. | Žádná | žádné, vše|
+| pgms_wait_sampling. query_capture_mode | Nastaví, které příkazy jsou sledovány pro statistiku čekání. | Žádná | žádné, vše|
 | Pgms_wait_sampling. history_period | Nastavte četnost vzorkování událostí čekání v milisekundách. | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -116,14 +116,14 @@ Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zo
 
 Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhledají jejich strukturu. Pokud jsou dva dotazy stejné s výjimkou hodnot literálů, budou mít stejnou hodnotu hash.
 
-### <a name="query_storeqs_view"></a>query_store.qs_view
+### <a name="query_storeqs_view"></a>query_store. qs_view
 Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek. 
 
 |**Název**   |**Typ** | **Odkazy**  | **Popis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID z runtime_stats_entries tabulky|
-|user_id    |oid    |pg_authid.oid  |Identifikátor OID uživatele, který příkaz provedl|
-|db_id  |oid    |pg_database.oid    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
+|user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
+|db_id  |identifikátor    |pg_database. OID    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
 |query_id   |bigint  || Vnitřní kód hash vypočítaný z stromu analýzy příkazu|
 |query_sql_text |Varchar (10000)  || Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru.|
 |plan_id    |bigint |   |ID plánu, který odpovídá tomuto dotazu, zatím není k dispozici|
@@ -149,7 +149,7 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 |blk_read_time  |Dvojitá přesnost    || Celková doba, po kterou příkaz strávil bloky čtení, v milisekundách (Pokud je povolená track_io_timing, jinak nula)|
 |blk_write_time |Dvojitá přesnost    || Celková doba, po kterou příkaz strávil zápis bloků, v milisekundách (Pokud je povolená track_io_timing, jinak nula)|
     
-### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store. query_texts_view
 Toto zobrazení vrátí textová data dotazu v úložišti dotazů. Pro každý query_text je k dispozici jeden řádek.
 
 |**Název**|  **Typ**|   **Popis**|
@@ -157,25 +157,25 @@ Toto zobrazení vrátí textová data dotazu v úložišti dotazů. Pro každý 
 |query_text_id  |bigint     |ID pro query_textsovou tabulku|
 |query_sql_text |Varchar (10000)     |Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru.|
 
-### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
 |**Název**|  **Typ**|   **Odkazy**| **Popis**|
 |---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |Identifikátor OID uživatele, který příkaz provedl|
-|db_id  |oid    |pg_database.oid    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
+|user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
+|db_id  |identifikátor    |pg_database. OID    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
 |query_id   |bigint     ||Vnitřní kód hash vypočítaný z stromu analýzy příkazu|
 |event_type |text       ||Typ události, pro kterou back-end čeká|
-|událost  |text       ||Název události čekání, pokud back-end momentálně čeká|
+|událostí  |text       ||Název události čekání, pokud back-end momentálně čeká|
 |volání  |Integer        ||Číslo stejné zachycené události|
 
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 Query_store. qs_reset () vrátí typ void.
 
 `qs_reset` zahodí všechny shromážděné statistiky, a to i v úložišti dotazů. Tuto funkci může spustit jenom role správce serveru.
 
-Query_store.staging_data_reset() returns void
+Query_store. staging_data_reset () vrátí typ void.
 
 `staging_data_reset` zahodí všechny statistiky shromážděné v paměti úložištěm dotazů (tj. data v paměti, která ještě nebyla vyprázdněna do databáze). Tuto funkci může spustit jenom role správce serveru.
 

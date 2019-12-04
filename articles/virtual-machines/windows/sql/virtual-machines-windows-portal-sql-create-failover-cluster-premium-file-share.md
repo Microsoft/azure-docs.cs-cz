@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 10a3c2bf421c7182dca00dfcbf7c3f559141a745
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084081"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792203"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na virtuálních počítačích Azure
 
@@ -45,9 +45,7 @@ Měli byste mít také obecné porozumění těmto technologiím:
 - [Skupiny prostředků Azure](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> V současné době se SQL Server instance clusterů s podporou převzetí služeb při selhání na virtuálních počítačích Azure podporují jenom s režimem [zjednodušené](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) správy [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete změnit režim úplného rozšíření na zjednodušený režim, odstraňte prostředek **virtuálního počítače SQL** pro odpovídající virtuální počítače a pak je zaregistrujte u poskytovatele prostředků virtuálního počítače SQL ve [zjednodušeném](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) režimu. Když odstraníte prostředek **virtuálního počítače SQL** pomocí Azure Portal, zrušte zaškrtnutí políčka u správného virtuálního počítače.
->
-> Úplné rozšíření podporuje funkce, jako je automatické zálohování, opravy a Správa portálu pro pokročilé. Tyto funkce nebudou fungovat pro SQL Server virtuální počítače po přeinstalaci agenta v režimu [zjednodušené](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) správy.
+> V současné době se SQL Server instance clusterů s podporou převzetí služeb při selhání na virtuálních počítačích Azure podporují jenom s [režimem zjednodušené správy](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete přejít z režimu úplného rozšíření na odlehčený, odstraňte prostředek **virtuálního počítače SQL** pro odpovídající virtuální počítače a pak je zaregistrujte u poskytovatele prostředků virtuálního počítače SQL ve zjednodušeném režimu. Při odstraňování prostředku **virtuálního počítače SQL** pomocí Azure Portal **zrušte zaškrtnutí políčka u správného virtuálního počítače**. Úplné rozšíření podporuje funkce, jako je automatické zálohování, opravy a Správa portálu. Po přeinstalaci agenta v režimu zjednodušené správy nebudou tyto funkce fungovat pro virtuální počítače SQL.
 
 Soubory úrovně Premium poskytují IOPS a celou kapacitu, která bude vyhovovat potřebám řady úloh. Pro úlohy náročné na v/v zvažte [SQL Server instance clusterů s podporou převzetí služeb při selhání pomocí prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md)na základě spravovaných disků Premium nebo Ultra disks.  
 
@@ -73,7 +71,7 @@ Pokud chcete porovnat BYOL s průběžnými platbami a licencováním pro SQL Se
 
 FILESTREAM není podporován pro cluster s podporou převzetí služeb při selhání se sdílenou složkou Premium. Pokud chcete použít FILESTREAM, nasaďte cluster pomocí [prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -102,7 +100,7 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
 
    1. V Azure Portal vyberte **vytvořit prostředek** a otevřete Azure Marketplace. Vyhledejte **skupinu dostupnosti**.
    1. Vyberte **skupinu dostupnosti**.
-   1. Vyberte **Vytvořit**.
+   1. Vyberte **Create** (Vytvořit).
    1. V části **vytvořit skupinu dostupnosti**zadejte tyto hodnoty:
       - **Name (název**): název skupiny dostupnosti.
       - **Předplatné**: vaše předplatné Azure.
@@ -154,7 +152,7 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
 
    Na každém virtuálním počítači otevřete tyto porty na bráně Windows Firewall:
 
-   | Účel | Port TCP | Poznámky:
+   | Účel | Port TCP | Poznámky
    | ------ | ------ | ------
    | SQL Server | 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře.
    | Sonda stavu | 59999 | Libovolný otevřený port TCP. V pozdějším kroku nakonfigurujte [sondu stavu](#probe) nástroje pro vyrovnávání zatížení a cluster tak, aby používal tento port.
@@ -222,14 +220,14 @@ Pokud chcete cluster ověřit pomocí uživatelského rozhraní, proveďte násl
 
 1. V části **Správce serveru**vyberte **nástroje**a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
 1. V části **Správce clusteru s podporou převzetí služeb při selhání**vyberte **Akce**a pak vyberte **ověřit konfiguraci**.
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Next** (Další).
+1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Další**.
 1. V části **Výběr testu**vyberte všechny testy s výjimkou **úložiště** a **prostory úložiště s přímým přístupem**, jak je znázorněno zde:
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="Výběr testů pro ověření clusteru":::
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. V části **potvrzení**vyberte **Další**.
 
 **Průvodce ověřením konfigurace** spustí ověřovací testy.
@@ -328,7 +326,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Vyberte **Přidat**. Vyhledejte **Load Balancer**Azure Marketplace. Vyberte **Load Balancer**.
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 1. Nástroj pro vyrovnávání zatížení nastavte pomocí následujících hodnot:
 
@@ -461,7 +459,7 @@ Na virtuálních počítačích Azure není služba MSDTC podporovaná na Window
 - Clusterový prostředek MSDTC nejde nakonfigurovat tak, aby používal sdílené úložiště. Pokud v systému Windows Server 2016 vytvoříte prostředek MSDTC, nezobrazí se žádné sdílené úložiště dostupné pro použití, a to i v případě, že je úložiště k dispozici. Tento problém byl opravený v systému Windows Server 2019.
 - Nástroj pro vyrovnávání zatížení úrovně Basic nezpracovává porty RPC.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

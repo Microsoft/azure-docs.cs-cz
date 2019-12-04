@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274067"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769213"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpečení kontejneru v Security Center
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak můžete vylepšit, monitorovat a udržovat zabezpe
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Správa ohrožení zabezpečení – kontrola imagí kontejneru (Preview)
 Pokud chcete monitorovat svůj Azure Container Registry, ujistěte se, že jste na úrovni Standard Security Center (viz [ceny](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Pak povolte volitelnou sadu registrů kontejnerů. Když se doručí nový obrázek, Security Center zkontroluje Image pomocí skeneru z špičkového dodavatele kontroly ohrožení zabezpečení, Qualys.
 
-Po nalezení problémů – podle Qualys nebo Security Center – na řídicím panelu Security Center se zobrazí oznámení. U každé chyby zabezpečení Security Center poskytuje užitečná doporučení spolu se klasifikací závažnosti a pokyny, jak problém vyřešit. Podrobnosti o doporučeních Security Center najdete v seznamu doporučení v části [ochrana virtuálního počítače](security-center-virtual-machine-protection.md##compute-and-app-recs).
+Po nalezení problémů – podle Qualys nebo Security Center – na řídicím panelu Security Center se zobrazí oznámení. U každé chyby zabezpečení Security Center poskytuje užitečná doporučení spolu se klasifikací závažnosti a pokyny, jak problém vyřešit. Podrobnosti o doporučeních Security Center najdete [tady](recommendations-compute-and-apps.md).
 
 ## <a name="environment-hardening"></a>Posílení zabezpečení prostředí
 

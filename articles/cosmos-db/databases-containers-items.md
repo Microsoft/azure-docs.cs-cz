@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176930"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786941"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databázemi, kontejnery a položkami v Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Když vytvoříte kontejner Azure Cosmos, nakonfigurujete propustnost v jednom z
 * **Sdílený režim zřízené propustnosti**: tyto kontejnery sdílejí zřízenou propustnost s ostatními kontejnery ve stejné databázi (kromě kontejnerů, které byly nakonfigurovány s vyhrazenou zřízené propustností). Jinými slovy, zřízená propustnost v databázi se sdílí mezi všemi kontejnery "Shared propustnost". Další informace najdete v tématu [jak zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
 
 > [!NOTE]
-> Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. Chcete-li přepnout z vyhrazeného režimu propustnosti do režimu sdíleného propustnosti (a naopak) Po vytvoření kontejneru, je nutné vytvořit nový kontejner a migrovat data do nového kontejneru. Data můžete migrovat pomocí funkce Azure Cosmos DB změny kanálu.
+> Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. Pokud chcete po vytvoření kontejneru přejít z režimu vyhrazené propustnosti na režim sdílené propustnosti (nebo naopak), musíte vytvořit nový kontejner a migrovat data do nového kontejneru. Data můžete migrovat pomocí funkce Azure Cosmos DB změny kanálu.
 
 Kontejner Azure Cosmos se může elasticky škálovat bez ohledu na to, jestli vytváříte kontejnery pomocí vyhrazeného nebo sdíleného režimu zřízené propustnosti.
 
@@ -82,7 +82,7 @@ Kontejner Azure Cosmos obsahuje sadu vlastností definovaných systémem. V záv
 
 | Vlastnost definovaná systémem | Uživatelsky vygenerované nebo uživatelsky konfigurovatelné | Účel | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|ID \_ | Generované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
+|identifikátor RID \_ | Generované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
 |\_ETag | Generované systémem | Značka entity použitá pro optimistické řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
 |\_TS | Generované systémem | Poslední aktualizované časové razítko kontejneru | Ano | Ne | Ne | Ne | Ne |
 |\_samy sebe | Generované systémem | Adresovatelný identifikátor URI kontejneru | Ano | Ne | Ne | Ne | Ne |
@@ -110,7 +110,7 @@ V závislosti na tom, jaké rozhraní API používáte, může položka Azure Co
 
 | Cosmos – entita | SQL API | Rozhraní API Cassandra | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Položka Azure Cosmos | Databáze dokumentů | řadě | Databáze dokumentů | Uzel nebo hrana | Položka |
+|Položka Azure Cosmos | Databáze dokumentů | Řadě | Databáze dokumentů | Uzel nebo hrana | Položka |
 
 ### <a name="properties-of-an-item"></a>Vlastnosti položky
 

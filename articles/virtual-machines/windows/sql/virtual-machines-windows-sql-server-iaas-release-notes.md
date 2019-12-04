@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c122baa21c5d94b57f29cb0530f0a2655faa87d0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897260"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790376"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Změny v dokumentaci pro SQL Server v Azure Virtual Machines
 
@@ -56,7 +56,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 | --- | --- |
 | **Nové režimy instalace SQL IaaS** | Nyní je možné nainstalovat rozšíření SQL Server IaaS v [režimu prostého režimu](virtual-machines-windows-sql-server-agent-extension.md) , abyste se vyhnuli restartování služby SQL Server.  |
 | **Úpravy edice SQL Server** | Nyní můžete změnit [vlastnost edice](virtual-machines-windows-sql-change-edition.md) pro váš virtuální počítač s SQL Server. |
-| **Změny zprostředkovatele prostředků virtuálních počítačů SQL** | Pomocí nových režimů IaaS SQL můžete [zaregistrovat svůj virtuální počítač s SQL Server pomocí poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md) . Tato funkce zahrnuje [image Windows 2008](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms).|
+| **Změny zprostředkovatele prostředků virtuálních počítačů SQL** | Pomocí nových režimů IaaS SQL můžete [zaregistrovat svůj virtuální počítač s SQL Server pomocí poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md) . Tato možnost zahrnuje image [Windows serveru 2008](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) .|
 | **Využití imagí s vlastní licencí pomocí Zvýhodněné hybridní využití Azure** | Bitové kopie s vlastní licencí nasazené z Azure Marketplace teď můžou [jako typ licence přepnout na průběžné platby](virtual-machines-windows-sql-ahb.md#remarks).| 
 | &nbsp; | &nbsp; |
 

@@ -1,35 +1,35 @@
 ---
-title: Koncepty vysoké dostupnosti ve službě Azure Database pro MariaDB
-description: Toto téma obsahuje informace o vysoké dostupnosti při používání Azure Database pro MariaDB
+title: Vysoká dostupnost – Azure Database for MariaDB
+description: Toto téma poskytuje informace o vysoké dostupnosti při použití Azure Database for MariaDB
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: ba561cba21b0b83b6a19fffc2fdfebe8ec8b8ed9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 797a94a561351ac7f5317f2f215b56f6944c023f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042142"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772522"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Koncepty vysoké dostupnosti ve službě Azure Database pro MariaDB
-Azure Database pro MariaDB service poskytuje zaručenou vysokou dostupnost. Je žádnou finančně zajištěnou smlouvu o úrovni služeb (SLA) 99,99 % při všeobecné dostupnosti. Neexistuje žádná aplikace prakticky časové prodlevy při používání této služby.
+# <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Koncepty vysoké dostupnosti v Azure Database for MariaDB
+Služba Azure Database for MariaDB poskytuje zaručenou vysokou úroveň dostupnosti. Finančně zajištěná smlouva o úrovni služeb (SLA) je po všeobecné dostupnosti 99,99%. Při používání této služby nedochází k neprovozuschopnému použití.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
-Model vysoké dostupnosti (HA) je založen na integrovaný mechanismus převzetí služeb při selhání, když dojde k přerušení úrovni uzlu. Přerušení úrovni uzlu mohlo dojít z důvodu selhání hardwaru nebo v reakci na nasazení služby.
+Model vysoké dostupnosti (HA) vychází z vestavěných mechanismů pro převzetí služeb při selhání, když dojde k přerušení na úrovni uzlu. Přerušení na úrovni uzlu může vzniknout kvůli selhání hardwaru nebo v reakci na nasazení služby.
 
-Po celou dobu změny provedené v Azure Database pro MariaDB databázový server dochází v kontextu transakce. Změny se zaznamenávají synchronně ve službě Azure storage, když je transakce potvrzena. Pokud dojde k přerušení úrovni uzlu, serveru databáze automaticky vytvoří nový uzel a připojí úložiště dat do nového uzlu. Každé aktivní propojení se zahodí a nejsou potvrzeny všechny probíhající transakce.
+Změny provedené u Azure Database for MariaDB databázového serveru se projeví v kontextu transakce. Změny se zaznamenávají synchronně ve službě Azure Storage, když je transakce potvrzena. Pokud dojde k přerušení na úrovni uzlu, databázový server automaticky vytvoří nový uzel a připojí úložiště dat k novému uzlu. Všechna aktivní připojení jsou vyřazena a všechny transakce v transakci nejsou potvrzeny.
 
-## <a name="application-retry-logic-is-essential"></a>Je základní aplikace logiky opakování
-Je důležité, že MariaDB databáze aplikace se vytvářejí ke zjišťování a zkuste to znovu přerušení připojení a transakce se nezdařilo. Když aplikace opakování, připojení vaší aplikace transparentně přesměrují na nově vytvořená instance, která má pro chybné instance.
+## <a name="application-retry-logic-is-essential"></a>Logika opakování aplikace je zásadní.
+Je důležité, aby databázové aplikace MariaDB byly sestaveny tak, aby zjistily a opakovaly přerušená připojení a neúspěšné transakce. Když se aplikace opakuje, připojení aplikace se transparentně přesměruje na nově vytvořenou instanci, která převezme služby pro neúspěšnou instanci.
 
-Interně v Azure, brány slouží k přesměrování připojení k nové instanci. Celý proces převzetí služeb při selhání při přerušení, obvykle trvá desítky vteřin. Protože přesměrování interně zpracována třídou brány, externí připojovací řetězec zůstává pro klientské aplikace.
+Interně v Azure se k přesměrování připojení k nové instanci používá brána. Po přerušení bude celý proces převzetí služeb při selhání obvykle trvat desítky sekund. Vzhledem k tomu, že je přesměrování zpracováváno interně bránou, externí připojovací řetězec pro klientské aplikace zůstane stejný.
 
-## <a name="scaling-up-or-down"></a>Škálování směrem nahoru nebo dolů
-Podobně jako u modelu vysokou dostupnost, když je Azure Database pro MariaDB vertikálně navýšit nebo snížit, je vytvořena nová instance serveru s zadané velikosti. Je stávající úložiště dat je odpojena od původní instance a připojena k nové instanci.
+## <a name="scaling-up-or-down"></a>Vertikální navýšení nebo snížení kapacity
+Podobně jako Azure Database for MariaDB při horizontálním navýšení nebo snížení kapacity v modelu HA se vytvoří nová instance serveru se zadanou velikostí. Stávající úložiště dat je odpojené od původní instance a připojené k nové instanci.
 
-Během operace škálování dojde k přerušení připojení databáze. Nejste připojení klientských aplikací a otevřít nepotvrzené transakce se zrušila. Jakmile se klientská aplikace opakuje připojení, nebo vytvoří nové připojení, brány směruje připojení na nově velikosti instance.
+Během operace škálování dojde k přerušení připojení k databázi. Klientské aplikace jsou odpojené a otevřené nepotvrzené transakce se zruší. Jakmile klientská aplikace znovu požádá o připojení nebo vytvoří nové připojení, brána nasměruje připojení k instanci nově nastavené velikosti.
 
-## <a name="next-steps"></a>Další postup
-- Přehled služby najdete v tématu [– Azure Database pro MariaDB přehled](overview.md)
+## <a name="next-steps"></a>Další kroky
+- Přehled služby najdete v tématu [přehled Azure Database for MariaDB](overview.md) .

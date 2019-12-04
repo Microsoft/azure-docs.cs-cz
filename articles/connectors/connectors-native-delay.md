@@ -1,94 +1,91 @@
 ---
-title: Zpoždění akce dalšího v pracovních postupech – Azure Logic Apps
-description: Počkejte provádět další akce v pracovních postupů aplikace logiky pomocí akce zpoždění nebo zpoždění až v Azure Logic Apps
+title: Zpoždění další akce v pracovních postupech
+description: Počkejte na spuštění další akce v pracovních postupech aplikace logiky pomocí zpoždění nebo zpoždění, dokud akce v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
-tags: connectors
+ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+tags: connectors
+ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297620"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787332"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Zpoždění spuštění další akce v Azure Logic Apps
 
-Pokud chcete, aby vaše aplikace logiky, počkejte dobu před spuštěním další akci, můžete přidat předdefinované **zpoždění – naplánovat** akce před akci v pracovním postupu vaší aplikace logiky. Nebo můžete přidat předdefinované **zpoždění do – naplánovat** akci počkat do určité datum a čas před spuštěním další akci. Další informace o předdefinovaných plán akcí a triggerů, naleznete v tématu [plán a opakované automatizované spuštění, úloh a pracovních postupů s Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Chcete-li, aby vaše aplikace logiky čekala dlouhou dobu před spuštěním další akce, můžete přidat předdefinovanou akci **zpožděného plánování** před akcí v pracovním postupu aplikace logiky. Nebo můžete přidat vestavěnou **prodlevu do doby, než** se před spuštěním další akce počká na určité datum a čas. Další informace o předdefinovaných akcích a triggerech plánování najdete v tématu [plánování a spouštění opakujících se automatizovaných úloh, úkolů a pracovních postupů s Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
-* **zpoždění**: Čekat zadaný počet časových jednotek, jako je například sekund, minuty, hodiny, dny, týdny nebo měsíce před spuštěním další akce.
+* **Delay**: před spuštěním další akce počkejte na zadaný počet časových jednotek (například sekund, minut, hodin, dnů, týdnů nebo měsíců).
 
-* **Zpoždění do**: Počkejte, až do zadaného data a času před spuštěním další akce.
+* **Zpoždění do**: před spuštěním další akce počkat na zadané datum a čas.
 
-Tady jsou některé způsoby příklad použití těchto akcí:
+Tady je několik příkladů, jak použít tyto akce:
 
-* Počkejte, dokud jeden den v týdnu pro odeslání e-mailu aktualizace stavu.
+* Počkejte, až pracovní den pošle aktualizaci stavu přes e-mail.
 
-* Dokud se nedokončí volání protokolu HTTP před obnovení a načítání dat, zpoždění pracovního postupu.
+* Před pokračováním a obnovením dat odložit pracovní postup do dokončení volání HTTP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Základní znalosti o [logic apps](../logic-apps/logic-apps-overview.md). Než použijete akci, třeba nejprve spustit aplikaci logiky s triggerem. Můžete použít libovolný trigger a přidejte další akce předtím, než přidáte akci zpoždění. Toto téma používá aktivační událost Office 365 Outlook. Pokud se službou logic Apps teprve začínáte, přečtěte si [vytvoření vaší první aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Základní znalosti o [Logic Apps](../logic-apps/logic-apps-overview.md) Než budete moct použít akci, vaše aplikace logiky musí nejdřív spustit Trigger. Před přidáním akce zpoždění můžete použít libovolný Trigger, který chcete přidat, a další akce. V tomto tématu se používá aktivační procedura Office 365 Outlook. Pokud s Logic Apps začínáte, přečtěte si, [jak vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-delay"></a>
 
-## <a name="add-the-delay-action"></a>Přidání zpoždění akce
+## <a name="add-the-delay-action"></a>Přidat akci zpoždění
 
-1. V návrháři aplikace logiky v kroku, ve které chcete přidat akci zpoždění, zvolte **nový krok**.
+1. V návrháři aplikace logiky v kroku, kam chcete přidat akci zpoždění, vyberte možnost **Nový krok**.
 
-   Chcete-li přidat akci zpoždění mezi jednotlivými kroky, přesuňte ukazatel myši na šipku, která se připojuje kroky. Vyberte znaménko plus (+), který se zobrazí a pak vyberte **přidat akci**.
+   Chcete-li přidat akci zpoždění mezi kroky, přesuňte ukazatel myši na šipku, která propojuje kroky. Zvolte znaménko plus (+), které se zobrazí, a pak vyberte **přidat akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "zpoždění". Ze seznamu akcí vyberte tuto akci: **zpoždění**
+1. Do vyhledávacího pole zadejte jako filtr "Delay". V seznamu akce vyberte tuto akci: **zpoždění** .
 
-   ![Přidání akce "Zpoždění"](./media/connectors-native-delay/add-delay-action.png)
+   ![Přidat akci zpoždění](./media/connectors-native-delay/add-delay-action.png)
 
-1. Zadejte dobu čekání před spuštěním další akce.
+1. Zadejte dobu, po kterou se má čekat, než se spustí další akce.
 
-   ![Nastavte dobu zpoždění](./media/connectors-native-delay/delay-time-intervals.png)
+   ![Nastavte dobu zpoždění.](./media/connectors-native-delay/delay-time-intervals.png)
 
    | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
    |----------|-----------|----------|------|-------------|
-   | Count | count | Ano | Integer | Počet časových jednotek zpoždění |
-   | Jednotka | Jednotka | Ano | String | Jednotka času, například: `Second`, `Minute`, `Hour`, `Day`, `Week`, nebo `Month` |
+   | Počet | count | Ano | Integer | Počet časových jednotek, které se mají zpozdit |
+   | Jednotka | jednotce | Ano | Řetězec | Jednotka času, například: `Second`, `Minute`, `Hour`, `Day`, `Week`nebo `Month` |
    ||||||
 
-1. Přidejte všechny další akce, které chcete spustit v pracovním postupu.
+1. Přidejte všechny další akce, které chcete v pracovním postupu spustit.
 
-1. Jakmile budete hotovi, uložte svou aplikaci logiky.
+1. Až budete hotovi, uložte aplikaci logiky.
 
 <a name="add-delay-until"></a>
 
-## <a name="add-the-delay-until-action"></a>Přidání zpoždění – dokud akce
+## <a name="add-the-delay-until-action"></a>Přidat akci zpoždění až do
 
-1. V návrháři aplikace logiky v kroku, ve které chcete přidat akci zpoždění, zvolte **nový krok**.
+1. V návrháři aplikace logiky v kroku, kam chcete přidat akci zpoždění, vyberte možnost **Nový krok**.
 
-   Chcete-li přidat akci zpoždění mezi jednotlivými kroky, přesuňte ukazatel myši na šipku, která se připojuje kroky. Vyberte znaménko plus (+), který se zobrazí a pak vyberte **přidat akci**.
+   Chcete-li přidat akci zpoždění mezi kroky, přesuňte ukazatel myši na šipku, která propojuje kroky. Zvolte znaménko plus (+), které se zobrazí, a pak vyberte **přidat akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "zpoždění". Ze seznamu akcí vyberte tuto akci: **Zpoždění do**
+1. Do vyhledávacího pole zadejte jako filtr "Delay". V seznamu akce vyberte tuto akci: **zpoždění do**
 
-   ![Přidání akce "Zpoždění do"](./media/connectors-native-delay/add-delay-until-action.png)
+   ![Přidat akci zpoždění do](./media/connectors-native-delay/add-delay-until-action.png)
 
-1. Zadejte koncové datum a čas pro kdy budete chtít pokračovat v pracovním postupu.
+1. Zadejte koncové datum a čas, kdy chcete pracovní postup obnovit.
 
-   ![Zadejte časové razítko času ukončení zpoždění](./media/connectors-native-delay/delay-until-timestamp.png)
+   ![Zadejte časové razítko, kdy se má zpoždění ukončit.](./media/connectors-native-delay/delay-until-timestamp.png)
 
    | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | timestamp | Ano | String | Koncové datum a čas pro obnovení pracovního postupu pomocí tohoto formátu: <p>YYYY-MM-DDThh:mm:ssZ <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00Z". <p>**Poznámka:** Musí dodržovat tento formát času [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Bez časové pásmo je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). |
+   | Časové razítko | časové razítko | Ano | Řetězec | Koncové datum a čas pro obnovení pracovního postupu v tomto formátu: <p>RRRR-MM-DDThh: mm: ssZ <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00Z". <p>**Poznámka:** Tento formát času musí odpovídat [specifikaci data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data a času UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Bez časového pásma je nutné přidat písmeno "Z" na konci bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||
 
-1. Přidejte všechny další akce, které chcete spustit v pracovním postupu.
+1. Přidejte všechny další akce, které chcete v pracovním postupu spustit.
 
-1. Jakmile budete hotovi, uložte svou aplikaci logiky.
+1. Až budete hotovi, uložte aplikaci logiky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vytvářet, plánovat a spouštět opakované úlohy a pracovní postupy pomocí triggeru opakování](../connectors/connectors-native-recurrence.md)
+* [Vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí triggeru opakování](../connectors/connectors-native-recurrence.md)
 * [Konektory pro Logic Apps](../connectors/apis-list.md)

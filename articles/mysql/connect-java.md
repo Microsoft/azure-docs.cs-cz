@@ -1,5 +1,5 @@
 ---
-title: Připojení k Azure Database for MySQL pomocí jazyka Java
+title: Připojit pomocí Azure Database for MySQL Java
 description: V tomto rychlém startu najdete ukázku kódu Java, který můžete použít k připojení a dotazování dat z databáze Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -7,20 +7,20 @@ ms.service: mysql
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 08/08/2019
-ms.openlocfilehash: 9df95a754d4bd423ddd7f57c634b86bd33e906ca
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.date: 12/02/2019
+ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155544"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770743"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rychlý start: Použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for MySQL
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for MySQL
 
 Tento rychlý Start ukazuje, jak se připojit k Azure Database for MySQL pomocí aplikace Java a ovladače JDBC [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Tento článek předpokládá, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
-1. Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
+## <a name="prerequisites"></a>Předpoklady
+1. Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
    - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
    - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 

@@ -1,64 +1,64 @@
 ---
-title: Vytvoření a Správa pravidel brány firewall ve službě Azure Database for PostgreSQL – jeden Server
-description: Vytvoření a Správa pravidel brány firewall pro službu Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
+title: Správa pravidel brány firewall-Azure Portal-Azure Database for PostgreSQL-Single server
+description: Vytvoření a Správa pravidel brány firewall pro Azure Database for PostgreSQL s jedním serverem pomocí Azure Portal
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 7eed2e81c6781ca660cffa909f27962a7c5112cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65069004"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770301"
 ---
-# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Vytvoření a Správa pravidel brány firewall pro službu Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
-Pravidla brány firewall na úrovni serveru můžete použít ke správě přístupu ke službě Azure Database for PostgreSQL Server ze zadané IP adresy nebo rozsah IP adres.
+# <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Vytvoření a Správa pravidel brány firewall pro Azure Database for PostgreSQL s jedním serverem pomocí Azure Portal
+Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for PostgreSQL ze zadané IP adresy nebo rozsahu IP adres.
 
-Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-using-portal.md).
+Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přístupu k serveru. Přečtěte si další informace o [vytváření a správě Virtual Networkch koncových bodů a pravidel služby pomocí Azure Portal](howto-manage-vnet-using-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
-Pro jednotlivé kroky v této příručce s postupy, musíte:
-- Server [vytvoření Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
+## <a name="prerequisites"></a>Předpoklady
+Pokud chcete projít tento průvodce, budete potřebovat:
+- Server [vytvoří Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru na webu Azure Portal
-1. Na stránce v části Nastavení serveru PostgreSQL záhlaví, klikněte na tlačítko **zabezpečení připojení** otevřete stránku zabezpečení připojení pro službu Azure Database for PostgreSQL.
+1. Na stránce PostgreSQL serveru klikněte v části nastavení na **zabezpečení připojení** a otevřete stránku zabezpečení připojení pro Azure Database for PostgreSQL.
 
-   ![Portál Azure – zabezpečení připojení klikněte na](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   ![Azure Portal – kliknutí na zabezpečení připojení](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
-2. Klikněte na tlačítko **přidat moji IP adresu** na panelu nástrojů. Tím automaticky se vytvoří pravidlo brány firewall s veřejnou IP adresu počítače, vnímanou systému Azure.
+2. Na panelu nástrojů klikněte na **Přidat moji IP adresu** . Tím se automaticky vytvoří pravidlo brány firewall s veřejnou IP adresou vašeho počítače, jak je znázorněno v systému Azure.
 
-   ![Azure portal – klikněte na tlačítko Přidat Moje IP adresa](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
+   ![Azure Portal klikněte na Přidat moji IP adresu.](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
-3. Před uložením konfiguraci ověřte vaši IP adresu. V některých případech IP adresu prostřednictvím webu Azure portal se liší od IP adresu používat při přístupu k Internetu a servery Azure. Proto budete muset změnit počáteční IP adresa a koncová IP adresa, aby pravidlo fungují podle očekávání.
-   Pomocí vyhledávacího webu nebo jiný nástroj pro online zkontrolujte svou vlastní IP adresu. Například vyhledejte "Jaký je Moje IP adresa".
+3. Před uložením konfigurace ověřte svoji IP adresu. V některých situacích se IP adresa zjištěná Azure Portal liší od IP adresy používané při přístupu k Internetu a k serverům Azure. Proto může být nutné změnit počáteční IP adresu a koncovou IP adresu, aby funkce pravidla fungovala podle očekávání.
+   Použijte vyhledávací modul nebo jiný online nástroj ke kontrole vlastní IP adresy. Vyhledejte například "Co je moje IP adresa".
 
-   ![Vyhledávání Bingu, co je Moje IP adresa](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
+   ![Vyhledávání Bingu pro co je moje IP adresa](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. Přidejte další adresní rozsahy adres. V pravidlech brány firewall pro službu Azure Database for PostgreSQL můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete omezit platnost pravidla pro jednu IP adresu, zadejte stejnou adresu v poli pro počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správci, uživatelé a aplikace pro přístup k libovolné databázi na serveru PostgreSQL, ke kterému mají platné přihlašovací údaje.
+4. Přidejte další rozsahy adres. V pravidlech brány firewall pro Azure Database for PostgreSQL můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete pravidlo omezit na jednu IP adresu, zadejte do pole stejnou adresu jako počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správcům, uživatelům a aplikacím přístup k libovolné databázi na serveru PostgreSQL, ke které mají platné přihlašovací údaje.
 
-   ![Azure portal – pravidla brány firewall](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Azure Portal – pravidla brány firewall](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
-5. Klikněte na tlačítko **Uložit** na panelu nástrojů uložte toto pravidlo brány firewall na úrovni serveru. Čekání na potvrzení, že aktualizace pravidla brány firewall byla úspěšná.
+5. Kliknutím na **Uložit** na panelu nástrojů uložte toto pravidlo brány firewall na úrovni serveru. Počkejte, až se potvrdí, že aktualizace pravidel firewallu proběhla úspěšně.
 
-   ![Azure portal – klikněte na možnost Uložit](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
+   ![Azure Portal – klikněte na Uložit.](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Připojení z Azure
-Pokud chcete umožnit aplikacím z Azure připojení k Azure Database for PostgreSQL server, musí být povolená připojení Azure. Například pro hostování aplikace Azure Web Apps nebo aplikace, která běží ve Virtuálním počítači Azure nebo k připojení ze Brána pro správu dat Azure Data Factory. Prostředky se nemusíte být ve stejné virtuální síti (VNet) nebo skupinu prostředků pro pravidlo brány firewall, aby tato připojení. Když se aplikace z Azure pokusí připojit k vašemu databázovému serveru, brána firewall ověří, zda jsou povolená připojení Azure. Existuje několik metod, které chcete povolit tyto typy připojení. Nastavení brány firewall s počáteční i koncovou adresou odpovídající 0.0.0.0 znamená, že jsou tato připojení povolená. Alternativně můžete nastavit **povolit přístup ke službám Azure** umožňuje **ON** portálu ze **zabezpečení připojení** podokna a stiskněte klávesu **Uložit**. Pokud pokus o připojení není povolený, požadavek vůbec nedostane serveru Azure Database for PostgreSQL.
+Pokud chcete aplikacím z Azure povolit připojení k vašemu Azure Database for PostgreSQL serveru, musí být povolená připojení Azure. Například pro hostování aplikace Web Apps v Azure nebo aplikace, která běží na virtuálním počítači Azure, nebo pro připojení z Azure Data Factory brány pro správu dat. Aby se tato připojení dala povolit, nemusíte být prostředky ve stejné Virtual Network (virtuální síti) nebo skupině prostředků pro pravidlo brány firewall. Když se aplikace z Azure pokusí připojit k vašemu databázovému serveru, brána firewall ověří, zda jsou povolená připojení Azure. K dispozici je několik metod, jak tyto typy připojení povolit. Nastavení brány firewall s počáteční i koncovou adresou odpovídající 0.0.0.0 znamená, že jsou tato připojení povolená. Alternativně můžete na portálu v podokně **zabezpečení připojení** nastavit možnost **Povolení přístupu ke službám Azure** na **zapnuto** a potom kliknout na **Uložit**. Pokud se pokus o připojení nepovoluje, požadavek nedosáhne serveru Azure Database for PostgreSQL.
 
 > [!IMPORTANT]
 > Touto možností se brána firewall nakonfiguruje tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup pouze na autorizované uživatele.
 > 
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Správa stávajících pravidel brány firewall na úrovni serveru na webu Azure Portal
-Opakováním těchto kroků můžete spravovat pravidla brány firewall.
-* Pokud chcete přidat aktuální počítač, kliknutím na tlačítko + **přidat moji IP adresu**. Kliknutím na **Uložit** uložte změny.
+Opakováním kroků spravujte pravidla brány firewall.
+* Chcete-li přidat aktuální počítač, klikněte na tlačítko a **přidejte IP adresu**. Kliknutím na **Uložit** uložte změny.
 * Pro přidání dalších IP adres zadejte Název pravidla, Počáteční IP adresu a Koncovou IP adresu. Kliknutím na **Uložit** uložte změny.
 * Pokud chcete upravit stávající pravidlo, klikněte na libovolné pole pravidla a upravte ho. Kliknutím na **Uložit** uložte změny.
-* Pokud chcete odstranit stávající pravidlo, klikněte na tlačítko se třemi tečkami [...] a klikněte na tlačítko **odstranit** pro odebrání pravidla. Kliknutím na **Uložit** uložte změny.
+* Chcete-li odstranit stávající pravidlo, klikněte na tlačítko se třemi tečkami [...] a odstraňte pravidlo kliknutím na tlačítko **Odstranit** . Kliknutím na **Uložit** uložte změny.
 
-## <a name="next-steps"></a>Další postup
-- Podobně můžete používat skripty pro [vytvořit a spravovat Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI](howto-manage-firewall-using-cli.md).
-- Dále zabezpečit přístup k vašemu serveru pomocí [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí webu Azure portal](howto-manage-vnet-using-portal.md).
-- Pomoc při připojování k serveru Azure Database for PostgreSQL, naleznete v tématu [připojení knihoven pro službu Azure Database for PostgreSQL](concepts-connection-libraries.md).
+## <a name="next-steps"></a>Další kroky
+- Podobně můžete vytvořit skript pro [vytváření a správu pravidel brány firewall Azure Database for PostgreSQL pomocí Azure CLI](howto-manage-firewall-using-cli.md).
+- [Vytvořením a správou koncových bodů a pravidel služby Virtual Network a pomocí Azure Portal](howto-manage-vnet-using-portal.md)můžete lépe zabezpečit přístup k vašemu serveru.
+- Nápovědu k připojení k serveru Azure Database for PostgreSQL najdete v tématu [knihovny připojení pro Azure Database for PostgreSQL](concepts-connection-libraries.md).

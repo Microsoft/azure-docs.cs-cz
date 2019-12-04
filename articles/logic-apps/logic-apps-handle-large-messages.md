@@ -1,29 +1,22 @@
 ---
-title: Zpracování velkých zpráv – Azure Logic Apps | Microsoft Docs
+title: Zpracování velkých zpráv
 description: Naučte se zpracovávat velké objemy zpráv pomocí bloků dat v Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
+ms.suite: integration
 author: shae-hurst
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
+ms.author: shhurst
 ms.topic: article
 ms.date: 4/27/2018
-ms.author: shhurst
-ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: e583bf53021d772db54c30ed5a4c9ea2a029e093
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69989928"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792018"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv pomocí bloků dat v Azure Logic Apps
 
-Při zpracování zpráv Logic Apps omezuje obsah zprávy na maximální velikost. Toto omezení pomáhá snižovat režie vytvořená ukládáním a zpracováním velkých zpráv. Pokud chcete zpracovávat zprávy větší, než je toto omezení , Logic Apps může zaznamenat velkou zprávu do menších zpráv. Tímto způsobem můžete dál přenášet velké soubory pomocí Logic Apps za určitých podmínek. Při komunikaci s jinými službami prostřednictvím konektorů nebo protokolu HTTP může Logic Apps využívat velké zprávy, ale *pouze* v blocích. Tento stav znamená, že konektory musí podporovat i bloky dat, nebo základní výměna zpráv HTTP mezi Logic Apps a tyto služby musí používat bloky dat.
+Při zpracování zpráv Logic Apps omezuje obsah zprávy na maximální velikost. Toto omezení pomáhá snižovat režie vytvořená ukládáním a zpracováním velkých zpráv. Pokud chcete zpracovávat zprávy větší, než je toto omezení, *Logic Apps může zaznamenat* velkou zprávu do menších zpráv. Tímto způsobem můžete dál přenášet velké soubory pomocí Logic Apps za určitých podmínek. Při komunikaci s jinými službami prostřednictvím konektorů nebo protokolu HTTP může Logic Apps využívat velké zprávy, ale *pouze* v blocích. Tento stav znamená, že konektory musí podporovat i bloky dat, nebo základní výměna zpráv HTTP mezi Logic Apps a tyto služby musí používat bloky dat.
 
 V tomto článku se dozvíte, jak můžete nastavit vytváření bloků dat pro akce, které jsou větší, než je limit. Triggery aplikace logiky nepodporují bloky dat kvůli zvýšené režii při výměně více zpráv. 
 
@@ -55,7 +48,7 @@ V obecných scénářích protokolu HTTP můžete rozdělit velký objem stahov�
 
 Pokud koncový bod povolil ukládání do bloků dat pro stahování nebo nahrávání, akce HTTP ve vaší aplikaci logiky automaticky zablokuje velké zprávy. V opačném případě musíte na koncovém bodu nastavit podporu bloků dat. Pokud nevlastníte nebo neovládáte koncový bod nebo konektor, možná nemáte možnost nastavit bloky dat.
 
-Také pokud akce http již nepovoluje vytváření bloků dat, je nutné nastavit také dělení na sebe ve `runTimeConfiguration` vlastnosti akce. Tuto vlastnost můžete nastavit uvnitř akce, buď přímo v editoru zobrazení kódu, jak je popsáno dále, nebo v Návrháři Logic Apps, jak je popsáno zde:
+Také pokud akce HTTP již nepovoluje vytváření bloků dat, je nutné nastavit také dělení na sebe ve vlastnosti `runTimeConfiguration` akce. Tuto vlastnost můžete nastavit uvnitř akce, buď přímo v editoru zobrazení kódu, jak je popsáno dále, nebo v Návrháři Logic Apps, jak je popsáno zde:
 
 1. V pravém horním rohu akce http zvolte tlačítko se třemi tečkami ( **...** ) a pak zvolte **Nastavení**.
 
@@ -73,7 +66,7 @@ Také pokud akce http již nepovoluje vytváření bloků dat, je nutné nastavi
 
 Mnoho koncových bodů automaticky odesílá velké zprávy do bloků dat při stažení prostřednictvím požadavku HTTP GET. Chcete-li stáhnout blokové zprávy z koncového bodu přes protokol HTTP, musí koncový bod podporovat požadavky na částečný obsah nebo *stahování pomocí bloků dat*. Když aplikace logiky odešle požadavek HTTP GET na koncový bod pro stažení obsahu a koncový bod odpoví stavovým kódem "206", odpověď obsahuje obsah v bloku. Logic Apps nemůže řídit, jestli koncový bod podporuje částečné požadavky. Nicméně, když aplikace logiky získá první odpověď "206", aplikace logiky automaticky pošle více požadavků na stažení veškerého obsahu.
 
-Pokud chcete zjistit, jestli koncový bod může podporovat částečný obsah, pošlete žádost o hlavu. Tato žádost vám pomůže určit, jestli odpověď obsahuje `Accept-Ranges` hlavičku. V takovém případě, pokud koncový bod podporuje stahování pomocí bloků dat, ale neodesílá obsah v bloku dat, můžete tuto možnost `Range` navrhnout nastavením hlavičky v žádosti HTTP GET. 
+Pokud chcete zjistit, jestli koncový bod může podporovat částečný obsah, pošlete žádost o hlavu. Tato žádost vám pomůže určit, jestli odpověď obsahuje hlavičku `Accept-Ranges`. V takovém případě, pokud koncový bod podporuje stahování pomocí bloků dat, ale neodesílá obsah v bloku dat, můžete tuto možnost *navrhnout* nastavením hlaviček `Range` v žádosti HTTP GET. 
 
 Tyto kroky popisují podrobný Logic Apps procesu, který se používá ke stahování obsahu v bloku dat z koncového bodu do vaší aplikace logiky:
 
@@ -83,13 +76,13 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá ke staho
 
 2. Koncový bod odpoví kódem stavu "206" a textem zprávy HTTP.
 
-    Podrobnosti o obsahu v tomto bloku se zobrazí v `Content-Range` hlavičce odpovědi, včetně informací, které pomáhají Logic Apps určení začátku a konce bloku a také celkové velikosti celého obsahu před vytvořením bloků dat.
+    Podrobnosti o obsahu v tomto bloku se zobrazí v hlavičce `Content-Range` odpovědi, včetně informací, které pomáhají Logic Apps určit začátek a konec bloku a také celkovou velikost celého obsahu před vytvořením bloků dat.
 
 3. Vaše aplikace logiky automaticky posílá následné požadavky HTTP GET.
 
     Vaše aplikace logiky odešle požadavky na následné získání, dokud se nenačte celý obsah.
 
-Například tato definice akce zobrazuje požadavek HTTP GET, který nastaví `Range` hlavičku. Záhlaví *naznačuje* , že koncový bod by měl odpovídat obsahu v bloku:
+Například tato definice akce zobrazuje požadavek HTTP GET, který nastaví hlavičku `Range`. Záhlaví *naznačuje* , že koncový bod by měl odpovídat obsahu v bloku:
 
 ```json
 "getAction": {
@@ -111,24 +104,24 @@ Požadavek GET nastaví hlavičku "Range" na "byte = 0-1023", což je rozsah baj
 
 ## <a name="upload-content-in-chunks"></a>Nahrávání obsahu v blocích
 
-Aby bylo možné nahrát obsah v bloku z akce HTTP, musí mít tato akce povolenou podporu bloků dat prostřednictvím `runtimeConfiguration` vlastnosti akce. Toto nastavení povoluje akci spuštění protokolu pro zpracování dat. Vaše aplikace logiky pak může poslat počáteční zprávu POST nebo PUT do cílového koncového bodu. Po reakci koncového bodu s navrhovanou velikostí bloku se aplikace logiky dokončí odesláním požadavků na opravu HTTP, které obsahují bloky obsahu.
+Aby bylo možné nahrát obsah v bloku z akce HTTP, musí akce povolit podporu bloků dat prostřednictvím vlastnosti `runtimeConfiguration` akce. Toto nastavení povoluje akci spuštění protokolu pro zpracování dat. Vaše aplikace logiky pak může poslat počáteční zprávu POST nebo PUT do cílového koncového bodu. Po reakci koncového bodu s navrhovanou velikostí bloku se aplikace logiky dokončí odesláním požadavků na opravu HTTP, které obsahují bloky obsahu.
 
 Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahrávání obsahu v bloku z aplikace logiky do koncového bodu:
 
 1. Vaše aplikace logiky pošle počáteční příspěvek HTTP nebo žádost o vložení s prázdným textem zprávy. Hlavička žádosti obsahuje tyto informace o obsahu, který vaše aplikace logiky chce nahrát do bloků:
 
-   | Logic Apps pole s hlavičkou žádosti | Value | type | Popis |
+   | Logic Apps pole s hlavičkou žádosti | Hodnota | Typ | Popis |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | blokové | String | Indikuje, že se obsah nahrává do bloků dat. |
-   | **x-ms-content-length** | <*content-length*> | Integer | Celá velikost obsahu v bajtech před vytvořením bloku dat |
+   | **x-MS-Transfer-Mode** | blokové | Řetězec | Indikuje, že se obsah nahrává do bloků dat. |
+   | **x-MS-Content-Length** | < *-Délka obsahu*> | Integer | Celá velikost obsahu v bajtech před vytvořením bloku dat |
    ||||
 
 2. Koncový bod odpoví kódem stavu úspěch "200" a tyto volitelné informace:
 
-   | Pole hlavičky odpovědi koncového bodu | type | Povinné | Popis |
+   | Pole hlavičky odpovědi koncového bodu | Typ | Požaduje se | Popis |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
-   | **Location** | String | Ano | Umístění adresy URL, kam se mají odeslat zprávy opravy HTTP |
+   | **x-MS-bloková velikost** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
+   | **Umístění** | Řetězec | Ano | Umístění adresy URL, kam se mají odeslat zprávy opravy HTTP |
    ||||
 
 3. Vaše aplikace logiky vytvoří a pošle následné zprávy opravy HTTP – každou s těmito informacemi:
@@ -137,22 +130,22 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
 
    * Tato hlavička podrobně popisuje blok obsahu odeslaný v každé zprávě opravy:
 
-     | Logic Apps pole s hlavičkou žádosti | Value | type | Popis |
+     | Logic Apps pole s hlavičkou žádosti | Hodnota | Typ | Popis |
      |---------------------------------|-------|------|-------------|
-     | **Rozsah obsahu** | <*oblasti*> | Řetězec | Rozsah bajtů pro aktuální blok obsahu, včetně počáteční hodnoty, koncové hodnoty a celkové velikosti obsahu, například: "bajty = 0-1023/10100" |
-     | **Typ obsahu** | <*content-type*> | Řetězec | Typ obsahu v bloku |
-     | **Content-Length** | <*content-length*> | Řetězec | Délka velikosti v bajtech pro aktuální blok dat |
+     | **Rozsah obsahu** | > *rozsahu* < | Řetězec | Rozsah bajtů pro aktuální blok obsahu, včetně počáteční hodnoty, koncové hodnoty a celkové velikosti obsahu, například: "bajty = 0-1023/10100" |
+     | **Typ obsahu** | <*typ obsahu*> | Řetězec | Typ obsahu v bloku |
+     | **Content-Length** | < *-Délka obsahu*> | Řetězec | Délka velikosti v bajtech pro aktuální blok dat |
      |||||
 
 4. Po každé žádosti o opravu koncový bod potvrdí příjem pro jednotlivé bloky, a to tak, že odpoví na stavový kód "200" a následující hlavičky odpovědí:
 
-   | Pole hlavičky odpovědi koncového bodu | type | Povinné | Popis |
+   | Pole hlavičky odpovědi koncového bodu | Typ | Požaduje se | Popis |
    |--------------------------------|------|----------|-------------|
    | **Rozsah** | Řetězec | Ano | Rozsah bajtů pro obsah, který byl přijat koncovým bodem, například: "bytes = 0-1023" |   
-   | **x-ms-chunk-size** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
+   | **x-MS-bloková velikost** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
    ||||
 
-Například tato definice akce zobrazuje požadavek HTTP POST pro nahrání obsahu v bloku do koncového bodu. Ve `runTimeConfiguration` vlastnosti `transferMode` akce sada `chunked`vlastnostínastavína: `contentTransfer`
+Například tato definice akce zobrazuje požadavek HTTP POST pro nahrání obsahu v bloku do koncového bodu. Ve vlastnosti `runTimeConfiguration` akce `contentTransfer` sady vlastností `transferMode` na `chunked`:
 
 ```json
 "postAction": {

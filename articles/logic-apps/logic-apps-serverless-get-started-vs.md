@@ -1,21 +1,17 @@
 ---
-title: Sestavení první aplikace bez serveru v aplikaci Visual Studio – Azure Logic Apps
+title: Sestavení první aplikace bez serveru v aplikaci Visual Studio
 description: Sestavování, nasazování a Správa aplikace bez serveru pomocí Azure Logic Apps a Azure Functions v aplikaci Visual Studio
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: vs-azure
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 76ab76440ddc25f4b1cf51f7d540a6e21614541d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680133"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792963"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Sestavte svou první aplikaci bez serveru pomocí Azure Logic Apps a Azure Functions v aplikaci Visual Studio
 
@@ -68,7 +64,7 @@ Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-re
 
    ![Vytvořit nový projekt v aplikaci Visual Studio](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. V části **Nainstalováno**, vyberte **Visual C#** nebo **Visual Basic**. Pak vyberte **cloudová**  > **Skupina prostředků Azure**.
+1. V části **Nainstalováno**, vyberte **Visual C#** nebo **Visual Basic**. Pak vyberte **cloudová** > **Skupina prostředků Azure**.
 
    > [!NOTE]
    > Pokud neexistuje kategorie **cloudu** nebo projekt **skupiny prostředků Azure** , ujistěte se, že jste nainstalovali sadu Azure SDK pro Visual Studio.
@@ -104,7 +100,7 @@ Začněte tím, že vytvoříte [projekt skupiny prostředků Azure](../azure-re
 
 Než budete moct aplikaci logiky otevřít v návrháři aplikace logiky v aplikaci Visual Studio, musíte mít skupinu prostředků Azure, která je už nasazená v Azure. Návrhář pak může vytvořit připojení k prostředkům a službám ve vaší aplikaci logiky. Pro tuto úlohu použijte následující postup k nasazení řešení ze sady Visual Studio do Azure Portal:
 
-1. V Průzkumník řešení v místní nabídce vašeho projektu prostředku vyberte **nasadit**  > **Nový**.
+1. V Průzkumník řešení v místní nabídce vašeho projektu prostředku vyberte **nasadit** > **Nový**.
 
    ![Vytvořit nové nasazení pro skupinu prostředků](./media/logic-apps-serverless-get-started-vs/deploy.png)
 

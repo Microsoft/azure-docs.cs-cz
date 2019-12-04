@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 076f98cb240014bcc88a395902203413e31fe0f1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 28c463204080296e431edb3c30b4fdd66f07a189
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642120"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776588"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Poskytnutí zpětné vazby k datům Azure Maps
 
-Azure Maps je všeobecně dostupná od května 2018, poskytuje nová data mapy, snadno použitelná rozhraní REST API a výkonné sady SDK pro podporu našich podnikových zákazníků v různých případech použití obchodních procesů. Reálný svět se mění každou sekundu a je zásadní pro nás, abychom zákazníkům poskytli faktickou digitální reprezentaci. Naši zákazníci, kteří plánují otevřít nebo zavřít zařízení, musí mít jistotu, že se naše mapy budou aktualizovat okamžitě, aby mohli efektivně plánovat doručování, údržbu nebo zákaznické služby na správných zařízeních. Vytvořili jsme nástroj pro zasílání zpětné vazby dat Azure Maps, abychom zákazníkům poskytli přímý názor na data. Zpětná vazba na data zákazníků směřuje přímo poskytovatelům dat a jejich editorům, kteří můžou rychle vyhodnocovat a začlenit zpětnou vazbu do našich mapovacích produktů.  
+Azure Maps je všeobecně dostupná od května 2018, poskytuje nová data mapy, snadno použitelná rozhraní REST API a výkonné sady SDK pro podporu našich podnikových zákazníků v různých případech použití obchodních procesů. Reálný svět se mění každou sekundu a je zásadní pro nás, abychom zákazníkům poskytli faktickou digitální reprezentaci. Naši zákazníci, kteří plánují otevřít nebo zavřít zařízení, musí mít jistotu, že se naše mapy budou aktualizovat okamžitě, aby mohli efektivně plánovat doručování, údržbu nebo zákaznické služby na správných zařízeních. Vytvořili jsme web Azure Maps data feedback, abychom našim zákazníkům poskytli přímý názor na data. Zpětná vazba na data zákazníků směřuje přímo poskytovatelům dat a jejich editorům, kteří můžou rychle vyhodnocovat a začlenit zpětnou vazbu do našich mapovacích produktů.  
 
-[Azure Maps Nástroj pro zpětnou vazbu dat](https://feedback.azuremaps.com) poskytuje zákazníkům snadný způsob, jak poskytnout zpětnou vazbu k datům map, zejména na obchodních místech zájmů a na domácích adresách. Tento článek vás provede postupem poskytování různých druhů zpětné vazby pomocí nástroje Azure Maps Feedback.
+[Azure Maps Web pro zasílání názorů dat](https://feedback.azuremaps.com) poskytuje zákazníkům snadný způsob, jak poskytovat zpětnou vazbu k datům map, zejména na obchodních místech zájmu a adres na pracovišti. Tento článek vás provede postupem poskytování různých druhů zpětné vazby pomocí webu Azure Maps Feedback.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Přidat obchodní místo nebo domácí adresu 
 
-Je možné, že budete chtít poskytnout zpětnou vazbu na chybějící bod zájmu nebo na adresu domů na mapě. Existují dva způsoby, jak to provést, otevřít nástroj pro zpětnou vazbu dat mapy Azure a vyhledat souřadnice chybějícího umístění a kliknout na Přidat místo.
+Je možné, že budete chtít poskytnout zpětnou vazbu na chybějící bod zájmu nebo na adresu domů na mapě. Existují dva způsoby, jak to provést, otevřít web pro odesílání dat mapy Azure a vyhledat souřadnice chybějících umístění a kliknout na Přidat místo.
 
   ![hledání chybějícího umístění](./media/how-to-use-feedback-tool/search-poi.png)
 
@@ -38,7 +38,7 @@ Po kliknutí budete přesměrováni na formulář, který poskytne příslušné
 
 ## <a name="fix-a-business-place-or-a-residential-address"></a>Oprava obchodního místa nebo domácí adresy 
 
-Nástroj pro zpětnou vazbu vám také umožní vyhledat a najít obchodní místo nebo adresu a poskytnout zpětnou vazbu k opravě adresy nebo místa pro PIN kód, pokud nejsou správné. Chcete-li poskytnout zpětnou vazbu k opravě adresy, použijte panel hledání k vyhledání obchodního místa nebo domácí adresy. V seznamu výsledků klikněte na umístění vašeho zájmu a potom klikněte na opravit toto místo.
+Web pro zpětnou vazbu vám také umožní vyhledat a najít obchodní místo nebo adresu a poskytnout zpětnou vazbu k opravě adresy nebo místa připnutí, pokud nejsou správné. Chcete-li poskytnout zpětnou vazbu k opravě adresy, použijte panel hledání k vyhledání obchodního místa nebo domácí adresy. V seznamu výsledků klikněte na umístění vašeho zájmu a potom klikněte na opravit toto místo.
 
   ![Hledat místo pro opravu](./media/how-to-use-feedback-tool/fix-place.png)
 
@@ -56,14 +56,14 @@ Kromě toho, že vám umožní vyhledat umístění, vám Nástroj pro zpětnou 
 
   ![Přidat komentář](./media/how-to-use-feedback-tool/add-comment.png)
 
-## <a name="track-status"></a>Stav sledování 
+## <a name="track-status"></a>Sledování stavu 
 
 Stav žádosti můžete sledovat také tak, že zkontrolujete pole chci sledovat stav a zadáte e-mailovou zprávu, která vám poskytne e-mail s žádostí. V e-mailu se zobrazí odkaz pro sledování, který poskytuje aktuální stav vaší žádosti. 
 
   ![stav zpětné vazby](./media/how-to-use-feedback-tool/feedback-status.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete zveřejnit jakékoli technické dotazy týkající se Azure Maps, navštivte:
 

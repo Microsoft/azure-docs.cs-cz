@@ -1,22 +1,18 @@
 ---
-title: Připojení k Excelu online – Azure Logic Apps
+title: Připojení k Excelu online
 description: Správa dat pomocí rozhraní REST API Excelu online a Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859251"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789804"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Správa dat v Excelu online pomocí Azure Logic Apps
 
@@ -33,14 +29,14 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](.
 > [!NOTE]
 > [Aplikace Excel Online pro firmy](/connectors/excelonlinebusiness/) a [Excel Online pro](/connectors/excelonline/) konektory OneDrive funguje s Azure Logic Apps a liší se od [konektoru aplikace Excel pro PowerApps](/connectors/excel/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * [Účet Office 365](https://www.office.com/) pro váš pracovní účet nebo osobní účet Microsoft
 
   Data Excelu můžou existovat jako textový soubor s oddělovači (CSV) ve složce úložiště, například na OneDrivu. 
-  Můžete také použít stejný soubor CSV s konektorem s [plochými soubory](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
+  Můžete také použít stejný soubor CSV s [konektorem s plochými soubory](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -70,6 +66,6 @@ Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, j
 * [Excel Online pro firmy](/connectors/excelonlinebusiness/)
 * [Excel Online pro OneDrive](/connectors/excelonline/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

@@ -1,18 +1,18 @@
 ---
-title: Postup zálohování a obnovení serveru v Azure Database for MySQL
+title: Zálohování a obnovení – Azure CLI – Azure Database for MySQL
 description: Naučte se zálohovat a obnovovat Server v Azure Database for MySQL pomocí Azure CLI.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: b265b77e08dda582153efa51c036f4f7a9de8d41
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: b2458c42a77ffee6985165252b0ebab836fce457
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965207"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774133"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -114,7 +114,7 @@ Příkaz `az mysql server georestore` vyžaduje následující parametry:
 |jméno | mydemoserver – geograficky obnovené | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy jsou používány. |
 |location | eastus | Umístění nového serveru. |
-|sku-name| GP_Gen5_8 | Tento parametr nastaví cenovou úroveň, generaci výpočtů a počet virtuální jádra nového serveru. GP_Gen5_8 mapuje na Pro obecné účely, Gen 5 Server s 8 virtuální jádra.|
+|sku-name| GP_Gen5_8 | Tento parametr nastaví cenovou úroveň, generaci výpočtů a počet virtuální jádra nového serveru. GP_Gen5_8 se mapuje na Pro obecné účely, Gen 5 Server s 8 virtuální jádra.|
 
 Při vytváření nového serveru geografickým obnovením se zdědí stejná velikost úložiště a cenová úroveň jako na zdrojovém serveru. Tyto hodnoty nelze během vytváření změnit. Po vytvoření nového serveru se velikost úložiště dá škálovat.
 

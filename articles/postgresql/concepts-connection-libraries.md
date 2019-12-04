@@ -1,38 +1,38 @@
 ---
-title: Připojení knihoven pro službu Azure Database for PostgreSQL – jeden Server
-description: Tento článek popisuje několik knihoven a ovladače, že vývojáři mohou použít při psaní kódu aplikace k připojení a dotazování Azure Database for PostgreSQL – jeden Server.
+title: Knihovny připojení – Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje několik knihoven a ovladačů, které můžete použít při kódování aplikací pro připojení a dotazování Azure Database for PostgreSQL-Single server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 85110126f9bdec225b1644860814cd89832132a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2305a02e5b094ec9e98f39363ddbd0c39221ab0b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073596"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768890"
 ---
-# <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Připojení knihoven pro službu Azure Database for PostgreSQL – jeden Server
-Tento článek obsahuje seznam knihoven a ovladače, které mohou vývojáři k vývoji aplikací k připojení a dotazování Azure Database for PostgreSQL.
+# <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Knihovny připojení pro Azure Database for PostgreSQL – jeden server
+Tento článek obsahuje seznam knihoven a ovladačů, které můžou vývojáři použít k vývoji aplikací pro připojení k Azure Database for PostgreSQL a dotazování na ně.
 
 ## <a name="client-interfaces"></a>Klientská rozhraní
-Většina klientské knihovny jazyk používaný pro připojení k serveru PostgreSQL jsou externí projekty a distribuují se nezávisle na sobě. Knihovny uvedené se podporují na platformách Windows, Linux a Mac pro připojení k Azure Database for PostgreSQL. Několik příkladů rychlý Start jsou uvedeny v části Další kroky.
+Většina jazykových klientských knihoven používaných pro připojení k serveru PostgreSQL je externí projekty a distribuuje se nezávisle. Uvedené knihovny jsou podporované na platformách Windows, Linux a Mac pro připojení k Azure Database for PostgreSQL. V části Další kroky jsou uvedeny některé příklady rychlých startů.
 
 | **Jazyk** | **Rozhraní klienta** | **Další informace** | **Stáhnout** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
-| Python | [psycopg](http://initd.org/psycopg/) | Rozhraní API DB 2.0 nedodržující předpisy | [Stáhnout](http://initd.org/psycopg/download/) |
-| PHP | [php-pgsql](https://secure.php.net/manual/en/book.pgsql.php) | Rozšíření databáze | [Instalace](https://secure.php.net/manual/en/pgsql.installation.php) |
-| Node.js | [Balíček npm PG](https://www.npmjs.com/package/pg) | Čistě javascriptový neblokující klient | [Instalace](https://www.npmjs.com/package/pg) |
-| Java | [JDBC](https://jdbc.postgresql.org/) | Ovladač JDBC typu 4 | [Stáhnout](https://jdbc.postgresql.org/download.html)  |
-| Ruby | [Nástroj gem PG](https://deveiate.org/code/pg/) | Ruby rozhraní | [Stáhnout](https://rubygems.org/downloads/pg-0.20.0.gem) |
-| Přejít | [Balíček pq](https://godoc.org/github.com/lib/pq) | Pure Go postgres ovladače | [Instalace](https://github.com/lib/pq/blob/master/README.md) |
-| C\#/ .NET | [Npgsql](https://www.npgsql.org/) | ADO.NET Data Provider | [Stáhnout](https://www.microsoft.com/net/) |
+| Python | [psycopg](http://initd.org/psycopg/) | DB API 2,0 – kompatibilní | [Stáhnout](http://initd.org/psycopg/download/) |
+| PHP | [php – PgSQL](https://secure.php.net/manual/en/book.pgsql.php) | Rozšíření databáze | [Instalace](https://secure.php.net/manual/en/pgsql.installation.php) |
+| Node.js | [Balíček pg npm](https://www.npmjs.com/package/pg) | Čistý JavaScript bez blokování klienta | [Instalace](https://www.npmjs.com/package/pg) |
+| Java | [JDBC](https://jdbc.postgresql.org/) | Typ 4 ovladač JDBC | [Stáhnout](https://jdbc.postgresql.org/download.html)  |
+| Ruby | [PG Gem](https://deveiate.org/code/pg/) | Rozhraní Ruby | [Stáhnout](https://rubygems.org/downloads/pg-0.20.0.gem) |
+| Go | [PQ balíčku](https://godoc.org/github.com/lib/pq) | Ovladač čistého přechodu na Postgres | [Instalace](https://github.com/lib/pq/blob/master/README.md) |
+| C\#/.NET | [Npgsql](https://www.npgsql.org/) | ADO.NET Zprostředkovatel dat | [Stáhnout](https://www.microsoft.com/net/) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | Ovladač ODBC | [Stáhnout](https://www.postgresql.org/ftp/odbc/versions/) |
-| C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | Primární rozhraní jazyka C | Zahrnuje |
-| C++ | [libpqxx](http://pqxx.org/) | Nový styl C++ rozhraní | [Stáhnout](http://pqxx.org/download/software/) |
+| C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | Primární rozhraní jazyka C | Zahrnuté |
+| C++ | [libpqxx](http://pqxx.org/) | Nové styly C++ rozhraní | [Stáhnout](http://pqxx.org/download/software/) |
 
-## <a name="next-steps"></a>Další postup
-Přečtěte si v těchto rychlých startech o tom, jak připojení a dotazování – Azure Database for PostgreSQL pomocí svůj jazyk:
+## <a name="next-steps"></a>Další kroky
+Přečtěte si tyto rychlé starty, jak se připojit k a dotazovat Azure Database for PostgreSQL pomocí vašeho jazyka podle vlastního výběru:
 
-[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md)  |  [.NET (C#)](./connect-csharp.md) | [přejít](./connect-go.md)
+[Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Přejít](./connect-go.md)

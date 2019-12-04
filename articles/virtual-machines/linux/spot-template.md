@@ -1,0 +1,197 @@
+---
+title: Použití šablony k nasazení virtuálních počítačů Azure na místě (Preview)
+description: Naučte se používat šablonu k nasazení virtuálních počítačů na místě za účelem úspory nákladů.
+services: virtual-machines-linux
+documentationcenter: ''
+author: cynthn
+manager: gwallace
+editor: ''
+tags: azure-resource-manager
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/14/2019
+ms.author: cynthn
+ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74782200"
+---
+# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Nasazení virtuálních počítačů na místě pomocí šablony Správce prostředků
+
+Použití [přímých virtuálních počítačů](spot-vms.md) vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
+
+Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
+
+Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Například hodnota `0.98765`by byla maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu, která se má `-1`, virtuální počítač se nevyřadí na základě ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta. Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](spot-vms.md#pricing).
+
+> [!IMPORTANT]
+> Instance přímých instancí jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> V první části verze Public Preview budou mít instance pro tisk pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
+
+
+## <a name="use-a-template"></a>Použití šablony 
+
+Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` nebo novější. Do šablony přidejte `priority`, `evictionPolicy` a `billingProfile` vlastnosti: 
+
+```json
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }
+```
+
+
+> [!IMPORTANT]
+> V první části veřejné verze Preview můžete nastavit maximální cenu, ale bude se ignorovat. Virtuální počítače s cenami budou mít pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
+
+
+Tady je Ukázková šablona s přidanými vlastnostmi pro virtuální počítač s přímým odkazem. Názvy prostředků nahraďte vlastními a `<password>` hesla pro účet místního správce ve VIRTUÁLNÍm počítači.
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2019-03-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
+    "variables": {
+        "vnetId": "/subscriptions/ec9fcd04-e188-48b9-abfc-abcd515f1836/resourceGroups/spotVM/providers/Microsoft.Network/virtualNetworks/spotVM",
+        "subnetName": "default",
+        "networkInterfaceName": "spotVMNIC",
+        "publicIpAddressName": "spotVM-ip",
+        "publicIpAddressType": "Dynamic",
+        "publicIpAddressSku": "Basic",
+        "virtualMachineName": "spotVM",
+        "osDiskType": "Premium_LRS",
+        "virtualMachineSize": "Standard_D2s_v3",
+        "adminUsername": "azureuser",
+        "adminPassword": "<password>",
+        "diagnosticsStorageAccountName": "diagstoragespot2019",
+        "diagnosticsStorageAccountId": "Microsoft.Storage/storageAccounts/diagstoragespot2019",
+        "diagnosticsStorageAccountType": "Standard_LRS",
+        "diagnosticsStorageAccountKind": "Storage",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]"
+    },
+    "resources": [
+        {
+            "name": "spotVM",
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2019-03-01",
+            "location": "eastus",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            },
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIpAddress": {
+                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "[variables('publicIpAddressName')]",
+            "type": "Microsoft.Network/publicIpAddresses",
+            "apiVersion": "2019-02-01",
+            "location": "eastus",
+            "properties": {
+                "publicIpAllocationMethod": "[variables('publicIpAddressType')]"
+            },
+            "sku": {
+                "name": "[variables('publicIpAddressSku')]"
+            }
+        },
+        {
+            "name": "[variables('virtualMachineName')]",
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-03-01",
+            "location": "eastus",
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]",
+                "[concat('Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[variables('virtualMachineSize')]"
+                },
+                "storageProfile": {
+                    "osDisk": {
+                        "createOption": "fromImage",
+                        "managedDisk": {
+                            "storageAccountType": "[variables('osDiskType')]"
+                        }
+                    },
+                    "imageReference": {
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "18.04-LTS",
+                        "version": "latest"
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[variables('virtualMachineName')]",
+                    "adminUsername": "[variables('adminUsername')]",
+                    "adminPassword": "[variables('adminPassword')]"
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https://', variables('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
+                    }
+                },
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }               
+            }
+        },
+        {
+            "name": "[variables('diagnosticsStorageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "location": "eastus",
+            "properties": {},
+            "kind": "[variables('diagnosticsStorageAccountKind')]",
+            "sku": {
+                "name": "[variables('diagnosticsStorageAccountType')]"
+            }
+        }
+    ],
+    "outputs": {
+        "adminUsername": {
+            "type": "string",
+            "value": "[variables('adminUsername')]"
+        }
+    }
+}
+```
+
+## <a name="next-steps"></a>Další kroky
+
+Můžete také vytvořit virtuální počítač s přímým použitím [Azure PowerShell](../windows/spot-powershell.md) nebo rozhraní příkazového [řádku Azure](spot-cli.md).
+
+Pokud dojde k chybě, přečtěte si [kódy chyb](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

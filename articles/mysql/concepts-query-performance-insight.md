@@ -1,17 +1,17 @@
 ---
-title: Query Performance Insight v Azure Database for MySQL
+title: Query Performance Insight – Azure Database for MySQL
 description: Tento článek popisuje funkci Query Performance Insight v Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 38299a8ffd72722c2d2c1dda9227b7fbf76c0386
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: 762353cbc276eb78868c46bbfde4789e792f6d85
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603109"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775984"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight v Azure Database for MySQL
 
@@ -35,7 +35,7 @@ Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dota
 
 K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby Query Performance Insight fungoval, musí existovat data v [úložišti dotazů](concepts-query-store.md).
 

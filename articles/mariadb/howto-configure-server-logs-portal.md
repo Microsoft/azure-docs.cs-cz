@@ -1,29 +1,29 @@
 ---
-title: Konfigurace a přístup k protokolům serveru v Azure Database for MariaDB z Azure Portal
-description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru v Azure Database for MariaDB z Azure Portal.
+title: Přístup k protokolům pomalým dotazům-Azure Portal-Azure Database for MariaDB
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům pomalým dotazům v Azure Database for MariaDB z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: c7e95521e503ad2d92bf13ae7e410b71ed6dfcd3
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 12/02/2019
+ms.openlocfilehash: 69a01ec021ecbade235a693b1be502353420fde0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844690"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767462"
 ---
-# <a name="configure-and-access-server-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům serveru z Azure Portal
+# <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům z Azure Portal
 
 V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly pomalých dotazů Azure Database for MariaDB](concepts-server-logs.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Postup v tomto článku vyžaduje, abyste měli [Azure Database for MariaDB Server](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Nakonfigurujte přístup k protokolu pomalých dotazů. 
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte server Azure Database for MariaDB.
 

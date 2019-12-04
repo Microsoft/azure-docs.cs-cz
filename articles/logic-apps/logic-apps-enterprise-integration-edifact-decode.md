@@ -1,101 +1,99 @@
 ---
-title: Dekódování zprávy EDIFACT – Azure Logic Apps | Dokumentace Microsoftu
-description: Ověřování EDI a generování potvrzení s dekodér zprávy EDIFACT pro Azure Logic Apps sadou Enterprise Integration Pack
+title: Dekódovat zprávy EDIFACT
+description: Ověřte EDI a generujte potvrzení pomocí dekodéru zpráv EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696198"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790663"
 ---
-# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódování zprávy EDIFACT pro Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódovat zprávy EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
 
-Zpráva konektoru dekódování EDIFACT můžete ověřit EDI a vlastnosti specifické pro partnera, rozdělit výměn do sad transakcí nebo zachovat celý výměn a generovat potvrzení pro zpracování transakcí. Pokud chcete použít tento konektor, musí přidání konektoru do existující aktivační událost ve své aplikaci logiky.
+Pomocí nástroje dekódovat konektor zpráv EDIFACT můžete ověřit vlastnosti EDI a partner, rozdělit vzájemnou změnu na sady transakcí nebo zachovat celá propojení a generovat potvrzení pro zpracované transakce. Pokud chcete použít tento konektor, musíte přidat konektor k existující triggeru ve vaší aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Tady je položky, které budete potřebovat:
+Tady jsou položky, které potřebujete:
 
-* Účet Azure. můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free)
-* [Účtu pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který již má definovaný a spojené s předplatným Azure. Integrační účet pro použití konektoru zpráva dekódování EDIFACT musí mít. 
-* Alespoň dva [partnery](logic-apps-enterprise-integration-partners.md) , která jsou již definovány v účtu integrace
-* [Smlouvy EDIFACT](logic-apps-enterprise-integration-edifact.md) , která je již definována v účtu integrace
+* Účet Azure; Můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free) .
+* [Účet pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který je už definovaný a přidružený k vašemu předplatnému Azure. Abyste mohli použít dekódovaný konektor zpráv EDIFACT, musíte mít účet pro integraci. 
+* Alespoň dva [partneři](logic-apps-enterprise-integration-partners.md) , kteří jsou již definováni v účtu integrace
+* [Smlouva EDIFACT](logic-apps-enterprise-integration-edifact.md) , která je už definovaná v účtu integrace
 
-## <a name="decode-edifact-messages"></a>Dekódování zprávy EDIFACT
+## <a name="decode-edifact-messages"></a>Dekódovat zprávy EDIFACT
 
-1. [Vytvoření aplikace logiky](quickstart-create-first-logic-app-workflow.md).
+1. [Vytvořte aplikaci logiky](quickstart-create-first-logic-app-workflow.md).
 
-2. Dekódování EDIFACT zpráva konektoru nemá aktivačních událostí, proto musíte přidat aktivační událost pro spuštění aplikace logiky jako aktivační událost požadavek. V návrháři aplikace logiky přidávat aktivační události a pak přidat akci do aplikace logiky.
+2. Dekódovaný konektor zpráv EDIFACT neobsahuje triggery, takže musíte přidat Trigger pro spuštění aplikace logiky, jako je Trigger žádosti. V návrháři aplikace logiky přidejte Trigger a pak přidejte akci do aplikace logiky.
 
-3. Do vyhledávacího pole zadejte jako filtr "EDIFACT". Vyberte **dekódovat zprávu EDIFACT**.
+3. Do vyhledávacího pole zadejte "EDIFACT" jako filtr. Vyberte **dekódovat zprávu EDIFACT**.
    
-    ![hledání EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
+    ![Hledat EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
-3. Pokud jste nevytvořili dříve všechna připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení. Název připojení a vyberte účet pro integraci, kterou chcete připojit.
+3. Pokud jste dříve nevytvořili žádná připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení nyní. Zadejte název připojení a vyberte účet pro integraci, který chcete připojit.
    
-    ![Vytvoření účtu pro integraci](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
+    ![vytvořit účet pro integraci](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
 
-    Vyžadují se vlastnosti s hvězdičkou.
+    Jsou vyžadovány vlastnosti s hvězdičkou.
 
     | Vlastnost | Podrobnosti |
     | --- | --- |
-    | Název připojení * |Zadejte libovolný název vašeho připojení. |
-    | Účet integrace * |Zadejte název účtu pro integraci. Ujistěte se, že integrační účet a logiku aplikace jsou ve stejném umístění Azure. |
+    | Název připojení * |Zadejte libovolný název připojení. |
+    | Účet pro integraci * |Zadejte název účtu pro integraci. Ujistěte se, že váš účet pro integraci a aplikace logiky jsou ve stejném umístění Azure. |
 
-4. Až to budete mít k dokončení vytváření připojení, zvolit **vytvořit**. Podrobnosti připojení by měla vypadat podobně jako v tomto příkladu:
+4. Až skončíte s vytvářením připojení, klikněte na **vytvořit**. Podrobnosti o připojení by měly vypadat podobně jako v tomto příkladu:
 
-    ![Podrobnosti o účtu integrace](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
+    ![Podrobnosti účtu pro integraci](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
-5. Po vytvoření připojení, jak je znázorněno v tomto příkladu, vyberte zpráva plochého souboru EDIFACT k dekódování.
+5. Po vytvoření připojení, jak je znázorněno v tomto příkladu, vyberte zprávu EDIFACT Flat File, která se má dekódovat.
 
-    ![Vytvoření připojení k účtu integrace](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
+    ![vytvořilo se připojení k účtu pro integraci.](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    Příklad:
+    Například:
 
-    ![Vyberte zpráva plochého souboru EDIFACT k dekódování](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
+    ![Pro dekódování vybrat zprávu plochý soubor EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
-## <a name="edifact-decoder-details"></a>Podrobnosti dekodér EDIFACT
+## <a name="edifact-decoder-details"></a>Podrobnosti o dekodéru EDIFACT
 
-Dekódování EDIFACT connector provádí tyto úlohy: 
+Dekódovaný EDIFACT konektor provádí tyto úlohy: 
 
-* Ověří obálky proti obchodování partnerskou smlouvu.
-* Vyhodnotí smlouvu to provede spárováním odpovídajících kvalifikátor odesílatele a identifikátoru a kvalifikátoru pro příjemce a identifikátor.
-* Rozdělí křižovatky do více transakcí při výměna má více než jednu transakci podle dohody přijímat konfigurační nastavení.
-* Zpětně přeloží výměna.
-* Ověří EDI a vlastnosti specifické pro partnerů, včetně:
+* Ověří obálku proti smlouvě s obchodním partnerem.
+* Vyhodnotí smlouvu porovnáním kvalifikátoru odesílatele & identifikátoru a kvalifikátoru přijímače & identifikátoru.
+* Rozdělí výměnu na více transakcí, pokud má výměna více než jednu transakci na základě konfigurace nastavení přijetí smlouvy.
+* Rozloží výměnu.
+* Ověřuje EDI a vlastnosti specifické pro partnerský server, včetně:
   * Ověření struktury obálky výměny
-  * Ověření schématu obálky ovládacího prvku schématu
-  * Ověření schématu datové sady transakcí prvky proti schématu zprávy
-  * Ověřování EDI provedla sada transakcí datových prvků
-* Ověřuje, že kontrolních čísel sady výměny, skupiny a transakce nejsou duplikáty (je-li konfigurováno) 
-  * Ověří proti dříve přijaté výměn kontrolní číslo výměny. 
-  * Ověří proti dalších kontrolních čísel skupiny v výměna kontrolní číslo skupiny. 
-  * Ověří, že kontrolní číslo sady transakcí pro ostatní transakce sada kontrolních čísel v této skupině.
-* Rozdělí výměna do sady transakcí nebo zachová celý výměny:
-  * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: Výměna rozdělí do transakce nastaví a Parsuje každá sada transakcí. 
-  X12 dekódování akce vypíše pouze ty transakce sad, které neúspěšné ověření na `badMessages`a nastaví zbývající transakce na výstupy `goodMessages`.
-  * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: Výměna rozdělí do transakce nastaví a Parsuje každá sada transakcí. 
-  Pokud je jeden nebo více transakcí nastaví v výměna neúspěšné ověření, X12 dekódování akce vypíše všechny transakce nastaví v této výměny na `badMessages`.
-  * Zachovat výměnu – pozastavit sady transakcí při chybě: Zachovat výměnu a celé výměně dávkové zpracování. 
-  X12 dekódování akce vypíše pouze ty transakce sad, které neúspěšné ověření na `badMessages`a nastaví zbývající transakce na výstupy `goodMessages`.
-  * Zachovat výměnu – pozastavit výměnu při chybě: Zachovat výměnu a celé výměně dávkové zpracování. 
-  Pokud je jeden nebo více transakcí nastaví v výměna neúspěšné ověření, X12 dekódování akce vypíše všechny transakce nastaví v této výměny na `badMessages`.
-* Generuje technické (řízení) nebo funkční potvrzení (je-li konfigurováno).
-  * Technické potvrzení nebo CONTRL ACK hlásí výsledky syntaktické kontrolu dokončení přijatý výměny.
-  * Funkční potvrzení uznává následně přijímal nebo odmítal přijatý výměny nebo skupiny
+  * Ověřování schématu obálky proti schématu ovládacího prvku
+  * Ověřování schématu datových elementů transakce-sady podle schématu zprávy
+  * Ověřování EDI provedené v datových prvcích sady transakcí
+* Ověřuje, že čísla řízení výměny, skupiny a sady transakcí nejsou duplicitní (pokud jsou nakonfigurovaná). 
+  * Kontroluje kontrolní číslo výměny proti dříve přijatým změnám. 
+  * Kontroluje číslo řízení skupiny proti jiným řídicím číslům skupiny ve výměně. 
+  * Kontroluje kontrolní číslo sady transakcí s jinými čísly řízení sady transakcí v této skupině.
+* Rozdělí výměnu na sady transakcí nebo zachová celý výměnu:
+  * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: rozdělí výměnu na sady transakcí a analyzuje každou sadu transakcí. 
+  Akce dekódovat X12 vrátí pouze sady transakcí, které neúspěšné ověření pro `badMessages`, a vytvoří výstup zbývajících transakcí do `goodMessages`.
+  * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: rozděluje výměnu do sad transakcí a analyzuje každou sadu transakcí. 
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages`.
+  * Zachovat výměnu – pozastavit sady transakcí při chybě: zachovejte výměnu a zpracujte celý dávkový vydaný výměnný. 
+  Akce dekódovat X12 vrátí pouze sady transakcí, které neúspěšné ověření pro `badMessages`, a vytvoří výstup zbývajících transakcí do `goodMessages`.
+  * Zachovat výměnu – pozastavit výměnu při chybě: zachovejte výměnu a zpracujte celý dávkový výměnný. 
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages`.
+* Generuje technický (ovládací) nebo funkční potvrzení (Pokud je nakonfigurováno).
+  * Technické potvrzení nebo potvrzení CONTRLu hlásí výsledky syntaktické kontroly kompletního přijímaného přenosu.
+  * Funkční potvrzení potvrdí přijetí nebo odmítnutí přijatého výměny nebo skupiny.
 
 ## <a name="view-swagger-file"></a>Zobrazit soubor Swagger
-Chcete-li zobrazit podrobnosti Swagger pro konektor EDIFACT, naleznete v tématu [EDIFACT](/connectors/edifact/).
+Podrobnosti o Swagger pro konektor EDIFACT najdete v tématu [EDIFACT](/connectors/edifact/).
 
-## <a name="next-steps"></a>Další postup
-[Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack") 
+## <a name="next-steps"></a>Další kroky
+[Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack") 
 

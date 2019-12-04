@@ -1,20 +1,19 @@
 ---
-title: Batch zpracuje zprávy jako Azure Logic Apps skupiny.
+title: Batch zpracuje zprávy jako skupinu.
 description: Posílání a přijímání zpráv jako dávek v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, jonfan, LADocs
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: b56a50fceec8ac6be966c0c58a82e94e0c977143
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680441"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791575"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
 
@@ -60,7 +59,7 @@ Než budete moci odeslat zprávy do dávky, tato dávková operace musí nejprve
    |----------|-------------|
    | **Dávkový režim** | - **Inlineed**: pro definování kritérií vydání v rámci triggeru dávky <br>- **účet pro integraci**: pro definování více konfigurací kritérií vydání prostřednictvím [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Pomocí účtu pro integraci můžete tyto konfigurace udržovat na jednom místě a ne v samostatných aplikacích logiky. | 
    | **Název dávky** | Název pro dávku, který je v tomto příkladu "TestBatch" a vztahuje se pouze na **vložený** režim dávky |  
-   | **Kritéria uvolnění** | Platí jenom pro **vložený** režim dávky a vybírá kritéria, která se mají splnit před zpracováním každé dávky: <p>**založené na počtu -  zpráv**: Uvolněte dávku na základě počtu zpráv shromážděných dávkou. <br>**podle velikosti**- : vyuvolněte dávku na základě celkové velikosti v bajtech pro všechny zprávy shromážděné touto dávkou. <br>- **plán**: vyuvolněte dávku na základě plánu opakování, který určuje interval a frekvenci. V pokročilých možnostech můžete také vybrat časové pásmo a zadat počáteční datum a čas. <br>- **Vybrat vše**: použijte všechna zadaná kritéria. | 
+   | **Kritéria uvolnění** | Platí jenom pro **vložený** režim dávky a vybírá kritéria, která se mají splnit před zpracováním každé dávky: <p>**založené na počtu - zpráv**: Uvolněte dávku na základě počtu zpráv shromážděných dávkou. <br>**podle velikosti**- : vyuvolněte dávku na základě celkové velikosti v bajtech pro všechny zprávy shromážděné touto dávkou. <br>- **plán**: vyuvolněte dávku na základě plánu opakování, který určuje interval a frekvenci. V pokročilých možnostech můžete také vybrat časové pásmo a zadat počáteční datum a čas. <br>- **Vybrat vše**: použijte všechna zadaná kritéria. | 
    | **Počet zpráv** | Počet zpráv, které se mají shromažďovat v dávce, například 10 zpráv. Limit dávky je 8 000 zpráv. | 
    | **Velikost dávky** | Celková velikost v bajtech, která se má shromáždit v dávce, například 10 MB. Limit velikosti dávky je 80 MB. | 
    | **Plán** | Interval a četnost mezi vydanými dávkami, například 10 minut. Minimální opakování je 60 sekund nebo 1 minuta. Zlomková minuta se efektivně zaokrouhlí na 1 minutu. Chcete-li zadat časové pásmo nebo počáteční datum a čas, zvolte možnost **Zobrazit upřesňující možnosti**. | 
@@ -88,7 +87,7 @@ Než budete moci odeslat zprávy do dávky, tato dávková operace musí nejprve
       Pokud máte účet Gmail, vyberte konektor gmail. 
       V tomto příkladu se používá Office 365 Outlook. 
 
-   3. Vyberte tuto akci: **Odeslat*poskytovatele* e-mailu < e** -mailu >
+   3. Vyberte tuto akci: **Odeslat*poskytovatele* e-mailu < e** -mailu>
 
       Například:
 
@@ -163,9 +162,9 @@ Nyní vytvořte jednu nebo více aplikací pro příjem z aplikace Batch, které
       > 
       > Pokud používáte aplikaci Visual Studio a nevidíte žádné přijímače Batch k výběru, zkontrolujte, že jste do Azure nasadili přijímače Batch. Pokud jste to ještě neudělali, přečtěte si, jak [nasadit aplikaci logiky přijímače z Batch do Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). 
 
-   4. Vyberte tuto akci: **Batch_messages-<*vašeho-Batch-pøijímaèe* >**
+   4. Vyberte tuto akci: **Batch_messages-<*vaše-Batch-Receiver*>**
 
-      ![Vyberte tuto akci: Batch_messages-< Your-Logic-App >.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![Vyberte tuto akci: Batch_messages-< vaše logika-aplikace >](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 3. Nastavit vlastnosti odesilatele dávky:
 
@@ -181,7 +180,7 @@ Nyní vytvořte jednu nebo více aplikací pro příjem z aplikace Batch, které
 
    2. Po zobrazení seznamu dynamický obsah vyberte možnost **výraz**. 
 
-   3. Zadejte výraz `utcnow()` a klikněte na **tlačítko OK**. 
+   3. Zadejte výraz `utcnow()`a klikněte na **tlačítko OK**. 
 
       ![V části obsah zprávy vyberte možnost výraz, zadejte "UtcNow ()" a klikněte na tlačítko OK.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
@@ -199,7 +198,7 @@ Nyní vytvořte jednu nebo více aplikací pro příjem z aplikace Batch, které
 
    2. V seznamu dynamického obsahu vyberte **Výraz**.
    
-   3. Zadejte výraz `rand(1,6)` a klikněte na **tlačítko OK**.
+   3. Zadejte výraz `rand(1,6)`a klikněte na **tlačítko OK**.
 
       ![Nastavení oddílu pro cílovou dávku](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 

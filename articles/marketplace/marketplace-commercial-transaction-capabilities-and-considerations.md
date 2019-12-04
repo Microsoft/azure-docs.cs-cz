@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823008"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791351"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Možnosti a požadavky transakce komerčního tržiště
 
@@ -66,7 +66,7 @@ V závislosti na použité možnosti transakce lze licenční poplatky za softwa
 
 * Průběžné platby: licenční poplatky za software se zobrazují jako ceny za každou hodinu, podle počtu jader (vCPU) na základě používané infrastruktury Azure. To platí jenom pro Virtual Machines a aplikace Azure.
 
-* • Ceny předplatného: licenční poplatky za software se zobrazují jako měsíční nebo roční poplatek, který se účtuje jako paušální sazba nebo na pracovní stanici. To platí jenom pro aplikace SaaS a aplikace spravované aplikací Azure.
+* Ceny předplatného: licenční poplatky za software se zobrazují jako měsíční nebo roční poplatek, který se účtuje jako paušální sazba nebo na pracovní stanici. To platí jenom pro aplikace SaaS a aplikace spravované aplikací Azure.
 
 * Bezplatná zkušební verze softwaru: žádné poplatky za licence na software po dobu 30 dnů nebo 90 dnů.
 
@@ -182,7 +182,7 @@ Pokud se zákazník koupí pomocí smlouva Enterprise:
 |Období objednávky | 15. srpna 2018 – srpna 30, 2018 |
 |Termín ukončení (čtvrtletí) | Září 30, 2018 |
 |Datum fakturace | 15. října 2018 |
-|V úschově období (jenom kreditní karty, 30 dní) | neuvedeno |
+|V úschově období (jenom kreditní karty, 30 dní) | – |
 |Začátek období shromažďování | 15. října 2018 |
 |Konec období shromažďování (maximum, 90 dní) | 15. ledna 2019 |
 |Datum platby zákazníka | 30. prosince 2018 |

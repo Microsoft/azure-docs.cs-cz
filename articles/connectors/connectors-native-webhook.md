@@ -1,21 +1,18 @@
 ---
-title: Čekání a reakce na události – Azure Logic Apps
+title: Čekání a reakce na události
 description: Automatizujte pracovní postupy, které spouštějí, pozastaví a obnoví na základě událostí na koncovém bodu služby pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804257"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787042"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Vytváření a spouštění automatizovaných pracovních postupů založených na událostech pomocí webhooků HTTP v Azure Logic Apps
 
@@ -83,7 +80,7 @@ Tato integrovaná aktivační událost zaregistruje adresu URL zpětného volán
 
    Uložení aplikace logiky volá koncový bod pro předplatné a zaregistruje adresu URL zpětného volání pro aktivaci této aplikace logiky.
 
-1. Když teď cílová služba pošle na adresu URL zpětného volání požadavek `HTTP POST`, aplikace logiky se aktivuje a zahrne všechna data, která se předávají prostřednictvím žádosti.
+1. Když teď cílová služba pošle požadavek `HTTP POST` na adresu URL zpětného volání, aplikace logiky se aktivuje a zahrne všechna data, která se předávají prostřednictvím žádosti.
 
 ## <a name="add-an-http-webhook-action"></a>Přidat akci Webhooku HTTP
 
@@ -125,7 +122,7 @@ Zde jsou další informace o výstupech z triggeru nebo akce Webhooku HTTP, kter
 
 | Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
-| Záhlaví | object | Hlavičky z požadavku |
+| záhlaví | object | Hlavičky z požadavku |
 | těles | object | Objekt JSON | Objekt s obsahem textu z požadavku |
 | Stavový kód | int | Stavový kód z požadavku |
 |||

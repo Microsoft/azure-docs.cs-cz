@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c44228d7e1456bce870765935beb011cb24626d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113597"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790928"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Co je přírůstkové indexování v Azure Kognitivní hledání?
 
@@ -47,7 +47,7 @@ V indexeru budete muset nastavit vlastnost `cache` tak, aby využívání z př�
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters":{}
+    "parameters": {}
 }
 ```
 
@@ -83,7 +83,7 @@ Indexery nepřesouvá pouze vpřed a zpracovávají nové dokumenty, ale nyní m
 
 ### <a name="invalidating-changes"></a>Zrušení platnosti změn
 
-Změny v invalidu jsou vzácné, ale mají významný vliv na stav kanálu rozšíření. Změna neplatného je taková, kde už celá mezipaměť není platná. Například změna neplatného je jedna, kde se Váš zdroj dat aktualizoval. Pokud víte, že změna by neměla mít za následek zrušení platnosti mezipaměti, jako je například otočení klíče v účtu úložiště, parametr `ignoreResetRequirement` QueryString by měl být nastaven na hodnotu `true` na operaci aktualizace konkrétního prostředku, aby bylo zajištěno, že operace bude neodmítnuto.
+Změny v invalidu jsou vzácné, ale mají významný vliv na stav kanálu rozšíření. Změna neplatného je taková, kde už celá mezipaměť není platná. Například změna neplatného je jedna, kde se Váš zdroj dat aktualizoval. Pokud víte, že změna by neměla mít za následek zrušení platnosti mezipaměti, třeba při otočení klíče v účtu úložiště, parametr `ignoreResetRequirement` QueryString by měl být nastaven na hodnotu `true` na operaci aktualizace konkrétního prostředku, aby se zajistilo, že operace není odmítnutá.
 
 Tady je úplný seznam změn, které by způsobily neplatnost vaší mezipaměti:
 
@@ -122,7 +122,7 @@ Příkladem nekonzistentní změny je aktualizace vašeho dovednostiu, která m�
 
 REST `api-version=2019-05-06-Preview` poskytuje rozhraní API pro přírůstkové indexování s přídavky indexerů, dovednosti a zdrojů dat. Referenční dokumentace aktuálně neobsahuje tyto doplňky. V následující části jsou popsány změny rozhraní API.
 
-### <a name="indexers"></a>Indexery
+### <a name="indexers"></a>Indexovací moduly
 
 [Vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) a [aktualizace indexeru](https://docs.microsoft.com/rest/api/searchservice/update-indexer) teď budou zveřejňovat nové vlastnosti týkající se mezipaměti:
 

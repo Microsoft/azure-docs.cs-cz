@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc3f21c95ad6f4bb033336018dddb9e966e9cc9a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: cc99b469701b3974a5b8a2f235ee3a9edb798368
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006902"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790201"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Time Series Insights na webu Azure Portal
 
@@ -28,19 +28,19 @@ Time Series Insights vám umožňuje začít vizualizovat a dotazovat tok dat do
 
 Pomocí těchto kroků vytvořte prostředí:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte tlačítko **+ vytvořit prostředek** .
 
 1. Vyberte kategorii **Internet věcí** a vyberte možnost **Time Series Insights**.
 
-   [![vytvoření prostředí Time Series Insights](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
+   [![vytvoření prostředí Time Series Insights](media/time-series-insights-get-started/tsi-create-new-environment.png)](media/time-series-insights-get-started/tsi-create-new-environment.png#lightbox)
 
 1. Na stránce **Time Series Insights** vyberte **vytvořit**.
 
 1. Vyplňte požadované parametry. Jednotlivé parametry jsou vysvětleny v následující tabulce:
    
-   [![vytvořit skupinu prostředků Time Series Insights](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
+   [![vytvořit skupinu prostředků Time Series Insights](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
    
    Nastavení|Navrhovaná hodnota|Popis
    ---|---|---
@@ -49,19 +49,19 @@ Pomocí těchto kroků vytvořte prostředí:
    Skupina prostředků | Vytvořit nový nebo použít existující | Skupina prostředků je kolekce společně používaných prostředků Azure. Můžete vybrat existující skupinu prostředků, například tu, která obsahuje vaše centrum událostí nebo IoT Hub. Nebo můžete vytvořit nový, pokud tento prostředek nesouvisí s ostatními prostředky.
    Umístění | Nejbližší zdroji události | V takovém případě můžete zvolit stejné umístění datového centra, které obsahuje vaše data zdroje událostí, a vyhnout se tak nákladům na šířku pásma mezi oblastí a mezi zónami a přidáním latence při přesunu dat mimo oblast.
    Cenová úroveň | S1 | Vyberte potřebnou propustnost. Pro nejnižší náklady a počáteční kapacitu vyberte S1.
-   Kapacita | 1 | Kapacita je násobitel, který se vztahuje na rychlost příchozího přenosu dat, kapacitu úložiště a náklady spojené s vybranou SKU.  Kapacitu prostředí můžete po vytvoření změnit. Pro nejnižší náklady vyberte kapacitu 1. 
+   Kapacita | 1\. místo | Kapacita je násobitel, který se vztahuje na rychlost příchozího přenosu dat, kapacitu úložiště a náklady spojené s vybranou SKU.  Kapacitu prostředí můžete po vytvoření změnit. Pro nejnižší náklady vyberte kapacitu 1. 
   
 1. Vyberte **vytvořit** a zahajte proces zřizování. Může to trvat několik minut.
 
 1. Pokud chcete monitorovat proces nasazení, vyberte symbol **oznámení** (ikona zvonku).
 
-   [![sledovat oznámení](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [![sledovat oznámení](media/time-series-insights-get-started/tsi-deploy-notifications.png)](media/time-series-insights-get-started/tsi-deploy-notifications.png#lightbox)
 
-    Po úspěšném nasazení můžete vybrat **Přejít k prostředku** a nakonfigurovat další vlastnosti, nastavit zabezpečení pomocí zásad přístupu k datům, přidat zdroje událostí a další akce.
+1. V **přehledu**prostředků ověřte nastavení konfigurace nasazení.
 
-1. V **přehledu**prostředků v pravém horním rohu vyberte **ikonu připnutí** , abyste mohli v budoucnu snadno přistupovat k vašemu Time Series Insights prostředí.
+   [![vytvořit Time Series Insights připnout na řídicí panel](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
-   [![vytvořit Time Series Insights připnout na řídicí panel](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+1. **(Volitelné)** Výběrem **ikony připnutí** v pravém horním rohu snadno získáte přístup k prostředí Time Series Insights v budoucnu.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -69,6 +69,6 @@ Pomocí těchto kroků vytvořte prostředí:
 
 * [Přidejte zdroj události centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) do prostředí Azure Time Series Insights.
 
-* [Odesílání událostí](time-series-insights-send-events.md) ke zdroji události.
+* [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
 
 * Zobrazte si prostředí v [průzkumníkovi Time Series Insights](https://insights.timeseries.azure.com).

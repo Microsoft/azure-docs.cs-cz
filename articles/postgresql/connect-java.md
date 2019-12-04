@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití jazyka Java pro připojení k Azure Database for PostgreSQL – jeden server'
+title: Připojení pomocí Java-Azure Database for PostgreSQL-Single server
 description: V tomto rychlém startu najdete ukázku kódu Java, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
@@ -8,17 +8,17 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: b729881d30248bb4c3a717d70009cd68da91cf94
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 269eb1fe744a31f1f4501c5790e06c1a5e06bab6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211836"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767887"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý start: Použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for PostgreSQL – jeden server
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for PostgreSQL – jeden server
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace jazyka Java. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md)

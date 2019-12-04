@@ -1,44 +1,43 @@
 ---
-title: Připojte se k Office 365 Video – Azure Logic Apps | Dokumentace Microsoftu
-description: Spravovat videa s využitím rozhraní API REST pro Office 365 Video a Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/18/2016
-ms.topic: article
-ms.service: logic-apps
+title: Připojení k Office 365 video
+description: Správa videí pomocí rozhraní REST API pro Office 365 a Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 05/18/2016
 tags: connectors
-ms.openlocfilehash: c10a2aa097b63fd3751be01bbfeb6097080bbb9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf3c7c4faac3fcd4dd0c3f368fbe18a224ed591b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105815"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789476"
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Začínáme s konektorem Office 365 Video
-Připojte se k Office 365 Video na získání informací o Office 365 video, získání seznamu videa a další. Office 365 Video můžete:
+# <a name="get-started-with-the-office365-video-connector"></a>Začínáme s konektorem videa Office 365
 
-* Vytvoření obchodní toku na základě dat, který jste získali z Office 365 Video. 
-* Pomocí akcí, které zkontrolovat stav, získání seznamu všech videa v kanálu a další. Tyto akce získat odpověď a poté zpřístupní výstup pro další akce. Můžete například použít konektor vyhledávání Bingu pro vyhledávání videí Office 365 a potom pomocí konektoru Office 365 video a získat informace o tomto videu. Pokud video vyhovuje vašim požadavkům, můžete toto video příspěvku na Facebooku. 
+Připojte se k videu Office 365 a získejte informace o videu Office 365, získáte seznam videí a další. Video s Office 365 vám umožní:
 
-Můžete začít tak, že teď vytvoříte aplikaci logiky, najdete v článku [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Sestavte svůj obchodní tok na základě dat, která získáte v Office 365 video. 
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Vytvořte připojení ke konektoru Office 365 Video
-Při přidání tohoto konektoru logic Apps musíte přihlásit ke svému účtu Office 365 Video a povolit aplikacím logiky připojíte ke svému účtu.
+* Použijte akce, které zkontrolují stav portálu video Portal, získejte seznam všech videí v kanálu a další. Tyto akce obdrží odpověď a následně zpřístupní výstup pro jiné akce. 
+
+Pomocí konektoru Vyhledávání Bingu můžete například vyhledat videa pro Office 365 a potom pomocí konektoru Office 365 Video Connector získat informace o tomto videu. Pokud video splňuje vaše požadavky, můžete toto video publikovat na Facebooku.
+
+Můžete začít vytvořením aplikace logiky hned teď v tématu [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+## <a name="create-a-connection-to-office365-video-connector"></a>Vytvoření připojení k konektoru Office 365 video
+
+Když přidáte tento konektor do aplikace logiky, musíte se přihlásit ke svému účtu videa Office 365 a nechat aplikace logiky, aby se připojili k vašemu účtu.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
-> 
-> 
 
-Po vytvoření připojení, zadejte vlastnosti Office 365 video, jako je název tenanta nebo ID kanálu 
+Po vytvoření připojení zadáte vlastnosti videa Office 365, jako je název tenanta nebo ID kanálu. 
 
+## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
-## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
+Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezení v [podrobnostech konektoru](/connectors/office365videoconnector/).
 
-Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/office365videoconnector/).
+## <a name="next-steps"></a>Další kroky
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

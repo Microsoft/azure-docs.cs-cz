@@ -1,20 +1,17 @@
 ---
-title: Přístup k virtuálním sítím Azure – Azure Logic Apps
+title: Přístup k virtuálním sítím Azure
 description: Přehled o tom, jak prostředí ISEs (Integration Service Environment) pomůžou přístup k Logic Apps přístup k virtuálním sítím Azure (virtuální sítě)
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: e06ac0c0647d9a9a6b5adee289b497f2fe94b222
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889373"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792732"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -78,7 +75,7 @@ Při vytváření ISE můžete vybrat SKU pro vývojáře nebo SKU úrovně Prem
 
 * **Premium**
 
-  Poskytuje ISE, který můžete použít pro produkční prostředí, včetně podpory SLA, integrovaných triggerů a akcí, standardních konektorů, podnikových konektorů, jediného účtu pro integraci na úrovni [Standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , možností škálování kapacity a redundance během recyklace za pevnou měsíční cenu.
+  Poskytuje ISE, který můžete použít pro produkční prostředí, včetně podpory SLA, integrovaných triggerů a akcí, standardních konektorů, podnikových konektorů, jednoho účtu pro integraci na [standardní úrovni](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , možností škálování kapacity a redundance během recyklace za pevnou měsíční cenu.
 
 > [!IMPORTANT]
 > Možnost SKU je k dispozici pouze při vytváření ISE a nedá se změnit později.

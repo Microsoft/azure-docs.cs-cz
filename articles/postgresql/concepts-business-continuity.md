@@ -1,17 +1,17 @@
 ---
-title: Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
+title: Provozní kontinuita – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje provozní kontinuitu (obnovení včas v čase, výpadek datového centra, geografické obnovení) při použití Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3623611bcd22486d90651c6e8b6880c6de1de0c5
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 13fbab52c16fcde72da8073b429fe6fb4665c21b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950100"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763874"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
@@ -23,10 +23,10 @@ Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které 
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Podporu** | **Základy** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| **Podporu** | **Basic** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Obnovení bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
-| Geografické obnovení ze geograficky replikovaných záloh | Není podporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
+| Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
 > Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pomocí [zámku prostředků Azure](../azure-resource-manager/resource-group-lock-resources.md) můžete zabránit nechtěnému odstranění serveru.
@@ -39,7 +39,7 @@ Můžete provést obnovení k určitému **bodu v čase** a vytvořit tak kopii 
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>Zotavení z výpadku datového centra Azure
 
-I když může být datové centrum Azure nepravděpodobné, výpadky. Pokud dojde k výpadku, způsobí to narušení podniku, které může trvat jenom několik minut, ale může to trvat i hodinu.
+Přestože je taková situace výjimečná, i u datového centra Azure může dojít k výpadku. Pokud dojde k výpadku, způsobí to narušení podniku, které může trvat jenom několik minut, ale může to trvat i hodinu.
 
 Jednou z možností je počkat, až se váš server vrátí zpátky do režimu online, když dojde k výpadku datového centra. To funguje u aplikací, které můžou umožnit, aby byl server v určitou dobu offline, například vývojové prostředí. Když dojde k výpadku datového centra, nevíte, jak dlouho může výpadek trvat, takže tato možnost funguje jenom v případě, že server ještě nepotřebujete.
 
@@ -48,7 +48,7 @@ Jednou z možností je počkat, až se váš server vrátí zpátky do režimu o
 Funkce geografického obnovení obnoví Server pomocí geograficky redundantních záloh. Zálohy se hostují v [spárované oblasti](../best-practices-availability-paired-regions.md)vašeho serveru. Z těchto záloh můžete tyto zálohy obnovit do jakékoli jiné oblasti. Geografické obnovení vytvoří nový server s daty ze zálohy. Další informace o geografickém obnovení najdete v [článku o principech zálohování a obnovení](concepts-backup.md).
 
 > [!IMPORTANT]
-> Geografické obnovení je možné pouze v případě, že jste zřídili Server s geograficky redundantním úložištěm záloh. Pokud chcete přepnout z místně redundantního na geograficky redundantní zálohy pro existující server, musíte použít výpis paměti s použitím pg_dump stávajícího serveru a obnovit ho na nově vytvořený server nakonfigurovaný pomocí geograficky redundantních záloh.
+> Geografické obnovení je možné pouze v případě, že jste zřídili Server s geograficky redundantním úložištěm záloh. Pokud chcete přepnout z místně redundantního na geograficky redundantní zálohy pro existující server, musíte použít výpis pg_dump stávajícího serveru a obnovit ho na nově vytvořený server nakonfigurovaný pomocí geograficky redundantních záloh.
 
 ## <a name="cross-region-read-replicas"></a>Repliky čtení mezi oblastmi
 Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie fyzické replikace PostgreSQL. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 

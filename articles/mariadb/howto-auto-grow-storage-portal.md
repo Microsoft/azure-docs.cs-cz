@@ -1,25 +1,25 @@
 ---
-title: Automatické zvětšení úložiště v Azure Database for MariaDB pomocí Azure Portal
+title: Automatické zvětšování úložiště – Azure Portal-Azure Database for MariaDB
 description: Tento článek popisuje, jak můžete povolit automatické zvětšování úložiště pro Azure Database for MariaDB pomocí Azure Portal
 author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 5/29/2019
-ms.openlocfilehash: 9d7b126b5c07cc8661cf50b4c4e13f78592b118e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 12/02/2019
+ms.openlocfilehash: 5c5e9154260a255d9e9b8bc5775a479df7e41522
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136703"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767496"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>Automatické zvětšení úložiště v Azure Database for MariaDB pomocí Azure Portal
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for MariaDB pro růst, aniž by to ovlivnilo zatížení.
 
 Když server dosáhne přiděleného limitu úložiště, je server označený jen pro čtení. Pokud ale povolíte automatické zvětšování úložiště, zvýší se úložiště serveru, aby se vešlo na rostoucí data. U serverů s úložištěm menším než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Maximální limity úložiště, jak je uvedeno [zde](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#storage) , platí.
 
-## <a name="prerequisites"></a>Požadavky
-K dokončení této příručce s postupy, potřebujete:
+## <a name="prerequisites"></a>Předpoklady
+K dokončení tohoto průvodce budete potřebovat:
 - [Server Azure Database for MariaDB](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="enable-storage-auto-grow"></a>Povolit automatické zvětšování úložiště 
@@ -34,7 +34,7 @@ Pomocí těchto kroků nastavíte automatické zvětšování úložiště serve
 
     ![Azure Database for MariaDB – Settings_Pricing_tier – automatické zvětšování](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
-4. Změny uložíte kliknutím na tlačítko **OK** .
+4. Klikněte na tlačítko **OK** a uložte změny.
 
 5. Oznámení potvrdí, že automatické zvětšování bylo úspěšně povoleno.
 

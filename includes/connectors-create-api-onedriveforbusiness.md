@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 6c905842778f43196ac463b99993a3cbcd436fa5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 11/03/2016
+ms.openlocfilehash: 3a0cb48e7fe5f3eef101f644e4f72fcfa2689d6e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036681"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789442"
 ---
-### <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
+
 * Účet [OneDrivu](https://OneDrive.com) 
 
 Než budete moct účet OneDrivu pro firmy použít v aplikaci logiky, musíte aplikaci logiky autorizovat, aby se připojila k vašemu účtu OneDrivu pro firmy. Naštěstí to můžete provést snadno v rámci aplikace logiky na webu Azure Portal. 

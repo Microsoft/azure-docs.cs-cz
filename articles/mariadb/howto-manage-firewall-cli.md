@@ -1,89 +1,89 @@
 ---
-title: Vytváření a správa Azure Database pro MariaDB pravidel brány firewall pomocí Azure CLI
-description: Tento článek popisuje, jak vytvářet a spravovat Azure Database pro MariaDB pravidla brány firewall pomocí příkazového řádku Azure CLI.
+title: Správa pravidel brány firewall – Azure CLI – Azure Database for MariaDB
+description: Tento článek popisuje, jak vytvořit a spravovat Azure Database for MariaDB pravidla brány firewall pomocí příkazového řádku Azure CLI.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: 562987b953f0a8a20a917e208f43557bd768c0a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 6690c0862b83af70f3beda4190547d6fbb80a601
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038616"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764248"
 ---
-# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí Azure CLI
-Pravidla brány firewall na úrovni serveru můžete použít ke správě přístupu ke službě Azure Database pro MariaDB Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro MariaDB brány firewall naleznete v tématu [– Azure Database pro MariaDB pravidla brány firewall serveru](./concepts-firewall-rules.md).
+# <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure CLI
+Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for MariaDB z konkrétní IP adresy nebo rozsahu IP adres. Pomocí pohodlných příkazů rozhraní příkazového řádku Azure můžete vytvářet, aktualizovat, odstraňovat, zobrazovat a zobrazovat pravidla brány firewall pro správu serveru. Přehled Azure Database for MariaDB bran firewall najdete v tématu [pravidla brány firewall pro Azure Database for MariaDB serveru](./concepts-firewall-rules.md).
 
-Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí Azure CLI](howto-manage-vnet-cli.md).
+Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přístupu k serveru. Přečtěte si další informace o [vytváření a správě koncových bodů a pravidel služby Virtual Network pomocí Azure CLI](howto-manage-vnet-cli.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [Nainstalovat rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-* [– Azure Database pro MariaDB serveru a databáze](quickstart-create-mariadb-server-database-using-azure-cli.md).
+* [Server a databáze Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
-## <a name="firewall-rule-commands"></a>Příkazy pravidlo brány firewall:
-**Az mariadb server firewall-rule** je pomocí příkazu z příkazového řádku Azure vytvářet, odstraňovat, seznamu, zobrazit a aktualizovat pravidla brány firewall.
+## <a name="firewall-rule-commands"></a>Příkazy pravidla brány firewall:
+Pomocí příkazu **AZ MariaDB server firewall-Rule** se v Azure CLI použijí pravidla firewallu pro vytvoření, odstranění, vypsání, zobrazení a aktualizaci.
 
-Příkazy:
-- **Vytvoření**: Vytvoření pravidla brány firewall serveru Azure MariaDB.
-- **Odstranit**: Odstranění pravidla brány firewall serveru Azure MariaDB.
-- **Seznam**: Seznam pravidel brány firewall serveru Azure MariaDB.
-- **Zobrazit**: Zobrazí podrobnosti o serveru Azure MariaDB pravidlo brány firewall.
-- **update**: Aktualizujte pravidlo brány firewall serveru Azure MariaDB.
+Příkaz
+- **vytvořit**: Vytvořte pravidlo brány firewall serveru Azure MariaDB.
+- **Odstranit**: odstranění pravidla brány firewall serveru Azure MariaDB.
+- **seznam**: vypíše pravidla brány firewall serveru Azure MariaDB.
+- **Zobrazit**: zobrazí podrobnosti pravidla brány firewall serveru Azure MariaDB.
+- **aktualizace**: aktualizujte pravidlo brány firewall serveru Azure MariaDB.
 
-## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Přihlaste se k Azure a seznamu Azure Database pro MariaDB servery
-Bezpečně připojit pomocí rozhraní příkazového řádku Azure pomocí svého účtu Azure **az login** příkazu.
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Přihlaste se k Azure a seznamte se s Azure Database for MariaDB servery.
+Pomocí příkazu **AZ Login** připojte Azure CLI k účtu Azure bezpečně.
 
 1. Z příkazového řádku spusťte následující příkaz:
    ```azurecli
    az login
    ```
-   Tento příkaz vypíše kód, který použijete v dalším kroku.
+   Tento příkaz vytvoří výstup kódu pro použití v dalším kroku.
 
-2. Použít webový prohlížeč a otevřete tak stránku [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin)a pak zadejte kód.
+2. Pomocí webového prohlížeče otevřete stránku [https://aka.ms/devicelogin](https://aka.ms/devicelogin)a potom zadejte kód.
 
-3. Na řádku přihlaste se pomocí přihlašovacích údajů Azure.
+3. Na příkazovém řádku se přihlaste pomocí svých přihlašovacích údajů Azure.
 
-4. Po přihlášení je ověřen, seznam předplatných je vytištěna v konzole. Zkopírujte ID z požadovaného předplatného nastavit aktuální předplatné použít. Použití [az účet sady](/cli/azure/account#az-account-set) příkazu.
+4. Po autorizaci přihlašovacích údajů se v konzole vytiskne seznam předplatných. Zkopírujte ID požadovaného předplatného a nastavte aktuální předplatné na použití. Použijte příkaz [AZ Account set](/cli/azure/account#az-account-set) .
    ```azurecli-interactive
    az account set --subscription <your subscription id>
    ```
 
-5. Seznam databází Azure Database pro MariaDB serverů pro vaše předplatné a skupinu prostředků, pokud si nejste jistí názvy. Použití [seznam serverů mariadb az](/cli/azure/mariadb/server#az-mariadb-server-list) příkazu.
+5. Pokud si nejste jisti názvy, Seznamte se se servery Azure Database for MariaDB pro vaše předplatné a skupinu prostředků. Použijte příkaz [AZ MariaDB server list](/cli/azure/mariadb/server#az-mariadb-server-list) .
 
    ```azurecli-interactive
    az mariadb server list --resource-group myresourcegroup
    ```
 
-   Poznámka: atribut name v seznamu, který je třeba zadat MariaDB server pro práci na. V případě potřeby potvrďte podrobnosti pro tento server a použití atribut name, abyste zajistili, že je správný. Použití [az mariadb server show](/cli/azure/mariadb/server#az-mariadb-server-show) příkazu.
+   Poznamenejte si atribut Name v seznamu, ve kterém je třeba určit server MariaDB, na kterém chcete pracovat. V případě potřeby potvrďte podrobnosti tohoto serveru a použijte atribut Name, aby bylo zajištěno, že je správný. Použijte příkaz [AZ MariaDB server show](/cli/azure/mariadb/server#az-mariadb-server-show) .
 
    ```azurecli-interactive
    az mariadb server show --resource-group myresourcegroup --name mydemoserver
    ```
 
-## <a name="list-firewall-rules-on-azure-database-for-mariadb-server"></a>Výpis pravidel brány firewall v Azure Database pro MariaDB Server 
-Použijte název serveru a název skupiny prostředků a seznamu existující pravidla brány firewall serveru na serveru. Použití [az mariadb server brány firewall seznamu](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-list) příkazu.  Všimněte si, že je zadán atribut název serveru v **– server** přepnutí a nikoli v **– název** přepnout. 
+## <a name="list-firewall-rules-on-azure-database-for-mariadb-server"></a>Výpis pravidel brány firewall na serveru Azure Database for MariaDB 
+Pomocí názvu serveru a názvu skupiny prostředků uveďte existující pravidla brány firewall serveru na serveru. Použijte příkaz [AZ MariaDB server firewall list](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-list) .  Všimněte si, že atribut název serveru je zadán v přepínači **--Server** a nikoli v přepínači **--Name** . 
 ```azurecli-interactive
 az mariadb server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-Výstup obsahuje seznam pravidel, pokud existuje, ve formátu JSON formátu (ve výchozím nastavení). Můžete použít **– výstupní tabulky** přepínač k vypsání výsledků v přehlednějším tvaru tabulky.
+Výstup obsahuje seznam pravidel (pokud existuje) ve formátu JSON (ve výchozím nastavení). Můžete použít přepínač **--Output Table** pro výstup výsledků v čitelnějším formátu tabulky.
 ```azurecli-interactive
 az mariadb server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
-## <a name="create-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Vytvoření pravidla brány firewall v Azure Database pro MariaDB Server
-Pomocí Azure MariaDB název serveru a název skupiny prostředků, vytvořte nové pravidlo brány firewall na serveru. Použití [vytvořit bránu firewall serveru mariadb az](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) příkazu. Zadejte název pravidla, počáteční IP adresa a koncová IP adresa (pro poskytnutí přístupu k rozsahu IP adres) pro pravidlo.
+## <a name="create-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Vytvoření pravidla brány firewall na serveru Azure Database for MariaDB
+Pomocí názvu serveru Azure MariaDB a názvu skupiny prostředků vytvořte nové pravidlo brány firewall na serveru. Použijte příkaz [AZ MariaDB server firewall Create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) . Zadejte název pravidla a také počáteční IP adresu a koncovou IP adresu (pro poskytnutí přístupu k rozsahu IP adres) pro dané pravidlo.
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
 
-Pokud chcete povolit přístup pro jednu IP adresu, zadejte stejnou IP adresu jako počáteční IP adresa a koncová IP adresa, jako v následujícím příkladu.
+Chcete-li umožnit přístup pro jednu IP adresu, zadejte stejnou IP adresu jako počáteční IP adresa a koncovou IP adresu, jak je uvedeno v tomto příkladu.
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 1.1.1.1 --end-ip-address 1.1.1.1
 ```
 
-Pokud chcete umožnit aplikacím z Azure IP adresy pro připojení k Azure Database pro MariaDB server, zadejte IP adresu 0.0.0.0 jako počáteční IP adresa a koncová IP adresa, jako v následujícím příkladu.
+Pokud chcete aplikacím z IP adres Azure umožnit připojení k vašemu Azure Database for MariaDB serveru, zadejte IP adresu 0.0.0.0 jako počáteční IP adresu a koncovou IP adresu, jako v tomto příkladu.
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mariadb --name "AllowAllWindowsAzureIps" --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
@@ -92,33 +92,33 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 > Touto možností se brána firewall nakonfiguruje tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup pouze na autorizované uživatele.
 > 
 
-Po úspěšném nasazení každý vytvořit příkaz, že výstup obsahuje podrobnosti pravidla brány firewall, které jste vytvořili, ve formátu JSON (ve výchozím nastavení). Pokud dojde k selhání, zobrazí výstup text chybové zprávy.
+Po úspěšném vytvoření výstupního příkazu pro vytváření se zobrazí podrobnosti o vytvořeném pravidlu brány firewall ve formátu JSON (ve výchozím nastavení). Pokud dojde k selhání, výstup zobrazí text chybové zprávy.
 
-## <a name="update-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Aktualizovat pravidlo brány firewall v Azure Database pro MariaDB server 
-Pomocí Azure MariaDB, název serveru a název skupiny prostředků, aktualizovat stávající pravidlo brány firewall na serveru. Použití [aktualizace brány firewall serveru mariadb az](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-update) příkazu. Zadejte název stávající pravidlo brány firewall jako vstup, stejně jako počáteční IP adresy a koncové IP atributů k aktualizaci.
+## <a name="update-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Aktualizace pravidla brány firewall na serveru Azure Database for MariaDB 
+Pomocí názvu serveru Azure MariaDB a názvu skupiny prostředků aktualizujte stávající pravidlo brány firewall na serveru. Použijte příkaz [AZ MariaDB server firewall Update](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-update) . Zadejte název existujícího pravidla brány firewall jako vstup a také počáteční IP adresy a atributy koncové IP adresy, které chcete aktualizovat.
 ```azurecli-interactive
 az mariadb server firewall-rule update --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
-Po úspěšném nasazení výstup tohoto příkazu jsou uvedeny podrobnosti pravidla brány firewall, které jste aktualizovali, ve formátu JSON (ve výchozím nastavení). Pokud dojde k selhání, zobrazí výstup text chybové zprávy.
+Po úspěchu příkaz zobrazí výstup pravidla brány firewall, které jste aktualizovali, ve formátu JSON (ve výchozím nastavení). Pokud dojde k selhání, výstup zobrazí text chybové zprávy.
 
 > [!NOTE]
-> Pokud neexistuje pravidlo brány firewall, je pravidlo vytvořené pomocí příkazu update.
+> Pokud pravidlo brány firewall neexistuje, pravidlo se vytvoří pomocí příkazu Update.
 
-## <a name="show-firewall-rule-details-on-azure-database-for-mariadb-server"></a>Zobrazit brány firewall podrobnosti pravidla v Azure Database pro MariaDB Server
-Existující brány firewall pomocí Azure MariaDB název serveru a název skupiny prostředků, zobrazí podrobnosti pravidla ze serveru. Použití [az mariadb server brány firewall show](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-show) příkazu. Zadejte název stávající pravidlo brány firewall jako vstup.
+## <a name="show-firewall-rule-details-on-azure-database-for-mariadb-server"></a>Zobrazit podrobnosti pravidla brány firewall na serveru Azure Database for MariaDB
+Pomocí názvu serveru Azure MariaDB a názvu skupiny prostředků zobrazte existující Podrobnosti pravidla brány firewall ze serveru. Použijte příkaz [AZ MariaDB server firewall show](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-show) . Zadejte název existujícího pravidla brány firewall jako vstup.
 ```azurecli-interactive
 az mariadb server firewall-rule show --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1
 ```
-Po úspěšném nasazení výstup tohoto příkazu jsou uvedeny podrobnosti pravidla brány firewall, které jste zadali, ve formátu JSON (ve výchozím nastavení). Pokud dojde k selhání, zobrazí výstup text chybové zprávy.
+Po úspěšném provedení příkazu zobrazí výstup příkazu Podrobnosti pravidla brány firewall, které jste zadali, ve formátu JSON (ve výchozím nastavení). Pokud dojde k selhání, výstup zobrazí text chybové zprávy.
 
-## <a name="delete-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Odstranit pravidlo brány firewall v Azure Database pro MariaDB Server
-Stávající pravidlo brány firewall pomocí Azure MariaDB název serveru a název skupiny prostředků, odeberte ze serveru. Použití [odstranit bránu firewall serveru mariadb az](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-delete) příkazu. Zadejte název stávající pravidlo brány firewall.
+## <a name="delete-a-firewall-rule-on-azure-database-for-mariadb-server"></a>Odstranění pravidla brány firewall na serveru Azure Database for MariaDB
+Pomocí názvu serveru Azure MariaDB a názvu skupiny prostředků odeberte stávající pravidlo brány firewall ze serveru. Použijte příkaz [AZ MariaDB server firewall Delete](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-delete) . Zadejte název existujícího pravidla brány firewall.
 ```azurecli-interactive
 az mariadb server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1
 ```
-Po úspěšném nasazení neexistuje žádný výstup. Nebude úspěšná zobrazí text chybové zprávy.
+Po úspěšném provedení neproběhne žádný výstup. Po selhání se text chybové zprávy zobrazí.
 
-## <a name="next-steps"></a>Další postup
-- Zjistit více o [– Azure Database for pravidla brány firewall serveru MariaDB](./concepts-firewall-rules.md).
-- [Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal](./howto-manage-firewall-portal.md).
-- Dále zabezpečit přístup k vašemu serveru pomocí [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí Azure CLI](howto-manage-vnet-cli.md).
+## <a name="next-steps"></a>Další kroky
+- Další informace o [pravidlech brány firewall serveru Azure Database for MariaDB](./concepts-firewall-rules.md).
+- [Vytvářejte a spravujte Azure Database for MariaDB pravidla brány firewall pomocí Azure Portal](./howto-manage-firewall-portal.md).
+- [Vytvořením a správou koncových bodů a pravidel služby Virtual Network pomocí rozhraní příkazového řádku Azure](howto-manage-vnet-cli.md)získáte další zabezpečený přístup k serveru.

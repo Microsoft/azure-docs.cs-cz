@@ -1,17 +1,17 @@
 ---
-title: Konfigurace a přihlášení pomocí Azure AD pro Azure Database for PostgreSQL jeden server
-description: Přečtěte si, jak nastavit Azure Active Directory pro ověřování pomocí Azure Database for PostgreSQL-Single server
+title: Použití Azure Active Directory-Azure Database for PostgreSQL-Single server
+description: Přečtěte si, jak nastavit Azure Active Directory (AAD) pro ověřování pomocí Azure Database for PostgreSQL-Single server.
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5abfe4cc6aa0679d8009343fa24c1059700bb79
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516029"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763636"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
 
@@ -45,7 +45,7 @@ Pokud chcete do databáze Azure Database for PostgreSQL přidat uživatele Azure
 1. Nejdřív zajistěte, aby byl uživatel služby Azure AD `<user>@yourtenant.onmicrosoft.com` platným uživatelem v tenantovi Azure AD.
 2. Přihlaste se ke své instanci Azure Database for PostgreSQL jako uživatel s oprávněními správce Azure AD.
 3. Vytvoření `<user>@yourtenant.onmicrosoft.com` role v Azure Database for PostgreSQL.
-4. Udělejte `<user>@yourtenant.onmicrosoft.com` člena role azure_ad_user. Tento postup je třeba udělit jenom uživatelům Azure AD.
+4. Udělejte `<user>@yourtenant.onmicrosoft.com` člena azure_ad_user role. Tento postup je třeba udělit jenom uživatelům Azure AD.
 
 **Příklad:**
 
@@ -193,7 +193,7 @@ Nyní se budou moci přihlásit pomocí přihlašovacích údajů služby Azure 
 
 ### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>Případ 2: uživatelské jméno PostgreSQL se liší od hlavního názvu uživatele služby Azure AD.
 
-Pokud uživatel PostgreSQL neexistuje v Azure AD nebo má jiné uživatelské jméno, můžete k ověření jako tento uživatel PostgreSQL použít skupiny Azure AD. Stávající uživatele Azure Database for PostgreSQL můžete migrovat do služby Azure AD tak, že vytvoříte skupinu Azure AD s názvem, který odpovídá PostgreSQL uživateli, a pak udělíte roli azure_ad_user existujícímu uživateli PostgreSQL:
+Pokud uživatel PostgreSQL neexistuje v Azure AD nebo má jiné uživatelské jméno, můžete k ověření jako tento uživatel PostgreSQL použít skupiny Azure AD. Stávající uživatele Azure Database for PostgreSQL můžete migrovat do služby Azure AD tak, že vytvoříte skupinu Azure AD s názvem, který odpovídá PostgreSQL uživateli, a potom udělíte roli azure_ad_user existujícímu uživateli PostgreSQL:
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";

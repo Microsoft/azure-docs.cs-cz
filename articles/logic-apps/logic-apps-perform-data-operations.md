@@ -1,21 +1,17 @@
 ---
-title: Provádění operací s daty – Azure Logic Apps
+title: Provádění operací s daty
 description: Převod, Správa a manipulace výstupů a formátů dat v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990423"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793111"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
 
@@ -80,7 +76,7 @@ a vytvoří tento výstup:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Pokud chcete vyzkoušet příklad, postupujte podle těchto kroků pomocí návrháře aplikace logiky. Pokud ale dáváte přednost práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí **vytvořit** a **inicializovat proměnnou** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – Vytvořit](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Pokud chcete vyzkoušet příklad, postupujte podle těchto kroků pomocí návrháře aplikace logiky. Pokud ale dáváte přednost práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí **vytvořit** a **inicializovat proměnnou** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – sestavení](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
@@ -138,7 +134,7 @@ Pokud chcete potvrdit, jestli akce **Vytvoření** vytvoří očekávané výsle
 
 Pokud chcete vytvořit tabulku hodnot s oddělovači (CSV), která obsahuje vlastnosti a hodnoty z objektů JavaScript Object Notation (JSON) v poli, použijte akci **vytvořit tabulku CSV** . Výslednou tabulku pak můžete použít v akcích, které následují po akci **vytvořit tabulku CSV** .
 
-Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **Vytvoření tabulky CSV** a inicializovat definice akcí **proměnných** z tohoto článku do vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – Vytvořit tabulku CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **Vytvoření tabulky CSV** a inicializovat definice akcí **proměnných** z tohoto článku do vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – vytvoření tabulky CSV](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
@@ -289,7 +285,7 @@ Pokud chcete potvrdit, jestli akce **Vytvoření tabulky CSV** vytvoří očeká
 
 Chcete-li vytvořit tabulku HTML, která obsahuje vlastnosti a hodnoty z objektů JavaScript Object Notation (JSON) v poli, použijte akci **vytvořit tabulku HTML** . Výslednou tabulku pak můžete použít v akcích, které následují po akci **Vytvoření tabulky HTML** .
 
-Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **Vytvoření tabulky HTML** a inicializovat definice akcí **proměnných** z tohoto článku do vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – Vytvořit tabulku HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **Vytvoření tabulky HTML** a inicializovat definice akcí **proměnných** z tohoto článku do vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – vytvoření tabulky HTML](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
@@ -448,7 +444,7 @@ Chcete-li vytvořit menší pole, které obsahuje položky, které splňují ur�
 > 
 > Pro akce, které mají použít výstup pole z akce **filtrovat pole** , musí buď tyto akce přijmout pole jako vstup, nebo může být nutné transformovat výstupní pole do jiného kompatibilního formátu.
 
-Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **pole filtru** a inicializovat definice akcí **proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – Filtrovat pole](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **pole filtru** a inicializovat definice akcí **proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – pole filtru](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
@@ -497,7 +493,7 @@ Pokud chcete potvrdit, jestli akce **pole filtru** vytvoří očekávané výsle
 
    `@actionBody('Filter_array')`
 
-   V tomto příkladu se používá akce **Odeslat e-mail** pro Office 365 Outlook a obsahuje výstupy z výrazu **ActionBody (' Filter_array ')** v těle e-mailu:
+   V tomto příkladu se používá akce **Odeslat e-mail** pro Office 365 Outlook a obsahuje výstupy z výrazu **actionBody (' Filter_array ')** v těle e-mailu:
 
    ![Výstupy akcí z akce filtrovat pole](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
@@ -573,7 +569,7 @@ Pokud chcete potvrdit, jestli akce **spojení** vytvoří očekávané výsledky
 
 Chcete-li odkazovat nebo přistupovat k vlastnostem v obsahu JavaScript Object Notation (JSON), můžete pro tyto vlastnosti vytvořit uživatelsky přívětivá pole nebo tokeny pomocí akce **analyzovat JSON** . Tímto způsobem můžete vybrat tyto vlastnosti ze seznamu dynamického obsahu, když zadáte vstupy pro vaši aplikaci logiky. Pro tuto akci můžete buď zadat schéma JSON, nebo vygenerovat schéma JSON z ukázkového obsahu nebo datové části JSON.
 
-Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí pro **analýzu JSON** a **inicializovat proměnnou** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – analýza Formát JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí pro **analýzu JSON** a **inicializovat proměnnou** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – analýza kódu JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 
@@ -648,7 +644,7 @@ Chcete-li vytvořit pole, které obsahuje objekty JSON sestavené z hodnot v exi
 > [!NOTE]
 > Pro akce, které mají použít výstup pole z akce **Select** , musí buď tyto akce přijmout pole jako vstup, nebo může být nutné transformovat výstupní pole do jiného kompatibilního formátu. 
 
-Pokud dáváte přednost práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí pro **Výběr** a **inicializaci proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – výběr ](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Pokud dáváte přednost práci v editoru zobrazení kódu, můžete zkopírovat příklad definice akcí pro **Výběr** a **inicializaci proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operace s daty – výběr](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky.
 

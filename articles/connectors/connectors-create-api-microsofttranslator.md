@@ -1,39 +1,37 @@
 ---
-title: Připojení k Microsoft Translatoru – Azure Logic Apps | Dokumentace Microsoftu
-description: Přeložení textu a provádění dalších úloh jazyka pomocí Microsoft Translatoru REST API a Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
+title: Připojit k Microsoft translatoru
+description: Přeložení textu a provádění dalších jazykových úloh pomocí rozhraní REST API služby Microsoft Translator a Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 29212cf1c1f06ecae9892e0fc8aaaa4a01b2612b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec809a897ce2579125c8797dc8c1d8c7d30a8f9c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105781"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789538"
 ---
-# <a name="get-started-with-the-microsoft-translator-connector"></a>Začínáme s konektor Microsoft Translatoru
-Připojení k Microsoft Translatoru překlad textu, rozpoznat jazyk a další. Pomocí Microsoft Translatoru můžete: 
+# <a name="get-started-with-the-microsoft-translator-connector"></a>Začínáme s konektorem Microsoft Translator
 
-* Vytvoření obchodní toku na základě dat, které získáte ze služby Microsoft Translator. 
-* Pomocí akcí můžete přeložit text, rozpoznat jazyk a další. Tyto akce získat odpověď a poté zpřístupní výstup pro další akce. Například pokud v Dropboxu vytvoří nový soubor, může překládat text v souboru do jiného jazyka pomocí Microsoft Translatoru.
+Připojte se k Microsoft translatoru, abyste mohli překládat text, detekovat jazyk a další funkce. Pomocí Microsoft translatoru můžete: 
 
-Můžete začít tak, že teď vytvoříte aplikaci logiky, najdete v článku [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Sestavte svůj obchodní tok na základě dat, která získáte od Microsoft translatoru. 
+* Pomocí akcí můžete překládat text, detekovat jazyk a další. Tyto akce obdrží odpověď a následně zpřístupní výstup pro jiné akce. Například když se v Dropboxu vytvoří nový soubor, můžete text v souboru převést do jiného jazyka pomocí Microsoft translatoru.
 
-## <a name="create-a-connection-to-microsoft-translator"></a>Vytvoření připojení k Microsoft Translatoru
+Můžete začít vytvořením aplikace logiky hned teď v tématu [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+## <a name="create-a-connection-to-microsoft-translator"></a>Umožňuje vytvořit připojení k Microsoft translatoru.
+
 > [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 
 
-## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
+## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
-Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/microsofttranslator/).
+Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezení v [podrobnostech konektoru](/connectors/microsofttranslator/).
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+## <a name="more-connectors"></a>Další konektory
+Vraťte se do [seznamu rozhraní API](apis-list.md).

@@ -1,89 +1,89 @@
 ---
-title: Konfigurace upozornění metriky pro službu Azure Database for MySQL na webu Azure portal
-description: Tento článek popisuje postup konfigurace a upozornění na metriku přístupu pro službu Azure Database for MySQL z portálu Azure portal.
+title: Konfigurace upozornění na metriku – Azure Portal-Azure Database for MySQL
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k výstrahám metrik pro Azure Database for MySQL z Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 387877efea4df30685fcf443a4d114c4feb66401
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: 487ca76115b93020a762cfa2afb5fd5a3be40a66
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525666"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770658"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Nastavte si upozornění na metriky pro službu Azure Database for MySQL pomocí webu Azure portal 
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Pomocí Azure Portal můžete nastavit výstrahy pro metriky pro Azure Database for MySQL 
 
-Tento článek ukazuje, jak nastavit – Azure Database for MySQL výstrahy pomocí webu Azure portal. Obdržíte výstrahu na základě monitorování metrik pro služby Azure.
+V tomto článku se dozvíte, jak nastavit výstrahy Azure Database for MySQL pomocí Azure Portal. Můžete obdržet upozornění na základě metrik monitorování vašich služeb Azure.
 
-Upozornění aktivační události, když hodnota zadaného metrika překročí mezní hodnotu, kterou přiřadíte. Upozornění triggery obě, pokud je první podmínka splněna, a pak později při podmínka, která už probíhá není splněná. 
+Výstraha se aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu, kterou přiřadíte. Tato výstraha se aktivuje při prvním splnění podmínky a následně v případě, že se už podmínka nesplní. 
 
-Můžete nakonfigurovat výstrahu při aktivaci provést následující akce:
-* odeslání e-mailová oznámení správce služeb a spolupracujících správců
-* odeslání e-mailu další e-maily, které zadáte.
+Můžete nakonfigurovat výstrahu, která provede následující akce při triggerech:
+* odesílání e-mailových oznámení správci služeb a spolusprávcům
+* Odešlete e-mail na další e-maily, které zadáte.
 * Volání webhooku
 
-Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
+Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla upozornění na metriky na webu Azure Portal
-1. V [webu Azure portal](https://portal.azure.com/), vyberte serveru Azure Database for MySQL chcete monitorovat.
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě z Azure Portal
+1. V [Azure Portal](https://portal.azure.com/)vyberte server Azure Database for MySQL, který chcete monitorovat.
 
-2. V části **monitorování** části bočního panelu, vyberte **výstrahy** uvedeno:
+2. V části **monitorování** na bočním panelu vyberte **výstrahy** , jak je znázorněno níže:
 
-   ![Vybrat pravidla upozornění](./media/howto-alert-on-metric/2-alert-rules.png)
+   ![Vybrat pravidla výstrah](./media/howto-alert-on-metric/2-alert-rules.png)
 
-3. Vyberte **přidat upozornění metriky** (ikony +).
+3. Vyberte **Přidat upozornění metriky** (+ ikona).
 
-4. **Vytvořit pravidlo** otevře se stránka, jak je znázorněno níže. Vyplňte požadované informace:
+4. Otevře se stránka **vytvořit pravidlo** , jak je znázorněno níže. Vyplňte požadované informace:
 
-   ![Přidat upozornění metriky formulář](./media/howto-alert-on-metric/4-add-rule-form.png)
+   ![Přidat formulář upozornění metriky](./media/howto-alert-on-metric/4-add-rule-form.png)
 
-5. V rámci **podmínku** vyberte **přidat podmínku**.
+5. V části **Podmínka** vyberte **Přidat podmínku**.
 
-6. Vyberte ze seznamu signálů, které se mají generovat výstrahy na metriku. V tomto příkladu vyberte "Procenta úložiště".
+6. Vyberte metriku ze seznamu signálů, na kterých se má upozornit. V tomto příkladu vyberte "úložiště v procentech".
    
-   ![Vyberte metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
+   ![Vybrat metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut") a **frekvence**.
+7. Nakonfigurujte logiku výstrahy včetně **podmínky** (např. "Větší než"), **prahová hodnota** (ex. 85 procent), **Časová agregace**, časový **interval** , po který musí být pravidlo metriky splněno před triggery výstrahy (např. Za posledních 30 minut a **frekvence**.
    
-   Vyberte **provádí** po dokončení.
+   Po dokončení vyberte **Hotovo** .
 
-   ![Vyberte metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
+   ![Vybrat metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
-8. V rámci **skupiny akcí** vyberte **vytvořit nový** k vytvoření nové skupiny pro příjem oznámení o výstraze.
+8. V části **skupiny akcí** vyberte **vytvořit novou** a vytvořte novou skupinu pro příjem oznámení o výstraze.
 
-9. Vyplňte formulář "Přidat skupinu akcí" s názvem, krátký název, předplatné a skupinu prostředků.
+9. Vyplňte formulář přidat skupinu akcí s názvem, krátkým názvem, předplatným a skupinou prostředků.
 
-10. Konfigurace **e-mailu/SMS nebo nabízená/hlasové** typ akce.
+10. Nakonfigurujte typ akce **e-mail/SMS/Push/Voice** .
     
-    Zvolte "E-mailu Azure Resource Manager roli" k výběru předplatného vlastníci, přispěvatelé a čtenáři dostávat oznámení.
+    Zvolte možnost Azure Resource Manager role e-mailu a vyberte vlastníky, přispěvatele a čtenáři předplatného, kteří budou dostávat oznámení.
    
-    Volitelně zadejte platný identifikátor URI, **Webhooku** pole, pokud chcete, volá se, když se aktivuje upozornění.
+    V případě potřeby zadejte do pole **Webhooku** platný identifikátor URI, pokud chcete, aby byla vyvolána, když se výstraha aktivuje.
 
-    Vyberte **OK** po dokončení.
+    Po dokončení vyberte **OK** .
 
     ![Skupina akcí](./media/howto-alert-on-metric/10-action-group-type.png)
 
-11. Zadejte název pravidla výstrahy, popis a závažnosti.
+11. Zadejte název, popis a závažnost pravidla výstrahy.
 
     ![Skupina akcí](./media/howto-alert-on-metric/11-name-description-severity.png) 
 
-12. Vyberte **vytvořit pravidlo upozornění** k vytvoření upozornění.
+12. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
-    Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
+    Během několika minut je výstraha aktivní a triggery, jak je popsáno výše.
 
 ## <a name="manage-your-alerts"></a>Správa výstrah
-Po vytvoření výstrahy, můžete ho vyberte a proveďte následující akce:
+Jakmile vytvoříte výstrahu, můžete ji vybrat a provést následující akce:
 
-* Zobrazte graf zobrazující mezní hodnota metriky a skutečnými hodnotami z předchozího dne odpovídající této výstrahy.
-* **Upravit** nebo **odstranit** pravidlo upozornění.
-* **Zakázat** nebo **povolit** výstrahu, pokud chcete dočasně zastavit nebo obnovit příjem oznámení.
+* Zobrazení grafu znázorňujícího prahovou hodnotu metriky a skutečné hodnoty z předchozího dne, které se týkají této výstrahy.
+* **Upravte** nebo **odstraňte** pravidlo výstrahy.
+* Pokud chcete dočasně zastavit nebo obnovit přijímání oznámení, **zakažte** nebo **Povolte** výstrahu.
 
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [konfiguraci webhooků ve výstrahách](../azure-monitor/platform/alerts-webhooks.md).
-* Získat [přehled shromažďování metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) k Ujistěte se, že vaše služba není k dispozici a reagují.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/platform/alerts-webhooks.md).
+* Získejte [Přehled o kolekci metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.

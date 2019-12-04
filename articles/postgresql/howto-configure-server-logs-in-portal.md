@@ -1,17 +1,17 @@
 ---
-title: Konfigurace a přístup k protokolům serveru Azure Database for PostgreSQL – jeden server z Azure Portal
-description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru Azure Database for PostgreSQL-Single server z Azure Portal.
+title: Správa protokolů-Azure Portal-Azure Database for PostgreSQL-Single server
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru (soubory. log) v Azure Database for PostgreSQL-Single server z Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c77e708e14d34545754ca38095aedb63ff0172a1
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 3da48a9b6d3acb1f2811bc279de7963fa1d83918
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841508"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763685"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům Azure Database for PostgreSQL-Single server z Azure Portal
 
@@ -53,7 +53,7 @@ Po zahájení protokolování můžete zobrazit seznam dostupných protokolů a 
    ![Snímek obrazovky se stránkou protokolů serveru se zvýrazněným seznamem protokolů](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > Konvence pojmenování protokolu je **PostgreSQL-yyyy-mm-dd_hh0000. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolu se otáčejí každou hodinu nebo 100 MB, podle toho, co nastane dřív.
+   > Konvence pojmenování protokolu je **PostgreSQL-rrrr-mm-dd_hh0000. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolu se otáčejí každou hodinu nebo 100 MB, podle toho, co nastane dřív.
 
 4. V případě potřeby se pomocí vyhledávacího pole rychle zúží na konkrétní protokol, a to na základě data a času. Hledání je na názvu protokolu.
 

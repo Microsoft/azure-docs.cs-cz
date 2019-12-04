@@ -1,35 +1,35 @@
 ---
-title: Vytvoření uživatelů ve službě Azure Database pro MySQL server
-description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s serveru Azure Database for MySQL.
+title: Vytvoření uživatelů – Azure Database for MySQL
+description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci se serverem Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 4cd2305ed3d7f88f6c3825d8f7cdb5d81f9a0f6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: e76e63030cc8e10c857d361cca69e1d35ba8c2c1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61460180"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770471"
 ---
-# <a name="create-users-in-azure-database-for-mysql-server"></a>Vytvoření uživatelů ve službě Azure Database pro MySQL server 
-Tento článek popisuje, jak vytvořit uživatele v serveru Azure Database for MySQL.
+# <a name="create-users-in-azure-database-for-mysql-server"></a>Vytvoření uživatelů na serveru Azure Database for MySQL 
+Tento článek popisuje, jak můžete vytvářet uživatele na serveru Azure Database for MySQL.
 
-Při prvním vytvoření Azure Database for MySQL poskytuje přihlašovací uživatelské jméno správce serveru a heslo. Další informace, můžete postupovat podle [rychlý Start](quickstart-create-mysql-server-database-using-azure-portal.md). Můžete vyhledat vaše přihlašovací jméno správce serveru uživatele z portálu Azure portal.
+Při prvním vytvoření Azure Database for MySQL jste zadali přihlašovací uživatelské jméno a heslo správce serveru. Další informace najdete v [rychlém](quickstart-create-mysql-server-database-using-azure-portal.md)startu. Přihlašovací uživatelské jméno správce serveru můžete najít z Azure Portal.
 
-Uživatel správce serveru získá určitá privilegia, pro váš server, jak je uvedeno: VYBRAT, VLOŽIT, AKTUALIZOVAT, ODSTRANIT, VYTVOŘIT, VYŘADIT, ZNOVU NAČÍST, ZPRACOVÁNÍ, ODKAZY, INDEX, ALTER, ZOBRAZTE DATABÁZE, VYTVOŘIT DOČASNÉ TABULKY, UZAMKNOUT TABULKY, SPUŠTĚNÍ, VYTVOŘIT PODŘÍZENÝ SERVER REPLIKACE, KLIENT REPLIKACE, ZOBRAZENÍ, ZOBRAZENÍ, VYTVOŘENÍ RUTINNÍ, ALTER RUTINU, VYTVOŘTE UŽIVATELE , UDÁLOSTI, AKTIVAČNÍ UDÁLOSTI
+Uživatel správce serveru získá určitá oprávnění pro váš server, jak je uvedeno níže: vybrat, vložit, aktualizovat, odstranit, vytvořit, vyřadit, znovu načíst, zpracovat, odkazy, INDEXovat, změnit, Zobrazit databáze, vytvořit dočasné tabulky, zamknout tabulky, provést, replikace PODŘÍZENÝch, replikace KLIENT, VYTVOŘIT ZOBRAZENÍ, ZOBRAZIT ZOBRAZENÍ, VYTVOŘIT RUTINU, ZMĚNIT RUTINU, VYTVOŘIT UŽIVATELE, UDÁLOST, AKTIVAČNÍ UDÁLOST
 
-Po vytvoření Azure Database for MySQL server slouží k vytvoření dalších uživatelů a udělit přístup správce k nim první účet uživatele správce serveru. Také účet správce serveru slouží k vytvoření méně privilegovaným uživatele, kteří mají přístup k jednotlivým databázových schématech.
+Po vytvoření serveru Azure Database for MySQL můžete pomocí prvního uživatelského účtu správce serveru vytvořit další uživatele a udělit jim přístup správce. Účet správce serveru se taky dá použít k vytvoření méně privilegovaných uživatelů, kteří mají přístup k jednotlivým schématům databáze.
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Jak vytvořit další uživatele ve službě Azure Database for MySQL
-1. Získejte název uživatelské informace a Správce připojení.
-   Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Můžete snadno vyhledat název serveru a přihlašovací údaje ze serveru **přehled** stránky nebo **vlastnosti** stránky na webu Azure Portal. 
+## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Vytvoření dalších uživatelů s oprávněními správce v Azure Database for MySQL
+1. Získejte informace o připojení a uživatelské jméno správce.
+   Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Název serveru a přihlašovací informace můžete snadno vyhledat na stránce **Přehled** serveru nebo na stránce **vlastnosti** v Azure Portal. 
 
-2. Použijte účet správce a heslo pro připojení k vašemu databázovému serveru. Použijte váš upřednostňovaný klientském nástroji, jako aplikace MySQL Workbench, mysql.exe, HeidiSQL nebo ostatním uživatelům. 
-   Pokud si nejste jistí, jak se připojit, přečtěte si téma [pomocí aplikace MySQL Workbench k připojení a dotazování dat](./connect-workbench.md)
+2. K připojení k databázovému serveru použijte účet správce a heslo. Použijte preferovaný klientský nástroj, jako je MySQL Workbench, MySQL. exe, HeidiSQL nebo jiné. 
+   Pokud si nejste jistí, jak se připojit, přečtěte si téma [použití aplikace MySQL Workbench pro připojení a dotazování dat](./connect-workbench.md) .
 
-3. Upravit a spuštěním následujícího kódu SQL. Nahraďte nové uživatelské jméno pro hodnotu zástupného symbolu `new_master_user`. Tato syntaxe uděluje oprávnění uvedená na databázových schématech ( *.* ) pro uživatelské jméno (new_master_user v tomto příkladu). 
+3. Upravte a spusťte následující kód SQL. Nahraďte nové uživatelské jméno pro hodnotu zástupného symbolu `new_master_user`. Tato syntaxe uděluje uvedená oprávnění na všech schématech databáze ( *.* ) k uživatelskému jménu (new_master_user v tomto příkladu). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -39,24 +39,24 @@ Po vytvoření Azure Database for MySQL server slouží k vytvoření dalších 
    FLUSH PRIVILEGES;
    ```
 
-4. Ověřte, uděluje 
+4. Ověřit granty 
    ```sql
    USE sys;
    
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
-## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Postup pro vytváření uživatelů databáze ve službě Azure Database for MySQL
+## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Postup vytvoření uživatelů databáze v Azure Database for MySQL
 
-1. Získejte název uživatelské informace a Správce připojení.
-   Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Můžete snadno vyhledat název serveru a přihlašovací údaje ze serveru **přehled** stránky nebo **vlastnosti** stránky na webu Azure Portal. 
+1. Získejte informace o připojení a uživatelské jméno správce.
+   Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Název serveru a přihlašovací informace můžete snadno vyhledat na stránce **Přehled** serveru nebo na stránce **vlastnosti** v Azure Portal. 
 
-2. Použijte účet správce a heslo pro připojení k vašemu databázovému serveru. Použijte váš upřednostňovaný klientském nástroji, jako aplikace MySQL Workbench, mysql.exe, HeidiSQL nebo ostatním uživatelům. 
-   Pokud si nejste jistí, jak se připojit, přečtěte si téma [pomocí aplikace MySQL Workbench k připojení a dotazování dat](./connect-workbench.md)
+2. K připojení k databázovému serveru použijte účet správce a heslo. Použijte preferovaný klientský nástroj, jako je MySQL Workbench, MySQL. exe, HeidiSQL nebo jiné. 
+   Pokud si nejste jistí, jak se připojit, přečtěte si téma [použití aplikace MySQL Workbench pro připojení a dotazování dat](./connect-workbench.md) .
 
-3. Upravit a spuštěním následujícího kódu SQL. Nahraďte hodnotu zástupného symbolu `db_user` zamýšlený novým uživatelským jménem a zástupnou hodnotu `testdb` nahraďte vlastním názvem databáze.
+3. Upravte a spusťte následující kód SQL. Nahraďte hodnotu zástupného symbolu `db_user` vaším zamýšleným novým uživatelským jménem a zástupnou hodnotou `testdb` s vlastním názvem databáze.
 
-   Tato syntaxe kódu sql vytvoří novou databázi s názvem testdb pro účely tohoto příkladu. Vytvoří nového uživatele ve službě MySQL a uděluje všechna oprávnění na nové schéma databáze (testdb.\*) pro daného uživatele. 
+   Tato syntaxe kódu SQL vytvoří pro ukázkové účely novou databázi s názvem TestDB. Potom vytvoří nového uživatele ve službě MySQL a udělí všem oprávněním novému schématu databáze (TestDB.\*) pro tohoto uživatele. 
 
    ```sql
    CREATE DATABASE testdb;
@@ -68,20 +68,20 @@ Po vytvoření Azure Database for MySQL server slouží k vytvoření dalších 
    FLUSH PRIVILEGES;
    ```
 
-4. Ověřte podpory v rámci databáze.
+4. Ověřte granty v rámci databáze.
    ```sql
    USE testdb;
    
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Přihlaste se k serveru zadáním určené databázi pomocí nové uživatelské jméno a heslo. Tento příklad ukazuje příkazového řádku mysql. Pomocí tohoto příkazu budete vyzváni k zadání hesla pro uživatelské jméno. Nahraďte vlastní název serveru, název databáze a uživatelské jméno.
+5. Přihlaste se k serveru a určete určenou databázi pomocí nového uživatelského jména a hesla. Tento příklad ukazuje příkazový řádek MySQL. Pomocí tohoto příkazu se zobrazí výzva k zadání hesla pro uživatelské jméno. Nahraďte vlastní název serveru, název databáze a uživatelské jméno.
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
 
-## <a name="next-steps"></a>Další postup
-Otevření brány firewall pro IP adresy počítačů novým uživatelům povolit jim připojení: [Vytvoření a správě Azure Database for MySQL pravidla brány firewall pomocí webu Azure portal](howto-manage-firewall-using-portal.md) nebo [rozhraní příkazového řádku Azure](howto-manage-firewall-using-cli.md).
+## <a name="next-steps"></a>Další kroky
+Otevřete bránu firewall pro IP adresy nových uživatelských počítačů, aby se mohly připojit: [vytváření a správa Azure Database for MySQL pravidel brány firewall pomocí Azure Portal nebo rozhraní](howto-manage-firewall-using-portal.md) příkazového [řádku Azure](howto-manage-firewall-using-cli.md).
 
-Další informace týkající se správy uživatelských účtů, najdete v dokumentaci k produktu MySQL [Správa uživatelských účtů](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [udělení syntaxe](https://dev.mysql.com/doc/refman/5.7/en/grant.html), a [oprávnění](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).
+Další informace o správě uživatelských účtů najdete v dokumentaci k produktu MySQL pro [správu uživatelských účtů](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [udělení syntaxe](https://dev.mysql.com/doc/refman/5.7/en/grant.html)a [oprávnění](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).

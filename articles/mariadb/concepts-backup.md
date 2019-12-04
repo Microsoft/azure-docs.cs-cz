@@ -1,86 +1,86 @@
 ---
-title: Zálohování a obnovení ve službě Azure Database pro MariaDB
-description: Další informace o automatické zálohování a obnovení Azure Database pro MariaDB server.
+title: Zálohování a obnovení – Azure Database for MariaDB
+description: Přečtěte si o automatických zálohách a obnovení serveru Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: d6141c3184c8915c36f22d010db39aef2460dd1c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: 333e51782fd0dd88b3e8747fb831b841a22c8e6c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60483047"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773083"
 ---
-# <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Zálohování a obnovení ve službě Azure Database pro MariaDB
+# <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Zálohování a obnovení v Azure Database for MariaDB
 
-Azure Database pro MariaDB automaticky vytvoří serverových záloh a ukládá je do nakonfigurovaného uživatele místně redundantní a geograficky redundantní úložiště. Zálohy lze použít k obnovení vašeho serveru v daném okamžiku. Zálohování a obnovení jsou nedílnou součást každé strategie obchodní kontinuity podnikových procesů, protože jejich Chraňte svoje data před náhodným poškozením nebo odstranění.
+Azure Database for MariaDB automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
 
 ## <a name="backups"></a>Zálohování
 
-Azure Database pro MariaDB trvá úplné a rozdílové zálohování a zálohování protokolů transakcí. Tyto zálohy bylo možné obnovit server k jakékoli v daném okamžiku v rámci doby nakonfigurované uchovávání záloh. Výchozí období uchování zálohy je sedm dní. Můžete volitelně ho nakonfigurovat až 35 dnů. Všechny zálohy jsou šifrované pomocí šifrování AES 256 bitů.
+Azure Database for MariaDB zabírají úplné a rozdílové zálohy a zálohy protokolu transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
 ### <a name="backup-frequency"></a>Frekvence zálohování
 
-Obecně platí, úplné zálohování každý týden, rozdílového zálohování k dojde dvakrát denně, a zálohování protokolů transakcí každých pět minut. Bude první úplná záloha je naplánováno ihned po vytvoření serveru. Prvotní zálohování na velké obnoveného serveru může trvat déle. Nejstarší bod v čase, který lze obnovit na nový server je doba, jakou dokončení prvotní úplné zálohy.
+Obecně platí, že úplné zálohování probíhá každý týden, rozdílové zálohování dvakrát denně a zálohování transakčních protokolů každých pět minut. První úplné zálohování je naplánováno ihned po vytvoření serveru. Prvotní zálohování může trvat déle na velkém obnoveném serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování.
 
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
-Azure Database pro MariaDB poskytuje možnost si vybrat mezi místně redundantním nebo geograficky redundantní úložiště záloh na úrovni obecné účely a optimalizované pro paměť. Když jsou zálohy uložené v geograficky redundantní úložiště záloh, nejsou pouze uložené v rámci oblasti, ve kterém je hostovaný váš server, ale také replikují do [spárovaném datovém centru](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). To poskytuje lepší ochranu a umožňuje v případě havárie obnovit server v jiné oblasti. Úroveň Basic nabízí jenom místně redundantní úložiště záloh.
+Azure Database for MariaDB poskytuje flexibilitu při výběru místně redundantního nebo geograficky redundantního úložiště záloh v Pro obecné účely a paměťově optimalizovaných úrovních. Když jsou zálohy uložené v geograficky redundantním úložišti zálohování, neukládají se jenom v oblasti, ve které je váš server hostovaný, ale taky se replikují do [spárovaného datového centra](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). To zajišťuje lepší ochranu a možnost obnovení serveru v jiné oblasti v případě havárie. Úroveň Basic nabízí jenom místně redundantní úložiště záloh.
 
 > [!IMPORTANT]
-> Konfigurace místně redundantní a geograficky redundantní úložiště pro zálohování je povolený jenom během serveru vytvoříte. Jakmile je server zřizován, nelze změnit možnost redundance úložiště pro zálohování.
+> Konfigurace místně redundantního nebo geograficky redundantního úložiště pro zálohování je povolená jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování.
 
 ### <a name="backup-storage-cost"></a>Náklady na úložiště zálohování
 
-Azure Database pro MariaDB poskytuje až 100 % vaše zajišťovaného úložiště serveru jako úložiště pro zálohování bez dodatečných nákladů. Obvykle je to vhodné pro uchování zálohy 7 dní. Žádné další úložiště zálohování, které jsou použity je účtovat GB měsíčně.
+Azure Database for MariaDB poskytuje úložiště zřízeného serveru jako úložiště pro zálohování až 100%, a to bez dalších nákladů. Obvykle je to vhodné pro uchovávání záloh sedmi dnů. Jakékoli další využité úložiště záloh se účtuje za GB-měsíc.
 
-Například pokud zřízení serveru s 250 GB máte 250 GB úložiště pro zálohování bez dodatečných poplatků. Účtuje se nad rámec 250 GB úložiště.
+Pokud jste například zřídili Server s 250 GB, máte k dispozici až 250 GB úložiště zálohování bez dalších poplatků. Účtují se za úložiště převyšující 250 GB.
 
-Další informace o náklady na úložiště pro zálohování, přejděte [MariaDB stránce s cenami](https://azure.microsoft.com/pricing/details/mariadb/).
+Další informace o nákladech na úložiště zálohování najdete na [stránce s cenami MariaDB](https://azure.microsoft.com/pricing/details/mariadb/).
 
 ## <a name="restore"></a>Obnovení
 
-Ve službě Azure Database pro MariaDB provádění obnovení vytvoří nový server ze zálohy původního serveru.
+Při obnovení se v Azure Database for MariaDB vytvoří nový server ze zálohy původního serveru.
 
 K dispozici jsou dva typy obnovení:
 
-- **Obnovení k určitému bodu v čase** je k dispozici obě možnosti redundance zálohy a vytvoří nový server ve stejné oblasti jako váš původním serveru.
-- **Geografické obnovení** je k dispozici pouze v případě, že jste nakonfigurovali server pro geograficky redundantní úložiště a umožňuje obnovit váš server v jiné oblasti.
+- Obnovení k určitému **bodu v čase** je dostupné s možností redundance zálohy a vytvoří nový server ve stejné oblasti jako původní server.
+- **Geografické obnovení** je k dispozici pouze v případě, že jste server nakonfigurovali pro geograficky redundantní úložiště a máte možnost obnovit server do jiné oblasti.
 
-Odhadovaný čas obnovení závisí na několika faktorech včetně velikosti databáze, velikost protokolu transakcí, šířky pásma sítě a celkový počet obnovovaných databází ve stejné oblasti ve stejnou dobu. Čas obnovení je obvykle méně než 12 hodin.
+Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
 > [!IMPORTANT]
-> Odstranit servery **nelze** obnovit. Při odstranění serveru, odstraní se také všechny databáze, které patří k serveru a nelze ji obnovit. Pokud chcete chránit prostředky serveru, po nasazení, z náhodnému odstranění nebo neočekávaným změnám, správci můžou využívat [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
+> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
+### <a name="point-in-time-restore"></a>Obnovení k určitému časovému okamžiku
 
-Bez ohledu na vaše možnosti redundance zálohy, umožňuje obnovit do libovolného bodu v čase v rámci doby uchovávání záloh. Nový server se vytvoří ve stejné oblasti Azure jako původní server. Bude vytvořen pomocí konfigurace původního serveru pro cenové úrovně, generování výpočtu a počet virtuálních jader, velikosti úložiště, období uchování zálohy a možnosti redundance zálohy.
+Nezávisle na možnosti redundance záloh můžete provést obnovení do libovolného bodu v čase v rámci doby uchovávání záloh. Nový server se vytvoří ve stejné oblasti Azure jako původní server. Vytvoří se s konfigurací původního serveru pro cenovou úroveň, generování výpočtů, počet virtuální jádra, velikost úložiště, dobu uchování zálohy a možnost redundance zálohy.
 
-Obnovení k určitému bodu v čase je užitečné ve scénářích s více. Například když uživatel omylem odstraní data, sníží důležitou tabulku nebo databázi, nebo pokud aplikace náhodně přepíše dobrá data chybnými daty aplikace kvůli vadě.
+Obnovení k bodu v čase je užitečné ve více scénářích. Například když uživatel omylem odstraní data, ponechá důležitou tabulku nebo databázi, nebo pokud aplikace náhodně přepíše dobrá data s chybnými daty z důvodu vady aplikace.
 
-Budete muset počkat na další zálohování protokolu transakcí mají být provedeny, než bude možné obnovit do bodu v čase za posledních pět minut.
+Možná budete muset počkat, než bude provedena další záloha protokolu transakcí, než bude možné provést obnovení k určitému bodu v čase během posledních pěti minut.
 
 ### <a name="geo-restore"></a>Geografické obnovení
 
-Server můžete obnovit do jiné oblasti Azure, kde je k dispozici služba, pokud jste nakonfigurovali pro geograficky redundantní zálohy vašeho serveru. Geografické obnovení je výchozí možnost zotavení, kdy je server není k dispozici z důvodu incidentu v oblasti, kde je hostovaný na serveru. Pokud ve velkém měřítku incidentů v oblasti výsledky v nedostupnost databázovou aplikaci, můžete obnovit server z geograficky redundantní zálohy k serveru v kterékoli jiné oblasti. Dochází ke zpoždění mezi pořizování zálohy a kdy se replikuje do jiné oblasti. Toto zpoždění může být až hodinu, proto, pokud dojde k havárii, může trvat jednu hodinu ztrátu.
+Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, pokud jste server nakonfigurovali pro geograficky redundantní zálohy. Geografické obnovení je výchozí možností obnovení v případě, že server není k dispozici z důvodu incidentu v oblasti, kde je server hostován. Pokud má velký incident v oblasti nedostupnost vaší databázové aplikace, můžete obnovit server z geograficky redundantní zálohy na server v jakékoli jiné oblasti. Doba mezi vytvořením zálohy a při replikaci do jiné oblasti trvá zpoždění. Tato prodleva může trvat až jednu hodinu, takže pokud dojde k havárii, může dojít ke ztrátě dat o hodinu.
 
-Během geografické obnovení, které zahrnují konfigurace serveru, které lze změnit compute generace, vCore, období uchování zálohy a možnosti redundance zálohy. Změna cenovou úroveň (Basic, obecné účely nebo k paměťově optimalizovaným) nebo velikosti úložiště během geografické obnovení není podporováno.
+Během geografického obnovení můžou konfigurace serveru, které je možné změnit, zahrnovat výpočetní generování, vCore, dobu uchování záloh a možnosti redundance zálohování. Změna cenové úrovně (Basic, Pro obecné účely nebo paměťově optimalizovaná) nebo velikosti úložiště během geografického obnovení není podporovaná.
 
-### <a name="perform-post-restore-tasks"></a>Proveďte úkoly po obnovení
+### <a name="perform-post-restore-tasks"></a>Provádění úloh po obnovení
 
-Po obnovení z libovolného mechanismu by měl provádět následující úlohy zobrazíte uživatele a aplikace zpět do provozu:
+Po obnovení z některého mechanismu obnovení byste měli provést následující úlohy, aby se uživatelé a aplikace mohli zálohovat a spustit:
 
-- Pokud nový server je určena k nahrazení původní server, přesměrujte klienty a klientské aplikace na nový server
-- Ujistěte se, že pravidla brány firewall na příslušné úrovni serveru jsou nastavené pro připojení uživatelů
-- Zkontrolujte, zda jsou na místě odpovídající přihlášení a oprávnění na úrovni databáze
+- Pokud má nový server nahradit původní server, přesměrujte klienty a klientské aplikace na nový server.
+- Zajistěte, aby se pro uživatele připojovala odpovídající pravidla brány firewall na úrovni serveru.
+- Zajistěte, aby byla zajištěna příslušná přihlášení a oprávnění na úrovni databáze.
 - Podle potřeby nakonfigurujte výstrahy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o kontinuitě, najdete v článku [přehled zajištění provozní kontinuity firmy](concepts-business-continuity.md).
-- Obnovení do bodu v čase pomocí webu Azure portal, najdete v článku [obnovit databázi do bodu v čase pomocí webu Azure portal](howto-restore-server-portal.md).
+- Další informace o provozní kontinuitě najdete v tématu [Přehled provozní kontinuity](concepts-business-continuity.md).
+- Obnovení k určitému bodu v čase pomocí Azure Portal najdete v tématu [obnovení databáze k určitému bodu v čase pomocí Azure Portal](howto-restore-server-portal.md).
  
 <!--
 - To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md).-->

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: a45f273078a622de5e256457fc45b6cb6cae512f
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 4c0c415235fd290bc47ac402a6b81a1afa7af903
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464141"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777430"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>Odeberte Azure Sentinel z vašeho tenanta.
+# <a name="remove-azure-sentinel-from-your-workspace"></a>Odebrání služby Azure Sentinel z pracovního prostoru
 
-Pokud už nechcete používat službu Azure Sentinel, Tento článek vysvětluje, jak ho odebrat z vašeho tenanta.
+Pokud už nechcete používat službu Azure Sentinel, Tento článek vysvětluje, jak ho odebrat z pracovního prostoru.
 
 ## <a name="how-to-delete-azure-sentinel"></a>Jak odstranit Azure Sentinel
 
@@ -69,7 +69,7 @@ Během prvních 48 hodin už nebudou pravidla dat a upozornění (včetně konfi
 
 -   Pravidla upozornění
 
--   Záložky
+-   záložky
 
 Vaše playbooky, uložené sešity, uložené lovecké dotazy a poznámkové bloky se neodstraňují. **Některé mohou být z důvodu odebraných dat přerušeny. Můžete je odebrat ručně.**
 

@@ -1,25 +1,23 @@
 ---
-title: Připojení k serveru SFTP pomocí SSH-Azure Logic Apps
+title: Připojení k serveru SFTP pomocí protokolu SSH
 description: Automatizace úloh, které sledují, vytváří, spravují, odesílají a přijímají soubory pro server SFTP pomocí SSH a Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 54a1d1183ac16f5ec3db5477cda75c6e1a776b3d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837135"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786876"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
-K automatizaci úloh, které sledují, vytváří, odesílají a přijímají soubory na serveru [Secure protokol FTP (File Transfer Protocol) (SFTP)](https://www.ssh.com/ssh/sftp/) pomocí protokolu [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) , můžete vytvářet a automatizovat integrační pracovní postupy pomocí Azure Logic Apps a SFTP-SSH. připojovací. SFTP je síťový protokol, který poskytuje přístup k souborům, přenos souborů a správu souborů přes jakýkoliv spolehlivý datový proud. Tady je několik ukázkových úloh, které můžete automatizovat:
+Chcete-li automatizovat úlohy, které sledují, vytváří, odesílají a přijímaly soubory na serveru [Secure protokol FTP (File Transfer Protocol) (SFTP)](https://www.ssh.com/ssh/sftp/) pomocí protokolu [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) , můžete vytvářet a automatizovat integrační pracovní postupy pomocí Azure Logic Apps a konektoru SFTP-SSH. SFTP je síťový protokol, který poskytuje přístup k souborům, přenos souborů a správu souborů přes jakýkoliv spolehlivý datový proud. Tady je několik ukázkových úloh, které můžete automatizovat:
 
 * Monitorování při přidání nebo změně souborů
 * Získat, vytvořit, kopírovat, přejmenovat, aktualizovat, zobrazit seznam a odstranit soubory.
@@ -59,7 +57,7 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Uloží připojení do serveru SFTP *po dobu až 1 hodiny*, což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -110,7 +108,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Příklad:
+   Například:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 

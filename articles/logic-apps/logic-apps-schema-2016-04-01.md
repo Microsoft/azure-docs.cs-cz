@@ -1,21 +1,19 @@
 ---
-title: Aktualizace schématu – 1-2016. června – Azure Logic Apps | Microsoft Docs
+title: Aktualizace schématu – Červen 1-2016
 description: Aktualizované schéma verze 2016-06-01 pro definice aplikací logiky v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385370"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792879"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizace schématu pro Azure Logic Apps – 1. června 2016
 
@@ -23,7 +21,7 @@ ms.locfileid: "68385370"
 
 * [Obory](#scopes) umožňují seskupit nebo vnořovat akce jako kolekci akcí.
 * [Podmínky a smyčky](#conditions-loops) jsou nyní akce první třídy.
-* Přesnější řazení pro spouštění akcí s vlastností `runAfter` , která nahrazuje`dependsOn`
+* Přesnější řazení pro spouštění akcí s vlastností `runAfter`, která nahrazuje `dependsOn`
 
 Pokud chcete upgradovat aplikace logiky ze schématu verze 1, 2015 Preview na schéma 1. června 2016, [Podívejte se do části Upgrade](#upgrade-your-schema).
 
@@ -87,7 +85,7 @@ V předchozích verzích schématu byly podmínky a smyčky parametry přidruže
 
 ## <a name="runafter-property"></a>vlastnost ' Runafter šablonové '
 
-`runAfter` Vlastnost nahrazuje`dependsOn`a poskytuje větší přesnost při zadání pořadí spouštění pro akce na základě stavu předchozích akcí. `dependsOn` Vlastnost ukázala, zda "akce běžela a byla úspěšná" na základě toho, zda předchozí akce proběhla úspěšně, selhala nebo jako vynechána, nikoli počet pokusů, kolikrát jste chtěli akci spustit. `runAfter` Vlastnost poskytuje flexibilitu jako objekt, který určuje všechny názvy akcí, po kterých se objekt spustí. Tato vlastnost také definuje pole stavů, které jsou přijatelné jako triggery. Například pokud chcete, aby akce běžela po úspěšném provedení akce a také po úspěšném nebo neúspěšném provedení akce B, nastavte tuto `runAfter` vlastnost:
+Vlastnost `runAfter` nahrazuje `dependsOn`a poskytuje přesnější přesnost při zadání pořadí spouštění pro akce na základě stavu předchozích akcí. Vlastnost `dependsOn` ukázala, zda "akce běžela a byla úspěšná" na základě toho, zda předchozí akce proběhla úspěšně, selhala nebo jako vynechána, nikoli počet pokusů, kolikrát jste chtěli akci spustit. Vlastnost `runAfter` poskytuje flexibilitu jako objekt, který určuje všechny názvy akcí, po kterých se objekt spustí. Tato vlastnost také definuje pole stavů, které jsou přijatelné jako triggery. Například pokud chcete, aby akce běžela po úspěšném provedení akce a i po úspěšném nebo neúspěšném provedení akce B, nastavte tuto vlastnost `runAfter`:
 
 ```json
 {
@@ -129,7 +127,7 @@ Pokud chcete upgradovat na nejnovější [schéma](https://schema.management.azu
 
 ### <a name="mapping-conditions"></a>Podmínky mapování
 
-V upgradovaných definicích nástroj provádí nejlepší úsilí při seskupení akcí na true a false větvích dohromady jako obor. Konkrétně se vzor `@equals(actions('a').status, 'Skipped')` návrháře zobrazí `else` jako akce. Pokud ale nástroj zjistí nerozpoznatelný vzor, nástroj může vytvořit samostatné podmínky pro větev true i false. V případě potřeby můžete přemapovat akce po upgradu.
+V upgradovaných definicích nástroj provádí nejlepší úsilí při seskupení akcí na true a false větvích dohromady jako obor. Konkrétně se vzor návrháře `@equals(actions('a').status, 'Skipped')` zobrazí jako akce `else`. Pokud ale nástroj zjistí nerozpoznatelný vzor, nástroj může vytvořit samostatné podmínky pro větev true i false. V případě potřeby můžete přemapovat akce po upgradu.
 
 #### <a name="foreach-loop-with-condition"></a>smyčka foreach s podmínkou
 
@@ -143,19 +141,19 @@ Po upgradu se značky prostředků odeberou, takže je musíte obnovit pro upgra
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>Aktivační událost Manual se přejmenovala na Trigger Request.
 
-Typ triggeru byl zastaralý a přejmenován na `request` typ `http`. `manual` Tato změna vytvoří větší konzistenci pro druh vzoru, který je použit k sestavení triggeru.
+Typ triggeru `manual` byl zastaralý a byl přejmenován na `request` typu `http`. Tato změna vytvoří větší konzistenci pro druh vzoru, který je použit k sestavení triggeru.
 
 ### <a name="new-filter-action"></a>Nová akce Filter
 
-Chcete-li filtrovat velké pole dolů na menší sadu položek, je nový `filter` typ akceptovat pole a podmínku, vyhodnotí podmínku pro každou položku a vrátí pole s položkami, které splňují podmínku.
+Chcete-li filtrovat velké pole dolů na menší sadu položek, nový typ `filter` přijme pole a podmínku, vyhodnotí podmínku pro každou položku a vrátí pole s položkami, které splňují podmínku.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>Omezení pro akce foreach a ne
 
-Smyčka `until` and je omezená jenom na jednu akci. `foreach`
+Smyčka `foreach` a `until` je omezená na jednu akci.
 
 ### <a name="new-trackedproperties-for-actions"></a>New ' trackedProperties ' pro akce
 
-Akce teď můžou mít navolanou `trackedProperties`další vlastnost, která je stejná `runAfter` jako u `type` vlastností a. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Příklad:
+Akce teď mohou mít další vlastnost s názvem `trackedProperties`, která je stejná jako u vlastností `runAfter` a `type`. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Například:
 
 ``` json
 {
@@ -174,7 +172,7 @@ Akce teď můžou mít navolanou `trackedProperties`další vlastnost, která je
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytváření definic pracovních postupů pro Logic Apps](../logic-apps/logic-apps-author-definitions.md)
 * [Automatizace nasazení aplikace logiky](logic-apps-azure-resource-manager-templates-overview.md)

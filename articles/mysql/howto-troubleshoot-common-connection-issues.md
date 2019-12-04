@@ -1,18 +1,18 @@
 ---
-title: Řešení potíží s připojením pro Azure Database for MySQL
+title: Řešení potíží s připojením – Azure Database for MySQL
 description: Přečtěte si, jak řešit potíže s připojením Azure Database for MySQL, včetně přechodných chyb, které vyžadují opakované pokusy, problémy s bránou firewall a výpadky.
 keywords: připojení MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a0203ceeb36352a16814345f5ecdff8271691fd0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 8c1c521488270ff0bfe3b306470345bc2cd885ce
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972832"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773526"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Řešení potíží s připojením pro Azure Database for MySQL
 
@@ -40,7 +40,7 @@ K přechodným chybám dochází při provádění údržby, systém zaznamená 
 1. Podívejte se na [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) pro všechny známé výpadky, ke kterým došlo v době, kdy aplikace nahlásila chyby.
 2. Aplikace, které se připojují ke cloudové službě, jako je například Azure Database for MySQL, by měly očekávat přechodné chyby a implementují logiku opakování pro zpracování těchto chyb namísto zpřístupněníí chyb aplikací uživatelům. Kontrola [nad zpracováním přechodných chyb připojení pro Azure Database for MySQL](concepts-connectivity.md) osvědčenými postupy a pokyny pro návrh pro zpracování přechodných chyb.
 3. V případě, že se server blíží omezení prostředků, může se zdát, že chyby můžou být přechodný problém s připojením. Viz [omezení v Azure Database for MySQL](concepts-limits.md).
-4. Pokud potíže s připojením trvají nebo pokud doba, po kterou vaše aplikace narazí na chybu, překračuje 60 sekund, nebo pokud se v daném dni zobrazí více výskytů chyby, zastavte žádost o podporu Azure výběrem možnosti **získat podporu** na [Azure. Web podpory](https://azure.microsoft.com/support/options) .
+4. Pokud potíže s připojením trvají nebo pokud doba, po kterou vaše aplikace narazí na chybu, překračuje 60 sekund, nebo pokud se v daném dni zobrazí více výskytů chyby, zastavte žádost o podporu Azure výběrem možnosti **získat podporu** na webu [podpory Azure](https://azure.microsoft.com/support/options) .
 
 ## <a name="troubleshoot-persistent-errors"></a>Řešení trvalých chyb
 
@@ -48,7 +48,7 @@ Pokud se aplikace trvale nepřipojí k Azure Database for MySQL, obvykle se jedn
 
 * Konfigurace brány firewall serveru: Ujistěte se, že je brána firewall serveru Azure Database for MySQL nakonfigurovaná tak, aby povolovala připojení z vašeho klienta, včetně proxy serverů a bran.
 * Konfigurace brány firewall klienta: Brána firewall klienta musí umožňovat připojení k vašemu databázovému serveru. IP adresy a porty serveru, které se nedají povolit, a také názvy aplikací, jako je MySQL v některých branách firewall.
-* Chyba uživatele: v připojovacím řetězci můžete mít chybné typové parametry připojení, jako je název serveru nebo chybějící přípona *\@servername* v uživatelském jménu.
+* Chyba uživatele: v připojovacím řetězci můžete mít chybné typové parametry připojení, jako je název serveru nebo přípona chybějícího *\@servername* v uživatelském jménu.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 4c7d5d4d8777fee445585b43b58ceb261176b7f4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1de59ebb5ef0d7f5522a388aa9a2f5818495a9f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231027"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786329"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -18,14 +18,15 @@ Tento článek vysvětluje, jak ověřit a odeslat zprávy v reálném čase kli
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2. x
 
 Vazby služby signalizace jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) , verze 1. *. Zdrojový kód balíčku je v úložišti GitHub [Azure-Functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) .
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
+Podrobnosti o tom, jak nakonfigurovat a používat službu signalizace a Azure Functions společně, najdete v tématu [Azure Functions vývoj a konfigurace pomocí služby Azure Signal Service](../azure-signalr/signalr-concept-serverless-development-config.md).
 
-### <a name="java-annotations"></a>Poznámky jazyka Java
+### <a name="annotations-library-java-only"></a>Knihovna poznámek (jenom Java)
 
 Pokud chcete používat poznámky ke službě signalizace ve funkcích Java, musíte do souboru pom. XML přidat závislost do artefaktu *Azure-Functions-Java-Library-Signal* (verze 1,0 nebo vyšší).
 
@@ -37,26 +38,13 @@ Pokud chcete používat poznámky ke službě signalizace ve funkcích Java, mus
 </dependency>
 ```
 
-> [!NOTE]
-> Chcete-li použít vazby služby signalizace v jazyce Java, ujistěte se, že používáte verzi 2.4.419 nebo vyšší z Azure Functions Core Tools (2.0.12332 hostitele verze).
-
-## <a name="using-signalr-service-with-azure-functions"></a>Použití služby signalizace s Azure Functions
-
-Podrobnosti o tom, jak nakonfigurovat a používat službu signalizace a Azure Functions společně, najdete v tématu [Azure Functions vývoj a konfigurace pomocí služby Azure Signal Service](../azure-signalr/signalr-concept-serverless-development-config.md).
-
-## <a name="signalr-connection-info-input-binding"></a>Vstupní vazba informací o připojení signálů
+## <a name="input"></a>Vstup
 
 Předtím, než se může klient připojit ke službě Azure Signal, musí načíst adresu URL koncového bodu služby a platný přístupový token. Vstupní vazba *SignalRConnectionInfo* vytvoří adresu URL koncového bodu služby signalizace a platný token, který se používá pro připojení ke službě. Vzhledem k tomu, že token je časově omezený a dá se použít k ověření konkrétního uživatele k připojení, neměli byste token ukládat do mezipaměti ani sdílet mezi klienty. Trigger HTTP pomocí této vazby můžou klienti použít k načtení informací o připojení.
 
-Podívejte se na příklad specifické pro jazyk:
-
-* [2.xC#](#2x-c-input-examples)
-* [2. x JavaScript](#2x-javascript-input-examples)
-* [2. x Java](#2x-java-input-examples)
-
 Další informace o tom, jak se tato vazba používá k vytvoření funkce "Negotiate", kterou může využívat klientská sada SDK pro signalizaci, najdete v [článku Azure Functions vývoj a konfigurace](../azure-signalr/signalr-concept-serverless-development-config.md) v dokumentaci k koncepcím služby Signal.
 
-### <a name="2x-c-input-examples"></a>vstupní příklady 2 C# . x
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která získá informace o připojení k signalizaci pomocí vstupní vazby a vrátí ji přes HTTP.
 
@@ -70,26 +58,37 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Ověřené tokeny
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
-Pokud je funkce aktivována ověřeným klientem, můžete do vygenerovaného tokenu přidat deklaraci ID uživatele. Do aplikace Function App můžete snadno přidat ověřování pomocí [App Service ověřování](../app-service/overview-authentication-authorization.md).
+Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu k vrácení informací o připojení.
 
-App Service Authentication nastaví hlavičky HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name`, které obsahují ID a název objektu zabezpečení klienta ověřeného uživatele v uvedeném pořadí. Vlastnost `UserId` vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`. 
+Tady je vazba dat v souboru *Function. JSON* :
+
+Příklad Function. JSON:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+Tady je kód C# skriptu:
 
 ```cs
-[FunctionName("negotiate")]
-public static SignalRConnectionInfo Negotiate(
-    [HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req, 
-    [SignalRConnectionInfo
-        (HubName = "chat", UserId = "{headers.x-ms-client-principal-id}")]
-        SignalRConnectionInfo connectionInfo)
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo connectionInfo)
 {
-    // connectionInfo contains an access key token with a name identifier claim set to the authenticated user
     return connectionInfo;
 }
 ```
 
-### <a name="2x-javascript-input-examples"></a>2. x – vstupní příklady JavaScriptu
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu k vrácení informací o připojení.
 
@@ -107,7 +106,7 @@ Příklad Function. JSON:
 }
 ```
 
-Tady je kód jazyka JavaScript:
+Tady je kód JavaScriptu:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -115,11 +114,11 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-#### <a name="authenticated-tokens"></a>Ověřené tokeny
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-Pokud je funkce aktivována ověřeným klientem, můžete do vygenerovaného tokenu přidat deklaraci ID uživatele. Do aplikace Function App můžete snadno přidat ověřování pomocí [App Service ověřování](../app-service/overview-authentication-authorization.md).
+Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu k vrácení informací o připojení.
 
-App Service Authentication nastaví hlavičky HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name`, které obsahují ID a název objektu zabezpečení klienta ověřeného uživatele v uvedeném pořadí. Vlastnost `userId` vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`. 
+Tady je vazba dat v souboru *Function. JSON* :
 
 Příklad Function. JSON:
 
@@ -128,23 +127,25 @@ Příklad Function. JSON:
     "type": "signalRConnectionInfo",
     "name": "connectionInfo",
     "hubName": "chat",
-    "userId": "{headers.x-ms-client-principal-id}",
     "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
     "direction": "in"
 }
 ```
 
-Tady je kód jazyka JavaScript:
+Tady je kód Pythonu:
 
-```javascript
-module.exports = async function (context, req, connectionInfo) {
-    // connectionInfo contains an access key token with a name identifier
-    // claim set to the authenticated user
-    context.res.body = connectionInfo;
-};
+```python
+def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+    return func.HttpResponse(
+        connectionInfoJson,
+        status_code=200,
+        headers={
+            'Content-type': 'application/json'
+        }
+    )
 ```
 
-### <a name="2x-java-input-examples"></a>2. x Java Input – příklady
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Následující příklad ukazuje [funkci jazyka Java](functions-reference-java.md) , která získá informace o připojení k signalizaci pomocí vstupní vazby a vrátí ji přes HTTP.
 
@@ -162,11 +163,124 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>Ověřené tokeny
+---
+
+### <a name="authenticated-tokens"></a>Ověřené tokeny
 
 Pokud je funkce aktivována ověřeným klientem, můžete do vygenerovaného tokenu přidat deklaraci ID uživatele. Do aplikace Function App můžete snadno přidat ověřování pomocí [App Service ověřování](../app-service/overview-authentication-authorization.md).
 
-App Service Authentication nastaví hlavičky HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name`, které obsahují ID a název objektu zabezpečení klienta ověřeného uživatele v uvedeném pořadí. Vlastnost `UserId` vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`.
+App Service Authentication nastaví hlavičky HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name`, které obsahují ID a název objektu zabezpečení klienta ověřeného uživatele v uvedeném pořadí.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Vlastnost `UserId` vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`.
+
+```cs
+[FunctionName("negotiate")]
+public static SignalRConnectionInfo Negotiate(
+    [HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req, 
+    [SignalRConnectionInfo
+        (HubName = "chat", UserId = "{headers.x-ms-client-principal-id}")]
+        SignalRConnectionInfo connectionInfo)
+{
+    // connectionInfo contains an access key token with a name identifier claim set to the authenticated user
+    return connectionInfo;
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+Vlastnost `userId` vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`.
+
+Příklad Function. JSON:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+Tady je kód C# skriptu:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo connectionInfo)
+{
+    // connectionInfo contains an access key token with a name identifier
+    // claim set to the authenticated user
+    return connectionInfo;
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Vlastnost `userId` vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`.
+
+Příklad Function. JSON:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+Tady je kód JavaScriptu:
+
+```javascript
+module.exports = async function (context, req, connectionInfo) {
+    // connectionInfo contains an access key token with a name identifier
+    // claim set to the authenticated user
+    context.res.body = connectionInfo;
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Vlastnost `userId` vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`.
+
+Příklad Function. JSON:
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+Tady je kód Pythonu:
+
+```python
+def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+    # connectionInfo contains an access key token with a name identifier
+    # claim set to the authenticated user
+    return func.HttpResponse(
+        connectionInfoJson,
+        status_code=200,
+        headers={
+            'Content-type': 'application/json'
+        }
+    )
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Vlastnost `userId` vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`.
 
 ```java
 @FunctionName("negotiate")
@@ -183,23 +297,19 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-## <a name="signalr-output-binding"></a>Výstupní vazba signálu
+---
+
+## <a name="output"></a>Výstup
 
 Pomocí výstupní vazby *signálu* můžete odeslat jednu nebo více zpráv pomocí služby Azure signaler. Můžete vysílat zprávu všem připojeným klientům nebo ji můžete vysílat jenom pro připojené klienty, kteří byli ověření pro daného uživatele.
 
 Můžete ji také použít ke správě skupin, do kterých uživatel patří.
 
-Podívejte se na příklad specifické pro jazyk:
+### <a name="broadcast-to-all-clients"></a>Všesměrové vysílání pro všechny klienty
 
-* [2.xC#](#2x-c-send-message-output-examples)
-* [2. x JavaScript](#2x-javascript-send-message-output-examples)
-* [2. x Java](#2x-java-send-message-output-examples)
+Následující příklad ukazuje funkci, která odesílá zprávu pomocí výstupní vazby pro všechny připojené klienty. *Cíl* je název metody, která se má vyvolat u každého klienta. *Argumenty* jsou pole nula nebo více objektů, které mají být předány metodě klienta.
 
-### <a name="2x-c-send-message-output-examples"></a>2. x C# odeslat příklady výstupu zprávy
-
-#### <a name="broadcast-to-all-clients"></a>Všesměrové vysílání pro všechny klienty
-
-Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která odesílá zprávu pomocí výstupní vazby pro všechny připojené klienty. `Target` je název metody, kterou chcete vyvolat u každého klienta. Vlastnost `Arguments` je pole nula nebo více objektů, které mají být předány metodě klienta.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -216,9 +326,120 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>Odeslat uživateli
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
-Můžete odeslat zprávu pouze do připojení, která byla ověřena uživateli, nastavením vlastnosti `UserId` zprávy Signal.
+Tady je vazba dat v souboru *Function. JSON* :
+
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód C# skriptu:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Tady je vazba dat v souboru *Function. JSON* :
+
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód JavaScriptu:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Tady je vazba dat v souboru *Function. JSON* :
+
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód Pythonu:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="send-to-a-user"></a>Odeslat uživateli
+
+Můžete odeslat zprávu pouze do připojení, která byla ověřena uživateli, nastavením *ID uživatele* ve zprávě signalizace.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -237,9 +458,123 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Odeslat do skupiny
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
-Můžete odeslat zprávu pouze do připojení, která byla přidána do skupiny, nastavením vlastnosti `GroupName` zprávy Signal.
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód C# skriptu:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will only be sent to this user ID
+            UserId = "userId1",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód JavaScriptu:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this user ID
+        "userId": "userId1",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Tady je vazba dat v souboru *Function. JSON* :
+
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód Pythonu:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this user ID
+        'userId': 'userId1',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.userId = "userId1";
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="send-to-a-group"></a>Odeslat do skupiny
+
+Můžete poslat zprávu jenom na připojení, která se přidala do skupiny, a to tak, že nastavíte *název skupiny* ve zprávě signalizace.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -258,9 +593,123 @@ public static Task SendMessage(
 }
 ```
 
-### <a name="2x-c-group-management-output-examples"></a>Příklady výstupů C# správy skupin 2. x
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
-Služba Signal umožňuje přidat uživatele do skupin. Zprávy je pak možné odeslat do skupiny. Ke správě členství uživatele ve skupině můžete použít třídu `SignalRGroupAction` s výstupní vazbou `SignalR`.
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód C# skriptu:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will be sent to the group with this name
+            GroupName = "myGroup",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód JavaScriptu:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this group
+        "groupName": "myGroup",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Tady je vazba dat v souboru *Function. JSON* :
+
+Příklad Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Tady je kód Pythonu:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this group
+        'groupName': 'myGroup',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.groupName = "myGroup";
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+### <a name="group-management"></a>Správa skupin
+
+Služba Signal umožňuje přidat uživatele do skupin. Zprávy je pak možné odeslat do skupiny. Pomocí výstupní vazby `SignalR` můžete spravovat členství uživatele ve skupině.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 #### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
@@ -311,107 +760,102 @@ public static Task RemoveFromGroup(
 > [!NOTE]
 > Aby bylo možné `ClaimsPrincipal` správně svázat, je nutné nakonfigurovat nastavení ověřování v Azure Functions.
 
-### <a name="2x-javascript-send-message-output-examples"></a>Příklady pro odeslání zprávy ve 2. x JavaScriptu
-
-#### <a name="broadcast-to-all-clients"></a>Všesměrové vysílání pro všechny klienty
-
-Následující příklad ukazuje výstupní vazbu signálu v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu k odeslání zprávy pomocí služby Azure Signal Service. Nastavte výstupní vazbu na pole jedné nebo více zpráv signalizace. Zpráva signálu se skládá z `target` vlastnosti, která určuje název metody, která se má vyvolat u každého klienta, a vlastnost `arguments`, která je pole objektů, které se předají do metody klienta jako argumenty.
-
-Tady je vazba dat v souboru *Function. JSON* :
-
-Příklad Function. JSON:
-
-```json
-{
-  "type": "signalR",
-  "name": "signalRMessages",
-  "hubName": "<hub_name>",
-  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-  "direction": "out"
-}
-```
-
-Tady je kód jazyka JavaScript:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-#### <a name="send-to-a-user"></a>Odeslat uživateli
-
-Můžete odeslat zprávu pouze do připojení, která byla ověřena uživateli, nastavením vlastnosti `userId` zprávy Signal.
-
-*Function. JSON* zůstává stejný. Tady je kód jazyka JavaScript:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        // message will only be sent to this user ID
-        "userId": "userId1",
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-#### <a name="send-to-a-group"></a>Odeslat do skupiny
-
-Můžete odeslat zprávu pouze do připojení, která byla přidána do skupiny, nastavením vlastnosti `groupName` zprávy Signal.
-
-*Function. JSON* zůstává stejný. Tady je kód jazyka JavaScript:
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        // message will only be sent to this group
-        "groupName": "myGroup",
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-### <a name="2x-javascript-group-management-output-examples"></a>dva příklady výstupu správy skupin JavaScriptu ve skupině x
-
-Služba Signal umožňuje přidat uživatele do skupin. Zprávy je pak možné odeslat do skupiny. Pomocí výstupní vazby `SignalR` můžete spravovat členství uživatele ve skupině.
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
 
 #### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
 Následující příklad přidá uživatele do skupiny.
 
-*Function. JSON*
+Příklad *Function. JSON*
 
 ```json
 {
-  "disabled": false,
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "signalR",
-      "name": "signalRGroupActions",
-      "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-      "hubName": "chat",
-      "direction": "out"
-    }
-  ]
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*Spustit. csx*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Add
+        });
+}
+```
+
+#### <a name="remove-user-from-a-group"></a>Odebrání uživatele ze skupiny
+
+Následující příklad odebere uživatele ze skupiny.
+
+Příklad *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*Spustit. csx*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Remove
+        });
+}
+```
+
+> [!NOTE]
+> Aby bylo možné `ClaimsPrincipal` správně svázat, je nutné nakonfigurovat nastavení ověřování v Azure Functions.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
+
+Následující příklad přidá uživatele do skupiny.
+
+Příklad *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
@@ -431,34 +875,15 @@ module.exports = async function (context, req) {
 
 Následující příklad odebere uživatele ze skupiny.
 
-*Function. JSON*
+Příklad *Function. JSON*
 
 ```json
 {
-  "disabled": false,
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "signalR",
-      "name": "signalRGroupActions",
-      "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-      "hubName": "chat",
-      "direction": "out"
-    }
-  ]
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
@@ -474,73 +899,63 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="2x-java-send-message-output-examples"></a>2. x Java poslat výstup zprávy příklady
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-#### <a name="broadcast-to-all-clients"></a>Všesměrové vysílání pro všechny klienty
+#### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
-Následující příklad ukazuje [funkci jazyka Java](functions-reference-java.md) , která odesílá zprávu pomocí výstupní vazby pro všechny připojené klienty. `target` je název metody, kterou chcete vyvolat u každého klienta. Vlastnost `arguments` je pole nula nebo více objektů, které mají být předány metodě klienta.
+Následující příklad přidá uživatele do skupiny.
 
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+Příklad *Function. JSON*
 
-    SignalRMessage message = new SignalRMessage();
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
-#### <a name="send-to-a-user"></a>Odeslat uživateli
+*\_\_init. py__*
 
-Můžete odeslat zprávu pouze do připojení, která byla ověřena uživateli, nastavením vlastnosti `userId` zprávy Signal.
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'add'
+    }))
+```
 
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+#### <a name="remove-user-from-a-group"></a>Odebrání uživatele ze skupiny
 
-    SignalRMessage message = new SignalRMessage();
-    message.userId = "userId1";
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
+Následující příklad odebere uživatele ze skupiny.
+
+Příklad *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
 }
 ```
 
-#### <a name="send-to-a-group"></a>Odeslat do skupiny
+*\_\_init. py__*
 
-Můžete odeslat zprávu pouze do připojení, která byla přidána do skupiny, nastavením vlastnosti `groupName` zprávy Signal.
-
-```java
-@FunctionName("sendMessage")
-@SignalROutput(name = "$return", hubName = "chat")
-public SignalRMessage sendMessage(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
-
-    SignalRMessage message = new SignalRMessage();
-    message.groupName = "myGroup";
-    message.target = "newMessage";
-    message.arguments.add(req.getBody());
-    return message;
-}
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'remove'
+    }))
 ```
 
-### <a name="2x-java-group-management-output-examples"></a>2. x Java – příklady výstupu správy skupin
-
-Služba Signal umožňuje přidat uživatele do skupin. Zprávy je pak možné odeslat do skupiny. Ke správě členství uživatele ve skupině můžete použít třídu `SignalRGroupAction` s výstupní vazbou `SignalROutput`.
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 #### <a name="add-user-to-a-group"></a>Přidat uživatele do skupiny
 
@@ -586,13 +1001,15 @@ public SignalRGroupAction removeFromGroup(
 }
 ```
 
-## <a name="configuration"></a>Konfiguraci
+---
+
+## <a name="configuration"></a>Konfigurace
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `SignalRConnectionInfo`.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**type**|| Musí být nastavené na `signalRConnectionInfo`.|
 |**direction**|| Musí být nastavené na `in`.|
@@ -605,7 +1022,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `SignalR`.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**type**|| Musí být nastavené na `signalR`.|
 |**direction**|| Musí být nastavené na `out`.|

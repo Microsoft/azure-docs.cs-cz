@@ -1,22 +1,18 @@
 ---
-title: Připojení k Azure Blob Storage-Azure Logic Apps
+title: Připojení k Azure Blob Storage
 description: Vytvářejte a spravujte objekty BLOB v účtech úložiště Azure pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/28/2019
 tags: connectors
-ms.openlocfilehash: c431f917f6fc1ac080b13184bd9ce205a20afbaa
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199661"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789916"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Vytváření a správa objektů BLOB v Azure Blob Storage pomocí Azure Logic Apps
 
@@ -93,7 +89,7 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Přidat nový krok do pracovního postupu aplikace logiky](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci**.
+   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Zvolte znaménko plus ( **+** ), které se zobrazí, a vyberte **přidat akci**.
 
 3. Do vyhledávacího pole zadejte jako filtr "Azure Blob". V seznamu akce vyberte akci, kterou chcete.
 
@@ -127,7 +123,7 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | <*připojení-název*> | Název, který se má pro připojení vytvořit |
+   | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
    | **Účet úložiště** | Ano | *účet úložiště* <> | V seznamu vyberte svůj účet úložiště. |
    ||||
 

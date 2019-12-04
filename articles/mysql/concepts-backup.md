@@ -1,17 +1,17 @@
 ---
-title: Zálohování a obnovení v Azure Database for MySQL
+title: Zálohování a obnovení – Azure Database for MySQL
 description: Přečtěte si o automatických zálohách a obnovení serveru Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: a2a1fb5f84612630d4168c8af908ed86330938c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213123"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776286"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
 
@@ -23,7 +23,7 @@ Azure Database for MySQL přebírá zálohy datových souborů a transakčního 
 
 ### <a name="backup-frequency"></a>Frekvence zálohování
 
-Obecně platí, že k úplným zálohováním dochází týdně, rozdílové zálohování probíhá dvakrát denně pro servery s maximálním podporovaným úložištěm 4 TB. Zálohování snímků probíhá alespoň jednou denně pro servery, které podporují až 16 TB úložiště. V obou případech se k zálohování protokolu transakcí vyskytuje každých pět minut. První snímek úplného zálohování je naplánován ihned po vytvoření serveru. Počáteční úplná záloha může trvat delší dobu jako u velkého obnoveného serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování. Jelikož jsou snímky instantanious, servery s podporou až 16 TB úložiště je možné obnovit až do doby vytvoření.
+Obecně platí, že k úplným zálohováním dochází týdně, rozdílové zálohování probíhá dvakrát denně pro servery s maximálním podporovaným úložištěm 4 TB. U serverů podporujících až 16 TB úložiště probíhá zálohování snímků alespoň jednou denně. Zálohování transakčních protokolů v obou případech probíhá každých pět minut. První snímek úplného zálohování je naplánován ihned po vytvoření serveru. Počáteční úplná záloha může trvat delší dobu jako u velkého obnoveného serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování. Jelikož jsou snímky instantanious, servery s podporou až 16 TB úložiště je možné obnovit až do doby vytvoření.
 
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
@@ -52,7 +52,7 @@ Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí 
 > [!IMPORTANT]
 > Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
+### <a name="point-in-time-restore"></a>Obnovení k určitému časovému okamžiku
 
 Nezávisle na možnosti redundance záloh můžete provést obnovení do libovolného bodu v čase v rámci doby uchovávání záloh. Nový server se vytvoří ve stejné oblasti Azure jako původní server. Vytvoří se s konfigurací původního serveru pro cenovou úroveň, generování výpočtů, počet virtuální jádra, velikost úložiště, dobu uchování zálohy a možnost redundance zálohy.
 

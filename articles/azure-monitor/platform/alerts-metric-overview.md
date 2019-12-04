@@ -7,12 +7,12 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484251"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775717"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Vysvětlení, jak fungují výstrahy metrik v Azure Monitor
 
@@ -133,7 +133,7 @@ Můžete určit rozsah monitorování jedním výstrahou metriky jedním ze tř�
 - všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků v rámci předplatného
 - všechny virtuální počítače (v jedné oblasti Azure) v jednom předplatném
 
-Vytváření pravidel upozornění na metriky, které monitorují více prostředků, je jako [Vytvoření jakékoli jiné výstrahy metriky](alerts-metric.md) , která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete monitorovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Pro každý virtuální počítač budete dostávat jednotlivá oznámení.
+Vytváření pravidel upozornění na metriky, které monitorují více prostředků, je jako [Vytvoření jakékoli jiné výstrahy metriky](alerts-metric.md) , která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete monitorovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). Pro každý virtuální počítač budete dostávat jednotlivá oznámení.
 
 ## <a name="typical-latency"></a>Typická latence
 

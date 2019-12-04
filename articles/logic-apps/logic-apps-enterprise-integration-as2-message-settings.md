@@ -1,64 +1,63 @@
 ---
-title: Nastavení zpráv AS2 – Azure Logic Apps
-description: Referenční příručka pro AS2 odesílat a přijímat nastavení v Azure Logic Apps sadou Enterprise Integration Pack
+title: Nastavení zpráv AS2
+description: Referenční příručka pro AS2 nastavení odesílání a přijímání v Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2019
-ms.openlocfilehash: ead92094b9af1dff56ff68e1ff58a3a4cdd9dca5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63769448"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793024"
 ---
-# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Referenční informace pro nastavení zpráv AS2 v Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Referenční informace k nastavení zpráv AS2 v Azure Logic Apps s Enterprise Integration Pack
 
-Tento odkaz popisuje vlastnosti, které můžete nastavit pro určení, jak smlouvy AS2 zpracovává zprávy odesílané nebo přijímané mezi obchodními partnery. Nastavení těchto vlastností na základě vaše smlouvy s partnerem, který vyměňuje zprávy s vámi.
+Tento odkaz popisuje vlastnosti, které můžete nastavit pro určení způsobu, jakým AS2 smlouva zpracovává zprávy odesílané a přijímané mezi obchodními partnery. Nastavte tyto vlastnosti podle vaší smlouvy s partnerem, který s vámi vyměňuje zprávy.
 
 <a name="AS2-incoming-messages"></a>
 
-## <a name="as2-receive-settings"></a>Nastavení přijímání AS2
+## <a name="as2-receive-settings"></a>Nastavení příjmu AS2
 
-![Vyberte možnost "Zobrazit nastavení"](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
+![Vyberte přijmout nastavení.](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
 
 | Vlastnost | Požaduje se | Popis |
 |----------|----------|-------------|
-| **Přepsat vlastnosti zprávy** | Ne | Přepsání vlastností příchozí zprávy s nastavením vlastností. |
-| **Zprávu je nutné podepsat** | Ne | Určuje, zda všechny příchozí zprávy musí být digitálně podepsané. Pokud budete vyžadovat podepisování, z **certifikát** seznamu, vyberte existující hosta partnera veřejný certifikát pro ověření podpisu na zprávy. Pokud nemáte k dispozici certifikát, další informace o [přidání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
-| **Zprávu je nutné zašifrovat** | Ne | Určuje, zda všechny příchozí zprávy musí šifrovat. Zprávy šifrované bez odmítají. Pokud vyžadujete šifrování, z **certifikát** vyberte existující hostitele partnera privátní certifikát pro dešifrování příchozí zprávy. Pokud nemáte k dispozici certifikát, další informace o [přidání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
-| **Zprávu je nutné zkomprimovat** | Ne | Určuje, zda všechny příchozí zprávy musí být komprimovány. Bez komprimované zprávy jsou odmítnuta. |
-| **Zakázat duplicity ID zpráv** | Ne | Určuje, jestli se má povolit zpráv s duplicitními identifikátory. Pokud zakážete duplicitní ID, vyberte počet dní mezi kontrolami. Můžete také zvolit, jestli se má pozastavit duplicitní položky. |
-| **MDN Text** | Ne | Určuje výchozí zprávu dispozice oznámení (MDN), který chcete pro odesílatele zprávy. |
-| **Odesílat zprávy MDN.** | Ne | Určuje, jestli se má odeslat synchronní něho pro přijaté zprávy.  |
-| **Odeslat podepsanou zprávu MDN** | Ne | Určuje, jestli se má odeslat podepsaný něho pro přijaté zprávy. Pokud budete vyžadovat podepisování, z **algoritmus MIC** vyberte algoritmus použitý k podepsání zprávy. |
-| **Odeslat asynchronní zprávu MDN** | Ne | Určuje, jestli se má odeslat něho asynchronně. Pokud vyberete v asynchronní něho **URL** pole, zadejte adresu URL pro kam poslat platbu něho. |
+| **Přepsat vlastnosti zprávy** | Ne | Potlačí vlastnosti příchozích zpráv s nastavením vlastností. |
+| **Zpráva by měla být podepsaná.** | Ne | Určuje, zda musí být všechny příchozí zprávy digitálně podepsány. Pokud požadujete podepisování, vyberte ze seznamu **certifikát** stávající veřejný certifikát hostovaného partnera pro ověření podpisu zpráv. Pokud certifikát nemáte, přečtěte si další informace o [Přidávání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Zpráva by měla být zašifrovaná.** | Ne | Určuje, zda musí být všechny příchozí zprávy zašifrovány. Nešifrované zprávy jsou odmítnuty. Pokud vyžadujete šifrování, vyberte ze seznamu **certifikát** stávající privátní certifikát hostitelského partnera pro dešifrování příchozích zpráv. Pokud certifikát nemáte, přečtěte si další informace o [Přidávání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Zpráva by měla být komprimovaná** | Ne | Určuje, zda musí být všechny příchozí zprávy komprimovány. Nekomprimované zprávy jsou odmítnuty. |
+| **Zakázat duplicity ID zpráv** | Ne | Určuje, zda mají být povoleny zprávy s duplicitními identifikátory. Pokud zakážete duplicitní identifikátory, vyberte počet dní mezi kontrolami. Můžete také zvolit, zda chcete pozastavit duplicity. |
+| **MDN text** | Ne | Určuje výchozí oznámení o zařazování zpráv (MDN), které chcete odeslat odesílateli zprávy. |
+| **Odeslat MDN** | Ne | Určuje, zda se mají pro přijaté zprávy odesílat synchronní MDNs.  |
+| **Poslat podepsané MDN** | Ne | Určuje, zda se mají pro přijaté zprávy odesílat podepsané MDNs. Pokud požadujete podepisování, vyberte v seznamu **algoritmus mikrofonu** algoritmus, který se má použít pro podepisování zpráv. |
+| **Odeslat asynchronní MDN** | Ne | Určuje, zda se má MDNs odeslat asynchronně. Pokud vyberete možnost asynchronní MDNs, v poli **Adresa URL** zadejte adresu URL, kam se má MDNs odeslat. |
 ||||
 
 <a name="AS2-outgoing-messages"></a>
 
-## <a name="as2-send-settings"></a>Nastavení pro odesílání AS2
+## <a name="as2-send-settings"></a>Nastavení odesílání AS2
 
-![Vyberte "Nastavení odesílání"](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
+![Vyberte Odeslat nastavení.](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
 
 | Vlastnost | Požaduje se | Popis |
 |----------|----------|-------------|
-| **Povolit podepisování zpráv** | Ne | Určuje, zda všechny odchozí zprávy musí být digitálně podepsané. Pokud budete potřebovat, podepsání, vyberte tyto hodnoty: <p>-Od **podpisový algoritmus** vyberte algoritmus použitý k podepsání zprávy. <br>-Od **certifikát** vyberte existující hostitele partnera privátní certifikát pro podepisování zpráv. Pokud nemáte k dispozici certifikát, další informace o [přidání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
-| **Povolit šifrování zpráv** | Ne | Určuje, zda všechny odchozí zprávy musí šifrovat. Pokud vyžadujete šifrování, vyberte tyto hodnoty: <p>-Od **šifrovací algoritmus** vyberte algoritmus hosta partnera veřejný certifikát pro šifrování zpráv. <br>-Od **certifikát** vyberte existující hosta partnera privátní certifikát pro šifrování odchozích zpráv. Pokud nemáte k dispozici certifikát, další informace o [přidání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
-| **Povolit kompresi zpráv** | Ne | Určuje, zda všechny odchozí zprávy musí být komprimovány. |
-| **Rozbalit hlavičky HTTP** | Ne | Vloží HTTP `content-type` záhlaví na jednom řádku. |
-| **Název souboru v hlavičce MIME přenosu** | Ne | Určuje, zda mají být zahrnuty název souboru hlavičky MIME. |
-| **Požadovat zprávy MDN** | Ne | Určuje, zda chcete zobrazovat zprávy s oznámením dispozice (něho) pro všechny odchozí zprávy. |
-| **Požadovat podepsané zprávy MDN** | Ne | Určuje, zda chcete zobrazovat podepsaný něho pro všechny odchozí zprávy. Pokud budete vyžadovat podepisování, z **algoritmus MIC** vyberte algoritmus použitý k podepsání zprávy. |
-| **Požadovat asynchronní zprávy MDN** | Ne | Určuje, zda chcete zobrazovat něho asynchronně. Pokud vyberete v asynchronní něho **URL** pole, zadejte adresu URL pro kam poslat platbu něho. |
-| **Povolit NRR** | Ne | Určuje, jestli se má vyžadovat-neodvolatelnost příjmu (NRR). Tento atribut komunikace poskytuje důkazy, který uživateli přišel data, jak je řešit. |
-| **Formát algoritmu SHA2** | Ne | Určuje formát algoritmus MIC má použít pro podepisování v záhlaví pro odchozí zprávy AS2 nebo zprávy MDN. |
+| **Povolit podepisování zpráv** | Ne | Určuje, jestli všechny odchozí zprávy musí být digitálně podepsané. Pokud požadujete podepisování, vyberte tyto hodnoty: <p>– Ze seznamu **podpisového algoritmu** vyberte algoritmus, který se má použít pro podepisování zpráv. <br>– V seznamu **certifikát** vyberte existující privátní certifikát hostitelského partnera pro podpisové zprávy. Pokud certifikát nemáte, přečtěte si další informace o [Přidávání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Povolit šifrování zpráv** | Ne | Určuje, jestli se všechny odchozí zprávy musí šifrovat. Pokud vyžadujete šifrování, vyberte tyto hodnoty: <p>– V seznamu **šifrovací algoritmus** vyberte algoritmus veřejného certifikátu hostovaného partnera hosta, který se použije k šifrování zpráv. <br>– Ze seznamu **certifikát** vyberte existující privátní certifikát hostovaného partnera pro šifrování odchozích zpráv. Pokud certifikát nemáte, přečtěte si další informace o [Přidávání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Povolit kompresi zprávy** | Ne | Určuje, zda musí být všechny odchozí zprávy komprimovány. |
+| **Odložení hlaviček protokolu HTTP** | Ne | Vloží hlavičku `content-type` HTTP na jeden řádek. |
+| **Název souboru přenosu v záhlaví MIME** | Ne | Určuje, jestli se má do záhlaví MIME zahrnout název souboru. |
+| **MDN žádosti** | Ne | Určuje, jestli se mají dostávat oznámení o zařazování zpráv (MDNs) pro všechny odchozí zprávy. |
+| **Žádost podepsaná MDN** | Ne | Určuje, jestli se má pro všechny odchozí zprávy přijímat podepsané MDNs. Pokud požadujete podepisování, vyberte v seznamu **algoritmus mikrofonu** algoritmus, který se má použít pro podepisování zpráv. |
+| **Požadavek na asynchronní MDN** | Ne | Určuje, zda se má přijímat MDNs asynchronně. Pokud vyberete možnost asynchronní MDNs, v poli **Adresa URL** zadejte adresu URL, kam se má MDNs odeslat. |
+| **Povolit NRR** | Ne | Určuje, jestli se má vyžadovat příjem bez odmítnutí (NRR). Tento atribut komunikace poskytuje důkaz o tom, že data byla přijata jako adresovaná. |
+| **Formát algoritmu SHA2** | Ne | Určuje formát algoritmu MIC, který se má použít pro podepisování hlaviček odchozích zpráv AS2 nebo MDN. |
 ||||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Výměna zpráv AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)
+[Zprávy Exchange AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)

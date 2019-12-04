@@ -1,34 +1,32 @@
 ---
-title: X12 sledování schémata na zprávy B2B – Azure Logic Apps | Dokumentace Microsoftu
-description: Vytvoření X12 sledování schémat, které monitorování zpráv B2B v integračních účtů pro Azure Logic Apps sadou Enterprise Integration Pack
+title: Schémata sledování X12 pro zprávy B2B
+description: Vytvoření schémat sledování X12, která monitorují zprávy B2B v integračních účtech pro Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
-ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f2356600f5b6a637da731c650b26d968092e2f6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845762"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791724"
 ---
-# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Vytvoření schémat pro sledování X12 zprávy v integračních účtů pro Azure Logic Apps
+# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Vytváření schémat pro sledování zpráv X12 v integračních účtech pro Azure Logic Apps
 
-Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-to-business (B2B), můžete použít tyto X12 schémata v účtu integrace sledování:
+Abyste vám pomohli monitorovat úspěšné, chyby a vlastnosti zpráv pro transakce B2B (Business-to-Business), můžete tato schémata sledování X12 použít ve svém účtu integrace:
 
-* X12 schéma sledování sady transakcí
-* X12 schéma sledování potvrzení sady transakcí
-* Schéma sledování výměny X12
-* Schéma sledování potvrzení výměny X12
-* X12 funkční skupině schéma sledování
-* X12 funkční skupině potvrzení schéma sledování
+* Schéma sledování sady transakcí X12
+* Schéma sledování potvrzení X12 sady transakcí
+* Schéma sledování X12 Interchange
+* Schéma sledování potvrzení X12 výměny
+* Schéma sledování skupin funkcí X12
+* Schéma sledování potvrzení X12 funkční skupiny
 
-## <a name="x12-transaction-set-tracking-schema"></a>X12 schéma sledování sady transakcí
+## <a name="x12-transaction-set-tracking-schema"></a>Schéma sledování sady transakcí X12
 
 ```json
 {
@@ -59,27 +57,27 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
-| senderPartnerName | String | X12 zpráv odesílatele název partnera. (Volitelné) |
-| receiverPartnerName | String | X12 zprávy jméno od přijímajícího partnera. (Volitelné) |
-| senderQualifier | String | Odešlete kvalifikátor partnera. (Povinné) |
-| senderIdentifier | String | Odešlete identifikátor partnera. (Povinné) |
-| receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
-| receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
-| interchangeControlNumber | String | Kontrolní číslo výměny. (Volitelné) |
-| functionalGroupControlNumber | String | Funkční kontrolní číslo. (Volitelné) |
-| transactionSetControlNumber | String | Kontrolní číslo sady transakcí. (Volitelné) |
-| CorrelationMessageId | String | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
-| messageType | String | Transakce nastavit nebo typ dokumentu. (Volitelné) |
-| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
-| isTechnicalAcknowledgmentExpected | Boolean | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
-| isFunctionalAcknowledgmentExpected | Boolean | Určuje, zda je funkční potvrzení gurovaný X12 smlouvy. (Povinné) |
-| needAk2LoopForValidMessages | Boolean | Určuje, zda je smyčka smyčku AK2 vyžaduje platnou zprávu. (Povinné) |
-| segmentsCount | Integer | Počet segmentů X12 sada transakcí. (Volitelné) |
+| senderPartnerName | Řetězec | Název partnera pro odesílatele zprávy X12. Volitelné |
+| receiverPartnerName | Řetězec | Název partnera pro zprávu X12. Volitelné |
+| senderQualifier | Řetězec | Poslat kvalifikátor partnerů Závaznou |
+| senderIdentifier | Řetězec | Odeslat identifikátor partnera Závaznou |
+| receiverQualifier | Řetězec | Příjem kvalifikátoru partnerů Závaznou |
+| receiverIdentifier | Řetězec | Získá identifikátor partnera. Závaznou |
+| smlouva | Řetězec | Název smlouvy X12, na kterou jsou zprávy vyřešeny Volitelné |
+| směr | Výčet | Směr toku zpráv, přijetí nebo odeslání. Závaznou |
+| interchangeControlNumber | Řetězec | Kontrolní číslo výměny Volitelné |
+| functionalGroupControlNumber | Řetězec | Číslo funkčního řízení. Volitelné |
+| transactionSetControlNumber | Řetězec | Kontrolní číslo sady transakcí Volitelné |
+| CorrelationMessageId | Řetězec | ID zprávy korelace. Kombinace {Agreement} {*GroupControlNumber*} {TransactionSetControlNumber} Volitelné |
+| messageType | Řetězec | Sada transakcí nebo typ dokumentu. Volitelné |
+| isMessageFailed | Logická hodnota | Zda zpráva X12 selhala. Závaznou |
+| isTechnicalAcknowledgmentExpected | Logická hodnota | Určuje, jestli je v X12 smlouvě nakonfigurované technické potvrzení. Závaznou |
+| isFunctionalAcknowledgmentExpected | Logická hodnota | Určuje, jestli je v X12 smlouvě nakonfigurované funkční potvrzení. Závaznou |
+| needAk2LoopForValidMessages | Logická hodnota | Určuje, zda je pro platnou zprávu vyžadován cyklus AK2. Závaznou |
+| segmentsCount | Integer | Počet segmentů v sadě transakcí X12 Volitelné |
 ||||
 
-## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12 schéma sledování potvrzení sady transakcí
+## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>Schéma sledování potvrzení X12 sady transakcí
 
 ```json
 {
@@ -115,33 +113,33 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
-| senderPartnerName | String | X12 zpráv odesílatele název partnera. (Volitelné) |
-| receiverPartnerName | String | X12 zprávy jméno od přijímajícího partnera. (Volitelné) |
-| senderQualifier | String | Odešlete kvalifikátor partnera. (Povinné) |
-| senderIdentifier | String | Odešlete identifikátor partnera. (Povinné) |
-| receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
-| receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
-| interchangeControlNumber | String | Kontrolní číslo funkční potvrzení výměny. Hodnota naplní pouze pro straně odesílání, kde je přijato funkční potvrzení pro zprávy odeslané na partnera. (Volitelné) |
-| functionalGroupControlNumber | String | Kontrolní číslo skupiny funkční funkční potvrzení. Hodnota naplní pouze pro straně odesílání, kde je přijato funkční potvrzení pro zprávy odeslané na partnera. (Volitelné) |
-| isaSegment | String | Segment ISA zprávy. Hodnota naplní pouze pro straně odesílání, kde je přijato funkční potvrzení pro zprávy odeslané na partnera. (Volitelné) |
-| gsSegment | String | Segment GS zprávy. Hodnota naplní pouze pro straně odesílání, kde je přijato funkční potvrzení pro zprávy odeslané na partnera. (Volitelné) |
-| respondingfunctionalGroupControlNumber | String | Kontrolní číslo výměny reagovat. (Volitelné) |
-| respondingFunctionalGroupId | String | Neodpovídá ID funkční skupiny, který mapuje na AK101 v potvrzení. (Volitelné) |
-| respondingtransactionSetControlNumber | String | Kontrolní číslo sady transakcí reagovat. (Volitelné) |
-| respondingTransactionSetId | String | Sady transakcí odpovídá ID, který mapuje na AK201 v potvrzení. (Volitelné) |
-| statusCode | Boolean | Stavový kód potvrzení sady transakcí. (Povinné) |
-| segmentsCount | Enum | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| processingStatus | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
-| CorrelationMessageId | String | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
-| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
-| ak2Segment | String | Potvrzení transakce v rámci přijatý funkční skupiny. (Volitelné) |
-| ak3Segment | String | Sestavy chyb v datový segment. (Volitelné) |
-| ak5Segment | String | Uvádí, zda je sada identifikované v segmentu smyčku AK2 transakcí přijímat nebo odmítat a proč. (Volitelné) |
+| senderPartnerName | Řetězec | Název partnera pro odesílatele zprávy X12. Volitelné |
+| receiverPartnerName | Řetězec | Název partnera pro zprávu X12. Volitelné |
+| senderQualifier | Řetězec | Poslat kvalifikátor partnerů Závaznou |
+| senderIdentifier | Řetězec | Odeslat identifikátor partnera Závaznou |
+| receiverQualifier | Řetězec | Příjem kvalifikátoru partnerů Závaznou |
+| receiverIdentifier | Řetězec | Získá identifikátor partnera. Závaznou |
+| smlouva | Řetězec | Název smlouvy X12, na kterou jsou zprávy vyřešeny Volitelné |
+| směr | Výčet | Směr toku zpráv, přijetí nebo odeslání. Závaznou |
+| interchangeControlNumber | Řetězec | Kontrolní číslo výměny funkčního potvrzení. Hodnota se naplní jenom pro odesílající stranu, kde se pro zprávy odesílané partnerovi obdrží funkční potvrzení. Volitelné |
+| functionalGroupControlNumber | Řetězec | Kontrolní skupina – počet funkčních potvrzení Hodnota se naplní jenom pro odesílající stranu, kde se pro zprávy odesílané partnerovi obdrží funkční potvrzení. Volitelné |
+| isaSegment | Řetězec | Segment ISA zprávy. Hodnota se naplní jenom pro odesílající stranu, kde se pro zprávy odesílané partnerovi obdrží funkční potvrzení. Volitelné |
+| gsSegment | Řetězec | Segment GS zprávy Hodnota se naplní jenom pro odesílající stranu, kde se pro zprávy odesílané partnerovi obdrží funkční potvrzení. Volitelné |
+| respondingfunctionalGroupControlNumber | Řetězec | Reakce na kontrolní číslo výměny Volitelné |
+| respondingFunctionalGroupId | Řetězec | Odpovídá ID skupiny funkcí, která se mapuje na AK101 v potvrzení. Volitelné |
+| respondingtransactionSetControlNumber | Řetězec | Reakce na kontrolní číslo sady transakcí Volitelné |
+| respondingTransactionSetId | Řetězec | Odpovídá ID sady transakcí, která se mapuje na AK201 v potvrzení. Volitelné |
+| StatusCode | Logická hodnota | Stavový kód potvrzení sady transakcí. Závaznou |
+| segmentsCount | Výčet | Stavový kód potvrzení. Povolené hodnoty jsou **přijaté**, **zamítnuté**a **AcceptedWithErrors**. Závaznou |
+| processingStatus | Výčet | Stav zpracování potvrzení. Povolené hodnoty se **přijímají**, **generují**a **odesílají**. Závaznou |
+| CorrelationMessageId | Řetězec | ID zprávy korelace. Kombinace {Agreement} {*GroupControlNumber*} {TransactionSetControlNumber} Volitelné |
+| isMessageFailed | Logická hodnota | Zda zpráva X12 selhala. Závaznou |
+| ak2Segment | Řetězec | Potvrzení pro sadu transakcí v rámci přijaté funkční skupiny. Volitelné |
+| ak3Segment | Řetězec | Oznamuje chyby v datovém segmentu. Volitelné |
+| ak5Segment | Řetězec | Oznamuje, zda je sada transakcí identifikovaná v segmentu AK2 přijata nebo zamítnuta a proč. Volitelné |
 ||||
 
-## <a name="x12-interchange-tracking-schema"></a>Schéma sledování výměny X12
+## <a name="x12-interchange-tracking-schema"></a>Schéma sledování X12 Interchange
 
 ```json
 {
@@ -173,28 +171,28 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
-| senderPartnerName | String | X12 zpráv odesílatele název partnera. (Volitelné) |
-| receiverPartnerName | String | X12 zprávy jméno od přijímajícího partnera. (Volitelné) |
-| senderQualifier | String | Odešlete kvalifikátor partnera. (Povinné) |
-| senderIdentifier | String | Odešlete identifikátor partnera. (Povinné) |
-| receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
-| receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
-| interchangeControlNumber | String | Kontrolní číslo výměny. (Volitelné) |
-| isaSegment | String | Segment ISA zprávy. (Volitelné) |
-| isTechnicalAcknowledgmentExpected | Boolean | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
-| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
-| isa09 | String | X12 dokumentu výměny datum. (Volitelné) |
-| isa10 | String | X12 dokumentu výměny čas. (Volitelné) |
-| isa11 | String | Ovládací prvek interchange X12 identifikátor standardy. (Volitelné) |
-| isa12 | String | Ovládací prvek interchange X12 číslo verze. (Volitelné) |
-| isa14 | String | X12 vyžádání potvrzení. (Volitelné) |
-| isa15 | String | Indikátor pro testovací nebo produkční prostředí. (Volitelné) |
-| isa16 | String | Prvek oddělovače. (Volitelné) |
+| senderPartnerName | Řetězec | Název partnera pro odesílatele zprávy X12. Volitelné |
+| receiverPartnerName | Řetězec | Název partnera pro zprávu X12. Volitelné |
+| senderQualifier | Řetězec | Poslat kvalifikátor partnerů Závaznou |
+| senderIdentifier | Řetězec | Odeslat identifikátor partnera Závaznou |
+| receiverQualifier | Řetězec | Příjem kvalifikátoru partnerů Závaznou |
+| receiverIdentifier | Řetězec | Získá identifikátor partnera. Závaznou |
+| smlouva | Řetězec | Název smlouvy X12, na kterou jsou zprávy vyřešeny Volitelné |
+| směr | Výčet | Směr toku zpráv, přijetí nebo odeslání. Závaznou |
+| interchangeControlNumber | Řetězec | Kontrolní číslo výměny Volitelné |
+| isaSegment | Řetězec | Segment zprávy ISA. Volitelné |
+| isTechnicalAcknowledgmentExpected | Logická hodnota | Určuje, jestli je v X12 smlouvě nakonfigurované technické potvrzení. Závaznou |
+| isMessageFailed | Logická hodnota | Zda zpráva X12 selhala. Závaznou |
+| isa09 | Řetězec | Datum výměny dokumentu X12 Volitelné |
+| isa10 | Řetězec | Doba pro výměnu dokumentů X12 Volitelné |
+| isa11 | Řetězec | Identifikátor standardů řízení výměny X12 Volitelné |
+| ISA12 | Řetězec | Číslo verze řídicího prvku výměny X12 Volitelné |
+| isa14 | Řetězec | Je požadováno potvrzení X12. Volitelné |
+| isa15 | Řetězec | Indikátor pro test nebo produkci Volitelné |
+| isa16 | Řetězec | Oddělovač elementu. Volitelné |
 ||||
 
-## <a name="x12-interchange-acknowledgement-tracking-schema"></a>Schéma sledování potvrzení výměny X12
+## <a name="x12-interchange-acknowledgement-tracking-schema"></a>Schéma sledování potvrzení X12 výměny
 
 ```json
 {
@@ -224,26 +222,26 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
-| senderPartnerName | String | X12 zpráv odesílatele název partnera. (Volitelné) |
-| receiverPartnerName | String | X12 zprávy jméno od přijímajícího partnera. (Volitelné) |
-| senderQualifier | String | Odešlete kvalifikátor partnera. (Povinné) |
-| senderIdentifier | String | Odešlete identifikátor partnera. (Povinné) |
-| receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
-| receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
-| interchangeControlNumber | String | Technické potvrzení, které se získaly od partnerů pro kontrolní číslo výměny. (Volitelné) |
-| isaSegment | String | Segment ISA pro technické potvrzení, které se získaly od partnerů. (Volitelné) |
-| respondingInterchangeControlNumber |String | Technické potvrzení, které se získaly od partnerů pro kontrolní číslo výměny. (Volitelné) |
-| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
-| statusCode | Enum | Výměny. stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| processingStatus | Enum | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
-| ta102 | String | Interchange datum. (Volitelné) |
-| ta103 | String | Interchange čas. (Volitelné) |
-| ta105 | String | Výměny. Poznámka: kód. (Volitelné) |
+| senderPartnerName | Řetězec | Název partnera pro odesílatele zprávy X12. Volitelné |
+| receiverPartnerName | Řetězec | Název partnera pro zprávu X12. Volitelné |
+| senderQualifier | Řetězec | Poslat kvalifikátor partnerů Závaznou |
+| senderIdentifier | Řetězec | Odeslat identifikátor partnera Závaznou |
+| receiverQualifier | Řetězec | Příjem kvalifikátoru partnerů Závaznou |
+| receiverIdentifier | Řetězec | Získá identifikátor partnera. Závaznou |
+| smlouva | Řetězec | Název smlouvy X12, na kterou jsou zprávy vyřešeny Volitelné |
+| směr | Výčet | Směr toku zpráv, přijetí nebo odeslání. Závaznou |
+| interchangeControlNumber | Řetězec | Kontrolní číslo výměny technického potvrzení, které obdrží od partnerů. Volitelné |
+| isaSegment | Řetězec | Segment ISA pro technické potvrzení, které obdrželi od partnerů. Volitelné |
+| respondingInterchangeControlNumber |Řetězec | Kontrolní číslo výměny pro technické potvrzení, které obdrží od partnerů. Volitelné |
+| isMessageFailed | Logická hodnota | Zda zpráva X12 selhala. Závaznou |
+| StatusCode | Výčet | Stavový kód potvrzení výměny. Povolené hodnoty jsou **přijaté**, **zamítnuté**a **AcceptedWithErrors**. Závaznou |
+| processingStatus | Výčet | Stav potvrzení. Povolené hodnoty se **přijímají**, **generují**a **odesílají**. Závaznou |
+| ta102 | Řetězec | Datum výměny Volitelné |
+| ta103 | Řetězec | Doba výměny Volitelné |
+| ta105 | Řetězec | Výměna kódu poznámky Volitelné |
 ||||
 
-## <a name="x12-functional-group-tracking-schema"></a>X12 funkční skupině schéma sledování
+## <a name="x12-functional-group-tracking-schema"></a>Schéma sledování skupin funkcí X12
 
 ```json
 {
@@ -277,30 +275,30 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
-| senderPartnerName | String | X12 zpráv odesílatele název partnera. (Volitelné) |
-| receiverPartnerName | String | X12 zprávy jméno od přijímajícího partnera. (Volitelné) |
-| senderQualifier | String | Odešlete kvalifikátor partnera. (Povinné) |
-| senderIdentifier | String | Odešlete identifikátor partnera. (Povinné) |
-| receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
-| receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
-| interchangeControlNumber | String | Kontrolní číslo výměny. (Volitelné) |
-| functionalGroupControlNumber | String | Funkční kontrolní číslo. (Volitelné) |
-| gsSegment | String | Zpráva GS segmentu. (Volitelné) |
-| isTechnicalAcknowledgmentExpected | Boolean | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
-| isFunctionalAcknowledgmentExpected | Boolean | Určuje, zda je funkční potvrzení gurovaný X12 smlouvy. (Povinné) |
-| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné)|
-| gs01 | String | Funkční kód. (Volitelné) |
-| gs02 | String | Kód aplikace odesílatele. (Volitelné) |
-| gs03 | String | Kód aplikace příjemce. (Volitelné) |
-| gs04 | String | Funkční skupina datum. (Volitelné) |
-| gs05 | String | Funkční skupina čas. (Volitelné) |
-| gs07 | String | Příslušné agentury kódu. (Volitelné) |
-| gs08 | String | Identifikátor verze nebo verze/odvětví kódu. (Volitelné) |
+| senderPartnerName | Řetězec | Název partnera pro odesílatele zprávy X12. Volitelné |
+| receiverPartnerName | Řetězec | Název partnera pro zprávu X12. Volitelné |
+| senderQualifier | Řetězec | Poslat kvalifikátor partnerů Závaznou |
+| senderIdentifier | Řetězec | Odeslat identifikátor partnera Závaznou |
+| receiverQualifier | Řetězec | Příjem kvalifikátoru partnerů Závaznou |
+| receiverIdentifier | Řetězec | Získá identifikátor partnera. Závaznou |
+| smlouva | Řetězec | Název smlouvy X12, na kterou jsou zprávy vyřešeny Volitelné |
+| směr | Výčet | Směr toku zpráv, přijetí nebo odeslání. Závaznou |
+| interchangeControlNumber | Řetězec | Kontrolní číslo výměny Volitelné |
+| functionalGroupControlNumber | Řetězec | Číslo funkčního řízení. Volitelné |
+| gsSegment | Řetězec | Segment GS zprávy Volitelné |
+| isTechnicalAcknowledgmentExpected | Logická hodnota | Určuje, jestli je v X12 smlouvě nakonfigurované technické potvrzení. Závaznou |
+| isFunctionalAcknowledgmentExpected | Logická hodnota | Určuje, jestli je v X12 smlouvě nakonfigurované funkční potvrzení. Závaznou |
+| isMessageFailed | Logická hodnota | Zda zpráva X12 selhala. Závaznou|
+| gs01 | Řetězec | Kód funkčního identifikátoru Volitelné |
+| gs02 | Řetězec | Kód odesílatele aplikace Volitelné |
+| gs03 | Řetězec | Kód přijímače aplikace Volitelné |
+| gs04 | Řetězec | Datum funkční skupiny Volitelné |
+| gs05 | Řetězec | Čas funkční skupiny Volitelné |
+| gs07 | Řetězec | Kód zodpovědné agentury Volitelné |
+| gs08 | Řetězec | Verze/verze/kód identifikátoru odvětví Volitelné |
 ||||
 
-## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>X12 funkční skupině potvrzení schéma sledování
+## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>Schéma sledování potvrzení X12 funkční skupiny
 
 ```json
 {
@@ -333,36 +331,36 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
-| senderPartnerName | String | X12 zpráv odesílatele název partnera. (Volitelné) |
-| receiverPartnerName | String | X12 zprávy jméno od přijímajícího partnera. (Volitelné) |
-| senderQualifier | String | Odešlete kvalifikátor partnera. (Povinné) |
-| senderIdentifier | String | Odešlete identifikátor partnera. (Povinné) |
-| receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
-| receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
-| agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
-| interchangeControlNumber | String | Kontrolní číslo výměny, která naplní na straně odesílání při přijetí technické potvrzení od partnerů. (Volitelné) |
-| functionalGroupControlNumber | String | Kontrolní číslo skupiny funkční technické potvrzení, která naplní na straně odesílání při přijetí technické potvrzení od partnerů. (Volitelné) |
-| isaSegment | String | Stejné jako výměny řídit číslo, ale mají údaj vyplněný pouze ve zvláštních případech. (Volitelné) |
-| gsSegment | String | Stejné jako funkční skupiny řídit číslo, ale mají údaj vyplněný pouze ve zvláštních případech. (Volitelné) |
-| respondingfunctionalGroupControlNumber | String | Kontrolní číslo skupiny původní funkční. (Volitelné) |
-| respondingFunctionalGroupId | String | ID mapuje AK101 ve funkční skupině potvrzení. (Volitelné) |
-| isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
-| statusCode | Enum | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| processingStatus | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
-| ak903 | String | Počet přijatých sady transakcí. (Volitelné) |
-| ak904 | String | Číslo sady transakcí přijaté v identifikované funkční skupiny. (Volitelné) |
-| ak9Segment | String | Zda je funkční skupinu určené v segmentu AK1 přijímat nebo odmítat a proč. (Volitelné) |
+| senderPartnerName | Řetězec | Název partnera pro odesílatele zprávy X12. Volitelné |
+| receiverPartnerName | Řetězec | Název partnera pro zprávu X12. Volitelné |
+| senderQualifier | Řetězec | Poslat kvalifikátor partnerů Závaznou |
+| senderIdentifier | Řetězec | Odeslat identifikátor partnera Závaznou |
+| receiverQualifier | Řetězec | Příjem kvalifikátoru partnerů Závaznou |
+| receiverIdentifier | Řetězec | Získá identifikátor partnera. Závaznou |
+| smlouva | Řetězec | Název smlouvy X12, na kterou jsou zprávy vyřešeny Volitelné |
+| směr | Výčet | Směr toku zpráv, přijetí nebo odeslání. Závaznou |
+| interchangeControlNumber | Řetězec | Řídicí číslo výměny, které se naplní pro odeslání, když se od partnerů obdrží technické potvrzení. Volitelné |
+| functionalGroupControlNumber | Řetězec | Kontrolní skupina – kontrolní počet technického potvrzení, které se naplní pro odeslání, když od partnerů obdrží technickou potvrzení. Volitelné |
+| isaSegment | Řetězec | Stejné jako řídicí číslo výměny, ale vyplní se pouze v určitých případech. Volitelné |
+| gsSegment | Řetězec | Stejné jako kontrolní číslo skupiny funkcí, ale vyplní se pouze v určitých případech. Volitelné |
+| respondingfunctionalGroupControlNumber | Řetězec | Kontrolní číslo původní funkční skupiny. Volitelné |
+| respondingFunctionalGroupId | Řetězec | Provede mapování na AK101 v ID skupiny funkcí potvrzení. Volitelné |
+| isMessageFailed | Logická hodnota | Zda zpráva X12 selhala. Závaznou |
+| StatusCode | Výčet | Stavový kód potvrzení. Povolené hodnoty jsou **přijaté**, **zamítnuté**a **AcceptedWithErrors**. Závaznou |
+| processingStatus | Výčet | Stav zpracování potvrzení. Povolené hodnoty se **přijímají**, **generují**a **odesílají**. Závaznou |
+| ak903 | Řetězec | Počet přijatých sad transakcí. Volitelné |
+| ak904 | Řetězec | Počet sad transakcí přijatých v identifikované funkční skupině. Volitelné |
+| ak9Segment | Řetězec | Zda je funkční skupina identifikovaná v segmentu AK1 přijata nebo zamítnuta a proč. Volitelné |
 |||| 
 
-## <a name="b2b-protocol-tracking-schemas"></a>Schémata sledování B2B protokolu
+## <a name="b2b-protocol-tracking-schemas"></a>Schémata sledování protokolu B2B
 
-Informace o protokolu B2B schémata sledování najdete tady:
+Informace o schématech sledování protokolu B2B najdete v těchto tématech:
 
 * [Schémata sledování AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
 * [Vlastní schémata sledování B2B](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o [sledování zpráv B2B](logic-apps-monitor-b2b-message.md).
-* Další informace o [sledování zpráv B2B v Azure Monitor protokoly](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Přečtěte si další informace o [monitorování zpráv B2B](logic-apps-monitor-b2b-message.md).
+* Přečtěte si [, jak sledovat zprávy B2B v protokolech Azure monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).

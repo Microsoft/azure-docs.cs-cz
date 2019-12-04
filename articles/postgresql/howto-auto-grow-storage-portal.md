@@ -1,25 +1,25 @@
 ---
-title: Automatické zvětšení úložiště pomocí Azure Portal v Azure Database for PostgreSQL-jednom serveru
-description: Tento článek popisuje, jak můžete povolit automatické zvětšování úložiště pomocí Azure Portal v Azure Database for PostgreSQL na jednom serveru.
+title: Automatické zvětšování úložiště-Azure Portal-Azure Database for PostgreSQL-Single server
+description: Tento článek popisuje, jak můžete pomocí Azure Portal v Azure Database for PostgreSQL jednom serveru nakonfigurovat automatické zvětšování úložiště.
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 1d028093b030e1f2cf00ceae9297563c36c314c5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5e4f9d68d02edf456394d4ce10b7b6af5f8643d9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142883"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769230"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Automatické zvětšení úložiště pomocí Azure Portal v Azure Database for PostgreSQL-jednom serveru
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for PostgreSQL pro růst, aniž by to ovlivnilo zatížení.
 
 Když server dosáhne přiděleného limitu úložiště, je server označený jen pro čtení. Pokud ale povolíte automatické zvětšování úložiště, zvýší se úložiště serveru, aby se vešlo na rostoucí data. U serverů s úložištěm menším než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Maximální limity úložiště, jak je uvedeno [zde](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) , platí.
 
-## <a name="prerequisites"></a>Požadavky
-K dokončení této příručce s postupy, potřebujete:
+## <a name="prerequisites"></a>Předpoklady
+K dokončení tohoto průvodce budete potřebovat:
 - [Server Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
 
 ## <a name="enable-storage-auto-grow"></a>Povolit automatické zvětšování úložiště 
@@ -34,12 +34,12 @@ Pomocí těchto kroků nastavíte automatické zvětšování úložiště serve
 
     ![Azure Database for PostgreSQL – Settings_Pricing_tier – automatické zvětšování](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
-4. Změny uložíte kliknutím na tlačítko **OK** .
+4. Klikněte na tlačítko **OK** a uložte změny.
 
 5. Oznámení potvrdí, že automatické zvětšování bylo úspěšně povoleno.
 
     ![Úspěch Azure Database for PostgreSQL – automatické zvětšování](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si informace o [tom, jak vytvářet výstrahy na metrikách](howto-alert-on-metric.md).

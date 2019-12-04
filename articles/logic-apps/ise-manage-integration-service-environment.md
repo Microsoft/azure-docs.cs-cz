@@ -2,19 +2,16 @@
 title: Správa prostředí integračních služeb v Azure Logic Apps
 description: Projděte si stav sítě a spravujte aplikace logiky, připojení, vlastní konektory a účty pro integraci v prostředí ISE (Integration Service Environment) pro Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967821"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792625"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Správa prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
@@ -22,7 +19,7 @@ Pokud chcete zjistit stav sítě pro [prostředí ISE (Integration Service Envir
 
 ## <a name="view-your-ise"></a>Zobrazení ISE
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole na portálu zadejte "prostředí integračních služeb" a pak vyberte **prostředí integrační služby**.
 

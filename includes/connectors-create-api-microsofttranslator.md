@@ -1,27 +1,28 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 46a6fcb57a21f3f1e30b39fc6967256550e31616
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 94f18b20d84a1929368053c44b4f07793e385b38
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175267"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789556"
 ---
-### <a name="prerequisites"></a>Požadavky
-* A [MicrosoftTranslator](https://www.microsoft.com/translator) account  
+## <a name="prerequisites"></a>Předpoklady
 
-Před použitím svého účtu MicrosoftTranslator v aplikaci logiky, musíte se autorizovat aplikaci logiky se připojit ke svému účtu MicrosoftTranslator. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal.  
+* Účet [MicrosoftTranslator](https://www.microsoft.com/translator)  
 
-Tady jsou kroky k autorizaci aplikace logiky se připojit ke svému účtu MicrosoftTranslator:  
+Než budete moct účet MicrosoftTranslator použít v aplikaci logiky, musíte autorizovat aplikaci logiky, abyste se připojili k vašemu účtu MicrosoftTranslator. Naštěstí to můžete provést snadno v rámci aplikace logiky na webu Azure Portal.  
 
-1. Chcete-li vytvořit připojení k MicrosoftTranslator, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *MicrosoftTranslator* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
-   ![Krok vytváření MicrosoftTranslator připojení](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
-2. Pokud jste ještě nevytvořili žádná připojení k MicrosoftTranslator před, zobrazí výzva k zadání přihlašovacích údajů MicrosoftTranslator. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky se připojit k a přístup k datům MicrosoftTranslator účtu:  
-   ![Krok vytváření MicrosoftTranslator připojení](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
-3. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
-   ![Krok vytváření MicrosoftTranslator připojení](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
+Tady je postup, jak autorizovat aplikaci logiky pro připojení k účtu MicrosoftTranslator:  
+
+1. Pokud chcete vytvořit připojení k MicrosoftTranslator, v návrháři aplikace logiky vyberte v rozevíracím seznamu **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte *MicrosoftTranslator* . Vyberte aktivační událost nebo akci, kterou chcete použít:  
+   ![krok vytvoření připojení MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
+2. Pokud jste ještě nevytvořili žádná připojení k MicrosoftTranslator, zobrazí se výzva k zadání přihlašovacích údajů MicrosoftTranslator. Tyto přihlašovací údaje budou použity k autorizaci aplikace logiky k připojení a k datům účtu MicrosoftTranslator:  
+   ![Krok vytvoření připojení MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
+3. Všimněte si, že připojení bylo vytvořeno a vy teď můžete pokračovat dalšími kroky ve vaší aplikaci logiky:  
+   ![Krok vytvoření připojení MicrosoftTranslator](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
 

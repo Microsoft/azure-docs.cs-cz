@@ -1,17 +1,17 @@
 ---
-title: Cenové úrovně pro Azure Database for MariaDB
+title: Cenové úrovně – Azure Database for MariaDB
 description: Seznamte se s různými cenovými úrovněmi pro Azure Database for MariaDB, včetně výpočetních generací, typů úložišť, velikosti úložiště, virtuální jádra, paměti a období uchovávání záloh.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: ca9552ee60237158bd570ede4a13dbc349b6d1d1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973563"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772393"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB cenové úrovně
 

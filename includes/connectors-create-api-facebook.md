@@ -1,29 +1,30 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 8fe22f95c1dfc5171c41d6b3f0e00760fd9c9d69
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: c94e7d1fb5c42a0246b38c88eb097c75ec8ca4e0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175271"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789860"
 ---
-### <a name="prerequisites"></a>Požadavky
-* A [Facebook](https://www.facebook.com/) účtu 
+## <a name="prerequisites"></a>Předpoklady
 
-Před použitím vašeho účtu na Facebooku v aplikaci logiky, musíte se autorizovat aplikaci logiky se připojit ke svému Facebookovému účtu. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal. 
+* Účet [Facebook](https://www.facebook.com/) 
 
-Tady jsou kroky k autorizaci aplikace logiky se připojit ke svému Facebookovému účtu:
+Než budete moct účet Facebook použít v aplikaci logiky, musíte aplikaci logiky autorizovat, aby se připojila k vašemu účtu Facebook. Naštěstí to můžete provést snadno v rámci aplikace logiky na webu Azure Portal. 
 
-1. Chcete-li vytvořit připojení k Facebooku, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *Facebook* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
-   ![Krok 1 facebooku](./media/connectors-create-api-facebook/facebook-1.png)
-2. Pokud jste ještě nevytvořili žádná připojení k Facebooku před, bude výzva zadat přihlašovací údaje služby Facebook. Tyto přihlašovací údaje se použijí k autorizaci aplikace logiky pro připojení k a přístup k datům Facebookový účet:  
-   ![Krok 2 facebooku](./media/connectors-create-api-facebook/facebook-2.png)
-3. Zadejte své Facebooku uživatelské jméno a heslo k autorizaci aplikace logiky:  
-   ![Krok 3 facebooku](./media/connectors-create-api-facebook/facebook-3.png)   
-4. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
-   ![Krok 4 facebooku](./media/connectors-create-api-facebook/facebook-4.png)   
+Tady je postup, jak autorizovat aplikaci logiky pro připojení k vašemu účtu Facebook:
+
+1. Pokud chcete vytvořit připojení k Facebooku, v návrháři aplikace logiky vyberte v rozevíracím seznamu **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte *Facebook* . Vyberte aktivační událost nebo akci, kterou chcete použít:  
+   ![Facebook – krok 1](./media/connectors-create-api-facebook/facebook-1.png)
+2. Pokud jste ještě nevytvořili žádná připojení k Facebooku, zobrazí se výzva k zadání přihlašovacích údajů k Facebooku. Tyto přihlašovací údaje budou použity k autorizaci aplikace logiky k připojení a přístup k datům účtu Facebook:  
+   ![Facebook – krok 2](./media/connectors-create-api-facebook/facebook-2.png)
+3. Zadejte své uživatelské jméno a heslo ke službě Facebook, abyste mohli autorizovat vaši aplikaci logiky:  
+   ![Facebook – krok 3](./media/connectors-create-api-facebook/facebook-3.png)   
+4. Všimněte si, že připojení bylo vytvořeno a vy teď můžete pokračovat dalšími kroky ve vaší aplikaci logiky:  
+   ![Facebook – krok 4](./media/connectors-create-api-facebook/facebook-4.png)   
 

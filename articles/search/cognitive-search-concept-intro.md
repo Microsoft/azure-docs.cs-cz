@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 5dc33de19ef71a0714052a6457bef9f32fc159c3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720156"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791025"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Úvod do AI v Azure Kognitivní hledání
 
@@ -69,7 +69,7 @@ Kanál pro rozšíření je založený na [*indexerech*](search-indexer-overview
 
 Na začátku kanálu máte nestrukturovaný text nebo obsah, který není v textu (například obrázek a naskenovaný dokument JPEG). Data musí existovat ve službě úložiště dat Azure, ke které je možné přistupovat indexerem. Indexery mohou "prolomené" zdrojové dokumenty pro extrakci textu ze zdrojových dat.
 
-![Fáze pro trhliny dokumentů](./media/cognitive-search-intro/document-cracking-phase-blowup.png "Trhliny dokumentů")
+![Fáze pro trhliny dokumentů](./media/cognitive-search-intro/document-cracking-phase-blowup.png "trhliny dokumentů")
 
  Mezi podporované zdroje patří Azure Blob Storage, Azure Table Storage, Azure SQL Database a Azure Cosmos DB. Textový obsah se dá extrahovat z následujících typů souborů: PDF, Word, PowerPoint, soubory CSV. Úplný seznam najdete v tématu [podporované formáty](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
@@ -116,6 +116,8 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 | Indexovací modul |  Prohledávací modul, který extrahuje hledaná data a metadata z externího zdroje dat a naplní index založený na mapování polí mezi indexem a zdrojem dat pro trhliny dokumentů. V případě obohacení AI vyvolá indexer dovednosti a obsahuje mapování polí, které přidružuje výstup obohacení do cílových polí v indexu. Definice indexeru obsahuje všechny pokyny a odkazy na operace kanálu a kanál je vyvolán při spuštění indexeru. S další konfigurací můžete znovu použít stávající zpracování a provádět jenom ty kroky a dovednosti, které se změnily. | Viz [indexery](search-indexer-overview.md) a [přírůstkové indexování (Preview)](cognitive-search-incremental-indexing-conceptual.md). |
 | Zdroj dat  | Objekt používaný indexerem pro připojení k externímu zdroji dat s podporovanými typy v Azure. | Viz [indexery – přehled](search-indexer-overview.md) |
 | Index | Trvalý vyhledávací index v Azure Kognitivní hledání sestavený z schématu indexu definujícího strukturu polí a použití. | Viz [Vytvoření základního indexu](search-what-is-an-index.md) | 
+| Knowledge Store | Účet úložiště, ve kterém lze obohacené dokumenty nakládat a společně s indexem vyhledávání | Viz [Úvod do znalostní báze Knowledge Store](knowledge-store-concept-intro.md) | 
+| Mezipaměť indexeru | Indexovací modul ukládá do mezipaměti výstupy dovedností účtu úložiště. Mezipaměť umožňuje indexeer minimalizovat náklady na zpracování velkého počtu dokumentů při úpravě dovednosti. | Viz [přírůstkové indexování](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -137,7 +139,7 @@ V žádostech nebo v sadě .NET SDK můžete použít REST `api-version=2019-05-
 
 Tento krok používá rozhraní REST API k sestavení řešení pro obohacení AI. Pro obohacení AI se přidávají nebo rozšiřují jenom dvě rozhraní API. Další rozhraní API mají stejnou syntaxi jako všeobecně dostupné verze.
 
-| REST API | Popis |
+| Rozhraní REST API | Popis |
 |-----|-------------|
 | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikující externí zdroj dat, který poskytuje zdrojová data používaná k vytváření obohacených dokumentů.  |
 | [Create dovednosti (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Toto rozhraní API je specifické pro rozšíření AI. Jedná se o prostředek, který koordinuje používání [integrovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. |

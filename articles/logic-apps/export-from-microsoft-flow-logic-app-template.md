@@ -2,21 +2,18 @@
 title: Export toků z Power automatu do Azure Logic Apps
 description: Migrace toků z Power automatu na Azure Logic Apps exportováním jako šablon Azure Resource Manager
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583261"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792640"
 ---
-# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportujte toky z automatizace a nasaďte je do Azure Logic Apps
+# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Export toků z Power Automate a nasazení do Azure Logic Apps
 
 Pokud chcete rozšířit a rozšířit možnosti toku, můžete tento tok migrovat z [Power](https://flow.microsoft.com) Automata na [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Tok můžete exportovat jako šablonu Azure Resource Manager pro aplikaci logiky, nasadit tuto šablonu aplikace logiky do skupiny prostředků Azure a pak tuto aplikaci logiky otevřít v návrháři aplikace logiky.
 
@@ -25,7 +22,7 @@ Pokud chcete rozšířit a rozšířit možnosti toku, můžete tento tok migrov
 >
 > Toky založené na OpenAPI vyexportované z Power automatu se v současné době nepodporují pro nasazení jako šablony aplikace logiky. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -59,7 +56,7 @@ Další informace najdete v tématu [o nárůstu až Azure Logic Apps](https://f
 
 1. Poté, co editor zobrazí JSON, parametry a prostředky v šabloně, vyberte Save ( **Uložit**).
   
-   ![Uložení šablony](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
+   ![Uložit šablonu](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
 1. Nyní zadejte tyto vstupní parametry pro šablonu:
 
@@ -144,7 +141,7 @@ Pokud jste nastavili sadu Visual Studio s [požadavky](../logic-apps/quickstart-
 
    ![Upravit parametry nasazení](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Po zahájení nasazování se v okně **Výstup** sady Visual Studio zobrazí stav nasazení vaší aplikace. Pokud se stav nezobrazí, otevřete seznam **Zobrazit výstup z** a vyberte svou skupinu prostředků Azure. Příklad:
+   Po zahájení nasazování se v okně **Výstup** sady Visual Studio zobrazí stav nasazení vaší aplikace. Pokud se stav nezobrazí, otevřete seznam **Zobrazit výstup z** a vyberte svou skupinu prostředků Azure. Například:
 
    ![Okno Výstup](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

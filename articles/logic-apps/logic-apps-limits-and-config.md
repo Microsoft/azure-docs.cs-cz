@@ -1,20 +1,17 @@
 ---
-title: Omezení a konfigurace – Azure Logic Apps
+title: Omezení a konfigurace
 description: Omezení služeb, jako je doba trvání, propustnost a kapacita, plus hodnoty konfigurace, jako jsou například IP adresy, které mají být povoleny, pro Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 89b4a08a3ecb85abd56f0b2ae852123ac2883364
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 13bced5cb692366f46032d51c3b635533110d781
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547532"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791969"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -71,7 +68,7 @@ Pokud chcete změnit výchozí limit doby trvání běhu a uchování úložišt
 
    > [!NOTE]
    > Pro Logic Apps ve více tenantů Azure je výchozí limit 90 dne stejný jako maximální limit. Tuto hodnotu lze snížit pouze.
-   > V případě Logic Apps v prostředí integrační služby můžete decreause nebo zvýšit výchozí limit 90 dní.
+   > U Logic Apps v prostředí integrační služby můžete snížit nebo zvýšit výchozí limit 90.
 
 <a name="looping-debatching-limits"></a>
 

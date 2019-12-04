@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f05b9ae490ea2b9d8e7b89ce02c7c1eb818bb0a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679946"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769571"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -98,6 +98,43 @@ Ladicí kanál běží na aktivním ladicím clusteru, nikoli v prostředí Inte
 ## <a name="monitoring-the-data-flow-activity"></a>Monitorování aktivity toku dat
 
 Aktivita toku dat má speciální prostředí pro monitorování, ve kterém můžete zobrazit oddíly, čas fáze a informace o datových řádcích. Otevřete podokno monitorování pomocí ikony brýlí v části **Akce**. Další informace najdete v tématu [monitorování toků dat](concepts-data-flow-monitoring.md).
+
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Použití aktivity toku dat v důsledku následné aktivity
+
+Aktivita toku dat výstupuje metriky týkající se počtu řádků zapsaných do každé jímky a řádků načtených z každého zdroje. Tyto výsledky se vrátí v části `output` výsledku spuštění aktivity. Vrácené metriky jsou ve formátu níže uvedeného formátu JSON.
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+Pokud například chcete získat počet řádků zapsaných do jímky s názvem ' sink1 ' v aktivitě s názvem ' dataflowActivity ', použijte `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`.
+
+Chcete-li získat počet řádků načtených ze zdroje s názvem ' source1 ', který byl použit v této jímky, použijte `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`.
+
+> [!NOTE]
+> Pokud má jímka zapsána nula řádků, nebude zobrazena v metrikách. Existence se dá ověřit pomocí funkce `contains`. `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` například ověří, zda byly do sink1 zapsány nějaké řádky.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,24 +1,21 @@
 ---
-title: Ověřování pomocí spravovaných identit – Azure Logic Apps
+title: Ověřování pomocí spravovaných identit
 description: Přístup k prostředkům v jiných Azure Active Directory tenantů bez přihlašování pomocí přihlašovacích údajů nebo tajných kódů pomocí spravované identity
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200622"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792676"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps
 
-Pokud chcete získat přístup k prostředkům v jiných klientech Azure Active Directory (Azure AD) a ověřit vaši identitu bez přihlášení, vaše aplikace logiky může používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) přiřazenou systémem (dřív označovanou jako identita spravované služby nebo MSI), a ne přihlašovací údaje nebo tajné kódy. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. Tento článek ukazuje, jak nastavit a používat spravovanou identitu přiřazenou systémem ve vaší aplikaci logiky. Spravované identity v současné době fungují jenom s [konkrétními integrovanými triggery a akcemi](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls), ne spravovanými konektory nebo připojeními.
+Pokud chcete získat přístup k prostředkům v jiných klientech Azure Active Directory (Azure AD) a ověřit vaši identitu bez přihlášení, vaše aplikace logiky může používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) přiřazenou systémem (dřív označovanou jako identita spravované služby nebo MSI), nikoli přihlašovací údaje nebo tajné klíče. Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. Tento článek ukazuje, jak nastavit a používat spravovanou identitu přiřazenou systémem ve vaší aplikaci logiky. Spravované identity v současné době fungují jenom s [konkrétními integrovanými triggery a akcemi](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls), ne spravovanými konektory nebo připojeními.
 
 Další informace najdete v těchto tématech:
 

@@ -1,24 +1,24 @@
 ---
-title: Spravovat repliky čtení pro Azure Database for PostgreSQL jeden server z Azure Portal
+title: Spravovat repliky čtení-Azure Portal-Azure Database for PostgreSQL-Single server
 description: Naučte se spravovat repliky pro čtení Azure Database for PostgreSQL – jeden server z Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995453"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770216"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytváření a Správa replik pro čtení v serveru Azure Database for PostgreSQL-Single z Azure Portal
 
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení v Azure Database for PostgreSQL z Azure Portal. Další informace o replikách pro čtení najdete v tématu [Přehled](concepts-read-replicas.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 [Server Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) , který bude hlavním serverem.
 
 ## <a name="prepare-the-master-server"></a>Příprava hlavního serveru
@@ -64,7 +64,7 @@ K vytvoření repliky pro čtení použijte následující postup:
 
 5. Vyberte umístění repliky. Výchozí umístění je stejné jako u hlavního serveru.
 
-    ![Vyberte umístění](./media/howto-read-replicas-portal/location-replica.png)
+    ![Vybrat umístění](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
    > Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 
@@ -81,7 +81,7 @@ Po vytvoření repliky pro čtení je možné ji zobrazit z okna **replikace** :
 ![Zobrazit novou repliku v okně replikace](./media/howto-read-replicas-portal/list-replica.png)
  
 
-## <a name="stop-replication"></a>Zastavit replikaci
+## <a name="stop-replication"></a>Zastavení replikace
 Replikaci mezi hlavním serverem a replikou pro čtení můžete zastavit.
 
 > [!IMPORTANT]
@@ -106,7 +106,7 @@ Pokud chcete zastavit replikaci mezi hlavním serverem a replikou pro čtení z 
    ![Potvrzení zastavení replikace](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Odstranit hlavního serveru
+## <a name="delete-a-master-server"></a>Odstranění hlavního serveru
 Pokud chcete odstranit hlavní server, použijte stejný postup jako při odstraňování samostatného serveru Azure Database for PostgreSQL. 
 
 > [!IMPORTANT]
@@ -171,12 +171,12 @@ Metrika **prodlevy repliky** zobrazuje čas od poslední opakované transakce v 
 
 1. V Azure Portal vyberte Azure Database for PostgreSQL replice pro čtení.
 
-2. Vyberte **Metriky**. V okně **metriky** vyberte prodlevu **repliky**.
+2. Vyberte **Metriky**. V okně **metriky** vyberte **prodlevu repliky**.
 
    ![Sledování prodlevy repliky](./media/howto-read-replicas-portal/select-replica-lag.png)
  
 3. Pro **agregaci**vyberte **Max**. 
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [replikách pro čtení v Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Naučte se [vytvářet a spravovat repliky pro čtení v Azure CLI a REST API](howto-read-replicas-cli.md).

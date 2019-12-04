@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720097"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790023"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Seznámení s znalostními obchody v Azure Kognitivní hledání
 
@@ -61,7 +61,9 @@ Následující JSON určuje `knowledgeStore`, který je součástí dovednosti, 
 
 + Připojení je účet úložiště ve stejné oblasti jako Azure Kognitivní hledání. 
 
-+ Projekce jsou páry tabulky – objekty. `Tables` definují fyzický výraz obohacených dokumentů v úložišti tabulek Azure. `Objects` definovat fyzické objekty v úložišti objektů BLOB v Azure.
++ Projekce můžou být tabulkové, objekty JSON nebo soubory JSON. `Tables` definují fyzický výraz obohacených dokumentů v úložišti tabulek Azure. `Objects` definovat fyzické objekty JSON ve službě Azure Blob Storage. `Files` jsou binární soubory jako obrázky, které byly extrahovány z dokumentu, který bude trvale uložen.
+
++ Projekce jsou kolekce objektů projekce, každý objekt projekce může obsahovat `tables`, `objects` a `files`. Obohacení projektů v rámci jedné projekce souvisejí i v případě, že jsou promítnuty napříč typy (tabulky, objekty a soubory). Projekce v rámci objektů projekce nesouvisejí a jsou nezávislé. Stejný tvar může být aross více objektů projekce.
 
 ```json
 {
@@ -109,7 +111,10 @@ Následující JSON určuje `knowledgeStore`, který je součástí dovednosti, 
             ], 
             "objects": [ 
                
-            ]      
+            ], 
+            "files": [
+
+            ]  
         },
         { 
             "tables": [ 
@@ -121,13 +126,17 @@ Následující JSON určuje `knowledgeStore`, který je součástí dovednosti, 
                 "source": "/document/Review", 
                 "key": "/document/Review/Id" 
                 } 
-            ]      
+            ],
+            "files": [
+                
+            ]  
         }        
     ]     
     } 
 }
 ```
 
+Tato ukázka neobsahuje žádné obrázky. Příklad použití souborů projekce naleznete v tématu [práce s projekcemi](knowledge-store-projection-overview.md).
 ### <a name="sources-of-data-for-a-knowledge-store"></a>Zdroje dat pro znalostní bázi Knowledge Store
 
 Pokud je znalostní báze výstupem z kanálu obohacení AI, jaké jsou vstupy? Původní data, která chcete extrahovat, rozšířit a Uložit do úložiště Knowledge Store, můžou pocházet z libovolného zdroje dat Azure podporovaného indexery vyhledávání: 
@@ -146,12 +155,12 @@ Indexery a dovednosti vytvoříte extrahování a obohacení nebo transformaci t
 
 Rozšíření požadovaná pro vytvoření úložiště znalostí (Create dovednosti and CREATE indexer) mají jenom dvě rozhraní API. Jiná rozhraní API se používají tak, jak jsou.
 
-| Objekt | REST API | Popis |
+| Objekt | Rozhraní REST API | Popis |
 |--------|----------|-------------|
 | Zdroj dat | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikující externí zdroj dat Azure, který poskytuje zdrojová data používaná k vytváření obohacených dokumentů.  |
 | dovednosti | [Create dovednosti (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek, který koordinuje používání [integrovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. Dovednosti má definici `knowledgeStore` jako podřízený element. |
 | indexovacím | [Vytvořit index](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma, které vyjadřuje index vyhledávání. Pole v indexu jsou mapována na pole ve zdrojových datech nebo na pole vyráběná během fáze obohacení (například pole pro názvy organizací vytvořená rozpoznáváním entit). |
-| indexer | [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti.  |
+| indexer | [Vytvoření indexeru (rozhraní API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti.  |
 
 ### <a name="physical-composition-of-a-knowledge-store"></a>Fyzické složení úložiště znalostí
 

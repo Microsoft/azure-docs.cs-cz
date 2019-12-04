@@ -1,21 +1,18 @@
 ---
-title: Volání koncových bodů HTTP a HTTPS – Azure Logic Apps
+title: Volání koncových bodů HTTP a HTTPS
 description: Odeslání odchozích požadavků do koncových bodů HTTP a HTTPS pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 4f585778808b133fe5c731ab6a3189594cbfc0f9
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 971d7432c841c4ef984c7bbd7899fce733512303
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804224"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787178"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Odeslání odchozích volání do koncových bodů HTTP nebo HTTPS pomocí Azure Logic Apps
 
@@ -150,7 +147,7 @@ Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací
 
 | Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
-| Záhlaví | object | Hlavičky z požadavku |
+| záhlaví | object | Hlavičky z požadavku |
 | těles | object | Objekt JSON | Objekt s obsahem textu z požadavku |
 | Stavový kód | int | Stavový kód z požadavku |
 |||

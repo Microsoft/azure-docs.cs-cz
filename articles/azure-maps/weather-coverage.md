@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0af2d306a5f5923f5e14eb0ebc4707f9c5caee90
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288565"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769026"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
 
@@ -157,7 +157,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Seychel                  | ✓               |                              |        ✓| 
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Somálsko                     | ✓               |                              |        ✓| 
-| Jižní Afrika                | ✓               |                              |        ✓| 
+| Jihoafrická republika                | ✓               |                              |        ✓| 
 | Jižní Súdán                 | ✓               |                              |        ✓| 
 | Súdán                       | ✓               |                              |        ✓| 
 | Sýrie                       | ✓               |                              |        ✓| 
@@ -199,9 +199,9 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Japonsko                             | ✓ | ✓ |  ✓| 
 | Kazachstán                        | ✓ |   |  ✓| 
 | Kiribati                          | ✓ |   |  ✓| 
-| Jižní Korea                             | ✓ | ✓ |  ✓| 
+| Korea                             | ✓ | ✓ |  ✓| 
 | Kyrgyzstán                        | ✓ |   |  ✓| 
-| Laos                              | ✓ |   |  ✓| 
+| Laoská                              | ✓ |   |  ✓| 
 | Macao – zvláštní správní oblast                         | ✓ |   |  ✓| 
 | Malajsie                          | ✓ |   |  ✓| 
 | Maledivy                          | ✓ |   |  ✓| 
@@ -287,7 +287,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Portugalsko               | ✓ | ✓ |  ✓| 
 | Rumunsko                | ✓ | ✓ |  ✓| 
 | Rusko                 | ✓ |   |  ✓| 
-| San Marino             | ✓ |   |  ✓| 
+| Síť San Marino             | ✓ |   |  ✓| 
 | Srbsko                 | ✓ | ✓ |  ✓| 
 | Slovensko               | ✓ | ✓ |  ✓| 
 | Slovinsko               | ✓ | ✓ |  ✓| 

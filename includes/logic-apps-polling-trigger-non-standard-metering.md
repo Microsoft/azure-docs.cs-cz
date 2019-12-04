@@ -1,16 +1,16 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/09/2018
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 3fa71085d649ace95aa24ac87c8714a7268f5386
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/09/2018
+ms.openlocfilehash: 89c2467843d7abc7c005804fd5263fe3beb668b6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175600"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793447"
 ---
-Pokud chcete odhadnout přesnější nákladů za využití, vezměte v úvahu možný počet zpráv nebo událostí, které může doručení na každý den, spíše než základní výpočtů na interval dotazování. Pokud události nebo zprávy splňuje kritéria aktivační události, řada triggerů okamžitě provede pokus přečíst jakákoli a veškerá další události čekání nebo zprávy, které splňují kritéria. Toto chování znamená, že i když vyberete tak delší interval dotazování se trigger aktivuje, na základě počtu událostí čekání nebo zprávy, které jsou způsobilé pro spouštění pracovních postupů. Triggery, které chovat následovně zahrnují služby Azure Service Bus a Azure Event Hubs.
+Chcete-li odhadnout přesnější náklady na spotřebu, vezměte v úvahu možný počet zpráv nebo událostí, které mohou být doručeny v jednom dni, nikoli na základě výpočtů pouze v intervalu dotazování. Když událost nebo zpráva splňuje kritéria triggeru, mnoho triggerů se okamžitě pokusí přečíst všechny ostatní čekající události nebo zprávy, které splňují kritéria. To znamená, že i když vyberete delší interval dotazování, Trigger se aktivuje na základě počtu čekajících událostí nebo zpráv, které jsou způsobilé pro spouštění pracovních postupů. Mezi triggery, které následují toto chování, patří Azure Service Bus a Azure Event hub.
 
-Proto se například Předpokládejme, že nastavíte aktivační událost, která kontroluje koncový bod, každodenní. Když trigger zkontroluje koncový bod a zjistí 15 události, které splňují zadaná kritéria, aktivuje se a spustí odpovídající postup 15 x. Všechny akce, které provádějí tyto 15 pracovních postupů, včetně požadavků aktivační událost měření služby Logic Apps. Chcete-li vypočítat náklady na potenciální, zkuste [cenovou kalkulačku Azure](https://azure.microsoft.com/pricing/calculator/).
+Předpokládejme například, že jste nastavili aktivační událost, která každý den kontroluje koncový bod. Když aktivační událost zkontroluje koncový bod a najde 15 událostí, které splňují kritéria, Trigger se aktivuje a spustí odpovídající Workflow 15 krát. Logic Apps měřiče měření všech akcí, které provádí tyto 15 pracovních postupů, včetně požadavků na triggery. Pokud chcete vypočítat možné náklady, vyzkoušejte [cenovou kalkulačku Azure](https://azure.microsoft.com/pricing/calculator/).

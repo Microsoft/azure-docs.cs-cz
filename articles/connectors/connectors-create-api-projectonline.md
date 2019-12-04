@@ -1,22 +1,18 @@
 ---
-title: Připojte se k Projectu Online z Azure Logic Apps | Microsoft Docs
+title: Připojte se k Projectu Online z Azure Logic Apps
 description: Automatizujte pracovní postupy, které sledují, vytvářejí a spravují projektové online projekty, úkoly a prostředky pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: fe571209d28fe098ce9b507cb67b0a9a5abd25a3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 116922e018410f260b33f4dfd76e5983fbbcc0a5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050858"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789320"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Správa projektů, úloh a prostředků Projectu Online pomocí Azure Logic Apps
 
@@ -29,7 +25,7 @@ Pomocí Azure Logic Apps a konektoru služby Project Online můžete vytvářet 
 
 Project Online pomáhá plánovat, upřednostňovat a spravovat projekty a investice do portfolia projektů prakticky odkudkoli a na téměř jakémkoli zařízení tím, že poskytuje výkonné funkce řízení projektů. Můžete použít triggery služby Project Online, které získávají odpovědi z Projectu Online a zpřístupňují výstup ostatním akcím. Akce v aplikacích logiky můžete použít k provádění různých úloh v Projectu Online. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 

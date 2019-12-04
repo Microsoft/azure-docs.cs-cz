@@ -1,34 +1,35 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 7cfce34cb2d6002dba5ec570bf859ec47e894c65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 951ab2300aa4ffed2c5f1039ff993cd7f6af543f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175263"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789657"
 ---
-#### <a name="prerequisites"></a>Požadavky
-* Účet Azure. můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free)
-* A [Onedrivu](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) účtu 
+## <a name="prerequisites"></a>Předpoklady
 
-Předtím, než v aplikaci logiky můžete používat svůj účet Onedrivu, autorizujte aplikaci logiky pro připojení k účtu OneDrive.  Můžete udělat jednoduše v rámci vaší aplikace logiky na webu Azure portal. 
+* Účet Azure; Můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free) .
+* Účet [OneDrivu](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) 
 
-Autorizujte aplikaci logiky se připojit ke svému účtu Onedrivu, pomocí následujících kroků:
+Než budete moct použít svůj účet OneDrive v aplikaci logiky, autorizujte aplikaci logiky, aby se připojila k vašemu účtu OneDrive.  To můžete snadno provést v rámci aplikace logiky na Azure Portal. 
 
-1. Vytvoření aplikace logiky. V návrháři pro Logic Apps, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu a pak do vyhledávacího pole zadejte "onedrivu". Vyberte jednu z aktivační události nebo akce:  
+Autorizovat aplikaci logiky pro připojení k účtu OneDrive pomocí následujících kroků:
+
+1. Vytvořte aplikaci logiky. V Návrháři Logic Apps v rozevíracím seznamu vyberte **Zobrazit spravovaná rozhraní API Microsoftu** a potom do vyhledávacího pole zadejte OneDrive. Vyberte jednu z aktivačních událostí nebo akcí:  
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Pokud jste dosud nevytvořili žádná připojení k Onedrivu, zobrazí se výzva k přihlášení pomocí přihlašovacích údajů k OneDrive:  
+2. Pokud jste předtím nevytvořili žádná připojení k OneDrivu, budete vyzváni k přihlášení pomocí přihlašovacích údajů k OneDrivu:  
    ![](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. Vyberte **přihlášení**a zadejte uživatelské jméno a heslo. Vyberte **přihlášení**:  
+3. Vyberte **Přihlásit**se a zadejte své uživatelské jméno a heslo. Vyberte **Přihlásit se**:  
    ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
    
-    Tyto přihlašovací údaje se používají k autorizaci aplikace logiky k připojení a přístup k datům v účtu OneDrive. 
-4. Vyberte **Ano** autorizovat aplikaci logiky, aby používala vašeho účtu OneDrive:  
+    Tyto přihlašovací údaje se používají k autorizaci aplikace logiky k připojení a přístup k datům ve vašem účtu OneDrive. 
+4. Vyberte **Ano** , pokud chcete autorizovat aplikaci logiky, aby používala váš účet OneDrive:  
    ![](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. Všimněte si, že připojení bylo vytvořeno. Nyní postupujte podle dalších kroků ve vaší aplikaci logiky:  
+5. Všimněte si, že připojení bylo vytvořeno. Teď pokračujte dalšími kroky ve vaší aplikaci logiky:  
    ![](./media/connectors-create-api-onedrive/onedrive-5.png)
 

@@ -1,97 +1,95 @@
 ---
-title: Kódování X12 zprávy – Azure Logic Apps | Dokumentace Microsoftu
-description: Ověřování EDI a převodu kódu XML zprávy s X12 zprávy kodér v Azure Logic Apps sadou Enterprise Integration Pack
+title: Kódování zpráv X12
+description: Ověřování XML a převod zpráv kódovaných v jazyce XML pomocí kodéru zpráv X12 v Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
-ms.openlocfilehash: 871d6d2b2019372bd258f8909ed0feeeddac4af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705701"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792344"
 ---
-# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kódování X12 zpráv ve službě Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kódování zpráv X12 v Azure Logic Apps pomocí Enterprise Integration Pack
 
-Konektor kódovat X12 zpráva může ověřit EDI a vlastnosti specifické pro partnera, převést na XML kódování zprávy EDI sady transakcí v výměna a požádat o technické potvrzení a funkční potvrzení.
-Pokud chcete použít tento konektor, musí přidání konektoru do existující aktivační událost ve své aplikaci logiky.
+Pomocí konektoru zpráv pro kódování X12 můžete ověřit vlastnosti EDI a partner, převést zprávy kódované XML na sady transakcí EDI ve výměně a požádat o technickou potvrzení, funkční potvrzení nebo obojí.
+Pokud chcete použít tento konektor, musíte přidat konektor k existující triggeru ve vaší aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Tady je položky, které budete potřebovat:
+Tady jsou položky, které potřebujete:
 
-* Účet Azure. můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free)
-* [Účtu pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který již má definovaný a spojené s předplatným Azure. Musíte mít účtu pro integraci k používání konektoru kódovat X12 zprávy.
-* Alespoň dva [partnery](logic-apps-enterprise-integration-partners.md) , která jsou již definovány v účtu integrace
-* [X12 smlouvy](logic-apps-enterprise-integration-x12.md) , která je již definována v účtu integrace
+* Účet Azure; Můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free) .
+* [Účet pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který je už definovaný a přidružený k vašemu předplatnému Azure. K používání konektoru zpráv X12 pro kódování musíte mít účet pro integraci.
+* Alespoň dva [partneři](logic-apps-enterprise-integration-partners.md) , kteří jsou již definováni v účtu integrace
+* [Smlouva X12](logic-apps-enterprise-integration-x12.md) , která je už definovaná v účtu integrace
 
-## <a name="encode-x12-messages"></a>Kódování X12 zprávy
+## <a name="encode-x12-messages"></a>Kódování zpráv X12
 
-1. [Vytvoření aplikace logiky](quickstart-create-first-logic-app-workflow.md).
+1. [Vytvořte aplikaci logiky](quickstart-create-first-logic-app-workflow.md).
 
-2. Konektor kódovat X12 zpráva nemá aktivačních událostí, proto musíte přidat aktivační událost pro spuštění aplikace logiky jako trigger požadavku. V návrháři aplikace logiky přidávat aktivační události a pak přidat akci do aplikace logiky.
+2. Konektor zpráv X12 ve službě encode neobsahuje aktivační události, takže musíte přidat Trigger pro spuštění aplikace logiky, jako je Trigger žádosti. V návrháři aplikace logiky přidejte Trigger a pak přidejte akci do aplikace logiky.
 
-3.  Do vyhledávacího pole zadejte "x12" filtr. Vyberte buď **X12 – kódování X12 zprávy podle názvu smlouvy** nebo **X12 – kódování X12 zprávy podle identit**.
+3.  Do vyhledávacího pole zadejte "X12" pro svůj filtr. Vyberte buď **X12-encode pro X12 zprávu podle názvu smlouvy** , nebo **X12-encode pro X12 zprávy podle identity**.
    
-    ![Vyhledejte "x12"](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
+    ![Vyhledejte "X12"](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
-3. Pokud jste nevytvořili dříve všechna připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení. Název připojení a vyberte účet pro integraci, kterou chcete připojit. 
+3. Pokud jste dříve nevytvořili žádná připojení k účtu pro integraci, budete vyzváni k vytvoření tohoto připojení nyní. Zadejte název připojení a vyberte účet pro integraci, který chcete připojit. 
    
-    ![připojení účtu integrace](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
+    ![připojení k účtu pro integraci](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage1.png)
 
-    Vyžadují se vlastnosti s hvězdičkou.
+    Jsou vyžadovány vlastnosti s hvězdičkou.
 
     | Vlastnost | Podrobnosti |
     | --- | --- |
-    | Název připojení * |Zadejte libovolný název vašeho připojení. |
-    | Účet integrace * |Zadejte název účtu pro integraci. Ujistěte se, že integrační účet a logiku aplikace jsou ve stejném umístění Azure. |
+    | Název připojení * |Zadejte libovolný název připojení. |
+    | Účet pro integraci * |Zadejte název účtu pro integraci. Ujistěte se, že váš účet pro integraci a aplikace logiky jsou ve stejném umístění Azure. |
 
-5.  Až budete hotovi, vaše podrobnosti připojení by měl vypadat podobně jako tento příklad. Chcete-li dokončit vytváření připojení, zvolte **vytvořit**.
+5.  Až budete hotovi, vaše podrobnosti o připojení by měly vypadat podobně jako v tomto příkladu. Chcete-li dokončit vytváření připojení, klikněte na tlačítko **vytvořit**.
 
-    ![Vytvoření připojení k účtu integrace](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
+    ![vytvořilo se připojení k účtu pro integraci.](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
-    Připojení je vytvořený.
+    Připojení je nyní vytvořeno.
 
-    ![Podrobnosti připojení účtu integrace](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
+    ![podrobnosti připojení účtu pro integraci](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage3.png) 
 
-#### <a name="encode-x12-messages-by-agreement-name"></a>Kódování X12 zprávy podle názvu smlouvy
+#### <a name="encode-x12-messages-by-agreement-name"></a>Kódovat zprávy X12 podle názvu smlouvy
 
-Pokud jste se rozhodli kódování X12 zprávy podle názvu smlouvy, otevřete **název X12 smlouvy** seznamu, zadejte nebo vyberte existující X12 smlouvy. Zadejte zprávu XML ke kódování.
+Pokud jste se rozhodli kódovat zprávy X12 podle názvu smlouvy, otevřete seznam **X12 smlouvy** , zadejte nebo vyberte svou stávající smlouvu X12. Zadejte zprávu XML, která se má zakódovat.
 
-![Zadejte X12 název smlouvy a zpráva XML k zakódování](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
+![Zadejte název smlouvy X12 a zprávu XML ke kódování.](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 
-#### <a name="encode-x12-messages-by-identities"></a>Kódování X12 zprávy podle identit
+#### <a name="encode-x12-messages-by-identities"></a>Kódování zpráv X12 podle identit
 
-Pokud se rozhodnete ke kódování X12 zprávy podle identit, zadejte identifikátor odesílatele, kvalifikátor odesílatele, příjemce identifikátor a kvalifikátor příjemce podle konfigurace v vaše X12 smlouvy. Vyberte zpráva XML k zakódování.
+Pokud se rozhodnete zakódovat zprávy X12 podle identity, zadejte identifikátor odesilatele, kvalifikátor odesílatele, identifikátor přijímače a kvalifikátor přijímače podle konfigurace ve vaší smlouvě X12. Vyberte zprávu XML, která se má zakódovat.
    
-![Zadejte identit pro odesílatele a příjemce, vyberte zpráva XML k zakódování](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
+![Zadejte identity pro odesílatele a přijímače, vyberte zprávu XML ke kódování.](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
-## <a name="x12-encode-details"></a>X12 kódování podrobnosti
+## <a name="x12-encode-details"></a>X12 kódování podrobností
 
-X12 kódovat connector provádí tyto úlohy:
+Konektor X12 encode provádí tyto úlohy:
 
-* Řešení smlouvy to provede spárováním odpovídajících odesílatele a příjemce vlastnosti kontextu.
-* Serializuje výměna EDI, převádění XML kódované zprávy EDI sady transakcí v výměna.
-* Platí segmenty záhlaví a koncová část sady transakcí
-* Generuje kontrolní číslo výměny, kontrolní číslo skupiny a kontrolní číslo sady transakcí pro každou odchozí výměny
-* Nahradí oddělovače v datové části
-* Ověří EDI a vlastnosti specifické pro partnera
-  * Ověření schématu datové sady transakcí prvky proti zprávě schématu
-  * Ověřování EDI provedla sada transakcí datové prvky.
-  * Rozšíření ověřování provedla sada transakcí datových prvků
-* Požádá o potvrzení technické a/nebo funkční (Pokud je nakonfigurovaná).
-  * Technické potvrzení vygeneruje jako výsledek ověření záhlaví. Technické potvrzení hlásí stav zpracování výměny záhlaví a koncová část adresa příjemce
-  * Funkční potvrzení vygeneruje jako výsledek ověření textu. Funkční potvrzení sestavy každou došlo k chybě při zpracování přijatých dokumentu
+* Řešení smlouvy porovnáním vlastností kontextu odesílatele a přijímače.
+* Serializace výměny EDI a převádí zprávy kódované XML na sady transakcí EDI ve výměně.
+* Použije záhlaví sady transakcí a segmenty přípojných vozidel.
+* Vygeneruje řídicí číslo výměny, řídicí číslo skupiny a řídicí číslo sady transakcí pro každý odchozí výměnu.
+* Nahradí oddělovače v datech datové části.
+* Ověří vlastnosti EDI a pro konkrétní partnery.
+  * Ověřování schématu datových elementů transakce-sady podle schématu zprávy
+  * Ověřování EDI bylo provedeno v datových prvcích sady transakcí.
+  * Rozšířené ověřování provedeno v datových prvcích sady transakcí
+* Požaduje technické nebo funkční potvrzení (Pokud je nakonfigurované).
+  * Technické potvrzení vygeneruje výsledek ověřování hlaviček. Technické potvrzení oznamuje stav zpracování záhlaví a přípojného vozidla pro přijímač adres.
+  * Funkční potvrzení generuje výsledek ověření těla. Funkční potvrzení oznamuje každou chybu, ke které došlo při zpracování přijatého dokumentu.
 
-## <a name="view-the-swagger"></a>Zobrazení swaggeru
-Zobrazit [swagger podrobnosti](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Zobrazit Swagger
+Podívejte se na [Podrobnosti Swagger](/connectors/x12/). 
 
-## <a name="next-steps"></a>Další postup
-[Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack") 
+## <a name="next-steps"></a>Další kroky
+[Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack") 
 

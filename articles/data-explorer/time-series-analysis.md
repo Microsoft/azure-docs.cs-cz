@@ -1,52 +1,56 @@
 ---
-title: Analýzy dat časových řad pomocí Průzkumníka dat služby Azure
-description: Zjistěte, jak analyzovat data časových řad v cloudu pomocí Průzkumníku dat Azure.
+title: Analýza dat časových řad pomocí Azure Průzkumník dat
+description: Naučte se analyzovat data časových řad v cloudu pomocí Azure Průzkumník dat.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604063"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765479"
 ---
-# <a name="time-series-analysis-in-azure-data-explorer"></a>Analýzu časových řad v Průzkumníku dat Azure
+# <a name="time-series-analysis-in-azure-data-explorer"></a>Analýza časových řad v Azure Průzkumník dat
 
-Průzkumník Azure dat (ADX) provádí probíhající shromažďování telemetrických dat ze zařízení IoT nebo cloudové služby. Tato data můžete analyzovat různé přehledy, jako je monitorování stavu služby, fyzické produkční procesy a trendy využití. Analýza provádí v časové řadě vybrané metriky najít odchylky vzoru porovnává se vzorem jeho typické směrného plánu.
-ADX obsahuje nativní podporu pro vytváření, manipulaci a analýze několika časovými řadami. V tomto tématu, dozvíte se, jak ADX slouží k vytvoření a analýza **tisíce časové řady během několika sekund**, takže téměř v reálném čase sledování řešeními a pracovními postupy.
+Azure Průzkumník dat (ADX) provádí průběžnou shromažďování dat telemetrie z cloudových služeb nebo zařízení IoT. Tato data je možné analyzovat pro různé přehledy, jako je monitorování stavu služby, fyzických produkčních procesů a trendů využití. Analýza se provádí v časové řadě vybraných metrik za účelem nalezení odchylky ve vzoru v porovnání s běžným vzorem standardních hodnot.
+ADX obsahuje nativní podporu pro vytváření, manipulaci a analýzu více časových řad. V tomto tématu se dozvíte, jak se ADX používá k vytváření a analýze **tisíců časových řad v řádu sekund**, což umožňuje monitorování a pracovní postupy pro monitorování téměř v reálném čase.
 
-## <a name="time-series-creation"></a>Průběžné vytváření řady
+## <a name="time-series-creation"></a>Vytváření časových řad
 
-V této části vytvoříme velkou sadu pravidelné časové řady snadnou a použití `make-series` operátor a vyplnit chybějící hodnoty podle potřeby.
-Prvním krokem při analýzu časových řad je rozdělí do oddílů a transformovat původní tabulku telemetrických dat na sadu časové řady. Tabulka obvykle obsahuje sloupec časového razítka, kontextové dimenze a volitelné metriky. Dimenze se používají při vytváření oddílů data. Cílem je vytvořit tisíce časové řady na oddíl v pravidelných intervalech.
+V této části vytvoříme rozsáhlou sadu pravidelných časových řad jednoduše a intuitivním pomocí operátoru `make-series` a podle potřeby vyplní chybějící hodnoty.
+Prvním krokem analýzy časových řad je rozdělit a transformovat původní tabulku telemetrie na sadu časových řad. Tabulka obvykle obsahuje sloupec časového razítka, kontextové dimenze a volitelné metriky. Dimenze se používají k rozdělení dat do oddílů. Cílem je vytvořit tisíce časových řad na oddíl v pravidelných časových intervalech.
 
-Vstupní tabulka *demo_make_series1* obsahuje 600 tisíc záznamů z libovolného webového provozu služby. Pro vzorkování 10 záznamů pomocí následujícího příkazu:
+Vstupní tabulka *demo_make_series1* obsahuje záznamy 600K libovolného provozu webové služby. Pomocí následujícího příkazu můžete vzorkovat 10 záznamů:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA) **\]**
 
 ```kusto
 demo_make_series1 | take 10 
 ```
 
-Výsledná tabulka obsahuje sloupec časového razítka, tři sloupce kontextové dimenzí a žádné metriky:
+Výsledná tabulka obsahuje sloupec časového razítka, tři sloupce kontextových dimenzí a žádné metriky:
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 |   | Časové razítko | BrowserVer | OsVer | Země/oblast |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Spojené království |
-|   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Spojené království |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | Spojené království |
-|   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Litevská republika |
-|   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | Indie |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | Spojené království |
-|   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Nizozemsko |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | Spojené království |
-|   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | Indie |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51,0 | Windows 7 | Spojené království |
+|   | 2016-08-25 09:12:41.1120000 | Chrome 52,0 | Windows 10 |   |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52,0 | Windows 7 | Spojené království |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52,0 | Windows 10 | Spojené království |
+|   | 2016-08-25 09:12:46.5570000 | Chrome 52,0 | Windows 10 | Lotyšskoská republika |
+|   | 2016-08-25 09:12:47.0470000 | Chrome 52,0 | Windows 8.1 | Indie |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52,0 | Windows 10 | Spojené království |
+|   | 2016-08-25 09:12:51.6930000 | Chrome 52,0 | Windows 7 | Nizozemsko |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52,0 | Windows 10 | Spojené království |
+|   | 2016-08-25 09:13:08.7230000 | Chrome 52,0 | Windows 10 | Indie |
 
-Vzhledem k tomu, že neexistují žádné metriky, můžeme vytvořit pouze sadu časové řady představující počet přenosů, samostatně, rozdělený podle operačního systému pomocí následujícího dotazu:
+Vzhledem k tomu, že neexistují žádné metriky, můžeme sestavit jenom sadu časových řad, které představují samotný počet přenosů rozdělený podle OS, pomocí následujícího dotazu:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -56,29 +60,31 @@ demo_make_series1
 | render timechart 
 ```
 
-- Použití [ `make-series` ](/azure/kusto/query/make-seriesoperator) operátoru pro vytvoření sady tři časové řady, kde:
-    - `num=count()`: time series provozu
-    - `range(min_t, max_t, 1h)`: časové řady proběhne do 1 hodiny přihrádek v časovém rozmezí (nejstarší a nejnovější časová razítka tabulky záznamů)
-    - `default=0`: Zadejte metody fill pro chybějící přihrádky vytvoření pravidelné časové řady. Můžete také použít [ `series_fill_const()` ](/azure/kusto/query/series-fill-constfunction), [ `series_fill_forward()` ](/azure/kusto/query/series-fill-forwardfunction), [ `series_fill_backward()` ](/azure/kusto/query/series-fill-backwardfunction) a [ `series_fill_linear()` ](/azure/kusto/query/series-fill-linearfunction) pro změny
-    - `byOsVer`: oddíl podle operačního systému
-- Struktura dat řady skutečný čas je číselné pole agregované hodnoty za každý interval času. Používáme `render timechart` pro vizualizaci.
+- Použijte operátor [`make-series`](/azure/kusto/query/make-seriesoperator) k vytvoření sady tří časových řad, kde:
+    - `num=count()`: časová řada provozu
+    - `range(min_t, max_t, 1h)`: časová řada se vytvoří v intervalu od 1 hodiny (nejstarší a nejnovější časové razítko záznamů tabulky).
+    - `default=0`: Zadejte metodu Fill pro chybějící přihrádky pro vytvoření pravidelných časových řad. Případně použijte [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction), [`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction), [`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) a [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) pro změny
+    - `byOsVer`: dělení podle OS
+- Skutečná datová struktura časové řady je číselné pole agregované hodnoty pro každou časovou přihrádku. Pro vizualizaci používáme `render timechart`.
 
-V tabulce výše máme tři oddíly. Můžeme vytvořit samostatné časové řady: Windows 10 (červená), 7 (modrá) a 8.1 (zelená) pro každou verzi operačního systému, jak je vidět v grafu:
+V tabulce výše máme tři oddíly. Pro každou verzi operačního systému, jak je vidět v grafu, můžeme vytvořit samostatnou časovou řadu: Windows 10 (Red), 7 (Blue) a 8,1 (zelenou):
 
-![Čas řady oddílu](media/time-series-analysis/time-series-partition.png)
+![Oddíl časových řad](media/time-series-analysis/time-series-partition.png)
 
-## <a name="time-series-analysis-functions"></a>Časové řady analýza funkce
+## <a name="time-series-analysis-functions"></a>Funkce analýzy časových řad
 
-V této části provádíme obvyklé řady funkce na zpracování.
-Po vytvoření sadu časové řady ADX podporuje poskytovaná rostoucím seznamem zpracovávat a analyzovat je funkce, které najdete v [čas dokumentace k úložišti řady](/azure/kusto/query/machine-learning-and-tsa). Článků popíšeme několik reprezentativní funkce pro zpracování a analýzu časové řady.
+V této části provedeme typické funkce pro zpracování řad.
+Po vytvoření sady časových řad ADX podporuje rostoucí seznam funkcí pro zpracování a analýzu, které najdete v [dokumentaci k časové řadě](/azure/kusto/query/machine-learning-and-tsa). Popíšeme několik reprezentativních funkcí pro zpracování a analýzu časových řad.
 
-### <a name="filtering"></a>Filtering
+### <a name="filtering"></a>Filtrování
 
-Filtrování je běžnou praxí při signálu zpracování a užitečné pro časové řady úloh zpracování (například smooth hlučného signál, změnit zjišťování).
+Filtrování je běžný postup při zpracování signálu a užitečný pro úlohy zpracování časových řad (například vyhlazení signálu s vysokou zátěží, zjišťování změn).
 - Existují dvě obecné funkce filtrování:
-    - [`series_fir()`](/azure/kusto/query/series-firfunction): Používá se filtr do části. Používá pro jednoduchý výpočet klouzavý průměr a rozdílů mezi časové řady pro zjišťování změn.
-    - [`series_iir()`](/azure/kusto/query/series-iirfunction): Používá se filtr IIR. Používá pro exponenciální vyhlazování a kumulativní součet.
-- `Extend` časové řady přidáním nové klouzavý průměr řady nastavit velikost přihrádky 5 (s názvem *ma_num*) k dotazu:
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): použití filtru FIR. Slouží k jednoduchému výpočtu klouzavého průměru a odlišení časové řady pro detekci změn.
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): použití filtru IIR. Používá se k exponenciálnímu vyhlazení a kumulativnímu součtu.
+- `Extend` nastavení časové řady přidáním nové klouzavý průměr řady o velikosti 5 přihrádek (s názvem *ma_num*) do dotazu:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -89,15 +95,17 @@ demo_make_series1
 | render timechart
 ```
 
-![Časové řady filtrování](media/time-series-analysis/time-series-filtering.png)
+![Filtrování časových řad](media/time-series-analysis/time-series-filtering.png)
 
-### <a name="regression-analysis"></a>Regresní analýzy
+### <a name="regression-analysis"></a>Regresní analýza
 
-Podporuje ADX segmentované lineární regrese analýzy k odhadu trend časové řady.
-- Použití [series_fit_line()](/azure/kusto/query/series-fit-linefunction) podle osvědčené čáry časové řady pro zjišťování obecnému trendu.
-- Použití [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction) ke zjišťování trend změn, vzhledem k standardních hodnot, které jsou užitečné pro scénáře monitorování.
+ADX podporuje analýzu segmentované lineární regrese k odhadu trendu časových řad.
+- Použijte [series_fit_line ()](/azure/kusto/query/series-fit-linefunction) , chcete-li přizpůsobit nejlepší linii na časovou řadu pro obecné zjišťování trendů.
+- Použijte [series_fit_2lines ()](/azure/kusto/query/series-fit-2linesfunction) k detekci změn trendů vzhledem ke standardním hodnotám, které jsou užitečné při monitorování scénářů.
 
-Příklad `series_fit_line()` a `series_fit_2lines()` funkce v dotazu řady čas:
+Příklad funkcí `series_fit_line()` a `series_fit_2lines()` v dotazu Time Series:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=) **\]**
 
 ```kusto
 demo_series2
@@ -105,33 +113,37 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-![Čas řady regrese](media/time-series-analysis/time-series-regression.png)
+![Regrese časové řady](media/time-series-analysis/time-series-regression.png)
 
-- Modrá: původní časové řady
-- Zelená: namontováno řádku
-- Red: dva řádky vybavené
+- Blue: původní časová řada
+- Zelená: nainstalovaná čára
+- Červená: dva montované čáry
 
 > [!NOTE]
-> Funkce přesně zjistili bodu jump (Změna úrovně).
+> Funkce přesně zjistila odkaz (změnu úrovně).
 
-### <a name="seasonality-detection"></a>Sezónnost detekce
+### <a name="seasonality-detection"></a>Detekce sezónnost
 
-Mnoho metriky podle sezónní vzory (pravidelných). Uživatelský provoz cloudové služby obvykle obsahuje denní nebo týdenní vzory, které jsou v noci a přes víkend pokazil nejvyšší po nejnižší a střední firmy dne. Míra senzory IoT v pravidelných intervalech. Fyzické měření, jako je například teploty a tlaku, vlhkosti lze také zobrazit sezónní chování.
+Mnoho metrik sleduje sezónní (pravidelné) vzory. Uživatelský provoz Cloud Services většinou obsahuje denní a týdenní vzory, které jsou nejnižšími středními částmi pracovního dne a nejnižší v noci a za víkend. Měření senzorů IoT v pravidelných intervalech. Fyzická měření, jako je teplota, tlak nebo vlhkost, mohou také ukazovat na sezónní chování.
 
-Následující příklad se vztahuje zjišťování sezónnosti na jeden měsíc provozu webové služby (přihrádkami 2 hodiny):
+Následující příklad aplikuje sezónnost detekci na jeden měsíc provozu webové služby (2 – hodiny přihrádky):
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA) **\]**
 
 ```kusto
 demo_series3
 | render timechart 
 ```
 
-![Sezónnost řady čas](media/time-series-analysis/time-series-seasonality.png)
+![Time Series sezónnost](media/time-series-analysis/time-series-seasonality.png)
 
-- Použití [series_periods_detect()](/azure/kusto/query/series-periods-detectfunction) automaticky zjišťovat období v časové řadě. 
-- Použití [series_periods_validate()](/azure/kusto/query/series-periods-validatefunction) Pokud víme, že metriku by měl mít odlišné konkrétní období a chceme ověřit, že existují.
+- K automatické detekci časových řad použijte [series_periods_detect ()](/azure/kusto/query/series-periods-detectfunction) . 
+- Pokud víme, že by měla metrika obsahovat konkrétní konkrétní tečky, použijte [series_periods_validate ()](/azure/kusto/query/series-periods-validatefunction) , aby bylo možné ověřit, že existují.
 
 > [!NOTE]
-> Pokud neexistuje konkrétní různých období je anomálií
+> Je to anomálie, pokud konkrétní odlišná období neexistují.
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA) **\]**
 
 ```kusto
 demo_series3
@@ -142,15 +154,17 @@ demo_series3
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | období | Skóre | days |
+|   | době | počty | denní |
 |   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 1 |
+|   | 12 | 0.764601405803502 | 1\. místo |
 
-Funkce zjistí denní nebo týdenní sezónnosti. Denní stanoví skóre menší než týdenní, protože se liší od dny v týdnu víkendové dny.
+Funkce detekuje denní a týdenní sezónnost. Denní skóre méně než týdně, protože víkendové dny se liší od pracovních dnů.
 
-### <a name="element-wise-functions"></a>Element-Wise funkce
+### <a name="element-wise-functions"></a>Funkce pro prvky
 
-Aritmetické a logické operace lze provádět na časové řady. Pomocí [series_subtract()](/azure/kusto/query/series-subtractfunction) můžeme vypočítat zbývající časové řady, který je, rozdíl mezi původní nezpracovaná metriky a vyhlazenými jeden a vyhledat anomálie v plyne ze zbytkových signál:
+Aritmetické a logické operace lze provést v časové řadě. Pomocí [series_subtract ()](/azure/kusto/query/series-subtractfunction) můžeme vypočítat reziduální časovou řadu, tj. rozdíl mezi původní nezpracovaný metrikou a nahladkou a vyhledat anomálie v reziduálním signálu:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -163,15 +177,17 @@ demo_make_series1
 | render timechart
 ```
 
-![Časové řady operace](media/time-series-analysis/time-series-operations.png)
+![Operace s časovou řadou](media/time-series-analysis/time-series-operations.png)
 
-- Modrá: původní časové řady
-- Červená: vyhlazené časové řady
-- Zelená: plyne ze zbytkových časové řady
+- Blue: původní časová řada
+- Red: hladká časová řada
+- Zelená: zbytková časová řada
 
-## <a name="time-series-workflow-at-scale"></a>Čas řady pracovní postup ve velkém měřítku
+## <a name="time-series-workflow-at-scale"></a>Pracovní postup ve škále časových řad
 
-Následující příklad ukazuje, jak můžete tyto funkce spouštět ve velkém měřítku na tisíce časových řad v sekundách pro detekci anomálií. Chcete-li zobrazit několik záznamů telemetrie ukázkové metriky počet čtení databáze služby čtyři dny spuštěním následujícího dotazu:
+Níže uvedený příklad ukazuje, jak se tyto funkce můžou spouštět ve velkém měřítku na tisících časových řad v sekundách pro detekci anomálií. Pokud chcete zobrazit několik ukázkových záznamů telemetrie metriky počtu čtení služby DB za čtyři dny, spusťte následující dotaz:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==) **\]**
 
 ```kusto
 demo_many_series1
@@ -180,13 +196,15 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | TIMESTAMP | Loc | anonOp | DB | DataRead |
+|   | ČASOVÉ razítko | Loc | anonOp | INŽENÝR | Čtení z |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410 | 255 | 0 |
 
 A jednoduché statistiky:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA) **\]**
 
 ```kusto
 demo_many_series1
@@ -195,10 +213,12 @@ demo_many_series1
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | počet | min\_t | max\_t |
+|   | počet | minimální\_t | maximální\_t |
 |   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
-Vytváření časové řady do přihrádky 1 hodinu čtení metriky (celkem čtyři dny * 24 hodin = 96 bodů), výsledkem kolísání normální vzoru:
+Výsledkem sestavování časové řady v rámci 1 hodinové přihrádky metriky čtení (celkem čtyři dny × 24 hodin = 96 bodů), výsledkem je normální kolísání vzoru:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -210,9 +230,11 @@ demo_many_series1
 
 ![Časové řady ve velkém měřítku](media/time-series-analysis/time-series-at-scale.png)
 
-Výše uvedené chování je zavádějící, protože jeden normální časové řady se shromažďuje od tisíce různých instancí, které můžou mít abnormálních vzorů. Proto vytvoříme časové řady na jednu instanci. Instance je definována umístění (umístění), anonOp (operace) a databáze (konkrétního počítače).
+Výše uvedené chování je zavádějící, protože jedna normální časová řada je agregována z tisíců různých instancí, které mohou mít neobvyklé vzory. Proto vytvoříme časovou řadu na instanci. Instance je definována v umístění (location), anonOp (operace) a DB (konkrétní počítač).
 
-Kolik časové řady můžeme vytvořit?
+Kolik časových řad můžeme vytvořit?
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=) **\]**
 
 ```kusto
 demo_many_series1
@@ -225,7 +247,9 @@ demo_many_series1
 |   | Počet |
 |   | 18339 |
 
-Teď vytvoříme vytvořit sadu 18339 časových řad pro metriku čtení počtu. Přidáme `by` klauzule příkazu zkontrolujte series, použití lineární regrese a vyberte horní dva časové řady, do kterých se nejvýznamnější snížení trendů:
+Nyní vytvoříme sadu 18339 časových řad metriky Count pro čtení. Do příkazu make-Series přidáte klauzuli `by`, aplikujete lineární regresi a vyberete horní dvě časové řady, které mají nejvýznamnější trend.
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -237,9 +261,11 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-![Časové řady prvních dvou](media/time-series-analysis/time-series-top-2.png)
+![Time Series – horní 2](media/time-series-analysis/time-series-top-2.png)
 
-Zobrazení instancí:
+Zobrazit instance:
+
+**\[** [**kliknutím spustíte dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -253,15 +279,15 @@ demo_many_series1
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Loc | OP | DB | křivka |
-|   | Loc 15 | 37 | 1151 | -102743.910227889 |
+|   | Loc | Evřít | INŽENÝR | sklon |
+|   | Loc 15 | 37 | 1151 | -102743,910227889 |
 |   | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-Za méně než dvě minuty ADX analyzovat blízko 20 000 časové řady a zjištěna dvě neobvyklé časové řady, ve kterých se čtení počtu náhle vyřadit.
+Za méně než dvě minuty ADXa analýza blízko až 20 000 časové řady a zjistila se dvě neobvyklé časové řady, ve kterých se počet čtení náhle vynechá.
 
-Tyto pokročilé funkce v kombinaci s rychlý výkon ADX zadat jedinečný a výkonné řešení pro analýzu časových řad.
+Tyto pokročilé funkce kombinované s ADXm vysokým výkonem poskytují jedinečné a výkonné řešení pro analýzu časových řad.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o [časové řady pro detekci anomálií a Prognózování](/azure/data-explorer/anomaly-detection) v Průzkumníku dat Azure.
-* Další informace o [strojového učení](/azure/data-explorer/machine-learning-clustering) v Průzkumníku dat Azure.
+* Seznamte se s [detekcí anomálií a prognózou časových řad](/azure/data-explorer/anomaly-detection) v Azure Průzkumník dat.
+* Seznamte se s [možnostmi strojového učení](/azure/data-explorer/machine-learning-clustering) v Azure Průzkumník dat.

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/05/2019
+ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 06d7b7abe7741c465f3d40a90340e03b2c24f258
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707503"
+ms.locfileid: "74790609"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Změna modelu licencí pro virtuální počítač s SQL Server v Azure
 Tento článek popisuje, jak změnit model licencí pro SQL Server virtuální počítač (VM) v Azure pomocí nového poskytovatele prostředků SQL VM, **Microsoft. SqlVirtualMachine**.
@@ -95,29 +95,16 @@ Následující fragment kódu převede svůj licenční model s průběžnými p
 
 ```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
-#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
-$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-$SqlVm.Properties.sqlServerLicenseType="AHUB"
-<# the following code snippet is only necessary if using Azure Powershell version > 4
-$SqlVm.Kind= "LicenseChange"
-$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
-$SqlVm | Set-AzResource -Force 
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
 ```
 
 Následující fragment kódu přepíná model vlastní licence na průběžné platby:
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
-#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
-$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-$SqlVm.Properties.sqlServerLicenseType="PAYG"
-<# the following code snippet is only necessary if using Azure Powershell version > 4
-$SqlVm.Kind= "LicenseChange"
-$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
-$SqlVm | Set-AzResource -Force 
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
+
 ---
 
 ## <a name="change-the-license-for-vms-not-registered-with-the-resource-provider"></a>Změna licence pro virtuální počítače, které nejsou zaregistrované u poskytovatele prostředků
@@ -138,44 +125,29 @@ Typ licence SQL Server virtuálního počítače můžete změnit jako průběž
 
 ## <a name="limitations"></a>Omezení
 
-- Změna licenčního modelu je dostupná jenom pro zákazníky, kteří mají Software Assurance.
-- Změna licenčního modelu je podporovaná jenom pro edice Standard a Enterprise systému SQL Server. Změny licencí pro Express, web a vývojáře nejsou podporovány. 
-- Změna licenčního modelu je podporovaná jenom pro virtuální počítače nasazené pomocí modelu Azure Resource Manager. Virtuální počítače nasazené prostřednictvím klasického modelu se nepodporují. Virtuální počítač můžete migrovat z modelu Classic na model Správce prostředků a zaregistrovat ho u poskytovatele prostředků virtuálního počítače SQL. Po zaregistrování virtuálního počítače u poskytovatele prostředků virtuálního počítače SQL budou na virtuálním počítači k dispozici změny modelu licencí.
-- Změna licenčního modelu je povolená jenom pro instalace veřejného cloudu.
-- Změna licenčního modelu je podporovaná jenom na virtuálních počítačích, které mají jednu síťovou kartu (síťové rozhraní). Na virtuálních počítačích, které mají více než jednu síťovou kartu, před provedením postupu byste nejdřív měli odebrat jednu ze síťových karet (pomocí Azure Portal). V opačném případě se zobrazí chybová zpráva podobná následující: 
-   
-  `The virtual machine '\<vmname\>' has more than one NIC associated.` 
-   
-  I když po změně modelu licencí budete moct síťové rozhraní přidat zpátky do virtuálního počítače, operace provedené prostřednictvím konfigurační stránky SQL Server v Azure Portal, jako jsou automatické opravy a zálohování, se už nepovažují za podporované.
+Změna licenčního modelu je:
+   - Dostupné jenom pro zákazníky se [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview).
+   - Podporuje se jenom pro edice Standard a Enterprise systému SQL Server. Změny licencí pro Express, web a vývojáře se nepodporují. 
+   - Podporováno pouze pro virtuální počítače nasazené pomocí modelu Azure Resource Manager. Virtuální počítače nasazené prostřednictvím klasického modelu se nepodporují. 
+   - Dostupné jenom pro veřejné cloudové instalace. 
+   - Podporuje se jenom na virtuálních počítačích, které mají jedno síťové rozhraní (NIC). 
+
 
 ## <a name="known-errors"></a>Známé chyby
 
 ### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Prostředek "Microsoft. SqlVirtualMachine/SqlVirtualMachines/\<Resource-Group >" v části Skupina prostředků "\<> Resource-Group" nebyl nalezen.
+
 K této chybě dojde, když se pokusíte změnit model licence na virtuálním počítači s SQL Server, který nebyl zaregistrován u poskytovatele prostředků SQL VM:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
 Budete muset zaregistrovat předplatné u poskytovatele prostředků a pak [zaregistrovat svůj SQL Server virtuální počítač s poskytovatelem prostředků](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
-### <a name="cannot-validate-argument-on-parameter-sku"></a>Nejde ověřit argument u parametru SKU.
-K této chybě může dojít při pokusu o změnu modelu licence SQL Server VM pomocí Azure PowerShell verzí novějších než 4,0:
 
-`Set-AzResource: Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
+## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Virtuální počítač\<VMName\>má přidruženou víc než jednu síťovou kartu.
 
-Pokud chcete tuto chybu vyřešit, odkomentujte tyto řádky výše zmíněného fragmentu kódu PowerShellu při přepínání vašeho licenčního modelu:
+K této chybě dochází na virtuálních počítačích, které mají více než jednu síťovou kartu. Před změnou modelu licencování odeberte jednu ze síťových adaptérů. I když po změně modelu licencí můžete síťové rozhraní přidat zpátky do virtuálního počítače, operace v Azure Portal, například automatické zálohování a opravy, se už nebudou podporovat. 
 
-  ```powershell-interactive
-  # the following code snippet is necessary if using Azure Powershell version > 4
-  $SqlVm.Kind= "LicenseChange"
-  $SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-  $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
-  ```
-  
-K ověření verze Azure PowerShell použijte následující kód:
-  
-  ```powershell-interactive
-  Get-Module -ListAvailable -Name Azure -Refresh
-  ```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,20 +1,19 @@
 ---
-title: Vytváření sledovacích dotazů pro zprávy B2B – Azure Logic Apps
+title: Vytváření sledovacích dotazů pro zprávy B2B
 description: Vytváření dotazů, které sledují zprávy AS2, X12 a EDIFACT v Azure Log Analytics pro Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 7d7bb53d24a113ea78b5bac3f9682fbb61ce2de9
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 36cf45aa0f7d46b62caa586d1939ec52e67b1a3e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680099"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792855"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>Vytváření sledovacích dotazů pro zprávy B2B v protokolu Azure Monitor pro Azure Logic Apps
 

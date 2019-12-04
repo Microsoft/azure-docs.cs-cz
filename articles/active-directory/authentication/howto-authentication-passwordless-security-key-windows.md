@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/02/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5343387da7b2027e1071b19be826e329494cdd3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452949"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766357"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Povolit pro zařízení s Windows 10 přihlášení ke klíčům zabezpečení s nezabezpečenými hesly (Preview)
 
@@ -56,22 +56,22 @@ Zařízení připojená k Azure AD, na kterých budete pilotní nasazení, musí
 Organizace se můžou rozhodnout použít jednu nebo více následujících metod k povolení použití klíčů zabezpečení pro přihlášení Windows na základě požadavků organizace.
 
 - [Povolit s Intune](#enable-with-intune)
-   - [Cílené nasazení Intune](#targeted-intune-deployment)
+- [Cílené nasazení Intune](#targeted-intune-deployment)
 - [Povolit pomocí zřizovacího balíčku](#enable-with-a-provisioning-package)
 
 ### <a name="enable-with-intune"></a>Povolit s Intune
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune** > **registrace zařízení** > **vlastnosti** **registrace** zařízení > **Windows Hello pro firmy** > .
 1. V části **Nastavení** nastavení **použít klíče zabezpečení pro přihlášení** na **povoleno**.
 
 Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci Windows Hello pro firmy.
 
-#### <a name="targeted-intune-deployment"></a>Cílené nasazení Intune
+### <a name="targeted-intune-deployment"></a>Cílené nasazení Intune
 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune** > **Konfigurace zařízení** > **profily** > **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením.
    1. Název: bezpečnostní klíče pro přihlášení k Windows
@@ -94,7 +94,7 @@ Pro zařízení, která nespravuje služba Intune, je možné nainstalovat zřiz
 1. Spusťte Windows Configuration Designer.
 1. Vyberte **soubor** > **Nový projekt**.
 1. Dejte svému projektu název a poznamenejte si cestu, kde je projekt vytvořen.
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. Nechejte **zřizovací balíček** vybraný jako **vybraný pracovní postup projektu** a vyberte **Další**.
 1. V části **Zvolte nastavení, které chcete zobrazit a konfigurovat** a vyberte možnost **Další**, vyberte **všechny edice Windows Desktop** .
 1. Vyberte **Finish** (Dokončit).

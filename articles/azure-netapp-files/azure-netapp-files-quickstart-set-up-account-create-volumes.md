@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/12/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888549"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769842"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS 
 
@@ -90,7 +90,7 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
 3. V okně Nový účet NetApp zadejte následující informace: 
    1. Jako název účtu zadejte **myaccount1** . 
    2. Vyberte své předplatné.
-   3. Vyberte **vytvořit novou** a vytvořte novou skupinu prostředků. Jako název skupiny prostředků zadejte **myRG1** . Klikněte na tlačítko **OK**. 
+   3. Vyberte **vytvořit novou** a vytvořte novou skupinu prostředků. Jako název skupiny prostředků zadejte **myRG1** . Klikněte na **OK**. 
    4. Vyberte umístění svého účtu.  
 
       ![Okno nového účtu NetApp](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
@@ -180,7 +180,7 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
     2. Jako úroveň služby vyberte **Premium** . 
     3. Jako velikost fondu zadejte **4 (TIB)** . 
 
-5. Klikněte na tlačítko **OK**.
+5. Klikněte na **OK**.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -257,9 +257,6 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
     * Vyberte verzi systému souborů NFS (**NFSv3** nebo **nfsv 4.1**) pro svazek.  
       Podívejte se na téma [posouzení](azure-netapp-files-create-volumes.md#considerations) a [osvědčené postupy](azure-netapp-files-create-volumes.md#best-practice) pro verze systému souborů NFS. 
       
-> [!IMPORTANT] 
-> Přístup k funkci NFSv 4.1 vyžaduje přidávání do seznamu povolených.  Pokud chcete požádat o přidávání na seznam povolených, odešlete žádost, která se <anffeedback@microsoft.com>. 
-
   ![Zadat protokol NFS pro rychlý Start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Klikněte na **Zkontrolovat a vytvořit**.

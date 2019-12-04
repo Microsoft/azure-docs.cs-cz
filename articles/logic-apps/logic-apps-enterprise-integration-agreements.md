@@ -1,20 +1,19 @@
 ---
-title: Smlouvy s obchodním partnerem – Azure Logic Apps
+title: Smlouvy s obchodním partnerem
 description: Vytváření a Správa smluv mezi obchodními partnery pomocí Azure Logic Apps a Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680424"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790740"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytváření a Správa smluv o obchodních partnerech v Azure Logic Apps
 
@@ -29,7 +28,7 @@ V tomto článku se dozvíte, jak vytvořit smlouvu AS2, EDIFACT nebo X12, ktero
 
 Pokud chcete vytvořit smlouvy pro výměnu zpráv RosettaNet, přečtěte si téma [zprávy Exchange RosettaNet](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -41,7 +40,7 @@ Pokud chcete vytvořit smlouvy pro výměnu zpráv RosettaNet, přečtěte si t�
 
 ## <a name="create-agreements"></a>Vytvoření smluv
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte jako filtr "integr". Z výsledků vyberte tento prostředek: účty pro **integraci** .
 
    ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)

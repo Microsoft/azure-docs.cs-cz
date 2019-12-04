@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: 49bfa4a0dbf0adc498d545a2908c20f0ffa35b4b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075721"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774004"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
@@ -23,26 +23,28 @@ Převod řeči na text z Azure Speech Services, označovaný také jako převod 
 
 Ve výchozím nastavení používá služba Speech-to-text model univerzálního jazyka. Tento model byl vyškolený pomocí dat vlastněných společností Microsoft a nasazený v cloudu. Je ideální pro scénáře konverzace a diktování. Pokud používáte převod řeči na text pro rozpoznávání a přepis v jedinečném prostředí, můžete vytvořit a vyškolit vlastní modely akustického, jazyka a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní obor.
 
-Zvuk můžete snadno zachytit z mikrofonu, číst z datového proudu nebo přistupovat ke zvukovým souborům z úložiště pomocí sady Speech SDK a rozhraní REST API. Sada SDK služby Speech podporuje rozpoznávání řeči u 16bitových zvukových souborů WAV nebo PCM s jedním kanálem a frekvencí 16 nebo 8 kHz. Podpora dalších zvukových formátů je k dispozici při použití [koncového bodu rozhraní REST služby Převod řeči na text](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) nebo [služby dávkového přepisu](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
+Zvuk můžete snadno zachytit z mikrofonu, číst z datového proudu nebo přistupovat ke zvukovým souborům z úložiště pomocí sady Speech SDK a rozhraní REST API. Sada SDK služby Speech podporuje rozpoznávání řeči u 16bitových zvukových souborů WAV nebo PCM s jedním kanálem a frekvencí 16 nebo 8 kHz. Další zvukové formáty jsou podporovány pomocí [koncového bodu REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) nebo [služby Batch přepisu](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)řeči pro text.
 
 ## <a name="core-features"></a>Základní funkce
 
 Tady jsou funkce, které jsou k dispozici prostřednictvím sady Speech SDK a rozhraní REST API:
 
-| Případ použití | Sada SDK | REST |
+| Případ použití | SDK | REST |
 |--------- | --- | ---- |
-| Přepisovat short projevy (< 15 sekund). Podporuje jenom konečný výsledek přepisu. | Ano | Ano |
+| Přepisovat short projevy (< 15 sekund). Podporuje pouze jeden konečný výsledek přepisu. | Ano | Ano\* |
 | Plynulé přepisy dlouhého projevy a streamování zvuku (> 15 sekund). Podporuje dočasné a konečné výsledky přepisu. | Ano | Ne |
-| Odvodit záměry z výsledků rozpoznávání pomocí [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Ano | Ne\* |
-| Asynchronní přepis zvukových souborů v dávce. | Ne  | Ano\*\* |
-| Vytvářejte a spravujte modely řeči. | Ne | Ano\*\* |
-| Vytváření a Správa nasazení vlastních modelů. | Ne  | Ano\*\* |
-| Vytvořte testy přesnosti pro měření přesnosti směrného modelu oproti vlastním modelům. | Ne  | Ano\*\* |
-| Správa předplatných. | Ne  | Ano\*\* |
+| Odvodit záměry z výsledků rozpoznávání pomocí [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Ano | Žádné\*\* |
+| Asynchronní přepis zvukových souborů v dávce. | Ne  | Ano\*\*\* |
+| Vytvářejte a spravujte modely řeči. | Ne | Ano\*\*\* |
+| Vytváření a Správa nasazení vlastních modelů. | Ne  | Ano\*\*\* |
+| Vytvořte testy přesnosti pro měření přesnosti směrného modelu oproti vlastním modelům. | Ne  | Ano\*\*\* |
+| Správa předplatných. | Ne  | Ano\*\*\* |
 
-\*_záměrů a entit Luis lze odvodit pomocí samostatného předplatného Luis. V rámci tohoto předplatného může sada SDK volat LUIS za vás a poskytovat výsledky entit a záměrů. Pomocí REST API můžete volat LUIS sami a odvodit záměry a entity s vaším předplatným LUIS._
+\*_pomocí funkce REST můžete přenést až 60 sekund zvukového přenosu a získat jeden konečný výsledek přepisu._
 
-\*\*_tyto služby jsou k dispozici pomocí koncového bodu CRIS.AI. Viz [odkaz Swagger](https://westus.cris.ai/swagger/ui/index)._
+\*\*_Luis záměry a entity lze odvodit pomocí samostatného předplatného Luis. V rámci tohoto předplatného volá SDK LUIS za vás a poskytne výsledky entit a záměrů. V REST API zavoláte LUIS sebe sama k odvození záměrů a entit s předplatným LUIS._
+
+\*\*\*_tyto služby jsou k dispozici pomocí koncového bodu CRIS.AI. Viz [odkaz Swagger](https://westus.cris.ai/swagger/ui/index)._
 
 ## <a name="get-started-with-speech-to-text"></a>Začínáme s převodem řeči na text
 

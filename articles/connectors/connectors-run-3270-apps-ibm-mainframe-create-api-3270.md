@@ -1,8 +1,7 @@
 ---
-title: Připojení k aplikacím 3270 na sálových počítačích IBM – Azure Logic Apps
+title: Připojení k aplikacím 3270 na sálových počítačích IBM
 description: Integrace a automatizace 3270 aplikací řízených obrazovkou pomocí Azure pomocí Azure Logic Apps a konektoru IBM 3270
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
@@ -10,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: f039d0cbfa2b34fecbcdee53ebe2b56b6e9b6d69
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787578"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789235"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrace 3270 aplikací řízených obrazovkou na sálové počítače IBM s Azure pomocí Azure Logic Apps a konektoru IBM 3270
 
@@ -361,8 +360,8 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | <*připojení-název*> | Název připojení |
-   | **ID účtu pro integraci** | Ano | <*Integration-Account-name* > | Název vašeho účtu pro integraci |
+   | **Název připojení** | Ano | <*název připojení*> | Název připojení |
+   | **ID účtu pro integraci** | Ano | <*Integration-Account-name*> | Název vašeho účtu pro integraci |
    | **Adresa URL SAS účtu pro integraci** | Ano | <*Integration-Account-SAS-URL*> | Adresa URL sdíleného přístupového podpisu (SAS) vašeho účtu pro integraci, kterou můžete vygenerovat z nastavení účtu integrace v Azure Portal. <p>1. v nabídce účet pro integraci vyberte v části **Nastavení**možnost **Adresa URL zpětného volání**. <br>2. v pravém podokně Zkopírujte hodnotu **vygenerované adresy URL zpětného volání** . |
    | **Server** | Ano | <*TN3270 – název serveru*> | Název serveru pro vaši službu TN3270 |
    | **Port** | Ne | <*TN3270-Server-> portu* | Port používaný serverem TN3270 Pokud je ponecháno prázdné, konektor použije `23` jako výchozí hodnotu. |

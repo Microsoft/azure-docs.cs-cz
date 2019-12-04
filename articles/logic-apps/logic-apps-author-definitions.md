@@ -1,24 +1,21 @@
 ---
-title: Vytvoření, úprava nebo rozšiřování definic aplikace logiky – Azure Logic Apps
+title: Vytvoření, úprava nebo rozšiřování definic aplikace logiky
 description: Jak psát, upravovat a roztáhnout definice JSON aplikace logiky v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 03203a5fdb6d61ed95e96581a7e4a979c911cd02
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680019"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792585"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Vytvoření, úprava nebo rozšiřování JSON pro definice aplikací logiky v Azure Logic Apps
 
-Při vytváření podnikových řešení pro integraci s automatizovanými pracovními postupy v [Azure Logic Apps](../logic-apps/logic-apps-overview.md)používají definice aplikace logiky jednoduché a deklarativní JavaScript Object Notation (JSON) spolu s [jazykem pro definici pracovního postupu (WDL). schéma](../logic-apps/logic-apps-workflow-definition-language.md) pro popis a ověření. Tyto formáty usnadňují čtení definic aplikace logiky a jejich pochopení bez znalosti kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logiky, můžete do [šablon Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md)zahrnout definice aplikace logiky jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) . Pokud chcete vytvářet, spravovat a nasazovat Logic Apps, můžete použít [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)nebo [rozhraní API služby Azure Logic Apps REST](https://docs.microsoft.com/rest/api/logic/).
+Při vytváření podnikových integračních řešení pomocí automatizovaných pracovních postupů v [Azure Logic Apps](../logic-apps/logic-apps-overview.md)používají definice aplikace logiky jednoduché a deklarativní JavaScript Object Notation (JSON) spolu se [schématem WDL (Workflow Definition Language](../logic-apps/logic-apps-workflow-definition-language.md) ) pro jejich popis a ověření. Tyto formáty usnadňují čtení definic aplikace logiky a jejich pochopení bez znalosti kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logiky, můžete do [šablon Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md)zahrnout definice aplikace logiky jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) . Pokud chcete vytvářet, spravovat a nasazovat Logic Apps, můžete použít [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)nebo [rozhraní API služby Azure Logic Apps REST](https://docs.microsoft.com/rest/api/logic/).
 
 Chcete-li pracovat s definicemi aplikace logiky ve formátu JSON, otevřete editor zobrazení kódu při práci v Azure Portal nebo v aplikaci Visual Studio nebo zkopírujte definici do libovolného editoru, který chcete. Pokud s Logic Apps začínáte, přečtěte si, [jak vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -61,7 +58,7 @@ V aplikaci Visual Studio můžete otevřít aplikace logiky, které byly vytvoř
 
 ## <a name="parameters"></a>Parametry
 
-Životní cyklus nasazení má obvykle různá prostředí pro vývoj, testování, přípravu a produkci. Pokud máte hodnoty, které chcete znovu použít v rámci aplikace logiky bez zakódujeme nebo které se liší v závislosti na potřebách nasazení, můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro definici pracovního postupu, abyste mohli také automatizovat aplikaci logiky. prostředí. 
+Životní cyklus nasazení má obvykle různá prostředí pro vývoj, testování, přípravu a produkci. Pokud máte hodnoty, které chcete znovu použít v rámci aplikace logiky bez zakódujeme nebo které se liší v závislosti na potřebách nasazení, můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro definici pracovního postupu, abyste mohli také automatizovat nasazení aplikace logiky. 
 
 Pomocí těchto obecných *kroků můžete místo toho definovat a používat*parametry pro, tyto hodnoty. Hodnoty pak můžete zadat do samostatného souboru parametrů, který tyto hodnoty předá vaší šabloně. Tímto způsobem můžete tyto hodnoty snadněji změnit, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Úplné podrobnosti najdete v tématu [Přehled: Automatizace nasazení pro Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
@@ -124,7 +121,7 @@ Tento postup popisuje, jak tento příklad zpracovává tento řetězec a pracuj
 
 2. Chcete-li získat kratší řetězec, odčítání `5`.
 
-3. Nyní získáte [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md). Začněte na `5` indexu a pokračujte na zbytek řetězce.
+3. Nyní získáte [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md). Začněte na `5`indexu a pokračujte na zbytek řetězce.
 
 4. Převede tento podřetězec na [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) řetězec.
 

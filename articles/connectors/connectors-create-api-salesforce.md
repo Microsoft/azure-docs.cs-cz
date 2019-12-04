@@ -1,22 +1,18 @@
 ---
-title: Připojení k Salesforce z Azure Logic Apps | Microsoft Docs
+title: Připojení k Salesforce z Azure Logic Apps
 description: Automatizace úloh a pracovních postupů, které sledují, vytvářejí a spravují záznamy a úlohy Salesforce pomocí Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: e3e9f7c841d25fa988ae7e0c97adf64a51d8ef87
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 000f4381ef2a7c0a2099a021b991087725ff2070
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050821"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789286"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorování, vytváření a Správa prostředků Salesforce pomocí Azure Logic Apps
 
@@ -27,7 +23,7 @@ Pomocí Azure Logic Apps a konektoru Salesforce můžete vytvářet automatizova
 
 Můžete použít triggery Salesforce, které získávají odpovědi ze služby Salesforce, a zpřístupnit výstup ostatním akcím. Akce v aplikacích logiky můžete použít k provádění úloh s prostředky Salesforce. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 

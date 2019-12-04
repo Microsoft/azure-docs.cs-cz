@@ -1,20 +1,19 @@
 ---
-title: Připojení k systémům souborů místně – Azure Logic Apps
+title: Připojení k systémům souborů místně
 description: Automatizujte úlohy a pracovní postupy, které se připojují k místním systémům souborů pomocí konektoru systému souborů prostřednictvím místní brány dat v Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 1b5cf27c49a003042086cd9452f288c7f348d343
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799701"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792782"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
@@ -68,10 +67,10 @@ V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, j
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    | -------- | -------- | ----- | ----------- |
-   | **Název připojení** | Ano | <*připojení-název*> | Název, který chcete pro připojení |
+   | **Název připojení** | Ano | <*název připojení*> | Název, který chcete pro připojení |
    | **Kořenová složka** | Ano | <*název kořenové složky*> | Kořenová složka pro systém souborů, například pokud jste nainstalovali místní bránu dat, jako je například místní složka v počítači, kde je nainstalována místní brána dat, nebo složka sdílené síťové složky, ke které má počítač přístup. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazená složka, která se používá pro relativní cesty ke všem akcím, které se týkají souborů. |
    | **Typ ověřování** | Ne | <*typ ověřování*> | Typ ověřování používaný systémem souborů, například **Windows** |
-   | **Uživatelské jméno** | Ano | <>*domény*\\<*username*> | Uživatelské jméno počítače, kde máte systém souborů |
+   | **Uživatelské jméno** | Ano | <>*domény* \\<*username*> | Uživatelské jméno počítače, kde máte systém souborů |
    | **Heslo** | Ano | <*vaše heslo*> | Heslo pro počítač, na kterém máte systém souborů |
    | **brány** | Ano | <*nainstalované-Gateway-name*> | Název dříve nainstalované brány |
    |||||

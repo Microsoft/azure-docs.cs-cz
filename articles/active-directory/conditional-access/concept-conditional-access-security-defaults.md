@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 420a046ddf66270f52001d4ff4f3ad49895d4c11
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208400"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784543"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -77,8 +77,8 @@ Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou všechny
 
 Organizace používají různé služby Azure spravované prostřednictvím rozhraní Azure Resource Manager API, včetně:
 
-- portál Azure 
-- Azure Powershell 
+- Portál Azure 
+- Azure PowerShell 
 - Azure CLI
 
 Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může měnit konfigurace v rámci tenanta, jako je například nastavení služby a fakturace předplatného. Jednotné vícefaktorové ověřování je zranitelné vůči nejrůznějším útokům, jako je útok phishing a heslo. 
@@ -124,7 +124,21 @@ Povolení výchozích hodnot zabezpečení v adresáři:
 1. Vyhledejte **Azure Active Directory** > **vlastnosti**.
 1. Vyberte **Spravovat výchozí nastavení zabezpečení**.
 1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **Ano**.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
+
+## <a name="disabling-security-defaults"></a>Zakazování výchozích hodnot zabezpečení
+
+Organizace, které se rozhodnou implementovat zásady podmíněného přístupu, které nahrazují výchozí hodnoty zabezpečení, musí zakázat výchozí nastavení zabezpečení. 
+
+![Zpráva upozornění zakázat výchozí nastavení zabezpečení pro povolení podmíněného přístupu](./media/concept-conditional-access-security-defaults/security-defaults-disable-before-conditional-access.png)
+
+Zakázání výchozích hodnot zabezpečení v adresáři:
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce zabezpečení, správce podmíněného přístupu nebo globální správce.
+1. Vyhledejte **Azure Active Directory** > **vlastnosti**.
+1. Vyberte **Spravovat výchozí nastavení zabezpečení**.
+1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **ne**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="next-steps"></a>Další kroky
 

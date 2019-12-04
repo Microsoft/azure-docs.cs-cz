@@ -1,22 +1,19 @@
 ---
-title: Zabezpečení zpráv B2B pomocí certifikátů – Azure Logic Apps | Microsoft Docs
+title: Zabezpečení zpráv B2B pomocí certifikátů
 description: Přidání certifikátů do zabezpečení zpráv B2B v Azure Logic Apps pomocí Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-manager: jeconnoc
-ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: be3dbc386b0ac89a85bc1719081df944523c28ce
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997834"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790691"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpečení zpráv B2B pomocí certifikátů
 
@@ -37,7 +34,7 @@ Tyto certifikáty můžete použít ve svých podnikových integračních aplika
 
 Pokud chcete použít *veřejný certifikát* v Logic Apps, které mají možnosti B2B, musíte nejdřív odeslat certifikát do svého účtu pro integraci. Po definování vlastností ve [smlouvách](logic-apps-enterprise-integration-agreements.md) , které vytvoříte, je k dispozici certifikát, který vám umožní ZABEZPEČIT zprávy B2B.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). V hlavní nabídce Azure vyberte **všechny prostředky**. Do vyhledávacího pole zadejte název účtu pro integraci a potom vyberte účet pro integraci, který chcete.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). V hlavní nabídce Azure vyberte **všechny prostředky**. Do vyhledávacího pole zadejte název účtu pro integraci a potom vyberte účet pro integraci, který chcete.
 
    ![Vyhledejte a vyberte účet pro integraci.](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -47,11 +44,11 @@ Pokud chcete použít *veřejný certifikát* v Logic Apps, které mají možnos
 
 3. V části **certifikáty**klikněte na tlačítko **Přidat**. V části **Přidat certifikát**zadejte pro svůj certifikát tyto podrobnosti. Až budete hotovi, klikněte na **OK**.
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------|
    | **Název** | <*název certifikátu*> | Název vašeho certifikátu, který je v tomto příkladu "publicCert" | 
-   | **Typ certifikátu** | Public | Typ vašeho certifikátu |
-   | **Certifikát** | <*název souboru certifikátu*> | Chcete-li vyhledat a vybrat soubor certifikátu, který chcete odeslat, zvolte ikonu složky vedle pole **certifikát** . |
+   | **Typ certifikátu** | Veřejné | Typ vašeho certifikátu |
+   | **Certifikát** | <*certifikátu-název souboru*> | Chcete-li vyhledat a vybrat soubor certifikátu, který chcete odeslat, zvolte ikonu složky vedle pole **certifikát** . |
    ||||
 
    ![Klikněte na Přidat, zadejte podrobnosti o certifikátu.](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
@@ -76,7 +73,7 @@ Po definování vlastností ve [smlouvách](logic-apps-enterprise-integration-ag
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Přihlaste se k webu [Azure Portal](https://portal.azure.com). V hlavní nabídce Azure vyberte **všechny prostředky**. Do vyhledávacího pole zadejte název účtu pro integraci a potom vyberte účet pro integraci, který chcete.
+3. Přihlaste se na web [Azure Portal](https://portal.azure.com). V hlavní nabídce Azure vyberte **všechny prostředky**. Do vyhledávacího pole zadejte název účtu pro integraci a potom vyberte účet pro integraci, který chcete.
 
    ![Najít účet pro integraci](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
@@ -86,12 +83,12 @@ Po definování vlastností ve [smlouvách](logic-apps-enterprise-integration-ag
 
 5. V části **certifikáty**klikněte na tlačítko **Přidat**. V části **Přidat certifikát**zadejte pro svůj certifikát tyto podrobnosti. Až budete hotovi, klikněte na **OK**.
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------|
    | **Název** | <*název certifikátu*> | Název vašeho certifikátu, který je v tomto příkladu "privateCert" | 
-   | **Typ certifikátu** | Soukromé | Typ vašeho certifikátu |
-   | **Certifikát** | <*název souboru certifikátu*> | Chcete-li vyhledat a vybrat soubor certifikátu, který chcete odeslat, zvolte ikonu složky vedle pole **certifikát** . Při použití trezoru klíčů pro privátní klíč bude nahraným souborem veřejný certifikát. | 
-   | **Skupina prostředků** | <*integration-account-resource-group*> | Skupina prostředků vašeho účtu Integration, která je v tomto příkladu "MyResourceGroup" | 
+   | **Typ certifikátu** | Privátní | Typ vašeho certifikátu |
+   | **Certifikát** | <*certifikátu-název souboru*> | Chcete-li vyhledat a vybrat soubor certifikátu, který chcete odeslat, zvolte ikonu složky vedle pole **certifikát** . Při použití trezoru klíčů pro privátní klíč bude nahraným souborem veřejný certifikát. | 
+   | **Skupina prostředků** | <*Integration-Account-resource-group*> | Skupina prostředků vašeho účtu Integration, která je v tomto příkladu "MyResourceGroup" | 
    | **Key Vault** | <*název trezoru klíčů*> | Název vašeho trezoru klíčů Azure |
    | **Název klíče** | <*název klíče*> | Název klíče |
    ||||
