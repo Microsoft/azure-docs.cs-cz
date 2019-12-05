@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: e96f27a7a99bcb6600ab0c3d01b1fb509d4e554e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 5cd7173d2df6f08b79d544a3a371039c24d5882a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796114"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819375"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -76,7 +76,7 @@ Než začnete, nezapomeňte:
 
    ````
 
-1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech Services.
+1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech.
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
@@ -110,7 +110,7 @@ Než začnete, nezapomeňte:
    ./helloworld
    ```
 
-1. Váš zvukový soubor se přenáší do služeb řeči a první utterance v souboru je přepisu na text, který se zobrazí ve stejném okně.
+1. Váš zvukový soubor se přenáší do služby pro rozpoznávání řeči a první utterance v souboru je přepisu na text, který se zobrazí ve stejném okně.
 
    ```text
    Recognizing first result...

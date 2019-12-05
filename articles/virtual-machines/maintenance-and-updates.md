@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 8e522b49c53dd40a4438755520481383984c1e01
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535883"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807081"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Údržba virtuálních počítačů v Azure
 
@@ -29,7 +29,7 @@ Aktualizace mají zřídka vliv na hostované virtuální počítače. V přípa
 
 Tato stránka popisuje, jak Azure provádí oba typy údržby. Další informace o neplánovaných událostech (výpadky) najdete v tématu [Správa dostupnosti virtuálních počítačů pro systém Windows](./windows/manage-availability.md) nebo odpovídající článek pro [Linux](./linux/manage-availability.md).
 
-V rámci virtuálního počítače můžete dostávat oznámení o nadcházející údržbě [pomocí Scheduled Events pro Windows](/windows/scheduled-events.md) nebo [Linux](/linux/scheduled-events.md).
+V rámci virtuálního počítače můžete dostávat oznámení o nadcházející údržbě [pomocí Scheduled Events pro Windows](./windows/scheduled-events.md) nebo [Linux](./linux/scheduled-events.md).
 
 
 
@@ -43,7 +43,7 @@ Většina nenulového dopadu údržby pozastaví virtuální počítač za mén�
 
 Tyto operace údržby, které nevyžadují restart, se v jednu chvíli používají v jedné doméně selhání. Zastaví se, pokud obdrží nějaké varovné signály stavu. 
 
-Tyto typy aktualizací mohou ovlivnit některé aplikace. Když se virtuální počítač migruje za provozu na jiného hostitele, můžou se u některých citlivých úloh Zobrazit mírné snížení výkonu během několika minut, které zavedou až do pozastavení virtuálního počítače. Pokud chcete připravit údržbu virtuálních počítačů a snížit dopad při údržbě Azure, zkuste pro tyto aplikace [použít Scheduled Events pro Windows](/windows/scheduled-events.md) nebo [Linux](/linux/scheduled-events.md) . 
+Tyto typy aktualizací mohou ovlivnit některé aplikace. Když se virtuální počítač migruje za provozu na jiného hostitele, můžou se u některých citlivých úloh Zobrazit mírné snížení výkonu během několika minut, které zavedou až do pozastavení virtuálního počítače. Pokud chcete připravit údržbu virtuálních počítačů a snížit dopad při údržbě Azure, zkuste pro tyto aplikace [použít Scheduled Events pro Windows](./windows/scheduled-events.md) nebo [Linux](./linux/scheduled-events.md) . 
 
 K dispozici je také funkce řízení údržby ve verzi Public Preview, která vám může pomáhat se správou údržby, která nevyžaduje restartování počítače. Musíte použít buď [vyhrazené hostitele Azure](./linux/dedicated-hosts.md) , nebo [izolovaný virtuální počítač](../security/fundamentals/isolation-choices.md). Řízení údržby vám umožní přeskočit aktualizace platforem a použít aktualizace podle vašeho výběru času během 35ho okna. Další informace najdete v tématu [řízení aktualizací pomocí řízení údržby a Azure CLI](maintenance-control-cli.md).
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464555"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816398"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -25,11 +25,11 @@ Bez ohledu na to, jestli testujete, abyste zjistili, jak přesné rozpoznáván�
 
 Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít každý datový typ a doporučené množství. Pro vytvoření modelu není vyžadován každý datový typ. Požadavky na data se budou lišit v závislosti na tom, zda vytváříte testovací nebo školicí model.
 
-| Data type | Použito testování | Množství | Používá se pro školení. | Množství |
+| Data type | Použito testování | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Kazet](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | Není k dispozici |
+| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | N/a |
 | [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1 – 1 000 hodin zvukového přenosu |
-| [Související text](#related-text-data-for-training) | Ne | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
+| [Související text](#related-text-data-for-training) | Ne | N/a | Ano | 1-200 MB souvisejícího textu |
 
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor zip. Každá datová sada může obsahovat pouze jeden datový typ.
 
@@ -138,7 +138,7 @@ Pokud se nejedná o běžné výrazy bez standardních výslovností, které va�
 
 Zahrnuje příklady mluveného utterance a vlastní výslovnost pro každý z nich:
 
-| Rozpoznaný/zobrazený formulář | Mluvený formulář |
+| Rozpoznaný/zobrazený formulář | Mluvené slovo formuláře |
 |--------------|--------------------------|
 | 3CPO | tři c. p o |  
 | CNTK | c n t k |
@@ -148,9 +148,9 @@ Mluvený formulář je fonetická sekvence, která je vypsána. Může se sklád
 
 Přizpůsobená výslovnost je k dispozici v angličtině (EN-US) a v němčině (de-DE). V této tabulce jsou uvedeny podporované znaky podle jazyka:
 
-| Jazyk | Národní prostředí | Písmena |
+| Jazyk | Národní prostředí | Postavy |
 |----------|--------|------------|
-| Angličtina | EN-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Angličtina | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 | Němčina | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Pomocí této tabulky zajistěte, aby váš související datový soubor pro výslovnost byl správně naformátován. Soubory výslovnosti jsou malé a neměly by překročit několik aktualizací KB.

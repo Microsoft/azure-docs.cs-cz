@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e8deb8ed16186862349cecf70c9d617a4ad30399
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227957"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806894"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Vytvoření účtu úložiště Azure Data Lake Storage Gen2
 
@@ -21,19 +21,19 @@ Azure Data Lake Storage Gen2 [podporuje hierarchický obor názvů](data-lake-st
 
 Tento článek ukazuje, jak vytvořit účet pomocí Azure Portal, Azure PowerShell nebo prostřednictvím rozhraní příkazového řádku Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
 |           | Požadavek |
 |-----------|--------------|
-|Portál     | Žádný         |
-|PowerShell | Tento článek vyžaduje modul PowerShell AZ. Storage verze **0,7** nebo novější. Pokud chcete zjistit aktuální verzi, spusťte příkaz `Get-Module -ListAvailable Az.Storage`. Po spuštění tohoto příkazu se nezobrazí žádné výsledky, nebo pokud se zobrazí verze nižší než **0,7** , budete muset upgradovat modul prostředí PowerShell. Viz část [upgrade modulu PowerShell](#upgrade-your-powershell-module) v této příručce.
+|Portál     | Žádné         |
+|PowerShell | Tento článek vyžaduje modul PowerShell AZ. Storage verze **0,7** nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az.Storage` příkazu. Po spuštění tohoto příkazu se nezobrazí žádné výsledky, nebo pokud se zobrazí verze nižší než **0,7** , budete muset upgradovat modul prostředí PowerShell. Zobrazit [upgradovat modul prostředí powershell](#upgrade-your-powershell-module) části této příručky.
 |Rozhraní příkazového řádku        | Můžete se přihlásit k Azure a spustit příkazy rozhraní příkazového řádku Azure CLI jedním ze dvou způsobů: <ul><li>Příkazy rozhraní příkazového řádku můžete spouštět na webu Azure Portal ve službě Azure Cloud Shell. </li><li>Můžete nainstalovat rozhraní příkazového řádku a příkazy rozhraní příkazového řádku spouštět místně.</li></ul>|
 
 Při práci s příkazovým řádkem můžete spustit prostředí Azure Cloud nebo nainstalovat CLI lokálně.
 
-### <a name="use-azure-cloud-shell"></a>Použití Azure Cloud Shellu
+### <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
 
 Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Klikněte na tlačítko **Cloud Shell** v nabídce v pravé horní části webu Azure Portal:
 
@@ -45,7 +45,7 @@ Tlačítko spustí interaktivní prostředí, které můžete použít ke spušt
 
 ### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
-Rozhraní příkazového řádku Azure můžete také nainstalovat a používat místně. Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.38 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Azure CLI můžete také nainstalovat a používat místně. Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.38 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Vytvoření účtu úložiště s povolenou službou Azure Data Lake Storage Gen2
 
@@ -58,9 +58,9 @@ Další informace o účtech úložiště najdete v [přehledu účtu Azure Stor
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Vytvoření účtu na webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků. V tomto článku se dozvíte, jak vytvořit novou skupinu prostředků.
 
@@ -81,13 +81,13 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 7. Volitelně můžete změnit hodnoty v každém z těchto polí: **výkon**, **replikace**, **úroveň přístupu**. Další informace o těchto možnostech najdete v tématu [Úvod do Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
 8. Vyberte kartu **Upřesnit** .
 10. V části **Data Lake Storage Gen2** nastavte **hierarchický obor názvů** na **Enabled**.
-11. Kliknutím na tlačítko **zkontrolovat + vytvořit** vytvořte účet úložiště.
+11. Klikněte na tlačítko **revize + vytvořit** k vytvoření účtu úložiště.
 
 Na portálu jste vytvořili účet úložiště.
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete odebrat skupinu prostředků s využitím webu Azure Portal:
+Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Skupiny prostředků**. Zobrazí se seznam skupin prostředků.
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko **Další** ( **...** ) na pravé straně seznamu.
@@ -95,7 +95,7 @@ Pokud chcete odebrat skupinu prostředků s využitím webu Azure Portal:
 
 ## <a name="create-an-account-using-powershell"></a>Vytvoření účtu pomocí PowerShellu
 
-Nejdřív nainstalujte nejnovější verzi modulu [PowerShellGet](/powershell/scripting/gallery/installing-psget) .
+Nejdřív nainstalujte nejnovější verzi [PowerShellGet](/powershell/scripting/gallery/installing-psget) modulu.
 
 Pak upgradujte modul PowerShellu, přihlaste se ke svému předplatnému Azure, vytvořte skupinu prostředků a pak vytvořte účet úložiště.
 
@@ -103,7 +103,7 @@ Pak upgradujte modul PowerShellu, přihlaste se ke svému předplatnému Azure, 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Chcete-li pracovat s Data Lake Storage Gen2 pomocí prostředí PowerShell, je nutné nainstalovat modul AZ. Storage verze **0,7** nebo novější.
+K interakci s Data Lake Storage Gen2 pomocí prostředí PowerShell, budete muset nainstalovat verzi modulu Az.Storage **0,7** nebo novější.
 
 Začněte tak, že otevřete relaci Powershellu se zvýšenými oprávněními.
 
@@ -115,7 +115,7 @@ Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
 
-Použijte příkaz `Login-AzAccount` a proveďte ověření podle pokynů na obrazovce.
+Použití `Login-AzAccount` příkaz a postupujte podle pokynů na obrazovce pokynů k ověření.
 
 ```powershell
 Login-AzAccount
@@ -173,11 +173,11 @@ az login
 
 K interakci s Data Lake Storage Gen2 pomocí rozhraní příkazového řádku, budete muset přidat rozšíření do vašeho prostředí.
 
-Pokud to chcete provést, zadejte následující příkaz pomocí Cloud Shell nebo místního prostředí: `az extension add --name storage-preview`
+K tomu, zadejte následující příkaz s použitím službě Cloud Shell nebo místní prostředí: `az extension add --name storage-preview`
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pokud chcete vytvořit novou skupinu prostředků pomocí rozhraní příkazového řádku Azure, použijte příkaz [az group create](/cli/azure/group).
+Pokud chcete vytvořit novou skupinu prostředků pomocí Azure CLI, použijte příkaz [az group create](/cli/azure/group).
 
 ```azurecli-interactive
 az group create `
@@ -190,7 +190,7 @@ az group create `
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Vytvoření obecného účtu úložiště verze 2
 
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s využitím rozhraní příkazového řádku Azure a místně redundantního úložiště, použijte příkaz [az storage account create](/cli/azure/storage/account).
+Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 pomocí Azure CLI s využitím místně redundantního úložiště, použijte příkaz [az storage account create](/cli/azure/storage/account).
 
 ```azurecli-interactive
 az storage account create `
@@ -199,7 +199,7 @@ az storage account create `
     --location westus2 `
     --sku Standard_LRS `
     --kind StorageV2 `
-    --hierarchical-namespace true
+    --enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -214,4 +214,4 @@ az group delete --name myResourceGroup
 
 V tomto článku jste vytvořili účet úložiště s možnostmi Data Lake Storage Gen2. Zjistěte, jak nahrávat a stahovat objekty BLOB z účtu úložiště, najdete v následujícím tématu.
 
-* [AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [AzCopy V10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

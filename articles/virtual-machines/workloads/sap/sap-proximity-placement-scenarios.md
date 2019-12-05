@@ -1,5 +1,5 @@
 ---
-title: Skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP | Microsoft Docs
+title: Skupiny umístění blízkosti Azure pro aplikace SAP | Microsoft Docs
 description: Popisuje scénáře nasazení SAP se skupinami umístění v blízkosti Azure.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719998"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805701"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP
 Aplikace SAP založené na architektuře SAP NetWeaver nebo SAP S/4HANA jsou citlivé na latenci sítě mezi aplikační vrstvou SAP a databázovou vrstvou SAP. Tato citlivost je výsledkem většiny obchodních logiky spuštěných v aplikační vrstvě. Vzhledem k tomu, že aplikační vrstva SAP spouští obchodní logiku, vydává dotazy do databázové vrstvy s vysokou frekvencí v poměru tisíc nebo desítky tisíců za sekundu. Ve většině případů je povaha těchto dotazů jednoduchá. Je často možné je spouštět na úrovni databáze za 500 mikrosekund nebo méně.
@@ -65,7 +65,7 @@ Tady je popis ideální konfigurace, jak je popsáno v tématu:
 V takovém případě jsou jednotlivé systémy SAP seskupené do jedné skupiny prostředků, přičemž každý z nich má každou skupinu umístění v blízkosti. Bez ohledu na to, jestli používáte konfigurace škálování na více systémů nebo DBMS, nemusíte mít žádnou závislost.
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>Skupiny umístění blízkosti a velké instance HANA
-Pokud některé systémy SAP spoléhají na [velké instance](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) pro aplikační vrstvu, může dojít k výraznému vylepšení latence sítě mezi velkými instancemi služby Hana a virtuálními počítači Azure při použití jednotek velkých instancí Hana, které jsou nasazeno v [řádcích nebo razítkech revize 4](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Jedním z vylepšení je, že velké instance v HANA, jak se nasazují, se nasazují se skupinou umístění blízkosti. Tuto skupinu umístění blízkosti můžete použít k nasazení virtuálních počítačů aplikační vrstvy. V důsledku toho budou tyto virtuální počítače nasazeny ve stejném datovém centru, které je hostitelem jednotky velkých instancí HANA.
+Pokud jsou některé systémy SAP závislé na [velkých instancích](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) vrstvy aplikace v Hana, můžete mít významná vylepšení latence sítě mezi velkými instancemi a virtuálními počítači Azure, když používáte jednotky velkých instancí Hana, které jsou nasazeny v [řádcích revize 4](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Jedním z vylepšení je, že velké instance v HANA, jak se nasazují, se nasazují se skupinou umístění blízkosti. Tuto skupinu umístění blízkosti můžete použít k nasazení virtuálních počítačů aplikační vrstvy. V důsledku toho budou tyto virtuální počítače nasazeny ve stejném datovém centru, které je hostitelem jednotky velkých instancí HANA.
 
 Pokud chcete zjistit, jestli je jednotka velkých instancí HANA nasazená v rámci kontrolního razítka nebo řádku revize 4, přečtěte si článek [Správa velkých instancí Azure Hana prostřednictvím Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit). V přehledu atributů jednotky velkých instancí HANA můžete také určit název skupiny umístění blízkosti, protože byla vytvořena při nasazení jednotky velkých instancí HANA. Název, který se zobrazí v přehledu atributy, je název skupiny umístění blízkosti, do které byste měli nasadit virtuální počítače vrstvy aplikace.
 

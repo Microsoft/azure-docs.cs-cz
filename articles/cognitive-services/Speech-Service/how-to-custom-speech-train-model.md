@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7630659deeece7fbf8d0ca1fd00b539a8de83b0e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072500"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806024"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Výuka modelu pro Custom Speech
 
@@ -34,7 +34,7 @@ Pokud narazíte na problémy s rozpoznáváním pro váš model, může vám pou
 > [!IMPORTANT]
 > Pokud jste neodeslali datovou sadu, přečtěte si téma [Příprava a testování dat](how-to-custom-speech-test-data.md). Tento dokument poskytuje pokyny pro nahrávání dat a pokyny pro vytváření vysoce kvalitních datových sad.
 
-## <a name="train-and-evaluate-a-model"></a>Výuka a vyhodnocení modelu
+## <a name="train-and-evaluate-a-model"></a>Trénování a vyhodnocení modelu
 
 Prvním krokem při výuce modelu je odeslání školicích dat. Použijte [přípravu a testování dat](how-to-custom-speech-test-data.md) pro podrobné pokyny k přípravě přepisů a souvisejících textu (projevy a výslovnosti) s lidským označením. Po nahrání školicích dat postupujte podle těchto pokynů a spusťte školení modelu:
 

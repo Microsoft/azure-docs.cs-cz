@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: f03e32eb17c7c02d8969ea6f79663a5c99196d7b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ed00a9df46660cc6bfb4ec5fd9a93c80f5d6653e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931930"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815326"
 ---
 # <a name="long-audio-api-preview"></a>Dlouhé zvukové rozhraní API (Preview)
 
@@ -29,7 +29,7 @@ Další výhody pro dlouhé zvukové rozhraní API:
 > [!NOTE]
 > Rozhraní API pro dlouhé zvukové rozhraní teď podporuje jenom [vlastní neuronové hlas](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices).
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 Při použití rozhraní API dlouhého zvuku se obvykle odesílá textový soubor nebo soubory, které se mají syntetizovat, dotaz na jeho stav, a pokud je stav úspěšný, můžete si stáhnout zvukový výstup.
 
@@ -66,7 +66,7 @@ Rozhraní API pro dlouhé zvukové rozhraní podporuje následující formáty z
 * Audio-24khz-96kbitrate-mono-MP3
 * Audio-24khz-160kbitrate-mono-MP3
 
-## <a name="quickstarts"></a>Šablony Rychlý start
+## <a name="quickstarts"></a>Rychlé starty
 
 Nabízíme rychlé starty, které vám pomůžou úspěšně spouštět rozhraní API pro dlouhé zvukové zařízení. Tato tabulka obsahuje seznam dlouhých rychlých startů rozhraní API pro přenos v jazyce.
 

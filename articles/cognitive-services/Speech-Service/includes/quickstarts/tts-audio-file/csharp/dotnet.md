@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: syntetizace řeči do zvukového C# souboru, (.NET) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 24f44d02170866645711cb302453a009d2935fbf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0b34c65f6b7003cbdd4d99b684fe2b5a3249c410
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503098"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817843"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -26,7 +26,7 @@ Než začnete, nezapomeňte:
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=dotnet)
 
-## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v sadě Visual Studio
 
 Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
@@ -197,7 +197,7 @@ Nyní jste připraveni sestavit aplikaci a otestovat syntézu řeči pomocí slu
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

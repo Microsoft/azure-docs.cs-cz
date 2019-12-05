@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 1dc119f0f5949b37603bbc1100a4d89d4f420fd6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033442"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819065"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
 
@@ -65,7 +65,7 @@ Toto jsou požadavky Azure pro tento scénář migrace:
 * Virtuální síť Azure, ke které se virtuální počítače připojí při jejich vytvoření při převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ta, ve které Site Recovery běží.
 * Účet úložiště Azure standard pro ukládání protokolů replikace. Může to být stejný účet úložiště pro disky virtuálních počítačů, které se migrují.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pochopení relevantních součástí scénáře migrace v předchozí části.
 * Naplánujte prostoje o [převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md).
@@ -76,10 +76,10 @@ K migraci virtuálních počítačů Azure IaaS mezi oblastmi nebo ve stejné ob
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: vytvoření trezoru Recovery Services
 
-1. Otevřete [portál Azure](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 2. Vyberte **vytvořit prostředek** >  > **správy** **Backup a Site Recovery (OMS)** . Případně můžete vybrat **procházet** > **Recovery Services trezor** > **Přidat**.
    >[!NOTE]
-   >Zálohování a Site Recovery byly dřív součástí](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)sady ![OMS.
+   >Zálohování a Site Recovery byly dřív součástí [sady OMS](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand).
 1. Zadejte oblast, do které se budou virtuální počítače replikovat. Pro účely migrace ve stejné oblasti vyberte oblast, ve které jsou zdrojové virtuální počítače a účty zdrojového úložiště. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2: výběr cílů ochrany 
@@ -195,7 +195,7 @@ Nezapomeňte vybrat **vypnout virtuální počítače a synchronizovat nejnověj
 
 Site Recovery vytvoří instanci virtuálního počítače, jejíž typ je stejný jako nebo podobný virtuálnímu počítači podporujícímu Premium Storage. Můžete kontrolovat výkon a cenu různých instancí virtuálních počítačů, a to tak, že kliknete na ceny [Windows Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo ceny [Linux Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-## <a name="post-migration-steps"></a>Kroky po migraci
+## <a name="post-migration-steps"></a>Postup po migraci
 
 1. **Pokud je to možné, nakonfigurujte replikované virtuální počítače na skupinu dostupnosti**. Site Recovery nepodporuje migraci virtuálních počítačů společně se sadou dostupnosti. V závislosti na nasazení replikovaného virtuálního počítače proveďte jednu z následujících akcí:
    * Pro virtuální počítač vytvořený prostřednictvím modelu nasazení Classic: přidejte virtuální počítač do skupiny dostupnosti v Azure Portal. Podrobný postup najdete v popisu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](../linux/classic/configure-availability-classic.md).

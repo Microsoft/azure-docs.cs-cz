@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 892171f3e275ebc405bc7a228185ebfabc61acfb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164832"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803882"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Podmíněný přístup: vyžadovat MFA pro všechny uživatele
 
@@ -44,7 +44,7 @@ Organizace můžou mít k dispozici mnoho cloudových aplikací. Ne všechny tyt
 Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu, která bude vyžadovat, aby tyto přiřazené role správce prováděly službu Multi-Factor Authentication.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Přejděte na **Azure Active Directory** **podmíněný přístup** > .
+1. Přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .

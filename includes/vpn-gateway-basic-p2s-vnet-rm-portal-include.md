@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3d9826e3eae2a60b217df1406d26d83c78fbdefb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a826bb01a906153b4ca2a3c854623c83b6192aec
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67673294"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828771"
 ---
 Pokud chcete vytvořit virtuální síť v modelu nasazení Resource Manageru pomocí webu Azure Portal, postupujte podle následujících kroků. Snímky obrazovek slouží pouze jako příklady. Nezapomeňte hodnoty nahradit vlastními. Další informace o práci s virtuálními sítěmi najdete v článku [Přehled virtuálních sítí](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -22,10 +22,12 @@ Pokud chcete vytvořit virtuální síť v modelu nasazení Resource Manageru po
 >
 >
 
-1. V prohlížeči přejděte na portál [Azure Portal](https://portal.azure.com) a v případě potřeby se přihlaste pomocí účtu Azure.
-2. Klikněte na **+** . Do pole **Hledat na Marketplace** zadejte text „Virtuální síť“. Ve vráceném seznamu vyhledejte položku **Virtuální síť** a kliknutím otevřete stránku **Virtuální síť**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).  V nabídce Azure Portal nebo na **domovské** stránce a vyberte **vytvořit prostředek**. **Nový** otevře se stránka.
 
-   ![Stránka pro vyhledání prostředku Virtual Network](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "Stránka pro vyhledání prostředku virtuální sítě")
+2. V **části Hledat na Marketplace**zadejte *virtuální síť* a z výsledků vyberte **Virtual Network** .
+
+   ![Stránka pro vyhledání prostředku Virtual Network](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Stránka pro vyhledání prostředku virtuální sítě")
+
 3. U dolního okraje stránky Virtuální síť v seznamu **Vybrat model nasazení** vyberte **Resource Manager** a potom klikněte na **Vytvořit**.
 
    ![Vyberte Správce prostředků](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "Výběr správce prostředků")

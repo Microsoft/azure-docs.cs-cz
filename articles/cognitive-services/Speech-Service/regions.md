@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072444"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816663"
 ---
-# <a name="speech-service-supported-regions"></a>Speech Service podporované oblasti
+# <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
 Služba Speech umožňuje vaší aplikaci převod zvuku na text, překlad řeči a převod textu na řeč. Služba je k dispozici v několika oblastech pomocí jedinečných koncových bodů pro rozhraní API REST a sadou SDK pro řeč.
 
@@ -35,17 +35,17 @@ Sada Speech SDK je k dispozici v těchto oblastech pro **rozpoznávání řeči*
 | Oblast           | Parametr SDK řeči | Přizpůsobení portálu řeči    |
 | ---------------- | -------------------- | ------------------------------ |
 | Západní USA          | `westus`             | https://westus.cris.ai         |
-| USA – západ 2        | `westus2`            | https://westus2.cris.ai        |
-| East US          | `eastus`             | https://eastus.cris.ai         |
-| Východní USA 2        | `eastus2`            | https://eastus2.cris.ai        |
-| Střed USA       | `centralus`          | https://centralus.cris.ai      |
+| Západní USA 2        | `westus2`            | https://westus2.cris.ai        |
+| USA – východ          | `eastus`             | https://eastus.cris.ai         |
+| Východ USA 2        | `eastus2`            | https://eastus2.cris.ai        |
+| Střední USA       | `centralus`          | https://centralus.cris.ai      |
 | Středoseverní USA | `northcentralus`     | https://northcentralus.cris.ai |
 | Středojižní USA | `southcentralus`     | https://southcentralus.cris.ai |
-| Střed Indie    | `centralindia`       | https://centralindia.cris.ai   |
+| Střední Indie    | `centralindia`       | https://centralindia.cris.ai   |
 | Východní Asie        | `eastasia`           | https://eastasia.cris.ai       |
 | Jihovýchodní Asie   | `southeastasia`      | https://southeastasia.cris.ai  |
 | Japonsko – východ       | `japaneast`          | https://japaneast.cris.ai      |
-| Jižní Korea – střed    | `koreacentral`       | https://koreacentral.cris.ai   |
+| Korea – střed    | `koreacentral`       | https://koreacentral.cris.ai   |
 | Austrálie – východ   | `australiaeast`      | https://australiaeast.cris.ai  |
 | Kanada – střed   | `canadacentral`      | https://canadacentral.cris.ai  |
 | Severní Evropa     | `northeurope`        | https://northeurope.cris.ai    |
@@ -64,12 +64,12 @@ Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speec
 | Austrálie     | Austrálie – východ   | `australiaeast`      |
 | Evropa        | Severní Evropa     | `northeurope`        |
 | Evropa        | Západní Evropa      | `westeurope`         |
-| Severní Amerika | East US          | `eastus`             |
-| Severní Amerika | Východní USA 2        | `eastus2`            |
+| Severní Amerika | USA – východ          | `eastus`             |
+| Severní Amerika | Východ USA 2        | `eastus2`            |
 | Severní Amerika | Středojižní USA | `southcentralus`     |
 | Severní Amerika | Středozápadní USA  | `westcentralus`      |
 | Severní Amerika | Západní USA          | `westus`             |
-| Severní Amerika | USA – západ 2        | `westus2`            |
+| Severní Amerika | Západní USA 2        | `westus2`            |
 | Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
 
 Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
@@ -81,9 +81,9 @@ Toto je podmnožina oblastí publikování, které podporuje [služba Language U
 | Oblast         | Parametr SDK řeči |
 | -------------- | -------------------- |
 | Západní USA        | `westus`             |
-| USA – západ 2      | `westus2`            |
-| East US        | `eastus`             |
-| Východní USA 2      | `eastus2`            |
+| Západní USA 2      | `westus2`            |
+| USA – východ        | `eastus`             |
+| Východ USA 2      | `eastus2`            |
 | Západní Evropa    | `westeurope`         |
 | Severní Evropa   | `northeurope`        |
 | Jihovýchodní Asie | `southeastasia`      |

@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: syntetizace řeči do zvukového souboru, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: d6f6519ea5df630a914243046e74c315b4bd7db9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 314a5302c76157810557036370a18ad6fb605033
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503357"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817885"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Klíč předplatného Azure pro hlasové služby. [Získejte je zdarma](~/articles/cognitive-services/Speech-Service/get-started.md).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](~/articles/cognitive-services/Speech-Service/get-started.md).
 * [Python 3,5 nebo novější](https://www.python.org/downloads/).
 * Balíček python Speech SDK je k dispozici pro tyto operační systémy:
     * Windows: x64 a x86.
@@ -127,7 +127,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
    ![Vytvoření souboru](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 
 1. Zkopírujte, vložte a uložte [kód Pythonu](#sample-code) do nově vytvořeného souboru.
-1. Vložte informace o předplatném služby Speech Services.
+1. Vložte informace o předplatném služby Speech.
 1. Pokud je tato možnost vybrána, na levé straně stavového řádku v dolní části okna se zobrazí interpret Pythonu.
    V opačném případě uveďte seznam dostupných překladačů Pythonu. Otevřete paletu příkazů (CTRL + SHIFT + P) a zadejte **Python: vyberte Interpret**. Vyberte vhodný.
 1. Balíček python sady Speech SDK můžete nainstalovat v rámci Visual Studio Code. Pokud není ještě nainstalována pro překladač Pythonu, který jste vybrali.
@@ -146,7 +146,7 @@ Pokud máte problémy podle těchto pokynů, přečtěte si podrobný [kurz Visu
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

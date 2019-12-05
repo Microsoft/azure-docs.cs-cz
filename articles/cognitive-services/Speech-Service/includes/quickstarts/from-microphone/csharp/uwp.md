@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 50de8fd6ba28039c5ca7660c96c6d863f53cf02a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f83f249228c96021979edc14c092eded03b96e4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796140"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818869"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -29,7 +29,7 @@ Než začnete:
 
 Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
 
-## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v sadě Visual Studio
 
 Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
@@ -87,7 +87,7 @@ Teď jste připraveni sestavit a otestovat svoji aplikaci.
 
    ![Žádost o oprávnění k přístupu k mikrofonu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Vyberte **Rozpoznávání řeči se vstupem z mikrofonu** a vyslovte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší do služby Speech Services a přepisu na text, který se zobrazí v okně.
+1. Vyberte **Rozpoznávání řeči se vstupem z mikrofonu** a vyslovte do mikrofonu zařízení anglickou frázi nebo větu. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí v okně.
 
    ![Uživatelské rozhraní rozpoznávání řeči](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-11-ui-result.png)
 

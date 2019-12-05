@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Převod řeči na text C# (.NET Core Windows) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 5c2c843d25da7c413628450f8ef3c1ca14898734
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b9f5929b26a3fa0be43454e3027944cdb4c26cd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502804"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816835"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -114,7 +114,7 @@ Než začnete, nezapomeňte:
 
 1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službám řeči, které překládá a transcribes text (v tomto případě do němčiny). Služba Speech Service pak pošle text zpátky do aplikace k zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službě rozpoznávání řeči, která překládá a transcribes text (v tomto případě do němčiny). Služba rozpoznávání řeči pak pošle text zpátky do aplikace k zobrazení.
 
 ````
 Say something...

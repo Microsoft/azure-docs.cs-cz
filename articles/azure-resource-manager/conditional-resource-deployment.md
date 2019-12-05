@@ -2,13 +2,13 @@
 title: Podmíněné nasazení se šablonami
 description: Popisuje postup podmíněného nasazení prostředku v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: e3d78f875e39628194ac30310314e59e2ef19fdb
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/03/2019
+ms.openlocfilehash: ec2337686f92bb631ae4b08ce125eb576cd8bd69
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147173"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806469"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Podmíněné nasazení v šablonách Správce prostředků
 
@@ -78,6 +78,8 @@ Můžete předat hodnotu parametru, která označuje, zda je podmínka povolena.
 Použijete-li funkci [reference](resource-group-template-functions-resource.md#reference) nebo [list](resource-group-template-functions-resource.md#list) s prostředkem, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen. Pokud funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba.
 
 Použijte funkci [if](resource-group-template-functions-logical.md#if) a ujistěte se, že je funkce vyhodnocena pouze pro podmínky při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
+
+Prostředek můžete nastavit [tak,](resource-group-define-dependencies.md) aby byl závislý na podmíněném prostředku přesně stejně jako jakýkoliv jiný prostředek. Pokud není podmíněný prostředek nasazený, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
 
 ## <a name="condition-with-complete-mode"></a>Podmínka s režimem úplného zobrazení
 

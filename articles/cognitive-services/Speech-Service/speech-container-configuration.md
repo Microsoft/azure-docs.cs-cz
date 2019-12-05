@@ -1,7 +1,7 @@
 ---
 title: Konfigurace kontejnerů řeči
 titleSuffix: Azure Cognitive Services
-description: Služba Speech Services poskytuje každý kontejner se společným rozhraním konfigurace, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrii a nastavení zabezpečení kontejnerů.
+description: Služba rozpoznávání řeči poskytuje každý kontejner se společným rozhraním konfigurace, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrii a nastavení zabezpečení kontejnerů.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: f68bf989202c209f89ea273fee8d7610a49415ed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075741"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816568"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurace kontejnerů služby Speech
 
@@ -50,11 +50,11 @@ Toto nastavení najdete na následujícím místě:
 
 - Azure Portal: Přehled **rozpoznávání řeči** , označený `Endpoint`
 
-| Požaduje se | Název | Data type | Popis |
+| Požaduje se | Name (Název) | Data type | Popis |
 | -------- | ---- | --------- | ----------- |
 | Ano | `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](speech-container-howto.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>Nastavení Eula
+## <a name="eula-setting"></a>Smlouva EULA nastavení
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
@@ -66,11 +66,11 @@ Toto nastavení najdete na následujícím místě:
 
 [!INCLUDE [Container shared HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Nastavení Logging
+## <a name="logging-settings"></a>Nastavení protokolování
 
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-## <a name="mount-settings"></a>Nastavení Mounts
+## <a name="mount-settings"></a>Nastavení připojování
 
 Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
 
@@ -78,10 +78,10 @@ Standardní kontejnery řeči nepoužívají vstupní ani výstupní připojení
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](speech-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby docker a hostiteli připojit umístění oprávnění.
 
-| Nepovinné | Název | Data type | Popis |
+| Volitelné | Name (Název) | Data type | Popis |
 | -------- | ---- | --------- | ----------- |
-| Nepovolené | `Input` | Řetězec | Standardní kontejnery řeči to nepoužívají. Vlastní kontejnery řeči používají [připojení svazků](#volume-mount-settings).                                                                                    |
-| Nepovinné | `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output` |
+| Není povoleno | `Input` | Řetězec | Standardní kontejnery řeči to nepoužívají. Vlastní kontejnery řeči používají [připojení svazků](#volume-mount-settings).                                                                                    |
+| Volitelné | `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>Nastavení připojení svazku
 

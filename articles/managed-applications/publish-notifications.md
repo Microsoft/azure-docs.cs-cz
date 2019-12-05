@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: a00e5be4493b8c8116e2925e88a3ce4bf8cfb722
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8cf9fc0b3d9c13ebc5309be6d27c7be0f2e60878
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085314"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805684"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications s oznámeními
 
@@ -31,11 +31,11 @@ Tady jsou doporučené série kroků pro rychlé zprovoznění:
 6. Podle níže uvedené dokumentace **schématu oznámení** můžete analyzovat požadavky na oznámení a implementovat svoji obchodní logiku na základě oznámení.
 
 ## <a name="adding-service-catalog-application-definition-notifications"></a>Přidávání oznámení definice aplikace katalogu služeb
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure
 Pokud chcete začít, přečtěte si téma [publikování aplikace katalogu služeb prostřednictvím Azure Portal](./publish-portal.md) .
 
 ![Oznámení definice aplikace katalogu služeb na portálu](./media/publish-notifications/service-catalog-notifications.png)
-#### <a name="rest-api"></a>REST API
+#### <a name="rest-api"></a>Rozhraní REST API
 
 > [!NOTE]
 > V rámci **notificationEndpoints** ve vlastnostech definice aplikace je v současné době podporován pouze jeden koncový bod.
@@ -69,15 +69,15 @@ Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](../ma
 ## <a name="event-triggers"></a>Aktivační události
 Následující tabulka popisuje všechny možné kombinace EventType + ProvisioningState a jejich aktivační události:
 
-Typ | ProvisioningState | Aktivační událost pro oznámení
+EventType | ProvisioningState | Aktivační událost pro oznámení
 ---|---|---
-PUT | Přijata | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (Před zahájením nasazení uvnitř spravovaného RGu.)
+PUT | Přijato | Spravovaná skupina prostředků se vytvořila a po vložení aplikace se úspěšně provedla. (Před zahájením nasazení uvnitř spravovaného RGu.)
 PUT | Úspěch | Úplné zřízení spravované aplikace bylo po vložení úspěšné.
-PUT | Neúspěch | Chyba při zřizování instance aplikace v jakémkoli bodě.
-POUŽITA | Úspěch | Po úspěšné opravě instance spravované aplikace za účelem aktualizace značek, zásad přístupu JIT nebo spravované identity.
-DELETE | Odstraňuje | Jakmile uživatel zahájí odstranění instance spravované aplikace.
-DELETE | Odstranění | Po úplném a úspěšném odstranění spravované aplikace.
-DELETE | Neúspěch | Po jakékoli chybě během procesu zrušení zřízení, který blokování odstraní.
+PUT | Selhalo | Chyba při zřizování instance aplikace v jakémkoli bodě.
+PATCH | Úspěch | Po úspěšné opravě instance spravované aplikace za účelem aktualizace značek, zásad přístupu JIT nebo spravované identity.
+DELETE | Odstraňování | Jakmile uživatel zahájí odstranění instance spravované aplikace.
+DELETE | Odstraněno | Po úplném a úspěšném odstranění spravované aplikace.
+DELETE | Selhalo | Po jakékoli chybě během procesu zrušení zřízení, který blokování odstraní.
 ## <a name="notification-schema"></a>Schéma oznámení
 Když nastavíte koncový bod Webhooku pro zpracování oznámení, budete muset analyzovat datovou část, abyste získali důležité vlastnosti, které pak budou fungovat na oznámení. Katalog služeb i oznámení spravované aplikace na webu Marketplace poskytují mnoho stejných vlastností s malým rozdílem popsaným níže.
 
@@ -132,6 +132,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -152,6 +155,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -177,10 +183,11 @@ Parametr | Popis
 eventType | Typ události, která aktivovala oznámení. (např. "PUT", "PATCH", "DELETE")
 applicationId | Plně kvalifikovaný identifikátor prostředku spravované aplikace, pro kterou bylo oznámení aktivované. 
 eventTime | Časové razítko události, která aktivovala oznámení (Datum a čas ve formátu UTC ISO 8601)
-ProvisioningState | Stav zřizování instance spravované aplikace. (např. "úspěšné", "neúspěšné", "odstraňování", "odstraněno")
+provisioningState | Stav zřizování instance spravované aplikace. (např. "úspěšné", "neúspěšné", "odstraňování", "odstraněno")
+billingDetails | Údaje o fakturaci instance spravované aplikace. Obsahuje resourceUsageId, který se dá použít k dotazování webu Marketplace na podrobnosti o využití.
 error | *Zadáno pouze v případě selhání provisioningState*. Obsahuje kód chyby, zprávu a podrobnosti problému, který způsobil chybu.
 applicationDefinitionId | *Zadáno pouze pro spravované aplikace katalogu služeb*. Představuje plně kvalifikovaný identifikátor prostředku definice aplikace, pro kterou se zřídila instance spravované aplikace.
-rozhraní | *Zadáno pouze pro spravované aplikace Marketplace*. Představuje vydavatele, nabídku, SKU a verzi instance spravované aplikace.
+plánování | *Zadáno pouze pro spravované aplikace Marketplace*. Představuje vydavatele, nabídku, SKU a verzi instance spravované aplikace.
 
 ## <a name="endpoint-authentication"></a>Ověřování koncového bodu
 Zabezpečení koncového bodu Webhooku a ověření pravosti oznámení:

@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu C# – služba řeči'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 05d516e1e8da5dd86a1700dff6e53b6cd87b58f0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f33a68aab1d947e0612f88d8db114ab3921cbd42
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503490"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818620"
 ---
 > [!div class="nextstepaction"]
 > [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/speech/github-csharp)

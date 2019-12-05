@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: acd601512f2240802de47483a015f03a226da115
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796082"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829077"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a bránou VPN Azure Virtual WAN?
 
@@ -113,7 +113,9 @@ Virtuální síť můžete připojit v jiné oblasti, než je vaše virtuální 
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Mohou paprskové virtuální sítě připojené k virtuálnímu rozbočovači vzájemně komunikovat?
 
-Ano. Paprskový virtuální sítě může komunikovat přímo prostřednictvím partnerského vztahu Virtual Network. Další informace najdete v tématu [VNet Peering](../articles/virtual-network/virtual-network-peering-overview.md). Podporujeme také virtuální sítě komunikaci prostřednictvím centra.
+Ano. Standard Virtual WAN podporuje přenos přes síť VNet přes síť VNet přes virtuální síť WAN, ke které jsou virtuální sítě připojené. V terminologii Virtual WAN se tyto cesty označují jako "místní virtuální síť WAN" pro virtuální sítě připojené k virtuálnímu rozbočovači WAN v rámci jedné oblasti a "globální virtuální síť WAN" pro virtuální sítě připojené prostřednictvím několika virtuálních rozbočovačů WAN na dvě nebo víc. regionu. Transitní virtuální sítě podporuje až 3 GB/s propustnost během veřejné verze Preview. Propustnost se rozšíří, když globální přenos dostane GA.   
+
+V některých scénářích může být paprskový virtuální sítě také přímo navzájem partnerským vztahem s použitím [Virtual Network partnerských vztahů](../articles/virtual-network/virtual-network-peering-overview.md) kromě místního nebo globálního přenosu virtuální sítě WAN. V takovém případě má partnerský vztah virtuálních sítí přednost před přenosným připojením přes virtuální síť WAN. 
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Co je připojení ke větvi Azure Virtual WAN?
 

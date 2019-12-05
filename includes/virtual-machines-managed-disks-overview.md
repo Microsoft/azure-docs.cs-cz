@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796296"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829067"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -37,7 +37,7 @@ Managed disks podporuje [zóny dostupnosti](../articles/availability-zones/az-ov
 
 ### <a name="azure-backup-support"></a>Podpora Azure Backup
 
-K ochraně před místními haváriemi se [Azure Backup](../articles/backup/backup-overview.md) dá použít k vytvoření úlohy zálohování se zálohováním na základě času a zálohování. To vám umožní provádět snadné obnovení virtuálních počítačů. V současné době Azure Backup podporuje velikosti disků až na čtyři disky tebibyte (TiB).  Azure Backup podporuje zálohování a obnovení spravovaných disků. [Přečtěte si další informace](../articles/backup/backup-support-matrix-iaas.md) o podpoře zálohování virtuálních počítačů Azure.
+K ochraně před místními haváriemi se [Azure Backup](../articles/backup/backup-overview.md) dá použít k vytvoření úlohy zálohování se zálohováním na základě času a zálohování. To vám umožní provádět snadné obnovení virtuálních počítačů. Azure Backup podporuje zálohování a obnovení spravovaných disků. [Přečtěte si další informace](../articles/backup/backup-support-matrix-iaas.md) o podpoře zálohování virtuálních počítačů Azure.
 
 ### <a name="granular-access-control"></a>Podrobné řízení přístupu
 
@@ -61,7 +61,7 @@ Managed disks nabízí dva různé druhy šifrování. První je šifrování na
 
 Azure Disk Encryption umožňuje šifrovat operační systém a datové disky používané virtuálním počítačem s IaaS. Toto šifrování zahrnuje spravované disky. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-crypt. Proces šifrování je integrovaný s Azure Key Vault, abyste mohli řídit a spravovat klíče pro šifrování disků. Další informace najdete v tématu [Azure Disk Encryption pro virtuální počítače s IaaS](../articles/security/azure-security-disk-encryption-overview.md).
 
-## <a name="disk-roles"></a>Diskové role
+## <a name="disk-roles"></a>Role disků
 
 V Azure existují tři hlavní diskové role: datový disk, disk s operačním systémem a dočasný disk. Tyto role se mapují na disky, které jsou připojené k vašemu virtuálnímu počítači.
 
@@ -117,9 +117,9 @@ Následující diagram znázorňuje přidělení šířky pásma a IOPS pro disk
 
 Při zřizování první úrovně se nastaví vstupně-výstupní operace na disk a přiřazení šířky pásma.  Na druhé úrovni hostitel COMPUTE serveru implementuje zřizování SSD, uplatní ho jenom na data uložená v SSD serveru, které zahrnuje disky s mezipamětí (pro čtení a zápis) a také místní a dočasné disky. Nakonec se zřizování sítě virtuálních počítačů provádí na třetí úrovni pro jakékoli vstupně-výstupní operace, které výpočetní hostitel odesílá Azure Storage back-endu. V tomto schématu závisí výkon virtuálního počítače na nejrůznějších faktorech, od toho, jak virtuální počítač používá místní jednotku SSD, na počet připojených disků a také na výkon a typ mezipaměti pro disky, které jsou připojené.
 
-Jako příklad těchto omezení bráníte virtuálnímu počítači s Standard_DS1v1 v tom, aby bylo možné dosáhnout 5 000 IOPS disku P30, ať už je v mezipaměti, nebo ne, z důvodu omezení na úrovni SSD a sítě:
+Jako příklad těchto omezení bráníte tomu, aby se VIRTUÁLNÍm počítačům s Standard_DS1v1 5 000 IOPS, která je v mezipaměti, nebo ne, a to z důvodu omezení na úrovni jednotky SSD a sítě:
 
-![Standard_DS1v1 – příklad přidělení](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+![Standard_DS1v1 příklad přidělení](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 
 Azure používá pro přenos na disk prioritní síťový kanál, který získá prioritu před jinou nízkou prioritou síťového provozu. To pomáhá diskům udržovat očekávaný výkon v případě kolizí sítě. Podobně Azure Storage zpracovává spory prostředků a další problémy na pozadí s automatickým vyrovnáváním zatížení. Azure Storage přiděluje požadované prostředky při vytváření disku a používá proaktivní a reaktivní vyvážení prostředků pro zpracování úrovně provozu. Tím se zajistí, že disky budou tolerovat očekávané cíle IOPS a propustnosti. Pomocí metrik na úrovni virtuálního počítače a disku můžete sledovat výstrahy týkající se výkonu a nastavení podle potřeby.
 

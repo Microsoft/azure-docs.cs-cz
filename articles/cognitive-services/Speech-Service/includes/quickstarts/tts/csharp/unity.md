@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 281fbcf3f42160b18adcad3f06f6ef4a7b8de243
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502923"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818314"
 ---
 > [!NOTE]
 > Unity podporuje Desktop Windows (x86 a x64) nebo Univerzální platforma Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) a iOS (simulátor x64, ARM32 a ARM64).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -64,7 +64,7 @@ Až budete hotovi, uživatelské rozhraní by mělo vypadat podobně jako na tom
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/text-to-speech/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Vyhledejte a nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech Services.
+1. Vyhledejte a nahraďte řetězec `YourSubscriptionKey` klíčovým předplatným služby Speech.
 
 1. Vyhledejte řetězec `YourServiceRegion` a nahraďte ho [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženou k vašemu předplatnému. Oblast je například `westus`, pokud používáte bezplatnou zkušební verzi.
 
@@ -83,7 +83,7 @@ Až budete hotovi, uživatelské rozhraní by mělo vypadat podobně jako na tom
 ## <a name="run-the-application-in-the-unity-editor"></a>Spuštění aplikace v editoru Unity
 
 * Vyberte tlačítko **Přehrát** na panelu nástrojů editoru Unity, který je pod řádkem nabídek.
-* Po spuštění aplikace zadejte do vstupního pole nějaký text a vyberte tlačítko. Váš text se přenáší do služby Speech a syntetizuje se přes řeč, který hraje na svém mluvčím.
+* Po spuštění aplikace zadejte do vstupního pole nějaký text a vyberte tlačítko. Váš text se přenáší do služby pro rozpoznávání řeči a syntetizuje se na řeč, který hraje na svém mluvčím.
 
   [![snímek obrazovky běžícího rychlého startu v okně hry Unity](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-inline.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
 
@@ -98,7 +98,7 @@ Podívejte se na [ukázkové úložiště](https://aka.ms/csspeech/samples) ve s
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

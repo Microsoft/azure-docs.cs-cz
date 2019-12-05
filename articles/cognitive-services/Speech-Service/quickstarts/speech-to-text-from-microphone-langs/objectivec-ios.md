@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 0d353b115acbf48bfffa6c2033b507721de501c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 652754c31711df7b14c055b31d6d96a6b0217d29
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503616"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815607"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v cíli – C v iOS pomocí sady Speech SDK
 
@@ -23,7 +23,7 @@ K dispozici jsou také rychlé starty pro [syntézu řeči](~/articles/cognitive
 
 V tomto článku se naučíte, jak vytvořit aplikaci pro iOS v cíli – C pomocí sady Azure Cognitive Services Speech SDK pro přepisovat řeči na text z mikrofonu nebo ze souboru se zvukovým nahrávkou.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat:
 

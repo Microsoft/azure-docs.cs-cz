@@ -1,7 +1,7 @@
 ---
 title: Referenční informace k rozhraní API pro převod textu na řeč (REST) – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat REST API převodu textu na řeč. V tomto článku se seznámíte s možnostmi autorizace, možnostmi dotazů, postupy strukturování požadavků a přijetím odpovědi.
+description: Naučte se používat REST API převodu textu na řeč. V tomto článku se dozvíte o autorizaci, možnosti dotazu, jak strukturovat žádost a přijetí odpovědi.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9fa0157bd458d2de028cab8ff9c836761e99562f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 779df2794267a1cb62d9918fc718da02e94c48cb
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481201"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816623"
 ---
-# <a name="text-to-speech-rest-api"></a>REST API převodu textu na řeč
+# <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 
-Služba Speech Services umožňuje [převést text na syntetizované rozpoznávání řeči](#convert-text-to-speech) a [získat seznam podporovaných hlasů](#get-a-list-of-voices) pro oblast s použitím sady rozhraní REST API. Každý dostupný koncový bod je přidružen k oblasti. Vyžaduje se klíč předplatného pro koncový bod nebo oblast, kterou plánujete použít.
+Služba rozpoznávání řeči umožňuje [převést text na syntetizované rozpoznávání řeči](#convert-text-to-speech) a [získat seznam podporovaných hlasů](#get-a-list-of-voices) pro oblast s použitím sady rozhraní REST API. Každý dostupný koncový bod je přidružen k oblasti. Vyžaduje se klíč předplatného pro koncový bod nebo oblast, kterou plánujete použít.
 
 REST API převodu textu na řeč podporuje neuronové a standardní hlasy převodu textu na řeč, z nichž každý podporuje konkrétní jazyk a dialekt identifikovaný národním prostředím.
 
@@ -31,7 +31,7 @@ REST API převodu textu na řeč podporuje neuronové a standardní hlasy převo
 
 Než začnete používat toto rozhraní API, pochopte:
 
-* REST API převodu textu na řeč vyžaduje autorizační hlavičku. To znamená, že při přístupu ke službě musíte dokončit výměnu tokenů. Další informace najdete v tématu [Ověřování](#authentication).
+* Převod textu na řeč rozhraní REST API vyžaduje také hlavičku ověřování. To znamená, že je potřeba dokončit výměnu tokenů pro přístup ke službě. Další informace najdete v tématu [Ověřování](#authentication).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -39,7 +39,7 @@ Než začnete používat toto rozhraní API, pochopte:
 
 Koncový bod `voices/list` umožňuje získat úplný seznam hlasů pro konkrétní oblast nebo koncový bod.
 
-### <a name="regions-and-endpoints"></a>Oblasti a koncové body
+### <a name="regions-and-endpoints"></a>Oblasti a koncových bodů
 
 | Oblast | Koncový bod |
 |--------|----------|
@@ -67,9 +67,9 @@ Koncový bod `voices/list` umožňuje získat úplný seznam hlasů pro konkrét
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Hlavička | Popis | Požadováno/volitelné |
+| Hlavička | Popis | Povinné / volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předchází `Bearer`m slovem. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
+| `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -138,19 +138,19 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 | Stavový kód HTTP | Popis | Možný důvod |
 |------------------|-------------|-----------------|
 | 200 | OK | Požadavek byl úspěšný. |
-| 400 | Nesprávná žádost | Povinný parametr chybí, je prázdný nebo má hodnotu null. Nebo hodnota předaná buď požadovanému, nebo volitelnému parametru není platná. Běžným problémem je záhlaví, které je příliš dlouhé. |
-| 401 | Neautorizováno | Požadavek není autorizovaný. Zkontrolujte, jestli je klíč předplatného nebo token platný a ve správné oblasti. |
-| 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo míru požadavků povolených pro vaše předplatné. |
-| 502 | Chybná brána | Problém v síti nebo na straně serveru. Může také označovat neplatné hlavičky. |
+| 400 | Nesprávná žádost | Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý. |
+| 401 | Neautorizováno | Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné. |
+| 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená. |
+| 502 | Chybná brána | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví. |
 
 
 ## <a name="convert-text-to-speech"></a>Převod textu na řeč
 
 `v1` koncový bod umožňuje převod textu na řeč pomocí [jazyka SSML (Speech Shrnutí značek)](speech-synthesis-markup.md).
 
-### <a name="regions-and-endpoints"></a>Oblasti a koncové body
+### <a name="regions-and-endpoints"></a>Oblasti a koncových bodů
 
-Tyto oblasti jsou podporované pro převod textu na řeč pomocí REST API. Ujistěte se, že jste vybrali koncový bod, který odpovídá vaší oblasti předplatného.
+Tyto oblasti jsou podporovány pro převod textu na řeč pomocí rozhraní REST API. Ujistěte se, že vyberete koncového bodu, který odpovídá oblasti vašeho předplatného.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
@@ -158,16 +158,16 @@ Tyto oblasti jsou podporované pro převod textu na řeč pomocí REST API. Ujis
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Hlavička | Popis | Požadováno/volitelné |
+| Hlavička | Popis | Povinné / volitelné |
 |--------|-------------|---------------------|
-| `Authorization` | Autorizační token předchází `Bearer`m slovem. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
-| `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml`. | Požaduje se |
-| `X-Microsoft-OutputFormat` | Určuje formát výstup zvuku. Úplný seznam přijatých hodnot najdete v tématu [zvukové výstupy](#audio-outputs). | Požaduje se |
-| `User-Agent` | Název aplikace Zadaná hodnota musí být kratší než 255 znaků. | Požaduje se |
+| `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Požaduje se |
+| `Content-Type` | Určuje typ obsahu pro zadaný text. Přijata hodnota: `application/ssml+xml`. | Požaduje se |
+| `X-Microsoft-OutputFormat` | Určuje formát zvukového výstupu. Úplný seznam platných hodnot najdete v tématu [zvuku výstupy](#audio-outputs). | Požaduje se |
+| `User-Agent` | Název aplikace. Zadaná hodnota musí být kratší než 255 znaků. | Požaduje se |
 
-### <a name="audio-outputs"></a>Zvukové výstupy
+### <a name="audio-outputs"></a>Zvukový výstupy
 
-Toto je seznam podporovaných formátů zvuku, které se odesílají v jednotlivých žádostech jako `X-Microsoft-OutputFormat` záhlaví. Každá z nich zahrnuje přenosovou rychlost a typ kódování. Služba Speech Services podporuje zvukové výstupy 24 kHz, 16 kHz a 8 kHz.
+Toto je seznam podporovaných formátů zvuku, které se odesílají v každé žádosti o jako `X-Microsoft-OutputFormat` záhlaví. Každý zahrnuje s přenosovou rychlostí a typ kódování. Služba Speech podporuje zvukové výstupy 24 kHz, 16 kHz a 8 kHz.
 
 |||
 |-|-|
@@ -180,7 +180,7 @@ Toto je seznam podporovaných formátů zvuku, které se odesílají v jednotliv
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> Pokud váš vybraný hlasový a výstupní formát má jiné přenosové rychlosti, zvuk se v případě potřeby převzorkuje. Nicméně na 24 kHz hlasy nepodporují `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` výstupní formáty.
+> Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby. Nicméně na 24 kHz hlasy nepodporují `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` výstupní formáty.
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -191,7 +191,7 @@ Tělo každé žádosti o `POST` se odešle jako [jazyk SSML (Speech syntézy)](
 
 ### <a name="sample-request"></a>Ukázková žádost
 
-Tento požadavek HTTP používá SSML k určení hlasu a jazyka. Tělo nemůže být delší než 1 000 znaků.
+Tento požadavek HTTP používá k určení hlasu SSML. Text může mít maximálně 1 000 znaků.
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -220,15 +220,15 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
 | Stavový kód HTTP | Popis | Možný důvod |
 |------------------|-------------|-----------------|
-| 200 | OK | Požadavek byl úspěšný. tělo odpovědi je zvukový soubor. |
-| 400 | Nesprávná žádost | Povinný parametr chybí, je prázdný nebo má hodnotu null. Nebo hodnota předaná buď požadovanému, nebo volitelnému parametru není platná. Běžným problémem je záhlaví, které je příliš dlouhé. |
-| 401 | Neautorizováno | Požadavek není autorizovaný. Zkontrolujte, jestli je klíč předplatného nebo token platný a ve správné oblasti. |
-| 413 | Entita požadavku je příliš velká. | Vstup SSML je delší než 1024 znaků. |
+| 200 | OK | Žádost byla úspěšná. text odpovědi je zvukový soubor. |
+| 400 | Nesprávná žádost | Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý. |
+| 401 | Neautorizováno | Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné. |
+| 413 | Příliš velká entita požadavku | Vstup SSML je delší než 1024 znaků. |
 | 415 | Nepodporovaný typ média | Je možné, že byl zadán nesprávný `Content-Type`. `Content-Type` by měly být nastavené na `application/ssml+xml`. |
-| 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo míru požadavků povolených pro vaše předplatné. |
-| 502 | Chybná brána | Problém v síti nebo na straně serveru. Může také označovat neplatné hlavičky. |
+| 429 | Příliš mnoho žádostí | Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená. |
+| 502 | Chybná brána | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví. |
 
-Pokud je stav HTTP `200 OK`, text odpovědi obsahuje zvukový soubor v požadovaném formátu. Tento soubor se dá přehrát jako přenesený, uložený do vyrovnávací paměti nebo uložený do souboru.
+Pokud je stav protokolu HTTP `200 OK`, tělo odpovědi obsahuje zvukový soubor v požadovanému formátu. Tento soubor můžete přehrát má přenést, uložit do vyrovnávací paměti, nebo uložit do souboru.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 54a5be769ace97ffa9a4f5f38a9227d9565abfd1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111704"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815859"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Rychlý Start: vytvoření hlasového asistenta pomocí sady Speech SDK, Java (Preview)
 
@@ -23,14 +23,14 @@ K dispozici jsou také rychlé starty pro převod [řeči na text](~/articles/co
 
 V tomto článku vytvoříte konzolovou aplikaci Java pomocí [sady Azure Cognitive Services Speech SDK](speech-sdk.md). Aplikace se připojí k dřív vytvořenému robotovi, který je nakonfigurovaný tak, aby používal kanál Direct line Speech, pošle hlasovou žádost a vrátí aktivitu odezvy na hlas (Pokud je nakonfigurovaná). Aplikace je sestavená pomocí balíčku Maven sady Speech SDK a Java IDE zatmění ve Windows, Ubuntu Linux nebo na macOS. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
 - Operační systém: Windows (64-bit), Ubuntu Linux 16.04/18.04 (64-bit) nebo macOS 10,13 nebo novější.
 - [Java IDE zatmění](https://www.eclipse.org/downloads/).
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-- Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte v [Azure Portal](https://portal.azure.com).
+- Klíč předplatného Azure pro službu Speech Service. [Získejte ho zdarma](get-started.md) nebo ho vytvořte v [Azure Portal](https://portal.azure.com).
 - Předem konfigurovaný robot vytvořený pomocí rozhraní bot Framework verze 4,2 nebo vyšší. Robot se musí přihlásit k odběru nového kanálu přímého řádku řeči, aby přijímal vstupy hlasu.
 
   > [!NOTE]
@@ -474,10 +474,10 @@ Další ukázky, například jak číst řeč ze zvukového souboru, jsou k disp
 > [!div class="nextstepaction"]
 > [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [O hlasových asistentcích](voice-assistants.md)
-- [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+- [Získejte zdarma klíč předplatného služby Speech](get-started.md)
 - [Vlastní klíčová slova](speech-devices-sdk-create-kws.md)
 - [Připojení přímého Lineového rozpoznávání řeči k robotovi](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Zkoumání ukázek Java na GitHubu](https://aka.ms/csspeech/samples)

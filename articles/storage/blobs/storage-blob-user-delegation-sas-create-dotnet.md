@@ -9,12 +9,12 @@ ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 32bcb12f39d65d63af1c6595c0d57c695ce0533f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: dada27f1fa08cdaa6c2495246375869ea5a8ab9e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792218"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806928"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí .NET (Preview)
 
@@ -24,35 +24,13 @@ V tomto článku se dozvíte, jak pomocí přihlašovacích údajů pro Azure Ac
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="authenticate-with-the-azure-identity-library"></a>Ověřování pomocí knihovny identit Azure
-
-Klientská knihovna Azure identity pro .NET ověřuje objekt zabezpečení. Když váš kód běží v Azure, je objekt zabezpečení spravovaná identita pro prostředky Azure.
-
-Když váš kód běží ve vývojovém prostředí, ověřování může být zpracováno automaticky nebo může vyžadovat přihlášení prohlížeče v závislosti na tom, které nástroje používáte. Microsoft Visual Studio podporuje jednotné přihlašování (SSO), aby se aktivní uživatelský účet Azure AD automaticky používal pro ověřování. Další informace o JEDNOTNÉm přihlašování najdete v tématu [jednotné přihlašování k aplikacím](../../active-directory/manage-apps/what-is-single-sign-on.md).
-
-Jiné vývojové nástroje vás můžou vyzvat k přihlášení přes webový prohlížeč. K ověření z vývojového prostředí můžete také použít instanční objekt. Další informace najdete v tématu věnovaném [vytvoření identity pro aplikaci Azure na portálu](../../active-directory/develop/howto-create-service-principal-portal.md).
-
-Po ověření získá Klientská knihovna identity Azure přihlašovací údaje tokenu. Tyto přihlašovací údaje tokenu se pak zapouzdřují v objektu klienta služby, který vytvoříte k provádění operací s Azure Storage. Knihovna to zvládne bezproblémově tím, že získá příslušné přihlašovací údaje tokenu.
-
-Další informace o klientské knihovně identit Azure najdete v tématu [Klientská knihovna Azure identity pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
-
 ## <a name="assign-rbac-roles-for-access-to-data"></a>Přiřazení rolí RBAC pro přístup k datům
 
 Když se objekt zabezpečení služby Azure AD pokusí získat přístup k datům objektu blob, musí mít tento objekt zabezpečení oprávnění k prostředku. Bez ohledu na to, jestli je objekt zabezpečení spravovaná identita v Azure nebo uživatelský účet Azure AD, který spouští kód ve vývojovém prostředí, musí být objektu zabezpečení přiřazená role RBAC, která uděluje přístup k datům objektu BLOB v Azure Storage. Informace o přiřazování oprávnění přes RBAC najdete v části s názvem **přiřazení rolí RBAC pro přístupová práva** v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
 
-## <a name="install-the-packages"></a>Nainstalovat balíčky
+[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Příklady v tomto článku používají nejnovější verzi [Azure Storage klientské knihovny pro úložiště objektů BLOB](https://www.nuget.org/packages/Azure.Storage.Blobs). Chcete-li nainstalovat balíček, spusťte následující příkaz z konzoly Správce balíčků NuGet:
-
-```powershell
-Install-Package Azure.Storage.Blobs
-```
-
-Příklady v tomto článku také využívají nejnovější verzi [klientské knihovny Azure identity pro .NET](https://www.nuget.org/packages/Azure.Identity/) k ověřování pomocí přihlašovacích údajů Azure AD. Chcete-li nainstalovat balíček, spusťte následující příkaz z konzoly Správce balíčků NuGet:
-
-```powershell
-Install-Package Azure.Identity
-```
+Další informace o tom, jak ověřit pomocí klientské knihovny Azure identity z Azure Storage, najdete v části s názvem **ověřování pomocí knihovny identit Azure** v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
 
@@ -258,5 +236,6 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
+- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md)
 - [Získat operaci klíče delegování uživatele](/rest/api/storageservices/get-user-delegation-key)
 - [Vytvoření SAS delegování uživatele (REST API)](/rest/api/storageservices/create-user-delegation-sas)

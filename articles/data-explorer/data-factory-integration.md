@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: dd2b3bd584bb39810e0a5c9acde1a961330c273d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093758"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819140"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Integrace Azure Průzkumník dat s využitím Azure Data Factory
 
@@ -90,10 +90,10 @@ V následující tabulce najdete srovnání aktivity kopírování a příkazů 
 
 Následující tabulka uvádí požadovaná oprávnění pro různé kroky v integraci s Azure Data Factory.
 
-| Krok | Operace | Minimální úroveň oprávnění | Poznámky: |
+| Krok | Operace | Minimální úroveň oprávnění | Poznámky |
 |---|---|---|---|
 | **Vytvoření propojené služby** | Navigace v databázi | *prohlížeč databáze* <br>Přihlášený uživatel pomocí ADF by měl mít oprávnění ke čtení metadat databáze. | Uživatel může název databáze zadat ručně. |
-| | Testovat připojení | *monitorování databáze* nebo ingestování *tabulek* <br>Instanční objekt by měl mít autorizaci pro spouštění `.show`ch příkazů nebo na úrovni tabulky na úrovni databáze. | <ul><li>TestConnection ověří připojení ke clusteru, a ne k databázi. Může to být úspěšné i v případě, že databáze neexistuje.</li><li>Oprávnění správce tabulky nejsou dostatečná.</li></ul>|
+| | Test připojení | *monitorování databáze* nebo ingestování *tabulek* <br>Instanční objekt by měl mít autorizaci pro spouštění `.show`ch příkazů nebo na úrovni tabulky na úrovni databáze. | <ul><li>TestConnection ověří připojení ke clusteru, a ne k databázi. Může to být úspěšné i v případě, že databáze neexistuje.</li><li>Oprávnění správce tabulky nejsou dostatečná.</li></ul>|
 | **Vytvoření datové sady** | Navigace v tabulce | *monitorování databáze* <br>Přihlášený uživatel pomocí ADF musí mít autorizaci k provádění příkazů `.show` na úrovni databáze. | Uživatel může zadat název tabulky ručně.|
 | **Vytvoření datové sady** nebo **aktivity kopírování** | Náhled dat | *prohlížeč databáze* <br>Instanční objekt musí mít oprávnění ke čtení metadat databáze. | | 
 |   | Importovat schéma | *prohlížeč databáze* <br>Instanční objekt musí mít oprávnění ke čtení metadat databáze. | Když je ADX zdrojem tabulkového a tabulkového kopírování, ADF automaticky importuje schéma, i když uživatel neimportuje schéma explicitně. |
@@ -109,7 +109,7 @@ Pokud je Azure Průzkumník dat zdrojem a používáte aktivitu vyhledávání, 
   
 V této části se řeší použití aktivity kopírování, kde je Azure Průzkumník dat jímka. Odhadovaná propustnost pro jímku služby Azure Průzkumník dat je 11-13 MB/s. Následující tabulka popisuje parametry, které ovlivňují výkon jímky Průzkumník dat služby Azure.
 
-| Parametr | Poznámky: |
+| Parametr | Poznámky |
 |---|---|
 | **Geografické okolí součástí** | Všechny komponenty umístěte do stejné oblasti:<ul><li>zdrojová data a úložiště dat jímky.</li><li>Prostředí Integration runtime ADF.</li><li>Váš cluster ADX.</li></ul>Ujistěte se, že alespoň váš modul runtime integrace je ve stejné oblasti jako cluster ADX. |
 | **Počet DIUs** | 1 virtuální počítač pro každé 4 DIUs, kterou používá ADF. <br>Zvýšení DIUs vám pomůže jenom v případě, že váš zdroj ukládá soubor s více soubory. Každý virtuální počítač potom zpracuje jiný soubor paralelně. Proto bude mít kopírování jednoho velkého souboru větší latenci než kopírování více menších souborů.|
@@ -118,13 +118,90 @@ V této části se řeší použití aktivity kopírování, kde je Azure Průzk
 | **Složitost zpracování dat** | Latence se liší podle formátu zdrojového souboru, mapování sloupců a komprese.|
 | **Virtuální počítač, na kterém běží prostředí Integration runtime** | <ul><li>Pro Azure kopírování, virtuální počítače ADF a SKU počítačů se nedají změnit.</li><li> V případě Prem do Azure Copy určete, že virtuální počítač hostující vaše místní prostředí IR je dostatečně silný.</li></ul>|
 
-## <a name="monitor-activity-progress"></a>Průběh aktivity monitorování
+## <a name="tips-and-common-pitfalls"></a>Tipy a běžné nástrah
+
+### <a name="monitor-activity-progress"></a>Průběh aktivity monitorování
 
 * Když sledujete průběh aktivity, vlastnost *zapsaná data* může být mnohem větší než vlastnost *čtení* dat, protože *čtení dat* se počítá podle velikosti binárního souboru, zatímco *zapsaná* data se počítají podle velikosti v paměti, a to po deserializaci a dekomprimaci dat.
 
 * Když sledujete průběh aktivity, vidíte, že se data zapisují do jímky Azure Průzkumník dat. Při dotazování tabulky Azure Průzkumník dat vidíte, že data nebyla doručena. Důvodem je to, že při kopírování do Azure Průzkumník dat existují dvě fáze. 
     * První fáze přečte zdrojová data, rozdělí je na 900 MB bloků dat a nahraje jednotlivé bloky do objektu blob Azure. První fáze se zobrazuje v zobrazení průběh aktivity ADF. 
     * Druhá fáze začíná, jakmile se všechna data nahrají do objektů blob Azure. Uzly modulu Azure Průzkumník dat stáhnou objekty BLOB a ingestují data do tabulky jímky. Data se pak zobrazují v tabulce Azure Průzkumník dat.
+
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Kvůli nesprávnému uvozovacímu souboru se nepodařilo ingestovat soubory CSV.
+
+Azure Průzkumník dat očekává, že soubory CSV zarovnají [specifikaci RFC 4180](https://www.ietf.org/rfc/rfc4180.txt).
+Očekává se:
+* Pole, která obsahují znaky, které vyžadují uvozovací znaky (například "a nové řádky), by měly začínat a končit znakem **"** bez prázdných znaků. Všechny **"** znaky *v* poli jsou uvozeny pomocí dvojitého **"** znaku ( **""** ). Například _"Hello" "World"_ "je platný soubor CSV s jedním záznamem s jedním sloupcem nebo polem s obsahem _Hello" World "_ .
+* Všechny záznamy v souboru musí mít stejný počet sloupců a polí.
+
+Azure Data Factory umožňuje znak zpětného lomítka (Escape). Pokud vygenerujete soubor CSV s znakem zpětného lomítka pomocí Azure Data Factory, ingestování souboru do Azure Průzkumník dat se nezdaří.
+
+#### <a name="example"></a>Příklad:
+
+Následující textové hodnoty: Hello, "World"<br/>
+ABC – DEF<br/>
+"ABC\D" EF<br/>
+"ABC DEF<br/>
+
+Měl by se zobrazit ve správném souboru CSV následujícím způsobem: Hello, World (svět).<br/>
+"ABC DEF"<br/>
+"" ABC DEF "<br/>
+"" "ABC\D" "EF"<br/>
+
+Když použijete výchozí řídicí znak (zpětné lomítko), následující soubor CSV nebude fungovat s Azure Průzkumník dat: "Hello, \"World\"".<br/>
+"ABC DEF"<br/>
+"\"ABC DEF"<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>Vnořené objekty JSON
+
+Při kopírování souboru JSON do Azure Průzkumník dat mějte na paměti, že:
+* Pole nejsou podporována.
+* Pokud vaše struktura JSON obsahuje datové typy objektů, Azure Data Factory provede sloučení podřízených položek objektu a pokusí se namapovat každou podřízenou položku na jiný sloupec v tabulce Azure Průzkumník dat. Pokud chcete, aby byla celá položka objektu namapována na jeden sloupec v Azure Průzkumník dat:
+    * Ingestuje celý řádek JSON do jednoho dynamického sloupce v Azure Průzkumník dat.
+    * Ručně upravte definici kanálu pomocí editoru JSON Azure Data Factory. V **mapování**
+       * Odeberte vícenásobná mapování, která byla vytvořena pro každou podřízenou položku, a přidejte jedno mapování, které mapuje typ objektu na sloupec tabulky.
+       * Za pravou hranatou závorku Přidejte čárku, za kterou následuje:<br/>
+       `"mapComplexValuesToString": true`.
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>Zadejte AdditionalProperties při kopírování do Azure Průzkumník dat
+
+> [!NOTE]
+> Tato funkce je aktuálně dostupná ruční úpravou datové části JSON. 
+
+V části jímka aktivity kopírování přidejte jeden řádek následujícím způsobem:
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+Uvozovací znaky hodnoty mohou být obtížné. Jako referenci použijte následující fragment kódu:
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+Vytištěná hodnota:
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
 
 ## <a name="next-steps"></a>Další kroky
 

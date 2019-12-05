@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: syntetizace řeči C# , (UWP) – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vytvoříte aplikaci C# Univerzální platforma Windows (UWP) pomocí sady Cognitive Services Speech SDK. Rozpoznávání řeči textu v reálném čase pro mluvčí zařízení. Aplikace je sestavená pomocí balíčku NuGet sady Speech SDK a Microsoft Visual Studio 2019.
+description: V tomto článku vytvoříte C# aplikace univerzální platformy Windows (UPW) s využitím Cognitive Services SDK řeči. Rozpoznávání řeči textu v reálném čase pro mluvčí zařízení. Aplikace je sestavená pomocí balíčku NuGet sady Speech SDK a Microsoft Visual Studio 2019.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 3a88f4fc14286a60feb9d72676827b0cce91eb25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276de42f2a37a0e48cd323e285760c00e6db9f32
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503126"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818346"
 ---
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -61,7 +61,7 @@ Teď jste připraveni sestavit a otestovat svoji aplikaci.
 
    ![Ukázková aplikace pro rozpoznávání řeči C# pro UWP v rychlém startu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
-1. Do textového pole zadejte nějaký text a klikněte na **mluvit**. Váš text se přenáší do služeb řeči a syntetizuje se na řeč, který hraje na reproduktoru.
+1. Do textového pole zadejte nějaký text a klikněte na **mluvit**. Váš text se přenáší do služby pro rozpoznávání řeči a syntetizuje se na řeč, který hraje na svém mluvčím.
 
     ![Uživatelské rozhraní syntézy řeči](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
 
@@ -69,7 +69,7 @@ Teď jste připraveni sestavit a otestovat svoji aplikaci.
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

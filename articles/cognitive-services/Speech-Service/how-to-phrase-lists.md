@@ -1,7 +1,7 @@
 ---
 title: Seznamy frází – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Naučte se poskytovat hlasové služby pomocí seznamu frází pomocí objektu `PhraseListGrammar` ke zlepšení výsledků rozpoznávání řeči na text.
+description: Naučte se poskytovat hlasovou službu pomocí seznamu frází pomocí objektu `PhraseListGrammar` ke zlepšení výsledků rozpoznávání řeči na text.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 052e02ef562da0637b6b5b9683120f0c397dbfd5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464539"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805871"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Seznamy frází pro převod řeči na text
 
-Poskytnutím služby Speech Services se seznamem frází můžete zlepšit přesnost rozpoznávání řeči. Seznamy frází slouží k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění.
+Zadáním služby Speech Service se seznamem frází můžete zlepšit přesnost rozpoznávání řeči. Seznamy frází slouží k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění.
 
 Příklad: Pokud máte příkaz "přesunout do" a možné místo cíle "", které je možné přehlasovat, můžete přidat položku "přesunout do" dál ". Přidáním fráze dojde k nárůstu pravděpodobnosti, že při rozpoznání zvuku bude místo možnosti přesunout směrem nahoru rozpoznáno "Přesun na".
 
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> Změny `PhraseListGrammar`ho objektu se projeví při příštím rozpoznávání nebo po opětovném připojení ke službám řeči.
+> Změny `PhraseListGrammar`ho objektu se projeví při příštím rozpoznávání nebo po opětovném připojení ke službě Speech.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/24/2019
 ms.author: yinhew
-ms.openlocfilehash: c0666dccbb7f110e122c4632995299a414bf690a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 35c8eb640e3c8c9e33486d5126f83dd40b5b96e0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503371"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818388"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -46,7 +46,7 @@ Než začnete, nezapomeňte:
 
 1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
 
-1. Zadejte anglickou frázi nebo větu. Aplikace přenáší váš text na hlasové služby, které do aplikace odesílají syntetizované rozpoznávání řeči, aby bylo možné na svém mluvčím hrát.
+1. Zadejte anglickou frázi nebo větu. Aplikace přenáší váš text do služby pro rozpoznávání řeči, která odešle do aplikace syntetizované rozpoznávání řeči, aby bylo možné na svém mluvčím hrát.
 
    ![Výstup na konzole po úspěšném Shrnutí řeči](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-cpp-windows-console-output.png)
 
@@ -54,7 +54,7 @@ Než začnete, nezapomeňte:
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

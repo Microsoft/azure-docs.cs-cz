@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: b6ab1e3e01f66e071e3d16b196b3ecdcd30c2620
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701811"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807421"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Pochopení a použití vláken v modulech v IoT Hub
 
@@ -33,7 +33,7 @@ Pokyny k používání hlášených vlastností, zpráv zařízení-Cloud nebo n
 
 Pokyny k používání požadovaných vlastností, přímých metod nebo zpráv z cloudu na zařízení najdete v tématu [pokyny k komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) .
 
-## <a name="module-twins"></a>Nevlákenná modul
+## <a name="module-twins"></a>Dvojčaty modulů
 
 Modul se s dvojitou čárkou ukládá informace související s modulem:
 
@@ -178,15 +178,15 @@ Back-end řešení funguje v modulu s dvojím použitím následujících atomic
 
     | Name (Název) | Hodnota |
     | --- | --- |
-    $content – typ | application/json |
-    $iothub – enqueuedtime |  Čas odeslání oznámení |
+    $content-type | application/json |
+    $iothub-enqueuedtime |  Čas odeslání oznámení |
     $iothub-Message-source | twinChangeEvents |
-    $content – kódování | UTF-8 |
+    $content-encoding | utf-8 |
     deviceId | ID zařízení |
     moduleId | ID modulu |
     hubName | Název IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko operace |
-    iothub-Message-Schema | deviceLifecycleNotification |
+    iothub-Message-Schema | twinChangeNotification |
     opType | "replaceTwin" nebo "updateTwin" |
 
     Vlastnosti systému zprávy mají předponu `$` symbol.

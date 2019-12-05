@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891467"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806605"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
@@ -42,7 +42,7 @@ Spouštějte podnikové aplikace v Azure v podporovaných operačních systémec
 
 * Oracle WebLogic server 12.1.2
 
-* Oracle Linux (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 a 7,6
+* Oracle Linux s neUEKm podnikovým jádrem () 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 a 7,6 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Možnosti vysoké dostupnosti a zotavení po havárii
 
@@ -70,8 +70,8 @@ Spouštějte aplikace Oracle v infrastruktuře Azure, připojené k back-endu da
 Použití šablon Terraformu k nastavení infrastruktury Azure a instalaci aplikací Oracle ověřovaných a podporovaných pro spuštění v konfiguraci mezi cloudy:
 
 * Sada E-Business
-* ŘEŠENÍ JD Edwards EnterpriseOne
-* PeopleSoft spouštěných místně
+* JD Edwards EnterpriseOne
+* PeopleSoft
 * Maloobchodní aplikace Oracle
 * Hyperion finanční správa Oracle
 
@@ -82,7 +82,7 @@ Nasaďte také vlastní aplikace v Azure, které se připojují k OCI a dalším
 V kombinaci s aplikacemi Oracle běžícími v Azure použijte Oracle Database Cloud Services (autonomní databáze, RAC, Exadata, DBaaS, jeden uzel). Přečtěte si další informace o [možnostech databáze OCI](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencování
+## <a name="licensing"></a>Správa licencí
 
 Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastní licenci". Předpokládáte, že máte řádně licenci na používání softwaru Oracle a máte k dispozici aktuální smlouvu o podpoře pro Oracle. Oracle garantuje mobilitu licencí z místního prostředí do Azure. Podívejte se na [Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)k Oracle-Azure.
 
@@ -91,3 +91,5 @@ Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastn�
 * Přečtěte si další informace o nasazování [imagí virtuálních počítačů Oracle](oracle-vm-solutions.md) v infrastruktuře Azure.
 
 * Přečtěte si další informace o tom, jak [propojit Azure s OCI](oracle-oci-overview.md).
+
+* Podívejte se na [Přehled relace Oracle v Azure](https://myignite.techcommunity.microsoft.com/sessions/82915) z Ignite 2019. 

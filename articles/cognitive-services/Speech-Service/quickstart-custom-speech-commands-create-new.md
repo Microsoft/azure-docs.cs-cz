@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111362"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815830"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Rychlý Start: Vytvoření vlastního příkazu (Preview)
 
 V tomto článku se dozvíte, jak vytvořit a otestovat hostované vlastní aplikace s příkazy.
 Aplikace rozpozná utterance jako "zapnout televizní program" a odpoví jednoduchou zprávou "OK, zapnutí televizního vysílání".
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné pro rozpoznávání řeči. [Vyzkoušejte službu Speech Service zdarma](~/articles/cognitive-services/speech-service/get-started.md).
 
@@ -105,7 +105,7 @@ Nyní přidejte pravidlo dokončení pro reakci na uživatele s oznámením, že
 | Nastavení    | Navrhovaná hodnota                        | Popis                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Název pravidla  | "ConfirmationResponse"                 | Název popisující účel pravidla          |
-| Podmínky | Žádný                                   | Podmínky, které určují, kdy se pravidlo dá spustit    |
+| Podmínky | Žádné                                   | Podmínky, které určují, kdy se pravidlo dá spustit    |
 | Akce    | SpeechResponse "OK, zapnutí televizního vysílání" | Akce, která se má provést, když je podmínka pravidla pravdivá |
 
 ## <a name="try-it-out"></a>Vyzkoušet

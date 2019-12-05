@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Seznam hlasů pro převod textu na řeč, Python-Speech Service'
+title: 'Rychlý Start: seznam hlasů pro převod textu na řeč, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak získat úplný seznam standardních a neuronové hlasů pro oblast nebo koncový bod pomocí Pythonu. Seznam se vrátí jako JSON a dostupnost hlasu se v jednotlivých oblastech liší.
 services: cognitive-services
@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ac96c3ce3924b8b2fe834e2b350e95ce23c52e1f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b20a8aabbd41c09efb6818cac2999a8c84b669fc
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559347"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816441"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>Rychlý start: Získání seznamu hlasů pro převod textu na řeč pomocí Pythonu
+# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>Rychlý Start: získání seznamu hlasů pro převod textu na řeč pomocí Pythonu
 
 V tomto rychlém startu se dozvíte, jak získat úplný seznam standardních a neuronové hlasů pro oblast nebo koncový bod pomocí Pythonu. Seznam se vrátí jako JSON a dostupnost hlasu se v jednotlivých oblastech liší. Seznam podporovaných oblastí najdete v tématu [oblasti](regions.md).
 
-Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služeb Speech Services. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](get-started.md).
+Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby řeči. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](get-started.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
 * Python 2.7.x nebo 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), nebo vašem oblíbeném textovém editoru
-* Klíč předplatného Azure pro hlasové služby
+* Klíč předplatného Azure pro službu pro rozpoznávání řeči
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
@@ -59,9 +59,9 @@ class GetVoices(object):
 
 ## <a name="get-an-access-token"></a>Získání přístupového tokenu
 
-Tento koncový bod vyžaduje přístupový token pro ověřování. Chcete-li získat přístupový token, je potřeba systému exchange. Tato ukázka vyměňuje klíč předplatného služby Speech pro přístupový token pomocí `issueToken` koncového bodu.
+Tento koncový bod vyžaduje přístupový token pro ověřování. Chcete-li získat přístupový token, je potřeba systému exchange. Tato ukázka vyměňuje klíč předplatného služby Speech pro přístupový token pomocí `issueToken`ho koncového bodu.
 
-V této ukázce se předpokládá, že vaše předplatné služby Speech Services je v oblasti Západní USA. Pokud používáte jiné oblasti, aktualizujte hodnotu pro `fetch_token_url`. Úplný seznam najdete v tématu [oblastech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+V této ukázce se předpokládá, že vaše předplatné služby Speech je v oblasti Západní USA. Pokud používáte jiné oblasti, aktualizujte hodnotu pro `fetch_token_url`. Úplný seznam najdete v tématu [oblastech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Zkopírujte tento kód do `GetVoices` třídy:
 
@@ -80,7 +80,7 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Vytvořit žádost a uložit odpověď
 
-Tady se chystáte vytvořit žádost a uložit seznam vrácených hlasů. Nejprve je nutné nastavit `base_url` a `path`. Tento příklad předpokládá, že používáte koncový bod západní USA. Pokud váš prostředek je registrován v jiné oblasti, ujistěte se, že aktualizujete `base_url`. Další informace najdete v tématu [oblasti služby Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Tady se chystáte vytvořit žádost a uložit seznam vrácených hlasů. Nejprve je nutné nastavit `base_url` a `path`. Tento příklad předpokládá, že používáte koncový bod západní USA. Pokud váš prostředek je registrován v jiné oblasti, ujistěte se, že aktualizujete `base_url`. Další informace najdete v tématu [oblasti služby Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Dále přidejte požadovaná záhlaví pro požadavek. A konečně provede požadavek do služby. Pokud je požadavek úspěšný a vrátí se stavový kód 200, odpověď se zapíše do souboru.
 
@@ -129,12 +129,12 @@ python get-voices.py
 
 Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předplatného odebrání jakýchkoli důvěrných informací.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte ukázky Pythonu na GitHubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Referenční informace k rozhraní API pro převod textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)
