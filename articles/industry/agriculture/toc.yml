@@ -21,6 +21,8 @@
   items:
     - name: Nasazení FarmBeats
       href: prepare-for-deployment.md
+    - name: Správa uživatelů
+      href: manage-users.md
     - name: Správa farem
       href: manage-farms.md
     - name: Získání data ze senzorů

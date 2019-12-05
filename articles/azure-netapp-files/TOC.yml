@@ -75,3 +75,11 @@
       href: 'https://docs.microsoft.com/rest/api/netapp/'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.netapp/allversions
+- name: Zdroje a prostředky
+  items:
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/netapp/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: Videa
+      href: azure-netapp-files-videos.md
