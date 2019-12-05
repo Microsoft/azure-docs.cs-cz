@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: 7ca7256cbe42949141bc216ee1cb5c89ceac935c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226375"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665606"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Vytvoření dalšího předplatného Azure
 
@@ -36,7 +36,7 @@ K vytváření předplatných potřebujete následující oprávnění:
 |---------|---------|
 |Smlouva Enterprise (EA) |  Role Vlastník účtu pro registraci smlouvy Enterprise Další informace najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md).    |
 |Smlouva se zákazníkem Microsoftu (MCA) |  Role vlastníka nebo přispěvatele oddílu faktury, fakturačního profilu nebo fakturačního účtu Případně role Tvůrce předplatného Azure u oddílu faktury  Další informace najdete v tématu [Role a úlohy související s fakturací předplatného](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
-|Smlouva s partnerem Microsoftu |   Role Globální správce nebo Agent správy v partnerské organizaci Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](https://docs.microsoft.com/partner-center/permissions-overview).  |
+|Smlouva s partnerem Microsoftu |   Role Globální správce nebo Agent správy v partnerské organizaci CSP Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](https://docs.microsoft.com/partner-center/permissions-overview).  Pro vytvoření předplatného Azure se musí uživatel přihlásit k tenantu partnera.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Vytvoření předplatného na webu Azure Portal
 
