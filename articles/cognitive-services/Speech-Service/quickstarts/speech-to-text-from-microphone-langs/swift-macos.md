@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af01ab7b3a3c9a93cc470646b40779ee0527d41e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 083ac49919bcf60fdd0b34a5007e03d215c23280
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503525"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815006"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v SWIFT v macOS pomocí sady Speech SDK
 
@@ -23,9 +23,9 @@ K dispozici jsou také rychlé starty pro [syntézu řeči](~/articles/cognitive
 
 V tomto článku se naučíte, jak vytvořit aplikaci v macOS v SWIFT pomocí sady Cognitive Services Speech SDK pro přepisovat řeči zaznamenané z mikrofonu na text.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, tady je seznam požadavků:
+Než začnete, tady je seznam požadovaných součástí:
 
 * [Klíč předplatného](~/articles/cognitive-services/Speech-Service/get-started.md) pro službu rozpoznávání řeči
 * MacOS počítač s nainstalovaným [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novějším a [CocoaPods](https://cocoapods.org/) .

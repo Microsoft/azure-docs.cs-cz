@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: f67c98eb8417b66c3315bccb1d56b98a68aac839
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ecfdc74c72284da97ebf3107140911e666a3a12d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795932"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818779"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -100,7 +100,7 @@ Nyní přidejte C# kód, který definuje část aplikace specifickou pro iOS. V 
 
 1. Pokud vytváříte počítač s Windows, navažte připojení k zařízení Mac pro sestavování prostřednictvím **nástrojů** > dvojice > iOS **do počítače Mac**. Postupujte podle pokynů průvodce, který poskytuje Visual Studio, a povolte tak připojení k zařízení Mac.
 
-#### <a name="uwptabhelloworlduwp"></a>[PODPORUJÍ](#tab/helloworlduwp)
+#### <a name="uwptabhelloworlduwp"></a>[UPW](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidat vzorový kód pro `helloworld.UWP` projekt
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidejte vzorový kód pro HelloWorld. Projekt UWP
@@ -136,7 +136,7 @@ Nyní přidejte C# kód, který definuje část aplikace specifickou pro UWP.
 
    ![Žádost o oprávnění k přístupu k mikrofonu](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. Vyberte možnost **spustit rozpoznávání řeči**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší do služeb Speech Services a přepisu text, který se zobrazí v okně.
+1. Vyberte možnost **spustit rozpoznávání řeči**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí v okně.
 
    ![Uživatelské rozhraní rozpoznávání řeči](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *

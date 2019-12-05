@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/14/2019
 ms.author: yulili
-ms.openlocfilehash: 36e48a5d513daa951c1e92017ba9a2322b009703
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 990e795d0331df41ff098ed498508d6ecfd58f0e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503406"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818472"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -69,7 +69,7 @@ Nebo si můžete tento kurz rychlý Start stáhnout jako [Jupyter](https://jupyt
    ![Vytvoření souboru](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 
 1. Zkopírujte, vložte a uložte [kód Pythonu](#sample-code) do nově vytvořeného souboru.
-1. Vložte informace o předplatném služby Speech Services.
+1. Vložte informace o předplatném služby Speech.
 1. Pokud je tato možnost vybrána, na levé straně stavového řádku v dolní části okna se zobrazí interpret Pythonu.
    V opačném případě uveďte seznam dostupných překladačů Pythonu. Otevřete paletu příkazů (CTRL + SHIFT + P) a zadejte **Python: vyberte Interpret**. Vyberte vhodný.
 1. Balíček python sady Speech SDK můžete nainstalovat v rámci Visual Studio Code. Pokud není ještě nainstalována pro překladač Pythonu, který jste vybrali.
@@ -86,7 +86,7 @@ Pokud máte problémy podle těchto pokynů, přečtěte si podrobný [kurz Visu
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

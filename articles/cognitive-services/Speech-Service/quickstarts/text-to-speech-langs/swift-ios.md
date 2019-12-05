@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 1ef473b36634c0e0bed8562f84d0de04d9e64383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 49dc162f59c92cc8e4e154056adb1b27f711e463
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503441"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817740"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči v SWIFT v systému iOS pomocí sady Speech SDK
 
 V tomto článku se naučíte, jak vytvořit aplikaci pro iOS v SWIFT pomocí sady Cognitive Services Speech SDK pro syntetizaci řeči z textu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, tady je seznam požadavků:
+Než začnete, tady je seznam požadovaných součástí:
 
 * [Klíč předplatného](~/articles/cognitive-services/Speech-Service/get-started.md) pro službu rozpoznávání řeči
 * MacOS počítač s nainstalovaným [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novějším a [CocoaPods](https://cocoapods.org/) .

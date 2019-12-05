@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Převod řeči na více jazyků C++ , (Windows) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 9de9db768fcadaa132195169b50ad48487a4a343
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 78e8d479f9d36924f77744a36de9451a013a6e42
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502755"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817065"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -116,7 +116,7 @@ Než začnete, nezapomeňte:
 
 1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas na hlasové služby, které překládá a transcribes text (v tomto případě do francouzštiny a němčiny). Služba Speech Service pak pošle text zpátky do aplikace k zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas do služby pro rozpoznávání řeči, která převádí a transcribes na text (v tomto případě na francouzštinu a němčinu). Služba rozpoznávání řeči pak pošle text zpátky do aplikace k zobrazení.
 
 ````
 Say something...

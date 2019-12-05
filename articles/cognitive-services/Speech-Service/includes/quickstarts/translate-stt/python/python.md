@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: Převod řeči na řeč, Python-Speech Service'
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -9,14 +9,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 679690c495f18a489c6fab11a18182c83ca1577f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4e45777e8af75d568a98dd649159379a5d9c9a6f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503084"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816958"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -89,7 +89,7 @@ Než začnete, nezapomeňte:
    python quickstart.py
    ```
 
-2. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službám řeči, které překládá a transcribes text (v tomto případě do němčiny). Služba Speech Service pak pošle text zpátky do aplikace k zobrazení.
+2. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službě rozpoznávání řeči, která překládá a transcribes text (v tomto případě do němčiny). Služba rozpoznávání řeči pak pošle text zpátky do aplikace k zobrazení.
 
    ````
    Say something...

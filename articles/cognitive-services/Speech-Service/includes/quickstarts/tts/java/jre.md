@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: 0ee22c7a34ac332fac930ead6b7d62f6e7aad5d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d7ca86092b973d369d37cbeac1bc9f8cfcf9b462
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503350"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818121"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -53,7 +53,7 @@ Po zobrazení výzvy zadejte text a přečtete si syntetizované zvuky přehráv
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

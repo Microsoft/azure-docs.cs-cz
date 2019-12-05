@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Převod řeči na řeč, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: e09d3fd2e880a01522b59d60a80f448192c0b689
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db6cbce03805b904dbac80eb8d2c6fcd38ede6ee
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503210"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817717"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -101,7 +101,7 @@ Než začnete, nezapomeňte:
    python quickstart.py
    ```
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službám řeči, které překládá a transcribes text (v tomto případě do němčiny). Služba Speech Service pak pošle syntetizované zvuky a text zpátky do aplikace k zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službě rozpoznávání řeči, která překládá a transcribes text (v tomto případě do němčiny). Služba Speech pak pošle syntetizované zvuky a text zpátky do aplikace k zobrazení.
 
    ```
    Say something...

@@ -1,14 +1,14 @@
 ---
 title: Ukázky dotazů pro pokročilé
 description: Pomocí Azure Resource graphu můžete spouštět některé rozšířené dotazy, včetně práce se sloupci, použitými značkami a porovnáním prostředků s regulárními výrazy.
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 ms.topic: sample
-ms.openlocfilehash: b0491390aac83650ca6590f0ecfc44f28ceaf08e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 25a5e05bd9d383ae411ce7147b09555c0e6b4437
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279335"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816479"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Ukázky dotazů v rozšířeném grafu prostředků
 
@@ -215,7 +215,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a>Seznam <a name="mvexpand-cosmosdb" />Cosmos DB s konkrétními umístěními pro zápis
 
-Následující dotaz omezuje Cosmos DB prostředků, používá `mv-expand` k rozšíření kontejneru objektů a dat pro **Vlastnosti. writeLocations**, následnému projektu a omezení výsledků do **vlastností. writeLocations. Location** . odpovídá buď Východní USA, nebo Západní USA.
+Následující dotaz omezuje Cosmos DB prostředků, používá `mv-expand` k rozšíření kontejneru objektů a dat pro **Vlastnosti. writeLocations**, následnému projektu a omezení výsledků do **vlastností. writeLocations. Location** , které odpovídají buď ' Východní USA ' nebo ' západní USA '.
 
 ```kusto
 Resources
@@ -374,7 +374,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="a-namejoin-findstoragetag-find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag" />najít účty úložiště s konkrétní značkou ve skupině prostředků
 
-Následující dotaz používá **vnitřní** `join` k připojení účtů úložiště se skupinami prostředků, které mají zadaný název značky a hodnotu značky.
+Následující dotaz používá **vnitřní** `join` k připojení účtů úložiště se skupinami prostředků, které mají zadaný název značky a hodnotu značky rozlišující malá a velká písmena.
 
 ```kusto
 Resources
@@ -382,7 +382,7 @@ Resources
 | join kind=inner (
     ResourceContainers
     | where type =~ 'microsoft.resources/subscriptions/resourcegroups'
-    | where tags['key1'] == 'value1'
+    | where tags['Key1'] =~ 'Value1'
     | project subscriptionId, resourceGroup)
 on subscriptionId, resourceGroup
 | project-away subscriptionId1, resourceGroup1
@@ -391,22 +391,60 @@ on subscriptionId, resourceGroup
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-az graph query -q "Resources | where type =~ 'microsoft.storage/storageaccounts' | join kind=inner ( ResourceContainers | where type =~ 'microsoft.resources/subscriptions/resourcegroups' | where tags['key1'] == 'value1' | project subscriptionId, resourceGroup) on subscriptionId, resourceGroup | project-away subscriptionId1, resourceGroup1"
+az graph query -q "Resources | where type =~ 'microsoft.storage/storageaccounts' | join kind=inner ( ResourceContainers | where type =~ 'microsoft.resources/subscriptions/resourcegroups' | where tags['Key1'] =~ 'Value1' | project subscriptionId, resourceGroup) on subscriptionId, resourceGroup | project-away subscriptionId1, resourceGroup1"
 ```
 
 # <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccounts' | join kind=inner ( ResourceContainers | where type =~ 'microsoft.resources/subscriptions/resourcegroups' | where tags['key1'] == 'value1' | project subscriptionId, resourceGroup) on subscriptionId, resourceGroup | project-away subscriptionId1, resourceGroup1"
+Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccounts' | join kind=inner ( ResourceContainers | where type =~ 'microsoft.resources/subscriptions/resourcegroups' | where tags['Key1'] =~ 'Value1' | project subscriptionId, resourceGroup) on subscriptionId, resourceGroup | project-away subscriptionId1, resourceGroup1"
 ```
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ![Ikona Průzkumníka grafu prostředků](../media/resource-graph-small.png) Vyzkoušejte tento dotaz v Průzkumníku Azure Resource graphu:
 
-- Azure Portal: ikona otevřít ![<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'key1'%5D%20%3D%3D%20'value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.com</a> v novém okně](../../media/new-window.png)
-- Azure Government Portal: ikona otevřít ![<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'key1'%5D%20%3D%3D%20'value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.us</a> v novém okně](../../media/new-window.png)
-- Portál Azure Čína: ikona <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'key1'%5D%20%3D%3D%20'value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.cn</a> ![otevřít v novém okně](../../media/new-window.png)
+- Azure Portal: ikona otevřít ![<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'Key1'%5D%20%3D~%20'Value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.com</a> v novém okně](../../media/new-window.png)
+- Azure Government Portal: ikona otevřít ![<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'Key1'%5D%20%3D~%20'Value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.us</a> v novém okně](../../media/new-window.png)
+- Portál Azure Čína: ikona <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'Key1'%5D%20%3D~%20'Value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.cn</a> ![otevřít v novém okně](../../media/new-window.png)
+
+---
+
+Pokud je nutné vyhledat název značky a hodnotu značky nerozlišující malá a velká písmena, použijte `mvexpand` s parametrem **bagexpansion** . Tento dotaz používá větší kvótu než předchozí dotaz, takže použijte `mvexpand` pouze v případě potřeby.
+
+```kusto
+Resources
+| where type =~ 'microsoft.storage/storageaccounts'
+| join kind=inner (
+    ResourceContainers
+    | where type =~ 'microsoft.resources/subscriptions/resourcegroups'
+    | mvexpand bagexpansion=array tags
+    | where isnotempty(tags)
+    | where tags[0] =~ 'key1' and tags[1] =~ 'value1'
+    | project subscriptionId, resourceGroup)
+on subscriptionId, resourceGroup
+| project-away subscriptionId1, resourceGroup1
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "Resources | where type =~ 'microsoft.storage/storageaccounts' | join kind=inner ( ResourceContainers | where type =~ 'microsoft.resources/subscriptions/resourcegroups' | mvexpand bagexpansion=array tags | where isnotempty(tags) | where tags[0] =~ 'key1' and tags[1] =~ 'value1' | project subscriptionId, resourceGroup) on subscriptionId, resourceGroup | project-away subscriptionId1, resourceGroup1"
+```
+
+# <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccounts' | join kind=inner ( ResourceContainers | where type =~ 'microsoft.resources/subscriptions/resourcegroups' | mvexpand bagexpansion=array tags | where isnotempty(tags) | where tags[0] =~ 'key1' and tags[1] =~ 'value1' | project subscriptionId, resourceGroup) on subscriptionId, resourceGroup | project-away subscriptionId1, resourceGroup1"
+```
+
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+
+![Ikona Průzkumníka grafu prostředků](../media/resource-graph-small.png) Vyzkoušejte tento dotaz v Průzkumníku Azure Resource graphu:
+
+- Azure Portal: ikona otevřít ![<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%20%7C%20join%20kind%3Dinner%20%28%20ResourceContainers%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20mvexpand%20bagexpansion%3Darray%20tags%20%7C%20where%20isnotempty%28tags%29%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.com</a> v novém okně](../../media/new-window.png)
+- Azure Government Portal: ikona otevřít ![<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%20%7C%20join%20kind%3Dinner%20%28%20ResourceContainers%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20mvexpand%20bagexpansion%3Darray%20tags%20%7C%20where%20isnotempty%28tags%29%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.us</a> v novém okně](../../media/new-window.png)
+- Portál Azure Čína: ikona <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%20%7C%20join%20kind%3Dinner%20%28%20ResourceContainers%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20mvexpand%20bagexpansion%3Darray%20tags%20%7C%20where%20isnotempty%28tags%29%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.cn</a> ![otevřít v novém okně](../../media/new-window.png)
 
 ---
 

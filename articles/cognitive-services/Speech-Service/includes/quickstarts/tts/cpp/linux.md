@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: ba0e04d4dadd9d3a4bea41aeb0a66b37f454f030
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc5d0e0a7f693df87e754383a123dc1cebfdd94c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503252"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818372"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -32,7 +32,7 @@ Než začnete, nezapomeňte:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/text-to-speech/helloworld.cpp#code)]
 
-1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech Services.
+1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech.
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
@@ -87,7 +87,7 @@ Než začnete, nezapomeňte:
    ./helloworld
    ```
 
-1. V okně konzoly se zobrazí výzva s výzvou k zadání textu. Zadejte několik slov nebo větu. Text, který jste zadali, se přenáší do služeb řeči a syntetizuje se na řeč, který hraje na reproduktoru.
+1. V okně konzoly se zobrazí výzva s výzvou k zadání textu. Zadejte několik slov nebo větu. Text, který jste zadali, se přenáší do služby pro rozpoznávání řeči a syntetizuje se na řeč, který hraje na svém mluvčím.
 
    ```text
    Type some text that you want to speak...
@@ -100,7 +100,7 @@ Než začnete, nezapomeňte:
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

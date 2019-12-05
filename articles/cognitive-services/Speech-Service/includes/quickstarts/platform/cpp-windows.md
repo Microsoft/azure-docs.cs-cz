@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: sada Speech C++ SDK pro (Windows) Platform Setup – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto průvodce můžete nastavit platformu pro C++ na desktopu Windows se sadou Speech Services SDK.
+description: Pomocí tohoto průvodce můžete nastavit platformu pro C++ na desktopu Windows se sadou Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 16c8ce068db31f0063b4c3b3d05b06a1136a26ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7a3984c2a99180bec96f3685b661cd9e6334ff26
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502594"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818607"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro C++ na desktopu Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
