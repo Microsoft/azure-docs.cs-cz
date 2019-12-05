@@ -68,6 +68,8 @@
           href: devtest-lab-configure-cost-management.md
         - name: Odesílání oznámení automatického vypínání
           href: devtest-lab-auto-shutdown.md
+        - name: Nastavení automatického spouštění pro virtuální počítače testovacího prostředí
+          href: devtest-lab-auto-startup-vm.md
         - name: Škálování testovacího prostředí
           href: devtest-lab-scale-lab.md
         - name: Správa základů virtuálních počítačů
@@ -193,6 +195,8 @@
           href: add-artifact-repository.md
         - name: Určení povinných artefaktů
           href: devtest-lab-mandatory-artifacts.md
+        - name: Řešení potíží s použitím artefaktů
+          href: devtest-lab-troubleshoot-apply-artifacts.md
     - name: Integrace s CI/CD
       items:
         - name: Integrace testovacího prostředí do kanálu CI/CD služby Azure Pipelines

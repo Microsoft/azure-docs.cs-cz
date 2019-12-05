@@ -102,8 +102,12 @@
           href: data-lake-query-data.md
         - name: Dotazování na data ve službě Azure Monitor
           href: query-monitor-data.md
-        - name: Python
-          href: python-query-data.md
+        - name: Ladění vloženého kódu KQL v Pythonu
+          href: debug-inline-python.md
+        - name: s využitím sad SDK
+          items:
+            - name: Python
+              href: python-query-data.md
         - name: Strojové učení a analýzy časových řad
           items:
             - name: Analýza časových řad

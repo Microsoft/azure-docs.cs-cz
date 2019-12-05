@@ -40,6 +40,10 @@
       href: virtual-wan-custom-ipsec-portal.md
     - name: Konfigurace certifikátů pro uživatelské sítě VPN (Point-to-Site)
       href: certificates-point-to-site.md
+    - name: Konfigurace tenanta Azure AD pro VPN uživatele
+      href: openvpn-azure-ad-tenant.md
+    - name: Povolení služby Multi-Factor Authentication (MFA) pro VPN uživatele
+      href: openvpn-azure-ad-mfa.md
     - name: Konfigurace ověřování Azure AD pro VPN uživatele (Preview)
       href: virtual-wan-point-to-site-azure-ad.md
     - name: Konfigurace automatizace (partneři služby Virtual WAN)
