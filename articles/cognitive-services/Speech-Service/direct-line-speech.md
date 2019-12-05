@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 72029d1d56c9d561e629cc750244fd7de8ec113a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507173"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806201"
 ---
 # <a name="about-direct-line-speech"></a>O funkci Direct line Speech
 
@@ -37,9 +37,9 @@ Nabízíme také rychlé starty, které jsou navržené tak, aby běžely kód z
 
 | Rychlý start | Platforma | Referenční materiály k rozhraním API |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Hlíží](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Hlíží](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Procházet](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -50,7 +50,7 @@ Vzorový kód pro vytvoření hlasového asistenta je k dispozici na GitHubu. Ty
 
 ## <a name="customization"></a>Přizpůsobení
 
-Hlasové asistenti sestavené pomocí Azure Speech Services můžou používat celou škálu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr klíčového slova](speech-devices-sdk-create-kws.md).
+Hlasové asistenti sestavené pomocí služby Speech Services můžou používat celou škálu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr klíčového slova](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
 > Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](supported-languages.md)).
@@ -64,7 +64,7 @@ Funkce Direct line Speech a její přidružená funkce pro hlasové asistenty js
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
 * [Získat sadu Speech SDK](speech-sdk.md)
 * [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Získat řešení a šablonu společnosti Virtual Assistant](https://github.com/Microsoft/AI)

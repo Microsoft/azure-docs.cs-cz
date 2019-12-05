@@ -6,13 +6,13 @@ ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
-ms.date: 4/27/2018
-ms.openlocfilehash: e583bf53021d772db54c30ed5a4c9ea2a029e093
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/03/2019
+ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792018"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815083"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv pomocí bloků dat v Azure Logic Apps
 
@@ -39,6 +39,9 @@ V opačném případě dojde k chybě za běhu při pokusu o přístup k rozsáh
 Služby, které komunikují s Logic Apps, můžou mít vlastní omezení velikosti zpráv. Tato omezení jsou často menší než limit Logic Apps. Například za předpokladu, že konektor podporuje bloky dat, může konektor považovat za zprávu o velikosti 30 MB, zatímco Logic Apps ne. Aby bylo dosaženo dodržování limitu tohoto konektoru, Logic Apps rozdělí všechny zprávy větší než 30 MB na menší bloky dat.
 
 Pro konektory, které podporují dělení na bloky dat, je podkladový protokol pro zpracování dat neviditelný pro koncové uživatele. Ale ne všechny konektory podporují vytváření bloků dat, takže tyto konektory generují chyby za běhu, když příchozí zprávy překračují omezení velikosti konektorů.
+
+> [!NOTE]
+> V případě akcí, které používají bloky dat, nelze předat text triggeru ani použít v těchto akcích výrazy, jako je například `@triggerBody()?['Content']`. Místo toho můžete pro obsah souboru text nebo JSON zkusit použít [ akci](../logic-apps/logic-apps-perform-data-operations.md#compose-action) vytvořit nebo [vytvořit proměnnou](../logic-apps/logic-apps-create-variables-store-values.md) , která tento obsah zpracuje. Pokud tělo aktivační události obsahuje další typy obsahu, jako jsou třeba mediální soubory, musíte provést další kroky, abyste mohli tento obsah zpracovat.
 
 <a name="set-up-chunking"></a>
 
@@ -112,15 +115,15 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
 
    | Logic Apps pole s hlavičkou žádosti | Hodnota | Typ | Popis |
    |---------------------------------|-------|------|-------------|
-   | **x-MS-Transfer-Mode** | blokové | Řetězec | Indikuje, že se obsah nahrává do bloků dat. |
-   | **x-MS-Content-Length** | < *-Délka obsahu*> | Integer | Celá velikost obsahu v bajtech před vytvořením bloku dat |
+   | **x-ms-transfer-mode** | chunked | Řetězec | Indikuje, že se obsah nahrává do bloků dat. |
+   | **x-ms-content-length** | <*content-length*> | Integer | Celá velikost obsahu v bajtech před vytvořením bloku dat |
    ||||
 
 2. Koncový bod odpoví kódem stavu úspěch "200" a tyto volitelné informace:
 
    | Pole hlavičky odpovědi koncového bodu | Typ | Požaduje se | Popis |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-bloková velikost** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
+   | **x-ms-chunk-size** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
    | **Umístění** | Řetězec | Ano | Umístění adresy URL, kam se mají odeslat zprávy opravy HTTP |
    ||||
 
@@ -133,8 +136,8 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
      | Logic Apps pole s hlavičkou žádosti | Hodnota | Typ | Popis |
      |---------------------------------|-------|------|-------------|
      | **Rozsah obsahu** | > *rozsahu* < | Řetězec | Rozsah bajtů pro aktuální blok obsahu, včetně počáteční hodnoty, koncové hodnoty a celkové velikosti obsahu, například: "bajty = 0-1023/10100" |
-     | **Typ obsahu** | <*typ obsahu*> | Řetězec | Typ obsahu v bloku |
-     | **Content-Length** | < *-Délka obsahu*> | Řetězec | Délka velikosti v bajtech pro aktuální blok dat |
+     | **Typ obsahu** | <*content-type*> | Řetězec | Typ obsahu v bloku |
+     | **Content-Length** | <*content-length*> | Řetězec | Délka velikosti v bajtech pro aktuální blok dat |
      |||||
 
 4. Po každé žádosti o opravu koncový bod potvrdí příjem pro jednotlivé bloky, a to tak, že odpoví na stavový kód "200" a následující hlavičky odpovědí:
@@ -142,7 +145,7 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
    | Pole hlavičky odpovědi koncového bodu | Typ | Požaduje se | Popis |
    |--------------------------------|------|----------|-------------|
    | **Rozsah** | Řetězec | Ano | Rozsah bajtů pro obsah, který byl přijat koncovým bodem, například: "bytes = 0-1023" |   
-   | **x-MS-bloková velikost** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
+   | **x-ms-chunk-size** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
    ||||
 
 Například tato definice akce zobrazuje požadavek HTTP POST pro nahrání obsahu v bloku do koncového bodu. Ve vlastnosti `runTimeConfiguration` akce `contentTransfer` sady vlastností `transferMode` na `chunked`:

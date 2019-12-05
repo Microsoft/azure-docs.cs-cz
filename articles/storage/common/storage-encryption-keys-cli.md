@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/20/2019
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: fd3b7767bad104f4074b2460ecba3fe89d5a23e1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665963"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806622"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage pomocí Azure CLI
 
@@ -91,7 +91,7 @@ az keyvault key create
 
 Ve výchozím nastavení používá Azure Storage šifrování klíče spravované společností Microsoft. Nakonfigurujte účet Azure Storage pro klíče spravované zákazníkem a zadejte klíč, který chcete přidružit k účtu úložiště.
 
-Pokud chcete aktualizovat nastavení šifrování účtu úložiště, zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update). Tento příklad také dotazuje se na identifikátor URI a verzi klíče trezoru klíčů, které hodnoty jsou potřeba k přidružení klíče k účtu úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
+Pokud chcete aktualizovat nastavení šifrování účtu úložiště, zavolejte [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update). Tento příklad také vyžádá identifikátor URI trezoru klíčů a nejnovější verzi klíče, které hodnoty jsou potřeba k přidružení klíče k účtu úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -102,7 +102,7 @@ key_vault_uri=$(az keyvault show \
 key_version=$(az keyvault key list-versions \
     --name <key> \
     --vault-name <key-vault> \
-    --query [].kid \
+    --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
 az storage account update 
     --name <storage-account> \

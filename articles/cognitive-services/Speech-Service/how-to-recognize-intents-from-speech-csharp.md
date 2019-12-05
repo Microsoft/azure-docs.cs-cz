@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110154"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805888"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Jak rozpoznávat záměry z rozpoznávání řeči pomocí sady Speech SDK proC#
 
@@ -35,7 +35,7 @@ V této příručce použijete sadu Speech SDK k vytvoření C# konzolové aplik
 > - Rozpoznávat řeč ze souboru
 > - Používat asynchronní událostmi řízené průběžné rozpoznávání
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s touto příručkou, ujistěte se, že máte následující položky:
 
@@ -44,7 +44,7 @@ Než začnete s touto příručkou, ujistěte se, že máte následující polo�
 
 ## <a name="luis-and-speech"></a>Služba LUIS a řeč
 
-LUIS se integruje se službami pro rozpoznávání řeči za účelem rozpoznávání záměrů z řeči. Nepotřebujete předplatné služeb Speech, stačí LUIS.
+Služba LUIS se integruje se službou Speech za účelem rozpoznávání záměrů z řeči. Nepotřebujete předplatné služby Speech, stačí vám služba LUIS.
 
 LUIS používá tři typy klíčů:
 
@@ -56,7 +56,7 @@ LUIS používá tři typy klíčů:
 
 V této příručce budete potřebovat typ klíče koncového bodu. Tato příručka používá ukázkovou aplikaci LUIS pro automatizaci, kterou můžete vytvořit pomocí [předpřipraveného rychlého startu aplikace pro domácí automatizaci](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) . Pokud jste vytvořili vlastní aplikaci LUIS, můžete ji místo toho použít.
 
-Když vytvoříte aplikaci LUIS, LUIS automaticky vygeneruje počáteční klíč, abyste mohli otestovat aplikaci pomocí textových dotazů. Tento klíč nepovoluje integraci služeb Speech Services a nebude v této příručce fungovat. Vytvořte prostředek LUIS na řídicím panelu Azure a přiřaďte ho do aplikace LUIS. Pro tuto příručku můžete použít bezplatnou úroveň předplatného.
+Když vytvoříte aplikaci LUIS, LUIS automaticky vygeneruje počáteční klíč, abyste mohli otestovat aplikaci pomocí textových dotazů. Tento klíč nepovoluje integraci služby Speech Service a nebude s tímto průvodcem fungovat. Vytvořte prostředek LUIS na řídicím panelu Azure a přiřaďte ho do aplikace LUIS. Pro tuto příručku můžete použít bezplatnou úroveň předplatného.
 
 Po vytvoření prostředku LUIS na řídicím panelu Azure se přihlaste k [portálu Luis](https://www.luis.ai/home), vyberte svou aplikaci na stránce **Moje aplikace** a pak přepněte na stránku **správy** aplikace. Nakonec na bočním panelu vyberte **klíče a koncové body** .
 
@@ -128,7 +128,7 @@ Následující části obsahují informace o kódu.
 Nejdřív je potřeba vytvořit konfiguraci řeči z klíče a oblasti koncového bodu LUIS. Pomocí konfigurací pro rozpoznávání řeči můžete vytvářet nástroje pro rozpoznávání různých funkcí sady Speech SDK. Konfigurace řeči má několik způsobů, jak zadat předplatné, které chcete použít; zde používáme `FromSubscription`, které přebírají klíč a oblast předplatného.
 
 > [!NOTE]
-> Použijte klíč a oblast předplatného LUIS, nikoli předplatné služby Speech Services.
+> Použijte klíč a oblast předplatného LUIS, nikoli předplatné služby Speech.
 
 Potom pomocí `new IntentRecognizer(config)` vytvořte nástroj pro rozpoznávání záměru. Vzhledem k tomu, že konfigurace už zná předplatné, které se má použít, nemusíte při vytváření nástroje pro rozpoznávání zadat klíč a koncový bod předplatného.
 

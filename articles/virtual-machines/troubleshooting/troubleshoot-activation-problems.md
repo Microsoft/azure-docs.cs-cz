@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058132"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819099"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Řešení potíží s aktivací virtuálních počítačů Azure s Windows
 
@@ -26,7 +26,7 @@ Pokud máte potíže při aktivaci virtuálního počítače Azure s Windows, kt
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Principy koncových bodů služby Azure KMS pro aktivaci produktů Windows v Azure Virtual Machines
 
-Azure používá pro aktivaci prostřednictvím služby správy různých koncových bodů v závislosti na oblasti cloudu, ve které se virtuální počítač nachází. Při použití tohoto průvodce odstraňováním potíží použijte příslušný koncový bod služby správy klíčů, který se vztahuje k vaší oblasti.
+Azure v závislosti na oblasti cloudu, ve které se nachází virtuální počítač, používá jiné koncové body pro službu správy klíčů (služby správy klíčů). Při použití tohoto průvodce odstraňováním potíží použijte příslušný koncový bod služby správy klíčů, který se vztahuje k vaší oblasti.
 
 * Oblasti veřejného cloudu Azure: kms.core.windows.net:1688
 * Azure Čína 21Vianet National cloudové oblasti: kms.core.chinacloudapi.cn:1688
@@ -54,7 +54,7 @@ Obecně dochází k problémům s aktivací virtuálních počítačů Azure, po
 
 Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat příslušný instalační klíč klienta služby správy klíčů pro virtuální počítač.
 
-1. Spusťte příkaz **slmgr. vbs/dlv** na příkazovém řádku se zvýšenými oprávněními. Zkontrolujte hodnotu Popis ve výstupu a pak určete, jestli se vytvořila z média pro maloobchodní (maloobchodní kanál) nebo z multilicenčního programu (VOLUME_KMSCLIENT).
+1. Spusťte příkaz **slmgr. vbs/dlv** na příkazovém řádku se zvýšenými oprávněními. Zkontrolujte hodnotu Popis ve výstupu a pak určete, jestli se vytvořila z maloobchodního média (MALOOBCHODNÍho kanálu) nebo z multilicenčního programu (VOLUME_KMSCLIENT).
   
 
     ```
@@ -87,14 +87,14 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
 
-    Výstupem příkazu by mělo být: Název počítače služby správy klíčů nastavený na kms.core.windows.net:1688 byl úspěšně nastaven.
+    Příkaz by měl vracet: název počítače služby správy klíčů nastavený tak, aby se kms.core.windows.net:1688 úspěšně.
 
 4. Pomocí Psping ověřte, že máte připojení k serveru služby správy klíčů. Přejděte do složky, do které jste extrahovali stažený soubor Pstools.zip, a spusťte následující:
   
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-   Ujistěte se, že se na předposledním řádku výstupu zobrazí následující: Odesláno = 4, přijato = 4, ztraceno = 0 (0% ztráta).
+   V druhém řádku výstupu se ujistěte, že vidíte: odesláno = 4, přijato = 4, ztraceno = 0 (0% ztráta).
 
    Pokud je ztráta větší než 0 (nula), virtuální počítač nemá připojení k serveru služby správy klíčů. V takové situaci, pokud je virtuální počítač ve virtuální síti a má zadaný vlastní server DNS, musíte zajistit, aby server DNS mohl přeložit kms.core.windows.net. Případně můžete změnit server DNS na takový, který překládá kms.core.windows.net.
 
@@ -112,7 +112,7 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
     
     **Aktivace systému Windows (R), edice ServerDatacenter (12345678-1234-1234-1234-12345678)...  Produkt byl úspěšně aktivován.**
 
-## <a name="faq"></a>Nejčastější dotazy 
+## <a name="faq"></a>Časté otázky 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Vytvořil (a) jsem Windows Server 2016 z Azure Marketplace. Potřebuji nakonfigurovat klíč služby správy klíčů pro aktivaci Windows serveru 2016? 
 
@@ -130,6 +130,6 @@ Ano.
  
 Po vypršení období odkladu a Windows se stále neaktivuje Windows Server 2008 R2 a novější verze Windows zobrazí další oznámení o aktivaci. Tapeta plochy zůstane černá a web Windows Update bude instalovat pouze zabezpečení a kritické aktualizace, ale ne volitelné aktualizace. Podívejte se na část oznámení v dolní části stránky [licenční podmínky](https://technet.microsoft.com/library/ff793403.aspx) .   
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 
-Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.

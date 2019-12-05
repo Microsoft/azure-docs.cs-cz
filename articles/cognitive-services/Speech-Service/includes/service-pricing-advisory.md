@@ -1,5 +1,5 @@
 ---
-title: Hlasové služby
+title: Služba řeči
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/02/2019
 ms.author: dapine
-ms.openlocfilehash: fc817a1bbec1871a212cc9e05eeace20f2c715d4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ceb062cc5272fae0030c331ad7c9c6c870763df7
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773350"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829124"
 ---
 > [!NOTE]
-> Při testování provede systém přepis. To je důležité mít na paměti, protože ceny se liší podle nabídky služeb a úrovně předplatného. [Nejnovější podrobnosti](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)najdete v oficiálních službách Azure Cognitive Services Price Speech Services.
+> Při testování provede systém přepis. To je důležité mít na paměti, protože ceny se liší podle nabídky služeb a úrovně předplatného. Nejnovější informace najdete v oficiálních [informacích](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)o službě Azure Cognitive Services Price Speech.

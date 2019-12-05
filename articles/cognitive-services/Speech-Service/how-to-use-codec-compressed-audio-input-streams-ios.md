@@ -1,7 +1,7 @@
 ---
 title: Kodek Stream komprimovaný zvuk se sadou Speech SDK v iOS
 titleSuffix: Azure Cognitive Services
-description: Naučte se streamovat komprimovaný zvuk do služby Azure Speech Services pomocí sady Speech SDK v iOS.
+description: Naučte se streamovat komprimovaný zvuk do služby Speech pomocí sady Speech SDK v iOS.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1d78c690fd07eb974418f0ea17d71d1f394d863d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109585"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805854"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Postupy: použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v iOS
 
@@ -32,7 +32,7 @@ Informace o WAV/PCM najdete v dokumentaci k hlavní Speech. Mimo zvuk WAV/PCM js
 - ALAW v kontejneru WAV
 - MULAW v kontejneru WAV
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nelze tyto funkce dodávat se sadou SDK, ale Obálková knihovna obsahující tyto funkce musí být sestavena vývojáři aplikací a dodávána s aplikacemi, které používají sadu SDK.
 
@@ -42,7 +42,7 @@ Otevřete projekt v Xcode a sestavte ho pro **obecný cíl zařízení iOS** –
 
 Krok sestavení vygeneruje sadu dynamického rozhraní s dynamickou knihovnou pro všechny nezbytné architektury s názvem `GStreamerWrapper.framework`.
 
-Tato architektura musí být zahrnutá ve všech aplikacích, které používají komprimované zvukové streamy se sadou Speech Services SDK.
+Tato architektura musí být zahrnutá ve všech aplikacích, které používají komprimované zvukové streamy pomocí sady SDK služby pro rozpoznávání řeči.
 
 Použijte následující nastavení v projektu Xcode k tomuto účelu:
 
@@ -50,11 +50,11 @@ Použijte následující nastavení v projektu Xcode k tomuto účelu:
 1. Upravte cesty k architekturám v _nastavení projektu_.
    1. Na kartě **Obecné** pod hlavičkou **vložená binární soubory** přidejte knihovnu SDK jako rozhraní: **přidejte vložené binární soubory** > **Přidat další...** > přejděte do adresáře, který jste zvolili, a vyberte obě architektury.
    1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
-1. Do části `$(SRCROOT)/..`Framework Search Paths _(Cesty pro hledání rozhraní) pod nadpisem_Search Paths **(Cesty pro hledání) přidejte adresář**.
+1. Do části _Framework Search Paths_ (Cesty pro hledání rozhraní) pod nadpisem **Search Paths** (Cesty pro hledání) přidejte adresář `$(SRCROOT)/..`.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
 
-Pokud chcete streamovat v komprimovaném zvukovém formátu ke službám Speech, vytvořte `SPXPullAudioInputStream` nebo `SPXPushAudioInputStream`.
+Pokud chcete streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání řeči, vytvořte `SPXPullAudioInputStream` nebo `SPXPushAudioInputStream`.
 
 Následující fragment kódu ukazuje, jak vytvořit `SPXAudioConfiguration` z instance `SPXPushAudioInputStream`a určením MP3 jako kompresního formátu datového proudu.
 
