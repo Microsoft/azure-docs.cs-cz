@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: cb37bd0c83956b9858639a78d4995e14811498e5
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559324"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805752"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -66,11 +66,11 @@ Další informace o velikostech výpočtů pro úroveň služby technologie šk�
 
 Úroveň služby Vcore je k dispozici pouze v [modelu](sql-database-service-tiers-vcore.md). Pro zarovnávání s novou architekturou se cenový model mírně liší od Pro obecné účely nebo Pro důležité obchodní informace úrovně služeb:
 
-- **Výpočetní**prostředí:
+- **Výpočty:**
 
   Cena za výpočetní jednotku ve vašem měřítku je na jednu repliku. [Zvýhodněné hybridní využití Azureová](https://azure.microsoft.com/pricing/hybrid-benefit/) cena se použije pro automatické čtení replik škálování. Ve výchozím nastavení vytvoříme primární repliku a jednu repliku jen pro čtení na databázi s více instancemi.  Uživatelé můžou upravit celkový počet replik, včetně primární z 1-5.
 
-- **Úložiště**:
+- **Úložiště:**
 
   Při konfiguraci databáze v rámci škálování není nutné zadávat maximální velikost dat. Ve vrstvě s hyperškálováním se účtuje úložiště pro databázi podle skutečného využití. Úložiště se automaticky přiděluje mezi 10 GB a 100 TB, v přírůstcích, které se dynamicky upravují mezi 10 GB a 40 GB.  
 
@@ -246,7 +246,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Elastické fondy |  Elastické fondy se v současnosti nepodporují u SQL Databaseho škálování.|
 | Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BACPAC nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.).|
 | Migrace databází pomocí trvalých objektů v paměti | Pro škálování podporuje pouze netrvalé objekty v paměti (typy tabulek, nativní aktualizace SPs a funkce).  Trvalé tabulky v paměti a další objekty je nutné vyřadit a znovu vytvořit jako objekty, které nejsou v paměti, před migrací databáze na úroveň služby pro škálování na úrovni služby.|
-| Sledování změn | Nemůžete ještě konfigurovat a používat Change Tracking s databázemi Azure SQL s škálovatelným škálováním. |
+| Sledování změn | Change Tracking je v současné době ve verzi Public Preview a dá se povolit pro nové nebo existující databáze s více instancemi. |
 | Geografická replikace  | U Azure SQL Databaseho škálování se ještě nedá konfigurovat geografickou replikaci. |
 | Kopie databáze | Ještě nemůžete použít kopii databáze k vytvoření nové databáze ve službě Azure SQL s škálovatelným škálováním. |
 | Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obecně označované jako BYOK) ještě není podporované pro Azure SQL Database škálování, ale TDE se spravovanými klíči služby se plně podporuje. |

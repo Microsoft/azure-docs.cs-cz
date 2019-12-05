@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 6b9d5eb3adb8cad963ec513d327d237e73f94878
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535584"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803729"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -141,7 +141,7 @@ Pokud spravujete zařízení s MDM nebo Microsoft Intune, ale v zásadách podm�
 #### <a name="device-trust-access-policies-recommended-reading"></a>Doporučené čtení zásad přístupu důvěryhodnosti zařízení
 
 - [Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Konfigurace identit a přístupu k zařízením](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Konfigurace přístupu k identity a zařízení](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello pro firmy
 
@@ -205,7 +205,7 @@ S [pojmenovanými umístěními](https://docs.microsoft.com/azure/active-directo
 
 Podle priority použijte následující tabulku k vyhledání doporučeného řešení, které nejlépe vyhovuje potřebám vaší organizace:
 
-| **Priorita** | **Scénář** | **Základě** |
+| **Priorita** | **Scénář** | **Doporučení** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1\. místo | Pokud používáte KOSMETICE nebo PTA a nebyla definována pojmenovaná umístění | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
 | 2 | Pokud jste federované a nepoužíváte deklaraci "insideCorporateNetwork" a pojmenovaná umístění nebyla definována. | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
@@ -256,7 +256,7 @@ Podmíněný přístup je důležitým nástrojem pro zlepšení stav zabezpeče
 #### <a name="conditional-access-recommended-reading"></a>Doporučené čtení pro podmíněný přístup
 
 - [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Konfigurace identit a přístupu k zařízením](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Konfigurace přístupu k identity a zařízení](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Odkaz na nastavení Azure Active Directory podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Společné zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -363,7 +363,7 @@ Přístup k aktivitě přihlašování, auditům a rizikovým událostem pro Azu
 - [Získání dat pomocí rozhraní API pro vytváření sestav Azure AD s certifikáty](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
 - [Microsoft Graph pro Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 - [Reference k rozhraní API aktivity správy Office 365](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
-- [Použití balíčku obsahu Azure Active Directory Power BI](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- [Použití balíčku obsahu Azure Active Directory Power BI](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>Souhrn
 

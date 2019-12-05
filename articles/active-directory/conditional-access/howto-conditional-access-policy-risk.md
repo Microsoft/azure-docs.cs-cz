@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 102371f8af45a1a51715dbfb11afc3f0f4e457d7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e4130b05be1a4abb2166514b730c3d21bd5ece97
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150697"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803576"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Podmíněný přístup: podmíněný přístup na základě rizik
 

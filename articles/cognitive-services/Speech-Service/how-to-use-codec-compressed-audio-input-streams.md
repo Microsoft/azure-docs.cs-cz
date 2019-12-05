@@ -1,7 +1,7 @@
 ---
 title: Kodek Stream komprimovaný zvuk se sadou Speech SDK – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Naučte se streamovat komprimovaný zvuk do služby Azure Speech Services pomocí sady Speech SDK. K C++dispozici C#pro systémy, a Java pro Linux, Java v Androidu a objektivní-C v iOS.
+description: Naučte se streamovat komprimovaný zvuk do služby Speech pomocí sady Speech SDK. K C++dispozici C#pro systémy, a Java pro Linux, Java v Androidu a objektivní-C v iOS.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 668964c597b8d748220cbeec68e0ba68300cb406
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464359"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805820"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Použití komprimovaného zvukového vstupu pomocí kodeku se sadou Speech SDK
 
@@ -43,7 +43,7 @@ sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugin
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
 
-Pokud chcete streamovat v komprimovaném zvukovém formátu ke službám Speech, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream`. Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
+Pokud chcete streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání řeči, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream`. Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
 
 Řekněme, že máte vstupní třídu streamu nazvanou `myPushStream` a používáte OPUS/OGG. Váš kód může vypadat takto:
 

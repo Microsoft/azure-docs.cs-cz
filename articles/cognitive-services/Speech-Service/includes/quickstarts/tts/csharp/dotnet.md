@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: af101862e824d6527c08c232812913565536bb4a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38dac73d253245fce86ac419c7a4eb3a106df3f0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503147"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818323"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -32,7 +32,7 @@ Než začnete, nezapomeňte:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/text-to-speech/helloworld/Program.cs#code)]
 
-1. Vyhledejte řetězec `YourSubscriptionKey`a nahraďte ho klíčovým předplatným služby Speech Services.
+1. Vyhledejte řetězec `YourSubscriptionKey`a nahraďte ho klíčovým předplatným služby Speech.
 
 1. Vyhledejte řetězec `YourServiceRegion`a nahraďte ho [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) , která je přidružená k vašemu předplatnému. Pokud například používáte bezplatné zkušební předplatné, oblast je `westus`.
 
@@ -44,7 +44,7 @@ Než začnete, nezapomeňte:
 
 1. Zvolte **ladění** > **Spustit ladění** (nebo vyberte **F5**) a spusťte aplikaci **HelloWorld** .
 
-1. Zadejte anglickou frázi nebo větu. Aplikace přenáší váš text na hlasové služby, které do aplikace odesílají syntetizované rozpoznávání řeči, aby bylo možné na svém mluvčím hrát.
+1. Zadejte anglickou frázi nebo větu. Aplikace přenáší váš text do služby pro rozpoznávání řeči, která odešle do aplikace syntetizované rozpoznávání řeči, aby bylo možné na svém mluvčím hrát.
 
    ![Uživatelské rozhraní syntézy řeči](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
@@ -52,7 +52,7 @@ Než začnete, nezapomeňte:
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

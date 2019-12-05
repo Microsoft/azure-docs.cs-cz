@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Převod řeči na text, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: bcd0ef8766bfa293534797a95d6d4ccecbc14c04
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 990be17eb6f326241ceb2cb7050a404ff349c441
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503105"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817022"
 ---
 > [!div class="nextstepaction"]
 > [Prozkoumejte ukázky Pythonu na GitHubu](https://aka.ms/speech/github-python)

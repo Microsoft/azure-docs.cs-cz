@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 84b1712ac89751ca8eb5b1161221f511cf699374
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c7e63008e6c54d517c0d4c0e1661a9836f9f38c3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795619"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816064"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -29,7 +29,7 @@ Než začnete, nezapomeňte:
 > * [Nastavení vývojového prostředí](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Vytvořit prázdný ukázkový projekt](../../../../quickstarts/create-project.md?tabs=dotnet)
 
-## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v sadě Visual Studio
 
 Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 

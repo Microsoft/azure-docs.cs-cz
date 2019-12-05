@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278662"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806503"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -25,7 +25,7 @@ Pomocí řešení Update Management můžete spravovat aktualizace a opravy pro 
 - Naplánovat instalaci požadovaných aktualizací
 - Zkontrolujte výsledky nasazení a ověřte, jestli se aktualizace úspěšně nastavily na všechny virtuální počítače, pro které je povolená Update Management.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít Update Management, potřebujete:
 
@@ -37,7 +37,7 @@ Pokud chcete použít Update Management, potřebujete:
 
 Update Management se podporuje v těchto operačních systémech:
 
-|Operační systém  |Poznámky:  |
+|Operační systém  |Poznámky  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze posouzení aktualizací.         |
 |Windows Server 2008 R2 SP1 a novější     |Je vyžadován Windows PowerShell 4,0 nebo novější. ([Stáhnout WMF 4,0](https://www.microsoft.com/download/details.aspx?id=40855))</br> Pro zvýšení spolehlivosti se doporučuje prostředí Windows PowerShell 5,1. ([Stáhnout WMF 5,1](https://www.microsoft.com/download/details.aspx?id=54616))         |
@@ -99,7 +99,7 @@ Agenti, kteří jsou nainstalováni na virtuálních počítačích a počítač
 
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje:
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a pak inicializuje instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
@@ -114,11 +114,15 @@ Kromě plánu vyhledávání se kontrola kompatibility aktualizací zahájila do
 
 U počítače se systémem Linux se kontrola dodržování předpisů provádí ve výchozím nastavení každou hodinu. Pokud se agent MMA restartuje, zahájí se kontrola kompatibility do 15 minut.
 
-Může trvat 30 minut a 6 hodin, než se na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
+Zobrazení aktuálních dat o spravovaných počítačích může trvat 30 minut nebo až 6 hodin.
 
 ## <a name="schedule-an-update-deployment"></a>Naplánování nasazení aktualizace
 
 Pokud chcete nainstalovat aktualizace, naplánujte nasazení, které se zarovnává s plánem vydávání verzí a oknem služby. Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
+
+>[!NOTE]
+>Při plánování nasazení aktualizace se vytvoří prostředek [plánu](shared-resources/schedules.md) propojený s runbookm **patch-MicrosoftOMSComputers** , který zpracovává nasazení aktualizace na cílových počítačích. Pokud odstraníte prostředek plánu z Azure Portal nebo pomocí PowerShellu po vytvoření nasazení dojde k přerušení naplánovaného nasazení aktualizace a při pokusu o překonfiguraci z portálu se zobrazí chyba. Zdroj plánu lze odstranit pouze odstraněním odpovídajícího plánu nasazení.
+>
 
 Chcete-li naplánovat nové nasazení aktualizací pro jeden nebo více virtuálních počítačů, vyberte v části **Správa aktualizací**možnost **naplánovat nasazení aktualizace**.
 

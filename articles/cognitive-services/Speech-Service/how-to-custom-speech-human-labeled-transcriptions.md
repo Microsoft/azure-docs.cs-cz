@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1eeb2e7ccf5c365fedd02a8de4c6b442dd3d5bc8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075818"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806058"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit přepisy s lidským popiskem
 
@@ -31,7 +31,7 @@ Tady je pár příkladů:
 
 | Znaky, které se mají zabránit | Nahrazení | Poznámky |
 | ------------------- | ------------ | ----- |
-| Hello World | Hello World | Levé a pravé uvozovky se nahradily odpovídajícími znaky ASCII. |
+| Hello World | "Hello world" | Levé a pravé uvozovky se nahradily odpovídajícími znaky ASCII. |
 | Den Jan | Den Jan | Apostrof byl nahrazen příslušným znakem ASCII. |
 | to bylo dobré – ne, bylo skvělé! | je dobrá – ne, bylo skvělé! | Em pomlčka byla nahrazena dvěma pomlčkami. |
 
@@ -57,7 +57,7 @@ Tady je několik příkladů normalizace, které byste měli provést na přepis
 | Moje krevní typ je O +         | Můj typ krevního typu je O kladné           |
 | Voda je H20                | Voda je H 2 O                        |
 | Hraní OU812 po Van Halen     | Přehrát O U 8 1 2 od Van Halen           |
-| UTF-8 s BOM              | U T F 8 pomocí kusovníku                      |
+| UTF-8 s BOM              | U T F 8 pomocí kusovníku                      |
 
 Následující pravidla normalizace se automaticky aplikují na Přepisy:
 

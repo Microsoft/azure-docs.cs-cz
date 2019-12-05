@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578219"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816376"
 ---
 # <a name="create-a-tenant-model-preview"></a>Vytvoření modelu tenanta (Preview)
 
@@ -61,7 +61,7 @@ Aby bylo možné používat model tenanta se sadou Speech SDK, budete potřebova
 5. Pokud chcete vytvořit prostředek, postupujte podle pokynů na obrazovce. Zjisti:
    * **Umístění** je nastaveno na hodnotu **eastus** nebo **westus**.
    * **Cenová úroveň** je nastavená na **S0**.
-6. Klikněte na možnost **Vytvořit**.
+6. Klikněte na **Vytvořit**.
 7. Po několika minutách se prostředek vytvoří. Klíč předplatného je k dispozici v části **Přehled** pro váš prostředek.
 
 ## <a name="create-a-model"></a>Vytvoření modelu
@@ -71,7 +71,7 @@ Až správce povolí model tenanta pro vaši organizaci, můžete vytvořit jazy
 1. Přihlaste se ke službě [Speech Studio](https://speech.microsoft.com/).
 2. V pravém horním rohu vyhledejte a klikněte na ikonu ozubeného kolečka (nastavení) a pak vyberte **Nastavení modelu tenanta**.
 
-   ![Nabídka nastavení](media/tenant-language-model/tenant-language-settings.png)
+   ![Nabídka Nastavení](media/tenant-language-model/tenant-language-settings.png)
 
 3. V tomto okamžiku se zobrazí zpráva s informacemi o tom, jestli jste oprávněni vytvořit model tenanta.
    > [!NOTE]
@@ -89,9 +89,9 @@ Když je model tenanta připravený, nasaďte svůj model pomocí těchto kroků
 1. Klikněte na tlačítko **Zobrazit model** v e-mailu s potvrzením, které jste dostali, nebo se přihlaste ke službě [Speech Studio](https://speech.microsoft.com/)
 2. V pravém horním rohu vyhledejte a klikněte na ikonu ozubeného kolečka (nastavení) a pak vyberte **Nastavení modelu tenanta**.
 
-   ![Nabídka nastavení](media/tenant-language-model/tenant-language-settings.png)
+   ![Nabídka Nastavení](media/tenant-language-model/tenant-language-settings.png)
 
-3. Klikněte na **nasadit**.
+3. Klikněte na tlačítko **nasazení**.
 4. Při nasazení modelu se stav změní na **nasazeno**.
 
 ## <a name="use-your-model-with-the-speech-sdk"></a>Použití modelu se sadou Speech SDK

@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ee7a03f27ab03feadedb7ac8441675a90468655c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535805"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807404"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Zpracování oznámení o plánované údržbě
 
@@ -80,7 +80,7 @@ Služba samoobslužná údržba se doporučuje používat v následujících př
 
 **A:** Virtuální počítače nasazené ve skupině dostupnosti nebo ve službě Virtual Machine Scale Sets mají pojem aktualizačních domén (UD). Při provádění údržby Azure respektuje omezení UD a nerestartuje virtuální počítače z různých UD (v rámci stejné skupiny dostupnosti).  Azure také před přechodem na další skupinu virtuálních počítačů počká aspoň 30 minut. 
 
-Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtuální počítače v Azure](/linux/availability.md).
+Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtuální počítače v Azure](./linux/availability.md).
 
 **Otázka: Návody dostávat oznámení o plánované údržbě?**
 
@@ -92,7 +92,7 @@ Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtu�
 
 **Otázka: existuje způsob, jak přesně zjistit, kdy to bude mít dopad na můj virtuální počítač?**
 
-**A:** Při nastavování plánu definujeme časový interval několik dní. Přesné pořadí serverů (a virtuálních počítačů) v rámci tohoto okna však není známé. Zákazníci, kteří chtějí znát přesný čas pro své virtuální počítače, můžou použít [naplánované události](/linux/scheduled-events.md) a dotaz z virtuálního počítače a získat oznámení o 15 minutách před RESTARTOVÁNÍM virtuálního počítače.
+**A:** Při nastavování plánu definujeme časový interval několik dní. Přesné pořadí serverů (a virtuálních počítačů) v rámci tohoto okna však není známé. Zákazníci, kteří chtějí znát přesný čas pro své virtuální počítače, můžou použít [naplánované události](./linux/scheduled-events.md) a dotaz z virtuálního počítače a získat oznámení o 15 minutách před RESTARTOVÁNÍM virtuálního počítače.
 
 **Otázka: jak dlouho bude trvat restartování virtuálního počítače?**
 

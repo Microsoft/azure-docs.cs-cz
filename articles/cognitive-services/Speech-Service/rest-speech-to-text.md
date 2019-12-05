@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f617bed0d2d93d8c8586d5708e0e356934817f4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091215"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816630"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
-Jako alternativu k [sadě Speech SDK](speech-sdk.md)umožňuje služba Speech Services převod řeči na text pomocí REST API. Každý dostupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který chcete použít.
+Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API. Každý dostupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který chcete použít.
 
 Než začnete používat převod řeči na text, REST API pochopit:
 
@@ -43,8 +43,8 @@ Tyto parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
 | Parametr | Popis | Povinné / volitelné |
 |-----------|-------------|---------------------|
 | `language` | Identifikuje mluvený jazyk, který je právě rozpoznán. Zobrazit [podporované jazyky](language-support.md#speech-to-text). | Požaduje se |
-| `format` | Určuje formát výsledku. Platné hodnoty jsou `simple` a `detailed`. Jednoduché výsledky obsahují `RecognitionStatus`, `DisplayText`, `Offset`, a `Duration`. Podrobné odpovědi zahrnout více výsledků s jistotou hodnotami a čtyři různé reprezentace. Ve výchozím nastavení je `simple`. | Nepovinné |
-| `profanity` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `masked`, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku nebo `raw`, což zahrnuje vulgární výrazy ve výsledku. Ve výchozím nastavení je `masked`. | Nepovinné |
+| `format` | Určuje formát výsledku. Platné hodnoty jsou `simple` a `detailed`. Jednoduché výsledky obsahují `RecognitionStatus`, `DisplayText`, `Offset`, a `Duration`. Podrobné odpovědi zahrnout více výsledků s jistotou hodnotami a čtyři různé reprezentace. Ve výchozím nastavení je `simple`. | Volitelné |
+| `profanity` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `masked`, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku nebo `raw`, což zahrnuje vulgární výrazy ve výsledku. Ve výchozím nastavení je `masked`. | Volitelné |
 
 ## <a name="request-headers"></a>Hlavičky požadavku
 
@@ -52,12 +52,12 @@ Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod ř
 
 |Hlavička| Popis | Povinné / volitelné |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech Services | Buď toto záhlaví nebo `Authorization` je povinný. |
+| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví nebo `Authorization` je povinný. |
 | `Authorization` | Autorizační token předcházet slovo `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví nebo `Ocp-Apim-Subscription-Key` je povinný. |
 | `Content-type` | Popisuje formátu a kodek zadaná zvuková data. Platné hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus`. | Požaduje se |
-| `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Nepovinné |
-| `Expect` | Pokud pomocí přenosu v bloku, pošlete `Expect: 100-continue`. Služba Speech Services potvrdí počáteční požadavek a očekává další data.| Požadováno při odesílání bloku zvuková data. |
-| `Accept` | Pokud je zadán, musí být `application/json`. Služba Speech Services poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept`. | Volitelné, ale doporučené. |
+| `Transfer-Encoding` | Určuje, že blokového zvukových dat je odesíláno, místo jednoho souboru. Tuto hlavičku používají pouze bloků zvuková data. | Volitelné |
+| `Expect` | Pokud pomocí přenosu v bloku, pošlete `Expect: 100-continue`. Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Požadováno při odesílání bloku zvuková data. |
+| `Accept` | Pokud je zadán, musí být `application/json`. Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept`. | Volitelné, ale doporučené. |
 
 ## <a name="audio-formats"></a>Formáty zvuku
 
@@ -69,7 +69,7 @@ Zvuk se poslala v těle HTTP `POST` požadavku. Musí být v jednom z formátů,
 | OGG | DÍLE | 16 bitů | 16 kHz, mono |
 
 >[!NOTE]
->Výše uvedené formáty jsou podporovány prostřednictvím REST API a WebSocket ve službě Speech Services. [Sadou SDK pro řeč](speech-sdk.md) aktuálně podporuje jenom WAV naformátuje PCM kodek.
+>Výše uvedené formáty jsou podporovány prostřednictvím REST API a WebSocket ve službě Speech. [Sadou SDK pro řeč](speech-sdk.md) aktuálně podporuje jenom WAV naformátuje PCM kodek.
 
 ## <a name="sample-request"></a>Ukázková žádost
 
@@ -91,7 +91,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
 | Stavový kód HTTP | Popis | Možný důvod |
 |------------------|-------------|-----------------|
-| 100 | pokračovat | Byla přijata v prvotní žádosti. Pokračujte v odesílání zbývajícími daty. (Používá se s bloku.) |
+| 100 | Pokračovat | Byla přijata v prvotní žádosti. Pokračujte v odesílání zbývajícími daty. (Používá se s bloku.) |
 | 200 | OK | Žádost byla úspěšná. text odpovědi je objekt JSON. |
 | 400 | Nesprávná žádost | Kód jazyka není k dispozici, nejedná se o podporovaný jazyk, neplatný zvukový soubor atd. |
 | 401 | Neautorizováno | Klíč předplatného nebo autorizační token je neplatný. v zadané oblasti nebo neplatný koncový bod. |
@@ -99,7 +99,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
 ## <a name="chunked-transfer"></a>Bloku
 
-Přenos v bloku dat (`Transfer-Encoding: chunked`) může pomáhat snižovat latenci při rozpoznávání. Umožňuje službám řeči zahájit zpracování zvukového souboru během přenosu. Rozhraní REST API neposkytuje výsledky částečné nebo dočasné.
+Přenos v bloku dat (`Transfer-Encoding: chunked`) může pomáhat snižovat latenci při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. Rozhraní REST API neposkytuje výsledky částečné nebo dočasné.
 
 Tento vzorový kód ukazuje, jak posílat zvuk v blocích. Zvukový soubor záhlaví by měl obsahovat pouze u prvního bloku. `request` připojen objekt HTTPWebRequest na příslušný koncový bod REST. `audioFile` je cesta k zvukový soubor na disku.
 
@@ -153,7 +153,7 @@ Výsledky jsou k dispozici jako dokumenty JSON. `simple` Formát obsahuje tato p
 
 `RecognitionStatus` Pole může obsahovat tyto hodnoty:
 
-| Status | Popis |
+| Stav | Popis |
 |--------|-------------|
 | `Success` | Rozpoznávání byla úspěšná a `DisplayText` pole je k dispozici. |
 | `NoMatch` | V zvukový datový proud byl zjištěn řeči, ale žádná slova v cílovém jazyce se shoda našla. Obvykle znamená, že jazyk rozpoznávání je jiný jazyk než ty, které uživatel to mluví. |

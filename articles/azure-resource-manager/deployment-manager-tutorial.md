@@ -2,15 +2,15 @@
 title: Použití Azure Deployment Manager k nasazení šablon
 description: Naučte se používat Správce prostředků šablony s Azure Deployment Manager k nasazení prostředků Azure.
 author: mumian
-ms.date: 11/21/2019
+ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f8091aedcf1f03ef83dbab3b27e9af6b2912d25a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 38f6374c9a1f3930691a986f33620580ac7fdb0c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789984"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815225"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Public Preview)
 
@@ -169,7 +169,7 @@ foreach ($x in $filesToUpload) {
     Set-AzStorageBlobContent -File $x.fullname -Container $storageContainer.Name -Blob $targetPath -Context $storageContext | Out-Null
 }
 
-$token = New-AzStorageContainerSASToken -name $containerName -Context $storageContext -Permission rl -ExpiryTime (Get-date).AddMonths(1)  -Protocol HttpsOrHttp
+$token = New-AzStorageContainerSASToken -name $containerName -Context $storageContext -Permission rl -ExpiryTime (Get-date).AddMonths(1)
 
 $url = $storageAccount.PrimaryEndpoints.Blob + $containerName + $token
 

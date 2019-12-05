@@ -3,12 +3,12 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f1c89b9ac7aeb51f43ef84267b20f83b408fd56c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172471"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806435"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -60,7 +60,7 @@ Azure Backup převezme snímky podle plánu zálohování.
 
 - **Virtuální počítače s Windows:** V případě virtuálních počítačů s Windows se služba Backup koordinuje se stínovou kopií svazku, aby vybrala snímek konzistentní vzhledem k aplikacím na discích virtuálních počítačů.
 
-  - Ve výchozím nastavení Azure Backup provede úplné zálohování VSS. [Další informace](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)
+  - Ve výchozím nastavení Azure Backup provede úplné zálohování VSS. [Další informace](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
   - Chcete-li změnit nastavení tak, aby Azure Backup trvalo zálohování kopírováním služby VSS, nastavte následující klíč registru z příkazového řádku:
 
     **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent"/v USEVSSCOPYBACKUP/t REG_SZ/d TRUE/f**
@@ -79,14 +79,14 @@ Následující tabulka vysvětluje různé typy konzistence snímků:
 --- | --- | --- | ---
 **Konzistentní vzhledem k aplikacím** | Zálohování konzistentní s aplikací zaznamenává obsah paměti a nedokončené vstupně-výstupní operace. Snímky konzistentní vzhledem k aplikacím používají zapisovač VSS (nebo předzálohovací skripty pro Linux), aby se zajistila konzistence dat aplikace před tím, než dojde k zálohování. | Při obnovování virtuálního počítače pomocí snímku konzistentního vzhledem k aplikacím se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace se spustí v konzistentním stavu. | Windows: Všechny zapisovače VSS byly úspěšné.<br/><br/> Linux: jsou nakonfigurovány a úspěšně spouštěny skripty před prodejem.
 **Konzistentní se systémem souborů** | Zálohy konzistentní se systémem souborů poskytují konzistenci tím, že pořizuje všechny soubory ve stejnou dobu.<br/><br/> | Při obnovování virtuálního počítače pomocí snímku konzistentního se systémem souborů se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace potřebují implementovat vlastní mechanizmus "opravování", aby se zajistila konzistence obnovených dat. | Windows: některé zapisovače VSS selhaly. <br/><br/> Linux: výchozí (pokud nejsou nakonfigurovány nebo se nezdařily skripty před prodejem)
-**Konzistentní vzhledem k selháním** | K snímkům konzistentním se selháním obvykle dochází v případě, že se virtuální počítač Azure vypíná v době zálohování. Budou zachycena a zálohována pouze data, která na disku již existují v době zálohování.<br/><br/> Bod obnovení konzistentní vzhledem k selháním nezaručuje konzistenci dat pro operační systém nebo aplikaci. | I když nejsou k dispozici žádné záruky, virtuální počítač se obvykle spustí a potom spustí kontrolu disku, aby opravil chyby poškození. Veškerá data v paměti nebo operace zápisu, které nebyly přeneseny na disk před ztrátou chyby. Aplikace implementují svá vlastní ověření dat. Databázová aplikace může například použít svůj transakční protokol k ověření. Pokud transakční protokol obsahuje položky, které nejsou v databázi, software databáze zahrne transakce zpět, dokud nebudou data konzistentní. | Virtuální počítač je ve stavu vypnutí.
+**Konzistentní vzhledem k selháním** | K snímkům konzistentním se selháním obvykle dochází v případě, že se virtuální počítač Azure vypíná v době zálohování. Budou zachycena a zálohována pouze data, která na disku již existují v době zálohování. | Spustí spouštěcí proces virtuálního počítače následovaný kontrolou disku, aby opravil chyby poškození. Veškerá data v paměti nebo operace zápisu, které nebyly přeneseny na disk před ztrátou chyby. Aplikace implementují svá vlastní ověření dat. Databázová aplikace může například použít svůj transakční protokol k ověření. Pokud transakční protokol obsahuje položky, které nejsou v databázi, software databáze zahrne transakce zpět, dokud nebudou data konzistentní. | Virtuální počítač je ve stavu vypnutí (zastaveno/zrušeno přidělení).
 
 ## <a name="backup-and-restore-considerations"></a>Předpoklady pro zálohování a obnovení
 
 **Aspekty** | **Podrobnosti**
 --- | ---
 **Disk** | Zálohování disků virtuálních počítačů je paralelní. Pokud například virtuální počítač obsahuje čtyři disky, Služba Backup se pokusí zálohovat všechny čtyři disky paralelně. Zálohování je přírůstkové (pouze změněná data).
-**Plánuje** |  Pro snížení zátěže zálohování zálohujte různé virtuální počítače v různou dobu a ujistěte se, že se časy nepřekrývají. Zálohování virtuálních počítačů v současné době způsobuje zablokování provozu.
+**Plánování** |  Pro snížení zátěže zálohování zálohujte různé virtuální počítače v různou dobu a ujistěte se, že se časy nepřekrývají. Zálohování virtuálních počítačů v současné době způsobuje zablokování provozu.
 **Příprava záloh** | Mějte na paměti čas potřebný k přípravě zálohy. Doba přípravy zahrnuje instalaci nebo aktualizaci rozšíření zálohování a aktivaci snímku podle plánu zálohování.
 **Přenos dat** | Zvažte dobu potřebnou pro Azure Backup k identifikaci přírůstkových změn z předchozí zálohy.<br/><br/> V přírůstkové záloze Azure Backup určuje změny pomocí výpočtu kontrolního součtu bloku. Pokud dojde ke změně bloku, je označený pro přenos do trezoru. Služba analyzuje identifikované bloky a snaží se o další minimalizaci množství dat, která se mají přenést. Po vyhodnocení všech změněných bloků Azure Backup přenese změny do trezoru.<br/><br/> Může dojít ke zpoždění mezi pořizováním snímku a jeho zkopírováním do trezoru.<br/><br/> V časech špičky může trvat až osm hodin, než se budou zálohy zpracovávat. Čas zálohování pro virtuální počítač bude pro každodenní zálohování kratší než 24 hodin.
 **Prvotní zálohování** | I když je celková doba zálohování přírůstkových záloh méně než 24 hodin, nemusí se jednat o případ první zálohy. Čas potřebný k prvotnímu zálohování bude záviset na velikosti dat a při zpracování zálohy.
@@ -134,16 +134,6 @@ Datový disk 1 | 4095 GB | 30 GB
 Datový disk 2 | 4095 GB | 0 GB
 
 Skutečná velikost virtuálního počítače v tomto případě je 17 GB + 30 GB + 0 GB = 47 GB. Tato chráněná velikost instance (47 GB) se bude základem pro měsíční faktura. Vzhledem k nárůstu množství dat ve virtuálním počítači se velikost chráněné instance, která se používá pro fakturaci, změní na odpovídající.
-
-<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-
-## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Public Preview: zálohování virtuálního počítače s velikostí disků až do 30 TB
-
-Azure Backup teď podporuje verzi Public Preview větší a výkonnější [Azure Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) o velikosti až 30 TB. Tato verze Preview poskytuje podporu pro spravované virtuální počítače na úrovni produkce.
-
-Zálohy virtuálních počítačů s každou velikostí disků až do 30 TB a maximálně 256 TB v kombinaci pro všechny disky ve virtuálním počítači by měly fungovat bez problémů, aniž by to mělo vliv na stávající zálohy. Není nutná žádná akce uživatele, aby bylo možné získat zálohy na discích s velkým množstvím, pokud je virtuální počítač již nakonfigurován pomocí Azure Backup.
-
-Všechny služby Azure Virtual Machines s velkými disky, které mají nakonfigurovanou zálohu, by měly být úspěšně zálohovány.
 
 ## <a name="next-steps"></a>Další kroky
 

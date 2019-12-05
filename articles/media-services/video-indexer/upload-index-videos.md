@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: juliako
-ms.openlocfilehash: a1fd37b65c3449e7000db6189c8c71def1f96b0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790058"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815398"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -59,7 +59,7 @@ Tento parametr umožňuje určit ID, které bude s videem spojené. ID můžete 
 Adresa URL, která se používá k upozornění na zákazníka (pomocí žádosti POST) o následujících událostech:
 
 - Změna stavu indexování: 
-    - Vlastnosti    
+    - Vlastnosti:    
     
         |Name (Název)|Popis|
         |---|---|
@@ -88,13 +88,13 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují šum na pozadí. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
 
 - `AudioOnly` – indexovat a extrahovat přehledy s využitím jenom zvuku (video se ignoruje)
+- `VideoOnly` – Indexujte a extrahujte přehledy jenom pomocí videa (ignoruje zvuk).
 - `Default` – indexovat a extrahovat přehledy s využitím zvuku i videa
 - `DefaultWithNoiseReduction` – indexovat a extrahovat přehledy ze zvuku i videa při použití algoritmů snížení šumu na zvukový datový proud
-- `VideoOnly` – indexování a extrakce Insights jenom pomocí videa 
 
 Cena závisí na vybrané možnosti indexování.  
 
-### <a name="priority"></a>upřednostněn
+### <a name="priority"></a>priorita
 
 Videa se indexují Video Indexer podle jejich priority. Pro určení priority indexu použijte parametr **priority** . Platné jsou následující hodnoty: **Nízká**, **normální** (výchozí) a **Vysoká**.
 
@@ -128,7 +128,7 @@ Po zkopírování tohoto kódu na vývojovou platformu budete muset zadat dva pa
 
     Pokud chcete získat klíč rozhraní API, Projděte si tento tok:
 
-    * Přejít na https://api-portal.videoindexer.ai/
+    * Přejděte na https://api-portal.videoindexer.ai/
     * Přihlášení
     * Přejít na **produkty** -> **authorization** -> **autorizační předplatné**
     * Zkopírování **primárního klíče**

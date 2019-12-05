@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 077f34e94423918d324eb41b56ab84c64a0db719
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111796"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816193"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý Start: vytvoření hlasového asistenta v jazyce Java v Androidu pomocí sady Speech SDK
 
@@ -28,9 +28,9 @@ Tato aplikace je sestavená pomocí balíčku sady Speech SDK Maven a Android St
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
+- Klíč předplatného Azure pro službu Speech Service. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
 - Dřív vytvořený robot nakonfigurovaný s [kanálem Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Android Studio](https://developer.android.com/studio/) v 3.3 nebo novějších
 
@@ -260,7 +260,7 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
 
     * Místo `YourSpeechSubscriptionKey` použijte váš klíč předplatného.
 
-    * Nahraďte `YourServiceRegion` [oblastí](regions.md) přidruženou k vašemu předplatnému, protože funkce Direct line Speech v současné době podporuje jenom podmnožinu oblastí služby Speech Services. Další informace najdete v tématu [oblasti](regions.md#voice-assistants).
+    * Nahraďte `YourServiceRegion` [oblastí](regions.md) přidruženou k vašemu předplatnému, protože funkce Direct line Speech v současné době podporuje jenom podmnožinu oblastí služby Speech Service. Další informace najdete v tématu [oblasti](regions.md#voice-assistants).
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
@@ -283,9 +283,9 @@ Jakmile se aplikace a její činnost spustí, klikněte na tlačítko a začnět
 > [!div class="nextstepaction"]
 > [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 - [O hlasových asistentcích](voice-assistants.md)
-- [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+- [Získejte zdarma klíč předplatného služby Speech](get-started.md)
 - [Vlastní klíčová slova](speech-devices-sdk-create-kws.md)
 - [Připojení přímého Lineového rozpoznávání řeči k robotovi](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Zkoumání ukázek Java na GitHubu](https://aka.ms/csspeech/samples)

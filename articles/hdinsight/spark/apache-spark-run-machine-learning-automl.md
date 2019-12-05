@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241485"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806911"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení na Apache Spark ve službě HDInsight
 
@@ -71,7 +71,7 @@ dataflow_with_token = dprep.read_csv(
 
 ## <a name="experiment-submission"></a>Odeslání experimentu
 
-V [automatizované konfiguraci machine learningu](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)by měla být vlastnost `spark_context` nastavená tak, aby balíček běžel v distribuovaném režimu. Vlastnost `concurrent_iterations`, což je maximální počet souběžně spuštěných iterací, by měl být nastaven na číslo menší než jádro vykonavatele aplikace Spark.
+V [automatizované konfiguraci machine learningu](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)by měla být vlastnost `spark_context` nastavená tak, aby balíček běžel v distribuovaném režimu. Vlastnost `concurrent_iterations`, což je maximální počet souběžně spuštěných iterací, by měl být nastaven na číslo menší než jádro vykonavatele aplikace Spark.
 
 ## <a name="next-steps"></a>Další kroky
 

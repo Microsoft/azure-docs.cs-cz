@@ -1,5 +1,5 @@
 ---
-title: Použití kontejneru služby Speech s Kubernetes a Helm
+title: Použití kontejnerů služby Speech s Kubernetes a Helm
 titleSuffix: Azure Cognitive Services
 description: Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 42585ae09435e67b7cdea0b437681e2ce044ecd3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b7f8b98e8241b4502c86cce8c893beb315767d55
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383659"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816508"
 ---
-# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Použití kontejneru služby Speech s Kubernetes a Helm
+# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Použití kontejnerů služby Speech s Kubernetes a Helm
 
 Jednou z možností správy vašich místních kontejnerů řeči je použití Kubernetes a Helm. Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby a různé možnosti konfigurace. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [instalace a spuštění kontejnerů služby Speech](speech-container-howto.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů řeči v místním prostředí použijte následující požadavky:
 
@@ -39,8 +39,8 @@ Referenční informace najdete v tématu podrobnosti o [hostitelském počítač
 
 | Služba | PROCESOR/kontejner | Paměť/kontejner |
 |--|--|--|
-| **Převod řeči na text** | jeden dekodér vyžaduje minimálně 1 150 millicores. Pokud je povolená `optimizedForAudioFile`, je potřeba 1 950 millicores. (výchozí: dva dekodéry) | Požadováno: 2 GB<br>Omezeno: 4 GB |
-| **Převod textu na řeč** | Jedna souběžná žádost vyžaduje minimálně 500 millicores. Pokud je povolená `optimizeForTurboMode`, je potřeba 1 000 millicores. (výchozí: dvou souběžných požadavků) | Požadováno: 1 GB<br> Omezeno: 2 GB |
+| **Speech-to-Text** | jeden dekodér vyžaduje minimálně 1 150 millicores. Pokud je povolená `optimizedForAudioFile`, je potřeba 1 950 millicores. (výchozí: dva dekodéry) | Požadováno: 2 GB<br>Omezeno: 4 GB |
+| **Text-to-Speech** | Jedna souběžná žádost vyžaduje minimálně 500 millicores. Pokud je povolená `optimizeForTurboMode`, je potřeba 1 000 millicores. (výchozí: dvou souběžných požadavků) | Požadováno: 1 GB<br> Omezeno: 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Připojení ke clusteru Kubernetes
 

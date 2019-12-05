@@ -1,23 +1,23 @@
 ---
 title: Vysoce dostupné úlohy streamování Sparku v VLÁKNech – Azure HDInsight
 description: Jak nastavit streamování Apache Spark pro scénář s vysokou dostupností ve službě Azure HDInsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/26/2018
-ms.openlocfilehash: 3e48f220035c56d34d6ca5a7347e9a4ee100e1f1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.date: 11/29/2019
+ms.openlocfilehash: ac51b77e1ffc2b476b0a73dac9b6917552a86ce4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241237"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807149"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Vytváření úloh streamování s vysokou dostupností Apache Spark s využitím PŘÍZe
 
-[Apache Spark](https://spark.apache.org/) Streamování umožňuje implementovat škálovatelné a vysoce odolné aplikace odolné proti chybám pro zpracování datových proudů. Můžete připojit aplikace pro streamování Sparku na cluster HDInsight Spark k nejrůznějším zdrojům dat, jako je Azure Event Hubs, Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ](http://zeromq.org/), RAW TCP Sockets nebo monitorováním [ Pro změny Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) systému souborů. Streamování Spark podporuje odolnost proti chybám a zaručuje, že jakákoliv událost se zpracovává přesně jednou, a to i v případě selhání uzlu.
+[Apache Spark](https://spark.apache.org/) Streamování umožňuje implementovat škálovatelné a vysoce odolné aplikace odolné proti chybám pro zpracování datových proudů. V clusteru HDInsight Spark můžete připojit aplikace pro streamování Sparku k různým druhům zdrojů dat, jako je Azure Event Hubs, Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ](http://zeromq.org/), RAW TCP Sockets, nebo sledováním změn v systému souborů [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) . Streamování Spark podporuje odolnost proti chybám a zaručuje, že jakákoliv událost se zpracovává přesně jednou, a to i v případě selhání uzlu.
 
 Streamování Spark vytvoří dlouhotrvající úlohy, během kterých můžete použít transformace na data a pak výsledky vložit do systému souborů, databází, řídicích panelů a konzoly. Streamování Sparku zpracovává mikrodávkování dat tím, že nejprve shromažďuje dávky událostí v rámci definovaného časového intervalu. V dalším kroku se tato dávka pošle na zpracování a výstup. Časové intervaly dávky jsou obvykle definovány ve zlomcích sekundy.
 
@@ -33,29 +33,29 @@ Spark Core používá *odolné distribuované datové sady* (RDD). RDD distribuu
 
 ## <a name="spark-structured-streaming-jobs"></a>Strukturované úlohy streamování Sparku
 
-Strukturované streamování Sparku bylo zavedeno v Spark 2,0 jako analytický modul pro použití při streamování strukturovaných dat. Strukturované streamování Sparku používá rozhraní API modulu Batch SparkSQL. Podobně jako u streamování Sparku používá strukturované streamování Spark své výpočty přes nepřetržité dodávkování dat. Strukturované streamování Spark představuje datový proud dat v podobě vstupní tabulky s neomezenými řádky. To znamená, že vstupní tabulka se dál zvětšuje, protože dorazíte na nová data. Tato vstupní tabulka se průběžně zpracovává dlouho běžícím dotazem a výsledky se zapisují do výstupní tabulky.
+Strukturované streamování Sparku bylo zavedeno v Spark 2,0 jako analytický modul pro použití při streamování strukturovaných dat. Strukturované streamování Sparku používá rozhraní API modulu Batch SparkSQL. Podobně jako u streamování Sparku používá strukturované streamování Spark své výpočty přes nepřetržité doručení mikrodávkám dat. Strukturované streamování Spark představuje datový proud dat v podobě vstupní tabulky s neomezenými řádky. To znamená, že vstupní tabulka se dál zvětšuje, protože dorazíte na nová data. Tato vstupní tabulka se průběžně zpracovává dlouho běžícím dotazem a výsledky se zapisují do výstupní tabulky.
 
 ![Strukturované streamování Sparku](./media/apache-spark-streaming-high-availability/structured-streaming.png)
 
-Ve strukturovaném streamování přicházejí data do systému a okamžitě se ingestují do vstupní tabulky. Zapisujete dotazy, které provádějí operace s touto vstupní tabulkou. Výstup dotazu vydává jinou tabulku, která se nazývá tabulka výsledků. Tabulka výsledků obsahuje výsledky dotazu, ze kterého kreslíte data pro odeslání do externího úložiště dat, jako je relační databáze. *Interval triggeru* nastavuje časování pro zpracování dat ze vstupní tabulky. Ve výchozím nastavení strukturované streamování zpracovává data hned po doručení. Můžete ale také nakonfigurovat Trigger tak, aby běžel v delším intervalu, takže streamovaná data se zpracují v dávkách založených na čase. Data v tabulce výsledků se mohou kompletně aktualizovat pokaždé, když jsou k dispozici nová data, aby zahrnovala všechna výstupní data od začátku dotazu streamování (*režim úplné*), nebo může obsahovat jenom data, která jsou od posledního zpracování dotazu nová. ssed (*režim připojení*).
+Ve strukturovaném streamování přicházejí data do systému a okamžitě se ingestují do vstupní tabulky. Zapisujete dotazy, které provádějí operace s touto vstupní tabulkou. Výstup dotazu vydává jinou tabulku, která se nazývá tabulka výsledků. Tabulka výsledků obsahuje výsledky dotazu, ze kterého kreslíte data pro odeslání do externího úložiště dat, jako je relační databáze. *Interval triggeru* nastavuje časování pro zpracování dat ze vstupní tabulky. Ve výchozím nastavení strukturované streamování zpracovává data hned po doručení. Můžete ale také nakonfigurovat Trigger tak, aby běžel v delším intervalu, takže streamovaná data se zpracují v dávkách založených na čase. Data v tabulce výsledků se můžou aktualizovat pokaždé, když jsou nová data, takže budou zahrnovat všechna výstupní data od začátku dotazu na streamování (*režim*připojení), nebo může obsahovat jenom data, která jsou od posledního zpracování dotazu (*režim připojení*) nová.
 
 ## <a name="create-fault-tolerant-spark-streaming-jobs"></a>Vytváření úloh streamování Spark odolných proti chybám
 
 Pokud chcete vytvořit vysoce dostupné prostředí pro úlohy streamování Sparku, začněte kódováním jednotlivých úloh pro obnovení v případě selhání. Tyto úlohy samoobslužného obnovování jsou odolné proti chybám.
 
-RDD mají několik vlastností, které pomáhají vysoce dostupné úlohy streamování Sparku s vysokou dostupností a odolným proti chybám:
+RDD mají několik vlastností, které pomáhají vysokou dostupnost a úlohy streamování Sparku s odolností proti chybám:
 
 * Dávky vstupních dat uložených v RDD jako DStream se automaticky replikují v paměti pro odolnost proti chybám.
-* Data ztracená v důsledku selhání pracovního procesu je možné přepočítat z replikovaných vstupních dat na různých pracovních procesech, pokud jsou tyto pracovní uzly k dispozici.
+* Data ztracená kvůli selhání pracovního procesu je možné přepočítat z replikovaných vstupních dat na různých pracovních procesech, pokud jsou tyto pracovní uzly k dispozici.
 * K rychlému zotavení proti chybám může docházet během jedné sekundy, protože obnovení z chyb/stragglers probíhá prostřednictvím výpočtu v paměti.
 
-### <a name="exactly-once-semantics-with-spark-streaming"></a>Sémantika právě jednou pomocí streamování Sparku
+### <a name="exactly-once-semantics-with-spark-streaming"></a>Přesně po sémantikě pomocí Spark streamování
 
-Chcete-li vytvořit aplikaci, která každou událost zpracuje jednou (a pouze jednou), zvažte, jak všechny systémové body po selhání restartují po problému a jak se můžete vyhnout ztrátě dat. Sémantika právě jednou vyžaduje, aby nedošlo ke ztrátě dat, a zpracování zprávy je znovu spuštěno bez ohledu na to, kde dojde k selhání. Přečtěte si téma [Vytvoření úloh Spark streamování s právě jedním zpracováním událostí](apache-spark-streaming-exactly-once.md).
+Chcete-li vytvořit aplikaci, která každou událost zpracuje jednou (a pouze jednou), zvažte, jak všechny systémové body po selhání restartují po problému a jak se můžete vyhnout ztrátě dat. Právě jednou sémantika vyžaduje, aby žádná data neztratila žádná data, a zpracování zprávy je znovu spuštěno, bez ohledu na to, kde k selhání dojde. Přečtěte si téma [Vytvoření úloh pro streamování Sparku s právě jedním zpracováním událostí](apache-spark-streaming-exactly-once.md).
 
 ## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Streamování Sparku a Apache Hadoop nitě
 
-V HDInsight je práce clusteru koordinována *ještě jiným vyjednáváním prostředků* (příze). Návrh vysoké dostupnosti pro streamování Spark zahrnuje techniky pro streamování Sparku a také pro PŘÍZové komponenty.  Příklad konfigurace pomocí PŘÍZe je uveden níže. 
+V HDInsight je práce clusteru koordinována *ještě jiným vyjednáváním prostředků* (příze). Návrh vysoké dostupnosti pro streamování Spark zahrnuje techniky pro streamování Sparku a také pro PŘÍZové komponenty.  Příklad konfigurace pomocí PŘÍZe je uveden níže.
 
 ![Architektura PŘÍZe](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
@@ -106,7 +106,7 @@ Pokud chcete vytvořit souhrn pomocí kontrolního bodu a spolehlivých přijím
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Prostředí Spark a uživatelské rozhraní pro streamování Spark mají konfigurovatelný systém metrik. Můžete také použít další knihovny, například grafit/Grafana, ke stažení metrik řídicích panelů, jako je například "Počet zpracovaných záznamů", "využití paměti/GC na ovladače & prováděcích modulů", "celkové zpoždění", "využití clusteru" a tak dále. Ve strukturovaném streamování verze 2,1 nebo vyšší můžete pomocí `StreamingQueryListener` shromažďovat další metriky.
+* Prostředí Spark a uživatelské rozhraní pro streamování Spark mají konfigurovatelný systém metrik. Můžete také použít další knihovny, například grafit/Grafana, ke stažení metrik řídicích panelů, jako je například "Počet zpracovaných záznamů", "paměť/GC na ovladače & vykonavatelé", "celkové zpoždění", "využití clusteru" a tak dále. Ve strukturovaném streamování verze 2,1 nebo vyšší můžete pomocí `StreamingQueryListener` shromažďovat další metriky.
 
 * Měli byste segmentovat dlouhotrvající úlohy.  Když se do clusteru odešle aplikace streamování Sparku, musí se definovat fronta PŘÍZe, kde je úloha spuštěná. Můžete použít [Plánovač kapacity příze](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) k odeslání dlouhotrvajících úloh do samostatných front.
 
@@ -120,7 +120,7 @@ Pokud chcete vytvořit souhrn pomocí kontrolního bodu a spolehlivých přijím
 ## <a name="next-steps"></a>Další kroky
 
 * [Přehled streamování Apache Spark](apache-spark-streaming-overview.md)
-* [Vytváření úloh Apache Spark streamování s právě jedním zpracováním událostí](apache-spark-streaming-exactly-once.md)
-* [Dlouhotrvající úlohy streamování Apache Spark v PŘÍZi](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Vytváření úloh Apache Spark streamování s právě jednou zpracováním událostí](apache-spark-streaming-exactly-once.md)
+* [Dlouhotrvající úlohy streamování Apache Spark v PŘÍZi](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/)
 * [Strukturované streamování: sémantika odolná proti chybám](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
 * [Diskretizovaný Streams: model odolný proti chybám pro zpracování škálovatelného streamování](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

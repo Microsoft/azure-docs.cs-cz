@@ -4,19 +4,19 @@ description: Tento článek popisuje novou výpočetní úroveň bez serveru a p
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: test
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: a304b7fb0ba90d4ccf3805f47a5b04a2d3d8765e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775579"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807013"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database – bezserverová úroveň
 
@@ -66,9 +66,9 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 | | **Výpočetní prostředí bez serveru** | **Zřízené výpočetní prostředky** |
 |:---|:---|:---|
 |**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. |  Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
-| **Úsilí řízení výkonu** |malým|Výkonnější|
+| **Úsilí řízení výkonu** |Nižší|Vyšší|
 |**Škálování na výpočetní výkon**|Automaticky|Manual|
-|**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Projev|
+|**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Okamžité|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
 
 ## <a name="purchasing-model-and-service-tier"></a>Nákup modelu a úrovně služeb

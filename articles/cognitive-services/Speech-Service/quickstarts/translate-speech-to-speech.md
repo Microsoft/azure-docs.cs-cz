@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 551fa6fe336f6d4d11f95fba5530e4a250a736be
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 393f1aa6a8fe74d6fef7d5d544dec490078089d0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681936"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817455"
 ---
 # <a name="quickstart-translate-speech-to-speech"></a>Rychlý Start: Převod řeči na řeč
 

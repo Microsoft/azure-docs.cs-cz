@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 277d8e3fe8f54b8e95d8acc93d26100d3ac64db1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110701"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814851"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -65,11 +65,32 @@ Odpověď **: nasazení**nebudou automaticky aktualizována.
 
 Pokud jste přizpůsobeni a nasadili model pomocí směrného plánu V 1.0, zůstane nasazení tak tak, jak je. Zákazníci mohou vyřadit nasazený model z provozu a znovu je upravit pomocí novější verze směrného plánu a znovu nasadit.
 
+**Otázka: můžu stáhnout svůj model a spustit ho místně?**
+
+**A**: modely nelze stáhnout a spustit místně.
+
+**Otázka: jsou protokolovány moje požadavky?**
+
+Odpověď **: můžete**vybrat, když vytvoříte nasazení pro přepnutí trasování. V tomto okamžiku nebudou protokolovány žádné zvuky ani přepisy. V opačném případě se požadavky obvykle protokolují do Azure v zabezpečeném úložišti.
+
+**Otázka: jsou omezeny moje požadavky?**
+
+Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdete na stránkách pro [Převod řeči na text](speech-to-text.md).
+
+**Otázka: jak se mi účtuje zvuk Dual Channel?**
+
+**O**: Pokud odesíláte každý kanál samostatně (každý kanál ve vlastním souboru), bude se vám účtovat po dobu trvání souboru. Pokud odešlete jeden soubor s každým multiplexem kanálu, bude se vám účtovat doba trvání jednoho souboru.
+
+> [!IMPORTANT]
+> Pokud máte k dispozici další aspekty ochrany osobních údajů, které vám zabrání v používání služby Custom Speech Service, obraťte se na jeden z kanálů podpory.
+
+## <a name="increasing-concurrency"></a>Zvýšení souběžnosti
+
 **Otázka: Co když potřebuji vyšší souběžnost pro nasazený model, než je nabídka na portálu?**
 
 Odpověď **: model**můžete škálovat v přírůstcích po 20 souběžných požadavcích.
 
-Pokud požadujete vyšší měřítko, kontaktujte [podporu řeči](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) .
+Pomocí požadovaných informací vytvořte žádost o podporu na [portálu podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Nezveřejňujte informace na žádném z veřejných kanálů (GitHub, StackOverflow,...), které jsou uvedené na [stránce podpory](support.md).
 
 Pro zvýšení souběžnosti pro ***vlastní model***potřebujeme následující informace:
 
@@ -97,25 +118,6 @@ nebo
   - ze zobrazených služeb vyberte službu rozpoznávání řeči, pro kterou chcete, aby se souběžnost zvýšila,
   - Zobrazit `Properties` pro tuto službu,
   - Zkopírujte kompletní `Resource ID`.
-
-**Otázka: můžu stáhnout svůj model a spustit ho místně?**
-
-**A**: modely nelze stáhnout a spustit místně.
-
-**Otázka: jsou protokolovány moje požadavky?**
-
-Odpověď **: můžete**vybrat, když vytvoříte nasazení pro přepnutí trasování. V tomto okamžiku nebudou protokolovány žádné zvuky ani přepisy. V opačném případě se požadavky obvykle protokolují do Azure v zabezpečeném úložišti.
-
-**Otázka: jsou omezeny moje požadavky?**
-
-Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdete na stránkách pro [Převod řeči na text](speech-to-text.md).
-
-**Otázka: jak se mi účtuje zvuk Dual Channel?**
-
-**O**: Pokud odesíláte každý kanál samostatně (každý kanál ve vlastním souboru), bude se vám účtovat po dobu trvání souboru. Pokud odešlete jeden soubor s každým multiplexem kanálu, bude se vám účtovat doba trvání jednoho souboru.
-
-> [!IMPORTANT]
-> Pokud máte k dispozici další aspekty ochrany osobních údajů, které vám zabrání v používání služby Custom Speech Service, obraťte se na jeden z kanálů podpory.
 
 ## <a name="importing-data"></a>Importing data
 

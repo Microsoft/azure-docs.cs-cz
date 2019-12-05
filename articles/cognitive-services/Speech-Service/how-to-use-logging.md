@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 58f6c97ac819947f84735bc0bc4c125b43db58dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075804"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805786"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Povolení protokolování v sadě Speech SDK
 
@@ -57,7 +57,7 @@ Nástroj pro rozpoznávání můžete vytvořit z konfiguračního objektu. Tím
 
 V případě systému Windows nebo Linux může být soubor protokolu v jakékoli cestě, ke které má uživatel oprávnění k zápisu. Oprávnění k zápisu do umístění systému souborů v jiných operačních systémech můžou být ve výchozím nastavení omezená nebo omezená.
 
-### <a name="universal-windows-platform-uwp"></a>Univerzální platforma Windows (UPW)
+### <a name="universal-windows-platform-uwp"></a>Univerzální platforma Windows (UWP)
 
 Aplikace UWP musí v jednom z umístění dat aplikace umístit soubory protokolu (místní, roaming nebo dočasné). Soubor protokolu se dá vytvořit v místní složce aplikace:
 

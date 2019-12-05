@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 460d2069bea8809b7d453bbe1cf27284109df9b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 09ee7f0918bce469186688a5d0e82441bb2e5457
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503469"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817771"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči v cíli – C v iOS pomocí sady Speech SDK
 
 V tomto článku se naučíte, jak vytvořit aplikaci pro iOS v cíli – C pomocí sady Cognitive Services Speech SDK pro syntetizaci řeči z textu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, tady je seznam požadavků:
+Než začnete, tady je seznam požadovaných součástí:
 
 * [Klíč předplatného](~/articles/cognitive-services/Speech-Service/get-started.md) pro službu pro rozpoznávání řeči
-* MacOS počítač s [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novějším
+* Počítače s macOS s [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novější
 * Cílová sada pro iOS verze 9,3 nebo novější
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Získání sady Speech SDK pro iOS

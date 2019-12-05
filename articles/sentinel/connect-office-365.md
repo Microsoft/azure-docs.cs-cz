@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a38beb0700e470d325545a2523143ecdab9f6dfb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: df5aade7244f69e7264f901364ecc164351eec50
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777413"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815780"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Připojení dat z protokolů Office 365
 
@@ -42,12 +42,12 @@ Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin
 
 1. V Azure Sentinel vyberte **datové konektory** a pak klikněte na dlaždici **Office 365** .
 
-2. Pokud jste to ještě nepovolili, můžete to udělat tak, že v okně **datové konektory** vyberete konektor **Office 365** . Tady můžete kliknout na **stránku Open Connector** a v části konfigurační oddíl **povolit řešení Office 365 ve vašem pracovním prostoru** pomocí tlačítka **instalovat řešení** . Pokud už je povolená, bude se identifikovat na obrazovce připojení, jak už je povolené.
+2. Pokud jste to ještě nepovolili, můžete to udělat tak, že v okně **datové konektory** vyberete konektor **Office 365** . Tady můžete kliknout na **stránku Open Connector** a v části oddíl konfigurace s označením **povolit řešení Office 365 v pracovním prostoru** pomocí tlačítka **instalovat řešení** je povolit. Pokud už je povolená, bude se identifikovat na obrazovce připojení, jak už je povolené.
 1. Office 365 umožňuje streamovat data z několika tenantů do Azure Sentinel. Pro každého tenanta, ke kterému se chcete připojit, přidejte tenanta v části **připojit klienty k Azure Sentinel**. 
 1. Otevře se obrazovka služby Active Directory. Zobrazí se výzva k ověření pomocí globálního správce pro každého tenanta, kterého se chcete připojit ke službě Azure Sentinel, a poskytněte oprávnění službě Azure Sentinel pro čtení protokolů. 
-5. V části streamování protokolů aktivit Office 365 klikněte na **Vybrat** a vyberte typy protokolů, které chcete streamovat do Azure Sentinel. Služba Azure Sentinel v současné době podporuje Exchange a SharePoint.
+5. V seznamu tenantů se zobrazí ID adresáře Azure AD (ID tenanta) a dvě zaškrtávací políčka pro protokoly Exchange a SharePoint. Můžete vybrat libovolné nebo všechny uvedené služby, které chcete ingestovat v Sentinel. V současné době služba Azure Sentinel podporuje protokoly Exchange a SharePoint v rámci stávajících služeb Office 365 Services.
 
-4. Klikněte na **použít změny**.
+4. Jakmile vyberete služby (Exchange, SharePoint atd.), můžete kliknout na Uložit na stránce s přidáním klienta na stránce. 
 
 3. Pokud chcete použít příslušné schéma v Log Analytics pro protokoly Office 365, vyhledejte **OfficeActivity**.
 

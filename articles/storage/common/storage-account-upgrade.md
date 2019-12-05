@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791699"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806962"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely v2
 
-Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Pro většinu scénářů úložišť se doporučuje používat účty pro obecné účely v2. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů. Účty obecné – účely v2 podporují úrovně přístupu na úrovni Standard pro přístup z horké, studené a archivní vrstvy na úrovni objektů BLOB.
+Účty úložiště pro obecné účely v2 podporují nejnovější funkce Azure Storage a zahrnují všechny funkce účtů pro obecné účely V1 a BLOB Storage. Pro většinu scénářů úložišť se doporučuje používat účty pro obecné účely v2. Účty pro obecné účely v2 poskytují nejnižší cenu za GB pro Azure Storage a také ceny za transakce z odvětví konkurenčních produktů. Účty pro obecné účely v2 podporují úrovně přístupu na úrovni Standard, horké nebo studené a převrstvení objektů BLOB mezi horkou, studenou nebo archivní.
 
 Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné účely v1 nebo BLOB Storage je jednoduchý. Můžete upgradovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
@@ -59,11 +59,11 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Zadejte úroveň přístupu pro data objektů BLOB.
 
-Účty pro obecné účely v2 podporují všechny služby úložiště Azure a datové objekty, ale úrovně přístupu jsou dostupné jenom pro objekty blob bloku v úložišti objektů BLOB. Při upgradu na účet úložiště pro obecné účely v2 můžete určit úroveň přístupu pro data objektů BLOB.
+Účty pro obecné účely v2 podporují všechny služby úložiště Azure a datové objekty, ale úrovně přístupu jsou dostupné jenom pro objekty blob bloku v úložišti objektů BLOB. Když provedete upgrade na účet úložiště pro obecné účely v2, můžete zadat výchozí úroveň přístupu k účtu horké nebo studené, která indikuje výchozí úroveň vašich dat objektů blob, jako by nebyl zadán individuální parametr úrovně přístupu objektu BLOB.
 
-Úrovně přístupu vám umožňují zvolit nejúčinnější úložiště na základě předpokládaných způsobů použití. Objekty blob bloku se můžou ukládat na horkou, studenou nebo archivní úroveň. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
+Úrovně přístupu k objektu BLOB umožňují zvolit nejúčinnější úložiště na základě předpokládaných způsobů použití. Objekty blob bloku se můžou ukládat na horkou, studenou nebo archivní úroveň. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
 
-Ve výchozím nastavení se v úrovni Hot Accessu vytvoří nový účet úložiště a účet úložiště pro obecné účely V1 se upgraduje na úroveň Hot Access. Pokud zkoumáte, která úroveň přístupu se má použít pro vaše data po upgradu, vezměte v úvahu svůj scénář. Existují dva typické scénáře uživatelů pro migraci na účet pro obecné účely v2:
+Ve výchozím nastavení se na úrovni Hot Accessu vytvoří nový účet úložiště a účet úložiště pro obecné účely V1 se dá upgradovat na jednu nebo studenou úroveň účtu. Pokud při upgradu není zadaná úroveň přístupu k účtu, ve výchozím nastavení se upgraduje na Hot. Pokud zkoumáte úroveň přístupu, která se má použít pro upgrade, vezměte v úvahu svůj scénář využití svých dat. Existují dva typické scénáře uživatelů pro migraci na účet pro obecné účely v2:
 
 * Máte existující účet úložiště pro obecné účely V1 a chcete vyhodnotit upgrade na účet úložiště pro obecné účely v2 se správnou úrovní přístupu úložiště pro data objektů BLOB.
 * Rozhodli jste se použít účet úložiště pro obecné účely verze 2 nebo ho už mít a chcete vyhodnotit, jestli byste měli pro data BLOB použít horkou nebo studenou úroveň přístupu.

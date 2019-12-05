@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: 49269cf2171269063de4a3cf5de1f22ebc545005
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790821"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819170"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý Start: vytvoření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -111,7 +111,7 @@ Když máte projekt skupiny prostředků Azure, vytvořte aplikaci logiky pomoc�
 
    | Nastavení | Příklad hodnoty | Popis |
    | ------- | ------------- | ----------- |
-   | Uživatelský účet | Zjistil <br> sophia-owen@fabrikam.com | Účet, který jste použili při přihlášení k aplikaci Visual Studio |
+   | Uživatelský účet | Fabrikam <br> sophia-owen@fabrikam.com | Účet, který jste použili při přihlášení k aplikaci Visual Studio |
    | **Předplatné** | Průběžné platby <br> (sophia-owen@fabrikam.com) | Název vašeho předplatného Azure a přidruženého účtu |
    | **Skupina prostředků** | MyLogicApp-RG <br> (Západní USA) | Skupina prostředků Azure a umístění pro ukládání a nasazování prostředků vaší aplikace logiky |
    | **Umístění** | **Stejné jako skupina prostředků** | Typ umístění a konkrétní umístění pro nasazení aplikace logiky Typ umístění je buď oblast Azure, nebo existující [prostředí Integration Service (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Pro tento rychlý Start ponechejte typ umístění nastavený na **oblast** a umístění nastavené na **stejné jako skupina prostředků**. <p>**Poznámka**: po vytvoření projektu skupiny prostředků můžete [změnit typ umístění a umístění](manage-logic-apps-with-visual-studio.md#change-location), ale jiný typ umístění ovlivní vaši aplikaci logiky různými způsoby. |
@@ -179,7 +179,7 @@ Pokud máte existující projekt skupiny prostředků Azure, můžete do tohoto 
 
 1. Pokud chcete přidat prostředek do souboru šablony, vyberte **Přidat prostředek** v horní části okna osnovy JSON. V okně Osnova JSON otevřete místní nabídku **prostředky** a vyberte **Přidat nový prostředek**.
 
-   ![Okno osnovy JSON](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
+   ![Okno pro osnovou JSON](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
 1. V dialogovém okně **Přidat prostředek** vyhledejte v poli hledání `logic app`a vyberte **Aplikace logiky**. Pojmenujte aplikaci logiky a vyberte **Přidat**.
 
@@ -191,11 +191,11 @@ Až budete s aplikací logiky hotovi, odstraňte skupinu prostředků, která ob
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí stejného účtu, který jste použili k vytvoření své aplikace logiky.
 
-1. V hlavní nabídce Azure vyberte **Skupiny prostředků**. Vyberte skupinu prostředků vaší aplikace logiky a vyberte **Přehled**.
+1. V nabídce Azure Portal vyberte **skupiny prostředků**, nebo vyhledejte a vyberte **skupiny prostředků** z libovolné stránky. Vyberte skupinu prostředků vaší aplikace logiky.
 
 1. Na stránce **Přehled** vyberte **Odstranit skupinu prostředků**. Jako potvrzení zadejte název skupiny prostředků a vyberte **Odstranit**.
 
-   ![Skupiny prostředků > Přehled > Odstranit skupinu prostředků](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   ![Skupiny prostředků > Přehled > Odstranit skupinu prostředků](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 
 1. Odstraňte řešení sady Visual Studio ze svého místního počítače.
 

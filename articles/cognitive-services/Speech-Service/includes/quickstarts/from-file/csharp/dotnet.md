@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a570ec7e7eaae13515edc268d465df18674fc22
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7fc7edcb37b31022afb989199bd54e55589e1849
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795989"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819285"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -28,7 +28,7 @@ Než začnete, nezapomeňte:
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
-## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v sadě Visual Studio
 
 Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: sada Speech SDK pro Python – nastavení platformy – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto průvodce můžete nastavit platformu pro používání Pythonu se sadou Speech Services SDK.
+description: Pomocí tohoto průvodce můžete nastavit platformu pro používání Pythonu se sadou Speech Service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: d4a81c6dd2b44efd432345627e78bb69fff1688d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 095c591f63cb228b48681ffc67499820631bbaf5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502426"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816472"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro Python.
 
@@ -28,7 +28,7 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
   - Mac: macOS X verze 10,12 nebo novější
   - Linux: Ubuntu 16,04, Ubuntu 18,04, Debian 9 na platformě x64
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Podporované platformy Linux budou vyžadovat, aby byly nainstalovány určité knihovny (`libssl` pro podporu technologie Secure Sockets Layer a `libasound2` pro podporu zvuku). Pro příkazy potřebné k instalaci správných verzí těchto knihoven použijte níže uvedenou distribuci.
 
@@ -78,7 +78,7 @@ Pokud používáte macOS, možná budete muset spustit následující příkaz, 
 python3 -m pip install --upgrade pip
 ```
 
-Po úspěšném použití `pip` k instalaci `azure-cognitiveservices-speech`můžete použít sadu Speech SDK tak, že obor názvů naimportujete do projektů Pythonu. Příklad:
+Po úspěšném použití `pip` k instalaci `azure-cognitiveservices-speech`můžete použít sadu Speech SDK tak, že obor názvů naimportujete do projektů Pythonu. Například:
 
 ```py
 import azure.cognitiveservices.speech as speechsdk

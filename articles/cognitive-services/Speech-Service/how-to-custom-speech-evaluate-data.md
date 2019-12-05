@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801538"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806092"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Vyhodnotit přesnost Custom Speech
 
@@ -29,9 +29,9 @@ Standardní hodnota pro měření přesnosti modelu je *počet chyb v aplikaci* 
 
 Nesprávně identifikovaná slova spadají do tří kategorií:
 
-* Vložení (I): Slova, která jsou nesprávně přidaná v přepisu hypotéz
-* Odstranění (D): Slova, která nejsou rozpoznána v přepisu hypotézy
-* Náhrady: Slova, která byla nahrazena mezi odkazem a hypotézou
+* Vložení (I): slova, která jsou nesprávně přidána do přepisu hypotéz
+* Odstranění (D): slova, která jsou v přepisu hypotéza nerozpoznána
+* Nahrazování: slova, která byla nahrazena mezi odkazem a hypotézou
 
 Tady je příklad:
 
@@ -45,7 +45,7 @@ Důležité je, jak jsou distribuované chyby. V případě, že dojde k mnoha c
 
 Analýzou jednotlivých souborů můžete určit, jaký typ chyb existuje a které chyby jsou jedinečné pro určitý soubor. Porozumění problémům na úrovni souborů vám pomůže zaměřit se na vylepšení.
 
-## <a name="create-a-test"></a>Vytvořit test
+## <a name="create-a-test"></a>Vytvoření testu
 
 Pokud chcete testovat kvalitu modelu standardních hodnot řeči od Microsoftu nebo vlastního modelu, který jste si vyzkoušeli, můžete porovnat dva modely vedle sebe a vyhodnotit tak přesnost. Porovnávání zahrnuje výsledky WER a rozpoznávání. Vlastní model se obvykle porovnává se základními modely Microsoftu.
 
@@ -56,7 +56,7 @@ Chcete-li vyhodnotit modely vedle sebe:
 3. Klikněte na **Přidat test**.
 4. Vyberte možnost **vyhodnotit přesnost**. Dejte testu název, popis a vyberte si zvukovou datovou sadu přepisu a s popiskem.
 5. Vyberte až dva modely, které chcete testovat.
-6. Klikněte na možnost **Vytvořit**.
+6. Klikněte na **Vytvořit**.
 
 Po úspěšném vytvoření testu můžete porovnat výsledky vedle sebe.
 
@@ -64,12 +64,12 @@ Po úspěšném vytvoření testu můžete porovnat výsledky vedle sebe.
 
 Po dokončení testu, který je označen změnou stavu na *úspěch*, najdete číslo wer pro oba modely zahrnuté v testu. Kliknutím na název testu zobrazíte stránku s podrobnostmi o testování. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady. Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnání výsledků rozpoznávání v každém sloupci, který ukazuje přepis a výsledky pro dva modely řeči a textu, můžete rozhodnout, který model vyhovuje vašim potřebám, a kde jsou další školení a vylepšení. požadovanou.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Výuka modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)

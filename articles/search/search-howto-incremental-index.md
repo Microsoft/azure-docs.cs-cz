@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 92da697c95f2b9ea544bb1f9bfa689c13bd0d2ae
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790497"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806758"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Jak nastavit přírůstkové indexování obohacených dokumentů v Azure Kognitivní hledání
 
@@ -41,8 +41,7 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>Krok 2: Přidání vlastnosti cache
 
-< < < < < < < HEAD upravte odpověď z požadavku GET, aby se do indexeru přidala vlastnost `cache`. Objekt mezipaměti vyžaduje jenom jednu vlastnost, `storageConnectionString` což je připojovací řetězec k účtu úložiště. = = = = = = = Upravit odpověď z požadavku GET pro přidání vlastnosti `cache` do indexeru. Objekt mezipaměti vyžaduje pouze jednu vlastnost, která je připojovacím řetězcem k účtu Azure Storage.
->>>>>>> 3519a330aa86b6827d31403690529105825b1b16
+Upravte odpověď z požadavku GET a přidejte do indexeru vlastnost `cache`. Objekt mezipaměti vyžaduje jenom jednu vlastnost, `storageConnectionString` což je připojovací řetězec k účtu úložiště. 
 
 ```json
 {

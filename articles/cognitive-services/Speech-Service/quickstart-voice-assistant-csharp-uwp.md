@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 75ecbe8351e68b77a59b40709a2beb15d09b16df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504085"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816229"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Rychlý Start: vytvoření hlasového asistenta pomocí sady Speech SDK, UWP
 
@@ -26,12 +26,12 @@ V tomto článku budete vyvíjet aplikaci C# Univerzální platforma Windows (UW
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
-* Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
+* Klíč předplatného Azure pro službu Speech Service. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
 * Dřív vytvořený robot nakonfigurovaný s [kanálem Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
   > [!NOTE]
@@ -292,7 +292,7 @@ Zdroj kódu na pozadí přidáte pomocí následujících kroků:
 1. Do těla metody `InitializeDialogServiceConnector`přidejte následující fragment kódu. Tento kód vytvoří `DialogServiceConnector` s informacemi o předplatném.
 
     ```csharp
-    // Create a BotFrameworkConfig by providing a Speech Service subscription key
+    // Create a BotFrameworkConfig by providing a Speech service subscription key
     // the RecoLanguage property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
@@ -419,10 +419,10 @@ Teď jste připraveni sestavit a otestovat svoji aplikaci.
 > [!div class="nextstepaction"]
 > [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [O hlasových asistentcích](voice-assistants.md)
-- [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+- [Získejte zdarma klíč předplatného služby Speech](get-started.md)
 - [Vlastní klíčová slova](speech-devices-sdk-create-kws.md)
 - [Připojení přímého Lineového rozpoznávání řeči k robotovi](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/csspeech/samples)

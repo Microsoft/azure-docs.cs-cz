@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 913fa3c846ea00649a584be02975fdde449dc7cf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1d05df454e3d7a4f54e7451b81dd2a6470a8200b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383285"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806404"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Kurz: extrakce strukturovaných dat ze utterance uživatelů pomocí entit strojového učení v Language Understanding (LUIS)
 
-V tomto kurzu extrahujete strukturovaná data z utterance pomocí entity, která se naučila počítačem. 
+V tomto kurzu extrahujete strukturovaná data z utterance pomocí entity, která se naučila počítačem.
 
-Entita získaná počítačem podporuje [koncept rozloženého modelu](luis-concept-model.md#v3-authoring-model-decomposition) tím, že poskytuje entity dílčí komponenty s jejich popisovači a omezeními. 
+Entita získaná počítačem podporuje [koncept rozloženého modelu](luis-concept-model.md#v3-authoring-model-decomposition) tím, že poskytuje entity dílčí komponenty s jejich popisovači a omezeními.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -30,11 +30,11 @@ Entita získaná počítačem podporuje [koncept rozloženého modelu](luis-conc
 
 > [!div class="checklist"]
 > * Importovat ukázkovou aplikaci
-> * Přidat entitu získanou počítačem 
+> * Přidat entitu získanou počítačem
 > * Přidat dílčí komponentu
 > * Přidat popisovač dílčí komponenty
 > * Přidat omezení dílčí součásti
-> * Trénovat aplikaci
+> * Vytrénovat aplikaci
 > * Testovací aplikace
 > * Publikování aplikace
 > * Získat předpověď entity z koncového bodu
@@ -44,23 +44,23 @@ Entita získaná počítačem podporuje [koncept rozloženého modelu](luis-conc
 
 ## <a name="why-use-a-machine-learned-entity"></a>Proč používat entitu získanou počítačem?
 
-V tomto kurzu se k extrakci dat z utterance přidá entita získaná počítačem. 
+V tomto kurzu se k extrakci dat z utterance přidá entita získaná počítačem.
 
-Účelem entity je definování dat k extrakci. To zahrnuje poskytnutí názvu dat, typu (Pokud je to možné), jakéhokoli rozlišení dat v případě nejednoznačnosti a přesného textu, který tvoří data. 
+Účelem entity je definování dat k extrakci. To zahrnuje poskytnutí názvu dat, typu (Pokud je to možné), jakéhokoli rozlišení dat v případě nejednoznačnosti a přesného textu, který tvoří data.
 
-Pokud chcete definovat entitu, musíte vytvořit entitu a potom označit text reprezentující entitu v příkladu utterance. Tyto příklady s popisky LUIS, co je entita a kde se dají najít v utterance. 
+Pokud chcete definovat entitu, musíte vytvořit entitu a potom označit text reprezentující entitu v příkladu utterance. Tyto příklady s popisky LUIS, co je entita a kde se dají najít v utterance.
 
 ## <a name="entity-decomposability-is-important"></a>Devytváření entit je důležité.
 
-Devytváření entit je důležité pro předpověď záměru i pro extrakci dat. 
+Devytváření entit je důležité pro předpověď záměru i pro extrakci dat.
 
-Začněte s datovou entitou získanou počítačem, která je začátkem a entitou nejvyšší úrovně pro extrakci dat. Pak rozloží entitu na části, které vyžaduje klientská aplikace. 
+Začněte s datovou entitou získanou počítačem, která je začátkem a entitou nejvyšší úrovně pro extrakci dat. Pak rozloží entitu na části, které vyžaduje klientská aplikace.
 
 I když si nejste jistí, jak vám entita při zahájení vaší aplikace požadujete, doporučujeme začít s entitou získanou počítačem, která se pak rozloží s dílčími komponentami v době, kdy se vaše aplikace nachází.
 
-V praktických případech vytvoříte entitu získanou počítačem, která bude představovat objednávku pro aplikaci Pizza. Pořadí musí mít všechny části, které jsou nezbytné pro celou objednávku. Chcete-li začít, entita extrahuje text související s objednávkami, velikost vybírá a množství. 
+V praktických případech vytvoříte entitu získanou počítačem, která bude představovat objednávku pro aplikaci Pizza. Pořadí musí mít všechny části, které jsou nezbytné pro celou objednávku. Chcete-li začít, entita extrahuje text související s objednávkami, velikost vybírá a množství.
 
-Utterance pro `Please deliver one large cheese pizza to me` by měl jako pořadí extrahovat `one large cheese pizza` a pak taky extrahovat `1` a `large`. 
+Utterance pro `Please deliver one large cheese pizza to me` by měl jako pořadí extrahovat `one large cheese pizza` a pak taky extrahovat `1` a `large`.
 
 Existuje další rozklad, který můžete přidat, jako je vytváření dílčích komponent pro toppings nebo crust. Po provedení tohoto kurzu byste měli mít jistotu, že přidáte tyto dílčí komponenty do existující entity `Order`.
 
@@ -68,24 +68,15 @@ Existuje další rozklad, který můžete přidat, jako je vytváření dílčí
 
 1.  Stáhněte a uložte [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json).
 
-1. Na [portálu Luis Preview](https://preview.luis.ai)na stránce **Moje aplikace** vyberte **importovat**a pak **importovat jako JSON**. Vyhledejte uložený soubor JSON z předchozího kroku. Nemusíte měnit název aplikace. Vyberte **Hotovo** .
-
-1. V části **Správa** na kartě **verze** vyberte verzi, pak vyberte **klonovat** , aby se naklonoval verze, a pojmenujte ji `mach-learn`a potom vyberte **Hotovo** pro dokončení procesu klonování. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL.
-
-    > [!TIP] 
-    > Klonování verze do nové verze je osvědčeným postupem před úpravou aplikace. Po dokončení verze exportujte verzi (jako soubor. JSON nebo. Lu) a Prohlédněte si soubor do systému správy zdrojového kódu.
-
-1. Vyberte **Build** a pak **záměry** , abyste viděli záměry, hlavní stavební kameny aplikace Luis.
-
-    ![Změňte ze stránky verze na stránku záměry.](media/tutorial-machine-learned-entity/new-version-imported-app.png)
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
 ## <a name="label-text-as-entities-in-example-utterances"></a>Popisek textu jako entity v příkladu projevy
 
 K extrakci podrobností o pizzaém pořadí můžete vytvořit nejvyšší úroveň `Order` entitu poučenou počítač.
 
-1. Na stránce **záměry** vyberte záměr **OrderPizza** . 
+1. Na stránce **záměry** vyberte záměr **OrderPizza** .
 
-1. V seznamu ukázkový projevy vyberte následující utterance. 
+1. V seznamu ukázkový projevy vyberte následující utterance.
 
     |Pořadí příkladu utterance|
     |--|
@@ -96,26 +87,26 @@ K extrakci podrobností o pizzaém pořadí můžete vytvořit nejvyšší úrov
     ![Popisek začátek a konec textu pro úplné pořadí](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
     > [!NOTE]
-    > Entita nebude vždy celá utterance. V tomto konkrétním případě `pickup` určuje, jak má být objednávka přijata. Z koncepční perspektivy by `pickup` měla být součástí označené entity pro danou objednávku. 
+    > Entita nebude vždy celá utterance. V tomto konkrétním případě `pickup` určuje, jak má být objednávka přijata. Z koncepční perspektivy by `pickup` měla být součástí označené entity pro danou objednávku.
 
 1. V poli **Zvolte typ entity** vyberte **přidat strukturu** a pak vyberte **Další**. Struktura je nutná pro přidání dílčích součástí, jako je velikost a množství.
 
     ![Přidání struktury k entitě](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. V poli **vytvořit entitu počítač** , kterou jste získali v poli **Struktura** přidejte `Size` pak vyberte Enter. 
+1. V poli **vytvořit entitu počítač** , kterou jste získali v poli **Struktura** přidejte `Size` pak vyberte Enter.
 1. Chcete-li přidat **popisovač**, vyberte `+` v rozevíracích seznamech **pro velikost** oblasti a pak vyberte možnost **vytvořit nový seznam frází**.
 
-1. V poli **deskriptor vytvoření nového seznamu frází** zadejte název `SizeDescriptor` pak zadejte hodnoty: `small`, `medium`a `large`. Když se v poli **návrhy** vyplní, vyberte `extra large`a `xl`. Vyberte **Hotovo** a vytvořte nový seznam frází. 
+1. V poli **deskriptor vytvoření nového seznamu frází** zadejte název `SizeDescriptor` pak zadejte hodnoty: `small`, `medium`a `large`. Když se v poli **návrhy** vyplní, vyberte `extra large`a `xl`. Vyberte **Hotovo** a vytvořte nový seznam frází.
 
-    Tento popisovač seznamu frází pomáhá `Size` dílčí komponentě najít slova týkající se velikosti tím, že jim poskytnou ukázková slova. Tento seznam nemusí zahrnovat slovo každé velikosti, ale měl by obsahovat slova, která se očekávají pro indikaci velikosti. 
+    Tento popisovač seznamu frází pomáhá `Size` dílčí komponentě najít slova týkající se velikosti tím, že jim poskytnou ukázková slova. Tento seznam nemusí zahrnovat slovo každé velikosti, ale měl by obsahovat slova, která se očekávají pro indikaci velikosti.
 
     ![Vytvoření popisovače pro podsoučást velikosti](media/tutorial-machine-learned-entity/size-entity-size-descriptor-phrase-list.png)
 
-1. V okně **vytvořit entitu počítače** , vyberte **vytvořit** a dokončete vytváření `Size` dílčí součásti.  
+1. V okně **vytvořit entitu počítače** , vyberte **vytvořit** a dokončete vytváření `Size` dílčí součásti.
 
-    Entita `Order` s `Size` komponentou je vytvořena, ale v utterance byla použita pouze entita `Order`. V příkladu utterance je nutné označit text entity `Size`. 
+    Entita `Order` s `Size` komponentou je vytvořena, ale v utterance byla použita pouze entita `Order`. V příkladu utterance je nutné označit text entity `Size`.
 
-1. Ve stejném příkladu utterance označte podsoučást **velikosti** `large` tím, že vyberete slovo a pak v rozevíracím seznamu vyberete entitu **Velikost** . 
+1. Ve stejném příkladu utterance označte podsoučást **velikosti** `large` tím, že vyberete slovo a pak v rozevíracím seznamu vyberete entitu **Velikost** .
 
     ![Označte entitu Size pro text v utterance.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
@@ -133,54 +124,54 @@ K extrakci podrobností o pizzaém pořadí můžete vytvořit nejvyšší úrov
     ![Ve všech zbývajících příkladech projevy vytvořit entitu a dílčí součásti.](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
 
     > [!CAUTION]
-    > Jak se zachází s implicitními daty, jako je například písmeno `a` implikuje jeden Pizza? Nebo chybí `pickup` a `delivery`, která značí, kde se očekává Pizza? Nebo chybějící velikost pro indikaci výchozí velikosti malých nebo velkých? Zvažte možnost zpracovat implicitní zpracování dat jako součást vašich obchodních pravidel v klientské aplikaci místo nebo kromě LUIS. 
+    > Jak se zachází s implicitními daty, jako je například písmeno `a` implikuje jeden Pizza? Nebo chybí `pickup` a `delivery`, která značí, kde se očekává Pizza? Nebo chybějící velikost pro indikaci výchozí velikosti malých nebo velkých? Zvažte možnost zpracovat implicitní zpracování dat jako součást vašich obchodních pravidel v klientské aplikaci místo nebo kromě LUIS.
 
 1. Pokud chcete aplikaci naučit, vyberte **vlak**. Školení aplikuje změny, jako jsou nové entity a označené projevy, na aktivní model.
 
-1. Po školení přidejte do záměru nový příklad utterance, abyste zjistili, jak dobře LUIS rozumí entitě učené počítačem. 
+1. Po školení přidejte do záměru nový příklad utterance, abyste zjistili, jak dobře LUIS rozumí entitě učené počítačem.
 
     |Pořadí příkladu utterance|
     |--|
     |`pickup XL meat lovers pizza`|
 
-    Celková nejvyšší entita, `Order` je označena a `Size` dílčí komponenta je označena také tečkovanými řádky. Toto je úspěšná předpověď. 
+    Celková nejvyšší entita, `Order` je označena a `Size` dílčí komponenta je označena také tečkovanými řádky. Toto je úspěšná předpověď.
 
     ![Nový příklad utterance s entitou](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
-    Tečkovaná čára označuje předpověď. 
+    Tečkovaná čára označuje předpověď.
 
 1. Pokud chcete změnit předpověď na entitu s popiskem, vyberte řádek a pak vyberte **Potvrdit entitu předpovědi**.
 
     ![Přijměte předpověď výběrem možnosti potvrdit předpověď entity.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
 
-    V tomto okamžiku je entita získaná počítačem funkční, protože by mohla najít entitu v rámci nového ukázkového utteranceu. Když přidáte příklad projevy, pokud entita není předpovězena správně, označte entitu a dílčí součásti. Pokud je entita předpokládaná správně, nezapomeňte předpovědi potvrdit. 
+    V tomto okamžiku je entita získaná počítačem funkční, protože by mohla najít entitu v rámci nového ukázkového utteranceu. Když přidáte příklad projevy, pokud entita není předpovězena správně, označte entitu a dílčí součásti. Pokud je entita předpokládaná správně, nezapomeňte předpovědi potvrdit.
 
 ## <a name="add-prebuilt-number-to-help-extract-data"></a>Přidat předem připravené číslo, které vám pomůžou extrahovat data
 
 Informace o objednávkách by měly obsahovat také počet položek v pořadí, například kolik pizzas. Chcete-li extrahovat tato data, je nutné do `Order` přidat novou podsoučást získanou počítačem a tato součást vyžaduje omezení předem vytvořeného čísla. Když omezíte entitu na předem sestavené číslo, entita najde a extrahuje čísla, ať už text je číslice, `2`nebo text, `two`.
 
-Začněte tím, že do aplikace přidáte předem vytvořenou číselnou entitu. 
+Začněte tím, že do aplikace přidáte předem vytvořenou číselnou entitu.
 
-1. V nabídce vlevo vyberte **entity** a pak vyberte **+ Přidat předem vytvořenou entitu**. 
+1. V nabídce vlevo vyberte **entity** a pak vyberte **+ Přidat předem vytvořenou entitu**.
 
-1. V poli **Přidat předem připravené entity** vyhledejte a vyberte **číslo** a potom vyberte **Hotovo**. 
+1. V poli **Přidat předem připravené entity** vyhledejte a vyberte **číslo** a potom vyberte **Hotovo**.
 
     ![Přidat předem připravených entit](media/tutorial-machine-learned-entity/add-prebuilt-entity-as-constraint-to-quantity-subcomponent.png)
 
-    Předem vytvořená entita se přidá do aplikace, ale ještě není omezením. 
+    Předem vytvořená entita se přidá do aplikace, ale ještě není omezením.
 
 ## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>Vytvořit entitu dílčí součásti s omezením pro získání dat
 
-Entita `Order` by měla mít dílčí komponentu `Quantity` k určení, kolik položek je v pořadí. Množství by mělo být omezeno na číslo, aby byla extrahovaná data okamžitě použitelná klientskou aplikací. 
+Entita `Order` by měla mít dílčí komponentu `Quantity` k určení, kolik položek je v pořadí. Množství by mělo být omezeno na číslo, aby byla extrahovaná data okamžitě použitelná klientskou aplikací.
 
-Omezení se použije jako shoda textu, buď s přesnou shodou (jako je například entita seznamu), nebo prostřednictvím regulárních výrazů (jako je například entita regulárního výrazu nebo předem vytvořená entita). 
+Omezení se použije jako shoda textu, buď s přesnou shodou (jako je například entita seznamu), nebo prostřednictvím regulárních výrazů (jako je například entita regulárního výrazu nebo předem vytvořená entita).
 
-Pomocí omezení je extrahován pouze text, který odpovídá tomuto omezení. 
+Pomocí omezení je extrahován pouze text, který odpovídá tomuto omezení.
 
-1. Vyberte **entity a pak vyberte** entitu `Order`. 
+1. Vyberte **entity a pak vyberte** entitu `Order`.
 1. Vyberte **+ Přidat komponentu** a potom zadejte název `Quantity` pak vyberte zadat, aby se nová entita přidala do aplikace.
 1. Po úspěšném oznámení vyberte podsoučást `Quantity` a pak vyberte tužka omezení.
-1. V rozevíracím seznamu vyberte předem vytvořené číslo. 
+1. V rozevíracím seznamu vyberte předem vytvořené číslo.
 
     ![Vytvoří entitu množství s předdefinovaným číslem jako omezením.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
@@ -189,7 +180,7 @@ Pomocí omezení je extrahován pouze text, který odpovídá tomuto omezení.
     Entita s omezením je vytvořena, ale ještě nebyla použita na příklad projevy.
 
     > [!NOTE]
-    > Dílčí komponenta může být vnořena v rámci jedné součásti až na 5 úrovní. I když se to v tomto článku nezobrazuje, je k dispozici z portálu a rozhraní API.  
+    > Dílčí komponenta může být vnořena v rámci jedné součásti až na 5 úrovní. I když se to v tomto článku nezobrazuje, je k dispozici z portálu a rozhraní API.
 
 ## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Příklad popisku utterance na učení LUIS o entitě
 
@@ -199,7 +190,7 @@ Pomocí omezení je extrahován pouze text, který odpovídá tomuto omezení.
 
 1. Označte čísla `Quantity` entitou, a to tak, že vyberete `2` v příkladu utterance a potom v seznamu vyberete `Quantity`. Označte `6` a `1` ve stejném příkladu utterance.
 
-    ![Text popisku s entitou množství](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)  
+    ![Text popisku s entitou množství](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Výuka aplikace pro použití změn entit v aplikaci
 
@@ -207,14 +198,14 @@ Vyberte **vlak** , pomocí kterého se aplikace naučíte těmito novými projev
 
 ![Projděte si aplikaci a pak si prohlédněte příklad projevy.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
-V tomto okamžiku má objednávka několik detailů, které je možné extrahovat (velikost, množství a text objednávky celkem). Existuje další úprava `Order` entity, například Pizza toppings, typ crust a vedlejší objednávky. Každý z nich by měl být vytvořen jako dílčí součásti entity `Order`. 
+V tomto okamžiku má objednávka několik detailů, které je možné extrahovat (velikost, množství a text objednávky celkem). Existuje další úprava `Order` entity, například Pizza toppings, typ crust a vedlejší objednávky. Každý z nich by měl být vytvořen jako dílčí součásti entity `Order`.
 
 ## <a name="test-the-app-to-validate-the-changes"></a>Otestování aplikace, aby se ověřily změny
 
 Otestujte aplikaci pomocí interaktivního **testovacího** panelu. Tento proces vám umožní zadat nový utterance a potom zobrazit výsledky předpovědi a zjistit, jak dobře aktivní a školená aplikace funguje. Předpověď záměru by měla být poměrně důvěrná (vyšší než 70%) a extrakce entit by měla vybrat alespoň `Order` entitu. Podrobnosti o entitě Order mohou chybět, protože 5 projevy není dostatečné pro zpracování každého případu.
 
 1. V horní navigaci vyberte **Test** (Testovat).
-1. Zadejte `deliver a medium veggie pizza` utterance a vyberte Enter. Aktivní model předpovídá správný záměr s více než 70% jistotou. 
+1. Zadejte `deliver a medium veggie pizza` utterance a vyberte Enter. Aktivní model předpovídá správný záměr s více než 70% jistotou.
 
     ![Zadejte nový utterance k otestování záměru.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance.png)
 
@@ -224,7 +215,7 @@ Otestujte aplikaci pomocí interaktivního **testovacího** panelu. Tento proces
 
     Velikost byla správně zjištěna. Mějte na paměti, že příklad projevy v záměru `OrderPizza` nemá příklad `medium` jako velikost, ale použijte popisovač seznamu `SizeDescriptor` fráze, který obsahuje střední hodnotu.
 
-    Množství není správně předpovězeno. Chcete-li tento problém vyřešit, můžete přidat další příklady projevy pomocí tohoto slova k označení množství a označení tohoto slova jako entity `Quantity`. 
+    Množství není správně předpovězeno. Chcete-li tento problém vyřešit, můžete přidat další příklady projevy pomocí tohoto slova k označení množství a označení tohoto slova jako entity `Quantity`.
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Publikování aplikace pro přístup z koncového bodu HTTP
 
@@ -234,11 +225,11 @@ Otestujte aplikaci pomocí interaktivního **testovacího** panelu. Tento proces
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Přejděte na konec adresy URL v adrese a zadejte stejný dotaz, jako jste zadali na interaktivním panelu testů. 
+1. Přejděte na konec adresy URL v adrese a zadejte stejný dotaz, jako jste zadali na interaktivním panelu testů.
 
     `deliver a medium veggie pizza`
 
-    Poslední parametr řetězce dotazu je `query`, což je **dotaz** promluvy. 
+    Poslední parametr řetězce dotazu je `query`, což je **dotaz** promluvy.
 
     ```json
     {
@@ -301,9 +292,9 @@ Otestujte aplikaci pomocí interaktivního **testovacího** panelu. Tento proces
                 }
             }
         }
-    }    
+    }
     ```
-    
+
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
@@ -318,7 +309,7 @@ Otestujte aplikaci pomocí interaktivního **testovacího** panelu. Tento proces
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu aplikace používá entitu získanou počítačem k nalezení záměru utterance uživatele a extrakci podrobností z tohoto utterance. Pomocí entity, která se naučila počítač, můžete rozložit podrobnosti o entitě.  
+V tomto kurzu aplikace používá entitu získanou počítačem k nalezení záměru utterance uživatele a extrakci podrobností z tohoto utterance. Pomocí entity, která se naučila počítač, můžete rozložit podrobnosti o entitě.
 
 > [!div class="nextstepaction"]
 > [Přidání předem připravené entity klíčové fráze](luis-quickstart-intent-and-key-phrase.md)

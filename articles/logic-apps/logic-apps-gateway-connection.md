@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792041"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815171"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -70,7 +70,7 @@ Po instalaci brány na místní počítač vytvořte prostředek Azure pro vaši
 
 1. Do vyhledávacího pole Azure Portal zadejte "místní brána dat" a vyberte místní **brány dat**.
 
-   ![Najít místní bránu dat](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
+   ![Najít místní bránu dat](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
 1. V části **místní brány dat**vyberte **Přidat**.
 
@@ -89,7 +89,7 @@ Po instalaci brány na místní počítač vytvořte prostředek Azure pro vaši
 
    Tady je příklad, který ukazuje instalaci brány, která je ve stejné oblasti jako prostředek brány a je propojená se stejným účtem Azure:
 
-   ![Zadání podrobností pro vytvoření prostředku brány dat](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
+   ![Zadání podrobností pro vytvoření prostředku brány dat](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -128,7 +128,7 @@ Chcete-li aktualizovat nastavení pro připojení brány, můžete upravit přip
 
 1. Pokud chcete najít všechna připojení rozhraní API jenom pro vaši aplikaci logiky, v nabídce aplikace logiky v části **vývojové nástroje**vyberte **připojení rozhraní API**.
 
-   ![V nabídce aplikace logiky vyberte připojení rozhraní API.](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+   ![V nabídce aplikace logiky vyberte připojení rozhraní API.](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
 1. Vyberte připojení brány, které chcete, a pak vyberte **Upravit připojení rozhraní API**.
 
@@ -137,8 +137,8 @@ Chcete-li aktualizovat nastavení pro připojení brány, můžete upravit přip
 
 Pokud chcete najít všechna připojení rozhraní API přidružená k vašemu předplatnému Azure:
 
-* V hlavní nabídce Azure přejděte na **všechny služby** > **připojení rozhraní API**pro **Web** > .
-* Nebo z hlavní nabídky Azure přejděte na **všechny prostředky**. Nastavte filtr **typu** na **připojení rozhraní API**.
+* V nabídce Azure Portal vyberte **všechny služby** > **připojení rozhraní API** **webového** > .
+* Nebo z nabídky Azure Portal vyberte **všechny prostředky**. Nastavte filtr **typu** na **připojení rozhraní API**.
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -146,13 +146,13 @@ Pokud chcete najít všechna připojení rozhraní API přidružená k vašemu p
 
 Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jiným prostředkem brány nebo odeberte prostředek brány, můžete odstranit prostředek brány, aniž by to ovlivnilo instalaci brány.
 
-1. V hlavní nabídce Azure vyberte **všechny prostředky**. Vyhledejte a vyberte prostředek brány.
+1. V nabídce Azure Portal vyberte **všechny prostředky**, nebo vyhledejte a vyberte **všechny prostředky** z libovolné stránky. Vyhledejte a vyberte prostředek brány.
 
 1. Pokud jste to ještě neučinili, vyberte v nabídce prostředku brány místní **bránu dat**. Na panelu nástrojů prostředek brány vyberte **Odstranit**.
 
    Například:
 
-   ![Odstranění prostředku brány v Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
+   ![Odstranění prostředku brány v Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 

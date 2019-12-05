@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: 9a757402360b4b69e760315a809482be9b4e04d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558906"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815559"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Řešení potíže se sadou Speech Devices SDK
 
@@ -23,7 +23,7 @@ Tento článek poskytuje informace, které vám pomůžou při řešení problé
 
 ## <a name="certificate-failures"></a>Selhání certifikátu
 
-Pokud při používání služeb řeči dojde k selhání certifikátu, ujistěte se, že má vaše zařízení správné datum a čas:
+Pokud při používání služby řeči dojde k chybě certifikátu, ujistěte se, že má vaše zařízení správné datum a čas:
 
 1. Přejděte na **nastavení**. V části **systému**vyberte **datum a čas**.
 

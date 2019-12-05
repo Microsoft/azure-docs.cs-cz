@@ -1,7 +1,7 @@
 ---
 title: Kodek Stream komprimovaný zvuk se sadou Speech SDK v Androidu
 titleSuffix: Azure Cognitive Services
-description: Naučte se streamovat komprimovaný zvuk do služby Azure Speech Services pomocí sady Speech SDK v Androidu.
+description: Naučte se streamovat komprimovaný zvuk do služby Speech pomocí sady Speech SDK v Androidu.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109900"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805837"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Postupy: použití komprimovaného zvukového vstupu kodeku se sadou Speech SDK v Androidu
 
@@ -37,7 +37,7 @@ Informace o WAV/PCM najdete v dokumentaci k hlavní Speech. Mimo zvuk WAV/PCM js
 
 Komprimovaný zvuk kodeku je implementován pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány se sadou SDK. Budete muset použít předem připravené binární soubory pro Android. Pokud si chcete stáhnout předem připravené knihovny, přečtěte si téma [instalace pro vývoj pro Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-`libgstreamer_android.so` se vyžaduje. Ujistěte se, že jsou moduly plug-in GStreamer propojené v `libgstreamer_android.so`.
+`libgstreamer_android.so` je povinné. Ujistěte se, že jsou moduly plug-in GStreamer propojené v `libgstreamer_android.so`.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac
@@ -133,7 +133,7 @@ Po sestavení sdíleného objektu (libgstreamer_android. so) musí vývojář ap
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Příklad kódu pomocí komprimovaného zvukového vstupu kodeku
 
-Pokud chcete streamovat v komprimovaném zvukovém formátu ke službám Speech, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream`. Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
+Pokud chcete streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání řeči, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream`. Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
 
 Řekněme, že máte vstupní třídu streamu nazvanou `myPullStream` a používáte OPUS/OGG. Váš kód může vypadat takto:
 

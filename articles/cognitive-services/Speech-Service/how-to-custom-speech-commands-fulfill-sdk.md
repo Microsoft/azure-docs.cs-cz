@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110070"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806146"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Postupy: plnění příkazů v klientovi pomocí sady Speech SDK (Preview)
 
@@ -26,10 +26,10 @@ V tomto článku:
 - Definování a odeslání vlastní datové části JSON z aplikace Custom Commands
 - Přijímání a vizualizace vlastního obsahu datové části JSON z klientské C# aplikace sady Speech pro rozpoznávání řeči
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Klíč předplatného Azure pro služby pro rozpoznávání řeči
+- Klíč předplatného Azure pro službu Speech Service
   - [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
 - Dříve vytvořená aplikace vlastních příkazů
   - [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)

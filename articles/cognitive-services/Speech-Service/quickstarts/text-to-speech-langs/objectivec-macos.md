@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 27e471bb1b155ab245e68712031eef4efb4d5b34
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5758361e1c4de6e824f0df33eacd940cad8eca70
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503455"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817761"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči v cíli – C v macOS pomocí sady Speech SDK
 
 V tomto článku se dozvíte, jak vytvořit aplikaci macOS v cíli-C pomocí sady Cognitive Services Speech SDK pro syntetizaci řeči z textu a přehrání s výchozím zvukovým výstupem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, tady je seznam požadavků:
+Než začnete, tady je seznam požadovaných součástí:
 
 * [Klíč předplatného](~/articles/cognitive-services/Speech-Service/get-started.md) pro službu pro rozpoznávání řeči
 * MacOS počítač s [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novějším a MacOS 10,13 nebo novějším

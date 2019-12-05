@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668579"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812721"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Nasazení Azure Průzkumník dat do Virtual Network (Preview)
 
@@ -54,7 +54,7 @@ Celkový počet IP adres:
 | Služba správy dat | 2 |
 | Interní nástroje pro vyrovnávání zatížení | 2 |
 | Rezervované adresy Azure | 5 |
-| **Čtení** | **#engine_instances + 9** |
+| **Celkem** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
 > Velikost podsítě musí být plánována předem, protože po nasazení služby Azure Průzkumník dat není možné ji změnit. Proto odpovídajícím způsobem rezervujte potřebnou velikost podsítě.
@@ -75,7 +75,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 
 #### <a name="inbound-nsg-configuration"></a>Příchozí konfigurace NSG
 
-| **Použití**   | **Výsledkem**   | **Komu**   | **Protokol**   |
+| **Použití**   | **from**   | **Komu**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Správa  |[ADX Management addresss](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX podsíť: 443  | TCP  |
 | Sledování stavu  | [Adresy sledování stavu ADX](#health-monitoring-addresses)  | ADX podsíť: 443  | TCP  |
@@ -84,7 +84,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 
 #### <a name="outbound-nsg-configuration"></a>Konfigurace odchozího NSG
 
-| **Použití**   | **Výsledkem**   | **Komu**   | **Protokol**   |
+| **Použití**   | **from**   | **Komu**   | **Protokol**   |
 | --- | --- | --- | --- |
 | Závislost na Azure Storage  | ADX podsíť  | Úložiště: 443  | TCP  |
 | Závislost na Azure Data Lake  | ADX podsíť  | AzureDataLake: 443  | TCP  |
@@ -236,7 +236,6 @@ azureprofilerfrontdoor.cloudapp.net:443
 *.core.windows.net:443
 *.servicebus.windows.net:443
 shoebox2.metrics.nsatc.net:443
-production.diagnostics.monitoring.core.windows.net:443
 prod-dsts.dsts.core.windows.net:443
 ocsp.msocsp.com:80
 *.windowsupdate.com:80

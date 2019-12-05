@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči ze zvukového souboru – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: bbd3880ea679dc5fc86c0fc1ece101ca3fca74d9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2f7ec24667514fb131af29321a53f97210e58fc9
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504134"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819302"
 ---
 V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) k rozpoznávání řeči ze zvukového souboru. Po splnění několika požadavků se rozpoznávání řeči ze souboru provede jenom pět kroků:
 > [!div class="checklist"]

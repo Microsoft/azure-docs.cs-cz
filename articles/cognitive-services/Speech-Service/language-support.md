@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 87b065d2ecf9d80c072918c14e7861f72b8d7aba
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 8db70ccbabfc165dbe3f7b9a61dbe5023a87f708
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304903"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815384"
 ---
-# <a name="language-and-region-support-for-the-speech-services"></a>Podpora jazyků a oblastí pro hlasové služby
+# <a name="language-and-region-support-for-the-speech-service"></a>Podpora jazyků a oblastí pro službu Speech
 
 Jazyková podpora se liší podle funkcí služby Speech. Následující tabulka shrnuje jazykovou podporu pro nabídky převodu [řeči na text](#speech-to-text), převod [textu na řeč](#text-to-speech)a [rozpoznávání řeči](#speech-translation) .
 
@@ -26,7 +26,7 @@ Jazyková podpora se liší podle funkcí služby Speech. Následující tabulka
 
 Sada Microsoft Speech SDK i REST API podporují následující jazyky (národní prostředí). Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání zvuku a přepisu s popiskem nebo souvisejícího textu: věty.  Přizpůsobení výslovnosti je aktuálně k dispozici pouze pro `en-US` a `de-DE`. Další informace o přizpůsobení [najdete tady](how-to-custom-speech.md).
 
- Národní prostředí | Jazyk | Podporuje se | Vlastního
+ Národní prostředí | Jazyk | Podporováno | Přizpůsobitelné
 ------|------------|-----------|-------------
 `ar-EG` | Arabština (Egypt), moderní standard | Ano | Ano
 `ar-SA` | Arabština (Saúdská Arábie) | Ano | Ano
@@ -161,7 +161,7 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 | | | Muž |"Microsoft Server řeči převod textu na řeč hlasové (pt-BR, ADAM, Apollo)" | pt-BR-Daniel-Apollo
 `pt-PT` | Portugalština (Portugalsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)" | pt-PT-HeliaRUS
 `ro-RO` | Rumunština | Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO, Andrei)" | "RO-RO-Andrei"
-`ru-RU` |Ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)" | ru-RU-Irina-Apollo "
+`ru-RU` |ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)" | ru-RU-Irina-Apollo "
 | | | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Pavel, Apollo)" | ru-RU-Pavel-Apollo "
 | | | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, EkaterinaRUS)" | ru-RU – EkaterinaRUS
 `sk-SK` | Slovenština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)" | "SK-SK-Filip"
@@ -182,7 +182,7 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar-eg podporuje moderní arabštinu Standard (MSA).*
+&dagger; *ar – třeba podporuje moderní standardní Arabština (MSA).*
 
 > [!NOTE]
 > V požadavcích na Shrnutí řeči můžete použít buď úplné mapování názvu služby, nebo krátký název hlasu.
@@ -196,7 +196,7 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 
 ## <a name="speech-translation"></a>Překlad řeči
 
-Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlasu na řeč a převod řeči na text. Zdrojový jazyk musí být vždy z tabulky jazyka Speech-to-text. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Příchozí řeč můžete přeložit do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). K dispozici je podmnožina jazyků pro [syntézu řeči](language-support.md#text-languages).
+**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy z tabulky jazyka Speech-to-text. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Může překládat příchozí řeči do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). K dispozici je podmnožina jazyků pro [syntézu řeči](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Text jazyky
 
@@ -246,7 +246,7 @@ Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlas
 | Portugalština      | `pt`          |
 | Queretaro Otomi      | `otq`          |
 | Rumunština      | `ro`          |
-| Ruština      | `ru`          |
+| ruština      | `ru`          |
 | Samoan      | `sm`          |
 | Srbština (cyrilice)      | `sr-Cyrl`          |
 | Srbština (latinka)      | `sr-Latn`          |
@@ -269,5 +269,5 @@ Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlas
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získání zkušebního předplatného služeb Speech Services](https://azure.microsoft.com/try/cognitive-services/)
-* [Podívejte se, jak rozpoznávat řeč vC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Zjistěte, jak rozpoznávat řeč v jazyce C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

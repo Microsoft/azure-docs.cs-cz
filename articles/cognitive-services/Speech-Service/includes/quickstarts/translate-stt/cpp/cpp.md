@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Převod řeči na text, C++ služba řeči'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 3d74ad21ab24745b38f98f5125b513bac563984e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 850a319595d6ab2455e6db5289c23824eff8bca0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502706"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816772"
 ---
 [!INCLUDE [windows](./windows.md)]
 

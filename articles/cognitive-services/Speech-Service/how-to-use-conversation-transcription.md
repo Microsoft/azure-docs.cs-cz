@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 4ee597f96d28b43b9c69d1515634aadde2f0ab7c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608049"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805803"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Přepis konverzace v reálném čase (Preview)
 
-Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat schůzky a další konverzace s možností přidávat, odebírat a identifikovat více účastníků streamování zvuku do služeb Speech pomocí `PullStream` nebo `PushStream`. V tomto tématu se dozvíte, jak používat převod řeči na text pomocí sady Speech SDK (verze 1.8.0 nebo novější). Další informace najdete v tématu [co jsou hlasové služby](overview.md).
+Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat schůzky a další konverzace s možností přidávat, odebírat a identifikovat více účastníků pomocí streamování zvuku do služby pro rozpoznávání řeči pomocí `PullStream` nebo `PushStream`. V tomto tématu se dozvíte, jak používat převod řeči na text pomocí sady Speech SDK (verze 1.8.0 nebo novější). Další informace najdete v tématu [co jsou hlasové služby](overview.md).
 
 ## <a name="limitations"></a>Omezení
 
@@ -35,9 +35,9 @@ Sada Speech SDK pro zařízení nabízí vzorový kód v jazyce Java pro záznam
 - [Vzorový kód zařízení ROOBO](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
 - [Vzorový kód pro Azure Kinect dev Kit](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Předplatné služby Speech Services. [Zkušební předplatné můžete získat](https://azure.microsoft.com/try/cognitive-services/) , pokud ho nemáte.
+Předplatné služby Speech. [Zkušební předplatné můžete získat](https://azure.microsoft.com/try/cognitive-services/) , pokud ho nemáte.
 
 ## <a name="create-voice-signatures"></a>Vytvoření podpisů hlasu
 

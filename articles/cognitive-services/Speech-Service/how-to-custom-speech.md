@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554969"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806007"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -23,13 +23,13 @@ ms.locfileid: "74554969"
 
 ## <a name="whats-in-custom-speech"></a>Co je v Custom Speech?
 
-Abyste mohli provádět cokoli s Custom Speech, budete potřebovat účet Azure a předplatné služby Speech Services. Jakmile budete mít účet, můžete si nechat data, naučit a testovat vaše modely, kontrolovat kvalitu rozpoznávání, hodnotit přesnost a nakonec nasazovat a používat vlastní model řeči na text.
+Abyste mohli provádět cokoli s Custom Speech, budete potřebovat účet Azure a předplatné služby Speech. Jakmile budete mít účet, můžete si nechat data, naučit a testovat vaše modely, kontrolovat kvalitu rozpoznávání, hodnotit přesnost a nakonec nasazovat a používat vlastní model řeči na text.
 
 Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https://aka.ms/customspeech). Pomocí odkazů níže můžete získat další informace o jednotlivých krocích.
 
 ![Zvýrazní různé komponenty, které tvoří portál Custom Speech.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Přihlaste se k odběru a vytvořte projekt](#set-up-your-azure-account) – vytvořte účet Azure a přihlaste se k odběru služeb řeči. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a [Custom Speech Portal](https://speech.microsoft.com/customspeech). Pak pomocí svého předplatného služby Speech Services vytvořte svůj první Custom Speech projekt.
+1. [Přihlaste se k odběru a vytvořte projekt](#set-up-your-azure-account) – vytvořte účet Azure a přihlaste se k odběru služby Speech. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a [Custom Speech Portal](https://speech.microsoft.com/customspeech). Pak pomocí svého předplatného služby Speech vytvořte svůj první Custom Speech projekt.
 
 2. [Nahrání testovacích](how-to-custom-speech-test-data.md) dat – nahrání testovacích dat (zvukové soubory) k vyhodnocení nabídky pro vaše aplikace, nástroje a produkty od Microsoftu na text
 
@@ -43,14 +43,14 @@ Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
-Aby bylo možné použít [portál Custom Speech](https://speech.microsoft.com/customspeech) k vytvoření vlastního modelu, je nutné předplatné služby Speech Services. Pokud chcete vytvořit standardní předplatné služby Speech Services, postupujte podle těchto pokynů: [vytvoření předplatného pro rozpoznávání řeči](get-started.md#try-the-speech-service-using-a-new-azure-account).
+Aby bylo možné použít [portál Custom Speech](https://speech.microsoft.com/customspeech) k vytvoření vlastního modelu, je nutné předplatné služby Speech Service. Podle těchto pokynů vytvořte standardní předplatné služby Speech: [Vytvořit předplatné pro rozpoznávání řeči](get-started.md#try-the-speech-service-using-a-new-azure-account).
 
 > [!NOTE]
 > Nezapomeňte prosím vytvořit standardní předplatné (S0), odběry bezplatné zkušební verze (F0) se nepodporují.
 
-Po vytvoření účtu Azure a předplatného služby Speech Services se budete muset přihlásit k [portálu Custom Speech](https://speech.microsoft.com/customspeech) a připojit své předplatné.
+Po vytvoření účtu Azure a předplatného služby Speech se budete muset přihlásit k [portálu Custom Speech](https://speech.microsoft.com/customspeech) a připojit své předplatné.
 
-1. Získejte klíč předplatného služby Speech Services z Azure Portal.
+1. Získejte klíč předplatného služby Speech z Azure Portal.
 2. Přihlaste se k [portálu Custom Speech](https://aka.ms/custom-speech).
 3. Vyberte předplatné, na kterém je potřeba pracovat, a vytvořte projekt řeči.
 4. Pokud chcete upravit předplatné, použijte ikonu **ozubeného kola** , která se nachází v horním navigačním panelu.

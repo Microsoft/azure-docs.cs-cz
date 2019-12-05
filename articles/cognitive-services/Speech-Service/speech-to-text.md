@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 651a30bbcba7b4d4f5d00765c651be73953cd748
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774004"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815491"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
-Převod řeči na text z Azure Speech Services, označovaný také jako převod řeči na text, umožňuje přepis zvukových streamů v reálném čase na text, který vaše aplikace, nástroje nebo zařízení můžou spotřebovat, zobrazovat a provádět s nimi akce jako vstup příkazu. Tato služba využívá stejnou technologii rozpoznávání, kterou Microsoft používá pro Cortana a produkty Office, a bezproblémově pracuje s překlady a převodem textu na řeč. Úplný seznam dostupných jazyků pro převod řeči na text najdete v tématu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
+Převod řeči na text ze služby pro rozpoznávání řeči, označovaný také jako převod řeči na text, umožňuje přepis zvukových streamů v reálném čase na text, který můžou aplikace, nástroje nebo zařízení spotřebovat, zobrazovat a provádět s nimi akce jako vstup příkazu. Tato služba využívá stejnou technologii rozpoznávání, kterou Microsoft používá pro Cortana a produkty Office, a bezproblémově pracuje s překlady a převodem textu na řeč. Úplný seznam dostupných jazyků pro převod řeči na text najdete v tématu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
 Ve výchozím nastavení používá služba Speech-to-text model univerzálního jazyka. Tento model byl vyškolený pomocí dat vlastněných společností Microsoft a nasazený v cloudu. Je ideální pro scénáře konverzace a diktování. Pokud používáte převod řeči na text pro rozpoznávání a přepis v jedinečném prostředí, můžete vytvořit a vyškolit vlastní modely akustického, jazyka a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní obor.
 
@@ -54,7 +54,7 @@ Pokud dáváte přednost používání služby REST (Speech-to-text), přečtět
 
 ## <a name="tutorials-and-sample-code"></a>Kurzy a ukázkový kód
 
-Až budete mít možnost používat služby pro rozpoznávání řeči, vyzkoušejte náš kurz, který vás učí, jak rozpoznávat záměry pomocí sady Speech SDK a LUIS.
+Až budete mít možnost používat službu rozpoznávání řeči, vyzkoušejte náš kurz, který vás seznámí s postupem rozpoznávání řeči pomocí sady Speech SDK a LUIS.
 
 - [Kurz: rozpoznávání záměrů z řeči pomocí sady Speech SDK a LUISC#](how-to-recognize-intents-from-speech-csharp.md)
 
@@ -65,7 +65,7 @@ Vzorový kód pro sadu Speech SDK je k dispozici na GitHubu. Tyto ukázky se tý
 
 ## <a name="customization"></a>Přizpůsobení
 
-Kromě standardního směrného plánu, který využívají služby pro rozpoznávání řeči, si můžete přizpůsobit modely podle vašich potřeb s dostupnými daty, abyste překonali překážky rozpoznávání řeči, jako je mluvený styl, slovník a šum na pozadí, a přečtěte si téma [Custom Speech](how-to-custom-speech.md)
+Kromě standardního směrného plánu, který používá služba pro rozpoznávání řeči, si můžete přizpůsobit modely podle vašich potřeb s dostupnými daty, abyste překonali překážky rozpoznávání řeči, jako je mluvený styl, slovník a šum na pozadí, a přečtěte si téma [Custom Speech](how-to-custom-speech.md)
 
 > [!NOTE]
 > Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](supported-languages.md)).
@@ -75,10 +75,10 @@ Kromě standardního směrného plánu, který využívají služby pro rozpozn�
 > [!WARNING]
 > Zpracování řeči Bingu byl vyvyřazen z 15. října 2019.
 
-Pokud vaše aplikace, nástroje nebo produkty používají Zpracování řeči Bingu rozhraní API nebo Custom Speech, vytvořili jsme příručky, které vám pomůžou s migrací na služby pro rozpoznávání řeči.
+Pokud vaše aplikace, nástroje nebo produkty používají Zpracování řeči Bingu rozhraní API nebo Custom Speech, vytvořili jsme příručky, které vám pomůžou s migrací na službu Speech.
 
-- [Migrace z Zpracování řeči Bingu na služby pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
-- [Migrace z Custom Speech na služby pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
+- [Migrace z Zpracování řeči Bingu do služby pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
+- [Migrace z Custom Speech do služby pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
@@ -90,5 +90,5 @@ Pokud vaše aplikace, nástroje nebo produkty používají Zpracování řeči B
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+- [Získejte zdarma klíč předplatného služby Speech](get-started.md)
 - [Získat sadu Speech SDK](speech-sdk.md)

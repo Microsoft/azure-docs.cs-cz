@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak pomocí řešení Azure Update Managem
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66acb1284f0814eec91715284259272a065dbae2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690897"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806537"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -31,16 +31,16 @@ Můžete povolit Update Management pro virtuální počítače přímo z účtu 
 
 Počítače spravované pomocí Update Management k vyhodnocení a nasazení aktualizací používají následující konfigurace:
 
-* Microsoft Monitoring Agent (MMA) pro Windows nebo Linux
+* Agenta Microsoft Monitoring Agent (MMA) pro Windows nebo Linux
 * Konfiguraci požadovaného stavu (DSC) PowerShellu pro Linux
 * Funkci Hybrid Runbook Worker služby Automation
-* Microsoft Update nebo Windows Server Update Services (WSUS) pro počítače se systémem Windows
+* Služby Microsoft Update nebo Windows Server Update Services (WSUS) pro počítače s Windows
 
 Následující diagram znázorňuje, jak řešení vyhodnocuje a aplikuje aktualizace zabezpečení na všechny připojené počítače s Windows serverem a Linux v pracovním prostoru:
 
 ![Tok procesu Update Management](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Update Management lze použít k nativně zprovoznění počítačů ve více předplatných ve stejném tenantovi.
+Update Management můžete nativně nasadit na počítače v různých předplatných stejného tenanta.
 
 Po uvolnění balíčku trvá tato oprava 2 až 3 hodiny, než se oprava zobrazí pro počítače se systémem Linux pro posouzení. U počítačů s Windows trvá 12 až 15 hodin, než se oprava zobrazí po jejím vydání.
 
@@ -69,7 +69,7 @@ Počítač zaregistrovaný pro Update Management ve více než jednom pracovním
 
 ## <a name="clients"></a>Klienti
 
-### <a name="supported-client-types"></a>Podporované typy klientů
+### <a name="supported-client-types"></a>Podporované klientské typy
 
 Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací. Oprava vyžaduje Hybrid Runbook Worker. Informace o požadavcích na Hybrid Runbook Worker najdete v pokynech k instalaci pro instalaci [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) a [Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker).
 
@@ -85,17 +85,17 @@ Následující tabulka uvádí podporované operační systémy pro posouzení a
 > Sady škálování virtuálních počítačů Azure je možné spravovat prostřednictvím Update Management. Update Management pracuje na samotných instancích a nikoli na základní imagi. Aktualizace budete muset naplánovat přírůstkově, takže se neaktualizují všechny instance virtuálních počítačů najednou.
 > Uzly pro sadu škálování virtuálního počítače můžete přidat pomocí postupu v části připojení [počítače mimo Azure](automation-tutorial-installed-software.md#onboard-a-non-azure-machine).
 
-### <a name="unsupported-client-types"></a>Nepodporované typy klientů
+### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 
 V následující tabulce jsou uvedeny nepodporované operační systémy:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) se nepodporují.        |
-|Windows Server 2016 nano Server     | Nepodporuje se.       |
+|Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) nejsou podporovány.        |
+|Windows Server 2016 Nano Server     | Nepodporuje se.       |
 |Uzly služby Azure Kubernetes | Nepodporuje se. Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
 
-### <a name="client-requirements"></a>Požadavky na klienta
+### <a name="client-requirements"></a>Požadavky na klienty
 
 Následující informace popisují požadavky klienta na konkrétní operační systémy. Další pokyny najdete v tématu [Plánování sítě](#ports).
 
@@ -138,7 +138,7 @@ Počítače s Windows můžete přidat do skupiny Hybrid Runbook Worker v účtu
 
 ### <a name="management-packs"></a>Sady Management Pack
 
-Pokud je vaše skupina pro správu System Center Operations Manager připojená k pracovnímu prostoru Log Analytics, v Operations Manager se nainstalují následující sady Management Pack. Tyto sady Management Pack jsou také nainstalovány na přímo připojené počítače se systémem Windows po přidání řešení. Tyto sady Management Pack nemusíte konfigurovat ani spravovat.
+Pokud je vaše skupina pro správu System Center Operations Manageru připojená k pracovnímu prostoru Log Analytics, nainstalují se do Operations Manageru následující sady Management Pack. Tyto sady Management Pack se po přidání do řešení nainstalují také přímo na připojené počítače s Windows. Sady Management Pack nemusíte konfigurovat ani spravovat:
 
 * Aktualizace Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -162,7 +162,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 | --- | --- | --- |
 | Agenti systému Windows |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů systému Windows a poté inicializuje instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Řešení shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| Skupina pro správu Operations Manageru |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
@@ -170,7 +170,7 @@ U každého spravovaného počítače se systémem Windows se kontrola provádí
 
 Kontrola se provádí každou hodinu každého spravovaného počítače se systémem Linux.
 
-Může trvat 30 minut a 6 hodin, než se na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
+Zobrazení aktuálních dat o spravovaných počítačích může trvat 30 minut nebo až 6 hodin.
 
 Průměrné využití dat pomocí Azure Monitor protokolů pro počítač používající Update Management je přibližně 25 megabajtů (MB) měsíčně. Tato hodnota je jenom aproximace a v závislosti na vašem prostředí se může změnit. Doporučujeme monitorovat své prostředí, abyste mohli sledovat přesné využití.
 
@@ -178,11 +178,11 @@ Průměrné využití dat pomocí Azure Monitor protokolů pro počítač použ�
 
 Následující adresy jsou vyžadovány konkrétně pro Update Management. Komunikace s těmito adresami probíhá přes port 443.
 
-|Veřejné Azure  |Azure Government  |
+|Veřejný partnerský vztah Azure  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 U počítačů s Windows musíte taky u všech koncových bodů vyžadovaných nástrojem web Windows Update umožňovat provoz. Aktualizovaný seznam požadovaných koncových bodů najdete v [problémech souvisejících s HTTP/proxy serverem](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Pokud máte místní [web Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musíte taky na serveru, který určíte v [klíči služby WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry), povolený provoz.
@@ -263,7 +263,7 @@ U některých variant systému Linux, například Red Hat Enterprise Linux, mů�
 
 Chcete-li se vyhnout aktualizaci verze operačního systému pomocí Update Management spuštění, použijte funkci **vyloučení** .
 
-V Red Hat Enterprise Linux je název balíčku, který se má vyloučit, RedHat-Release-Server. x86_64.
+V Red Hat Enterprise Linux název balíčku, který se má vyloučit, je RedHat-Release-Server. x86_64.
 
 ![Balíčky, které se mají vyloučit pro Linux](./media/automation-update-management/linuxpatches.png)
 

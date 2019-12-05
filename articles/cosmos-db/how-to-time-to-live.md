@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: e36b894ec9c7433bc114145e0de5f519f73486f1
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8bae2db08a5279225eba7492c63706dc9fc3df02
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815910"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819512"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
 
@@ -77,7 +77,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>Nastavení TTL (Time to Live) na kontejneru pomocí sady SDK
 
-Chcete-li nastavit hodnotu TTL (Time to Live) na kontejneru, je nutné zadat nenulové kladné číslo, které určuje časové období v sekundách. Na základě nastavené hodnoty TTL se odstraní všechny položky v kontejneru po posledním změněném časovém razítku položky `_ts`.
+Chcete-li nastavit hodnotu TTL (Time to Live) na kontejneru, je nutné zadat nenulové kladné číslo, které určuje časové období v sekundách. Na základě konfigurované hodnoty TTL se odstraní všechny položky v kontejneru po posledním změněném časovém razítku položky `_ts`.
 
 ### <a id="dotnet-enable-withexpiry"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
@@ -86,7 +86,7 @@ Chcete-li nastavit hodnotu TTL (Time to Live) na kontejneru, je nutné zadat nen
 DocumentCollection collectionDefinition = new DocumentCollection();
 collectionDefinition.Id = "myContainer";
 collectionDefinition.PartitionKey.Paths.Add("/myPartitionKey");
-collectionDefinition.DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
+collectionDefinition.DefaultTimeToLive = 90 * 60 * 60 * 24 // expire all documents after 90 days
 
 DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
     UriFactory.CreateDatabaseUri("myDatabaseName"),
@@ -123,7 +123,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete nastavit hodnotu TTL (Time to Live) pro položku. Nastavením hodnoty doba na živý na úrovni položky se přepíše výchozí hodnota TTL položky v tomto kontejneru.
 
-* Chcete-li pro položku nastavit hodnotu TTL, je nutné zadat nenulové kladné číslo, které určuje dobu, po kterou má být položka po posledním změněném časovém razítku položky `_ts`.
+* Chcete-li pro položku nastavit hodnotu TTL, je nutné zadat nenulové kladné číslo, které označuje dobu platnosti položky po posledním změněném časovém razítku položky `_ts`v sekundách.
 
 * Pokud položka nemá pole TTL, bude ve výchozím nastavení pro položku platit hodnota TTL nastavená na kontejner.
 
@@ -198,7 +198,7 @@ const itemDefinition = {
 
 ## <a name="reset-time-to-live"></a>Resetovat čas na Live
 
-Čas do živého nastavení můžete nastavit tak, že na položku provedete operaci zápisu nebo aktualizace. Operace zápisu nebo aktualizace nastaví `_ts` na aktuální čas a zahájí se znovu hodnota TTL pro položku, jejíž platnost vyprší. Pokud chcete změnit hodnotu TTL položky, můžete pole aktualizovat stejně, jako byste aktualizovali jiné pole.
+Čas do živého nastavení můžete nastavit tak, že na položku provedete operaci zápisu nebo aktualizace. Operace zápisu nebo aktualizace nastaví `_ts` k aktuálnímu času a hodnota TTL pro položku, jejíž platnost vyprší, bude zahájena znovu. Pokud chcete změnit hodnotu TTL položky, můžete pole aktualizovat stejně, jako byste aktualizovali jiné pole.
 
 ### <a id="dotnet-extend-ttl-item"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 

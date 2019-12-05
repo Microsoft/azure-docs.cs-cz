@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 85022d52c9513e53da31cc3c962f3a54dd538371
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075710"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815485"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
-Převod textu na řeč z Azure Speech Services je služba, která umožňuje vašim aplikacím, nástrojům a zařízením převádět text na přirozený řeč, který se na něj člověk líbí. Vyberte si ze standardních nebo neuronové hlasů nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy jsou k dispozici ve 4 jazycích a národních prostředích. Úplný seznam najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
+Převod textu na řeč od služby pro rozpoznávání řeči umožňuje vašim aplikacím, nástrojům a zařízením převádět text na přirozený řeč, který se na něj člověk líbí. Vyberte si ze standardních nebo neuronové hlasů nebo si vytvořte vlastní hlas jedinečný pro svůj produkt nebo značku. 75 a standardní hlasy jsou k dispozici ve více než 45 jazycích a národních prostředích a 5 neuronové hlasy jsou k dispozici ve 4 jazycích a národních prostředích. Úplný seznam najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
 Technologie převodu textu na řeč umožňuje autorům obsahu pracovat různými způsoby s uživateli. Převod textu na řeč může zlepšit přístupnost tím, že poskytuje uživatelům možnost pracovat s obsahem audibly. Bez ohledu na to, jestli má uživatel vizuální poškození, zdravotní postižení, nebo vyžaduje navigační informace, ale při jízdě, může převod textu na řeč zlepšit stávající prostředí. Převod textu na řeč je také užitečným doplňkem pro hlasové roboty a hlasové asistenty.
 
@@ -31,7 +31,7 @@ Standardní hlasy jsou vytvářeny pomocí metod syntézy statistických ukazate
 
 ### <a name="neural-voices"></a>Hlasy neuronové
 
-Hlasy neuronové používají neuronové sítě k překonání omezení tradičních systémů pro převod textu na mluvené slovo v porovnání se vzory zátěže a nevýbušného jazyka v mluveném jazyce a při syntetizování jednotek řeči do hlasu v počítači. Standardní převod textu na řeč rozprosody na samostatné jazykové analýzy a kroky pro plynulé předpovědi, které se řídí nezávislými modely, což může vést k porušení hlasového Shrnutí. Naše schopnost neuronové provádí současné Prosody předpověď a hlasovou syntézu. Výsledkem je více kapalin a přirozený hlas.
+Hlasy neuronové používají neuronové sítě k překonání omezení tradičních systémů pro převod textu na mluvené slovo v porovnání se vzory zátěže a nevýbušného jazyka v mluveném jazyce a při syntetizování jednotek řeči do hlasu v počítači. Standardní převod textu na řeč rozprosody na samostatné jazykové analýzy a kroky pro plynulé předpovědi, které se řídí nezávislými modely, což může vést k porušení hlasového Shrnutí. Naše neurální funkce předpovídá suprasegmentální jevy a zároveň i syntézu hlasu a výsledkem je plynulejší a přirozenější hlasový projev.
 
 Neuronové hlasy se dají použít k zajištění většího přirozeného a poutavého působení s chatovacích robotů o a hlasovými asistenty, konverzí digitálních textů, jako jsou například e-knihy, do audiobooks a vylepšení navigačních systémů v klecích. V případě přirozeného Prosody jako přirozeného a jasného kloubování slov, neuronové hlasy významně omezují naslouchat únavu při interakci se systémy AI.
 
@@ -67,7 +67,7 @@ Podrobné informace najdete v tématu [ceny](https://azure.microsoft.com/pricing
 
 Tato tabulka uvádí základní funkce pro převod textu na řeč:
 
-| Případ použití                                  | Sada SDK | REST  |
+| Případ použití                                  | SDK | REST  |
 | ----------------------------------------- | --- | ----- |
 | Převod textu na řeč                   | Ano | Ano   |
 | Nahrajte datové sady pro přizpůsobení hlasu.     | Ne  | Ano\* |
@@ -102,7 +102,7 @@ Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za mén
 
 ### <a name="rest-quickstarts"></a>Rychlé starty REST
 
-| Rychlý Start (REST) | Platforma | API – referenční informace |
+| Rychlý Start (REST) | Platforma | Referenční materiály k rozhraním API |
 | ----------------- | -------- | ------------- |
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Okno, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -125,5 +125,5 @@ Vzorový kód pro převod textu na řeč je k dispozici na GitHubu. Tyto ukázky
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Získání bezplatného předplatného služby Speech Services](get-started.md)
+- [Získat bezplatné předplatné služby Speech](get-started.md)
 - [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)

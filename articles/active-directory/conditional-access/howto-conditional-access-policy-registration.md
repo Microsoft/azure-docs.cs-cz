@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322737"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803673"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Podmíněný přístup: vyžadovat důvěryhodné umístění pro registraci MFA
 
@@ -26,7 +26,7 @@ Zabezpečení, kdy a jak se uživatelé registrují pro Azure Multi-Factor Authe
 
 Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného prostředí pro registraci, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
 
-1. V **Azure Portal**přejděte do **Azure Active Directory** > **podmíněný přístup**.
+1. V **Azure Portal**přejděte do **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
 1. Vyberte **nové zásady**.
 1. Do název zadejte název pro tuto zásadu. Například **Kombinovaná registrace informací o zabezpečení v důvěryhodných sítích**.
 1. V části **přiřazení**klikněte na **Uživatelé a skupiny**a vyberte uživatele a skupiny, pro které chcete tuto zásadu použít.
@@ -44,7 +44,7 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
 1. V části **řízení přístupu** > **udělení**.
    1. Klikněte na **blokovat přístup**.
    1. Pak klikněte na **Vybrat**.
-1. Nastavte **Povolit zásady** na **zapnuto**.
+1. Nastavte **Povolit zásadu** na **Zapnuto**.
 1. Potom klikněte na **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky

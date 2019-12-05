@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e40ca55a9cd198e1b086362a2559ab2fc0ba95e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464530"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805956"
 ---
 # <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
@@ -23,13 +23,13 @@ ms.locfileid: "73464530"
 
 ## <a name="whats-in-custom-voice"></a>Co je ve vlastním hlasu?
 
-Než začnete s vlastním hlasem, budete potřebovat účet Azure a předplatné služby Speech Services. Po vytvoření účtu můžete připravit vaše data, naučit a testovat vaše modely, hodnotit kvalitu hlasu a nakonec nasazovat svůj vlastní hlasový model.
+Než začnete s vlastním hlasem, budete potřebovat účet Azure a předplatné služby Speech. Po vytvoření účtu můžete připravit vaše data, naučit a testovat vaše modely, hodnotit kvalitu hlasu a nakonec nasazovat svůj vlastní hlasový model.
 
 Diagram níže popisuje kroky pro vytvoření vlastního hlasového modelu pomocí [vlastního hlasového portálu](https://aka.ms/customvoice). Další informace získáte pomocí odkazů.
 
 ![Vlastní diagram architektury hlasu](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Přihlaste se k odběru a vytvořte projekt](#set-up-your-azure-account) – vytvořte účet Azure a vytvořte předplatné služby Speech Services. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a vlastní hlasový portál. Pak pomocí svého předplatného služby Speech Services vytvořte svůj první vlastní hlasový projekt.
+1.  [Přihlaste se k odběru a vytvořte projekt](#set-up-your-azure-account) – vytvořte účet Azure a vytvořte předplatné služby Speech. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a vlastní hlasový portál. Pak pomocí svého předplatného služby Speech vytvořte svůj první vlastní hlasový projekt.
 
 2.  [Nahrajte data](how-to-custom-voice-create-voice.md#upload-your-datasets) – nahrajte data (zvuk a text) pomocí vlastního hlasového portálu nebo vlastního hlasového rozhraní API. Z portálu můžete prozkoumat a vyhodnotit jejich skóre a poměry hluku. Další informace najdete v tématu [Příprava dat pro vlastní hlas](how-to-custom-voice-prepare-data.md).
 
@@ -46,11 +46,11 @@ Funkce pro přizpůsobení hlasu neuronové je aktuálně ve verzi Public Previe
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
-Aby bylo možné použít portál Custom Speech k vytvoření vlastního modelu, je nutné předplatné služby Speech Services. Podle těchto pokynů vytvořte v Azure předplatné služby Speech Services. Pokud nemáte účet Azure, můžete se zaregistrovat k novému.  
+Aby bylo možné použít portál Custom Speech k vytvoření vlastního modelu, je nutné předplatné služby Speech Service. Podle těchto pokynů vytvořte v Azure předplatné služby Speech. Pokud nemáte účet Azure, můžete se zaregistrovat k novému.  
 
-Po vytvoření účtu Azure a předplatného služby Speech Services se budete muset přihlásit k vlastnímu hlasovému portálu a připojit své předplatné.
+Po vytvoření účtu Azure a předplatného služby pro rozpoznávání řeči se budete muset přihlásit k vlastnímu hlasovému portálu a připojit své předplatné.
 
-1. Získejte klíč předplatného služby Speech Services z Azure Portal.
+1. Získejte klíč předplatného služby Speech z Azure Portal.
 2. Přihlaste se k [vlastnímu hlasovému portálu](https://aka.ms/custom-voice).
 3. Vyberte své předplatné a vytvořte projekt řeči.
 4. Pokud byste chtěli přepnout na jiné předplatné řeči, použijte ikonu ozubeného kola umístěnou v horním navigačním panelu.

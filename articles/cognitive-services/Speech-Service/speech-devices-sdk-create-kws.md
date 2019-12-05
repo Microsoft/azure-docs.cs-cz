@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184827"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815288"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Vytvoření vlastního klíčového slova pomocí služby Speech
 

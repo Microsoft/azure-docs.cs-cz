@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
-ms.openlocfilehash: 3beda852b3e711ee969b7f80f8f326285cc2cad6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558888"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815410"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Řešení potíží se sadou Speech SDK
 
 Tento článek poskytuje informace, které vám pomohou při řešení problémů, se kterými se můžete setkat při používání sady Speech SDK.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba: Upgrade protokolu WebSocket se nezdařil s chybou ověřování (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba: Upgrade objektu websocket na straně se nezdařilo s chybou ověřování (403)
 
 Může být nesprávné koncový bod pro oblast nebo službu. Zkontrolujte identifikátor URI, abyste měli jistotu, že je správný.
 
 Také, pravděpodobně došlo k potížím s klíč předplatného nebo autorizační token. Další informace najdete v další části.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Chyba: HTTP 403 zakázáno nebo HTTP 401 Neautorizováno
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Chyba: HTTP 403 Zakázáno nebo HTTP 401 Neautorizováno
 
 Tato chyba často způsobuje problémy s ověřováním. Požadavky na připojení bez platného `Ocp-Apim-Subscription-Key` nebo `Authorization` záhlaví odmítají se stavem 403 nebo 401.
 
@@ -107,11 +107,11 @@ Pokud jste zadali platný autorizační token, příkaz vrátí přepis pro vá�
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Chyba: Chybný požadavek HTTP 400
+## <a name="error-http-400-bad-request"></a>Chyba: HTTP 400 Chybný požadavek
 
 K této chybě obvykle dochází, když text požadavku obsahuje neplatnou zvuková data. Pouze WAV formát je podporován. Zkontrolujte taky, ujistěte se, že jste zadejte příslušné hodnoty pro záhlaví požadavku `Content-Type` a `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Chyba: Časový limit požadavku HTTP 408
+## <a name="error-http-408-request-timeout"></a>Chyba: HTTP 408 žádosti vypršel časový limit
 
 Chyba pravděpodobně dochází, protože žádné zvukové dat je odesíláno do služby. Tato chyba může být také způsobena problémy se sítí.
 
@@ -123,6 +123,6 @@ Tento problém je obvykle způsobeno zvuková data. Tato chyba může zobrazit, 
 
 * Zvuk používá nepodporovaný kodek formátu, což způsobí, že zvukových dat jsou považovány za nečinnosti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si poznámky k verzi](releasenotes.md)

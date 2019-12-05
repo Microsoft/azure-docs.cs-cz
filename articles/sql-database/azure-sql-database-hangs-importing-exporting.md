@@ -9,12 +9,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 29edd7da42a5eb4586cd52cc0f913a56e199a5ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808283"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807064"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Import nebo export databáze Azure SQL Database službě Import/export trvá dlouhou dobu.
 
@@ -22,7 +22,7 @@ Když použijete službu Azure SQL Database import/export, proces může trvat d
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database služba import/export
 
-Služba Azure SQL Database import/export je webová služba založená na REST, která běží v každém datovém centru Azure. Tato služba se volá, když použijete možnost [importovat databázi](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) nebo [exportovat](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) pro přesun databáze SQL v Azure Portal. Služba poskytuje služby a výpočetní služby pro bezplatné žádosti o provádění importů a exportů mezi službou Azure SQL Database a úložištěm objektů BLOB v Azure.
+Služba Azure SQL Database import/export je webová služba založená na REST, která běží v každém datovém centru Azure. Tato služba se volá, když použijete možnost [importovat databázi](sql-database-import.md#using-azure-portal) nebo [exportovat](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) pro přesun databáze SQL v Azure Portal. Služba poskytuje služby a výpočetní služby pro bezplatné žádosti o provádění importů a exportů mezi službou Azure SQL Database a úložištěm objektů BLOB v Azure.
 
 Operace importu a exportu nepředstavuje tradiční fyzickou zálohu databáze, ale místo logické zálohy databáze, která používá speciální formát BACPAC. Formát BACPAC vám umožňuje vyhnout se nutnosti používat fyzický formát, který se může lišit mezi verzemi Microsoft SQL Server a Azure SQL Database. Proto jej můžete použít k bezpečnému obnovení databáze do databáze SQL Server a do databáze SQL.
 

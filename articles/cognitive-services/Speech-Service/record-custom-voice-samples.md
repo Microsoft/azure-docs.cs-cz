@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 47e1f8bf178723a5d4be323f24724214a67499e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b5cf375b1e5e4c09617dc6ae74513d303a9a6a4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559189"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816678"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam hlasu ukázky vytvořte vlastní hlasové
 
@@ -191,7 +191,7 @@ Zaznamenejte dobré pěti sekund od nečinnosti před první záznam pro zachyce
 Naslouchání úzce, použít sluchátka, talentů hlasové výkonu. Hledáte dobrá, ale přirozené diction, správnou výslovnost a nedostatečná nežádoucí zvuky. Neváhejte a požádejte vašeho talentu znovu zaznamenat utterance, která nesplňuje těchto standardů.
 
 > [!TIP]
-> Pokud používáte velké množství projevy, nemusí mít jeden utterance znatelný vliv na výsledná vlastní hlasové. Může být více účelné jednoduše poznamenat jakékoli projevy problémů, vyloučit z datové sady a zobrazit, jak ukazuje vlastní hlasové. Vždy můžete přejít zpět do nástroje studio a poznamenejte chybějící ukázky později.
+> Pokud používáte velké množství projevy, nemusí mít jeden utterance znatelný vliv na výsledná vlastní hlasové. Je možné, že si jednoduše poznamenejte všechny projevy s problémy, vyloučíte je z datové sady a zjistíte, jak se vlastní hlas zapíná. Kdykoli se můžete vrátit k studiu a zaznamenat zmeškané vzorky později.
 
 Poznámka: převzít číslo nebo čas kód na váš skript pro každý utterance. Požádejte inženýr označit každý utterance ve tento záznam metadat nebo startovacího seznamu také.
 
@@ -215,7 +215,7 @@ Nakonec vytvořte *přepisu* , která přidruží jednotlivých souborů WAV tex
 
 V případě, že je budete později potřebovat můžete archivujte původní záznamy na bezpečném místě. Skript a poznámky, zachovat příliš.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Jste připraveni nahrát vašich nahrávek a vytvořit svůj vlastní hlas.
 

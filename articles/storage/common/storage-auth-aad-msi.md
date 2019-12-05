@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666153"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806575"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure
 
@@ -36,13 +36,13 @@ Další informace o spravovaných identitách najdete v tématu [spravované ide
 
 ## <a name="authenticate-with-the-azure-identity-library"></a>Ověřování pomocí knihovny identit Azure
 
-Výhodou klientské knihovny Azure identity je to, že umožňuje použít stejný kód k ověření, jestli vaše aplikace běží ve vývojovém prostředí nebo v Azure. V kódu spuštěném v prostředí Azure Klientská knihovna ověřuje spravovanou identitu pro prostředky Azure. Ve vývojovém prostředí neexistuje spravovaná identita, takže Klientská knihovna ověřuje pro účely testování buď uživatele, nebo instanční objekt.
+Klientská knihovna Azure identity poskytuje podporu ověřování tokenů Azure AD pro [sadu Azure SDK](https://github.com/Azure/azure-sdk). Nejnovější verze Azure Storage klientských knihoven pro .NET, Java, Python a JavaScript se integrují s knihovnou identit Azure, aby poskytovaly jednoduché a zabezpečené prostředky pro získání tokenu OAuth 2,0 pro autorizaci žádostí Azure Storage.
 
-Klientská knihovna Azure identity pro .NET ověřuje objekt zabezpečení. Když váš kód běží v Azure, je objekt zabezpečení spravovaná identita pro prostředky Azure.
+Výhodou klientské knihovny Azure identity je to, že umožňuje použít stejný kód k ověření, jestli vaše aplikace běží ve vývojovém prostředí nebo v Azure. Klientská knihovna Azure identity pro .NET ověřuje objekt zabezpečení. Když váš kód běží v Azure, je objekt zabezpečení spravovaná identita pro prostředky Azure. Ve vývojovém prostředí neexistuje spravovaná identita, takže Klientská knihovna ověřuje pro účely testování buď uživatele, nebo instanční objekt.
 
 Po ověření získá Klientská knihovna identity Azure přihlašovací údaje tokenu. Tyto přihlašovací údaje tokenu se pak zapouzdřují v objektu klienta služby, který vytvoříte k provádění operací s Azure Storage. Knihovna to zvládne bez problémů získáním příslušných přihlašovacích údajů tokenu.
 
-Další informace o klientské knihovně identit Azure najdete v tématu [Klientská knihovna Azure identity pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+Další informace o klientské knihovně Azure identity pro .NET najdete v tématu [Klientská knihovna Azure identity pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity). Referenční dokumentaci ke klientské knihovně identit Azure najdete v tématu [obor názvů Azure. identity](/dotnet/api/azure.identity).
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Přiřazení rolí řízení přístupu na základě role (RBAC) pro přístup k datům
 
@@ -50,7 +50,7 @@ Když se objekt zabezpečení služby Azure AD pokusí získat přístup k datů
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Ověření uživatele ve vývojovém prostředí
 
-Když váš kód běží ve vývojovém prostředí, ověřování může být zpracováno automaticky nebo může vyžadovat přihlášení prohlížeče v závislosti na tom, které nástroje používáte. Microsoft Visual Studio podporuje jednotné přihlašování (SSO), aby se aktivní uživatelský účet Azure AD automaticky používal pro ověřování. Další informace o JEDNOTNÉm přihlašování najdete v tématu [jednotné přihlašování k aplikacím](../../active-directory/manage-apps/what-is-single-sign-on.md).
+Když váš kód běží ve vývojovém prostředí, ověřování může být zpracováno automaticky nebo může vyžadovat přihlášení prohlížeče v závislosti na tom, které nástroje používáte. Microsoft Visual Studio například podporuje jednotné přihlašování (SSO), aby se aktivní uživatelský účet Azure AD automaticky používal pro ověřování. Další informace o JEDNOTNÉm přihlašování najdete v tématu [jednotné přihlašování k aplikacím](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
 Jiné vývojové nástroje vás můžou vyzvat k přihlášení přes webový prohlížeč.
 
@@ -161,6 +161,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o rolích RBAC pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
-- Informace o tom, jak autorizovat přístup k kontejnerům a frontám v rámci aplikací úložiště, najdete v tématu [použití Azure AD s aplikacemi úložiště](storage-auth-aad-app.md).
-- Pokud chcete zjistit, jak spustit příkazy Azure CLI a PowerShell pomocí přihlašovacích údajů Azure AD, přečtěte si téma [spuštění příkazů Azure CLI nebo PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům BLOB nebo Queue](storage-auth-aad-script.md).
+- [Spravujte přístupová práva k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
+- [Používejte Azure AD s aplikacemi pro úložiště](storage-auth-aad-app.md).
+- [Spusťte příkazy Azure CLI nebo PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB nebo Queue](storage-auth-aad-script.md).

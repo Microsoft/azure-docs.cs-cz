@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b6439c6461ca9f4fa272eb43ef16240175fdec4f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795616"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818774"
 ---
 > [!NOTE]
 > Sada Speech SDK for Unity podporuje Desktop Windows (x86 a x64) nebo Univerzální platforma Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) a iOS (simulátor x64, ARM32 a ARM64).
@@ -89,7 +89,7 @@ Chcete-li přidat ukázkový kód skriptu pro projekt Unity, postupujte takto:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Vyhledejte a nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech Services.
+1. Vyhledejte a nahraďte řetězec `YourSubscriptionKey` klíčem k předplatnému služby Speech.
 
 1. Vyhledejte řetězec `YourServiceRegion` a nahraďte ho [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) , která je přidružená k vašemu předplatnému. Pokud například používáte bezplatnou zkušební verzi, oblast je `westus`.
 
@@ -120,7 +120,7 @@ Teď jste připraveni spustit aplikaci v editoru Unity.
 
 1. Přejděte na [ **herní** zobrazení](https://docs.unity3d.com/Manual/GameView.html)a počkejte, než se v **textovém** objektu zobrazí **tlačítko pro rozpoznávání řeči**. (Zobrazí **nový text** , když se aplikace nespustí nebo není připravená na odpověď.)
 
-1. Vyberte tlačítko a vymluvte si anglickou frázi nebo větu do mikrofonu vašeho počítače. Váš hlas se přenáší do služby Speech Services a přepisu na text, který se zobrazí v zobrazení **hry** .
+1. Vyberte tlačítko a vymluvte si anglickou frázi nebo větu do mikrofonu vašeho počítače. Váš hlas se přenáší do služby Speech a přepisu na text, který se zobrazí v **herním** zobrazení.
 
    [zobrazení herního ![v editoru Unity](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 

@@ -11,18 +11,18 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9a68e9d71324ba05e24ba98802863211a569689
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839928"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815800"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování Azure SQL Data Warehouse v Azure Portal
 
 Rychlé vytvoření a dotazování Azure SQL Data Warehouse pomocí Azure Portal.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 > [!NOTE]
 > Vytvoření služby SQL Data Warehouse může znamenat, že se vám začne fakturovat nová služba. Další informace najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
@@ -33,7 +33,7 @@ Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management St
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
 
@@ -51,16 +51,14 @@ Pomocí těchto kroků vytvořte SQL Data Warehouse obsahující ukázková data
 
     | Nastavení | Navrhovaná hodnota | Popis |
     | :------ | :-------------- | :---------- |
-    | **Název databáze** | mySampleDataWarehouse | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). Poznámka: datový sklad je typem databáze.|
     | **Předplatné** | Vaše předplatné | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
     | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-    | **Výběr zdroje** | Ukázka | Určuje, že se má načíst ukázková databáze. Poznámka: datový sklad je jedním z typů databáze. |
-    | **Výběr ukázky** | AdventureWorksDW | Určuje, že se má načíst ukázková databáze AdventureWorksDW. |
+    | **Název datového skladu** | mySampleDataWarehouse | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). Poznámka: datový sklad je jedním z typů databáze.|
     ||||
 
     ![vytvoření datového skladu](media/create-data-warehouse-portal/select-sample.png)
 
-4. Klikněte na **Server** a vytvořte a nakonfigurujte nový server pro novou databázi. Do **formuláře Nový server** zadejte následující informace: 
+4. Vyberte existující **Server** nebo klikněte na **vytvořit nový** a vytvořte a nakonfigurujte nový server pro novou databázi. Do **formuláře Nový server** zadejte následující informace: 
 
     | Nastavení | Navrhovaná hodnota | Popis |
     | :------ | :-------------- | :---------- |
@@ -82,7 +80,7 @@ Pomocí těchto kroků vytvořte SQL Data Warehouse obsahující ukázková data
 
 8. Klikněte na **Použít**.
 
-9. Teď, když jste dokončili formulář SQL Data Warehouse, klikněte na **vytvořit** a zřiďte databázi. Zřizování trvá několik minut.
+9. Teď, když jste dokončili kartu základy formuláře SQL Data Warehouse, klikněte na **zkontrolovat + vytvořit** a zřiďte databázi. Zřizování trvá několik minut.
 
     ![kliknutí na Vytvořit](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -126,7 +124,7 @@ Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým
 
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **SQL Data Warehouse** a klikněte na svůj datový sklad na stránce **SQL Data Warehouse** .
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20180430.database.windows.net.
 
@@ -144,8 +142,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | :------ | :-------------- | :---------- |
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **MyNewServer-20180430.Database.Windows.NET**. |
-   | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-   | Přihlásit | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
+   | Ověření | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+   | Přihlášení | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
    ||||
 

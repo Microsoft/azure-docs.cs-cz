@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860227"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806696"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scény, snímky a klíčové snímky
 
@@ -38,9 +38,71 @@ Video Indexer určuje, kdy se snímek ve videu změní na základě vizuálních
 
 Vybere rámce, které nejlépe reprezentují snímek. Klíčové snímky jsou reprezentativní snímky vybrané z celého videa na základě vlastností estetického zobrazení (například kontrast a stabilita). Video Indexer načte seznam ID klíčových snímků jako součást metadat snímku na základě toho, kteří zákazníci mohou miniatury klíčového snímku extrahovat. 
 
-Klíčové snímky jsou přidruženy k snímkům ve výstupním formátu JSON. 
+### <a name="extracting-keyframes"></a>Extrakce klíčových snímků
+
+K extrakci klíčových snímků s vysokým rozlišením pro vaše video musíte nejprve nahrát video a indexovat.
+
+![Klíčové snímky](./media/scenes-shots-keyframes/extracting-keyframes.png)
+
+#### <a name="with-the-video-indexer-website"></a>S webem Video Indexer
+
+K extrakci klíčových snímků pomocí Video Indexer webu Nahrajte video a zaindexujte ho. Po dokončení úlohy indexování klikněte na tlačítko **Stáhnout** a vyberte **artefakty (ZIP)** . Tato akce stáhne složku artefaktů do vašeho počítače. 
+
+![Klíčové snímky](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+ 
+Rozbalte a otevřete složku. Ve složce *_KeyframeThumbnail* se nacházejí všechny klíčové snímky, které byly extrahovány z vašeho videa. 
+
+#### <a name="with-the-video-indexer-api"></a>S rozhraním API Video Indexer
+
+Pokud chcete získat klíčové snímky pomocí rozhraní Video Indexer API, nahrajte video a zaindexujte ho pomocí volání [Upload video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) . Po dokončení úlohy indexování zavolejte [získat index videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Získáte tak všechny přehledy, které Video Indexer extrahovat z vašeho obsahu v souboru JSON.  
+
+V rámci metadat každého snímku se zobrazí seznam ID klíčových snímků. 
+
+```json
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
+      ],
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+
+]
+```
+
+Nyní bude nutné spustit každé z těchto ID klíčových snímků v volání metody [získat miniatury](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) . Tím se do vašeho počítače stáhne všechny image klíčového snímku. 
 
 ## <a name="editorial-shot-type-detection"></a>Detekce typu redakčního snímku
+
+Klíčové snímky jsou přidruženy k snímkům ve výstupním formátu JSON. 
 
 Typ snímku přidružený k jednotlivému snímku ve formátu JSON Insights představuje jeho redakční typ. Tyto charakteristiky typu kopie jsou užitečné při úpravách videa do klipů, přípojných vozidel nebo při hledání konkrétního stylu klíčového snímku pro umělecké účely. Různé typy jsou určeny v závislosti na analýze prvního klíčového snímku každého snímku. Snímky jsou označeny měřítkem, velikostí a umístěním ploch zobrazených v prvním klíčovém snímku. 
 
@@ -64,6 +126,7 @@ Další vlastnosti:
 * Dva snímky: zobrazuje stěny střední velikosti dvou osob.
 * Více plošek: více než dvě osoby.
 
-## <a name="next-steps"></a>Další postup
+
+## <a name="next-steps"></a>Další kroky
 
 [Kontrola výstupu Video Indexer vytvořeného rozhraním API](video-indexer-output-json-v2.md#scenes)

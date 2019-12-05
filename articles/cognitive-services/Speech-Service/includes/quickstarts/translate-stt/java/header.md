@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Převod řeči na text, Java-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: ba3ce965408e5aa40a6226123e175dbd9b22787a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b1f60aaebb1fcf104a85b8d29700741c74459f8a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502958"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816947"
 ---
 Pokud si přejete přejít přímo v, můžete si prohlédnout nebo stáhnout všechny <a href="https://aka.ms/speech/github-java">ukázky sady Speech SDK Java</a> na GitHubu. V opačném případě můžeme začít.

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: a800336fb6fda8a0ed0af71f243936d29e8079e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706834"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807030"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Pochopení a používání vláken zařízení v IoT Hub
 
@@ -184,14 +184,14 @@ Back-end řešení funguje na vlákna zařízení pomocí následujících atomi
 
     | Name (Název) | Hodnota |
     | --- | --- |
-    $content – typ | application/json |
-    $iothub – enqueuedtime |  Čas odeslání oznámení |
+    $content-type | application/json |
+    $iothub-enqueuedtime |  Čas odeslání oznámení |
     $iothub-Message-source | twinChangeEvents |
-    $content – kódování | UTF-8 |
+    $content-encoding | utf-8 |
     deviceId | ID zařízení |
     hubName | Název IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko operace |
-    iothub-Message-Schema | deviceLifecycleNotification |
+    iothub-Message-Schema | twinChangeNotification |
     opType | "replaceTwin" nebo "updateTwin" |
 
     Vlastnosti systému zprávy mají předponu `$` symbol.

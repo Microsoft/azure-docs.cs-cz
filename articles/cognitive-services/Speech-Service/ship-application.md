@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 0bcfd40510352abc9e64782255d3c8349b8ad87e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f4200a0a43507a335f0e4e59e5a794d2bc4d6142
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072422"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816553"
 ---
 # <a name="ship-an-application"></a>Dodání aplikace
 
@@ -39,7 +39,7 @@ U mikrofon vstup je potřeba nainstalovat knihovny Media Foundation. Tyto knihov
 
 Požadované sadou SDK pro řeč soubory je možné nasadit ve stejném adresáři jako vaši aplikaci. Tímto způsobem vaší aplikace můžete přistupovat přímo na knihovny. Ujistěte se, zda že jste vybrali správnou verzi (Win32/x64), která odpovídá vaší aplikace.
 
-| Název | Funkce |
+| Name (Název) | Funkce |
 | :--- | :------- |
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Core SDK pro nativní a spravovaná nasazení |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | vyžaduje se pro spravované nasazení                      |

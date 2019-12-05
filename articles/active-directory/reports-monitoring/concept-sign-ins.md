@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 12/03/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e7b0c379783af2f9131d487f45c0f4e2009e258
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232145"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805134"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -37,7 +37,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Tento článek obsahuje přehled sestavy přihlášení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
@@ -47,7 +47,7 @@ Tento článek obsahuje přehled sestavy přihlášení.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaká licence Azure AD je potřeba pro přístup k přihlašovací aktivitě?
 
-* K vaší straně klienta musí být přidružená licence Azure AD Premium, aby bylo možné zobrazit sestavu všech aktivit přihlašování. Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . Bude trvat několik dní, než se data zobrazí v sestavách po upgradu na licenci Premium bez jakýchkoli aktivit dat před upgradem.
+* Váš klient musí mít přidruženou licenci Azure AD Premium, abyste viděli sestavu aktivity všech přihlášení. Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . Bude trvat několik dní, než se data zobrazí v sestavách po upgradu na licenci Premium bez jakýchkoli aktivit dat před upgradem.
 
 ## <a name="sign-ins-report"></a>Sestava přihlášení
 
@@ -81,7 +81,7 @@ Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástroj
 
 Zobrazí další pole nebo odebrat již zobrazená pole.
 
-![Přihlašovací aktivita](./media/concept-sign-ins/02.png "Aktivita přihlášení")
+![Přihlašovací aktivita](./media/concept-sign-ins/columns.png "Aktivita přihlášení")
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
@@ -105,19 +105,19 @@ Filtr **Aplikace** umožňuje určit název aplikace, o kterou vám jde.
 
 Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možností:
 
-- Vše
+- Všechno
 - Úspěch
 - Selhání
 
 Filtr **podmíněného přístupu** umožňuje vybrat stav zásad certifikační autority pro přihlášení:
 
-- Vše
+- Všechno
 - Nepoužito
 - Úspěch
 - Selhání
 
 Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
-Možné hodnoty jsou:
+Možné hodnoty:
 
 - Jeden měsíc
 - 7 dní
@@ -129,7 +129,7 @@ Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a
 Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se automaticky přidají do seznamu filtrů. Například přidáním pole **Klientská aplikace** do vašeho seznamu získáte také další možnost filtru, která vám umožní nastavit následující filtry:  
 ![Přihlašovací aktivita](./media/concept-sign-ins/12.png "Aktivita přihlášení")
 
-- **Prohlížeee**  
+- **Prohlížeč**  
     Tento filtr zobrazuje všechny události, u kterých došlo k pokusu o přihlášení pomocí toků prohlížeče.
 - **Exchange ActiveSync (podporováno)**  
     Tento filtr zobrazuje všechny pokusy o přihlášení, u kterých došlo k pokusu o spuštění protokolu Exchange ActiveSync (EAS) z podporovaných platforem, jako je iOS, Android a Windows Phone.
@@ -138,13 +138,13 @@ Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se a
 - **Klienti Mobile Apps a desktopových klientů** Filtr zobrazuje všechny pokusy o přihlášení, které nepoužívaly toky prohlížeče. Například mobilní aplikace z jakékoli platformy pomocí libovolného protokolu nebo klientských aplikací klasické pracovní plochy, jako je Office ve Windows nebo MacOS.
   
 - **Ostatní klienti**
-    - **BÝVAJÍ**  
+    - **IMAP**  
         Starší verze poštovního klienta, který používá IMAP k načtení e-mailu.
     - **MAPI**  
         Office 2013, kde je povolena ADAL a používá rozhraní MAPI.
     - **Stará klienti Office**  
         Sada Office 2013 v její výchozí konfiguraci, kde není povolená knihovna ADAL a kterou používá rozhraní MAPI, nebo Office 2016, kde je ADAL zakázaná
-    - **VÝSTRAH**  
+    - **POP**  
         Starší verze poštovního klienta pomocí protokolu POP3 k načtení e-mailu.
     - **SMTP**  
         Starší verze poštovního klienta pomocí protokolu SMTP k odeslání e-mailu.
@@ -193,7 +193,7 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 - Klient
 - Umístění
 - IP adresa
-- Date
+- Datum
 - Vyžaduje se MFA
 - Stav přihlášení
 

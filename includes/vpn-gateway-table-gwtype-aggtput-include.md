@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cba54c65a314919b5509e1de029ad05f8722baa2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075433"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828807"
 ---
 |**Generace<br>brány VPN<br>** |**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **Připojení P2S<br> IKEv2/OpenVPN** | **Srovnávací test<br>agregované propustnosti** | **BGP** | **Zone-redundant** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
-|**Generation1**|**Basic**   | Max. 10    | Max. 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se| Ne |
-|**Generation1**|**VpnGw1**  | Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporuje se | Ne |
-|**Generation1**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporuje se | Ne |
-|**Generation1**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporuje se | Ne |
-|**Generation1**|**VpnGw1AZ**| Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporuje se | Ano |
-|**Generation1**|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporuje se | Ano |
-|**Generation1**|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporuje se | Ano |
+|**Generation1**|**Basic**   | Nejvýše k 10    | Nejvýše k 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se| Ne |
+|**Generation1**|**VpnGw1**  | Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 250       | 650 Mb/s  | Podporováno | Ne |
+|**Generation1**|**VpnGw2**  | Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 500       | 1 Gb/s    | Podporováno | Ne |
+|**Generation1**|**VpnGw3**  | Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 1 000      | 1,25 Gb/s | Podporováno | Ne |
+|**Generation1**|**VpnGw1AZ**| Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 250       | 650 Mb/s  | Podporováno | Ano |
+|**Generation1**|**VpnGw2AZ**| Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 500       | 1 Gb/s    | Podporováno | Ano |
+|**Generation1**|**VpnGw3AZ**| Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 1 000      | 1,25 Gb/s | Podporováno | Ano |
 |        |            |            |           |                |           |           |     |
-|**Generation2**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1,25 Gb/s | Podporuje se | Ne |
-|**Generation2**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 2,5 GB/s  | Podporuje se | Ne |
-|**Generation2**|**VpnGw4**  | Max. 30*   | Max. 128  | Max. 1000      | 5 Gb/s    | Podporuje se | Ne |
-|**Generation2**|**VpnGw5**  | Max. 30*   | Max. 128  | Max. 1000      | 10 Gb/s   | Podporuje se | Ne |
-|**Generation2**|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1,25 Gb/s | Podporuje se | Ano |
-|**Generation2**|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 2,5 GB/s  | Podporuje se | Ano |
-|**Generation2**|**VpnGw4AZ**| Max. 30*   | Max. 128  | Max. 1000      | 5 Gb/s    | Podporuje se | Ano |
-|**Generation2**|**VpnGw5AZ**| Max. 30*   | Max. 128  | Max. 1000      | 10 Gb/s   | Podporuje se | Ano |
+|**Generation2**|**VpnGw2**  | Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 500       | 1,25 Gb/s | Podporováno | Ne |
+|**Generation2**|**VpnGw3**  | Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 1 000      | 2,5 GB/s  | Podporováno | Ne |
+|**Generation2**|**VpnGw4**  | Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 5000      | 5 Gb/s    | Podporováno | Ne |
+|**Generation2**|**VpnGw5**  | Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 10000      | 10 Gb/s   | Podporováno | Ne |
+|**Generation2**|**VpnGw2AZ**| Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 500       | 1,25 Gb/s | Podporováno | Ano |
+|**Generation2**|**VpnGw3AZ**| Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 1 000      | 2,5 GB/s  | Podporováno | Ano |
+|**Generation2**|**VpnGw4AZ**| Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 5000      | 5 Gb/s    | Podporováno | Ano |
+|**Generation2**|**VpnGw5AZ**| Nejvýše k 30*   | Nejvýše k 128  | Nejvýše k 10000      | 10 Gb/s   | Podporováno | Ano |
 
 (*) Pokud potřebujete více než 30 tunelů VPN S2S, použijte službu [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md).
 

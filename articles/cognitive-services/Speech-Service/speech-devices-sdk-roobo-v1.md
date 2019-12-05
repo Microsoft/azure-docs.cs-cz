@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552862"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815589"
 ---
-# <a name="device-roobo-smart-audio-dev-kit"></a>Zařízení: Sada Roobo Smart audio dev Kit
+# <a name="device-roobo-smart-audio-dev-kit"></a>Zařízení: Roobo Smart audio dev Kit
 
 Tento článek popisuje informace specifické pro zařízení pro sadu Roobo Smart audio dev Kit.
 
@@ -54,12 +54,12 @@ Tento článek popisuje informace specifické pro zařízení pro sadu Roobo Sma
     > [!NOTE]
     > Tyto příkazy používají Android Debug Bridge, `adb.exe`, který je součástí instalace sady Android Studio. Tento nástroj se nachází v C:\Users\[uživatelské jméno] \AppData\Local\Android\Sdk\platform nástroje. Tento adresář můžete přidat do cesty k němu pohodlnější, který má být vyvolán `adb`. V opačném případě musíte zadat úplnou cestu k instalaci adb.exe v každý příkaz, který vyvolá `adb`.
     >
-    > Pokud se zobrazí chyba `no devices/emulators found` , zkontrolujte, zda je kabel USB připojen a je kabelem vysoké kvality. Můžete použít `adb devices` ke kontrole, jestli počítač může komunikovat s vývojovou sadou, protože vrátí seznam zařízení.
+    > Pokud se zobrazí chyba `no devices/emulators found` pak zkontrolujte, zda je kabel USB připojen a je kabelem s vysokým kvalitou. Pomocí `adb devices` můžete ověřit, že váš počítač může komunikovat s vývojovou sadou, protože vrátí seznam zařízení.
     >
     > [!TIP]
     > Ztlumte mikrofonu a reproduktorů Ujistěte se, že pracujete s mikrofonů development kit v počítači. Díky tomu nebude aktivujete omylem zařízení se zvukem z počítače.
 
-1. Pokud se chcete připojit mluvčího dev Kit, můžete ho připojíte k zvukového výstupu. Měli byste zvolit kvalitní mluvčí s analogovým konektorem 3,5 mm.
+1. Pokud chcete připojit mluvčího k sadě pro vývojáře, můžete ho připojit ke zvukovému řádku. Měli byste zvolit kvalitní mluvčí s analogovým konektorem 3,5 mm.
 
     ![Vysor zvuku](media/speech-devices-sdk/qsg-14.png)
 
@@ -71,6 +71,6 @@ Další informace o vývoji najdete v [příručce pro vývoj Roobo](http://dwn.
 
 Roobo poskytuje nástroj, který zachycuje všechny zvuky do paměti Flash. Občas může pomoci při odstraňování problémů zvuku. Verze nástroje se poskytuje pro každou konfiguraci development kit. Na [webu Roobo](https://ddk.roobo.com/)vyberte své zařízení a potom v dolní části stránky vyberte odkaz **nástroje Roobo** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Spuštění ukázkové aplikace pro Android](speech-devices-sdk-android-quickstart.md)

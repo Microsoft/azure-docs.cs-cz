@@ -1,7 +1,7 @@
 ---
 title: O sadě Speech SDK – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Začínáme se sadou SDK pro řeč zařízení. Speech Service funguje se širokou škálu zařízení a zdrojů zvuku. Sada SDK zařízení řeči je předem připravené knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
+description: Začínáme se sadou SDK pro řeč zařízení. Služba Speech funguje se širokou škálou zařízení a zdrojů zvuku. Sada SDK zařízení řeči je předem připravené knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 31d1a60cc6c1316dcfccb4f9ba2571708fddd991
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7f6793cab3d2d7cc54252bae3a7393f836256bdd
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072380"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815528"
 ---
-# <a name="about-the-speech-devices-sdk"></a>O sadě Speech SDK pro zařízení
+# <a name="about-the-speech-devices-sdk"></a>Sada Speech Devices SDK
 
-[Služba Speech Services](overview.md) funguje se širokou škálou zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. Sada SDK zařízení řeči je pretuned knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
+[Služba Speech](overview.md) funguje se širokou škálou zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. Sada SDK zařízení řeči je pretuned knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
 
 Vám můžou pomoct sadou SDK pro řeč zařízení:
 
 - Rychle otestujte nové hlasové scénáře.
-- Jednodušší integrace cloudových hlasových služeb do zařízení.
+- Speech service založené na cloudu mnohem snazší integrate do zařízení.
 - Vytvoření mimořádné uživatelské prostředí pro vaše zákazníky.
 
-Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md). Pomocí sady Speech SDK pošle zvuk, který zpracovává náš pokročilý algoritmus zvukového zpracování, z pole mikrofonu zařízení do služby pro [rozpoznávání řeči](overview.md). Používá vícekanálový zvuku můžete poskytnout přesnější úplně pole [rozpoznávání řeči](speech-to-text.md) prostřednictvím šumu potlačení, zrušení zpětné vazby, beamforming a dereverberation.
+Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md). Používá sadou SDK pro řeč pro posílat zvuk, který je zpracován našeho algoritmu pokročilé zpracování zvuku z pole mikrofon zařízení, které chcete [Speech service](overview.md). Používá vícekanálový zvuku můžete poskytnout přesnější úplně pole [rozpoznávání řeči](speech-to-text.md) prostřednictvím šumu potlačení, zrušení zpětné vazby, beamforming a dereverberation.
 
 Sadu Speech Devices SDK můžete použít také k sestavení okolních zařízení s vlastním [přizpůsobeným klíčovým slovem](speech-devices-sdk-create-kws.md) , aby se upozornění, které iniciuje interakci uživatele, pro vaši značku unikátní.
 

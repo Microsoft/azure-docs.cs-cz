@@ -1,7 +1,7 @@
 ---
-title: Co je přepis konverzace (Preview) – služba Speech
+title: Co je přepis konverzace (Preview)? – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Přepis konverzace je řešení převodu řeči na text, které kombinuje rozpoznávání řeči, identifikaci mluvčího a přidaných vět ke každému mluvčímu (označuje se také jako diarization), aby poskytoval v reálném čase nebo asynchronní přepisy libovolného konverzace.
+description: Přepis konverzace je řešení převodu řeči na text, které kombinuje rozpoznávání řeči, identifikaci mluvčího a přidaných vět ke každému mluvčímu (označuje se také jako diarization), aby poskytovala v reálném čase a/nebo asynchronní přepis jakékoli konverzace.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075848"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806282"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Co je přepis konverzace (Preview)?
 
-Přepis konverzace je řešení převodu [řeči na text](speech-to-text.md) , které kombinuje rozpoznávání řeči, identifikaci mluvčího a přidaných vět ke každému mluvčímu (označuje se také jako _diarization_), aby poskytoval v reálném čase a/nebo asynchronní. přepis jakékoli konverzace. Přepis konverzace rozlišuje mluvčí v konverzacích a určí, kdo, co a kdy a usnadňuje vývojářům přidávání řeči k textu do aplikací, které provádějí diarization více mluvčích.
+Přepis konverzace je řešení převodu [řeči na text](speech-to-text.md) , které kombinuje rozpoznávání řeči, identifikaci mluvčího a přidaných vět ke každému mluvčímu (označuje se také jako _diarization_), aby poskytovala v reálném čase a/nebo asynchronní přepis jakékoli konverzace. Přepis konverzace rozlišuje mluvčí v konverzacích a určí, kdo, co a kdy a usnadňuje vývojářům přidávání řeči k textu do aplikací, které provádějí diarization více mluvčích.
 
 ## <a name="key-features"></a>Klíčové funkce
 
@@ -59,11 +59,11 @@ Toto je podrobný přehled toho, jak funguje přepis konverzace.
 
 Přepis konverzace nabízí tři režimy přepisu:
 
-### <a name="real-time"></a>V reálném čase
+### <a name="real-time"></a>Reálný čas
 
 Zvuková data se zpracovávají živě, aby se vracel identifikátor mluvčího a přepis. Tento režim vyberte, pokud vaše požadavek na přepis řešení vyžaduje, aby účastníci konverzace měli k dispozici přehled o probíhajících konverzacích za živý přepis. Například sestavíte aplikaci, aby se schůzky lépe přizpůsobily neslyšící a byli postižení účastníci sluchu, což je ideální případ použití pro přepis v reálném čase.
 
-### <a name="asynchronous"></a>Asynchronně
+### <a name="asynchronous"></a>Asynchronní
 
 Zvuková data jsou zpracována dávkou, která vrací identifikátor mluvčího a přepis. Tento režim vyberte, pokud váš požadavek na přepis řešení vyžaduje zajištění vyšší přesnosti bez zobrazení živého přepisu. Například pokud chcete vytvořit aplikaci, která účastníkům schůzky umožní snadno zachytit zmeškané schůzky, použijte režim asynchronního přepisu, abyste získali přesnější výsledky v přepisu.
 

@@ -1,7 +1,7 @@
 ---
-title: How to prepare data for Custom Voice - Speech Service
+title: Příprava dat pro vlastní službu hlasového rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Create a custom voice for your brand with Speech Service. You provide studio recordings and the associated scripts, the service generates a unique voice model tuned to the recorded voice. Use this voice to synthesize speech in your products, tools, and applications.
+description: Pomocí služby Speech vytvořte vlastní hlas pro vaši značku. Zadáváte nahrávky studia a přidružené skripty, služba generuje jedinečný hlasový model vyladěný na zaznamenaný hlas. Využijte tento hlas k syntetizaci řeči ve svých produktech, nástrojích a aplikacích.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,104 +10,104 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: a954118cd0697213674bb9981f0d94100488fb38
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464503"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805973"
 ---
-# <a name="prepare-data-to-create-a-custom-voice"></a>Prepare data to create a custom voice
+# <a name="prepare-data-to-create-a-custom-voice"></a>Příprava dat pro vytvoření vlastního hlasu
 
-When you're ready to create a custom text-to-speech voice for your application, the first step is to gather audio recordings and associated scripts to start training the voice model. The service uses this data to create a unique voice tuned to match the voice in the recordings. After you've trained the voice, you can start synthesizing speech in your applications.
+Až budete připraveni vytvořit vlastní hlas pro převod textu na řeč, je prvním krokem shromáždění zvukového záznamu a přidružených skriptů pro zahájení školení v hlasovém modelu. Služba Speech používá tato data k vytvoření jedinečného hlasu optimalizovaného pro vyhledání hlasu v záznamech. Po školení hlasu můžete v aplikacích začít syntetizovat řeč.
 
-You can start with a small amount of data to create a proof of concept. However, the more data that you provide, the more natural your custom voice will sound. Before you can train your own text-to-speech voice model, you'll need audio recordings and the associated text transcriptions. On this page, we'll review data types, how they are used, and how to manage each.
+Můžete začít s malým množstvím dat, abyste mohli vytvořit zkoušku konceptu. Další data, která zadáte, ale tím větší je, že váš vlastní hlas bude zvuk. Než budete moct naučit vlastní hlasový model pro převod textu na řeč, budete potřebovat zvukové nahrávky a související text. Na této stránce zkontrolujeme typy dat, způsob jejich použití a způsob jejich správy.
 
 ## <a name="data-types"></a>Typy dat
 
-A voice training dataset includes audio recordings, and a text file with the associated transcriptions. Each audio file should contain a single utterance (a single sentence or a single turn for a dialog system), and be less than 15 seconds long.
+Datová sada pro hlasové školení obsahuje zvukové nahrávky a textový soubor s přidruženými přepisy. Každý zvukový soubor by měl obsahovat jednu utterance (jednu větu nebo jednu jako systém dialogového okna) a musí být kratší než 15 sekund.
 
-In some cases, you may not have the right dataset ready and will want to test the custom voice training with available audio files, short or long, with or without transcripts. We provide tools (beta) to help you segment your audio into utterances and prepare transcripts using the [Batch Transcription API](batch-transcription.md).
+V některých případech nemusíte mít správnou datovou sadu, která je připravená a bude chtít testovat vlastní hlasové školení s dostupnými zvukovými soubory, které jsou krátké i dlouhé, s přepisy nebo bez nich. Poskytujeme nástroje (beta), které vám pomůžou rozdělit zvuk do projevy a připravit přepisy pomocí [rozhraní API služby Batch pro přepis](batch-transcription.md).
 
-This table lists data types and how each is used to create a custom text-to-speech voice model.
+Tato tabulka obsahuje seznam datových typů a jejich využití k vytvoření vlastního hlasového modelu pro převod textu na řeč.
 
-| Data type | Popis | When to use | Additional service required | Quantity for training a model | Locale(s) |
+| Data type | Popis | When to use | Vyžaduje se další služba. | Množství pro školení modelu | Národní prostředí (y) |
 | --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
-| **Individual utterances + matching transcript** | A collection (.zip) of audio files (.wav) as individual utterances. Each audio file should be 15 seconds or less in length, paired with a formatted transcript (.txt). | Professional recordings with matching transcripts | Ready for training. | No hard requirement for en-US and zh-CN. More than 2,000+ distinct utterances for other locales. | [All Custom Voice locales](language-support.md#customization) |
-| **Long audio + transcript (beta)** | A collection (.zip) of long, unsegmented audio files (longer than 20 seconds), paired with a transcript (.txt) that contains all spoken words. | You have audio files and matching transcripts, but they are not segmented into utterances. | Segmentation (using batch transcription).<br>Audio format transformation where required. | No hard requirement  | [All Custom Voice locales](language-support.md#customization) |
-| **Audio only (beta)** | A collection (.zip) of audio files without a transcript. | You only have audio files available, without transcripts. | Segmentation + transcript generation (using batch transcription).<br>Audio format transformation where required.| No hard requirement | [All Custom Voice locales](language-support.md#customization) |
+| **Individuální projevy + vyhovující přepis** | Kolekce (. zip) zvukových souborů (. wav) jako samostatného projevy. Každý zvukový soubor by měl mít délku 15 sekund nebo méně, spárováno s formátovaným přepisem (. txt). | Profesionální nahrávky s vyhovujícími Přepisy | Připraveno pro školení. | Žádný tvrdý požadavek pro en-US a zh-CN. Více než 2000 + DISTINCT projevy pro ostatní národní prostředí. | [Všechna vlastní hlasová prostředí](language-support.md#customization) |
+| **Dlouhý zvuk + přepis (beta verze)** | Kolekce (ZIP) dlouhých, nesegmentované zvukové soubory (delší než 20 sekund) spárované s přepisem (. txt), který obsahuje všechna mluvený text. | Máte zvukové soubory a vyhovující přepisy, ale nesegmentují se na projevy. | Segmentace (pomocí dávkového přepisu).<br>V případě potřeby transformuje formát zvuku. | Žádný pevný požadavek  | [Všechna vlastní hlasová prostředí](language-support.md#customization) |
+| **Jenom zvuk (beta verze)** | Kolekce (. zip) zvukových souborů bez přepisu. | Máte k dispozici pouze zvukové soubory bez přepisů. | Segmentace a generování přepisu (pomocí dávkového přepisu).<br>V případě potřeby transformuje formát zvuku.| Žádný pevný požadavek | [Všechna vlastní hlasová prostředí](language-support.md#customization) |
 
-Files should be grouped by type into a dataset and uploaded as a zip file. Each dataset can only contain a single data type.
+Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor zip. Každá datová sada může obsahovat pouze jeden datový typ.
 
 > [!NOTE]
-> The maximum number of datasets allowed to be imported per subscription is 10 .zip files for free subscription (F0) users and 500 for standard subscription (S0) users.
+> Maximální počet datových sad povolených pro import na jedno předplatné je 10 souborů. zip pro uživatele bezplatného předplatného (F0) a 500 pro uživatele Standard Subscription (S0).
 
-## <a name="individual-utterances--matching-transcript"></a>Individual utterances + matching transcript
+## <a name="individual-utterances--matching-transcript"></a>Individuální projevy + vyhovující přepis
 
-You can prepare recordings of individual utterances and the matching transcript in two ways. Either write a script and have it read by a voice talent or use publicly available audio and transcribe it to text. If you do the latter, edit disfluencies from the audio files, such as "um" and other filler sounds, stutters, mumbled words, or mispronunciations.
+Záznamy jednotlivých projevy a vyhovující přepisy můžete připravit dvěma způsoby. Napište skript a vyčtěte ho hlasovým talentůem, nebo využijte veřejně dostupný zvuk a přepisovat ho na text. Pokud to uděláte, upravte disfluencies ze zvukových souborů, jako je "um" a další zvuky s výplní, stutters, mumbled slova nebo nesprávné výslovnosti.
 
-To produce a good voice font, create the recordings in a quiet room with a high-quality microphone. Consistent volume, speaking rate, speaking pitch, and expressive mannerisms of speech are essential.
+Chcete-li vytvořit dobré písmo hlasu, vytvořte nahrávky v tiché místnosti pomocí vysoce kvalitního mikrofonu. Základem je konzistentní objem, míra speaking, rozteč mluveného slova a vyjádření mannerisms řeči.
 
 > [!TIP]
-> To create a voice for production use, we recommend you use a professional recording studio and voice talent. For more information, see [How to record voice samples for a custom voice](record-custom-voice-samples.md).
+> Pokud chcete vytvořit hlas pro použití v produkčním prostředí, doporučujeme použít profesionální záznamový Studio a hlasový talentů. Další informace najdete v tématu [Jak nahrávat ukázky hlasu pro vlastní hlas](record-custom-voice-samples.md).
 
-### <a name="audio-files"></a>Audio files
+### <a name="audio-files"></a>Zvukové soubory
 
-Each audio file should contain a single utterance (a single sentence or a single turn of a dialog system), less than 15 seconds long. All files must be in the same spoken language. Multi-language custom text-to-speech voices are not supported, with the exception of the Chinese-English bi-lingual. Each audio file must have a unique numeric filename with the filename extension .wav.
+Každý zvukový soubor by měl obsahovat jednu utterance (jednu větu nebo jednu sadu dialogových oken), která trvá méně než 15 sekund. Všechny soubory musí být ve stejném mluveném jazyce. Vlastní hlasy textu na řeč ve více jazycích nejsou podporované, s výjimkou české jazykové verze čínského jazyka. Každý zvukový soubor musí mít jedinečný číselný název souboru s příponou názvu souboru. wav.
 
 Při přípravě zvuku postupujte podle těchto pokynů.
 
 | Vlastnost | Hodnota |
 | -------- | ----- |
-| Formát souboru | RIFF (.wav), grouped into a .zip file |
-| Sampling rate | At least 16,000 Hz |
-| Sample format | PCM, 16-bit |
-| Název souboru | Numeric, with .wav extension. No duplicate file names allowed. |
-| Délka zvuku | Shorter than 15 seconds |
+| Formát souboru | RIFF (. wav) seskupené do souboru. zip |
+| Míra vzorkování | Minimálně 16 000 Hz |
+| Vzorový formát | PCM, 16 bitů |
+| Název souboru | Číslo s příponou. wav. Nejsou povoleny žádné duplicitní názvy souborů. |
+| Délka zvuku | Kratší než 15 sekund |
 | Formát archivu | .zip |
 | Maximální velikost archivu | 2048 MB |
 
 > [!NOTE]
-> .wav files with a sampling rate lower than 16,000 Hz will be rejected. If a .zip file contains .wav files with different sample rates, only those equal to or higher than 16,000 Hz will be imported. The portal currently imports .zip archives up to 200 MB. However, multiple archives can be uploaded.
+> soubory. wav s vzorkovací frekvencí nižší než 16 000 Hz budou odmítnuty. Pokud soubor. zip obsahuje soubory. wav s různými vzorkovacími sazbami, naimportují se jenom ty, které se rovnají nebo jsou vyšší než 16 000 Hz. Portál aktuálně importuje soubory. archivu. zip až do 200 MB. Lze však odeslat více archivů.
 
 ### <a name="transcripts"></a>Přepisů
 
-The transcription file is a plain text file. Use these guidelines to prepare your transcriptions.
+Soubor přepisu je soubor s prostým textem. Pomocí těchto pokynů Připravte přepisy.
 
 | Vlastnost | Hodnota |
 | -------- | ----- |
-| Formát souboru | Plain text (.txt) |
-| Formát kódování | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE, or UTF-16-BE. For zh-CN, ANSI/ASCII and UTF-8 encodings are not supported. |
-| Počet promluv na řádek | **One** - Each line of the transcription file should contain the name of one of the audio files, followed by the corresponding transcription. Název souboru a přepis by měly být oddělené tabulátorem (\t). |
+| Formát souboru | Prostý text (. txt) |
+| Formát kódování | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE nebo UTF-16-. Pro kódování zh-CN, ANSI/ASCII a UTF-8 nejsou podporovány. |
+| Počet promluv na řádek | **Jeden** -každý řádek souboru přepisu by měl obsahovat název jednoho ze zvukových souborů následovaný odpovídajícím přepisem. Název souboru a přepis by měly být oddělené tabulátorem (\t). |
 | Maximální velikost souboru | 2048 MB |
 
-Below is an example of how the transcripts are organized utterance by utterance in one .txt file:
+Níže je uveden příklad, jak jsou přepisy uspořádány utterance by utterance v jednom souboru. txt:
 
 ```
 0000000001[tab] This is the waistline, and it's falling.
 0000000002[tab] We have trouble scoring.
 0000000003[tab] It was Janet Maslin.
 ```
-It’s important that the transcripts are 100% accurate transcriptions of the corresponding audio. Errors in the transcripts will introduce quality loss during the training.
+Je důležité, aby přepisy byly 100% přesného přepisu odpovídajícího zvukového záznamu. Chyby v přepisech zavedou ke ztrátě kvality během školení.
 
 > [!TIP]
-> When building production text-to-speech voices, select utterances (or write scripts) that take into account both phonetic coverage and efficiency. Having trouble getting the results you want? [Contact the Custom Voice](mailto:speechsupport@microsoft.com) team to find out more about having us consult.
+> Při sestavování hlasů pro převod textu na řeč vyberte projevy (nebo zapište skripty), které berou v úvahu jak fonetické pokrytí, tak efektivitu. Máte potíže s získáním požadované výsledků? [Obraťte se na vlastního hlasového](mailto:speechsupport@microsoft.com) týmu a získejte další informace o tom, jak nás poradíme.
 
-## <a name="long-audio--transcript-beta"></a>Long audio + transcript (beta)
+## <a name="long-audio--transcript-beta"></a>Dlouhý zvuk + přepis (beta verze)
 
-In some cases, you may not have segmented audio available. We provide a service (beta) through the custom voice portal to help you segment long audio files and create transcriptions. Keep in mind, this service will be charged toward your speech-to-text subscription usage.
+V některých případech nemusí být k dispozici segmentace zvuku. Prostřednictvím vlastního hlasového portálu poskytujeme službu (beta), která vám umožní segmentovat dlouhé zvukové soubory a vytvářet přepisy. Mějte na paměti, že se tato služba bude účtovat ke svému používání předplatného pro převod řeči na text.
 
 > [!NOTE]
-> Služba segmentace dlouhého zvuku bude využívat funkci dávkového přepisu pro převod řeči na text, která podporuje pouze uživatele se standardním předplatným (S0). During the processing of the segmentation, your audio files and the transcripts will also be sent to the Custom Speech service to refine the recognition model so the accuracy can be improved for your data. No data will be retained during this process. After the segmentation is done, only the utterances segmented and their mapping transcripts will be stored for your downloading and training.
+> Služba segmentace dlouhého zvuku bude využívat funkci dávkového přepisu pro převod řeči na text, která podporuje pouze uživatele se standardním předplatným (S0). Během zpracování segmentace se vaše zvukové soubory a Přepisy odešlou taky službě Custom Speech k upřesnění modelu rozpoznávání, aby bylo možné pro vaše data zlepšit přesnost. Během tohoto procesu se nezachovají žádná data. Po segmentaci budou uloženy pouze projevy segmentované a jejich přepisy mapování pro vaše stahování a školení.
 
-### <a name="audio-files"></a>Audio files
+### <a name="audio-files"></a>Zvukové soubory
 
-Follow these guidelines when preparing audio for segmentation.
+Při přípravě zvuku pro segmentaci postupujte podle těchto pokynů.
 
 | Vlastnost | Hodnota |
 | -------- | ----- |
 | Formát souboru | RIFF (. wav) se vzorkovací frekvencí alespoň 16 kHz-16 bitů v PCM nebo. mp3 s přenosovou rychlostí minimálně 256 KB/s, seskupenou do souboru. zip |
-| Název souboru | Podporované znaky ASCII a Unicode. No duplicate names allowed. |
+| Název souboru | Podporované znaky ASCII a Unicode. Nejsou povoleny žádné duplicitní názvy. |
 | Délka zvuku | Déle než 20 sekund |
 | Formát archivu | .zip |
 | Maximální velikost archivu | 2048 MB |

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d1c709beb225dff0ae616a23eb67eb57f4643ac9
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111253"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812759"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)
 
@@ -36,9 +36,9 @@ V tomto článku tuto aplikaci rozšíříme pomocí parametrů tak, aby bylo mo
 
    | Nastavení            | Navrhovaná hodnota | Popis                                                                                               |
    | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
-   | Název               | (OnOff)           | Popisný název pro parametr                                                                     |
-   | Je globální          | Není zaškrtnuto       | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
-   | Požaduje se           | Kontrolovaný         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
+   | Name (Název)               | (OnOff)           | Popisný název pro parametr                                                                     |
+   | Je globální          | nezaškrtnuté       | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
+   | Požaduje se           | checked         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
    | Šablona odpovědi  | Zapnuto nebo vypnuto?      | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
    | Typ               | Řetězec          | Typ parametru, například číslo, řetězec nebo datum a čas                                               |
    | Konfigurace      | Seznam řetězců     | V případě řetězců seznam řetězců omezuje vstupy na sadu možných hodnot.                                      |
@@ -48,9 +48,9 @@ V tomto článku tuto aplikaci rozšíříme pomocí parametrů tak, aby bylo mo
 
    | Nastavení            | Navrhovaná hodnota   | Popis                                                                                               |
    | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
-   | Název               | SubjectDevice     | Popisný název pro parametr                                                                     |
-   | Je globální          | Není zaškrtnuto         | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
-   | Požaduje se           | Kontrolovaný           | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
+   | Name (Název)               | SubjectDevice     | Popisný název pro parametr                                                                     |
+   | Je globální          | nezaškrtnuté         | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v projektu |
+   | Požaduje se           | checked           | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr          |
    | Šablona odpovědi  | Které zařízení?     | Výzva k zadání hodnoty tohoto parametru, pokud není známa                                       |
    | Typ               | Řetězec            | Typ parametru, například číslo, řetězec nebo datum a čas                                               |
    | Konfigurace      | Seznam řetězců       | V případě řetězců seznam řetězců omezuje vstupy na sadu možných hodnot.                                      |
@@ -59,7 +59,7 @@ V tomto článku tuto aplikaci rozšíříme pomocí parametrů tak, aby bylo mo
 
 ## <a name="add-sample-sentences"></a>Přidat ukázkové věty
 
-S parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Příklad:
+S parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
 
 1. Úplné informace o parametrech – `"turn {OnOff} the {SubjectDevice}"`
 1. Informace o částečném parametru – `"turn it {OnOff}"`

@@ -1,7 +1,7 @@
 ---
 title: O sadě Speech SDK – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Sada Speech Software Development Kit (SDK) poskytuje vašim aplikacím nativní přístup k funkcím služby Speech, což usnadňuje vývoj softwaru. V tomto článku najdete další podrobnosti o sadě SDK pro Windows, Linux a Android.
+description: Sada Speech Software Development Kit (SDK) poskytuje vašim aplikacím nativní přístup k funkcím služby Speech, což usnadňuje vývoj softwaru. Tento článek obsahuje další podrobnosti o sadě SDK pro Windows, Linux a Android.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,30 +10,30 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58738c9180fcc45a6958ea61b26d898caf4f3061
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468776"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819115"
 ---
-# <a name="about-the-speech-sdk"></a>Sada Speech SDK
+# <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
-Sada Speech Software Development Kit (SDK) poskytuje vašim aplikacím přístup k funkcím služby Speech, což usnadňuje vývoj softwaru s podporou řeči. Sady SDK v současné době poskytují přístup k převodu **řeči na text**, převod **textu na řeč**, **překladu řeči**, **rozpoznávání záměrů**a **přímém line kanálu pro rozhraní bot**. Obecný přehled možností a podporovaných platforem najdete na [stránce](https://aka.ms/csspeech)dokumentace.
+Rozpoznávání řeči Software Development Kit (SDK) poskytuje vaše aplikace přístup k funkce Speech service usnadňují vývoj softwaru podporou řeči. Sady SDK v současné době poskytují přístup k převodu **řeči na text**, převod **textu na řeč**, **překladu řeči**, **rozpoznávání záměrů**a **přímém line kanálu pro rozhraní bot**. Obecný přehled možností a podporovaných platforem najdete na [stránce](https://aka.ms/csspeech)dokumentace.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="get-the-sdk"></a>Získat sadu SDK
+## <a name="get-the-sdk"></a>Získání sady SDK
 
 ### <a name="windows"></a>Windows
 
-V případě systému Windows podporujeme následující jazyky:
+Pro Windows Podporujeme následující jazyky:
 
-* C#(UWP a .NET), C++: můžete odkazovat a používat nejnovější verzi našeho balíčku NuGet sady Speech SDK. Balíček zahrnuje 32 a 64 klientských knihoven a spravovaných knihoven (.NET). Sadu SDK můžete nainstalovat do sady Visual Studio pomocí NuGet. Vyhledejte **Microsoft. cognitiveservices Account. Speech**.
+* C# jazyka C++ (UPW a .NET): lze odkazovat a využívat nejnovější verzi naší balíček NuGet sady SDK pro řeč. Balíček obsahuje 32bitové a 64bitové klientské knihovny a spravované knihovny (.NET). Sada SDK lze nainstalovat v sadě Visual Studio pomocí NuGet. Vyhledejte **Microsoft.CognitiveServices.Speech**.
 
-* Java: můžete odkazovat a používat nejnovější verzi našeho balíčku Maven sady Speech SDK, který podporuje jenom Windows x64. V projektu Maven přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` na odkaz jako závislost.
+* Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček, který podporuje pouze Windows x64. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` jako závislost.
 
 ### <a name="linux"></a>Linux
 
@@ -59,49 +59,49 @@ sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
-* C#: Můžete odkazovat a používat nejnovější verzi našeho balíčku NuGet sady Speech SDK. Chcete-li odkazovat na sadu SDK, přidejte do projektu následující odkaz na balíček:
+* C#: Můžete odkazovat a používat nejnovější verzi naší balíček NuGet sady SDK pro řeč. K odkazování sadu SDK, přidejte následující odkaz na balíček do projektu:
 
   ```xml
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.7.0" />
   ```
 
-* Java: můžete odkazovat a používat nejnovější verzi našeho balíčku Maven sady Speech SDK. V projektu Maven přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` na odkaz jako závislost.
+* Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` jako závislost.
 
-* C++: Stáhněte si sadu SDK jako [balíček. tar](https://aka.ms/csspeech/linuxbinary) a rozbalte soubory v adresáři dle vašeho výběru. Struktura složek sady SDK je znázorněna v následující tabulce:
+* Jazyk C++: Stáhněte si sadu SDK jako [instalačního balíčku .tar](https://aka.ms/csspeech/linuxbinary) a rozbalte soubory v adresáři podle vašeho výběru. V následující tabulce jsou uvedeny strukturu složek sady SDK:
 
   |Cesta|Popis|
   |-|-|
   |`license.md`|Licence|
   |`ThirdPartyNotices.md`|Oznámení třetích stran|
-  |`include`|Hlavičkové soubory pro C aC++|
-  |`lib/x64`|Nativní knihovna x64 pro propojení s vaší aplikací|
-  |`lib/x86`|Nativní knihovna x86 pro propojení s vaší aplikací|
+  |`include`|Soubory hlaviček pro jazyky C a C++|
+  |`lib/x64`|Nativní x64 knihovna pro propojení s vaší aplikací|
+  |`lib/x86`|Nativní x86 knihovna pro propojení s vaší aplikací|
 
-  Chcete-li vytvořit aplikaci, zkopírujte nebo přesuňte požadované binární soubory (a knihovny) do vývojového prostředí. Zahrňte je podle požadavků v procesu sestavení.
+  Vytvoření aplikace, zkopírovat nebo přesunout do požadované binární soubory (a knihoven) do svého vývojového prostředí. Zahrnutí podle potřeby v procesu sestavení.
 
 ### <a name="android"></a>Android
 
-Java SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android. Hostuje se v úložišti Maven ve `https://csspeechstorage.blob.core.windows.net/maven/` jako `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`balíčku.
+Java SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android. Je hostován v úložiště Maven v `https://csspeechstorage.blob.core.windows.net/maven/` jako balíček `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
 
-Chcete-li balíček využívat z Android Studio projektu, proveďte následující změny:
+Chcete-li využívají balíček z vašeho projektu Android Studio, proveďte následující změny:
 
-* V souboru Build. Gradle na úrovni projektu přidejte do části `repository` následující:
+* V souboru build.gradle na úrovni projektu přidejte následující text do `repository` části:
 
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
-* V souboru Build. Gradle na úrovni modulu přidejte do části `dependencies` následující:
+* V souboru build.gradle úrovni modulu, přidejte následující text do `dependencies` části:
 
   ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
   ```
 
-Sada Java SDK je také součástí [sady Speech SDK pro zařízení](speech-devices-sdk.md).
+Sada Java SDK je také součástí [sadou SDK pro řeč zařízení](speech-devices-sdk.md).
 
 [!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Podívejte se, jak rozpoznávat řeč vC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Zjistěte, jak rozpoznávat řeč v jazyce C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

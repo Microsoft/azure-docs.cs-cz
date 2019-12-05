@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd3e27aefe03ee30e721fcbb915d9ad4b3821618
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579707"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806299"
 ---
 # <a name="custom-commands-preview"></a>Vlastní příkazy (Preview)
 
@@ -49,7 +49,7 @@ Vzorový kód pro vytvoření hlasového asistenta s vlastními příkazy (Previ
 
 ## <a name="customization"></a>Přizpůsobení
 
-Hlasové asistenti sestavené pomocí Azure Speech Services můžou používat celou škálu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr klíčového slova](speech-devices-sdk-create-kws.md).
+Hlasové asistenti sestavené pomocí služby Speech Service mohou využívat celou škálu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr klíčového slova](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
 > Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](supported-languages.md)).
@@ -60,5 +60,5 @@ Hlasové asistenti sestavené pomocí Azure Speech Services můžou používat c
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
 * [Získat sadu Speech SDK](speech-sdk.md)
