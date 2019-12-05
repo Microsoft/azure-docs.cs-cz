@@ -249,7 +249,7 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
     d. Vyberte **sítě**a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `storage` a `hana` podsítě.  
     
-    e. Vyberte **Uložit**. 
+    e. Vyberte **Save** (Uložit). 
  
     f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu **hanadb2** a **hanadb3**).
  
