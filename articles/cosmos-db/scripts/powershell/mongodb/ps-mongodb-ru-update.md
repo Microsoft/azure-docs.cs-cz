@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell skriptu – Azure Cosmos DB aktualizace RU/s pro MongoDB API
-description: Azure PowerShell skriptu – Azure Cosmos DB aktualizace RU/s pro MongoDB API
+description: Naučte se používat skript prostředí PowerShell k aktualizaci propustnosti databáze nebo kontejneru v rozhraní Azure Cosmos DB API pro MongoDB.
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: d2dd99d5a5f1d0f03c5fe4980fde376ffdd55bca
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 626904c4e281c7ce3ce632412daa24ecdb56938e
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178811"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871903"
 ---
 # <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Aktualizace RU/s pro databázi nebo kolekci pro rozhraní API pro Azure Cosmos DB MongoDB
 

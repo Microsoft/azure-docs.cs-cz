@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111751"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873926"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -73,8 +73,8 @@ Tuto tabulku použijte jako vodítko:
 | Typ úložiště | Aktuálně podporovaná metoda autorizace |
 |--|--|
 |**Blob Storage** | & SAS pro Azure AD |
-|**Úložiště objektů BLOB (hierarchické obor názvů)** | & SAS pro Azure AD |
-|**Úložiště souborů** | Pouze SAS |
+|**Úložiště objektů BLOB (hierarchický obor názvů)** | & SAS pro Azure AD |
+|**File Storage** | Pouze SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Možnost 1: použití Azure Active Directory
 

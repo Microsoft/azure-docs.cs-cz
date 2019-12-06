@@ -5,27 +5,27 @@ services: azure-app-configuration
 author: yegu
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 01/22/2019
+ms.date: 12/04/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 8f2e956603fbb9aec81b08260eade846eb6a622c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 711b807372404815e5ba57b95def91429a1925dc
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393332"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875552"
 ---
-Pokud budete chtít pokračovat k dalšímu kurzu, ponechte prostředky, které jste vytvořili v rámci tohoto rychlého startu. Můžete je použít v dalším kurzu.
+Pokud máte v plánu pokračovat k dalšímu kurzu, ponechte prostředky, které jste vytvořili v tomto rychlém startu, pro to, abyste je mohli znovu použít.
 
-Pokud budete hotovi s ukázkovou aplikaci rychlý start, odstraňte prostředky Azure jste vytvořili v tomto rychlém startu se vyhnout poplatkům za.
+Pokud jste hotovi s ukázkovou aplikací pro rychlé zprovoznění, odstraňte prostředky Azure, které jste vytvořili v tomto rychlém startu, abyste předešli poplatkům.
 
 > [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupinu prostředků a všechny prostředky v ní se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky uvnitř skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte jednotlivé prostředky z jejich odpovídajících podokna místo odstraněním skupiny prostředků.
+> Odstranění skupiny prostředků je nevratné. Skupina prostředků a všechny prostředky v ní se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky v rámci skupiny prostředků, která obsahuje prostředky, které chcete zachovat, odstraňte všechny prostředky jednotlivě z příslušného podokna, místo aby se odstranila skupina prostředků.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a vyberte **skupiny prostředků**.
-1. V **filtrovat podle názvu** zadejte název vaší skupiny prostředků. Pokyny v tomto rychlém startu použít skupinu prostředků s názvem *AppConfigTestResources*.
-1. V seznamu výsledků vyberte skupinu prostředků a buď klikněte pravým tlačítkem na řádek nebo použijte **tlačítko se třemi tečkami** ( **...** ) tlačítko otevřete místní nabídku.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte **skupiny prostředků**.
+1. Do pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. 
+1. V seznamu výsledků vyberte skupinu prostředků a buď klikněte pravým tlačítkem myši na řádek nebo použijte tlačítko se **třemi tečkami** ( **...** ) a otevřete místní nabídku.
 1. Vyberte **Odstranit skupinu prostředků**.
-1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků a potvrdit, vyberte **odstranit**.
+1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit**.
 
-Po chvíli se odstraní skupinu prostředků a všechny její prostředky.
+Po chvíli se odstraní skupina prostředků a všechny její prostředky.
