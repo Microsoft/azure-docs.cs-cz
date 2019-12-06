@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 17100769bac2e7af08e0bcba6ca2eb129b621013
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037531"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841927"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
@@ -29,8 +29,7 @@ Před vytvořením nového virtuálního počítače budete muset [vytvořit spr
 
 ## <a name="use-the-portal"></a>Použití portálu
 
-1. Otevřete [portál Azure](https://portal.azure.com).
-2. V nabídce vlevo vyberte **všechny prostředky**. Můžete řadit prostředky podle **typu** a snadno tak najít své image.
+1. Pro vyhledání spravované image použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **obrázky**.
 3. Ze seznamu vyberte obrázek, který chcete použít. Otevře se stránka s **přehledem** obrázku.
 4. V nabídce vyberte **vytvořit virtuální počítač** .
 5. Zadejte informace o virtuálním počítači. Uživatelské jméno a heslo, které tady zadáte, se použije k přihlášení k virtuálnímu počítači. Po dokončení vyberte **OK**. Nový virtuální počítač můžete vytvořit v existující skupině prostředků, nebo výběrem možnosti **vytvořit novou** vytvořte novou skupinu prostředků pro uložení virtuálního počítače.
@@ -39,7 +38,7 @@ Před vytvořením nového virtuálního počítače budete muset [vytvořit spr
 8. Na stránce Souhrn byste měli vidět název Image uvedený jako **privátní obrázek**. Výběrem **OK** spusťte nasazení virtuálního počítače.
 
 
-## <a name="use-powershell"></a>Použití prostředí PowerShell
+## <a name="use-powershell"></a>Použití PowerShellu
 
 PowerShell můžete použít k vytvoření virtuálního počítače z Image pomocí zjednodušené sady parametrů pro rutinu [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Bitová kopie musí být ve stejné skupině prostředků, ve které vytvoříte virtuální počítač.
 

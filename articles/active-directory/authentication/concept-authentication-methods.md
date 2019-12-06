@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a7110ad3e6c9c66179c90c02c1572ee83cb9f15
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420752"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848744"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -129,7 +129,7 @@ Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microso
 > Uživatelé nebudou mít možnost registrovat svou mobilní aplikaci při registraci pro Samoobslužné resetování hesla. Místo toho si uživatelé můžou svou mobilní aplikaci zaregistrovat na [https://aka.ms/mfasetup](https://aka.ms/mfasetup) nebo ve verzi Preview registrace bezpečnostních údajů v [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 >
 
-### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
+### <a name="notification-through-mobile-app"></a>Oznámení přes mobilní aplikaci
 
 Aplikace Microsoft Authenticator může přispět k zabránění neoprávněnému přístupu k účtům a zastavovat podvodné transakce vložením oznámení do telefonu Smartphone nebo tabletu. Uživatelé zobrazí oznámení a pokud je to legitimní, vyberte ověřit. V opačném případě mohou vybrat odepřít.
 
@@ -146,7 +146,7 @@ Pokud povolíte použití oznámení prostřednictvím mobilní aplikace a ově�
 
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 
-Aplikaci Microsoft Authenticator nebo jiné aplikace třetích stran lze použít jako softwarový token k vytvoření ověřovacího kódu OATH. Po zadání uživatelského jména a hesla zadáte kód poskytnutý aplikací do přihlašovací obrazovky. Ověřovací kód poskytuje druhou formu ověřování.
+Aplikaci Microsoft Authenticator nebo jiné aplikace třetích stran lze použít jako softwarový token k vytvoření ověřovacího kódu OATH. Po zadání uživatelského jména a hesla zadáte kód poskytnutý aplikací do přihlašovací obrazovky. Ověřovací kód poskytuje druhý způsob ověřování.
 
 > [!WARNING]
 > Pro Samoobslužné resetování hesla, je-li pro ověřovací kód obnovení k dispozici pouze jedna metoda, je k dispozici pouze možnost pro uživatele, aby se **zajistila nejvyšší úroveň zabezpečení**.

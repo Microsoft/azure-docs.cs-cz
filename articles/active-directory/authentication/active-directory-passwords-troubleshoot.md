@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b72f0675569ea6f683e8e1f8d2e4bc468f82c71f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a22c0cc922e021edc37dfbb2d89fdd20c77b2c87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382035"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848761"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s samoobslužným resetováním hesla
 
@@ -127,7 +127,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 | 31018| KeyPairCreationSuccess| Tato událost označuje, že jsme úspěšně vytvořili šifrovací klíč hesla. Tento klíč slouží k šifrování hesel z cloudu, které se mají odeslat do místního prostředí.|
 | 32000| Neznámé chyby| Tato událost indikuje, že během operace správy hesel došlo k neznámé chybě. Další podrobnosti najdete v textu výjimky v události. Pokud máte problémy, zkuste zakázat a znovu povolit zpětný zápis hesla. Pokud to neuděláte, zahrňte do svého specialisty podpory kopii protokolu událostí společně se zadaným ID sledování programu Insider.|
 | 32001| ServiceError| Tato událost indikuje, že došlo k chybě při připojování ke službě cloudového resetování hesla. K této chybě obvykle dochází v případě, že se místní služba nemohla připojit k webové službě resetování hesla.|
-| 32002| ServiceBusError| Tato událost indikuje, že došlo k chybě při připojování k instanci Service Bus vašeho tenanta. K tomu může dojít, Pokud blokujete odchozí připojení v místním prostředí. Zkontrolujte bránu firewall, abyste měli jistotu, že povolíte připojení přes TCP 443 a https://ssprdedicatedsbprodncu.servicebus.windows.net, a zkuste to znovu. Pokud stále dochází k problémům, zkuste zakázat a znovu povolit zpětný zápis hesla.|
+| 32002| ServiceBusError| Tato událost indikuje, že došlo k chybě při připojování k instanci Service Bus vašeho tenanta. K tomu může dojít, Pokud blokujete odchozí připojení v místním prostředí. Zkontrolujte bránu firewall, abyste měli jistotu, že povolíte připojení přes TCP 443 a https://ssprdedicatedsbprodncu.servicebus.windows.net , a zkuste to znovu. Pokud stále dochází k problémům, zkuste zakázat a znovu povolit zpětný zápis hesla.|
 | 32003| InPutValidationError| Tato událost označuje, že vstup předaný do našeho rozhraní API webové služby byl neplatný. Zkuste operaci zopakovat.|
 | 32004| DecryptionError| Tato událost označuje, že došlo k chybě při dešifrování hesla, které bylo doručeno z cloudu. Příčinou může být neshoda dešifrovacího klíče mezi cloudovou službou a místním prostředím. Pokud chcete tento problém vyřešit, zakažte a znovu povolte zpětný zápis hesla v místním prostředí.|
 | 32005| ConfigurationError| Během připojování ukládáme informace specifické pro tenanta do konfiguračního souboru ve vašem místním prostředí. Tato událost znamená, že při ukládání tohoto souboru nebo při spuštění služby došlo k chybě. při čtení souboru došlo k chybě. Pokud chcete tento problém vyřešit, zkuste zakázat a znovu povolit zpětný zápis hesla, aby se vynutilo přepsání konfiguračního souboru.|
@@ -136,7 +136,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 | 32009| AuthTokenError| Tato událost označuje, že se nám nepovedlo získat autorizační token pro účet globálního správce zadaný při Azure AD Connect instalaci. Tato chyba může být způsobena nesprávným uživatelským jménem nebo heslem určeným pro účet globálního správce. K této chybě může dojít také v případě, že zadaný účet globálního správce je federovaný. Pokud chcete tento problém vyřešit, spusťte znovu konfiguraci se správným uživatelským jménem a heslem a ujistěte se, že správce je účet spravovaný (jenom cloudový nebo synchronizovaný s heslem).|
 | 32010| CryptoError| Tato událost indikuje, že došlo k chybě při generování šifrovacího klíče pro heslo nebo při dešifrování hesla, které přicházejí z cloudové služby. Tato chyba zřejmě indikuje problém s vaším prostředím. Další informace o tom, jak tento problém vyřešit, najdete v podrobnostech v protokolu událostí. Můžete také zkusit zakázat a znovu povolit službu zpětného zápisu hesla.|
 | 32011| OnBoardingServiceError| Tato událost označuje, že místní služba nemohla správně komunikovat s webovou službou resetování hesla, aby zahájila proces připojování. K tomu může dojít v důsledku pravidla brány firewall nebo v případě, že došlo k potížím s získáním ověřovacího tokenu pro vašeho tenanta. Chcete-li tento problém vyřešit, ujistěte se, že neblokujete odchozí připojení přes protokol TCP 443 a TCP 9350-9354 nebo https://ssprdedicatedsbprodncu.servicebus.windows.net. Také se ujistěte, že účet správce Azure AD, který používáte k připojování, není federovaný.|
-| 32013| OffBoardingError| Tato událost označuje, že místní služba nemohla správně komunikovat s webovou službou resetování hesla, aby zahájila proces odhlašování. K tomu může dojít v důsledku pravidla brány firewall nebo v případě, že došlo k potížím s získáním autorizačního tokenu pro vašeho tenanta. Pokud chcete tento problém vyřešit, ujistěte se, že neblokujete odchozí připojení přes 443 nebo https://ssprdedicatedsbprodncu.servicebus.windows.neta že účet správce Azure Active Directory, který používáte k odpojení, není federovaný.|
+| 32013| OffBoardingError| Tato událost označuje, že místní služba nemohla správně komunikovat s webovou službou resetování hesla, aby zahájila proces odhlašování. K tomu může dojít v důsledku pravidla brány firewall nebo v případě, že došlo k potížím s získáním autorizačního tokenu pro vašeho tenanta. Pokud chcete tento problém vyřešit, ujistěte se, že neblokujete odchozí připojení přes 443 nebo https://ssprdedicatedsbprodncu.servicebus.windows.net a že účet správce Azure Active Directory, který používáte k odpojení, není federovaný.|
 | 32014| ServiceBusWarning| Tato událost označuje, že se musel znovu připojit k instanci Service Bus vašeho tenanta. Za běžných podmínek by to nemělo být obavy, ale pokud se tato událost několikrát zobrazí, zvažte možnost zkontrolovat připojení k síti Service Bus, zejména v případě, že se jedná o připojení s vysokou latencí nebo malou šířkou pásma.|
 | 32015| ReportServiceHealthError| Aby bylo možné monitorovat stav služby zpětného zápisu hesel, pošleme data prezenčního signálu do webové služby pro resetování hesla každých pět minut. Tato událost označuje, že při posílání těchto informací o stavu zpět do cloudové webové služby došlo k chybě. Tyto informace o stavu neobsahují data identifikovatelná z objektů (OII) nebo osobní údaje (PII) a jsou čistě prezenční a základní Statistika služby, aby bylo možné v cloudu poskytovat informace o stavu služby.|
 | 33001| ADUnKnownError| Tato událost označuje, že služba Active Directory vrátila neznámou chybu. Další informace najdete v protokolu událostí Azure AD Connect serveru pro události ze zdroje ADSync.|
@@ -167,8 +167,8 @@ Nejběžnějším bodem selhání je to, že nejsou správně nakonfigurované p
 
 Pro Azure AD Connect verze verze 1.1.443.0 a novější potřebujete přístup odchozího protokolu HTTPS k následujícím akcím:
 
-* \*. passwordreset.microsoftonline.com
-* \*. servicebus.windows.net
+* \*.passwordreset.microsoftonline.com
+* \*.servicebus.windows.net
 
 V případě větší členitosti se na aktualizovaný seznam [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653) aktualizovala každou středu a vstoupí v platnost příští pondělí.
 
@@ -292,10 +292,10 @@ Následující články poskytují další informace o resetování hesla prost�
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
+* [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Mám otázku, která nebyla zodpovězena jinde](active-directory-passwords-faq.md)
+* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)

@@ -4,16 +4,19 @@ description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Regi
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8af8daa4233fe6461b4e129f56a063e7cc212245
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a26f1207eccd615804babe230df689d27beae49f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454752"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840778"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu
 
-Kromě [Rychlé úlohy](container-registry-tutorial-quick-task.md)ACR úlohy podporují automatické sestavení imagí kontejneru Docker v cloudu, když potvrdíte zdrojový kód do úložiště Git.
+Kromě [Rychlé úlohy](container-registry-tutorial-quick-task.md)ACR úlohy podporují automatické sestavení imagí kontejneru Docker v cloudu, když potvrdíte zdrojový kód do úložiště Git. Podporované kontexty Git pro úlohy ACR zahrnují veřejné nebo soukromé úložiště GitHubu nebo Azure.
+
+> [!NOTE]
+> V současné době ACR úkoly nepodporují potvrzení změn nebo triggery žádostí o přijetí změn v úložištích GitHub Enterprise.
 
 V tomto kurzu vaše úloha ACR sestaví a nahraje jednu Image kontejneru určenou v souboru Dockerfile při potvrzení zdrojového kódu do úložiště Git. Pokud chcete vytvořit [úlohu s více kroky](container-registry-tasks-multi-step.md) , která používá soubor YAML k definování kroků pro sestavování, nasdílení a volitelně testování více kontejnerů při potvrzení kódu, přečtěte si téma [kurz: spuštění pracovního postupu s více kroky v cloudu při potvrzení zdrojového kódu](container-registry-tutorial-multistep-task.md). Přehled úloh ACR najdete v tématu [Automatizace oprav operačního systému a architektury s úlohami ACR](container-registry-tasks-overview.md) .
 

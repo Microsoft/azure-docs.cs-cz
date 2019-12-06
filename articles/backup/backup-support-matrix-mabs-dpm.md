@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2bec2818eaabaa2d2d74ab7181db0eabcba092ec
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172032"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841163"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -24,7 +24,7 @@ MABS je založený na aplikaci System Center DPM a poskytuje podobné funkce s n
 
 - Ke spuštění MABS není nutná žádná licence System Center.
 - Pro MABS i DPM poskytuje Azure dlouhodobé úložiště záloh. Kromě toho aplikace DPM umožňuje zálohovat data pro dlouhodobé ukládání na pásku. MABS tuto funkci neposkytuje.
-- Primární server DPM můžete zálohovat pomocí sekundárního serveru DPM. Sekundární server bude chránit databázi primárního serveru a repliky zdrojů dat uložených na primárním serveru. Pokud dojde k chybě primárního serveru, může sekundární server pokračovat v ochraně úloh, které jsou chráněny primárním serverem, dokud nebude primární server opět k dispozici.  MABS tuto funkci neposkytuje.
+- Primární server DPM můžete zálohovat pomocí sekundárního serveru DPM. Sekundární server ochrání databázi primárního serveru a repliky zdrojů dat uložených na primárním serveru. Pokud primární server selže, může sekundární server pokračovat v ochraně úloh, které jsou chráněné primárním serverem, dokud nebude primární server opět k dispozici.  MABS tuto funkci neposkytuje.
 
 MABS si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57520). Dá se spustit místně nebo na virtuálním počítači Azure.
 
@@ -43,7 +43,7 @@ Zálohování pomocí DPM/MABS a Azure Backup funguje takto:
 1. Agent Microsoft Azure Recovery Services (MARS) je nainstalovaný na serveru DPM nebo v MABS.
 1. Agent MARS zálohuje disky DPM/MABS do trezoru služby Backup Recovery Services v Azure pomocí Azure Backup.
 
-Další informace najdete tady:
+Další informace:
 
 - [Další informace](backup-architecture.md#architecture-back-up-to-dpmmabs) o architektuře MABS
 - [Přečtěte si, co je podporováno](backup-support-matrix-mars-agent.md) pro agenta Mars.
@@ -60,7 +60,7 @@ DPM/MABS lze nasadit jako shrnuté v následující tabulce.
 
 **Nasazení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-**Nasazené místně** | Fyzický server<br/><br/>Virtuální počítač Hyper-V<br/><br/> Virtuální počítač VMware | Pokud je aplikace DPM/MABS nainstalovaná jako virtuální počítač VMware, zálohuje jenom virtuální počítače VMware a úlohy, které jsou na těchto virtuálních počítačích spuštěné.
+**Nasazené místně** | Fyzický server<br/><br/>Virtuální počítač s technologií Hyper-V<br/><br/> Virtuální počítač VMware | Pokud je aplikace DPM/MABS nainstalovaná jako virtuální počítač VMware, zálohuje jenom virtuální počítače VMware a úlohy, které jsou na těchto virtuálních počítačích spuštěné.
 **Nasazeno jako Azure Stack virtuální počítač** | Jenom MABS | Aplikaci DPM nelze použít k zálohování Azure Stackch virtuálních počítačů.
 **Nasazeno jako virtuální počítač Azure** | Chrání virtuální počítače a úlohy Azure, které běží na těchto virtuálních počítačích. | DPM/MABS běžící v Azure nemůže zálohovat místní počítače.
 
@@ -77,12 +77,12 @@ Azure Backup můžou zálohovat instance DPM/MABS, na kterých běží některý
 
 ## <a name="management-support"></a>Podpora správy
 
-**Chybu** | **Podrobnosti**
+**Problém** | **Podrobnosti**
 --- | ---
 **Instalace** | Nainstalujte DPM/MABS na jeden z účelových počítačů.<br/><br/> Neinstalujte DPM/MABS na řadiči domény na počítači s instalací role aplikačního serveru na počítači, na kterém běží Microsoft Exchange Server nebo System Center Operations Manager, nebo na uzlu clusteru.<br/><br/> [Zkontrolujte všechny požadavky na systém aplikace DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
 **Domény** | DPM/MABS by měl být připojený k doméně. Nejdřív nainstalujte a pak připojte DPM/MABS k doméně. Přesunutí DPM/MABS do nové domény po nasazení se nepodporuje.
 **Storage** | Moderní úložiště záloh (MBS) se podporuje v DPM 2016/MABS v2 a novějších verzích. Není k dispozici pro MABS v1.
-**Upgrade MABS** | Můžete přímo nainstalovat MABS V3 nebo upgradovat na MABS V3 z MABS v2. [Další informace](backup-azure-microsoft-azure-backup.md#upgrade-mabs)
+**Upgrade MABS** | Můžete přímo nainstalovat MABS V3 nebo upgradovat na MABS V3 z MABS v2. [Další informace](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **Přesunutí MABS** | Přesun MABS na nový server a zachování úložiště je podporované, pokud používáte MBS.<br/><br/> Server musí mít stejný název jako původní. Název nemůžete změnit, pokud chcete zachovat stejný fond úložiště a použít stejnou databázi MABS k ukládání bodů obnovení dat.<br/><br/> Budete potřebovat zálohu databáze MABS, protože ji budete muset obnovit.
 
 ## <a name="mabs-support-on-azure-stack"></a>Podpora MABS na Azure Stack
@@ -148,48 +148,11 @@ Z aplikace DPM 2016/MABS v2 (běžící na Windows serveru 2016) a novějším m
 
 ## <a name="supported-backups-to-mabs"></a>Podporované zálohy na MABS
 
-Následující tabulka shrnuje, co se dá zálohovat na MABS z místních počítačů a virtuálních počítačů Azure.
-
-**Backup** | **Verze** | **MABS** | **Podrobnosti** |
---- | --- | --- | --- |
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bitů) | MABS v3, v2 | Místně. | Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit.<br/><br/> Svazky musí mít aspoň 1 GB a NTFS. |
-**Windows Server 2016 (Datacenter, Standard, ne nano)**<br/><br/> 64/32 bitů | MABS v3, v2 | Místní/virtuální počítač Azure.| Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> Podporované svazky s odstraněním duplicit. |
-**Windows Server 2012 R2 (Datacenter a Standard)**<br/><br/> 64/32 bitů | MABS v3, v2 | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Azure VMprotection**: svazek/sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
-**Windows Server 2012 s aktualizací SP1 (Datacenter a Standard)**<br/><br/> 64/32 bitů | MABS v3, v2 <br/><br/> Je třeba nainstalovat [rozhraní Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) . | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
-**Windows 2008 R2 s aktualizací SP1 (Standard a Enterprise)**<br/><br/> 64/32 bitů | Podporováno systémem MABS v3, v2.<br/><br/> Je třeba nainstalovat [rozhraní Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) . | Místní/virtuální počítač Azure. |   **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
-**Windows 2008 R2 (Standard a Enterprise)**<br/><br/> 64/32 bitů | V případě MABS V3 musí v operačním systému běžet verze SP1. | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit. |
-**Windows Server 2008 s aktualizací SP2**<br/><br/> 64/32 bitů | MABS v3, v2 | MABS v2 je podporováno, pokud je MABS nasazen jako virtuální počítač VMware.<br/><br/> Nepodporuje se pro MABS běžící na virtuálním počítači Azure. | Svazek, sdílená složka/složka/soubor; stav systému/holý počítač. |
-**Windows Storage Server 2008** | MABS v3, v2 | MABS jako místní fyzický server nebo virtuální počítač Hyper-V. <br/><br/> Nepodporuje se pro MABS běžící na virtuálním počítači Azure. | Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.
-**SQL Server 2017** | MABS v3 | Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány. |
-**SQL Server 2016/2016 s aktualizací SP1** | MABS v3, v2 | Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány. |
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3, v2 | Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány. |
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | MABS v3, v2 | Místně. | Zálohování samostatného serveru Exchange, databáze pod DAG.<br/><br/> Obnovte poštovní schránku, databázi poštovní schránky pod DAG.<br/><br/> ReFS se nepodporují.<br/><br/> Zálohování nesdílených diskových clusterů.<br/><br/> Zálohujte Exchange Server nakonfigurovaný pro průběžnou replikaci. |
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | MABS v3, v2 | Místní/virtuální počítač Azure. | Zálohovat farmu, front-end webový server.<br/><br/> Obnoví farmu, databázi, webovou aplikaci, soubor nebo položku seznamu, vyhledávání služby SharePoint, front-end webový server.<br/><br/> Nemůžete zálohovat farmu pomocí SQL Server AlwaysOn pro databáze obsahu. |
-**Technologie Hyper-V v systému Windows Server 2016**<br/><br/> **Windows Server 2008 R2 (s aktualizací SP1)** | MABS v3, v2 | Místně. | **MABS Agent na hostiteli Hyper-V**: zálohování celých virtuálních počítačů a datových souborů hostitele. Zálohování virtuálních počítačů pomocí místního úložiště, virtuálních počítačů v clusteru s úložištěm CSV, virtuálních počítačů s úložištěm souborového serveru SMB.<br/><br/> **MABS Agent na virtuálním počítači hosta**: zálohování úloh běžících na virtuálním počítači. CSV.<br/><br/> **Obnovení**: virtuální počítač, obnovení na úrovni položek VHD/Volume/složky/soubory.<br/><br/> **Virtuální počítače**se systémem Linux: Pokud je technologie Hyper-V spuštěná v systému Windows Server 2012 R2 nebo novějším, zálohujte ji. Obnovení pro virtuální počítače se systémem Linux je pro celý počítač. |
-**Virtuální počítače VMware: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3, v2 | Místně. | Zálohujte virtuální počítače VMware na úložiště CSV, NFS a SAN.<br/><br/> Obnovte celý virtuální počítač.<br/><br/> Zálohování systému Windows/Linux.<br/><br/> Obnovení složky/souborů pro virtuální počítače s Windows na úrovni položek.<br/><br/> VMware vApp se nepodporuje.<br/><br/> Obnovení pro virtuální počítače se systémem Linux je pro celý počítač. |
+Informace o různých serverech a úlohách, které můžete chránit pomocí Azure Backup Server, najdete v tématu [Azure Backup Server Protection Matrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix).
 
 ## <a name="supported-backups-to-dpm"></a>Podporované zálohy do DPM
 
-Následující tabulka shrnuje, co je možné zálohovat do DPM z místních počítačů a virtuálních počítačů Azure.
-
-**Backup** | **DPM** | **Podrobnosti**
---- | --- | ---
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bitů) | Pouze místní.<br/><br/> Pro zálohování Windows 10 s DPM 2012 R2 doporučujeme nainstalovat [Update 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager). | Svazek, sdílená složka/složka/soubor.<br/><br/> Podporované svazky s odstraněním duplicit.<br/><br/> Svazky musí mít aspoň 1 GB a NTFS.
-**Windows Server 2016 (Datacenter, Standard, ne nano)**<br/><br/> 64/32 bitů | Místní/virtuální počítač Azure.<br/><br/> Jenom DPM 2016.| Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> Podporované svazky s odstraněním duplicit.
-**Windows Server 2012 R2 (Datacenter a Standard)**<br/><br/> 64/32 bitů | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.<br/><br/> Svazky s odstraněnými duplicitami podporované DPM 2012 R2 a novějším.
-**Windows Server 2012 s aktualizací SP1 (Datacenter a Standard)**<br/><br/> 64/32 bitů | Místní/virtuální počítač Azure. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.<br/><br/> Svazky s odstraněnými duplicitami podporované DPM 2012 R2 a novějším.
-**Windows 2008 R2 s aktualizací SP1 (Standard a Enterprise)**<br/><br/> 64/32 bitů | Místní/virtuální počítač Azure.<br/><br/> Je třeba nainstalovat [rozhraní Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) . |   **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.<br/><br/> **Ochrana virtuálních počítačů Azure**: svazek/sdílená složka/složka/soubor.
-**Windows 2008 R2 (Standard a Enterprise)**<br/><br/> 64/32 bitů | Místně.<br/><br/> Aplikaci DPM nejde nainstalovat jako virtuální počítač VMware.<br/><br/> DPM běžící na virtuálním počítači Azure se nepodporuje. | **Místní ochrana**: svazek/sdílená složka/složka/soubor; stav systému/holý počítač.
-**Windows Server 2008 s aktualizací SP2**<br/><br/> 64/32 bitů | Pouze místní.<br/><br/> Aplikace DPM je podporována při spuštění jako virtuální počítač VMware. Spuštění jako fyzický server nebo virtuální počítač Hyper-V se nepodporuje. | Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.
-**Windows Storage Server 2008** | Místní aplikace DPM spuštěná jako fyzický server nebo virtuální počítač Hyper-V. | Svazek, sdílená složka/složka/soubor; stav systému/holý počítač.
-**SQL Server 2017** | KONZOLA DPM SAC; DPM 2016 se spuštěnou kumulativní aktualizací 5 nebo novější.<br/><br/> Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány.
-**SQL Server 2016 s aktualizací SP1** | Nepodporováno pro DPM 2012 R2; Podporováno pro KONZOLu aplikace DPM, aplikace DPM 2016 s kumulativní aktualizací 4 nebo novější.<br/><br/> Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány.
-**SQL Server 2016** | Nepodporováno pro DPM 2012 R2. Podporováno pro aplikaci DPM SAC, DPM 2016 z kumulativní aktualizace 2 nebo novější.<br/><br/> Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány.
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | SQL Server 2014 s DPM 2012 R2 s kumulativní aktualizací 4 nebo novější.<br/><br/> Místní/virtuální počítač Azure.| Zálohování databáze SQL Server.<br/><br/> Je podporováno zálohování clusteru SQL Server.<br/><br/>Databáze uložené v CSV nejsou podporovány.
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | Pro Exchange 2016 vyžaduje DPM 2012 R2 kumulativní aktualizaci 9 nebo novější.<br/><br/> Lokálně | Zálohování samostatného serveru Exchange, databáze pod DAG.<br/><br/> Obnovte poštovní schránku, databázi poštovní schránky pod DAG.<br/><br/> ReFS se nepodporují.<br/><br/> Zálohování nesdílených diskových clusterů.<br/><br/> Zálohujte Exchange Server nakonfigurovaný pro průběžnou replikaci.
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | SharePoint 2016 na DPM 2016 a novější verzi.<br/><br/>Místní/virtuální počítač Azure. | Zálohovat farmu, front-end webový server.<br/><br/> Obnoví farmu, databázi, webovou aplikaci, soubor nebo položku seznamu, vyhledávání služby SharePoint, front-end webový server.<br/><br/> Nemůžete zálohovat farmu pomocí SQL Server AlwaysOn pro databáze obsahu.
-**Technologie Hyper-V v systému Windows Server 2016**<br/><br/> **Windows Server 2012 R2/2012** (Datacenter/Standard)<br/><br/> **Windows Server 2008 R2 (s aktualizací SP1)** | Technologie Hyper-V v 2016 se podporuje pro DPM 2016 a novější.<br/><br/> Místně. | **MABS Agent na hostiteli Hyper-V**: zálohování celých virtuálních počítačů a datových souborů hostitele. Zálohování virtuálních počítačů pomocí místního úložiště, virtuálních počítačů v clusteru s úložištěm CSV, virtuálních počítačů s úložištěm souborového serveru SMB.<br/><br/> **MABS Agent na virtuálním počítači hosta**: zálohování úloh běžících na virtuálním počítači. CSV.<br/><br/> **Obnovení**: virtuální počítač, obnovení na úrovni položek VHD/Volume/složky/soubory.<br/><br/> **Virtuální počítače**se systémem Linux: Pokud je technologie Hyper-V spuštěná v systému Windows Server 2012 R2 nebo novějším, zálohujte ji. Obnovení pro virtuální počítače se systémem Linux je pro celý počítač.
-**Virtuální počítače VMware: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3, v2 <br/><br/> DPM 2012 R2 vyžaduje kumulativní aktualizaci 1 pro System Center. <br/><br/>Místně. | Zálohujte virtuální počítače VMware na úložiště CSV, NFS a SAN.<br/><br/> Obnovte celý virtuální počítač.<br/><br/> Zálohování systému Windows/Linux.<br/><br/> Obnovení složky/souborů pro virtuální počítače s Windows na úrovni položek.<br/><br/> VMware vApp se nepodporuje.<br/><br/> Obnovení pro virtuální počítače se systémem Linux je pro celý počítač.
+Informace o různých serverech a úlohách, které můžete chránit pomocí Data Protection Manager, najdete v článku [co může aplikace DPM zálohovat?](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019).
 
 - Clusterované úlohy zálohované aplikací DPM/MABS by měly být ve stejné doméně jako DPM/MABS nebo v podřízené/důvěryhodné doméně.
 - Ověřování pomocí protokolu NTLM/certifikátu můžete použít k zálohování dat v nedůvěryhodných doménách nebo pracovních skupinách.

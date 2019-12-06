@@ -7,17 +7,24 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/17/2017
-ms.openlocfilehash: 7083ecf01666deecccada9ab0c93e88af53d252b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 02c4d6ff9000e9f9e1f427144fed237d609a463d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173656"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841672"
 ---
 # <a name="sdk-release-notes---application-insights"></a>Poznámky k verzi sady SDK – Application Insights
 Tady jsou podrobné poznámky k verzi a pokyny k aktualizaci pro naše sady SDK:
 
-* [.NET SDK (včetně adaptérů ASP.NET, ASP.Net Core a Logging)](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+
+* Sady .NET SDK
+    - Pro verzi 2,12 a novější: sady [.NET SDK (včetně ASP.NET, ASP.NET Core a protokolovacích adaptérů)](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+    - Pro starší verze:
+      - [Sada SDK webového serveru ASP.NET](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
+      - [.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+      - [Adaptéry protokolování .NET](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
+      - [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Java](https://github.com/Microsoft/ApplicationInsights-Java)
 * [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
 * [Jiné platformy](https://github.com/Microsoft/ApplicationInsights-Home)

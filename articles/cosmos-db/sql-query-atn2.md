@@ -1,18 +1,18 @@
 ---
 title: ATN2 v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o ATN2 funkcí SQL systému v Azure Cosmos DB.
+description: Přečtěte si o tom, jak funkce ATN2 SQL System v Azure Cosmos DB vrací hlavní hodnotu tečny oblouku y/x vyjádřené v radiánech.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 43bf2f6e27d093b72560b87349150268e0f58a60
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 11321ef9d7b81af279b04e0e435b19c645cf3bcf
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350191"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871648"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
  Vrátí hlavní hodnotu arkustangens y / x, vyjádřené v radiánech.  

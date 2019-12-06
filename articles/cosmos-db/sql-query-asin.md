@@ -1,18 +1,18 @@
 ---
 title: ASIN v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o ASIN funkcí SQL systému v Azure Cosmos DB.
+description: Přečtěte si, jak funkce arkussinus (ASIN) systému SQL v Azure Cosmos DB vrátí úhel v radiánech, jejichž sinus je zadaný numerický výraz.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5a64fc8d8f87d38f001bf2bc9dd581692c97fe64
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3e790eb5ae5eb780637b199a1a65dec2dd02d1bc
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348505"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871734"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
  Vrací úhel v radiánech, jehož sinus je zadaný číselný výraz. Označuje se také Arkus sinus.  
@@ -34,7 +34,7 @@ ASIN(<numeric_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí `ASIN` z-1.  
+  Následující příklad vrátí `ASIN` hodnotu-1.  
   
 ```sql
 SELECT ASIN(-1) AS asin  
