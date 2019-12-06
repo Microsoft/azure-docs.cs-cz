@@ -1,17 +1,17 @@
 ---
 title: Jak nakonfigurovat vícenásobný hlavní server v Azure Cosmos DB
-description: Naučte se konfigurovat více hlavních možností ve svých aplikacích v Azure Cosmos DB.
+description: Naučte se konfigurovat více hlavních pro aplikace pomocí různých sad SDK v Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: e86cacbd76a70c8b114d65a77ff013d32327a2d0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093109"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873637"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Nakonfigurujte ve svých aplikacích více hlavních serverů, které používají Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Jakmile je účet vytvořený s povoleným více oblastmi zápisu, musíte ve sv
 
 ## <a id="netv2"></a>.NET SDK v2
 
-Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `UseMultipleWriteLocations` na `true`. Nastavte `SetCurrentLocation` také na oblast, ve které se aplikace nasazuje a kam se Azure Cosmos DB replikují:
+Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `UseMultipleWriteLocations` na `true`. Také nastavte `SetCurrentLocation` na oblast, ve které se aplikace nasazuje a kde se Azure Cosmos DB replikují:
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -36,7 +36,7 @@ policy.SetCurrentLocation("West US 2");
 
 ## <a id="netv3"></a>.NET SDK V3
 
-Pokud chcete ve své aplikaci povolit více hlavních serverů, `ApplicationRegion` nastavte na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují:
+Chcete-li ve své aplikaci povolit více hlavních serverů, nastavte `ApplicationRegion` na oblast, ve které je aplikace nasazená a kde Cosmos DB replikována:
 
 ```csharp
 CosmosClient cosmosClient = new CosmosClient(
@@ -47,7 +47,7 @@ CosmosClient cosmosClient = new CosmosClient(
     });
 ```
 
-Volitelně můžete použít `CosmosClientBuilder` a `WithApplicationRegion` k dosažení stejného výsledku:
+Volitelně můžete pomocí `CosmosClientBuilder` a `WithApplicationRegion` dosáhnout stejného výsledku:
 
 ```csharp
 CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-string-from-portal>")
@@ -57,7 +57,7 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 ## <a id="java"></a>Java Async SDK
 
-Pokud chcete ve své aplikaci povolit více hlavních serverů, `policy.setUsingMultipleWriteLocations(true)` nastavte a `policy.setPreferredLocations` nastavte na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují:
+Pokud chcete ve své aplikaci povolit více hlavních serverů, nastavte `policy.setUsingMultipleWriteLocations(true)` a nastavte `policy.setPreferredLocations` na oblast, ve které se aplikace nasazuje a kde se Cosmos DB replikuje:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -74,7 +74,7 @@ AsyncDocumentClient client =
 
 ## <a id="javascript"></a>Sady SDK pro Node. js, JavaScript a TypeScript
 
-Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `connectionPolicy.UseMultipleWriteLocations` na `true`. Nastavte `connectionPolicy.PreferredLocations` také na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují:
+Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `connectionPolicy.UseMultipleWriteLocations` na `true`. Také nastavte `connectionPolicy.PreferredLocations` na oblast, ve které se aplikace nasazuje a kde se Cosmos DB replikují:
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -91,7 +91,7 @@ const client = new CosmosClient({
 
 ## <a id="python"></a>Python SDK
 
-Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `connection_policy.UseMultipleWriteLocations` na `true`. Nastavte `connection_policy.PreferredLocations` také na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují.
+Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `connection_policy.UseMultipleWriteLocations` na `true`. Také nastavte `connection_policy.PreferredLocations` na oblast, ve které se aplikace nasazuje a kam Cosmos DB replikovat.
 
 ```python
 connection_policy = documents.ConnectionPolicy()
@@ -114,4 +114,4 @@ Přečtěte si následující články:
 * [Kompromisy konzistence, dostupnosti a výkonu v Azure Cosmos DB](consistency-levels-tradeoffs.md)
 * [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
 * [Globální škálování zřízené propustnosti](scaling-throughput.md)
-* [Globální distribuce: Pod pokličkou](global-dist-under-the-hood.md)
+* [Globální distribuce: pod digestoří](global-dist-under-the-hood.md)

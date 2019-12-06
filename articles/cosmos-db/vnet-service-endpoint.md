@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 791821fbfe5854c27b7e3e6927a56a66ac1f1dc2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b91e235824085977f1570e664b43d028a905407b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819082"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869795"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup k Azure Cosmos DB z virtuálních sítí (VNet)
 
@@ -39,6 +39,12 @@ Když se přidají pravidla přístupu k bránám firewall nebo k virtuální s�
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Když se povolí koncový bod služby Azure Cosmos DB v podsíti, začaly se zablokovat moje žádosti. Co se stalo?
 
 Jakmile je koncový bod služby pro Azure Cosmos DB v podsíti povolený, zdroj provozu, který přiblíží účtu, se přepne z veřejné IP adresy do virtuální sítě a podsítě. Pokud má váš účet Azure Cosmos jenom bránu firewall založenou na protokolu IP, provoz z podsítě s povolenými službami už nebude odpovídat pravidlům brány firewall protokolu IP a proto se odmítne. Přečtěte si postup plynule migrace z brány firewall založené na protokolu IP na řízení přístupu na základě virtuální sítě.
+
+### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Jsou pro účty Azure Cosmos s koncovými body služby virtuální sítě potřeba další oprávnění RBAC?
+
+Po přidání koncových bodů služby virtuální sítě do účtu Azure Cosmos budete potřebovat přístup k akci `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` pro všechny virtuální sítě nakonfigurované na vašem účtu Azure Cosmos. Tato akce je nutná, protože proces autorizace ověřuje akce, které odpovídají prostředkům databáze a virtuální sítě, před vyhodnocením jakýchkoli vlastností.
+ 
+Ověřování ověřuje akce i v případě, že uživatel nezadá seznamy ACL virtuální sítě pomocí rozhraní příkazového řádku Azure CLI. V současné době řídicí plocha účtu Azure Cosmos podporuje nastavení kompletního stavu účtu Azure Cosmos. Jeden z parametrů pro volání řídicí roviny je `virtualNetworkRules`. Pokud tento parametr není zadán, Azure CLI vytvoří volání metody Get Database, které načte `virtualNetworkRules` a použije tuto hodnotu v volání aktualizace.
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Mají partnerské virtuální sítě taky přístup k účtu Azure Cosmos? 
 Jenom virtuální síť a jejich podsítě přidávané k účtu Azure Cosmos mají přístup. Jejich partnerský virtuální sítě nemá přístup k účtu, dokud nebudou do účtu přidány podsítě v rámci partnerských virtuálních sítí.

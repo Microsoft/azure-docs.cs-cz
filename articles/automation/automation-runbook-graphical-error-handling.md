@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak implementovat logiku zpracování chyb
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ed6620333382a1e43ee1b38a009c91e8d7038233
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cb4f6827f58b882b8b1ae0ef8c093a09e090f17a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476937"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850699"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Zpracování chyb v grafických runboocích Azure Automation
 
@@ -26,11 +26,11 @@ Runbooky by měly zahrnovat zpracování chyb. K ověření výstupu aktivity ne
 
 Během provádění se mohou objevit dva typy chyb PowerShellu – ukončující nebo neukončující. Rozdíly mezi ukončujícími a neukončujícími chybami jsou následující:
 
-* **Ukončující chyba**: Závažná chyba během provádění, která úplně zastaví příkaz (nebo provádění skriptu). Příkladem jsou neexistující rutiny, chyby syntaxe znemožňující spuštění rutiny nebo jiné závažné chyby.
+* **Ukončující chyba:** závažná chyba během provádění, která úplně zastaví příkaz (nebo provádění skriptu). Příkladem jsou neexistující rutiny, chyby syntaxe znemožňující spuštění rutiny nebo jiné závažné chyby.
 
-* **Neukončující chyba**: Méně závažná chyba, která umožňuje provádění pokračovat bez ohledu na selhání. Jedná se například o operační chyby, jako je nenalezení souboru nebo problémy s oprávněním.
+* **Neukončující chyba:** méně závažná chyba, která umožňuje pokračovat v provádění bez ohledu na selhání. Jedná se například o operační chyby, jako je nenalezení souboru nebo problémy s oprávněním.
 
-Grafické runbooky Azure Automation byly vylepšeny s o možnost zahrnovat zpracování chyb. Nyní můžete přepnout výjimky na neukončující chyby a vytvořit chybová propojení mezi aktivitami. Díky tomu může autor runbooku zachytávat chyby a spravovat očekávané i neočekávané situace.  
+Azure Automation grafické Runbooky byly vylepšeny díky možnosti zahrnovat zpracování chyb. Nyní můžete přepnout výjimky na neukončující chyby a vytvořit chybová propojení mezi aktivitami. Tento proces umožňuje autorovi Runbooku zachytit chyby a spravovat realizované nebo neočekávané podmínky.  
 
 ## <a name="when-to-use-error-handling"></a>Kdy použít zpracování chyb
 
@@ -64,7 +64,7 @@ Aktivity **Get-AutomationVariable** a **Start-AzureRmVm** jsou nakonfigurované,
 Chybová propojení vedou z těchto aktivit do jediné aktivity **Error Management** (aktivita s kódem). V této aktivitě je nakonfigurovaný jednoduchý výraz PowerShellu, který pomocí klíčového slova *Throw* zastaví zpracování a prostřednictvím *$Error.Exception.Message* získá zprávu s popisem aktuální výjimky.<br><br> ![Příklad kódu pro zpracování chyb v runbooku Automation](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o propojeních a typech propojení v grafických runboocích najdete v tématu [Grafické vytváření obsahu v Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
 

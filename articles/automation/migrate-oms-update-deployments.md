@@ -1,79 +1,79 @@
 ---
-title: Proveďte migraci vašich nasazení aktualizace OMS do Azure
-description: Tento článek popisuje, jak migrovat vaše stávající nasazení aktualizací OMS do Azure
+title: Migrace nasazení aktualizace OMS do Azure
+description: Tento článek popisuje, jak migrovat existující nasazení aktualizací OMS do Azure.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2cc05dc0970211b066d9e431cc7aba06cbd126eb
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 08b3f11f3e44c6580df9942aab2a890115c79ba3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478310"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849492"
 ---
-# <a name="migrate-your-oms-update-deployments-to-azure"></a>Proveďte migraci vašich nasazení aktualizace OMS do Azure
+# <a name="migrate-your-oms-update-deployments-to-azure"></a>Migrace nasazení aktualizace OMS do Azure
 
-Na portálu Operations Management Suite (OMS), která má být [zastaralé](../azure-monitor/platform/oms-portal-transition.md). Všechny funkce, která byla dostupná na portálu OMS Update Management je k dispozici na webu Azure Portal. Tento článek obsahuje informace, které potřebujete k migraci na webu Azure portal.
+Portál Operations Management Suite (OMS) je [zastaralý](../azure-monitor/platform/oms-portal-transition.md). Všechny funkce, které byly k dispozici na portálu OMS pro Update Management, jsou k dispozici v Azure Portal. Tento článek poskytuje informace, které potřebujete k migraci na Azure Portal.
 
-## <a name="key-information"></a>Informace o klíči
+## <a name="key-information"></a>Hlavní informace
 
-* Existující nasazení budou i nadále fungovat. Jakmile znovu vytvořit nasazení v Azure můžete odstranit staré nasazení z OMS.
-* Všechny existující funkce, které jste měli v OMS jsou dostupné v Azure, další informace o správě aktualizací najdete v tématu [přehled správy aktualizací](automation-update-management.md).
+* Existující nasazení budou fungovat i nadále. Po opětovném vytvoření nasazení v Azure můžete odstranit staré nasazení z OMS.
+* Všechny existující funkce v OMS jsou k dispozici v Azure. Další informace o Update Management najdete v tématu [Update Management Overview](automation-update-management.md).
 
-## <a name="access-the-azure-portal"></a>Přístup k webu Azure portal
+## <a name="access-the-azure-portal"></a>Přístup k Azure Portal
 
-Z pracovního prostoru OMS, klikněte na tlačítko **Open in Azure**. Umožňuje přejít do pracovního prostoru Log Analytics, která používá OMS.
+V pracovním prostoru OMS klikněte na **otevřít v Azure**. Tím přejdete do pracovního prostoru Log Analytics, který používá OMS.
 
 ![Otevřít v Azure – portál OMS](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
-Na webu Azure Portal, klikněte na tlačítko **účtu Automation**
+V Azure Portal klikněte na **účet Automation** .
 
 ![Protokoly služby Azure Monitor](media/migrate-oms-update-deployments/log-analytics.png)
 
-Ve vašem účtu Automation, klikněte na tlačítko **Update Management** otevřete správu aktualizací.
+V účtu Automation kliknutím na **Update Management** otevřete Update Management.
 
-![Update Management](media/migrate-oms-update-deployments/azure-automation.png)
+![Správa aktualizací](media/migrate-oms-update-deployments/azure-automation.png)
 
-V budoucnu můžete přejít přímo na webu Azure portal, v části **všechny služby**vyberte **účty Automation** pod **nástroje pro správu**, vyberte příslušné služby Automation Účet a klikněte na tlačítko **Update Management**.
+V budoucnu můžete přejít přímo na Azure Portal v části **všechny služby**vyberte **účty Automation** v části **Nástroje pro správu**, vyberte příslušný účet Automation a klikněte na **Update Management**.
 
 ## <a name="recreate-existing-deployments"></a>Znovu vytvořit existující nasazení
 
-Máte všechna nasazení aktualizací, které jsou vytvořené na portálu OMS [uložené výsledky hledání](../azure-monitor/platform/computer-groups.md) označované také jako skupinu počítačů, se stejným názvem jako nasazení aktualizace, která existuje. Uložené výsledky hledání obsahuje seznam počítačů, které bylo naplánováno v nasazení aktualizací.
+Všechna nasazení aktualizací vytvořená na portálu OMS obsahují [uložená hledání](../azure-monitor/platform/computer-groups.md) , označované také jako skupina počítačů se stejným názvem, jako má nasazení aktualizace, které existuje. Uložené výsledky hledání obsahují seznam počítačů, které byly naplánovány v nasazení aktualizace.
 
-![Update Management](media/migrate-oms-update-deployments/oms-deployment.png)
+![Správa aktualizací](media/migrate-oms-update-deployments/oms-deployment.png)
 
-Pokud chcete použít tuto existující uložené výsledky hledání, postupujte podle těchto kroků:
+Pokud chcete použít toto existující uložené hledání, postupujte takto:
 
-Chcete-li vytvořit nové aktualizace nasazení, přejděte na portál Azure Portal, vyberte účet Automation, který se používá a klikněte na tlačítko **Update Management**. Klikněte na tlačítko **naplánovat nasazení aktualizací**.
+Pokud chcete vytvořit nové nasazení aktualizace, přejděte na Azure Portal, vyberte účet Automation, který se používá, a klikněte na **Update Management**. Klikněte na **naplánovat nasazení aktualizace**.
 
-![Naplánovat nasazení aktualizací](media/migrate-oms-update-deployments/schedule-update-deployment.png)
+![Naplánovat nasazení aktualizace](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-**Nové nasazení aktualizace** se otevře podokno. Zadejte hodnoty vlastností popsaných v následující tabulce a potom klikněte na tlačítko **vytvořit**:
+Otevře se **nové podokno nasazení aktualizace** . Zadejte hodnoty vlastností popsaných v následující tabulce a pak klikněte na **vytvořit**:
 
-Pro počítače, které chcete aktualizovat, vyberte uložené výsledky hledání používá existující nasazení OMS.
+Pro počítače, které se mají aktualizovat, vyberte uložené hledání používané existujícím nasazením OMS.
 
-| Vlastnost | Description |
+| Vlastnost | Popis |
 | --- | --- |
-|Název |Jedinečný název pro identifikaci nasazení aktualizace. |
+|Name (Název) |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Vyberte **Linux** nebo **Windows**.|
-|Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../azure-monitor/platform/computer-groups.md) |
-|Klasifikacích aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS nepodporuje to úprav.|
-|Aktualizace k vyloučení|Zadejte aktualizace k vyloučení. Pro Windows, zadejte článku znalostní BÁZE bez **KB** předponu. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
-|Nastavení plánu|Vyberte čas spuštění a pak vyberte buď **jednou** nebo **periodický** opakování. | 
-| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut nebo déle než 6 hodin. |
-| Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače.</br>Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
+|Počítače k aktualizaci |V rozevíracím seznamu vyberte uložené hledání, importovanou skupinu nebo vyberte možnost počítač a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md) |
+|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS tento seznam nepodporuje.|
+|Aktualizace k vyloučení|Zadejte aktualizace, které chcete vyloučit. Pro Windows zadejte článek znalostní báze bez předpony **KB** . Pro Linux zadejte název balíčku nebo použijte zástupný znak.  |
+|Nastavení plánu|Vyberte čas, kdy se má spustit, a potom pro opakování vyberte buď **jednou** , nebo **opakovanou** . | 
+| Časové období údržby |Počet minut, po které se nastaví aktualizace. Hodnota nesmí být kratší než 30 minut nebo více než 6 hodin. |
+| Restartovat ovládací prvek| Určuje, jak by se mělo zpracovat restartování.</br>Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
-Klikněte na tlačítko **naplánovaná nasazení aktualizací** zobrazíte stav nasazení aktualizace nově vytvořený.
+Kliknutím na **plánovaná nasazení aktualizací** zobrazíte stav nově vytvořeného nasazení aktualizace.
 
 ![nové nasazení aktualizace](media/migrate-oms-update-deployments/new-update-deployment.png)
 
-Jak je uvedeno nahoře, jakmile se vaše nová nasazení jsou nakonfigurované na webu Azure portal, můžete existující nasazení odebere z portálu OMS.
+Jak už bylo zmíněno dříve, po konfiguraci nových nasazení prostřednictvím Azure Portal můžete existující nasazení odebrat z portálu OMS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o správě aktualizací v Azure najdete v tématu [Update Management](automation-update-management.md)
+Další informace o Update Management v Azure najdete v článku [Update Management](automation-update-management.md)

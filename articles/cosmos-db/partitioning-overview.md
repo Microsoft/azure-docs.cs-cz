@@ -1,19 +1,19 @@
 ---
-title: Vytváření oddílů v Azure Cosmos DB
-description: Přehled dělení v Azure Cosmos DB.
+title: Dělení ve službě Azure Cosmos DB
+description: Přečtěte si o dělení Azure Cosmos DB, osvědčených postupech při volbě klíče oddílu a o tom, jak spravovat logické oddíly.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 38b4e4c2541bf30bd9c95d9c0ec61779b0d1d7bb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 12/02/2019
+ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753248"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871988"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Vytváření oddílů v Azure Cosmos DB
+# <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 
 Azure Cosmos DB používá dělení ke škálování jednotlivých kontejnerů v databázi tak, aby splňovaly požadavky vaší aplikace na výkon. Při dělení jsou položky v kontejneru rozděleny do samostatných dílčích množin nazývaných *logické oddíly*. Logické oddíly se vytvoří na základě hodnoty *klíče oddílu* , který je spojený s každou položkou v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
 

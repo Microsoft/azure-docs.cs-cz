@@ -2,28 +2,24 @@
 title: Postup při integraci s Azure Active Directory | Microsoft Docs
 description: Seznamte se s výhodami integrace vaší aplikace s Azure Active Directory a získejte prostředky pro funkce, jako je zjednodušené přihlašování, Správa identit, vícefaktorové ověřování a řízení přístupu.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/08/2019
 ms.author: ryanwi
-ms.reviewer: bryanla
+ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2815fbebd54a1e373aa8b3058f85d092c0bb098f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374038"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844885"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 

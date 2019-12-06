@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f87f1b2561b65590dfe29d7d2c8d1318e3d35e1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381859"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848438"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k neheslovým klíčům zabezpečení (Preview)
 
@@ -31,7 +31,7 @@ Tento dokument se zaměřuje na povolení ověřování pomocí hesla založené
 
 ## <a name="requirements"></a>Požadavky
 
-- [Multi-Factor Authentication Azure](howto-mfa-getstarted.md)
+- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md)
 - Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
 - Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší * *
@@ -50,7 +50,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory** > **zabezpečení** > **metody ověřování** > **zásady ověřování (Preview)** .
 1. V části **klíč zabezpečení FIDO2**metody vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne

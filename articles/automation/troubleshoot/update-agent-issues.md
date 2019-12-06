@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: bb5b5214c96162147e1bd005e994ec04e0a1ddb7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763653"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850121"
 ---
 # <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Vysvětlení stavu Windows Hybrid Runbook Worker v Update Management
 
@@ -46,7 +46,7 @@ Po dokončení se na stránce zobrazí výsledky. V sekcích kontroly se zobrazu
 
 ![Řešení potíží s aktualizacemi kontrol agenta](../media/update-agent-issues/update-agent-checks.png)
 
-## <a name="prerequisite-checks"></a>Kontroly požadovaných součástí
+## <a name="prerequisite-checks"></a>Kontroly splnění podmínek
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -61,27 +61,27 @@ Při kontrole operačního systému se ověří, zda Hybrid Runbook Worker použ
 
 .NET Framework zkontroluje, jestli je v systému minimálně nainstalovaná [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) .
 
-### <a name="wmf-51"></a>WMF 5,1
+### <a name="wmf-51"></a>WMF 5.1
 
 Po kontrole WMF se ověří, že systém má požadovanou verzi rozhraní Windows Management Framework (WMF) – [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
 
-### <a name="tls-12"></a>TLS 1,2
+### <a name="tls-12"></a>TLS 1.2
 
 Tato kontrolu určuje, jestli k šifrování komunikace používáte protokol TLS 1,2. Tato platforma už nepodporuje protokol TLS 1,0. Doporučujeme, aby klienti používali protokol TLS 1,2 ke komunikaci s Update Management.
 
-## <a name="connectivity-checks"></a>Kontroly připojení
+## <a name="connectivity-checks"></a>Kontrola připojení k
 
-### <a name="registration-endpoint"></a>Registrační koncový bod
+### <a name="registration-endpoint"></a>Koncový bod registrace
 
 Tato kontrolu určuje, zda může agent správně komunikovat se službou agenta.
 
-Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid Runbook Worker komunikoval s koncovým bodem registrace. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning).
+Konfigurace proxy serveru a brány firewall musí umožňovat Hybrid Runbook Worker agenta pro komunikaci s koncovým bodem registrace. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="operations-endpoint"></a>Koncový bod operací
+### <a name="operations-endpoint"></a>Operace koncového bodu
 
 Tato kontrolu určuje, zda může agent správně komunikovat se službou data runtime úlohy.
 
-Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid Runbook Worker komunikoval se službou data runtime úlohy. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning).
+Konfigurace proxy serveru a brány firewall musí umožňovat Hybrid Runbook Worker agenta ke komunikaci se službou Data modulu Runtime úlohy. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="vm-service-health-checks"></a>Kontroly stavu služby virtuálních počítačů
 

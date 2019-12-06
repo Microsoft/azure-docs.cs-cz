@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: dotazování s SQL v Azure Cosmos DB?'
-description: 'Kurz: Naučte se dotazovat se na SQL v Azure Cosmos DB'
+description: 'Kurz: Naučte se dotazovat se na dotazy SQL v Azure Cosmos DB pomocí dotazů THW Playground'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 295b4168d858238a94e737b1abc3a38e2419370f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720735"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870067"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -63,7 +63,7 @@ Dotazy můžete spouštět pomocí Průzkumníka dat na webu Azure Portal, prost
 Další informace o dotazech SQL najdete tady:
 * [Dotazy a syntaxe SQL](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Něco z toho nemáte? Dokončete [pětiminutový rychlý start](create-cosmosdb-resources-portal.md).
 

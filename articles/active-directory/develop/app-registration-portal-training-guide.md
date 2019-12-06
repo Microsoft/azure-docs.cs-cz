@@ -1,31 +1,27 @@
 ---
-title: Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací v Azure Portal
+title: Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací na webu Azure Portal
 titleSuffix: Microsoft identity platform
 description: Úvod k novému prostředí pro registraci aplikací v Azure Portal
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/8/2019
 ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013028"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844512"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací v Azure Portal
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací na webu Azure Portal
 
 Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) v Azure Portal přináší mnoho vylepšení. Pokud jste obeznámeni s prostředím portál pro registraci aplikací (apps.dev.microsoft.com) pro registraci nebo správu sblížených aplikací, které se označují jako staré, pomůže vám tato výuková příručka začít používat nové prostředí.
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76aa0ca7cbda3f2db564c220ba12fec60f60509
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381862"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848472"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -29,7 +29,7 @@ Namísto zobrazení výzvy k zadání hesla po zadání uživatelského jména s
 > [!NOTE]
 > Tato funkce byla v aplikaci Microsoft Authenticator od března 2017, takže pokud je zásada pro adresář povolená, můžou se uživatelé setkat okamžitě a zobrazit chybovou zprávu, pokud je zásada nepovolila. Mějte na paměti informace a připravte uživatele na tuto změnu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Multi-Factor Authentication s nabízenými oznámeními povolenými jako metoda ověřování 
 - Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.

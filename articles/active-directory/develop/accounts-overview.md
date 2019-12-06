@@ -2,27 +2,24 @@
 title: Účty a profily tenantů Microsoft Identity Platform (Android) | Azure
 description: Přehled účtů Microsoft Identity Platform pro Android
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7beab6759524037f86c83429644c1bb1fffe4d07
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 9af7d8c5a1793b34dd609c2cfd68fb468884ef8f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679838"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845718"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Účty a profily tenantů (Android)
 
@@ -32,10 +29,10 @@ Rozhraní API knihovny Microsoft Authentication Library (MSAL) nahrazuje pojem *
 
 Účet na platformě Microsoft identity se skládá z těchto součástí:
 
-  - Jedinečný identifikátor.
-  - Jedna nebo více přihlašovacích údajů sloužících k demonstrování vlastnictví a řízení účtu.
-  - Jeden nebo více profilů sestávající z atributů, jako například:
-    - Obrázek, křestní jméno, název rodiny, název, umístění kanceláře
+- Jedinečný identifikátor.  
+- Jedna nebo více přihlašovacích údajů sloužících k demonstrování vlastnictví a řízení účtu.
+- Jeden nebo více profilů sestávající z atributů, jako například:
+  - Obrázek, křestní jméno, název rodiny, název, umístění kanceláře
 - Účet má zdroj autority nebo systému záznamu. Toto je systém, ve kterém je účet vytvořen a kde jsou uloženy přihlašovací údaje přidružené k tomuto účtu. V systémech s více klienty, jako je Microsoft Identity Platform, je systém záznamů `tenant`, kde byl účet vytvořen. Tento tenant se také označuje jako `home tenant`.
 - Účty na platformě Microsoft identity mají následující systémy záznamů:
   - Azure Active Directory, včetně Azure Active Directory B2C.
@@ -49,7 +46,6 @@ Rozhraní API knihovny Microsoft Authentication Library (MSAL) nahrazuje pojem *
   - Tento místní záznam, který je reprezentace účtu, je svázán s původním účtem.
   - MSAL tento místní záznam zpřístupňuje jako `Tenant Profile`.
   - Profil tenanta může mít různé atributy, které jsou vhodné pro místní kontext, jako je například název úlohy, umístění kanceláře, kontaktní údaje atd.
- 
 - Vzhledem k tomu, že účet může být přítomen v jednom nebo více klientech, může mít účet více než jeden profil.
 
 > [!NOTE]
@@ -110,7 +106,7 @@ Jak už bylo zmíněno dříve, každý tenant, ve kterém existuje účet, mů�
 
 I když může být účet členem nebo hostem ve více organizacích, služba MSAL nedotazuje službu, aby získala seznam tenantů, kterých je účet členem. Místo toho MSAL sestaví seznam tenantů, ve kterých se účet nachází, v důsledku požadavků na tokeny, které byly provedeny.
 
-Deklarace identity vystavené u objektu účtu jsou vždycky deklarace identity z/{Authority} ' Home tenant ' pro účet. Pokud se tento účet nepoužil k vyžádání tokenu pro svého domovského tenanta, MSAL nemůže poskytnout deklarace prostřednictvím objektu Account.  Příklad:
+Deklarace identity vystavené u objektu účtu jsou vždycky deklarace identity z/{Authority} ' Home tenant ' pro účet. Pokud se tento účet nepoužil k vyžádání tokenu pro svého domovského tenanta, MSAL nemůže poskytnout deklarace prostřednictvím objektu Account.  Například:
 
 ```java
 // Psuedo Code
@@ -130,7 +126,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Přístup k deklaracím profilů tenanta
 
-Chcete-li získat přístup k deklaracím účtu, jak se zobrazují v jiných klientech, musíte nejprve přetypovat objekt Account na `IMultiTenantAccount`. Všechny účty můžou být víceklientské, ale počet profilů klientů dostupných prostřednictvím MSAL je založený na tom, na kterých klientech jste požádali o tokeny pomocí aktuálního účtu.  Příklad:
+Chcete-li získat přístup k deklaracím účtu, jak se zobrazují v jiných klientech, musíte nejprve přetypovat objekt Account na `IMultiTenantAccount`. Všechny účty můžou být víceklientské, ale počet profilů klientů dostupných prostřednictvím MSAL je založený na tom, na kterých klientech jste požádali o tokeny pomocí aktuálního účtu.  Například:
 
 ```java
 // Psuedo Code
@@ -145,7 +141,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 Aktualizace tokenů pro účet se nesdílí mezi B2C zásadami. V důsledku toho není možné použít tokeny jednotného přihlašování. Neznamená to, že jednotné přihlašování není možné. To znamená, že jednotné přihlašování musí používat interaktivní prostředí, ve kterém je soubor cookie k dispozici pro povolení jednotného přihlašování.
 
-To také znamená, že pokud získáte tokeny pomocí různých zásad B2C, považují se za samostatné účty – každý s vlastním identifikátorem. Pokud chcete použít účet k vyžádání tokenu pomocí `acquireTokenSilent`, pak musíte vybrat účet ze seznamu účtů, které odpovídají zásadám, které používáte s požadavkem na token. Příklad:
+To také znamená, že pokud získáte tokeny pomocí různých zásad B2C, považují se za samostatné účty – každý s vlastním identifikátorem. Pokud chcete použít účet k vyžádání tokenu pomocí `acquireTokenSilent`, pak musíte vybrat účet ze seznamu účtů, které odpovídají zásadám, které používáte s požadavkem na token. Například:
 
 ```java
 // Get Account For Policy

@@ -5,17 +5,17 @@ keywords: PowerShell DSC, konfigurace požadovaného stavu, PowerShell DSC Azure
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ed18f8a8bbd8bd323dec54ca3f700c7ce168dde
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 787cade13a0636bb25afa1d4043a977f512484f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231634"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850886"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
@@ -41,7 +41,7 @@ Z Azure Portal nebo z PowerShellu můžete spravovat všechny konfigurace DSC, p
 
 Uzly spravované pomocí konfigurace stavu Azure Automation odesílají podrobné údaje o stavu vytváření sestav na integrovaný server vyžádané replikace. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby odesílala tato data do pracovního prostoru Log Analytics. Informace o tom, jak odeslat údaje o stavu konfigurace stavu do pracovního prostoru Log Analytics, najdete v tématu [předávat data pro sestavy o stavu dopřed Azure Automation do protokolů Azure monitor](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Při použití konfigurace stavu Azure Automation (DSC) Vezměte v úvahu následující požadavky.
 
@@ -54,7 +54,7 @@ Pro uzly s Windows se podporují tyto verze:
 - Windows Server 2012R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
-- Windows 10
+- Windows 10
 - Windows 8.1
 - Windows 7
 
@@ -101,17 +101,17 @@ Pokud máte účet Automation, který je definovaný pro konkrétní oblast, mů
 | --- | --- |
 | Středozápadní USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| Východní USA   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| USA – východ   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | Východ USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Střední Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
+| Kanada – střed |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Západní Evropa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Severní Evropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Jihovýchodní Asie |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Střed Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
+| Střední Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Austrálie – jihovýchod |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Spojené království – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| USA – Virginie | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služby Stažení [softwaru ve službě](https://www.microsoft.com/download/details.aspx?id=41653) stažení softwaru.
 

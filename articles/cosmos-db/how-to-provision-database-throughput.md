@@ -1,17 +1,17 @@
 ---
 title: Zřízení propustnosti databáze ve službě Azure Cosmos DB
-description: Zjistěte, jak zřídit propustnost na úrovni databáze ve službě Azure Cosmos DB.
+description: Naučte se zřizovat propustnost na úrovni databáze v Azure Cosmos DB pomocí Azure Portal, CLI, PowerShellu a různých dalších sad SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 64a8bc9f4c9f5192dad22cb55cb4d2c4816d4fa5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8b64d933057b3ddb07f5f99889c7d7c23c74f545
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575142"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873654"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Zřízení propustnosti pro databázi v Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje, jak zřídit propustnost pro databázi v Azure Cosmo
 
 ### <a id="portal-sql"></a>Rozhraní SQL (Core) API
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 

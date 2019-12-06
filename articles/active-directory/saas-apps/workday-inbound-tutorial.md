@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80d356426fe312708d64cc4284dbb1fd925e47c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233333"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849326"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -93,7 +93,7 @@ Tato část se zabývá následujícími aspekty plánování:
 * [Integrace s více doménami služby Active Directory](#integrating-with-multiple-active-directory-domains)
 * [Plánování mapování a transformací atributů uživatele z Workday na službu Active Directory](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -154,7 +154,7 @@ V tomto scénáři máte jednoho tenanta Workday a chcete zřídit uživatele na
 |   |   |
 | - | - |
 | Ne. zřizování agentů pro místní nasazení | 3 (pro zajištění vysoké dostupnosti a převzetí služeb při selhání) |
-| Ne. Aplikace pro zřizování uživatelů z Workday do služby AD pro konfiguraci v Azure Portal | 1 |
+| Ne. Aplikace pro zřizování uživatelů z Workday do služby AD pro konfiguraci v Azure Portal | 1\. místo |
 
   ![Scénář 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -236,16 +236,16 @@ Běžným požadavkem na všechny konektory zřizování Workday je to, že vyž
 
 **Postup vytvoření uživatele Integration System:**
 
-1. Přihlaste se k tenantovi Workday pomocí účtu správce. V **aplikaci Workday**zadejte do vyhledávacího pole vytvořit uživatele a pak klikněte na **vytvořit uživatele Integration System**.
+1. Přihlaste se ke svému tenantovi Workday pomocí účtu správce. V **aplikaci Workday**zadejte do vyhledávacího pole vytvořit uživatele a pak klikněte na **vytvořit uživatele Integration System**.
 
-    ![Vytvořit uživatele](./media/workday-inbound-tutorial/wd_isu_01.png "Vytvořit uživatele")
+   ![Vytvořit uživatele](./media/workday-inbound-tutorial/wd_isu_01.png "Vytvořit uživatele")
 2. Dokončete úkol **vytvořit uživatel Integration System** zadáním uživatelského jména a hesla pro nového uživatele integračního systému.  
   
-* Nechejte možnost **vyžadovat nové heslo při příštím přihlášení** nezaškrtnutou, protože se tento uživatel přihlašuje programově.
-* Ponechte **časový limit relace** s výchozí hodnotou 0, což zabrání předčasně vypršení relace uživatele.
-* Vyberte možnost **Nepovolit relace uživatelského rozhraní** , protože poskytuje přidanou vrstvu zabezpečení, která brání uživateli s heslem systému Integration v přihlášení do Workday.
+   * Nechejte možnost **vyžadovat nové heslo při příštím přihlášení** nezaškrtnutou, protože se tento uživatel přihlašuje programově.
+   * Ponechte **časový limit relace** s výchozí hodnotou 0, což zabrání předčasně vypršení relace uživatele.
+   * Vyberte možnost **Nepovolit relace uživatelského rozhraní** , protože poskytuje přidanou vrstvu zabezpečení, která brání uživateli s heslem systému Integration v přihlášení do Workday.
 
-    ![Vytvořit uživatele Integration System](./media/workday-inbound-tutorial/wd_isu_02.png "Vytvořit uživatele Integration System")
+   ![Vytvořit uživatele Integration System](./media/workday-inbound-tutorial/wd_isu_02.png "Vytvořit uživatele Integration System")
 
 ### <a name="creating-an-integration-security-group"></a>Vytvoření skupiny zabezpečení integrace
 
@@ -292,7 +292,7 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
 
      ![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_08.png "Zásady zabezpečení domény") 
 
-     Klikněte na tlačítko **OK**.
+     Klikněte na **OK**.
 
 3. V sestavě, která se zobrazí, vyberte tři tečky (...), které se zobrazí vedle **zřizování externího účtu** , a klikněte na možnost nabídky **doména-> upravit oprávnění zásady zabezpečení** .
 
@@ -308,7 +308,7 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
 
 6. Opakujte kroky 3-5 výše pro každý z těchto zbývajících zásad zabezpečení:
 
-   | Funkce | Zásady zabezpečení domény |
+   | Operace | Zásady zabezpečení domény |
    | ---------- | ---------- |
    | Získat a umístit | Data pracovního procesu: sestavy veřejného pracovního procesu |
    | Získat a umístit | Data osob: pracovní kontaktní informace |
@@ -356,20 +356,44 @@ V tomto kroku udělíte oprávnění "zabezpečení obchodních procesů" pro da
 
 Tato část popisuje kroky pro zřizování uživatelských účtů z Workday do jednotlivých domén služby Active Directory v rámci rozsahu integrace.
 
-* [Instalace a konfigurace místních agentů zřizování](#part-1-install-and-configure-on-premises-provisioning-agents)
-* [Přidání aplikace zřizovacího konektoru a vytvoření připojení k Workday](#part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday)
-* [Konfigurace mapování atributů](#part-3-configure-attribute-mappings)
+* [Přidání aplikace zřizovacího konektoru a stažení agenta zřizování](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
+* [Instalace a konfigurace místních agentů zřizování](#part-2-install-and-configure-on-premises-provisioning-agents)
+* [Konfigurace připojení k Workday a službě Active Directory](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)
+* [Konfigurace mapování atributů](#part-4-configure-attribute-mappings)
 * [Povolení a spuštění zřizování uživatelů](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>Část 1: instalace a konfigurace místních agentů zřizování
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>Část 1: Přidání aplikace konektoru pro zřizování a stažení agenta zřizování
 
-Aby bylo možné zřídit místní službu Active Directory, musí být agent nainstalovaný na serveru, který má .NET 4.7.1 + Framework a síťový přístup k požadovaným doménám služby Active Directory.
+**Konfigurace pracovního dne pro zřizování služby Active Directory:**
+
+1. Přejděte na <https://portal.azure.com>.
+
+2. V levém navigačním panelu vyberte **Azure Active Directory**
+
+3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
+
+4. Vyberte **Přidat aplikaci**a vyberte kategorii **vše** .
+
+5. Vyhledejte ve **službě Active Directory zřizování Workday**a přidejte tuto aplikaci z galerie.
+
+6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování** .
+
+7. Změnit režim **zřizování** na **automaticky**
+
+8. Pokud chcete stáhnout agenta pro zřizování, klikněte na zobrazený informační banner. 
+
+   ![Stáhnout agenta](./media/workday-inbound-tutorial/pa-download-agent.png "Stáhnout agenta – obrazovka")
+
+
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Část 2: instalace a konfigurace místních agentů zřizování
+
+Aby bylo možné zřídit místní službu Active Directory, musí být agent zřizování nainstalován na serveru, který má .NET 4.7.1 + Framework a síťový přístup k požadovaným doménám služby Active Directory.
 
 > [!TIP]
 > Verzi rozhraní .NET Framework na serveru můžete ověřit podle [zde](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)uvedených pokynů.
 > Pokud server nemá nainstalované rozhraní .NET 4.7.1 nebo vyšší, můžete si ho stáhnout [odsud.](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)  
 
-Po nasazení .NET 4.7.1 + si můžete stáhnout **[místního agenta pro zřizování](https://go.microsoft.com/fwlink/?linkid=847801)** a postupovat podle níže uvedených kroků k dokončení konfigurace agenta.
+Přeneste stažený instalační program agenta na hostitele serveru a podle níže uvedených kroků dokončete konfiguraci agenta.
 
 1. Přihlaste se k systému Windows Server, na který chcete nainstalovat nového agenta.
 
@@ -420,25 +444,12 @@ Po nasazení .NET 4.7.1 + si můžete stáhnout **[místního agenta pro zřizov
   
    ![Služby](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Část 2: Přidání aplikace zřizovacího konektoru a vytvoření připojení k Workday
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>Část 3: v aplikaci pro zřizování nakonfigurujte připojení k Workday a službě Active Directory.
+V tomto kroku navážeme připojení k Workday a službě Active Directory v Azure Portal. 
 
-**Konfigurace pracovního dne pro zřizování služby Active Directory:**
+1. V Azure Portal se vraťte do pracovního dne do aplikace Active Directory pro zřizování uživatelů vytvořené v [části 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent) .
 
-1. Přejděte na <https://portal.azure.com>.
-
-2. V levém navigačním panelu vyberte **Azure Active Directory**
-
-3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
-
-4. Vyberte **Přidat aplikaci**a vyberte kategorii **vše** .
-
-5. Vyhledejte ve **službě Active Directory zřizování Workday**a přidejte tuto aplikaci z galerie.
-
-6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování** .
-
-7. Změnit režim **zřizování** na **automaticky**
-
-8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
+1. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 
    * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu Integration System v Workday s názvem domény tenanta, který je připojený. Měl by vypadat nějak takto: **username\@tenant_name**
 
@@ -461,11 +472,11 @@ Po nasazení .NET 4.7.1 + si můžete stáhnout **[místního agenta pro zřizov
 
    * Klikněte na tlačítko **Testovat připojení** . Pokud je test připojení úspěšný, klikněte na tlačítko **Uložit** v horní části. Pokud se to nepovede, dvakrát Ověřte platnost přihlašovacích údajů pracovního dne a přihlašovacích údajů služby AD nakonfigurovaných v instalaci agenta.
 
-     ![portál Azure](./media/workday-inbound-tutorial/wd_1.png)
+     ![Portál Azure](./media/workday-inbound-tutorial/wd_1.png)
 
    * Po úspěšném uložení přihlašovacích údajů se v oddílu **mapování** zobrazí výchozí mapování **synchronizace pracovních procesů v místní službě Active Directory** .
 
-### <a name="part-3-configure-attribute-mappings"></a>Část 3: Konfigurace mapování atributů
+### <a name="part-4-configure-attribute-mappings"></a>4\. část: Konfigurace mapování atributů
 
 V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday natékat do služby Active Directory.
 
@@ -526,7 +537,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
 1. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
 
-   ![portál Azure](./media/workday-inbound-tutorial/wd_2.png)
+   ![Portál Azure](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Níže jsou uvedeny příklady mapování atributů mezi Workday a službou Active Directory s některými běžnými výrazy.
 
@@ -538,28 +549,28 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
 | ATRIBUT WORKDAY | ATRIBUT SLUŽBY ACTIVE DIRECTORY |  ID SPÁROVÁNÍ? | VYTVOŘIT NEBO AKTUALIZOVAT |
 | ---------- | ---------- | ---------- | ---------- |
-| **WorkerID**  |  Zaměstnance | **Ano** | Zapsáno pouze při vytvoření |
+| **WorkerID**  |  ID zaměstnance | **Ano** | Zapsáno pouze při vytvoření |
 | **PreferredNameData**    |  CN    |   |   Zapsáno pouze při vytvoření |
 | **SelectUniqueValue (Join ("\@"; Join ("."; \[FirstName\]; \[LastName\]), "contoso.com"), Join ("\@", Join (".", Mid (\[FirstName\]; 1; 1), \[LastName\]), "contoso.com"), Join ("\@", Join (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName (Hlavní název uživatele)     |     | Zapsáno pouze při vytvoření 
-| **Replace (Mid (Replace (\[UserID\];;; "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\]) ",," ",,), 1, 20),," ([\\\\.)\*\$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapsáno pouze při vytvoření |
+| **Nahraďte(Mid(Nahraďte(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapsáno pouze při vytvoření |
 | **Switch (\[aktivní\], "0", "true", "1", "NEPRAVDA")** |  accountDisabled      |     | Vytvořit a aktualizovat |
-| **FirstName**   | givenName       |     |    Vytvořit a aktualizovat |
-| **Polím**   |   sériové číslo   |     |  Vytvořit a aktualizovat |
+| **Jméno**   | givenName       |     |    Vytvořit a aktualizovat |
+| **LastName**   |   sériové číslo   |     |  Vytvořit a aktualizovat |
 | **PreferredNameData**  |  displayName |     |   Vytvořit a aktualizovat |
-| **Podnikový**         | Společnosti   |     |  Vytvořit a aktualizovat |
+| **Společnost**         | Společnosti   |     |  Vytvořit a aktualizovat |
 | **SupervisoryOrganization**  | Oddělení  |     |  Vytvořit a aktualizovat |
-| **ManagerReference**   | Správce  |     |  Vytvořit a aktualizovat |
-| **BusinessTitle**   |  Název     |     |  Vytvořit a aktualizovat | 
+| **ManagerReference**   | manažer  |     |  Vytvořit a aktualizovat |
+| **BusinessTitle**   |  title     |     |  Vytvořit a aktualizovat | 
 | **AddressLineData**    |  streetAddress  |     |   Vytvořit a aktualizovat |
 | **Úřad**   |   l   |     | Vytvořit a aktualizovat |
 | **CountryReferenceTwoLetter**      |   co |     |   Vytvořit a aktualizovat |
 | **CountryReferenceTwoLetter**    |  c  |     |         Vytvořit a aktualizovat |
 | **CountryRegionReference** |  St     |     | Vytvořit a aktualizovat |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Vytvořit a aktualizovat |
-| **Ovládacím**  |   PSČ  |     | Vytvořit a aktualizovat |
+| **PostalCode**  |   PSČ  |     | Vytvořit a aktualizovat |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Vytvořit a aktualizovat |
 | **Fax**      | facsimileTelephoneNumber     |     |    Vytvořit a aktualizovat |
-| **Telefon**  |    Mobilní zařízení       |     |       Vytvořit a aktualizovat |
+| **Mobilní verze**  |    Mobilní zařízení       |     |       Vytvořit a aktualizovat |
 | **LocalReference** |  preferredLanguage  |     |  Vytvořit a aktualizovat |                                               
 | **Přepínač (\[obec\]OU = standardní uživatelé, OU = Uživatelé, OU = výchozí, OU = umístění, DC = contoso, DC = com,, "Praha", "OU = Standard Users, OU = Users, OU = Praha, OU = Locations = contoso, DC = com", "Austin", "OU = Standard Users, OU = Users, OU = Austin, OU = umístění, DC = contoso, DC = com", "Seattle", "OU = standardní uživatelé, OU = Uživatelé, OU = Seattle, OU = umístění, DC = contoso, DC = com", "Londýn", "OU = contoso, DC = com")**  | parentDistinguishedName     |     |  Vytvořit a aktualizovat |
 
@@ -726,7 +737,7 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
-2. Klikněte na možnost **Uložit**.
+2. Klikněte na **Uložit**.
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi pracovního dne. 
 
@@ -734,7 +745,7 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 5. Po dokončení počáteční synchronizace bude na kartě **zřizování** napsána Sestava souhrnu auditu, jak je znázorněno níže.
 
-   ![portál Azure](./media/workday-inbound-tutorial/wd_3.png)
+   ![Portál Azure](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -837,7 +848,7 @@ Při návrhu nové myšlenky prosím zkontrolujte, jestli už někdo jiný navrh
 * Přejděte na **ovládací Panel** -> **odinstalace nebo změna nabídky programu** .
 * Vyhledejte verzi odpovídající položce **Microsoft Azure AD připojení zřizování agent** .
 
-  ![portál Azure](./media/workday-inbound-tutorial/pa_version.png)
+  ![Portál Azure](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Nabízí Microsoft automatické nabízení agentů zřizování?
 
@@ -973,7 +984,7 @@ Tady je postup, jak můžete zvládnout tyto požadavky pro vytváření *CN* ne
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Společnosti | /WD: Work/FORMED: Worker_Data: Organization_Data/WD: Worker_Organization_Data [/WD: Organization_Data/WD: Organization_Type_Reference: ID [@wd:type= ' Organization_Type_ID '] = ' Company ']/wd:Organization_Reference/@wd:Descriptor |
+     | Společnost | /WD: Work/FORMED: Worker_Data: Organization_Data/WD: Worker_Organization_Data [/WD: Organization_Data/WD: Organization_Type_Reference: ID [@wd:type= ' Organization_Type_ID '] = ' Company ']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | /WD: Work/FORMED: Worker_Data: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [\: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' dohledu ']/WD: Organization_Name/text () |
   
    Potvrďte u svého pracovního týmu, že výše uvedený výraz rozhraní API je platný pro vaši konfiguraci tenanta Workday. V případě potřeby je můžete upravit, jak je popsáno v části [přizpůsobení seznamu atributů uživatele Workday](#customizing-the-list-of-workday-user-attributes).
@@ -984,10 +995,10 @@ Tady je postup, jak můžete zvládnout tyto požadavky pro vytváření *CN* ne
 
      | Atribut Workday | Výraz XPATH rozhraní API |
      | ----------------- | -------------------- |
-     | CountryReference | průchozí: Work/průchozí: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Alpha-3_Code ']/text () |
+     | CountryReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-3_Code']/text() |
      | CountryReferenceFriendly | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/@wd:Descriptor |
-     | CountryReferenceNumeric | průchozí: Work/průchozí: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Numeric-3_Code ']/text () |
-     | CountryReferenceTwoLetter | průchozí: Work/průchozí: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Alpha-2_Code ']/text () |
+     | CountryReferenceNumeric | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Numeric-3_Code']/text() |
+     | CountryReferenceTwoLetter | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-2_Code']/text() |
      | CountryRegionReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Region_Reference/@wd:Descriptor |
 
   Potvrďte u svého pracovního týmu, že výše uvedené výrazy rozhraní API jsou platné pro vaši konfiguraci tenanta Workday. V případě potřeby je můžete upravit, jak je popsáno v části [přizpůsobení seznamu atributů uživatele Workday](#customizing-the-list-of-workday-user-attributes).

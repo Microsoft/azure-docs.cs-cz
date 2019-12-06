@@ -1,17 +1,17 @@
 ---
-title: Indexování v Azure Cosmos DB
-description: Pochopte, jak funguje indexování v Azure Cosmos DB.
+title: Indexování ve službě Azure Cosmos DB
+description: Seznamte se s tím, jak indexování funguje v Azure Cosmos DB, různé druhy indexů, jako je rozsah, prostorové a složené indexy.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299781"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873620"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování v Azure Cosmos DB – přehled
 
@@ -90,7 +90,7 @@ Index **rozsahu** je založen na seřazené struktuře podobné stromové strukt
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (funguje pro `>`, `<`, `>=`, `<=`, `!=`)
+  (funguje pro `>`, `<`, `>=`, `<=``!=`)
 
 - Kontrola přítomnosti vlastnosti:
 
@@ -104,13 +104,13 @@ Index **rozsahu** je založen na seřazené struktuře podobné stromové strukt
    SELECT * FROM c WHERE STARTSWITH(c.property, "value")
    ```
 
-- dotazy `ORDER BY`:
+- `ORDER BY` dotazy:
 
    ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- dotazy `JOIN`:
+- `JOIN` dotazy:
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -120,7 +120,7 @@ Indexy rozsahu lze použít na skalárních hodnotách (String nebo Number).
 
 ### <a name="spatial-index"></a>Prostorový index
 
-**Prostorové** indexy umožňují efektivní dotazy na geoprostorové objekty, jako jsou body, čáry, mnohoúhelníky a víceřádkový mnohoúhelník. Tyto dotazy používají klíčová slova ST_DISTANCE, ST_WITHIN, ST_INTERSECTS. Níže jsou uvedeny některé příklady použití prostorového indexu:
+**Prostorové** indexy umožňují efektivní dotazy na geoprostorové objekty, jako jsou body, čáry, mnohoúhelníky a víceřádkový mnohoúhelník. Tyto dotazy používají klíčová slova ST_DISTANCE, ST_WITHIN ST_INTERSECTS. Níže jsou uvedeny některé příklady použití prostorového indexu:
 
 - Dotazy na geoprostorové vzdálenosti:
 
@@ -146,13 +146,13 @@ Prostorové indexy lze použít na správně formátovaných objektech typu [inj
 
 **Složené** indexy zvyšují efektivitu při provádění operací s více poli. Typ složeného indexu se používá pro:
 
-- `ORDER BY` dotazů na více vlastností:
+- `ORDER BY` dotazy na více vlastností:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Dotazy s filtrem a `ORDER BY`. Tyto dotazy mohou využívat složený index, pokud je vlastnost Filter přidána do klauzule `ORDER BY`.
+- Dotazy s filtrem a `ORDER BY`. Tyto dotazy mohou využít složený index, pokud je vlastnost Filter přidána do klauzule `ORDER BY`.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -180,7 +180,7 @@ Zvažte například následující dotaz: `SELECT location FROM location IN comp
 ![Odpovídá konkrétní cestě v rámci stromu.](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Klauzule `ORDER BY`, která má ORDER by jedna vlastnost, *vždy* potřebuje index rozsahu a selže, pokud cesta, na kterou odkazuje, nemá jednu. Podobně dotaz `ORDER BY`, který ORDER by má více vlastností, *vždy* potřebuje složený index.
+> Klauzule `ORDER BY`, která řadí jednu vlastnost, *vždy* potřebuje index rozsahu a selže, pokud cesta, na kterou odkazuje, nemá jednu. Podobně `ORDER BY` dotaz, který ORDER by má více vlastností, *vždy* potřebuje složený index.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,42 +1,56 @@
 ---
-title: Vytváření a Správa Azure Cosmos DB pomocí šablon Azure Resource Manager
+title: Vytvoření a Správa Azure Cosmos DB s využitím šablon Azure Resource Manager
 description: Použití šablon Azure Resource Manager k vytvoření a konfiguraci Azure Cosmos DB rozhraní API pro SQL (jádro)
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 0cb6e80bafca3bb0bfc339552facae5bd16aced4
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 62c04fed03ad2346d0f548a4a8028f2d7d6b3486
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960553"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850461"
 ---
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků rozhraní API v Azure Cosmos DB SQL (jádro) pomocí šablon Azure Resource Manager
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Správa Azure Cosmos DB prostředků rozhraní API SQL (Core) pomocí šablon Azure Resource Manager
 
-Tento článek popisuje, jak provádět různé operace pro automatizaci správy Azure Cosmos DB účtů, databází a kontejnerů pomocí šablon Azure Resource Manager. Tento článek obsahuje příklady jenom pro účty rozhraní SQL API. příklady pro jiné účty typu rozhraní API najdete v tématu: použití Azure Resource Manager šablon s rozhraním API Azure Cosmos DB pro [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)a [tabulkové](manage-table-with-resource-manager.md) články.
+V tomto článku se naučíte, jak používat šablony Azure Resource Manager k automatizaci správy účtů Azure Cosmos DB, databází a kontejnerů.
 
-Jak vytvářet a spravovat účty Cosmos DB, databáze a kontejnery pro MongoDB, Gremlin, Cassandra a rozhraní API pro tabulky.
+Tento článek obsahuje jenom Azure Resource Manager příklady šablon pro účty rozhraní SQL API. Můžete také najít příklady šablon pro rozhraní API pro [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)a [Table](manage-table-with-resource-manager.md) .
 
-## Vytvoření účtu Azure Cosmos, databáze a kontejneru<a id="create-resource"></a>
+<a id="create-resource"></a>
 
-Vytvořte Azure Cosmos DB prostředky pomocí šablony Azure Resource Manager. Tato šablona vytvoří účet Azure Cosmos se dvěma kontejnery, které sdílejí propustnost 400 RU/s na úrovni databáze a jeden kontejner s vyhrazenou propustností 400 RU/s. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s parametrem `--template-file`.
+## <a name="create-an-azure-cosmos-account-database-and-container"></a>Vytvoření účtu, databáze a kontejneru Azure Cosmos
 
-> [!NOTE]
+Následující šablona Azure Resource Manager vytvoří účet Azure Cosmos s:
+
+* Dva kontejnery sdílející propustnost 400 požadovaných jednotek za sekundu (RU/s) na úrovni databáze.
+* Jeden kontejner s vyhrazenou propustností 400 RU/s.
+
+Pokud chcete vytvořit prostředky Azure Cosmos DB, zkopírujte následující příklad šablony a nasaďte ji tak, jak je popsáno v [PowerShellu](#deploy-via-powershell) nebo rozhraní příkazového [řádku Azure CLI](#deploy-via-azure-cli).
+
+* Volitelně můžete navštívit [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) a nasadit šablonu z Azure Portal.
+* Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s parametrem `--template-file`.
+
+> [!IMPORTANT]
 >
-> - Nemůžete současně přidat nebo odebrat umístění k účtu Azure Cosmos a upravovat další vlastnosti. Ty je nutné provést jako samostatné operace.
-> - Názvy účtů musí být malé a 44 nebo méně znaků.
-> - Chcete-li aktualizovat RU/s, šablonu znovu odešlete s aktualizovanými hodnotami vlastností propustnosti.
+> * Když přidáváte nebo odebíráte umístění účtu Azure Cosmos, nemůžete současně upravovat ostatní vlastnosti. Tyto operace se musí provádět samostatně.
+> * Názvy účtů jsou omezené na 44 znaků, a to vše malými písmeny.
+> * Chcete-li změnit hodnoty propustnosti, šablonu znovu odešlete s aktualizovaným RU/s.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 
 > [!NOTE]
-> Pokud chcete vytvořit kontejner s velkým klíčem oddílu, uveďte vlastnost `"version":2` v rámci objektu `partitionKey` v předchozí šabloně.
+> Pokud chcete vytvořit kontejner s velkým klíčem oddílu, upravte předchozí šablonu tak, aby zahrnovala vlastnost `"version":2` v rámci objektu `partitionKey`.
 
 ### <a name="deploy-via-powershell"></a>Nasazení prostřednictvím PowerShellu
 
-Pokud chcete šablonu Azure Resource Manager nasadit pomocí prostředí PowerShell, **zkopírujte** skript a vyberte **zkusit,** aby se otevřela Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
+Použití PowerShellu k nasazení šablony Azure Resource Manager:
+
+1. **Zkopírujte** skript.
+2. Vyberte **zkusit** pro otevření Azure Cloud Shell.
+3. V okně Azure Cloud Shell klikněte pravým tlačítkem myši a vyberte možnost **Vložit**.
 
 ```azurepowershell-interactive
 
@@ -70,11 +84,15 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-Pokud se rozhodnete použít místně nainstalovanou verzi PowerShellu místo z Azure Cloud Shell, je nutné [nainstalovat](/powershell/azure/install-az-ps) modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`.
+Šablonu můžete nasadit s místně nainstalovanou verzí PowerShellu místo Azure Cloud Shell. Budete muset [nainstalovat modul Azure PowerShell](/powershell/azure/install-az-ps). Požadovanou verzi zjistíte spuštěním `Get-Module -ListAvailable Az`.
 
 ### <a name="deploy-via-azure-cli"></a>Nasazení prostřednictvím rozhraní příkazového řádku Azure
 
-Pokud chcete šablonu Azure Resource Manager nasadit pomocí rozhraní příkazového řádku Azure, vyberte **zkusit** otevřít Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
+Postup při nasazení Azure Resource Manager šablony pomocí Azure CLI:
+
+1. **Zkopírujte** skript.
+2. Vyberte **zkusit** pro otevření Azure Cloud Shell.
+3. V okně Azure Cloud Shell klikněte pravým tlačítkem myši a vyberte možnost **Vložit**.
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -105,17 +123,28 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi Azure CLI místo používání Cloudshellu, přečtěte si článek [rozhraní příkazového řádku Azure (CLI)](/cli/azure/) .
+Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po jeho zřízení. Místo toho se můžete rozhodnout nasadit šablonu s místně nainstalovanou verzí Azure CLI Azure Cloud Shell. Další informace najdete v článku [rozhraní příkazového řádku Azure (CLI)](/cli/azure/) .
 
-## Vytvoření kontejneru Azure Cosmos DB pomocí funkce na straně serveru<a id="create-sproc"></a>
+<a id="create-sproc"></a>
 
-Vytvořte kontejner Azure Cosmos DB s uloženou procedurou, triggerem a uživatelsky definovanou funkcí pomocí šablony Azure Resource Manager. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s parametrem `--template-file`.
+## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>Vytvoření kontejneru Azure Cosmos DB pomocí funkce na straně serveru
+
+Pomocí šablony Azure Resource Manager můžete vytvořit kontejner Azure Cosmos DB s uloženou procedurou, triggerem a uživatelsky definovanou funkcí.
+
+Zkopírujte následující příklad šablony a nasaďte ji podle popisu v [PowerShellu](#deploy-with-powershell) nebo [Azure CLI](#deploy-with-azure-cli).
+
+* Volitelně můžete navštívit [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) a nasadit šablonu z Azure Portal.
+* Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s parametrem `--template-file`.
 
 [!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
 
-### <a name="deploy-stored-procedure-template-via-powershell"></a>Nasazení šablony uložené procedury přes PowerShell
+### <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
-Pokud chcete šablonu Správce prostředků nasadit pomocí prostředí PowerShell, **zkopírujte** skript a vyberte **zkusit,** aby se otevřela Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
+Použití PowerShellu k nasazení šablony Azure Resource Manager:
+
+1. **Zkopírujte** skript.
+1. Vyberte **zkusit** pro otevření Azure Cloud Shell.
+1. Klikněte pravým tlačítkem na okno Azure Cloud Shell a pak vyberte **Vložit**.
 
 ```azurepowershell-interactive
 
@@ -141,11 +170,15 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-Pokud se rozhodnete použít místně nainstalovanou verzi PowerShellu místo z Azure Cloud Shell, je nutné [nainstalovat](/powershell/azure/install-az-ps) modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`.
+Šablonu můžete nasadit s místně nainstalovanou verzí PowerShellu místo Azure Cloud Shell. Budete muset [nainstalovat modul Azure PowerShell](/powershell/azure/install-az-ps). Požadovanou verzi zjistíte spuštěním `Get-Module -ListAvailable Az`.
 
-### <a name="deploy-stored-procedure-template-via-azure-cli"></a>Nasazení šablony uložené procedury přes rozhraní příkazového řádku Azure
+### <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
-Pokud chcete šablonu Azure Resource Manager nasadit pomocí rozhraní příkazového řádku Azure, vyberte **zkusit** otevřít Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
+Postup při nasazení Azure Resource Manager šablony pomocí Azure CLI:
+
+1. **Zkopírujte** skript.
+2. Vyberte **zkusit** pro otevření Azure Cloud Shell.
+3. V okně Azure Cloud Shell klikněte pravým tlačítkem myši a vyberte možnost **Vložit**.
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -169,7 +202,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 Tady je několik dalších prostředků:
 
-- [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
-- [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)
-- [Šablony pro rychlý Start Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Řešení běžných chyb při nasazení Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
+* [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)
+* [Šablony pro rychlý Start Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Řešení běžných chyb při nasazení Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)

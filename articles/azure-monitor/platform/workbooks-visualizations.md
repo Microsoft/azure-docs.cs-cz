@@ -1,5 +1,5 @@
 ---
-title: Vytváření interaktivních sestav pomocí vizualizací sešitů v Azure Monitor | Dokumentace Microsoftu
+title: Vizualizace sešitu Azure Monitor
 description: Seznamte se se všemi komponentami v Azure Monitorch vizualizacích sešitu, včetně textových, grafů, mřížek, stromů a grafů.
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d878e8b5dd49ba517f85ebb74332bc6a245c33ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165053"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872787"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Vizualizace sešitu Azure Monitor
 
@@ -41,7 +41,7 @@ Text je přidán prostřednictvím ovládacího prvku Markdownu, který poskytuj
 > [!TIP]
 > Pomocí tohoto [listu Markdownu tahák](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) se dozvíte o různých možnostech formátování.
 
-## <a name="charts"></a>spojnic
+## <a name="charts"></a>Grafy
 
 Pracovní sešity umožňují, aby se data monitorování mohla prezentovat jako grafy. Mezi podporované typy grafů patří spojnicový, pruhový, pruhový kategorií, plošný, bodový graf, výsečový a čas. Autoři si můžou zvolit, že se má přizpůsobit výška, Šířka, paleta barev, legenda, názvy, zpráva bez dat atd. v grafu.
 
@@ -197,7 +197,7 @@ Následující příklad ukazuje metriky stavu kontejneru (velikost pracovní sa
 | `Show the expander on` | Sloupec, ve kterém se má zobrazit rozšíření stromu Je běžné, že stromové mřížky skryjí své ID a nadřazené pole ID, protože nejsou velmi čitelné. Místo toho se rozšíření zobrazuje na poli s čitelnější hodnotou, jako je název entity. |
 | `Expand the top level of the tree` | Pokud je zaškrtnuto, bude se stromová mřížka rozbalí na nejvyšší úrovni. Užitečné, pokud chcete ve výchozím nastavení zobrazit další informace |
 
-## <a name="graphs"></a>Diagram
+## <a name="graphs"></a>Grafy
 
 Pracovní sešity podporují vizualizaci libovolného grafu na základě dat z protokolů, aby se zobrazily vztahy mezi entitami monitorování.
 

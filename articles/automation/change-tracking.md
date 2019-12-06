@@ -4,18 +4,18 @@ description: Řešení Change Tracking vám pomůže identifikovat změny softwa
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886803"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850546"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí Change Tracking řešení
 
@@ -28,25 +28,25 @@ Změny nainstalovaného softwaru, služeb systému Windows, registru a souborů 
 
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
 
-Pro agenta Windows jsou oficiálně podporované následující verze operačního systému Windows:
+Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
 
 * Windows Server 2008 R2 nebo novější
 
-## <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
+## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
 
 Následující distribuce systému Linux jsou oficiálně podporována. Agent pro Linux se ale může spustit i v jiných distribucích, které nejsou uvedené. Pokud není uvedeno jinak, všechny dílčí verze jsou podporovány pro každou hlavní verzi uvedenou v seznamu.
 
-### <a name="64-bit"></a>64 – bit
+### <a name="64-bit"></a>64 bitů
 
 * CentOS 6 a 7
-* Amazon Linux 2017,09
+* Amazon Linux 2017.09
 * Oracle Linux 6 a 7
 * Red Hat Enterprise Linux Server 6 a 7
 * Debian GNU/Linux 8 a 9
 * Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32 – bit
+### <a name="32-bit"></a>32 bitů
 
 * CentOS 6
 * Oracle Linux 6
@@ -74,7 +74,7 @@ Pro sledování změn v souborech v systémech Windows i Linux se používají h
 Azure Security Center se přidalo monitorování integrity souborů (FIM) založené na Azure Change Tracking. I když FIM monitoruje jenom soubory a registry, kompletní řešení Change Tracking zahrnuje taky:
 
 - Změny softwaru
-- Služby systému Windows
+- Služby Windows
 - Procesy démon systému Linux
 
 Pokud jste již vypnuli FIM a chcete vyzkoušet úplné Change Tracking řešení, je nutné provést následující kroky. Nastavení nejsou tímto procesem odebrána.
@@ -196,12 +196,12 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 
 | **Prostředek** | **Omezení**| **Poznámky** |
 |---|---|---|
-|File|500||
+|Soubor|500||
 |Registr|250||
 |Software systému Windows|250|Neobsahuje opravy hotfix softwaru|
 |Balíčky Linux|1250||
 |Služby|250||
-|proces|250||
+|Proces|250||
 
 Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40MB měsíčně. Tato hodnota je pouze aproximace a podléhá změnám v závislosti na vašem prostředí. Doporučujeme vám monitorovat prostředí, abyste viděli přesné využití, které máte.
 
@@ -245,11 +245,11 @@ Agent sleduje pouze změny, optimalizuje výkon agenta. Nastavení vysoké praho
 
 Následující adresy jsou vyžadovány konkrétně pro Change Tracking. Komunikace s těmito adresami se provádí přes port 443.
 
-|Veřejné Azure  |Azure Government  |
+|Veřejný partnerský vztah Azure  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Použít Change Tracking

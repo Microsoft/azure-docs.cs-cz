@@ -6,37 +6,37 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a229eef3d49964e71becf066d67f60b18da6fc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113244"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846398"
 ---
-# <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Kurz: Dokončení Azure Multi-Factor Authentication pilotní zavedení
+# <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Kurz: Dokončení zavedení pilotního nasazení služby Azure Multi-Factor Authentication
 
-V tomto kurzu jste vás provedou konfigurací zásady podmíněného přístupu povolíte ověřování Azure Multi-Factor Authentication (Azure MFA), při přihlašování k webu Azure portal. Zásady se nasadí pro konkrétní skupinu pilotních uživatelů, která je otestuje. Nasazení pomocí podmíněného přístupu Azure MFA poskytuje významnou flexibilitu pro organizace a správci v porovnání s tradiční metody vynucené.
+V tomto kurzu vás provedete konfigurací zásad podmíněného přístupu, které umožňují Azure Multi-Factor Authentication (Azure MFA) při přihlašování k Azure Portal. Zásady se nasadí pro konkrétní skupinu pilotních uživatelů, která je otestuje. Nasazení Azure MFA pomocí podmíněného přístupu přináší významnou flexibilitu organizacím a správcům v porovnání s tradičním vyměnitelnou způsobem.
 
 > [!div class="checklist"]
 > * Povolení služby Azure Multi-Factor Authentication
 > * Testování služby Azure Multi-Factor Authentication
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci.
-* Účet s oprávněními globálního správce.
-* Bez oprávnění správce testovacího uživatele s heslem znáte pro testování, pokud je potřeba vytvořit uživatele najdete v článku [rychlý start: Přidání nových uživatelů do služby Azure Active Directory](../add-users-azure-active-directory.md).
+* Účet s oprávněními globálního správce
+* Testovací účet uživatele bez oprávnění správce s heslem, které znáte. Pokud potřebujete účet uživatele vytvořit, podívejte se do článku [Rychlý start: Přidání nových uživatelů do služby Azure AD](../add-users-azure-active-directory.md).
 * Pilotní skupina pro testování, ve které je uživatel bez oprávnění správce členem. Pokud potřebujete skupinu vytvořit, podívejte se do článku [Vytvoření skupiny a přidání členů ve službě Azure AD](../active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Povolení služby Azure Multi-Factor Authentication
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
-1. Přejděte do **Azure Active Directory**, **podmíněného přístupu**
+1. Přejít na **Azure Active Directory**, **podmíněný přístup**
 1. Vyberte **Nová zásada**.
 1. Zásadu pojmenujte **MFA Pilot**.
 1. V části **Uživatelé a skupiny** zvolte přepínač **Vyberte uživatele a skupiny**.
@@ -52,11 +52,11 @@ V tomto kurzu jste vás provedou konfigurací zásady podmíněného přístupu 
     * Klikněte na **Vybrat**.
 1. Oddíl **Relace** přeskočte.
 1. **Zapněte** přepínač **Povolit zásadu**.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na **Vytvořit**
 
 ## <a name="test-azure-multi-factor-authentication"></a>Testování služby Azure Multi-Factor Authentication
 
-K prokázání, že funguje své zásady podmíněného přístupu, testování, přihlášení k prostředku, který by neměla vyžadovat vícefaktorové ověřování a pak na web Azure Portal, který vyžaduje vícefaktorové ověřování.
+Abyste prokázali, že vaše zásada podmíněného přístupu funguje, otestujete přihlášení do prostředku, který by neměl vyžadovat MFA, a pak na Azure Portal, která vyžaduje MFA.
 
 1. Otevřete nové okno prohlížeče v režimu InPrivate nebo Incognito a přejděte na adresu [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com).
    * Přihlaste se pomocí testovacího účtu uživatele, který jste vytvořili jako součást požadavků tohoto článku, a všimněte si, že by se neměla zobrazit výzva k vícefaktorovému ověřování.
@@ -69,12 +69,12 @@ K prokázání, že funguje své zásady podmíněného přístupu, testování,
 
 Pokud se rozhodnete, že už funkci nakonfigurovanou jako součást tohoto kurzu používat nechcete, proveďte následující.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte do **Azure Active Directory**, **podmíněného přístupu**.
-1. Vyberte zásady podmíněného přístupu, kterou jste vytvořili.
-1. Klikněte na tlačítko **odstranit**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Azure Active Directory**, **podmíněný přístup**.
+1. Vyberte zásadu podmíněného přístupu, kterou jste vytvořili.
+1. Klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zapnuli službu Azure Multi-Factor Authentication. Pokračujte k dalšímu kurzu, ve kterém se dozvíte, jak můžete integrovat Azure Identity Protection do prostředí pro samoobslužné resetování hesla a vícefaktorové ověřování.
 

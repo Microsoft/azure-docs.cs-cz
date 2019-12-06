@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 18c6499afe450a0387b0d9f0f13ee4378e0a21a9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173830"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849050"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Vizualizace dat pomocí konektoru Azure Průzkumník dat pro Excel
 
@@ -23,7 +23,7 @@ Azure Průzkumník dat Excel Native Connector nabízí možnost Exportovat výsl
 ## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Definujte dotaz Kusto jako zdroj dat aplikace Excel a načtěte data do Excelu.
 
 1. Otevřete **aplikaci Microsoft Excel**.
-1. Na kartě **data** vyberte z Azure**Průzkumník dat** **získat data** > **z Azure** > .
+1. Na kartě **data** vyberte **získat data** > **z Azure** > **z Azure Průzkumník dat**.
 
     ![Získat data z Azure Průzkumník dat](media/excel-connector/get-data-from-adx.png)
 
@@ -44,9 +44,9 @@ Azure Průzkumník dat Excel Native Connector nabízí možnost Exportovat výsl
     |**Omezit číslo záznamu výsledku dotazu**     |     Omezení počtu záznamů načtených do aplikace Excel  |    
     |**Omezit velikost dat výsledků dotazu (bajty)**    |    Omezení velikosti dat      |   
     |**Zakázat zkracování sady výsledků**    |         |      
-    |**Další příkazy set (oddělené středníky)**    |    Přidat `set` příkazy, které se použijí na zdroj dat     |   
+    |**Další příkazy set (oddělené středníky)**    |    Přidat příkazy `set` pro použití na zdroj dat     |   
 
-1.  V podokně **navigátor** přejděte do správné tabulky. V podokně náhledu tabulky vyberte transformovaná **data** , abyste mohli provádět změny dat, nebo vyberte **načíst** a načtěte ho do Excelu.
+1.  V podokně **navigátor** přejděte do správné tabulky. V podokně náhledu tabulky vyberte **transformovaná data** , abyste mohli provádět změny dat, nebo vyberte **načíst** a načtěte ho do Excelu.
 
 ![Okno náhledu tabulky](media/excel-connector/navigate-table-preview-window.png)
 
@@ -75,3 +75,6 @@ Po načtení dat do Excelu a dostupnosti v excelovém listu můžete analyzovat,
 
 1. Vytvořením úplných řídicích panelů můžete monitorovat vaše data.
 
+## <a name="next-steps"></a>Další kroky
+
+[Vizualizace dat pomocí dotazu Azure Průzkumník dat Kusto naimportovaného do aplikace Microsoft Excel](excel-blank-query.md)

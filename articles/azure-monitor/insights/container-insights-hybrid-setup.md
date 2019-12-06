@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: d25b9b3bb155dced973d415b396ebfaa4403b011
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/04/2019
+ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514612"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841570"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery
 
@@ -72,20 +72,20 @@ Povolení Azure Monitor pro kontejnery pro cluster Hybrid Kubernetes se skládá
 
 Řešení můžete nasadit pomocí zadané šablony Azure Resource Manager pomocí rutiny Azure PowerShell `New-AzResourceGroupDeployment` nebo pomocí Azure CLI.
 
-Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, přečtěte si téma:
+Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
 
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
 
-* [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-Tato metoda zahrnuje dvě šablony JSON. Jedna šablona určuje konfiguraci pro povolení monitorování a druhá obsahuje hodnoty parametrů, které nakonfigurujete, aby určovaly následující:
+Tato metoda obsahuje dvě šablony JSON. Jedna šablona určuje konfiguraci povolení monitorování a druhý obsahuje hodnoty parametrů, které nakonfigurujete, zadejte následující informace:
 
 - **workspaceResourceId** – úplné ID prostředku pracovního prostoru Log Analytics.
 - **workspaceRegion** – oblast, ve které je pracovní prostor vytvořen, který se také označuje jako **umístění** ve vlastnostech pracovního prostoru při prohlížení z Azure Portal.
 
-Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního prostoru vyžadovaného pro `workspaceResourceId` hodnotu parametru v souboru **containerSolutionParams. JSON** , proveďte následující kroky a potom spusťte rutinu PowerShellu nebo příkaz Azure CLI a přidejte řešení.
+Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního prostoru vyžadovaného pro `workspaceResourceId` hodnotu parametru v souboru **containerSolutionParams. JSON** , proveďte následující kroky a potom spusťte rutinu PowerShellu nebo příkaz Azure CLI, abyste mohli řešení přidat.
 
 1. Vypíše seznam všech předplatných, ke kterým máte přístup, pomocí následujícího příkazu:
 
@@ -93,7 +93,7 @@ Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního
     az account list --all -o table
     ```
 
-    Výstup bude vypadat přibližně takto:
+    Výstup bude vypadat takto:
 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -178,7 +178,7 @@ Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního
 
 5. Uložte tento soubor jako containerSolution. JSON do místní složky.
 
-6. Do souboru vložte následující syntaxi JSON:
+6. Vložte následující syntaxi JSON do souboru:
 
     ```json
     {
@@ -218,7 +218,7 @@ Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního
        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
        
-       Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
+       Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
        ```powershell
        provisioningState       : Succeeded
@@ -235,13 +235,13 @@ Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního
        az group deployment create --resource-group <resource group of log analytics workspace> --template-file ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
-       Dokončení změny konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
+       Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
        ```azurecli
        provisioningState       : Succeeded
        ```
      
-       Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru. 
+       Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster. 
 
 ## <a name="install-the-chart"></a>Instalace grafu
 
@@ -282,6 +282,25 @@ Po úspěšném nasazení grafu můžete zkontrolovat data pro svůj cluster Hyb
 
 >[!NOTE]
 >Latence příjmu je od agenta pět do deseti minut od agenta k potvrzení v pracovním prostoru Azure Log Analytics. Stav clusteru zobrazí hodnotu **žádná data** nebo **neznámé** , dokud nejsou v Azure monitor k dispozici všechna požadovaná data monitorování. 
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud dojde k chybě při pokusu o povolení monitorování pro cluster Hybrid Kubernetes, zkopírujte skript PowerShellu [TroubleshootError_nonAzureK8s. ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) a uložte ho do složky ve vašem počítači. Tento skript je k dispozici, aby bylo možné zjistit a opravit zjištěné problémy. Problémy, které je navrženo pro detekci a pokus o opravu, jsou následující:
+
+* Zadaný pracovní prostor Log Analytics je platný. 
+* Pracovní prostor Log Analytics je nakonfigurovaný pomocí řešení Azure Monitor for Containers. V takovém případě nakonfigurujte pracovní prostor.
+* OmsAgent REPLICASET pod je spuštěn
+* OmsAgent daemonset pod je spuštěn
+* Služba Health OmsAgent je spuštěná. 
+* ID a klíč pracovního prostoru Log Analytics nakonfigurované na kontejnerovém agentovi se shodují s pracovním prostorem, pomocí kterého je tento přehled nakonfigurovaný.
+* Ověří, jestli mají všechny uzly pro Linux Worker `kubernetes.io/role=agent` popisek pro naplánování RS pod. Pokud neexistuje, přidejte ho.
+* Ověří `cAdvisor port: 10255` je otevřen na všech uzlech v clusteru.
+
+Chcete-li provést příkaz s Azure PowerShell, použijte ve složce obsahující skript následující příkazy:
+
+```powershell
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+```
 
 ## <a name="next-steps"></a>Další kroky
 

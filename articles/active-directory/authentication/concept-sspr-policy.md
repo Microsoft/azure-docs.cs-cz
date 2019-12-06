@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af0c2ecde539c9737249e4251f7eab276affb9c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381924"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848540"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady a omezení hesel v Azure Active Directory
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
 Tento článek popisuje zásady hesel a požadavky na složitost spojené s uživatelskými účty v tenantovi Azure Active Directory (Azure AD).
 
@@ -32,7 +32,7 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je **e-mailov
 
 * Ovlivněny jsou všechny následující role správce Azure:
   * Správce helpdesku
-  * Správce služby Service support
+  * Správce služeb
   * Správce fakturace
   * Podpora partnerů úrovně 1
   * Podpora partnerů úrovně 2
@@ -43,13 +43,13 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je **e-mailov
   * Globální správce nebo správce společnosti
   * Správce SharePointu
   * Správce dodržování předpisů
-  * Správce aplikace
+  * Správce aplikací
   * Správce zabezpečení
   * Správce privilegovaných rolí
   * Správce Intune
   * Správce služby proxy aplikací
   * Správce Dynamics 365
-  * Správce služba Power BI
+  * Správce služby Power BI
   * Správce ověřování
   * Správce privilegovaného ověřování
 
@@ -71,7 +71,7 @@ Každý uživatelský účet, který musí být přihlášený k Azure AD, musí
 
 | Vlastnost | Požadavky UserPrincipalName |
 | --- | --- |
-| Povolené znaky |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_! \# ^ \~</li></ul> |
+| Povolené znaky |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | Nepovolené znaky |<ul> <li>Libovolný "\@\" znak, který odděluje uživatelské jméno z domény.</li> <li>Nemůže obsahovat znak tečky "." hned před symbolem "\@\"</li></ul> |
 | Omezení délky |<ul> <li>Celková délka nesmí překročit 113 znaků.</li><li>Před symbolem\@\" může být až 64 znaků.</li><li>Za symbolem\@\" může být až 48 znaků.</li></ul> |
 
@@ -166,10 +166,10 @@ Následující články poskytují další informace o resetování hesla prost�
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
+* [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
 * [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
-* [Mám otázku, která nebyla zodpovězena jinde](active-directory-passwords-faq.md)
+* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)

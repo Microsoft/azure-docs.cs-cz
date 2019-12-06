@@ -1,23 +1,23 @@
 ---
 title: Práce s poli a objekty v Azure Cosmos DB
-description: Seznamte se s syntaxí SQL pole a objektu pro Azure Cosmos DB.
+description: Naučte se syntaxi SQL pro vytváření polí a objektů v Azure Cosmos DB. Tento článek také poskytuje některé příklady pro provádění operací s objekty pole.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 17a0e4ddf5acd267a4cfbb68c218fe9409a91d57
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003923"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870917"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Práce s poli a objekty v Azure Cosmos DB
 
 Klíčovou funkcí rozhraní API pro Azure Cosmos DB SQL je vytvoření pole a objektu.
 
-## <a name="arrays"></a>Řadách
+## <a name="arrays"></a>Pole
 
 Můžete vytvořit pole, jak je znázorněno v následujícím příkladu:
 
@@ -26,7 +26,7 @@ Můžete vytvořit pole, jak je znázorněno v následujícím příkladu:
     FROM Families f
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -61,7 +61,7 @@ Rozhraní SQL API poskytuje podporu pro iteraci přes pole JSON s novou konstruk
     FROM Families.children
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -90,14 +90,14 @@ Výsledky jsou:
     ]
 ```
 
-Další dotaz provede iteraci `children` `Families` v kontejneru. Výstupní pole se liší od předchozího dotazu. Tento příklad rozdělí `children`a sloučí výsledky do jednoho pole:  
+Další dotaz provede v kontejneru `Families` iteraci nad `children`. Výstupní pole se liší od předchozího dotazu. Tento příklad rozdělí `children`a sloučí výsledky do jednoho pole:  
 
 ```sql
     SELECT *
     FROM c IN Families.children
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -130,7 +130,7 @@ Můžete filtrovat dále pro každou jednotlivou položku pole, jak je znázorn�
     WHERE c.grade = 8
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [{
@@ -145,7 +145,7 @@ Můžete také agregovat výsledek iterace pole. Například následující dota
     FROM child IN Families.children
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [

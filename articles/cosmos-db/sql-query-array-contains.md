@@ -1,18 +1,18 @@
 ---
-title: ARRAY_CONTAINS v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o ARRAY_CONTAINS funkcí SQL systému v Azure Cosmos DB.
+title: ARRAY_CONTAINS v dotazovacím jazyce Azure Cosmos DB
+description: Přečtěte si, jak pole obsahuje funkci systému SQL v Azure Cosmos DB vrátí logickou hodnotu, která označuje, zda pole obsahuje zadanou hodnotu.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 247956ccc2718c9bf192b4d704a48014753c00dc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 115667c93bbb832926a7939cf250a02b6fef8baa
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348703"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873484"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
 Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Můžete kontrolovat částečnou nebo úplnou shodu objektu pomocí logického výrazu v rámci příkazu. 

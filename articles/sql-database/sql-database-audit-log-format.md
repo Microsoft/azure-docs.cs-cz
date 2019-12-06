@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 14465e918fd4ac4e436e64d468c58e1d2ed83bb3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b7a3c295d2edd60c70f47ea155a5d747a3bfb03
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688177"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873756"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
 
@@ -32,7 +32,8 @@ Například pro databázi `Database1` v `Server1` následující je možné plat
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-Protokoly auditu repliky jen pro čtení jsou uloženy ve stejném kontejneru. Hierarchie adresáře v rámci kontejneru má `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`ve formě. Název souboru objektu BLOB sdílí stejný formát.
+[Repliky jen pro čtení](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) Protokoly auditu se ukládají do stejného kontejneru. Hierarchie adresáře v rámci kontejneru má `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`ve formě. Název souboru objektu BLOB sdílí stejný formát. Protokoly auditu replik jen pro čtení jsou uloženy ve stejném kontejneru.
+
 
 ### <a name="event-hub"></a>Centrum událostí
 
@@ -44,7 +45,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 
 ## <a id="subheading-1"></a>Pole protokolu auditu
 
-| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Popis | Typ objektu BLOB | Typ Event Hubs/Log Analytics |
+| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Popis | Typ objektu blob | Typ Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID akce | varchar (4) | string |
 | action_name | action_name_s | Název akce | Nevztahuje se | string |
@@ -55,7 +56,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 | class_type | class_type_s | Typ auditované entity, na které probíhá audit | varchar (2) | string |
 | class_type_desc | class_type_description_s | Popis auditované entity, na které probíhá audit | Nevztahuje se | string |
 | client_ip | client_ip_s | Zdrojová IP adresa klientské aplikace | nvarchar (128) | string |
-| connection_id | Nevztahuje se | ID připojení na serveru | HLAVNÍCH | Nevztahuje se |
+| connection_id | Nevztahuje se | ID připojení na serveru | GUID | Nevztahuje se |
 | data_sensitivity_information | data_sensitivity_information_s | Typy informací a popisky citlivosti vrácené auditovaným dotazem v závislosti na klasifikovaných sloupcích v databázi. Další informace o [Azure SQL Database zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md) | nvarchar (4000) | string |
 | database_name | database_name_s | Kontext databáze, ve kterém došlo k akci | musí | string |
 | database_principal_id | database_principal_id_d | ID kontextu uživatele databáze, ve kterém se akce provádí | int | int |
@@ -63,7 +64,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 | duration_milliseconds | duration_milliseconds_d | Doba spuštění dotazu v milisekundách | bigint | int |
 | event_time | event_time_t | Datum a čas, kdy se aktivuje akce auditování | datetime2 | datetime |
 | host_name | Nevztahuje se | Název hostitele klienta | string | Nevztahuje se |
-| is_column_permission | is_column_permission_s | Příznak označující, zda se jedná o oprávnění na úrovni sloupce 1 = true, 0 = false | 40bitového | string |
+| is_column_permission | is_column_permission_s | Příznak označující, zda se jedná o oprávnění na úrovni sloupce 1 = true, 0 = false | bit | string |
 | Nevztahuje se | is_server_level_audit_s | Příznak označující, jestli je tento audit na úrovni serveru | Nevztahuje se | string |
 | ID object_ | object_id_d | ID entity, na které došlo k auditu. To zahrnuje: objekty serveru, databáze, databázové objekty a objekty schématu. 0, pokud je entita samotný server nebo pokud audit není proveden na úrovni objektu | int | int |
 | object_name | object_name_s | Název entity, na které došlo k auditu. To zahrnuje: objekty serveru, databáze, databázové objekty a objekty schématu. 0, pokud je entita samotný server nebo pokud audit není proveden na úrovni objektu | musí | string |
@@ -71,21 +72,21 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 | response_rows | response_rows_d | Počet řádků vrácených v sadě výsledků dotazu | bigint | int |
 | schema_name | schema_name_s | Kontext schématu, ve kterém došlo k akci. Hodnota NULL pro audity, ke kterým došlo mimo schéma | musí | string |
 | Nevztahuje se | securable_class_type_s | Zabezpečitelné objekty, které se mapují na class_type auditovány | Nevztahuje se | string |
-| sequence_group_id | sequence_group_id_g | Jedinečný identifikátor | varbinary | HLAVNÍCH |
+| sequence_group_id | sequence_group_id_g | Jedinečný identifikátor | Varbinary | GUID |
 | sequence_number | sequence_number_d | Sleduje sekvenci záznamů v rámci jednoho záznamu auditu, který byl příliš velký, aby se vešel do vyrovnávací paměti pro zápis pro audity. | int | int |
 | server_instance_name | server_instance_name_s | Název instance serveru, ve které došlo k auditu | musí | string |
 | server_principal_id | server_principal_id_d | ID přihlašovacího kontextu, ve kterém se akce provádí | int | int |
 | server_principal_name | server_principal_name_s | Aktuální přihlašovací jméno | musí | string |
-| server_principal_sid | server_principal_sid_s | Identifikátor SID aktuálního přihlášení | varbinary | string |
+| server_principal_sid | server_principal_sid_s | Identifikátor SID aktuálního přihlášení | Varbinary | string |
 | session_id | session_id_d | ID relace, ve které došlo k události | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Objekt zabezpečení serveru pro relaci | musí | string |
-| vydá | statement_s | Příkaz jazyka T-SQL, který byl proveden (pokud existuje) | nvarchar (4000) | string |
-| Úspěchu | succeeded_s | Určuje, zda akce, která aktivovala událost, byla úspěšná. Pro jiné události než přihlašovací údaje a dávky Tato sestava oznamuje, zda byla ověření oprávnění úspěšná nebo neúspěšná, nikoli operace. 1 = úspěch, 0 = selhání | 40bitového | string |
+| příkaz | statement_s | Příkaz jazyka T-SQL, který byl proveden (pokud existuje) | nvarchar (4000) | string |
+| Úspěšné | succeeded_s | Určuje, zda akce, která aktivovala událost, byla úspěšná. Pro jiné události než přihlašovací údaje a dávky Tato sestava oznamuje, zda byla ověření oprávnění úspěšná nebo neúspěšná, nikoli operace. 1 = úspěch, 0 = selhání | bit | string |
 | target_database_principal_id | target_database_principal_id_d | Objekt zabezpečení databáze: operace udělení/ZAMÍTNUTí/odvolání se provádí. 0, pokud není k dispozici | int | int |
 | target_database_principal_name | target_database_principal_name_s | Cílový uživatel akce NULL, pokud není k dispozici | string | string |
 | target_server_principal_id | target_server_principal_id_d | Objekt zabezpečení serveru, na kterém je prováděna operace GRANT/DENY/REVOKE. Vrátí 0, pokud není k dispozici. | int | int |
 | target_server_principal_name | target_server_principal_name_s | Cílové přihlášení akce NULL, pokud není k dispozici | musí | string |
-| target_server_principal_sid | target_server_principal_sid_s | Identifikátor SID cílového přihlášení NULL, pokud není k dispozici | varbinary | string |
+| target_server_principal_sid | target_server_principal_sid_s | Identifikátor SID cílového přihlášení NULL, pokud není k dispozici | Varbinary | string |
 | transaction_id | transaction_id_d | Jenom SQL Server (od 2016) – 0 pro Azure SQL DB | bigint | int |
 | user_defined_event_id | user_defined_event_id_d | Uživatelem definované ID události předané jako argument pro sp_audit_write. Hodnota NULL pro systémové události (výchozí) a nenulová pro uživatelem definovanou událost. Další informace naleznete v tématu [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) . | smallint | int |
 | user_defined_information | user_defined_information_s | Uživatelem definované informace předané jako argument pro sp_audit_write. Hodnota NULL pro systémové události (výchozí) a nenulová pro uživatelem definovanou událost. Další informace naleznete v tématu [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) . | nvarchar (4000) | string |

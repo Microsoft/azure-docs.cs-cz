@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b02d6468ede0d5748409a620a6641109cd523a09
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: b51c6284c0d7ee21f67d37465100f84d4b2f5ae2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404233"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848081"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integrace adresáře mezi Azure MFA Serverem a službou Active Directory
 
@@ -87,7 +87,7 @@ Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atri
 | Jméno |Zadejte název atributu, který v záznamu uživatele obsahuje jméno.  Výchozí hodnota je givenName. |
 | Příjmení |Zadejte název atributu, který v záznamu uživatele obsahuje příjmení.  Výchozí hodnota je sn. |
 | E-mailová adresa |Zadejte název atributu, který v záznamu uživatele obsahuje e-mailovou adresu.  Na e-mailovou adresu se uživateli pošle uvítací e-mail a budou se posílat e-maily s aktualitami.  Výchozí hodnota je mail. |
-| Skupina uživatelů |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelskou skupinu.  Uživatelská skupina se může použít pro filtrování uživatelů v agentovi a v sestavách v Portálu pro správu Multi-Factor Auth Serveru. |
+| Uživatelská skupina |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelskou skupinu.  Uživatelská skupina se může použít pro filtrování uživatelů v agentovi a v sestavách v Portálu pro správu Multi-Factor Auth Serveru. |
 | Popis |Zadejte název atributu, který v záznamu uživatele obsahuje popis.  Popis se používá jen pro vyhledávání.  Výchozí hodnota je description. |
 | Jazyk telefonního hovoru |Zadejte název atributu, který obsahuje krátký název jazyka pro hlasové hovory s uživatelem. |
 | Jazyk textové zprávy |Zadejte název atributu, který obsahuje krátký název jazyka pro SMS zprávy posílané uživateli. |
@@ -95,12 +95,12 @@ Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atri
 | Jazyk tokenu OATH |Zadejte název atributu, který obsahuje krátký název jazyka pro textové zprávy tokenu OATH pro uživatele. |
 | Telefon do zaměstnání |Zadejte název atributu, který v záznamu uživatele obsahuje telefonní číslo do zaměstnání.  Výchozí hodnota je telephoneNumber. |
 | Telefon domů |Zadejte název atributu, který v záznamu uživatele obsahuje telefonní číslo domů.  Výchozí hodnota je homePhone. |
-| Stránkování |Zadejte název atributu, který v záznamu uživatele obsahuje číslo pageru.  Výchozí hodnota je pager. |
+| Pager |Zadejte název atributu, který v záznamu uživatele obsahuje číslo pageru.  Výchozí hodnota je pager. |
 | Mobilní telefon |Zadejte název atributu, který v záznamu uživatele obsahuje číslo na mobilní telefon.  Výchozí hodnota je mobile. |
 | Fax |Zadejte název atributu, který v záznamu uživatele obsahuje číslo faxu.  Výchozí hodnota je facsimileTelephoneNumber. |
 | IP telefon |Zadejte název atributu, který v záznamu uživatele obsahuje číslo IP telefonu.  Výchozí hodnota je ipPhone. |
 | Vlastní |Zadejte název atributu, který v záznamu uživatele obsahuje vlastní číslo telefonu.  Výchozí hodnota je prázdná. |
-| Linka |Zadejte název atributu, který v záznamu uživatele obsahuje linku telefonního čísla.  Hodnota pole Linka se použije jako linka jen pro primární telefonní číslo.  Výchozí hodnota je prázdná. <br><br>Pokud atribut Linka není zadaný, můžete linky zadat v rámci atributu telefon. V takovém případě před linku zadejte znak „x“, aby se mohla správně parsovat.  Například hodnota 555-123-4567 x890 by znamenala telefonní číslo 555-123-4567 a linku 890. |
+| Přípona |Zadejte název atributu, který v záznamu uživatele obsahuje linku telefonního čísla.  Hodnota pole Linka se použije jako linka jen pro primární telefonní číslo.  Výchozí hodnota je prázdná. <br><br>Pokud atribut Linka není zadaný, můžete linky zadat v rámci atributu telefon. V takovém případě před linku zadejte znak „x“, aby se mohla správně parsovat.  Například hodnota 555-123-4567 x890 by znamenala telefonní číslo 555-123-4567 a linku 890. |
 | Tlačítko Obnovit výchozí |Pokud kliknete na **Obnovit výchozí**, všechny atributy se obnoví na výchozí hodnoty.  Výchozí hodnoty by měly fungovat s normální službou Active Directory nebo schématem ADAM. |
 
 Chcete-li upravit atributy, klikněte na tlačítko **Upravit** na kartě atributy.  Tím se zobrazí okno, kde můžete atributy upravit. Výběrem **...** vedle libovolného atributu otevřete okno, kde můžete zvolit, jaké atributy se mají zobrazit.

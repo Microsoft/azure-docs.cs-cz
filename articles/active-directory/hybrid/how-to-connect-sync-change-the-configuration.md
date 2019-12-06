@@ -16,12 +16,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5844d440da768ae2647ea7f15c4c913f83078ce1
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e7600bffd8d00caa6e9b5fdda03aefe429d4788b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672969"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842573"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
 Tento článek vás seznámí s postupem, jak provést změny ve výchozí konfiguraci v Azure Active Directory (Azure AD) Connect Sync. Poskytuje kroky pro některé běžné scénáře. S tímto vědomím byste měli být schopni provádět jednoduché změny vlastní konfigurace na základě vašich vlastních obchodních pravidel.
@@ -204,7 +204,7 @@ Ve výchozím nastavení není atribut UserType povolen pro synchronizaci, proto
 
 - Azure AD přijímá jenom dvě hodnoty atributu UserType: **Member** a **Host**.
 - Pokud atribut UserType není povolený pro synchronizaci v Azure AD Connect, budou uživatelé Azure AD, kteří vytvořili prostřednictvím synchronizace adresářů, mít atribut UserType nastavený na **Member**.
-- Azure AD nepovoluje, aby byl atribut UserType u stávajících uživatelů služby Azure AD změněn pomocí Azure AD Connect. Dá se nastavit jenom během vytváření uživatelů Azure AD.
+- Azure AD nepovoluje, aby byl atribut UserType u stávajících uživatelů služby Azure AD změněn pomocí Azure AD Connect. Dá se nastavit jenom během vytváření uživatelů Azure AD a jejich [změny prostřednictvím PowerShellu](https://docs.microsoft.com/en-us/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 Než povolíte synchronizaci atributu UserType, musíte se nejdřív rozhodnout, jak je atribut odvozený z místní služby Active Directory. Níže jsou uvedené nejběžnější přístupy:
 
@@ -268,10 +268,10 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
+    | Name (Název) | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
     | Popis | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
-    | Typ připojeného systémového objektu | **Uživatelský** |  |
+    | Typ připojeného systémového objektu | **Uživatel** |  |
     | Typ objektu úložiště metaverse | **Uživateli** |  |
     | Typ odkazu | **Spojení** |  |
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
@@ -288,13 +288,13 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizace |
+    | Direct | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizovat |
 
     V jiném příkladu chcete odvodit hodnotu atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut AD userPrincipalName končí částí domény <em>@partners.fabrikam123.org</em>. Můžete implementovat výraz podobný tomuto:
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Výraz | UserType | IIF (nepřítomné ([userPrincipalName]), IIF (CBool (InStr ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "Member", "Guest"), chyba ("UserPrincipalName není k dispozici pro určení UserType")) | Není zaškrtnuto | Aktualizace |
+    | Výraz | UserType | IIF (nepřítomné ([userPrincipalName]), IIF (CBool (InStr ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "Member", "Guest"), chyba ("UserPrincipalName není k dispozici pro určení UserType")) | Není zaškrtnuto | Aktualizovat |
 
 7. Kliknutím na tlačítko **Přidat** vytvořte pravidlo pro příchozí spojení.
 
@@ -310,10 +310,10 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Název | *Zadat název* | Například pro *AAD – uživatel – usertype* |
+    | Name (Název) | *Zadat název* | Například pro *AAD – uživatel – usertype* |
     | Popis | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
-    | Typ připojeného systémového objektu | **Uživatelský** ||
+    | Typ připojeného systémového objektu | **Uživatel** ||
     | Typ objektu úložiště metaverse | **Uživateli** ||
     | Typ odkazu | **Spojení** ||
     | Priorita | *Vyberte číslo v rozmezí 1 až 99.* | 1 – 99 je vyhrazeno pro vlastní pravidla synchronizace. Nevybírejte hodnotu, kterou používá jiné synchronizační pravidlo. |
@@ -331,7 +331,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | UserType | Není zaškrtnuto | Aktualizace |
+    | Direct | UserType | UserType | Není zaškrtnuto | Aktualizovat |
 
 7. Kliknutím na **Přidat** vytvořte odchozí pravidlo.
 

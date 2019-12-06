@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151312"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851696"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
@@ -23,7 +23,7 @@ Služba Azure IoT Hub se integruje s Azure Event Grid, takže můžete posílat 
 
 ![Architektura Azure Event Grid](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
-## <a name="regional-availability"></a>Regionální dostupnost
+## <a name="regional-availability"></a>Dostupnost podle oblastí
 
 Integrace Event Grid je dostupná pro centra IoT umístěná v oblastech, kde je podpora Event Grid podporovaná. Nejnovější seznam oblastí najdete v [úvodu k Azure Event Grid](../event-grid/overview.md).
 
@@ -184,13 +184,11 @@ Chcete-li filtrovat zprávy před odesláním dat telemetrie, můžete aktualizo
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Omezení pro události připojené k zařízení a odpojené zařízení
 
-Pokud chcete přijímat události připojené k zařízení a odpojené zařízení, musíte pro své zařízení otevřít odkaz D2C nebo C2D. Pokud zařízení používá protokol MQTT, IoT Hub zůstane otevřený odkaz C2D. Pro AMQP můžete otevřít odkaz C2D voláním metody [Receive ASYNC API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet).
+Aby bylo možné přijímat události stavu připojení zařízení, musí zařízení dělat v rámci IoT Hub buď operaci "d 2C Send telemetrie" nebo "C2D Receive Message". Upozorňujeme však, že pokud zařízení používá protokol AMQP pro připojení ke službě IoT Hub, doporučujeme, aby provedou operaci C2D Receive Message, jinak se oznámení o stavu připojení můžou zpozdit o několik minut. Pokud zařízení používá protokol MQTT, IoT Hub zůstane otevřený odkaz C2D. V případě AMQP můžete otevřít odkaz C2D voláním metody [Receive ASYNC API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet), pro IoT Hub C# SDK nebo [klienta zařízení pro AMQP](iot-hub-amqp-support.md#device-client).
 
 Odkaz D2C je otevřený, Pokud posíláte telemetrii. 
 
-Pokud je připojení zařízení blikáním, což znamená, že se zařízení často připojuje a odpojuje, nebudeme odesílat každý stav jednoho připojení, ale bude publikovat *Poslední* stav připojení, který je nakonec konzistentní. Pokud jste například zařízení nastavili ve stavu připojeno, pak procvičení pro připojení během několika sekund a pak je zpátky v připojeném stavu. Od počátečního stavu připojení se nezveřejňují žádné události stavu připojení zařízení. 
-
-V případě výpadku IoT Hub zveřejníme stav připojení zařízení, jakmile se výpadek zastaví. Pokud se zařízení během tohoto výpadku odpojí, bude událost odpojená zařízení publikována během 10 minut.
+Pokud je připojení zařízení blikáním, což znamená, že zařízení se často připojuje a odpojuje, nebudeme odesílat každý stav jednoho připojení, ale aktuální stav připojení se v pravidelném snímku publikuje, dokud se blikání nepokračuje. Když se přijme stejná událost stavu připojení s různými čísly sekvence nebo s různými událostmi stavu připojení, znamená to, že došlo ke změně stavu připojení zařízení.
 
 ## <a name="tips-for-consuming-events"></a>Tipy pro náročné události
 

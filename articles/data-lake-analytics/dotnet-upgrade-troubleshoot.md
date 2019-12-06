@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 851a405e5143ea5bb3a26de76f713914aa4bb569
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648516"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873229"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics upgradovat na .NET Framework v 4.7.2
 
@@ -39,7 +39,7 @@ Zkontrolujte potenciální problémy s přerušením zpětné kompatibility tím
 1. Spusťte zpětnou kontrolu kompatibility vašich knihoven DLL .NET buď podle
    1. Používání rozšíření sady Visual Studio v [rozšíření .NET přenositelnost Analyzer pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
    1. Stažení a použití samostatného nástroje z [GitHubu dotnetapiport](https://github.com/microsoft/dotnet-apiport). Pokyny pro spuštění samostatného nástroje jsou k dispozici na webu [GitHub dotnetapiport – nejnovější změny](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
-   1. Pro 4.7.2. změny kompatibility isRetargeting = = true jsou koncem změn.
+   1. Pro 4.7.2. Kompatibilita `read isRetargeting == True` identifikuje možné problémy.
 2. Pokud nástroj indikuje, jestli váš kód může být ovlivněný jakýmkoli z možných zpětných nekompatibilit (některé běžné příklady nekompatibility jsou uvedené níže), můžete další kontrolu provést
    1. Analýza kódu a identifikace, jestli váš kód předává hodnoty ovlivněným rozhraním API
    1. Proveďte kontrolu za běhu. Nasazení modulu runtime není provedeno souběžně v ADLA. Před upgradem je možné provést kontrolu za běhu, a to pomocí místního spuštění nástroje VisualStudio s místní .NET Framework 4.7.2 na zástupce sady dat.
@@ -60,12 +60,12 @@ Můžete odeslat svou úlohu se starou verzí modulu runtime (která je sestaven
 Nejběžnější zpětně nekompatibility, které by kontrola mohla rozpoznat, jsou (Tento seznam jsme vygenerovali spuštěním kontroly na našich vnitřních interních ADLA úloh), které mají vliv na knihovny (Všimněte si, že je možné knihovny volat jenom nepřímo, takže je je důležité provést #1 požadovaných akcí, abyste zkontrolovali, jestli jsou vaše úlohy ovlivněné), a možné akce, které je potřeba vyřešit. Poznámka: ve většině případů pro naše vlastní úlohy se upozornění vypnula jako falešně pozitivní vzhledem k úzkým povahám většiny závažných změn.
 
 - Vlastnost IAsyncResult. CompletedSynchronously musí být správná, aby se výsledný úkol dokončil.
-  - Při volání TaskFactory. FromAsync musí být implementace vlastnosti IAsyncResult. CompletedSynchronously správná, aby se výsledný úkol dokončil. To znamená, že vlastnost musí vracet hodnotu true, pokud a pouze v případě, že implementace byla dokončena synchronně. Dříve nebyla tato vlastnost zaškrtnuta.
+  - Při volání TaskFactory. FromAsync musí být implementace vlastnosti IAsyncResult. CompletedSynchronously správná, aby se výsledný úkol dokončil. To znamená, že vlastnost musí vracet hodnotu true, pokud a pouze v případě, že implementace byla dokončena synchronně. Dříve nebyla zaškrtnuta vlastnost.
   - Ovlivněné knihovny: mscorlib, System. Threading. Tasks
   - Navrhovaná akce: Ujistěte se, že TaskFactory. FromAsync vrátí hodnotu true správně.
 
 - DataObject. GetData teď načítá data jako UTF-8.
-  - Pro aplikace cílené na .NET Framework 4 nebo spuštěné v .NET Framework 4.5.1 nebo dřívějších verzích načítá DataObject. GetData data ve formátu HTML jako řetězec ASCII. V důsledku toho jsou znaky, které nejsou ASCII (znaky, jejichž kódy ASCII jsou větší než 0x7F), reprezentovány dvěma náhodnými znaky. #N # #N # pro aplikace cílené na .NET Framework 4,5 nebo novější a spouštěné v .NET Framework 4.5.2, `DataObject.GetData` načítá data ve formátu HTML jako UTF-8, který představuje znaky větší než 0x7F správně.
+  - Pro aplikace cílené na .NET Framework 4 nebo spuštěné v .NET Framework 4.5.1 nebo dřívějších verzích načítá DataObject. GetData data ve formátu HTML jako řetězec ASCII. V důsledku toho jsou znaky, které nejsou ASCII (znaky, jejichž kódy ASCII jsou větší než 0x7F), reprezentovány dvěma náhodnými znaky. #N # #N # pro aplikace cílené na .NET Framework 4,5 nebo novější a spuštěné v .NET Framework 4.5.2, `DataObject.GetData` načítá data ve formátu HTML jako UTF-8, která představuje znaky větší než 0x7F správně.
   - Ovlivněné knihovny: GLO
   - Navrhovaná akce: Ujistěte se, že načtená data jsou ve formátu, který chcete.
 

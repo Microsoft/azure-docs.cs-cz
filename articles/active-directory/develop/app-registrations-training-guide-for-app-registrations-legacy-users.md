@@ -2,29 +2,25 @@
 title: Školicí příručka pro přechod z Registrace aplikací (starší verze) na nové prostředí Registrace aplikací v Azure Portal
 description: Úvod k novému prostředí pro registraci aplikací v Azure Portal
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01d543262a9eb358643c0860b24ac4306d2c5edf
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927097"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844256"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Přechod z Registrace aplikací (starší verze) na nové prostředí Registrace aplikací v Azure Portal
+# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Přechod z Registrace aplikací (starší verze) na nové prostředí Registrace aplikací na webu Azure Portal
 
 Mnoho vylepšení v novém prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) v Azure Portal najdete v části. Pokud jste obeznámeni s Registrace aplikacím (starším) prostředím Azure Portal, využijte tento průvodce školením, abyste mohli začít používat nové prostředí.
 
@@ -67,7 +63,7 @@ Starší verze prostředí měly stránku **vlastností** . **Vlastnosti** měly
 - **Adresa URL domovské stránky**
 - **Odhlašovací adresa URL**
 - **Adresa URL podmínek služby**
-- **Adresa URL prohlášení o ochraně osobních údajů**
+- **Adresa URL prohlášení o zásadách ochrany osobních údajů**
 - **Typ aplikace**
 - **Více tenantů**
 

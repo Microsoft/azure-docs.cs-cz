@@ -1,47 +1,47 @@
 ---
-title: Odeslání e-mailu z runbooku Azure Automation
-description: Zjistěte, jak SendGrid použít k odesílání e-mailu z v rámci sady runbook.
+title: Odeslání e-mailu z Azure Automation Runbooku
+description: Naučte se používat SendGrid k posílání e-mailů v rámci Runbooku.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/15/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: ce05aadb53cc3ad24ed65ea139594010e1aef047
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8550635b581eb944719c39cc8c195859a2c9e868
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234980"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849611"
 ---
-# <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Kurz: Odeslání e-mailu z runbooku Azure Automation
+# <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Kurz: odeslání e-mailu z Azure Automation Runbook
 
-Odešlete e-mailu ze sady runbook s [SendGrid](https://sendgrid.com/solutions) pomocí Powershellu. Tomto kurzu se dozvíte, jak vytvořit opakovaně použitelné sady runbook, která odešle e-mail pomocí klíče rozhraní API, která jsou uložená v [Azure Key Vaultu](/azure/key-vault/).
+Pomocí prostředí PowerShell můžete odeslat e-mail z Runbooku pomocí [SendGrid](https://sendgrid.com/solutions) . V tomto kurzu se dozvíte, jak vytvořit opakovaně použitelný Runbook, který odešle e-mail pomocí klíče rozhraní API uloženého v [úložišti klíčů Azure](/azure/key-vault/).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> * Vytvoření Azure KeyVault
-> * Store svůj klíč rozhraní API SendGrid v trezoru klíčů
-> * Vytvoření sady runbook, který načte svůj klíč rozhraní API a odešle e-mailu
+> * Vytvoření trezoru klíčů Azure
+> * Uložení klíče rozhraní API SendGrid do trezoru klíčů
+> * Vytvoření Runbooku, který načte klíč rozhraní API a pošle e-mail
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující:
 
-* Předplatné Azure: Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Vytvoření účtu SendGrid](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account).
-* [Účet Automation](automation-offering-get-started.md) s **Az** modulů, a [připojení spustit jako](automation-create-runas-account.md), abyste mohli uložit a spustit sadu runbook.
+* Předplatné Azure: Pokud ho ještě nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Vytvořte účet SendGrid](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account).
+* [Účet služby Automation](automation-offering-get-started.md) pomocí příkazu **AZ** modules a [Spustit jako připojení](automation-create-runas-account.md)pro uložení a spuštění sady Runbook.
 
-## <a name="create-an-azure-keyvault"></a>Vytvoření Azure KeyVault
+## <a name="create-an-azure-keyvault"></a>Vytvoření trezoru klíčů Azure
 
-Můžete vytvořit Azure Key Vaultu, pomocí následujícího skriptu prostředí PowerShell. Hodnoty proměnné nahraďte hodnotami, které jsou specifické pro vaše prostředí. Použití vložených Azure Cloud Shell pomocí <kbd>vyzkoušet</kbd> tlačítko, které se nachází v pravém horním rohu bloku kódu. Můžete také zkopírovat a spouštění kódu místně, pokud máte [modul Azure PowerShell](/powershell/azure/install-az-ps) nainstalované na místním počítači.
+Pomocí následujícího skriptu PowerShellu můžete vytvořit Trezor klíčů Azure. Nahraďte hodnoty proměnných hodnotami, které jsou specifické pro vaše prostředí. Použijte vložený Azure Cloud Shell přes tlačítko <kbd>vyzkoušet</kbd> , které se nachází v pravém horním rohu bloku kódu. Kód můžete také zkopírovat a spustit místně, pokud je v místním počítači nainstalován [modul Azure PowerShell](/powershell/azure/install-az-ps) .
 
 > [!NOTE]
-> Načíst klíč rozhraní API, použijte postup v [najít svůj klíč rozhraní API SendGrid](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key).
+> Pokud chcete načíst svůj klíč rozhraní API, použijte postup uvedený v části [vyhledání klíče rozhraní API SendGrid](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key).
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -74,35 +74,35 @@ $appID = $connection.FieldDefinitionValues.ApplicationId
 Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -PermissionsToSecrets Set, Get
 ```
 
-Další možnosti pro vytvoření Azure Key Vaultu a uložíte tajný klíč, najdete v článku [rychlých startů KeyVault](/azure/key-vault/).
+Další způsoby vytvoření trezoru klíčů Azure a uložení tajného klíče najdete v tématu [rychlý Start k trezoru](/azure/key-vault/)klíčů.
 
-## <a name="import-required-modules-to-your-automation-account"></a>Importujte požadované moduly do vašeho účtu Automation
+## <a name="import-required-modules-to-your-automation-account"></a>Importujte požadované moduly do svého účtu Automation.
 
-Použití Azure Key Vaultu v rámci sady runbook, bude nutné vašeho účtu Automation následující moduly:
+Pokud chcete používat Azure webtrezor v rámci sady Runbook, váš účet Automation bude potřebovat následující moduly:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile).
-* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault).
+* [AZ. Profile](https://www.powershellgallery.com/packages/Az.Profile).
+* [AZ. klíčů trezor](https://www.powershellgallery.com/packages/Az.KeyVault).
 
-Klikněte na tlačítko <kbd>nasadit do Azure Automation</kbd> na kartě Azure Automation v části Možnosti instalace. Tato akce otevře Azure Portal. Na stránce Import vyberte svůj účet Automation a klikněte na tlačítko <kbd>OK</kbd>.
+Klikněte na <kbd>nasadit a Azure Automation</kbd> na kartě Azure Automation v části Možnosti instalace. Tato akce otevře Azure Portal. Na stránce Import vyberte svůj účet Automation a klikněte na <kbd>OK</kbd>.
 
-Další metody pro přidávání požadované moduly, naleznete v tématu [importovat moduly](/azure/automation/shared-resources/modules#import-modules).
+Další metody pro přidání požadovaných modulů naleznete v tématu [Import modulů](/azure/automation/shared-resources/modules#import-modules).
 
-## <a name="create-the-runbook-to-send-an-email"></a>Vytvoření runbooku k odesílání e-mailu
+## <a name="create-the-runbook-to-send-an-email"></a>Vytvoření Runbooku k odeslání e-mailu
 
-Poté, co jste vytvořili trezor klíčů a uložili svůj klíč rozhraní API SendGrid, je čas vytvořit runbook, který načte klíč rozhraní API a odeslat e-mailu.
+Po vytvoření trezoru klíčů a uložení klíče rozhraní API SendGrid je čas vytvořit Runbook, který načte klíč rozhraní API a pošle e-mail.
 
-Tato sada runbook používá AzureRunAsConnection [účet Spustit jako](automation-create-runas-account.md) k ověřování pomocí Azure k načtení tajného klíče z Azure Key Vaultu.
+Tato sada Runbook používá [účet Spustit jako](automation-create-runas-account.md) AzureRunAsConnection k ověřování pomocí Azure pro načtení tajného klíče z Azure webtrezoru.
 
-Použijte tento příklad k vytvoření sady runbook volá **odeslat GridMailMessage**. Můžete upravit skript prostředí PowerShell a znovu ho použít pro různé scénáře.
+Tento příklad slouží k vytvoření Runbooku s názvem **Send-GridMailMessage**. Můžete upravit skript prostředí PowerShell a znovu ho použít pro různé scénáře.
 
-1. Přejděte ke svému účtu Azure Automation.
-2. V části **automatizace procesů**vyberte **sady Runbook**.
-3. V horní části seznamu sad runbook, vyberte **+ vytvořit runbook**.
-4. Na **přidat Runbook** zadejte **odeslat GridMailMessage** pro název sady runbook. Typ runbooku, vyberte **Powershellu**. Potom vyberte **Create** (Vytvořit).
-   ![Vytvoření Runbooku](./media/automation-send-email/automation-send-email-runbook.png)
+1. Přejít na účet Azure Automation.
+2. V části **Automatizace procesu**vyberte **Runbooky**.
+3. V horní části seznamu sad Runbook vyberte **+ vytvořit Runbook**.
+4. Na stránce **Přidat sadu Runbook** zadejte do pole název sady Runbook **odeslání-GridMailMessage** . Jako typ Runbooku vyberte **PowerShell**. Potom vyberte **Create** (Vytvořit).
+   ![vytvoření sady Runbook](./media/automation-send-email/automation-send-email-runbook.png)
 5. Runbook se vytvoří a otevře se stránka **Upravit powershellový runbook**.
-   ![Upravit sadu Runbook](./media/automation-send-email/automation-send-email-edit.png)
-6. Zkopírujte následující příklad Powershellu do **upravit** stránky. Ujistěte se, `$VaultName` je název, který jste zadali při vytváření vašeho trezoru klíčů.
+   ![upravit sadu Runbook](./media/automation-send-email/automation-send-email-edit.png)
+6. Zkopírujte následující příklad PowerShellu do stránky pro **Úpravy** . Ujistěte se, že `$VaultName` je název, který jste zadali při vytváření trezoru klíčů.
 
     ```powershell-interactive
     Param(
@@ -151,16 +151,16 @@ Použijte tento příklad k vytvoření sady runbook volá **odeslat GridMailMes
     $response = Invoke-RestMethod -Uri https://api.sendgrid.com/v3/mail/send -Method Post -Headers $headers -Body $bodyJson
     ```
 
-7. Vyberte **publikovat** uložte a publikujte runbook.
+7. Vyberte **publikovat** a Runbook uložte a publikujte.
 
-Chcete-li ověřit, že se runbook úspěšně spustí provedením kroků v části [otestování sady runbook](manage-runbooks.md#test-a-runbook) nebo [spuštění sady runbook](start-runbooks.md).
-Pokud se zpočátku nezobrazí testovací e-mail, zkontrolujte vaši **nevyžádané** a **nevyžádané pošty** složek.
+Chcete-li ověřit, zda se sada Runbook úspěšně spustí, můžete postupovat podle kroků v části [test sady Runbook](manage-runbooks.md#test-a-runbook) nebo [spuštění sady Runbook](start-runbooks.md).
+Pokud se vám v úvodním e-mailu nezobrazuje testovací e-mail, zkontrolujte složky **nevyžádanou** **poštou a spam** .
 
 ## <a name="clean-up"></a>Vyčistit
 
 Pokud už runbook nepotřebujete, odstraňte ho. Provedete to tak, že v seznamu runbooků vyberete příslušný runbook a kliknete na **Odstranit**.
 
-Odstranění trezoru klíčů pomocí [Remove-AzureRMKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault?view=azurermps) rutiny.
+Odstraňte Trezor klíčů pomocí rutiny [Remove-AzureRMKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault?view=azurermps) .
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"
@@ -168,9 +168,9 @@ $ResourceGroupName = "<your ResourceGroup name>"
 Remove-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Problémy s vytvořením nebo spuštění runbooku, naleznete v tématu [řešení potíží se sadami runbook](./troubleshoot/runbooks.md).
-* Aktualizace modulů ve vašem účtu Automation, najdete v článku [aktualizace modulů Azure Powershellu ve službě Azure Automation](automation-update-azure-modules.md)].
-* Monitorování spuštění sady runbook najdete v tématu [dál stavu úlohy a datové proudy úlohy ze služby Automation na protokoly Azure monitoru](automation-manage-send-joblogs-log-analytics.md).
-* K aktivaci sady runbook pomocí upozornění, najdete v článku [pomocí upozornění můžete aktivovat runbooku Azure Automation](automation-create-alert-triggered-runbook.md).
+* Problémy při vytváření nebo spouštění Runbooku najdete v tématu [řešení chyb pomocí runbooků](./troubleshoot/runbooks.md).
+* Pokud chcete aktualizovat moduly v účtu Automation, přečtěte si téma [jak aktualizovat Azure PowerShell moduly v Azure Automation](automation-update-azure-modules.md)].
+* Pokud chcete monitorovat provádění sady Runbook, přečtěte si téma [o stavu úlohy a datových proudech úloh od automatizace po Azure monitor protokolů](automation-manage-send-joblogs-log-analytics.md).
+* Postup aktivace sady Runbook pomocí výstrahy naleznete v tématu [použití výstrahy ke spuštění sady runbook Azure Automation](automation-create-alert-triggered-runbook.md).

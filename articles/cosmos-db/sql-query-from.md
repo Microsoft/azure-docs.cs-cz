@@ -1,17 +1,17 @@
 ---
 title: Klauzule FROM v Azure Cosmos DB
-description: Seznamte se s klauzulí SQL FROM pro Azure Cosmos DB
+description: Přečtěte si o syntaxi SQL a příklad pro klauzuli FROM pro Azure Cosmos DB. Tento článek také ukazuje příklady určení rozsahu výsledků a získání dílčích položek pomocí klauzule FROM.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 79bb17277a041f71c095ed724737012f9501f16f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327000"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873365"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Klauzule FROM v Azure Cosmos DB
 
@@ -114,7 +114,7 @@ Klauzule FROM může snížit zdroj na menší podmnožinu. Chcete-li vytvořit 
     FROM Families.children
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -154,7 +154,7 @@ Předchozí dotaz použil pole jako zdroj, ale můžete také použít objekt ja
     FROM Families.address.state
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [

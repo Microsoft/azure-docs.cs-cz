@@ -4,17 +4,17 @@ description: DevOps průběžné nasazování pomocí konfigurace stavu Azure Au
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4512b79873d7f770b32a452a02c53bc5575bdac
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: ddbf652c35c4f1504e3253838a983fd0f6039401
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243605"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850359"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: průběžné nasazování do Virtual Machines pomocí konfigurace stavu služby Automation a čokolády
 
@@ -62,7 +62,7 @@ Pokud nezačínáte šablonou Správce prostředků, je to také OK. K dispozici
 
 ## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>Krok 1: nastavení serveru vyžádané replikace a účtu Automation
 
-Na ověřeném příkazovém řádku PowerShellu (`Connect-AzureRmAccount`): (může trvat několik minut, než se nastavil Server pro vyžádání obsahu)
+Na příkazovém řádku ověřeného (`Connect-AzureRmAccount`) PowerShellu: (může trvat několik minut, než se nastavil Server pro vyžádání obsahu)
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
@@ -90,7 +90,7 @@ K tomu je potřeba mít na vaší straně trochu vylepšení. Není to ale těž
 
 - Nainstalujte modul, který budete potřebovat na pracovní stanici, takto:
   - Instalace [rozhraní Windows Management Framework, verze 5](https://aka.ms/wmf5latest) (není nutné pro Windows 10)
-  - < `Install-Module –Name MODULE-NAME` – přidaný modul z Galerie prostředí PowerShell
+  - `Install-Module –Name MODULE-NAME` < – předaný modul z Galerie prostředí PowerShell
 - Zkopírujte složku modulu z `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` do dočasné složky.
 - Odstranění ukázek a dokumentace z hlavní složky
 - Hlavní složka zip, pojmenování souboru ZIP přesně stejné jako složka 
@@ -109,7 +109,7 @@ Zahrnutý příklad provádí tyto kroky pro cChoco a xNetworking. Další infor
 
 Při prvním importu konfigurace do vyžádaného serveru a zkompilování není nic speciální. Všechny následné importy a kompilace stejné konfigurace vypadají přesně stejně. Pokaždé, když balíček aktualizujete a potřebujete ho nabízet do produkčního prostředí, provedete tento krok až po ověření správnosti konfiguračního souboru – včetně nové verze balíčku. Tady je konfigurační soubor a PowerShell:
 
-ISVBoxConfig. ps1:
+ISVBoxConfig.ps1:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -154,7 +154,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-New-ConfigurationScript. ps1:
+New-ConfigurationScript.ps1:
 
 ```powershell
 Import-AzureRmAutomationDscConfiguration `

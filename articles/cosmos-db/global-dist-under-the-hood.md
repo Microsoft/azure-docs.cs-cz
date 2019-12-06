@@ -1,18 +1,18 @@
 ---
 title: Globální distribuce s Azure Cosmos DB – pod kapotou
 description: Tento článek obsahuje podrobné technické informace o globální distribuci služby Azure Cosmos DB
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615342"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872124"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globální distribuce dat pomocí Azure Cosmos DB – pod kapotou
 
@@ -42,7 +42,7 @@ Globální distribuce Cosmos DB spoléhá na dvě abstrakce klíčů – *sady r
 
 ## <a name="replica-sets"></a>Sady replik
 
-Fyzický oddíl je vyhodnocen jako samoobslužná skupina replik s vyrovnáváním zatížení v různých doménách selhání, která se nazývá sada replik. Tato sada souhrnně implementuje protokol replikovaného stavového počítače, aby byla data v rámci fyzického oddílu vysoce dostupná, trvalá a konzistentní. Členství v sadě replik *N* je dynamické – udržuje výkyv mezi *nminimum* a nmaximumy na základě selhání, operací správy a času, kdy se neúspěšné repliky mají znovu vygenerovat/obnovit. Replikace podle změn členství, protokolu také změní konfiguraci velikost čtení a zápis kvor. Pro jednotnou distribuci propustnosti, která je přiřazená danému fyzickému oddílu, používáme dvě nápady: 
+Fyzický oddíl je vyhodnocen jako samoobslužná skupina replik s vyrovnáváním zatížení v různých doménách selhání, která se nazývá sada replik. Tato sada souhrnně implementuje protokol replikovaného stavového počítače, aby byla data v rámci fyzického oddílu vysoce dostupná, trvalá a konzistentní. Členství v sadě replik *N* je dynamické – udržuje výkyv mezi *nminimum* a *nmaximumy* na základě selhání, operací správy a času, kdy se neúspěšné repliky mají znovu vygenerovat/obnovit. Replikace podle změn členství, protokolu také změní konfiguraci velikost čtení a zápis kvor. Pro jednotnou distribuci propustnosti, která je přiřazená danému fyzickému oddílu, používáme dvě nápady: 
 
 - Za prvé, náklady na zpracování požadavků na zápis na vedoucím jsou vyšší než náklady na použití aktualizací v následném programu. Odpovídajícím způsobem, je vedoucí instancí rozpočtu více systémových prostředků, než sledujícími. 
 
@@ -54,7 +54,7 @@ Skupina fyzických oddílů, jedna z každé konfigurace s oblastmi databáze Co
 
 ![Sad oddílů](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
-Sadu oddílu si lze představit jako rozptýlené "super repliky sadu", který se skládá z několika sady replik, vlastnící stejnou sadu klíčů. Podobně jako u sady replik je členství v sadě oddílů také dynamické – mění se na základě implicitních operací správy fyzického oddílu, které přidávají nebo odebírají nové oddíly do nebo z dané sady oddílů (například při horizontálním navýšení kapacity propustnosti v případě kontejner, přidání nebo odebrání oblasti do databáze Cosmos nebo při výskytu chyby). Vzhledem k tomu, že každý z oddílů (sada oddílů) spravuje členství oddílu v rámci vlastní sady replik, je členství plně decentralizované a vysoce dostupné. Během změny konfigurace sady oddílů je zároveň je stanovené topologie překrytí mezi fyzickými oddíly. Topologie se dynamicky vybere na základě úrovně konzistence, zeměpisné vzdálenosti a dostupné šířky pásma sítě mezi zdrojovým a cílovým fyzickým oddílem.  
+Sadu oddílu si lze představit jako rozptýlené "super repliky sadu", který se skládá z několika sady replik, vlastnící stejnou sadu klíčů. Podobně jako u sady replik je členství v sadě oddílů také dynamické – mění se na základě implicitních operací správy fyzického oddílu, které přidávají nebo odebírají nové oddíly do nebo z dané sady oddílů (například při horizontálním navýšení kapacity propustnosti v kontejneru, přidání nebo odebrání oblasti do databáze Cosmos nebo při selhání). Vzhledem k tomu, že každý z oddílů (sada oddílů) spravuje členství oddílu v rámci vlastní sady replik, je členství plně decentralizované a vysoce dostupné. Během změny konfigurace sady oddílů je zároveň je stanovené topologie překrytí mezi fyzickými oddíly. Topologie se dynamicky vybere na základě úrovně konzistence, zeměpisné vzdálenosti a dostupné šířky pásma sítě mezi zdrojovým a cílovým fyzickým oddílem.  
 
 Služba umožňuje nakonfigurovat databází Cosmos oblasti zápisu na jeden nebo více oblastí zápisu, a v závislosti na výběru, sad oddílů jsou nakonfigurované tak, aby přijímal zápisy v přesně jednoho nebo všech oblastech. Systém využívá na dvou úrovních vnořený protokol konsensu – jedna úroveň funguje v rámci replik sady repliky fyzického oddílu, který přijímá zápisy, a druhá pracuje na úrovni oddílu, aby poskytovala úplné řazení pro všechny potvrzené zápisy v rámci sady oddílů. Tato shoda vícevrstvého, vnořeného je velmi důležité pro provádění naše přísné smlouvy SLA pro vysokou dostupnost, stejně jako implementace modelů konzistence, které Cosmos DB nabízí svým zákazníkům.  
 
@@ -69,7 +69,7 @@ Zavádíme kódovaného vektoru hodiny (obsahující ID oblasti a logické hodin
 Pro databáze Cosmos nakonfigurované s využitím více oblastí zápisu systém nabízí celou řadu flexibilní automatické konflikt zásad řešení pro vývojáře lze vybírat, včetně: 
 
 - **Last-Write-WINS (LWW)** , který ve výchozím nastavení používá systémově definovanou vlastnost časového razítka (která je založená na protokolu hodinové synchronizace času). Cosmos DB můžete také zadat jiné vlastní číselné vlastnosti pro řešení konfliktů.  
-- **Zásady řešení konfliktů definované aplikací (vlastní)** (vyjádřeno prostřednictvím slučovacích procedur), který je navržen pro sladění sémantiky definované aplikací, které jsou v konfliktu. Tyto postupy získat vyvolána při zjištění konfliktu zápis – zápis pod záštitou databázové transakce na straně serveru. Systém poskytuje přesně jednu jistotu pro provedení slučovací procedury jako součást protokolu závazku. K dispozici je [několik ukázek řešení konfliktů](how-to-manage-conflicts.md) , se kterými můžete hrát.  
+- **Zásada pro řešení konfliktů definovaná aplikací (vlastní)** (vyjádřená prostřednictvím procedur sloučení), která je určená pro sémantiku pro sémantiku definovaná aplikacemi pro účely sladění konfliktů. Tyto postupy získat vyvolána při zjištění konfliktu zápis – zápis pod záštitou databázové transakce na straně serveru. Systém poskytuje přesně jednu jistotu pro provedení slučovací procedury jako součást protokolu závazku. K dispozici je [několik ukázek řešení konfliktů](how-to-manage-conflicts.md) , se kterými můžete hrát.  
 
 ## <a name="consistency-models"></a>Modely konzistence
 
@@ -77,9 +77,9 @@ Bez ohledu na to, jestli nakonfigurujete databázi Cosmos s jednou nebo více ob
 
 Hranice konzistence s ohraničenou kostarou se zaručuje, že všechny čtení budou v rámci předpony *KB* nebo *T* sekund z posledního zápisu v jakékoli oblasti. Kromě toho je zaručeno, že čtení s omezenou konzistencí neaktuálnosti budou monotónní a s konzistentními zárukami předpony. Protokol ochrany proti entropie funguje způsobem míra časově omezený a zajistí, že předpony není accumulate a nebude muset použít protitlak na zápisy. Konzistence relace zaručuje monotónní čtení, monotónní zápisu, čtení vlastních zápisů, zápis následuje po čtení a konzistentní záruky předpony, po celém světě. Pro databáze nakonfigurované se silnou konzistencí se nevztahují výhody (nízká latence zápisu, dostupnost vysokého zápisu) více oblastí pro zápis, protože se jedná o synchronní replikaci napříč oblastmi.
 
-Sémantika pěti modelů konzistence v Cosmos DB je popsána [zde](consistency-levels.md)a matematicky popsány pomocí víceúrovňového modelu tla + Specification [](https://github.com/Azure/azure-cosmos-tla).
+Sémantika pěti modelů konzistence v Cosmos DB je popsána [zde](consistency-levels.md)a matematicky popsány pomocí víceúrovňového modelu tla + Specification [.](https://github.com/Azure/azure-cosmos-tla)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o konfigurace globální distribuce pomocí následujících článcích:
 

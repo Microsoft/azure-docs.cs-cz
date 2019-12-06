@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085230"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875409"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -49,11 +49,11 @@ Definice obrázků jsou logické seskupení pro verze image. Definice image obsa
 
 Existují tři parametry pro každou definici obrázku, které jsou používány v kombinaci – **Vydavatel**, **Nabídka** a **SKU**. Slouží k vyhledání konkrétní definice obrázku. Můžete mít verze bitové kopie, které sdílejí jednu nebo dvě, ale ne všechny tři hodnoty.  Tady jsou například tři definice obrázků a jejich hodnoty:
 
-|Definice image|Vydavatel|Nabídka|Skladová jednotka (SKU)|
+|Definice image|Vydavatel|Nabídka|SKU|
 |---|---|---|---|
 |myImage1|Contoso|Finance|Back-end|
-|myImage2|Contoso|Finance|Endy|
-|myImage3|Testování|Finance|Endy|
+|myImage2|Contoso|Finance|Front-end|
+|myImage3|Testování|Finance|Front-end|
 
 Všechny tři z nich mají jedinečné sady hodnot. Formát je podobný jako při současném zadání vydavatele, nabídky a SKU pro [Azure Marketplace imagí](../articles/virtual-machines/windows/cli-ps-findimage.md) v Azure PowerShell získat nejnovější verzi image na webu Marketplace. Každá definice obrázku musí mít jedinečnou sadu těchto hodnot.
 
@@ -93,15 +93,15 @@ Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné obl
 
 | Zdrojové oblasti        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
-| Austrálie – střed     | Čína – východ        | Indie – jih        | Západní Evropa        |
+| Austrálie – střed     | Čína – východ        | Jižní Indie        | Západní Evropa        |
 | Austrálie – střed 2   | Čína – východ 2      | Jihovýchodní Asie     | Velká Británie – jih           |
-| Austrálie – východ        | Čína – sever       | Japonsko – východ         | Spojené království – západ            |
+| Austrálie – východ        | Čína – sever       | Japonsko – východ         | Velká Británie – západ            |
 | Austrálie – jihovýchod   | Čína – sever 2     | Japonsko – západ         | US DoD – střed     |
-| Brazílie – jih          | Východní Asie         | Jižní Korea – střed      | US DoD – východ        |
-| Kanada – střed        | Východní USA           | Jižní Korea – jih        | USA (Gov) – Arizona     |
-| Východní Kanada           | Východní USA 2         | Středoseverní USA   | USA (Gov) – Texas       |
-| Střed Indie         | Východní USA 2 EUAP    | Severní Evropa       | USA (Gov) – Virginia    |
-| Střed USA            | Francie – střed    | Středojižní USA   | Indie – západ         |
+| Brazílie – jih          | Východní Asie         | Korea – střed      | Ministerstvo obrany USA – východ        |
+| Kanada – střed        | USA – východ           | Korea – jih        | US Gov – Arizona     |
+| Kanada – východ           | Východ USA 2         | Středoseverní USA   | US Gov – Texas       |
+| Střední Indie         | Východní USA 2 EUAP    | Severní Evropa       | USA – Virginie    |
+| Střední USA            | Francie – střed    | Středojižní USA   | Západní Indie         |
 | Střed USA EUAP       | Francie – jih      | Středozápadní USA    | Západní USA            |
 |                       |                   |                    | Západní USA 2          |
 
@@ -113,6 +113,7 @@ Pro nasazení prostředků pomocí galerií sdílených imagí existují omezen�
 - Galerie sdílených imagí 100 na jedno předplatné, podle jednotlivých oblastí
 - 1 000 definice imagí pro každé předplatné v jednotlivých oblastech
 - verze image 10 000 na jedno předplatné v jednotlivých oblastech
+- Všechny disky připojené k imagi musí být menší nebo rovny 1 TB.
 
 Další informace najdete v tématu o tom, jak kontrolovat [využití prostředků proti omezením](https://docs.microsoft.com/azure/networking/check-usage-against-limits) , v příkladech, jak kontrolovat aktuální využití.
  
@@ -143,20 +144,20 @@ Oblasti, do kterých se replikuje verze sdíleného obrázku, se dá po vytvoře
 
 ![Obrázek znázorňující, jak můžete replikovat image](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Přístup
 
 Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze image, všechny prostředky, můžou se sdílet pomocí integrovaných nativních ovládacích prvků Azure RBAC. Pomocí RBAC můžete tyto prostředky sdílet ostatním uživatelům, instančním objektům a skupinám. Můžete dokonce sdílet přístup jednotlivcům mimo klienta, kterého vytvořili v rámci. Jakmile má uživatel přístup ke sdílené imagi verze, může nasadit virtuální počítač nebo sadu škálování virtuálního počítače.  Tady je tabulka sdílení, která pomáhá pochopit, k čemu uživatel přistupuje:
 
-| Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
+| Sdíleno s uživatelem     | Galerie sdílených imagí | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
+| Galerie sdílených imagí | Ano                  | Ano          | Ano                  |
 | Definice image     | Ne                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
 Image je také možné sdílet, ve velkém měřítku, a to i v rámci klientů pomocí registrace aplikace s více klienty. Další informace o sdílení imagí napříč klienty najdete v tématu [sdílení imagí virtuálních počítačů galerie v rámci tenantů Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
-## <a name="billing"></a>Fakturace
+## <a name="billing"></a>Vyúčtování
 Za použití služby galerie sdílených obrázků se neúčtují žádné poplatky navíc. Budou se vám účtovat tyto prostředky:
 - Náklady na úložiště pro ukládání verzí sdílených imagí Náklady závisí na počtu replik verze image a na počtu oblastí, na které se má verze replikovat. Pokud máte například 2 bitové kopie a obě jsou replikovány do 3 oblastí, bude změněno pro 6 spravovaných disků na základě jejich velikosti. Další informace najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Poplatky za síťové přenosy za replikaci první verze image ze zdrojové oblasti do replikovaných oblastí. Další repliky se zpracovávají v rámci této oblasti, takže se neúčtují žádné další poplatky. 
@@ -180,7 +181,7 @@ Verze Image:
 - Vyloučit z posledního
 - Datum konce životnosti
 
-## <a name="sdk-support"></a>Podpora sady SDK
+## <a name="sdk-support"></a>Podpora SDK
 
 Následující sady SDK podporují vytváření galerií sdílených imagí:
 

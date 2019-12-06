@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 90710176ec16d1c565e24ff7df56b0b838f2699e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229425"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851192"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Připojení soukromě k účtu Azure Cosmos pomocí privátního odkazu Azure
 
@@ -35,7 +35,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název | Zadejte *MyVirtualNetwork*. |
+    | Name (Název) | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
@@ -59,14 +59,14 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Oblast | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Image | Vyberte **Windows Server 2019 Datacenter**. |
+    | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno podle vašeho výběru. |
     | Heslo | Zadejte heslo podle svého výběru. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Potvrzení hesla | Znovu zadejte heslo. |
+    | Potvrdit heslo | Znovu zadejte heslo. |
     | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
     | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné**. |
     | **ÚSPORA PENĚZ** |  |
@@ -86,7 +86,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)** .|
     | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
+    | Vyberte příchozí porty | Vyberte **http** a **RDP**.|
     ||
 
 1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
@@ -109,7 +109,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
 1. Otevřete stažený soubor *. RDP* .
 
@@ -129,9 +129,6 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 ## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Privátní přístup k účtu Azure Cosmos z virtuálního počítače
 
 V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátního koncového bodu. 
-
-> [!IMPORTANT]
-> Konfigurace DNS pro účet Azure Cosmos potřebuje ruční změnu v souboru Hosts, aby zahrnovala plně kvalifikovaný název domény konkrétního účtu. V produkčních scénářích nakonfigurujete server DNS na používání privátních IP adres. Pro účely ukázky ale můžete použít oprávnění správce na virtuálním počítači a upravit soubor `c:\Windows\System32\Drivers\etc\hosts` (ve Windows) nebo soubor `/etc/hosts` (na Linux) tak, aby zahrnoval IP adresu a mapování DNS.
 
 1. Pokud chcete zahrnout IP adresu a mapování DNS, přihlaste se k virtuálnímu počítači *myVM*, otevřete soubor `c:\Windows\System32\Drivers\etc\hosts` a zahrňte informace DNS z předchozího kroku v následujícím formátu:
 
@@ -154,7 +151,7 @@ V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátn�
 
 1. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 
 1. Vyberte **Connect** (Připojit).
 

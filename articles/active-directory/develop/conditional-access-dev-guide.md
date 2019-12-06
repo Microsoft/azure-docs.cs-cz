@@ -2,7 +2,6 @@
 title: Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
 description: Pokyny a scénáře pro vývojáře pro podmíněný přístup Azure AD
 services: active-directory
-keywords: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
@@ -11,23 +10,21 @@ ms.date: 02/28/2019
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91947c243b521e970a89152f76abe9a99142b89d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 69fcb50cb8273fa9e6606e1d071249ed17c78786
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374006"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843729"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
-* Ověřování pomocí služby Multi-Factor Authentication
+* Multi-Factor Authentication
 * Povoluje přístup ke konkrétním službám jenom zařízením zaregistrovaným v Intune.
 * Omezení umístění uživatelů a rozsahů IP adres
 
@@ -89,7 +86,7 @@ Vývojáři můžou tuto výzvu přijmout a připojit ji k nové žádosti do Az
 
 ## <a name="scenarios"></a>Scénáře
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Další informace o licenčních požadavcích najdete v [sestavě používání bez licenčního využití](../active-directory-conditional-access-unlicensed-usage-report.md). Vývojáři se můžou připojit ke [službě Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), která zahrnuje bezplatné předplatné sady Enterprise mobility, které zahrnuje Azure AD Premium.
 
@@ -176,7 +173,7 @@ Naše aplikace potřebuje zachytit `error=interaction_required`. Aplikace pak m�
 
 Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete v případě, že si vyrezervujete [vzorový kód pro obecné úhlové. js](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) , najdete pokyny k úhlů
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * Další informace o možnostech najdete [v tématu podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 * Další ukázky kódu Azure AD najdete v tématu [úložiště GitHub ukázek kódu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory).

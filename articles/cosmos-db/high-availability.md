@@ -1,18 +1,18 @@
 ---
 title: Vysoká dostupnost v Azure Cosmos DB
-description: Tento článek popisuje, jak Azure Cosmos DB poskytuje vysokou dostupnost.
+description: Tento článek popisuje, jak Azure Cosmos DB poskytuje vysokou dostupnost transparentně replikuje data ve všech oblastech přidružených k účtu Azure Cosmos.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ab6544e4535f2d2c2e88284f61251f177d457a84
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 1dab10592c8a34bc9df4425785e6dae95e44f219
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146668"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872090"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s Azure Cosmos DB
 
@@ -56,9 +56,9 @@ Oblastní výpadky nejsou nijak neobvyklé a služba Azure Cosmos DB zajišťuje
 - **Účty s více oblastmi s jednou oblastí zápisu (výpadek při čtení oblasti):** 
   * Při výpadku oblasti čtení zůstanou tyto účty vysoce dostupné pro čtení a zápis. 
   * Ovlivněná oblast je automaticky odpojena od oblasti pro zápis a bude označena jako offline. Sady [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) přesměrují volání čtení do další dostupné oblasti v seznamu upřednostňovaných oblastí. 
-  * Pokud není k dispozici žádná z oblastí v seznamu upřednostňovaných oblastí, volání se automaticky vrátí do aktuální oblasti pro zápis. 
+  * Pokud není žádná oblast ze seznamu upřednostňovaných oblastí k dispozici, volání se automaticky vrátí na aktuální oblast zápisu. 
   * V kódu aplikace se nevyžadují žádné změny pro zpracování výpadku oblasti čtení. Když je však ovlivněná oblast zpět online, dříve ovlivněná oblast čtení se automaticky synchronizuje s aktuální oblastí pro zápis a bude opět k dispozici, aby mohla zpracovávat požadavky na čtení. 
-  * Následná čtení jsou přesměrována do obnovené oblasti bez nutnosti jakýchkoli změn kódu aplikace. V průběhu převzetí služeb při selhání a opětovném připojení k dříve neúspěšnému výskytu se Přečtěte záruky konzistence, které Cosmos DB.
+  * Následná čtení se přesměrují na zotavenou oblast bez toho, aby se musel nějak změnit kód aplikace. V průběhu převzetí služeb při selhání a opětovném připojení k dříve neúspěšnému výskytu se Přečtěte záruky konzistence, které Cosmos DB.
 
 - Účty v jedné oblasti mohou ztratit dostupnost po oblastním výpadku. Vždycky se doporučuje nastavit **aspoň dvě oblasti** (nejlépe dvě oblasti zápisu) s vaším účtem Cosmos, abyste zajistili vysokou dostupnost ve všech časech.
 
@@ -78,26 +78,26 @@ Tato funkce je k dispozici v následujících oblastech Azure:
 
 * Velká Británie – jih
 * Jihovýchodní Asie 
-* East US
-* Východní USA 2 
-* Střed USA
+* USA – východ
+* Východ USA 2 
+* Střední USA
 * Západní Evropa
-* USA – západ 2
+* Západní USA 2
 
 > [!NOTE] 
 > Povolení Zóny dostupnosti pro jednu oblast účtu Azure Cosmos bude mít za následek poplatky, které se rovnají přidání další oblasti do svého účtu. Podrobnosti o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a s [náklady na více oblastí v Azure Cosmos DB](optimize-cost-regions.md) článcích. 
 
 Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigurací účtu: 
 
-|KLÍČOVÝ UKAZATEL VÝKONU  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
+|Klíčové ukazatele výkonu  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
 |---------|---------|---------|---------|
-|Smlouva SLA o dostupnosti pro zápis     |   99,99 %      |    99,99 %     |  99.999%  |
-|SLA dostupnosti pro čtení   |   99,99 %      |   99,99 %      |  99.999%       |
+|Smlouva SLA o dostupnosti pro zápis     |   99,99 %      |    99,99 %     |  99,999 %  |
+|SLA dostupnosti pro čtení   |   99,99 %      |   99,99 %      |  99,999 %       |
 |Cena  |  Fakturační sazba jedné oblasti |  Fakturační sazba zóny dostupnosti v jedné oblasti |  Fakturační sazba pro více oblastí       |
 |Selhání zón – ztráta dat   |  Ztráta dat  |   Žádná ztráta dat |   Žádná ztráta dat  |
 |Selhání zón – dostupnost |  Ztráta dostupnosti  | Žádná ztráta dostupnosti  |  Žádná ztráta dostupnosti  |
-|Latence čtení    |  Mezi oblastmi    |   Mezi oblastmi   |    Nízká  |
-|Latence zápisu    |   Mezi oblastmi   |  Mezi oblastmi    |   Nízká   |
+|Latence čtení    |  Mezi oblastmi    |   Mezi oblastmi   |    Nízký  |
+|Latence zápisu    |   Mezi oblastmi   |  Mezi oblastmi    |   Nízký   |
 |Oblastní výpadek – ztráta dat    |   Ztráta dat      |  Ztráta dat       |   Ztráta dat <br/><br/> Při použití ohraničené konzistence neaktuálnosti s více hlavními a více než jednou oblastí je ztráta dat omezená na ohraničenou neomezenou funkčnost nakonfigurovanou na vašem účtu. <br/><br/> Ztrátě dat během místního výpadku je možné vyhnout konfigurací silné konzistence s více oblastmi. Tato možnost se týká kompromisů, které mají vliv na dostupnost a výkon.      |
 |Oblastní výpadek – dostupnost  |  Ztráta dostupnosti       |  Ztráta dostupnosti       |  Žádná ztráta dostupnosti  |
 |Propustnost    |  Zajištěná propustnost X RU/s      |  Zajištěná propustnost X RU/s       |  dostupná propustnost dvojnásobných RU/s <br/><br/> Tento režim konfigurace vyžaduje dvojnásobek objemu propustnosti v porovnání s jednou oblastí s Zóny dostupnosti, protože existují dvě oblasti.   |
@@ -106,7 +106,7 @@ Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigu
 > Aby bylo možné povolit podporu zón dostupnosti pro účet Azure Cosmos ve více oblastech, musí mít tento účet povolený zápis s více hlavními servery.
 
 
-Pokud přidáte oblast do nových nebo existujících účtů Azure Cosmos, můžete povolit redundanci zóny. Pokud chcete povolit redundanci zóny na svém účtu Azure Cosmos, měli byste nastavit `isZoneRedundant` příznak na `true` pro konkrétní umístění. Tento příznak můžete nastavit ve vlastnosti umístění. Například následující fragment kódu prostředí PowerShell umožňuje redundanci zóny pro oblast jihovýchodní Asie:
+Pokud přidáte oblast do nových nebo existujících účtů Azure Cosmos, můžete povolit redundanci zóny. Pokud chcete povolit redundanci zóny na svém účtu Azure Cosmos, měli byste nastavit příznak `isZoneRedundant` na `true` pro konkrétní umístění. Tento příznak můžete nastavit ve vlastnosti umístění. Například následující fragment kódu prostředí PowerShell umožňuje redundanci zóny pro oblast jihovýchodní Asie:
 
 ```powershell
 $locations = @( 

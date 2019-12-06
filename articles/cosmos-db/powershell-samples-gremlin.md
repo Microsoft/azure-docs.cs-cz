@@ -1,17 +1,17 @@
 ---
 title: Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Gremlin
-description: Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Gremlin
+description: Získání ukázek Azure PowerShell k provádění různých běžných úloh v Azure Cosmos DB účtech rozhraní API Gremlin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: b8b986facc01a963d2ca87121337988c4c650ba1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 23ede06274f6e929bd04bf9ced60f349ae06caa9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154785"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871937"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Gremlin
 

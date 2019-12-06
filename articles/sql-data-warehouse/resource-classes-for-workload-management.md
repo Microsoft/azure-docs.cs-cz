@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685923"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851736"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků v Azure SQL Data Warehouse
 
@@ -24,7 +24,7 @@ Doprovodné materiály k používání tříd prostředků ke správě paměti a
 
 ## <a name="what-are-resource-classes"></a>Co jsou třídy prostředků
 
-Kapacita výkonu dotazu je určena třídou prostředků uživatele.  Třídy prostředků jsou předem určené limity prostředků v Azure SQL Data Warehouse, které řídí výpočetní prostředky a souběžnost pro provádění dotazů. Třídy prostředků vám pomohou spravovat vaše zatížení nastavením limitů počtu dotazů, které jsou souběžně spuštěny, a výpočetních prostředků přiřazených k jednotlivým dotazům.  Existuje kompromis mezi pamětí a souběžně.
+Kapacita výkonu dotazu je určena třídou prostředků uživatele.  Třídy prostředků jsou předem určené limity prostředků v Azure SQL Data Warehouse, které řídí výpočetní prostředky a souběžnost pro provádění dotazů. Třídy prostředků vám pomůžou nakonfigurovat prostředky pro vaše dotazy nastavením omezení počtu dotazů, které běží souběžně, a výpočetních prostředků přiřazených každému dotazu.  Existuje kompromis mezi pamětí a souběžně.
 
 - Menší třídy prostředků omezují maximální velikost paměti na jeden dotaz, ale zvyšují souběžnost.
 - Větší třídy prostředků zvyšují maximální velikost paměti na jeden dotaz, ale omezují souběžnost.
@@ -65,14 +65,18 @@ Dynamické třídy prostředků jsou implementovány s těmito předem definovan
 - largerc
 - xlargerc
 
-Přidělení paměti pro jednotlivé třídy prostředků je následující, **bez ohledu na úroveň služby**.  V seznamu jsou uvedeny také minimální souběžné dotazy.  U některých úrovní služeb je možné dosáhnout více než minimální souběžnosti.
+Přidělení paměti pro jednotlivé třídy prostředků je následující. 
 
-| Třída prostředku | Procentuální hodnota paměti | Minimální počet souběžných dotazů |
-|:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 1                | 32                     |
-| mediumrc       | 10 %               | 10                     |
-| largerc        | 22               | 4                      |
-| xlargerc       | 70 %               | 1                      |
+| Úroveň služby  | smallrc           | mediumrc               | largerc                | xlargerc               |
+|:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
+| DW100c         | 25 %               | 25 %                    | 25 %                    | 70 %                    |
+| DW200c         | 12,5%             | 12,5%                  | 22                    | 70 %                    |
+| DW300c         | 8 %                | 10 %                    | 22                    | 70 %                    |
+| DW400c         | 6,25%             | 10 %                    | 22                    | 70 %                    |
+| DW500c         | 20 %               | 10 %                    | 22                    | 70 %                    |
+| DW1000c na<br> DW30000c | 3 %       | 10 %                    | 22                    | 70 %                    |
+
+
 
 ### <a name="default-resource-class"></a>Výchozí třída prostředků
 
@@ -105,6 +109,8 @@ Tyto operace se řídí třídami prostředků:
 
 > [!NOTE]  
 > Příkazy SELECT pro zobrazení dynamické správy (zobrazení dynamické správy) nebo jiná systémová zobrazení se neřídí žádnou z omezení souběžnosti. Systém můžete monitorovat bez ohledu na počet prováděných dotazů.
+>
+>
 
 ### <a name="operations-not-governed-by-resource-classes"></a>Operace, na které se neřídí třídy prostředků
 
@@ -126,7 +132,7 @@ Následující příkazy jsou vyjmuty z tříd prostředků a vždy se spouště
 - VLOŽIT HODNOTY
 - VYBRAT ze systémových zobrazení a zobrazení dynamické správy
 - ČÁSTECH
-- NÁSTROJI
+- DBCC
 
 <!--
 Removed as these two are not confirmed / supported under SQL DW
@@ -178,6 +184,11 @@ Uživatelé můžou být členy více tříd prostředků. Když uživatel patř
 - Větší třídy prostředků mají přednost před menšími třídami prostředků. Například pokud je uživatel členem služby mediumrc a largerc, dotazy se spouštějí s largerc. Podobně platí, že pokud je uživatel členem obou staticrc20 i statirc80, dotazy se spouštějí s přidělením prostředků staticrc80.
 
 ## <a name="recommendations"></a>Doporučení
+
+>[!NOTE]
+>Zvažte využití možností správy úloh ([izolace úloh](sql-data-warehouse-workload-isolation.md), [klasifikace](sql-data-warehouse-workload-classification.md) a [důležitost](sql-data-warehouse-workload-importance.md)) pro lepší kontrolu nad úlohou a předvídatelným výkonem.  
+>
+>
 
 Doporučujeme vytvořit uživatele, který je vyhrazený pro spuštění konkrétního typu dotazu nebo operace načtení. Poskytněte tomuto uživateli trvalou třídu prostředků namísto časté změny třídy prostředků. Statické třídy prostředků poskytují větší celkovou kontrolu nad úlohou, takže před zvážením dynamických tříd prostředků doporučujeme použít statické třídy prostředků.
 
@@ -231,7 +242,7 @@ Tady je účel této uložené procedury:
 
 ### <a name="usage-example"></a>Příklad použití
 
-Syntaktick  
+Syntaxe:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
 1. pro extrakci aktuálního DWU z databáze datového skladu nebo zadání všech podporovaných DWU ve formátu DW100c zadejte buď parametr NULL. @DWU:

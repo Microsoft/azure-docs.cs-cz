@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: 83ee78d369af7fe99de8e7236fe1eb0bc63a942f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4839ce7a0188c782656fd3a4c42cbdd116b165e9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301747"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849373"
 ---
 # <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Data, která se mají shromažďovat při otevření případu pro Microsoft Azure Automation
 

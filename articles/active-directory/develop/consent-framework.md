@@ -3,33 +3,29 @@ title: Azure Active Directory – rozhraní pro vyjádření souhlasu
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o tom, jak Azure Active Directory a jak usnadňuje vývoj webových a nativních klientských aplikací pro více tenantů.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5b60901e57392aaea504f96572801a878d707c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e850b58274a98fd18b84114552bbf7835a27417c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803858"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843372"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory – rozhraní pro vyjádření souhlasu
 
 Rozhraní pro vyjádření souhlasu Azure Active Directory (Azure AD) usnadňuje vývoj webových a nativních klientských aplikací pro více tenantů. Tyto aplikace umožňují přihlášení pomocí uživatelských účtů z klienta Azure AD, které se liší od účtu, ve kterém je aplikace zaregistrovaná. Můžou také vyžadovat přístup k webovým rozhraním API, jako je Microsoft Graph API (pro přístup k Azure AD, Intune a službám v Office 365) a dalším rozhraním API služeb Microsoftu, a to i k vašim vlastním webovým rozhraním API.
 
-Rozhraní je založené na uživateli nebo správci, kteří přistupují k aplikaci, která žádá o registraci ve svém adresáři, což může zahrnovat přístup k datům adresáře. Například pokud Webová klientská aplikace potřebuje číst informace o kalendáři uživatele z Office 365, musí nejdřív souhlasit s klientskou aplikací. Po přijetí souhlasu bude klientská aplikace moci volat rozhraní Microsoft Graph API jménem uživatele a podle potřeby použít informace v kalendáři. [Rozhraní Microsoft Graph API](https://developer.microsoft.com/graph) poskytuje přístup k datům v Office 365 (jako jsou kalendáře a zprávy ze serveru Exchange, webů a seznamů ze SharePointu, dokumentů z OneDrivu, poznámkových bloků z OneNotu, úkolů z Planneru a sešitů z Excelu) i uživatelů a skupiny z Azure AD a dalších datových objektů z dalších cloudových služeb Microsoftu.
+Rozhraní je založené na uživateli nebo správci, kteří přistupují k aplikaci, která žádá o registraci ve svém adresáři, což může zahrnovat přístup k datům adresáře. Například pokud Webová klientská aplikace potřebuje číst informace o kalendáři uživatele z Office 365, musí nejdřív souhlasit s klientskou aplikací. Po přijetí souhlasu bude klientská aplikace moci volat rozhraní Microsoft Graph API jménem uživatele a podle potřeby použít informace v kalendáři. [Rozhraní Microsoft Graph API](https://developer.microsoft.com/graph) poskytuje přístup k datům v Office 365 (jako jsou kalendáře a zprávy z Exchange, webů a seznamů ze SharePointu, dokumentů z OneDrivu, poznámkových bloků z OneNotu, úkolů z Planneru a sešitů z Excelu) a také uživatelů a skupin z Azure AD a dalších datových objektů z dalších cloudových služeb Microsoftu.
 
 Rozhraní pro vyjádření souhlasu je postavené na OAuth 2,0 a jeho různých tocích, jako je udělení autorizačního kódu a udělení přihlašovacích údajů klienta, pomocí veřejných nebo důvěrných klientů. Díky použití OAuth 2,0 může Azure AD vytvořit mnoho různých typů klientských aplikací – například na telefonu, tabletu, serveru nebo webové aplikaci – a získat přístup k požadovaným prostředkům.
 

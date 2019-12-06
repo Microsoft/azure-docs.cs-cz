@@ -2,19 +2,19 @@
 title: Zprovoznění řešení Update Management, Change Tracking a inventáře z virtuálního počítače Azure
 description: Naučte se, jak připojit virtuální počítač Azure pomocí Update Management, Change Tracking a řešení inventáře, která jsou součástí Azure Automation.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0069d2e8ccd3b4f65ced8b6e18ce568689f81e14
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 8dd69b1cf4ac8874175cff84d3c2b9fc5e323922
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374410"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849679"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Zprovoznění řešení Update Management, Change Tracking a inventáře z virtuálního počítače Azure
 
@@ -45,9 +45,9 @@ Každé řešení používá v pracovním prostoru konfiguraci oboru pro cílen�
 
 Pokud vybraný pracovní prostor ještě nemá Update Management nebo Change Tracking řešení, vytvoří se následující konfigurace oboru:
 
-* **MicrosoftDefaultScopeConfig – sledování změn ve**
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
 
-* **MicrosoftDefaultScopeConfig – aktualizace**
+* **MicrosoftDefaultScopeConfig-Updates**
 
 Pokud vybraný pracovní prostor už toto řešení obsahuje, řešení se znovu nenasazením a konfigurace oboru se nepřidá.
 
@@ -61,7 +61,7 @@ Přejděte do svého pracovního prostoru. V části **Obecné**vyberte možnost
 
 |Name (Název)     |Kategorie  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
 
 Vyberte jedno z uložených hledání, abyste zobrazili dotaz, který se používá k naplnění skupiny. Následující obrázek znázorňuje dotaz a jeho výsledky:
@@ -97,7 +97,7 @@ Pokud jste použili řešení Update Management, možná budete chtít po odebr�
 
 * Aktualizace plánů – každá bude mít názvy, které odpovídají vytvořeným nasazením aktualizací.
 
-* Skupiny hybridních pracovních procesů vytvořené pro řešení – každá bude pojmenována podobně jako machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
+* Skupiny hybridních pracovních procesů vytvořené pro řešení – každá bude pojmenována podobně jako machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
 Pokud jste použili řešení Start/Stop VMs during off-hours, možná budete chtít po odebrání řešení odebrat následující položky, které už nepotřebujete.
 
@@ -111,7 +111,7 @@ Alternativně můžete také zrušit propojení pracovního prostoru s účtem A
 
 Odebrání virtuálního počítače z Update Management:
 
-* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
+* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro `MicrosoftDefaultScopeConfig-Updates`konfigurace oboru. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
 * Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Další kroky

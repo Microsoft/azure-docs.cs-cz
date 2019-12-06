@@ -4,17 +4,17 @@ description: Tento článek poskytuje informace o instalaci a použití Hybrid R
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 7329d32c01f005f4f5a727f80c6af0b58982b41f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743805"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850257"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker
 
@@ -63,7 +63,7 @@ Otevřete relaci PowerShellu v režimu správce a spusťte následující přík
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
-K odebrání zastaralých počítačů ze skupiny Hybrid Worker Použijte volitelný `machineName` parametr.
+K odebrání zastaralých počítačů ze skupiny Hybrid Worker Použijte volitelný parametr `machineName`.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
@@ -71,7 +71,7 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 
 ### <a name="linux"></a>Linux
 
-K získání ID pracovního prostoru můžete použít `ls /var/opt/microsoft/omsagent` příkaz na Hybrid Runbook Worker. V adresáři je složka, ve které je název složky ID pracovního prostoru.
+K získání ID pracovního prostoru můžete použít příkaz `ls /var/opt/microsoft/omsagent` na Hybrid Runbook Worker. V adresáři je složka, ve které je název složky ID pracovního prostoru.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -107,10 +107,10 @@ Pokud používáte proxy server pro komunikaci mezi agentem a službou Azure Aut
 
 Následující porty a adresy URL jsou vyžadovány, aby Hybrid Runbook Worker role komunikovala se službou Automation:
 
-* Port: Pro odchozí přístup k Internetu se vyžaduje jenom TCP 443.
+* Port: odchozí internetový přístup vyžaduje jenom TCP 443.
 * Globální adresa URL: *. azure-automation.net
 * Globální adresa URL US Gov – Virginie: *. azure-automation.us
-* Služba agenta: https://\<ID pracovního prostoru\>. agentsvc.Azure-Automation.NET
+* Služba agenta: https://\<ID pracovního prostoru\>. agentsvc.azure-automation.net
 
 Doporučuje se používat adresy uvedené při definování výjimek. Pro IP adresy můžete stáhnout [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Tento soubor se aktualizuje týdně a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahu IP adres.
 
@@ -118,20 +118,20 @@ Pokud máte účet Automation, který je definovaný pro konkrétní oblast, mů
 
 | **Oblast** | **Záznam DNS** |
 | --- | --- |
-| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Střed USA – jih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| USA – západ 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
+| Středozápadní USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Východ USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
+| Západní USA 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
 | Kanada – střed |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Západní Evropa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Severní Evropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Jihovýchodní Asie |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Střed Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
+| Střední Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Austrálie – východ |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
 | Austrálie – jihovýchod |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| USA – Virginie | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služby Stažení [softwaru ve službě](https://www.microsoft.com/download/details.aspx?id=41653) stažení softwaru.
 
@@ -142,17 +142,17 @@ Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služ
 >
 > Každý týden je vhodné stáhnout nový soubor XML. Pak aktualizujte svůj web tak, aby správně identifikoval služby běžící v Azure. Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor používá k aktualizaci inzerce protokolu BGP (Border Gateway Protocol) v Azure Space v první týden v měsíci.
 
-### <a name="update-management"></a>Update Management
+### <a name="update-management"></a>Správa aktualizací
 
 Na standardních adresách a portech, které Hybrid Runbook Worker vyžaduje, jsou pro Update Management vyžadovány následující adresy. Komunikace s těmito adresami se provádí přes port 443.
 
-|Veřejné Azure  |Azure Government  |
+|Veřejný partnerský vztah Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí, najdete v tématu [spouštění Runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
 * Informace o řešení potíží s procesy Hybrid Runbook Worker najdete v tématu [řešení potíží s procesy Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#general)

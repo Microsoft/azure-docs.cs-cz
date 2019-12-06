@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd03ea807e48f6f0e287bb4497e4d20268995db
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 7a1e6dc3ed1c1f9af6f6b935cdd3a6ceaedbe7a4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404168"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848251"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication v cloudu
 
@@ -32,8 +32,8 @@ Jako správce, který má přiřazenou roli Správce ověřování, můžete vy�
 
 ![Správa metod ověřování z Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-1. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **všech uživatelích**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Vlevo vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**.
    - Při **resetování hesla** dojde k resetování hesla uživatele a přiřazení dočasného hesla, které musí být při příštím přihlášení změněno.
    - Když se uživatel poprvé přihlásí, bude se vyžadovat, aby si ho **znovu zaregistroval** . v takovém případě bude požádán o nastavení nové metody ověřování MFA.
@@ -45,8 +45,8 @@ Toto nastavení odstraní všechna hesla aplikací, která uživatel vytvořil. 
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Jak odstranit existující hesla aplikací pro uživatele
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **všech uživatelích**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Vlevo vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 3. Na pravé straně vyberte **Multi-Factor Authentication** na panelu nástrojů. Otevře se stránka Multi-Factor Authentication.
 4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
 5. Vyberte **Spravovat uživatelská nastavení**.

@@ -11,21 +11,21 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 207e8def168227cb419d25c8e98aa15c09c72b2c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671568"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851600"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto postupu se naučíte, jak získat asynchronní a souběžné zpracování velkých objemů dat pomocí Azure Machine Learning. Funkce odvození dávky, která je popsaná tady, je ve verzi Public Preview. Je to vysoce výkonná a vysoká propustnost pro generování odvození a zpracování dat. Poskytuje asynchronní možnosti mimo pole.
+Naučte se, jak získat asynchronní a souběžné zpracování velkých objemů dat pomocí Azure Machine Learning. Funkce odvození dávky, která je popsaná tady, je ve verzi Public Preview. Je to vysoce výkonná a vysoká propustnost pro generování odvození a zpracování dat. Poskytuje asynchronní možnosti mimo pole.
 
 Díky odvození dávky je snadné škálovat offline oddělení na velké clustery počítačů na terabajtech produkčních dat, což má za následek lepší produktivitu a optimalizované náklady.
 
-V tomto postupu se naučíte následující úlohy:
+V tomto článku se seznámíte s následujícími úlohami:
 
 > * Vytvořte vzdálený výpočetní prostředek.
 > * Zapište vlastní skript pro odvození.
@@ -40,7 +40,7 @@ V tomto postupu se naučíte následující úlohy:
 
 * Informace o [tom, jak](how-to-configure-environment.md) spravovat vlastní prostředí a závislosti, najdete v tématu Průvodce konfigurací vlastního prostředí. Pokud chcete stáhnout potřebné závislosti, spusťte `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` ve vašem prostředí.
 
-## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků strojového učení
+## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků machine learning
 
 Následující akce nastaví prostředky, které potřebujete ke spuštění kanálu odvození dávky:
 
@@ -189,7 +189,7 @@ model = Model.register(model_path="models/",
 Skript *musí obsahovat* dvě funkce:
 - `init()`: tuto funkci použijte pro veškerou nákladný nebo běžnou přípravu pro pozdější odvození. Můžete ji například použít k načtení modelu do globálního objektu.
 -  `run(mini_batch)`: funkce se spustí pro každou instanci `mini_batch`.
-    -  `mini_batch`: odvození dávky vyvolá metodu Run a předá jako argument pro metodu buď list, nebo PANDAS dataframe. Každá položka v min_batch bude – FilePath, pokud je vstupem datová sada, PANDAS dataframe, pokud je vstupem TabularDataset.
+    -  `mini_batch`: odvození dávky vyvolá metodu Run a předá jako argument pro metodu buď list, nebo PANDAS dataframe. Každá položka v min_batch bude – cesta k souboru, pokud je vstupem datová sada, PANDAS dataframe, pokud je vstupem TabularDataset.
     -  `response`: metoda Run () by měla vracet PANDAS dataframe nebo Array. Pro append_row output_action jsou tyto vrácené prvky připojeny do společného výstupního souboru. V případě summary_only se obsah prvků ignoruje. U všech výstupních akcí každý vrácený element Output označuje jedno úspěšné odvození vstupního prvku ve vstupní Mini-Batch. Uživatel by měl mít jistotu, že je do odvozeného výstupu zahrnutá dostatečná data pro mapování vstupu na odvození. Výstup odvození se zapíše do výstupního souboru a nezaručujeme, že by měl být v daném pořadí, uživatel by měl ve výstupu použít nějaký klíč k namapování na vstup.
 
 ```python
@@ -237,6 +237,15 @@ def run(mini_batch):
     return resultList
 ```
 
+### <a name="how-to-access-other-files-in-init-or-run-functions"></a>Přístup k jiným souborům v `init()` nebo `run()`ch funkcích
+
+Pokud máte jiný soubor nebo složku ve stejném adresáři jako skript pro odvození, můžete na něj odkazovat pomocí hledání aktuálního pracovního adresáře.
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
 ## <a name="build-and-run-the-batch-inference-pipeline"></a>Sestavení a spuštění kanálu odvození dávky
 
 Teď máte všechno, co potřebujete k vytvoření kanálu.
@@ -261,11 +270,11 @@ batch_env.spark.precache_packages = False
 
 ### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Zadejte parametry pro krok kanálu odvození dávky.
 
-`ParallelRunConfig` je hlavní konfigurace nově zavedené instance `ParallelRunStep` odvození dávky v rámci kanálu Azure Machine Learning. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech těchto:
+`ParallelRunConfig` je hlavní konfigurace nově zavedené instance `ParallelRunStep` odvození dávky v rámci kanálu Azure Machine Learning. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech následujících parametrů:
 - `entry_script`: uživatelský skript jako cesta k místnímu souboru, který se bude spouštět paralelně na více uzlech. Pokud je k dispozici `source_directly`, použijte relativní cestu. V opačném případě použijte jakoukoli cestu, která je přístupná v počítači.
 - `mini_batch_size`: velikost zkrácené dávky předané do jednoho `run()` volání. (Volitelné; výchozí hodnota je `1`.)
     - U `FileDataset`se jedná o počet souborů s minimální hodnotou `1`. Můžete zkombinovat více souborů do jedné Mini-dávky.
-    - Pro `TabularDataset`se jedná o velikost dat. Příklady hodnot jsou `1024`, `1024KB`, `10MB`a `1GB`. Doporučená hodnota je `1MB`. Všimněte si, že se pro Mini dávku z `TabularDataset` nikdy nepřekročí hranice souborů. Například pokud máte soubory. csv s různými velikostmi, nejmenší soubor je 100 KB a největší je 10 MB. Pokud nastavíte `mini_batch_size = 1MB`, budou se soubory s velikostí menší než 1 MB považovat za jednu miniskou dávku. Soubory o velikosti větší než 1 MB budou rozděleny do několika Mini-dávek.
+    - Pro `TabularDataset`se jedná o velikost dat. Příklady hodnot jsou `1024`, `1024KB`, `10MB`a `1GB`. Doporučená hodnota je `1MB`. Zkrácená dávka z `TabularDataset` nikdy nepřekročí hranice souborů. Například pokud máte soubory. csv s různými velikostmi, nejmenší soubor je 100 KB a největší je 10 MB. Pokud nastavíte `mini_batch_size = 1MB`, budou se soubory s velikostí menší než 1 MB považovat za jednu miniskou dávku. Soubory o velikosti větší než 1 MB budou rozděleny do několika Mini-dávek.
 - `error_threshold`: počet neúspěšných záznamů pro `TabularDataset` a chyby souborů pro `FileDataset`, které by se měly během zpracování ignorovat. Pokud se počet chyb pro celý vstup překročí k této hodnotě, úloha se zastaví. Prahová hodnota chyby je pro celý vstup a nikoli pro jednotlivé Mini-dávky odeslané do metody `run()`. Rozsah je `[-1, int.max]`. Část `-1` označuje, že se při zpracování budou ignorovat všechny chyby.
 - `output_action`: jedna z následujících hodnot indikuje, jak bude výstup uspořádán:
     - `summary_only`: uživatelský skript uloží výstup. `ParallelRunStep` použije výstup pouze pro výpočet prahu chyby.
@@ -292,7 +301,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>Vytvoření kroku kanálu
+### <a name="create-the-pipeline-step"></a>Vytvoření kanálu krok
 
 Vytvořte krok kanálu pomocí skriptu, konfigurace prostředí a parametrů. Určete výpočetní cíl, který jste už ke svému pracovnímu prostoru připojili jako cíl provádění skriptu. Pomocí `ParallelRunStep` vytvořit krok kanálu odvození dávky, který převezme všechny následující parametry:
 - `name`: název kroku s následujícími omezeními pojmenovávání: jedinečné, 3-32 znaky a Regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
@@ -348,6 +357,8 @@ pipeline_run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>Další kroky
 
 Chcete-li zobrazit tento proces na konci, zkuste [Poznámkový blok pro odvození dávky](https://aka.ms/batch-inference-notebooks). 
+
+Pokyny k ladění a řešení potíží pro ParallelRunStep najdete v tématu [Průvodce postupy](how-to-debug-batch-predictions.md).
 
 Pokyny k ladění a řešení potíží s kanály najdete v [Průvodci postupy](how-to-debug-pipelines.md).
 

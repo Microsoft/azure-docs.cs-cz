@@ -1,18 +1,18 @@
 ---
 title: Skript Azure PowerShell – Azure Cosmos DB vytvoření tabulky rozhraní API pro tabulky
-description: Skript Azure PowerShell – Azure Cosmos DB vytvoření tabulky rozhraní API pro tabulky
+description: Naučte se používat skript prostředí PowerShell k aktualizaci propustnosti databáze nebo kontejneru v Azure Cosmos DB rozhraní API pro tabulky
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 12/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 998379384c12c611989bf1ef04b149ab1ceaf25c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 12a7c9cd6e1a9c1271aa73b9c2b2e1c834c743a7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178725"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873535"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Vytvoření tabulky pro Azure Cosmos DB rozhraní API pro tabulky
 

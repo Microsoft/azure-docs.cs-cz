@@ -1,85 +1,85 @@
 ---
-title: Ověřování pomocí certifikátů v Iosu – Azure Active Directory
-description: Další informace o podporované scénáře a požadavky pro konfiguraci ověřování na základě certifikátů v řešení se zařízeními s Iosem
+title: Ověřování založené na certifikátech v iOS – Azure Active Directory
+description: Přečtěte si o podporovaných scénářích a požadavcích na konfiguraci ověřování na základě certifikátů v řešeních se zařízeními s iOS.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 01/15/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d2f9e7d71ab660c4df6f65d6bebe1d3854086bdd
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60415991"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848795"
 ---
-# <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Ověřování Azure Active Directory na základě certifikátů v Iosu
+# <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory ověřování pomocí certifikátů v iOS
 
-zařízení se systémem iOS můžete použít k ověření do Azure Active Directory pomocí klientského certifikátu na svých zařízeních při připojování k ověřování prostřednictvím certifikátu (certifikátů):
+zařízení s iOS můžou k ověřování použít ověřování pomocí certifikátu (certifikátů), aby se při připojování k Azure Active Directory používal klientský certifikát na svém zařízení:
 
-* Mobilní aplikace Office, jako je například Microsoft Outlook a Microsoft Word
+* Mobilní aplikace Office, jako je Microsoft Outlook a Microsoft Word
 * Klienti Exchange ActiveSync (EAS)
 
-Tuto funkci konfiguruje eliminuje nutnost zadat kombinace uživatelského jména a hesla do určité e-mailu a aplikace Microsoft Office na svém mobilním zařízení.
+Konfigurace této funkce eliminuje nutnost zadat kombinaci uživatelského jména a hesla k určitým e-mailovým a systém Microsoft Office aplikacím na vašem mobilním zařízení.
 
-Toto téma obsahuje požadavky a podporované scénáře konfigurace certifikátů pro zařízení s iOS(Android) pro uživatele tenantů v Office 365 Enterprise, obchodní, vzdělávání, pro státní správu USA, Čína, a Německo plány.
+Toto téma vám poskytne požadavky a podporované scénáře konfigurace certifikátů na zařízení iOS (Android) pro uživatele klientů v aplikacích Office 365 Enterprise, Business, školství, USA Enterprise, Čína a Německo.
 
-Tato funkce je dostupná ve verzi preview v plánech Office 365 Government obrany USA a federální.
+Tato funkce je dostupná ve verzi Preview v Office 365 USA a v federálních plánech.
 
-## <a name="microsoft-mobile-applications-support"></a>Podpora mobilních aplikací Microsoft
+## <a name="microsoft-mobile-applications-support"></a>Podpora mobilních aplikací Microsoftu
 
 | Aplikace | Podpora |
 | --- | --- |
-| Azure Information Protection aplikace |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Portál společnosti Intune |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Microsoft Teams |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| OneNote |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| OneDrive |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Outlook |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Power BI |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Skype pro firmy |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Word / Excel / PowerPoint |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
-| Yammer |![Značka zaškrtnutí označuje, podpora pro tuto aplikaci][1] |
+| Aplikace Azure Information Protection |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| Portál společnosti Intune |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| Microsoft Teams |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| OneNote |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| OneDrive |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| Outlook |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| Power BI |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| Skype pro firmy |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| Word/Excel/PowerPoint |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
+| Yammer |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
 
 ## <a name="requirements"></a>Požadavky
 
-Verze operačního systému zařízení musí být iOS 9 a vyšší
+Verze operačního systému zařízení musí být iOS 9 a vyšší.
 
-Federační server musí být nakonfigurován.
+Je nutné nakonfigurovat Federační server.
 
-Microsoft Authenticator je vyžadována pro aplikace Office pro iOS.
+Pro aplikace Office v iOS se vyžaduje Microsoft Authenticator.
 
-Pro Azure Active Directory k odvolání klientského certifikátu musí mít token služby AD FS následující deklarace:
+Pro Azure Active Directory odvolání klientského certifikátu musí mít token ADFS následující deklarace identity:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (Sériové číslo certifikátu klienta)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (Řetězce pro vystavitele certifikátu klienta)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (sériové číslo certifikátu klienta)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (řetězec pro vystavitele klientského certifikátu)
 
-Azure Active Directory přidá tyto deklarace do tokenu obnovení v případě, že jsou k dispozici v tokenu služby AD FS (nebo jiný token SAML). Pokud token obnovení je potřeba ověřit, tyto informace slouží ke kontrole odvolání.
+Azure Active Directory přidá tyto deklarace do aktualizačního tokenu, pokud jsou k dispozici v tokenu služby AD FS (nebo jakémkoli jiném tokenu SAML). Pokud je nutné ověřit token aktualizace, slouží tyto informace ke kontrole odvolání.
 
-Jako osvědčený postup měli byste aktualizovat chybové stránky služby AD FS vaší organizace s následujícími informacemi:
+Osvědčeným postupem je aktualizovat chybové stránky ADFS vaší organizace s použitím následujících informací:
 
-* Požadavky pro instalaci aplikace Microsoft Authenticator v Iosu
-* Pokyny, jak získat certifikát uživatele.
+* Požadavek na instalaci Microsoft Authenticator v iOS
+* Pokyny, jak získat uživatelský certifikát
 
-Další informace najdete v tématu [přizpůsobení stránek služby AD FS přihlásit](https://technet.microsoft.com/library/dn280950.aspx).
+Další informace najdete v tématu [přizpůsobení AD FS přihlašovací stránky](https://technet.microsoft.com/library/dn280950.aspx).
 
-Některé aplikace Office (s povolené moderní ověřování) odeslat "*řádku = přihlášení*" do služby Azure AD v žádosti. Ve výchozím nastavení, Azure AD přeloží "*řádku = přihlášení*"v žádosti o služby AD FS jako"*wauth = usernamepassworduri*" (zeptá služby AD FS provést ověření U/P) a "*wfresh = 0*" (zeptá služby AD FS do Ignorovat stav jednotného přihlašování a proveďte nové ověření). Pokud chcete povolit ověřování pomocí certifikátu pro tyto aplikace, budete muset změnit výchozí chování služby Azure AD. Stačí nastavit "*PromptLoginBehavior*'v nastavení federovanou doménu na"*zakázané*".
-Můžete použít [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) rutina k provedení této úlohy:
+Některé aplikace Office (s povoleným moderním ověřováním) odesílají do služby Azure AD ve své žádosti "*prompt = Login*". Ve výchozím nastavení Azure AD překládá "*prompt = Login*" v požadavku na ADFS jako '*wauth = usernamepassworduri*' (požádá ADFS, aby provedou ověřování U/P) a '*wfresh = 0*' (požádá službu AD FS, aby ignorovala stav jednotného přihlašování a provede nové ověřování). Pokud chcete pro tyto aplikace povolit ověřování na základě certifikátů, musíte změnit výchozí chování služby Azure AD. Stačí nastavit '*PromptLoginBehavior*' v nastavení federované domény na '*disabled*'.
+K provedení této úlohy můžete použít rutinu [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) :
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
-## <a name="exchange-activesync-clients-support"></a>Podpora klientů protokolu Exchange ActiveSync
+## <a name="exchange-activesync-clients-support"></a>Podpora klientů Exchange ActiveSync
 
-V systému iOS 9 nebo novější se podporuje e-mailového klienta nativní aplikace pro iOS. Pro všechny ostatní aplikace Exchange ActiveSync Chcete-li zjistit, jestli je tato funkce podporuje, obraťte se na vaše aplikace pro vývojáře.
+V systému iOS 9 nebo novějším se podporuje nativní e-mailový klient iOS. Pro všechny ostatní aplikace Exchange ActiveSync, abyste zjistili, jestli je tato funkce podporovaná, kontaktujte vývojáře aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete nakonfigurovat ověřování prostřednictvím certifikátu ve vašem prostředí, přečtěte si téma [Začínáme s ověřováním na základě certifikátů v Androidu](../authentication/active-directory-certificate-based-authentication-get-started.md) pokyny.
+Pokud chcete ve svém prostředí nakonfigurovat ověřování na základě certifikátů, přečtěte si téma Začínáme [s ověřováním pomocí certifikátů v Androidu](../authentication/active-directory-certificate-based-authentication-get-started.md) .
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png

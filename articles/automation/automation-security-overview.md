@@ -1,22 +1,22 @@
 ---
-title: Úvod do ověřování ve službě Azure Automation
+title: Úvod do ověřování v Azure Automation
 description: Tento článek nabízí přehled zabezpečení služby Automation a různé metody ověřování, které jsou dostupné pro účty Automation ve službě Azure Automation.
 keywords: automation security, secure automation; automation authentication
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 88f1826191934ee76c565bd73de907a26d368c88
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0a05497c05051576868c1311857d58caa0d76055
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476843"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850665"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Úvod do ověřování ve službě Azure Automation  
 Azure Automation umožňuje automatizovat úlohy s prostředky v Azure, místně a u jiných poskytovatelů cloudu, například Amazon Web Services (AWS).  Aby mohl runbook provádět požadované akce, musí mít oprávnění pro bezpečný přístup k prostředkům s minimálními požadovanými právy v rámci předplatného.
@@ -39,7 +39,7 @@ Momentálně, když na portálu Azure vytvoříte nový účet Automation, úče
 
 Runbooky, které běží v procesu Hybrid Runbook Worker ve vašem datovém centru nebo s výpočetními službami v AWS, nemůžou používat stejné metody, které se obvykle používají pro runbooky ověřované pro prostředky Azure.  Důvodem je to, že tyto prostředky jsou spuštěné mimo Azure a proto vyžadují vlastní přihlašovací údaje zabezpečení definované ve službě Automation, aby se ověřovaly v prostředcích, ke přistupují místně.  
 
-## <a name="authentication-methods"></a>Metody ověřování
+## <a name="authentication-methods"></a>Metody ověření
 Následující tabulka shrnuje různé metody ověřování pro jednotlivá prostředí podporovaná službou Azure Automation a články popisující, jak nastavit ověřování runbooků.
 
 | Metoda | Prostředí | Článek |

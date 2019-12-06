@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak zadat dotaz na protokoly pro Update Ma
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d53e41fc902241d796cf8b10ae35c50c090a803a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 4797e3a348b057fa21677649e4cb7de78de0d8b9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377535"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850614"
 ---
 # <a name="query-update-records-for-update-management-in-log-analytics"></a>Dotaz na aktualizace záznamů pro Update Management v Log Analytics
 
@@ -47,7 +47,7 @@ Heartbeat
 Na počítači s Windows můžete zkontrolovat následující informace a ověřit připojení agenta s protokoly Azure Monitor:
 
 1. V Ovládacích panelech otevřete **Microsoft Monitoring Agent**. Na kartě **Azure Log Analytics** se v agentovi zobrazí následující zpráva: **Microsoft Monitoring Agent se úspěšně připojil k Log Analytics**.
-2. Otevřete protokol událostí systému Windows. V části **Application and Services Logs\Operations Manager** vyhledejte události ID 3000 a id události 5002 ze zdrojového **konektoru služby**. Tyto události signalizují, že je počítač zaregistrován v pracovním prostoru Log Analytics a přijímá konfiguraci.
+2. Otevřete protokol událostí systému Windows. V části **Application and Services Logs\Operations Manager** vyhledejte události ID 3000 a id události 5002 ze zdrojového **konektoru služby**. Tyto události znamenají, že se počítač zaregistroval do pracovního prostoru služby Log Analytics a přijímá konfiguraci.
 
 Pokud Agent nemůže komunikovat s protokoly Azure Monitor a Agent je nakonfigurován pro komunikaci s internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Informace o tom, jak ověřit, jestli je brána firewall nebo proxy server správně nakonfigurovaná, najdete v tématu [Konfigurace sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfiguraci sítě pro agenta Linux](../log-analytics/log-analytics-agent-linux.md).
 
@@ -63,7 +63,7 @@ Pokud chcete ověřit, že skupina pro správu Operations Manager komunikuje s p
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Dotazy na vyhodnocení pro jeden virtuální počítač Azure (Windows)
 
-Hodnotu VMUUID nahraďte identifikátorem GUID virtuálního počítače, na který se dotaz provádí. VMUUID, který se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`.
+Hodnotu VMUUID nahraďte identifikátorem GUID virtuálního počítače, na který se dotaz provádí. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací
 
@@ -92,8 +92,8 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>Dotazy na posuzování virtuálních počítačů Azure (Linux)
 
-U některých Linux distribuce se [neshoduje s hodnotou](https://en.wikipedia.org/wiki/Endianness) VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, který se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor: `Update | where Computer == "<machine name>"
-| summarize by Computer, VMUUID`.
+U některých Linux distribuce se [neshoduje s hodnotou](https://en.wikipedia.org/wiki/Endianness) VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor: `Update | where Computer == "<machine name>"
+| summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací
 

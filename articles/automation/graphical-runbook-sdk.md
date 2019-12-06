@@ -1,32 +1,32 @@
 ---
-title: Přehled runbooku Azure Automation Grpahical SDK
-description: Tento článek popisuje, jak použít SDK grafického Runbooku Azure Automation
+title: Přehled Azure Automation Grpahical sady Runbook SDK
+description: Tento článek popisuje, jak použít sadu Azure Automation grafické sady Runbook SDK
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e4229079a1fa50295eef85b42f91bbc1b4a21fc3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a06c190931fdd0f49132f815b153c08ece68c9f3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478592"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849543"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Použití Azure Automation grafický runbook SDK
+# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Použití Azure Automation grafické sady Runbook SDK
 
-[Grafické runbooky](automation-graphical-authoring-intro.md) jsou runbooky, které pomáhají spravovat složitosti základního kódu Windows Powershellu nebo pracovním postupu Powershellu. Microsoft Azure Automation grafické vytváření SDK umožňuje vývojářům vytvářet a upravovat grafické Runbooky pro použití se službou Azure Automation. Následující fragmenty kódu ukazují základní postup vytvoření grafického runbooku z vašeho kódu.
+[Grafické Runbooky](automation-graphical-authoring-intro.md) jsou Runbooky, které vám pomůžou se správou složitých kódů pracovního postupu Windows PowerShellu nebo PowerShellu. Sada SDK pro grafické vytváření Microsoft Azure Automation umožňuje vývojářům vytvářet a upravovat grafické Runbooky pro použití se službou Azure Automation. Následující fragmenty kódu ukazují základní tok vytváření grafického Runbooku z vašeho kódu.
 
 ## <a name="pre-requisites"></a>Požadavky
 
-Pokud chcete začít, importovat `Microsoft.Azure.Automation.GraphicalRunbook.Model` balíčku do vašeho projektu.
+Začněte tím, že do svého projektu naimportujete balíček `Microsoft.Azure.Automation.GraphicalRunbook.Model`.
 
-## <a name="create-a-runbook-object-instance"></a>Vytvoření instance objektu sady runbook
+## <a name="create-a-runbook-object-instance"></a>Vytvoření instance objektu sady Runbook
 
-Odkaz `Orchestrator.GraphRunbook.Model` sestavení a vytvoření instance `Orchestrator.GraphRunbook.Model.GraphRunbook` třídy:
+Odkaz na `Orchestrator.GraphRunbook.Model` sestavení a vytvoření instance `Orchestrator.GraphRunbook.Model.GraphRunbook` třídy:
 
 ```csharp
 using Orchestrator.GraphRunbook.Model;
@@ -35,9 +35,9 @@ using Orchestrator.GraphRunbook.Model.ExecutableView;
 var runbook = new GraphRunbook();
 ```
 
-## <a name="add-runbook-parameters"></a>Přidat parametry runbooku
+## <a name="add-runbook-parameters"></a>Přidat parametry Runbooku
 
-Vytvoření instance `Orchestrator.GraphRunbook.Model.Parameter` objektů a jejich přidání do sady runbook:
+Vytvoření instance `Orchestrator.GraphRunbook.Model.Parameter` objektů a jejich přidání do sady Runbook:
 
 ```csharp
 runbook.AddParameter(
@@ -53,9 +53,9 @@ runbook.AddParameter(
  });
 ```
 
-## <a name="add-activities-and-links"></a>Přidání aktivity a odkazy
+## <a name="add-activities-and-links"></a>Přidat aktivity a odkazy
 
-Vytvoření instance aktivity odpovídající typy a jejich přidání do sady runbook:
+Vytvořte instanci aktivit příslušných typů a přidejte je do Runbooku:
 
 ```csharp
 var writeOutputActivityType = new CommandActivityType {
@@ -93,35 +93,35 @@ var initializeRunbookVariable = runbook.AddActivity(
  });
 ```
 
-Aktivity jsou implementované následující třídy v `Orchestrator.GraphRunbook.Model` obor názvů:
+Aktivity jsou implementovány následujícími třídami v oboru názvů `Orchestrator.GraphRunbook.Model`:
 
 |Třída  |Aktivita  |
 |---------|---------|
-|CommandActivity     | Vyvolá příkaz prostředí PowerShell (rutiny, funkce atd.).        |
-|InvokeRunbookActivity     | Vyvolá jiný přiřazený runbook.        |
-|JunctionActivity     | Čeká na dokončení všech příchozí větví.        |
-|WorkflowScriptActivity     | Provede blok kódu Powershellu nebo pracovním postupu Powershellu (v závislosti na typu runbook) v rámci dané sady runbook. Jedná se o výkonný nástroj, ale je nadměrně: uživatelské rozhraní se zobrazí tento blok skriptu jako text. prováděcí modul bude považovat za zadaný blok černé políčko a způsobí, že žádné pokusy o analyzovat obsah, s výjimkou kontrola základní syntaxe. Pokud chcete vyvolat jediný příkaz Powershellu, raději CommandActivity.        |
+|CommandActivity     | Vyvolá příkaz prostředí PowerShell (rutina, funkce atd.).        |
+|InvokeRunbookActivity     | Vyvolá jinou vloženou sadu Runbook.        |
+|JunctionActivity     | Počká, až se všechny příchozí větve dokončí.        |
+|WorkflowScriptActivity     | Spustí blok kódu pracovního postupu PowerShellu nebo PowerShellu (v závislosti na typu Runbooku) v kontextu Runbooku. Toto je výkonný nástroj, ale nezahrnuje ho: uživatelské rozhraní zobrazí tento blok skriptu jako text. spouštěcí modul zpracuje poskytnutý blok jako černý rámeček a neprovede žádné pokusy o analýzu obsahu, s výjimkou základní kontroly syntaxe. Pokud potřebujete jenom vyvolat jeden příkaz prostředí PowerShell, preferovat CommandActivity.        |
 
 > [!NOTE]
-> Není odvozen vaše vlastní aktivity ze zadané třídy: Azure Automation, nebude možné používat vlastní aktivity sady runbook.
+> Neodvozujte vlastní aktivity ze zadaných tříd: Azure Automation nebude moci používat sady Runbook s vlastními typy aktivit.
 
-Parametry CommandActivity a InvokeRunbookActivity musí zadat jako hodnotu popisovače, ne přímým přístupem hodnoty. Hodnota popisovače zadejte vytváření skutečný parametr hodnoty. Následující hodnota popisovače jsou aktuálně k dispozici:
+Parametry CommandActivity a InvokeRunbookActivity musí být zadány jako popisovače hodnot, nikoli přímé hodnoty. Popisovače hodnot určují, jak by měly být vytvořeny skutečné hodnoty parametrů. V současné době jsou k dispozici následující popisovače hodnot:
 
 
 |Popisovač  |Definice  |
 |---------|---------|
-|ConstantValueDescriptor     | Odkazuje na pevně zakódované konstantní hodnotu.        |
-|RunbookParameterValueDescriptor     | Odkazuje na parametr sady runbook podle názvu.        |
-|ActivityOutputValueDescriptor     | Odkazuje na upstreamovou aktivitou výstup, povolení jednu aktivitu "" přihlaste se k odběru data vytvořená aktivitou jiný.        |
-|AutomationVariableValueDescriptor     | Odkazuje na Automation variabilní prostředek podle názvu.         |
+|ConstantValueDescriptor     | Odkazuje na pevně zakódovaný konstantní hodnotu.        |
+|RunbookParameterValueDescriptor     | Odkazuje na parametr Runbooku podle názvu.        |
+|ActivityOutputValueDescriptor     | Odkazuje na výstup nadřazeného aktivity, který umožňuje, aby se jedna aktivita přihlásila k datům vytvořeným jinou aktivitou.        |
+|AutomationVariableValueDescriptor     | Odkazuje na prostředek variabilní automatizace podle názvu.         |
 |AutomationCredentialValueDescriptor     | Odkazuje na prostředek certifikátu Automation podle názvu.        |
 |AutomationConnectionValueDescriptor     | Odkazuje na prostředek připojení Automation podle názvu.        |
-|PowerShellExpressionValueDescriptor     | Určuje Powershellový výraz volného tvaru, který se vyhodnotí pouze před vyvoláním aktivity.  <br/>Jedná se o výkonný nástroj, ale je nadměrně: uživatelské rozhraní se zobrazí tento výraz jako text. prováděcí modul bude považovat za zadaný blok černé políčko a způsobí, že žádné pokusy o analyzovat obsah, s výjimkou kontrola základní syntaxe. Pokud je to možné, upřednostňují konkrétnější hodnotu popisovače.      |
+|PowerShellExpressionValueDescriptor     | Určuje bezplatný výraz PowerShellu, který se vyhodnotí těsně před vyvoláním aktivity.  <br/>Toto je výkonný nástroj, ale nezahrnuje ho: uživatelské rozhraní zobrazí tento výraz jako text. spouštěcí modul zpracuje poskytnutý blok jako černý rámeček a neprovede žádné pokusy o analýzu obsahu, s výjimkou základní kontroly syntaxe. Pokud je to možné, preferovat konkrétnější popisovače hodnot.      |
 
 > [!NOTE]
-> Vlastní hodnota popisovače z neodvozuje zadané třídy: Použití sad runbook s vlastní hodnotou popisovače typů nebude možné Azure Automation.
+> Neodvozujte vlastní popisovače hodnot od poskytovaných tříd: Azure Automation nebude moci používat sady Runbook s vlastními typy popisovačů hodnot.
 
-Vytvoření instance odkazy připojení aktivit a jejich přidání do sady runbook:
+Vytvoření instance odkazů spojujících aktivity a jejich přidání do sady Runbook:
 
 ```csharp
 runbook.AddLink(new Link(activityA, activityB, LinkType.Sequence));
@@ -132,18 +132,18 @@ runbook.AddLink(
  });
 ```
 
-## <a name="save-the-runbook-to-a-file"></a>Sadu runbook uložte do souboru
+## <a name="save-the-runbook-to-a-file"></a>Uložit Runbook do souboru
 
-Použití `Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` k serializaci sady runbook a řetězec:
+Použití `Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` k serializaci sady Runbook do řetězce:
 
 ```csharp
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-Tento řetězec můžete uložit do souboru s **.graphrunbook** rozšíření a tento soubor může být importován do služby Azure Automation.
-Serializovaný formát může změnit v budoucích verzích `Orchestrator.GraphRunbook.Model.dll`. Slibujeme zpětnou kompatibilitu: libovolné sady runbook serializovat s příznakem starší verzi `Orchestrator.GraphRunbook.Model.dll` lze deserializovat jakékoli novější verzi. Dopředná kompatibilita není zaručena: nemusí být deserializaci ve starších verzích sady runbook serializované pomocí novější verze.
+Tento řetězec může být uložen do souboru s příponou **. graphrunbook** a tento soubor lze importovat do Azure Automation.
+Serializovaný formát se může v budoucích verzích `Orchestrator.GraphRunbook.Model.dll`změnit. Poskytujeme zpětnou kompatibilitu: Jakákoli sada Runbook serializovaná se starší verzí `Orchestrator.GraphRunbook.Model.dll` může deserializovat jakákoli novější verze. Dopředná kompatibilita není zaručena: sadu Runbook serializovanou s novější verzí nelze deserializovat staršími verzemi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o grafické Runbooky ve službě Azure Automation najdete v tématu [vytváření grafického obsahu Úvod](automation-graphical-authoring-intro.md)
+Další informace o grafických sadách Runbook v Azure Automation najdete v tématu [Úvod do grafického vytváření](automation-graphical-authoring-intro.md) .
 

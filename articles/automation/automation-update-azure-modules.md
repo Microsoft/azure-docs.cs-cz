@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak teď můžete aktualizovat běžné Az
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 23475fb77210eeea0568bb996529c81458db9c6c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 76514e620f044b78b992db2b88733e69dbabf135
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382767"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850631"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Postup aktualizace modulů Azure PowerShell v Azure Automation
 
@@ -38,17 +38,17 @@ Pokud vaše skripty vyvíjíte místně, doporučujeme mít v místním počíta
 
 V následující části jsou některé předpoklady, které je potřeba vzít v úvahu při použití tohoto procesu k aktualizaci modulů Azure:
 
-* Tento Runbook podporuje standardně aktualizaci modulů **Azure** a **AzureRm** . Tento Runbook podporuje také aktualizaci modulů **AZ** . Další informace o `Az` tom, jak aktualizovat moduly pomocí této sady Runbook, najdete v [souboru Readme pro aktualizace modulů Azure](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) . Existují další důležité faktory, které je potřeba vzít v úvahu při používání `Az` modulů v účtu Automation. Další informace najdete v tématu [použití AZ modules v účtu Automation](az-modules.md).
+* Tento Runbook podporuje standardně aktualizaci modulů **Azure** a **AzureRm** . Tento Runbook podporuje také aktualizaci modulů **AZ** . Další informace o aktualizaci `Az`ch modulů pomocí této sady Runbook najdete v [souboru Readme k sadě Runbook pro aktualizaci modulů Azure](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) . Existují další důležité faktory, které je potřeba vzít v úvahu při použití `Az` modulů v účtu Automation. Další informace najdete v tématu [použití AZ modules v účtu Automation](az-modules.md).
 
 * Před zahájením této sady Runbook se ujistěte, že má váš účet Automation vytvořené [přihlašovací údaje účtu Spustit jako pro Azure](manage-runas-account.md) .
 
-* Tento kód můžete použít jako regulární skript PowerShellu místo Runbooku: stačí se nejdřív přihlásit k Azure pomocí příkazu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) a pak ho předat `-Login $false` skriptu.
+* Tento kód můžete použít jako regulární skript PowerShellu místo Runbooku: stačí se nejdřív přihlásit k Azure pomocí příkazu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) a pak předat `-Login $false` skriptu.
 
-* Pokud chcete tuto sadu Runbook použít v cloudech svrchovaného `AzureRmEnvironment` prostředí, použijte parametr pro předání správného prostředí Runbooku.  Přijatelné hodnoty jsou **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**a **AzureUSGovernment**. Tyto hodnoty lze načíst z použití `Get-AzureRmEnvironment | select Name`. Pokud tomuto parametru nepředáte hodnotu, sada Runbook se nastaví jako výchozí ve veřejném cloudu Azure **AzureCloud**
+* Pokud chcete použít tuto sadu Runbook v cloudech svrchovaného prostředí, použijte parametr `AzureRmEnvironment` pro předání správného prostředí Runbooku.  Přijatelné hodnoty jsou **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**a **AzureUSGovernment**. Tyto hodnoty lze načíst pomocí `Get-AzureRmEnvironment | select Name`. Pokud tomuto parametru nepředáte hodnotu, sada Runbook se nastaví jako výchozí ve veřejném cloudu Azure **AzureCloud**
 
-* Pokud chcete použít konkrétní verzi modulu Azure PowerShell namísto nejnovějšího dostupného Galerie prostředí PowerShell, předejte tyto verze volitelnému `ModuleVersionOverrides` parametru sady Runbook **Update-AutomationAzureModulesForAccount** . Příklady najdete v [tématu sada Runbook Update-AutomationAzureModulesForAccount.](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
-) ps1. Azure PowerShell moduly, které nejsou uvedené v `ModuleVersionOverrides` parametru, se aktualizují pomocí nejnovějších verzí modulu v Galerie prostředí PowerShell. Pokud do `ModuleVersionOverrides` parametru nepředáte žádnou hodnotu, všechny moduly se aktualizují s nejnovějšími verzemi modulu na galerie prostředí PowerShell. Toto chování je stejné jako u tlačítka **aktualizovat moduly Azure** .
+* Pokud chcete použít konkrétní verzi modulu Azure PowerShell namísto nejnovějšího dostupného Galerie prostředí PowerShell, předejte tyto verze volitelnému parametru `ModuleVersionOverrides` sady Runbook **Update-AutomationAzureModulesForAccount** . Příklady najdete v tématu sada Runbook [Update-AutomationAzureModulesForAccount. ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
+) . Azure PowerShell moduly, které nejsou uvedené v parametru `ModuleVersionOverrides`, se aktualizují s nejnovějšími verzemi modulu na Galerie prostředí PowerShell. Pokud do parametru `ModuleVersionOverrides` nepředáte žádnou hodnotu, všechny moduly se aktualizují s nejnovějšími verzemi modulu v Galerie prostředí PowerShell. Toto chování je stejné jako u tlačítka **aktualizovat moduly Azure** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o této službě najdete v části open source [Update Runbook modules Runbook](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) .

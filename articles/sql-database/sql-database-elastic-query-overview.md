@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 07/01/2019
-ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/05/2019
+ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823739"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873739"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled elastického dotazu Azure SQL Database (Preview)
 
@@ -56,10 +56,10 @@ Elastický dotaz umožňuje snadný přístup k celé kolekci databází prostř
 Scénáře zákazníků pro elastický dotaz jsou charakterizovány následujícími topologiemi:
 
 * **Vertikální dělení – mezidatabázové dotazy** (topologie 1): data jsou rozdělená svisle mezi různé databáze v datové vrstvě. Různé sady tabulek se typicky nacházejí v různých databázích. To znamená, že schéma se liší v různých databázích. Například všechny tabulky pro inventář jsou v jedné databázi, zatímco všechny tabulky související s monitorováním účtů jsou v druhé databázi. Běžné případy použití s touto topologií vyžadují, aby se jedna použila dotaz na napříč tabulkami v několika databázích a aby mohla kompilovat sestavy.
-* **Horizontální dělení na oddíly – horizontálního dělení** (topologie 2): data jsou rozdělená na oddíly vodorovně pro distribuci řádků napříč škálované datovou vrstvou. S tímto přístupem je schéma stejné ve všech zúčastněných databázích. Tento přístup se také nazývá "horizontálního dělení". Horizontálního dělení se dá provádět a spravovat pomocí (1) knihoven nástrojů elastické databáze nebo (2) sami horizontálního dělení. Elastický dotaz se používá k dotazování nebo kompilování sestav napříč mnoha horizontálních oddílů.
+* **Horizontální dělení na oddíly – horizontálního dělení** (topologie 2): data jsou rozdělená na oddíly vodorovně pro distribuci řádků napříč škálované datovou vrstvou. S tímto přístupem je schéma stejné ve všech zúčastněných databázích. Tento přístup se také nazývá "horizontálního dělení". Horizontálního dělení se dá provádět a spravovat pomocí (1) knihoven nástrojů elastické databáze nebo (2) sami horizontálního dělení. Elastický dotaz se používá k dotazování nebo kompilování sestav napříč mnoha horizontálních oddílů. Horizontálních oddílů jsou obvykle databáze v elastickém fondu. Elastický dotaz si můžete představit jako účinný způsob dotazování všech databází elastického fondu, pokud databáze sdílejí společné schéma.
 
 > [!NOTE]
-> Elastický dotaz funguje nejlépe pro scénáře vytváření sestav, kde většinu zpracování (filtrování, agregace) je možné provést na straně externího zdroje. Není vhodný pro operace ETL, kde se přenáší velké množství dat ze vzdálených databází. Pro náročné úlohy vytváření sestav nebo scénáře datového skladu pomocí složitějších dotazů Zvažte také použití [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
+> Elastický dotaz funguje nejlépe pro scénáře vytváření sestav, kde většinu zpracování (filtrování, agregace) je možné provést na straně externího zdroje. Není vhodný pro operace ETL, kde se přenáší velké množství dat ze vzdálených databází. Pro náročné úlohy vytváření sestav nebo scénáře datového skladu pomocí složitějších dotazů Zvažte také použití [Azure synapse Analytics](https://azure.microsoft.com/services/synapse-analytics).
 >  
 
 ## <a name="vertical-partitioning---cross-database-queries"></a>Vertikální dělení – mezidatabázové dotazy
@@ -117,6 +117,9 @@ Po provedení těchto kroků můžete získat přístup k horizontálně rozděl
 Další informace o krocích, které jsou potřebné pro scénář horizontálního dělení, najdete v [elastickém dotazu pro horizontální dělení na oddíly](sql-database-elastic-query-horizontal-partitioning.md).
 
 Chcete-li začít s kódováním, přečtěte si téma [Začínáme s elastickým dotazem pro horizontální dělení (horizontálního dělení)](sql-database-elastic-query-getting-started.md).
+
+> [!IMPORTANT]
+> Úspěšné provedení elastického dotazu nad velkou sadou databází v průběhu provádění dotazu intenzivně závisí na dostupnosti jednotlivých databází. Pokud není jedna z databází k dispozici, celý dotaz se nezdaří. Pokud plánujete dotazovat stovky nebo tisíce databází najednou, ujistěte se, že vaše klientská aplikace má vloženou logiku opakování, nebo zvažte použití [Elastic Databasech úloh](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (Preview) a dotazování na menší podmnožiny databází a konsoliduje výsledky každého dotazu do jednoho cíle.
 
 ## <a name="t-sql-querying"></a>Dotazování T-SQL
 

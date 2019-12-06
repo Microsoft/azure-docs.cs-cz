@@ -2,27 +2,24 @@
 title: Podpora a možnosti pomoci pro vývojáře aplikací Azure AD | Microsoft Docs
 description: Informace o tom, jak získat nápovědu a podporu pro otázky a problémy související s vývojem při vytváření aplikace, která se integruje s identitami Microsoft (Azure Active Directory a účet Microsoft)
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a160f78f69ed559c576147e9758c837d5ae9b77e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3f1c6d89af1d88be9a241c94462b17edf0c93de2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429980"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843185"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
@@ -65,11 +62,11 @@ Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete no
 |Součást/oblast  | Značky |
 |---------|---------|
 | Knihovna ADAL | [modulu](https://stackoverflow.com/questions/tagged/adal) |
-| Knihovna MSAL     | [msal](https://stackoverflow.com/questions/tagged/msal) |
+| Knihovna MSAL     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
 | Middleware OWIN  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
-| [B2C Azure](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Následující příspěvky z Stack Overflow obsahují tipy, jak klást otázky a jak přidat zdrojový kód. Postupujte podle těchto pokynů a zvyšte pravděpodobnost, že členové komunity budou moci rychle posoudit a reagovat na své otázky:
@@ -84,7 +81,7 @@ Pokud narazíte na chybu nebo problém týkající se našich knihoven, vyvolejt
 Seznam knihoven a jejich úložišť GitHub najdete v následujících tématech:
 
 * Knihovny [ADAL](active-directory-authentication-libraries.md) a úložiště GitHub
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. ](https://github.com/AzureAD/microsoft-authentication-library-for-android)Knihovny pro Android a [MSAL. obj _c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) a úložiště GitHub
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. ](https://github.com/AzureAD/microsoft-authentication-library-for-android)Knihovny pro Android a [MSAL. obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) a úložiště GitHub
 
 ## <a name="open-a-support-request"></a>Otevřete žádost o podporu.
 

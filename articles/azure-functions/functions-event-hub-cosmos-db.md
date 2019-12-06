@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: 04cb91a62536c493240998270b5bd8d29fd331ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230630"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849832"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Kurz: vytvoření funkce v Java pomocí triggeru centra událostí a výstupní vazby Azure Cosmos DB
 
@@ -25,7 +25,7 @@ V tomto kurzu:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu musíte mít nainstalované následující:
 
@@ -36,8 +36,6 @@ K dokončení tohoto kurzu musíte mít nainstalované následující:
 
 > [!IMPORTANT]
 > Aby se tento kurz dokončil, musí být proměnná prostředí `JAVA_HOME` nastavená na umístění instalace JDK.
-
-Pokud dáváte přednost použití kódu pro tento kurz přímo, přečtěte si ukázkové úložiště [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

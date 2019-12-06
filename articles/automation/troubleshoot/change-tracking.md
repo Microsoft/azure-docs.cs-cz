@@ -4,23 +4,23 @@ description: Tento článek poskytuje informace o řešení potíží s Change T
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: beb0b89bdbf143c89a83c0813313a8bbda7235d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 482b263b7c8427276d4fdb8681372c2be1ae69ee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564847"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849390"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Řešení potíží s řešeními Change Tracking a Inventory
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Případě Pro počítače s Windows se nezobrazuje Change Trackingé záznamy
+### <a name="records-not-showing-windows"></a>Scénář: u počítačů s Windows se nezobrazuje Change Trackingé záznamy
 
 #### <a name="issue"></a>Problém
 
@@ -35,10 +35,10 @@ Tato chyba může být způsobena následujícími důvody:
 3. Sady Management Pack pro Change Tracking se nestahují.
 4. Virtuální počítač, který se připojuje, může pocházet z klonovaného počítače, který se nástroje Sysprep s nainstalovanou Microsoft Monitoring Agent.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 1. Ověřte, že na tomto počítači je spuštěný **Microsoft Monitoring Agent** (HealthService. exe).
-1. Zkontrolujte **Prohlížeč událostí** na počítači a vyhledejte všechny události, které obsahují slovo `changetracking` .
+1. Zkontrolujte **Prohlížeč událostí** na počítači a vyhledejte všechny události, které mají slovo `changetracking`.
 1. Navštivte téma [Plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) , kde se dozvíte, které adresy a porty je potřeba povolit, aby Change Tracking fungovalo.
 1. Ověřte, že místně existují následující Change Tracking a sady Management Pack inventáře:
     * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
@@ -48,7 +48,7 @@ Tato chyba může být způsobena následujícími důvody:
 
 Pokud tato řešení problém nevyřeší a kontaktuje podporu, můžete spuštěním následujících příkazů shromáždit diagnostiku v agentovi.
 
-Na počítači agenta přejděte na `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` adresu a spusťte následující příkazy:
+Na počítači agenta přejděte na `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` a spusťte následující příkazy:
 
 ```cmd
 net stop healthservice
@@ -58,9 +58,9 @@ net start healthservice
 ```
 
 > [!NOTE]
-> Ve výchozím nastavení je povoleno trasování chyb, pokud chcete povolit podrobné chybové zprávy jako v předchozím příkladu, použijte `VER` parametr. Pro trasování informací použijte `INF` při vyvolání. `StartTracing.cmd`
+> Pokud chcete povolit podrobné chybové zprávy jako v předchozím příkladu, je ve výchozím nastavení povoleno trasování chyb. použijte `VER` parametr. Pro trasování informací použijte `INF` při vyvolání `StartTracing.cmd`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

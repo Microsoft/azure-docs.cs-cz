@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e751c7aefe888d16e6d86a0184a1a59437d665f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404249"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848132"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -57,7 +57,7 @@ Ujistěte se, že server, který používáte pro Azure Multi-Factor Authenticat
 | Požadavky pro Azure Multi-Factor Authentication Server | Popis |
 |:--- |:--- |
 | Hardware |<li>200 MB volného místa na pevném disku</li><li>Procesor kompatibilní s x32 nebo x64</li><li>1 GB RAM nebo víc</li> |
-| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, aktualizace SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, aktualizace SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice</li><li>Windows Vista, všechny edice, aktualizace SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
+| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, aktualizace SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, aktualizace SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice</li><li>Windows Vista, všechny edice, aktualizace SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
 | Oprávnění | Účet správce domény nebo účet správce rozlehlé sítě pro registraci ve službě Active Directory |
 
 ### <a name="azure-mfa-server-components"></a>Komponenty Azure MFA Serveru
@@ -80,7 +80,7 @@ Každý server MFA musí být schopný komunikovat na odchozím portu 443 s těm
 
 Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsahy IP adres:
 
-| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
+| Podsíť IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
@@ -88,7 +88,7 @@ Pokud brána firewall omezuje odchozí port 443, je nutné otevřít tyto rozsah
 
 Pokud nepoužíváte funkci Potvrzení události a vaši uživatelé nepoužívají k ověřování ze zařízení v podnikové síti mobilní aplikace, potřebujete pouze následující rozsahy:
 
-| Podsíť protokolu IP | Síťová maska | Rozsah IP adres |
+| Podsíť IP | Síťová maska | Rozsah IP adres |
 |:---: |:---: |:---: |
 | 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79 |
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |

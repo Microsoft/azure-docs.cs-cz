@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167859"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842726"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -35,7 +35,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v G Suite a A
 - Aktualizované názvy atributů cíle G Suite tak, aby odpovídaly, co se [tady](https://developers.google.com/admin-sdk/directory)definuje.
 - Mapování výchozích atributů se aktualizovala.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s využitím G Suite potřebujete následující položky:
 
@@ -134,7 +134,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro G Suite ve službě Azure AD:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -162,9 +162,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mail s oznámením](common/provisioning-notification-email.png)
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
-8. Klikněte na možnost **Uložit**.
+8. Klikněte na **Uložit**.
 
 9. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů do G Suite**.
 
@@ -178,7 +178,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Mapování skupin G Suite](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. Zkontrolujte atributy skupiny synchronizované z Azure AD do G Suite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v G Suite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+12. Zkontrolujte atributy skupiny synchronizované z Azure AD do G Suite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v G Suite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny. Uživatelské rozhraní zobrazuje výchozí sadu mapování atributů mezi Azure AD a G Suite. Kliknutím na Přidat nové mapování se můžete rozhodnout přidat další atributy, jako je například organizační jednotka. 
 
     ![Atributy skupiny G Suite](media/google-apps-provisioning-tutorial/groupattributes.png)
 
@@ -200,10 +200,13 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+
+## <a name="common-issues"></a>Běžné problémy
+* Pokud účet použitý k navázání připojení není pro správce v GSuite, může dojít k selháním autorizace. Ujistěte se, že účet, který se používá k autorizaci přístupu, má oprávnění správce pro **všechny domény** , se kterými se uživatelé musí zřídit. 
 
 ## <a name="next-steps"></a>Další kroky
 

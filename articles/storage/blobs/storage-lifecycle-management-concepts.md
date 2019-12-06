@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077121"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851770"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -38,7 +38,7 @@ Zásady správy životního cyklu jsou dostupné s účty Pro obecné účely v2
 
 Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady na [seznam objektů BLOB seznamu](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a nastavování volání rozhraní API na [úrovni objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability"></a>Regionální dostupnost
+## <a name="regional-availability"></a>Dostupnost podle oblastí
 
 Funkce správy životního cyklu je dostupná ve všech oblastech Azure.
 
@@ -51,10 +51,12 @@ Zásadu můžete přidat, upravit nebo odebrat pomocí kterékoli z následujíc
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Rozhraní REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
-Tento článek popisuje, jak spravovat zásady pomocí portálu a metod PowerShellu.  
+Zásady je možné číst nebo zapisovat v plném rozsahu. Částečné aktualizace nejsou podporovány. 
 
 > [!NOTE]
 > Pokud pro svůj účet úložiště povolíte pravidla brány firewall, můžou být požadavky správy životního cyklu blokované. Tyto požadavky můžete odblokovat poskytováním výjimek pro důvěryhodné služby společnosti Microsoft. Další informace najdete v části výjimky v tématu [Konfigurace bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+
+Tento článek popisuje, jak spravovat zásady pomocí portálu a metod PowerShellu.  
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -65,7 +67,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Zobrazení seznamu Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
@@ -86,7 +88,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 9. Pokud chcete přidat novou zásadu, vyberte **Přidat** .
 
 #### <a name="azure-portal-code-view"></a>Azure Portal zobrazení kódu
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
@@ -122,7 +124,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
    }
    ```
 
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 6. Další informace o tomto příkladu JSON najdete v částech [zásady](#policy) a [pravidla](#rules) .
 
@@ -200,7 +202,7 @@ Správu životního cyklu můžete definovat pomocí Azure Resource Manager šab
 
 ---
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
@@ -297,9 +299,9 @@ Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a 
 
 | Akce        | Základní objekt BLOB                                   | Snímek      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporuje se |
-| tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporuje se |
-| delete        | Podporuje se                                   | Podporuje se     |
+| tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporováno |
+| tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporováno |
+| delete        | Podporováno                                   | Podporováno     |
 
 >[!NOTE]
 >Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.
@@ -427,7 +429,7 @@ Pro data, která se pravidelně upravují a přibývají k nim přistupovaly bě
 }
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Vytvořili jsem novou zásadu, proč se akce nespouštějí hned?**  
 Platforma spouští zásady životního cyklu jednou denně. Po nakonfigurování zásady může trvat až 24 hodin, než se některé akce poprvé spustí.  

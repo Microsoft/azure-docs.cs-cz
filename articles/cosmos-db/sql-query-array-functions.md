@@ -1,24 +1,24 @@
 ---
 title: Funkce pole v jazyce Azure Cosmos DBho dotazovacího jazyka
-description: Přečtěte si o funkcích systému SQL Array v Azure Cosmos DB.
+description: Přečtěte si, jak funkce pole umožňují provádět operace s poli v Azure Cosmos DB
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f970ed03ef5a9ccbfb9664a6c2d9db424ee96ed1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348682"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871801"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>Funkce pole (Azure Cosmos DB)
 
 Funkce pole umožňují provádět operace s poli v Azure Cosmos DB.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Následující skalární funkce provádějí operaci na vstupní hodnotě pole a vracejí číselnou, logickou nebo hodnotu pole:
   

@@ -1,17 +1,17 @@
 ---
 title: Operátory dotazů SQL pro Azure Cosmos DB
-description: Přečtěte si o operátorech SQL pro Azure Cosmos DB.
+description: Přečtěte si o operátorech SQL, jako jsou rovnost, porovnání a logické operátory podporované Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f3efe4bee749f0d3132206ca68a33a60f0e16b81
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003383"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870934"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operátory v Azure Cosmos DB
 
@@ -31,9 +31,9 @@ V následující tabulce jsou uvedeny výsledek porovnání rovnosti v rozhraní
 | **objekt** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** | Nedefinováno |
 | **Pole** | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | Nedefinováno | **Ok** |
 
-Pro operátory `>`porovnání, jako `<` `!=`například `>=`,,,, `<=`a, porovnání mezi typy nebo mezi dvěma objekty nebo poli `Undefined`generuje.  
+Pro operátory porovnání, například `>`, `>=`, `!=`, `<`a `<=`, porovnávání mezi typy nebo mezi dvěma objekty nebo poli vytváří `Undefined`.  
 
-Pokud je `Undefined`výsledek skalárního výrazu, položka není obsažena ve výsledku, protože `Undefined` se nerovná `true`.
+Pokud je výsledek skalárního výrazu `Undefined`, položka není obsažena ve výsledku, protože `Undefined` se nerovná `true`.
 
 ## <a name="logical-and-or-and-not-operators"></a>Logický (AND, OR a NOT) operátory
 
@@ -41,38 +41,38 @@ Logické operátory pracují s logickými hodnotami. V následujících tabulká
 
 **NEBO – operátor**
 
-| NEBO | True | False | Nedefinováno |
+| NEBO | Pravda | Nepravda | Nedefinováno |
 | --- | --- | --- | --- |
-| True |True |True |True |
-| False |True |False |Nedefinováno |
-| Nedefinováno |True |Nedefinováno |Nedefinováno |
+| Pravda |Pravda |Pravda |Pravda |
+| Nepravda |Pravda |Nepravda |Nedefinováno |
+| Nedefinováno |Pravda |Nedefinováno |Nedefinováno |
 
 **AND – operátor**
 
-| A | True | False | Nedefinováno |
+| A | Pravda | Nepravda | Nedefinováno |
 | --- | --- | --- | --- |
-| True |True |False |Nedefinováno |
-| False |False |False |False |
-| Nedefinováno |Nedefinováno |False |Nedefinováno |
+| Pravda |Pravda |Nepravda |Nedefinováno |
+| Nepravda |Nepravda |Nepravda |Nepravda |
+| Nedefinováno |Nedefinováno |Nepravda |Nedefinováno |
 
 **NOT – operátor**
 
 | NOT |  |
 | --- | --- |
-| True |False |
-| False |True |
+| Pravda |Nepravda |
+| Nepravda |Pravda |
 | Nedefinováno |Nedefinováno |
 
 
 ## <a name="-operator"></a>* – operátor
 
-Speciální operátor * projektuje celou položku tak, jak je. Při použití, musí být pouze očekávané pole. Dotaz, jako `SELECT * FROM Families f` je platný, `SELECT *, f.id FROM Families f` ale `SELECT VALUE * FROM Families f` je neplatný.
+Speciální operátor * projektuje celou položku tak, jak je. Při použití, musí být pouze očekávané pole. Dotaz, jako je `SELECT * FROM Families f`, je platný, ale `SELECT VALUE * FROM Families f` a `SELECT *, f.id FROM Families f` nejsou platné.
 
-## <a name="-and--operators"></a>? a?? Logické
+## <a name="-and--operators"></a>? a?? operátory
 
 Můžete použít operátory Ternární (?) a COALESCE (??) k sestavení podmíněných výrazů, jako v programovacích jazycích C# , jako je například JavaScript. 
 
-Můžete použít? operátor pro vytvoření nových vlastností JSON za běhu. Například následující dotaz klasifikuje úrovně stupňů do `elementary` nebo: `other`
+Můžete použít? operátor pro vytvoření nových vlastností JSON za běhu. Následující dotaz například klasifikuje úrovně stupňů do `elementary` nebo `other`:
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
@@ -88,14 +88,14 @@ Můžete také vnořit volání do? – operátor, jak je uvedeno v následujíc
 
 Stejně jako u jiných operátorů dotazů? operátor vyloučí položky, pokud nebyly nalezeny odkazované vlastnosti nebo se porovnávané typy liší.
 
-Chcete použít? operátor pro efektivní kontrolu vlastnosti v položce při dotazování na částečně strukturovaných nebo smíšených dat typu. Například následující dotaz vrátí `lastName` , pokud je k dispozici, nebo `lastName` `surname` Pokud není k dispozici.
+Chcete použít? operátor pro efektivní kontrolu vlastnosti v položce při dotazování na částečně strukturovaných nebo smíšených dat typu. Například následující dotaz vrátí `lastName`, pokud je k dispozici, nebo `surname`, pokud `lastName` není k dispozici.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [klíčová slova](sql-query-keywords.md)

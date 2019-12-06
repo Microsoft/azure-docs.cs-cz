@@ -2,27 +2,23 @@
 title: Typy aplikací v v 1.0 | Azure
 description: Popisuje typy aplikací a scénářů, které podporuje koncový bod Azure Active Directory v 2.0.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72fab8a51f1ea1b9c7bda14d825dad538f96cde6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7e4228febb5b49ad14a89ceec5482c277fca5fae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374052"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844205"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikací v v 1.0
 
@@ -74,7 +70,7 @@ Zřizování se může vyjasnit, když rozumíte tomu, že existují dvě katego
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Další předpoklady při vývoji jednoho nebo více tenantů aplikací
 
-Při vývoji víceklientské aplikace místo jediné klientské aplikace vznikají nějaké další okolnosti. Pokud například aplikaci zpřístupníte uživatelům ve více adresářích, budete potřebovat mechanismus, který určí, v jakém tenantovi se nachází. Jediná klientská aplikace potřebuje vyhledat konkrétního uživatele pouze ve svém vlastním adresáři, zatímco aplikace pro více tenantů musí určit určitého uživatele ze všech adresářů ve službě Azure AD. K provedení této úlohy Azure AD poskytuje běžný koncový bod ověřování, ve kterém může libovolná aplikace pro více tenantů směrovat požadavky na přihlášení namísto koncového bodu specifického pro tenanta. Tento koncový bod je https://login.microsoftonline.com/common pro všechny adresáře ve službě Azure AD, zatímco koncový bod specifický pro klienta může být https://login.microsoftonline.com/contoso.onmicrosoft.com. Běžný koncový bod je obzvláště důležitý při vývoji vaší aplikace, protože budete potřebovat logiku potřebnou k tomu, aby během přihlašování, odhlašování a ověřování tokenu zpracovala více tenantů.
+Při vývoji víceklientské aplikace místo jediné klientské aplikace vznikají nějaké další okolnosti. Pokud například aplikaci zpřístupníte uživatelům ve více adresářích, budete potřebovat mechanismus, který určí, v jakém tenantovi se nachází. Jediná klientská aplikace potřebuje vyhledat konkrétního uživatele pouze ve svém vlastním adresáři, zatímco aplikace pro více tenantů musí určit určitého uživatele ze všech adresářů ve službě Azure AD. K provedení této úlohy Azure AD poskytuje běžný koncový bod ověřování, ve kterém může libovolná aplikace pro více tenantů směrovat požadavky na přihlášení namísto koncového bodu specifického pro tenanta. Tento koncový bod je https://login.microsoftonline.com/common pro všechny adresáře ve službě Azure AD, zatímco koncový bod specifický pro tenanta se může https://login.microsoftonline.com/contoso.onmicrosoft.com. Běžný koncový bod je obzvláště důležitý při vývoji vaší aplikace, protože budete potřebovat logiku potřebnou k tomu, aby během přihlašování, odhlašování a ověřování tokenu zpracovala více tenantů.
 
 Pokud aktuálně vyvíjíte jednu aplikaci tenanta, ale chcete ji zpřístupnit mnoha organizacím, můžete v Azure AD snadno provádět změny aplikace a její konfigurace, aby bylo možné ji využívat pro více tenantů. Kromě toho Azure AD používá stejný podpisový klíč pro všechny tokeny ve všech adresářích bez ohledu na to, jestli poskytujete ověřování v jednom tenantovi nebo víceklientské aplikaci.
 

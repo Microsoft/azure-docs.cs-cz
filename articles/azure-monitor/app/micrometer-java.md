@@ -1,18 +1,18 @@
 ---
-title: Použití mikroměřiče s Azure Application Insights Java SDK | Microsoft Docs
-description: 'Podrobný návod k použití mikroměřiče s aplikacemi Application Insights pružinové spouštěcí a nepružinové spouštěcí aplikace. '
+title: Použití mikroměřiče s Azure Application Insights Java SDK
+description: Podrobný návod k použití mikroměřiče s aplikacemi Application Insights pružinové spouštěcí a nepružinové spouštěcí aplikace.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c9f1c6f6742f36d376668422f9c37c6c5a2228a4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819301"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872991"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace založené na JVM a umožňuje exportovat data do oblíbených monitorovacích systémů. V tomto článku se dozvíte, jak používat mikroměřiče s Application Insights pro aplikace pro spouštění pružinového spouštění i pro aplikace bez pružiny.
@@ -22,7 +22,7 @@ Do souboru pom. XML nebo Build. Gradle přidejte následující závislosti:
 * [Application Insights jaře-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 nebo novější
 * 1\.1.0 nebo novější v registru mikroměřiče Azure
 * [Pružina mikroměřiče starší verze](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (Tato znovu nasměruje kód pro automatické nastavování v rozhraní pružiny).
-* [Prostředek ApplicationInsights](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights Resource](../../azure-monitor/app/create-new-resource.md )
 
 Kroky
 
@@ -96,17 +96,17 @@ Výchozí metriky:
 Vypnutí automatické shromažďování metrik: 
  
 - JVM metriky: 
-    - Management. Metrics. pojiv. JVM. Enabled = FALSE 
+    - management.metrics.binders.jvm.enabled=false 
 - Logback metriky: 
-    - Management. Metrics. pojiv. logback. Enabled = FALSE
+    - management.metrics.binders.logback.enabled=false
 - Metriky provozu: 
-    - Management. Metrics. propojuje.-time. Enabled = FALSE 
+    - management.metrics.binders.uptime.enabled=false 
 - Metriky procesoru:
-    -  Management. Metrics. pojivs. procesor. Enabled = FALSE 
+    -  management.metrics.binders.processor.enabled=false 
 - FileDescriptorMetrics:
-    - Management. Metrics. propojujed. Files. Enabled = FALSE 
+    - management.metrics.binders.files.enabled=false 
 - Hystrix metriky v případě knihovny pro cestu k cestě: 
-    - Management. Metrics. pojiv. hystrix. Enabled = FALSE 
+    - management.metrics.binders.hystrix.enabled=false 
 - AspectJ metriky v případě knihovny pro cestu k cestě: 
     - pružina. aop. Enabled = FALSE 
 

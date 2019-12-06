@@ -2,28 +2,23 @@
 title: Microsoft Identity Platform Developer Glosář | Azure
 description: Seznam podmínek pro běžně používané koncepce a funkce Microsoft Identity Platform Developer
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 221a491abad6c11ee12c75b1d69f1263f4abddc4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ffc9c0ed5787803fff01d929567bda23b698135
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322601"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843202"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
 
@@ -79,7 +74,7 @@ Způsob udělení oprávnění ověřeného objektu zabezpečení k tomu, aby n�
 
 Pro [klientskou aplikaci](#client-application) poskytnutý [koncovým bodem autorizace](#authorization-endpoint)má krátkodobý "token", který je součástí toku "autorizační kód", jedním ze čtyř OAuth2 [autorizací](#authorization-grant). Kód se vrátí do klientské aplikace v reakci na ověření [vlastníka prostředku](#resource-owner), což značí, že vlastník prostředku má delegovanou autorizaci pro přístup k požadovaným prostředkům. V rámci toku je kód později uplatněn pro [přístupový token](#access-token).
 
-## <a name="authorization-endpoint"></a>Koncový bod autorizace
+## <a name="authorization-endpoint"></a>koncový bod autorizace
 
 Jeden z koncových bodů implementovaných [autorizačním serverem](#authorization-server), který slouží k interakci s [vlastníkem prostředku](#resource-owner) za účelem poskytnutí [udělení autorizace](#authorization-grant) během toku udělení autorizace OAuth2. V závislosti na použitém toku autorizačního udělení se může skutečný poskytnutý grant lišit, včetně [autorizačního kódu](#authorization-code) nebo [tokenu zabezpečení](#security-token).
 
@@ -121,7 +116,7 @@ Další podrobnosti najdete v referenčních informacích k [tokenům platformy 
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
-Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Další podrobnosti najdete v tématu [o platformě Microsoft Identity](about-microsoft-identity-platform.md) .
+Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Další podrobnosti najdete v tématu [o platformě Microsoft Identity](about-microsoft-identity-platform.md) .
 
 ## <a name="multi-tenant-application"></a>víceklientské aplikace
 
@@ -156,7 +151,7 @@ Server prostředků zveřejňuje rozhraní API a vynutil přístup k chráněný
 
 Stejně jako klientská aplikace, konfigurace identity aplikace prostředků se vytváří prostřednictvím [registrace](#application-registration) v TENANTOVI Azure AD, která poskytuje aplikační i instanční objekt. Některá rozhraní API poskytnutá Microsoftem, jako je třeba Azure AD Graph API, mají předem registrované instanční objekty, které jsou k dispozici ve všech klientech během zřizování.
 
-## <a name="roles"></a>roles
+## <a name="roles"></a>prostředků
 
 Podobně jako [obory](#scopes)role poskytují [serveru prostředků](#resource-server) způsob, jak řídit přístup k chráněným prostředkům. Existují dva typy: role "uživatel" implementuje řízení přístupu na základě rolí pro uživatele nebo skupiny, které vyžadují přístup k prostředku, zatímco role "aplikace" implementuje stejné pro [klientské aplikace](#client-application) , které vyžadují přístup.
 
@@ -182,7 +177,7 @@ Když zaregistrujete nebo aktualizujete aplikaci v [Azure Portal][AZURE-portal],
 
 Další informace naleznete v tématu [Application and Service instanční objekty][AAD-App-SP-Objects].
 
-## <a name="sign-in"></a>přihlášení
+## <a name="sign-in"></a>sign-in
 
 Proces [klientské aplikace](#client-application) , která zahajuje ověřování koncového uživatele a zachytí související stav, pro účely získání [tokenu zabezpečení](#security-token) a určení rozsahu relace aplikace do daného stavu. Stav může zahrnovat artefakty, jako jsou informace o profilu uživatele, a informace odvozené z deklarací identity tokenu.
 
@@ -202,7 +197,7 @@ Instance adresáře služby Azure AD je označována jako tenant služby Azure A
 
 Tenant Azure AD se vytvářejí/přidružit k předplatným Azure a Office 365 během registrace a poskytují Správa identit a přístupu funkce pro toto předplatné. Správci předplatného Azure můžou také vytvářet další klienty Azure AD prostřednictvím Azure Portal. Podrobnosti o různých způsobech přístupu ke klientovi získáte v tématu [Jak získat klienta Azure Active Directory][AAD-How-To-Tenant] . Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v článku [o tom, jak jsou předplatná Azure přidružená k Azure Active Directory][AAD-How-Subscriptions-Assoc] .
 
-## <a name="token-endpoint"></a>Koncový bod tokenu
+## <a name="token-endpoint"></a>koncový bod tokenu
 
 Jeden z koncových bodů implementovaných [autorizačním serverem](#authorization-server) pro podporu [autorizací OAuth2 autorizace](#authorization-grant). V závislosti na udělení se dá [klientovi](#client-application)použít k získání [přístupového tokenu](#access-token) (a souvisejícího "aktualizačního) tokenu klienta nebo [tokenu ID](#id-token) při použití s protokolem [OpenID Connect][OpenIDConnect] .
 

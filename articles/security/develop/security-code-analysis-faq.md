@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828249"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851515"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 Máte otázky? Další informace najdete v následujících nejčastějších dotazech.
@@ -88,7 +88,7 @@ Azure DevOps ale nepodporuje spouštění úloh v rámci kanálů vydávání ve
 
 Po jejich instalaci budou úkoly sestavení zabezpečení poskytované rozšířením k dispozici všem uživatelům ve vaší organizaci. Když vytváříte nebo upravujete kanál Azure, tyto úlohy jsou k dispozici v seznamu kolekce sestavení – úkoly. V opačném případě se instalace rozšíření v organizaci Azure DevOps nijak neprojeví. Instalace neupravuje žádná nastavení účtu, nastavení projektu ani kanály.
 
-### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Mění se v instalaci rozšíření moje existující kanály Azure? 
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Mění se v instalaci rozšíření moje existující Azure Pipelines? 
 
 Ne. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
 
@@ -222,9 +222,6 @@ Chcete-li získat nejnovější verze C# kompilátoru, přejít na [Microsoft.NE
 
 Pokud potřebujete další pomoc, podpora analýzy kódu zabezpečení společnosti Microsoft je k dispozici od pondělí do pátku od 9:00 do 5:00 odp. tichomořského (běžný čas).
 
-  - Připojování: obraťte se na správce technického účtu a začněte.
+- Připojování: Přečtěte si naši [dokumentaci k registraci](security-code-analysis-onboard.md) .
   
-  - Podpora: pošlete nám E-mail naší týmu na [podporu analýzy kódu zabezpečení Microsoftu](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
-
-  >[!NOTE] 
-  >Je možné, že nebudete mít placeného vztahu podpory od Microsoftu. Nebo můžete mít nabídku podpory, která vám zabrání v nákupu služeb z katalogu v Phoenixu. Pokud platí některá z těchto podmínek, navštivte prosím naši [domovskou stránku služeb podpory](https://www.microsoft.com/enterprise/services/support) , kde najdete další informace.
+- Podpora: odeslání týmu e-mailem na [podporu analýzy kódu zabezpečení společnosti Microsoft](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)

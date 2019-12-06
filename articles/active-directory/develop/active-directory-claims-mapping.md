@@ -9,19 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53ef51d52e699612508a446acbc075f766565d63
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 12726a1ad9b04bdfe2cd279d36a696bb011e4122
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803508"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845344"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -62,21 +60,21 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | access_token |
 | account_type |
 | acr |
-| Tříd |
+| actor |
 | actortoken |
 | Printer |
 | altsecid |
-| AMR |
+| amr |
 | app_chain |
 | app_displayname |
 | app_res |
 | appctx |
 | appctxsender |
-| identifikátor |
+| appid |
 | appidacr |
-| Neplatný |
+| kontrolní výraz |
 | at_hash |
-| AUD |
+| aud |
 | auth_data |
 | auth_time |
 | authorization_code |
@@ -84,18 +82,18 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | azpacr |
 | c_hash |
 | ca_enf |
-| uzel |
+| cc |
 | cert_token_use |
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
-| CNF |
-| Znakovou |
+| cnf |
+| kód |
 | ovládací prvky |
 | credential_keys |
-| manažer |
+| csr |
 | csr_type |
-| DeviceID |
+| deviceid |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
@@ -103,10 +101,10 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | e-mail |
 | endpoint |
 | enfpolids |
-| Oček |
+| exp |
 | expires_on |
-| parametr grant_type |
-| Zapisovací |
+| grant_type |
+| graph |
 | group_sids |
 | skupiny |
 | hasgroups |
@@ -119,15 +117,15 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| IAT |
+| iat |
 | IdentityProvider |
 | IDP |
 | in_corp |
-| případě |
+| instance |
 | ipaddr |
 | isbrowserhostedapp |
 | ISS |
-| JWK |
+| jwk |
 | key_id |
 | key_type |
 | mam_compliance_url |
@@ -137,10 +135,10 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | mdm_enrollment_url |
 | mdm_terms_of_use_url |
 | NameId |
-| NBF |
+| nbf |
 | netbios_name |
-| generované |
-| identifikátor |
+| nonce |
+| oid |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
@@ -152,36 +150,36 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | preferred_username |
 | previous_refresh_token |
 | primary_sid |
-| identifikátor |
+| puid |
 | pwd_exp |
 | pwd_url |
-| identifikátor |
+| redirect_uri |
 | refresh_token |
 | refreshtoken kontextového tokenu |
 | request_nonce |
-| Partner |
-| Role |
+| resource |
+| roles |
 | prostředků |
 | scope |
-| SCP |
-| ID |
-| Označení |
+| scp |
+| sid |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
-| jednotk |
+| sub |
 | tbid |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| identifikátory |
+| tid |
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
 | názvu |
 | user_setting_sync_url |
 | uživatelské jméno |
-| identifikátor UTI |
+| uti |
 | ver |
 | verified_primary_email |
 | verified_secondary_email |
@@ -289,20 +287,20 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 | Zdroj | ID | Popis |
 |-----|-----|-----|
-| Uživatel | Příjmení | Název rodiny |
+| Uživatel | Příjmení | Název řady |
 | Uživatel | givenName | jméno |
-| Uživatel | DisplayName | Zobrazovaný název |
-| Uživatel | objektu | Objektu |
-| Uživatel | Modul | E-mailová adresa |
-| Uživatel | třídy | Hlavní název uživatele |
-| Uživatel | Ministerstvo|Oddělení|
+| Uživatel | displayName | Zobrazovaný název |
+| Uživatel | objektu | MVObjectID |
+| Uživatel | e-mailu | E-mailová adresa |
+| Uživatel | userprincipalname | Hlavní název uživatele |
+| Uživatel | Oddělení|Oddělení|
 | Uživatel | onpremisessamaccountname | Místní název účtu SAM |
 | Uživatel | NetBiosName| Název pro rozhraní NetBios |
-| Uživatel | dnsdomainname | Název domény DNS |
+| Uživatel | dnsdomainname | DNS Domain Name |
 | Uživatel | onpremisesecurityidentifier | Místní identifikátor zabezpečení |
 | Uživatel | společnosti| Název organizace |
-| Uživatel | streetaddress | Adresa ulice |
-| Uživatel | ovládacím | Poštovní směrovací číslo |
+| Uživatel | streetaddress | Ulice |
+| Uživatel | ovládacím | PSČ |
 | Uživatel | preferredlanguange | Preferovaný jazyk |
 | Uživatel | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |
 | Uživatel | mailNickname | Přezdívka pošty |
@@ -321,15 +319,15 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | extensionattribute13 | Atribut rozšíření 13 |
 | Uživatel | extensionattribute14 | Atribut rozšíření 14 |
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
-| Uživatel | Othermail | Jiná pošta |
-| Uživatel | Krajin | Země |
+| Uživatel | othermail | Jiná pošta |
+| Uživatel | země | Země |
 | Uživatel | city | Město |
 | Uživatel | state | Stav |
 | Uživatel | jobtitle | Funkce |
-| Uživatel | zaměstnance | ID zaměstnance |
+| Uživatel | EmployeeID | Identifikační číslo zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
-| aplikace, prostředek, cílová skupina | DisplayName | Zobrazovaný název |
-| aplikace, prostředek, cílová skupina | s objekty | Objektu |
+| aplikace, prostředek, cílová skupina | displayName | Zobrazovaný název |
+| aplikace, prostředek, cílová skupina | s objekty | MVObjectID |
 | aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
 | Společnost | tenantcountry | Země tenanta |
 
@@ -364,7 +362,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|Modul|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není k dispozici žádný \@ znak, je původní vstupní řetězec vrácen tak, jak je.|
+|ExtractMailPrefix|e-mailu|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není k dispozici žádný \@ znak, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
@@ -389,10 +387,10 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 |Zdroj|ID|Popis|
 |-----|-----|-----|
-| Uživatel | Modul|E-mailová adresa|
-| Uživatel | třídy|Hlavní název uživatele|
+| Uživatel | e-mailu|E-mailová adresa|
+| Uživatel | userprincipalname|Hlavní název uživatele|
 | Uživatel | onpremisessamaccountname|Místní název účtu SAM|
-| Uživatel | zaměstnance|ID zaměstnance|
+| Uživatel | EmployeeID|Identifikační číslo zaměstnance|
 | Uživatel | extensionattribute1 | Atribut rozšíření 1 |
 | Uživatel | extensionattribute2 | Atribut rozšíření 2 |
 | Uživatel | extensionattribute3 | Atribut rozšíření 3 |

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384206"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851685"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Kurz: synchronizace dat z SQL Database Edge do úložiště objektů BLOB v Azure pomocí Azure Data Factory
 
@@ -103,7 +103,7 @@ Pomocí pokynů v [tomto kurzu](../data-factory/quickstart-create-data-factory-p
 
     5. Chcete-li otestovat připojení k instanci SQL Database Edge, vyberte možnost **Test připojení**.
 
-    6. Vyberte **Vytvořit**.
+    6. Vyberte **Create** (Vytvořit).
 
     ![Vytvoření propojené služby](media/tutorial-sync-data-factory/create-linked-service.png)
 
@@ -177,7 +177,7 @@ Pomocí pokynů v [tomto kurzu](../data-factory/quickstart-create-data-factory-p
 
 27. V SinkDataset klikněte na kartu **připojení** a proveďte tyto kroky:
 
-    1. V části **cesta k souboru**zadejte *asdedatasync/incrementalcopy*, kde *adftutorial* je název kontejneru objektů BLOB a *incrementalcopy* je název složky. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. Azure Data Factory automaticky vytvoří výstupní složku *incrementalcopy* , pokud neexistuje. Můžete také použít tlačítko **Procházet** u možnosti **Cesta k souboru** a přejít ke složce v kontejneru objektů blob.
+    1. V části **cesta k souboru**zadejte *asdedatasync/incrementalcopy*, kde *asdedatasync* je název kontejneru objektů BLOB a *incrementalcopy* je název složky. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. Azure Data Factory automaticky vytvoří výstupní složku *incrementalcopy* , pokud neexistuje. Můžete také použít tlačítko **Procházet** u možnosti **Cesta k souboru** a přejít ke složce v kontejneru objektů blob.
 
     2. V části **soubor** **cesta**k souboru vyberte **Přidat dynamický obsah [ALT + P]** a pak zadejte **@CONCAT("přírůstkové", kanálu (). RunId, '. txt ')** v okně, které se otevře. Vyberte **Finish** (Dokončit). Název souboru se dynamicky generuje pomocí výrazu. Každé spuštění kanálu má jedinečné ID. Aktivita kopírování používá ID spuštění k vygenerování názvu souboru.
 
@@ -195,9 +195,9 @@ Pomocí pokynů v [tomto kurzu](../data-factory/quickstart-create-data-factory-p
 
     2. Chcete-li zadat hodnoty parametrů uložené procedury, vyberte možnost **importovat parametr** a zadejte tyto hodnoty parametrů:
 
-    |Název|Typ|Hodnota|
+    |Name (Název)|Typ|Hodnota|
     |-----|----|-----|
-    |LastModifiedtime|DateTime|@ {Activity (' NewWaterMark '). Output. firstRow. NewWatermarkvalue}|
+    |LastModifiedtime|Datum a čas|@ {Activity (' NewWaterMark '). Output. firstRow. NewWatermarkvalue}|
     |TableName|Řetězec|@ {Activity (' OldWaterMark '). Output. firstRow. TableName}|
 
 33. Pokud chcete ověřit nastavení kanálu, vyberte **ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Chcete-li zavřít okno **Sestava ověření kanálu** , vyberte možnost **>>** .

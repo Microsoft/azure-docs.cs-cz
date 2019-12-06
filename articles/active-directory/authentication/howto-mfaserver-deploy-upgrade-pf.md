@@ -1,29 +1,29 @@
 ---
-title: Upgrade Phonefactoru na Azure MFA serveru – Azure Active Directory
+title: Upgrade PhoneFactor na Azure MFA Server – Azure Active Directory
 description: Zahájení práce s Azure MFA Serverem, když upgradujete ze staršího agenta PhoneFactor
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb1bf4996e381db933eac91135093a101e504bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd000f4b2a462e9bc9d2c54b57834b346688e6b5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055979"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848115"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Upgrade agenta PhoneFactor na Azure Multi-Factor Authentication Server
 
 Pokud chcete upgradovat agenta PhoneFactor verze 5.x nebo starší na Azure Multi-Factor Authentication Server, odinstalujte nejprve agenta PhoneFactor a připojené součásti. Pak lze instalovat Multi-Factor Authentication Server a jeho připojené součásti.
 
 > [!IMPORTANT]
-> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 ## <a name="uninstall-the-phonefactor-agent"></a>Odinstalace agenta PhoneFactor
 
@@ -66,14 +66,14 @@ Cesta instalace se převzala z registru z předchozí instalace agenta PhoneFact
 
    2. Chcete-li nainstalovat portál pro uživatele na webovém serveru, otevřete příkazový řádek jako správce a spusťte soubor MultiFactorAuthenticationUserPortalSetupXX.msi.
 
-      Výchozí název virtuálního adresáře je nyní **MultiFactorAuth**, a ne **PhoneFactor**. Pokud chcete použít předchozí název, musíte změnit název virtuálního adresáře během instalace. Jinak pokud povolíte instalaci pro použití nového výchozího názvu, doporučujeme kliknout na ikonu portálu pro uživatele na serveru Multi-Factor Authentication a aktualizovat adresu URL portálu pro uživatele na kartě Nastavení. Je potřeba informovat stávající uživatele o nové adrese URL.
+      Výchozí název virtuálního adresáře je nyní **MultiFactorAuth**, a ne **PhoneFactor**. Pokud chcete použít předchozí název, musíte změnit název virtuálního adresáře během instalace. Jinak, pokud povolíte instalaci pro použití nového výchozího názvu, měli byste kliknout na ikonu User Portal na Multi-Factor Authentication Server a aktualizovat adresu URL portálu User Portal na kartě nastavení. stávající uživatelé musí být informováni o nové adrese URL.
 
    3. Přejděte do umístění instalace portálu User Portal (například C:\inetpub\wwwroot\MultiFactorAuth) a upravte soubor web.config. Zkopírujte hodnoty v oddílech appSettings a applicationSettings z původního souboru web.config, který se zálohoval před upgradem, do nového souboru web.config. Pokud byl při instalaci sady Web Service SDK zachován výchozí název virtuálního adresáře, změňte adresu URL v části applicationSettings tak, aby odkazovala na správné místo. Pokud byly v předchozím soubor web.config změněny ostatní výchozí hodnoty, tyto změny budou stejně použity na nový soubor web.config.
 
 > [!NOTE]
 > Pokud upgradujete ze starší verze Azure MFA Serveru než 8.0 na verzi 8.0 nebo novější, po upgradu je možné odinstalovat webovou službu mobilní aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Instalace uživatelského portálu](howto-mfaserver-deploy-userportal.md) pro Azure Multi-Factor Authentication Server
 

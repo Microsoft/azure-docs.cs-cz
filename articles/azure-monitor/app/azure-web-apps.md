@@ -6,15 +6,15 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/04/2019
-ms.openlocfilehash: e4fc00d3889d10dddb9ec147a19f06a7211f53be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/04/2019
+ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230300"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850070"
 ---
-# <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu Azure App Service
+# <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
 Povolení monitorování webových aplikací založených na ASP.NET a ASP.NET Core běžících na [Azure App Services](https://docs.microsoft.com/azure/app-service/) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
@@ -37,7 +37,9 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 > [!NOTE]
 > Pokud je detekováno monitorování založené na agentech i ruční instrumentaci založené na sadě SDK, bude dodrženo pouze nastavení ručního instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace najdete v [části řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) níže.
 
-## <a name="enable-agent-based-monitoring-for-net-applications"></a>Povolit monitorování na základě agentů pro aplikace .NET
+## <a name="enable-agent-based-monitoring"></a>Povolit monitorování na základě agentů
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Kombinace APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression není podporována. Další informace najdete v tématu Vysvětlení v [části Poradce při potížích](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
@@ -73,7 +75,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
     * Seznam podporovaných nastavení procesoru telemetrie pro adaptivní vzorkování můžete zobrazit v [kódu](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) a v [související dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
-## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>Povolit monitorování na základě agentů pro aplikace .NET Core
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1 ASP.NET Core 2,2
 
@@ -94,11 +96,27 @@ Cílení na plnou verzi rozhraní .NET Core, samostatné nasazení a ASP.NET Cor
 
     ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-for-net-applications"></a>Povolit monitorování na straně klienta pro aplikace .NET
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+V App Service webové aplikace v části **nastavení** > **Vyberte Application Insights** > **Povolit**. Monitorování založené na agentech Node. js je aktuálně ve verzi Preview.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Webové aplikace založené na jazyce Java App Service aktuálně nepodporují monitorování na základě automatického agenta nebo rozšíření. Chcete-li povolit monitorování aplikace v jazyce Java, je nutné [aplikaci ručně instrumentovat](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Webové aplikace založené na Pythonu App Service v současné době nepodporují monitorování na základě automatického agenta nebo rozšíření. Pokud chcete povolit monitorování pro aplikaci v Pythonu, musíte [aplikaci ručně instrumentovat](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+
+---
+
+## <a name="enable-client-side-monitoring"></a>Povolení monitorování na straně klienta
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při povolování monitorování na straně klienta:
 
-* Vyberte **nastavení** > * * * * nastavení aplikace * * * *.
+* Vyberte **nastavení** > ** **nastavení aplikace** **.
    * V části nastavení aplikace přidejte název a **hodnotu** **Nastavení nové aplikace** :
 
      Název: `APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -111,7 +129,7 @@ Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při
 
 Chcete-li zakázat monitorování na straně klienta, buď z nastavení aplikace odeberte dvojici hodnoty klíče, nebo hodnotu nastavte na hodnotu NEPRAVDA.
 
-## <a name="enable-client-side-monitoring-for-net-core-applications"></a>Povolit monitorování na straně klienta pro aplikace .NET Core
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 Monitorování na straně klienta je **ve výchozím nastavení povolené** pro aplikace .NET Core s **doporučovanou kolekcí**bez ohledu na to, jestli je přítomné nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED.
 
@@ -127,6 +145,20 @@ Pokud z nějakého důvodu chcete vypnout monitorování na straně klienta:
    * Kliknutím na **Uložit** uložte nastavení a kliknutím na **Restartovat** restartujte aplikaci.
 
 ![Snímek obrazovky uživatelského rozhraní nastavení aplikace](./media/azure-web-apps/appinsights-javascript-disabled.png)
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Chcete-li povolit monitorování na straně klienta pro aplikaci Node. js, je nutné [do aplikace ručně přidat sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Chcete-li povolit monitorování na straně klienta pro aplikaci Java, je nutné [do aplikace ručně přidat sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Pokud chcete povolit monitorování na straně klienta pro vaši aplikaci v Pythonu, musíte [do své aplikace přidat ručně sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+---
 
 ## <a name="automate-monitoring"></a>Automatizace monitorování
 
@@ -322,7 +354,7 @@ Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
 
 > [!NOTE]
-> Aplikace Java a Node. js se podporují jenom v Azure App Services prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
+> Aplikace Java se podporují jenom v Azure App Services prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
 
 1. Ověřte, že je aplikace monitorována prostřednictvím `ApplicationInsightsAgent`.
     * Ověřte, že nastavení `ApplicationInsightsAgent_EXTENSION_VERSION` aplikace je nastavené na hodnotu ~ 2.

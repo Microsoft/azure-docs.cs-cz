@@ -1,17 +1,17 @@
 ---
 title: Informace o správě účtů databáze ve službě Azure Cosmos DB
-description: Informace o správě účtů databáze ve službě Azure Cosmos DB
+description: Naučte se spravovat Azure Cosmos DB prostředky pomocí šablon Azure Portal, PowerShellu, CLI a Azure Resource Manager.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 049be390403fe984ed4f8f38a4cdc86e24060e49
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582617"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873671"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
 
@@ -153,7 +153,7 @@ Možnost automatického převzetí služeb při selhání umožňuje Azure Cosmo
 
 3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto**. 
 
-4. Vyberte **Uložit**.
+4. Vyberte **Save** (Uložit).
 
    ![Nabídka portálu Automatické převzetí služeb při selhání](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -184,7 +184,7 @@ Po nakonfigurování účtu Cosmos pro automatické převzetí služeb při selh
 
 4. Pokud chcete změnit prioritu převzetí služeb při selhání, přetáhněte oblasti čtení přes tři tečky na levé straně řádku, která se zobrazí, když na ně najedete myší.
 
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
    ![Nabídka portálu Automatické převzetí služeb při selhání](./media/how-to-manage-database-account/automatic-failover.png)
 

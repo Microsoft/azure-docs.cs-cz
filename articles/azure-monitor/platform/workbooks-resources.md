@@ -1,5 +1,5 @@
 ---
-title: Vytváření interaktivních sestav pomocí Azure Monitorch sešitů | Parametry prostředku | Dokumentace Microsoftu
+title: Parametry prostředků Azure Monitorch sešitů
 description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2cd170fdc3bed04a81c66d83b9e75ed77e3c0a5a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: adc9855d30a3b286cfbc3489ec639ab8b460e314
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165846"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872804"
 ---
 # <a name="workbook-resource-parameters"></a>Parametry prostředku sešitu
 

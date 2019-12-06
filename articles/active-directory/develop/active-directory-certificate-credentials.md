@@ -3,28 +3,24 @@ title: Přihlašovací údaje certifikátu v Azure AD
 titleSuffix: Microsoft identity platform
 description: Tento článek popisuje registraci a použití přihlašovacích údajů certifikátu pro ověřování aplikací.
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473965"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845361"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Přihlašovací údaje certifikátu pro ověřování aplikací
 
@@ -49,12 +45,12 @@ Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihove
 | --- | --- |
 | `aud` | Cílová skupina: by měla být **https://login.microsoftonline.com/*tenant_Id*/OAuth2/token** |
 | `exp` | Datum vypršení platnosti: datum vypršení platnosti tokenu. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do doby, kdy platnost tokenu vyprší.|
-| `iss` | Vystavitel: by měl být client_id (ID aplikace služby klienta). |
+| `iss` | Vystavitel: mělo by se jednat o client_id (ID aplikace služby klienta). |
 | `jti` | GUID: ID JWT |
 | `nbf` | Ne před: datum, před kterým se token nedá použít. Čas je reprezentován jako počet sekund od 1. ledna 1970 (1970-01-01T0:0: 0Z) UTC až do doby, kdy byl token vydán. |
-| `sub` | Předmět: stejně jako u `iss`by měl být client_id (ID aplikace služby klienta). |
+| `sub` | Předmět: jako u `iss`by měl být client_id (ID aplikace služby klienta). |
 
-### <a name="signature"></a>Označení
+### <a name="signature"></a>Podpis
 
 Podpis se počítá s použitím certifikátu, jak je popsáno ve [specifikaci JSON web token RFC7519 Specification](https://tools.ietf.org/html/rfc7519) .
 

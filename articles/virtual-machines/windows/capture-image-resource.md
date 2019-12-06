@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01619027ddc79530dc9541584efa9a3e518f5136
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033666"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842054"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
-Prostředek spravované image se dá vytvořit z generalizované virtuální počítače (VM), který je uložený jako spravovaný disk nebo nespravovaný disk v účtu úložiště. Bitovou kopii pak můžete použít k vytvoření více virtuálních počítačů. Informace o tom, jak se účtují spravované image, najdete v článku [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/). 
+Prostředek spravované image lze vytvořit ze zobecněného virtuálního počítače, který je uložen v účtu úložiště buď jako spravovaný disk, nebo jako nespravovaný disk. Z image je potom možné vytvořit více virtuálních počítačů. Informace o tom, jak se účtují spravované image, najdete v článku [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
  
 
@@ -70,9 +70,9 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Vytvoření spravované image na portálu 
 
-1. Otevřete [portál Azure](https://portal.azure.com).
+1. Pokud chcete spravovat image virtuálního počítače, otevřete [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **virtuální počítače**.
 
-2. V nabídce na levé straně vyberte **virtuální počítače** a pak ze seznamu vyberte virtuální počítač.
+2. Ze seznamu vyberte svůj virtuální počítač.
 
 3. Na stránce **virtuálního počítače** pro virtuální počítač v horní nabídce vyberte **zachytit**.
 
@@ -80,7 +80,7 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 
 4. V poli **název**buď přijměte předem vyplněný název, nebo zadejte název, který chcete použít pro obrázek.
 
-5. V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název, nebo vyberte **použít existující** a vyberte skupinu prostředků, kterou chcete použít v rozevíracím seznamu.
+5. V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název nebo vyberte skupinu prostředků, kterou chcete použít v rozevíracím seznamu.
 
 6. Pokud chcete odstranit zdrojový virtuální počítač po vytvoření image, po vytvoření image vyberte **automaticky odstranit tento virtuální počítač**.
 
@@ -88,7 +88,7 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 
 8. Vyberte **vytvořit** a vytvořte bitovou kopii.
 
-9. Po vytvoření image je možné ji v seznamu prostředků ve skupině prostředků najít jako prostředek **obrázku** .
+Po vytvoření image je možné ji v seznamu prostředků ve skupině prostředků najít jako prostředek **obrázku** .
 
 
 
@@ -218,7 +218,7 @@ Spravovanou bitovou kopii můžete vytvořit ze snímku generalizované virtuál
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Vytvoření image z virtuálního počítače, který používá účet úložiště
 
-Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nepoužívá spravované disky, budete potřebovat identifikátor URI virtuálního pevného disku s operačním systémem v účtu úložiště v následujícím formátu: https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. VHD* . V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename. VHD*.
+Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nepoužívá spravované disky, budete potřebovat identifikátor URI virtuálního pevného disku s operačním systémem v účtu úložiště, a to v následujícím formátu: https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. VHD*. V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename. VHD*.
 
 
 1.  Vytvořte některé proměnné.

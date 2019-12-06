@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: eddfb9a8f2e3c034e50dc3bc1cdf4983a6163079
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a95804bcff3653df42186907f03d0bc27a603ea
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667837"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869710"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí šablony Azure Resource Manager
 
@@ -26,7 +26,7 @@ ms.locfileid: "74667837"
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. 
 
-V tomto článku vytvoříte cluster a databázi Azure Průzkumník dat pomocí [šablony Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Tento článek ukazuje, jak definovat, které prostředky jsou nasazeny a jak definovat parametry, které jsou zadány při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates). Informace o syntaxi a vlastnostech JSON pro použití v šabloně najdete v tématu [typy prostředků Microsoft. Kusto](/azure/templates/microsoft.kusto/allversions).
+V tomto článku vytvoříte cluster a databázi Azure Průzkumník dat pomocí [šablony Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Tento článek ukazuje, jak definovat prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates). Informace o syntaxi a vlastnostech JSON pro použití v šabloně najdete v tématu [typy prostředků Microsoft. Kusto](/azure/templates/microsoft.kusto/allversions).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -71,7 +71,7 @@ V tomto článku použijete [existující šablonu pro rychlý Start](https://ra
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-05-15",
+          "apiVersion": "2019-09-07",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -80,7 +80,7 @@ V tomto článku použijete [existující šablonu pro rychlý Start](https://ra
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-05-15",
+          "apiVersion": "2019-09-07",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
@@ -136,7 +136,7 @@ Vytvoření clusteru a databáze služby Azure Průzkumník dat trvá několik m
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Vyberte **Kopírovat** a zkopírujte skript prostředí PowerShell.
+1. Vyberte **kopírování** zkopírujte skript prostředí PowerShell.
 1. Klikněte pravým tlačítkem na konzolu prostředí a pak vyberte **Vložit**.
 Vytvoření clusteru a databáze služby Azure Průzkumník dat trvá několik minut.
 

@@ -1,24 +1,24 @@
 ---
 title: Škálování propustnosti v Azure Cosmos DB
-description: Tento článek popisuje, jak Azure Cosmos DB škálování propustnosti elasticky.
-author: dharmas-cosmos
+description: Tento článek popisuje, jak Azure Cosmos DB škáluje propustnost napříč různými oblastmi, ve kterých je účet Azure Cosmos zřízený.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 29a92f04a1d36004fa082bfafe2310f9e0e3e5c6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467604"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873501"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Globální škálování zřízené propustnosti 
 
 V Azure Cosmos DB je zajištěná propustnost reprezentovaná jako jednotka žádosti za sekundu (RU/s nebo ru ve formě plural). Ru změřte náklady na operace čtení i zápisu na kontejneru Cosmos, jak je znázorněno na následujícím obrázku:
 
-![Jednotky žádosti](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+![Požadované jednotky](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
 
 Ru můžete zřídit v kontejneru Cosmos nebo v databázi Cosmos. Ru zřízené na kontejneru jsou k dispozici výhradně pro operace prováděné na daném kontejneru. Ru zřízené v databázi se sdílí mezi všemi kontejnery v této databázi (s výjimkou všech kontejnerů se exkluzivně přiřazeným ru).
 
@@ -34,9 +34,9 @@ Za předpokladu, že je kontejner Cosmos nakonfigurovaný pomocí *R* ru a k ú�
 
 - Pokud je účet Cosmos nakonfigurovaný s více oblastmi zápisu, celkový ru dostupný globálně na kontejneru = *R* x (*N*+ 1). Další *R* ru se automaticky zřídí pro zpracování konfliktů aktualizací a provozu ochrany proti entropii napříč oblastmi.
 
-Vaše volba [modelu konzistence](consistency-levels.md) má vliv také na propustnost. V porovnání s silnějšími úrovněmi *konzistence můžete dosáhnout přibližně dvojnásobné propustnosti čtení pro příznivější úrovně konzistence (např. relace, konzistentní předpona a konečná konzistence). silná* konzistence).
+Vaše volba [modelu konzistence](consistency-levels.md) má vliv také na propustnost. V porovnání s silnějšími úrovněmi konzistence můžete získat přibližně dvojnásobnou propustnost čtení pro příznivější úrovně konzistence *(například* *relace*, *konzistentní předpony* *a* konečná *konzistence* ).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V dalším kroku se dozvíte, jak nakonfigurovat propustnost na kontejneru nebo databázi:
 

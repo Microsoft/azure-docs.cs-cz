@@ -1,25 +1,25 @@
 ---
-title: Řízení přístupu na základě role ve službě Azure Automation
+title: Řízení přístupu podle rolí ve službě Azure Automation
 description: Řízení přístupu na základě role (RBAC) umožňuje správu přístupu k prostředkům Azure. Tento článek popisuje způsob nastavení řízení přístupu na základě role ve službě Azure Automation.
 keywords: rbac v automation, řízení přístupu na základě rolí, rbac v azure
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0ee524768f46de965b1755f2cfffdf9e2034bec8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477723"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850784"
 ---
-# <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
+# <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu podle rolí ve službě Azure Automation
 
-Řízení přístupu na základě role (RBAC) umožňuje správu přístupu k prostředkům Azure. Pomocí [RBAC](../role-based-access-control/overview.md), můžete v rámci týmu oddělit a udělit pouze takovou úroveň přístupu uživatele, skupiny a aplikace, které potřebují k provádění svých úloh. Přístup na základě role můžete uživatelům udělit pomocí webu Azure Portal, nástrojů příkazového řádku Azure nebo rozhraní API pro správu Azure.
+Řízení přístupu na základě role (RBAC) umožňuje správu přístupu k prostředkům Azure. Pomocí [RBAC](../role-based-access-control/overview.md)můžete oddělit povinnosti v rámci svého týmu a udělit jenom přístup k uživatelům, skupinám a aplikacím, které potřebují k provádění svých úloh. Přístup na základě role můžete uživatelům udělit pomocí webu Azure Portal, nástrojů příkazového řádku Azure nebo rozhraní API pro správu Azure.
 
 ## <a name="roles-in-automation-accounts"></a>Role v účtech Automation
 
@@ -27,240 +27,240 @@ Ve službě Azure Automation se přístup uděluje přiřazením příslušné r
 
 | **Role** | **Popis** |
 |:--- |:--- |
-| Vlastník |Role vlastníka umožňuje přístup ke všem prostředkům a akcím v rámci účtu Automation, včetně poskytnutí přístupu pro ostatní uživatele, skupiny a aplikacím za účelem správy účtu Automation. |
+| Vlastník |Role vlastníka umožňuje přístup ke všem prostředkům a akcím v rámci účtu Automation, včetně poskytnutí přístupu dalším uživatelům, skupinám a aplikacím za účelem správy účtu Automation. |
 | Přispěvatel |Role přispěvatele umožňuje spravovat všechno kromě úpravy oprávnění jiných uživatelů k přístupu k účtu Automation. |
 | Čtenář |Role čtenáře vám umožní zobrazit všechny prostředky na účtu Automation, ale neumožní vám provádět změny. |
-| Operátor služby Automation |Role operátora služby Automation umožňuje zobrazit název sady runbook a vlastnosti a vytváření a Správa úloh pro všechny sady runbook v účtu Automation. Tato role je užitečná, pokud chcete chránit prostředky na účtu Automation, například assety přihlašovacích údajů a runbooky, aby je nikdo nemohl zobrazit nebo upravit, ale aby členové vaší organizace mohli tyto runbooky stále spouštět. |
-|Operátor úloh Automation|Role operátor úloh Automation umožňuje vytváření a Správa úloh pro všechny sady runbook v účtu Automation.|
-|Operátor Runbooků Automation|Role operátora služby Automation Runbook umožňuje uživateli zobrazit název a vlastnosti sady runbook.|
-| Přispěvatel Log Analytics | Role Přispěvatel Log Analytics umožňuje číst všechna data monitorování a upravit nastavení monitorování. Úprava nastavení monitorování patří přidávání rozšíření do virtuálních počítačů, čtení klíčů účtů úložiště, abyste mohli konfigurovat shromažďování protokolů ze služby Azure storage, vytváření a konfigurace účtů služby Automation, přidávání řešení a konfigurace diagnostik Azure na všechny prostředky Azure.|
-| Čtenář Log Analytics | Role Čtenář Log Analytics umožňuje zobrazit a prohledat všechna sledování a také zobrazení nastavení monitorování. To zahrnuje zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
-| Přispěvatel monitorování | Role Přispěvatel monitorování umožňuje číst všechny monitorování dat a aktualizovat nastavení monitorování.|
-| Čtenář monitorování | Role Čtenář monitorování umožňuje číst všechna data monitorování. |
+| Operátor služby Automation |Role operátora služby Automation umožňuje zobrazit název a vlastnosti Runbooku a vytvářet a spravovat úlohy pro všechny Runbooky v účtu Automation. Tato role je užitečná, pokud chcete chránit prostředky na účtu Automation, například assety přihlašovacích údajů a runbooky, aby je nikdo nemohl zobrazit nebo upravit, ale aby členové vaší organizace mohli tyto runbooky stále spouštět. |
+|Operátor úloh automatizace|Role operátora úlohy Automation umožňuje vytvářet a spravovat úlohy pro všechny Runbooky v účtu Automation.|
+|Operátor Runbooku služby Automation|Role operátora Runbooku Automation umožňuje zobrazit název a vlastnosti Runbooku.|
+| Přispěvatel Log Analytics | Role Přispěvatel Log Analytics umožňuje číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů, čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage, vytváření a konfiguraci účtů služby Automation, přidávání řešení a konfigurace diagnostiky Azure na všechny prostředky Azure.|
+| Čtenář Log Analytics | Role čtecího modulu Log Analytics umožňuje zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování. To zahrnuje zobrazení konfigurace diagnostiky Azure pro všechny prostředky Azure. |
+| Přispěvatel monitorování | Role Přispěvatel monitorování umožňuje číst všechna data monitorování a aktualizovat nastavení monitorování.|
+| Čtečka monitorování | Role čtenář monitorování umožňuje číst všechna data monitorování. |
 | Správce přístupu uživatelů |Role správce přístupu uživatelů umožňuje spravovat přístup uživatelů k účtům Azure Automation. |
 
 ## <a name="role-permissions"></a>Oprávnění role
 
-Následující tabulky popisují konkrétní oprávnění udělená pro jednotlivé role. To může zahrnovat akce, které poskytují oprávnění a NotActions, což je omezit.
+V následujících tabulkách jsou popsána konkrétní oprávnění udělená jednotlivým rolím. To může zahrnovat akce, které poskytují oprávnění a NotActions, které je omezují.
 
 ### <a name="owner"></a>Vlastník
 
-Vlastník můžou spravovat všechno včetně přístupu. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
+Vlastník může spravovat všechno, včetně přístupu. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |Akce|Popis|
 |---|---|
-|Microsoft.Automation/automationAccounts/|Vytváření a správě prostředků všech typů.|
+|Microsoft. Automation/automationAccounts/|Vytváření a Správa prostředků všech typů.|
 
 ### <a name="contributor"></a>Přispěvatel
 
-Přispěvatelé můžou spravovat všechno kromě přístupu. V následující tabulce jsou uvedeny oprávnění udělena a odepřen pro roli:
+Přispěvatel může spravovat všechno kromě přístupu. Následující tabulka uvádí oprávnění udělená a Zamítnutá pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|Microsoft.Automation/automationAccounts/|Vytváření a správě prostředků všech typů.|
-|**Ne akce**||
-|Microsoft.Authorization/*/Delete| Odstraňte role a přiřazení rolí.       |
-|Microsoft.Authorization/*/Write     |  Vytvoření role a přiřazení rolí.       |
-|Microsoft.Authorization/elevateAccess/Action    | Odepřít možnost vytvořit správce uživatelských přístupů.       |
+|Microsoft. Automation/automationAccounts/|Vytváření a Správa prostředků všech typů|
+|**Neakce**||
+|Microsoft. Authorization/*/DELETE| Odstraňte role a přiřazení rolí.       |
+|Microsoft.Authorization/*/Write     |  Vytvořte role a přiřazení rolí.       |
+|Microsoft. Authorization/elevateAccess/Action    | Zakazuje možnost vytvořit správce přístupu uživatele.       |
 
 ### <a name="reader"></a>Čtenář
 
-Čtečku můžete zobrazit všechny prostředky v účtu Automation, ale nemůže provádět změny.
+Čtenář může zobrazit všechny prostředky v účtu Automation, ale nemůže provádět žádné změny.
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|Microsoft.Automation/automationAccounts/read|Zobrazte všechny prostředky v účtu Automation. |
+|Microsoft. Automation/automationAccounts/Read|Zobrazit všechny prostředky v účtu Automation. |
 
 ### <a name="automation-operator"></a>Operátor služby Automation
 
-Operátor služby Automation je možné vytvářet a spravovat úlohy a číst runbook názvy a vlastnosti pro všechny sady runbook v účtu Automation.  Poznámka: Pokud chcete řídit přístup operátor pro jednotlivé sady runbook pak není nastavena tato role a role operátor úloh Automation a operátor Runbooků Automation místo toho použít v kombinaci. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
+Operátor automatizace může vytvářet a spravovat úlohy a číst názvy a vlastnosti sad Runbook pro všechny sady Runbook v účtu Automation.  Poznámka: Pokud chcete řídit přístup operátora k jednotlivým sadám Runbook, pak tuto roli nenastavujte a místo toho použijte role operátora úlohy Automation a operátora Runbooku služby Automation v kombinaci. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|Microsoft.Authorization/*/read|Přečtěte si autorizace.|
-|Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read|Číst prostředky Hybrid Runbook Worker.|
-|Microsoft.Automation/automationAccounts/jobs/read|Vypisovat úlohy runbooku.|
-|Microsoft.Automation/automationAccounts/jobs/resume/action|Obnovit úlohu, která je pozastavená.|
-|Microsoft.Automation/automationAccounts/jobs/stop/action|Zrušte probíhající úlohu.|
-|Microsoft.Automation/automationAccounts/jobs/streams/read|Číst datové proudy úlohy a výstup.|
-|Microsoft.Automation/automationAccounts/jobs/output/read|Získáte výstup úlohy.|
-|Microsoft.Automation/automationAccounts/jobs/suspend/action|Pozastavte úlohu probíhá.|
-|Microsoft.Automation/automationAccounts/jobs/write|Vytváření úloh.|
-|Microsoft.Automation/automationAccounts/jobSchedules/read|Získáte plán úloh Azure Automation.|
-|Microsoft.Automation/automationAccounts/jobSchedules/write|Vytvořte plán úloh Azure Automation.|
-|Microsoft.Automation/automationAccounts/linkedWorkspace/read|Získáte pracovní prostor propojený s účtem automation.|
-|Microsoft.Automation/automationAccounts/read|Získáte účet služby Azure Automation.|
-|Microsoft.Automation/automationAccounts/runbooks/read|Získání runbooku Azure Automation.|
-|Microsoft.Automation/automationAccounts/schedules/read|Získáte prostředek plánování Azure Automation.|
-|Microsoft.Automation/automationAccounts/schedules/write|Vytvořit nebo aktualizovat prostředek plánování Azure Automation.|
-|Microsoft.Resources/subscriptions/resourceGroups/read      |Další role a přiřazení rolí.         |
-|Microsoft.Resources/deployments/*      |Vytvářejte a spravujte nasazení skupiny prostředků.         |
-|Microsoft.Insights/alertRules/*      | Vytvářet a spravovat pravidla výstrah.        |
-|Microsoft.Support/* |Vytvořit a spravovat lístky podpory.|
+|Microsoft. Authorization/*/Read|Ověřování pro čtení.|
+|Microsoft. Automation/automationAccounts/hybridRunbookWorkerGroups/Read|Číst Hybrid Runbook Worker prostředky.|
+|Microsoft. Automation/automationAccounts/Jobs/Read|Vypíše úlohy Runbooku.|
+|Microsoft. Automation/automationAccounts/Jobs/Resume/Action|Obnoví pozastavenou úlohu.|
+|Microsoft. Automation/automationAccounts/Jobs/stop/Action|Zruší probíhající úlohu.|
+|Microsoft. Automation/automationAccounts/Jobs/Streams/Read|Přečtěte si streamy a výstup úlohy.|
+|Microsoft. Automation/automationAccounts/Jobs/Output/Read|Získat výstup úlohy.|
+|Microsoft. Automation/automationAccounts/Jobs/Suspend/Action|Pozastaví probíhající úlohu.|
+|Microsoft. Automation/automationAccounts/Jobs/Write|Vytváření úloh.|
+|Microsoft. Automation/automationAccounts/jobSchedules/Read|Získat Azure Automation plán úlohy.|
+|Microsoft.Automation/automationAccounts/jobSchedules/write|Vytvoří Azure Automation plán úlohy.|
+|Microsoft. Automation/automationAccounts/linkedWorkspace/Read|Získejte pracovní prostor propojený s účtem Automation.|
+|Microsoft. Automation/automationAccounts/Read|Získejte účet Azure Automation.|
+|Microsoft. Automation/automationAccounts/Runbooky/číst|Získat Azure Automation sadu Runbook.|
+|Microsoft. Automation/automationAccounts/Schedules/Read|Získat Azure Automation plánování prostředku.|
+|Microsoft. Automation/automationAccounts/Schedules/Write|Vytvoří nebo aktualizuje prostředek plánování Azure Automation.|
+|Microsoft. Resources/Subscriptions/resourceGroups/Read      |Načte role a přiřazení rolí.         |
+|Microsoft. Resources/nasazení/*      |Vytváření a Správa nasazení skupin prostředků         |
+|Microsoft.Insights/alertRules/*      | Vytváření a Správa pravidel výstrah        |
+|Microsoft. support/* |Vytváření a Správa lístků podpory.|
 
-### <a name="automation-job-operator"></a>Operátor úloh Automation
+### <a name="automation-job-operator"></a>Operátor úloh automatizace
 
-Role operátor úloh Automation je poskytnuta v rozsahu účtu Automation. Díky tomu oprávnění operátora pro vytváření a Správa úloh pro všechny sady runbook v rámci účtu. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
-
-|**Akce**  |**Popis**  |
-|---------|---------|
-|Microsoft.Authorization/*/read|Přečtěte si autorizace.|
-|Microsoft.Automation/automationAccounts/jobs/read|Vypisovat úlohy runbooku.|
-|Microsoft.Automation/automationAccounts/jobs/resume/action|Obnovit úlohu, která je pozastavená.|
-|Microsoft.Automation/automationAccounts/jobs/stop/action|Zrušte probíhající úlohu.|
-|Microsoft.Automation/automationAccounts/jobs/streams/read|Číst datové proudy úlohy a výstup.|
-|Microsoft.Automation/automationAccounts/jobs/suspend/action|Pozastavte úlohu probíhá.|
-|Microsoft.Automation/automationAccounts/jobs/write|Vytváření úloh.|
-|Microsoft.Resources/subscriptions/resourceGroups/read      |  Další role a přiřazení rolí.       |
-|Microsoft.Resources/deployments/*      |Vytvářejte a spravujte nasazení skupiny prostředků.         |
-|Microsoft.Insights/alertRules/*      | Vytvářet a spravovat pravidla výstrah.        |
-|Microsoft.Support/* |Vytvořit a spravovat lístky podpory.|
-
-### <a name="automation-runbook-operator"></a>Operátor Runbooků Automation
-
-Role operátora služby Automation Runbook jsou udělena v oboru sady Runbook. Operátor automatizace sady Runbook můžete zobrazit název a vlastnosti sady runbook.  Tato role v kombinaci s role operátor úloh Automation umožňuje operátor můžete také vytvářet a spravovat úlohy runbooku. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
+Role operátora úlohy Automation se uděluje v oboru účtu Automation. To umožňuje operátorovi oprávnění vytvářet a spravovat úlohy pro všechny Runbooky v účtu. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|Microsoft.Automation/automationAccounts/runbooks/read     | Seznam runbooků.        |
-|Microsoft.Authorization/*/read      | Přečtěte si autorizace.        |
-|Microsoft.Resources/subscriptions/resourceGroups/read      |Další role a přiřazení rolí.         |
-|Microsoft.Resources/deployments/*      | Vytvářejte a spravujte nasazení skupiny prostředků.         |
-|Microsoft.Insights/alertRules/*      | Vytvářet a spravovat pravidla výstrah.        |
-|Microsoft.Support/*      | Vytvořit a spravovat lístky podpory.        |
+|Microsoft. Authorization/*/Read|Ověřování pro čtení.|
+|Microsoft. Automation/automationAccounts/Jobs/Read|Vypíše úlohy Runbooku.|
+|Microsoft. Automation/automationAccounts/Jobs/Resume/Action|Obnoví pozastavenou úlohu.|
+|Microsoft. Automation/automationAccounts/Jobs/stop/Action|Zruší probíhající úlohu.|
+|Microsoft. Automation/automationAccounts/Jobs/Streams/Read|Přečtěte si streamy a výstup úlohy.|
+|Microsoft. Automation/automationAccounts/Jobs/Suspend/Action|Pozastaví probíhající úlohu.|
+|Microsoft. Automation/automationAccounts/Jobs/Write|Vytváření úloh.|
+|Microsoft. Resources/Subscriptions/resourceGroups/Read      |  Načte role a přiřazení rolí.       |
+|Microsoft. Resources/nasazení/*      |Vytváření a Správa nasazení skupin prostředků         |
+|Microsoft.Insights/alertRules/*      | Vytváření a Správa pravidel výstrah        |
+|Microsoft. support/* |Vytváření a Správa lístků podpory.|
+
+### <a name="automation-runbook-operator"></a>Operátor Runbooku služby Automation
+
+Role operátora Runbooku Automation se uděluje v oboru Runbooku. Operátor Runbooku služby Automation může zobrazit název a vlastnosti Runbooku.  Tato role v kombinaci s rolí operátora úlohy Automation umožňuje operátorovi také vytvářet a spravovat úlohy pro sadu Runbook. Následující tabulka uvádí oprávnění udělená pro roli:
+
+|**Akce**  |**Popis**  |
+|---------|---------|
+|Microsoft. Automation/automationAccounts/Runbooky/číst     | Vypíše Runbooky.        |
+|Microsoft. Authorization/*/Read      | Ověřování pro čtení.        |
+|Microsoft. Resources/Subscriptions/resourceGroups/Read      |Načte role a přiřazení rolí.         |
+|Microsoft. Resources/nasazení/*      | Vytváření a Správa nasazení skupin prostředků         |
+|Microsoft.Insights/alertRules/*      | Vytváření a Správa pravidel výstrah        |
+|Microsoft. support/*      | Vytváření a Správa lístků podpory.        |
 
 ### <a name="log-analytics-contributor"></a>Přispěvatel Log Analytics
 
-Přispěvatel Log Analytics může číst všechna data monitorování a upravit nastavení monitorování. Úprava nastavení monitorování, zahrnuje přidání rozšíření virtuálního počítače na virtuální počítače; čtení klíčů účtů úložiště, abyste mohli konfigurovat shromažďování protokolů ze služby Azure Storage; Vytvoření a konfigurace účtů služby Automation; přidávání řešení a konfigurace diagnostik Azure na všech prostředcích Azure. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
+Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|\* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
-|Microsoft.Automation/automationAccounts/*|Správa účtů služby automation.|
-|Microsoft.ClassicCompute/virtualMachines/extensions/*|Vytvoření a správa rozšíření virtuálních počítačů.|
-|Microsoft.ClassicStorage/storageAccounts/listKeys/action|Vypsat klíče účtu klasického úložiště.|
-|Microsoft.Compute/virtualMachines/extensions/*|Vytvářejte a spravujte rozšíření klasický virtuální počítač.|
-|Microsoft.Insights/alertRules/*|Čtení, zápisu a odstranění pravidla upozornění.|
-|Microsoft.Insights/diagnosticSettings/*|Nastavení diagnostiky pro čtení/zápis/delete.|
+|*/read|Přečte prostředky všech typů s výjimkou tajných klíčů.|
+|Microsoft. Automation/automationAccounts/*|Spravujte účty služby Automation.|
+|Microsoft. ClassicCompute/virtualMachines/Extensions/*|Vytváření a Správa rozšíření virtuálních počítačů.|
+|Microsoft.ClassicStorage/storageAccounts/listKeys/action|Vypíše klíče klasického účtu úložiště.|
+|Microsoft. COMPUTE/virtualMachines/Extensions/*|Vytvářejte a spravujte rozšíření klasických virtuálních počítačů.|
+|Microsoft.Insights/alertRules/*|Pravidla upozornění pro čtení, zápis a odstranění.|
+|Microsoft.Insights/diagnosticSettings/*|Nastavení diagnostiky pro čtení, zápis a odstranění|
 |Microsoft.OperationalInsights/*|Správa protokolů Azure Monitor.|
 |Microsoft.OperationsManagement/*|Spravujte řešení v pracovních prostorech.|
-|Microsoft.Resources/deployments/*|Vytvářejte a spravujte nasazení skupiny prostředků.|
-|Microsoft.Resources/subscriptions/resourcegroups/deployments/*|Vytvářejte a spravujte nasazení skupiny prostředků.|
-|Microsoft.Storage/storageAccounts/listKeys/action|Vypsat klíče účtu úložiště.|
-|Microsoft.Support/*|Vytvořit a spravovat lístky podpory.|
+|Microsoft. Resources/nasazení/*|Vytváření a Správa nasazení skupin prostředků|
+|Microsoft. Resources/Subscriptions/ResourceGroups/Deployments/*|Vytváření a Správa nasazení skupin prostředků|
+|Microsoft. Storage/storageAccounts/klíče listkey/Action|Vypíše klíče účtu úložiště.|
+|Microsoft. support/*|Vytváření a Správa lístků podpory.|
 
 ### <a name="log-analytics-reader"></a>Čtenář Log Analytics
 
-Čtenář Log Analytics můžete zobrazit a vyhledat všechna data monitorování a zobrazení nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. V následující tabulce jsou uvedeny oprávnění povolen nebo odepřen pro roli:
+Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. Následující tabulka uvádí oprávnění udělená nebo zakázaná pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|\* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
-|Microsoft.OperationalInsights/workspaces/analytics/query/action|Správa dotazů v protokoly Azure monitoru.|
-|Microsoft.OperationalInsights/workspaces/search/action|Hledat data protokolů Azure Monitor.|
-|Microsoft.Support/*|Vytvořit a spravovat lístky podpory.|
-|**Ne akce**| |
-|Microsoft.OperationalInsights/workspaces/sharedKeys/read|Nebylo možné získat klíče pro sdílený přístup.|
+|*/read|Přečte prostředky všech typů s výjimkou tajných klíčů.|
+|Microsoft.OperationalInsights/workspaces/analytics/query/action|Spravujte dotazy v protokolech Azure Monitor.|
+|Microsoft. OperationalInsights/pracovní prostory/hledání/akce|Vyhledávejte data protokolu Azure Monitor.|
+|Microsoft. support/*|Vytváření a Správa lístků podpory.|
+|**Neakce**| |
+|Microsoft.OperationalInsights/workspaces/sharedKeys/read|Nebylo možné číst sdílené přístupové klíče.|
 
 ### <a name="monitoring-contributor"></a>Přispěvatel monitorování
 
-Přispěvatel monitorování může číst všechna data monitorování a aktualizovat nastavení monitorování. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
+Přispěvatel monitorování může číst všechna data monitorování a aktualizovat nastavení monitorování. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|\* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
-|Microsoft.AlertsManagement/alerts/*|Správa výstrah.|
-|Microsoft.AlertsManagement/alertsSummary/*|Správa výstrah řídicí panel.|
+|*/read|Přečte prostředky všech typů s výjimkou tajných klíčů.|
+|Microsoft.AlertsManagement/alerts/*|Spravujte výstrahy.|
+|Microsoft. AlertsManagement/alertsSummary/*|Spravujte řídicí panel výstrah.|
 |Microsoft.Insights/AlertRules/*|Spravujte pravidla výstrah.|
-|Microsoft.Insights/components/*|Spravujte součásti Application Insights.|
-|Microsoft.Insights/DiagnosticSettings/*|Spravujte nastavení diagnostiky.|
-|Microsoft.Insights/eventtypes/*|Vypsat události protokolu aktivit (události správy) v rámci předplatného. Toto oprávnění se vztahuje na programování a portálu přístup k protokolům aktivit.|
-|Microsoft.Insights/LogDefinitions/*|Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit na portálu. Seznam kategorií protokolu v protokolu aktivit.|
-|Microsoft.Insights/MetricDefinitions/*|Přečíst definice metrik (seznam dostupných typů metriky pro prostředek).|
-|Microsoft.Insights/Metrics/*|Číst metriky pro prostředek.|
-|Microsoft.Insights/Register/Action|Zaregistrujte zprostředkovatele Microsoft.Insights.|
-|Microsoft.Insights/webtests/*|Správa webových testů Application Insights.|
-|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Správa sad řešení protokoly Azure monitoru.|
-|Microsoft.OperationalInsights/workspaces/savedSearches/*|Spravujte vyhledávání uloženy protokoly Azure monitoru.|
-|Microsoft.OperationalInsights/workspaces/search/action|Hledejte pracovní prostory Log Analytics.|
-|Microsoft.OperationalInsights/workspaces/sharedKeys/action|Vypsat klíče pracovního prostoru Log Analytics.|
-|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Správa konfigurace přehledu úložiště protokoly Azure monitoru.|
-|Microsoft.Support/*|Vytvořit a spravovat lístky podpory.|
-|Microsoft.WorkloadMonitor/workloads/*|Správa úloh.|
+|Microsoft. Insights/Components/*|Spravovat součásti Application Insights.|
+|Microsoft. Insights/DiagnosticSettings/*|Spravovat nastavení diagnostiky.|
+|Microsoft.Insights/eventtypes/*|Vypíše události protokolu aktivit (události správy) v předplatném. Toto oprávnění platí pro programový i portálový přístup k protokolu aktivit.|
+|Microsoft. Insights/LogDefinitions/*|Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit.|
+|Microsoft. Insights/MetricDefinitions/*|Čtení definic metriky (seznam dostupných typů metrik pro prostředek).|
+|Microsoft.Insights/Metrics/*|Načte metriky pro prostředek.|
+|Microsoft. Insights/registr/Action|Zaregistrujte poskytovatele Microsoft. Insights.|
+|Microsoft.Insights/webtests/*|Spravujte Application Insights webové testy.|
+|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Správa Azure Monitor protokoluje balíčky řešení.|
+|Microsoft.OperationalInsights/workspaces/savedSearches/*|Správa protokolů Azure Monitor uložených hledání|
+|Microsoft. OperationalInsights/pracovní prostory/hledání/akce|Hledání Log Analytics pracovních prostorů.|
+|Microsoft. OperationalInsights/pracovní prostory/sharedKeys/Action|Zobrazí seznam klíčů pro Log Analytics pracovní prostor.|
+|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Správa Azure Monitor protokolů konfigurace služby Storage Insight.|
+|Microsoft. support/*|Vytváření a Správa lístků podpory.|
+|Microsoft. monitor zátěže byl/úlohy/*|Spravujte úlohy.|
 
-### <a name="monitoring-reader"></a>Čtenář monitorování
+### <a name="monitoring-reader"></a>Čtečka monitorování
 
-Čtenář monitorování může číst všechna data monitorování. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
+Čtečka monitorování může číst všechna data monitorování. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|\* / čtení|Číst prostředky všech typů, s výjimkou tajných kódů.|
-|Microsoft.OperationalInsights/workspaces/search/action|Hledejte pracovní prostory Log Analytics.|
-|Microsoft.Support/*|Vytvořit a spravovat lístky podpory|
+|*/read|Přečte prostředky všech typů s výjimkou tajných klíčů.|
+|Microsoft. OperationalInsights/pracovní prostory/hledání/akce|Hledání Log Analytics pracovních prostorů.|
+|Microsoft. support/*|Vytváření a Správa lístků podpory|
 
 ### <a name="user-access-administrator"></a>Správce přístupu uživatelů
 
-Správce uživatelských přístupů můžete spravovat přístup uživatelů k prostředkům Azure. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
+Správce přístupu uživatelů může spravovat přístup uživatelů k prostředkům Azure. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
-|\* / čtení|Číst všechny prostředky|
-|Microsoft.Authorization/*|Správa autorizací|
-|Microsoft.Support/*|Vytvořit a spravovat lístky podpory|
+|*/read|Čtení všech prostředků|
+|Microsoft. Authorization/*|Spravovat autorizaci|
+|Microsoft. support/*|Vytváření a Správa lístků podpory|
 
-## <a name="onboarding"></a>Onboarding
+## <a name="onboarding"></a>Připojování
 
-V následujících tabulkách minimální požadované oprávnění potřebná pro připojení virtuálních počítačů pro sledování změn umožňuje zobrazit nebo aktualizovat řešení pro správu.
+V následujících tabulkách jsou uvedeny minimální požadovaná oprávnění potřebná ke zprovoznění virtuálních počítačů pro řešení Change Tracking nebo Update Management.
 
-### <a name="onboarding-from-a-virtual-machine"></a>Připojení z virtuálního počítače
+### <a name="onboarding-from-a-virtual-machine"></a>Připojování z virtuálního počítače
 
-|**Akce**  |**Oprávnění**  |**Minimální rozsah**  |
+|**Akce**  |**Udělen**  |**Minimální rozsah**  |
 |---------|---------|---------|
-|Zápis nové nasazení      | Microsoft.Resources/deployments/*          |Předplatné          |
-|Zapsat novou skupinu prostředků      | Microsoft.Resources/subscriptions/resourceGroups/write        | Předplatné          |
+|Zapsat nové nasazení      | Microsoft. Resources/nasazení/*          |Předplatné          |
+|Zapsat novou skupinu prostředků      | Microsoft. Resources/Subscriptions/resourceGroups/Write        | Předplatné          |
 |Vytvořit nový výchozí pracovní prostor      | Microsoft.OperationalInsights/workspaces/write         | Skupina prostředků         |
-|Vytvořit nový účet      |  Microsoft.Automation/automationAccounts/write        |Skupina prostředků         |
-|Propojení pracovního prostoru a účtu      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|Pracovní prostor</br>Účet Automation
-|Vytvoření řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Skupina prostředků          |
-|Jak vytvořit rozšíření agenta MMA      | Microsoft.Compute/virtualMachines/write         | Virtuální počítač         |
+|Vytvořit nový účet      |  Microsoft. Automation/automationAccounts/Write        |Skupina prostředků         |
+|Propojit pracovní prostor a účet      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft. Automation/automationAccounts/Read|Pracovní prostor</br>Účet Automation
+|Vytvořit řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Skupina prostředků          |
+|Vytvořit rozšíření MMA      | Microsoft. COMPUTE/virtualMachines/Write         | Virtual Machines         |
 |Vytvořit uložené výsledky hledání      | Microsoft.OperationalInsights/workspaces/write          | Pracovní prostor         |
 |Vytvořit konfiguraci oboru      | Microsoft.OperationalInsights/workspaces/write          | Pracovní prostor         |
-|Řešení odkazu ke konfiguraci oboru      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Řešení         |
-|Zkontrolovat stav registrace – pracovní prostor pro čtení      | Microsoft.OperationalInsights/workspaces/read         | Pracovní prostor         |
-|Kontrola stavu registrace – pro čtení propojený pracovní prostor vlastnictví účtu     | Microsoft.Automation/automationAccounts/read      | Účet Automation        |
-|Zkontrolovat stav registrace – řešení pro čtení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | Řešení         |
-|Kontrola stavu registrace – virtuální počítač pro čtení      | Microsoft.Compute/virtualMachines/read         | Virtuální počítač         |
-|Zkontrolovat stav registrace – účet pro čtení      | Microsoft.Automation/automationAccounts/read  |  Účet Automation   |
-| Kontrola registrace pracovní prostor pro virtuální počítač<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Předplatné         |
-| Registrace poskytovatele Log Analytics |Microsoft.Insights/register/action | Předplatné|
+|Propojit řešení s konfigurací oboru      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Řešení         |
+|Kontrolu stavu připojování – pracovní prostor pro čtení      | Microsoft.OperationalInsights/workspaces/read         | Pracovní prostor         |
+|Kontrolní stav zprovoznění – vlastnost propojeného pracovního prostoru účtu     | Microsoft. Automation/automationAccounts/Read      | Účet Automation        |
+|Vracení se změnami stavu zprovoznění – řešení pro čtení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | Řešení         |
+|Kontrolní stav připojování – virtuální počítač pro čtení      | Microsoft. COMPUTE/virtualMachines/Read         | Virtual Machines         |
+|Kontrolní stav připojování – účet pro čtení      | Microsoft. Automation/automationAccounts/Read  |  Účet Automation   |
+| Vyhledání pracovního prostoru připojování pro virtuální počítač<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Předplatné         |
+| Registrace poskytovatele Log Analytics |Microsoft. Insights/registr/Action | Předplatné|
 
-<sup>1</sup> toto oprávnění, je potřeba připojit z portálu virtuálního počítače.
+<sup>1</sup> toto oprávnění je potřeba k připojování prostřednictvím prostředí portálu virtuálních počítačů.
 
-### <a name="onboarding-from-automation-account"></a>Připojení z účtu služby Automation
+### <a name="onboarding-from-automation-account"></a>Připojování z účtu Automation
 
-|**Akce**  |**Oprávnění** |**Minimální rozsah**  |
+|**Akce**  |**Udělen** |**Minimální rozsah**  |
 |---------|---------|---------|
-|Vytvořte nové nasazení     | Microsoft.Resources/deployments/*        | Předplatné         |
-|Vytvořit novou skupinu prostředků     | Microsoft.Resources/subscriptions/resourceGroups/write         | Předplatné        |
+|Vytvořit nové nasazení     | Microsoft. Resources/nasazení/*        | Předplatné         |
+|Vytvořit novou skupinu prostředků     | Microsoft. Resources/Subscriptions/resourceGroups/Write         | Předplatné        |
 |Okno AutomationOnboarding – vytvořit nový pracovní prostor     |Microsoft.OperationalInsights/workspaces/write           | Skupina prostředků        |
-|Okno AutomationOnboarding – přečtěte si propojení pracovního prostoru     | Microsoft.Automation/automationAccounts/read        | Účet Automation       |
-|Okno AutomationOnboarding – přečtěte si řešení     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | Řešení        |
-|Okno AutomationOnboarding – čtení pracovního prostoru     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Pracovní prostor        |
-|Vytvoření odkazu na pracovní prostor a účet     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
-|Zapsat účet pro materiálů uložených      | Microsoft.Automation/automationAccounts/write        | Účet        |
-|Vytvoření řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | Skupina prostředků         |
-|Vytvořit/upravit uložené hledání     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
+|Okno AutomationOnboarding – číst propojený pracovní prostor     | Microsoft. Automation/automationAccounts/Read        | Účet Automation       |
+|AutomationOnboarding – řešení pro čtení     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | Řešení        |
+|Pracovní prostor pro čtení v okně AutomationOnboarding     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Pracovní prostor        |
+|Vytvořit odkaz pro pracovní prostor a účet     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
+|Zápis účtu pro Shoebox      | Microsoft. Automation/automationAccounts/Write        | Účet        |
+|Vytvořit řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | Skupina prostředků         |
+|Vytvořit nebo upravit uložené výsledky hledání     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
 |Vytvořit nebo upravit konfiguraci oboru     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
-|Řešení odkazu ke konfiguraci oboru      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Řešení         |
-| Registrace poskytovatele Log Analytics |Microsoft.Insights/register/action | Předplatné|
-|**Krok 2 – připojit více virtuálních počítačů**     |         |         |
-|Okno VMOnboarding – rozšíření vytvořit agenta MMA     | Microsoft.Compute/virtualMachines/write           | Virtuální počítač        |
-|Vytvořit / upravit uložené hledání     | Microsoft.OperationalInsights/workspaces/write           | Pracovní prostor        |
-|Vytvořit / upravit konfiguraci oboru  | Microsoft.OperationalInsights/workspaces/write   | Pracovní prostor|
+|Propojit řešení s konfigurací oboru      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Řešení         |
+| Registrace poskytovatele Log Analytics |Microsoft. Insights/registr/Action | Předplatné|
+|**Krok 2 – zprovoznění více virtuálních počítačů**     |         |         |
+|VMOnboarding okno – vytvořit MMA rozšíření     | Microsoft. COMPUTE/virtualMachines/Write           | Virtual Machines        |
+|Vytvořit nebo upravit uložené výsledky hledání     | Microsoft.OperationalInsights/workspaces/write           | Pracovní prostor        |
+|Vytvořit nebo upravit konfiguraci oboru  | Microsoft.OperationalInsights/workspaces/write   | Pracovní prostor|
 
 ## <a name="update-management"></a>Správa aktualizací
 
-Správa aktualizací dosáhne napříč několika službami a zajistit tak jeho služby. V následující tabulce jsou uvedeny oprávnění potřebná ke správě nasazení správy aktualizací:
+Služba Update Management dosáhne v rámci více služeb, aby poskytovala službu. Následující tabulka uvádí oprávnění potřebná ke správě nasazení správy aktualizací:
 
 |**Prostředek**  |**Role**  |**Rozsah**  |
 |---------|---------|---------|
@@ -269,55 +269,55 @@ Správa aktualizací dosáhne napříč několika službami a zajistit tak jeho 
 |Pracovní prostor Log Analytics     | Přispěvatel Log Analytics| Pracovní prostor Log Analytics        |
 |Pracovní prostor Log Analytics |Čtenář Log Analytics| Předplatné|
 |Řešení     |Přispěvatel Log Analytics         | Řešení|
-|Virtuální počítač     | Přispěvatel virtuálních počítačů        | Virtuální počítač        |
+|Virtual Machines     | Přispěvatel virtuálních počítačů        | Virtual Machines        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>Konfigurace RBAC pro svůj účet Automation
+## <a name="configure-rbac-for-your-automation-account"></a>Konfigurace RBAC pro váš účet Automation
 
-Následující části se dozvíte, jak nakonfigurovat RBAC na účtu Automation pomocí [portál](#configure-rbac-using-the-azure-portal) a [prostředí PowerShell](#configure-rbac-using-powershell)
+V následující části se dozvíte, jak nakonfigurovat RBAC na svém účtu Automation prostřednictvím [portálu](#configure-rbac-using-the-azure-portal) a [PowerShellu](#configure-rbac-using-powershell) .
 
-### <a name="configure-rbac-using-the-azure-portal"></a>Nakonfigurujte RBAC pomocí webu Azure portal
+### <a name="configure-rbac-using-the-azure-portal"></a>Konfigurace RBAC pomocí Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a na stránce Účty Automation otevřete svůj účet Automation.
-2. Klikněte na **řízení přístupu (IAM)** ovládací prvek v levém horním rohu. Tím se otevře **řízení přístupu (IAM)** stránce, kde můžete přidat nové uživatele, skupiny, a účet aplikace pro správu automatizace a zobrazovat existující role, které je možné nakonfigurovat pro účet služby Automation.
+2. V levém horním rohu klikněte na ovládací prvek **řízení přístupu (IAM)** . Tím se otevře stránka **řízení přístupu (IAM)** , kde můžete přidat nové uživatele, skupiny a aplikace pro správu účtu Automation a zobrazit existující role, které se dají pro účet Automation nakonfigurovat.
 3. Klikněte na tlačítko **přiřazení rolí** kartu.
 
    ![Tlačítko Přístup](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>Přidání nového uživatele a přiřazení role
 
-1. Z **řízení přístupu (IAM)** klikněte na **+ přidat přiřazení role** otevřít **přidat přiřazení role** stránku, kde můžete přidat uživatele, skupinu nebo aplikaci a přiřazení role k nim.
+1. Na stránce **řízení přístupu (IAM)** kliknutím na **+ Přidat přiřazení role** otevřete stránku **Přidat přiřazení role** , kde můžete přidat uživatele, skupiny nebo aplikace a přiřadit jim roli.
 
-2. V seznamu dostupných rolí vyberte jednu roli. Můžete vybrat některý z dostupných předdefinované role, které účet Automation podporuje nebo jakoukoli vlastní roli, kterou jste definovali.
+2. V seznamu dostupných rolí vyberte jednu roli. Můžete zvolit některou z dostupných předdefinovaných rolí, které účet Automation podporuje, nebo libovolnou vlastní roli, kterou jste mohli definovat.
 
-3. Zadejte uživatelské jméno uživatele, kterému chcete udělit oprávnění k v **vyberte** pole. Vyberte uživatele ze seznamu a klikněte na tlačítko **Uložit**.
+3. Do pole **Vybrat** zadejte uživatelské jméno uživatele, kterému chcete udělit oprávnění. Vyberte uživatele ze seznamu a klikněte na **Uložit**.
 
    ![Přidání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
 
-   Teď byste měli vidět uživatel přidaný do **uživatelé** stránka s vybranou roli přiřadit
+   Nyní byste měli vidět, že uživatel byl přidán na stránku **Uživatelé** s přiřazenou vybranou rolí.
 
    ![Vypsání uživatelů](media/automation-role-based-access-control/automation-05-list-users.png)
 
    Roli můžete uživateli přiřadit také na stránce **Role**.
-4. Klikněte na tlačítko **role** z **řízení přístupu (IAM)** otevřít stránku **role** stránky. Tady můžete zobrazit název role a počet uživatelů a skupin přiřazených k této roli.
+4. Kliknutím na **role** na stránce **řízení přístupu (IAM)** otevřete stránku **role** . Tady můžete zobrazit název role a počet uživatelů a skupin přiřazených k této roli.
 
     ![Přiřazení role na stránce Uživatelé](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
 
    > [!NOTE]
-   > Řízení přístupu na základě rolí lze nastavit pouze v rozsahu účtu Automation a ne u jakéhokoliv prostředku pod účtem Automation.
+   > Řízení přístupu na základě rolí se dá nastavit jenom v oboru účtu Automation, a ne v jakémkoli prostředku pod účtem Automation.
 
 #### <a name="remove-a-user"></a>Odebrání uživatele
 
-Můžete odebrat přístupová oprávnění pro uživatele nespravuje účet Automation, nebo který již v organizaci nepracuje. Uživatele můžete odebrat následujícím postupem:
+Můžete odebrat přístupová oprávnění pro uživatele, který účet Automation nespravuje, nebo už pro organizaci nefunguje. Uživatele můžete odebrat následujícím postupem:
 
-1. Z **řízení přístupu (IAM)** vyberte uživatele chcete odebrat a klikněte na tlačítko **odebrat**.
+1. Na stránce **řízení přístupu (IAM)** vyberte uživatele, kterého chcete odebrat, a klikněte na tlačítko **Odebrat**.
 2. V podokně podrobností přiřazení klikněte na tlačítko **Odebrat**.
 3. Kliknutím na **Ano** odebrání potvrďte.
 
    ![Odebrání uživatelů](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>Nakonfigurujte RBAC pomocí Powershellu
+### <a name="configure-rbac-using-powershell"></a>Konfigurace RBAC pomocí prostředí PowerShell
 
-Přístup na základě role se dají konfigurovat i na účtu Automation pomocí následujících [rutin prostředí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
+Přístup na základě rolí se dá nakonfigurovat taky na účet Automation pomocí následujících [rutin Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 [Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)) vypíše všechny role RBAC, které jsou k dispozici v Azure Active Directory. Tento příkaz můžete použít spolu s vlastností **Název** k vypsání všech akcí, které může konkrétní role provádět.
 
@@ -338,8 +338,8 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)) uvádí přiřazení role Azure AD RBAC v zadaném oboru. Pokud nezadáte žádné parametry, tento příkaz vrátí všechna přiřazení rolí v rámci předplatného. K vypsání přiřazení přístupu konkrétního uživatele nebo skupin, kterých je uživatel členem, použijte parametr **ExpandPrincipalGroups**.
-    **Příklad:** Seznam všech uživatelů a jejich rolí v rámci účtu automation použijte následující příkaz.
+[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)) vypíše přiřazení rolí RBAC Azure AD v zadaném oboru. Pokud nezadáte žádné parametry, tento příkaz vrátí všechna přiřazení rolí v rámci předplatného. K vypsání přiřazení přístupu konkrétního uživatele nebo skupin, kterých je uživatel členem, použijte parametr **ExpandPrincipalGroups**.
+    **Příklad:** K vypsání všech uživatelů a jejich rolí v rámci účtu Automation použijte následující příkaz.
 
 ```azurepowershell-interactive
 Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -359,8 +359,8 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-[Nový-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)) přiřazení přístupu k uživatelům, skupinám a aplikacím na konkrétní rozsah.
-    **Příklad:** Přiřazení role "Operátor služby Automation" pro uživatele v rozsahu účtu Automation použijte následující příkaz.
+[New-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)) k přiřazení přístupu uživatelům, skupinám a aplikacím do konkrétního rozsahu.
+    **Příklad:** K přiřazení role "operátor služby Automation" pro uživatele v rozsahu účtu Automation použijte následující příkaz.
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -380,24 +380,24 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Použití [Remove-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)) k odebrání přístupu konkrétního uživatele, skupinu nebo aplikaci v určitém rozsahu.
-    **Příklad:** Použijte následující příkaz k odebrání uživatele z role "Operátor služby Automation" v rozsahu účtu Automation.
+K odebrání přístupu zadaného uživatele, skupiny nebo aplikace z konkrétního oboru použijte [příkaz Remove-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)) .
+    **Příklad:** Pomocí následujícího příkazu Odeberte uživatele z role "operátor služby Automation" v oboru účtu služby Automation.
 
 ```azurepowershell-interactive
 Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-V předchozích příkladech nahraďte **přihlašovací Id**, **Id předplatného**, **název skupiny prostředků**, a **název účtu služby Automation** s vaší Podrobnosti o účtu. Po zobrazení výzvy, která požádá o potvrzení odebrání přiřazené role uživatele, zvolte **Ano**.
+V předchozích příkladech nahraďte **ID přihlášení**, **ID předplatného**, **název skupiny prostředků**a **název účtu Automation** údaji svého účtu. Po zobrazení výzvy, která požádá o potvrzení odebrání přiřazené role uživatele, zvolte **Ano**.
 
-### <a name="user-experience-for-automation-operator-role---automation-account"></a>Činnost koncového uživatele pro roli operátora služby Automation – účet služby Automation
+### <a name="user-experience-for-automation-operator-role---automation-account"></a>Činnost koncového uživatele pro roli operátora automatizace – účet Automation
 
-Když se uživatel, kdo je přiřazen k roli operátor služby Automation v rozsahu účtu Automation účtu Automation jsou přiřazeny k zobrazení, jsou pouze zobrazení seznamu sad runbook, úlohy runbooku, a plány vytvořené v automatizaci účtu, ale nemůže zobrazit jejich definice. Může spustit, zastavit, pozastavit, obnovit nebo naplánovat úlohu runbooku. Uživatel nemá přístup k dalším prostředkům Automation, jako je například konfigurace, skupinám hybrid worker nebo uzlům DSC.
+Když uživatel, který je přiřazený k roli operátor Automation v oboru účtu Automation, zobrazuje účet Automation, ke kterému jsou přiřazené, může zobrazit jenom seznam runbooků, úlohy Runbooku a plány vytvořené v účtu Automation, ale nemůže zobrazit jejich definition. Může spustit, zastavit, pozastavit, obnovit nebo naplánovat úlohu runbooku. Uživatel nemá přístup k jiným prostředkům služby Automation, například ke konfiguracím, skupinám Hybrid Worker nebo uzlům DSC.
 
-![Přístup k prostředkům](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
+![Žádný přístup k prostředkům](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>Konfigurace RBAC pro sady Runbook
+## <a name="configure-rbac-for-runbooks"></a>Konfigurace RBAC pro Runbooky
 
-Azure Automation umožňuje přiřazení RBAC pro konkrétní sady runbook. Provedete to spuštěním následujícího skriptu k přidání uživatele do konkrétní sadu runbook. Následující skript můžete spustit správce účtu služby Automation nebo správce Tenanta.
+Azure Automation umožňuje přiřadit RBAC ke konkrétním sadám Runbook. Pokud chcete přidat uživatele do konkrétní sady Runbook, spusťte následující skript. Následující skript může být spuštěn správcem účtu Automation nebo správcem tenanta.
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation Account
@@ -418,17 +418,17 @@ New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job 
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-Jednou spustili, požádejte uživatele, přihlaste se k webu Azure portal a zobrazení **všechny prostředky**. V seznamu zobrazí byly přidány jako sadu Runbook **operátor Runbooků Automation** pro.
+Po spuštění se uživatel přihlásí k Azure Portal a zobrazí **všechny prostředky**. V seznamu uvidí sadu Runbook, kterou přidal jako **operátor Runbooku Automation** pro.
 
-![RBAC Runbooku na portálu](./media/automation-role-based-access-control/runbook-rbac.png)
+![Sada Runbook RBAC na portálu](./media/automation-role-based-access-control/runbook-rbac.png)
 
-### <a name="user-experience-for-automation-operator-role---runbook"></a>Činnost koncového uživatele pro roli operátora služby Automation – sady Runbook
+### <a name="user-experience-for-automation-operator-role---runbook"></a>Činnost koncového uživatele pro roli operátora automatizace – Runbook
 
-Když se uživatel, který je přiřazený k roli operátor služby Automation v Runbooku nastavit obor zobrazení sady Runbook jsou přiřazeny, mohou pouze spouštět sadu runbook a zobrazit úlohy runbooku.
+Když uživatel, který je přiřazený k roli operátor Automation v oboru Runbooku, zobrazí sadu Runbook, ke které jsou přiřazené, může spustit jenom Runbook a zobrazit úlohy Runbooku.
 
-![Má přístup pouze k spuštění](media/automation-role-based-access-control/automation-only-start.png)
+![Má přístup jenom ke spuštění.](media/automation-role-based-access-control/automation-only-start.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o různých způsobech konfigurace RBAC pro Azure Automation najdete v článku [Správa řízení přístupu na základě role pomocí Azure PowerShellu](../role-based-access-control/role-assignments-powershell.md).
 * Podrobnosti o různých způsobech spouštění runbooků najdete v článku [Spuštění runbooku](automation-starting-a-runbook.md)

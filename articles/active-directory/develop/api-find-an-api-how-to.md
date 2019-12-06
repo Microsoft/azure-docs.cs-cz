@@ -1,41 +1,36 @@
 ---
-title: Vyhledání konkrétního rozhraní API pro vlastní vyvinuté aplikaci potřeba | Dokumentace Microsoftu
-description: Jak nakonfigurovat oprávnění budete potřebovat přístup k dané rozhraní API ve vaší vlastní vyvinuté aplikaci Azure AD
+title: Jak najít konkrétní rozhraní API potřebné pro vlastní aplikaci | Microsoft Docs
+description: Jak nakonfigurovat oprávnění, která potřebujete pro přístup k určitému rozhraní API ve vlastní vyvíjené aplikaci Azure AD
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2492a9346585698132e7fd9cfcde068ffd60ebc5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 66c223df28f8082125d48f1e3619088de5cf2687
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476156"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844596"
 ---
-# <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Vyhledání konkrétního rozhraní API potřebné pro vlastní vyvinuté aplikaci
+# <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Vyhledání konkrétního rozhraní API, které je potřeba pro aplikaci vytvořenou pro vlastní použití
 
-Přístup k rozhraním API vyžadují konfiguraci oborů přístupu a rolí. Pokud chcete vystavit prostředků aplikace webového rozhraní API pro klientské aplikace, budete muset nakonfigurovat obory přístupu a role pro rozhraní API. Pokud chcete, aby klientská aplikace pro přístup k webovému rozhraní API, budete muset nakonfigurovat oprávnění pro přístup k rozhraní API v registraci aplikace.
+Přístup k rozhraním API vyžaduje konfiguraci oborů přístupu a rolí. Pokud chcete zpřístupnit webová rozhraní API pro klientské aplikace, musíte nakonfigurovat obory přístupu a role pro rozhraní API. Pokud chcete, aby klientská aplikace měla přístup k webovému rozhraní API, musíte nakonfigurovat oprávnění pro přístup k rozhraní API v registraci aplikace.
 
 ## <a name="configuring-a-resource-application-to-expose-web-apis"></a>Konfigurace aplikace prostředků k zveřejnění webových rozhraní API
 
-Pokud zveřejňujete webového rozhraní API, rozhraní API zobrazovaných v **vyberte rozhraní API** při přidávání oprávnění registraci aplikace. Chcete-li přidat oborů přístupu, postupujte podle kroků uvedených v [konfigurace aplikace k vystavení webové rozhraní API](quickstart-configure-app-expose-web-apis.md).
+Když vystavíte webové rozhraní API, rozhraní API se zobrazí v seznamu **Vyberte rozhraní API** při přidávání oprávnění k registraci aplikace. Pokud chcete přidat obory přístupu, postupujte podle kroků uvedených v části [Konfigurace aplikace k vystavení webových rozhraní API](quickstart-configure-app-expose-web-apis.md).
 
 ## <a name="configuring-a-client-application-to-access-web-apis"></a>Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
-Když přidáte oprávnění k registraci vaší aplikace, můžete **přidat přístup přes rozhraní API** vystavené webového rozhraní API. Chcete-li získat přístup k webovým rozhraním API, postupujte podle kroků uvedených v [konfigurovat klientskou aplikaci pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md).
+Když přidáváte oprávnění k registraci vaší aplikace, můžete **Přidat přístup rozhraní API** k vystaveným webovým rozhraním API. Pokud chcete získat přístup k webovým rozhraním API, postupujte podle kroků uvedených v části [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
--   [Vysvětlení manifestu aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)
-
-
+- [Princip Azure Active Directory manifestu aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)

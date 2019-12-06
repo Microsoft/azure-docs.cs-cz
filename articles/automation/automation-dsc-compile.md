@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak zkompilovat konfigurace požadovaných
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d3cca9d8954d9ac158d88b393c46672da3faa19
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fdea8ed9a9e59a169a6ffb525ed286eb7d1ada53
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231723"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850903"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu Azure Automation
 
@@ -41,7 +41,7 @@ Konfigurace Konfigurace požadovaných stavů (DSC) můžete zkompilovat dvěma 
 1. Pokud konfigurace nemá žádné parametry, zobrazí se výzva k potvrzení, jestli ji chcete zkompilovat. Pokud má konfigurace parametry, otevře se okno **Konfigurace kompilace** , takže můžete zadat hodnoty parametrů. Další podrobnosti o parametrech najdete v části následující [**základní parametry**](#basic-parameters) .
 1. Stránka **úlohy kompilace** je otevřena, takže můžete sledovat stav úlohy kompilace a konfigurace uzlů (konfigurační dokumenty MOF), které jsou umístěny na serveru Pull konfigurace stavu Azure Automation.
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Pomocí [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) můžete začít kompilovat pomocí prostředí Windows PowerShell. Následující vzorový kód spustí kompilaci konfigurace DSC s názvem **SampleConfig**.
 
@@ -107,7 +107,7 @@ Na portálu můžete zadat hodnoty parametrů po kliknutí na **kompilovat**.
 
 ![Parametry kompilace konfigurace](./media/automation-dsc-compile/DSC_compiling_1.png)
 
-#### <a name="azure-powershell"></a>Azure Powershell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 Prostředí PowerShell vyžaduje parametry v [zatřiďovací](/powershell/module/microsoft.powershell.core/about/about_hash_tables) tabulce, kde klíč odpovídá názvu parametru, a hodnota se rovná hodnotě parametru.
 
@@ -189,7 +189,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ### <a name="working-with-assets-in-azure-automation-during-compilation"></a>Práce s prostředky v Azure Automation během kompilace
 
-Odkazy na prostředky jsou stejné v konfiguraci Azure Automation stavech a sadách Runbook. Další informace najdete v následujících tématech:
+Odkazy na prostředky jsou stejné v konfiguraci Azure Automation stavech a sadách Runbook. Další informace:
 
 - [Certifikáty](automation-certificates.md)
 - [Připojení](automation-connections.md)
@@ -277,7 +277,7 @@ Soubor MOF nebo soubory vytvořené kompilací konfigurace je pak možné import
    ![Vyhledat místní soubor](./media/automation-dsc-compile/import-browse.png)
 
 1. Do textového pole **název konfigurace** zadejte název. Tento název musí odpovídat názvu konfigurace, ze které byla zkompilována konfigurace uzlu.
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
 
 ### <a name="importing-a-node-configuration-with-azure-powershell"></a>Import konfigurace uzlu s Azure PowerShell
 

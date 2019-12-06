@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795909"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875437"
 ---
 ### <a name="regions"></a>Které oblasti jsou k dispozici?
 
@@ -59,3 +59,7 @@ Azure bastionu v současné době podporuje rozložení klávesnice en-US-QWERTY
 
 Ne. UDR se nepodporuje v podsíti Azure bastionu.
 V případě scénářů, které zahrnují virtuální zařízení Azure bastionu i Azure Firewall/sítě (síťové virtuální zařízení) ve stejné virtuální síti, nemusíte vynutit provoz z podsítě Azure bastionu Azure Firewall, protože komunikace mezi Azure bastionu a virtuálními počítači je privátní. Další podrobnosti najdete v tématu věnovaném [přístupu k virtuálním počítačům za Azure firewall pomocí bastionu](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
+
+### <a name="filetransfer"></a>Podporuje se přenos souborů v relaci Azure bastionu RDP?
+
+Těžko pracujeme na přidávání nových funkcí. Od tohoto okamžiku není přenos souborů podporovaný, ale je součástí našeho plánu. Můžete si prosím zdarma sdílet svůj názor na nové funkce na [stránce s názory na Azure bastionu](https://feedback.azure.com/forums/217313-networking?category_id=367303).

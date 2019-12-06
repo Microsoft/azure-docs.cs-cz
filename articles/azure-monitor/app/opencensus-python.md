@@ -8,25 +8,25 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132206"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849781"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Nastavení Azure Monitor pro aplikaci v Pythonu (Preview)
 
 Azure Monitor podporuje distribuované trasování, shromažďování metrik a protokolování aplikací Pythonu prostřednictvím integrace s [OpenCensus](https://opencensus.io). Tento článek vás provede procesem nastavení OpenCensus pro Python a odeslání dat monitorování do Azure Monitor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/), i když starší verze budou nejspíš fungovat s menšími změnami.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Vytvoření prostředku Application Insights v Azure Monitor
 
@@ -42,9 +42,9 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
-   | **Umístění** | Východní USA | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
+   | **Umístění** | USA – východ | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentace se sadou OpenCensus Python SDK pro Azure Monitor
 
@@ -268,7 +268,7 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
     90
     ```
 
-3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data metriky pro Azure Monitor. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
+3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data protokolu pro Azure Monitor. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
 
     ```python
     import logging
@@ -295,7 +295,53 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
 
 4. Exportér odešle data protokolu do Azure Monitor. Data můžete najít v části `traces`.
 
-5. Podrobnosti o tom, jak rozšířit protokoly pomocí dat kontextu trasování, najdete v tématu OpenCensus Python [logs Integration](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
+5. Pokud chcete naformátovat zprávy protokolu, můžete použít `formatters` v integrovaném [rozhraní API pro protokolování](https://docs.python.org/3/library/logging.html#formatter-objects)Pythonu.
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    
+    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter(format_str, date_format)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    handler = AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
+    def main():
+        while True:
+            valuePrompt()
+    
+    if __name__ == "__main__":
+        main()
+    ```
+
+6. Do protokolů můžete přidat také vlastní rozměry. Ty se zobrazí jako páry klíč-hodnota v `customDimensions` v Azure Monitor.
+> [!NOTE]
+> Aby tato funkce fungovala, je třeba předat slovník jako argument do protokolů, ostatní struktury dat budou ignorovány. Chcete-li zachovat formátování řetězců, uložte je do slovníku a předejte je jako argumenty.
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+    ```
+
+7. Podrobnosti o tom, jak rozšířit protokoly pomocí dat kontextu trasování, najdete v tématu OpenCensus Python [logs Integration](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
 
 ## <a name="view-your-data-with-queries"></a>Zobrazení dat pomocí dotazů
 
@@ -325,7 +371,7 @@ Podrobnější informace o používání dotazů a protokolů najdete [v tématu
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
 * [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 * [Testy dostupnosti:](../../azure-monitor/app/monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
 * [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.

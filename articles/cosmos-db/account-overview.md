@@ -1,6 +1,6 @@
 ---
 title: Práce s účty Azure Cosmos DB
-description: Tento článek popisuje, jak vytvářet a používat účty Azure Cosmos DB.
+description: Tento článek popisuje, jak vytvářet a používat účty Azure Cosmos. Zobrazuje také hierarchii prvků v účtu Azure Cosmos
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 57b2cffbf8085e6d393765190a6dfc2dead51625
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d29ed68b2945b2473b33aa88176e6f5d832a0fba
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757093"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872260"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Práce s účtem Azure Cosmos
 

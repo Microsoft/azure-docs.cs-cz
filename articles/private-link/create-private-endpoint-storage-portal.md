@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: cfe0caaf199821358f8a66ac65ae75c38336c725
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228096"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851158"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
@@ -36,7 +36,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název | Zadejte *MyVirtualNetwork*. |
+    | Name (Název) | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
@@ -60,14 +60,14 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Oblast | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Image | Vyberte **Windows Server 2019 Datacenter**. |
+    | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
     | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Potvrzení hesla | Zadejte znovu heslo. |
+    | Potvrdit heslo | Zadejte znovu heslo. |
     | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
     | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné**. |
     | **ÚSPORA PENĚZ** |  |
@@ -87,7 +87,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)** .|
     | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
+    | Vyberte příchozí porty | Vyberte **http** a **RDP**.|
     ||
 
 1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
@@ -108,7 +108,7 @@ V této části vytvoříte privátním koncovým bodem privátního účtu úlo
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
     | Název účtu úložiště  | Zadejte *mystorageaccount*. Pokud se tento název povede, vytvořte jedinečný název. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Oblast | Vyberte **WestCentralUS**. |
     | Výkon| Ponechte výchozí **Standard**. |
     | Account kind (Druh účtu) | Ponechte výchozí **úložiště (pro obecné účely v2)** . |
     | Replikace | Vyberte **geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)** . |
@@ -125,7 +125,7 @@ V této části vytvoříte privátním koncovým bodem privátního účtu úlo
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     |Umístění|Vyberte **WestCentralUS**.|
-    |Název|Zadejte *myPrivateEndpoint*.  |
+    |Name (Název)|Zadejte *myPrivateEndpoint*.  |
     |Dílčí prostředek úložiště|Ponechte výchozí **objekt BLOB**. |
     | **SÍTĚ** |  |
     | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
@@ -149,7 +149,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
 1. Otevřete stažený soubor. RDP *.
 
@@ -170,9 +170,6 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 V této části se soukromě připojíte k účtu úložiště pomocí privátního koncového bodu.
 
-> [!IMPORTANT]
-> Konfigurace DNS pro úložiště vyžaduje ruční úpravu souboru hostitelů, aby zahrnovala plně kvalifikovaný název domény konkrétního účtu. Upravte následující soubor pomocí oprávnění správce ve Windows: c:\Windows\System32\Drivers\etc\hosts nebo Linux/etc/hosts zahrnuje informace DNS pro účet z předchozího kroku v následujícím formátu [privátní IP adresa] myaccount.blob.core.windows.net
-
 1. Ve vzdálené ploše *myVM*otevřete PowerShell.
 2. Zadejte `nslookup mystorageaccount.blob.core.windows.net` obdržíte zprávu podobnou této:
     ```azurepowershell
@@ -187,9 +184,9 @@ V této části se soukromě připojíte k účtu úložiště pomocí privátn�
 4. Vyberte **účty úložiště** kliknutím pravým tlačítkem myši.
 5. Vyberte **připojit k úložišti Azure**.
 6. Vyberte **Použít připojovací řetězec**.
-7. Vyberte **Next** (Další).
+7. Vyberte **Další**.
 8. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
-9. Vyberte **Next** (Další).
+9. Vyberte **Další**.
 10. Vyberte **Connect** (Připojit).
 11. Procházení kontejnerů objektů BLOB z mystorageaccount 
 12. Volitelně Vytvořte složky nebo nahrajte soubory do *mystorageaccount*. 

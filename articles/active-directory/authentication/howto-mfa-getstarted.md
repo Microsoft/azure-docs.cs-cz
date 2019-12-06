@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558542"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848387"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování cloudového nasazení Azure Multi-Factor Authentication
 
@@ -102,7 +102,7 @@ Doporučujeme, aby organizace používaly podmíněný přístup k definování 
 
 Správci mohou zvolit [metody ověřování](../authentication/concept-authentication-methods.md) , které mají být uživatelům k dispozici. Je důležité, abyste povolili více než jednu metodu ověřování, takže uživatelé mají k dispozici metodu zálohování pro případ, že jejich primární metoda není k dispozici. Pro povolení správců jsou k dispozici následující metody:
 
-### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
+### <a name="notification-through-mobile-app"></a>Oznámení přes mobilní aplikaci
 
 Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle nabízené oznámení. Uživatel zobrazí oznámení a vybere **schválit** k dokončení ověření. Nabízená oznámení prostřednictvím mobilní aplikace poskytují uživatelům nejméně rušivou možnost. Jsou také nejspolehlivější a zabezpečený způsob, protože místo telefonního subsystému používá datové připojení.
 
@@ -113,7 +113,7 @@ Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle na
 
 Mobilní aplikace, jako je Microsoft Authenticator aplikace, vygeneruje nový ověřovací kód OATH každých 30 sekund. Uživatel zadá ověřovací kód do přihlašovacího rozhraní. Možnost mobilní aplikace se dá použít bez ohledu na to, jestli telefon obsahuje data nebo mobilní signál.
 
-### <a name="call-to-phone"></a>Zavolat na telefon
+### <a name="call-to-phone"></a>Telefonní hovor
 
 Automatické volání hlasu je umístěno uživateli. Uživatel odpoví na volání a stiskne **#** na klávesnici telefonu ke schválení ověřování. Volání na telefon je skvělou metodou zálohování pro oznámení nebo ověřovací kód z mobilní aplikace.
 
@@ -283,12 +283,12 @@ Vyberte, co se stane, když se uživatelé, kteří nejsou zaregistrovaní pomoc
 
 Účelem tohoto nastavení je určit, co dělat, když není uživatel zaregistrovaný pro MFA. Účinky změny tohoto nastavení jsou uvedené v následující tabulce.
 
-| Nastavení | Stav MFA uživatele | Efekty |
+| Nastavení | Stav MFA uživatele | Účinek |
 | --- | --- | --- |
 | Klíč neexistuje. | Zaregistrováno | Výzva MFA není úspěšná. |
 | Hodnota nastavená na true/Nenastaveno | Zaregistrováno | Výzva MFA není úspěšná. |
 | Nastavit klíč na false | Zaregistrováno | Ověřování bez MFA |
-| Klíč nastavený na hodnotu false nebo true | Zaregistrovaná | Je nutné provést ověření pomocí MFA |
+| Klíč nastavený na hodnotu false nebo true | Zaregistrované | Je nutné provést ověření pomocí MFA |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Integrace s Active Directory Federation Services (AD FS)
 

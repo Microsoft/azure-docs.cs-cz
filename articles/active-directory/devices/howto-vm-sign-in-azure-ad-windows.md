@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac52fa7eab055a2b2e9154481019d49acdca65d9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420535"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842403"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -33,7 +33,7 @@ K přihlášení k virtuálním počítačům s Windows v Azure přinášíme sp
 - Už nemusíte spravovat účty místních správců.
 - Azure RBAC vám umožňuje udělit odpovídající přístup k virtuálním počítačům podle potřeby a odebrat je, když už nepotřebujete.
 - Než povolíte přístup k virtuálnímu počítači, podmíněný přístup Azure AD může vynutil další požadavky, jako třeba: 
-   - Ověřování pomocí služby Multi-Factor Authentication
+   - Multi-Factor Authentication
    - Kontroly rizika přihlašování
 - Automatizujte a škálujte připojení Azure AD k virtuálním počítačům Azure s Windows, které jsou součástí nasazení infrastruktury virtuálních klientských počítačů.
 
@@ -79,7 +79,7 @@ Vytvoření virtuálního počítače s Windows serverem 2019 Datacenter v Azure
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)s účtem, který má přístup k vytváření virtuálních počítačů, a vyberte **+ vytvořit prostředek**.
 1. Do vyhledávacího panelu webu Marketplace zadejte **Windows Server** .
    1. Klikněte na **Windows Server** a zvolte **Windows Server 2019 Datacenter** v rozevíracím seznamu vybrat plán softwaru.
-   1. Klikněte na **vytvořit**.
+   1. Klikněte na **Vytvořit**.
 1. Na kartě Správa povolte možnost **Přihlásit se pomocí přihlašovacích údajů AAD (Preview)** v části Azure Active Directory z možností vypnuto na **zapnuto**.
 1. Ujistěte se, že je v části Identita nastavená **spravovaná identita systému** **na zapnuto**. Tato akce by se měla provést automaticky po povolení přihlášení s přihlašovacími údaji Azure AD.
 1. Projděte si zbytek zkušeností při vytváření virtuálního počítače. V této verzi Preview budete muset vytvořit uživatelské jméno a heslo správce pro virtuální počítač.
@@ -116,6 +116,9 @@ az vm create \
     --admin-username azureuser \
     --admin-password yourpassword
 ```
+
+> [!NOTE]
+> Než nainstalujete rozšíření přihlašovacích virtuálních počítačů Azure AD, musíte na svém virtuálním počítači povolit spravovanou identitu přiřazenou systémem.
 
 Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut.
 
@@ -203,7 +206,7 @@ Přihlášení k virtuálnímu počítači s Windows serverem 2019 pomocí Azure
 
 1. Přejděte na stránku Přehled virtuálního počítače, který je povolený s přihlášením pomocí Azure AD.
 1. Kliknutím na **připojit** otevřete okno připojit k virtuálnímu počítači.
-1. Vyberte **Stáhnout soubor RDP**.
+1. Vyberte **stáhnout soubor RDP**.
 1. Vyberte **otevřít** a spusťte klienta připojení ke vzdálené ploše.
 1. Vyberte **připojit** a spusťte přihlašovací dialog Windows.
 1. Přihlaste se pomocí přihlašovacích údajů Azure AD.
@@ -230,24 +233,24 @@ Aby virtuální počítač dokončil proces připojení k Azure AD, musí se ús
 
    | Příkaz, který se má spustit | Očekávaný výstup |
    | --- | --- |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Správné informace o virtuálním počítači Azure |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Platné ID tenanta přidružené k předplatnému Azure |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Platný přístupový token vydaný Azure Active Directory pro spravovanou identitu, která je přiřazená k tomuto virtuálnímu počítači |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Správné informace o virtuálním počítači Azure |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Platné ID tenanta přidružené k předplatnému Azure |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Platný přístupový token vydaný Azure Active Directory pro spravovanou identitu, která je přiřazená k tomuto virtuálnímu počítači |
 
    > [!NOTE]
    > Přístupový token se dá dekódovat pomocí nástroje, jako je [http://calebb.net/](http://calebb.net/). Ověřte, že "AppID" v přístupovém tokenu odpovídá spravované identitě přiřazené k virtuálnímu počítači.
 
 1. Ujistěte se, že požadované koncové body jsou dostupné z virtuálního počítače pomocí příkazového řádku:
    
-   - kudrlinkou https://login.microsoftonline.com/-D –
-   - kudrlinkou https://login.microsoftonline.com/`<TenantID>`/-D –
+   - kudrlinkou https://login.microsoftonline.com/ -D –
+   - kudrlinkou https://login.microsoftonline.com/`<TenantID>` /-D –
 
    > [!NOTE]
    > Nahraďte `<TenantID>` číslem tenanta Azure AD, který je přidružený k předplatnému Azure.
 
-   - kudrlinkou https://enterpriseregistration.windows.net/-D –
-   - kudrlinkou https://device.login.microsoftonline.com/-D –
-   - kudrlinkou https://pas.windows.net/-D –
+   - kudrlinkou https://enterpriseregistration.windows.net/ -D –
+   - kudrlinkou https://device.login.microsoftonline.com/ -D –
+   - kudrlinkou https://pas.windows.net/ -D –
 
 1. Stav zařízení lze zobrazit spuštěním `dsregcmd /status`. Cílem je stav zařízení, který se má zobrazit jako `AzureAdJoined : YES`.
 
@@ -274,15 +277,15 @@ Tento ukončovací kód se přeloží na DSREG_AUTOJOIN_DISC_FAILED, protože ro
 
 1. Ověřte dostupnost požadovaných koncových bodů z virtuálního počítače pomocí příkazového řádku:
 
-   - kudrlinkou https://login.microsoftonline.com/-D –
-   - kudrlinkou https://login.microsoftonline.com/`<TenantID>`/-D –
+   - kudrlinkou https://login.microsoftonline.com/ -D –
+   - kudrlinkou https://login.microsoftonline.com/`<TenantID>` /-D –
    
    > [!NOTE]
    > Nahraďte `<TenantID>` číslem tenanta Azure AD, který je přidružený k předplatnému Azure. Pokud potřebujete najít ID tenanta, můžete ukazatel myši umístit na název účtu a získat tak ID adresáře nebo tenanta, nebo v Azure Portal vybrat Azure Active Directory > vlastností > ID adresáře.
 
-   - kudrlinkou https://enterpriseregistration.windows.net/-D –
-   - kudrlinkou https://device.login.microsoftonline.com/-D –
-   - kudrlinkou https://pas.windows.net/-D –
+   - kudrlinkou https://enterpriseregistration.windows.net/ -D –
+   - kudrlinkou https://device.login.microsoftonline.com/ -D –
+   - kudrlinkou https://pas.windows.net/ -D –
 
 1. Pokud některý z příkazů selhává s příkazem "nelze přeložit hostitel `<URL>`", zkuste spustit tento příkaz, který určí server DNS, který je používán virtuálním počítačem.
    

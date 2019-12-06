@@ -1,5 +1,5 @@
 ---
-title: Vytváření interaktivních sestav pomocí vlastních parametrů Azure Monitorch sešitů | Dokumentace Microsoftu
+title: Azure Monitor sešitů s vlastními parametry
 description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: eeb6eb5d8b3ad6498ff90a9afe1fa4f2c18d30e5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 19fd8c108e8075d30ca494ca75d52952849c284a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165950"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872838"
 ---
 # <a name="interactive-workbooks"></a>Interaktivní sešity
 

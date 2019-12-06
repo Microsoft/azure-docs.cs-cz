@@ -1,18 +1,18 @@
 ---
 title: LTRIM v Azure Cosmos DB dotazovací jazyk
-description: Přečtěte si o funkci SQL System LTRIM v Azure Cosmos DB.
+description: Přečtěte si o funkci LTRIM SQL System v Azure Cosmos DB pro vrácení řetězcového výrazu po odebrání počátečních prázdných znaků.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bbc9c09bd97b02a323e01c0b0d72ca1df3d13b15
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 652204416c201ccca024aff0239fc10dcc3eb105
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349685"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870985"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM (Azure Cosmos DB)
  Vrátí řetězcový výraz po odebere úvodní mezery.  
@@ -34,7 +34,7 @@ LTRIM(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak použít `LTRIM` uvnitř dotazu.  
+  Následující příklad ukazuje, jak použít `LTRIM` v rámci dotazu.  
   
 ```sql
 SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3 

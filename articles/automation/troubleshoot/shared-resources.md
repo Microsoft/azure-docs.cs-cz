@@ -2,18 +2,18 @@
 title: Řešení chyb s Azure Automation sdílenými prostředky
 description: Naučte se řešit potíže s Azure Automation sdílenými prostředky
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9313b042433489307a2bd2822a96d1e0e127362b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231534"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849288"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Řešení chyb se sdílenými prostředky
 
@@ -31,7 +31,7 @@ Když naimportujete nebo aktualizujete moduly ve službě Azure Automation, modu
 
 Import modulů PowerShellu je složitý proces s více kroky. Tento proces zavádí možnost nesprávného importu modulu. Pokud k tomuto problému dojde, modul, který importujete, se může zablokovat v přechodném stavu. Další informace o tomto procesu najdete v tématu [importování modulu PowerShellu](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný ve stavu **Import** pomocí rutiny [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) . Pak můžete modul znovu importovat.
 
@@ -53,7 +53,7 @@ Azure modules are being updated
 
 Došlo k známému problému s aktualizací AzureRM modulů v účtu Automation, který je ve skupině prostředků s číselným názvem, který začíná na 0.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Pokud chcete v účtu Automation aktualizovat moduly Azure, musí být ve skupině prostředků, která má alfanumerický název. Skupiny prostředků s číselnými názvy začínající hodnotou 0 nemůžou v tuto chvíli aktualizovat moduly AzureRM.
 
@@ -72,7 +72,7 @@ Některé běžné důvody, proč se modul nemusí úspěšně naimportovat do A
 * V modulu chybí závislosti ve složce.
 * Rutina `New-AzureRmAutomationModule` slouží k nahrání modulu a neobdrželi jste celou cestu k úložišti, nebo jste nenapsali modul pomocí veřejně přístupné adresy URL.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Problém vyřeší některá z následujících řešení:
 
@@ -90,7 +90,7 @@ Když při použití Runbooku [Update-AzureModule. ps1](https://github.com/azure
 
 Výchozí nastavení, které určuje, kolik modulů se má aktualizovat současně, je 10 při použití skriptu `Update-AzureModule.ps1`. Proces aktualizace je náchylný k chybám, když se v jednom okamžiku aktualizuje příliš mnoho modulů.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Není běžné, že všechny moduly AzureRM jsou nutné ve stejném účtu Automation. Doporučuje se importovat jenom moduly AzureRM, které potřebujete.
 
@@ -132,7 +132,7 @@ You do not have permissions to create…
 
 Nemáte oprávnění, která potřebujete k vytvoření nebo aktualizaci účtu Spustit jako, nebo zda je prostředek uzamčen na úrovni skupiny prostředků.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít příslušná oprávnění k různým prostředkům používaným účtem spustit jako. Další informace o oprávněních potřebných k vytvoření nebo aktualizaci účtu Spustit jako najdete v tématu [oprávnění účtu Spustit jako](../manage-runas-account.md#permissions).
 
@@ -152,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 Tato chyba je pravděpodobně způsobena nesprávně nakonfigurovaným [účtem spustit jako](../manage-runas-account.md).
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Ujistěte se, že je váš [účet Spustit jako](../manage-runas-account.md) správně nakonfigurovaný. Jakmile je správně nakonfigurována, ujistěte se, že máte ve svém Runbooku správný kód pro ověření pomocí Azure. Následující příklad ukazuje fragment kódu pro ověření v Azure v sadě Runbook pomocí účtu Spustit jako.
 

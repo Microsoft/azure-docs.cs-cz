@@ -1,18 +1,18 @@
 ---
 title: COT v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o COT funkcí SQL systému v Azure Cosmos DB.
+description: Přečtěte si, jak funkce kotangens (COT) SQL System v Azure Cosmos DB vrátí trigonometrický kotangens zadaného úhlu v radiánech v zadaném číselném výrazu.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d980319730e69fdcb529272ba1b8fb48d2b5b230
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f049d1295eef3e6a45abeaafe8c22d376f90abe1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351245"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871495"
 ---
 # <a name="cot-azure-cosmos-db"></a>COT (Azure Cosmos DB)
  Vrátí trigonometrických kotangens úhlu určeného v radiánech v zadané číselný výraz.  

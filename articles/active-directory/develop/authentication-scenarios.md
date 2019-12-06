@@ -2,28 +2,24 @@
 title: Ověřování v Microsoft Identity Platform | Azure
 description: Seznamte se se základy ověřování na platformě Microsoft identity (v 2.0).
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0ffe0773c943983fc098d41f56b21b898682b2a0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167788"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843984"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -41,9 +37,9 @@ Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v clo
 
 Centralizovaný poskytovatel identity je ještě důležitější pro aplikace, které mají uživatele na celém světě, kteří se nemusí nutně přihlašovat ze sítě v podniku. Azure AD ověřuje uživatele a poskytuje přístupové tokeny. Přístupový token je token zabezpečení, který je vydaný autorizačním serverem. Obsahuje informace o uživateli a aplikaci, pro kterou je token určený, který je možné použít pro přístup k webovým rozhraním API a dalším chráněným prostředkům.
 
-Platforma Microsoft Identity usnadňuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open-source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
+Platforma Microsoft Identity usnadňuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open-source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
 
-### <a name="tenants"></a>Tenantů
+### <a name="tenants"></a>Klienti
 
 Cloud identity provider obsluhuje mnoho organizací. Aby bylo možné uživatele z různých organizací oddělit, je služba Azure AD rozdělená na klienty s jedním klientem na organizaci.
 

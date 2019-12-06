@@ -1,32 +1,27 @@
 ---
 title: Zprostředkované ověřování v Androidu | Azure
+titlesuffix: Microsoft identity platform
 description: Přehled zprostředkovaných ověření & autorizaci pro Android na platformě Microsoft Identity Platform
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175654"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843712"
 ---
-# <a name="brokered-auth-in-android"></a>Zprostředkované ověřování v Androidu
-
-## <a name="introduction"></a>Představení
+# <a name="brokered-authentication-in-android"></a>Zprostředkované ověřování v Androidu
 
 Abyste se mohli zapojit do jednotného přihlašování (SSO) v jednotném zařízení, musíte použít jednoho z zprostředkovatelů ověřování od Microsoftu a vyhovět zásadám podmíněného přístupu na úrovni organizace. Integrace se zprostředkovatelem přináší následující výhody:
 
@@ -52,9 +47,9 @@ Následující diagram znázorňuje vztah mezi vaší aplikací, Microsoft Authe
 
 Služby pro hostování aplikací můžou instalovat vlastník zařízení z jejich App Storu (obvykle Obchod Google Play). Některá rozhraní API (prostředky) jsou ale chráněná zásadami podmíněného přístupu, které vyžadují, aby byla zařízení:
 
-- registrováno (připojeno k pracovišti) a/nebo
-- zaregistrováno ve správě zařízení nebo
-- zaregistrováno v Intune App Protection
+- Registrováno (připojeno k pracovišti) a/nebo
+- Zaregistrováno ve správě zařízení nebo
+- Zaregistrováno v Intune App Protection
 
 Pokud na zařízení ještě není nainstalovaná aplikace zprostředkovatele, MSAL uživateli pokyn, aby ho nainstaloval hned, jakmile se aplikace pokusí o interaktivní získání tokenu. V takovém případě bude muset uživatel provést kroky, aby zařízení dodržovalo požadované zásady.
 

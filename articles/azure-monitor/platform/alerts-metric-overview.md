@@ -3,16 +3,16 @@ title: Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.
 description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a jak fungují v Azure Monitor.
 author: rboucher
 ms.author: robb
-ms.date: 11/18/2019
+ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775717"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850053"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Vysvětlení, jak fungují výstrahy metrik v Azure Monitor
 
@@ -125,7 +125,7 @@ Zvýšení doby zpětného vyhledávání a počtu porušení může také umož
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorování ve velkém měřítku pomocí výstrah metrik v Azure Monitor
 
-Zatím jste viděli, jak se dá jedna výstraha metriky použít k monitorování jedné nebo mnoha metrik časových řad, které souvisí s jedním prostředkem Azure. V mnoha případech možná budete chtít, aby se stejné pravidlo pro upozornění uplatnilo na mnoho prostředků. Azure Monitor také podporuje monitorování více prostředků s jedním pravidlem upozornění na metriky. Tato funkce je aktuálně podporována pouze na virtuálních počítačích. Jedna výstraha metriky může také monitorovat prostředky v jedné oblasti Azure.
+Zatím jste viděli, jak se dá jedna výstraha metriky použít k monitorování jedné nebo mnoha metrik časových řad, které souvisí s jedním prostředkem Azure. V mnoha případech možná budete chtít, aby se stejné pravidlo pro upozornění uplatnilo na mnoho prostředků. Azure Monitor také podporuje monitorování více prostředků s jedním pravidlem upozornění na metriky. Tato funkce se aktuálně podporuje jenom pro virtuální počítače, databáze SQL serveru, elastické fondy SQL serveru a hraniční zařízení datového boxu. Jedna výstraha metriky může také monitorovat prostředky v jedné oblasti Azure.
 
 Můžete určit rozsah monitorování jedním výstrahou metriky jedním ze tří způsobů:
 

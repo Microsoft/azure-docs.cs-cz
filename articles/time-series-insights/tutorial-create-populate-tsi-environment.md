@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: fad850da6a7fccb6b97b86532a8d246049942a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014660"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872376"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
 
@@ -30,7 +30,7 @@ Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostře
 > [!IMPORTANT]
 > Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v tématu [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
@@ -55,11 +55,11 @@ V tomto kurzu se používá také [akcelerátor řešení IoT](https://www.azure
 
 Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací data pro naplnění Time Series Insightsho prostředí.
 
-1. V samostatném okně nebo na kartě přejdete na [azureiotsolutions.com](https://www.azureiotsolutions.com). Přihlaste se pomocí stejného účtu předplatného Azure a vyberte akcelerátor **simulace zařízení** . Vyberte **zkusit nyní**.
+1. V samostatném okně nebo na kartě přejdete na [azureiotsolutions.com](https://www.azureiotsolutions.com). Přihlaste se pomocí stejného účtu předplatného Azure a vyberte akcelerátor **simulace zařízení** .
 
-   [![spustit akcelerátor simulace zařízení](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [![spustit akcelerátor simulace zařízení](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. Na stránce **vytvoření řešení simulace zařízení** zadejte požadované parametry.
+1.  Vyberte **zkusit nyní**. Pak na stránce **řešení pro vytvoření simulace zařízení** zadejte požadované parametry.
 
    Parametr|Popis
    ---|---
@@ -70,18 +70,18 @@ Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací
 
    Až budete hotovi, vyberte **vytvořit** a zřiďte prostředky Azure v řešení. Dokončení tohoto procesu může trvat až 20 minut.
 
-   [![zřízení řešení pro simulaci zařízení](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [![zřízení řešení pro simulaci zařízení](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Po dokončení zřizování se text nad novým řešením změní ze **zřizování** na **připraveno**.
+1. Po dokončení zřizování se zobrazí dvě aktualizace, které zobrazují, že stav nasazení se přesunul ze **zřizování** na **připraveno**. 
 
    >[!IMPORTANT]
-   > Ještě nevybírejte možnost **Spustit** . Tuto webovou stránku nechte otevřenou, protože se k ní vrátíte později.
+   > Ještě nezadávejte akcelerátor řešení. Tuto webovou stránku nechte otevřenou, protože se k ní vrátíte později.
 
-   [zřizování řešení pro simulaci zařízení ![dokončeno](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+   [zřizování řešení pro simulaci zařízení ![dokončeno](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
 1. Nyní zkontrolujte nově vytvořené prostředky v Azure Portal. Na stránce **skupiny prostředků** si všimněte, že se vytvořila nová skupina prostředků pomocí **názvu řešení** , který jste zadali v posledním kroku. Poznamenejte si prostředky, které byly vytvořeny pro simulaci zařízení.
 
-   [prostředky pro simulaci zařízení ![](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
+   [prostředky pro simulaci zařízení ![](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Vytvoření prostředí
 
@@ -91,7 +91,7 @@ Za druhé vytvořte v předplatném Azure Time Series Insights prostředí.
 1. Vlevo nahoře vyberte **+ Vytvořit prostředek**. 
 1. Vyberte **Internet of Things** kategorie a pak vyberte **Time Series Insights**. 
 
-   [![Výběr prostředku prostředí Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png#lightbox)
+   [![Výběr prostředku prostředí Time Series Insights](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png)](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png#lightbox)
 
 1. Na stránce **Time Series Insights prostředí** vyplňte požadované parametry.
 
@@ -106,17 +106,17 @@ Za druhé vytvořte v předplatném Azure Time Series Insights prostředí.
 
    Po dokončení vyberte **Další: zdroj události** , abyste mohli pokračovat k dalšímu kroku.
 
-   [![vytvoření prostředku prostředí Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+   [![vytvoření prostředku prostředí Time Series Insights](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
 1. Nyní připojte prostředí Time Series Insights ke službě IoT Hub vytvořené pomocí akcelerátoru řešení. Nastavte **Vyberte rozbočovač** , který chcete `Select existing`. Pak při nastavení **IoT Hubho názvu**vyberte Centrum IoT vytvořené pomocí akcelerátoru řešení.
 
-   [![připojení prostředí Time Series Insights k vytvořenému centru IoT Hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+   [![připojení prostředí Time Series Insights k vytvořenému centru IoT Hub](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
    Nakonec vyberte **zkontrolovat + vytvořit**.
 
 1. Projděte si panel **oznámení** a sledujte dokončení nasazení. 
 
-   [nasazení prostředí ![Time Series Insights prostředí bylo úspěšné.](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
+   [nasazení prostředí ![Time Series Insights prostředí bylo úspěšné.](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png#lightbox)
 
 ## <a name="run-device-simulation"></a>Spustit simulaci zařízení
 
@@ -126,19 +126,19 @@ Společně se službou IoT Hub se vygenerovala Azure App Service webová aplikac
 
 1. Vraťte se zpět na [Řídicí panel akcelerátorů řešení](https://www.azureiotsolutions.com/Accelerators#dashboard). V případě potřeby se znovu přihlaste pomocí stejného účtu Azure, který jste používali v tomto kurzu. Vyberte své řešení zařízení a potom v **rámci akcelerátoru řešení** spusťte nasazené řešení.
 
-     [řídicí panel pro ![akcelerátory řešení](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
+   [řídicí panel pro ![akcelerátory řešení](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
-1. Webová aplikace pro simulaci zařízení začíná výzvou k udělení oprávnění "přihlášení a čtení vašeho profilu". Toto oprávnění umožňuje aplikaci načíst informace o profilu uživatele, které jsou nezbytné k podpoře fungování aplikace.
+1. Webová aplikace simulace zařízení začíná výzvou k udělení webové aplikace tak, aby **vás přihlásila a četla oprávnění k vašemu profilu** . Toto oprávnění umožňuje aplikaci načíst informace o profilu uživatele, které jsou nezbytné k podpoře fungování aplikace.
 
-     [![souhlasu webové aplikace o simulaci zařízení](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
+   [![souhlasu webové aplikace o simulaci zařízení](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
-1. Po načtení stránky **Nastavení simulace** zadejte požadované parametry.
+1. Vyberte **+ Nová simulace**. Po načtení stránky **Nastavení simulace** zadejte požadované parametry.
 
    Parametr|Popis
    ---|---
    **Target IoT Hub** („Cílový IoT Hub“) | Vyberte možnost **použít předem zřízené IoT Hub**.
    **Device model** („Model zařízení“) | Vyberte **chladicíer**.
-   **Number of devices** („Počet zařízení“)  | Do pole **hodnota**zadejte `1000`.
+   **Number of devices** („Počet zařízení“)  | Do pole **hodnota**zadejte `10`.
    **Telemetry frequency** („Frekvence telemetrie“) | Zadejte `10` sekund.
    **Simulation duration** („Doba trvání simulace“) | Vyberte **Konec v:** a zadejte `5` minut.
 

@@ -1,18 +1,18 @@
 ---
 title: Matematické funkce v Azure Cosmos DB dotazovací jazyk
-description: Přečtěte si o matematických funkcích systému SQL v Azure Cosmos DB.
+description: Přečtěte si o matematických funkcích v Azure Cosmos DB k provedení výpočtu na základě vstupních hodnot, které jsou k dispozici jako argumenty, a vrácení číselné hodnoty.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fe4a84db3f2cbcfc2d9841caf520404afec2a297
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a04867d356aaf2f55dbe900d2e35b42f74206851
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349670"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873263"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Matematické funkce (Azure Cosmos DB)  
 
@@ -30,7 +30,7 @@ Výsledek je následující:
     [4]
 ```
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Následující podporované integrované matematické funkce provádějí výpočet, který je obvykle založen na vstupních argumentech a vrací číselný výraz.
   
@@ -41,7 +41,7 @@ Následující podporované integrované matematické funkce provádějí výpo�
 |[COS](sql-query-cos.md)|[COT](sql-query-cot.md)|[STUPŇŮ](sql-query-degrees.md)|  
 |[EXP](sql-query-exp.md)|[DOLNÍ MEZ](sql-query-floor.md)|[LOG](sql-query-log.md)|  
 |[LOG10](sql-query-log10.md)|[PI](sql-query-pi.md)|[NAPÁJENÍ](sql-query-power.md)|  
-|[RADIANS](sql-query-radians.md)|[FUNKCÍ](sql-query-rand.md)|[ZAOKROUHLIT](sql-query-round.md)|
+|[RADIANS](sql-query-radians.md)|[RAND](sql-query-rand.md)|[ZAOKROUHLIT](sql-query-round.md)|
 |[SIGN](sql-query-sign.md)|[SIN](sql-query-sin.md)|[SQRT](sql-query-sqrt.md)|
 |[ČTVEREC](sql-query-square.md)|[TAN](sql-query-tan.md)|[TRUNC –](sql-query-trunc.md)||  
   

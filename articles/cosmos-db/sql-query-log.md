@@ -1,18 +1,18 @@
 ---
 title: Přihlaste se Azure Cosmos DB dotazovací jazyk
-description: Přečtěte si o protokolu funkcí systému SQL v Azure Cosmos DB.
+description: Přečtěte si o funkci LOG SQL System v Azure Cosmos DB, která vrátí přirozený logaritmus zadaného číselného výrazu.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 16f2321eb48afacbc9636b5c0588b1ea3a01a284
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349731"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873280"
 ---
 # <a name="log-azure-cosmos-db"></a>PROTOKOL (Azure Cosmos DB)
  Vrátí přirozený logaritmus zadaného číselný výraz.  
@@ -28,7 +28,7 @@ LOG (<numeric_expr> [, <base>])
 *numeric_expr*  
    Je číselný výraz.  
   
-*základ*  
+*base*  
    Volitelné číselný argument, který nastaví základ logaritmu.  
   
 ## <a name="return-types"></a>Návratové typy
@@ -41,7 +41,7 @@ LOG (<numeric_expr> [, <base>])
   
   Přirozený logaritmus se logaritmus o základu **e**, kde **e** rovná nenormální – konstanta přibližně 2.718281828.  
   
-  Přirozený logaritmus exponenciálního čísla je číslo samotné: LOG (EXP (n)) = n. A exponenciální hodnota přirozeného logaritmu čísla je samotné číslo: EXP (LOG (n)) = n.  
+  Přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (n).) = n. A exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (n).) = n.  
   
 ## <a name="examples"></a>Příklady
   

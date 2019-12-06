@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120548"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849169"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky potřebné k provedení v Salesforce a Azure AD pro automatické zřízení a zrušení zřízení uživatelských účtů ze služby Azure AD do Salesforce.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -129,9 +129,10 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 * **SalesforceDuplicateUserName:** Uživatele nelze zřídit, protože má Salesforce.com "username", které je duplikováno v jiném tenantovi Salesforce.com.  V Salesforce.com musí být hodnoty pro atribut UserName jedinečné ve všech klientech Salesforce.com.  Ve výchozím nastavení se hodnota userPrincipalName uživatele v Azure Active Directory v Salesforce.com stala "username".   Máte dvě možnosti.  Jednou z možností je vyhledat a přejmenovat uživatele s duplicitním názvem username v jiném tenantovi Salesforce.com, pokud spravujete i tohoto jiného tenanta.  Druhou možností je odebrat přístup z Azure Active Directoryho uživatele do tenanta Salesforce.com, se kterým je adresář integrovaný. Tato operace se při dalším pokusu o synchronizaci zopakuje. 
 * **SalesforceRequiredFieldMissing:** Salesforce vyžaduje, aby uživatel mohl v případě úspěšného vytvoření nebo aktualizace uživatele zobrazit určité atributy. Tomuto uživateli chybí jeden z požadovaných atributů. Zajistěte, aby se atributy jako e-mail a alias naplnily všemi uživateli, které chcete zřídit v Salesforce. Můžete nastavit obor pro uživatele, kteří nemají tyto atributy, pomocí [filtrů oborů založeného na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 * Výchozí mapování atributů pro zřizování na Salesforce zahrnuje výraz SingleAppRoleAssignments pro mapování appRoleAssignments ve službě Azure AD na profilaci v Salesforce. Ujistěte se, že uživatelé nemají ve službě Azure AD přiřazení více rolí aplikace, protože mapování atributů podporuje zřizování pouze jedné role. 
+* Salesforce vyžaduje, aby se aktualizace e-mailu před změnou schválily ručně. V důsledku toho se může stát, že v protokolech zřizování dojde k aktualizaci e-mailu uživatele na více položkách (dokud se neschválí změna e-mailu).
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

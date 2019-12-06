@@ -4,17 +4,17 @@ description: Tento článek popisuje integraci správy zdrojového kódu pomocí
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886528"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850155"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -49,7 +49,7 @@ Na stránce **Souhrn správy zdrojových kódů** vyplňte informace a klikněte
 |---------|---------|
 |Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu. *Tento název musí obsahovat jenom písmena a číslice.*        |
 |Typ správy zdrojového kódu     | Typ zdroje správy zdrojového kódu. Dostupné možnosti jsou:</br> GitHubu</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
-|Úložištì     | Název úložiště nebo projektu. Vrátí se první 200 úložišť. Pokud chcete vyhledat úložiště, zadejte název do pole a klikněte na **Hledat na GitHubu**.|
+|Úložiště     | Název úložiště nebo projektu. Vrátí se první 200 úložišť. Pokud chcete vyhledat úložiště, zadejte název do pole a klikněte na **Hledat na GitHubu**.|
 |Branch     | Větev, ze které se mají načíst zdrojové soubory. Cílení na větev není k dispozici pro typ správy zdrojového kódu TFVC.          |
 |Cesta ke složce     | Složka obsahující Runbooky, které se mají synchronizovat Příklad:/runbooks </br>*Budou synchronizovány pouze Runbooky v zadané složce. Rekurze není podporována.*        |
 |Automatická synchronizace<sup>1</sup>     | Zapne nebo vypne automatickou synchronizaci při provedení potvrzení v úložišti správy zdrojových kódů.         |
@@ -96,12 +96,12 @@ Další informace o vytvoření osobního přístupového tokenu v GitHubu najde
 |Rozsah  |Popis  |
 |---------|---------|
 |**úložiště**     |         |
-|úložiště: stav     | Stav potvrzení přístupu         |
+|repo:status     | Stav potvrzení přístupu         |
 |repo_deployment      | Stav nasazení přístupu         |
 |public_repo     | Přístup k veřejným úložištím         |
-|**Správce: repo_hook**     |         |
-|zápis: repo_hook     | Zapsat háky úložiště         |
-|číst: repo_hook|Číst háky úložiště|
+|**admin:repo_hook**     |         |
+|write:repo_hook     | Zapsat háky úložiště         |
+|read:repo_hook|Číst háky úložiště|
 
 #### <a name="azure-repos"></a>Azure Repos
 
@@ -169,7 +169,7 @@ Pokud se chcete odpojit od úložiště správy zdrojového kódu, otevřete **s
 
 Vyberte správu zdrojového kódu, kterou chcete odebrat. Na stránce **Souhrn správy zdrojového kódu** klikněte na **Odstranit**.
 
-## <a name="encoding"></a>Kódování
+## <a name="encoding"></a>Encoding
 
 Pokud více lidí upravuje Runbooky v úložišti správy zdrojového kódu s různými editory, je pravděpodobné, že je možné spouštět problémy s kódováním. Tato situace může vést k nesprávným znakům v Runbooku. Další informace najdete v tématu [běžné příčiny potíží s kódováním](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues) .
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fdde89f9ff88b15c464af805b81708b268e5ddf5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 95b9c76a2ff962cb2fa4bacbb1b1e9a953b7014f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721730"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873807"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (Preview) v Azure Kognitivní hledání
 
@@ -25,24 +25,46 @@ ms.locfileid: "73721730"
 
 Ve výchozím nastavení se považuje obsah všech vyhledávacích polí na nejvyšší úrovni. Pokud chcete místo toho zadat konkrétní pole, můžete použít parametr `searchFields`. 
 
-MoreLikeThis nelze použít pro prohledávatelné dílčí pole ve [složitém typu](search-howto-complex-data-types.md).
+Nemůžete použít `MoreLikeThis` pro prohledávatelné dílčí pole ve [složitém typu](search-howto-complex-data-types.md).
 
-## <a name="examples"></a>Příklady 
+## <a name="examples"></a>Příklady
 
-Níže je uveden příklad dotazu moreLikeThis. Dotaz vyhledá dokumenty, jejichž pole popisu jsou nejvíce podobná poli zdrojového dokumentu, jak je určeno parametrem `moreLikeThis`.
+Všechny následující příklady používají ukázku hotelů z [rychlého startu: vytvoření indexu vyhledávání v Azure Portal](search-get-started-portal.md).
+
+### <a name="simple-query"></a>Jednoduchý dotaz
+
+Následující dotaz vyhledá dokumenty, jejichž pole popisu jsou nejvíce podobná poli zdrojového dokumentu, jak je určeno parametrem `moreLikeThis`:
 
 ```
-Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
+GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2019-05-06-Preview
 ```
 
+V tomto příkladu požadavek vyhledává hotely podobně jako u `HotelId` 29.
+Místo použití HTTP GET můžete také vyvolat `MoreLikeThis` pomocí HTTP POST:
+
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
     {
-      "moreLikeThis": "1002",
-      "searchFields": "description"
+      "moreLikeThis": "29",
+      "searchFields": "Description"
     }
 ```
 
+### <a name="apply-filters"></a>Použití filtrů
+
+`MoreLikeThis` lze kombinovat s dalšími společnými parametry dotazů, jako je `$filter`. Dotaz lze například omezit pouze na hotely, jejichž kategorie je "rozpočet" a kde je hodnocení vyšší než 3,5:
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2019-05-06-Preview
+```
+
+### <a name="select-fields-and-limit-results"></a>Výběr polí a omezení výsledků
+
+`$top` selektor lze použít k omezení počtu výsledků, které by měly být vráceny v dotazu `MoreLikeThis`. Pole lze také vybrat pomocí `$select`. Tady se vybere první tři hotely spolu s jejich ID, názvem a hodnocením: 
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2019-05-06-Preview
+```
 
 ## <a name="next-steps"></a>Další kroky
 

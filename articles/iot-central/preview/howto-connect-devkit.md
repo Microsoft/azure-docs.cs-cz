@@ -3,17 +3,17 @@ title: Připojení zařízení DevKit k aplikaci Azure IoT Central | Microsoft D
 description: Jako vývojář zařízení se naučíte připojit zařízení IoT DevKit MXChip k aplikaci Azure IoT Central pomocí technologie Plug and Play IoT.
 author: liydu
 ms.author: liydu
-ms.date: 08/17/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 178f518ed7ab24fc0d3678f77ae75933a7163b58
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930135"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848936"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>Připojení zařízení MXChip IoT DevKit k aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -25,7 +25,7 @@ V tomto článku s postupem:
 - Připravte zařízení a připojte ho k aplikaci IoT Central.
 - Zobrazení telemetrie a vlastností ze zařízení v IoT Central.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku budete potřebovat následující zdroje:
 
@@ -34,9 +34,21 @@ K dokončení kroků v tomto článku budete potřebovat následující zdroje:
 
 ## <a name="get-device-connection-details"></a>Získat podrobnosti o připojení zařízení
 
-V aplikaci Azure IoT Central vyberte kartu **Správa** a vyberte **připojení zařízení**. Poznamenejte si **ID oboru** a **primární klíč** (v odkazu **Zobrazit klíče** ). A ujistěte se, že je povoleno **automatické schvalování** .
+1. V aplikaci Azure IoT Central vyberte kartu **šablony zařízení** a vyberte **Nová**. V části **použití předem nakonfigurované šablony zařízení**vyberte ze seznamu možnost **MXChip IoT DevKit** . A klikněte na tlačítko **Další: přizpůsobit** a **vytvořit**.
 
-![Podrobnosti o připojení skupiny zařízení](media/howto-connect-devkit/device-group-connection-details.png)
+    ![Šablona zařízení pro MXChip IoT DevKit](media/howto-connect-devkit/device-template.png)
+
+1. Vyberte kartu **zařízení** , v seznamu zařízení vyberte **MXChip IoT DevKit** a vyberte **Nový** , chcete-li vytvořit nové zařízení ze šablony zařízení.
+
+    ![Nové zařízení](media/howto-connect-devkit/new-device.png)
+
+1. V automaticky otevíraném okně zadejte **ID zařízení** jako `SampleDevKit` a **název zařízení** jako `MXChip IoT DevKit - Sample`. Zajistěte, aby se **simulovaná** možnost vypnula. Potom vyberte **Vytvořit**.
+
+    ![ID a název zařízení](media/howto-connect-devkit/device-id-name.png)
+
+1. Klikněte na zařízení, které jste právě vytvořili, a vyberte **připojit**. Poznamenejte si **Rozsah ID**, **ID zařízení** a **primární klíč**.
+
+    ![Informace o připojení zařízení](media/howto-connect-devkit/device-connection-info.png)
 
 ## <a name="prepare-the-device"></a>Příprava zařízení
 
@@ -61,7 +73,7 @@ V aplikaci Azure IoT Central vyberte kartu **Správa** a vyberte **připojení z
 
     - Název sítě Wi-Fi (SSID).
     - Vaše heslo k síti Wi-Fi.
-    - Podrobnosti o připojení: **ID zařízení** , které si můžete vybrat sami, a v **primárním klíči** s **ID oboru** a skupinou SAS, které jste si poznamenali dříve.
+    - Podrobnosti připojení: zadejte **ID zařízení**, **Rozsah ID** a **primární klíč SAS** , které jste si poznamenali dříve.
 
     > [!NOTE]
     > V současné době se IoT DevKit může připojit pouze k Wi-Fi 2,4 GHz, 5 GHz není v důsledku omezení hardwaru podporováno.
@@ -86,7 +98,7 @@ V aplikaci IoT Central vyberte kartu **zařízení** a vyberte zařízení, kter
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Chcete-li zkontrolovat kód nebo ho upravit a zkompilovat, přejít do [úložiště GitHub MXChip IoT DevKit Sample Code](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp).
+Chcete-li zkontrolovat kód nebo ho upravit a zkompilovat, přejít na [ukázky kódu](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/).
 
 ## <a name="next-steps"></a>Další kroky
 

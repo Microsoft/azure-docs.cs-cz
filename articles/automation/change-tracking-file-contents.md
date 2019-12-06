@@ -1,79 +1,79 @@
 ---
-title: Zobrazit změny obsahu souboru s využitím Azure Automation
-description: Chcete-li zobrazit obsah souboru, který se změnil použijte funkci Změna obsahu soubor sledování změn.
+title: Zobrazit změny obsahu souboru pomocí Azure Automation
+description: Chcete-li zobrazit obsah souboru, který se změnil, použijte funkci změny obsahu souborů v sledování změn.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6aef9a24e3337d1f5a5a6c9ac6b510cc7f9a66a5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4ab88aa2dc604172f00d875353dabba61fd101af
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478648"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850580"
 ---
-# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Zobrazit obsah souboru, který je sledován pomocí řešení Change Tracking
+# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Zobrazit obsah souboru, který je sledován pomocí Change Tracking
 
-Sledování souborů obsahu vám umožní zobrazit obsah souboru před a po změně, která je sledována pomocí Change Tracking. K tomuto účelu uloží obsah souboru do účtu úložiště po každé změně.
+Sledování obsahu souborů umožňuje zobrazit obsah souboru před a po změně, která je sledována pomocí Change Tracking. Pokud to chcete provést, uloží se obsah souboru do účtu úložiště, jakmile dojde ke každé změně.
 
 ## <a name="requirements"></a>Požadavky
 
-* Účet úložiště úrovně standard s využitím modelu nasazení Resource Manageru se vyžaduje pro ukládání obsahu souboru. Není vhodné používat Premium a účty úložiště pro model nasazení classic. Další informace o účtech úložiště najdete v tématu [účty Azure storage](../storage/common/storage-create-storage-account.md)
+* Pro ukládání obsahu souboru se vyžaduje účet úložiště úrovně Standard, který používá model nasazení Správce prostředků. Účty úložiště pro model nasazení úrovně Premium a Classic by se neměly používat. Další informace o účtech úložiště najdete v tématu [informace o účtech Azure Storage](../storage/common/storage-create-storage-account.md) .
 
-* Účet úložiště používané může mít pouze 1 účet Automation, které jsou připojené.
+* Použitý účet úložiště může mít jenom 1 připojený účet Automation.
 
-* [Sledování změn](automation-change-tracking.md) je povolená ve vašem účtu Automation.
+* Ve vašem účtu Automation je povolený [Change Tracking](automation-change-tracking.md) .
 
 ## <a name="enable-file-content-tracking"></a>Povolit sledování obsahu souboru
 
-1. Na webu Azure Portal otevřete svůj účet Automation a pak vyberte **řešení Change tracking**.
-2. V horní nabídce vyberte **upravit nastavení**.
-3. Vyberte **obsah souboru** a klikněte na tlačítko **odkaz**. Tím se otevře **přidat umístění obsahu pro řešení Change Tracking** podokně.
+1. V Azure Portal otevřete svůj účet Automation a pak vyberte **Change Tracking (sledování změn**).
+2. V horní nabídce vyberte **Upravit nastavení**.
+3. Vyberte **soubor obsahu** a klikněte na **odkaz**. Tím se otevře podokno **Přidat umístění obsahu pro Change Tracking** .
 
-   ![Povolit](./media/change-tracking-file-contents/enable.png)
+   ![povolit](./media/change-tracking-file-contents/enable.png)
 
-4. Vyberte předplatné a účet úložiště pro ukládání obsahu souboru. Pokud chcete povolit sledování obsahu souboru pro všechny existující sledované soubory, vyberte **na** pro **nahrát obsah souboru pro všechna nastavení**. Toto můžete změnit pro každé cesty souboru později.
+4. Vyberte předplatné a účet úložiště, který chcete použít k uložení obsahu souboru do. Pokud chcete povolit sledování obsahu souborů pro všechny existující sledované soubory, vyberte **zapnuto** pro **nahrání obsahu souboru pro všechna nastavení**. Můžete to změnit pro každou cestu k souboru později.
 
-   ![účet úložiště](./media/change-tracking-file-contents/storage-account.png)
+   ![nastavit účet úložiště](./media/change-tracking-file-contents/storage-account.png)
 
-5. Po povolení účtu úložiště a identifikátorů URI pro SAS se zobrazí. Identifikátory URI SAS vyprší za 365 dnů a může být znovu vytvořena po kliknutí **znovu vygenerovat** tlačítko.
+5. Po povolení se zobrazí účet úložiště a identifikátory URI SAS. Platnost identifikátorů URI SAS vyprší po 365 dnech a je možné ji znovu vytvořit kliknutím na tlačítko **znovu vygenerovat** .
 
-   ![Vypsat klíče účtu](./media/change-tracking-file-contents/account-keys.png)
+   ![výpis klíčů účtu](./media/change-tracking-file-contents/account-keys.png)
 
-## <a name="add-a-file"></a>Přidání souboru
+## <a name="add-a-file"></a>Přidat soubor
 
-Následující postup vás provede povolením sledování změn pro soubor:
+Následující kroky vás provedou zapnutím sledování změn pro soubor:
 
-1. Na **upravit nastavení** stránce **řešení Change Tracking**, vyberte buď **soubory Windows** nebo **soubory Linuxu** kartu a klikněte na tlačítko  **Přidat**
+1. Na stránce **Upravit nastavení** **Change Tracking**vyberte kartu **soubory Windows** nebo **soubory systému Linux** a klikněte na **Přidat** .
 
-1. Potřebné informace pro cestu k souboru a vyberte **True** pod **nahrát obsah souboru pro všechna nastavení**. Toto nastavení umožňuje sledování pro tuto cestu k souboru, pouze obsah souboru.
+1. Vyplňte informace pro cestu k souboru a v části **nahrát obsah souboru pro všechna nastavení**vyberte **true** . Toto nastavení povoluje sledování obsahu souborů pouze pro tuto cestu k souboru.
 
-   ![Přidání souboru linuxu](./media/change-tracking-file-contents/add-linux-file.png)
+   ![Přidat soubor pro Linux](./media/change-tracking-file-contents/add-linux-file.png)
 
-## <a name="viewing-the-contents-of-a-tracked-file"></a>Zobrazení obsahu souboru sledované
+## <a name="viewing-the-contents-of-a-tracked-file"></a>Zobrazení obsahu sledovaného souboru
 
-1. Jakmile pro soubor nebo soubor v cestě byla zjištěna změna, zobrazí na portálu. Vyberte ze seznamu změn změny souboru. **Změnit podrobnosti** zobrazí podokno.
+1. Po zjištění změny souboru nebo souboru v cestě se zobrazí na portálu. Vyberte změnu souboru ze seznamu změn. Zobrazí se podokno **Podrobnosti o změně** .
 
-   ![Zobrazit změny](./media/change-tracking-file-contents/change-list.png)
+   ![Zobrazit seznam změn](./media/change-tracking-file-contents/change-list.png)
 
-1. Na **změnit podrobnosti** stránce se zobrazí standardní před a po souboru informace, v levé horní části, klikněte na tlačítko **zobrazit změny obsahu souboru** zobrazíte obsah souboru.
+1. Na stránce **Podrobnosti o změně** se zobrazí standardní informace před a po souboru, v levém horním rohu klikněte na **Zobrazit změny obsahu souboru** a zobrazí se obsah souboru.
 
-   ![Podrobnosti o změně](./media/change-tracking-file-contents/change-details.png)
+   ![Změnit podrobnosti](./media/change-tracking-file-contents/change-details.png)
 
-1. Nová stránka zobrazuje obsah souboru v zobrazení vedle sebe. Můžete také vybrat **vložené** zobrazení vloženého změn.
+1. Na nové stránce se zobrazí obsah souboru v zobrazení vedle sebe. Můžete také vybrat možnost **inline (vložit** ) a zobrazit tak vložené zobrazení změn.
 
-   ![zobrazení změn v souboru](./media/change-tracking-file-contents/view-file-changes.png)
+   ![Zobrazit změny souborů](./media/change-tracking-file-contents/view-file-changes.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Navštivte tento kurz na další informace o použití řešení sledování změn:
+Další informace o používání řešení najdete v kurzu o Change Tracking.
 
 > [!div class="nextstepaction"]
 > [Řešení potíží se změnami ve vašem prostředí](automation-tutorial-troubleshoot-changes.md)
 
-* Použití [prohledávání protokolu ve službě Azure Monitor protokoly](../log-analytics/log-analytics-log-searches.md) zobrazíte podrobné data řešení change tracking.
+* K zobrazení podrobných dat sledování změn použijte [prohledávání protokolů v protokolu Azure monitor](../log-analytics/log-analytics-log-searches.md) .
 

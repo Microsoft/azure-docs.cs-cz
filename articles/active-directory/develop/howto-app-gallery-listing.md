@@ -2,28 +2,24 @@
 title: Výpis aplikace v galerii aplikací Azure Active Directory | Microsoft Docs
 description: Přečtěte si, jak zobrazit seznam aplikací, které podporují jednotné přihlašování v galerii aplikací Azure Active Directory.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: ryanwi
-ms.reviewer: elisol, bryanla
+ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374071"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842774"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -38,7 +34,7 @@ Tento článek ukazuje, jak zobrazit seznam aplikací v galerii aplikací Azure 
 - Mezi vzájemné zákazníky získáte Podrobný kurz konfigurace.
 - Zákazníci, kteří používají systém pro správu identit mezi doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)), můžou použít zřizování pro stejnou aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pro federované aplikace (otevřené ID a SAML/WS) musí aplikace podporovat model software jako služba (SaaS), aby mohl být uvedený v galerii aplikací Azure AD. Aplikace podnikové Galerie musí podporovat více zákaznických konfigurací a ne žádného konkrétního zákazníka.
 - Pro otevřené ID Connect musí být aplikace víceklientské a musí být pro aplikaci správně implementovaná [Architektura souhlasu služby Azure AD](consent-framework.md) . Uživatel může odeslat žádost o přihlášení ke společnému koncovému bodu, aby každý zákazník mohl poskytnout souhlas k aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu.

@@ -4,17 +4,17 @@ description: Proměnné assets jsou hodnoty, které jsou k dispozici pro všechn
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910070"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849424"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variabilní prostředky v Azure Automation
 
@@ -43,7 +43,7 @@ Níže jsou uvedeny typy proměnných, které jsou k dispozici v automatizaci:
 
 * Řetězec
 * Integer
-* DateTime
+* Datum a čas
 * Logická hodnota
 * Null
 
@@ -68,7 +68,7 @@ Aktivity v následující tabulce se používají pro přístup k proměnným v 
 |Set-AutomationVariable|Nastaví hodnotu existující proměnné.|
 
 > [!NOTE]
-> Měli byste se vyhnout používání proměnných v parametru – name v sadě Runbook nebo konfiguraci DSC, protože to může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a proměnných automatizace v době návrhu.
+> Měli byste se vyhnout používání **proměnných v parametru – name v sadě** Runbook nebo konfiguraci DSC, protože to může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a proměnných automatizace v době návrhu.
 
 Funkce v následující tabulce se používají pro přístup k proměnným v sadě Runbook Python2 a k jejich načítání.
 

@@ -1,18 +1,18 @@
 ---
 title: EXP in Azure Cosmos DB dotazovací jazyk
-description: Přečtěte si o funkci SQL System EXP v Azure Cosmos DB.
+description: Další informace o funkci exponent (EXP) SQL System v Azure Cosmos DB pro návrat exponenciální hodnoty zadaného číselného výrazu
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 21c7ae63f46f2acd961245c59805220174c106f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351039"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873314"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
  Vrátí hodnotu exponenciální zadaný číselný výraz.  
@@ -38,7 +38,7 @@ EXP (<numeric_expr>)
   
   Exponent číslo je konstanta **e** umocněné na čísla. Například EXP(1.0) = e ^ 1.0 = 2.71828182845905 a EXP(10) = e ^ 10 = 22026.4657948067.  
   
-  Exponenciální hodnota přirozeného logaritmu čísla je samotné číslo: EXP (LOG (n)) = n. A přirozený logaritmus exponenciálního čísla je číslo samotné: LOG (EXP (n)) = n.  
+  Exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (n).) = n. A přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (n).) = n.  
   
 ## <a name="examples"></a>Příklady
   

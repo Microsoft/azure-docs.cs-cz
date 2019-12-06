@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603458"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848489"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Dokončení nasazení ověřování pomocí hesla
 
@@ -61,13 +61,13 @@ Metody ověřování s neheslem od Microsoftu umožňují různé scénáře. Po
 
 ### <a name="technical-considerations-for-the-microsoft-authenticator-app"></a>Technické požadavky pro aplikaci Microsoft Authenticator
 
-**AD FS Integration** – Pokud uživatel povolí Microsoft Authenticator přihlašovací údaje bez hesla, ověřování pro tohoto uživatele standardně posílá oznámení ke schválení. Uživatelům v hybridním tenantovi se zabrání v přesměrování na službu AD FS, aby se přihlásili, pokud nevyberou místo toho použít heslo. Tento proces také obchází všechny místní zásady podmíněného přístupu a předávací ověřovací toky. Pokud je ale zadaný login_hint, uživatel se přepošle do služby ADFS a obejít možnost použití přihlašovacích údajů bez hesla.
+**AD FS Integration** – Pokud uživatel povolí Microsoft Authenticator přihlašovací údaje bez hesla, ověřování pro tohoto uživatele standardně posílá oznámení ke schválení. Uživatelům v hybridním tenantovi se zabrání v přesměrování na službu AD FS, aby se přihlásili, pokud nevyberou místo toho použít heslo. Tento proces také obchází všechny místní zásady podmíněného přístupu a předávací ověřovací toky. Pokud je ale zadaný login_hint, uživatel se přepošle na ADFS a obejít možnost používat přihlašovací údaje bez hesla.
 
 **Azure MFA Server** – koncoví uživatelé, kteří mají povolený vícefaktorové ověřování prostřednictvím místního Azure MFA serveru organizace, můžou pořád vytvářet a používat přihlašovací údaje pro přihlášení bez hesla. Pokud se uživatel pokusí upgradovat více instalací (5 +) Microsoft Authenticator s přihlašovacími údaji, může tato změna způsobit chybu.
 
 **Registrace zařízení** : Pokud chcete používat ověřovací aplikaci pro ověřování bez hesla, musí být zařízení zaregistrované v TENANTOVI Azure AD a nemůže být sdíleným zařízením. Zařízení se dá zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlášení telefonem pomocí ověřovací aplikace se podporuje jenom jeden pracovní nebo školní účet.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky.
 
@@ -133,7 +133,7 @@ Následující tabulka popisuje případy použití, které mají být implement
 | --- | --- |
 | **Přístup** | Přihlášení bez hesla je k dispozici v podnikovém nebo osobním zařízení v rámci podnikové sítě nebo mimo ni. |
 | **Auditování** | Data o využití jsou k dispozici správcům k zaznamenávání téměř v reálném čase. <br> Data o využití se stáhnou do podnikových systémů aspoň každých 29 dní nebo se použije nástroj SIEM Tool. |
-| **Řádnou** | Je definováno a sledováno životní cyklus přiřazení uživatelů k příslušné metodě ověřování a přidruženým skupinám. |
+| **Zásady správného řízení** | Je definováno a sledováno životní cyklus přiřazení uživatelů k příslušné metodě ověřování a přidruženým skupinám. |
 | **Zabezpečení** | Přístup k příslušné metodě ověřování je řízen pomocí přiřazení uživatelů a skupin. <br> Jenom autorizovaní uživatelé můžou používat přihlašování nejenom heslem. |
 | **Výkon** | Časové osy šíření přístupu k přiřazení jsou zdokumentovány a monitorovány. <br> Časy přihlášení se měří pro snadné použití. |
 | **Činnost koncového uživatele** | Uživatelé mají informace o kompatibilitě mobilních zařízení. <br> Uživatelé můžou nakonfigurovat přihlášení k neheslům aplikace ověřovatel. |

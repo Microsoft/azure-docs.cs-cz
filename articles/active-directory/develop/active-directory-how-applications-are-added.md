@@ -3,28 +3,24 @@ title: Jak a proč se aplikace přidávají do Azure Active Directory
 titleSuffix: Microsoft identity platform
 description: Co to znamená, když se aplikace přidá do Azure AD a jak se tam dostanou?
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 6a04315d887a1774fa50743d4bb361b9d9082aba
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533003"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845055"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 
@@ -110,7 +106,7 @@ Aplikace, které přidáte sami (v diagramu jsou reprezentovány jako **aplikace
   * Pravidla transformace deklarací identity
   * Mapování atributů (zřizování uživatelů)
 * Podrobnější informace o instančním objektu a objektech aplikace najdete v referenční dokumentaci k Azure AD graphu REST API:
-  * [Použití](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Aplikace](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
   * [Instanční objekt](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Proč se aplikace integrují s Azure AD?

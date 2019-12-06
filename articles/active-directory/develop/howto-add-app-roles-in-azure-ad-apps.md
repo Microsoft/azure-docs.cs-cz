@@ -6,24 +6,21 @@ services: active-directory
 documentationcenter: ''
 author: kkrishna
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: kkrishna
-ms.reviewer: ''
+ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84275be5c85570a44d968dca8887b448fce09979
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5fca807913d2753828d55c095c1a3b380340fd95
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546846"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843151"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 

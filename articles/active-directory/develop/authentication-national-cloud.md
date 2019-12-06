@@ -3,27 +3,23 @@ title: Ověřování pomocí Azure Active Directory v národních cloudech
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o registraci aplikací a koncových bodech ověřování pro národní cloudy.
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f1f80744043893dd7206bc6388b8e080c07d0f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5501b9ceff8659233d1021ad03549eea524ddd78
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803885"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843916"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 
@@ -84,6 +80,6 @@ Pokud se chcete dozvědět, jak vytvořit aplikaci pomocí platformy Microsoft i
 Další informace:
 
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure Německo](https://docs.microsoft.com/azure/germany/)
 - [Základy ověřování Azure AD](authentication-scenarios.md)

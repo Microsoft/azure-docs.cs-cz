@@ -1,17 +1,17 @@
 ---
 title: Stažení a poznámky k verzi emulátoru Azure Cosmos
-description: Přečtěte si poznámky k verzi emulátoru Azure Cosmos a Stáhněte si je.
+description: Získejte poznámky k verzi emulátoru Azure Cosmos pro různé verze a informace ke stažení.
 ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: cda3b0db1a4f1b098d8ea57887a047fcdef04243
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: eb73551c4226df8bc20428558720c0ebbfff96d9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286488"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873586"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 

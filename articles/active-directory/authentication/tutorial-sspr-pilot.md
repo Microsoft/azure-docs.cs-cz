@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 685c928a20e9bfb47365b5ffa769f1a223d2c563
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ecdde4ef12c6991fad53f2286ee462fec31606ae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561500"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846279"
 ---
-# <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Kurz: Dokončení zavedení pilotního resetování hesla samoobslužné služby Azure AD
+# <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Kurz: Dokončení zavedení pilotního nasazení samoobslužného resetování hesla služby Azure AD
 
 V tomto kurzu zapnete ve své organizaci pilotní nasazení samoobslužného resetování hesla služby Azure AD a otestujete ho pomocí účtu bez oprávnění správce.
 
@@ -28,7 +28,7 @@ Je důležité, aby jakékoli testování samoobslužného resetování hesla by
 > * Povolení samoobslužného resetování hesel
 > * Test samoobslužného resetování hesel z uživatelského účtu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet globálního správce
 
@@ -37,7 +37,7 @@ Je důležité, aby jakékoli testování samoobslužného resetování hesla by
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
 1. Přejděte do **Azure Active Directory** a vyberte **Resetování hesla**.
 1. Začněte pilotní skupinou tak, že samoobslužné resetování hesla zapnete pouze určité skupině uživatelů v organizaci.
-   * Na stránce **vlastnosti** v části možnost samoobslužné **resetování hesla povoleno**vyberte možnost **vybrané**a vyberte pilotní skupinu.
+   * Na stránce **vlastnosti** v části možnost **Samoobslužné resetování hesla povoleno**vyberte možnost **vybrané**a vyberte pilotní skupinu.
       * Funkci samoobslužného resetování hesla mohou používat jenom členové vybrané skupiny Azure AD. Doporučujeme definovat skupinu uživatelů a toto nastavení použít při nasazení této funkce pro testování konceptu. Vnoření skupin zabezpečení se v tomto případě podporuje.
       * Přesvědčte se, že uživatelé ve vybrané skupině mají příslušnou licenci.
    * Klikněte na **Uložit**.
@@ -71,12 +71,12 @@ Otestujte samoobslužné resetování hesla pomocí účtu uživatele bez opráv
 
 Pokud se rozhodnete, že už funkci nakonfigurovanou jako součást tohoto kurzu používat nechcete, proveďte následující.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejděte do **Azure Active Directory** a vyberte **Resetování hesla**.
 1. Na stránce **Vlastnosti** v části **Samoobslužné resetování hesla povoleno** zvolte **Žádné**.
 1. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zapnuli samoobslužné resetování hesla služby Azure AD. Pokračujte dalším kurzem, abyste zjistili, jak můžete integrovat místní infrastrukturu Active Directory Domain Services do prostředí samoobslužného resetování hesla.
 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1588a27453dbc223e6aa1dd993905d274e5e1242
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480340"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851328"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a Správa aplikace Azure IoT Central z portálu CSP
 
@@ -63,13 +63,13 @@ Další informace najdete v tématu [Azure Active Directory](https://docs.micros
 
 ## <a name="azure-subscription"></a>Předplatné Azure
 
-Předplatné Azure umožňuje vytvářet instance služeb Azure. Azure IoT Central automaticky najde všechna předplatná Azure, ke kterým máte přístup, a zobrazí je v rozevírací nabídce na stránce **vytvořit aplikaci** . Pokud chcete vytvořit novou aplikaci Azure IoT Central, vyberte předplatné Azure.
+Předplatné Azure vám umožňuje vytvářet instance služeb Azure. Azure IoT Central automaticky najde všechna předplatná Azure, ke kterým máte přístup, a zobrazí je v rozevírací nabídce na stránce **vytvořit aplikaci** . Pokud chcete vytvořit novou aplikaci Azure IoT Central, vyberte předplatné Azure.
 
 Pokud nemáte předplatné Azure, můžete ho vytvořit v partnerském centru Microsoftu. Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
 
 Další informace najdete v tématu [předplatná Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
-## <a name="region"></a>Region (Oblast)
+## <a name="region"></a>Oblast
 
 Vyberte oblast nebo [zeměpisnou](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, ve které chcete vytvořit aplikaci Azure IoT Central. Obvykle byste měli zvolit oblast, která je pro vaše zařízení nejbližší, aby získala optimální výkon.
 

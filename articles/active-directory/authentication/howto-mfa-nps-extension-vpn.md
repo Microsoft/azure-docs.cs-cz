@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0158b99d10b426efb02ca31cef2bc0053a976f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404691"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848370"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
 
@@ -72,7 +72,7 @@ Když je rozšíření NPS pro Azure integrované s NPS, výsledky toku úspěš
 7. Jakmile je pokus o připojení ověřen i autorizován, server NPS, ve kterém je rozšíření nainstalováno, odesílá zprávu RADIUS *Access-Accept* na server VPN (klient RADIUS).
 8. Uživateli je udělen přístup k virtuálnímu portu na serveru VPN a vytvoří šifrované tunelové propojení VPN.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato část podrobně popisuje požadavky, které je třeba provést před integrací vícefaktorového ověřování pomocí sítě VPN. Než začnete, musíte mít splněné následující předpoklady:
 
@@ -98,7 +98,7 @@ Informace o instalaci služby role Síťové zásady a přístup k Windows Serve
 
 ### <a name="azure-mfa-license"></a>Licence Azure MFA
 
-Pro Azure Multi-Factor Authentication se vyžaduje licence, která je dostupná prostřednictvím Azure AD Premium, Enterprise Mobility + Security nebo samostatné licence Multi-Factor Authentication. Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. Další informace najdete v tématu [Jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md). Pro účely testování můžete použít zkušební verzi předplatného.
+Pro Azure Multi-Factor Authentication se vyžaduje licence, která je dostupná prostřednictvím Azure AD Premium, Enterprise Mobility + Security nebo samostatné licence Multi-Factor Authentication. Licence založené na spotřebě pro Azure MFA, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS. Další informace najdete v tématu [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md). Pro účely testování můžete použít zkušební verzi předplatného.
 
 ### <a name="windows-server-software"></a>Software Windows serveru
 
@@ -137,7 +137,7 @@ V této části se předpokládá, že jste nainstalovali roli služby síťové
 
 Aby bylo možné v tomto scénáři správně fungovat, musí být server NPS zaregistrován ve službě Active Directory.
 
-1. Otevřete Správce serveru.
+1. Spusťte Správce serveru.
 
 2. V Správce serveru vyberte **nástroje**a pak vyberte **Server NPS (Network Policy Server**).
 
@@ -178,7 +178,7 @@ Ke konfiguraci serveru RADIUS můžete použít standardní možnost (založenou
 
     ![Zadání okna skupin uživatelů pro povolení nebo odepření přístupu](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Vyberte **Next** (Další).
+9. Vyberte **Další**.
 
 10. V okně **zadat filtry IP** vyberte **Další**.
 
@@ -324,7 +324,7 @@ Pokud je hodnota nastavená na *true* nebo je prázdná, budou se všechny žád
 
 V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací údaje správce a ID vašeho tenanta Azure AD. Získejte ID následujícím způsobem:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce tenanta Azure.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako globální správce tenanta Azure.
 
 2. V levém podokně vyberte tlačítko **Azure Active Directory** .
 
@@ -424,9 +424,9 @@ Na serveru, na který jste nainstalovali rozšíření serveru NPS pro Azure Mul
 
 ![Příklad Prohlížeč událostí podokně protokolu AuthZ](./media/howto-mfa-nps-extension-vpn/image46.png)
 
-## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
+## <a name="troubleshooting-guide"></a>Průvodce řešením potíží
 
-Pokud konfigurace nefunguje podle očekávání, začněte s řešením potíží tím, že ověříte, jestli je uživatel nakonfigurovaný pro použití vícefaktorového ověřování. Připojte se k [Azure Portal](https://portal.azure.com)uživatele. Pokud se uživateli zobrazí výzva k zadání sekundárního ověřování a je možné ho úspěšně ověřit, můžete jako problém eliminovat neplatnou konfiguraci VÍCEFAKTOROVÉHO ověřování.
+Pokud konfigurace nefunguje podle očekávání, začněte s řešením potíží tím, že ověříte, jestli je uživatel nakonfigurovaný pro použití vícefaktorového ověřování. Požádejte uživatele, připojte se k [webu Azure portal](https://portal.azure.com). Pokud se uživateli zobrazí výzva k zadání sekundárního ověřování a je možné ho úspěšně ověřit, můžete jako problém eliminovat neplatnou konfiguraci VÍCEFAKTOROVÉHO ověřování.
 
 Pokud pro uživatele ověřování MFA funguje, zkontrolujte příslušné protokoly Prohlížeč událostí. Protokoly zahrnují události zabezpečení, provozní provoz brány a protokoly služby Azure Multi-Factor Authentication, které jsou popsány v předchozí části.
 

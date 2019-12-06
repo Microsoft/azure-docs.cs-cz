@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09aa95e55b3d253ef41724298247694b9883e31f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381763"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848285"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování uživatelských dat v Azure Multi-Factor Authentication
 
@@ -30,9 +30,9 @@ Server MFA, rozšíření serveru NPS a Windows Server 2016 Azure MFA AD FS adap
 
 Pokusy o ověření (používané pro vytváření sestav a řešení potíží):
 
-- Timestamp
+- Časové razítko
 - Uživatelské jméno
-- Křestní jméno
+- Jméno
 - Příjmení
 - E-mailová adresa
 - Skupina uživatelů
@@ -42,7 +42,7 @@ Pokusy o ověření (používané pro vytváření sestav a řešení potíží)
 - Režim textové zprávy (jednorázové heslo, jednorázové heslo + kód PIN)
 - Režim mobilní aplikace (Standard, PIN)
 - Režim tokenu OATH (Standard, PIN)
-- Typ ověřování
+- Authentication Type
 - Název aplikace
 - Kód primární země volání
 - Telefonní číslo primárního volání
@@ -71,7 +71,7 @@ Pokusy o ověření (používané pro vytváření sestav a řešení potíží)
 Aktivace (pokusí se aktivovat účet v mobilní aplikaci Microsoft Authenticator):
 - Uživatelské jméno
 - Název účtu
-- Timestamp
+- Časové razítko
 - Získat výsledek aktivačního kódu
 - Aktivace proběhla úspěšně
 - Chyba aktivace
@@ -89,27 +89,27 @@ Bloky (slouží k určení blokovaného stavu a pro vytváření sestav):
 - Kód země
 - Telefonní číslo
 - Formát telefonního čísla
-- Linka
+- Přípona
 - Vyčistit rozšíření
 - Blokováno
-- Důvod blokování
+- Důvod zablokování
 - Časové razítko ukončení
 - Důvod dokončení
 - Uzamčení účtu
-- Výstraha týkající se podvodů
+- Upozornění na podvod
 - Výstraha týkající se podvodů není blokovaná.
 - Jazyk
 
 Vynechané funkce (používané pro vytváření sestav):
 
 - Obejít časové razítko
-- Vynechat sekundy
+- Počet sekund pro jednorázové přihlášení
 - Nepoužívat uživatelské jméno
 - Uživatelské jméno
 - Kód země
 - Telefonní číslo
 - Formát telefonního čísla
-- Linka
+- Přípona
 - Vyčistit rozšíření
 - Důvod pro obejití
 - Časové razítko ukončení
@@ -127,7 +127,7 @@ Změny (slouží k synchronizaci změn uživatelů s MFA serverem nebo Azure AD)
 - Nové záložní telefonní číslo
 - Nové rozšíření zálohování
 - Nový PIN kód
-- Vyžaduje se změna kódu PIN
+- Vyžadována změna PIN kódu
 - Starý token zařízení
 - Nový token zařízení
 

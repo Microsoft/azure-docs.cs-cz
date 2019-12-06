@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak nakonfigurovat a spravovat předzáloh
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 860eaf5d37b3d3064e3b10bd1dab02c04b95ab5b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755516"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850240"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -70,19 +70,19 @@ Tento parametr je řetězec JSON, a pokud definujete parametr v předzálohovac�
 
 V následující tabulce jsou uvedeny vlastnosti, které jsou k dispozici v proměnné.
 
-### <a name="softwareupdateconfigurationruncontext-properties"></a>Vlastnosti SoftwareUpdateConfigurationRunContext
+### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext properties
 
 |Vlastnost  |Popis  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | Název konfigurace aktualizace softwaru.        |
 |SoftwareUpdateConfigurationRunId     | Jedinečné ID pro běh.        |
 |SoftwareUpdateConfigurationSettings     | Kolekce vlastností souvisejících s konfigurací aktualizace softwaru.         |
-|SoftwareUpdateConfigurationSettings. operatingSystem     | Operační systémy cílené pro nasazení aktualizace.         |
-|SoftwareUpdateConfigurationSettings. Duration     | Maximální trvání nasazení aktualizace spouštěné jako `PT[n]H[n]M[n]S` podle ISO8601; nazývá se také časový *interval pro správu a údržbu*.          |
-|SoftwareUpdateConfigurationSettings. Windows     | Kolekce vlastností souvisejících s počítači se systémem Windows.         |
-|SoftwareUpdateConfigurationSettings. Windows. excludedKbNumbers     | Seznam aktualizací KB, které jsou vyloučené z nasazení aktualizace.        |
-|SoftwareUpdateConfigurationSettings. Windows. includedUpdateClassifications     | Klasifikace aktualizací vybrané pro nasazení aktualizace        |
-|SoftwareUpdateConfigurationSettings. Windows. rebootSetting     | Nastavení restartování pro nasazení aktualizace.        |
+|SoftwareUpdateConfigurationSettings.operatingSystem     | Operační systémy cílené pro nasazení aktualizace.         |
+|SoftwareUpdateConfigurationSettings.duration     | Maximální trvání nasazení aktualizace spouštěné jako `PT[n]H[n]M[n]S` podle ISO8601; nazývá se také časový *interval pro správu a údržbu*.          |
+|SoftwareUpdateConfigurationSettings.Windows     | Kolekce vlastností souvisejících s počítači se systémem Windows.         |
+|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | Seznam aktualizací KB, které jsou vyloučené z nasazení aktualizace.        |
+|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | Klasifikace aktualizací vybrané pro nasazení aktualizace        |
+|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | Nastavení restartování pro nasazení aktualizace.        |
 |azureVirtualMachines     | Seznam resourceId pro virtuální počítače Azure v nasazení aktualizace.        |
 |nonAzureComputerNames|Seznam plně kvalifikovaných názvů domén počítačů mimo Azure v nasazení aktualizace.|
 

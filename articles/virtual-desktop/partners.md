@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384305"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851175"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -28,16 +28,6 @@ Citrix rozšiřuje hodnotu virtuální plochy Windows pomocí robustních podnik
 
 - [Přejít na web partnera](https://more.citrix.com/wvd).
 
-## <a name="cloudhouse"></a>Cloudhouse
-
-![Logo Cloudhouse](./media/partners/cloudhouse.png)
-
-Cloudhouse je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který nabízí zákazníkům službu migrace aplikací klíč, která může přesunout všechny aplikace, včetně těch, které jsou nekompatibilní s moderními operačními systémy Windows, do Windows. Prostředí virtuálního počítače, které zákazníkům umožňuje skutečně využívat Windows 10 s více relacemi. 
-
-Díky využití osvědčené technologie Cloudhouseování kontejnerů služba Cloudhouse přebírá všechny aplikace, včetně těch, které jsou určené pro Windows XP, Windows 7 nebo Windows 8, a nasadí je na moderní virtuální počítače s Windows, aniž by museli měnit kód nebo dopad na činnost koncového uživatele. Cloudhouse dále přičítá k hodnotě virtuálního klienta Windows izolací aplikací z podkladového operačního systému, což umožňuje zavádět aktualizace údržby Windows beze změny, aniž by to ovlivnilo kontejnerové aplikace. 
-
-- [Přejít na web partnera](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
-
 ## <a name="vmware"></a>VMware
 
 ![Logo VMware](./media/partners/vmware.png)
@@ -48,6 +38,17 @@ V rámci schváleného poskytovatele se výhody virtuálního klienta Windows ro
 
 - [Zaregistrujte se na verzi pro cloudovou verzi Horizontal Preview na Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Přejít na web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Logo Cloudhouse](./media/partners/cloudhouse.png)
+
+Cloudhouse je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který nabízí zákazníkům službu migrace aplikací klíč, která může přesunout všechny aplikace, včetně těch, které jsou nekompatibilní s moderními operačními systémy Windows, do Windows. Prostředí virtuálního počítače, které zákazníkům umožňuje skutečně využívat Windows 10 s více relacemi. 
+
+Díky využití osvědčené technologie Cloudhouseování kontejnerů služba Cloudhouse přebírá všechny aplikace, včetně těch, které jsou určené pro Windows XP, Windows 7 nebo Windows 8, a nasadí je na moderní virtuální počítače s Windows, aniž by museli měnit kód nebo dopad na činnost koncového uživatele. Cloudhouse dále přičítá k hodnotě virtuálního klienta Windows izolací aplikací z podkladového operačního systému, což umožňuje zavádět aktualizace údržby Windows beze změny, aniž by to ovlivnilo kontejnerové aplikace. 
+
+- [Přejít na web partnera](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="cloudjumper"></a>CloudJumper
 

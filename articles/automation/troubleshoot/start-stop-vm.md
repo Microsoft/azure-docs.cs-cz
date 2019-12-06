@@ -4,17 +4,17 @@ description: Tento článek poskytuje informace o řešení potíží při spou�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 860a47386b31403b6a3d41fc2473b1e1040889a7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1817d8e060f944b1bcc31c8ea9eb4fbcff58a165
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162032"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850104"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s řešením spuštění/zastavení virtuálních počítačů v době mimo špičku
 
@@ -112,7 +112,7 @@ Projděte si následující seznam, kde můžete najít možná řešení vašeh
 
 * Ověřte, že [účet RunAs](../manage-runas-account.md) má správná oprávnění k virtuálním počítačům, které se pokoušíte spustit nebo zastavit. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že přejdete do účtu Automation v Azure Portal, vyberete **účty Spustit jako** v části **Nastavení účtu** a kliknete na příslušný účet Spustit jako.
 
-* Pokud jsou virtuální počítače explicitně vyloučené, nemusíte je spustit ani zastavit. Vyloučené virtuální počítače jsou uvedené v proměnné **External_ExcludeVMNames** v účtu Automation, do kterého se řešení nasazuje. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
+* Pokud jsou virtuální počítače explicitně vyloučené, nemusíte je spustit ani zastavit. Vyloučené virtuální počítače jsou nastavené v proměnné **External_ExcludeVMNames** v účtu Automation, do kterého se řešení nasazuje. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
@@ -143,7 +143,7 @@ Projděte si následující seznam, kde můžete najít možná řešení vašeh
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Pokud jsou virtuální počítače explicitně vyloučené, nemusíte je spustit ani zastavit. Vyloučené virtuální počítače jsou uvedené v proměnné **External_ExcludeVMNames** v účtu Automation, do kterého se řešení nasazuje. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
+* Pokud jsou virtuální počítače explicitně vyloučené, nemusíte je spustit ani zastavit. Vyloučené virtuální počítače jsou nastavené v proměnné **External_ExcludeVMNames** v účtu Automation, do kterého se řešení nasazuje. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value

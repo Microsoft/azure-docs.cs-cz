@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor pro virtuální počítače integrace s System Center Operations Manager | Microsoft Docs
+title: Integrace mapy Azure Monitor pro virtuální počítače s Operations Manager | Microsoft Docs
 description: Azure Monitor pro virtuální počítače automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek popisuje použití funkce map k automatickému vytváření diagramů distribuovaných aplikací v Operations Manager.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/12/2019
-ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553974"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849815"
 ---
-# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integrace s funkcí map Azure Monitor pro virtuální počítače
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrace System Center Operations Manager s funkcí map Azure Monitor pro virtuální počítače
 
-V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Díky této integraci mezi funkcí map a System Center Operations Manager můžete automaticky vytvářet diagramy distribuovaných aplikací v Operations Manager, které jsou založené na mapch dynamických závislostí v Azure Monitor pro virtuální počítače. 
+V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Díky této integraci mezi funkcí map a System Center Operations Manager můžete automaticky vytvářet diagramy distribuovaných aplikací v Operations Manager, které jsou založené na mapch dynamických závislostí v Azure Monitor pro virtuální počítače. Tento článek popisuje, jak nakonfigurovat skupinu pro správu System Center Operations Manager pro podporu této funkce.
 
 >[!NOTE]
 >Pokud jste již nasadili Service Map, můžete zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Funkce map Azure Monitor pro virtuální počítače je určena k nahrazení samostatného řešení Service Map. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](vminsights-overview.md).
@@ -107,7 +107,7 @@ Složka Service Map má čtyři uzly:
 
 ## <a name="edit-or-delete-the-workspace"></a>Upravit nebo odstranit pracovní prostor
 
-Nakonfigurovaný pracovní prostor můžete upravit nebo odstranit pomocí podokna **přehled Service map** (podokno**Správa** > **operations Management Suite**  > **Service map**).
+Nakonfigurovaný pracovní prostor můžete upravit nebo odstranit pomocí podokna **přehled Service map** (podokno**Správa** > **operations Management Suite** > **Service map**).
 
 >[!NOTE]
 >[Operations Management Suite byla sada služeb](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , které jsou součástí Log Analytics, což je teď součástí [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).

@@ -1,18 +1,18 @@
 ---
 title: Log10 – v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o log10 – funkcí SQL systému v Azure Cosmos DB.
+description: Přečtěte si o funkci log10 – SQL System v Azure Cosmos DB, která vrátí logaritmus o základu 10 zadaného číselného výrazu.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 56f1e96e7d4ee1b5f38ee7392665e17819ae554b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5950a2a40a78716a76e49fcdaeb3129948b6a0e1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349727"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871053"
 ---
 # <a name="log10-azure-cosmos-db"></a>Log10 – (Azure Cosmos DB)
  Vrátí logaritmus o základu base 10 zadaný číselný výraz.  

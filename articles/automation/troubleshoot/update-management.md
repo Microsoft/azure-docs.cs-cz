@@ -2,18 +2,18 @@
 title: Řešení chyb pomocí Update Management
 description: Naučte se řešit potíže s Update Management.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786063"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849237"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update Management
 
@@ -21,7 +21,7 @@ Tento článek popisuje řešení problémů, se kterými se můžete setkat př
 
 U agenta Hybrid Worker je poradce při potížích s agentem, aby mohl zjistit základní problém. Další informace o poradci při potížích najdete v tématu [Poradce při potížích s aktualizací agenta](update-agent-issues.md). U všech ostatních problémů použijte následující pokyny k odstraňování potíží.
 
-Pokud narazíte na problémy při připojování řešení na virtuálním počítači, podívejte se do protokolu **Operations Manager** v části **protokoly aplikací a služeb** v místním počítači na události s ID události 4502 a podrobnostmi události, které obsahují. **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**.
+Pokud narazíte na problémy při připojování řešení na virtuálním počítači, podívejte se do protokolu **Operations Manager** v části **protokoly aplikací a služeb** v místním počítači na události s ID události 4502 a podrobností události, které obsahují **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**.
 
 V následující části se zvýrazňují konkrétní chybové zprávy a možná řešení pro každé z nich. Další problémy s připojováním najdete v tématu [řešení potíží s registrací řešení](onboarding.md).
 
@@ -187,7 +187,7 @@ K této chybě může dojít z některého z následujících důvodů:
 
 ### <a name="resolution"></a>Rozlišení
 
-V případě potřeby použijte pro nasazení aktualizací [dynamické skupiny](../automation-update-management-groups.md) . Také
+V případě potřeby použijte pro nasazení aktualizací [dynamické skupiny](../automation-update-management-groups.md) . Navíc platí:
 
 * Ověřte, že počítač stále existuje a je dostupný. Pokud neexistuje, upravte nasazení a odeberte počítač.
 * V části [Plánování sítě](../automation-update-management.md#ports) najdete seznam portů a adres, které jsou potřeba pro Update Management, a pak ověřte, že váš počítač splňuje tyto požadavky.
@@ -220,7 +220,7 @@ Další informace najdete v tématu [Konfigurace automatických aktualizací](ht
 
 ### <a name="issue"></a>Problém
 
-Zobrazí se následující chybová zpráva:
+Zobrazí se tato chybová zpráva:
 
 ```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}

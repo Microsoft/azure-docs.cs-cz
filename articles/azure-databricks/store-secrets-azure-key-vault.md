@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: f1472d7043a092f35e10fdedbf4c52740e87c51c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706148"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849271"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Kurz: přístup k Azure Blob Storage z Azure Databricks pomocí Azure Key Vault
 
@@ -77,7 +77,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
    |Vlastnost|Popis|
    |--------|-----------|
    |Name (Název)|Jedinečný název vašeho trezoru klíčů.|
-   |Předplatné|Vyberte předplatné.|
+   |Předplatné|Zvolte předplatné.|
    |Skupina prostředků|Vyberte skupinu prostředků nebo vytvořte novou.|
    |Umístění|Zvolte umístění.|
 
@@ -129,7 +129,8 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 4. Po otevření pracovního prostoru Azure Databricks v samostatném okně přidejte k adrese URL **#secrets/CreateScope** . Adresa URL by měla mít následující formát: 
 
-   **https://< \location >. azuredatabricks. NET/#secrets/CreateScope**.
+   **https://< \location >. azuredatabricks. NET/? o = < \orgID > #secrets/CreateScope**.
+   
 
 5. Zadejte název oboru a zadejte Azure Key Vault název DNS a ID prostředku, které jste předtím uložili. Uložte název oboru v textovém editoru pro pozdější použití v tomto kurzu. Potom vyberte **Create** (Vytvořit).
 

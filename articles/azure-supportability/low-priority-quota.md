@@ -1,34 +1,34 @@
 ---
-title: Kvóta s nízkou prioritou | Microsoft Docs
-description: Žádosti o kvótu s nízkou prioritou
+title: Kvóta na místě | Microsoft Docs
+description: Žádosti o kvótu na místě
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 11/19/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 49ac478330cf73dff050a3edcc15933692fa6448
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 09c9d7940314b691e6351353e6a0076510fdcb13
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535168"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850563"
 ---
-# <a name="low-priority-quota-limit-increase-for-all-vm-series"></a>Kvóta s nízkou prioritou: zvýšení limitu pro všechny řady virtuálních počítačů
+# <a name="spot-quota-limit-increase-for-all-vm-series"></a>Kvóta bodu: zvýšení limitu pro všechny řady virtuálních počítačů
 
-Virtuální počítače s nízkou prioritou poskytují jiný model využití Azure a nabízejí nižší náklady na to, aby Azure odebrali virtuální počítač podle potřeby pro nasazení s průběžnými platbami nebo pro rezervované instance virtuálních počítačů. Přečtěte si další informace o [virtuálních počítačích](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-low-priority)s nízkou prioritou.
+Virtuální počítače s vyššími nároky poskytují jiný model využití Azure a nabízejí nižší náklady na to, aby Azure odebral virtuální počítač podle potřeby pro nasazení s průběžnými platbami nebo pro rezervované instance virtuálních počítačů. [Tady si můžete](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)přečíst další informace o přímých virtuálních počítačích.
 
-Správce prostředků podporuje dva typy kvót vCPU pro virtuální počítače. **Virtuální počítače s průběžnými platbami a rezervované instance virtuálních počítačů** používají standardní kvótu. **Virtuální počítače s nízkou prioritou** používají kvótu s nízkou prioritou. 
+Správce prostředků podporuje dva typy kvót vCPU pro virtuální počítače. **Virtuální počítače s průběžnými platbami a rezervované instance virtuálních počítačů** používají standardní kvótu. **Virtuální počítače** používají kvótu na místě. 
 
-U typu **kvóty s nízkou prioritou** se správce prostředků kvóty vCPU vynutily napříč všemi dostupnými řadami virtuálních počítačů jako s jediným oblastním limitem.
+Pro typ **kvóty přímých kvót** se správce prostředků kvóty vCPU vynutily napříč všemi dostupnými řadami virtuálních počítačů jako s jediným oblastním limitem.
 
-Kdykoli je nasazení nového virtuálního počítače s nízkou prioritou nasazeno, součet nového a stávajícího Vcpuho využití pro všechny instance virtuálních počítačů s nízkou prioritou nesmí překročit schválenou kvótu vCPU s nízkou prioritou. Pokud je překročená kvóta s nízkou prioritou, nasazení virtuálního počítače s nízkou prioritou se nepovolí. Můžete požádat o zvýšení limitu kvóty vCPU s nízkou prioritou z Azure Portal. 
+Kdykoli je potřeba nasadit nový virtuální počítač s přímým odkazem, součet nového a stávajícího Vcpuho využití pro všechny instance virtuálních počítačů na místě nesmí překročit schválenou kvótu vCPU limitu. Pokud dojde k překročení kvóty na místě, nasazení na místě se nepovolí. Můžete požádat o zvýšení limitu kvóty vCPU na místo od Azure Portal. 
 
 Přečtěte si další informace o standardních kvótách vCPU na stránce kvóty vCPU pro virtuální počítače a na stránce omezení pro předplatné a služby Azure. Přečtěte si další informace o zvyšování omezení regionálního vCPU pro kvótu Standard na této [stránce](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests).
 
-Nyní si můžete vyžádat zvýšení **kvóty s nízkou prioritou pro všechny řady virtuálních počítačů** prostřednictvím okna **help + podpora** nebo z okna **používání a kvót** na portálu.
+Teď si můžete vyžádat zvýšení **limitu kvóty pro všechny řady virtuálních počítačů** prostřednictvím okna **help + support** nebo pomocí okna **používání a kvót** na portálu.
 
-## <a name="request-low-priority-quota-limit-increase-for-all-vm-series-per-subscription-using-the-help--support-blade"></a>Požadavek na zvýšení kvóty s nízkou prioritou pro všechny řady virtuálních počítačů na předplatné pomocí okna pro nápovědu a podporu
+## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-the-help--support-blade"></a>Zvýšení kvóty požadavků na požadavky u všech řad virtuálních počítačů na předplatné pomocí okna pro nápovědu a podporu
 
 Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help + podpora" v Azure, které je dostupné v Azure Portal.
 
@@ -37,7 +37,7 @@ Můžete také **požádat o kvótu pro více oblastí** prostřednictvím jedin
 
 1. V https://portal.azure.com vyberte možnost **help + podpora**.
 
-   ![Pomoc a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
+   ![Nápověda a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  Vyberte **Nová žádost o podporu**. 
 
@@ -63,7 +63,7 @@ Můžete také **požádat o kvótu pro více oblastí** prostřednictvím jedin
 
 ![Zadat podrobnosti](./media/resource-manager-core-quotas-request/3-7.png)
 
-8. Pro vybrané umístění vyberte možnost **typ** hodnota jako **Nízká priorita**. V rámci podpory vícenásobného výběru v poli **typ** můžete požádat o typy kvót standardní i nízkou prioritu z jediného případu podpory. Přečtěte si další informace o **zvýšení standardní kvóty na řadu virtuálních počítačů** na této [stránce](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+8. Pro vybrané umístění vyberte možnost **typ** hodnota jako **"bodový"** . Můžete požadovat typy kvót Standard a quote z jediného případu podpory prostřednictvím podpory více výběrů v poli **typ** . Přečtěte si další informace o **zvýšení standardní kvóty na řadu virtuálních počítačů** na této [stránce](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
 
 ![Zadat podrobnosti](./media/resource-manager-core-quotas-request/3-8.png)
 
@@ -77,7 +77,7 @@ Můžete také **požádat o kvótu pro více oblastí** prostřednictvím jedin
 
 11. Až zadáte požadovanou kvótu, klikněte na **Uložit a pokračujte** na panelu Podrobnosti o kvótě a pokračujte v vytváření žádosti o podporu.
 
-## <a name="request-low-priority-quota-limit-increase-for-all-vm-series-per-subscription-using-usages--quota-blade"></a>Požadavek na zvýšení kvóty s nízkou prioritou pro všechny řady virtuálních počítačů na předplatné pomocí okna využití + kvóta
+## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-usages--quota-blade"></a>Zvýšení kvóty požadavků na požadavky pro všechny řady virtuálních počítačů na předplatné pomocí okna využití + kvóta
 
 Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřednictvím okna Azure využití + kvóty dostupného v Azure Portal.
 
@@ -107,7 +107,7 @@ Můžete také **požádat o kvótu pro více oblastí** prostřednictvím jedin
 
   ![Vyplnit formulář](./media/resource-manager-core-quotas-request/3-2-6.png)
  
-7.  Pro vybrané umístění vyberte možnost **typ** hodnota jako **Nízká priorita.** V rámci podpory vícenásobného výběru v poli **typ** můžete požádat o typy kvót standardní i nízkou prioritu z jediného případu podpory. Přečtěte si další informace o **zvýšení standardní kvóty na řadu virtuálních počítačů** na této [stránce](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+7.  Pro vybrané umístění vyberte možnost **typ** hodnota jako **"bodový".** Můžete požadovat typy kvót Standard a quote z jediného případu podpory prostřednictvím podpory více výběrů v poli **typ** . Přečtěte si další informace o **zvýšení standardní kvóty na řadu virtuálních počítačů** na této [stránce](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
 
   ![Vyplnit formulář](./media/resource-manager-core-quotas-request/3-2-7.png)
  
@@ -120,4 +120,5 @@ Můžete také **požádat o kvótu pro více oblastí** prostřednictvím jedin
   ![Vyplnit formulář](./media/resource-manager-core-quotas-request/3-2-9.png)
  
 10. Až zadáte požadovanou kvótu, klikněte na **Uložit a pokračujte** na panelu Podrobnosti o kvótě a pokračujte v vytváření žádosti o podporu.
+
 

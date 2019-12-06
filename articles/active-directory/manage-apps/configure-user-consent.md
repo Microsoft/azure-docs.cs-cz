@@ -12,21 +12,23 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8ba3cc27777d13448b0e1114413128b550b0b2f5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273994"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842284"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Konfigurace způsobu, jakým koncoví uživatelé souhlasí s aplikací v Azure Active Directory
 Naučte se konfigurovat způsob, jakým uživatelé souhlasí s oprávněními k aplikacím. Můžete zjednodušit uživatelské prostředí tím, že udělíte souhlas správce. Tento článek popisuje různé způsoby, jak můžete nakonfigurovat souhlas uživatele. Metody se vztahují na všechny koncové uživatele v tenantovi Azure Active Directory (Azure AD). 
 
 Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azure Active Directory souhlasu Framework](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Udělení souhlasu správce vyžaduje, abyste se přihlásili jako globální správce, správce aplikace nebo správce cloudové aplikace.
+
+K udělení souhlasu správce k oprávněním pro Microsoft Graph a Azure AD Graph potřebujete oprávnění globálního správce. 
 
 Chcete-li omezit přístup k aplikacím, je nutné vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci.  Další informace najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
 
@@ -55,7 +57,7 @@ Udělení souhlasu správce při registraci aplikace:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
 2. Přejděte do okna **Registrace aplikací** .
 3. Vyberte aplikaci pro souhlas.
-4. Vyberte **oprávnění rozhraní API**.
+4. Vyberte **oprávnění k rozhraní API**.
 5. Klikněte na **udělit souhlas správce**.
 
 

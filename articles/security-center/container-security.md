@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769213"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868486"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpečení kontejneru v Security Center
 
@@ -59,8 +59,7 @@ Podrobnosti o doporučeních Security Center najdete v tématu [ochrana virtuál
 
 Security Center poskytuje detekci hrozeb v reálném čase pro vaše kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
 
-Zjistili jsme hrozby na úrovni hostitele a AKS clusteru. Úplné podrobnosti najdete v tématu [Azure Container Service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
-
+Zjistili jsme hrozby na úrovni hostitele a AKS clusteru. Úplné podrobnosti najdete v tématu [detekce hrozeb pro kontejnery Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
 
 ## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>Zobrazení stav zabezpečení prostředků souvisejících s kontejnerem
 1.  Otevřete stránku **compute & aplikace** Security Center.

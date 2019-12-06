@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278172"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849138"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace časové rezervy pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste v časové rezervě a Azure AD automaticky zřídili a zrušili zřizování uživatelských účtů z Azure AD až po časovou rezervu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -66,19 +66,19 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 4. Nastavte **režim zřizování** na **automaticky**.
 
-   ![Zřizování časové rezervy](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Zřizování časové rezervy](./media/slack-provisioning-tutorial/slack1.png)
 
 5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. Tím se otevře dialogové okno autorizace časové rezervy v novém okně prohlížeče.
 
 6. V novém okně se přihlaste k časové rezervě pomocí účtu správce týmu. v dialogovém okně výsledné autorizace vyberte tým časové rezervy, pro který chcete povolit zřizování, a potom vyberte **autorizovat**. Až se dokončí, vraťte se do Azure Portal a dokončete konfiguraci zřizování.
 
-    ![Dialogové okno autorizace](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![Dialogové okno autorizace](./media/slack-provisioning-tutorial/slackauthorize.png)
 
 7. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci časové rezervy. Pokud se připojení nepovede, ujistěte se, že váš účet časové rezervy má oprávnění správce týmu, a zkuste znovu provést krok autorizovat.
 
 8. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko níže.
 
-9. Klikněte na možnost **Uložit**.
+9. Klikněte na **Uložit**.
 
 10. V části mapování vyberte **synchronizovat Azure Active Directory uživatele s časovou rezervou**.
 
@@ -86,7 +86,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 12. Pokud chcete povolit službu Azure AD Provisioning pro časovou rezervu, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-13. Klikněte na možnost **Uložit**.
+13. Klikněte na **Uložit**.
 
 Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených k časové rezervě v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než další synchronizace, ke kterým dojde přibližně každých 10 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavy aktivit zřizování, které popisují všechny akce prováděné službou zřizování v aplikaci časové rezervy.
 
@@ -102,11 +102,11 @@ Volitelně můžete povolit zřizování skupin objektů z Azure AD do časové 
 
 3. V části **mapování atributů** zkontrolujte atributy skupin, které se budou synchronizovat z Azure AD, s časovou rezervou. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování skupin v časové rezervě pro operace aktualizace. 
 
-4. Klikněte na možnost **Uložit**.
+4. Klikněte na **Uložit**.
 
 To má za následek to, že všechny objekty skupiny přiřazené k časové rezervě v části **Uživatelé a skupiny** jsou plně synchronizované z Azure AD do časové rezervy. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci pro časovou rezervu.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
@@ -124,7 +124,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * Časová rezerva povoluje pouze spárování s atributy **username** a **email**.  
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

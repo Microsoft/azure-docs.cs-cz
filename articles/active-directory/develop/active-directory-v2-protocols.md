@@ -2,28 +2,24 @@
 title: Přečtěte si o autorizačních protokolech, které podporuje platforma Microsoft Identity Platform | Azure
 description: Průvodce pro protokoly OAuth 2,0 a OpenID Connect, které podporuje koncový bod Microsoft Identity Platform.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 446d7178973c1d43d55ff89c429b05c2a10118ba
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 50f2b4d5da2cdda35de0adc5dc646065f2b64a41
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835291"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844698"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoly platformy Microsoft Identity Platform
 
@@ -43,9 +39,9 @@ U téměř všech toků OAuth 2,0 a OpenID Connect se v systému Exchange účas
 * **Klient OAuth** je vaše aplikace, identifikovaný identifikátorem jeho aplikace. Klient OAuth je obvykle strana, se kterou koncový uživatel komunikuje, a žádá o tokeny od autorizačního serveru. Klient musí mít udělené oprávnění pro přístup k prostředku vlastníkem prostředku.
 * **Server prostředků** je místo, kde se nachází prostředek nebo data. Důvěřuje autorizačnímu serveru za účelem bezpečného ověřování a autorizace klienta OAuth a používá přístupové tokeny nosiče k zajištění toho, aby bylo možné udělit přístup k prostředku.
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
-Každá aplikace, která chce přijmout osobní i pracovní nebo školní účty, musí být zaregistrovaná prostřednictvím registrace aplikacího prostředí v [Azure Portal](https://aka.ms/appregistrations) předtím, než bude moct uživatele podepsat pomocí OAuth 2,0 nebo OpenID Connect. Proces registrace aplikace bude shromažďovat a přiřazovat do vaší aplikace několik hodnot:
+Každá aplikace, která chce přijmout osobní i pracovní nebo školní účty, musí být zaregistrovaná prostřednictvím **registrace aplikacího** prostředí v [Azure Portal](https://aka.ms/appregistrations) předtím, než bude moct uživatele podepsat pomocí OAuth 2,0 nebo OpenID Connect. Proces registrace aplikace bude shromažďovat a přiřazovat do vaší aplikace několik hodnot:
 
 * **ID aplikace** , které jedinečně identifikuje vaši aplikaci
 * **Identifikátor URI přesměrování** (volitelné), který se dá použít k přímému směrování odpovědí zpátky do vaší aplikace
@@ -62,14 +58,14 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-`{tenant}` Kde může být jedna ze čtyř různých hodnot:
+Kde `{tenant}` může mít jednu ze čtyř různých hodnot:
 
-| Value | Popis |
+| Hodnota | Popis |
 | --- | --- |
 | `common` | Umožňuje uživatelům, aby se do aplikace přihlásili pomocí osobních účtů Microsoft a pracovních/školních účtů z Azure AD. |
 | `organizations` | Umožňuje, aby se do aplikace přihlásili jenom uživatelé s pracovními nebo školními účty ze služby Azure AD. |
 | `consumers` | Umožňuje, aby se do aplikace přihlásili jenom uživatelé s osobními účty Microsoft (MSA). |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` Nebo `contoso.onmicrosoft.com` | Umožňuje, aby se do aplikace přihlásili jenom uživatelé s pracovními nebo školními účty z konkrétního tenanta Azure AD. Dá se použít popisný název domény tenanta Azure AD nebo identifikátor GUID klienta. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` | Umožňuje, aby se do aplikace přihlásili jenom uživatelé s pracovními nebo školními účty z konkrétního tenanta Azure AD. Dá se použít popisný název domény tenanta Azure AD nebo identifikátor GUID klienta. |
 
 Pokud se chcete dozvědět, jak s těmito koncovými body pracovat, vyberte v části [protokoly](#protocols) konkrétní typ aplikace a použijte odkazy pro další informace.
 

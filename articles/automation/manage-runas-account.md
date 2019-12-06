@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak spravovat účty Spustit jako pomocí 
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fd7e94261d8302224b0e31e5f4ac46978dfa812f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ae73188fa8818c84806709dc7518e3d5760ae187
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690883"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849526"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů Azure Automation spustit jako
 
@@ -50,7 +50,7 @@ Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít specif
 |Vytvoření aplikace Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Role vývojáře aplikace<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domovské > Azure Active Directory > Registrace aplikací |
 |Přidejte do aplikace přihlašovací údaje.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Správce aplikace nebo globální správce<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domovské > Azure Active Directory > Registrace aplikací|
 |Vytvoření a získání instančního objektu služby Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Správce aplikace nebo globální správce<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Domovské > Azure Active Directory > Registrace aplikací|
-|Přiřazení nebo získání role RBAC pro zadaný objekt zabezpečení|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Musíte mít následující oprávnění:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Nebo se musí jednat o:</br></br>Správce nebo vlastník přístupu uživatele        | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Předplatná domovského > > \<subscription název \>-Access Control (IAM)|
+|Přiřazení nebo získání role RBAC pro zadaný objekt zabezpečení|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Musíte mít následující oprávnění:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Nebo se musí jednat o:</br></br>Správce nebo vlastník přístupu uživatele        | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Předplatné Home > > \<název předplatného\>-Access Control (IAM)|
 |Vytvoření nebo odebrání certifikátu Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Přispěvatel ve skupině prostředků         |Skupina prostředků účtu služby Automation|
 |Vytvoření nebo odebrání připojení služby Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Přispěvatel ve skupině prostředků |Skupina prostředků účtu služby Automation|
 
@@ -407,7 +407,7 @@ K okamžitému otestování procesu obnovení použijte následující postup:
 
 ## <a name="limiting-run-as-account-permissions"></a>Omezení oprávnění účtu Spustit jako
 
-Chcete-li řídit cílení automatizace proti prostředkům v Azure, můžete spustit skript [Update-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug8) v galerii prostředí PowerShell a změnit stávající objekt služby účtu Spustit jako pro vytvoření a použití vlastní role. definition. Tato role bude mít oprávnění pro všechny prostředky kromě [Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Chcete-li řídit cílení automatizace proti prostředkům v Azure, můžete spustit skript [Update-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug8) v galerii prostředí PowerShell a změnit stávající objekt služby účtu Spustit jako pro vytvoření a použití vlastní definice role. Tato role bude mít oprávnění pro všechny prostředky kromě [Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
 > [!IMPORTANT]
 > Po spuštění skriptu `Update-AutomationRunAsAccountRoleAssignments.ps1` nebudou sady Runbook, které přistupují k trezoru klíčů prostřednictvím použití účtů RunAs, nadále fungovat. V rámci svého účtu byste měli zkontrolovat Runbooky pro volání do Azure webrecovery.
@@ -422,7 +422,7 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzureRMRoleDefinition
 ```
 
-Pokud chcete zjistit, jestli se instanční objekt používaný účtem spustit jako nachází v rámci definice **přispěvatele** nebo vlastní role, klikněte na účet Automation a v části **Nastavení účtu**vyberte **účty Spustit jako**  > **účet Spustit**jako pro Azure. V části **role** najdete definici role, která se používá.
+Pokud chcete zjistit, jestli se instanční objekt používaný účtem spustit jako nachází v rámci definice **přispěvatele** nebo vlastní role, klikněte na účet Automation a v části **Nastavení účtu**vyberte **účty Spustit jako** > **účet Spustit**jako pro Azure. V části **role** najdete definici role, která se používá.
 
 [![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
@@ -435,7 +435,7 @@ Pokud chcete Azure Automation spravovat Key Vault a váš instanční objekt ú�
 * Udělit oprávnění k Key Vault
 * Nastavení zásad přístupu
 
-Skript [extend-AutomationRunAsAccountRoleAssignmentToKeyVault. ps1](https://aka.ms/AA5hugb) můžete v Galerie prostředí PowerShell použít k udělení oprávnění účtu Spustit jako k trezoru klíčů, nebo můžete navštívit [udělit aplikacím přístup k trezoru klíčů](../key-vault/key-vault-group-permissions-for-apps.md) , kde najdete další podrobnosti o nastavení. oprávnění k trezoru klíčů
+Skript [extend-AutomationRunAsAccountRoleAssignmentToKeyVault. ps1](https://aka.ms/AA5hugb) můžete v Galerie prostředí PowerShell použít k udělení oprávnění účtu Spustit jako k trezoru klíčů. Další informace o nastavení oprávnění k trezoru klíčů najdete v [udělení přístupu aplikací k trezoru klíčů](../key-vault/key-vault-group-permissions-for-apps.md) .
 
 ## <a name="misconfiguration"></a>Chybná konfigurace
 

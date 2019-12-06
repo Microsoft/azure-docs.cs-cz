@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 71f90fb361e8fc45ee2ce8672990965fca801a49
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5eac6b112b46d1b2c80321bdeeee7f4e1fc5f4ac
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533934"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873909"
 ---
 # <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití PowerShellu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
@@ -371,14 +371,17 @@ Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse |
 
 Následující tabulka ukazuje, jak rutiny používané pro Data Lake Storage Gen1 mapují rutiny pro Data Lake Storage Gen2.
 
-|Rutina Data Lake Storage Gen1| Rutina Data Lake Storage Gen2|
-|--------|---------|
-|Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|
-|Get-AzDataLakeStoreItem <br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission<br>Get-AzDataLakeStoreItemContent<br>New-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|
-|Get-AzDataLakeStoreItemContent|New-AzDataLakeGen2Item|
-|Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item|
-|Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item|
-|Set-AzDataLakeStoreItemOwner <br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update – AzDataLakeGen2Item|
+|Rutina Data Lake Storage Gen1| Rutina Data Lake Storage Gen2| Poznámky |
+|--------|---------|-----|
+|Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|Ve výchozím nastavení je v rutině Get-AzDataLakeGen2ChildItem uveden pouze seznam podřízených položek první úrovně. Parametr-rekurze vypisuje rekurzivně podřízené položky. |
+|Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Výstupní položky rutiny Get-AzDataLakeGen2Item obsahují vlastnosti těchto vlastností: seznam ACL, vlastník, skupina, oprávnění.|
+|Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|Rutina Get-AzDataLakeGen2FileContent stahuje obsah souboru do místního souboru.|
+|Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
+|New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|Tato rutina nahraje nový obsah souboru z místního souboru.|
+|Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update – AzDataLakeGen2Item|Rutina Update-AzDataLakeGen2Item aktualizuje jenom jednu položku, a ne rekurzivně. Pokud chcete rekurzivně aktualizovat, vypište položky pomocí rutiny Get-AzDataLakeStoreChildItem a pak vytvořte kanál rutiny Update-AzDataLakeGen2Item.|
+|Test – AzDataLakeStoreItem|Get-AzDataLakeGen2Item|Rutina Get-AzDataLakeGen2Item oznámí chybu, pokud položka neexistuje.|
+
+
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

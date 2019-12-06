@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 6c2d7dc64bca00ce664dc470e7c4405d69b49779
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 132cf6ccfec5af9951f5dc6d6a3c6d3c81363d81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531526"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850002"
 ---
 # <a name="standard-quota-regional-vcpu-limit-increase"></a>Standardní kvóta: zvýšení limitu regionálního vCPU 
 
-Správce prostředků podporuje dva typy kvót vCPU pro virtuální počítače. **Virtuální počítače** s průběžnými platbami a **rezervované instance virtuálních počítačů** používají standardní kvótu. **Virtuální počítače s nízkou prioritou** používají kvótu s nízkou prioritou. 
+Správce prostředků podporuje dva typy kvót vCPU pro virtuální počítače. **Virtuální počítače** s průběžnými platbami a **rezervované instance virtuálních počítačů** používají standardní kvótu. **Virtuální počítače** používají kvótu na místě. 
 
 VCPU kvóta úrovně Standard pro průběžné platby a rezervované instance virtuálních počítačů se vynutily na dvou úrovních pro každé předplatné v každé oblasti.
  
@@ -26,7 +26,7 @@ Při vytvoření nového předplatného se nemusí výchozí celková oblast vCP
 
 Přečtěte si další informace o standardních kvótách vCPU na stránce [kvóty vCPU pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) a na stránce [omezení pro předplatné a služby Azure](https://aka.ms/quotalimits) .
 
-Další informace o **zvýšení limitů virtuálních počítačů s nízkou prioritou vCPU** [najdete tady](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
+Další informace o **zvýšení limitů vCPU virtuálních počítačů** [najdete tady](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
 
 V okně **nápovědu a podpora** nebo v okně **používání a kvóta** na portálu můžete požádat o zvýšení **celkového počtu místních VCPU limitů v rámci standardního virtuálního počítače** .
 
@@ -36,7 +36,7 @@ Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help +
 
 1. V https://portal.azure.com vyberte možnost **help + podpora**.
 
-![Pomoc a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
+![Nápověda a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  Vyberte **Nová žádost o podporu**. 
 

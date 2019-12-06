@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279139"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851668"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
 V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -33,10 +33,9 @@ Než připojíte disky k VIRTUÁLNÍmu počítači, přečtěte si tyto tipy:
 
 
 ## <a name="find-the-virtual-machine"></a>Najít virtuální počítač
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
-2. V nabídce vlevo klikněte na **Virtual Machines**.
-3. Ze seznamu vyberte virtuální počítač.
-4. Na stránce virtuální počítače v části **základy**klikněte na **disky**.
+1. Pokud chcete najít virtuální počítač, otevřete [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **virtuální počítače**.
+2. V seznamu vyberte virtuální počítač.
+3. Na stránce **virtuální počítače** v části **Nastavení**vyberte **disky**.
    
     ![Otevřít nastavení disku](./media/attach-disk-portal/find-disk-settings.png)
 
@@ -109,7 +108,7 @@ Rozdělte disk na oddíly pomocí příkazu `fdisk`. Pokud je velikost disku 2 t
 sudo fdisk /dev/sdc
 ```
 
-K přidání nového oddílu použijte příkaz `n`. V tomto příkladu jsme také zvolili `p` pro primární oddíl a přijali zbytek výchozích hodnot. Výstup bude vypadat podobně jako v následujícím příkladu:
+K vytvoření nového oddílu použijte příkaz `n`. V tomto příkladu jsme také zvolili `p` pro primární oddíl a přijali zbytek výchozích hodnot. Výstup se bude podobat tomuto příkladu:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -205,7 +204,7 @@ K následnému připojení systému souborů použijte `mount`. Následující p
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Aby bylo zajištěno, že se jednotka po restartování automaticky znovu připojí, je nutné ji přidat do souboru */etc/fstab* . Důrazně doporučujeme, abyste v */etc/fstab* použili UUID (univerzálně jedinečný identifikátor), aby odkazoval na jednotku, a ne jenom název zařízení (například, */dev/sdc1*). Pokud operační systém při spuštění detekuje chybu disku, při použití UUID se vyhnete nesprávnému disku připojenému k danému umístění. K zbývajícím datovým diskům by pak byla přiřazena stejná ID zařízení. Chcete-li zjistit UUID nové jednotky, použijte nástroj `blkid`:
+Aby bylo zajištěno, že se jednotka po restartování automaticky znovu připojí, je nutné ji přidat do souboru */etc/fstab* . Důrazně doporučujeme, abyste v */etc/fstab* použili UUID (univerzálně jedinečný identifikátor), aby odkazoval na jednotku, a ne jenom název zařízení (například, */dev/sdc1*). Pokud operační systém při spuštění zjistí chybu disku a vy jste použili UUID, zabráníte připojení nesprávného disku k danému umístění. Zbývajícím datovým diskům by se přiřadily stejné ID zařízení. Ke zjištění UUID nového disku použijte nástroj `blkid`:
 
 ```bash
 sudo -i blkid
@@ -220,7 +219,7 @@ Výstup bude vypadat podobně jako v následujícím příkladu:
 ```
 
 > [!NOTE]
-> Nesprávná úprava souboru **/etc/fstab** by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, přečtěte si dokumentaci k distribuci, kde najdete informace o tom, jak tento soubor správně upravit. Doporučuje se také vytvořit zálohu souboru/etc/fstab před úpravou.
+> Nesprávná úprava souboru **/etc/fstab** by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, podívejte se do dokumentace k distribuci, kde najdete informace o tom, jak soubor správně upravit. Doporučuje se také vytvořit zálohu souboru/etc/fstab před úpravou.
 
 Potom v textovém editoru otevřete soubor */etc/fstab* následujícím způsobem:
 

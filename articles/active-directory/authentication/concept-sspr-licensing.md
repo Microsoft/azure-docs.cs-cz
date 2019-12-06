@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 598f3bd8500a59cd41cc4126915e6cccbd4fb2f3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622721"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848557"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licenční požadavky pro Samoobslužné resetování hesla služby Azure AD
 
@@ -33,7 +33,7 @@ Samoobslužné resetování hesla služby Azure AD je licencováno na uživatele
 
 * Samoobslužné resetování hesla pro cloudové uživatele
    * Jsem **pouze cloudový uživatel** a zapomněl jsem heslo.
-      * Chci resetovat heslo na něco, co znáte.
+      * Chci **resetovat** heslo na něco, co znáte.
    * Tato funkce je součástí Azure AD Premium P1 nebo P2, Microsoft 365 Business nebo Office 365.
 
 * Samoobslužné resetování hesla, změna/odemknutí **pomocí místního zpětného zápisu**
@@ -57,7 +57,7 @@ Další informace o licencování, včetně nákladů, najdete na následující
 
 Azure AD teď podporuje licencování na základě skupin. Správci můžou hromadně přiřazovat licence skupině uživatelů, ale nepřiřazovat je po jednom. Další informace najdete v tématu [přiřazení, ověření a řešení problémů s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Některé služby Microsoft nejsou dostupné ve všech umístěních. Před přiřazením licence uživateli musí správce zadat pro uživatele vlastnost **umístění používání** . Přiřazení licencí se dá udělat v části**Nastavení** **profilu** >  **uživatele** > v Azure Portal. *Když použijete přiřazení skupinové licence, všichni uživatelé bez zadaného umístění pro použití zdědí umístění adresáře.*
+Některé služby Microsoft nejsou dostupné ve všech umístěních. Před přiřazením licence uživateli musí správce zadat pro uživatele vlastnost **umístění používání** . Přiřazení licencí se dá udělat v části > **Nastavení** **profilu** **uživatele** > v Azure Portal. *Když použijete přiřazení skupinové licence, všichni uživatelé bez zadaného umístění pro použití zdědí umístění adresáře.*
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -70,5 +70,5 @@ Některé služby Microsoft nejsou dostupné ve všech umístěních. Před při
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco poškozené. Jak řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
+* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
 * [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)

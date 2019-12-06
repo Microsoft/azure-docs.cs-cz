@@ -4,17 +4,17 @@ description: Tento článek poskytuje informace o řešení potíží s konfigur
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231543"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849356"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s konfigurací požadovaného stavu (DSC)
 
@@ -59,7 +59,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 Tato chyba je dočasný problém, který se plánuje vyřešit.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 * Pomocí příkazu AZ rutina Remove-AzAutomationDscConfiguration konfiguraci odstraňte.
 * Dokumentace k této rutině se ještě neaktualizovala.  Do té doby se v dokumentaci k modulu AzureRM Podívejte.
@@ -86,7 +86,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 Tato chyba je obvykle způsobena bránou firewall, počítač je za proxy server nebo jinými chybami v síti.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Ověřte, že váš počítač má přístup ke správným koncovým bodům pro Azure Automation DSC, a zkuste to znovu. Seznam potřebných portů a adres najdete v tématu [Plánování sítě](../automation-dsc-overview.md#network-planning) .
 
@@ -104,7 +104,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 K této chybě obvykle dochází v případě, že je uzel přiřazen k názvu konfigurace (například ABC) namísto názvu konfigurace uzlu (například ABC. WebServer).
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 * Ujistěte se, že přiřadíte uzel s názvem konfigurace uzlu, nikoli "název konfigurace".
 * Můžete přiřadit konfiguraci uzlu uzlu pomocí Azure Portal nebo pomocí rutiny prostředí PowerShell.
@@ -126,7 +126,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 Pokud je výraz následující po klíčovém slově **uzlu** v konfiguraci DSC vyhodnocen jako `$null`, nebudou vytvořeny žádné konfigurace uzlů.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Problém vyřeší některá z následujících řešení:
 
@@ -147,7 +147,7 @@ No instance found with given property values
 
 Provedli jste upgrade verze WMF a máte poškozenou službu WMI.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Pokud chcete problém vyřešit, postupujte podle pokynů v článku [známé problémy a omezení DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) .
 
@@ -165,7 +165,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 V konfiguraci jste použili přihlašovací údaje, ale neposkytli správné **ConfigurationData** pro nastavení **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 * Nezapomeňte předat správný **ConfigurationData** a nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Další informace najdete v tématu [assety in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
@@ -183,7 +183,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 K této chybě obvykle dochází v případě, že se k uzlu přiřadí název konfigurace uzlu, který ve službě neexistuje.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 * Ujistěte se, že přiřazujete uzel s názvem konfigurace uzlu, který přesně odpovídá názvu ve službě.
 * Můžete zvolit, že nebudete zahrnovat název konfigurace uzlu, což bude mít za následek připojování uzlu, ale ne přiřazení konfigurace uzlu.
@@ -202,7 +202,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 Zákazníci zjistili, že pokud je `/tmp` umístění nastavené na `noexec`, aktuální verze DSC se nepodaří použít konfigurace.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 * Z umístění `/tmp` odeberte možnost `noexec`.
 
@@ -218,7 +218,7 @@ Pokud je například jeden konfigurační skript použit ke generování konfigu
 
 Známý problém se službou kompilace.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Nejlepším alternativním řešením je kompilace místně nebo v kanálu CI/CD a nahrání souborů MOF přímo do služby.  Pokud je kompilace ve službě požadavkem, další nejlepší alternativní řešení by mělo rozdělit úlohy kompilace, aby se v názvech překrývaly.
 

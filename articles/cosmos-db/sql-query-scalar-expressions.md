@@ -1,17 +1,17 @@
 ---
 title: Skalární výrazy v Azure Cosmos DBch dotazech SQL
-description: Seznamte se s syntaxí skalárního výrazu SQL pro Azure Cosmos DB.
+description: Seznamte se s syntaxí skalárního výrazu SQL pro Azure Cosmos DB. Tento článek také popisuje, jak kombinovat skalární výrazy do složitých výrazů pomocí operátorů.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003535"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870730"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalární výrazy v Azure Cosmos DBch dotazech SQL
 
@@ -63,7 +63,7 @@ ms.locfileid: "71003535"
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Představuje hodnotu vlastnosti s názvem `property_name` nebo prvkem pole s indexem `array_index` pole. Pokud vlastnost nebo pole index neexistuje nebo index vlastnost nebo pole se odkazuje na hodnotu, která není objekt nebo pole a pak je výraz vyhodnocen nedefinovaná hodnota.  
+   Představuje hodnotu vlastnosti s názvem `property_name` nebo element pole s indexovým `array_index` pole. Pokud vlastnost nebo pole index neexistuje nebo index vlastnost nebo pole se odkazuje na hodnotu, která není objekt nebo pole a pak je výraz vyhodnocen nedefinovaná hodnota.  
   
 - `unary_operator <scalar_expression>`  
   
@@ -111,7 +111,7 @@ ms.locfileid: "71003535"
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [{
@@ -126,7 +126,7 @@ V následujícím dotazu je výsledkem skalárního výrazu logická hodnota:
     FROM Families f
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -139,7 +139,7 @@ Výsledky jsou:
     ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Úvod do Azure Cosmos DB](introduction.md)
 - [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)

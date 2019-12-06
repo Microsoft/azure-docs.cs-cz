@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 9/27/2018
+ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775734"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872940"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -795,10 +795,10 @@ Pomocí následující šablony můžete vytvořit pravidlo statické výstrahy 
 Jedno pravidlo výstrahy může sledovat několik časových řad metrik najednou, což má za následek méně pravidel upozornění, která se mají spravovat.
 
 V následujícím příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí **ResponseType** a **ApiName** dimenzí pro metriku **transakcí** :
-1. **ResponsType** – použití zástupného znaku "\*" znamená, že pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se různou časovou řadou monitorují jednotlivě.
-2. **ApiName** -jiná časová řada bude monitorována pouze pro hodnoty dimenze **getblob** a **PutBlob** .
+1. **ResponsType** – použití zástupného znaku "\*" znamená, že pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se monitorování různých časových řad provádí jednotlivě.
+2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
-Například několik možných časových řad, které se budou monitorovat pomocí tohoto pravidla upozornění, jsou tyto:
+Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
 - Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
 - Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
 - Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
@@ -1015,10 +1015,10 @@ Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výs
 Jedno pravidlo výstrahy s jedním dynamickými prahovými hodnotami může vytvořit přizpůsobené prahové hodnoty pro stovky časových řad (dokonce i různých typů), což vede k menšímu počtu pravidel upozornění, která se mají spravovat.
 
 V následujícím příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí **ResponseType** a **ApiName** dimenzí pro metriku **transakcí** :
-1. **ResponsType** – pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se různou časovou řadou monitorují samostatně.
-2. **ApiName** -jiná časová řada bude monitorována pouze pro hodnoty dimenze **getblob** a **PutBlob** .
+1. **ResponsType** – pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se monitorování různých časových řad provádí jednotlivě.
+2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
-Například několik možných časových řad, které se budou monitorovat pomocí tohoto pravidla upozornění, jsou tyto:
+Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
 - Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
 - Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
 - Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
@@ -1230,6 +1230,270 @@ az group deployment create \
 >[!NOTE]
 >
 > Pro pravidla upozornění metrik, která používají dynamické prahové hodnoty, se aktuálně nepodporují více kritérií.
+
+
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Šablona pro výstrahu metriky se statickou prahovou hodnotou, která monitoruje vlastní metriku
+
+Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro metriky pro vlastní metriky.
+
+Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+
+Při vytváření pravidla výstrahy na vlastní metriky musíte zadat název metriky i obor názvů metriky.
+
+Následující kód JSON uložte jako customstaticmetricalert. JSON pro účely tohoto Názorného postupu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+            }
+        },
+        "metricName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the metric used in the comparison to activate the alert."
+            }
+        },
+        "metricNamespace": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Namespace of the metric used in the comparison to activate the alert."
+            }
+        },
+        "operator": {
+            "type": "string",
+            "defaultValue": "GreaterThan",
+            "allowedValues": [
+                "Equals",
+                "NotEquals",
+                "GreaterThan",
+                "GreaterThanOrEqual",
+                "LessThan",
+                "LessThanOrEqual"
+            ],
+            "metadata": {
+                "description": "Operator comparing the current value with the threshold value."
+            }
+        },
+        "threshold": {
+            "type": "string",
+            "defaultValue": "0",
+            "metadata": {
+                "description": "The threshold value at which the alert is activated."
+            }
+        },
+        "timeAggregation": {
+            "type": "string",
+            "defaultValue": "Average",
+            "allowedValues": [
+                "Average",
+                "Minimum",
+                "Maximum",
+                "Total",
+                "Count"
+            ],
+            "metadata": {
+                "description": "How the data that is collected should be combined over time."
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "How often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": {  },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": [
+                        {
+                            "name" : "1st criterion",
+                            "metricName": "[parameters('metricName')]",
+                            "metricNamespace": "[parameters('metricNamespace')]",
+                            "dimensions":[],
+                            "operator": "[parameters('operator')]",
+                            "threshold" : "[parameters('threshold')]",
+                            "timeAggregation": "[parameters('timeAggregation')]"
+                        }
+                    ]
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+Můžete použít výše uvedenou šablonu spolu se souborem parametrů uvedeným níže. 
+
+Uložte a upravte JSON níže jako customstaticmetricalert. Parameters. JSON pro účely tohoto Názorného postupu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New alert rule on a custom metric"
+        },
+        "alertDescription": {
+            "value": "New alert rule on a custom metric created via template"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourceGroup-name/providers/microsoft.insights/components/replace-with-application-insights-resource-name"
+        },
+        "metricName": {
+            "value": "The custom metric name"
+        },
+        "metricNamespace": {
+            "value": "Azure.ApplicationInsights"
+        },
+        "operator": {
+          "value": "GreaterThan"
+        },
+        "threshold": {
+            "value": "80"
+        },
+        "timeAggregation": {
+            "value": "Average"
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-action-group"
+        }
+    }
+}
+```
+
+
+Upozornění na metriku můžete vytvořit pomocí souboru šablony a parametrů pomocí PowerShellu nebo Azure CLI z aktuálního pracovního adresáře.
+
+Použití Azure Powershell
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupOfTargetResource `
+  -TemplateFile customstaticmetricalert.json -TemplateParameterFile customstaticmetricalert.parameters.json
+```
+
+
+
+Použití Azure CLI
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupOfTargetResource \
+    --template-file customstaticmetricalert.json \
+    --parameters @customstaticmetricalert.parameters.json
+```
+
+>[!NOTE]
+>
+> Obor názvů metriky konkrétní vlastní metriky můžete najít [procházením vlastních metrik pomocí Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Šablona výstrahy metriky, která monitoruje více prostředků
 
@@ -3180,7 +3444,7 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="template-for-a-availability-test-along-with-availability-test-alert"></a>Šablona pro test dostupnosti společně s výstrahou testu dostupnosti
+## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Šablona pro test dostupnosti společně s výstrahou metriky
 
 [Application Insights testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) vám pomůžou monitorovat dostupnost vašeho webu nebo aplikace z různých míst po celém světě. Výstrahy testu dostupnosti vás upozorní, když testy dostupnosti selžou z určitého počtu míst.
 Výstrahy testu dostupnosti stejného typu prostředku jako výstrahy metriky (Microsoft. Insights/metricAlerts). Následující vzorovou Azure Resource Manager šablonu lze použít k nastavení jednoduchého testu dostupnosti a přidružené výstrahy.

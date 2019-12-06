@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 33ee7351e547ee5ef57ef07f67ba6f5f4410b57f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 152b9f3974f24644e55bed68f5ed65faa90d7fe7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384142"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851651"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě 
 <a name="network-service-tags"></a>
@@ -38,7 +38,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu.  Něk
 
 
 
-| Značka | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
+| Tag | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Provoz správy pro vyhrazená nasazení APIM. | Obojí | Ne | Ano |
 | **AppService**    | Služba App Service. Tato značka se doporučuje pro odchozí pravidla zabezpečení pro WebApp front-endu. | Odchozí | Ano | Ano |
@@ -51,6 +51,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu.  Něk
 | **AzureContainerRegistry** | Služba Azure Container Registry. | Odchozí | Ano | Ano |
 | **AzureCosmosDB** | Databázová služba Azure Cosmos | Odchozí | Ano | Ano |
 | **AzureDataLake** | Služba Azure Data Lake. | Odchozí | Ne | Ano |
+| **AzureHDInsight** | Služba Azure HDInsight. | Příchozí | Ano | Ne |
 | **AzureIoTHub** | Služba Azure IoT Hub. | Odchozí | Ne | Ne |
 | **AzureKeyVault** | Služba úložiště klíčů Azure.<br/><br/>*Poznámka:* Tato značka má závislost na značce **azureactivedirectory selhala** . | Odchozí | Ano | Ano |
 | **AzureLoadBalancer** | Nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations) (168.63.129.16), kde mají původ sondy stavu Azure. Pokud nepoužíváte nástroj pro vyrovnávání zatížení Azure, můžete toto pravidlo přepsat. | Obojí | Ne | Ne |
@@ -72,7 +73,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu.  Něk
 | **SQL** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL a Azure SQL Data Warehouse služby.<br/><br/>*Poznámka:* Tato značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure SQL Database, ale ne konkrétní server nebo databázi SQL. | Odchozí | Ano | Ano |
 | **SqlManagement** | Provoz správy pro vyhrazená nasazení SQL. | Obojí | Ne | Ano |
 | **Storage** | Služba Azure Storage. <br/><br/>*Poznámka:* Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage. | Odchozí | Ano | Ano |
-| **VirtualNetwork** | Adresní prostor virtuální sítě (všechny rozsahy IP adres definované pro virtuální síť), všechny připojené místní adresní prostory, [partnerské](virtual-network-peering-overview.md) virtuální sítě nebo virtuální sítě připojené k [bráně virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [virtuální IP adresa Adresa hostitele](security-overview.md#azure-platform-considerations) a předpony adresy používané na [trasách definovaných uživatelem](virtual-networks-udr-overview.md). Upozorňujeme, že tato značka může obsahovat také výchozí trasy. | Obojí | Ne | Ne |
+| **VirtualNetwork** | Adresní prostor virtuální sítě (všechny rozsahy IP adres definované pro virtuální síť), všechny připojené místní adresní prostory, [partnerské](virtual-network-peering-overview.md) virtuální sítě nebo virtuální síť připojené k [bráně virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [virtuální IP adresa hostitele](security-overview.md#azure-platform-considerations) a předpony adresy používané na [trasách definovaných uživatelem](virtual-networks-udr-overview.md). Upozorňujeme, že tato značka může obsahovat také výchozí trasy. | Obojí | Ne | Ne |
 
 >[!NOTE]
 >Při práci v *klasickém* prostředí (pre-Azure Resource Manager) se podporuje vybraná sada značek výše.  Používají alternativní pravopis:

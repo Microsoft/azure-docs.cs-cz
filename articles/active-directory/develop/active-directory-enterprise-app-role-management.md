@@ -3,27 +3,23 @@ title: Konfigurace deklarace identity role pro podnikové aplikace v Azure AD
 titleSuffix: Microsoft identity platform
 description: Naučte se konfigurovat deklaraci identity role vydanou v tokenu SAML pro podnikové aplikace v Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: jeevansd
 manager: CelesteDG
-editor: ''
 ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c671626a431a47e5100cf42ca0c9e29ab580ab3a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4657a69347eb2294877e6bd2d7de8e41c0c2ef26
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803490"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845277"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
@@ -99,7 +95,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
       ![Podrobnosti vlastnosti appRoles](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
       > [!Note]
-      > Pokud používáte vlastní aplikaci (ne aplikaci Azure Marketplace), zobrazí se dvě výchozí role: User a msiam_access. Pro aplikaci Marketplace je msiam_access jedinou výchozí rolí. Nemusíte dělat žádné změny ve výchozích rolích.
+      > Pokud používáte vlastní aplikaci (ne aplikaci Azure Marketplace), zobrazí se dvě výchozí role: uživatel a msiam_access. Pro aplikaci Marketplace je msiam_access jedinou výchozí rolí. Nemusíte dělat žádné změny ve výchozích rolích.
 
     h. Vygenerujte nové role pro vaši aplikaci.
 
@@ -135,7 +131,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
       ```
 
       > [!Note]
-      > Nové role můžete přidat až po msiam_access pro operaci opravy. Také můžete přidat tolik rolí podle potřeb vaší organizace. Azure AD pošle hodnotu těchto rolí jako hodnotu deklarace v odpovědi SAML. Aby se vygenerovaly hodnoty GUID pro ID nových rolí, použijte webové nástroje jako [tyto](https://www.guidgenerator.com/) .
+      > Po msiam_access pro operaci patch můžete přidat pouze nové role. Také můžete přidat tolik rolí podle potřeb vaší organizace. Azure AD pošle hodnotu těchto rolí jako hodnotu deklarace v odpovědi SAML. Aby se vygenerovaly hodnoty GUID pro ID nových rolí, použijte webové nástroje jako [tyto](https://www.guidgenerator.com/) .
 
     i. Vraťte se do Průzkumníka graphu a změňte metodu z možnosti **získat** na **opravu**. Opravte objekt instančního objektu tak, aby měl požadované role, a to tak, že aktualizuje vlastnost **appRoles** , jako je ta uvedená v předchozím příkladu. Výběrem **Spustit dotaz** spusťte operaci patch. Zpráva o úspěchu potvrzuje vytvoření role.
 
@@ -158,7 +154,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
     | Název atributu | Hodnota atributu |
     | -------------- | ----------------|
-    | Název role  | User. assignedroles |
+    | Název role  | user.assignedroles |
 
     >[!NOTE]
     >Pokud je hodnota deklarace identity role null, služba Azure AD tuto hodnotu v tokenu nepošle a je to výchozí nastavení pro jednotlivé návrhy.
@@ -183,7 +179,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
 10. Chcete-li otestovat aplikaci v rámci jednotného přihlašování iniciované poskytovatelem identity, přihlaste se na [přístupový panel](https://myapps.microsoft.com) a vyberte dlaždici aplikace. V tokenu SAML byste měli vidět všechny přiřazené role pro uživatele s názvem deklarace identity, který jste si předali.
 
-## <a name="update-an-existing-role"></a>Aktualizovat existující roli
+## <a name="update-an-existing-role"></a>Aktualizuje existující roli.
 
 Chcete-li aktualizovat existující roli, proveďte následující kroky:
 
@@ -260,7 +256,7 @@ Chcete-li odstranit existující roli, proveďte následující kroky:
     d. Vyberte **Spustit dotaz**.
 
     > [!NOTE]
-    > Ujistěte se, že máte roli msiam_access a že ID odpovídá vygenerované roli.
+    > Ujistěte se, že máte roli msiam_access a ID odpovídá vygenerované roli.
 
 7. Po zakázání role odstraňte tento blok role z oddílu **appRoles** . Tuto metodu ponechte jako **opravu**a vyberte **Spustit dotaz**.
 

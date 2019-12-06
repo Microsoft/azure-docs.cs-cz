@@ -4,17 +4,17 @@ description: Tento článek poskytuje informace o spouštění Runbooků v poč�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9c7084954fe58351a6f9af40552714faa34685ad
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c8da5736869a39815d9abf33cf4a03353681b193
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887049"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849713"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění Runbooků na Hybrid Runbook Worker
 
@@ -39,7 +39,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 > [!NOTE]
 > Do rutiny **Start-AzureAutomationRunbook** ve verzi 0.9.1 Microsoft Azure PowerShell byl přidán parametr **RunOn** . [Nejnovější verzi](https://azure.microsoft.com/downloads/) si můžete stáhnout, pokud už máte nainstalovanou dřívější verzi. Tuto verzi musíte nainstalovat jenom na pracovní stanici, na které spouštíte Runbook z PowerShellu. Nemusíte ho instalovat na pracovní počítač, pokud nechcete spouštět Runbooky z tohoto počítače. "
 
-## <a name="runbook-permissions"></a>Oprávnění sady Runbook
+## <a name="runbook-permissions"></a>Oprávnění runbooků
 
 Runbooky běžící na Hybrid Runbook Worker nemůžou používat stejnou metodu, která se obvykle používá pro Runbooky ověřující prostředky Azure, protože přistupuje k prostředkům, které nejsou v Azure. Sada Runbook může buď poskytnout své vlastní ověřování místním prostředkům, nebo může nakonfigurovat ověřování pomocí [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). Můžete také zadat účet RunAs k poskytnutí kontextu uživatele pro všechny sady Runbook.
 
@@ -64,7 +64,7 @@ Ve výchozím nastavení používá Hybrid Runbook Worker k provádění sad Run
 
 Uživatelské jméno pro přihlašovací údaje musí být v jednom z následujících formátů:
 
-* jméno
+* domain\username
 * username@domain
 * uživatelské jméno (pro účty místní k místnímu počítači)
 

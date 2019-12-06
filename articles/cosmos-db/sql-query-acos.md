@@ -1,18 +1,18 @@
 ---
 title: ACOS v jazyce pro dotaz na Azure Cosmos DB
-description: Přečtěte si o ACOS funkcí SQL systému v Azure Cosmos DB.
+description: Přečtěte si, jak funkce systému SQL ACOS (arccosice) v Azure Cosmos DB vrátí úhel v radiánech, jehož kosinus je zadaný numerický výraz.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2c9d29fba6b5dc55a98bf90cfafe0940d7bf9674
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: fd5baa3ffefb7039c40706253e633661a51150f2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348742"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873518"
 ---
 # <a name="acos-azure-cosmos-db"></a>ACOS (Azure Cosmos DB)
  Vrací úhel v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus kosinus.  
@@ -34,7 +34,7 @@ ACOS(<numeric_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí `ACOS` z-1.  
+  Následující příklad vrátí `ACOS` hodnotu-1.  
   
 ```sql
 SELECT ACOS(-1) AS acos 

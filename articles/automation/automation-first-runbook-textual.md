@@ -5,17 +5,17 @@ keywords: pracovní postup v powershellu, příklady pracovního postupu v power
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4973a5215d93a1ce9d0a80f83264dd8c1fbe0888
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: dea13d084d80ce787cb8d6cf6146325d8c556b37
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887223"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850835"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Můj první runbook pracovního postupu PowerShellu
 
@@ -27,7 +27,7 @@ ms.locfileid: "73887223"
 
 V tomto kurzu se seznámíte s vytvořením [runbooku pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks) ve službě Azure Automation. Začnete s jednoduchým runbookm, který otestujete a publikujete, a zároveň vysvětlujete, jak sledovat stav úlohy Runbooku. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec můžete sadu Runbook zvýšit robustní přidáním parametrů Runbooku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 

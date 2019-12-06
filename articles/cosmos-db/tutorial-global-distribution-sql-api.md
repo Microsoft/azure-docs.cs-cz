@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: Azure Cosmos DB globální distribuční kurz pro rozhraní SQL API'
-description: 'Kurz: Naučte se, jak nastavit globální distribuci Azure Cosmos DB pomocí rozhraní SQL API.'
+description: 'Kurz: Naučte se, jak nastavit globální distribuci Azure Cosmos DB pomocí rozhraní SQL API s využitím .NET, Java, Pythonu a různých dalších sad SDK.'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7c7ea4ca8fc28ef47e60d5010c804223c3cfab3b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 541fcdd966ec1e0443fa6211d894bab3ed965f93
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173841"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870322"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
 

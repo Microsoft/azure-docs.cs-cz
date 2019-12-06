@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: ccd0c88c95ae9a752ef8ea2387bbde4f8559bc68
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 280561126186e4c70399b3a1ddd177ff4eb54400
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531736"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850036"
 ---
 # <a name="standard-quota-per-vm-series-vcpu-limit-increase"></a>Zvýšení limitu úrovně Standard: na vCPU řady virtuálních počítačů
 
-Správce prostředků podporuje dva typy kvót vCPU pro virtuální počítače. **Virtuální počítače s průběžnými platbami a rezervované instance virtuálních počítačů** používají standardní kvótu. **Virtuální počítače s nízkou prioritou** používají kvótu s nízkou prioritou. VCPU kvóta úrovně Standard pro průběžné platby a rezervované instance virtuálních počítačů se vynutily na dvou úrovních pro každé předplatné v každé oblasti.
+Správce prostředků podporuje dva typy kvót vCPU pro virtuální počítače. **Virtuální počítače s průběžnými platbami a rezervované instance virtuálních počítačů** používají standardní kvótu. **Virtuální počítače** používají kvótu na místě. VCPU kvóta úrovně Standard pro průběžné platby a rezervované instance virtuálních počítačů se vynutily na dvou úrovních pro každé předplatné v každé oblasti.
 
 První úroveň je **celkový regionální limit vCPU** (v rámci všech řad virtuálních počítačů) a druhá úroveň je **limit vCPU na řadu virtuálních počítačů** (například Dv3-Series vCPU). Kdykoli je nasazen nový virtuální počítač, součet nového a stávajícího Vcpuho využití pro tuto řadu virtuálních počítačů nesmí překročit kvótu vCPU schválenou pro danou řadu virtuálních počítačů. Celkový počet nových a existujících vCPUů nasazených ve všech řadách virtuálních počítačů by neměl přesáhnout celkovou kvótu vCPU schválenou pro předplatné. Pokud dojde k překročení některé z těchto kvót, nasazení virtuálního počítače se nepovolí.
 Můžete požádat o zvýšení limitu kvóty vCPU pro řady virtuálních počítačů z Azure Portal. Zvýšení kvóty řady virtuálních počítačů automaticky zvýší celkový rozsah regionálního Vcpuu o stejné množství. 
@@ -25,7 +25,7 @@ Přečtěte si další informace o standardních kvótách vCPU na stránce [kv�
 
 Přečtěte si další informace o tom, jak prodloužit regionální limit vCPU [pro kvótu](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests)Standard. 
 
-Další informace o **zvýšení limitů virtuálních počítačů s nízkou prioritou vCPU** [najdete tady](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
+Další informace o **zvýšení limitů vCPU virtuálních počítačů** [najdete tady](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
 
 V okně pro **nápovědu a podporu** **nebo na portálu** můžete požádat o zvýšení **standardních omezení vCPU kvót na řadu virtuálních počítačů** .
 
@@ -37,7 +37,7 @@ Můžete také požádat o kvótu pro více oblastí prostřednictvím jediného
 
 1. V https://portal.azure.com vyberte možnost **help + podpora**.
 
-   ![Pomoc a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
+   ![Nápověda a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
  
 2.  Vyberte **Nová žádost o podporu**. 
 
@@ -63,7 +63,7 @@ Můžete také požádat o kvótu pro více oblastí prostřednictvím jediného
 
    ![Podrobnosti o kvótě DM](./media/resource-manager-core-quotas-request/1-7.png)
 
-8. Pro vybrané umístění vyberte možnost **typ** hodnota jako **standardní**. V rámci podpory vícenásobného výběru v poli **typ** můžete požádat o typy kvót standardní i nízkou prioritu z jediného případu podpory. Přečtěte si další informace o **zvýšení limitu kvóty s nízkou prioritou** na **stránce < >** .
+8. Pro vybrané umístění vyberte možnost **typ** hodnota jako **standardní**. Můžete požadovat typy kvót Standard a quote z jediného případu podpory prostřednictvím podpory více výběrů v poli **typ** . Další informace o **zvýšení limitů kvóty** na tuto [stránku](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)
 
    ![Rodina SKU](./media/resource-manager-core-quotas-request/1-8.png)
 
@@ -111,7 +111,7 @@ Můžete také **požádat o kvótu pro více oblastí** prostřednictvím jedin
 
    ![Okno problém kvóty](./media/resource-manager-core-quotas-request/1-1-6.png)
 
-7. Pro vybrané umístění vyberte možnost **typ** hodnota jako **standardní**. V rámci podpory vícenásobného výběru v poli **typ** můžete požádat o typy kvót standardní i nízkou prioritu z jediného případu podpory. Přečtěte si další informace o **zvýšení limitů vCPU s nízkou prioritou** na této [stránce](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
+7. Pro vybrané umístění vyberte možnost **typ** hodnota jako **standardní**. V rámci podpory vícenásobného výběru v poli **typ** můžete požádat o typy kvót standardní i nízkou prioritu z jediného případu podpory. Přečtěte si další informace o **zvýšení limitů vCPU** na této [stránce](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
 
    ![Vybraná série SKU](./media/resource-manager-core-quotas-request/1-1-7.png)
    

@@ -7,18 +7,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 55198e0c38c2922d69b68d9ce62e16ea25e9cc44
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 4999000e2084922b43b8085034f545d4b5c644a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173726"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849084"
 ---
 # <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>Vizualizace dat pomocí dotazu Azure Průzkumník dat Kusto naimportovaného do aplikace Microsoft Excel
 
 Azure Průzkumník dat poskytuje dvě možnosti pro připojení k datům v Excelu: použijte nativní konektor nebo naimportujte dotaz z Azure Průzkumník dat. V tomto článku se dozvíte, jak naimportovat dotaz z Azure Průzkumník dat do Excelu pro vizualizaci dat. Přidejte dotaz Kusto jako zdroj dat Excelu, abyste mohli provádět další výpočty nebo vizualizace dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * E-mailový účet organizace, který je členem Azure Active Directory, abyste se mohli připojit ke [clusteru azure Průzkumník dat help](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
@@ -68,3 +68,7 @@ Azure Průzkumník dat poskytuje dvě možnosti pro připojení k datům v Excel
 1. Data jsou teď v Excelu. Kliknutím na tlačítko **aktualizovat** aktualizujte dotaz.
 
     ![Zobrazit data v Excelu](media/excel-blank-query/data-in-excel.png)
+
+## <a name="next-steps"></a>Další kroky
+
+[Vizualizace dat pomocí konektoru Azure Průzkumník dat pro Excel](excel-connector.md)

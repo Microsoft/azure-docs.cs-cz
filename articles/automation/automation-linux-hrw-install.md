@@ -4,17 +4,17 @@ description: Tento článek poskytuje informace o instalaci Hybrid Runbook Worke
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01dcb30fca2819bc4cf85ea624de5735cc84801b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129850"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850818"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -41,7 +41,7 @@ Chcete-li nainstalovat a nakonfigurovat Hybrid Runbook Worker v počítači se s
 Minimální požadavky pro Hybrid Runbook Worker pro Linux jsou:
 
 * Dvě jádra
-* 4 GB paměti RAM
+* 4 GB RAM paměti
 * Port 443 (odchozí)
 
 ### <a name="package-requirements"></a>Požadavky na balíčky
@@ -49,10 +49,10 @@ Minimální požadavky pro Hybrid Runbook Worker pro Linux jsou:
 | **Požadovaný balíček** | **Popis** | **Minimální verze**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |Knihovna GNU C| 2.5-12 |
-|OpenSSL| Knihovny OpenSSL | 1,0 (podpora TLS 1,1 a TLS 1,2|
+|Openssl| Knihovny OpenSSL | 1,0 (podpora TLS 1,1 a TLS 1,2|
 |Curl | Webový klient s kudrlinkou | 7.15.5|
 |Python – ctypes | Python 2. x je povinný. |
-|MODULU | Moduly připojitelné k ověřování|
+|PAM | Pluggable Authentication Modules|
 | **Volitelný balíček** | **Popis** | **Minimální verze**|
 | PowerShell Core | Pokud chcete spustit PowerShellové Runbooky, je potřeba nainstalovat PowerShell, viz [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) , kde se dozvíte, jak ho nainstalovat.  | 6.0.0 |
 

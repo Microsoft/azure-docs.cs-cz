@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88f6f344c77109ee01cd6b0332138518f70270d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 903551bfcaae3ffa7ccee72b1a5d781413864b32
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793780"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868452"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co je zřizování cloudu Azure AD Connect?
 Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, aby splnil a splnil vaše hybridní cíle identity pro synchronizaci uživatelů, skupin a kontaktů do Azure AD.  Dá se použít společně Azure AD Connect synchronizaci a nabízí následující výhody:
@@ -59,8 +59,9 @@ Následující tabulka poskytuje srovnání mezi Azure AD Connect a Azure AD Con
 | Povolení odebrání atributů z toku ze služby AD do služby Azure AD |● |● |
 | Povolení upřesňujících úprav pro toky atributů |● | |
 | Podpora zpětného zápisu (hesla, zařízení, skupiny) |● | |
+| Podpora Azure AD Domain Services|● | |
 
 ## <a name="next-steps"></a>Další kroky 
 
 - [Co je zřizování?](what-is-provisioning.md)
-- [Co je zřizování cloudu Azure AD Connect?](what-is-cloud-provisioning.md)
+- [Instalace zřizování cloudu](how-to-install.md)

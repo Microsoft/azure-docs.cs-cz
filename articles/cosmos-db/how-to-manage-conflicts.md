@@ -1,17 +1,17 @@
 ---
 title: Informace o správě konfliktů mezi oblastmi ve službě Azure Cosmos DB
-description: Informace o správě konfliktů ve službě Azure Cosmos DB
+description: Přečtěte si, jak spravovat konflikty v Azure Cosmos DB vytvořením zásad pro službu WINS pro poslední zápis nebo vlastní řešení konfliktů.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4c62fcc81eb3b045d3b4233e1bb3770ecb9865b3
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9aab8f9bd202728f8882377f8249f6ebb99f3362
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388089"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873688"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktů v Azure Cosmos DB
 
@@ -19,7 +19,7 @@ V případě zápisů ve více oblastech může dojít ke konfliktům, pokud ví
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvoření zásad řešení konfliktů pro poslední zápis a službu WINS
 
-V těchto ukázkách se dozvíte, jak nastavit kontejner pomocí zásad řešení konfliktů pro poslední zápis a službu WINS. Výchozí cesta pro poslední zapisovač – WINS je pole časového razítka nebo vlastnost `_ts`. Pro rozhraní SQL API to může být také nastaveno na uživatelsky definovanou cestu s číselným typem. V konfliktu je nejvyšší hodnota služba WINS. Pokud cesta není nastavená nebo je neplatná, použije se výchozí hodnota `_ts`. Konflikty vyřešené s touto zásadou se v informačním kanálu konfliktu nezobrazují. Tuto zásadu můžou používat všechna rozhraní API.
+V těchto ukázkách se dozvíte, jak nastavit kontejner pomocí zásad řešení konfliktů pro poslední zápis a službu WINS. Výchozí cesta pro poslední zápis – služba WINS je pole časového razítka nebo vlastnost `_ts`. Pro rozhraní SQL API to může být také nastaveno na uživatelsky definovanou cestu s číselným typem. V konfliktu je nejvyšší hodnota služba WINS. Pokud cesta není nastavená nebo je neplatná, použije se výchozí hodnota `_ts`. Konflikty vyřešené s touto zásadou se v informačním kanálu konfliktu nezobrazují. Tuto zásadu můžou používat všechna rozhraní API.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -115,7 +115,7 @@ Uložené procedury řešení Custom konfliktů by se měly implementovat pomoc�
 > [!IMPORTANT]
 > Stejně jako u jakékoli uložené procedury má vlastní procedura řešení konfliktů přístup k jakýmkoli datům se stejným klíčem oddílu a může provést jakoukoli operaci vložení, aktualizace nebo odstranění pro vyřešení konfliktů.
 
-Tato ukázková uložená procedura vyřeší konflikty výběrem nejnižší hodnoty z cesty `/myCustomId`.
+Tato ukázková uložená procedura vyřeší konflikty výběrem nejnižší hodnoty z `/myCustomId` cesta.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
@@ -222,7 +222,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Po vytvoření kontejneru je nutné vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -235,7 +235,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Po vytvoření kontejneru je nutné vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -254,7 +254,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Po vytvoření kontejneru je nutné vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -270,7 +270,7 @@ udp_collection = self.try_create_document_collection(
     create_client, database, udp_collection)
 ```
 
-Po vytvoření kontejneru je nutné vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Vytvoření vlastní zásady řešení konfliktů
 

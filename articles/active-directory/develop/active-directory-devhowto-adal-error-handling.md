@@ -2,25 +2,22 @@
 title: Při zpracování osvědčených postupů pro klienty služby Azure AD Authentication Library (ADAL) došlo k chybě.
 description: Poskytuje pokyny pro zpracování chyb a osvědčené postupy pro klientské aplikace ADAL.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 04ffeb85dc424396593d13f2cdc2681e26bd2db3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374189"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845191"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Došlo k chybě při zpracování osvědčených postupů pro klienty knihovny Azure Active Directory Authentication Library (ADAL).
 
@@ -52,7 +49,7 @@ K dispozici je sada chyb generovaných operačním systémem, které mohou vyža
 
 V podstatě existují dva případy AcquireTokenSilent chyb:
 
-| Tom | Popis |
+| Případ | Popis |
 |------|-------------|
 | **Případ 1**: Chyba je možné přeložit pomocí interaktivního přihlašování. | V případě chyb způsobených chybějícími platnými tokeny je nutný interaktivní požadavek. Hledání v mezipaměti a neplatný/vypršení obnovovací token vyžaduje, aby AcquireToken volání vyřešilo.<br><br>V těchto případech musí být koncový uživatel vyzván, aby se přihlásil. Aplikace se může rozhodnout provést interaktivní požadavek okamžitě po interakci koncového uživatele (například při stisknutí tlačítka pro přihlášení) nebo později. Volba závisí na požadovaném chování aplikace.<br><br>V tomto konkrétním případě se podívejte na kód v následující části a chyby, které ho diagnostikují.|
 | **Případ 2**: Chyba nejde přeložit pomocí interaktivního přihlášení. | V případě sítě a přechodných/dočasných chyb nebo jiných selhání nevyřeší interaktivní žádost AcquireToken problém. Nepotřebné interaktivní výzvy pro přihlášení mohou také frustrovat koncové uživatele. ADAL se automaticky pokusí o jeden pokus o většinu chyb při selhání AcquireTokenSilent.<br><br>Klientská aplikace se také může pokusit o opakování později v pozdějším okamžiku, ale kdy a jak závisí na chování aplikace a na požadovaném prostředí pro koncové uživatele. Aplikace může například provést AcquireTokenSilent opakování po několika minutách nebo v reakci na akci koncového uživatele. Okamžité opakování bude mít za následek omezení aplikace a nemělo by se proto zkoušet.<br><br>Následné opakování se stejnou chybou neznamená, že klient provede interaktivní požadavek pomocí AcquireToken, protože nevyřešil chybu.<br><br>V tomto konkrétním případě se podívejte na kód v následující části a chyby, které ho diagnostikují. |
@@ -577,6 +574,7 @@ window.Logging = {
     }
 };
 ```
+
 ## <a name="related-content"></a>Související obsah
 
 * [Příručka pro vývojáře Azure AD][AAD-Dev-Guide]

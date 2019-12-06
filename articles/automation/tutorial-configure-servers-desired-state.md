@@ -4,17 +4,17 @@ description: Kurz – Správa konfigurací serveru s konfigurací stavu Azure Au
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 72e5018dc1212e57dc190c05cc54158d37ca7fe1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0339796f028a0cc0b19533be06127544db396f92
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231500"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850087"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů do požadovaného stavu a Správa posunu
 
@@ -27,7 +27,7 @@ Konfigurace stavu Azure Automation umožňuje zadat konfigurace pro vaše server
 > - Přiřazení konfigurace uzlu spravovanému uzlu
 > - Zkontroluje stav dodržování předpisů spravovaného uzlu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -170,7 +170,7 @@ Pokud se rozhodnete odebrat uzel ze služby, můžete tak učinit buď pomocí A
 > To neplatí pro konfiguraci, která je aktuálně použita pro uzel.
 > Pokud chcete odebrat aktuální konfiguraci, použijte [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) nebo odstraňte místní konfigurační soubor (Toto je jediná možnost pro uzly Linux).
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 V Azure Automation klikněte v obsahu na **Konfigurace stavu (DSC)** .
 Dalším kliknutím na **uzly** zobrazíte seznam uzlů, které jsou zaregistrované ve službě.

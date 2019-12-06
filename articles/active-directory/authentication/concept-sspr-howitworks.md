@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88669b5453069d9f6bb64e803adc65baf8afc6b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5b19c80378aa40a7f791a3eb61130b013217ddee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420688"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848574"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla služby Azure AD
 
@@ -52,7 +52,7 @@ Další informace o logice za stránku pro resetování hesla najdete v následu
      * Pokud není zpětný zápis nasazený a heslo uživatele je spravováno místně, bude uživatel vyzván, aby se obrátil na správce, aby resetoval heslo.
 4. Je-li zjištěno, že uživatel může úspěšně obnovit heslo, bude uživatel proveden procesem obnovení.
 
-## <a name="authentication-methods"></a>Metody ověřování
+## <a name="authentication-methods"></a>Metody ověření
 
 Pokud je povolená možnost SSPR, musíte pro metody ověřování vybrat alespoň jednu z následujících možností. Někdy uslyšíte tyto možnosti označované jako "brány". Důrazně doporučujeme **vybrat dvě nebo více metod ověřování** , aby uživatelé měli větší flexibilitu v případě, že k nim nebudou mít přístup, když ji potřebují. Další podrobnosti o níže uvedených metodách najdete v článku [co jsou metody ověřování?](concept-authentication-methods.md).
 
@@ -88,7 +88,7 @@ Při použití mobilní aplikace, jako je například aplikace Microsoft Authent
 * Když správci vyžadují, aby se k resetování hesla použila jedna metoda, je jako jediná dostupná možnost ověřovací kód.
 * Když správci použijí k resetování hesla dvě metody, uživatelé můžou použít **buď** oznámení, **nebo** ověřovací kód kromě jakýchkoli dalších povolených metod.
 
-| Počet metod požadovaných k resetování | Hodinu | Dva |
+| Počet metod nutných pro resetování | Jeden | Dva |
 | :---: | :---: | :---: |
 | Dostupné funkce mobilní aplikace | Kód | Kód nebo oznámení |
 
@@ -109,8 +109,8 @@ Pokud začnete se zásadou, která má jenom jednu požadovanou metodu ověřov�
 
 | Počet registrovaných metod | Vyžaduje se počet metod. | Výsledek |
 | :---: | :---: | :---: |
-| 1 nebo více | 1 | **Může** resetovat nebo odemknout |
-| 1 | 2 | **Nejde** resetovat ani odemknout |
+| 1 nebo více | 1\. místo | **Může** resetovat nebo odemknout |
+| 1\. místo | 2 | **Nejde** resetovat ani odemknout |
 | 2 nebo více | 2 | **Může** resetovat nebo odemknout |
 
 Pokud změníte typy metod ověřování, které může uživatel použít, může nechtěně zabránit uživatelům, aby mohli používat SSPR, pokud nemají k dispozici minimální množství dat.
@@ -127,7 +127,7 @@ Příklad:
 Povolení této možnosti vyžaduje, aby uživatel dokončil registraci resetování hesla, pokud se přihlásí k aplikacím pomocí Azure AD. Tento pracovní postup obsahuje následující aplikace:
 
 * Office 365
-* portál Azure
+* Portál Azure
 * Přístupový panel
 * Federované aplikace
 * Vlastní aplikace s využitím Azure AD
@@ -211,14 +211,14 @@ V následujících článcích najdete další informace o resetování hesla pr
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
-* [Jaká data používá SSPR a jaká data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
+* [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
 * [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)
-* [Mám otázku, která nebyla zodpovězena jinde](active-directory-passwords-faq.md)
+* [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/concept-sspr-howitworks/manage-authentication-methods-for-password-reset.png "Dostupné metody ověřování Azure AD a požadované množství"
 [Writeback]: ./media/concept-sspr-howitworks/troubleshoot-on-premises-integration-writeback.png "Konfigurace opětovného zápisu hesla na místní integraci a informace o řešení potíží"

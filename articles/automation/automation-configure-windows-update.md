@@ -4,17 +4,17 @@ description: Tento článek popisuje nastavení web Windows Update, která konfi
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 813d34f9c07e6c2909c483f040d4f3bf09b3ad24
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690842"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850410"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Konfigurace nastavení web Windows Update pro Update Management
 
@@ -43,7 +43,7 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ## <a name="configure-reboot-settings"></a>Konfigurace nastavení restartování
 
-Klíče registru uvedené v [části Konfigurace automatických aktualizací úpravou registru](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) a [klíčů registru, které slouží ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) , můžou způsobit, že se počítače restartují, i když v nastaveních **nasazení aktualizace** neurčíte **nikdy restartovat** . . Tyto klíče registru byste měli nakonfigurovat tak, aby nejlépe vyhovovaly vašemu prostředí.
+Klíče registru uvedené v [části Konfigurace automatických aktualizací úpravou registru](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) a [klíčů registru, které slouží ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) , můžou způsobit restartování počítačů i v případě, že v nastavení **nasazení aktualizace** neurčíte **nikdy restartování** . Tyto klíče registru byste měli nakonfigurovat tak, aby nejlépe vyhovovaly vašemu prostředí.
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Povolit aktualizace pro ostatní produkty Microsoftu
 

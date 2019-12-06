@@ -1,17 +1,17 @@
 ---
 title: Poddotazy SQL pro Azure Cosmos DB
-description: Přečtěte si o poddotazech SQL a jejich běžných případech použití v Azure Cosmos DB
+description: Přečtěte si o poddotazech SQL a jejich běžných případech použití a různých typech poddotazů v Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003490"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870560"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Příklady poddotazů SQL pro Azure Cosmos DB
 
@@ -23,16 +23,16 @@ Tento článek popisuje poddotazy SQL a jejich běžné případy použití v Az
 
 Existují dva hlavní typy poddotazů:
 
-* **Korelační**: Poddotaz, který odkazuje na hodnoty z vnějšího dotazu. Poddotaz se vyhodnocuje jednou pro každý řádek, který zpracovává vnější dotaz.
-* **Bez korelace**: Poddotaz, který je nezávislý na vnějším dotazu. Dá se spustit samostatně, aniž by se musel spoléhat na vnější dotaz.
+* **Korelace**: poddotaz, který odkazuje na hodnoty z vnějšího dotazu. Poddotaz se vyhodnocuje jednou pro každý řádek, který zpracovává vnější dotaz.
+* **Bez korelace**: poddotaz, který je nezávislý na vnějším dotazu. Dá se spustit samostatně, aniž by se musel spoléhat na vnější dotaz.
 
 > [!NOTE]
 > Azure Cosmos DB podporuje pouze korelační poddotazy.
 
 Poddotazy lze dále klasifikovat na základě počtu řádků a sloupců, které vrátí. Existují tři typy:
-* **Tabulka**: Vrátí více řádků a více sloupců.
-* **Více hodnot**: Vrátí více řádků a jeden sloupec.
-* **Skalární**: Vrátí jeden řádek a jeden sloupec.
+* **Table**: vrátí více řádků a více sloupců.
+* **Multi-Value**: vrátí více řádků a jeden sloupec.
+* **Skalární**: vrátí jeden řádek a jeden sloupec.
 
 Dotazy SQL v Azure Cosmos DB vždycky vracejí jeden sloupec (buď jednoduchou hodnotu, nebo složitý dokument). Proto se v Azure Cosmos DB použijí pouze vícehodnotové a skalární poddotazy. Poddotaz s více hodnotami lze použít pouze v klauzuli FROM jako relační výraz. Skalární poddotaz lze použít jako skalární výraz v klauzuli SELECT nebo WHERE nebo jako relační výraz v klauzuli FROM.
 
@@ -47,7 +47,7 @@ Poddotazy s více hodnotami vrací sadu dokumentů a jsou vždy použity v rámc
 
 Podhodnoty poddotazů mohou optimalizovat výrazy JOIN vložením predikátů za každým výrazem Select-many, nikoli po všech křížových spojeních v klauzuli WHERE.
 
-Vezměte v úvahu následující dotaz:
+Zamyslete se nad následujícím dotazem:
 
 ```sql
 SELECT Count(1) AS Count
@@ -79,7 +79,7 @@ Předpokládejme, že filtr odpovídá pouze jedné položce v poli značek a ex
 
 Poddotazy můžou přispět k optimalizaci dotazů s nákladnými výrazy, jako jsou uživatelsky definované funkce (UDF), komplexní řetězce nebo aritmetické výrazy. Můžete použít poddotaz spolu s výrazem JOIN k vyhodnocení výrazu, ale na něj bude odkazovat mnohokrát.
 
-Následující dotaz používá formát UDF `GetMaxNutritionValue` dvakrát:
+Následující dotaz spustí `GetMaxNutritionValue` se systémem souborů UDF dvakrát:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -126,22 +126,22 @@ Zvažte například tuto sadu referenčních dat:
 
 | **Jednotce** | **Název**            | **Koeficient** | **Základní jednotka** |
 | -------- | ------------------- | -------------- | ------------- |
-| plyn       | Nanogram            | 1,00 E-09       | Gram          |
-| µg       | Microgram           | 1,00 E-06       | Gram          |
-| mg/Nm3       | Mg           | 1,00 E-03       | Gram          |
-| G        | Gram                | 1,00 E + 00       | Gram          |
-| kg       | Kilogram            | 1,00 E + 03       | Gram          |
-| mg/Nm3       | Megagram            | 1,00 E + 06       | Gram          |
-| GG       | Gigagram            | 1,00 E + 09       | Gram          |
-| nJ       | Nanojoule           | 1,00 E-09       | Joule         |
-| µJ       | Microjoule          | 1,00 E-06       | Joule         |
-| mJ       | Millijoule          | 1,00 E-03       | Joule         |
-| J        | Joule               | 1,00 E + 00       | Joule         |
-| kJ       | Kilojoule           | 1,00 E + 03       | Joule         |
-| MJ       | Megajoule           | 1,00 E + 06       | Joule         |
-| GJ       | Gigajoule           | 1,00 E + 09       | Joule         |
-| klientských      | Calorie             | 1,00 E + 00       | calorie       |
-| kcal     | Calorie             | 1,00 E + 03       | calorie       |
+| plyn       | Nanogram            | 1,00 e-09       | Gram          |
+| µg       | Microgram           | 1,00 e-06       | Gram          |
+| mg/Nm3       | Mg           | 1,00 e-03       | Gram          |
+| G        | Gram                | 1,00 e + 00       | Gram          |
+| kg       | Kilogram            | 1,00 e + 03       | Gram          |
+| Mg/Nm3       | Megagram            | 1,00 e + 06       | Gram          |
+| GG       | Gigagram            | 1,00 e + 09       | Gram          |
+| nJ       | Nanojoule           | 1,00 e-09       | Joule         |
+| µJ       | Microjoule          | 1,00 e-06       | Joule         |
+| mJ       | Millijoule          | 1,00 e-03       | Joule         |
+| J        | Joule               | 1,00 e + 00       | Joule         |
+| kJ       | Kilojoule           | 1,00 e + 03       | Joule         |
+| MJ       | Megajoule           | 1,00 e + 06       | Joule         |
+| GJ       | Gigajoule           | 1,00 e + 09       | Joule         |
+| klientských      | Calorie             | 1,00 e + 00       | calorie       |
+| kcal     | Calorie             | 1,00 e + 03       | calorie       |
 | IU       | Mezinárodní jednotky |                |               |
 
 
@@ -366,9 +366,9 @@ Pokud je klíčové slovo VALUE v předchozím poddotazu vynecháno, dotaz se vy
 SELECT EXISTS (SELECT undefined) 
 ```
 
-Poddotaz vloží seznam hodnot do vybraného seznamu v objektu. Pokud vybraný seznam neobsahuje žádné hodnoty, bude poddotaz vracet jedinou hodnotu{}' '. Tato hodnota je definována, takže EXISTS je vyhodnocena jako true.
+Poddotaz vloží seznam hodnot do vybraného seznamu v objektu. Pokud vybraný seznam neobsahuje žádné hodnoty, bude poddotaz vracet jedinou hodnotu "{}". Tato hodnota je definována, takže EXISTS je vyhodnocena jako true.
 
-### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Příklad: Přepisování ARRAY_CONTAINS a JOIN jako existující
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Příklad: přepis ARRAY_CONTAINS a JOIN jako existující
 
 Běžným případem použití ARRAY_CONTAINS je filtrování dokumentu podle existence položky v poli. V tomto případě kontrolujeme, zda pole značek obsahuje položku s názvem "oranžová".
 
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-ARRAY_CONTAINS také může kontrolovat, zda je hodnota rovna jakémukoli prvku v poli. Pokud k vlastnostem pole potřebujete komplexnější filtry, použijte příkaz JOIN.
+Kromě toho ARRAY_CONTAINS možné zaškrtnout pouze v případě, že je hodnota rovna libovolnému prvku v poli. Pokud k vlastnostem pole potřebujete komplexnější filtry, použijte příkaz JOIN.
 
-Vezměte v úvahu následující dotaz, který filtruje na základě jednotek `nutritionValue` a vlastností v poli: 
+Vezměte v úvahu následující dotaz, který filtruje na základě jednotek a vlastností `nutritionValue` v poli: 
 
 ```sql
 SELECT VALUE c.description
@@ -517,7 +517,7 @@ Výstup dotazu:
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Data modelu dokumentu](modeling-data.md)

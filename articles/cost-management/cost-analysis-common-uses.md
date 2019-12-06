@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4798b6908069af229c2bed4a2e5f38fa60e0d554
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219497"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849101"
 ---
 # <a name="common-cost-analysis-uses"></a>Běžné analýzy nákladů používá
 
@@ -65,6 +65,8 @@ Každodenní a měsíční náklady vám pomůžou lépe pochopit, jestli máte 
 
 Mnoho uživatelů Azure používá značky pro své prostředky, jako je například nákladové středisko nebo vývojové prostředí (výroba a testování), aby lépe kategorizoval poplatky. Značky se zobrazí jako dimenze při analýze nákladů. Dimenzi můžete použít k získání přehledu o vlastních kategorizacích značek.
 
+Podpora značek se vztahuje na použití hlášené *po* použití značky u prostředku. Značky se nepoužijí zpětně pro kumulativní náklady.
+
 1. V Azure Portal přejděte k analýze nákladů pro váš obor. Například: **cost management + > fakturace** **cost management** > **analýzy nákladů**.
 1. Pro značku vyberte **Group by** .
 
@@ -112,5 +114,5 @@ Zobrazení čistých kumulovaných poplatků v průběhu času pro pochopení ce
 ![Akumulované náklady registrace](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud jste ještě nedokončili první rychlý Start pro Cost Management, přečtěte si ho v části [zahájení analýzy nákladů](quick-acm-cost-analysis.md).
+- Pokud jste ještě nedokončili první tohoto rychlého startu Cost Management, přečtěte si ho na [začít analýza nákladů](quick-acm-cost-analysis.md).
 - Přečtěte si [dokumentaci cost management](index.yml).

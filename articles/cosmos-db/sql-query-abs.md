@@ -1,18 +1,18 @@
 ---
 title: ABS v Azure Cosmos DB dotazovací jazyk
-description: Přečtěte si o funkci SQL System Function ABS v Azure Cosmos DB.
+description: Přečtěte si, jak absolutní (ABS) systémová funkce SQL v Azure Cosmos DB Vrátí kladnou hodnotu zadaného číselného výrazu.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 480c5ffcfaccfac5061e53612a2ee57235cfa626
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 70648dcf28d760c3a81c0cb426cd9b2d3ce96fff
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348754"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871852"
 ---
 # <a name="abs-azure-cosmos-db"></a>ABS (Azure Cosmos DB)
  Vrátí absolutní hodnotu (pozitivní) zadaný číselný výraz.  

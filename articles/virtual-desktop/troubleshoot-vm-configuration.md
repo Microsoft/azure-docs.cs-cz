@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791157"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869523"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
@@ -81,10 +81,10 @@ Doporučený způsob, jak zřídit virtuální počítače, je pomocí Azure Res
 Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány a zda chcete zkontrolovat chybové zprávy.
 
 1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí kontroly v **Ovládacích panelech** ** >  > ** **programy a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
-2. Otevřete **Průzkumníka souborů** a přejděte na **C:\Windows\Temp\scriptlogs.log**. Pokud soubor chybí, znamená to, že v zadaném kontextu zabezpečení nebylo možné spustit prostředí PowerShell DSC, které nainstalovalo tyto dvě součásti.
-3. Pokud je soubor **C:\Windows\Temp\scriptlogs.log** k dispozici, otevřete jej a vyhledejte chybové zprávy.
+2. Otevřete **Průzkumníka souborů** a přejděte na **C:\Windows\Temp\ScriptLog.log**. Pokud soubor chybí, znamená to, že v zadaném kontextu zabezpečení nebylo možné spustit prostředí PowerShell DSC, které nainstalovalo tyto dvě součásti.
+3. Pokud je soubor **C:\Windows\Temp\ScriptLog.log** k dispozici, otevřete jej a vyhledejte chybové zprávy.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Chyba: chybí agent virtuálního počítače Windows a spouštěcí zavaděč agenta virtuálního počítače s Windows. Chybí také C:\Windows\Temp\scriptlogs.log
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Chyba: chybí agent virtuálního počítače Windows a spouštěcí zavaděč agenta virtuálního počítače s Windows. Chybí také C:\Windows\Temp\ScriptLog.log
 
 **Příčina 1:** Přihlašovací údaje zadané během vstupu pro šablonu Azure Resource Manager byly nesprávné nebo mají dostatečná oprávnění.
 
@@ -98,7 +98,7 @@ Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány 
 - Ověřte, že je název tenanta přesný a že tenant existuje ve virtuálním počítači Windows.
 - Potvrďte, že má účet alespoň oprávnění Přispěvatel VP.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Chyba: ověření se nezdařilo, chyba v C:\Windows\Temp\scriptlogs.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Chyba: ověření se nezdařilo, chyba v C:\Windows\Temp\ScriptLog.log
 
 **Příčina:** Prostředí PowerShell DSC se podařilo spustit, ale nebylo možné se připojit k virtuálnímu počítači s Windows.
 

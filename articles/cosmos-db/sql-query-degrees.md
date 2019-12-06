@@ -1,18 +1,18 @@
 ---
 title: STUPNĚ ve Azure Cosmos DB dotazovacího jazyka
-description: Přečtěte si o STUPNích funkcí systému SQL v Azure Cosmos DB.
+description: Přečtěte si o funkci DEGREES SQL System v Azure Cosmos DB, která vrátí odpovídající úhel ve stupních pro úhel zadaný v radiánech.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d8c2109c2c11f137b1966741a95d1d0c02895016
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5f432f5ef57c8eccc0cf629f00d2231364785b9a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351199"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871325"
 ---
 # <a name="degrees-azure-cosmos-db"></a>STUPNĚ (Azure Cosmos DB)
  Vrátí odpovídající úhel ve stupních, kterým je úhel zadaný v radiánech.  

@@ -4,17 +4,17 @@ description: Tento článek vám objasní, jak pomocí tohoto řešení nakonfig
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 92a93982cdd042a92b006cab7052ad4a6fee6fff
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 345adeee37f5f9bc4c794eb9bb624e7797197f22
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478201"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850206"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integrace System Center Configuration Manager s Update managementem
 
@@ -22,11 +22,11 @@ Zákazníci, kteří investovali do System Center Configuration Manageru pro spr
 
 Sestavy a aktualizovat spravované servery Windows tak, že vytváří a předem připravíte nasazení aktualizací softwaru v nástroji Configuration Manager a získat podrobný stav dokončených nasazení aktualizaci pomocí [řešení Update Management](automation-update-management.md). Pokud používáte nástroj Configuration Manager pro generování sestav dodržování předpisů aktualizací, ale ne pro správu nasazení aktualizací Windows serverech, můžete pokračovat, vytváření sestav nástroje Configuration Manager, zatímco aktualizace zabezpečení se spravují pomocí řešení Update Management.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Musíte mít [řešení Update Management](automation-update-management.md) přidá do vašeho účtu Automation.
 * Servery Windows aktuálně spravované pomocí prostředí System Center Configuration Manageru také musí do pracovního prostoru služby Log Analytics nahlásit, že mají povolené řešení Update Management.
-* Tato funkce je povolená v nástroji System Center Configuration Manager aktuální verze 1606 a vyšší. Integrace nástroje Configuration Manager lokality centrální správy nebo samostatná primární lokalita s protokoly Azure monitoru a importovat kolekce, najdete v tématu [propojení Configuration Manageru do Azure monitoru protokoly](../azure-monitor/platform/collect-sccm.md).  
+* Tato funkce je povolená v nástroji System Center Configuration Manager aktuální verze 1606 a vyšší. Pokud chcete integrovat Configuration Manager lokalitu centrální správy nebo samostatnou primární lokalitu s protokoly Azure Monitor a importovanými kolekcemi, přečtěte si téma [připojení Configuration Manager k Azure monitor protokolů](../azure-monitor/platform/collect-sccm.md).  
 * Pokud agenti Windows nedostávají aktualizace zabezpečení z Configuration Manageru, musí mít nakonfigurovanou komunikaci se serverem služeb Windows Server Update Services (WSUS) nebo musí mít přístup ke službě Microsoft Update.   
 
 To, jak spravujete klienty hostované v Azure IaaS s využitím stávajícího prostředí Configuration Manageru, závisí primárně na připojení, které máte mezi datovými centry Azure a vaší infrastrukturou. Toto připojení ovlivňuje případné změny v návrhu, které je třeba provést v infrastruktuře Configuration Manageru, a náklady související s provedením těchto nezbytných změn. Pokud chcete lépe pochopit, jaké aspekty plánování byste měli vyhodnotit, než budete pokračovat dál, přečtěte si [nejčastější dotazy ke Configuration Manageru v Azure](/sccm/core/understand/configuration-manager-on-azure#networking).
@@ -50,5 +50,5 @@ Pokud chcete spravovat aktualizace pro virtuální počítače s Windows Servere
 
 Po provedení této změny konfigurace, vytvořte nové nasazení kroků popsaných v [vytvoření nasazení aktualizace](automation-tutorial-update-management.md#schedule-an-update-deployment) a vyberte **importovat skupiny** na **typ** rozevíracího seznamu vyberte příslušnou kolekci Configuration Manageru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 

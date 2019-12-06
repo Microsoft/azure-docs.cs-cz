@@ -1,15 +1,15 @@
 ---
 title: Použití Data Manager blockchain k aktualizaci Azure Cosmos DB – Azure blockchain Service
 description: Použití blockchain Data Manager pro službu Azure blockchain k odesílání dat blockchain do Azure Cosmos DB
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 497652f91d46592212a17a0a22832c02a696df62
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326262"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849945"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Kurz: použití Data Manager blockchain k odesílání dat do Azure Cosmos DB
 
@@ -17,7 +17,7 @@ V tomto kurzu použijete blockchain Data Manager pro službu Azure blockchain k 
 
 [podrobnosti transakce ![blockchain](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření instance Data Manager blockchain
@@ -29,7 +29,7 @@ V tomto kurzu jste:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Kompletní [rychlé zprovoznění: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
@@ -41,7 +41,7 @@ V tomto kurzu jste:
 
 Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí služby Azure blockchain. Instance zachycuje všechna nepracovaná data bloku a nezpracovaná transakce z uzlu transakce. Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejít na člen služby Azure blockchain, který jste vytvořili v části [rychlý Start: Vytvoření členu blockchain pomocí Azure Portal](create-member.md). Vyberte **Blockchain data Manager**.
 1. Vyberte **Přidat**.
 
@@ -49,9 +49,9 @@ Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí slu�
 
     Zadejte následující podrobnosti:
 
-    Nastavení | Příklad | Popis
+    Nastavení | Příklad: | Popis
     --------|---------|------------
-    Název | mywatcher | Zadejte jedinečný název pro připojenou blockchain Data Manager.
+    Name (Název) | mywatcher | Zadejte jedinečný název pro připojenou blockchain Data Manager.
     Uzel transakce | myblockchainmember | Vyberte výchozí uzel transakce členu služby Azure blockchain, který jste vytvořili v požadovaném stavu.
     Název připojení | cosmosdb | Zadejte jedinečný název odchozího připojení, kde se odesílají data blockchain transakce.
     Koncový bod služby Event Grid | myTopic | Vyberte téma Event gridu, které jste vytvořili v požadovaném požadavku. Poznámka: blockchain Data Manager instance a téma Event Grid musí být ve stejném předplatném.
@@ -108,14 +108,14 @@ Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese
 
     | Nastavení | Popis |
     |---------|-------------|
-    | Název  | Pojmenujte kontejner. Například *smartcontract* |
+    | Name (Název)  | Pojmenujte kontejner. Například *smartcontract* |
     | Úroveň veřejného přístupu | Zvolit *privátní (bez anonymního přístupu)* |
 
 1. Kliknutím na **OK** kontejner vytvoříte.
 1. Vyberte kontejner a pak vyberte **nahrát**.
 1. Vyberte soubory JSON, které jste vytvořili v části [získání kontraktu ABI a bytového kódu](#get-contract-abi-and-bytecode) .
 
-    ![Nahrát objekt BLOB](./media/data-manager-cosmosdb/upload-blobs.png)
+    ![Nahrát objekt blob](./media/data-manager-cosmosdb/upload-blobs.png)
 
     Vyberte **Nahrát**.
 
@@ -144,7 +144,7 @@ Pro každý objekt BLOB vygenerujte sdílený přístupový podpis.
 
     Nastavení | Popis
     --------|------------
-    Název | Zadejte jedinečný název, který má blockchain aplikace sledovat.
+    Name (Název) | Zadejte jedinečný název, který má blockchain aplikace sledovat.
     ABI kontraktu | Cesta URL k souboru ABI kontraktu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
     Bajtový kód kontraktu | Cesta URL k souboru bytového kódu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
 
@@ -239,7 +239,7 @@ Přidejte akci pro vytvoření dokumentu v Cosmos DB pro každou transakci. Pro 
 
     Hodnota nastaví klíč oddílu na typ zprávy transakce.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Aplikace logiky monitoruje téma Event Grid. Při odeslání nové zprávy transakce z Data Manager blockchain vytvoří aplikace logiky dokument v Cosmos DB.
 

@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 01/31/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125182"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846347"
 ---
-# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Kurz: Použití detekcí rizik k aktivaci Multi-Factor Authentication a změně hesla
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Kurz: použití detekcí rizik k aktivaci Multi-Factor Authentication a změny hesla
 
 V tomto kurzu zapnete funkce služby Azure AD Identity Protection a funkci služby Azure AD Premium P2, která je víc než jenom nástroj k monitorování a vytváření sestav. Identity v organizaci můžete chránit nakonfigurováním zásad na základě rizikové událostí, které automaticky reagují na rizikové chování. Tyto zásady mohou buď uživatele automaticky zablokovat, nebo mohou zajistit nápravu v podobě vynucení změny hesla či vícefaktorového ověřování.
 
@@ -40,7 +40,7 @@ Další informace o službě Azure AD Identity Protection najdete v článku [vy
 > * Zapnutí změn hesla na základě rizikové události
 > * Zapnutí vícefaktorového ověřování na základě rizikové události
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Přístup k funkčnímu tenantovi Azure AD, který má přiřazenou alespoň zkušební licenci Azure AD Premium P2
 * Účet s oprávněními globálního správce v tenantovi Azure AD
@@ -54,7 +54,7 @@ Povolení zásad na základě rizikové události je jednoduchý proces. Násled
 
 Azure AD Identity Protection obsahuje výchozí zásady, které vám pomůžou zajistit, aby se uživatelé zaregistrovali pro Multi-Factor Authentication a snadno identifikovali aktuální stav registrace. Povolením této zásady nespustíte výzvy k provedení vícefaktorového ověřování, ale požádáte uživatele, aby se k němu předběžně zaregistrovali.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.
 1. Klikněte na **Registrace MFA**.
 1. **Zapněte** vynucení zásady.

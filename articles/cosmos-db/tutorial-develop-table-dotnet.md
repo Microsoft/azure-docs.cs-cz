@@ -1,19 +1,19 @@
 ---
 title: Začínáme s Azure Cosmos DB rozhraní API pro tabulky pomocí sady .NET Standard SDK
-description: Ukládejte strukturovaná data v cloudu pomocí rozhraní API pro tabulky Azure Cosmos DB.
+description: Naučte se ukládat a dotazovat strukturovaná data v Azure Cosmos DB rozhraní API pro tabulkym účtu.
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-ms.date: 05/20/2019
-ms.openlocfilehash: 11179d6adc676ae99257442b186a15e69dcc4a03
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/03/2019
+ms.openlocfilehash: 0a1ba00d2d24664590f76438a90f651e0826d419
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764469"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870543"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s Azure Cosmos DB rozhraní API pro tabulky a Azure Table Storage pomocí sady .NET SDK
 

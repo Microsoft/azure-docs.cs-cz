@@ -1,26 +1,26 @@
 ---
 title: Práce s daty ve službě Azure Cosmos DB
-description: Další informace o tom, jak pracovat s daty ve službě Azure Cosmos DB.
+description: Naučte se ukládat, indexovat a dotazovat objekty DataTime v Azure Cosmos DB
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: 9676642e96d437965fef041930b8223241cadeaa
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 162b1a4ad089e75f4ad953a339b9b4c15e245a70
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349020"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869677"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Práce s daty ve službě Azure Cosmos DB
-Azure Cosmos DB nabízí flexibilitu schémat a bohaté indexování prostřednictvím nativní [JSON](https://www.json.org) datového modelu. Všechny prostředky Azure Cosmos DB, včetně databází, kontejnerů, dokumenty a uložené procedury jsou modelovány a ukládány jako dokumenty JSON. Jako požadavek na přenos, JSON (a Azure Cosmos DB) podporuje jenom malou sadu základních typů: Řetězec, číslo, logická hodnota, pole, objekt a hodnota null. Ale JSON je flexibilní a umožňují vývojářům a architektur představují složitější typy, pomocí těchto primitivních hodnot a skládání jako objekty nebo pole. 
+Azure Cosmos DB nabízí flexibilitu schémat a bohaté indexování prostřednictvím nativní [JSON](https://www.json.org) datového modelu. Všechny prostředky Azure Cosmos DB, včetně databází, kontejnerů, dokumenty a uložené procedury jsou modelovány a ukládány jako dokumenty JSON. Jako požadavek pro vrácení přenosné JSON (a Azure Cosmos DB) podporuje pouze malou sadu základních typů: řetězec, číslo, logickou hodnotu, pole, objekt a hodnotu Null. Ale JSON je flexibilní a umožňují vývojářům a architektur představují složitější typy, pomocí těchto primitivních hodnot a skládání jako objekty nebo pole. 
 
 Kromě základních typů potřebuje mnoho aplikací, aby typ DateTime představoval data a časová razítka. Tento článek popisuje, jak mohou vývojáři ukládat, načíst a dotazovat data ve službě Azure Cosmos DB pomocí sady .NET SDK.
 
 ## <a name="storing-datetimes"></a>Ukládat data a času
 
-Azure Cosmos DB podporuje typy JSON, jako je řetězec, číslo, logická hodnota, null, Array, Object. Nepodporují přímo typ DateTime. V současné době Azure Cosmos DB nepodporuje lokalizaci dat. Proto je nutné ukládat hodnoty DateTime jako řetězce. Doporučený formát pro řetězce DateTime v Azure Cosmos DB je `YYYY-MM-DDThh:mm:ss.sssZ` podle standardu ISO 8601 UTC. Doporučuje se ukládat všechna data v Azure Cosmos DB jako UTC. Převod řetězců data na tento formát umožní řazení dat lexikograficky. Pokud jsou uložena data, která nejsou ve formátu UTC, musí být logika zpracována na straně klienta. Chcete-li převést místní data typu DateTime na čas UTC, posun musí být ve formátu JSON známý nebo uložen jako vlastnost a klient může použít posun k výpočtu hodnoty DateTime UTC.
+Azure Cosmos DB podporuje typy JSON, jako je řetězec, číslo, logická hodnota, null, Array, Object. Nepodporují přímo typ DateTime. V současné době Azure Cosmos DB nepodporuje lokalizaci dat. Proto je nutné ukládat hodnoty DateTime jako řetězce. Doporučený formát pro řetězce DateTime v Azure Cosmos DB je `YYYY-MM-DDThh:mm:ss.sssZ`, který následuje Standard ISO 8601 UTC. Doporučuje se ukládat všechna data v Azure Cosmos DB jako UTC. Převod řetězců data na tento formát umožní řazení dat lexikograficky. Pokud jsou uložena data, která nejsou ve formátu UTC, musí být logika zpracována na straně klienta. Chcete-li převést místní data typu DateTime na čas UTC, posun musí být ve formátu JSON známý nebo uložen jako vlastnost a klient může použít posun k výpočtu hodnoty DateTime UTC.
 
 Většina aplikace mohly používat výchozí řetězcovou reprezentaci data a času z následujících důvodů:
 

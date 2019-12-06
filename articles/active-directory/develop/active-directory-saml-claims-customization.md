@@ -3,27 +3,24 @@ title: Přizpůsobení deklarací tokenů SAML pro podnikové aplikace v Azure A
 titleSuffix: Microsoft identity platform
 description: Naučte se přizpůsobit deklarace identity vydané v tokenu SAML pro podnikové aplikace v Azure AD.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1490a25e69ff22fde1f5c870868f20ea6f9a1cf7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5e9dd48695ab28879b151c4b3a37b72c551f9c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046975"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844783"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -73,9 +70,9 @@ Dočasná NameID je také podporována, ale v rozevíracím seznamu není k disp
 
 Vyberte požadovaný zdroj pro deklaraci `NameIdentifier` (nebo NameID). Můžete vybrat z následujících možností.
 
-| Název | Popis |
+| Name (Název) | Popis |
 |------|-------------|
-| Email | E-mailová adresa uživatele |
+| E-mail | E-mailová adresa uživatele |
 | userprincipalName | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, který byl synchronizovaný z místní služby Azure AD |
 | objektu | ObjectID uživatele v Azure AD |

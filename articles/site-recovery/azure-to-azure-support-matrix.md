@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 9146430f512b065553d4c5362af8655eb01c1206
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d14b81075d1e1f98449ef655c3e00f172c7f407b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530960"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873773"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -26,7 +26,7 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 **Azure Portal** | Podporuje se.
 **PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
 **REST API** | Podporuje se.
-**Rozhraní příkazového řádku** | Aktuálně není podporováno
+**Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
 
 
 ## <a name="resource-support"></a>Podpora prostředků
@@ -89,12 +89,11 @@ Windows Server 2019 | Podporováno pro jádro serveru, server s desktopovým pro
 Windows Server 2016  | Podporován jádro serveru, server s desktopovým prostředím.
 Windows Server 2012 R2 | Podporuje se.
 Windows Server 2012 | Podporuje se.
-Windows Server 2008 R2 s aktualizací SP1/SP2 | Podporuje se.<br/><br/> Od verze 9.30. x. x (očekávaná verze od listopadu 2019) rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack Service (cestou nadřazené)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows Server 2008 R2 SP1/SP2.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
-Windows Server 2008 s aktualizací SP2 | Od verze 9.30. x. x (očekávaná verze od 1. listopadu 2019) rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack Service (cestou nadřazené)](https://support.microsoft.com/help/4493730) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows Server 2008 s aktualizací SP2.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 s aktualizací SP1/SP2 | Podporuje se.<br/><br/> Z verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) rozšíření služby mobility pro virtuální počítače Azure je třeba nainstalovat aktualizaci Windows [Servicing Stack Agent (cestou nadřazené)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows Server 2008 R2 SP1/SP2.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Podporuje se.
 Windows 8.1 (x64) | Podporuje se.
 Windows 8 (x64) | Podporuje se.
-Windows 7 (x64) s aktualizací SP1 a vyšší | Z verze 9.30. x. x (očekávaná verze od 1. listopadu 2019) rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack Service (cestou nadřazené)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows 7 s aktualizací SP1.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
+Windows 7 (x64) s aktualizací SP1 a vyšší | Z verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) rozšíření služby mobility pro virtuální počítače Azure je třeba nainstalovat aktualizaci Windows [Servicing Stack Agent (cestou nadřazené)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows 7 s aktualizací SP1.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
 
 
 
@@ -104,20 +103,20 @@ Windows 7 (x64) s aktualizací SP1 a vyšší | Z verze 9.30. x. x (očekávaná
 --- | ---
 Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)
 CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, 8,0
-Server Ubuntu 14,04 LTS | [Podporované verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Server Ubuntu 16,04 LTS | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu servery s použitím ověřování a přihlášení pomocí hesla a balíčku Cloud-init ke konfiguraci cloudových virtuálních počítačů můžou mít při převzetí služeb při selhání zakázané přihlášení (v závislosti na konfiguraci cloudinit). Přihlášení založené na heslech na virtuálním počítači můžete znovu povolit tím, že resetujete heslo z nabídky Nastavení > řešení potíží s >em (u virtuálního počítače, u kterého došlo k převzetí služeb při selhání v Azure Portal.
+Ubuntu 14.04 LTS Server | [Podporované verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+Ubuntu 16.04 LTS Server | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu servery s použitím ověřování a přihlášení pomocí hesla a balíčku Cloud-init ke konfiguraci cloudových virtuálních počítačů můžou mít při převzetí služeb při selhání zakázané přihlášení (v závislosti na konfiguraci cloudinit). Přihlášení založené na heslech na virtuálním počítači můžete znovu povolit tím, že resetujete heslo z nabídky Nastavení > řešení potíží s >em (u virtuálního počítače, u kterého došlo k převzetí služeb při selhání v Azure Portal.
 Server Ubuntu 18,04 LTS | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | [Podporované verze jádra](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Podporované verze jádra](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Podporované verze jádra)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 11 | 3<br/><br/> Upgrade replikačních počítačů z aktualizace SP3 na verzi SP4 není podporován. Pokud byl replikovaný počítač upgradován, je nutné zakázat replikaci a po upgradu znovu povolit replikaci.
-SUSE Linux Enterprise Server 11 | OPRAVY
+SUSE Linux Enterprise Server 11 | SP3<br/><br/> Upgrade replikačních počítačů z aktualizace SP3 na verzi SP4 není podporován. Pokud byl replikovaný počítač upgradován, je nutné zakázat replikaci a po upgradu znovu povolit replikaci.
+SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4 [, 7,5, 7,6, 7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5) 
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Ubuntu pro virtuální počítače Azure
 
-**Předběžné** | **Verze služby mobility** | **Verze jádra** |
+**Vydání** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 14,04 LTS | 9,28 | 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
 14,04 LTS | 9,27 | 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
@@ -136,7 +135,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4 [, 7,
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Debian pro virtuální počítače Azure
 
-**Předběžné** | **Verze služby mobility** | **Verze jádra** |
+**Vydání** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 Debian 7 | 9.25,9.26,9.27,9.28 | 3.2.0-4-amd64 až 3.2.0-6-AMD64, 3.16.0 -0. BPO. 4 – amd64 |
 |||
@@ -146,7 +145,7 @@ Debian 8 | 9,25, 9,26 | 3.16.0-4-amd64 až 3.16.0-8-AMD64, 4.9.0 -0. BPO. 4-amd6
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
 
-**Předběžné** | **Verze služby mobility** | **Verze jádra** |
+**Vydání** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,28 | SP1 3.12.49-11 – výchozí hodnota pro 3.12.74-60.64.40 – výchozí</br></br> SP1 (LTSS) 3.12.74-60.64.45-default na 3.12.74-60.64.118 – výchozí</br></br> SP2 4.4.21-69-default až 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default na 4.4.121-92.117 – výchozí</br></br>SP3 4.4.73-5 – výchozí hodnota pro 4.4.180-94.100 – výchozí</br></br>SP3 4.4.138 – 4.7 – Azure do 4.4.180 – 4.31 – Azure</br></br>SP4 4.12.14-94.41-default on 4.12.14-95.29-default</br>SP4 4.12.14-6.3 – Azure na 4.12.14 – 6.23 – Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11 – výchozí hodnota pro 3.12.74-60.64.40 – výchozí</br></br> SP1 (LTSS) 3.12.74-60.64.45-default na 3.12.74-60.64.115 – výchozí</br></br> SP2 4.4.21-69-default až 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default na 4.4.121-92.117 – výchozí</br></br>SP3 4.4.73-5 – výchozí hodnota pro 4.4.180-94.97 – výchozí</br></br>SP3 4.4.138 – 4.7 – Azure do 4.4.180 – 4.31 – Azure</br></br>SP4 4.12.14-94.41-default on 4.12.14-95.24-default</br>SP4 4.12.14-6.3 – Azure na 4.12.14 – 6.18 – Azure |
@@ -213,9 +212,9 @@ Azure Disk Encryption (ADE) pro operační systém Windows | Podporováno pro vi
 Azure Disk Encryption (ADE) pro Linux OS | Podporováno |
 Horké přidání | Podporováno | Povolení replikace pro datový disk, který přidáte do replikovaného virtuálního počítače Azure, se podporuje pro virtuální počítače, které používají spravované disky.
 Odstranit disk z provozu | Nepodporováno | Pokud na virtuálním počítači odeberete datový disk, budete muset zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
-Vyloučení disku | Pracovníky. Ke konfiguraci je nutné použít [PowerShell](azure-to-azure-exclude-disks.md) . |  Dočasné disky jsou ve výchozím nastavení vyloučené.
+Vyloučení disku | Podpora. Ke konfiguraci je nutné použít [PowerShell](azure-to-azure-exclude-disks.md) . |  Dočasné disky jsou ve výchozím nastavení vyloučené.
 Prostory úložiště s přímým přístupem  | Podporováno pro body obnovení konzistentní vzhledem k selhání. Body obnovení konzistentní vzhledem k aplikacím se nepodporují. |
-Souborový server se škálováním na více instancí  | Podporováno pro body obnovení konzistentní vzhledem k selhání. Body obnovení konzistentní vzhledem k aplikacím se nepodporují. |
+Souborový server se škálováním na více systémů  | Podporováno pro body obnovení konzistentní vzhledem k selhání. Body obnovení konzistentní vzhledem k aplikacím se nepodporují. |
 LRS | Podporováno |
 GRS | Podporováno |
 RA-GRS | Podporováno |

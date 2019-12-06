@@ -1,5 +1,5 @@
 ---
-title: Datový model Azure Telemetrie Application Insights – telemetrie výjimek | Microsoft Docs
+title: Datový model telemetrie výjimek pro Azure Application Insights
 description: Application Insights datový model pro telemetrii výjimek
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,18 +8,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0ba1c94ee8dc78b937d650cff32e1518a7ca5a12
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 7decac2e5e65ff7eedb374858fe15360b4a1b2c5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677422"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872617"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: datový model Application Insights
 
 V [Application Insights](../../azure-monitor/app/app-insights-overview.md)instance výjimky představuje ošetřenou nebo neošetřenou výjimku, ke které došlo během provádění monitorované aplikace.
 
-## <a name="problem-id"></a>ID problému
+## <a name="problem-id"></a>Id problému
 
 Identifikátor, kde byla výjimka vyvolána v kódu. Používá se pro seskupování výjimek. Obvykle se jedná o kombinaci typu výjimky a funkce ze zásobníku volání.
 

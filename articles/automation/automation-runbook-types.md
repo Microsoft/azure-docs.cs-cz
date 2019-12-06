@@ -4,17 +4,17 @@ description: 'Popisuje různé typy sad Runbook, které lze použít v Azure Aut
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6c29015e2fd327d74183d5fbbd6214152507e517
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1991b7c227e62efcd8c0b637f3e732d737cabb34
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886771"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850682"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
@@ -24,8 +24,8 @@ Azure Automation podporuje několik typů sad Runbook, které jsou stručně pop
 |:--- |:--- |
 | [Grafický](#graphical-runbooks)|V závislosti na prostředí Windows PowerShell a vytvoření a upravení zcela v grafickém editoru v Azure Portal. |
 | [Grafický pracovní postup PowerShellu](#graphical-runbooks)|Na základě pracovního postupu prostředí Windows PowerShell a jeho úplného vytvoření a úprav v grafickém editoru v Azure Portal. |
-| [PowerShell](#powershell-runbooks) |Textový Runbook založený na skriptu Windows PowerShellu |
-| [Pracovní postup PowerShellu](#powershell-workflow-runbooks)|Textový Runbook založený na pracovním postupu prostředí Windows PowerShell. |
+| [PowerShell](#powershell-runbooks) |Textového runbooku, který založené na skriptu prostředí Windows PowerShell. |
+| [Pracovní postup PowerShellu](#powershell-workflow-runbooks)|Textového runbooku, který podle pracovního postupu prostředí Windows PowerShell. |
 | [Python](#python-runbooks) |Textový Runbook založený na Pythonu |
 
 ## <a name="graphical-runbooks"></a>Grafické Runbooky
@@ -47,14 +47,14 @@ Azure Automation podporuje několik typů sad Runbook, které jsou stručně pop
 * Nelze zobrazit nebo přímo upravit kód prostředí PowerShell, který je vytvořen pomocí grafického pracovního postupu. Kód, který vytvoříte, můžete zobrazit v aktivitách kódu.
 * Nejde na Hybrid Runbook Worker Linux.
 
-## <a name="powershell-runbooks"></a>PowerShellové Runbooky
+## <a name="powershell-runbooks"></a>Powershellové runbooky
 
-Runbooky PowerShellu jsou založené na Windows PowerShellu.  Kód sady Runbook můžete přímo upravovat pomocí textového editoru v Azure Portal.  Můžete také použít libovolný textový editor offline a [importovat Runbook](manage-runbooks.md) do Azure Automation.
+Powershellové runbooky jsou založené na prostředí Windows PowerShell.  Kód sady Runbook můžete přímo upravovat pomocí textového editoru v Azure Portal.  Můžete také použít libovolný textový editor offline a [importovat Runbook](manage-runbooks.md) do Azure Automation.
 
 ### <a name="advantages"></a>Výhody
 
-* Implementujte všechny komplexní logiky pomocí kódu PowerShellu bez dalších složitosti pracovního postupu PowerShellu.
-* Sada Runbook začíná rychleji než Runbooky pracovních postupů PowerShellu, protože nemusí být zkompilována před spuštěním.
+* Implementujte všechny komplexní logiku s kódem Powershellu bez dalších složitostí pracovního postupu Powershellu.
+* Runbook spouští rychleji než runbooky pracovních postupů Powershellu, protože není nutné sestavit před spuštěním.
 * Může být spuštěný v Azure nebo na Windows Hybrid Runbook Worker pro Linux i Windows
 
 ### <a name="limitations"></a>Omezení
@@ -79,16 +79,16 @@ Runbooky pracovních postupů PowerShellu jsou textové Runbooky založené na [
 
 ### <a name="advantages"></a>Výhody
 
-* Implementujte všechny komplexní logiky pomocí kódu pracovního postupu PowerShellu.
+* Implementujte všechny komplexní logiku s kódem pracovního postupu Powershellu.
 * Pokud dojde k chybě, můžete sadu Runbook obnovit pomocí [kontrolních bodů](automation-powershell-workflow.md#checkpoints) .
-* Paralelní [zpracování](automation-powershell-workflow.md#parallel-processing) slouží k paralelnímu provádění více akcí.
+* Použití [paralelní zpracování](automation-powershell-workflow.md#parallel-processing) umožňuje provádět více akcí souběžně.
 * Může zahrnovat další grafické Runbooky a runbooky pracovních postupů PowerShellu jako podřízené Runbooky pro vytváření pracovních postupů vysoké úrovně.
 
 ### <a name="limitations"></a>Omezení
 
 * Autor musí znát pracovní postup PowerShellu.
 * Sada Runbook se musí vypořádat s dalšími složitostmi pracovního postupu PowerShellu, jako jsou [deserializovatelné objekty](automation-powershell-workflow.md#code-changes).
-* Spuštění sady Runbook trvá déle než PowerShellové Runbooky, protože před spuštěním je potřeba ji zkompilovat.
+* Sada Runbook provede delší dobu než sady runbook Powershellu, protože musí být zkompilovány před spuštěním.
 * Runbooky PowerShellu můžou být zahrnuté jenom jako podřízené Runbooky pomocí rutiny Start-AzureAutomationRunbook, která vytvoří novou úlohu.
 * Nejde na Hybrid Runbook Worker Linux.
 

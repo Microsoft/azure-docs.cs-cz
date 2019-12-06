@@ -1,71 +1,71 @@
 ---
 title: Správa dat Azure Automation
-description: Tento článek obsahuje více témat pro správu prostředí Azure Automation.  Nyní zahrnuje uchování dat a zálohování zotavení po havárii Azure Automation ve službě Azure Automation.
+description: Tento článek obsahuje několik témat pro správu Azure Automationho prostředí.  V současné době zahrnuje uchovávání dat a zálohování Azure Automation zotavení po havárii v Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9de5909ddca5fd36f3fafcb79e2a4ad519402c9c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476589"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850767"
 ---
 # <a name="managing-azure-automation-data"></a>Správa dat Azure Automation
-Tento článek obsahuje více témat pro správu prostředí Azure Automation.
+Tento článek obsahuje několik témat pro správu Azure Automationho prostředí.
 
-## <a name="data-retention"></a>Uchovávání dat
-Při odstranění prostředků ve službě Azure Automation se uchovávají 90 dnů pro auditování, než jsou odstraněny trvale.  Nelze zobrazit ani použít na prostředek během této doby.  Tyto zásady platí také pro prostředky, které patří k účtu automation, který je odstraněn.
+## <a name="data-retention"></a>Uchování dat
+Když prostředek odstraníte z Azure Automation, bude před tím, než se trvale odebere, uchovávat 90 dní pro účely auditování.  Během této doby nemůžete tento prostředek zobrazit ani použít.  Tato zásada platí i pro prostředky, které patří k účtu Automation, který je odstraněný.
 
-Azure Automation, automaticky odstraní a trvale odebere úlohy, které jsou starší než 90 dní.
+Azure Automation automaticky odstraní a trvale odebere úlohy starší než 90 dní.
 
 Následující tabulka shrnuje zásady uchovávání informací pro různé prostředky.
 
-| Data | Zásada |
+| Data | Zásady |
 |:--- |:--- |
-| Účty |Trvale odebrat 90 dnů po odstranění účtu uživatele. |
-| Prostředky |Trvale odebrat 90 dnů po odstranění prostředku uživatelem nebo 90 dnů po účet, který obsahuje že Asset se odstraní uživatel. |
-| Moduly |Trvale odebrat 90 dnů po odstranění modulu uživatelem nebo 90 dnů po účet, který obsahuje že modul je odstraněn uživatelem. |
-| Runbooky |Trvale odebrat 90 dnů po odstranění prostředku uživatelem nebo 90 dnů po účet, který obsahuje že odstranění prostředku uživatelem. |
-| Úlohy |Odstraněné a trvale odebrané 90 dní od posledního právě upravuje. To může být po úlohy dokončí, je zastavená nebo je pozastavená. |
-| Soubory konfigurace/MOF uzlu |Staré konfigurace uzlu bude trvale odstraněn 90 dnů po vygenerování nové konfigurace uzlu. |
-| Uzly DSC |Trvale odebrat 90 dnů po uzlu se registrace z účtu Automation pomocí webu Azure portal nebo [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) rutiny v prostředí Windows PowerShell. Uzly se také trvale odeberou 90 dnů po účet, který obsahuje že uzel je odstraněn uživatelem. |
-| Sestavy uzlu |Trvale odebrat 90 dnů po vygenerování nové sestavy pro tento uzel |
+| Účty |Trvale odebrané 90 dní poté, co uživatel odstraní účet. |
+| Prostředky |Trvale odebrané 90 dní po odstranění prostředku uživatelem nebo 90 dnů po účtu, který je držitelem majetku, je odstraněn uživatelem. |
+| Moduly |Trvale odebrané 90 dní po odstranění modulu uživatelem nebo 90 dnů po účtu, který modul obsahuje, je odstraněn uživatelem. |
+| Runbooky |Trvale odebrané 90 dní po odstranění prostředku uživatelem nebo 90 dnů po účtu, který je držitelem daného prostředku, je odstraněn uživatelem. |
+| Úlohy |Odstraní a trvale odeberou 90 dnů od poslední změny. To může být po dokončení úlohy, zastavení nebo pozastavení. |
+| Konfigurace uzlů/soubory MOF |Stará konfigurace uzlu je trvale odebrána 90 dní po vygenerování nové konfigurace uzlu. |
+| Uzly DSC |Trvale odebrané 90 dní po zrušení registrace uzlu z účtu Automation pomocí Azure Portal nebo rutiny [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) ve Windows PowerShellu. V uzlech se také trvale odeberou 90 dní od účtu, který je držitelem uzlu odstraněn uživatelem. |
+| Sestavy uzlů |Trvale odebrané 90 dní po vygenerování nové sestavy pro tento uzel |
 
-Zásady uchovávání informací se vztahuje na všechny uživatele a aktuálně nejde přizpůsobit.
+Zásady uchovávání informací se vztahují na všechny uživatele a aktuálně se nedají přizpůsobit.
 
-Nicméně pokud je potřeba data uchovávat po delší dobu, můžete dál runbook protokoly úlohy a protokoly Azure monitoru.  Další informace najdete v tématu [předávání dat úloh Azure Automation na protokoly Azure monitoru](automation-manage-send-joblogs-log-analytics.md).   
+Pokud ale potřebujete zachovat data po delší dobu, můžete protokoly úloh Runbooku přeslat do Azure Monitor protokolů.  Pokud chcete získat další informace, přečtěte si téma [Azure Automation data úlohy do protokolů Azure monitor](automation-manage-send-joblogs-log-analytics.md).   
 
 ## <a name="backing-up-azure-automation"></a>Zálohování Azure Automation
-Když odstraníte účet automation v Microsoft Azure, jsou odstraněny všechny objekty v účtu včetně runbooky, moduly, konfigurace, nastavení, úlohy a prostředky. Objekty nelze obnovit, po odstranění účtu.  Před odstraněním zálohovat obsah vašeho účtu automation můžete použít následující informace. 
+Když odstraníte účet Automation v Microsoft Azure, odstraní se všechny objekty v účtu včetně runbooků, modulů, konfigurací, nastavení, úloh a prostředků. Po odstranění účtu nelze objekty obnovit.  Pomocí následujících informací můžete zálohovat obsah svého účtu Automation před jeho odstraněním. 
 
 ### <a name="runbooks"></a>Runbooky
-Vaše sady runbook můžete exportovat do souborů skriptu pomocí portálu Azure nebo [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) rutiny v prostředí Windows PowerShell.  Tyto soubory skriptu můžete importovat do jiného účtu automation, jak je popsáno v [vytvoření nebo import Runbooku](/previous-versions/azure/dn643637(v=azure.100)).
+Runbooky můžete exportovat do souborů skriptu pomocí rutiny Azure Portal nebo rutiny [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) ve Windows PowerShellu.  Tyto soubory skriptu se dají importovat do jiného účtu Automation, jak je popsáno v tématu [Vytvoření nebo import Runbooku](/previous-versions/azure/dn643637(v=azure.100)).
 
 ### <a name="integration-modules"></a>Integrační moduly
-Integrační moduly nelze exportovat ze služby Azure Automation.  Ujistěte se, že jsou k dispozici mimo účet automation.
+Nelze exportovat moduly integrace z Azure Automation.  Musíte zajistit, aby byly dostupné mimo účet Automation.
 
 ### <a name="assets"></a>Prostředky
-Nejde exportovat [prostředky](/previous-versions/azure/dn939988(v=azure.100)) ze služby Azure Automation.  Pomocí webu Azure portal, musíte zaznamenat podrobnosti proměnné, přihlašovací údaje, certifikátů, připojení a plány.  Potom musíte ručně vytvořit všechny prostředky, které jsou používány sady runbook, který importujete do jiné služby automation.
+Nemůžete exportovat [prostředky](/previous-versions/azure/dn939988(v=azure.100)) z Azure Automation.  Pomocí Azure Portal je třeba si uvědomit podrobnosti o proměnných, přihlašovacích údajích, certifikátech, připojeních a plánech.  Pak musíte ručně vytvořit všechny prostředky, které používají Runbooky, které importujete do jiné automatizace.
 
-Můžete použít [rutiny Azure](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) načíst podrobnosti o nešifrované prostředky a buď je uložit pro pozdější použití nebo vytvoření ekvivalentní prostředky v jiném účtu automation.
+[Rutiny Azure](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) můžete použít k načtení podrobností o nešifrovaných assetech a jejich uložení pro budoucí použití nebo k vytvoření ekvivalentních prostředků v jiném účtu Automation.
 
-Nelze načíst hodnotu zašifrovaných proměnných nebo pole pro heslo přihlašovacích údajů pomocí rutin.  Pokud si nejste jisti, tyto hodnoty, pak je můžete vyvolat z runbooku pomocí [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) a [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) aktivity.
+Nemůžete načíst hodnotu šifrovaných proměnných nebo pole hesla pro přihlašovací údaje pomocí rutin.  Pokud tyto hodnoty neznáte, můžete je načíst z Runbooku pomocí aktivit [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) a [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) .
 
-Certifikáty nelze exportovat ze služby Azure Automation.  Ujistěte se, že všechny certifikáty jsou k dispozici mimo Azure.
+Certifikáty z Azure Automation nemůžete exportovat.  Musíte zajistit, aby všechny certifikáty byly dostupné mimo Azure.
 
 ### <a name="dsc-configurations"></a>Konfigurace DSC
-Můžete exportovat konfiguraci do souborů skriptu pomocí portálu Azure nebo [Export AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) rutiny v prostředí Windows PowerShell. Tyto konfigurace lze importovat a používat v jiném účtu automation.
+Konfigurace můžete exportovat do souborů skriptu pomocí Azure Portal nebo rutiny [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) ve Windows PowerShellu. Tyto konfigurace je možné importovat a používat v jiném účtu Automation.
 
-## <a name="geo-replication-in-azure-automation"></a>Geografická replikace ve službě Azure Automation
-Geografická replikace, standard v účtech Azure Automation, zálohuje data účtu do jiné geografické oblasti za účelem zajištění redundance. Můžete použít primární oblasti při nastavování účtu a pak sekundární oblasti je k němu přiřazen automaticky. V případě ztráty dat se průběžně aktualizuje sekundární daty zkopírovanými z primární oblasti.  
+## <a name="geo-replication-in-azure-automation"></a>Geografická replikace v Azure Automation
+Geografická replikace, Standard v Azure Automationch účtech, zálohuje data účtu do jiné geografické oblasti pro zajištění redundance. Při nastavování účtu můžete zvolit primární oblast a k ní je automaticky přiřazená sekundární oblast. Sekundární data zkopírovaná z primární oblasti se průběžně aktualizují v případě ztráty dat.  
 
-V následující tabulce jsou uvedeny párování k dispozici primární a sekundární oblastí.
+V následující tabulce jsou uvedeny dostupné dvojice primární a sekundární oblasti.
 
 | Primární | Sekundární |
 | --- | --- |
@@ -75,6 +75,6 @@ V následující tabulce jsou uvedeny párování k dispozici primární a sekun
 | Jihovýchodní Asie |Východní Asie |
 | Japonsko – východ |Japonsko – západ |
 
-V nepravděpodobném případě, že dojde ke ztrátě dat primární oblasti Microsoft se pokusí obnovit. Pokud není možné obnovit primární data, pak je provedena geo-převzetí služeb při selhání a ovlivněných bude zákazníky informovat o tom prostřednictvím svého předplatného.
+V nepravděpodobném případě, že dojde ke ztrátě dat primární oblasti, se Microsoft pokusí ji obnovit. Pokud primární data obnovit nemůžete, pak se provede geografické převzetí služeb při selhání a ovlivnění zákazníci budou mít v rámci svého předplatného oznámení.
 
 

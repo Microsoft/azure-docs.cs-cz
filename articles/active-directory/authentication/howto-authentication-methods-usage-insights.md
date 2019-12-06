@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6a87b5797ea5c8f4ac116d6df9e6a48204f1fd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381900"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848506"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Použití metod ověřování & Insights (Preview)
 
@@ -27,7 +27,7 @@ Využití & Insights vám umožní pochopit, jak metody ověřování pro funkce
 K využití a přehledům můžou získat přístup následující role:
 
 - Globální správce
-- Čtecí modul zabezpečení
+- Čtenář zabezpečení
 - Správce zabezpečení
 - Čtečka sestav
 
@@ -65,7 +65,7 @@ Kliknutím na **zaregistrované uživatele**, **povoleným uživatelům**nebo **
 
 Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následující informace:
 
-- Název
+- Name (Název)
 - Uživatelské jméno
 - Stav registrace (vše, registrováno, Neregistrováno)
 - Povolený stav (vše, povoleno, Nepovoleno)
@@ -80,7 +80,7 @@ Kliknutím na registrace nebo resetování grafů zobrazíte podrobnosti o reset
 
 Sestava obnovit podrobnosti zobrazuje události registrace a resetování za posledních 30 dní, včetně:
 
-- Název
+- Name (Název)
 - Uživatelské jméno
 - Funkce (vše, registrace, resetování)
 - Metoda ověřování (oznámení aplikace, kód aplikace, telefonní hovor, volání Office, SMS, E-mail, bezpečnostní otázky)

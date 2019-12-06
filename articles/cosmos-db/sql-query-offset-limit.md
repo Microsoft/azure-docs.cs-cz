@@ -1,17 +1,17 @@
 ---
 title: Klauzule LIMIT POSUNu v Azure Cosmos DB
-description: Přečtěte si o klauzuli LIMITu POSUNu pro Azure Cosmos DB.
+description: Naučte se používat klauzuli LIMITu POSUNu k přeskočení a provedení určitých hodnot při dotazování v Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7aae56783f83f13b50321c88d69f07d910e589dd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326877"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873246"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Klauzule LIMIT POSUNu v Azure Cosmos DB
 
@@ -37,7 +37,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Poznámky
   
-  V klauzuli LIMIT POSUNu je vyžadován jak počet POSUNUTí, tak počet omezení. Pokud se použije volitelná klauzule `ORDER BY`, sada výsledků se vytvoří tak, že se přeskočí seřazené hodnoty. V opačném případě bude dotaz vracet pevné pořadí hodnot. V současné době je tato klauzule podporována pro dotazy pouze v rámci jednoho oddílu, dotazy na více oddílů je ještě nepodporují.
+  V klauzuli LIMIT POSUNu je vyžadován jak počet POSUNUTí, tak počet omezení. Pokud je použita volitelná klauzule `ORDER BY`, sada výsledků se vytvoří tak, že přeskočí seřazené hodnoty. V opačném případě bude dotaz vracet pevné pořadí hodnot. V současné době je tato klauzule podporována pro dotazy pouze v rámci jednoho oddílu, dotazy na více oddílů je ještě nepodporují.
 
 ## <a name="examples"></a>Příklady
 
@@ -50,7 +50,7 @@ Zde je například dotaz, který přeskočí první hodnotu a vrátí druhou hod
     OFFSET 1 LIMIT 1
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -69,7 +69,7 @@ Zde je dotaz, který přeskočí první hodnotu a vrátí druhou hodnotu (bez ř
     OFFSET 1 LIMIT 1
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -84,4 +84,4 @@ Výsledky jsou:
 
 - [Začínáme](sql-query-getting-started.md)
 - [Klauzule SELECT](sql-query-select.md)
-- [Klauzule ORDER BY](sql-query-order-by.md)
+- [ORDER BY – klauzule](sql-query-order-by.md)
