@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 0ab2ba2c49dd0d0f946358c8f52a6daaf7428dd1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672575"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851413"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -27,7 +27,7 @@ Budete taky muset povolit partnerský přístup, jak je uvedeno v následující
 
 Musíte povolit integraci partnera s instancí Azure FarmBeats. Tento krok vytvoří klienta, který bude mít přístup k vašemu Azure FarmBeats jako partnerovi zařízení, a poskytne vám následující hodnoty, které jsou potřeba v následujících krocích.
 
-- Koncový bod rozhraní API – Toto je adresa URL centra dat, například https://<datahub>. azurewebsites.net
+- Koncový bod rozhraní API – Toto je adresa URL centra dat, například https://\<DataHub >. azurewebsites. NET
 - ID tenanta
 - ID klienta
 - Tajný kód klienta
@@ -84,7 +84,7 @@ Vygenerujte je podle následujících kroků:
 |     Name (Název)                 |  Název, který identifikuje prostředek. Například název modelu/název produktu.
       Popis     | Zadejte smysluplný popis modelu.
 |    Vlastnosti          |    Další vlastnosti od výrobce   |
-|    **Zařízení**             |                      |
+|    **zařízení**             |                      |
 |   DeviceModelId     |     ID přidruženého modelu zařízení  |
 |  hardwareId          | Jedinečné ID zařízení, například adresa MAC atd.
 |  ReportingInterval        |   Interval generování sestav v sekundách
@@ -110,7 +110,7 @@ Vygenerujte je podle následujících kroků:
 |  sensorModelId     |    ID přidruženého modelu senzoru   |
 | location          |  Zeměpisná šířka (-90 až + 90)/longitude (-180 až 180)/Elevation (v metrech)|
 |   název > portu        |  Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení. |
-|    DeviceID  |    ID zařízení, ke kterému je senzor připojený     |
+|    ID zařízení  |    ID zařízení, ke kterému je senzor připojený     |
 | Name (Název)            |   Název, který identifikuje prostředek. Například název snímače/název produktu a číslo modelu/kód produktu.|
 |    Popis      | Zadejte smysluplný popis. |
 |    Vlastnosti        |Další vlastnosti od výrobce |
@@ -119,9 +119,9 @@ Další informace o objektech naleznete v [Swagger](https://aka.ms/FarmBeatsData
 
 **Požadavek rozhraní API na vytvoření metadat**
 
-Chcete-li vytvořit požadavek rozhraní API, zkombinujete metodu HTTP (POST), adresu URL služby API, identifikátor URI k prostředku, který se má dotazovat, odešlete data pro vytvoření nebo odstranění žádosti a přidáte jednu nebo více hlaviček požadavku HTTP. Adresa URL služby API je koncový bod rozhraní API, tj. adresa URL centra dat (https://<yourdatahub>. azurewebsites.net).  
+Chcete-li vytvořit požadavek rozhraní API, zkombinujete metodu HTTP (POST), adresu URL služby API, identifikátor URI k prostředku, který se má dotazovat, odešlete data pro vytvoření nebo odstranění žádosti a přidáte jednu nebo více hlaviček požadavku HTTP. Adresa URL služby API je koncový bod rozhraní API, tj. adresa URL centra dat (https://\<yourdatahub >. azurewebsites. NET)  
 
-**Ověřování**:
+**Ověřování:**
 
 FarmBeats data hub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje vygenerované v předchozí části.
 
@@ -134,6 +134,28 @@ Pomocí výše uvedených přihlašovacích údajů může volající požádat 
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
+
+Níže je uveden vzorový kód Pythonu, který poskytuje přístupový token, který se dá použít k následnému volání rozhraní API do FarmBeats: 
+
+```python
+import azure 
+
+from azure.common.credentials import ServicePrincipalCredentials 
+import adal 
+#FarmBeats API Endpoint 
+ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
+CLIENT_ID = "<Your Client ID>"   
+CLIENT_SECRET = "<Your Client Secret>"   
+TENANT_ID = "<Your Tenant ID>" 
+AUTHORITY_HOST = 'https://login.microsoftonline.com' 
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
+#Authenticating with the credentials 
+context = adal.AuthenticationContext(AUTHORITY) 
+token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
+#Should get an access token here 
+access_token = token_response.get('accessToken') 
+```
+
 
 **Hlavičky požadavku HTTP**:
 
@@ -271,6 +293,26 @@ Pro zpracování musíte odeslat telemetrii do Azure Event hub. Azure EventHub j
 **Poslat zprávu telemetrie jako klienta**
 
 Jakmile máte připojení navázané jako klient EventHub, můžete odesílat zprávy na EventHub jako JSON.  
+
+Tady je ukázkový kód Pythonu, který odesílá telemetrii jako klienta do zadaného centra událostí:
+
+```python
+import azure
+from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
+EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
+EVENTHUBNAME = "<EventHub Name provided by customer>"
+
+write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
+sender = write_client.add_sender(partition="0")
+write_client.run()
+for i in range(5):
+    telemetry = "<Canonical Telemetry message>"
+    print("Sending telemetry: " + telemetry)
+    sender.send(EventData(telemetry))
+write_client.stop()
+
+```
+
 Převeďte historický formát dat ze senzorů na Kanonický formát, který Azure FarmBeats rozumí. Formát kanonické zprávy je následující:  
 
 ```json

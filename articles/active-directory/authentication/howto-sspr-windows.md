@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44e25efcb068fe51f05dbbde50e8a96da492a735
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381227"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847282"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postupy: povolení resetování hesla z přihlašovací obrazovky Windows
 
@@ -50,12 +50,12 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
 - Správce musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal.
 - **Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.**
 - Požadavky na síťový proxy server
-   - Zařízení s Windows 10 
+   - Zařízení s Windows 10 
        - Port 443 pro `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com`
        - Zařízení s Windows 10 podporují jenom konfiguraci proxy serveru na úrovni počítače.
 - Spusťte aspoň Windows 10, verze z dubna 2018 Update (v1803) a zařízení musí být buď:
-    - Připojeno k Azure AD
-    - Připojeno k hybridní službě Azure AD
+    - Připojené k Azure AD
+    - Připojené k hybridní službě Azure AD
 
 ### <a name="enable-for-windows-10-using-intune"></a>Povolení pro Windows 10 pomocí Intune
 
@@ -124,7 +124,7 @@ Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Win
 
 ![Příklad Windows 7 klikl na "Zapomenuté heslo?" Tok SSPR](media/howto-sspr-windows/windows-7-sspr.png)
 
-#### <a name="silent-installation"></a>Tichá instalace
+#### <a name="silent-installation"></a>Bezobslužná instalace
 
 - Pro tichou instalaci použijte příkaz "msiexec/i SsprWindowsLogon. PROD. msi/Qn"
 - Pro tichou odinstalaci použijte příkaz "msiexec/x SsprWindowsLogon. PROD. msi/Qn"

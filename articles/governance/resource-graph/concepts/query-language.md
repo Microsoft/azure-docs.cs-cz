@@ -1,14 +1,14 @@
 ---
 title: Porozumění dotazovacímu jazyku
 description: Popisuje tabulky grafů prostředků a dostupné Kusto datové typy, operátory a funkce použitelné pro Azure Resource Graph.
-ms.date: 10/21/2019
+ms.date: 12/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: baef46f4ba6f899c2c0a1392f87006223d75a4e1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a3503ce8d83b5bd47872db4b1de0eadb88be432c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959056"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851209"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
@@ -26,7 +26,7 @@ Graf prostředků poskytuje několik tabulek pro data, která uchovává o Sprá
 
 |Tabulky grafů prostředků |Popis |
 |---|---|
-|Prostředky |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
+|Materiály |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
 |ResourceContainers |Zahrnuje předplatné (ve verzi Preview--`Microsoft.Resources/subscriptions`) a typy prostředků a data skupiny prostředků (`Microsoft.Resources/subscriptions/resourcegroups`). |
 |AlertsManagementResources |Zahrnuje prostředky _související_ s `Microsoft.AlertsManagement`. |
 |SecurityResources |Zahrnuje prostředky _související_ s `Microsoft.Security`. |
@@ -65,14 +65,15 @@ Graf prostředků podporuje všechny KQL [datové typy](/azure/kusto/query/scala
 
 Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s konkrétními ukázkami:
 
-|KQL |Ukázkový dotaz grafu prostředků |Poznámky: |
+|KQL |Ukázkový dotaz grafu prostředků |Poznámky |
 |---|---|---|
 |[count](/azure/kusto/query/countoperator) |[Počet trezorů klíčů](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[Zobrazit odlišné hodnoty pro konkrétní alias](../samples/starter.md#distinct-alias-values) | |
 |[zvětšení](/azure/kusto/query/extendoperator) |[Počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[Trezor klíčů s názvem předplatného](../samples/advanced.md#join) |Podporované charaktery spojení: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [LeftOuter](/azure/kusto/query/joinoperator#left-outer-join). Omezení 3 `join` v jednom dotazu. Vlastní strategie spojení, jako je připojení všesměrového vysílání, nejsou povolené. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
 |[počtu](/azure/kusto/query/limitoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum `take` |
-|[MV – rozbalit](/azure/kusto/query/mvexpandoperator) |[Seznam Cosmos DB s konkrétními umístěními pro zápis](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max. 400 |
+|[mvexpand](/azure/kusto/query/mvexpandoperator) | | Starší verze operátora místo toho použijte `mv-expand`. _RowLimit_ max. 400. Výchozí hodnota je 128. |
+|[MV – rozbalit](/azure/kusto/query/mvexpandoperator) |[Seznam Cosmos DB s konkrétními umístěními pro zápis](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max. 400. Výchozí hodnota je 128. |
 |[za](/azure/kusto/query/orderoperator) |[Výpis prostředků seřazených podle názvu](../samples/starter.md#list-resources) |Synonymum `sort` |
 |[project](/azure/kusto/query/projectoperator) |[Výpis prostředků seřazených podle názvu](../samples/starter.md#list-resources) | |
 |[project-away](/azure/kusto/query/projectawayoperator) |[Odebrat sloupce z výsledků](../samples/advanced.md#remove-column) | |

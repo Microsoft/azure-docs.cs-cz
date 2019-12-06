@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3f2a60367a8b76464611878e850fff0c4ba8803
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381388"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847384"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Řešení potíží se kombinovanou registrací zabezpečení informací (Preview)
 
@@ -35,7 +35,7 @@ Události protokolované pro kombinovanou registraci jsou v kategorii metody ov�
 
 V následující tabulce jsou uvedeny všechny události auditu generované kombinovanou registrací:
 
-| Aktivita | Status | Důvod | Popis |
+| Aktivita | Stav | Důvod | Popis |
 | --- | --- | --- | --- |
 | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Úspěch | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Tato událost nastane, pokud uživatel úspěšně dokončil registraci.|
 | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Selhání | Uživatel zrušil registraci bezpečnostních údajů. | K této události dojde, když uživatel zruší registraci z režimu přerušení.|
@@ -73,7 +73,7 @@ Pokud jako správce chcete resetovat nastavení Multi-Factor Authentication uži
 
 Následující kroky vám pomůžou vrátit uživatele nebo skupinu uživatelů.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 1. Nainstalujte příslušné moduly Azure AD PowerShellu. V okně PowerShellu spusťte tyto příkazy a nainstalujte moduly:
 

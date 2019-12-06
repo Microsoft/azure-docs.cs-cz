@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6b59995dc09c0ecf1e5700d8337bd30074083f76
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cd6cbf21a392f68db707b9c0184320316d45ffe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73483913"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851022"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -24,7 +24,7 @@ Azure Key Vault pomáhá vyřešit následující problémy:
 - **Správa tajných klíčů** – Azure Key Vault je možné využít k zabezpečenému ukládání tokenů, hesel, certifikátů, klíčů rozhraní API a dalších tajných klíčů a důsledné kontrole přístupu k nim.
 - **Správa klíčů** – Azure Key Vault se dá použít taky jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
 - **Správa certifikátů** – Azure Key Vault je taky služba, která umožňuje snadné zřizování, správu a nasazování veřejných a privátních certifikátů SSL/TLS (Secure Sockets Layer/Transport Layer Security) pro použití s Azure a interními připojenými prostředky. 
-- **Ukládání tajných klíčů chráněných moduly hardwarového zabezpečení (HSM)** – klíče a tajné klíče je možné chránit pomocí softwaru nebo modulů HSM ověřených podle standardu FIPS 140-2 Level 2.
+- **Ukládání tajných klíčů zajištěných moduly hardwarového zabezpečení** – tajné klíče a klíče je možné chránit buď pomocí softwaru, nebo ověřeného HSM úrovně 2 FIPS 140-2.
 
 ## <a name="why-use-azure-key-vault"></a>Proč používat Azure Key Vault?
 
@@ -58,9 +58,9 @@ Máte kontrolu nad svými protokoly, které můžete zabezpečit prostřednictv�
 
 ### <a name="simplified-administration-of-application-secrets"></a>Zjednodušená správa tajných klíčů aplikací
 
-Pokud ukládáte cenná data, musíte provést několik kroků. Bezpečnostní informace musí být zabezpečené, musí být v rámci životního cyklu, musí být vysoce dostupné. Azure Key Vault zjednodušuje proces splnění těchto požadavků:
+Pokud ukládáte cenná data, musíte provést několik kroků. Bezpečnostní informace musí být zabezpečené, musí následovat po životním cyklu a musí být vysoce dostupná. Azure Key Vault zjednodušuje proces splnění těchto požadavků:
 
-- Odstraňuje potřebu interní znalosti modulů hardwarového zabezpečení.
+- Odstranění nutnosti interních znalostí modulů hardwarového zabezpečení.
 - Rychle vertikálně navyšuje kapacitu s ohledem na špičky využití ve vaší organizaci.
 - Replikuje obsah služby Key Vault v jedné oblasti do sekundární oblasti. Replikace dat zajišťuje vysokou dostupnost a trvá od správce k aktivaci převzetí služeb při selhání potřebnou akci.
 - Poskytuje standardní možnosti správy Azure prostřednictvím portálu, Azure CLI nebo PowerShellu.

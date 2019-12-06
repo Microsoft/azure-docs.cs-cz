@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98bf62dff3e6c642f5de775f2d5bf8682ecea169
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 84da00b7d6ef49fcdcc91bf6374d8c8f48a034da
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164923"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848693"
 ---
 # <a name="enable-multi-factor-authentication-for-your-organization"></a>Povolení Multi-Factor Authentication pro vaši organizaci
 
@@ -55,10 +55,10 @@ Doporučením je použití [zásad podmíněného přístupu](../conditional-acc
 
 |   | Výchozí nastavení zabezpečení | Všechny ostatní metody |
 | --- | --- | --- |
-| Oznámení prostřednictvím mobilní aplikace | × | × |
+| Oznámení přes mobilní aplikaci | × | × |
 | Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | × |
 | Textová zpráva na telefon |   | × |
-| Zavolat na telefon |   | × |
+| Telefonní hovor |   | × |
 | Hesla aplikací |   | × * * |
 
 \* * Hesla aplikací jsou k dispozici pouze v případě MFA pro jednotlivé uživatele se staršími scénáři ověřování, pokud jsou povolena správci.

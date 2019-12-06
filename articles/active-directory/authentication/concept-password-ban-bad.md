@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27530b143e46acad4152e8333836cbe9c79fab17
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168090"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848608"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminujte chybná hesla ve vaší organizaci.
 
@@ -65,7 +65,7 @@ Příklad: Uvažujme zákazníka s názvem "contoso", který je založený na Lo
 
 Místo toho je mnohem efektivnější a bezpečné zablokovat jenom základní Klíčové výrazy:
 
-- Contoso
+- "Contoso"
 - London
 - Pomůck
 

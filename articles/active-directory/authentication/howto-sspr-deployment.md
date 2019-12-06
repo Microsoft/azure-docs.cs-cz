@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9f340ad12fbf26190a17bc4df97bfc95473093c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bc2c68c53a7c03d1de08e5cde528f27aa61b0096
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381290"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847265"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Nasazení samoobslužného resetování hesla Azure AD
 
@@ -31,7 +31,7 @@ Pomůže uživatelům rychle se zaregistrovat tím, že nasadí SSPR spolu s jin
 
 Před nasazením SSPR organizace mohou chtít určit, kolik v průběhu času proběhne volání technické podpory pro resetování hesla, a průměrné náklady na každé volání. Můžou k tomu použít toto nasazení dat, aby se zobrazila hodnota, kterou SSPR přináší vaší organizaci.  
 
-## <a name="how-sspr-works"></a>Jak funguje SSPR
+## <a name="how-sspr-works"></a>Jak SSPR funguje
 
 1. Když se uživatel pokusí resetovat heslo, musí ověřit jejich dříve registrovanou metodu ověřování nebo metody, aby prokázal jejich identitu.
 1. Pak uživatel zadá nové heslo.
@@ -62,10 +62,10 @@ K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nas
 | **Metody ověřování** | Metody ověřování vyžadované k registraci | Vždy 1, než je vyžadováno pro resetování |
 |   | Metody ověřování vyžadované k resetování | Jedna nebo dvě |
 | **Registrace** | Při přihlášení vyžadovat registraci uživatelů | Ano |
-|   | Počet dní, než se uživatelům zobrazí výzva k opětovnému potvrzení ověřovacích informací | 90 – 180 dnů |
+|   | Počet dní, než se uživatelům zobrazí výzva k potvrzení jejich ověřovacích informací | 90 – 180 dnů |
 | **Oznámení** | Upozornit uživatele na resetování hesla | Ano |
 |   | Upozornit všechny správce na resetování hesla jiného správce | Ano |
-| **Uživatelských** | Přizpůsobení odkazu na helpdesk | Ano |
+| **Uživatelských** | Přizpůsobit odkaz na helpdesk | Ano |
 |   | E-mail nebo adresa URL vlastního helpdesku | Web podpory nebo e-mailová adresa |
 | **Místní integrace** | Zápis hesel zpátky do místní služby AD | Ano |
 |   | Povolí uživatelům odemknout účet bez resetování hesla. | Ano |
@@ -76,7 +76,7 @@ Při povolování samoobslužného resetování hesla vyberte skupinu zabezpeče
 
 Pokud plánujete službu spustit podrobněji, doporučujeme, abyste použili možnost vše a vynutili SSPR pro všechny v organizaci. Pokud nemůžete nastavit na vše, vyberte příslušnou skupinu zabezpečení Azure AD nebo skupinu AD synchronizovanou do Azure AD.
 
-### <a name="authentication-methods"></a>Metody ověřování
+### <a name="authentication-methods"></a>Metody ověření
 
 Nastavte metody ověřování vyžadované k registraci aspoň na jedno číslo, které se vyžaduje pro resetování. Povolení více uživatelům umožní pružnou flexibilitu, když je potřeba resetovat.
 
