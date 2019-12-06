@@ -48,13 +48,13 @@
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
         - name: 3. Zjištění mínění z projevů uživatele
           href: tutorial-publish-settings.md
-    - name: Sestavování aplikací
+    - name: Vytvoření a použití entit
       items:
-        - name: Získání správně formátovaných dat s využitím regulárních výrazů
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Získání přesné shody textu s využitím seznamů
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: Získání souvisejících dat s využitím rolí entit
+        - name: Entity regulárního výrazu
+          href: tutorial-regex-entity.md
+        - name: Entity seznamu
+          href: tutorial-list-entity.md
+        - name: Role entit
           href: tutorial-entity-roles.md
           displayName: 'roles, geographyV2, context'
         - name: Seskupení a extrakce souvisejících dat s využitím složených entit

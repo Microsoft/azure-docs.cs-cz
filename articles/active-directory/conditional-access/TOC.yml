@@ -12,10 +12,6 @@
       href: require-tou.md
     - name: 'Blokování přístupu, pokud se zjistí riziko relace'
       href: app-sign-in-risk.md
-- name: Kurzy
-  items:
-    - name: Migrace klasických zásad MFA
-      href: policy-migration-mfa.md
 - name: Koncepty
   expanded: false
   items:
@@ -37,6 +33,8 @@
       href: service-dependencies.md
     - name: Nástroj What If
       href: what-if-tool.md
+    - name: Migrace klasických zásad
+      href: policy-migration.md
     - name: Zásady základní ochrany
       href: concept-baseline-protection.md
 - name: Návody
@@ -83,7 +81,7 @@
     - name: Kontroly četnosti přihlášení a trvalosti prohlížeče
       href: howto-conditional-access-session-lifetime.md
     - name: Migrace klasických zásad
-      href: policy-migration.md
+      href: policy-migration-mfa.md
     - name: Využití podmíněného přístupu
       href: howto-conditional-access-adoption-kit.md
     - name: Řešení potíží

@@ -203,6 +203,10 @@
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Vytvoření oboru názvů s tématem, předplatným a pravidlem'
               href: service-bus-resource-manager-namespace-topic-with-rule.md
+    - name: Zabezpečení
+      items:
+        - name: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat (Preview)
+          href: configure-customer-managed-key.md
     - name: Řešení potíží
       items:
         - name: Průvodce odstraňováním potíží

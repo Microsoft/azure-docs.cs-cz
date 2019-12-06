@@ -126,9 +126,6 @@
         - name: Inicializace uzlů clusteru
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
-        - name: Vlastní kontejnery
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
         - name: Clustery s podporou GPU
           href: /azure/databricks/clusters/gpu
           maintainContext: true
@@ -226,9 +223,6 @@
       maintainContext: true
     - name: Data
       items:
-        - name: Systém souborů Databricks (DBFS)
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
         - name: Databáze a tabulky
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -317,6 +311,9 @@
             - name: Soubory ZIP
               href: /azure/databricks/data/data-sources/zip-files
               maintainContext: true
+        - name: Systém souborů Databricks (DBFS)
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
@@ -829,8 +826,8 @@
             - name: Odvozování modelů s využitím nástroje TensorFlow
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: Ladění výkonu odvozování modelů
-              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
+            - name: Referenční řešení pro odvozování modelů distribuovaných imagí
+              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
               maintainContext: true
     - name: MLflow
       items:
@@ -1066,9 +1063,6 @@
             - name: Přehled konfigurace clusteru
               href: /azure/databricks/administration-guide/clusters/index
               maintainContext: true
-            - name: Povolení služeb kontejneru
-              href: /azure/databricks/administration-guide/clusters/container-services
-              maintainContext: true
             - name: Povolení Databricks Runtime pro Genomics
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
               maintainContext: true
@@ -1137,9 +1131,6 @@
               maintainContext: true
             - name: Nastavení konfigurace přepisuje výchozí nastavení
               href: /azure/databricks/kb/clusters/conf-overwrites-default-settings
-              maintainContext: true
-            - name: Spouštění knihoven JNI na exekutorech s jedním jádrem
-              href: /azure/databricks/kb/clusters/multiple-executors-single-worker
               maintainContext: true
             - name: Přepsání konfigurací log4j
               href: /azure/databricks/kb/clusters/overwrite-log4j-logs
@@ -1544,6 +1535,9 @@
           items:
             - name: Poznámky k verzi platformy
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Prosinec 2019
+              href: /azure/databricks/release-notes/product/2019/december
               maintainContext: true
             - name: Listopad 2019
               href: /azure/databricks/release-notes/product/2019/november

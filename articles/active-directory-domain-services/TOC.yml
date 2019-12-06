@@ -87,7 +87,7 @@
           href: deploy-kcd.md
         - name: Konfigurace zásad uzamykání účtů a hesel
           href: password-policy.md
-        - name: Povolení událostí auditu zabezpečení (Preview)
+        - name: Povolení událostí auditu zabezpečení
           href: security-audit-events.md
     - name: Virtuální počítače připojené k doméně
       items:
