@@ -60,9 +60,6 @@
         - name: Seskupení a extrakce souvisejících dat s využitím složených entit
           href: luis-tutorial-composite-entity.md
           displayName: roles
-        - name: Získání názvů s využitím jednoduchých entit
-          href: luis-quickstart-primary-and-secondary-data.md
-          displayName: roles
     - name: Vylepšení aplikace
       items:
         - name: Oprava nejistých předpovědí

@@ -64,8 +64,6 @@
           href: howto-conditional-access-policy-compliant-device.md
     - name: Blokování starší verze ověřování
       href: block-legacy-authentication.md
-    - name: Podmíněný přístup pro registrace MFA
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Vyžadování klientem schválených aplikací
       href: app-based-conditional-access.md
     - name: Vyžadování zásad ochrany aplikací
