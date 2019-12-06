@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 61deb5361c9857956318f8b9b4ca836fcfa65d48
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e11f560c2b101d86d41feb3f6c93cffe7c1a748d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798125"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851447"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generovat heatmapu vlhkosti půdy
 
@@ -24,7 +24,7 @@ Tento článek popisuje proces generování heatmapu vlhkosti v půdě pro vaši
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Zajistěte následující:  
+Zajistěte, aby:  
 
 - Předplatné Azure.
 - Spuštěná instance Azure FarmBeats.
@@ -85,7 +85,7 @@ Použijte k tomu následující postup:
 
 1. Na stránce **úlohy** ověřte **stav úlohy** pro úlohu, kterou jste vytvořili v posledním postupu.
 2. Po *úspěšném*zobrazení stavu úlohy klikněte na tlačítko **mapy** v nabídce.
-3. Vyhledejte mapu podle dne vytvoření ve formátu < půda-moisture_MyFarm_YYYY-MM-DD >.
+3. Vyhledejte mapu podle dne vytvoření ve formátu < půdní-moisture_MyFarm_YYYY-MM-DD >.
 4. Vyberte mapu ve sloupci **název** , zobrazí se automaticky otevírané okno s náhledem vybrané mapy.
 5. Vyberte **Download** (Stáhnout). Mapa se stáhne a uloží do místní složky vašeho počítače.
 
@@ -93,4 +93,4 @@ Použijte k tomu následující postup:
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně vygenerovali heatmapu vlhkosti půdy, se naučíte, jak [vygenerovat senzory umístění](generate-maps.md#sensor-placement-maps) a ingestovat [historická data telemetrie](ingest-historical-telemetry-data.md). 
+Teď, když jste úspěšně vygenerovali heatmapu vlhkosti půdy, se naučíte, jak [vygenerovat senzory umístění](generate-maps.md#sensor-placement-map) a ingestovat [historická data telemetrie](ingest-historical-telemetry-data.md). 

@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace požadovaného stavu, S
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 7fb24d53876ab8c06fca4fbfe929c06a889335f3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786346"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872685"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Rychlý Start: připojení počítačů k Azure pomocí ARC Azure pro servery – PowerShell
 
@@ -54,6 +54,12 @@ DisplayName           : Hybrid-RP
 Id                    : 5be92c87-01c4-42f5-bade-c1c10af87758
 Type                  :
 ```
+
+> [!NOTE] 
+> Vaše oprávnění hlavního názvu služby (SPN) si může nějakou dobu trvat, než se správně naplní. Pokud chcete nastavit oprávnění mnohem rychleji, spusťte následující přiřazení role.
+> ``` PowerShell
+> New-AzRoleAssignment -RoleDefinitionName "Azure Connected Machine Onboarding" -ServicePrincipalName $sp.ApplicationId
+> ```
 
 Teď načtěte heslo pomocí PowerShellu.
 

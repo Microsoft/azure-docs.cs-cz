@@ -2,13 +2,13 @@
 title: Získat data dodržování zásad
 description: Azure hodnocení zásad a efekty určení dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 02/01/2019
-ms.topic: conceptual
-ms.openlocfilehash: 8cb95f0a9479da27ea6b9ef8ec6836f915aa4030
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: how-to
+ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132806"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873144"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -84,12 +84,12 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 V přiřazení, prostředek je **nekompatibilní** pokud jeho není postupujte z pravidel zásady nebo iniciativa.
 Následující tabulka ukazuje, jak různé zásady účinky pracovat s vyhodnocením podmínek pro výsledný stav dodržování předpisů:
 
-| Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
+| Stav prostředku | Efekt | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Pravda | Neodpovídající |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Odpovídající |
-| Nová | Audit, AuditIfNotExist\* | Pravda | Neodpovídající |
-| Nová | Audit, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | V souladu s předpisy |
+| Novinka | Audit, AuditIfNotExist\* | Pravda | Neodpovídající |
+| Novinka | Audit, AuditIfNotExist\* | Nepravda | V souladu s předpisy |
 
 \* Účinky Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE.
 Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.

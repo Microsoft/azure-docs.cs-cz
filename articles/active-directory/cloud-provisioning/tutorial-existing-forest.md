@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf151b98c813feba9de317879106718551b11f9d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: aa14b45235f2a62f05e84efafc41b899dc531d49
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814476"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868673"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Integrace existující doménové struktury a nové doménové struktury s jedním tenant Azure AD
 
@@ -45,7 +45,7 @@ V tomto scénáři je existující doménová struktura synchronizovaná pomocí
      | --- | --- |
      | **80** | Stahuje seznamy odvolaných certifikátů (CRL) při ověřování certifikátu SSL. |
      | **443** | Zpracovává veškerou odchozí komunikaci se službou. |
-     | **8080** (volitelné) | Agenti hlásí svůj stav každých 10 minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. Port _8080 se nepoužívá pro_ přihlášení uživatelů. |
+     | **8080** (volitelné) | Agenti hlásí svůj stav každých 10 minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. |
      
      Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
    - Pokud vaše brána firewall nebo proxy server umožňují zadat bezpečné přípony, přidejte připojení k **\*. msappproxy.NET** a **\*. ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.

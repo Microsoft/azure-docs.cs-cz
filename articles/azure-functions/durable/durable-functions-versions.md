@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 93c35eb4f69cc4f9b16f669d96c2df53f50bcf84
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231197"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849798"
 ---
 # <a name="durable-functions-versions-overview"></a>Přehled verzí Durable Functions
 
@@ -55,7 +55,7 @@ Durable Functions 2. x přináší několik přerušujících změn. Aplikace Du
 Durable Functions 2. x používá nové schéma Host. JSON. Hlavní změny od 1. x zahrnují:
 
 * `"storageProvider"` (a pododdíl `"azureStorage"`) pro konfiguraci specifickou pro úložiště.
-* `"tracking"` pro sledování a konfiguraci protokolování.
+* `"tracing"` pro trasování a konfiguraci protokolování.
 * `"notifications"` (a pododdíl `"eventGrid"`) pro konfiguraci oznámení služby Event Grid.
 
 Podrobnosti najdete v [referenční dokumentaci k Durable Functions Host. JSON](durable-functions-bindings.md#durable-functions-2-0-host-json) .

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 163d1f7f457dcbca7fbb9e331ec889bcc0894dfc
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814460"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868758"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudového zřizování pro existující synchronizovanou doménovou strukturu AD 
 
@@ -28,7 +28,11 @@ Tento kurz vás provede pilotním zřizováním cloudu pro testovací doménovou
 Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 1. Ujistěte se, že jste obeznámeni se základy zřizování cloudu. 
 2. Ujistěte se, že používáte Azure AD Connect Sync verze 1.4.32.0 nebo novější a že jste nakonfigurovali pravidla synchronizace podle zdokumentovaného postupu. Při pilotním nasazení budete z rozsahu Azure AD Connect synchronizace odebírat testovací organizační jednotku nebo skupinu. Přesunutí objektů z oboru vede k odstranění těchto objektů ve službě Azure AD. V případě uživatelských objektů se objekty ve službě Azure AD odpouštějí a dají se obnovit. V případě objektů skupin se objekty ve službě Azure AD neodstraní a nelze je obnovit. V Azure AD Connect synchronizaci se zavedl nový typ odkazu, který zabrání odstranění v případě pilotního scénáře. 
-3. Zajistěte, aby objekty v pilotním oboru měly naplněné služby MS-DS-consistencyGUID, aby zřízení cloudu neodpovídalo objektům. Upozorňujeme, že Azure AD Connect Sync neplní ve výchozím nastavení pro objekty skupiny consistencyGUID ms-DS-.
+3. Zajistěte, aby objekty v pilotním oboru měly naplněné služby MS-DS-consistencyGUID, aby zřízení cloudu neodpovídalo objektům. 
+
+   > [!NOTE]
+   > Azure AD Connect Sync neplní ve výchozím nastavení pro objekty skupin skupinu *MS-DS-consistencyGUID* . Postupujte podle kroků popsaných v [tomto blogovém příspěvku](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/) , abyste naplnili *MS-DS-consistencyGUID* pro skupinové objekty.
+
 4. Toto je pokročilý scénář. Ujistěte se, že postup je přesně popsaný v tomto kurzu.
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -36,10 +40,11 @@ Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Testovací prostředí s Azure AD Connect synchronizace verze 1.4.32.0 nebo novější
 - Organizační jednotka nebo skupina, která je v rozsahu synchronizace a kterou lze použít pro pilotní nasazení. Doporučujeme začít s malou sadou objektů.
 - Server se systémem Windows Server 2012 R2 nebo novějším, který bude hostovat agenta zřizování.  Nemůže se jednat o stejný server, jako Azure AD Connect Server.
+- Zdrojová kotva pro synchronizaci AAD Connect musí být buď *objectGUID* , nebo *MS-DS-consistencyGUID* .
 
 ## <a name="update-azure-ad-connect"></a>Aktualizovat Azure AD Connect
 
-Jako minimum byste měli mít [službu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.4.32.0. Chcete-li aktualizovat Azure AD Connect synchronizaci, proveďte kroky v [Azure AD Connect: upgrade na nejnovější verzi](../hybrid/how-to-upgrade-previous-version.md).  Tento krok je k dispozici v případě, že vaše testovací prostředí nemá nejnovější verzi Azure AD Connect.
+Jako minimum byste měli mít [službu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.4.32.0. Chcete-li aktualizovat Azure AD Connect synchronizaci, proveďte kroky v [Azure AD Connect: upgrade na nejnovější verzi](../hybrid/how-to-upgrade-previous-version.md).  
 
 ## <a name="stop-the-scheduler"></a>Zastavení plánovače
 Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místním adresáři, pomocí plánovače. Chcete-li upravit a přidat vlastní pravidla, je třeba zakázat Plánovač, aby při práci na tomto procesu neběžely synchronizace.  Použijte k tomu následující postup:
@@ -47,6 +52,9 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
 1.  Na serveru se spuštěným Azure AD Connect synchronizace otevřete PowerShell s oprávněními správce.
 2.  Spusťte `Stop-ADSyncSyncCycle`.  Stiskněte ENTER.
 3.  Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+
+>[!NOTE] 
+>Pokud používáte vlastní Plánovač pro synchronizaci AAD Connect, zakažte prosím Plánovač. 
 
 ## <a name="create-custom-user-inbound-rule"></a>Vytvořit vlastní příchozí pravidlo pro uživatele
 
@@ -81,7 +89,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
  6. Na stránce **transformace** přidejte konstantní transformaci: Flow true do atributu cloudNoFlow. Klikněte na tlačítko **Přidat**.
  ![vlastní pravidlo](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
-Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stejný postup.
+Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stejný postup. Opakujte kroky podle nakonfigurované doménové struktury AD Connector/AD na jednu. 
 
 ## <a name="create-custom-user-outbound-rule"></a>Vytvořit vlastní pravidlo odchozího uživatele
 
@@ -92,7 +100,7 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 
     **Název:** Udělení pravidla smysluplnému názvu<br>
     **Popis:** Přidat smysluplný popis<br> 
-    **připojený systém:** vyberte konektor služby AD, pro který píšete vlastní pravidlo synchronizace.<br>
+    **připojený systém:** vyberte konektor AAD, pro který píšete vlastní pravidlo synchronizace.<br>
     **Typ připojeného systémového objektu:** Uživatelský<br>
     **Typ objektu úložiště metaverse:** Uživateli<br>
     **Typ odkazu:** JoinNoFlow<br>
@@ -109,48 +117,38 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 
 Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stejný postup.
 
-## <a name="scope-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Rozsah Azure AD Connect synchronizace, aby se vyloučila pilotní organizační jednotka
-Nyní nakonfigurujete Azure AD Connect pro vyloučení pilotní organizační jednotky, která byla vytvořena výše.  Agent zřizování cloudu bude zpracovávat synchronizaci těchto uživatelů.  K určení oboru Azure AD Connect použijte následující postup.
-
- 1. Na serveru se systémem Azure AD Connect dvakrát klikněte na ikonu Azure AD Connect.
- 2. Klikněte na **Konfigurovat** .
- 3. Vyberte možnost **přizpůsobit možnosti synchronizace** a klikněte na tlačítko Další.
- 4. Přihlaste se ke službě Azure AD a klikněte na **Další**.
- 5. Na obrazovce **připojit adresáře** klikněte na **Další**.
- 6. Na obrazovce **filtrování domén a organizačních jednotek** vyberte možnost **synchronizovat vybrané domény a organizační jednotky**.
- 7. Rozbalte doménu a zrušte **Výběr** organizační jednotky **procesorů** .  Klikněte na **Další**.
-Rozsah ![](media/tutorial-existing-forest/scope1.png)</br>
- 9. Na obrazovce **volitelné funkce** klikněte na **Další**.
- 10. Na obrazovce **připraveno ke konfiguraci** klikněte na **Konfigurovat**.
- 11. Po dokončení klikněte na tlačítko **konec**. 
-
-## <a name="start-the-scheduler"></a>Spustit Plánovač
-Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místním adresáři, pomocí plánovače. Teď, když jste změnili pravidla, můžete znovu spustit Plánovač.  Použijte k tomu následující postup:
-
-1.  Na serveru se spuštěným Azure AD Connect synchronizace otevřete PowerShell s oprávněními správce.
-2.  Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $true`.
-3.  Spusťte `Start-ADSyncSyncCycle`.  Stiskněte ENTER.  
-
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Instalace agenta pro zřizování Azure AD Connect
-1. Přihlaste se k serveru připojenému k doméně.  Pokud používáte základní kurz pro [prostředí AD a Azure](tutorial-basic-ad-azure.md) , bude to DC1.
-2. Přihlaste se k Azure Portal pomocí přihlašovacích údajů globálního správce jenom pro Cloud.
-3. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **Spravovat zřizování (Preview)** .</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
-4. Klikněte na Stáhnout agenta.
-5. Spuštění agenta pro zřizování Azure AD Connect
-6. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
+1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.  Pokud používáte [Základní kurz prostředí AD a prostředí Azure](tutorial-basic-ad-azure.md) , bude CP1.
+2. Stáhněte [si Azure AD Connect agenta zřizování](https://go.microsoft.com/fwlink/?linkid=2109037)cloudu.
+3. Spuštění zřizování cloudu Azure AD Connect (AADConnectProvisioningAgent. Installer)
+3. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
 ![Obrazovka Vítejte](media/how-to-install/install1.png)</br>
 
-7. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.  Všimněte si, že pokud máte povolené rozšířené zabezpečení aplikace Internet Explorer, bude přihlášení zablokované.  Pokud se jedná o tento případ, zavřete instalaci, zakažte v Správce serveru rozšířené zabezpečení IE a restartujte instalaci kliknutím na **Průvodce agentem zřizování AAD Connect** .
-8. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce domény služby Active Directory.  Poznámka: účet správce domény by neměl mít požadavky na změnu hesla. V případě vypršení platnosti nebo změny hesla budete muset agenta znovu nakonfigurovat s novými přihlašovacími údaji. Tato operace přidá váš místní adresář.  Klikněte na **Další**.</br>
+4. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.
+5. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce služby Active Directory.  Tato operace přidá váš místní adresář.  Klikněte na **Další**.</br>
 ![Obrazovka Vítejte](media/how-to-install/install3.png)</br>
 
-9. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
+6. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
 ![Obrazovka Vítejte](media/how-to-install/install4.png)</br>
 
-10. Po dokončení této operace by se měla zobrazit Poznámka: **vaše konfigurace agenta byla úspěšně ověřena.**  Můžete kliknout na tlačítko **konec**.</br>
+7. Po dokončení této operace by se měla zobrazit oznámení, že **vaše ověření bylo úspěšné.**  Můžete kliknout na tlačítko **konec**.</br>
 ![Obrazovka Vítejte](media/how-to-install/install5.png)</br>
-11. Pokud se stále zobrazuje úvodní úvodní obrazovka, klikněte na **Zavřít**.
+8. Pokud se stále zobrazuje úvodní úvodní obrazovka, klikněte na **Zavřít**. 1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.
+2. Stáhněte [si Azure AD Connect agenta zřizování](https://go.microsoft.com/fwlink/?linkid=2109037)cloudu.
+3. Spuštění zřizování cloudu Azure AD Connect (AADConnectProvisioningAgent. Installer)
+3. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
+![Obrazovka Vítejte](media/how-to-install/install1.png)</br>
+
+4. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.
+5. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce služby Active Directory.  Tato operace přidá váš místní adresář.  Klikněte na **Další**.</br>
+![Obrazovka Vítejte](media/how-to-install/install3.png)</br>
+
+6. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
+![Obrazovka Vítejte](media/how-to-install/install4.png)</br>
+
+7. Po dokončení této operace by se měla zobrazit oznámení, že **vaše ověření bylo úspěšné.**  Můžete kliknout na tlačítko **konec**.</br>
+![Obrazovka Vítejte](media/how-to-install/install5.png)</br>
+8. Pokud se stále zobrazuje úvodní úvodní obrazovka, klikněte na **Zavřít**.
 
 ## <a name="verify-agent-installation"></a>Ověřit instalaci agenta
 K ověření agenta dochází v Azure Portal a na místním serveru, na kterém je spuštěný agent.
@@ -208,10 +206,35 @@ Nyní ověříte, že uživatelé, kteří byli v místním adresáři, byli syn
 
 Navíc můžete ověřit, jestli uživatel a skupina existují ve službě Azure AD.
 
+## <a name="start-the-scheduler"></a>Spustit Plánovač
+Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místním adresáři, pomocí plánovače. Teď, když jste změnili pravidla, můžete znovu spustit Plánovač.  Použijte k tomu následující postup:
+
+1.  Na serveru se spuštěným Azure AD Connect synchronizace otevřete PowerShell s oprávněními správce.
+2.  Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+3.  Spusťte `Start-ADSyncSyncCycle`.  Stiskněte ENTER.  
+
+>[!NOTE] 
+>Pokud používáte vlastní Plánovač pro synchronizaci AAD Connect, povolte prosím Plánovač. 
+
 ## <a name="something-went-wrong"></a>Něco se pokazilo.
 V případě, že pilotní projekt nefunguje podle očekávání, můžete se vrátit k nastavení Azure AD Connect synchronizace pomocí následujících kroků:
 1.  Zakažte konfiguraci zřizování v Azure Portal. 
 2.  Pomocí nástroje Editor pravidel synchronizace zakažte všechna vlastní pravidla synchronizace vytvořená pro zřizování cloudu. Při vypnutí by se měla u všech konektorů způsobit Úplná synchronizace.
+
+## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Konfigurace Azure AD Connect synchronizace pro vyloučení pilotní organizační jednotky
+Jakmile ověříte, že se uživatelé z pilotní organizační jednotky úspěšně spravují zřizováním cloudu, můžete znovu nakonfigurovat Azure AD Connect pro vyloučení pilotní organizační jednotky, která byla vytvořena výše.  Agent zřizování cloudu zpracuje synchronizaci pro tyto uživatele po přeposílání.  K určení oboru Azure AD Connect použijte následující postup.
+
+ 1. Na serveru se systémem Azure AD Connect dvakrát klikněte na ikonu Azure AD Connect.
+ 2. Klikněte na **Konfigurovat** .
+ 3. Vyberte možnost **přizpůsobit možnosti synchronizace** a klikněte na tlačítko Další.
+ 4. Přihlaste se ke službě Azure AD a klikněte na **Další**.
+ 5. Na obrazovce **připojit adresáře** klikněte na **Další**.
+ 6. Na obrazovce **filtrování domén a organizačních jednotek** vyberte možnost **synchronizovat vybrané domény a organizační jednotky**.
+ 7. Rozbalte doménu a zrušte **Výběr** organizační jednotky **procesorů** .  Klikněte na **Další**.
+Rozsah ![](media/tutorial-existing-forest/scope1.png)</br>
+ 9. Na obrazovce **volitelné funkce** klikněte na **Další**.
+ 10. Na obrazovce **připraveno ke konfiguraci** klikněte na **Konfigurovat**.
+ 11. Po dokončení klikněte na tlačítko **konec**. 
 
 ## <a name="next-steps"></a>Další kroky 
 

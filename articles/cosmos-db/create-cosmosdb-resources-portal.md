@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/01/2019
-ms.openlocfilehash: 0f7102081d5ccd29507917068893b484902a4fb3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 12/02/2019
+ms.openlocfilehash: 9b563f7546710b0cb07573d32b2f3939d8e64085
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708185"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872192"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 
@@ -51,15 +51,15 @@ K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure 
     
     Možná se budete muset posunout doprava, aby se zobrazilo okno **Přidat kontejner** .
     
-    ![Azure Portal Průzkumník dat, přidat podokno kontejneru](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Průzkumník dat na portálu Azure Portal – podokno Přidat kontejner](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
 1.  V podokně **Přidat kontejner** zadejte nastavení pro nový kontejner.
     
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|ToDoList|Jako název nové databáze zadejte *ToDoList* . Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`ani mezeru. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**ID databáze**|ToDoList|Jako název nové databáze zadejte *ToDoList* . Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
-    |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . ID kontejnerů mají stejné požadavky na znaky jako názvy databází.|
+    |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
 
     

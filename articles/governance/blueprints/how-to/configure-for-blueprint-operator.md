@@ -2,13 +2,13 @@
 title: Nastavení prostředí pro operátor podrobného plánu
 description: Přečtěte si, jak nakonfigurovat prostředí Azure pro použití pomocí předdefinované role řízení přístupu na základě role (RBAC).
 ms.date: 08/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 671ac3aaf42bddb3e775baec6838e4c271c4e855
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406376"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873212"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurace prostředí pro operátora podrobného plánu
 

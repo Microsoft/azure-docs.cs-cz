@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 858672a7fcfcfd5f50c91eb769fdd0d42578195f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 36b8a3bba82a338f3aab526d505c4d1e96061ddf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229998"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849118"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý Start: zkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -25,12 +25,12 @@ V tomto rychlém startu použijete analýzu nákladů a prozkoumáte a analyzuje
 
 V tomto rychlém startu se naučíte:
 
-- Kontrola nákladů v analýze nákladů
+- Zkontrolovat náklady v analýze nákladů
 - Přizpůsobit zobrazení nákladů
 - Stažení dat analýzy nákladů
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Analýza nákladů podporuje různé druhy typů účtů Azure. Úplný seznam podporovaných typů účtů najdete v tématu [pochopení cost management dat](understand-cost-mgt-data.md). Chcete-li zobrazit data o nákladech, potřebujete alespoň oprávnění ke čtení pro váš účet Azure.
 
@@ -40,7 +40,7 @@ Informace o přiřazování přístupu k Azure Cost Management datům najdete v 
 
 - Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="review-costs-in-cost-analysis"></a>Kontrola nákladů v analýze nákladů
+## <a name="review-costs-in-cost-analysis"></a>Zkontrolovat náklady v analýze nákladů
 
 Pokud chcete zkontrolovat náklady v analýze nákladů, otevřete obor v Azure Portal a v nabídce vyberte **Analýza nákladů** . Například přejděte na **odběry**, v seznamu vyberte předplatné a v nabídce vyberte **Analýza nákladů** . Pomocí možnosti **Obor** můžete v analýze nákladů přepnout na jiný obor. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
 
@@ -66,7 +66,7 @@ Základní zobrazení analýzy nákladů zahrnuje následující oblasti.
 
 Analýza nákladů má čtyři předdefinovaná zobrazení optimalizovaná pro nejběžnější cíle:
 
-Zobrazení | Odpovědi na dotazy jako
+Zobrazit | Odpovědi na dotazy jako
 --- | ---
 Akumulované náklady | Kolik jsem doposud strávil tento měsíc? Dodržím rozpočet?
 Denní náklady | V posledních 30 dnech bylo zvýšení nákladů za den?
@@ -101,7 +101,9 @@ Obecně můžete očekávat, že se data nebo oznámení pro spotřebované pros
 
 **Seskupit podle** společných vlastností k rozdělení nákladů a identifikaci hlavních přispěvatelů. Chcete-li seskupit podle značek prostředků, například vyberte klíč značky, podle kterého chcete seskupovat. Náklady jsou rozděleny podle každé hodnoty značky a navíc se jedná o další segment pro prostředky, u kterých se tato značka nepoužívá.
 
-Většina [prostředků Azure podporuje označování](../azure-resource-manager/tag-support.md). Některé značky však nejsou k dispozici v Cost Management a fakturaci. Značky skupin prostředků se navíc nepodporují. Cost Management podporuje pouze značky prostředků od data, kdy jsou značky aplikovány přímo na prostředek. Podívejte se na [téma Postup kontroly zásad značek pomocí Azure cost management](https://www.youtube.com/watch?v=nHQYcYGKuyw) videa, kde se dozvíte, jak používat zásady značek Azure ke zlepšení viditelnosti nákladových dat.
+Většina [prostředků Azure podporuje označování](../azure-resource-manager/tag-support.md). Některé značky však nejsou k dispozici v Cost Management a fakturaci. Značky skupin prostředků se navíc nepodporují. Podpora značek se vztahuje na použití hlášené *po* použití značky u prostředku. Značky se nepoužijí zpětně pro kumulativní náklady.
+
+Podívejte se na [téma Postup kontroly zásad značek pomocí Azure cost management](https://www.youtube.com/watch?v=nHQYcYGKuyw) videa, kde se dozvíte, jak používat zásady značek Azure ke zlepšení viditelnosti nákladových dat.
 
 Tady je přehled nákladů na službu Azure pro aktuální měsíc.
 
@@ -136,7 +138,7 @@ Celou datovou sadu můžete zobrazit pro jakékoli zobrazení. Podle toho, jaké
 
 V následující tabulce jsou uvedeny některé nejběžnější možnosti seskupování a filtrování a jejich použití.
 
-| Vlastnost | Kdy je použít |
+| Vlastnost | When to use |
 | --- | --- |
 | **Fakturační období** | Náklady na rozbalení podle faktury za měsíc. Tato možnost je důležitá pro předplatná s průběžnými platbami a vývoj/testování, která nejsou vázaná na kalendářní měsíce. Účty EA/MCA můžou použít kalendářní měsíce ve výběru data nebo v měsíčních členitosti k provedení stejného cíle. |
 | **Typ poplatků** | Rozdělení využití, nákup, refundace a nevyužité náklady na rezervaci Nákupy a refundace rezervací jsou k dispozici pouze v případě, že se používají náklady na akce a nikoli při použití nákladů na amortizaci. Nevyužité náklady na rezervaci jsou dostupné jenom při pohledu na probíhající se náklady na amortizaci. |

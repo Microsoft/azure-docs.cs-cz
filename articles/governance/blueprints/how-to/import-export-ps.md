@@ -2,13 +2,13 @@
 title: Import a export modrotisky pomocí PowerShellu
 description: Naučte se pracovat s definicemi podrobného plánu jako s kódem. Sdílení, Správa zdrojového kódu a jejich správa pomocí příkazů exportu a importu.
 ms.date: 09/03/2019
-ms.topic: conceptual
-ms.openlocfilehash: 2822fd1aea1911ba264113d43595346a612ebc50
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406357"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873195"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import a export definic podrobných plánů pomocí PowerShellu
 
@@ -23,7 +23,7 @@ Plány Azure je možné plně spravovat prostřednictvím Azure Portal. Protože
 
 Bez ohledu na vaše důvody a Správa definic podrobných plánů jako kód přináší výhody. V tomto článku se dozvíte, jak používat příkazy `Import-AzBlueprintWithArtifact` a `Export-AzBlueprintWithArtifact` v modulu [AZ. detail](https://powershellgallery.com/packages/Az.Blueprint/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jsou v Azure modrotisky mírné znalosti. Pokud jste to ještě neudělali, Projděte si následující články:
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3221e6424b449066510667f8067e3bc6d8aec12a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381948"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848625"
 ---
 # <a name="combined-security-information-registration-preview"></a>Registrace informací o kombinovaném zabezpečení (Preview)
 
@@ -47,15 +47,15 @@ Stránky s profilem jsou lokalizovány na základě nastavení jazyka počítač
 
 Kombinovaná registrace podporuje následující metody ověřování a akce:
 
-|   | Registrace | Změnit | Odstranění |
+|   | Registrace | Změnit | Odstranit |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
 | Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
 | Hardwarový token | Ne | Ne | Ano |
-| Phone | Ano | Ano | Ano |
+| Telefon | Ano | Ano | Ano |
 | Alternativní telefon | Ano | Ano | Ano |
 | Telefon do kanceláře | Ne | Ne | Ne |
-| Email | Ano | Ano | Ano |
+| E-mail | Ano | Ano | Ano |
 | Bezpečnostní otázky | Ano | Ne | Ano |
 | Hesla aplikací | Ano | Ne | Ano |
 
@@ -67,7 +67,7 @@ Uživatelé můžou jako výchozí metodu Multi-Factor Authentication nastavit j
 - Microsoft Authenticator – oznámení
 - Ověřovací aplikace nebo hardwarový token – kód.
 - Telefonní hovor.
-- Textová zpráva
+- Textová zpráva.
 
 Jak budeme dál přidávat do Azure AD další metody ověřování, budou tyto metody k dispozici v kombinované registraci.
 
@@ -95,7 +95,7 @@ Tady je několik scénářů, ve kterých můžou být uživatelé vyzváni, aby
 
 Když se registrace vynutila, zobrazí se uživatelům minimální počet metod, které musí být v souladu se zásadami Multi-Factor Authentication a SSPR, od nejvíce po nejméně bezpečnou.
 
-Příklad:
+Například:
 
 - Uživatel je povolený pro SSPR. Zásada SSPR vyžadovala dvě metody resetování a povolení kódu mobilní aplikace, e-mailu a telefonu.
    - Tento uživatel je nutný k registraci dvou metod.

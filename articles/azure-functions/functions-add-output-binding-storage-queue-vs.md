@@ -4,12 +4,12 @@ description: Naučte se, jak přidat výstupní vazbu pro připojení C# vašich
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd899c5cc7aafc5b3349cf4cec9098a849665a2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227430"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849203"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Připojení funkcí k Azure Storage pomocí sady Visual Studio
 
@@ -19,11 +19,11 @@ V tomto článku se dozvíte, jak pomocí sady Visual Studio připojit funkci, k
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Pro snazší použití účtu úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento článek, musíte: 
 
- - Dokončete [část 1 rychlého startu sady Visual Studio] [./Functions-Create-First-Function-vs-Code.MD]. 
+ - Vyplňte [část 1 rychlého startu sady Visual Studio](./functions-create-first-function-vs-code.md). 
 
 - Přihlaste se ke svému předplatnému Azure ze sady Visual Studio.
 
@@ -45,7 +45,7 @@ Vazba úložiště, která používá nastavení `AzureWebJobsStorage` pro přip
 
 Vzhledem k tomu, že používáte výstupní vazbu úložiště front, budete potřebovat rozšíření vazby úložiště nainstalované před spuštěním projektu. S výjimkou triggerů HTTP a Timer jsou vazby implementovány jako balíčky rozšíření. 
 
-1. V nabídce **nástroje** vyberte **správce balíčků NuGet** > **konzolu Správce balíčků**. 
+1. Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet** > **Konzola správce balíčků**. 
 
 1. V konzole nástroje spusťte následující příkaz [Install-Package](/nuget/tools/ps-ref-install-package) pro instalaci rozšíření úložiště:
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f1ac530fe4e20fe26f3a6b7d0111b0bd432928
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381683"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847707"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Monitorování a protokolování ochrany heslem Azure AD
 
@@ -40,7 +40,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události zaznamenané různými součástmi agenta řadiče domény spadají do těchto rozsahů:
 
-|Komponenta |Rozsah ID události|
+|Součást |Rozsah ID události|
 | --- | --- |
 |Knihovna DLL filtru hesel agenta řadiče domény| 10000-19999|
 |Proces hostování služby agenta DC| 20000-29999|
@@ -65,7 +65,7 @@ Klíčovým událostem souvisejícím s ověřováním hesla jsou následující
 
 |   |Změna hesla |Heslo nastaveno|
 | --- | :---: | :---: |
-|Dána |10014 |10015|
+|Průchod |10014 |10015|
 |Selhání (kvůli zásadám hesel zákazníka)| 10016, 30002| 10017, 30003|
 |Selhání (kvůli zásadám hesel Microsoftu)| 10016, 30004| 10017, 30005|
 |Selhání (kvůli kombinovaným zásadám hesel Microsoftu a zákazníků)| 10016, 30026| 10017, 30027|
@@ -309,7 +309,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události jsou protokolovány různými součástmi proxy serveru pomocí následujících rozsahů:
 
-|Komponenta |Rozsah ID události|
+|Součást |Rozsah ID události|
 | --- | --- |
 |Proces hostování služby proxy| 10000-19999|
 |Základní obchodní logika služby proxy| 20000-29999|

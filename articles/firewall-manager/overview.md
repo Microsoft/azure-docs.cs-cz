@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/21/2019
+ms.date: 12/06/2019
 ms.author: victorh
-ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267956"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869557"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Co je verze Preview Azure Firewall Manageru?
 
@@ -53,13 +53,13 @@ Další informace o důvěryhodných poskytovatelích zabezpečení najdete v t�
 
 Snadné směrování provozu do zabezpečeného centra pro filtrování a protokolování bez nutnosti ručního nastavení tras definovaných uživatelem (UDR) ve virtuálních sítích paprsků. Můžete použít poskytovatele třetích stran pro filtrování přenosů větví na Internet (B2I) vedle sebe s Azure Firewall pro větvení na virtuální síť (B2V), virtuální síť a virtuální síť (V2V) a virtuální síť k Internetu (V2I). Pro filtrování provozu V2I můžete také použít poskytovatele třetích stran, pokud pro B2V nebo V2V není vyžadováno Azure Firewall. 
 
-## <a name="region-availability"></a>Dostupnost v oblastech
+## <a name="region-availability"></a>Regionální dostupnost
 
 Verze Public Preview podporuje následující oblasti:
 
 - Západní Evropa, Severní Evropa, Francie – střed, Francie – jih, Velká Británie – jih Velká Británie – západ
 - Austrálie – východ, Austrálie – střed, Austrálie – střed 2, Austrálie – jihovýchod
-- Střední Kanada
+- Kanada – střed
 - Východní USA, Západní USA, Východní USA 2, Střed USA – jih, Západní USA 2, Střed USA, Střed USA – sever, Středozápadní USA
 
 Zásady Azure Firewall lze vytvořit pouze v těchto oblastech, ale lze je použít v různých oblastech. Můžete například vytvořit zásadu v Západní USA a použít ji v Východní USA. 
@@ -70,12 +70,13 @@ Verze Preview Azure Firewall Manageru má následující známé problémy:
 
 |Problém  |Popis  |Omezení rizik  |
 |---------|---------|---------|
-|Ruční vytvoření centrálního virtuální sítě se nepodporuje.|V současné době Azure Firewall Manager podporuje sítě vytvořené pomocí virtuálních Center. Používání vlastní virtuální sítě rozbočovače se ještě nepodporují.|Prozatím použijte Azure Firewall Manager se sítěmi hub a paprsků vytvořených s virtuálními rozbočovači.<br>Probíhá šetření.
+|Ruční vytvoření centrálního virtuální sítě se nepodporuje.|V současné době Azure Firewall Manager podporuje sítě vytvořené pomocí virtuálních Center. Používání vlastní virtuální sítě rozbočovače se ještě nepodporují.|Prozatím použijte Azure Firewall Manager se sítěmi hub a paprsků vytvořených s virtuálními rozbočovači.<br>Probíhá oprava.
 |Omezení filtrování třetích stran|Filtrování přenosů V2I s poskytovateli třetích stran není podporované u Azure Firewallch B2V a V2V.|Probíhá šetření.|
 |Rozdělení provozu se momentálně nepodporuje.|Rozdělování provozu Office 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I také odeslat veškerý provoz Azure Public PaaS a Office 365 prostřednictvím partnerské služby.|Probíhá šetření rozdělení provozu v centru.
 |Jedno centrum na oblast|Nemůžete mít více než jedno centrum na oblast.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
 |Základní zásady musí být ve stejné oblasti jako místní zásada.|Vytvořte všechny místní zásady ve stejné oblasti jako základní zásady. Můžete přesto použít zásadu, která byla vytvořena v jedné oblasti v zabezpečeném centru z jiné oblasti.|Probíhá šetření.|
 |Komunikace mezi rozbočovači nefunguje s zabezpečeným virtuálním rozbočovačem|Zabezpečené virtuální rozbočovače na zabezpečenou komunikaci virtuálního rozbočovače ještě není podporovaná.|Probíhá šetření.|
+|Všechna zabezpečená virtuální centra, která sdílejí stejnou virtuální síť WAN, musí být ve stejné skupině prostředků.|Toto chování je v současné době zarovnané na virtuální rozbočovače WAN.|Vytvořte více virtuálních sítí WAN, aby bylo možné vytvořit zabezpečené virtuální rozbočovače v různých skupinách prostředků.|
 
 ## <a name="next-steps"></a>Další kroky
 

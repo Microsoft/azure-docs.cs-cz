@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689001"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872736"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service v systému Linux
 
@@ -34,7 +34,7 @@ ms.locfileid: "74689001"
 Spusťte následující příkaz Maven na příkazovém řádku Cloud Shell k vytvoření nové aplikace s názvem `helloworld`:
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurace modulu plug-in Maven
@@ -93,7 +93,7 @@ Přejděte na `pom.xml` znovu, abyste viděli konfiguraci modulu plug-in. v př�
 
  Vlastnost | Požaduje se | Popis | Version
 ---|---|---|---
-`<schemaVersion>` | false | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 2.5.1
+`<schemaVersion>` | false | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 1.5.2
 `<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
 `<appName>` | true | Název vaší webové aplikace | 0.1.0 +
 [`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) . | 0.1.0 +
@@ -102,7 +102,7 @@ Přejděte na `pom.xml` znovu, abyste viděli konfiguraci modulu plug-in. v př�
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | 0.1.0 +
 
 > [!div class="nextstepaction"]
-> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
 
 ## <a name="deploy-the-app"></a>Nasazení aplikace
 
@@ -119,7 +119,7 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 **Blahopřejeme!** Nasadili jste svou první aplikaci v Javě do služby App Service v Linuxu.
 
 > [!div class="nextstepaction"]
-> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

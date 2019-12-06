@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704295"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848883"
 ---
-# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services (Preview)
+# <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
 Audity zabezpečení služby Azure Active Directory Domain Services (Azure služba AD DS) umožňují zacílit události zabezpečení Azure streamu na cílené prostředky. Mezi tyto prostředky patří Azure Storage, pracovní prostory Azure Log Analytics nebo centrum událostí Azure. Po povolení událostí auditu zabezpečení pošle Azure služba AD DS všechny auditované události pro vybranou kategorii do cílového prostředku. Události můžete archivovat do služby Azure Storage a streamovat události do softwaru SIEM (Security Information and Event Management) (nebo ekvivalentní) pomocí Azure Event Hubs nebo vlastní analýzy a používat pracovní prostory Azure Log Analytics z Azure Portal.
 
@@ -83,7 +83,7 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, například *aadds.contoso.com*.
-1. V okně Azure služba AD DS na levé straně vyberte **nastavení diagnostiky (Preview)** .
+1. V okně Azure služba AD DS vyberte **nastavení diagnostiky** na levé straně.
 1. Ve výchozím nastavení nejsou nakonfigurované žádné diagnostiky. Začněte tím, že vyberete **Přidat nastavení diagnostiky**.
 
     ![Přidat nastavení diagnostiky pro Azure AD Domain Services](./media/security-audit-events/add-diagnostic-settings.png)
@@ -175,7 +175,7 @@ V protokolu analytické pracovní prostory můžete zobrazit a analyzovat událo
 * [Dokumentace ke službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 * [Začínáme s Log Analytics v Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
 * [Začínáme s dotazy protokolu v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-* [Vytváření a sdílení řídicích panelů Log Analytics dat](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Vytváření a sdílení řídicích panelů s daty Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 Pomocí následujících ukázkových dotazů můžete začít s analýzou událostí auditu zabezpečení z Azure služba AD DS.
 

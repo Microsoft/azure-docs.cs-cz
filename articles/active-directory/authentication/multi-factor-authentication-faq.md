@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/18/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4b15389f25b54a377f75baca7993565b41e65462
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167762"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847112"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -61,7 +61,7 @@ V Kanadě Microsoft používá následující krátké kódy SMS:
 
 Společnost Microsoft nezaručuje konzistentní doručování zpráv SMS nebo hlasové Multi-Factor Authentication s využitím stejného čísla. V zájmu našich uživatelů může společnost Microsoft kdykoli přidat nebo odebrat krátké kódy, protože provádíme úpravy postupů pro zlepšení poskytování služby SMS. Společnost Microsoft nepodporuje krátké kódy pro země a oblasti kromě USA a Kanady.
 
-## <a name="billing"></a>Fakturace
+## <a name="billing"></a>Vyúčtování
 
 Na většinu otázek fakturace se dá odpovědět tak, že odkazujete na [stránku s cenami Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) nebo v dokumentaci, [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 

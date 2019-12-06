@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786712"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847214"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav pro správu hesel služby Azure AD
 
@@ -44,7 +44,7 @@ Následující dotazy mohou být zodpovězené sestavami, které existují v [Az
 V prostředí Azure Portal jsme vylepšili způsob, jakým můžete zobrazit aktivitu resetování hesla a resetování hesla. Pomocí následujícího postupu můžete najít události pro resetování hesla a resetování hesla:
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
-2. V levém podokně vyberte **všechny služby** .
+2. V levém podokně vyberte **Všechny služby**.
 3. V seznamu služeb vyhledejte **Azure Active Directory** a vyberte ji.
 4. V části Správa vyberte **Uživatelé** .
 5. V okně **Uživatelé** vyberte **protokoly auditu** . Zobrazí se všechny události auditu, ke kterým došlo u všech uživatelů v adresáři. V tomto zobrazení můžete filtrovat, aby se zobrazily všechny události související s heslem.
@@ -81,7 +81,7 @@ V kategorii událostí auditu **Samoobslužná správa hesel** se zobrazí násl
 * [Resetování hesla (správcem)](#activity-type-reset-password-by-admin): označuje, že správce provedl resetování hesla jménem uživatele z Azure Portal.
 * [Resetování hesla (Samoobslužná služba)](#activity-type-reset-password-self-service): označuje, že uživatel úspěšně obnovil heslo z [portálu pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com).
 * [Průběh aktivity toku samoobslužného resetování hesla](#activity-type-self-serve-password-reset-flow-activity-progress): označuje každý konkrétní krok, pomocí kterého uživatel pokračuje, jako je například předání konkrétní ověřovací brány pro resetování hesla, jako součást procesu resetování hesla.
-* [Odemknutí uživatelského účtu (Samoobslužná služba)](#activity-type-unlock-a-user-account-self-service)): označuje, že uživatel úspěšně odemkl svůj účet Active Directory bez resetování hesla z [portálu pro resetování hesel Azure AD](https://passwordreset.microsoftonline.com) pomocí funkce Active Directory pro odemknutí účtu. bez resetování.
+* [Odemknutí uživatelského účtu (samoobslužné)](#activity-type-unlock-a-user-account-self-service)): označuje, že uživatel úspěšně odemkl svůj účet Active Directory bez resetování hesla z portálu pro [resetování hesel Azure AD](https://passwordreset.microsoftonline.com) pomocí funkce Active Directory pro odemknutí účtu bez resetování.
 * [Uživatel zaregistrovaný pro Samoobslužné resetování hesla](#activity-type-user-registered-for-self-service-password-reset): označuje, že uživatel zaregistroval všechny požadované informace, aby bylo možné resetovat heslo v souladu s aktuálně zadanými zásadami pro resetování hesla tenanta.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Typ aktivity: blokováno z samoobslužného resetování hesla

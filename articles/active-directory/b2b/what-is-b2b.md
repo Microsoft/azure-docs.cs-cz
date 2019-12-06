@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18d60614a07895c7e9468d35b2d389a28129af4d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f1ca0baa98336570d870a98c75c45a5303bdfaca
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271654"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868897"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
@@ -61,7 +61,7 @@ Jako správce můžete do své organizace na webu Azure Portal jednoduše přida
 - Uživateli typu host ihned přijde přizpůsobená pozvánka, ze které se může přihlásit ke svému přístupovému panelu.
 - Uživatele typu host můžete v adresáři přiřazovat k aplikacím nebo skupinám.  
 
-![Snímek obrazovky se stránkou pro novou položku pozvánky uživatele hosta](media/what-is-b2b/adding-b2b-users-admin.png)
+![Snímek obrazovky se stránkou pro novou položku pozvánky uživatele hosta](media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Nechte vlastníky aplikací a skupin spravovat vlastní uživatele typu host
 

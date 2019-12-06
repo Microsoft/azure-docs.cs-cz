@@ -1,22 +1,22 @@
 ---
-title: Ověřování Windows a Azure MFA serveru – Azure Active Directory
+title: Ověřování Windows a Azure MFA Server – Azure Active Directory
 description: Nasazení ověření Windows a serveru Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa52dcf08a5e4b152d9fe0db36710e41a5a79fe7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: faab28a714b1a62e1e34de5b07119aa3018db24e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057323"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847965"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Ověření Windows a server Azure Multi-Factor Authentication
 
@@ -27,15 +27,15 @@ ms.locfileid: "67057323"
 * Důvěryhodné IP adresy jsou závislé na tom, zda aplikace může zajistit IP adresu klienta s ověřením. Momentálně jsou podporovány pouze terminálové služby.  
 
 > [!IMPORTANT]
-> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 > [!NOTE]
 > Tato funkce není podporována pro zabezpečené terminálové služby v systému Windows Server 2012 R2.
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Pro zabezpečení aplikace s ověřováním Windows, použijte následující postup
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Chcete-li zabezpečit aplikaci pomocí ověřování systému Windows, použijte následující postup.
 
 1. Na serveru Azure Multi-Factor Authentication klikněte na ikonu ověřování systému Windows.
-   ![Ověřování Windows serveru MFA](./media/howto-mfaserver-windows/windowsauth.png)
+   ![ověřování systému Windows na serveru MFA](./media/howto-mfaserver-windows/windowsauth.png)
 2. Zaškrtněte políčko **Povolit ověřování systému Windows**. Ve výchozím nastavení je toto políčko zaškrtnuté.
 3. Karta aplikace umožňuje správci konfigurovat jednu nebo více aplikací pro ověřování systému Windows.
 4. Vyberte server nebo aplikaci – určete, zda je povolen server/aplikace. Klikněte na **OK**.
@@ -47,7 +47,7 @@ ms.locfileid: "67057323"
 10. Pokud chcete zadat rozsahu IP adres pomocí zápisu podsítě, vyberte **Podsíť**. Zadejte počáteční IP adresu podsítě a vyberte příslušnou síťovou masku z rozevíracího seznamu.
 11. Klikněte na **OK**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Konfigurace zařízení sítě VPN třetích stran pro Azure MFA Server](howto-mfaserver-nps-vpn.md)
 

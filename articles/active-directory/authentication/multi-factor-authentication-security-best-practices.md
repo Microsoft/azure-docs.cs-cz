@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2756d39a93751271c8c7bf2a51108b9fe5b09b1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208437"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846823"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Pokyny k zabezpečení při používání Azure Multi-Factor Authentication s účty Azure AD
 
@@ -29,7 +29,7 @@ Existují dva způsoby, jak [Povolit Azure MFA pro všechny uživatele](howto-mf
 * Koupit licence pro každého uživatele (Azure MFA, Azure AD Premium nebo Enterprise Mobility + Security)
 * Vytvoření poskytovatele vícefaktorového ověřování a platby za jednotlivé uživatele nebo ověřování
 
-### <a name="licenses"></a>Vázaný
+### <a name="licenses"></a>Licence
 
 ![Použití licencí pro uživatele, povolení, oznamování](./media/multi-factor-authentication-security-best-practices/ems.png)
 
@@ -96,7 +96,7 @@ Pokud je vaše organizace federované pro jednotné přihlašování pomocí Azu
 * Některé pokročilé návrhy architektury mohou vyžadovat použití kombinace uživatelského jména a hesla organizace a hesla aplikací při použití dvoustupňového ověřování u klientů v závislosti na tom, kde jsou ověřovány. U klientů, kteří se ověřují s místní infrastrukturou, byste měli použít uživatelské jméno a heslo organizace. Pro klienty, kteří se ověřují v Azure AD, byste použili heslo aplikace.
 * Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Pokud potřebujete, aby uživatelé mohli vytvářet hesla aplikací, vyberte možnost **dovolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** .
 
-## <a name="additional-considerations"></a>Další požadavky
+## <a name="additional-considerations"></a>Další oblasti, které je třeba vzít v úvahu
 
 V tomto seznamu najdete další informace a pokyny pro jednotlivé komponenty, které jsou nasazené místně:
 

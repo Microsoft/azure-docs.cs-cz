@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d53d63b40ad62a4d21cbad22a67e9e9781b1f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381715"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847862"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -32,7 +32,7 @@ V rámci fáze auditu mnoho organizací zjistí, že:
 * Uživatelé často používají nezabezpečená hesla.
 * Potřebují uživatele informovat o nadcházející změně v vynucování zabezpečení, o možných dopadech na ně a o tom, jak zvolit bezpečnější hesla.
 
-Je taky možné, že se silnější ověřování hesla bude týkat stávající automatizace nasazení řadiče domény služby Active Directory. Doporučujeme, abyste při vyhodnocení období auditů nedocházelo k navýšení aspoň jedné povýšení řadiče domény a k jednomu řadiči domény, aby bylo možné tyto problémy předem odhalit.  Další informace naleznete v tématu:
+Je taky možné, že se silnější ověřování hesla bude týkat stávající automatizace nasazení řadiče domény služby Active Directory. Doporučujeme, abyste při vyhodnocení období auditů nedocházelo k navýšení aspoň jedné povýšení řadiče domény a k jednomu řadiči domény, aby bylo možné tyto problémy předem odhalit.  Další informace:
 
 * [Nástroj Ntdsutil. exe nemůže nastavit slabý stav hesla režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [Povýšení repliky řadiče domény se nepovedlo kvůli slabému heslu režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -55,7 +55,7 @@ Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete
 * Mezi aspoň jedním řadičem domény v každé doméně a aspoň jedním serverem, který hostuje proxy službu pro ochranu heslem, musí existovat síťové připojení. Toto připojení musí řadiči domény dovolit přístup k portu mapovače koncových bodů RPC 135 a portu serveru RPC na proxy službě. Ve výchozím nastavení je port serveru RPC dynamickým portem RPC, ale je možné ho nakonfigurovat tak, aby [používal statický port](#static).
 * Všechny počítače, ve kterých bude nainstalovaná služba proxy ochrany heslem Azure AD, musí mít síťový přístup k následujícím koncovým bodům:
 
-    |**Služba**|**Účel**|
+    |**Koncový bod**|**Účel**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Žádosti o ověření|
     |`https://enterpriseregistration.windows.net`|Funkce ochrany heslem Azure AD|
@@ -302,7 +302,7 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
 
    Službu agenta DC můžete nainstalovat na počítač, který ještě není řadičem domény. V takovém případě se služba spustí a spustí, ale zůstane neaktivní, dokud nebude počítač povýšen na řadič domény.
 
-   Instalaci softwaru můžete automatizovat pomocí standardních postupů MSI. Příklad:
+   Instalaci softwaru můžete automatizovat pomocí standardních postupů MSI. Například:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 

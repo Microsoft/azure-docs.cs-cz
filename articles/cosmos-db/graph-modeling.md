@@ -1,18 +1,18 @@
 ---
 title: Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
-description: Naučte se modelovat databázi grafu pomocí Cosmos DB rozhraní Gremlin API.
+description: Naučte se modelovat databázi grafu pomocí rozhraní Azure Cosmos DB Gremlin API. Tento článek popisuje, kdy použít databázi grafů a osvědčené postupy pro modelování entit a vztahů.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 06/24/2019
+ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559128"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873722"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
 
@@ -47,10 +47,10 @@ Níže jsou uvedené osvědčené postupy pro vlastnosti v objektech grafu:
 
 | Objekt | Vlastnost | Typ | Poznámky |
 | --- | --- | --- |  --- |
-| Úpravě | ID | Řetězec | Jedinečně vynutilo na oddíl. Pokud při vložení není zadána hodnota, bude uložen automaticky generovaný identifikátor GUID. |
-| Úpravě | label | Řetězec | Tato vlastnost slouží k definování typu entity, kterou vrchol představuje. Pokud hodnota není zadaná, použije se výchozí hodnota "vrchol". |
-| Úpravě | properties | Řetězec, logická hodnota, číselná hodnota | Seznam samostatných vlastností uložených jako páry klíč-hodnota v každém vrcholu. |
-| Úpravě | klíč oddílu | Řetězec, logická hodnota, číselná hodnota | Tato vlastnost určuje, kde budou uloženy vrcholy a jejich odchozí okraje. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). |
+| Vertex | ID | Řetězec | Jedinečně vynutilo na oddíl. Pokud při vložení není zadána hodnota, bude uložen automaticky generovaný identifikátor GUID. |
+| Vertex | label | Řetězec | Tato vlastnost slouží k definování typu entity, kterou vrchol představuje. Pokud hodnota není zadaná, použije se výchozí hodnota "vrchol". |
+| Vertex | properties | Řetězec, logická hodnota, číselná hodnota | Seznam samostatných vlastností uložených jako páry klíč-hodnota v každém vrcholu. |
+| Vertex | klíč oddílu | Řetězec, logická hodnota, číselná hodnota | Tato vlastnost určuje, kde budou uloženy vrcholy a jejich odchozí okraje. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). |
 | Edge | ID | Řetězec | Jedinečně vynutilo na oddíl. Automaticky generuje standardně. Okraje obvykle nemají jedinečně načteny IDENTIFIKÁTORem. |
 | Edge | label | Řetězec | Tato vlastnost slouží k definování typu vztahu, který má dva vrcholy. |
 | Edge | properties | Řetězec, logická hodnota, číselná hodnota | Seznam samostatných vlastností uložených jako páry klíč-hodnota v jednotlivých hraničních zařízeních. |

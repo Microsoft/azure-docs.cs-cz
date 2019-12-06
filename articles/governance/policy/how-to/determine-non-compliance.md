@@ -2,13 +2,13 @@
 title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Přečtěte si, jak zjistit, co způsobilo nedodržení předpisů.
 ms.date: 04/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 839e6c61c4a44ba7c7581290408bb997b53b8f96
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.topic: how-to
+ms.openlocfilehash: 213797a1eafda10d5e97fbc60fc143de975fe221
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279412"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873127"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -111,7 +111,7 @@ U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ se ve virtuálním p
 
 Je také možné, že nebudete mít přístup k virtuálnímu počítači přímo, ale potřebujete podávat zprávu o tom, proč virtuální počítač _nedodržuje předpisy_.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Začněte podle stejných kroků v části výše pro zobrazení podrobností o dodržování zásad.
 
@@ -123,7 +123,7 @@ Na stránce **přiřazení hosta** se zobrazí všechny dostupné podrobnosti o 
 
 ![Zobrazit podrobnosti o kompatibilitě](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Podrobnosti o kompatibilitě můžete zobrazit také z Azure PowerShell. Nejdřív se ujistěte, že máte nainstalovaný konfigurační modul hosta.
 

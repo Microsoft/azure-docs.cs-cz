@@ -1,64 +1,64 @@
 ---
-title: Jak zakázat Slabá hesla ve službě Azure AD – Azure Active Directory
-description: Zakázat Slabá hesla z vaší envirionment s Azure AD dynamicky zakázaná passwrords
+title: Jak v Azure AD zakázat slabé heslo – Azure Active Directory
+description: Zakázání slabého hesla ze služby envirionment pomocí Azure AD dynamicky zakázaného passwrords
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f531174c889948308e27109ab4fd80a481ec6bdc
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798191"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847911"
 ---
-# <a name="configuring-the-custom-banned-password-list"></a>Konfigurace seznamu vlastních zakázaných hesel
+# <a name="configuring-the-custom-banned-password-list"></a>Konfigurace vlastního seznamu zakázaných hesel
 
-Mnoho organizací zjišťuje, že se že jejich uživatelé vytvářet hesla pomocí běžných místní slova, jako jsou školy, sportovní tým nebo slavných osoby, opuštění je snadno uhodnutelné. Seznam vlastních zakázaných hesel od Microsoftu umožňuje organizacím přidejte řetězce k vyhodnocení a blokovat, kromě globálních zakázané seznamu heslo, když uživatelé a správci pokus o změnu nebo resetování hesla.
+Mnoho organizací hledá své uživatele pomocí běžných místních slov, jako je například škola, sportovní tým nebo slavných osoba, která je snadno uhodnout. Vlastní seznam zakázaných hesel společnosti Microsoft umožňuje organizacím přidávat řetězce k vyhodnocení a blokování, a to i v případě, že se uživatelé a správci pokusí změnit nebo resetovat heslo.
 
-## <a name="add-to-the-custom-list"></a>Přidání vlastního seznamu
+## <a name="add-to-the-custom-list"></a>Přidat do vlastního seznamu
 
-Konfigurace seznamu zakázaných hesel vlastní vyžaduje licenci Azure Active Directory Premium P1 nebo P2. Podrobné informace o licencování Azure Active Directory, najdete v článku [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
+Konfigurace vlastního seznamu zakázaných hesel vyžaduje Azure Active Directory Premium licenci P1 nebo P2. Podrobnější informace o Azure Active Directory licencování najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metody ověřování**, pak **ochrana heslem**.
-1. Nastavte možnost **vynutit vlastní seznam**do **Ano**.
-1. Přidejte do řetězce **vlastní zakázané seznam hesel**, jeden řetězec na řádek
-   * Seznam vlastních zakázaných hesel může obsahovat až 1 000 podmínky.
-   * Seznam vlastních zakázaných hesel je velká a malá písmena.
-   * Seznam vlastních zakázaných hesel bere v úvahu běžné náhradní znak.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do **Azure Active Directory**, **metod ověřování**a **ochrany heslem**.
+1. Nastavte možnost **vykonat vlastní seznam**na **Ano**.
+1. Přidání řetězců do **vlastního seznamu zakázaných hesel**, jednoho řetězce na řádek
+   * Vlastní seznam zakázaných hesel může obsahovat až 1000 podmínek.
+   * Vlastní seznam zakázaných hesel rozlišuje velká a malá písmena.
+   * Vlastní seznam zakázaných hesel je považován za běžné nahrazení znaků.
       * Příklad: "o" a "0" nebo "a" a "\@"
-   * Minimální délka řetězce je čtyři znaky a maximální hodnota je 16 znaků.
-1. Pokud jste přidali všechny řetězce, klikněte na tlačítko **Uložit**.
+   * Minimální délka řetězce je 4 znaky a maximální délka je 16 znaků.
+1. Po přidání všech řetězců klikněte na **Uložit**.
 
 > [!NOTE]
-> To může trvat několik hodin aktualizací do seznamu zakázaných hesel vlastní uplatňovat.
+> Použití aktualizací vlastního seznamu zakázaných hesel může trvat několik hodin.
 
 > [!NOTE]
-> Seznam vlastních zakázaných hesel je omezen na maximálně 1000 podmínky. Není určená pro blokování velmi rozsáhlých seznamů hesel. Abyste mohli plně využít výhod seznamu vlastních zakázaných hesel, společnost Microsoft doporučuje, abyste nejdřív zkontrolovali a pochopit zamýšleného návrhu a využití ze seznamu vlastní zakázaných hesel (naleznete v tématu [vlastní zakázané seznam hesel](concept-password-ban-bad.md#custom-banned-password-list)), a také heslo algoritmus vyhodnocení (viz [jak se vyhodnocují hesla](concept-password-ban-bad.md#how-are-passwords-evaluated)).
+> Vlastní seznam zakázaných hesel je omezen na maximálně 1000 podmínek. Není navržený pro blokování extrémně velkých seznamů hesel. Aby bylo možné plně využít výhody vlastního seznamu zakázaných hesel, společnost Microsoft doporučuje nejprve projít a pochopit zamýšlený návrh a použití vlastního seznamu zakázaných hesel (viz [vlastní seznam zakázaných](concept-password-ban-bad.md#custom-banned-password-list)hesel) a také algoritmus pro vyhodnocení hesla (viz [jak jsou vyhodnocena hesla](concept-password-ban-bad.md#how-are-passwords-evaluated)).
 
-![Upravit vlastní zakázaných hesel seznamu metod ověřování na webu Azure Portal](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
+![V Azure Portal upravte vlastní seznam zakázaných hesel v části metody ověřování.](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Pokaždé, když uživatel nebo správce obnoví nebo se změní heslo k Azure AD se prochází seznamy zakázaných hesel, které chcete potvrdit, že není na seznamu. Tato kontrola je součástí všechna hesla, nastavit nebo změnit pomocí služby Azure AD.
+Pokaždé, když uživatel nebo správce resetuje nebo změní heslo Azure AD, projde seznamy zakázaných hesel, aby se ověřilo, že není na seznamu. Tato Tato součást je obsažena v jakýchkoli heslech nastavených nebo změněných pomocí Azure AD.
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé
 
-Když se uživatel pokusí o resetování hesla na něco, co může být vyloučen, zobrazí jednu z následujících chybových zpráv:
+Když se uživatel pokusí resetovat heslo na něco, co by bylo zakázané, zobrazí se některá z následujících chybových zpráv:
 
-* Vaše heslo bohužel obsahuje slovo, frázi nebo vzor, který umožňuje snadno uhodnutelných heslo. Zkuste to prosím znovu s jiným heslem.
-* Bohužel nemůžete použít toto heslo, protože obsahuje slova nebo znaky, které byl zablokován správcem. Zkuste to prosím znovu s jiným heslem.
+* Vaše heslo bohužel obsahuje slovo, frázi nebo vzor, který umožňuje snadnou možnost uhodnout heslo. Zkuste to prosím znovu s jiným heslem.
+* Toto heslo bohužel nemůžete použít, protože obsahuje slova nebo znaky blokované vaším správcem. Zkuste to prosím znovu s jiným heslem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Koncepční přehled seznamy zakázaných hesel](concept-password-ban-bad.md)
+[Koncepční přehled seznamů zakázaných hesel](concept-password-ban-bad.md)
 
-[Koncepční přehled ochrany hesla Azure AD](concept-password-ban-bad-on-premises.md)
+[Koncepční přehled ochrany heslem služby Azure AD](concept-password-ban-bad-on-premises.md)
 
 [Povolit místní integraci se seznamy zakázaných hesel](howto-password-ban-bad-on-premises.md)
