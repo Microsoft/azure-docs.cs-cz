@@ -72,6 +72,8 @@
           href: how-to-enable-remote-desktop-linux.md
         - name: Povolení vnořené virtualizace v šabloně virtuálního počítače
           href: how-to-enable-nested-virtualization-template-vm.md
+        - name: Příprava šablony virtuálního počítače s Windows
+          href: how-to-prepare-windows-template.md
     - name: Připojení k virtuálním počítačům v testovacích prostředích v učebnách (student)
       items:
         - name: Přístup k testovacím prostředím v učebnách

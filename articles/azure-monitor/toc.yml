@@ -563,7 +563,7 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Cloudová služba
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Formát řádkových diagnostických protokolů JSON
+                    - name: Formát protokolů prostředků řádků JSON
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Řešení potíží
                       href: platform/diagnostics-extension-troubleshooting.md
@@ -1163,7 +1163,7 @@
           href: platform/metrics-supported.md
         - name: Podporované metriky pro novější upozornění
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Služby, kategorie a schémata pro protokoly prostředků'
+    - name: 'Služby, kategorie a schémata pro protokoly platformy'
       href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest

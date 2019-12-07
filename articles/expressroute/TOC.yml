@@ -26,7 +26,7 @@
           href: expressroute-locations-providers.md
         - name: Umístění podle poskytovatele
           href: expressroute-locations.md
-    - name: Brána virtuální sítě a FastPath
+    - name: Informace o branách virtuální sítě
       href: expressroute-about-virtual-network-gateways.md
     - name: Požadavky
       href: expressroute-prerequisites.md
@@ -40,6 +40,8 @@
       href: expressroute-qos.md
     - name: Informace o přesunu okruhů z modelu nasazení Classic do Resource Manageru
       href: expressroute-move.md
+    - name: Informace o službě ExpressRoute FastPath
+      href: about-fastpath.md
     - name: O službě ExpressRoute Direct
       href: expressroute-erdirect-about.md
     - name: O službě ExpressRoute Global Reach

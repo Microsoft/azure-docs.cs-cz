@@ -91,7 +91,7 @@
           items:
             - name: 1. Zajištění vysoké dostupnosti aplikace
               href: storage-create-geo-redundant-storage.md
-            - name: 2. Simulace selhání s využitím úložiště RA-GRS
+            - name: 2. Simulace selhání při čtení dat z primární oblasti
               href: storage-simulate-failure-ragrs-account-app.md
         - name: Šifrování a dešifrování objektů blob pomocí Azure Key Vaultu
           href: storage-encrypt-decrypt-blobs-key-vault.md
@@ -151,7 +151,7 @@
               href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Zotavení po havárii a převzetí služeb při selhání
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Navrhování aplikací s vysokou dostupností s využitím RA-GRS
+            - name: Návrh aplikací s vysokou dostupností
               href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Úrovně výkonu a přístupu
           items:
@@ -406,6 +406,8 @@
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Připojení služby Blob Storage jako systému souborů v Linuxu
               href: storage-how-to-mount-container-linux.md
+            - name: Přenos dat s využitím knihovny pro přesun dat
+              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Nejčastější dotazy k migraci úložiště
               href: ../common/storage-migration-faq.md
         - name: Vývoj s využitím objektů blob
