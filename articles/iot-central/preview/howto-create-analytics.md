@@ -3,17 +3,17 @@ title: Analýza dat zařízení ve vaší aplikaci Azure IoT Central | Microsoft
 description: Analyzujte data zařízení ve vaší aplikaci Azure IoT Central.
 author: ankitgup
 ms.author: ankitgup
-ms.date: 10/17/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ee15d581cfc17af01ae0fa53139edc331a4fea
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4cf4469833e28a594996b981a47a964131026a7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896005"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895715"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Analýza dat zařízení pomocí analýzy
 
@@ -61,11 +61,11 @@ Po dotazování na data je můžete začít vizualizovat v spojnicovém grafu. M
    
     - **Ovládací prvek posuvník rozsahu vnějšího data**: pomocí ovládacích prvků koncového bodu můžete vybrat rozsah vnějších kalendářních dat, který bude k dispozici pro ovládací prvek rozsahu vnitřního data.
 
-    - Tlačítko pro **zvýšení a snížení rozsahu data**: Zvyšte nebo snižte časový rozsah tak, že vyberete jedno tlačítko pro požadovaný interval.
+    - **Zvýšit a snížit datum rozsahu tlačítka**: zvýšení nebo snížení času span tak, že vyberete buď tlačítko pro požadovaný interval.
 
-    - **Posuvník velikosti intervalu**: používá se k přiblížení a oddálení intervalů v rámci stejného časového intervalu. Tato akce poskytuje přesnější kontrolu nad pohybem mezi velkými řezy času. Můžete ji použít k zobrazení podrobných zobrazení dat s vysokým rozlišením, a to i z provozu do milisekund. Výchozí počáteční bod posuvníku je nastaven jako optimální pohled na data z výběru, který vyrovnává rozlišení, rychlost dotazování a členitost.
+    - **Posuvník velikosti intervalu**: používá se k přiblížení a oddálení intervalů v rámci stejného časového intervalu. Tato akce zajišťuje přesnější kontrolu nad pohyb mezi velké časové úseky. Můžete ji použít k zobrazení podrobných zobrazení dat s vysokým rozlišením, a to i z provozu do milisekund. Výchozí počáteční bod posuvníku je nastaven jako optimální pohled na data z výběru, který vyrovnává rozlišení, rychlost dotazování a členitost.
     
-    - **Výběr rozsahu kalendářních dat**: pomocí tohoto webového ovládacího prvku můžete snadno vybrat rozsahy dat a času, které chcete. Ovládací prvek lze také použít k přepínání mezi různými časovými pásmy. Až provedete změny, které se mají použít v aktuálním pracovním prostoru, vyberte Uložit.
+    - **Výběr rozsahu kalendářních dat**: pomocí tohoto webového ovládacího prvku můžete snadno vybrat rozsahy dat a času, které chcete. Můžete také použít ovládací prvek přepínání různých časových pásmech. Až provedete změny, které se mají použít v aktuálním pracovním prostoru, vyberte Uložit.
 
     > [!TIP]
     > Velikost intervalu je určena dynamicky v závislosti na vybraném časovém rozsahu. Menší časová rozpětí budou umožňovat agregaci dat do velmi podrobných intervalů až po několik sekund.

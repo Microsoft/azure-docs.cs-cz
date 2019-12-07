@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b00e699eb49d88e41dff18d6c86024c9b0537e50
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e8a3397cd8229a84103fdcbb116bf61648a6ba22
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872311"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895566"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager operace poskytovatele prostředků
 
@@ -5534,14 +5534,14 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Akce | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | Vypsat popisky citlivosti dané databáze |
 > | Akce | Microsoft. SQL/managedInstances/databáze/recommendedSensitivityLabels/Write | Doporučené popisky citlivosti aktualizace Batch |
 > | Akce | Microsoft. SQL/managedInstances/databáze/restoreDetails/Read | Vrátí podrobnosti obnovení spravované databáze během procesu obnovení. |
-> | Akce | Microsoft.Sql/managedInstances/databases/schemas/read | Získá schéma spravované databáze. |
-> | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | Získat sloupec spravované databáze |
+> | Akce | Microsoft.Sql/managedInstances/databases/schemas/read | Získá schéma spravované databáze. (pouze schéma) |
+> | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | Získat sloupec spravované databáze (pouze schéma) |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | Odstraní popisek citlivosti daného sloupce. |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/disable/action | Zakázat doporučení citlivosti na daném sloupci |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/enable/action | Povolit doporučení citlivosti na daném sloupci |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/read | Získá popisek citlivosti daného sloupce. |
 > | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/write | Vytvoří nebo aktualizuje popisek citlivosti daného sloupce. |
-> | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/read | Získání tabulky spravované databáze |
+> | Akce | Microsoft.Sql/managedInstances/databases/schemas/tables/read | Získání tabulky spravované databáze (pouze schéma) |
 > | Akce | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Načíst seznam zásad detekce hrozeb spravované databáze konfigurovaných pro daný server |
 > | Akce | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/write | Změna zásad detekce hrozeb databáze pro danou spravovanou databázi |
 > | Akce | Microsoft.Sql/managedInstances/databases/securityEvents/read | Načte události zabezpečení spravované databáze. |
@@ -5680,14 +5680,14 @@ Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat ne
 > | Akce | Microsoft.Sql/servers/databases/restorePoints/delete | Odstraní bod obnovení pro databázi. |
 > | Akce | Microsoft.Sql/servers/databases/restorePoints/read | Vrátí body obnovení pro databázi. |
 > | Akce | Microsoft. SQL/servery/databáze/pokračovat/akce | Obnoví databázi Azure SQL DataWarehouse. |
-> | Akce | Microsoft.Sql/servers/databases/schemas/read | Získá schéma databáze. |
-> | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Získá sloupec databáze. |
+> | Akce | Microsoft.Sql/servers/databases/schemas/read | Získá schéma databáze (pouze schéma). |
+> | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Získá sloupec databáze (pouze schéma). |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | Odstraní popisek citlivosti daného sloupce. |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/disable/action | Zakázat doporučení citlivosti na daném sloupci |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/enable/action | Povolit doporučení citlivosti na daném sloupci |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/read | Získá popisek citlivosti daného sloupce. |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/write | Vytvoří nebo aktualizuje popisek citlivosti daného sloupce. |
-> | Akce | Microsoft.Sql/servers/databases/schemas/tables/read | Získat databázovou tabulku. |
+> | Akce | Microsoft.Sql/servers/databases/schemas/tables/read | Získat databázovou tabulku (pouze schéma). |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/read | Načíst seznam doporučení indexu pro databázi |
 > | Akce | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/write | Použít doporučení indexu |
 > | Akce | Microsoft.Sql/servers/databases/securityAlertPolicies/read | Načte seznam zásad detekce hrozeb databáze nakonfigurovaných pro daný server. |

@@ -1,20 +1,21 @@
 ---
-title: Použití Azure Portal k přístupu k datům objektů BLOB nebo front Azure Storage
+title: Použití Azure Portal k přístupu k datům objektů BLOB nebo Queue
+titleSuffix: Azure Storage
 description: Při přístupu k datům objektů BLOB nebo front pomocí Azure Portal portál vytvoří žádosti, které se Azure Storage v rámci pokrývání. Tyto požadavky na Azure Storage se dají ověřit a autorizovat pomocí účtu Azure AD nebo přístupového klíče účtu úložiště.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3d5d5bd6400fdf09216124665b6b236b4da2583b
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 89816e3640c0afad6290e77faa3904c691df4318
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673280"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892393"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Použití Azure Portal k přístupu k datům objektů BLOB nebo Queue
 
@@ -48,11 +49,11 @@ Přiřazení role **Čtenář** nebo jiné Azure Resource Manager přiřazení r
 
 Mezi předdefinované role, které podporují přístup k datům objektů BLOB nebo Queue, patří:
 
-- [Vlastník dat objektu BLOB služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Pro řízení přístupu POSIX pro Azure Data Lake Storage Gen2.
-- [Přispěvatel dat objektu BLOB služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Oprávnění ke čtení, zápisu a odstraňování objektů BLOB.
-- [Čtečka dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Oprávnění jen pro čtení pro objekty blob.
-- [Přispěvatel dat fronty úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Oprávnění ke čtení, zápisu a odstraňování front.
-- [Čtečka dat fronty úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): Oprávnění jen pro čtení pro fronty.
+- [Vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): pro řízení přístupu POSIX pro Azure Data Lake Storage Gen2.
+- [Přispěvatel dat objektu BLOB služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): oprávnění ke čtení, zápisu a odstraňování objektů BLOB.
+- [Čtečka dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): oprávnění jen pro čtení pro objekty blob.
+- [Přispěvatel dat fronty úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): oprávnění ke čtení, zápisu a odstraňování front.
+- [Čtecí modul dat fronty úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): oprávnění jen pro čtení pro fronty.
     
 Vlastní role mohou podporovat různé kombinace stejných oprávnění poskytovaných integrovanými rolemi. Další informace o vytváření vlastních rolí RBAC najdete v tématech [vlastní role pro prostředky Azure](../../role-based-access-control/custom-roles.md) a [Principy definic rolí pro prostředky Azure](../../role-based-access-control/role-definitions.md).
 
@@ -81,7 +82,7 @@ Pokud chcete přepnout na používání účtu Azure AD, klikněte na odkaz zvý
 
 ![Pokud účet Azure AD nepodporuje přístup, zobrazí se chyba.](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 
-Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud váš účet Azure AD nemá oprávnění k jejich zobrazení. Klikněte na odkaz **Přepnout na přístup** k klávesám a znovu použijte přístupovou klávesu pro ověřování.
+Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud váš účet Azure AD nemá oprávnění k jejich zobrazení. Klikněte na odkaz **Přepnout na přístup k klávesám** a znovu použijte přístupovou klávesu pro ověřování.
 
 ### <a name="azure-ad-account"></a>Účet Azure AD
 

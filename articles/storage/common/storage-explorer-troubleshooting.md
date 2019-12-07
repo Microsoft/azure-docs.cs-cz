@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e3a9b733b055469e22d3b107c0f9f49b768756c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775829"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895245"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumník služby Azure Storage
 
@@ -93,7 +93,7 @@ Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomoc�
 
 ### <a name="blank-sign-in-dialog-box"></a>Dialogové okno prázdné přihlášení
 
-Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. Uděláte to takto:
+Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. Chcete-li to provést, postupujte takto:
 
 1. Na levém svislém panelu nástrojů otevřete **Nastavení**. Na panelu nastavení přejdete na **aplikace** > **Přihlásit**se. Povolit **používání přihlášení k toku kódu zařízení**
 2. Otevřete dialogové okno **připojit** (buď prostřednictvím ikony plug-in na levé straně, nebo vyberte **Přidat účet** na panelu účet).
@@ -301,7 +301,7 @@ Aplikaci můžete také stáhnout jako soubor. tar. gz, ale budete muset nainsta
 
 Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storage v systému Linux:
 
-* [Modul runtime .NET Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [Modul runtime .NET Core 2,2](https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
 * `libgconf-2-4`
 * `libgnome-keyring0` nebo `libgnome-keyring-dev`
 * `libgnome-keyring-common`
@@ -309,7 +309,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
 > [!NOTE]
 > Průzkumník služby Storage verze 1.7.0 a starší vyžadují .NET Core 2,0. Pokud máte nainstalovanou novější verzi .NET Core, budete muset [opravit Průzkumník služby Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Pokud používáte Průzkumník služby Storage 1.8.0 nebo novější, měli byste být schopni použít až .NET Core 2,2. Verze nad rámec 2,2 se neověřily, aby v tuto chvíli fungovaly.
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19,04](#tab/1904)
+# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
@@ -327,7 +327,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16,04](#tab/1604)
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
@@ -336,7 +336,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14,04](#tab/1404)
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
@@ -353,7 +353,7 @@ Pro Průzkumník služby Storage 1.7.0 nebo starší možná budete muset opravi
 1. Stáhněte si 1.5.43 verze StreamJsonRpc [z NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Vyhledejte odkaz Stáhnout balíček na pravé straně stránky.
 2. Po stažení balíčku změňte jeho příponu z `.nupkg` na `.zip`.
 3. Rozbalíte balíček.
-4. Otevřete složku `streamjsonrpc.1.5.43/lib/netstandard1.1/`.
+4. Otevřít `streamjsonrpc.1.5.43/lib/netstandard1.1/` složky.
 5. Zkopírujte `StreamJsonRpc.dll` do následujících umístění ve složce Průzkumník služby Storage:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
@@ -364,7 +364,7 @@ Pokud tlačítko **otevřít v Průzkumníkovi** na Azure Portal nefunguje, ujis
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
-* Aplikace Microsoft Internet Explorer
+* Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>Další kroky
 

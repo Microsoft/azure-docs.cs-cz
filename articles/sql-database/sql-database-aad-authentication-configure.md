@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: 5830e0b7ee49a7d954dbdb3f897ee7ac5901c6a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421756"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901383"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
 
@@ -138,7 +138,7 @@ Vaše spravovaná instance potřebuje oprávnění ke čtení služby Azure AD, 
 
    Na stránce Správce služby Active Directory se zobrazují všichni členové a skupiny služby Active Directory. Uživatele nebo skupiny, které jsou zobrazené šedě, nejde vybrat, protože nejsou podporované jako správci Azure AD. Podívejte se na seznam podporovaných správců ve [funkcích a omezeních služby Azure AD](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Řízení přístupu na základě role (RBAC) platí jenom pro Azure Portal a není šířené do SQL Server.
 
-    ![přidat správce](./media/sql-database-aad-authentication/add-admin.png)
+    ![Přidat správce Azure Active Directory](./media/sql-database-aad-authentication/add-azure-active-directory-admin.png)
 
 8. V horní části stránky Správce služby Active Directory vyberte **Uložit**.
 
@@ -236,13 +236,15 @@ Další informace o příkazech rozhraní příkazového řádku najdete v téma
 
 Následující dva postupy vám ukážou, jak zřídit správce Azure Active Directory pro Azure SQL Server v Azure Portal a pomocí PowerShellu.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
-1. V [Azure Portal](https://portal.azure.com/)v pravém horním rohu výběrem svého připojení vyrozevíracíte seznam možných aktivních adresářů. Vyberte správnou službu Active Directory jako výchozí službu Azure AD. Tento krok propojí službu Active Directory přidruženou k předplatnému se službou Azure SQL Server, která zajišťuje, že se stejné předplatné používá pro Azure AD i SQL Server. (Server SQL Azure je možné hostovat buď Azure SQL Database nebo Azure SQL Data Warehouse.) ![zvolit-AD][8]
+1. V [Azure Portal](https://portal.azure.com/)v pravém horním rohu výběrem svého připojení vyrozevíracíte seznam možných aktivních adresářů. Vyberte správnou službu Active Directory jako výchozí službu Azure AD. Tento krok propojí službu Active Directory přidruženou k předplatnému se službou Azure SQL Server, která zajišťuje, že se stejné předplatné používá pro Azure AD i SQL Server. (Server SQL Azure je možné hostovat buď Azure SQL Database nebo Azure SQL Data Warehouse.)
 
-2. V levém proužku vyberte **všechny služby**a v typu filtru v **SQL serveru**. Vyberte **SQL servery**.
+    ![zvolit – AD][8]
 
-    ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
+2. Vyhledejte a vyberte **SQL Server**.
+
+    ![Vyhledat a vybrat servery SQL](media/sql-database-aad-authentication/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
     > Na této stránce před výběrem **SQL serveru**můžete vybrat **hvězdičku** vedle názvu *, abyste kategorii mohli přidat* a přidat **SQL servery** do levého navigačního panelu.
@@ -251,11 +253,11 @@ Následující dva postupy vám ukážou, jak zřídit správce Azure Active Dir
 
 4. Na stránce **Správce služby Active Directory** vyberte **nastavit správce**.
 
-    ![Výběr Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+    ![SQL servery – nastavení správce služby Active Directory](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
 5. Na stránce **přidat správce** vyhledejte uživatele, vyberte uživatele nebo skupinu, které mají být správcem, a pak vyberte **Vybrat**. (Na stránce Správce služby Active Directory se zobrazují všichni členové a skupiny služby Active Directory. Uživatele nebo skupiny, které jsou šedé, nelze vybrat, protože nejsou podporovány jako správci služby Azure AD. (Další informace najdete v seznamu podporovaných správců v části **funkce a omezení služby Azure AD** tématu [použití Azure Active Directory ověřování pro ověřování pomocí SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication.md).) Řízení přístupu na základě role (RBAC) se vztahuje jenom na portál a nešíří se na SQL Server.
 
-    ![vybrat správce](./media/sql-database-aad-authentication/select-admin.png)  
+    ![Vybrat správce Azure Active Directory](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
 6. V horní části stránky **Správce služby Active Directory** vyberte **Uložit**.
 
@@ -436,7 +438,7 @@ Tuto metodu použijte, pokud jste přihlášeni k Windows pomocí přihlašovac�
 
     ![Vyberte název databáze.][13]
 
-## <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
+## <a name="active-directory-password-authentication"></a>Ověřování hesla služby Azure Active Directory
 
 Tuto metodu použijte při připojení k hlavnímu názvu Azure AD pomocí spravované domény Azure AD. Můžete ji také použít pro federované účty bez přístupu k doméně, například při vzdálené práci.
 
@@ -470,7 +472,7 @@ conn.Open();
 
 Klíčové slovo připojovacího řetězce `Integrated Security=True` není podporované pro připojení k Azure SQL Database. Při vytváření připojení rozhraní ODBC budete muset odebrat mezery a nastavit ověřování na ' ActiveDirectoryIntegrated '.
 
-### <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
+### <a name="active-directory-password-authentication"></a>Ověřování hesla služby Azure Active Directory
 
 Pokud se chcete připojit k databázi pomocí integrovaného ověřování a identity Azure AD, musí být klíčové slovo ověřování nastavené na heslo služby Active Directory. Připojovací řetězec musí obsahovat klíčová slova ID uživatele/UID a heslo/heslo a hodnoty. Následující C# ukázka kódu používá rozhraní ADO .NET.
 

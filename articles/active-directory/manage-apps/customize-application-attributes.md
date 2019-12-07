@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c8337d18b5c6b484e45e6cefaec98e2684155a02
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641505"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900423"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -78,12 +78,12 @@ Spolu s touto vlastností také mapování atributů podporuje následující at
   - **Pouze během vytváření** – použít toto mapování pouze při akcích vytvoření uživatele.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Porovnání uživatelů se zdrojovými a cílovými systémy
-Služba zřizování Azure AD se dá nasadit v bezserverová (uživatelé se do cílového systému neukončí) a brownfield (uživatelé už existují ve scénářích cílového systému). Aby bylo možné podporovat oba scénáře, služba zřizování používá koncept odpovídajícího atributu (y). Odpovídající atribut (y) umožňuje určit, jak jednoznačně identifikovat uživatele ve zdroji a jak se bude shodovat s uživatelem v cíli. V rámci plánování nasazení Identifikujte atribut, který se dá použít k jednoznačné identifikaci uživatele ve zdrojovém a cílovém systému. Co je potřeba vzít v vědomí:
+Služba zřizování Azure AD se dá nasadit ve scénářích "bezserverová" (kde se uživatelé neukončí v cílovém systému) a ve scénářích "brownfield" (kde už uživatelé v cílovém systému existují). Pro podporu obou scénářů používá zřizovací služba koncept vyhovujících atributů. Odpovídající atributy umožňují určit, jak jednoznačně identifikovat uživatele ve zdroji a jak se bude shodovat s uživatelem v cíli. V rámci plánování nasazení Identifikujte atribut, který se dá použít k jednoznačné identifikaci uživatele ve zdrojovém a cílovém systému. Co je potřeba vzít v vědomí:
 
 - **Párové atributy by měly být jedinečné:** Zákazníci často používají atributy, jako je například userPrincipalName, mail nebo ID objektu, jako shodný atribut.
-- **Jako párové atributy lze použít více atributů:** Můžete definovat více atributů, které mají být vyhodnoceny při shodě uživatelů a pořadí, ve kterém jsou vyhodnocovány (definované jako priorita pro porovnání v uživatelském rozhraní). Pokud například definujete tři atributy jako odpovídající atributy a uživatel se jednoznačně shoduje po vyhodnocení prvních dvou atributů, služba nebude evaluat třetí atribut. Služba vyhodnotí odpovídající atributy v zadaném pořadí a zastaví hodnocení, když se najde shoda.  
+- **Jako párové atributy lze použít více atributů:** Můžete definovat více atributů, které mají být vyhodnoceny při shodě uživatelů a pořadí, ve kterém jsou vyhodnocovány (definované jako priorita pro porovnání v uživatelském rozhraní). Pokud například definujete tři atributy jako odpovídající atributy a uživatel se jednoznačně shoduje po vyhodnocení prvních dvou atributů, služba nebude vyhodnocovat třetí atribut. Služba vyhodnotí odpovídající atributy v zadaném pořadí a zastaví hodnocení, když se najde shoda.  
 - **Hodnota ve zdroji a cíli nemusí přesně odpovídat:** Hodnota v cíli může být jednoduchou funkcí hodnoty ve zdroji. Takže jeden může mít atribut emailAddress ve zdroji a userPrincipalName v cíli a musí odpovídat funkci atributu emailAddress, který nahrazuje některé znaky nějakou konstantní hodnotou.  
-- **Porovnání na základě kombinace atributů není podporováno:** Většina aplikací nepodporuje dotazování na základě dvou vlastností a therfore není možné spárovat na základě kombinace atributů. Je možné vyhodnotit jednu vlastnost po druhém.
+- **Porovnání na základě kombinace atributů není podporováno:** Většina aplikací nepodporuje dotazování na základě dvou vlastností. Proto není možné se shodovat na základě kombinace atributů. Je možné vyhodnotit jednu vlastnost po druhém.
 - **Všichni uživatelé musí mít hodnotu aspoň u jednoho odpovídajícího atributu:** Pokud definujete jeden odpovídající atribut, všichni uživatelé musí mít hodnotu pro tento atribut ve zdrojovém systému. Pokud například definujete atribut userPrincipalName jako atribut Matching, všichni uživatelé musí mít hodnotu userPrincipalName. Pokud definujete více atributů odpovídajícího (např. extensionAttribute1 a mail), ne všichni uživatelé musí mít stejný shodný atribut. Jeden uživatel může mít extensionAttribute1, ale ne poštu, zatímco jiný uživatel může mít poštu, ale ne extensionAttribute1. 
 - **Cílová aplikace musí podporovat filtrování u odpovídajícího atributu:** Vývojáři aplikací umožňují filtrování pro podmnožinu atributů v rozhraní API uživatele nebo skupiny. Pro aplikace v galerii zajišťujeme, aby bylo mapování výchozího atributu pro atribut, který podporuje rozhraní API cílové aplikace. Při změně výchozího atributu odpovídajícího pro cílovou aplikaci zkontrolujte v dokumentaci k rozhraní API třetí strany, zda lze atribut filtrovat.  
 
@@ -134,7 +134,61 @@ Při úpravách seznamu podporovaných atributů jsou k dispozici následující
 - **Výraz rozhraní API** – nepoužívejte, pokud k tomu nejste vyzváni v dokumentaci pro konkrétní zřizovací konektor (například Workday).
 - **Odkazovaný atribut objektu** – Pokud se jedná o atribut typu odkazu, pak v této nabídce můžete vybrat tabulku a atribut v cílové aplikaci, která obsahuje hodnotu přidruženou k atributu. Například pokud máte atribut s názvem "Department", jehož uložená hodnota odkazuje na objekt v samostatné tabulce "oddělení", vyberte "Departments.Name". Referenční tabulky a pole primárních ID podporovaná pro danou aplikaci jsou předem nakonfigurované a v současné době není možné upravovat pomocí Azure Portal, ale můžete je upravovat pomocí [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 
-Chcete-li přidat nový atribut, posuňte se na konec seznamu podporovaných atributů, naplňte pole výše pomocí zadaných vstupů a vyberte **Přidat atribut**. Po dokončení přidávání atributů vyberte **Uložit** . Pak je nutné znovu načíst kartu **zřizování** pro nové atributy, které budou k dispozici v editoru mapování atributů.
+#### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Zřízení vlastního rozšíření atributu pro aplikaci vyhovující SCIM
+SCIM RFC definuje základní schéma uživatelů a skupin a zároveň umožňuje rozšíření schématu, aby splňovala potřeby vaší aplikace. Přidání vlastního atributu do aplikace SCIM:
+   1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com), vyberte **podnikové aplikace**, vyberte svou aplikaci a pak vyberte **zřizování**.
+   2. V části **mapování**vyberte objekt (uživatele nebo skupinu), pro který chcete přidat vlastní atribut.
+   3. V dolní části stránky vyberte **Zobrazit upřesňující možnosti**.
+   4. Vyberte * * Upravit seznam atributů pro *aplikaci*.
+   5. V dolní části seznamu atributů zadejte informace o vlastním atributu v zadaných polích. Pak vyberte **Přidat atribut**.
+
+Pro SCIM aplikace musí název atributu odpovídat vzoru, který je znázorněn v následujícím příkladu. "CustomExtensionName" a "CustomAttribute" je možné přizpůsobit podle požadavků vaší aplikace, například: urn: IETF: param: SCIM: schemas:: 2.0: CustomExtensionName: CustomAttribute
+
+Tyto pokyny platí pouze pro aplikace s podporou SCIM. Aplikace jako ServiceNow a Salesforce nejsou integrovány se službou Azure AD pomocí SCIM, a proto při přidávání vlastního atributu nevyžadují tento konkrétní obor názvů.
+
+Vlastní atributy nemůžou být referenční atributy ani atributy s více hodnotami. Vlastní atributy rozšíření s více hodnotami se aktuálně podporují jenom pro aplikace v galerii.  
+ 
+**Příklad reprezentace uživatele s atributem rozšíření:**
+
+```json
+   {
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "formatted":"Ms. Barbara J Jensen III",
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "employeeNumber": "701984",
+     "costCenter": "4130",
+     "organization": "Universal Studios",
+     "division": "Theme Park",
+     "department": "Tour Operations",
+     "manager": {
+       "value": "26118915-6090-4610-87e4-49d8ca9f808d",
+       "$ref": "../Users/26118915-6090-4610-87e4-49d8ca9f808d",
+       "displayName": "John Smith"
+     }
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "CustomAttribute": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ }
+```
+
+
 ## <a name="provisioning-a-role-to-a-scim-app"></a>Zřízení role pro aplikaci SCIM
 Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. Všimněte si, že popis níže je specifický pro vlastní SCIM aplikace. Pro aplikace Galerie, jako jsou Salesforce a ServiceNow, použijte předdefinované mapování rolí. Odrážky níže popisují, jak transformovat atribut AppRoleAssignments na formát, který aplikace očekává.
 
@@ -176,7 +230,7 @@ Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. 
   - **Kdy použít:** Pomocí výrazu AppRoleAssignmentsComplex můžete zřídit více rolí pro uživatele. 
   - **Postup konfigurace:** Upravte seznam podporovaných atributů, jak je popsáno výše, aby zahrnovaly nový atribut pro role: 
   
-    ![Přidat role](./media/customize-application-attributes/add-roles.png)<br>
+    ![Přidání rolí](./media/customize-application-attributes/add-roles.png)<br>
 
     Pak použijte výraz AppRoleAssignmentsComplex k namapování na atribut vlastní role, jak je znázorněno na následujícím obrázku:
 
@@ -222,9 +276,9 @@ Pomocí následujících kroků můžete zřídit role pro uživatele aplikace. 
 ## <a name="provisioning-a-multi-value-attribute"></a>Zřizování atributu s více hodnotami
 Některé atributy jako phoneNumbers a e-maily jsou atributy s více hodnotami, kde možná budete muset zadat různé typy telefonních čísel nebo e-mailů. Použijte níže uvedený výraz pro vícehodnotové atributy. Umožňuje zadat typ atributu a mapovat ho na odpovídající atribut uživatele Azure AD pro tuto hodnotu. 
 
-* phoneNumbers [typ EQ "Work"]. Value
-* phoneNumbers [Type EQ "mobilní"]. Value
-* phoneNumbers [typ EQ "fax"]. hodnota
+* phoneNumbers [typ eq "pracovní"] .value
+* phoneNumbers [eq typ "mobilní"] .value
+* phoneNumbers [typ eq "fax"] .value
 
    ```json
    "phoneNumbers": [
@@ -263,8 +317,8 @@ Výběrem této možnosti efektivně vynutíte opětovnou synchronizaci všech u
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Automatizace zřizování a rušení zřizování uživatelů pro aplikace SaaS](user-provisioning.md)
+- [Automatizace uživatele zřizování a jeho rušení pro aplikace SaaS](user-provisioning.md)
 - [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)
 - [Filtry oborů pro zřizování uživatelů](define-conditional-rules-for-provisioning-user-accounts.md)
 - [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](use-scim-to-provision-users-and-groups.md)
-- [Seznam kurzů, jak integrovat aplikace SaaS](../saas-apps/tutorial-list.md)
+- [Seznam kurzů o integraci aplikací SaaS](../saas-apps/tutorial-list.md)

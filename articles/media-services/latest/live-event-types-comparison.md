@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services typy Livestream | Microsoft Docs
-description: V tomto článku se zobrazuje podrobná tabulka, která porovnává Livestream typy.
+description: V Azure Media Services může mít živá událost jeden ze dvou typů, živé kódování a předávací. V tomto článku se zobrazuje podrobná tabulka, která porovnává typy událostí typu Live.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 884cf8d913cec038df3b38c8af2ed0a67bd8060d
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802240"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888389"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živých událostí
 
@@ -38,7 +38,7 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 | Maximální rozlišení videa pro kanál příspěvků |4K (4096x2160 v 60 snímcích za sekundu) |1080p (1920x1088 v 30 snímcích/s)|
 | Doporučené maximum vrstev v kanálu příspěvků|Až 12|Jeden zvuk|
 | Maximální počet vrstev ve výstupu| Stejné jako vstup|Až 6 (viz Předvolby systému níže)|
-| Maximální agregovaná šířka pásma kanálu příspěvků|60 MB/s|Není k dispozici|
+| Maximální agregovaná šířka pásma kanálu příspěvků|60 MB/s|Nevztahuje se|
 | Maximální přenosová rychlost pro jednu vrstvu v příspěvku |20 MB/s|20 MB/s|
 | Podpora pro zvukové stopy ve více jazycích|Ano|Ne|
 | Podporované vstupní kodeky videa |H. 264/AVC a H. 265/HEVC|H. 264/AVC|
@@ -73,12 +73,12 @@ Pokud je informační kanál příspěvku z řešení 720p nebo vyšší, **Defa
 
 | S přenosovou rychlostí | Šířka | Výška | MaxFPS | Profil |
 | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Vysoká |
-| 2200 |960 |540 |30 |Vysoká |
-| 1350 |704 |396 |30 |Vysoká |
-| 850 |512 |288 |30 |Vysoká |
-| 550 |384 |216 |30 |Vysoká |
-| 200 |340 |192 |30 |Vysoká |
+| 3500 |1280 |720 |30 |Vysoký |
+| 2200 |960 |540 |30 |Vysoký |
+| 1350 |704 |396 |30 |Vysoký |
+| 850 |512 |288 |30 |Vysoký |
+| 550 |384 |216 |30 |Vysoký |
+| 200 |340 |192 |30 |Vysoký |
 
 > [!NOTE]
 > Pokud potřebujete přizpůsobit živé kódování, otevřete prosím lístek podpory prostřednictvím webu Azure Portal. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva s rozlišením 720p a maximálně 6 vrstev celkem. Také zadejte, že požadujete předvolbu pro standardní Live Encoder.
@@ -90,12 +90,12 @@ Pokud je informační kanál příspěvku z rozlišení 1080p, předvolba **Defa
 
 | S přenosovou rychlostí | Šířka | Výška | MaxFPS | Profil |
 | --- | --- | --- | --- | --- |
-| 5500 |1920 |1080 |30 |Vysoká |
-| 3000 |1280 |720 |30 |Vysoká |
-| 1600 |960 |540 |30 |Vysoká |
-| 800 |640 |360 |30 |Vysoká |
-| 400 |480 |270 |30 |Vysoká |
-| 200 |320 |180 |30 |Vysoká |
+| 5500 |1920 |1080 |30 |Vysoký |
+| 3000 |1280 |720 |30 |Vysoký |
+| 1600 |960 |540 |30 |Vysoký |
+| 800 |640 |360 |30 |Vysoký |
+| 400 |480 |270 |30 |Vysoký |
+| 200 |320 |180 |30 |Vysoký |
 
 > [!NOTE]
 > Pokud potřebujete přizpůsobit živé kódování, otevřete prosím lístek podpory prostřednictvím webu Azure Portal. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, zda je v 1080p pouze jedna vrstva, a maximálně 6 vrstev. Také zadejte, že požadujete přednastavení pro Premium1080p Live Encoder.

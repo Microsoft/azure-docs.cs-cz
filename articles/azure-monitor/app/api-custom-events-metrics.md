@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 5f138314fd536d0264f8d40e1ac78da954c19e74
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030695"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893378"
 ---
-# <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights rozhraní API pro vlastní události a metriky
+# <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
 Do své aplikace vložte pár řádků kódu, abyste zjistili, co uživatelé s ním pracují, nebo aby vám pomohla diagnostikovat problémy. Telemetrii můžete odesílat ze zařízení a desktopových aplikací, webových klientů a webových serverů. Použijte rozhraní API telemetrie [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Core k posílání vlastních událostí a metrik a vašich vlastních verzí standardní telemetrie. Toto rozhraní API je stejné rozhraní API, které používá standardní Application Insights sběrače dat.
 
@@ -30,7 +30,7 @@ Základní rozhraní API je na všech platformách stejné, kromě několika var
 | [`TrackMetric`](#trackmetric) |Měření výkonu, jako jsou například délky front, které nesouvisí s konkrétními událostmi. |
 | [`TrackException`](#trackexception) |Protokolování výjimek pro diagnostiku. Sledovat, kde se vyskytují ve vztahu k ostatním událostem a prozkoumávat trasování zásobníku. |
 | [`TrackRequest`](#trackrequest) |Protokolování četnosti a doby trvání požadavků serveru pro analýzu výkonu. |
-| [`TrackTrace`](#tracktrace) |Zprávy diagnostického protokolu. Můžete také zachytit protokoly třetích stran. |
+| [`TrackTrace`](#tracktrace) |Zprávy protokolu diagnostiky prostředků. Můžete také zachytit protokoly třetích stran. |
 | [`TrackDependency`](#trackdependency) |Protokolování doby trvání a frekvence volání externích komponent, na kterých závisí vaše aplikace. |
 
 K většině těchto volání telemetrie můžete [připojit vlastnosti a metriky](#properties) .
@@ -522,7 +522,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si vyžádat `details` strukturu. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Příklad:
+Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si vyžádat `details` strukturu. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Například:
 
 ```kusto
 exceptions
@@ -585,7 +585,7 @@ Můžete hledat obsah zprávy, ale (na rozdíl od hodnot vlastností) nemůžete
 Omezení velikosti `message` je mnohem vyšší než omezení vlastností.
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.  
 
-Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
+Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
 
 *C#*
 
@@ -733,7 +733,7 @@ Funkce je asynchronní pro [kanál telemetrie serveru](https://www.nuget.org/pac
 
 V ideálním případě by měla být metoda flush () použita v aktivity vypnutí aplikace.
 
-## <a name="authenticated-users"></a>Ověření uživatelé
+## <a name="authenticated-users"></a>Skupina Authenticated Users
 
 Ve webové aplikaci jsou uživatelé (ve výchozím nastavení) identifikováni pomocí souborů cookie. Uživatel se může při přístupu k vaší aplikaci z jiného počítače nebo prohlížeče počítat více než jednou, nebo pokud odstraní soubory cookie.
 
@@ -752,7 +752,7 @@ function Authenticated(signInId) {
 
 V aplikaci ASP.NET Web MVC například:
 
-*Syntaxi*
+*Razor*
 
 ```cshtml
 @if (Request.IsAuthenticated)
@@ -868,7 +868,7 @@ telemetry.trackEvent("WinGame", properties, metrics);
 ```
 
 > [!NOTE]
-> Je třeba dbát na to, abyste do vlastností nehlásili osobně identifikovatelné osobní údaje.
+> Je třeba dbát na to, aby u vlastností nedošlo k protokolování osobních údajů.
 >
 >
 
@@ -1017,7 +1017,7 @@ Před odesláním ze sady SDK pomocí implementace `ITelemetryProcessor`může [
 
 [Vzorkování](../../azure-monitor/app/api-filtering-sampling.md) je zabalené řešení, které snižuje objem dat odesílaných z vaší aplikace na portál. V takovém případě nemá vliv na zobrazené metriky. A to i bez ovlivnění vaší schopnosti diagnostikovat problémy pomocí navigace mezi souvisejícími položkami, jako jsou výjimky, požadavky a zobrazení stránek.
 
-[Další informace](../../azure-monitor/app/api-filtering-sampling.md)
+[Další informace](../../azure-monitor/app/api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Zakázání telemetrie
 
@@ -1148,7 +1148,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
+TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Například:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

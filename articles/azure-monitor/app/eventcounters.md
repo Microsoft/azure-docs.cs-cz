@@ -4,15 +4,15 @@ description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Appli
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cithomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72677150"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889120"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
@@ -28,7 +28,7 @@ Application Insights podporuje shromažďování `EventCounters` s `EventCounter
 
 Pro aplikace běžící v .NET Core 3,0 se sada SDK automaticky shromáždí následující čítače. Název čítačů bude ve formátu "kategorie | Čítač ".
 
-|Kategorie | Objektů|
+|Kategorie | Čítač|
 |---------------|-------|
 |`System.Runtime` | `cpu-usage` |
 |`System.Runtime` | `working-set` |
@@ -98,7 +98,7 @@ Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přiz
 Pokud chcete v [Průzkumníkovi metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)zobrazit EventCounter metriky, vyberte Application Insights prostředek a zvolte metriky založené na protokolu jako obor názvů metriky. Pak se metriky EventCounter zobrazí v kategorii PerformanceCounter.
 
 > [!div class="mx-imgBorder"]
-> čítače ![Event hlášené v Application Insights ](./media/event-counters/metrics-explorer-counter-list.png)
+> čítače událostí ![hlášené v Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Čítače událostí v analýzách
 
@@ -111,7 +111,7 @@ performanceCounters | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> čítače ![Event hlášené v Application Insights ](./media/event-counters/analytics-event-counters.png)
+> čítače událostí ![hlášené v Application Insights](./media/event-counters/analytics-event-counters.png)
 
 Pokud chcete získat graf určitého čítače (například: `ThreadPool Completed Work Item Count`) za poslední období, spusťte následující dotaz.
 
@@ -123,7 +123,7 @@ performanceCounters
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> ![Chat jednoho počítadla v Application Insights ](./media/event-counters/analytics-completeditems-counters.png)
+> ![chat jednoho počítadla v Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
 Podobně jako u jiné telemetrie **čítače výkonu** má také sloupec `cloud_RoleInstance`, který označuje identitu instance hostitelského serveru, na které je vaše aplikace spuštěná. Výše uvedený dotaz ukazuje hodnotu čítače na instanci a lze ji použít k porovnání výkonu různých instancí serveru.
 

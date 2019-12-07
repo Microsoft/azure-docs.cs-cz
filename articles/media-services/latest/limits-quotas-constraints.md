@@ -1,6 +1,6 @@
 ---
 title: Kvóty a omezení v Azure Media Services V3 | Microsoft Docs
-description: Toto téma popisuje kvóty a omezení v Azure Media Services V3
+description: Toto téma popisuje kvóty a omezení v Microsoft Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2a530d6a1a447ccde448259623da6faeaa6a4d72
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598367"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888423"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení v Azure Media Services V3
 
@@ -30,7 +30,7 @@ Tento článek popisuje kvóty a omezení v Azure Media Services V3.
 | JobOutputs na úlohu | 20 (fixní) |
 | TransformOutputs v transformaci | 20 (fixní) |
 | Soubory na JobInput|10 (pevné)|
-| Velikost souboru| V některých scénářích je omezení maximální velikosti souboru podporovanou pro zpracování v Media Services. <sup>první</sup> |
+| Velikost souboru| V některých scénářích je omezení maximální velikosti souboru podporovanou pro zpracování v Media Services. <sup>(1)</sup> |
 | Počet úloh na účet Media Services | 500 000 <sup>(2)</sup> (fixní)|
 | Živé události na účet Media Services |5|
 | Účty Media Services v jednom předplatném | 25 (pevné) |

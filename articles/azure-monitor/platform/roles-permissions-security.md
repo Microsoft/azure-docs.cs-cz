@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305154"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894543"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Role, oprávnění a zabezpečení v Azure Monitor
 
@@ -116,7 +116,7 @@ New-AzRoleDefinition -Role $role
 Data monitorování – zejména soubory protokolů – můžou obsahovat citlivé informace, jako jsou IP adresy nebo uživatelská jména. Data monitorování z Azure se nachází ve třech základních formulářích:
 
 1. Protokol aktivit, který popisuje všechny akce na úrovni ovládacího prvku na vašem předplatném Azure.
-2. Diagnostické protokoly, které jsou protokoly emitované prostředkem.
+2. protokoly prostředků, které jsou protokoly emitované prostředkem.
 3. Metriky, které jsou vygenerovány prostředky.
 
 Všechny tři tyto datové typy můžou být uložené v účtu úložiště nebo streamované do centra událostí, z nichž obě jsou prostředky Azure pro obecné účely. Vzhledem k tomu, že se jedná o prostředky pro obecné účely, vytváření, odstraňování a přístup k nim jsou privilegované operace rezervované pro správce. Doporučujeme použít následující postupy pro prostředky související se sledováním, abyste zabránili zneužití:
@@ -182,7 +182,7 @@ Azure Monitor potřebuje přístup k prostředkům Azure, abyste mohli poskytova
 ### <a name="secured-storage-accounts"></a>Zabezpečené účty úložiště 
 
 Data monitorování se často zapisují do účtu úložiště. Možná budete chtít zajistit, aby data zkopírovaná do účtu úložiště nezískal přístup neautorizovaných uživatelů. Pro zvýšení zabezpečení můžete uzamknout síťový přístup a povolit přístup jenom autorizovaným prostředkům a důvěryhodným službám Microsoftu k účtu úložiště tím, že omezíte účet úložiště tak, aby používal vybrané sítě.
-Dialog ![Azure Storage nastavení](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor se považuje za jednu z těchto "důvěryhodných služeb Microsoftu", pokud povolíte důvěryhodným službám Microsoftu přístup k zabezpečenému úložišti, bude mít Azure monitor přístup k vašemu účtu zabezpečeného úložiště. povolením psaní protokolů diagnostiky Azure Monitor, protokolu aktivit a metrik do účtu úložiště za těchto chráněných podmínek. Umožní vám taky Log Analytics číst protokoly ze zabezpečeného úložiště.   
+Dialog ![Azure Storage nastavení](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor se považuje za jednu z těchto "důvěryhodných služeb Microsoftu", pokud povolíte důvěryhodným službám Microsoftu přístup k zabezpečenému úložišti, bude mít Azure monitor přístup k vašemu účtu zabezpečeného úložiště. povolení zápisu Azure Monitorch protokolů prostředků, protokolů aktivit a metrik do účtu úložiště za těchto chráněných podmínek. Umožní vám taky Log Analytics číst protokoly ze zabezpečeného úložiště.   
 
 
 Další informace najdete v tématu [zabezpečení sítě a Azure Storage](../../storage/common/storage-network-security.md)

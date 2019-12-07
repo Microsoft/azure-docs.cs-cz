@@ -1,22 +1,22 @@
 ---
-title: Načtení dat do Azure Data Lake Storage Gen1 pomocí Azure Data Factory
+title: Načíst data do Azure Data Lake Storage Gen1
 description: Použití Azure Data Factory ke kopírování dat do Azure Data Lake Storage Gen1
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: b8e5841e6869bd6f19b07bf71434de809cdcb74f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: adad770926b23e0529d5a6e08605a338d958ae09
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672721"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892953"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen1 pomocí Azure Data Factory
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 > [!NOTE]
 > Další informace najdete v tématu [kopírování dat do nebo z Data Lake Storage Gen1 pomocí Azure Data Factory](connector-azure-data-lake-store.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Účet Data Lake Storage Gen1: Pokud nemáte účet Data Lake Storage Gen1, přečtěte si pokyny v tématu [Vytvoření účtu Data Lake Storage Gen1](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account).
@@ -58,12 +58,12 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
     * **Verze**: vyberte **v2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Storage Gen1, Azure Storage, Azure SQL Database a tak dále.
 
-3. Vyberte **Vytvořit**.
+3. Vyberte **Create** (Vytvořit).
 4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku: 
    
-   ![Domovská stránka objektu pro vytváření dat](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
+   ![Domovská stránka datové továrny](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
 
-   Kliknutím na dlaždici **Author & monitor** můžete spustit aplikaci pro integraci dat na samostatné kartě.
+   Výběrem dlaždice **Author & Monitor** (Vytvořit a monitorovat) otevřete na samostatné kartě aplikaci pro integraci dat.
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>Načíst data do Data Lake Storage Gen1
 
@@ -88,15 +88,15 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
    
       ![Zadat účet Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Zobrazí se nové připojení. Vyberte **Next** (Další).
+   4. Zobrazí se nové připojení. Vyberte **Další**.
    
    ![Zadat účet Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. Na stránce **zvolit vstupní soubor nebo složku** přejděte do složky a souboru, který chcete zkopírovat. Vyberte složku nebo soubor, vyberte **zvolit**a pak vybrat **Další**:
+5. Na stránce pro **volbu vstupního souboru nebo složky** přejděte ke složce a souboru, který chcete zkopírovat. Vyberte složku nebo soubor, vyberte **zvolit**a pak vybrat **Další**:
 
     ![Zvolte vstupní soubor nebo složku](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. Zvolte chování kopírování, a to tak, že vyberete možnosti **Kopírovat soubory rekurzivně** a **binární kopírování** (kopírování souborů jako je). Vyberte **Další**:
+6. Zvolte chování kopírování, a to tak, že vyberete možnosti **Kopírovat soubory rekurzivně** a **binární kopírování** (kopírování souborů jako je). Vyberte **Další**.
 
     ![Zadat výstupní složku](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
@@ -108,7 +108,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
    1. Jako **název účtu Data Lake Store**vyberte svůj účet Data Lake Storage Gen1.
    2. Zadejte **tenanta**a vyberte Dokončit.
-   3. Vyberte **Next** (Další).
+   3. Vyberte **Další**.
    
    > [!IMPORTANT]
    > V tomto návodu použijete spravovanou identitu pro prostředky Azure k ověření účtu Data Lake Storage Gen1. Nezapomeňte mu udělit správná oprávnění v Data Lake Storage Gen1 pomocí následujících [pokynů](connector-azure-data-lake-store.md#managed-identity).
@@ -130,7 +130,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 13. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Actions (akce** ) obsahuje odkazy na zobrazení podrobností o spuštění aktivit a opětovné spuštění kanálu:
 
     ![Monitorování spuštění kanálu](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-14. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat kliknutím na **Aktualizovat**. 
+14. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
 
     ![Monitorování spuštění aktivit](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 

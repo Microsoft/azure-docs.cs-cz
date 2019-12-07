@@ -1,5 +1,5 @@
 ---
-title: Kopírování souborů z více kontejnerů pomocí Azure Data Factory
+title: Kopírování souborů z několika kontejnerů
 description: Naučte se používat šablonu řešení ke kopírování souborů z více kontejnerů pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/1/2018
-ms.openlocfilehash: 004a623f0dfe251da9d452b53c2541e53339d965
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fffe356225fc813b027bf1d6e29b3afe19b7fb01
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684265"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890789"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopírování souborů z více kontejnerů pomocí Azure Data Factory
 
@@ -49,7 +49,7 @@ Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiš
 
     ![Vytvoří nové připojení k cíli.](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Vyberte **použít tuto šablonu**.
+3. Vyberte **Použít tuto šablonu**.
 
     ![Použít tuto šablonu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     

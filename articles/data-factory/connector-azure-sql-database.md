@@ -1,5 +1,5 @@
 ---
-title: Kopírování a transformace dat v Azure SQL Database pomocí Data Factory
+title: Kopírování a transformace dat v Azure SQL Database
 description: Naučte se, jak kopírovat data do a z Azure SQL Database a transformovat data v Azure SQL Database pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b899d9884a80a882ca03d3d970421227a48a3803
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8b09bb50df18660ae6fb21febc121d17058be23b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075598"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891029"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure SQL Database pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -48,7 +48,7 @@ U aktivity kopírování tato Azure SQL Database konektor podporuje tyto funkce:
 > Pokud kopírujete data pomocí prostředí Azure Data Factory Integration runtime, nakonfigurujte [bránu azure SQL Server Firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) , aby mohli služby Azure přistupovat k serveru.
 > Pokud kopírujete data pomocí místního prostředí Integration runtime, nakonfigurujte bránu firewall Azure SQL Server tak, aby umožňovala odpovídající rozsah IP adres. Tento rozsah zahrnuje IP adresu počítače, která se používá pro připojení k Azure SQL Database.
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -586,7 +586,7 @@ Když se data zkopírují z nebo do Azure SQL Database, použijí se následují
 | bit |Logická hodnota |
 | char |String, Char[] |
 | date |Datum a čas |
-| Datum a čas |Datum a čas |
+| Datetime |Datum a čas |
 | datetime2 |Datum a čas |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
@@ -599,17 +599,17 @@ Když se data zkopírují z nebo do Azure SQL Database, použijí se následují
 | ntext |String, Char[] |
 | numeric |Decimal |
 | nvarchar |String, Char[] |
-| real |Single |
+| real |Jednoduchá |
 | rowversion |Byte[] |
 | smalldatetime |Datum a čas |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Objekt |
 | text |String, Char[] |
-| time |Časový interval |
+| time |TimeSpan |
 | časové razítko |Byte[] |
-| tinyint |Bajt |
-| uniqueidentifier |identifikátor GUID |
+| tinyint |Bajtů |
+| uniqueidentifier |Guid |
 | Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |

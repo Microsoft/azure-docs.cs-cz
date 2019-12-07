@@ -9,13 +9,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 10/19/2019
-ms.openlocfilehash: a068ea3f51e4faa6497c7b1a93192a924753c7c9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 11/27/2019
+ms.openlocfilehash: 9be8fbad8811d758f9ac4205c0d1e60e0d82e07f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895095"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895494"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Připojení snímače RuuviTag k aplikaci Azure IoT Central
 
@@ -29,7 +29,7 @@ RuuviTag komunikuje přes tabulku (Bluetooth Low Energy) a vyžaduje, aby zaří
 
 Pokud chcete nastavit Rigado zařízení brány 500, postupujte prosím podle [pokynů uvedených tady](./howto-connect-rigado-cascade-500.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K propojení senzorů RuuviTag potřebujete tyto prostředky:
 
@@ -70,7 +70,7 @@ Postup vytvoření simulovaného RuuviTag:
 1. Vyberte **+ Nový**.
 1. Zadejte jedinečné **ID zařízení** a popisný **název zařízení**.  
 1. Povolí **simulované** nastavení.
-1. Vyberte **Vytvořit**.  
+1. Vyberte **Create** (Vytvořit).  
 
 ## <a name="next-steps"></a>Další kroky
 

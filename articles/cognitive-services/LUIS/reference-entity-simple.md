@@ -10,30 +10,30 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671502"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894759"
 ---
-# <a name="simple-entity"></a>Jednoduchá entita 
+# <a name="simple-entity"></a>Jednoduchá entita
 
-Jednoduchá entita je obecná entita, která popisuje jeden koncept a je získána z kontextu zjištěného počítačem. Vzhledem k tomu, že jednoduché entity jsou obecně názvy, například názvy společností, názvy produktů nebo jiné kategorie názvů, přidejte [seznam frází](luis-concept-feature.md) při použití jednoduché entity k posílení signálu používaných názvů. 
+Jednoduchá entita je obecná entita, která popisuje jeden koncept a je získána z kontextu zjištěného počítačem. Vzhledem k tomu, že jednoduché entity jsou obecně názvy, například názvy společností, názvy produktů nebo jiné kategorie názvů, přidejte [seznam frází](luis-concept-feature.md) při použití jednoduché entity k posílení signálu používaných názvů.
 
 **Entita je vhodná v případě, že:**
 
-* Data nejsou konzistentně naformátovaná, ale označují stejnou věc. 
+* Data nejsou konzistentně naformátovaná, ale označují stejnou věc.
 
-![jednoduchá entita](./media/luis-concept-entities/simple-entity.png)
+![jednoduché entity](./media/luis-concept-entities/simple-entity.png)
 
-## <a name="example-json"></a>Ukázkový kód JSON
+## <a name="example-json"></a>Ukázkový soubor JSON
 
 `Bob Jones wants 3 meatball pho`
 
-V předchozím utterance je `Bob Jones` označena jako jednoduchá `Customer` entita.
+V předchozím utterance `Bob Jones` je označena jako jednoduchý `Customer` entity.
 
-Data vrácená z koncového bodu zahrnují název entity, zjištěný text z utterance, umístění zjištěného textu a skóre:
+Data vrácená z koncového bodu obsahuje název entity, zjištěný text z utterance, umístění zjištěných textu a skóre:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -86,12 +86,13 @@ This is the JSON if `verbose=true` is set in the query string:
 }
 ```
 
-* * * 
+* * *
 
 |Datový objekt|Název entity|Hodnota|
 |--|--|--|
-|Jednoduchá entita|`Customer`|`bob jones`|
+|Jednoduché Entity|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto [kurzu](luis-quickstart-primary-and-secondary-data.md)extrahujete pomocí **jednoduché entity**data z pracovní úlohy, která se naučila z utterance. Chcete-li zvýšit přesnost extrakce, přidejte [seznam frází](luis-concept-feature.md) , které jsou specifické pro jednoduchou entitu.
+> [!div class="nextstepaction"]
+> [Informace o syntaxi vzorů](reference-pattern-syntax.md)

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 9f933a9ad63af11bcfee7c90f17318f5a237b962
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/05/2019
+ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792096"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893661"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -49,7 +49,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
   **Minimální požadavky**
 
   * .NET Framework 4.7.2
-  * 64. bitová verze systému Windows 7 nebo Windows Server 2008 R2 (nebo novější)
+  * 64bitová verze Windows 7 nebo Windows Serveru 2008 R2 (nebo novější)
 
   **Doporučené požadavky**
 
@@ -86,14 +86,6 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 1. [Stáhněte a spusťte instalační program brány na místním počítači](https://aka.ms/on-premises-data-gateway-installer).
 
-1. Po otevření instalačního programu vyberte **Další**.
-
-   ![Úvodní obrazovka pro instalační program brány](./media/logic-apps-gateway-install/gateway-intro-screen.png)
-
-1. Vyberte **místní bránu dat (doporučeno)** , což je standardní režim, a pak vyberte **Další**.
-
-   ![Vyberte režim spuštění pro bránu dat.](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
-
 1. Zkontrolujte minimální požadavky, ponechte výchozí instalační cestu, přijměte podmínky použití a pak vyberte **nainstalovat**.
 
    ![Kontrola požadavků a přijetí podmínek použití](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
@@ -104,7 +96,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
    Vaše instalace brány se může propojit jenom s jedním účtem Azure.
 
-1. Vyberte možnost **zaregistrovat novou bránu na tomto počítači** > **Další**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
+1. Vyberte **Registrace nové brány na tomto počítači** > **Další**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
 
    ![Registrovat bránu v místním počítači](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -196,7 +188,7 @@ Aby bylo možné získat přehled o všech místních branách dat v tenantovi A
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Restartovat bránu
+## <a name="restart-gateway"></a>Restartování brány
 
 Ve výchozím nastavení se instalace brány na místním počítači spouští jako účet služby systému Windows s názvem "místní služba brány dat". Instalace brány však používá `NT SERVICE\PBIEgwService` název přihlašovacích údajů k účtu "přihlásit se jako" a má oprávnění "přihlásit jako službu".
 
@@ -207,7 +199,7 @@ Stejně jako u jakékoli jiné služby Windows můžete bránu spouštět a zast
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>Jak brána funguje
+## <a name="how-the-gateway-works"></a>Jak funguje brána
 
 Uživatelé ve vaší organizaci mají přístup k místním datům, ke kterým už mají autorizovaný přístup. Než se však tito uživatelé budou moci připojit k místnímu zdroji dat, je třeba nainstalovat a nastavit místní bránu dat. Správce je obvykle osoba, která instaluje a nastavuje bránu. Tyto akce můžou vyžadovat oprávnění správce serveru nebo speciální znalosti o vašich místních serverech.
 
@@ -270,7 +262,7 @@ Tady jsou způsoby, jak můžete porovnat místní účty Active Directory se sl
 Další informace najdete v těchto tématech:
 
 * [Nejčastější dotazy k místní bráně dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Řešení potíží s místní bránou dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Řešení problémů s místní bránou dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Monitorování a optimalizace výkonu brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Další kroky

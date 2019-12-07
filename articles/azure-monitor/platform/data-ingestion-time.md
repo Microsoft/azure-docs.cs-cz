@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932568"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894143"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Doba přijímání dat protokolu v Azure Monitor
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.
@@ -40,10 +40,10 @@ Agenti a řešení pro správu používají různé strategie ke shromažďován
 ### <a name="agent-upload-frequency"></a>Frekvence nahrávání agenta
 Chcete-li zajistit, aby byl agent Log Analytics odlehčený, Agent ukládá protokoly do vyrovnávací paměti a pravidelně je odesílá do Azure Monitor. Frekvence nahrávání se v závislosti na typu dat liší v rozmezí 30 sekund a 2 minut. Většina dat se nahrává za 1 minutu. Stav sítě může negativně ovlivnit latenci těchto dat, aby se dosáhlo Azure Monitor bodu pro přijímání.
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Protokoly aktivit Azure, diagnostické protokoly a metriky
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Protokoly aktivit Azure, protokoly prostředků a metriky
 Data Azure přidávají další čas, který je k dispozici na Log Analytics bod příjmu pro zpracování:
 
-- Data z diagnostických protokolů v závislosti na službě Azure zabírají 2-15 minut. Podívejte se na [následující dotaz](#checking-ingestion-time) a prověřte tuto latenci ve vašem prostředí.
+- Data z protokolů prostředků zabírají 2-15 minut v závislosti na službě Azure. Podívejte se na [následující dotaz](#checking-ingestion-time) a prověřte tuto latenci ve vašem prostředí.
 - Metrika platformy Azure trvá 3 minuty, než se pošle Log Analytics bodu pro přijímání.
 - Data protokolu aktivit budou trvat přibližně 10-15 minut, než se pošle Log Analytics bodu pro přijímání.
 
@@ -78,9 +78,9 @@ Doba příjmu se může u různých prostředků v různých případech lišit.
 
 | Krok | Vlastnost nebo funkce | Komentáře |
 |:---|:---|:---|
-| Záznam vytvořený ve zdroji dat | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Pokud zdroj dat tuto hodnotu nenastaví, bude nastaven na stejnou dobu jako _TimeReceived. |
+| Záznam vytvořený ve zdroji dat | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Pokud zdroj dat tuto hodnotu nenastaví, bude nastaven na stejný čas jako _TimeReceived. |
 | Záznam přijatý Azure Monitor koncový bod pro ingestování | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| Záznam uložený v pracovním prostoru a dostupný pro dotazy | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| Záznam uložený v pracovním prostoru a dostupný pro dotazy | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Zpoždění latence přijímání
 Můžete změřit latenci konkrétního záznamu porovnáním výsledku funkce [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) s vlastností _TimeGenerated_ . Tato data je možné použít s různými agregacemi k nalezení, jak se latence příjmu chová. Prověřte si určitý percentil doby příjmu, abyste získali přehled o velkém množství dat. 

@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171606"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900176"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Podmínky shody v modulu Standard rules pro Azure CDN
 
@@ -50,7 +50,7 @@ Operátor | Podporované hodnoty
 ---------|----------------
 Rovná se, není rovno | 2,0, 1,1, 1,0, 0,9, vše
 
-### <a name="request-cookies"></a>Soubory cookie požadavků
+### <a name="request-cookies"></a>Soubory cookie požadavku
 
 Identifikuje požadavky na základě informací o souborech cookie v příchozím požadavku.
 
@@ -60,9 +60,9 @@ Název souboru cookie | Operátor | Hodnota souboru cookie | Transformace příp
 ------------|----------|--------------|---------------
 Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-#### <a name="key-information"></a>Informace o klíči
+#### <a name="key-information"></a>Hlavní informace
 
-- Pokud zadáte název souboru cookie, nemůžete použít zástupné znaky (včetně hvězdiček (\*)). můžete Muse použít přesný název souboru cookie.
+- Pokud zadáte název souboru cookie, nemůžete použít zástupné znaky (včetně hvězdiček (\*)). je nutné použít přesný název souboru cookie.
 - Pro každou instanci této podmínky shody můžete zadat jenom jeden název souboru cookie.
 - Porovnávání názvů souborů cookie rozlišuje velká a malá písmena.
 - Chcete-li zadat více hodnot souborů cookie, použijte jednu mezeru mezi každou hodnotou souboru cookie. 
@@ -97,20 +97,20 @@ Identifikuje požadavky na základě umístění nebo IP adresy žadatele.
 
 Operátor | Podporované hodnoty
 ---------|-----------------
-Jakýkoli | neuvedeno
+Všechny | Nevztahuje se
 Geografická shoda | Kód země
 Shoda IP adres | IP adresa (oddělená mezerami)
-Ne žádné | neuvedeno
+Ne žádné | Nevztahuje se
 Neshoda geografického umístění | Kód země
 Neshoda IP adres | IP adresa (oddělená mezerami)
 
-#### <a name="key-information"></a>Informace o klíči
+#### <a name="key-information"></a>Hlavní informace
 
 - Použijte notaci CIDR.
 - Pokud chcete zadat víc IP adres a bloků IP adres, použijte jednu mezeru mezi hodnotami:
   - **Příklad protokolu IPv4**: *1.2.3.4 10.20.30.40* odpovídá všem žádostem, které dorazí buď na adresu 1.2.3.4 nebo 10.20.30.40.
-  - **Příklad IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 odpovídá všem žádostem, které přicházejí buď z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
-- Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Příklad:
+  - **Příklad IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* odpovídá všem žádostem, které přicházejí buď z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
+- Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Například:
   - **Příklad IPv4**: *5.5.5.64/26* odpovídá všem žádostem, které přicházejí z adres 5.5.5.64 prostřednictvím 5.5.5.127.
   - **Příklad IPv6**: *1:2:3:/48* odpovídá všem žádostem, které přicházejí z adres 1:2:3:0:0:0:0:0 až 1:2: ffff: ffff: ffff: ffff: ffff: FFFF.
 
@@ -144,7 +144,7 @@ Operátor | Podporované hodnoty
 ---------|----------------
 Rovná se, není rovno | ZÍSKÁNÍ, VYSTAVENÍ, VLOŽENÍ, ODSTRANĚNÍ, HLAVNÍ, MOŽNOSTI, TRASOVÁNÍ
 
-#### <a name="key-information"></a>Informace o klíči
+#### <a name="key-information"></a>Hlavní informace
 
 - Obsah uložený v mezipaměti v Azure CDN může generovat jenom metoda GET Request. Všechny ostatní metody žádosti jsou proxy prostřednictvím sítě. 
 
@@ -168,7 +168,7 @@ Operátor | Adresa URL požadavku | Transformace případu
 ---------|-------------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-#### <a name="key-information"></a>Informace o klíči
+#### <a name="key-information"></a>Hlavní informace
 
 - Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: *https://www.\<yourdomain\>.com* .
 
@@ -178,11 +178,11 @@ Identifikuje požadavky, které zahrnují zadanou příponu souboru v názvu sou
 
 #### <a name="required-fields"></a>Povinná pole
 
-Operátor | Linka | Transformace případu
+Operátor | Přípona | Transformace případu
 ---------|-----------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-#### <a name="key-information"></a>Informace o klíči
+#### <a name="key-information"></a>Hlavní informace
 
 - V případě rozšíření Nezahrnovat úvodní období; použijte například *HTML* namísto *. html*.
 
@@ -196,7 +196,7 @@ Operátor | Název souboru | Transformace případu
 ---------|-----------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-#### <a name="key-information"></a>Informace o klíči
+#### <a name="key-information"></a>Hlavní informace
 
 - Chcete-li zadat více názvů souborů, oddělte každý název souboru jediným mezerou. 
 
@@ -210,7 +210,7 @@ Operátor | Hodnota | Transformace případu
 ---------|-------|---------------
 [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
-#### <a name="key-information"></a>Informace o klíči
+#### <a name="key-information"></a>Hlavní informace
 
 - Hodnota názvu souboru může využít zástupné hodnoty. Například každý vzor názvu souboru může obsahovat jednu nebo více hvězdiček (*), kde každá hvězdička odpovídá sekvenci jednoho nebo více znaků.
 
@@ -220,14 +220,14 @@ Operátor | Hodnota | Transformace případu
 
 Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, platí následující operátory:
 
-- Jakýkoli
+- Všechny
 - Rovná se 
 - Contains 
 - Začíná na 
 - končí 
-- Je menší než
+- Méně než
 - Je menší než nebo rovno
-- Větší než
+- Více než
 - Je větší než nebo rovno
 - Ne žádné
 - Neobsahuje

@@ -1,6 +1,6 @@
 ---
-title: Porovnání Video Indexer a Azure Media Services v3 předvolby | Dokumentace Microsoftu
-description: Toto téma srovnává funkce Video Indexer a Azure Media Services v3 předvolby.
+title: Porovnání přednastavení Video Indexer a Azure Media Services V3 | Microsoft Docs
+description: Tento článek porovnává Video Indexer možnosti a přednastavení Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 275178998948e357a6a72fbe5d0b3c9c01485a3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 055e210efbb01268654e7823a0fc1320e9c27646
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800163"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892817"
 ---
-# <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnání služeb Azure Media Services v3 přednastavení a Video Indexer 
+# <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnat Azure Media Services V3 předvolby a Video Indexer 
 
-Tento článek porovnává možnosti **rozhraní Video Indexer API** a **rozhraní API služby Media Services v3**. 
+Tento článek porovnává možnosti rozhraní **video indexer API** a **rozhraní API pro Media Services V3**. 
 
-V současné době je k překrytí mezi součástmi, které nabízí [rozhraní Video Indexer API](https://api-portal.videoindexer.ai/) a [rozhraní API služby Media Services v3](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json). Následující tabulka nabízí aktuální obecných zásad pro pochopení rozdíly a podobnosti. 
+V současné době dochází k překrytí mezi funkcemi nabízenými [rozhraními api video indexer](https://api-portal.videoindexer.ai/) a rozhraními [API Media Services V3](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json). Následující tabulka nabízí aktuální pravidlo pro porozumění rozdílům a podobnostem. 
 
 ## <a name="compare"></a>Porovnání
 
-|Funkce|Video Indexer API |Analyzátor videa a zvuku analyzátor přednastavení<br/>v rozhraní API služby Media Services v3|
+|Funkce|Rozhraní API pro Video Indexer |Předvolby videa a analyzátoru zvuku<br/>v rozhraních API pro Media Services V3|
 |---|---|---|
-|Media Insights|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/intelligence-concept.md)|
-|Prostředí|Podívejte se na seznam podporovaných funkcí: <br/> [Přehled](video-indexer-overview.md)|Vrátí pouze poznatků z videí|
-|Fakturace|[Ceny za Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Ceny za Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|Dodržování předpisů|[ISO 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001), [ISO 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018), [SOC 1,2,3](https://www.microsoft.com/TrustCenter/Compliance/SOC), [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa), [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp), [PCI](https://www.microsoft.com/trustcenter/compliance/pci)a [ HITRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust) certified. Nejnovější aktualizace najdete [aktuální stav certifikace modulu Video Indexer](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).|Služba Media Services je kompatibilní s mnoha certifikace. Podívejte se na [Offerings.pdf dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte položku "Media Services", chcete-li zobrazit, pokud je v souladu s certifikátem, které vás zajímají.|
-|Bezplatná zkušební verze|USA – východ|Není k dispozici.|
-|Dostupnost v oblastech|USA – východ 2, USA (střed) – Jih, USA – západ 2, Severní Evropa, západní Evropa, jihovýchodní Asie, jihovýchodní Asie a Austrálie – východ.  Nejnovější aktualizace najdete [produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) stránky.|Zobrazit [stav Azure](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
+|Media Insights|[Rozšíření](video-indexer-output-json-v2.md) |[Základy](../latest/intelligence-concept.md)|
+|Možnosti|Úplný seznam podporovaných funkcí najdete v článku: <br/> [Přehled](video-indexer-overview.md)|Vrátí jenom video přehledy.|
+|Vyúčtování|[Ceny Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Ceny Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
+|Dodržování předpisů|[Iso 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001), [ISO 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018), [SOC 1, 2, 3](https://www.microsoft.com/TrustCenter/Compliance/SOC), [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa), [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp), [PCI](https://www.microsoft.com/trustcenter/compliance/pci)a [HiTRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust) certifikováno. Nejaktuálnější aktualizace najdete v [části aktuální stav certifikace video indexer](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).|Media Services je kompatibilní s mnoha certifikacemi. Podívejte se na [nabídku dodržování předpisů Azure. PDF](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte "Media Services", abyste zjistili, jestli jsou v souladu s certifikátem zájmu.|
+|Bezplatná zkušební verze|USA – východ|Není k dispozici|
+|Regionální dostupnost|Východní USA 2, Střed USA – jih, Západní USA 2, Severní Evropa, Západní Evropa, jihovýchodní Asie, Východní Asie a Austrálie – východ.  Nejaktuálnější aktualizace najdete na stránce [produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) .|Podívejte se na téma [stav Azure](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přehled Video Indexeru](video-indexer-overview.md)
 
-[Přehled služby Media Services v3](../latest/media-services-overview.md)
+[Přehled Media Services V3](../latest/media-services-overview.md)

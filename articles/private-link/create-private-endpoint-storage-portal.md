@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851158"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899813"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Připojení soukromě k účtu úložiště pomocí privátního koncového bodu Azure
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení.
@@ -132,7 +132,7 @@ V této části vytvoříte privátním koncovým bodem privátního účtu úlo
     | Podsíť | Vyberte *mySubnet*. |
     | **INTEGRACE PRIVÁTNÍ DNS**|  |
     | Integrace s privátní zónou DNS  | Ponechte výchozí **hodnotu Ano**. |
-    | Zóna privátního DNS  | Ponechte výchozí * * (New) privatelink.blob.core.windows.net * *. |
+    | Zóna privátního DNS  | Ponechte výchozí **(New) privatelink.blob.Core.Windows.NET**. |
     |||
 7. Vyberte **OK**. 
 8. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
@@ -151,7 +151,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor. RDP *.
+1. Otevřete *stažený soubor. RDP* .
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 

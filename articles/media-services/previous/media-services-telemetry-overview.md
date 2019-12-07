@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services Telemetrie | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled služby Azure Media Services telemetrie.
+title: Telemetrie Azure Media Services | Microsoft Docs
+description: Tento článek poskytuje přehled telemetrie Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,84 +14,84 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545516"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895781"
 ---
-# <a name="azure-media-services-telemetry"></a>Azure Media Services telemetrie  
+# <a name="azure-media-services-telemetry"></a>Telemetrie Azure Media Services  
 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Azure Media Services (AMS) umožňuje získat přístup k data telemetrie/metriky pro jeho služeb. Aktuální verze AMS umožňuje shromažďovat telemetrická data pro živé **kanál**, **StreamingEndpoint**a live **archivu** entity. 
+Azure Media Services (AMS) umožňuje přístup k datům telemetrie/metrik pro své služby. Aktuální verze AMS umožňuje shromažďovat data telemetrie pro entity Live **Channel**, **StreamingEndpoint**a Live **Archive** . 
 
-Telemetrická data jsou zapsána do tabulky úložiště v účtu služby Azure Storage, který určíte (obvykle použijete účet úložiště přidružený k účtu AMS). 
+Telemetrie se zapisuje do tabulky úložiště v Azure Storagem účtu, který zadáte (obvykle byste použili účet úložiště přidružený k vašemu účtu AMS). 
 
-Systém telemetrie uchovávání dat nespravuje. Staré telemetrická data můžete odebrat odstraněním tabulky úložiště.
+Systém telemetrie nespravuje uchovávání dat. Stará data telemetrie můžete odebrat odstraněním tabulek úložiště.
 
-Toto téma popisuje postup při konfiguraci a využití telemetrie AMS.
+Toto téma popisuje, jak nakonfigurovat a využít telemetrii AMS.
 
 ## <a name="configuring-telemetry"></a>Konfigurace telemetrie
 
-Konfigurace telemetrie na úrovni členitosti komponenty. Existují dvě úrovně podrobností "Normální" nebo "Verbose". V současné době obou úrovních vrátí stejné informace. Doporučuje se použít "normální. 
+Telemetrii můžete nakonfigurovat na členitosti na úrovni součásti. Existují dvě úrovně podrobností "normální" a "podrobné". V současné době obě úrovně vracejí stejné informace. Doporučuje se použít "normální". 
 
 Následující témata ukazují, jak povolit telemetrii:
 
-[Zapnutí telemetrie s využitím .NET](media-services-dotnet-telemetry.md) 
+[Povolení telemetrie s .NET](media-services-dotnet-telemetry.md) 
 
-[Zapnutí telemetrie s využitím REST](media-services-rest-telemetry.md)
+[Povolení telemetrie s REST](media-services-rest-telemetry.md)
 
-## <a name="consuming-telemetry-information"></a>Informace o používání telemetrii
+## <a name="consuming-telemetry-information"></a>Využívání informací o telemetrie
 
-Telemetrická data se zapisují do Azure Table Storage v účtu úložiště, který jste zadali při konfiguraci telemetrie pro účet Media Services. Tato část popisuje úložiště tabulky pro metriky.
+Telemetrie se zapisuje do Azure Storage tabulky v účtu úložiště, který jste zadali při konfiguraci telemetrie pro Media Services účet. Tato část popisuje tabulky úložiště pro metriky.
 
-Telemetrická data můžete využívat v jednom z následujících způsobů:
+Data telemetrie můžete využívat jedním z následujících způsobů:
 
-- Čtení dat přímo z Azure Table Storage (např. použití sady SDK služby Storage). Popis tabulky v úložišti telemetrická data, najdete v článku **využívání telemetrické informace** v [to](https://msdn.microsoft.com/library/mt742089.aspx) tématu.
+- Načte data přímo z Azure Table Storage (například pomocí sady Storage SDK). Popis tabulek úložišť telemetrie najdete v [tomto](https://msdn.microsoft.com/library/mt742089.aspx) tématu v **informacích o využívání telemetrie** .
 
-Nebo
+nebo
 
-- Využijte podporu v sadě Media Services .NET SDK pro čtení úložiště dat, jak je popsáno v [to](media-services-dotnet-telemetry.md) tématu. 
+- Použijte podporu v sadě Media Services .NET SDK pro čtení dat úložiště, jak je popsáno v [tomto](media-services-dotnet-telemetry.md) tématu. 
 
 
-Telemetrická data schématu je popsáno níže je navržená tak, aby dobrý výkon v rámci Azure Table Storage:
+Schéma telemetrie popsané níže je navrženo tak, aby poskytovalo dobrý výkon v rámci omezení Azure Table Storage:
 
-- Data jsou rozdělená podle ID účtu a ID služby umožňující telemetrická data z každé služby bude Dotazováno nezávisle na sobě.
-- Oddíly obsahovat datum, které se poskytují rozumné horní mez na požadovanou velikost oddílu.
-- Klíče řádku jsou v pořadí reverzní čas umožňující nejnovější položky telemetrie, které chcete dotaz pro danou službu.
+- Data jsou rozdělená podle ID účtu a ID služby, aby bylo možné nezávisle na telemetrie z každé služby dotazovat.
+- Oddíly obsahují datum k poskytnutí přiměřené horní meze velikosti oddílu.
+- Klíče řádků jsou v opačném časovém pořadí, aby bylo možné pro danou službu zadat dotaz na nejnovější položky telemetrie.
 
-Mělo by teď proběhnout řadu běžných dotazů účinný:
+To by mělo umožňovat efektivní využití mnoha běžných dotazů:
 
-- Paralelní, nezávislé stahování dat pro jednotlivé služby.
-- Načítání všech dat pro danou službu v konkrétní období.
-- Načítání posledních dat pro službu.
+- Paralelní a nezávislé stahování dat pro samostatné služby.
+- Načítání všech dat pro danou službu v časovém intervalu.
+- Načítání nejaktuálnějších dat pro službu.
 
-### <a name="telemetry-table-storage-output-schema"></a>Schéma výstupu tabulky úložiště telemetrie
+### <a name="telemetry-table-storage-output-schema"></a>Schéma výstupu úložiště tabulek telemetrie
 
-Telemetrická data uložená v agregaci v jedné tabulce, "TelemetryMetrics20160321" kde "20160321" je datum vytvořené tabulce. Systém telemetrie vytvoří samostatnou tabulku denně nové závislosti v 00:00 UTC. Tabulka slouží k uložení opakujících se hodnot, jako ingestování s přenosovou rychlostí v rámci daného časového období čas, počet odeslaných bajtů, atd. 
+Data telemetrie jsou ukládána v agregaci v jedné tabulce, "TelemetryMetrics20160321", kde "20160321" je datum vytvořené tabulky. Systém telemetrie vytvoří pro každý nový den samostatnou tabulku založenou na 00:00 UTC. Tabulka se používá k ukládání opakujících se hodnot, jako je například příjem přenosové rychlosti v rámci určitého časového období, odeslaných bajtů atd. 
 
-Vlastnost|Hodnota|Příklady a poznámky
+Vlastnost|Hodnota|Příklady/poznámky
 ---|---|---
-PartitionKey|{ID účtu} _ {entity ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>ID účtu je součástí klíče oddílu pro zjednodušení pracovních postupů, kde více účtů Media Services jsou zápisu do stejného účtu úložiště.
-RowKey|{seconds půlnoci} _ {náhodnou hodnotu}|01688_00199<br/><br/>Klíč řádku začíná počet sekund, po půlnoci na povolit dotazy na první styl n v rámci oddílu. Další informace najdete v [tomto](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) článku. 
-Timestamp|Datum a čas|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
-Type|Typ na subjekt poskytující telemetrická data|Kanál/StreamingEndpoint/archiv<br/><br/>Typ události je právě řetězcovou hodnotu.
-Název|Název události telemetrie|ChannelHeartbeat/StreamingEndpointRequestLog
-ObservedTime|Čas telemetrické události došlo k chybě (UTC)|2016-09-09T22:42:36.924Z<br/><br/>Poskytuje sledovaného časového entity odesílá telemetrická data (například kanál). Může být synchronizací mezi součástmi, takže tato hodnota je přibližný čas
-ID služby|{ID služby}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-Vlastnosti specifické pro entity|Podle definice události|StreamName: stream1 s přenosovou rychlostí 10123...<br/><br/>Zbývající vlastnosti jsou definována pro typ danou událost. Obsah Azure Table je páry klíč-hodnota.  (to znamená, že různé řádky v tabulce mají různé sady vlastností).
+PartitionKey|{ID účtu} _ {ID entity}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>ID účtu je součástí klíče oddílu, aby se zjednodušily pracovní postupy, ve kterých se do stejného účtu úložiště zapisují více účtů Media Services.
+RowKey|{sekund až půlnoc} _ {Random Value}|01688_00199<br/><br/>Klíč řádku začíná počtem sekund až půlnoci, aby bylo možné v rámci oddílu použít dotazy na horní n-Style. Další informace najdete v [tomto](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) článku. 
+Časové razítko|Datum a čas|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
+Typ|Typ entity poskytující data telemetrie|Kanál/StreamingEndpoint/archiv<br/><br/>Typ události je pouze hodnota řetězce.
+Name (Název)|Název události telemetrie|ChannelHeartbeat/StreamingEndpointRequestLog
+ObservedTime|Čas výskytu události telemetrie (UTC)|2016-09-09T22:42:36.924Z<br/><br/>Zjištěný čas je poskytován entitou odesílající telemetrii (například kanál). Může dojít k problémům při synchronizaci mezi komponentami, aby tato hodnota byla přibližná.
+Idslužby|{ID služby}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+Vlastnosti specifické pro entitu|Podle definice události|Datový proud: stream1, přenosová rychlost 10123,...<br/><br/>Zbývající vlastnosti jsou definovány pro daný typ události. Obsah tabulky Azure je páry klíč-hodnota.  (to znamená, že různé řádky v tabulce mají různé sady vlastností).
 
-### <a name="entity-specific-schema"></a>Schéma konkrétní entity
+### <a name="entity-specific-schema"></a>Schéma specifické pro entitu
 
-Existují tři typy dat telemetrická data specifická pro entity položek vložena se následující frekvence:
+Existují tři typy datových položek s mezimetrikami specifické pro entitu, které byly vloženy s následující frekvencí:
 
-- Koncové body streamování: Každých 30 sekund
-- Živé kanály: Každou minutu
-- Živý archív: Každou minutu
+- Koncové body streamování: každých 30 sekund
+- Živé kanály: každou minutu
+- Živý Archiv: každou minutu
 
 **Koncový bod streamování**
 
@@ -99,127 +99,127 @@ Vlastnost|Hodnota|Příklady
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Auto časové razítko z Azure Table 2016-09-09T22:43:42.241Z
-Type|Type|StreamingEndpoint
-Name|Name|StreamingEndpointRequestLog
+Časové razítko|Časové razítko|Automatické časové razítko z Azure Table 2016 – 09-09T22:43:42.241 Z
+Typ|Typ|StreamingEndpoint
+Name (Název)|Name (Název)|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ID služby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 název hostitele|Název hostitele koncového bodu|builddemoserver.origin.mediaservices.windows.net
-StatusCode|Stav záznamy protokolu HTTP|200
-Kód výsledku|Podrobnosti výsledku kódu|S_OK
+StatusCode|Zaznamenává stav HTTP|200
+ResultCode|Podrobnosti o kódu výsledku|S_OK
 RequestCount|Celkový požadavek v agregaci|3
-BytesSent|Agregovaný počet odeslaných bajtů|2987358
-ServerLatency|Server Průměrná latence (včetně úložiště)|129
-E2ELatency|Průměrná latence začátku do konce|250
+BytesSent|Odeslané agregované bajty|2987358
+ServerLatency|Průměrná latence serveru (včetně úložiště)|129
+E2ELatency|Průměrná koncová latence|250
 
-**Živého kanálu**
+**Živý kanál**
 
-Vlastnost|Hodnota|Příklady a poznámky
+Vlastnost|Hodnota|Příklady/poznámky
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
-Type|Type|Kanál
-Name|Název|ChannelHeartbeat
+Časové razítko|Časové razítko|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
+Typ|Typ|Kanál
+Name (Název)|Name (Název)|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ID služby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-TrackType|Typ sledování video nebo audio/textu|video/audio
-TrackName|Název dráhy|video/audio_1
-S přenosovou rychlostí|Sledování s přenosovou rychlostí|785000
+Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+TrackType|Typ videa, zvuk/text sledování|Video/zvuk
+Stop|Název stopy|video/audio_1
+S přenosovou rychlostí|Rychlost sledování|785000
 CustomAttributes –||   
-IncomingBitrate|Skutečné příchozí s přenosovou rychlostí|784548
+IncomingBitrate|Skutečná příchozí přenosová rychlost|784548
 OverlapCount|Překrytí v ingestu|0
-DiscontinuityCount|Přerušení pro sledování|0
-LastTimestamp|Časové razítko poslední přijatých dat|1800488800
-NonincreasingCount|Počet fragmentů zrušeny kvůli nerostoucí časové razítko|2
-UnalignedKeyFrames|Zda jsme obdrželi fragment(s) (v rámci úrovně kvality) kde klíčové snímky není zarovnána. |True
-UnalignedPresentationTime|Určuje, zda dostali jsme fragment(s) (v rámci úrovně kvality/stop) Pokud není zarovnána čas prezentace|True
-UnexpectedBitrate|True pokud počítá skutečné přenosové rychlosti pro zvuk/video sledují > 40 000 počtu bitů za sekundu a IncomingBitrate == 0 nebo IncomingBitrate a actualBitrate liší o 50 % |True
-V pořádku|Hodnota TRUE, v případě <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> jsou všechny 0|True<br/><br/>V jakém stavu je složený funkci, která vrátí hodnotu false, pokud některý z následujících podmínek uchování:<br/><br/>- OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames == True<br/>-UnalignedPresentationTime == True<br/>-UnexpectedBitrate == True
+DiscontinuityCount|Nekontinuita pro sledování|0
+LastTimestamp|Poslední přijaté časové razítko dat|1800488800
+NonincreasingCount|Počet zahozených fragmentů z důvodu nerostoucího časového razítka|2
+UnalignedKeyFrames|Bez ohledu na to, zda byly přijaty fragmenty (v různých úrovních kvality), ve kterých nebyly zarovnány klíčové snímky |Pravda
+UnalignedPresentationTime|Bez ohledu na to, zda byly přijaty fragmenty (v různých úrovních kvality/stopy), kde není zarovnán čas prezentace|Pravda
+UnexpectedBitrate|True, pokud se počítá nebo Skutečná přenosová rychlost zvukového/obrazového záznamu > 40 000 b/s a IncomingBitrate = = 0 nebo IncomingBitrate a actualBitrate se liší o 50% |Pravda
+V pořádku|True, pokud <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> jsou všechny 0|Pravda<br/><br/>V pořádku je složená funkce, která vrací hodnotu false, pokud se drží kterákoli z následujících podmínek:<br/><br/>– OverlapCount > 0<br/>– DiscontinuityCount > 0<br/>– NonincreasingCount > 0<br/>-UnalignedKeyFrames = = true<br/>-UnalignedPresentationTime = = true<br/>-UnexpectedBitrate = = true
 
-**Živý archív**
+**Živý archiv**
 
-Vlastnost|Hodnota|Příklady a poznámky
+Vlastnost|Hodnota|Příklady/poznámky
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
-Type|Type|Archiv
-Name|Název|ArchiveHeartbeat
+Časové razítko|Časové razítko|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
+Typ|Typ|Archiv
+Name (Název)|Name (Název)|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ID služby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-ManifestName|Adresa url aplikace|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
-TrackName|Název dráhy|audio_1
-TrackType|Typ dráhy|Audio/video
-Atribut CustomAttribute|Hex řetězec, který rozlišuje mezi různé stopa se stejným názvem a s přenosovou rychlostí (s více úhel kamery)|
-S přenosovou rychlostí|Sledování s přenosovou rychlostí|785000
-V pořádku|Hodnota TRUE, v případě FragmentDiscardedCount == 0 & & ArchiveAcquisitionError == False|True (tyto dvě hodnoty nejsou k dispozici v metriky, ale jsou k dispozici v zdroj události)<br/><br/>V jakém stavu je složený funkci, která vrátí hodnotu false, pokud některý z následujících podmínek uchování:<br/><br/>- FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError == True
+Idslužby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+Manifest|Adresa URL programu|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
+Stop|Název stopy|audio_1
+TrackType|Typ stopy|Zvuk/video
+Atribut CustomAttribute|Řetězec v šestnáctkové soustavě, který rozlišuje různé stopy se stejným názvem a přenosovou rychlostí (ve více než jednom úhlu kamery)|
+S přenosovou rychlostí|Rychlost sledování|785000
+V pořádku|True, pokud FragmentDiscardedCount = = 0 & & ArchiveAcquisitionError = = false|True (tyto dvě hodnoty nejsou v metrikě přítomny, ale jsou přítomny ve zdrojové události)<br/><br/>V pořádku je složená funkce, která vrací hodnotu false, pokud se drží kterákoli z následujících podmínek:<br/><br/>– FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError = = true
 
-## <a name="general-qa"></a>Obecné funkce Q & A
+## <a name="general-qa"></a>Obecné Q & A
 
-### <a name="how-to-consume-metrics-data"></a>Jak používat data metrik?
+### <a name="how-to-consume-metrics-data"></a>Jak spotřebovávat data metrik?
 
-Můžete například měřená data se ukládá jako řadu tabulek Azure v účtu úložiště zákazníka. Tato data mohou být spotřebovány pomocí následujících nástrojů:
+Data metrik se ukládají jako série tabulek Azure v účtu úložiště zákazníka. Tato data lze spotřebovat pomocí následujících nástrojů:
 
-- AMS SDK
-- Microsoft Azure Storage Explorer (podporuje export do formátu hodnot oddělených čárkami a zpracování v aplikaci Excel)
-- REST API
+- SADA SDK AMS
+- Průzkumník služby Microsoft Azure Storage (podporuje export do formátu hodnot oddělených čárkami a zpracovaných v Excelu)
+- Rozhraní REST API
 
-### <a name="how-to-find-average-bandwidth-consumption"></a>Jak zjistit průměrné využití šířky pásma?
+### <a name="how-to-find-average-bandwidth-consumption"></a>Jak najít průměrnou spotřebu šířky pásma?
 
-Průměrné využití šířky pásma je průměrem BytesSent konfigurovatelnou dobu.
+Průměrná spotřeba šířky pásma je průměrem BytesSent v časovém intervalu.
 
-### <a name="how-to-define-streaming-unit-count"></a>Jak definovat streamování počet jednotek?
+### <a name="how-to-define-streaming-unit-count"></a>Jak definovat počet jednotek streamování?
 
-Streamování počet jednotek je definovat jako ve špičce propustnost ze služby koncové body streamování děleno maximální propustnost jeden koncový bod streamování. Použitelné propustnost jeden koncový bod streamování ve špičce je 160 MB/s.
-Předpokládejme například, že nejvyšší propustnost ze služby zákazníka je 40 MB/s (maximální hodnota BytesSent konfigurovatelnou dobu). Streamování počet jednotek je rovno (40 MB/s) * (8 bitů/bajtů) /(160 Mbps) = 2 jednotky streamování.
+Počet jednotek streamování se dá definovat jako propustnost ve špičce z koncových bodů streamování služby děleného propustností jednoho koncového bodu streamování. Nejvyšší použitelná propustnost jednoho datového proudu streamování je 160 MB/s.
+Předpokládejme například, že propustnost ve špičce ze služby zákazníka je 40 MB/s (maximální hodnota BytesSent v časovém intervalu). Počet jednotek streamování se pak rovná (40 MB/s) × (8 bitů/bajt)/(160 MB/s) = 2 jednotky streamování.
 
 ### <a name="how-to-find-average-requestssecond"></a>Jak najít průměrný počet požadavků za sekundu?
 
-Pokud chcete najít průměrný počet požadavků za sekundu, výpočetní konfigurovatelnou dobu průměrný počet žádostí (RequestCount).
+Chcete-li zjistit průměrný počet požadavků za sekundu, vypočítá průměrný počet požadavků (RequestCount) v časovém intervalu.
 
-### <a name="how-to-define-channel-health"></a>Jak definovat kanál health?
+### <a name="how-to-define-channel-health"></a>Jak definovat stav kanálů?
 
-Stav kanálu lze definovat jako složeného logickou funkci tak, že má hodnotu false, pokud některý z následujících podmínek uchování:
+Stav kanálu lze definovat jako složenou logickou funkci, protože je NEPRAVDA, pokud se drží kterákoli z následujících podmínek:
 
 - OverlapCount > 0
 - DiscontinuityCount > 0
 - NonincreasingCount > 0
-- UnalignedKeyFrames == True 
-- UnalignedPresentationTime == True 
-- UnexpectedBitrate == True
+- UnalignedKeyFrames = = true 
+- UnalignedPresentationTime = = true 
+- UnexpectedBitrate = = true
 
 
-### <a name="how-to-detect-discontinuities"></a>Jak detekovat nespojitosti?
+### <a name="how-to-detect-discontinuities"></a>Jak detekovat nekontinuity?
 
-Ke zjištění nespojitosti najít všechny datové položky kanálu kde DiscontinuityCount > 0. Odpovídající ObservedTime časové razítko označuje dobu, kdy nespojitosti došlo.
+Chcete-li detekovat nekontinuity, vyhledejte všechny datové položky kanálu, kde DiscontinuityCount > 0. Příslušné časové razítko ObservedTime označuje čas, kdy došlo k dispozici.
 
-### <a name="how-to-detect-timestamp-overlaps"></a>Jak detekovat časového razítka překrývají?
+### <a name="how-to-detect-timestamp-overlaps"></a>Jak detekovat překrytí časového razítka?
 
-Ke zjištění časového razítka překrývají, najít všechny datové položky kanálu kde OverlapCount > 0. Odpovídající ObservedTime časové razítko označuje, že došlo k chybě časy, ve kterých se překrývá časové razítko.
+Chcete-li zjistit překrytí časového razítka, vyhledejte všechny datové položky kanálu, kde OverlapCount > 0. Příslušné časové razítko ObservedTime označuje čas, kdy došlo k překrytí časového razítka.
 
-### <a name="how-to-find-streaming-request-failures-and-reasons"></a>Jak najít streamování selhání žádostí a důvodů?
+### <a name="how-to-find-streaming-request-failures-and-reasons"></a>Jak najít selhání požadavků a důvody pro streamování?
 
-Najít streamování selhání žádostí a důvody, najdete všechny datové položky koncový bod streamování, kde kód výsledku není roven S_OK. Odpovídající pole StatusCode označuje důvod selhání požadavku.
+Pokud chcete najít selhání požadavků a důvody streamování, najděte všechny datové vstupy streamování, kde ResultCode není rovno S_OK. Odpovídající pole StatusCode označuje důvod selhání žádosti.
 
-### <a name="how-to-consume-data-with-external-tools"></a>Jak používat data pomocí externích nástrojů?
+### <a name="how-to-consume-data-with-external-tools"></a>Jak spotřebovávat data pomocí externích nástrojů?
 
-Telemetrická data dat může zpracovat a vizualizovat pomocí následujících nástrojů:
+Data v mikrometrikě je možné zpracovávat a vizuálně rozlišit pomocí následujících nástrojů:
 
 - PowerBI
 - Application Insights
-- Azure Monitor (formerly Shoebox)
-- Živé řídicí panel AMS
-- Azure Portal (čeká na vydání)
+- Azure Monitor (dříve Shoebox)
+- Živý řídicí panel AMS
+- Portál Azure (čeká na vydání)
 
 ### <a name="how-to-manage-data-retention"></a>Jak spravovat uchovávání dat?
 
-Systém telemetrie neposkytuje správu uchovávání dat nebo automatické odstranění starých záznamů. Proto musíte ke správě a ručně odstranit staré záznamy z tabulky úložiště. Mohou odkazovat na sada SDK úložiště pro jak na to.
+Systém telemetrie neposkytuje správu uchovávání dat ani automatické odstranění starých záznamů. Proto je třeba ručně spravovat a odstraňovat staré záznamy z tabulky úložiště. To, jak to udělat, najdete v sadě SDK pro úložiště.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

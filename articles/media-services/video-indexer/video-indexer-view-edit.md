@@ -1,7 +1,7 @@
 ---
 title: Zobrazení a úprava přehledů služby Video Indexer
 titlesuffix: Azure Media Services
-description: Toto téma popisuje postup zobrazení a úprava přehledů funkce Video Indexer.
+description: Tento článek ukazuje, jak zobrazit a upravit Azure Media Services Video Indexer Insights.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,34 +10,34 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 24a723bd32cb40807da1757b3fffb925d4ba1fef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e9bb516d498d989b97f1069af9a9f4cb673ea96d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799182"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892664"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Zobrazení a úprava přehledů služby Video Indexer
 
-Toto téma ukazuje, jak zobrazit a upravit insights Video Indexer videa.
+V tomto tématu se dozvíte, jak zobrazit a upravit Video Indexer přehledy videa.
 
 1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
-2. Vyhledejte video, ve kterém chcete vytvořit přehledy Video Indexer. Další informace najdete v tématu [vyhledání určitých momentů ve videích](video-indexer-search.md).
+2. Vyhledejte video, ze kterého chcete vytvořit službu Video Indexer Insights. Další informace najdete v tématu [Vyhledání přesného momentu v videích](video-indexer-search.md).
 3. Stiskněte **Play** (Přehrát).
 
     Na této stránce se zobrazí souhrnný přehled videa. 
 
-    ![Insights](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
+    ![Poznatky](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
 
-4. Zobrazte souhrnné poznatky o videu. 
+4. Podívejte se na souhrnné přehledy videa. 
 
-    Souhrnný přehled zobrazit souhrnné zobrazení dat: tváří, zabarvení a klíčová slova. Můžete například zobrazit tváří lidí a časových rozsahů, které každou tvář se zobrazí v a % času, který se zobrazí.
+    Shrnuté přehledy ukazují agregované zobrazení dat: obličeje, klíčová slova, zabarvení. Můžete například zobrazit plošky lidí a časové rozsahy, na kterých se každý obličej zobrazuje, a% času, ve kterém se zobrazí.
 
-    Přehrávač a přehledy jsou synchronizovány. Například pokud kliknete na klíčové slovo nebo řádku přepisu, hráč přináší pro tuto chvíli ve videu. Ve vaší aplikaci můžete dosáhnout zobrazení player a přehledy a synchronizace. Další informace najdete v tématu [indexeru Azure vložení widgetů do vaší aplikace](video-indexer-embed-widgets.md). 
+    Přehrávač a přehledy se synchronizují. Pokud například kliknete na klíčové slovo nebo řádek přepisu, přehrávač vám do tohoto momentu zobrazí video. V aplikaci můžete dosáhnout zobrazení a synchronizace pro Player/Insights. Další informace najdete v tématu [vložení widgetů Azure indexeru do vaší aplikace](video-indexer-embed-widgets.md). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Použít podrobný přehled videí](use-editor-create-project.md)
+[Využijte hloubkové přehledy videí](use-editor-create-project.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

@@ -4,12 +4,12 @@ description: Monitorujte Azure Backup úlohy a vytvářejte vlastní výstrahy p
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554882"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894058"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
@@ -51,7 +51,8 @@ Až budou data v pracovním prostoru Log Analytics, [Nasaďte šablonu GitHubu](
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Zobrazení Azure Backup dat pomocí Log Analytics
 
-Po nasazení šablony se řešení pro monitorování a vytváření sestav v Azure Backup zobrazí v oblasti souhrnu pracovního prostoru. Pokud chcete přejít na souhrn, postupujte podle jedné z následujících cest:
+> [!IMPORTANT]
+> Šablona pro vytváření sestav pro LA aktuálně podporuje data ze starší služby Event AzureBackupReport v režimu AzureDiagnostics. Chcete-li použít tuto šablonu, bude nutné [nakonfigurovat nastavení diagnostiky trezoru v režimu Azure Diagnostics](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event). 
 
 - **Azure monitor**: v části **přehledy** vyberte **Další** a pak zvolte příslušný pracovní prostor.
 - **Log Analytics pracovní prostory**: vyberte příslušný pracovní prostor a potom v části **Obecné**vyberte možnost **Souhrn pracovního prostoru**.
@@ -205,7 +206,7 @@ Chcete-li identifikovat příslušný protokol a vytvořit výstrahu:
 1. Výběrem **nového pravidla výstrahy** otevřete stránku **vytvořit pravidlo** .
 1. Pomocí Azure Monitor postupujte podle kroků uvedených v části [Vytvoření, zobrazení a správa výstrah protokolu aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
-   ![Nové pravidlo výstrahy](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
+   ![Nové pravidlo upozornění](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
 Zde je prostředek Recovery Services samotným trezorem. Opakujte stejný postup u všech trezorů, ve kterých chcete být upozorňováni prostřednictvím protokolů aktivit. Podmínka nebude mít prahovou hodnotu, tečku nebo frekvenci, protože tato výstraha je založena na událostech. Jakmile se vygeneruje relevantní protokol aktivit, vyvolá se výstraha.
 
@@ -213,7 +214,7 @@ Zde je prostředek Recovery Services samotným trezorem. Opakujte stejný postup
 
 Můžete zobrazit všechny výstrahy vytvořené z protokolů aktivit a Log Analytics pracovní prostory v Azure Monitor. Stačí otevřít podokno **výstrahy** na levé straně.
 
-I když můžete dostávat oznámení prostřednictvím protokolů aktivit, důrazně doporučujeme použít Log Analytics místo protokolů aktivit pro monitorování ve velkém měřítku. Důvody:
+I když můžete dostávat oznámení prostřednictvím protokolů aktivit, důrazně doporučujeme použít Log Analytics místo protokolů aktivit pro monitorování ve velkém měřítku. Důvody jsou následující:
 
 - **Omezené scénáře**: oznámení prostřednictvím protokolů aktivit se vztahují jenom na zálohy virtuálních počítačů Azure. Oznámení musí být nastavená pro každý trezor Recovery Services.
 - **Přizpůsobení definice**: naplánovaná aktivita zálohování se nevejde do poslední definice protokolů aktivit. Místo toho se zarovnává s [protokoly prostředků](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace). Při tomto zarovnání dojde k neočekávaným důsledkům při změně dat, která se přetékají přes kanál protokolu aktivit.

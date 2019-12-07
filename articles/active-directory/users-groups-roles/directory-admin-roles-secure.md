@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028453"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900787"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 Pro většinu organizací závisí zabezpečení obchodních prostředků na integritě privilegovaných účtů, které spravují a spravují systémy IT. Internetoví útočníci se zaměřují na privilegovaný přístup k systémům infrastruktury (například ke službě Active Directory a Azure Active Directory), aby získali přístup k citlivým datům organizace. 
 
-Tradiční přístupy, které se zaměřují na zabezpečení počátečních a výstupních bodů sítě, protože primární hraniční zabezpečení je méně účinné kvůli nárůstu používání aplikací SaaS a osobních zařízení na internetu. Přirozeným nahrazením hraničního zabezpečení sítě ve složitých moderních sítích jsou ovládací prvky pro ověřování a autorizaci ve vrstvě identity organizace.
+Tradiční přístupy, které se zaměřují na zabezpečení počátečních a výstupních bodů sítě, protože primární hraniční zabezpečení je méně účinné kvůli nárůstu používání aplikací SaaS a osobních zařízení na internetu. Přirozenou náhradou obvodu zabezpečení sítě ve složitém moderním podniku jsou ověřovací a autorizační kontrolní mechanizmy ve vrstvě identity organizace.
 
 Privilegované účty správců efektivně řídí toto nové "hraniční zabezpečení". Je důležité chránit privilegovaný přístup bez ohledu na to, jestli je prostředí místní, cloudové nebo hybridní místní a cloudové hostované služby. Ochrana přístupu pro správu proti určitému nežádoucí osoby vyžaduje, abyste si vybrali úplný a důkladné přístup k izolaci systémů vaší organizace před riziky. 
 
@@ -94,7 +94,7 @@ Po zapnutí Azure AD Privileged Identity Management:
 
 2. Chcete-li vybrat klienta, u kterého chcete použít Privileged Identity Management, vyberte své uživatelské jméno v pravém horním rohu Azure Portal.
 
-3. Vyberte **všechny služby** a vyfiltrujte seznam pro **Azure AD Privileged Identity Management**.
+3. V nabídce Azure Portal vyberte **všechny služby** a vyfiltrujte seznam pro **Azure AD Privileged Identity Management**.
 
 4. V seznamu **všechny služby** otevřete Privileged Identity Management a připněte ho na řídicí panel.
 
@@ -241,7 +241,7 @@ Vyžadují vedoucí pracovníky pro správu, vysoké úrovně, kritické pracovn
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Použití vyhrazených pracovních stanic pro správu Azure AD
 
-Útočníci se můžou pokusit cílit na privilegované účty a získat tak přístup k datům a systémům organizace, aby mohli narušit integritu a pravost dat, a to prostřednictvím škodlivého kódu, který mění logiku programu nebo snoopuje správce zadání přihlašovacích údajů. Pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) poskytují vyhrazený operační systém pro citlivé úkoly, které jsou chráněné před útoky z Internetu a vektory hrozeb. Oddělení těchto citlivých úloh a účtů od každodenních pracovních stanic a zařízení zajišťuje velmi silnou ochranu před útoky typu phishing, ohrožení zabezpečení aplikací a operačních systémů, různých útoků na zosobnění a útoků krádeže přihlašovacích údajů, jako je třeba klávesová zkratka. Logging, pass-the-hash a Pass-The-Ticket. Nasazením přístupových pracovních stanic s privilegovaným přístupem můžete snížit riziko, že správci zadávají přihlašovací údaje správce, s výjimkou prostředí, které bylo posílené. Další informace najdete v tématu [pracovní stanice s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Útočníci se můžou pokusit cílit na privilegované účty a získat tak přístup k datům a systémům organizace, aby mohli narušit integritu a pravost dat, a to prostřednictvím škodlivého kódu, který mění logiku programu nebo snoopuje správce zadání přihlašovacích údajů. Pracovní stanice s privilegovaným přístupem poskytují vyhrazený operační systém pro citlivé úlohy, který je chráněný před útoky z internetu a jinými vektory hrozeb. Oddělení těchto citlivých úloh a účtů od každodenních pracovních stanic a zařízení zajišťuje velmi silnou ochranu před útoky typu phishing, ohrožení zabezpečení aplikací a operačních systémů, různých útoků na zosobnění a útoků krádeže přihlašovacích údajů, jako je třeba klávesová zkratka. Logging, pass-the-hash a Pass-The-Ticket. Nasazením přístupových pracovních stanic s privilegovaným přístupem můžete snížit riziko, že správci zadávají přihlašovací údaje správce, s výjimkou prostředí, které bylo posílené. Další informace najdete v tématu [pracovní stanice s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Kontrola Národního institutu standardů a technologických doporučení pro zpracování incidentů 
 
@@ -261,7 +261,7 @@ Pokud již používáte Azure AD Privileged Identity Management, upravte časov�
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Určení vystavení přihlašovacích protokolů založených na heslech (Pokud používáte Exchange Online)
 
-V minulosti protokoly předpokládaly, že kombinace uživatelského jména a hesla byly vloženy do zařízení, e-mailových účtů, telefonů atd. Ale teď s rizikem pro počítačové útoky v cloudu doporučujeme identifikovat každého potenciálního uživatele, který, pokud by jejich přihlašovací údaje byly ohroženy, může být pro organizaci nenáročné a vyloučit je z možností přihlášení k e-mailu pomocí uživatelského jména a hesla implementací požadavků silného ověřování a podmíněného přístupu. [Pomocí podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)můžete zablokovat starší ověřování. Podívejte se prosím na podrobnosti, [Jak blokovat základní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) prostřednictvím exchnage online. 
+V minulosti protokoly předpokládaly, že kombinace uživatelského jména a hesla byly vloženy do zařízení, e-mailových účtů, telefonů atd. Ale teď s rizikem pro počítačové útoky v cloudu doporučujeme identifikovat každého potenciálního uživatele, který, pokud by jejich přihlašovací údaje byly ohroženy, může být pro organizaci nenáročné a vyloučit je z možností přihlášení k e-mailu pomocí uživatelského jména a hesla implementací požadavků silného ověřování a podmíněného přístupu. [Pomocí podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)můžete zablokovat starší ověřování. Podrobnosti o [tom, jak blokovat základní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) prostřednictvím Exchange Online, najdete v podrobnostech. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Dokončení vyhodnocení přezkoumání rolí u rolí Office 365 (Pokud používáte Office 365)
 

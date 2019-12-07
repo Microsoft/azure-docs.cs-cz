@@ -1,6 +1,6 @@
 ---
 title: Živé streamování pomocí Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi | Microsoft Docs
-description: 'Toto téma popisuje, jak nastavit kanál, který obdrží živý datový proud s jednou přenosovou rychlostí z místního kodéru a pak provede živé kódování pro datový proud s adaptivní přenosovou rychlostí pomocí Media Services. Datový proud je pak možné doručit do aplikací pro přehrávání klienta prostřednictvím jednoho nebo více koncových bodů streamování pomocí jednoho z následujících protokolů adaptivního streamování: HLS, plynule Stream, MPEG POMLČKa.'
+description: Toto téma popisuje, jak nastavit kanál, který obdrží živý datový proud s jednou přenosovou rychlostí z místního kodéru a pak provede živé kódování pro datový proud s adaptivní přenosovou rychlostí pomocí Media Services.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598307"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895915"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -71,7 +71,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 | Stav kanálu | Indikátory v uživatelském rozhraní portálu | Účtuje se fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |Ano |
+| Spuštěno |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |Ne |
 
@@ -141,7 +141,7 @@ Požadavky:
 * Směrný plán, hlavní, vysoký profil (8 bitů 4:2:0)
 * Vysoký 10 profil (10 bitů 4:2:0)
 * Profil High 422 (10 bitů 4:2:2)
-* Zvuk MPEG-2 AAC-LC
+* MPEG-2 AAC-LC Audio
 * Mono, stereo, Surround (5,1, 7,1)
 * vzorkovací frekvence 44,1 kHz
 * ADTS balení stylu MPEG-2
@@ -170,7 +170,7 @@ Po vytvoření kanálu můžete získat adresy URL pro přijímání. Aby se tyt
 Máte možnost ingestovat fragmenty živého datového proudu MP4 (Smooth Streaming) přes připojení SSL. Pokud chcete ingestovat přes SSL, nezapomeňte aktualizovat adresu URL ingestování na HTTPS. AMS v současné době nepodporuje protokol SSL s vlastními doménami.  
 
 ### <a name="allowed-ip-addresses"></a>Povolené IP adresy
-Můžete definovat IP adresy, které můžou publikovat video na tento kanál. Povolené IP adresy je možné zadat buď jako jednu IP adresu (například 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (například 10.0.0.1/22), nebo rozsah IP adres pomocí IP adresy a masky podsítě s tečkami (například). , "10.0.0.1 (255.255.252.0)").
+Můžete definovat IP adresy, které můžou publikovat video na tento kanál. Povolené IP adresy je možné zadat buď jako jednu IP adresu (například 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (například 10.0.0.1/22), nebo rozsah IP adres pomocí IP adresy a masky podsítě s tečkami (například 10.0.0.1 (255.255.252.0)).
 
 Pokud žádné IP adresy nezadáte a nedefinujete žádné pravidlo, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
 
@@ -188,7 +188,7 @@ Jakmile kanál začne přijímat data, můžete zobrazit náhled streamu.
 > 
 
 ### <a name="allowed-ip-addresses"></a>Povolené IP adresy
-Můžete definovat IP adresy, které mají povolené připojení ke koncovému bodu Preview. Pokud nejsou zadány žádné IP adresy, nebude povolena žádná IP adresa. Povolené IP adresy je možné zadat buď jako jednu IP adresu (například 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (například 10.0.0.1/22), nebo rozsah IP adres pomocí IP adresy a masky podsítě s tečkami (například). , "10.0.0.1 (255.255.252.0)").
+Můžete definovat IP adresy, které mají povolené připojení ke koncovému bodu Preview. Pokud nejsou zadány žádné IP adresy, nebude povolena žádná IP adresa. Povolené IP adresy je možné zadat buď jako jednu IP adresu (například 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (například 10.0.0.1/22), nebo rozsah IP adres pomocí IP adresy a masky podsítě s tečkami (například 10.0.0.1 (255.255.252.0)).
 
 ## <a name="live-encoding-settings"></a>Nastavení živého kódování
 Tato část popisuje, jak lze upravit nastavení pro živý kodér v kanálu, pokud je **typ kódování** kanálu nastaven na hodnotu **Standard**.
@@ -217,7 +217,7 @@ Určuje předvolby, které má živý kodér používat v rámci tohoto kanálu.
 
 #### <a name="output-video-stream"></a>Výstupní video stream
 
-| Rychlostí | Délk | Výška | MaxFPS | Profil | Název výstupního datového proudu |
+| Rychlostí | Šířka | Výška | MaxFPS | Profil | Název výstupního datového proudu |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Vysoký |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |Vysoký |Video_960x540_2200kbps |
@@ -260,7 +260,7 @@ Live Encoder se dá nakonfigurovat tak, aby se v určitých situacích přepnul 
 Doba trvání SLAT v sekundách. Aby bylo možné začít SLAT, musí to být nenulová kladná hodnota. Pokud je k dispozici síla k dispozici a je zadána doba trvání nula, bude ukončeno.
 
 ### <a name="insert-slate-on-ad-marker"></a>Vložit SLAT do značky reklamy
-Když se nastaví na true, toto nastavení nakonfiguruje živý kodér tak, aby při přerušení reklamy vložil obrázek SLAT. Výchozí hodnota je true (pravda). 
+Když se nastaví na true, toto nastavení nakonfiguruje živý kodér tak, aby při přerušení reklamy vložil obrázek SLAT. Výchozí hodnota je true. 
 
 ### <a id="default_slate"></a>Výchozí ID prostředku SLAT
 

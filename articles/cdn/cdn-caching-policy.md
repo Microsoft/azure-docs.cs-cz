@@ -1,6 +1,6 @@
 ---
-title: Spravovat zásady ve službě Azure Media Services ukládání do mezipaměti Azure CDN | Dokumentace Microsoftu
-description: Zjistěte, jak spravovat Azure CDN ve službě Azure Media Services zásady ukládání do mezipaměti.
+title: Správa zásad ukládání do mezipaměti Azure CDN v Azure Media Services | Microsoft Docs
+description: Tento článek vysvětluje, jak spravovat zásady ukládání do mezipaměti Azure CDN v Azure Media Services.
 services: media-services,cdn
 documentationcenter: .NET
 author: juliako
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc0482fbcbb1c9d1618ec18e1f48b03f686a6573
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61069434"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892571"
 ---
-# <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Správa Azure CDN ve službě Azure Media Services zásady ukládání do mezipaměti
-Azure Media Services nabízí adaptivní streamování a progresivní stahování založený na HTTP. Streamování na základě protokolu HTTP je vysoce škálovatelná výhody ukládání do mezipaměti v proxy serveru a vrstvy CDN, stejně jako ukládání do mezipaměti na straně klienta. Koncové body streamování poskytuje obecné funkce streamování a také konfigurace mezipaměti hlaviček protokolu HTTP. Koncové body streamování nastaví HTTP Cache-Control: maximální stáří a záhlaví Expires. Můžete získat další informace o mezipaměti hlavičky protokolu HTTP z [adrese W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
+# <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Správa zásad ukládání do mezipaměti Azure CDN v Azure Media Services
+Azure Media Services poskytuje adaptivní streamování a progresivní stahování založené na protokolu HTTP. Streamování založené na protokolu HTTP je vysoce škálovatelné s výhodami ukládání do mezipaměti ve vrstvách proxy a CDN i do ukládání do mezipaměti na straně klienta. Koncové body streamování poskytuje obecné možnosti streamování a také konfiguraci pro hlavičky mezipaměti protokolu HTTP. Koncové body streamování nastavuje mezipaměť HTTP – řízení cache: maximální stáří a hlavičky vypršení platnosti. Další informace o hlavičkách mezipaměti HTTP najdete v [w3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
 
-## <a name="default-caching-headers"></a>Výchozí záhlaví ukládání do mezipaměti
-Ve výchozím nastavení se vztahují 3denní hlavičky mezipaměti pro streamovaná data na vyžádání (fragmentů samotný mediální bloků dat) a manifest(playlist) – koncové body streamování. Pro živé streamování koncové body streamování použít 3denní hlavičky mezipaměti pro data (fragmentů samotný mediální bloků dat) a záhlaví manifest(playlist) žádostí do mezipaměti 2 sekundy. Když živou program se změní na vyžádání (živý archív), pak použijte hlavičky mezipaměti streamování na vyžádání.
+## <a name="default-caching-headers"></a>Výchozí hlavičky ukládání do mezipaměti
+Ve výchozím nastavení se koncové body streamování použijí 3 den v mezipaměti pro streamovaná data na vyžádání (skutečné fragmenty médií/bloky dat) a MANIFEST (seznam skladeb). V případě živého streamování se koncové body streamování použijí 3 den mezipaměti pro data (skutečné fragmenty médií/bloky dat) a 2 sekundy v hlavičce mezipaměti pro žádosti manifest (Playlist). Když se živý program zapne na vyžádání (Live Archive), použijí se hlavičky mezipaměti streamování na vyžádání.
 
-## <a name="azure-cdn-integration"></a>Integrace s Azure CDN
-Azure Media Services nabízí [integrované CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) pro streamování koncové body. Hlavičky cache-control platí stejným způsobem jako koncové body streamování do CDN povolené koncové body streamování. Azure CDN používá koncový bod streamování nakonfigurované hodnoty mezipaměti definovat dobu životnosti objektů interně uložená v mezipaměti a také používá tuto hodnotu nastavit hlavičky mezipaměti doručování. Při používání CDN povolené koncové body streamování se nedoporučuje k nastavení hodnot malé mezipaměti. Malé hodnoty nastavení snížit výkon a snížit výhodou CDN. Chcete-li nastavit hlavičky mezipaměti menší než 600 sekund pro CDN povolené koncové body streamování není povoleno.
+## <a name="azure-cdn-integration"></a>Integrace Azure CDN
+Azure Media Services poskytuje [integrované CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) pro streamování – koncové body. Hlavičky Cache-Control se použijí stejným způsobem jako koncové body streamování pro koncové body streamování s povoleným CDN. Azure CDN používá nakonfigurované hodnoty mezipaměti pro streamování dat k definování životnosti objektů interně uložených v mezipaměti a používá tuto hodnotu k nastavení hlaviček mezipaměti pro doručování. Při použití koncových bodů streamování s povoleným CDN se nedoporučuje nastavit malé hodnoty mezipaměti. Nastavením malých hodnot se sníží výkon a sníží se výhoda CDN. U koncových bodů streamování povolených přes CDN není povoleno nastavení hlaviček mezipaměti kratších než 600 sekund.
 
 > [!IMPORTANT]
->Azure Media Services je kompletní integrovaná se sadou Azure CDN. Jediným kliknutím můžete integrovat všechny dostupné zprostředkovatele Azure CDN na váš koncový bod streamování, včetně produktů úrovně standard a premium. Další informace najdete v tomto [oznámení](https://azure.microsoft.com/blog/standardstreamingendpoint/).
+>Azure Media Services dokončí integraci s Azure CDN. Jediným kliknutím můžete integrovat všechny dostupné poskytovatele Azure CDN do koncového bodu streamování, včetně produktů Standard a Premium. Další informace najdete v tomto [oznámení](https://azure.microsoft.com/blog/standardstreamingendpoint/).
 > 
-> Poplatky za data z datových proudů koncový bod CDN získává pouze zakázaná, pokud je CDN povolená přes koncový bod rozhraní API pro streamování nebo pomocí webu Azure portal streamování oddíl koncového bodu. Ruční integraci nebo přímé vytváření koncového bodu CDN pomocí rozhraní API CDN nebo portálu části nemá zakázat poplatky za data.
+> Poplatky za datové proudy z koncového bodu streamování do CDN se neaktivují jenom v případě, že je služba CDN povolená přes rozhraní API koncového bodu streamování nebo Azure Portal pomocí Ruční integrace nebo přímé vytvoření koncového bodu CDN pomocí rozhraní CDN API nebo portálu nezakáže poplatky za data.
 
-## <a name="configuring-cache-headers-with-azure-media-services"></a>Konfigurace hlaviček mezipaměti pomocí služby Azure Media Services
-Azure portal nebo rozhraní API služeb Azure Media Services můžete použít ke konfiguraci hodnoty hlavičky mezipaměti.
+## <a name="configuring-cache-headers-with-azure-media-services"></a>Konfigurace hlaviček mezipaměti pomocí Azure Media Services
+K nakonfigurování hodnot hlaviček mezipaměti můžete použít rozhraní API Azure Portal nebo Azure Media Services.
 
-1. Konfigurace hlaviček mezipaměti pomocí webu Azure portal, najdete v tématu [jak spravovat koncové body streamování](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) oddíl konfigurace koncového bodu streamování.
-2. Rozhraní REST API služby Azure Media Services [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
-3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl Properties](https://go.microsoft.com/fwlink/?LinkId=615302).
+1. Pokud chcete konfigurovat hlavičky mezipaměti pomocí Azure Portal, přečtěte si téma [Správa koncových bodů streamování](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) s konfigurací koncového bodu streamování.
+2. Azure Media Services REST API, [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
+3. Azure Media Services .NET SDK, [vlastnosti StreamingEndpointCacheControl](https://go.microsoft.com/fwlink/?LinkId=615302).
 
 ## <a name="cache-configuration-precedence-order"></a>Pořadí priority konfigurace mezipaměti
-1. Azure Media Services nakonfigurovaná hodnota mezipaměti přepíše výchozí hodnotu.
-2. Pokud není žádná ruční konfigurace, použije se výchozí hodnoty.
-3. Pomocí výchozí 2 sekundy mezipaměti hlaviček platí pro živé streamování manifest(playlist) bez ohledu na to konfigurace mediální služby Azure nebo Azure Storage a přepsání této hodnoty není k dispozici.
+1. Azure Media Services konfigurovaná hodnota mezipaměti přepisuje výchozí hodnotu.
+2. Pokud není k dispozici žádná ruční konfigurace, použijí se výchozí hodnoty.
+3. Ve výchozím nastavení se do 2 sekund použijí hlavičky mezipaměti pro živý streamování (Playlist) bez ohledu na média Azure nebo konfiguraci Azure Storage a přepsání této hodnoty není k dispozici.
 

@@ -1,5 +1,5 @@
 ---
-title: Testování latence sítě v Azure Virtual Machines v Azure Virtual Network | Microsoft Docs
+title: Testování latence sítě virtuálních počítačů Azure ve virtuální síti Azure | Microsoft Docs
 description: Naučte se testovat latenci sítě mezi virtuálními počítači Azure ve virtuální síti.
 services: virtual-network
 documentationcenter: na
@@ -14,118 +14,123 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 760a181b4459db28d3a6eee5022cc0f984c4bee0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588275"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896359"
 ---
-# <a name="testing-network-latency"></a>Testování latence sítě
+# <a name="test-vm-network-latency"></a>Test latence sítě virtuálních počítačů
 
-Měření latence sítě pomocí nástroje, který je navržen pro úlohu, poskytne nejpřesnější výsledky. Mezi veřejně dostupné nástroje, jako je SockPerf (pro Linux) a latte (pro Windows), patří příklady nástrojů, které mohou izolovat a měřit latenci sítě s výjimkou jiných typů latence, jako je například latence aplikace. Tyto nástroje se zaměřují na druh síťového provozu, který ovlivňuje výkon aplikace, konkrétně TCP a UDP. K měření latence se někdy můžou použít i další běžné nástroje pro připojení, jako je třeba test, ale tyto výsledky nemusí být reprezentativní pro síťový provoz, který se používá v reálných úlohách. Důvodem je, že většina těchto nástrojů používá protokol ICMP, který se může zpracovávat jinak než provoz aplikací a výsledky se nedají použít pro úlohy, které používají TCP a UDP. V případě přesného testování latence sítě protokolů používaných většinou aplikací SockPerf (pro Linux) a latte (pro Windows) se vydávají nejrelevantnější výsledky. Tento dokument popisuje oba tyto nástroje.
+Abyste dosáhli nejpřesnější výsledků, změřte latenci sítě virtuálních počítačů Azure pomocí nástroje, který je pro tento úkol navržený. Veřejně dostupné nástroje, jako je SockPerf (pro Linux) a latte. exe (pro Windows), můžou izolovat a měřit latenci sítě s výjimkou jiných typů latence, jako je například latence aplikace. Tyto nástroje se zaměřují na druh síťového provozu, který má vliv na výkon aplikace (konkrétně přenosový protokol TCP] a přenos UDP (User Datagram Protocol)). 
+
+Další běžné nástroje pro připojení, jako je třeba test, můžou měřit latenci, ale jejich výsledky nemusí představovat síťový provoz, který se používá v reálných úlohách. Důvodem je, že většina těchto nástrojů využívá protokol ICMP (Internet Control Message Protocol), který může být zpracován odlišně od provozu aplikace a jehož výsledky se nemusí vztahovat na úlohy, které používají protokoly TCP a UDP. 
+
+V případě přesného testování latence sítě protokolů používaných většinou aplikací SockPerf (pro Linux) a latte. exe (pro Windows) se vyprodukuje nejrelevantnější výsledky. Tento článek se týká obou těchto nástrojů.
 
 ## <a name="overview"></a>Přehled
 
-Pomocí dvou virtuálních počítačů, jako je odesílatel a jeden jako přijímač, se vytvoří obousměrný komunikační kanál pro odesílání a příjem paketů v obou směrech k měření doby odezvy (RTT).
+Když použijete dva virtuální počítače, jeden jako odesílatel a jeden jako přijímač, vytvoříte obousměrný komunikační kanál. S tímto přístupem můžete odesílat a přijímat pakety v obou směrech a měřit dobu odezvy (RTT).
 
-Tyto kroky se dají použít k měření latence sítě mezi dvěma Virtual Machines (virtuálními počítači) nebo dokonce mezi dvěma fyzickými počítači. Měření latence může být užitečné v následujících situacích:
+Tento postup můžete použít k měření latence sítě mezi dvěma virtuálními počítači nebo dokonce mezi dvěma fyzickými počítači. Měření latence může být užitečné v následujících situacích:
 
-- Stanovení srovnávacích testů pro latenci sítě mezi nasazenými virtuálními počítači
+- Vytvořte srovnávací test latence sítě mezi nasazenými virtuálními počítači.
 - Porovnání účinků změn v latenci sítě po provedení souvisejících změn:
-  - Software operačního systému nebo síťového zásobníku, včetně změn konfigurace
-  - Metoda nasazení virtuálních počítačů, například nasazení do zóny nebo PPG
-  - Vlastnosti virtuálního počítače, například urychlené síťové nebo změny velikosti
-  - Virtuální síť, například změny směrování nebo filtrování
+  - Operační systém (OS) nebo software síťového zásobníku, včetně změn konfigurace.
+  - Metoda nasazení virtuálního počítače, jako je například nasazení do zóny dostupnosti nebo skupiny umístění blízkosti (PPG).
+  - Vlastnosti virtuálního počítače, například urychlené síťové nebo změny velikosti.
+  - Virtuální síť, například směrování nebo filtrování změn.
 
 ### <a name="tools-for-testing"></a>Nástroje pro testování
-Pro měření latence máme dvě různé možnosti, jeden pro systémy Windows a jeden pro systémy na platformě Linux.
+Pro měření latence máte dvě různé možnosti nástrojů:
 
-Pro Windows: latte. exe (Windows) [https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Pro systémy Windows: [latte. exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Pro počítače se systémem Linux: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
-Pro Linux: SockPerf (Linux) [https://github.com/mellanox/sockperf](https://github.com/mellanox/sockperf)
+Pomocí těchto nástrojů pomůžete zajistit, že se měří jenom doba doručení datových částí TCP nebo UDP, a ne protokol ICMP (příkazového testu) nebo jiné typy paketů, které nepoužívá aplikace a neovlivní jejich výkon.
 
-Pomocí těchto nástrojů se ověří, že se měří jenom doba doručení datových částí TCP nebo UDP, a ne protokol ICMP (test) nebo jiné typy paketů, které nepoužívá aplikace a neovlivňují jejich výkon.
+### <a name="tips-for-creating-an-optimal-vm-configuration"></a>Tipy pro vytvoření optimální konfigurace virtuálních počítačů
 
-### <a name="tips-for-an-optimal-vm-configuration"></a>Tipy pro optimální konfiguraci virtuálních počítačů:
-
+Při vytváření konfigurace virtuálních počítačů mějte na paměti následující doporučení:
 - Použijte nejnovější verzi systému Windows nebo Linux.
-- Povolit urychlené síťové služby pro dosažení nejlepších výsledků
-- Nasazení virtuálních počítačů se [skupinou umístění služby Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)
+- Povolte urychlené síťové služby pro dosažení nejlepších výsledků.
+- Nasaďte virtuální počítače se [skupinou umístění blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
 - Větší virtuální počítače obvykle provádějí lepší výkon než menší virtuální počítače.
 
 ### <a name="tips-for-analysis"></a>Tipy pro analýzu
 
-- Zaveďte směrný plán včas, jakmile budou dokončená nasazení, konfigurace a optimalizace.
-- Vždy Porovnejte nové výsledky se směrným plánem nebo jiným způsobem z jednoho testu s řízenými změnami
-- Opakovat testy pokaždé, když jsou zjištěny nebo plánovány změny
+Při analýze výsledků testů Pamatujte na následující doporučení:
+
+- Navažte základní základnu, jakmile se dokončí nasazení, konfigurace a optimalizace.
+- Vždy Porovnejte nové výsledky se směrným plánem, nebo v opačném případě z jednoho testu na jiný se kontrolovanými změnami.
+- Opakovat testy vždy, když jsou zjištěny nebo plánovány změny.
 
 
-## <a name="testing-vms-running-windows"></a>Testování virtuálních počítačů s Windows
+## <a name="test-vms-that-are-running-windows"></a>Testovací virtuální počítače se systémem Windows
 
-## <a name="get-latteexe-onto-the-vms"></a>Získání latte. exe na virtuální počítače
+### <a name="get-latteexe-onto-the-vms"></a>Získání latte. exe na virtuální počítače
 
-Stáhnout nejnovější verzi: [https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+Stáhněte si [nejnovější verzi nástroje latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
 
-Zvažte umístění latte. exe do samostatné složky, jako je c:\Tools
+Zvažte umístění latte. exe do samostatné složky, jako je například *c:\Tools*.
 
-## <a name="allow-latteexe-through-the-windows-firewall"></a>Povolení latte. exe přes bránu Windows Firewall
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>Povolení latte. exe přes firewall v programu Windows Defender
 
-Na PŘIJÍMAČi vytvořte v bráně Windows Firewall pravidlo povolení, které umožní doručení provozu latte. exe. Je nejjednodušší povolit celý program latte. exe podle názvu, nikoli povolit příchozí porty TCP.
+Na *přijímači*vytvořte pravidlo povolení v bráně firewall v programu Windows Defender, které umožní doručení provozu latte. exe. Je nejjednodušší povolit celý program latte. exe podle názvu, nikoli povolit příchozí porty TCP.
 
-Povolte latte. exe přes bránu Windows Firewall podobným způsobem:
-
-netsh advfirewall firewall Add rule program =\<cesta\>\\latte. exe název =&quot;Latte&quot; protokol = any dir = in Action = Allow Enable = Yes Profile = ANY
-
-
-Pokud jste například zkopírovali latte. exe do složky &quot;c:\\Tools&quot;, bude to tento příkaz:
+Spuštěním následujícího příkazu povolte latte. exe pomocí brány firewall v programu Windows Defender:
 
 ```cmd
-netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-## <a name="running-latency-tests"></a>Spouštění testů latence
+Pokud jste například zkopírovali latte. exe do složky *c:\Tools* , bude to příkaz:
 
-Spusťte latte. exe na PŘIJÍMAČi (spusťte z CMD, nikoli z PowerShellu):
+`netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-Latte-&lt;IP adresa přijímače&gt;:&lt;&gt;-i &lt;iterace&gt;
+### <a name="run-latency-tests"></a>Testy latence spuštění
 
-Kolem iterací 65 KB pro je dostatečně dlouhý, aby vracely reprezentativní výsledky.
+* Na *přijímači*spusťte latte. exe (spusťte ho z okna cmd, nikoli z PowerShellu):
 
-Jakékoli dostupné číslo portu je přesné.
+    ```cmd
+    latte -a <Receiver IP address>:<port> -i <iterations>
+    ```
 
-Pokud má virtuální počítač IP adresu 10.0.0.4, může to vypadat takto:
+    Přibližně 65 000 iterací jsou dostatečně dlouhé, aby vracely reprezentativní výsledky.
 
-```cmd
-latte -a 10.0.0.4:5005 -i 65100
-```
+    Jakékoli dostupné číslo portu je přesné.
 
-Spusťte latte. exe na ODESILATELi (spusťte z CMD, ne z PowerShellu):
+    Pokud má virtuální počítač IP adresu 10.0.0.4, příkaz by vypadal takto:
 
-Latte-c-\<IP adresa přijímače\>:\<\>-i \<iterace\>
+    `latte -a 10.0.0.4:5005 -i 65100`
 
+* Na *odesilateli*spusťte latte. exe (spusťte ho z okna cmd, nikoli z PowerShellu):
 
-Výsledný příkaz je stejný jako u přijímače s výjimkou přidání&quot; &quot;-c k označení toho, že se jedná o &quot;&quot; klienta nebo odesílateli:
+    ```cmd
+    latte -c -a <Receiver IP address>:<port> -i <iterations>
+    ```
 
-```cmd
-latte -c -a 10.0.0.4:5005 -i 65100
-```
+    Výsledný příkaz je stejný jako na přijímači s výjimkou přidání&nbsp; *-c* k označení toho, že se jedná o *klienta*nebo *odesílateli*:
 
-Počkejte na výsledky. V závislosti na tom, jak daleko se jedná o virtuální počítače, může trvat několik minut, než se dokončí. Zvažte, že začnete s menším počtem iterací a otestujete úspěch před spuštěním delších testů.
+    `latte -c -a 10.0.0.4:5005 -i 65100`
 
+Počkejte na výsledky. V závislosti na tom, jak daleko se jedná o virtuální počítače, může dokončení testu trvat několik minut. Zvažte, že začnete s menším počtem iterací a otestujete úspěch před spuštěním delších testů.
 
+## <a name="test-vms-that-are-running-linux"></a>Testovací virtuální počítače se systémem Linux
 
-## <a name="testing-vms-running-linux"></a>Testování virtuálních počítačů se systémem Linux
-
-Použijte SockPerf. Je k dispozici z [https://github.com/mellanox/sockperf](https://github.com/mellanox/sockperf)
+K testování virtuálních počítačů, na kterých běží Linux, použijte [SockPerf](https://github.com/mellanox/sockperf).
 
 ### <a name="install-sockperf-on-the-vms"></a>Instalace SockPerf na virtuální počítače
 
-Na virtuálních počítačích se systémem Linux (ODESÍLATEL i přijímač) spusťte tyto příkazy pro přípravu SockPerf na virtuálních počítačích. Příkazy jsou k dispozici pro hlavní distribuce.
+Na virtuálních počítačích se systémem Linux ( *Odesílatel* i *přijímač*) spusťte následující příkazy, které připraví SockPerf na virtuálních počítačích. Příkazy jsou k dispozici pro hlavní distribuce.
 
-#### <a name="for-rhel--centos-follow-these-steps"></a>Pro RHEL/CentOS proveďte tyto kroky:
+#### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>Pro Red Hat Enterprise Linux (RHEL)/CentOS
+
+Spusťte následující příkazy:
+
 ```bash
-#CentOS / RHEL - Install GIT and other helpful tools
+#RHEL/CentOS - Install Git and other helpful tools
     sudo yum install gcc -y -q
     sudo yum install git -y -q
     sudo yum install gcc-c++ -y
@@ -134,9 +139,12 @@ Na virtuálních počítačích se systémem Linux (ODESÍLATEL i přijímač) s
     sudo yum install -y autoconf
 ```
 
-#### <a name="for-ubuntu-follow-these-steps"></a>Pro Ubuntu použijte následující postup:
+#### <a name="for-ubuntu"></a>Pro Ubuntu
+
+Spusťte následující příkazy:
+
 ```bash
-#Ubuntu - Install GIT and other helpful tools
+#Ubuntu - Install Git and other helpful tools
     sudo apt-get install build-essential -y
     sudo apt-get install git -y -q
     sudo apt-get install -y autotools-dev
@@ -144,11 +152,14 @@ Na virtuálních počítačích se systémem Linux (ODESÍLATEL i přijímač) s
     sudo apt-get install -y autoconf
 ```
 
-#### <a name="for-all-distros-copy-compile-and-install-sockperf-according-to-the-following-steps"></a>Pro všechny distribuce, zkopírujte, zkompilujte a nainstalujte SockPerf podle následujících kroků:
+#### <a name="for-all-distros"></a>Pro všechny distribuce
+
+Zkopírujte, zkompilujte a nainstalujte SockPerf podle následujících kroků:
+
 ```bash
 #Bash - all distros
 
-#From bash command line (assumes git is installed)
+#From bash command line (assumes Git is installed)
 git clone https://github.com/mellanox/sockperf
 cd sockperf/
 ./autogen.sh
@@ -165,28 +176,31 @@ sudo make install
 
 Po dokončení instalace SockPerf jsou virtuální počítače připravené ke spuštění testů latence. 
 
-Nejdřív na PŘIJÍMAČi spusťte SockPerf.
+Nejdřív na *přijímači*spusťte SockPerf.
 
 Jakékoli dostupné číslo portu je přesné. V tomto příkladu používáme port 12345:
+
 ```bash
 #Server/Receiver - assumes server's IP is 10.0.0.4:
 sudo sockperf sr --tcp -i 10.0.0.4 -p 12345
 ```
-Teď, když server naslouchá, může klient začít odesílat pakety na server na portu, na kterém naslouchá, v tomto případě 12345.
+
+Teď, když server naslouchá, může klient začít odesílat pakety na server na portu, na kterém naslouchá (v tomto případě 12345).
 
 Přibližně 100 sekund je dostatečně dlouhý, aby vracely reprezentativní výsledky, jak je znázorněno v následujícím příkladu:
+
 ```bash
 #Client/Sender - assumes server's IP is 10.0.0.4:
 sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 ```
 
-Počkejte na výsledky. V závislosti na tom, jak daleko se jedná o virtuální počítače, se počet iterací bude lišit. Zvažte, že začnete s kratšími testy přibližně 5 sekund, než budete zkoušet úspěch před spuštěním delších testů.
+Počkejte na výsledky. V závislosti na tom, jak daleko se jedná o virtuální počítače, se počet iterací bude lišit. Chcete-li provést test na úspěch před spuštěním delších testů, zvažte spuštění s kratšími testy přibližně 5 sekund.
 
-Tento příklad SockPerf používá velikost zprávy 350 bajtů, protože se jedná o typický paket o průměrné velikosti. Velikost zprávy je možné upravit vyšší nebo nižší, aby se dosáhlo výsledků, které přesněji reprezentují zatížení, které bude na virtuálních počítačích spuštěno.
+Tento příklad SockPerf používá velikost zprávy 350, což je typické pro průměrný paket. Velikost můžete nastavit na vyšší nebo nižší, abyste dosáhli výsledků, které přesněji reprezentují úlohy, které běží na vašich virtuálních počítačích.
 
 
 ## <a name="next-steps"></a>Další kroky
-* Zvýšení latence se [skupinou umístění blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)
-* Seznamte se s postupem [optimalizace sítě pro virtuální počítače](../virtual-network/virtual-network-optimize-network-bandwidth.md) ve vašem scénáři.
-* Přečtěte si o tom [, jak je šířka pásma přidělena virtuálním počítačům](../virtual-network/virtual-machine-network-throughput.md) .
-* Další informace o [nejčastějších dotazech k Azure Virtual Network (FAQ)](../virtual-network/virtual-networks-faq.md)
+* Vylepšete latenci pomocí [skupiny umístění s použitím blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+* Naučte se [optimalizovat sítě pro virtuální počítače](../virtual-network/virtual-network-optimize-network-bandwidth.md) ve vašem scénáři.
+* Přečtěte si o [tom, jak je šířka pásma přidělena virtuálním počítačům](../virtual-network/virtual-machine-network-throughput.md).
+* Další informace najdete v tématu [Nejčastější dotazy k Azure Virtual Network](../virtual-network/virtual-networks-faq.md).

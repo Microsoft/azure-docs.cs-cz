@@ -1,20 +1,21 @@
 ---
-title: Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí Azure CLI (Preview) – Azure Storage
-description: Naučte se, jak vytvořit SAS delegování uživatelů pomocí Azure Active Directory přihlašovacích údajů v Azure Storage pomocí Azure CLI.
+title: Použití rozhraní příkazového řádku Azure k vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB
+titleSuffix: Azure Storage
+description: Naučte se, jak pomocí Azure CLI vytvořit delegování uživatelů (ve verzi Preview) s přihlašovacími údaji pro Azure Active Directory.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 85f49799472c92770cc8a503a5a1be0b496387f7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673325"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892545"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí rozhraní příkazového řádku Azure (Preview)
 

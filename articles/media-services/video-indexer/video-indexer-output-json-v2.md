@@ -1,7 +1,7 @@
 ---
 title: Kontrola výstupu Azure Media Services Video Indexer vypracovaného rozhraním API v2
 titleSuffix: Azure Media Services
-description: Toto téma prověřuje výstup Video Indexer vytvořený pomocí rozhraní API v2.
+description: Toto téma prověřuje Azure Media Services Video Indexer výstup vytvářený rozhraním API v2.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 0a42c2dce3976a1bf83c85644f56f4c1d8abc9c8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bf4acf70b2937b3cb6b2552bf2d2ef9c2422743a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839541"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892715"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Kontrola výstupu Video Indexer vytvořeného rozhraním API
 
@@ -23,7 +23,7 @@ Když zavoláte rozhraní API pro **získání indexu videa** a stav odpovědi j
 
 Můžete také vizuálně zkoumat souhrnné přehledy videa stisknutím tlačítka **Přehrát** na videu na webu [video indexer](https://www.videoindexer.ai/) . Další informace najdete v tématu [zobrazení a Úprava videí s přehledem](video-indexer-view-edit.md).
 
-![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Poznatky](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 Tento článek prověřuje obsah JSON vrácený rozhraním API **získat index videa** . 
 
@@ -33,13 +33,13 @@ Tento článek prověřuje obsah JSON vrácený rozhraním API **získat index v
 
 ## <a name="root-elements"></a>Kořenové elementy
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
-|ID|ID účtu v seznamu testů|
+|accountId|ID účtu v seznamu testů|
 |id|ID seznamu testů.|
 |jméno|Název seznamu stop|
 |description|Popis seznamu testů.|
-|Jmen|Jméno uživatele, který vytvořil seznam testů.|
+|userName|Jméno uživatele, který vytvořil seznam testů.|
 |vytvářejí|Čas vytvoření seznamu testů.|
 |privacyMode|Režim ochrany osobních údajů seznamu testů (Private/Public).|
 |state|Seznam testů (nahráno, zpracovává, zpracováno, selhalo, v karanténě).|
@@ -78,24 +78,24 @@ V této části se zobrazuje souhrn přehledů.
 |jméno|Název videa Například Azure Monitor.|
 |id|ID videa Například 63c6d532ff.|
 |privacyMode|Váš rozpis může mít jeden z následujících režimů: **Private**, **Public**. **Veřejné** – video je viditelné všem uživatelům ve vašem účtu a všem, kdo má odkaz na video. **Soukromé** – video je viditelné všem uživatelům vašeho účtu.|
-|úkolu|Obsahuje jednu dobu trvání, která popisuje čas, kdy došlo k přehledu. Doba trvání je v sekundách.|
+|duration|Obsahuje jednu dobu trvání, která popisuje čas, kdy došlo k přehledu. Doba trvání je v sekundách.|
 |thumbnailVideoId|ID videa, ze kterého byla Miniatura provedena
 |thumbnailId|ID miniatury videa Chcete-li získat aktuální miniaturu, zavolejte funkci [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) a předejte ji ThumbnailVideoId a thumbnailId.|
 |emotikon|Může obsahovat nula nebo více plošek. Podrobnější informace najdete v tématu [obličeje](#faces).|
-|klíčov|Může obsahovat nula nebo více klíčových slov. Podrobnější informace najdete v tématu [klíčová slova](#keywords).|
+|klíčová slova|Může obsahovat nula nebo více klíčových slov. Podrobnější informace najdete v tématu [klíčová slova](#keywords).|
 |zabarvení|Může obsahovat nula nebo více zabarvení. Podrobnější informace najdete v tématu [zabarvení](#sentiments).|
 |audioEffects| Může obsahovat nula nebo více audioEffects. Podrobnější informace najdete v tématu [audioEffects](#audioEffects).|
 |popisky| Může obsahovat nula nebo více popisků. Podrobnější informace najdete v tématu [Labels](#labels).|
 |značky| Může obsahovat nula nebo více značek. Podrobnější informace najdete v tématu [značky](#brands).|
 |týkají | Podrobnější informace najdete v tématu [Statistika](#statistics).|
 |emoce| Může obsahovat nula nebo více emoce. Podrobnější informace najdete v tématu [emoce](#emotions).|
-|popisující|Může obsahovat nula nebo více témat. Dimenze [témata](#topics) .|
+|topics|Může obsahovat nula nebo více témat. Dimenze [témata](#topics) .|
 
 ## <a name="videos"></a>videa
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
-|ID|ID účtu videa VI|
+|accountId|ID účtu videa VI|
 |id|ID videa|
 |jméno|Název videa
 |state|Stav videa (nahráno, zpracování, zpracování, selhalo, v karanténě).|
@@ -149,14 +149,14 @@ Přehledy představují sadu dimenzí (například přepisové řádky, plošky,
 
 Ploška může mít ID, název, miniaturu, další metadata a seznam jeho dočasná instance (například: 00:00:05 – 00:00:10, 00:01:00-00:02:30 a 00:41:21 – 00:41:49). Každá dočasná instance může mít další metadata. Například souřadnice obdélníku plochy (20230, 60, 60).
 
-|Verze|Verze kódu|
+|Version|Verze kódu|
 |---|---|
 |sourceLanguage|Zdrojový jazyk videa (za předpokladu, že se jedná o jeden hlavní jazyk). Ve formě řetězce [BCP-47](https://tools.ietf.org/html/bcp47) .|
 |language|Jazyk Insights (přeložený ze zdrojového jazyka). Ve formě řetězce [BCP-47](https://tools.ietf.org/html/bcp47) .|
 |záznamy|Dimenze [přepisu](#transcript) .|
 |OCR|Dimenze [OCR](#ocr) .|
-|klíčov|Dimenze [klíčová slova](#keywords) .|
-|Čeká|Může obsahovat jeden nebo více [bloků](#blocks)|
+|klíčová slova|Dimenze [klíčová slova](#keywords) .|
+|blocks|Může obsahovat jeden nebo více [bloků](#blocks)|
 |emotikon|Dimenze [obličeje](#faces) .|
 |popisky|Dimenze [Štítky](#labels) .|
 |řizování|Dimenze [snímků](#shots) .|
@@ -166,7 +166,7 @@ Ploška může mít ID, název, miniaturu, další metadata a seznam jeho dočas
 |visualContentModeration|Dimenze [visualContentModeration](#visualcontentmoderation)|
 |textualContentModeration|Dimenze [textualContentModeration](#textualcontentmoderation)|
 |emoce| Dimenze [emoce](#emotions)|
-|popisující|Dimenze [témata](#topics) .|
+|topics|Dimenze [témata](#topics) .|
 
 Příklad:
 
@@ -189,7 +189,7 @@ Příklad:
 }
 ```
 
-#### <a name="blocks"></a>Čeká
+#### <a name="blocks"></a>blocks
 
 Atribut | Popis
 ---|---
@@ -198,7 +198,7 @@ instance|Seznam časových rozsahů tohoto bloku|
 
 #### <a name="transcript"></a>záznamy
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
@@ -236,17 +236,17 @@ Příklad:
 
 #### <a name="ocr"></a>OCR
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID řádku OCR|
 |text|Text OCR|
-|jistotou|Spolehlivost rozpoznávání.|
+|spolehlivost|Spolehlivost rozpoznávání.|
 |language|Jazyk OCR.|
 |instance|Seznam časových rozsahů, ve kterých se zobrazilo toto optické rozpoznávání znaků (stejné optické rozpoznávání znaků se může několikrát zobrazit).|
-|Výška|Výška obdélníku OCR|
-|vrchol|Horní místo v px|
-|zbývá| Levé místo v px|
-|Délk|Šířka obdélníku OCR|
+|výška|Výška obdélníku OCR|
+|top|Horní místo v px|
+|left| Levé místo v px|
+|šířka|Šířka obdélníku OCR|
 
 ```json
 "ocr": [
@@ -269,13 +269,13 @@ Příklad:
   ],
 ```
 
-#### <a name="keywords"></a>klíčov
+#### <a name="keywords"></a>klíčová slova
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID klíčového slova.|
 |text|Text klíčového slova|
-|jistotou|Spolehlivost rozpoznávání klíčového slova|
+|spolehlivost|Spolehlivost rozpoznávání klíčového slova|
 |language|Jazyk klíčového slova (při překladu).|
 |instance|Seznam časových rozsahů, ve kterých se toto klíčové slovo objevilo (klíčové slovo se může zobrazit víckrát).|
 
@@ -302,17 +302,17 @@ Příklad:
 
 #### <a name="faces"></a>emotikon
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID obličeje|
 |jméno|Název obličeje. Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
-|jistotou|Spolehlivost identifikace obličeje.|
+|spolehlivost|Spolehlivost identifikace obličeje.|
 |description|Popis celebrit. |
 |thumbnailId|ID miniatury této plochy.|
 |knownPersonId|Pokud se jedná o známého uživatele, jeho interní ID.|
 |referenceId|Pokud se jedná o celebrit Bingu, jeho ID Bingu.|
-|Hodnota ReferenceType|Právě teď stačí Bing.|
-|hlava|Pokud se jedná o celebrit, jeho titul (například "generální ředitel společnosti Microsoft").|
+|referenceType|Právě teď stačí Bing.|
+|title|Pokud se jedná o celebrit, jeho titul (například "generální ředitel společnosti Microsoft").|
 |imageUrl|Pokud se jedná o celebrit, jeho adresu URL obrázku.|
 |instance|Jedná se o instance, kde se v zadaném časovém rozsahu objevila plocha. Každá instance má také thumbnailsId. |
 
@@ -347,11 +347,11 @@ Příklad:
 
 #### <a name="labels"></a>popisky
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID popisku|
 |jméno|Název popisku (například "Computer", "TV").|
-|language|Název jazyka popisku (při překladu). BCP – 47|
+|language|Název jazyka popisku (při překladu). BCP-47|
 |instance|Seznam časových rozsahů, ve kterých se tento popisek objevil (popisek se může zobrazit víckrát). Každá instance má pole s jistotou. |
 
 
@@ -404,9 +404,9 @@ Příklad:
   ] 
 ```
 
-#### <a name="scenes"></a>pozadí
+#### <a name="scenes"></a>scény
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID scény|
 |instance|Seznam časových rozsahů této scény (scéna může mít jenom 1 instanci).|
@@ -439,7 +439,7 @@ Příklad:
 
 #### <a name="shots"></a>řizování
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID snímku|
 |Klíčové snímky|Seznam klíčových snímků v rámci snímku (každý má ID a seznam časových rozsahů instancí). Každá instance klíčového snímku má pole thumbnailId, které obsahuje ID miniatury klíčového snímku.|
@@ -489,15 +489,15 @@ Příklad:
 
 Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo video optického rozpoznávání. Nezahrnuje vizuální rozpoznávání značek nebo rozpoznávání loga.
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID značky|
 |jméno|Název značek.|
 |referenceId | Přípona adresy URL Wikipedii značky Například "Target_Corporation" je přípona [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Adresa URL Wikipedii značky, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Popis značek|
-|značek|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
-|jistotou|Hodnota spolehlivosti Video Indexerho detektoru značky (0-1).|
+|tags|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
+|spolehlivost|Hodnota spolehlivosti Video Indexerho detektoru značky (0-1).|
 |instance|Seznam časových rozsahů této značky. Každá instance má brandType, který označuje, zda se tato značka objevila v přepisu nebo v OCR.|
 
 ```json
@@ -548,7 +548,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 
 #### <a name="statistics"></a>týkají
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |CorrespondenceCount|Počet korespondencí ve videu.|
 |SpeakerWordCount|Počet slov na mluvčí.|
@@ -558,7 +558,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID zvukového efektu|
 |type|Typ zvukového efektu (například Clapping, řeč, tichá).|
@@ -587,7 +587,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 
 Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální/záporné). Například 0-0,1, 0,1-0,2.
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID mínění|
 |averageScore |Průměr všech skóre všech instancí tohoto typu mínění-kladný/neutrální/záporný|
@@ -626,7 +626,7 @@ Blok visualContentModeration obsahuje časové rozsahy, které Video Indexer nal
 
 K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikantní, a to pouze pro privátní zobrazení. Uživatelé mají možnost Odeslat žádost o revizi obsahu. v takovém případě bude atribut pro dospělé obsahovat výsledek lidské recenze.
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID moderování vizuálního obsahu.|
 |adultScore|Skóre dospělého (od moderátora obsahu).|
@@ -662,7 +662,7 @@ K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikant
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID moderování textového obsahu|
 |bannedWordsCount |Počet zakázaných slov.|
@@ -672,7 +672,7 @@ K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikant
 
 Video Indexer identifikuje emoce na základě hlasových a zvukových pomůcek. Identifikující emoce můžou být: radost, smutek, hněv nebo strach.
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID emoce|
 |type|Moment, který byl identifikován v závislosti na řeči a zvukové pomůcky. Emoce můžou být: radost, smutek, hněv nebo strach.|
@@ -758,16 +758,16 @@ Video Indexer identifikuje emoce na základě hlasových a zvukových pomůcek. 
 ],
 ```
 
-#### <a name="topics"></a>popisující
+#### <a name="topics"></a>topics
 
 Video Indexer vytváří odvození hlavních témat z přepisů. Pokud je to možné, je zahrnutá taxonomie [IPTC](https://iptc.org/standards/media-topics/) na druhé úrovni. 
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |id|ID tématu|
 |jméno|Název tématu, například: "farmaceutické".|
 |referenceId|Popis cesty odrážející hierarchii témat Například: "zdravotnictví a komfort/lékařství a zdravotnictví/Farmaceutickés".|
-|jistotou|Skóre spolehlivosti v rozsahu [0, 1]. Vyšší je spolehlivější.|
+|spolehlivost|Skóre spolehlivosti v rozsahu [0, 1]. Vyšší je spolehlivější.|
 |language|Jazyk použitý v tématu.|
 |IPTC|Název kódu média IPTC, pokud byl nalezen|
 |instance |V současné době Video Indexer neindexuje téma do časových intervalů, takže se jako interval používá celé video.|

@@ -1,18 +1,19 @@
 ---
-title: Správa vlastností a metadat pro kontejner objektů BLOB pomocí .NET-Azure Storage
+title: Použití .NET ke správě vlastností a metadat pro kontejner objektů BLOB
+titleSuffix: Azure Storage
 description: Naučte se, jak pomocí klientské knihovny .NET nastavit a načíst systémové vlastnosti a ukládat do Azure Storage kontejnerů objektů BLOB vlastní metadata.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/10/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d63c78fedb8dbd48655d36fecc3544fd512072e3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 17ed10d424d606091bd2b7d6f3e325955c48a5a2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673375"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894194"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Správa vlastností kontejneru a metadat pomocí .NET
 
@@ -20,9 +21,9 @@ Kontejnery objektů BLOB podporují systémové vlastnosti a uživatelsky defino
 
 ## <a name="about-properties-and-metadata"></a>O vlastnostech a metadatech
 
-- **Vlastnosti systému**: V každém prostředku úložiště objektů BLOB existují systémové vlastnosti. Některé z nich je možné číst nebo nastavovat, zatímco jiné jsou jen pro čtení. V rámci pokrývá některé vlastnosti systému odpovídají určitým standardním hlavičkám HTTP. Klientská knihovna Azure Storage pro .NET uchovává tyto vlastnosti za vás.
+- **Vlastnosti systému**: systémové vlastnosti existují v každém prostředku úložiště objektů BLOB. Některé z nich je možné číst nebo nastavovat, zatímco jiné jsou jen pro čtení. V rámci pokrývá některé vlastnosti systému odpovídají určitým standardním hlavičkám HTTP. Klientská knihovna Azure Storage pro .NET uchovává tyto vlastnosti za vás.
 
-- **Uživatelsky definovaná metadata**: Uživatelsky definovaná metadata se skládají z jedné nebo více párů název-hodnota, které zadáte pro prostředek úložiště objektů BLOB. Metadata můžete použít k ukládání dalších hodnot s prostředkem. Hodnoty metadat jsou pouze pro vaše vlastní účely a neovlivňují způsob, jakým se prostředek chová.
+- **Uživatelsky definovaná metadata**: uživatelsky definovaná metadata se skládají z jedné nebo více párů název-hodnota, které zadáte pro prostředek BLOB Storage. Metadata můžete použít k ukládání dalších hodnot s prostředkem. Hodnoty metadat jsou pouze pro vaše vlastní účely a neovlivňují způsob, jakým se prostředek chová.
 
 Načítají se hodnoty vlastností a metadat pro prostředek BLOB Storage je proces se dvěma kroky. Než budete moci číst tyto hodnoty, je nutné je explicitně načíst voláním metody **FetchAttributes** nebo **FetchAttributesAsync** . Výjimkou z tohoto pravidla je, že metody **Exists** a **ExistsAsync** volají odpovídající metodu **FetchAttributes** v rámci pokrývání. Při volání jedné z těchto metod není nutné volat také **FetchAttributes**.
 
@@ -127,7 +128,7 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Získat operaci vlastností kontejneru](/rest/api/storageservices/get-container-properties)
 - [Operace nastavení metadat kontejneru](/rest/api/storageservices/set-container-metadata)

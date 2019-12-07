@@ -1,5 +1,5 @@
 ---
-title: Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2 s využitím Azure Data Factory
+title: Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2
 description: Naučte se používat šablonu řešení k migraci dat ze služby Amazon S3 pomocí tabulky externích ovládacích prvků k uložení seznamu oddílů v AWS S3 pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2019
-ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b1e7d15f1c747644c755b1e0bbe3351c626f7c28
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684194"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890806"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2
 
@@ -45,25 +45,25 @@ Tato šablona (*název šablony: migrace historických dat z AWS S3 na Azure Dat
 - **SqlServerStoredProcedure** aktualizovat stav kopírování všech oddílů v řídicí tabulce.
 
 Šablona obsahuje dva parametry:
-- **AWS_S3_bucketName** je název vašeho bloku v AWS S3, ze kterého chcete migrovat data. Pokud chcete migrovat data z několika intervalů v AWS S3, můžete do své tabulky externích ovládacích prvků přidat další sloupec pro uložení názvu sady pro každý oddíl a také aktualizovat svůj kanál, aby se odpovídajícím způsobem načetla data z tohoto sloupce.
-- **Azure_Storage_fileSystem** je váš název systému souborů na Azure Data Lake Storage Gen2, do kterého chcete migrovat data.
+- **AWS_S3_bucketName** je název vašeho kontejneru v AWS S3, ze kterého chcete migrovat data. Pokud chcete migrovat data z několika intervalů v AWS S3, můžete do své tabulky externích ovládacích prvků přidat další sloupec pro uložení názvu sady pro každý oddíl a také aktualizovat svůj kanál, aby se odpovídajícím způsobem načetla data z tohoto sloupce.
+- **Azure_Storage_fileSystem** je název systému souborů v Azure Data Lake Storage Gen2, do kterého chcete migrovat data.
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Aby šablona zkopírovala změněné soubory pouze ze služby Amazon S3 do Azure Data Lake Storage Gen2
 
-Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure Data Lake Storage Gen2*) používá časposledníúpravy každého souboru ke zkopírování nových nebo aktualizovaných souborů pouze z AWS S3 do Azure. Počítejte s tím, že vaše soubory nebo složky již byly rozděleny na oddíly s timeslice informacemi jako součást názvu souboru nebo složky v AWS S3 (například/yyyy/MM/DD/File.csv), můžete přejít k tomuto [kurzu](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) a získat tak další postup pro přírůstkové zpracování. načítají se nové soubory. Tato šablona předpokládá, že jste v Azure SQL Database vytvořili seznam oddílů v externí tabulce ovládacích prvků. Proto bude používat aktivitu *vyhledávání* k načtení seznamu oddílů z tabulky externích ovládacích prvků, iterovat přes jednotlivé oddíly a vytvořit každou úlohu kopírování ADF v jednom okamžiku kopii jednoho oddílu. Když Každá úloha kopírování začne kopírovat soubory ze AWS S3, spoléhá se na vlastnost Časposledníúpravy, která identifikuje a zkopíruje pouze nové nebo aktualizované soubory. Po dokončení jakékoli úlohy kopírování se pomocí aktivity *uložená procedura* aktualizuje stav kopírování všech oddílů v řídicí tabulce.
+Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure Data Lake Storage Gen2*) používá časposledníúpravy každého souboru ke zkopírování nových nebo aktualizovaných souborů pouze z AWS S3 do Azure. Počítejte s tím, že vaše soubory nebo složky již byly rozděleny na oddíly s timeslice informacemi jako součást názvu souboru nebo složky v AWS S3 (například/yyyy/MM/DD/File.csv), můžete přejít k tomuto [kurzu](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) a získat tak další postup pro přírůstkové načítání nových souborů. Tato šablona předpokládá, že jste v Azure SQL Database vytvořili seznam oddílů v externí tabulce ovládacích prvků. Proto bude používat aktivitu *vyhledávání* k načtení seznamu oddílů z tabulky externích ovládacích prvků, iterovat přes jednotlivé oddíly a vytvořit každou úlohu kopírování ADF v jednom okamžiku kopii jednoho oddílu. Když Každá úloha kopírování začne kopírovat soubory ze AWS S3, spoléhá se na vlastnost Časposledníúpravy, která identifikuje a zkopíruje pouze nové nebo aktualizované soubory. Po dokončení jakékoli úlohy kopírování se pomocí aktivity *uložená procedura* aktualizuje stav kopírování všech oddílů v řídicí tabulce.
 
 Šablona obsahuje sedm aktivit:
 - **Vyhledávání** načte oddíly z externí tabulky ovládacích prvků. Název tabulky je *s3_partition_delta_control_table* a dotaz pro načtení dat z tabulky je *"vybrat odlišné PartitionPrefix z s3_partition_delta_control_table"* .
 - **Foreach** získá seznam oddílů z aktivity *vyhledávání* a projde každý oddíl do aktivity *TriggerDeltaCopy* . Můžete nastavit, aby *batchCount* spouštěla více úloh kopírování ADF současně. V této šabloně jsme nastavili 2.
 - **ExecutePipeline** spustí kanál *DeltaCopyFolderPartitionFromS3* . Důvodem je, že vytvoříme další kanál, aby bylo možné každou úlohu kopírování zkopírovat oddíl, protože to usnadňuje opakované načtení tohoto konkrétního oddílu z AWS S3. Všechny ostatní úlohy kopírování načítající jiné oddíly nebudou mít vliv na.
-- **Vyhledávání** načte poslední čas spuštění úlohy kopírování z tabulky externích ovládacích prvků tak, aby se nové nebo aktualizované soubory mohly identifikovat pomocí časposledníúpravy. Název tabulky je *s3_partition_delta_control_table* a dotaz pro načtení dat z tabulky je *"SELECT Max (JobRunTime) as časposledníúpravy from s3_partition_delta_control_table WHERE PartitionPrefix = ' @ {Pipeline (). Parameters. prefixStr } a SuccessOrFailure = 1*.
+- **Vyhledávání** načte poslední čas spuštění úlohy kopírování z tabulky externích ovládacích prvků tak, aby se nové nebo aktualizované soubory mohly identifikovat pomocí časposledníúpravy. Název tabulky je *s3_partition_delta_control_table* a dotaz pro načtení dat z tabulky je *"SELECT Max (JobRunTime) as časposledníúpravy from s3_partition_delta_control_table WHERE PartitionPrefix = ' @ {Pipeline (). Parameters. prefixStr} ' a SuccessOrFailure = 1"* .
 - **Kopírování** zkopíruje nové nebo změněné soubory pouze pro každý oddíl ze AWS S3 do Azure Data Lake Storage Gen2. Vlastnost *modifiedDatetimeStart* je nastavená na čas posledního spuštění úlohy kopírování. Vlastnost *modifiedDatetimeEnd* je nastavena na aktuální čas spuštění úlohy kopírování. Počítejte s tím, že čas se aplikuje na časové pásmo UTC.
 - **SqlServerStoredProcedure** aktualizovat stav kopírování jednotlivých oddílů a kopírovat dobu běhu v tabulce ovládacích prvků, když je úspěšná. Sloupec SuccessOrFailure je nastaven na hodnotu 1.
 - **SqlServerStoredProcedure** aktualizovat stav kopírování jednotlivých oddílů a kopírovat dobu běhu v kontrolní tabulce, pokud se nezdařila. Sloupec SuccessOrFailure je nastaven na hodnotu 0.
 
 Šablona obsahuje dva parametry:
-- **AWS_S3_bucketName** je název vašeho bloku v AWS S3, ze kterého chcete migrovat data. Pokud chcete migrovat data z několika intervalů v AWS S3, můžete do své tabulky externích ovládacích prvků přidat další sloupec pro uložení názvu sady pro každý oddíl a také aktualizovat svůj kanál, aby se odpovídajícím způsobem načetla data z tohoto sloupce.
-- **Azure_Storage_fileSystem** je váš název systému souborů na Azure Data Lake Storage Gen2, do kterého chcete migrovat data.
+- **AWS_S3_bucketName** je název vašeho kontejneru v AWS S3, ze kterého chcete migrovat data. Pokud chcete migrovat data z několika intervalů v AWS S3, můžete do své tabulky externích ovládacích prvků přidat další sloupec pro uložení názvu sady pro každý oddíl a také aktualizovat svůj kanál, aby se odpovídajícím způsobem načetla data z tohoto sloupce.
+- **Azure_Storage_fileSystem** je název systému souborů v Azure Data Lake Storage Gen2, do kterého chcete migrovat data.
 
 ## <a name="how-to-use-these-two-solution-templates"></a>Jak používat tyto dvě šablony řešení
 
@@ -111,7 +111,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
     ![Vytvoření nového připojení](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
-4. Vyberte **použít tuto šablonu**.
+4. Vyberte **Použít tuto šablonu**.
 
     ![Použít tuto šablonu](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
@@ -174,7 +174,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
     ![Vytvoření nového připojení](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
-4. Vyberte **použít tuto šablonu**.
+4. Vyberte **Použít tuto šablonu**.
 
     ![Použít tuto šablonu](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
@@ -190,7 +190,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
     ![Kontrola výsledku](media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png)
 
-8. Můžete také kontrolovat výsledky z tabulky Control pomocí dotazu *"SELECT * FROM s3_partition_delta_control_table"* , zobrazí se výstup podobný následujícímu příkladu:
+8. Můžete také kontrolovat výsledky z tabulky Control pomocí dotazu *"SELECT * from s3_partition_delta_control_table"* , zobrazí se výstup podobný následujícímu příkladu:
 
     ![Kontrola výsledku](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     

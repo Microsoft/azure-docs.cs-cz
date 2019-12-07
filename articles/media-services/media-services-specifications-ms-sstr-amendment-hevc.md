@@ -1,6 +1,6 @@
 ---
 title: Změna SSTR-Smooth Streaming protokolu (MS-) pro HEVC | Azure Media Services Microsoft Docs
-description: Tato specifikace popisuje protokol a formát pro fragmentování živého streamování založeného na MP4 pomocí HEVC v Azure Media Services. Toto je změna v dokumentaci protokolu Smooth Streaming (MS-SSTR), která zahrnuje podporu HEVC ingestování a streamování. V tomto článku jsou zadány pouze změny, které jsou požadovány pro doručení HEVC, s výjimkou "(beze změny)" značí, že je text zkopírován pouze pro objasnění.
+description: Tato specifikace popisuje protokol a formát pro fragmentování živého streamování založeného na MP4 pomocí HEVC v Azure Media Services. V tomto článku jsou zadány pouze změny, které jsou požadovány pro doručení HEVC, s výjimkou "(beze změny)" značí, že je text zkopírován pouze pro objasnění.
 services: media-services
 documentationcenter: ''
 author: johndeu
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6dd7e0dc7e58f33f952aa5531773a84ebd31a163
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624808"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887862"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Změna protokolu SSTR (MS-) pro HEVC Smooth Streaming 
 
@@ -46,17 +46,17 @@ Následující výrazy jsou specifické pro tento dokument:
 > 
 >   **čas dekódování:** Čas, kdy je nutné dekódovat ukázku na klientovi, jak je definováno v [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
 
-**zpomalen** Nezávislá jednotka ke stažení **médií** , která zahrnuje jednu nebo více **vzorků**.
+**fragment:** Nezávislá jednotka ke stažení **médií** , která zahrnuje jednu nebo více **vzorků**.
 
 >   **HEVC:** Kódování videa s vysokým efektivitou, jak je definováno v [ISO/IEC 23008-2]
 > 
->   **zřetel** Metadata o **prezentaci** , která klientovi umožňuje vytvářet požadavky na **média** **média** Komprimovaná zvuk, video a textová data, která klient používá k přehrání **prezentace**. **formát média:** Dobře definovaný formát, který reprezentuje zvuk nebo video jako komprimovaný **vzorek**.
+>   **manifest:** Metadata o **prezentaci** , která klientovi umožňuje vytvářet požadavky na **média** **média:** Komprimovaná zvuk, video a textová data, která klient používá k přehrání **prezentace**. **formát média:** Dobře definovaný formát, který reprezentuje zvuk nebo video jako komprimovaný **vzorek**.
 > 
->   **vyjádření** Sada všech **datových proudů** a související metadata potřebná k přehrání jediného filmu. **Request** Zpráva HTTP odeslaná z klienta na server, jak je definováno v odpovědi [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **:** Zpráva HTTP odeslaná ze serveru klientovi, jak je definováno v [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
+>   **prezentace:** Sada všech **datových proudů** a související metadata potřebná k přehrání jediného filmu. **požadavek:** Zpráva HTTP odeslaná z klienta na server, jak je definováno v odpovědi [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **Odpověď:** zpráva HTTP odeslaná ze serveru klientovi, jak je definováno v [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
 > 
->   **vzorku** Nejmenší základní jednotka (například rámec), ve které se **médium** ukládá a zpracovává.
+>   **Ukázka:** Nejmenší základní jednotka (například rámec), ve které se **médium** ukládá a zpracovává.
 > 
->   **KVĚTEN BY NEMĚL, NESMÍ:** Tyto výrazy (ve všech verzálky) se používají tak, jak je popsáno v [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) všechny příkazy volitelného chování, které by mohly být nebo by neměly.
+>   **květen** by neměl, nesmí: Tyto výrazy (ve všech verzálky) se používají tak, jak je popsáno v [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) všechny příkazy volitelného chování, které by mohly být nebo by neměly.
 
 ## <a name="12-references"></a>odkazy 1,2
 
@@ -64,31 +64,31 @@ Následující výrazy jsou specifické pro tento dokument:
 
 ### <a name="121-normative-references"></a>1.2.1 normativní odkazy 
 
->  [MS-SSTR] *V20140502* protokolu Smooth Streaming[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-SSTR] Smooth Streaming *V20140502* protokolu [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 > 
->   [ISO/IEC 14496-12] ISO "informační technologie – kódování zvukového objektu – vizuální objekty – část 12: Formát ISO Base Media File Format ", ISO/IEC 14496-12:2014, edice 4, plus Corrigendum 1, změny 1 & 2.
+>   [ISO/IEC 14496-12] ISO, "informační technologie – kódování zvuku-vizuálních objektů – část 12: formát souboru ISO Base Media", ISO/IEC 14496-12:2014, edice 4, plus Corrigendum 1, změny 1 & 2.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
 > 
->   [ISO/IEC 14496-15] ISO "informační technologie – kódování zvukového objektu – vizuální objekty – část 15: Přeprava strukturovaného videa jednotky NAL ve formátu ISO Base Media File Format, ISO 14496-15:2015, edice 3.
+>   [ISO/IEC 14496-15] ISO, "informační technologie--kódování zvuku-vizuálních objektů – část 15: přeprava strukturovaného videa jednotky NAL ve formátu ISO Base Media File Format", ISO 14496-15:2015, edice 3.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/IEC 23008-2] Informační technologie – kódování s vysokými efektivitami a doručování médií v heterogenních prostředích – část 2: Kódování videa s vysokým efektivitou: 2013 nebo nejnovější edice<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Informační technologie – kódování s vysokými efektivitami a doručování médií v heterogenních prostředích – část 2: video s vysokými efektivitami: 2013 nebo nejnovější edice <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/IEC 23001-7] Informační technologie – systémové technologie MPEG – část 7: Běžné šifrování souborů formátu ISO Base Media Format, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Informační technologie – systémové technologie MPEG – část 7: běžné šifrování ve formátu souborů ISO Base Media Format, CENC Edition 2:2015 <https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
->   [RFC-6381] IETF RFC-6381, "kodeky" a "profiles" typy médií "interval"<https://tools.ietf.org/html/rfc6381>
+>   [RFC-6381] IETF RFC-6381, "kodeky" a "profiles" typy médií "interval" <https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] Registrační autorita MP4 "MP4REG",[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] Registrační autorita MP4 "MP4REG", [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "klíčová slova pro použití v dokumentech RFC k označení úrovní požadavků", BCP 14, RFC 2119, březen 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "klíčová slova pro použití v dokumentech RFC k označení úrovní požadavků", BCP 14, RFC 2119, březen 1997, [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 informativní odkazy 
 
 >   [MS-GLOS] Microsoft Corporation, "*hlavní Glosář protokolů systému Windows*"
 > 
->   [RFC3548] Josefsson, S., Ed., "Base16, Base32 a kódování dat Base64", RFC 3548, červenec 2003,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed., "Base16, Base32 a kódování dat Base64", RFC 3548, červenec 2003 [https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., Ed., Ed a Overell, P., "rozšířené BNF pro specifikace syntaxe: ABNF ", STD 68, RFC 5234, leden 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed., Ed., a Overell, P., "rozšířené BNF pro specifikace syntaxe: ABNF", STD 68, RFC 5234, leden 2008, [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>Přehled 1,3 
@@ -124,7 +124,7 @@ Následující výrazy jsou specifické pro tento dokument:
 
 #### <a name="2221-smoothstreamingmedia"></a>2.2.2.1 SmoothStreamingMedia 
 
->   **Podverze (proměnná):** Vedlejší verze zprávy s odpovědí manifestu. MUSÍ být nastavené na 2. (Beze změny)
+>   Podverze **(proměnná):** Vedlejší verze zprávy s odpovědí manifestu. MUSÍ být nastavené na 2. (Beze změny)
 > 
 >   **Časová osa (proměnná):** Časové měřítko atributu trvání, které je zadáno jako počet přírůstků v jedné sekundě. Výchozí hodnota je
 > 1. (Beze změny)
@@ -147,9 +147,9 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 
 >   **FourCC (proměnná):** Kód se čtyřmi znaky, který určuje, který formát média se používá pro každou ukázku. Následující rozsah hodnot je vyhrazený s následujícími sémantickými významy:
 > 
-> * "hev1": Ukázky videa pro tuto stopu používají HEVC video s použitím formátu "hev1" vzorového popisu určeného v [ISO/IEC-14496-15].
+> * "hev1": ukázky videa pro tuto stopu používají HEVC video s použitím formátu "hev1" ukázkového popisu určeného v [ISO/IEC-14496-15].
 >
-> * "hvc1": Ukázky videa pro tuto stopu používají HEVC video s použitím formátu "hvc1" vzorového popisu určeného v [ISO/IEC-14496-15].
+> * "hvc1": ukázky videa pro tuto stopu používají HEVC video s použitím formátu "hvc1" ukázkového popisu určeného v [ISO/IEC-14496-15].
 > 
 >   **CodecPrivateData (proměnná):** Data, která určují parametry specifické pro formát média a společná pro všechny vzorky v rámci stop, reprezentované jako řetězec šestnáctkově kódovaných bajtů. Formát a sémantický význam sekvence bajtů se liší hodnotou pole **FourCC** následujícím způsobem:
 > 
@@ -163,19 +163,19 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 > 
 >   * PPSField obsahuje sadu parametrů řezu (PPS).
 > 
->   Poznámka: Sada parametrů videa (VPS) není obsažena v CodecPrivateData, ale měla by být obsažena v hlavičce souboru uložených souborů v poli ' hvcC '. Systémy používající Smooth Streaming protokol musí signalizovat další parametry dekódování (například HEVC) pomocí vlastního atributu "kodeky".
+>   Poznámka: sada parametrů videa (VPS) není obsažena v CodecPrivateData, ale měla by být obsažena v hlavičce souboru uložených souborů v poli ' hvcC '. Systémy používající Smooth Streaming protokol musí signalizovat další parametry dekódování (například HEVC) pomocí vlastního atributu "kodeky".
 
 ##### <a name="22251-customattributeselement"></a>2.2.2.5.1 CustomAttributesElement 
 
 #### <a name="226-streamfragmentelement"></a>2.2.6 StreamFragmentElement 
 
->   Pole **MajorVersion SMOOTHSTREAMINGMEDIA** musí být nastavené na hodnotu 2 a pole s podverzemi musí být nastavené na hodnotu 2. (Beze změny)
+>   Pole **MajorVersion SMOOTHSTREAMINGMEDIA** musí být nastavené na hodnotu 2 **a pole s** podverzemi musí být nastavené na hodnotu 2. (Beze změny)
 
 ##### <a name="22261-trackfragmentelement"></a>2.2.2.6.1 TrackFragmentElement 
 
 ### <a name="223-fragment-request"></a>2.2.3 – požadavek na fragment 
 
->   **Poznámka:** Výchozí formát média požadovaný pro podverze 2 a ' hev1 ' nebo ' hvc1 ' je ' ISO8 ', základní formát mediálního souboru ISO zadaný v [ISO/IEC 14496-12] ISO Base Media Format File Format čtvrté edice a [ISO/IEC 23001-7] Common Encryption Second Edition.
+>   **Poznámka**: výchozí formát média **požadovaný pro** podverze 2 a ' hev1 ' nebo ' hvc1 ' je ' Iso8 ' se základní formát mediálního souboru ISO, který je určen v [ISO/IEC 14496-12] ISO Base Media Format File Format ČTVRTÉ edice a [ISO/IEC 23001-7] Common Encryption Second Edition.
 
 ### <a name="224-fragment-response"></a>2.2.4 odezva na fragment 
 
@@ -189,15 +189,15 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 
 >   **TfxdBox** je zastaralá a její funkce je nahrazená časovým polem pro sledování fragmentu (tfdt), které je uvedené v části [ISO/IEC 14496-12] 8.8.12.
 > 
->   **Poznámka:** Klient může vypočítat dobu trvání fragmentu, a to součtem dob trvání vzorků uvedených v poli stop Run (' Trun ') nebo vynásobením počtu vzorků vynásobeným výchozí dobu trvání vzorku. BaseMediaDecodeTime v ' tfdt ' plus doba trvání fragmentu odpovídá parametru času adresy URL pro další fragment.
+>   **Poznámka**: klient může vypočítat dobu trvání fragmentu tak, že sečte dobu trvání vzorků uvedenou v poli sledovat běh (' Trun ') nebo vynásobí počet vzorků vynásobený výchozí dobu trvání vzorku. BaseMediaDecodeTime v ' tfdt ' plus doba trvání fragmentu odpovídá parametru času adresy URL pro další fragment.
 > 
->   Do pole fragmentu videa (' prft ') by měl být podle potřeby vloženo pole referenčního času (' '), aby označovalo čas UTC odpovídající času dekódování prvního vzorku odkazovaného polem fragment videa, jak je uvedeno v [ISO/IEC 14496 -12] sekce 8.16.5.
+>   V případě potřeby by měl být do pole fragmentu videa (' prft ') vloženo pole s referenčním časem producenta (' '), které určuje čas UTC odpovídající času dekódování prvního vzorku, na který odkazuje pole fragment videa, jak je uvedeno v části [ISO/IEC 14496-12] 8.16.5.
 
 #### <a name="2245-tfrfbox"></a>2.2.4.5 TfrfBox 
 
 >   **TfrfBox** je zastaralá a její funkce je nahrazená časovým polem pro sledování fragmentu (tfdt), které je uvedené v části [ISO/IEC 14496-12] 8.8.12.
 > 
->   **Poznámka:** Klient může vypočítat dobu trvání fragmentu, a to součtem dob trvání vzorků uvedených v poli stop Run (' Trun ') nebo vynásobením počtu vzorků vynásobeným výchozí dobu trvání vzorku. BaseMediaDecodeTime v ' tfdt ' plus doba trvání fragmentu odpovídá parametru času adresy URL pro další fragment. Adresy hledání jsou zastaralé, protože jsou zpožděné živé streamování.
+>   **Poznámka**: klient může vypočítat dobu trvání fragmentu tak, že sečte dobu trvání vzorků uvedenou v poli sledovat běh (' Trun ') nebo vynásobí počet vzorků vynásobený výchozí dobu trvání vzorku. BaseMediaDecodeTime v ' tfdt ' plus doba trvání fragmentu odpovídá parametru času adresy URL pro další fragment. Adresy hledání jsou zastaralé, protože jsou zpožděné živé streamování.
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
@@ -213,7 +213,7 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 > 
 >   Jak je definováno v [[ISO/IEC – 14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
 > 
->   Poznámka: Tím se vyhnete chybě synchronizace videa způsobené videem, která je stejná jako největší zpoždění při odstraňování vyrovnávací paměti obrázků, a udržuje časování prezentace mezi alternativními fragmenty, které mohou mít různou prodlevu při odebírání.
+>   Poznámka: zabrání se tak Chyba synchronizace videa způsobené videem, která se rovná největšímu zpoždění při odstraňování vyrovnávací paměti obrázků, a udržuje časování prezentace mezi alternativními fragmenty, které mohou mít různou prodlevu při odebírání.
 > 
 >   Syntaxe polí definovaných v této části uvedená v ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) zůstává stejná, s výjimkou následujících:
 > 
@@ -235,7 +235,7 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 > 
 >   **MajorBrand (proměnná):** Hlavní značka mediálního souboru. MUSÍ být nastavené na "ISML".
 > 
->   **Podverze (proměnná):** Vedlejší verze mediálního souboru. MUSÍ být nastavené na hodnotu 1.
+>   Podverze **(proměnná):** Vedlejší verze mediálního souboru. MUSÍ být nastavené na hodnotu 1.
 > 
 >   **CompatibleBrands (proměnná):** Určuje podporované značky MPEG-4.
 >   MUSÍ zahrnovat "ccff" a "ISO8".
@@ -247,7 +247,7 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**Poznámka:** Značky kompatibility ' ccff ' a ' ISO8 ' označují, že fragmenty jsou v souladu s "Common File Format" a Common Encryption [ISO/IEC 23001-7] a ISO Base Media Format File Format Edition 4 [ISO/IEC 14496-12].
+**Poznámka**: značky kompatibility ' ccff ' a ' ISO8 ' označují, že fragmenty odpovídají "Common File Format" a Common Encryption [ISO/IEC 23001-7] a ISO Base Media Format File Format Edition 4 [ISO/IEC 14496-12].
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -276,7 +276,7 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 
 >   Datový prvek popis prezentace zapouzdřuje všechna metadata pro prezentaci.
 > 
->   Metadata prezentace: Sada metadat, která je společná pro všechny datové proudy v prezentaci. Metadata prezentace obsahují následující pole, která jsou uvedena v části *2.2.2.1*:
+>   Metadata prezentace: sada metadat, která je společná pro všechny datové proudy v prezentaci. Metadata prezentace obsahují následující pole, která jsou uvedena v části *2.2.2.1*:
 > 
 > * **MajorVersion**
 > * **Podverze**
@@ -291,21 +291,21 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0 (Poznámka: Nepoužívané rámečky)
+>   LookaheadCount = 0 (Poznámka: nepoužívané rámečky)
 > 
 >   JE také potřeba nastavit prezentace:
 
     TimeScale = 90000
 
->   Kolekce datových proudů: Kolekce datových elementů popisu streamu, jak je uvedeno v oddílu *3.1.1.1.2*.
+>   Kolekce datových proudů: kolekce datových elementů s popisem datového proudu, jak je uvedeno v oddílu *3.1.1.1.2*.
 > 
->   Popis ochrany: Kolekce datových elementů popisu metadat systému ochrany, jak je uvedeno v části *3.1.1.1.1*.
+>   Popis ochrany: kolekce datových prvků s popisem metadat systému ochrany, jak je uvedeno v oddílu *3.1.1.1.1*.
 
 ##### <a name="31111-protection-system-metadata-description"></a>Popis metadat systému 3.1.1.1.1 Protection 
 
 >   Datový prvek popis metadat systému ochrany zapouzdřuje metadata specifická pro jeden Content Protection systém. (Beze změny)
 > 
->   Popis hlavičky ochrany: Metadata Content Protection, která se vztahují k jednomu Content Protection systému. Popis hlavičky ochrany obsahuje následující pole, která jsou uvedená v části *2.2.2.2*:
+>   Popis hlavičky ochrany: metadata Content Protection, která se vztahují k jednomu Content Protection systému. Popis hlavičky ochrany obsahuje následující pole, která jsou uvedená v části *2.2.2.2*:
 > 
 >   * **SystemID**
 >   * **ProtectionHeaderContent**
@@ -352,9 +352,9 @@ ProtectionElement se musí vyskytovat, když se použije Common Encryption (CENC
 
 ## <a name="51-security-considerations-for-implementers"></a>5,1 požadavky na zabezpečení pro implementátory
 
->   Pokud obsah přepravovaný pomocí tohoto protokolu má vysokou komerční hodnotu, je třeba použít systém Content Protection, aby se zabránilo neoprávněnému použití obsahu. **ProtectionElement** se dá použít k přenosu metadat souvisejících s používáním Content Protectionho systému. Chráněný audio a video obsah se zašifrují tak, jak určuje MPEG Common Encryption Second Edition: 2015 [ISO/IEC 23001-7].
+>   Pokud obsah přepravovaný pomocí tohoto protokolu má vysokou komerční hodnotu, je třeba použít systém Content Protection, aby se zabránilo neoprávněnému použití obsahu. **ProtectionElement** se dá použít k přenosu metadat souvisejících s používáním Content Protectionho systému. Chráněný audio a video obsah se zašifrují podle specifikace MPEG Common Encryption Second Edition: 2015 [ISO/IEC 23001-7].
 > 
->   **Poznámka:** Pro video HEVC je zašifrované pouze průřezová data v VCL NALs. Záhlaví řezů a další NALs jsou přístupné pro prezentace aplikací před jejich dešifrováním. v zabezpečené cestě k videu nejsou k dispozici šifrované informace pro aplikace pro prezentace.
+>   **Poznámka**: pro video HEVC se šifrují jenom data řezu v VCL NALs. Záhlaví řezů a další NALs jsou přístupné pro prezentace aplikací před jejich dešifrováním. v zabezpečené cestě k videu nejsou k dispozici šifrované informace pro aplikace pro prezentace.
 
 ## <a name="52-index-of-security-parameters"></a>5,2 index parametrů zabezpečení 
 
@@ -385,7 +385,7 @@ Následující pole mohou být přítomna v odpovědích fragmentů při použit
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

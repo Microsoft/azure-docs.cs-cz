@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027884"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900910"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Zobrazení a přiřazení rolí správce v Azure Active Directory
 
@@ -26,11 +26,11 @@ V portálu Azure Active Directory nyní můžete zobrazit a spravovat všechny �
 
 ## <a name="view-all-roles"></a>Zobrazit všechny role
 
-V Azure Active Directory vyberte **role a správci** , aby se zobrazil seznam všech dostupných rolí. 
+Vyhledejte a vyberte **Azure Active Directory**. Výběrem **rolí a správců** zobrazíte seznam všech dostupných rolí.
 
 Kliknutím na tři tečky na pravé straně každého řádku otevřete podrobný popis role.
 
-![seznam rolí na portálu Azure AD](./media/directory-manage-roles-portal/role-list.png)
+![seznam rolí na portálu Azure AD](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
 ## <a name="view-my-roles"></a>Zobrazení mých rolí
 

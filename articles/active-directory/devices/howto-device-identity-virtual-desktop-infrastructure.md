@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1cba2c4572b2f898f631aefbbf316fae1195ac
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596361"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900377"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -41,29 +41,30 @@ Tento článek pokryje správcům Microsoftu informace o podpoře identity zař�
 
 Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostředí VDI, Seznamte se s podporovanými scénáři. Následující tabulka ukazuje, které scénáře zřizování jsou podporované. Zřizování v tomto kontextu předpokládá, že správce může konfigurovat identitu zařízení ve velkém měřítku bez nutnosti zásahu koncového uživatele.
 
-| Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporováno |
+| Typ identity zařízení | Infrastruktura identity | Zařízení Windows | Verze platformy VDI | Podporováno |
 | --- | --- | --- | --- | --- |
-| Připojeno k hybridní službě Azure AD | Federované | Aktuální Windows * * * * a Windows nižší úrovně * * * * | Trvalý | Ano |
-|   |   |   | Bez trvalého přihlášení | Ano |
-|   | Spravované * * | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
-|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
+| Připojené k hybridní službě Azure AD | Federované | Aktuální Windows * * * * a Windows nižší úrovně * * * * | Trvalý | Ano |
 |   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
-| Připojeno k Azure AD | Federované | Aktuální Windows | Trvalý | Ne |
+|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
+|   | Spravované * * | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
+|   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano |
+| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
 |   |   |   | Bez trvalého přihlášení | Ne |
 |   | Spravované | Aktuální Windows | Trvalý | Ne |
 |   |   |   | Bez trvalého přihlášení | Ne |
-| Registrace Azure AD | Federované | Aktuální Windows | Trvalý | Ne |
+| Registrované v Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
 |   |   |   | Bez trvalého přihlášení | Ne |
 |   | Spravované | Aktuální Windows | Trvalý | Ne |
 |   |   |   | Bez trvalého přihlášení | Ne |
 
 \* prostředí **federovaného** infrastruktury identit představuje prostředí s poskytovatelem identity, jako je například AD FS nebo jiné IDP třetí strany.
 
-\* \* **spravované** prostředí infrastruktury identit představuje prostředí se službou Azure AD jako zprostředkovatele identity nasazeného pomocí [synchronizace hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) nebo [předávacího ověřování (PTA)](../hybrid/how-to-connect-pta.md) s [ bezproblémové jednotné přihlašování](../hybrid/how-to-connect-sso.md).
+\*\* **spravované** prostředí infrastruktury identit představuje prostředí se službou Azure AD jako zprostředkovatele identity nasazeného pomocí [synchronizace hodnot hash hesel (kosmetice)](../hybrid/whatis-phs.md) nebo [předávacího ověřování (PTA)](../hybrid/how-to-connect-pta.md) pomocí [bezproblémového jednotného přihlašování](../hybrid/how-to-connect-sso.md).
 
-\* \* \* **aktuální** zařízení s Windows představuje Windows 10, windows Server 2016 a Windows Server 2019.
+\*\*\* **aktuální** zařízení s Windows představuje Windows 10, windows Server 2016 a Windows Server 2019.
 
-\* \* \* \* zařízení se **systémem Windows nižší úrovně** představuje Windows 7, Windows 8.1, Windows Server 2008 R2, windows Server 2012 a Windows Server 2012 R2. Informace o podpoře ve Windows 7 najdete v článku [Podpora pro Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). Informace o podpoře na Windows serveru 2008 R2 najdete v článku [Příprava pro Windows server 2008 na konci podpory](https://www.microsoft.com/cloud-platform/windows-server-2008).
+\*\*\*\* zařízení se **systémem Windows nižší úrovně** představuje Windows 7, Windows 8.1, Windows Server 2008 R2, windows Server 2012 a Windows Server 2012 R2. Informace o podpoře ve Windows 7 najdete v článku [Podpora pro Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). Informace o podpoře na Windows serveru 2008 R2 najdete v článku [Příprava pro Windows server 2008 na konci podpory](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 ## <a name="microsofts-guidance"></a>Doprovodné materiály Microsoftu
 
@@ -79,8 +80,7 @@ Pokud při vytváření dalších virtuálních počítačů spoléháte na sní
 Při nasazování netrvalé infrastruktury virtuálních počítačů by správci IT měli věnovat velkou pozornost při správě zastaralých zařízení v Azure AD. Společnost Microsoft doporučuje, aby správci IT implementovali následující pokyny. V takovém případě bude mít váš adresář spoustu zastaralých zařízení připojených k hybridní službě Azure AD, která byla zaregistrována z vaší netrvalé platformy VDI.
 
 - Vytvořte a použijte předponu pro zobrazované jméno počítače, který označuje plochu jako na bázi VDI.
-- V rámci skriptu pro odhlášení implementujte následující příkazy. Tyto příkazy aktivují optimální volání služby Azure AD za účelem odstranění tohoto zařízení.
-   - Pro aktuální zařízení s Windows – dsregcmd. exe/Leave
+- Jako součást skriptu pro odhlášení implementujte následující příkaz. Tento příkaz aktivuje nejlepší úsilí ve službě Azure AD za účelem odstranění tohoto zařízení.
    - Zařízení Windows nižší úrovně – autopracoviště. exe/Leave
 - Definujte a implementujte proces pro [správu zastaralých zařízení](manage-stale-devices.md).
    - Jakmile budete mít strategii, jak identifikovat netrvalá hybridní zařízení připojená k Azure AD, můžete být více agresivní na vyčištění těchto zařízení, abyste se ujistili, že se váš adresář nespotřebovává s velkým počtem zastaralých zařízení.

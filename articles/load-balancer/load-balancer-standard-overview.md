@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 36035d844237115361ccb3c1e1bc0dcb91250881
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423869"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894415"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Standard Load Balancer
 
@@ -38,11 +38,6 @@ Funkce prostředku Load Balancer se vždycky vyjadřují jako front-end, pravidl
 Jedním z klíčových aspektů je obor virtuální sítě pro daný prostředek.  I když základní Load Balancer existují v oboru skupiny dostupnosti, Standard Load Balancer je plně integrovaná s oborem virtuální sítě a platí všechny koncepce virtuálních sítí.
 
 Prostředky Load Balancer jsou objekty, ve kterých můžete vyjádřit, jak by měl Azure naprogramovat svoji víceklientské infrastrukturu, aby dosáhli scénáře, který chcete vytvořit.  Mezi prostředky Load Balancer a skutečnou infrastrukturou neexistuje žádný přímý vztah. vytvořením Load Balancer není vytvořena instance, kapacita je vždy k dispozici a neexistuje žádná prodleva při počátečním nebo škálování, která by bylo možné zvážit. 
-
->[!NOTE]
-> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud hledáte žádost o ukončení protokolu TLS (Transport Layer Security) ("snižování zátěže SSL") nebo požadavek na protokol HTTP/HTTPS, zpracování aplikační vrstvy, přečtěte si téma [co je Azure Application Gateway?](../application-gateway/overview.md) Pokud hledáte globální vyrovnávání zatížení DNS, přečtěte si téma [co je Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Vaše ucelené scénáře můžou využít kombinaci těchto řešení.
->
-> Porovnání možností vyrovnávání zatížení Azure najdete v tématu [Přehled možností vyrovnávání zatížení v Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-standard-load-balancer"></a>Proč použít Standard Load Balancer?
 
@@ -206,11 +201,11 @@ SKU nejsou proměnlivé. Postupujte podle kroků v této části, chcete-li pře
 >
 >Pro Load Balancer a veřejné IP prostředky se musí použít vyhovující skladové položky. Nemůžete mít kombinaci základních prostředků SKU a prostředků standardních SKU. Samostatné virtuální počítače, virtuální počítače v prostředku skupiny dostupnosti ani prostředky škálovacích sad virtuálních počítačů není možné připojit k oběma SKU zároveň.
 
-## <a name="region-availability"></a>Dostupnost v oblastech
+## <a name="region-availability"></a>Regionální dostupnost
 
 Standard Load Balancer je aktuálně k dispozici ve všech oblastech veřejného cloudu.
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>Smlouva SLA
 
 Služby Vyrovnávání zatížení úrovně Standard jsou dostupné s 99,99% smlouvou SLA.  Podrobnosti najdete v [Standard Load Balancer smlouvě SLA](https://aka.ms/lbsla) .
 
@@ -240,7 +235,7 @@ Informace o cenách za Load Balancer úrovně Standard najdete na stránce s [ce
 - Přečtěte si další informace o [zóny dostupnosti](../availability-zones/az-overview.md).
 - Další informace o [diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
 - Přečtěte si o [podporovaných multidimenzionálních metrikách](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) pro diagnostiku v [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md).
-- Přečtěte si o použití [Load Balancer pro odchozí připojení](load-balancer-outbound-connections.md).
+- Další informace o použití [nástroje pro vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md).
 - Přečtěte si o [odchozích pravidlech](load-balancer-outbound-rules-overview.md).
 - Přečtěte si o [resetování protokolu TCP při nečinnosti](load-balancer-tcp-reset.md).
 - Přečtěte si o [Standard Load Balancer s pravidly pro vyrovnávání zatížení portů vysoké dostupnosti](load-balancer-ha-ports-overview.md).

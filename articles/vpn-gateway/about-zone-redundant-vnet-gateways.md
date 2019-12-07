@@ -6,18 +6,18 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c13e7b507291d7671ac861fc7a8683c87be947a1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725584"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896652"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informace o branách redundantní virtuální sítě v zóně Zóny dostupnosti Azure
 
-V [zóny dostupnosti Azure](../availability-zones/az-overview.md)můžete nasadit brány VPN a ExpressRoute. Tím se zvýší odolnost, škálovatelnost a vyšší dostupnost bran virtuální sítě. Nasazování bran v Zóny dostupnosti Azure fyzicky a logicky odděluje brány v rámci určité oblasti a zároveň chrání vaše místní síťové připojení k Azure ze selhání na úrovni zóny.
+V [zóny dostupnosti Azure](../availability-zones/az-overview.md)můžete nasadit brány VPN a ExpressRoute. To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny.
 
 ### <a name="zrgw"></a>Redundantní brány v zóně
 
@@ -39,25 +39,13 @@ Chcete-li nasadit brány v určité zóně, můžete použít brány oblastí. K
 
 ## <a name="gwskus"></a>SKU brány
 
-Brány redundantní a oblasti oblastí jsou k dispozici jako nové SKU brány. Přidali jsme nové skladové položky brány virtuální sítě v Azure v oblastech AZ. Tyto SKU jsou podobné odpovídajícím existujícím SKU pro ExpressRoute a VPN Gateway s tím rozdílem, že jsou specifické pro brány redundantní v zóně a oblasti.
+Brány redundantní a oblasti oblastí jsou k dispozici jako nové SKU brány. Přidali jsme nové skladové položky brány virtuální sítě v Azure v oblastech AZ. Tyto SKU jsou podobné odpovídajícím existujícím SKU pro ExpressRoute a VPN Gateway s tím rozdílem, že jsou specifické pro brány redundantní v zóně a oblasti. Tyto SKU můžete identifikovat pomocí příkazu AZ v názvu SKU.
 
-Nové SKU brány:
-
-### <a name="vpn-gateway"></a>VPN Gateway
-
-* VpnGw1AZ
-* VpnGw2AZ
-* VpnGw3AZ
-
-### <a name="expressroute"></a>ExpressRoute
-
-* ErGw1AZ
-* ErGw2AZ
-* ErGw3AZ
+Informace o SKU brány najdete v tématu SKU [brány VPN](vpn-gateway-about-vpngateways.md#gwsku) a [SKU brány ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku).
 
 ## <a name="pipskus"></a>SKU veřejných IP adres
 
-Sítě redundantní brány a brány oblastí jsou závislé na standardu SKU prostředků veřejné IP adresy Azure. Konfigurace prostředku veřejné IP adresy Azure určuje, jestli je brána, kterou nasazujete, redundantní v zóně nebo v oblasti. Pokud vytvoříte prostředek veřejné IP adresy se *základní* skladovou jednotkou, brána nebude mít žádnou redundanci zóny a prostředky brány budou regionální.
+Sítě redundantní brány a brány oblastí jsou závislé na *standardu* SKU prostředků veřejné IP adresy Azure. Konfigurace prostředku veřejné IP adresy Azure určuje, jestli je brána, kterou nasazujete, redundantní v zóně nebo v oblasti. Pokud vytvoříte prostředek veřejné IP adresy se *základní* skladovou jednotkou, brána nebude mít žádnou redundanci zóny a prostředky brány budou regionální.
 
 ### <a name="pipzrg"></a>Redundantní brány v zóně
 

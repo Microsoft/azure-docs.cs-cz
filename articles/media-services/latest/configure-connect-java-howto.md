@@ -1,6 +1,6 @@
 ---
 title: Připojení k Azure Media Services V3 API – Java
-description: Naučte se připojit k rozhraní Media Services V3 API pomocí Java.
+description: Tento článek popisuje, jak se připojit k rozhraní Azure Media Services V3 API pomocí Java.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3f5e45bb84ca4fc46ccf1f3f3ab86d43c7c03cab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122875"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888491"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
 
@@ -26,14 +26,14 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 J
 
 V tomto článku se k vývoji ukázkové aplikace používá Visual Studio Code.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Po [napsání Java pomocí Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial) nainstalujte:
 
    - JDK
    - Apache Maven
    - Balíček rozšíření Java
-- Ujistěte se, že `JAVA_HOME` jste `PATH` nastavili a proměnné prostředí.
+- Ujistěte se, že jste nastavili proměnné prostředí `JAVA_HOME` a `PATH`.
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
 - Postupujte podle kroků v tématu [rozhraní API pro přístup](access-api-cli-how-to.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný kód) a ID tenanta, které budete potřebovat v pozdějším kroku.
 
@@ -47,18 +47,18 @@ Také si přečtěte:
 
 ## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
 
-Otevřete nástroj příkazového řádku a `cd` v adresáři, ve kterém chcete vytvořit projekt.
+Otevřete nástroj příkazového řádku a `cd` k adresáři, ve kterém chcete vytvořit projekt.
     
 ```
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-Při spuštění příkazu `pom.xml`se vytvoří soubory, `App.java`a. 
+Při spuštění příkazu se vytvoří `pom.xml`, `App.java`a další soubory. 
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
 1. V Visual Studio Code otevřete složku, ve které je váš projekt
-1. Vyhledejte a otevřete`pom.xml`
+1. Vyhledejte a otevřete `pom.xml`
 1. Přidat potřebné závislosti
 
     ```xml
@@ -81,7 +81,7 @@ Při spuštění příkazu `pom.xml`se vytvoří soubory, `App.java`a.
 
 ## <a name="connect-to-the-java-client"></a>Připojení k klientovi Java
 
-1. Otevřete soubor pod `src\main\java\com\azure\ams` a ujistěte se, že je balíček zahrnutý v horní části: `App.java`
+1. Otevřete soubor `App.java` v části `src\main\java\com\azure\ams` a ujistěte se, že je balíček zahrnutý v horní části:
 
     ```java
     package com.azure.ams;
@@ -119,7 +119,7 @@ Při spuštění příkazu `pom.xml`se vytvoří soubory, `App.java`a.
    ```
 1. Spusťte aplikaci.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Media Services koncepty](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)

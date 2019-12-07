@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200499"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894519"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure Monitor
 [Protokoly prostředků](resource-logs-overview.md) v Azure poskytují bohatě a často větší údaje o interním provozu prostředku Azure. Tento článek popisuje, jak shromažďovat protokoly prostředků v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty monitorování shromážděnými v protokolech Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitor funkcí, jako jsou výstrahy a. vizualizace. 
@@ -51,13 +51,13 @@ Vezměte v úvahu následující příklad, kdy se diagnostické nastavení shro
 
 Tabulka AzureDiagnostics bude vypadat takto:  
 
-| ResourceProvider    | Kategorie     | A  | B  | C  | D  | Cerebrální  | F  | G  | H  | I  |
+| ResourceProvider    | Kategorie     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft. Service1 | AuditLogs    | x1 | Y1 | z1 |    |    |    |    |    |    |
-| Microsoft. Service1 | Chybná protokolu    |    |    |    | dotazu | W1 | E1 |    |    |    |
-| Microsoft. Jazyka2 | AuditLogs    |    |    |    |    |    |    | j1 | K1 | L1 |
-| Microsoft. Service1 | Chybná protokolu    |    |    |    | F2 | W2 | E2 |    |    |    |
-| Microsoft. Jazyka2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | L3 |
+| Microsoft. Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
+| Microsoft. Service1 | Chybná protokolu    |    |    |    | q1 | w1 | e1 |    |    |    |
+| Microsoft. Jazyka2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
+| Microsoft. Service1 | Chybná protokolu    |    |    |    | q2 | w2 | e2 |    |    |    |
+| Microsoft. Jazyka2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
 | Microsoft. Service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
 | Tlačítka ... |
 
@@ -70,24 +70,24 @@ V předchozím příkladu by se vytvořily tři tabulky:
 
     | Poskytovatel prostředků | Kategorie | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | AuditLogs | x1 | Y1 | z1 |
+    | Service1 | AuditLogs | x1 | y1 | z1 |
     | Service1 | AuditLogs | x5 | y5 | z5 |
     | Tlačítka ... |
 
 - Tabulka *Service1ErrorLogs* následujícím způsobem:  
 
-    | Poskytovatel prostředků | Kategorie | D | Cerebrální | F |
+    | Poskytovatel prostředků | Kategorie | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | Chybná protokolu |  dotazu | W1 | E1 |
-    | Service1 | Chybná protokolu |  F2 | W2 | E2 |
+    | Service1 | Chybná protokolu |  q1 | w1 | e1 |
+    | Service1 | Chybná protokolu |  q2 | w2 | e2 |
     | Tlačítka ... |
 
 - Tabulka *Service2AuditLogs* následujícím způsobem:  
 
     | Poskytovatel prostředků | Kategorie | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Jazyka2 | AuditLogs | j1 | K1 | L1|
-    | Jazyka2 | AuditLogs | j3 | k3 | L3|
+    | Jazyka2 | AuditLogs | j1 | k1 | l1|
+    | Jazyka2 | AuditLogs | j3 | k3 | l3|
     | Tlačítka ... |
 
 
@@ -110,7 +110,7 @@ Dál Sledujte Blog o [aktualizacích Azure](https://azure.microsoft.com/updates/
 ### <a name="column-limit-in-azurediagnostics"></a>Omezení počtu sloupců v AzureDiagnostics
 Pro všechny tabulky v Azure Monitorch protokolech je omezení vlastností 500. Po dosažení tohoto limitu budou všechny řádky obsahující data s jakoukoli vlastností mimo první 500 vyhozeny při zpracování času přijímání. Tabulka *AzureDiagnostics* je zvláště náchylná k tomuto limitu, protože obsahuje vlastnosti pro všechny služby Azure, které do ní zapisují.
 
-Pokud shromažďujete diagnostické protokoly z více služeb, _AzureDiagnostics_ může tento limit překročit a data budou chybět. Až budou všechny služby Azure podporovat režim konkrétního prostředku, měli byste nakonfigurovat prostředky pro zápis do několika pracovních prostorů, abyste snížili možnosti dosažení limitu sloupce 500.
+Pokud shromažďujete protokoly prostředků z více služeb, _AzureDiagnostics_ může tento limit překročit a data budou chybět. Až budou všechny služby Azure podporovat režim konkrétního prostředku, měli byste nakonfigurovat prostředky pro zápis do několika pracovních prostorů, abyste snížili možnosti dosažení limitu sloupce 500.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory vzhledem k velmi podrobné sadě protokolů je služba, která je známá k zápisu velkého počtu sloupců a potenciálně způsobila, že _AzureDiagnostics_ překročila limit. Pro všechna nastavení diagnostiky, která byla nakonfigurovaná před tím, než byl povolen režim specifický pro prostředky, se vytvoří nový sloupec pro každý jedinečný parametr uživatele u jakékoli aktivity. Vytvoří se další sloupce z důvodu podrobného charakteru vstupů a výstupů aktivit.

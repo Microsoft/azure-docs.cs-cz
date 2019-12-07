@@ -1,18 +1,19 @@
 ---
-title: Správa nastavení účtu úložiště v Azure Portal-Azure Storage | Microsoft Docs
+title: Správa nastavení účtu úložiště v Azure Portal
+titleSuffix: Azure Storage
 description: Naučte se spravovat nastavení účtu úložiště v Azure Portal, včetně konfigurace nastavení řízení přístupu, opětovného generování přístupových klíčů k účtu, změna úrovně přístupu nebo změny typu replikace, kterou účet používá. Také se dozvíte, jak odstranit účet úložiště na portálu.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/06/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93d3bf3d17348a0f5ad62118fcb9c9a0c6f2f656
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749013"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892375"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Správa nastavení účtu úložiště v Azure Portal
 
@@ -49,7 +50,7 @@ Když vytvoříte účet úložiště, Azure vygeneruje 2 512 přístupové klí
 Společnost Microsoft doporučuje, abyste znovu vygenerovali přístupové klíče, aby se zajistila bezpečnost účtu úložiště. Přiřadí se dva přístupové klíče, abyste mohli klíče otáčet. Při otočení klíčů se ujistěte, že vaše aplikace udržuje přístup k Azure Storage v průběhu celého procesu. 
 
 > [!WARNING]
-> Opětovné generování přístupových klíčů může mít vliv na jakékoli aplikace nebo služby Azure, které jsou závislé na klíči účtu úložiště. Všichni klienti, kteří používají klíč účtu pro přístup k účtu úložiště, se musí aktualizovat tak, aby používali nový klíč, včetně Media Services, cloudu, desktopových a mobilních aplikací a aplikací grafického uživatelského rozhraní pro Azure Storage, jako je například [Průzkumník služby Azure Storage ](https://azure.microsoft.com/features/storage-explorer/).
+> Opětovné generování přístupových klíčů může mít vliv na jakékoli aplikace nebo služby Azure, které jsou závislé na klíči účtu úložiště. Všichni klienti, kteří používají klíč účtu pro přístup k účtu úložiště, se musí aktualizovat tak, aby používali nový klíč, včetně Media Services, cloudu, desktopových a mobilních aplikací a aplikací grafického uživatelského rozhraní pro Azure Storage, jako je například [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
 Použijte tento postup k otočení klíčů účtu úložiště:
 
@@ -66,7 +67,7 @@ Změna konfigurace účtu úložiště může způsobit zvýšení nákladů. Da
 
 ## <a name="delete-a-storage-account"></a>Odstranění účtu úložiště
 
-Pokud chcete odebrat účet úložiště, který už nepoužíváte, přejděte na účet úložiště na [Portálu Azure](https://portal.azure.com) a klikněte na **Odstranit**. Odstraněním účtu úložiště se odstraní celý účet, včetně všech dat v účtu.
+Pokud chcete odebrat účet úložiště, který už nepoužíváte, přejděte na účet úložiště na portálu [Azure Portal](https://portal.azure.com) a klikněte na **Odstranit**. Odstraněním účtu úložiště se odstraní celý účet, včetně všech dat v účtu.
 
 > [!WARNING]
 > Odstraněný účet úložiště není možné obnovit ani není možné načíst žádný obsah, který byl součástí účtu před jeho odstraněním. Nezapomeňte si před odstraněním účtu zazálohovat všechno, co chcete uložit. To platí také pro všechny prostředky v rámci účtu – po odstranění jsou objekt blob, tabulka, fronta nebo soubor odstraněny trvale.
@@ -77,4 +78,4 @@ Pokud se pokusíte odstranit účet úložiště, který je přidružený virtu�
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled účtu Azure Storage](storage-account-overview.md)
-- [Vytvoření účtu úložiště](storage-quickstart-create-account.md)
+- [vytvořit účet úložiště](storage-quickstart-create-account.md)

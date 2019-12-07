@@ -9,230 +9,223 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 04f30818e3c871d74d94bfd92bd3f73e4e6637a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0a4d2a3345ce4f69d4492d1a782b778b1ee3bf4c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499413"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895686"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
-V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
+V tomto kurzu Vylepšete předpovědi aplikací tím, že ověříte nebo opravíte projevy, přijmete prostřednictvím koncového bodu LUIS HTTPS, který LUIS NEsI nedrží. Měli byste zkontrolovat projevy koncového bodu jako běžnou součást plánované údržby LUIS.
 
-Tento proces kontroly představuje další způsob, jakým se LUIS seznamuje s vaší aplikační doménou. Služba LUIS vybrala promluvy zobrazené v seznamu revizí. Tento seznam:
+Tento proces revize umožňuje LUIS zjistit vaši doménu aplikace. LUIS vybere projevy, který se zobrazí v seznamu revizí. Tento seznam:
 
 * Je specifický pro danou aplikaci.
-* Má za cíl zlepšit přesnost předpovědí aplikace. 
-* Měl by se pravidelně kontrolovat. 
+* Má za cíl zlepšit přesnost předpovědí aplikace.
+* Měl by se pravidelně kontrolovat.
 
-Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný záměr promluvy. Označíte také vlastní entity, které nebyly předpovězené, nebo jejichž předpověď byla nesprávná. 
+Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný záměr promluvy.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-**V tomto kurzu se naučíte:**
+**Co se v tomto kurzu naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Importovat ukázkovou aplikaci
 > * Kontrola promluv koncového bodu
-> * Aktualizovat seznam frází
-> * Trénovat aplikaci
-> * Publikování aplikace
+> * Výuka a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 
-Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
-
-Použijte k tomu následující postup:
+K importu aplikace použijte následující postup.
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json) a uložte si ho.
 
-1. Naimportujte soubor JSON do nové aplikace.
+1. Na [portálu Luis Preview](https://preview.luis-ai)importujte soubor. JSON do nové aplikace.
 
-1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `review`.
 
-1. Výuku a publikování nové aplikace
+    > [!TIP]
+    > Naklonování do nové verze je osvědčeným postupem před úpravou aplikace. Po dokončení verze exportujte verzi (jako soubor. JSON nebo. Lu) a Prohlédněte si soubor do systému správy zdrojového kódu.
 
-1. Pomocí koncového bodu přidejte následující projevy. To můžete provést buď pomocí [skriptu](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) , nebo z koncového bodu v prohlížeči. Přidávané promluvy jsou tyto:
 
-   [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
+1. Pokud chcete aplikaci naučit, vyberte **vlak**.
 
-    Pokud máte díky sérii kurzů všechny verze této aplikace, může vás u některých verzí překvapit, že se seznam **Kontrola promluv koncového bodu** nezmění. Je jen jeden fond promluv ke kontrole bez ohledu na to, jakou verzi právě editujete nebo jaká verze aplikace byla publikovaná v koncovém bodě. 
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Publikování aplikace pro přístup z koncového bodu HTTP
+
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+
+## <a name="add-utterances-at-the-endpoint"></a>Přidat projevy na koncový bod
+
+V této aplikaci máte záměry a entity, ale nemáte žádné použití koncového bodu. Toto použití koncového bodu je potřeba ke zlepšení aplikace pomocí utterance revize koncového bodu.
+
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
+
+1. Pomocí koncového bodu přidejte následující projevy.
+
+    |Utterance koncového bodu|Zarovnaný záměr|
+    |--|--|
+    |`I'm looking for a job with Natural Language Processing`|`GetJobInformation`|
+    |`I want to cancel on March 3`|`Utilities.Cancel`|
+    |`When were HRF-123456 and hrf-234567 published in the last year?`|`FindForm`|
+    |`shift 123-45-6789 from Z-1242 to T-54672`|`MoveEmployee`|
+    |`Please relocation jill-jones@mycompany.com from x-2345 to g-23456`|`MoveEmployee`|
+    |`Here is my c.v. for the programmer job`|`ApplyForJob`|
+    |`This is the lead welder paperwork.`|`ApplyForJob`|
+    |`does form hrf-123456 cover the new dental benefits and medical plan`|`FindForm`|
+    |`Jill Jones work with the media team on the public portal was amazing`|`EmployeeFeedback`|
+
+    Je jen jeden fond promluv ke kontrole bez ohledu na to, jakou verzi právě editujete nebo jaká verze aplikace byla publikovaná v koncovém bodě.
 
 ## <a name="review-endpoint-utterances"></a>Kontrola promluv koncového bodu
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+Prohlédněte si projevy koncového bodu pro správné zarovnání záměru. I když existuje jeden fond projevy pro kontrolu napříč všemi verzemi, proces správného zarovnání záměru přidá příklad utterance pouze k aktuálnímu _aktivnímu modelu_ .
 
-1. V levém navigačním panelu vyberte **Review endpoint utterances** (Kontrola promluv koncového bodu). Seznam je filtrovaný pro záměr **ApplyForJob**. 
+1. V části **Build (sestavení** ) na portálu vyberte **zkontrolovat koncový bod projevy** z levé navigační oblasti. Seznam je filtrovaný pro záměr **ApplyForJob**.
 
-    [![snímku obrazovky revize projevy koncového bodu v levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![snímek obrazovky s tlačítkem zkontrolovat koncový bod projevy v levém navigačním](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-1. Přepněte zobrazení entit (**Entities view**), aby se zobrazily označené entity. 
-    
-    [![snímek obrazovky projevy koncového bodu se zvýrazněným přepínačem zobrazení entit](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    Tento utterance `I'm looking for a job with Natural Language Processing`není správného záměru.
 
+1.  Pokud chcete tento utterance zarovnat na řádku utterance, vyberte správný **záměr** `GetJobInformation`. Přidejte změněné utterance do aplikace tak, že vyberete značku zaškrtnutí.
 
-    Tento utterance `I'm looking for a job with Natural Language Processing`není správného záměru. 
+    > [!div class="mx-imgBorder"]
+    > ![snímek obrazovky s tlačítkem zkontrolovat koncový bod projevy v levém navigačním](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
 
-    Důvodem, proč byl utterance, je, že **ApplyForJob** záměr má oproti 7 projevy v **GetJobInformation**v porovnání s 21 projevy. Záměr s více projevy bude mít vyšší předpověď. Je důležité, aby množství a kvalita projevy napříč záměry byly vyvážené.
+    Prohlédněte si zbývající projevy tohoto záměru a podle potřeby opravte zarovnaný záměr. K zobrazení zarovnaného záměru použijte úvodní tabulku utterance v tomto kurzu.
 
-1.  Pokud chcete tento utterance zarovnat, vyberte správný záměr a označte entitu úlohy v ní. Přidejte změněné utterance do aplikace tak, že vyberete zelené zaškrtávací políčko. 
+    Seznam **projevya koncového bodu Endpoint** by již neměl mít opravenou projevy. Pokud se zobrazí více projevy, pokračujte v práci se seznamem a opravte zarovnané záměry, dokud není seznam prázdný.
 
-    |Promluva|Správný záměr|Chybějící entity|
-    |:--|:--|:--|
-    |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Job – "Natural Language Process"|
+    Jakákoli oprava označování entit se provádí po zarovnání záměru na stránce s podrobnostmi záměru.
 
-    Chcete-li změnit `natural language processing` z entity keyPhrase na entitu úlohy, vyberte frázi a v seznamu vyberte možnost **úloha** . Pokud chcete pro jinou entitu vybrat jenom část textu keyPhrase, musíte keyPhrase odebrat jako entitu, označit jinou entitu a pak znovu použít entitu keyPhrase do aplikace. 
+1. Trénujte a publikujte aplikaci znovu.
 
-    Přidáním utterance se přesune utterance z **koncového bodu recenze projevy** do záměru **GetJobInformation** . Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
+## <a name="get-intent-prediction-from-endpoint"></a>Získat předpověď záměru z koncového bodu
 
-    Spolu s správným zarovnáním tohoto utteranceu by se měl přidat další projevy k **GetJobInformation** záměru. To necháme na vás jako cvičení, které si můžete provést sami. Každý záměr s výjimkou záměru **None** by měl mít přibližně stejný počet ukázkových promluv. Záměr **None** by měl mít 10 % z celkového počtu promluv v aplikaci. 
-
-    Zkontrolujte zbývající promluvy v tomto záměru, označte je a opravte nastavený záměr (**Aligned intent**), pokud je nesprávný.
-
-    Seznam **projevya koncového bodu Endpoint** by již neměl mít tyto projevy. Pokud se zobrazí další promluvy, pokračujte v práci s tímto seznamem a opravujte záměry a označujte všechny chybějící entity, dokud tento seznam nebude prázdný. 
-
-    Vyberte další záměr v seznamu filtru a potom pokračujte v opravách promluv a označování entit. Nezapomeňte, že posledním krokem každého záměru je buď vybrat **Add to aligned intent** (Přidat do nastaveného záměru) na řádku promluvy, nebo zaškrtnout políčko vedle každého záměru a vybrat **Add selected** (Přidat vybrané) nad tabulkou.
-
-    Pokračujte tak dlouho, dokud v seznamu filtru nebudou žádné záměry a entity. Tato aplikace je velmi malá. Celý proces kontroly trvá jenom několik minut. 
-
-## <a name="update-phrase-list"></a>Aktualizovat seznam frází
-Aktualizujte seznam frází každým nově zjištěným názvem pracovní pozice. 
-
-1. V levém navigačním panelu vyberte **Phrase lists** (Seznam frází).
-
-2. V seznamu frází vyberte **Jobs** (Pracovní pozice).
-
-3. Jako hodnotu přidejte `Natural Language Processing` a potom vyberte **Uložit**. 
-
-## <a name="train"></a>Trénování
-
-Služba LUIS nemá o těchto změnách informace, dokud se nenatrénuje. 
-
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
-
-## <a name="publish"></a>Publikování
-
-Pokud jste tuto aplikaci naimportovali, musíte vybrat **Sentiment analysis** (Analýza mínění).
-
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
-
-## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu
-
-Vyzkoušejte promluvu blízkou opravené promluvě. 
+Pokud chcete ověřit, že se správně zarovnaný příklad projevy vylepšuje předpověď aplikace, zkuste utterance zavřít na opravené utterance.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Na konec adresy URL zadejte `Are there any natural language processing jobs in my department right now?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
+1. Na konec adresy URL zadejte `Are there any natural language processing jobs in my department right now?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy.
 
    ```json
-   {
-    "query": "are there any natural language processing jobs in my department right now?",
-    "topScoringIntent": {
-      "intent": "GetJobInformation",
-      "score": 0.9247605
-    },
-    "intents": [
-      {
-        "intent": "GetJobInformation",
-        "score": 0.9247605
-      },
-      {
-        "intent": "ApplyForJob",
-        "score": 0.129989788
-      },
-      {
-        "intent": "FindForm",
-        "score": 0.006438211
-      },
-      {
-        "intent": "EmployeeFeedback",
-        "score": 0.00408575451
-      },
-      {
-        "intent": "Utilities.StartOver",
-        "score": 0.00194211153
-      },
-      {
-        "intent": "None",
-        "score": 0.00166400627
-      },
-      {
-        "intent": "Utilities.Help",
-        "score": 0.00118593348
-      },
-      {
-        "intent": "MoveEmployee",
-        "score": 0.0007885918
-      },
-      {
-        "intent": "Utilities.Cancel",
-        "score": 0.0006373631
-      },
-      {
-        "intent": "Utilities.Stop",
-        "score": 0.0005980781
-      },
-      {
-        "intent": "Utilities.Confirm",
-        "score": 3.719905E-05
-      }
-    ],
-    "entities": [
-      {
-        "entity": "right now",
-        "type": "builtin.datetimeV2.datetime",
-        "startIndex": 64,
-        "endIndex": 72,
-        "resolution": {
-          "values": [
-            {
-              "timex": "PRESENT_REF",
-              "type": "datetime",
-              "value": "2018-07-05 15:23:18"
+    {
+        "query": "Are there any natural language processing jobs in my department right now?",
+        "prediction": {
+            "topIntent": "GetJobInformation",
+            "intents": {
+                "GetJobInformation": {
+                    "score": 0.903607249
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0312187821
+                },
+                "ApplyForJob": {
+                    "score": 0.0230276529
+                },
+                "MoveEmployee": {
+                    "score": 0.008322801
+                },
+                "Utilities.Stop": {
+                    "score": 0.004480808
+                },
+                "FindForm": {
+                    "score": 0.00425248267
+                },
+                "Utilities.StartOver": {
+                    "score": 0.004224336
+                },
+                "Utilities.Help": {
+                    "score": 0.00373591436
+                },
+                "None": {
+                    "score": 0.0034621188
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00230977475
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00112078607
+                }
+            },
+            "entities": {
+                "keyPhrase": [
+                    "natural language processing jobs",
+                    "department"
+                ],
+                "datetimeV2": [
+                    {
+                        "type": "datetime",
+                        "values": [
+                            {
+                                "timex": "PRESENT_REF",
+                                "resolution": [
+                                    {
+                                        "value": "2019-12-05 23:23:53"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "$instance": {
+                    "keyPhrase": [
+                        {
+                            "type": "builtin.keyPhrase",
+                            "text": "natural language processing jobs",
+                            "startIndex": 14,
+                            "length": 32,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        },
+                        {
+                            "type": "builtin.keyPhrase",
+                            "text": "department",
+                            "startIndex": 53,
+                            "length": 10,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "datetimeV2": [
+                        {
+                            "type": "builtin.datetimeV2.datetime",
+                            "text": "right now",
+                            "startIndex": 64,
+                            "length": 9,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
-          ]
         }
-      },
-      {
-        "entity": "natural language processing",
-        "type": "Job",
-        "startIndex": 14,
-        "endIndex": 40,
-        "score": 0.9869922
-      },
-      {
-        "entity": "natural language processing jobs",
-        "type": "builtin.keyPhrase",
-        "startIndex": 14,
-        "endIndex": 45
-      },
-      {
-        "entity": "department",
-        "type": "builtin.keyPhrase",
-        "startIndex": 53,
-        "endIndex": 62
-      }
-    ],
-    "sentimentAnalysis": {
-      "label": "positive",
-      "score": 0.8251864
     }
-   }
-   }
    ```
 
-   Správný záměr je predikovaný s vysokým skóre a entita **Job** je detekovaná jako `natural language processing`. 
+   Teď, když je projevy správně zarovnaný, byl správný záměr předpověď s **vysokým skóre**.
 
-## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Dá se kontrola nahradit přidáním dalších promluv? 
-Asi vás napadá, proč nepřidat další ukázkové promluvy. Jaký je účel kontrol promluv koncového bodu? V reálných aplikacích LUIS jsou promluvy koncového bodu od uživatelů a mají volbu slov a uspořádání, které jste ještě nepoužili. Pokud jste použili stejnou volbu slov a uspořádání, původní predikce by měla vyšší procentní hodnocení. 
+## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Dá se kontrola nahradit přidáním dalších promluv?
+Asi vás napadá, proč nepřidat další ukázkové promluvy. Jaký je účel kontrol promluv koncového bodu? V reálných aplikacích LUIS jsou promluvy koncového bodu od uživatelů a mají volbu slov a uspořádání, které jste ještě nepoužili. Pokud jste použili stejnou volbu slov a uspořádání, původní predikce by měla vyšší procentní hodnocení.
 
-## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Proč je hlavní záměr uvedený v seznamu promluv? 
+## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Proč je hlavní záměr uvedený v seznamu promluv?
 Některé z promluv koncového bodu budou mít v seznamu kontrol vysoké skóre předpovědi. Tyto promluvy musíte přesto zkontrolovat a ověřit. Jsou v tomto seznamu proto, že další záměr má skóre příliš blízko skóre nejlepšího záměru. Mezi jednotlivými hlavními záměry je dobré mít asi 15% rozdíl.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -240,6 +233,7 @@ Některé z promluv koncového bodu budou mít v seznamu kontrol vysoké skóre 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste zkontrolovali promluvy získané z koncového bodu, které nemusela mít služba LUIS správně naučené. Jakmile se takové promluvy ověří a přesunou jako ukázkové promluvy do správných záměrů, zlepší se ve službě LUIS přesnost předpovědí.
 
 > [!div class="nextstepaction"]

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894255"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893633"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
 Možnost rychle získat přehled o datech pomocí [dotazu protokolu](log-query-overview.md) je výkonná funkce Azure monitor. Chcete-li vytvořit efektivní a užitečné dotazy, měli byste pochopit některé základní koncepty, jako je například umístění dat, která potřebujete, a způsob jejího strukturování. Tento článek poskytuje základní koncepty, které potřebujete, abyste mohli začít.
@@ -27,7 +27,7 @@ Následující obrázek ukazuje příklady zdrojů dat, které jsou zapsány do 
 ![Tabulky](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
-Všechna data shromážděná protokolem Azure Monitor s výjimkou Application Insights se ukládají do [log Analyticsho pracovního prostoru](../platform/manage-access.md). V závislosti na konkrétních požadavcích můžete vytvořit jeden nebo více pracovních prostorů. [Zdroje dat](../platform/data-sources.md) , jako jsou protokoly aktivit a diagnostické protokoly z prostředků Azure, agenti na virtuálních počítačích a data z přehledů a řešení pro monitorování, zapisují data do jednoho nebo více pracovních prostorů, které nakonfigurujete jako součást jejich zprovoznění. Jiné služby, například [Azure Security Center](/azure/security-center/) a [Azure Sentinel](/azure/sentinel/) , používají k ukládání dat Log Analytics pracovní prostor, aby je bylo možné analyzovat pomocí dotazů protokolu spolu s daty monitorování z jiných zdrojů.
+Všechna data shromážděná protokolem Azure Monitor s výjimkou Application Insights se ukládají do [log Analyticsho pracovního prostoru](../platform/manage-access.md). V závislosti na konkrétních požadavcích můžete vytvořit jeden nebo více pracovních prostorů. [Zdroje dat](../platform/data-sources.md) , jako jsou protokoly aktivit a protokoly prostředků z prostředků Azure, agenti na virtuálních počítačích a data z přehledů a řešení pro monitorování, zapisují data do jednoho nebo více pracovních prostorů, které nakonfigurujete jako součást jejich zprovoznění. Jiné služby, například [Azure Security Center](/azure/security-center/) a [Azure Sentinel](/azure/sentinel/) , používají k ukládání dat Log Analytics pracovní prostor, aby je bylo možné analyzovat pomocí dotazů protokolu spolu s daty monitorování z jiných zdrojů.
 
 Různé druhy dat jsou uloženy v různých tabulkách v pracovním prostoru a každá tabulka má jedinečnou sadu vlastností. Do pracovního prostoru se při vytvoření přidá standardní sada tabulek a při jejich zprovoznění se přidají nové tabulky pro různé zdroje dat, řešení a služby. Můžete také vytvořit vlastní tabulky pomocí [rozhraní API kolekce dat](../platform/data-collector-api.md).
 
@@ -43,7 +43,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-Podrobnosti o tabulkách, které vytvoří, najdete v dokumentaci k jednotlivým zdrojům dat. Mezi příklady patří články pro [zdroje dat agenta](../platform/agent-data-sources.md), [diagnostické protokoly](../platform/diagnostic-logs-schema.md)a [řešení monitorování](../insights/solutions-inventory.md).
+Podrobnosti o tabulkách, které vytvoří, najdete v dokumentaci k jednotlivým zdrojům dat. Mezi příklady patří články o [zdrojích dat agenta](../platform/agent-data-sources.md), [protokolech prostředků](../platform/diagnostic-logs-schema.md)a [monitorovacích řešeních](../insights/solutions-inventory.md).
 
 ### <a name="workspace-permissions"></a>Oprávnění k pracovnímu prostoru
 Informace o strategii řízení přístupu a doporučeních k tomu, jak poskytnout přístup k datům v pracovním prostoru, najdete v tématu [navrhování Azure monitor protokolů nasazení](../platform/design-logs-deployment.md) . Kromě udělení přístupu k samotnému pracovnímu prostoru můžete omezit přístup k jednotlivým tabulkám pomocí [RBAC na úrovni tabulky](../platform/manage-access.md#table-level-rbac).
@@ -59,12 +59,12 @@ Na rozdíl od Log Analytics pracovního prostoru má Application Insights aplika
 | browserTimings      | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat. |
 | customEvents        | Vlastní události vytvořené vaší aplikací |
 | customMetrics       | Vlastní metriky vytvořené vaší aplikací |
-| Závislosti        | Volání z aplikace do externích součástí. |
-| Výjimek          | Výjimky vyvolané modulem runtime aplikace |
-| PageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči |
-| Čítače výkonu | Měření výkonu z výpočetních prostředků, které podporují aplikaci. |
-| požádal            | Podrobnosti o jednotlivých žádostech o aplikaci  |
-| Trasování              | Výsledky z distribuovaného trasování. |
+| závislosti        | Volání z aplikace do externích součástí. |
+| exceptions          | Výjimky vyvolané modulem runtime aplikace |
+| pageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči |
+| performanceCounters | Měření výkonu z výpočetních prostředků, které podporují aplikaci. |
+| požadavků            | Podrobnosti o jednotlivých žádostech o aplikaci  |
+| traces              | Výsledky z distribuovaného trasování. |
 
 Schéma pro každou tabulku můžete zobrazit na kartě **schématu** v Log Analytics pro aplikaci.
 
@@ -76,7 +76,7 @@ Zatímco každá tabulka v protokolech Azure Monitor má vlastní schéma, exist
 | Pracovní prostor Log Analytics | Application Insights aplikace | Popis |
 |:---|:---|:---|
 | TimeGenerated | časové razítko  | Datum a čas vytvoření záznamu |
-| Typ          | ItemType   | Název tabulky, ze které byl záznam načten. |
+| Typ          | itemType   | Název tabulky, ze které byl záznam načten. |
 | _ResourceId   |            | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
 | _IsBillable   |            | Určuje, zda jsou příjemovaná data fakturovatelná. |
 | _BilledSize   |            | Určuje velikost (v bajtech) dat, která se budou fakturovat. |

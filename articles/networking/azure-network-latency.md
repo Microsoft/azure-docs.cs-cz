@@ -2,21 +2,17 @@
 title: Statistika latence sítě Azure v-cestách | Microsoft Docs
 description: Přečtěte si o statistikách latence odezvy mezi oblastmi Azure.
 services: networking
-documentationcenter: na
 author: nayak-mahesh
 ms.service: virtual-network
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: mnayak
-ms.openlocfilehash: 500676983233f943fdc9638d75758645dee65564
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3947df81b67d5aefc1b628b6ddaf8275152a4cd3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587586"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893077"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Statistika latence sítě Azure v přenosu
 
@@ -24,20 +20,20 @@ Azure nepřetržitě monitoruje latenci (rychlost) základních oblastí své s�
 
 ## <a name="how-are-the-measurements-collected"></a>Jak se shromažďují míry?
 
-Měření latence se shromažďují z ThousandEyesch agentů hostovaných v cloudových oblastech Azure v celém světě, které nepřetržitě posílají testy sítě mezi sebou, v intervalu 1 minut. Statistika měsíční latence se odvozuje z průměrného počtu shromážděných ukázek v měsíci.
+Měření latence se shromažďují od agentů ThousandEyes hostovaných v cloudových oblastech Azure po celém světě, které neustále odesílají testy sítě mezi sebou v intervalu 1 minut. Statistika měsíční latence se odvozuje z průměrného počtu shromážděných ukázek v měsíci.
 
-## <a name="october-2019-latency-figures"></a>Hodnoty latence v říjnu 2019
+## <a name="november-2019-latency-figures"></a>Hodnoty latence v listopadu 2019
 
-Po 31 dní od 31. října 2019 se doba latence měsíčních min a maximální doby odezvy v rámci agregovaných oblastí:
+**Listopadová aktualizace:** Přidali jsme 3 oblasti.
 
-- **5 MS** až **72 MS** pro zacyklení cest v rámci **Severní Amerikach** oblastí.
-- **3 MS** až **28 MS** pro výměnu cest v rámci oblastí v **Evropě** .
-- **4 MS** až **134 MS** pro výměnu cest mezi oblastmi **Asie** .
+* Norsko – východ
+* Norsko – západ
+* Austrálie
 
-Následující měření latence mezi oblastmi využívá [ThousandEyes](https://thousandeyes.com). Jednotka měření v následující tabulce je v milisekundách (MS).
+Níže jsou uvedené měsíční průměrné doby odezvy mezi oblastmi Azure za posledních 30 dní (končící 30. listopadu 2019). Následující měření jsou poháněná nástrojem [ThousandEyes](https://thousandeyes.com).
 
-![Statistika latence mezi oblastmi Azure](media/azure-network-latency/azure-inter-region-latency.png)
-
+![Statistika latence mezi oblastmi Azure](media/azure-network-latency/latency-nov-2019.png)
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+
+Přečtěte si o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).

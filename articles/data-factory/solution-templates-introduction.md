@@ -1,5 +1,5 @@
 ---
-title: Přehled šablon pro Azure Data Factory
+title: Přehled šablon
 description: Naučte se používat předem definovanou šablonu, abyste mohli rychle začít pracovat s Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 7895fedd0f68ae1c8ea4808c54a18a4e73b57b2c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 24da737ea017319eafeb014c2695a147909093f1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684058"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890629"
 ---
 # <a name="templates"></a>Šablony
 

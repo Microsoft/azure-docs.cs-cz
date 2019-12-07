@@ -3,18 +3,18 @@ title: Rozšiřování Azure IoT Central s využitím vlastních analýz | Micro
 description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby vlastní analýzy a vizualizace. Toto řešení používá Azure Databricks.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a29cae2fabe1542a7498bca19dc0a6e147d1d024
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 59fb0dfbc44746853f25437e8e13a1cbc317e151
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895147"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895544"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks-preview-features"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks (funkce ve verzi Preview)
 
@@ -29,7 +29,7 @@ V této příručce se dozvíte, jak:
 * Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
 * Vytvořte prostředí Azure Databricks pro analýzu a vykreslení telemetrie zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
@@ -44,10 +44,10 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvo�
 | Platební plán | Průběžné platby |
 | Šablona aplikace | Analýzy v obchodě – monitorování podmínek |
 | Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
-| zprostředkovatele identity | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
+| Adresa URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
 | Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
-| Region (Oblast) | Vaše nejbližší oblast |
+| Oblast | Vaše nejbližší oblast |
 
 Příklady a snímky obrazovky v tomto článku používají oblast **USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
 
@@ -64,11 +64,11 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Name (Název)    | Zvolit název oboru názvů |
-| Cenová úroveň | Basic |
+| Cenová úroveň | Úroveň Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
-| Umístění | Východ USA |
-| Jednotky propustnosti | 1 |
+| Umístění | USA – východ |
+| Jednotky propustnosti | 1\. místo |
 
 ### <a name="azure-databricks-workspace"></a>Pracovní prostor Azure Databricks
 
@@ -79,8 +79,8 @@ Pomocí [Azure Portal vytvořte službu Azure Databricks](https://portal.azure.c
 | Název pracovního prostoru    | Volba názvu pracovního prostoru |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
-| Umístění | Východ USA |
-| Cenová úroveň | Standard |
+| Umístění | USA – východ |
+| Cenová úroveň | Úroveň Standard |
 
 Po vytvoření požadovaných prostředků vypadá vaše skupina prostředků **IoTCentralAnalysis** jako na následujícím snímku obrazovky:
 
@@ -135,14 +135,14 @@ K vytvoření clusteru použijte informace v následující tabulce:
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Název clusteru | centralanalysis |
-| Režim clusteru | Standard |
-| Verze Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
+| Režim clusteru | Úroveň Standard |
+| Verze modulu runtime Databricks | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Verze Pythonu | 3 |
 | Povolení automatického škálování | Ne |
 | Ukončit po minutách nečinnosti | 30 |
 | Typ pracovního procesu | Standard_DS3_v2 |
-| Pracovníků | 1 |
-| Typ ovladače | Stejné jako pracovní proces |
+| Pracovní procesy | 1\. místo |
+| Typ ovladače | Stejný jako pracovní proces |
 
 Vytvoření clusteru může trvat několik minut, než budete pokračovat, počkejte na dokončení vytváření clusteru.
 

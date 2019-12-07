@@ -1,6 +1,6 @@
 ---
 title: Přehrávání obsahu pomocí stávajících hráčů – Azure | Microsoft Docs
-description: Toto téma obsahuje seznam existujících přehrávačů, které můžete použít k přehrávání obsahu.
+description: Tento článek obsahuje seznam existujících přehrávačů, které můžete použít k přehrávání obsahu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0da8ce396ce07b7c9859fcfccb5cb524c0ce21c1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69015296"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895861"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu pomocí stávajících přehrávačů
 Azure Media Services podporuje spoustu oblíbených formátů streamování, například Smooth Streaming, HTTP Live Streaming a MPEG-pomlčky. Toto téma ukazuje na existující přehrávače, které můžete použít k otestování vašich datových proudů.
@@ -35,7 +35,7 @@ Musí být splněny určité předpoklady:
 
 ![AMSPlayer][AMSPlayer]
 
-### <a name="azure-media-player"></a>Přehrávač médií Azure
+### <a name="azure-media-player"></a>Azure Media Player
 
 Použijte [Azure Media Player](https://aka.ms/azuremediaplayer) k přehrávání obsahu (Clear nebo Protected) v některém z následujících formátů:
 
@@ -60,7 +60,7 @@ Použijte [Azure Media Player](https://aka.ms/azuremediaplayer) k přehrávání
 
 [https://dashif.org](https://dashif.org)
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 K testování adres URL HLS můžete také použít:
 
 * **Safari** na zařízení s iOS nebo
@@ -72,7 +72,7 @@ Informace o vývoji vlastních přehrávačů najdete v tématu [vývoj přehrá
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png

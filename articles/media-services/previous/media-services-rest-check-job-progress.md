@@ -1,6 +1,6 @@
 ---
-title: Jak zkontrolovat průběh úlohy pomocí rozhraní REST API | Dokumentace Microsoftu
-description: Zjistěte, jak sledovat průběh úlohy.
+title: Postup kontroly průběhu úlohy pomocí REST API | Microsoft Docs
+description: Tento článek ukazuje, jak kontrolovat průběh úloh pomocí Azure Media Services V2 REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec72b7e7bf4c2b859e8ceecf617c90a4853cb517
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869486"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901500"
 ---
-# <a name="how-to-check-job-progress"></a>Postupy: Kontrola průběhu úlohy
+# <a name="how-to-check-job-progress"></a>Postupy: ověření průběhu úlohy
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Stav úlohy můžete zjistit pomocí vlastnosti stavu úlohy. Další informace o vlastnosti stavu, najdete v části [vlastnosti Entity úlohy](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+Když spouštíte úlohy, často potřebujete způsob, jak sledovat průběh úloh. Stav úlohy můžete zjistit pomocí vlastnosti stavu úlohy. Další informace o vlastnosti State najdete v tématu [vlastnosti entity úlohy](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 
-## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
+## <a name="connect-to-media-services"></a>Připojení k Media Services
 
-Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="check-job-progress"></a>Kontrola průběhu úlohy
 
@@ -65,9 +65,9 @@ Odpověď:
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Přehled rozhraní REST API služby Media Services operace](media-services-rest-how-to-use.md)
+[Přehled Media Servicesch operací REST API](media-services-rest-how-to-use.md)

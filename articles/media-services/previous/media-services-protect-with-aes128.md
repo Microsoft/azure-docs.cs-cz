@@ -1,6 +1,6 @@
 ---
 title: Použití dynamického šifrování AES-128 a služby doručování klíčů | Microsoft Docs
-description: Doručovat svůj obsah šifrovaný šifrovacími klíči AES 128 pomocí Microsoft Azure Media Services. Media Services taky poskytuje službu pro doručování klíčů, která poskytuje šifrovací klíče autorizovaným uživatelům. Toto téma ukazuje, jak dynamicky šifrovat pomocí AES-128 a používat službu pro doručování klíčů.
+description: Toto téma ukazuje, jak dynamicky šifrovat pomocí AES-128 a používat službu pro doručování klíčů.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014971"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895830"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Použití dynamického šifrování AES-128 a služby doručování klíčů
 > [!div class="op_single_selector"]
@@ -51,13 +51,13 @@ Následující obecné kroky proveďte při šifrování prostředků pomocí AE
 
 2. [Zakódovat Asset, který obsahuje soubor, do sady souborů MP4 s adaptivní přenosovou rychlostí](media-services-protect-with-aes128.md#encode_asset).
 
-3. [Vytvořte klíč obsahu a přidružte ho](media-services-protect-with-aes128.md#create_contentkey)k zakódovanému prostředku. Ve službě Media Services obsahuje klíč obsahu šifrovací klíč prostředku.
+3. [Vytvořte klíč obsahu a přidružte ho k zakódovanému prostředku](media-services-protect-with-aes128.md#create_contentkey). Ve službě Media Services obsahuje klíč obsahu šifrovací klíč prostředku.
 
 4. [Nakonfigurujte zásady autorizace klíče obsahu](media-services-protect-with-aes128.md#configure_key_auth_policy). Je třeba nakonfigurovat zásady autorizace klíče obsahu. Klient musí zásady splňovat, jinak mu nebude klíč obsahu poskytnut.
 
 5. [Nakonfigurujte zásady doručování pro Asset](media-services-protect-with-aes128.md#configure_asset_delivery_policy). Konfigurace zásad doručení zahrnuje adresu URL pro získání klíče a inicializační vektor (IV). (AES-128 vyžaduje pro šifrování a dešifrování stejný počet IV). Tato konfigurace také zahrnuje doručovací protokol (například MPEG-SPOJOVNÍK, HLS, Smooth Streaming nebo All) a typ dynamického šifrování (například obálka nebo bez dynamického šifrování).
 
-    Na každý protokol stejného prostředku můžete použít jiné zásady. Můžete například použít šifrování PlayReady na protokol Smooth/DASH a šifrování pomocí standardu AES Envelope na protokol HLS. Streamování se zablokuje u všech protokolů, které nejsou definované v zásadách doručení. (Příklad: Pokud přidáte jednu zásadu, která určuje pouze HLS jako protokol) Výjimkou je, pokud nemáte definovány vůbec žádné zásady doručení prostředku. Pak budou všechny protokoly povolené v nešifrované podobě.
+    Na každý protokol stejného prostředku můžete použít jiné zásady. Můžete například použít šifrování PlayReady na protokol Smooth/DASH a šifrování pomocí standardu AES Envelope na protokol HLS. Streamování se zablokuje u všech protokolů, které nejsou definované v zásadách doručení. (Příklad: Pokud přidáte jednu zásadu, která určuje pouze HLS jako protokol) Výjimkou je, pokud nemáte definovány žádné zásady doručení assetu. Pak budou všechny protokoly povolené v nešifrované podobě.
 
 6. [Vytvořte Lokátor OnDemand](media-services-protect-with-aes128.md#create_locator) pro získání adresy URL streamování.
 
@@ -141,7 +141,7 @@ K testování datového proudu můžete použít [Azure Media Services Player](h
 V předchozím kroku jste sestavili adresu URL, která odkazuje na soubor manifestu. Aby bylo možné vytvořit požadavek na službu doručování klíčů, musí váš klient extrahovat potřebné informace ze souborů manifestu streamování.
 
 ### <a name="manifest-files"></a>Soubory manifestu
-Klient musí z souboru manifestu extrahovat adresu URL (která obsahuje také hodnotu ID klíče obsahu [Kid]). Klient se pak pokusí získat šifrovací klíč ze služby pro doručování klíčů. Klient také musí extrahovat hodnotu IV a použít ji k dešifrování datového proudu. Následující fragment kódu ukazuje `<Protection>` prvek Smooth Streaming manifestu:
+Klient musí z souboru manifestu extrahovat adresu URL (která obsahuje také hodnotu ID klíče obsahu [Kid]). Klient se pak pokusí získat šifrovací klíč ze služby pro doručování klíčů. Klient také musí extrahovat hodnotu IV a použít ji k dešifrování datového proudu. Následující fragment kódu ukazuje `<Protection>` element Smooth Streaming manifestu:
 
 ```xml
     <Protection>
@@ -159,7 +159,7 @@ Klient musí z souboru manifestu extrahovat adresu URL (která obsahuje také ho
 
 V případě HLS je kořenový manifest rozdělen do souborů segmentů. 
 
-Kořenový manifest je například: http:\//test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL). Obsahuje seznam názvů souborů segmentů.
+Kořenový manifest je například: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (Format = M3U8-AAPL). Obsahuje seznam názvů souborů segmentů.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ Kořenový manifest je například: http:\//test001.Origin.MediaServices.Windows
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Pokud otevřete jeden ze souborů segmentů v textovém editoru (například http:\//test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), obsahuje #EXT-X-KEY, který indikuje, že soubor je zašifrovaný.
+Pokud otevřete jeden ze souborů segmentů v textovém editoru (například http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), obsahuje #EXT-X-KEY, který indikuje, že soubor je zašifrovaný.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -260,5 +260,5 @@ Nezapomeňte aktualizovat proměnné tak, aby odkazovaly do složek, ve kterých
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

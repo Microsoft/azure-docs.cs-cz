@@ -1,5 +1,5 @@
 ---
-title: Ukázky & návody
+title: Ukázkové programy & návody ML
 titleSuffix: Azure Data Science Virtual Machine
 description: Pomocí těchto ukázek a návodů se dozvíte, jak zpracovávat běžné úlohy a scénáře pomocí Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ad58adb85077a27bce65595738ffdbd92bace9bd
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802451"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900050"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Ukázky Virtual Machines pro datové vědy v Azure
 
@@ -23,7 +23,7 @@ Azure Data věda Virtual Machines (DSVMs) zahrnuje komplexní sadu vzorového k�
 > [!NOTE]
 > Další informace o tom, jak spustit poznámkové bloky Jupyter na virtuálních počítačích pro datové vědy, najdete v části [Access Jupyter](#access-jupyter) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby bylo možné tyto ukázky spustit, musíte mít zřízenou Data Science Virtual Machine. Podívejte se na rychlé starty pro [Windows](./provision-vm.md) a [Ubuntu](./dsvm-ubuntu-intro.md).
 

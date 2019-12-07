@@ -1,22 +1,23 @@
 ---
-title: Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) – Azure Storage
+title: Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview)
+titleSuffix: Azure Storage
 description: Azure Storage podporuje převzetí služeb při selhání účtu (Preview) u geograficky redundantních účtů úložiště. S převzetím služeb při selhání můžete zahájit proces převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude k dispozici.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775924"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895356"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage
+# <a name="disaster-recovery-and-account-failover-preview"></a>Zotavení po havárii a převzetí služeb při selhání v účtu (Preview)
 
 Microsoft usiluje o to, aby byly služby Azure vždycky dostupné. Může ale dojít k neplánovaným výpadkům služby. Pokud vaše aplikace vyžaduje odolnost, společnost Microsoft doporučuje používat geograficky redundantní úložiště, aby se vaše data mohla replikovat do druhé oblasti. Kromě toho by zákazníci měli mít k dispozici plán zotavení po havárii pro zpracování oblasti výpadku regionální služby. Důležitou součástí plánu zotavení po havárii je příprava na převzetí služeb při selhání sekundárním koncovým bodem v případě, že primární koncový bod nebude k dispozici. 
 
@@ -69,7 +70,7 @@ Microsoft také doporučuje navrhovat aplikace, aby se připravila možnost selh
 
 Převzetí služeb při selhání účtu spravovaného zákazníkem (ve verzi Preview) vám umožní převzít služby při selhání celého účtu úložiště do sekundární oblasti, pokud primární z nějakého důvodu nebude k dispozici. Když vynutíte převzetí služeb při selhání sekundární oblastí, můžou klienti po dokončení převzetí služeb při selhání začít zapisovat data do sekundárního koncového bodu. Převzetí služeb při selhání obvykle trvá přibližně hodinu.
 
-### <a name="how-an-account-failover-works"></a>Jak funguje převzetí služeb při selhání účtu
+### <a name="how-an-account-failover-works"></a>Jak funguje převzetí služeb při selhání
 
 Za normálních okolností klient zapisuje data do účtu Azure Storage v primární oblasti a tato data se replikují asynchronně do sekundární oblasti. Následující obrázek znázorňuje situaci, kdy je primární oblast k dispozici:
 

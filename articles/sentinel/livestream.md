@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/06/2019
 ms.author: cabailey
-ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5b347848c9c6a58a70ab1093a6f9c70b62f3f769
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546866"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900455"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>K detekci hrozeb použijte lovecké živě ve službě Azure Sentinel.
 
@@ -70,7 +70,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 
 5. Na panelu příkazů vyberte **Přehrát** .
     
-    Stavový řádek pod panelem příkazů indikuje, jestli je váš živě spuštěný nebo pozastavený. V následujícím příkladu je spuštěná relace:
+    Stavový řádek pod panelem příkazů indikuje, jestli je relace živě spuštěná nebo pozastavená. V následujícím příkladu je spuštěná relace:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z loveckí Sentinel Azure](./media/livestream/livestream-session.png)
@@ -79,7 +79,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
     
     Pokud nevyberete **pozastavit**, relace zůstane spuštěná, dokud nebudete odhlášeni od Azure Portal.
 
-## <a name="view-your-livestream-sessions"></a>Zobrazení Živěch relací
+## <a name="view-your-livestream-sessions"></a>Zobrazení živěch relací
 
 1. V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > **lovecké** > **živě** .
 
@@ -110,7 +110,6 @@ Tato akce otevře Průvodce vytvořením pravidla, který je předem vyplněný 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak používat lovecké živě v Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
-
 
 - [Proaktivní vylovení hrozeb](hunting.md)
 - [Použití poznámkových bloků ke spouštění automatizovaných loveckých kampaní](notebooks.md)

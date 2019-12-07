@@ -9,13 +9,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 10/19/2019
-ms.openlocfilehash: 4559bb87369309882ebdaa0d3b408786feb586b5
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 11/27/2019
+ms.openlocfilehash: 164fc4eef245a2b9ea610179c3cf2e78b7b1b389
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896031"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895691"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Připojení zařízení brány 500 Rigado do IoT Central k aplikaci Azure
 
@@ -28,13 +28,13 @@ Kaskádová brána 500 IoT Gateway je hardwarová nabídka z Rigado, která je s
 
 Kaskádová verze 500 je předem certifikována pro Azure IoT technologie Plug and Play (PnP), která umožňuje tvůrcům řešení snadno připojit zařízení do koncových řešení. Brána na kaskádě umožňuje bezdrátové připojení k celé řadě senzorů monitorování podmínek, které jsou v blízkosti zařízení brány. Tyto senzory je možné připojit k IoT Central prostřednictvím zařízení brány.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Chcete-li procházet tento návod, potřebujete následující zdroje:
 
 * Rigado kaskádové zařízení 500. Další informace najdete na [Rigado](https://www.rigado.com/).
 * Aplikace Azure IoT Central vytvořená z některé z šablon aplikace ve verzi Preview. Další informace najdete v tématu [Vytvoření nové aplikace](./quick-deploy-iot-central.md).
 
-## <a name="add-a-device-template"></a>Přidat šablonu zařízení
+## <a name="add-a-device-template"></a>Přidání šablony zařízení
 
 Aby bylo možné za500 členit do instance aplikace IoT Central služby Azure bránu, bude nutné v rámci aplikace nakonfigurovat odpovídající šablonu zařízení.
 

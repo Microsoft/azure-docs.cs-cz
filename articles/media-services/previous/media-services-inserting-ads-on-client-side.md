@@ -1,6 +1,6 @@
 ---
 title: Vkládání reklam na straně klienta | Microsoft Docs
-description: V tomto tématu se dozvíte, jak vkládat reklamy na straně klienta.
+description: Tento článek ukazuje, jak vložit reklamy do média na straně klienta.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 37ee600a2f7d621d3fefb2f70c26b6c29f738ea9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162704"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895969"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
 Tento článek obsahuje informace o tom, jak vložit různé typy reklam na straně klienta.
@@ -96,7 +96,7 @@ OBROVSKÉ soubory určují, co AD nebo reklamy zobrazit. Následující kód XML
 
 Lineární služba AD je popsána <**lineárním**> elementu. Určuje dobu trvání reklamy, sledování událostí, kliknutí na tlačítko sledování a počet **MediaFile** prvků. Události sledování se zadává v rámci <**TrackingEvents**> elementu a umožňují serveru AD sledovat různé události, ke kterým dochází při prohlížení reklamy. V tomto případě jsou sledovány události spuštění, středních, úplných a rozbalených událostí. K události Start dojde při zobrazení reklamy. K události středního bodu dochází, když se zobrazila aspoň 50% časová osa služby AD. K události Complete dojde v případě, že služba AD běžela na konci. K události expand dojde, když uživatel rozbalí přehrávač videa na celou obrazovku. V rámci <**VideoClicks**> element a určuje identifikátor URI pro prostředek, který se zobrazí, když uživatel klikne na reklamu. **> <** ClickTracking je zadáno v > elementu <**ClickTracking**, a to i v rámci elementu <**VideoClicks**> a určuje prostředek sledování, který má hráč požádat, když uživatel klikne na reklamu. Prvky <**MediaFile**> určují informace o konkrétním kódování reklamy. Pokud existuje více <**MediaFile**> elementu, přehrávač videa si může vybrat nejlepší kódování pro platformu.
 
-Lineární reklamy se dají zobrazit v zadaném pořadí. Chcete-li to provést, přidejte další `<Ad>` prvky do OBROVSKÉho souboru a určete pořadí pomocí atributu Sequence. Následující příklad znázorňuje toto:
+Lineární reklamy se dají zobrazit v zadaném pořadí. Chcete-li to provést, přidejte další `<Ad>` prvky do OBROVSKÉho souboru a určete pořadí pomocí atributu Sequence. Ilustruje to následující příklad:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">

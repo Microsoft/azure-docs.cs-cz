@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 386d10c8e4bd7d5f46d2081d5a26371fb37ff30f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007001"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894914"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Formát JSON obrazce pro maximalizaci výkonu dotazů 
 
@@ -98,7 +98,7 @@ Vezměte v úvahu následující datovou část JSON odeslanou do prostředí Ti
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
    | FXXX | LINE\_DATA | EU |
-   | FYYY | LINE\_DATA | USA |
+   | FYYY | LINE\_DATA | Spojené státy |
 
 * Time Series Insights tabulka událostí po sloučení:
 
@@ -106,7 +106,7 @@ Vezměte v úvahu následující datovou část JSON odeslanou do prostředí Ti
    | --- | --- | --- | --- | --- | --- |
    | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
    | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FYYY | LINE\_DATA | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FYYY | LINE\_DATA | Spojené státy | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 > [!NOTE]
 > - Sloupec **deviceId** slouží jako záhlaví sloupce pro různá zařízení v rámci loďstva. Když hodnota **deviceId** nastaví svůj název vlastní vlastnosti, omezí se celkový počet zařízení na 595 (pro prostředí S1) nebo 795 (pro prostředí S2) s dalšími pěti sloupci.
@@ -165,23 +165,23 @@ Příklad datové části JSON:
 
 * Tabulka referenčních dat, která má vlastnosti klíče **deviceId** a **Series. tagId**:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | jednotce |
+   | deviceId | series.tagId | messageId | deviceLocation | type | jednotka |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s |
    | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi |
-   | FYYY | pumpRate | LINE\_DATA | USA | Rychlost toku | ft3/s |
-   | FYYY | oilPressure | LINE\_DATA | USA | Tlak v oleji motoru | psi |
+   | FYYY | pumpRate | LINE\_DATA | Spojené státy | Rychlost toku | ft3/s |
+   | FYYY | oilPressure | LINE\_DATA | Spojené státy | Tlak v oleji motoru | psi |
 
 * Time Series Insights tabulka událostí po sloučení:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | jednotce | časové razítko | Series. Value |
+   | deviceId | series.tagId | messageId | deviceLocation | type | jednotka | časové razítko | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34.7 |
    | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
    | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | pumpRate | LINE\_DATA | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LINE\_DATA | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FYYY | pumpRate | LINE\_DATA | Spojené státy | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE\_DATA | Spojené státy | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 > [!NOTE]
 > - Sloupce **deviceId** a **Series. tagId** slouží jako záhlaví sloupců pro různá zařízení a značky v rámci loďstva. Použití každého vlastního atributu omezí dotaz na 594 (pro prostředí S1) nebo 794 (pro prostředí S2) celkem zařízení s ostatními šesti sloupci.

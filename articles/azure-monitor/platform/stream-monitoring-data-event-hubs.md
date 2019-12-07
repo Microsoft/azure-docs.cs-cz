@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f282fce8070d440bdd3a518b4444eb0e67110961
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 952485a3bb8feb1434f4f4705f6c07176dd1e1f6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559066"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894463"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Streamování dat monitorování Azure do centra událostí
 Azure Monitor poskytuje kompletní řešení monitorování zásobníku pro aplikace a služby v Azure, v jiných cloudech a v místním prostředí. Kromě použití Azure Monitor k analýze těchto dat a jejich využití v různých scénářích monitorování ho možná budete muset poslat ostatním nástrojům pro monitorování ve vašem prostředí. Nejúčinnější metodou pro streamování dat monitorování do externích nástrojů ve většině případů je použití [Azure Event Hubs](/azure/event-hubs/). Tento článek obsahuje stručný popis toho, jak můžete streamovat data monitorování z různých zdrojů do centra událostí a odkazy na podrobné pokyny.
@@ -30,7 +30,6 @@ Předtím, než nakonfigurujete streamování pro libovolný zdroj dat, je potř
 * V případě protokolu aktivit Azure vybíráte obor názvů Event Hubs a Azure Monitor vytvoří centrum událostí v oboru názvů s názvem _Insights-logs-Operational-logs_. U jiných typů protokolů můžete zvolit existující centrum událostí nebo Azure Monitor vytvořit centrum událostí podle kategorií protokolů.
 * Odchozí porty 5671 a 5672 musí být obvykle otevřeny v počítači nebo virtuální síti, která spotřebovává data z centra událostí.
 
-
 ## <a name="monitoring-data-available"></a>Data monitorování k dispozici
 [Zdroje dat monitorování pro Azure monitor](data-sources.md) popisují různé úrovně dat pro aplikace Azure a typy dat monitorování dostupných pro každé z nich. Následující tabulka uvádí každou z těchto úrovní a popis způsobu, jakým můžou být tato data streamovaná do centra událostí. Další podrobnosti najdete na odkazech uvedených níže.
 
@@ -38,7 +37,7 @@ Předtím, než nakonfigurujete streamování pro libovolný zdroj dat, je potř
 |:---|:---|:---|
 | [Tenant Azure](data-sources.md#azure-tenant) | Protokoly auditu Azure Active Directory | Nakonfigurujte nastavení diagnostiky tenanta v tenantovi AAD. Podrobnosti najdete v tématu [kurz: Stream Azure Active Directory protokoly do centra událostí Azure](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) . |
 | [Předplatné Azure](data-sources.md#azure-subscription) | Protokol aktivit Azure | Vytvořte profil protokolu pro export událostí protokolu aktivit do Event Hubs.  Podrobnosti najdete v tématu [Export protokolu aktivit Azure do úložiště nebo Azure Event Hubs](activity-log-export.md) . |
-| [Prostředky Azure](data-sources.md#azure-resources) | Metriky platformy<br>Diagnostické protokoly |Oba typy dat se odesílají do centra událostí pomocí nastavení diagnostiky prostředků. Podrobnosti najdete v tématu [streamování diagnostických protokolů Azure do centra událostí](resource-logs-stream-event-hubs.md) . |
+| [Prostředky Azure](data-sources.md#azure-resources) | Metriky platformy<br> Protokoly prostředků |Oba typy dat se odesílají do centra událostí pomocí nastavení diagnostiky prostředků. Podrobnosti najdete v tématu [streamování protokolů prostředků Azure do centra událostí](resource-logs-stream-event-hubs.md) . |
 | [Operační systém (host)](data-sources.md#operating-system-guest) | Virtuální počítače Azure | Nainstalujte [Azure Diagnostics rozšíření](diagnostics-extension-overview.md) na virtuální počítače s Windows a Linux v Azure. Podrobnosti o virtuálních počítačích se systémem Windows najdete [v tématu streamování Azure Diagnostics data v místní cestě pomocí Event Hubs](diagnostics-extension-stream-event-hubs.md) . [k monitorování metrik a protokolů použijte diagnostické rozšíření](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) pro Linux. |
 | [Kód aplikace](data-sources.md#application-code) | Application Insights | Application Insights neposkytuje přímou metodu pro streamování dat do Center událostí. Můžete [nastavit průběžný export](../../azure-monitor/app/export-telemetry.md) dat Application Insights do účtu úložiště a potom pomocí aplikace logiky odesílat data do centra událostí, jak je popsáno v tématu [Ruční streamování pomocí aplikace logiky](#manual-streaming-with-logic-app). |
 

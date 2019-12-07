@@ -4,16 +4,16 @@ description: Ukázky použití poskytovatele služby Azure Application Insights 
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0e93e2a98d96ca7f436f20e579ab625341024686
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c561ecf8e47a6792626353fef65ce94f1fd0330a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819473"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893327"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Protokoly ApplicationInsightsLoggerProvider pro .NET Core ILogger
 
@@ -22,11 +22,12 @@ Další informace najdete v tématu věnovaném [přihlášení ASP.NET Core](ht
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core aplikací
 
-ApplicationInsightsLoggerProvider je ve výchozím nastavení povolená v [Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.0-beta3 (a novější), když zapnete běžné Application Insights monitorování prostřednictvím některé ze standardních metod:
-- Voláním metody rozšíření **UseApplicationInsights** na IWebHostBuilder 
+ApplicationInsightsLoggerProvider je ve výchozím nastavení povolená v [sadě Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.1 (a novější), když zapnete běžné Application Insights monitorování prostřednictvím některé ze standardních metod:
+
+- Voláním metody rozšíření **UseApplicationInsights** na IWebHostBuilder
 - Voláním metody rozšíření **AddApplicationInsightsTelemetry** na IServiceCollection
 
-Protokol ILogger, který ApplicationInsightsLoggerProvider zachycuje, podléhá stejné konfiguraci jako jakákoli jiná shromažďovaná telemetrie. Mají stejnou sadu TelemetryInitializers a TelemetryProcessors, používají stejné TelemetryChannel a jsou korelace a vzorky stejným způsobem jako u jiné telemetrie. Pokud používáte verzi 2.7.0-beta3 nebo novější, není nutné provádět žádnou akci pro zachycení protokolů ILogger.
+Protokol ILogger, který ApplicationInsightsLoggerProvider zachycuje, podléhá stejné konfiguraci jako jakákoli jiná shromažďovaná telemetrie. Mají stejnou sadu TelemetryInitializers a TelemetryProcessors, používají stejné TelemetryChannel a jsou korelace a vzorky stejným způsobem jako u jiné telemetrie. Pokud používáte verzi 2.7.1 nebo novější, není nutné provádět žádnou akci pro zachycení protokolů ILogger.
 
 Ve výchozím nastavení se Application Insights standardně odesílají jenom *výstrahy* nebo protokoly ILogger (ze všech kategorií). Můžete ale [použít filtry a toto chování upravit](#control-logging-level). Pro zachycení protokolů ILogger z **program.cs** nebo **Startup.cs**se vyžadují další kroky. (Viz [zachycení protokolů ILogger z Startup.cs a program.cs v aplikacích ASP.NET Core](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
@@ -107,9 +108,9 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>Zachycení protokolů ILogger z Startup.cs a Program.cs v aplikacích ASP.NET Core
 
 > [!NOTE]
-> V ASP.NET Core 3,0 a novějším, již není možné vkládat `ILogger` v Startup.cs a Program.cs. Další podrobnosti najdete v tématu https://github.com/aspnet/Announcements/issues/353.
+> V ASP.NET Core 3,0 a novějším, již není možné vkládat `ILogger` v Startup.cs a Program.cs. Další podrobnosti najdete v souboru https://github.com/aspnet/Announcements/issues/353.
 
-Nový ApplicationInsightsLoggerProvider může zachytit protokoly od začátku v kanálu spuštění aplikace. I když je ApplicationInsightsLoggerProvider automaticky povolený v Application Insights (počínaje verzí 2.7.0-beta3), nemá nastavený klíč instrumentace až do pozdějšího kanálu. Proto budou zachyceny pouze protokoly z tříd/další **kontroleru**. Pro zachycení každého protokolu počínaje **program.cs** a **Startup.cs** je nutné explicitně povolit instrumentaci klíče pro ApplicationInsightsLoggerProvider. *TelemetryConfiguration* se také nenastavuje zcela při protokolování z **program.cs** nebo **Startup.cs** . Takže tyto protokoly budou mít minimální konfiguraci, která používá InMemoryChannel, žádné vzorkování a žádné standardní Inicializátory telemetrie nebo procesory.
+Nový ApplicationInsightsLoggerProvider může zachytit protokoly od začátku v kanálu spuštění aplikace. I když je ApplicationInsightsLoggerProvider automaticky povolený v Application Insights (počínaje verzí 2.7.1), nemá nastavený klíč instrumentace až do pozdějšího kanálu. Proto budou zachyceny pouze protokoly z tříd/další **kontroleru**. Pro zachycení každého protokolu počínaje **program.cs** a **Startup.cs** je nutné explicitně povolit instrumentaci klíče pro ApplicationInsightsLoggerProvider. *TelemetryConfiguration* se také nenastavuje zcela při protokolování z **program.cs** nebo **Startup.cs** . Takže tyto protokoly budou mít minimální konfiguraci, která používá InMemoryChannel, žádné vzorkování a žádné standardní Inicializátory telemetrie nebo procesory.
 
 Následující příklady ukazují tuto možnost v **program.cs** a **Startup.cs**.
 
@@ -203,7 +204,7 @@ public class Startup
 
 ## <a name="migrate-from-the-old-applicationinsightsloggerprovider"></a>Migrace ze starého ApplicationInsightsLoggerProvider
 
-Verze sady Microsoft. ApplicationInsights. AspNet SDK před 2.7.0-beta2 podporovala poskytovatele protokolování, který je nyní zastaralý. Tento zprostředkovatel byl povolen prostřednictvím rozšiřující metody **AddApplicationInsights ()** ILoggerFactory. Doporučujeme migrovat na nového poskytovatele, který zahrnuje dva kroky:
+Microsoft. ApplicationInsights. AspNet SDK verze předtím, než 2.7.1 podporuje poskytovatele protokolování, který je nyní zastaralý. Tento zprostředkovatel byl povolen prostřednictvím rozšiřující metody **AddApplicationInsights ()** ILoggerFactory. Doporučujeme migrovat na nového poskytovatele, který zahrnuje dva kroky:
 
 1. Odeberte volání *ILoggerFactory. AddApplicationInsights ()* z metody **Startup. Configure ()** , aby nedocházelo k dvojímu protokolování.
 2. Znovu použijte všechna pravidla filtrování v kódu, protože je nový zprostředkovatel nedodržuje. Přetížení *ILoggerFactory. AddApplicationInsights ()* převzaly minimální funkce LogLevel nebo Filter. U nového zprostředkovatele je filtrování součástí samotného protokolovacího rozhraní. Neprovádí se poskytovatelem Application Insights. Proto by se měly odebrat všechny filtry, které jsou poskytovány prostřednictvím *ILoggerFactory. AddApplicationInsights ()* . A pravidla filtrování by se měla poskytnout podle pokynů pro [úroveň protokolování ovládacího prvku](#control-logging-level) . Pokud k filtrování protokolování použijete *appSettings. JSON* , bude i nadále fungovat s novým poskytovatelem, protože používá stejný alias poskytovatele *ApplicationInsights*.
@@ -221,8 +222,7 @@ Můžete pořád používat starého poskytovatele. (Bude odebráno pouze v hlav
 ## <a name="console-application"></a>Konzolová aplikace
 
 > [!NOTE]
-> K dispozici je nová verze beta Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights (ILogger a jiné Application Insights telemetrie) pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md)
-Následující příklad bude po vydání stabilní verze tohoto nového balíčku zastaralý.
+> K dispozici je nová Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights (ILogger a jiné Application Insights telemetrie) pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md)
 
 Následující kód ukazuje ukázkovou konzolovou aplikaci, která je nakonfigurovaná tak, aby odesílala ILogger trasování do Application Insights.
 
@@ -366,11 +366,11 @@ Následující fragment kódu Konfiguruje protokoly pro *Upozornění* a výše 
 
 ### <a name="what-are-the-old-and-new-versions-of-applicationinsightsloggerprovider"></a>Jaké jsou staré a nové verze ApplicationInsightsLoggerProvider?
 
-[Sada Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) zahrnovala integrovanou ApplicationInsightsLoggerProvider (Microsoft. ApplicationInsights. AspNetCore. Logging. ApplicationInsightsLoggerProvider), která byla povolena prostřednictvím **ILoggerFactory** metody rozšíření. Tento zprostředkovatel je označený jako zastaralý z verze 2.7.0-beta2. Dojde k úplnému odebrání v další změně hlavní verze. Samotný balíček [Microsoft. ApplicationInsights. AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) není zastaralý. Je nutné povolit monitorování požadavků, závislostí a tak dále.
+[Sada Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) zahrnovala integrovanou ApplicationInsightsLoggerProvider (Microsoft. ApplicationInsights. AspNetCore. Logging. ApplicationInsightsLoggerProvider), která byla povolena prostřednictvím rozšiřujících metod **ILoggerFactory** . Tento zprostředkovatel je označený jako zastaralý z 2.7.1 verze. Dojde k úplnému odebrání v další změně hlavní verze. Samotný balíček [Microsoft. ApplicationInsights. AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) není zastaralý. Je nutné povolit monitorování požadavků, závislostí a tak dále.
 
-Navrhovaná alternativa je nový samostatný balíček [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights), který obsahuje vylepšenou ApplicationInsightsLoggerProvider ( Microsoft. Extensions. Logging. ApplicationInsights. ApplicationInsightsLoggerProvider) a metody rozšíření pro ILoggerBuilder pro povolení.
+Navrhovaná alternativa je nový samostatný balíček [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights), který obsahuje vylepšené ApplicationInsightsLoggerProvider (Microsoft. Extensions. Logging. ApplicationInsights. ApplicationInsightsLoggerProvider) a metody rozšíření pro ILoggerBuilder pro jeho povolení.
 
-[Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.0-beta3 převezme závislost na novém balíčku a povolí automatické zachycení ILogger.
+[Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.7.1 přebírá závislost na novém balíčku a povoluje automatické zachytávání ILogger.
 
 ### <a name="why-are-some-ilogger-logs-shown-twice-in-application-insights"></a>Proč jsou některé protokoly ILogger dvakrát zobrazené v Application Insights?
 
@@ -396,7 +396,7 @@ Pokud při ladění ze sady Visual Studio dojde k dvojímu protokolování, nast
  }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-270-beta3-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Aktualizoval (a) jsem na [Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.7.0-beta3 a protokoly z ILogger jsou zachyceny automaticky. Návody zcela tuto funkci vypnout?
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Aktualizoval (a) jsem se na [Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.7.1 a protokoly z ILogger jsou zachyceny automaticky. Návody zcela tuto funkci vypnout?
 
 Informace o tom, jak filtrovat protokoly obecně, najdete v části [řízení úrovně protokolování](../../azure-monitor/app/ilogger.md#control-logging-level) . Pro vypnutí ApplicationInsightsLoggerProvider použijte `LogLevel.None`:
 
@@ -454,7 +454,7 @@ Pokud chcete vždy odeslat TraceTelemetry, použijte tento fragment kódu: ```bu
 
 ### <a name="i-dont-have-the-sdk-installed-and-i-use-the-azure-web-apps-extension-to-enable-application-insights-for-my-aspnet-core-applications-how-do-i-use-the-new-provider"></a>Nemám nainstalovanou sadu SDK a k povolení Application Insights pro moje ASP.NET Core aplikace používám rozšíření Azure Web Apps. Návody použít nového poskytovatele? 
 
-Rozšíření Application Insights v Azure Web Apps používá starého poskytovatele. Můžete upravit pravidla filtrování v souboru *appSettings. JSON* pro vaši aplikaci. Chcete-li využít nového poskytovatele, použijte instrumentaci při sestavování tím, že v sadě SDK převezmete závislost NuGet. Tento článek bude aktualizován, pokud rozšíření přepne na použití nového poskytovatele.
+Rozšíření Application Insights v Azure Web Apps používá nového poskytovatele. Můžete upravit pravidla filtrování v souboru *appSettings. JSON* pro vaši aplikaci.
 
 ### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Používám samostatný balíček Microsoft. Extensions. Logging. ApplicationInsights a povoluje poskytovatele Application Insights voláním **Tvůrce. AddApplicationInsights ("ikey")** . Existuje možnost získat klíč instrumentace z konfigurace?
 

@@ -1,79 +1,82 @@
 ---
-title: Správa úložiště v Azure nezávislé cloudů pomocí Azure Powershellu | Dokumentace Microsoftu
-description: Správa úložiště v Číně, cloudu pro státní správu a německého cloudu s využitím Azure Powershellu
+title: Použití PowerShellu ke správě dat v nezávislých cloudech Azure
+titleSuffix: Azure Storage
+description: Správa úložiště v čínském cloudu, v cloudu pro státní správu a v německém cloudu pomocí Azure PowerShell.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 10/24/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 69707eec0ea1f2260ee50a48ce1dcb82dc9ddd8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145870"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895239"
 ---
-# <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v Azure nezávislé cloudů pomocí Powershellu
+# <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v nezávislých cloudech Azure pomocí PowerShellu
 
-Většina lidí pomocí veřejného cloudu Azure pro globální nasazení v Azure. Existují také některá nezávislé nasazení Microsoft Azure z důvodů suverenity a tak dále. Tato nezávislé nasazení jsou označovány jako "prostředí". Následující seznam obsahuje podrobnosti o nezávislé cloudy, které jsou aktuálně k dispozici.
+Většina lidí používá ke globálnímu nasazení Azure veřejný cloud Azure. Existují také některá nezávislá nasazení Microsoft Azure z důvodů svrchovanosti a tak dále. Tato nezávislá nasazení se označují jako "prostředí". Následující seznam podrobně popisuje aktuálně dostupné nezávislé cloudy.
 
 * [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
-* [Cloud Azure China, provozovaný společností 21Vianet v Číně](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+* [Azure Čína 21Vianet Cloud provozovaný společností 21Vianet v Číně](http://www.windowsazure.cn/)
+* [Cloud pro Azure němčina](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="using-an-independent-cloud"></a>Díky nezávislé cloudu 
+## <a name="using-an-independent-cloud"></a>Používání nezávislého cloudu
 
-Používání Azure Storage v jednom z cloudů nezávislé, připojit s tímto cloudem místo Azure veřejné. Chcete použít jeden z nezávislé cloudy spíše než veřejné Azure:
+Pokud chcete použít Azure Storage v jednom z nezávislých cloudů, připojíte se k tomuto cloudu místo veřejného Azure. Použití jednoho z nezávislých cloudů, nikoli Azure Public:
 
-* Můžete zadat *prostředí* pro připojení.
-* Určení a používají dostupné oblasti.
-* Můžete použít příponu správný koncový bod, který se liší od Azure veřejné.
+* Určíte *prostředí* , ke kterému se chcete připojit.
+* Určíte a použijete dostupné oblasti.
+* Použijete správnou příponu koncového bodu, která se liší od veřejné služby Azure.
 
-V příkladech vyžadují Azure PowerShell verze modulu Az 0.7 nebo novější. V okně Powershellu, spusťte `Get-Module -ListAvailable Az` k vyhledání verze. Pokud se objevuje nic, nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). 
+Příklady vyžadují Azure PowerShell modul AZ verze 0,7 nebo novější. V okně PowerShellu spusťte `Get-Module -ListAvailable Az` a najděte verzi. Pokud není nic uvedeno nebo potřebujete provést upgrade, přečtěte si téma [Install Azure PowerShell Module](/powershell/azure/install-Az-ps).
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
-Spustit [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) rutiny zobrazíte dostupné prostředí Azure:
-   
+Spuštěním rutiny [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) zobrazte dostupná prostředí Azure:
+
 ```powershell
 Get-AzEnvironment
 ```
 
-Přihlaste se ke svému účtu, který má přístup do cloudu, ke kterému chcete připojit a nastavte prostředí. Tento příklad ukazuje, jak přihlášení k účtu, který používá cloudu Azure Government.   
+Přihlaste se ke svému účtu, který má přístup ke cloudu, ke kterému se chcete připojit, a nastavte prostředí. Tento příklad ukazuje, jak se přihlásit k účtu, který používá Azure Government Cloud.   
 
 ```powershell
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-Pro přístup k Číně, použijte prostředí **AzureChinaCloud**. Chcete-li získat přístup k německého cloudu, použijte **AzureGermanCloud**.
+Pro přístup k čínskému cloudu použijte prostředí **AzureChinaCloud**. Pokud chcete získat přístup k německému cloudu, použijte **AzureGermanCloud**.
 
-V tomto okamžiku, pokud potřebujete seznam umístění pro vytvoření účtu úložiště nebo jiný prostředek, můžete dát dotaz na umístění k dispozici pro vybraný cloud pomocí [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
+Pokud v tomto okamžiku potřebujete seznam umístění pro vytvoření účtu úložiště nebo jiného prostředku, můžete zadat dotaz na umístění dostupná pro vybraný Cloud pomocí příkazu [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
 
 ```powershell
 Get-AzLocation | select Location, DisplayName
 ```
 
-Následující tabulka uvádí umístění pro německý cloud.
+V následující tabulce jsou uvedena umístění, která jsou vrácena pro německý Cloud.
 
-|Location | displayName |
+|Umístění | Zobrazovaný název |
 |----|----|
-| germanycentral | Německo – střed|
-| germanynortheast | Německo – severovýchod | 
+| `germanycentral` | Německo – střed|
+| `germanynortheast` | Německo – severovýchod |
 
 
 ## <a name="endpoint-suffix"></a>Přípona koncového bodu
 
-Přípona koncového bodu pro každou z těchto prostředí se liší od Azure veřejný koncový bod. Přípona koncového bodu objektu blob pro veřejný Azure je třeba **blob.core.windows.net**. U cloudu státní správy přípona koncového bodu objektu blob je **blob.core.usgovcloudapi.net**. 
+Přípona koncového bodu pro každé z těchto prostředí se liší od veřejného koncového bodu Azure. Například přípona koncového bodu objektu BLOB pro Azure Public je **BLOB.Core.Windows.NET**. V případě cloudu pro státní správu je přípona koncového bodu objektu BLOB **BLOB.Core.usgovcloudapi.NET**.
 
-### <a name="get-endpoint-using-get-azenvironment"></a>Získání koncového bodu pomocí Get-AzEnvironment 
+### <a name="get-endpoint-using-get-azenvironment"></a>Získat koncový bod pomocí Get-AzEnvironment
 
-Načíst pomocí koncového bodu přípona [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment). Koncový bod je *StorageEndpointSuffix* vlastnost prostředí. Následující fragmenty kódu ukazují, jak to udělat. Všechny tyto příkazy vracely něco jako "core.cloudapp.net" nebo "core.cloudapi.de" atd. Nový kód přidejte do služby storage pro přístup k této službě. Například "queue.core.cloudapi.de" se přístup ke službě fronty v německém cloudu.
+Načtěte příponu koncového bodu pomocí [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment). Koncový bod je vlastnost *StorageEndpointSuffix* prostředí.
 
-Tento fragment kódu načte všechna prostředí a přípona koncového bodu pro každé z nich.
+Následující fragmenty kódu ukazují, jak načíst příponu koncového bodu. Všechny tyto příkazy vrátí něco jako "core.cloudapp.net" nebo "core.cloudapi.de" atd. Pro přístup k této službě přidejte příponu ke službě úložiště. Například "queue.core.cloudapi.de" bude přistupovat ke službě Queue v německém cloudu.
+
+Tento fragment kódu načte všechna prostředí a příponu koncového bodu pro každé z nich.
 
 ```powershell
 Get-AzEnvironment | select Name, StorageEndpointSuffix 
@@ -81,51 +84,48 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Tento příkaz vrátí následující výsledky.
 
-| Name| StorageEndpointSuffix|
+| Name (Název)| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-Chcete-li načíst všechny vlastnosti pro zadané prostředí, zavolejte **Get-AzEnvironment** a zadejte název cloudu. Tento fragment kódu vrátí seznam hodnot vlastnosti; Vyhledejte **StorageEndpointSuffix** v seznamu. Následující příklad je určený pro německého cloudu.
+Chcete-li načíst všechny vlastnosti pro zadané prostředí, zavolejte **Get-AzEnvironment** a zadejte název cloudu. Tento fragment kódu vrátí seznam vlastností; v seznamu vyhledejte **StorageEndpointSuffix** . Následující příklad je pro německý Cloud.
 
 ```powershell
-Get-AzEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud
 ```
 
-Výsledky jsou podobné následujícímu:
+Výsledky jsou podobné následujícím hodnotám:
 
 |Název vlastnosti|Hodnota|
 |----|----|
-| Name | AzureGermanCloud |
-| EnableAdfsAuthentication | False |
-| ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
-| GalleryURL | https://gallery.cloudapi.de/ |
-| ManagementPortalUrl | https://portal.microsoftazure.de/ | 
-| ServiceManagementUrl | https://manage.core.cloudapi.de/ |
-| PublishSettingsFileUrl| https://manage.microsoftazure.de/publishsettings/index |
-| ResourceManagerUrl | http://management.microsoftazure.de/ |
-| SqlDatabaseDnsSuffix | .database.cloudapi.de |
-| **StorageEndpointSuffix** | core.cloudapi.de |
-| ... | ... | 
-
-K načtení jenom vlastnost přípona úložiště koncového bodu, načtení konkrétní cloud a požádejte o právě tuto jednu vlastnost.
+| Name (Název) | `AzureGermanCloud` |
+| EnableAdfsAuthentication | `False` |
+| ActiveDirectoryServiceEndpointResourceI | `http://management.core.cloudapi.de/` |
+| GalleryURL | `https://gallery.cloudapi.de/` |
+| ManagementPortalUrl | `https://portal.microsoftazure.de/` |
+| ServiceManagementUrl | `https://manage.core.cloudapi.de/` |
+| PublishSettingsFileUrl| `https://manage.microsoftazure.de/publishsettings/index` |
+| ResourceManagerUrl | `http://management.microsoftazure.de/` |
+| SqlDatabaseDnsSuffix | `.database.cloudapi.de` |
+| **StorageEndpointSuffix** | `core.cloudapi.de` |
+| Tlačítka ... | Tlačítka ... |
+Pokud chcete načíst jenom vlastnost přípona koncového bodu úložiště, načtěte konkrétní Cloud a vyžádejte si jenom jednu vlastnost.
 
 ```powershell
 $environment = Get-AzEnvironment -Name AzureGermanCloud
-Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
+Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix
 ```
 
-Vrátí následující informace.
+Tento příkaz vrátí následující informace:
 
-```
-Storage Endpoint Suffix = core.cloudapi.de
-```
+`Storage Endpoint Suffix = core.cloudapi.de`
 
-### <a name="get-endpoint-from-a-storage-account"></a>Získání koncového bodu z účtu úložiště
+### <a name="get-endpoint-from-a-storage-account"></a>Získat koncový bod z účtu úložiště
 
-Můžete také prozkoumat vlastnosti účtu úložiště načíst koncových bodů. To může být užitečný v případě, že už používáte účet úložiště ve vašem skriptu prostředí PowerShell; můžete načíst jenom koncový bod, které potřebujete. 
+Můžete také prostudovat vlastnosti účtu úložiště a načíst koncové body:
 
 ```powershell
 # Get a reference to the storage account.
@@ -141,7 +141,7 @@ Write-Host "queue endpoint = " $storageAccount.PrimaryEndPoints.Queue
 Write-Host "table endpoint = " $storageAccount.PrimaryEndPoints.Table
 ```
 
-Pro účet úložiště v cloudu pro státní správu vrátí následující: 
+V případě účtu úložiště v cloudu pro státní správu vrátí tento příkaz následující výstup:
 
 ```
 blob endpoint = http://myexistingstorageaccount.blob.core.usgovcloudapi.net/
@@ -152,20 +152,20 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 ## <a name="after-setting-the-environment"></a>Po nastavení prostředí
 
-Z tady do budoucna, můžete použít stejné prostředí PowerShell použít ke správě vašich účtů úložiště a přístup k rovině dat, jak je popsáno v článku [pomocí Azure Powershellu s Azure Storage](storage-powershell-guide-full.md).
+Od tohoto místa můžete použít stejný PowerShell, který se používá ke správě účtů úložiště, a přístup k rovině dat, jak je popsáno v článku [použití Azure PowerShell s Azure Storage](storage-powershell-guide-full.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud jste vytvořili novou skupinu prostředků a účet úložiště pro toto cvičení, můžete odebrat všechny prostředky odstraněním skupiny prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě odebere účet úložiště, který jste vytvořili a samotnou skupinu prostředků.
+Pokud jste pro toto cvičení vytvořili novou skupinu prostředků a účet úložiště, můžete odebrat oba prostředky odstraněním skupiny prostředků. Odstraněním skupiny prostředků se odstraní všechny prostředky, které tato skupina obsahuje.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zachování přihlášení uživatele napříč relacemi Powershellu](/powershell/azure/context-persistence)
-* [Úložiště Azure Government](../../azure-government/documentation-government-services-storage.md)
-* [Příručka pro vývojáře Microsoft Azure Government](../../azure-government/documentation-government-developer-guide.md)
-* [Poznámky pro vývojáře pro aplikace Azure (Čína)](https://msdn.microsoft.com/library/azure/dn578439.aspx)
-* [Dokumentace k Azure Germany](../../germany/germany-welcome.md)
+* [Trvalé přihlášení uživatelů napříč relacemi PowerShellu](/powershell/azure/context-persistence)
+* [Azure Government úložiště](../../azure-government/documentation-government-services-storage.md)
+* [Microsoft Azure Government příručka pro vývojáře](../../azure-government/documentation-government-developer-guide.md)
+* [Poznámky pro vývojáře pro aplikace Azure Čína 21Vianet](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [Dokumentace ke službě Azure Německo](../../germany/germany-welcome.md)

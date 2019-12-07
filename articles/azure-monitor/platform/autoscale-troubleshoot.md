@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 14e2f79383aa45125ce6955f3611a75ece1df10d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152941"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893565"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Řešení potíží s automatické škálování Azure
  
@@ -115,7 +115,7 @@ Stejně jako u libovolné Azure Monitor podporované služby, můžete k směrov
 
 ![Automatické škálování nastavení diagnostiky](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-Předchozí obrázek ukazuje nastavení diagnostiky automatického škálování Azure Portal. Můžete vybrat kartu diagnostické protokoly a povolit shromažďování a směrování protokolů. Stejnou akci můžete provést také pomocí REST API, CLI, PowerShellu, šablon Správce prostředků šablon pro nastavení diagnostiky tak, že vyberete typ prostředku jako *Microsoft. Insights/AutoscaleSettings*. 
+Předchozí obrázek ukazuje nastavení diagnostiky automatického škálování Azure Portal. Tady můžete vybrat kartu Diagnostika/protokoly prostředků a povolit shromažďování a směrování protokolů. Stejnou akci můžete provést také pomocí REST API, CLI, PowerShellu, šablon Správce prostředků šablon pro nastavení diagnostiky tak, že vyberete typ prostředku jako *Microsoft. Insights/AutoscaleSettings*. 
 
 ## <a name="troubleshooting-using-autoscale-logs"></a>Řešení potíží pomocí protokolů automatického škálování 
 

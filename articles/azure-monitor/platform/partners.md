@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61b43329fcc840bc68f454400a4b5e917f43110c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144481"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894590"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -140,7 +140,7 @@ LogRhythm, vedoucí v NextGen SIEM, umožňuje organizacím na šesti kontinente
 
 Operace mikrofokusu: **most** automaticky monitoruje všechny hybridní IT prostředky – jakékoli zařízení, operační systém, databázi, aplikaci nebo službu bez ohledu na to, kde běží, a AIOps se na všechny datové typy – události, metriky, protokoly a závislosti. Poskytuje jedinečnou kombinaci monitorování kvality služeb, společně s hloubkovou analýzou stavu aplikací, a zahrnuje komplexní monitorování výkonu a dostupnosti služeb Microsoft Azure. Díky mostu pro provoz můžou zákazníci v jakémkoli zařízení s prohlížečem poskytnout jediné podokno ze skla, a to jak pro firmy, tak i zúčastněné strany IT.
 
-Víc se uč
+Další informace
 - [Přehled sady OB](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Stáhnout](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope je součást sady operací mostu.
@@ -255,7 +255,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 - [Další informace o Azure Monitor](../../azure-monitor/overview.md)
 - [Přístup k metrikám pomocí REST API](rest-api-walkthrough.md)
 - [Streamování protokolu aktivit na službu, která není od Microsoftu](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Streamování diagnostických protokolů do služby od jiného výrobce než Microsoftu](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [Streamování protokolů prostředků na službu od jiného výrobce než Microsoftu](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 

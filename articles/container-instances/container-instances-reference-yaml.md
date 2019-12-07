@@ -3,12 +3,12 @@ title: YAML reference pro skupinu kontejnerů
 description: Odkaz na soubor YAML podporovaný nástrojem Azure Container Instances ke konfiguraci skupiny kontejnerů
 ms.topic: article
 ms.date: 08/12/2019
-ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533492"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896570"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>Odkaz na YAML: Azure Container Instances
 
@@ -38,7 +38,7 @@ properties: # Properties of container group
       image: string # Container image used to create the instance
       command:
       - string
-      ports: # Exposed ports on the instance
+      ports: # External-facing ports exposed on the instance, must also be set in group ipAddress property 
       - protocol: string
         port: integer
       environmentVariables:
@@ -140,7 +140,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  jméno | string | Ano | Název skupiny kontejnerů. |
-|  apiVersion | vytváření | Ano | 2018-10-01 |
+|  apiVersion | Výčet | Ano | 2018-10-01 |
 |  location | string | Ne | Umístění prostředku. |
 |  tags | object | Ne | Značky prostředků. |
 |  identita | object | Ne | Identita skupiny kontejnerů, je-li nakonfigurována. - [objekt ContainerGroupIdentity](#ContainerGroupIdentity) |
@@ -153,7 +153,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  type | vytváření | Ne | Typ identity použitý pro skupinu kontejnerů. Typ "SystemAssigned, UserAssigned" zahrnuje implicitně vytvořenou identitu a sadu identit přiřazených uživateli. Typ None odebere všechny identity ze skupiny kontejnerů. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None |
+|  type | Výčet | Ne | Typ identity použitý pro skupinu kontejnerů. Typ "SystemAssigned, UserAssigned" zahrnuje implicitně vytvořenou identitu a sadu identit přiřazených uživateli. Typ None odebere všechny identity ze skupiny kontejnerů. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None |
 |  userAssignedIdentities | object | Ne | Seznam identit uživatelů přidružených ke skupině kontejnerů. Odkazy na klíč uživatele slovníku identity budou Azure Resource Manager ID prostředků ve formátu: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} '. |
 
 
@@ -165,9 +165,9 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  ---- | ---- | ---- | ---- |
 |  containers | pole | Ano | Kontejnery v rámci skupiny kontejnerů. - [kontejnerový objekt](#Container) |
 |  imageRegistryCredentials | pole | Ne | Přihlašovací údaje registru bitové kopie, ze kterých se vytvoří skupina kontejnerů. - [objekt ImageRegistryCredential](#ImageRegistryCredential) |
-|  restartPolicy | vytváření | Ne | Restartujte zásady pro všechny kontejnery v rámci skupiny kontejnerů. - `Always` vždy restartovat – `OnFailure` restart při selhání – `Never` nikdy nerestartuje. – Vždycky, chyba, nikdy |
+|  restartPolicy | Výčet | Ne | Restartujte zásady pro všechny kontejnery v rámci skupiny kontejnerů. - `Always` vždy restartovat – `OnFailure` restart při selhání – `Never` nikdy nerestartuje. – Vždycky, chyba, nikdy |
 |  Adresa | object | Ne | Typ IP adresy skupiny kontejnerů.[objekt  - IPAddress](#IpAddress) |
-|  osType | vytváření | Ano | Typ operačního systému vyžadovaný kontejnery ve skupině kontejnerů. – Windows nebo Linux |
+|  osType | Výčet | Ano | Typ operačního systému vyžadovaný kontejnery ve skupině kontejnerů. – Windows nebo Linux |
 |  volumes | pole | Ne | Seznam svazků, které mohou být připojeny kontejnery v této skupině kontejnerů.[objekt  - Volume](#Volume) |
 |  Diagnostika | object | Ne | Diagnostické informace pro skupinu kontejnerů. - [objekt ContainerGroupDiagnostics](#ContainerGroupDiagnostics) |
 |  networkProfile | object | Ne | Informace o profilu sítě pro skupinu kontejnerů. - [objekt ContainerGroupNetworkProfile](#ContainerGroupNetworkProfile) |
@@ -202,7 +202,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  ports | pole | Ano | Seznam portů, které jsou vystavené ve skupině kontejnerů.[objekt  - portu](#Port) |
-|  type | vytváření | Ano | Určuje, jestli se IP adresa zveřejňuje pro veřejnou internetovou nebo privátní virtuální síť. – Veřejné nebo soukromé |
+|  type | Výčet | Ano | Určuje, jestli se IP adresa zveřejňuje pro veřejnou internetovou nebo privátní virtuální síť. – Veřejné nebo soukromé |
 |  IP | string | Ne | IP adresa veřejného Internetu. |
 |  dnsNameLabel | string | Ne | Popisek názvu DNS pro IP adresu. |
 
@@ -246,7 +246,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  ---- | ---- | ---- | ---- |
 |  Názvové servery | pole | Ano | Servery DNS pro skupinu kontejnerů. – řetězec |
 |  searchDomains | string | Ne | Domény hledání DNS pro vyhledávání názvů hostitelů ve skupině kontejnerů. |
-|  nastavení | string | Ne | Možnosti DNS pro skupinu kontejnerů. |
+|  options | string | Ne | Možnosti DNS pro skupinu kontejnerů. |
 
 
 <a id="ContainerProperties" />
@@ -271,8 +271,8 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  Protokol | vytváření | Ne | Protokol přidružený k portu – TCP nebo UDP |
-|  port | celé číslo | Ano | Číslo portu. |
+|  protocol | Výčet | Ne | Protokol přidružený k portu – TCP nebo UDP |
+|  port | celé číslo | Ano | Číslo portu |
 
 
 <a id="AzureFileVolume" />
@@ -282,7 +282,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  shareName | string | Ano | Název sdílené složky Azure, která se má připojit jako svazek. |
-|  ReadOnly | Boolean | Ne | Příznak označující, zda je sdílené soubory Azure připojené jako svazek jen pro čtení. |
+|  readOnly | Boolean | Ne | Příznak označující, zda je sdílené soubory Azure připojené jako svazek jen pro čtení. |
 |  storageAccountName | string | Ano | Název účtu úložiště, který obsahuje sdílenou složku Azure. |
 |  storageAccountKey | string | Ne | Přístupový klíč účtu úložiště, který se používá pro přístup ke sdílené složce Azure. |
 
@@ -293,9 +293,9 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  službě | string | Ne | Název cílového adresáře Nesmí obsahovat ani začínat znakem '.. '.  Je-li zadán znak ".", bude adresář svazku úložištěm Git.  V opačném případě bude svazek obsahovat úložiště Git v podadresáři se zadaným názvem. |
-|  úložištì | string | Ano | Adresa URL úložiště |
-|  Revize | string | Ne | Potvrďte hodnotu hash pro zadanou revizi. |
+|  adresář | string | Ne | Název cílového adresáře Nesmí obsahovat ani začínat znakem '.. '.  Je-li zadán znak ".", bude adresář svazku úložištěm Git.  V opačném případě bude svazek obsahovat úložiště Git v podadresáři se zadaným názvem. |
+|  úložiště | string | Ano | Adresa URL úložiště |
+|  revision | string | Ne | Potvrďte hodnotu hash pro zadanou revizi. |
 
 
 <a id="LogAnalytics" />
@@ -304,9 +304,9 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  ID pracovního prostoru | string | Ano | ID pracovního prostoru pro Log Analytics |
+|  workspaceId | string | Ano | ID pracovního prostoru pro Log Analytics |
 |  workspaceKey | string | Ano | Klíč pracovního prostoru pro Log Analytics |
-|  logType | vytváření | Ne | Typ protokolu, který se má použít. – ContainerInsights nebo ContainerInstanceLogs |
+|  logType | Výčet | Ne | Typ protokolu, který se má použít. – ContainerInsights nebo ContainerInstanceLogs |
 |  zprostředkovatele identity | object | Ne | Metadata pro Log Analytics. |
 
 
@@ -316,7 +316,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  Protokol | vytváření | Ne | Protokol přidružený k portu – TCP nebo UDP |
+|  protocol | Výčet | Ne | Protokol přidružený k portu – TCP nebo UDP |
 |  port | celé číslo | Ano | Číslo portu, které je zveřejněné ve skupině kontejnerů. |
 
 
@@ -337,8 +337,8 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  požádal | object | Ano | Požadavky na prostředky této instance kontejneru - [objekt ResourceRequests](#ResourceRequests) |
-|  lhůty | object | Ne | Omezení prostředků této instance kontejneru. - [objekt ResourceLimits](#ResourceLimits) |
+|  požadavků | object | Ano | Požadavky na prostředky této instance kontejneru - [objekt ResourceRequests](#ResourceRequests) |
+|  omezení | object | Ne | Omezení prostředků této instance kontejneru. - [objekt ResourceLimits](#ResourceLimits) |
 
 
 <a id="VolumeMount" />
@@ -349,7 +349,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  ---- | ---- | ---- | ---- |
 |  jméno | string | Ano | Název připojení svazku |
 |  mountPath | string | Ano | Cesta v kontejneru, do které má být svazek připojen. Nesmí obsahovat dvojtečku (:). |
-|  ReadOnly | Boolean | Ne | Příznak označující, zda je připojení svazku jen pro čtení. |
+|  readOnly | Boolean | Ne | Příznak označující, zda je připojení svazku jen pro čtení. |
 
 
 <a id="ContainerProbe" />
@@ -404,9 +404,9 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  dílčí | string | Ne | Cesta k testu |
+|  Cesta | string | Ne | Cesta k testu |
 |  port | celé číslo | Ano | Číslo portu k testování. |
-|  programu | vytváření | Ne | Schéma. – http nebo https |
+|  scheme | Výčet | Ne | Schéma. – http nebo https |
 
 
 <a id="GpuResource" />
@@ -416,7 +416,7 @@ V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit v
 |  Name (Název) | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  count | celé číslo | Ano | Počet prostředků GPU |
-|  skladové | vytváření | Ano | SKU zdroje GPU. – K80, P100, V100 |
+|  skj | Výčet | Ano | SKU zdroje GPU. – K80, P100, V100 |
 
 
 ## <a name="next-steps"></a>Další kroky

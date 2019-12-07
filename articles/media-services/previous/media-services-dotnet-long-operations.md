@@ -1,12 +1,12 @@
 ---
-title: Dotazování dlouho běžící operace | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak dlouho běžící operace dotazování.
+title: Cyklické dotazování na dlouhodobě běžící operace | Microsoft Docs
+description: Azure Media Services nabízí rozhraní API, která odesílají žádosti do Media Services spuštění operací (například vytvoření, spuštění, zastavení nebo odstranění kanálu), tyto operace jsou dlouhotrvající. V tomto tématu se dozvíte, jak se dotazovat na dlouhodobě běžící operace.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: Juliako
+writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 9a68c4b1-6159-42fe-9439-a3661a90ae03
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 752c502268ef53d3c0575d92e75ce6a965fccd9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43d9a6adc935010eab6e5e52d73f2019c8afcf5f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464976"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887149"
 ---
-# <a name="delivering-live-streaming-with-azure-media-services"></a>Zajištění živého streamování pomocí služby Azure Media Services
+# <a name="delivering-live-streaming-with-azure-media-services"></a>Živé streamování pomocí Azure Media Services
 
 ## <a name="overview"></a>Přehled
 
-Microsoft Azure Media Services nabízí rozhraní API, která odesílají požadavky na spuštění operace Media Services (Příklad: vytvoření, spuštění, zastavení nebo odstranění kanálu). Tyto operace jsou časově náročné.
+Microsoft Azure Media Services nabízí rozhraní API, která odesílají žádosti do Media Services spuštění operací (například: vytvoření, spuštění, zastavení nebo odstranění kanálu). Tyto operace jsou dlouhodobě spuštěné.
 
-Media Services .NET SDK poskytuje rozhraní API, která odešlete žádost a počkejte na dokončení operace (interně, rozhraní API jsou dotazování na průběh operace v některých intervalech). Například při volání kanálu. Start(), metoda vrátí po spuštění kanálu. Můžete také použít asynchronní verze: await kanálu. StartAsync() (informace o asynchronní vzor založený na úlohách najdete v tématu [klepněte](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Rozhraní API, které poslat žádost o operaci a poté dotazování na stav, až do dokončení operace se označují jako "dotazování metody". Tyto metody (zejména asynchronní verze) se doporučují pro aplikacemi rich client a/nebo stavové služby.
+Sada Media Services .NET SDK poskytuje rozhraní API, která odesílají požadavek a čekají na dokončení operace (interně se rozhraní API dotazuje na průběh operace v některých intervalech). Například při volání metody Channel. Start (), metoda se vrátí po spuštění kanálu. Můžete také použít asynchronní verzi: await kanál. StartAsync () (informace o asynchronním vzoru založeném na úlohách naleznete v tématu [klepněte](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Rozhraní API, která odesílají požadavek operace a následně se dotazují na stav, dokud se operace nedokončí, se nazývají "metody cyklického dotazování". Tyto metody (obzvláště asynchronní verze) se doporučují pro rozšířené klientské aplikace a/nebo stavové služby.
 
-Existují situacích, kdy aplikace nemůže čekat dlouho spuštěný požadavek http a chce, aby se k dotazování na průběh operace ručně. Typickým příkladem bude prohlížeč interakci s bezstavovou webovou službu: když Pokud chcete vytvořit kanál požádá o prohlížeče, webové služby inicializuje dlouhotrvající operace a vrátí ID operace do prohlížeče. Prohlížeč pak požádat o webové službě se získat stav operace vycházející z ID. Media Services .NET SDK poskytuje rozhraní API, které jsou užitečné pro tento scénář. Tato rozhraní API, se nazývají "-cyklického dotazování metody".
-"Bez dotazování metody" mají následující vzor pro pojmenování: Odeslat*OperationName*operace (například SendCreateOperation). Odeslat*OperationName*metodám operace vrátit **IOperation** objekt; vráceného objektu obsahuje informace, které je možné sledovat operaci. Odeslat*OperationName*OperationAsync metody vrací **úloh\<IOperation >** .
+K dispozici jsou situace, kdy aplikace nemůže čekat na dlouho běžící požadavek HTTP, a chce se dotazovat na průběh operace ručně. Typickým příkladem může být prohlížeč, který pracuje s bezstavovou webovou službou: když prohlížeč požaduje vytvoření kanálu, Webová služba spustí dlouhou běžící operaci a vrátí ID operace do prohlížeče. Prohlížeč pak může požádat webovou službu, aby získala stav operace na základě ID. Sada Media Services .NET SDK poskytuje rozhraní API, která jsou užitečná pro tento scénář. Tato rozhraní API se nazývají "metody bez cyklického dotazování".
+Metody "non-cyklického dotazování" mají následující vzor pojmenovávání:*operace Odeslat operaci*(například SendCreateOperation). Metody operace Send*operace*vrátí objekt **IOperation** ; vrácený objekt obsahuje informace, které lze použít ke sledování operace. Metody Send*OperationAsync*vrací **úlohu\<IOperation >** .
 
-Následující třídy v současné době podporují metody bez dotazování:  **Kanál**, **StreamingEndpoint**, a **Program**.
+V současné době následující třídy podporují metody bez cyklického dotazování: **kanál**, **StreamingEndpoint**a **program**.
 
-K dotazování na stav operace, použijte **GetOperation** metodu **OperationBaseCollection** třídy. Pomocí následujících intervalech zkontrolovat stav operace: pro **kanál** a **StreamingEndpoint** operace, použijte 30 sekund; pro **Program** operace, použijte 10 sekund.
+Chcete-li se dotázat na stav operace, použijte metodu **GetOperation** pro třídu **OperationBaseCollection** . Pomocí následujících intervalů ověřte stav operace: pro operace **kanálu** a **StreamingEndpoint** použijte 30 sekund; pro operace **programu** použijte 10 sekund.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
@@ -42,7 +42,7 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 
 ## <a name="example"></a>Příklad:
 
-Následující příklad definuje třídu s názvem **ChannelOperations**. Definici této třídy může být výchozí bod pro třídy definice webové služby. Pro zjednodušení následující příklady používají jiné asynchronní verze metod.
+Následující příklad definuje třídu s názvem **ChannelOperations**. Tato definice třídy by mohla být výchozím bodem definice vaší třídy webové služby. Pro zjednodušení následující příklady používají neasynchronní verze metod.
 
 Příklad také ukazuje, jak může klient použít tuto třídu.
 
@@ -191,7 +191,7 @@ public class ChannelOperations
 }
 ```
 
-### <a name="the-client-code"></a>Klientský kód
+### <a name="the-client-code"></a>Kód klienta
 
 ```csharp
 ChannelOperations channelOperations = new ChannelOperations();
@@ -213,6 +213,6 @@ Console.WriteLine(channelId);
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

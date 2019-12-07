@@ -1,20 +1,21 @@
 ---
-title: Návrh vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení (RA-GZRS nebo RA-GRS) | Microsoft Docs
-description: Jak používat úložiště Azure RA-GZRS nebo RA-GRS k navržení vysoce dostupné aplikace, která je dostatečně flexibilní, aby mohla zvládnout výpadky.
+title: Návrh aplikací s vysokou dostupností pomocí geograficky redundantního úložiště
+titleSuffix: Azure Storage
+description: Naučte se používat geograficky redundantní úložiště s přístupem pro čtení k navržení vysoce dostupné aplikace, která je dostatečně flexibilní, aby mohla zvládnout výpadky.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673116"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895345"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Návrh vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení
 
@@ -27,7 +28,7 @@ Běžnou funkcí cloudových infrastruktur, jako je Azure Storage, je, že posky
 
 V tomto článku se dozvíte, jak navrhnout aplikaci pro zpracování výpadku v primární oblasti. Pokud primární oblast nebude k dispozici, může být aplikace přizpůsobena provádění operací čtení v sekundární oblasti. Než začnete, ujistěte se, že je váš účet úložiště nakonfigurovaný pro RA-GRS nebo RA-GZRS.
 
-Informace o tom, které primární oblasti jsou spárovány se sekundárními oblastmi [, najdete v tématu provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Informace o tom, které primární oblasti jsou spárovány se sekundárními oblastmi, najdete v tématu [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 V tomto článku jsou uvedené fragmenty kódu a odkaz na úplnou ukázku na konci, kterou si můžete stáhnout a spustit.
 
@@ -66,7 +67,7 @@ Pokud například používáte ve své aplikaci fronty a objekty blob, můžete 
 
 Nakonec závisí na složitosti vaší aplikace. Můžete se rozhodnout Nezpracovávat selhání podle služby, ale místo toho přesměrovat požadavky na čtení pro všechny služby úložiště do sekundární oblasti a spustit aplikaci v režimu jen pro čtení při detekci problému se službou úložiště v primární oblasti.
 
-### <a name="other-considerations"></a>Další důležité informace
+### <a name="other-considerations"></a>Další aspekty
 
 Toto jsou další okolnosti, které budeme projednávat ve zbývající části tohoto článku.
 
@@ -100,7 +101,7 @@ Existuje mnoho způsobů, jak zpracovávat žádosti o aktualizaci při spuště
 
 Klientská knihovna Azure Storage vám pomůže určit, které chyby se můžou opakovat. Například Chyba 404 (prostředek se nepovedlo najít) se může opakovat, protože opakování nebude pravděpodobně mít za následek úspěch. Na druhé straně se chyba 500 nedá opakovat, protože se jedná o chybu serveru a může se jednat jenom o přechodný problém. Další podrobnosti najdete v [kódu open source pro třídu ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) v klientské knihovně úložiště .NET. (Vyhledejte metodu ShouldRetry.)
 
-### <a name="read-requests"></a>Požadavky na čtení
+### <a name="read-requests"></a>Žádosti o čtení
 
 Pokud dojde k potížím s primárním úložištěm, můžou se požadavky na čtení přesměrovat do sekundárního úložiště. Jak bylo uvedeno výše v [používání trvalých dat](#using-eventually-consistent-data), musí být přijatelné, aby vaše aplikace mohla číst zastaralá data. Pokud používáte klientskou knihovnu pro úložiště pro přístup k datům ze sekundární verze, můžete určit chování opakování žádosti o čtení nastavením hodnoty vlastnosti **LocationMode** na jednu z následujících možností:
 
@@ -195,7 +196,7 @@ V případě třetího scénáře se při opakovaném pokusu o ověření platno
 
 ## <a name="handling-eventually-consistent-data"></a>Zpracování nakonec konzistentních dat
 
-Geograficky redundantní úložiště funguje replikací transakcí z primární do sekundární oblasti. Tento proces replikace zaručuje, že data v sekundární oblasti jsou *nakonec konzistentní*. To znamená, že se všechny transakce v primární oblasti budou nakonec zobrazovat v sekundární oblasti, ale může se stát, že se objeví prodleva předtím, než se objeví, a nezaručujeme, že transakce přicházejí do sekundární oblasti ve stejném pořadí, v jakém jsou byly původně aplikovány v primární oblasti. Pokud vaše transakce dorazí do sekundární oblasti mimo pořadí, můžete zvážit , že vaše data v sekundární oblasti budou v nekonzistentním stavu, dokud se služba nedostane.
+Geograficky redundantní úložiště funguje replikací transakcí z primární do sekundární oblasti. Tento proces replikace zaručuje, že data v sekundární oblasti jsou *nakonec konzistentní*. To znamená, že se všechny transakce v primární oblasti budou nakonec zobrazovat v sekundární oblasti, ale může se stát, že se objeví prodleva předtím, než se objeví, a nezaručujeme, že transakce přicházejí do sekundární oblasti ve stejném pořadí, v jakém jsou byly původně aplikovány v primární oblasti. Pokud vaše transakce dorazí do sekundární oblasti mimo pořadí, *můžete zvážit, že vaše* data v sekundární oblasti budou v nekonzistentním stavu, dokud se služba nedostane.
 
 Následující tabulka ukazuje příklad toho, co se může stát, když aktualizujete podrobnosti o zaměstnanci, abyste je mohli udělat jako členové role *správců* . V tomto příkladu je potřeba aktualizovat entitu **Zaměstnanec** a aktualizovat entitu **role správce** s počtem celkového počtu správců. Všimněte si, jak se aktualizace aplikují v sekundární oblasti mimo pořadí.
 
@@ -203,13 +204,13 @@ Následující tabulka ukazuje příklad toho, co se může stát, když aktuali
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakce A: <br> Vložit zaměstnance <br> entita v primárním objektu |                                   |                    | Transakce A vložená na primární,<br> ještě není replikované. |
 | T1       |                                                            | Transakce A <br> replikováno do<br> sekundární | T1 | Transakce byla replikována do sekundárního. <br>Čas poslední synchronizace se aktualizoval.    |
-| T2       | Transakce B:<br>Aktualizace<br> entita zaměstnance<br> v primárním  |                                | T1                 | Transakce B se zapsala do primárního,<br> ještě není replikované.  |
-| T3       | Transakce C:<br> Aktualizace <br>správce<br>entita role v<br>primární |                    | T1                 | Transakce C byla zapsána do primárního,<br> ještě není replikované.  |
+| T2       | Transakce B:<br>Aktualizovat<br> Entita zaměstnance<br> v primárním  |                                | T1                 | Transakce B se zapsala do primárního,<br> ještě není replikované.  |
+| T3       | Transakce C:<br> Aktualizovat <br>správce<br>entita role v<br>primární |                    | T1                 | Transakce C byla zapsána do primárního,<br> ještě není replikované.  |
 | *T4*     |                                                       | Transakce C <br>replikováno do<br> sekundární | T1         | Transakce C byla replikována do sekundárního.<br>LastSyncTime se neaktualizovala, protože <br>transakce B se ještě nereplikoval.|
 | *T5*     | Čtení entit <br>ze sekundární                           |                                  | T1                 | Získáte zastaralou hodnotu pro zaměstnance. <br> entita, protože transakce B nebyla <br> replika ještě proběhla. Získáte novou hodnotu pro<br> entita role správce, protože C má<br> replikovateln. Čas poslední synchronizace ještě není.<br> Aktualizováno, protože transakce B<br> nereplikuje se. Můžete říct, že<br>entita role správce je nekonzistentní. <br>protože je datum/čas entity po <br>Čas poslední synchronizace |
 | *T6*     |                                                      | Transakce B<br> replikováno do<br> sekundární | T6                 | *T6* – všechny transakce prostřednictvím C <br>replikováno, čas poslední synchronizace<br> je aktualizovaný. |
 
-V tomto příkladu Předpokládejme, že klient přepne na čtení ze sekundární oblasti v T5. V tuto chvíli může úspěšně číst entitu **role správce** , ale entita obsahuje hodnotu pro počet správců, kteří nejsou konzistentní s počtem entit **zaměstnanců** označených jako správci v sekundárním umístění. oblast v tomto okamžiku. Váš klient může jednoduše zobrazit tuto hodnotu s rizikem, že se jedná o nekonzistentní informace. Klient se případně může pokusit určit, že **role správce** je v potenciálně nekonzistentním stavu, protože aktualizace nastaly mimo pořadí, a pak uživatele informovat o této skutečnosti.
+V tomto příkladu Předpokládejme, že klient přepne na čtení ze sekundární oblasti v T5. V tuto chvíli může úspěšně číst entitu **role správce** , ale entita obsahuje hodnotu pro počet správců, kteří nejsou konzistentní s počtem entit **zaměstnanců** , kteří jsou v této době označeni jako správci v sekundární oblasti. Váš klient může jednoduše zobrazit tuto hodnotu s rizikem, že se jedná o nekonzistentní informace. Klient se případně může pokusit určit, že **role správce** je v potenciálně nekonzistentním stavu, protože aktualizace nastaly mimo pořadí, a pak uživatele informovat o této skutečnosti.
 
 Aby bylo možné rozpoznat, že má potenciálně nekonzistentní data, může klient použít hodnotu *času poslední synchronizace* , kterou můžete kdykoli získat pomocí dotazu na službu úložiště. Tím se dozvíte čas, kdy byla data v sekundární oblasti naposledy konzistentní a kdy služba použila všechny transakce před tímto bodem v čase. V příkladu uvedeném výše služba vloží entitu **Zaměstnanec** do sekundární oblasti, čas poslední synchronizace se nastaví na *T1*. Zůstane v *T1* , dokud služba neaktualizuje entitu **Zaměstnanec** v sekundární oblasti, když je nastavená na *T6*. Pokud klient načte čas poslední synchronizace při čtení entity v *T5*, může ji porovnat s časovým razítkem v entitě. Pokud je časové razítko v entitě pozdější než čas poslední synchronizace, pak je entita v potenciálně nekonzistentním stavu a můžete to provést, pokud je pro vaši aplikaci vhodná akce. Použití tohoto pole vyžaduje, abyste věděli, kdy byla poslední aktualizace k primárnímu dokončení dokončena.
 
@@ -219,7 +220,7 @@ Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete načís
 
 ### <a name="powershell"></a>PowerShell
 
-Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí PowerShellu, nainstalujte modul Azure Storage Preview, který podporuje získávání statistik geografické replikace. Příklad:
+Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí PowerShellu, nainstalujte modul Azure Storage Preview, který podporuje získávání statistik geografické replikace. Například:
 
 ```powershell
 Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force

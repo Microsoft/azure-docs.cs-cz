@@ -1,18 +1,19 @@
 ---
-title: Upgrade na účet úložiště pro obecné účely v2 – Azure Storage | Microsoft Docs
+title: Upgrade na účet úložiště pro obecné účely v2
+titleSuffix: Azure Storage
 description: Upgradujte na účty úložiště pro obecné účely v2.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 03/26/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806962"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892222"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely v2
 
@@ -84,7 +85,7 @@ Všechny účty úložiště vycházejí z cenového modelu úložiště objekt�
 
 * **Cena za přenosy dat geografické replikace:** Tento poplatek se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
 
-* **Náklady na přenos odchozích dat**: odchozí přenosy dat (data přenesená mimo oblast Azure) účtují za využití šířky pásma po gigabajty, stejně jako v případě účtů úložiště pro obecné účely.
+* **Cena za odchozí přenosy dat**: Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za GB, stejně jako je tomu u účtů úložiště pro obecné účely.
 
 * **Změna úrovně přístupu úložiště**: Změna úrovně přístupu k úložišti účtů ze studené na horkou má poplatek, který se rovná čtení všech dat existujících v účtu úložiště. Změna úrovně přístupu k účtu z horké na studenou se ale účtuje za poplatek, který se rovná zápisu všech dat do studené úrovně (pouze účty GPv2).
 
@@ -96,11 +97,12 @@ Všechny účty úložiště vycházejí z cenového modelu úložiště objekt�
 Chcete-li odhadnout náklady na ukládání a přístup k datům objektů BLOB v účtu úložiště pro obecné účely V2 v konkrétní úrovni, vyhodnoťte stávající vzor použití nebo zvažte očekávaný vzor využití. Celkově vzato potřebujete vědět:
 
 * Spotřeba úložiště objektů BLOB (v gigabajtech), včetně:
-    - Kolik dat se v účtu úložiště ukládá?
-    - Jak se mění objem dat měsíčně? Nahrazují nová data neustále stará data?
+  * Kolik dat se v účtu úložiště ukládá?
+  * Jak se mění objem dat měsíčně? Nahrazují nová data neustále stará data?
+
 * Základní vzor přístupu pro data služby Blob Storage, včetně:
-    - Kolik dat se čte a zapisuje do účtu úložiště?
-    - Kolik operací čtení a operací zápisu dochází k datům v účtu úložiště?
+  * Kolik dat se čte a zapisuje do účtu úložiště?
+  * Kolik operací čtení a operací zápisu dochází k datům v účtu úložiště?
 
 Abyste se rozhodli, jak úroveň přístupu vyhovuje vašim potřebám, může být užitečné určit kapacitu vašich dat objektů BLOB a způsob, jakým se data používají. To se dá nejlépe udělat tím, že si prohlížíte metriky monitorování pro váš účet.
 
@@ -119,7 +121,7 @@ Když tuto funkci zapnete, data o kapacitě služby Blob service pro daný úče
 Aby bylo možné pro účet úložiště Blob monitorovat vzory přístupu k datům, je potřeba povolit hodinovou metriku transakcí z rozhraní API. Když povolíte hodinovou metriku transakcí, data o transakcích rozhraní API se budou každou hodinu shromažďovat a zaznamenávat jako zápisy do tabulky *$MetricsHourPrimaryTransactionsBlob* v rámci stejného účtu úložiště. Při použití účtů úložiště RA-GRS zaznamenává tabulka *$MetricsHourSecondaryTransactionsBlob* transakce do sekundárního koncového bodu.
 
 > [!NOTE]
-> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty blob stránky a disky virtuálních počítačů, případně fronty, soubory nebo tabulky, vedle dat objektů blob bloku a Append, tento proces odhadu se nedá použít. Data o kapacitě nerozlišují objekty blob bloku od ostatních typů a neposkytují data o kapacitě pro ostatní typy dat. Pokud používáte tyto typy, můžete se podívat na množství na nejnovějším vyúčtování.
+> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty blob stránky a disky virtuálních počítačů, případně fronty, soubory, nebo tabulky, vedle dat objektů blob bloku a doplňovacích objektů blob, odhad tímto postupem provést nepůjde. Data o kapacitě nerozlišují objekty blob bloku od ostatních typů a neposkytují data o kapacitě pro ostatní typy dat. Pokud používáte tyto typy, můžete se podívat na množství na nejnovějším vyúčtování.
 
 Pokud chcete dobře odhadnout spotřebu dat a přístup k nim, doporučujeme pro měření dat vybrat takovou dobu uchování, která vystihuje pravidelné používání, a potom údaje extrapolovat. Můžete například měřená data uchovávat po sedm dní, sesbírat jednou za týden a analyzovat je na konci měsíce. Nebo změřte a nasbírejte data za posledních 30 dní a na konci 30denního období je analyzujte.
 
@@ -165,5 +167,5 @@ Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v p
 
 ## <a name="next-steps"></a>Další kroky
 
-- [vytvořit účet úložiště](storage-quickstart-create-account.md)
-- [Správa účtů služby Azure Storage](storage-account-manage.md)
+* [vytvořit účet úložiště](storage-quickstart-create-account.md)
+* [Správa účtů služby Azure Storage](storage-account-manage.md)

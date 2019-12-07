@@ -1,6 +1,6 @@
 ---
-title: Průvodce odstraňováním potíží pro živé streamování | Dokumentace Microsoftu
-description: Toto téma nabízí návrhy na řešení problémů živého streamování.
+title: Průvodce odstraňováním potíží pro živé streamování | Microsoft Docs
+description: Tento článek obsahuje návrhy, jak řešit potíže s Azure Media Servicesm při živém streamování.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,48 +13,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f502e3228274840d23b9f52512280fc0d9f0553b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b00df5e8176aaad86be5cf3ae4e04c736f36cf5b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544690"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885598"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Průvodce řešením potíží s živým streamováním  
 
-Tento článek obsahuje návrhy, jak řešit potíže živého streamování.
+Tento článek obsahuje návrhy na řešení problémů s živým streamování.
 
-## <a name="issues-related-to-on-premises-encoders"></a>Problémy související s místní kodéry
-Tato část poskytuje návrhy, jak řešit problémy související s místních kodérů, které jsou konfigurované k odesílání datového proudu s jednou přenosovou rychlostí do AMS kanálů, které jsou povolené kódování v reálném čase.
+## <a name="issues-related-to-on-premises-encoders"></a>Problémy související s místními kodéry
+V této části najdete návrhy, jak řešit problémy související s místními kodéry, které jsou nakonfigurované k odesílání datových proudů s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase.
 
-### <a name="problem-would-like-to-see-logs"></a>Problém: Chcete zobrazit protokoly
-* **Potenciální problém**: Nelze najít kodér protokoly, které mohou být užitečné při ladění problémů.
+### <a name="problem-would-like-to-see-logs"></a>Problém: Chci zobrazit protokoly
+* **Možný problém**: nepovedlo se najít protokoly kodéru, které by mohly pomáhat při ladění problémů.
   
-  * **Telestream Wirecast**: Obvykle lze najít protokoly pod C:\Users\{uživatelské jméno} \AppData\Roaming\Wirecast\ 
-  * **Elemental Live**: Můžete najít na portálu pro správu obsahuje odkazy na protokoly. Klikněte na **statistiky**, pak **protokoly**. Na **soubory protokolů** stránky, zobrazí se seznam protokolů pro všechny položky Livestream; vyberte odpovídající vaší aktuální relace. 
-  * **Flash Media Live Encoder**: Můžete najít **adresář protokolu...**  tak, že přejdete na **kódování protokolu** kartu.
+  * **Wirecast proudu**: obvykle můžete najít protokoly v části C:\Users\{username} \AppData\Roaming\Wirecast\ 
+  * **Element-Live**: můžete najít odkazy na protokoly na portálu pro správu. Klikněte na **Statistika**a pak na **protokoly**. Na stránce **soubory protokolu** se zobrazí seznam protokolů pro všechny položky Livestream. Vyberte jednu vyhovující vaší aktuální relaci. 
+  * **Live Encoder Flash Media**: **adresář protokolu** můžete najít tak, že přejdete na kartu **protokol kódování** .
 
-### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Problém: Neexistuje žádná možnost pro výstup progresivní datového proudu
-* **Potenciální problém**: Kodér používá nebude automaticky zrušit prokládání. 
+### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Problém: neexistuje žádná možnost pro výstup progresivního datového proudu.
+* **Potenciální problém**: používaný kodér neprovádí automatické odkládání. 
   
-    **Řešení potíží**: Vyhledejte odstraňování prokládání možnost v rámci rozhraní kodér. Po povolení zrušení prokládání znovu zkontrolujte nastavení progresivní výstup. 
+    **Postup řešení potíží**: vyhledejte možnost zrušení prokládání v rámci rozhraní kodéru. Po povolení rušení prokládání znovu ověřte nastavení progresivního výstupu. 
 
-### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Problém: Pokusili několik nastavení výstupní kodér a ani nadále nejde navázat připojení.
-* **Potenciální problém**: Azure kódování kanálu nebylo resetováno správně. 
+### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Problém: došlo k pokusu o několik nastavení výstupů kodéru a stále se nemůže připojit.
+* **Možný problém**: kanál kódování Azure nebyl správně resetován. 
   
-    **Řešení potíží**: Ujistěte se, že kodér je už doručením (push) do AMS, zastavte a znovu nastavit kanál. Po spuštění znovu, zkuste se připojit váš kodér s novým nastavením. Pokud to problém stále nevyřeší, zkuste si vytvořit zcela nový kanál, někdy kanálů může být poškozený, po několika neúspěšných pokusech o.  
-* **Potenciální problém**: Nejsou optimální velikost GOP nebo nastavení klíčových snímků. 
+    **Postup řešení potíží**: Zajistěte, aby kodér přestal předávat do AMS, kanál zastaví a resetuje. Po opětovném spuštění zkuste kodér připojit k novému nastavení. Pokud se tím problém nevyřeší, zkuste vytvořit nový kanál úplně, někdy se kanály můžou poškodit po několika neúspěšných pokusech.  
+* **Možný problém**: nastavení velikosti skupinu GOP nebo klíčových snímků nejsou optimální. 
   
-    **Řešení potíží**: Doporučená velikost nebo klíčového snímku interval GOP je 2 sekundy. Některé kodérů vypočítat toto nastavení v počet snímků, zatímco v jiných sekund. Příklad: Při výstupu 30 snímků za sekundu, bude velikost GOP 60 snímků, což je totéž jako 2 sekundy.  
-* **Potenciální problém**: Uzavřené porty blokují datového proudu. 
+    **Postup řešení potíží**: Doporučená velikost skupinu GOP nebo interval klíčového snímku jsou dvě sekundy. Některé kodéry počítají toto nastavení v počtu snímků, zatímco jiné používají sekundy. Příklad: při uvádění 30 snímků za sekundu by velikost skupinu GOP představovala 60 snímků, což je ekvivalent 2 sekund.  
+* **Potenciální problém**: uzavřené porty blokují datový proud. 
   
-    **Řešení potíží**: Při streamování přes RTMP, zkontrolujte nastavení brány firewall nebo proxy serveru pro potvrzení, že jsou otevřené odchozí porty 1935 a 1936. 
+    **Postup řešení potíží**: při streamování pomocí RTMP zkontrolujte nastavení brány firewall nebo proxy serveru a potvrďte, že jsou otevřené odchozí porty 1935 a 1936. 
 
 > [!NOTE]
-> Pokud po provedení kroků řešení potíží, které stále nelze použít datový proud úspěšně, vyplňte lístek podpory na webu Azure portal.
+> Pokud se po provedení kroků pro řešení potíží stále nemůžete úspěšně streamovat, odešlete lístek podpory pomocí Azure Portal.
 > 
 > 
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

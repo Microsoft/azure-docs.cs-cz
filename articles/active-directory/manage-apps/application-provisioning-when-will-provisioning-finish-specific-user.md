@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275741"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900411"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -101,6 +101,8 @@ Souhrn faktorů, které mají vliv na dobu potřebnou k dokončení **počáteč
 - Omezení rychlosti požadavků a omezování implementované cílovým systémem. Některé cílové systémy implementují omezení přenosů požadavků a omezování, což může mít vliv na výkon při rozsáhlých operacích synchronizace. V rámci těchto podmínek aplikace, která přijímá příliš mnoho požadavků, může být příliš rychlá a může zpomalit rychlost odezvy nebo ukončit připojení. Aby bylo možné zvýšit výkon, musí konektor upravit tím, že neposílá požadavky aplikace rychleji, než je aplikace dokáže zpracovat. Tuto úpravu vytváří konektory zřízené Microsoftem. 
 
 - Počet a velikost přiřazených skupin. Synchronizace přiřazených skupin trvá déle než synchronizace uživatelů. Počet i velikost přiřazených skupin mají vliv na výkon. Pokud má aplikace [povolená mapování pro synchronizaci objektů skupin](customize-application-attributes.md#editing-group-attribute-mappings), jsou kromě uživatelů synchronizovány i vlastnosti skupiny, jako jsou názvy skupin a členství. Tyto další synchronizace budou trvat déle než jenom synchronizace uživatelských objektů.
+
+- Pokud dojde k potížím s výkonem a pokoušíte se zřídit většinu uživatelů a skupin ve vašem tenantovi, použijte filtry oborů. Filtry oborů vám umožňují vyladit data, která služba zřizování z Azure AD extrahuje, filtrováním uživatelů na základě konkrétních hodnot atributů. Další informace o filtrech oborů najdete v tématu [zřizování aplikací na základě atributů s filtry oborů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 
 ## <a name="next-steps"></a>Další kroky
 [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

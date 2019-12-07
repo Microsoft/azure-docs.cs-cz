@@ -1,6 +1,6 @@
 ---
-title: Zjistit možné obsahu pro dospělé nebo pikantního obsahu pomocí Azure Media Content Moderator | Dokumentace Microsoftu
-description: Moderování videa pomáhá detekovat potenciální obsahu pro dospělé nebo pikantního obsahu ve videích.
+title: Použití Azure Media Content Moderator k detekci možného obsahu pro dospělé a pikantní | Microsoft Docs
+description: Procesor Azure Media Content Moderator Media pomáhá detekovat potenciální obsah pro dospělé a pikantní ve videích.
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -14,81 +14,81 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465673"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896003"
 ---
-# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Použití Azure Media Content Moderator rozpoznat možné obsahu pro dospělé nebo pikantního obsahu 
+# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Použití Azure Media Content Moderator k detekci možného obsahu pro dospělé a pikantní 
 
 ## <a name="overview"></a>Přehled
-**Azure Media Content Moderator** procesor médií (PP) vám umožní použít moderování s podporou počítače pro svá videa. Ve videích například můžete chtít detekovat potenciálně nevhodný obsah nebo obsah pro dospělé a označený obsah nechat zkontrolovat týmy lidského moderování.
+Procesor **Azure media Content moderator** Media procesor (MP) umožňuje používat pro vaše videa moderování s asistencí počítače. Ve videích například můžete chtít detekovat potenciálně nevhodný obsah nebo obsah pro dospělé a označený obsah nechat zkontrolovat týmy lidského moderování.
 
-**Azure Media Content Moderator** sady Management Pack je aktuálně ve verzi Preview.
+Sada **Azure Media Content moderator** MP je momentálně ve verzi Preview.
 
-Tento článek obsahuje podrobnosti o **Azure Media Content Moderator** a ukazuje, jak používat ve službě Media Services SDK pro .NET.
+Tento článek obsahuje podrobné informace o **Azure Media Content moderator** a ukazuje, jak ho používat s Media Services SDK pro .NET.
 
-## <a name="content-moderator-input-files"></a>Content Moderator vstupních souborů
-Video soubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
+## <a name="content-moderator-input-files"></a>Content Moderator vstupní soubory
+Videosoubory. V současné době jsou podporovány následující formáty: MP4, MOV a WMV.
 
 ## <a name="content-moderator-output-files"></a>Content Moderator výstupní soubory
-Moderované výstup ve formátu JSON obsahuje automaticky rozpoznané snímky a klíčové snímky. Klíčové snímky jsou vráceny pomocí skóre spolehlivosti pro možný obsah pro dospělé nebo pikantního. Také zahrnují příznak logické hodnoty označující, zda se doporučuje kontrolu. Příznak zkontrolujte doporučení se přiřadí hodnoty na základě interní prahových hodnot pro dospělé nebo pikantního skóre.
+Moderovaný výstup ve formátu JSON obsahuje automaticky rozpoznané snímky a klíčové snímky. Klíčové snímky jsou vráceny s hodnocením spolehlivosti pro možný obsah pro dospělé nebo pikantní. Obsahují také logický příznak označující, zda je doporučena revize. Příznak přezkoumání doporučení se přiřazuje hodnotám na základě vnitřních prahových hodnot pro dospělé a pikantní skóre.
 
 ## <a name="elements-of-the-output-json-file"></a>Prvky výstupního souboru JSON
 
-Úloha vytvoří výstupní soubor JSON, který obsahuje metadata o zjištěných snímky a klíčové snímky a určuje, zda obsahují pro dospělé nebo pikantního obsahu.
+Úloha vytvoří výstupní soubor JSON, který obsahuje metadata zjištěných snímků a klíčových snímků a zda obsahují obsah pro dospělé nebo pikantní.
 
-Ve výstupu JSON obsahuje následující prvky:
+Výstupní JSON obsahuje následující prvky:
 
-### <a name="root-json-elements"></a>JSON kořenové prvky
+### <a name="root-json-elements"></a>Kořenové elementy JSON
 
 | Element | Popis |
 | --- | --- |
-| version |Verze Content Moderatoru. |
-| Časová osa |"Značky" za sekundu videa. |
-| offset |Posun času pro časová razítka. Ve verzi 1.0 rozhraní API pro Video bude tato hodnota vždy 0. Tato hodnota může v budoucnu změnit. |
-| snímkovou |Počet snímků ve videu za sekundu. |
-| Šířka |Šířka rámce výstup videa, v pixelech.|
-| Výška |Výška snímek výstup videa, v pixelech.|
-| totalDuration |Doba trvání vstupního videa v "impulzech." |
-| [fragmenty](#fragments-json-elements) |Metadata je rozdělený do bloků dat až do různých segmentů zvaných fragmenty. Každý fragment je snímek automaticky detekované pomocí spuštění, dobu trvání, číslo intervalu a události. |
+| version |Verze Content Moderator. |
+| timescale |"Takty" za sekundu videa. |
+| offset |Posun času pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. Tato hodnota se může v budoucnu změnit. |
+| framerate |Počet snímků ve videu za sekundu. |
+| šířka |Šířka výstupního snímku videa (v pixelech)|
+| výška |Výška výstupního snímku videa v pixelech|
+| TotalDuration |Doba trvání vstupního videa v části "osové". |
+| [svalovin](#fragments-json-elements) |Metadata jsou rozdělená do různých segmentů s názvem fragmenty. Každý fragment je automaticky zjištěný snímek s počátečním, dobou trvání, číslem intervalu a událostmi. |
 
-### <a name="fragments-json-elements"></a>Elementy fragmentů JSON
-
-|Element|Popis|
-|---|---|
-| start |Čas zahájení první událost v "impulzech." |
-| Doba trvání |Délka fragment v "impulzech." |
-| interval |Interval každý záznam událostí v rámci fragment v "impulzech." |
-| [Události](#events-json-elements) |Každá událost představuje klipu a každý klip obsahuje klíčové snímky zjištěna a sledovány v rámci této dobu trvání. Je to pole událostí. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které se v tomto bodu v čase odehrály.|
-
-### <a name="events-json-elements"></a>Elementy JSON událostí
+### <a name="fragments-json-elements"></a>Fragmenty – elementy JSON
 
 |Element|Popis|
 |---|---|
-| reviewRecommended | `true` nebo `false` podle toho, jestli **adultScore** nebo **racyScore** překročí interní prahové hodnoty. |
-| adultScore | Skóre spolehlivosti pro možný obsah pro dospělé, na škále od 0,00 a 0,99. |
-| racyScore | Skóre spolehlivosti možné pikantní obsah, na škále od 0,00 a 0,99. |
-| index | index rámce na škále od prvního rámce indexu na poslední index snímku. |
-| timestamp | Umístění tohoto rámce v "impulzech." |
-| shotIndex | Index nadřazený snímek. |
+| zahájení |Čas zahájení první události v "taktech". |
+| duration |Délka fragmentu v "taktech". |
+| interval |Interval každé položky události v rámci fragmentu v části "osové". |
+| [událost](#events-json-elements) |Každá událost představuje klip a každý klip obsahuje klíčové snímky zjištěné a sledované během této doby trvání. Jedná se o pole událostí. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které se v tomto bodu v čase odehrály.|
+
+### <a name="events-json-elements"></a>Události – elementy JSON
+
+|Element|Popis|
+|---|---|
+| reviewRecommended | `true` nebo `false` v závislosti na tom, zda **adultScore** nebo **racyScore** překračují vnitřní prahové hodnoty. |
+| adultScore | Hodnocení spolehlivosti pro možný obsah pro dospělé, na škále 0,00 až 0,99. |
+| racyScore | Hodnocení spolehlivosti možného obsahu pikantní na škále 0,00 až 0,99. |
+| index | index rámce na stupnici od prvního indexu snímku až po poslední index snímku. |
+| časové razítko | Umístění rámce v "taktech". |
+| shotIndex | Index nadřazeného snímku |
 
 
-## <a name="content-moderation-quickstart-and-sample-output"></a>Rychlý start a ukázkový výstup moderování obsahu
+## <a name="content-moderation-quickstart-and-sample-output"></a>Rychlý Start a ukázkový výstup pro moderování obsahu
 
-### <a name="task-configuration-preset"></a>Konfigurace úlohy (nastavení)
-Při vytváření úlohy s **Azure Media Content Moderator**, je nutné zadat nastavení konfigurace. Následující nastavení konfigurace je jen pro moderování obsahu.
+### <a name="task-configuration-preset"></a>Konfigurace úlohy (předvolba)
+Při vytváření úlohy pomocí **Azure Media Content moderator**musíte zadat předvolby konfigurace. Následující předvolba konfigurace je jenom pro moderování obsahu.
 
     {
       "version":"2.0"
     }
 
-### <a name="net-code-sample"></a>Ukázku kódu .NET
+### <a name="net-code-sample"></a>Ukázka kódu .NET
 
-Následující vzorový kód .NET používá ke spuštění úlohy Content Moderator Media Services .NET SDK. Média trvá jako vstup, který obsahuje video a možné Moderovat služby Asset.
-Najdete v článku [videa rychlý start Content Moderator](../../cognitive-services/Content-Moderator/video-moderation-api.md) pro úplný zdrojový kód a projekt aplikace Visual Studio.
+Následující ukázka kódu .NET používá sadu Media Services .NET SDK ke spuštění úlohy Content Moderator. Přebírá Asset Media Services jako vstup, který obsahuje video, které se má moderováno.
+Úplný zdrojový kód a projekt sady Visual Studio najdete v tématu [rychlý Start pro Content moderator video](../../cognitive-services/Content-Moderator/video-moderation-api.md) .
 
 
 ```csharp
@@ -220,20 +220,20 @@ The following example of a Content Moderator JSON output was truncated.
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Azure Media Services Analytics Overview](media-services-analytics-overview.md)
+[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Ukázky Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Content Moderatoru [řešením pro video moderování a kontrola](../../cognitive-services/Content-Moderator/video-moderation-human-review.md).
+Přečtěte si další informace o tom, jak se vylepší [a Prohlédněte si řešení](../../cognitive-services/Content-Moderator/video-moderation-human-review.md)Content moderator 's
 
-Získejte úplný zdrojový kód a projekt sady Visual Studio z [moderování videa quickstart](../../cognitive-services/Content-Moderator/video-moderation-api.md). 
+Získání úplného zdrojového kódu a projektu sady Visual Studio z rychlého startu pro zobrazení pro [moderování videa](../../cognitive-services/Content-Moderator/video-moderation-api.md) 
 
-Zjistěte, jak generovat [video kontroly](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md) moderované výstupu, a [střední záznamy o studiu](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md) v rozhraní .NET.
+Naučte se generovat [recenze videí](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md) z moderovaného výstupu a [mírného přepisu](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md) v .NET.
 
-Podívejte se na podrobné .NET [výukovém videu moderování a kontrola](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md). 
+Projděte si podrobného [kurzu pro moderování a kontrolu videa](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md).NET. 

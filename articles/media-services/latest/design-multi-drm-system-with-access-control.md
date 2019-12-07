@@ -1,6 +1,6 @@
 ---
 title: Návrh systému ochrany obsahu s více technologiemi DRM pomocí řízení přístupu – Azure Media Services | Microsoft Docs
-description: Informace o možnostech licencování Microsoft Smooth Streaming klienta portování Kit.
+description: V tomto článku najdete podrobný popis návrhu systému ochrany obsahu s více technologiemi DRM pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310332"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896171"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu 
 
@@ -27,7 +27,7 @@ Návrh a vytváření správy digitálních práv (DRM) subsystém pro over-the-
 
 Cílové čtecí zařízení pro tento dokument se techniků, kteří pracují v DRM subsystémy OTT nebo řešení online streamování/s více obrazovkami nebo čtenáře, kteří mají zájem o subsystémy DRM. Předpokladem je, že čtečky obeznámeni s alespoň jedním technologií DRM na trhu, jako je PlayReady, Widevine, FairPlay nebo Adobe přístup.
 
-V této diskuzi se službou multi-DRM zahrnuje 3 několikanásobnou, které podporuje Azure Media Services: Common Encryption (CENC) pro PlayReady a Widevine, FairPlay a šifrování AES-128 Clear Key Encryption. Hlavní trendu v oboru OTT a online streamování se má používat nativní technologiemi DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
+V této diskuzi pomocí několika variant DRM zahrnujeme 3 technologiemi DRM podporovaných službou Azure Media Services: běžné šifrování (CENC) PlayReady a Widevine, FairPlay, jakož i AES-128 s nezašifrovaným klíčem. Hlavní trendu v oboru OTT a online streamování se má používat nativní technologiemi DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
 
 Mezi výhody používání nativní s více variantami DRM pro ochranu obsahu se, že:
 
@@ -116,11 +116,11 @@ Tyto aspekty jsou důležité
 
 Pokud chcete použít veřejný cloud pro naším vlastním doručováním licencí, trvalé a nonpersistent licence mít přímý vliv na náklady na licence doručování. Následující dva případy návrhů slouží pro ilustraci:
 
-* Měsíční předplatné: Použijte trvalou licenci a mapování klíč-to-Asset obsahu 1: n. Například všech dětí filmů, používáme jeden klíč k obsahu pro šifrování. V tomto případě:
+* Měsíční předplatné: použijte trvalou licenci a obsahu klíč assetu mapování 1: m. Například všech dětí filmů, používáme jeden klíč k obsahu pro šifrování. V tomto případě:
 
     Celkový počet licencí požadovaným pro všechny děti filmy/zařízení = 1
 
-* Měsíční předplatné: Použijte netrvalou licenci a mapování 1:1 mezi klíčem obsahu a Assetem. V tomto případě:
+* Měsíční předplatné: nonpersistent licenci a mapování 1: 1 mezi klíče k obsahu a prostředků. V tomto případě:
 
     Celkový počet licencí požadovaným pro všechny děti filmy/zařízení = [čísla filmů sledovali vysílání televizní] x [počet relací]
 
@@ -245,7 +245,7 @@ Použijte následující informace o odstraňování potíží pro pomoc při po
 
 * Členství ve skupině udělit deklarací oprávnění. Ujistěte se, že je v souboru manifestu aplikace Azure AD: 
 
-    "groupMembershipClaims": "All" (výchozí hodnota je null)
+    "groupMembershipClaims": "Vše" (výchozí hodnota je null)
 
 * Nastavte správný typ TokenType při vytváření omezení požadavků.
 
@@ -286,15 +286,15 @@ Autoři měli účet vytvoření nebo přidání za vás může kontaktovat.
 
 Na následujících snímcích obrazovky zobrazit různé přihlašovací stránky používá jinou doménu účty:
 
-**Vlastní účet domény tenanta Azure AD**: Přizpůsobená přihlašovací stránka vlastní domény tenanta Azure AD.
+**Vlastní služby Azure AD tenant účet domény**: přizpůsobené přihlašovací stránky z vlastní služby Azure AD tenanta domény.
 
 ![Účtu tenanta domény vlastní služby Azure AD, jeden](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Doménový účet Microsoft s čipovou kartou**: Přihlašovací stránka přizpůsobená Microsoftem IT Pomocí dvojúrovňového ověřování.
+**Microsoft doménový účet s čipovou kartu**: přihlašovací stránky přizpůsobený microsoftem podnikové IT s dvoufaktorovým ověřováním.
 
 ![Účet domény vlastní služby Azure AD tenanta dvě](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Účet Microsoft**: Přihlašovací stránka účet Microsoft pro příjemce.
+**Účet Microsoft**: přihlašovací stránku účtu Microsoft pro zákazníky.
 
 ![Účet domény vlastní služby Azure AD tenanta tři](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
@@ -350,7 +350,7 @@ Následující snímek obrazovky ukazuje scénář, který se používá asymetr
 
 Ověřování uživatelů v obou předchozích případech zůstává stejný. To se provádí prostřednictvím služby Azure AD. Jediným rozdílem je, že jsou vydané tokeny Jwt vlastních služeb STS místo Azure AD. Když nakonfigurujete dynamické šifrování CENC ochranu, licenční omezení doručování služby určuje typ tokenů JWT symetrický nebo asymetrickým klíčem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nejčastější dotazy](frequently-asked-questions.md)
 * [Přehled ochrany obsahu](content-protection-overview.md)

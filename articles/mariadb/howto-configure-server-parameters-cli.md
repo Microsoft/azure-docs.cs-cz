@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 6616bd8172e9bc049a6e0e2c687390197de2f391
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 707f4eca440c0e8461420ff0bbc5e67f8e5ad69d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767309"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888508"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí Azure CLI
 Pomocí Azure CLI, nástroje příkazového řádku Azure můžete vypsat, zobrazit a aktualizovat parametry konfigurace Azure Database for MariaDB serveru. Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit.
@@ -57,7 +57,7 @@ Tento kód obnoví **pomalé\_dotaz\_konfiguraci protokolu** na výchozí hodnot
 
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 
-### <a name="populating-the-time-zone-tables"></a>Naplnění tabulek časových pásem
+### <a name="populating-the-time-zone-tables"></a>Naplnění tabulek časové pásmo
 
 Tabulky časových pásem na vašem serveru se dají naplnit voláním `az_load_timezone` uložené procedury z nástroje, jako je příkazový řádek MariaDB nebo MariaDB Workbench.
 
@@ -68,13 +68,16 @@ Tabulky časových pásem na vašem serveru se dají naplnit voláním `az_load_
 CALL mysql.az_load_timezone();
 ```
 
-Chcete-li zobrazit dostupné hodnoty časového pásma, spusťte následující příkaz:
+> [!IMPORTANT]
+> Je nutné restartovat server, aby bylo zajištěno, že tabulky časových pásem budou správně vyplněny. K restartování serveru použijte [Azure Portal](howto-restart-server-portal.md) nebo [CLI](howto-restart-server-cli.md).
+
+Chcete-li zobrazit hodnoty dostupné časové pásmo, spusťte následující příkaz:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Nastavení časového pásma globální úrovně
+### <a name="setting-the-global-level-time-zone"></a>Nastavení na globální úrovni časové pásmo
 
 Časové pásmo globální úrovně lze nastavit pomocí příkazu [AZ MariaDB Server Configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) .
 
@@ -84,9 +87,9 @@ Následující příkaz aktualizuje parametr konfigurace serveru **\_zóny** ser
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
 ```
 
-### <a name="setting-the-session-level-time-zone"></a>Nastavení časového pásma úrovně relace
+### <a name="setting-the-session-level-time-zone"></a>Nastavení časového pásma úrovni relace
 
-Časové pásmo úrovně relace můžete nastavit spuštěním příkazu `SET time_zone` z nástroje, jako je příkazový řádek MariaDB nebo MariaDB Workbench. Následující příklad nastaví časové pásmo na časové pásmo **USA/Tichomoří** .  
+Časové pásmo úrovně relace můžete nastavit spuštěním příkazu `SET time_zone` z nástroje, jako je příkazový řádek MariaDB nebo MariaDB Workbench. Následující příklad nastaví časové pásmo **US / Tichomoří** časové pásmo.  
 
 ```sql
 SET time_zone = 'US/Pacific';

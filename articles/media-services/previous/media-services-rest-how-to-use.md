@@ -1,6 +1,6 @@
 ---
 title: Media Services Operations REST API Overview | Microsoft Docs
-description: Přehled Media Services REST API
+description: Rozhraní API "Media Services Operations REST" se používá k vytváření úloh, assetů, živých kanálů a dalších prostředků v účtu Media Services. Tento článek poskytuje přehled REST API Azure Media Services V2.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 29b995d722cd304cc85580ac4f2f38a0b0d9cecd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014850"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895819"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled Media Servicesch operací REST API 
 
 > [!NOTE]
 > Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Rozhraní **REST** API služby Media Services Operations se používá k vytváření úloh, prostředků, živých kanálů a dalších prostředků v účtu Media Services. Další informace naleznete v tématu [Media Services operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+Rozhraní **REST API služby Media Services Operations** se používá k vytváření úloh, prostředků, živých kanálů a dalších prostředků v účtu Media Services. Další informace naleznete v tématu [Media Services operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
 
 Media Services poskytuje REST API, který přijímá formát JSON nebo Atom + Pub. Media Services REST API vyžadují konkrétní hlavičky protokolu HTTP, které musí každý klient odeslat při připojení k Media Services a také sadu volitelných hlaviček. V následujících částech jsou popsány hlavičky a příkazy HTTP, které můžete použít při vytváření požadavků a příjem odpovědí z Media Services.
 
@@ -58,9 +58,9 @@ Při použití REST platí následující požadavky.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standardní hlavičky požadavků HTTP, které podporuje Media Services
 Pro každé volání, které provedete v Media Services, je k dispozici sada požadovaných hlaviček, kterou musíte zahrnout do žádosti, a také sadu volitelných hlaviček, které byste mohli chtít zahrnout. Následující tabulka uvádí seznam požadovaných hlaviček:
 
-| Záhlaví | type | Value |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
-| Authorization |Nosný |Držitelem je jediný přijatý autorizační mechanismus. Hodnota musí také zahrnovat přístupový token, který poskytuje Azure Active Directory. |
+| Autorizace |Bearer |Držitelem je jediný přijatý autorizační mechanismus. Hodnota musí také zahrnovat přístupový token, který poskytuje Azure Active Directory. |
 | x-ms-version |Decimal |2,17 (nebo novější verze)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -72,26 +72,26 @@ Pro každé volání, které provedete v Media Services, je k dispozici sada po�
 
 Následuje sada volitelných hlaviček:
 
-| Záhlaví | type | Value |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
-| Date |RFC 1123 datum |Časové razítko požadavku |
+| Datum |RFC 1123 datum |Časové razítko požadavku |
 | Přijmout |Typ obsahu |Požadovaný typ obsahu pro odpověď, například následující:<p> -application/json;odata=verbose<p> – Application/Atom + XML<p> Odpovědi mohou mít jiný typ obsahu, například načtení objektu blob, kde úspěšná odpověď obsahuje datový proud blobu jako datovou část. |
-| Přijmout – kódování |GZIP, uprostřed zúžené |Kódování GZIP a DEFLATE, pokud je to možné. Poznámka: U velkých prostředků Media Services může tuto hlavičku ignorovat a vracet nekomprimovaná data. |
+| Accept-Encoding |GZIP, uprostřed zúžené |Kódování GZIP a DEFLATE, pokud je to možné. Poznámka: u velkých prostředků Media Services může tuto hlavičku ignorovat a vracet nekomprimovaná data. |
 | Přijmout – jazyk |"en", "ES" atd. |Určuje preferovaný jazyk pro odpověď. |
 | Přijmout znaková sada |Typ znakové sady jako UTF-8 |Výchozí hodnota je UTF-8. |
 | X-HTTP-Method |HTTP – metoda |Umožňuje klientům nebo branám firewall, které nepodporují metody HTTP, jako je PUT nebo DELETE, používat tyto metody, tunelování prostřednictvím volání GET. |
-| Typ obsahu |Typ obsahu |Typ obsahu textu žádosti v požadavcích PUT nebo POST |
+| Content-Type |Typ obsahu |Typ obsahu textu žádosti v požadavcích PUT nebo POST |
 | klient-požadavek-ID |Řetězec |Hodnota definovaná volajícím, která identifikuje daný požadavek. Je-li tento parametr zadán, bude tato hodnota ve zprávě odpovědi uvedena jako způsob mapování požadavku. <p><p>**Důležité upozornění**<p>Hodnoty by měly být omezené na 2096b (2k). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardní hlavičky HTTP odpovědi, které podporuje Media Services
 Následuje sada hlaviček, které mohou být vráceny v závislosti na prostředku, který požadujete, a akci, kterou jste chtěli provést.
 
-| Záhlaví | type | Value |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
 | ID žádosti |Řetězec |Jedinečný identifikátor pro aktuální operaci, vygenerovala se služba. |
 | klient-požadavek-ID |Řetězec |Identifikátor určený volajícím v původní žádosti, pokud je k dispozici. |
-| Date |RFC 1123 datum |Datum a čas zpracování žádosti. |
-| Typ obsahu |Různé |Typ obsahu textu odpovědi |
+| Datum |RFC 1123 datum |Datum a čas zpracování žádosti. |
+| Content-Type |Různé |Typ obsahu textu odpovědi |
 | Kódování obsahu |Různé |Gzip nebo deflate, podle potřeby. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Standardní příkazy HTTP podporované Media Services
@@ -126,6 +126,6 @@ Informace o tom, jak používat ověřování Azure AD s Media Services REST API
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

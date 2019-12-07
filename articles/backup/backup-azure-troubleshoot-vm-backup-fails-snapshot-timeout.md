@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c4ee8cbeeec21c4af0cc3a7fd83844bc8c676add
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 23b10bed3b741ec76167eb5a976bf5737d20b173
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172591"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894007"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -22,10 +22,12 @@ Tento článek popisuje kroky pro řešení potíží, které vám pomohou vyře
 **Kód chyby**: UserErrorGuestAgentStatusUnavailable <br>
 **Chybová zpráva**: Agent virtuálního počítače nemůže komunikovat s Azure Backup<br>
 
-Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekonzistentním stavu nebo není nainstalovaný a zabránit tomu, aby služba Azure Backup spustila snímky.  
+Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekonzistentním stavu nebo není nainstalovaný a zabránit tomu, aby služba Azure Backup spustila snímky.
 
-- Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, **restartujte agenta** a zkuste operaci zálohování zopakovat (vyzkoušejte zálohování na vyžádání). Postup restartování najdete v tématu věnovaném [virtuálním počítačům s Windows](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) nebo [virtuálním počítačům s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
-- Pokud není agent virtuálního počítače nainstalovaný nebo je zastaralý, nainstalujte nebo aktualizujte agenta virtuálního počítače a zkuste operaci zálohování zopakovat. Postup instalace nebo aktualizace agenta najdete v tématu [virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) nebo [virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)se systémem Linux.  
+- **Otevřete portál Azure Portal > nastavení > virtuálního počítače > vlastnosti** > Ujistěte se, že **stav** virtuálního počítače **běží** a že **Stav agenta** je **připravený**. Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, restartujte agenta.<br>
+  - Pro virtuální počítače s Windows postupujte podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) a restartujte agenta hosta.<br>
+  - Pro virtuální počítače se systémem Linux postupujte podle těchto [kroků](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) a restartujte agenta hosta.
+
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nepovedlo se komunikovat s agentem virtuálního počítače pro stav snímku.
 
@@ -41,6 +43,16 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Příčina 3: [nejde načíst stav snímku nebo nejde udělat snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) .**
 
 **Příčina 4: [rozšíření zálohování se nepodařilo aktualizovat nebo načíst](#the-backup-extension-fails-to-update-or-load) .**
+
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – virtuální počítač je ve stavu selhání zřizování.
+
+**Kód chyby**: UserErrorVmProvisioningStateFailed<br>
+**Chybová zpráva**: virtuální počítač je ve stavu selhání zřizování.<br>
+
+K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální počítač do stavu selhání zřizování.<br>**Otevřete portál Azure Portal > nastavení > virtuálního počítače > rozšíření stav rozšíření >** a ověřte, jestli jsou všechna rozšíření ve stavu **úspěšného zřizování** .
+
+- Pokud je rozšíření VMSnapshot v neúspěšném stavu, klikněte pravým tlačítkem na rozšíření, které selhalo, a odeberte ho. Aktivujte si službu ad hoc-Backup. tím se přeinstalují rozšíření a spustí se úloha zálohování.  <br>
+- Pokud je jakékoli jiné rozšíření v neúspěšném stavu, může to narušit zálohování. Zajistěte, aby byly problémy s rozšířením vyřešeny, a opakujte operaci zálohování.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – dosáhlo se maximálního limitu kolekce bodů obnovení.
 
@@ -211,7 +223,7 @@ Postup při odinstalaci rozšíření:
 2. Vyberte **nastavení**.
 3. Vyberte **Extensions** (Rozšíření).
 4. Vyberte **rozšíření VMSnapshot**.
-5. Vyberte **odinstalovat**.
+5. Vyberte **Odinstalovat**.
 
 Pokud se u virtuálního počítače se systémem Linux v Azure Portal nezobrazuje rozšíření VMSnapshot, [aktualizujte agenta Azure Linux](../virtual-machines/linux/update-agent.md)a spusťte zálohování.
 
@@ -219,7 +231,7 @@ Provedením těchto kroků dojde k přeinstalování rozšíření během pří�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_`<number>`.
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a klikněte na **Odstranit**.
@@ -248,7 +260,7 @@ Po odebrání zámku aktivujte zálohování na vyžádání. Tím se zajistí, 
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_`<Geo>`_`<number>`, kde se virtuální počítač nachází.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/resource-group.png)

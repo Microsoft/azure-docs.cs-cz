@@ -3,12 +3,12 @@ title: Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278244"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894024"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy, které používají Azure Backup
 
@@ -24,7 +24,7 @@ Obavy z problémů se zabezpečením, jako jsou malware, ransomware a vniknutí,
 
 Obnovitelné odstranění se v současné době podporuje v Středozápadní USA, Východní Asie, Kanadě – střed, Kanada – východ, Francie – střed, Francie – jih, Jižní Korea, Korea – jih, Velká Británie – jih, Velká Británie – západ, Austrálie – východ, Austrálie – jihovýchod, Severní Evropa, Západní USA, západní USA 2, Střed USA, jih Východní Asie, Střed USA – sever, Střed USA – jih, Japonsko – východ, Japonsko – západ, Indie – jih, Indie – střed, Indie – západ, Východní USA 2, Švýcarsko – sever, Švýcarsko – západ a všechny národní oblasti.
 
-### <a name="soft-delete-for-vms"></a>Obnovitelné odstranění pro virtuální počítače
+### <a name="soft-delete-for-vms-using-azure-portal"></a>Obnovitelné odstranění pro virtuální počítače pomocí Azure Portal
 
 1. Aby bylo možné odstranit zálohovaná data virtuálního počítače, je třeba zastavit zálohování. V Azure Portal přejděte do trezoru služby Recovery Services, klikněte pravým tlačítkem na zálohovanou položku a vyberte **Zastavit zálohování**.
 
@@ -66,9 +66,59 @@ Tento vývojový diagram zobrazuje různé kroky a stavy zálohované položky, 
 
 Další informace najdete v části [Nejčastější dotazy](backup-azure-security-feature-cloud.md#frequently-asked-questions) níže.
 
+### <a name="soft-delete-for-vms-using-azure-powershell"></a>Obnovitelné odstranění pro virtuální počítače pomocí Azure PowerShellu
+
+> [!IMPORTANT]
+> Verze AZ. RecoveryServices, která je nutná k použití obnovitelného odstranění pomocí Azure PS, je min 2.2.0. Nejnovější verzi získáte pomocí ```Install-Module -Name Az.RecoveryServices -Force```.
+
+Jak je uvedeno výše pro Azure Portal, sekvence kroků je stejná i při použití Azure PowerShellu.
+
+#### <a name="delete-the-backup-item-using-azure-powershell"></a>Odstranění zálohované položky pomocí Azure PowerShellu
+
+Odstraňte zálohovanou položku pomocí rutiny [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS.
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
+
+' DeleteState ' zálohované položky se změní z ' NotDeleted ' na ' ToBeDeleted '. Data zálohy se uchovávají 14 dnů. Chcete-li obnovit operaci odstranění, je třeba provést příkaz zpět a odstranit.
+
+#### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Zrušení operace odstranění pomocí Azure PowerShellu
+
+Nejdřív načtěte příslušnou zálohovanou položku, která je ve stavu tichého odstranění, tj., chystá se odstranit.
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+Pak proveďte operaci vrácení zpět se změnami pomocí rutiny [Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS.
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+' DeleteState ' zálohované položky se vrátí na ' NotDeleted '. Ochrana se ale pořád zastaví. Chcete-li znovu povolit ochranu, musíte [pokračovat v zálohování](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) .
+
 ## <a name="disabling-soft-delete"></a>Zákaz obnovitelného odstranění
 
 Obnovitelné odstranění je ve výchozím nastavení povolené u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Zakázání této funkce se nedoporučuje. Jediným případem, kdy byste měli zvážit zakázání obnovitelného odstranění, je, že plánujete přesunutí chráněných položek do nového trezoru a nemůžete počkat 14 dní před odstraněním a obnovením ochrany (například v testovacím prostředí). Tuto funkci může zakázat pouze správce zálohování. Pokud tuto funkci zakážete, všechna odstranění chráněných položek budou mít za následek okamžité odebrání bez možnosti obnovení. Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud chcete tyto okamžité odstranění trvale odstranit, musíte je znovu odstranit a znovu odstranit, abyste se mohli trvale odstranit.
+
+### <a name="disabling-soft-delete-using-azure-portal"></a>Zákaz obnovitelného odstranění pomocí Azure Portal
 
 Chcete-li zakázat obnovitelné odstranění, použijte následující postup:
 
@@ -76,17 +126,36 @@ Chcete-li zakázat obnovitelné odstranění, použijte následující postup:
 2. V podokně Vlastnosti vyberte **nastavení zabezpečení** -> **aktualizovat**.  
 3. V podokně nastavení zabezpečení v části **obnovitelné odstranění**vyberte **Zakázat**.
 
-
 ![Zakázat obnovitelné odstranění](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+### <a name="disabling-soft-delete-using-azure-powershell"></a>Vypnutí obnovitelného odstranění pomocí Azure PowerShellu
+
+> [!IMPORTANT]
+> Verze AZ. RecoveryServices, která je nutná k použití obnovitelného odstranění pomocí Azure PS, je min 2.2.0. Nejnovější verzi získáte pomocí ```Install-Module -Name Az.RecoveryServices -Force```.
+
+Pokud ho chcete zakázat, použijte rutinu [set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS.
+
+```powershell
+Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
+
+
+StorageModelType       :
+StorageType            :
+StorageTypeState       :
+EnhancedSecurityState  : Enabled
+SoftDeleteFeatureState : Disabled
+```
 
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>Trvale se odstraňují obnovitelné položky odstraněné zálohy
 
-Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud je chcete trvale odstranit, odstraňte je znovu a znovu je odstraňte, abyste je mohli trvale odstranit. 
+Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud je chcete trvale odstranit, odstraňte je znovu a znovu je odstraňte, abyste je mohli trvale odstranit.
+
+### <a name="using-azure-portal"></a>Použití webu Azure Portal
 
 Postupujte následovně:
 
 1. Chcete-li [Zakázat obnovitelné odstranění](#disabling-soft-delete), postupujte podle pokynů. 
-2. V Azure Portal přejdete do svého trezoru, přejdete na **zálohované položky** a zvolíte obnovitelné odstraněný virtuální počítač. 
+2. V Azure Portal přejdete do svého trezoru, přejdete na **zálohované položky** a zvolíte obnovitelné odstraněný virtuální počítač.
 
 ![Výběr obnovitelného odstraněného virtuálního počítače](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -109,6 +178,42 @@ Postupujte následovně:
 
 7. Chcete-li odstranit data zálohy pro položku, vyberte možnost **Odstranit**. Zpráva s oznámením vám poskytne informace o odstranění zálohovaných dat.
 
+### <a name="using-azure-powershell"></a>Používání Azure PowerShellu
+
+Pokud byly položky odstraněny před vypnutím obnovitelného odstranění, pak budou v neodstraněném stavu. Aby je bylo možné okamžitě odstranit, operace odstranění musí být obrácená a následně provedena znovu.
+
+Identifikujte položky, které jsou ve stavu nepodmíněného odstranění.
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+Pak změňte operaci odstranění, kterou jste provedli v případě, že bylo povoleno obnovitelné odstranění.
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+Vzhledem k tomu, že obnovitelné odstranění je teď zakázané, bude výsledkem operace odstranění okamžité odebrání zálohovaných dat.
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
 
 ## <a name="other-security-features"></a>Další funkce zabezpečení
 
@@ -168,7 +273,7 @@ Ne. Nelze odstranit dočasně odstraněné položky, budou automaticky odstraně
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Může dojít k obnovitelnému odstranění operací v PowerShellu nebo rozhraní příkazového řádku?
 
-Ne, podpora PowerShellu nebo rozhraní příkazového řádku není aktuálně k dispozici.
+Obnovitelné operace odstranění lze provádět pomocí [prostředí PowerShell](#soft-delete-for-vms-using-azure-powershell). V současné době se rozhraní příkazového řádku nepodporuje.
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>Podporuje se obnovitelné odstranění pro jiné cloudové úlohy, jako je SQL Server ve virtuálních počítačích Azure a SAP HANA na virtuálních počítačích Azure?
 

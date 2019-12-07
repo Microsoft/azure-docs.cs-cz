@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e0b87757326b5e2a54a78a38bbcd5bef8e6f5be2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74119986"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900020"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: použití Graph API Azure AD
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak provést automatizovaný případ použití. V
 >[!IMPORTANT]
 > Ke správě uživatelů v adresáři Azure AD B2C je **nutné** použít [Graph API Azure AD](../active-directory/develop/active-directory-graph-api-quickstart.md) . Graph API Azure AD se liší od rozhraní Microsoft Graph API. Další informace najdete v tomto příspěvku na blogu MSDN: [Microsoft Graph nebo Azure AD Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než budete moci vytvořit aplikace nebo uživatele, potřebujete klienta Azure AD B2C. Pokud ho ještě nemáte, [Vytvořte klienta Azure Active Directory B2C](tutorial-create-tenant.md).
 
@@ -290,7 +290,7 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Příklad:
+Například:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
@@ -332,7 +332,7 @@ B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-Výstup odhalí podrobnosti každého vlastního atributu. Příklad:
+Výstup odhalí podrobnosti každého vlastního atributu. Například:
 
 ```json
 {
@@ -363,6 +363,5 @@ Pomocí `B2CGraphClient`máte aplikaci služby, která může spravovat uživate
 Při začleňování této funkce do vlastní aplikace si pamatujte několik klíčových bodů pro aplikace B2C:
 
 * Udělte aplikaci požadovaná oprávnění v tenantovi.
-* K získání přístupových tokenů teď potřebujete použít ADAL (ne MSAL). (Můžete také odesílat zprávy protokolu přímo bez použití knihovny.)
 * Při volání Graph API použijte `api-version=1.6`.
 * Když vytváříte a aktualizujete uživatele spotřebitelů, je potřeba pár vlastností, jak je popsáno výše.

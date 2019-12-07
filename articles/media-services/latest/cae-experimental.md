@@ -1,6 +1,6 @@
 ---
-title: Experimentální přednastavení kódování obsahu – Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, kódování obsahu ve službě Azure Media Services
+title: Experimentální přednastavení pro kódování s podporou obsahu – Azure | Microsoft Docs
+description: Tento článek popisuje kódování zohledňující obsah v Microsoft Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,46 +12,46 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151007"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896141"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>Experimentální přednastavení kódování obsahu
+# <a name="experimental-preset-for-content-aware-encoding"></a>Experimentální přednastavení pro kódování zohledňující obsah
 
-Aby bylo možné připravit obsah pro doručování pomocí [streamování s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), video musí být zakódovaný, aby na více přenosových rychlostí (nejvyšších po nejnižší). Aby bylo možné zajistit bezproblémové snížení kvality, jako přenosové rychlosti klesnou tedy rozlišení videa. Výsledkem je takzvané kódování žebříku – tabulku rozlišení a přenosových rychlostí; Media Services najdete v článku [integrované kódovací Předvolby](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+Aby bylo možné připravit obsah pro doručování [datovým proudem s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), je nutné zakódovat video s více přenosovými rychlostmi (vysoká až nízká). Aby bylo zajištěno řádné snížení kvality, protože přenosová rychlost je snížena, je rozlišením videa. Výsledkem je, že se označuje jako kódovací žebřík – tabulka s rozlišením a přenosovými rychlostmi; Přečtěte si Media Services [předdefinované předvolby kódování](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 ## <a name="overview"></a>Přehled
 
-Zvýšit zájem o překonání přístup založený na jeden – přednastavení – přizpůsobí all – videa po publikování Netflix jejich [blogu](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) v prosinci 2015. Od té doby byly vydány více řešení pro kódování obsahu na webu Marketplace. Zobrazit [v tomto článku](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) Přehled. Cílem je mít na paměti obsahu k přizpůsobení nebo vyladit kódování přenosových rychlostí na složitost jednotlivé video. V každé řešení je přenosové rychlosti, jejichž překročení zvýšení kvality není perceptive – kodér pracuje na tuto hodnotu optimální s přenosovou rychlostí. Další úroveň optimalizace je vybrat řešení na základě obsahu – například video s Powerpointovou prezentaci. nijak přínosné přejít níže 720p. Když budete pokračovat, kodér úkol k optimalizaci nastavení pro každý snímek ve videu. Netflix popsané [takový přístup](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) v roce 2018.
+Po Netflix publikování [blogu](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) v prosinci 2015 je důležité přesunout se do pohybu po jednom přednastaveném přístupu všech videí. Od té doby byly na webu Marketplace vydány více řešení pro kódování s podporou obsahu; Přehled najdete v [tomto článku](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) . Nápad je vědět o obsahu – pro přizpůsobení nebo ladění kódovacích žebříků ke složitosti jednotlivých videí. U každého řešení existuje přenosová rychlost, nad kterou se jakékoliv zvýšení kvality neperceptive – kodér pracuje s touto optimální přenosovou hodnotou. Další úrovní optimalizace je výběr rozlišení na základě obsahu – například video prezentace v PowerPointu nepřináší dál nižší verzi než 720p. Dále může být kodér vydaný pro optimalizaci nastavení pro každý snímek ve videu. Netflix popisuje [takový přístup](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) v 2018.
 
-V roku 2017, společnost Microsoft vydala [adaptivní streamování](autogen-bitrate-ladder.md) přednastavenou k vyřešení problému variabilita kvalitu a rozlišení videa zdroje. Naši zákazníci měli různou kombinaci obsahu, některé na 1080p, ostatní na 720p a několik na SD a nižší rozlišení. Kromě toho všechny zdrojový obsah byl vysoce kvalitní mezzanines z filmů nebo televize studios. Adaptivní streamování přednastavených adresy těchto problémů tím, že zajišťuje, že adaptivní žebříček přenosových rychlostí nikdy nepřesáhne rozlišení nebo průměrnou bitrate vstupní soubor mezzanine.
+V rané 2017 společnost Microsoft vydala přednastavení [adaptivního streamování](autogen-bitrate-ladder.md) , které řeší problém proměnlivosti kvality a rozlišení zdrojových videí. Naši zákazníci měli různou škálu obsahu, některé na webu 1080p, dalších ve 720p a pár v SD a nižších rozlišeních. Kromě toho ne všechen zdrojový obsah byl vysoce kvalitní mezzanines z filmu nebo TV studia. Přednastavení adaptivního streamování řeší tyto problémy tím, že zajišťuje, že žebřík přenosů nikdy nepřekračuje rozlišení nebo průměrnou rychlost vstupního mezzanineu.
 
-Experimentální předvolba kódování obsahu rozšiřuje tento mechanismus začleněním vlastní logiku, která umožňuje kodér hledání optimální s přenosovou rychlostí hodnotu pro dané řešení, ale bez nutnosti rozsáhlé výpočetní analýzu. Net výsledkem je, že toto nové přednastavení vytvoří výstup, který má nižší přenosovou rychlostí než adaptivní streamování přednastavení, ale na vyšší kvality. Zobrazit následující ukázkové grafy, které zobrazují porovnání pomocí metrik kvality, jako je [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) a [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Zdroj se vytváří zřetězením krátké klipy vysokou složitost snímky z videa a televizních pořadů, určený k zátěžovému kodér. Podle definice této přednastavených vytvoří výsledky, které se liší od obsahu pro obsah – také znamená, že pro nějaký obsah, nemusí být s přenosovou rychlostí výrazné snížení nebo zvýšení kvality.
+Experimentální přednastavení kódování zohledňující obsah rozšiřuje tento mechanismus tím, že začleňuje vlastní logiku, která umožňuje, aby kodér hledal optimální přenosovou hodnotu pro dané řešení, ale bez nutnosti rozsáhlých výpočetních analýz. Výsledkem je, že tato nová předvolba vytvoří výstup, který má nižší přenosovou rychlost než přednastavení adaptivního streamování, ale s vyšší kvalitou. Podívejte se na následující ukázkové grafy, které znázorňují porovnání pomocí metrik kvality, jako je [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) a [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Zdroj byl vytvořen zřetězením krátkých klipů vysoce složitých snímků z filmů a televizních pořadů, které mají za cíl zátěž kodéru. Podle definice Tato předvolba vytvoří výsledky, které se liší od obsahu k obsahu – to také znamená, že u určitého obsahu se nemusí významně snížit přenosová rychlost nebo zlepšení kvality.
 
-![Kurz – narušení (RD) křivky pomocí PSNR](media/cae-experimental/msrv1.png)
+![Frekvence – deformace (RD) – křivka pomocí PSNR](media/cae-experimental/msrv1.png)
 
-**Obrázek 1: Kurz – narušení (RD) křivky použitím PSNR metrik pro vysokou složitost zdroj**
+**Obrázek 1: křivka deformace (RD) pomocí metriky PSNR pro zdroj s vysokou složitostí**
 
-![Kurz – narušení (RD) křivky pomocí VMAF](media/cae-experimental/msrv2.png)
+![Frekvence – deformace (RD) – křivka pomocí VMAF](media/cae-experimental/msrv2.png)
 
-**Obrázek 2: Kurz – narušení (RD) křivky použitím VMAF metrik pro vysokou složitost zdroj**
+**Obrázek 2: křivka deformace (RD) pomocí metriky VMAF pro zdroj s vysokou složitostí**
 
-Přednastavený kontext aktuálně je vyladěný pro vysokou složitost, vysoce kvalitní zdroj videa (filmy, televizní pořady). Práce se přizpůsobit obsah s nízkou složitost (například prezentace aplikace PowerPoint), a také slabší kvalita videa. Tato předvolba stejnou sadu řešení také využívá jako adaptivní streamování předvolby. Microsoft pracuje na metody vybrat minimální sadu řešení na základě obsahu. Takto se výsledky pro jinou kategorii zdrojový obsah, kde bylo možné určit, že tento vstup byl špatné kvality (mnoho komprese artefakty z důvodu nízkou přenosové rychlosti) kodér. Všimněte si, že se experimentální přednastavení, kodéru se rozhodli vytvořit pouze jeden výstupní vrstvě – dostatečně nízko přenosovou rychlostí, tak, aby většina klientů bude možné přehrát datový proud bez zablokování.
+Předvolba je aktuálně vyladěná pro vysokou složitost a vysoce kvalitní zdrojová videa (filmy, televizní pořady). Práce probíhá s cílem přizpůsobovat obsah s nízkou složitostí (například prezentace aplikace PowerPoint) a také kvalitní videa. Tato předvolba také používá stejnou sadu rozlišení jako přednastavení adaptivního streamování. Microsoft pracuje na metodách pro výběr minimální sady rozlišení na základě obsahu. Takto jsou výsledky jiné kategorie zdrojového obsahu, kde kodér dokázal určit, že vstup má špatnou kvalitu (mnohé kompresní artefakty z důvodu nízké přenosové rychlosti). Všimněte si, že pomocí experimentální předvolby se kodér rozhodl vytvořit pouze jednu výstupní vrstvu – s dostatečně nízkou rychlostí, aby většina klientů mohla přehrát datový proud bez zastavení.
 
-![Pomocí PSNR křivky vzdálené plochy](media/cae-experimental/msrv3.png)
+![Křivka VP pomocí PSNR](media/cae-experimental/msrv3.png)
 
-**Obrázek 3: VP křivky pomocí PSNR pro vstup nízké kvality (ve 1080p)**
+**Obrázek 3: křivka VP s použitím PSNR pro vstup s nízkou kvalitou (v 1080p)**
 
-![Pomocí VMAF křivky vzdálené plochy](media/cae-experimental/msrv4.png)
+![Křivka VP pomocí VMAF](media/cae-experimental/msrv4.png)
 
-**Obrázek 4: VP křivky pomocí VMAF pro vstup nízké kvality (ve 1080p)**
+**Obrázek 4: křivka RD pomocí VMAF pro vstup s nízkou kvalitou (v 1080p)**
 
-## <a name="use-the-experimental-preset"></a>Použít experimentální přednastavení
+## <a name="use-the-experimental-preset"></a>Použití experimentální předvolby
 
-Můžete vytvořit transformace, které používají předvolby následujícím způsobem. Pokud používáte kurz [takovou situaci](stream-files-tutorial-with-api.md), můžete aktualizovat kód následujícím způsobem:
+Transformace, které používají tuto předvolbu, můžete vytvořit následujícím způsobem. Při použití [takového](stream-files-tutorial-with-api.md)kurzu můžete kód aktualizovat následujícím způsobem:
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -70,8 +70,8 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> Předpona "experimentální" zde slouží k signalizaci, že základní algoritmy se dál vyvíjejí. Zde můžete a budou změny v průběhu času logikou používanou pro generování žebříky s přenosovou rychlostí s cílem slučuje na algoritmus, který je robustní a adaptují se pro širokou škálu vstupních podmínek. Kódování úloh pomocí tento přednastavených budou být se fakturuje na základě výstupních minut a výstupního prostředku můžete doručovaným z našich koncových bodů streamování v protokolech, jako je například DASH nebo HLS.
+> Předpona "experimentální" se tady používá k signalizaci, že se základní algoritmy pořád rozvíjejí. V průběhu času mohou být v průběhu času provedeny změny logiky používané k tvorbě přenosových žebříků, s cílem sbližování algoritmu, který je robustní a přizpůsobený nejrůznějším vstupním podmínkám. Úlohy kódování s použitím této předvolby se budou dál účtovat na základě výstupních minut a výstupní Asset se dá doručit z našich koncových bodů streamování v protokolech, jako jsou POMLČKy a HLS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se dozvěděli o tato nová možnost optimalizovat vaše videa, Zveme vás, můžete vyzkoušet. Pošlete nám svůj názor pomocí odkazů na konci tohoto článku nebo nám více přímo na zapojení <amsved@microsoft.com>.
+Teď, když jste se seznámili s touto novou možností optimalizace vašich videí, vás budeme zvát k tomu, abyste si ji vyzkoušeli. Můžete nám poslat zpětnou vazbu pomocí odkazů na konci tohoto článku nebo nás přímo na <amsved@microsoft.com>.

@@ -1,5 +1,5 @@
 ---
-title: Kopírování a transformace dat v Azure SQL Data Warehouse pomocí Azure Data Factory
+title: Kopírování a transformace dat v Azure SQL Data Warehouse
 description: Naučte se, jak kopírovat data do a z Azure SQL Data Warehouse a transformovat data v Azure SQL Data Warehouse pomocí Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4d08a388e98283ff7bf05e938d7b8c48b7065074
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1bd6d4d594bc7988d2dceaae533202f2a41379f1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076768"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891034"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -45,7 +45,7 @@ U aktivity kopírování tato Azure SQL Data Warehouse konektor podporuje tyto f
 > Pokud zkopírujete data pomocí Azure Data Factory Integration Runtime, nakonfigurujte [brány firewall serveru Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby službám Azure přístup k serveru.
 > Pokud zkopírujete data s využitím místního prostředí integration runtime, konfigurace brány firewall serveru Azure SQL umožňující odpovídající rozsah IP adres. Tento rozsah obsahuje IP počítače, který se používá k připojení ke službě Azure SQL Database.
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 > [!TIP]
 > K dosažení nejlepšího výkonu dosáhnete, načtení dat do Azure SQL Data Warehouse pomocí PolyBase. [Použití PolyBase k načítání dat do Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) část obsahuje podrobné informace o. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse pomocí Azure Data Factory v oblasti 15 minut](load-azure-sql-data-warehouse.md).
@@ -606,7 +606,7 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | bit                                   | Logická hodnota                        |
 | char                                  | String, Char[]                 |
 | date                                  | Datum a čas                       |
-| Datum a čas                              | Datum a čas                       |
+| Datetime                              | Datum a čas                       |
 | datetime2                             | Datum a čas                       |
 | Datetimeoffset                        | DateTimeOffset                 |
 | Decimal                               | Decimal                        |
@@ -618,14 +618,14 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | nchar                                 | String, Char[]                 |
 | numeric                               | Decimal                        |
 | nvarchar                              | String, Char[]                 |
-| real                                  | Single                         |
+| real                                  | Jednoduchá                         |
 | rowversion                            | Byte[]                         |
 | smalldatetime                         | Datum a čas                       |
 | smallint                              | Int16                          |
 | smallmoney                            | Decimal                        |
-| time                                  | Časový interval                       |
-| tinyint                               | Bajt                           |
-| uniqueidentifier                      | identifikátor GUID                           |
+| time                                  | TimeSpan                       |
+| tinyint                               | Bajtů                           |
+| uniqueidentifier                      | Guid                           |
 | Varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
 

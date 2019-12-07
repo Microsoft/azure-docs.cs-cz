@@ -1,6 +1,6 @@
 ---
 title: Použití castLabs k doručování licencí Widevine Azure Media Services | Microsoft Docs
-description: Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) doručovat datový proud, který je dynamicky zašifrovaný pomocí AMS, pomocí PlayReady i Widevine několikanásobnou. Licence PlayReady pochází z Media Services licenční server PlayReady a licence Widevine se doručují prostřednictvím licenčního serveru castLabs.
+description: Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) doručovat datový proud, který je dynamicky zašifrovaný pomocí AMS, pomocí PlayReady i Widevine několikanásobnou.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: 9c61fad333037074f392b019ae61c161673e4008
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c038480c9a49c96aaba7c7ff7299c8ebea31b81f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016695"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887777"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí castLabs 
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Pokud chcete přehrávat obsah streamování chráněný pomocí CENC (PlayReady
 
 Následující diagram znázorňuje architekturu integrace na nejvyšší úrovni Azure Media Services a castLabs.
 
-![spolupráci](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![integrace](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Typické nastavení systému
 
@@ -61,14 +61,14 @@ Následující tabulka popisuje token JWT v AMS.
 | Cílová skupina |Řetězec cílové skupiny z použité služby STS |
 | Deklarace identity |Sada deklarací identity |
 | NotBefore |Počáteční platnost tokenu |
-| Platí do |Konec platnosti tokenu |
+| Platnost vyprší |Konec platnosti tokenu |
 | SigningCredentials |Klíč sdílený mezi licenčním serverem PlayReady, castLabs licenčním serverem a službou STS, může být buď symetrický, nebo asymetrický klíč. |
 
 ### <a name="jwt-token-in-castlabs"></a>Token JWT v castLabs
 
 Následující tabulka popisuje token JWT v castLabs. 
 
-| Name | Popis |
+| Name (Název) | Popis |
 | --- | --- |
 | optData |Řetězec JSON obsahující informace o vás. |
 | promítací |Řetězec JSON obsahující informace o assetu, licenční informace a práva k přehrávání. |
@@ -118,6 +118,6 @@ Pokud chcete přehrát video šifrované se společným šifrováním (PlayReady
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Rozdílová kopie z databáze pomocí řídicí tabulky s Azure Data Factory
+title: Rozdílová kopie z databáze pomocí řídicí tabulky
 description: Naučte se používat šablonu řešení pro přírůstkové kopírování nových nebo aktualizovaných řádků z databáze pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.openlocfilehash: c9ab1d005cf71dbe03546ce5b6014f616a872f8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 22723033b59fafc0b9dfd1ae4fc08e5f6e9145ed
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684212"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896218"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Rozdílová kopie z databáze s řídicí tabulkou
 
@@ -36,15 +36,15 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
 Šablona obsahuje čtyři aktivity:
 - **Vyhledávání** načte starou hodnotu horní meze, která je uložena v externí tabulce ovládacích prvků.
 - Jiná aktivita **vyhledávání** načte aktuální hodnotu horní meze ze zdrojové databáze.
-- **Kopírovat** kopíruje pouze změny ze zdrojové databáze do cílového úložiště. Dotaz, který identifikuje změny ve zdrojové databázi, se podobá příkazu SELECT * FROM Data_Source_Table, kde TIMESTAMP_Column > "Last High-meze" a TIMESTAMP_Column < = "Current High-meze" ".
+- **Kopírovat** kopíruje pouze změny ze zdrojové databáze do cílového úložiště. Dotaz, který identifikuje změny ve zdrojové databázi, je podobný příkazu SELECT * FROM Data_Source_Table, kde TIMESTAMP_Column > "poslední horní mez" a TIMESTAMP_Column < = "Current High-meze" ".
 - **SqlServerStoredProcedure** zapisuje aktuální hodnotu horní meze do tabulky externích ovládacích prvků pro rozdílovou kopii v dalším čase.
 
 Šablona definuje pět parametrů:
 - *Data_Source_Table_Name* je tabulka ve zdrojové databázi, ze které chcete načíst data.
 - *Data_Source_WaterMarkColumn* je název sloupce ve zdrojové tabulce, který se používá k identifikaci nových nebo aktualizovaných řádků. Typ tohoto sloupce je obvykle *DateTime*, *int*nebo podobný.
-- *Data_Destination_Folder_Path* nebo *Data_Destination_Table_Name* je místo, kam se zkopírují data do cílového úložiště.
+- *Data_Destination_Folder_Path* nebo *Data_Destination_Table_Name* je místo, kam se data zkopírují do cílového úložiště.
 - *Control_Table_Table_Name* je tabulka externích ovládacích prvků, která ukládá hodnotu horní meze.
-- *Control_Table_Column_Name* je sloupec v tabulce externího ovládacího prvku, který ukládá hodnotu horní meze.
+- *Control_Table_Column_Name* je sloupec v tabulce externího ovládacího prvku, který ukládá hodnotu s horním limitem.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
@@ -100,7 +100,7 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
 
     ![Vytvoří nové připojení k úložišti dat řídicí tabulky.](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. Vyberte **použít tuto šablonu**.
+7. Vyberte **Použít tuto šablonu**.
 
      ![Použít tuto šablonu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
@@ -108,7 +108,7 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
 
      ![Kontrola kanálu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Vyberte **uloženou proceduru**. Jako **název uložené procedury**vyberte **[update_watermark]** . Vyberte **importovat parametr**a pak vyberte **Přidat dynamický obsah**.  
+9. Vyberte **uloženou proceduru**. V části **název uložené procedury**vyberte možnost **[update_watermark]** . Vyberte **importovat parametr**a pak vyberte **Přidat dynamický obsah**.  
 
      ![Nastavení aktivity uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 

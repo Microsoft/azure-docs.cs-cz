@@ -1,6 +1,6 @@
 ---
-title: Koncepty služby Azure Media Services | Dokumentace Microsoftu
-description: Toto téma poskytuje přehled konceptů Azure Media Services
+title: Pojmy Azure Media Services | Microsoft Docs
+description: Tento článek poskytuje stručný přehled Microsoft Azure Media Services konceptů a odkazy na další články, které vám pomají podrobnosti.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,196 +13,196 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ff851fec7b5013b297d1796c47cc9d2911d3433
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681559"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901285"
 ---
-# <a name="azure-media-services-concepts"></a>Koncepty služby Azure Media Services 
+# <a name="azure-media-services-concepts"></a>Azure Media Services koncepty 
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Toto téma poskytuje přehled o nejdůležitějších pojmů Media Services.
+Toto téma poskytuje přehled nejdůležitějších Media Services konceptů.
 
-## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Prostředky a úložiště
+## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>prostředky a úložiště
 ### <a name="assets"></a>Prostředky
 [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) obsahuje digitální soubory (včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory s titulky) a metadata o těchto souborech. Jakmile jsou digitální soubory nahrát do assetu, může použít ve službě Media Services, kódování a streamování pracovních postupů.
 
-Prostředek je namapovaná na kontejner objektů blob v účtu Azure Storage a soubory v prostředku se ukládají jako objekty BLOB bloku v tomto kontejneru. Objekty BLOB stránky nejsou podporovány službou Azure Media Services.
+Asset se namapuje na kontejner objektů BLOB v účtu Azure Storage a soubory v prostředku se ukládají jako objekty blob bloku v tomto kontejneru. Azure Media Services nepodporuje objekty blob stránky.
 
-Při rozhodování o tom, jaké mediálního obsahu můžete nahrát a uložit do assetu, platí následující aspekty:
+Při rozhodování o tom, jaký mediální obsah se má nahrát a uložit v assetu, platí následující požadavky:
 
-* Prostředek může obsahovat pouze jeden, jedinečné instanci mediálního obsahu. Například jedné úpravy epizodě TV, video nebo oznámení o inzerovaném programu.
-* Prostředek nesmí obsahovat více interpretací nebo úpravy audiovizuálních souborů. Nesprávné využití prostředku jedním z příkladů by být pokusu o uložení více než jedné epizodě TV a oznámení o inzerovaném programu, více úhlů kamery z jednoho produkčního prostředí v prostředku. Ukládání více interpretací nebo úpravy audiovizuálních souborů do assetu může vést k odesílání úloh kódování, streamování a doručení assetu později v pracovním postupu zabezpečení mohou mít problémy.  
+* Prostředek by měl obsahovat jenom jednu jedinečnou instanci mediálního obsahu. Například jedna úprava TELEVIZNÍho dílu, videa nebo reklamy.
+* Asset by neměl obsahovat více verzí nebo úprav audiovizuálního souboru. Jedním z příkladů nesprávného využití Assetu by se při pokusu o uložení více než jednoho TELEVIZNÍho dílu, inzerce nebo několika úhlů kamery z jedné výroby v rámci assetu. Uložení více verzí nebo úprav audiovizuálního souboru v prostředku může vést k potížím při odesílání úloh kódování, streamování a zabezpečení doručení assetu později v pracovním postupu.  
 
 ### <a name="asset-file"></a>Soubor assetu
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) představuje skutečný videa nebo zvukový soubor, který je uložený v kontejneru objektů blob. Soubor prostředků je vždy přidružena k assetu a prostředek může obsahovat jeden nebo více souborů. Kodér Media Services úloh selže, pokud objekt souboru prostředku není přidružen k digitálnímu souboru v kontejneru objektů blob.
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) představuje skutečný videosoubor nebo zvukový soubor, který je uložený v kontejneru objektů BLOB. Soubor prostředků je vždy přidružen k assetu a Asset může obsahovat jeden nebo více souborů. Úloha Media Services Encoder se nezdařila v případě, že objekt souboru prostředků není přidružen k digitálnímu souboru v kontejneru objektů BLOB.
 
-**AssetFile** instance a samotný mediální soubor jsou dva různé objekty. AssetFile instance obsahuje metadata do souboru média, zatímco mediální soubor obsahuje skutečné mediálního obsahu.
+Instance **AssetFile** a skutečný mediální soubor jsou dva odlišné objekty. Instance AssetFile obsahuje metadata o souboru média, zatímco soubor média obsahuje skutečný mediální obsah.
 
-By se neměly pokoušet ke změně obsahu kontejnery objektů blob, které byly generovány službou Media Services bez použití rozhraní API služby Media.
+Neměli byste se pokoušet změnit obsah kontejnerů objektů BLOB generovaných Media Services bez použití rozhraní API služby Media Service.
 
-### <a name="asset-encryption-options"></a>Možnosti šifrování Asset
-V závislosti na typu obsahu, který chcete nahrát, uložit a posílat služba Media Services poskytuje různé možnosti šifrování, které můžete vybírat.
+### <a name="asset-encryption-options"></a>Možnosti šifrování prostředků
+V závislosti na typu obsahu, který chcete nahrát, ukládat a doručovat, Media Services poskytuje různé možnosti šifrování, ze kterých si můžete vybrat.
 
 >[!NOTE]
->Nepoužívá se žádné šifrování. Toto je výchozí hodnota. Při použití této možnosti není váš obsah chráněný během přenosu ani při umístění v úložišti.
+>Nepoužívá se žádné šifrování. Toto je výchozí hodnota. Když použijete tuto možnost, váš obsah se nechrání během přenosu nebo v klidovém úložišti.
 
-Pokud chcete dodávat obsah ve formátu MP4 pomocí progresivního stahování, použijte tuto možnost Pokud chcete nahrát obsah.
+Pokud plánujete doručení MP4 pomocí postupného stahování, použijte tuto možnost k nahrání obsahu.
 
-**StorageEncrypted** – tuto možnost použijte k šifrování vašich nešifrovaného obsahu pomocí šifrování AES 256 bitů a nahrajte ho do služby Azure Storage kde jsou uložená v klidovém stavu zašifrovaná. Prostředky chráněné pomocí šifrování úložiště jsou automaticky bez šifrování umístěny do systému souborů EFS před kódováním a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je, pokud chcete zajistit vysoce kvalitní vstupními multimediálními soubory pomocí silného šifrování v klidovém stavu na disku. 
+**StorageEncrypted** – tuto možnost použijte k místnímu šifrování nešifrovaného obsahu pomocí šifrování AES 256 a pak ho nahrajte do Azure Storage tam, kde je uložený zašifrovaný v klidovém stavu. Prostředky chráněné s šifrováním úložiště se před kódováním automaticky nešifrují a ukládají do systému souborů EFS a volitelně se znovu zašifrují předtím, než se znovu nahraje jako nový výstupní prostředek. Primárním případem použití šifrování úložiště je, že chcete zabezpečit vysoce kvalitní vstupní mediální soubory se silným šifrováním v klidovém provozu na disku. 
 
-Aby bylo možné poskytovat šifrované prostředků úložiště, musíte nakonfigurovat zásady doručení assetu, Media Services ví, jak chcete dodávat váš obsah. Předtím, než můžete Streamovat prostředek, server streamování zruší šifrování úložiště a streamuje obsah pomocí zadaného doručování zásad (například AES, PlayReady nebo bez šifrování). 
+Aby bylo možné doručovat šifrovaný prostředek úložiště, je nutné nakonfigurovat zásady doručení assetu, aby Media Services ví, jak chcete obsah doručovat. Předtím, než bude možné Asset streamovat, server streamování odstraní šifrování úložiště a streamuje obsah pomocí zadaných zásad doručování (například AES, PlayReady nebo bez šifrování). 
 
-**CommonEncryptionProtected** – tuto možnost použijte, pokud chcete zašifrovat (nebo nahrát už šifrovaný) obsah s běžným šifrováním nebo DRM PlayReady (například technologie Smooth Streaming chráněná pomocí PlayReady DRM).
+**CommonEncryptionProtected** – tuto možnost použijte, pokud chcete šifrovat (nebo nahrávat již zašifrovaný) obsah pomocí Common Encryption nebo PlayReady DRM (například Smooth Streaming chráněná pomocí technologie PlayReady DRM).
 
-**EnvelopeEncryptionProtected** – tuto možnost použijte, pokud chcete chránit (nebo nahrajete, již chráněné) HTTP Live Streaming (HLS) zašifrovaná pomocí šifrování AES (Advanced Standard). Pokud odesíláte HLS již šifrováním pomocí standardu AES, se musí být šifrována pomocí Správce transformací.
+**EnvelopeEncryptionProtected** – tuto možnost použijte, pokud chcete chránit (nebo odeslat již chráněný) http Live Streaming (HLS) šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES). Pokud odesíláte HLS již zašifrované pomocí AES, musí být zašifrováno pomocí nástroje pro transformaci.
 
 ### <a name="access-policy"></a>Zásady přístupu
-[AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) definuje oprávnění (jako jsou čtení, zápisu a seznamu) a doba trvání přístupu k prostředku. Obvykle by AccessPolicy objekt předat, která se pak použije pro přístup k souborům obsaženy v assetu lokátoru.
+[AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) definuje oprávnění (například čtení, zápis a výpis) a dobu trvání přístupu k assetu. Obvykle byste předávali objekt AccessPolicy do lokátoru, který by pak měl být použit pro přístup k souborům obsaženým v prostředku.
 
 >[!NOTE]
 >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
 
-### <a name="blob-container"></a>Kontejner objektů BLOB
-Kontejner objektů blob poskytuje seskupení sady objektů BLOB. Kontejnery objektů blob se používají ve službě Media Services jako hranic bod pro řízení přístupu a lokátory sdíleného přístupového podpisu (SAS) na prostředky. Účet úložiště Azure může obsahovat neomezený počet kontejnerů objektů blob. Kontejner můžete pojmout neomezený počet objektů blob.
+### <a name="blob-container"></a>Kontejner objektů blob
+Kontejner objektů BLOB poskytuje seskupení sady objektů BLOB. Kontejnery objektů BLOB se používají v Media Services jako hraniční bod pro řízení přístupu a Lokátory sdíleného přístupového podpisu (SAS) u prostředků. Účet Azure Storage může obsahovat neomezený počet kontejnerů objektů BLOB. Kontejner můžete pojmout neomezený počet objektů blob.
 
 >[!NOTE]
-> By se neměly pokoušet ke změně obsahu kontejnery objektů blob, které byly generovány službou Media Services bez použití rozhraní API služby Media.
+> Neměli byste se pokoušet změnit obsah kontejnerů objektů BLOB generovaných Media Services bez použití rozhraní API služby Media Service.
 > 
 > 
 
 ### <a name="a-idlocatorslocators"></a><a id="locators"/>Lokátory
-[Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator)s poskytují vstupní bod pro přístup k souborům obsaženy v assetu. Zásady přístupu slouží k definování oprávnění a dobu trvání, že má klient přístup k dané assetu. Lokátory může mít mnoho na jeden vztah s zásadu přístupu tak, aby různé lokátory poskytnout různé spuštění a typy připojení různých klientů přitom všechny stejné oprávnění a nastavení doby trvání; z důvodu omezení zásad sdíleného přístupu nastavit pomocí služby Azure storage, ale nemůže mít více než pět jedinečné lokátory přidružené k dané assetu najednou. 
+[Lokátor](https://docs.microsoft.com/rest/api/media/operations/locator)s poskytuje vstupní bod pro přístup k souborům obsaženým v prostředku. Zásady přístupu slouží k definování oprávnění a doby trvání, ke kterým má klient přístup k danému prostředku. Lokátory můžou mít k zásadě přístupu relaci n:n, takže různé Lokátory můžou poskytovat různé časy spuštění a typy připojení různým klientům, zatímco všichni používají stejná oprávnění a nastavení doby trvání. vzhledem k omezení zásad sdíleného přístupu nastaveným službami Azure Storage ale nemůžete najednou mít k danému prostředku přidružené více než pět jedinečných lokátorů. 
 
-Služba Media Services podporuje dva typy lokátorů: Ondemandorigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming) nebo progresivně stahovat média a lokátory adresy URL SAS, používá k odeslání nebo stažení to\from soubory médií Azure storage. 
+Media Services podporuje dva typy lokátorů: OnDemandOrigin Lokátory, které se používají ke streamování médií (například MPEG POMLČKy, HLS nebo Smooth Streaming) nebo postupně stahovat Lokátory adres URL médií a SAS, které slouží k nahrávání nebo stahování mediálních souborů to\from Azure Storage. 
 
 >[!NOTE]
->Seznam oprávnění (AccessPermissions.List) by neměl být použili při vytváření Lokátor OnDemandOrigin. 
+>Oprávnění list (AccessPermissions. list) by se nemělo používat při vytváření lokátoru OnDemandOrigin. 
 
 ### <a name="storage-account"></a>Účet úložiště
-Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Účet služby Media Services můžete přidružit jeden nebo více účtů úložiště. Účet může obsahovat neomezený počet kontejnerů, jejich celkové velikosti je v části 500TB na jeden účet úložiště.  Služba Media Services poskytuje úrovně nástrojů SDK, aby bylo možné spravovat více účtů úložiště a distribuci vašich prostředků během odesílání do těchto účtů podle metriky nebo náhodná distribuce Vyrovnávání zatížení. Další informace najdete v tématu práci s [služby Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx). 
+Veškerý přístup k Azure Storage se provádí prostřednictvím účtu úložiště. Účet Media Service může přidružit jeden nebo více účtů úložiště. Účet může obsahovat neomezený počet kontejnerů, pokud je jeho celková velikost pod 500TBem na účet úložiště.  Media Services poskytuje nástroje na úrovni sady SDK, které vám umožní spravovat více účtů úložiště a vyrovnávat zatížení při nahrávání prostředků do těchto účtů na základě metrik nebo náhodné distribuce. Další informace najdete v tématu práce s [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx). 
 
-## <a name="jobs-and-tasks"></a>Úlohy a úkoly
-A [úlohy](https://docs.microsoft.com/rest/api/media/operations/job) se obvykle používá k procesu (například indexování nebo kódování) jeden prezentace audio/video. Pokud zpracováváte několik videí, vytvoření úlohy pro každé video kódovaný.
+## <a name="jobs-and-tasks"></a>Úlohy a úlohy
+[Úloha](https://docs.microsoft.com/rest/api/media/operations/job) se obvykle používá ke zpracování jedné prezentace audio/video (například indexování nebo kódování). Pokud zpracováváte více videí, vytvořte úlohu pro kódování každého videa.
 
-Úloha obsahuje metadata o zpracování, která se má provést. Každá úloha obsahuje jednu nebo více [úloh](https://docs.microsoft.com/rest/api/media/operations/task)výstup s, určíte atomic zpracování úloh, jeho vstupní prostředky, prostředky, procesor médií a její související nastavení. Úkoly v rámci úlohy je možné zřetězit, kde je zadána výstupní asset jedné úlohy jako vstupní asset dalšího kroku. Tímto způsobem může obsahovat jednu úlohu všechny nezbytné pro prezentaci média zpracování.
+Úloha obsahuje metadata o zpracování, která se mají provést. Každá úloha obsahuje jednu nebo více [úloh](https://docs.microsoft.com/rest/api/media/operations/task), které určují úlohu atomické zpracování, její vstupní prostředky, výstupní prostředky, procesor médií a jeho přidružená nastavení. Úlohy v rámci úlohy lze zřetězit společně, kde výstupní prostředek jedné úlohy je uveden jako vstupní Asset pro další úkol. V tomto způsobu může jedna úloha obsahovat veškeré zpracování potřebné pro prezentaci multimédií.
 
 ## <a id="encoding"></a>Kódování
-Azure Media Services nabízí několik možností pro kódování multimédií v cloudu.
+Azure Media Services poskytuje více možností pro kódování médií v cloudu.
 
-Když začínáte se službou Media Services, je důležité pochopit rozdíl mezi formáty kodeky a soubor.
-Kodeky jsou software, který implementuje algoritmy komprese nebo dekomprese, zatímco formáty souborů jsou kontejnery, které obsahují komprimované video.
+Když začnete s Media Services, je důležité pochopit rozdíl mezi kodeky a formáty souborů.
+Kodeky jsou software, který implementuje algoritmy komprese/dekomprese, zatímco formáty souborů jsou kontejnery, které obsahují komprimované video.
 
-Služba Media Services poskytuje dynamické balení, což vám umožní dodávat váš obsah s adaptivní přenosovou rychlostí kódováním MP4 nebo technologie Smooth Streaming ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming), aniž byste je museli znovu zabalit do těchto formátů streamování.
+Media Services poskytuje dynamické balení, které vám umožní doručovat MP4 s adaptivní přenosovou rychlostí nebo Smooth Streaming kódovaný obsah ve formátech streamování, které podporuje Media Services (MPEG POMLČKa, HLS, Smooth Streaming), aniž byste je museli znovu zabalit do těchto formáty streamování.
 
-Abyste mohli využívat [dynamické balení](media-services-dynamic-packaging-overview.md), musíte zakódovat váš soubor mezzanine (zdrojový) do sady souborů MP4 nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí a mít aspoň jeden úrovně standard nebo premium koncový bod streamování bylo zahájeno stavu.
+Pokud chcete využít výhod [dynamického balení](media-services-dynamic-packaging-overview.md), musíte soubor Mezzanine (zdrojový soubor) kódovat do sady souborů MP4 s adaptivní přenosovou rychlostí nebo s adaptivní přenosovou rychlostí Smooth Streaming soubory a mít aspoň jeden koncový bod streamování Standard nebo Premium ve stavu spuštěno.
 
-Služba Media Services podporuje následující kodéry na vyžádání, které jsou popsány v tomto článku:
+Media Services podporuje následující kodéry na vyžádání, které jsou popsány v tomto článku:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 * [Pracovní postup kodéru Media Encoder Premium](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Informace o podporovaných kodérů najdete v tématu [kodérů](media-services-encode-asset.md).
+Informace o podporovaných kodérech najdete v tématu [kodéry](media-services-encode-asset.md).
 
 ## <a name="live-streaming"></a>Živé streamování
-Ve službě Azure Media Services představuje kanál kanál pro zpracování obsahu živého streamování. Kanál obdrží živé vstupní datové proudy v jednom ze dvou způsobů:
+V Azure Media Services kanál představuje kanál pro zpracování obsahu živého streamování. Kanál přijímá živé vstupní proudy jedním ze dvou způsobů:
 
-* Místní kodér služby live Encoding odešle do kanálu s více přenosovými rychlostmi RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4). Následující kodéry, které výstupu technologie Smooth Streaming s více přenosovými rychlostmi můžete použít: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision a Transkodéry kodérů. Ingestované datové proudy prochází kanály bez kódování a překódování dalšího. Služba Media Services doručí datový proud zákazníkům na vyžádání.
-* Datový proud s jednou přenosovou rychlostí (v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4)) je odesílá do kanálu, který má povolené provádět živé kódování pomocí Media Services. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* On-premises Live Encoder posílá do kanálu RTMP s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4). Můžete použít následující živé kodéry, které mají výstup s více přenosovými rychlostmi Smooth Streaming: MediaExcel, Ateme, představovat komunikaci, Envivio, Cisco a prvky. Následující kodéry pro výstup v reálném čase: Kodér Adobe Flash Live Encoder, Wirecast, Teradek, Haivision a transkodéry. Ingestované datové proudy procházejí kanálem bez dalšího překódování a kódování. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Datový proud s jednou přenosovou rychlostí (v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4)) se pošle do kanálu, který má povolené kódování v reálném čase pomocí Media Services. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
 ### <a name="channel"></a>Kanál
-Ve službě Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s zodpovídají za zpracování obsahu živého streamování. Kanál obsahuje vstupní koncový bod (adresa URL ingestu), pak poskytnete živé převaděč. Kanál obdrží živé vstupní datové proudy z živého převaděč a zpřístupňuje je prostřednictvím jednoho nebo více koncové body streamování. Kanály také poskytuje koncový bod ve verzi preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
+V Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s zodpovídá za zpracování obsahu živého streamování. Kanál poskytuje vstupní koncový bod (adresa URL pro příjem), který pak poskytnete pro živý překódování. Kanál přijímá živé vstupní proudy z živého překódování a zpřístupňuje je pro streamování prostřednictvím jednoho nebo více starají. Kanály také poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
-Při vytváření kanálu můžete získat adresu URL ingestování a adresu URL ve verzi preview. Pokud chcete získat tyto adresy URL, nemá kanál ve spuštěném stavu. Pokud jste připravení začít zapisovat data z živého převaděč do kanálu, musí se spustit kanál. Po spuštění ingestovat data živého převaděč můžete zobrazit náhled datového proudu.
+Při vytváření kanálu můžete získat adresu URL pro ingestování a adresu URL náhledu. Aby se tyto adresy URL dostaly, kanál se nemusí nacházet ve stavu spuštěno. Až budete připraveni začít nahrávat data z živého přesílaného do kanálu, je nutné spustit kanál. Jakmile živý převedený kód začne ingestovat data, můžete zobrazit náhled streamu.
 
-Každý účet Media Services může obsahovat několik kanálů, více programů a více koncové body streamování. V závislosti na požadavcích šířku pásma a zabezpečení služby StreamingEndpoint může být vyhrazen pro jeden nebo více kanálů. Žádné StreamingEndpoint můžete načítat jakémkoli jiném kanálu.
+Každý účet Media Services může obsahovat více kanálů, více programů a několik starají. V závislosti na potřebách šířky pásma a zabezpečení může být služba StreamingEndpoint vyhrazená pro jeden nebo více kanálů. Libovolný StreamingEndpoint může vyžádat z libovolného kanálu.
 
 ### <a name="program-event"></a>Program (událost)
-A [programu (událost)](https://docs.microsoft.com/rest/api/media/operations/program) vám umožňuje řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy (události). Vztah kanálů a programů je podobná tradičním médiím, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezen na určité načasované události v tomto kanálu.
-Můžete určit počet hodin, které chcete uchovávat zaznamenaný obsah programu nastavením **ArchiveWindowLength** vlastnost. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin.
+[Program (událost)](https://docs.microsoft.com/rest/api/media/operations/program) umožňuje řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy (události). Vztah kanálu a programu je podobný tradičnímu médiu, kde kanál obsahuje konstantní datový proud obsahu a program je vymezen na určitou událost s časovým limitem na daném kanálu.
+Nastavením vlastnosti **ArchiveWindowLength** můžete zadat počet hodin, po které chcete zachovávat zaznamenaný obsah pro program. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin.
 
-ArchiveWindowLength také určuje, že maximální množství času klientů můžete posunout zpátky v čase od aktuální živé pozice. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
+ArchiveWindowLength také určuje maximální dobu, po kterou mohou klienti vyhledávat v čase z aktuální živé pozice. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
 
-Každý program (událost) je přidružena k Assetu. Program publikovat, musíte vytvořit lokátor pro přidružený asset. Tento lokátor vám umožní sestavit adresu URL pro streamování, kterou potom poskytnete svým klientům.
+Každý program (událost) je přidružen k Assetu. Pro publikování programu musíte vytvořit Lokátor pro přidružený Asset. Tento lokátor vám umožní sestavit adresu URL pro streamování, kterou potom poskytnete svým klientům.
 
 Kanál podporuje až tři současně spuštěné programy, takže si můžete vytvořit několik archivů stejného příchozího datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Požadavek vaší firmy může být například takový, že chcete archivovat 6 hodin programu, ale vysílat jenom posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program nastavíte, aby archivoval 6 hodin události, ale tento program nebudete publikovat. Druhý program nastavíte, aby archivoval 10 minut a tento program budete publikovat.
 
-Další informace naleznete v tématu:
+Další informace:
 
-* [Práce s kanály, které mají povolené kódování v reálném pomocí Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
+* [Práce s kanály, které jsou povolené k provádění Live Encoding s Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md)
 * [Kvóty a omezení](media-services-quotas-and-limitations.md).
 
 ## <a name="protecting-content"></a>Ochrana obsahu
 ### <a name="dynamic-encryption"></a>Dynamické šifrování
-Azure Media Services umožňuje zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Služba Media Services vám umožní dodávat váš obsah dynamicky šifrován Standard AES (Advanced Encryption) (pomocí 128bitového šifrování klíče) a Standard common encryption (CENC) pomocí technologie PlayReady nebo Widevine DRM. Služba Media Services také poskytuje službu k doručování klíčů AES a PlayReady licence autorizovaným klientům.
+Azure Media Services vám umožní zabezpečit vaše média od okamžiku, kdy počítač opustí vaše počítače, a to prostřednictvím úložiště, zpracování a doručování. Media Services vám umožní doručovat obsah dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES) (pomocí 128 šifrovacích klíčů) a běžné šifrování (CENC) pomocí technologie PlayReady nebo Widevine DRM. Media Services taky poskytuje službu pro doručování klíčů AES a licencí PlayReady do autorizovaných klientů.
 
-V současné době můžete šifrovat formátech streamování: HLS, MPEG DASH a Smooth Streaming. Nelze zašifrovat progresivní stahování.
+V současné době můžete šifrovat následující formáty streamování: HLS, MPEG POMLČKa a Smooth Streaming. Progresivní stahování nelze zašifrovat.
 
-Pokud chcete pro Media Services k šifrování assetu, musíte přidružit asset šifrovacího klíče (CommonEncryption nebo EnvelopeEncryption) a také nakonfigurovat zásady autorizace pro klíč.
+Pokud chcete, aby Media Services šifrování assetu, musíte k assetu přidružit šifrovací klíč (CommonEncryption nebo EnvelopeEncryption) a také nakonfigurovat zásady autorizace pro tento klíč.
 
-Pokud chcete Streamovat šifrované prostředků úložiště, musíte nakonfigurovat zásady doručení assetu aby bylo možné určit, jak chcete dodávat váš asset.
+Pokud chcete streamovat šifrovaný prostředek úložiště, musíte nakonfigurovat zásady doručení assetu, aby bylo možné určit, jak chcete Asset doručovat.
 
-Datový proud je žádost přehrávač, Media Services používá k dynamické šifrování obsahu pomocí šifrování obálku (pomocí standardu AES) nebo používat standard common encryption (s technologií PlayReady nebo Widevine) se zadaným klíčem. Dešifrování datového proudu, přehrávače požádá o klíč ze služby doručení klíče. Rozhodování o tom, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
+Když hráč vyžádá datový proud, Media Services použije zadaný klíč k dynamickému šifrování obsahu pomocí šifrování obálky (s AES) nebo běžné šifrování (s PlayReady nebo Widevine). Aby byl datový proud dešifrován, přehrávač si vyžádá klíč ze služby doručování klíčů. Aby bylo možné rozhodnout, jestli uživatel má oprávnění k získání klíče, vyhodnotí zásady autorizace, které jste zadali pro tento klíč.
 
-### <a name="token-restriction"></a>Omezení s tokenem
-Zásady autorizace klíče obsahu může mít jednu nebo více omezení autorizace: otevřete, token omezení nebo omezení IP adres. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve formátu jednoduchých webových tokenů (SWT) a formát JSON Web Token (JWT). Služba Media Services neposkytuje služby tokenu zabezpečení. Můžete vytvořit vlastní službu STS. Služba tokenů zabezpečení musí být nakonfigurovaný k vytvoření tokenu podepsán zadaný klíč a vydávání deklarací identity, které jste zadali v konfiguraci omezení s tokenem. Doručení klíče služby Media Services vrátí požadovaný klíč (nebo licencí) pro klienty, pokud je token platný a deklarace identity v tokenu shody jsou nakonfigurované pro klíče (nebo licencí).
+### <a name="token-restriction"></a>Omezení tokenu
+Zásady autorizace klíče obsahu můžou mít jedno nebo víc autorizačních omezení: otevřená, omezení tokenu nebo omezení IP adres. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátu jednoduchých webových tokenů (SWT) a ve formátu JSON Web Token (JWT). Media Services neposkytuje služby zabezpečeného tokenu. Můžete vytvořit vlastní STS. Služba tokenů zabezpečení musí být nakonfigurovaný k vytvoření tokenu podepsán zadaný klíč a vydávání deklarací identity, které jste zadali v konfiguraci omezení s tokenem. Služba doručování Media Services Key vrátí požadovaný klíč (nebo licenci) klientovi, pokud je token platný a deklarace identity v tokenu se shodují s hodnotami nakonfigurovanými pro klíč (nebo licenci).
 
-Při konfiguraci token s omezením pomocí specifikátoru zásad, musíte zadat primární ověřovací klíč, vydavatele a parametry cílovou skupinu. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí, Vystavitel je služba tokenů zabezpečení, který vydá token. Cílová skupina (říká se jim oboru) by měl popisovat záměr tokenu nebo prostředek token, který autorizuje přístup k. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
+Při konfiguraci zásad s omezeným tokenem je nutné zadat primární ověřovací klíč, parametry vystavitele a cílové skupiny. Primární ověřovací klíč obsahuje klíč, se kterým byl token podepsaný, vydavatel je služba zabezpečeného tokenu, která token vydává. Cílová skupina (někdy označovaná jako obor) popisuje účel tokenu nebo prostředku, ke kterému token opravňuje přístup. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
 
 Další informace najdete v následujících článcích:
-- [Ochrana obsahu – přehled](media-services-content-protection-overview.md)
+- [Přehled ochrany obsahu](media-services-content-protection-overview.md)
 - [Ochrana pomocí AES-128](media-services-protect-with-aes128.md)
-- [Ochrana pomocí PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md)
+- [Ochrana pomocí PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Doručování
-### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>Dynamické balení
-Při práci se službou Media Services, doporučuje se zakódovat váš soubor mezzanine soubory do sady MP4 adaptivní přenosové rychlosti a převeďte sady na požadovaný formát pomocí [dynamické balení](media-services-dynamic-packaging-overview.md).
+### <a name="a-iddynamic_packagingdynamic-packaging"></a><a id="dynamic_packaging"/>dynamické balení
+Při práci s Media Services se doporučuje kódování souborů Mezzanine zakódovat do sady MP4 s adaptivní přenosovou rychlostí a pak ji převést do požadovaného formátu pomocí [dynamického balení](media-services-dynamic-packaging-overview.md).
 
 ### <a name="streaming-endpoint"></a>Koncový bod streamování
-StreamingEndpoint reprezentuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do Content Delivery Network (CDN) k další distribuci (Azure Media Services teď poskytuje integraci Azure CDN.) Výstupní datový proud z datových proudů koncový bod služby může být živý stream nebo Asset videa na vyžádání ve vašem účtu Media Services. Zákazníci Media Services si podle svých potřeb zvolí buď koncový bod **Standard**, nebo jeden nebo několik koncových bodů streamování **Premium**. Koncový bod streamování Standard je vhodný pro většinu streamovacích úloh. 
+StreamingEndpoint představuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do Content Delivery Network (CDN) pro další distribuci (Azure Media Services nyní poskytuje integraci Azure CDN.) Odchozí datový proud ze služby streamování koncového bodu streamování může být živý datový proud nebo prostředek videa na vyžádání v účtu Media Services. Zákazníci Media Services si podle svých potřeb zvolí buď koncový bod **Standard**, nebo jeden nebo několik koncových bodů streamování **Premium**. Koncový bod streamování Standard je vhodný pro většinu úloh streamování. 
 
-Koncový bod streamování Standard je vhodný pro většinu streamovacích úloh. Standardní koncové body streamování nabízejí flexibilitu při doručování obsahu prakticky každé zařízení prostřednictvím dynamického balení do HLS, MPEG-DASH, Smooth Streaming i dynamické šifrování Microsoft PlayReady, Google Widevine, Apple Fairplay a AES128.  Jsou také škálovat z velmi malé na velmi velké cílové skupiny pomocí tisíce souběžných divákům prostřednictvím integrace Azure CDN. Pokud máte pokročilé úlohy nebo vaše kapacitní požadavky na velikost na standardních datových proudů cíle propustnost koncového bodu nebo chcete řádit kapacitu služby StreamingEndpoint pro zpracování, stále se rozšiřující potřebuje šířky pásma, doporučuje se přidělení jednotek škálování (označované také jako jednotky streamování premium).
+Koncový bod streamování Standard je vhodný pro většinu streamovacích úloh. Standardní koncové body streamování nabízí flexibilitu při doručování obsahu prakticky do všech zařízení prostřednictvím dynamického balení do HLS, MPEG-POMLČKy a Smooth Streaming a také dynamického šifrování pro Microsoft PlayReady, Google Widevine, Apple Fairplay a AES128.  Také se škálují z velmi malých na velmi velké cílové skupiny s tisíci souběžnými prohlížeči prostřednictvím Integrace Azure CDN. Pokud máte pokročilé úlohy nebo vaše požadavky na kapacitu streamování nevyhovují standardním datovým proudům koncového bodu streamování nebo chcete řídit kapacitu služby StreamingEndpoint, aby se zpracovávala rostoucí nároky na šířku pásma, doporučujeme Přidělte jednotky škálování (označují se taky jako jednotky streamování Premium).
 
-Doporučuje se použít dynamické balení a dynamického šifrování.
+Doporučuje se použít dynamické balení a/nebo dynamické šifrování.
 
 >[!NOTE]
 >Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
 
 Další informace najdete v [tomto](media-services-portal-manage-streaming-endpoints.md) tématu.
 
-Ve výchozím nastavení může mít až 2 koncové body streamování ve účtu Media Services. Vyšší omezení počtu požadavků, najdete v článku [kvóty a omezení](media-services-quotas-and-limitations.md).
+Ve výchozím nastavení můžete mít v účtu Media Services až dva koncové body streamování. Pokud si chcete vyžádat vyšší limit, přečtěte si téma [kvóty a omezení](media-services-quotas-and-limitations.md).
 
-Nebudete dostávat faktury, pokud je vaše StreamingEndpoint ve spuštěném stavu.
+Fakturuje se vám jenom v případě, že vaše StreamingEndpoint je ve spuštěném stavu.
 
 ### <a name="asset-delivery-policy"></a>Zásady doručení assetu
-Jedním z kroků v pracovním postupu doručování obsahu v Media Services konfiguruje [zásady doručování prostředků](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy), kterou chcete Streamovat. Zásady doručení assetu říká Media Services způsob pro váš prostředek, který bude doručen: do datových proudů protokol, který by měl váš asset dynamicky balí (pro příklad, MPEG DASH, HLS, technologie Smooth Streaming nebo všechny), jestli chcete šifrovat dynamicky váš asset a jak (Obálka nebo používat standard common encryption).
+Jeden z kroků v pracovním postupu pro doručování obsahu Media Services konfiguruje [zásady doručování pro prostředky](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy), které chcete zasílat datovým proudem. Zásada doručení assetu oznamuje Media Services, jak chcete Asset doručovat: do kterého protokolu streamování by měl být Asset dynamicky zabalen (například MPEG POMLČKy, HLS, Smooth Streaming nebo vše) bez ohledu na to, jestli chcete dynamicky šifrovat. Váš Asset a jak (obálka nebo běžné šifrování).
 
-Pokud máte úložiště šifrované asset, před Streamovat prostředek, server streamování zruší šifrování úložiště a streamuje obsah pomocí zadaného doručování zásad. Například dodávat váš asset zašifrovaný pomocí klíče pro šifrování Advanced Encryption (Standard AES), nastavte typ zásad DynamicEnvelopeEncryption. Pokud chcete odstranit úložiště šifrování a streamování majetku v nezašifrované podobě, nastavte typ zásad k NoDynamicEncryption.
+Pokud máte zašifrovaný prostředek úložiště, pak před odesláním assetu do datového proudu Server streamování odstraní šifrování úložiště a streamuje obsah pomocí zadaných zásad doručování. Pokud třeba chcete zajistit, aby se Asset zašifroval pomocí šifrovacího klíče standard AES (Advanced Encryption Standard) (AES), nastavte typ zásad na DynamicEnvelopeEncryption. Pokud chcete odstranit šifrování úložiště a streamovat prostředek v nejasném případě, nastavte typ zásady na NoDynamicEncryption.
 
 ### <a name="progressive-download"></a>Progresivní stahování
-Progresivní stahování umožňuje spustit přehrávání médií předtím, než byly staženy celý soubor. Můžete pouze progresivně stahovat soubor MP4.
+Progresivní stahování vám umožní začít přehrávat média před stažením celého souboru. Soubor MP4 můžete postupně stáhnout pouze v průběhu.
 
 >[!NOTE]
->Šifrované prostředky musí dešifrovat, pokud chcete, aby pro ně k dispozici pro progresivní stahování.
+>Pokud chcete, aby byly k dispozici pro progresivní stahování, je nutné dešifrovat šifrované prostředky.
 
-Uživatelům poskytnout adresa URL progresivního stahování, nejprve musíte vytvořit lokátor OnDemandOrigin. Vytváření Lokátor, obsahuje základní cestu k assetu. Pak budete muset přidat název souboru MP4. Příklad:
+Pokud chcete uživatelům poskytnout adresy URL progresivního stahování, musíte nejdřív vytvořit Lokátor OnDemandOrigin. Vytvoření lokátoru vám poskytne základní cestu k assetu. Pak musíte připojit název souboru MP4. Například:
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-### <a name="streaming-urls"></a>Adresy URL pro streamování
-Streamování vašeho obsahu pro klienty. Uživatelům poskytnout adresy URL pro streamování, nejprve musíte vytvořit lokátor OnDemandOrigin. Vytváření Lokátor, obsahuje základní cestu k prostředku, který obsahuje obsah, který chcete Streamovat. Však Streamovat tento obsah budete muset upravit další tuto cestu. Pokud chcete vytvořit úplnou adresu URL k souboru manifestu datových proudů, musí zřetězit hodnotu lokátoru cesty a manifest (filename.ism) název souboru. Potom připojí k lokátoru cesty volbu/manifest a příslušném formátu (v případě potřeby).
+### <a name="streaming-urls"></a>Adresy URL streamování
+Streamování obsahu do klientů. Pokud chcete uživatelům poskytnout adresy URL streamování, musíte nejdřív vytvořit Lokátor OnDemandOrigin. Vytvořením lokátoru získáte základní cestu k assetu, který obsahuje obsah, který chcete streamovat. Abyste ale mohli streamovat tento obsah, musíte tuto cestu dál upravit. Pokud chcete vytvořit úplnou adresu URL souboru manifestu streamování, musíte zřetězit hodnotu cesty lokátoru a název souboru manifestu (filename. ISM). Pak v cestě lokátoru přidejte/manifest a odpovídající formát (v případě potřeby).
 
-Také můžete Streamovat obsah pomocí připojení SSL. Chcete-li to provést, zkontrolujte, zda že vaší adresy URL pro streamování začínat HTTPS. V současné době nepodporuje AMS SSL s použitím vlastních domén.  
+Svůj obsah můžete streamovat i přes připojení SSL. Pokud to chcete provést, ujistěte se, že vaše adresy URL streamování začínají na HTTPS. AMS v současné době nepodporuje protokol SSL s vlastními doménami.  
 
 >[!NOTE]
->Můžete pouze Streamovat přes protokol SSL Pokud koncový bod streamování, ze kterého můžete doručovat obsah byl vytvořen po 10. září 2014. Pokud vaše adresy URL pro streamování jsou založené na koncových bodech streamování vytvořené po 10. září, adresa URL obsahuje "streaming.mediaservices.windows.net" (nový formát). Adresy URL pro streamování, které obsahují "origin.mediaservices.windows.net" (starý formát) nepodporují SSL. Pokud vaše adresa URL používá starý formát a chcete Streamovat přes protokol SSL, vytvořte nový koncový bod streamování. Použití adres URL založeno na nový koncový bod streamování pro streamování vašeho obsahu přes protokol SSL.
+>Streamování přes SSL můžete odeslat jenom v případě, že koncový bod streamování, ze kterého dodáváte obsah, byl vytvořen po 10. září 2014. Pokud jsou vaše adresy URL streamování založené na koncových bodech streamování vytvořených po 10. září, adresa URL obsahuje "streaming.mediaservices.windows.net" (nový formát). Adresy URL streamování, které obsahují "origin.mediaservices.windows.net" (starý formát), nepodporují protokol SSL. Pokud je vaše adresa URL ve starém formátu a chcete být schopná streamovat přes SSL, vytvořte nový koncový bod streamování. Použijte adresy URL vytvořené na základě nového koncového bodu streamování pro streamování obsahu přes SSL.
 
-Následující seznam popisuje různé formáty streamování a uvádí příklady:
+Následující seznam popisuje různé formáty streamování a nabízí příklady:
 
 * Technologie Smooth Streaming
 
@@ -212,25 +212,25 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 * MPEG DASH
 
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = MPD-Time-CSF)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = MPD-Time-CSF)
 
-* Apple HTTP Live Streaming (HLS) V4
+* Apple HTTP Live Streaming (HLS) v4
 
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = M3U8-AAPL)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = M3U8-AAPL)
 
 * Apple HTTP Live Streaming (HLS) V3
 
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = M3U8-AAPL-V3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = M3U8-AAPL-V3)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

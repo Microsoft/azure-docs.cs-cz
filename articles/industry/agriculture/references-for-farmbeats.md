@@ -1,89 +1,91 @@
 ---
-title: Odkazy na FarmBeats
+title: Odkazy na Azure FarmBeats
 description: ''
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931198"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900382"
 ---
 # <a name="references"></a>Odkazy
 
-Níže jsou uvedeny poznámky a pokyny, které popisují rozhraní API služby Azure FarmBeats.
+Tento článek popisuje rozhraní API služby Azure FarmBeats.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
-Rozhraní API Azure FarmBeats poskytují zemědělský podnik standardizovaným rozhraním RESTful s odpověďmi založenými na standardu JSON, které vám pomůžou využít možnosti Azure FarmBeats:
+Rozhraní API Azure FarmBeats poskytují zemědělským firmám standardizované rozhraní RESTful s odpověďmi založenými na standardu JSON, které vám pomůžou využít možnosti Azure FarmBeats, například:
 
 - Rozhraní API pro získání senzorů, fotoaparátů, pomocí dronů, počasí, satelitních a spravovaných pozemních dat.
-- Normalizace/kontextová data napříč společnými poskytovateli dat
+- Normalizace a kontext dat napříč společnými poskytovateli dat.
 - Schematized přístup a možnosti dotazování pro všechna ingestovaná data.
-- Automatické generování metadat, na které lze dotazovat, na základě agronomických funkcí.  
+- Automatické generování metadat, na které lze dotazovat, na základě agronomických funkcí. 
 - Automaticky generované agregace časových sekvencí pro rychlé vytváření modelů.
-- Integrovaný modul Azure Data Factory (ADF), který umožňuje snadno vytvářet vlastní kanály zpracování dat.
+- Integrovaný modul Azure Data Factory, který umožňuje snadno vytvářet vlastní kanály zpracování dat.
 
 ## <a name="application-development"></a>Vývoj aplikací
 
-Rozhraní API obsahují technickou dokumentaci k Swagger. Informace o všech rozhraních API a jejich odpovídajících požadavcích a odpovědích najdete v [Swagger](https://aka.ms/FarmBeatsDatahubSwagger) .
+Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Informace o všech rozhraních API a jejich odpovídajících požadavcích nebo odpovědích najdete v části [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
-Toto je souhrn všech objektů a prostředků v FarmBeats datových rozbočovačích:
+V následující tabulce najdete souhrn všech objektů a prostředků v FarmBeats DataHub.
 
-Sdílených | Farma odpovídá fyzickému umístění zájmu v rámci systému FarmBeats. Každá farma má název farmy a jedinečné ID farmy.
+| Objekty a prostředky | Popis
 --- | ---|
-Zařízení  | Zařízení odpovídá fyzickému zařízení přítomnému ve farmě. Každé zařízení má jedinečné ID zařízení. Zařízení je obvykle zřízené pro farmu s ID farmy.
-DeviceModel  | DeviceModel odpovídá metadatům zařízení, jako je výrobce, typ zařízení buď bránu, nebo uzel.
+Farma | Farma odpovídá fyzickému umístění zájmu v rámci systému FarmBeats. Každá farma má název farmy a jedinečné ID farmy. |
+Zařízení  | Zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné. Každé zařízení má jedinečné ID zařízení. Zařízení je obvykle zřízené pro farmu s ID farmy.
+DeviceModel  | DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, který je buď bránou, nebo uzlem.
 Elektrické  | Senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
-SensorModel  | SensorModel odpovídá meta údajům snímačů, jako je výrobce, typ snímače buď analogového, nebo digitálního, měření senzorů, jako je okolní teplota, tlak atd.
-Telemetrická data  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
-Úloha  | Úloha odpovídá jakémukoli pracovnímu postupu aktivity, který se spustí v systému FarmBeats, aby získal požadovaný výstup. Každá úloha je přidružená k ID úlohy a typu úlohy.
-JobType  | JobType odpovídá různým typům úloh, které systém podporuje. To zahrnuje systémy definované & uživatelsky definované typy úloh.
-ExtendedType  | ExtendedType odpovídá seznamu systémových & uživatelsky definované typy v systému. To pomáhá nastavit nový senzor nebo scén nebo Scenefile typ v systému FarmBeats.
-Partner  | Partner odpovídá partnerovi pro integraci senzorů/snímků pro FarmBeats.
+SensorModel  | SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a měření snímače, například okolní teplota a tlak.
+Telemetrie  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
+Úloha  | Úloha odpovídá jakémukoli pracovnímu postupu aktivit, které jsou spuštěny v systému FarmBeats, aby získala požadovaný výstup. Každá úloha je přidružená k ID úlohy a typu úlohy.
+JobType  | JobType odpovídá různým typům úloh, které systém podporuje. Jsou zahrnuty typy úloh definovaných systémem a uživatelem definovaných typů.
+ExtendedType  | ExtendedType odpovídá seznamu typů systémem a uživatelem definovaných v systému. ExtendedType pomáhá nastavit nový senzor, scén nebo typ souboru scény v systému FarmBeats.
+Partner  | Partner odpovídá partnerovi pro integraci senzorů a snímků pro FarmBeats.
 Scény  | Scény odpovídá jakémukoli vygenerovanému výstupu v kontextu farmy. Každá scéna má ID scény, zdroj scény, typ scény a ID farmy, která je k němu přidružená. K jednotlivým ID scény může být přidruženo více souborů scény.
 SceneFile |SceneFile odpovídá všem souborům, které jsou generovány pro jednu scénu. K jednomu ID scény může být přidruženo několik ID SceneFile.
-Pravidlo  |Pravidlo odpovídá podmínkám pro data související s farmou, která aktivuje výstrahu. Každé pravidlo bude v kontextu dat farmy.
-Výstrahy  | Výstraha odpovídá oznámení, které se generuje při splnění podmínky pravidla. Každá výstraha bude v kontextu pravidla.
+Pravidlo  |Pravidlo odpovídá podmínkám pro data související s farmou, která aktivuje výstrahu. Každé pravidlo je v kontextu dat farmy.
+Upozornění  | Výstraha odpovídá oznámení, které se generuje při splnění podmínky pravidla. Každé upozornění je v kontextu pravidla.
 Rutiny roledefinition  | Rutiny roledefinition definuje povolené a zakázané akce pro roli.
 RoleAssignment  |RoleAssignment odpovídá přiřazování rolí uživateli nebo instančnímu objektu.
 
-**Formát dat**
+### <a name="data-format"></a>Formát dat
 
-JSON (JavaScript Object Notation) je běžný jazyk nezávislý na jazyce, který poskytuje jednoduchou textovou reprezentaci libovolných datových struktur. Další informace najdete v tématu json.org.
+JSON je běžný jazyk nezávislý na jazyce, který poskytuje jednoduchou textovou reprezentaci libovolných datových struktur. Další informace najdete na [webu JSON](https://www.json.org/).
 
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 
 Požadavky HTTP na REST API jsou chráněny pomocí Azure Active Directory (Azure AD).
-Aby bylo možné provést ověřený požadavek na rozhraní REST API, kód klienta vyžaduje ověření pomocí platných přihlašovacích údajů před voláním rozhraní API. Ověřování je sladěné mezi různými aktéry Azure AD a poskytuje vašemu klientovi přístupový token jako ověření platnosti. Token se pak pošle v hlavičce autorizace HTTP REST API požadavků. Další informace o ověřování Azure AD najdete v tématu [Azure Active Directory](https://portal.azure.com) pro vývojáře.
+Aby bylo možné provést ověřený požadavek na rozhraní REST API, kód klienta vyžaduje ověření pomocí platných přihlašovacích údajů před voláním rozhraní API. Ověřování je sladěné mezi různými aktéry Azure AD. Poskytne klientovi přístupový token jako ověření platnosti ověřování. Token se pak pošle v hlavičce autorizace HTTP REST API požadavků. Další informace o ověřování Azure AD najdete v tématu [Azure Active Directory](https://portal.azure.com) pro vývojáře.
 
-Přístupový token se musí odeslat v následujících žádostech o rozhraní API v oddílu záhlaví jako:
+Přístupový token se musí poslat v následných požadavcích rozhraní API v části záhlaví jako:
 
 ```
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
-**Hlavičky požadavku HTTP**
+### <a name="http-request-headers"></a>Hlavičky požadavku HTTP
 
-Tady jsou nejčastější hlavičky požadavků, které je potřeba zadat při volání rozhraní API do služby Azure FarmBeats data hub:
+Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API do Azure FarmBeats DataHub.
 
 
 **Hlavička** | **Popis a příklad**
 --- | ---
-Typ obsahu  | Formát požadavku (Content-Type: Application/<format>) pro formát rozhraní API centra dat Azure FarmBeats je JSON. Content-Type: Application/JSON
-Autorizace  | Určuje přístupový token potřebný k vytvoření volání rozhraní API. **Autorizace: nosný < přístup-token >**
-vyjádřit | Formát odpovědi. Pro rozhraní API centra dat Azure FarmBeats formát je **přijmout JSON: Application/JSON.**
+Content-Type  | Formát požadavku (Content-Type: Application/<format>). Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Content-Type: Application/JSON
+Autorizace  | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný < přístup-token >
+Přijmout | Formát odpovědi Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Přijmout: Application/JSON
 
-**Požadavky rozhraní API**
+### <a name="api-requests"></a>Požadavky rozhraní API
 
-Chcete-li vytvořit požadavek REST API, zkombinujete metodu HTTP (GET, POST, PUT nebo DELETE), adresu URL služby API, identifikátor URI k prostředku, který se má dotazovat, odeslat data do, aktualizovat nebo odstranit a jednu nebo více hlaviček požadavku HTTP.
+Chcete-li vytvořit žádost o REST API, kombinujete metodu HTTP (GET, POST, PUT nebo DELETE), adresu URL služby API, identifikátor URI k prostředku, který se má dotazovat, odeslat data do, aktualizovat nebo odstranit a pak přidat jednu nebo více hlaviček požadavku HTTP.
 
-Adresa URL služby API je vaše adresa URL centra dat https://\<yourdatahub-website-název >. azurewebsites. NET můžete zahrnout parametry dotazu pro volání funkce GET pro filtrování, omezení velikosti a řazení dat v odpovědích.
+Adresa URL služby API je vaše adresa URL DataHub, například https://\<yourdatahub-web-Name >. azurewebsites. NET.
+Volitelně můžete zahrnout parametry dotazu pro volání funkce GET k filtrování, omezení velikosti a řazení dat v odpovědích.
 
-Níže uvedená ukázková žádost slouží k získání seznamu zařízení:
+Následující vzorová žádost slouží k získání seznamu zařízení:
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
@@ -91,22 +93,22 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-T
 
 Většina volání GET, POST a PUT vyžaduje tělo požadavku JSON.
 
-Níže uvedená ukázková žádost slouží k vytvoření zařízení (obsahuje vstupní kód JSON s textem žádosti).
+Následující vzorový požadavek vytvoří zařízení. Tato žádost obsahuje JSON Input s textem žádosti.
 
 ```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
-**Parametry dotazu**
+### <a name="query-parameters"></a>Parametry dotazu
 
-V případě **volání funkce** REST můžete filtrovat, omezit velikost a seřadit data v odpovědi rozhraní API zahrnutím jednoho nebo více parametrů dotazu do identifikátoru URI požadavku. Parametry dotazu najdete v dokumentaci k rozhraní API a na jednotlivých voláních GET.
-Například při dotazování na seznam zařízení (volání GET na/Device) je možné zadat následující parametry dotazu:  
+V případě volání funkce REST můžete filtrovat, omezit velikost a seřadit data v odpovědi rozhraní API zahrnutím jednoho nebo více parametrů dotazu do identifikátoru URI požadavku. Parametry dotazu najdete v dokumentaci k rozhraní API a v jednotlivých voláních GET.
+Například při dotazování na seznam zařízení (získat hovor v/Device) lze zadat následující parametry dotazu: 
 
-![Beats farmy projektu](./media/for-references/query-parameters-device-1.png)
+![Seznam zařízení](./media/for-references/query-parameters-device-1.png)
 
-**Zpracování chyb**
+### <a name="error-handling"></a>Zpracování chyb
 
-Rozhraní API služby Azure FarmBeats data hub vrací standardní chyby protokolu HTTP. Nejběžnější kódy chyb jsou následující:
+Rozhraní API služby Azure FarmBeats DataHub vrací standardní chyby protokolu HTTP. Nejběžnější kódy chyb jsou následující:
 
  |Kód chyby             | Popis |
  |---                    | --- |
@@ -118,7 +120,7 @@ Rozhraní API služby Azure FarmBeats data hub vrací standardní chyby protokol
  |5XX                    | Došlo k vnitřní chybě serveru. Kódy chyb začínající na 5XX znamená, že na serveru došlo k nějaké chybě. Další podrobnosti najdete v protokolech serveru a v následující části. |
 
 
-Kromě standardních chyb HTTP vrátí rozhraní API služby Azure FarmBeats data hub také interní chyby v následujícím formátu:
+Kromě standardních chyb HTTP vrátí rozhraní API služby Azure FarmBeats DataHub také interní chyby v následujícím formátu:
 
 ```json
     {
@@ -129,7 +131,7 @@ Kromě standardních chyb HTTP vrátí rozhraní API služby Azure FarmBeats dat
     }
 ```
 
-Příklad: při vytváření farmy nebyla ve vstupní datové části zadána povinná pole "Name". Výsledná chybová zpráva by byla:
+V tomto příkladu se při vytvoření farmy ve vstupní datové části nezadalo povinné pole "název". Výsledná chybová zpráva by byla:
 
  ```json    
     {
@@ -140,33 +142,33 @@ Příklad: při vytváření farmy nebyla ve vstupní datové části zadána po
     }
   ```
 
-## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Přidávání uživatelů nebo registrace aplikací do Azure Active Directory
+## <a name="add-users-or-app-registrations-to-azure-active-directory"></a>Přidat uživatele nebo registrace aplikací do Azure Active Directory
 
-K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registrace aplikace v Azure Active Directory. Pokud chcete na svém Azure Active Directory vytvořit registraci aplikace, postupujte podle následujících kroků:  
+K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registrace aplikace v Azure Active Directory. Pokud chcete vytvořit registraci aplikace v Azure Active Directory, postupujte podle těchto kroků.
 
-1. Přejít na [Azure Portal](https://portal.azure.com) **Azure Active Directory, registrace aplikací**> **nové registrace**. Případně můžete použít existující účet.
-2. Pro nový účet se ujistěte, že jste dokončili následující kroky:
+1. Přejít na [Azure Portal](https://portal.azure.com)a vyberte **Azure Active Directory** > **Registrace aplikací** > **nové registraci**. Případně můžete použít existující účet.
+2. Pro nový účet udělejte toto:
 
     - Zadejte název.
-    - Vybrat **účty pouze v tomto organizačním adresáři (jeden tenant)**
-    - Výchozí hodnoty ve zbývajících polích
-    - Vybrat **registraci**
+    - Vyberte **účty jenom v tomto organizačním adresáři (jeden tenant)** .
+    - Použijte výchozí hodnoty ve zbývajících polích.
+    - Vyberte **Zaregistrovat**.
 
-3. V části Nová/existující registrace aplikace **– Přehled**proveďte následující:
+3. V podokně s **přehledem** nové a existující registrace aplikace proveďte tento postup:
 
     - Zachyťte **ID klienta** a **ID tenanta**.
     - Pokud chcete vygenerovat nový tajný klíč klienta a zachytit si **tajný klíč klienta**, přečtěte si **certifikáty a tajné** kódy.
-    - Vraťte se na přehled a klikněte na odkaz vedle **možnosti spravovat aplikaci v místním adresáři** .
-    - Přejít na **vlastnosti** pro zachycení **ID objektu**
+    - Vraťte se zpět na **Přehled**a vyberte odkaz vedle **možnosti spravovat aplikaci v místním adresáři**.
+    - Přejít na **vlastnosti** a zachytit **ID objektu**.
 
-4. Přečtěte si [Swagger centra dat](https://<yourdatahub>.azurewebsites.net/swagger/index.html) a proveďte následující kroky:
-    - Přejít na **rozhraní RoleAssignment API**
-    - Proveďte **příspěvek** k vytvoření ROLEASSIGNMENT pro **ID objektu** , který jste právě vytvořili. – Vstupní JSON je:
+4. Přejít do [DataHub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) a provést následující akce:
+    - Přejít na **rozhraní RoleAssignment API**.
+    - Proveďte příspěvek pro vytvoření objektu **RoleAssignment** pro **ID objektu** , který jste právě vytvořili. 
 
   > [!NOTE]
-  > Další informace o přidávání uživatelů a registraci AD najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) .
+  > Další informace o tom, jak přidat uživatele a registraci služby Active Directory, najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Po dokončení výše uvedeného postupu může registrace vaší aplikace (klienta) volat rozhraní API Azure FarmBeats pomocí přístupového tokenu prostřednictvím nosiče ověřování.  
+Po dokončení předchozích kroků může registrace vaší aplikace (klienta) volat rozhraní API Azure FarmBeats pomocí přístupového tokenu prostřednictvím ověření identity. 
 
 Pomocí přístupového tokenu ho odešlete v následujících požadavcích rozhraní API v části záhlaví jako:
 

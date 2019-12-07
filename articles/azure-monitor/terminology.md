@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5324c17cdf2593d8e1022e6ddbf52b4e24ee64e8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597814"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894352"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor změny názvů a terminologie
 V nedávné době byly provedeny významné změny, které se Azure Monitor v poslední době s různými službami konsolidovány, aby se zjednodušilo monitorování pro zákazníky Azure. Tento článek popisuje nedávné změny názvů a terminologie v dokumentaci Azure Monitor.

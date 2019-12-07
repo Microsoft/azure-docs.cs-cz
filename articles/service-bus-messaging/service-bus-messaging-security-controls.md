@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d2b92759384a9a0b63d784a8cb1afb3d18d55aeb
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219325"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894409"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Řízení zabezpečení pro zasílání zpráv Azure Service Bus
 
@@ -41,16 +41,16 @@ Tento článek popisuje ovládací prvky zabezpečení integrované v Azure Serv
 
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace |
 |---|---|--|--|
-| Ověřování| Ano | Spravované prostřednictvím [Azure Active Directory identita spravované služby](service-bus-managed-service-identity.md)| [Service Bus ověřování a autorizaci](service-bus-authentication-and-authorization.md). |
-| Authorization| Ano | Podporuje autorizaci pomocí [RBAC](authenticate-application.md) a tokenu SAS. | [Service Bus ověřování a autorizaci](service-bus-authentication-and-authorization.md). |
+| Ověření| Ano | Spravované prostřednictvím [Azure Active Directory identita spravované služby](service-bus-managed-service-identity.md)| [Service Bus ověřování a autorizaci](service-bus-authentication-and-authorization.md). |
+| Autorizace| Ano | Podporuje autorizaci pomocí [RBAC](authenticate-application.md) a tokenu SAS. | [Service Bus ověřování a autorizaci](service-bus-authentication-and-authorization.md). |
 
 ## <a name="data-protection"></a>Ochrana dat
 
 | Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace |
 |---|---|--|--|
-| Šifrování na straně serveru v klidovém umístění: Klíče spravované společností Microsoft |  Ano, pokud je ve výchozím nastavení zapnuté šifrování na straně serveru. | Spravované klíče zákazníka a BYOK ještě nejsou podporované. Šifrování na straně klienta je zodpovědností klienta. |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ne |   |   |
-| Šifrování na úrovni sloupce (Azure Data Services)| neuvedeno | |   |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  Ano, pokud je ve výchozím nastavení zapnuté šifrování na straně serveru. |  |  |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano. Aktuálně ve verzi Preview | Klíč spravovaný zákazníkem ve službě Azure webrecovery se dá použít k šifrování dat v Service Busm oboru názvů v klidovém umístění. | [Konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Bus dat v klidovém formátu pomocí Azure Portal (Preview)](configure-customer-managed-key.md)  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Nevztahuje se | |   |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Podporuje standardní mechanismus HTTPS/TLS. |   |
 | Zašifrovaná volání rozhraní API| Ano | Volání rozhraní API se provádí prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |   |
 

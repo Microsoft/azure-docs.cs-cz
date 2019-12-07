@@ -1,7 +1,7 @@
 ---
 title: Co je Video Indexer?
 titleSuffix: Azure Media Services
-description: Přehled služby Azure Media Services Video Indexer
+description: Tento článek obsahuje přehled služby Azure Media Services Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 9f6a5fa96034e0bf43ddd573a425de8d114d47ce
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575117"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892698"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -33,7 +33,7 @@ Přehledy Video Indexer je možné použít u mnoha scénářů, mimo jiné:
 
 * *Hloubkové vyhledávání*: k vylepšení možností vyhledávání v knihovně videí použijte přehledy získané z videa. Například indexování mluveného slova a obličeje může umožňovat hledání ve videu, kde osoba čelí určitým slovům, nebo když se dvě lidi viděli společně. Hledání na základě těchto poznatků z videí se vztahuje na diskusní úřady, vzdělávací instituce, vysílání, spoluvlastníky obsahu, podnikové obchodní aplikace a obecně na všechny obory, které mají knihovnu videí, na kterou uživatelé potřebují Hledat.
 * *Vytváření obsahu*: vytváření přípojných vozidel, světelná cívky, obsah sociálních médií nebo novinové klipy na základě přehledů video indexer z obsahu. Klíčové snímky, značky scény a časová razítka pro osoby a vzhledy štítků usnadňují proces vytváření mnohem hladší a jednodušší a umožňuje dostat se k částem videa, které potřebujete pro obsah, který vytváříte.
-* *Usnadnění*: zda chcete zpřístupnit obsah pro osoby s postižením nebo pokud chcete, aby byl obsah distribuován do různých oblastí pomocí různých jazyků, můžete použít přepis a překlad poskytovaný videem. Indexer v několika jazycích.
+* *Usnadnění*: zda chcete zpřístupnit obsah pro osoby s postižením nebo pokud chcete, aby byl obsah distribuován do různých oblastí pomocí různých jazyků, můžete použít přepis a překlady poskytované video indexerem v několika jazycích.
 * *Finanční zhodnocení*: video indexer může přispět k navýšení hodnoty videí. Například obory, které spoléhají na výnosy AD (sdělovací média, sociální média atd.), můžou poskytovat relevantní reklamy pomocí extrahovaných přehledů jako další signály na server služby AD.
 * *Moderování obsahu*: Použití textových a vizuálních modelů pro moderování obsahu k zajištění bezpečnosti uživatelů před nevhodným obsahem a ověření, že obsah, který publikujete, odpovídá hodnotám vaší organizace. Můžete automaticky blokovat určitá videa nebo upozornit uživatele na obsah.
 * *Doporučení*: ke zlepšení zapojení uživatelů je možné využít video přehledy, které uživatelům zvýrazní relevantní video. Označením jednotlivých videí s dalšími metadaty můžete uživatelům doporučit nejdůležitější videa a zvýraznit části videa, které budou vyhovovat jejich potřebám.

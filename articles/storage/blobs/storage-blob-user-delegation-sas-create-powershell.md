@@ -1,20 +1,21 @@
 ---
-title: Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí prostředí PowerShell (Preview) – Azure Storage
-description: Naučte se vytvořit sdílený přístupový podpis (SAS) pomocí Azure Active Directory přihlašovacích údajů v Azure Storage pomocí PowerShellu.
+title: Použití PowerShellu k vytvoření SAS delegování uživatelů pro kontejner nebo objekt BLOB
+titleSuffix: Azure Storage
+description: Naučte se, jak pomocí PowerShellu vytvořit delegování uživatelů (ve verzi Preview) s přihlašovacími údaji Azure Active Directory.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 08/29/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673344"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892511"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí PowerShellu (Preview)
 
@@ -102,7 +103,7 @@ Když vytvoříte SAS uživatele při delegování pomocí Azure PowerShell, vyt
 
 Vzhledem k tomu, že maximální interval, po který je klíč delegování uživatele platný, je 7 dní od počátečního data, měli byste zadat čas vypršení platnosti pro SAS, který je do 7 dnů od času spuštění. Podpis SAS je po vypršení platnosti klíče pro delegování uživatele neplatný, takže platnost SAS s časem vypršení platnosti delší než 7 dní bude platit i pro 7 dní.
 
-Chcete-li vytvořit přidružení zabezpečení delegování uživatele pro kontejner nebo objekt BLOB s Azure PowerShell, nejprve vytvořte nový objekt kontextu Azure Storage a určete parametr `-UseConnectedAccount`. Parametr `-UseConnectedAccount` určuje, že příkaz vytvoří kontextový objekt pod účtem služby Azure AD, se kterým jste se přihlásili.
+Chcete-li vytvořit přidružení zabezpečení delegování uživatele pro kontejner nebo objekt BLOB s Azure PowerShell, nejprve vytvořte nový objekt kontextu Azure Storage a určete `-UseConnectedAccount` parametr. Parametr `-UseConnectedAccount` určuje, že příkaz vytvoří kontextový objekt pod účtem služby Azure AD, se kterým jste se přihlásili.
 
 Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 

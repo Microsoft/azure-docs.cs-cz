@@ -7,47 +7,52 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: cherylmc
-Customer intent: I want to connect my on-premises networks to my VNets using S2S VPN connection over my ExpressRoute private peering using Azure Virtual WAN.
-ms.openlocfilehash: 6272d6fe6f8c35c06a8121e10be2dd5a2e5512a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+Customer intent: I want to connect my on-premises networks to my virtual networks by using an S2S VPN connection over my ExpressRoute private peering through Azure Virtual WAN.
+ms.openlocfilehash: ae971bad47d84b6928ebea64e416d21af25528ad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515028"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896599"
 ---
-# <a name="create-a-site-to-site-vpn-connection-over-expressroute-private-peering-using-azure-virtual-wan"></a>Vytvoření připojení VPN typu Site-to-site přes privátní partnerský vztah ExpressRoute pomocí Azure Virtual WAN
+# <a name="create-a-site-to-site-vpn-connection-over-expressroute-private-peering-by-using-azure-virtual-wan"></a>Vytvoření připojení VPN typu Site-to-site přes privátní partnerský vztah ExpressRoute pomocí Azure Virtual WAN
 
-V tomto článku se dozvíte, jak pomocí virtuální sítě WAN navázat připojení VPN IPsec/IKE z vaší místní sítě k Azure prostřednictvím privátního partnerského vztahu okruhu ExpressRoute. To může zajistit zašifrovaný přenos mezi místními sítěmi a virtuálními sítěmi Azure přes ExpressRoute, a to bez toho, aby se prochází veřejným internetem nebo pomocí veřejných IP adres.
+V tomto článku se dozvíte, jak pomocí Azure Virtual WAN navázat připojení VPN IPsec/IKE z vaší místní sítě k Azure prostřednictvím privátního partnerského vztahu okruhu Azure ExpressRoute. Tato technika může zajistit zašifrovaný přenos mezi místními sítěmi a virtuálními sítěmi Azure přes ExpressRoute, aniž by se museli přenášet přes veřejný Internet nebo pomocí veřejných IP adres.
 
 ## <a name="topology-and-routing"></a>Topologie a směrování
 
-Následující diagram ukazuje příklad připojení VPN přes ExpressRoute Private peering:
+Následující diagram ukazuje příklad připojení VPN přes privátní partnerský vztah ExpressRoute:
 
 ![VPN přes ExpressRoute](./media/vpn-over-expressroute/vwan-vpn-over-er.png)
 
 Diagram zobrazuje síť v místní síti připojené ke službě Azure hub VPN Gateway přes privátní partnerský vztah ExpressRoute. Vytváření připojení je jednoduché:
 
-1. Navázání připojení ExpressRoute pomocí okruhu ExpressRoute a privátního partnerského vztahu
-2. Navažte připojení VPN, jak je popsané v tomto dokumentu.
+1. Navažte připojení ExpressRoute pomocí okruhu ExpressRoute a privátního partnerského vztahu.
+2. Vytvořte připojení VPN, jak je popsáno v tomto článku.
 
 Důležitým aspektem této konfigurace je směrování mezi místními sítěmi a Azure prostřednictvím cest ExpressRoute a VPN.
 
 ### <a name="traffic-from-on-premises-networks-to-azure"></a>Provoz z místních sítí do Azure
 
-V případě provozu z místních sítí do Azure budou předpony Azure (včetně virtuálního rozbočovače a všech virtuálních sítí připojených k rozbočovači) inzerovány prostřednictvím protokolu BGP privátního partnerského vztahu ExpressRoute a protokolu BGP sítě VPN. Výsledkem bude, že budou dvě síťové trasy (cesty) směrem k Azure z místních sítí. jednu přes cestu chráněnou protokolem IPsec a jednu přímo přes ExpressRoute **bez** ochrany IPsec. Abyste se ujistili, že se pro komunikaci používá šifrování, musíte se ujistit, že je v diagramu síť připojená k síti VPN, trasy Azure přes místní bránu VPN jsou upřednostňovány přes přímou cestu ExpressRoute.
+V případě provozu z místních sítí do Azure jsou předpony Azure (včetně virtuálního rozbočovače a všech virtuálních sítí připojených k rozbočovači) inzerovány prostřednictvím protokolu BGP privátního partnerského vztahu ExpressRoute a protokolu BGP VPN. Výsledkem je dvě síťové trasy (cesty) směrem k Azure z místních sítí:
+
+- Jedna přes cestu chráněnou protokolem IPsec
+- Jedno přímo přes ExpressRoute *bez* ochrany IPsec 
+
+Pokud chcete pro komunikaci použít šifrování, musíte se ujistit, že je v diagramu připojená k síti VPN, trasy Azure přes místní bránu VPN jsou upřednostňovány přes přímou cestu ExpressRoute.
 
 ### <a name="traffic-from-azure-to-on-premises-networks"></a>Provoz z Azure do místních sítí
 
 Stejný požadavek se vztahuje na provoz z Azure do místních sítí. Chcete-li zajistit, aby byla cesta protokolu IPsec upřednostňována přes přímou cestu ExpressRoute (bez protokolu IPsec), máte dvě možnosti:
 
-- Inzerovat konkrétnější předpony v relaci protokolu BGP sítě VPN pro síť připojenou k síti VPN. Můžete inzerovat větší rozsah zahrnující "síť připojenou k síti VPN" prostřednictvím privátního partnerského vztahu ExpressRoute a potom v relaci protokolu BGP VPN více konkrétních rozsahů. Můžete například inzerovat 10.0.0.0/16 přes ExpressRoute a 10.0.1.0/24 prostřednictvím sítě VPN.
+- Inzerovat konkrétnější předpony v relaci protokolu BGP sítě VPN pro síť připojenou k síti VPN. Můžete inzerovat větší rozsah, který zahrnuje síť připojenou k síti VPN přes privátní partnerský vztah ExpressRoute, a pak v relaci protokolu BGP sítě VPN více konkrétních rozsahů. Můžete například inzerovat 10.0.0.0/16 přes ExpressRoute a 10.0.1.0/24 prostřednictvím sítě VPN.
 
-- Inzerovat nesouvislé předpony pro VPN a ExpressRoute. Pokud jsou rozsahy sítě připojené k síti VPN nesouvislé z jiné ExpressRoute připojené sítě, můžete předpony inzerovat v relacích VPN a ExpressRoute BGP. Můžete například inzerovat 10.0.0.0/24 přes ExpressRoute a 10.0.1.0/24 prostřednictvím sítě VPN.
+- Inzerovat nesouvislé předpony pro VPN a ExpressRoute. Pokud jsou síťové rozsahy připojené k síti VPN nesouvislé z jiných sítí propojených s ExpressRoute, můžete předpony inzerovat v relacích VPN a ExpressRoute BGP. Můžete například inzerovat 10.0.0.0/24 přes ExpressRoute a 10.0.1.0/24 prostřednictvím sítě VPN.
 
 V obou těchto příkladech pošle Azure provoz do 10.0.1.0/24 přes připojení VPN, nikoli přímo přes ExpressRoute bez ochrany VPN.
 
 > [!WARNING]
-> Pokud budete **stejné** předpony inzerovat přes ExpressRoute i připojení VPN, Azure **použije cestu ExpressRoute přímo bez ochrany VPN**.
+> Pokud budete *stejné* předpony inzerovat přes ExpressRoute i připojení VPN, Azure použije cestu ExpressRoute přímo bez ochrany VPN.
 >
 
 ## <a name="before-you-begin"></a>Než začnete
@@ -56,98 +61,92 @@ V obou těchto příkladech pošle Azure provoz do 10.0.1.0/24 přes připojení
 
 ## <a name="openvwan"></a>1. vytvoření virtuální sítě WAN a centra s branami
 
-Než budete pokračovat, je potřeba, abyste měli k dismístě následující prostředky Azure a odpovídající místní konfigurace:
+Následující prostředky Azure a odpovídající místní konfigurace musí být zavedeny, než budete pokračovat:
 
-1. Virtuální síť WAN Azure
-2. Virtuální centrum WAN s [bránou ExpressRoute](virtual-wan-expressroute-portal.md) a [bránou VPN](virtual-wan-site-to-site-portal.md)
+- Virtuální síť WAN Azure
+- Virtuální centrum WAN s [bránou ExpressRoute](virtual-wan-expressroute-portal.md) a [bránou VPN](virtual-wan-site-to-site-portal.md)
 
-Postup vytvoření služby Azure Virtual WAN a centra s přidružením ExpressRoute najdete v tématu [vytvoření přidružení ExpressRoute pomocí Azure Virtual](virtual-wan-expressroute-portal.md) WAN a [vytvoření připojení typu Site-to-site pomocí Azure Virtual WAN](virtual-wan-site-to-site-portal.md) , kde najdete postup vytvoření sítě VPN. brána ve virtuální síti WAN.
+Postup vytvoření virtuální sítě Azure a centra s přidružením ExpressRoute najdete v tématu [vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN](virtual-wan-expressroute-portal.md). Postup vytvoření brány VPN ve virtuální síti WAN najdete v tématu [vytvoření připojení typu Site-to-site pomocí Azure Virtual WAN](virtual-wan-site-to-site-portal.md).
 
 ## <a name="site"></a>2. vytvoření webu pro místní síť
 
-Prostředek sítě je stejný jako u virtuálních sítí WAN, které nejsou ExpressRoute servery VPN. Klíčovým aspektem je, že IP adresa místního zařízení VPN teď může být buď privátní IP adresa, nebo veřejná IP adresa v místní síti dosažitelná prostřednictvím privátního partnerského vztahu ExpressRoute vytvořeného v kroku 1.
+Prostředek sítě je stejný jako lokalita VPN bez ExpressRoute pro virtuální síť WAN. IP adresa místního zařízení VPN teď může být privátní IP adresa nebo veřejná IP adresa v místní síti dosažitelná prostřednictvím privátního partnerského vztahu ExpressRoute vytvořeného v kroku 1.
 
 > [!NOTE]
-> Místní IP adresa zařízení VPN musí být součástí předpon adres inzerovaných k virtuálnímu centru WAN prostřednictvím privátního partnerského vztahu Azure ExpressRoute.
+> IP adresa pro místní zařízení VPN *musí* být součástí předpon adres inzerovaných k virtuálnímu centru WAN prostřednictvím privátního partnerského vztahu Azure ExpressRoute.
 >
 
-1. V prohlížeči přejděte na Azure Portal. Klikněte na síť WAN, kterou jste vytvořili. Na stránce WAN v části **připojení**klikněte na **sítě VPN** a otevřete stránku sítě VPN.
+1. V prohlížeči přejdete na Azure Portal. 
+1. Vyberte síť WAN, kterou jste vytvořili. Na stránce WAN v části **připojení**vyberte sítě **VPN**.
+1. Na stránce sítě **VPN** vyberte **+ vytvořit lokalitu**.
+1. Na stránce **Create site** (Vytvořit lokalitu) zadejte údaje do následujících polí:
+   * **Předplatné**: Ověřte předplatné.
+   * **Skupina prostředků**: vyberte nebo vytvořte skupinu prostředků, kterou chcete použít.
+   * **Oblast**: zadejte oblast Azure pro prostředek sítě VPN.
+   * **Název**: zadejte název, podle kterého chcete odkazovat na místní lokalitu.
+   * **Dodavatel zařízení**: zadejte dodavatele místního zařízení VPN.
+   * **Border Gateway Protocol**: Pokud vaše místní síť používá protokol BGP, vyberte Enable (Povolit).
+   * **Privátní adresní prostor**: zadejte adresní prostor IP adres umístěný ve vaší místní lokalitě. Provoz určený pro tento adresní prostor je směrován do místní sítě přes bránu VPN.
+   * **Centra**: vyberte aspoň jedno rozbočovače, který chcete připojit k tomuto webu VPN. Vybraná centra musí mít už vytvořené brány VPN Gateway.
+1. Vyberte **Další: odkazy >** pro nastavení připojení VPN:
+   * **Název odkazu**: název, podle kterého chcete na toto připojení odkazovat.
+   * **Název zprostředkovatele**: název poskytovatele internetových služeb pro tuto lokalitu. V případě ExpressRoute místní sítě se jedná o název poskytovatele služby ExpressRoute.
+   * **Rychlost**: rychlost propojení internetových služeb nebo okruhu ExpressRoute.
+   * **IP adresa**: veřejná IP adresa zařízení VPN, která se nachází na vaší místní lokalitě. Nebo pro místní ExpressRoute je to privátní IP adresa zařízení VPN prostřednictvím ExpressRoute.
 
-2. Na stránce **Lokality VPN** klikněte na **+Vytvořit lokalitu**.
+   Pokud je protokol BGP povolený, bude platit pro všechna připojení vytvořená pro tento web v Azure. Konfigurace protokolu BGP ve virtuální síti WAN je rovnocenná konfiguraci protokolu BGP v bráně Azure VPN. 
+   
+   Vaše místní adresa partnerského uzlu BGP *nesmí* být SHODNÁ s IP adresou vaší sítě VPN k zařízení nebo adresnímu prostoru virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nejedná se však o APIPA (169,254). *x*. *x*) adresa. Zadejte tuto adresu v odpovídající bráně místní sítě, která představuje umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
-3. Na stránce **Create site** (Vytvořit lokalitu) zadejte údaje do následujících polí:
-
-   * **Subscription** (Předplatné) – ověřte předplatné.
-   * **Skupina prostředků** – vyberte nebo vytvořte skupinu prostředků, kterou chcete použít.
-   * **Oblast** – oblast Azure pro prostředek sítě VPN.
-   * **Název** – název, podle kterého chcete odkazovat na místní lokalitu.
-   * **Dodavatel zařízení** – dodavatel místního zařízení VPN.
-   * **Border Gateway Protocol** – vyberte povolit, pokud vaše místní síť používá protokol BGP.
-   * **Private address space** (Privátní adresní prostor) – prostor IP adres, který se nachází v místní lokalitě. Provoz určený pro tento adresní prostor je směrován do místní sítě přes bránu VPN.
-   * **Centra** – vyberte jedno nebo více Center pro připojení tohoto serveru VPN. Vybraná centra musí mít už vytvořené brány VPN Gateway.
-
-4. Klikněte na **Další: odkazy >** pro nastavení připojení VPN:
-
-   * **Název propojení** – název, podle kterého chcete na toto připojení odkazovat.
-   * **Název poskytovatele** – název poskytovatele internetových služeb pro tuto lokalitu. V případě ExpressRoute místní sítě název poskytovatele služby ExpressRoute.
-   * **Rychlost** – rychlost propojení internetových služeb nebo okruhu ExpressRoute.
-   * **IP adresa** – veřejná IP adresa zařízení VPN, která se nachází na vaší místní lokalitě. Nebo, v případě ExpressRoute v místním prostředí, soukromou IP adresu zařízení VPN prostřednictvím ExpressRoute.
-
-   Pokud je protokol BGP povolený, bude platit pro všechna připojení vytvořená pro tento web v Azure. Konfigurace protokolu BGP ve virtuální síti WAN je rovnocenná konfiguraci protokolu BGP v bráně Azure VPN. Vaše místní adresa partnerského uzlu BGP *nesmí* být SHODNÁ s IP adresou vaší sítě VPN a adresním prostorem virtuální sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nejedná se však o APIPA (169,254). *x*. *x*) adresa. Adresu zadejte v odpovídající bráně místní sítě reprezentující umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
-
-5. Klikněte na **Další: zkontrolovat + vytvořit >** a zkontrolujte hodnoty nastavení a vytvořte lokalitu VPN. Pokud jste vybrali **rozbočovače** k připojení, připojení se vytvoří mezi místní sítí a bránou VPN centra.
+1. Vyberte **Další: Zkontrolujte a vytvořte >** a zkontrolujte hodnoty nastavení a vytvořte lokalitu VPN. Pokud jste vybrali **rozbočovače** k připojení, připojení se vytvoří mezi místní sítí a bránou VPN centra.
 
 ## <a name="hub"></a>3. aktualizujte nastavení připojení VPN tak, aby používalo ExpressRoute.
 
 Po vytvoření lokality VPN a připojení k centru použijte následující postup ke konfiguraci připojení pro použití privátního partnerského vztahu ExpressRoute:
 
-1. Vraťte se na stránku prostředku virtuální sítě WAN a klikněte na prostředek centra. Nebo přejděte z sítě VPN do připojeného centra.
+1. Vraťte se na stránku prostředku virtuální sítě WAN a vyberte prostředek centra. Nebo přejděte z sítě VPN do připojeného centra.
+1. V části **připojení**vyberte **VPN (site-to-site)** .
+1. Vyberte tři tečky ( **...** ) na webu VPN přes ExpressRoute a vyberte **Upravit připojení VPN k tomuto centru**.
+1. Pro možnost **použít privátní IP adresu Azure**vyberte **Ano**. Nastavení nakonfiguruje bránu VPN centra pro použití privátních IP adres v rámci rozsahu adres centra v bráně pro toto připojení místo veřejných IP adres. Tím se zajistí, že přenos z místní sítě projde cesty privátního partnerského vztahu ExpressRoute místo použití veřejného Internetu pro toto připojení k síti VPN. Nastavení se zobrazuje na následujícím snímku obrazovky.
 
-2. V části **připojení**klikněte na **VPN (site-to-site)** .
-
-3. Klikněte na "..." na webu VPN přes ExpressRoute a vyberte**Upravit připojení VPN k tomuto centru**.
-
-4. V části**použít privátní IP adresu Azure**vyberte Ano. Nastavení nakonfiguruje bránu VPN centra pro použití privátních IP adres v rámci rozsahu adres centra v bráně pro toto připojení místo veřejných IP adres. Tím se zajistí, že přenos z místní sítě projde cesty privátního partnerského vztahu ExpressRoute místo použití veřejného Internetu pro toto připojení k síti VPN. Následující snímek obrazovky ukazuje okno nastavení.
-
-   ![Nastavení připojení VPN](./media/vpn-over-expressroute/vpn-link-configuration.png)
+   ![Nastavení pro použití privátní IP adresy pro připojení VPN](./media/vpn-over-expressroute/vpn-link-configuration.png)
    
-5. Klikněte na **Uložit**.
+1. Vyberte **Save** (Uložit).
 
-Po uložení bude Brána VPN centra používat privátní IP adresy v bráně VPN k navázání připojení IPsec/IKE k místnímu zařízení VPN přes ExpressRoute.
+Po uložení změn budou brány VPN centra používat privátní IP adresy v bráně VPN k navázání připojení IPsec/IKE k místnímu zařízení VPN přes ExpressRoute.
 
-## <a name="associate"></a>4. získání privátních IP adres centra VPN Gateway
+## <a name="associate"></a>4. Získejte privátní IP adresy pro bránu VPN centra.
 
-Stáhněte si konfiguraci zařízení VPN, abyste získali privátní IP adresy brány VPN centra. Ty jsou potřeba ke konfiguraci místního zařízení VPN.
+Stáhněte si konfiguraci zařízení VPN a získejte privátní IP adresy brány VPN centra. Tyto adresy budete potřebovat ke konfiguraci místního zařízení VPN.
 
-1. Na stránce centra klikněte v části **připojení** na **síť VPN (site-to-site)** .
+1. Na stránce centra vyberte v části **připojení**možnost **VPN (site-to-site)** .
+1. V horní části stránky **Přehled** vyberte **Stáhnout konfiguraci sítě VPN**. 
 
-2. V horní části stránky přehled klikněte na **Stáhnout konfiguraci sítě VPN**. Azure vytvoří účet úložiště ve skupině prostředků ' Microsoft-Network-[location] ', kde umístění je umístění sítě WAN. Až tuto konfiguraci použijete ve svých zařízeních VPN, můžete tento účet úložiště odstranit.
+   Azure vytvoří účet úložiště ve skupině prostředků Microsoft-Network-[location], kde *umístění* je umístění sítě WAN. Po použití konfigurace na zařízení VPN můžete tento účet úložiště odstranit.
+1. Po vytvoření souboru vyberte odkaz pro stažení.
+1. Použijte konfiguraci ve svém zařízení VPN.
 
-3. Jakmile se dokončí vytváření souboru, můžete ho kliknutím na odkaz stáhnout.
+### <a name="vpn-device-configuration-file"></a>Konfigurační soubor zařízení VPN
 
-4. Použijte konfiguraci ve svém zařízení VPN.
+Konfigurační soubor zařízení obsahuje nastavení, která se použijí při konfiguraci místního zařízení VPN. Při prohlížení souboru si všimněte následujících informací:
 
-### <a name="understanding-the-vpn-device-configuration-file"></a>Vysvětlení konfiguračního souboru zařízení VPN
+* **vpnSiteConfiguration**: Tato část označuje podrobnosti o zařízení, které se nastavily jako lokalita, která se připojuje k virtuální síti WAN. Obsahuje název a veřejnou IP adresu zařízení pobočky.
+* **vpnSiteConnections**: v této části najdete informace o následujících nastaveních:
 
-Konfigurační soubor zařízení obsahuje nastavení, které se má použít při konfiguraci místního zařízení VPN. Při prohlížení souboru si všimněte následujících informací:
-
-* **vpnSiteConfiguration** – tato část udává podrobnosti o zařízení nastaveném jako lokalita, která se připojuje k virtuální síti WAN. Obsahuje název a veřejnou IP adresu zařízení pobočky.
-* **vpnSiteConnections –** V této části najdete informace o následujících nastaveních:
-
-    * **Adresní prostor** virtuální sítě virtuálních rozbočovačů<br/>Příklad:
+    * Adresní prostor virtuální sítě virtuálního centra<br/>Příklad:
            ```
            "AddressSpace":"10.51.230.0/24"
            ```
-    * **Adresní prostor** virtuálních sítí připojených k rozbočovači<br>Příklad:
+    * Adresní prostor virtuálních sítí, které jsou připojené k rozbočovači.<br>Příklad:
            ```
            "ConnectedSubnets":["10.51.231.0/24"]
             ```
-    * **IP adresy** brány sítě VPN virtuálního rozbočovače. Vzhledem k tomu, že každé připojení vpngateway se skládá ze dvou tunelů v konfiguraci aktivní-aktivní, zobrazí se obě IP adresy uvedené v tomto souboru. V tomto příkladu se zobrazí "Instance0" a "položku instance1" pro každou lokalitu a jsou privátními IP adresami namísto veřejných IP adres.<br>Příklad:
+    * IP adresy brány VPN virtuálního rozbočovače. Vzhledem k tomu, že se každé připojení brány VPN skládá ze dvou tunelů v konfiguraci aktivní-aktivní, zobrazí se obě IP adresy uvedené v tomto souboru. V tomto příkladu vidíte `Instance0` a `Instance1` pro každou lokalitu a místo veřejných IP adres se jedná o privátní IP adresy.<br>Příklad:
            ``` 
            "Instance0":"10.51.230.4"
            "Instance1":"10.51.230.5"
            ```
-    * **Podrobnosti konfigurace připojení Vpngateway** , jako je protokol BGP, předsdílený klíč atd. PSK je předsdílený klíč, který se automaticky vygeneruje za vás. V případě vlastního předsdíleného klíče můžete připojení upravit na stránce Overview (Přehled).
+    * Podrobnosti konfigurace pro připojení brány VPN, například protokol BGP a předsdílený klíč. Předsdílený klíč se automaticky vygeneruje za vás. Připojení můžete vždy upravit na stránce **Přehled** pro vlastní předsdílený klíč.
   
 ### <a name="example-device-configuration-file"></a>Příklad konfiguračního souboru zařízení
 
@@ -216,32 +215,29 @@ Konfigurační soubor zařízení obsahuje nastavení, které se má použít p�
 
 Pokud potřebujete pokyny ke konfiguraci zařízení, můžete použít pokyny na [stránce se skripty konfigurace zařízení VPN](~/articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#configscripts), pokud vezmete v úvahu následující upozornění:
 
-* Pokyny na stránce zařízení VPN nejsou určené pro službu Virtual WAN, můžete ale použít hodnoty služby Virtual WAN z konfiguračního souboru a nakonfigurovat zařízení VPN ručně. 
-* Skripty konfigurace zařízení ke stažení, které jsou určené pro službu VPN Gateway, pro službu Virtual WAN nefungují, protože se konfigurace liší.
-* Nová služba Virtual WAN může podporovat protokol IKEv1 i IKEv2.
-* Virtual WAN smí používat jenom zařízení VPN a pokyny pro zařízení založené na trasách.
+* Pokyny na stránce zařízení VPN nejsou zapsány pro virtuální síť WAN. K ruční konfiguraci zařízení VPN ale můžete použít hodnoty virtuální sítě WAN z konfiguračního souboru. 
+* Skripty pro konfiguraci zařízení ke stažení, které jsou pro bránu VPN, nefungují pro virtuální síť WAN, protože konfigurace se liší.
+* Nová virtuální síť WAN podporuje jak IKEv1, tak IKEv2.
+* Virtuální síť WAN může používat jenom zařízení VPN založená na trasách a pokyny pro zařízení.
 
 ## <a name="viewwan"></a>5. Prohlédněte si virtuální síť WAN
 
-1. Přejděte na virtuální síť WAN.
-
-2. Na stránce Overview (Přehled) každý bod na mapě představuje jeden rozbočovač. Podržením ukazatele na některém z těchto bodů zobrazíte souhrn stavu rozbočovače.
-
-3. V části Hubs and connections (Rozbočovače a připojení) můžete zjistit stav rozbočovače, lokalitu, oblast, stav připojení VPN a přijaté a odeslané bajty.
+1. Přejít na virtuální síť WAN.
+1. Na stránce **Přehled** představuje každý bod na mapě rozbočovač. Pokud chcete zobrazit souhrn stavu centra, najeďte myší na libovolný bod.
+1. V části **centra a připojení** můžete zobrazit stav připojení k centru, lokalitám, oblastem a sítím VPN. Můžete také zobrazit bajty v nebo v.
 
 ## <a name="viewhealth"></a>6. zobrazení stavu prostředku
 
-1. Přejděte na svoji síť WAN.
-
-2. Na stránce sítě WAN v části **SUPPORT + Troubleshooting** (Podpora a řešení potíží) klikněte na **Health** (Stav) a prohlédněte si stav svého prostředku.
+1. Přejít do sítě WAN.
+1. V části **Podpora a řešení potíží** vyberte **stav** a Prohlédněte si prostředek.
 
 ## <a name="connectmon"></a>7. monitorování připojení
 
-Vytvořte připojení pro monitorování komunikace mezi virtuálním počítačem Azure a vzdálenou lokalitou. Informace o tom, jak nastavit monitorování připojení, najdete v článku [Monitorování síťové komunikace](~/articles/network-watcher/connection-monitor.md). Do pole zdroje zadejte IP adresu virtuálního počítače v Azure a cílovou IP adresou je IP adresa lokality.
+Vytvořte připojení pro monitorování komunikace mezi virtuálním počítačem Azure a vzdáleným webem. Informace o tom, jak nastavit monitorování připojení, najdete v článku [Monitorování síťové komunikace](~/articles/network-watcher/connection-monitor.md). Pole zdroj je IP adresa virtuálního počítače v Azure a cílová IP adresa je adresa IP lokality.
 
 ## <a name="cleanup"></a>8. vyčištění prostředků
 
-Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
+Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Spusťte následující příkaz prostředí PowerShell a nahraďte `myResourceGroup` názvem vaší skupiny prostředků:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -249,4 +245,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek vám pomůže vytvořit připojení VPN přes privátní partnerský vztah ExpressRoute pomocí virtuální sítě WAN. Další informace o virtuální síti WAN a dalších souvisejících funkcích najdete na stránce s [přehledem virtuální sítě WAN](virtual-wan-about.md) .
+Tento článek vám pomůže vytvořit připojení VPN prostřednictvím privátního partnerského vztahu ExpressRoute pomocí virtuální sítě WAN. Další informace o virtuální síti WAN a souvisejících funkcích najdete v tématu [Přehled virtuálních sítí WAN](virtual-wan-about.md).

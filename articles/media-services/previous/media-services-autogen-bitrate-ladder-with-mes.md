@@ -1,6 +1,6 @@
 ---
 title: Použití Media Encoder Standard k automatickému vytvoření žebříku přenosové rychlosti – Azure | Microsoft Docs
-description: V tomto tématu se dozvíte, jak použít Media Encoder Standard (status) k automatickému vygenerování přenosové žebříky na základě vstupních rozlišení a přenosové rychlosti. Vstupní rozlišení a přenosová rychlost nebudou nikdy překročeny. Pokud je například vstup ve formátu 720p na 3Mbps, výstup bude ve formátu 720p nejlepší a bude začínat vyššími sazbami než 3Mbps.
+description: V tomto tématu se dozvíte, jak použít Media Encoder Standard (status) k automatickému vygenerování přenosové žebříky na základě vstupních rozlišení a přenosové rychlosti.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 14575e0c95acf1345fc3358b323083d86d8eedee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543546"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896022"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Použití Media Encoder Standard k automatickému vygenerování žebříku přenosové rychlosti  
 
@@ -28,7 +28,7 @@ Tento článek ukazuje, jak použít Media Encoder Standard (status) k automatic
 
 ### <a name="encoding-for-streaming-only"></a>Kódování jenom pro streamování
 
-Pokud máte v úmyslu zakódovat zdrojové video jenom pro streamování, měli byste při vytváření úlohy kódování použít přednastavení adaptivního streamování. Když použijete přednastavení adaptivního streamování, kodér programu pro úpravu koncového **vysílání** inteligentně odsadí žebřík s přenosovou rychlostí. Nebudete však moci řídit náklady na kódování, protože služba Určuje, kolik vrstev se má použít a v jakém rozlišení. Příklady výstupních vrstev vyprodukovaných pomocí programu pro **úpravu** obsahu můžete zobrazit v důsledku kódování pomocí přednastavení adaptivního streamování na konci tohoto článku. Výstupní Asset obsahuje soubory MP4, kde není prokládaný zvuk a video.
+Pokud máte v úmyslu zakódovat zdrojové video jenom pro streamování, měli byste při vytváření úlohy kódování použít přednastavení adaptivního streamování. Když použijete přednastavení **adaptivního streamování** , kodér programu pro úpravu koncového vysílání inteligentně odsadí žebřík s přenosovou rychlostí. Nebudete však moci řídit náklady na kódování, protože služba Určuje, kolik vrstev se má použít a v jakém rozlišení. Příklady výstupních vrstev vyprodukovaných pomocí programu pro úpravu obsahu můžete zobrazit v důsledku kódování pomocí přednastavení **adaptivního streamování** na konci tohoto článku. Výstupní Asset obsahuje soubory MP4, kde není prokládaný zvuk a video.
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>Kódování pro streamování a progresivní stahování
 
@@ -40,7 +40,7 @@ Následující příklad kódu používá sadu Media Services .NET SDK k provád
 
 - Vytvořte úlohu kódování.
 - Získejte odkaz na kodér Media Encoder Standard.
-- Přidejte úlohu kódování do úlohy a určete, že se má použít přednastavení adaptivního streamování. 
+- Přidejte úlohu kódování do úlohy a určete, že se má použít přednastavení **adaptivního streamování** . 
 - Vytvořte výstupní Asset, který obsahuje kódovaný Asset.
 - Přidejte obslužnou rutinu události pro kontrolu průběhu úlohy.
 - Odešlete úlohu.
@@ -49,7 +49,7 @@ Následující příklad kódu používá sadu Media Services .NET SDK k provád
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```
 using System;
@@ -176,7 +176,7 @@ Zdroj s výšku "1080" a "29.970" snímkovou vytvoří 6 videa vrstvy:
 
 |Vrstva|Výška|Šířka|Přenosová rychlost (KB/s)|
 |---|---|---|---|
-|1|1080|1920|6780|
+|1\. místo|1080|1920|6780|
 |2|720|1280|3520|
 |3|540|960|2210|
 |4|360|640|1150|
@@ -188,7 +188,7 @@ Zdroj s výšku "720" a "23.970" snímkovou vytvoří 5 videa vrstvy:
 
 |Vrstva|Výška|Šířka|Přenosová rychlost (KB/s)|
 |---|---|---|---|
-|1|720|1280|2940|
+|1\. místo|720|1280|2940|
 |2|540|960|1850|
 |3|360|640|960|
 |4|270|480|600|
@@ -199,13 +199,13 @@ Zdroj s výšku "360" a "29.970" snímkovou vytvoří vrstvy 3 videa:
 
 |Vrstva|Výška|Šířka|Přenosová rychlost (KB/s)|
 |---|---|---|---|
-|1|360|640|700|
+|1\. místo|360|640|700|
 |2|270|480|440|
 |3|180|320|230|
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také

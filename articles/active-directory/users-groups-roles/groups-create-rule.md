@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027244"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900931"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Vytvořit dynamickou skupinu a ověřit stav
 
@@ -47,10 +47,10 @@ Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla č
 ## <a name="to-create-a-group-membership-rule"></a>Vytvoření pravidla členství ve skupině
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, Správce služby Intune nebo Správce uživatelů v tenantovi.
-1. Vyberte **skupiny**.
+1. Vyhledejte a vyberte **skupiny**.
 1. Vyberte možnost **všechny skupiny**a vyberte možnost **Nová skupina**.
 
-   ![Vyberte příkaz pro přidání nové skupiny.](./media/groups-create-rule/new-group-creation.png)
+   ![Vyberte příkaz pro přidání nové skupiny.](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
 1. Na stránce **Skupina** zadejte název a popis nové skupiny. Vyberte **typ členství** buď pro uživatele, nebo pro zařízení a pak vyberte **Přidat dynamický dotaz**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat více než pět výrazů, je nutné použít textové pole.
 
@@ -88,7 +88,7 @@ Pro stav **Poslední aktualizace členství** se můžou zobrazit tyto stavové 
 - **Probíhá: aktuálně**probíhá aktualizace.
 - **Neznámé**: čas poslední aktualizace se nedá načíst. Tato skupina může být nová.
 
-Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud není možné zpracovat žádné nedokončené dynamické aktualizace členství pro všechny skupiny v tenantovi za více než 24 hodin, zobrazí se v horní části **všech skupin**výstraha.
+Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud žádné nedokončené dynamické aktualizace členství nelze zpracovat pro všechny skupiny v rámci tenanta po dobu delší než 24 hodin, zobrazí se v horní části **všech skupin**výstraha.
 
 ![zpracování upozornění na chybové zprávy](./media/groups-create-rule/processing-error.png)
 

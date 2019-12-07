@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: 9e198d3ea24383a532c5fbc3bfdcb1d1d7e49a92
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689039"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889137"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro konzolové aplikace .NET
 
@@ -27,7 +27,7 @@ K [Microsoft Azure](https://azure.com)potřebujete předplatné. Přihlaste se p
 ## <a name="getting-started"></a>Začínáme
 
 * Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md). Jako typ aplikace vyberte **Obecné**.
-* Zkopírujte klíč instrumentace. Vyhledejte klíč v rozevíracím seznamu **základy** nového prostředku, který jste vytvořili. 
+* Zkopírujte klíč instrumentace. Vyhledejte klíč v rozevíracím seznamu **základy** nového prostředku, který jste vytvořili.
 * Nainstalujte nejnovější balíček [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
 * Před sledováním jakékoli telemetrie (nebo nastavením APPINSIGHTS_INSTRUMENTATIONKEY proměnné prostředí) nastavte v kódu klíč instrumentace. Potom byste měli být schopni ručně sledovat telemetrii a vidět ji na Azure Portal
 
@@ -39,6 +39,10 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
+> [!NOTE]
+> Telemetrii se neposílá okamžitě. Položky telemetrie jsou v sadě ApplicationInsights SDK a posílány pomocí dávek. V konzolových aplikacích, které se ukončí hned po volání metod `Track()`, se telemetrie nemusí odeslat, pokud `Flush()` a `Sleep` se neprovede předtím, než se aplikace ukončí, jak je uvedeno v [úplném příkladu](#full-example) dále v tomto článku.
+
+
 * Nainstalovat nejnovější verzi balíčku [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) – automaticky sleduje http, SQL nebo některá další volání vnějších závislostí.
 
 Můžete inicializovat a konfigurovat Application Insights z kódu nebo pomocí souboru `ApplicationInsights.config`. Ujistěte se, že k inicializaci dojde co nejdříve. 
@@ -47,6 +51,7 @@ Můžete inicializovat a konfigurovat Application Insights z kódu nebo pomocí 
 > Pokyny odkazující na **ApplicationInsights. config** platí jenom pro aplikace, které cílí na .NET Framework a nevztahují se na aplikace .NET Core.
 
 ### <a name="using-config-file"></a>Použití konfiguračního souboru
+
 Ve výchozím nastavení Application Insights SDK při vytváření `TelemetryConfiguration` vyhledá `ApplicationInsights.config` soubor v pracovním adresáři.
 
 ```csharp

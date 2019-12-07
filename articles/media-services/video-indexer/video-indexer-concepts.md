@@ -1,7 +1,7 @@
 ---
 title: Video Indexer koncepty
 titleSuffix: Azure Media Services
-description: Toto téma popisuje některé koncepty služby Video Indexer.
+description: Tento článek popisuje některé koncepty služby Azure Media Services Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e3795b699f5518efdbef117fb24d118041ed3e78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 73dad1db4f44134f871c9f3d6e7edcdd3bd1e2ea
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839581"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900676"
 ---
 # <a name="video-indexer-concepts"></a>Video Indexer koncepty
  
@@ -29,7 +29,7 @@ Shrnuté přehledy obsahují agregované zobrazení dat: plošky, témata a emoc
 
 TimeRange je časovým rozsahem v původním videu. AdjustedTimeRange je časový rozsah relativní k aktuálnímu seznamu testů. Vzhledem k tomu, že můžete vytvořit seznam stop z různých řádků různých videí, můžete použít 1 hodiny videa a použít na něj pouze 1 čáru, například 10:00-10:15. V takovém případě budete mít seznam stop s 1 řádkem, kde časový rozsah je 10:00-10:15, ale adjustedTimeRange je 00:00-00:15.
  
-## <a name="blocks"></a>Čeká
+## <a name="blocks"></a>Bloky
 
 Jsou určeny k tomu, aby bylo snazší projít data. Blok může být rozdělený třeba podle toho, jak se mění přednášející, nebo když nastane dlouhá pauza.
 
@@ -37,6 +37,6 @@ Jsou určeny k tomu, aby bylo snazší projít data. Blok může být rozdělen�
 
 Informace o tom, jak začít, najdete v tématu [jak se zaregistrovat a nahrát své první video](video-indexer-get-started.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Přehled Video Indexeru](video-indexer-overview.md)

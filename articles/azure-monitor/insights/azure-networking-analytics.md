@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 8a8a2f32de905ab7c12f4886d889b2a6fc20c449
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899137"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893310"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -45,7 +45,7 @@ Použití řešení:
 
 Můžete povolit diagnostiku a odpovídající řešení pro jednu nebo obě skupiny zabezpečení Application Gateway a sítě.
 
-Pokud nepovolíte diagnostické protokolování pro určitý typ prostředku, ale nainstalujete řešení, ovládací panel řídicího panelu pro tento prostředek je prázdný a zobrazí se chybová zpráva.
+Pokud nepovolíte protokolování diagnostických prostředků pro konkrétní typ prostředku, ale nainstalujete řešení, ovládací panel pro tento prostředek je prázdný a zobrazí se chybová zpráva.
 
 > [!NOTE]
 > V lednu 2017 se změnil podporovaný způsob odesílání protokolů z aplikačních bran a skupin zabezpečení sítě do pracovního prostoru Log Analytics. Pokud se zobrazí řešení **Azure Networking Analytics (nepoužívané)** , přečtěte si téma [migrace z původního řešení pro analýzu sítě](#migrating-from-the-old-networking-analytics-solution) , kde najdete kroky, které je potřeba provést.
@@ -100,7 +100,7 @@ K instalaci a konfiguraci řešení Azure Application Gateway Analytics použijt
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Povolení diagnostiky sítě Azure pomocí PowerShellu
 
-Následující skript PowerShellu poskytuje příklad, jak povolit protokolování diagnostiky pro aplikační brány.
+Následující skript PowerShellu poskytuje příklad, jak povolit protokolování prostředků pro aplikační brány.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -141,7 +141,7 @@ Na kterékoli stránce pro prohledávání protokolu můžete zobrazit výsledky
 > Řešení analýzy skupin zabezpečení sítě se přesouvá na podporu komunity, protože její funkce byla nahrazena [Analýza provozu](../../network-watcher/traffic-analytics.md).
 > - Řešení je teď dostupné v [šablonách pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) a už brzy nebude dostupné v Azure Marketplace.
 > - Stávajícím zákazníkům, kteří už toto řešení přidali do svého pracovního prostoru, bude i nadále fungovat bez jakýchkoli změn.
-> - Microsoft bude dál podporovat odesílání diagnostických protokolů NSG do vašeho pracovního prostoru pomocí nastavení diagnostiky.
+> - Microsoft bude dál podporovat odesílání protokolů prostředků NSG do vašeho pracovního prostoru pomocí nastavení diagnostiky.
 
 Pro skupiny zabezpečení sítě jsou podporovány následující protokoly:
 
@@ -171,7 +171,7 @@ K instalaci a konfiguraci řešení Azure Networking Analytics použijte násled
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Povolení diagnostiky sítě Azure pomocí PowerShellu
 
-Následující skript PowerShellu poskytuje příklad, jak povolit protokolování diagnostiky pro skupiny zabezpečení sítě.
+Následující skript PowerShellu poskytuje příklad, jak povolit protokolování prostředků pro skupiny zabezpečení sítě.
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -215,8 +215,8 @@ Použití aktualizovaných řešení:
 
      | Namísto: | Použije |
      | --- | --- |
-     | NetworkApplicationgateways &#124; , kde OperationName = = "ApplicationGatewayAccess" | AzureDiagnostics &#124; kde ResourceType = = "APPLICATIONGATEWAYS" and OperationName = = "ApplicationGatewayAccess" |
-     | NetworkApplicationgateways &#124; , kde OperationName = = "ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde ResourceType = = "APPLICATIONGATEWAYS" and OperationName = = "ApplicationGatewayPerformance" |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; kde ResourceType = = "APPLICATIONGATEWAYS" and OperationName = = "ApplicationGatewayAccess" |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde ResourceType = = "APPLICATIONGATEWAYS" and OperationName = = "ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124; WHERE ResourceType = = "NETWORKSECURITYGROUPS" |
 
    + Pro každé pole, které má příponu \_s, \_d nebo \_g v názvu, změňte první znak na malá písmena.

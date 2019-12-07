@@ -1,5 +1,5 @@
 ---
-title: Transformuje data pomocí aktivity Sparku v Azure Data Factory
+title: Transformace dat pomocí aktivity Sparku
 description: Naučte se transformovat data spuštěním programů Spark z kanálu služby Azure Data Factory pomocí aktivity Sparku.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 5f3bb88d3a2e43abe1776a4b46e4ab35490db8ec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 27dea39a1ebd2be56c86e4327218c62c5378002d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683748"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893752"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity Sparku v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -64,14 +64,14 @@ Následující tabulka obsahuje popis vlastností JSON použitých v definici JS
 | description           | Text popisující, co aktivita dělá.  | Ne       |
 | type                  | Pro aktivitu Spark je typ aktivity HDInsightSpark. | Ano      |
 | linkedServiceName     | Název propojené služby HDInsight Spark, na které běží program Spark Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
-| sparkJobLinkedService | Propojená služba Azure Storage, která obsahuje soubor úlohy Spark, závislosti a protokoly.  Pokud pro tuto vlastnost nezadáte hodnotu, použije se úložiště přidružené ke clusteru HDInsight. Hodnota této vlastnosti může být pouze propojená služba Azure Storage. | Ne       |
+| SparkJobLinkedService | Propojená služba Azure Storage, která obsahuje soubor úlohy Spark, závislosti a protokoly.  Pokud pro tuto vlastnost nezadáte hodnotu, použije se úložiště přidružené ke clusteru HDInsight. Hodnota této vlastnosti může být pouze propojená služba Azure Storage. | Ne       |
 | rootPath              | Kontejner a složka Azure Blob, které obsahují soubor Spark. V názvu souboru se rozlišují malá a velká písmena. Podrobnosti o struktuře této složky najdete v části struktura složky (další oddíl). | Ano      |
 | entryFilePath         | Relativní cesta ke kořenové složce kódu nebo balíčku Spark Vstupní soubor musí být buď soubor Pythonu, nebo soubor. jar. | Ano      |
 | className             | Hlavní třída Java/Spark aplikace      | Ne       |
-| Náhodné             | Seznam argumentů příkazového řádku pro program Spark. | Ne       |
+| argumenty             | Seznam argumentů příkazového řádku pro program Spark. | Ne       |
 | proxyUser             | Uživatelský účet, který se má zosobnit pro spuštění programu Spark | Ne       |
 | sparkConfig           | Zadejte hodnoty pro vlastnosti konfigurace Sparku uvedené v tématu: [Konfigurace Spark – vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne       |
-| GetDebugInfo –          | Určuje, kdy se soubory protokolu Spark zkopírují do úložiště Azure používaného clusterem HDInsight (nebo), který určuje sparkJobLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: žádné. | Ne       |
+| GetDebugInfo –          | Určuje, kdy se soubory protokolu Spark zkopírují do úložiště Azure používaného clusterem HDInsight (nebo), který určuje sparkJobLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: Žádný. | Ne       |
 
 ## <a name="folder-structure"></a>Struktura složek
 Úlohy Spark jsou více rozšiřitelnější než při úlohách vepřového a podregistru. Pro úlohy Spark můžete zadat několik závislostí, jako jsou například balíčky jar (umístěné v cestě třídy Java), soubory Pythonu (umístěné na PYTHONPATH) a všechny další soubory.
@@ -81,7 +81,7 @@ Vytvořte ve službě Azure Blob Storage, na kterou odkazuje propojená služba 
 | Cesta                  | Popis                              | Požaduje se | Typ   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (kořen)            | Kořenová cesta úlohy Spark v propojené službě úložiště | Ano      | Složka |
-| &lt;uživatelsky definované &gt; | Cesta ukazující na vstupní soubor úlohy Spark | Ano      | File   |
+| &lt;uživatelsky definované &gt; | Cesta ukazující na vstupní soubor úlohy Spark | Ano      | Soubor   |
 | ./jars                | Všechny soubory v této složce se nahrají a umístí do cesty tříd Java clusteru. | Ne       | Složka |
 | ./pyFiles             | Všechny soubory v této složce se nahrají a umístí do PYTHONPATH clusteru. | Ne       | Složka |
 | ./files               | Všechny soubory v této složce se nahrají a umístí do pracovního adresáře prováděcího modulu. | Ne       | Složka |

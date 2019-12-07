@@ -1,22 +1,23 @@
 ---
-title: Autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory | Microsoft Docs
+title: Autorizace přístupu k objektům blob a frontám pomocí služby Active Directory
+titleSuffix: Azure Storage
 description: Udělte přístup k objektům blob a frontám Azure pomocí Azure Active Directory.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598114"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891809"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory
 
 Azure Storage podporuje používání služby Azure Active Directory (AD) k autorizaci požadavků na úložiště objektů BLOB a front. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku v objektu BLOB nebo v úložišti front.
 

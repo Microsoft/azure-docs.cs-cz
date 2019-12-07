@@ -1,6 +1,6 @@
 ---
 title: Přehrávání pomocí Azure Media Player – Azure | Microsoft Docs
-description: Toto téma poskytuje přehled Azure Media Player.
+description: Azure Media Player je webový přehrávač, který je založený na přehrávání mediálního obsahu z Microsoft Azure Media Services na nejrůznějších prohlížečích a zařízeních.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 6157f59d96770298d947a1cf6ca28aa343e1a0d4
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 8f1639a21e3783f587904c2a8085fd2f555ff5b8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311824"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900358"
 ---
 # <a name="azure-media-player-overview"></a>Přehled Azure Media Player
 
@@ -39,7 +39,7 @@ Pokud chcete přehrát nové video, vložte jinou adresu URL a stiskněte **aktu
 
 Pokud chcete nakonfigurovat různé možnosti přehrávání (například tech, Language nebo Encryption), stiskněte **Rozšířené možnosti**.
 
-![Přehrávač médií Azure](./media/azure-media-player/home-page.png)
+![Azure Media Player](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Monitorování diagnostiky streamu videa
 
@@ -51,7 +51,7 @@ Pomocí [stránky Azure Media Player demo](https://aka.ms/azuremediaplayer) mů�
 
 Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu z vašeho účtu Media Services trvá jenom chvíli. Podrobnosti o tom, jak nastavit a nakonfigurovat Azure Media Player, najdete v [dokumentaci k Azure Media Player](https://aka.ms/ampdocs) . 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Dokumentace k Azure Media Playeru](https://aka.ms/ampdocs)
 - [Ukázky Azure Media Player](https://aka.ms/ampsamples)

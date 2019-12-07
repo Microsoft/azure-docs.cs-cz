@@ -1,5 +1,5 @@
 ---
-title: Hromadné kopírování z databáze pomocí řídicí tabulky s Azure Data Factory
+title: Hromadné kopírování z databáze pomocí řídicí tabulky
 description: Naučte se používat šablonu řešení ke kopírování hromadných dat z databáze pomocí externí tabulky ovládacích prvků k uložení seznamu oddílů zdrojových tabulek pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f50a6067eb38e920c32079c140785f397ee6698
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684272"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896262"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadné kopírování z databáze pomocí řídicí tabulky
 
@@ -36,7 +36,7 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 - **Kopírovat** zkopíruje všechny oddíly ze zdrojového úložiště databáze do cílového úložiště.
 
 Šablona definuje pět parametrů:
-- *Control_Table_Name* je vaše externí tabulka ovládacích prvků, která ukládá seznam oddílů pro zdrojovou databázi.
+- *Control_Table_Name* je vaše externí tabulka ovládacího prvku, která ukládá seznam oddílů pro zdrojovou databázi.
 - *Control_Table_Schema_PartitionID* je název sloupce v tabulce externích ovládacích prvků, ve kterém jsou uložena ID jednotlivých oddílů. Ujistěte se, že je ID oddílu jedinečné pro každý oddíl ve zdrojové databázi.
 - *Control_Table_Schema_SourceTableName* je vaše externí řídicí tabulka, která ukládá názvy jednotlivých tabulek ze zdrojové databáze.
 - *Control_Table_Schema_FilterQuery* je název sloupce v tabulce externích ovládacích prvků, ve kterém je uložený dotaz filtru, který získá data z každého oddílu zdrojové databáze. Pokud jste například děleni data po rocích, dotaz uložený v každém řádku může být podobný příkazu SELECT * FROM DataSource, kde LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' a LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' '.
@@ -76,7 +76,7 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 
     ![Vytvoří nové připojení k cílovému úložišti.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. Vyberte **použít tuto šablonu**.
+5. Vyberte **Použít tuto šablonu**.
 
     ![Použít tuto šablonu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
     

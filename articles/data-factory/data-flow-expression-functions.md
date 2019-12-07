@@ -1,24 +1,23 @@
 ---
-title: Funkce výrazu v funkci toku dat mapování Azure Data Factory
+title: Funkce výrazu v toku dat mapování
 description: Přečtěte si o funkcích výrazů v mapování toku dat.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: dc742fc625604e71909f49c7453a9215dce71e35
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f384c440dab06660c95f635dde02ced5b3e54d94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596967"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896317"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Výrazy transformace dat v toku mapování dat 
 
-
-
-## <a name="expression-functions"></a>Funkce výrazu
+## <a name="expression-functions"></a>Funkce výrazů
 
 V Data Factory pomocí jazyka výrazů funkce mapování toku dat nakonfigurujte transformace dat.
 
@@ -956,7 +955,7 @@ Vynásobí dvojici čísel. Stejné jako operátor *
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-Funkce NTile rozdělí řádky pro každý oddíl okna do intervalů `n` v rozsahu od 1 do maximálně `n`. Hodnoty plechovky se budou lišit o nejvýše 1. Pokud počet řádků v oddílu není rovnoměrně rozdělen do počtu intervalů, pak jsou zbývající hodnoty distribuovány po jednotlivých kontejnerech počínaje prvním intervalem. Funkce NTile je užitečná pro výpočet tertiles, Kvartily, deciles a dalších běžných souhrnných statistik. Funkce vypočítá dvě proměnné během inicializace: velikost regulárního intervalu bude mít přidán jeden řádek navíc. Obě proměnné jsou založené na velikosti aktuálního oddílu. Během procesu výpočtu funkce udržuje sledovat aktuální číslo řádku, aktuální číslo sady a číslo řádku, na kterém se bude interval měnit (bucketThreshold). Když číslo aktuálního řádku dosáhne prahové hodnoty intervalu, hodnota intervalu se zvýší o jednu a prahová hodnota se zvýší o velikost intervalu (plus jeden další, pokud je aktuální kontejner doplněn).
+Funkce NTile rozdělí řádky pro každý oddíl okna do `n` intervaly od 1 do nejvíce `n`. Hodnoty plechovky se budou lišit o nejvýše 1. Pokud počet řádků v oddílu není rovnoměrně rozdělen do počtu intervalů, pak jsou zbývající hodnoty distribuovány po jednotlivých kontejnerech počínaje prvním intervalem. Funkce NTile je užitečná pro výpočet tertiles, Kvartily, deciles a dalších běžných souhrnných statistik. Funkce vypočítá dvě proměnné během inicializace: velikost regulárního intervalu bude mít přidán jeden řádek navíc. Obě proměnné jsou založené na velikosti aktuálního oddílu. Během procesu výpočtu funkce udržuje sledovat aktuální číslo řádku, aktuální číslo sady a číslo řádku, na kterém se bude interval měnit (bucketThreshold). Když číslo aktuálního řádku dosáhne prahové hodnoty intervalu, hodnota intervalu se zvýší o jednu a prahová hodnota se zvýší o velikost intervalu (plus jeden další, pokud je aktuální kontejner doplněn).
 
 * ``nTile()``
 
@@ -1019,7 +1018,7 @@ Vrací hodnotu NULL. Použijte syntaxi funkce (null ()), pokud je sloupec s náz
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Logický operátor OR Stejné jako | |
+Logický operátor OR. Stejné jako | |
 
 * ``or(true, false) -> true``
 
@@ -1067,7 +1066,7 @@ Shromáždí prvky v poli. Omezení očekává odkaz na akumulátor a jeden elem
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-Extrahuje shodný dílčí řetězec pro daný vzor regulárního výrazu. Poslední parametr identifikuje skupinu shod a je-li vynechán, je nastaven na hodnotu 1. K vyhledání řetězce bez uvozovacího příkazu použijte <regex> (back-quot).
+Extrahuje shodný dílčí řetězec pro daný vzor regulárního výrazu. Poslední parametr identifikuje skupinu shod a je-li vynechán, je nastaven na hodnotu 1. K vyhledání řetězce bez uvozovacího příkazu použijte<regex>(back-quot).
 
 * ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``
 
@@ -1076,7 +1075,7 @@ Extrahuje shodný dílčí řetězec pro daný vzor regulárního výrazu. Posle
 ___
 ### <code>regexMatch</code>
 <code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-Zkontroluje, zda řetězec odpovídá danému vzoru regulárního výrazu. K vyhledání řetězce bez uvozovacího příkazu použijte <regex> (back-quot).
+Zkontroluje, zda řetězec odpovídá danému vzoru regulárního výrazu. K vyhledání řetězce bez uvozovacího příkazu použijte<regex>(back-quot).
 
 * ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``
 
@@ -1085,7 +1084,7 @@ Zkontroluje, zda řetězec odpovídá danému vzoru regulárního výrazu. K vyh
 ___
 ### <code>regexReplace</code>
 <code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-Nahradí všechny výskyty vzorového regulárního výrazu jiným podřetězcem v daném řetězci. použijte <regex> (back-quot), aby odpovídaly řetězci bez uvozovacího výrazu.
+Nahradí všechny výskyty vzorového regulárního výrazu jiným podřetězcem v daném řetězci. použijte<regex>(back-quot), aby odpovídaly řetězci bez uvozovacího výrazu.
 
 * ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``
 
@@ -1143,7 +1142,7 @@ Zkontroluje, jestli řetězec odpovídá danému vzoru regulárního výrazu.
 ___
 ### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-Zaokrouhlí číslo z daného volitelného měřítka a volitelného režimu zaokrouhlení. Pokud je měřítko vynecháno, je nastavené na hodnotu 0.  Pokud je tento režim vynechán, je nastaven jako výchozí na ROUND_HALF_UP (5). Hodnoty pro zaokrouhlování zahrnují 1 – ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY
+Zaokrouhlí číslo z daného volitelného měřítka a volitelného režimu zaokrouhlení. Pokud je měřítko vynecháno, je nastavené na hodnotu 0.  Pokud je tento režim vynechán, je nastaven na hodnotu ROUND_HALF_UP (5). Mezi hodnoty zaokrouhlení patří 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6 – ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY
 
 * ``round(100.123) -> 100.0``
 

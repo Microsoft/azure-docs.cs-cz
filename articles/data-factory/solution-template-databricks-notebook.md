@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí datacihlů v Azure Data Factory
+title: Transformace dat pomocí datacihlů
 description: Naučte se používat šablonu řešení k transformaci dat pomocí poznámkového bloku datacihly v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 471c1d9610fa346b0eac44c73fe02f4510bd2889
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b39e354d503910d20141ce19c625eb79b4a7353
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684249"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890993"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Transformace dat pomocí datacihlů v Azure Data Factory
 
@@ -31,15 +31,15 @@ V tomto kurzu vytvoříte kompletní kanál obsahující aktivity **hledání**,
 
 Chcete-li tuto šablonu ponechat jednoduchou, šablona nevytvoří plánovanou aktivační událost. V případě potřeby je můžete přidat.
 
-![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
+![1\. místo](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1.  Vytvořte **účet Blob Storage** a kontejner s názvem `sinkdata`, který se použije jako **jímka**. Poznamenejte si **název účtu úložiště**, **název kontejneru**a **přístupový klíč**, protože se na ně odkazuje později v šabloně.
 
 2.  Ujistěte se, že máte **pracovní prostor Azure Databricks** nebo vytvořte nový.
 
-1.  **Importujte Poznámkový blok pro ETL**. Níže uvedený transformační Poznámkový blok importujte do pracovního prostoru datacihly. (Nemusí být ve stejném umístění jako níže, ale zapamatujte si cestu, kterou si zvolíte později.) Naimportujte Poznámkový blok z následující adresy URL zadáním této adresy URL do pole Adresa URL: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Vyberte **importovat**.
+1.  **Importujte Poznámkový blok pro ETL**. Níže uvedený transformační Poznámkový blok importujte do pracovního prostoru datacihly. (Nemusí být ve stejném umístění jako níže, ale zapamatujte si cestu, kterou si zvolíte později.) Naimportujte Poznámkový blok z následující adresy URL zadáním této adresy URL do pole Adresa URL: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Vyberte **Import** (Importovat).
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 
@@ -111,15 +111,15 @@ Chcete-li tuto šablonu ponechat jednoduchou, šablona nevytvoří plánovanou a
 
     1.  **Datová sada jímky** – pro kopírování do jímky/cílového umístění
 
-        1.  Propojená služba – vyberte ' sinkBlob_LS ' vytvořený v 1. b
+        1.  Propojená služba – vyberte ' sinkBlob_LS ' vytvořenou v 1. b
 
-        2.  Cesta k souboru – sinkdata/staged_sink
+        2.  Cesta k souboru-' sinkdata/staged_sink '
 
         ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
 
 ## <a name="create-activities"></a>Vytváření aktivit
 
-1.  Vytvořit aktivitu vyhledávání –**příznak dostupnosti**pro provedení kontroly dostupnosti zdroje (lze použít vyhledávání nebo GetMetadata). Vyberte ' sourceAvailability_Dataset ' vytvořený ve 2. a.
+1.  Vytvořit aktivitu vyhledávání –**příznak dostupnosti**pro provedení kontroly dostupnosti zdroje (lze použít vyhledávání nebo GetMetadata). Vyberte možnost ' sourceAvailability_Dataset ' vytvořenou ve 2. a.
 
     ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
 

@@ -4,12 +4,12 @@ description: Seznamte se se skupinami kontejnerů v Azure Container Instances, k
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706316"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896587"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
 
@@ -68,7 +68,9 @@ Další informace naleznete v tématu vlastnost [ResourceRequirements][resource-
 
 ## <a name="networking"></a>Sítě
 
-Skupiny kontejnerů sdílejí IP adresu a obor názvů portu na této IP adrese. Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. Vzhledem k tomu, že kontejnery v rámci skupiny sdílejí obor názvů portu, mapování portů se nepodporuje. Kontejnery v rámci skupiny se můžou vzájemně kontaktovat přes localhost na portech, které jsou vystavené, a to i v případě, že se tyto porty nezveřejňují externě na IP adrese skupiny.
+Skupiny kontejnerů mohou sdílet externí IP adresu a obor názvů portů na této IP adrese. Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. Vzhledem k tomu, že kontejnery v rámci skupiny sdílejí obor názvů portu, mapování portů se nepodporuje. 
+
+V rámci skupiny kontejnerů se instance kontejnerů můžou vzájemně kontaktovat přes localhost na jakémkoli portu, a to i v případě, že se tyto porty nezveřejňují externě na IP adrese skupiny nebo z kontejneru.
 
 Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtual-network] (Preview), abyste kontejnerům umožnili zabezpečenou komunikaci s ostatními prostředky ve virtuální síti.
 

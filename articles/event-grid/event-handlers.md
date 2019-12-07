@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c88ef8c3996b1e7d998d3eff12c15077ec2482ff
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169306"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900737"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí v Azure Event Grid
 
@@ -28,7 +28,7 @@ Použijte Azure Automation ke zpracování událostí s automatizovanými Runboo
 |---------|---------|
 |[Kurz: Azure Automation s využitím Event Grid a Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Vytvořte virtuální počítač, který odešle událost. Událost aktivuje Runbook služby Automation, který zaznamená virtuální počítač, a aktivuje zprávu odeslanou kanálu Microsoft Teams. |
 
-## <a name="azure-functions"></a>Azure Functions
+## <a name="azure-functions"></a>Funkce Azure
 
 Používejte Azure Functions pro reakci bez serveru na události.
 
@@ -75,11 +75,11 @@ Použijte Logic Apps k automatizaci obchodních procesů pro reagování na udá
 
 ## <a name="service-bus"></a>Service Bus
 
-### <a name="service-bus-queues"></a>Fronty služby Service Bus
+### <a name="service-bus-queues"></a>Fronty Service Bus
 
 Události v Event Grid můžete směrovat přímo na Service Bus fronty pro použití v ukládání do vyrovnávací paměti nebo v rámci scénářů řízení & příkazů v podnikových aplikacích.
 
-V Azure Portal při vytváření odběru událostí vyberte Service Bus Queue jako typ koncového bodu a pak klikněte na vybrat a koncový bod, aby se vybrala Service Bus fronta.
+V Azure Portal při vytváření odběru událostí vyberte Service Bus Queue jako typ koncového bodu a pak klikněte na vybrat koncový bod, aby bylo možné zvolit frontu Service Bus.
 
 #### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>Přidání obslužné rutiny fronty Service Bus pomocí rozhraní příkazového řádku
 

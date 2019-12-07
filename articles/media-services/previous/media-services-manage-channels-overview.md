@@ -1,6 +1,6 @@
 ---
 title: Přehled živého streamování pomocí Azure Media Services | Microsoft Docs
-description: Toto téma poskytuje přehled živého streamování pomocí Azure Media Services.
+description: Tento článek poskytuje přehled živého streamování pomocí Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5ab4a6b96df964497e20b2b93c59febb0e24393c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 8b58e9d2eae1fbe5b0f4086f772bea3bf46399c3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035898"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895958"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Přehled živého streamování pomocí Media Services
 
@@ -55,17 +55,17 @@ Ve službě Azure Media Services se o zpracování všech funkcí živého strea
 
 **Kanál** představuje cestu pro zpracování obsahu živého streamování. Kanál může přijímat živé vstupní datové proudy následujícími způsoby:
 
-* Místní kodéru pro kódování v reálném čase odešle **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) s více přenosovými rychlostmi do kanálu, který je nakonfigurovaný na **průchozí** doručování. **Průchozí** doručování nastává, když ingestované datové proudy prochází **kanálem** bez dalšího zpracování. Můžete použít následující živé kodéry s výstupem Smooth Streaming s více přenosovými rychlostmi: MediaExcel, Ateme, Představte si Communications, Envivio, Cisco a prvky. Následující kodéry pro výstup v reálném čase: Adobe Flash Media Live Encoder (FMLE), Wirecast, Haivision, Teradek a transkodéry TriCaster.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní kodéru pro kódování v reálném čase odešle **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) s více přenosovými rychlostmi do kanálu, který je nakonfigurovaný na **průchozí** doručování. **Průchozí** doručování nastává, když ingestované datové proudy prochází **kanálem** bez dalšího zpracování. Můžete použít následující živé kodéry, které mají výstup s více přenosovými rychlostmi Smooth Streaming: MediaExcel, Ateme, představovat komunikaci, Envivio, Cisco a prvky. Následující kodéry pro výstup v reálném čase: Adobe Flash Media Live Encoder (FMLE), Wirecast, Haivision, Teradek a transkodéry TriCaster.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
   > [!NOTE]
   > Použití průchozí metody je nejekonomičtější způsob, jak živě streamovat při pořádání několika událostí po delší dobu, když jste už investovali do místních kodérů. Viz podrobnosti o [cenách](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* On-premises Live Encoder odesílá datový proud s jednou přenosovou rychlostí do kanálu, který má povolené kódování v reálném čase pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Pro práci s kanály tohoto typu jsou známy následující živé kodéry s výstupem RTMP: Wirecast, FMLE. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* On-premises Live Encoder odesílá datový proud s jednou přenosovou rychlostí do kanálu, který má povolené kódování v reálném čase, pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Pro práci s kanály tohoto typu se označují tyto živé kodéry s využitím výstupu RTMP: Wirecast, FMLE. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
 Počínaje verzí Media Services 2,10 můžete při vytváření kanálu určit, jak chcete, aby kanál přijímal vstupní datový proud a zda chcete, aby kanál prováděl živé kódování vašeho datového proudu. Máte dvě možnosti:
 
-* **Žádné** (předávací) – tuto hodnotu zadejte, pokud plánujete použít místní kodér Live Encoder, který bude výstupem datového proudu s více přenosovými rychlostmi (předávací proud). V tomto případě příchozí datový proud předaný do výstupu bez kódování. Toto chování kanálu před vydáním verze 2,10.  
+* **None** (pass-through) – tuto hodnotu zadejte, pokud plánujete použít místní kodér Live Encoder, který bude výstupem datového proudu s více přenosovými rychlostmi (předávací proud). V tomto případě příchozí datový proud předaný do výstupu bez kódování. Toto chování kanálu před vydáním verze 2,10.  
 * **Standard** – tuto hodnotu vyberte, pokud chcete použít Media Services ke kódování živého datového proudu s jednou přenosovou rychlostí do datového proudu s více přenosovými rychlostmi. Tato metoda je výhodnější pro rychlé škálování pro nečasté události. Mějte na paměti, že pro živé kódování je potřeba fakturace a že byste měli mít na paměti, že když zachováte živý kanál kódování ve stavu spuštěno, budou se účtovat poplatky za účtování.  Doporučuje se, abyste ihned zastavili spuštěné kanály po dokončení události živého streamování, abyste se vyhnuli dodatečným hodinovým poplatkům.
 
 ## <a name="comparison-of-channel-types"></a>Porovnání typů kanálů
@@ -78,7 +78,7 @@ Následující tabulka poskytuje návod pro porovnání dvou typů kanálů podp
 | Maximální rozlišení, počet vrstev |1080p, 8 vrstev, 60 + fps |720p, 6 vrstev, 30 snímků za sekundu |
 | Vstupní protokoly |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Cena |Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video. |Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
-| Maximální doba běhu |Nonstop |8 hodin |
+| Maximální doba běhu |Nepřetržitě |8 hodin |
 | Podpora pro vložení SLAT |Ne |Ano |
 | Podpora pro signalizaci AD |Ne |Ano |
 | Předávací titulky CEA 608/708 |Ano |Ano |
@@ -112,7 +112,7 @@ Při vytváření kanálu můžete získat adresu URL pro ingestování a adresu
 
 Každý účet Media Services může obsahovat více kanálů, více programů a několik starají. V závislosti na potřebách šířky pásma a zabezpečení může být služba StreamingEndpoint vyhrazená pro jeden nebo více kanálů. Libovolný StreamingEndpoint může vyžádat z libovolného kanálu.
 
-Při vytváření kanálu můžete zadat povolené IP adresy v jednom z následujících formátů: Adresa IpV4 se čtyřmi čísly, rozsahem adres CIDR.
+Při vytváření kanálu můžete zadat povolené IP adresy v jednom z následujících formátů: IpV4 adresa se 4 čísly, rozsah adres CIDR.
 
 ### <a name="program"></a>Program
 [Program](https://docs.microsoft.com/rest/api/media/operations/program) umožňuje řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy. Vztah kanálů a programů se velmi podobná tradičním médiím, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezen na určité načasované události v tomto kanálu.
@@ -141,10 +141,10 @@ Zodpovídáte za zastavování kanálů po dokončení práce s kanálem. Při z
 Aktuální stav kanálu. Možné hodnoty:
 
 * **Zastaveno**. Toto je počáteční stav kanálu po jeho vytvoření (Pokud jste na portálu nevybrali Automatické spuštění). V tomto stavu nedochází k žádnému fakturaci. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
-* **Spouští**se. Kanál se spouští. V tomto stavu nedochází k žádnému fakturaci. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
+* **Spouští**se. Kanál se spouští. V tomto stavu nedochází k žádnému fakturaci. V tomto stavu nejsou povoleny žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
 * **Spuštěno**. Kanál dokáže zpracovávat živé streamy. Nyní je využití fakturace. Aby se zabránilo dalšímu fakturaci, je nutné kanál zastavit.
-* Zastavuje se. Kanál se zastavuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
-* **Probíhá odstraňování**. Kanál se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Zastavuje**se. Kanál se zastavuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povoleny žádné aktualizace ani streamování.
+* **Probíhá odstraňování**. Kanál se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povoleny žádné aktualizace ani streamování.
 
 Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 
@@ -158,7 +158,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Související témata

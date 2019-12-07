@@ -1,6 +1,6 @@
 ---
-title: Správa koncových bodů streamování pomocí .NET SDK. | Dokumenty Microsoft
-description: Tento článek ukazuje, jak spravovat koncové body streamování pomocí webu Azure portal.
+title: Správa koncových bodů streamování pomocí sady .NET SDK | Microsoft Docs
+description: Tento článek ukazuje, jak spravovat koncové body streamování pomocí Azure Portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0222450e1b85c255f2028adff750b9257f109be7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464959"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901281"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>Správa koncových bodů streamování pomocí .NET SDK  
+# <a name="manage-streaming-endpoints-with-net-sdk"></a>Správa koncových bodů streamování pomocí sady .NET SDK  
 
 >[!NOTE]
->Přečtěte si [přehled](media-services-streaming-endpoints-overview.md) článku. Projděte si také, [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Nezapomeňte si projít článek s [přehledem](media-services-streaming-endpoints-overview.md) . Přečtěte si také [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-Kód v tomto článku ukazuje, jak provádět následující úlohy pomocí Azure Media Services .NET SDK:
+Kód v tomto článku ukazuje, jak provádět následující úlohy pomocí sady Azure Media Services .NET SDK:
 
-- Zkontrolujte výchozí koncový bod streamování.
-- Vytvořit nebo přidáte nový koncový bod streamování.
+- Prověřte výchozí koncový bod streamování.
+- Vytvořit nebo přidat nový koncový bod streamování.
 
-    Můžete chtít mít několik koncových bodů streamování, pokud budete chtít mít různé CDN nebo CDN a přímý přístup.
+    Pokud máte v plánu různé sítě CDN nebo CDN a přímý přístup, budete možná chtít mít několik koncových bodů streamování.
 
     > [!NOTE]
-    > Nebudete dostávat faktury, pokud je váš koncový bod streamování ve spuštěném stavu.
+    > Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
     
 - Aktualizujte koncový bod streamování.
     
-    Ujistěte se, že volání funkce Update().
+    Ujistěte se, že jste volali funkci Update ().
 
 - Odstraňte koncový bod streamování.
 
     >[!NOTE]
-    >Nelze odstranit výchozí koncový bod streamování.
+    >Výchozí koncový bod streamování nelze odstranit.
 
-Informace o tom, jak škálovat koncový bod streamování najdete v tématu [to](media-services-portal-scale-streaming-endpoints.md) článku.
+Informace o tom, jak škálovat koncový bod streamování, najdete v [tomto](media-services-portal-scale-streaming-endpoints.md) článku.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-## <a name="add-code-that-manages-streaming-endpoints"></a>Přidejte kód, který spravuje koncové body streamování
+## <a name="add-code-that-manages-streaming-endpoints"></a>Přidat kód, který spravuje koncové body streamování
     
-Nahraďte kód souboru Program.cs následujícím kódem:
+Nahraďte kód v Program.cs následujícím kódem:
 
 ```csharp
 using System;
@@ -143,11 +143,11 @@ namespace AMSStreamingEndpoint
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

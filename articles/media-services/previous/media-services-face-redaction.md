@@ -1,6 +1,6 @@
 ---
 title: Redigování plošek s Azure Media Analytics | Microsoft Docs
-description: Toto téma ukazuje, jak pomocí Azure Media Analytics naredigování obličeje.
+description: Azure Media Redactor je Azure Media Analytics multimediální procesor, který nabízí škálovatelné redigování tváře v cloudu. Tento článek ukazuje, jak pomocí Azure Media Analytics naredigování obličeje.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e350b6ed90324e7ed645d85c046fd74c0a089452
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016018"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900306"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Redigování ploch pomocí Azure Media Analytics 
 ## <a name="overview"></a>Přehled
@@ -29,12 +29,12 @@ Tento článek obsahuje podrobné informace o **Azure Media redactor** a ukazuje
 ## <a name="face-redaction-modes"></a>Režimy redigování obličeje
 Redigování obličeje funguje tak, že detekuje obličeje v každém snímku videa a sleduje objekt Face v čase dopředu a dozadu, aby se stejná osoba mohla rozmazaný i z jiných úhlů. Automatizovaný proces redigování je složitý a nikdy nevytváří 100% požadovaného výstupu, z tohoto důvodu Media Analytics poskytuje několik způsobů, jak změnit konečný výstup.
 
-Kromě plného automatického režimu je k dispozici pracovní postup se dvěma průchody, který umožňuje výběr a zrušení výběru nalezených obličeje pomocí seznamu ID. K provedení libovolných úprav v rámci jednotlivých snímků sada MP používá soubor metadat ve formátu JSON. Tento pracovní postup je rozdělen na režimy analyzování a **redigování** . Oba režimy můžete zkombinovat v jednom průchodu, který spouští obě úlohy v jedné úloze. Tento režim se nazývá **Kombinovaná**.
+Kromě plného automatického režimu je k dispozici pracovní postup se dvěma průchody, který umožňuje výběr a zrušení výběru nalezených obličeje pomocí seznamu ID. K provedení libovolných úprav v rámci jednotlivých snímků sada MP používá soubor metadat ve formátu JSON. Tento pracovní postup je rozdělen na režimy **analyzování** a **redigování** . Oba režimy můžete zkombinovat v jednom průchodu, který spouští obě úlohy v jedné úloze. Tento režim se nazývá **Kombinovaná**.
 
 ### <a name="combined-mode"></a>Kombinovaný režim
 Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 
-| Fáze | Název souboru | Poznámky |
+| Stage | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MOV nebo MP4 |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' kombinované '}} |
@@ -49,7 +49,7 @@ Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 ### <a name="analyze-mode"></a>Režim analýzy
 Úspěšnost **analýzy** obousměrného pracovního postupu provede vstup videa a vytvoří soubor JSON pro umístění obličeje a obrázky ve formátu jpg každé zjištěné plochy.
 
-| Fáze | Název souboru | Poznámky |
+| Stage | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4 |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' Analyze '}} |
@@ -114,7 +114,7 @@ To zahrnuje seznam ID, která se mají Rozostřit, původní video a poznámky J
 
 Výstup z průchodu Analyze nezahrnuje původní video. Video se musí nahrát do vstupního assetu pro úlohu režimu redigování a vybrané jako primární soubor.
 
-| Fáze | Název souboru | Poznámky |
+| Stage | Název souboru | Poznámky |
 | --- | --- | --- |
 | Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4. Stejné video jako v kroku 1. |
 | Vstupní Asset |foo_annotations.json |poznámky soubor metadat z fáze One, s volitelnými úpravami. |
@@ -135,7 +135,7 @@ Příklad foo_IDList. txt
 
 ## <a name="blur-types"></a>Typy rozostření
 
-V **kombinovaném** režimu nebo v režimu **redigování** existuje 5 různých režimů rozostření, ze kterých můžete vybírat prostřednictvím konfigurace vstupu JSON: **Nízká**, **med**, **High**, **box**a **Black**. Ve výchozím nastavení se používá **med** .
+V **kombinovaném** , nebo v režimu **redigování** , existuje 5 různých režimů rozostření, ze kterých můžete vybírat prostřednictvím vstupní konfigurace JSON: **Nízká**, **med**, **High**, **box**a **Black**. Ve výchozím nastavení se používá **med** .
 
 Můžete najít ukázky níže uvedených typů rozostření.
 
@@ -145,25 +145,25 @@ Můžete najít ukázky níže uvedených typů rozostření.
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
 ```
 
-#### <a name="low"></a>Nízká
+#### <a name="low"></a>Nízký
 
-![Nízká](./media/media-services-face-redaction/blur1.png)
+![Nízký](./media/media-services-face-redaction/blur1.png)
  
 #### <a name="med"></a>Tahač
 
 ![Tahač](./media/media-services-face-redaction/blur2.png)
 
-#### <a name="high"></a>Vysoká
+#### <a name="high"></a>Vysoký
 
-![Vysoká](./media/media-services-face-redaction/blur3.png)
+![Vysoký](./media/media-services-face-redaction/blur3.png)
 
 #### <a name="box"></a>Box
 
 ![Box](./media/media-services-face-redaction/blur4.png)
 
-#### <a name="black"></a>Black
+#### <a name="black"></a>Černá
 
-![Black](./media/media-services-face-redaction/blur5.png)
+![Černá](./media/media-services-face-redaction/blur5.png)
 
 ## <a name="elements-of-the-output-json-file"></a>Prvky výstupního souboru JSON
 
@@ -193,7 +193,7 @@ Následující program ukazuje, jak:
 
 Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o připojení, jak je popsáno v tématu [Vývoj pro Media Services v .NET](media-services-dotnet-how-to-use.md). 
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```csharp
 using System;
@@ -363,11 +363,11 @@ namespace FaceRedaction
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy

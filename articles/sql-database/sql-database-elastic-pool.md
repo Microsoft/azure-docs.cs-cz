@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186471"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901174"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy vám pomůžou se správou a škálováním více databází Azure SQL.
 
-Elastické fondy SQL Database je jednoduché a cenově výhodné řešení pro správu a škálování více databází s proměnlivými a nepředvídatelnými požadavky na využití. Databáze v elastickém fondu jsou na jednom Azure SQL Databaseovém serveru a sdílejí nastavený počet prostředků za stanovenou cenu. Elastické fondy v Azure SQL Database umožňují vývojářům SaaS optimalizovat poměr cena/výkon pro skupinu databází v rámci předem daného rozpočtu a pro všechny databáze přitom zajistit elasticitu výkonu.
+Elastické fondy SQL Database je jednoduché a cenově výhodné řešení pro správu a škálování více databází s proměnlivými a nepředvídatelnými požadavky na využití. Databáze v elastickém fondu se nachází na jednom serveru Azure SQL Database a sdílí stanovený počet prostředků za stanovenou cenu. Elastické fondy v Azure SQL Database umožňují vývojářům SaaS optimalizovat poměr cena/výkon pro skupinu databází v rámci předem daného rozpočtu a pro všechny databáze přitom zajistit elasticitu výkonu.
 
 ## <a name="what-are-sql-elastic-pools"></a>Co jsou elastické fondy SQL
 
-Vývojáři SaaS sestavují aplikace nad datovými úrovněmi velkého rozsahu, které se skládají z několika databází. Běžným aplikačním postupem je zřídit pro každého zákazníka izolovanou databázi. Ale různí zákazníci mají často proměnlivé a nepředvídatelné vzorce využití a je těžké odhadnout požadavky jednotlivých databázových uživatelů na prostředky. Tradičně jste měli dvě možnosti:
+Vývojáři SaaS sestavují aplikace nad datovými úrovněmi velkého rozsahu, které se skládají z několika databází. Běžným aplikačním postupem je zřídit pro každého zákazníka izolovanou databázi. Ale různí zákazníci mají často proměnlivé a nepředvídatelné vzorce používání a je obtížné odhadnout požadavky na prostředky u jednotlivých uživatelů databáze. Tradičně jste měli dvě možnosti:
 
 - Provisioning prostředků na základě špičkového využití a platby za použití
 - Snížení nákladů na náklady na výkon a spokojenost zákazníků během špičky – zřizování
@@ -48,7 +48,7 @@ V rámci fondu disponují jednotlivé databáze flexibilní možností automatic
 
 Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Pro danou databázi je tento vzor charakterizován nízkou mírou průměrného využití s relativně málo častými nárůsty využití.
 
-Čím více databází je možné do fondu přidat, tím větší budou vaše úspory. V závislosti na vzorech využití aplikací je možné dosáhnout úspor už u pouhých dvou databází S3.
+Čím více databází je možné do fondu přidat, tím větší budou vaše úspory. V závislosti na způsobu využití vaší aplikace je možné vidět úspory s malým počtem databází S3.
 
 Následující části vás seznámí s postupy, pomocí kterých můžete vyhodnotit, jestli pro vaši konkrétní kolekci databází bude použití fondu přínosné. V příkladech se používají fondy Standard, ale stejné principy platí také pro fondy Basic a Premium.
 
@@ -95,7 +95,7 @@ Když sdílíte prostředky, ne všechny databáze ve fondu, můžou současně 
 
 Aby bylo možné snížit náklady pro tři databáze S3 ve fondu s 200 jednotkami eDTU, mohou nejvýše dvě z těchto databází dosahovat špičky svého využití současně. Pokud současně dosahují špičky více než dvě z těchto čtyř databází S3, bylo by nutné velikost fondu nastavit na více než 200 jednotek eDTU. Pokud se velikost fondu změní na více než 200 eDTU, je potřeba do fondu přidat další databáze S3, aby náklady zůstaly méně než výpočetní velikosti pro izolované databáze.
 
-Všimněte si, tento příklad nebere v úvahu využití ostatních databází ve fondu. Pokud se v libovolném konkrétním časovém okamžiku do určité míry využívají všechny databáze, může méně než 2/3 (nebo 67 %) z nich dosahovat špičky současně.
+Poznámka: Tento příklad nebere v úvahu využití jiných databází ve fondu. Pokud se v libovolném konkrétním časovém okamžiku do určité míry využívají všechny databáze, může méně než 2/3 (nebo 67 %) z nich dosahovat špičky současně.
 
 ### <a name="resource-utilization-per-database"></a>Využití prostředků na databázi
 
@@ -155,7 +155,7 @@ Databáze ve fondu obecně podporují stejné [funkce provozní kontinuity](sql-
 
 Existují dva způsoby, jak můžete vytvořit elastický fond v Azure Portal.
 
-1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud Azure SQL není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
+1. Pro vytvoření elastického fondu použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **Azure SQL**.
 2. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o elastických fondech můžete zobrazit tak, že na dlaždici **databáze** vyberete **Zobrazit podrobnosti** .
 3. Na dlaždici **databáze** vyberte v rozevíracím seznamu **typ prostředku** možnost **elastický fond** a pak vyberte **vytvořit**:
 

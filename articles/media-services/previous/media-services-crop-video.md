@@ -1,6 +1,6 @@
 ---
 title: Jak oříznout videa pomocí Media Encoder Standard – Azure | Microsoft Docs
-description: Tento článek ukazuje, jak oříznout videa pomocí Media Encoder Standard.
+description: Oříznutí je proces výběru obdélníkového okna v rámci videa a kódování pouze pixelů v rámci tohoto okna. Tento článek ukazuje, jak oříznout videa pomocí Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016615"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887760"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Oříznutí videa pomocí kodéru Media Encoder Standard  
 
@@ -137,7 +137,7 @@ Následující omezení platí pro funkci oříznutí. Pokud nejsou splněny, ú
 3. Oříznutí se vztahuje na videa zachycená v režimu na šířku (tj. neplatí pro videa zaznamenaná přes smartphone, která se podrží svisle nebo v režimu na výšku).
 4. Funguje nejlépe s progresivním videem zachyceným čtvercovým pixelem.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Další krok

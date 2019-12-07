@@ -3,16 +3,16 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf04458d859601de7ca0e9d07f6a3dbf506a51e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173114"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892563"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
-V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Dotazy k Azure Backup také můžete pokládat v [diskuzním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 K rychlému procházení částmi tohoto článku použijte odkazy vpravo v části **V tomto článku**.
 
@@ -70,6 +70,18 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 - US Gov – Arizona (UGA)
 - US Gov Texas (UGT)
 - US Gov – Virginie (UGV)
+- Austrálie – střed (ACL)
+- Indie – západ (INW)
+- Jihoafrická Amerika (Indie) – sever (SAN)
+- Spojené arabské emiráty sever (směs močoviny)
+- Francie – střed (FRC)
+- Německo – sever (GN)                       
+- Německo – středozápad (GWC)
+- Jižní Afrika (nevidělo)
+- Spojené arabské emiráty – střed (UAC)
+- NDOPORUČUJEME (Norsko – východ)     
+- NWW (Norsko – západ)
+- SZN (Švýcarsko – sever)
 
 Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 

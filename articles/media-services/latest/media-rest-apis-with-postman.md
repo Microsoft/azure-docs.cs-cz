@@ -1,6 +1,6 @@
 ---
 title: Nakonfigurovat metodu post pro Azure Media Services REST API volání
-description: Přečtěte si, jak nakonfigurovat metodu post pro Media Services REST API volání.
+description: V tomto článku se dozvíte, jak nakonfigurovat metodu post, aby ji bylo možné použít k volání rozhraní REST API pro Azure Media Services (AMS).
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2019
+ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: eee46bd8642f5ad4a8d036b9f6bf9a464c0d09f3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839587"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888100"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Nakonfigurovat metodu post pro Media Services REST API volání
 
@@ -26,9 +26,9 @@ V tomto článku se dozvíte, jak nakonfigurovat **metodu post** , aby ji bylo m
 
 Než začnete s vývojem, přečtěte si téma [vývoj s rozhraními api Media Services V3](media-services-apis-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md). Ujistěte se, že si pamatovat název skupiny prostředků a název účtu Media Services. 
 - Získání informací potřebných pro [přístup k rozhraním API](access-api-cli-how-to.md)
 - Nainstalujte klienta [Postman](https://www.getpostman.com/) rozhraní REST, ve kterém můžete spouštět rozhraní REST API používaná v některých kurzech ke službě AMS REST. 
 
@@ -97,7 +97,7 @@ Než začnete pracovat s prostředky AMS v3, potřebujete získat a nastavit tok
 * Pokud se vaše aplikace nezdařila s protokolem HTTP 504: časový limit brány, ujistěte se, že proměnná umístění nebyla explicitně nastavena na jinou hodnotu než očekávané umístění účtu Media Services. 
 * Pokud se zobrazí chyba "účet nebyl nalezen", zkontrolujte také, zda je vlastnost umístění v těle zprávy JSON nastavena na umístění, ve kterém je účet Media Services. 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Nahrání souborů do účtu Media Services – REST](upload-files-rest-how-to.md)
 - [Vytváření filtrů pomocí Media Services – REST](filters-dynamic-manifest-rest-howto.md)

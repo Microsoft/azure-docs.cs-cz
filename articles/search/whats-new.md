@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555140"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901330"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -29,7 +29,11 @@ Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Vaše s
 
 ## <a name="feature-announcements"></a>Oznámení funkcí
 
-4\. listopadu 2019 – konference Ignite
+### <a name="december-2019"></a>Prosince 2019
+
++ [Vytvořit aplikaci (Preview)](search-create-app-portal.md) je nový průvodce na portálu, který GENERUJE soubor HTML ke stažení. Soubor se dodává se skriptem Embedded, který vykreslí provozní webovou aplikaci ve stylu "localhost", která je svázána s indexem ve vaší vyhledávací službě. Stránky lze v průvodci konfigurovat a mohou obsahovat panel hledání, oblast výsledků, navigaci bočním panelem a podporu dotazů typeahead. Můžete upravit HTML v offline režimu pro rozšiřování nebo přizpůsobení pracovního postupu nebo vzhledu.
+
+### <a name="november-2019---ignite-conference"></a>Listopadu 2019 – konference Ignite
 
 + [Přírůstkové indexování (Preview)](cognitive-search-incremental-indexing-conceptual.md) umožňuje vybrat a zvolit kroky, které se mají znovu zpracovat při provádění úprav kanálu rozšíření. Přírůstkové indexování je užitečné, pokud máte image s obsahem, který jste předtím analyzovali. Výstup drahých analýz je uložený a pak se používá jako základ pro další indexování nebo obohacení.
 
@@ -44,7 +48,7 @@ Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Vaše s
 
 + V indexerech jsou nyní podporovány [Azure Data Lake Storage Gen2 (Preview)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin API (preview)](search-howto-index-cosmosdb.md)a [Cosmos DB rozhraní API Cassandra (Preview)](search-howto-index-cosmosdb.md) . Můžete se zaregistrovat pomocí [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview). Po přijetí do programu Preview obdržíte e-mail s potvrzením.
 
-Červenec 24 2019
+### <a name="july-2019"></a>Červenec 2019
 
 + Obecně dostupné v [cloudu Azure Government](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search).
 

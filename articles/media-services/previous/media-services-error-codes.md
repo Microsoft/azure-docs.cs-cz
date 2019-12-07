@@ -1,6 +1,6 @@
 ---
-title: Kódy chyb služby Azure Media Services | Dokumentace Microsoftu
-description: Téma s přehledem kódy chyb služby Azure Media Services.
+title: Kódy chyb Azure Media Services | Microsoft Docs
+description: V závislosti na problémech, jako je vypršení platnosti ověřovacích tokenů k akcím, které nejsou podporované v Media Services, můžete od služby zobrazit chybové kódy HTTP. Tento článek obsahuje přehled kódů chyb rozhraní API pro Azure Media Services V2.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217160"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887063"
 ---
-# <a name="azure-media-services-error-codes"></a>Kódy chyb služby Azure Media Services
-Při použití Microsoft Azure Media Services, můžete obdržet chybových kódech HTTP ze služby v závislosti na problémy, jako je ověřování tokenů zanedlouho vyprší. na akce, které nejsou podporované ve službě Media Services. Tady je seznam **chybových kódech HTTP** , které mohou být vráceny Media Services a možné příčiny pro ně.  
+# <a name="azure-media-services-error-codes"></a>Kódy chyb Azure Media Services
+Při použití Microsoft Azure Media Services můžete od služby obdržet chybové kódy HTTP v závislosti na problémech, jako je například vyprší platnost ověřovacích tokenů k akcím, které nejsou podporovány v Media Services. Následuje seznam **kódů chyb HTTP** , které mohou být vráceny Media Services a možnými příčinami.  
 
-## <a name="400-bad-request"></a>400 – Chybný požadavek
-Požadavek obsahuje neplatné informace a je odmítnuto kvůli jednomu z následujících důvodů:
+## <a name="400-bad-request"></a>400 Chybný požadavek
+Požadavek obsahuje neplatné informace a byl odmítnut z některého z následujících důvodů:
 
-* Je zadána Nepodporovaná verze rozhraní API. Nejaktuálnější verzi, naleznete v tématu [instalace pro vývoj pro Media Services REST API](media-services-rest-how-to-use.md).
-* Není určená verze rozhraní API služby Media Services. Informace o tom, jak určit verzi rozhraní API najdete v tématu [Reference k rozhraní API REST Media Services Operations](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* Je zadaná Nepodporovaná verze rozhraní API. Nejaktuálnější verzi najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
+* Není zadaná verze rozhraní API Media Services. Informace o tom, jak zadat verzi rozhraní API, najdete v tématu [Media Services operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
   
   > [!NOTE]
-  > Pokud používáte .NET nebo sady Java SDK pro připojení ke službě Media Services, verze rozhraní API je určena automaticky pokaždé, když akci a provést některé akce ve službě Media Services.
+  > Pokud se k připojení Media Services používáte sady SDK .NET nebo Java, verze rozhraní API se zadává za vás pokaždé, když se pokusíte provést nějakou akci s Media Services.
   > 
   > 
-* Byla zadána nedefinovanou vlastnost. Název vlastnosti je v chybové zprávě. Je možné zadat jenom vlastnosti, které jsou členy dané entity. Zobrazit [Reference k rozhraní API REST Azure Media Services](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) seznam entit a jejich vlastnosti.
-* Byla zadána neplatnou hodnotu vlastnosti. Název vlastnosti je v chybové zprávě. Podívejte se na předchozí odkaz pro platnou vlastnost typů a jejich hodnot.
-* Hodnota vlastnosti nebyl nalezen a je povinný.
-* Část adresy URL zadané obsahuje chybná hodnota.
-* Došlo pokusu o umožňuje aktualizovat vlastnost WriteOnce.
-* Došlo pokusu o vytvoření úlohy, která má vstupní Asset s primární AssetFile, který se nezadalo nebo nebylo možné určit.
-* Došlo k pokusu o aktualizaci lokátoru SAS. Lokátory SAS můžou jenom vytvořit nebo odstranit. Lokátory streamování je možné aktualizovat. Další informace najdete v tématu [lokátory](https://docs.microsoft.com/rest/api/media/operations/locator).
-* Nepodporovaná operace nebo dotaz byla odeslána.
+* Byla zadána nedefinovaná vlastnost. Název vlastnosti je v chybové zprávě. Zadat lze pouze vlastnosti, které jsou členy dané entity. Seznam entit a jejich vlastností najdete v tématu [Azure Media Services REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) .
+* Byla zadána neplatná hodnota vlastnosti. Název vlastnosti je v chybové zprávě. Prohlédněte si předchozí odkaz na platné typy vlastností a jejich hodnoty.
+* Hodnota vlastnosti chybí a je povinná.
+* Část zadané adresy URL obsahuje chybnou hodnotu.
+* Byl proveden pokus o aktualizaci vlastnosti WriteOnce.
+* Došlo k pokusu o vytvoření úlohy, která má vstupní Asset s primárním AssetFile, který nebyl zadán, nebo jej nelze určit.
+* Byl proveden pokus o aktualizaci lokátoru SAS. Lokátory SAS lze vytvořit nebo odstranit pouze. Lokátory streamování se dají aktualizovat. Další informace najdete v tématu [Lokátory](https://docs.microsoft.com/rest/api/media/operations/locator).
+* Byla odeslána Nepodporovaná operace nebo dotaz.
 
 ## <a name="401-unauthorized"></a>401 Neautorizováno
-Požadavek nešlo ověřit (dříve, než je možné autorizovat) kvůli jednomu z následujících důvodů:
+Požadavek nebylo možné ověřit (před tím, než může být autorizován) z jednoho z následujících důvodů:
 
-* Chybí hlavička ověřování.
-* Hodnota hlavičky Chyba ověření.
-  * Vypršela platnost tokenu. 
+* Záhlaví ověřování chybí.
+* Chybná hodnota hlavičky ověřování
+  * Platnost tokenu vypršela. 
   * Token obsahuje neplatný podpis.
 
-## <a name="403-forbidden"></a>403 Zakázáno
-Žádost není povolena kvůli jednomu z následujících důvodů:
+## <a name="403-forbidden"></a>403 zakázané
+Požadavek není povolen z některého z následujících důvodů:
 
-* Účet Media Services nebyl nalezen nebo se odstranil.
-* Účet Media Services je zakázaný a není typ požadavku HTTP GET. Operace služby vrátí 403 odpověď.
-* Ověřovací token neobsahuje přihlašovací údaje uživatele: Název účtu a/nebo ID předplatného. Tyto informace najdete v rozšíření Media Services uživatelského rozhraní pro váš účet Media Services na portálu Azure Management Portal.
-* Nelze získat přístup k prostředku.
+* Účet Media Services nebyl nalezen nebo byl odstraněn.
+* Účet Media Services je zakázán a typ požadavku není HTTP GET. Operace se službou vrátí taky odpověď 403.
+* Ověřovací token neobsahuje informace o přihlašovacích údajích uživatele: Account/nebo SubscriptionId. Tyto informace najdete v Media Services rozšíření uživatelského rozhraní pro účet Media Services v Azure Portál pro správu.
+* Prostředek není k dispozici.
   
   * Byl proveden pokus o použití MediaProcessor, který není k dispozici pro váš účet Media Services.
-  * Došlo pokusu o aktualizaci JobTemplate definovány službou Media Services.
-  * Došlo k pokusu o přepsání některých jiných účtu Media Services pro Lokátor.
-  * K přepsání některých jiných účtu Media Services na ContentKey byl proveden pokus o.
-* Prostředek nelze vytvořit z důvodu kvótu, bylo dosaženo pro účet Media Services. Další informace o kvótách služby najdete v tématu [kvóty a omezení](media-services-quotas-and-limitations.md).
+  * Byl proveden pokus o aktualizaci JobTemplate definovaného pomocí Media Services.
+  * Došlo k pokusu o přepsání jiného lokátoru účtu Media Services.
+  * Došlo k pokusu o přepsání nějakého ContentKeyu jiného účtu Media Services.
+* Prostředek se nepovedlo vytvořit kvůli kvótě služby, která se dosáhla Media Services účtu. Další informace o kvótách služby najdete v tématu [kvóty a omezení](media-services-quotas-and-limitations.md).
 
 ## <a name="404-not-found"></a>404 – Nenalezeno
-Žádost není povolená u prostředku kvůli jednomu z následujících důvodů:
+Požadavek se u prostředku nepovoluje kvůli jednomu z následujících důvodů:
 
-* Byl proveden pokus o aktualizovat entitu, která neexistuje.
-* Došlo k pokusu o odstranění entity, která neexistuje.
-* Došlo pokusu o vytvoření entity, který odkazuje na objekt, který neexistuje.
-* Došlo pokusu o NAČTENÍ entity, která neexistuje.
-* Došlo pokusu o zadejte účet úložiště, který není přidružen k účtu Media Services.  
+* Byl proveden pokus o aktualizaci entity, která neexistuje.
+* Byl proveden pokus o odstranění neexistující entity.
+* Byl proveden pokus o vytvoření entity, která odkazuje na neexistující entitu.
+* Byl proveden pokus o získání neexistující entity.
+* Byl proveden pokus o určení účtu úložiště, který není spojen s účtem Media Services.  
 
-## <a name="409-conflict"></a>409 – konflikt
-Žádost není povolena kvůli jednomu z následujících důvodů:
+## <a name="409-conflict"></a>409 konflikt
+Požadavek není povolen z některého z následujících důvodů:
 
-* Více než jeden AssetFile má zadaný název v rámci prostředku.
-* Byl proveden pokus o vytvoření druhého primární AssetFile v rámci prostředku.
-* Byl proveden pokus o vytvoření ContentKey se zadaným Id už používá.
-* Došlo pokusu vytvořit lokátor se zadaným Id už používá.
+* V rámci Assetu má zadaný název více než jeden AssetFile.
+* V rámci Assetu byl proveden pokus o vytvoření druhého primárního AssetFile.
+* Došlo k pokusu o vytvoření ContentKey se již použitým zadaným ID.
+* Došlo k pokusu o vytvoření lokátoru se zadaným ID, které už bylo použito.
 * Více než jeden IngestManifestFile má zadaný název v rámci IngestManifest.
-* Došlo pokusu o druhý šifrování úložiště ContentKey propojit prostředek šifrované úložiště.
-* Došlo pokusu o stejné ContentKey propojit prostředek.
-* Došlo pokusu vytvořit lokátor pro určitý prostředek, jehož kontejner úložiště chybí nebo je už přidružený Asset.
-* Pokud chcete vytvořit lokátor pro určitý prostředek, který již má 5 lokátory používá byl proveden pokus o. (Úložiště azure vynucuje omezení na jeden kontejner úložiště pět zásady sdíleného přístupu.)
-* Propojení účtu úložiště prostředku IngestManifestAsset není stejný jako účet úložiště používané IngestManifest nadřazenou položkou.  
+* Došlo k pokusu o propojení druhého šifrování úložiště ContentKey s prostředkem šifrovaným úložištěm.
+* Byl proveden pokus o propojení stejného ContentKey k Assetu.
+* Došlo k pokusu o vytvoření lokátoru k Assetu, u kterého chybí kontejner úložiště nebo který už není přidružený k Assetu.
+* Došlo k pokusu o vytvoření lokátoru k prostředku, který již má 5 lokátorů, které se používají. (Azure Storage vynutilo omezení pěti zásad sdíleného přístupu na jednom kontejneru úložiště.)
+* Propojení účtu úložiště s IngestManifestAsset se neshoduje s účtem úložiště použitým nadřazeným IngestManifest.  
 
-## <a name="500-internal-server-error"></a>Chyba 500 interní Server
-Během zpracování požadavku, Media Services nalezne nějaké chybě, která zabrání v pokračování zpracování. Může to být způsobené jedním z následujících důvodů:
+## <a name="500-internal-server-error"></a>500 – Interní chyba serveru
+Při zpracování požadavku Media Services dojde k nějaké chybě, která brání v pokračování zpracování. Může to být způsobené jedním z následujících důvodů:
 
-* Vytváření prostředku nebo úloha selže, protože informace o kvótách služby účtu Media Services je dočasně nedostupná.
-* Vytváří se prostředek nebo IngestManifest kontejneru úložiště objektů blob se nezdaří, protože informace o účtu úložiště na účet je dočasně nedostupná.
-* Další neočekávané chyby.
+* Vytvoření prostředku nebo úlohy se nepovede, protože informace o kvótě služby Media Services účtu jsou dočasně nedostupné.
+* Vytváření Assetu nebo kontejneru úložiště objektů BLOB IngestManifest se nepovede, protože informace o účtu úložiště jsou dočasně nedostupné.
+* Jiná Neočekávaná chyba.
 
 ## <a name="503-service-unavailable"></a>503 – Nedostupná služba
-Server je nyní nelze přijmout požadavky. Tuto chybu může způsobovat nadměrné požadavky na službu. Mechanismus omezení služby Media Services omezuje využití prostředků pro aplikace, které usnadňují nadměrnou ke službě.
+Server momentálně nemůže přijímat požadavky. Tato chyba může být způsobena nadměrnými požadavky na službu. Mechanismus omezování Media Services omezuje využívání prostředků u aplikací, které provedou nadměrné požadavky na službu.
 
 > [!NOTE]
-> Zkontrolujte chybovou zprávu a řetězec kódu chyby, chcete-li získat podrobnější informace o důvodu, že jste získali došlo k chybě 503. Tato chyba nemusí to znamenat omezení šířky pásma.
+> Pokud chcete získat podrobnější informace o příčině chyby 503, přečtěte si chybovou zprávu a řetězec kódu chyby. Tato chyba vždy neznamená omezení.
 > 
 > 
 
-Je to možné stav popisy jsou:
+Možné popisy stavu:
 
-* "Server je zaneprázdněn. Trval předchozí běhy tohoto typu žádosti více než {0} sekund. "
-* "Server je zaneprázdněn. Více než {0} můžu omezit počet požadavků za sekundu. "
-* "Server je zaneprázdněn. Více než {0} požadavky v rámci {1} můžu omezit sekund. "
+* "Server je zaneprázdněn. Předchozí spuštění tohoto typu žádosti trvalo déle než {0} sekund. "
+* "Server je zaneprázdněn. Více než {0} požadavků za sekundu lze omezit. "
+* "Server je zaneprázdněn. Více než {0} žádostí během {1} sekund může být omezené. "
 
-Pro zpracování této chybě, doporučujeme použít logiku opakování exponenciální regresní. To znamená, pomocí postupně déle čeká mezi jednotlivými pokusy o po sobě jdoucích chybové odpovědi.  Další informace najdete v tématu [přechodné Fault Handling Application Block](https://msdn.microsoft.com/library/hh680905.aspx).
+Pro zpracování této chyby doporučujeme použít exponenciální zpětnou logiku opakování. To znamená, že pomocí postupného čekání mezi opakovanými pokusy čekají na po sobě jdoucí chybové odpovědi.  Další informace naleznete v tématu [blok aplikace zpracování přechodných chyb](https://msdn.microsoft.com/library/hh680905.aspx).
 
 > [!NOTE]
-> Pokud používáte [Azure Media Services SDK pro .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master), logika opakovaných pokusů pro došlo k chybě 503 implementován sada SDK.  
+> Pokud používáte [sadu Azure Media Services SDK pro .NET](https://github.com/Azure/azure-sdk-for-media-services/tree/master), je logika opakování pro chybu 503 implementovaná sadou SDK.  
 > 
 > 
 
 ## <a name="see-also"></a>Viz také
-[Kódy chyb pro správu služby Media Services](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Kódy chyb správy Media Services](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

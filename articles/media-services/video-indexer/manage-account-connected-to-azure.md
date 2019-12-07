@@ -1,7 +1,7 @@
 ---
 title: Správa účtu Video Indexer
 titleSuffix: Azure Media Services
-description: Tento článek popisuje, jak spravovat účet Video Indexer připojený k Azure.
+description: Tento článek ukazuje, jak spravovat účet Video Indexer připojený k Azure.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: a8221cdcf7afe82ee969f645d7f459c69519711d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838972"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892766"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Správa účtu Video Indexer připojeného k Azure
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak spravovat účet Video Indexer, který je připojen�
 > [!NOTE]
 > Musíte být vlastníkem účtu Video Indexer, abyste mohli provádět úpravy konfigurace účtu popsané v tomto tématu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Připojte svůj účet Video Indexer k Azure, jak je popsáno v tématu [připojení k Azure](connect-to-azure.md). 
 
@@ -56,7 +56,7 @@ Stránka **Nastavení** vám umožní nastavit automatické škálování rezerv
 
 Automatické škálování nemění škálu pod 1 RU nebo vyšší než výchozí limit Media Services účtu. Aby bylo možné tento limit zvýšit, vytvořte žádost o služby. Informace o kvótách a omezeních a o tom, jak otevřít lístek podpory, najdete v tématu [kvóty a omezení](../../media-services/previous/media-services-quotas-and-limitations.md).
 
-![Registrace](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
+![Zaregistrujte se](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Chyby a upozornění
 

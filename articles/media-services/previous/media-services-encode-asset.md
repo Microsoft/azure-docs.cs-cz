@@ -1,6 +1,6 @@
 ---
 title: Přehled kodérů médií v Azure na vyžádání | Microsoft Docs
-description: Toto téma poskytuje přehled kodérů médií na vyžádání v Azure.
+description: Azure Media Services poskytuje více možností pro kódování médií v cloudu. Tento článek obsahuje přehled kodérů médií na vyžádání v Azure.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019033"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901514"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Přehled kodérů médií na vyžádání v Azure 
 
@@ -32,7 +32,7 @@ Kodeky jsou software, který implementuje algoritmy komprese/dekomprese, zatímc
 
 Media Services poskytuje dynamické balení, které vám umožní doručovat MP4 s adaptivní přenosovou rychlostí nebo Smooth Streaming kódovaný obsah ve formátech streamování, které podporuje Media Services (MPEG POMLČKa, HLS, Smooth Streaming), aniž byste je museli znovu zabalit do těchto formáty streamování.
 
-Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. K koncovým bodům streamování dojde pokaždé, když je koncový bod ve spuštěném stavu.
+Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. K koncovým bodům streamování dojde pokaždé, když je koncový bod ve **spuštěném** stavu.
 
 Media Services podporuje následující kodéry na vyžádání, které jsou popsány v tomto článku:
 
@@ -48,10 +48,10 @@ Ve výchozím nastavení každý účet Media Services může mít současně je
 ### <a name="how-to-use"></a>Způsob použití
 [Postup při kódování pomocí Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-### <a name="formats"></a>Formulářů
+### <a name="formats"></a>Formáty
 [Formáty a kodeky](media-services-media-encoder-standard-formats.md)
 
-### <a name="presets"></a>Předvolby
+### <a name="presets"></a>Presets
 Media Encoder Standard se konfiguruje pomocí některého z přednastavených kodérů popsaných [tady](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Vstupní a výstupní metadata
@@ -68,7 +68,7 @@ Informace najdete v tématu [Postup při stříhání videí pomocí Media Encod
 ### <a name="create-overlays"></a>Vytvořit překryvy
 Informace najdete v tématu [jak vytvořit překryvy pomocí Media Encoder Standard](media-services-advanced-encoding-with-mes.md#overlay).
 
-### <a name="see-also"></a>Viz také:
+### <a name="see-also"></a>Další informace najdete v tématech
 [Blog Media Services](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>Pracovní postup kodéru Media Encoder Premium
@@ -86,7 +86,7 @@ Pokud vstupní video neobsahuje skryté titulky, bude výstupní Asset stále ob
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články

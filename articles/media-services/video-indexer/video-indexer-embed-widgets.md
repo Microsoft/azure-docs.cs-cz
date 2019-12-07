@@ -1,7 +1,7 @@
 ---
 title: Vložení Video Indexer widgetů do vašich aplikací
 titleSuffix: Azure Media Services
-description: Naučte se vkládat Video Indexer widgety do své aplikace.
+description: Tento článek ukazuje, jak vložit Azure Media Services Video Indexer widgety do aplikace.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 99d6647ab5e7fa8f35cef883dd00ae9fea866370
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839119"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892732"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Vložení Video Indexer widgetů do vašich aplikací
 
@@ -29,7 +29,7 @@ Počínaje verzí 2 se základní adresa URL widgetu skládá z oblasti zadanéh
 
 Pomůcka pro rozpoznávání přehledů zahrnuje všechny Visual Insights, které byly extrahovány z procesu indexování videí. Pomůcka pro rozpoznávání poznatků podporuje následující volitelné parametry adresy URL.
 
-|Název|Definice|Popis|
+|Name (Název)|Definice|Popis|
 |---|---|---|
 |`widgets`|Řetězce oddělené čárkami|Umožňuje řídit přehledy, které chcete vykreslit. <br/> Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` vykreslí jenom osoby a bude mít přehled o uživatelském rozhraní.<br/>Dostupné možnosti: people (lidé), keywords (klíčová slova), annotations (poznámky), brands (značky), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).<br/>Všimněte si, že parametr URL `widgets` není ve verzi 2 podporován.<br/>|
 |`locale`|Krátký kód jazyka|Řídí jazyk Insights. Výchozí hodnota je `en`. <br/> Příklad: `locale=de`.|
@@ -39,7 +39,7 @@ Pomůcka pro rozpoznávání přehledů zahrnuje všechny Visual Insights, kter�
 
 Pomůcku přehrávače můžete použít ke streamování videa pomocí adaptivní přenosové rychlosti. Widget přehrávače podporuje následující volitelné parametry adresy URL.
 
-|Název|Definice|Popis|
+|Name (Název)|Definice|Popis|
 |---|---|---|
 |`t`|Sekund od začátku|Nastaví, aby se hráč od zadaného časového bodu začal přehrávat.<br/> Příklad: `t=60`.|
 |`captions`|Kód jazyka|Načte titulek v zadaném jazyce během načítání pomůcky, aby byl dostupný v nabídce **titulků** .<br/> Příklad: `captions=en-US`.|
@@ -52,7 +52,7 @@ Pomůcku přehrávače můžete použít ke streamování videa pomocí adaptivn
 
 Pomůcku editoru můžete použít k vytvoření nových projektů a správě přehledů videa. Pomůcka editoru podporuje následující volitelné parametry adresy URL.
 
-|Název|Definice|Popis|
+|Name (Název)|Definice|Popis|
 |---|---|---|
 |`accessToken`<sup>*</sup>|Řetězec|Poskytuje přístup k videím, která jsou pouze v účtu, který se používá k vložení widgetu.<br> Pomůcka editoru vyžaduje parametr `accessToken`.|
 |`language`|Kód jazyka|Řídí jazyk přehrávače. Výchozí hodnota je `en-US`.<br/>Příklad: `language=de-DE`.|
@@ -186,7 +186,7 @@ Pokud používáte přehrávač videa, který není Azure Media Player, je nutn�
         </video>    
 
 2. Vložte widget Cognitive Insights.
-3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Příklad:
+3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Například:
 
         <script>
     
@@ -247,7 +247,7 @@ Všimněte si, že je tato možnost relevantní jenom v případech, když přeh
 
 Pokud vložíte přehrávač Video Indexeru, můžete zvolit velikost přehrávače zadáním velikosti prvku iframe.
 
-Příklad:
+Například:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

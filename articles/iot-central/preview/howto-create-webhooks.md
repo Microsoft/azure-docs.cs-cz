@@ -3,17 +3,17 @@ title: Vytvořit Webhooky na pravidlech v Azure IoT Central | Microsoft Docs
 description: Vytvoření webhooků ve službě Azure IoT Central pro automatické upozorňování dalších aplikací, když se pravidla aktivují.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/21/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: d1f99be5f21cbf8f1dcfe4a32595a639d3760494
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 206c93c291654d22e945c3064e3c581dceb50cea
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929935"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895473"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central-preview-features"></a>Vytváření akcí Webhooku u pravidel ve službě Azure IoT Central (funkce ve verzi Preview)
 

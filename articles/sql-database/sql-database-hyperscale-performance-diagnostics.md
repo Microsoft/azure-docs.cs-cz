@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2e162b30a0227c5f04c74dae01413177d1623235
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811151"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901241"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostika řešení potíží s výkonem s škálovatelným škálováním SQL
 
@@ -44,13 +44,14 @@ Výpočetní repliky neukládá do mezipaměti úplnou kopii databáze místně.
  
 Pokud je ve výpočetní replice vydaný objekt pro čtení, pokud data ve fondu vyrovnávací paměti nebo v místní mezipaměti RBPEX neexistují, volání funkce GetPage (pageId, LSN) a stránka se načte z odpovídajícího serveru stránky. Čtení ze stránkovacích serverů je vzdálené čtení a proto je pomalejší než čtení z místní RBPEX. Při řešení potíží s výkonem souvisejících s vstupně-výstupních operací potřebujeme vědět, kolik IOs bylo provedeno prostřednictvím poměrně pomalejšího čtení vzdáleného serveru stránky.
 
-Několik zobrazení dynamické správy a rozšířených událostí obsahuje sloupce a pole, která určují počet vzdálených čtení ze stránkového serveru, který se dá porovnat s celkovými čteními. 
+Několik zobrazení dynamické správy a rozšířených událostí obsahuje sloupce a pole, která určují počet vzdálených čtení ze stránkového serveru, který se dá porovnat s celkovými čteními. Úložiště dotazů také zachycuje vzdálené čtení v rámci statistik doby běhu dotazu.
 
-- Sloupce pro čtení serveru stránky sestavy jsou k dispozici ve zobrazení dynamické správy spouštění, například:
-    - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-    - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-    - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+- Sloupce pro čtení na serveru sestav jsou k dispozici v zobrazení dynamické správy provádění a zobrazení katalogu, jako je například:
+    - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - Do následujících rozšířených událostí se přidají čtení stránkového serveru:
     - sql_statement_completed
     - sp_statement_completed
@@ -59,7 +60,7 @@ Několik zobrazení dynamické správy a rozšířených událostí obsahuje slo
     - scan_stopped
     - query_store_begin_persist_runtime_stat
     - dotaz – store_execution_runtime_info
-- ActualPageServerReads/ActualPageServerReadAheads se přidají do XML plánu dotazů pro skutečné plány. Příklad:
+- ActualPageServerReads/ActualPageServerReadAheads se přidají do XML plánu dotazů pro skutečné plány. Například:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 
@@ -100,7 +101,7 @@ Poměr operací čtení provedených v RBPEX a agregovaných čtení provedenýc
 - V případě primárního COMPUTE se pro zápis do protokolu používá file_id 2 sys. dm_io_virtual_file_stats. Zápis do protokolu primárního COMPUTE je zápis do zóny pro odpočívadlo protokolu.
 - Záznamy protokolu nejsou u sekundární repliky na potvrzení zabezpečení posíleny. V škálování je protokol aplikován službou xlog na vzdálené repliky. Vzhledem k tomu, že zápisy protokolů se ve skutečnosti nevyskytují na sekundárních replikách, je jakékoli monitorování v/v protokolu na sekundárních replikách pouze pro účely sledování.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - Pro omezení prostředků vCore pro izolovanou databázi s jedním škálováním najdete v tématu [limity Vcore úrovně služby škálování na úrovni služeb](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) .
 - Azure SQL Database ladění výkonu najdete v tématu [výkon dotazů v Azure SQL Database](sql-database-performance-guidance.md)

@@ -7,12 +7,12 @@ ms.date: 11/26/2019
 ms.author: fauhse
 ms.subservice: files
 description: StorSimple je kompletní produkt a Azure File Sync je řešení, na které se má migrovat. Přečtěte si o konceptu migrace a seznamte se s AzureFiles@microsoft.com pro vlastní nápovědu k migraci.
-ms.openlocfilehash: edad4d1c6be2c39dbf8150b6ab8979ae3924fb53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1cc88080522a62085d9a515223512ef25c20a9e4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666660"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895084"
 ---
 # <a name="storsimple-migration-to-azure-file-sync"></a>StorSimple migrace na Azure File Sync
 
@@ -26,7 +26,7 @@ Tento článek popisuje koncept zahájení migrace.
 Je nutné poznamenat, že zákazníci potřebují migraci z StorSimple a na Azure File Sync nepotřebují bez dalšího postupu.
 
 > [!IMPORTANT]
-> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. AzureFiles@microsoft.com e-mailu pro vlastní plán migrace i pomoc při migraci.
+> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFiles@microsoft. com pro vlastní plán migrace a také pomoc při migraci.
 
 ## <a name="migration-approach"></a>Postup migrace
 Migrace na Azure File Sync spustí cloudovou stranu s minimálním dopadem na místní a omezené výpadky.
@@ -67,7 +67,7 @@ Jedna sdílená složka Azure může také synchronizovat na mnoha různých ser
 Seznamte se s Azure Files a Azure File Sync. Je důležité pochopit Azure File Sync terminologie a vzor nasazení pro úspěšnou migraci. K dispozici jsou podrobnější informace pro každý krok v tomto přehledovém článku. Při plánování a provádění migrace se ujistěte, že jste se od Microsoftu dostali k přizpůsobené nápovědě.
 
 > [!IMPORTANT]
-> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. AzureFiles@microsoft.com e-mailu pro vlastní plán migrace i pomoc při migraci.
+> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFiles@microsoft. com pro vlastní plán migrace a také pomoc při migraci.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 Azure File Sync, jako cílová služba, má dva základní dokumenty, které vám doporučujeme přečíst, pokud jste s Azure File Sync ještě nevytvořili.

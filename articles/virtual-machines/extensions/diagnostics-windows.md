@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 09aaa998bf011561bd73ad87eda6a2e211ffaa72
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158940"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892630"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Diagnostiky Azure na virtuálním počítači s Windows
 
@@ -40,7 +40,7 @@ Pokud chcete povolit diagnostické rozšíření na existujícím virtuálním p
 
 *$diagnosticsconfig _path* je cesta k souboru, který obsahuje konfiguraci diagnostiky ve formátu XML, jak je popsáno v následující [ukázce](#sample-diagnostics-configuration) .  
 
-Pokud konfigurační soubor diagnostiky určuje element **StorageAccount** s názvem účtu úložiště, skript *set-AzVMDiagnosticsExtension* automaticky nastaví diagnostické rozšíření pro odesílání diagnostických dat do daného úložiště. zohledňují. Aby to fungovalo, musí být účet úložiště ve stejném předplatném jako virtuální počítač.
+Pokud konfigurační soubor diagnostiky určuje element **StorageAccount** s názvem účtu úložiště, pak skript *set-AzVMDiagnosticsExtension* automaticky nastaví diagnostické rozšíření pro odesílání diagnostických dat do daného účtu úložiště. Aby to fungovalo, musí být účet úložiště ve stejném předplatném jako virtuální počítač.
 
 Pokud se v konfiguraci diagnostiky nezadal žádný **StorageAccount** , musíte do rutiny předat parametr *StorageAccountName* . Je-li zadán parametr *StorageAccountName* , rutina vždy použije účet úložiště, který je zadán v parametru, a nikoli ten, který je zadán v konfiguračním souboru diagnostiky.
 
@@ -64,9 +64,9 @@ Pomocí rutiny [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powe
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Povolit rozšíření diagnostiky, pokud používáte klasický model nasazení
 Pomocí rutiny [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) můžete povolit diagnostické rozšíření na virtuálním počítači, který vytvoříte prostřednictvím modelu nasazení Classic. Následující příklad ukazuje, jak vytvořit nový virtuální počítač pomocí modelu nasazení Classic s povoleným rozšířením Diagnostika.
 
-    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 Pokud chcete povolit diagnostické rozšíření na stávajícím virtuálním počítači, který se vytvořil prostřednictvím modelu nasazení Classic, použijte k získání konfigurace virtuálního počítače rutinu [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) . Potom aktualizujte konfiguraci virtuálních počítačů tak, aby zahrnovala diagnostické rozšíření pomocí rutiny [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) . Nakonec použijte aktualizovanou konfiguraci pro virtuální počítač pomocí [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
@@ -82,8 +82,8 @@ Konfigurace se musí aktualizovat, aby obsahovala následující:
 
 * Atribut *ResourceID* elementu **Metrics** se musí aktualizovat s ID prostředku pro virtuální počítač.
   
-  * ID prostředku se dá sestavit pomocí následujícího vzoru:/subscriptions/{*ID předplatného pro předplatné s virtuálním počítačem*}/resourceGroups/{*název virtuálního počítače*}/Providers/Microsoft.COMPUTE/virtualMachines/{ *Název virtuálního počítače*}.
-  * Pokud je třeba ID předplatného pro předplatné, kde je spuštěný virtuální počítač, **11111111-1111-1111-1111-111111111111**, název skupiny prostředků pro skupinu prostředků je **MyResourceGroup**a název virtuálního počítače je **MyWindowsVM**a pak hodnota pro *ResourceID* by byla:
+  * ID prostředku se dá sestavit pomocí následujícího vzoru:/subscriptions/{*ID předplatného pro předplatné s virtuálním počítačem*}/RESOURCEGROUPS/{název*virtuálního* *počítače*}/Providers/Microsoft.COMPUTE/virtualMachines/{.
+  * Pokud je třeba ID předplatného pro předplatné, kde je spuštěný virtuální počítač, **11111111-1111-1111-1111-111111111111**, název skupiny prostředků pro skupinu prostředků je **MyResourceGroup**a název virtuálního počítače je **MyWindowsVM**, pak bude hodnota *ResourceID* :
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >

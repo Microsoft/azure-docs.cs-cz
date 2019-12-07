@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007051"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900265"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostikujte a řešte problémy v prostředí Time Series Insights.
 
@@ -38,7 +38,7 @@ Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v té
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Příčina B: ve zdrojovém klíči události chybí požadovaná oprávnění.
 
-* Pro službu IoT Hub v Azure IoT Hub musíte zadat klíč, který má oprávnění **služby Connect** . Obě zásady **iothubowner** nebo **služby** budou fungovat, protože obě mají oprávnění **k připojení ke službě** .
+* Pro službu IoT Hub v Azure IoT Hub musíte zadat klíč, který má oprávnění **služby Connect** . Vyberte zásady **iothubowner** nebo **služby** , protože obě mají oprávnění pro **připojení ke službě** .
 
    [oprávnění k připojení služby ![IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
@@ -50,13 +50,17 @@ Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v té
 
 Když zaregistrujete centrum IoT nebo centrum událostí, je důležité nastavit skupinu uživatelů, kterou chcete použít ke čtení dat. Tuto skupinu příjemců *nelze sdílet*. Pokud je skupina uživatelů sdílená, příslušné centrum IoT nebo centrum událostí automaticky a náhodně odpojí jedno z čtecích zařízení. Poskytněte jedinečnou skupinu uživatelů, ze které se má Time Series Insights číst.
 
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>Příčina D: prostředí se právě zřídilo.
+
+Data se zobrazí v aplikaci Time Series Insights Explorer během několika minut po prvním vytvoření prostředí a jeho dat.
+
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Problém: zobrazují se některá data, ale chybí data.
 
 Když se data zobrazí jenom částečně a data se budou odmyslet, měli byste zvážit několik možností.
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>Příčina: vaše prostředí se omezuje
 
-Omezování je běžný problém, když se prostředí zřídí po vytvoření zdroje událostí, který obsahuje data. Azure IoT Hub a centra událostí Azure uchovávají data po dobu až sedmi dnů. Time Series Insights vždy začínat nejstarší událostí ve zdroji událostí (First-in, First-out nebo *FIFO*).
+[Omezování](time-series-insights-environment-mitigate-latency.md) je běžný problém, když se prostředí zřídí po vytvoření zdroje událostí, který obsahuje data. Azure IoT Hub a centra událostí Azure uchovávají data po dobu až sedmi dnů. Time Series Insights vždy začínat nejstarší událostí ve zdroji událostí (First-in, First-out nebo *FIFO*).
 
 Například pokud máte ve zdroji událostí 5 000 000 události, když se připojíte k prostředí Time Series Insights S1, s jednou jednotkou, Time Series Insights načte přibližně 1 000 000 událostí za den. Může to vypadat jako u Time Series Insights trvá 5 dní od latence. Ale co se děje, je to omezení prostředí.
 

@@ -1,6 +1,6 @@
 ---
 title: Monitorování diagnostických protokolů Media Services přes Azure Monitor | Microsoft Docs
-description: V tomto článku se dozvíte, jak směrovat a zobrazovat diagnostické protokoly prostřednictvím Azure Monitor.
+description: Tento článek ukazuje, jak směrovat a zobrazovat diagnostické protokoly prostřednictvím Azure Monitor.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 786aefbd8657046f18042defd71dfcb38528eecf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261111"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887947"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Monitorování diagnostických protokolů Media Services
 
@@ -26,7 +26,7 @@ ms.locfileid: "71261111"
 
 V tomto článku se dozvíte, jak směrovat data do účtu úložiště a pak je zobrazit. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 - Zkontrolujte [monitorování Media Services metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md).
@@ -55,7 +55,7 @@ Data monitorování z vašeho prostředku se teď přenášejí do účtu úlož
 
 ## <a name="route-data-to-the-storage-account-using-the-cli"></a>Směrování dat do účtu úložiště pomocí rozhraní příkazového řádku
 
-Pokud chcete povolit ukládání diagnostických protokolů v účtu úložiště, spusťte následující `az monitor diagnostic-settings` příkaz CLI: 
+Pokud chcete povolit ukládání diagnostických protokolů v účtu úložiště, spusťte následující příkaz `az monitor diagnostic-settings` CLI: 
 
 ```cli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -73,7 +73,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Příklad:
+Například:
 
 ```cli
 az monitor diagnostic-settings create --name amsv3diagnostic \
@@ -174,7 +174,7 @@ Na zobrazení události v účtu úložiště možná budete muset počkat až p
 }
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Azure Monitor metriky](../../azure-monitor/platform/data-platform.md)
 * [Protokoly diagnostiky Azure Monitor](../../azure-monitor/platform/resource-logs-overview.md)

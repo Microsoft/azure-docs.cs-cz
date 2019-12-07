@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887522"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889171"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
+
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé moje telemetrie.
 *V Application Insights se zobrazuje jenom zlomek událostí, které aplikace generuje.*
 
@@ -58,7 +59,7 @@ Pravděpodobná příčina:
 * Došlo k nějakému problému s vaším účtem Azure;
 * Máte [přístup jen pro čtení k předplatnému nebo skupině, ve které jste se pokusili vytvořit nový prostředek](../../azure-monitor/app/resources-roles-access-control.md).
 
-Opravit
+Oprava:
 
 * Ověřte, že jste pro správný účet Azure zadali přihlašovací údaje pro přihlášení.
 * V prohlížeči ověřte, zda máte přístup k [Azure Portal](https://portal.azure.com). Otevřete nastavení a podívejte se, jestli existuje nějaké omezení.
@@ -83,7 +84,7 @@ Pravděpodobná příčina:
 * Analytické nástroje pro vývojáře jsou v aplikaci Visual Studio zakázané.
 * Vaše Visual Studio je starší než 2013 aktualizace 3.
 
-Opravit
+Oprava:
 
 * Ujistěte se, že verze sady Visual Studio je 2013 Update 3 nebo novější.
 * Vyberte **nástroje**, **rozšíření a aktualizace** a ověřte, že jsou nainstalované a povolené **vývojářské analytické nástroje** . Pokud ano, kliknutím na **aktualizace** ověřte, zda je k dispozici aktualizace.
@@ -111,7 +112,7 @@ Pravděpodobná příčina:
 
 Klíč instrumentace v souboru ApplicationInsights. config ovládá, kde se telemetrie posílá. Řádek v souboru projektu řídí, který prostředek je otevřen při použití příkazu v aplikaci Visual Studio.
 
-Opravit
+Oprava:
 
 * V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost Application Insights, konfigurace Application Insights. V dialogovém okně můžete buď Odeslat telemetrii do existujícího prostředku, nebo vytvořit novou. Ani
 * Otevřete prostředek přímo. Přihlaste se k [Azure Portal](https://portal.azure.com), na levém navigačním panelu klikněte na Application Insights a pak vyberte svou aplikaci.
@@ -212,7 +213,7 @@ Podle těchto pokynů zaznamenejte protokoly řešení potíží pro vaše rozhr
 
 1. Nainstalujte balíček [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z NuGet. Verze, kterou nainstalujete, musí odpovídat aktuální nainstalované verzi `Microsoft.ApplicationInsights`
 
-Nejnovější verze Microsoft. ApplicationInsights. AspNetCore je 2.7.1 a odkazuje na Microsoft. ApplicationInsights verze 2,10. Proto by měla být nainstalovaná verze Microsoft. AspNet. ApplicationInsights. HostingStartup 2.10.0
+Nejnovější verze Microsoft. ApplicationInsights. AspNetCore je ve verzi 2.8.2 a odkazuje na Microsoft. ApplicationInsights verze 2.11.2. Proto by měla být nainstalovaná verze Microsoft. AspNet. ApplicationInsights. HostingStartup 2.11.2
 
 2. Upravte metodu `ConfigureServices` ve vaší třídě `Startup.cs`.:
 

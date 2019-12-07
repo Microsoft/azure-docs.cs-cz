@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665334"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892596"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -102,17 +102,19 @@ Ve více databázích kontejnerů pro HANA je standardní konfigurace SYSTEMDB +
 Pokud chráníte databáze SAP HANA 1,0 a chcete upgradovat na 2,0, postupujte podle následujících kroků:
 
 - [Zastavte ochranu](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) s uchováním dat pro starou databázi SDC.
+- Proveďte upgrade. Po dokončení se HANA teď MDC s databázemi System DB a tenantů.
 - Znovu spusťte [skript před registrací](https://aka.ms/scriptforpermsonhana) se správnými podrobnostmi k (SID a MDC).
-- Opětovné zaregistrování rozšíření (zálohování-> zobrazení podrobností – > Výběr relevantního virtuálního počítače Azure – > opětovné registraci).
+- Znovu zaregistrujte rozšíření pro stejný počítač na webu Azure Portal (zálohování-> Podrobnosti – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
 - Klikněte na znovu zjistit databáze pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 2 se správnými podrobnostmi (SYSTEMDB and tenant DB, ne SDC).
-- Chraňte tyto nové databáze.
+- Nakonfigurujte zálohování pro tyto nové databáze.
 
 ## <a name="upgrading-without-an-sid-change"></a>Upgrade bez změny identifikátoru SID
 
 Upgrady na operační systém nebo SAP HANA, které nezpůsobí změnu SID, mohou být zpracovány následujícím způsobem:
 
 - [Zastavení ochrany](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) s uchováním dat pro databázi
-- Znovu spustit [skript před registrací](https://aka.ms/scriptforpermsonhana)
+- Proveďte upgrade.
+- Znovu spusťte [skript před registrací](https://aka.ms/scriptforpermsonhana). Obvykle jsme viděli proces upgradu, který odebere potřebné role. Spuštění předregistračního skriptu vám pomůže ověřit všechny požadované role.
 - Znovu [Obnovit ochranu](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) pro databázi
 
 ## <a name="next-steps"></a>Další kroky

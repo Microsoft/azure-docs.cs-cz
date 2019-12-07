@@ -1,6 +1,6 @@
 ---
 title: Nastavení vývojového prostředí Azure Media Services | Dokumentace Microsoftu
-description: Nastavte si prostředí pro vývoj pomocí Azure Media Services.
+description: Tento článek popisuje, jak nastavit prostředí pro vývoj pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 546e8e50bc34307c46d33e217d5bc0887b548774
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ef9b3d6f13de70cdf2fff87d9aed0a8efc2b782
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410021"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895798"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Nastavení vývojového prostředí Media Services  
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Následující kroky popisují nezbytné součásti potřebné pro vývoj pomocí Azure Media Services.
 
@@ -45,12 +45,12 @@ Pokud chcete nastavit vývojové prostředí REST, přečtěte si [toto téma](m
 
 Pokud se chcete připojit k rozhraní API služby Azure Media Services, přečtěte si článek popisující [přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Najdete několik vzorových kódů v **vzorových kódů Azure** galerie: [Ukázky kódu Azure Media Services](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+V galerii **vzorových kódů Azure** najdete několik vzorových kódů: [Vzorové kódy pro Azure Media Services](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

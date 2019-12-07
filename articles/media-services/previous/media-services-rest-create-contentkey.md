@@ -1,6 +1,6 @@
 ---
-title: Vytvoření klíčů obsahu s využitím REST | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit symetrické klíče, které zajišťují zabezpečený přístup k prostředkům.
+title: Vytváření klíčů obsahu pomocí REST | Microsoft Docs
+description: Tento článek ukazuje, jak vytvořit klíče obsahu, které poskytují zabezpečený přístup k prostředkům.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 84fd4f0971c56d8cf2cdf138ba8ac8ea1a6e07eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9927de3ab3fb68cea17095d7255fd8a68f66c9a8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711522"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901479"
 ---
-# <a name="create-content-keys-with-rest"></a>Vytvoření klíčů obsahu s využitím REST
+# <a name="create-content-keys-with-rest"></a>Vytváření klíčů obsahu pomocí REST
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
 
-Služba Media Services umožňuje doručovat šifrované prostředky. A **ContentKey** zajišťuje zabezpečený přístup k vaší **Asset**s. 
+Media Services vám umožní doručovat šifrované prostředky. **ContentKey** zajišťuje zabezpečený přístup k vašim **assetům**s. 
 
-Při vytváření nového prostředku (například před [nahrávání souborů](media-services-rest-upload-files.md)), můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected**, nebo **EnvelopeEncryptionProtected**. 
+Při vytváření nového prostředku (například před [odesláním souborů](media-services-rest-upload-files.md)) můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected**nebo **EnvelopeEncryptionProtected**. 
 
-Při doručování prostředků pro vaše klienty, je možné [konfigurace pro prostředky dynamicky šifrovat](media-services-rest-configure-asset-delivery-policy.md) s jedním z následujících dvou šifrování: **DynamicEnvelopeEncryption** nebo **DynamicCommonEncryption**.
+Při doručování prostředků klientům můžete [nakonfigurovat, aby bylo možné dynamicky šifrovat prostředky](media-services-rest-configure-asset-delivery-policy.md) pomocí jednoho z následujících dvou šifrování: **DynamicEnvelopeEncryption** nebo **DynamicCommonEncryption**.
 
-Šifrované prostředky mají přidruženo **ContentKey**s. Tento článek popisuje postup vytvoření klíče k obsahu.
+Šifrované prostředky musí být přidruženy k **ContentKey**s. Tento článek popisuje, jak vytvořit klíč obsahu.
 
-Následují obecné kroky pro generování klíčů k obsahu, které spojují s prostředky, které mají být šifrována. 
+Níže jsou uvedené obecné kroky pro generování klíčů obsahu, které přiřadíte k prostředkům, které chcete zašifrovat. 
 
-1. Náhodně Generovat klíč AES 16 bajtů (pro běžné a obálky šifrování) nebo 32 bajtů klíč standardu AES (pro šifrování úložiště). 
+1. Náhodně vygenerujte 16bitový klíč AES (pro Common a šifrování obálek) nebo klíč AES 32-Byte (pro šifrování úložiště). 
    
-    Toto je klíče k obsahu pro váš prostředek, což znamená, že všechny soubory přidružené k tento asset nutnost používat stejný klíč obsahu při dešifrování. 
-2. Volání [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metody, chcete-li získat správný certifikát X.509 použitý k šifrování klíče.
-3. Šifrování klíče pomocí veřejného klíče certifikátu X.509. 
+    Toto je klíč obsahu pro váš Asset, což znamená, že všechny soubory přidružené k tomuto prostředku musí během dešifrování používat stejný klíč obsahu. 
+2. Voláním metod [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) získáte správný certifikát X. 509, který se musí použít k zašifrování klíče obsahu.
+3. Zašifrujte klíč obsahu pomocí veřejného klíče certifikátu X. 509. 
    
-   Media Services .NET SDK používá RSA s OAEP při provádění šifrování.  Příklad v můžete vidět [EncryptSymmetricKeyData funkce](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Vytvoří hodnotu kontrolního součtu (založen na algoritmu PlayReady AES klíče kontrolního součtu) pomocí identifikátoru klíče a klíč k obsahu. Další informace najdete v části "Algoritmus kontrolního součtu klíče AES PlayReady" dokumentu PlayReady záhlaví objekt nachází [tady](https://www.microsoft.com/playready/documents/).
+   Media Services .NET SDK používá při šifrování RSA s výplně OAEP.  Příklad můžete vidět ve [funkci EncryptSymmetricKeyData](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+4. Vytvořte hodnotu kontrolního součtu (na základě algoritmu kontrolního součtu klíče PlayReady AES) vypočítanou pomocí identifikátoru klíče a klíče obsahu. Další informace najdete v části algoritmus "PlayReady AES Key Checksum" v dokumentu objektu hlavičky [PlayReady, kde se nachází.](https://www.microsoft.com/playready/documents/)
    
-   Následující příklad .NET počítá kontrolní součet pomocí části identifikátoru GUID je identifikátor klíče a vymazat obsah klíče.
+   Následující příklad rozhraní .NET vypočítá kontrolní součet pomocí části GUID identifikátoru klíče a vymazat klíč obsahu.
    
         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
@@ -66,21 +66,21 @@ Následují obecné kroky pro generování klíčů k obsahu, které spojují s 
              Array.Copy(array, array2, 8);
              return Convert.ToBase64String(array2);
          }
-5. Vytvořte klíč obsahu se **EncryptedContentKey** (převést na řetězec s kódováním base64), **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, a **kontrolního součtu** hodnoty, které jste obdrželi v předchozích krocích.
-6. Přidružit **ContentKey** entita s vaší **Asset** entity prostřednictvím operace $links.
+5. Vytvořte klíč obsahu pomocí **EncryptedContentKey** (převedeno na řetězec kódovaný v kódování Base64), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType**a hodnot **kontrolního součtu** , které jste obdrželi v předchozích krocích.
+6. Přidružte entitu **ContentKey** k entitě **Asset** pomocí operace $Links.
 
-Tento článek není uveden jak generovat klíč standardu AES, šifrovat klíče a vypočítat kontrolní součet. 
+Tento článek neukazuje, jak vygenerovat klíč AES, jak klíč zašifrovat a vypočítat kontrolní součet. 
 
 > [!NOTE]
 > 
-> Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty v požadavcích HTTP. Další informace najdete v tématu [instalace pro vývoj pro Media Services REST API](media-services-rest-how-to-use.md).
+> Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
+## <a name="connect-to-media-services"></a>Připojení k Media Services
 
-Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="retrieve-the-protectionkeyid"></a>Načíst ProtectionKeyId
-Následující příklad ukazuje, jak načíst ProtectionKeyId kryptografický otisk certifikátu pro certifikát, který je nutné použít při šifrování klíče. Proveďte tento krok, abyste měli jistotu, že máte příslušný certifikát na svém počítači.
+## <a name="retrieve-the-protectionkeyid"></a>Načtení ProtectionKeyId
+Následující příklad ukazuje, jak načíst ProtectionKeyId a kryptografický otisk certifikátu pro certifikát, který je nutné použít při šifrování klíče obsahu. Proveďte tento krok, abyste se ujistili, že už máte na svém počítači příslušný certifikát.
 
 Požadavek:
 
@@ -111,8 +111,8 @@ Odpověď:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Načíst ProtectionKey ProtectionKeyId
-Následující příklad ukazuje, jak načíst certifikát X.509 pomocí ProtectionKeyId, které že jste získali v předchozím kroku.
+## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Načtení ProtectionKey pro ProtectionKeyId
+Následující příklad ukazuje, jak načíst certifikát X. 509 pomocí ProtectionKeyId, který jste obdrželi v předchozím kroku.
 
 Požadavek:
 
@@ -147,10 +147,10 @@ Odpověď:
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String",
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
-## <a name="create-the-contentkey"></a>Vytvořte ContentKey
-Poté, co mají načíst certifikát X.509 a používá svůj veřejný klíč k šifrování klíče, vytvoření **ContentKey** entity a nastavte jeho vlastnost hodnoty odpovídajícím způsobem.
+## <a name="create-the-contentkey"></a>Vytvoření ContentKey
+Po načtení certifikátu X. 509 a použití jeho veřejného klíče k zašifrování klíče obsahu vytvořte entitu **ContentKey** a odpovídajícím způsobem nastavte její hodnoty vlastností.
 
-Jedna z hodnot, je nutné nastavit při vytváření obsahu je typ klíče. Vyberte jednu z následujících hodnot:
+Jedna z hodnot, které je třeba nastavit při vytváření klíče obsahu, je typ. Vyberte jednu z těchto hodnot:
 
     public enum ContentKeyType
     {
@@ -177,7 +177,7 @@ Jedna z hodnot, je nutné nastavit při vytváření obsahu je typ klíče. Vybe
     }
 
 
-Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** pro šifrování úložiště ("1") a **ProtectionKeyType** nastavena na "0", která označuje, že Ochrana klíče ID je kryptografický otisk certifikátu X.509.  
+Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** sadou pro šifrování úložiště ("1") a **ProtectionKeyType** nastavenou na "0", která označuje, že ID klíče ochrany je kryptografický otisk certifikátu X. 509.  
 
 Žádost
 
@@ -227,8 +227,8 @@ Odpověď:
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="associate-the-contentkey-with-an-asset"></a>ContentKey přidružit určitý prostředek
-Po vytvoření ContentKey, jeho přiřazení k vaší Assetu pomocí operace $links, jak je znázorněno v následujícím příkladu:
+## <a name="associate-the-contentkey-with-an-asset"></a>Přidružte ContentKey k Assetu.
+Po vytvoření ContentKey ho přidružte k Assetu pomocí operace $links, jak je znázorněno v následujícím příkladu:
 
 Požadavek:
 
@@ -253,6 +253,6 @@ Odpověď:
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

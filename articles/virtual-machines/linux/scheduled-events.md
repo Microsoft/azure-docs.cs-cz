@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 818ebbf15cdbc985c7a1cc14597dc538e62894cf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c0b30ecb9bc2b029141e528139f2b8a308c3a8dd
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793386"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892834"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače se systémem Linux
 
@@ -50,7 +50,7 @@ Scheduled Events poskytuje události v následujících případech použití:
 - Údržba iniciované uživatelem (například uživatel restartuje nebo znovu nasadí virtuální počítač)
 - Vyřazení instancí [sad](../../virtual-machine-scale-sets/use-spot.md) [virtuálních počítačů](spot-vms.md) a škálování na místě
 
-## <a name="the-basics"></a>Základy  
+## <a name="the-basics"></a>Základní informace  
 
   Metadata Service zpřístupňuje informace o spuštěných virtuálních počítačích pomocí koncového bodu REST, který je přístupný z virtuálního počítače. Tyto informace jsou k dispozici prostřednictvím nonroutable IP adresy, aby se nezobrazovaly mimo virtuální počítač.
 
@@ -76,7 +76,7 @@ Služba Scheduled Events má verzi. Verze jsou povinné. aktuální verze je `20
 
 | Version | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - | 
-| 2017-11-01 | Všeobecná dostupnost | Všechno | <li> Přidala se podpora pro vyřazení virtuálních počítačů s nízkou prioritou, EventType.<br> | 
+| 2017-11-01 | Všeobecná dostupnost | Všechno | <li> Přidání podpory pro vyřazení virtuálních počítačů s názvem EventType<br> | 
 | 2017-08-01 | Všeobecná dostupnost | Všechno | <li> Z názvů prostředků pro virtuální počítače s IaaS se odebraly předpony s podtržítkem.<br><li>Požadavek na hlavičku metadat vynutil pro všechny požadavky | 
 | 2017-03-01 | Preview | Všechno | <li>Původní vydaná verze
 
@@ -129,7 +129,7 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
 |Vlastnost  |  Popis |
 | - | - |
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Typ | Dopad této události způsobí. <br><br> Hodnoty: <br><ul><li> `Freeze`: u virtuálního počítače se naplánovalo pozastavení na několik sekund. Může být pozastaveno připojení k procesoru a k síti, ale neexistuje žádný vliv na paměť nebo otevřené soubory.<li>`Reboot`: pro virtuální počítač je naplánován restart (netrvalá paměť). <li>`Redeploy`: virtuální počítač má naplánovaný přesun na jiný uzel (dočasné disky se ztratí). <li>`Preempt`: odstraňuje se virtuální počítač s nízkou prioritou (dojde ke ztrátě dočasných disků).|
+| EventType | Dopad této události způsobí. <br><br> Hodnoty: <br><ul><li> `Freeze`: u virtuálního počítače se naplánovalo pozastavení na několik sekund. Může být pozastaveno připojení k procesoru a k síti, ale neexistuje žádný vliv na paměť nebo otevřené soubory.<li>`Reboot`: pro virtuální počítač je naplánován restart (netrvalá paměť). <li>`Redeploy`: virtuální počítač má naplánovaný přesun na jiný uzel (dočasné disky se ztratí). <li>`Preempt`: odstraňuje se virtuální počítač se skvrnou (dojde ke ztrátě dočasných disků).|
 | ResourceType | Typ prostředku, na který tato událost ovlivňuje. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
 | Materiály| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve vlastnosti `NotBefore`.<li>`Started`: Tato událost je spuštěná.</ul> Není k dispozici žádný `Completed` ani podobný stav. Událost již není vrácena po dokončení události.
@@ -138,7 +138,7 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
 ### <a name="event-scheduling"></a>Plánování událostí
 Každé události je naplánováno minimální množství času v budoucnu na základě typu události. Tento čas se projeví ve vlastnosti `NotBefore` události. 
 
-|Typ  | Minimální oznámení |
+|EventType  | Minimální oznámení |
 | - | - |
 | Uvolnění| 15 minut |
 | Restartování | 15 minut |

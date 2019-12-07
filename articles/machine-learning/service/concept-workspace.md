@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 14fc91feb16fb45eee1fe2e757a717e04ef07f99
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580748"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894727"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -28,7 +28,7 @@ Dostupné ceny a funkce závisí na tom, jestli je pro tento pracovní prostor v
 
 Taxonomie pracovního prostoru je znázorněna v následujícím diagramu:
 
-[taxonomie pracovního prostoru ![](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 Diagram znázorňuje následující komponenty pracovního prostoru:
 
@@ -73,8 +73,8 @@ Můžete také provádět následující úlohy správy pracovního prostoru:
 |---------------------------|---------|---------|------------|------------|
 | Vytvoření pracovního prostoru        | **&check;**     | | **&check;** | **&check;** |
 | Správa přístupu k pracovnímu prostoru    | **&check;**   || |  **&check;**    |
-| Upgrade na Enterprise Edition    | **&check;** |  | |     |
-| Vytváření a Správa výpočetních prostředků    |   | **&check;** | **&check;** |  **&check;**   |
+| Upgrade na Enterprise Edition    | **&check;** | **&check;**  | |     |
+| Vytváření a Správa výpočetních prostředků    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Vytvoření virtuálního počítače s poznámkovým blokem |   | **&check;** | |     |
 
 
@@ -95,7 +95,7 @@ Existuje několik způsobů, jak vytvořit pracovní prostor:
 
 ## <a name="resources"></a>Přidružené prostředky
 
-Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik prostředků Azure, které pracovní prostor používá:
+Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prostředků Azure, které se používají v pracovním prostoru:
 
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): registruje kontejnery Docker, které používáte během školení a při nasazení modelu. Pro minimalizaci nákladů je ACR **opožděně načteno** , dokud se nevytvoří image nasazení.
 + [Azure Storage účet](https://azure.microsoft.com/services/storage/): slouží jako výchozí úložiště dat pro pracovní prostor.  Poznámkové bloky Jupyter, které se používají spolu s vaším VIRTUÁLNÍm počítačem s Azure Machine Learning notebookem, se ukládají také.

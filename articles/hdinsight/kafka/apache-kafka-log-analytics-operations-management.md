@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122602"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894264"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka ve službě HDInsight
 
@@ -56,7 +56,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Příchozí zprávy za sekundu:
+* Příchozí zprávy za sekundu: (nahraďte `your_kafka_cluster_name` názvem vašeho clusteru.)
 
     ```kusto
     metrics_kafka_CL 
@@ -64,7 +64,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Příchozí bajty za sekundu:
+* Příchozí bajty za sekundu: (nahraďte `wn0-kafka` názvem hostitele uzlu pracovního procesu.)
 
     ```kusto
     metrics_kafka_CL 
@@ -72,7 +72,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Odchozí bajty za sekundu:
+* Odchozí bajty za sekundu: (nahraďte `your_kafka_cluster_name` názvem vašeho clusteru.)
 
     ```kusto
     metrics_kafka_CL 
@@ -80,16 +80,13 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-    > [!IMPORTANT]  
-    > Nahraďte hodnoty dotazů konkrétními informacemi o clusteru. Například `ClusterName_s` musí být nastaven na název vašeho clusteru. `HostName_s`musí být nastavené na název domény pracovního uzlu v clusteru.
-
-    Můžete také zadat `*` pro prohledávání všech protokolovaných typů. V současné době jsou k dispozici následující protokoly pro dotazy:
+    Můžete také zadat `*` k prohledávání všech protokolovaných typů. V současné době jsou k dispozici následující protokoly pro dotazy:
 
     | Typ protokolu | Popis |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Server služby Kafka Broker. log |
     | log\_kafkacontroller\_CL | Protokol Kafka Broker Controller. log |
-    | metriky\_KafkaCL\_ | Kafka JMX metriky |
+    | metriky\_Kafka\_CL | Kafka JMX metriky |
 
     ![Apache Kafka – využití procesoru Log Analytics](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
@@ -100,6 +97,6 @@ Další informace o Azure Monitor najdete v tématech [přehled Azure monitor](.
 Další informace o práci s Apache Kafka najdete v následujících dokumentech:
 
 * [Zrcadlení Apache Kafka mezi clustery HDInsight](apache-kafka-mirroring.md)
-* [Zvýšení škálovatelnosti Apache Kafka ve službě HDInsight](apache-kafka-scalability.md)
+* [Zvýšení škálování Apache Kafka v HDInsight](apache-kafka-scalability.md)
 * [Použití streamování Apache Spark (DStreams) s Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
 * [Použití strukturovaného streamování Apache Spark s Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

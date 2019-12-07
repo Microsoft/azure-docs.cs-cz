@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8863280407de5d02b53a203b2b6385477aa9f8ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899216"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889103"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics v Azure Monitor
 
@@ -51,7 +51,7 @@ Pro instalaci a konfiguraci řešení Azure Key Vault použijte následující p
 8. Kliknutím na *Save (Uložit* ) Povolte protokolování diagnostiky do Log Analytics pracovního prostoru.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Povolení diagnostiky Key Vault pomocí prostředí PowerShell
-Následující skript PowerShellu poskytuje příklad použití `Set-AzDiagnosticSetting` k povolení protokolování diagnostiky pro Key Vault:
+Následující skript PowerShellu poskytuje příklad použití `Set-AzDiagnosticSetting` k povolení protokolování prostředků pro Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -114,7 +114,7 @@ Azure Key Vault řešení analyzuje záznamy, které mají typ **trezorů** klí
 | `Resource` |Název trezoru klíčů |
 | `ResourceGroup` |Skupina prostředků trezoru klíčů |
 | `ResourceId` |ID prostředku Azure Resource Manageru V případě protokolů Key Vault se jedná o Key Vault ID prostředku. |
-| `ResourceProvider` |*Microsoft. KEYVAULT* |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
 | `ResourceType` | *TREZORY* |
 | `ResultSignature` |Stav HTTP (například *OK*) |
 | `ResultType` |Výsledek žádosti o REST API (například *úspěch*) |

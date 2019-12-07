@@ -1,5 +1,5 @@
 ---
-title: Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
+title: Kopírování nových a změněných souborů pomocí LastModifiedDate
 description: Naučte se používat šablonu řešení ke kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ca752fb75b8e151de925d3b5604a7e7182d82e92
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684231"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896296"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
 
@@ -34,8 +34,8 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 Šablona definuje čtyři parametry:
 -  *FolderPath_Source* je cesta ke složce, kde můžete číst soubory ze zdrojového úložiště. Výchozí hodnotu je třeba nahradit vlastní cestou ke složce.
 -  *FolderPath_Destination* je cesta ke složce, kam chcete zkopírovat soubory do cílového úložiště. Výchozí hodnotu je třeba nahradit vlastní cestou ke složce.
--  *LastModified_From* se používá k výběru souborů, jejichž atribut LastModifiedDate je po nebo roven této hodnotě DateTime.  Pokud chcete vybrat jenom nové soubory, které se nezkopírovaly jako poslední, tato hodnota DateTime může být čas, kdy se kanál aktivoval při posledním spuštění kanálu. Výchozí hodnotu 2019-02-01T00:00:00Z můžete nahradit očekávaným LastModifiedDate v časovém pásmu UTC. 
--  *LastModified_To* se používá k výběru souborů, jejichž atribut LastModifiedDate je před touto hodnotou DateTime. Aby bylo možné vybrat pouze nové soubory, které nebyly poslední zkopírovány, může být tato hodnota DateTime aktuální čas.  Výchozí hodnotu 2019-02-01T00:00:00Z můžete nahradit očekávaným LastModifiedDate v časovém pásmu UTC. 
+-  *LastModified_From* slouží k výběru souborů, jejichž atribut LastModifiedDate je po nebo roven této hodnotě DateTime.  Pokud chcete vybrat jenom nové soubory, které se nezkopírovaly jako poslední, tato hodnota DateTime může být čas, kdy se kanál aktivoval při posledním spuštění kanálu. Výchozí hodnotu 2019-02-01T00:00:00Z můžete nahradit očekávaným LastModifiedDate v časovém pásmu UTC. 
+-  *LastModified_To* slouží k výběru souborů, jejichž atribut LastModifiedDate je před touto hodnotou DateTime. Aby bylo možné vybrat pouze nové soubory, které nebyly poslední zkopírovány, může být tato hodnota DateTime aktuální čas.  Výchozí hodnotu 2019-02-01T00:00:00Z můžete nahradit očekávaným LastModifiedDate v časovém pásmu UTC. 
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
@@ -51,7 +51,7 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 
     ![Vytvoří nové připojení k cíli.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-4. Vyberte **použít tuto šablonu**.
+4. Vyberte **Použít tuto šablonu**.
 
     ![Použít tuto šablonu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
@@ -83,7 +83,7 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 
 10. Vyberte **okno bubnu** pro typ triggeru, nastavte **každých 15 minut** jako opakování (můžete změnit na libovolný čas intervalu) a pak vybrat **Další**.
 
-    ![Vytvořit aktivační událost](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
+    ![Vytvoření triggeru](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. Zadejte hodnotu pro **parametry spuštění aktivační události** následujícím způsobem a vyberte **Dokončit**.
     - **FolderPath_Source** =  **/source/** .  Můžete nahradit složkou ve zdrojovém úložišti dat.

@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 3ad0bdc2ec5db2f34a3bb6a1b8fda54cf9037483
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555681"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893582"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou klasické výstrahy v Microsoft Azure?
 
 > [!NOTE]
-> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](../../azure-monitor/platform/alerts-overview.md). Klasické výstrahy jsou [naplánované na vyřazení](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](../../azure-monitor/platform/alerts-overview.md). Klasické výstrahy jsou [vyřazeny](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy. 
 >
 
 Výstrahy umožňují konfigurovat podmínky pro data a budou oznámeny, když se podmínky shodují s nejnovějšími daty monitorování.
@@ -54,7 +54,7 @@ K dispozici jsou dva typy klasických výstrah – výstrahy metrik a výstrahy 
 
 * **Klasické výstrahy protokolu aktivit** – výstraha protokolu streamování, která se spouští na záznamu události protokolu aktivit, který odpovídá kritériím filtru. Tyto výstrahy mají pouze jeden stav "aktivováno". Modul výstrah jednoduše aplikuje kritéria filtru na každou novou událost. Nehledá starší položky. Tyto výstrahy vás můžou informovat, když dojde k novému Service Health incidentu nebo pokud uživatel nebo aplikace provádí v předplatném určitou operaci, například "odstranění virtuálního počítače".
 
-Data diagnostických protokolů dostupná prostřednictvím Azure Monitor můžete směrovat do Log Analytics (dříve OMS) a používat upozornění na Log Analytics dotaz. Log Analytics teď používá [novou metodu upozorňování](../../azure-monitor/platform/alerts-overview.md) . 
+Data protokolu prostředků jsou dostupná prostřednictvím Azure Monitor, směrovat je do Log Analytics a používat upozornění na dotaz na protokol. Log Analytics teď používá [novou metodu upozorňování](../../azure-monitor/platform/alerts-overview.md) . 
 
 Následující diagram shrnuje zdroje dat v Azure Monitor a koncepční, jak můžete tato data z těchto dat vyvarovat.
 
@@ -81,8 +81,8 @@ Starší výstrahy metriky ale nepoužívají skupiny akcí. Místo toho můžet
 
 Webhooky umožňují automatizaci a nápravu, například pomocí:
 - Runbook Azure Automation
-- Funkce Azure
-- Aplikace logiky Azure
+- Funkce Azure Functions
+- Azure Logic App
 - Služba třetí strany
 
 ## <a name="next-steps"></a>Další kroky

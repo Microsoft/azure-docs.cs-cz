@@ -1,6 +1,6 @@
 ---
 title: Připojení k Azure Media Services V3 API – .NET
-description: Přečtěte si, jak se připojit k rozhraní Media Services V3 API pomocí .NET.
+description: Tento článek ukazuje, jak se připojit k rozhraní Media Services V3 API s rozhraním .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b2cfe8014e6ffbd7a6d5449192acde9780a2d303
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122886"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899891"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .NET SDK pomocí metody Login objektu služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
 - Nainstalujte nástroj, který byste chtěli použít pro vývoj pro .NET. Postup v tomto článku ukazuje, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Visual Studio Code lze použít v tématu [Working with C# ](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný Editor kódu.
@@ -35,15 +35,15 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .
 ## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
 1. Spusťte Visual Studio. 
-1. V nabídce **soubor** klikněte na příkaz **Nový** > **projekt**. 
+1. V nabídce **soubor** klikněte na **Nový** > **projekt**. 
 1. Vytvořte konzolovou aplikaci **.NET Core** .
 
-Ukázková aplikace v tomto tématu cílí na `netcoreapp2.0`cíle. Kód používá Async Main, který je k dispozici počínaje verzí C# 7,1. Další podrobnosti najdete v tomto [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
+Ukázková aplikace v tomto tématu cílí na `netcoreapp2.0`. Kód používá Async Main, který je k dispozici počínaje verzí C# 7,1. Další podrobnosti najdete v tomto [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
 
 ## <a name="add-required-nuget-packages"></a>Přidat požadované balíčky NuGet
 
-1. V aplikaci Visual Studio vyberte **nástroje** >  > **Správce balíčků NuGet** **Konzola správce NuGet**.
-2. V okně **konzoly Správce balíčků** přidejte následující balíčky `Install-Package` NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
+1. V aplikaci Visual Studio vyberte **nástroje** > **správce balíčků NuGet** > **Konzola správce NuGet**.
+2. V okně **konzoly Správce balíčků** použijte příkaz `Install-Package` a přidejte následující balíčky NuGet. Například, `Install-Package Microsoft.Azure.Management.Media`.
 
 |Balíček|Popis|
 |---|---|
@@ -57,20 +57,20 @@ Ukázková aplikace v tomto tématu cílí na `netcoreapp2.0`cíle. Kód použí
 
 ### <a name="create-appsettingsjson"></a>Vytvořit appSettings. JSON
 
-1. Přejít na **obecný** > **textový soubor**
+1. Přejít na **obecné** > **textový soubor**
 1. Pojmenujte ho "appSettings. JSON".
 1. Nastavte vlastnost kopírovat do výstupního adresáře souboru. JSON na kopírovat, pokud je novější (takže aplikace bude mít k nim přístup, když je publikovaná).
 
 ### <a name="set-values-in-appsettingsjson"></a>Nastavení hodnot v souboru appSettings. JSON
 
-Spusťte příkaz `az ams account sp create` , jak je popsáno v tématu [přístupová rozhraní API](access-api-cli-how-to.md). Příkaz vrátí JSON, který byste měli zkopírovat do souboru appSettings. JSON.
+Spusťte příkaz `az ams account sp create`, jak je popsáno v tématu [přístupová rozhraní API](access-api-cli-how-to.md). Příkaz vrátí JSON, který byste měli zkopírovat do souboru appSettings. JSON.
  
 ## <a name="add-configuration-file"></a>Přidání konfiguračního souboru
 
 Pro usnadnění práce přidejte konfigurační soubor, který je zodpovědný za čtení hodnot z "appSettings. JSON".
 
 1. Přidejte do projektu novou třídu. cs. Pojmenujte ji `ConfigWrapper`. 
-1. Do tohoto souboru vložte následující kód (Tento příklad předpokládá, že máte obor názvů `ConsoleApp1`).
+1. Do tohoto souboru vložte následující kód (v tomto příkladu se předpokládá, že máte obor názvů `ConsoleApp1`).
 
 ```csharp
 using System;
@@ -228,9 +228,9 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Nahrávání, kódování a streamování videí – .NET](stream-files-tutorial-with-api.md) 
-- [Kurz: Živé streamování s Media Services V3 – .NET](stream-live-tutorial-with-api.md)
-- [Kurz: Analýza videí pomocí Media Services V3 – .NET](analyze-videos-tutorial-with-api.md)
+- [Kurz: nahrávání, kódování a streamování videí – .NET](stream-files-tutorial-with-api.md) 
+- [Kurz: živé streamování s Media Services V3 – .NET](stream-live-tutorial-with-api.md)
+- [Kurz: analýza videí pomocí Media Services V3-.NET](analyze-videos-tutorial-with-api.md)
 - [Vytvoření vstupu úlohy z místního souboru – .NET](job-input-from-local-file-how-to.md)
 - [Vytvoření vstupu úlohy z adresy URL protokolu HTTPS – .NET](job-input-from-http-how-to.md)
 - [Kódování pomocí vlastní transformace – .NET](customize-encoder-presets-how-to.md)
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [Vytváření filtrů pomocí Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Příklady pokročilých videí na vyžádání Azure Functions v2 s Media Services V3](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Reference k .NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * Další příklady kódu naleznete v tématu úložiště [ukázek sady .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) .

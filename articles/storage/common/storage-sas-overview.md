@@ -1,26 +1,27 @@
 ---
-title: Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
+title: Udělení omezeného přístupu k datům pomocí sdílených přístupových podpisů (SAS)
+titleSuffix: Azure Storage
 description: Přečtěte si o použití sdílených přístupových podpisů (SAS) k delegování přístupu k Azure Storage prostředkům, včetně objektů blob, front, tabulek a souborů.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382011"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895155"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
 Sdílený přístupový podpis (SAS) poskytuje zabezpečený delegovaný přístup k prostředkům ve vašem účtu úložiště, aniž by došlo k narušení zabezpečení vašich dat. U SAS máte podrobnější kontrolu nad tím, jak má klient přístup k datům. Můžete řídit, k jakým prostředkům má klient přístup, jaká oprávnění jsou na těchto prostředcích a jak dlouho je SAS platné, mezi další parametry.
 
-## <a name="types-of-shared-access-signatures"></a>Typy podpisů sdíleného přístupu
+## <a name="types-of-shared-access-signatures"></a>Typy sdílených přístupových podpisů
 
 Azure Storage podporuje tři typy podpisů sdíleného přístupu:
 
@@ -75,13 +76,13 @@ Tady je příklad identifikátoru URI SAS služby, který ukazuje identifikátor
 
 Použijte SAS, pokud chcete zajistit zabezpečený přístup k prostředkům ve vašem účtu úložiště pro libovolného klienta, který v opačném případě nemá oprávnění k těmto prostředkům.
 
-Běžným scénářem, kdy je užitečný SAS, je služba, kde uživatelé čtou a zapisují vlastní data do svého účtu úložiště. Ve scénáři, kdy účet úložiště ukládá uživatelská data, existují dva typické vzory návrhu:
+Běžným scénářem, kdy je užitečný SAS, je služba, kde uživatelé čtou a zapisují vlastní data do svého účtu úložiště. Ve scénáři, kde účet úložiště ukládá data uživatelů, existují dva typické modely návrhu:
 
-1. Klienti odesílají a stahují data prostřednictvím front-endové proxy služby, která provádí ověřování. Tato služba front-end proxy je výhodou pro povolení ověřování obchodních pravidel, ale pro velké objemy dat nebo velké objemy transakcí může být vytvoření služby, která se dá škálovat podle požadavků, náročné nebo obtížné.
+1. Klienti nahrávají a stahují data přes front-endovou proxy službu, která provádí ověřování. Tato služba front-end proxy je výhodou pro povolení ověřování obchodních pravidel, ale pro velké objemy dat nebo velké objemy transakcí může být vytvoření služby, která se dá škálovat podle požadavků, náročné nebo obtížné.
 
    ![Diagram scénářů: front-end proxy služba](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Odlehčená služba ověřuje klienta podle potřeby a pak vygeneruje SAS. Jakmile klientská aplikace obdrží SAS, může získat přístup k prostředkům účtu úložiště přímo s oprávněními definovanými SAS a intervalem povoleným SAS. SAS snižuje nutnost směrování všech dat prostřednictvím služby front-end proxy.
+1. Zjednodušená služba podle potřeby ověří klienta a potom vygeneruje sdílený přístupový podpis. Jakmile klientská aplikace obdrží SAS, může získat přístup k prostředkům účtu úložiště přímo s oprávněními definovanými SAS a intervalem povoleným SAS. Sdílený přístupový podpis snižuje potřebu směrování všech dat přes front-endovou proxy službu.
 
    ![Diagram scénáře: služba poskytovatele SAS](./media/storage-sas-overview/sas-storage-provider-service.png)
 

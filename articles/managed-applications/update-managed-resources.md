@@ -1,6 +1,6 @@
 ---
-title: Aktualizovat prostředky v Azure spravované aplikace | Dokumentace Microsoftu
-description: Popisuje, jak pracovat s prostředky v spravovanou skupinu prostředků Azure spravované aplikace.
+title: Aktualizace prostředků ve spravovaných aplikacích Azure | Microsoft Docs
+description: Popisuje, jak pracovat s prostředky ve spravované skupině prostředků pro spravovanou aplikaci Azure.
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 21f4e0aa339eb0c746f9b9b06f8aaada6c4d4b71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00a99a31a4543ef45c90a86820e627134d8963
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043405"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888695"
 ---
-# <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Pracovat s prostředky v spravovanou skupinu prostředků Azure spravované aplikace
+# <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Práce s prostředky ve spravované skupině prostředků pro spravovanou aplikaci Azure
 
-Tento článek popisuje, jak aktualizovat prostředky, které jsou nasazované jako součást spravované aplikace. Jako vydavatel spravované aplikace budete mít přístup k prostředkům ve spravované skupině prostředků. K aktualizaci těchto prostředků, budete muset najít spravované skupině prostředků přidružené ke spravované aplikaci a přístup k prostředku v této skupině prostředků.
+Tento článek popisuje, jak aktualizovat prostředky, které jsou nasazené jako součást spravované aplikace. Jako vydavatel spravované aplikace máte přístup k prostředkům ve spravované skupině prostředků. Chcete-li aktualizovat tyto prostředky, je třeba najít spravovanou skupinu prostředků přidruženou ke spravované aplikaci a získat přístup k prostředku v této skupině prostředků.
 
-Tento článek předpokládá, že jste nasadili spravované aplikace v [spravovaných webových aplikací (IaaS) pomocí služeb Azure pro správu](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) ukázkového projektu. Spravované aplikace zahrnuje **Standard_D1_v2** virtuálního počítače. Pokud jste nenasadili tuto spravovanou aplikaci, můžete stále použít v tomto článku a seznamte se s kroky pro aktualizaci spravované skupiny prostředků.
+V tomto článku se předpokládá, že jste nasadili spravovanou aplikaci do [spravované webové aplikace (IaaS) s ukázkovým projektem Azure Management Services](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-web-app) . Tato spravovaná aplikace zahrnuje **Standard_D1_v2** virtuální počítač. Pokud jste tuto spravovanou aplikaci nenainstalovali, můžete i nadále používat tento článek k tomu, abyste se seznámili s postupem aktualizace spravované skupiny prostředků.
 
-Následující obrázek ukazuje nasazené spravované aplikace.
+Na následujícím obrázku vidíte nasazenou spravovanou aplikaci.
 
-![Nasazení spravované aplikace](./media/update-managed-resources/deployed.png)
+![Nasazená spravovaná aplikace](./media/update-managed-resources/deployed.png)
 
-V tomto článku pomocí Azure CLI:
+V tomto článku použijete Azure CLI k těmto akcím:
 
-* Identifikujte spravované aplikace
-* Identifikujte spravovanou skupinu prostředků
-* Identifikujte prostředky virtuálních počítačů ve spravované skupině prostředků
-* Změna velikosti virtuálního počítače (buď menší velikost, pokud nepoužívá, nebo větší pro podporu větší zatížení)
-* Přiřazení zásad na spravovanou skupinu prostředků, která určuje povolené lokality
+* Identifikace spravované aplikace
+* Identifikujte spravovanou skupinu prostředků.
+* Identifikujte prostředky virtuálních počítačů ve spravované skupině prostředků.
+* Změňte velikost virtuálního počítače (buď na menší velikost, pokud není využitá, nebo větší, aby se podporovalo větší zatížení).
+* Přiřaďte zásadu spravované skupině prostředků, která určuje povolené umístění.
 
-## <a name="get-managed-application-and-managed-resource-group"></a>Spravované aplikace a spravované skupiny prostředků
+## <a name="get-managed-application-and-managed-resource-group"></a>Získání spravované aplikace a spravované skupiny prostředků
 
-K získání spravovaných aplikací ve skupině prostředků, použijte:
+Pokud chcete spravované aplikace získat ve skupině prostředků, použijte:
 
 ```azurecli-interactive
 az managedapp list --query "[?contains(resourceGroup,'DemoApp')]"
 ```
 
-Pokud chcete získat ID spravovanou skupinu prostředků, použijte:
+Pokud chcete získat ID spravované skupiny prostředků, použijte:
 
 ```azurecli-interactive
 az managedapp list --query "[?contains(resourceGroup,'DemoApp')].{ managedResourceGroup:managedResourceGroupId }"
@@ -51,25 +51,25 @@ az managedapp list --query "[?contains(resourceGroup,'DemoApp')].{ managedResour
 
 ## <a name="resize-vms-in-managed-resource-group"></a>Změna velikosti virtuálních počítačů ve spravované skupině prostředků
 
-Pokud chcete zobrazit virtuálních počítačů ve spravované skupině prostředků, zadejte název spravované skupině prostředků.
+Pokud chcete zobrazit virtuální počítače ve spravované skupině prostředků, zadejte název spravované skupiny prostředků.
 
 ```azurecli-interactive
 az vm list -g DemoApp6zkevchqk7sfq --query "[].{VMName:name,OSType:storageProfile.osDisk.osType,VMSize:hardwareProfile.vmSize}"
 ```
 
-K aktualizaci velikosti virtuálních počítačů, použijte:
+Pokud chcete aktualizovat velikost virtuálních počítačů, použijte:
 
 ```azurecli-interactive
 az vm resize --size Standard_D2_v2 --ids $(az vm list -g DemoApp6zkevchqk7sfq --query "[].id" -o tsv)
 ```
 
-Po dokončení operace, ověřte, že aplikace běží na Standard D2 v2.
+Po dokončení operace ověřte, že je aplikace spuštěná na standardu D2 v2.
 
-![Spravované aplikace pomocí Standard D2 v2](./media/update-managed-resources/upgraded.png)
+![Spravovaná aplikace používající standardní D2 v2](./media/update-managed-resources/upgraded.png)
 
-## <a name="apply-policy-to-managed-resource-group"></a>Použít zásady pro spravované skupiny prostředků
+## <a name="apply-policy-to-managed-resource-group"></a>Použít zásady na spravovanou skupinu prostředků
 
-Načte spravované skupiny prostředků a přiřazení zásady v daném oboru. Zásady **e56962a6-4747-49cd-b67b-bf8b01975c4c** jsou integrované zásady pro určení povolených umístění.
+Získejte spravovanou skupinu prostředků a přiřazovat zásadu v daném oboru. Zásada **e56962a6-4747-49cd-b67b-bf8b01975c4c** je vestavěnou zásadou pro určení povolených umístění.
 
 ```azurecli-interactive
 managedGroup=$(az managedapp show --name <app-name> --resource-group DemoApp --query managedResourceGroupId --output tsv)
@@ -84,7 +84,7 @@ az policy assignment create --name locationAssignment --policy e56962a6-4747-49c
                         }'
 ```
 
-Pokud chcete zobrazit povolených umístění, použijte:
+Chcete-li zobrazit povolená umístění, použijte:
 
 ```azurecli-interactive
 az policy assignment show --name locationAssignment --scope $managedGroup --query parameters.listofallowedLocations.value
@@ -92,9 +92,9 @@ az policy assignment show --name locationAssignment --scope $managedGroup --quer
 
 Přiřazení zásad se zobrazí na portálu.
 
-![Zobrazení přiřazení zásady](./media/update-managed-resources/assignment.png)
+![Zobrazit přiřazení zásad](./media/update-managed-resources/assignment.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací](overview.md).
-* Ukázkové projekty, naleznete v tématu [ukázkových projektů Azure spravované aplikace](sample-projects.md).
+* Ukázkové projekty najdete v tématu [Ukázkové projekty pro spravované aplikace Azure](sample-projects.md).

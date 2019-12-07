@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d22bfb0743bc18102e665a63f7e36ed75dd39cab
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716094"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900316"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Načíst datovou sadu podle názvu
 
-Ve výchozím nastavení metoda [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) na třídě `Dataset` vrátí nejnovější verzi datové sady registrované v pracovním prostoru. 
+Ve výchozím nastavení metoda [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) na `Dataset` třídě vrátí nejnovější verzi datové sady registrované v pracovním prostoru. 
 
 Následující kód Získá verzi 1 `titanic_ds` datové sady.
 
@@ -146,7 +146,24 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Sledovat datové sady v experimentech
 
-Pro každý Machine Learning experiment můžete snadno trasovat datové sady použité jako vstup prostřednictvím objektu `Run` registrovaného modelu.
+Pro každý Machine Learning experiment můžete snadno trasovat datové sady použité jako vstup prostřednictvím objektu experiment `Run`.
+
+Následující kód používá metodu [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) pro sledování, které vstupní datové sady byly použity při spuštění experimentu:
+
+```Python
+# get input datasets
+inputs = run.get_details()['inputDatasets']
+input_dataset = inputs[0]['dataset']
+
+# list the files referenced by input_dataset
+input_dataset.to_path()
+```
+
+`input_datasets` můžete také vyhledat z experimentů pomocí [Azure Machine Learning Studio](https://ml.azure.com/). 
+
+Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu na Azure Machine Learning Studio. V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu, `keras-mnist`.
+
+![Vstupní datové sady](media/how-to-version-datasets/input-datasets.png)
 
 K registraci modelů s datovými sadami použijte následující kód:
 
@@ -156,26 +173,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo [Azure Machine Learning Studio](https://ml.azure.com/).
-
-Následující kód používá metodu [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) pro sledování, které vstupní datové sady byly použity při spuštění experimentu:
-
-```Python
-# get input datasets
-inputs = run.get_details()['inputDatasets']
-train_dataset = inputs[0]['dataset']
-
-# list the files referenced by train_dataset
-train_dataset.to_path()
-```
-
-`input_datasets` můžete také vyhledat z experimentů pomocí [Azure Machine Learning Studio](https://ml.azure.com/). 
-
-Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu na Azure Machine Learning Studio. V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu, `keras-mnist`.
-
-![Vstupní datové sady](media/how-to-version-datasets/input-datasets.png)
-
-Můžete také najít modely, které používaly datovou sadu. Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které tuto datovou sadu používají. 
+Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo [Azure Machine Learning Studio](https://ml.azure.com/). Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které jsou zaregistrované s datovou sadou. 
 
 ![Vstupní modely datových sad](media/how-to-version-datasets/dataset-models.png)
 

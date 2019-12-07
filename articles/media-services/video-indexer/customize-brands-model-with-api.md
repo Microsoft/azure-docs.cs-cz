@@ -1,7 +1,7 @@
 ---
 title: Použití Azure Video Indexer k přizpůsobení modelu značek
 titleSuffix: Azure Media Services
-description: V tomto článku se dozvíte, jak používat Azure Video Indexer k přizpůsobení modelu značek.
+description: Tento článek ukazuje, jak použít Azure Video Indexer k přizpůsobení modelu značek.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 4289c592644d7570ff0dd9ce6aed0cd77f51f25e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 804cc7b2b0b51312ed756723fff5150b02f324cc
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838341"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892800"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značek pomocí rozhraní Video Indexer API
 
@@ -39,11 +39,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
+|**Název**|**Typ**|**Vyžaduje**|**Popis**|
 |---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
+|location|string|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
+|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
+|accessToken|string|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -101,12 +101,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
+|**Název**|**Typ**|**Vyžaduje**|**Popis**|
 |---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|location|string|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
+|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |id|celé číslo|Ano|ID značky (vygenerované při vytvoření značky)|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
+|accessToken|string|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -130,12 +130,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
+|**Název**|**Typ**|**Vyžaduje**|**Popis**|
 |---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|location|string|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
+|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |id|celé číslo|Ano|ID značky (vygenerované při vytvoření značky)|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
+|accessToken|string|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -180,12 +180,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
+|**Název**|**Typ**|**Vyžaduje**|**Popis**|
 |---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
+|location|string|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
+|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
 |id|celé číslo|Ano|ID značky (vygenerované při vytvoření značky)|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
+|accessToken|string|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -243,11 +243,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
+|**Název**|**Typ**|**Vyžaduje**|**Popis**|
 |---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
+|location|string|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
+|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
+|accessToken|string|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -303,11 +303,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
+|**Název**|**Typ**|**Vyžaduje**|**Popis**|
 |---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
+|location|string|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
+|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
+|accessToken|string|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -340,11 +340,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>Parametry žádosti
 
-|**Název**|**Typ**|**Požadovanou**|**Popis**|
+|**Název**|**Typ**|**Vyžaduje**|**Popis**|
 |---|---|---|---|
-|location|řetězec|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
-|ID|řetězec|Ano|Globálně jedinečný identifikátor účtu|
-|accessToken|řetězec|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
+|location|string|Ano|Oblast Azure, do které má být hovor směrován. Další informace najdete v tématu [oblasti a video indexer Azure](regions.md).|
+|accountId|string|Ano|Globálně jedinečný identifikátor účtu|
+|accessToken|string|Ano|Přístupový token (musí být v oboru [přístupového tokenu účtu](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) pro ověřování proti volání. Přístupové tokeny vyprší do 1 hodiny.|
 
 ### <a name="request-body"></a>Text požadavku
 
