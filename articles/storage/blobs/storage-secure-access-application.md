@@ -1,22 +1,23 @@
 ---
-title: Zabezpečený přístup k datům aplikace v cloudu pomocí služby Azure Storage | Microsoft Docs
+title: Zabezpečený přístup k datům aplikací
+titleSuffix: Azure Storage
 description: Použití tokenů SAS, šifrování a HTTPS k zabezpečení dat aplikace v cloudu
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/30/2018
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 2cd7a83b597d656ddbb0210aacfe96f6c056248b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1075c03820efba44ceb8dea28aff6302d2667cf2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986684"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892426"
 ---
-# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Zabezpečený přístup k datům aplikace v cloudu
+# <a name="secure-access-to-application-data"></a>Zabezpečený přístup k datům aplikací
 
 Tento kurz je třetí částí série. Zjistíte, jak bezpečně přistupovat k účtu úložiště. 
 
@@ -29,9 +30,9 @@ Ve třetí části této série se naučíte:
 
 [Úložiště objektů blob v Azure](../common/storage-introduction.md#blob-storage) představuje robustní službu pro ukládání souborů pro aplikace. Tento kurz rozšiřuje [předchozí téma][previous-tutorial] a ukazuje, jak zabezpečit přístup k účtu úložiště z webové aplikace. Až budete hotovi, obrázky budou šifrované a webová aplikace bude pro přístup k obrázkům miniatur používat zabezpečené tokeny SAS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Automatizace změny velikosti nahraných imagí pomocí Event Grid][previous-tutorial]. 
+K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Automatizace změny velikosti nahraných imagí pomocí Event Grid][previous-tutorial].
 
 ## <a name="set-container-public-access"></a>Nastavení veřejného přístupu ke kontejneru
 

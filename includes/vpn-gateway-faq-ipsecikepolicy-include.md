@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075414"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74903039"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
 Vlastní zásady IPsec/IKE se podporují ve všech SKU Azure s výjimkou základní skladové položky (SKU).
@@ -72,7 +72,7 @@ Následující tabulka uvádí podporované skupiny Diffie-Hellman pro protokoly
 
 | **Skupina Diffie-Hellman**  | **DHGroup**              | **PFSGroup** | **Délka klíče** |
 | ---                       | ---                      | ---          | ---            |
-| 1                         | DHGroup1                 | PFS1         | 768bitová skupina MODP   |
+| 1\. místo                         | DHGroup1                 | PFS1         | 768bitová skupina MODP   |
 | 2                         | DHGroup2                 | PFS2         | 1024bitová skupina MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048bitová skupina MODP  |
 | 19                        | ECP256                   | ECP256       | 256bitová skupina ECP    |
@@ -110,7 +110,7 @@ Připojení IKEv1 se dají vytvořit na všech SKU typu RouteBased VPN, s výjim
 Ano. Je podporovaný přenos mezi připojeními IKEv1 a IKEv2.
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Můžu mít IKEv1 připojení typu Site-to-site na základních SKU typu RouteBased VPN?
-Ne. Všechny SKU RouteBased VPN s výjimkou základních SKU typu sítě VPN založeného na trasách podporují připojení IKEv1 pro síť Site-to-site.
+Ne. Základní skladová položka nepodporuje toto.
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Můžu po vytvoření připojení změnit typ protokolu připojení (IKEv1 to IKEv2 a naopak)?
 Ne. Po vytvoření připojení se protokoly IKEv1/IKEv2 nedají změnit. Je nutné odstranit a znovu vytvořit nové připojení s požadovaným typem protokolu.

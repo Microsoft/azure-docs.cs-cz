@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebfe5f75d5d8546e0f5e8ad6f8c5d0063e5bda2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc73d7ec81ea0105a5868ec698289bd27526a43b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376445"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893497"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EZOfficeInventory
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat EZOfficeInventory s Azure Active Direc
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -94,15 +94,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. EZOfficeInventory aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. Kromě toho očekává aplikace EZOfficeInventory několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name (Název) | Zdrojový atribut|
     | ---------------| --------------- |
     | First_name | user.givenname |
     | Last_name | user.surname |
-    | Email | user.mail |
+    | E-mail | user.mail |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -122,7 +122,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -144,13 +144,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-ezofficeinventory-sso"></a>Konfigurace jednotného přihlašování EZOfficeInventory
 
-1. Otevřete nové okno webového prohlížeče a přihlaste se k webu EZOfficeInventory společnosti jako správce.
+1. Pokud chcete automatizovat konfiguraci v rámci EZOfficeInventory, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-2. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **Nastavení** > **Přidat doplňky**.
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit EZOfficeInventory** , které vás přesměruje do aplikace EZOfficeInventory. Odtud zadejte přihlašovací údaje správce, které se přihlásí k EZOfficeInventory. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit EZOfficeInventory ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu EZOfficeInventory společnosti jako správce a proveďte následující kroky:
+
+1. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **Nastavení** > **Přidat doplňky**.
 
     ![Konfigurace EZOfficeInventory](./media/ezofficeinventory-tutorial/configure01.png)
 
-3. Přejděte dolů do části **integrace SAML** a proveďte následující kroky:
+1. Přejděte dolů do části **integrace SAML** a proveďte následující kroky:
 
     ![Konfigurace EZOfficeInventory](./media/ezofficeinventory-tutorial/configure02.png)
 
@@ -176,13 +184,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 V této části se v EZOfficeInventory vytvoří uživatel s názvem Britta Simon. EZOfficeInventory podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v EZOfficeInventory neexistuje, vytvoří se po ověření nový.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici EZOfficeInventory, měli byste se automaticky přihlásit k EZOfficeInventory, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -191,4 +199,3 @@ Když na přístupovém panelu kliknete na dlaždici EZOfficeInventory, měli by
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si EZOfficeInventory s Azure AD](https://aad.portal.azure.com/)
-

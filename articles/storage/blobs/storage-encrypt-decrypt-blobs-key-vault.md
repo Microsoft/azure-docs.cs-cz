@@ -1,24 +1,24 @@
 ---
-title: 'Kurz: Šifrování a dešifrování objektů BLOB v Azure Storage pomocí Azure Key Vault | Microsoft Docs'
-description: Šifrování a dešifrování objektu BLOB pomocí šifrování na straně klienta pro Microsoft Azure Storage s Azure Key Vault.
+title: Kurz – šifrování a dešifrování objektů BLOB pomocí Azure Key Vault
+titleSuffix: Azure Storage
+description: Naučte se šifrovat a dešifrovat objekt BLOB pomocí šifrování na straně klienta pomocí Azure Key Vault.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: tutorial
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003437"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892885"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Kurz: Šifrování a dešifrování objektů BLOB v Microsoft Azure Storage pomocí Azure Key Vault
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Kurz – šifrování a dešifrování objektů BLOB pomocí Azure Key Vault
 
-## <a name="introduction"></a>Úvod
 Tento kurz se věnuje tomu, jak používat šifrování úložiště na straně klienta s Azure Key Vault. Provede vás postupy šifrování a dešifrování objektu BLOB v konzolové aplikaci pomocí těchto technologií.
 
 **Odhadovaný čas dokončení:** 20 minut
@@ -27,7 +27,7 @@ Přehled informací o Azure Key Vault najdete v tématu [co je Azure Key Vault?]
 
 Přehled informací o šifrování na straně klienta pro Azure Storage najdete v tématu [šifrování na straně klienta a Azure Key Vault Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -48,7 +48,7 @@ Tady je stručný popis toho, jak funguje šifrování na straně klienta:
 
 ## <a name="set-up-your-azure-key-vault"></a>Nastavení Azure Key Vault
 
-Aby bylo možné pokračovat v tomto kurzu, je nutné provést následující kroky, které jsou popsanými v kurzu [rychlý Start: Nastavení a načtení tajného klíče z Azure Key Vault pomocí webové aplikace](../../key-vault/quick-create-net.md).NET:
+Aby bylo možné pokračovat v tomto kurzu, je třeba provést následující kroky, které jsou popsanými v kurzu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí webové aplikace .NET](../../key-vault/quick-create-net.md):
 
 * Vytvoření trezoru klíčů
 * Přidejte klíč nebo tajný klíč do trezoru klíčů.
@@ -87,7 +87,7 @@ Přidejte do souboru App. config AppSettings.
 </appSettings>
 ```
 
-Přidejte následující `using` direktivy a nezapomeňte do projektu přidat odkaz na System. Configuration.
+Přidejte následující direktivy `using` a nezapomeňte do projektu přidat odkaz na System. Configuration.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -121,7 +121,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>Přístup k úložišti a Key Vault v programu
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Přístup k Azure Storage a Key Vault v programu
 
 V metodě Main () přidejte následující kód.
 
@@ -196,13 +196,13 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> Existuje několik dalších druhů překladačů, které usnadňují správu klíčů, včetně těchto: AggregateKeyResolver a CachingKeyResolver.
+> Existuje několik dalších druhů překladačů, které usnadňují správu klíčů, mezi které patří: AggregateKeyResolver a CachingKeyResolver.
 
 ## <a name="use-key-vault-secrets"></a>Použití Key Vault tajných klíčů
 
 Způsob použití tajného klíče se šifrováním na straně klienta je prostřednictvím třídy SymmetricKey, protože tajný klíč je v podstatě symetrický klíč. Jak je uvedeno výše, tajný kód v Key Vault není mapován přesně na SymmetricKey. Je potřeba pochopit několik věcí:
 
-* Klíč v SymmetricKey musí být pevná délka: 128, 192, 256, 384 nebo 512 bitů.
+* Klíč v SymmetricKey musí být pevně daná Délka: 128, 192, 256, 384 nebo 512 bitů.
 * Klíč v SymmetricKey by měl být kódovaný v kódování Base64.
 * Key Vault tajný klíč, který se použije jako SymmetricKey, musí mít v Key Vault typ obsahu "Application/oktet-Stream".
 
@@ -229,9 +229,10 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
-A to je vše. Užijte si ji!
 
-## <a name="next-steps"></a>Další postup
+A je to. Užijte si ji!
+
+## <a name="next-steps"></a>Další kroky
 
 Další informace o použití Microsoft Azure Storage s C#najdete v tématu [Microsoft Azure Storage Klientská knihovna pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 

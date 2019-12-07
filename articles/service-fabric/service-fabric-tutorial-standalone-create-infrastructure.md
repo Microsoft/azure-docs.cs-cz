@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 12/06/2019
 ms.locfileid: "73177827"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury AWS pro hostování clusteru Service Fabric
@@ -82,7 +82,7 @@ Service Fabric mezi hostiteli v clusteru celou řadu otevřených portů. Chcete
 
 Nechcete-li tyto porty otevřít pro celý svět, můžete je místo otevřít jen pro hostitele ve stejné skupině zabezpečení. Poznamenejte si ID skupiny zabezpečení, v tomto příkladu je to **sg c4fb1eba**.  Pak vyberte **Edit** (Upravit).
 
-Dále přidejte do skupiny zabezpečení čtyři pravidla pro závislosti služeb a pak tři další pro samotnou službu Service Fabric. První pravidlo umožňuje provoz protokolu ICMP pro základní kontrolu připojení. Ostatní pravidla otevřou požadované porty pro povolení vzdáleného registru.
+Dále přidejte do skupiny zabezpečení čtyři pravidla pro závislosti služeb a pak tři další pro samotnou službu Service Fabric. První pravidlo umožňuje provoz protokolu ICMP pro základní kontrolu připojení. Ostatní pravidla otvírají potřebné porty, které umožní protokoly SMB a Remote Registry.
 
 Pro první pravidlo vyberte **Add Rule** (Přidat pravidlo) a z rozevíracího seznamu vyberte **All ICMP – IPv4**. Zaškrtněte políčko vedle pole pro vlastní data a zadejte ID skupiny zabezpečení, viz výše.
 
@@ -118,18 +118,30 @@ K ověření, jestli základní připojení funguje, použijeme příkaz ping.
 ping 172.31.20.163
 ```
 
-Pokud jeho výstup vypadá takto `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` a opakuje se čtyřikrát, pak spojení mezi instancemi funguje.  
+Pokud jeho výstup vypadá takto `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` a opakuje se čtyřikrát, pak spojení mezi instancemi funguje.  Nyní následujícím příkazem ověřte, jestli funguje sdílení SMB:
+
+```
+net use * \\172.31.20.163\c$
+```
+
+Výstupem by mělo být `Drive Z: is now connected to \\172.31.20.163\c$.`.
 
 ## <a name="prep-instances-for-service-fabric"></a>Příprava instancí pro Service Fabric
 
-Pokud jste tento postup prováděli „na zelené louce“, musíte udělat ještě pár kroků navíc.  Konkrétně je potřeba ověřit, že vzdálený registr běžel, a otevřít požadované porty.
+Pokud jste tento postup prováděli „na zelené louce“, musíte udělat ještě pár kroků navíc.  Konkrétně potřebujete ověřit, že funguje vzdálený registr, povolit protokol SMB a otevřít porty požadované pro SMB a vzdálený registr.
 
 Pro usnadnění můžete tohle všechno provést při spouštění instancí pomocí uživatelského skriptu.
+
+K povolení SMB použijte tento příkaz PowerShellu:
+
+```powershell
+netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+```
 
 Pro otevření portů v bráně firewall zase slouží tento příkaz PowerShellu:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
 ## <a name="next-steps"></a>Další kroky

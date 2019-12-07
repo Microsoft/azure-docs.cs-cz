@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure CLI – Vytvoření transformace | Microsoft Docs
-description: K vytvoření transformace použijte skript Azure CLI.
+description: Transformace popisují jednoduchý pracovní postup úloh pro zpracování videosouborů nebo zvukových souborů a často se označují jako předpisy. Skript Azure CLI v tomto článku znázorňuje, jak vytvořit transformaci.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7fea8d997d25d6075e30620e7fd3527003c6a8bb
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: c21a16d043f972042949d6340985774741b3df6a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128798"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888594"
 ---
-# <a name="cli-example-create-a-transform"></a>Příklad rozhraní příkazového řádku: Vytvořit transformaci
+# <a name="cli-example-create-a-transform"></a>Ukázka CLI: Vytvoření transformace
 
 Skript Azure CLI v tomto článku znázorňuje, jak vytvořit transformaci. Transformace popisují jednoduchý pracovní postup úloh pro zpracování videosouborů nebo zvukových souborů a často se označují jako předpisy. Vždy byste měli zkontrolovat, zda už neexistuje transformace s požadovaným názvem a předpisem. Pokud existuje, měli byste ji použít.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 

@@ -1,28 +1,22 @@
 ---
-title: Skript Azure Powershellu ukázkový – výpočet velikosti kontejneru objektů blob | Dokumentace Microsoftu
-description: Vypočítá velikost kontejneru v úložišti objektů Blob v Azure součtem velikostí jednotlivých jeho objekty BLOB.
+title: Výpočet velikosti kontejneru objektů BLOB pomocí prostředí PowerShell
+titleSuffix: Azure Storage
+description: Vypočítejte velikost kontejneru v úložišti objektů BLOB v Azure tím, že se naplní celková velikost všech objektů BLOB.
 services: storage
-documentationcenter: na
 author: tamram
-manager: jeconnoc
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d8baec875c25556f1080cdd105c7fa466ffce74e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 890da96ac1d97a2eb84f5296c74a02824d657273
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61230875"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895045"
 ---
-# <a name="calculate-the-size-of-a-blob-storage-container"></a>Výpočet velikosti kontejneru úložiště objektů blob
+# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>Výpočet velikosti kontejneru objektů BLOB pomocí prostředí PowerShell
 
 Tento skript vypočítá velikost kontejneru v úložišti objektů blob v Azure součtem velikostí jednotlivých objektů blob v kontejneru.
 
@@ -31,7 +25,7 @@ Tento skript vypočítá velikost kontejneru v úložišti objektů blob v Azure
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
-> Tento skript Powershellu, poskytuje odhadovanou velikost kontejneru a neměl by se používat k výpočtům fakturace. Skript, který vypočítá velikost kontejneru pro účely fakturace, najdete v článku [výpočet velikosti kontejneru úložiště objektů Blob pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md). 
+> Tento skript PowerShellu poskytuje odhadovanou velikost kontejneru a neměl by se používat k výpočtům fakturace. Skript, který počítá velikost kontejneru pro účely fakturace, najdete v tématu [Výpočet velikosti kontejneru úložiště objektů BLOB pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -51,13 +45,13 @@ Tento skript k výpočtu velikosti kontejneru úložiště objektů blob použí
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Získá zadaný účet úložiště nebo všechny účty úložišť ve skupině prostředků nebo předplatného. |
-| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Vypíše objekty BLOB v kontejneru. |
+| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Načte zadaný účet úložiště nebo všechny účty úložiště v rámci skupiny prostředků nebo předplatného. |
+| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Zobrazí seznam objektů BLOB v kontejneru. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Skript, který vypočítá velikost kontejneru pro účely fakturace, najdete v článku [výpočet velikosti kontejneru úložiště objektů Blob pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
+Skript, který počítá velikost kontejneru pro účely fakturace, najdete v tématu [Výpočet velikosti kontejneru úložiště objektů BLOB pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Ukázkové skripty Powershellu pro úložiště najdete v [ukázky Powershellu pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).
+Další ukázkové skripty PowerShellu pro úložiště najdete v [ukázkách PowerShellu pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).

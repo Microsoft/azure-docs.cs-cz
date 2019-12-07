@@ -1,21 +1,22 @@
 ---
-title: 'Kurz: vytvoření vysoce dostupné aplikace s úložištěm blob – Azure Storage'
-description: Zajištění vysoké dostupnosti dat aplikací pomocí geograficky redundantního úložiště jen pro čtení
+title: Kurz – vytvoření vysoce dostupné aplikace s úložištěm BLOB
+titleSuffix: Azure Storage
+description: K zajištění vysoké dostupnosti dat aplikací použijte geograficky redundantní úložiště s přístupem pro čtení.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 6b0ac017704c599e96543ed36a13ff5d3ddef9fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838576"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892902"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
 
@@ -27,21 +28,20 @@ RA-GRS funguje replikací transakcí z primární oblasti do sekundární oblast
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-V první části tohoto kurzu se naučíte:
+V první části této série se naučíte:
 
 > [!div class="checklist"]
 > * vytvořit účet úložiště
 > * Nastavit připojovací řetězec
 > * Spustit konzolovou aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu je potřeba:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
-  - **Azure – vývoj**
+* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoj pro Azure** .
 
   ![Azure – vývoj (v části Web a cloud)](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -52,13 +52,13 @@ K provedení kroků v tomto kurzu je potřeba:
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-* Nainstalujte [Node. js](https://nodejs.org).
+* Nainstalujte [Node.js](https://nodejs.org).
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -76,11 +76,11 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
    | **Název** | mystorageaccount | Jedinečná hodnota pro váš účet úložiště |
    | **Model nasazení** | Správce prostředků  | Resource Manager obsahuje nejnovější funkce.|
    | **Druh účtu** | StorageV2 | Podrobnosti o typech účtů najdete v tématu [Typy účtů úložiště](../common/storage-introduction.md#types-of-storage-accounts). |
-   | **Výkon** | Standard | Pro ukázkový scénář stačí Standard. |
+   | **Výkon** | Úroveň Standard | Pro ukázkový scénář stačí Standard. |
    | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | To je nezbytné, aby ukázka fungovala. |
    |**Předplatné** | Vaše předplatné |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
    |**ResourceGroup** | myResourceGroup |Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   |**Umístění** | Východ USA | Zvolte umístění. |
+   |**Umístění** | USA – východ | Zvolte umístění. |
 
 ![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -191,7 +191,6 @@ Funkce opakování pro objekt Storage je nastavená na zásadu lineárního opak
 
 Před stažením se definuje objekt služby [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) a funkce [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) . Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
 
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Chcete-li spustit ukázku, otevřete příkazový řádek, přejděte do složky Sample a pak zadejte `node index.js`.
@@ -223,7 +222,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>Vysvětlení vzorového kódu
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>Obslužná rutina události opakování
 
@@ -274,7 +273,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Obslužná rutina události opakování
 
@@ -317,7 +316,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 V v10 za účelem SDK pro Node. js nejsou potřebné obslužné rutiny zpětného volání. Místo toho ukázka vytvoří kanál nakonfigurovaný s možnostmi opakování a sekundárním koncovým bodem. To umožňuje aplikaci automaticky přepnout na sekundární kanál, pokud se nepovede k vašim datům přes primární kanál.
 
@@ -349,4 +348,4 @@ V první části série jste se dozvěděli o tom, že je aplikace vysoce dostup
 Přejděte k druhé části série, kde se dozvíte, jak simulovat selhání a přinutit aplikaci použít sekundární koncový bod geograficky redundantního účtu úložiště jen pro čtení.
 
 > [!div class="nextstepaction"]
-> [Simulace selhání v připojení k primárnímu koncovému bodu úložiště](storage-simulate-failure-ragrs-account-app.md)
+> [Simulace selhání při čtení z primární oblasti](storage-simulate-failure-ragrs-account-app.md)

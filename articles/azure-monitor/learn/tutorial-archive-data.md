@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304699"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893344"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
@@ -34,13 +34,13 @@ Tento kurz prochází proces konfigurace prostředí Azure pro archivaci dat do 
 > * Zobrazení dat monitorování v tomto účtu úložiště
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorování budou archivovat. Provedete to [podle těchto kroků](../../storage/common/storage-quickstart-create-account.md).
 
@@ -70,7 +70,7 @@ Data monitorování z vašeho předplatného se teď přenášejí do účtu úl
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Směrování dat prostředků do účtu úložiště
 
-Teď nakonfigurujeme směrování dat na úrovni prostředku (metriky prostředků a diagnostické protokoly) do účtu úložiště tak, že nastavíme **nastavení diagnostiky prostředků**.
+Teď nakonfigurujeme data na úrovni prostředku (metriky prostředků a protokoly prostředků), aby se směrovaly do účtu úložiště nastavením **diagnostiky prostředků**.
 
 1. V levém navigačním seznamu klikněte na tlačítko **Monitorování** a pak na **Nastavení diagnostiky**. Tady se zobrazí seznam všech prostředků ve vašem předplatném, které generují data monitorování prostřednictvím služby Azure Monitor. Pokud se na tomto seznamu nezobrazí žádné prostředky, můžete [vytvořit aplikaci logiky](../../logic-apps/quickstart-create-first-logic-app-workflow.md) předtím, než budete pokračovat, abyste měli prostředek, u kterého můžete nakonfigurovat nastavení diagnostiky.
 
@@ -86,7 +86,7 @@ Teď nakonfigurujeme směrování dat na úrovni prostředku (metriky prostředk
 
    ![Část Nastavení diagnostiky](media/tutorial-archive-data/diagnostic-settings-home.png)
 
-4. Klikněte na tlačítko **Konfigurovat** pod možností **Archivovat do účtu úložiště** a vyberte účet úložiště, který jste vytvořili v předchozí části. Klikněte na tlačítko **OK**.
+4. Klikněte na tlačítko **Konfigurovat** pod možností **Archivovat do účtu úložiště** a vyberte účet úložiště, který jste vytvořili v předchozí části. Klikněte na **OK**.
 
    ![Nastavení diagnostiky – účet úložiště](media/tutorial-archive-data/diagnostic-settings-storage.png)
 
@@ -96,7 +96,7 @@ Teď nakonfigurujeme směrování dat na úrovni prostředku (metriky prostředk
 
 6. Nastavte posuvník **Doba uchování (dny)** na hodnotu 30. Tento posuvník nastavuje počet dnů, po který se mají data monitorování uchovávat v účtu úložiště. Azure Monitor automaticky odstraní data starší než zadaný počet dnů. Pokud jako dobu uchování nastavíte 0 dnů, data se uloží navždy.
 
-7. Klikněte na možnost **Uložit**.
+7. Klikněte na **Uložit**.
 
 Data monitorování z vašeho prostředku se teď přenášejí do účtu úložiště.
 
@@ -137,7 +137,7 @@ Data monitorování z vašeho prostředku se teď přenášejí do účtu úlož
 
 9. V části, která se zobrazí, vyberte účet úložiště, který jste vytvořili v předchozím kroku **Vytvoření účtu úložiště**.
 
-10. Klikněte na možnost **Uložit**.
+10. Klikněte na **Uložit**.
 
 Data monitorování z vašich virtuálních počítačů se teď přenášejí do účtu úložiště.
 
@@ -162,7 +162,7 @@ Pokud jste postupovali podle předchozích kroků, data se začala přenášet d
 
 5. Kliknutím na kontejnery pro ID prostředku, datum a čas přejděte k souboru PT1H.json. Klikněte na soubor PT1H.json a pak klikněte na **Stáhnout**. Každý objekt blob PT1H.json obsahuje objekt blob ve formátu JSON událostí, ke kterým došlo během hodiny zadané v adrese URL objektu blob (například h=12). Během aktuální hodiny se události připojují do souboru PT1H.json, když k nim dojde. Hodina minut (m=00) je vždy 00, protože události protokolu se rozdělují do jednotlivých objektů blob po hodinách.
 
-   Teď můžete zobrazit událost JSON, která se uložila do účtu úložiště. V případě protokolů diagnostiky prostředků je formát objektů blob následující:
+   Teď můžete zobrazit událost JSON, která se uložila do účtu úložiště. Pro protokoly prostředků prostředků je formát pro objekty BLOB:
 
    insights-logs-{log category name}/resourceId=/{resource ID}/y={čtyřmístné_číslo_roku}/m={dvoumístné_číslo_měsíce}/d={dvoumístné_číslo_dne}/h={dvoumístné_číslo_hodiny_ve_24hodinovém_formátu}/m=00/PT1H.json
 

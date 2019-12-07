@@ -1,20 +1,20 @@
 ---
-title: Optimalizace propustnosti při hromadném importu dat do Azure Cosmos DB účtu rozhraní SQL API
-description: Naučte se vytvořit konzolovou aplikaci .NET, která optimalizuje zřízenou propustnost (RU/s) potřebnou k importu dat do Azure Cosmos DB.
+title: Hromadné importy dat do Azure Cosmos DB účtu rozhraní SQL API pomocí sady .NET SDK
+description: Naučte se importovat nebo ingestovat data Azure Cosmos DB vytvořením konzolové aplikace .NET, která optimalizuje zřízenou propustnost (RU/s) potřebnou pro import dat.
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606208"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896279"
 ---
-# <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>Optimalizace propustnosti při hromadném importu dat do Azure Cosmos DB účtu rozhraní SQL API
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Hromadné importy dat do Azure Cosmos DB účtu rozhraní SQL API pomocí sady .NET SDK
 
 V tomto kurzu se dozvíte, jak vytvořit konzolovou aplikaci .NET, která optimalizuje zřízenou propustnost (RU/s) potřebnou k importu dat do Azure Cosmos DB. V tomto článku načtete data z ukázkového zdroje dat a naimportujete ho do kontejneru Azure Cosmos.
 V tomto kurzu se používá [verze 3.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) sady Azure Cosmos DB .NET SDK, na kterou se dá cílit .NET Framework nebo .NET Core.
@@ -22,12 +22,12 @@ V tomto kurzu se používá [verze 3.0](https://www.nuget.org/packages/Microsoft
 Tento kurz zahrnuje:
 
 > [!div class="checklist"]
-> * Vytvoření účtu Azure Cosmos
-> * Konfigurace projektu
+> * Vytvoření účtu služby Azure Cosmos
+> * Konfigurace vašeho projektu
 > * Připojení k účtu Azure Cosmos s povolenou hromadnou podporou
 > * Provést import dat prostřednictvím souběžných operací vytvoření
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
@@ -81,7 +81,7 @@ Stále v adresáři aplikace nainstalujte Azure Cosmos DB klientskou knihovnu pr
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1.  Přejděte k účtu Azure Cosmos.
 1.  Otevřete podokno **klíče** a zkopírujte **identifikátor URI** a **primární klíč** svého účtu.
 
@@ -186,8 +186,8 @@ Ukázku můžete spustit tak, že změníte adresář úložiště a použijete 
 V tomto kurzu jste provedli následující kroky:
 
 > [!div class="checklist"]
-> * Vytvoření účtu Azure Cosmos
-> * Konfigurace projektu
+> * Vytvoření účtu služby Azure Cosmos
+> * Konfigurace vašeho projektu
 > * Připojení k účtu Azure Cosmos s povolenou hromadnou podporou
 > * Provést import dat prostřednictvím souběžných operací vytvoření
 

@@ -3,12 +3,12 @@ title: 'Kurz: Vytvoření vlastní definice zásady'
 description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy, která vynutila vlastní obchodní pravidla pro vaše prostředky Azure.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483989"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885445"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -31,7 +31,7 @@ Přístup k vytváření vlastních zásad se řídí těmito kroky:
 > - Určení, který efekt použít
 > - Vytvoření definice zásady
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -53,7 +53,7 @@ Na základě obchodních požadavků je prostředek Azure, který se bude audito
 Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se na každou z těchto kurzů:
 
 - Rozšíření Azure Policy pro VS Code
-- Šablony Resource Manageru
+- Šablony Správce prostředků
   - Exportovat existující prostředek
   - Prostředí pro vytváření
   - Šablony pro rychlý Start (GitHub)
@@ -64,7 +64,7 @@ Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se
 
 [Rozšíření vs Code](../how-to/extension-for-vscode.md#search-for-and-view-resources) lze použít k procházení prostředků ve vašem prostředí a zobrazení vlastností Správce prostředků u každého prostředku.
 
-### <a name="resource-manager-templates"></a>Šablony Resource Manageru
+### <a name="resource-manager-templates"></a>Šablony Správce prostředků
 
 Existuje několik způsobů, jak se podívat na [šablonu správce prostředků](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) , která obsahuje vlastnost, kterou chcete spravovat.
 
@@ -165,8 +165,8 @@ Existuje několik způsobů, jak určit aliasy pro prostředek Azure. Podíváme
 
 - Rozšíření Azure Policy pro VS Code
 - Azure CLI
-- Azure Powershell
-- Azure Resource Graph
+- Azure PowerShell
+- Graf prostředků Azure
 
 ### <a name="get-aliases-in-vs-code-extension"></a>Získat aliasy v rozšíření VS Code
 
@@ -185,7 +185,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 Ve výsledcích se zobrazí alias podporovaný účty úložiště s názvem **supportsHttpsTrafficOnly**. Tento alias znamená, že můžeme napsat zásadu, abychom vynutili naše obchodní požadavky.
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 V Azure PowerShell se k hledání aliasů prostředků používá rutina `Get-AzPolicyAlias`. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
 
@@ -198,37 +198,39 @@ V Azure PowerShell se k hledání aliasů prostředků používá rutina `Get-Az
 
 Podobně jako Azure CLI zobrazuje výsledky aliasy podporované účty úložiště s názvem **supportsHttpsTrafficOnly**.
 
-### <a name="azure-resource-graph"></a>Azure Resource Graph
+### <a name="azure-resource-graph"></a>Graf prostředků Azure
 
-[Azure Resource Graph](../../resource-graph/overview.md) je nová služba. Umožňuje další metodu hledání vlastností prostředků Azure. Tady je ukázkový dotaz pro prohlížení jednoho účtu úložiště s grafem prostředků:
+[Azure Resource Graph](../../resource-graph/overview.md) je služba, která poskytuje další způsob hledání vlastností prostředků Azure. Tady je ukázkový dotaz pro prohlížení jednoho účtu úložiště s grafem prostředků:
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 Výsledky vypadají podobně jako v šablonách Správce prostředků a prostřednictvím Azure Resource Explorer. Výsledky grafu prostředků Azure ale můžou taky zahrnovat podrobnosti o [aliasu](../concepts/definition-structure.md#aliases) tím, že projedná _projekt_ s polem _aliasy_ :
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 | project aliases
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 Tady je příklad výstupu z účtu úložiště pro aliasy:
@@ -455,7 +457,7 @@ K vytvoření nové zásady se dá použít dokončená definice. Portál a kaž
 
 Pokud to uděláte práci s prostředky z tohoto kurzu, pomocí následujícího postupu odstraňte všechna přiřazení a definice vytvořili výše:
 
-1. Vyberte **definice** (nebo **přiřazení** , pokud se pokoušíte odstranit přiřazení) v části **vytváření obsahu** v levé části stránky Azure Policy.
+1. Vyberte **definice** (nebo **přiřazení** Pokud se pokoušíte odstranit přiřazení) v části **Authoring** v levé části na stránku služby Azure Policy.
 
 1. Vyhledejte novou definici iniciativy nebo zásady (nebo přiřazení), kterou chcete odebrat.
 

@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: e66a9f8a775a46c906601ea08be52ca9dfbe0171
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c171310fd1c9caf78288fa156b353ecdd517d602
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689297"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894692"
 ---
 # <a name="get-labels-for-data"></a>Získat popisky pro data
 
@@ -24,6 +24,9 @@ Machine Learning sleduje průběh a udržuje frontu neúplných úloh označová
 
 V Machine Learning spustíte a zastavíte projekt, přidáte a odeberete lidi a týmy a sledujete průběh. Můžete exportovat označená data ve formátu díky Coco nebo jako datovou sadu Azure Machine Learning.
 
+> [!Important]
+> V současné době jsou podporovány pouze projekty klasifikace obrázků a označení identifikace objektu. Kromě toho musí být image dat dostupné v úložišti dat objektů BLOB v Azure. (Pokud nemáte existující úložiště dat, můžete při vytváření projektu nahrávat obrázky.) 
+
 V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
@@ -32,6 +35,7 @@ V tomto článku se dozvíte, jak:
 > * Správa týmů a osob, které pracují na projektu
 > * Spuštění a sledování projektu
 > * Exportovat popisky
+
 
 ## <a name="prerequisites"></a>Předpoklady
 

@@ -9,28 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488725"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894608"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: extrakce kontextově souvisejících dat z utterance
 
-V tomto kurzu vyhledáte související části dat na základě kontextu. Například zdroj a cílové umístění pro přenos z jednoho města do druhého. Je možné, že obě části dat jsou nutné a jsou vzájemně propojené.  
+V tomto kurzu vyhledáte související části dat na základě kontextu. Například zdroj a cílové umístění pro přenos z jednoho města do druhého. Je možné, že obě části dat jsou nutné a jsou vzájemně propojené.
 
-Roli lze použít pro libovolný předem sestavený nebo vlastní typ entity a používá se v obou příkladech projevy a Patterns. 
+Roli lze použít pro libovolný předem sestavený nebo vlastní typ entity a používá se v obou příkladech projevy a Patterns.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
-**V tomto kurzu se naučíte:**
+**Co se v tomto kurzu naučíte:**
 
 > [!div class="checklist"]
 > * Vytvoření nové aplikace
-> * Přidat záměr 
+> * Přidat záměr
 > * Získání informací o původu a cíli pomocí rolí
 > * Trénování
 > * Publikování
@@ -57,9 +57,9 @@ Role by se měla použít při extrakci dat entity:
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Vyberte **Create new intent** (Vytvořit nový záměr). 
+1. Vyberte **Create new intent** (Vytvořit nový záměr).
 
-1. V automaticky otevíraném dialogovém okně zadejte `MoveEmployeeToCity` a pak vyberte **Done** (Hotovo). 
+1. V automaticky otevíraném dialogovém okně zadejte `MoveEmployeeToCity` a pak vyberte **Done** (Hotovo).
 
     ![Snímek obrazovky s dialogovým oknem pro vytvoření nového záměru](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -85,24 +85,24 @@ Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně n
 
 1. Vyberte **entity** z navigace na levé straně.
 
-1. Vyberte **Přidat předem vytvořenou entitu**a pak na panelu hledání vyberte `geo` pro filtrování předem sestavených entit. 
+1. Vyberte **Přidat předem vytvořenou entitu**a pak na panelu hledání vyberte `geo` pro filtrování předem sestavených entit.
 
     ![Přidat předem vytvořenou entitu geographyV2 do aplikace](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Zaškrtněte políčko a vyberte **Hotovo**.
-1. V seznamu **entity** vyberte **geographyV2** a otevřete novou entitu. 
-1. Přidejte dvě role, `Origin`a `Destination`. 
+1. V seznamu **entity** vyberte **geographyV2** a otevřete novou entitu.
+1. Přidejte dvě role, `Origin`a `Destination`.
 
     ![Přidání rolí k předem připravené entitě](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Vyberte **záměry** z navigace na levé straně a pak vyberte záměr **MoveEmployeeToCity** . Všimněte si, že názvy měst jsou označené předem vytvořenou entitou **geographyV2**.
 1. V prvním utterance seznamu vyberte umístění původu. Zobrazí se rozevírací nabídka. V seznamu vyberte **geographyV2** a potom podle nabídky vedle vyberte **počátek**.
-1. Pomocí metody z předchozího kroku označíte všechny role umístění ve všech projevy. 
+1. Pomocí metody z předchozího kroku označíte všechny role umístění ve všech projevy.
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None 
+## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Výuka aplikace, aby se mohly testovat změny záměru 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Výuka aplikace, aby se mohly testovat změny záměru
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -152,9 +152,9 @@ Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně n
       ]
     }
     ```
-    
+
     Je předpokládaná správná záměr a pole entity obsahuje zdrojové i cílové role ve vlastnosti odpovídajících **entit** .
-    
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
@@ -173,5 +173,5 @@ Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně n
 
 V tomto kurzu jste vytvořili nový záměr a Přidali jste příklad projevy pro kontextové naučená data o původu a cílovém umístění. Jakmile aplikaci vytrénujete a publikujete, klientská aplikace může tyto informace použít k vytvoření lístku přesunu s relevantními informacemi.
 
-> [!div class="nextstepaction"] 
-> [Další informace o přidání složené entity](luis-tutorial-composite-entity.md) 
+> [!div class="nextstepaction"]
+> [Další informace o přidání složené entity](luis-tutorial-composite-entity.md)

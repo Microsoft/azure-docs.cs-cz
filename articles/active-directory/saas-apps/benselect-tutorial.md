@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s BenSelect | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s BenSelect | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BenSelect.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5ca12f89615cd4b3110b0d67268c048b8e44561
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4a027a4038d806b7c19dc45ea5b6da74acb802b2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879731"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893118"
 ---
-# <a name="tutorial-integrate-benselect-with-azure-active-directory"></a>Kurz: Integrace BenSelect s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s BenSelect
 
 V tomto kurzu se dozvíte, jak integrovat BenSelect s Azure Active Directory (Azure AD). Když integrujete BenSelect s Azure AD, můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat BenSelect s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -44,7 +44,11 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
+
 * BenSelect podporuje jednotné přihlašování **IDP** .
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-benselect-from-the-gallery"></a>Přidání BenSelect z Galerie
 
@@ -58,20 +62,20 @@ Pokud chcete nakonfigurovat integraci BenSelect do služby Azure AD, musíte př
 1. Na panelu výsledků vyberte **BenSelect** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on-for-benselect"></a>Konfigurace a testování jednotného přihlašování Azure AD pro BenSelect
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí BenSelect pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v BenSelect.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí BenSelect, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte BENSELECT SSO](#configure-benselect-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-5. **[Vytvořte BenSelect Test User](#create-benselect-test-user)** -to, abyste měli protějšek B. Simon v BenSelect, která je propojená s reprezentací uživatele v Azure AD.
-6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte BENSELECT SSO](#configure-benselect-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte BenSelect Test User](#create-benselect-test-user)** -to, abyste měli protějšek B. Simon v BenSelect, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -83,12 +87,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://www.benselect.com/enroll/login.aspx?Path=<tenant name>`
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://www.benselect.com/enroll/login.aspx?Path=<tenant name>`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta BenSelect](mailto:support@selerix.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. BenSelect aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
+1. BenSelect aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![image](common/edit-attribute.png)
 
@@ -116,13 +120,6 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-benselect-sso"></a>Konfigurace jednotného přihlašování BenSelect
-
-Ke konfiguraci jednotného přihlašování na straně **BenSelect** je potřeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory BenSelect](mailto:support@selerix.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
-
-> [!NOTE]
-> Musíte se zmínit, že tato integrace vyžaduje algoritmus SHA256 (SHA1 není podporován) pro nastavení jednotného přihlašování na příslušném serveru, jako je app2101 atd.
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
@@ -133,7 +130,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -153,21 +150,30 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
+## <a name="configure-benselect-sso"></a>Konfigurace jednotného přihlašování BenSelect
+
+Ke konfiguraci jednotného přihlašování na straně **BenSelect** je potřeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory BenSelect](mailto:support@selerix.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+
+> [!NOTE]
+> Musíte se zmínit, že tato integrace vyžaduje algoritmus SHA256 (SHA1 není podporován) pro nastavení jednotného přihlašování na příslušném serveru, jako je app2101 atd.
+
 ### <a name="create-benselect-test-user"></a>Vytvořit testovacího uživatele BenSelect
 
 V této části vytvoříte uživatele s názvem Britta Simon v BenSelect. Pokud chcete přidat uživatele na platformě BenSelect, pracujte s [týmem podpory BenSelect](mailto:support@selerix.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici BenSelect, měli byste se automaticky přihlásit k BenSelect, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si BenSelect s Azure AD](https://aad.portal.azure.com/)
 

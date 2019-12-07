@@ -1,25 +1,26 @@
 ---
-title: 'Kurz: Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení v Azure | Microsoft Docs'
-description: Simulace chyby při přístupu ke geograficky redundantnímu úložišti jen pro čtení
+title: Kurz – simulace selhání při čtení dat z primární oblasti
+titleSuffix: Azure Storage
+description: Simuluje chybu při čtení dat z primární oblasti, když je pro účet úložiště povolené geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 1f5c404e410ded2714be761e35060f3c07379bd3
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508100"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892443"
 ---
-# <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Kurz: Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení
+# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Kurz: simulace selhání při čtení dat z primární oblasti
 
-Tento kurz je druhá část série. V něm dozvíte o výhodách [čtení geograficky redundantní](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (čtení RA-GRS) pomocí simulace selhání.
+Tento kurz je druhá část série. V takovém případě se dozvíte o výhodách [geograficky redundantního redundantního](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) úložiště (RA-GRS) s přístupem pro čtení, a to simulací selhání.
 
-K simulaci selhání, můžete použít buď [statické směrování](#simulate-a-failure-with-an-invalid-static-route) nebo [Fiddler](#simulate-a-failure-with-fiddler). Obě metody umožňuje simulovat selhání žádostí na primární koncový bod vašeho [čtení geograficky redundantní](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) účet úložiště (pro čtení RA-GRS), příčinou aplikace čtení ze sekundárního koncového bodu místo toho.
+Aby se mohla simulovat chyba, můžete použít buď [statické směrování](#simulate-a-failure-with-an-invalid-static-route) , nebo [Fiddler](#simulate-a-failure-with-fiddler). Obě metody vám umožní simulovat selhání požadavků na primární koncový bod vašeho [geograficky redundantního úložiště s přístupem pro čtení](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS), což způsobí, že aplikace načte ze sekundárního koncového bodu.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -27,16 +28,16 @@ Ve druhé části této série se naučíte:
 
 > [!div class="checklist"]
 > * Spouštět a pozastavovat aplikaci
-> * Simulace selhání pomocí [neplatné statické trasy](#simulate-a-failure-with-an-invalid-static-route) nebo [Fiddleru](#simulate-a-failure-with-fiddler)
+> * Simulace selhání s [neplatnou statickou trasou](#simulate-a-failure-with-an-invalid-static-route) nebo [Fiddler](#simulate-a-failure-with-fiddler)
 > * Simulovat obnovení primárního koncového bodu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Před zahájením tohoto kurzu, dokončete předchozí kurz o službě: [Ujistěte se, vašich aplikačních dat pomocí služby Azure storage s vysokou dostupností][previous-tutorial].
+Než začnete s tímto kurzem, dokončete předchozí kurz: [zajištění vysoké dostupnosti dat aplikace v Azure Storage][previous-tutorial].
 
-Simulace selhání se statickým směrováním, použijete příkazového řádku se zvýšenými oprávněními.
+Chcete-li simulovat selhání se statickým směrováním, použijte příkazový řádek se zvýšenými oprávněními.
 
-K simulaci selhání pomocí Fiddleru, stáhněte si a [nainstalovat Fiddler](https://www.telerik.com/download/fiddler)
+Postup při simulaci selhání pomocí Fiddler, stažení a [instalace Fiddler](https://www.telerik.com/download/fiddler)
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Simulace selhání pomocí neplatné statické trasy
 
@@ -44,13 +45,13 @@ Pro všechny žádosti na primární koncový bod vašeho účtu [geograficky re
 
 ### <a name="start-and-pause-the-application"></a>Spuštění a pozastavení aplikace
 
-Postupujte podle pokynů v [předchozí kurz o službě] [ previous-tutorial] ke spuštění ukázky a stáhněte si soubor testu, potvrzení, že pocházejí z primárního úložiště. V závislosti na vaší cílové platformy můžete ručně pozastavit ukázku nebo počkejte na řádku.
+Pomocí pokynů v [předchozím kurzu][previous-tutorial] spusťte ukázku a Stáhněte soubor testu a potvrďte, že pochází z primárního úložiště. V závislosti na cílové platformě můžete tuto ukázku ručně pozastavit nebo počkat na příkazovém řádku.
 
 ### <a name="simulate-failure"></a>Simulace chyby
 
-Když je aplikace pozastavená, otevřete příkazový řádek na Windows jako správce nebo spusťte terminál jako root v Linuxu.
+Když je aplikace pozastavena, otevřete příkazový řádek ve Windows jako správce nebo spusťte terminál jako kořenový adresář v systému Linux.
 
-Získejte informace o doméně primárního koncového bodu účtu úložiště tak, že zadáte následující příkaz na příkazový řádek nebo terminálových nahrazuje příkaz `STORAGEACCOUNTNAME` s názvem účtu úložiště.
+Zadáním následujícího příkazu na příkazovém řádku nebo terminálu Získejte informace o primární doméně koncového bodu účtu úložiště a nahraďte `STORAGEACCOUNTNAME` názvem svého účtu úložiště.
 
 ```
 nslookup STORAGEACCOUNTNAME.blob.core.windows.net
@@ -60,7 +61,7 @@ Zkopírujte IP adresu vašeho účtu úložiště do textového editoru pro pozd
 
 Pokud chcete získat IP adresu místního hostitele, zadejte `ipconfig` na příkazovém řádku Windows nebo `ifconfig` na terminálu Linuxu.
 
-Přidáte statickou trasu pro cílového hostitele, zadejte následující příkaz na příkazovém řádku Windows nebo Linuxem terminálu, nahrazení `<destination_ip>` se IP adresa vašeho účtu úložiště a `<gateway_ip>` s IP adresou místního hostitele.
+Pokud chcete přidat statickou trasu pro cílového hostitele, zadejte na příkazovém řádku Windows nebo terminálu pro Linux následující příkaz a nahraďte `<destination_ip>` IP adresou svého účtu úložiště a `<gateway_ip>` s IP adresou místního hostitele.
 
 #### <a name="linux"></a>Linux
 
@@ -74,11 +75,11 @@ route add <destination_ip> gw <gateway_ip>
 route add <destination_ip> <gateway_ip>
 ```
 
-V okně s ukázkou spuštěné obnovte chod aplikace nebo stisknout klávesu odpovídající stáhnout ukázkový soubor a ověřte, zda pochází ze sekundárního úložiště. Potom můžete pozastavit ukázku znovu nebo počkejte na řádku.
+V okně se spuštěnou ukázkou obnovte aplikaci nebo stiskněte odpovídající klíč ke stažení ukázkového souboru a potvrďte, že pochází ze sekundárního úložiště. Pak můžete ukázku znovu pozastavit nebo počkat na příkazovém řádku.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Simulovat obnovení primárního koncového bodu
 
-Pro simulaci stávají funkční znovu primární koncový bod, odstraňte ze směrovací tabulky neplatné statické trasy. To umožní směrování všech žádostí na primární koncový bod pomocí výchozí brány. Zadejte následující příkaz na příkazovém řádku Windows nebo terminálu Linuxu.
+Pro simulaci opětovného fungování primárního koncového bodu odstraňte ze směrovací tabulky neplatnou statickou trasu. To umožní směrování všech žádostí na primární koncový bod pomocí výchozí brány. Do příkazového řádku Windows nebo terminálu pro Linux zadejte následující příkaz.
 
 #### <a name="linux"></a>Linux
 
@@ -92,13 +93,13 @@ route del <destination_ip> gw <gateway_ip>
 route delete <destination_ip>
 ```
 
-Potom můžete pokračovat, aplikace nebo stiskněte klávesu odpovídající Stáhněte ukázku soubor znovu, tento čas potvrzení, že znovu pochází z primárního úložiště.
+Pak můžete aplikaci obnovit nebo stisknout odpovídající klíč pro opětovné stažení ukázkového souboru, tentokrát s potvrzením, že znovu pochází z primárního úložiště.
 
 ## <a name="simulate-a-failure-with-fiddler"></a>Simulace selhání pomocí Fiddleru
 
-K simulaci selhání pomocí fiddleru provedete, vložíte neúspěšnou odpověď, a pro žádosti na primární koncový bod vašeho účtu úložiště RA-GRS.
+Pokud chcete simulovat selhání pomocí Fiddler, vložíte do primárního koncového bodu vašeho účtu úložiště RA-GRS neúspěšnou odpověď.
 
-V dalších částech znázornění simulace selhání a obnovení primárního koncového bodu pomocí fiddleru.
+Následující části popisují, jak simulovat selhání a obnovení primárního koncového bodu pomocí Fiddler.
 
 ### <a name="launch-fiddler"></a>Spuštění fiddleru
 
@@ -106,11 +107,11 @@ Otevřete Fiddler, vyberte **Rules** (Pravidla) a **Customize Rules** (Přizpůs
 
 ![Přizpůsobení pravidel Fiddleru](media/storage-simulate-failure-ragrs-account-app/figure1.png)
 
-Spustí se Fiddler ScriptEditor a zobrazí **SampleRules.js** souboru. Tento soubor slouží k přizpůsobení Fiddleru.
+Fiddler ScriptEditor spustí a zobrazí soubor **SampleRules. js** . Tento soubor slouží k přizpůsobení Fiddleru.
 
-Vložte následující vzorový kód v `OnBeforeResponse` fungovala, nahrazení `STORAGEACCOUNTNAME` s názvem účtu úložiště. V závislosti na ukázky, budete také muset nahradit `HelloWorld` s názvem souboru testu (nebo předpona jako `sampleFile`) stahování. Nový kód je zakomentovaný, ujistěte se, že není spuštěna ihned.
+Vložte následující ukázku kódu do funkce `OnBeforeResponse` a nahraďte `STORAGEACCOUNTNAME` názvem svého účtu úložiště. V závislosti na ukázce může být také nutné nahradit `HelloWorld` názvem testovacího souboru (nebo předponou, jako je například `sampleFile`), která se stahuje. Nový kód je komentovaný, aby se zajistilo, že se nespustí okamžitě.
 
-Jakmile budete hotovi, vyberte **souboru** a **Uložit** uložte provedené změny. Nechte okno ScriptEditor otevřené pro použití v následujících krocích.
+Až budete hotovi, vyberte **soubor** a **Uložit** a uložte provedené změny. Ponechte okno ScriptEditor otevřené pro použití v následujících krocích.
 
 ```javascript
     /*
@@ -132,25 +133,25 @@ Jakmile budete hotovi, vyberte **souboru** a **Uložit** uložte provedené změ
 
 ### <a name="start-and-pause-the-application"></a>Spuštění a pozastavení aplikace
 
-Postupujte podle pokynů v [předchozí kurz o službě] [ previous-tutorial] ke spuštění ukázky a stáhněte si soubor testu, potvrzení, že pocházejí z primárního úložiště. V závislosti na vaší cílové platformy můžete ručně pozastavit ukázku nebo počkejte na řádku.
+Pomocí pokynů v [předchozím kurzu][previous-tutorial] spusťte ukázku a Stáhněte soubor testu a potvrďte, že pochází z primárního úložiště. V závislosti na cílové platformě můžete tuto ukázku ručně pozastavit nebo počkat na příkazovém řádku.
 
 ### <a name="simulate-failure"></a>Simulace chyby
 
-Když je aplikace pozastavená, přepněte zpět do Fiddleru a odkomentovat vlastní pravidlo, které jste si uložili v `OnBeforeResponse` funkce. Je potřeba vybrat možnost **souboru** a **Uložit** uložte provedené změny, takže pravidla se projeví. Tento kód vyhledá žádosti na účet úložiště RA-GRS a pokud cesta obsahuje název ukázkového souboru, vrátí kód odpovědi `503 - Service Unavailable`.
+Když je aplikace pozastavená, přepněte zpátky na Fiddler a odkomentujte vlastní pravidlo, které jste uložili ve funkci `OnBeforeResponse`. Nezapomeňte vybrat **soubor** a **Uložit** změny, aby se pravidlo projevilo. Tento kód vyhledá požadavky na účet úložiště RA-GRS a pokud cesta obsahuje název ukázkového souboru, vrátí kód odpovědi `503 - Service Unavailable`.
 
-V okně s ukázkou spuštěné obnovte chod aplikace nebo stisknout klávesu odpovídající stáhnout ukázkový soubor a ověřte, zda pochází ze sekundárního úložiště. Potom můžete pozastavit ukázku znovu nebo počkejte na řádku.
+V okně se spuštěnou ukázkou obnovte aplikaci nebo stiskněte odpovídající klíč ke stažení ukázkového souboru a potvrďte, že pochází ze sekundárního úložiště. Pak můžete ukázku znovu pozastavit nebo počkat na příkazovém řádku.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Simulovat obnovení primárního koncového bodu
 
-V aplikaci Fiddler odstranit nebo okomentovat vlastní pravidlo znovu. Vyberte **souboru** a **Uložit** zajistit pravidlo, již nebudou platit.
+V Fiddler odeberte vlastní pravidlo nebo ho Odkomentujte. Vyberte **soubor** a **uložte** se, abyste se ujistili, že pravidlo již nebude platit.
 
-V okně s ukázkou spuštěné obnovte chod aplikace nebo stisknutím klávesy odpovídající stáhnout ukázkový soubor a potvrďte, že pocházejí z primárního úložiště ještě jednou. Potom můžete ukončit vzorku.
+V okně se spuštěnou ukázkou obnovte aplikaci nebo stiskněte odpovídající klíč ke stažení ukázkového souboru a potvrďte, že je znovu nacházet z primárního úložiště. Pak můžete ukázku ukončit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Ve druhé části série jste se dozvěděli o simulaci selhání za účelem testování geograficky redundantní úložiště s přístupem pro čtení.
+Ve třetí části série jste se dozvěděli o simulaci selhání při testování geograficky redundantního úložiště s přístupem pro čtení.
 
-Přečtěte si více o tom, jak úložiště RA-GRS funguje, a také související rizika, najdete v následujícím článku:
+Pokud chcete získat další informace o tom, jak funguje úložiště RA-GRS, a také jeho přidružená rizika, přečtěte si následující článek:
 
 > [!div class="nextstepaction"]
 > [Navrhování aplikací s vysokou dostupností s využitím RA-GRS](../common/storage-designing-ha-apps-with-ragrs.md)

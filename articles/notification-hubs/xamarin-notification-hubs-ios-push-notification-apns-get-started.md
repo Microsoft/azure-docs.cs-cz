@@ -14,16 +14,16 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/23/2019
+ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 38a4924cd6bee2f6e2860320d51cfb61aa6fe1bb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e693d771d9a4726a1a9d698b5b7ed61d19197bdb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387691"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895037"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. iOS pomocí Azure Notification Hubs
 
@@ -79,7 +79,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
 
 5. Přidejte balíček zasílání zpráv Azure. V zobrazení Řešení klikněte pravým tlačítkem a na projekt a vyberte **Přidat** > **Přidat balíčky NuGet**. Vyhledejte balíček **Xamarin.Azure.NotificationHubs.iOS** a přidejte ho do svého projektu.
 
-6. Přidejte do své třídy nový soubor, pojmenujte ho `Constants.cs` a přidejte následující proměnné a nahraďte zástupné symboly řetězcového literálu `hubname` a `DefaultListenSharedAccessSignature`, které jste si poznamenali dříve.
+6. Přidejte do své třídy nový soubor, pojmenujte ho `Constants.cs` a přidejte následující proměnné a nahraďte zástupné symboly řetězcového literálu `hubname` a `DefaultListenSharedAccessSignature` uvedeným dříve.
 
     ```csharp
     // Azure app-specific connection string and hub path
@@ -87,7 +87,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. V `AppDelegate.cs` přidejte následující příkaz using:
+7. V `AppDelegate.cs`přidejte následující příkaz using:
 
     ```csharp
     using WindowsAzure.Messaging;
@@ -100,7 +100,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     private SBNotificationHub Hub { get; set; }
     ```
 
-9. V `AppDelegate.cs` aktualizujte `FinishedLaunching()` tak, aby odpovídaly následujícímu kódu:
+9. V `AppDelegate.cs`aktualizujte `FinishedLaunching()` tak, aby odpovídaly následujícímu kódu:
 
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -129,14 +129,14 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-10. V `AppDelegate.cs` přepište metodu `RegisteredForRemoteNotifications()`:
+10. V `AppDelegate.cs`přepište metodu `RegisteredForRemoteNotifications()`:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
     {
         Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
 
-        Hub.UnregisterAllAsync (deviceToken, (error) => {
+        Hub.UnregisterAll (deviceToken, (error) => {
             if (error != null)
             {
                 System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
@@ -152,7 +152,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-11. V `AppDelegate.cs` přepište metodu `ReceivedRemoteNotification()`:
+11. V `AppDelegate.cs`přepište metodu `ReceivedRemoteNotification()`:
 
     ```csharp
     public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -161,7 +161,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-12. V `AppDelegate.cs` vytvořte metodu `ProcessNotification()`:
+12. V `AppDelegate.cs`vytvořte `ProcessNotification()` metodu:
 
     ```csharp
     void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -200,7 +200,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     ```
 
     > [!NOTE]
-    > Můžete také přepsat `FailedToRegisterForRemoteNotifications()` pro zpracování situací, jako je například žádné síťové připojení. To je obzvláště důležité, když by uživatel mohl spustit aplikaci v režimu offline (například letadlo) a vy chcete zpracovávat scénáře zpráv oznámení specifické pro vaši aplikaci.
+    > Můžete zvolit přepsání `FailedToRegisterForRemoteNotifications()`, aby se zpracovávala v situacích, jako je například žádné síťové připojení. To je obzvláště důležité, když by uživatel mohl spustit aplikaci v režimu offline (například letadlo) a vy chcete zpracovávat scénáře zpráv oznámení specifické pro vaši aplikaci.
 
 13. Spusťte aplikaci v zařízení.
 

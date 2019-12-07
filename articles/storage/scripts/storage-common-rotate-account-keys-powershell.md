@@ -1,30 +1,24 @@
 ---
-title: Ukázkový skript Azure Powershellu – přístupový klíč účtu úložiště otočit | Dokumentace Microsoftu
-description: Vytvoření účtu služby Azure Storage a načtení a obměně jeden z jeho přístupových klíčů účtu.
+title: Otočení přístupových klíčů k účtu úložiště pomocí PowerShellu
+titleSuffix: Azure Storage
+description: Vytvořte účet Azure Storage a pak načtěte a otáčejte jeden z jeho přístupových klíčů k účtu.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: sample
-ms.date: 06/13/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 0aae733f94ab4a217ca41ca3de6df2e5da47df50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54a7a6cb89c88726853a39ab5b2a61e1f0cde0b5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196262"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894923"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Vytvoření účtu úložiště a obměna přístupových klíčů tohoto účtu
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>Otočení přístupových klíčů k účtu úložiště pomocí PowerShellu
 
-Tento skript vytvoří účet služby Azure Storage, zobrazuje nový účet úložiště primární přístupový klíč a pak klíče obnoví (obmění) klíč.
+Tento skript vytvoří účet Azure Storage, zobrazí primární přístupový klíč nového účtu úložiště a pak ho znovu nanews (otočí).
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -34,7 +28,7 @@ Tento skript vytvoří účet služby Azure Storage, zobrazuje nový účet úlo
 
 [!code-powershell[main](../../../powershell_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.ps1 "Rotate storage account keys")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, účet úložiště a všechny související prostředky.
 
@@ -44,17 +38,17 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript k vytvoření účtu úložiště a načtení a obměně jeden z jeho přístupových klíčů používá následující příkazy. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript pomocí následujících příkazů vytvoří účet úložiště a načte a natočí jeden z jeho přístupových klíčů. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Získá všechny umístění a podporovaných poskytovatelích prostředků pro každé umístění. |
+| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Načte všechna umístění a podporované poskytovatele prostředků pro každé umístění. |
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Vytvoří účet úložiště. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Získá seznam přístupových klíčů pro účet služby Azure Storage. |
-| [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Obnovuje se přístupový klíč pro účet služby Azure Storage. |
+| [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Znovu vygeneruje přístupový klíč pro účet Azure Storage. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
