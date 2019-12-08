@@ -43,8 +43,6 @@
       items:
         - name: Jak funguje MFA
           href: concept-mfa-howitworks.md
-        - name: Povolení MFA
-          href: concept-mfa-get-started.md
         - name: Licencování uživatelů
           href: concept-mfa-licensing.md
         - name: Správa poskytovatele ověřování

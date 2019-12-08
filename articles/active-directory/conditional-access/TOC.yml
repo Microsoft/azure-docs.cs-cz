@@ -17,8 +17,6 @@
   items:
     - name: Běžné zásady podmíněného přístupu
       href: concept-conditional-access-policy-common.md
-    - name: Výchozí nastavení zabezpečení
-      href: concept-conditional-access-security-defaults.md
     - name: Komponenty zásad podmíněného přístupu
       href: concept-conditional-access-policies.md
     - name: Podmínky

@@ -152,7 +152,7 @@
     - name: Práce s daty
       items:
         - name: Získání dat z úložiště dat
-          displayName: 'blob, get, fileshare, access storage'
+          displayName: 'blob, get, fileshare, access storage, mount, download'
           href: how-to-access-data.md
         - name: Přidání a registrace datových sad
           displayName: 'data, dataset'

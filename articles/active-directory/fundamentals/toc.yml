@@ -17,6 +17,14 @@
   items:
     - name: Identity Secure Score
       href: identity-secure-score.md
+    - name: Zabezpečení
+      items:
+        - name: Povolení MFA
+          href: concept-fundamentals-mfa-get-started.md
+        - name: Výchozí nastavení zabezpečení
+          href: concept-fundamentals-security-defaults.md
+        - name: Blokování starší verze ověřování
+          href: concept-fundamentals-block-legacy-authentication.md
     - name: Správa přístupu a skupin
       href: active-directory-manage-groups.md
     - name: Licencování na základě skupin
