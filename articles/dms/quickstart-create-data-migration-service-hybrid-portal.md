@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/06/2019
-ms.openlocfilehash: 47c0ecb5674f821d3034fb5f165df08f176c2e93
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.date: 12/06/2019
+ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646944"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890687"
 ---
 # <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>Rychlý Start: vytvoření instance Azure Database Migration Service v hybridním režimu pomocí Azure Portal (Preview)
 
@@ -24,7 +24,10 @@ Azure Database Migration Service hybridní režim spravuje migrace databáze pom
 
 V tomto rychlém startu použijete Azure Portal k vytvoření instance Azure Database Migration Service v hybridním režimu. Potom můžete stáhnout, nainstalovat a nastavit hybridní pracovní proces v místní síti. Během období Preview můžete k migraci dat z místní instance SQL Server na Azure SQL Database použít hybridní režim Azure Database Migration Service.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+> [!IMPORTANT]
+> Azure Database Migration Service Hybrid Installer vyžaduje rozhraní .NET 4.7.2 nebo novější. Nejnovější verze rozhraní .NET najdete na stránce [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) .
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -111,6 +114,9 @@ Musíte vytvořit registraci aplikace Azure, kterou může místní hybridní pr
 
 3. Extrahujte soubor ZIP na serveru, který bude hostitelem Azure Database Migration Service Hybrid Worker.
 
+    > [!IMPORTANT]
+    > Azure Database Migration Service Hybrid Installer vyžaduje rozhraní .NET 4.7.2 nebo novější. Nejnovější verze rozhraní .NET najdete na stránce [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) .
+
 4. Ve složce Install vyhledejte a otevřete soubor **dmsSettings. JSON** , zadejte **ApplicationId** a **ResourceID**a pak soubor uložte.
 
     ![Azure Database Migration Service nastavení hybridního pracovního procesu](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
@@ -125,7 +131,7 @@ Musíte vytvořit registraci aplikace Azure, kterou může místní hybridní pr
 
     ![Azure Database Migration Service certifikát Hybrid Worker](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. V Azure Portal přejděte na ID aplikace v části **Spravovat**vyberte možnost **& tajné klíče s certifikátem**a pak vyberte **Odeslat certifikát** a vyberte veřejný certifikát, který jste právě vygenerovali.
+6. V Azure Portal přejděte na ID aplikace v části **Spravovat**vyberte možnost s **certifikátem &** a pak vyberte **nahrát certifikát** a vyberte veřejný certifikát, který jste vygenerovali.
 
     ![Azure Database Migration Service nahrávání certifikátu Hybrid Worker](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 

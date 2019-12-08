@@ -1,20 +1,19 @@
 ---
 title: 'Rychlý Start: Apache Hive ve službě Azure HDInsight s Apache Zeppelin'
 description: V tomto rychlém startu se dozvíte, jak používat Apache Zeppelin ke spouštění dotazů Apache Hive.
-keywords: HDInsight, Hadoop, podregistr, interaktivní dotaz, LLAP
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 36d9e9b34deb4bc6cd5f599cfe2d09a12f680730
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/03/2019
+ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494299"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890395"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Rychlý Start: spuštění dotazů Apache Hive ve službě Azure HDInsight s Apache Zeppelin
 
@@ -28,7 +27,7 @@ An HDInsight clusteru interaktivních dotazů. V tématu [Vytvoření clusteru](
 
 ## <a name="create-an-apache-zeppelin-note"></a>Vytvoření poznámky Apache Zeppelin
 
-1. Nahraďte `CLUSTERNAME` názvem vašeho clusteru v následující adrese URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin`. Pak zadejte adresu URL do webového prohlížeče.
+1. V následující adrese URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin`nahraďte `CLUSTERNAME` názvem vašeho clusteru. Pak zadejte adresu URL do webového prohlížeče.
 
 2. Zadejte své uživatelské jméno a heslo pro přihlášení ke clusteru. Na stránce Zeppelin můžete buď vytvořit novou poznámku, nebo otevřít existující poznámky. **HiveSample** obsahuje několik ukázkových dotazů na podregistr.  
 
@@ -71,9 +70,47 @@ An HDInsight clusteru interaktivních dotazů. V tématu [Vytvoření clusteru](
 
     V porovnání s tradičním podregistrem se výsledky dotazu vrátí rychleji.
 
+### <a name="additional-examples"></a>Další příklady
+
+1. Vytvořte tabulku. V poznámkovém bloku Zeppelin spusťte následující kód:
+
+    ```hql
+    %jdbc(hive)
+    CREATE EXTERNAL TABLE log4jLogs (
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE;
+    ```
+
+1. Načte data do nové tabulky. V poznámkovém bloku Zeppelin spusťte následující kód:
+
+    ```hql
+    %jdbc(hive)
+    LOAD DATA
+    INPATH 'wasbs:///example/data/sample.log'
+    INTO TABLE log4jLogs;
+    ```
+
+1. Vložte jeden záznam. V poznámkovém bloku Zeppelin spusťte následující kód:
+
+    ```hql
+    %jdbc(hive)
+    INSERT INTO TABLE log4jLogs2
+    VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
+    ```
+
+Další syntaxi najdete v [příručce k jazyku podregistru](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) .
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení rychlého startu možná budete chtít cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+Po dokončení rychlého startu možná budete chtít cluster odstranit. Ve službě HDInsight jsou vaše data uložená v Azure Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají.
 
 Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 

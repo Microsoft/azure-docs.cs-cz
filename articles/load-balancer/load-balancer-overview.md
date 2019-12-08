@@ -12,44 +12,26 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c95744e58ce08943765755145645ed45a2ccdb1f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423907"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894450"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
-S Azure Load Balancerem můžete škálovat aplikace a zajistit vysokou dostupnost služeb. Load Balancer podporuje scénáře odchozího i příchozího přenosu, poskytuje nízkou latenci a vysokou propustnost a pro všechny aplikace TCP a UDP umožňuje škálování až na úrovni milionů toků.
+*Vyrovnávání zatížení* označuje efektivní distribuci zatížení nebo příchozích síťových přenosů napříč skupinou back-end prostředků nebo serverů. Azure nabízí [celou řadu možností pro vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) , ze kterých si můžete vybrat podle svých potřeb. Tento dokument popisuje Azure Load Balancer.
 
-Load Balancer distribuuje nové příchozí toky, které dorazí na front-end fond Load Balancer na back-endové instance, podle zadaných pravidel a sond stavu.
+Azure Load Balancer funguje ve vrstvě čtyř modelu propojení Open Systems (OSI). Je jedním kontaktním bodem pro klienty. Load Balancer distribuuje nové příchozí toky, které dorazí na front-endové instance fondu Load Balancer na front-end, podle zadaných pravidel Load vyrovnávání a sond stavu. Instance fondu back-endu můžou být Azure Virtual Machines nebo instancemi v rámci sady škálování virtuálních počítačů (VMSS). 
 
-Veřejné Load Balancer můžou poskytovat odchozí připojení k virtuálním počítačům v rámci virtuální sítě tak, že se jejich privátní IP adresy přeloží na veřejné IP adresy.
+Pomocí Azure Load Balancer můžete škálovat aplikace a vytvářet vysoké dostupná služby. Load Balancer podporuje scénáře příchozího i odchozího přenosu, nabízí nízkou latenci a vysokou propustnost a škáluje až milionů toků pro všechny aplikace TCP a UDP.
 
-Azure Load Balancer je k dispozici ve dvou cenových úrovních nebo *SKU*: Basic a Standard. Ty se liší škálováním, funkcemi a cenou. Jakýkoli scénář, který je možné použít u základních Load Balancer, se taky dá vytvořit s Standard Load Balancer, i když se tyto přístupy mírně liší. Jak se o Load Balancer seznámíte, Seznamte se se základy a rozdíly specifickými pro SKU.
+**[Veřejné Load Balancer](#publicloadbalancer)** můžou poskytovat odchozí připojení k virtuálním počítačům v rámci virtuální sítě tak, že se jejich privátní IP adresy přeloží na veřejné IP adresy. Veřejné nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení internetového provozu na vašich virtuálních počítačích.
 
-## <a name="why-use-load-balancer"></a>Proč používat Load Balancer?
-
-Azure Load Balancer můžete použít k následujícím účelům:
-
-* Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [veřejná Load Balancer](#publicloadbalancer).
-* Vyrovnávání zatížení napříč virtuálními počítači uvnitř virtuální sítě. V hybridním scénáři můžete s front-endem Load Balanceru navázat připojení také z místní sítě. Oba tyto scénáře používají konfiguraci, která se označuje jako [interní Load Balancer](#internalloadbalancer).
-* Přesměrování portů u přenosů na konkrétní port na konkrétních virtuálních počítačích pomocí příchozích pravidel překladu adres (NAT).
-* Zajištění [možností odchozího připojení](load-balancer-outbound-connections.md) pro virtuální počítače ve vaší virtuální síti pomocí veřejného Load Balanceru.
-
->[!NOTE]
-> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud hledáte žádost o ukončení protokolu TLS (Transport Layer Security) ("snižování zátěže SSL") nebo požadavek na protokol HTTP/HTTPS, zpracování aplikační vrstvy, přečtěte si téma [co je Azure Application Gateway?](../application-gateway/overview.md) Pokud hledáte globální vyrovnávání zatížení DNS, přečtěte si téma [co je Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Vaše ucelené scénáře můžou využít kombinaci těchto řešení.
->
-> Porovnání možností vyrovnávání zatížení Azure najdete v tématu [Přehled možností vyrovnávání zatížení v Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
-
-## <a name="what-are-load-balancer-resources"></a>Co jsou prostředky Load Balanceru?
-
-Load Balancer prostředky jsou objekty určující, jak by měl Azure naprogramovat svoji víceklientské infrastrukturu, aby dosáhli scénáře, který chcete vytvořit. Mezi prostředky Load Balancer a skutečnou infrastrukturou nejsou žádné přímé vztahy. Vytvořením Load Balanceru nedojde k vytvoření instance a kapacita je vždy dostupná.
-
-Prostředek Load Balancer může být buď veřejný Load Balancer, nebo interní Load Balancer. Funkce prostředku Load Balancer jsou definovány front-end, pravidlem, sondou stavu a definicí fondu back-end. Virtuální počítače umístíte do fondu back-end tím, že na virtuálním počítači zadáte fond back-end.
+**[Interní (nebo privátní) Load Balancer](#internalloadbalancer)** lze použít ve scénářích, kde jsou na front-endu vyžadovány pouze privátní IP adresy. Interní nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení provozu v rámci virtuální sítě. V hybridním scénáři můžete s front-endem Load Balanceru navázat připojení také z místní sítě.
 
 ## <a name="fundamental-load-balancer-features"></a>Základní funkce Load Balanceru
 
@@ -169,7 +151,7 @@ Informace o cenách Standard Load Balancer najdete v tématu [Load Balancer ceny
 
 Load Balancer úrovně Basic se nabízí zdarma.
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>Smlouva SLA
 
 Informace o smlouvě SLA pro Standard Load Balancer najdete v tématu [SLA pro Load Balancer](https://aka.ms/lbsla).
 
@@ -195,4 +177,4 @@ Informace o smlouvě SLA pro Standard Load Balancer najdete v tématu [SLA pro L
 
 ## <a name="next-steps"></a>Další kroky
 
-V tématu [Vytvoření základní Load Balancer](quickstart-create-basic-load-balancer-portal.md) můžete začít s používáním Load Balancer: Vytvořte si virtuální počítače s nainstalovanou vlastní příponou IIS a vyrovnávat zatížení webové aplikace mezi virtuálními počítači.
+V tématu [Vytvoření veřejné Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md) můžete začít s používáním Load Balancer: Vytvořte si virtuální počítače s nainstalovanou vlastní příponou IIS a vyrovnávat zatížení webové aplikace mezi virtuálními počítači.

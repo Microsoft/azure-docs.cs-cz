@@ -1,25 +1,26 @@
 ---
-title: 'Rychlý start: Vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage'
-description: V tomto rychlém startu se dozvíte, jak použít Průzkumníka služby Azure Storage k vytvoření kontejneru a objektu blob. Dále zjistíte, jak stáhnout tento objekt blob do místního počítače a jak zobrazit všechny objekty blob v kontejneru. Zároveň se naučíte vytvořit snímek objektu blob, spravovat zásady přístupu ke kontejneru a vytvořit sdílený přístupový podpis.
+title: Rychlý Start – vytvoření objektu BLOB s Průzkumník služby Azure Storage
+titleSuffix: Azure Storage
+description: V tomto rychlém startu se naučíte používat Průzkumník služby Azure Storage k vytvoření kontejneru a objektu blob, stažení objektu blob do místního počítače a zobrazení všech objektů BLOB v kontejneru.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/15/2018
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: cd31d1c40f30ebc8341c2126da22f8a74cb05438
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f19152b5b8bc569fa07109b6135fa85b9b55bff1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640515"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892460"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Rychlý start: Vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Rychlý Start: použití Průzkumník služby Azure Storage k vytvoření objektu BLOB
 
 V tomto rychlém startu se dozvíte, jak použít [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) k vytvoření kontejneru a objektu blob. Dále zjistíte, jak stáhnout tento objekt blob do místního počítače a jak zobrazit všechny objekty blob v kontejneru. Zároveň se naučíte vytvořit snímek objektu blob, spravovat zásady přístupu ke kontejneru a vytvořit sdílený přístupový podpis.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -29,13 +30,13 @@ Tento rychlý start vyžaduje instalaci Průzkumníka služby Azure Storage. Ins
 
 Při prvním spuštění se objeví okno **Průzkumník služby Microsoft Azure Storage – Připojení**. Průzkumník služby Storage nabízí několik způsobů, jak se připojit k účtům úložiště. Rozdíly mezi jednotlivými způsoby připojení jsou uvedené v následující tabulce:
 
-|Úloha|Účel|
+|Úkol|Účel|
 |---|---|
 |Přidání účtu Azure | Vás přesměruje na přihlašovací stránku vaší organizace a provede ověření v Azure. |
 |Použití připojovacího řetězce nebo sdíleného přístupového podpisu URI | Ty můžete použít k přímému přístupu ke kontejneru nebo účtu úložiště pomocí tokenu SAS nebo sdíleného připojovacího řetězce. |
 |Použití názvu a klíče účtu úložiště| Pro připojení k úložišti Azure můžete použít název a klíč.|
 
-Vyberte **Přidat účet Azure** a klikněte na tlačítko **Přihlásit...** Podle pokynů na obrazovce se přihlaste ke svému účtu Azure.
+Vyberte **Přidat účet Azure** a klikněte na **Přihlásit se.** .. Podle pokynů na obrazovce se přihlaste k účtu Azure.
 
 ![Průzkumník služby Microsoft Azure Storage – okno Připojení](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -83,17 +84,17 @@ Průzkumník služby Azure Storage umožňuje vytváření a správu [snímků](
 
 ## <a name="manage-access-policies"></a>Správa zásad přístupu
 
-Průzkumník služby Azure Storage umožňuje spravovat zásady přístupu ke kontejnerům přímo v uživatelském rozhraní. Existují dva typy zásad zabezpečení přístupu (SAS), úroveň služby a úroveň účtu. Zásady na úrovni účtu cílí na účet úložiště a je možné je použít na víc služeb a prostředků. Zásady na úrovni služby jsou definovány pro prostředek v konkrétní službě. Pokud chcete vygenerovat zásadu SAS na úrovni služby, klikněte pravým tlačítkem na kterýkoli kontejner a vyberte **Spravovat zásady přístupu...** . Pokud chcete vygenerovat zásadu SAS na úrovni účtu, klikněte pravým tlačítkem na účet úložiště.
+Průzkumník služby Azure Storage umožňuje spravovat zásady přístupu ke kontejnerům přímo v uživatelském rozhraní. Existují dva typy zásad zabezpečení přístupu (SAS), úroveň služby a úroveň účtu. Zásady na úrovni účtu cílí na účet úložiště a je možné je použít na víc služeb a prostředků. Zásady na úrovni služby jsou definovány pro prostředek v konkrétní službě. Pokud chcete vygenerovat SAS na úrovni služby, klikněte pravým tlačítkem na libovolný kontejner a vyberte **Spravovat zásady přístupu...** . Pokud chcete vygenerovat SAS na úrovni účtu, klikněte pravým tlačítkem na účet úložiště.
 
 Když vyberete **Přidat**, budete moci vytvořit novou zásadu přístupu a definovat pro ni oprávnění. Až budete hotovi, uložte zásadu přístupu výběrem možnosti **Uložit**. Tato zásada je nyní dostupná pro použití při konfiguraci sdíleného přístupového podpisu (SAS).
 
 ## <a name="work-with-shared-access-signatures"></a>Použití sdílených přístupových podpisů
 
-Sdílené přístupové podpisy (SAS) se dají získat pomocí Průzkumníka služby Storage. Klikněte pravým tlačítkem na účet úložiště, kontejner nebo objekt blob a zvolte **Získat sdílený přístupový podpis...** . Zvolte čas zahájení a ukončení platnosti a oprávnění a vyberte **Vytvořit**. Úplnou adresu URL s řetězcem dotazu a samotný řetězec je možné zkopírovat na další obrazovce.
+Sdílené přístupové podpisy (SAS) se dají získat pomocí Průzkumníka služby Storage. Klikněte pravým tlačítkem na účet úložiště, kontejner nebo objekt BLOB a vyberte **získat sdílený přístupový podpis...** . Zvolte čas zahájení a ukončení platnosti a oprávnění pro adresu URL SAS a vyberte **vytvořit**. Úplnou adresu URL s řetězcem dotazu a samotný řetězec je možné zkopírovat na další obrazovce.
 
 ![Průzkumník služby Microsoft Azure Storage – seznam objektů blob v kontejneru](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se naučili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí **Průzkumníka služby Azure Storage**. Další informace o práci s úložištěm objektů blob najdete v postupech pro úložiště objektů blob.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407000"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901007"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ Pokud jsou nástroje příliš omezené, můžete zvážit [Úvod do programová
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
@@ -106,7 +106,7 @@ Kliknutím na **Odeslat** vytvořte a souběžně spusťte indexer.
 
   ![Indexer hotelů](media/search-get-started-portal/hotels-indexer.png)
 
-## <a name="monitor-progress"></a>Průběh monitorování
+## <a name="monitor-progress"></a>Sledování průběhu
 
 Průvodce by vás měl přenést do seznamu indexerů, kde můžete monitorovat průběh. V případě samoobslužné navigace přejděte na stránku Přehled a klikněte na **indexery**.
 
@@ -136,7 +136,7 @@ Vyhraďte si chvilku na prostudování možností definice indexu, abyste dobře
 
 Teď už byste měli mít vyhledávací index, který je připravený na dotazování pomocí integrované stránky dotazů [**Průzkumník služby Hledání**](search-explorer.md). Ta obsahuje vyhledávací pole, ve kterém si můžete otestovat libovolné řetězce dotazů.
 
-**Průzkumník služby Search** je vybaven pouze pro [zpracování požadavků REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), ale přijímá syntaxi pro [jednoduchou syntaxi dotazu](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) i [úplný analyzátor dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)a navíc všechny parametry hledání dostupné ve [vyhledávacím dokumentu REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) Operations.
+**Průzkumník služby Search** je vybaven pouze pro zpracování [požadavků REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), ale přijímá syntaxi pro [jednoduchou syntaxi dotazu](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) i [úplný analyzátor dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)a navíc všechny parametry hledání, které jsou k dispozici v [dokumentu hledání REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) operace.
 
 > [!TIP]
 > Následující kroky jsou popsané v 6m08s na video s [přehledem Azure kognitivní hledání](https://channel9.msdn.com/Events/Connect/2016/138).
@@ -260,7 +260,7 @@ Zjistili jste také, jak na portálu najít indexy, indexery a zdroje dat. Pomoc
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné na konci projektu zjistit, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
@@ -268,7 +268,7 @@ Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři
 
 ## <a name="next-steps"></a>Další kroky
 
-I když je portál užitečný pro počáteční a malé úlohy, podrobnější informace o rozhraních API vám pomůžou pochopit koncepty a pracovní postup na hlubší úrovni:
+Pomocí Průvodce portálem vygenerujte webovou aplikaci připravenou k použití, která běží v prohlížeči. Tento průvodce můžete vyzkoušet na malém indexu, který jste právě vytvořili, nebo můžete použít některou z vestavěných ukázkových datových sad, které vám pomůžou využít rozsáhlejší možnosti vyhledávání.
 
 > [!div class="nextstepaction"]
-> [Vytvoření indexu pomocí sady .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [Vytvoření vyhledávací aplikace na portálu](search-create-app-portal.md)

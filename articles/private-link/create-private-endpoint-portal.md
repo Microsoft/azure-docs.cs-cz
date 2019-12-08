@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419764"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899866"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure Portal
 
@@ -41,7 +41,7 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název | Zadejte *MyVirtualNetwork*. |
+    | Name (Název) | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
@@ -65,14 +65,14 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Region (Oblast) | Vyberte **WestCentralUS**. |
+    | Oblast | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Image | Vyberte **Windows Server 2019 Datacenter**. |
+    | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
     | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Potvrzení hesla | Zadejte znovu heslo. |
+    | Potvrdit heslo | Zadejte znovu heslo. |
     | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
     | Veřejné příchozí porty | Nechejte výchozí nastavení **žádné**. |
     | **ÚSPORA PENĚZ** |  |
@@ -92,7 +92,7 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)** .|
     | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
+    | Vyberte příchozí porty | Vyberte **http** a **RDP**.|
     |||
 
 
@@ -144,8 +144,8 @@ V této části vytvoříte SQL Server a přidáte do něj privátní koncový b
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
-    | Název | Zadejte * myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
-    |Region (Oblast)|Vyberte **WestCentralUS**.|
+    | Name (Název) | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
+    |Oblast|Vyberte **WestCentralUS**.|
     |||
 5. Vyberte **Další: prostředek**.
 6. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
@@ -177,15 +177,15 @@ V této části vytvoříte SQL Server a přidáte do něj privátní koncový b
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Připojení k virtuálnímu počítači pomocí vzdálené plochy (RDP)
 
 
-Po vytvoření **myVm*se k němu připojte z Internetu následujícím způsobem: 
+Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobem: 
 
 1. Na panelu hledání na portálu zadejte *myVm*.
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor. RDP *.
+1. Otevřete *stažený soubor. RDP* .
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
@@ -225,7 +225,7 @@ Po vytvoření **myVm*se k němu připojte z Internetu následujícím způsobem
     | Název serveru| Vybrat *MyServer.Database.Windows.NET* |
     | Uživatelské jméno | Jako username@servername zadejte uživatelské jméno, které se poskytuje během vytváření SQL serveru. |
     |Heslo |Zadejte heslo, které jste zadali během vytváření SQL serveru. |
-    |Zapamatovat heslo|Vyberte **Ano**.|
+    |Remember password|Vyberte **Ano**.|
     |||
 1. Vyberte **Connect** (Připojit).
 2. Procházet databáze z levé nabídky

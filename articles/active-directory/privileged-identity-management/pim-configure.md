@@ -14,12 +14,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f45a7bc870874319a8238c7c8c50bf7a37998
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023028"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899963"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) je služb
 
 ## <a name="reasons-to-use"></a>Důvody k použití
 
-Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům, kteří mají privilegovaný přístup k prostředkům Azure a službě Azure AD, poskytovat privilegovaný přístup za běhu (just-in-time). Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce.
+Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům udělit privilegovaný přístup podle potřeby (JIT) k prostředkům Azure a k Azure AD. Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce.
 
 ## <a name="what-does-it-do"></a>Co dělá?
 
@@ -46,7 +46,7 @@ Privileged Identity Management poskytuje aktivaci rolí na základě času a sch
 
 Jakmile nastavíte Privileged Identity Management, v levé navigační nabídce uvidíte možnosti **úlohy**, **Spravovat**a **aktivity** . Jako správce si zvolíte, že budete spravovat **role Azure AD** a role **prostředků Azure** . Když zvolíte typ rolí, které se mají spravovat, zobrazí se podobná sada možností pro daný typ role.
 
-![Snímek obrazovky Privileged Identity Management Azure Portal](./media/pim-configure/pim-overview.png)
+![Snímek obrazovky Privileged Identity Management Azure Portal](./media/pim-configure/pim-quickstart.png)
 
 ## <a name="who-can-do-what"></a>Kdo to může udělat?
 
@@ -89,10 +89,10 @@ Chcete-li lépe pochopit Privileged Identity Management a dokumentaci, měli bys
 | aktivovat |  | Proces provádění jedné nebo více akcí pro použití role, pro kterou má uživatel nárok. Akce můžou zahrnovat provádění kontroly vícefaktorového ověřování (MFA), poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. |
 | přiřazení | Stav | Uživatel, který má přiřazené aktivní roli. |
 | Aktivujte | Stav | Uživatel, který má oprávněné přiřazení role, provedl akce pro aktivaci role a je teď aktivní.  Po aktivaci může uživatel tuto roli použít pro předem nakonfigurovanou časovou dobu, než se bude muset znovu aktivovat. |
-| trvalé oprávněné | Doba trvání | Přiřazení role, kde má uživatel vždy nárok na aktivaci role. |
-| trvalé aktivní | Doba trvání | Přiřazení role, kde může uživatel vždy používat roli bez provedení jakýchkoli akcí. |
-| vypršet nárok | Doba trvání | Přiřazení role, kde má uživatel nárok na aktivaci role během zadaného počátečního a koncového data. |
-| vyprší aktivní | Doba trvání | Přiřazení role, kde může uživatel používat roli bez provádění všech akcí v zadaném počátečním a koncovém datu. |
+| trvalé oprávněné | Délka | Přiřazení role, kde má uživatel vždy nárok na aktivaci role. |
+| trvalé aktivní | Délka | Přiřazení role, kde může uživatel vždy používat roli bez provedení jakýchkoli akcí. |
+| vypršet nárok | Délka | Přiřazení role, kde má uživatel nárok na aktivaci role během zadaného počátečního a koncového data. |
+| vyprší aktivní | Délka | Přiřazení role, kde může uživatel používat roli bez provádění všech akcí v zadaném počátečním a koncovém datu. |
 | přístup JIT (just-in-time) |  | Model, ve kterém uživatelé obdrží dočasná oprávnění k provádění privilegovaných úloh, což zabrání škodlivým nebo neoprávněným uživatelům získat přístup po vypršení platnosti oprávnění. Přístup se udělí jenom v případě, že ho uživatelé potřebují. |
 | Princip minimálního přístupu k oprávněním |  | Doporučený postup zabezpečení, při kterém je každý uživatel k dispozici pouze s minimálními oprávněními potřebnými k provádění úloh, které mají autorizaci provádět. Tento postup minimalizuje počet globálních správců a místo toho používá konkrétní role správce pro určité scénáře. |
 

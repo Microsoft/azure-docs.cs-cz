@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 891952000f633d7d873c6d76c475916acc8ac4ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a96429a84fab10c033cc18a2c35edb4b2a056924
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708849"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895390"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
 
@@ -76,7 +76,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Nastavte **popisek** na "config".
 
-1. Pokud chcete změny uložit, vyberte **použít** .
+1. Pokud chcete změny uložit, vyberte **Použít**.
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -127,7 +127,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Vyberte aplikaci `gateway`, aby se zobrazila stránka s **přehledem** .
 
-1. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Tato možnost může trvat několik minut.
+1. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. To může trvat několik minut.
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
@@ -149,3 +149,5 @@ V tomto rychlém startu jste se naučili:
 
 > [!div class="nextstepaction"]
 > [Příprava aplikace pro jarní cloudy Azure pro nasazení](spring-cloud-tutorial-prepare-app-deployment.md)
+
+Další ukázky jsou k dispozici na GitHubu: [ukázky Azure pro jarní Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 497efda857dcd7de3079d702be00a094d221b779
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034807"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900854"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory
 
@@ -41,7 +41,7 @@ V tomto příkladu tenant obsahuje skupinu zabezpečení nazvanou **personální
 
 1. V části **všechny produkty**vyberte možnost Office 365 Enterprise E5 a Enterprise mobility + Security E3 výběrem názvů produktů. Pokud chcete spustit přiřazení, vyberte v horní části stránky **přiřadit** .
 
-   ![Vybrat produkty k přiřazení licencí](./media/licensing-groups-assign/all-products-assign.png)
+   ![Vybrat produkty k přiřazení licencí](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
 1. Na stránce **přiřadit licenci** vyberte **Uživatelé a skupiny** a otevřete tak seznam uživatelů a skupin.
 
@@ -59,9 +59,9 @@ Když přiřadíte licence ke skupině, Azure AD zpracuje všechny stávající 
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Krok 2: ověření dokončení počátečního přiřazení
 
-1. Přejít na **Azure Active Directory** **skupiny** > . Vyberte skupinu, ke které byly licence přiřazeny.
+1. Přejít na **Azure Active Directory** > **skupiny** Vyberte skupinu, ke které byly licence přiřazeny.
 
-1. Na stránce skupina vyberte **licence**. To vám umožní rychle potvrdit, jestli jsou licence plně přiřazené k uživatelům, a pokud dojde k chybám, které potřebujete najít. K dispozici jsou následující informace:
+1. Na stránce skupina vyberte **licence**. To vám umožní rychle potvrdit, jestli jsou licence plně přiřazené k uživatelům, a pokud dojde k chybám, které potřebujete najít. Je k dispozici následující informace:
 
    - Licence služby, které jsou aktuálně přiřazeny ke skupině. Vyberte položku pro zobrazení konkrétních služeb, které byly povoleny, a proveďte změny.
 
@@ -71,7 +71,7 @@ Když přiřadíte licence ke skupině, Azure AD zpracuje všechny stávající 
 
    ![chyby licencování a stav licence](./media/licensing-groups-assign/assignment-errors.png)
 
-1. Podrobnější informace o zpracování licencí najdete v části **Azure Active Directory** **uživatelé a skupiny** >   > :*název skupiny***protokolu auditu** > . Podívejte se na následující činnosti:
+1. Podrobnější informace o zpracování licencí najdete v části **Azure Active Directory** > **uživatelé a skupiny** > *název skupiny* > **protokoly auditu**. Podívejte se na následující činnosti:
 
    - Aktivita: `Start applying group based license to users`. Tato část se zaznamená do protokolu, když systém vybere změnu přiřazení licence ve skupině a začne ji používat pro všechny členy. Obsahuje informace o změně, která byla provedena.
 
@@ -81,7 +81,7 @@ Když přiřadíte licence ke skupině, Azure AD zpracuje všechny stávající 
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: vyhledání problémů s licencí a jejich řešení
 
-1. Přejít na **Azure Active Directory** **skupiny** >  a vyhledejte skupinu, ke které byly licence přiřazeny.
+1. Přejít na **Azure Active Directory** > **skupiny**a vyhledejte skupinu, ke které byly licence přiřazené.
 1. Na stránce skupina vyberte **licence**. Oznámení v horní části stránky ukazuje, že je k dispozici 10 uživatelů, kterým nebylo možné přiřazovat licence. Otevřete ho a zobrazí se seznam všech uživatelů v chybovém stavu licencování této skupiny.
 1. Sloupec **nezdařené přiřazení** nám oznamuje, že se k uživatelům nepovedlo přiřadit licence k licenci. Sloupec **nejvyšší příčiny selhání** obsahuje příčinu selhání. V tomto případě se jedná o **konfliktní plány služeb**.
 
@@ -89,7 +89,7 @@ Když přiřadíte licence ke skupině, Azure AD zpracuje všechny stávající 
 
 1. Výběrem uživatele otevřete stránku **licence** uživatele. Tato stránka zobrazuje všechny licence, které jsou aktuálně přiřazeny uživateli. V tomto příkladu má uživatel licenci Office 365 Enterprise E1, která byla zděděná od skupiny **uživatelů veřejného terminálu** . To je v konfliktu s licencí E3, kterou se systém pokusil použít ze skupiny **oddělení lidských zdrojů** . V důsledku toho není uživateli přiřazena žádná licence z této skupiny.
 
-   ![Zobrazit všechny konflikty licence pro uživatele](./media/licensing-groups-assign/user-license-view.png)
+   ![Zobrazit všechny konflikty licence pro uživatele](./media/licensing-groups-assign/user-licence-conflicting-service-plans.png)
 
 1. Pokud chcete tento konflikt vyřešit, odeberte uživatele ze skupiny **Uživatelé veřejného terminálu** . Až služba Azure AD změny zpracuje, přiřadí se licence pro **personální oddělení** správně.
 
@@ -100,6 +100,6 @@ Další informace o sadě funkcí pro přiřazení licencí pomocí skupin najde
 - [Co je licencování na základě skupin v Azure Active Directory?](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
 - [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
 - [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
-- [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](licensing-groups-change-licenses.md)
+- [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](licensing-groups-change-licenses.md)
 - [Další scénáře licencování na základě skupin v Azure Active Directory](../active-directory-licensing-group-advanced.md)
-- [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](licensing-ps-examples.md)
+- [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](licensing-ps-examples.md)

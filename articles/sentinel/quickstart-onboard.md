@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 09/23/2019
-ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/05/2019
+ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133103"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900441"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
@@ -24,18 +24,8 @@ Aby bylo možné připojit se k Azure Sentinel, musíte nejdřív povolit služb
 
 Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených sešitů, které jsou na základě vašich dat Surface Insights. Tyto sešity je možné snadno přizpůsobit podle svých potřeb.
 
->[!NOTE] 
-> [Ceny služby Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) jsou založené na množství dat přijatých v přidruženém pracovním prostoru služby Azure monitor Log Analytics. Některé z následujících datových konektorů se za účelem ingestování neúčtují, ale při generování libovolného typu výstrahy s využitím ingestních dat uložených v Log Analytics pracovním prostoru, který se bude účtovat podle [Azure monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/), se vám budou účtovat poplatky. 
-  > - Aktivita Azure (protokoly aktivit pro operace Azure)
-  > - Azure Active Directory Identity Protection (pro klienty s licencemi AAD P2)
-  > - Azure Information Protection
-  > - Rozšířená ochrana před internetovými útoky Azure (výstrahy)
-  > - Azure Security Center (výstrahy)
-  > - Microsoft Cloud App Security (jenom upozornění)
-  > - Microsoft Defender Advanced Threat Protection (výstrahy agenta monitorování)
-  > - Office 365 (protokoly Exchange a SharePoint)
->
-> Protokoly auditu Azure AD/Office 365 nejsou bezplatné a nabízejí se jako úroveň Premium, takže příjem těchto dat se účtuje na základě počtu GB. 
+>[!IMPORTANT] 
+> Informace o účtovaných cenách při používání Azure Sentinel najdete v tématu [ceny služby Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/).
   
 
 ## <a name="global-prerequisites"></a>Globální požadavky
@@ -44,7 +34,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 - Log Analytics pracovní prostor. Naučte se, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). Další informace o Log Analytics pracovních prostorech najdete v tématu [navrhování Azure Monitorch protokolů nasazení](../azure-monitor/platform/design-logs-deployment.md).
 
--  Pokud chcete povolit Azure Sentinel, potřebujete oprávnění přispěvatele k předplatnému, ve kterém se nachází pracovní prostor Azure Sentinel. 
+- Pokud chcete povolit Azure Sentinel, potřebujete oprávnění přispěvatele k předplatnému, ve kterém se nachází pracovní prostor Azure Sentinel. 
 - Pokud chcete použít Azure Sentinel, potřebujete oprávnění Přispěvatel nebo čtenář ve skupině prostředků, do které pracovní prostor patří.
 - K připojení konkrétních zdrojů dat se můžou potřebovat další oprávnění.
 - Služba Azure Sentinel je placená služba. Informace o cenách najdete v tématu informace [o službě Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058).
