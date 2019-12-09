@@ -4,21 +4,20 @@ description: Přečtěte si informace o tom, jak přesouvat data z Salesforce po
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 71201efeb56ffda2dfbf82ca19b3bacb773c7c3d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666150"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929270"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat ze služby Salesforce pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -35,7 +34,7 @@ Azure Data Factory aktuálně podporuje pouze přesun dat z Salesforce na [podpo
 ## <a name="supported-versions"></a>Podporované verze
 Tento konektor podporuje následující edice Salesforce: Developer Edition, Professional Edition, Enterprise Edition nebo Unlimited Edition. A podporuje kopírování z výroby, izolovaného prostoru a vlastní domény Salesforce.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Musí být povolené oprávnění API. Viz [návody povolení přístupu k rozhraní API v Salesforce pomocí sady oprávnění?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 * Pokud chcete kopírovat data z Salesforce do místních úložišť dat, musíte mít ve svém místním prostředí nainstalovanou aspoň Správa dat bránu 2,0.
 
@@ -45,14 +44,14 @@ Salesforce má omezení pro celkové požadavky rozhraní API i pro souběžné 
 - Pokud počet souběžných požadavků překročí limit, dojde k omezení a zobrazí se náhodná selhání.
 - Pokud celkový počet požadavků překročí limit, účet Salesforce se zablokuje na 24 hodin.
 
-V obou scénářích může také docházet k chybě "REQUEST_LIMIT_EXCEEDED". Podrobnosti najdete v části omezení požadavků na rozhraní API v článku [omezení pro vývojáře Salesforce](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) .
+V obou scénářích se může zobrazit také chyba "REQUEST_LIMIT_EXCEEDED". Podrobnosti najdete v části omezení požadavků na rozhraní API v článku [omezení pro vývojáře Salesforce](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) .
 
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z Salesforce pomocí různých nástrojů nebo rozhraní API.
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -73,7 +72,7 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 | environmentUrl | Zadejte adresu URL instance Salesforce. <br><br> -Výchozí hodnota je https:\//login.salesforce.com. <br> – Chcete-li kopírovat data z izolovaného prostoru (sandbox), zadejte "https://test.salesforce.com". <br> – Chcete-li kopírovat data z vlastní domény, zadejte například "https://[doména]. my. Salesforce. com". |Ne |
 | uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano |
 | heslo |Zadejte heslo pro uživatelský účet. |Ano |
-| Element |Zadejte token zabezpečení pro uživatelský účet. Pokyny, jak resetovat nebo získat token zabezpečení, najdete v tématu [získání tokenu zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Obecné informace o tokenech zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Ano |
+| securityToken |Zadejte token zabezpečení pro uživatelský účet. Pokyny, jak resetovat nebo získat token zabezpečení, najdete v tématu [získání tokenu zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Obecné informace o tokenech zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
@@ -107,7 +106,7 @@ Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrn
 
 ## <a name="query-tips"></a>Tipy pro dotazy
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Načítání dat pomocí klauzule WHERE ve sloupci DateTime
-Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu data a času. Příklad:
+Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu data a času. Například:
 
 * **Ukázka SOQL**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **Ukázka SQL**:
@@ -120,8 +119,8 @@ Data ze sestav Salesforce můžete načíst zadáním dotazu jako `{call "<repor
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Načítání odstraněných záznamů ze odpadkového koše Salesforce
 Chcete-li zadat dotaz na nepodmíněné odstraněné záznamy ze složky Koš služby Salesforce, můžete v dotazu zadat **"IsDeleted" = 1** . Například:
 
-* Pokud chcete dotazovat pouze odstraněné záznamy, zadejte SELECT * FROM MyTable__c, **kde IsDeleted = 1**.
-* Chcete-li zadat dotaz na všechny záznamy včetně stávajících a odstraněných, zadejte "SELECT * FROM MyTable__c", **kde IsDeleted = 0 nebo IsDeleted = 1**"
+* Pokud chcete zadat dotaz jenom na odstraněné záznamy, zadejte SELECT * FROM MyTable__c, **kde IsDeleted = 1**.
+* Chcete-li zadat dotaz na všechny záznamy včetně existujících a odstraněných, zadejte "SELECT * FROM MyTable__c, **kde IsDeleted = 0 nebo IsDeleted = 1**"
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Příklad JSON: kopírování dat ze Salesforce do Azure Blob
 Následující příklad poskytuje ukázkové definice JSON, které lze použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data z Salesforce do Azure Blob Storage. Data však lze zkopírovat do kterékoli z těchto umyvadel, které jsou [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedeny, pomocí aktivity kopírování v Azure Data Factory.
@@ -286,25 +285,25 @@ Seznam vlastností, které jsou podporovány rozhraním RelationalSource, nalezn
 
 | Typ Salesforce | . Typ založený na síti |
 | --- | --- |
-| Automatické číslo |Řetězec |
-| prvku |Logická hodnota |
-| Měna |Notaci |
-| Datum |DateTime |
-| Datum a čas |DateTime |
-| Email |Řetězec |
+| Auto Number |Řetězec |
+| Checkbox |Logická hodnota |
+| Měna |Decimal |
+| Datum |Datum a čas |
+| Datum a čas |Datum a čas |
+| E-mail |Řetězec |
 | ID |Řetězec |
-| Relace vyhledávání |Řetězec |
-| Vícenásobný výběr rozevíracího seznamu |Řetězec |
-| Číslo |Notaci |
-| Procento |Notaci |
+| Lookup Relationship |Řetězec |
+| Multi-Select Picklist |Řetězec |
+| Číslo |Decimal |
+| Procento |Decimal |
 | Telefon |Řetězec |
-| Rozevíracího seznamu |Řetězec |
+| Picklist |Řetězec |
 | Text |Řetězec |
-| Oblast textu |Řetězec |
-| Oblast textu (Long) |Řetězec |
-| Textová oblast (bohatá) |Řetězec |
-| Text (zašifrovaný) |Řetězec |
-| zprostředkovatele identity |Řetězec |
+| Text Area |Řetězec |
+| Text Area (Long) |Řetězec |
+| Text Area (Rich) |Řetězec |
+| Text (Encrypted) |Řetězec |
+| Adresa URL |Řetězec |
 
 > [!NOTE]
 > Chcete-li mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si téma [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).

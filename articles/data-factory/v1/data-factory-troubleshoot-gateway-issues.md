@@ -3,21 +3,20 @@ title: Řešení potíží s Správa dat bránou
 description: Poskytuje tipy pro řešení potíží souvisejících s Správa dat bránou.
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 34930061189c11c9cea9c2cd0feb2ede9aade74d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b8aee32869202a8cc24a27dec85c93ffd294c6b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682324"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931603"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek poskytuje informace o řešení potíží s používáním Správa dat brány.
@@ -36,7 +35,7 @@ Tato chybová zpráva se zobrazí při instalaci a registraci brány, konkrétn�
 #### <a name="cause"></a>Příčina
 Počítači, na který se pokoušíte nainstalovat bránu, se nepovedlo stáhnout nejnovější instalační soubor brány z webu Download Center kvůli problému v síti.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Zkontrolujte nastavení proxy server brány firewall, abyste viděli, jestli nastavení zablokovalo síťové připojení z počítače ke [službě Stažení softwaru](https://download.microsoft.com/), a aktualizujte nastavení odpovídajícím způsobem.
 
 Případně můžete stáhnout instalační soubor pro nejnovější bránu z [webu Download Center](https://www.microsoft.com/download/details.aspx?id=39717) na dalších počítačích, které mají přístup ke službě Stažení softwaru. Potom můžete zkopírovat instalační soubor do hostitelského počítače brány a spustit ho ručně a nainstalovat a aktualizovat bránu.
@@ -49,7 +48,7 @@ Tato chyba se zobrazí při pokusu o instalaci brány kliknutím na **instalovat
 #### <a name="cause"></a>Příčina
 Brána je už na tomto počítači nainstalovaná.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Odinstalujte existující bránu na počítači a znovu klikněte na odkaz **instalovat přímo na tento počítač** .
 
 ### <a name="3-problem"></a>3. problém
@@ -64,7 +63,7 @@ Tato zpráva se může zobrazit z jednoho z následujících důvodů:
 * Platnost klíče brány se zrušila.
 * Klíč brány se znovu vygeneroval z portálu.  
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Ověřte, jestli používáte správný klíč brány z portálu. V případě potřeby znovu vygenerujte klíč a pomocí klíče Zaregistrujte bránu.
 
 ### <a name="4-problem"></a>4. problém
@@ -79,7 +78,7 @@ Při registraci brány se může zobrazit následující chybová zpráva.
 #### <a name="cause"></a>Příčina
 Obsah nebo Formát vstupního klíče brány nejsou správné. Jedním z důvodů může být, že jste zkopírovali jenom část klíče z portálu nebo nepoužíváte Neplatný klíč.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Na portálu vygenerujte klíč brány a pomocí tlačítka Kopírovat zkopírujte celý klíč. Pak ho vložte do tohoto okna a zaregistrujte bránu.
 
 ### <a name="5-problem"></a>5. problém
@@ -92,7 +91,7 @@ Při registraci brány se může zobrazit následující chybová zpráva.
 #### <a name="cause"></a>Příčina
 Klíč brány se znovu vygeneroval nebo se brána v Azure Portal odstranila. K tomu může dojít také v případě, že instalace brány Správa dat není nejnovější.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Ověřte, jestli je instalační program brány Správa dat nejnovější verzi. nejnovější verzi najdete na webu Microsoft [Download Center](https://go.microsoft.com/fwlink/p/?LinkId=271260).
 
 Pokud je instalační program aktuální nebo nejnovější a na portálu stále existuje brána, znovu vygenerujte klíč brány v Azure Portal a pomocí tlačítka Kopírovat zkopírujte celý klíč a pak ho vložte do tohoto okna, abyste mohli bránu zaregistrovat. V opačném případě znovu vytvořte bránu a začněte znovu.
@@ -107,7 +106,7 @@ Při registraci brány se může zobrazit následující chybová zpráva.
 #### <a name="cause"></a>Příčina
 K této chybě může dojít, protože brána byla odstraněna nebo byl znovu vygenerován příslušný klíč brány.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Pokud byla brána odstraněna, znovu ji vytvořte z portálu, klikněte na **zaregistrovat**, zkopírujte klíč z portálu, vložte ho a zkuste zaregistrovat bránu.
 
 Pokud brána stále existuje, ale její klíč se znovu vygeneroval, zaregistrujte bránu pomocí nového klíče. Pokud klíč nemáte, znovu vygenerujte klíč z portálu.
@@ -124,7 +123,7 @@ Brána byla zaregistrována na jiných počítačích před. Během prvotní reg
 
 Při obnovení brány na jiném hostitelském počítači Průvodce registrací vyžádá tento certifikát k dešifrování přihlašovacích údajů dříve šifrovaných pomocí tohoto certifikátu.  Bez tohoto certifikátu se přihlašovací údaje nedají dešifrovat novou bránou a následné provádění aktivit kopírování přidružené k této nové bráně selže.  
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Pokud jste vyexportovali certifikát přihlašovacích údajů z původního počítače brány pomocí tlačítka **exportovat** na kartě **nastavení** v Správa dat Configuration Manager brány, použijte zde certifikát.
 
 Tuto fázi nelze přeskočit při obnovování brány. Pokud certifikát chybí, musíte bránu odstranit z portálu a znovu vytvořit novou bránu.  Kromě toho aktualizujte všechny propojené služby, které souvisí s bránou, tak, že znovu zadáte své přihlašovací údaje.
@@ -137,7 +136,7 @@ Může se zobrazit následující chybová zpráva.
 #### <a name="cause"></a>Příčina
 K této chybě dochází, pokud je brána v prostředí, které vyžaduje proxy server HTTP pro přístup k prostředkům Internetu, nebo se změní heslo pro ověřování proxy serveru, ale ve vaší bráně není odpovídajícím způsobem aktualizován.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Postupujte podle pokynů v části věnované hledisku proxy serveru v tomto článku a nakonfigurujte nastavení proxy pomocí Správa dat brány Configuration Manager.
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>Brána je online s omezenými funkcemi
@@ -152,7 +151,7 @@ Stav brány se zobrazí jako online s omezenými funkcemi z jednoho z následuj�
 
 Pokud je brána online s omezenými funkcemi, možná nebudete moci použít Průvodce kopírováním Data Factory k vytváření datových kanálů pro kopírování dat do nebo z místních úložišť dat. Jako alternativní řešení můžete použít Data Factory Editor na portálu, v aplikaci Visual Studio nebo v Azure PowerShell.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Řešení tohoto problému (online s omezenými funkcemi) je založené na tom, jestli se brána nemůže připojit ke cloudové službě, nebo jiným způsobem. Následující části obsahují tato řešení.
 
 ### <a name="2-problem"></a>2. problém
@@ -165,7 +164,7 @@ Zobrazí se následující chyba.
 #### <a name="cause"></a>Příčina
 Brána se nemůže ke cloudové službě připojit prostřednictvím Service Bus.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Použijte následující postup, chcete-li bránu opět přejít do režimu online:
 
 1. Povolí odchozí pravidla IP adres na počítači brány a v podnikové bráně firewall. IP adresy můžete najít z protokolu událostí systému Windows (ID = = 401): byl proveden pokus o přístup k soketu způsobem zakázanému jeho přístupovými oprávněními XX. CZK. CZK. XX: 9350.
@@ -180,7 +179,7 @@ Zobrazí se následující chyba.
 #### <a name="cause"></a>Příčina
 Přechodná Chyba připojení k síti
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Použijte následující postup, chcete-li bránu opět přejít do režimu online:
 
 1. Počkejte pár minut, připojení se automaticky obnoví, až bude chyba pryč.
@@ -201,7 +200,7 @@ Je možné, že se na počítači brány ztratil certifikát SSL. Počítač br�
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Problém můžete vyřešit pomocí těchto kroků:
 
 1. Spusťte Správa dat Configuration Manager brány.
@@ -222,7 +221,7 @@ Po nastavení kanálu na portálu si můžete všimnout následujícího selhán
 #### <a name="cause"></a>Příčina
 K tomu může dojít z různých důvodů a zmírnění omezení se podle potřeby mění.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 Před připojením k databázi SQL povolte odchozí připojení TCP přes port TCP/1433 na straně klienta Správa dat brány.
 
 Pokud je cílovou databází Azure SQL Database, ověřte také SQL Server nastavení brány firewall pro Azure.

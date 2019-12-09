@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d11dc70a78fcec62032c2a6af168bd306c9d416
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227871"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931104"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
-[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. Vzhledem k tomu, že soubory Azure jsou plně spravované, jejich nasazení v produkčních scénářích je mnohem jednodušší než nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek popisuje témata, která je potřeba vzít v úvahu při nasazení sdílené složky Azure pro produkční použití v rámci vaší organizace.
+[Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Vzhledem k tomu, že soubory Azure jsou plně spravované, jejich nasazení v produkčních scénářích je mnohem jednodušší než nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek popisuje témata, která je potřeba vzít v úvahu při nasazení sdílené složky Azure pro produkční použití v rámci vaší organizace.
 
 ## <a name="management-concepts"></a>Koncepty správy
 
@@ -199,25 +199,26 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny sdílen
 
 - Převod účtu LRS/ZRS na GRS/GZRS nebude možné použít pro žádný účet úložiště s povolenými velkými sdílenými složkami.
 
-### <a name="regional-availability"></a>Regionální dostupnost
+### <a name="regional-availability"></a>Dostupnost podle oblastí
 
 Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB. V některých oblastech jsou k dispozici s omezením 100 TiB, tyto oblasti jsou uvedeny v následující tabulce:
 
-|Region (Oblast) |Podporovaná redundance |
+|Oblast |Podporovaná redundance |
 |-------|---------|
 |Austrálie – východ |LRS     |
 |Austrálie – jihovýchod|LRS |
-|Střední Kanada  |LRS     |
-|Východní Kanada     |LRS     |
-|Střed Indie  |LRS     |
+|Kanada – střed  |LRS     |
+|Kanada – východ     |LRS     |
+|Střední Indie  |LRS     |
 |Střed USA *   |LRS     |
 |Východní Asie      |LRS     |
 |Východní USA *        |LRS     |
 |Východní USA 2 *      |LRS     |
 |Francie – střed |LRS, ZRS|
 |Francie – jih   |LRS     |
+|Středoseverní USA |LRS     |
 |Severní Evropa   |LRS     |
-|Indie – jih    |LRS     |
+|Jižní Indie    |LRS     |
 |Jihovýchodní Asie |LRS, ZRS|
 |Středozápadní USA|LRS     |
 |Západní Evropa *    |LRS, ZRS|

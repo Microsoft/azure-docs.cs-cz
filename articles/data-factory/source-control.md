@@ -1,23 +1,22 @@
 ---
-title: Správa zdrojového kódu v Azure Data Factory
+title: Správa zdrojového kódu
 description: Informace o tom, jak nakonfigurovat správu zdrojového kódu v Azure Data Factory
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: naF
-ms.topic: conceptual
-ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
+manager: anandsub
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 01/09/2019
+ms.openlocfilehash: 1f31bb78fced6db2a26559cbd098407823161dfc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703831"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928765"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 
@@ -76,7 +75,7 @@ Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště
 | **Typ úložiště** | Typ úložiště kódu Azure Repos.<br/> | Azure DevOps Git nebo GitHub |
 | **Azure Active Directory** | Název vašeho tenanta Azure AD. | `<your tenant name>` |
 | **Azure Repos organizace** | Název vaší Azure Repos organizace Název vaší Azure Repos organizace můžete najít `https://{organization name}.visualstudio.com`. K vašemu [Azure Repos organizaci](https://www.visualstudio.com/team-services/git/) se můžete přihlásit, abyste měli přístup k profilu sady Visual Studio a viděli vaše úložiště a projekty. | `<your organization name>` |
-| **Názevprojektu** | Název projektu Azure Repos. Název projektu Azure Repos můžete najít `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **ProjectName** | Název projektu Azure Repos. Název projektu Azure Repos můžete najít `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
 | **Úložiště** | Váš Azure Repos název úložiště kódu. Azure Repos projekty obsahují úložiště Git pro správu zdrojového kódu při zvětšování projektu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už je v projektu. | `<your Azure Repos code repository name>` |
 | **Větev pro spolupráci** | Vaše větev Azure Repos spolupráci, která se používá k publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch name>` |
 | **Kořenová složka** | Kořenová složka ve větvi Azure Repos spolupráci. | `<your root folder name>` |
