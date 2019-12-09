@@ -4,21 +4,20 @@ description: Informace o konektoru Teradata pro službu Data Factory, která umo
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 645dcde949c8f5a6b48a5c02892d4cb2c6c5be0e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666094"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929055"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -32,7 +31,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat Teradata můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje pouze přesouvání dat z úložiště dat Teradata do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Teradata.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Data Factory podporuje připojení k místním zdrojům Teradata prostřednictvím brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
 Brána je vyžadována i v případě, že se Teradata hostuje na virtuálním počítači Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
@@ -47,7 +46,7 @@ Aby se Správa dat brána připojovala k databázi Teradata, musíte nainstalova
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API.
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -66,7 +65,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | --- | --- | --- |
 | type |Vlastnost Type musí být nastavená na: **OnPremisesTeradata** . |Ano |
 | server |Název serveru Teradata. |Ano |
-| authenticationType |Typ ověřování, který se používá pro připojení k databázi Teradata. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
+| authenticationType. |Typ ověřování, který se používá pro připojení k databázi Teradata. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi Teradata. |Ano |
@@ -283,47 +282,47 @@ Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-act
 
 Při přesunu dat do Teradata se z typu Teradata do typu .NET použijí následující mapování.
 
-| Typ databáze Teradata | Typ .NET Framework |
+| Typ databáze Teradata | Typ rozhraní .NET Framework |
 | --- | --- |
 | char |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Objekty |Řetězec |
+| Graphic |Řetězec |
 | VarChar |Řetězec |
 | VarGraphic |Řetězec |
-| Objekt blob |Byte [] |
-| Bytové |Byte [] |
-| VarByte |Byte [] |
+| Objekt blob |Byte[] |
+| Bajtů |Byte[] |
+| VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Notaci |Notaci |
-| Klepat |Klepat |
-| Integer |Uvedena |
-| Číslo |Klepat |
+| Decimal |Decimal |
+| Double |Double |
+| Integer |Datový typ Int32 |
+| Číslo |Double |
 | SmallInt |Int16 |
-| Datum |DateTime |
+| Datum |Datum a čas |
 | Time |TimeSpan |
-| Čas s časovým pásmem |Řetězec |
-| Časové razítko |DateTime |
-| Časové razítko s časovým pásmem |DateTimeOffset |
-| Den intervalu |TimeSpan |
-| Každý den v intervalu hodiny |TimeSpan |
-| Interval mezi dny a minutou |TimeSpan |
-| Druhý den intervalu |TimeSpan |
+| Time With Time Zone |Řetězec |
+| Časové razítko |Datum a čas |
+| Timestamp With Time Zone |DateTimeOffset |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
 | Hodina intervalu |TimeSpan |
-| Interval – hodina až minuta |TimeSpan |
-| Hodina intervalu sekund |TimeSpan |
-| Minuta intervalu |TimeSpan |
-| Interval – minuta sekunda |TimeSpan |
-| Interval sekund |TimeSpan |
-| Interval – rok |Řetězec |
-| Interval od roku do měsíce |Řetězec |
-| Měsíc intervalu |Řetězec |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Second |TimeSpan |
+| Interval Year |Řetězec |
+| Interval Year To Month |Řetězec |
+| Interval Month |Řetězec |
 | Tečka (datum) |Řetězec |
 | Tečka (čas) |Řetězec |
-| Období (čas s časovým pásmem) |Řetězec |
+| Period(Time With Time Zone) |Řetězec |
 | Tečka (časové razítko) |Řetězec |
-| Tečka (časové razítko s časovým pásmem) |Řetězec |
-| XML |Řetězec |
+| Period(Timestamp With Time Zone) |Řetězec |
+| Xml |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
 Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).

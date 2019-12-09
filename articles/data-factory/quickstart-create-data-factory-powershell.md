@@ -4,7 +4,7 @@ description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho um
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 564076a0df8ab993796dde3d134a9461ab03e050
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e78b647d27b162c55eb262a7590e1d3ed997de41
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684497"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929891"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý Start: vytvoření datové továrny Azure pomocí PowerShellu
 
@@ -130,7 +130,7 @@ V datové továrně vytvořte propojené služby, abyste svá úložiště dat 
     }
     ```
 
-    Pokud používáte Poznámkový blok, v dialogovém okně **Uložit jako** v poli **Uložit jako typ** vyberte **Všechny soubory**. Jinak se k souboru může přidat přípona `.txt`. například `AzureStorageLinkedService.json.txt`. Pokud soubor před otevřením v Poznámkovém bloku vytvoříte v Průzkumníku souborů, přípona `.txt` se možná nezobrazí, protože ve výchozím nastavení je nastavená možnost **Skrýt příponu souborů známých typů**. Než budete pokračovat k dalšímu kroku, odeberte příponu `.txt`.
+    Pokud používáte Poznámkový blok, v dialogovém okně **Uložit jako** v poli **Uložit jako typ** vyberte **Všechny soubory**. Jinak se k souboru může přidat přípona `.txt`. Například, `AzureStorageLinkedService.json.txt`. Pokud soubor před otevřením v Poznámkovém bloku vytvoříte v Průzkumníku souborů, přípona `.txt` se možná nezobrazí, protože ve výchozím nastavení je nastavená možnost **Skrýt příponu souborů známých typů**. Než budete pokračovat k dalšímu kroku, odeberte příponu `.txt`.
 
 2. V **PowerShellu** přejděte do složky **ADFv2QuickStartPSH**.
 
@@ -146,7 +146,7 @@ V datové továrně vytvořte propojené služby, abyste svá úložiště dat 
         -DefinitionFile ".\AzureStorageLinkedService.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```console
     LinkedServiceName : AzureStorageLinkedService
@@ -192,7 +192,7 @@ Výstupní datová sada představuje data kopírovaná do cíle. V definici výs
         -DefinitionFile ".\InputDataset.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```console
     DatasetName       : InputDataset
@@ -233,7 +233,7 @@ Výstupní datová sada představuje data kopírovaná do cíle. V definici výs
         -DefinitionFile ".\OutputDataset.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```console
     DatasetName       : OutputDataset
@@ -347,7 +347,7 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
     }
     ```
 
-    Zde je ukázkový výstup spuštění kanálu:
+    Tady je ukázkový výstup spuštění kanálu:
 
     ```console
     Pipeline is running...status: InProgress

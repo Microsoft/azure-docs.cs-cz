@@ -3,26 +3,22 @@ title: Vytvoření identity pro aplikaci Azure na portálu
 titleSuffix: Microsoft identity platform
 description: V této části najdete popis postupu vytvoření nové aplikace Azure Active Directory a instančního objektu, který se dá použít s řízením přístupu na základě role v Azure Resource Manager ke správě přístupu k prostředkům.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c883dc1f9743e4318db5fe21b0e52ea92d60dc5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473842"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917858"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům
 
@@ -47,9 +43,9 @@ Vytvořili jste aplikaci a instanční objekt služby Azure AD.
 
 ## <a name="assign-the-application-to-a-role"></a>Přiřazení aplikace k roli
 
-Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolích naleznete v tématu [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md).
+Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: vestavěné role](../../role-based-access-control/built-in-roles.md).
 
-Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou zděděna na nižší úrovně rozsahu. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje.
+Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění se dědí do oboru na nižších úrovních. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje.
 
 1. V Azure Portal vyberte úroveň rozsahu, do kterého chcete aplikaci přiřadit. Pokud například chcete přiřadit roli v oboru předplatného, vyhledejte a vyberte **odběry**nebo vyberte **předplatná** na **domovské** stránce.
 
@@ -62,12 +58,12 @@ Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo pr
    Pokud nevidíte předplatné, které hledáte, vyberte **globální filtr předplatných**. Ujistěte se, že je vybráno požadované předplatné portálu.
 
 1. Vyberte **Řízení přístupu (IAM)** .
-1. Vyberte **Přidat přiřazení role**.
+1. Vyberte **přidat přiřazení role**.
 1. Vyberte roli, kterou chcete aplikaci přiřadit. Pokud například chcete, aby aplikace mohla provádět akce, jako je **restartování**, **spuštění** a **zastavení** instancí, vyberte roli **Přispěvatel** .  Další informace o [dostupných rolích](../../role-based-access-control/built-in-roles.md) ve výchozím nastavení se v dostupných možnostech nezobrazí v aplikacích Azure AD. Chcete-li najít aplikaci, vyhledejte její název a vyberte ji.
 
    ![Vyberte roli, kterou chcete přiřadit k aplikaci.](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Kliknutím na **Uložit** dokončete přiřazení role. Vaše aplikace se zobrazí v seznamu uživatelů přiřazených k roli pro tento obor.
+1. Vyberte **Uložit** k dokončení přiřazení role. Vaše aplikace se zobrazí v seznamu uživatelů přiřazených k roli pro tento obor.
 
 Vaše instanční objekt je nastavený. Můžete ji začít používat ke spouštění skriptů nebo aplikací. V další části se dozvíte, jak získat hodnoty, které jsou potřeba při přihlašování prostřednictvím kódu programu.
 
@@ -147,7 +143,7 @@ Pokud je nastavení registrace aplikací nastaveno na **ne**, můžou tyto typy 
 
 ### <a name="check-azure-subscription-permissions"></a>Ověřit oprávnění pro předplatné Azure
 
-Ve vašem předplatném Azure musí mít váš účet přístup `Microsoft.Authorization/*/Write`, aby bylo možné přiřadit aplikaci AD k roli. Tato akce se povoluje prostřednictvím role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) nebo [správce uživatelských přístupů](../../role-based-access-control/built-in-roles.md#user-access-administrator). Pokud je váš účet přiřazen k roli **Přispěvatel** , nemáte příslušná oprávnění. Při pokusu o přiřazení instančního objektu k roli se zobrazí chyba.
+Ve vašem předplatném Azure musí mít váš účet `Microsoft.Authorization/*/Write` přístup k přiřazení aplikace AD k roli. Tato akce se povoluje prostřednictvím role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) nebo [správce uživatelských přístupů](../../role-based-access-control/built-in-roles.md#user-access-administrator). Pokud je váš účet přiřazen k roli **Přispěvatel** , nemáte příslušná oprávnění. Při pokusu o přiřazení instančního objektu k roli se zobrazí chyba.
 
 Ověření oprávnění k předplatnému:
 

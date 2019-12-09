@@ -2,26 +2,23 @@
 title: Konfigurace aplikace pro přístup k webovým rozhraním API – platforma Microsoftu identity
 description: Zjistěte, jak nakonfigurovat aplikaci zaregistrovanou na platformě Microsoft Identity Platform tak, aby zahrnovala identifikátory URI pro přesměrování, přihlašovací údaje nebo oprávnění pro přístup k webovým rozhraním API.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0fd9374c0f507dfc075719ef61f71457317dedba
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106606"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915160"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
@@ -43,7 +40,7 @@ V tomto rychlém startu si ukážeme, jak nakonfigurovat aplikaci následující
 * [Přidání přihlašovacích údajů do webové aplikace](#add-credentials-to-your-web-application)
 * [Přidání oprávnění pro přístup k webovým rozhraním API](#add-permissions-to-access-web-apis)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte splnit následující požadavky:
 
@@ -128,7 +125,7 @@ Při konfiguraci nastavení aplikace na základě platformy nebo zařízení cí
 
 1. Zadejte informace o nastavení na základě vybrané platformy.
 
-   | Platforma                | Vlastnit              | Nastavení konfigurace            |
+   | Platforma                | Choices              | Nastavení konfigurace            |
    |-------------------------|----------------------|-----------------------------------|
    | **Webové aplikace**    | **Web**              | Zadejte **identifikátor URI pro přesměrování** vaší aplikace. |
    | **Mobilní aplikace** | **iOS**              | Zadejte **ID sady prostředků**aplikace, které najdete v Xcode v souboru info. plist nebo nastavení sestavení. Přidání ID sady prostředků automaticky vytvoří identifikátor URI přesměrování pro aplikaci. |

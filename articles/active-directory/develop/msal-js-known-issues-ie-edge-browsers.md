@@ -1,29 +1,25 @@
 ---
-title: Známé problémy s Internet Explorerem a Microsoft Edgem (MSAL for JavaScript)
+title: Problémy MSAL. js v Internet Exploreru & Microsoft Edge | Azure
 titleSuffix: Microsoft identity platform
 description: Seznamte se s informacemi o tom, jaké jsou problémy při používání knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) s Internet Explorerem a prohlížeči Microsoft Edge.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b4e24a02bcce372f020833a82b685748432c39
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fe9f8ff420698d5afe617973abc7874256efe260
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934843"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916379"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Známé problémy v prohlížečích Internet Explorer a Microsoft Edge pomocí MSAL. js
 
@@ -60,7 +56,7 @@ Použijte alternativní řešení níže.
 #### <a name="other-workarounds"></a>Další alternativní řešení
 Před přijetím těchto alternativních řešení se ujistěte, že se k vašemu problému dochází jenom v konkrétní verzi prohlížeče Microsoft Edge a funguje v ostatních prohlížečích.  
 1. V prvním kroku, jak tyto problémy obejít, se ujistěte, že se doména aplikace, a všechny další lokality, které jsou zapojeny do přesměrování toku ověřování, přidaly jako důvěryhodné lokality v nastavení zabezpečení prohlížeče tak, aby patřily do stejné bezpečnostní zóny.
-Uděláte to takto:
+Chcete-li to provést, postupujte takto:
     - Otevřete **Internet Explorer** a klikněte na **Nastavení** (ikona ozubeného kolečka) v pravém horním rohu.
     - Vybrat **Možnosti Internetu**
     - Vyberte kartu **zabezpečení** .

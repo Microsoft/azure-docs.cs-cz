@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 54c51a10f950fb5381ab29968a866772dcaec78c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842774"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917997"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -42,6 +42,10 @@ Tento článek ukazuje, jak zobrazit seznam aplikací v galerii aplikací Azure 
 - V případě jednotného přihlašování k heslu se ujistěte, že vaše aplikace podporuje ověřování prostřednictvím formuláře, aby bylo možné provést jednotné přihlašování, aby bylo možné pracovat s jednotným přihlašováním podle očekávání.
 - Budete potřebovat trvalý účet pro testování s alespoň dvěma registrovanými uživateli.
 
+**Jak získat Azure AD pro vývojáře?**
+
+Můžete získat bezplatný zkušební účet se všemi funkcemi služby Azure AD Premium – 90 dní zdarma a prodloužit platnost, pokud s ním budete pracovat: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+
 ## <a name="submit-the-request-in-the-portal"></a>Odeslat žádost na portálu
 
 Po otestování, že integrace aplikace funguje se službou Azure AD, odešlete žádost o přístup na [portál sítě aplikace](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Pokud máte účet Office 365, použijte ho pro přihlášení k tomuto portálu. Pokud ne, přihlaste se pomocí svého účet Microsoft, jako je například Outlook nebo Hotmail.
@@ -59,6 +63,26 @@ Pokud se po přihlášení zobrazí následující stránka, v textovém poli za
 Náš tým si přečte podrobnosti a poskytne jim odpovídající přístup. Po schválení žádosti se můžete přihlásit k portálu a odeslat žádost tak, že na domovské stránce vyberete dlaždici **Odeslat žádost (ISV)** .
 
 ![Dlaždice odeslat žádost (ISV) na domovské stránce](./media/howto-app-gallery-listing/homepage.png)
+
+## <a name="issues-on-logging-into-portal"></a>Problémy při přihlašování do portálu
+
+Pokud se tato chyba zobrazuje při přihlašování, pak tady najdete podrobnosti o problému a to je způsob, jak ho opravit.
+
+* Pokud vaše přihlášení bylo blokované, jak je uvedeno níže:
+
+  ![problémy při řešení aplikace v galerii](./media/howto-app-gallery-listing/blocked.png)
+
+**Co se děje:**
+
+Uživatel typu Host je federovaný pro domácího tenanta, který je také Azure AD. Uživatel typu host má vysoké riziko. Microsoft nepovoluje vysokým rizikovým uživatelům přístup k jeho prostředkům. Všichni uživatelé s vysokým rizikem (zaměstnanci nebo hosty/dodavatelé) musí opravit/zavřít své riziko pro přístup k prostředkům Microsoftu. Pro uživatele typu Host přijde toto riziko uživatele z domovského tenanta a zásada pochází z tenanta prostředků (Microsoft v tomto případě).
+ 
+**Zabezpečená řešení:**
+
+* Registrovaní uživatelé typu Host napravují vlastní riziko uživatele. To může provést uživatel typu Host, který provádí zabezpečené změny nebo resetování hesla (https://aka.ms/sspr) na svém domovském tenantovi (to vyžaduje MFA a SSPR v domovském tenantovi). Zabezpečená změna nebo resetování hesla je nutné iniciovat ve službě Azure AD, nikoli v Prem.
+
+* Uživatelé typu Host mají nápravu svého rizika. V takovém případě správce provede resetování hesla (dočasné generování hesla). Tato nepotřebuje ochranu identity. Správce hostovaného uživatele může přejít na https://aka.ms/RiskyUsers a kliknout na resetovat heslo.
+
+* Uživatelé typu Host mají své riziko zavřít/zavřít. Tento příkaz nepotřebuje ochranu identity. Správce může přejít na https://aka.ms/RiskyUsers a kliknout na Zavřít riziko pro uživatele. Správce však musí provést v důsledku náležité opatrnosti, aby se zajistilo, že se jedná o falešně pozitivní hodnocení rizika před uzavřením rizika uživatele. V opačném případě se jedná o rizika svých zdrojů a prostředků Microsoftu tím, že potlačí posouzení rizik bez šetření.
 
 > [!NOTE]
 > Pokud máte s přístupem nějaké problémy, obraťte se na [integrační tým jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
@@ -79,6 +103,7 @@ Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte nej
   ![Výpis aplikace SAML 2,0 nebo WS-v galerii](./media/howto-app-gallery-listing/saml.png)
 
   * Pokud chcete přidat aplikaci do seznamu v galerii pomocí **SAML 2,0** nebo **WS-** dodávání, vyberte **SAML 2.0/WS-** dodaný, jak je znázorněno na obrázku.
+
   * Pokud máte s přístupem nějaké problémy, obraťte se na [integrační tým jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="implement-sso-by-using-the-password-sso"></a>Implementace jednotného přihlašování pomocí jednotného přihlašování k heslům

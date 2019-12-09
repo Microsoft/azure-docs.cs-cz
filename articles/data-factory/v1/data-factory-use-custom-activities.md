@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703327"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927956"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -71,7 +70,7 @@ V tomto kurzu vytvořte účet Azure Batch s fondem virtuálních počítačů. 
    5. Kliknutím na tlačítko **OK** vytvořte fond.
    6. Poznamenejte si **ID** fondu.
 
-### <a name="high-level-steps"></a>Kroky vysoké úrovně
+### <a name="high-level-steps"></a>Základní kroky
 Tady jsou dva kroky vysoké úrovně, které provedete v rámci tohoto návodu:
 
 1. Vytvořte vlastní aktivitu, která obsahuje jednoduchou logiku transformace a zpracování dat.
@@ -100,7 +99,7 @@ Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit sp
 ### <a name="procedure"></a>Postup
 1. Vytvořte projekt **knihovny tříd .NET** .
    <ol type="a">
-     <li>Spusťte Visual Studio.</li>
+     <li>Spusťte sadu Visual Studio.</li>
      <li>Klikněte na <b>Soubor</b>, přejděte na <b>Nový</b> a klikněte na <b>Projekt</b>.</li>
      <li>Rozbalte <b>Šablony</b> a vyberte <b>Visual C#</b>. V tomto návodu použijete C#, ale můžete použít libovolný jazyk .NET k vývoji vlastní aktivity.</li>
      <li>V seznamu typů projektů napravo vyberte <b>Knihovna tříd</b> . V aplikaci Visual Studio vyberte možnost <b>Knihovna tříd (.NET Framework)</b> </li>
@@ -367,7 +366,7 @@ Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit sp
     ```
 
     Metoda výpočtu vypočítá počet instancí klíčového slova Microsoft ve vstupních souborech (objekty blob ve složce). Hledaný termín ("Microsoft") je pevně kódovaný v kódu.
-10. Zkompilujte projekt. V nabídce klikněte na **sestavit** a pak klikněte na **Sestavit řešení**.
+10. Kompilovat projekt. V nabídce klikněte na **sestavit** a pak klikněte na **Sestavit řešení**.
 
     > [!IMPORTANT]
     > Nastavte verzi 4.5.2 .NET Framework jako cílovou architekturu pro váš projekt: klikněte pravým tlačítkem myši na projekt a kliknutím na **vlastnosti** nastavte cílovou architekturu. Data Factory nepodporuje vlastní aktivity zkompilované proti .NET Framework verzím novějším než 4.5.2.
@@ -434,7 +433,7 @@ Tady jsou kroky, které provedete v této části:
     ![Okno Objekt pro vytváření dat](media/data-factory-use-custom-activities/data-factory-blade.png)
 
 ### <a name="step-2-create-linked-services"></a>Krok 2: Vytvoření propojených služeb
-Propojené služby propojují úložiště dat nebo výpočetní služby s objektem pro vytváření dat Azure. V tomto kroku propojíte účet Azure Storage a Azure Batch účet k datové továrně.
+Propojené služby propojují úložiště dat nebo výpočetní služby s objektem pro vytváření dat Azure. V tomto kroku propojíte svůj účet úložiště Azure a účet Azure Batch pro vytváření dat.
 
 #### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
 1. Klikněte na dlaždici **Autor a nasazení** v okně **objekt pro vytváření dat** pro **CustomActivityFactory**. Zobrazí se editor služby Data Factory.
@@ -550,11 +549,11 @@ V tomto kroku vytvoříte datové sady, které reprezentují vstupní a výstupn
 
    | Průřez | Čas spuštění | Výstupní soubor |
    |:--- |:--- |:--- |
-   | 1\. místo |2016-11 – 16T00:00:00 |2016-11 – 16 -00. txt |
-   | 2 |2016-11 – 16T01:00:00 |2016-11 – 16 -01. txt |
-   | 3 |2016-11 – 16T02:00:00 |2016-11 – 16 -02. txt |
-   | 4 |2016-11 – 16T03:00:00 |2016-11 – 16 -03. txt |
-   | 5 |2016-11 – 16T04:00:00 |2016-11 – 16 -04. txt |
+   | 1\. místo |2016-11-16T00:00:00 |2016-11-16-00.txt |
+   | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
+   | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
+   | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
+   | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
     Mějte na paměti, že všechny soubory ve vstupní složce jsou součástí řezu s časy zahájení uvedenými výše. Při zpracování tohoto řezu vlastní aktivita projde jednotlivé soubory a vytvoří ve výstupním souboru řádek s počtem výskytů hledaného výrazu ("Microsoft"). Pokud vstupní složka obsahuje tři soubory, ve výstupním souboru jsou tři řádky pro každý hodinový řez: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt atd.
 3. **OutputDataset**nasadíte kliknutím na **nasadit** na panelu příkazů.

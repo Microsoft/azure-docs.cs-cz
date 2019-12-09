@@ -2,27 +2,23 @@
 title: Konfigurace aplikace k vystavení webových rozhraní API – platforma Microsoftu identity
 description: Zjistěte, jak nakonfigurovat aplikaci pro zveřejnění nového oprávnění nebo oboru a role a tím ji zpřístupnit klientským aplikacím.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8ba582516002c3e34ca91ceddbfd826bafe0c282
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68989273"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921445"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý Start: Konfigurace aplikace k vystavení webových rozhraní API
 
@@ -52,7 +48,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Zveřejnění nového oboru prostřednictvím uživatelského rozhraní
 
-[![Shows, jak vystavit rozhraní API pomocí uživatelského rozhraní](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![ukazuje, jak vystavit rozhraní API pomocí uživatelského rozhraní](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Zveřejnění nového oboru prostřednictvím uživatelského rozhraní:
 

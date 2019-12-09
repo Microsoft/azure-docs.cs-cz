@@ -1,5 +1,6 @@
 ---
-title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (získá token pro aplikaci) – Microsoft Identity Platform
+title: Získání tokenu pro desktopové aplikace, které volají webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (získání tokenu pro aplikaci |)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce79a2dcbb0d79d84019c350eb4693160c8f7d50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175459"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920222"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – získat token
 
@@ -122,7 +123,7 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
     }
 }];
 ```
-SWIFT
+Swift:
 
 ```swift
 guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
@@ -260,7 +261,7 @@ Hostitelem `end Url` je vždy `redirectUri`. K zachycení `end Url` můžete:
 
 Aby bylo možné použít `.WithCustomWebUI`, je třeba:
 
-  1. Implementujte rozhraní `ICustomWebUi` (viz [zde](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). V podstatě budete muset implementovat jednu metodu `AcquireAuthorizationCodeAsync` přijetí adresy URL autorizačního kódu (vypočítaného MSAL.NET), aby uživatel procházel prostřednictvím interakce se zprostředkovatelem identity a pak vrátil zpět adresu URL, kterou by měl zprostředkovatel identity. volá se vaše implementace zpátky (včetně autorizačního kódu). Pokud máte problémy, vaše implementace by měla vyvolat výjimku `MsalExtensionException`, aby bylo možné s MSALně spolupracovat.
+  1. Implementujte rozhraní `ICustomWebUi` (viz [zde](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). V podstatě budete muset implementovat jednu metodu `AcquireAuthorizationCodeAsync` přijetí adresy URL autorizačního kódu (vypočítaného MSAL.NET), aby uživatel procházel prostřednictvím interakce s poskytovatelem identity a pak vrátil zpět adresu URL, kterou by zprostředkovatel identity volal jako zpětnou implementaci (včetně autorizačního kódu). Pokud máte problémy, vaše implementace by měla vyvolat výjimku `MsalExtensionException`, aby bylo možné s MSALně spolupracovat.
   2. Ve vašem volání `AcquireTokenInteractive` můžete použít modifikátor `.WithCustomUI()` předání instance vlastního webového uživatelského rozhraní.
 
      ```CSharp
@@ -381,7 +382,7 @@ MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParame
 }];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: MSALWebviewParameters())
@@ -1108,7 +1109,7 @@ Třídy a rozhraní, které jsou součástí serializace mezipaměti tokenů, js
 
 Strategie se liší v závislosti na tom, jestli píšete serializaci mezipaměti tokenů pro veřejnou klientskou aplikaci (Desktop), nebo důvěrnou klientskou aplikaci (webovou aplikaci/webové rozhraní API, démon App).
 
-Vzhledem k tomu, že MSAL v2. x máte několik možností, v závislosti na tom, jestli chcete mezipaměť serializovat pouze do formátu MSAL.NET (Unified Format cache, která je společná s MSAL, ale i napříč platformami), nebo pokud chcete podporovat i [starší](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) mezipaměť tokenů. serializace knihovny ADAL v3.
+Vzhledem k tomu, že MSAL v2. x máte několik možností, v závislosti na tom, jestli chcete mezipaměť serializovat jenom do formátu MSAL.NET (Unified Format cache, která je společná pro MSAL, ale i napříč platformami), nebo pokud chcete podporovat serializaci mezipaměti se [starším](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) tokenem pro ADAL v3.
 
 Přizpůsobení serializace mezipaměti tokenů pro sdílení stavu jednotného přihlašování mezi ADAL.NET 3. x, ADAL.NET 5. x a MSAL.NET je vysvětleno v rámci následující ukázky: [Active-Directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)
 

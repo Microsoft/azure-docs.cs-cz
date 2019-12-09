@@ -4,21 +4,20 @@ description: Přečtěte si informace o tom, jak přesunout data z databáze MyS
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666110"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928109"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Přesun dat z MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,7 +32,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat MySQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje pouze přesouvání dat z úložiště dat MySQL do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat MySQL. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Služba Data Factory podporuje připojení k místním zdrojům MySQL pomocí brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
 Brána je vyžadována i v případě, že je databáze MySQL hostována ve virtuálním počítači Azure s IaaS (VM). Bránu můžete nainstalovat na stejný virtuální počítač jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
@@ -51,7 +50,7 @@ Aby se Správa dat brána připojovala k databázi MySQL, musíte nainstalovat [
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -72,8 +71,8 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | server |Název serveru MySQL |Ano |
 | databáze |Název databáze MySQL |Ano |
 | schema |Název schématu v databázi. |Ne |
-| authenticationType |Typ ověřování, který se používá pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
-| Jmen |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
+| authenticationType. |Typ ověřování, který se používá pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
+| userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi MySQL. |Ano |
 
@@ -299,47 +298,47 @@ Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-act
 
 Při přesunu dat do MySQL se z typů MySQL do typů .NET používají následující mapování.
 
-| Typ databáze MySQL | Typ .NET Framework |
+| Typ databáze MySQL | Typ rozhraní .NET Framework |
 | --- | --- |
-| bigint bez znaménka |Notaci |
+| bigint bez znaménka |Decimal |
 | bigint |Int64 |
-| 40bitového |Notaci |
-| blob |Byte [] |
+| bit |Decimal |
+| blob |Byte[] |
 | bool |Logická hodnota |
 | char |Řetězec |
-| date |Hodnotu |
-| datetime |Hodnotu |
-| decimal |Notaci |
-| Dvojitá přesnost |Klepat |
-| double |Klepat |
-| vytváření |Řetězec |
+| date |Datetime |
+| datetime |Datetime |
+| decimal |Decimal |
+| Dvojitá přesnost |Double |
+| double |Double |
+| Výčet |Řetězec |
 | float |Jednoduchá |
 | celé číslo bez znaménka |Int64 |
-| int |Uvedena |
+| int |Datový typ Int32 |
 | celé číslo bez znaménka |Int64 |
-| celé číslo |Uvedena |
-| Long varbinary |Byte [] |
+| celé číslo |Datový typ Int32 |
+| Long varbinary |Byte[] |
 | Long varchar |Řetězec |
-| longblob |Byte [] |
+| longblob |Byte[] |
 | longtext |Řetězec |
-| mediumblob |Byte [] |
+| mediumblob |Byte[] |
 | mediumint bez znaménka |Int64 |
-| mediumint |Uvedena |
+| mediumint |Datový typ Int32 |
 | mediumtext |Řetězec |
-| číselné |Notaci |
-| nemovitostí |Klepat |
+| numeric |Decimal |
+| real |Double |
 | set |Řetězec |
-| typ smallint bez znaménka |Uvedena |
+| typ smallint bez znaménka |Datový typ Int32 |
 | smallint |Int16 |
 | text |Řetězec |
 | time |TimeSpan |
-| časové razítko |Hodnotu |
-| tinyblob |Byte [] |
+| časové razítko |Datetime |
+| tinyblob |Byte[] |
 | typ tinyint bez znaménka |Int16 |
 | tinyint |Int16 |
 | tinytext |Řetězec |
 | varchar |Řetězec |
-| za rok |Hmot |
+| za rok |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
 Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).

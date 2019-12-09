@@ -1,7 +1,7 @@
 ---
-title: Zjistěte, jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD.
+title: Poskytněte volitelné deklarace identity aplikacím Azure AD | Azure
 titleSuffix: Microsoft identity platform
-description: Průvodce přidáním vlastních nebo dodatečných deklarací na tokeny SAML 2,0 a JSON webtokens (JWT) vydaných Azure Active Directory.
+description: Jak přidat vlastní nebo další deklarace k tokenům SAML 2,0 a JSON web tokens (JWT) vydaných Azure Active Directory.
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1364a491122ae15f86bec98afbfd4e5110e8e07
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 323415c18497f19b4c8f29a303b6ec59dfda1885
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844715"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918266"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD
 

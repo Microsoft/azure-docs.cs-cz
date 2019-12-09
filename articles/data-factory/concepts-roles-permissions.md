@@ -7,16 +7,15 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 00d84a7f3b4a15c9278caac8c2715380dd330482
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681430"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930494"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro Azure Data Factory
 
@@ -46,7 +45,7 @@ Po vytvoření Data Factory možná budete chtít umožnit ostatním uživatelů
 
 Další informace o této roli najdete v tématu [Data Factory role přispěvatele](../role-based-access-control/built-in-roles.md#data-factory-contributor).
 
-### <a name="resource-manager-template-deployment"></a>Nasazení šablony Správce prostředků
+### <a name="resource-manager-template-deployment"></a>Nasazení šablony Resource Manageru
 
 Role **přispěvatel Data Factory** na úrovni skupiny prostředků nebo výše umožňuje uživatelům nasadit správce prostředků šablony. V důsledku toho mohou členové role použít šablony Správce prostředků k nasazení datových továren a jejich podřízených prostředků, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration runtime. Členství v této roli ale neumožňuje uživateli vytvářet další prostředky.
 
@@ -57,7 +56,7 @@ Oprávnění pro Azure Repos a GitHub jsou nezávislá na oprávněních Data Fa
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Vlastní scénáře a vlastní role
 
-Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Příklad:
+Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Například:
 - Možná budete potřebovat skupinu, kde uživatelé mají oprávnění pouze pro konkrétní objekt pro vytváření dat.
 - Nebo možná budete potřebovat skupinu, kde uživatelé můžou monitorovat jenom objekt pro vytváření dat (nebo továrny), ale nemůžou ho upravovat.
 

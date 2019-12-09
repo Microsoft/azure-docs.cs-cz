@@ -1,5 +1,5 @@
 ---
-title: Mobilní aplikace, která volá webovou rozhraní API – konfigurace kódu aplikace
+title: Konfigurace mobilních aplikací, které volají webová rozhraní API | Azure
 titleSuffix: Microsoft identity platform
 description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (konfigurace kódu aplikace).
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c5160d88e390f9bfe905dfee0684983a7a49365
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803732"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919881"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobilní aplikace, která volá webová rozhraní API – registrace aplikace
 
@@ -78,7 +78,7 @@ Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování
 
 Pokud vaše aplikace používá jenom uživatelské jméno a heslo, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. To znamená, že tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform v 2.0 a vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI. Musíte ale vyjádřit, že vaše aplikace je veřejná klientská aplikace. Tuto konfiguraci dosáhnete tak, že v podčásti pro **ověřování** nasadíte aplikaci a v podčásti **Upřesnit nastavení** zvolíte **Ano**, na dotaz **považovat aplikaci za veřejného klienta** (ve výchozím odstavci **typ klienta** ).
 
-## <a name="api-permissions"></a>Oprávnění API
+## <a name="api-permissions"></a>Oprávnění rozhraní API
 
 Mobilní aplikace volají rozhraní API jménem přihlášeného uživatele. Vaše aplikace potřebuje požádat o delegovaná oprávnění, označovaná také jako obory. V závislosti na požadovaném prostředí lze to provést staticky prostřednictvím Azure Portal nebo dynamicky v době běhu. Statická registrace oprávnění umožňuje správcům snadno schválit vaši aplikaci a doporučuje se.
 

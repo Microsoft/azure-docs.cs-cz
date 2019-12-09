@@ -1,5 +1,5 @@
 ---
-title: Instanční objekty aplikací a služeb v Azure Active Directory
+title: Aplikace & instančních objektech ve službě Azure AD | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o vztahu mezi aplikací a objekty zabezpečení služby v Azure Active Directory.
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03054f328513c7356b02d296076c211cc1c3865e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2cf436881a74cffd0053718413ce83a148fa019d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844579"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918198"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
 

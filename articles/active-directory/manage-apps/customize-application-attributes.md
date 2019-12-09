@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8337d18b5c6b484e45e6cefaec98e2684155a02
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 9d76a11fc41fd964ff4e43518aee34aad3ecffd3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900423"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922673"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -139,7 +139,7 @@ SCIM RFC definuje základní schéma uživatelů a skupin a zároveň umožňuje
    1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com), vyberte **podnikové aplikace**, vyberte svou aplikaci a pak vyberte **zřizování**.
    2. V části **mapování**vyberte objekt (uživatele nebo skupinu), pro který chcete přidat vlastní atribut.
    3. V dolní části stránky vyberte **Zobrazit upřesňující možnosti**.
-   4. Vyberte * * Upravit seznam atributů pro *aplikaci*.
+   4. Vyberte **Upravit seznam atributů pro AppName*.
    5. V dolní části seznamu atributů zadejte informace o vlastním atributu v zadaných polích. Pak vyberte **Přidat atribut**.
 
 Pro SCIM aplikace musí název atributu odpovídat vzoru, který je znázorněn v následujícím příkladu. "CustomExtensionName" a "CustomAttribute" je možné přizpůsobit podle požadavků vaší aplikace, například: urn: IETF: param: SCIM: schemas:: 2.0: CustomExtensionName: CustomAttribute

@@ -1,108 +1,105 @@
 ---
-title: Opětovná aktivace deaktivovaných oborů názvů Azure Access Control Service (ACS)
-description: Zjistěte, jak najít a povolit obory názvů Azure Access Control Service (ACS) a požádali o prodloužení Novoroční povolená až do 4. února 2019.
+title: Postup opětovné aktivace zakázaných oborů názvů Azure Access Control Service (ACS)
+description: Přečtěte si, jak najít a povolit obory názvů Azure Access Control Service (ACS) a požádat o rozšíření, aby se povolilo až do 4. února 2019.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482712"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917705"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postup: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postupy: opětovná aktivace zakázaných oborů názvů Access Control Service
 
-V listopadu 2017 jsme oznámili, že Microsoft Azure Access Control Service (ACS), služba Azure Active Directory (Azure AD), se vyřazuje k 7. listopadu 2018.
+Od listopadu 2017 jsme oznámili, že Microsoft Azure Access Control Service (ACS), služba Azure Active Directory (Azure AD), je využívána 7. listopadu 2018.
 
-Protože potom odeslali jsme vám e-mailů k e-mailu správce že ACS předplatná informace o vyřazení ACS 12 měsíců, 9 měsíců, 6 měsíců, 3 měsíce, 1 měsíc, 2 týdny, 1 týden, a 1 den před vyřazením 7. listopadu 2018.
+Od té doby jsme poslali e-maily e-mailem pro správce předplatných ACS o 12 měsících, 9 měsíců, 6 měsíců, 3 měsíce, 1 měsíc, 2 týdny, 1 týden a 1 den před datem vyřazení 7. listopadu 2018.
 
-3\. října 2018 jsme oznámili (prostřednictvím e-mailu a [blogový příspěvek](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) rozšíření nabídky zákazníkům, kteří nejde dokončit, jejich migraci před 7. listopadu 2018. Oznámení bylo také pokyny, jak požaduje rozšíření.
+3\. října 2018 jsme oznámili rozšíření nabídky zákazníkům, kteří [](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)nemůžou dokončit migraci do 7. listopadu 2018. Oznámení má také pokyny pro vyžádání rozšíření.
 
-## <a name="why-your-namespace-is-disabled"></a>Proč je neaktivní váš obor názvů
+## <a name="why-your-namespace-is-disabled"></a>Proč je váš obor názvů zakázaný
 
-Pokud rozšíření ještě výslovného souhlasu, začneme zakazovat obory názvů ACS od 7. listopadu 2018. Požádali jste o musí rozšíření do 4. února 2019 již; v opačném případě nebudete moct povolit oborů názvů pomocí prostředí PowerShell.
+Pokud jste nezvolili pro rozšíření, začneme zablokovat obory názvů ACS od 7. listopadu 2018. Musíte si vyžádat rozšíření na 4. února 2019 již dříve. v opačném případě nebudete moci povolit obory názvů prostřednictvím PowerShellu.
 
 > [!NOTE]
-> Musíte být správce služeb nebo spolusprávcem předplatného, který chcete spustit příkazy Powershellu a požádali o prodloužení.
+> Aby bylo možné spustit příkazy prostředí PowerShell a požádat o rozšíření, musíte být správcem služby nebo spolusprávcem předplatného.
 
-## <a name="find-and-enable-your-acs-namespaces"></a>Najít a povolit obory názvů ACS
+## <a name="find-and-enable-your-acs-namespaces"></a>Vyhledání a povolení oborů názvů služby ACS
 
-ACS Powershellu můžete použít k zobrazení seznamu všech oborů názvů ACS a znovu aktivovat, které byly zakázány.
+Pomocí PowerShellu služby ACS můžete vypsat všechny obory názvů ACS a znovu aktivovat zakázané.
 
-1. Stáhněte a nainstalujte prostředí PowerShell služby ACS:
-    1. Přejít do Galerie prostředí PowerShell a stáhnout [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
-    1. Instalace modulu:
+1. Stáhněte a nainstalujte PowerShell služby ACS:
+    1. Přejít na Galerie prostředí PowerShell a stáhnout službu [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
+    1. Nainstalujte modul:
 
         ```powershell
         Install-Module -Name Acs.Namespaces
         ```
 
-    1. Získání seznamu všech možných příkazů:
+    1. Získat seznam všech možných příkazů:
 
         ```powershell
         Get-Command -Module Acs.Namespaces
         ```
 
-        Pokud chcete zobrazit nápovědu ke konkrétnímu příkazu, spusťte:
+        Chcete-li získat nápovědu ke konkrétnímu příkazu, spusťte příkaz:
 
         ```powershell
         Get-Help [Command-Name] -Full
         ```
     
         kde `[Command-Name]` je název příkazu ACS.
-1. Připojte se k používání služby ACS **AcsAccount připojit** rutiny. 
+1. Připojte se k ACS pomocí rutiny **Connect-AcsAccount** . 
 
-    Budete muset změnit vaše zásady spouštění spuštěním **Set-ExecutionPolicy** před spuštěním příkazu.
-1. Dostupná předplatná Azure pomocí seznamu **Get-AcsSubscription** rutiny.
-1. Seznam pomocí oborů názvů ACS **Get-AcsNamespace** rutiny.
-1. Potvrďte, že tím, že jsou zakázané obory názvů `State` je `Disabled`.
+    Než budete moct spustit příkaz, možná budete muset změnit zásady spouštění spuštěním rutiny **Set-ExecutionPolicy** .
+1. Seznam dostupných předplatných Azure získáte pomocí rutiny **Get-AcsSubscription** .
+1. Uveďte obory názvů služby ACS pomocí rutiny **Get-AcsNamespace** .
+1. Potvrďte, že jsou obory názvů zakázané, potvrzením, že `State` `Disabled`.
 
-    [![Potvrďte, že jsou zakázané obory názvů](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
+    [![ověřte, že jsou obory názvů zakázané.](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
-    Můžete také použít `nslookup {your-namespace}.accesscontrol.windows.net` pro potvrzení, pokud doména je pořád aktivní.
+    Pomocí `nslookup {your-namespace}.accesscontrol.windows.net` můžete také ověřit, jestli je doména pořád aktivní.
 
-1. Povolení s využitím ACS namespace (s) **povolit AcsNamespace** rutiny.
+1. Povolte obory názvů ACS pomocí rutiny **Enable-AcsNamespace** .
 
-    Po povolení vaše namespace (s), můžete požádat o rozšíření tak, aby namespace (s) nebude znovu před 4. února 2019 zakázáno. Po tomto datu selžou všechny žádosti o služby ACS.
+    Jakmile povolíte obory názvů, můžete požádat o rozšíření, aby se obory názvů znovu zakázaly před 4. února 2019. Po tomto datu nebudou všechny požadavky na službu ACS úspěšné.
 
-## <a name="request-an-extension"></a>Žádost o rozšíření
+## <a name="request-an-extension"></a>Požádat o rozšíření
 
-Jsme se rozhodli nové žádosti o rozšíření od 21. ledna 2019.
+Připravujeme nové požadavky na rozšíření od 21. ledna 2019.
 
-Začneme zakázání obory názvů pro zákazníky, kteří odeslali žádost o rozšíření do 4. února 2019. Můžete stále znovu povolit oborů názvů pomocí Powershellu, ale obory názvů bude zakázáno znovu po 48 hodinách.
+Začneme zakazovat obory názvů pro zákazníky, kteří požadovali rozšíření od 4. února 2019. Obory názvů můžete i nadále znovu povolit prostřednictvím PowerShellu, ale obory názvů budou po 48 hodinách zakázané.
 
-Po 4 března 2019 zákazníci už budou moct znovu povolit všechny obory názvů pomocí prostředí PowerShell.
+Po 4. březnu 2019 už zákazníci nebudou moct znovu povolit žádné obory názvů prostřednictvím PowerShellu.
 
-Další rozšíření se už být automaticky schvalovat. Pokud budete potřebovat další čas na migraci, obraťte se na [podpory Azure](https://portal.azure.com/#create/Microsoft.Support) stanovit časovou osu migrace podrobné.
+Další rozšíření již nebudou automaticky schválena. Pokud k migraci potřebujete další čas, kontaktujte [podporu Azure](https://portal.azure.com/#create/Microsoft.Support) a poskytněte vám podrobnou časovou osu migrace.
 
-### <a name="to-request-an-extension"></a>Chcete-li požádat o prodloužení
+### <a name="to-request-an-extension"></a>Vyžádání rozšíření
 
-1. Přihlaste se k webu Azure portal a vytvoření [novou žádost o podporu](https://portal.azure.com/#create/Microsoft.Support).
+1. Přihlaste se k Azure Portal a vytvořte [novou žádost o podporu](https://portal.azure.com/#create/Microsoft.Support).
 1. Vyplňte formulář nové žádosti o podporu, jak je znázorněno v následujícím příkladu.
 
-    | Pole žádosti o podporu | Hodnota |
+    | Support request pole | Hodnota |
     |-----------------------|--------------------|
     | **Typ problému** | `Technical` |
-    | **Předplatné** | Nastavte na předplatné |
+    | **Předplatné** | Nastavit na vaše předplatné |
     | **Služba** | `All services` |
     | **Prostředek** | `General question/Resource not available` |
     | **Typ problému** | `ACS to SAS Migration` |
-    | **Předmět** | Popište problém |
+    | **Předmět** | Popište problém. |
 
-   ![Ukazuje příklad novou žádost o technickou podporu](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![Ukazuje příklad nové žádosti o technickou podporu.](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 
@@ -122,9 +119,9 @@ Další rozšíření se už být automaticky schvalovat. Pokud budete potřebov
 
 ## <a name="help-and-support"></a>Nápověda a podpora
 
-- Pokud narazíte na problémy při dodržení tento návod, obraťte se na [podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-- Pokud máte dotazy nebo připomínky o vyřazení z provozu služby ACS, kontaktujte nás na adrese acsfeedback@microsoft.com.
+- Pokud narazíte na problémy po následujícím postupu, obraťte se na [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+- Pokud máte dotazy nebo připomínky k vyřazení služby ACS, kontaktujte nás na acsfeedback@microsoft.com.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o vyřazení z provozu služby ACS v [jak: Migrace z Azure Access Control Service](active-directory-acs-migration.md).
+- Přečtěte si informace o vyřazení služby ACS v tématu [Postupy: migrace z Access Control Service Azure](active-directory-acs-migration.md).

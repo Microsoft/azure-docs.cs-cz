@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení deklarací identity pro aplikaci tenanta Azure AD (Public Preview)
+title: Přizpůsobení deklarací identity pro aplikace tenanta Azure AD
 titleSuffix: Microsoft identity platform
 description: Tato stránka popisuje Azure Active Directory mapování deklarací identity.
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12726a1ad9b04bdfe2cd279d36a696bb011e4122
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c8d15631c30566d7588b562f1bb0d6ba5280e699
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845344"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918419"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 

@@ -1,28 +1,25 @@
 ---
-title: Použití knihovny Microsoft Authentication Library (MSAL) v národních cloudech – Microsoft Identity Platform
+title: Použití MSAL v národní cloudové aplikaci | Azure
+titleSuffix: Microsoft identity platform
 description: Knihovna Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací získat tokeny, aby mohli volat zabezpečená webová rozhraní API. Tato webová rozhraní API můžou být Microsoft Graph, jiná rozhraní API Microsoftu, partnerská webová rozhraní API nebo vlastní webové rozhraní API. MSAL podporuje více architektur aplikací a platforem.
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f1c73d89b0efc17e8f8836d080595927d500ad6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: f1d0d4511b95d56ae41bf9fbb1118318d8374bde
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481861"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916040"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
 
@@ -34,11 +31,11 @@ Zahrnutí globálního cloudu Azure Active Directory (Azure AD) je nasazeno v n�
 
 - Azure Government
 - Azure China 21Vianet
-- Azure Germany
+- Azure (Německo)
 
 Tato příručka ukazuje, jak se přihlásit k pracovním a školním účtům, získat přístupový token a volat rozhraní API Microsoft Graph v [cloudovém prostředí Azure Government](https://azure.microsoft.com/global-infrastructure/government/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že splňujete tyto požadavky.
 
@@ -74,20 +71,20 @@ Chcete-li povolit aplikaci MSAL. js pro cloudy svrchovaného prostředí:
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.us/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.us/).
     
    Pokud chcete najít Azure Portal koncových bodů pro jiné národní cloudy, přečtěte si téma [koncové body registrace aplikace](authentication-national-cloud.md#app-registration-endpoints).
 
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 1. Přejít na stránku [Registrace aplikací](https://aka.ms/ra/ff) na platformě Microsoft identity pro vývojáře.
-1. Po zobrazení stránky **Registrovat aplikaci** zadejte název vaší aplikace.
+1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři**.
 1. V části **identifikátor URI pro přesměrování** vyberte **webovou** platformu a nastavte hodnotu na adresu URL aplikace na základě vašeho webového serveru. V dalších částech najdete pokyny, jak nastavit a získat adresu URL pro přesměrování v sadě Visual Studio a uzlu.
 1. Vyberte **Zaregistrovat**.
 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** .
 1. Tento kurz vyžaduje, abyste povolili [postup implicitního udělení](v2-oauth2-implicit-grant-flow.md). V levém podokně registrované aplikace vyberte **ověřování**.
 1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Krok 2: nastavení webového serveru nebo projektu
 
@@ -230,5 +227,5 @@ Další informace:
 
 - [Ověřování v národních cloudech](authentication-national-cloud.md)
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure Německo](https://docs.microsoft.com/azure/germany/)

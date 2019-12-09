@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/21/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 9ab308d0e2145a0d0b40e8b37c8c5be07b55dac6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673555"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931701"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Spouštění balíčků služba SSIS (SQL Server Integration Services) pomocí nástroje DTExec s povoleným Azure
 Tento článek popisuje nástroj příkazového řádku dtexec (AzureDTExec) s podporou Azure. Používá se ke spouštění balíčků služba SSIS (SQL Server Integration Services) (SSIS) na Azure-SSIS Integration Runtime (IR) v Azure Data Factory.
@@ -30,7 +29,7 @@ AzureDTExec spustí vaše balíčky jako aktivity balíčku SSIS ve Data Factory
 
 AzureDTExec je možné nakonfigurovat prostřednictvím SSMS tak, aby používala aplikaci Azure Active Directory (Azure AD), která generuje kanály ve vaší datové továrně. Dá se taky nakonfigurovat tak, aby měl přístup k systémům souborů, sdíleným složkám nebo souborům Azure, do kterých ukládáte balíčky. V závislosti na hodnotách, které udělíte pro své možnosti volání, AzureDTExec vygeneruje a spustí jedinečný Data Factory kanál s aktivitou balíčku Execute SSIS. Vyvolání AzureDTExec se stejnými hodnotami pro příslušné možnosti znovu spustí existující kanál.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Chcete-li použít AzureDTExec, Stáhněte a nainstalujte nejnovější verzi nástroje SSMS, která je verze 18,3 nebo novější. Stáhněte si ho z [tohoto webu](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
 ## <a name="configure-the-azuredtexec-utility"></a>Konfigurace nástroje AzureDTExec

@@ -1,5 +1,5 @@
 ---
-title: Jednostránkové aplikace (získání tokenu pro volání rozhraní API) – Microsoft Identity Platform
+title: Získání tokenu v aplikacích s jednou stránkou – Microsoft Identity Platform | Azure
 description: Naučte se vytvářet jednostránkové aplikace (získat token pro volání rozhraní API).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0f1140d00671a706ce8839a73023dfad64d4663
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9723e9a58704a583c7332db11bae7da6b045a5f7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764759"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919830"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Jednostránkové aplikace: získání tokenu pro volání rozhraní API
 

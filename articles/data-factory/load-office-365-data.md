@@ -4,19 +4,19 @@ description: Použití Azure Data Factory ke kopírování dat z Office 365
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 896265311a67b74ccf9d0226a2969284ee491c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672623"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931424"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat ze sady Office 365 pomocí Azure Data Factory
 
@@ -38,12 +38,12 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
     * **Verze**: vyberte **v2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
-3. Vyberte **Vytvořit**.
+3. Vyberte **Create** (Vytvořit).
 4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku:
    
-   ![Domovská stránka objektu pro vytváření dat](./media/load-office-365-data/data-factory-home-page.png)
+   ![Domovská stránka datové továrny](./media/load-office-365-data/data-factory-home-page.png)
 
-5. Kliknutím na dlaždici **Author & monitor** můžete spustit aplikaci pro integraci dat na samostatné kartě.
+5. Výběrem dlaždice **Author & Monitor** (Vytvořit a monitorovat) otevřete na samostatné kartě aplikaci pro integraci dat.
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
@@ -112,7 +112,7 @@ Kliknutím na kód v pravém horním rohu můžete také zobrazit kód JSON při
 
 Na horním panelu nástrojů vyberte **publikovat vše**. Touto akcí publikujete vytvořené entity (datové sady a kanály) do služby Data Factory.
 
-![Publikovat změny](./media/load-office-365-data/publish-changes.png) 
+![Publikování změn](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>Ruční aktivace kanálu
 
@@ -128,7 +128,7 @@ Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu,
 
 ![Aktivita monitorování](./media/load-office-365-data/activity-status.png) 
 
-Pokud se jedná o data pro tento kontext poprvé (kombinace toho, ke které tabulce dat se přistupuje, který cílový účet představuje data, která jsou načítána do a která identita uživatele vytváří požadavek na přístup k datům), zobrazí se aktivita kopírování. stav **probíhá**, a až kliknete na odkaz Podrobnosti v části akce, zobrazí se stav jako **RequesetingConsent**.  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
+Pokud se jedná o data pro tento kontext poprvé (kombinace toho, ke které tabulce dat se přistupuje, na jehož cílovém účtu se načítají data a jakou identitu uživatele vytváří požadavek na přístup k datům), zobrazí se stav aktivity kopírování jako probíhající a jenom když kliknete na odkaz Podrobnosti v části **akce, zobrazí**se stav jako **RequesetingConsent**.  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
 
 _Stav jako žádost o souhlas:_ 
 ![podrobnosti spuštění aktivity – souhlas s požadavkem](./media/load-office-365-data/activity-details-request-consent.png) 

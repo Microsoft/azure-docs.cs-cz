@@ -1,6 +1,6 @@
 ---
-title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (volání webového rozhraní API) – Microsoft Identity Platform
-description: Zjistěte, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (volání webového rozhraní API).
+title: Volání webových rozhraní API z desktopové aplikace – Microsoft Identity Platform | Azure
+description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8160ec489f891764b102b5ba23a687b53376f738
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ce8cf2d75257bb3d751de1c3b251a9a3326bce0a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175359"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920153"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – volá webové rozhraní API.
 
@@ -84,7 +84,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let urlRequest = NSMutableURLRequest()

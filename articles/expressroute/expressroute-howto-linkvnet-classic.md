@@ -1,19 +1,18 @@
 ---
-title: 'ExpressRoute: propojení virtuální sítě s okruhem: Classic'
+title: 'Azure ExpressRoute: propojení virtuální sítě s okruhem: Classic'
 description: Tento dokument poskytuje přehled, jak propojit virtuální sítě (virtuální sítě) se ExpressRoute okruhy pomocí modelu nasazení Classic a PowerShellu.
 services: expressroute
-documentationcenter: na
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: e02073e777c62be00b5c25c2242294e54795a0d4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 53c200b01dfa6bce09cfc058dc24ab8e38d253a6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031609"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930040"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí prostředí PowerShell (Classic)
 > [!div class="op_single_selector"]
@@ -46,40 +45,7 @@ K okruhu ExpressRoute můžete propojit až 10 virtuálních sítí. Všechny vi
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Stáhnout nejnovější rutiny PowerShellu
 
-Nainstalujte nejnovější verze modulů Azure Service Management Powershellu a modul ExpressRoute. Při použití v následujícím příkladu, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Pokud potřebujete další informace o Azure Powershellu, přečtěte si [Začínáme s rutinami Azure Powershellu](/powershell/azure/overview) podrobné pokyny o tom, jak nakonfigurovat počítač pomocí modulů Azure Powershellu.
-
-### <a name="sign-in"></a>Přihlášení
-
-Pokud se chcete přihlásit ke svému účtu Azure, použijte následující příklady:
-
-1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Zkontrolujte předplatná pro příslušný účet.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Máte-li více předplatných, vyberte předplatné, které chcete použít.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojení virtuální sítě v rámci stejného předplatného k okruhu
 Virtuální síť můžete propojit s okruhem ExpressRoute pomocí následující rutiny. Ujistěte se, že je brána virtuální sítě vytvořená a je připravená k propojení před spuštěním rutiny.
@@ -124,7 +90,7 @@ Vlastník okruhu autorizuje správce jiných předplatných k používání zada
 New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
 ```
 
-  Vrátit
+  Vrací:
 
   ```powershell
   Description         : Dev-Test Links
@@ -141,7 +107,7 @@ Vlastníka okruhu můžete zkontrolovat všechny autorizace, které jsou vydány
 ```powershell
 Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
 ```
-  Vrátit
+  Vrací:
 
   ```powershell
   Description         : EngineeringTeam
@@ -171,7 +137,7 @@ Vlastník okruhu může upravit autorizaci pomocí následující rutiny:
 Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
 ```
 
-  Vrátit
+  Vrací:
 
   ```powershell
   Description         : Dev-Test Links
@@ -199,7 +165,7 @@ Uživatel okruhu může ověřit autorizaci pomocí následující rutiny:
 Get-AzureAuthorizedDedicatedCircuit
 ```
 
-  Vrátit
+  Vrací:
 
   ```powershell
   Bandwidth                        : 200
@@ -221,7 +187,7 @@ Uživatele okruhu spuštěním následující rutiny můžete uplatnit autorizac
 New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
 ```
 
-  Vrátit
+  Vrací:
 
   ```powershell
   State VnetName

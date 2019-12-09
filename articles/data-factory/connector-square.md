@@ -1,32 +1,32 @@
 ---
-title: Kopírování dat z čtverce pomocí Azure Data Factory (Náhled)
-description: Naučte se, jak kopírovat data z čtverce do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírovat data z čtverce (Preview)
+description: Zjistěte, jak kopírovat data z čtverec úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: b7f83e8e7690180dbed04572f2e2699f02d5fed7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de795d082069ff5ad895c48b7a507512449d0208
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680137"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931005"
 ---
-# <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat z čtverce pomocí Azure Data Factory (Náhled)
+# <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat z čtverec pomocí Azure Data Factory (Preview)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z čtverce. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z hranaté. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 > [!IMPORTANT]
-> Tento konektor je momentálně ve verzi Preview. Můžete si to vyzkoušet a sdělit nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
+> Tento konektor je aktuálně ve verzi preview. Můžete vyzkoušet a sdělte nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tato čtvercová spojnice je podporována pro následující činnosti:
 
@@ -34,30 +34,30 @@ Tato čtvercová spojnice je podporována pro následující činnosti:
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
 
-Data z čtverce můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
+Kopírování dat z čtverec do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
+Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobné informace o vlastnostech, které se používají k definování Data Factorych entit specifických pro čtvercovou spojnici.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní Čtvereček konektoru.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro čtvercovou propojenou službu jsou podporovány následující vlastnosti:
+Čtvereček propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Square** . | Ano |
-| Provoz | Adresa URL čtvercové instance (tj. mystore.mysquare.com)  | Ano |
-| clientId | ID klienta přidružené k vaší čtvercové aplikaci.  | Ano |
-| clientSecret | Tajný kód klienta přidružený ke své čtvercové aplikaci. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| RedirectUri | Adresa URL pro přesměrování přiřazená v čtverci řídicího panelu aplikace (tj. http:\//localhost: 2 500)  | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnota je true (pravda).  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes SSL vyžadovat, aby název hostitele v certifikátu serveru odpovídal názvu hostitele serveru. Výchozí hodnota je true (pravda).  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes SSL ověřit identita serveru. Výchozí hodnota je true (pravda).  | Ne |
+| type | Vlastnost type musí být nastavená na: **čtverec** | Ano |
+| hostitel | Adresa URL instance čtvereček. (to znamená mystore.mysquare.com)  | Ano |
+| clientId | ID klienta přidružené k aplikaci čtvereček.  | Ano |
+| clientSecret | Tajný kód klienta přidružené k aplikaci čtvereček. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| redirectUri | Adresa URL pro přesměrování přiřazené na řídicím panelu Čtvereček aplikace. (tj. http:\//localhost: 2 500)  | Ano |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
+| useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
+| usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 
 **Příklad:**
 
@@ -81,14 +81,14 @@ Pro čtvercovou propojenou službu jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . Tato část uvádí seznam vlastností, které jsou podporovány čtvercovou datovou sadou.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje Čtvereček datové sady.
 
-Chcete-li kopírovat data z čtverce, nastavte vlastnost Type datové sady na **SquareObject**. Podporovány jsou následující vlastnosti:
+Ke zkopírování dat z čtverec, nastavte vlastnost typ datové sady na **SquareObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **SquareObject** . | Ano |
-| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
+| type | Vlastnost typ datové sady, musí být nastavena na: **SquareObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -109,16 +109,16 @@ Chcete-li kopírovat data z čtverce, nastavte vlastnost Type datové sady na **
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných čtvercovým zdrojem.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem čtvereček.
 
-### <a name="square-as-source"></a>Čtvercový as source
+### <a name="square-as-source"></a>Čtvercové jako zdroj
 
-Chcete-li kopírovat data z čtverce, nastavte typ zdroje v aktivitě kopírování na **SquareSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
+Ke zkopírování dat z čtverec, nastavte typ zdroje v aktivitě kopírování do **SquareSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SquareSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Business"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **SquareSource** | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Business"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 
@@ -157,4 +157,4 @@ Chcete-li kopírovat data z čtverce, nastavte typ zdroje v aktivitě kopírová
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

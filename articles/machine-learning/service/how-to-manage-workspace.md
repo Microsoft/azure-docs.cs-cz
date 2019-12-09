@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c7ff51c18d4ec41c706518631071e8feb3bafe59
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615172"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912438"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure. 
 
@@ -44,7 +44,7 @@ K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ješt�
    ---|---
    Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli.  
    Předplatné |Vyberte předplatné Azure, které chcete použít.
-   Skupina prostředků | Ve svém předplatném použijte existující skupinu prostředků nebo zadejte název pro vytvoření nové skupiny prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML**. 
+   Skupina prostředků | Použijte stávající skupinu prostředků, kterou máte v předplatném, nebo zadejte název a vytvořte novou skupinu prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML**. 
    Umístění | Vyberte umístění, které je nejblíže vašim uživatelům a datovým prostředkům, abyste mohli vytvořit pracovní prostor.
    Edice pracovního prostoru | Vyberte **Basic** nebo **Enterprise**.  Tato edice pracovního prostoru určuje funkce, ke kterým budete mít přístup a ceny. Přečtěte si další informace o [nabídkách Basic a Enterprise Edition](overview-what-is-azure-ml.md#sku). 
 
@@ -73,15 +73,15 @@ K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ješt�
 
 Pracovní prostor můžete upgradovat ze sady Basic Edition na Enterprise Edition a využít tak vylepšené funkce, jako je například prostředí s nízkým kódem a rozšířené funkce zabezpečení.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
 
 1. Vyberte pracovní prostor, který chcete upgradovat.
 
-1. Vyberte možnost **upgradovat** v horní části nebo ve zprávě pro upgrade.
+1. V pravém horním rohu stránky vyberte **Další informace** .
 
-    ![Upgrade pracovního prostoru](media/how-to-manage-workspace/upgrade.png)
+   [![upgrade pracovního prostoru](media/how-to-manage-workspace/upgrade.png)](media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. Vyberte **Potvrdit aktualizaci**.
+1. V zobrazeném okně vyberte **upgrade** .
 
 
 > [!IMPORTANT]
@@ -95,7 +95,7 @@ Pracovní prostor můžete upgradovat ze sady Basic Edition na Enterprise Editio
 
    ![Vyhledat Azure Machine Learning pracovní prostor](media/how-to-manage-workspace/find-workspaces.png)
 
-1. Prohlédněte si seznam pracovních prostorů, které se našly. Můžete filtrovat podle předplatného, skupin prostředků a umístění.  
+1. Prohlédněte si seznam pracovních prostorů nalezen. Můžete filtrovat podle předplatného, skupiny prostředků a umístění.  
 
 1. Vyberte pracovní prostor, ve kterém chcete zobrazit jeho vlastnosti.
 
@@ -115,4 +115,4 @@ Použijte tlačítko Odstranit v horní části pracovního prostoru, který chc
 Postupujte podle kurzu pro celou délku a Naučte se používat pracovní prostor k sestavování, vytváření výukových a nasazování modelů pomocí Azure Machine Learning.
 
 > [!div class="nextstepaction"]
-> [Kurz: modely vlaků](tutorial-train-models-with-aml.md)
+> [Kurz: Trénování modelů](tutorial-train-models-with-aml.md)

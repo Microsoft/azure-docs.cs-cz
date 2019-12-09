@@ -3,12 +3,12 @@ title: Vyprázdnit značky a manifesty
 description: Pomocí příkazu vyčistit můžete odstranit více značek a manifestů z registru kontejneru Azure na základě stáří a filtru značek a volitelně naplánovat operace vyprázdnění.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 65169927f7a1cffa88a2d909217e636417f695cc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456483"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923111"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatické mazání imagí z Azure Container Registry
 
@@ -33,11 +33,10 @@ Příkaz `acr purge` Container odstraní image podle značky v úložišti, kter
 > [!NOTE]
 > `acr purge` neodstraní značku obrázku nebo úložiště, kde je atribut `write-enabled` nastaven na `false`. Informace najdete v tématu [uzamknutí image kontejneru ve službě Azure Container Registry](container-registry-image-lock.md).
 
-`acr purge` je navržená tak, aby se spouštěla jako příkaz kontejneru v [úloze ACR](container-registry-tasks-overview.md), aby se automaticky ověřovala s registrem, ve kterém je úloha spuštěná. 
+`acr purge` je navržená tak, aby se spouštěla jako příkaz kontejneru v [úloze ACR](container-registry-tasks-overview.md), aby se automaticky ověřovala s registrem, ve kterém je úloha spuštěná, a provádí akce. Příklady úloh v tomto článku používají [alias](container-registry-tasks-reference-yaml.md#aliases) příkazu `acr purge` místo úplného příkazu image kontejneru.
 
 Při spuštění `acr purge`zadejte alespoň následující:
 
-* `--registry` – registr kontejneru Azure, ve kterém se příkaz spustí. 
 * `--filter` – úložiště a *regulární výraz* pro filtrování značek v úložišti. Příklady: `--filter "hello-world:.*"` odpovídá všem značkám v úložišti `hello-world` a `--filter "hello-world:^1.*"` odpovídá značkám začínajícím `1`. Předejte několik parametrů `--filter` pro vyprázdnění více úložišť.
 * `--ago` – [řetězec doby trvání](https://golang.org/pkg/time/) ve stylu na cestách, který určuje dobu, po kterou se obrázky odstraňují. Doba trvání se skládá z jednoho nebo více desetinných čísel, z nichž každá má příponu jednotky. Platné časové jednotky zahrnují "d" pro dny, "h" pro hodiny a "m" pro minuty. `--ago 2d3h6m` například vybere všechny filtrované obrázky naposledy změněné více než 2 dny, 3 hodiny a před 6 minutami a `--ago 1.5h` vybere obrázky naposledy změněné více než 1,5 hodin.
 
@@ -54,12 +53,10 @@ Pro další parametry spusťte `acr purge --help`.
 
 V následujícím příkladu se pomocí příkazu [AZ ACR Run][az-acr-run] spustí na vyžádání příkaz `acr purge`. Tento příklad odstraní všechny značky a manifesty obrázků v úložišti `hello-world` v *myregistry* , které byly změněny před 1 dnem. Příkaz kontejneru se předává pomocí proměnné prostředí. Úloha se spustí bez zdrojového kontextu.
 
-V tomto a následujících příkladech se registr, ve kterém se spouští příkaz `acr purge`, zadává pomocí aliasu `$Registry`, který označuje registr, který úlohu spouští.
-
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -73,8 +70,8 @@ Následující příklad používá příkaz [AZ ACR Task Create][az-acr-task-cr
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -93,8 +90,8 @@ Například následující úloha na vyžádání nastaví časový limit 3600 s
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -115,13 +112,12 @@ V následujícím příkladu filtr v každém úložišti vybere všechny značk
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
 az acr run \
-  --cmd  "$PURGE_CMD" \
+  --cmd "$PURGE_CMD" \
   --registry myregistry \
   /dev/null
 ```
@@ -156,8 +152,7 @@ Po ověření suchého běhu Vytvořte naplánovanou úlohu pro automatizaci maz
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

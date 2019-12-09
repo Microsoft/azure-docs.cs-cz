@@ -2,27 +2,22 @@
 title: Microsoft Identity Platform OIDC – rychlý Start webové aplikace Node. js | Azure
 description: Naučte se implementovat ověřování ve webové aplikaci Node. js pomocí OpenID Connect.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac3344fe16d24ae116a5fde289421998f11f18
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a73193a4e43ad4c91e23534898d003a310dff5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178043"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920595"
 ---
 # <a name="quickstart-add-sign-in-using-oidc-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OIDC do webové aplikace Node. js
 
@@ -106,7 +101,7 @@ Výchozí úložiště relací v této ukázce je `express-session`. Výchozí �
 
 * Aktualizujte `exports.databaseUri`, pokud chcete použít úložiště relace mongoDB a jiný identifikátor URI databáze.
 
-* `exports.mongoDBSessionMaxAge`aktualizace. Tady můžete určit, jak dlouho chcete uchovat relaci v mongoDB. Jednotka má sekundu (y).
+* Aktualizace `exports.mongoDBSessionMaxAge`. Tady můžete určit, jak dlouho chcete uchovat relaci v mongoDB. Jednotka má sekundu (y).
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
@@ -126,7 +121,7 @@ $ npm install -g bunyan
 $ node app.js | bunyan
 ```
 
-### <a name="youre-done"></a>Už jste hotovi!
+### <a name="youre-done"></a>A je to hotové!
 
 Na `http://localhost:3000`budete mít úspěšné spuštění serveru.
 

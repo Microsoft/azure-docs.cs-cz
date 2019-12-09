@@ -1,28 +1,27 @@
 ---
-title: Použití Azure Key Vault tajných klíčů v aktivitách kanálu
+title: Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
 description: Naučte se, jak načíst uložené přihlašovací údaje z trezoru klíčů Azure a použít je během spuštění kanálu služby Data Factory.
 services: data-factory
 author: ChrisLound
-manager: craigg
+manager: anandsub
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 83d0981a0d277eab1aae8654343ab34661b3e88b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672899"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926761"
 ---
-# <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Použití Azure Key Vault tajných klíčů v aktivitách kanálu
+# <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
 
 Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault a použít je během provádění kanálu, aby je bylo možné předat k vašim aktivitám.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zjistěte, jak funguje ze [spravované identity pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) a ujistěte se, že je k datové továrně přidružená jedna.
 
@@ -50,10 +49,10 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
 
     |Vlastnost  |Hodnota  |
     |---------|---------|
-    |Zabezpečený výstup     |True         |
-    |zprostředkovatele identity     |[Vaše tajná hodnota identifikátoru URI]? API-Version = 7.0         |
+    |Zabezpečený výstup     |Pravda         |
+    |Adresa URL     |[Vaše tajná hodnota identifikátoru URI]? API-Version = 7.0         |
     |Metoda     |GET         |
-    |Ověřování     |MSI         |
+    |Ověření     |MSI         |
     |Prostředek        |https://vault.azure.net       |
 
     ![Aktivita webu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)

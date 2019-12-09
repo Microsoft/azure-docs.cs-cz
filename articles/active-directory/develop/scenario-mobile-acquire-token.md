@@ -1,5 +1,5 @@
 ---
-title: Mobilní aplikace, která volá webová rozhraní API – získání tokenu pro aplikaci
+title: Získání tokenu pro volání webových rozhraní API v mobilních aplikacích | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (získání tokenu pro aplikaci).
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b1d6a0e4bfffaaf4ed0fa836bcf62a7f1104e6a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 1101a1923e094c22e9f6a82853f4dec4deb089a1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803763"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919915"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobilní aplikace, která volá webová rozhraní API – získá token.
 
@@ -120,7 +120,7 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
 }];
 ```
  
-SWIFT
+Swift:
 
 ```swift
 
@@ -173,7 +173,7 @@ MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParame
 }];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let viewController = ... // Pass a reference to the view controller that should be used when getting a token interactively
@@ -259,7 +259,7 @@ Nedoporučujeme používat přímo protokol. Pokud to uděláte, aplikace nebude
 
 Když použijete protokol k získání tokenů pro mobilní aplikace, musíte provést dvě požadavky: získání autorizačního kódu a jeho výměna pro token.
 
-#### <a name="get-authorization-code"></a>Získat autorizační kód
+#### <a name="get-authorization-code"></a>Získání autorizačního kódu
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a1d3de1b3eb5aebd89e6601f95c449851d4a1a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889561"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918963"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizace: konfigurace upřednostňovaného umístění dat pro prostředky Office 365
 Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá pro Office 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Office 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
@@ -251,7 +251,7 @@ Opětovné povolení integrovaného plánovače synchronizace:
 1. Spusťte relaci PowerShellu.
 2. Spusťte tuto rutinu znovu, aby se naplánovala synchronizace: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>Krok 8: ověření výsledku
+## <a name="step-9-verify-the-result"></a>Krok 9: ověření výsledku
 Nyní je čas ověřit konfiguraci a povolit pro uživatele.
 
 1. Přidejte geografické rozhraní k vybranému atributu pro uživatele. Seznam dostupných zeměpisných oblastech najdete v této tabulce.  

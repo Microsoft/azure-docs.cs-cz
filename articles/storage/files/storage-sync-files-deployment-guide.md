@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546368"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927882"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -57,7 +57,7 @@ Pro každý server, který máte v úmyslu používat s Azure File Sync, včetn�
 > [!Note]  
 > Tento krok můžete přeskočit, pokud nasazujete Azure File Sync na jádro Windows serveru.
 
-1. Otevřete Správce serveru.
+1. Spusťte Správce serveru.
 2. Klikněte na **místní server**:  
     !["místní server" na levé straně uživatelského rozhraní Správce serveru](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. V podokně **Vlastnosti** vyberte odkaz **Konfigurace rozšířeného zabezpečení aplikace Internet Explorer**.  
@@ -400,6 +400,10 @@ V současné době má přístup před osazením několik omezení –
 - Po vytvoření koncového bodu cloudu Azure File Sync spustí proces zjišťování souborů v cloudu před zahájením počáteční synchronizace. Doba potřebná k dokončení tohoto procesu se liší v závislosti na různých faktorech, jako je rychlost sítě, dostupná šířka pásma a počet souborů a složek. V případě hrubého odhadu ve verzi Preview se proces zjišťování spouští přibližně v 10 souborech za sekundu.  A to i v případě, že předběžné osazení běží rychle, může být celková doba pro plně běžící systém výrazně delší, než se data v cloudu předem dosadí.
 
 ## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Samoobslužné obnovení prostřednictvím předchozích verzí a služby VSS (služba Stínová kopie svazku)
+
+> [!IMPORTANT]
+> Následující informace lze použít pouze s verzí 9 (nebo vyšší) agenta synchronizace úložiště. Verze nižší než 9 nebudou mít rutiny StorageSyncSelfService.
+
 Předchozí verze je funkce systému Windows, která umožňuje využívat snímky stínové kopie svazku (VSS) na straně serveru k prezentaci obnovitelné verzí souboru klientovi SMB.
 To umožňuje účinný scénář, který se běžně označuje jako samoobslužné obnovení, přímo pro informační pracovníky, nikoli v závislosti na obnovení od správce IT.
 

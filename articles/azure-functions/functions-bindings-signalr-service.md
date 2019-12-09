@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: a1de59ebb5ef0d7f5522a388aa9a2f5818495a9f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 208b5462efeb579e30550824bd7ba931db1825b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786329"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925640"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -18,7 +18,7 @@ Tento článek vysvětluje, jak ověřit a odeslat zprávy v reálném čase kli
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Balíčky – funkce 2. x
+## <a name="packages---functions-2x-and-higher"></a>Balíčky – funkce 2. x a vyšší
 
 Vazby služby signalizace jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) , verze 1. *. Zdrojový kód balíčku je v úložišti GitHub [Azure-Functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) .
 
@@ -106,7 +106,7 @@ Příklad Function. JSON:
 }
 ```
 
-Tady je kód JavaScriptu:
+Tady je kód jazyka JavaScript:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -236,7 +236,7 @@ Příklad Function. JSON:
 }
 ```
 
-Tady je kód JavaScriptu:
+Tady je kód jazyka JavaScript:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -377,7 +377,7 @@ Příklad Function. JSON:
 }
 ```
 
-Tady je kód JavaScriptu:
+Tady je kód jazyka JavaScript:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -507,7 +507,7 @@ Příklad Function. JSON:
 }
 ```
 
-Tady je kód JavaScriptu:
+Tady je kód jazyka JavaScript:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -642,7 +642,7 @@ Příklad Function. JSON:
 }
 ```
 
-Tady je kód JavaScriptu:
+Tady je kód jazyka JavaScript:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -859,7 +859,7 @@ Příklad *Function. JSON*
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -887,7 +887,7 @@ Příklad *Function. JSON*
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -1007,35 +1007,35 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `SignalRConnectionInfo`.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `SignalRConnectionInfo` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Popis|
+|Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**|| Musí být nastavené na `signalRConnectionInfo`.|
-|**direction**|| Musí být nastavené na `in`.|
-|**Jméno**|| Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
+|**type**|| Musí být nastaveno na `signalRConnectionInfo`.|
+|**direction**|| Musí být nastaveno na `in`.|
+|**name**|| Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název centra signalizace, pro které jsou vygenerovány informace o připojení.|
 |**userId**|**UserId**| Volitelné: hodnota deklarace identity identifikátoru uživatele, která se má nastavit v tokenu přístupového klíče. |
-|**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
+|**connectionStringSetting**|**connectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `SignalR`.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `SignalR` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Popis|
+|Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**|| Musí být nastavené na `signalR`.|
-|**direction**|| Musí být nastavené na `out`.|
-|**Jméno**|| Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
+|**type**|| Musí být nastaveno na `signalR`.|
+|**direction**|| Musí být nastaveno na `out`.|
+|**name**|| Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název centra signalizace, pro které jsou vygenerovány informace o připojení.|
-|**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
+|**connectionStringSetting**|**connectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)

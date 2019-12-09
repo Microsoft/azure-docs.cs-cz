@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 903551bfcaae3ffa7ccee72b1a5d781413864b32
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 333a3b93d872c1a99d1ec18d4941adc8986d4a03
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868452"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914572"
 ---
-# <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co je zřizování cloudu Azure AD Connect?
+# <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co je zřízení cloudu Azure AD Connect?
 Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, aby splnil a splnil vaše hybridní cíle identity pro synchronizaci uživatelů, skupin a kontaktů do Azure AD.  Dá se použít společně Azure AD Connect synchronizaci a nabízí následující výhody:
     
 - Podpora synchronizace do tenanta Azure AD z prostředí s odpojenou doménovou strukturou služby Active Directory s více doménovými strukturami: běžné scénáře zahrnují & akvizici, kde jsou doménové struktury služby AD získané společnosti izolované od služby AD nadřazené společnosti. doménové struktury a společnosti, které mají historicky více doménových struktur služby AD.

@@ -1,29 +1,25 @@
 ---
-title: Azure AD B2C (Microsoft Authentication Library pro .NET)
+title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních otázkách při použití Azure AD B2C s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b8940ca6887e5c37659dd5b8d5a24ba7a2f4b889
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175598"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921935"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
@@ -170,7 +166,7 @@ MSAL.Net podporuje [mezipaměť tokenů](/dotnet/api/microsoft.identity.client.t
 
 V mnoha scénářích Azure AD B2C chybí obě tyto deklarace identity. 
 
-Dopadem na zákazníky je to, že při pokusu o zobrazení pole s uživatelským jménem se jako hodnota zobrazí zpráva "chybí odpověď na token"? Pokud ano, je to proto, že Azure AD B2C nevrací hodnotu IdToken pro preferred_username z důvodu omezení s účty sociálních sítí a externími zprostředkovateli identity (zprostředkovatelů identity). Azure AD vrátí hodnotu pro preferred_username, protože ví, kdo je, ale pro Azure AD B2C, protože se uživatel může přihlásit pomocí místního účtu, Facebooku, Google, GitHubu atd. není konzistentní hodnota pro Azure AD B2C, která se má použít pro preferred_username. Pokud chcete odblokovat MSAL z zavedení kompatibility mezipaměti pomocí ADAL, rozhodli jsme se na našem konci použít "chybějící v odpovědi na token", a to při práci s účty Azure AD B2C, když IdToken vrátí hodnotu Nothing pro preferred_username. MSAL musí vracet hodnotu pro preferred_username, aby se zachovala kompatibilita mezipaměti napříč knihovnami.
+Dopadem na zákazníky je to, že při pokusu o zobrazení pole s uživatelským jménem se jako hodnota zobrazí zpráva "chybí odpověď na token"? Pokud ano, je to proto, že Azure AD B2C nevrací hodnotu v IdToken pro preferred_username z důvodu omezení s účty sociálních sítí a externími zprostředkovateli identity (zprostředkovatelů identity). Azure AD vrátí hodnotu pro preferred_username, protože ví, kdo je, ale pro Azure AD B2C, protože se uživatel může přihlásit pomocí místního účtu, Facebooku, Google, GitHubu atd. není konzistentní hodnota pro Azure AD B2C, která se má použít pro preferred_username. Pokud chcete odblokovat MSAL z zavedení kompatibility mezipaměti pomocí ADAL, rozhodli jsme se na našem konci použít "chybějící v odpovědi na token", a to při práci s účty Azure AD B2C, když IdToken vrátí hodnotu Nothing pro preferred_username. MSAL musí vracet hodnotu, aby preferred_username zachovalo kompatibilitu mezipaměti napříč knihovnami.
 
 ### <a name="workarounds"></a>Alternativní řešení
 
@@ -189,4 +185,4 @@ Další podrobnosti o interaktivním získání tokenů pomocí MSAL.NET pro Azu
 
 | Ukázka | Platforma | Popis|
 |------ | -------- | -----------|
-|[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Jednoduchá aplikace Xamarin Forms předvádí, jak používat MSAL.NET k ověřování uživatelů prostřednictvím Azure AD B2C a přístup k webovému rozhraní API s výslednými tokeny.|
+|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Jednoduchá aplikace Xamarin Forms předvádí, jak používat MSAL.NET k ověřování uživatelů prostřednictvím Azure AD B2C a přístup k webovému rozhraní API s výslednými tokeny.|

@@ -3,27 +3,23 @@ title: Konfigurace klíčenky
 titleSuffix: Microsoft identity platform
 description: Naučte se konfigurovat řetězce klíčů tak, aby vaše aplikace mohla ukládat tokeny do mezipaměti v řetězci klíčů.
 services: active-directory
-documentationcenter: ''
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803803"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917501"
 ---
 # <a name="configure-keychain"></a>Konfigurace klíčenky
 
@@ -35,23 +31,23 @@ Tento článek popisuje, jak nakonfigurovat nároky aplikace tak, aby MSAL mohli
 
 ### <a name="ios"></a>iOS
 
-MSAL v systému iOS používá standardně přístupovou skupinu `com.microsoft.adalcache`. Jedná se o sdílenou přístupovou skupinu, kterou používají sady SDK MSAL i Azure AD Authentication Library (ADAL), a zajišťuje nejlepší jednotné přihlašování (SSO) mezi více aplikacemi od stejného vydavatele.
+MSAL v systému iOS používá ve výchozím nastavení přístupovou skupinu `com.microsoft.adalcache`. Jedná se o sdílenou přístupovou skupinu, kterou používají sady SDK MSAL i Azure AD Authentication Library (ADAL), a zajišťuje nejlepší jednotné přihlašování (SSO) mezi více aplikacemi od stejného vydavatele.
 
-V systému iOS přidejte do XCode do nároku do vaší aplikace skupinu řetězce klíčů `com.microsoft.adalcache` v části **nastavení projektu** > **možnosti**-2  > **sdílení řetězce klíčů** .
+V systému iOS přidejte `com.microsoft.adalcache` skupinu klíčů klíčů do nároku vaší aplikace v XCode v části **nastavení projektu** > **Možnosti** > **sdílení řetězce klíčů** .
 
 ### <a name="macos"></a>macOS
 
-MSAL on macOS ve výchozím nastavení používá skupinu přístupu `com.microsoft.identity.universalstorage`.
+MSAL v macOS používá ve výchozím nastavení přístupovou skupinu `com.microsoft.identity.universalstorage`.
 
-Z důvodu omezení macOS řetězce klíčů se hodnota MSAL `access group` nepřeloží přímo na atribut přístupové skupiny pro řetězce klíčů (viz [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) v MacOS 10,14 a starších. Nicméně se chová podobně jako v perspektivě jednotného přihlašování. zajišťuje, že více aplikací distribuovaných stejným vývojářem Apple může mít tiché jednotné přihlašování.
+Z důvodu omezení macOS řetězce klíčů se `access group` MSAL nepřeloží přímo na atribut přístupové skupiny pro řetězce klíčů (viz [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) v MacOS 10,14 a starších. Nicméně se chová podobně jako v perspektivě jednotného přihlašování. zajišťuje, že více aplikací distribuovaných stejným vývojářem Apple může mít tiché jednotné přihlašování.
 
 V macOS 10,15 a vyšším (macOS Catalina) využívá MSAL k zajištění tichého přihlašování () atribut přístupovou skupinu pro řetězce klíčů, podobně jako iOS.
 
 ## <a name="custom-keychain-access-group"></a>Vlastní přístupová skupina pro řetězce klíčů
 
-Pokud chcete použít jinou přístupovou skupinu pro řetězce klíčů, můžete vlastní skupinu předat při vytváření `MSALPublicClientApplicationConfig`, než vytvoříte `MSALPublicClientApplication`, například takto:
+Pokud chcete použít jinou přístupovou skupinu pro řetězce klíčů, můžete vlastní skupinu předat při vytváření `MSALPublicClientApplicationConfig` před vytvořením `MSALPublicClientApplication`, například takto:
 
-Cíl-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -67,9 +63,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-
-
-SWIFT
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -85,25 +79,27 @@ do {
 }       
 ```
 
-
+---
 
 ## <a name="disable-keychain-sharing"></a>Zakázat sdílení řetězce klíčů
 
 Pokud nechcete sdílet stav jednotného přihlašování mezi více aplikacemi nebo použít jakoukoli přístupovou skupinu pro řetězce klíčů, zakažte sdílení řetězce klíčů předáním ID sady prostředků aplikace jako své skupiny klíčů:
 
-Cíl-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-SWIFT
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {
     config.cacheConfig.keychainSharingGroup = bundleIdentifier
 }
 ```
+
+---
 
 ## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Chyba popisovače-34018 (Nepodařilo se nastavit položku na řetězec klíčů)
 

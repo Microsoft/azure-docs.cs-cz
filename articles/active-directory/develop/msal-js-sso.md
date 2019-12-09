@@ -1,29 +1,25 @@
 ---
-title: Jednotné přihlašování (Microsoft Authentication Library pro JavaScript)
+title: Jednotné přihlašování (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o vytváření prostředí jednotného přihlašování pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da39b8435acdd11108a945c6bac5147dc8b6ad50
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150575"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916260"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Jednotné přihlašování s využitím MSAL.js
 
@@ -92,7 +88,7 @@ Postup pro konfiguraci volitelných deklarací v manifestu aplikace najdete [tad
 
 **Použití pomocného parametru přihlášení**
 
-Pokud nemáte nakonfigurovanou deklaraci SID nebo potřebujete obejít výzvu k výběru účtu při volání interaktivního ověřování, můžete to udělat tak, že v parametrech žádosti zadáte `login_hint` a případně `domain_hint` jako `extraQueryParameters` v interaktivních metodách MSAL. js (@no __t_3_, `loginRedirect`, `acquireTokenPopup` a `acquireTokenRedirect`). Například:
+Pokud nemáte nakonfigurovanou deklaraci SID nebo potřebujete obejít výzvu k výběru účtu při volání interaktivního ověřování, můžete to udělat tak, že v parametrech požadavku zadáte `login_hint` a případně `domain_hint` jako `extraQueryParameters` v interaktivních metodách MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` a `acquireTokenRedirect`). Například:
 
 ```javascript
 var request = {
@@ -108,7 +104,7 @@ Hodnoty pro login_hint a domain_hint můžete získat tak, že si přečtete dek
 
 * **loginHint** by měl být nastaven na deklaraci identity `preferred_username` v tokenu ID.
 
-* **domain_hint** je nutné předat pouze při použití/běžné autority. Pomocný parametr domény je určený ID tenanta (TID).  Pokud `tid` deklarace identity v tokenu ID `9188040d-6c67-4c5b-b112-36a304b66dad` je spotřebitelé. V opačném případě se jedná o organizace.
+* **domain_hint** se musí předávat jenom při použití autority/běžné. Pomocný parametr domény je určený ID tenanta (TID).  Pokud `tid` deklarace identity v tokenu ID `9188040d-6c67-4c5b-b112-36a304b66dad` je spotřebitelé. V opačném případě se jedná o organizace.
 
 Další informace o hodnotách pomocného parametru přihlašovacích údajů a doméně najdete [tady](v2-oauth2-implicit-grant-flow.md) .
 

@@ -1,5 +1,6 @@
 ---
-title: Použití platformy Microsoft identity k přihlašování uživatelů v zařízeních bez prohlížeče | Azure
+title: Přihlášení uživatelů bez prohlížeče | Azure
+titleSuffix: Microsoft identity platform
 description: Pomocí udělení autorizace pro zařízení Sestavte integrované postupy ověřování a bez prohlížeče.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c948c59a90e0db17b4704188221cfc3c3d82310
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207602"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919235"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform a tok udělení autorizace zařízení OAuth 2,0
 

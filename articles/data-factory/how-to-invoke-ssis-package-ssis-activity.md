@@ -1,5 +1,5 @@
 ---
-title: Spuštění balíčku SSIS pomocí aktivity balíčku Execute SSIS – Azure
+title: Spuštění balíčku SSIS pomocí aktivity balíčku Execute SSIS
 description: Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) v kanálu Azure Data Factory pomocí aktivity spustit balíček SSIS.
 services: data-factory
 documentationcenter: ''
@@ -8,22 +8,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/14/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 11/14/2019
+ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122956"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926495"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s aktivitou spustit balíček SSIS v Azure Data Factory
 Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) v kanálu Azure Data Factory pomocí aktivity spustit balíček SSIS. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,7 +40,7 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
 
    ![Data Factory domovskou stránku](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
-   Na stránce **Začínáme** vyberte **Vytvořit kanál**. 
+   Na stránce **Pusťme se do toho** vyberte **Vytvořit kanál**. 
 
    ![Stránka Začínáme](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 
@@ -57,7 +58,7 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
 
     Když vytváříte nebo upravujete propojenou službu trezoru klíčů, můžete vybrat nebo upravit existující Trezor klíčů nebo vytvořit nový. Pokud jste to ještě neudělali, ujistěte se, že jste vašemu trezoru klíčů udělili Data Factory spravovaný přístup k identitám. Tajná klíčová okna můžete zadat také přímo v následujícím formátu: `<Key vault linked service name>/<secret name>/<secret version>`. Pokud váš balíček potřebuje 32 spuštění runtime, zaškrtněte políčko **32 modul runtime** .
 
-   V případě **umístění balíčku**vyberte **SSISDB**, **systém souborů (balíček)** , **systém souborů (projekt**) nebo **vložený balíček**. Pokud jako umístění balíčku vyberete **SSISDB** , která se automaticky vybere v případě, že jste Azure-SSIS IR zřídili pomocí katalogu SSIS (SSISDB), který je hostovaný Azure SQL Database serverem nebo spravovanou instancí, určete, který balíček se má spustit, který byl nasazený. do SSISDB. 
+   V případě **umístění balíčku**vyberte **SSISDB**, **systém souborů (balíček)** , **systém souborů (projekt**) nebo **vložený balíček**. Pokud jako umístění balíčku vyberete **SSISDB** , která se automaticky vybere v případě, že jste Azure-SSIS IR zřídili pomocí katalogu SSIS (SSISDB), který je hostovaný Azure SQL Database serverem nebo spravovanou instancí, určete balíček, který se má spustit, který byl nasazený na SSISDB. 
 
     Pokud je spuštěný Azure-SSIS IR a políčko **Ruční Ruční zadání** není zaškrtnuto, vyhledejte a vyberte existující složky, projekty, balíčky nebo prostředí z SSISDB. Vyberte **aktualizovat** a načtěte vaše nově přidané složky, projekty, balíčky nebo prostředí z SSISDB, aby byly dostupné pro procházení a výběr. Chcete-li procházet nebo vybrat prostředí pro spuštění balíčku, je nutné nakonfigurovat vaše projekty předem, aby byla tato prostředí přidána jako odkazy ze stejných složek v SSISDB. Další informace najdete v tématu [Vytvoření a mapování SSIS prostředí](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
 
@@ -69,13 +70,13 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
 
    ![Nastavení vlastností na kartě Nastavení – ruční](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   Pokud jako umístění balíčku vyberete **systém souborů (balíček)** , který se automaticky vybere, pokud jste Azure-SSIS IR zřídili bez SSISDB, určete balíček, který se má spustit, zadáním cesty UNC (Universal Naming Convention) k souboru balíčku (@no __t_1_) v poli **cesta k balíčku** .`.dtsx` Pokud například uložíte balíček do souborů Azure, jeho cesta k balíčku je `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
+   Pokud jako umístění balíčku vyberete **systém souborů (balíček)** , který se automaticky vybere, pokud jste Azure-SSIS IR zřídili bez SSISDB, určete balíček, který se má spustit, zadáním cesty UNC (Universal Naming Convention) k souboru balíčku (`.dtsx`) v poli **cesta k balíčku** . Pokud například uložíte balíček do souborů Azure, jeho cesta k balíčku je `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
    
    Pokud nakonfigurujete balíček v samostatném souboru, musíte zadat cestu UNC ke konfiguračnímu souboru (`.dtsConfig`) v poli **cesta konfigurace** . Pokud například uložíte konfiguraci do služby soubory Azure, jeho konfigurační cesta se `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`.
 
    ![Nastavení vlastností na kartě Nastavení – ruční](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   Pokud jako umístění balíčku vyberete možnost **systém souborů (projekt)** , určete balíček, který se má spustit, zadáním cesty UNC k souboru projektu (`.ispac`) v poli **cesta k projektu** a souborem balíčku (`.dtsx`) z projektu v **názvu balíčku** . seznam. Pokud například uložíte projekt do souborů Azure, jeho cesta k projektu je `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
+   Pokud jako umístění balíčku vyberete možnost **systém souborů (projekt)** , určete balíček, který se má spustit, zadáním cesty UNC k souboru projektu (`.ispac`) v poli **cesta k projektu** a souboru balíčku (`.dtsx`) z projektu v poli **název balíčku** . Pokud například uložíte projekt do souborů Azure, jeho cesta k projektu je `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
 
    ![Nastavení vlastností na kartě Nastavení – ruční](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
@@ -99,17 +100,17 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
    
    U všech výše zmíněných cest UNC musí mít plně kvalifikovaný název souboru méně než 260 znaků. Název adresáře musí být kratší než 248 znaků.
 
-1. V případě, že je vaše Azure-SSIS IR spuštěná, na kartě **parametry SSIS** v aktivitě balíčku Execute SSIS se jako umístění balíčku vybere **SSISDB** a v případě zrušení zaškrtnutí políčka **Ruční položky** na kartě **Nastavení** se odstraní existující SSIS pro přiřazení hodnot k těmto parametrům se zobrazí parametry ve vybraném projektu nebo balíčku z SSISDB. V opačném případě je můžete zadat jednu po jedné a přiřadit k nim hodnoty ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. 
+1. Na kartě **parametry SSIS** pro aktivitu spustit SSIS balíčku, pokud je vaše Azure-SSIS IR spuštěná, jako umístění balíčku se vybere **SSISDB** a na kartě nastavení se zobrazí zaškrtávací políčko **Ruční zadání** na kartě **Nastavení** se zobrazí stávající parametry SSIS ve vybraném projektu nebo balíčku z SSISDB, abyste jim přiřadili hodnoty. V opačném případě je můžete zadat jednu po jedné a přiřadit k nim hodnoty ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. 
    
-   Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** pomocí nástroje SQL Server Data Tools a systém souborů ( **balíček** ) nebo **systém souborů (projekt)** , budete muset také znovu zadat vaše citlivé parametry k přiřazení hodnot do konfiguračních souborů nebo na této kartě. 
+   Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** pomocí nástroje SQL Server Data Tools a systém souborů ( **balíček** ) nebo **systém souborů (projekt)** , musíte také znovu zadat citlivé parametry a přiřadit jim jim hodnoty v konfiguračních souborech nebo na této kartě. 
    
    Při přiřazování hodnot k parametrům můžete přidat dynamický obsah pomocí výrazů, funkcí, Data Factory systémových proměnných a Data Factory parametrů kanálu nebo proměnných. Alternativně můžete použít tajné klíče uložené ve vašem trezoru klíčů jako jejich hodnoty (viz předchozí).
 
    ![Nastavení vlastností na kartě Parametry SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. Na kartě **Správci připojení** pro aktivitu spustit SSIS balíčku, pokud je vaše Azure-SSIS IR spuštěná, jako umístění balíčku se vybere **SSISDB** a na kartě **Nastavení** se zruší zaškrtnutí políčka **Ruční položky** , existující pro přiřazení hodnot ke svým vlastnostem se zobrazí Správci připojení ve vybraném projektu nebo balíčku z SSISDB. V opačném případě je můžete zadat jednu po jedné a přiřadit hodnoty jejich vlastnostem ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. 
+1. Na kartě **Správci připojení** pro aktivitu spustit SSIS balíčku, pokud je vaše Azure-SSIS IR spuštěná, jako umístění balíčku se vybere **SSISDB** a na kartě nastavení se zruší zaškrtávací políčko **Ruční položky** na kartě **Nastavení** , zobrazí se stávající Správci připojení ve vybraném projektu nebo balíčku z SSISDB, abyste jim přiřadili hodnoty jejich vlastností. V opačném případě je můžete zadat jednu po jedné a přiřadit hodnoty jejich vlastnostem ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. 
    
-   Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** pomocí nástroje SQL Server Data Tools a systém souborů ( **balíček** ) nebo **systém souborů (projekt)** , budete muset také znovu zadat vlastnosti vašeho citlivého Správce připojení, které jim přiřadí hodnoty v konfiguračních souborech nebo na této kartě. 
+   Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** pomocí nástroje SQL Server Data Tools a systém souborů ( **balíček** ) nebo **systém souborů (projekt)** je jako umístění balíčku vybraný, musíte znovu zadat vlastnosti citlivý Správce připojení a přiřadit jim hodnoty v konfiguračních souborech nebo na této kartě. 
    
    Když přiřazujete hodnoty k vlastnostem Správce připojení, můžete přidat dynamický obsah pomocí výrazů, funkcí, Data Factory systémových proměnných a Data Factory parametrů kanálu nebo proměnných. Alternativně můžete použít tajné klíče uložené ve vašem trezoru klíčů jako jejich hodnoty (viz předchozí).
 
@@ -117,7 +118,7 @@ V tomto kroku použijete Data Factory uživatelské rozhraní nebo aplikaci k vy
 
 1. Na kartě **přepsání vlastností** aktivity spustit balíček SSIS zadejte cesty existujících vlastností vybraného balíčku jeden po jednom, aby byly hodnoty přiřazeny ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. Chcete-li například přepsat hodnotu proměnné uživatele, zadejte její cestu v následujícím formátu: `\Package.Variables[User::<variable name>].Value`. 
    
-   Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** pomocí nástroje SQL Server Data Tools a systém souborů ( **balíček** ) nebo **systém souborů (projekt)** , budete muset také znovu zadat vaše citlivé vlastnosti, které jim přiřadí hodnoty v konfiguračních souborech nebo na této kartě. 
+   Pokud jste při vytváření balíčku použili úroveň ochrany **EncryptSensitiveWithUserKey** pomocí nástroje SQL Server Data Tools a systém souborů ( **balíček** ) nebo **systém souborů (projekt)** je jako umístění balíčku vybraný, musíte znovu zadat citlivé vlastnosti a přiřadit jim hodnoty v konfiguračních souborech nebo na této kartě. 
    
    Když přiřazujete hodnoty k vlastnostem, můžete přidat dynamický obsah pomocí výrazů, funkcí, Data Factory systémových proměnných a Data Factory parametrů kanálu nebo proměnných.
 
@@ -140,7 +141,7 @@ V tomto kroku aktivujete spuštění kanálu.
 
 ### <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se spuštění kanálu a jeho stav spolu s dalšími informacemi, jako je například čas **spuštění** . Pokud chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
+1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se spuštění kanálu a jeho stav spolu s dalšími informacemi, jako je například čas **spuštění** . Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
    ![Spuštění kanálu](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 

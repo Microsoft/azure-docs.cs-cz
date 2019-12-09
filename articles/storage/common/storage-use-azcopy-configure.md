@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786839"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926456"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -21,7 +21,7 @@ AzCopy je nástroj příkazového řádku, který můžete použít ke kopírov�
 
 > [!NOTE]
 > Pokud hledáte obsah, který vám pomůžete začít s AzCopy, přečtěte si některé z následujících článků:
-> - [Začínáme s AzCopy](storage-use-azcopy-v10.md)
+> - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 > - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
 > - [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 > - [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
@@ -53,7 +53,7 @@ Pomocí následujícího příkazu spusťte test srovnávacího testu výkonu.
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Syntaxe** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Příklad** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 Tento příkaz spustí srovnávací test výkonu odesláním testovacích dat do zadaného cíle. Testovací data jsou generována v paměti, odeslána do cíle a poté po dokončení testu odstraněna z cílového umístění. Můžete určit, kolik souborů se má vygenerovat a jakou velikost byste chtěli použít při použití volitelných parametrů příkazu.
@@ -99,7 +99,7 @@ AzCopy vytvoří soubory protokolů a plánů pro každou úlohu. Protokoly mů�
 
 Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED`a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
 
-Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE$\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systémech Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
+Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE%\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systémech Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
 
 > [!IMPORTANT]
 > Při odesílání žádosti o podpora Microsoftu (nebo řešení potíží, které se týkají jakékoli třetí strany) nastavte navýšení verze příkazu, který chcete spustit. Tím se zajistí, že se SAS nebude náhodně sdílet s kdokoli. Navýšení verze se dá najít na začátku souboru protokolu.
@@ -151,7 +151,7 @@ Když úlohu obnovíte, AzCopy se podívá na soubor plánu úlohy. Soubor plán
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Změna umístění plánu a souborů protokolu
 
-Ve výchozím nastavení se soubory schématu a protokolu nacházejí v adresáři `%USERPROFILE$\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systému Mac a Linux. Toto umístění můžete změnit.
+Ve výchozím nastavení se soubory schématu a protokolu nacházejí v adresáři `%USERPROFILE%\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systému Mac a Linux. Toto umístění můžete změnit.
 
 ### <a name="change-the-location-of-plan-files"></a>Změna umístění souborů plánu
 

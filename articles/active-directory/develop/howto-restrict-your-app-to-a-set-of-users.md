@@ -1,31 +1,27 @@
 ---
-title: Omezení aplikace zaregistrované v Azure Active Directory pro sadu uživatelů
+title: Omezení uživatelů aplikace zaregistrovaných pro Azure Active Directory | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se, jak omezit přístup k aplikacím registrovaným ve službě Azure AD na vybranou skupinu uživatelů.
 services: active-directory
-documentationcenter: ''
 author: kalyankrishna1
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: kkrishna
-ms.reviewer: ''
+ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c768730a00d424333e735bb4f6a385d294f38513
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803950"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917620"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Postupy: omezení aplikace na sadu uživatelů
+# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Postupy: omezení aplikace Azure AD na skupinu uživatelů
 
 Aplikace zaregistrované v tenantovi Azure Active Directory (Azure AD) jsou ve výchozím nastavení dostupné všem uživatelům tenanta, kteří se úspěšně ověřují.
 

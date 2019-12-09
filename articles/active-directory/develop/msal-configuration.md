@@ -1,33 +1,29 @@
 ---
-title: Vysvětlení konfiguračního souboru Microsoft Authentication Library (MSAL) pro Android
+title: Konfigurační soubor knihovny Microsoft Authentication Library pro Android | Azure
 titleSuffix: Microsoft identity platform
 description: Přehled konfiguračního souboru Microsoft Authentication Library (MSAL) pro Android, který představuje konfiguraci aplikace v Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c06bc1ebf3b87f622029e9e875fe478eae7e6a30
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803155"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916822"
 ---
-# <a name="android-microsoft-authentication-library-msal-configuration-file"></a>Konfigurační soubor Microsoft Authentication Library (MSAL) pro Android
+# <a name="android-microsoft-authentication-library-configuration-file"></a>Konfigurační soubor knihovny Microsoft Authentication Library pro Android
 
-MSAL dodává s [výchozím konfiguračním souborem JSON](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) , který můžete přizpůsobit a definovat chování vaší veřejné klientské aplikace pro věci, jako je například výchozí autorita, kterou budete používat, a tak dále.
+Knihovna Microsoft Authentication Library (MSAL) pro Android je dodávána s [výchozím konfiguračním souborem JSON](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) , který si přizpůsobíte, abyste mohli definovat chování vaší veřejné klientské aplikace pro věci, jako je například výchozí autorita, kterou budete používat, a tak dále.
 
 Tento článek vám pomůže porozumět různým nastavením konfiguračního souboru a určit konfigurační soubor, který se má použít v aplikaci založené na MSAL.
 
@@ -48,7 +44,7 @@ Tento článek vám pomůže porozumět různým nastavením konfiguračního so
 
 ID klienta nebo ID aplikace, které byly vytvořeny při registraci aplikace.
 
-### <a name="redirect_uri"></a>identifikátor
+### <a name="redirect_uri"></a>redirect_uri
 
 Identifikátor URI přesměrování, který jste zaregistrovali při registraci aplikace. Pokud je identifikátor URI pro přesměrování aplikace zprostředkovatele, přečtěte si odkaz [URI pro veřejné klientské aplikace](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) , abyste měli jistotu, že používáte správný formát identifikátoru URI přesměrování pro aplikaci zprostředkovatele.
 
@@ -148,7 +144,7 @@ Nakonfigurujte globální nastavení pro vypršení časových limitů protokolu
 | `connect_timeout` | int | Ne | Čas v milisekundách |
 | `read_timeout` | int | Ne | Čas v milisekundách |
 
-### <a name="logging"></a>Protokolu
+### <a name="logging"></a>protokolování
 
 Následující globální nastavení slouží k protokolování:
 

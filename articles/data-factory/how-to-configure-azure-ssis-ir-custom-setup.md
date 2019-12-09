@@ -1,23 +1,23 @@
 ---
-title: 'Přizpůsobení nastavení pro prostředí Azure-SSIS Integration runtime '
+title: Přizpůsobení nastavení pro prostředí Azure-SSIS Integration runtime
 description: Tento článek popisuje, jak použít vlastní rozhraní pro instalaci pro prostředí Azure-SSIS Integration runtime k instalaci dalších součástí nebo změny nastavení.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 1/25/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 222672a93ccde7464ec1f37212f18996033a1460
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019
+ms.date: 1/25/2019
+ms.openlocfilehash: d80ff102648deebf63cc0752b2980274cb90aeb9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674867"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922878"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro prostředí Azure-SSIS Integration runtime
 
@@ -42,7 +42,7 @@ Můžete nainstalovat bezplatné i nelicencované komponenty a placené nebo lic
 
 -   Ovladač IBM iSeries Access ODBC není podporován na Azure-SSIS IR. Při vlastní instalaci se může zobrazit chyba instalace. Pokud potřebujete pomoc, obraťte se prosím na podporu společnosti IBM.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -109,7 +109,7 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující věci:
 
       ![Zadejte sdílený přístupový podpis.](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-      Když zřídíte nebo překonfigurujete Azure-SSIS IR pomocí prostředí PowerShell, před spuštěním Azure-SSIS IR spusťte rutinu `Set-AzDataFactoryV2IntegrationRuntime` s identifikátorem URI SAS vašeho kontejneru jako s hodnotou pro nový parametr `SetupScriptContainerSasUri`. Příklad:
+      Když zřídíte nebo překonfigurujete Azure-SSIS IR pomocí prostředí PowerShell, před spuštěním Azure-SSIS IR spusťte rutinu `Set-AzDataFactoryV2IntegrationRuntime` s identifikátorem URI SAS vašeho kontejneru jako s hodnotou pro nový parametr `SetupScriptContainerSasUri`. Například:
 
       ```powershell
       Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
@@ -152,11 +152,11 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující věci:
 
       1. Složka `EXCEL`, která obsahuje vlastní instalaci pro instalaci Open-Source sestavení (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`a `ExcelDataReader.dll`) na každém uzlu vašeho Azure-SSIS IR.
 
-      1. `ORACLE ENTERPRISE` složky, která obsahuje skript vlastní instalace (`main.cmd`) a soubor bezobslužné instalace (`client.rsp`) pro instalaci konektorů Oracle a ovladače OCI do každého uzlu Azure-SSIS IR edice Enterprise. Tato instalace vám umožní používat Správce připojení Oracle, zdroj a cíl. Nejdřív Stáhněte konektory Microsoft Connectors v 5.0 pro Oracle (`AttunitySSISOraAdaptersSetup.msi` a `AttunitySSISOraAdaptersSetup64.msi`) z [webu Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) a nejnovějšího klienta Oracle – například `winx64_12102_client.zip` – od [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), a pak je nahrajte společně s `main.cmd` a `client.rsp` do Váš kontejner. Použijete-li TNS pro připojení k Oracle, budete také muset stáhnout `tnsnames.ora`, upravit ho a nahrát ho do kontejneru, takže se dá zkopírovat do instalační složky Oracle během instalace.
+      1. `ORACLE ENTERPRISE` složky, která obsahuje skript vlastní instalace (`main.cmd`) a soubor bezobslužné instalace (`client.rsp`) pro instalaci konektorů Oracle a ovladače OCI do každého uzlu Azure-SSIS IR edice Enterprise. Tato instalace vám umožní používat Správce připojení Oracle, zdroj a cíl. Nejdřív Stáhněte konektory Microsoft Connectors v 5.0 pro Oracle (`AttunitySSISOraAdaptersSetup.msi` a `AttunitySSISOraAdaptersSetup64.msi`) z [webu Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) a nejnovějšího klienta Oracle – například `winx64_12102_client.zip` – od [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), a pak je nahrajte společně s `main.cmd` a `client.rsp` do svého kontejneru. Použijete-li TNS pro připojení k Oracle, budete také muset stáhnout `tnsnames.ora`, upravit ho a nahrát ho do kontejneru, takže se dá zkopírovat do instalační složky Oracle během instalace.
 
       1. `ORACLE STANDARD ADO.NET` složky, která obsahuje skript vlastní instalace (`main.cmd`) k instalaci ovladače Oracle ODP.NET do každého uzlu vašeho Azure-SSIS IR. Tato instalace vám umožní používat ADO.NET Správce připojení, zdroj a cíl. Nejdřív Stáhněte nejnovější ovladač Oracle ODP.NET, například `ODP.NET_Managed_ODAC122cR1.zip`-from [Oracle](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), a pak ho nahrajte společně s `main.cmd` do svého kontejneru.
        
-      1. `ORACLE STANDARD ODBC` složky, která obsahuje skript vlastní instalace (`main.cmd`) k instalaci ovladače Oracle ODBC a konfiguraci DSN v každém uzlu Azure-SSIS IR. Tato instalace umožňuje pro připojení k serveru Oracle použít Správce připojení ODBC/zdroj/cíl nebo Power Query Správce připojení a zdroj se zdrojem dat ODBC. Nejdřív si stáhněte nejnovějšího okamžitého klienta Oracle (základní balíček nebo základní balíček verze Lite) a balíček ODBC – například 64 [balíčků (základní](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) balíček: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, základní balíček lite: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, balíček ODBC: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) nebo 32-bit balíčky odsud [(základní](https://www.oracle.com/technetwork/topics/winsoft-085727.html) balíček: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, základní balíček Lite: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, balíček ODBC: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`) a pak je nahrajte společně s `main.cmd` do svého kontejneru.
+      1. `ORACLE STANDARD ODBC` složky, která obsahuje skript vlastní instalace (`main.cmd`) k instalaci ovladače Oracle ODBC a konfiguraci DSN v každém uzlu Azure-SSIS IR. Tato instalace umožňuje pro připojení k serveru Oracle použít Správce připojení ODBC/zdroj/cíl nebo Power Query Správce připojení a zdroj se zdrojem dat ODBC. Nejdřív si stáhněte nejnovějšího okamžitého klienta Oracle (základní balíček nebo základní balíček verze Lite) a balíček ODBC – například 64 balíčků (základní balíček: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, základní balíček [s příponou](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) lite: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, balíček odbc: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) nebo 32 balíčky z [tohoto místa](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (základní balíček: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, základní balíček Lite: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, balíček ODBC: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`) a pak je nahrajte společně s `main.cmd` do svého kontejneru.
 
       1. `SAP BW` složky, která obsahuje skript vlastní instalace (`main.cmd`) k instalaci sestavení SAP .NET Connector (`librfc32.dll`) na každý uzel vaší Azure-SSIS IR edice Enterprise. Tato instalace umožňuje použít SAP BW Správce připojení, zdroj a cíl. Nejdřív nahrajte 64 nebo 32 verzi `librfc32.dll` z instalační složky SAP do svého kontejneru spolu s `main.cmd`. Skript pak zkopíruje sestavení SAP do složky `%windir%\SysWow64` nebo `%windir%\System32` během instalace.
 

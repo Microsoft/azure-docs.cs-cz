@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: 85f3c8b9bc4167350b8a56f118128b89df142611
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cc17b8158c847bff5f07d6088a99566dc499d1bf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896919"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914762"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory (Preview)
-Cílem tohoto kurzu je Ukázat kroky, které je třeba provést při importu dat pracovních procesů z SuccessFactors zaměstnanců do služby Active Directory a Azure Active Directory, s volitelným zpětným zápisem e-mailové adresy SuccessFactors.
+Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste uživatelům zřídili SuccessFactors zaměstnanci v rámci služby Active Directory (AD) a Azure AD s volitelným zpětným zápisem e-mailové adresy na SuccessFactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70 a uživatelských atributů](../manage-apps/sap-successfactors-attribute-reference.md) od SuccessFactors zaměstnanců od středníku.
+
+>[!NOTE]
+>Tento kurz použijte v případě, že uživatelé, které chcete zřídit z SuccessFactors, potřebují místní účet služby AD a volitelně účet Azure AD. Pokud uživatelé z SuccessFactors potřebují jenom účet Azure AD (jenom pro cloudové uživatele), přečtěte si prosím kurz [konfigurace SAP SuccessFactors na zřizování uživatelů Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) . 
+
 
 ## <a name="overview"></a>Přehled
 
@@ -69,7 +73,7 @@ Tato část popisuje kompletní architekturu řešení zřizování uživatelů 
 4. Agent zřizování Azure AD Connect používá účet služby k přidání nebo aktualizaci dat účtu AD.
 5. Modul Azure AD Connect Sync spouští rozdílovou synchronizaci pro vyžádání aktualizací ve službě AD.
 6. Aktualizace služby Active Directory se synchronizují s Azure Active Directory.
-7. Pokud je konektor pro zpětný zápis SuccessFactors nakonfigurovaný, zapisuje zpátky atribut e-mailu a uživatelské jméno do SuccessFactors, a to na základě používaného odpovídajícího atributu.
+7. Pokud je [aplikace pro zpětný zápis SuccessFactors](sap-successfactors-writeback-tutorial.md) nakonfigurovaná, zapisuje zpátky atribut e-mailu na SuccessFactors na základě používaného odpovídajícího atributu.
 
 ## <a name="planning-your-deployment"></a>Plánování nasazení
 
@@ -109,6 +113,10 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 * Posuňte se dolů ve stejném poli a vyberte **centrální rozhraní API pro zaměstnance**. Přidáním oprávnění, jak je vidět níže, můžete číst pomocí rozhraní ODATA API a upravit pomocí rozhraní ODATA API. Vyberte možnost upravit, pokud chcete použít stejný účet ke zpětnému zápisu do SuccessFactors scénáře. 
   > [!div class="mx-imgBorder"]
   > ![oprávnění ke čtení zápisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+  >[!NOTE]
+  >Úplný seznam atributů načtených touto zřizovací aplikací najdete v [referenčních informacích k atributům SuccessFactors](../manage-apps/sap-successfactors-attribute-reference.md) .
+
 * Klikněte na **Hotovo**. Klikněte na tlačítko **uložit změny**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Vytvoření skupiny oprávnění pro uživatele rozhraní API
@@ -294,6 +302,10 @@ V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do 
 
 1. V části **mapování atributů** můžete definovat, jak se jednotlivé atributy SuccessFactors mapují na atributy služby Active Directory.
 
+  >[!NOTE]
+  >Úplný seznam atributu SuccessFactors podporovaného aplikací najdete v [referenčních informacích k atributům SuccessFactors](../manage-apps/sap-successfactors-attribute-reference.md) .
+
+
 1. Kliknutím na existující mapování atributů ho aktualizujte nebo kliknutím na **Přidat nové mapování** v dolní části obrazovky přidejte nová mapování. Jednotlivé mapování atributů podporují tyto vlastnosti:
 
       * **Typ mapování**
@@ -347,20 +359,9 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Další informace o podporovaných atributech SuccessFactors pro příchozí zřizování](../manage-apps/sap-successfactors-attribute-reference.md)
+* [Informace o tom, jak nakonfigurovat zpětný zápis e-mailu na SuccessFactors](sap-successfactors-writeback-tutorial.md)
 * [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi SuccessFactors a Azure Active Directory](successfactors-tutorial.md)
 * [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Naučte se exportovat a importovat vaše konfigurace zřizování.](../manage-apps/export-import-provisioning-configuration.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

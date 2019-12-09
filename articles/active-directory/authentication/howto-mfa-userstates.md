@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f6fd2a01cdb325d543bc624d0c13bce1d84a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 55bba2ff51460a10feabd881458b8d4a15cde924
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848234"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914613"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -52,7 +52,10 @@ Uživatelské účty v Azure Multi-Factor Authentication mají následující t�
 
 Stav uživatele odráží, jestli ho správce zaregistroval v Azure MFA, a jestli dokončil proces registrace.
 
-Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v Azure MFA, jejich stav se změní na *povoleno*. Když se uživatelé s povoleným přihlášením a dokončí proces registrace, jejich stav se změní na *vynutilo*.  
+Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v Azure MFA, jejich stav se změní na *povoleno*. Když se uživatelé s povoleným přihlášením a dokončí proces registrace, jejich stav se změní na *vynutilo*.
+
+> [!NOTE]
+> Pokud je MFA znovu zapnuté u objektu uživatele, který už obsahuje podrobnosti o registraci, jako je telefon nebo e-mail, musí správci tento uživatel znovu zaregistrovat MFA prostřednictvím Azure Portal nebo PowerShellu. Pokud se uživatel znovu neregistruje, jejich stav MFA nepřejde z *Enabled* na *vynutilo* v UŽIVATELSKÉM rozhraní pro správu MFA.
 
 ### <a name="view-the-status-for-a-user"></a>Zobrazit stav uživatele
 
@@ -179,6 +182,8 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 > [!NOTE]
 > V nedávné době jsme změnili chování a skript PowerShellu. Dříve byl skript uložen mimo metody MFA, zakázal MFA a obnovil metody. Už to není nutné, když výchozí chování pro Disable nevymaže tyto metody.
+>
+> Pokud je MFA znovu zapnuté u objektu uživatele, který už obsahuje podrobnosti o registraci, jako je telefon nebo e-mail, musí správci tento uživatel znovu zaregistrovat MFA prostřednictvím Azure Portal nebo PowerShellu. Pokud se uživatel znovu neregistruje, jejich stav MFA nepřejde z *Enabled* na *vynutilo* v UŽIVATELSKÉM rozhraní pro správu MFA.
 
 ## <a name="next-steps"></a>Další kroky
 

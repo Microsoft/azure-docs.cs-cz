@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024787"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914078"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -62,7 +62,7 @@ Níže jsou uvedené role, které můžou nakonfigurovat a používat vypršení
 
 Role | Oprávnění
 -------- | --------
-Globální správce nebo Správce uživatelů | Může vytvořit, číst, aktualizovat nebo odstranit nastavení zásad vypršení platnosti skupin Office 365.<br>Může obnovit libovolnou skupinu Office 365.
+Globální správce, správce skupiny nebo Správce uživatelů | Může vytvořit, číst, aktualizovat nebo odstranit nastavení zásad vypršení platnosti skupin Office 365.<br>Může obnovit libovolnou skupinu Office 365.
 Uživatel | Může obnovit skupinu Office 365, kterou vlastní.<br>Může obnovit skupinu Office 365, kterou vlastní.<br>Může číst nastavení zásad vypršení platnosti.
 
 Další informace o oprávněních k obnovení odstraněné skupiny najdete [v tématu Obnovení odstraněné skupiny Office 365 v Azure Active Directory](groups-restore-deleted.md).
@@ -181,7 +181,7 @@ Následující rutiny se dají použít ke konfiguraci zásad podrobněji. Dalš
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
-- Reset – AzureADMSLifeCycleGroup
+- Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
 ## <a name="next-steps"></a>Další kroky

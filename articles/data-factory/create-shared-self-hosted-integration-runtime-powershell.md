@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
-ms.openlocfilehash: a8ac5bdaab915e46f5d5074c991703790d429e50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2b83c61d05cbc9d84c74d03004839a21505519fa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218230"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928464"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Vytvoření sdíleného prostředí Integration runtime v místním prostředí v Azure Data Factory
 
@@ -52,7 +51,7 @@ Pokud chcete vytvořit sdílený prostředí IR v místním prostředí pomocí 
 1. Vytvořte propojený modul runtime integrace.
 1. Odvolejte sdílení.
 
-### <a name="prerequisites"></a>Požadavky 
+### <a name="prerequisites"></a>Předpoklady 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

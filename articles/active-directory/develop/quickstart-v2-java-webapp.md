@@ -2,25 +2,21 @@
 title: Microsoft Identity Platform Java Web App Starter | Azure
 description: Naučte se implementovat přihlašování Microsoftu na webové aplikaci Java pomocí OpenID Connect.
 services: active-directory
-documentationcenter: dev-center-name
 author: sangonzal
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 6645fa30772d7e1556f7a1aae76c7189577c3c1d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1a5401ee76f60c9b9c2a75561cad8f6571d3b308
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452616"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920697"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -32,7 +28,7 @@ Po dokončení tohoto rychlého startu bude vaše aplikace přijímat přihlašo
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení této ukázky budete potřebovat:
 
@@ -66,7 +62,7 @@ K provedení této ukázky budete potřebovat:
 > 1. Na stránce **Přehled** vyhledejte **ID aplikace (klienta)** a ID adresáře aplikace ( **tenant)** . Tyto hodnoty zkopírujte pro pozdější verzi.
 > 1. V nabídce vyberte **ověřování** a přidejte následující informace:
 >    - V případě **identifikátorů URI pro přesměrování**přidejte `http://localhost:8080/msal4jsamples/secure/aad` a `http://localhost:8080/msal4jsamples/graph/me`.
->    - Vyberte **Uložit**.
+>    - Vyberte **Save** (Uložit).
 > 1. V nabídce vyberte **certifikáty & tajné klíče** a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta**:
 >
 >    - Zadejte popis klíče (např. tajný klíč aplikace).
@@ -93,7 +89,7 @@ K provedení této ukázky budete potřebovat:
 
 #### <a name="step-3-configure-the-code-sample"></a>Krok 3: Konfigurace ukázky kódu
 
- 1. Extrahujte soubor zip do místní složky.
+ 1. Soubor .zip extrahujte do místní složky.
  1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
 
  1. Otevřete soubor Application. Properties, který se nachází ve složce src/Main/Resources/Folder a nahraďte hodnotu polí *AAD. ClientID*, *AAD. Authority* a *AAD. SecretKey* s příslušnými hodnotami **ID aplikace**, **ID tenanta** a **tajného klíče klienta** následujícím způsobem:

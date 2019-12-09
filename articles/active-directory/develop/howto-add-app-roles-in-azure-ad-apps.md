@@ -1,5 +1,5 @@
 ---
-title: Přidání rolí aplikace do aplikace zaregistrované v Azure Active Directory a jejich přijetí v tokenu
+title: Přidat role aplikace a získat je od tokenu | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se přidávat role aplikací v aplikaci registrované v Azure Active Directory, přiřazovat k těmto rolím uživatele a skupiny a přijímat je v deklaraci identity `roles` v tokenu.
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fca807913d2753828d55c095c1a3b380340fd95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0fe116b5ae26522c9bce0322123836a6e08d3cfd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843151"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917910"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 

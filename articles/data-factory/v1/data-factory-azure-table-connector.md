@@ -4,21 +4,20 @@ description: Přečtěte si, jak přesunout data do a z Azure Table Storage pomo
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 83f3a34a9b902b3a0e3b3ded34e36c8cbf50ed89
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683080"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918723"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z tabulky Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -39,7 +38,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do n
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky: 
 
@@ -65,7 +64,7 @@ Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informa
 | --- | --- | --- |
 | tableName |Název tabulky instance databáze Azure Table, na kterou odkazuje propojená služba |Ano. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
 
-### <a name="schema-by-data-factory"></a>Schéma podle Data Factory
+### <a name="schema-by-data-factory"></a>Schéma službou Data Factory
 Pro úložiště dat bez schémat, jako je například tabulka Azure, Služba Data Factory odvodí schéma jedním z následujících způsobů:
 
 1. Pokud určíte strukturu dat pomocí vlastnosti **Structure** v definici datové sady, Služba Data Factory tuto strukturu respektuje jako schéma. V takovém případě, pokud řádek neobsahuje hodnotu pro sloupec, je pro něj k dispozici hodnota null.
@@ -83,7 +82,7 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity, se liší
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu tabulky Azure Podívejte se na příklady v následující části. |Ne. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
-| azureTableSourceIgnoreTableNotFound |Určuje, zda požití neexistuje výjimka tabulky. |PODMÍNKA<br/>CHYBNÉ |Ne |
+| azureTableSourceIgnoreTableNotFound |Určuje, zda požití neexistuje výjimka tabulky. |TRUE<br/>FALSE |Ne |
 
 ### <a name="azuretablesourcequery-examples"></a>Příklady azureTableSourceQuery
 Pokud je sloupec tabulky Azure typu řetězec:
@@ -105,7 +104,7 @@ Pokud je sloupec tabulky Azure typu DateTime:
 | azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |Řetězcová hodnota. |Ne |
 | azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu AzureTableDefaultPartitionKeyValue. |Název sloupce |Ne |
 | azureTableRowKeyName |Zadejte název sloupce, jehož hodnoty sloupce jsou používány jako klíč řádku. Není-li tento parametr zadán, použijte pro každý řádek identifikátor GUID. |Název sloupce |Ne |
-| azureTableInsertType |Režim pro vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Další informace o tom, jak tato nastavení (sloučit a nahradit) fungují, najdete v tématech [vložení nebo sloučení entit](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entit](https://msdn.microsoft.com/library/azure/hh452242.aspx) . <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli na úrovni tabulky a ani možnost neodstraní řádky ve výstupní tabulce, které ve vstupu neexistují. |Sloučení (výchozí)<br/>náhrady |Ne |
+| azureTableInsertType |Režim pro vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Další informace o tom, jak tato nastavení (sloučit a nahradit) fungují, najdete v tématech [vložení nebo sloučení entit](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entit](https://msdn.microsoft.com/library/azure/hh452242.aspx) . <br/><br> Toto nastavení se vztahuje na úrovni řádků, nikoli na úrovni tabulky a ani možnost neodstraní řádky ve výstupní tabulce, které ve vstupu neexistují. |sloučení (výchozí)<br/>nahradit |Ne |
 | writeBatchSize |Vloží data do tabulky Azure, když je dosaženo writeBatchSize nebo writeBatchTimeout. |Integer (počet řádků) |Ne (výchozí: 10000) |
 | writeBatchTimeout |Vloží data do tabulky Azure, když je dosaženo writeBatchSize nebo writeBatchTimeout. |TimeSpan<br/><br/>Příklad: "00:20:00" (20 minut) |Ne (výchozí hodnota pro výchozí nastavení klienta úložiště hodnota časového limitu 90 s) |
 
@@ -477,12 +476,12 @@ Když přesunete data do & z tabulky Azure, z typů Azure Table OData do typu .N
 
 | Datový typ OData | Typ .NET | Podrobnosti |
 | --- | --- | --- |
-| EDM. Binary |Byte [] |Pole bajtů až do 64 KB. |
-| Edm.Boolean |bool |Logická hodnota. |
-| EDM. DateTime |DateTime |64 hodnota vyjádřená jako koordinovaný světový čas (UTC). Podporovaný rozsah DateTime začíná od 12:00 půlnoci 1. ledna 1601 N.L. (0001), UTC. Rozsah končí 31. prosince 9999. |
+| Edm.Binary |Byte |Pole bajtů až do 64 KB. |
+| Edm.Boolean |bool |Logická hodnota |
+| Edm.DateTime |Datum a čas |64 hodnota vyjádřená jako koordinovaný světový čas (UTC). Podporovaný rozsah DateTime začíná od 12:00 půlnoci 1. ledna 1601 N.L. (C.E.), UTC. Rozsah končí 31. prosince 9999. |
 | Edm.Double |double |Hodnota 64-bit s plovoucí desetinnou čárkou. |
-| EDM. GUID |Guid |Globálně jedinečný identifikátor 128. |
-| Edm.Int32 |Uvedena |32 celé číslo. |
+| Edm.Guid |Guid |Globálně jedinečný identifikátor 128. |
+| Edm.Int32 |Datový typ Int32 |32 celé číslo. |
 | Edm.Int64 |Int64 |64 celé číslo. |
 | Edm.String |Řetězec |Hodnota kódovaná v kódování UTF-16. Hodnoty řetězce můžou být až 64 KB. |
 
@@ -537,9 +536,9 @@ Vzhledem k mapování typu z tabulky Azure typu OData na typ .NET byste definova
 
 | Název sloupce | Typ |
 | --- | --- |
-| UserID |Edm.Int64 |
+| ID uživatele |Edm.Int64 |
 | jméno |Edm.String |
-| lastlogindate |EDM. DateTime |
+| lastlogindate |Edm.DateTime |
 
 Dále definujte datovou sadu Azure Table následujícím způsobem. Nemusíte určovat oddíl Structure s informacemi o typu, protože informace o typu jsou již zadány v podkladovém úložišti dat.
 

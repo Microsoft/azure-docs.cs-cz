@@ -2,27 +2,23 @@
 title: Microsoft Identity Platform iOS a macOS – rychlý Start | Azure
 description: Přečtěte si, jak se přihlašovat uživatelé a dotazy Microsoft Graph v aplikaci pro iOS nebo macOS.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b515a7954d82cdd377cec72fa8525fbd9691351d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 10225efb1dcd870f5922a6521b0bd6ec44965152
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149508"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920680"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS nebo macOS
 
@@ -35,7 +31,7 @@ Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou po
 > [!NOTE]
 > **Požadavky**
 > * XCode 10 +
-> * iOS 10 + 
+> * iOS 10+ 
 > * macOS 10.12 +
 
 > [!div renderon="docs"]
@@ -65,7 +61,7 @@ Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou po
 > 1. V části **Spravovat** vyberte `Authentication` > `Add Platform` > `iOS`.
 >      - Zadejte ***identifikátor sady prostředků*** pro vaši aplikaci. Identifikátor sady prostředků je pouze jedinečný řetězec, který jedinečně identifikuje vaši aplikaci, například `com.<yourname>.identitysample.MSALMacOS`. Poznamenejte si hodnotu, kterou používáte.
 >      - Všimněte si, že konfigurace iOS platí také pro aplikace macOS.
-> 1. Vyberte `Configure` a uložte podrobnosti ***Konfigurace MSAL*** pro pozdější v tomto rychlém startu.
+> 1. Vyberte `Configure` a uložte podrobnosti ***Konfigurace MSAL*** pro pozdější využití v tomto rychlém startu.
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>Krok 1: Konfigurace aplikace
@@ -97,8 +93,8 @@ V okně terminálu přejděte do složky s ukázkou staženého kódu a spuště
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Otevřete nastavení projektu. V části **Identita** zadejte **identifikátor sady prostředků** , který jste zadali na portálu.
-> 1. Pouze pro iOS klikněte pravým tlačítkem na **info. plist** a vyberte **Otevřít jako** **zdrojový kód** > .
-> 1. Pouze pro iOS v kořenovém uzlu dict – nahraďte `CFBundleURLSchemes` ***ID sady prostředků*** , které jste zadali na portálu.
+> 1. Pouze pro iOS klikněte pravým tlačítkem na **info. plist** a vyberte **Otevřít jako** > **zdrojový kód**.
+> 1. Pouze pro iOS v kořenovém uzlu dict – nahraďte `CFBundleURLSchemes` ***identifikátorem sady prostředků*** , který jste zadali na portálu.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -123,7 +119,7 @@ V okně terminálu přejděte do složky s ukázkou staženého kódu a spuště
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Otevřete nastavení projektu. V části **Identita** zadejte **identifikátor sady prostředků** , který jste zadali na portálu.
-> 1. Pouze pro iOS klikněte pravým tlačítkem na **info. plist** a vyberte **Otevřít jako** **zdrojový kód** > .
+> 1. Pouze pro iOS klikněte pravým tlačítkem na **info. plist** a vyberte **Otevřít jako** > **zdrojový kód**.
 > 1. Pouze pro iOS v kořenovém uzlu dict – nahraďte `Enter_the_bundle_Id_Here` ***identifikátorem sady prostředků*** , který jste použili na portálu.
 >
 >    ```xml
@@ -192,7 +188,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 ### <a name="for-ios-only-additional-app-requirements"></a>Jenom pro iOS, požadavky na další aplikace
 
-Vaše aplikace musí mít ve `AppDelegate` také následující: To umožňuje, aby sada SDK MSAL při ověřování zpracovala odpověď tokenu z aplikace zprostředkovatele ověřování.
+Vaše aplikace musí mít také následující `AppDelegate`. To umožňuje, aby sada SDK MSAL při ověřování zpracovala odpověď tokenu z aplikace zprostředkovatele ověřování.
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -203,7 +199,7 @@ Vaše aplikace musí mít ve `AppDelegate` také následující: To umožňuje, 
  ```
 
 > [!NOTE]
-> Pokud v systému iOS 13 + přijmete `UISceneDelegate` místo `UIApplicationDelegate`, místo toho vložte tento kód do volání `scene:openURLContexts:` (viz [Dokumentace společnosti Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
+> Pokud v systému iOS 13 + přijmete `UISceneDelegate` místo `UIApplicationDelegate`, místo toho vložte tento kód do `scene:openURLContexts:` zpětného volání (viz [Dokumentace společnosti Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
 > Pokud podporujete UISceneDelegate i UIApplicationDelegate pro zajištění kompatibility se staršími systémy iOS, je nutné MSAL zpětné volání umístit na obě místa.
 
  ```swift
@@ -220,7 +216,7 @@ Vaše aplikace musí mít ve `AppDelegate` také následující: To umožňuje, 
     }
  ```
 
-A konečně, vaše aplikace musí mít v souboru ***info. plist*** vedle `CFBundleURLTypes` položku `LSApplicationQueriesSchemes`. Tato ukázka je obsažena v tomto příkladu. 
+A konečně, vaše aplikace musí mít v souboru ***info. plist*** vedle `CFBundleURLTypes`záznam `LSApplicationQueriesSchemes`. Tato ukázka je obsažena v tomto příkladu. 
 
    ```xml 
    <key>LSApplicationQueriesSchemes</key>
@@ -266,7 +262,7 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 > |Kde: ||
 > |---------|---------|
 > | `scopes` | Obsahuje požadované obory (tj. `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (`api://<Application ID>/access_as_user`). |
-> | `account` | Účet, pro který se požaduje token. Tento rychlý Start se týká aplikace s jedním účtem. Pokud chcete vytvořit aplikaci s více účty, budete muset definovat logiku pro identifikaci, který účet se má použít pro žádosti o tokeny pomocí `applicationContext.account(forHomeAccountId: self.homeAccountId)`. |
+> | `account` | Účet, pro který se požaduje token. Tento rychlý Start se týká aplikace s jedním účtem. Pokud chcete vytvořit aplikaci s více účty, budete muset definovat logiku pro identifikaci, který účet se má použít pro žádosti o tokeny pomocí `applicationContext.account(forHomeAccountId: self.homeAccountId)` |
 
 ## <a name="next-steps"></a>Další kroky
 

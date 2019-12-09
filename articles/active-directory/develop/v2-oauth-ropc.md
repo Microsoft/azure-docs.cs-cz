@@ -1,6 +1,7 @@
 ---
-title: Použijte Microsoft Identity Platform k přihlašování uživatelů pomocí udělení přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) | Azure
-description: Podporuje toky ověřování bez prohlížeče pomocí udělení přihlašovacích údajů pro heslo vlastníka prostředku.
+title: Přihlaste se pomocí přihlašovacích údajů pro heslo vlastníka prostředku | Azure
+titleSuffix: Microsoft identity platform
+description: Podpora toků ověřování bez prohlížeče pomocí udělení pověření pro heslo vlastníka prostředku (ROPC).
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4504a1ae60aaac790ca15c120433159c2ff78fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24c6bfdc7efc8f15378d4a126b978bc77741b43c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207768"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919320"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Přihlašovací údaje pro heslo vlastníka prostředku Microsoft Identity Platform a OAuth 2,0
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Přihlašovací údaje pro heslo vlastníka prostředku Microsoft Identity Platform a OAuth 2,0
 
 Platforma Microsoft Identity Platform podporuje [udělení přihlašovacích údajů k heslu (ROPC) OAuth 2,0](https://tools.ietf.org/html/rfc6749#section-4.3), což aplikaci umožňuje přihlašovat uživatele přímo pomocí manipulace s heslem.  Tento článek popisuje, jak programovat přímo s protokolem ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny Microsoft Authentication Library (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Podívejte se také na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
@@ -72,8 +73,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | --- | --- | --- |
 | `tenant` | Požaduje se | Tenant adresáře, do kterého chcete uživatele přihlašovat. Může se jednat o formát GUID nebo popisný název. Tento parametr nelze nastavit na `common` nebo `consumers`, ale lze jej nastavit na hodnotu `organizations`. |
 | `client_id` | Požaduje se | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. | 
-| `grant_type` | Požaduje se | Musí být nastavené na `password`. |
-| `username` | Požaduje se | E-mailová adresa uživatele |
+| `grant_type` | Požaduje se | Musí být nastaveno na `password`. |
+| `username` | Požaduje se | E-mailová adresa uživatele. |
 | `password` | Požaduje se | Heslo uživatele. |
 | `scope` | Doporučené | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md)nebo oprávnění, které aplikace vyžaduje. V interaktivním toku musí správce nebo uživatel na tyto obory vyjádřit svůj souhlas předem. |
 | `client_secret`| Někdy vyžadováno | Pokud je vaše aplikace veřejným klientem, nebude možné zahrnout `client_secret` nebo `client_assertion`.  Pokud je aplikace důvěrného klienta, musí být součástí. | 

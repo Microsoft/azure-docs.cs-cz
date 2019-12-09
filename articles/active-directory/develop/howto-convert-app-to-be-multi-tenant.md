@@ -1,30 +1,26 @@
 ---
-title: Jak vytvořit aplikaci, která se může přihlásit k libovolnému uživateli Azure AD
+title: Vytváření aplikací přihlašování uživatelů Azure AD
 titleSuffix: Microsoft identity platform
 description: Ukazuje, jak vytvořit aplikaci s více klienty, která se může přihlásit uživatele z libovolného klienta Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f31e0254ad4963ce6946a108d84c97027f30b
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a5d30761b25f6233e298cac2602fb701a2987f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803938"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917773"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postupy: přihlášení libovolného Azure Active Directory uživatele pomocí vzoru aplikace pro více tenantů
 
@@ -46,7 +42,7 @@ Pojďme se podrobněji podívat na jednotlivé kroky. Můžete také přejít p�
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizace registrace na více tenantů
 
-Ve výchozím nastavení jsou registrace webové aplikace nebo rozhraní API ve službě Azure AD jedním klientem. Registraci více tenantů můžete provést tak, že v podokně **ověřování** registrace vaší aplikace v [Azure Portal][AZURE-portal] zadáte přepínač **podporované typy účtů** a nakonfigurujete je na **účty v jakékoli organizaci. Adresář**.
+Ve výchozím nastavení jsou registrace webové aplikace nebo rozhraní API ve službě Azure AD jedním klientem. Registraci pro více tenantů můžete udělat tak, že v podokně **ověřování** registrace vaší aplikace v [Azure Portal][AZURE-portal] zadáte přepínač **podporované typy účtů** a nakonfigurujete je na **účty v libovolném organizačním adresáři**.
 
 Předtím, než může být aplikace vytvořená pro více tenantů, vyžaduje Azure AD identifikátor URI ID aplikace, který má být globálně jedinečný. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD.
 

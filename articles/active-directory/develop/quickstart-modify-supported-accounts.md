@@ -2,35 +2,31 @@
 title: Upravit Microsoft Identifikujte účty aplikací platformy | Azure
 description: Konfigurací aplikace zaregistrované na platformě Microsoft Identity Platform můžete změnit, kdo (jaké účty) může k aplikaci přistupovat.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 439d2c06f05aa8824afa4a4aec3990ecba1aa8da
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380777"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921354"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý start: Úprava účtů podporovaných aplikací
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý Start: Změna účtů podporovaných aplikací
 
 Při registraci aplikace na platformě Microsoft Identity Platform možná budete chtít svou aplikaci zpřístupnit pouze uživatelům ve vaší organizaci. Alternativně můžete chtít aplikaci zpřístupnit také uživatelům v externích organizacích nebo uživatelům v externích organizacích i uživatelům, kteří nutně nejsou součástí žádné organizace (osobní účty).
 
 V tomto rychlém startu se dozvíte, jak úpravou konfigurace vaší aplikace změnit, kdo (jaké účty) může k aplikaci přistupovat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte splnit následující požadavky:
 
@@ -62,7 +58,7 @@ Pokud píšete aplikaci, kterou chcete zpřístupnit zákazníkům nebo partner�
     * Pokud vytváříte obchodní aplikaci, vyberte **Účty jen v tomto adresáři**. Tato možnost není dostupná, pokud aplikace není zaregistrovaná v adresáři.
     * Pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí, vyberte **Účty v libovolném organizačním adresáři**.
     * Pokud chcete cílit na co nejširší okruh zákazníků, vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft**.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>Povolení implicitního udělení OAuth 2.0 u jednostránkových aplikací
 
@@ -77,9 +73,9 @@ Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázan
 1. Na stránce **Přehled** aplikace vyberte část **Ověřování**.
 1. V části **Upřesnit nastavení** vyhledejte část **Implicitní udělení**.
 1. Vyberte **Tokeny ID**, **Přístupové tokeny** nebo obojí.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
 

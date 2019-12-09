@@ -1,28 +1,24 @@
 ---
-title: Použití Microsoft Authenticator nebo Microsoft Intune Portál společnosti v aplikacích pro Xamarin iOS a Android
+title: Zprostředkované ověřování na Xamarin, iOS & Androidu | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se migrovat aplikace Xamarin iOS, které můžou používat Microsoft Authenticator z knihovny ověřování Azure AD pro .NET (ADAL.NET) do knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2ae0d79076a0137b3756721675267d89990bf5a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: a26f73354b99160275649855f7a2a616249ce05c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554043"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921834"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Použití Microsoft Authenticator nebo Microsoft Intune Portál společnosti v aplikacích Xamarin
 
@@ -81,7 +77,7 @@ Provedete to tak, že provedete dvě věci.
 1. V `AppDelegate.cs`nastavte `App.RootViewController` na nové `UIViewController()`. Toto přiřazení zajišťuje, že existuje UIViewController se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. V volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)` a předejte odkaz na okno objektu, které použijete.
 
-**Například:**
+**Příklad:**
 
 V `App.cs`:
 ```CSharp
@@ -106,7 +102,7 @@ Název `CFBundleURLSchemes` musí zahrnovat `msauth.` jako předponu, za kterou 
 
 `$"msauth.(BundleId)"`
 
-**Například:**
+**Příklad:**
 
 `msauth.com.yourcompany.xforms`
 
@@ -146,7 +142,7 @@ Použití zprostředkovatele služby přidá dodatečný požadavek na identifik
 ```CSharp
 $"msauth.{BundleId}://auth"
 ```
-**Například:**
+**Příklad:**
 ```CSharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```

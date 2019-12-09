@@ -5,24 +5,23 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 874483540b8c92bbb8a6e37101191f5c867b76f1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: a65bb119994e8bb56eecc730774535d7c0a4d8b6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684649"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928426"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí Integration runtime v Azure Data Factory  
 **Integration runtime** je výpočetní infrastruktura, kterou používá Azure Data Factory k zajištění různých možností integrace dat napříč různými síťovými prostředími. Existují tři typy prostředí Integration runtime, které nabízí Data Factory:
 
-- Prostředí Azure Integration Runtime
-- Prostředí Integration Runtime v místním prostředí
+- Azure Integration Runtime
+- Místní prostředí Integration Runtime
 - Prostředí Azure-SSIS Integration Runtime
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -35,7 +34,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 
 Rutina vrátí různé informace pro různé typy prostředí Integration runtime. Tento článek vysvětluje vlastnosti a stavy pro jednotlivé typy prostředí Integration runtime.  
 
-## <a name="azure-integration-runtime"></a>Prostředí Azure Integration Runtime
+## <a name="azure-integration-runtime"></a>Azure Integration Runtime
 Výpočetní prostředek pro Azure Integration runtime je plně spravovaný elastickě v Azure. Následující tabulka uvádí popisy vlastností vrácených příkazem **Get-AzDataFactoryV2IntegrationRuntime** :
 
 ### <a name="properties"></a>Vlastnosti
@@ -50,15 +49,15 @@ Následující tabulka uvádí popis vlastností vrácených rutinou pro prostř
 | ResourceGroupName | Název skupiny prostředků, do které patří objekt pro vytváření dat.  |
 | Popis | Popis prostředí Integration runtime.  |
 
-### <a name="status"></a>Status
+### <a name="status"></a>Stav
 Následující tabulka nabízí možné stavy prostředí Azure Integration Runtime:
 
-| Status | Komentáře a scénáře | 
+| Stav | Komentáře a scénáře | 
 | ------ | ------------------ |
 | Online | Prostředí Azure Integration runtime je online a připravené k použití. | 
-| Stav | Prostředí Azure Integration runtime je offline kvůli vnitřní chybě. |
+| Offline | Prostředí Azure Integration runtime je offline kvůli vnitřní chybě. |
 
-## <a name="self-hosted-integration-runtime"></a>Prostředí Integration Runtime v místním prostředí
+## <a name="self-hosted-integration-runtime"></a>Místní prostředí Integration Runtime
 V této části najdete popis vlastností vrácených pomocí rutiny Get-AzDataFactoryV2IntegrationRuntime. 
 
 > [!NOTE] 
@@ -71,8 +70,8 @@ Následující tabulka uvádí popisy vlastností monitorování pro **každý u
 | Vlastnost | Popis | 
 | -------- | ----------- | 
 | Name (Název) | Název místního prostředí Integration runtime a uzlů, které jsou k němu přidružené. Uzel je místní počítač s Windows, na kterém je nainstalovaný modul Integration runtime v místním prostředí. |  
-| Status | Stav celkového místního prostředí Integration runtime a každého uzlu. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v další části. | 
-| Verze | Verze místního prostředí Integration runtime a každého uzlu. Verze prostředí Integration runtime v místním prostředí je určena na základě verze většiny uzlů ve skupině. Pokud v místním prostředí Integration runtime hostují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická funkce místního prostředí Integration runtime. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila). | 
+| Stav | Stav celkového místního prostředí Integration runtime a každého uzlu. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v další části. | 
+| Version | Verze místního prostředí Integration runtime a každého uzlu. Verze prostředí Integration runtime v místním prostředí je určena na základě verze většiny uzlů ve skupině. Pokud v místním prostředí Integration runtime hostují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická funkce místního prostředí Integration runtime. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila). | 
 | Dostupná paměť | Dostupná paměť v uzlu Integration runtime v místním prostředí. Tato hodnota je snímkem téměř v reálném čase. | 
 | Využití procesoru | Využití procesoru uzlu Integration runtime v místním prostředí. Tato hodnota je snímkem téměř v reálném čase. |
 | Sítě (za sekundu) | Využití sítě uzlu Integration runtime v místním prostředí. Tato hodnota je snímkem téměř v reálném čase. | 
@@ -92,24 +91,24 @@ Vypočtenou výchozí hodnotu můžete přepsat v Azure Portal. Vyberte vytvoři
 ### <a name="status-per-node"></a>Stav (na jeden uzel)
 Následující tabulka uvádí možné stavy uzlu Integration runtime v místním prostředí:
 
-| Status | Popis |
+| Stav | Popis |
 | ------ | ------------------ | 
 | Online | Uzel je připojen ke službě Data Factory. |
-| Stav | Uzel je offline. |
-| Inovován | Uzel se automaticky aktualizuje. |
+| Offline | Uzel je offline. |
+| Upgrade | Uzel se automaticky aktualizuje. |
 | Omezená | Kvůli problému s připojením. Může to být kvůli problému s portem HTTP 8050, potížím s připojením k Service Bus nebo problémům s synchronizací přihlašovacích údajů. |
-| Termín | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů. |
+| Neaktivní | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů. |
 
 Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům.
 
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Stav (celkový místní prostředí Integration Runtime)
 Následující tabulka uvádí možné stavy prostředí Integration runtime v místním prostředí. Tento stav závisí na stavech všech uzlů, které patří do modulu runtime. 
 
-| Status | Popis |
+| Stav | Popis |
 | ------ | ----------- | 
 | Vyžaduje registraci | Do tohoto místního prostředí Integration runtime ještě není zaregistrovaný žádný uzel. |
 | Online | Všechny uzly jsou online. |
-| Stav | Žádný uzel není online. |
+| Offline | Žádný uzel není online. |
 | Omezená | Ne všechny uzly v tomto místním prostředí Integration runtime jsou v dobrém stavu. Tento stav je upozorněním, že některé uzly mohou být mimo provoz. Důvodem může být problém synchronizace přihlašovacích údajů v uzlu Dispatcher nebo Worker. |
 
 Pomocí rutiny **Get-AzDataFactoryV2IntegrationRuntimeMetric** načtěte datovou část JSON obsahující podrobné vlastnosti místního prostředí Integration runtime a jejich hodnoty snímku v době spuštění rutiny.
@@ -184,20 +183,20 @@ Prostředí Azure-SSIS Integration runtime je plně spravovaný cluster virtuál
   
 ### <a name="status-per-node"></a>Stav (na jeden uzel)
 
-| Status | Popis |
+| Stav | Popis |
 | ------ | ----------- | 
 | Spouštění | Připravuje se tento uzel. |
-| K dispozici. | Tento uzel je připravený na nasazení/spouštění balíčků SSIS. |
-| Recyklován | Probíhá oprava/restartování tohoto uzlu. |
+| Dostupné | Tento uzel je připravený na nasazení/spouštění balíčků SSIS. |
+| Recyklace | Probíhá oprava/restartování tohoto uzlu. |
 | Neaktivní | Tento uzel není připravený na nasazení/spouštění balíčků SSIS a má možné chyby nebo problémy, které můžete vyřešit. |
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Stav (celkový prostředí Azure-SSIS Integration Runtime)
 
 | Celkový stav | Popis | 
 | -------------- | ----------- | 
-| Pořizovací | Uzly prostředí Azure-SSIS Integration runtime nebyly přiděleny nebo připraveny. | 
+| Počáteční | Uzly prostředí Azure-SSIS Integration runtime nebyly přiděleny nebo připraveny. | 
 | Spouštění | Uzly prostředí Azure-SSIS Integration runtime se přidělují/připravují a účtují se fakturace. |
-| Začínáme | Uzly prostředí Azure-SSIS Integration runtime byly přiděleny nebo připraveny a jsou připraveny k nasazení/spuštění balíčků SSIS. |
+| Spuštěno | Uzly prostředí Azure-SSIS Integration runtime byly přiděleny nebo připraveny a jsou připraveny k nasazení/spuštění balíčků SSIS. |
 | Zastavování  | Uvolňují se uzly prostředí Azure-SSIS Integration runtime. |
 | Zastaveno | Uzly prostředí Azure-SSIS Integration runtime byly vydány a fakturace se zastavila. |
 

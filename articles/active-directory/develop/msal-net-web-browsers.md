@@ -1,29 +1,25 @@
 ---
-title: Webové prohlížeče v knihovně Microsoft Authentication Library pro .NET
+title: Používání webových prohlížečů s MSAL.NET | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802679"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921608"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Používání webových prohlížečů v MSAL.NET
 Pro interaktivní ověřování se vyžadují webové prohlížeče. Ve výchozím nastavení podporuje MSAL.NET [webový prohlížeč systému](#system-web-browser-on-xamarinios-xamarinandroid) na Xamarin. iOS a Xamarin. Android. [Můžete ale také povolit vložený webový prohlížeč](#enable-embedded-webviews-on-ios-and-android) v závislosti na vašich požadavcích (uživatelské rozhraní, nutnosti jednotného přihlašování (SSO), zabezpečení) v aplikacích [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) a [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) . A můžete dokonce [zvolit](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) , který webový prohlížeč se má použít, na základě přítomnosti Chrome nebo prohlížeče, který podporuje vlastní karty Chrome v Androidu. MSAL.NET podporuje pouze prohlížeč systému v aplikacích klasické pracovní plochy .NET Core.
@@ -49,15 +45,15 @@ Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systé
 
 ### <a name="at-a-glance"></a>První pohled
 
-| Rámci        | Vložené | Systém | Výchozí |
+| Architektura        | Vložené | Systém | Výchozí |
 | ------------- |-------------| -----| ----- |
 | .NET Classic     | Ano | Ano ^ | Vložené |
 | .NET Core     | Ne | Ano ^ | Systém |
 | .NET Standard | Ne | Ano ^ | Systém |
-| PODPORUJÍ | Ano | Ne | Vložené |
+| UWP | Ano | Ne | Vložené |
 | Xamarin.Android | Ano | Ano  | Systém |
 | Xamarin.iOS | Ano | Ano  | Systém |
-| Xamarin. Mac| Ano | Ne | Vložené |
+| Xamarin.Mac| Ano | Ne | Vložené |
 
 ^ Vyžaduje identifikátor URI přesměrování "http://localhost"
 
@@ -153,7 +149,7 @@ Mezi vloženým webovým zobrazením a systémovým prohlížečem v MSAL.NET js
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí vloženého webviewu:**
 
-![Vložené](media/msal-net-web-browsers/embedded-webview.png)
+![seznam](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí systémového prohlížeče:**
 
@@ -175,7 +171,7 @@ Jako vývojář používající MSAL.NET máte k dispozici několik možností z
                     .ExecuteAsync();
     ```
 
-    Svém
+    Android:
 
     ```csharp
     authResult = app.AcquireTokenInteractively(scopes)
@@ -211,7 +207,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Zjištění přítomnosti vlastních karet na Xamarin. Android
 
-Pokud chcete použít webový prohlížeč systému k povolení jednotného přihlašování s aplikacemi spuštěnými v prohlížeči, ale máte obavy o činnost koncového uživatele pro zařízení s Androidem, která nemají prohlížeč s podporou vlastní karty, máte možnost se rozhodnout, že zavoláte metodu `IsSystemWebViewAvailable()` v `IPublicClientApplication`. Tato metoda vrátí `true`, pokud PackageManager detekuje vlastní karty a `false` Pokud nejsou v zařízení zjištěny.
+Pokud chcete použít webový prohlížeč systému k povolení jednotného přihlašování s aplikacemi spuštěnými v prohlížeči, ale máte obavy o činnost koncového uživatele pro zařízení s Androidem, která nemají prohlížeč s podporou vlastní karty, máte možnost se rozhodnout, že v `IPublicClientApplication`zavoláte metodu `IsSystemWebViewAvailable()`. Tato metoda vrátí `true`, pokud PackageManager detekuje vlastní karty a `false` Pokud nejsou v zařízení zjištěny.
 
 Na základě hodnoty vracené touto metodou a vašich požadavků můžete učinit rozhodnutí:
 

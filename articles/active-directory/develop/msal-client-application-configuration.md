@@ -1,29 +1,25 @@
 ---
-title: Konfigurace klientské aplikace (knihovna ověřování Microsoft)
+title: Konfigurace klientské aplikace (MSAL) | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si o možnostech konfigurace pro veřejné klientské a důvěrné klientské aplikace v knihovně Microsoft Authentication Library (MSAL).
+description: Seznamte se s možnostmi konfigurace pro veřejné klientské a důvěrné klientské aplikace pomocí knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9a18f1ab5b86cbdb74a61a9520e89ecf920478
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f3fd70757fe5ce8761fd3444f3f0dd31e2bfcc3b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803191"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917059"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
 
@@ -36,7 +32,7 @@ V kódu inicializujete novou veřejnou nebo důvěrnou klientskou aplikaci (nebo
     - [Tajný kód klienta](#client-secret) (u důvěrných klientských aplikací).
 - [Možnosti protokolování](#logging), včetně úrovně protokolování, řízení osobních údajů a názvu komponenty pomocí knihovny.
 
-## <a name="authority"></a>Dohled
+## <a name="authority"></a>Autorita
 
 Autorita je adresa URL, která označuje adresář, ze kterého může MSAL žádat o tokeny. Mezi běžné autority patří:
 
@@ -116,7 +112,7 @@ Pokud jste vývojář aplikace veřejného klienta, který používá MSAL:
   Platforma  | Identifikátor URI pro přesměrování  
   ---------  | --------------
   Aplikace klasické pracovní plochy (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
-  PODPORUJÍ | hodnota `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. To umožňuje jednotné přihlašování s prohlížečem nastavením hodnoty na výsledek WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), který se musí zaregistrovat.
+  UWP | hodnota `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. To umožňuje jednotné přihlašování s prohlížečem nastavením hodnoty na výsledek WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), který se musí zaregistrovat.
   .NET Core | `https://localhost`. Díky tomu může uživatel používat prohlížeč systému pro interaktivní ověřování, protože .NET Core nemá v současnosti uživatelské rozhraní pro vložené webové zobrazení.
 
 - Pokud vytváříte aplikaci pro Xamarin Android a iOS, která nepodporuje zprostředkovatele, nemusíte přidávat identifikátor URI pro přesměrování (identifikátor URI přesměrování je automaticky nastaven na `msal{ClientId}://auth` pro Xamarin Android a iOS
@@ -127,7 +123,7 @@ Pokud jste vývojář aplikace veřejného klienta, který používá MSAL:
 
 Identifikátor URI přesměrování můžete přepsat pomocí vlastnosti `RedirectUri` (například při použití zprostředkovatelů). Tady jsou některé příklady identifikátorů URI přesměrování pro tento scénář:
 
-- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.identity.Client.Sample";
+- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
 - `RedirectUriOnIos` = $ "msauth. {Svazek. ID}://auth ";
 
 Další podrobnosti o iOS najdete v tématu [migrace aplikací pro iOS, které používají Microsoft Authenticator od ADAL.NET k MSAL.NET](msal-net-migration-ios-broker.md) a [využití zprostředkovatele v iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS).

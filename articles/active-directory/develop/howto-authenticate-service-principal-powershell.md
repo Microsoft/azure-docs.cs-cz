@@ -3,27 +3,24 @@ title: Vytvoření identity pro aplikaci Azure pomocí PowerShellu
 titleSuffix: Microsoft identity platform
 description: Popisuje, jak používat prostředí Azure PowerShell k vytvoření aplikace Azure Active Directory a instančního objektu a udělení přístupu k prostředkům prostřednictvím řízení přístupu na základě role. Ukazuje, jak ověřit aplikaci certifikátem.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf52bc5a6d177c18d9ebb792d1a147d09746afd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2456d52a3863b362943547d8a0c0e478dbc572cf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803817"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917892"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Postupy: použití Azure PowerShell k vytvoření instančního objektu s certifikátem
 
@@ -48,9 +45,9 @@ K dokončení tohoto článku musíte mít dostatečná oprávnění v rámci va
 Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostatečná oprávnění, je použít k tomu portál. Informace najdete v článku [Kontrola požadovaných oprávnění](howto-create-service-principal-portal.md#required-permissions).
 
 ## <a name="assign-the-application-to-a-role"></a>Přiřazení aplikace k roli
-Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolích naleznete v tématu [RBAC: předdefinované role](/azure/role-based-access-control/built-in-roles).
+Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: vestavěné role](/azure/role-based-access-control/built-in-roles).
 
-Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou zděděna na nižší úrovně rozsahu. Například přidání aplikace do role *Čtenář* pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje. Pokud chcete aplikaci dovolit, aby prováděla akce, jako je restartování, spuštění a zastavení instancí, vyberte roli *Přispěvatel* .
+Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění se dědí do oboru na nižších úrovních. Například přidání aplikace do role *Čtenář* pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje. Pokud chcete aplikaci dovolit, aby prováděla akce, jako je restartování, spuštění a zastavení instancí, vyberte roli *Přispěvatel* .
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Vytvoření instančního objektu s certifikátem podepsaným svým držitelem
 
@@ -223,7 +220,7 @@ Při vytváření instančního objektu může dojít k následujícím chybám:
 
 * **Ověřování_neautorizované** nebo **V kontextu se nenašlo žádné předplatné.** – Tato chyba se zobrazí, pokud váš účet nemá [požadovaná oprávnění](#required-permissions) k registraci aplikace v Azure AD. Tato chyba se obvykle zobrazuje, když můžou registrovat aplikace jenom uživatelé Azure Active Directory s právy pro správu, a váš účet není správce. Požádejte správce, aby vám přidělil roli správce nebo aby uživatelům umožnil registraci aplikací.
 
-* Váš účet nemá **autorizaci k provedení akce "Microsoft. Authorization/roleAssignments/Write" nad oborem "/Subscriptions/{GUID}". "** – Tato chyba se zobrazí, pokud váš účet nemá dostatečná oprávnění k přiřazení role k odcizen. Požádejte správce předplatného, aby vás přidal do role Správce přístupu uživatelů.
+* Váš účet nemá **autorizaci k provedení akce "Microsoft. Authorization/roleAssignments/Write" nad oborem "/Subscriptions/{GUID}". "** – Tato chyba se zobrazí, pokud váš účet nemá dostatečná oprávnění k přiřazení role k identitě. Požádejte správce předplatného, aby vás přidal do role Správce přístupu uživatelů.
 
 ## <a name="next-steps"></a>Další kroky
 

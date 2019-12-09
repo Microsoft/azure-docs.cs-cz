@@ -11,17 +11,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628bbe889617464fe97695a17687d5f02cc61bc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 1755d5bf3338694f53da7021579cb4c0aee623f3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305314"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912470"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
+Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílovým výpočetním objektem může být místní počítač nebo cloudový prostředek, například Výpočetní prostředky služby Machine Learning, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
 
 Výpočetní cíl můžete vytvořit a spravovat pomocí rozšíření Azure Machine Learning SDK, Azure Machine Learning Studio, Azure CLI nebo Azure Machine Learning VS Code. Pokud máte výpočetní cíle vytvořené prostřednictvím jiné služby (například cluster HDInsight), můžete je použít tak, že je připojíte k pracovnímu prostoru Azure Machine Learning.
  
@@ -54,7 +54,7 @@ Přečtěte si další informace o [odesílání experimentů](#submit) na konci
 
 ## <a name="whats-an-estimator"></a>Co je Estimator?
 
-Pro usnadnění školení modelů pomocí oblíbených rozhraní Azure Machine Learning Python SDK nabízí alternativní abstrakci vyšší úrovně, třídu Estimator. Tato třída umožňuje snadno vytvořit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení).
+Pro usnadnění školení modelů pomocí oblíbených rozhraní Azure Machine Learning Python SDK nabízí alternativní abstrakci vyšší úrovně, třídu Estimator. Doporučujeme používat Estimator pro školení, protože třída obsahuje metody, které umožňují snadno vytvořit a přizpůsobit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení). Pokud potřebujete mít k dispozici datové soubory pro výpočetní cíl, přečtěte si téma [výuka s Azure Machine Learningmi](how-to-train-with-datasets.md)datovými sadami.
 
 Pro úlohy PyTorch, TensorFlow a řetězení Azure Machine Learning poskytuje také příslušné [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
 
@@ -76,7 +76,7 @@ I když kanály ML můžou prosazovat modely, můžou také připravit data pře
 Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 * [Místní počítač](#local)
-* [Azure Machine Learning COMPUTE](#amlcompute)
+* [Azure Machine Learning Compute](#amlcompute)
 * [Vzdálené virtuální počítače](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -91,7 +91,7 @@ Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 Teď, když jste připojili výpočetní prostředky a nakonfigurovali svůj běh, je dalším krokem [odeslání školicího běhu](#submit).
 
-### <a id="amlcompute"></a>Azure Machine Learning COMPUTE
+### <a id="amlcompute"></a>Azure Machine Learning Compute
 
 Azure Machine Learning COMPUTE je spravovaná a výpočetní infrastruktura, která umožňuje uživateli snadno vytvořit výpočetní výkon s jedním uzlem nebo několika uzly. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru jako prostředek, který se dá sdílet s ostatními uživateli v pracovním prostoru. Výpočetní výkon se při odeslání úlohy automaticky škáluje a dá se umístit do Azure Virtual Network. Výpočetní výkon se spouští v kontejnerovém prostředí a zabalí závislosti vašich modelů v [kontejneru Docker](https://www.docker.com/why-docker).
 
@@ -312,7 +312,7 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 
 1. Vyplňte formulář. Zadejte hodnoty požadovaných vlastností, zejména **rodinu virtuálních počítačů**, a **maximální počet uzlů** , které se mají použít ke spuštění výpočtů.  
 
-1. Vyberte __Vytvořit__.
+1. Vyberte __Create__ (Vytvořit).
 
 
 1. Stav operace vytvoření si zobrazíte tak, že v seznamu vyberete cíl služby Compute:
@@ -346,8 +346,8 @@ Podle výše popsaného postupu zobrazte seznam cílů výpočtů. Pak pomocí n
     > [!NOTE]
     > Microsoft doporučuje používat klíče SSH, které jsou bezpečnější než hesla. Hesla jsou zranitelná proti útokům hrubou silou. Klíče SSH spoléhají na kryptografické signatury. Informace o tom, jak vytvořit klíče SSH pro použití s Azure Virtual Machines, najdete v následujících dokumentech:
     >
-    > * [Vytvoření a použití klíčů SSH v systému Linux nebo macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Vytvoření a použití klíčů SSH ve Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [Vytvoření a použití klíčů SSH v Linuxu nebo macOS](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [Vytvoření a používání klíčů SSH na Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. Vyberte __připojit__. 
 1. Pokud chcete zobrazit stav operace připojení, vyberte ze seznamu cíl služby Compute.
@@ -364,7 +364,7 @@ Další informace najdete v tématu [Správa prostředků](reference-azure-machi
 
 ## <a name="set-up-with-vs-code"></a>Nastavení pomocí VS Code
 
-Pomocí [rozšíření vs Code](how-to-vscode-tools.md#create-and-manage-compute-targets) pro Azure Machine Learning můžete získat přístup k cílovým cílům, které jsou přidruženy k vašemu pracovnímu prostoru, a vytvořit a spravovat je.
+K pracovním prostorům, které jsou přidruženy k pracovnímu prostoru pomocí [rozšíření vs Code](how-to-vscode-tools.md#create-and-manage-compute-targets) pro Azure Machine Learning, můžete přistupovat, vytvářet a spravovat výpočetní cíle.
 
 ## <a id="submit"></a>Odeslání školicích běhů pomocí sady Azure Machine Learning SDK
 
@@ -504,8 +504,8 @@ Když spustíte školicí kurz, kde zdrojový adresář je místní úložiště
 ## <a name="notebook-examples"></a>Příklady poznámkových bloků
 
 Příklady školení s různými cíli výpočtů najdete v těchto poznámkových blocích:
-* [postupy – použití – AzureML/školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [kurzy/img-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [postupy-k-použití azureml a školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [kurzy/img – klasifikace – část 1 – training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
