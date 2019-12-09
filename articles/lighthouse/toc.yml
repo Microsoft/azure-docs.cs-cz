@@ -44,9 +44,6 @@
     - name: Zobrazení a správa zákazníků
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Zobrazení a správa poskytovatelů služeb
-      displayName: 'customer, update'
-      href: ./how-to/view-manage-service-providers.md
     - name: Integrace Azure Policy
       items:
         - name: Nasazení zásad ve velkém
@@ -55,6 +52,14 @@
         - name: 'Nasazení zásady, která se dá napravit'
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Akce zákazníka
+      items:
+        - name: Zobrazení a správa poskytovatelů služeb
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Zobrazení aktivity poskytovatele služeb
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
 - name: Referenční informace
   items:
     - name: Azure CLI

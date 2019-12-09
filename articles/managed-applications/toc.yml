@@ -51,6 +51,10 @@
       href: concepts-custom-role-definition.md
     - name: Onboarding prostředků
       href: concepts-custom-providers-resourceonboarding.md
+    - name: Azure Policy pro vlastní přidružení poskytovatelů
+      href: concepts-custom-providers-built-in-policy.md
+    - name: Azure Policy pro přidružení spravovaných aplikací
+      href: concepts-managed-applications-built-in-policy.md
 - name: Návody
   items:
     - name: Vlastní poskytovatelé

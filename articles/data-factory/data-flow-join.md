@@ -1,18 +1,19 @@
 ---
-title: Transformace spojení v Azure Data Factory toku dat mapování
+title: Transformace spojení v toku dat mapování
 description: Kombinování dat ze dvou zdrojů dat pomocí transformace spojení v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/17/2019
-ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122920"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930344"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
 
@@ -38,7 +39,7 @@ Pravé vnější spojení vrátí všechny řádky z pravého proudu a odpovída
 
 Úplné vnější spojení vyprodukuje všechny sloupce a řádky z obou stran s hodnotami NULL pro sloupce, které se neshodují.
 
-### <a name="cross-join"></a>Vzájemné spojení
+### <a name="cross-join"></a>Křížové spojení
 
 V případě vzájemného spojení se v závislosti na podmínce vytvoří výstup z obou datových proudů mezi různými produkty. Pokud používáte podmínku, která není rovnost, zadejte jako podmínku vzájemného spojení vlastní výraz. Výstupní datový proud bude obsahovat všechny řádky, které splňují podmínku spojení. Pokud chcete vytvořit kartézském produkt, který vypíše všechny kombinace řádků, zadejte jako podmínku JOIN `true()`.
 

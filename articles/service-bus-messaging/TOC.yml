@@ -211,6 +211,8 @@
       items:
         - name: Průvodce odstraňováním potíží
           href: service-bus-messaging-exceptions.md
+        - name: Výjimky Resource Manageru
+          href: service-bus-resource-manager-exceptions.md
 - name: Referenční informace
   items:
     - name: .NET

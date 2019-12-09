@@ -385,6 +385,10 @@
           href: functions-for-customizing-application-data.md
         - name: Volba metody zřizování
           href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: Zřizování HR v cloudu
+      items:
+        - name: Referenční informace k atributu SuccessFactors
+          href: sap-successfactors-attribute-reference.md
     - name: Agent zřizování Azure AD Connect
       items:
         - name: Historie verzí agenta zřizování

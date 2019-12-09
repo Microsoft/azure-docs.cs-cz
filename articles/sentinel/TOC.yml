@@ -111,7 +111,7 @@
           href: notebooks.md
         - name: Využití záložek k vyhledávání
           href: bookmarks.md
-        - name: Využití Livestreamu k vyhledávání
+        - name: Využití živého streamování k proaktivnímu vyhledávání
           href: livestream.md
     - name: Odebrání Azure Sentinelu
       href: offboard.md

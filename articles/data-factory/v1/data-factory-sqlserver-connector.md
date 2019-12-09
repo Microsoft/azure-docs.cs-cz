@@ -4,21 +4,20 @@ description: Přečtěte si, jak přesunout data do nebo z SQL Server databáze,
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 864ece28-93b5-4309-9873-b095bbe6fedd
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a5afbec39a87423463bf1a65fdd99ec7a739958b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5e4bbe1e6bd944787d47c5e3ed98de582c088a52
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666258"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928171"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Přesun dat z SQL Server místně nebo na IaaS (virtuální počítač Azure) pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -42,7 +41,7 @@ Data z následujících úložišť dat můžete zkopírovat **do databáze SQL 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>Podporované verze SQL Server
-Tento konektor SQL Server podporuje kopírování dat z/do následujících verzí hostované místně nebo v Azure IaaS pomocí ověřování SQL a ověřování systému Windows: SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005
+Tento SQL Server konektor podporuje kopírování dat z/do následujících verzí hostovaných místně nebo v Azure IaaS pomocí ověřování SQL a ověřování systému Windows: SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
 Koncepty a kroky potřebné pro připojení SQL Server hostovaných místně nebo v Azure IaaS (infrastruktura jako služba) jsou stejné. V obou případech je potřeba použít bránu Správa dat pro připojení.
@@ -56,12 +55,12 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do n
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
 1. Vytvořte **datovou továrnu**. Datová továrna může obsahovat jeden nebo více kanálů.
-2. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou. Pokud například kopírujete data z databáze SQL Server do úložiště objektů BLOB v Azure, vytvoříte dvě propojené služby, které propojí vaši databázi SQL Server a účet Azure Storage s datovou továrnou. Vlastnosti propojené služby, které jsou specifické pro službu SQL Server Database, najdete v části [vlastnosti propojených služeb](#linked-service-properties) .
+2. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou. Pokud jsou kopírování dat z databáze SQL serveru do Azure blob storage, například vytvoříte dvě propojené služby propojení databáze systému SQL Server a účet úložiště Azure pro vytváření dat. Vlastnosti propojené služby, které jsou specifické pro službu SQL Server Database, najdete v části [vlastnosti propojených služeb](#linked-service-properties) .
 3. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování. V příkladu uvedeném v posledním kroku vytvoříte datovou sadu pro určení tabulky SQL ve vaší databázi SQL Server, která obsahuje vstupní data. A vytvoříte další datovou sadu pro určení kontejneru objektů BLOB a složky, která obsahuje data zkopírovaná z databáze SQL Server. Vlastnosti datové sady, které jsou specifické pro SQL Server databázi, najdete v části [Vlastnosti datové sady](#dataset-properties) .
 4. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup. V předchozím příkladu použijete jako jímku aktivity kopírování SqlSource jako zdroj a BlobSink. Podobně pokud kopírujete z Azure Blob Storage do databáze SQL Server, v aktivitě kopírování použijete BlobSource a SqlSink. Informace o vlastnostech aktivity kopírování, které jsou specifické pro SQL Server databázi, najdete v části [vlastnosti aktivity kopírování](#copy-activity-properties) . Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku, získáte kliknutím na odkaz v předchozí části úložiště dat.
 
@@ -77,7 +76,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro SQL Server p
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type |Vlastnost Type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
-| Vlastnosti |Zadejte informace připojovacího řetězce potřebné pro připojení k místní databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. |Ano |
+| connectionString |Zadejte informace připojovacího řetězce potřebné pro připojení k místní databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. |Ano |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi SQL Server. |Ano |
 | uživatelské jméno |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příklad: **domainname\\username**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
@@ -151,8 +150,8 @@ Pokud je zdroj v aktivitě kopírování typu **SqlSource**, jsou v části **ty
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: select * from MyTable. Může odkazovat na více tabulek z databáze, na kterou odkazuje vstupní datová sada. Pokud není zadaný, provede se příkaz SQL: vyberte z MyTable. |Ne |
-| sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
+| sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. |Ne |
+| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. |Ne |
 
 Pokud je pro SqlSource určena **sqlReaderQuery** , aktivita kopírování spustí tento dotaz proti SQL Server zdroji databáze, aby získala data.
 
@@ -168,12 +167,12 @@ Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, jsou slou
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |TimeSpan<br/><br/> Příklad: "00:30:00" (30 minut). |Ne |
+| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |TimeSpan<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 | writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL. |Integer (počet řádků) |Ne (výchozí: 10000) |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Další informace najdete v části s možností [opakovaného kopírování](#repeatable-copy) . |Příkaz dotazu. |Ne |
 | sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování, která se má vyplnit automaticky generovaným identifikátorem řezu, který se použije k vyčištění dat určitého řezu při opakovaném spuštění. Další informace najdete v části s možností [opakovaného kopírování](#repeatable-copy) . |Název sloupce sloupce s datovým typem Binary (32). |Ne |
 | sqlWriterStoredProcedureName |Název uložené procedury definující, jak se mají použít zdrojová data na cílovou tabulku, například upsertuje nebo transformaci pomocí vlastní obchodní logiky. <br/><br/>Poznámka: Tato uložená procedura se **vyvolá na každou dávku**. Pokud chcete provést operaci, která se spustí pouze jednou a nemá nic ke zdroji dat, např. Delete/zkrácení, použijte vlastnost `sqlWriterCleanupScript`. |Název uložené procedury |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
+| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. |Ne |
 | sqlWriterTableType |Zadejte název typu tabulky, který se použije v uložené proceduře. Aktivita kopírování zpřístupňuje data, která jsou k dispozici v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit data zkopírovaná se stávajícími daty. |Název typu tabulky |Ne |
 
 
@@ -651,40 +650,40 @@ Při přesunu dat na & z SQL serveru se z typu SQL do typu .NET, a naopak, použ
 
 Mapování je stejné jako SQL Server mapování datových typů pro ADO.NET.
 
-| Typ databázového stroje SQL Server | Typ .NET Framework |
+| Typ databázového stroje SQL Server | Typ rozhraní .NET Framework |
 | --- | --- |
 | bigint |Int64 |
-| Tvaru |Byte [] |
-| 40bitového |Logická hodnota |
-| char |Řetězec, znak [] |
-| date |DateTime |
-| Hodnotu |DateTime |
-| datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
-| Notaci |Notaci |
-| Atribut FILESTREAM (varbinary (max)) |Byte [] |
-| Plovák |Klepat |
-| image |Byte [] |
-| int |Uvedena |
-| papír |Notaci |
-| nchar |Řetězec, znak [] |
-| ntext |Řetězec, znak [] |
-| číselné |Notaci |
-| nvarchar |Řetězec, znak [] |
-| nemovitostí |Jednoduchá |
-| rowversion |Byte [] |
-| smalldatetime |DateTime |
+| binary |Byte[] |
+| bit |Logická hodnota |
+| char |String, Char[] |
+| date |Datum a čas |
+| Datetime |Datum a čas |
+| datetime2 |Datum a čas |
+| Datetimeoffset |DateTimeOffset |
+| Decimal |Decimal |
+| Atribut FILESTREAM (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
+| int |Datový typ Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Jednoduchá |
+| rowversion |Byte[] |
+| smalldatetime |Datum a čas |
 | smallint |Int16 |
-| smallmoney |Notaci |
-| sql_variant |Předmětů |
-| text |Řetězec, znak [] |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
 | time |TimeSpan |
-| časové razítko |Byte [] |
-| tinyint |Bytové |
+| časové razítko |Byte[] |
+| tinyint |Bajtů |
 | uniqueidentifier |Guid |
-| varbinary |Byte [] |
-| varchar |Řetězec, znak [] |
-| xml |XML |
+| Varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 ## <a name="mapping-source-to-sink-columns"></a>Mapování zdroje na sloupce jímky
 Chcete-li mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si téma [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
