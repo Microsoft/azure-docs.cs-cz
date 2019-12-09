@@ -1,27 +1,23 @@
 ---
-title: 'Azure AD Connect synchronizace: proveďte změnu konfigurace v Azure AD Connect synchronizaci | Microsoft Docs'
+title: 'Azure AD Connect synchronizace: provést změnu konfigurace v Azure AD Connect synchronizace'
 description: Provede vás postupem provedení změny konfigurace v Azure AD Connect synchronizaci.
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7600bffd8d00caa6e9b5fdda03aefe429d4788b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842573"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919065"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
 Tento článek vás seznámí s postupem, jak provést změny ve výchozí konfiguraci v Azure Active Directory (Azure AD) Connect Sync. Poskytuje kroky pro některé běžné scénáře. S tímto vědomím byste měli být schopni provádět jednoduché změny vlastní konfigurace na základě vašich vlastních obchodních pravidel.
@@ -204,7 +200,7 @@ Ve výchozím nastavení není atribut UserType povolen pro synchronizaci, proto
 
 - Azure AD přijímá jenom dvě hodnoty atributu UserType: **Member** a **Host**.
 - Pokud atribut UserType není povolený pro synchronizaci v Azure AD Connect, budou uživatelé Azure AD, kteří vytvořili prostřednictvím synchronizace adresářů, mít atribut UserType nastavený na **Member**.
-- Azure AD nepovoluje, aby byl atribut UserType u stávajících uživatelů služby Azure AD změněn pomocí Azure AD Connect. Dá se nastavit jenom během vytváření uživatelů Azure AD a jejich [změny prostřednictvím PowerShellu](https://docs.microsoft.com/en-us/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
+- Azure AD nepovoluje, aby byl atribut UserType u stávajících uživatelů služby Azure AD změněn pomocí Azure AD Connect. Dá se nastavit jenom během vytváření uživatelů Azure AD a jejich [změny prostřednictvím PowerShellu](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 Než povolíte synchronizaci atributu UserType, musíte se nejdřív rozhodnout, jak je atribut odvozený z místní služby Active Directory. Níže jsou uvedené nejběžnější přístupy:
 

@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083448"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931375"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute (Classic)
 > [!div class="op_single_selector"]
@@ -42,40 +42,7 @@ Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, kteří
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Stáhnout nejnovější rutiny PowerShellu
 
-Nainstalujte nejnovější verze modulů Azure Service Management Powershellu a modul ExpressRoute. Při použití v následujícím příkladu, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Další informace najdete v tématu [Začínáme s rutinami Azure PowerShell](/powershell/azure/overview) pro podrobné pokyny ke konfiguraci počítače pro použití Azure PowerShell modulů.
-
-### <a name="sign-in"></a>Přihlášení
-
-Pokud se chcete přihlásit ke svému účtu Azure, použijte následující příklady:
-
-1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Zkontrolujte předplatná pro příslušný účet.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Máte-li více předplatných, vyberte předplatné, které chcete použít.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="azure-private-peering"></a>Soukromý partnerský vztah Azure
 
@@ -94,7 +61,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Vrátit
+   Vrací:
 
    ```powershell
    Bandwidth                        : 200
@@ -147,7 +114,7 @@ Podrobnosti o konfiguraci můžete zobrazit pomocí následující rutiny:
 Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
 ```
 
-Vrátit
+Vrací:
 
 ```
 AdvertisedPublicPrefixes       : 
@@ -201,7 +168,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Vrátit
+   Vrací:
 
    ```powershell
    Bandwidth                        : 200
@@ -254,7 +221,7 @@ Chcete-li zobrazit podrobnosti o konfiguraci, použijte následující rutinu:
 Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
 ```
 
-Vrátit
+Vrací:
 
 ```powershell
 AdvertisedPublicPrefixes       : 
@@ -305,7 +272,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Vrátit
+   Vrací:
    
    ```powershell
    Bandwidth                        : 200
@@ -350,7 +317,7 @@ Podrobnosti o konfiguraci můžete zobrazit pomocí následující rutiny:
 ```powershell
 Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
-Vrátit
+Vrací:
 
 ```powershell
 AdvertisedPublicPrefixes       : 123.0.0.0/30

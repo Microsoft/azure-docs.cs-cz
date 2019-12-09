@@ -1,18 +1,19 @@
 ---
-title: Posun schématu v mapování toku dat | Azure Data Factory
+title: Posun schématu v mapování toku dat
 description: Vytváření odolných toků dat v Azure Data Factory s využitím posunu schématu
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/12/2019
-ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9daf7973a2e48f866a8d0b93a682851d31dc3af7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553691"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928544"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Posun schématu v mapování toku dat
 
@@ -52,7 +53,7 @@ Pokud je zapnutý posun schématu, ujistěte se, že je zapnutý posuvník **aut
 
 Když datový tok obsahuje sloupce, můžete k nim přistupovat v transformacích pomocí následujících metod:
 
-* Použijte výrazy `byPosition` a `byName` k explicitnímu odkazování na sloupec podle názvu nebo čísla pozice.
+* Použijte `byPosition` a `byName` výrazy k explicitnímu odkazování sloupce podle názvu nebo čísla pozice.
 * Přidejte do odvozeného sloupce vzor sloupce nebo agregovanou transformaci podle libovolné kombinace názvu, datového proudu, pozice nebo typu.
 * Přidání mapování založeného na pravidlech v transformaci SELECT nebo Sink tak, aby se shodovaly se sloupci s aliasy přes vzor
 
@@ -64,7 +65,7 @@ Chcete-li explicitně odkazovat na sloupce, můžete pro tyto sloupce rychle vyg
 
 ![Mapa s posunem](media/data-flow/mapdrifted1.png "Mapa s posunem")
 
-Ve vygenerované transformaci odvozeného sloupce je každý sloupec s rovným sloupcem namapován na jeho zjištěné názvy a datový typ. Ve výše uvedeném náhledu dat je sloupec ' movieId ' zjištěn jako celé číslo. Po kliknutí na tlačítko **Mapa** je movieId definováno v odvozeném sloupci jako `toInteger(byName('movieId'))` a zahrnuté v zobrazeních schématu v části s transformacemi na základě dat.
+Ve vygenerované transformaci odvozeného sloupce je každý sloupec s rovným sloupcem namapován na jeho zjištěné názvy a datový typ. Ve výše uvedeném náhledu dat je sloupec ' movieId ' zjištěn jako celé číslo. Po kliknutí na **mapu** se movieId je definována v odvozeném sloupci jako `toInteger(byName('movieId'))` a obsažená v zobrazeních schématu v transformacích s mezisebou.
 
 ![Mapa s posunem](media/data-flow/mapdrifted2.png "Mapa s posunem")
 

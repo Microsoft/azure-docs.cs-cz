@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: cb3bb6a91c25298535cfba1107b85f200031a7d6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6cf636e7d7ee35680c1da872b186748c333a81dc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035919"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929994"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: vytvoření a použití páru veřejných privátních klíčů SSH pro virtuální počítače se systémem Linux v Azure
 
@@ -38,10 +38,10 @@ Další způsoby, jak vygenerovat a používat klíče SSH na počítači s Wind
 
 Pomocí příkazu `ssh-keygen` vygenerujte soubory veřejného a privátního klíče SSH. Ve výchozím nastavení se tyto soubory vytvoří v adresáři ~/.ssh. Pro přístup k souboru privátního klíče můžete zadat jiné umístění a volitelné*heslo (heslo*). Pokud v daném umístění existuje pár klíčů SSH se stejným názvem, tyto soubory se přepíší.
 
-Následující příkaz vytvoří pár klíčů SSH pomocí šifrování RSA a bitovou délku 2048:
+Následující příkaz vytvoří pár klíčů SSH pomocí šifrování RSA a bitovou délku 4096:
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 Pokud k vytvoření virtuálního počítače pomocí příkazu [AZ VM Create](/cli/azure/vm#az-vm-create) použijete rozhraní příkazového [řádku Azure CLI](/cli/azure) , můžete volitelně vygenerovat soubory veřejného a privátního klíče SSH pomocí možnosti `--generate-ssh-keys`. Klíčové soubory jsou uloženy v adresáři ~/.ssh, pokud nejsou zadány jinak s možností `--ssh-dest-key-path`. Možnost `--generate-ssh-keys` nepřepíše existující soubory klíčů, namísto toho vrátí chybu. V následujícím příkazu nahraďte *VMname* a *RGname* vlastními hodnotami:

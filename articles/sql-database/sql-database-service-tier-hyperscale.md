@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805752"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927664"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -78,7 +78,7 @@ Další informace o cenách na úrovni služby najdete v tématu [Azure SQL Data
 
 ## <a name="distributed-functions-architecture"></a>Architektura distribuovaných funkcí
 
-Na rozdíl od tradičních databázových strojů, které mají centralizované všechny funkce pro správu dat v jednom umístění nebo procesu (a to i tak, aby se v současnosti volaly distribuované databáze v produkčním prostředí, mají více kopií monolitické Data Engine), jsou oddělené databáze na úrovni. modul pro zpracování dotazů, ve kterém se liší sémantika různých datových motorů, od komponent, které poskytují dlouhodobé úložiště a trvanlivost dat. Tímto způsobem můžete kapacitu úložiště hladce škálovat podle potřeby (počáteční cíl je 100 TB). Repliky jen pro čtení sdílejí stejné součásti úložiště, takže není potřeba žádná kopie dat, aby bylo možné spustit novou čitelnou repliku. 
+Na rozdíl od tradičních databázových strojů, které mají centralizované všechny funkce pro správu dat v jednom umístění nebo procesu (a to i tak, aby se v současnosti volaly distribuované databáze v produkčním prostředí, mají více kopií monolitické Data Engine), databáze s daty na více místech odděluje modul pro zpracování dotazů, kde se neliší sémantika různých datových modulů, od komponent, které poskytují dlouhodobé úložiště a odolnost Tímto způsobem můžete kapacitu úložiště hladce škálovat podle potřeby (počáteční cíl je 100 TB). Repliky jen pro čtení sdílejí stejné součásti úložiště, takže není potřeba žádná kopie dat, aby bylo možné spustit novou čitelnou repliku. 
 
 Následující diagram znázorňuje různé typy uzlů v databázi s škálovatelným škálováním:
 
@@ -196,25 +196,25 @@ Pokud chcete vytvořit databázi s škálovatelným škálováním v oblasti, kt
 
 Chcete-li požádat o možnost vytvořit databáze na úrovni škálování v oblastech, které nejsou uvedeny:
 
-1. Přejít na [okno Azure Help and Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+1. V nabídce Azure Portal vyberte nápovědu a **Podpora**nebo vyhledejte a na libovolné stránce vyberte **nápovědu a podporu** .
 
-2. Klikněte na [ **novou žádost o podporu** .](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
-
-    ![Okno pomoc a podpora Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
+2. V [nápovědě a podpoře Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)vyberte [**Nová žádost o podporu**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 3. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
 
 4. Vyberte předplatné, které chcete použít k vytvoření databáze.
 
-5. Jako **typ kvóty**vyberte **SQL Database** .
+5. Jako **typ kvóty**vyberte **SQL Database**.
 
-6. Klikněte na **Další: řešení**
+    ![Okno pomoc a podpora Azure](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
 
-1. Klikněte na **zadat podrobnosti** .
+6. Klikněte na **Další: řešení**.
+
+7. Klikněte na **zadat podrobnosti**.
 
     ![Podrobnosti o problému](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. Vyberte **typ kvóty SQL Database**: **Další žádost o kvótu** .
+8. Vyberte **typ kvóty SQL Database**: **Další žádost o kvótu**.
 
 9. Vyplňte následující šablonu:
 
@@ -227,11 +227,11 @@ Chcete-li požádat o možnost vytvořit databáze na úrovni škálování v ob
     > Odhadované množství TB 
     >
 
-10. Zvolte **Severity C** (Závažnost C).
+10. Vyberte **závažnost C**.
 
 11. Vyberte odpovídající způsob kontaktu a vyplňte podrobnosti.
 
-12. Klikněte na **Uložit** a **pokračovat** .
+12. Klikněte na **Uložit** a **pokračujte**.
 
 ## <a name="known-limitations"></a>Známá omezení
 Jedná se o aktuální omezení úrovně služby škálování na úrovni služeb (GA).  Aktivně pracujeme na odebrání tolika těchto omezení, co je možné.
@@ -240,7 +240,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | :---- | :--------- |
 | Podokno Správa zálohování na logickém serveru nezobrazuje databáze s škálovatelným škálováním, které se budou filtrovat z SQL serveru.  | Vlastní škálování má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání a nastavení uchovávání záloh v čase se nevztahují nebo neověřují. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování. |
 | Obnovení k určitému časovému okamžiku | Jakmile se databáze migruje do vrstvy služby s vlastním škálováním, obnovení k určitému bodu v čase před migrací se nepodporuje.|
-| Obnovení databáze bez škálování na Hypserscale a naopak | Nemůžete obnovit databázi škálování v databázi s neškálovatelnými škálováními, ani nemůžete obnovit databázi s neškálovatelným škálováním do databáze v rámci škálování na více databází.|
+| Obnovení Neškálovatelné databáze do škálování a naopak | Nemůžete obnovit databázi škálování v databázi s neškálovatelnými škálováními, ani nemůžete obnovit databázi s neškálovatelným škálováním do databáze v rámci škálování na více databází.|
 | Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Managed Instance | Služba Azure SQL Database Managed instance se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současnosti nepodporují u SQL Databaseho škálování.|
@@ -251,7 +251,8 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Kopie databáze | Ještě nemůžete použít kopii databáze k vytvoření nové databáze ve službě Azure SQL s škálovatelným škálováním. |
 | Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obecně označované jako BYOK) ještě není podporované pro Azure SQL Database škálování, ale TDE se spravovanými klíči služby se plně podporuje. |
 |Funkce inteligentní databáze | S výjimkou možnosti "vynutit plán" nejsou všechny ostatní možnosti automatického ladění zatím podporovány v rámci škálování: možnosti mohou být povoleny, ale nebudou zde učiněna žádná doporučení ani akce. |
-| Zmenšit databázi | Příkaz DBCC SHRINKDATABASE nebo DBCC SHRINKFILE se v současné době nepodporuje u databází Azure SQL s podporou škálování. |
+| Zmenšit databázi | Příkaz DBCC SHRINKDATABASE nebo DBCC SHRINKFILE není v současné době podporován pro databáze s měřítkem. |
+| Kontrola integrity databáze | Příkaz DBCC CHECKDB není v současné době podporován pro databáze s měřítkem. Podrobnosti o správě integrity dat v Azure SQL Database najdete v tématu [Integrita dat v Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) . |
 
 ## <a name="next-steps"></a>Další kroky
 

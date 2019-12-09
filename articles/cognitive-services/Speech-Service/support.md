@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 16729c23483e715177a7c73b3fc5c9bda6ee41a4
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7017c3065e41befab6b5d7cdea47e2e3e6720173
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872277"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928644"
 ---
 # <a name="support-and-help-options"></a>Podpora a možnosti pomoci
 
@@ -62,7 +62,7 @@ Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v Azure Por
 
 Stack Overflow je preferovaným kanálem pro otázky související s vývojem. Je tam, kde jsou členové komunity a členové týmu Microsoftu přímo zapojeni na pomoc při řešení vašich problémů.
 
-Pokud nemůžete najít odpověď na váš problém prostřednictvím služby Search, odešlete novou otázku do Stack Overflow pomocí značky [Microsoft-vnímání + Speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech) .
+Pokud nemůžete najít odpověď na váš problém prostřednictvím služby Search, odešlete novou otázku do Stack Overflow pomocí značek [\[rozpoznávání řeči od společnosti Microsoft pro\]\[speech\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech).
 
 > [!TIP]
 > Následující příspěvky z Stack Overflow obsahují tipy, jak vytvořit otázky a přidat zdrojový kód. Podle těchto pokynů může pomáhat zvýšit riziko, že členové komunity vyhodnotili a rychle reagují na své otázky:  

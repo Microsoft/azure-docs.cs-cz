@@ -1,18 +1,19 @@
 ---
-title: Použití formátu JSON při mapování toku dat v Azure Data Factory
+title: JSON v toku dat mapování
 description: Tok dat mapování Azure Data Factory obsahuje integrované funkce pro zpracování dokumentů JSON s hierarchiemi.
 author: kromerm
 ms.author: makromer
 ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/30/2019
-ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 153c7a1003c68526c960644bebcc4800e92edc3c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387350"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928332"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapování zpracování JSON toku dat
 
@@ -86,7 +87,7 @@ Pokud byl tento výraz zadán pro sloupec s názvem "complexColumn", pak bude za
 
 Použití datové sady JSON jako zdroje v toku dat umožňuje nastavit pět dalších nastavení. Tato nastavení se dají najít v rámci souhlasu **Nastavení JSON** na kartě **zdrojové možnosti** .  
 
-![Nastavení JSON](media/data-flow/json-settings.png "Nastavení JSON")
+![Nastavení JSON](media/data-flow/json-settings.png "Nastavení v souboru JSON")
 
 ### <a name="default"></a>Výchozí
 
@@ -161,7 +162,7 @@ Pokud se k řídicím znakům v datech JSON mají použít zpětná lomítka, vy
 
 Funkce vyššího řádu je funkce, která přijímá jednu nebo více funkcí jako argument. Níže najdete seznam funkcí vyšších pořadí podporovaných při mapování toků dat, které umožňují operace s poli.
 
-### <a name="filter"></a>Filtrovací
+### <a name="filter"></a>filter
 Filtruje prvky z pole, které nesplňuje zadaný predikát. Filtr očekává odkaz na jeden prvek ve funkci predikátu jako #item.
 
 #### <a name="examples"></a>Příklady
@@ -189,7 +190,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-### <a name="sort"></a>Druhu
+### <a name="sort"></a>seřadit
 Seřadí pole pomocí zadané funkce predikátu. Řazení očekává odkaz na dva po sobě jdoucí prvky ve funkci Expression jako #item1 a #item2.
 
 #### <a name="examples"></a>Příklady
@@ -201,7 +202,7 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-### <a name="contains"></a>Zobrazí
+### <a name="contains"></a>Obsahuje
 Vrátí hodnotu true, pokud je libovolný prvek v zadaném poli vyhodnocen jako true v zadaném predikátu. Obsahuje očekává odkaz na jeden prvek ve funkci predikátu jako #item.
 
 #### <a name="examples"></a>Příklady

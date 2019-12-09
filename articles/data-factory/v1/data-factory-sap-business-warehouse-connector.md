@@ -4,21 +4,20 @@ description: Přečtěte si, jak přesunout data ze SAP Business Warehouse pomoc
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 47bc2db8730ebdedd180646d2fb86b642bbc631d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666036"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929213"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesun dat ze SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -47,7 +46,7 @@ Pokud chcete povolit připojení k instanci SAP BW, nainstalujte následující 
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -64,13 +63,13 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | Ano
+server | Název serveru, na kterém se nachází instance SAP BW. | string | Ano
 systemNumber | Číslo systému SAP BW systému | Desítkové číslo se dvěma číslicemi reprezentované jako řetězec. | Ano
 clientId | ID klienta klienta v systému SAP W. | Desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP BW | řetězec | Ano
-encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | Ne
+uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
+heslo | Heslo pro tohoto uživatele. | string | Ano
+gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP BW | string | Ano
+encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | string | Ne
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
@@ -109,7 +108,7 @@ Ukázka kopíruje data z instance SAP Business Warehouse do objektu blob Azure z
 Jako první krok nastavte bránu pro správu dat. Pokyny najdete v článku [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
 
 ### <a name="sap-business-warehouse-linked-service"></a>Propojená služba SAP Business Warehouse
-Tato propojená služba propojuje vaši instanci SAP BW s datovou továrnou. Vlastnost Type je nastavená na **SapBw**. Část typeProperties poskytuje informace o připojení pro instanci SAP BW. 
+Tato propojená služba propojuje SAP BW instanci objektu pro vytváření dat. Vlastnost Type je nastavená na **SapBw**. Část typeProperties poskytuje informace o připojení pro instanci SAP BW. 
 
 ```json
 {
@@ -131,7 +130,7 @@ Tato propojená služba propojuje vaši instanci SAP BW s datovou továrnou. Vla
 ```
 
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Tato propojená služba propojuje váš Azure Storage účet s datovou továrnou. Vlastnost Type je nastavená na **AzureStorage**. Část typeProperties poskytuje informace o připojení pro účet Azure Storage.
+Tato propojená služba propojuje účet úložiště Azure pro vytváření dat. Vlastnost Type je nastavená na **AzureStorage**. Část typeProperties poskytuje informace o připojení pro účet Azure Storage.
 
 ```json
 {
@@ -291,26 +290,26 @@ Při přesunu dat z SAP BW se z SAP BW typů do typů .NET používají následu
 
 Datový typ ve slovníku ABAP | .NET – datový typ
 -------------------------------- | --------------
-ACCP |  Hmot
+ACCP |  Int
 CHAR | Řetězec
 CLNT | Řetězec
-CURR | Notaci
+CURR | Decimal
 CUKY | Řetězec
-18.12 | Notaci
-FLTP | Klepat
-INT1 | Bytové
+18.12 | Decimal
+FLTP | Double
+INT1 | Bajtů
 INT2 | Int16
-INT4 | Hmot
+INT4 | Int
 JAZYK | Řetězec
 LCHR | Řetězec
-LRAW | Byte []
+LRAW | Byte[]
 PREC | Int16
-QUAN | Notaci
-ZÍSKÁNÍ | Byte []
-RAWSTRING | Byte []
+QUAN | Decimal
+ZÍSKÁNÍ | Byte[]
+RAWSTRING | Byte[]
 ŘETEZCE | Řetězec
 JEDNOTKA | Řetězec
-DEFINIC | Řetězec
+DATS | Řetězec
 NUMC | Řetězec
 TIMS | Řetězec
 

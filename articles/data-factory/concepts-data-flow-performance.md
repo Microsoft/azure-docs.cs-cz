@@ -1,17 +1,18 @@
 ---
-title: Mapování výkonu toku dat a Průvodce optimalizací v Azure Data Factory
+title: Mapování výkonu toku dat a Průvodce optimalizací
 description: Přečtěte si o klíčových faktorech, které mají vliv na výkon mapování datových toků v Azure Data Factory.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
+ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671577"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928537"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -72,7 +73,7 @@ V části **Možnosti zdroje** ve zdrojové transformaci můžou mít následuj�
 
 Abyste se vyhnuli zpracování datových toků po řádcích, nastavte **velikost dávky** na kartě nastavení pro Azure SQL DB a jímky Azure SQL DW. Pokud je nastavena velikost dávky, vytvoří ADF v dávkách zápisy do dávek v závislosti na zadané velikosti.
 
-![Jímkou](media/data-flow/sink4.png "Jímka")
+![jímka](media/data-flow/sink4.png "Jímka")
 
 ### <a name="partitioning-on-sink"></a>Dělení na jímku
 

@@ -1,18 +1,19 @@
 ---
-title: Mapování toků dat v Azure Data Factory
+title: Toky dat mapování
 description: Přehled toků mapování dat v Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/7/2019
-ms.openlocfilehash: ed2502ffebbacf5e66e3e4738e2e88ce7fb8a562
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681558"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928292"
 ---
 # <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
 
@@ -32,13 +33,13 @@ Tím přejdete na plátno toku dat, kde můžete vytvořit logiku transformace. 
 
 Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfigurace. 
 
-![Kreslicí](media/data-flow/canvas1.png "Kreslicí")
+![Plátno](media/data-flow/canvas1.png "Plátno")
 
-### <a name="graph"></a>Graph
+### <a name="graph"></a>Graf
 
 Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace.
 
-![Kreslicí](media/data-flow/canvas2.png "Kreslicí")
+![Plátno](media/data-flow/canvas2.png "Plátno")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Vlastnosti toku dat prostředí Azure Integration runtime
 
@@ -122,11 +123,11 @@ Sestavte výraz, který poskytuje pevný rozsah pro hodnoty v rámci sloupců s 
 
 Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření oddílů dobrým zvykem. Při vytváření oddílů se vytvoří oddíly pro každou jedinečnou hodnotu ve sloupci. Počet oddílů nejde nastavit, protože číslo bude založené na jedinečných hodnotách v datech.
 
-#### <a name="inspect"></a>Prohlížen
+#### <a name="inspect"></a>Inspect
 
 Karta **Kontrola** poskytuje zobrazení metadat datového proudu, který transformuje. Můžete zobrazit počty sloupců, změněné sloupce, přidané sloupce, datové typy, řazení sloupců a odkazy na sloupce. **Kontrola** je zobrazení vašich metadat jen pro čtení. Není nutné mít povolen režim ladění, aby bylo možné zobrazit metadata v podokně **Kontrola** .
 
-![Prohlížen](media/data-flow/inspect1.png "Prohlížen")
+![Prohlížen](media/data-flow/inspect1.png "Inspect")
 
 Když změníte tvar dat prostřednictvím transformací, v podokně **Kontrola** se zobrazí tok změn metadat. Pokud ve zdrojové transformaci není definované schéma, metadata se v podokně **Kontrola** nezobrazí. Nedostatek metadat je běžné ve scénářích pro posun schématu.
 

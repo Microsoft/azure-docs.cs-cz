@@ -3,19 +3,19 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2db1cfd7cc8145ff3020bf232021b4f1a63b2ddd
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464027"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928009"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
 Jako poskytovatel služeb můžete použít [správu delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md) ke správě prostředků Azure pro více zákazníků v rámci vašeho vlastního tenanta v [Azure Portal](https://portal.azure.com). Většinu úkolů a služeb je možné provádět u delegovaných prostředků Azure ve spravovaných klientech. Tento článek popisuje některé z rozšířených scénářů, ve kterých může být efektivní správa delegovaných prostředků Azure.
 
 > [!NOTE]
-> Správu delegovaných prostředků Azure je možné použít i v rámci podniku, který má více tenantů, aby zjednodušila správu mezi klienty.
+> Správu delegovaných prostředků Azure je možné použít i [v rámci podniku, který má více tenantů Azure AD vlastní](enterprise.md) pro zjednodušení správy mezi klienty.
 
 ## <a name="understanding-customer-tenants"></a>Porozumění klientům zákazníka
 
@@ -52,15 +52,15 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 - Použití účtů Automation pro přístup k prostředkům delegovaného zákazníka a práce s nimi
 
-[Azure Backup](https://docs.microsoft.com/azure/backup/):
+[Azure Backup:](https://docs.microsoft.com/azure/backup/)
 
 - Zálohování a obnovení zákaznických dat v klientech zákazníků
 
-[Služba Azure Kubernetes (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
 
 - Správa hostovaných prostředí Kubernetes a nasazení a Správa kontejnerových aplikací v rámci zákaznických tenantů
 
-[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
 - Zobrazit výstrahy pro delegovaná předplatná s možností zobrazovat výstrahy napříč všemi předplatnými
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
@@ -116,7 +116,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 - Přístup k virtuálním počítačům pomocí sériové konzoly v klientech zákazníků
 - Všimněte si, že nemůžete použít Azure Active Directory pro vzdálené přihlášení k virtuálnímu počítači a nemůžete integrovat virtuální počítač s Key Vaultem pro hesla, tajné klíče a kryptografické klíče pro šifrování disků.
 
-[Virtual Network Azure](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
 
 - Nasazení a správa virtuálních sítí a karet virtuální síťové adaptéry (Virtual Network Interface) v rámci zákaznických tenantů
 

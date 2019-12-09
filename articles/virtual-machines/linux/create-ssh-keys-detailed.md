@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 61f24776bb9ec9443df421dcbcf35dcc83ec2bc9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036512"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929709"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Podrobný postup: vytváření a Správa klíčů SSH pro ověřování na virtuálním počítači Linux v Azure 
 Pomocí páru klíčů SSH (Secure Shell) můžete vytvořit virtuální počítač se systémem Linux v Azure, který bude standardně používat klíče SSH pro ověřování. tím se eliminuje nutnost přihlášení hesel. Virtuální počítače vytvořené pomocí Azure Portal, Azure CLI, šablony Správce prostředků nebo jiné nástroje můžou jako součást nasazení zahrnovat veřejný klíč SSH, který nastavuje ověřování pomocí klíče SSH pro připojení SSH. 
@@ -31,7 +31,7 @@ Další způsoby, jak vygenerovat a používat klíče SSH na počítači s Wind
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>Heslo privátního klíče
-Privátní klíč SSH by měl mít velmi zabezpečené heslo pro ochranu. Toto heslo je jenom pro přístup k privátnímu souboru klíče SSH *a není* to heslo k uživatelskému účtu. Když do klíče SSH přidáte přístupové heslo, šifruje privátní klíč pomocí 128 AES, aby privátní klíč byl nepoužitý bez přístupového hesla k dešifrování. Pokud by útočník stole váš privátní klíč a tento klíč neobsahoval heslo, mohl by tento soukromý klíč použít k přihlášení k jakémukoli serveru s odpovídajícím veřejným klíčem. Pokud je privátní klíč chráněný heslem, nemůžete ho použít, protože poskytuje další úroveň zabezpečení pro vaši infrastrukturu v Azure.
+Privátní klíč SSH by měl mít velmi zabezpečené heslo pro ochranu. Toto heslo je jenom pro přístup k privátnímu souboru klíče SSH *a není* to heslo k uživatelskému účtu. Když klíči SSH přidáte přístupové heslo, použije se k zašifrování klíče 128bitový standard AES. Bez dešifrovacího hesla je privátní klíč nepoužitelný. Pokud by útočník stole váš privátní klíč a tento klíč neobsahoval heslo, mohl by tento soukromý klíč použít k přihlášení k jakémukoli serveru s odpovídajícím veřejným klíčem. Pokud je privátní klíč chráněný heslem, nemůžete ho použít, protože poskytuje další úroveň zabezpečení pro vaši infrastrukturu v Azure.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -52,7 +52,7 @@ Klíče SSH jsou ve výchozím nastavení v adresáři `~/.ssh`.  Pokud adresá�
 Následující `ssh-keygen` příkaz vygeneruje ve výchozím nastavení v adresáři `~/.ssh` soubory veřejného a privátního klíče SSH RSA standardně 2048. Pokud pár klíčů SSH existuje v aktuálním umístění, tyto soubory se přepíší.
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 ### <a name="detailed-example"></a>Podrobný příklad
@@ -60,6 +60,7 @@ Následující příklad ukazuje další možnosti příkazu pro vytvoření pá
 
 ```bash
 ssh-keygen \
+    -m PEM \
     -t rsa \
     -b 4096 \
     -C "azureuser@myserver" \
@@ -70,6 +71,8 @@ ssh-keygen \
 **Vysvětlení příkazu**
 
 `ssh-keygen`= program použitý k vytvoření klíčů
+
+`-m PEM` = naformátovat klíč jako PEM
 
 `-t rsa` = typ klíče, který se má vytvořit, v tomto případě ve formátu RSA
 
@@ -84,7 +87,7 @@ ssh-keygen \
 ### <a name="example-of-ssh-keygen"></a>Příklad ssh-keygen
 
 ```bash
-ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
+ssh-keygen -t -m PEM rsa -b 4096 -C "azureuser@myserver"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -92,19 +95,19 @@ Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.
 Your public key has been saved in /home/azureuser/.ssh/id_rsa.pub.
 The key fingerprint is:
-14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 azureuser@myserver
-The keys randomart image is:
-+--[ RSA 2048]----+
-|        o o. .   |
-|      E. = .o    |
-|      ..o...     |
-|     . o....     |
-|      o S =      |
-|     . + O       |
-|      + = =      |
-|       o +       |
-|        .        |
-+-----------------+
+SHA256:vFfHHrpSGQBd/oNdvNiX0sG9Vh+wROlZBktNZw9AUjA azureuser@myserver
+The key's randomart image is:
++---[RSA 4096]----+
+|        .oE=*B*+ |
+|          o+o.*++|
+|           .oo++*|
+|       .    .B+.O|
+|        S   o=BO.|
+|         . .o++o |
+|        . ... .  |
+|         ..  .   |
+|           ..    |
++----[SHA256]-----+
 ```
 
 #### <a name="saved-key-files"></a>Soubory uložených klíčů

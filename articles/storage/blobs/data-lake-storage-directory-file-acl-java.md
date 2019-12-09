@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: b01370bb8c86da07549775ec1a1399e09c80f9af
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0a57e87cc408d111893cbb2beaf4fc5afee2eca2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534255"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930791"
 ---
 # <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití jazyka Java pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
@@ -32,17 +32,9 @@ V tomto článku se dozvíte, jak pomocí jazyka Java vytvářet a spravovat adr
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Začněte tím, že v textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvek závislosti do skupiny závislostí.
+Začněte tím, že otevřete [tuto stránku](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) a získáte nejnovější verzi knihovny Java. Pak otevřete soubor *pom. XML* v textovém editoru. Přidejte element závislosti, který odkazuje na tuto verzi.
 
-```xml
-<dependency>
-  <groupId>com.azure</groupId>
-  <artifactId>azure-storage-file-datalake</artifactId>
-  <version>12.0.0-preview.6</version>
-</dependency>
-```
-
-Pak přidejte tyto příkazy import do souboru kódu.
+Dále přidejte tyto příkazy import do souboru kódu.
 
 ```java
 import com.azure.storage.common.StorageSharedKeyCredential;

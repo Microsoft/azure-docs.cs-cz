@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: fb69e0b797243a3403e8899d3f4ef23a9be9451d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: a756518688b5b1f8b854165de69d3444b772eabc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534280"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931221"
 ---
 # <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití rozhraní .NET pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak pomocí .NET vytvářet a spravovat adresáře
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Začněte tím, že nainstalujete balíček NuGet pro [Azure. Storage. Files. datalake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) .
+Začněte tím, že nainstalujete balíček NuGet pro [Azure. Storage. Files. datalake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) .
 
 Další informace o tom, jak nainstalovat balíčky NuGet, najdete v tématu [instalace a Správa balíčků v aplikaci Visual Studio pomocí Správce balíčků NuGet](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio).
 

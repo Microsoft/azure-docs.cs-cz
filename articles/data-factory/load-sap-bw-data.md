@@ -1,22 +1,22 @@
 ---
-title: Načtení dat z SAP Business Warehouse pomocí Azure Data Factory
+title: Načtení dat z SAP Business Warehouse
 description: Použití Azure Data Factory ke kopírování dat z SAP Business Warehouse (ČERNOBÍLý)
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.author: jingwang
-ms.openlocfilehash: 0c96ecff27a57b3277e7c8105766059b739d11af
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672650"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931471"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse pomocí Azure Data Factory
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak pomocí Azure Data Factory kopírovat data z S
 > [!TIP]
 > Obecné informace o kopírování dat z SAP BW, včetně SAP BW otevřené integrace centra a postupu extrakce Delta, najdete v tématu [kopírování dat ze SAP Business Warehouse přes Open hub pomocí Azure Data Factory](connector-sap-business-warehouse-open-hub.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Azure Data Factory**: Pokud ho ještě nemáte, postupujte podle pokynů k [Vytvoření datové továrny](quickstart-create-data-factory-portal.md#create-a-data-factory).
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak pomocí Azure Data Factory kopírovat data z S
 - **SAP BW uživatel potřebuje následující oprávnění**:
 
   - Autorizace pro volání funkce Remote Functions (RFC) a SAP BW.
-  - Oprávnění k aktivitě "Execute" objektu autorizace **S_SDSAUTH** .
+  - Oprávnění k aktivitě Execute objektu autorizace **S_SDSAUTH** .
 
 - **Místní [prostředí Integration runtime (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) s konektorem SAP .NET Connector 3,0**. Postupujte podle těchto kroků instalace:
 
@@ -46,7 +46,7 @@ V tomto článku se dozvíte, jak pomocí Azure Data Factory kopírovat data z S
 
 ## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Provedení úplné kopie z SAP BW otevřeném centru
 
-V Azure Portal přejdete do své datové továrny. Vyberte **vytvořit & monitorování** a otevřete tak Data Factory uživatelské rozhraní na samostatné kartě.
+Na webu Azure Portal přejděte k vaší datové továrně. Vyberte **vytvořit & monitorování** a otevřete tak Data Factory uživatelské rozhraní na samostatné kartě.
 
 1. Na stránce **Začínáme** vyberte **kopírování dat** pro otevření nástroje kopírování dat.
 
@@ -68,7 +68,7 @@ V Azure Portal přejdete do své datové továrny. Vyberte **vytvořit & monitor
 
    3. Vyberte **Test připojení** , aby se ověřilo nastavení, a pak vyberte **Dokončit**.
 
-   4. Vytvoří se nové připojení. Vyberte **Next** (Další).
+   4. Vytvoří se nové připojení. Vyberte **Další**.
 
 5. Na stránce **Vyberte umístění centra** , která jsou k dispozici ve vašem SAP BW, přejděte na otevřená umístění centra. Vyberte OHD, ze kterých se mají kopírovat data, a pak vyberte **Další**.
 
@@ -87,7 +87,7 @@ V Azure Portal přejdete do své datové továrny. Vyberte **vytvořit & monitor
    ![Vytvoření stránky propojené služby ADLS Gen2](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. V rozevíracím seznamu **název** vyberte účet s podporou Data Lake Storage Gen2.
-   2. Vyberte **Dokončit** a vytvořte připojení. Pak vyberte **Další**.
+   2. Vytvořte připojení výběrem možnosti **Dokončit**. Pak vyberte **Další**.
 
 9. Na stránce **zvolit výstupní soubor nebo složku** zadejte **copyfromopenhub** jako název výstupní složky. Pak vyberte **Další**.
 
@@ -111,7 +111,7 @@ V Azure Portal přejdete do své datové továrny. Vyberte **vytvořit & monitor
 
     ![Zobrazení monitorování kanálu](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte **Zobrazit spuštění aktivit** ve sloupci **Akce** . Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat kliknutím na **Aktualizovat**.
+15. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte **Zobrazit spuštění aktivit** ve sloupci **Akce** . Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**.
 
     ![Obrazovka monitorování aktivity](media/load-sap-bw-data/activity-monitoring.png)
 
@@ -187,7 +187,7 @@ Na stránce **Začínáme** pro datovou továrnu vyberte **vytvořit kanál ze �
 
       3. Přidejte akci **vytvořit objekt BLOB** . Pro **cestu ke složce** a **název objektu BLOB**použijte stejné hodnoty, které jste nakonfigurovali dříve v **HighWatermarkBlobPath** a **HighWatermarkBlobName**.
 
-      4. Vyberte **Uložit**. Pak zkopírujte hodnotu **http post URL** , která se použije v kanálu Data Factory.
+      4. Vyberte **Save** (Uložit). Pak zkopírujte hodnotu **http post URL** , která se použije v kanálu Data Factory.
 
 4. Po zadání parametrů kanálu Data Factory vyberte možnost **ladění** > **Dokončit** , aby se spustila spuštění pro ověření konfigurace. Případně můžete kliknutím na **publikovat vše** publikovat změny a pak vybrat **aktivační událost** pro spuštění.
 
@@ -212,7 +212,7 @@ Pokud potřebujete jak historické kopírování, tak přírůstkové kopírová
 
    Můžete zvýšit počet paralelně spuštěných pracovních procesů SAP pro DTP:
 
-   ![vytvoření-SAP-šířky-OHD-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. Naplánujte DTP v řetězcích procesu.
 

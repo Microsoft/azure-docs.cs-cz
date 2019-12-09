@@ -9,19 +9,18 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 6ea9134085812b99d59ad64aa2c9ec1b2ff827d9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684398"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929783"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS migrace pomocí Azure SQL Database spravované instance jako cíle úloh databáze
 
-Při migraci databázových úloh z SQL Server v místním prostředí do Azure SQL Database spravované instance byste měli být obeznámeni se [službou Azure Data Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) a [topologiemi sítě pro migrace Azure SQL Database spravované instance. pomocí DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies).
+Když migrujete databázové úlohy z SQL Server místně do Azure SQL Database spravované instance, měli byste být obeznámeni se [službou Azure Data Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) a [síťovými topologiemi pro migraci Azure SQL Database spravované instance pomocí DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies).
 
 Tento článek se zaměřuje na migraci balíčků služby SQL Server Integration Service (SSIS) uložených v katalogu SSIS (SSISDB) a úlohách SQL Server agenta, které naplánují spouštění balíčků SSIS.
 
@@ -33,7 +32,7 @@ Migraci SSISDB můžete provést pomocí DMS, jak je popsáno v článku: [migra
 
 Azure SQL Database spravovaná instance má nativního plánovače první třídy stejně jako SQL Serverho agenta místně.  Vzhledem k tomu, že nástroj pro migraci pro úlohy SSIS ještě není k dispozici, musí být migrován z SQL Serverho agenta místně do Azure SQL Database spravované instance pomocí skriptů a ruční kopie.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)

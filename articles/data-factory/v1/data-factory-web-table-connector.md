@@ -4,21 +4,20 @@ description: Přečtěte si, jak přesunout data z tabulky na webové stránce p
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: f54a26a4-baa4-4255-9791-5a8f935898e2
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 957b47244744f161ad9cc8019a411e2e59c29418
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682304"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927936"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Přesunutí dat ze zdroje webové tabulky pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -35,7 +34,7 @@ Data Factory aktuálně podporuje pouze přesun dat z webové tabulky do jiných
 > [!IMPORTANT]
 > Tento webový konektor aktuálně podporuje pouze extrakci obsahu tabulky ze stránky HTML. K načtení dat z koncového bodu HTTP/s použijte místo toho [konektor http](data-factory-http-connector.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít tento konektor webové tabulky, je třeba nastavit Integration Runtime v místním prostředí (neboli Správa dat bráně) a nakonfigurovat vlastnost `gatewayName` v propojené službě jímky. Pokud například chcete kopírovat z webové tabulky do úložiště objektů BLOB v Azure, nakonfigurujte Azure Storage propojenou službu následujícím způsobem:
 
@@ -56,7 +55,7 @@ Chcete-li použít tento konektor webové tabulky, je třeba nastavit Integratio
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -75,7 +74,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | --- | --- | --- |
 | type |Vlastnost Type musí být nastavená na: **Web** . |Ano |
 | URL |Adresa URL webového zdroje |Ano |
-| authenticationType |Anonymous. |Ano |
+| authenticationType. |Anonymous. |Ano |
 
 ### <a name="using-anonymous-authentication"></a>Použití anonymního ověřování
 
@@ -102,8 +101,8 @@ Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje inf
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type |Typ datové sady musí být nastavené na **Webtable** . |Ano |
-| dílčí |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
-| indexovacím |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Ano |
+| Cesta |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
+| index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Ano |
 
 **Příklad:**
 
@@ -289,7 +288,7 @@ Seznam vlastností, které podporuje websource, najdete v tématu vlastnosti typ
 2. Na panelu nástrojů klikněte na **Nový dotaz** , přejděte na **z jiných zdrojů** a klikněte na **z webu**.
 
     ![Nabídka Power Query](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. V dialogovém okně **z webu** zadejte **adresu URL** , kterou použijete v kódu JSON propojené služby (například: https://en.wikipedia.org/wiki/) společně s cestou, kterou zadáte pro datovou sadu (například: AFI% 27s_100_Years... 100_Movies) a klikněte na **OK**.
+3. V dialogovém okně **z webu** zadejte **adresu URL** , kterou použijete v kódu JSON propojené služby (například: https://en.wikipedia.org/wiki/) společně s cestou, kterou jste zadali pro datovou sadu (například: AFI% 27s_100_Years... 100_Movies) a klikněte na **OK**.
 
     ![Z dialogového okna Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
@@ -299,7 +298,7 @@ Seznam vlastností, které podporuje websource, najdete v tématu vlastnosti typ
    ![Přístup k webovému obsahu – dialogové okno](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
 5. Kliknutím na položku **tabulky** ve stromovém zobrazení zobrazíte obsah z tabulky a potom v dolní části kliknete na tlačítko **Upravit** .  
 
-   ![Dialog navigátor](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
+   ![Dialogové okno Navigátor](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
 6. V okně **Editor dotazů** klikněte na panelu nástrojů na tlačítko **Rozšířený editor** .
 
     ![Rozšířený editor – tlačítko](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)

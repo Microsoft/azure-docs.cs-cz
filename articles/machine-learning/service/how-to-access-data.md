@@ -11,27 +11,27 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2e86c06cca26da2776459f3c20bf921a02ed89b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ee6ab1ada540f4f664e6782a1fffc63cc7df95e4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894716"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928588"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak snadno získat přístup k datům ve službě Azure Storage prostřednictvím Azure Machine Learning úložiště dat. Úložiště dat slouží k ukládání informací o připojení, jako je ID předplatného a autorizace tokenu. Pomocí úložiště dat získáte přístup k úložišti, aniž byste museli zakódovat informace o připojení ve svých skriptech. Z těchto [Řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. Nepodporovaná řešení úložiště vám umožní ušetřit náklady na výstup dat během experimentů strojového učení. Doporučujeme přesunout data do našich podporovaných řešení Azure Storage. Přečtěte si, [Jak přesunout data](#move). 
+V tomto článku se dozvíte, jak snadno získat přístup k datům ve službě Azure Storage prostřednictvím Azure Machine Learning úložiště dat. Úložiště dat slouží k ukládání informací o připojení, jako je ID předplatného a autorizace tokenu. Pomocí úložiště dat získáte přístup k úložišti, aniž byste museli zakódovat informace o připojení ve svých skriptech. Z těchto [Řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. Pro Nepodporovaná řešení úložišť a za účelem úspory nákladů na výstup při experimentech strojového učení doporučujeme přesunout vaše data do našich podporovaných řešení Azure Storage. Přečtěte si, [Jak přesunout data](#move). 
 
 Tento postup ukazuje příklady následujících úloh:
-* [Registrovat úložiště dat](#access)
-* [Získat úložiště dat z pracovního prostoru](#get)
-* [Nahrávání a stahování dat pomocí datových úložišť](#up-and-down)
-* [Přístup k datům během školení](#train)
-* [Přesun dat do Azure](#move)
+* Registrovat úložiště dat
+* Získat úložiště dat z pracovního prostoru
+* Nahrávání a stahování dat pomocí datových úložišť
+* Přístup k datům během školení
+* Přesun dat do služby Azure Storage
 
 ## <a name="prerequisites"></a>Předpoklady
-
+Budete potřebovat
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 - Účet služby Azure Storage s [kontejnerem objektů blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) nebo [sdílenou složkou Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
@@ -58,7 +58,13 @@ Když zaregistrujete řešení úložiště Azure jako úložiště dat, vytvoř
 
 Všechny metody registru jsou na třídě [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) a mají formulář register_azure_ *.
 
-Informace, které potřebujete k naplnění metody Register (), lze nalézt prostřednictvím [Azure Portal](https://portal.azure.com). V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu a kontejner nebo název sdílené složky. Pro informace o ověřování, jako je klíč účtu nebo token SAS, přejděte na **klíče účtu** v podokně **Nastavení** na levé straně. 
+Informace, které potřebujete k naplnění metody Register (), najdete v [Azure Machine Learning Studiu](https://ml.azure.com) a v těchto krocích.
+
+1. V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. 
+2. Stránka **Přehled** poskytuje informace, jako je název účtu a kontejner nebo název sdílené složky. 
+3. Pro informace o ověřování, jako je klíč účtu nebo token SAS, přejděte na **klíče účtu** v podokně **Nastavení** na levé straně. 
+
+>VÝZNAMNÁ Pokud je váš účet úložiště ve virtuální síti, podporuje se jenom vytváření úložiště Azure Blob. Nastavte parametr `grant_workspace_access` `True` a udělte vašemu pracovnímu prostoru přístup k vašemu účtu úložiště.
 
 Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Azure nebo sdílenou složku Azure jako úložiště dat.
 
@@ -74,7 +80,6 @@ Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Az
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
-    Pokud je váš účet úložiště ve virtuální síti, podporuje se jenom vytváření úložiště Azure Blob. Nastavte parametr `grant_workspace_access` `True` a udělte vašemu pracovnímu prostoru přístup k vašemu účtu úložiště.
 
 + Pro **úložiště dat sdílené složky Azure**použijte [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). 
 
@@ -104,7 +109,7 @@ V několika krocích v Azure Machine Learning Studiu vytvořte nové úložišt�
   
 Informace, které potřebujete k naplnění formuláře, najdete prostřednictvím [Azure Portal](https://portal.azure.com). V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu a kontejner nebo název sdílené složky. U položek ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na levé straně na **klíče účtu** .
 
-Následující příklad ukazuje, co by formulář vypadal jako při vytváření úložiště dat objektů BLOB v Azure. 
+Následující příklad ukazuje, jak formulář vypadá jako při vytváření úložiště dat Azure Blob. 
     
  ![Nové úložiště dat](media/how-to-access-data/new-datastore-form.png)
 
@@ -128,7 +133,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-Když vytvoříte pracovní prostor, kontejner objektů BLOB v Azure a sdílená složka Azure se zaregistrují do pracovního prostoru s názvem `workspaceblobstore` a `workspacefilestore` v uvedeném pořadí. Ukládají informace o připojení kontejneru objektů BLOB a sdílené složky zřízené v účtu úložiště připojeném k pracovnímu prostoru. `workspaceblobstore` je nastaven jako výchozí úložiště dat.
+Když vytvoříte pracovní prostor, kontejner objektů BLOB v Azure a sdílená složka Azure se automaticky zaregistrují do pracovního prostoru s názvem `workspaceblobstore` a `workspacefilestore` v uvedeném pořadí. V těchto úložištích se ukládají informace o připojení kontejneru objektů BLOB a sdílené složky zřízené v účtu úložiště připojeném k pracovnímu prostoru. `workspaceblobstore` je nastaven jako výchozí úložiště dat.
 
 Chcete-li získat výchozí pracovním prostoru úložiště dat:
 
@@ -189,7 +194,7 @@ Následující tabulka uvádí metody, které oznamují výpočetnímu cíli, ja
 
 Podobně|Metoda|Popis|
 ----|-----|--------
-Připojení| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Slouží k připojení úložiště dat na cílovém výpočetním cíli.
+Připojení| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Slouží k připojení úložiště dat na cílovém výpočetním cíli. Po připojení jsou všechny soubory vašeho úložiště dat zpřístupněny pro váš cíl výpočtů.
 Ke stažení|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Použijte ke stažení obsahu úložiště dat do umístění určeného `path_on_compute`. <br><br> K tomuto stažení dojde před spuštěním.
 Nahrávání|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Slouží k nahrání souboru z umístění určeného `path_on_compute` do úložiště dat. <br><br> K odeslání dojde po spuštění.
 
@@ -207,13 +212,14 @@ datastore.path('./bar').as_download()
 
 ### <a name="examples"></a>Příklady 
 
-Následující příklady kódu jsou specifické pro třídu [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) pro přístup k datům během školení. 
+Následující příklady kódu jsou specifické pro třídu [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) pro přístup k datům během školení.
 
 `script_params` je slovník obsahující parametry do entry_script. Použijte ho k předání do úložiště dat a popište, jak budou data dostupná na výpočetním cíli. Další informace získáte v našem uceleném [kurzu](tutorial-train-models-with-aml.md).
 
 ```Python
 from azureml.train.estimator import Estimator
 
+# notice '/' is in front, this indicates the absolute path
 script_params = {
     '--data_dir': datastore.path('/bar').as_mount()
 }

@@ -2,27 +2,22 @@
 title: Volání webového rozhraní API ASP.NET chráněného Azure AD – Microsoft identity
 description: V tomto rychlém startu se dozvíte, jak volat webové rozhraní API ASP.NET chráněné Azure Active Directory z aplikace Windows Desktop (WPF). Klient WPF ověří uživatele, požádá o přístupový token a zavolá webové rozhraní API.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e0fdeb2c1955eab18b440c3ef3bcac725ad92b6
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 6f1d9e402bff9d333957d51982dd917822d2c24d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200255"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920646"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Rychlý Start: volání webového rozhraní API ASP.NET chráněného službou Azure AD
 
@@ -88,7 +83,7 @@ Pokud chcete své aplikace registrovat ručně, je třeba nejprve tyto kroky:
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Přidání nového oboru do souboru App. config pro *TodoListClient*
 
-1. Otevřete soubor **App. config** umístěný v kořenové složce projektu **TodoListClient** a potom vložte **ID aplikace** z aplikace, kterou jste právě zaregistrovali pro svůj *TodoListService* v části `TodoListServiceScope` parametr, a nahraďte řetězec. `{Enter the Application ID of your TodoListService from the app registration portal}`.
+1. Otevřete soubor **App. config** umístěný v kořenové složce projektu **TodoListClient** a potom vložte **ID aplikace** z aplikace, kterou jste právě zaregistrovali pro *TodoListService* , v části `TodoListServiceScope` parametr a nahraďte `{Enter the Application ID of your TodoListService from the app registration portal}`řetězce.
 
    > Poznámka: Ujistěte se, že používá následující formát:
    >
@@ -115,7 +110,7 @@ V tomto kroku nakonfigurujete projekt *TodoListClient* tak, že zaregistrujete n
    - Klikněte na tlačítko **Přidat oprávnění** a pak na
    - Vyberte kartu **Moje rozhraní API** .
    - V seznamu rozhraní API vyberte `AppModelv2-NativeClient-DotNet-TodoListService API`nebo název, který jste zadali pro webové rozhraní API.
-   - Ověřte oprávnění **access_as_user** , pokud ještě není zaškrtnuté. V případě potřeby použijte vyhledávací pole.
+   - Zaškrtněte **access_as_user** oprávnění, pokud ještě není zaškrtnuté. V případě potřeby použijte vyhledávací pole.
    - Vyberte tlačítko **Přidat oprávnění** .
 
 ### <a name="configure-your-todolistclient-project"></a>Konfigurace projektu *TodoListClient*
@@ -132,7 +127,7 @@ V tomto kroku nakonfigurujete projekt *TodoListClient* tak, že zaregistrujete n
 
 ## <a name="pre-authorize-your-client-application"></a>Předběžná autorizace klientské aplikace
 
-Jedním z způsobů, jak uživatelům z jiných adresářů povolit přístup k webovému rozhraní API, je *předběžné autorizace* klientských aplikací pro přístup k webovému rozhraní API přidáním ID aplikací z klientských aplikací v seznamu *předem autorizovaných* aplikací pro. vaše webové rozhraní API. Přidáním předem autorizovaného klienta nebudete muset uživateli souhlasit s používáním vašeho webového rozhraní API. K předběžné autorizaci webové aplikace použijte následující postup:
+Jedním z způsobů, jak uživatelům z jiných adresářů povolit přístup k webovému rozhraní API, je *předautorizací* klientských aplikací pro přístup k webovému rozhraní API přidáním ID aplikací z klientských aplikací v seznamu *předem autorizovaných* aplikací pro vaše webové rozhraní API. Přidáním předem autorizovaného klienta nebudete muset uživateli souhlasit s používáním vašeho webového rozhraní API. K předběžné autorizaci webové aplikace použijte následující postup:
 
 1. Vraťte se zpátky na *portál pro registraci aplikací* a otevřete vlastnosti vašeho **TodoListService**.
 1. V části **vystavení rozhraní API** klikněte na **Přidat klientskou aplikaci** v části *autorizované klientské aplikace* .
@@ -155,7 +150,7 @@ Chcete-li omezit, kdo se může přihlásit ke své aplikaci, použijte jednu z 
 
 Přístup pro přihlášení k aplikaci můžete omezit jenom na uživatelské účty, které jsou v jednom tenantovi Azure AD – včetně *účtů hostů* tohoto tenanta. Tento scénář je společný pro *obchodní aplikace*:
 
-1. Otevřete soubor **App_Start\Startup.auth** a změňte hodnotu koncového bodu metadat, který se předává do `OpenIdConnectSecurityTokenProvider` do `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (můžete také použít název tenanta, jako je například `contoso.onmicrosoft.com`).
+1. Otevřete soubor **app_start \Startup.auth** a změňte hodnotu koncového bodu metadat, který se předává do `OpenIdConnectSecurityTokenProvider` `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (můžete také použít název tenanta, jako je například `contoso.onmicrosoft.com`).
 2. Ve stejném souboru nastavte vlastnost `ValidIssuer` v `TokenValidationParameters` na `"https://sts.windows.net/{Tenant ID}/"` a argument `ValidateIssuer` `true`.
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>Možnost 2: použití vlastní metody pro ověření vystavitelů

@@ -1,23 +1,22 @@
 ---
-title: K migraci dat z místního clusteru Hadoop do Azure Storage použijte Azure Data Factory
+title: Migrace dat z místního clusteru Hadoop do Azure Storage
 description: Naučte se používat Azure Data Factory k migraci dat z místního clusteru Hadoop do Azure Storage.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675818"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931451"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>K migraci dat z místního clusteru Hadoop do Azure Storage použijte Azure Data Factory 
 
@@ -82,7 +81,7 @@ Tento obrázek znázorňuje migraci dat prostřednictvím privátního propojen�
 - V této architektuře se data migrují přes privátní partnerský odkaz prostřednictvím Azure ExpressRoute. Data nikdy neprochází přes veřejný Internet.
 - Nástroj DistCp nepodporuje privátní partnerské vztahy ExpressRoute s koncovým bodem Azure Storage virtuální sítě. K migraci dat doporučujeme použít nativní funkci Data Factory prostřednictvím prostředí Integration runtime.
 - Pro tuto architekturu je nutné nainstalovat modul runtime integrace Data Factory v místním prostředí do virtuálního počítače s Windows ve vaší virtuální síti Azure. Můžete ručně škálovat virtuální počítač nebo škálovat na více virtuálních počítačů, abyste plně využili své síťové a úložné IOPS nebo šířku pásma.
-- Doporučená konfigurace, která se má začít používat pro každý virtuální počítač Azure (s nainstalovanou Data Factory v místním prostředí Integration Runtime), je Standard_D32s_v3 s 32 vCPU a 128 GB paměti. Během migrace dat můžete monitorovat využití procesoru a paměti virtuálního počítače, abyste viděli, jestli potřebujete škálovat virtuální počítač pro lepší výkon, nebo snížit kapacitu virtuálního počítače, abyste snížili náklady.
+- Doporučená konfigurace, která se má spustit pro každý virtuální počítač Azure (s nainstalovanou Data Factory v místním prostředí Integration Runtime), je Standard_D32s_v3 s 32 vCPU a 128 GB paměti. Během migrace dat můžete monitorovat využití procesoru a paměti virtuálního počítače, abyste viděli, jestli potřebujete škálovat virtuální počítač pro lepší výkon, nebo snížit kapacitu virtuálního počítače, abyste snížili náklady.
 - Horizontální navýšení kapacity můžete také škálovat přidružením až čtyř uzlů virtuálních počítačů s jedním místním prostředím Integration runtime. Jedna úloha kopírování spuštěná v místním prostředí Integration runtime automaticky rozděluje oddíly sady souborů a využívá všechny uzly virtuálních počítačů ke kopírování souborů paralelně. Pro zajištění vysoké dostupnosti doporučujeme začít se dvěma uzly virtuálních počítačů, abyste se vyhnuli scénáři s jedním bodem selhání při migraci dat.
 - Když použijete tuto architekturu, k dispozici je migrace dat snímků a migrace rozdílových dat.
 

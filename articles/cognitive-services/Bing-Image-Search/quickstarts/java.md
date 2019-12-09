@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použijte jazyk Java pro volání Vyhledávání obrázků Bingu REST API'
+title: 'Rychlý Start: použití jazyka Java k volání Vyhledávání obrázků Bingu REST API'
 titleSuffix: Azure Cognitive Services
 description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API pomocí Java a přijímat odpovědi JSON.
 services: cognitive-services
@@ -9,23 +9,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 07/22/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 415613d99b3a7b9f3845a458886e93e5655842c8
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c1e339643613db188819e7eb8853cad8a48ea47f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899714"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928138"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Rychlý start: Hledání imagí pomocí rozhraní API Bingu pro vyhledávání obrázků, Služba rozpoznávání Azure 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Rychlý Start: hledání imagí pomocí rozhraní API Bingu pro vyhledávání obrázků, Služba rozpoznávání Azure 
 
 V tomto rychlém startu můžete odesílat žádosti o vyhledávání do rozhraní API Bingu pro vyhledávání obrázků ve službě Azure Cognitive Services. Tato aplikace Java pošle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) s dalším zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada Java Development Kit (JDK)](https://aka.ms/azure-jdks)
 
@@ -48,7 +48,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz. `host` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -59,7 +59,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 
 ## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
 
-1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro žádost rozhraní API. Hledaný termín musí být před připojením k žádosti kódovaný na adrese URL.
+1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro požadavek rozhraní API. Hledaný termín musí být před připojením k žádosti kódovaný na adrese URL.
 
     ```java
     // construct the search request URL (in the form of endpoint + query string)
@@ -163,6 +163,6 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
 * [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
-* [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Získat zdarma přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

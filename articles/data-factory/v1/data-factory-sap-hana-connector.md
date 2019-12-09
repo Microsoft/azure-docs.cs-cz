@@ -4,21 +4,20 @@ description: Přečtěte si informace o tom, jak přesouvat data z SAP HANA pomo
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ebd1cf22bffc6a136845672cedcefa7936eeece5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682355"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928260"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesun dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -37,13 +36,13 @@ Tento konektor podporuje jakoukoli verzi SAP HANA databáze. Podporuje kopírov�
 
 Pokud chcete povolit připojení k instanci SAP HANA, nainstalujte následující komponenty:
 - **Správa dat brána**: Služba Data Factory podporuje připojení k místním úložištím dat (včetně SAP HANA) pomocí komponenty s názvem Správa dat Gateway. Další informace o Správa dat brány a podrobné pokyny k nastavení brány najdete v článku [přesun dat mezi místním úložištěm dat do cloudového úložiště dat](data-factory-move-data-between-onprem-and-cloud.md) . Brána je povinná i v případě, že je SAP HANA hostovaná na virtuálním počítači Azure IaaS (VM). Bránu můžete nainstalovat na stejný virtuální počítač jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
-- **SAP HANA ovladač ODBC** na počítači brány. Ovladač SAP HANA ODBC si můžete stáhnout z [webu SAP software Download Center](https://support.sap.com/swdc). Vyhledejte pomocí klíčového slova **SAP HANA klienta pro Windows**. 
+- **SAP HANA ovladač ODBC** na počítači brány. Ovladač SAP HANA ODBC si můžete stáhnout z webu [SAP Software Download Center](https://support.sap.com/swdc). Vyhledejte pomocí klíčového slova **SAP HANA klienta pro Windows**. 
 
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního SAP HANA úložiště dat pomocí různých nástrojů/rozhraní API. 
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -60,12 +59,12 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro SAP HANA pro
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port`. | řetězec | Ano
-authenticationType | Typ ověřování. | řetezce. "Basic" nebo "Windows" | Ano 
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | řetězec | Ano
-encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | Ne
+server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port`. | string | Ano
+authenticationType. | Typ ověřování. | řetezce. "Basic" nebo "Windows" | Ano 
+uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
+heslo | Heslo pro tohoto uživatele. | string | Ano
+gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | string | Ano
+encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | string | Ne
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
@@ -103,7 +102,7 @@ Ukázka kopíruje data z instance SAP HANA do objektu blob Azure každou hodinu.
 Jako první krok nastavte bránu pro správu dat. Pokyny najdete v článku [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
 
 ### <a name="sap-hana-linked-service"></a>Propojená služba SAP HANA
-Tato propojená služba propojuje vaši instanci SAP HANA s datovou továrnou. Vlastnost Type je nastavená na **SapHana**. Část typeProperties poskytuje informace o připojení pro instanci SAP HANA.
+Tato propojená služba propojuje SAP HANA instanci objektu pro vytváření dat. Vlastnost Type je nastavená na **SapHana**. Část typeProperties poskytuje informace o připojení pro instanci SAP HANA.
 
 ```json
 {
@@ -125,7 +124,7 @@ Tato propojená služba propojuje vaši instanci SAP HANA s datovou továrnou. V
 ```
 
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Tato propojená služba propojuje váš Azure Storage účet s datovou továrnou. Vlastnost Type je nastavená na **AzureStorage**. Část typeProperties poskytuje informace o připojení pro účet Azure Storage.
+Tato propojená služba propojuje účet úložiště Azure pro vytváření dat. Vlastnost Type je nastavená na **AzureStorage**. Část typeProperties poskytuje informace o připojení pro účet Azure Storage.
 
 ```json
 {
@@ -284,31 +283,31 @@ Při přesunu dat z SAP HANA se z SAP HANA typů do typů .NET používají nás
 
 Typ SAP HANA | Typ založený na .NET
 ------------- | ---------------
-TINYINT | Bytové
+TINYINT | Bajtů
 SMALLINT | Int16
-INT | Uvedena
+INT | Datový typ Int32
 BIGINT | Int64
-NEMOVITOSTÍ | Jednoduchá
-KLEPAT | Jednoduchá
-NOTACI | Notaci
-DATOVÉHO | Bytové
+REÁLNÉ | Jednoduchá
+DOUBLE | Jednoduchá
+DESÍTKOVÉ | Decimal
+BOOLEAN | Bajtů
 VARCHAR | Řetězec
 NVARCHAR | Řetězec
-DATOVÝ typ CLOB | Byte []
+CLOB | Byte[]
 ALPHANUM | Řetězec
-PŘÍZNAKY | Byte []
-DATE (Datum) | DateTime
+BLOB | Byte[]
+DATE (Datum) | Datum a čas
 ČAS | TimeSpan
-ČASOVÉ razítko | DateTime
-SECONDDATE | DateTime
+TIMESTAMP | Datum a čas
+SECONDDATE | Datum a čas
 
 ## <a name="known-limitations"></a>Známá omezení
 Při kopírování dat z SAP HANA existuje několik známých omezení:
 
-- Řetězce NVARCHAR jsou zkrácené na maximální délku 4000 znaků Unicode.
-- SMALLDECIMAL se nepodporuje.
-- VARBINARY není podporovaný.
-- Platná data jsou mezi 1899/12/30 a 9999/12/31.
+- U řetězce NVARCHAR je maximální délka omezená na 4000 znaků Unicode.
+- Nepodporuje se SMALLDECIMAL.
+- Nepodporuje se VARBINARY.
+- Platná data jsou mezi 30. 12. 1899 a 31. 12. 9999.
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
 Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).

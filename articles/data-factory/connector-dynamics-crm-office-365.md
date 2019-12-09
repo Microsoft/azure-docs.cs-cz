@@ -5,24 +5,23 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: eaf8060d3ccfd1f76aa81a289cba5b795106b2b1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280686"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929458"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do Microsoft Dynamics 365 nebo Microsoft Dynamics CRM. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do Microsoft Dynamics 365 nebo Microsoft Dynamics CRM. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -44,15 +43,15 @@ V následující tabulce najdete informace o podporovaných typech a konfigurac�
 | Verze Dynamics | Typy ověřování | Ukázky propojených služeb |
 |:--- |:--- |:--- |
 | Common Data Service <br> Dynamics 365 online <br> Dynamics CRM Online | Objekt služby AAD <br> Office365 | [Dynamics Online + služba AAD nebo ověřování Office 365](#dynamics-365-and-dynamics-crm-online) |
-| Místní prostředí Dynamics 365 s IFD <br> Dynamics CRM 2016 v místním prostředí s IFD <br> Dynamics CRM 2015 v místním prostředí s IFD | SLUŽBU | [Místní řešení s IFD a ověřováním pomocí internetového nasazení](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+| Místní prostředí Dynamics 365 s IFD <br> Dynamics CRM 2016 v místním prostředí s IFD <br> Dynamics CRM 2015 v místním prostředí s IFD | IFD | [Místní řešení s IFD a ověřováním pomocí internetového nasazení](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 Pro Dynamics 365 jsou podporovány následující typy aplikací:
 
-- Dynamics 365 pro prodej
-- Dynamics 365 pro zákaznické služby
+- Dynamics 365 for Sales
+- Dynamics 365 for Customer Service
 - Dynamics 365 for Field Service
-- Dynamics 365 pro automatizaci služby Project Service
-- Dynamics 365 pro marketing
+- Dynamics 365 for Project Service Automation
+- Dynamics 365 for Marketing
 
 Tento konektor nepodporuje jiné typy aplikací, např. finance a operace, talentů atd.
 
@@ -61,7 +60,7 @@ Tento konektor Dynamics je postaven nad [nástroji Dynamics XRM](https://docs.mi
 >[!TIP]
 >Pokud chcete kopírovat data z **dynamics 365 finance a operací**, můžete použít [konektor Dynamics AX](connector-dynamics-ax.md).
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -78,13 +77,13 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | type | Vlastnost Type musí být nastavena na hodnotu **Dynamics**, **DynamicsCrm**nebo **CommonDataServiceForApps**. | Ano |
 | deploymentType | Typ nasazení instance Dynamics Musí být **online** pro Dynamics Online. | Ano |
 | serviceUri | Adresa URL služby vaší instance Dynamics, například `https://adfdynamics.crm.dynamics.com`. | Ano |
-| authenticationType | Typ ověřování pro připojení k Dynamics serveru. Povolené hodnoty jsou: **AADServicePrincipal** nebo **"Office 365"** . | Ano |
+| authenticationType. | Typ ověřování pro připojení k Dynamics serveru. Povolené hodnoty jsou: **AADServicePrincipal** nebo **"Office 365"** . | Ano |
 | servicePrincipalId | Zadejte ID klienta Azure Active Directory aplikace. | Ano Při použití ověřování `AADServicePrincipal` |
 | servicePrincipalCredentialType | Zadejte typ přihlašovacích údajů, který se použije pro ověřování instančního objektu. Povolené hodnoty jsou: **ServicePrincipalKey** nebo **ServicePrincipalCert**. | Ano Při použití ověřování `AADServicePrincipal` |
 | servicePrincipalCredential | Zadejte přihlašovací údaje instančního objektu. <br>Pokud jako typ přihlašovacích údajů použijete `ServicePrincipalKey`, `servicePrincipalCredential` může být řetězec (ADF ho bude šifrovat při nasazení propojené služby) nebo odkaz na tajný kód v integrace. <br>Pokud používáte `ServicePrincipalCert` jako přihlašovací údaje, `servicePrincipalCredential` by měla být odkazem na certifikát v integrace. | Ano Při použití ověřování `AADServicePrincipal` | 
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano Při použití ověřování `Office365` |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano Při použití ověřování `Office365` |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku, pokud zdrojová propojená služba nemá modul runtime integrace |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano Při použití ověřování `Office365` |
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku, pokud zdrojová propojená služba nemá modul runtime integrace |
 
 >[!NOTE]
 >Konektor Dynamics, pomocí kterého se k identifikaci online instance Dynamics CRM/365 používá volitelná vlastnost NázevOrganizace I když stále funguje, navrhnete místo toho zadání nové vlastnosti "serviceUri", abyste získali lepší výkon pro zjišťování instancí.
@@ -177,10 +176,10 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | hostName | Název hostitele místního Dynamics serveru. | Ano |
 | port | Port místního Dynamics serveru. | Ne, výchozí hodnota je 443 |
 | organizationName | Název organizace instance Dynamics | Ano |
-| authenticationType | Typ ověřování pro připojení k Dynamics serveru. Zadejte **"IFD"** pro místní prostředí Dynamics pomocí internetového nasazení. | Ano |
+| authenticationType. | Typ ověřování pro připojení k Dynamics serveru. Zadejte **"IFD"** pro místní prostředí Dynamics pomocí internetového nasazení. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat aktivitu kopírování, která se při provádění kopírování dat vyžádá – další informace najdete v části [přihlašovací údaje úložiště v Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad: místní prostředí Dynamics s IFD pomocí ověřování IFD**
 
@@ -212,7 +211,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných sadou Dynamics DataSet.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných sadou Dynamics DataSet.
 
 Chcete-li kopírovat data z a do Dynamics, jsou podporovány následující vlastnosti.
 
@@ -242,7 +241,7 @@ Chcete-li kopírovat data z a do Dynamics, jsou podporovány následující vlas
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem a typy jímky Dynamics.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem a typy jímky Dynamics.
 
 ### <a name="dynamics-as-a-source-type"></a>Dynamics jako typ zdroje
 
@@ -376,7 +375,7 @@ Nakonfigurujte odpovídající Data Factory datový typ ve struktuře datové sa
 | AttributeTypeCode. BigInt | Dlouhé | ✓ | ✓ |
 | AttributeTypeCode. Boolean | Logická hodnota | ✓ | ✓ |
 | Zaatributu. Customer | Guid | ✓ | |
-| Typ atributu. DateTime | Datum a čas | ✓ | ✓ |
+| Typ atributu. DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | Typ atributu. Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | Řetězec | ✓ | ✓ |
@@ -400,4 +399,4 @@ Nakonfigurujte odpovídající Data Factory datový typ ve struktuře datové sa
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

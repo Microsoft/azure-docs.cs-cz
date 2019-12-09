@@ -1,18 +1,20 @@
 ---
-title: Řešení potíží s Azure Data Factory toky dat
+title: Řešení potíží s toky dat
 description: Naučte se řešit problémy toku dat v Azure Data Factory.
 services: data-factory
+ms.author: makromer
 author: kromerm
+manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/08/2019
-ms.author: makromer
-ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721344"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930171"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Řešení potíží s Azure Data Factory toky dat
 
@@ -84,6 +86,14 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Řešení**: ve zdrojové transformaci, která používá datovou sadu JSON, rozbalte "nastavení JSON" a zapněte "jednotlivý dokument".
 
+### <a name="error-message-duplicate-columns-found-in-join"></a>Chybová zpráva: v JOIN byly nalezeny duplicitní sloupce.
+
+- **Příznaky**: výsledkem transformace spojení jsou sloupce vlevo a na pravé straně, které obsahují duplicitní názvy sloupců.
+
+- **Příčina**: datové proudy, které jsou spojeny, mají běžné názvy sloupců.
+
+- **Řešení**: přidejte Transforamtion po spojení a vyberte Odebrat duplicitní sloupce pro vstup i výstup.
+
 
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží
 
@@ -95,7 +105,7 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 
-*  [Blog věnovaný Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 *  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

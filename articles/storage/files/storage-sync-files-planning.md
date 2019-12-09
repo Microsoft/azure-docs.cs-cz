@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546350"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927860"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -124,7 +124,7 @@ Zobrazení výsledků ve formátu CSV:
 
 | Funkce | Stav podpory | Poznámky |
 |---------|----------------|-------|
-| Seznamy řízení přístupu (ACL) | Plně podporováno | Seznamy řízení přístupu systému Windows jsou zachovány Azure File Sync a jsou vynutily Windows Server na koncových bodech serveru. Seznamy řízení přístupu (ACL) Windows nejsou (zatím) podporované soubory Azure, pokud se k souborům dostanete přímo v cloudu. |
+| Seznamy ACL | Plně podporováno | Seznamy řízení přístupu systému Windows jsou zachovány Azure File Sync a jsou vynutily Windows Server na koncových bodech serveru. Seznamy řízení přístupu (ACL) Windows nejsou (zatím) podporované soubory Azure, pokud se k souborům dostanete přímo v cloudu. |
 | Pevné odkazy | Přeskočeno | |
 | Symbolické odkazy | Přeskočeno | |
 | Přípojné body | Částečně podporováno | Přípojné body můžou být kořenem koncového bodu serveru, ale pokud se nacházejí v oboru názvů koncového bodu serveru, přeskočí se. |
@@ -141,17 +141,17 @@ Zobrazení výsledků ve formátu CSV:
 
 | Soubor nebo složka | Poznámka |
 |-|-|
-| Desktop. ini | Soubor specifický pro systém |
-| ethumbs. DB $ | Dočasný soubor pro miniatury |
+| Desktop.ini | Soubor specifický pro systém |
+| ethumbs.db$ | Dočasný soubor pro miniatury |
 | ~$\*.\* | Dočasný soubor Office |
 | \*. tmp | Dočasný soubor |
-| \*. laccdb | Soubor zámků Access DB|
+| \*.laccdb | Soubor zámků Access DB|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Soubor interní synchronizace|
 | Informace o svazcích \\systému | Složka specifická pro svazek |
 | $RECYCLE. BIN| Složka |
 | \\SyncShareState | Složka pro synchronizaci |
 
-### <a name="failover-clustering"></a>Clusteringu s podporou převzetí služeb při selhání
+### <a name="failover-clustering"></a>Clustering s podporou převzetí služeb při selhání
 Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje Azure File Sync pro možnost nasazení souborový server pro obecné použití. Clustering s podporou převzetí služeb při selhání není podporován na Souborový server se škálováním na více systémů pro data aplikací (SOFS) nebo na sdílených svazcích clusteru (CSV).
 
 > [!Note]  
@@ -159,14 +159,14 @@ Clustering s podporou převzetí služeb při selhání ve Windows serveru podpo
 
 ### <a name="data-deduplication"></a>Odstranění duplicitních dat
 **Windows server 2016 a Windows server 2019**   
-Odstranění duplicitních dat je podporováno u svazků s povoleným vytvářením vrstev cloudu v systému Windows Server 2016. Povolení odstranění duplicitních dat u svazku s povoleným vrstvou cloudu umožňuje ukládat do mezipaměti více souborů bez nutnosti zajistit další úložiště. 
+Odstranění duplicitních dat se podporuje u svazků s povoleným vytvářením vrstev cloudu v systémech Windows Server 2016 a Windows Server 2019. Povolení odstranění duplicitních dat u svazku s povoleným vrstvou cloudu umožňuje ukládat do mezipaměti více souborů bez nutnosti zajistit další úložiště. 
 
 Když je u svazku s povoleným vrstvou cloudu povolené odstranění duplicitních dat, bude v umístění koncového bodu serveru na základě nastavení zásad cloudu vyčištěné duplicitní soubory ve stejném umístění. Jakmile budou optimalizované soubory odstranění duplicit vrstveny, úloha uvolňování paměti při odstranění duplicitních dat se automaticky spustí, aby se uvolní místo na disku, a to odebráním nepotřebných bloků dat, na které už neodkazuje jiné soubory na svazku.
 
 Všimněte si, že úspory svazku se vztahují jenom na server. vaše data ve sdílené složce Azure nebudou Odstraněná duplicitovaná.
 
 > [!Note]  
-> Odstranění duplicitních dat a vrstvení cloudu se na stejném svazku na serveru 2019 aktuálně nepodporují kvůli chybě, která bude opravena v budoucí aktualizaci.
+> Aby bylo možné podporovat odstranění duplicitních dat u svazků s povoleným vrstvou cloudu, které jsou povoleny v systému Windows Server 2019, musí být nainstalována služba Windows Update [KB4520062](https://support.microsoft.com/help/4520062) a vyžaduje se Azure File Sync agenta verze 9.0.0.0 nebo novější.
 
 **Windows Server 2012 R2**  
 Azure File Sync nepodporuje odstranění duplicitních dat a vrstvení cloudu na stejném svazku na Windows Serveru 2012 R2. Pokud je u svazku povolené odstranění duplicitních dat, musí být vrstva cloudu zakázaná. 
@@ -204,10 +204,10 @@ Pro Azure File Sync a DFS-R pro práci vedle sebe:
 
 Další informace najdete v tématu [přehled replikace DFS](https://technet.microsoft.com/library/jj127250).
 
-### <a name="sysprep"></a>Příkazu
+### <a name="sysprep"></a>Nástroj Sysprep
 Použití nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Instalace agenta a registrace serveru by se měly vyskytnout po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
-### <a name="windows-search"></a>Hledání ve Windows
+### <a name="windows-search"></a>Windows Search
 Pokud je na koncovém bodu serveru povolené vrstvení cloudu, soubory, které jsou vrstveny, se přeskočí a neindexují služba Windows Search. Soubory bez vrstev jsou indexovány správně.
 
 ### <a name="antivirus-solutions"></a>Antivirová řešení
@@ -232,7 +232,7 @@ Pokud používáte místní řešení zálohování, měli byste zálohy provád
 ### <a name="encryption-solutions"></a>Řešení šifrování
 Podpora šifrovacích řešení závisí na způsobu jejich implementace. Azure File Sync je známo, že funguje:
 
-- Šifrování BitLockeru
+- Šifrování nástrojem BitLocker
 - Azure Information Protection, Azure Rights Management Services (Azure RMS) a Active Directory RMS
 
 Azure File Sync je známo, že nepracuje s:

@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682800"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929753"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Kurz: kopírování dat z Blob Storage pro SQL Database pomocí Data Factory
 > [!div class="op_single_selector"]
@@ -54,7 +53,7 @@ Je nutné, abyste před zahájením tohoto kurzu splňovali následující poža
 ## <a name="collect-blob-storage-account-name-and-key"></a>Shromáždit název a klíč účtu úložiště objektů BLOB
 K provedení tohoto kurzu potřebujete název účtu a klíč účtu účtu úložiště Azure. Poznamenejte si **název účtu** a **klíč účtu** pro svůj účet úložiště Azure.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V levé nabídce klikněte na **všechny služby** a vyberte **účty úložiště**.
 
     ![Procházení – účty úložiště](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)

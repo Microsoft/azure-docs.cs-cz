@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 77f95cf02b5216f1946283143b828f915b351abc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1308463694754231aa6d770bf716fd3def219981
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230984"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925313"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště tabulek Azure pro Azure Functions
 
@@ -20,15 +20,15 @@ Tento článek vysvětluje, jak pracovat s vazbami služby Azure Table Storage v
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby tabulkového úložiště jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) , verze 2. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) .
+Vazby tabulkového úložiště jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) , verze 2. x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+## <a name="packages---functions-2x-and-higher"></a>Balíčky – funkce 2. x a vyšší
 
-Vazby tabulkového úložiště jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) , verze 3. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) .
+Vazby tabulkového úložiště jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) , verze 3. x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -105,7 +105,7 @@ public class TableStorage
 
 ### <a name="input---c-example---cloudtable"></a>Vstupní C# příklad – cloudová
 
-`IQueryable` není v [modulu runtime Functions v2](functions-versions.md)podporován. Alternativou je použití parametru `CloudTable` metody ke čtení tabulky pomocí sady Azure Storage SDK. Tady je příklad funkce 2. x, která se dotazuje na Azure Functions tabulku protokolů:
+`IQueryable` není v [modulu runtime Functions v2](functions-versions.md)podporován. Alternativou je použití parametru `CloudTable` metody ke čtení tabulky pomocí sady Azure Storage SDK. Tady je příklad funkce, která se dotazuje Azure Functions tabulce protokolu:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -185,7 +185,7 @@ Soubor *Function. JSON* určuje `partitionKey` a `rowKey`. Hodnota `rowKey` {que
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#input---configuration) .
+[Konfigurace](#input---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód skriptu jazyka C#:
 
@@ -208,7 +208,7 @@ public class Person
 
 Následující příklad ukazuje vstupní vazbu tabulky v souboru *Function. JSON* a [ C# kódu skriptu](functions-reference-csharp.md) , který používá vazbu. Funkce přečte entity pro klíč oddílu, který je určen ve zprávě fronty.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.json* souboru:
 
 ```json
 {
@@ -232,7 +232,7 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#input---configuration) .
+[Konfigurace](#input---configuration) bodu vysvětluje tyto vlastnosti.
 
 Kód C# skriptu přidá odkaz na sadu Azure Storage SDK, aby typ entity mohl odvozovat z `TableEntity`:
 
@@ -258,7 +258,7 @@ public class Person : TableEntity
 
 ### <a name="input---c-script-example---cloudtable"></a>Příklad C# skriptu Input-Cloud
 
-`IQueryable` není v [modulu runtime Functions v2](functions-versions.md)podporován. Alternativou je použití parametru `CloudTable` metody ke čtení tabulky pomocí sady Azure Storage SDK. Tady je příklad funkce 2. x, která se dotazuje na Azure Functions tabulku protokolů:
+`IQueryable` není podporován v modulu runtime Functions pro [verze 2. x a vyšší)](functions-versions.md). Alternativou je použití parametru `CloudTable` metody ke čtení tabulky pomocí sady Azure Storage SDK. Tady je příklad funkce, která se dotazuje Azure Functions tabulce protokolu:
 
 ```json
 {
@@ -349,7 +349,7 @@ Soubor *Function. JSON* určuje `partitionKey` a `rowKey`. Hodnota `rowKey` {que
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#input---configuration) .
+[Konfigurace](#input---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je F# kódu:
 
@@ -396,7 +396,7 @@ Soubor *Function. JSON* určuje `partitionKey` a `rowKey`. Hodnota `rowKey` {que
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#input---configuration) .
+[Konfigurace](#input---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód jazyka JavaScript:
 
@@ -479,10 +479,10 @@ V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte následuj
 
 Účet úložiště, který se má použít, se určuje v tomto pořadí:
 
-* Vlastnost `Connection` atributu `Table`.
-* Atribut `StorageAccount` aplikovaný na stejný parametr jako atribut `Table`.
-* Atribut `StorageAccount` aplikovaný na funkci.
-* Atribut `StorageAccount` aplikovaný na třídu.
+* `Table` Atributu `Connection` vlastnost.
+* `StorageAccount` Použije pro stejný parametr, jako `Table` atribut.
+* `StorageAccount` Použije pro funkci.
+* `StorageAccount` Atribut aplikován třídu.
 * Výchozí účet úložiště pro aplikaci Function App (nastavení aplikace "AzureWebJobsStorage").
 
 ## <a name="input---java-annotations"></a>Zadávání poznámek Java
@@ -491,19 +491,19 @@ V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/func
 
 ## <a name="input---configuration"></a>Vstup - konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `Table`.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `Table` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | Musí být nastavené na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
-|**direction** | neuvedeno | Musí být nastavené na `in`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje tabulku nebo entitu v kódu funkce. | 
-|**Tabulky** | **Tabulky** | Název tabulky.| 
-|**partitionKey** | **PartitionKey** |Volitelné. Klíč oddílu entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
+|**type** | – | Musí být nastaveno na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
+|**direction** | – | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
+|**name** | – | Název proměnné, která představuje tabulku nebo entitu v kódu funkce. | 
+|**tableName** | **TableName** | Název tabulky.| 
+|**partitionKey** | **partitionKey** |Volitelné. Klíč oddílu entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
 |**rowKey** |**RowKey** | Volitelné. Klíč řádku entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
-|**nezbytná** |**Nezbytná** | Volitelné. Maximální počet entit, které mají být načteny v jazyce JavaScript. Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
-|**filtrovací** |**Filtrovací** | Volitelné. Výraz filtru OData pro vstup tabulky v JavaScriptu Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
-|**vázán** |**Vázán** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage`.|
+|**take** |**Nezbytná** | Volitelné. Maximální počet entit, které mají být načteny v jazyce JavaScript. Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
+|**filter (filtr)** |**Filtr** | Volitelné. Výraz filtru OData pro vstup tabulky v JavaScriptu Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
+|**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -538,7 +538,7 @@ Použijte výstupní vazbu služby Azure Table Storage k zápisu entit do tabulk
 Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#output---c-example)
-* [C#skript (. csx)](#output---c-script-example)
+* [C# skript (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
@@ -570,7 +570,7 @@ public class TableStorage
 
 Následující příklad ukazuje výstupní vazbu tabulky v souboru *Function. JSON* a [ C# kódu skriptu](functions-reference-csharp.md) , který používá vazbu. Funkce zapisuje více entit tabulky.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.json* souboru:
 
 ```json
 {
@@ -592,7 +592,7 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#output---configuration) .
+[Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód skriptu jazyka C#:
 
@@ -625,7 +625,7 @@ public class Person
 
 Následující příklad ukazuje výstupní vazbu tabulky v souboru *Function. JSON* a [ F# kódu skriptu](functions-reference-fsharp.md) , který používá vazbu. Funkce zapisuje více entit tabulky.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.json* souboru:
 
 ```json
 {
@@ -647,7 +647,7 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#output---configuration) .
+[Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je F# kódu:
 
@@ -672,7 +672,7 @@ let Run(input: string, tableBinding: ICollector<Person>, log: ILogger) =
 
 Následující příklad ukazuje výstupní vazbu tabulky v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapisuje více entit tabulky.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.json* souboru:
 
 ```json
 {
@@ -694,7 +694,7 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#output---configuration) .
+[Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód jazyka JavaScript:
 
@@ -745,23 +745,23 @@ public static MyPoco TableOutput(
 }
 ```
 
-Úplný příklad naleznete v tématu [Output- C# example](#output---c-example).
+Kompletní příklad naleznete v tématu [výstup – příklad v jazyce C#](#output---c-example).
 
 Atribut `StorageAccount` lze použít k určení účtu úložiště na úrovni třídy, metody nebo parametru. Další informace naleznete v tématu [input-Attributes](#input---attributes).
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `Table`.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `Table` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | Musí být nastavené na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
-|**direction** | neuvedeno | Musí být nastavené na `out`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje tabulku nebo entitu. Nastavte na `$return` pro odkaz na návratovou hodnotu funkce.| 
-|**Tabulky** |**Tabulky** | Název tabulky.| 
-|**partitionKey** |**PartitionKey** | Klíč oddílu entity tabulky, která se má zapsat Návod, jak tuto vlastnost používat, najdete v [části věnované používání](#output---usage) .| 
+|**type** | – | Musí být nastaveno na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
+|**direction** | – | Musí být nastaveno na `out`. Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
+|**name** | – | Název proměnné použitý v kódu funkce, který představuje tabulku nebo entitu. Nastavte na `$return` pro odkaz na návratovou hodnotu funkce.| 
+|**tableName** |**TableName** | Název tabulky.| 
+|**partitionKey** |**partitionKey** | Klíč oddílu entity tabulky, která se má zapsat Návod, jak tuto vlastnost používat, najdete v [části věnované používání](#output---usage) .| 
 |**rowKey** |**RowKey** | Klíč řádku entity tabulky, která se má zapsat Návod, jak tuto vlastnost používat, najdete v [části věnované používání](#output---usage) .| 
-|**vázán** |**Vázán** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage`.|
+|**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -787,11 +787,11 @@ Vazba na výstup tabulkového úložiště podporuje následující scénáře:
 
 | Vazba | Referenční informace |
 |---|---|
-| Table | [Kódy chyb tabulky](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Tabulka | [Kódy chyb tabulky](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Objekt blob, tabulka, fronta | [Kódy chyb úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Objekt blob, tabulka, fronta | [Řešení potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

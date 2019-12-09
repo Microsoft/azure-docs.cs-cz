@@ -1,24 +1,22 @@
 ---
-title: Vytvořit závislosti triggerů bubnového okna v Azure Data Factory
+title: Vytvořit závislosti aktivačních signálů pro bubnový interval
 description: Naučte se vytvořit závislost na triggeru bubnového okna v Azure Data Factory.
 services: data-factory
-documentationcenter: ''
+ms.author: daperlov
 author: djpmsft
-manager: craigg
-editor: ''
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.author: daperlov
-ms.openlocfilehash: 3780a50429b95c402459866b7e3c87e8a91207d3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3a4d31cb6986f8fc841a6afe20388e40e9f28c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683700"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926681"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Vytvoření závislosti aktivační události pro přeskakující okno
 
@@ -76,11 +74,11 @@ Aktivační událost bubnového okna se závislostí má následující vlastnos
 
 Následující tabulka uvádí seznam atributů potřebných k definování závislosti bubnu okna.
 
-| **Název vlastnosti** | **Popis**  | **Typ** | **Požadovanou** |
+| **Název vlastnosti** | **Popis**  | **Typ** | **Vyžaduje** |
 |---|---|---|---|
 | type  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Ano |
-| polohy | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
-| hodnota | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | Ne  |
+| offset | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
+| size | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | Ne  |
 
 > [!NOTE]
 > Aktivační událost bubnového okna může záviset na maximálním počtu dvou dalších triggerů.

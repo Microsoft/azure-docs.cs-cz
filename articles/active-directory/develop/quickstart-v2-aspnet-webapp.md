@@ -2,27 +2,23 @@
 title: Rychlý Start webového serveru Microsoft Identity Platform ASP.NET | Azure
 description: V tomto tématu zjistíte, jak můžete implementovat přihlašování přes účet Microsoft ve webové aplikaci ASP.NET pomocí OpenID Connectu.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03bb9ede4bbbfdc1c902fec755425a433fea07a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 46902d72c888713be62524ed4b609e2299a85c2b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149469"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920714"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET
 
@@ -99,7 +95,7 @@ V tomto rychlém startu povolíte webové aplikaci ASP.NET, abyste se přihlási
 >
 > > [!TIP]
 > > - Hodnoty *ID aplikace*, *ID adresáře (tenanta)* a *Podporované typy účtu* najdete na stránce **Přehled**.
-> > - Ujistěte se, že hodnota `redirectUri` v **souboru Web. config** odpovídá **identifikátoru URI přesměrování** definovanému pro registraci aplikace ve službě Azure AD (Pokud ne, přejděte do nabídky **ověřování** pro registraci aplikace a aktualizujte **identifikátor URI přesměrování** . pro spárování)
+> > - Ujistěte se, že hodnota `redirectUri` v **souboru Web. config** odpovídá **identifikátoru URI přesměrování** definovanému pro registraci aplikace v Azure AD (Pokud ne, přejděte do nabídky **ověřování** pro registraci aplikace a aktualizujte **identifikátor URI přesměrování** tak, aby odpovídal).
 
 ## <a name="more-information"></a>Další informace
 

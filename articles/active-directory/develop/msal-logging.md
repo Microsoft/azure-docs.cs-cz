@@ -1,29 +1,25 @@
 ---
-title: Protokolování aplikací MSAL (Microsoft Authentication Library)
+title: Přihlášení k MSAL aplikacím | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o protokolování aplikací MSAL (Microsoft Authentication Library).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5960389389e4b75794a7334c0bff12ce3ac0f170
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452474"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916141"
 ---
 # <a name="logging-in-msal-applications"></a>Protokolování aplikací MSAL
 
@@ -182,7 +178,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do 
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Příklad:
+Například:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -197,7 +193,7 @@ Příklad:
     }];
 ```
 
-### <a name="personal-data"></a>Osobní údaje
+### <a name="personal-data"></a>Osobní data
 
 Ve výchozím nastavení MSAL nezachytí ani neprotokoluje žádná osobní data (PII). Knihovna umožňuje vývojářům aplikací tuto možnost zapínat prostřednictvím vlastnosti ve třídě MSALLogger. Když zapnete `pii.Enabled`, aplikace vezme zodpovědnost za bezpečné zpracování vysoce citlivých dat a následujících zákonných požadavků.
 
@@ -219,11 +215,11 @@ Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL
 |---------|---------|
 | `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
-| `MSALLogLevelWarning` | Varování |
+| `MSALLogLevelWarning` | Upozornění |
 | `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API |
 
-Příklad:
+Například:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
@@ -233,7 +229,7 @@ MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
 
 Část zprávy protokolu MSAL je ve formátu `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Příklad:
+Například:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -260,7 +256,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do 
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Příklad:
+Například:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -274,7 +270,7 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-data"></a>Osobní údaje
+### <a name="personal-data"></a>Osobní data
 
 Ve výchozím nastavení MSAL nezachytí ani neprotokoluje žádná osobní data (PII). Knihovna umožňuje vývojářům aplikací tuto možnost zapínat prostřednictvím vlastnosti ve třídě MSALLogger. Když zapnete `pii.Enabled`, aplikace vezme zodpovědnost za bezpečné zpracování vysoce citlivých dat a následujících zákonných požadavků.
 
@@ -296,11 +292,11 @@ Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL
 |---------|---------|
 | `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
-| `MSALLogLevelWarning` | Varování |
+| `MSALLogLevelWarning` | Upozornění |
 | `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API |
 
-Příklad:
+Například:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
@@ -310,7 +306,7 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 Část zprávy protokolu MSAL je ve formátu `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Příklad:
+Například:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 

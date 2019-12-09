@@ -3,12 +3,12 @@ title: Připojte funkci jazyka Java k Azure Storage
 description: Naučte se připojit funkci Java aktivovanou protokolem HTTP, která se Azure Storage pomocí výstupní vazby úložiště fronty.
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: f9c3445efbe14c27cad9de62f5b46f50965e3145
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231213"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926903"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Připojte funkci jazyka Java k Azure Storage
 
@@ -18,7 +18,7 @@ V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [p
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](functions-create-first-java-maven.md).
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> Vzhledem k tomu, že jste povolili sady rozšíření v Host. JSON, [rozšíření pro vytváření vazeb úložiště](functions-bindings-storage-blob.md#packages---functions-2x) se během spouštění stáhlo a nainstalovalo společně s dalšími rozšířeními vazby Microsoftu.
+> Vzhledem k tomu, že jste povolili sady rozšíření v Host. JSON, [rozšíření pro vytváření vazeb úložiště](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) se během spouštění stáhlo a nainstalovalo společně s dalšími rozšířeními vazby Microsoftu.
 
 Stejně jako dřív aktivujte funkci z příkazového řádku pomocí funkce kudrlinkou v novém okně terminálu:
 

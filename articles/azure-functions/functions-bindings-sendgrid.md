@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 997c9427883e2a099c2c185b618701fb85cb96a6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a96cd537328a1a9edeeb03f81350ed5393806765
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231089"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927585"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
 
@@ -24,21 +24,21 @@ Vazby SendGrid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Ex
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+## <a name="packages---functions-2x-and-higher"></a>Balíčky – funkce 2. x a vyšší
 
 Vazby SendGrid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) , verze 3. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) .
 
 > [!NOTE]
-> Verze 2. x nevytváří téma ani předplatné nakonfigurované v instanci `ServiceBusTrigger`. Verze 2. x je založená na [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) a nezpracovává správu fronty.
+> Verze 2. x a vyšší nevytvářejí téma nebo předplatné nakonfigurované v instanci `ServiceBusTrigger`. Tyto verze jsou založené na [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) , který nezpracovává správu fronty.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 
 Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#c-example)
-* [C#skript (. csx)](#c-script-example)
+* [C# skript (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 * [Java](#java-example)
 
@@ -105,7 +105,7 @@ Nastavením vlastnosti `ApiKey` atributu můžete vynechat, pokud máte klíč r
 
 Následující příklad ukazuje výstupní vazbu SendGrid v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Zde je vazba dat v *function.json* souboru:
 
 ```json 
 {
@@ -129,7 +129,7 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+[Konfigurace](#configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód skriptu jazyka C#:
 
@@ -187,11 +187,11 @@ Následující příklad používá `@SendGridOutput` anotace z [běhové knihov
     }
 ```
 
-### <a name="javascript-example"></a>Příklad JavaScriptu
+### <a name="javascript-example"></a>příklad v jazyce JavaScript
 
 Následující příklad ukazuje výstupní vazbu SendGrid v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Zde je vazba dat v *function.json* souboru:
 
 ```json 
 {
@@ -209,7 +209,7 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
+[Konfigurace](#configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód jazyka JavaScript:
 
@@ -233,7 +233,7 @@ module.exports = function (context, input) {
 
 V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
-Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [Konfigurace](#configuration). Tady je příklad atributu `SendGrid` v signatuře metody:
+Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [Konfigurace](#configuration). Tady je `SendGrid` příklad atributů v podpisu metody:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -249,18 +249,18 @@ public static void Run(
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `SendGrid`.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `SendGrid` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**type**|| Požadováno – musí být nastavené na `sendGrid`.|
 |**direction**|| Požadováno – musí být nastavené na `out`.|
-|**Jméno**|| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je ```$return```, pokud je k dispozici pouze jedna návratová hodnota. |
+|**name**|| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je ```$return```, pokud je k dispozici pouze jedna návratová hodnota. |
 |**apiKey**|**ApiKey**| Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je "AzureWebJobsSendGridApiKey".|
-|**schopn**|**Komu**| e-mailová adresa příjemce |
-|**Výsledkem**|**Výsledkem**| E-mailová adresa odesílatele |
-|**závislosti**|**Předmět**| Předmět e-mailu. |
-|**textové**|**Text**| obsah e-mailu |
+|**to**|**Komu**| e-mailová adresa příjemce |
+|**from**|**from**| e-mailová adresa odesílatele |
+|**subject**|**Předmět**| Předmět e-mailu. |
+|**text**|**Text**| obsah e-mailu |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -268,10 +268,10 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="hostjson-settings"></a>nastavení Host.JSON
 
-Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazbu ve verzi 2.x. Příklad souboru host.json níže obsahuje pouze verzi 2.x nastavení pro tuto vazbu. Další informace o globálních nastaveních konfigurace verze 2. x naleznete v tématu [reference Host. JSON pro Azure Functions verze 2. x](functions-host-json.md).
+Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Ukázkový soubor host. JSON níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [reference Host. JSON pro Azure Functions](functions-host-json.md).
 
 > [!NOTE]
-> Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
+> Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
 
 ```json
 {
@@ -286,10 +286,10 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|from|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
+|od|–|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

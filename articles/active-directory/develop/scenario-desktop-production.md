@@ -1,6 +1,6 @@
 ---
-title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (přesunout do produkčního prostředí) – Microsoft Identity Platform
-description: Zjistěte, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (přesunout do produkčního prostředí).
+title: Přesun aplikace klasické pracovní plochy volání webových rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
+description: Přečtěte si, jak přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,16 +17,16 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81a5e57d0ef37a3a2e758e42f122c8e014c94958
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175551"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919979"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – přesun do produkčního prostředí
 
-V tomto článku najdete podrobné informace o dalším vylepšení aplikace a jejím přesunu do produkčního prostředí.
+V tomto článku najdete podrobné informace o přesunu aplikace klasické pracovní plochy, která volá webová rozhraní API do produkčního prostředí.
 
 ## <a name="handling-errors-in-desktop-applications"></a>Zpracování chyb v aplikacích klasické pracovní plochy
 
@@ -46,7 +46,7 @@ Například pokud máte dva prostředky, které mají dva obory:
 
 Měli byste použít modifikátor `.WithAdditionalPromptToConsent`, který má parametr `extraScopesToConsent`.
 
-Např.:
+Příklad:
 
 ### <a name="in-msalnet"></a>V MSAL.NET
 
@@ -85,7 +85,7 @@ interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",

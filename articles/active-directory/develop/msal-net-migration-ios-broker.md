@@ -1,28 +1,24 @@
 ---
-title: Migrace aplikací pro Xamarin iOS, které používají Microsoft Authenticator od ADAL.NET do MSAL.NET
+title: Migrace knihovny Xamarin iOS ADAL na MSAL.NET
 titleSuffix: Microsoft identity platform
-description: Naučte se migrovat aplikace Xamarin iOS, které používají Microsoft Authenticator z knihovny ověřování Azure AD pro .NET (ADAL.NET) do knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
-documentationcenter: dev-center-name
+description: Naučte se migrovat aplikace pro Xamarin iOS, které používají Microsoft Authenticator od ADAL.NET do MSAL.NET.
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c64f9f371424eddc7295b6ec40bda1ebdaaafd5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4e70865c897e408f1cebb7359d0890d27b11243b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175583"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921829"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET
 
@@ -41,7 +37,7 @@ Zprostředkovatelé jsou aplikace poskytované Microsoftem v Androidu a iOS. (Po
 
 Umožňují:
 
-- Jednotné přihlašování.
+- Jednotné přihlašování
 - Identifikace zařízení, která je vyžadována některými [zásadami podmíněného přístupu](../conditional-access/overview.md). Další informace najdete v tématu [Správa zařízení](../conditional-access/conditions.md#device-platforms).
 - Ověřování totožnosti aplikace, které je také vyžadováno v některých podnikových scénářích. Další informace najdete v tématu [Správa mobilních aplikací (MAM) v Intune](https://docs.microsoft.com/intune/mam-faq).
 
@@ -123,7 +119,7 @@ V MSAL.NET provedete dvě věci pro nastavení okna objektu pro iOS:
 1. V `AppDelegate.cs`nastavte `App.RootViewController` na nové `UIViewController()`. Toto přiřazení zajišťuje, že existuje UIViewController se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. V volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)`a předejte odkaz na okno objektu, které použijete.
 
-**Například:**
+**Příklad:**
 
 V `App.cs`:
 ```CSharp

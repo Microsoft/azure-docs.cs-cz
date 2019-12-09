@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048397"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928624"
 ---
 # <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
@@ -23,7 +23,7 @@ V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCo
 > [!NOTE]
 > Změna na Zvýhodněné hybridní využití Azure nevyžaduje žádné výpadky.
 
-![stanov](./media/sql-database-service-tiers/pricing.png)
+![ceny](./media/sql-database-service-tiers/pricing.png)
 
 ## <a name="choose-a-license-model"></a>Zvolit model licence
 
@@ -31,26 +31,34 @@ Pomocí Zvýhodněné hybridní využití Azure se můžete rozhodnout platit je
 
 Licenční model můžete vybrat nebo změnit pomocí Azure Portal nebo pomocí některého z následujících rozhraní API:
 
-- Chcete-li nastavit nebo aktualizovat typ licence pomocí prostředí PowerShell:
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+Chcete-li nastavit nebo aktualizovat typ licence pomocí prostředí PowerShell:
 
-- Nastavení nebo aktualizace typu licence pomocí Azure CLI:
+- [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)
+- [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
+- [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)
+- [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- Chcete-li nastavit nebo aktualizovat typ licence pomocí REST API:
+Nastavení nebo aktualizace typu licence pomocí Azure CLI:
 
-  - [Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Spravované instance – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Spravované instance – aktualizace](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+- [az sql db create](/cli/azure/sql/db#az-sql-db-create)
+- [az sql db update](/cli/azure/sql/db#az-sql-db-update)
+- [AZ SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create)
+- [AZ SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update)
+
+# <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+
+Chcete-li nastavit nebo aktualizovat typ licence pomocí REST API:
+
+- [Databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)
+- [Databáze – aktualizace](/rest/api/sql/databases/update)
+- [Spravované instance – vytvořit nebo aktualizovat](/rest/api/sql/managedinstances/createorupdate)
+- [Spravované instance – aktualizace](/rest/api/sql/managedinstances/update)
+
+* * *
 
 ## <a name="next-steps"></a>Další kroky
 

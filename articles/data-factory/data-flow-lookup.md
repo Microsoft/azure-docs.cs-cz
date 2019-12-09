@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory transformace vyhledávání toku dat
+title: Mapování transformace vyhledávání toků dat
 description: Azure Data Factory transformace vyhledávání toku dat
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/03/2019
-ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596589"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930316"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory transformace vyhledávání toku dat
 
@@ -27,7 +28,7 @@ Transformace vyhledávání provádí ekvivalent levého vnějšího spojení. Z
 
 ## <a name="match--no-match"></a>Shoda/bez shody
 
-Po transformaci vyhledávání můžete použít následnou transformaci k zkontrolování výsledků každého řádku shody pomocí funkce Expression `isMatch()` pro další volby v logice na základě toho, zda hledání vedlo ke shodě mezi řádky nebo nikoli.
+Po transformaci vyhledávání můžete použít následnou transformaci k zkontrolování výsledků každého řádku shody pomocí funkce Expression `isMatch()` k dalšímu výběru v logice na základě toho, zda hledání vedlo ke shodě mezi řádky nebo ne.
 
 ![Vzor vyhledávání](media/data-flow/lookup111.png "Vzor vyhledávání")
 
@@ -47,7 +48,7 @@ V tomto případě se pro výběr první hodnoty ze shod vyhledávání použív
 
 V Data Factory jsou toky dat spouštěny v prostředích Spark s horizontálním škálováním. Pokud se vaše datová sada vejde do paměťového prostoru pracovního uzlu, můžeme optimalizovat výkon vyhledávání.
 
-![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Připojení všesměrového vysílání")
+![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Vysílací spojení")
 
 ### <a name="broadcast-join"></a>Připojení všesměrového vysílání
 

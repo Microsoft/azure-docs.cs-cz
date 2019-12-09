@@ -1,29 +1,25 @@
 ---
-title: Inicializovat klientské aplikace (Microsoft Authentication Library pro JavaScript)
+title: Inicializovat klientské aplikace MSAL. js | Azure
 titleSuffix: Microsoft identity platform
 description: Seznamte se s inicializací klientských aplikací pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25f2776b9b5683a345c55af4bc0020fef8109edd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150660"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916498"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientských aplikací pomocí MSAL. js
 Tento článek popisuje inicializaci knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) s instancí aplikace uživatelského agenta. Aplikace User-Agent je forma veřejné klientské aplikace, ve které se klientský kód spouští v uživatelském agentovi, jako je webový prohlížeč. Tito klienti neukládají tajné kódy, protože kontext prohlížeče je otevřený. Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
@@ -115,7 +111,7 @@ Níže je uvedená celková sada konfigurovatelných možností, které jsou akt
 - **clientID**: požadováno. ClientID vaší aplikace byste měli získat z portálu pro registraci aplikací.
 
 - **autorita**: volitelné. Adresa URL označující adresář, ze kterého může MSAL žádat o tokeny. Výchozí hodnota je: `https://login.microsoftonline.com/common`.
-    * V Azure AD má formu https://&lt;instance&gt;/&lt;cílovou skupinu&gt;, kde &lt;instance&gt; je doménou poskytovatele identity (například `https://login.microsoftonline.com`) a &lt;cílovou skupinou&gt; je identifikátor. představuje cílovou skupinu přihlášení. Může se jednat o následující hodnoty:
+    * V Azure AD má formu https://&lt;instance&gt;/&lt;cílovou skupinu&gt;, kde &lt;instance&gt; je doménou poskytovatele identity (například `https://login.microsoftonline.com`) a &lt;cílovou skupinou&gt; je identifikátor reprezentující cílovou skupinu přihlášení. Může se jednat o následující hodnoty:
         * `https://login.microsoftonline.com/<tenant>`-tenant je doména přidružená ke klientovi, jako je například contoso.onmicrosoft.com, nebo identifikátor GUID, který představuje vlastnost `TenantID` adresáře používaného pouze k přihlášení uživatelů určité organizace.
         * `https://login.microsoftonline.com/common`– slouží k přihlašování uživatelů pomocí pracovních a školních účtů nebo osobního účtu Microsoft.
         * `https://login.microsoftonline.com/organizations/`– slouží k přihlašování uživatelů pomocí pracovních a školních účtů.
@@ -129,7 +125,7 @@ Níže je uvedená celková sada konfigurovatelných možností, které jsou akt
 
 - **postLogoutRedirectUri**: volitelné.  Přesměruje uživatele na `postLogoutRedirectUri` po odhlášení. Výchozí hodnota je `redirectUri`.
 
-- **navigateToLoginRequestUrl**: volitelné. Možnost vypnout výchozí navigaci na úvodní stránku po přihlášení. Výchozí hodnota je true. Používá se pouze pro toky přesměrování.
+- **navigateToLoginRequestUrl**: volitelné. Možnost vypnout výchozí navigaci na úvodní stránku po přihlášení. Platí výchozí hodnota. Používá se pouze pro toky přesměrování.
 
 - **cacheLocation**: volitelné.  Nastaví úložiště prohlížeče buď na `localStorage`, nebo na `sessionStorage`. Výchozí formát je `sessionStorage`.
 

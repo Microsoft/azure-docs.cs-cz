@@ -4,19 +4,17 @@ description: Pochopte, jak jsou strukturované protokoly auditu SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b7a3c295d2edd60c70f47ea155a5d747a3bfb03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873756"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928639"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
 
@@ -32,16 +30,16 @@ Například pro databázi `Database1` v `Server1` následující je možné plat
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[Repliky jen pro čtení](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) Protokoly auditu se ukládají do stejného kontejneru. Hierarchie adresáře v rámci kontejneru má `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`ve formě. Název souboru objektu BLOB sdílí stejný formát. Protokoly auditu replik jen pro čtení jsou uloženy ve stejném kontejneru.
+[Repliky jen pro čtení](sql-database-read-scale-out.md) Protokoly auditu se ukládají do stejného kontejneru. Hierarchie adresáře v rámci kontejneru má `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`ve formě. Název souboru objektu BLOB sdílí stejný formát. Protokoly auditu replik jen pro čtení jsou uloženy ve stejném kontejneru.
 
 
 ### <a name="event-hub"></a>Centrum událostí
 
-Události auditu se zapisují do oboru názvů a centra událostí, které bylo definováno během konfigurace auditování, a jsou zachyceny v těle událostí [Apache Avro](https://avro.apache.org/) a uloženy pomocí formátu JSON s kódováním UTF-8. Protokoly auditu si můžete přečíst pomocí [nástrojů Avro](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) nebo podobných nástrojů, které zpracovávají tento formát.
+Události auditu se zapisují do oboru názvů a centra událostí, které bylo definováno během konfigurace auditování, a jsou zachyceny v těle událostí [Apache Avro](https://avro.apache.org/) a uloženy pomocí formátu JSON s kódováním UTF-8. Protokoly auditu si můžete přečíst pomocí [nástrojů Avro](../event-hubs/event-hubs-capture-overview.md#use-avro-tools) nebo podobných nástrojů, které zpracovávají tento formát.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Události auditu se zapisují do Log Analytics pracovního prostoru definovaného během konfigurace auditování do tabulky `AzureDiagnostics` s `SQLSecurityAuditEvents`kategorií. Další užitečné informace o jazyce a příkazech hledání Log Analytics naleznete v tématu [Log Analytics Search reference](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search).
+Události auditu se zapisují do Log Analytics pracovního prostoru definovaného během konfigurace auditování do tabulky `AzureDiagnostics` s `SQLSecurityAuditEvents`kategorií. Další užitečné informace o jazyce a příkazech hledání Log Analytics naleznete v tématu [Log Analytics Search reference](../log-analytics/log-analytics-log-search.md).
 
 ## <a id="subheading-1"></a>Pole protokolu auditu
 

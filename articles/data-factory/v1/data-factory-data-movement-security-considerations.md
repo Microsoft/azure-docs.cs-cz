@@ -4,27 +4,26 @@ description: Přečtěte si informace o zabezpečení přesunu dat v Azure Data 
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 467ba9f36dbcd44c5b8d87ee2f20d178d62d9732
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682628"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930813"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – požadavky na zabezpečení při přesunu dat
 
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [informace o zabezpečení přesunu dat pro Data Factory](../data-movement-security-considerations.md).
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 Tento článek popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k zabezpečení vašich dat. Prostředky správy Azure Data Factory jsou postavené na infrastruktuře zabezpečení Azure a využívají všechny možné bezpečnostní míry, které nabízí Azure.
 
 V řešení Data Factory vytváříte jeden nebo více datových [kanálů](data-factory-create-pipelines.md). Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Tyto kanály se nacházejí v oblasti, ve které byl vytvořen objekt pro vytváření dat. 
@@ -95,7 +94,7 @@ Přihlašovací údaje pro místní úložiště dat se ukládají místně (ne 
 - Použití **prostého textu** (méně bezpečného) prostřednictvím protokolu HTTPS z webu Azure Portal nebo Průvodce kopírováním. Přihlašovací údaje se předávají do místní brány v prostém textu.
 - Použití **knihovny kryptografie jazyka JavaScript z Průvodce kopírováním**.
 - Použití **aplikace Správce přihlašovacích údajů založeného na programu Click** Aplikace kliknutí na jednou se spouští na místním počítači, který má přístup k bráně a nastavuje přihlašovací údaje pro úložiště dat. Tato možnost a další jsou nejbezpečnější možnosti. Ve výchozím nastavení používá aplikace Správce přihlašovacích údajů port 8050 na počítači s bránou pro zabezpečenou komunikaci.  
-- K šifrování přihlašovacích údajů použijte rutinu [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) prostředí PowerShell. Rutina používá certifikát, který je nakonfigurován pro použití pro šifrování přihlašovacích údajů. Můžete použít šifrované přihlašovací údaje vrácené touto rutinou a přidat ji do **EncryptedCredential** elementu **CONNECTIONSTRING** v souboru JSON, který použijete pomocí rutiny [New-AZDATAFACTORYLINKEDSERVICE](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) nebo ve fragmentu JSON v Data Factory Editor na portálu. Tato možnost a aplikace jedním kliknutím jsou nejbezpečnější možnosti. 
+- K šifrování přihlašovacích údajů použijte rutinu [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) prostředí PowerShell. Rutina používá certifikát, který je nakonfigurován pro použití pro šifrování přihlašovacích údajů. Můžete použít šifrované přihlašovací údaje vrácené touto rutinou a přidat ji do **EncryptedCredential** elementu **CONNECTIONSTRING** v souboru JSON, který použijete pomocí rutiny [New-AZDATAFACTORYLINKEDSERVICE](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) nebo ve fragmentu JSON v editoru Data Factory na portálu. Tato možnost a aplikace jedním kliknutím jsou nejbezpečnější možnosti. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>Šifrování založené na knihovně JavaScript Cryptography
 Přihlašovací údaje úložiště dat můžete šifrovat pomocí [knihovny kryptografie JavaScriptu](https://www.microsoft.com/download/details.aspx?id=52439) z [Průvodce kopírováním](data-factory-copy-wizard.md). Když vyberete tuto možnost, Průvodce kopírováním načte veřejný klíč brány a použije ho k zašifrování přihlašovacích údajů úložiště dat. Přihlašovací údaje jsou dešifrovány počítačem brány a chráněny rozhraním [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx)systému Windows.
@@ -115,10 +114,10 @@ V současné době Správa dat brána používá jeden **certifikát**. Tento ce
 | Verze brány (během vytváření) | Uložené přihlašovací údaje | Šifrování/zabezpečení přihlašovacích údajů | 
 | --------------------------------- | ------------------ | --------- |  
 | < = 2.3. xxxx. x | V cloudu | Šifrování pomocí certifikátu (liší se od verze používané aplikací Správce přihlašovacích údajů) | 
-| > = 2.4. xxxx. x | Místní | Zabezpečené přes DPAPI | 
+| > = 2.4.xxxx.x | Místní | Zabezpečené přes DPAPI | 
   
 
-### <a name="encryption-in-transit"></a>Šifrování při přenosu
+### <a name="encryption-in-transit"></a>Šifrování během přenosu
 Všechny přenosy dat jsou prostřednictvím zabezpečeného kanálu **https** a **TLS přes protokol TCP** , aby se zabránilo útokům prostředníkem při komunikaci se službami Azure.
  
 K dalšímu zabezpečení komunikačního kanálu mezi vaší místní sítí a Azure můžete použít taky službu [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) nebo [Express Route](../../expressroute/expressroute-introduction.md) .
@@ -129,9 +128,9 @@ Následující tabulka shrnuje doporučení konfigurace sítě a brány na zákl
 
 | Zdroj | Cíl | Konfigurace sítě | Nastavení brány |
 | ------ | ----------- | --------------------- | ------------- | 
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Bránu můžete nainstalovat buď místně, nebo na virtuální počítač Azure (VM) ve virtuální síti. | 
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah) | Bránu můžete nainstalovat buď místně, nebo na virtuálním počítači Azure ve virtuální síti. | 
-| Lokálně | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (veřejný partnerský vztah) | Brána musí být nainstalovaná místně. | 
+| Místní prostředí | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Bránu můžete nainstalovat buď místně, nebo na virtuální počítač Azure (VM) ve virtuální síti. | 
+| Místní prostředí | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah) | Bránu můžete nainstalovat buď místně, nebo na virtuálním počítači Azure ve virtuální síti. | 
+| Místní prostředí | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (veřejný partnerský vztah) | Brána musí být nainstalovaná místně. | 
 
 Následující obrázky ukazují použití Správa dat brány pro přesun dat mezi místní databází a službami Azure pomocí Express Route a IPSec VPN (s Virtual Network):
 

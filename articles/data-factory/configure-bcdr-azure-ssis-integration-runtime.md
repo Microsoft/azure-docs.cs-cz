@@ -2,23 +2,22 @@
 title: Konfigurace Azure-SSIS Integration Runtime pro převzetí služeb při selhání SQL Database
 description: Tento článek popisuje, jak nakonfigurovat Azure-SSIS Integration Runtime Azure SQL Database geografickou replikaci a převzetí služeb při selhání pro databázi SSISDB.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: conceptual
-ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 08/14/2018
+ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681393"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928503"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurace Azure-SSIS Integration Runtime s využitím Azure SQL Database geografické replikace a převzetí služeb při selhání
 
@@ -36,7 +35,7 @@ Tato část platí v případě, že jsou splněné následující podmínky:
 
 - Azure-SSIS IR odkazuje na koncový bod naslouchacího procesu pro čtení i zápis ve skupině převzetí služeb při selhání.
 
-  ANI
+  A
 
 - SQL Database Server *není nakonfigurován s* pravidlem koncového bodu služby virtuální sítě.
 
@@ -72,7 +71,7 @@ Pokud dojde k převzetí služeb při selhání, musíte provést následující
 
 Následující části popisují tyto kroky podrobněji.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že jste povolili zotavení po havárii pro Azure SQL Database Server v případě výpadku serveru ve stejnou dobu. Další informace najdete v tématu [Přehled provozní kontinuity pomocí Azure SQL Database](../sql-database/sql-database-business-continuity.md).
 
@@ -105,7 +104,7 @@ Postupujte podle těchto kroků a zastavte Azure-SSIS IR, přepněte IR na novou
 
 Když dojde k selhání ADF nebo Azure-SSIS IR v aktuální oblasti, můžete SSISDB pracovat s novým Azure-SSIS IR v nové oblasti.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Pokud používáte virtuální síť v aktuální oblasti, musíte k připojení prostředí Azure-SSIS Integration runtime použít jinou virtuální síť v nové oblasti. Další informace najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
 
@@ -130,7 +129,7 @@ Postupujte podle těchto kroků a zastavte Azure-SSIS IR, přepněte IR na novou
      ```
     Další informace o tomto příkazu PowerShellu najdete v tématu [Vytvoření datové továrny Azure pomocí PowerShellu](quickstart-create-data-factory-powershell.md) .
 
-3. Pomocí Azure PowerShell vytvořte v nové oblasti novou Azure-SSIS IR s názvem **\<new_integration_runtime_name\>** .
+3. Vytvořte novou Azure-SSIS IR s názvem **\<new_integration_runtime_name\>** v nové oblasti pomocí Azure PowerShell.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `

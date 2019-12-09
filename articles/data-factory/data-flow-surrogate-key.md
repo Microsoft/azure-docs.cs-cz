@@ -1,18 +1,19 @@
 ---
-title: Azure Data Factory transformace náhradního klíče datového toku mapování dat
+title: Transformace náhradního klíče datového toku mapování
 description: Jak použít transformaci klíče pro mapování toku dat Azure Data Factory k vygenerování sekvenčních hodnot klíče
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 144d6298a13d35d94a68b35c443a3a47cefcfc2a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bab48aa9079c1b8020bb828a6bb91bd244a78cf1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387167"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930203"
 ---
 # <a name="mapping-data-flow-surrogate-key-transformation"></a>Transformace náhradního klíče datového toku mapování
 

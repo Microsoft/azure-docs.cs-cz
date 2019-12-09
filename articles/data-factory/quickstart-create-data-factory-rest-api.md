@@ -4,7 +4,7 @@ description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho um
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 1145490ba5e48216e25a094cbbced3da7b07c701
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6e46965442e3f95c98a7d55a645b237c22740ff4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684464"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929834"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlý Start: vytvoření datové továrny Azure a kanálu pomocí REST API
 
@@ -30,9 +30,9 @@ Azure Data Factory je cloudová služba pro integraci dat umožňující vytvá�
 
 Tento rychlý start popisuje použití rozhraní REST API k vytvoření datové továrny Azure. Kanál v této datové továrně kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 * **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** a **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), můžete použít k připojení k úložišti objektů blob v Azure, k vytvoření kontejneru objektů blob, nahrání vstupního souboru a ověření výstupního souboru.
 * Nainstalujte **Azure PowerShell**. Postupujte podle pokynů v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps). Tento rychlý start využívá PowerShell k vyvolání volání rozhraní REST API.
-* **V Azure Active Directory vytvořte aplikaci** s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
+* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v pozdějších krocích: **ID aplikace**, **clientSecrets**a **ID tenanta**. Přiřaďte aplikaci roli **Přispěvatel**.
 
 ## <a name="set-global-variables"></a>Nastavení globálních proměnných
 
@@ -169,7 +169,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Zde je ukázkový výstup:
+Tady je ukázkový výstup:
 
 ```json
 {  
@@ -190,7 +190,7 @@ Zde je ukázkový výstup:
 ```
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-Nadefinujete datovou sadu, která představuje data ke kopírování ze zdroje do jímky. V tomto příkladu vytvoříte dvě datové sady: InputDataset a OutputDataset. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (Input) a soubor (EMP. txt) obsahující zdrojová data. Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (výstup) a soubor, do kterého se data zkopírují.
+Definujete datovou sadu, která představuje data pro kopírování ze zdroje do jímky. V tomto příkladu vytvoříte dvě datové sady: InputDataset a OutputDataset. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (Input) a soubor (EMP. txt) obsahující zdrojová data. Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (výstup) a soubor, do kterého se data zkopírují.
 
 **Vytvořit InputDataset**
 
@@ -223,7 +223,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Zde je ukázkový výstup:
+Tady je ukázkový výstup:
 
 ```json
 {  
@@ -276,7 +276,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Zde je ukázkový výstup:
+Tady je ukázkový výstup:
 
 ```json
 {  
@@ -360,7 +360,7 @@ $response = Invoke-RestMethod -Method PUT -Uri $request -Header $authHeader -Bod
 $response | ConvertTo-Json
 ```
 
-Zde je ukázkový výstup:
+Tady je ukázkový výstup:
 
 ```json
 {  
@@ -393,7 +393,7 @@ $response | ConvertTo-Json
 $runId = $response.runId
 ```
 
-Zde je ukázkový výstup:
+Tady je ukázkový výstup:
 
 ```json
 {  
@@ -421,7 +421,7 @@ Zde je ukázkový výstup:
     }
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     {  
@@ -460,7 +460,7 @@ Zde je ukázkový výstup:
     $response = Invoke-RestMethod -Method POST -Uri $request -Header $authHeader
     $response | ConvertTo-Json
     ```
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     {  

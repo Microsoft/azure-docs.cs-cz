@@ -1,17 +1,18 @@
 ---
-title: Tvůrce výrazů pro tok dat mapování Azure Data Factory
+title: Tvůrce výrazů pro tok dat mapování
 description: Tvůrce výrazů pro Azure Data Factory mapování datových toků
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: 7d8f02647224c971c44bff51f09315c53c53e9a3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672268"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928336"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Tvůrce výrazů pro tok dat mapování
 
@@ -27,7 +28,7 @@ Nástroj Tvůrce výrazů je standardně nastaven na možnost textový editor. f
 
 ## <a name="build-schemas-in-output-schema-pane"></a>Schémata sestavení v podokně výstupní schéma
 
-![Přidat složitý sloupec](media/data-flow/complexcolumn.png "Přidat sloupce")
+![Přidat složitý sloupec](media/data-flow/complexcolumn.png "Přidání sloupců")
 
 V podokně výstupní schéma na levé straně uvidíte sloupce, které upravujete, a přidáte je do schématu. Tady můžete interaktivně vytvářet jednoduché a komplexní datové struktury. Přidejte další pole pomocí příkazu přidat sloupec a hierarchie sestavení pomocí příkazu přidat Podsloupec.
 
@@ -50,6 +51,16 @@ Kliknutím na tlačítko Aktualizovat aktualizujete výsledky výrazu na živý 
 Přidejte komentáře ke svým výrazům pomocí jedné řádky a syntaxe víceřádkového komentáře:
 
 ![Komentáře](media/data-flow/comments.png "Komentáře")
+
+## <a name="string-interpolation"></a>Interpolace řetězců
+
+Pomocí dvojitých uvozovek uzavřete textový řetězec literálu spolu s výrazy. Můžete zahrnout funkce výrazů, sloupce a parametry. To je velmi užitečné, pokud chcete zabránit rozsáhlému použití zřetězení řetězců při zahrnutí parametrů do řetězců dotazů.
+
+* ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
+
+* ```"select * from {$tablename} where orderyear > {$year}"```
+
+* ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 ## <a name="regular-expressions"></a>Regulární výrazy
 

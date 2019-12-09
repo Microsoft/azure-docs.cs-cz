@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ebb2fcf0f626a82bcb5e6439183ba98c39c58588
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 6520f205d0a9c1a33d0cb4911a58a5e680bdadb7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322897"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929727"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
@@ -44,9 +44,9 @@ Následující tabulka uvádí aktuální úroveň podpory pro tři plány hosto
 
 ## <a name="consumption-plan"></a>Plán Consumption
 
-Pokud používáte plán spotřeby, instance Azure Functions hostitele se dynamicky přidávají a odstraňují na základě počtu příchozích událostí. Tento plán bez serveru se škáluje automaticky a účtují se vám poplatky za výpočetní prostředky jenom v případě, že jsou vaše funkce spuštěné. V plánu spotřeby vyprší doba spuštění funkce po konfigurovatelném časovém intervalu.
+Pokud používáte plán spotřeby, instance Azure Functions hostitele se dynamicky přidávají a odstraňují na základě počtu příchozích událostí. Tento bezserverový plán se automaticky škáluje a výpočetní prostředky se vám účtují, jenom když vaše funkce běží. V plánu Spotřeba po nastavené době vyprší časový limit spuštění funkce.
 
-Fakturace vychází z počtu spuštění, času spuštění a využité paměti. Fakturace se agreguje napříč všemi funkcemi v rámci aplikace Function App. Další informace najdete na stránce s [cenami Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+Fakturace vychází z počtu spuštění, doby spuštění a použité paměti. Fakturace se agreguje napříč všemi funkcemi v rámci aplikace funkce. Další informace najdete na stránce s [cenami Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
 Plán spotřeby je výchozím plánem hostování a nabízí následující výhody:
 
@@ -124,7 +124,7 @@ Když je výstup z tohoto příkazu `dynamic`, vaše aplikace Function App je v 
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-V jakémkoli plánu aplikace Function App vyžaduje účet obecné Azure Storage, který podporuje Azure Blob, Queue, soubory a Table Storage. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, které zahrnují účty úložiště jen pro objekty BLOB (včetně služby Premium Storage) a účty úložiště pro obecné účely s replikací zóny redundantního úložiště, se filtrují z existujících výběrů **účtu úložiště** při vytváření aplikace Function App
+V jakémkoli plánu aplikace Function App vyžaduje účet obecné Azure Storage, který podporuje Azure Blob, Queue, soubory a Table Storage. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, které zahrnují účty úložiště jen pro objekty BLOB (včetně služby Premium Storage) a účty úložiště pro obecné účely s replikací zóny redundantního úložiště, se při vytváření aplikace Function Filter odfiltrují ze stávajících výběrů **účtu úložiště** .
 
 Stejný účet úložiště, který používá vaše aplikace Function App, můžete použít taky triggery a vazbami k uložení dat aplikace. U operací náročných na úložiště byste ale měli použít samostatný účet úložiště.   
 
@@ -142,7 +142,7 @@ Soubory s kódem funkce jsou uložené ve sdílených složkách služby soubory
 
 Azure Functions používá komponentu s názvem *kontroler škálování* pro monitorování míry událostí a určení, zda se má horizontální navýšení nebo škálování škálovat. Kontroler škálování používá heuristiky pro každý typ triggeru. Pokud například používáte Trigger služby Azure Queue Storage, škáluje se podle délky fronty a stáří nejstarší zprávy fronty.
 
-Jednotka škálování pro Azure Functions je aplikace Function App. Při horizontálním navýšení kapacity aplikace Function App se přidělí další prostředky pro spuštění více instancí Azure Functionsho hostitele. V opačném případě dojde k omezení požadavků na výpočetní výkon, protože řadič škálování odebere instance hostitele funkcí. V případě, že v aplikaci Function App nejsou spuštěny žádné funkce, počet instancí je nakonec horizontální.
+Jednotka škálování pro Azure Functions je aplikace Function App. Při horizontálním navýšení kapacity aplikace Function App se přidělí další prostředky pro spuštění více instancí Azure Functionsho hostitele. V opačném případě dojde k omezení požadavků na výpočetní výkon, protože řadič škálování odebere instance hostitele funkcí. V případě, že v aplikaci Function App nejsou spuštěny žádné funkce, počet instancí je nakonec *zvětšen* na hodnotu nula.
 
 ![Škálování událostí monitorování řadiče a vytváření instancí](./media/functions-scale/central-listener.png)
 

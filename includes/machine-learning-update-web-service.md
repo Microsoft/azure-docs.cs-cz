@@ -1,15 +1,15 @@
 ---
-author: larryfr
+author: Blackmist
 ms.service: machine-learning
 ms.topic: include
 ms.date: 11/06/2019
 ms.author: larryfr
-ms.openlocfilehash: 694d7e6afbf7bd4b219d52254159dcf2e02f8769
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 04e8f1f212eb4fa7cf4d8e19132107f2ddb53729
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682085"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927014"
 ---
 Chcete-li aktualizovat webovou službu, použijte metodu `update`. Webovou službu můžete aktualizovat tak, aby používala nový model, nový vstupní skript nebo nové závislosti, které lze zadat v konfiguraci odvození. Další informace najdete v dokumentaci ke službě [WebService. Update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
 

@@ -2,23 +2,23 @@
 title: Podporované formáty souborů v Azure Data Factory
 description: Toto téma popisuje formáty souborů a komprese kódy, které jsou podporovány souborové konektorů v Azure Data Factory.
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4a81cc9887610036007b92e43b8bd44f0a8b7740
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 48121dabfa4fc56e2f797f715cb3fce3e3be9578
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075533"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928679"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
-*Tento článek se týká následujících konektorů: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud. Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)a [SFTP](connector-sftp.md).*
+*Tento článek se týká následujících konektorů: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)a [SFTP](connector-sftp.md).*
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
@@ -67,7 +67,7 @@ V následující definici JSON pro datovou sadu jsou uvedeny některé vlastnost
 },
 ```
 
-Pokud chcete místo `escapeChar` použít `quoteChar`, nahraďte řádek s `quoteChar` touto hodnotou escapeChar:
+Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quoteChar` touto hodnotou escapeChar:
 
 ```json
 "escapeChar": "$",
@@ -228,7 +228,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
-Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
+Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A to konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
 - `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít `array[x].property` a extrahovat hodnotu dané vlastnosti z `xth` objektu, nebo můžete použít `array[*].property` k nalezení hodnoty z libovolného objektu, který obsahuje tuto vlastnost.
@@ -303,7 +303,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 | 01 | 20170122 | P3 | 231 | `[{"sanmateo":"No 1"}]` |
 
 
-Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
+Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A to konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
 - `jsonNodeReference` Označuje, iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** `orderlines`.
@@ -358,7 +358,7 @@ Pokud máte ve službě SQL Database v následující tabulce:
 
 | ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
-| 1 | 20170119 | 2000 | David |
+| 1\. místo | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
@@ -406,7 +406,7 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 }
 ```
 
-## <a name="parquet-format"></a>Formát parquet
+## <a name="parquet-format"></a>Formát Parquet
 
 >[!NOTE]
 >Data Factory zavedli novou datovou sadu formátu Parquet, viz článek o [formátu Parquet](format-parquet.md) s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
@@ -435,7 +435,7 @@ Pro kopírování běžící v místním prostředí IR s Parquet serializací/d
 - **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
 
 >[!TIP]
->Pokud kopírujete data do nebo z formátu Parquet pomocí Integration Runtime v místním prostředí a dojde k chybě, při vyvolání Java došlo k chybě. zpráva: **Java. lang. OutOfMemoryError: prostor haldy Java**", můžete přidat proměnnou prostředí `_JAVA_OPTIONS` v počítač, který je hostitelem prostředí IR v místním prostředí, aby upravil minimální/maximální velikost haldy pro JVM, aby mohl takovou kopii provést, pak znovu spusťte kanál.
+>Pokud kopírujete data do nebo z formátu Parquet pomocí Integration Runtime v místním prostředí a omylem zaznamenáte chybu při vyvolání Java, zpráva: **Java. lang. OutOfMemoryError: prostor haldy Java**", můžete přidat proměnnou prostředí `_JAVA_OPTIONS` v počítači, který je hostitelem prostředí IR v místním prostředí, a upravit tak minimální/maximální velikost haldy pro JVM, abyste mohli takovou kopii provést a pak znovu spustit kanál.
 
 ![Nastavení velikosti haldy JVM v místním prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -445,26 +445,26 @@ Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. P�
 
 | Data factory dočasné datový typ | Primitivní typ parquet | Parquet původního typu (deserializovat) | Parquet původního typu (serializuje) |
 |:--- |:--- |:--- |:--- |
-| Logická hodnota | Logická hodnota | neuvedeno | neuvedeno |
+| Logická hodnota | Logická hodnota | Nevztahuje se | Nevztahuje se |
 | SByte – | Datový typ Int32 | Int8 | Int8 |
-| Bajt | Datový typ Int32 | UInt8 | Int16 |
+| Bajtů | Datový typ Int32 | UInt8 | Int16 |
 | Int16 | Datový typ Int32 | Int16 | Int16 |
 | UInt16 | Datový typ Int32 | UInt16 | Datový typ Int32 |
 | Datový typ Int32 | Datový typ Int32 | Datový typ Int32 | Datový typ Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/binární soubor | UInt64 | Decimal |
-| Single | Float | neuvedeno | neuvedeno |
-| Double | Double | neuvedeno | neuvedeno |
-| Decimal | Binární hodnota | Decimal | Decimal |
-| Řetězec | Binární hodnota | Utf8 | Utf8 |
-| Datum a čas | Int96 | neuvedeno | neuvedeno |
-| Časový interval | Int96 | neuvedeno | neuvedeno |
-| DateTimeOffset | Int96 | neuvedeno | neuvedeno |
-| ByteArray | Binární hodnota | neuvedeno | neuvedeno |
-| identifikátor GUID | Binární hodnota | Utf8 | Utf8 |
-| Char | Binární hodnota | Utf8 | Utf8 |
-| CharArray | Nepodporuje se | neuvedeno | neuvedeno |
+| Jednoduchá | Float | Nevztahuje se | Nevztahuje se |
+| Double | Double | Nevztahuje se | Nevztahuje se |
+| Decimal | Binary | Decimal | Decimal |
+| Řetězec | Binary | Utf8 | Utf8 |
+| Datum a čas | Int96 | Nevztahuje se | Nevztahuje se |
+| TimeSpan | Int96 | Nevztahuje se | Nevztahuje se |
+| DateTimeOffset | Int96 | Nevztahuje se | Nevztahuje se |
+| ByteArray | Binary | Nevztahuje se | Nevztahuje se |
+| Guid | Binary | Utf8 | Utf8 |
+| char | Binary | Utf8 | Utf8 |
+| CharArray | Nepodporováno | Nevztahuje se | Nevztahuje se |
 
 ## <a name="orc-format"></a>Formát ORC
 
@@ -499,24 +499,24 @@ Pro kopírování běžící v místním prostředí IR s ORC serializací/deser
 | Data factory dočasné datový typ | Typy ORC |
 |:--- |:--- |
 | Logická hodnota | Logická hodnota |
-| SByte – | Bajt |
-| Bajt | Krátké |
+| SByte – | Bajtů |
+| Bajtů | Krátké |
 | Int16 | Krátké |
 | UInt16 | Int |
 | Datový typ Int32 | Int |
 | UInt32 | Dlouhé |
 | Int64 | Dlouhé |
 | UInt64 | Řetězec |
-| Single | Float |
+| Jednoduchá | Float |
 | Double | Double |
 | Decimal | Decimal |
 | Řetězec | Řetězec |
-| Datum a čas | Timestamp |
-| DateTimeOffset | Timestamp |
-| Časový interval | Timestamp |
-| ByteArray | Binární hodnota |
-| identifikátor GUID | Řetězec |
-| Char | Char(1) |
+| Datum a čas | Časové razítko |
+| DateTimeOffset | Časové razítko |
+| TimeSpan | Časové razítko |
+| ByteArray | Binary |
+| Guid | Řetězec |
+| char | Char(1) |
 
 ## <a name="avro-format"></a>Formát AVRO
 

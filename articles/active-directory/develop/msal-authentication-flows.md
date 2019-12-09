@@ -1,29 +1,25 @@
 ---
-title: Toky ověřování (Microsoft Authentication Library)
+title: Toky ověřování MSAL | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o tocích ověřování a grantech, které používá knihovna Microsoft Authentication Library (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473810"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917195"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -42,19 +38,19 @@ Tento článek popisuje různé toky ověřování, které poskytuje knihovna Mi
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Jak každý tok generuje tokeny a kódy
  
-V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných platformou Microsoft identity.  Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf znázorňuje přehled:
+V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných platformou Microsoft identity.  Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf poskytuje přehled:
  
-|Tok | Nutné | id_token | přístupový token | aktualizovat token | autorizační kód | 
+|Tok | Vyžaduje | id_token | Přístupový token | aktualizovat token | autorizační kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Tok autorizačního kódu](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicitní tok](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybridní tok OIDC](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Aktualizovat uplatnění tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | aktualizovat token | x | x | x| |
-|[Tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
+|[Tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) | Přístupový token| x| x| x| |
 |[Tok kódu zařízení](v2-oauth2-device-code.md) | | x| x| x| |
 |[Přihlašovací údaje klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (jenom aplikace)| | |
  
-Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nemají deklarace `groups` nebo `wids`.
+Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nemají deklarace identity `groups` nebo `wids`.
 
 ## <a name="interactive"></a>Interaktivní
 
@@ -79,7 +75,7 @@ Mnoho moderních webových aplikací je postavených jako aplikace na straně kl
 
 Tento tok ověřování neobsahuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako jsou například elektronicky a reagující na nativní, protože vyžadují další možnosti pro interakci s nativními platformami.
 
-## <a name="authorization-code"></a>autorizační kód
+## <a name="authorization-code"></a>Autorizační kód
 
 MSAL podporuje [udělení autorizačního kódu OAuth 2](v2-oauth2-auth-code-flow.md). Tento grant se dá použít v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Díky tomu můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. 
 
@@ -106,7 +102,7 @@ MSAL podporuje [tok ověřování OAuth 2 pro uživatele](v2-oauth2-on-behalf-of
 
 ![Diagram toku za běhu](media/msal-authentication-flows/on-behalf-of.png)
 
-V předchozím diagramu:
+V předchozím schématu:
 
 1. Aplikace získá přístupový token pro webové rozhraní API.
 2. Klient (webová, desktopová, mobilní nebo jednostránková aplikace) volá chráněné webové rozhraní API a v ověřovací hlavičce požadavku HTTP se přidá přístupový token jako nosný token. Webové rozhraní API ověřuje uživatele.
@@ -154,7 +150,7 @@ Pomocí toku kódu zařízení aplikace získá tokeny prostřednictvím procesu
 
 ![Diagram toku kódu zařízení](media/msal-authentication-flows/device-code.png)
 
-V předchozím diagramu:
+V předchozím schématu:
 
 1. Kdykoli se vyžaduje ověření uživatele, aplikace poskytne kód a vyzve uživatele k použití jiného zařízení (například smartphone připojeného k Internetu) k přechodu na adresu URL (například https://microsoft.com/devicelogin). Uživatel se pak vyzve k zadání kódu a pokračuje v běžném prostředí ověřování, včetně výzev k vyjádření souhlasu a vícefaktorového ověřování v případě potřeby.
 

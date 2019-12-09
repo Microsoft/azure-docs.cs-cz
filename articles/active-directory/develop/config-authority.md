@@ -1,5 +1,5 @@
 ---
-title: Konfigurace MSAL pro iOS a macOS pro používání různých zprostředkovatelů identity
+title: Konfigurace různých zprostředkovatelů identity (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se používat různé autority, jako jsou B2C, svrchované cloudy a uživatele typu Host, s MSAL pro iOS a macOS.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feea11dfa8e199d4c1c01ba7ec09003233574fbe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0f2408dc2dd80ab3f52b158a18355087fe941b48
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843627"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917977"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Postupy: Konfigurace MSAL pro iOS a macOS pro používání různých zprostředkovatelů identity
 

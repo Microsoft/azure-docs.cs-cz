@@ -1,18 +1,19 @@
 ---
-title: V datovém toku mapování Azure Data Factory existuje transformace.
+title: Existuje transformace v toku dat mapování.
 description: Vyhledat existující řádky pomocí transformace Exists v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676737"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930410"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Existuje transformace v toku dat mapování.
 
@@ -52,7 +53,7 @@ Chcete-li vytvořit výraz ve volném formátu, který obsahuje operátory jiné
     ) ~> <existsTransformationName>
 ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Níže uvedený příklad je transformace s názvem `checkForChanges`, která přebírá levý Stream `NameNorm2` a `TypeConversions`pravého streamu.  Podmínka EXISTS je výraz `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`, který vrací hodnotu true, pokud se ve sloupcích `EMPID` a `Region` v každém datovém proudu shodují. Po kontrole existence `negate` je false. Na kartě optimalizace nepovolujeme žádné vysílání, takže `broadcast` má `'none'`Value.
 

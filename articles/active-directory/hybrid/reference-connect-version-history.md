@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461298e4f195d88ced5015af26226a9f7b12f737
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891775"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922295"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydání verze
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -38,9 +38,23 @@ Ke stažení| [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?
 I když procházíme tímto procesem, číslo verze vydaných verzí se zobrazí s číslem "X" v umístění vedlejší verze, jako v "1.3. X. 0" – to znamená, že poznámky k verzi v tomto dokumentu jsou platné pro všechny verze začínající znakem "1,3". Po dokončení procesu vydávání verzí bude číslo vydané verze aktualizováno na nejnovější vydanou verzi a stav vydání bude aktualizován na hodnotu Vydáno ke stažení a automatický upgrade.
 Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. Další informace o [automatickém upgradu](how-to-connect-install-automatic-upgrade.md) získáte pomocí tohoto odkazu.
 
+## <a name="14380"></a>1.4.38.0
+### <a name="release-status"></a>Stav verze
+12/6/2019: vydaná verze ke stažení Není k dispozici prostřednictvím automatického upgradu.
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
+- Aktualizovali jsme synchronizaci hodnot hash hesel, aby Azure AD Domain Services správně zohlednila odsazení v hodnotách hash protokolu Kerberos.  Tím se zajistí zlepšení výkonu při synchronizaci hesel z AAD do Azure AD Domain Services.
+- Přidali jsme podporu spolehlivých relací mezi ověřovacím agentem a Service Bus.
+- Tato vydaná verze vynutila TLS 1,2 pro komunikaci mezi ověřovacím agentem a cloudovou službou.
+- Přidali jsme mezipaměť DNS pro připojení protokolu WebSocket mezi ověřovacím agentem a cloudovou službou.
+- Přidali jsme možnost zaměřit se na konkrétního agenta z cloudu na testování připojení agenta.
+
+### <a name="fixed-issues"></a>Oprava potíží
+- Verze 1.4.18.0 využívala chybu, při které rutina PowerShellu pro DSSO používala přihlašovací údaje přihlašovacích údajů systému Windows místo přihlašovacích údajů správce, které jste zadali při spuštění PS. V důsledku toho nebylo možné povolit DSSO ve více doménových strukturách prostřednictvím uživatelského rozhraní AADConnect. 
+- Byla provedena oprava umožňující DSSO současně ve všech doménových strukturách prostřednictvím uživatelského rozhraní AADConnect.
+
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>Stav verze
-11/08/2019: vydáno ke stažení. Není k dispozici pro automatický upgrade
+11/08/2019: vydáno ke stažení. Není k dispozici prostřednictvím automatického upgradu.
 
 >[!IMPORTANT]
 >Z důvodu interní změny schématu v této verzi Azure AD Connect, pokud spravujete nastavení konfigurace vztahu důvěryhodnosti ADFS pomocí prostředí MSOnline PowerShell, musíte aktualizovat modul MSOnline PowerShellu na verzi 1.1.183.57 nebo vyšší.
@@ -809,7 +823,7 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|certThumbprint|CertExtensionOids|
+    |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Vyberte|

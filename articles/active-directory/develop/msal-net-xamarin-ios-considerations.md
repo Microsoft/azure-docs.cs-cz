@@ -1,29 +1,25 @@
 ---
-title: Předpoklady pro Xamarin iOS (Microsoft Authentication Library pro .NET)
+title: Předpoklady pro Xamarin iOS (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin iOS s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc4eb0084e0606251d3fbd80d08723701c6a260
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175620"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921462"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Otázky specifické pro Xamarin iOS s MSAL.NET
 V systému Xamarin iOS je při používání MSAL.NET potřeba vzít v úvahu několik důležitých informací.
@@ -97,7 +93,7 @@ Když použijete rozhraní `WithIosKeychainSecurityGroup()` API, MSAL automatick
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Povolit sdílení mezipaměti tokenů napříč aplikacemi pro iOS
 
-Z MSAL 2. x můžete zadat přístupovou skupinu pro řetězce klíčů, která se má použít pro uchování mezipaměti tokenů napříč více aplikacemi. Toto nastavení umožňuje sdílet mezipaměť tokenů mezi několika aplikacemi se stejnou přístupovou skupinou pro řetězce klíčů, včetně těch vyvinutých pomocí aplikací [ADAL.NET](https://aka.ms/adal-net), MSAL.NET Xamarin. iOS a nativních aplikací pro iOS vyvinutých pomocí [nástroje. ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) nebo [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
+Z MSAL 2. x můžete zadat přístupovou skupinu pro řetězce klíčů, která se má použít pro uchování mezipaměti tokenů napříč více aplikacemi. Toto nastavení umožňuje sdílet mezipaměť tokenů mezi několika aplikacemi se stejnou přístupovou skupinou pro řetězce klíčů, včetně těch vyvinutých pomocí aplikací [ADAL.NET](https://aka.ms/adal-net), MSAL.NET Xamarin. iOS a nativních aplikací pro iOS vyvinutých pomocí [ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) nebo [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
 
 Sdílení mezipaměti tokenů umožňuje jednotné přihlašování mezi všemi aplikacemi, které používají stejnou přístupovou skupinu pro řetězce klíčů.
 

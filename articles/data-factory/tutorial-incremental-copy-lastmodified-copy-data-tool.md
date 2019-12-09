@@ -2,24 +2,22 @@
 title: Nástroj data pro přírůstkové kopírování nových a aktualizovaných souborů
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat postupně načtěte nové soubory založené na LastModifiedDate.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 5c20196bd243d025d58f7cc08e015e1e0038e178
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5ff3ade800b2a3474a68a34dc77d0c9b009e8822
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217792"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923145"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových a změněných souborů na základě LastModifiedDate pomocí nástroje Kopírování dat
 
@@ -37,7 +35,7 @@ V tomto kurzu budete provádět následující úlohy:
 > * Vytvoření kanálu pomocí nástroje pro kopírování dat
 > * Monitorování spuštění aktivit a kanálu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet úložiště Azure**: jako _zdroj_ dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
@@ -75,13 +73,13 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
 5. V části **verze**vyberte **v2**.
 6. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight), které vaše Datová továrna používá, můžou být v jiných umístěních a oblastech.
 7. Zaškrtněte **Připnout na řídicí panel**. 
-8. Vyberte **Vytvořit**.
+8. Vyberte **Create** (Vytvořit).
 9. Na řídicím panelu se podívejte na dlaždici **nasazení Data Factory** , kde vidíte stav procesu.
 
     ![Nasazování dlaždice Data Factory](media/tutorial-copy-data-tool/deploying-data-factory.png)
 10. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
    
-    ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
+    ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
 11. Pokud chcete na samostatné kartě otevřít Azure Data Factory uživatelské rozhraní (UI), vyberte dlaždici **autora & monitorování** . 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat
@@ -100,7 +98,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
     
     d. V části **opakování**zadejte **15 minut**. 
     
-    e. Vyberte **Next** (Další). 
+    e. Vyberte **Další**. 
     
     Uživatelské rozhraní služby Data Factory vytvoří kanál se zadaným názvem úlohy. 
 
@@ -148,7 +146,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
     
     ![Zvolte výstupní soubor nebo složku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
-    b. Vyberte **Next** (Další).
+    b. Vyberte **Další**.
     
      ![Zvolte výstupní soubor nebo složku](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/click-next-after-output-folder.png)
     

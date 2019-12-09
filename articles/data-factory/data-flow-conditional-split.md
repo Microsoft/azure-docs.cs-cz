@@ -1,18 +1,19 @@
 ---
-title: Podmíněné transformace rozdělení v Azure Data Factory toku dat mapování
+title: Podmíněné transformace rozdělení v toku dat mapování
 description: Rozdělení dat do různých datových proudů pomocí podmíněné transformace rozdělení v Azure Data Factory mapování toku dat
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 9ace415aa725a82d8feda5702d25d7e5ff9875d9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d7e2af6c98951e685192656b37226716e4340bfe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676819"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930450"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Podmíněné transformace rozdělení v toku dat mapování
 
@@ -40,7 +41,7 @@ Pomocí Tvůrce výrazů toku dat zadejte výraz pro podmínku rozdělení. Chce
     ) ~> <splitTx>@(stream1, stream2, ..., <defaultStream>)
 ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 V následujícím příkladu je podmíněná transformace rozdělení s názvem `SplitByYear`, která přebírá příchozí Stream `CleanData`. Tato transformace obsahuje dvě podmínky rozdělení `year < 1960` a `year > 1980`. `disjoint` má hodnotu false, protože data přecházejí na první podmínku porovnání. Každý řádek, který se shoduje s první podmínkou, přejde do výstupního datového proudu `moviesBefore1960`. Všechny zbývající řádky, které odpovídají druhé podmínce, přešly do výstupního datového proudu `moviesAFter1980`. Všechny ostatní řádky přecházejí přes výchozí datový proud `AllOtherMovies`.
 

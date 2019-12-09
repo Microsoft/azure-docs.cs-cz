@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 5eac6b112b46d1b2c80321bdeeee7f4e1fc5f4ac
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 360845d75c27fab0151c3a64846ff788f9f56b95
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873909"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931246"
 ---
 # <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití PowerShellu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
@@ -374,7 +374,7 @@ Následující tabulka ukazuje, jak rutiny používané pro Data Lake Storage Ge
 |Rutina Data Lake Storage Gen1| Rutina Data Lake Storage Gen2| Poznámky |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|Ve výchozím nastavení je v rutině Get-AzDataLakeGen2ChildItem uveden pouze seznam podřízených položek první úrovně. Parametr-rekurze vypisuje rekurzivně podřízené položky. |
-|Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Výstupní položky rutiny Get-AzDataLakeGen2Item obsahují vlastnosti těchto vlastností: seznam ACL, vlastník, skupina, oprávnění.|
+|Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Výstupní položky rutiny Get-AzDataLakeGen2Item mají tyto vlastnosti: seznam řízení přístupu (ACL), vlastník, skupina, oprávnění.|
 |Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|Rutina Get-AzDataLakeGen2FileContent stahuje obsah souboru do místního souboru.|
 |Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
 |New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|Tato rutina nahraje nový obsah souboru z místního souboru.|

@@ -1,5 +1,5 @@
 ---
-title: Prostředí vyjádření souhlasu s aplikací Azure AD
+title: Prostředí pro vyjádření souhlasu s aplikací Azure AD
 titleSuffix: Microsoft identity platform
 description: Přečtěte si další informace o prostředí pro vyjádření souhlasu Azure AD a zjistěte, jak ho můžete používat při správě a vývoji aplikací v Azure AD.
 services: active-directory
@@ -15,12 +15,12 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddffe07ec22e21671a1350eeb29d367166fe2799
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1f16278304b4d536b1ef2cf46291b481bf319b6c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844222"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918147"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Prostředí vyjádření souhlasu s aplikací Azure AD
 

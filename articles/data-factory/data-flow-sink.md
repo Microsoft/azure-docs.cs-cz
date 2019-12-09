@@ -1,5 +1,5 @@
 ---
-title: Nastavení transformace jímky v funkci toku dat mapování
+title: Nastavení transformace jímky v mapování toku dat
 description: Přečtěte si, jak nastavit transformaci jímky v toku dat mapování.
 author: kromerm
 ms.author: makromer
@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 828487aba651d10e5c906050dab544c097b49762
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217929"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930270"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Transformace jímky pro tok dat
 
@@ -34,7 +34,7 @@ Schéma dělení můžete nastavit na kartě **optimalizace** . Pokud chcete, Da
 
 ![Možnosti na kartě optimalizace](media/data-flow/opt001.png "možnosti jímky")
 
-## <a name="field-mapping"></a>Mapování polí
+## <a name="field-mapping"></a>Mapování pole
 Na kartě **mapování** transformace jímky můžete namapovat příchozí sloupce vlevo na cílové umístění na pravé straně. Když datovou jímku zařadíte do souborů, Data Factory bude vždy zapisovat nové soubory do složky. Při mapování na datovou sadu databáze zvolíte možnosti operace databázové tabulky pro vložení, aktualizaci, Upsert nebo odstranění.
 
 ![Karta mapování](media/data-flow/sink2.png "Jímky")

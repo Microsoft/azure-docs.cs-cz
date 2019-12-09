@@ -1,25 +1,26 @@
 ---
-title: Kopírování dat do a z SQL Server pomocí Azure Data Factory
+title: Kopírování dat do a z SQL Server
 description: Přečtěte si, jak přesunout data do a z SQL Server do místní databáze nebo na virtuálním počítači Azure pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.author: jingwang
-ms.openlocfilehash: 24a9450b63ba4ed68c9c68e5054e6b02ecf7e0d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8fa4f3b7dfbebb65b1ae60791027eb5fd31a24fb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075570"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931043"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopírování dat do a z SQL Server pomocí Azure Data Factory
+
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
 > * [Verze 1](v1/data-factory-sqlserver-connector.md)
 > * [Aktuální verze](connector-sql-server.md)
@@ -48,11 +49,11 @@ Konkrétně tento konektor SQL Server podporuje:
 >[!NOTE]
 >Tento konektor teď nepodporuje SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) . Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a ovladač SQL Server ODBC. Postupujte [podle pokynů ke](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017) stažení ovladače ODBC a konfigurací připojovacích řetězců.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -505,7 +506,7 @@ Při kopírování dat z a do SQL Server se z SQL Server datových typů použí
 | bit |Logická hodnota |
 | char |String, Char[] |
 | date |Datum a čas |
-| Datum a čas |Datum a čas |
+| Datetime |Datum a čas |
 | datetime2 |Datum a čas |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
@@ -518,17 +519,17 @@ Při kopírování dat z a do SQL Server se z SQL Server datových typů použí
 | ntext |String, Char[] |
 | numeric |Decimal |
 | nvarchar |String, Char[] |
-| real |Single |
+| real |Jednoduchá |
 | rowversion |Byte[] |
 | smalldatetime |Datum a čas |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Objekt |
 | text |String, Char[] |
-| time |Časový interval |
+| time |TimeSpan |
 | časové razítko |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |identifikátor GUID |
+| uniqueidentifier |Guid |
 | Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |

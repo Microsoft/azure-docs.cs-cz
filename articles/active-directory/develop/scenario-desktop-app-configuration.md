@@ -1,6 +1,6 @@
 ---
-title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (konfigurace kódu) – platforma Microsoftu identity
-description: Zjistěte, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (konfigurace kódu aplikace).
+title: Konfigurace desktopové aplikace, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+description: Naučte se konfigurovat kód desktopové aplikace, která volá webová rozhraní API.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6baf7d21748b5b524745f26302e70612dab29a8d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175431"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920255"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – konfigurace kódu
 
@@ -34,7 +34,7 @@ Knihovny Microsoftu podporující desktopové aplikace jsou:
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporuje vytváření desktopových aplikací na různých platformách – Linux, Windows a MacOS.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podporuje vytváření desktopových aplikací na různých platformách. Vývoj v průběhu verze Public Preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Podporuje vytváření desktopových aplikací na různých platformách. Vývoj v průběhu verze Public Preview
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Podporuje vytváření desktopových aplikací na různých platformách. Vývoj v průběhu verze Public Preview
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Podporuje jenom desktopové aplikace běžící jenom na macOS.
 
 ## <a name="public-client-application"></a>Veřejná klientská aplikace
@@ -224,7 +224,7 @@ MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig 
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 
-SWIFT
+Swift:
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
@@ -253,7 +253,7 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)

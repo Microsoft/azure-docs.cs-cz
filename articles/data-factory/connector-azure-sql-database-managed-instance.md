@@ -4,7 +4,6 @@ description: Přečtěte si, jak přesunout data do a z Azure SQL Database sprav
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
@@ -12,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/09/2019
-ms.openlocfilehash: 9eedd8c1ad740f7393da47eac7a20cb5b58ad8d3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e8029b957fedc07ba571b61f1211c020b706bea3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218777"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929657"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database spravované instance pomocí Azure Data Factory
 
@@ -45,13 +44,13 @@ Konkrétně tato Azure SQL Database konektor spravované instance podporuje:
 >[!NOTE]
 >Tento konektor aktuálně nepodporuje objekt služby a ověřování spravované identity. Chcete-li se vyhnout, vyberte konektor Azure SQL Database a ručně zadejte server vaší spravované instance.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup k [veřejnému koncovému bodu](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)spravované instance Azure SQL Database, můžete použít Azure Data Factory spravované prostředí Azure Integration runtime. Ujistěte se, že jste povolili veřejný koncový bod a zároveň povolili provoz veřejného koncového bodu ve skupině zabezpečení sítě, aby se Azure Data Factory mohl připojit k vaší databázi. Další informace najdete v [těchto pokynech](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
 
 Pokud chcete získat přístup k privátnímu koncovému bodu spravované instance Azure SQL Database, nastavte místní [prostředí Integration runtime](create-self-hosted-integration-runtime.md) , které má přístup k databázi. Pokud zřídíte místní prostředí Integration runtime ve stejné virtuální síti jako vaše spravovaná instance, ujistěte se, že je váš počítač Integration runtime v jiné podsíti než vaše spravovaná instance. Pokud zřídíte místní prostředí Integration runtime v jiné virtuální síti než vaše spravovaná instance, můžete k připojení k virtuální síti použít buď partnerský vztah virtuální sítě, nebo virtuální síť. Další informace najdete v tématu [připojení aplikace k Azure SQL Database Managed instance](../sql-database/sql-database-managed-instance-connect-app.md).
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -187,7 +186,7 @@ Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založ
 }
 ```
 
-### <a name="managed-identity"></a>Spravované identity pro ověřování prostředků Azure
+### <a name="managed-identity"></a> Spravovaných identit pro ověřování prostředků Azure
 
 Datová továrna může být přidružená ke [spravované identitě pro prostředky Azure](data-factory-service-identity.md) , které představují konkrétní objekt pro vytváření dat. Tuto spravovanou identitu můžete použít pro Azure SQL Database ověřování spravované instance. Určená továrna má přístup k datům a jejich zkopírování z databáze nebo do databáze pomocí této identity.
 
@@ -591,9 +590,9 @@ Když se data zkopírují do Azure SQL Database spravované instance a z ní, po
 | binary |Byte[] |
 | bit |Logická hodnota |
 | char |String, Char[] |
-| date |DateTime |
-| Datum a čas |DateTime |
-| datetime2 |DateTime |
+| date |Datum a čas |
+| Datetime |Datum a čas |
+| datetime2 |Datum a čas |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte[] |
@@ -605,14 +604,14 @@ Když se data zkopírují do Azure SQL Database spravované instance a z ní, po
 | ntext |String, Char[] |
 | numeric |Decimal |
 | nvarchar |String, Char[] |
-| real |Single |
+| real |Jednoduchá |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datum a čas |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Objekt |
 | text |String, Char[] |
-| time |Časový interval |
+| time |TimeSpan |
 | časové razítko |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |

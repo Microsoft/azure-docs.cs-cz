@@ -4,21 +4,20 @@ description: Přečtěte si informace o tom, jak přesouvat data z databáze Pos
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6d8c63551bd6bcc7a7e00dffa6c2b6d9e0e644db
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666075"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929071"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,7 +32,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat PostgreSQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako jímky aktivitou kopírování najdete v části [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory v současné době podporuje přesun dat z databáze PostgreSQL do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do databáze PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Služba Data Factory podporuje připojení k místním zdrojům PostgreSQL pomocí brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
@@ -54,9 +53,9 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z m�
   - Azure PowerShell
   - Šablona Azure Resource Manageru
   - .NET API
-  - REST API
+  - Rozhraní REST API
 
-    Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+    Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -77,7 +76,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | server |Název serveru PostgreSQL. |Ano |
 | databáze |Název databáze PostgreSQL |Ano |
 | schema |Název schématu v databázi. V názvu schématu se rozlišují velká a malá písmena. |Ne |
-| authenticationType |Typ ověřování, který se používá pro připojení k databázi PostgreSQL. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
+| authenticationType. |Typ ověřování, který se používá pro připojení k databázi PostgreSQL. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
@@ -303,47 +302,47 @@ Jak je uvedeno v článku aktivity [přesunu dat](data-factory-data-movement-act
 
 Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí následující mapování.
 
-| Typ databáze PostgreSQL | PostgresSQL aliasy | Typ .NET Framework |
+| Typ databáze PostgreSQL | Aliasy PostgresSQL | Typ rozhraní .NET Framework |
 | --- | --- | --- |
-| abstime | |Hodnotu |
-| bigint |Int8 |Int64 |
+| abstime | |Datetime |
+| bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], řetězec |
 | bitové proměnlivost [(n)] |varbit |Byte [], řetězec |
 | Boolean |bool |Logická hodnota |
-| Seznam | |Byte [], řetězec |
+| seznam | |Byte [], řetězec |
 | Byte | |Byte [], řetězec |
 | znak [(n)] |Char [(n)] |Řetězec |
 | proměnlivé znaky [(n)] |varchar [(n)] |Řetězec |
 | identifikátor | |Řetězec |
-| IPv4/IPv6 | |Řetězec |
-| Žluté | |Byte [], řetězec |
-| date | |Hodnotu |
-| daterange | |Řetězec |
-| Dvojitá přesnost |float8 |Klepat |
+| cidr | |Řetězec |
+| kruh | |Byte [], řetězec |
+| date | |Datetime |
+| DateRange | |Řetězec |
+| Dvojitá přesnost |float8 |Double |
 | inet | |Byte [], řetězec |
 | intarry | |Řetězec |
 | int4range | |Řetězec |
 | int8range | |Řetězec |
-| celé číslo |int, int4 |Uvedena |
+| celé číslo |int, int4 |Datový typ Int32 |
 | interval [pole] [(p)] | |Časový interval |
-| JSON | |Řetězec |
-| jsonb | |Byte [] |
-| Link | |Byte [], řetězec |
+| json | |Řetězec |
+| jsonb | |Byte[] |
+| řádek | |Byte [], řetězec |
 | lseg | |Byte [], řetězec |
 | macaddr | |Byte [], řetězec |
-| papír | |Notaci |
-| číslice [(p, s)] |Decimal [(p, s)] |Notaci |
+| money | |Decimal |
+| číslice [(p, s)] |Decimal [(p, s)] |Decimal |
 | numrange | |Řetězec |
-| identifikátor | |Uvedena |
-| dílčí | |Byte [], řetězec |
+| oid | |Datový typ Int32 |
+| Cesta | |Byte [], řetězec |
 | pg_lsn | |Int64 |
 | Vyberte | |Byte [], řetězec |
-| Postupně | |Byte [], řetězec |
-| nemovitostí |float4 |Jednoduchá |
+| mnohoúhelník | |Byte [], řetězec |
+| real |float4 |Jednoduchá |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
-| sér |serial4 |Uvedena |
+| sér |serial4 |Datový typ Int32 |
 | text | |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky

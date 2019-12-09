@@ -3,21 +3,20 @@ title: Poznámky k verzi pro Bránu pro správu dat
 description: Zpráva k vydání verze služby Správa dat Gateway tory
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bb89ed08b05f9a8f271ceee400bc609881e7048d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d0e31a89494477e048c7a2f9f7b8165e08d1a2f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682574"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924257"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
 > [!NOTE]
@@ -75,7 +74,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>Prvky
+### <a name="enhancements"></a>Vylepšení
 - Vylepšené a robustnější prostředí pro registraci bran – nyní můžete sledovat stav průběhu během procesu registrace brány. díky tomu bude registrace rychlejší.
 - Vylepšení procesu obnovení brány – můžete i nadále obnovit bránu i v případě, že nemáte záložní soubor brány s touto aktualizací. To by vyžadovalo resetovat přihlašovací údaje propojených služeb na portálu.
 - Oprava chyby.

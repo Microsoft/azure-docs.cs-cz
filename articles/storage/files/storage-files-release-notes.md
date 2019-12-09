@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/8/2019
+ms.date: 12/6/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 633465e9123d679b1aa0e7f7ad048b17c18f2acb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771032"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931064"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -23,7 +23,7 @@ Tento článek obsahuje poznámky k podporovaným verzím agenta Synchronizace s
 ## <a name="supported-versions"></a>Podporované verze
 Agent Synchronizace souborů Azure podporuje následující verze:
 
-| RTM | Číslo verze agenta | Datum vydání | Stav |
+| Milník | Číslo verze agenta | Datum vydání | Stav |
 |----|----------------------|--------------|------------------|
 | Verze v9 – [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2\. prosince 2019 | Podporované – let |
 | Verze V8 – [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8\. října 2019 | Podporováno |
@@ -50,7 +50,7 @@ Následující poznámky k verzi jsou pro 9.0.0.0 agenta Azure File Sync (vydan�
 ### <a name="improvements-and-issues-that-are-fixed"></a>Vylepšení a problémy, které jsou vyřešeny
 
 - Podpora samoobslužného obnovení
-    - Uživatelé teď můžou svoje soubory obnovit pomocí funkce předchozí verze. Před vydáním verze v9 se funkce předchozí verze nepodporovala u svazků s povoleným vrstvou cloudu. Tato funkce musí být povolená pro každý svazek samostatně, na kterém existuje koncový bod s povoleným vrstvením cloudu. Další informace najdete v tématu.  
+    - Uživatelé teď můžou svoje soubory obnovit pomocí funkce předchozí verze. Před vydáním verze v9 se funkce předchozí verze nepodporovala u svazků s povoleným vrstvou cloudu. Tato funkce musí být povolená pro každý svazek samostatně, na kterém existuje koncový bod s povoleným vrstvením cloudu. Další informace najdete v tématu .  
 [Samoobslužné obnovení prostřednictvím předchozích verzí a služby VSS (služba Stínová kopie svazku)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Podpora větších velikostí sdílení souborů 
@@ -77,7 +77,8 @@ Následující poznámky k verzi jsou pro 9.0.0.0 agenta Azure File Sync (vydan�
     - Snížení počtu selhání odvolání. Velikost odvolání se teď automaticky upraví na základě šířky pásma sítě. 
     - Lepší výkon při stahování při přidávání nového serveru do skupiny synchronizace. 
     - Zmenšují se soubory, které se nesynchronizují kvůli konfliktům omezení. 
-
+    - Soubory se nezdařily nebo se neočekávaně odvolají v určitých scénářích, pokud je cesta koncového bodu serveru přípojným bodem svazku.
+    
 ### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
 Před nasazením Azure File Sync byste měli vyhodnotit, jestli je kompatibilní s vaším systémem pomocí nástroje Azure File Sync Evaluation Tool. Tento nástroj je Azure PowerShell rutinou, která kontroluje potenciální problémy se systémem souborů a datovou sadou, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny k instalaci a používání najdete v části [Nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) v příručce pro plánování. 
 

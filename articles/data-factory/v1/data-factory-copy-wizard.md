@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88e5603405ad5594b06674aaf6cbb2c4d23b754c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682792"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927054"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Snadné kopírování a přesouvání dat pomocí Průvodce kopírováním Azure Data Factory
 > [!NOTE]
@@ -52,7 +51,7 @@ Schéma vstupních dat nemusí v některých případech odpovídat schématu v�
 
 Průvodce kopírováním automaticky mapuje sloupce ve zdrojovém schématu na sloupce v cílovém schématu. Mapování můžete přepsat pomocí rozevíracích seznamů (nebo) určit, zda je při kopírování dat nutné přeskočit sloupec.   
 
-![Mapování schématu](./media/data-factory-copy-wizard/schema-mapping.png)
+![Schema mapping](./media/data-factory-copy-wizard/schema-mapping.png)
 
 ## <a name="filtering-data"></a>Filtrování dat
 Průvodce umožňuje filtrovat zdrojová data a vybrat pouze data, která je třeba zkopírovat do cílového úložiště dat nebo úložiště dat jímky. Filtrování omezuje objem dat, která mají být zkopírována do úložiště dat jímky, a tím zvyšuje propustnost operace kopírování. Poskytuje flexibilní způsob, jak filtrovat data v relační databázi pomocí souborů dotazovacího jazyka SQL (nebo) ve složce objektů BLOB v Azure pomocí [Data Factory funkcí a proměnných](data-factory-functions-variables.md).   

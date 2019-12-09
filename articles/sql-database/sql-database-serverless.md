@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807013"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931953"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database – bezserverová úroveň
 
@@ -185,18 +185,22 @@ Informace najdete [v tématu rychlý Start: vytvoření izolované databáze v A
 
 Následující příklad vytvoří novou databázi na výpočetní úrovni bez serveru.  V tomto příkladu je explicitně určen minimální prodleva virtuální jádra, Max virtuální jádra a interval pro autopauzu.
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-New-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -ComputeModel Serverless `
-  -Edition GeneralPurpose `
-  -ComputeGeneration Gen5 `
-  -MinVcore 0.5 `
-  -MaxVcore 2 `
-  -AutoPauseDelayInMinutes 720
+New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
+  -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
+  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+```
+
+* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Použití jazyka Transact-SQL (T-SQL)
 
@@ -215,22 +219,26 @@ Podrobnosti najdete v tématu [Vytvoření databáze](/sql/t-sql/statements/crea
 
 Následující příklad přesune databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru. V tomto příkladu je explicitně určen minimální prodleva virtuální jádra, Max virtuální jádra a interval pro autopauzu.
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-Set-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -Edition GeneralPurpose `
-  -ComputeModel Serverless `
-  -ComputeGeneration Gen5 `
-  -MinVcore 1 `
-  -MaxVcore 4 `
-  -AutoPauseDelayInMinutes 1440
+Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 `
+  -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
+  --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
+```
+
+* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Použití jazyka Transact-SQL (T-SQL)
 
-Následující příklad přesune databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru. 
+Následující příklad přesune databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru.
 
 ```sql
 ALTER DATABASE testdb 
@@ -245,23 +253,15 @@ Databáze bez serveru se dá přesunout do zřízené výpočetní vrstvy stejn�
 
 ## <a name="modifying-serverless-configuration"></a>Úprava konfigurace bez serveru
 
-### <a name="maximum-vcores"></a>Maximální počet virtuálních jader
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-#### <a name="use-powershell"></a>Použití PowerShellu
+Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy automatického pozastavení se provádí pomocí příkazu [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) v prostředí PowerShell pomocí argumentů `MaxVcore`, `MinVcore`a `AutoPauseDelayInMinutes`.
 
-Změna maximálního virtuální jádra se provádí pomocí příkazu [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) v PowerShellu s použitím argumentu `MaxVcore`.
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="minimum-vcores"></a>Minimální počet virtuálních jader
+Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí argumentů `capacity`, `min-capacity`a `auto-pause-delay`.
 
-#### <a name="use-powershell"></a>Použití PowerShellu
-
-Úprava minimálního virtuální jádra se provádí pomocí příkazu [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) v PowerShellu pomocí argumentu `MinVcore`.
-
-### <a name="autopause-delay"></a>Prodleva při autopauze
-
-#### <a name="use-powershell"></a>Použití PowerShellu
-
-Úprava prodlevy automatického pozastavení se provádí pomocí příkazu [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) v prostředí PowerShell s použitím argumentu `AutoPauseDelayInMinutes`.
+* * *
 
 ## <a name="monitoring"></a>Sledování
 
@@ -298,13 +298,20 @@ V Azure Portal se stav databáze zobrazí v podokně přehledu serveru, kde jsou
 
 Pomocí následujícího příkazu PowerShellu můžete zadat dotaz na stav pozastavení a obnovení databáze:
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-Get-AzSqlDatabase `
-  -ResourceGroupName $resourcegroupname `
-  -ServerName $servername `
-  -DatabaseName $databasename `
+Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
+```
+
+* * *
 
 ## <a name="resource-limits"></a>Omezení prostředků
 

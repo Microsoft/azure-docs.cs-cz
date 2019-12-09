@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803729"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919337"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -292,16 +292,16 @@ Pokud se ve vašem prostředí široce používá starší verze ověřování, 
 
 ### <a name="consent-grants"></a>Udělení souhlasu
 
-Při útoku na nedovolené udělení souhlasu útočník vytvoří aplikaci registrovanou v Azure AD, která požaduje přístup k datům, jako jsou kontaktní údaje, e-mail nebo dokumenty. Uživatelé můžou udělit souhlas se škodlivými aplikacemi prostřednictvím útoků phishingu nebo nepřímo neopatrně při vykládku na škodlivé weby.
+Při útoku na nedovolené udělení souhlasu útočník vytvoří aplikaci registrovanou v Azure AD, která požaduje přístup k datům, jako jsou kontaktní údaje, e-mail nebo dokumenty. Uživatelé můžou při vykládku na škodlivé weby udělit souhlas se škodlivými aplikacemi prostřednictvím útoků phishing.
 
-Níže jsou uvedená oprávnění, která byste mohli chtít pro cloudové služby Microsoftu:
+Níže najdete seznam aplikací s oprávněními, které byste mohli chtít pořizovat pro cloudové služby Microsoftu:
 
 - Aplikace s aplikací nebo delegovaným \*. Oprávnění pro čtení z
 - Aplikace s delegovanými oprávněními můžou jménem uživatele číst, posílat nebo spravovat e-maily.
 - Aplikace, kterým je uděleno oprávnění s následujícími oprávněními:
 
 | Prostředek | Oprávnění |
-| -------------------------- | -------------------- |
+| :- | :- |
 | Office 365 Exchange Online | EA. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Pošta. čtení |
@@ -309,11 +309,19 @@ Níže jsou uvedená oprávnění, která byste mohli chtít pro cloudové služ
 | | Pošta. Read. Shared |
 | | Pošta. v zápisu |
 
-Chcete-li se tomuto scénáři vyhnout, měli byste se podívat, jak zjistit a opravit [nedovolené granty souhlasu v sadě Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) k identifikaci a opravě aplikací s nedovolenými granty nebo aplikacemi, které mají více grantů, než je nutné. Naplánujte pravidelné kontroly oprávnění aplikací a odeberte je, když je nepotřebujete. nebo zcela odebrat samoobslužné služby a vytvořit postupy zásad správného řízení.
+- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Například:
+
+|Prostředek | Oprávnění |
+| :- | :- |
+| Graf Azure AD | Directory. AccessAsUser. All |
+| Microsoft Graph | Directory. AccessAsUser. All |
+| Azure REST API | user_impersonation |
+
+Chcete-li se tomuto scénáři vyhnout, měli byste se podívat, jak zjistit a opravit [nedovolené granty souhlasu v sadě Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) k identifikaci a opravě aplikací s nedovolenými granty nebo aplikacemi, které mají více grantů, než je nutné. Dále [odeberte samoobslužné služby zcela](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) a [vytvořte postupy zásad správného řízení](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Nakonec Naplánujte pravidelné kontroly oprávnění aplikací a odeberte je, když je nepotřebujete.
 
 #### <a name="consent-grants-recommended-reading"></a>Souhlas udělí doporučené čtení
 
-- [Azure Active Directory (AD) Graph API obory oprávnění](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)
+- [Oprávnění pro Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Nastavení uživatelů a skupin
 

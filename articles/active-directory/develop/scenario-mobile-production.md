@@ -1,5 +1,5 @@
 ---
-title: Mobilní aplikace, která volá webová rozhraní API (přesunout do produkčního prostředí) – Microsoft Identity Platform
+title: Přesunutí mobilní aplikace volající webová rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
 description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (přesunout do produkčního prostředí).
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67788dd9257a0a4685313dce44c6a3dfb5e514df
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 3e267b2f398480da6949a4c85133342aad5c2ba7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413603"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919898"
 ---
 # <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Mobilní aplikace, která volá webová rozhraní API – přesun do produkčního prostředí
 
@@ -44,7 +44,7 @@ Chcete-li diagnostikovat problémy ve vaší aplikaci, pomůže shromažďovat d
 - Uživatelé můžou požádat o pomoc, když nastanou problémy. Osvědčeným postupem je zachytit a dočasně ukládat protokoly a zadat umístění, kam je uživatelé můžou odeslat. MSAL poskytuje rozšíření protokolování pro zachycení podrobných informací o ověřování.
 - Pokud je k dispozici, povolte telemetrii prostřednictvím MSAL ke shromáždění dat o tom, jak se uživatelé přihlásí k vaší aplikaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 

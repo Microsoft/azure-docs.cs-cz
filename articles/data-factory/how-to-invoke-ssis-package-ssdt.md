@@ -1,30 +1,30 @@
 ---
-title: Spouštění balíčků SSIS v Azure Data Factory z SSDT
+title: Spouštění balíčků SSIS z SSDT
 description: Naučte se spouštět balíčky SSIS v Azure z SSDT.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/31/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 4c89bdddce7b7318e184994ddf627d853e29fd7e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/31/2019
+ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673610"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927708"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>Spouštění balíčků SSIS v Azure z SSDT
 Tento článek popisuje funkci projektů služba SSIS (SQL Server Integration Services) (SSIS) s podporou Azure na SQL Server Data Tools (SSDT), která umožňuje spouštět balíčky v Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF).  Tuto funkci můžete použít k otestování stávajících balíčků SSIS ještě před tím, než je převedete & Shift nebo migrujete do Azure, nebo pokud chcete vyvíjet nové balíčky SSIS pro spuštění v Azure.
 
 Pomocí této funkce můžete vytvořit novou Azure-SSIS IR nebo připojit existující SSIS k projektům a pak na něm spustit balíčky.  Podporujeme spouštění balíčků pro nasazení do katalogu SSIS (SSISDB) v modelu nasazení projektu a ty, které se mají nasadit do systémů souborů/sdílených složek/souborů Azure v modelu nasazení balíčku. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete tuto funkci použít, Stáhněte si a nainstalujte nejnovější SSDT s rozšířením projektů SSIS pro Visual Studio z [tohoto místa](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) nebo jako samostatný instalační program z [tohoto místa](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer).
 
 ## <a name="azure-enable-ssis-projects"></a>Azure – povolení projektů SSIS
@@ -52,13 +52,13 @@ Připojením projektů s podporou Azure tak, aby se SSIS v ADF, můžete nahrát
 3. Na stránce **Vyberte SSIS IR v ADF** vyberte existující ADF a Azure-SSIS IR, jestli chcete spustit balíčky, nebo vytvořte nové, pokud žádné nemáte.
    - Pokud chcete vybrat existující Azure-SSIS IR, vyberte nejdřív příslušné předplatné Azure a ADF.
    - Pokud vyberete svůj existující ADF, který nemá žádné Azure-SSIS IR, klikněte na tlačítko **vytvořit SSIS IR** a vytvořte nový na portálu ADF nebo v aplikaci.
-   - Pokud vyberete stávající předplatné Azure, které nemá žádný automatický podavač, klikněte na tlačítko **vytvořit SSIS IR** a spusťte **průvodce vytvořením Integration runtime**, kde můžete zadat umístění a předponu pro automatické vytvoření nové služby Azure. Skupinu prostředků, Data Factory a SSIS IR vaším jménem, s názvem v následujícím vzoru: **YourPrefix-RG/DF/IR-YourCreationTime**.
+   - Pokud vyberete stávající předplatné Azure, které nemá žádný ADF, klikněte na tlačítko **vytvořit SSIS IR** a spusťte **průvodce vytvořením Integration runtime**, kde můžete zadat umístění a předponu, abychom mohli automaticky vytvořit novou skupinu prostředků Azure, Data Factory a SSIS IR vaším jménem, a to s názvem v následujícím vzoru: **YourPrefix-RG/DF/IR-YourCreationTime**.
    
    ![Výběr SSIS IR v ADF](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
 4. Na stránce **vybrat Azure Storage** vyberte svůj existující účet Azure Storage, abyste do souborů Azure nahráli balíčky, nebo vytvořte novou, pokud žádné nemáte.
    - Pokud chcete vybrat svůj existující účet Azure Storage, vyberte nejdřív příslušné předplatné Azure.
-   - Pokud zaškrtnete stejné předplatné Azure jako Azure-SSIS IR, který nemá žádný účet Azure Storage, klikněte na tlačítko **vytvořit Azure Storage** , aby se pro nás automaticky vytvořila nová služba ve stejném umístění jako vaše Azure-SSIS IR s názvem kombinace předpony názvu Azure-SSIS IR a data jejího vytvoření.
+   - Pokud zaškrtnete stejné předplatné Azure jako Azure-SSIS IR, která nemá žádný účet Azure Storage, klikněte na tlačítko **vytvořit Azure Storage** pro nás pro automatické vytvoření nového nového uživatele ve stejném umístění, ve kterém se používá, a na stejné místo jako vaše Azure-SSIS IR s názvem kombinováním předpony svého Azure-SSIS IRho názvu a jeho data vytvoření.
    - Pokud vyberete jiné předplatné Azure, které nemá žádný účet Azure Storage, klikněte na tlačítko **vytvořit Azure Storage** a vytvořte nový na Azure Portal.
    
    ![Výběr služby Azure Storage](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
@@ -77,18 +77,18 @@ Po připojení projektů k SSIS v ADF můžete spouštět balíčky na Azure-SSI
    ![Spustit balíček v Azure](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png)
 
 > [!NOTE]
-> Spouštění balíčků v Azure vyžaduje, abyste měli spuštěný Azure-SSIS IR, takže pokud je Azure-SSIS IR zastavený, zobrazí se dialogové okno, aby se spouštělo.  S výjimkou času vlastní instalace by tento proces měl být dokončen během 5 minut, ale může trvat přibližně 20-30 minut, než se Azure-SSIS IR připojuje k virtuální síti.  Po spuštění balíčků v Azure můžete zastavit Azure-SSIS IR a spravovat tak jejich spuštěné náklady tak, že pravým tlačítkem myši kliknete na jeho uzel v Průzkumník řešení panelu SSDT a pak vyberete položku nabídky **Start\Stop\Manage** , kterou přejdete na portál ADF/ v aplikaci.
+> Spouštění balíčků v Azure vyžaduje, abyste měli spuštěný Azure-SSIS IR, takže pokud je Azure-SSIS IR zastavený, zobrazí se dialogové okno, aby se spouštělo.  S výjimkou času vlastní instalace by tento proces měl být dokončen během 5 minut, ale může trvat přibližně 20-30 minut, než se Azure-SSIS IR připojuje k virtuální síti.  Po spuštění balíčků v Azure můžete zastavit Azure-SSIS IR a spravovat tak jejich spuštěné náklady tak, že pravým tlačítkem myši kliknete na svůj uzel v Průzkumník řešením panelu SSDT a pak vyberete položku nabídky **Start\Stop\Manage** , která vás přesměruje na portál ADF nebo na aplikaci.
 
 ### <a name="checking-package-execution-logs"></a>Kontrola protokolů spuštění balíčku
 Při spuštění balíčku naformátujeme a zobrazíme protokol v okně průběhu SSDT.  V případě dlouhotrvajícího balíčku budeme průběžně aktualizovat protokol o minuty.  Spuštění balíčku můžete zastavit kliknutím na tlačítko **zastavit** na panelu nástrojů SSDT, který ho okamžitě zruší.  Nezpracované data protokolu můžete také dočasně najít v cestě UNC (Universal Naming Convention): `\\<YourConnectedAzureStorage>.file.core.windows.net\ssdtexecution\<YourProjectName-FirstConnectTime>\<YourPackageName-tmp-ExecutionTime>\logs`, ale po jednom dni ji vyčistíme.
 
 ### <a name="switching-package-protection-level"></a>Přepínání úrovně ochrany balíčků
-Spouštění balíčků SSIS v Azure nepodporuje úrovně ochrany **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** .  V důsledku toho budou v případě, že jsou balíčky nakonfigurovány s těmito balíčky, dočasně je přepnete do **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**v uvedeném pořadí s náhodně generovanými hesly při nahrávání vašeho zabalí se do souborů Azure, které se budou spouštět na vašich Azure-SSIS IR.
+Spouštění balíčků SSIS v Azure nepodporuje úrovně ochrany **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** .  V důsledku toho budou v případě, že jsou balíčky nakonfigurovány s těmito balíčky, dočasně je přepnete do **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**v uvedeném pořadí s náhodně generovanými hesly, když nahrajeme vaše balíčky do služby soubory Azure ke spuštění na vašich Azure-SSIS IR.
 
 > [!NOTE]
-> Pokud vaše balíčky obsahují úlohy spouštěné balíčku, které odkazují na další balíčky nakonfigurované s úrovní ochrany **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** , musíte tyto ostatní balíčky ručně nakonfigurovat na použití **. EncryptSensitiveWithPassword**/v **EncryptAllWithPassword**před spuštěním balíčků.
+> Pokud vaše balíčky obsahují úlohy vykonání balíčku, které odkazují na jiné balíčky nakonfigurované s úrovní ochrany **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** , musíte tyto ostatní balíčky před spuštěním balíčků ručně znovu nakonfigurovat tak, aby používaly **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**.
 
-Pokud jsou vaše balíčky už nakonfigurované s úrovní ochrany **EncryptSensitiveWithPassword**/**EncryptAllWithPassword** , budeme je uchovávat beze změny, ale při nahrávání balíčků do se pořád budou používat náhodně generovaná hesla. Soubory Azure ke spuštění ve vašem Azure-SSIS IR.
+Pokud jsou vaše balíčky už nakonfigurované s úrovní ochrany **EncryptSensitiveWithPassword**/**EncryptAllWithPassword** , budeme je uchovávat beze změny, ale při nahrávání vašich balíčků do souborů Azure budou pořád používat náhodně vytvořená hesla, která se budou spouštět na vašich Azure-SSIS IR.
 
 ### <a name="using-package-configuration-file"></a>Použití konfiguračního souboru balíčku
 Pokud v modelu nasazení balíčku použijete konfigurační soubory balíčku pro změnu hodnot proměnných v době běhu, budeme tyto soubory automaticky nahrát do souborů Azure, aby je bylo možné vykonání na vašem Azure-SSIS IR.
