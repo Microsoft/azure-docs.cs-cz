@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 9ee1dd74384725b3fffbfea7144c3a536b50c531
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174548"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931540"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikovat události do Azure Active Directory chráněných koncových bodů
 
@@ -22,7 +22,7 @@ Tento článek používá Azure Portal k ukázce, ale funkci lze také povolit p
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="create-and-azure-ad-application"></a>Vytvoření a aplikace Azure AD
+## <a name="create-an-azure-ad-application"></a>Vytvoření aplikace Azure AD
 
 Začněte vytvořením aplikace Azure AD pro chráněný koncový bod. Viz https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
     - Nakonfigurujte chráněné rozhraní API, které bude volat aplikace typu démon.

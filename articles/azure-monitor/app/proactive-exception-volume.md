@@ -1,18 +1,18 @@
 ---
-title: Inteligentní zjišťování – neobvyklé zvýšení objemu výjimek, v Azure Application Insights | Microsoft Docs
-description: Monitorování výjimek aplikace pomocí Azure Application Insights pro neobvyklé vzory ve svazku výjimek.
+title: Abnormální zvýšení objemu výjimky – Azure Application Insights
+description: Monitorování výjimek aplikací pomocí inteligentní detekce v Azure Application Insights pro neobvyklé vzorce ve svazku výjimek.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/08/2017
-ms.openlocfilehash: fa7669b78caabb95b08200e83ed18ea982ce9ac9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 02c4fca42f3d5d7494dc8fd6fe0e33161904ddbe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820602"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928231"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>Neobvyklé zvýšení objemu výjimek (Preview)
 
@@ -27,7 +27,7 @@ Algoritmy strojového učení se používají k detekci nárůstu počtu výjime
 ## <a name="does-my-app-definitely-have-a-problem"></a>Má moje aplikace konečně nějaký problém?
 Ne, oznámení neznamená, že vaše aplikace má jednoznačně problém. I když nadměrný počet výjimek obvykle označuje problém s aplikací, tyto výjimky mohou být neškodné a správně zpracovány vaší aplikací.
 
-## <a name="how-do-i-fix-it"></a>Návody opravit?
+## <a name="how-do-i-fix-it"></a>Jak ho mám opravit?
 Oznámení zahrnují diagnostické informace pro podporu procesu diagnostiky:
 1. **Třídění.** V tomto oznámení se dozvíte, kolik uživatelů nebo kolik požadavků je ovlivněno. To vám může přispět k přiřazení priority k problému.
 2. **Oboru.** Má tento problém vliv na veškerý provoz nebo jenom nějaké operace? Tyto informace lze získat z oznámení.

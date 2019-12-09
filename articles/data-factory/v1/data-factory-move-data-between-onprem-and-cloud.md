@@ -4,21 +4,20 @@ description: Nastavte bránu dat pro přesun dat mezi místním prostředím a c
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 52bce71abd6ecf30b5a3661c2e6033537357db3a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682475"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931910"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány
 > [!NOTE]
@@ -53,13 +52,13 @@ Před zahájením tohoto Názorného postupu musíte mít následující požada
 ## <a name="create-data-factory"></a>Vytvoření objektu pro vytváření dat
 V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory s názvem **ADFTutorialOnPremDF**.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na **vytvořit prostředek**, klikněte na **Intelligence + Analytics**a pak klikněte na **Data Factory**.
 
-   ![Nový -> Objekt pro vytváření dat](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
+   ![Nový -> Datová továrna](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. Na stránce **Nová datová továrna** jako název zadejte **ADFTutorialOnPremDF** .
 
-    ![Přidat do úvodní panel](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
+    ![Přidat k úvodnímu panelu](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
    > Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba: **název objektu pro vytváření dat "ADFTutorialOnPremDF" není k dispozici**, změňte název objektu pro vytváření dat (třeba na yournameADFTutorialOnPremDF) a zkuste to znovu. Použijte tento název místo ADFTutorialOnPremDF při provádění zbývajících kroků v tomto kurzu.
@@ -148,7 +147,7 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
    * Použijte k místnímu zdroji dat pomocí brány oddíl **test Connection** .
    * Kliknutím na **Zobrazit protokoly** zobrazíte protokol Správa dat brány v okně Prohlížeč událostí.
    * Kliknutím na **Odeslat protokoly** nahrajte soubor zip s protokoly posledních sedmi dnů do Microsoftu, aby se usnadnilo řešení potíží s problémy.
-10. Na kartě **Diagnostika** v části **Test připojení** vyberte **SQLServer** pro typ úložiště dat, zadejte název databázového serveru, název databáze, zadejte typ ověřování, zadejte uživatelské jméno a heslo a klikněte na **Otestujte** , abyste otestovali, jestli se brána může připojit k databázi.
+10. Na kartě **Diagnostika** v části **Test připojení** vyberte **SQLServer** pro typ úložiště dat, zadejte název databázového serveru, název databáze, zadejte typ ověřování, zadejte uživatelské jméno a heslo a klikněte na tlačítko **test** , chcete-li ověřit, zda se brána může připojit k databázi.
 11. Přepněte do webového prohlížeče a v **Azure Portal**klikněte na tlačítko **OK** na stránce **Konfigurace** a potom na stránce **Nová brána dat** .
 12. Ve stromovém zobrazení na levé straně byste měli vidět **adftutorialgateway** v části **brány dat** .  Pokud na něj kliknete, měl by se zobrazit přidružený kód JSON.
 
@@ -389,7 +388,7 @@ V tomto kroku budete pomocí webu Azure Portal monitorovat, co se děje v objekt
 
 1. V diagramu poklikejte na **EmpOnPremSQLTable**.  
 
-    ![EmpOnPremSQLTable řezy](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
+    ![EmpOnPremSQLTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 2. Všimněte si, že všechny datové řezy jsou ve stavu **připraveno** , protože doba trvání kanálu (čas začátku do konce) je v minulosti. Je to také proto, že jste vložili data do databáze SQL Server a tato data jsou pokaždé. Potvrďte, že v dolní části **řezy problému** nejsou žádné řezy zobrazené. Chcete-li zobrazit všechny řezy, klikněte na tlačítko **Zobrazit další** v dolní části seznamu řezů.
 3. Nyní na stránce **datové sady** klikněte na **OutputBlobTable**.
 
@@ -409,7 +408,7 @@ V tomto kroku budete pomocí webu Azure Portal monitorovat, co se děje v objekt
 8. volitelné Klikněte na **kanály**, klikněte na **ADFTutorialOnPremDF**a Projděte si vstupní tabulky (**spotřebované**) nebo výstupní datové sady (**produkované**).
 9. Pomocí nástrojů, jako je [Microsoft Průzkumník služby Storage](https://storageexplorer.com/) , ověřte, jestli je pro každou hodinu vytvořený objekt BLOB nebo soubor.
 
-   ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Průzkumník služby Azure Storage](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Další kroky
 * Všechny podrobnosti o Správa dat bráně najdete v článku o [Správa dat brány](data-factory-data-management-gateway.md) .

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120486"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913719"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti úložiště pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -60,8 +60,8 @@ Pokud chcete definovat různé úrovně úložiště, jako je například Premiu
 
 V AKS se vytvoří dvě počáteční StorageClasses:
 
-- *výchozí* – používá službu Azure Storage Standard k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní, když se odstraní pod ním, který ho použil.
-- *Managed Premium* – využívá Azure Premium Storage k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní, když se odstraní pod ním, který ho použil.
+- *výchozí* – používá službu Azure Storage Standard k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
+- *Managed Premium* – využívá Azure Premium Storage k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
 
 Pokud pro trvalý svazek není zadána žádná StorageClass, použije se výchozí StorageClass. Při žádosti o trvalé svazky postupujte opatrně, aby používaly vhodné úložiště, které potřebujete. StorageClass můžete vytvořit pro další potřeby pomocí `kubectl`. Následující příklad používá prémiové Managed Disks a určuje, že základní disk Azure by měl být *zachován* při odstranění části pod.
 

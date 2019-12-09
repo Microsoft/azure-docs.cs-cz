@@ -1,6 +1,5 @@
 ---
-title: Průvodce nastavením jednostránkové aplikace (SPA) JavaScriptu pro Azure AD v 2.0
-titleSuffix: Microsoft identity platform
+title: Microsoft Identity Platform JavaScript – jednoduchá stránka – Průvodce aplikací | Azure
 description: Jak aplikace JavaScript SPA můžou volat rozhraní API, které vyžaduje přístupové tokeny pomocí koncového bodu Azure Active Directory v 2.0
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc03e6f1610fe6cef9ce72c981f6f800da8a9951
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802531"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919388"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
 
@@ -49,7 +48,7 @@ Tato příručka používá následující knihovnu:
 
 |Knihovna|Popis|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript Preview|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript Preview|
 
 > [!NOTE]
 > *Msal. js* cílí na koncový bod Microsoft Identity Platform, který umožňuje osobním účtům a školním a pracovním účtům přihlašovat a získávat tokeny. Koncový bod platformy Microsoft identity má [určitá omezení](azure-ad-endpoint-comparison.md#limitations).
@@ -82,7 +81,7 @@ Tato příručka používá následující knihovnu:
 >
 > ### <a name="option-2-visual-studio"></a>Možnost 2: Visual Studio
 > Pokud používáte aplikaci Visual Studio a vytváříte nový projekt, postupujte podle následujících kroků:
-> 1. V aplikaci Visual Studio vyberte **soubor**  > **Nový**  > **projekt**.
+> 1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
 > 1. V části **Visual C#\Web** vyberte **Webová aplikace ASP.NET (.NET Framework)** .
 > 1. Zadejte název vaší aplikace a pak vyberte **OK**.
 > 1. V části **Nová webová aplikace ASP.NET**vyberte **prázdné**.
@@ -331,7 +330,7 @@ Do `index.html` souboru přidejte následující kód v rámci značek `<script>
 
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-1. Po zobrazení stránky **Registrovat aplikaci** zadejte název vaší aplikace.
+1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 1. V části **identifikátor URI pro přesměrování** vyberte v rozevíracím seznamu **webovou** platformu a pak nastavte tuto hodnotu na adresu URL aplikace, která je založená na vašem webovém serveru.
 
@@ -353,7 +352,7 @@ Do `index.html` souboru přidejte následující kód v rámci značek `<script>
 >
 > #### <a name="set-a-redirect-url-for-visual-studio"></a>Nastavení adresy URL pro přesměrování pro Visual Studio
 > Chcete-li získat adresu URL pro přesměrování pro aplikaci Visual Studio, postupujte podle následujících kroků:
-> 1. V Průzkumník řešení vyberte projekt.
+> 1. V Průzkumníku řešení vyberte projekt.
 >
 >    Otevře se okno **vlastnosti** . Pokud tomu tak není, stiskněte F4.
 >
@@ -380,8 +379,8 @@ Do `index.html` souboru přidejte následující kód v rámci značek `<script>
     ```
 
     Kde:
-    - *\<Enter_the_Application_Id_here >* je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
-    - *\<Enter_the_Tenant_info_here >* je nastavená na jednu z následujících možností:
+    - *\<Enter_the_Application_Id_here >* je **ID aplikace (klienta)** pro zaregistrovanou aplikaci.
+    - *\<Enter_the_Tenant_info_here >* je nastavena na jednu z následujících možností:
        - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například *contoso.Microsoft.com*).
        - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu **organizacemi**.
        - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu **běžnými**. Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu **příjemci**.

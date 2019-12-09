@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950367"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913886"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -91,13 +91,13 @@ Kubenet i Azure CNI poskytují připojení k síti pro vaše clustery AKS. Exist
     * Používá interní nebo externí nástroj pro vyrovnávání zatížení k dosažení lusků mimo cluster.
     * Je nutné ručně spravovat a udržovat trasy definované uživatelem (udr).
     * Maximálně 400 uzlů na cluster.
-* **CNI Azure**
-    * Lusky získají úplnou konektivitu virtuální sítě a dají se přímo oslovit mimo cluster.
+* **Azure CNI**
+    * Lusky získají úplnou konektivitu virtuální sítě a dají se přímo kontaktovat prostřednictvím jejich privátních IP adres z propojených sítí.
     * Vyžaduje další adresní prostor IP adres.
 
 Mezi kubenet a Azure CNI existují následující rozdíly v chování:
 
-| Funkce                                                                                   | Kubenet   | CNI Azure |
+| Schopnost                                                                                   | Kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
 | Nasadit cluster v existující nebo nové virtuální síti                                            | Podporováno – udr ručně použito | Podporováno |
 | Připojení pod                                                                         | Podporováno | Podporováno |
@@ -115,7 +115,7 @@ Bez ohledu na použitý model sítě můžete nasadit jak kubenet, tak i Azure C
 * Platforma Azure může automaticky vytvářet a konfigurovat prostředky virtuální sítě při vytváření clusteru AKS.
 * Při vytváření clusteru AKS můžete ručně vytvořit a nakonfigurovat prostředky virtuální sítě a připojit se k těmto prostředkům.
 
-I když jsou podporované možnosti, jako jsou koncové body služby nebo udr, kubenet i Azure CNI, [zásady podpory pro AKS][support-policies] definují, jaké změny můžete provádět. Příklad:
+I když jsou podporované možnosti, jako jsou koncové body služby nebo udr, kubenet i Azure CNI, [zásady podpory pro AKS][support-policies] definují, jaké změny můžete provádět. Například:
 
 * Pokud ručně vytvoříte prostředky virtuální sítě pro cluster AKS, budete podporováni při konfiguraci vlastních koncových bodů udr nebo služby.
 * Pokud platforma Azure automaticky vytvoří prostředky virtuální sítě pro cluster AKS, není podporováno ruční změna těchto prostředků spravovaných AKS ke konfiguraci vlastních koncových bodů udr nebo služby.

@@ -1,5 +1,5 @@
 ---
-title: Profilace produkčních aplikací v Azure pomocí Application Insights Profiler | Microsoft Docs
+title: Profilace produkčních aplikací v Azure pomocí Application Insights Profiler
 description: Identifikujte cestu k Hotu v kódu webového serveru pomocí profileru s nízkou úrovní.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 64e7cc0afa4051836d38c885dff0bc0a0e0b08c6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820517"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922083"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilace produkčních aplikací v Azure pomocí Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Povolení Application Insights Profiler pro vaši aplikaci
@@ -109,7 +109,7 @@ Aplikace provádí síťové operace.
 
 ### <a id="when"></a>Když sloupec
 
-Sloupec **when** je vizualizace, jak se shromažďují celkové vzorky pro uzel v průběhu času. Celkový rozsah žádosti je dělený na 32 časových intervalů. Zahrnuté vzorky pro tento uzel se shromažďují v těchto intervalech 32. Jednotlivé intervaly jsou reprezentovány jako pruhy. Výška pruhu představuje hodnotu škálované. Pro uzly, které jsou označeny jako **CPU_TIME** nebo **BLOCKED_TIME**, nebo kde existuje zřejmá relace pro využívání prostředku (například procesoru, disku nebo vlákna), představuje tento pruh spotřebu jednoho z prostředků během intervalu. Pro tyto metriky je možné získat hodnotu větší než 100% díky využívání více prostředků. Pokud například použijete v průměru dva procesory během intervalu, dostanete 200 procent.
+Sloupec **when** je vizualizace, jak se shromažďují celkové vzorky pro uzel v průběhu času. Celkový rozsah žádosti je dělený na 32 časových intervalů. Zahrnuté vzorky pro tento uzel se shromažďují v těchto intervalech 32. Jednotlivé intervaly jsou reprezentovány jako pruhy. Výška pruhu představuje hodnotu škálované. Pro uzly, které jsou označeny **CPU_TIME** nebo **BLOCKED_TIME**nebo kde existuje zřejmá relace pro využívání prostředku (například CPU, disku nebo vlákna), představuje tento pruh spotřebu jednoho ze zdrojů během intervalu. Pro tyto metriky je možné získat hodnotu větší než 100% díky využívání více prostředků. Pokud například použijete v průměru dva procesory během intervalu, dostanete 200 procent.
 
 ## <a name="limitations"></a>Omezení
 

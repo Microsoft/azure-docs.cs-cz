@@ -1,24 +1,26 @@
 ---
-title: Kopírování dat pomocí nástroje Azure Kopírování dat
+title: Kopírování dat z úložiště objektů BLOB v Azure do SQL pomocí nástroje pro Kopírování dat
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje pro kopírování dat zkopírujte data z úložiště objektů blob v Azure do databáze SQL.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.author: jingwang
-ms.openlocfilehash: 4646d7429dc4b3286f6af8861eaf7f1e6e27a760
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e71fc869a08192b756c37e5106568bdd36361bd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683602"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926581"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
+
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](tutorial-copy-data-tool.md)
@@ -34,7 +36,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Vytvoření kanálu pomocí nástroje pro kopírování dat
 > * Monitorování spuštění aktivit a kanálu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet úložiště Azure:** Jako _zdrojové_ úložiště dat použijte úložiště objektů blob. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
@@ -71,7 +73,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Povolte službám Azure přístup k SQL serveru. Ověřte, že je pro váš server, na kterém běží SQL Database, povolené nastavení **Povolit přístup ke službám Azure**. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > Přehled > nastavení brány firewall serveru > nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto**.
+2. Povolte službám Azure přístup k SQL Serveru. Ověřte, že je pro váš server, na kterém běží SQL Database, povolené nastavení **Povolit přístup ke službám Azure**. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > Přehled > nastavení brány firewall serveru > nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -96,11 +98,11 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
 1. V části **Verze** vyberte **V2**.
 1. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních a oblastech.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 1. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
     
-    ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
+    ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
 1. Pokud chcete na samostatné kartě otevřít uživatelské rozhraní služby Azure Data Factory, vyberte dlaždici **Vytvořit a monitorovat**.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat
@@ -128,7 +130,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
     b. Kliknutím na **Next** (Další) přejděte k dalšímu kroku.
 
-1. Na stránce **Nastavení formátu souboru** si všimněte, že nástroj automaticky rozpoznává oddělovače sloupců a řádků. Vyberte **Next** (Další). Na této stránce si také můžete prohlédnou data a schéma vstupních dat.
+1. Na stránce **Nastavení formátu souboru** si všimněte, že nástroj automaticky rozpoznává oddělovače sloupců a řádků. Vyberte **Další**. Na této stránce si také můžete prohlédnou data a schéma vstupních dat.
 
     ![Nastavení formátu souboru](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. Na stránce **Destination data store** (Cílové úložiště dat) proveďte následující kroky:
@@ -147,15 +149,15 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
 1. Na stránce **Mapování tabulek** vyberte tabulku **[dbo].[emp]** a pak vyberte **Další**.
 
-1. Na stránce **Mapování schématu** si všimněte mapování prvního a druhého sloupce ve vstupním souboru na sloupce **FirstName** (Jméno) a **LastName** (Příjmení) tabulky **emp**. Vyberte **Next** (Další).
+1. Na stránce **Mapování schématu** si všimněte mapování prvního a druhého sloupce ve vstupním souboru na sloupce **FirstName** (Jméno) a **LastName** (Příjmení) tabulky **emp**. Vyberte **Další**.
 
     ![Stránka Mapování schématu](./media/tutorial-copy-data-tool/schema-mapping.png)
 1. Na stránce **Settings** (Nastavení) vyberte **Next** (Další).
 1. Na stránce **Souhrn** zkontrolujte nastavení a pak vyberte **Další**.
 1. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu).
-1. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu. Seznam můžete aktualizovat kliknutím na **Aktualizovat**.
+1. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**.
 
-1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Pokud se chcete vrátit do zobrazení spuštění kanálu, vyberte odkaz **spuštění kanálu** v horní části. Pokud chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
+1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Pokud se chcete vrátit do zobrazení spuštění kanálu, vyberte odkaz **spuštění kanálu** v horní části. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
     ![Monitorování spuštění aktivit](./media/tutorial-copy-data-tool/activity-monitoring.png)
 

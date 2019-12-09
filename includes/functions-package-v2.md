@@ -3,25 +3,25 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 2940ff60f2fd16d04ae0d6c0f29b972b88678bfb
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 81971a1c56a51e0c110337fb645f0b84bb5d20b8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654244"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914915"
 ---
-Následující tabulka obsahuje informace o přidání podpory pro tuto vazbu v jednotlivých prostředích pro vývoj.
+Následující tabulka obsahuje informace o tom, jak přidat podporu pro tuto vazbu v každém vývojovém prostředí.
 
-| Vývojové prostředí               | Přidání podpory v <br>Functions 2.x  |
+| Vývojové prostředí               | Přidání podpory  |
 |----------------------|----------------|
-|Místní vývoj – knihovny tříd C#       | [Instalace balíčku](../articles/azure-functions/functions-bindings-register.md#vs) |
-|Místní vývoj - C# skriptu, JavaScript, F#, Javě a Pythonu |[Registrace rozšíření](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |
-|Vývoj pro portál| Nainstalovat při přidání výstupní vazby    |
+|Místní knihovna pro C# vývoj a třídy       | [Instalace balíčku](../articles/azure-functions/functions-bindings-register.md#vs) |
+|Místní vývoj – C# skript, JavaScript, F#, Java a Python |[Zaregistrujte rozšíření.](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |
+|Vývoj portálu| Nainstalovat při přidávání výstupní vazby    |
 
-Zjistěte, jak aktualizovat existující vazby rozšíření na portálu, aniž byste museli znovu publikovat projekt aplikace funkcí, najdete v článku [aktualizovat vaše rozšíření](../articles/azure-functions/install-update-binding-extensions-manual.md).
+Informace o tom, jak aktualizovat existující rozšíření vazby na portálu bez nutnosti opětovného publikování projektu Function App, najdete v tématu [aktualizace rozšíření](../articles/azure-functions/install-update-binding-extensions-manual.md).

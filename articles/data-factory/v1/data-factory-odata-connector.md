@@ -4,21 +4,20 @@ description: Přečtěte si, jak přesunout data ze zdrojů OData pomocí Azure 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ea751a18f8a5e5423b3199919ccf440c41595091
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666671"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931868"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Přesunutí dat ze zdroje OData pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,7 +45,7 @@ Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data ze z
 
 Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -65,7 +64,7 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | --- | --- | --- |
 | type |Vlastnost Type musí být nastavená na: **OData** . |Ano |
 | url |Adresa URL služby OData. |Ano |
-| authenticationType |Typ ověřování, který se používá pro připojení ke zdroji OData <br/><br/> Pro Cloud OData jsou možné hodnoty anonymní, základní a OAuth (Poznámka Azure Data Factory aktuálně podporuje jenom Azure Active Directory OAuth). <br/><br/> Pro místní OData jsou možné hodnoty anonymní, základní a Windows. |Ano |
+| authenticationType. |Typ ověřování, který se používá pro připojení ke zdroji OData <br/><br/> Pro Cloud OData jsou možné hodnoty anonymní, základní a OAuth (Poznámka Azure Data Factory aktuálně podporuje jenom Azure Active Directory OAuth). <br/><br/> Pro místní OData jsou možné hodnoty anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze pokud používáte základní ověřování) |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze pokud používáte základní ověřování) |
 | authorizedCredential |Pokud používáte OAuth, klikněte na tlačítko **autorizovat** v průvodci kopírováním Data Factory nebo v editoru a zadejte své přihlašovací údaje. hodnota této vlastnosti se vygeneruje automaticky. |Ano (jenom v případě, že používáte ověřování OAuth) |
@@ -148,7 +147,7 @@ Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje inf
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| dílčí |Cesta k prostředku OData |Ne |
+| Cesta |Cesta k prostředku OData |Ne |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
@@ -157,9 +156,9 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity, se liší
 
 Pokud je zdroj typu **RelationalSource** (který zahrnuje OData), jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Příklad | Požaduje se |
+| Vlastnost | Popis | Příklad: | Požaduje se |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |"? $select = název, popis & $top = 5" |Ne |
+| query |Pomocí vlastního dotazu můžete číst data. |"?$select=Name, Description&$top=5" |Ne |
 
 ## <a name="type-mapping-for-odata"></a>Mapování typů pro OData
 Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , aktivita kopírování provádí automatické převody typů ze zdrojových typů do typů jímky s následujícím dvěma kroky.
@@ -171,18 +170,18 @@ Při přesunu dat z OData se z typů OData do typu .NET používají následují
 
 | Datový typ OData | Typ .NET |
 | --- | --- |
-| EDM. Binary |Byte [] |
-| Edm.Boolean |Logick |
-| EDM. Byte |Byte [] |
-| EDM. DateTime |DateTime |
-| EDM. Decimal |Notaci |
-| Edm.Double |Klepat |
+| Edm.Binary |Byte[] |
+| Edm.Boolean |Bool |
+| Edm.Byte |Byte[] |
+| Edm.DateTime |Datum a čas |
+| Edm.Decimal |Decimal |
+| Edm.Double |Double |
 | Edm.Single |Jednoduchá |
-| EDM. GUID |Guid |
-| EDM. Int16 |Int16 |
-| Edm.Int32 |Uvedena |
+| Edm.Guid |Guid |
+| Edm.Int16 |Int16 |
+| Edm.Int32 |Datový typ Int32 |
 | Edm.Int64 |Int64 |
-| EDM. SByte |Int16 |
+| Edm.SByte |Int16 |
 | Edm.String |Řetězec |
 | Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |

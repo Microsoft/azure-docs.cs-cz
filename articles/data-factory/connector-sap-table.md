@@ -1,23 +1,22 @@
 ---
-title: Kopírování dat z tabulky SAP pomocí Azure Data Factory
+title: Kopírování dat z tabulky SAP
 description: Naučte se, jak kopírovat data z tabulky SAP do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 9c4e22e997b4ad8c36d8aaf84d1bb8aacb5c5529
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680226"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926180"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -26,7 +25,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 >[!TIP]
 >Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor tabulka SAP se podporuje pro následující činnosti:
 
@@ -48,7 +47,7 @@ Konkrétně tato konektorová tabulka SAP podporuje:
 - Kopírování dat pomocí základního ověřování nebo zabezpečené síťové komunikace (SNC), pokud je nakonfigurován SNC.
 - Připojování k aplikačnímu serveru SAP nebo serveru zpráv SAP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít tento konektor tabulky SAP, musíte:
 
@@ -63,7 +62,7 @@ Pokud chcete použít tento konektor tabulky SAP, musíte:
   - Autorizace pro použití cíle vzdáleného volání funkcí (RFC).
   - Oprávnění k aktivitě Execute objektu autorizace S_SDSAUTH.
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -91,7 +90,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu SAP BW Open h
 | `sncPartnerName` | Název SNC komunikačního partnera pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Platí, pokud je `sncMode` zapnutá. | Ne |
 | `sncLibraryPath` | Knihovna externího produktu zabezpečení pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Platí, pokud je `sncMode` zapnutá. | Ne |
 | `sncQop` | Úroveň ochrany SNC kvality, kterou chcete použít.<br/>Platí, pokud je `sncMode` zapnutá. <br/>Povolené hodnoty jsou `1` (ověřování), `2` (integrity), `3` (ochrana osobních údajů), `8` (výchozí), `9` (maximální). | Ne |
-| `connectVia` | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Vyžaduje se místní prostředí Integration runtime, jak bylo zmíněno dříve v [požadavcích](#prerequisites). |Ano |
+| `connectVia` | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Vyžaduje se místní prostředí Integration runtime, jak bylo zmíněno dříve v [požadavcích](#prerequisites). |Ano |
 
 **Příklad 1: připojení k aplikačnímu serveru SAP**
 
@@ -186,7 +185,7 @@ Chcete-li kopírovat data z a do propojené služby SAP BW Open hub, jsou podpor
 | `type` | Vlastnost `type` musí být nastavena na hodnotu `SapTableResource`. | Ano |
 | `tableName` | Název tabulky SAP, ze které se mají kopírovat data | Ano |
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```json
 {
@@ -217,8 +216,8 @@ Chcete-li kopírovat data z tabulky SAP, jsou podporovány následující vlastn
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | Vlastnost `type` musí být nastavena na hodnotu `SapTableSource`.         | Ano      |
 | `rowCount`                         | Počet řádků, které mají být načteny.                              | Ne       |
-| `rfcTableFields`                   | Pole (sloupce), která se mají kopírovat z tabulky SAP například `column0, column1`. | Ne       |
-| `rfcTableOptions`                  | Možnosti pro filtrování řádků v tabulce SAP například `COLUMN0 EQ 'SOMEVALUE'`. Další informace najdete v tabulce operátor dotazů SAP dále v tomto článku. | Ne       |
+| `rfcTableFields`                   | Pole (sloupce), která se mají kopírovat z tabulky SAP Například, `column0, column1`. | Ne       |
+| `rfcTableOptions`                  | Možnosti pro filtrování řádků v tabulce SAP Například, `COLUMN0 EQ 'SOMEVALUE'`. Další informace najdete v tabulce operátor dotazů SAP dále v tomto článku. | Ne       |
 | `customRfcReadTableFunctionModule` | Vlastní modul funkcí RFC, který lze použít ke čtení dat z tabulky SAP.<br>Pomocí vlastního modulu funkce RFC můžete definovat, jak se data načítají z vašeho systému SAP a vrátit se do Data Factory. Vlastní modul funkcí musí mít implementované rozhraní (import, export, tabulky), který je podobný `/SAPDS/RFC_READ_TABLE2`, což je výchozí rozhraní používané Data Factory. | Ne       |
 | `partitionOption`                  | Mechanismus oddílu pro čtení z tabulky SAP. Mezi podporované možnosti patří: <ul><li>`None`</li><li>`PartitionOnInt` (normální celé číslo nebo celočíselné hodnoty s nulovým odsazením vlevo, například `0000012345`)</li><li>`PartitionOnCalendarYear` (4 číslice ve formátu "rrrr")</li><li>`PartitionOnCalendarMonth` (6 číslic ve formátu "YYYYMM")</li><li>`PartitionOnCalendarDate` (8 číslic ve formátu "RRRRMMDD")</li></ul> | Ne       |
 | `partitionColumnName`              | Název sloupce, který se používá k vytvoření oddílů dat                | Ne       |
@@ -240,12 +239,12 @@ V `rfcTableOptions`můžete použít následující běžné operátory dotazů 
 | `EQ` | Je rovno |
 | `NE` | Není rovno |
 | `LT` | Méně než |
-| `LE` | Je menší než nebo rovno |
-| `GT` | Větší než |
-| `GE` | Je větší než nebo rovno |
+| `LE` | Je menší nebo rovno |
+| `GT` | Více než |
+| `GE` | Je větší nebo rovno |
 | `LIKE` | Jako v `LIKE 'Emma%'` |
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```json
 "activities":[
@@ -288,7 +287,7 @@ V `rfcTableOptions`můžete použít následující běžné operátory dotazů 
 
 Když kopírujete data z tabulky SAP, v datových typech tabulky SAP se použijí následující mapování na Azure Data Factory dočasné datové typy. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ k jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
 
-| Typ SAP ABAP | Data Factory pomocný datový typ |
+| Typ SAP ABAP | Data Factory dočasné datový typ |
 |:--- |:--- |
 | `C` (String) | `String` |
 | `I` (celé číslo) | `Int32` |

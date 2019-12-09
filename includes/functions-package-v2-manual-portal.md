@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 10/04/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e99a1b6482c8b1383040e6bd1447c16c236c9f1a
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 04b5b8621cdd74addaa481a24efee22746c96240
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659771"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925627"
 ---
-Následující tabulka obsahuje informace o přidání podpory pro tuto vazbu v jednotlivých prostředích pro vývoj.
+Následující tabulka obsahuje informace o tom, jak přidat podporu pro tuto vazbu v každém vývojovém prostředí.
 
-| Vývojové prostředí               | Přidání podpory v <br>Functions 2.x  |
+| Vývojové prostředí               | Přidání podpory |
 |----------------------|----------------|
-|Místní vývoj – knihovny tříd C#       | [Instalace balíčku](../articles/azure-functions/functions-bindings-register.md#vs) |
-|Místní vývoj - C# skriptu, JavaScript,F# |[Registrace rozšíření](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |
-|Vývoj pro portál| [Registrace rozšíření](../articles/azure-functions/install-update-binding-extensions-manual.md)  |
+|Místní knihovna pro C# vývoj a třídy       | [Instalace balíčku](../articles/azure-functions/functions-bindings-register.md#vs) |
+|Místní vývoj – C# skript, JavaScript,F# |[Zaregistrujte rozšíření.](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |
+|Vývoj portálu| [Zaregistrujte rozšíření.](../articles/azure-functions/install-update-binding-extensions-manual.md)  |
 
-Zjistěte, jak aktualizovat existující vazby rozšíření na portálu, aniž byste museli znovu publikovat projekt aplikace funkcí, najdete v článku [aktualizovat vaše rozšíření](../articles/azure-functions/install-update-binding-extensions-manual.md).
+Informace o tom, jak aktualizovat existující rozšíření vazby na portálu bez nutnosti opětovného publikování projektu Function App, najdete v tématu [aktualizace rozšíření](../articles/azure-functions/install-update-binding-extensions-manual.md).

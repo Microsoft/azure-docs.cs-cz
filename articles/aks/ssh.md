@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 5ff79dc597571f4e6ef3d7c2c20bce61c0d061ad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089541"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926375"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Připojení k uzlům clusteru SSH a Azure Kubernetes Service (AKS) pro účely údržby nebo řešení potíží
 
@@ -41,7 +41,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* pro *CLUSTER_RESOURCE_GROUP*. Příklad následně používá *CLUSTER_RESOURCE_GROUP* k vypsání názvu sady škálování a přiřadí ho do *SCALE_SET_NAME*.  
+Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* pro *CLUSTER_RESOURCE_GROUP*. Příklad následně používá *CLUSTER_RESOURCE_GROUP* k vypsání názvu sady škálování a přiřadí ho do *SCALE_SET_NAME*.
 
 > [!IMPORTANT]
 > V tuto chvíli byste měli aktualizovat jenom klíče SSH pro clustery AKS založené na škálování virtuálních počítačů pomocí rozhraní příkazového řádku Azure CLI.
@@ -100,7 +100,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* pro *CLUSTER_RESOURCE_GROUP*. Příklad následně používá *CLUSTER_RESOURCE_GROUP* k vypsání názvu virtuálního počítače. Ukázkový výstup zobrazuje název virtuálního počítače: 
+Výše uvedený příklad přiřadí název skupiny prostředků clusteru pro *myAKSCluster* v *myResourceGroup* pro *CLUSTER_RESOURCE_GROUP*. Příklad následně používá *CLUSTER_RESOURCE_GROUP* k vypsání názvu virtuálního počítače. Ukázkový výstup zobrazuje název virtuálního počítače:
 
 ```
 Name                      ResourceGroup                                  Location
@@ -144,7 +144,7 @@ Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clust
 1. Spusťte image kontejneru `debian` a připojte k ní relaci terminálu. Tento kontejner se dá použít k vytvoření relace SSH s jakýmkoli uzlem v clusteru AKS:
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
@@ -158,21 +158,12 @@ Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clust
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. Otevřete nové okno terminálu, které není připojené ke kontejneru, a seznamte se s tím, že v clusteru AKS použijete příkaz [kubectl Get lusks][kubectl-get] . Pod ním vytvořeným v předchozím kroku začíná název *AKS-SSH*, jak je znázorněno v následujícím příkladu:
+1. Otevřete nové okno terminálu, které není připojené ke kontejneru, a zkopírujte privátní klíč SSH do pomocné rutiny pod. Tento privátní klíč se používá k vytvoření SSH v uzlu AKS. 
 
-    ```
-    $ kubectl get pods
-    
-    NAME                       READY     STATUS    RESTARTS   AGE
-    aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
-    ```
-
-1. V předchozím kroku jste přidali veřejný klíč SSH do uzlu AKS, který jste chtěli řešit. Teď nakopírujte privátní klíč SSH do pomocné rutiny pod. Tento privátní klíč se používá k vytvoření SSH v uzlu AKS.
-
-    Zadejte vlastní název *AKS* pod jménem, který se získá v předchozím kroku. V případě potřeby změňte *~/.ssh/id_rsa* na umístění vašeho privátního klíče SSH:
+   V případě potřeby změňte *~/.ssh/id_rsa* na umístění vašeho privátního klíče SSH:
 
     ```console
-    kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+    kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
 1. Vraťte se do svého kontejneru do relace Terminálové služby, aktualizujte oprávnění u zkopírovaného `id_rsa` privátního klíče SSH tak, aby byl uživatel jen pro čtení:
@@ -185,22 +176,22 @@ Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clust
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
-    
+
     ECDSA key fingerprint is SHA256:A6rnRkfpG21TaZ8XmQCCgdi9G/MYIMc+gFAuY9RUY70.
     Are you sure you want to continue connecting (yes/no)? yes
     Warning: Permanently added '10.240.0.4' (ECDSA) to the list of known hosts.
-    
+
     Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.15.0-1018-azure x86_64)
-    
+
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
-    
+
       Get cloud support with Ubuntu Advantage Cloud Guest:
         https://www.ubuntu.com/business/services/cloud
-    
+
     [...]
-    
+
     azureuser@aks-nodepool1-79590246-0:~$
     ```
 

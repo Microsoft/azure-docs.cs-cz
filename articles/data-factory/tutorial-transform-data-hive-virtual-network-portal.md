@@ -1,24 +1,24 @@
 ---
-title: 'Transformace dat pomocí podregistru v Azure Virtual Network '
+title: Transformace dat pomocí podregistru v Azure Virtual Network pomocí Azure Portal
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 73a43bdb859d39bd0cb8e3d4a3ed3f114fb2c156
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+ms.date: 01/04/2018
+ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683425"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925557"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
+
 V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který transformuje data pomocí aktivity Hivu v clusteru HDInsight ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
@@ -30,9 +30,9 @@ V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který 
 > * Monitorování spuštění kanálu 
 > * Ověření výstupu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,10 +71,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).    
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).    
 2. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
-   ![Nový -> Objekt pro vytváření dat](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
+   ![Nový -> Datová továrna](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
 3. Na stránce **Nová datová továrna** jako **název** zadejte **ADFTutorialHiveFactory**. 
       
      ![Stránka Nová datová továrna](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
@@ -90,7 +90,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
          
      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 4. Jako **verzi** vyberte **V2**.
-5. Vyberte **umístění** pro objekt pro vytváření dat. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
+5. Vyberte **umístění** pro datovou továrnu. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na **Vytvořit**.
 8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
@@ -98,7 +98,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
      ![nasazování dlaždice datové továrny](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-    ![Domovská stránka objektu pro vytváření dat](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
+    ![Domovská stránka datové továrny](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory.
 11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku: 
 
@@ -127,7 +127,7 @@ Vzhledem k tomu, že cluster Hadoop je ve virtuální síti, musíte do stejné 
 
 1. Ve virtuálním počítači Azure stáhněte [modul runtime integrace v místním prostředí](https://www.microsoft.com/download/details.aspx?id=39717). Použijte **ověřovací klíč** získaný v předchozím kroku a toto místní prostředí Integration Runtime ručně zaregistrujte. 
 
-    ![Registrace prostředí Integration Runtime](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
+    ![Registrace modulu runtime integrace](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
 
 2. Po úspěšném zaregistrování místního prostředí Integration Runtime se zobrazí následující zpráva. 
    

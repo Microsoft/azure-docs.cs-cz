@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/06/2019
+ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468410"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931495"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBA v Azure Virtual Networks
 
@@ -296,6 +296,8 @@ Následující postup popisuje, jak volat skript akce skriptu z Azure Portal. In
     
       > [!NOTE]
       > Jako název DNS zdrojového i cílového clusteru použijte název hostitele místo plně kvalifikovaného názvu domény.
+      >
+      > Tento názorný postup předpokládá HN1 jako aktivní hlavnímu uzlu. Zkontrolujte prosím cluster, abyste identifikovali aktivní hlavní uzel.
 
 6. Vyberte **Create** (Vytvořit). Spuštění skriptu může trvat delší dobu, zejména při použití argumentu **-COPYDATA** .
 
@@ -303,21 +305,21 @@ Požadované argumenty:
 
 |Name (Název)|Popis|
 |----|-----------|
-|-s,--src-cluster | Určuje název DNS zdrojového clusteru HBA. Příklad:-s hbsrccluster,--src-cluster = hbsrccluster |
-|-d,--DST-cluster | Určuje název DNS cílového clusteru (repliky) HBA. Příklad:-s dsthbcluster,--src-cluster = dsthbcluster |
-|-SP,--src-Ambari-Password | Určuje heslo správce pro Ambari ve zdrojovém clusteru HBA. |
+|-s, --src-cluster | Určuje název DNS zdrojového clusteru HBA. Příklad:-s hbsrccluster,--src-cluster = hbsrccluster |
+|-d, --dst-cluster | Určuje název DNS cílového clusteru (repliky) HBA. Příklad:-s dsthbcluster,--src-cluster = dsthbcluster |
+|-sp, --src-ambari-password | Určuje heslo správce pro Ambari ve zdrojovém clusteru HBA. |
 |-DP,--DST-Ambari-Password | Určuje heslo správce pro Ambari v cílovém clusteru HBA.|
 
 Nepovinné argumenty:
 
 |Name (Název)|Popis|
 |----|-----------|
-|-Su,--src-Ambari-User | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
-|-du,--DST-Ambari-User | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
+|-su, --src-ambari-user | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
+|-du, --dst-ambari-user | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
 |-t,--Table-list | Určuje tabulky, které se mají replikovat. Příklad:--Table-list = "Tabulka1; Tabulka2; TABLE3". Pokud nezadáte žádné tabulky, replikují se všechny existující tabulky HBA.|
-|-m,--Machine | Určuje hlavní uzel, ve kterém se spustí akce skriptu. Hodnota je buď **hn0** nebo **HN1** , a měla by být vybrána v závislosti na tom, který je aktivním hlavním uzlem. Tuto možnost použijte, když spouštíte skript $0 jako akci skriptu z portálu HDInsight nebo Azure PowerShell.|
+|-m,--Machine | Určuje hlavní uzel, ve kterém se spustí akce skriptu. Hodnota by měla být zvolena v závislosti na tom, který je aktivním hlavním uzlem. Tuto možnost použijte, když spouštíte skript $0 jako akci skriptu z portálu HDInsight nebo Azure PowerShell.|
 |-CP,-COPYDATA | Povolí migraci existujících dat v tabulkách, ve kterých je povolená replikace. |
-|-ot./min. – replikace-Phoenix-meta | Povoluje replikaci v systémových tabulkách v Phoenixu. <br><br>*Tuto možnost používejte opatrně.* Před použitím tohoto skriptu doporučujeme, abyste v clusterech replik znovu vytvořili tabulky v Phoenixu. |
+|-rpm, -replicate-phoenix-meta | Povoluje replikaci v systémových tabulkách v Phoenixu. <br><br>*Tuto možnost používejte opatrně.* Před použitím tohoto skriptu doporučujeme, abyste v clusterech replik znovu vytvořili tabulky v Phoenixu. |
 |-h,--help | Zobrazí informace o použití. |
 
 Část `print_usage()` [skriptu](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) obsahuje podrobné vysvětlení parametrů.
@@ -363,7 +365,7 @@ Stejný postup, který je popsaný v tématu [Povolení replikace](#enable-repli
 - **Kopírovat konkrétní tabulky (Test1, Test2 a Test3) pro všechny upravované řádky do teď (aktuální časové razítko)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  ani
+  Ani
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 

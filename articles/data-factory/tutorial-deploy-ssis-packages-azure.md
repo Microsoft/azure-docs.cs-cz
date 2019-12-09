@@ -8,17 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 09/15/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 14871aa790bd94dbd23dea30c8a229eac7945c75
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 2cec7fdae1d3a2a336decc11347ef9bd1039ce7f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683561"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926553"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Zřízení prostředí Azure-SSIS Integration runtime v Azure Data Factory
 
@@ -37,7 +38,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření datové továrny
 > * Zřízení prostředí Azure-SSIS Integration Runtime
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -112,7 +113,7 @@ Po vytvoření objektu pro vytváření dat otevřete jeho stránku Přehled v A
 
    g. Pro **Uložit peníze**vyberte možnost zvýhodněné hybridní využití Azure pro prostředí Integration Runtime: **Ano** nebo **ne**. Vyberte **Ano** , pokud chcete využít vlastní licenci SQL Server se Software Assurance, abyste využili úspory nákladů s využitím hybridního použití. 
 
-   h. Vyberte **Next** (Další). 
+   h. Vyberte **Další**. 
 
 1. Na stránce **nastavení SQL** proveďte následující kroky. 
 
@@ -142,7 +143,7 @@ Po vytvoření objektu pro vytváření dat otevřete jeho stránku Přehled v A
 
    h. Pro **úroveň služby databáze katalogu**vyberte úroveň služby pro váš databázový server pro hostování SSISDB. Vyberte úroveň Basic, Standard nebo Premium nebo vyberte název elastického fondu.
 
-   i. Vyberte **Test připojení**. Pokud je test úspěšný, vyberte **Další**. 
+   i. Vyberte **Testovat připojení**. Pokud je test úspěšný, vyberte **Další**. 
 
 1. Na stránce **Upřesnit nastavení** proveďte následující kroky. 
 
@@ -158,7 +159,7 @@ Po vytvoření objektu pro vytváření dat otevřete jeho stránku Přehled v A
    
    d. Zaškrtněte políčko **nastavit Integration runtime v místním prostředí jako proxy pro Azure-SSIS Integration runtime** zaškrtávací políčko pro výběr, zda chcete pro Azure-SSIS IR nakonfigurovat prostředí IR v místním prostředí jako proxy. Další informace najdete v tématu [nastavení prostředí IR pro místní hostování jako proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis).   
 
-1. Vyberte **Next** (Další). 
+1. Vyberte **Další**. 
 
 1. Na stránce **Souhrn** Zkontrolujte všechna nastavení zřizování, zajistěte záložku doporučené odkazy na dokumentaci a výběrem možnosti **Dokončit** spusťte vytváření prostředí Integration runtime. 
 

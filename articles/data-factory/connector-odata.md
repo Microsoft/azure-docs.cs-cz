@@ -4,20 +4,19 @@ description: Naučte se, jak kopírovat data ze zdrojů OData do podporovaných 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 85da7752575164ba505d788a5d45f5af0908edc9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e70cd6d7745b2754bdda6992c587c5c72643869b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680597"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912508"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí Azure Data Factory
 
@@ -25,27 +24,27 @@ ms.locfileid: "73680597"
 > * [Verze 1](v1/data-factory-odata-connector.md)
 > * [Aktuální verze](connector-odata.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data ze zdroje OData. Článek se vytvoří na [aktivitě kopírování v Azure Data Factory](copy-activity-overview.md), která představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data ze zdroje OData. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor OData se podporuje pro následující činnosti:
 
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
-Data ze zdroje OData můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako zdroje a jímky, najdete v tématu [podporované úložiště a formáty dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Data ze zdroje OData můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Konkrétně tento konektor OData podporuje:
 
 - OData verze 3,0 a 4,0.
 - Kopírování dat pomocí jednoho z následujících ověřování: **anonymní**, **základní**, **Windows, systémový** **instanční objekt**a **spravované identity pro prostředky Azure**.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -59,17 +58,17 @@ Pro propojenou službu OData jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | **type** musí být vlastnost nastavena na **OData**. |Ano |
 | url | Kořenová adresa URL služby OData |Ano |
-| authenticationType | Typ ověřování, který se používá pro připojení ke zdroji OData. Povolené hodnoty jsou **anonymní**, **základní**, **Windows**, **AadServicePrincipal**a **ManagedServiceIdentity**. OAuth založené na uživateli se nepodporuje. | Ano |
-| Jmen | Zadejte **userName** Pokud používáte ověřování Basic nebo Windows. | Ne |
-| heslo | Zadejte **password** uživatele účtu, který jste zadali pro **uživatelské jméno**. Označte toto pole jako typ **SecureString** a bezpečně ho uložte do Data Factory. Můžete také [vytvořit odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| authenticationType. | Typ ověřování, který se používá pro připojení ke zdroji OData. Povolené hodnoty jsou **anonymní**, **základní**, **Windows**, **AadServicePrincipal**a **ManagedServiceIdentity**. OAuth založené na uživateli se nepodporuje. | Ano |
+| userName | Zadejte **userName** Pokud používáte ověřování Basic nebo Windows. | Ne |
+| heslo | Zadejte **password** uživatele účtu, který jste zadali pro **uživatelské jméno**. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [vytvořit odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | servicePrincipalId | Zadejte ID klienta Azure Active Directory aplikace. | Ne |
 | aadServicePrincipalCredentialType | Zadejte typ přihlašovacích údajů, který se použije pro ověřování instančního objektu. Povolené hodnoty jsou: `ServicePrincipalKey` nebo `ServicePrincipalCert`. | Ne |
-| servicePrincipalKey | Zadejte klíč Azure Active Directory aplikace. Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| servicePrincipalEmbeddedCert | Zadejte certifikát kódovaný v kódování Base64 vaší aplikace zaregistrovaný v Azure Active Directory. Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| servicePrincipalEmbeddedCertPassword | Zadejte heslo certifikátu, pokud je certifikát zabezpečený heslem. Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md).  | Ne|
-| tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ne |
+| servicePrincipalKey | Zadejte klíč Azure Active Directory aplikace. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| servicePrincipalEmbeddedCert | Zadejte certifikát kódovaný v kódování Base64 vaší aplikace zaregistrovaný v Azure Active Directory. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| servicePrincipalEmbeddedCertPassword | Zadejte heslo certifikátu, pokud je certifikát zabezpečený heslem. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md).  | Ne|
+| tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení podržením ukazatele myši v pravém horním rohu webu Azure portal. | Ne |
 | aadResourceId | Zadejte prostředek AAD, který požadujete pro autorizaci.| Ne |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad 1: použití anonymního ověřování**
 
@@ -200,14 +199,14 @@ Pro propojenou službu OData jsou podporovány následující vlastnosti:
 
 V této části najdete seznam vlastností, které datová sada OData podporuje.
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). 
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). 
 
 Chcete-li kopírovat data z OData, nastavte vlastnost **Type** datové sady na **ODataResource**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** datové sady musí být nastavená na **ODataResource**. | Ano |
-| dílčí | Cesta k prostředku OData | Ano |
+| Cesta | Cesta k prostředku OData | Ano |
 
 **Příklad**
 
@@ -234,7 +233,7 @@ Chcete-li kopírovat data z OData, nastavte vlastnost **Type** datové sady na *
 
 V této části najdete seznam vlastností, které podporuje zdroj OData.
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v tématu [kanály](concepts-pipelines-activities.md). 
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
 
 ### <a name="odata-as-source"></a>OData as source
 
@@ -283,20 +282,20 @@ Pokud jste používali zdroj `RelationalSource`ho typu, je stále podporován ta
 
 Při kopírování dat z OData se používají následující mapování mezi datovými typy OData a Azure Data Factory pomocnými datovými typy. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ k jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
 
-| Datový typ OData | Data Factory pomocný datový typ |
+| Datový typ OData | Data Factory dočasné datový typ |
 |:--- |:--- |
-| EDM. Binary | Byte [] |
-| Edm.Boolean | Logick |
-| EDM. Byte | Byte [] |
-| EDM. DateTime | DateTime |
-| EDM. Decimal | Notaci |
-| Edm.Double | Klepat |
+| Edm.Binary | Byte[] |
+| Edm.Boolean | Bool |
+| Edm.Byte | Byte[] |
+| Edm.DateTime | Datum a čas |
+| Edm.Decimal | Decimal |
+| Edm.Double | Double |
 | Edm.Single | Jednoduchá |
-| EDM. GUID | Guid |
-| EDM. Int16 | Int16 |
-| Edm.Int32 | Uvedena |
+| Edm.Guid | Guid |
+| Edm.Int16 | Int16 |
+| Edm.Int32 | Datový typ Int32 |
 | Edm.Int64 | Int64 |
-| EDM. SByte | Int16 |
+| Edm.SByte | Int16 |
 | Edm.String | Řetězec |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
@@ -311,4 +310,4 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznam úložišť dat, která aktivita kopírování podporuje jako zdroje a jímky v Azure Data Factory, najdete v tématu [podporovaná úložiště dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

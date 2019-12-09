@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights – podporované funkce Azure Functions | Microsoft Docs
+title: Funkce podporované službou Azure Application Insights – Azure Functions
 description: Application Insights podporované funkce pro Azure Functions
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 31f962ca96ca5c47d18f9250e567abb8f4024e6f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5688bd92e63016e195726488bd9ff9ed039c5795
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677560"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928404"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights pro podporované funkce Azure Functions
 
@@ -30,14 +30,14 @@ Azure Functions nabízí [integrovanou integraci](../../azure-functions/function
 | Výjimky &bull;                   | Ano             | Ano               | 
 | Čítače výkonu &bull;         | Ano             | Ano               |
 | &bull; závislosti                   |                   |                   |               
-| &nbsp; &nbsp; &nbsp; &mdash; HTTP      |                 | Ano               | 
-| &nbsp; &nbsp; &nbsp; &mdash; ServiceBus|                 | Ano               | 
-| &nbsp; &nbsp; &nbsp; &mdash; EventHub  |                 | Ano               | 
-| &nbsp; &nbsp; &nbsp; &mdash; SQL       |                 | Ano               | 
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ano               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ano               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Ano               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Ano               | 
 | | | | 
 | **Podporované funkce**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Ano             | Ano               | 
-| &nbsp; &nbsp; &nbsp; &mdash; kanál zabezpečeného řízení|                 | Ano               | 
+| &nbsp;&nbsp;&nbsp;&mdash; kanál zabezpečeného řízení|                 | Ano               | 
 | Vzorkování &bull;                     | Ano             | Ano               | 
 | &bull; prezenční signály                   |                 | Ano               | 
 | | | | 
@@ -46,7 +46,7 @@ Azure Functions nabízí [integrovanou integraci](../../azure-functions/function
 | &bull; EventHub                       |                   | Ano               | 
 | | | | 
 | **Konfigurovatelné**                      |                   |                   |           
-| &bull;Fully konfigurovatelné.<br/>Pokyny najdete v tématu [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Všechny možnosti najdete v části [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Ano                   | 
+| &bull;plně konfigurovatelné.<br/>Pokyny najdete v tématu [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Všechny možnosti najdete v části [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Ano                   | 
 
 
 ## <a name="performance-counters"></a>Čítače výkonu

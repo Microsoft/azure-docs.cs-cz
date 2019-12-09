@@ -7,21 +7,25 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 12/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685690"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923629"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Storage do SQL Data Warehouse
-Pomocí základních externích tabulek načtěte data z Azure Data Lake Storage do Azure SQL Data Warehouse. I když můžete spouštět dotazy ad hoc s daty uloženými v Data Lake Storage, doporučujeme data importovat do SQL Data Warehouse pro dosažení co nejvyššího výkonu.
+Tato příručka popisuje, jak použít základní externí tabulky k načtení dat z Azure Data Lake Storage do Azure SQL Data Warehouse. I když můžete spouštět dotazy ad hoc s daty uloženými v Data Lake Storage, doporučujeme data importovat do SQL Data Warehouse pro dosažení co nejvyššího výkonu. 
 
+> [!NOTE]  
+> Alternativou k nasazování je [příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) , který je aktuálně ve verzi Public Preview. Pokud chcete poskytnout zpětnou vazbu k příkazu COPY, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com.
+>
 > [!div class="checklist"]
+
 > * Vytváření databázových objektů potřebných k načtení z Data Lake Storage.
 > * Připojte se k adresáři Data Lake Storage.
 > * Načte data do Azure SQL Data Warehouse.
@@ -33,14 +37,13 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 Pro spuštění tohoto kurzu budete potřebovat:
 
-* Azure Active Directory aplikaci, která se má použít pro ověřování mezi službami Chcete-li vytvořit, postupujte podle [ověřování služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
-
 * Azure SQL Data Warehouse. Viz [Vytvoření a dotazování a Azure SQL Data Warehouse](create-data-warehouse-portal.md).
-
-* Účet Data Lake Storage. Viz Začínáme [s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Účet Data Lake Storage. Viz Začínáme [s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). Pro tento účet úložiště budete muset nakonfigurovat nebo zadat jedno z následujících přihlašovacích údajů, které se mají načíst: klíč účtu úložiště, uživatel aplikace Azure Directory nebo uživatel AAD, který má příslušnou roli RBAC pro účet úložiště. 
 
 ##  <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
-Pokud chcete získat přístup k účtu Data Lake Storage, budete muset vytvořit hlavní klíč databáze k šifrování tajného kódu přihlašovacích údajů, který jste použili v dalším kroku. Pak vytvoříte databázi s rozsahem pověření. Při ověřování pomocí instančních objektů ukládá přihlašovací údaje v oboru databáze nastavené přihlašovací údaje instančního objektu v AAD. Můžete také použít klíč účtu úložiště v databázi s rozsahem pověření pro Gen2. 
+Tuto část můžete přeskočit a při ověřování pomocí předávacího procesu AAD přejít k části Vytvoření externího zdroje dat. Přihlašovací údaje v oboru databáze není potřeba vytvořit nebo zadat při použití průchozího AAD, ale ujistěte se, že má uživatel AAD příslušnou roli RBAC (čtečka dat objektů BLOB úložiště, přispěvatel nebo role vlastníka) k účtu úložiště. Další podrobnosti jsou popsaných [tady](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260). 
+
+Pokud chcete získat přístup k účtu Data Lake Storage, budete muset vytvořit hlavní klíč databáze pro šifrování přihlašovacích údajů. Pak vytvoříte databázi s rozsahem pověření pro uložení tajného kódu. Při ověřování pomocí instančních objektů (uživatel Azure Directory Application) ukládá přihlašovací údaje v oboru databáze nastavené přihlašovací údaje instančního objektu v AAD. K uložení klíče účtu úložiště pro Gen2 můžete použít taky pověření s rozsahem databáze.
 
 Pokud se chcete připojit k Data Lake Storage pomocí instančních objektů, musíte **nejdřív** vytvořit aplikaci Azure Active Directory, vytvořit přístupový klíč a udělit aplikaci přístup k účtu Data Lake Storage. Pokyny najdete v tématu [ověření pro Azure Data Lake Storage pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
@@ -75,7 +78,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this when authenticating using service principals:
+-- It should look something like this when authenticating using service principal:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -84,7 +87,7 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat
-Pomocí tohoto příkazu [Create External data source](/sql/t-sql/statements/create-external-data-source-transact-sql) uložte umístění dat. 
+Pomocí tohoto příkazu [Create External data source](/sql/t-sql/statements/create-external-data-source-transact-sql) uložte umístění dat. Pokud ověřujete průchozí průchod AAD, parametr PŘIHLAŠOVACÍch údajů se nevyžaduje. 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -178,7 +181,7 @@ Chcete-li načíst data z Data Lake Storage použijte příkaz [CREATE TABLE AS 
 
 CTAS vytvoří novou tabulku a naplní ji výsledky příkazu SELECT. CTAS definuje novou tabulku, která bude mít stejné sloupce a datové typy jako výsledky příkazu SELECT. Pokud vyberete všechny sloupce z externí tabulky, je nová tabulka replikou sloupců a datových typů v externí tabulce.
 
-V tomto příkladu vytvoříme distribuovanou tabulku hash s názvem DimProduct z našeho externího tabulkového DimProduct_external.
+V tomto příkladu vytvoříme distribuovanou tabulku hash s názvem DimProduct z naší externí tabulky DimProduct_external.
 
 ```sql
 
@@ -216,8 +219,8 @@ V tomto kurzu jste vytvořili externí tabulky, abyste definovali strukturu pro 
 
 Provedli jste tyto akce:
 > [!div class="checklist"]
-> * Byly vytvořeny objekty databáze požadované pro načtení z Data Lake Storage Gen1.
-> * Připojeno k adresáři Data Lake Storage Gen1.
+> * Byly vytvořeny objekty databáze požadované pro načtení z Data Lake Storage.
+> * Připojeno k adresáři Data Lake Storage.
 > * Data se načetla do Azure SQL Data Warehouse.
 >
 

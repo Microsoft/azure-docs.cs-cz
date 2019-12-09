@@ -1,24 +1,24 @@
 ---
-title: 'Transformace dat pomocí podregistru v Azure Virtual Network '
+title: Transformace dat pomocí podregistru v Azure Virtual Network
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 263eb243ea45963757c50aa031cc17e318d70d98
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+ms.date: 01/22/2018
+ms.openlocfilehash: f90933dea5421d68116d29df6b9429d298bb0d88
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683303"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925082"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
+
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který transformuje data pomocí aktivity Hivu v clusteru HDInsight, který je ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
@@ -30,9 +30,9 @@ V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny
 > * Monitorování spuštění kanálu 
 > * Ověření výstupu 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -134,13 +134,13 @@ V této části vytvoříte modul runtime integrace v místním prostředí a p�
    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted
    ```
     Tento příkaz vytvoří logickou registraci modulu runtime integrace v místním prostředí. 
-2. Pomocí PowerShellu načtěte ověřovací klíče pro registraci modulu runtime integrace v místním prostředí. Jeden z těchto klíčů zkopírujte pro registraci místního prostředí Integration Runtime.
+2. Pomocí PowerShellu načtěte ověřovací klíče pro registraci modulu runtime integrace v místním prostředí. Jeden z těchto klíčů zkopírujte pro registraci modulu runtime integrace v místním prostředí.
 
    ```powershell
    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName | ConvertTo-Json
    ```
 
-   Zde je ukázkový výstup: 
+   Tady je ukázkový výstup: 
 
    ```powershell
    {
@@ -152,7 +152,7 @@ V této části vytvoříte modul runtime integrace v místním prostředí a p�
 3. Vytvořte virtuální počítač Azure a připojte ho do stejné virtuální sítě, která obsahuje příslušný cluster HDInsight. Podrobnosti najdete v tématu věnovaném [postupu při vytváření virtuálních počítačů](../virtual-network/quick-create-portal.md#create-virtual-machines). Připojte ho k virtuální síti Azure. 
 4. Ve virtuálním počítači Azure stáhněte [modul runtime integrace v místním prostředí](https://www.microsoft.com/download/details.aspx?id=39717). Použijte ověřovací klíč získaný v předchozím kroku a tento modul runtime integrace v místním prostředí ručně zaregistrujte. 
 
-   ![Registrace prostředí Integration Runtime](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
+   ![Registrace modulu runtime integrace](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
 
    Po úspěšném dokončení registrace modulu runtime integrace v místním prostředí se zobrazí zpráva o ![úspěšné registraci](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png).
 
@@ -166,7 +166,7 @@ V této části vytvoříte a nasadíte dvě propojené služby:
 
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 
-Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující definici JSON propojené služby Azure Storage a potom tento soubor uložte jako **MyStorageLinkedService.json**.
+Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj následující definici JSON propojené služby Azure Storage a potom tento soubor uložte jako **MyStorageLinkedService.json**.
 
 ```json
 {

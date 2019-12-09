@@ -1,24 +1,23 @@
 ---
-title: Kopírování dat do nebo z Azure Průzkumník dat pomocí Azure Data Factory
+title: Kopírování dat do nebo z Azure Průzkumník dat
 description: Naučte se, jak kopírovat data do a z Azure Průzkumník dat pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
-documentationcenter: ''
+ms.author: orspodek
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/26/2019
-ms.author: orspodek
-ms.openlocfilehash: 0ffec2639d9dfbf3a82a3c24248d65a53e114745
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4cc315b91b5dbedcb22091149ca37061ff956efa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547147"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913433"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Průzkumník dat pomocí Azure Data Factory
 
@@ -27,7 +26,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 >[!TIP]
 >Azure Data Factory a Azure Průzkumník dat Integration obecně najdete další informace v [integraci služby azure Průzkumník dat s Azure Data Factory](../data-explorer/data-factory-integration.md).
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor Azure Průzkumník dat se podporuje pro následující činnosti:
 
@@ -58,7 +57,7 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Konektor služby Azure Průzkumník dat používá ověřování instančního objektu. Pomocí těchto kroků můžete získat instanční objekt a udělit oprávnění:
 
-1. Pomocí postupu v části [Registrace aplikace v Tenantovi Azure AD](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)Zaregistrujte entitu aplikace v Azure Active Directory. Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
+1. Pomocí postupu v části [Registrace aplikace v Tenantovi Azure AD](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)Zaregistrujte entitu aplikace v Azure Active Directory. Poznamenejte si následující hodnoty, které slouží k definování propojené služby:
 
     - ID aplikace
     - Klíč aplikace
@@ -79,8 +78,8 @@ Pro propojenou službu Azure Průzkumník dat se podporují následující vlast
 | type | Vlastnost **Type** musí být nastavená na **AzureDataExplorer**. | Ano |
 | endpoint | Adresa URL koncového bodu clusteru Azure Průzkumník dat s formátem jako `https://<clusterName>.<regionName>.kusto.windows.net` | Ano |
 | databáze | Název databáze | Ano |
-| tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. To se označuje jako ID autority v [připojovacím řetězci Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Načtěte ho tak, že najedete myší na ukazatel myši v pravém horním rohu Azure Portal. | Ano |
-| servicePrincipalId | Zadejte ID klienta aplikace. To se označuje jako "ID klienta aplikace AAD" v [připojovacím řetězci Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ano |
+| tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. To se označuje jako ID autority v [připojovacím řetězci Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Načtěte ho tak, že najedete myší na ukazatel myši v pravém horním rohu Azure Portal. | Ano |
+| servicePrincipalId | Zadejte ID klienta vaší aplikace. To se označuje jako "ID klienta aplikace AAD" v [připojovacím řetězci Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ano |
 | servicePrincipalKey | Zadejte klíč aplikace. To se označuje jako "klávesa aplikace AAD" v [připojovacím řetězci Kusto](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo aby [odkazovala na zabezpečená Data uložená v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad vlastností propojené služby:**
@@ -115,7 +114,7 @@ Podporovány jsou následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** musí být nastavená na **AzureDataExplorerTable**. | Ano |
-| stolní | Název tabulky, na kterou odkazuje propojená služba. | Ano pro jímku; Ne pro zdroj |
+| table | Název tabulky, na kterou odkazuje propojená služba. | Ano pro jímku; Ne pro zdroj |
 
 **Příklad vlastností datové sady:**
 
@@ -142,7 +141,7 @@ Podporovány jsou následující vlastnosti:
 
 ### <a name="azure-data-explorer-as-source"></a>Azure Průzkumník dat jako zdroj
 
-Pokud chcete kopírovat data z Azure Průzkumník dat, nastavte vlastnost **typ** ve zdroji aktivity kopírování na **AzureDataExplorerSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data z Azure Průzkumník dat, nastavte vlastnost **typ** ve zdroji aktivity kopírování na **AzureDataExplorerSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -189,7 +188,7 @@ Pokud chcete kopírovat data z Azure Průzkumník dat, nastavte vlastnost **typ*
 
 ### <a name="azure-data-explorer-as-sink"></a>Azure Průzkumník dat jako jímka
 
-Pokud chcete kopírovat data do Azure Průzkumník dat, nastavte vlastnost typ v jímky aktivity kopírování na **AzureDataExplorerSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data do Azure Průzkumník dat, nastavte vlastnost typ v jímky aktivity kopírování na **AzureDataExplorerSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

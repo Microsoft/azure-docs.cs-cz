@@ -4,21 +4,20 @@ description: Přečtěte si, jak přesunout data z místní databáze DB2 pomoc�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d066e66e4b9600eb5734ef2f3c6031dbc44f17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666607"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931786"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesunutí dat z DB2 pomocí aktivity kopírování Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -33,7 +32,7 @@ Tento článek popisuje, jak můžete použít aktivitu kopírování v nástroj
 
 Data Factory aktuálně podporuje pouze přesun dat z databáze DB2 do [podporovaného úložiště dat jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Přesun dat z jiných úložišť dat do databáze DB2 není podporován.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Data Factory podporuje připojení k místní databázi DB2 pomocí [brány pro správu dat](data-factory-data-management-gateway.md). Podrobné pokyny k nastavení kanálu dat brány pro přesun dat najdete v článku věnovaném [přesunutí dat z místního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
 
 Brána je povinná i v případě, že je DB2 hostovaný na virtuálním počítači Azure s IaaS. Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat. Pokud se brána může připojit k databázi, můžete bránu nainstalovat na jiný virtuální počítač.
@@ -82,12 +81,12 @@ V následující tabulce jsou uvedeny vlastnosti JSON, které jsou specifické p
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | **type** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Ano |
-| **WebServer** |Název serveru DB2. |Ano |
-| **databáze** |Název databáze DB2. |Ano |
-| **XSD** |Název schématu v databázi DB2. Tato vlastnost rozlišuje velká a malá písmena. |Ne |
+| **server** |Název serveru DB2. |Ano |
+| **database** |Název databáze DB2. |Ano |
+| **schema** |Název schématu v databázi DB2. Tato vlastnost rozlišuje velká a malá písmena. |Ne |
 | **authenticationType** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
-| **jmen** |Název uživatelského účtu, pokud použijete základní ověřování nebo ověřování systému Windows. |Ne |
-| **zadáno** |Heslo pro uživatelský účet. |Ne |
+| **uživatelské jméno** |Název uživatelského účtu, pokud použijete základní ověřování nebo ověřování systému Windows. |Ne |
+| **Heslo** |Heslo pro uživatelský účet. |Ne |
 | **gatewayName** |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -97,7 +96,7 @@ Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje inf
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Tabulky** |Název tabulky instance databáze DB2, na kterou odkazuje propojená služba. Tato vlastnost rozlišuje velká a malá písmena. |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
+| **tableName** |Název tabulky instance databáze DB2, na kterou odkazuje propojená služba. Tato vlastnost rozlišuje velká a malá písmena. |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit kopírování, najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Vlastnosti aktivity kopírování, jako je **název**, **Popis**, **vstupy** , tabulka **výstupů** a **zásady**, jsou dostupné pro všechny typy aktivit. Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se liší pro každý typ aktivity. V případě aktivity kopírování se vlastnosti liší v závislosti na typech zdrojů dat a jímky.
@@ -106,7 +105,7 @@ V případě aktivity kopírování, pokud je zdrojem typu **RelationalSource** 
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| **zadávání** |K načtení dat použijte vlastní dotaz. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
+| **query** |K načtení dat použijte vlastní dotaz. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 
 > [!NOTE]
 > V názvech schémat a tabulek se rozlišují velká a malá písmena. V příkazu dotazu uzavřete názvy vlastností pomocí "" (dvojité uvozovky).
@@ -306,47 +305,47 @@ Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-act
 
 Následující mapování se používají, když aktivita kopírování převede data z typu DB2 na typ .NET:
 
-| Typ databáze DB2 | Typ .NET Framework |
+| Typ databáze DB2 | Typ rozhraní .NET Framework |
 | --- | --- |
 | SmallInt |Int16 |
-| Integer |Uvedena |
+| Integer |Datový typ Int32 |
 | BigInt |Int64 |
 | Real |Jednoduchá |
-| Klepat |Klepat |
-| Plovák |Klepat |
-| Notaci |Notaci |
-| DecimalFloat |Notaci |
-| číselné |Notaci |
-| Datum |DateTime |
+| Double |Double |
+| Float |Double |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Čísla |Decimal |
+| Datum |Datum a čas |
 | Time |TimeSpan |
-| Časové razítko |DateTime |
-| XML |Byte [] |
+| Časové razítko |Datum a čas |
+| Xml |Byte[] |
 | char |Řetězec |
 | VarChar |Řetězec |
 | LongVarChar |Řetězec |
 | DB2DynArray |Řetězec |
-| Tvaru |Byte [] |
-| VarBinary |Byte [] |
-| LongVarBinary |Byte [] |
-| Objekty |Řetězec |
+| Binary |Byte[] |
+| VarBinary |Byte[] |
+| LongVarBinary |Byte[] |
+| Graphic |Řetězec |
 | VarGraphic |Řetězec |
 | LongVarGraphic |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Objekt blob |Byte [] |
+| Objekt blob |Byte[] |
 | DbClob |Řetězec |
 | SmallInt |Int16 |
-| Integer |Uvedena |
+| Integer |Datový typ Int32 |
 | BigInt |Int64 |
 | Real |Jednoduchá |
-| Klepat |Klepat |
-| Plovák |Klepat |
-| Notaci |Notaci |
-| DecimalFloat |Notaci |
-| číselné |Notaci |
-| Datum |DateTime |
+| Double |Double |
+| Float |Double |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Čísla |Decimal |
+| Datum |Datum a čas |
 | Time |TimeSpan |
-| Časové razítko |DateTime |
-| XML |Byte [] |
+| Časové razítko |Datum a čas |
+| Xml |Byte[] |
 | char |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky

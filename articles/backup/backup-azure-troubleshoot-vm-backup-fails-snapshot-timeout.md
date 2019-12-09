@@ -4,12 +4,13 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 23b10bed3b741ec76167eb5a976bf5737d20b173
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.service: backup
+ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894007"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928246"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -25,8 +26,8 @@ Tento článek popisuje kroky pro řešení potíží, které vám pomohou vyře
 Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekonzistentním stavu nebo není nainstalovaný a zabránit tomu, aby služba Azure Backup spustila snímky.
 
 - **Otevřete portál Azure Portal > nastavení > virtuálního počítače > vlastnosti** > Ujistěte se, že **stav** virtuálního počítače **běží** a že **Stav agenta** je **připravený**. Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, restartujte agenta.<br>
-  - Pro virtuální počítače s Windows postupujte podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) a restartujte agenta hosta.<br>
-  - Pro virtuální počítače se systémem Linux postupujte podle těchto [kroků](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) a restartujte agenta hosta.
+  - Pro virtuální počítače s Windows postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) a restartujte agenta hosta.<br>
+  - Pro virtuální počítače se systémem Linux postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) a restartujte agenta hosta.
 
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nepovedlo se komunikovat s agentem virtuálního počítače pro stav snímku.

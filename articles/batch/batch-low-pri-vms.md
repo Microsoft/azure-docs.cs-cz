@@ -8,15 +8,15 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 12/05/2019
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39d332a6d069a4e9fac8545f4d08a986c8984c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095198"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926292"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
 
@@ -27,6 +27,14 @@ Virtuální počítače s nízkou prioritou využívají nadbytečné kapacity v
 Kompromisy pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být k dispozici, aby je bylo možné přidělit nebo kdykoli zrušit v závislosti na dostupné kapacitě. Z tohoto důvodu jsou virtuální počítače s nízkou prioritou vhodné pro určité typy úloh. Používejte virtuální počítače s nízkou prioritou pro úlohy dávkového a asynchronního zpracování, kde je čas dokončení úlohy flexibilní a práce se distribuuje napříč mnoha virtuálními počítači.
  
 Virtuální počítače s nízkou prioritou se v porovnání s vyhrazenými virtuálními počítači nabízejí výrazně snížené ceny. Podrobnosti o cenách najdete v tématu [ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
+
+> [!NOTE]
+> Virtuální počítače s [přímým](https://azure.microsoft.com/pricing/spot/) výskytem jsou teď dostupné pro [virtuální počítače s jednou instancí](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) a služby [VM Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot). Virtuální počítače s nízkou prioritou představují vývoj virtuálních počítačů s nízkou prioritou, ale liší se tím, že se ceny můžou lišit a volitelná maximální cena se dá nastavit při přidělování virtuálních počítačů na místě.
+>
+> Fondy Azure Batch začnou podporovat virtuální počítače na místě v prvním čtvrtletí 2020 s novými verzemi [rozhraní API a nástrojů pro dávkování](https://docs.microsoft.com/azure/batch/batch-apis-tools). Virtuální počítače s nízkou prioritou se budou i nadále podporovat s použitím současných verzí rozhraní API a nástrojů, a to minimálně na 12 měsíců, aby bylo možné migrovat virtuální počítače po dobu dostatečně dlouho. 
+>
+> Virtuální počítače s přímým odkazem se pro fondy [konfigurací cloudových služeb](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) nepodporují. Pokud chcete použít virtuální počítače s plochou, bude nutné, aby fondy cloudových služeb byly migrovány do fondů [Konfigurace virtuálních počítačů](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
+
 
 ## <a name="use-cases-for-low-priority-vms"></a>Případy použití pro virtuální počítače s nízkou prioritou
 
@@ -42,11 +50,11 @@ S ohledem na charakteristiky virtuálních počítačů s nízkou prioritou, kte
 
 Některé příklady případů použití dávkového zpracování, vhodné pro použití virtuálních počítačů s nízkou prioritou:
 
--   **Vývoj a testování**: Zejména pokud vyvíjíte rozsáhlá řešení, je možné realizovat významné úspory. Všechny typy testování můžou využívat výhod, ale rozsáhlé zátěžové testování a regresní testování jsou skvělé.
+-   **Vývoj a testování**: zejména v případě vývoje rozsáhlých řešení je možné realizovat významné úspory. Všechny typy testování můžou využívat výhod, ale rozsáhlé zátěžové testování a regresní testování jsou skvělé.
 
--   **Doplňování kapacity na vyžádání**: Virtuální počítače s nízkou prioritou se dají použít k doplnění běžných vyhrazených virtuálních počítačů – Pokud jsou k dispozici, úlohy se můžou škálovat a proto dokončí rychleji, aby se snížily náklady. Pokud není k dispozici, pak bude k dispozici standardní hodnota vyhrazených virtuálních počítačů.
+-   **Doplňování kapacity na vyžádání**: virtuální počítače s nízkou prioritou se dají použít k doplnění běžných vyhrazených virtuálních počítačů – Pokud jsou dostupné, můžou se úlohy škálovat, a proto dokončí rychleji, aby se snížily náklady. Pokud není k dispozici, pak bude k dispozici standardní hodnota vyhrazených virtuálních počítačů.
 
--   **Flexibilní doba provádění úlohy**: Pokud je v časových úlohách flexibilita, může být možné tolerovat potenciální pokles kapacity; Nicméně při přidávání úloh virtuálních počítačů s nízkou prioritou často běží rychleji a za nižší náklady.
+-   **Flexibilní doba provádění úlohy**: Pokud je potřeba, aby se úlohy dokončily, může dojít k tolerování potenciálního poklesu kapacity. Nicméně při přidávání úloh virtuálních počítačů s nízkou prioritou často běží rychleji a za nižší náklady.
 
 Fondy Batch se dají nakonfigurovat tak, aby používaly virtuální počítače s nízkou prioritou, a to v závislosti na flexibilitě v době spuštění úlohy:
 
@@ -123,7 +131,7 @@ Uzly fondu mají vlastnost, která určuje, jestli je uzel vyhrazený virtuáln�
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Když dojde k přerušení jednoho nebo více uzlů ve fondu, operace výpisu uzlů ve fondu stále tyto uzly vrátí. Aktuální počet uzlů s nízkou prioritou zůstane beze změny, ale u těchto uzlů je stav nastaven na přerušený stav. Batch se pokusí najít náhradní virtuální počítače a v případě úspěchu uzly procházejí **vytvořením** a následným **spuštěním** stavů, než se stane k dispozici pro spuštění úlohy, stejně jako u nových uzlů.
+Když dojde k přerušení jednoho nebo více uzlů ve fondu, operace výpisu uzlů ve fondu stále tyto uzly vrátí. Aktuální počet uzlů s nízkou prioritou zůstane beze změny, ale u těchto uzlů je stav nastaven na přerušený **stav.** Batch se pokusí najít náhradní virtuální počítače a v případě úspěchu uzly procházejí **vytvořením** a následným **spuštěním** stavů, než se stane k dispozici pro spuštění úlohy, stejně jako u nových uzlů.
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Škálování fondu obsahujícího virtuální počítače s nízkou prioritou
 
@@ -157,10 +165,10 @@ Vzorec automatického škálování fondu podporuje virtuální počítače s n�
 
 Je možné, že virtuální počítače budou občas zrušené. Když dojde k přerušení, Batch provede toto:
 
--   Zrušené virtuální počítače mají stav aktualizace na přerušeno.
+-   Zrušené virtuální **počítače mají stav aktualizace na**přerušeno.
 -   Pokud úlohy běžely na virtuálních počítačích s přerušeným uzlem, tyto úlohy se znovu zařadí do fronty a znovu se spustí.
 -   Virtuální počítač se efektivně odstraní, což vede ke ztrátě všech dat uložených místně na VIRTUÁLNÍm počítači.
--   Fond se neustále pokouší spojit s cílovým počtem dostupných uzlů s nízkou prioritou. Když se najde náhradní kapacita, uzly zachovají jejich ID, ale budou se znovu inicializovat, a to tak, že procházejí vytvořením a **spuštěním** stavů, než budou k dispozici pro plánování úloh.
+-   Fond se neustále pokouší spojit s cílovým počtem dostupných uzlů s nízkou prioritou. Když se najde náhradní kapacita, uzly zachovají jejich ID, ale budou se znovu inicializovat, a to tak, že procházejí **vytvořením** a **spuštěním** stavů, než budou k dispozici pro plánování úloh.
 -   Počty přerušení jsou k dispozici jako metrika v Azure Portal.
 
 ## <a name="metrics"></a>Metriky
@@ -183,3 +191,4 @@ Chcete-li zobrazit metriky v Azure Portal:
 
 * Přečtěte si téma [Přehled funkcí Batch pro vývojáře](batch-api-basics.md), kde jsou základní informace pro každého, kdo se připravuje použít Batch. Článek obsahuje podrobné informace o prostředcích služby Batch, jako jsou fondy, uzly a úlohy, a mnoha funkcích rozhraní API, které můžete použít při vytváření aplikace Batch.
 * Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
+* Začněte naplánování přesunu z virtuálních počítačů s nízkou prioritou na místo virtuálních počítačů. Pokud používáte virtuální počítače s nízkou prioritou s fondy **konfigurace cloudové služby** , naplánujte přesun na fondy **Konfigurace virtuálních počítačů** .

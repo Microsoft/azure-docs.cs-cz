@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c5910649127c4b2e78cfc12065a8f12a41f7309a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 932de70b634a7bbdb77e5dc1552ae53828a7269e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229375"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913110"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Vytvoření služby privátního propojení pomocí Azure PowerShell
 V tomto článku se dozvíte, jak vytvořit službu privátního propojení v Azure pomocí Azure PowerShell.
@@ -103,7 +103,7 @@ $privateLinkService = New-AzPrivateLinkService `
 ```
 
 ### <a name="get-private-link-service"></a>Získat službu privátního propojení
-Pomocí příkazu [New-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) Získejte podrobné informace o službě privátního propojení:
+Získejte podrobnosti o službě privátního propojení pomocí příkazu [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) následujícím způsobem:
 
 ```azurepowershell
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 

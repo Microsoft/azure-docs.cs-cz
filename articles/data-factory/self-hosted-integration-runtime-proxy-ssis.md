@@ -5,7 +5,6 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
@@ -13,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/12/2019
-ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa0f61ed0e280f11e693596f80e79f2e2c110678
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217651"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932041"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Konfigurace místního prostředí IR jako proxy pro Azure-SSIS IR v ADF
 
@@ -54,14 +53,14 @@ Na stránce **Upřesnit nastavení** zaškrtněte políčko **nastavit Integrati
 ![Konfigurace Azure-SSIS IR s využitím místního hostitele IR jako proxy](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-settings-ssisir.png)
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>Povolit SSIS balíčky pro připojení pomocí proxy
-Pomocí nejnovější SSDT s rozšířením projektů SSIS pro Visual Studio, které se dá stáhnout [odsud nebo jako](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) samostatný instalační program, který se dá stáhnout z [tohoto místa](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer), můžete najít novou vlastnost **ConnectByProxy** , která se přidala v OLEDB/ Správce připojení plochých souborů.  
+Pomocí nejnovější SSDT s rozšířením projektů SSIS pro Visual Studio, které se dá stáhnout [odsud nebo jako](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) samostatný instalační program, který se dá stáhnout z [tohoto místa](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer), můžete najít novou vlastnost **ConnectByProxy** , která se přidala do Správce připojení OLEDB/plochých souborů.  
 
 Když navrhujete nové balíčky obsahující úlohy toku dat se zdroji souborů OLEDB/Flat pro přístup k databázím a souborům v místním prostředí, můžete tuto vlastnost povolit nastavením na **hodnotu true** na panelu Vlastnosti příslušných správců připojení.
 
 ![Povolit vlastnost ConnectByProxy](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 Tuto vlastnost můžete také povolit při spouštění existujících balíčků, aniž byste je museli ručně změnit o jednu.  Existují dvě možnosti:
-- Otevřete, znovu sestavíte a znovu nasadíte projekt obsahující tyto balíčky s nejnovějším SSDT pro spuštění na vašem Azure-SSIS IR: vlastnost se dá povolit tak, že ji nastavíte na **true** pro příslušné Správce připojení, které se zobrazí v **připojení. Karta manažeři** v automaticky otevíraném okně pro spuštění balíčku při spouštění balíčků z SSMS.
+- Otevřete, znovu sestavíte a znovu nasadíte projekt obsahující tyto balíčky s nejnovějším SSDT pro spuštění ve vašem Azure-SSIS IR: vlastnost lze povolit nastavením na **hodnotu true** pro příslušné Správce připojení, který se zobrazí na kartě **Správci připojení** v místním okně spustit balíček při spouštění balíčků z SSMS.
 
   ![Povolit ConnectByProxy Vlastnost2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -69,7 +68,7 @@ Tuto vlastnost můžete také povolit při spouštění existujících balíčk�
   
   ![Povolit ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- Opětovné nasazení projektu obsahujícího tyto balíčky ke spuštění v SSIS IR: vlastnost se pak může povolit zadáním cesty vlastností, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a nastavením na **hodnotu true** jako přepsání vlastnosti na kartě **Upřesnit** v místním okně spustit balíček. při spouštění balíčků z SSMS.
+- Opětovné nasazení projektu obsahujícího tyto balíčky ke spuštění v SSIS IR: vlastnost se pak dá povolit tak, že poskytne cestu k vlastnosti, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a nastaví ji na **true** jako přepsání vlastnosti na kartě **Upřesnit** v místním okně spustit balíček při spouštění balíčků z SSMS.
 
   ![Povolit ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
@@ -95,4 +94,4 @@ Druhý pracovní úkol, který běží na vašem Azure-SSIS IR, se nebude účto
 - Použití parametrů nebo proměnných SSIS ve vlastnostech zdrojů ODBC/OLEDB/plochých souborů a správců připojení není aktuálně podporováno.
 
 ## <a name="next-steps"></a>Další kroky
-Po nakonfigurování místního prostředí IR jako proxy serveru pro Azure-SSIS IR můžete nasadit a spustit balíčky pro přístup k datům v místním prostředí, jak spouštět aktivity balíčků SSIS v kanálech ADF, v tématu [spouštění balíčků SSIS jako provádění aktivit balíčku SSIS v kanálech ADF. ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Po nakonfigurování místního prostředí IR jako proxy pro váš Azure-SSIS IR můžete nasadit a spustit balíčky pro přístup k datům v místním prostředí, jak spouštět aktivity balíčků SSIS v kanálech ADF, v tématu [spouštění balíčků SSIS jako provádění aktivit balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

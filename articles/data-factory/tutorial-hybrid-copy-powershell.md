@@ -1,24 +1,25 @@
 ---
-title: Kopírování dat z SQL Server do úložiště objektů BLOB pomocí Azure Data Factory
+title: Kopírování dat z SQL Server do úložiště objektů BLOB pomocí PowerShellu
 description: Zjistěte, jak kopírovat data z místního úložiště dat do cloudu Azure s využitím místního prostředí Integration Runtime ve službě Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: craigg
+ms.author: abnarain
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.author: abnarain
-ms.openlocfilehash: d2f59e7e8e86100a2a667634c0e99e6c1d5976da
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b0e4fcf771f2441d9e1061ee57e83e26b6b1a241
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683501"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922956"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
+
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat. 
 
 > [!NOTE]
@@ -35,7 +36,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Zahájení spuštění kanálu
 > * Monitorování spuštění kanálu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -110,7 +111,7 @@ V této části vytvoříte ve svém úložišti objektů blob v Azure kontejner
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 
-#### <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
+#### <a name="install-azure-powershell"></a>Instalace Azure PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -196,7 +197,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ``` 
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     Name              : ADFTutorialIR
@@ -213,7 +214,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
     
     ```json
     State                     : NeedRegistration
@@ -242,7 +243,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
     Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
     ```
     
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
     
     ```json
     {
@@ -266,7 +267,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
 1. V okně **Registrace prostředí Integration Runtime (v místním prostředí)** vložte klíč, který jste uložili v předchozí části, a pak vyberte **Zaregistrovat**. 
 
-    ![Registrace prostředí Integration Runtime](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
+    ![Registrace modulu runtime integrace](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
 1. V okně **nový Integration runtime (v místním prostředí) uzel** vyberte **Dokončit**. 
 
@@ -340,7 +341,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště Azure.
    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
    ```
 
-   Zde je ukázkový výstup:
+   Tady je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -464,7 +465,7 @@ V tomto kroku definujete datovou sadu, která představuje data v instanci datab
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     DatasetName       : SqlServerDataset
@@ -517,7 +518,7 @@ Propojená služba má informace o připojení, které datová továrna použív
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     DatasetName       : AzureBlobDataset
@@ -597,7 +598,7 @@ V tomto kurzu pomocí aktivity kopírování vytvoříte kanál. Aktivita kopí
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
     ```
 
-    Zde je ukázkový výstup:
+    Tady je ukázkový výstup:
 
     ```json
     PipelineName      : SQLServerToBlobPipeline
@@ -704,7 +705,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     ```
 
 ## <a name="verify-the-output"></a>Ověření výstupu
-Kanál v kontejneru objektů blob *automaticky vytvoří výstupní složku*fromonprem`adftutorial`. Zkontrolujte, že výstupní složka obsahuje soubor *dbo.emp.txt*. 
+Kanál v kontejneru objektů blob `adftutorial` automaticky vytvoří výstupní složku *fromonprem*. Zkontrolujte, že výstupní složka obsahuje soubor *dbo.emp.txt*. 
 
 1. Na webu Azure Portal v okně kontejneru **adftutorial** vyberte **Obnovit**. Zobrazí se výstupní složka.
 1. V seznamu složek vyberte `fromonprem`. 

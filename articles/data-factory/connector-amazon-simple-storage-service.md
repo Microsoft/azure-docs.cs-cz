@@ -2,20 +2,21 @@
 title: Kopírovat data ze služby Amazon Simple Storage Service (S3)
 description: Další informace o tom, jak pomocí služby Azure Data Factory kopírování dat z Amazon Simple Storage Service (S3) do úložišť dat podporovaných jímky.
 services: data-factory
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.author: jingwang
-ms.openlocfilehash: b595d404da73f4e3789b74b58cad6cfccff487e8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 7a51082bfbcd0790daff7911e79c7424f872d37b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891197"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913531"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon Simple Storage Service pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]

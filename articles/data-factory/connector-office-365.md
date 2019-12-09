@@ -4,38 +4,37 @@ description: Naučte se, jak kopírovat data z Office 365 na podporovaná úlož
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 9bd059d42686a37701af0d42f54335b83c06b752
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d97b3caccc92f0fdfeb229d94e30ee6499c26181
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680571"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912401"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopírování dat z Office 365 do Azure pomocí Azure Data Factory
 
-Azure Data Factory se integruje s [Microsoft Graph Data Connect](https://docs.microsoft.com/graph/data-connect-concept-overview). díky tomu můžete v tenantovi Office 365 do Azure přenášet rozsáhlá podniková data, a to škálovatelným způsobem a sestavovat analytické aplikace a extrahovat přehledy na základě těchto cenných dat. hmot. Integrace s Privileged Access Management poskytuje zabezpečený řízení přístupu pro cenná data v Office 365.  V [tomto odkazu](https://docs.microsoft.com/graph/data-connect-concept-overview) najdete přehled informací o Microsoft Graph Data Connect a informace o licencích najdete v [tomto](https://docs.microsoft.com/graph/data-connect-policies#licensing) odkazu.
+Azure Data Factory se integruje s [Microsoft Graph Data Connect](https://docs.microsoft.com/graph/data-connect-concept-overview). díky tomu můžete v tenantovi Office 365 přenášet bohatě rozsáhlá data organizace do Azure, a to škálovatelným způsobem a sestavovat analytické aplikace a extrahovat přehledy na základě těchto cenných datových assetů. Integrace s Privileged Access Management poskytuje zabezpečený řízení přístupu pro cenná data v Office 365.  V [tomto odkazu](https://docs.microsoft.com/graph/data-connect-concept-overview) najdete přehled informací o Microsoft Graph Data Connect a informace o licencích najdete v [tomto](https://docs.microsoft.com/graph/data-connect-policies#licensing) odkazu.
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z Office 365. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z Office 365. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 Konektor ADF Office 365 a Microsoft Graph Data Connect umožňují škálování příjmu různých typů datových sad z poštovních schránek s povoleným e-mailem Exchange, včetně kontaktů adresáře, událostí kalendáře, e-mailových zpráv, informací o uživateli, nastavení poštovní schránky a tak dále.  Pokud chcete zobrazit úplný seznam dostupných datových sad, podívejte se [sem](https://docs.microsoft.com/graph/data-connect-datasets) .
 
-V rámci jedné aktivity kopírování teď můžete **Kopírovat data z Office 365 do [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) ve formátu JSON** (setOfObjects). Pokud chcete sadu Office 365 načíst do jiných typů úložišť dat nebo v jiných formátech, můžete vytvořit zřetězení první aktivity kopírování s následnou aktivitou kopírování, aby se další data načetla do některého z [podporovaných cílových úložišť ADF](copy-activity-overview.md#supported-data-stores-and-formats) (podívejte se na sloupec podporované jako jímka). v tabulce "podporovaná úložiště dat a formáty").
+V rámci jedné aktivity kopírování teď můžete **Kopírovat data z Office 365 do [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) ve formátu JSON** (setOfObjects). Pokud chcete sadu Office 365 načíst do jiných typů úložišť dat nebo v jiných formátech, můžete vytvořit zřetězení první aktivity kopírování s následnou aktivitou kopírování, aby se další data načetla do některého z [podporovaných cílových úložišť ADF](copy-activity-overview.md#supported-data-stores-and-formats) (v tabulce podporovaná úložiště dat a formáty odkazují na sloupec podporované jako jímka).
 
 >[!IMPORTANT]
 >- Předplatné Azure obsahující datovou továrnu a úložiště dat jímky musí být v rámci stejného tenanta Azure Active Directory (Azure AD) jako tenant Office 365.
 >- Ujistěte se, že oblast Azure Integration Runtime použitá pro aktivitu kopírování a cíl je ve stejné oblasti, ve které se nachází poštovní schránka uživatelů klienta Office 365. Informace o tom, jak se určuje Azure IR umístění, najdete [tady](concepts-integration-runtime.md#integration-runtime-location) . Seznam podporovaných oblastí Office a odpovídajících oblastí Azure najdete v [tabulce](https://docs.microsoft.com/graph/data-connect-datasets#regions) .
 >- Ověřování instančního objektu je jediným ověřovacím mechanismem podporovaným pro Azure Blob Storage, Azure Data Lake Storage Gen1 a Azure Data Lake Storage Gen2 jako s cílovými úložišti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete kopírovat data z Office 365 do Azure, musíte provést následující požadované kroky:
 
@@ -49,7 +48,7 @@ Pokud chcete kopírovat data z Office 365 do Azure, musíte provést následují
 
 ## <a name="approving-new-data-access-requests"></a>Schvalování nových požadavků na přístup k datům
 
-Pokud se jedná o data pro tento kontext poprvé (kombinace toho, ke které tabulce dat se přistupuje, který cílový účet představuje data, která jsou načítána do a která identita uživatele vytváří požadavek na přístup k datům), zobrazí se aktivita kopírování. stav je "probíhá" a pouze když kliknete na [odkaz Podrobnosti v části akce](copy-activity-overview.md#monitoring) , zobrazí se stav "RequestingConsent".  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
+Pokud pro tento kontext požadujete data poprvé (kombinace toho, ke které tabulce dat přistupuje, který cílový účet je data, která jsou načítána do a která identita uživatele vytváří požadavek na přístup k datům), zobrazí se stav aktivity kopírování jako "probíhá" a pouze když kliknete na [odkaz Podrobnosti v části akce](copy-activity-overview.md#monitoring) , zobrazí se stav "RequestingConsent".  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
 
 [Tady](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) najdete informace o tom, jak schvalovatel může žádost o přístup k datům schválit, a [tady](https://docs.microsoft.com/graph/data-connect-pam) se můžete podívat na vysvětlení celkové integrace s Privileged Access Management, včetně toho, jak nastavit skupinu schvalovatelů přístupu k datům.
 
@@ -82,9 +81,9 @@ Pro propojenou službu Office 365 jsou podporovány následující vlastnosti:
 | type | Vlastnost Type musí být nastavená na: **Office 365** . | Ano |
 | office365TenantId | ID tenanta Azure, ke kterému patří účet Office 365. | Ano |
 | servicePrincipalTenantId | Zadejte informace o tenantovi, pod kterým se nachází webová aplikace Azure AD. | Ano |
-| servicePrincipalId | Zadejte ID klienta aplikace. | Ano |
+| servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. | Ano |
-| connectVia | Integration Runtime, která se má použít pro připojení k úložišti dat  Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne |
+| connectVia | Integration Runtime, která se má použít pro připojení k úložišti dat  Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne |
 
 >[!NOTE]
 > Rozdíl mezi **office365TenantId** a **servicePrincipalTenantId** a odpovídající hodnotou, kterou chcete poskytnout:
@@ -113,7 +112,7 @@ Pro propojenou službu Office 365 jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou Office 365.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou Office 365.
 
 Chcete-li kopírovat data z Office 365, jsou podporovány následující vlastnosti:
 
@@ -145,7 +144,7 @@ Pokud jste v datové sadě nacházeli `dateFilterColumn`, `startTime`, `endTime`
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem Office 365.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem Office 365.
 
 ### <a name="office-365-as-source"></a>Office 365 jako zdroj
 
@@ -304,4 +303,4 @@ Pokud chcete kopírovat data ze sady Office 365, v části **zdroje** aktivity k
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

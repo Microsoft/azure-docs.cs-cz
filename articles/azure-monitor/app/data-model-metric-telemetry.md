@@ -1,5 +1,5 @@
 ---
-title: Datový model Azure Telemetrie Application Insights – telemetrie metrik | Microsoft Docs
+title: Datový model pro telemetrii metrik – Azure Application Insights
 description: Application Insights datový model pro telemetrii metrik
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 816fa37ea052b18dab80bcc0d5c1528cd3d9a014
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f697d7543a8551993640ef8c6d6c98fee35c0d68
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678129"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922224"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
 
@@ -57,7 +57,7 @@ Minimální hodnota agregované metriky Neměl by být nastaven pro měření.
 
 Maximální hodnota agregované metriky Neměl by být nastaven pro měření.
 
-## <a name="standard-deviation"></a>Směrodatná odchylka
+## <a name="standard-deviation"></a>Standardní odchylka
 
 Směrodatná odchylka agregované metriky. Neměl by být nastaven pro měření.
 

@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 12/05/2019
 ms.author: ashishth
-ms.openlocfilehash: 75158fbe5604c6fcf54c2fa08636cb87dfd9da80
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b03bbc7aacd3bfa2a8e29296a5fafed7d4e7e37a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917444"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931537"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBA na novou verzi
 
@@ -33,17 +33,17 @@ Tady je příklad matice kompatibility verzí. Y značí kompatibilitu a N ozna�
 
 | Typ kompatibility | Hlavní verze| Dílčí verze | Oprava |
 | --- | --- | --- | --- |
-| Kompatibilita komunikace mezi klientem a serverem | Ne | Ano | Ano |
-| Server – Kompatibilita serveru | Ne | Ano | Ano |
-| Kompatibilita formátu souborů | Ne | Ano | Ano |
-| Kompatibilita rozhraní API klienta | Ne | Ano | Ano |
-| Binární kompatibilita klienta | Ne | Ne | Ano |
+| Kompatibilita komunikace mezi klientem a serverem | N | Ano | Ano |
+| Server – Kompatibilita serveru | N | Ano | Ano |
+| Kompatibilita formátu souborů | N | Ano | Ano |
+| Kompatibilita rozhraní API klienta | N | Ano | Ano |
+| Binární kompatibilita klienta | N | N | Ano |
 | **Omezená Kompatibilita rozhraní API na straně serveru** |  |  |  |
-| Stable | Ne | Ano | Ano |
-| Vyvíjejí | Ne | Ne | Ano |
-| Nestabilní | Ne | Ne | Ne |
-| Kompatibilita závislostí | Ne | Ano | Ano |
-| Provozní kompatibilita | Ne | Ne | Ano |
+| Stable | N | Ano | Ano |
+| Vyvíjejí | N | N | Ano |
+| Nestabilní | N | N | N |
+| Kompatibilita závislostí | N | Ano | Ano |
+| Provozní kompatibilita | N | N | Ano |
 
 > [!NOTE]  
 > V poznámkách k verzi HBA by se měly popsat případné nekompatibility.
@@ -98,7 +98,7 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
     
             Provide Script URL.
     
-            Provide hostname as a parameter (i.e. hn0, hn1 or wn2 etc.).
+            Provide hostname as a parameter (i.e. hn0, hn1, hn2.. or wn2 etc.).
     ...
             exit
         fi
@@ -178,7 +178,7 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
     
 4. Zastavte ingestování starému clusteru HBA.
 5. Pokud chcete mít jistotu, že všechna poslední data v setSize paměťového úložiště jsou vyprázdněná, spusťte předchozí skript znovu.
-6. Přihlaste se k [Apache Ambari](https://ambari.apache.org/) v původním clusteru https://OLDCLUSTERNAME.azurehdidnsight.net) (a zastavte služby HBA. Po zobrazení výzvy k potvrzení, že chcete zastavit služby, zaškrtněte políčko pro zapnutí režimu údržby pro adaptéry HBA. Další informace o připojení a používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
+6. Přihlaste se k [Apache Ambari](https://ambari.apache.org/) v původním clusteru (https://OLDCLUSTERNAME.azurehdidnsight.net) a zastavte služby HBA. Po zobrazení výzvy k potvrzení, že chcete zastavit služby, zaškrtněte políčko pro zapnutí režimu údržby pro adaptéry HBA. Další informace o připojení a používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
 
     ![V Ambari klikněte na služby > HBA > zastavit v části akce služby](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
@@ -192,13 +192,13 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
 
 8. **Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro clustery clusterů s funkcí rozšířené zápisy.**
    
-   `hbase.rootdir` Změňte cestu tak, aby odkazovala na kontejner původního clusteru.
+   Změňte `hbase.rootdir` cestu tak, aby odkazovala na kontejner původního clusteru.
 
     ![V Ambari změňte název kontejneru pro adaptéry HBA RootDir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 1. Pokud upgradujete HDInsight 3,6 na 4,0, postupujte podle následujících kroků, jinak přejděte ke kroku 10:
-    1. V Ambari restartujte všechny požadované služby, a to tak, že vyberete **služby** > **restartovat všechny požadované**.
+    1. V Ambari restartujte všechny požadované služby, a to tak, že vyberete **služby** > **restart všech požadovaných**.
     1. Zastavte službu HBA.
-    1. Pomocí SSH na uzel Zookeeper a spuštěním příkazu `rmr /hbase-unsecure` [zkCli](https://github.com/go-zkcli/zkcli) odeberte z Zookeeper kořenový znode HBA.
+    1. Pomocí SSH na uzel Zookeeper a spuštěním příkazu [zkCli](https://github.com/go-zkcli/zkcli) `rmr /hbase-unsecure` odebrat adaptéry HBA root Znode z Zookeeper.
     1. Restartujte HBA.
 1. Pokud upgradujete na jinou verzi HDInsight kromě 4,0, postupujte následovně:
     1. Uložte provedené změny.

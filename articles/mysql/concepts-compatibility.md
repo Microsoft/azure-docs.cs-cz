@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 83c1463beec47ed3535811de822348cc7706f757
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: bb8477165afcaafe6d03ccb3fe7764124aa166c6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765337"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928671"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače a nástroje pro správu MySQL kompatibilní s Azure Database for MySQL
 Tento článek popisuje ovladače a nástroje pro správu, které jsou kompatibilní s Azure Database for MySQL.
@@ -19,18 +19,18 @@ Tento článek popisuje ovladače a nástroje pro správu, které jsou kompatibi
 ## <a name="mysql-drivers"></a>Ovladače MySQL
 Azure Database for MySQL používá nejoblíbenější komunitní edici Community databáze MySQL. Proto je kompatibilní s širokou škálou programovacích jazyků a ovladačů. Cílem je podpořit tři nejnovější verze ovladačů MySQL a snahy s autory z komunity Open sources, aby neustále vylepšily funkčnost a použitelnost ovladačů MySQL. V následující tabulce je uveden seznam ovladačů, které byly testovány a zjištěny jako kompatibilní s Azure Database for MySQL 5,6 a 5,7:
 
-| **Programovací jazyk** | **Faktorů** | **Odkazy** | **Kompatibilní verze** | **Nekompatibilní verze** | **Poznámky** |
+| **Programovací jazyk** | **Ovladač** | **Odkazy** | **Kompatibilní verze** | **Nekompatibilní verze** | **Poznámky** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
-| PHP | MySQL, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | V případě připojení PHP 7,0 k protokolu SSL MySQL přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT do připojovacího řetězce. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Množina CHOP: možnost ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` na false.|
+| PHP | MySQL, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | V případě připojení PHP 7,0 k protokolu SSL MySQL přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT do připojovacího řetězce. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Množina CHOP: možnost ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` na false.|
 | .NET | Async MySQL Connector pro .NET | https://github.com/mysql-net/MySqlConnector <br> [Instalační balíček z NuGet](https://www.nuget.org/packages/MySqlConnector/) | 0,27 a za | 0.26.5 a před | |
-| .NET | Konektor MySQL/NET | https://github.com/mysql/mysql-connector-net | 8,0, 7,0, 6,10 |  | Chyba kódování může způsobit selhání připojení u některých systémů Windows bez kódování UTF8. |
-| Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Instalační balíček z NPM:<br> Spuštění `npm install mysql` z NPM | 2,15 | 2.14.1 a před | |
+| .NET | Konektor MySQL/NET | https://github.com/mysql/mysql-connector-net | 8.0, 7.0, 6.10 |  | Chyba kódování může způsobit selhání připojení u některých systémů Windows bez kódování UTF8. |
+| Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Instalační balíček z NPM:<br> Spuštění `npm install mysql` z NPM | 2.15 | 2.14.1 a před | |
 | Node.js | uzel – mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
-| Go | Přejít na ovladač MySQL | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 a před | V připojovacím řetězci použijte `allowNativePasswords=true` pro verzi 1,3. Verze 1,4 obsahuje opravu a `allowNativePasswords=true` už není potřeba. |
+| Go | Přejít na ovladač MySQL | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1,2 a před | V připojovacím řetězci použijte `allowNativePasswords=true` pro verzi 1,3. Verze 1,4 obsahuje opravu a `allowNativePasswords=true` už není potřeba. |
 | Python | Konektor MySQL/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2, použití 8.0.16 + s MySQL 8,0  | 1.2.2 a před | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (regrese v web2py) | |
-| Java | Konektor MariaDB/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 a před | | 
-| Java | Konektor MySQL/J | https://github.com/mysql/mysql-connector-j | 5.1.20 +, použití 8.0.17 + s MySQL 8,0 | 5.1.9 a nižší | |
+| Java | Konektor MariaDB/J | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 a před | | 
+| Java | Konektor MySQL/J | https://github.com/mysql/mysql-connector-j | 5.1.21 +, použití 8.0.17 + s MySQL 8,0 | 5.1.20 a nižší | |
 | C | Konektor MySQL/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
 | C | Konektor MySQL/rozhraní ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
 | C++ | Konektor MySQL/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9 + | 1.1.3 a níže | | 

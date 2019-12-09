@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849781"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928978"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Nastavení Azure Monitor pro aplikaci v Pythonu (Preview)
 
@@ -61,7 +61,16 @@ python -m pip install opencensus-ext-azure
 
 Sada SDK používá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor: trasování, metriky a protokoly. Další informace o těchto typech telemetrie najdete v tématu [Přehled datové platformy](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Pomocí následujících pokynů můžete odeslat tyto typy telemetrie prostřednictvím tří vývozců.
 
+## <a name="telemetry-type-mappings"></a>Mapování typů telemetrie
+
+Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie, které se zobrazí v Azure Monitor.
+
+![Snímek obrazovky s mapováním typů telemetrie z OpenCensus na Azure Monitor](./media/opencensus-python/0012-telemetry-types.png)
+
 ### <a name="trace"></a>Trasování
+
+> [!NOTE]
+> `Trace` v OpenCensus odkazuje na [distribuované trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). `AzureExporter` odesílá `requests` a `dependency` telemetrie do Azure Monitor.
 
 1. Nejdřív vygenerujte data trasování místně. V Pythonu nečinné nebo v editoru podle vlastního výběru zadejte následující kód.
 
@@ -293,7 +302,10 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
         main()
     ```
 
-4. Exportér odešle data protokolu do Azure Monitor. Data můžete najít v části `traces`.
+4. Exportér odešle data protokolu do Azure Monitor. Data můžete najít v části `traces`. 
+
+> [!NOTE]
+> `traces` v tomto kontextu nejsou stejné jako `Tracing`. `traces` odkazuje na typ telemetrie, který se zobrazí v Azure Monitor při použití `AzureLogHandler`. `Tracing` odkazuje na koncept v OpenCensus a má vztah k [distribuovanému trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
 5. Pokud chcete naformátovat zprávy protokolu, můžete použít `formatters` v integrovaném [rozhraní API pro protokolování](https://docs.python.org/3/library/logging.html#formatter-objects)Pythonu.
 

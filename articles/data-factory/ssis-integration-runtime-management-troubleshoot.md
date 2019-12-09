@@ -1,23 +1,22 @@
 ---
-title: 'Řešení potíží se správou SSIS Integration Runtime v Azure Data Factory '
+title: Řešení potíží se správou Integration Runtime SSIS
 description: Tento článek popisuje pokyny k odstraňování potíží se správou SSIS Integration Runtime (SSIS IR)
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/08/2019
 author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/08/2019
+ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684023"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931946"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Řešení potíží se správou SSIS Integration Runtime v Azure Data Factory
 
@@ -77,7 +76,7 @@ V případě jiných problémů zkontrolujte chybovou zprávu o výjimce SQL a o
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Tento druh chybové zprávy vypadá takto: "neplatný název objektu Catalog. catalog_properties". V této situaci už buď máte databázi s názvem SSISDB, ale ta se nevytvořila v SSIS IR, nebo se databáze nachází v neplatném stavu, který způsobuje chyby při posledním zřizování SSIS IR. Můžete odstranit stávající databázi s názvem SSISDB nebo pro prostředí IR můžete nakonfigurovat novou spravovanou instanci nebo server služby Azure SQL Database.
+Tento druh chybové zprávy vypadá takto: "neplatný název objektu" Catalog. catalog_properties. V této situaci už buď máte databázi s názvem SSISDB, ale ta se nevytvořila v SSIS IR, nebo se databáze nachází v neplatném stavu, který způsobuje chyby při posledním zřizování SSIS IR. Můžete odstranit stávající databázi s názvem SSISDB nebo pro prostředí IR můžete nakonfigurovat novou spravovanou instanci nebo server služby Azure SQL Database.
 
 ## <a name="custom-setup-issues"></a>Problémy s vlastním nastavením
 
@@ -105,7 +104,7 @@ Tato chyba znamená, že selhalo spuštění skriptu vlastní instalace (main.cm
 
 ### <a name="customsetupscripttimeout"></a>CustomSetupScriptTimeout
 
-Tato chyba znamená, že došlo k vypršení časového limitu spuštění skriptu vlastní instalace. Ujistěte se, že se váš skript dá spustit Tichě a není potřeba žádný interaktivní vstup, a ujistěte se, že váš kontejner objektů BLOB obsahuje jenom nezbytné vlastní instalační soubory. Doporučuje se nejdřív otestovat skript na místním počítači. Měli byste také zkontrolovat protokoly spuštění vlastní instalace v kontejneru objektů blob. Vlastní instalace může trvat maximálně 45 minut, pak dojde k vypršení časového limitu. Tato maximální doba zahrnuje čas potřebný ke stažení všech souborů z kontejneru a jejich instalaci v prostředí SSIS IR. Pokud potřebujete tuto dobu prodloužit, vytvořte lístek podpory.
+Tato chyba znamená, že došlo k vypršení časového limitu spuštění skriptu vlastní instalace. Ujistěte se, že je možné váš skript spustit bez upozornění a bez interaktivního vstupu, a také se ujistěte, že váš kontejner objektů blob obsahuje pouze potřebné soubory vlastní instalace. Doporučujeme nejdříve skript otestovat na místním počítači. Měli byste také zkontrolovat protokoly spuštění vlastní instalace v kontejneru objektů blob. Vlastní instalace může trvat maximálně 45 minut, pak dojde k vypršení časového limitu. Tato maximální doba zahrnuje čas potřebný ke stažení všech souborů z kontejneru a jejich instalaci v prostředí SSIS IR. Pokud potřebujete tuto dobu prodloužit, vytvořte lístek podpory.
 
 ### <a name="customsetupscriptloguploadfailure"></a>CustomSetupScriptLogUploadFailure
 

@@ -4,19 +4,19 @@ description: Poskytuje informace o nástroji Kopírování dat v uživatelském 
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: b5c93213199cac399487f949a3a8cb04c2d9addb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678321"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927500"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Nástroj Kopírování dat v Azure Data Factory
 Nástroj Azure Data Factory Kopírování dat usnadňuje a optimalizuje proces ingestování dat do data Lake, což je obvykle první krok v rámci kompletního scénáře integrace dat.  Šetří čas, zejména při prvním použití Azure Data Factory k ingestování dat ze zdroje dat. Mezi výhody použití tohoto nástroje patří:
@@ -69,7 +69,7 @@ Nástroj Kopírování dat monitoruje a učí chování při mapování sloupců
 > [!NOTE]
 > Při kopírování dat z SQL Server nebo Azure SQL Database do Azure SQL Data Warehouse, pokud tabulka v cílovém úložišti neexistuje, Kopírování dat nástroj podporuje automatické vytváření tabulky pomocí zdrojového schématu. 
 
-## <a name="filter-data"></a>Filtrovat data
+## <a name="filter-data"></a>Filtrování dat
 Můžete filtrovat zdrojová data a vybrat pouze data, která je třeba zkopírovat do úložiště dat jímky. Filtrování omezuje objem dat, která mají být zkopírována do úložiště dat jímky, a tím zvyšuje propustnost operace kopírování. Nástroj Kopírování dat poskytuje flexibilní způsob, jak filtrovat data v relační databázi pomocí dotazovacího jazyka SQL nebo souborů ve složce objektů BLOB v Azure. 
 
 ### <a name="filter-data-in-a-database"></a>Filtrování dat v databázi

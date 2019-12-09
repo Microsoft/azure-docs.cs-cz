@@ -1,20 +1,21 @@
 ---
-title: 'Skript PowerShellu – transformace dat v cloudu pomocí Data Factory '
+title: Transformace dat v cloudu pomocí PowerShellu
 description: Tento skript PowerShellu transformuje data v cloudu spuštěním programu Spark v clusteru Azure HDInsight Spark.
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684318"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932050"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skript PowerShellu – transformace dat v cloudu pomocí Azure Data Factory
 
@@ -24,7 +25,7 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Účet služby Azure Storage**. Vytvořte skript Pythonu a vstupní soubor a nahrajte je do úložiště Azure. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Uložení skriptu Pythonu do účtu služby Blob Storage
@@ -55,7 +56,7 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
     ```
 2. Nahraďte **&lt;storageAccountName&gt;** názvem vašeho účtu služby Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
-4. Vytvořte složku s názvem **spark**.
+4. Vytvořte složku **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
 6. Do podsložky **script** uložte soubor **WordCount_Spark.py**. 
 
@@ -63,7 +64,7 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
 ### <a name="upload-the-input-file"></a>Nahrání vstupního souboru
 1. Vytvořte soubor **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
 2. Vytvořte podsložku s názvem `inputfiles` ve složce `spark` kontejneru objektů BLOB. 
-3. Do podsložky `minecraftstory.txt` uložte soubor `inputfiles`. 
+3. Do podsložky `inputfiles` uložte soubor `minecraftstory.txt`. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 > [!IMPORTANT]
@@ -94,7 +95,7 @@ Tento skript používá následující příkazy:
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Vytvoření datové továrny |
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/set-Azdatafactoryv2linkedservice) | Vytvoří propojenou službu v datové továrně. Propojená služba propojuje úložiště dat nebo výpočetní prostředky s datovou továrnou. |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-Azdatafactoryv2pipeline) | Vytvoří v datové továrně kanál. Kanál obsahuje jednu nebo více aktivit, které provádějí určitou operaci. V tomto kanálu aktivita Spark transformuje data spuštěním programu v clusteru Azure HDInsight Spark. |
-| [Invoke – AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | Vytvoří běh pro kanál. Jinými slovy, spouští kanál. |
+| [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | Vytvoří běh pro kanál. Jinými slovy, spouští kanál. |
 | [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Získá podrobnosti o spuštění aktivity (spuštění aktivity) v kanálu. 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

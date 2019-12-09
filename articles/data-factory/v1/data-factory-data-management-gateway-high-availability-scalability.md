@@ -4,21 +4,20 @@ description: V tomto článku se dozvíte, jak můžete škálovat bránu pro sp
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c3428019fe23e3f206e763249a18e7774bab149b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 25dbb01a4b018a51390be664472aceadea0a9524
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682701"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932026"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána Správa dat – vysoká dostupnost a škálovatelnost (Preview)
 > [!NOTE]
@@ -109,10 +108,10 @@ V této části se předpokládá, že jste prošli následujícími dvěma čl�
 6. V Azure Portal spusťte stránku **brány** : 
     1. Na domovské stránce objektu pro vytváření dat na portálu klikněte na **propojené služby**.
     
-        ![Domovská stránka objektu pro vytváření dat](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
+        ![Domovská stránka datové továrny](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
     2. Vyberte **bránu** , aby se zobrazila stránka **brány** :
     
-        ![Domovská stránka objektu pro vytváření dat](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
+        ![Domovská stránka datové továrny](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
     4. Zobrazí se stránka **Brána** :   
 
         ![Brána s jedním zobrazením uzlů](media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png) 
@@ -151,7 +150,7 @@ Existující bránu můžete upgradovat tak, aby používala funkci vysoké dost
 
     Postupujte podle pokynů v předchozí části a nastavte uzel. 
 
-### <a name="installation-best-practices"></a>Osvědčené postupy pro instalaci
+### <a name="installation-best-practices"></a>Osvědčené postupy instalace
 
 - Nakonfigurujte schéma napájení na hostitelském počítači pro bránu tak, aby se počítač nev režimu hibernace. Pokud se hostitelský počítač přepne do režimu hibernace, brána nereaguje na požadavky na data.
 - Zálohujte certifikát přidružený k bráně.
@@ -182,13 +181,13 @@ V Azure Portal můžete zobrazit snímek téměř reálného času využití pro
 
 ![Brána Správa dat – monitorování více uzlů](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-Můžete povolit **upřesňující nastavení** na stránce **brány** a zobrazit tak pokročilé metriky, jako je například **síť**(za provozu), **role & přihlašovací údaje**, což je užitečné při ladění potíží s bránou a **souběžných úlohách** (spuštěné/omezení ), které se během optimalizace výkonu dají změnit nebo změnit. Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :  
+Můžete povolit **Rozšířená nastavení** na stránce **brány** a zobrazit tak pokročilé metriky, jako je například **síť**(za provozu), **role & přihlašovací údaje**, což je užitečné při ladění potíží s bránou a **souběžné úlohy** (spuštěné/omezení), které se dají upravovat nebo měnit, a to během optimalizace výkonu. Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :  
 
 Vlastnost monitorování | Popis
 :------------------ | :---------- 
 Name (Název) | Název logické brány a uzlů přidružených k bráně  
-Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) . 
-Verze | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila). 
+Stav | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) . 
+Version | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila). 
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase. 
 Využití procesoru | Využití procesoru uzlu brány Tato hodnota je snímkem téměř v reálném čase. 
 Sítě (za sekundu) | Využití sítě uzlu brány. Tato hodnota je snímkem téměř v reálném čase. 
@@ -201,22 +200,22 @@ Role | Existují dva typy rolí – dispečer a pracovní proces. Všechny uzly 
 
 Následující tabulka uvádí možné stavy **uzlu brány**: 
 
-Status  | Komentáře a scénáře
+Stav  | Komentáře a scénáře
 :------- | :------------------
 Online | Uzel je připojený ke službě Data Factory.
-Stav | Uzel je offline.
-Inovován | Uzel se automaticky aktualizuje.
+Offline | Uzel je offline.
+Upgrade | Uzel se automaticky aktualizuje.
 Omezená | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů. 
-Termín | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům. 
+Neaktivní | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům. 
 
 
 Následující tabulka uvádí možné stavy **logické brány**. Stav brány závisí na stavech uzlů brány. 
 
-Status | Komentáře
+Stav | Komentáře
 :----- | :-------
 Vyžaduje registraci | Pro tuto logickou bránu ještě není zaregistrovaný žádný uzel.
 Online | Uzly brány jsou online.
-Stav | Žádný uzel ve stavu online.
+Offline | Žádný uzel ve stavu online.
 Omezená | Ne všechny uzly v této bráně jsou v dobrém stavu. Tento stav je upozorněním, že některý uzel může být mimo provoz. <br/><br/>Důvodem může být problém synchronizace přihlašovacích údajů u dispečera nebo pracovního uzlu. 
 
 ### <a name="pipeline-activities-monitoring"></a>Monitorování kanálu/aktivit

@@ -2,24 +2,24 @@
 title: Transformace dat pomocí aktivity podregistru Hadoop
 description: Přečtěte si, jak můžete použít aktivitu podregistru v Azure Data Factory ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 84c7ff8268934c771a056e41cd2bf484b8674302
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+manager: anandsub
+ms.custom: seo-lt-2019
+ms.date: 01/15/2019
+ms.openlocfilehash: b4af3f897a12c71d73962735d3fe68d95f138cef
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893820"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912913"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity podregistru Hadoop v Azure Data Factory
+
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-hive-activity.md)
 > * [Aktuální verze](transform-data-using-hadoop-hive.md)

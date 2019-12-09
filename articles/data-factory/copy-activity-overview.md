@@ -4,20 +4,19 @@ description: Přečtěte si o aktivitě kopírování v Azure Data Factory. Mů�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: fa2876b88a520480813ebfb8af8219d53c32057a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 40bddaab6db5e7ed777ec55ca469a9e2d1c35c98
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075564"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927550"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -126,7 +125,7 @@ Následující šablona aktivity kopírování obsahuje úplný seznam podporova
 
 #### <a name="syntax-details"></a>Podrobnosti o syntaxi
 
-| Vlastnost | Popis | Požadováno? |
+| Vlastnost | Popis | Povinné? |
 |:--- |:--- |:--- |
 | type | U aktivity kopírování nastavte na `Copy` | Ano |
 | inputs | Určete datovou sadu, kterou jste vytvořili, která odkazuje na zdrojová data. Aktivita kopírování podporuje pouze jeden vstup. | Ano |
@@ -140,7 +139,7 @@ Následující šablona aktivity kopírování obsahuje úplný seznam podporova
 | enableStaging<br/>stagingSettings | Určete, jestli se mají připravit dočasná data v úložišti objektů BLOB místo přímého kopírování dat ze zdroje do jímky.<br/><br/>Informace o užitečných scénářích a podrobnostech konfigurace najdete v tématu [Příprava kopírování](copy-activity-performance.md#staged-copy). | Ne |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Vyberte, jak se má při kopírování dat ze zdroje do jímky zpracovat nekompatibilní řádky.<br/><br/>Další informace najdete v tématu odolnost [proti chybám](copy-activity-fault-tolerance.md). | Ne |
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Běh aktivity kopírování můžete monitorovat v uživatelském rozhraní Azure Data Factory **Author & monitorovat** nebo programově.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e8783d500ed7dd6e8e5d518d2a4fbe5e5e1e276
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305279"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926748"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 
@@ -29,7 +29,7 @@ Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím
 
 V tomto kurzu nasadíme virtuální počítač Linux, na kterém běží operační systém Ubuntu 16,04 LTS. Agent telegraf se podporuje pro většinu operačních systémů Linux. Balíčky Debian i ot./min. jsou k dispozici společně s nebalenými binárními soubory Linux na [portálu pro stažení InfluxData](https://portal.influxdata.com/downloads). Další pokyny k instalaci a možnosti najdete v této [příručce k instalaci telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 Vytvořte nový virtuální počítač pro Linux: 
 
@@ -106,11 +106,11 @@ Agent nyní bude shromažďovat metriky ze všech zadaných vstupních modulů p
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Vykreslení metriky telegraf v Azure Portal 
 
-1. Otevřete [portál Azure](https://portal.azure.com). 
+1. Otevřete web [Azure Portal](https://portal.azure.com). 
 
 1. Přejděte na kartu nové **monitorování** . Pak vyberte **metriky**.  
 
-     ![Monitor – metriky (Preview)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
+     ![Monitorování – metrika (Preview)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
 1. V selektoru prostředků vyberte svůj virtuální počítač.
 

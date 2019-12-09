@@ -1,5 +1,5 @@
 ---
-title: Sledování výkonu webových aplikací – Azure Application Insights | Microsoft Docs
+title: Sledování výkonu webové aplikace – Azure Application Insights
 description: Jak Application Insights zapadá do cyklu devOps
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/21/2018
-ms.openlocfilehash: bf7c0b4db2b7eb662f55b917dbe318d0ad8023ce
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 1396bc86971941fdf8c6559df71a4c47f58a899c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677297"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928823"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -141,7 +141,7 @@ Při vývoji a ladění funkce můžete telemetrie zobrazit a vyhledat přímo v
 
 A když Application Insights zaznamená výjimku, můžete zobrazit datový bod v aplikaci Visual Studio a přejít přímo na příslušný kód.
 
-![Hledání v aplikaci Visual Studio](./media/devops/060.png)
+![Hledání Visual Studio](./media/devops/060.png)
 
 Během ladění máte možnost zachovat telemetrii ve vývojovém počítači, zobrazit ji v aplikaci Visual Studio, ale bez odeslání na portál. Tato místní možnost zabraňuje smíchání ladění s produkční telemetrie.
 

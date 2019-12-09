@@ -1,5 +1,5 @@
 ---
-title: Datový model Azure Telemetrie Application Insights – telemetrie požadavků | Microsoft Docs
+title: Datový model pro telemetrii žádostí – Azure Application Insights
 description: Application Insights datový model pro telemetrii žádostí
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: ff7b52cbd88e4927db275dee4d7fbc4691ad076b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677330"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928840"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: datový model Application Insights
 
@@ -59,7 +59,7 @@ Maximální délka: 1024 znaků
 
 ## <a name="success"></a>Úspěch
 
-Označení úspěšného nebo neúspěšného volání. Toto pole je povinné. Pokud není explicitně nastavené na `false` – požadavek se považuje za úspěšný. Nastavte tuto hodnotu na `false`, pokud byla operace přerušena výjimkou nebo vrátila kód výsledku chyby.
+Označení úspěšného nebo neúspěšného volání. Toto pole je vyžadováno. Pokud není explicitně nastavené na `false` – požadavek se považuje za úspěšný. Nastavte tuto hodnotu na `false`, pokud byla operace přerušena výjimkou nebo vrátila kód výsledku chyby.
 
 Pro webové aplikace Application Insights definovat požadavek jako úspěšný, pokud je kód odpovědi menší než `400` nebo se rovná `401`. Existují však případy, kdy toto výchozí mapování neodpovídá sémantikě aplikace. Kód odpovědi `404` může indikovat "žádné záznamy", které mohou být součástí pravidelného toku. Může také označovat přerušený odkaz. Pro přerušené odkazy můžete dokonce implementovat pokročilejší logiku. Můžete označit poškozené odkazy jako chyby pouze v případě, že jsou tyto odkazy umístěny ve stejné lokalitě pomocí analýzy odkazující adresy URL. Nebo je při použití z mobilní aplikace společnosti označit jako neúspěšná. Podobně `301` a `302` signalizují selhání při přistupování z klienta, který nepodporuje přesměrování.
 

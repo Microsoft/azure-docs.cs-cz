@@ -4,20 +4,19 @@ description: Naučte se šifrovat a ukládat přihlašovací údaje pro místní
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 41e353931fb2d9fe26c0a6bd73d5085495ad7b78
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bcca2e6168baafe9f98f663298790841c0f1f450
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675063"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927432"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory
 Můžete šifrovat a ukládat přihlašovací údaje místních úložišť dat (propojených služeb s citlivými informacemi) na počítači s integrovaným prostředím Integration runtime. 
@@ -50,7 +49,7 @@ Před uložením souboru nahraďte `<servername>`, `<databasename>`, `<username>
 }
 ```
 
-## <a name="encrypt-credentials"></a>Šifrovat přihlašovací údaje
+## <a name="encrypt-credentials"></a>Šifrování přihlašovacích údajů
 K šifrování citlivých dat z datové části JSON v místním prostředí Integration runtime, spusťte rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential**a předejte ji do datové části JSON. Tato rutina zajišťuje šifrování přihlašovacích údajů pomocí rozhraní DPAPI a uložených místně v uzlu Integration runtime v místním prostředí. Výstupní datová část obsahující šifrovaný odkaz na přihlašovací údaje může být přesměrovaná na jiný soubor JSON (v tomto případě "encryptedLinkedService. JSON").
 
 ```powershell

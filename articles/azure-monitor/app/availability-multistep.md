@@ -1,5 +1,5 @@
 ---
-title: Monitorování webové aplikace pomocí webových testů s více kroky a Azure Application Insights | Microsoft Docs
+title: Monitorování pomocí multi-step web Tests – Azure Application Insights
 description: Nastavení webových testů s více kroky pro monitorování webových aplikací s využitím Azure Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817382"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928972"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
@@ -27,7 +27,7 @@ Zaznamenanou posloupnost adres URL a interakcí můžete sledovat na webu prost�
 * Visual Studio 2017 Enterprise nebo vyšší.
 * Nástroje pro testování výkonu a zátěže webu sady Visual Studio.
 
-Pro vyhledání požadovaných testovacích nástrojů. Spusťte **Instalační program pro Visual Studio**  > **jednotlivé komponenty**  > **ladění a testování**  > **nástroje webového výkonu a zátěžového testování**.
+Pro vyhledání požadovaných testovacích nástrojů. Spusťte **Instalační program pro Visual Studio** > **jednotlivé komponenty** > **ladění a testování** > **nástroje webového výkonu a zátěžového testování**.
 
 ![Snímek obrazovky s uživatelským rozhraním instalačního programu sady Visual Studio s jednotlivými součástmi vybranými vedle položky pro nástroje pro testování výkonu webu a zátěžové testování](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -43,7 +43,7 @@ Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální
 
 ## <a name="upload-the-web-test"></a>Nahrát webový test
 
-1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit testovací**  > **Typ testu**  > **webový test s více kroky**.
+1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit testovací** > **Typ testu** > **webový test s více kroky**.
 
 2. Nastavte umístění testu, četnost a parametry výstrahy.
 
@@ -68,7 +68,7 @@ Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
 |**Classic** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
-|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem umístění testu je **prahová hodnota pro umístění výstrahy**  = **počet umístění testu – 2, minimálně pět umístění testu.**|
+|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem umístění testu je **prahová hodnota pro umístění výstrahy** = **počet umístění testu – 2, minimálně pět umístění testu.**|
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -113,9 +113,9 @@ Ve všech případech musíte v aplikaci vytvořit účet jenom pro účely test
 | Identifikátor URI cílové skupiny | Identifikátor URI cílové skupiny pro token SAML.  Toto je identifikátor URI pro Access Control Service (ACS) – včetně oboru názvů služby ACS a názvu hostitele. |
 | Heslo certifikátu | Heslo pro klientský certifikát, kterým bude udělen přístup k vloženému privátnímu klíči. |
 | Certifikát klienta  | Hodnota certifikátu klienta s privátním klíčem ve formátu kódování Base64. |
-| Identifikátor názvu | Identifikátor názvu pro token |
-| Není po | Hodnota TimeSpan, pro kterou bude token platný  Výchozí hodnota je 5 minut. |
-| Ne před | Hodnota TimeSpan, pro kterou byl token vytvořený v minulosti platný (k adresování časových intervalů).  Výchozí hodnota je (negativní) 5 minut. |
+| Identifikátor jména | Identifikátor názvu pro token |
+| Neplatný po | Hodnota TimeSpan, pro kterou bude token platný  Výchozí hodnota je 5 minut. |
+| Neplatný před | Hodnota TimeSpan, pro kterou byl token vytvořený v minulosti platný (k adresování časových intervalů).  Výchozí hodnota je (negativní) 5 minut. |
 | Název cílového kontextového parametru | Kontextový parametr, který získá generovaný kontrolní výraz. |
 
 

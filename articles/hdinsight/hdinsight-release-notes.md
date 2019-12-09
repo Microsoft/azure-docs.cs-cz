@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185607"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926429"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -51,7 +51,7 @@ Podpora automatického škálování pro HBA a LLAP úlohy je také Public Previ
 
 ### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Urychlené zápisy HDInsight pro Apache HBA 
 
-Zrychlené zápisy s využitím spravovaných disků Azure SSD úrovně Premium zvyšují výkon dopředného protokolování Apache HBase. Další informace najdete v tématu [urychlení zápisů Azure HDInsight pro Apache HBA](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
+Zrychlené zápisy s využitím spravovaných disků Azure SSD úrovně Premium zvyšují výkon dopředného protokolování Apache HBase. Další informace najdete v tématu [Zrychlené zápisy služby Azure HDInsight pro Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
 
 ### <a name="custom-ambari-db"></a>Vlastní Ambari DB
 
@@ -90,4 +90,4 @@ Virtuální počítače řady A-Series můžou způsobovat problémy s clusterem
 HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
 
 ## <a name="component-version-change"></a>Změna verze součásti
-Pro tuto verzi neexistuje žádná změna verze součásti. Aktuální verze komponent pro HDInsight 4,0 AD HDInsight 3,6 najdete [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Pro tuto verzi neexistuje žádná změna verze součásti. Aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6 najdete [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).

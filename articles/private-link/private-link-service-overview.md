@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8ac93e7ed1638137e70086ac22fa9bb97606830e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228050"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912981"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
 Služba privátního propojení Azure je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) , se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuální sítě. Vaši zákazníci můžou ve své virtuální síti vytvořit privátní koncový bod a namapovat ho k této službě. Tento článek vysvětluje koncepty týkající se strany poskytovatele služeb. 
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 ![Pracovní postup služby privátního propojení](media/private-link-service-overview/private-link-service-workflow.png)
 
@@ -101,7 +101,6 @@ Následující jsou známá omezení při použití služby privátního propoje
 - Podporováno pouze v Standard Load Balancer 
 - Podporuje jenom přenosy IPv4.
 - Podporuje jenom přenosy TCP.
-- Dosažitelný pouze z privátních koncových bodů ve stejné oblasti
 - Vytváření a Správa prostředí z Azure Portal se nepodporuje.
 - Poskytovateli služeb nenabízí informace o připojení klientů pomocí protokolu proxy.
 

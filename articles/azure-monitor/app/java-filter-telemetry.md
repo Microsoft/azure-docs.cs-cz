@@ -1,5 +1,5 @@
 ---
-title: Filtrování telemetrie Azure Application Insights ve vaší webové aplikaci v Java | Microsoft Docs
+title: Filtrování telemetrie Azure Application Insights ve webové aplikaci Java
 description: Zmenšení provozu telemetrie filtrováním událostí, které nepotřebujete monitorovat.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 3/14/2019
-ms.openlocfilehash: de2a7c73b87254a6fd2e6c5dc942a9c93d28c2d4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: dd47ef68726f3f804dabbc9751e9c86dfe846559
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819357"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927285"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
 
@@ -233,7 +233,7 @@ V kódu vytvořte třídu, která implementuje `TelemetryProcessor`:
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. vyvolejte filtr v konfiguračním souboru.
 
-V souboru ApplicationInsights. XML:
+In ApplicationInsights.xml:
 
 ```XML
 

@@ -4,21 +4,20 @@ description: Nastavte bránu dat pro přesun dat mezi místním prostředím a c
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 41d8a5d3569d0b38ff569f9ccfa28a4b2af1d959
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682717"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932008"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -72,7 +71,7 @@ Tady je tok dat na nejvyšší úrovni pro a shrnutí kroků pro kopírování p
 * **Bránu musíte použít** i v případě, že je úložiště dat v cloudu na **virtuálním počítači Azure s IaaS**.
 
 ## <a name="installation"></a>Instalace
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 * Podporované verze **operačního systému** jsou Windows 7, Windows 8/8.1, Windows 10, Windows Server 2008 R2, windows Server 2012, windows Server 2012 R2. Instalace brány pro správu dat v řadiči domény se v tuto chvíli nepodporuje.
 * Vyžaduje se .NET Framework 4.5.1 nebo vyšší. Pokud instalujete bránu na počítač se systémem Windows 7, nainstalujte .NET Framework 4,5 nebo novější. Podrobnosti najdete v tématu [.NET Framework systémových požadavků](https://msdn.microsoft.com/library/8z6watww.aspx) .
 * Doporučená **Konfigurace** pro počítač brány je minimálně 2 GHz, 4 jádra, 8 GB RAM a 80-GB disku.
@@ -130,7 +129,7 @@ Pokud chcete vytvořit bránu na portálu a získat klíč ze stránky **Konfigu
 ### <a name="system-tray-icons-notifications"></a>Ikony a oznámení na hlavním panelu systému
 Na následujícím obrázku vidíte některé ikony zásobníku, které vidíte.
 
-![ikony na hlavním panelu systému](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
+![systémové ikony oznamovací oblasti](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
 
 Pokud přesunete kurzor přes ikonu na hlavním panelu systému/zprávu oznámení, zobrazí se podrobnosti o stavu operace brány/aktualizace v místním okně.
 
@@ -252,7 +251,7 @@ Pokud používáte bránu firewall jiného výrobce, můžete ručně otevřít 
 
 Pokud se rozhodnete neotevírat port 8050 na počítači brány, použijte jiné mechanismy než použití aplikace **Nastavení přihlašovacích údajů** ke konfiguraci přihlašovacích údajů úložiště dat. Můžete například použít rutinu [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) prostředí PowerShell. V části Nastavení přihlašovacích údajů a zabezpečení najdete informace o tom, jak se dají nastavit přihlašovací údaje úložiště dat.
 
-## <a name="update"></a>Aktualizace
+## <a name="update"></a>Aktualizovat
 Ve výchozím nastavení je brána pro správu dat automaticky aktualizována, pokud je k dispozici novější verze brány. Brána není aktualizována, dokud nebudou dokončeny všechny naplánované úlohy. Brána nezpracovává žádné další úlohy, dokud se nedokončí operace aktualizace. Pokud se aktualizace nezdařila, brána se vrátí zpět na starou verzi.
 
 Čas plánované aktualizace se zobrazí v následujících umístěních:
@@ -263,7 +262,7 @@ Ve výchozím nastavení je brána pro správu dat automaticky aktualizována, p
 
 Karta domů v Configuration Manager brány Správa dat zobrazuje plán aktualizace a čas, kdy byla brána naposledy nainstalována/aktualizována.
 
-![Plán aktualizací](media/data-factory-data-management-gateway/UpdateSection.png)
+![Aktualizace plánu](media/data-factory-data-management-gateway/UpdateSection.png)
 
 Aktualizaci můžete nainstalovat hned nebo počkat, až se brána automaticky aktualizuje v naplánovaném čase. Například na následujícím obrázku vidíte zprávu s oznámením, která se zobrazuje v Configuration Manager brány, spolu s tlačítkem aktualizovat, na kterou můžete kliknout a hned ji nainstalovat.
 
@@ -338,7 +337,7 @@ Stránka Diagnostika umožňuje provést následující akce:
 * Povolit podrobné **protokolování**, zobrazit protokoly v prohlížeči událostí a odeslat protokoly společnosti Microsoft v případě selhání.
 * **Otestujte připojení** ke zdroji dat.
 
-### <a name="help-page"></a>Stránka s usnadněním
+### <a name="help-page"></a>Stránka nápovědy
 Na stránce s informací o nápovědě se zobrazí následující informace:
 
 * Stručný popis brány
@@ -350,7 +349,7 @@ V Azure Portal můžete na počítači brány Zobrazit snímek využití prostř
 
 1. V Azure Portal přejděte na domovskou stránku objektu pro vytváření dat a klikněte na dlaždici **propojené služby** .
 
-    ![Domovská stránka objektu pro vytváření dat](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png)
+    ![Domovská stránka datové továrny](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png)
 2. Vyberte **bránu** na stránce **propojené služby** .
 
     ![Stránka propojených služeb](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
@@ -365,8 +364,8 @@ Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :
 
 Vlastnost monitorování | Popis
 :------------------ | :----------
-Název | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
-Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
+Name (Název) | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
+Stav | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
 Version | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase.
 Využití procesoru | Využití procesoru uzlu brány Tato hodnota je snímkem téměř v reálném čase.
@@ -379,21 +378,21 @@ Na této stránce se zobrazí některá nastavení, která jsou smysluplnější
 ### <a name="gateway-status"></a>Stav brány
 Následující tabulka uvádí možné stavy **uzlu brány**:
 
-Status  | Komentáře a scénáře
+Stav  | Komentáře a scénáře
 :------- | :------------------
 Online | Uzel je připojený ke službě Data Factory.
-V režimu offline | Uzel je offline.
-Inovován | Uzel se automaticky aktualizuje.
+Offline | Uzel je offline.
+Upgrade | Uzel se automaticky aktualizuje.
 Omezená | Kvůli problému s připojením. Důvodem může být problém s portem HTTP 8050, potížím s připojením k Service Bus nebo problémy s synchronizací přihlašovacích údajů.
-Termín | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům.
+Neaktivní | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzlů.<br/><br/> Uzel může být neaktivní, pokud se nemůže připojit k jiným uzlům.
 
 Následující tabulka uvádí možné stavy **logické brány**. Stav brány závisí na stavech uzlů brány.
 
-Status | Komentáře
+Stav | Komentáře
 :----- | :-------
 Vyžaduje registraci | Pro tuto logickou bránu ještě není zaregistrovaný žádný uzel.
 Online | Uzly brány jsou online.
-V režimu offline | Žádný uzel ve stavu online.
+Offline | Žádný uzel ve stavu online.
 Omezená | Ne všechny uzly v této bráně jsou v dobrém stavu. Tento stav je upozorněním, že některý uzel může být mimo provoz. <br/><br/>Důvodem může být problém synchronizace přihlašovacích údajů u dispečera nebo pracovního uzlu.
 
 ## <a name="scale-up-gateway"></a>Horizontální navýšení kapacity brány

@@ -1,23 +1,22 @@
 ---
-title: Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory
+title: Migrace dat z Amazonu S3 do Azure Storage
 description: Pomocí Azure Data Factory migrujte data z Amazon S3 do Azure Storage.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 4d4e0453105dacfbf35624a2a9acb9d5994f4dea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675748"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927479"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory 
 
@@ -93,7 +92,7 @@ Pokud některá z úloh kopírování selže kvůli přechodnému problému se s
 
 ### <a name="delta-data-migration"></a>Migrace rozdílových dat 
 
-Nejpohodlnější způsob, jak identifikovat nové nebo změněné soubory z AWS S3, je použití konvencí pojmenování na oddíly s časovou konvencí – když vaše data v AWS S3 jsou v čase dělená informacemi o časovém řezu v názvu souboru nebo složky (například/yyyy/MM/DD/File.csv), pak váš kanál může snadno určit, které soubory nebo složky se mají kopírovat přírůstkově. 
+Nejpohodlnější způsob, jak identifikovat nové nebo změněné soubory z AWS S3, je použití konvencí pojmenování na oddíly s časovou konvencí – když se data v AWS S3 zaregistrují s informacemi o časovém intervalu v názvu souboru nebo složky (například/yyyy/MM/DD/File.csv), kanál může snadno určit, které soubory/složky se mají kopírovat přírůstkově. 
 
 Případně, pokud vaše data v AWS S3 nejsou rozdělená do oddílů, může ADF identifikovat nové nebo změněné soubory podle jejich LastModifiedDate.   To funguje tak, že ADF bude kontrolovat všechny soubory z AWS S3 a kopíruje jenom nový a aktualizovaný soubor, jehož časové razítko poslední změny je větší než určitá hodnota.  Uvědomte si, že pokud máte ve S3 velký počet souborů, může prvotní kontrola souborů trvat dlouhou dobu bez ohledu na to, kolik souborů odpovídá podmínce filtru.  V tomto případě navrhujete nejprve rozdělit data pomocí stejného nastavení ' prefix ' pro počáteční migraci snímku, aby bylo prohledávání souborů souběžně možné.  
 

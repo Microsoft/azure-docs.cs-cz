@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8dd111017076e4a1a6a93ac7d53c253a85a09376
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d71c4ee7c5d982708c8a3b0a79b453d7196ad02d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890089"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923614"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL Data Warehouse partneři pro integraci dat
 Pokud chcete vytvořit řešení datového skladu, vyberte si z široké škály špičkových nástrojů. Tento článek popisuje partnerské společnosti Microsoftu s oficiálními řešeními pro integraci dat, která podporují Azure SQL Data Warehouse.
@@ -37,7 +37,7 @@ Pokud chcete vytvořit řešení datového skladu, vyberte si z široké škály
 | ![SnapLogic][6] |**SnapLogic**<br>Platforma SnapLogic umožňuje zákazníkům rychle přenést data do a z Microsoft Azure SQL Data Warehouse. Nabízí možnost integrace stovek aplikací, služeb a scénářů IoT v jednom řešení.|[Stránka produktu][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
 | ![StreamSets][16] |**StreamSets**<br>StreamSets poskytuje platformu pro integraci dat pro DataOps. Operationalizes kompletní životní cyklus návrhu – nasazení a provozu integrace dat do Azure SQL Data Warehouse. Nemůžete rychle ingestovat a integrovat data do datového skladu, prostřednictvím streamování, dávek nebo změněných dat, ale také zajistit nepřetržité operace s inteligentními datovými kanály, které umožňují kompletní viditelnost toku dat a odolnost.|[Stránka produktu][streamsets_website]|
 | ![Talend][12] |**Talend Cloud**<br>Talend Cloud je podniková platforma pro integraci dat, která slouží k připojení, přístupu a transformaci všech dat v cloudu i v místním prostředí. Jedná se o nabídku integrační platformy jako služby (iPaaS), která poskytuje široké možnosti připojení, integrované kvality dat a nativní podporu pro nejnovější velké objemy dat a cloudové technologie. |[Stránka produktu][talend_website]<br> [Azure Marketplace][talend_marketplace] |
-| ![TimeXtender][13] |**TimeXtender**<br>Centrum zjišťování TimeXtender pomáhá firmám vytvářet moderní datové podstaty tím, že poskytuje integrovanou platformu pro správu dat, která zrychluje dobu analýzy dat až na 10 časů. Za každodenní extrakci, transformaci a načítání (ETL) nebo extrakci, načítání a transformaci (ELT) díky automatizaci a funkcím pro přístup k datům, modelování dat a dodržování předpisů v jedné platformě. Centrum zjišťování poskytuje soudržné datové prostředky pro cloudové analýzy, které vám umožní připojit a integrovat různé sila dat, katalog, model, přesun a dokumentovat data pro analýzy a AI. | [Stránka produktu][timextender_website] |
+| ![TimeXtender][13] |**TimeXtender**<br>Centrum zjišťování TimeXtender pomáhá firmám vytvářet moderní datové podstaty tím, že poskytuje integrovanou platformu pro správu dat, která zrychluje dobu analýzy dat až na 10 časů. Za každodenní extrakci, transformaci a načítání (ETL) nebo extrakci, načítání a transformaci (ELT) díky automatizaci a funkcím pro přístup k datům, modelování dat a dodržování předpisů v jedné platformě. Centrum zjišťování poskytuje soudržné datové prostředky pro cloudové analýzy, které vám umožní připojit a integrovat různé sila dat, katalog, model, přesun a dokumentovat data pro analýzy a AI. | [Stránka produktu][timextender_website]<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta pomáhá jednotlivcům a organizacím prozkoumat a spojit dohromady nejrůznější data pro účely analýzy. Trifacta Wrangler je navržená tak, aby zpracovávala úlohy tahání dat, které potřebují podporovat škálovaná data a velký počet koncových uživatelů.|[Stránka produktu][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
 | ![WhereScape][15] |**Wherescape červená**<br> WhereScape RED je integrované vývojové prostředí (IDE), které poskytuje týmům nástroje pro automatizaci a zjednodušit tak pracovní postupy ETL. Integrované vývojové prostředí (IDE) poskytuje osvědčené postupy optimalizované nativní kód pro oblíbené datové cíle. WhereScape RED použijte k vyjmutí času pro vývoj, nasazení a provoz infrastruktury dat.|[Stránka produktu][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 

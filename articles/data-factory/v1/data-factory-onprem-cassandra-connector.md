@@ -4,21 +4,20 @@ description: Přečtěte si, jak přesunout data z místní databáze Cassandra 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 085cc312-42ca-4f43-aa35-535b35a102d5
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4edd4d663e02601a97474c5d3a54adaa6b7fd27d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682452"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931827"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Přesun dat z místní databáze Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -35,7 +34,7 @@ Data z místního úložiště dat Cassandra můžete kopírovat do libovolného
 ## <a name="supported-versions"></a>Podporované verze
 Konektor Cassandra podporuje následující verze Cassandra: 2. x a 3. x. V případě aktivity spuštěné v místním prostředí Integration Runtime se Cassandra 3. x podporuje od verze IR 3,7 a vyšší.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Aby se služba Azure Data Factory mohla připojit k místní databázi Cassandra, musíte nainstalovat Správa dat bránu do stejného počítače, který hostuje databázi, nebo na samostatném počítači, abyste se vyhnuli konkurenčním prostředkům s databází. Správa dat Gateway je komponenta, která připojuje místní zdroje dat ke cloudovým službám zabezpečeným a spravovaným způsobem. Podrobnosti o Správa dat bráně najdete v článku o [Správa dat brány](data-factory-data-management-gateway.md) . Podrobné pokyny týkající se nastavení brány a datového kanálu pro přesun dat najdete v článku [o přesunu dat z místního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
 
 Bránu musíte použít pro připojení k databázi Cassandra, i když je databáze hostovaná v cloudu, například na virtuálním počítači Azure s IaaS. Y můžete mít bránu na stejném virtuálním počítači, který hostuje databázi, nebo na samostatném virtuálním počítači, pokud se brána může připojit k databázi.
@@ -49,7 +48,7 @@ Při instalaci brány se automaticky nainstaluje ovladač Microsoft Cassandra OD
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API.
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
-- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -67,9 +66,9 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type |Vlastnost Type musí být nastavená na: **OnPremisesCassandra** . |Ano |
-| Provoz |Jedna nebo víc IP adres nebo názvů hostitelů Cassandra serverů.<br/><br/>Zadejte čárkami oddělený seznam IP adres nebo názvů hostitelů pro připojení ke všem serverům současně. |Ano |
+| hostitel |Jedna nebo víc IP adres nebo názvů hostitelů Cassandra serverů.<br/><br/>Zadejte čárkami oddělený seznam IP adres nebo názvů hostitelů pro připojení ke všem serverům současně. |Ano |
 | port |Port TCP, který server Cassandra používá k naslouchání klientským připojením. |Ne, výchozí hodnota: 9042 |
-| authenticationType |Basic nebo Anonymous |Ano |
+| authenticationType. |Basic nebo Anonymous |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
 | heslo |Zadejte heslo pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
 | gatewayName |Název brány, který se používá pro připojení k místní databázi Cassandra. |Ano |
@@ -85,7 +84,7 @@ Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje inf
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| prostor klíčů |Název prostoru klíčů nebo schématu v databázi Cassandra. |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
+| keySpace |Název prostoru klíčů nebo schématu v databázi Cassandra. |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
 | tableName |Název tabulky v databázi Cassandra |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
@@ -98,7 +97,7 @@ Pokud je zdroj typu **CassandraSource**, jsou v oddílu typeProperties k dispozi
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | query |Pomocí vlastního dotazu můžete číst data. |Dotaz SQL-92 nebo dotaz CQL Viz [odkaz na CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití dotazu SQL zadejte **název prostoru klíčů. název tabulky** , který bude představovat tabulku, kterou chcete dotazovat. |Ne (Pokud je definováno pole tableName a prostor pro datovou sadu). |
-| consistencyLevel |Úroveň konzistence určuje, kolik replik musí odpovídat žádosti o čtení před vrácením dat do klientské aplikace. Cassandra zkontroluje zadaný počet replik dat, aby splňovaly požadavky na čtení. |JEDNA, DVĚ, TŘI, KVORA, VŠE, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Podrobnosti najdete v tématu [Konfigurace konzistence dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Ne. Výchozí hodnota je jedna. |
+| consistencyLevel |Úroveň konzistence určuje, kolik replik musí odpovídat žádosti o čtení před vrácením dat do klientské aplikace. Cassandra zkontroluje zadaný počet replik dat, aby splňovaly požadavky na čtení. |JEDNA, DVĚ, TŘI, KVORA, VŠE, LOCAL_QUORUM, EACH_QUORUM LOCAL_ONE. Podrobnosti najdete v tématu [Konfigurace konzistence dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Ne. Výchozí hodnota je jedna. |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>Příklad JSON: kopírování dat z Cassandra do Azure Blob
 Tento příklad poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak kopírovat data z místní databáze Cassandra do Azure Blob Storage. Data však lze zkopírovat do kterékoli z těchto umyvadel, které jsou [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedeny, pomocí aktivity kopírování v Azure Data Factory.
@@ -262,21 +261,21 @@ Seznam vlastností podporovaných rozhraním RelationalSource naleznete v témat
 ### <a name="type-mapping-for-cassandra"></a>Mapování typů pro Cassandra
 | Typ Cassandra | Typ založený na .NET |
 | --- | --- |
-| Abecední |Řetězec |
+| ASCII |Řetězec |
 | BIGINT |Int64 |
-| PŘÍZNAKY |Byte [] |
-| DATOVÉHO |Logická hodnota |
-| NOTACI |Notaci |
-| KLEPAT |Klepat |
-| Plovák |Jednoduchá |
+| BLOB |Byte[] |
+| BOOLEAN |Logická hodnota |
+| DESÍTKOVÉ |Decimal |
+| DOUBLE |Double |
+| FLOAT |Jednoduchá |
 | INET |Řetězec |
-| INT |Uvedena |
-| TEXTOVÉ |Řetězec |
-| ČASOVÉ razítko |DateTime |
+| INT |Datový typ Int32 |
+| TEXT |Řetězec |
+| TIMESTAMP |Datum a čas |
 | TIMEUUID |Guid |
-| IDENTIFIKÁTOR |Guid |
+| UUID |Guid |
 | VARCHAR |Řetězec |
-| VARINT |Notaci |
+| VARINT |Decimal |
 
 > [!NOTE]
 > Pro typy kolekcí (mapování, nastavení, seznam atd.) se podívejte na téma [práce s typy kolekce Cassandra pomocí virtuální tabulky](#work-with-collections-using-virtual-table) .
@@ -297,12 +296,12 @@ Virtuální tabulky odkazují na data v reálné tabulce a umožňují tak ovlad
 
 [Průvodce kopírováním](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) můžete použít k intuitivnímu zobrazení seznamu tabulek v databázi Cassandra, včetně virtuálních tabulek, a zobrazení náhledu dat v rámci. Dotaz můžete vytvořit také v průvodci kopírováním a ověřit tak, aby se zobrazil výsledek.
 
-### <a name="example"></a>Příklad
-Například následující "Příklad tabulky" je databázová tabulka Cassandra obsahující celočíselný sloupec primárního klíče s názvem "pk_int", textový sloupec s názvem Value, sloupec seznamu, sloupec mapy a sloupec set (s názvem "StringSet").
+### <a name="example"></a>Příklad:
+Například následující "ukázková tabulka" je databázová tabulka Cassandra, která obsahuje sloupec primárního klíče s celými čísly s názvem "pk_int", textový sloupec s názvem Value, sloupec seznamu, sloupec mapy a sloupec sady (s názvem "StringSet").
 
-| pk_int | Hodnota | Seznam | Mapa | StringSet |
+| pk_int | Hodnota | List | Mapa | StringSet |
 | --- | --- | --- | --- | --- |
-| 1 |"Ukázková hodnota 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
+| 1\. místo |"Ukázková hodnota 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"Ukázková hodnota 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
 
 Ovladač by vygeneroval několik virtuálních tabulek, které reprezentují tuto jedinou tabulku. Sloupce cizího klíče ve virtuálních tabulkách odkazují na sloupce primárního klíče v reálné tabulce a označují, na který skutečný řádek tabulky odpovídá řádek virtuální tabulky.
@@ -311,35 +310,35 @@ První virtuální tabulka je základní tabulka s názvem "priklad Table" je uv
 
 | pk_int | Hodnota |
 | --- | --- |
-| 1 |"Ukázková hodnota 1" |
+| 1\. místo |"Ukázková hodnota 1" |
 | 3 |"Ukázková hodnota 3" |
 
-V následujících tabulkách jsou uvedeny virtuální tabulky, které znovu normalizují data ze sloupců seznamu, mapy a StringSet. Sloupce s názvy, které končí na "_index" nebo "_Key", označují pozici dat v rámci původního seznamu nebo mapy. Sloupce s názvy, které končí řetězcem "_Value", obsahují rozšířená data z kolekce.
+V následujících tabulkách jsou uvedeny virtuální tabulky, které znovu normalizují data ze sloupců seznamu, mapy a StringSet. Sloupce s názvy, které končí na "_index" nebo "_key" označují pozici dat v původním seznamu nebo mapě. Sloupce s názvy, které končí řetězcem "_value", obsahují rozšířená data z kolekce.
 
 #### <a name="table-exampletable_vt_list"></a>Tabulka "ExampleTable_vt_List":
 | pk_int | List_index | List_value |
 | --- | --- | --- |
-| 1 |0 |1 |
-| 1 |1 |2 |
-| 1 |2 |3 |
+| 1\. místo |0 |1\. místo |
+| 1\. místo |1\. místo |2 |
+| 1\. místo |2 |3 |
 | 3 |0 |100 |
-| 3 |1 |101 |
+| 3 |1\. místo |101 |
 | 3 |2 |102 |
 | 3 |3 |103 |
 
 #### <a name="table-exampletable_vt_map"></a>Tabulka "ExampleTable_vt_Map":
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |A |
-| 1 |S2 |b |
+| 1\. místo |S1 |A |
+| 1\. místo |S2 |b |
 | 3 |S1 |t |
 
 #### <a name="table-exampletable_vt_stringset"></a>Tabulka "ExampleTable_vt_StringSet":
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |A |
-| 1 |B |
-| 1 |C |
+| 1\. místo |A |
+| 1\. místo |B |
+| 1\. místo |C |
 | 3 |A |
 | 3 |E |
 
