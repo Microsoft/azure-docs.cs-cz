@@ -26,7 +26,7 @@ Začínáme s klientskou knihovnou pro přizpůsobování pro .NET Pomocí těch
  * Seřadit seznam akcí pro přizpůsobení.
  * Vykázat skóre odměňování, které indikuje úspěšnost horní seřazené akce.
 
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [Ukázka | ukázek](https://github.com/Azure-Samples/cognitive-services-personalizer-samples) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [Ukázka](https://github.com/Azure-Samples/cognitive-services-personalizer-samples) | [ukázka zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)
 
 ## <a name="prerequisites"></a>Předpoklady
 

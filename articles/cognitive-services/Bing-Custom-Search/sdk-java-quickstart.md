@@ -24,14 +24,14 @@ Pomocí klientské knihovny Vlastní vyhledávání Bingu pro jazyk Java:
 
 * Vyhledá výsledky hledání na webu z vaší instance Vlastní vyhledávání Bingu. 
 
-[](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [Ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) knihovny Referenční dokumentace artefaktů[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [(Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | 
+[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [artefaktů (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí.
-* Instance Vlastní vyhledávání Bingu. Další [informace najdete v tématu rychlý Start: Pro další informace vytvořte první](quick-start.md) instanci vlastní vyhledávání Bingu.
+* Instance Vlastní vyhledávání Bingu. Viz rychlý Start [: Pro další informace vytvořte první](quick-start.md) instance Vlastní vyhledávání Bingu.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -42,7 +42,7 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 * Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu 7 dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Prohlédněte si prostředek na [Azure Portal](https://portal.azure.com/).
 
-Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte pro tento klíč [proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `AZURE_BING_CUSTOM_SEARCH_API_KEY`.
+Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte pro klíč [proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `AZURE_BING_CUSTOM_SEARCH_API_KEY`.
 
 ### <a name="create-a-new-gradle-project"></a>Vytvořit nový projekt Gradle
 
@@ -55,7 +55,7 @@ V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresá�
 mkdir myapp && cd myapp
 ```
 
-`gradle init` Spusťte příkaz z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně souboru *Build. Gradle. kts* , který se používá za běhu ke konfiguraci vaší aplikace.
+Spusťte příkaz `gradle init` z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně souboru *Build. Gradle. kts* , který se používá za běhu ke konfiguraci vaší aplikace.
 
 ```console
 gradle init --type basic
@@ -65,7 +65,7 @@ Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
 
 ## <a name="install-the-client-library"></a>Instalace klientské knihovny 
 
-Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do této konfigurace sestavení. Nezapomeňte zahrnout klientskou knihovnu `dependencies`do:
+Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do této konfigurace sestavení. Nezapomeňte do `dependencies`zahrnout knihovnu klienta:
 
 ```kotlin
 plugins {
@@ -90,12 +90,12 @@ Vytvořte složku pro ukázkovou aplikaci. V pracovním adresáři spusťte nás
 mkdir src/main/java
 ```
 
-Přejděte do nové složky a vytvořte soubor s názvem *BingCustomSearchSample. Java*. Otevřete ho a přidejte následující `import` příkazy:
+Přejděte do nové složky a vytvořte soubor s názvem *BingCustomSearchSample. Java*. Otevřete ho a přidejte následující příkazy `import`:
 
 
 [!code-java[import statements](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=imports)]
 
-Vytvořte třídu s názvem`BingCustomSearchSample`
+Vytvořte třídu s názvem `BingCustomSearchSample`
 
 ```java
 public class BingCustomSearchSample {
@@ -121,7 +121,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Vlas
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vaše metoda Main by měla obsahovat objekt [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) , který přebírá svůj klíč, a `authenticate()`volá svůj.
+Vaše metoda Main by měla obsahovat objekt [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) , který přebírá klíč, a volá jeho `authenticate()`.
 
 ```java
 BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKey);
@@ -129,7 +129,7 @@ BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKe
 
 ## <a name="get-search-results-from-your-custom-search-instance"></a>Získat výsledky hledání z vlastní instance hledání
 
-Pomocí funkce [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) klienta odešlete vyhledávací dotaz do vlastní instance. Nastavte na vlastní ID konfigurace nebo výchozí na `1`. `withCustomConfig` Po získání odpovědi z rozhraní API ověřte, zda byly nalezeny žádné výsledky hledání. Pokud ano, získejte první výsledek hledání voláním `webPages().value().get()` funkce odpovědi a vytiskněte název výsledku a adresu URL. 
+Pomocí funkce [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) klienta odešlete vyhledávací dotaz do vlastní instance. Nastavte `withCustomConfig` na vlastní ID konfigurace nebo na výchozí hodnotu `1`. Po získání odpovědi z rozhraní API ověřte, zda byly nalezeny žádné výsledky hledání. Pokud ano, získejte první výsledek hledání voláním funkce Response `webPages().value().get()` a vytiskněte název výsledku a adresu URL. 
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 
@@ -141,7 +141,7 @@ Sestavte aplikaci pomocí následujícího příkazu z hlavního adresáře vaš
 gradle build
 ```
 
-Spusťte aplikaci s `run` cílem:
+Spusťte aplikaci s cílem `run`:
 
 ```console
 gradle run
@@ -154,7 +154,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření vlastní vyhledávací webové aplikace](./tutorials/custom-search-web-page.md)
