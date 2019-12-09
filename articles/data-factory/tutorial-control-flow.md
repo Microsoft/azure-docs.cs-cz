@@ -1,22 +1,22 @@
 ---
-title: 'Větvení v kanálu Azure Data Factory '
+title: Větvení v kanálu Azure Data Factory
 description: Zjistěte, jak řídit tok dat v Azure Data Factory prostřednictvím větvení a řetězení aktivit.
 services: data-factory
-documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0a7e5f56fe71c174c78f1363e403ae41a2ec90a6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683671"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926614"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -42,7 +42,7 @@ Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použ�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 * Průzkumník služby Azure Storage. Pokud chcete tento nástroj nainstalovat, přečtěte si téma [Průzkumník služby Azure Storage](https://storageexplorer.com/).
@@ -63,7 +63,7 @@ Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active
    Tamika|Walsh
    ```
 
-1. Otevřete Průzkumník služby Azure Storage. Rozbalte svůj účet úložiště. Klikněte pravým tlačítkem na **kontejnery objektů BLOB** a vyberte **vytvořit kontejner objektů BLOB**.
+1. Otevřete Průzkumník služby Azure Storage. Rozbalte svůj účet úložiště. Pravým tlačítkem klikněte na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob**.
 1. Pojmenujte nový kontejner *adfv2branch* a vyberte **nahrát** a přidejte do kontejneru *vstupní soubor. txt* .
 
 ## Vytvořit projekt sady Visual Studio<a name="create-visual-studio-project"></a>
@@ -77,7 +77,7 @@ Vytvořit konzolovou aplikaci C# .NET:
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **nástroje** > **správce balíčků NuGet** > **konzole správce balíčků**.
+1. Vyberte **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
 1. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
@@ -232,7 +232,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů BLOB odkazuje na propojenou službu Azure Storage, která je v předchozím kroku podporovaná. Datová sada objektů BLOB popisuje umístění objektu blob, ze kterého se mají kopírovat: *FolderPath* a *filename*.
+Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů BLOB odkazuje na propojenou službu Azure Storage, která je v předchozím kroku podporovaná. Datová sada objektů BLOB popisuje umístění objektu blob, ze kterého se mají kopírovat: *FolderPath* a *filename*.
 
 Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer` je název parametru a výraz je nahrazen hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
 
@@ -270,7 +270,7 @@ Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer` je n�
 
 V C# projektu vytvořte třídu s názvem `EmailRequest`. Tato třída definuje, jaké vlastnosti kanál posílá v žádosti o tělo při odesílání e-mailů. V tomto kurzu kanál do e-mailu odešle čtyři vlastnosti:
 
-* Zpráva. Text e-mailu Pro úspěšnou kopii Tato vlastnost obsahuje množství zapsaných dat. Pro neúspěšnou kopii Tato vlastnost obsahuje podrobnosti o chybě.
+* zpráva. Text e-mailu Pro úspěšnou kopii Tato vlastnost obsahuje množství zapsaných dat. Pro neúspěšnou kopii Tato vlastnost obsahuje podrobnosti o chybě.
 * Název datové továrny. Název datové továrny.
 * Název kanálu Název kanálu.
 * Pozorování. Parametr, který projde. Tato vlastnost určuje příjemce e-mailu.
@@ -490,7 +490,7 @@ Aktivita webu umožňuje volání libovolného koncového bodu REST. Další inf
 
 Do vlastnosti `Url` vložte koncové body **adresy URL http post** z pracovních postupů vaší Logic Apps. Ve vlastnosti `Body` předejte instanci `EmailRequest` třídy. Obsahuje následující vlastnosti:
 
-* Zpráva. Předává hodnotu `@{activity('CopyBlobtoBlob').output.dataWritten`. Přistupuje k vlastnosti předchozí aktivity kopírování a předá hodnotu `dataWritten`. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
+* zpráva. Předává hodnotu `@{activity('CopyBlobtoBlob').output.dataWritten`. Přistupuje k vlastnosti předchozí aktivity kopírování a předá hodnotu `dataWritten`. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
 * Název Data Factory Předává hodnotu `@{pipeline().DataFactory}` Tato systémová proměnná umožňuje přístup k odpovídajícímu názvu datové továrny. Seznam systémových proměnných najdete v tématu [systémové proměnné](control-flow-system-variables.md).
 * Název kanálu Předává hodnotu `@{pipeline().Pipeline}`. Tato systémová proměnná umožňuje přístup k odpovídajícímu názvu kanálu.
 * Pozorování. Předává hodnotu `"@pipeline().parameters.receiver"`. Přistupuje k parametrům kanálu.
