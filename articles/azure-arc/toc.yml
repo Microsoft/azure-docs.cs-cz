@@ -10,7 +10,7 @@
   items:
     - name: Připojení počítačů k Azure s využitím služby Azure Arc pro servery – portál
       href: ./servers/quickstart-onboard-portal.md
-    - name: Připojení počítačů k Azure s využitím služby Azure Arc pro servery – PowerShell
+    - name: Připojení počítačů ve velkém s využitím služby Azure Arc pro servery – PowerShell
       href: ./servers/quickstart-onboard-powershell.md
 - name: Referenční informace
   items:
