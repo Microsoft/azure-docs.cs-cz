@@ -78,8 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Migrace klasických zásad
       href: policy-migration-mfa.md
-    - name: Využití podmíněného přístupu
-      href: howto-conditional-access-adoption-kit.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží pomocí nástroje What If

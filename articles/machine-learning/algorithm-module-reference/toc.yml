@@ -141,4 +141,4 @@
     - name: Trénování doporučovacího systému SVD
       href: train-svd-recommender.md
 - name: Chyby modulů a řešení potíží
-  href: machine-learning-module-error-codes.md
+  href: designer-error-codes.md
