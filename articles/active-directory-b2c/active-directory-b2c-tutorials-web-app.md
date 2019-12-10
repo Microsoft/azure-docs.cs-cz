@@ -1,5 +1,6 @@
 ---
-title: Kurz – povolení ověřování ve webové aplikaci – Azure Active Directory B2C
+title: 'Kurz: povolení ověřování ve webové aplikaci'
+titleSuffix: Azure AD B2C
 description: Kurz týkající se použití Azure Active Directory B2C k zajištění přihlašování uživatelů ve webové aplikaci ASP.NET.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d88ad13c1326ce62b73dbffa0c79904c6f81e6f4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641809"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950191"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Kurz: povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C
 
@@ -30,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
@@ -45,17 +46,17 @@ K aktualizaci aplikace můžete použít aktuální prostředí **aplikací** ne
 
 #### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace**a pak vyberte aplikaci *WebApp1* .
 1. V části **Adresa URL odpovědi**přidejte `https://localhost:44316`.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Na stránce Vlastnosti Poznamenejte ID aplikace pro použití v pozdějším kroku při konfiguraci webové aplikace.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** , vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
@@ -91,7 +92,7 @@ Aktualizujte nastavení v souboru Web. config tak, aby fungovala s vaším uživ
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 1. V projektu **TaskWebApp** otevřete soubor **Web. config** .
-    1. Aktualizujte hodnotu `ida:Tenant` a `ida:AadInstance` název vytvořeného tenanta Azure AD B2C. `fabrikamb2c` například nahraďte `contoso`.
+    1. Aktualizujte hodnotu `ida:Tenant` a `ida:AadInstance` název vytvořeného tenanta Azure AD B2C. Název `fabrikamb2c` nahraďte třeba názvem `contoso`.
     1. Nahraďte hodnotu `ida:ClientId` číslem ID aplikace, kterou jste si poznamenali.
     1. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Před přidáním tajného klíče klienta do souboru Web. config je nutné kód XML zakódovat.
     1. Hodnotu `ida:SignUpSignInPolicyId` nahraďte `b2c_1_signupsignin1`.

@@ -1,6 +1,7 @@
 ---
-title: Kurz – povolení ověřování v jedné stránce aplikace – Azure Active Directory B2C
-description: V tomto kurzu se naučíte používat Azure Active Directory B2C k poskytnutí přihlašovacích údajů uživatele pro aplikaci s jednou stránkou (JavaScript).
+title: 'Kurz: povolení ověřování v jedné stránce aplikace'
+titleSuffix: Azure AD B2C
+description: V tomto kurzu se naučíte používat Azure Active Directory B2C k poskytnutí přihlašovacích údajů uživatele pro jednostránkové aplikaci založenou na JavaScriptu (SPA).
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ece6401484d8f32483d4673384fcce6d7afac4a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f18a7ddeb5256c660c6458fc8d2d29f83e04429
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420352"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950151"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou pomocí Azure Active Directory B2C (Azure AD B2C)
 
@@ -30,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto kurzu, budete potřebovat následující Azure AD B2C prostředky:
 
@@ -52,17 +53,17 @@ K aktualizaci aplikace můžete použít aktuální prostředí **aplikací** ne
 
 #### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace**a pak vyberte aplikaci *WebApp1* .
 1. V části **Adresa URL odpovědi**přidejte `http://localhost:6420`.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Na stránce vlastnosti si poznamenejte **ID aplikace**. ID aplikace použijete v pozdějším kroku, když aktualizujete kód ve webové aplikaci s jednou stránkou.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** , vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
@@ -108,7 +109,7 @@ Teď, když jste získali ukázku, aktualizujte kód pomocí Azure AD B2C název
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku. Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku. Například:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp

@@ -1,5 +1,6 @@
 ---
-title: Kurz – udělení přístupu k webovému rozhraní API ASP.NET – Azure Active Directory B2C
+title: 'Kurz: poskytnutí přístupu k webovému rozhraní API ASP.NET'
+titleSuffix: Azure AD B2C
 description: Kurz týkající se použití Active Directory B2C k ochraně webového rozhraní API ASP.NET a jeho volání z webové aplikace v ASP.NET.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 0cd2eff7e3fafc1a6f3418a1f86629cfb1584e89
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: f9f773beb679b4f31e2b735fd0d74fc1b5dae2dd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641758"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950154"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Kurz: poskytnutí přístupu k webovému rozhraní API ASP.NET pomocí Azure Active Directory B2C
 
@@ -31,7 +32,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky a požadavky v [kurzu: povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C](active-directory-b2c-tutorials-web-app.md).
 
@@ -43,20 +44,20 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete použít aktuál
 
 #### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikace**a pak vyberte **Přidat**.
 5. Zadejte název aplikace. Například *webapi1*.
 6. Pro **Zahrnout webovou aplikaci nebo webové rozhraní API**vyberte **Ano**.
 7. V případě **adresy URL odpovědi**Zadejte koncový bod, kde Azure AD B2C by měl vracet jakékoli tokeny, které vaše aplikace požaduje. V tomto kurzu se ukázka spouští místně a naslouchá na `https://localhost:44332`.
-8. Pro **identifikátor URI ID aplikace**zadejte identifikátor použitý pro vaše webové rozhraní API. Vygeneruje se pro vás úplný identifikátor URI včetně domény. například `https://contosotenant.onmicrosoft.com/api`.
+8. Pro **identifikátor URI ID aplikace**zadejte identifikátor použitý pro vaše webové rozhraní API. Vygeneruje se pro vás úplný identifikátor URI včetně domény. Například, `https://contosotenant.onmicrosoft.com/api`.
 9. Klikněte na **Vytvořit**.
 10. Na stránce Vlastnosti Poznamenejte ID aplikace, které použijete při konfiguraci webové aplikace.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
@@ -124,7 +125,7 @@ Ukázkové řešení obsahuje dva projekty:
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-1. Aktualizujte nastavení toku uživatelů pomocí názvu vašeho uživatelského toku pro registraci a přihlašování, *B2C_1_signupsignin1*.
+1. Aktualizujte nastavení toku uživatelů pomocí názvu vašeho uživatelského toku pro registraci a přihlašování *B2C_1_signupsignin1*.
 
     ```csharp
     <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
@@ -144,7 +145,7 @@ Je potřeba spustit jak projekt **TaskWebApp**, tak i projekt **TaskService**.
 1. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **Nastavit projekty po spuštění**.
 1. Vyberte **více projektů po spuštění**.
 1. U obou projektů změňte hodnotu **Akce** na **Spustit**.
-1. Konfiguraci uložíte kliknutím na **OK** .
+1. Nastavení uložíte kliknutím na **OK**.
 1. Stisknutím klávesy **F5** spusťte obě aplikace. Každá aplikace se otevře v samostatném okně prohlížeče.
     * `https://localhost:44316/` je webová aplikace.
     * Na adrese `https://localhost:44332/` je webové rozhraní API.

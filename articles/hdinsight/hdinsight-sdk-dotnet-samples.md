@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.openlocfilehash: c1365b39385a3dfb684628214765269ea3a225e9
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076881"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951560"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: ukázky .NET
 
@@ -27,13 +27,13 @@ Tento článek obsahuje:
 * Obsahuje odkazy na ukázky pro úlohy vytváření clusterů.
 * Odkazy na referenční obsah pro jiné úlohy správy.
 
-Můžete [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Vaše předplatné sady Visual Studio vám každý měsíc dává kredity, které můžete použít pro placené služby Azure.
-
-## <a name="prerequisites"></a>Požadavky
+Můžete si [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Za své předplatné sady Visual Studio každý měsíc získáváte kredity, které můžete využít pro placené služby Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Azure HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisite"></a>Požadavek
+
+[Azure HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Správa clusteru – vytvoření
 

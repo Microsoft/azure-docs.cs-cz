@@ -1,5 +1,6 @@
 ---
-title: Kurz – udělení přístupu k ASP.NET Core webovému rozhraní API z jednostránkové aplikace – Azure Active Directory B2C
+title: 'Kurz: poskytnutí přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace'
+titleSuffix: Azure AD B2C
 description: V tomto kurzu se naučíte, jak použít Active Directory B2C k ochraně webového rozhraní API .NET Core a volání rozhraní API z jediné stránky aplikace Node. js.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7dae8bb552fe12d1cdf1f3d8a5fe124491933a87
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e5ced0c3e4ad05c33866548acb09189e03ed22f4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420321"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949700"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: poskytnutí přístupu k ASP.NET Core webovému rozhraní API z jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -29,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Udělení oprávnění webovému rozhraní API
 > * Konfigurace ukázky pro použití aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky a požadavky v [kurzu: povolení ověřování v aplikaci s jednou stránkou pomocí Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md).
 * Visual Studio 2019 nebo novější nebo Visual Studio Code
@@ -114,7 +115,7 @@ Aby mohla vaše jednostránková aplikace volat ASP.NET Core webové rozhraní A
     ```
 
 1. (Pouze Visual Studio) V části **vlastnosti** v Průzkumník řešení otevřete soubor *launchSettings. json* a vyhledejte `iisExpress` blok.
-1. (Pouze Visual Studio) Aktualizujte `applicationURL` hodnotu číslem portu, který jste zadali při registraci aplikace *webapi1* v předchozím kroku. Příklad:
+1. (Pouze Visual Studio) Aktualizujte `applicationURL` hodnotu číslem portu, který jste zadali při registraci aplikace *webapi1* v předchozím kroku. Například:
 
     ```json
     "iisExpress": {
@@ -158,7 +159,7 @@ V aplikaci Visual Studio stiskněte klávesu **F5** pro sestavení a ladění ř
 
 Pokud raději používáte `dotnet` CLI místo sady Visual Studio:
 
-1. Otevřete okno konzoly a přejděte do adresáře, který obsahuje soubor *\*. csproj* . Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře, který obsahuje soubor *\*. csproj* . Například:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
@@ -176,7 +177,7 @@ Pokud raději používáte `dotnet` CLI místo sady Visual Studio:
 
 ### <a name="run-the-single-page-app"></a>Spuštění jednostránkové aplikace
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node. js. Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node. js. Například:
 
     `cd active-directory-b2c-javascript-msal-singlepageapp`
 

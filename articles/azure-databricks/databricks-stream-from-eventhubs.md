@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/23/2019
+ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6af0881049e52cbead5cca9719d4c9b06be29491
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121272"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951543"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Kurz: Streamování dat do Azure Databricks pomocí služby Event Hubs
 
@@ -44,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
 > Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 - Obor názvů služby Azure Event Hubs.
@@ -56,13 +56,13 @@ Tyto požadavky můžete splnit dokončením kroků v článku [Vytvoření obor
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. Na portálu Azure Portal vyberte **Vytvořit prostředek** > **Data + analýzy** > **Azure Databricks**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks**.
 
     ![Datacihly na Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -101,7 +101,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     Přijměte všechny výchozí hodnoty kromě následujících:
 
    * Zadejte název clusteru.
-   * V tomto článku vytvořte cluster s modulem runtime **6,0* .
+   * V tomto článku vytvořte cluster s modulem runtime **6,0** .
    * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po __ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
    Vyberte pracovní proces clusteru a velikost uzlu ovladače vhodné pro vaše technická kritéria a [rozpočet](https://azure.microsoft.com/pricing/details/databricks/).
@@ -138,14 +138,10 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
    ![Dialogové okno Přidat knihovnu](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Přidat novou knihovnu pro instalaci")
 
-2. Na stránce Nová knihovna vyberte v části **zdroj** možnost **Maven**. Pro **souřadnici**klikněte na **Vyhledat balíčky** pro balíček, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
+2. Na stránce Nová knihovna vyberte v části **zdroj** možnost **Maven**. Jednotlivě zadejte následující souřadnice pro konektor Spark Event Hubs a rozhraní Twitter API do **souřadnic**.
 
-   * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
-
-     ![Zadat souřadnice Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Zadat souřadnice Maven")
-
-     ![Zadat souřadnice Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Hledat souřadnice Maven")
 
 3. Vyberte **Install** (Nainstalovat).
 
@@ -170,7 +166,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
     ![Vytvoření poznámkového bloku v datacihlech](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
-    Vyberte **Vytvořit**.
+    Vyberte **Create** (Vytvořit).
 
 3. Zopakováním těchto kroků vytvořte i poznámkový blok **ReadTweetsFromEventHub**.
 
