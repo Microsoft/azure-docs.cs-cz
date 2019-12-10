@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 11/04/2019
-ms.openlocfilehash: 6c5b913835b2080f30ff3dd73e6a59c1043ecf5d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.openlocfilehash: 1a9c24846606c53fefa1ffc1de59f358524020c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823278"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707630"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -29,7 +29,7 @@ Následující diagram popisuje klíčové funkce spravovaných instancí:
 
 ![klíčové funkce](./media/sql-database-managed-instance/key-features.png)
 
-Model nasazení spravované instance je určený pro zákazníky, kteří chtějí migrovat velký počet aplikací z místního prostředí nebo prostředí IaaS, samoobslužného nebo nezávislého výrobce softwaru (ISV) do plně spravovaného cloudového prostředí PaaS, s co nejmenším možným úsilím při migraci. Pomocí plně automatizované [služby pro migraci dat (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) v Azure můžou zákazníci přenášet a přesouvat místní SQL Server do spravované instance, která nabízí kompatibilitu s SQL serverou v místním prostředí a dokončí izolaci zákaznických instancí. Nativní podpora virtuální sítě.  V rámci programu Software Assurance můžete vyměňovat své stávající licence pro zvýhodněné sazby spravované instance pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).  Spravovaná instance je nejlepší cíl migrace v cloudu pro SQL Server instance, které vyžadují vysoké zabezpečení a bohatou programovatelné plochu.
+Model nasazení spravované instance je určený pro zákazníky, kteří chtějí migrovat velký počet aplikací z místního prostředí nebo prostředí IaaS, samoobslužného nebo nezávislého výrobce softwaru (ISV) do plně spravovaného cloudového prostředí PaaS, s co nejmenším možným úsilím při migraci. Pomocí plně automatizované [služby pro migraci dat (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) v Azure mohou zákazníci přenášet a přesouvat místní SQL Server do spravované instance, která nabízí kompatibilitu s SQL serverou v místním prostředí a dokončí izolaci zákaznických instancí s nativní podporou virtuální sítě.  V rámci programu Software Assurance můžete vyměňovat své stávající licence pro zvýhodněné sazby spravované instance pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).  Spravovaná instance je nejlepší cíl migrace v cloudu pro SQL Server instance, které vyžadují vysoké zabezpečení a bohatou programovatelné plochu.
 
 Cílem možnosti nasazení Managed instance je dosahovat téměř 100% kompatibility Surface Surface s nejnovější místní SQL Server verzí prostřednictvím plánu vydaných verzí.
 
@@ -61,7 +61,7 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 | Automatické opravy softwaru | Ano |
 | Nejnovější funkce databázového stroje | Ano |
 | Počet datových souborů (řádků) na databázi | Několik |
-| Počet souborů protokolu (protokol) na databázi | 1 |
+| Počet souborů protokolu (protokol) na databázi | 1\. místo |
 | Nasazení VNet-Azure Resource Manager | Ano |
 | Model nasazení sítě VNet – klasický | Ne |
 | Podpora portálu | Ano|
@@ -77,7 +77,7 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 V modelu vCore si můžete vybrat mezi generacemi hardwaru.
 
 - **COMPUTE GEN4 –** Logické procesory jsou založené na procesorech Intel E5-2673 V3 (Haswell) 2,4, Attached SSD, fyzických jader, 7-GB RAM na jádro a výpočetní velikosti mezi 8 a 24 virtuální jádra.
-- **Gen5** Logické procesory jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz, Fast NVMe SSD, Hyper-threadd Logical Core a COMPUTE velikosti mezi 4 a 80 jádry.
+- **Gen5** Logické procesory jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 a Intel SP-8160 (Skylake), Fast NVMe SSD, logických jader vláken a výpočetních velikostí mezi 4 a 80 jádry.
 
 Přečtěte si další informace o rozdílech mezi generacemi hardwaru v [omezeních prostředků spravované instance](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
@@ -124,7 +124,7 @@ Přečtěte si další informace o rozdílu mezi úrovněmi služeb v [omezeníc
 
 Azure SQL Database nabízí operace správy, které můžete využít k automatickému nasazování nových spravovaných instancí, aktualizaci vlastností instancí a odstraňování instancí v případě, že už je nepotřebujete. V této části najdete informace o operacích správy a jejich typických trváních.
 
-Za účelem podpory [nasazení v rámci virtuálních sítí Azure (virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) a poskytování izolace a zabezpečení pro zákazníky se spravovaná instance spoléhá na [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture), které představují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v rámci podsíť virtuální sítě zákazníka. Každé nasazení spravované instance v rámci prázdné podsítě má za následek nové sestavení virtuálních clusterů.
+Za účelem podpory [nasazení v rámci virtuálních sítí Azure (virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) a poskytování izolace a zabezpečení pro zákazníky se spravovaná instance spoléhá na [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture), které představují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka. Každé nasazení spravované instance v rámci prázdné podsítě má za následek nové sestavení virtuálních clusterů.
 
 Následné operace na nasazených spravovaných instancích můžou mít vliv i na svůj základní virtuální cluster. To ovlivňuje dobu trvání operací správy, protože nasazení dalších virtuálních počítačů přináší režii, která je potřeba vzít v úvahu při plánování nových nasazení nebo aktualizací existujících spravovaných instancí.
 
@@ -153,14 +153,14 @@ V následující tabulce najdete souhrn operací a typických celkových dob trv
 |Nasazení |První instance jiné generace hardwaru v neprázdné podsíti (například první instance Gen 5 v podsíti s instancemi Gen 4)|Vytváření virtuálních clusterů *|90% dokončených operací za 4 hodiny|
 |Nasazení |Vytvoření první instance 4 virtuální jádra, v prázdné nebo neprázdné podsíti|Vytváření virtuálních clusterů * *|90% dokončených operací za 4 hodiny|
 |Nasazení |Vytváření dalších instancí v neprázdné podsíti (druhá, třetí atd. instance)|Změna velikosti virtuálního clusteru|90% dokončených operací za 2,5 hodin|
-|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení AAD, příznak Zvýhodněné hybridní využití Azure)|neuvedeno|Až 1 minuta|
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely úroveň služeb)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin|
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace úroveň služeb)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času pro osazení všech databází (220 GB za hodinu)|
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin|
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času pro osazení všech databází (220 GB za hodinu)|
-|Aktualizace |Škálování instance dolů na 4 virtuální jádra (Pro obecné účely)|– Změna velikosti virtuálního clusteru (při prvním provedení) může vyžadovat vytvoření virtuálního clusteru * *).<br>-Připojení souborů databáze|90% dokončených operací za 4 h 5 min. * *|
-|Aktualizace |Škálování instance dolů na 4 virtuální jádra (Pro obecné účely)|– Změna velikosti virtuálního clusteru (při prvním provedení) může vyžadovat vytvoření virtuálního clusteru * *).<br>– Vysazení skupiny dostupnosti Always On|90% operací se dokončí během 4 hodiny + čas na osazení všech databází (220 GB za hodinu).|
-|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času pro osazení všech databází (220 GB za hodinu)|
+|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení AAD, příznak Zvýhodněné hybridní využití Azure)|Nevztahuje se|Až 1 minuta|
+|Aktualizovat |Horizontální navýšení kapacity úložiště instance (Pro obecné účely úroveň služeb)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin|
+|Aktualizovat |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace úroveň služeb)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času pro osazení všech databází (220 GB za hodinu)|
+|Aktualizovat |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin|
+|Aktualizovat |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času pro osazení všech databází (220 GB za hodinu)|
+|Aktualizovat |Škálování instance dolů na 4 virtuální jádra (Pro obecné účely)|– Změna velikosti virtuálního clusteru (při prvním provedení) může vyžadovat vytvoření virtuálního clusteru * *).<br>-Připojení souborů databáze|90% dokončených operací za 4 h 5 min. * *|
+|Aktualizovat |Škálování instance dolů na 4 virtuální jádra (Pro obecné účely)|– Změna velikosti virtuálního clusteru (při prvním provedení) může vyžadovat vytvoření virtuálního clusteru * *).<br>– Vysazení skupiny dostupnosti Always On|90% operací se dokončí během 4 hodiny + čas na osazení všech databází (220 GB za hodinu).|
+|Aktualizovat |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času pro osazení všech databází (220 GB za hodinu)|
 |**Změny**|Odstranění instance|Zálohování koncového protokolu pro všechny databáze|90% operací skončilo během až 1 minuty.<br>Poznámka: Pokud se poslední instance v podsíti odstraní, tato operace provede odebrání virtuálního clusteru po 12 hodinách * * *.|
 |Odstranění|Odstranění virtuálního clusteru (jako operace iniciované uživatelem)|Odstranění virtuálního clusteru|90% operací se dokončilo během až 1,5 hodin.|
 
@@ -227,7 +227,7 @@ Zavádí se nová syntaxe pro vytváření objektů zabezpečení serveru Azure 
 
 Možnost nasazení spravované instance umožňuje centrálně spravovat identity uživatele databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](sql-database-aad-authentication.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory podporuje [vícefaktorové ověřování (MFA)](sql-database-ssms-mfa-authentication-configure.md) pro zvýšení zabezpečení dat a aplikací při současné podpoře jednotného přihlašování.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověření
 
 Ověřování spravované instance odkazuje na to, jak uživatelé při připojování k databázi prokáže jejich identitu. SQL Database podporuje dva typy ověřování:  
 
@@ -250,7 +250,7 @@ Možnost nasazení spravované instance cílí na scénáře uživatelů s migra
 
 Přístup k migraci využívá zálohy SQL do úložiště objektů BLOB v Azure. Zálohy uložené v objektu BLOB služby Azure Storage je možné přímo obnovit do spravované instance pomocí [příkazu T-SQL Restore](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
 
-- Základní informace o tom, jak obnovit World World Importers – soubor zálohy Standard, najdete v tématu [obnovení záložního souboru do spravované instance](sql-database-managed-instance-get-started-restore.md). V tomto rychlém startu se dozvíte, že musíte nahrát záložní soubor do služby Azure blog Storage a zabezpečit ho pomocí klíče sdíleného přístupového podpisu (SAS).
+- Základní informace o tom, jak obnovit World World Importers – soubor zálohy Standard, najdete v tématu [obnovení záložního souboru do spravované instance](sql-database-managed-instance-get-started-restore.md). V tomto rychlém startu se dozvíte, že musíte nahrát záložní soubor do služby Azure Blob Storage a zabezpečit ho pomocí klíče sdíleného přístupového podpisu (SAS).
 - Informace o obnovení z adresy URL najdete v tématu [NATIVNÍ obnovení z adresy URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
 
 > [!IMPORTANT]
@@ -279,11 +279,11 @@ Možnost nasazení spravované instance je v cloudu vždycky v aktuálním stavu
 - Spravovaná instance nepovoluje zadání úplných fyzických cest, aby se všechny odpovídající scénáře musely podporovat jinak: příkaz Restore DB nepodporuje přesun, vytváření databáze neumožňuje použití fyzických cest, BULK INSERT pracuje pouze s objekty blob Azure atd.
 - Spravovaná instance podporuje [ověřování Azure AD](sql-database-aad-authentication.md) jako alternativní cloudovou alternativu k ověřování systému Windows.
 - Spravovaná instance automaticky spravuje soubor XTP a soubory pro databáze obsahující objekty OLTP v paměti.
-- Spravovaná instance podporuje služba SSIS (SQL Server Integration Services) (SSIS) a může hostovat SSIS Catalog (SSISDB), který ukládá balíčky SSIS, ale spouští se na spravovaném Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), viz téma [Create Azure-SSIS IR in ADF. ](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Porovnání funkcí SSIS v SQL Database najdete v tématu [porovnání Azure SQL Database izolované databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance).
+- Spravovaná instance podporuje služba SSIS (SQL Server Integration Services) (SSIS) a může hostovat SSIS Catalog (SSISDB), který ukládá balíčky SSIS, ale spouští se na spravovaném Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), viz téma [Create Azure-SSIS IR in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Porovnání funkcí SSIS v SQL Database najdete v tématu [porovnání Azure SQL Database izolované databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Funkce správy spravované instance
 
-Možnost nasazení spravované instance umožňuje správcům systému strávit méně času na úlohy správy, protože služba SQL Database je buď vykonává za vás, nebo významně tyto úlohy zjednodušuje. Například [operační systém/RDBMS instalace a opravy](sql-database-high-availability.md), [Změna velikosti a konfigurace dynamické instance](sql-database-single-database-scale.md), [zálohování](sql-database-automated-backups.md), [replikace databáze](replication-with-sql-database-managed-instance.md) (včetně systémových databází), [Konfigurace vysoké dostupnosti](sql-database-high-availability.md)a Konfigurace datových proudů [monitorování](../azure-monitor/insights/azure-sql.md) stavu a výkonu.
+Možnost nasazení spravované instance umožňuje správcům systému strávit méně času na úlohy správy, protože služba SQL Database je buď vykonává za vás, nebo významně tyto úlohy zjednodušuje. Například [operační systém/RDBMS instalace a opravy](sql-database-high-availability.md), [Změna velikosti a konfigurace dynamické instance](sql-database-single-database-scale.md), [zálohování](sql-database-automated-backups.md), [replikace databáze](replication-with-sql-database-managed-instance.md) (včetně systémových databází), konfigurace s [vysokou dostupností](sql-database-high-availability.md)a konfigurace datových proudů monitorování stavu a [výkonu](../azure-monitor/insights/azure-sql.md) .
 
 > [!IMPORTANT]
 > Seznam podporovaných, částečně podporovaných a nepodporovaných funkcí najdete v tématu [SQL Database funkce](sql-database-features.md). Seznam rozdílů v jazyce T-SQL ve spravovaných instancích oproti SQL Server naleznete v tématu [Managed instance t-SQL rozdíly z SQL Server](sql-database-managed-instance-transact-sql-information.md)
@@ -292,12 +292,12 @@ Možnost nasazení spravované instance umožňuje správcům systému strávit 
 
 V následující tabulce je uvedeno několik vlastností, které jsou přístupné prostřednictvím jazyka Transact SQL, které můžete použít k detekci, že aplikace pracuje se spravovanou instancí a načetla důležité vlastnosti.
 
-|Vlastnost|Hodnota|Komentář|
+|Vlastnost|Hodnota|Poznámka|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejná jako v SQL Database.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejná jako v SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje spravovanou instanci.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Úplný název DNS instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`. database.windows.net, kde `<instanceName>` je jméno poskytované zákazníkem, zatímco `<dnsPrefix>` automaticky vygenerovala část názvu, která zaručuje jedinečnost globálních názvů DNS ("wcus17662feb9ce98", například)|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Další kroky
 

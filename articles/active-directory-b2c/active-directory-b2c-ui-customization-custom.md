@@ -1,5 +1,6 @@
 ---
-title: Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C | Microsoft Docs
+title: Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady
+titleSuffix: Azure AD B2C
 description: Přečtěte si o přizpůsobení uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209445"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949622"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -23,7 +24,7 @@ ms.locfileid: "74209445"
 
 Po dokončení tohoto článku budete mít vlastní zásadu registrace a přihlašování s vaší značkou a vzhledem. Pomocí Azure Active Directory B2C (Azure AD B2C) získáte téměř úplné řízení obsahu HTML a CSS, který je prezentován uživatelům. Když použijete vlastní zásadu, nakonfigurujete přizpůsobení uživatelského rozhraní v XML namísto použití ovládacích prvků v Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami](active-directory-b2c-get-started-custom.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlašování pomocí místních účtů.
 
@@ -63,7 +64,7 @@ V nadpisu Vytvořte obsah HTML s názvem značky vašeho produktu.
 
 Chcete-li tento obsah HTML hostovat v úložišti objektů blob, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V nabídce **centra** vyberte **nový** > **úložiště** > **účet úložiště**.
 1. Vyberte **předplatné** pro účet úložiště.
 1. Vytvořte **skupinu prostředků** nebo vyberte existující.
@@ -100,12 +101,12 @@ Pokud chcete vytvořit veřejný kontejner ve službě BLOB Storage, proveďte n
 Pomocí následujících kroků nakonfigurujte úložiště objektů BLOB pro sdílení prostředků mezi zdroji:
 
 1. V nabídce vyberte **CORS**.
-1. U **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
+1. U **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
 1. U **povolených metod**vyberte `GET` i `OPTIONS`.
 1. U **povolených hlaviček**zadejte hvězdičku (*).
 1. U **zveřejněných hlaviček**zadejte hvězdičku (*).
 1. Do **maximálního stáří**zadejte 200.
-1. Klikněte na možnost **Uložit**.
+1. Klikněte na **Uložit**.
 
 ## <a name="test-cors"></a>Test CORS
 
@@ -119,7 +120,7 @@ Ověřte, že jste připraveni, provedením následujících kroků:
 
 Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Jedná se o jeden ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Jedná se o jeden ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Vyhledejte a zkopírujte celý obsah elementu **ContentDefinitions** .
 1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions. XML*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.
@@ -173,11 +174,11 @@ Složka sample_templates/Wingtip obsahuje následující soubory HTML:
 
 | Šablona HTML5 | Popis |
 |----------------|-------------|
-| *PhoneFactor. html* | Tento soubor použijte jako šablonu pro stránku služby Multi-Factor Authentication. |
-| *ResetPassword. html* | Tento soubor použijte jako šablonu pro stránku zapomenuté heslo. |
-| *selfasserted. html* | Tento soubor použijte jako šablonu pro přihlašovací stránku účtu sociální sítě, přihlašovací stránku místního účtu nebo přihlašovací stránku místního účtu. |
-| *Unified. html* | Tento soubor použijte jako šablonu pro sjednocenou registraci nebo přihlašovací stránku. |
-| *updateprofile. html* | Tento soubor použijte jako šablonu pro stránku Aktualizace profilu. |
+| *phonefactor.html* | Tento soubor použijte jako šablonu pro stránku služby Multi-Factor Authentication. |
+| *resetpassword.html* | Tento soubor použijte jako šablonu pro stránku zapomenuté heslo. |
+| *selfasserted.html* | Tento soubor použijte jako šablonu pro přihlašovací stránku účtu sociální sítě, přihlašovací stránku místního účtu nebo přihlašovací stránku místního účtu. |
+| *unified.html* | Tento soubor použijte jako šablonu pro sjednocenou registraci nebo přihlašovací stránku. |
+| *updateprofile.html* | Tento soubor použijte jako šablonu pro stránku Aktualizace profilu. |
 
 Tady je postup, jak použít ukázku:
 
@@ -194,16 +195,16 @@ V části Upravit vlastní zásady registrace nebo přihlašování jste nakonfi
 
 | ID definice obsahu | Popis |
 |-----------------------|-------------|
-| *rozhraní API. Chyba* | **Chybová stránka**. Tato stránka se zobrazí, pokud dojde k výjimce nebo chybě. |
-| *API. idpselections* | **Stránka výběru zprostředkovatele identity** Tato stránka obsahuje seznam zprostředkovatelů identity, ze kterých si může uživatel vybrat během přihlašování. Tyto možnosti jsou buď poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
-| *API. idpselections. signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam zprostředkovatelů identity, ze kterých si může uživatel vybrat během registrace. Tyto možnosti jsou buď poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
-| *API. localaccountpasswordreset* | **Stránka zapomenuté heslo** Tato stránka obsahuje formulář, který musí uživatel dokončit, aby bylo možné resetování hesla inicializovat.  |
-| *API. localaccountsignin* | **Přihlašovací stránka místního účtu** Tato stránka obsahuje přihlašovací formulář pro přihlašování pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Formulář může obsahovat textové pole pro zadání textu a heslo. |
-| *API. localaccountsignup* | **Přihlašovací stránka místního účtu**. Tato stránka obsahuje registrační formulář pro registraci k místnímu účtu na základě e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je textové pole, zadání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
-| *API. PhoneFactor* | **Stránku Multi-Factor Authentication**. Na této stránce můžou uživatelé při registraci nebo přihlašování ověřit svoje telefonní čísla (pomocí textu nebo hlasu). |
-| *API. selfasserted* | **Stránka pro registraci účtu sociální**sítě Tato stránka obsahuje registrační formulář, který musí uživatelé dokončit při registraci pomocí stávajícího účtu od poskytovatele sociálních identit, jako je Facebook nebo Google +. Tato stránka se podobá na předchozí stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. |
-| *API. selfasserted. profileupdate* | **Stránka aktualizace profilu**. Tato stránka obsahuje formulář, pomocí kterého můžou uživatelé aktualizovat svůj profil. Tato stránka se podobá stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. |
-| *API. signuporsignin* | **Jednotná registrace nebo přihlašovací stránka**. Tato stránka zpracovává registraci i přihlašování uživatelů, kteří můžou používat podnikové zprostředkovatele identity, zprostředkovatele sociálních identit, jako je Facebook nebo Google + nebo místní účty.  |
+| *api.error* | **Chybová stránka**. Tato stránka se zobrazí, pokud dojde k výjimce nebo chybě. |
+| *api.idpselections* | **Stránka výběru zprostředkovatele identity** Tato stránka obsahuje seznam zprostředkovatelů identity, ze kterých si může uživatel vybrat během přihlašování. Tyto možnosti jsou buď poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
+| *api.idpselections.signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam zprostředkovatelů identity, ze kterých si může uživatel vybrat během registrace. Tyto možnosti jsou buď poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
+| *api.localaccountpasswordreset* | **Stránka zapomenuté heslo** Tato stránka obsahuje formulář, který musí uživatel dokončit, aby bylo možné resetování hesla inicializovat.  |
+| *api.localaccountsignin* | **Přihlašovací stránka místního účtu** Tato stránka obsahuje přihlašovací formulář pro přihlašování pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Formulář může obsahovat textové pole pro zadání textu a heslo. |
+| *api.localaccountsignup* | **Přihlašovací stránka místního účtu**. Tato stránka obsahuje registrační formulář pro registraci k místnímu účtu na základě e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je textové pole, zadání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
+| *api.phonefactor* | **Stránku Multi-Factor Authentication**. Na této stránce můžou uživatelé při registraci nebo přihlašování ověřit svoje telefonní čísla (pomocí textu nebo hlasu). |
+| *api.selfasserted* | **Stránka pro registraci účtu sociální**sítě Tato stránka obsahuje registrační formulář, který musí uživatelé dokončit při registraci pomocí stávajícího účtu od poskytovatele sociálních identit, jako je Facebook nebo Google +. Tato stránka se podobá na předchozí stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. |
+| *api.selfasserted.profileupdate* | **Stránka aktualizace profilu**. Tato stránka obsahuje formulář, pomocí kterého můžou uživatelé aktualizovat svůj profil. Tato stránka se podobá stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. |
+| *api.signuporsignin* | **Jednotná registrace nebo přihlašovací stránka**. Tato stránka zpracovává registraci i přihlašování uživatelů, kteří můžou používat podnikové zprostředkovatele identity, zprostředkovatele sociálních identit, jako je Facebook nebo Google + nebo místní účty.  |
 
 ## <a name="next-steps"></a>Další kroky
 
