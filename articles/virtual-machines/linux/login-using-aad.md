@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 74de621f88d9af65f8894319729f902bf11e57ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873008"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951305"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -206,6 +206,10 @@ Pokud jste úspěšně dokončili krok ověřování ve webovém prohlížeči, 
 - Ověřte, jestli je přihlašovací jméno, které jste zadali na příkazovém řádku SSH, správné. Překlep v přihlašovacím jméně může způsobit neshodu mezi přihlašovacím jménem, které jste zadali na příkazovém řádku SSH, a účtem, který jste se přihlásili k Azure AD pomocí. Například jste zadali *azuresuer\@contoso.onmicrosoft.com* namísto *azureuser\@contoso.onmicrosoft.com*.
 - Pokud máte víc uživatelských účtů, ujistěte se, že při přihlašování do Azure AD neposkytnete v okně prohlížeče jiný uživatelský účet.
 - Linux je operační systém s rozlišováním velkých a malých písmen. Mezi "Azureuser@contoso.onmicrosoft.com" a "azureuser@contoso.onmicrosoft.com" je rozdíl, který může způsobit neshodu. Ujistěte se, že v příkazovém řádku SSH určíte hlavní název uživatele se správným rozlišováním velkých a malých písmen.
+
+### <a name="other-limitations"></a>Další omezení
+
+Uživatelé, kteří dědí přístupová práva prostřednictvím vnořených skupin nebo přiřazení rolí, se v tuto chvíli nepodporují. Uživatel nebo skupina musí přímo přiřadit [požadovaná přiřazení rolí](#configure-role-assignments-for-the-vm). Například použití skupin pro správu nebo přiřazení role vnořené skupiny neudělí správná oprávnění, aby se uživatel mohl přihlásit.
 
 ## <a name="preview-feedback"></a>Náhled zpětné vazby
 
