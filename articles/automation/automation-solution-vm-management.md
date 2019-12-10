@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 54f0584eae948d6e577b0439a5a0d976ff61d4b1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850648"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951492"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Řešení Start/Stop VMs during off-hours v Azure Automation
 
@@ -428,7 +428,7 @@ Pokud se rozhodnete, že už toto řešení nebudete používat, můžete ho ods
 
 Účet služby Automation a Log Analytics pracovní prostor se v rámci tohoto procesu neodstraní. Pokud nechcete zachovat Log Analytics pracovní prostor, budete ho muset odstranit ručně. To lze provést z Azure Portal:
 
-1. Na domovské obrazovce Azure Portal vyberte **pracovní prostory Log Analytics**.
+1. V Azure Portal vyhledejte a vyberte **Log Analytics pracovní prostory**.
 1. Na stránce **Log Analytics pracovní prostory** vyberte pracovní prostor.
 1. V nabídce na stránce nastavení pracovního prostoru vyberte **Odstranit** .
 

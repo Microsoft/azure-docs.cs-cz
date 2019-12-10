@@ -1,20 +1,20 @@
 ---
 title: Správa uživatelů
-description: Popisuje, jak spravovat uživatele.
+description: Tento článek popisuje, jak spravovat uživatele.
 author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 37dacf0adfc9e3dcbab963cef50e2ee5209df314
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f58db00e598fd08972adb60cbd8aae0d3bf3391d
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852351"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942295"
 ---
 # <a name="manage-users"></a>Správa uživatelů
 
-Azure FarmBeats zahrnuje správu uživatelů pro lidi, kteří jsou součástí vaší Azure Active Directory (Azure AD). Pro přístup k rozhraním API budete moct přidat uživatele do instance Azure FarmBeats, zobrazit vygenerované mapy a telemetrii senzorů z farmy.
+Azure FarmBeats zahrnuje správu uživatelů pro lidi, kteří jsou součástí vaší Azure Active Directory (Azure AD). Můžete přidat uživatele do instance Azure FarmBeats pro přístup k rozhraním API, zobrazit vygenerovaná mapování a telemetrie senzorů z farmy.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -38,40 +38,43 @@ V Azure FarmBeats ještě existují dva druhy rolí uživatelů:
 
 ## <a name="add-user-to-azure-farmbeats"></a>Přidat uživatele do Azure FarmBeats
 
-Pokud chcete přidat uživatele do Azure FarmBeats, 
-1.  Přihlaste se k akcelerátoru a klikněte na ikonu nastavení.
-2.  Klikněte na Access Control
+Pokud chcete přidat uživatele do Azure FarmBeats, postupujte podle pokynů:
+
+1.  Přihlaste se k akcelerátoru a potom vyberte ikonu **Nastavení** .
+2.  Vyberte **Access Control**.
 
     ![Beats farmy projektu](./media/create-farms/settings-users-1.png)
 
-3.  Zadejte ID e-mailu uživatele, kterému chcete udělit přístup.
-4.  Vybrat požadovanou roli – správce nebo jen pro čtení
-5.  Klikněte na Přidat roli.
+3.  Zadejte ID e-mailu uživatele, kterému chcete poskytnout přístup.
+4.  Vyberte požadovanou roli – správce nebo jen pro čtení.
+5.  Vyberte **Přidat roli**.
 
 Přidaní uživatelé teď budou mít přístup k Azure FarmBeats (data hub i akcelerátor).
 
 ## <a name="delete-user-from-azure-farmbeats"></a>Odstranění uživatele z Azure FarmBeats
 
-Pokud chcete odebrat uživatele ze systému Azure FarmBeats, můžete
-1.  Přihlaste se k akcelerátoru a klikněte na ikonu nastavení.
-2.  Klikněte na Access Control
-3.  Klikněte na ikonu Odstranit u ID e-mailu uživatele, kterého chcete odebrat.
+Pokud chcete uživatele odebrat ze systému Azure FarmBeats, postupujte podle těchto kroků:
 
-Uživatel je odebrán ze systému. K potvrzení úspěšné operace se zobrazí následující zpráva.
+1.  Přihlaste se k akcelerátoru a potom vyberte ikonu **Nastavení** .
+2.  Vyberte **Access Control**.
+3.  Vyberte **Odstranit** a odstraňte uživatele.
 
+Uživatel je odstraněn ze systému. K potvrzení úspěšné operace se zobrazí následující zpráva.
 
 ![Beats farmy projektu](./media/create-farms/manage-users-2.png)
-
 
 ## <a name="add-azure-ad-users"></a>Přidání uživatelů Azure AD
 
 > [!NOTE]
-> Budete muset provést následující kroky, jenom když se uživatel, který se pokoušíte poskytnout přístup ke službě Azure FarmBeats, nenachází v tenantovi Azure AD. Pokud uživatel již existuje, není nutné provádět tyto kroky.
+> Pokud uživatel neexistuje v tenantovi Azure AD, postupujte podle následujících kroků a poskytněte uživateli přístup k Azure FarmBeats. Pokud uživatel existuje v tenantovi služby Azure AD, můžete přeskočit níže uvedené kroky.
+>
 
 FarmBeats uživatelé musí existovat v tenantovi Azure AD, aby je bylo možné přiřadit k aplikacím a rolím. Pokud chcete přidat uživatele do služby Azure AD, použijte následující postup:
+
 1.  Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2.  V pravém horním rohu vyberte svůj účet a přepněte se na tenanta Azure AD, který je přidružený k FarmBeats.
-3.  Vyberte **Azure Active Directory > uživatelé**. Zobrazí se seznam uživatelů v adresáři.
+3.  Vyberte **Azure Active Directory > uživatelé**.
+    Zobrazí se seznam uživatelů v adresáři.
 4.  Pokud chcete do adresáře přidat uživatele, vyberte **Nový uživatel**. U externích uživatelů vyberte **Nový uživatel typu Host**.
 
     ![Beats farmy projektu](./media/create-farms/manage-users-3.png)
@@ -82,5 +85,4 @@ Další podrobnosti o správě uživatelů v rámci služby Azure AD najdete v d
 
 ## <a name="next-steps"></a>Další kroky
 
-Nasadili jste Azure FarmBeats. Nyní se naučíte, jak [vytvářet farmy](manage-farms.md#create-farms).
-
+Úspěšně jste přidali uživatele do instance služby Azure FarmBeats. Nyní se naučíte, jak [vytvářet farmy](manage-farms.md#create-farms).

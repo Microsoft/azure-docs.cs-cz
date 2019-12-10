@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c29bba81132df15fcea9ff0df7be6a8cea94c9a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27bf62cb328273db1f7bdd44117853b00feca9ae
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851124"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941572"
 ---
 # <a name="deploy-azure-farmbeats"></a>Nasazení Azure FarmBeats
 
@@ -49,7 +49,6 @@ Nasazení Azure FarmBeats ve vašem předplatném vytvoří následující prost
 |12|      Azure App Service      |  DataHub/akcelerátor       |
 |13 |    Plán služby App Service        |     DataHub/akcelerátor      |
 |14 |Účet Azure Maps     |Accelerator    |
-|15 |       Azure Time Series Insights      |  Datahub     |
 
 Azure FarmBeats je k dispozici ke stažení v Azure Marketplace, ke kterému můžete přistupovat přímo z Azure Portal.  
 
@@ -83,7 +82,7 @@ Než začnete s nasazením, zajistěte, aby byly splněné následující požad
 
 Účet s ověřovacím nástrojem Sentinel vám pomůže stáhnout si z oficiálního webu do svého zařízení. Pokud chcete vytvořit bezplatný účet, udělejte toto:
 
-1. Přejít na [stránku registrace účtu Sentinel](https://scihub.copernicus.eu/dhus/#/self-registration). 
+1. Přejít na [stránku registrace účtu Sentinel](https://scihub.copernicus.eu/dhus/#/self-registration).
 1. V registračním formuláři zadejte své křestní jméno, příjmení, uživatelské jméno, heslo a e-mailovou adresu.
 
 Ověřovací e-mail se pošle na registrovanou e-mailovou adresu pro potvrzení. Kliknutím na odkaz potvrďte svoji e-mailovou adresu. Proces registrace je dokončený.
@@ -211,7 +210,7 @@ V tomto scénáři, který je popsaný výše v části "možnost 1", instalačn
     > Platnost tokenu vyprší po 60 minutách. V případě vypršení platnosti můžete restartovat pomocí příkazu pro nasazení.
 
 1. Na příkazovém řádku zadejte heslo účtu Sentinel.
-   
+
    Instalační program ověří a spustí nasazení, což může trvat přibližně 20 minut.
 
    Po úspěšném dokončení nasazení obdržíte následující výstupní odkazy:
@@ -282,12 +281,8 @@ Pokud narazíte na nějaké problémy, přečtěte si téma [řešení potíží
 Po dokončení instalace DataHub obdržíte adresu URL pro přístup k rozhraním API Azure FarmBeats prostřednictvím rozhraní Swagger ve formátu https://\<yourdatahub-web-název >. azurewebsites. NET/Swagger.
 
 1. Pokud se chcete přihlásit přes Swagger, zkopírujte a vložte adresu URL do prohlížeče.
-1. Přihlaste se pomocí přihlašovacích údajů pro Azure Portal.
-1. Volitelné Vyzkoušejte tento "správnosti test": 
-
-     - Přihlaste se úspěšně k portálu Swagger pomocí odkazu DataHub, který jste dostali jako výstup do úspěšného nasazení.
-     - Rozšířené typy získat rozhraní API – vyberte vyzkoušet vyzkoušení:/Execute.
-     - Měli byste obdržet kód odpovědi serveru 200 a nikoli výjimku, například "403 neautorizovaný uživatel".
+2. Přihlaste se pomocí přihlašovacích údajů pro Azure Portal.
+3. Můžete si prohlédnout Swagger a provádět všechny operace REST na rozhraních API Azure FarmBeats. To indikuje úspěšné nasazení služby Azure FarmBeats.
 
 ### <a name="accelerator"></a>Accelerator
 

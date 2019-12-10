@@ -1,5 +1,6 @@
 ---
-title: Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
+title: Konfigurace změny hesla pomocí vlastních zásad
+titleSuffix: Azure AD B2C
 description: Naučte se, jak uživatelům povolit změnu hesla pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fd1f623eecdd855dbfb8e27795f813db4d099f53
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065532"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950574"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -23,13 +24,13 @@ ms.locfileid: "71065532"
 
 V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou přihlášení pomocí místního účtu, povolit změnu hesla, aniž by museli dokázat ověření pomocí e-mailu. Pokud platnost relace vyprší až do doby, kdy uživatel získá tok změny hesla, zobrazí se výzva k opětovnému přihlášení. V tomto článku se dozvíte, jak nakonfigurovat změnu hesla ve [vlastních zásadách](active-directory-b2c-overview-custom.md). Pro toky uživatelů je také možné nakonfigurovat [Samoobslužné resetování hesla](active-directory-b2c-reference-sspr.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
 ## <a name="add-the-elements"></a>Přidat elementy
 
-1. Otevřete soubor *TrustframeworkExtensions. XML* a přidejte následující element **ClaimType** s identifikátorem `oldPassword` do prvku [ClaimsSchema](claimsschema.md) :
+1. Otevřete soubor *TrustframeworkExtensions. XML* a přidejte následující element **ClaimType** s identifikátorem `oldPassword` do elementu [ClaimsSchema](claimsschema.md) :
 
     ```XML
     <BuildingBlocks>
@@ -120,7 +121,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
     </ClaimsProviders>
     ```
 
-    Nahraďte `IdentityExperienceFrameworkAppId` ID aplikace IdentityExperienceFramework, kterou jste vytvořili v kurzu požadavků. Nahraďte `ProxyIdentityExperienceFrameworkAppId` ID aplikace aplikace ProxyIdentityExperienceFramework, kterou jste ještě vytvořili.
+    Nahraďte `IdentityExperienceFrameworkAppId` ID aplikace aplikace IdentityExperienceFramework, kterou jste vytvořili v kurzu požadavků. Nahraďte `ProxyIdentityExperienceFrameworkAppId` ID aplikace aplikace ProxyIdentityExperienceFramework, kterou jste ještě vytvořili.
 
 3. Element [UserJourney](userjourneys.md) definuje cestu, kterou uživatel provede při interakci s aplikací. Přidejte element **userjourney** , pokud neexistuje s **UserJourney** identifikovaným jako `PasswordChange`:
 
@@ -153,18 +154,18 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
 4. Uložte soubor zásad *TrustFrameworkExtensions. XML* .
 5. Zkopírujte soubor *ProfileEdit. XML* , který jste stáhli pomocí úvodní sady, a pojmenujte ho *ProfileEditPasswordChange. XML*.
 6. Otevřete nový soubor a aktualizujte atribut **PolicyId** o jedinečnou hodnotu. Tato hodnota je název vaší zásady. Například *B2C_1A_profile_edit_password_change*.
-7. Upravte atribut **ReferenceId** v `<DefaultUserJourney>` nástroji tak, aby odpovídal ID nové cesty uživatele, kterou jste vytvořili. Například *PasswordChange*.
+7. Upravte atribut **ReferenceId** v `<DefaultUserJourney>` tak, aby odpovídal ID nové cesty pro uživatele, kterou jste vytvořili. Například *PasswordChange*.
 8. Uložte provedené změny.
 
 Ukázkovou zásadu najdete [tady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
 
 ## <a name="test-your-policy"></a>Testování zásad
 
-Při testování aplikací v Azure AD B2C může být užitečné, aby byl token Azure AD B2C vrácen `https://jwt.ms` , aby bylo možné zkontrolovat deklarace identity v ní.
+Při testování aplikací v Azure AD B2C může být užitečné, aby se token Azure AD B2C vrátil do `https://jwt.ms`, aby bylo možné zkontrolovat deklarace identity v ní.
 
 ### <a name="upload-the-files"></a>Nahrání souborů
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **architekturu prostředí identity**.
@@ -173,12 +174,12 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 7. Klikněte na **Odeslat**.
 8. Opakujte kroky 5 až 7 pro soubor předávající strany, například *ProfileEditPasswordChange. XML*.
 
-### <a name="run-the-policy"></a>Spustit zásady
+### <a name="run-the-policy"></a>Spustit zásadu
 
 1. Otevřete zásadu, kterou jste změnili. Například *B2C_1A_profile_edit_password_change*.
-2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
+2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Chcete-li zobrazit token, **Adresa URL odpovědi** by měla ukazovat `https://jwt.ms`.
 3. Klikněte na **Spustit**. Přihlaste se pomocí acouunt, který jste vytvořili dříve. Nyní byste měli mít možnost změnit heslo.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak můžete [nakonfigurovat složitost hesla pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-reference-password-complexity-custom.md).

@@ -1,5 +1,6 @@
 ---
-title: Rychlý Start – Nastavení přihlášení pro jednu stránku aplikace pomocí Azure Active Directory B2C
+title: 'Rychlý Start: nastavení přihlášení pro jednu stránku aplikace (SPA)'
+titleSuffix: Azure AD B2C
 description: V tomto rychlém startu spusťte ukázkovou jednostránkovou aplikaci, která používá Azure Active Directory B2C k poskytnutí přihlášení k účtu.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7dc3a52ca9f227f8476cf74286be917b5b6ba021
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ef6fd46ef51cff9823c93e2297a738f95494f577
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420178"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948315"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro jednostránkovou aplikaci pomocí služby Azure Active Directory B2C
 
@@ -23,13 +24,13 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu**
 - [Node.js](https://nodejs.org/en/download/)
 - Účet sociální sítě z Facebooku, Google nebo Microsoftu
 - Ukázka kódu z GitHubu: [Active-Directory-B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-    
+
     Můžete [stáhnout archiv zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) nebo klonovat úložiště:
 
     ```

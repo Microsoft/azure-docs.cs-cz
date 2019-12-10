@@ -2,13 +2,13 @@
 title: Podporované jazyky v Azure Functions
 description: Zjistěte, které jazyky jsou podporované (GA) a které jsou experimentální nebo ve verzi Preview.
 ms.topic: conceptual
-ms.date: 08/02/2018
-ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230290"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942252"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Podporované jazyky v Azure Functions
 
@@ -24,7 +24,7 @@ Existují tři úrovně podpory:
 
 ## <a name="languages-by-runtime-version"></a>Jazyky podle verze modulu runtime 
 
-K dispozici jsou [dvě verze modulu runtime Azure Functions](functions-versions.md) . Následující tabulka uvádí, které jazyky jsou podporovány v každé verzi modulu runtime.
+K dispozici jsou [tři verze modulu runtime Azure Functions](functions-versions.md) . Následující tabulka uvádí, které jazyky jsou podporovány v každé verzi modulu runtime.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -34,7 +34,7 @@ Experimentální jazyky verze 1. x se neškálují správně a nepodporují vše
 
 Nepoužívejte experimentální funkce pro cokoli, co jste se spoléhali, protože pro ně není oficiální podpora k dispozici. Pro problémy s experimentálními jazyky by se neměly otevírat případy podpory. 
 
-Modul runtime verze 2. x nepodporuje experimentální jazyky. Podpora pro nové jazyky se přidá jenom v případě, že je možné jazyk v produkčním prostředí podporovat. 
+Novější verze modulu runtime nepodporují experimentální jazyky. Podpora pro nové jazyky se přidá jenom v případě, že je možné jazyk v produkčním prostředí podporovat. 
 
 ### <a name="language-extensibility"></a>Jazyková rozšíření
 

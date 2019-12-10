@@ -1,6 +1,7 @@
 ---
-title: Definujte technický profil ověřování ve vlastních zásadách v Azure Active Directory B2C | Microsoft Docs
-description: Definujte Azure Active Directory technický profil ve vlastních zásadách v Azure Active Directory B2C.
+title: Definování technického profilu ověření ve vlastních zásadách
+titleSuffix: Azure AD B2C
+description: Ověřte deklarace identity pomocí technického profilu ověření ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167572"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950795"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu ověření ve Azure Active Directory B2C vlastní zásady
 
@@ -40,13 +41,13 @@ Technický profil ověření může být podmíněně proveden na základě pře
 Technický profil s vlastním uplatněním může definovat technický profil ověření, který se použije k ověření některých nebo všech jeho výstupních deklarací. Všechny vstupní deklarace odkazovaného technického profilu se musí objevit ve výstupních deklaracích technického profilu odkazujícího ověřování.
 
 > [!NOTE]
-> Ověřovací technické profily můžou používat jenom technické profily s vlastním uplatněním. Pokud potřebujete ověřit výstupní deklarace identity z technických profilů bez vlastního vyhodnocení, zvažte použití dalšího kroku orchestrace v cestě uživatele, aby vyhovoval technickému profilu, který se účtuje za ověření.    
+> Ověřovací technické profily můžou používat jenom technické profily s vlastním uplatněním. Pokud potřebujete ověřit výstupní deklarace identity z technických profilů bez vlastního vyhodnocení, zvažte použití dalšího kroku orchestrace v cestě uživatele, aby vyhovoval technickému profilu, který se účtuje za ověření.
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
 Element **ValidationTechnicalProfiles** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Technický profil, který se má použít k ověření některých nebo všech výstupních deklarací odkazujícího technického profilu. |
 
@@ -60,7 +61,7 @@ Element **ValidationTechnicalProfile** obsahuje následující atribut:
 
 Element **ValidationTechnicalProfile** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Předběžné podmínky | 0:1 | Seznam předpokladů, které musí být splněny, aby byl technický profil ověření proveden. |
 
@@ -73,12 +74,12 @@ Prvek **předběžné podmínky** obsahuje následující atribut:
 
 Prvek **podmínky** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Hodnota | 1: n | Data, která se používají při kontrole. Pokud je typ této kontroly `ClaimsExist`, toto pole určuje ClaimTypeReferenceId k dotazování na. Pokud je typ kontroly `ClaimEquals`, toto pole určuje ClaimTypeReferenceId pro dotaz na. Zatímco jiný element Value obsahuje hodnotu, která má být kontrolována.|
 | Akce | 1:1 | Akce, která má být provedena, pokud je splněna podmínka kontroly předběžných podmínek v rámci kroku orchestrace. Hodnota **Akce** je nastavena na `SkipThisValidationTechnicalProfile`. Určuje, že by se neměl spustit přidružený technický profil ověření. |
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující příklad používá tyto technické profily ověřování:
 

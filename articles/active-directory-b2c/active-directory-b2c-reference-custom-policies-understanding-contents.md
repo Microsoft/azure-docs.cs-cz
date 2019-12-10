@@ -1,6 +1,7 @@
 ---
-title: Principy vlastní zásady Spouštěče aktualizací Service pack v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Téma na vlastní zásady pro Azure Active Directory B2C.
+title: Součásti úvodní sady vlastních zásad
+titleSuffix: Azure AD B2C
+description: Přehled zásad v úvodní sadě vlastních zásad Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,102 +11,102 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b52f1a4cb6837dd779dcf4edac140bb13e06eacb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d49bd9af80b1bb9bd86466269b14ba0a47181e0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509563"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948177"
 ---
-# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Principy vlastní zásady úvodní balíček Azure AD B2C vlastních zásad
+# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Principy vlastních zásad pro úvodní sadu vlastních zásad Azure AD B2C
 
-Tato část obsahuje seznam všech základní prvky B2C_1A_base zásad, který je součástí **Starter Pack** a, který se používá k vytváření vlastních zásad prostřednictvím dědičnosti *B2C_1A_base_extensions zásad* .
+Tato část obsahuje seznam všech základních prvků B2C_1A_base zásad, které se dodávají s **úvodní** sadou a které se využívají k vytváření vlastních zásad prostřednictvím dědičnosti *zásad B2C_1A_base_extensions*.
 
-V důsledku toho je podrobněji se zaměřuje na typy deklarací identity již definovaných, transformace deklarací, definic obsahu, zprostředkovatelů deklarací identity s jejich technické profily a cesty uživatele core.
+V takovém případě se podrobněji zaměřuje na už definované typy deklarací identity, transformace deklarací, definice obsahu, zprostředkovatele deklarací identity s jejich technickými profily a základní cesty uživatelů.
 
 > [!IMPORTANT]
-> Společnost Microsoft neposkytuje žádné záruky, vyjádřené nebo předpokládané, s ohledem na informace uvedené níže. Změny mohou být zaveden kdykoli před období všeobecné dostupnosti v období všeobecné dostupnosti nebo po.
+> Společnost Microsoft neposkytuje žádné záruky, ať už výslovně nebo mlčky předpokládané, s ohledem na informace uvedené dále. Změny mohou být zavedeny kdykoli, před časem GA, v době GA nebo po.
 
-Vlastní zásady a zásady B2C_1A_base_extensions můžete přepsat tyto definice a rozšířit tuto zásadu nadřazené tím, že poskytuje další značky, podle potřeby.
+Tyto definice můžou vaše vlastní zásady i zásada B2C_1A_base_extensions přepsat a tuto nadřazenou zásadu můžete podle potřeby vymezit tím, že jim poskytnete další.
 
-Jádrem *B2C_1A_base zásady* jsou typy deklarací identity, transformace deklarací a definic obsahu. Tyto prvky můžete odkazovat ve vlastním zásady stejně jako v napadnutelné přes bezpečnostní *B2C_1A_base_extensions zásady*.
+Základními prvky *zásad B2C_1A_base* jsou typy deklarací identity, transformace deklarací identity a definice obsahu. Na tyto prvky je možné odkazovat ve vlastních zásadách a také v *zásadách B2C_1A_base_extensions*.
 
 ## <a name="claims-schemas"></a>Schémata deklarací identity
 
-Tato deklarace identity schémata je rozdělen na tři části:
+Tato schémata deklarací identity jsou rozdělená na tři části:
 
-1.  První oddíl, který obsahuje minimální deklarace identity, které jsou požadovány pro cesty uživatele fungovala správně.
-2.  Druhý oddíl, který obsahuje seznam deklarací vyžaduje se pro parametry řetězce dotazu a další zvláštní parametry se mají předat jiných zprostředkovatelů deklarací identity, zejména login.microsoftonline.com pro ověřování. **Neprovádějte žádné změny tyto deklarace**.
-3.  A nakonec třetí oddíl, který obsahuje seznam dalších, volitelných deklarací, které můžete shromažďovat od uživatelů, uložené v adresáři a odeslaných v tokenech během přihlášení. V této části můžete přidat nový typ deklarace identity k shromážděných od uživatele a/nebo odeslání v tokenu.
+1.  V první části jsou uvedeny minimální deklarace identity, které jsou nutné k řádnému fungování cest uživatele.
+2.  Druhá část obsahuje seznam deklarací identity potřebných pro parametry řetězce dotazu a další speciální parametry, které mají být předány jiným poskytovatelům deklarací identity, obzvláště login.microsoftonline.com pro ověřování. **Neměňte prosím tyto deklarace**.
+3.  A nakonec třetí část, která obsahuje seznam dalších volitelných deklarací identity, které se dají shromažďovat od uživatele, uložené v adresáři a posílat v tokenech během přihlašování. V této části se dá přidat nový typ deklarací identity, který se má shromažďovat z uživatele nebo odeslat v tokenu.
 
 > [!IMPORTANT]
-> Schéma deklarací identity obsahuje omezení určitých deklarací identity, jako jsou hesla a uživatelských jmen. Zásady důvěryhodnosti Framework (TF) zpracovává Azure AD jako jakýkoli jiný poskytovatel deklarací identity a jeho omezení jsou modelována ve vlastních zásadách. Chcete-li přidat více omezení, nebo použít jiného zprostředkovatele deklarací identity pro uložení přihlašovacích údajů, které budou mít vlastní omezení je možné upravovat zásady.
+> Schéma deklarací identity obsahuje omezení u určitých deklarací identity, jako jsou hesla a uživatelská jména. Zásady pro Trust Framework (TF) považují službu Azure AD za jiného zprostředkovatele deklarací identity a všechna jeho omezení jsou ve vlastních zásadách. Zásady je možné upravit tak, aby bylo možné přidat další omezení, nebo použít jiného zprostředkovatele deklarací identity pro úložiště přihlašovacích údajů, která budou mít vlastní omezení.
 
-Typy deklarací identity k dispozici jsou uvedeny níže.
+Dostupné typy deklarací identity jsou uvedené níže.
 
-### <a name="claims-that-are-required-for-the-user-journeys"></a>Deklarace identity, které jsou požadovány pro cesty uživatele
+### <a name="claims-that-are-required-for-the-user-journeys"></a>Deklarace identity, které jsou požadovány pro cestu uživatele
 
-Následující deklarace identity jsou požadovány pro cesty uživatele fungovala správně:
+Pro správné fungování cest uživatelů jsou vyžadovány následující deklarace identity uživatele:
 
-| Typ deklarace identity | Popis |
+| Typ deklarací identity | Popis |
 |-------------|-------------|
 | *UserId* | Uživatelské jméno |
-| *signInName* | Přihlaste se název |
-| *ID Tenanta* | Identifikátor tenanta (ID) objektu uživatele v Azure AD B2C |
-| *objectId* | Identifikátor objektu (ID) objektu uživatele v Azure AD B2C |
+| *signInName* | Přihlašovací jméno |
+| *tenantId* | Identifikátor tenanta (ID) objektu uživatele v Azure AD B2C |
+| *Objektu* | Identifikátor objektu (ID) objektu uživatele v Azure AD B2C |
 | *Heslo* | Heslo |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Zásady pro hesla pomocí Azure AD B2C používá k určení síly hesla, vypršení platnosti, atd. |
+| *passwordPolicies* | Zásady hesel používané Azure AD B2C k určení síly, vypršení platnosti hesla atd. |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
 | *displayName* | |
 | *strongAuthenticationPhoneNumber* | Telefonní číslo uživatele |
 | *Verified.strongAuthenticationPhoneNumber* | |
-| *E-mailu* | Je možné kontaktovat uživatele e-mailovou adresu |
-| *signInNamesInfo.emailAddress* | E-mailovou adresu, která uživatel může použít k přihlášení |
-| *otherMails* | E-mailové adresy, které lze použít ke kontaktování uživatele |
-| *userPrincipalName* | Uživatelské jméno dle záznamu v Azure AD B2C |
+| *elektron* | E-mailová adresa, která se dá použít ke kontaktování uživatele |
+| *signInNamesInfo.emailAddress* | E-mailová adresa, kterou může uživatel použít k přihlášení |
+| *otherMails* | E-mailové adresy, které se dají použít ke kontaktování uživatele |
+| *userPrincipalName* | Uživatelské jméno, jak je uloženo v Azure AD B2C |
 | *upnUserName* | Uživatelské jméno pro vytvoření hlavního názvu uživatele |
-| *mailNickName* | Název Přezdívka pošty uživatele uložené v Azure AD B2C |
+| *mailNickName* | Název e-mailové zprávy uživatele, jak je uložený v Azure AD B2C |
 | *newUser* | |
-| *executed-SelfAsserted-Input* | Deklarace identity, která určuje, zda byly atributů shromážděných od uživatele |
-| *executed-PhoneFactor-Input* | Deklarace identity, která určuje, jestli se nové telefonní číslo shromážděných od uživatele |
-| *authenticationSource* | Určuje, zda byl uživatel ověřený zprostředkovatele sociální Identity, login.microsoftonline.com nebo místní účet |
+| *executed-SelfAsserted-Input* | Deklarace identity, která určuje, jestli se atributy od uživatele shromáždily |
+| *executed-PhoneFactor-Input* | Deklarace identity, která určuje, jestli se od uživatele shromáždilo nové telefonní číslo |
+| *authenticationSource* | Určuje, jestli byl uživatel ověřený na poskytovateli sociálních identit, v login.microsoftonline.com nebo místním účtu. |
 
-### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>Vyžaduje se pro parametry řetězce dotazu a další zvláštní parametry deklarací identity
+### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>Deklarace identity vyžadované pro parametry řetězce dotazu a další speciální parametry
 
-Následující deklarace identit vyžadují k předání na zvláštní parametry (včetně některých parametrů řetězce dotazu) do jiných zprostředkovatelů deklarací identity:
+Následující deklarace identity se vyžadují pro předávání speciálních parametrů (včetně některých parametrů řetězce dotazu) jiným zprostředkovatelům deklarací identity:
 
-| Typ deklarace identity | Popis |
+| Typ deklarací identity | Popis |
 |-------------|-------------|
-| *nux* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *nca* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *prompt* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *mkt* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *lc* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *grant_type* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *Obor* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *client_id* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *objectIdFromSession* | Parametr poskytované poskytovateli výchozí relace správy k označení, že ID objektu byl načten z relace jednotného přihlašování |
-| *isActiveMFASession* | Parametr poskytované Správa relací vícefaktorové ověřování k označení, že uživatel má aktivní relace MFA |
+| *nux* | Speciální parametr předaný pro ověřování místního účtu do login.microsoftonline.com |
+| *nca* | Speciální parametr předaný pro ověřování místního účtu do login.microsoftonline.com |
+| *prompt* | Speciální parametr předaný pro ověřování místního účtu do login.microsoftonline.com |
+| *mkt* | Speciální parametr předaný pro ověřování místního účtu do login.microsoftonline.com |
+| *lc* | Speciální parametr předaný pro ověřování místního účtu do login.microsoftonline.com |
+| *grant_type* | Speciální parametr předaný pro ověřování místního účtu do login.microsoftonline.com |
+| *oboru* | Speciální parametr předaný pro ověřování místního účtu do login.microsoftonline.com |
+| *client_id* | Speciální parametr předaný pro ověřování místního účtu do login.microsoftonline.com |
+| *objectIdFromSession* | Parametr poskytovaný výchozím zprostředkovatelem správy relace, který označuje, že ID objektu bylo načteno z relace jednotného přihlašování. |
+| *isActiveMFASession* | Parametr poskytovaný správou relací MFA k označení toho, že má uživatel aktivní relaci MFA |
 
-### <a name="additional-optional-claims-that-can-be-collected"></a>Další (volitelné) deklarace identity, které se můžou shromažďovat
+### <a name="additional-optional-claims-that-can-be-collected"></a>Další (volitelné) deklarace identity, které se dají shromáždit
 
-Následující deklarace identity jsou další deklarace identity, které můžete shromažďovat od uživatelů, uložené v adresáři a odeslali v tokenu. Jak je uvedeno před další deklarace identity je přidat do tohoto seznamu.
+Následující deklarace identity jsou další deklarace identity, které je možné shromáždit od uživatelů, které jsou uložené v adresáři a které se odesílají v tokenu. Jak je uvedeno dříve, do tohoto seznamu lze přidat další deklarace identity.
 
-| Typ deklarace identity | Popis |
+| Typ deklarací identity | Popis |
 |-------------|-------------|
-| *givenName* | Jméno uživatele (také nazývané křestní jméno) |
-| *Příjmení* | Příjmení uživatele (označované také jako název rodiny nebo příjmení) |
-| *Extension_picture* | Obrázek uživatele z sociální sítě |
+| *givenName* | Křestní jméno uživatele (označuje se také jako křestní jméno) |
+| *příjmení* | Příjmení uživatele (označuje se také jako název rodiny nebo příjmení) |
+| *Extension_picture* | Obrázek uživatele ze sociálních sítí |
 
-## <a name="claim-transformations"></a>Transformace deklarací identit
+## <a name="claim-transformations"></a>Transformace deklarací identity
 
-Transformace deklarací identity k dispozici jsou uvedeny níže.
+Dostupné transformace deklarací identity jsou uvedené níže.
 
-| Transformace deklarací identity | Popis |
+| Transformace deklarace identity | Popis |
 |----------------------|-------------|
 | *CreateOtherMailsFromEmail* | |
 | *CreateRandomUPNUserName* | |
@@ -116,42 +117,42 @@ Transformace deklarací identity k dispozici jsou uvedeny níže.
 
 ## <a name="content-definitions"></a>Definice obsahu
 
-Tato část popisuje už deklarované v obsahu definice *B2C_1A_base* zásad. Tyto definice obsahu jsou však náchylné k odkazuje, přepsat nebo podle potřeby v svoje vlastní zásady, stejně jako v rozšířit *B2C_1A_base_extensions* zásad.
+Tato část popisuje definice obsahu již deklarované v zásadách *B2C_1A_base* . Na tyto definice obsahu se dá odkazovat, přepsat nebo rozšířit podle potřeby ve vašich vlastních zásadách i v zásadách *B2C_1A_base_extensions* .
 
-| Zprostředkovatele deklarací identity | Popis |
+| Zprostředkovatel deklarací identity | Popis |
 |-----------------|-------------|
 | *Facebook* | |
-| *Registrace místního účtu* | |
+| *Přihlášení k místnímu účtu* | |
 | *PhoneFactor* | |
 | *Azure Active Directory* | |
-| *Vlastní s prohlašovanou* | |
+| *S vlastním uplatněním* | |
 | *Místní účet* | |
 | *Správa relací* | |
 | *Modul zásad Trustframework* | |
 | *TechnicalProfiles* | |
-| *Vydavatel tokenu* | |
+| *Vydavatel tokenů* | |
 
 ## <a name="technical-profiles"></a>Technické profily
 
-Tato část popisuje technické profily již byla deklarována na poskytovatele deklarací identity v *B2C_1A_base* zásad. Tyto technické profily jsou však náchylné k být dále odkazovat, přepsání a/nebo rozšířené podle potřeby v svoje vlastní zásady, stejně jako v *B2C_1A_base_extensions* zásad.
+Tato část popisuje technické profily, které jsou už deklarované na základě zprostředkovatele deklarací identity v zásadách *B2C_1A_base* . Tyto technické profily jsou náchylné k dalšímu odkazování, přepsání nebo rozšíření podle potřeby ve vašich vlastních zásadách i v zásadách *B2C_1A_base_extensions* .
 
 ### <a name="technical-profiles-for-facebook"></a>Technické profily pro Facebook
 
 | Technický profil | Popis |
 |-------------------|-------------|
-| *Facebook-OAUTH* | |
+| *Facebook – OAUTH* | |
 
-### <a name="technical-profiles-for-local-account-signin"></a>Technické profily pro přihlášení místním účtem
+### <a name="technical-profiles-for-local-account-signin"></a>Technické profily pro přihlášení k místnímu účtu
 
 | Technický profil | Popis |
 |-------------------|-------------|
 | *Login-NonInteractive* | |
 
-### <a name="technical-profiles-for-phone-factor"></a>Technické profily pro Phone Factor
+### <a name="technical-profiles-for-phone-factor"></a>Technické profily pro telefonní faktor
 
 | Technický profil | Popis |
 |-------------------|-------------|
-| *PhoneFactor-Input* | |
+| *PhoneFactor – vstup* | |
 | *PhoneFactor-InputOrVerify* | |
 | *PhoneFactor-Verify* | |
 
@@ -159,18 +160,18 @@ Tato část popisuje technické profily již byla deklarována na poskytovatele 
 
 | Technický profil | Popis |
 |-------------------|-------------|
-| *AAD-Common* | Technický profil součástí jiné AAD-xxx technické profily |
-| *AAD-UserWriteUsingAlternativeSecurityId* | Technický profil pro přihlašování přes sociální sítě |
-| *AAD-UserReadUsingAlternativeSecurityId* | Technický profil pro přihlašování přes sociální sítě |
-| *AAD-UserReadUsingAlternativeSecurityId-NoError* | Technický profil pro přihlašování přes sociální sítě |
+| *AAD-Common* | Technický profil obsažený v dalších technických profilech AAD-XXX |
+| *AAD-UserWriteUsingAlternativeSecurityId* | Technický profil pro přihlášení přes sociální sítě |
+| *AAD-UserReadUsingAlternativeSecurityId* | Technický profil pro přihlášení přes sociální sítě |
+| *AAD-UserReadUsingAlternativeSecurityId-NoError* | Technický profil pro přihlášení přes sociální sítě |
 | *AAD-UserWritePasswordUsingLogonEmail* | Technický profil pro místní účty |
 | *AAD-UserReadUsingEmailAddress* | Technický profil pro místní účty |
-| *AAD-UserWriteProfileUsingObjectId* | Technický profil pro aktualizaci záznamu uživatele pomocí ID objektu |
-| *AAD-UserWritePhoneNumberUsingObjectId* | Technický profil pro aktualizaci záznamu uživatele pomocí ID objektu |
-| *AAD-UserWritePasswordUsingObjectId* | Technický profil pro aktualizaci záznamu uživatele pomocí ID objektu |
-| *AAD-UserReadUsingObjectId* | Technický profil slouží k načtení dat po ověření uživatele |
+| *AAD-UserWriteProfileUsingObjectId* | Technický profil pro aktualizaci záznamu uživatele pomocí objectId |
+| *AAD-UserWritePhoneNumberUsingObjectId* | Technický profil pro aktualizaci záznamu uživatele pomocí objectId |
+| *AAD-UserWritePasswordUsingObjectId* | Technický profil pro aktualizaci záznamu uživatele pomocí objectId |
+| *AAD-UserReadUsingObjectId* | Technický profil se používá ke čtení dat po ověření uživatele. |
 
-### <a name="technical-profiles-for-self-asserted"></a>Technické profily pro samoobslužné Prosazený
+### <a name="technical-profiles-for-self-asserted"></a>Technické profily pro samotný kontrolní výraz
 
 | Technický profil | Popis |
 |-------------------|-------------|
@@ -183,33 +184,33 @@ Tato část popisuje technické profily již byla deklarována na poskytovatele 
 |-------------------|-------------|
 | *LocalAccountSignUpWithLogonEmail* | |
 
-### <a name="technical-profiles-for-session-management"></a>Technické profily pro Správa relací
+### <a name="technical-profiles-for-session-management"></a>Technické profily pro správu relací
 
 | Technický profil | Popis |
 |-------------------|-------------|
-| *SM-Noop* | |
-| *SM-AAD* | |
-| *SM SocialSignup* | Název profilu se používá k rozlišení AAD relace mezi sign up a přihlášení |
+| *SM – NoOp* | |
+| *SM – AAD* | |
+| *SM – SocialSignup* | Název profilu slouží k jednoznačnému odstranění relace AAD mezi registrací a přihlášením. |
 | *SM-SocialLogin* | |
 | *SM-MFA* | |
 
-### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Technické profily pro modul zásad důvěryhodnosti rozhraní framework
+### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Technické profily pro modul zásad pro Trust Framework
 
-V současné době jsou definovány žádné technické profily pro **TechnicalProfiles modul zásad Trustframework** zprostředkovatele deklarací identity.
+V současné době nejsou definovány žádné technické profily pro zprostředkovatele deklarací identity **TechnicalProfiles Engine Trustframework Policy** .
 
-### <a name="technical-profiles-for-token-issuer"></a>Technické profily pro vydavatel tokenu
+### <a name="technical-profiles-for-token-issuer"></a>Technické profily pro vystavitele tokenů
 
 | Technický profil | Popis |
 |-------------------|-------------|
 | *JwtIssuer* | |
 
-## <a name="user-journeys"></a>Cesty uživatele
+## <a name="user-journeys"></a>Cesty uživatelů
 
-Tato část popisuje cesty uživatele už deklarovaný v *B2C_1A_base* zásad. Tyto cesty uživatele jsou však náchylné k být dále odkazovat, přepsání a/nebo rozšířené podle potřeby v svoje vlastní zásady, stejně jako v *B2C_1A_base_extensions* zásad.
+Tato část popisuje cesty uživatelů již deklarované v zásadách *B2C_1A_base* . Tyto cesty uživatelů jsou náchylné k dalšímu odkazování, přepsání nebo rozšíření podle potřeby ve vašich vlastních zásadách i v zásadách *B2C_1A_base_extensions* .
 
 | Cesta uživatele | Popis |
 |--------------|-------------|
-| *Registrace* | |
+| *ISP* | |
 | *Přihlášení* | |
 | *SignUpOrSignIn* | |
 | *EditProfile* | |

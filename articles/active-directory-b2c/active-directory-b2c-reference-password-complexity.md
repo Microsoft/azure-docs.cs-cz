@@ -1,5 +1,6 @@
 ---
-title: Složitost hesla – Azure Active Directory B2C | Microsoft Docs
+title: Konfigurace požadavků na složitost hesla
+titleSuffix: Azure AD B2C
 description: Jak nakonfigurovat požadavky na složitost pro hesla dodaná příjemci v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 642621e2e04d3e96dc6886b1bdb28c161560b28e
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d37d1ae3871e8b14a44540883b1d03c29b58d27e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065458"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950557"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurace požadavků na složitost pro hesla v Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) podporuje změnu požadavků na složitost hesel zadaných koncovým uživatelem při vytváření účtu. Ve výchozím nastavení Azure AD B2C používá `Strong` hesla. Azure AD B2C podporuje také možnosti konfigurace pro kontrolu složitosti hesel, která zákazníci můžou používat.
+Azure Active Directory B2C (Azure AD B2C) podporuje změnu požadavků na složitost hesel zadaných koncovým uživatelem při vytváření účtu. Ve výchozím nastavení používá Azure AD B2C hesla `Strong`. Azure AD B2C podporuje také možnosti konfigurace pro kontrolu složitosti hesel, která zákazníci můžou používat.
 
 ## <a name="password-rule-enforcement"></a>Vynucení pravidla hesla
 
@@ -36,7 +37,7 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 
 ## <a name="configure-password-complexity"></a>Konfigurace složitosti hesla
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů**.
@@ -47,8 +48,8 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 
 | Složitost | Popis |
 | --- | --- |
-| Jednoduchý | Heslo, které má alespoň 8 až 64 znaků. |
-| Silné | Heslo, které má alespoň 8 až 64 znaků. Vyžaduje 3 ze 4 malých a velkých písmen, číslic a symbolů. |
+| Jednoduchost | Heslo, které má alespoň 8 až 64 znaků. |
+| Strong | Heslo, které má alespoň 8 až 64 znaků. Vyžaduje 3 ze 4 malých a velkých písmen, číslic a symbolů. |
 | Vlastní | Tato možnost poskytuje nejvyšší kontrolu nad pravidly složitosti hesla.  Umožňuje nakonfigurovat vlastní délku.  Umožňuje taky přijímat jenom hesla (PIN kód). |
 
 ## <a name="custom-options"></a>Vlastní možnosti
@@ -71,9 +72,9 @@ Umožňuje řídit požadavky na délku hesla.
 
 Umožňuje řídit různé typy znaků používané v hesle.
 
-- **2 ze 4: Malý znak, velké písmeno, číslo (0-9), symbol** zajistí, že heslo obsahuje alespoň dva typy znaků. Například číslo a malý znak.
-- **3 ze 4: Malý znak, velké písmeno, číslo (0-9), symbol** zajistí, že heslo obsahuje alespoň dva typy znaků. Například číslo, malý znak a znak velkého písmene.
-- **4 ze 4: Malý znak, velké písmeno, číslo (0-9), symbol** zajišťuje, že heslo obsahuje všechny typy znaků.
+- **2 ze 4: malý znak, velké písmeno, číslo (0-9), symbol zajistí,** že heslo obsahuje alespoň dva typy znaků. Například číslo a malý znak.
+- **3 ze 4: malý znak, Velká písmena, číslo (0-9), symbol zajistí,** že heslo obsahuje alespoň dva typy znaků. Například číslo, malý znak a znak velkého písmene.
+- **4 ze 4: malá písmena, Velká písmena, číslo (0-9), symbol zajistí,** že heslo obsahuje všechny typy znaků.
 
     > [!NOTE]
-    > Výsledkem **4 ze 4** může být frustrace koncového uživatele. Některé studie ukázaly, že tento požadavek nevylepšuje entropii hesla. Viz [pokyny](https://pages.nist.gov/800-63-3/sp800-63b.html#appA) k heslům pro NIST.
+    > Výsledkem **4 ze 4** může být frustrace koncového uživatele. Některé studie ukázaly, že tento požadavek nevylepšuje entropii hesla. Viz [pokyny k heslům pro NIST](https://pages.nist.gov/800-63-3/sp800-63b.html#appA) .

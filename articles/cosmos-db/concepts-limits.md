@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7ce15a0fe55c32ad7e381ba70e4dffee11c76bee
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383390"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951815"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -26,10 +26,10 @@ Po vytvoření účtu Azure Cosmos v rámci svého předplatného můžete sprav
 | Maximální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) . |
 | Maximální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) . |
 | Maximální ru na (logický) klíč oddílu | 10 000 |
-| Maximální velikost úložiště napříč všemi položkami na (logický) klíč oddílu| 10 GB |
-| Maximální počet různých (logických) klíčů oddílu | Neomezeno |
-| Maximální velikost úložiště na kontejner | Neomezeno |
-| Maximální velikost úložiště na databázi | Neomezeno |
+| Maximální velikost úložiště napříč všemi položkami na (logický) klíč oddílu| 10 GB |
+| Maximální počet různých (logických) klíčů oddílu | Bez omezení |
+| Maximální velikost úložiště na kontejner | Bez omezení |
+| Maximální velikost úložiště na databázi | Bez omezení |
 | Maximální velikost přílohy na účet (funkce přílohy je odepsána) | 2 GB |
 | Minimální ru vyžadovaná za 1 GB | 10 RU/s |
 
@@ -76,8 +76,8 @@ Cosmos DB automaticky provede zálohování vašich dat v pravidelných interval
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální počet databází | Neomezeno |
-| Maximální počet kontejnerů na databázi (nebo účet) | Neomezeno |
+| Maximální počet databází | Bez omezení |
+| Maximální počet kontejnerů na databázi (nebo účet) | Bez omezení |
 | Maximální počet oblastí | Bez omezení (všechny oblasti Azure) |
 
 ## <a name="per-container-limits"></a>Omezení podle kontejneru
@@ -115,13 +115,14 @@ Neexistují žádná omezení na datové části položky, jako je počet vlastn
 
 ## <a name="per-request-limits"></a>Omezení podle požadavků
 
-Cosmos DB podporuje [operace CRUD a dotazování](https://docs.microsoft.com/rest/api/cosmos-db/) u prostředků, jako jsou kontejnery, položky a databáze.  
+Azure Cosmos DB podporuje [operace CRUD a dotazování](https://docs.microsoft.com/rest/api/cosmos-db/) u prostředků, jako jsou kontejnery, položky a databáze. Podporuje také [transakční dávkové požadavky](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) na více položek se stejným klíčem oddílu v kontejneru.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
 | Maximální doba provádění pro jednu operaci (například spuštění uložené procedury nebo jedno načtení stránky dotazu)| 5 sekund |
-| Maximální velikost požadavku (uložená procedura, CRUD)| 2 MB |
+| Maximální velikost požadavku (například uložená procedura, CRUD)| 2 MB |
 | Maximální velikost odpovědi (například na stránkovaném dotazu) | 4 MB |
+| Maximální počet operací v transakční dávce | 100 |
 
 Jakmile operace jako dotaz dosáhne časového limitu spuštění nebo omezení velikosti odpovědi, vrátí klientovi stránku výsledků a token pro pokračování, aby bylo možné pokračovat v provádění. Neexistuje žádné praktické omezení pro dobu, po kterou může jeden dotaz běžet na stránkách nebo v pokračování.
 
@@ -174,11 +175,11 @@ V následující tabulce jsou uvedeny limity pro [testovací Azure Cosmos DB pro
 | Prostředek | Výchozí omezení |
 | --- | --- |
 | Doba trvání zkušební verze | 30 dní (může být několikrát obnoveno) |
-| Maximální počet kontejnerů na předplatné (SQL, Gremlin, rozhraní API pro tabulky) | 1 |
+| Maximální počet kontejnerů na předplatné (SQL, Gremlin, rozhraní API pro tabulky) | 1\. místo |
 | Maximální počet kontejnerů na předplatné (rozhraní API MongoDB) | 3 |
 | Maximální propustnost na kontejner | 5000 |
 | Maximální propustnost na sdílenou databázi propustnosti | 20000 |
-| Maximální celková velikost úložiště na účet | 10 GB |
+| Maximální celková velikost úložiště na účet | 10 GB |
 
 Zkuste Cosmos DB podporuje globální distribuci jenom v oblastech Střed USA, Severní Evropa a jihovýchodní Asie. Lístky podpory Azure nelze vytvořit pro účty try Azure Cosmos DB. Nicméně podpora je poskytována pro předplatitele se stávajícími plány podpory.
 

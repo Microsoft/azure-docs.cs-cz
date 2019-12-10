@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 2f59b66bacbd0105e5a543b019a5c6646e010c48
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 75490edfd30541aa641656a2ccc17a259bfbe927
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928520"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951356"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -354,188 +354,19 @@ Cenové tarify pro existující Application Insights prostředek můžete také 
                -appName myApp
 ```
 
-|priceCode|rozhraní|
+|priceCode|plánování|
 |---|---|
-|1|Za GB (dříve označované jako základní plán)|
+|1\. místo|Za GB (dříve označované jako základní plán)|
 |2|Za uzel (dříve název plánu v podniku)|
 
 ## <a name="add-a-metric-alert"></a>Přidat upozornění metriky
 
-Chcete-li nastavit výstrahu metriky ve stejnou dobu jako prostředek aplikace, slučte kód podobný tomuto souboru šablony:
-
-```JSON
-{
-    parameters: { ... // existing parameters ...
-            "responseTime": {
-              "type": "int",
-              "defaultValue": 3,
-              "minValue": 1,
-              "metadata": {
-                "description": "Enter response time threshold in seconds."
-              }
-    },
-    variables: { ... // existing variables ...
-      // Alert names must be unique within resource group.
-      "responseAlertName": "[concat('ResponseTime-', toLower(parameters('appName')))]"
-    }, 
-    resources: { ... // existing resources ...
-     {
-      //
-      // Metric alert on response time
-      //
-      "name": "[variables('responseAlertName')]",
-      "type": "Microsoft.Insights/alertrules",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]",
-      // Ensure this resource is created after the app resource:
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
-      },
-      "properties": {
-        "name": "[variables('responseAlertName')]",
-        "description": "response time alert",
-        "isEnabled": true,
-        "condition": {
-          "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-          "dataSource": {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('microsoft.insights/components', parameters('appName'))]",
-            "metricName": "request.duration"
-          },
-          "threshold": "[parameters('responseTime')]", //seconds
-          "windowSize": "PT15M" // Take action if changed state for 15 minutes
-        },
-        "actions": [
-          {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-            "sendToServiceOwners": true,
-            "customEmails": []
-          }
-        ]
-      }
-    }
-}
-```
-
-Pokud vyvoláte šablonu, můžete volitelně přidat tento parametr:
-
-    `-responseTime 2`
-
-Můžete samozřejmě použít i další pole. 
-
-Chcete-li zjistit názvy typů a podrobnosti o konfiguraci jiných pravidel upozornění, vytvořte pravidlo ručně a pak ho zkontrolujte v [Azure Resource Manager](https://resources.azure.com/). 
+Postup při automatizaci vytváření výstrah metriky najdete v [článku o šabloně upozornění metrik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert) .
 
 
 ## <a name="add-an-availability-test"></a>Přidat test dostupnosti
 
-Tento příklad slouží pro test testu a testování jedné stránky.  
-
-V testu dostupnosti **jsou dvě části** : samotný test a výstraha upozorňující na selhání.
-
-Sloučí následující kód do souboru šablony, který vytváří aplikaci.
-
-```JSON
-{
-    parameters: { ... // existing parameters here ...
-      "pingURL": { "type": "string" },
-      "pingText": { "type": "string" , defaultValue: ""}
-    },
-    variables: { ... // existing variables here ...
-      "pingTestName":"[concat('PingTest-', toLower(parameters('appName')))]",
-      "pingAlertRuleName": "[concat('PingAlert-', toLower(parameters('appName')), '-', subscription().subscriptionId)]"
-    },
-    resources: { ... // existing resources here ...
-    { //
-      // Availability test: part 1 configures the test
-      //
-      "name": "[variables('pingTestName')]",
-      "type": "Microsoft.Insights/webtests",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]",
-      // Ensure this is created after the app resource:
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
-      },
-      "properties": {
-        "Name": "[variables('pingTestName')]",
-        "Description": "Basic ping test",
-        "Enabled": true,
-        "Frequency": 900, // 15 minutes
-        "Timeout": 120, // 2 minutes
-        "Kind": "ping", // single URL test
-        "RetryEnabled": true,
-        "Locations": [
-          {
-            "Id": "us-va-ash-azr"
-          },
-          {
-            "Id": "emea-nl-ams-azr"
-          },
-          {
-            "Id": "apac-jp-kaw-edge"
-          }
-        ],
-        "Configuration": {
-          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies the existence of the specified text in the response.\"         Level=\"High\"  ExecutionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
-        },
-        "SyntheticMonitorId": "[variables('pingTestName')]"
-      }
-    },
-
-    {
-      //
-      // Availability test: part 2, the alert rule
-      //
-      "name": "[variables('pingAlertRuleName')]",
-      "type": "Microsoft.Insights/alertrules",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]", 
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource",
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/webtests', variables('pingTestName')))]": "Resource"
-      },
-      "properties": {
-        "name": "[variables('pingAlertRuleName')]",
-        "description": "alert for web test",
-        "isEnabled": true,
-        "condition": {
-          "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.LocationThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition",
-          "dataSource": {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('microsoft.insights/webtests', variables('pingTestName'))]",
-            "metricName": "GSMT_AvRaW"
-          },
-          "windowSize": "PT15M", // Take action if changed state for 15 minutes
-          "failedLocationCount": 2
-        },
-        "actions": [
-          {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-            "sendToServiceOwners": true,
-            "customEmails": []
-          }
-        ]
-      }
-    }
-}
-```
-
-Chcete-li zjistit kódy pro jiná testovací umístění nebo automatizovat vytváření složitějších webových testů, vytvořte příklad ručně a potom tento kód z [Azure Resource Manager](https://resources.azure.com/).
+Pokud chcete automatizovat testy dostupnosti, Projděte si [článek šablona výstrahy metrik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="add-more-resources"></a>Přidat další zdroje
 

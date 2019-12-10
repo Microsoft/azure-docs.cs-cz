@@ -1,6 +1,7 @@
 ---
-title: Predikáty a PredicateValidations-Azure Active Directory B2C | Microsoft Docs
-description: Příklady transformace deklarací účtu sociální sítě pro schéma rozhraní Azure Active Directory B2C prostředí identity
+title: Predikáty a PredicateValidations
+titleSuffix: Azure AD B2C
+description: Zabránit přidávání poškozených dat do tenanta Azure AD B2C pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1f08589ae28b3e19d2a4fdb3e3862e127a810cc
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099706"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951016"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
 
@@ -156,7 +157,7 @@ Element **PredicateGroups** obsahuje následující element:
 
 | Element | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Predikátcollection | 1: n | Seznam predikátů. |
+| PredicateGroup | 1: n | Seznam predikátů. |
 
 Element **predikátu** obsahuje následující atribut:
 

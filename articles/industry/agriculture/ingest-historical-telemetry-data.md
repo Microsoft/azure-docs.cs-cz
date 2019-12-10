@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d2ac3b0f531b6384643d91fac1cf50a0ea719969
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a3e4f543be2f01e0c649d5f9bcc9287dedc275f1
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900338"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941640"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -39,7 +39,7 @@ Postupujte následovně.
 > Chcete-li provést následující postup, musíte být správcem.
 
 1. Stáhněte si tento [skript](https://aka.ms/farmbeatspartnerscript)a extrahujte ho na místním disku. V souboru ZIP jsou dva soubory.
-2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a otevřete Azure Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu portálu. 
+2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a otevřete Azure Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu portálu.
 
     ![Panel nástrojů Azure Portal](./media/for-tutorials/navigation-bar-1.png)
 
@@ -47,7 +47,7 @@ Postupujte následovně.
 
     ![Nastavení PowerShellu](./media/for-tutorials/power-shell-new-1.png)
 
-4. Nahrajte dva soubory, které jste stáhli z kroku 1 v instanci Cloud Shell. 
+4. Nahrajte dva soubory, které jste stáhli z kroku 1 v instanci Cloud Shell.
 
     ![Tlačítko nahrát na panelu nástrojů](./media/for-tutorials/power-shell-two-1.png)
 
@@ -55,7 +55,7 @@ Postupujte následovně.
 
    >[!NOTE]
    > Ve výchozím nastavení se soubory odešlou do domovského adresáře/domů nebo uživatelského jména.
-6. Spusťte skript pomocí tohoto příkazu: 
+6. Spusťte skript pomocí tohoto příkazu:
 
     ```azurepowershell-interactive
     ./generateCredentials.ps1
@@ -67,10 +67,10 @@ Postupujte následovně.
 
  Teď, když máte požadované přihlašovací údaje, můžete definovat zařízení a senzory. K tomu je potřeba vytvořit metadata pomocí rozhraní FarmBeats API.
 
- FarmBeats DataHub má následující rozhraní API, které umožňuje vytvářet a spravovat metadata zařízení nebo senzorů. 
+ FarmBeats DataHub má následující rozhraní API, které umožňuje vytvářet a spravovat metadata zařízení nebo senzorů.
 
-- /**DeviceModel**: DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, což je brána nebo uzel. 
-- /**zařízení**: zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné. 
+- /**DeviceModel**: DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, což je brána nebo uzel.
+- /**zařízení**: zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné.
 - /**SensorModel**: SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a měření snímače, například okolní teplota a tlak.
 - **senzor**/: senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.  
 
@@ -86,7 +86,7 @@ Postupujte následovně.
 |    Vlastnosti          |    Další vlastnosti od výrobce.   |
 |    **zařízení**             |                      |
 |   DeviceModelId     |     ID přidruženého modelu zařízení  |
-|  hardwareId          | Jedinečné ID zařízení, například adresa MAC.
+|  HardwareId          | Jedinečné ID zařízení, například adresa MAC.
 |  ReportingInterval        |   Interval generování sestav v sekundách.
 |  Umístění            |  Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).   
 |ParentDeviceId       |    ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například uzel, který je připojen k bráně. Uzel má jako bránu parentDeviceId.  |
@@ -99,15 +99,15 @@ Postupujte následovně.
 |     ProductCode| Kód produktu nebo název modelu nebo číslo. Například RS-CO2-N01. |
 |       Název > SensorMeasures       | Název míry senzoru Podporují se jenom malá písmena. Pro měření z různých hloubek Určete hloubku. Například soil_moisture_15cm. Tento název musí být konzistentní s daty telemetrie.  |
 |          SensorMeasures > datový typ       |Datový typ telemetrie. V současné době je podporována dvojitá přesnost.|
-|    Typ > sensorMeasures    |Typ měření dat telemetrie senzorů. Systémem definované typy jsou AmbientTemperature, CO2, Hloubka, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, tlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, evapotranspiration, PAR. Pokud chcete přidat další informace, podívejte se na rozhraní/ExtendedType API.|
+|    Typ > SensorMeasures    |Typ měření dat telemetrie senzorů. Systémem definované typy jsou AmbientTemperature, CO2, Hloubka, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, tlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, evapotranspiration, PAR. Pokud chcete přidat další informace, podívejte se na rozhraní/ExtendedType API.|
 |        Jednotka > SensorMeasures              | Jednotka dat telemetrie snímačů. Jednotky definované systémem jsou jednotky jednotek, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, Psí, milimetry, centimetry, měřiče, palce, nohy, kilometry, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, procenta, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litr, MilliLiter, sekundy, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour, další informace najdete v tématu rozhraní API pro/ExtendedType.|
 |    SensorMeasures > AggregationType    |  Hodnoty mohou být None, Average, maximum, minima nebo StandardDeviation.  |
 |          Name (Název)            | Název, který identifikuje prostředek. Například název modelu nebo název produktu.  |
 |    Popis        | Poskytněte smysluplný popis modelu.  |
 |   Vlastnosti       |  Další vlastnosti od výrobce.  |
 |    **Elektrické**      |          |
-| hardwareId          |   Jedinečné ID pro senzory nastavené výrobcem. |
-|  sensorModelId     |    ID přidruženého modelu senzoru   |
+| HardwareId          |   Jedinečné ID pro senzory nastavené výrobcem. |
+|  SensorModelId     |    ID přidruženého modelu senzoru   |
 | Umístění          |  Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).|
 |   Název > portu        |  Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení. |
 |    ID zařízení  |    ID zařízení, ke kterému je senzor připojen.     |
@@ -269,7 +269,7 @@ Elektrické
   }
 }
 ```
-Následující vzorový požadavek vytvoří zařízení. Tento požadavek má jako datovou část vstupní JSON s textem žádosti. 
+Následující vzorový požadavek vytvoří zařízení. Tento požadavek má jako datovou část vstupní JSON s textem žádosti.
 
 ```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
@@ -292,7 +292,7 @@ Telemetrii musíte odeslat do služby Azure Event Hubs ke zpracování. Azure Ev
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>Odeslání zprávy telemetrie jako klienta
 
-Po navázání připojení jako klienta Event Hubs můžete odesílat zprávy do centra událostí jako JSON. 
+Po navázání připojení jako klienta Event Hubs můžete odesílat zprávy do centra událostí jako JSON.
 
 Tady je ukázkový kód Pythonu, který odesílá telemetrii jako klienta do zadaného centra událostí:
 
@@ -313,7 +313,7 @@ write_client.stop()
 
 ```
 
-Převeďte historický formát dat ze senzorů na Kanonický formát, který Azure FarmBeats rozumí. Formát kanonické zprávy je následující: 
+Převeďte historický formát dat ze senzorů na Kanonický formát, který Azure FarmBeats rozumí. Formát kanonické zprávy je následující:
 
 ```json
 {

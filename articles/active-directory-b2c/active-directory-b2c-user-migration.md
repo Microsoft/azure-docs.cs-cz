@@ -1,5 +1,6 @@
 ---
-title: Způsoby migrace uživatelů v Azure Active Directory B2C
+title: Přístupy k migraci uživatelů
+titleSuffix: Azure AD B2C
 description: Popisuje základní a pokročilé koncepty migrace uživatelů pomocí Graph API Azure AD a volitelně také pomocí Azure AD B2C vlastních zásad.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9c01e22cfa96321994c16df6b61a52ebd4137549
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c5b7d477b0704db3f23919281fd61328be114dae
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322919"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950217"
 ---
 # <a name="migrate-users-to-azure-active-directory-b2c"></a>Migrace uživatelů na Azure Active Directory B2C
 
@@ -27,7 +28,7 @@ Pomocí Azure AD B2C můžete migrovat uživatele prostřednictvím [Graph API A
 
 - **Před migrací**: Tento tok se používá, pokud máte buď jasný přístup k přihlašovacím údajům uživatele (uživatelské jméno a heslo), nebo jsou přihlašovací údaje šifrované, ale můžete je dešifrovat. Proces před migrací zahrnuje čtení uživatelů ze starého zprostředkovatele identity a vytváření nových účtů v adresáři Azure AD B2C.
 
-- **Před migrací a resetováním hesla**: Tento tok se použije, když heslo uživatele není dostupné. Příklad:
+- **Před migrací a resetováním hesla**: Tento tok se použije, když heslo uživatele není dostupné. Například:
   - Heslo je uloženo ve formátu HASH.
   - Heslo je uloženo ve zprostředkovateli identity, ke kterému nemůžete získat přístup. Váš starý poskytovatel identity ověřuje přihlašovací údaje uživatele voláním webové služby.
 
@@ -228,7 +229,7 @@ Pokud chcete získat odkaz na zásady pro resetování hesla, postupujte podle t
 > [!NOTE]
 > Chcete-li zjistit a změnit stav migrace uživatele, je nutné použít vlastní zásadu. Pokyny pro nastavení z části Začínáme [s vlastními zásadami][B2C-GetStartedCustom] se musí dokončit.
 
-Když se uživatel pokusí přihlásit, aniž by nejdřív resetoval heslo, měla by zásada vracet popisnou chybovou zprávu. Příklad:
+Když se uživatel pokusí přihlásit, aniž by nejdřív resetoval heslo, měla by zásada vracet popisnou chybovou zprávu. Například:
 
 > *Platnost vašeho hesla vypršela. Pokud ho chcete resetovat, vyberte odkaz pro resetování hesla.*
 

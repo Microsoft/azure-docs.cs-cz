@@ -1,5 +1,6 @@
 ---
-title: Nastavení registrace a přihlášení pomocí účtu LinkedIn – Azure Active Directory B2C
+title: Nastavení registrace a přihlášení pomocí účtu LinkedIn
+titleSuffix: Azure AD B2C
 description: Poskytněte zákazníkům registraci a přihlášení k účtům LinkedIn ve vašich aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be347fe33e03b4c2a7ecc1015a407c5a58062326
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fc6537b56b26d6becfe0851a09d3bfe0f13050ab
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065152"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947703"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu LinkedIn pomocí Azure Active Directory B2C
 
 ## <a name="create-a-linkedin-application"></a>Vytvoření aplikace LinkedIn
 
-Pokud chcete použít účet LinkedIn jako [poskytovatele identity](active-directory-b2c-reference-oauth-code.md) v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet LinkedIn, můžete se zaregistrovat v [https://www.linkedin.com/](https://www.linkedin.com/).
+Pokud chcete použít účet LinkedIn jako [poskytovatele identity](active-directory-b2c-reference-oauth-code.md) v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet LinkedIn, můžete se zaregistrovat na [https://www.linkedin.com/](https://www.linkedin.com/).
 
 1. Přihlaste se na [Web vývojářům LinkedIn](https://www.developer.linkedin.com/) pomocí svých přihlašovacích údajů k účtu LinkedIn.
 1. Vyberte **Moje aplikace**a pak klikněte na **vytvořit aplikaci**.
@@ -39,7 +40,7 @@ Pokud chcete použít účet LinkedIn jako [poskytovatele identity](active-direc
 1. Zadejte **název**. Například *LinkedIn*.
 1. Pro **ID klienta**zadejte ID klienta aplikace LinkedIn, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta**zadejte tajný klíč klienta, který jste si poznamenali.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="migration-from-v10-to-v20"></a>Migrace z verze 1.0 do verze 2.0
 

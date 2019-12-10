@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 54aea9fac946713ee6c1709e952e3962bb7288e9
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669135"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951764"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -34,7 +34,7 @@ Azure Migrate vám pomůže migrovat vaši firmu z místního prostředí do Azu
 V současné době existují dvě verze služby Azure Migrate:
 
 - **Aktuální verze**: Tato verze slouží k vytváření Azure Migrate projektů, zjišťování místních počítačů a orchestraci posouzení a migrace. [Přečtěte si další](whats-new.md) informace o novinkách v této verzi.
-- **Předchozí verze**: Pokud jste použili předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. Už nemůžete vytvářet Azure Migrate projekty pomocí předchozí verze a nedoporučujeme provádět nové zjišťování. Chcete-li získat přístup ke stávajícím projektům, ve Azure Portal > **všechny služby**vyhledejte **Azure Migrate**. Na řídicím panelu Azure Migrate existuje oznámení a odkaz pro přístup k původním Azure Migratem projektům.
+- **Předchozí verze**: Pokud jste použili předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. Už nemůžete vytvářet Azure Migrate projekty pomocí předchozí verze a nedoporučujeme provádět nové zjišťování. Chcete-li získat přístup ke stávajícím projektům, v Azure Portal vyhledejte a vyberte možnost **Azure Migrate**. Na řídicím panelu **Azure Migrate** existuje oznámení a odkaz pro přístup k původním Azure Migratem projektům.
 
 
 

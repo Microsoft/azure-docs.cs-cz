@@ -10,12 +10,12 @@ keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu,
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122836"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951424"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Co je Azure ARC pro servery
 
@@ -108,6 +108,40 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 Poskytovatele prostředků můžete také zaregistrovat pomocí portálu podle kroků v části [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+
+## <a name="machine-changes-after-installing-the-agent"></a>Změny počítače po instalaci agenta
+
+Pokud máte ve svém prostředí nasazené řešení Change Tracking, můžete pomocí následujícího seznamu sledovat, identifikovat a dovolit změny provedené instalačním balíčkem **AzCMAgent (Connected Machine Agent)** .
+
+Po instalaci agenta se zobrazí následující změny provedené na vašich serverech.
+
+### <a name="windows"></a>Windows
+
+Nainstalované služby:
+
+* `Himds` – služba **agenta připojení počítačů Azure** .
+* `Dscservice` nebo `gcd`-služba **Konfigurace hosta** .
+
+Soubory přidané na server:
+
+* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` – umístění souborů **agenta připojených počítačů Azure** .
+* `%ProgramData%\GuestConfig\*.*` - protokoly **Konfigurace hostů** .
+
+Umístění klíčů registru:
+
+* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent` – klíče registru pro **agenta připojeného počítače Azure**
+
+### <a name="linux"></a>Linux
+
+Nainstalované služby:
+
+* `Himdsd` – služba **agenta připojení počítačů Azure** .
+* `dscd` nebo `gcd`-služba **Konfigurace hosta** .
+
+Soubory přidané na server:
+
+* `/var/opt/azcmagent/**` – umístění souborů **agenta připojených počítačů Azure** .
+* `/var/lib/GuestConfig/**` - protokoly **Konfigurace hostů** .
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 

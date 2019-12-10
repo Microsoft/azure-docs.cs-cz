@@ -1,5 +1,6 @@
 ---
-title: Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
+title: Přizpůsobení uživatelského rozhraní
+titleSuffix: Azure AD B2C
 description: Naučte se, jak přizpůsobit uživatelské rozhraní pro aplikace, které používají Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6ebaeedf88bc02aa16e8be07fcb734e44ffa5bb6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258170"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949402"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -25,7 +26,7 @@ Branding a přizpůsobení uživatelského rozhraní, které Azure Active Direct
 
 Existuje několik způsobů, jak přizpůsobit uživatelské rozhraní aplikace, které je vhodné pro různé scénáře.
 
-### <a name="user-flows"></a>Toky uživatelů
+### <a name="user-flows"></a>Toky uživatele
 
 Pokud používáte [toky uživatelů](active-directory-b2c-reference-policies.md), můžete změnit vzhled stránek toku uživatelů pomocí integrovaných *šablon rozložení stránky*nebo pomocí vlastních HTML a šablon stylů CSS. Obě metody jsou popsány dále v tomto článku.
 
@@ -57,7 +58,7 @@ V části **přizpůsobit** v nabídce vlevo vyberte **rozložení stránky** a 
 
 Potom v seznamu vyberte šablonu. Tady jsou příklady přihlašovacích stránek pro každou šablonu:
 
-| Mořská modř | Břidlicová šedá | Classic |
+| Mořská modrá | Břidlicová šedá | Klasické |
 |:-:|:-:|:-:|
 |![Příklad šablony oceánu Blue vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/template-ocean-blue.png)|![Příklad šablony břidlicově šedé vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/template-slate-gray.png)|![Příklad klasické šablony vykreslené na přihlašovací stránce pro registraci](media/customize-ui-overview/template-classic.png)|
 
@@ -90,7 +91,7 @@ Důležitým bodem je, že je hostitelem obsahu veřejně dostupného koncového
 
 Začněte používat vlastní HTML a CSS na stránkách uživatelského prostředí pomocí následujících pokynů.
 
-- Vytvoří obsah HTML ve správném formátu s prázdným `<div id="api"></div>` elementem umístěným někde `<body>`v. Tento prvek označuje, kde je vložen Azure AD B2C obsah. Následující příklad ukazuje minimální stránku:
+- Vytvoří obsah HTML ve správném formátu s prázdným elementem `<div id="api"></div>` umístěným někde v `<body>`. Tento prvek označuje, kde je vložen Azure AD B2C obsah. Následující příklad ukazuje minimální stránku:
 
     ```html
     <!DOCTYPE html>
@@ -136,7 +137,7 @@ Začněte používat vlastní HTML a CSS na stránkách uživatelského prostře
 
 ### <a name="html-fragments-from-azure-ad-b2c"></a>Fragmenty kódu HTML z Azure AD B2C
 
-V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B2C `<div id="api"></div>` sloučí do prvku umístěného v obsahu.
+V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B2C sloučí do prvku `<div id="api"></div>` umístěného v obsahu.
 
 | Vložená stránka | Popis HTML |
 | ------------- | ------------------- |
@@ -144,12 +145,12 @@ V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B
 | Registrace místního účtu | Obsahuje formulář pro registraci místního účtu na základě e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je textové pole, vstupní pole pro heslo, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
 | Registrace účtu sociální sítě | Může se zobrazit při registraci pomocí existujícího účtu od poskytovatele sociální identity, jako je Facebook nebo Google. Používá se, když je potřeba shromáždit další informace od zákazníka pomocí registračního formuláře. |
 | Jednotné registrace nebo přihlašování | Zpracovává registraci i přihlašování zákazníků, kteří můžou používat poskytovatele sociálních identit, jako je Facebook, Google nebo místní účty. |
-| Ověřování pomocí služby Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
+| Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
 | Chyba | Poskytne zákazníkovi informace o chybě. |
 
 ## <a name="localize-content"></a>Lokalizace obsahu
 
-Obsah HTML můžete lokalizovat tím, že ve svém tenantovi Azure AD B2C povolíte [vlastní nastavení jazyka](active-directory-b2c-reference-language-customization.md) . Povolením této funkce umožníte Azure AD B2C přeposlání parametru `ui-locales` OpenID Connect do svého koncového bodu. Server obsahu může tento parametr použít k poskytování HTML stránek specifických pro jazyk.
+Obsah HTML můžete lokalizovat tím, že ve svém tenantovi Azure AD B2C povolíte [vlastní nastavení jazyka](active-directory-b2c-reference-language-customization.md) . Povolením této funkce umožníte Azure AD B2C přeposlání parametru OpenID Connect `ui-locales` do vašeho koncového bodu. Server obsahu může tento parametr použít k poskytování HTML stránek specifických pro jazyk.
 
 Obsah lze z různých míst načíst na základě používaného národního prostředí. V rámci koncového bodu s povoleným CORS nastavíte strukturu složek na hostování obsahu pro konkrétní jazyky. Pokud použijete zástupnou hodnotu `{Culture:RFC5646}`, zavoláte tu správnou.
 

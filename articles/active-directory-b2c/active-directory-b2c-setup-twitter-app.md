@@ -1,5 +1,6 @@
 ---
-title: Nastavte si registraci a přihlaste se pomocí účtu Twitteru pomocí Azure Active Directory B2C
+title: Nastavení registrace a přihlášení pomocí účtu Twitteru
+titleSuffix: Azure AD B2C
 description: Poskytněte zákazníkům registraci a přihlášení k účtům Twitteru ve vašich aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cb5c5813bff8c0df5b119ea1cadf4f2e7c1696a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8b316fdb185c8a9c78e1a0c9be5f7d57b809141c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811394"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950438"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Twitteru pomocí Azure Active Directory B2C
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Pokud chcete jako poskytovatele identity v Azure AD B2C používat Twitter, musíte vytvořit aplikaci Twitter. Pokud ještě nemáte účet na Twitteru, můžete se zaregistrovat [https://twitter.com/signup](https://twitter.com/signup).
+Pokud chcete jako poskytovatele identity v Azure AD B2C používat Twitter, musíte vytvořit aplikaci Twitter. Pokud ještě nemáte účet na Twitteru, můžete se zaregistrovat na [https://twitter.com/signup](https://twitter.com/signup).
 
 1. Přihlaste se k webu pro [vývojáře na Twitteru](https://developer.twitter.com/en/apps) pomocí přihlašovacích údajů k účtu Twitteru.
 1. Vyberte **vytvořit aplikaci**.
@@ -41,4 +42,4 @@ Pokud chcete jako poskytovatele identity v Azure AD B2C používat Twitter, mus�
 1. Zadejte **název**. Například *Twitter*.
 1. Pro **ID klienta**zadejte klíč rozhraní API příjemce aplikace Twitter, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta**zadejte tajný klíč rozhraní API příjemce, který jste si poznamenali.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).

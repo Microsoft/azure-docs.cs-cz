@@ -1,5 +1,6 @@
 ---
-title: Migrace webových rozhraní API založených na OWIN do b2clogin.com-Azure Active Directory B2C
+title: Migrace webových rozhraní API založených na OWIN do b2clogin.com
+titleSuffix: Azure AD B2C
 description: Naučte se, jak povolit rozhraní Web API .NET pro podporu tokenů vydaných více vystaviteli tokenů při migraci aplikací do b2clogin.com.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533758"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950982"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrace webového rozhraní API založeného na OWIN na b2clogin.com
 
@@ -26,9 +27,9 @@ Přidáním podpory do svého rozhraní API pro přijetí tokenů vydaných b2cl
 V následujících částech najdete příklad povolení více vystavitelů ve webovém rozhraní API, které používá součásti middlewaru [Microsoft Owin][katana] (Katana). I když jsou příklady kódu specifické pro middleware Microsoft OWIN, měla by být obecná technika platná pro jiné knihovny OWIN.
 
 > [!NOTE]
-> Tento článek je určený pro Azure AD B2C zákazníky s aktuálně nasazenými rozhraními API a `login.microsoftonline.com` aplikacemi, na které odkazují a kteří chtějí `b2clogin.com` migrovat na doporučený koncový bod. Pokud nastavujete novou aplikaci, použijte [b2clogin.com](b2clogin.md) jako směrovaný.
+> Tento článek je určený pro Azure AD B2C zákazníky s aktuálně nasazenými rozhraními API a aplikacemi, které odkazují `login.microsoftonline.com` a kteří chtějí migrovat na doporučený `b2clogin.com` koncový bod. Pokud nastavujete novou aplikaci, použijte [b2clogin.com](b2clogin.md) jako směrovaný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto článku, budete potřebovat následující Azure AD B2C prostředky:
 
@@ -42,16 +43,16 @@ Začněte tím, že vyberete jeden z vašich stávajících uživatelských tok�
 
 1. V [Azure Portal](https://portal.azure.com) přejděte do svého tenanta Azure AD B2C.
 1. V části **zásady**vyberte **toky uživatelů (zásady)** .
-1. Vyberte existující zásadu, třeba *B2C_1_signupsignin1*, a pak vyberte **Spustit tok uživatele** .
+1. Vyberte existující zásadu, například *B2C_1_signupsignin1*a pak vyberte **Spustit tok uživatele** .
 1. Pod záhlavím **Spustit uživatele** v horní části stránky vyberte hypertextový odkaz, který umožňuje přejít na koncový bod zjišťování OpenID Connect pro daný tok uživatele.
 
     ![Dobře známý hypertextový odkaz URI na stránce spustit nyní na Azure Portal](media/multi-token-endpoints/portal-01-policy-link.png)
 
-1. Na stránce, která se otevře v prohlížeči, zaznamenejte `issuer` hodnotu například:
+1. Na stránce, která se otevře v prohlížeči, zaznamenejte hodnotu `issuer` například:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-1. Pomocí rozevíracího seznamu **Vybrat doménu** vyberte druhou doménu a potom znovu proveďte předchozí dva kroky a zaznamenejte její `issuer` hodnotu.
+1. Pomocí rozevíracího seznamu **Vybrat doménu** vyberte druhou doménu a potom znovu proveďte předchozí dva kroky a zaznamenejte její `issuer`ovou hodnotu.
 
 Nyní byste měli mít dva zaznamenané identifikátory URI, které jsou podobné:
 
@@ -66,10 +67,10 @@ Pokud místo uživatelských toků máte vlastní zásady, můžete k získání
 
 1. Přejděte do svého tenanta Azure AD B2C.
 1. Vybrat **architekturu prostředí identity**
-1. Vyberte jednu ze zásad předávající strany, například *B2C_1A_signup_signin* .
+1. Vyberte jednu ze zásad předávající strany, například *B2C_1A_signup_signin*
 1. Pomocí rozevíracího seznamu **Vybrat doménu** vyberte doménu, například *yourtenant.b2clogin.com* .
 1. Vyberte hypertextový odkaz zobrazený v části **OpenID Connect Discovery Endpoint** .
-1. Poznamenejte `issuer` si hodnotu
+1. Zaznamenání `issuer` hodnoty
 1. Proveďte kroky 4-6 pro druhou doménu, například *Login.microsoftonline.com*
 
 ## <a name="get-the-sample-code"></a>Získání ukázkového kódu
@@ -88,10 +89,10 @@ V této části aktualizujete kód a určíte, že oba koncové body vystavitele
 
 1. Otevřete řešení **B2C-WebApi-dotnet. sln** v aplikaci Visual Studio
 1. V projektu **TaskService** otevřete soubor *TaskService\\app_start\\**Startup.auth.cs**.* v editoru.
-1. Do horní části `using` souboru přidejte následující direktivu:
+1. Do horní části souboru přidejte následující direktivu `using`:
 
     `using System.Collections.Generic;`
-1. [`ValidIssuers`][validissuers] Přidejte [dodefinicevlastnostazadejteobaidentifikátoryURI,kteréjstesipoznamenali`TokenValidationParameters`][tokenvalidationparameters] v předchozí části:
+1. Do definice [`TokenValidationParameters`][tokenvalidationparameters] přidejte vlastnost [`ValidIssuers`][validissuers] a zadejte oba identifikátory URI, které jste si poznamenali v předchozí části:
 
     ```csharp
     TokenValidationParameters tvps = new TokenValidationParameters
@@ -106,7 +107,7 @@ V této části aktualizujete kód a určíte, že oba koncové body vystavitele
     };
     ```
 
-`TokenValidationParameters`je poskytována nástrojem MSAL.NET a je využíván middlewarem OWIN v další části kódu v *Startup.auth.cs*. Je-li zadáno více platných vystavitelů, kanál aplikace OWIN ví, že jsou oba koncové body tokenu platnými vystaviteli.
+`TokenValidationParameters` poskytuje MSAL.NET a je využíván middlewarem OWIN v další části kódu v *Startup.auth.cs*. Je-li zadáno více platných vystavitelů, kanál aplikace OWIN ví, že jsou oba koncové body tokenu platnými vystaviteli.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -124,7 +125,7 @@ U obou identifikátorů URI, které teď podporuje vaše webové rozhraní API, 
 
 Například můžete nakonfigurovat ukázkovou webovou aplikaci tak, aby používala nový koncový bod úpravou `ida:AadInstance` hodnoty v souboru *TaskWebApp\\**Web. config**.* v projektu **TaskWebApp** .
 
-Změňte hodnotu v *souboru Web. config* pro TaskWebApp tak, aby odkazovala `{your-b2c-tenant-name}.b2clogin.com` místo `login.microsoftonline.com`na. `ida:AadInstance`
+Změňte `ida:AadInstance` hodnotu v *souboru Web. config* pro TaskWebApp tak, aby odkazovala `{your-b2c-tenant-name}.b2clogin.com` namísto `login.microsoftonline.com`.
 
 Před:
 
@@ -142,7 +143,7 @@ Po (nahraďte `{your-b2c-tenant}` názvem vašeho tenanta B2C):
 
 Když jsou během provádění webové aplikace vytvořeny řetězce koncového bodu, použijí se koncové body založené na b2clogin.com při žádosti o tokeny.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jsme si předvedli metodu konfigurace webového rozhraní API implementující middleware Microsoft OWIN (Katana), který přijímá tokeny z více koncových bodů vystavitelů. Jak si můžete všimnout, existuje několik dalších řetězců v souborech *Web. config* obou projektů TaskService a TaskWebApp, které by bylo potřeba změnit, pokud chcete sestavit a spustit tyto projekty pro vašeho vlastního tenanta. Vítá vás, abyste mohli projekty upravovat, pokud je chcete vidět v akci, ale Úplný návod k tomu, že se to stane, je nad rámec tohoto článku.
 

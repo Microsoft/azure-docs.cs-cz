@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: dc842ba0e7ca0f34b7dacb98322c4dc0cd056483
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931989"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941894"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Přesunout soubory pomocí Azure Data Factory
 
@@ -36,9 +36,11 @@ Tato šablona získá soubory ze zdrojového úložiště založeného na soubor
 - **Kopírovat** zkopíruje jeden soubor ze zdroje do cílového úložiště.
 - **Odstranění** odstraní stejný soubor ze zdrojového úložiště.
 
-Šablona definuje dva parametry:
-- *FolderPath_SourceStore* je cesta ke složce vašeho zdrojového úložiště, ze které chcete soubory přesunout. 
-- *FolderPath_DestinationStore* je cesta ke složce cílového úložiště, do které chcete soubory přesunout. 
+Šablona definuje čtyři parametry:
+- *SourceStore_Location* je cesta ke složce vašeho zdrojového úložiště, ze které chcete soubory přesunout. 
+- *SourceStore_Directory* je cesta k podsložce úložiště zdroje, ze které chcete soubory přesunout.
+- *DestinationStore_Location* je cesta ke složce cílového úložiště, do které chcete soubory přesunout. 
+- *DestinationStore_Directory* je cesta k podsložce cílového úložiště, do které chcete soubory přesunout.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
@@ -50,9 +52,7 @@ Tato šablona získá soubory ze zdrojového úložiště založeného na soubor
 
     ![Vytvoří nové připojení k cíli.](media/solution-template-move-files/move-files2.png)
 
-3. Vyberte **Použít tuto šablonu**.
-
-    ![Použít tuto šablonu](media/solution-template-move-files/move-files3.png)
+3. Vyberte možnost **použít tuto kartu šablony** .
     
 4. Kanál se zobrazí, jako v následujícím příkladu:
 

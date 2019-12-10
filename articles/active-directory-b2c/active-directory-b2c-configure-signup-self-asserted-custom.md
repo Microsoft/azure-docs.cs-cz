@@ -1,5 +1,6 @@
 ---
-title: Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad – Azure Active Directory B2C | Microsoft Docs
+title: Přidání deklarací identity a přizpůsobení uživatelského vstupu ve vlastních zásadách
+titleSuffix: Azure AD B2C
 description: Přečtěte si, jak přizpůsobit uživatelský vstup a přidat deklarace do cesty pro registraci nebo přihlašování v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 452a7f61726c3039b2c2b37280d0153fbcbca5fb
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066214"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948838"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -23,7 +24,7 @@ ms.locfileid: "71066214"
 
 V tomto článku přidáte do Azure Active Directory B2C (Azure AD B2C) novou uživatelem zadanou položku (deklaraci identity) pro svou cestu k registraci uživatele.  Nakonfigurujete položku jako rozevírací nabídku a definujete, jestli je požadovaná.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete kroky v článku [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md). Než budete pokračovat, otestujte cestu uživatele registrace nebo přihlašování a zaregistrujte si nový místní účet.
 
@@ -113,7 +114,7 @@ K definování deklarace identity se používají tyto prvky:
 
 ### <a name="add-the-claim-to-the-user-journey"></a>Přidat deklaraci identity na cestu uživatele
 
-1. Přidejte deklaraci identity jako `<OutputClaim ClaimTypeReferenceId="city"/>` `LocalAccountSignUpWithLogonEmail` do technického profilu, který najdete v souboru zásad TrustFrameworkBase. Tento technický profil používá SelfAssertedAttributeProvider.
+1. Přidejte deklaraci identity jako `<OutputClaim ClaimTypeReferenceId="city"/>` do technického profilu `LocalAccountSignUpWithLogonEmail`, který najdete v souboru zásad TrustFrameworkBase. Tento technický profil používá SelfAssertedAttributeProvider.
 
     ```xml
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -150,7 +151,7 @@ K definování deklarace identity se používají tyto prvky:
     </TechnicalProfile>
     ```
 
-2. Přidejte deklaraci identity do nástroje AAD-UserWriteUsingLogonEmail Technical Profile `<PersistedClaim ClaimTypeReferenceId="city" />` jako a zapište deklaraci identity do adresáře AAD po jeho shromáždění od uživatele. Tento krok můžete vynechat, pokud nechcete zachovat deklaraci identity v adresáři, aby bylo možné budoucí použití.
+2. Přidejte deklaraci identity do profilu AAD-UserWriteUsingLogonEmail Technical profil jako `<PersistedClaim ClaimTypeReferenceId="city" />` pro zápis deklarace do adresáře AAD po jeho shromáždění od uživatele. Tento krok můžete vynechat, pokud nechcete zachovat deklaraci identity v adresáři, aby bylo možné budoucí použití.
 
     ```xml
     <!-- Technical profiles for local accounts -->
@@ -186,7 +187,7 @@ K definování deklarace identity se používají tyto prvky:
     </TechnicalProfile>
     ```
 
-3. `<OutputClaim ClaimTypeReferenceId="city" />` Přidejte deklaraci identity do technických profilů, které se čtou z adresáře, když se uživatel přihlásí.
+3. Přidejte deklaraci `<OutputClaim ClaimTypeReferenceId="city" />` do technických profilů, které se po přihlášení uživatele čtou z adresáře.
 
     ```xml
     <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -236,7 +237,7 @@ K definování deklarace identity se používají tyto prvky:
     </TechnicalProfile>
     ```
 
-4. `<OutputClaim ClaimTypeReferenceId="city" />` Přidejte deklaraci identity do souboru SignUporSignIn. XML, aby byla tato deklarace identity odeslána do aplikace v tokenu po úspěšné cestě uživatele.
+4. Přidejte `<OutputClaim ClaimTypeReferenceId="city" />` deklaraci do souboru SignUporSignIn. XML, aby se tato deklarace do aplikace poslala v tokenu po úspěšné cestě uživatele.
 
     ```xml
     <RelyingParty>
@@ -260,7 +261,7 @@ K definování deklarace identity se používají tyto prvky:
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 4. Vyberte možnost **Architektura prostředí identity (Preview)** .
@@ -272,7 +273,7 @@ Přihlašovací obrazovka by měla vypadat nějak takto:
 
 ![Snímek obrazovky s upravenou možností registrace](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-Token, který se odesílá zpátky do vaší aplikace `city` , zahrnuje deklaraci identity.
+Token, který se odesílá zpátky do vaší aplikace, zahrnuje `city` deklaraci identity.
 
 ```json
 {
@@ -294,16 +295,16 @@ Token, který se odesílá zpátky do vaší aplikace `city` , zahrnuje deklarac
 }
 ```
 
-## <a name="optional-remove-email-verification"></a>Volitelné: Odebrat ověření e-mailem
+## <a name="optional-remove-email-verification"></a>Volitelné: odebrat ověření e-mailu
 
-Pokud chcete přeskočit ověřování e-mailů, můžete `PartnerClaimType="Verified.Email"`se rozhodnout odebrat. V takovém případě je e-mailová adresa povinná, ale neověřená, pokud se neodebere "požadováno" = true.  Pečlivě zvažte, jestli je tato možnost pro vaše případy použití nejvhodnější.
+Pokud chcete přeskočit ověřování e-mailů, můžete se rozhodnout `PartnerClaimType="Verified.Email"`odebrat. V takovém případě je e-mailová adresa povinná, ale neověřená, pokud se neodebere "požadováno" = true.  Pečlivě zvažte, jestli je tato možnost pro vaše případy použití nejvhodnější.
 
-Ověřený e-mail je ve výchozím nastavení povolen v `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` v souboru zásad TrustFrameworkBase:
+Ověřený e-mail je ve výchozím nastavení povolený v `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` v souboru zásad TrustFrameworkBase:
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se [používat vlastní atributy v zásadách úprav vlastního profilu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md).

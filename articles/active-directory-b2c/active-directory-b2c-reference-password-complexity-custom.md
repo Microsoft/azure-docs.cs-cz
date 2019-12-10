@@ -1,5 +1,6 @@
 ---
-title: Konfigurace složitosti hesla pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
+title: Konfigurace složitosti hesla pomocí vlastních zásad
+titleSuffix: Azure AD B2C
 description: Jak nakonfigurovat požadavky na složitost hesla pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,20 +11,20 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6454d380b0f34e940951e3de44d1dee0ff6b597f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e8718a04f9d63897b2d2472dd0cdffb196c41435
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065528"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949785"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace složitosti hesla pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V Azure Active Directory B2C (Azure AD B2C) můžete nakonfigurovat požadavky na složitost pro hesla, která jsou k dispozici uživatelem při vytváření účtu. Ve výchozím nastavení používá Azure AD B2C používání silných hesel. V tomto článku se dozvíte, jak nakonfigurovat složitost hesla ve [vlastních zásadách](active-directory-b2c-overview-custom.md). Je také možné nakonfigurovat složitost hesla v [uživatelských tocích](active-directory-b2c-reference-password-complexity.md).
+V Azure Active Directory B2C (Azure AD B2C) můžete nakonfigurovat požadavky na složitost pro hesla, která jsou k dispozici uživatelem při vytváření účtu. Ve výchozím nastavení používá Azure AD B2C používání **silných** hesel. V tomto článku se dozvíte, jak nakonfigurovat složitost hesla ve [vlastních zásadách](active-directory-b2c-overview-custom.md). Je také možné nakonfigurovat složitost hesla v [uživatelských tocích](active-directory-b2c-reference-password-complexity.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
@@ -44,7 +45,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
     </ClaimsSchema>
     ```
 
-4. [Predikáty](predicates.md) mají typy `IsLengthRange` metod nebo. `MatchesRegex` `MatchesRegex` Typ se používá pro porovnávání regulárního výrazu. `IsLengthRange` Typ přijímá minimální a maximální délku řetězce. Přidejte element **predikáty** do prvku **BuildingBlocks** , pokud neexistuje s následujícími prvky predikátu:
+4. [Predikáty](predicates.md) mají typy metod `IsLengthRange` nebo `MatchesRegex`. Typ `MatchesRegex` se používá pro porovnávání regulárního výrazu. Typ `IsLengthRange` má minimální a maximální délku řetězce. Přidejte element **predikáty** do prvku **BuildingBlocks** , pokud neexistuje s následujícími prvky **predikátu** :
 
     ```XML
     <Predicates>
@@ -62,7 +63,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
     </Predicates>
     ```
 
-5. Každý element **InputValidation** je vytvořen pomocí definovaných prvků **predikátu** . Tento prvek umožňuje provádět logické agregace, které jsou podobné `and` a. `or` Přidejte element **InputValidations** do elementu **BuildingBlocks** , pokud neexistuje s následujícím elementem **InputValidation** :
+5. Každý element **InputValidation** je vytvořen pomocí definovaných prvků **predikátu** . Tento prvek umožňuje provádět logické agregace, které jsou podobné `and` a `or`. Přidejte element **InputValidations** do elementu **BuildingBlocks** , pokud neexistuje s následujícím elementem **InputValidation** :
 
     ```XML
     <InputValidations>
@@ -107,11 +108,11 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
 
 ## <a name="test-your-policy"></a>Testování zásad
 
-Při testování aplikací v Azure AD B2C může být užitečné, aby byl token Azure AD B2C vrácen `https://jwt.ms` , aby bylo možné zkontrolovat deklarace identity v ní.
+Při testování aplikací v Azure AD B2C může být užitečné, aby se token Azure AD B2C vrátil do `https://jwt.ms`, aby bylo možné zkontrolovat deklarace identity v ní.
 
 ### <a name="upload-the-files"></a>Nahrání souborů
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **architekturu prostředí identity**.
@@ -119,14 +120,14 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 6. Vyberte **přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *SingUpOrSignInPasswordComplexity. XML* .
 7. Klikněte na **Odeslat**.
 
-### <a name="run-the-policy"></a>Spustit zásady
+### <a name="run-the-policy"></a>Spustit zásadu
 
 1. Otevřete zásadu, kterou jste změnili. Například *B2C_1A_signup_signin_password_complexity*.
-2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
+2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Chcete-li zobrazit token, **Adresa URL odpovědi** by měla ukazovat `https://jwt.ms`.
 3. Klikněte na **Spustit**.
 4. Vyberte **zaregistrovat se hned**, zadejte e-mailovou adresu a zadejte nové heslo. Doprovodné materiály jsou uvedeny na základě omezení hesel. Dokončete zadávání informací o uživateli a pak klikněte na **vytvořit**. Měl by se zobrazit obsah vráceného tokenu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se [Konfigurovat změnu hesla pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-reference-password-change-custom.md).
 

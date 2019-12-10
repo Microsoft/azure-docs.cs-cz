@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/09/2019
 ms.author: rkarlin
-ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0479eba13fd747ea1bcab2672fce1df2156802e8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762698"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947582"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
 
@@ -70,7 +70,7 @@ V následující tabulce jsou uvedeny role a povolené akce ve službě Azure Se
 >
 ## <a name="building-custom-rbac-roles"></a>Sestavování vlastních rolí RBAC
 
-Kromě toho, nebo místo pomocí integrovaných rolí RBAC, můžete vytvořit vlastní role RBAC pro Azure Sentinel. Vlastní role RBAC pro službu Azure Sentinel jsou vytvořené stejným způsobem jako jiné [vlastní role Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) na základě konkrétních oprávnění k prostředkům Azure Sentinel.
+Kromě toho, nebo místo pomocí integrovaných rolí RBAC, můžete vytvořit vlastní role RBAC pro Azure Sentinel. Vlastní role RBAC pro Azure Sentinel jsou vytvořené stejným způsobem jako jiné vlastní role [Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) na základě [konkrétních oprávnění pro Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) a [prostředků Azure Log Analytics](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
 ## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>Rozšířená RBAC pro data, která ukládáte v Azure Sentinel
   

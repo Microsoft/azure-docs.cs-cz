@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931946"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941847"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Řešení potíží se správou SSIS Integration Runtime v Azure Data Factory
 
@@ -156,3 +156,38 @@ Když zastavíte prostředí SSIS IR, všechny prostředky související s virtu
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
 K této chybě dochází, když je prostředí IR spuštěné, a znamená, že prostředí IR přešlo do špatného stavu. Tato chyba je vždy způsobená změnou v konfiguraci serveru DNS nebo skupiny zabezpečení sítě, která brání prostředí SSIS IR v připojení k potřebné službě. Vzhledem k tomu, že konfiguraci serveru DNS a skupiny zabezpečení sítě řídí zákazník, musí zákazník opravit blokující problémy na své straně. Další informace najdete v tématu [Konfigurace virtuální sítě SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Pokud stále máte problémy, obraťte se na tým podpory pro Azure Data Factory.
+
+## <a name="static-public-ip-addresses-configuration"></a>Konfigurace statických veřejných IP adres
+
+Když se připojíte k Azure-SSIS IR ke službě Azure Virtual Network, můžete také využít vlastní statické veřejné IP adresy pro infračervený přenos, aby IR mohl přistupovat ke zdrojům dat, které omezují přístup ke konkrétním IP adresám. Další informace najdete v tématu [Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+
+Kromě výše uvedených potíží s virtuální sítí můžete také splnit problémy související se statickými veřejnými IP adresami. Nápovědu najdete v následujících chybách.
+
+### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+
+K této chybě může dojít z nejrůznějších důvodů při spuštění Azure-SSIS IR:
+
+| Chybová zpráva | Řešení|
+|:--- |:--- |
+| Zadaná statická veřejná IP adresa se už používá. Zadejte prosím pro svůj Azure-SSIS Integration Runtime dvě nepoužité. | Měli byste vybrat dvě nepoužívané statické veřejné IP adresy nebo odebrat aktuální odkazy na zadanou veřejnou IP adresu a pak restartovat Azure-SSIS IR. |
+| Zadaná statická veřejná IP adresa nemá žádný název DNS, zadejte prosím pro Azure-SSIS Integration Runtime dva názvy DNS. | Název DNS veřejné IP adresy můžete nastavit v Azure Portal, jak ukazuje následující obrázek. Konkrétní kroky jsou následující: (1) otevřít Azure Portal a přejít na stránku prostředku této veřejné IP adresy; (2) vyberte **konfigurační** oddíl a nastavte název DNS a pak klikněte na tlačítko **Uložit** . (3) restartujte Azure-SSIS IR. |
+| Zadaná virtuální síť VNet a statické veřejné IP adresy pro váš Azure-SSIS Integration Runtime musí být ve stejném umístění. | V souladu s požadavky sítě Azure by statická veřejná IP adresa a virtuální síť měla být ve stejném umístění a předplatném. Poskytněte prosím dvě platné statické veřejné IP adresy a restartujte Azure-SSIS IR. |
+| Poskytnutá statická veřejná IP adresa je základní, zadejte prosím pro svůj Azure-SSIS Integration Runtime dvě standardní. | Nápovědu najdete v [části SKU veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) . |
+
+![Prostředí Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
+
+Pokud se Azure-SSIS IR zřizování nepovede, odstraní se všechny prostředky, které byly vytvořeny. Pokud ale dojde k uzamčení prostředku v předplatném nebo ve skupině prostředků (která obsahuje vaši statickou veřejnou IP adresu), síťové prostředky se neodstraní podle očekávání. Chcete-li chybu opravit, odeberte zámek proti odstranění a restartujte technologii IR.
+
+### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
+
+Když zastavíte Azure-SSIS IR, odstraní se všechny síťové prostředky vytvořené ve skupině prostředků, která obsahuje vaši veřejnou IP adresu. Odstranění ale může selhat, pokud existuje zámek odstranění prostředku v předplatném nebo ve skupině prostředků (která obsahuje vaši statickou veřejnou IP adresu). Odeberte prosím zámek proti odstranění a restartujte IR.
+
+### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
+
+Azure-SSIS IR se pravidelně aktualizuje v pravidelných intervalech. Během upgradu se vytvoří nové uzly IR a staré uzly se odstraní. Také se odstraní vytvořené síťové prostředky (například nástroj pro vyrovnávání zatížení a skupina zabezpečení sítě) pro staré uzly a nové síťové prostředky se vytvoří v rámci vašeho předplatného. Tato chyba znamená, že odstranění síťových prostředků pro staré uzly selhalo kvůli zámku odstranění v předplatném nebo ve skupině prostředků (která obsahuje vaši statickou veřejnou IP adresu). Odeberte prosím zámek proti odstranění, aby bylo možné vyčistit staré uzly a uvolnit statickou veřejnou IP adresu pro staré uzly. V opačném případě se statická veřejná IP adresa nedá uvolnit a nebudeme moct dál upgradovat IR.
+
+### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
+
+Pokud chcete použít vlastní statické veřejné IP adresy, je třeba poskytnout dvě veřejné IP adresy. Jedna z nich se použije k okamžitému vytvoření uzlů IR a druhá se použije při upgradu IR. K této chybě může dojít, pokud není během upgradu možné použít jinou veřejnou IP adresu. Možné příčiny najdete v [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) .

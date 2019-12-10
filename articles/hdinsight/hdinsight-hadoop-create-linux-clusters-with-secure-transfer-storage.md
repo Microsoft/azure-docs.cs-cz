@@ -1,19 +1,19 @@
 ---
-title: Apache Hadoop & zabezpečené úložiště tranfser – Azure HDInsight
+title: Úložiště pro zabezpečený přenos Apache Hadoop & – Azure HDInsight
 description: Naučte se vytvářet clustery HDInsight s účty úložiště Azure s povoleným zabezpečeným přístupem.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/24/2018
-ms.openlocfilehash: ed8e20509c4a3f941d6f215dfc476c87e9a813a7
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: 09a6b158c4390f881754c90d52a476f0bc249a5a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687784"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947635"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Vytvoření clusteru Apache Hadoop s účty úložiště zabezpečeného přenosu ve službě Azure HDInsight
 
@@ -23,57 +23,57 @@ Funkce [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secu
 
 Než začnete tento článek, musíte mít:
 
-* **Předplatné Azure**: pro vytvoření bezplatného zkušebního účet na jeden měsíc otevřete web [azure.microsoft.com/free](https://azure.microsoft.com/free).
-* **Účet služby Azure Storage s povoleným zabezpečeným přenosem**. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md). Povolení přenosu zabezpečeného úložiště po vytvoření clusteru vyžaduje další kroky, které nejsou popsané v tomto článku.
-* **Kontejner objektů blob v účtu úložiště**.
+* Předplatné Azure: Pokud chcete vytvořit bezplatný zkušební účet na jeden měsíc, přejděte na [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
+* Účet Azure Storage se zapnutým zabezpečeným přenosem. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md). Povolení přenosu zabezpečeného úložiště po vytvoření clusteru vyžaduje další kroky, které nejsou popsané v tomto článku.
+* Kontejner objektů BLOB v účtu úložiště
 
 ## <a name="create-cluster"></a>Vytvoření clusteru
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). Šablona se nachází v [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Zkušenosti se šablonami Resource Manageru se k postupu podle tohoto článku nevyžadují. Další metody vytváření clusterů a porozumění vlastnostem používaným v tomto článku najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md). Šablona se nachází v [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). V tomto článku se nevyžadují prostředí pro Správce prostředků šablon. Další metody vytváření clusterů a porozumění vlastnostem používaným v tomto článku najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Klikněte na následující obrázek pro přihlášení do Azure a otevřete šablonu Resource Manageru na webu Azure Portal.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. Postupujte podle pokynů a vytvořte cluster s následujícími specifikacemi: 
+2. Postupujte podle pokynů a vytvořte cluster s následujícími specifikacemi:
 
-    - Zadejte verzi služby HDInsight 3.6. Vyžaduje se verze 3.6 nebo novější.
-    - Zadejte účet úložiště s povoleným zabezpečeným přenosem.
-    - Použijte krátký název účtu úložiště.
-    - Účet úložiště i kontejner objektů blob je potřeba vytvořit předem.
+    * Zadejte verzi služby HDInsight 3.6. Vyžaduje se verze 3.6 nebo novější.
+    * Zadejte účet úložiště s povoleným zabezpečeným přenosem.
+    * Použijte krátký název účtu úložiště.
+    * Účet úložiště i kontejner objektů blob je potřeba vytvořit předem.
 
       Pokyny najdete v tématu popisujícím [vytvoření clusteru](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 Pokud k zadání vlastních konfiguračních souborů použijete akci skriptu, musíte v následujících nastaveních použít wasbs:
 
-- fs.defaultFS (základní web)
-- spark.eventLog.dir 
-- spark.history.fs.logDirectory
+* fs.defaultFS (základní web)
+* spark.eventLog.dir
+* spark.history.fs.logDirectory
 
 ## <a name="add-additional-storage-accounts"></a>Přidání dalších účtů úložiště
 
 Existuje několik možností, jak přidat další účty úložiště s povoleným zabezpečeným přenosem:
 
-- Úprava šablony Azure Resource Manageru v poslední části.
-- Vytvoření clusteru pomocí webu [Azure Portal](https://portal.azure.com) a zadání propojeného účtu úložiště.
-- Použití akce skriptu k přidání dalších účtů úložiště s povoleným zabezpečeným přenosem do existujícího clusteru HDInsight. Další informace najdete v tématu [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md).
+* Úprava šablony Azure Resource Manageru v poslední části.
+* Vytvoření clusteru pomocí webu [Azure Portal](https://portal.azure.com) a zadání propojeného účtu úložiště.
+* Použití akce skriptu k přidání dalších účtů úložiště s povoleným zabezpečeným přenosem do existujícího clusteru HDInsight. Další informace najdete v tématu [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md).
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto článku jste se naučili, jak vytvořit cluster HDInsight a jak povolit zabezpečený přenos do účtů úložiště.
 
 Další informace o analýze dat pomocí HDInsight najdete v následujících článcích:
 
-* Další informace o použití [Apache Hive](https://hive.apache.org/) se službou HDInsight, včetně toho, jak provádět dotazy na podregistry ze sady Visual Studio, najdete v tématu [použití Apache Hive se službou HDInsight][hdinsight-use-hive].
-* Další informace o [Apache vepřovém](https://pig.apache.org/)jazyce, který slouží k transformaci dat, najdete v tématu [použití nástroje Apache prasete se službou HDInsight][hdinsight-use-pig].
-* Další informace o [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), způsobu psaní programů, které zpracovávají data v systému Hadoop, najdete v tématu [použití Apache Hadoop MapReduce se službou HDInsight][hdinsight-use-mapreduce].
+* Další informace o použití [Apache Hive](https://hive.apache.org/) se službou HDInsight, včetně toho, jak provádět dotazy na podregistry ze sady Visual Studio, najdete v tématu [použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md).
+* Další informace o [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), způsobu psaní programů, které zpracovávají data v systému Hadoop, najdete v tématu [použití Apache Hadoop MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md).
 * Další informace o používání nástrojů HDInsight pro Visual Studio k analýze dat v HDInsight najdete v tématu [Začínáme používat Visual Studio Apache Hadoop Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 Další informace o způsobu, jakým služba HDInsight ukládá data, nebo jak přenést data do služby HDInsight, najdete v následujících článcích:
 
 * Informace o tom, jak HDInsight používá Azure Storage, najdete v tématu [Používání Azure Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md).
-* Informace o tom, jak nahrát data do služby HDInsight, najdete v tématu [Nahrání dat do služby HDInsight][hdinsight-upload-data].
+* Informace o tom, jak nahrát data do služby HDInsight, najdete v tématu [Nahrání dat do služby HDInsight](hdinsight-upload-data.md).
 
 Další informace o vytvoření a správě clusteru HDInsight najdete v následujících článcích:
 
@@ -84,11 +84,3 @@ Další informace o vytvoření a správě clusteru HDInsight najdete v následu
   * Adresy URL pro služby hostované v clusteru, jako je [Apache Ambari](https://ambari.apache.org/) a [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)
   * Umístění souborů a příkladů [Apache Hadoop](https://hadoop.apache.org/) v místním systému souborů
   * Použití Azure Storage (WASB) místo [Apache HADOOP HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) jako výchozího úložiště dat
-
-[1]: ../HDInsight/hadoop/apache-hadoop-visual-studio-tools-get-started.md
-
-[hdinsight-provision]: hdinsight-provision-linux-clusters.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md

@@ -1,5 +1,6 @@
 ---
-title: Předání přístupového tokenu prostřednictvím toku uživatele do aplikace – Azure Active Directory B2C
+title: Předání přístupového tokenu prostřednictvím toku uživatele do aplikace
+titleSuffix: Azure AD B2C
 description: Naučte se předat přístupový token pro zprostředkovatele identity OAuth 2,0 jako deklaraci identity v toku uživatele v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064287"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948807"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu prostřednictvím toku uživatele do aplikace v Azure Active Directory B2C
 
@@ -23,7 +24,7 @@ ms.locfileid: "71064287"
 
 Azure AD B2C aktuálně podporuje pouze předávání přístupového tokenu zprostředkovatelů identity [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) , které zahrnují [Facebook](active-directory-b2c-setup-fb-app.md) a [Google](active-directory-b2c-setup-goog-app.md). U všech ostatních zprostředkovatelů identity se deklarace identity vrátí jako prázdná.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vaše aplikace musí používat [uživatelský tok v2](user-flow-versions.md).
 * Tok uživatele má nakonfigurovaný poskytovatele identity OAuth 2,0.
@@ -43,16 +44,16 @@ Azure AD B2C aktuálně podporuje pouze předávání přístupového tokenu zpr
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-Při testování aplikací v Azure AD B2C může být užitečné, aby se token Azure AD B2C vrátil `https://jwt.ms` na kontrolu deklarací identity v něm.
+Při testování aplikací v Azure AD B2C může být užitečné, aby se token Azure AD B2C vrátil do `https://jwt.ms` ke kontrole deklarací identity.
 
 1. Na stránce Přehled toku uživatele vyberte **Spustit tok uživatele**.
-2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pokud chcete token zobrazit v následujícím příkladu, měla by se zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
-3. Klikněte na **Spustit tok uživatele**a pak se přihlaste pomocí přihlašovacích údajů k účtu. V deklaraci **idp_access_token** by se měl zobrazit přístupový token poskytovatele identity.
+2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Chcete-li zobrazit token v níže uvedeném příkladu, **Adresa URL odpovědi** by měla ukazovat `https://jwt.ms`.
+3. Klikněte na **Spustit tok uživatele**a pak se přihlaste pomocí přihlašovacích údajů k účtu. V deklaraci **idp_access_token** by měl být uveden přístupový token poskytovatele identity.
 
     Měl by se zobrazit něco podobného jako v následujícím příkladu:
 
     ![Dekódování tokenu v jwt.ms s zvýrazněným blokem idp_access_token](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v [přehledu Azure AD B2Cch tokenů](active-directory-b2c-reference-tokens.md).

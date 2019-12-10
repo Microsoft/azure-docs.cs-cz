@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 49f3759d7c5ba178cd0f1d0164a45c09df464571
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348943"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942218"
 ---
 # <a name="application-gateway-components"></a>Komponenty aplikační brány
 
@@ -57,7 +57,7 @@ Application Gateway podporuje čtyři protokoly: HTTP, HTTPS, HTTP/2 a WebSocket
 
 Pro ukončení SSL použijte naslouchací proces HTTPS. Naslouchací proces HTTPS přesměruje šifrování a dešifrovací práci do vaší aplikační brány, takže vaše webové servery nebudou režie zatíženy.
 
-### <a name="custom-error-pages"></a>Vlastní chybové stránky
+### <a name="custom-error-pages"></a>Stránky vlastních chyb
 
 Application Gateway umožňuje vytvářet vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení. Pokud se žádost nemůže připojit k back-endu, Application Gateway zobrazí vlastní chybovou stránku.
 
@@ -75,7 +75,7 @@ Existují dva typy naslouchacího procesu:
 
 Po vytvoření naslouchacího procesu ho přidružíte k pravidlu směrování požadavků. Toto pravidlo určuje, jak má být žádost o naslouchací službě směrována do back-endu.
 
-Application Gateway zpracovává naslouchací procesy v uvedeném pořadí. Pokud základní naslouchací proces odpovídá příchozímu požadavku, bude zpracován jako první. Pokud chcete směrovat provoz do správného back-endu, nakonfigurujte před základním naslouchacím rozhraním naslouchací proces více webů.
+Application Gateway zpracovává naslouchací procesy v uvedeném [pořadí](https://docs.microsoft.com/en-us/azure/application-gateway/configuration-overview#order-of-processing-listeners).
 
 ## <a name="request-routing-rules"></a>Pravidla směrování žádostí
 
@@ -126,7 +126,7 @@ Tato součást se používá také k těmto akcím:
 Back-end fond směruje požadavky na back-endové servery, které slouží k žádosti. Back-endové fondy můžou obsahovat:
 
 - Síťové karty
-- Virtual Machine Scale Sets
+- Škálovací sady virtuálních počítačů
 - Veřejné IP adresy
 - Interní IP adresy
 - PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY

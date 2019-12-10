@@ -1,6 +1,7 @@
 ---
-title: Příklady transformací celočíselných deklarací pro schéma rozhraní Azure Active Directory B2C pro prostředí identity | Microsoft Docs
-description: Příklady transformací celočíselných deklarací pro schéma rozhraní Azure Active Directory B2C prostředí identity
+title: Příklady transformací celočíselných deklarací pro vlastní zásady
+titleSuffix: Azure AD B2C
+description: Příklady transformace celočíselných deklarací pro schéma IEF (identity Experience Framework) Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d82f7fecfb35c63d586993fed73a83209782a890
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7295e03f0a0f94b3450b99acc4d10d6ff86c92e7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064219"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948835"
 ---
 # <a name="integer-claims-transformations"></a>Transformace celočíselných deklarací
 
@@ -29,10 +30,10 @@ Převede datový typ Long na datový typ String.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | InputClaim | long | Deklarace ClaimType pro převod na řetězec. |
-| OutputClaim | OutputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
+| InputClaim | InputClaim | Long | Deklarace ClaimType pro převod na řetězec. |
+| outputClaim | outputClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
-V tomto příkladu `numericUserId` je deklarace identity s typem hodnoty Long převedena `UserId` na deklaraci s typem hodnoty String.
+V tomto příkladu je deklarace `numericUserId` s typem hodnoty Long převedena na `UserId` deklaraci identity s typem hodnoty String.
 
 ```XML
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
@@ -45,7 +46,7 @@ V tomto příkladu `numericUserId` je deklarace identity s typem hodnoty Long p�
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 - Vstupní deklarace identity:
     - **inputClaim**: 12334 (dlouhý)

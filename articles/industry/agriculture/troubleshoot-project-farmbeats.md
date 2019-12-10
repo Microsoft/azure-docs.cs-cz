@@ -5,26 +5,29 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0a4fb337adfb2f4e6b8edb86ac620103e929c3a8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89f364d9246db27276eee6d05e8130e87061feec
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842131"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941591"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Řešení potíží s Azure FarmBeats
 
 Tento článek popisuje řešení běžných problémů s FarmBeats Azure.
 
-Pokud chcete získat další nápovědu, kontaktujte nás na adrese farmbeatssupport@microsoft.com. Nezapomeňte do svého e-mailu zahrnout soubor *Deployer. log* .
+Pokud chcete získat další nápovědu, kontaktujte nás na adrese farmbeatssupport@microsoft.com. Nezapomeňte do svého e-mailu zahrnout soubor **Deployer. log** .
 
-Pokud chcete stáhnout soubor *Deployer. log* , udělejte toto:
+Pokud chcete stáhnout soubor **Deployer. log** , udělejte toto:
 
-1. Vyberte zvýrazněnou ikonu a potom v rozevíracím seznamu vyberte **Stáhnout**.
+1. Přihlaste se **Azure Portal** a vyberte své předplatné a TENANTA Azure AD.
+2. Spusťte Cloud Shell z horního navigačního panelu na webu Azure Portal.
+3. Jako preferovaný Cloud Shell vyberte **bash** .
+4. Vyberte zvýrazněnou ikonu a potom v rozevíracím seznamu vyberte **Stáhnout**.
 
     ![FarmBeats projektu](./media/troubleshooting-farmbeats/download-deployer-log-1.png)
 
-1. V dalším podokně zadejte cestu k souboru *Deployer. log* . Zadejte například **farmbeats-Deployer. log**.
+5. V dalším podokně zadejte cestu k souboru **Deployer. log** . Zadejte například **farmbeats-Deployer. log**.
 
 ## <a name="sensor-telemetry"></a>Telemetrie senzorů
 
@@ -32,7 +35,7 @@ Pokud chcete stáhnout soubor *Deployer. log* , udělejte toto:
 
 **Příznak**: zařízení nebo senzory se nasazují a propojení FarmBeats s partnerem zařízení, ale data telemetrie nemůžete získat nebo zobrazit na FarmBeats.
 
-**Nápravná opatření**: 
+**Nápravná opatření**:
 
 1. Přejít do skupiny prostředků FarmBeats DataHub.   
 1. Vyberte **centrum událostí** (DatafeedEventHubNamespace) a potom zkontrolujte počet příchozích zpráv.
@@ -44,14 +47,14 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nemáte připojovací řetězec služby Azure Event Hubs.
 
-**Nápravná opatření**: 
+**Nápravná opatření**:
 
 1. V DataHub Swagger navštivte rozhraní API partnera.
 1. Vyberte **získat** > **vyzkoušet** > **provést**.
 1. Poznamenejte si ID partnera, kterého vás zajímá.
 1. Vraťte se do partnerského rozhraní API a vyberte **Get/\<ID >** .
 1. Zadejte ID partnera z kroku 3 a pak vyberte **provést**.
-   
+
    Odpověď rozhraní API by měla mít Event Hubs připojovací řetězec.
 
 ### <a name="device-appears-offline"></a>Zařízení se zobrazuje v režimu offline.
@@ -128,7 +131,7 @@ Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru Fa
 **Problém**: akcelerátor FarmBeats nezobrazuje nejnovější verzi, i když jste provedli upgrade FarmBeatsDeployment.
 
 **Nápravná opatření**: k této chybě dochází z důvodu trvalosti pracovního procesu služby v prohlížeči. Udělejte toto:
-1. Zavřete všechny karty prohlížeče, které mají otevřený akcelerátor, a zavřete okno prohlížeče. 
+1. Zavřete všechny karty prohlížeče, které mají otevřený akcelerátor, a zavřete okno prohlížeče.
 1. Spusťte novou instanci prohlížeče a znovu načtěte identifikátor URI akcelerátoru. Tato akce načte novou verzi akcelerátoru.
 
 ## <a name="sentinel-imagery-related-issues"></a>Sentinel: problémy související s snímkům
@@ -137,7 +140,7 @@ Pokud chyba přetrvává, přidejte chybovou zprávu do příspěvku na fóru Fa
 
 **Zpráva o selhání úlohy**: pro přístup k tomuto prostředku je vyžadováno úplné ověření.
 
-**Nápravná opatření**: 
+**Nápravná opatření**:
 
 Proveďte jednu z těchto akcí:
 * Spusťte znovu instalační program pro upgrade DataHub se správným uživatelským jménem a heslem.
@@ -207,7 +210,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
     ![FarmBeats projektu](./media/troubleshooting-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory v akcelerátoru 
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory v akcelerátoru
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.

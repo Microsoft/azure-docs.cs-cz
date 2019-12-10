@@ -1,6 +1,7 @@
 ---
-title: Dostupnost & dat v oblasti v Azure Active Directory B2C
-description: Téma na typech klientů Azure Active Directory B2C.
+title: Dostupnost oblasti a zasídlí dat
+titleSuffix: Azure AD B2C
+description: Dostupnost v oblasti, data a sídlo a informace o klientech Azure Active Directory B2C ve verzi Preview.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bb7a7ef2aabd7f93531d9afa662d7e582e05550
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 1b09eb85df6748fed042731ac90ebbf20c65b702
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273569"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950506"
 ---
-# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Rezidence dat a dostupnost oblastí
+# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: dostupnost oblasti & data zasídlí
 
 Dostupnost oblasti a data zajistěte ze dvou velmi odlišných konceptů, které se liší Azure AD B2C ze zbytku Azure. Tento článek vysvětluje rozdíly mezi těmito dvěma koncepty a porovnává, jak se vztahují k Azure oproti Azure AD B2C.
 
@@ -27,7 +28,7 @@ Azure AD B2C je **všeobecně dostupná po celém světě** s možností pro **d
 
 [Data](#data-residency) , která jsou uložená v datech, se označují jako data uživatelů.
 
-## <a name="region-availability"></a>Dostupnost v oblastech
+## <a name="region-availability"></a>Regionální dostupnost
 
 Azure AD B2C je k dispozici po celém světě prostřednictvím veřejného cloudu Azure.
 
@@ -57,7 +58,7 @@ Do seznamu se přidávají následující země nebo oblasti. Prozatím můžete
 
 > Argentina, Austrálie, Brazílie, Chile, Kolumbie, Ekvádor, Irák, Nový Zéland, Paraguay, Peru, Uruguay a Venezuela.
 
-## <a name="preview-tenant"></a>Tenant ve verzi Preview
+## <a name="preview-tenant"></a>Klient verze Preview
 
 Pokud jste vytvořili tenanta B2C během období Preview Azure AD B2C's, je pravděpodobný, že váš **typ tenanta** uvádí **tenanta verze Preview**.
 

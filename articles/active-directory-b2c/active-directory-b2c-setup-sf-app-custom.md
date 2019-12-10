@@ -1,5 +1,6 @@
 ---
-title: Pomocí vlastních zásad v Azure Active Directory B2C nastavte přihlášení pomocí zprostředkovatele SAML služby Salesforce.
+title: Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad
+titleSuffix: Azure AD B2C
 description: Pomocí vlastních zásad v Azure Active Directory B2C nastavte přihlášení pomocí zprostředkovatele SAML služby Salesforce.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2922aa32bab2d9d7146a03757850d4b724ad7570
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: bf4b10c2c1f927c80ed9a99e178ed336892daa21
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71822269"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950540"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Pomocí vlastních zásad v Azure Active Directory B2C nastavte přihlášení pomocí zprostředkovatele SAML služby Salesforce.
 
@@ -42,13 +43,13 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelů z organizac
 1. Na stránce **zprostředkovatel identity** **se nyní budou vytvářet poskytovatelé služeb prostřednictvím připojených aplikací. Klikněte sem.**
 2. V části **základní informace**zadejte požadované hodnoty pro připojenou aplikaci.
 3. V části **nastavení webové aplikace**zaškrtněte políčko **Povolit SAML** .
-4. Do pole **ID entity** zadejte následující adresu URL. Ujistěte se, že jste nahradili hodnotu `your-tenant` názvem vašeho tenanta Azure AD B2C.
+4. Do pole **ID entity** zadejte následující adresu URL. Ujistěte se, že jste nahradili hodnotu pro `your-tenant` názvem vašeho tenanta Azure AD B2C.
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
 
-6. Do pole **Adresa URL služby ACS** zadejte následující adresu URL. Ujistěte se, že jste nahradili hodnotu `your-tenant` názvem vašeho tenanta Azure AD B2C.
+6. Do pole **Adresa URL služby ACS** zadejte následující adresu URL. Ujistěte se, že jste nahradili hodnotu pro `your-tenant` názvem vašeho tenanta Azure AD B2C.
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
@@ -93,7 +94,7 @@ Je potřeba uložit certifikát, který jste vytvořili v tenantovi Azure AD B2C
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 6. Pro **Možnosti**vyberte možnost `Upload`.
-7. Zadejte **Název** zásady. Například SAMLSigningCert. Předpona `B2C_1A_` je automaticky přidána do názvu vašeho klíče.
+7. Zadejte **Název** zásady. Například SAMLSigningCert. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
 8. Vyhledejte a vyberte certifikát B2CSigningCert. pfx, který jste vytvořili.
 9. Zadejte **heslo** pro certifikát.
 3. Klikněte na **Vytvořit**.
@@ -172,7 +173,7 @@ V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na ž�
 
 Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci nebo přihlášení. Pokud přidáte pro účet LinkedIn element **claimsproviderselection.** , zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
-1. V cestě uživatele, kterou jste právě vytvořili, najděte element **OrchestrationStep** , který obsahuje `Order="1"`.
+1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` v cestě uživatele, kterou jste právě vytvořili.
 2. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `SalesforceExchange`:
 
     ```XML
@@ -206,7 +207,7 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
 
 1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInSalesforce. XML*.
 2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInSalesforce`.
-3. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například `http://contoso.com/B2C_1A_signup_signin_salesforce`
+3. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_salesforce`
 4. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignInSalesforce).
 5. Uložte změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
 6. Ujistěte se, že je vybrána možnost Azure AD B2C aplikace, kterou jste vytvořili v poli **Vybrat aplikaci** , a poté ji otestujte kliknutím na tlačítko **Spustit nyní**.

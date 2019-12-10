@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850325"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951407"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu Azure Automation
 
@@ -305,6 +305,15 @@ Informace požadované pro registrační protokol konfigurace stavu můžete zí
 
 Pro zvýšení zabezpečení můžete primární a sekundární přístupové klíče účtu Automation kdykoli znovu vygenerovat (na stránce **Správa klíčů** ) a zabránit tak budoucí registraci uzlů pomocí předchozích klíčů.
 
+## <a name="certificate-expiration-and-re-registration"></a>Vypršení platnosti certifikátu a opětovné registrace
+
+Po registraci počítače jako uzlu DSC v konfiguraci stavu Azure Automation existuje několik důvodů, proč možná budete muset uzel v budoucnu znovu zaregistrovat:
+
+- Pro verze Windows serveru starší než Windows Server 2019 každý uzel automaticky vyjednává jedinečný certifikát pro ověřování, jehož platnost vyprší po jednom roce. V současné době nemůže registrační protokol PowerShellu DSC automaticky obnovovat certifikáty, když se blíží vypršení platnosti, takže je potřeba uzly po roce po rocích znovu zaregistrovat. Před opakovaným registrací zajistěte, aby každý uzel používal rozhraní Windows Management Framework 5,0 RTM. Pokud vyprší platnost certifikátu ověřování uzlu a uzel není znovu zaregistrován, uzel nemůže komunikovat s Azure Automation a je označen jako "neodpovídá". opakované registrace provedla 90 dní nebo méně z času vypršení platnosti certifikátu nebo kdykoli po uplynutí doby vypršení platnosti certifikátu bude vygenerován nový certifikát a bude použit.  Řešení tohoto problému je součástí Windows serveru 2019 a novějších verzí.
+- Chcete-li změnit všechny [hodnoty místního Configuration Manager prostředí PowerShell pro DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) , které byly nastaveny při počáteční registraci uzlu, například ConfigurationMode. V současné době se tyto hodnoty agenta DSC dají změnit jenom pomocí opětovné registrace. Jedinou výjimkou je konfigurace uzlu přiřazená k uzlu – to se dá změnit přímo v Azure Automation DSC.
+
+opakovanou registraci je možné provést stejným způsobem jako první uzel, a to pomocí kterékoli metody připojování popsané v tomto dokumentu. Před opětovnou registrací není nutné uzel z konfigurace Azure Automation stav zrušit.
+
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Řešení potíží s připojováním virtuálních počítačů Azure
 
 Konfigurace stavu Azure Automation umožňuje snadno připojit virtuální počítače Azure s Windows ke správě konfigurace. V digestoři se k registraci virtuálního počítače s konfigurací stavu Azure Automation používá rozšíření konfigurace požadovaného stavu virtuálního počítače Azure. Vzhledem k tomu, že se rozšíření konfigurace požadovaného stavu virtuálního počítače Azure spustí asynchronně, sledování průběhu a řešení potíží s jeho spuštěním může být důležité.
@@ -314,14 +323,7 @@ Konfigurace stavu Azure Automation umožňuje snadno připojit virtuální poč�
 
 Pokud chcete vyřešit nebo zobrazit stav rozšíření konfigurace požadovaného stavu virtuálního počítače Azure, přejděte v Azure Portal na virtuální počítač, který se připojuje, a pak klikněte na **rozšíření** v části **Nastavení**. Pak v závislosti na vašem operačním systému klikněte na **DSC** nebo **DSCForLinux** . Pro další podrobnosti můžete kliknout na **zobrazit podrobný stav**.
 
-## <a name="certificate-expiration-and-reregistration"></a>Vypršení platnosti certifikátu a jeho registrace
-
-Po registraci počítače jako uzlu DSC v konfiguraci stavu Azure Automation existuje několik důvodů, proč možná budete muset tento uzel v budoucnu znovu zaregistrovat:
-
-- Pro verze Windows serveru starší než Windows Server 2019 každý uzel automaticky vyjednává jedinečný certifikát pro ověřování, jehož platnost vyprší po jednom roce. V současné době nemůže registrační protokol PowerShellu DSC automaticky obnovovat certifikáty, pokud se blíží vypršení platnosti, takže je potřeba znovu zaregistrovat uzly po roce. Před opětovným registrací zajistěte, aby každý uzel používal rozhraní Windows Management Framework 5,0 RTM. Pokud vyprší platnost certifikátu ověřování uzlu a uzel není znovu zaregistrován, uzel nemůže komunikovat s Azure Automation a je označen jako "neodpovídá". Nová registrace provedla 90 dní nebo méně z času vypršení platnosti certifikátu nebo kdykoli po uplynutí doby vypršení platnosti certifikátu dojde k vygenerování a použití nového certifikátu.  Řešení tohoto problému je součástí Windows serveru 2019 a novějších verzí.
-- Chcete-li změnit všechny [hodnoty místního Configuration Manager prostředí PowerShell pro DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) , které byly nastaveny při počáteční registraci uzlu, například ConfigurationMode. V současné době se tyto hodnoty agenta DSC dají změnit jenom prostřednictvím změny registrace. Jedinou výjimkou je konfigurace uzlu přiřazená k uzlu – to se dá změnit přímo v Azure Automation DSC.
-
-Pomocí kterékoli metody registrace popsané v tomto dokumentu můžete provést znovu registraci stejným způsobem jako na prvním zaregistrovaném uzlu. Před opětovnou registrací není nutné zrušit registraci uzlu v konfiguraci stavu Azure Automation.
+Další informace o řešení potíží najdete v tématu [řešení potíží s Azure Automation konfigurace požadovaného stavu (DSC)](./troubleshoot/desired-state-configuration.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,6 @@
 ---
-title: Verze JavaScriptu a rozložení stránky – Azure Active Directory B2C | Microsoft Docs
+title: Verze JavaScriptu a rozložení stránky
+titleSuffix: Azure AD B2C
 description: Naučte se, jak povolit JavaScript a používat verze rozložení stránky v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0eb5c89387d8bdcf0e0b72c669c42f716ff5fbb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227108"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950829"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Verze JavaScriptu a rozložení stránky v Azure Active Directory B2C
 
@@ -23,7 +24,7 @@ ms.locfileid: "68227108"
 
 Azure AD B2C poskytuje sadu sbaleného obsahu obsahujícího jazyky HTML, CSS a JavaScript pro prvky uživatelského rozhraní ve vašich uživatelských tocích a vlastních zásadách. Pokud chcete pro své aplikace povolit JavaScript, musíte přidat element na [vlastní zásadu](active-directory-b2c-overview-custom.md) nebo ho na portálu povolit pro toky uživatelů, vybrat rozložení stránky a použít [b2clogin.com](b2clogin.md) ve svých žádostech.
 
-Pokud máte v úmyslu [](javascript-samples.md) povolit javascriptový kód na straně klienta, je vhodné zajistit, aby prvky, na kterých je váš JavaScript založen, byly neměnné. V opačném případě by jakékoli změny mohly způsobit neočekávané chování na stránkách uživatele. Chcete-li těmto problémům zabránit, můžete vynutili použití rozložení stránky a určení verze rozložení stránky. Tím zajistíte, že všechny definice obsahu, na kterých jste vycházíte z JavaScriptu, jsou neměnné. I v případě, že nechcete povolit JavaScript, můžete zadat verzi rozložení stránky pro stránky.
+Pokud máte v úmyslu povolit [JavaScriptový](javascript-samples.md) kód na straně klienta, je vhodné zajistit, aby prvky, na kterých je váš JavaScript založen, byly neměnné. V opačném případě by jakékoli změny mohly způsobit neočekávané chování na stránkách uživatele. Chcete-li těmto problémům zabránit, můžete vynutili použití rozložení stránky a určení verze rozložení stránky. Tím zajistíte, že všechny definice obsahu, na kterých jste vycházíte z JavaScriptu, jsou neměnné. I v případě, že nechcete povolit JavaScript, můžete zadat verzi rozložení stránky pro stránky.
 
 ## <a name="user-flows"></a>Toky uživatele
 
@@ -45,8 +46,8 @@ Chcete-li povolit jazyk JavaScript ve vlastních zásadách, přidejte element *
 
 Bez ohledu na to, jestli ve vlastních zásadách povolíte JavaScript, můžete pro své stránky zadat verzi rozložení stránky. Další informace o určení rozložení stránky najdete v tématu [Výběr rozložení stránky v Azure Active Directory B2C pomocí vlastních zásad](page-layout.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o různých verzích rozložení stránky najdete v části **protokol změn verze** [v tématu Výběr rozložení stránky v Azure Active Directory B2C pomocí vlastních zásad](page-layout.md#version-change-log).
 
-Můžete najít příklady použití JavaScriptu v ukázkách [JavaScriptu pro použití v Azure Active Directory B2C](javascript-samples.md).
+Můžete najít příklady použití JavaScriptu v [ukázkách JavaScriptu pro použití v Azure Active Directory B2C](javascript-samples.md).

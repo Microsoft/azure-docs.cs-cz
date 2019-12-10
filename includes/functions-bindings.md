@@ -4,14 +4,15 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: ac6b86b4ad8830bd08c9db28ac0027a5f048c3dd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 193968b5acf8288cb3f602c90374535fc2046b01
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935886"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941688"
 ---
 Tato tabulka ukazuje vazby, které jsou podporovány v hlavních verzích modulu runtime Azure Functions:
+
 
 | Typ | verze | 2. x a vyšší<sup>1</sup> | Trigger | Vstup | Výstup |
 | ---- | :-: | :-: | :------: | :---: | :----: |

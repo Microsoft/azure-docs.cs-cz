@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 081327e7c70128dad764d66942f1703a889f77fd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815830"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951204"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Rychlý Start: Vytvoření vlastního příkazu (Preview)
 
@@ -28,16 +28,6 @@ Aplikace rozpozná utterance jako "zapnout televizní program" a odpoví jednodu
 
   > [!NOTE]
   > Během období Preview se pro klíče předplatného podporují jenom oblasti westus2.
-
-- Klíč pro vytváření [Language Understanding](https://www.luis.ai/home) (Luis):
-  1. Otevřete webový prohlížeč a přejděte na [Azure Portal](https://portal.azure.com)
-  1. Vyberte vytvořit prostředek.
-  1. Vyhledat a vybrat [Language Understanding](https://aka.ms/sc-luis-all)
-  1. Výběr vytváření v možnostech vytvoření
-  1. Po nasazení prostředku přejdete na prostředek a zkopírujte klíč z části rychlý Start nebo klíče.
-
-      > [!div class="mx-imgBorder"]
-      > ![vytvořit prostředek pro vytváření obsahu](media/custom-speech-commands/resources-lu-authoring.png)
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Přejít do sady Speech Studio pro vlastní příkazy
 
@@ -58,10 +48,20 @@ Výchozím zobrazením je seznam aplikací s vlastním příkazy, které jste vy
 1. Vyberte **Nový projekt** a vytvořte nový projekt.
 
    > [!div class="mx-imgBorder"]
-   > ![vytvořit nový projekt](media/custom-speech-commands/create-new-project.png)
+   > ![vytvořit projekt](media/custom-speech-commands/create-new-project.png)
 
-1. Chcete-li pokračovat, zadejte název projektu a jazyk a potom klikněte na tlačítko **Další** .
-1. Zadejte svůj klíč pro vytváření LUIS.
+1. Zadejte název projektu a jazyk.
+1. Vyberte prostředek pro vytváření obsahu. Pokud neexistují žádné platné prostředky pro vytváření obsahu, vytvořte ho výběrem možnosti **vytvořit nový prostředek**.
+
+   > [!div class="mx-imgBorder"]
+   > ![Vytvoření prostředku](media/custom-speech-commands/create-new-resource.png)
+
+   1. Zadejte název prostředku, skupinu, umístění a cenovou úroveň.
+
+         > [!NOTE]
+         > Skupiny prostředků můžete vytvořit tak, že do pole Skupina prostředků zadáte požadovaný název skupiny prostředků. Skupina prostředků se vytvoří, když se vybere možnost **vytvořit** .
+
+1. Kliknutím na **vytvořit** vytvořte projekt.
 1. Po vytvoření vyberte svůj projekt.
 
 Zobrazení by teď mělo být přehled vaší aplikace pro vlastní příkazy.
@@ -99,25 +99,41 @@ Teď nemáme žádné parametry, abychom mohli přejít na pravidla dokončení.
 
 Nyní přidejte pravidlo dokončení pro reakci na uživatele s oznámením, že je provedena akce.
 
+1. Vytvořte nové pravidlo dokončení tak, že vyberete ikonu `+` vedle možnosti pravidla dokončení.
+1. Zadejte název pravidla.
+1. Přidání akce
+   1. Vytvořte novou akci reakce na řeč tak, že vyberete ikonu `+` vedle možnosti akce a vyberete `SpeechResponse`
+   1. Zadejte odpověď.
+
+   > [!NOTE]
+   > Běžný text musí začínat pomlčkou. Další podrobnosti najdete [tady](https://aka.ms/sc-lg-format) .
+
+   > [!div class="mx-imgBorder"]
+   > ![vytvořit](media/custom-speech-commands/create-speech-response-action.png) reakci na řeč
+
+1. Kliknutím na **Uložit** pravidlo uložíte.
+
 > [!div class="mx-imgBorder"]
 > ![vytvoření pravidla dokončování](media/custom-speech-commands/create-basic-completion-response-rule.png)
+
 
 | Nastavení    | Navrhovaná hodnota                        | Popis                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Název pravidla  | "ConfirmationResponse"                 | Název popisující účel pravidla          |
 | Podmínky | Žádné                                   | Podmínky, které určují, kdy se pravidlo dá spustit    |
-| Akce    | SpeechResponse "OK, zapnutí televizního vysílání" | Akce, která se má provést, když je podmínka pravidla pravdivá |
+| Akce    | SpeechResponse "-OK, zapnutí televizního vysílání" | Akce, která se má provést, když je podmínka pravidla pravdivá |
 
 ## <a name="try-it-out"></a>Vyzkoušet
 
 Otestujte chování pomocí panelu chat testu.
 
 > [!div class="mx-imgBorder"]
-> ![test pomocí webchat](media/custom-speech-commands/create-basic-test-chat.png)
+> ![test pomocí webového chatu](media/custom-speech-commands/create-basic-test-chat.png)
 
 - Zadáte: "zapnout televizor"
 - Očekávaná odpověď: "OK, zapnutí televizního vysílání"
 
 ## <a name="next-steps"></a>Další kroky
+
 > [!div class="nextstepaction"]
 > [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)

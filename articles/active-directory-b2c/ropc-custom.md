@@ -1,6 +1,7 @@
 ---
-title: Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C | Microsoft Docs
-description: Naučte se konfigurovat tok přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C.
+title: Konfigurace toku přihlašovacích údajů k heslům vlastníka prostředku pomocí vlastních zásad
+titleSuffix: Azure AD B2C
+description: Naučte se konfigurovat tok přihlašovacích údajů vlastníka prostředku (ROPC) pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678140"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951060"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
 
@@ -35,7 +36,7 @@ Následující toky nejsou podporovány:
 - **Jednoduchá stránka** – aplikace front-end, která je primárně napsaná v JavaScriptu. Aplikace je často zapisována pomocí architektury jako AngularJS, života. js nebo Durandal.
 - **Důvěrný tok klienta** – ID klienta aplikace je ověřeno, ale tajný klíč aplikace není.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
@@ -95,7 +96,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
     </ClaimsTransformations>
     ```
 
-4. Vyhledejte element **ClaimsProvider** s **názvem DisplayName** `Local Account SignIn` a přidejte následující technický profil:
+4. Vyhledejte element **ClaimsProvider** , který má **DisplayName** `Local Account SignIn` a přidejte následující technický profil:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -133,7 +134,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
     </TechnicalProfile>
     ```
 
-    Nahraďte hodnotu DefaultValue **client_id** číslem ID aplikace ProxyIdentityExperienceFramework, kterou jste vytvořili v kurzu požadavků. Potom nahraďte **DefaultValue** **Resource_id** ID aplikace IdentityExperienceFramework aplikace, kterou jste vytvořili také v kurzu požadavků.
+    Nahraďte hodnotu DefaultValue **client_id** číslem ID aplikace ProxyIdentityExperienceFramework, kterou jste vytvořili v kurzu požadavků. Potom nahraďte parametr **DefaultValue** **resource_id** ID aplikace aplikace IdentityExperienceFramework, kterou jste vytvořili také v kurzu požadavků.
 
 5. Přidejte následující prvky **ClaimsProvider** s jejich technickými profily do prvku **ClaimsProviders** :
 
@@ -228,13 +229,13 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 7. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
 8. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
-9. Klikněte na **nahrát**.
+9. Klikněte na **Odeslat**.
 
 ## <a name="create-a-relying-party-file"></a>Vytvoření souboru předávající strany
 
 Dále aktualizujte soubor předávající strany, který zahájí cestu uživatele, kterou jste vytvořili:
 
-1. Vytvořte kopii souboru *SignUpOrSignin. XML* v pracovním adresáři a přejmenujte ho na *ROPC_Auth. XML*.
+1. Vytvořte kopii souboru *SignUpOrSignin. XML* v pracovním adresáři a přejmenujte jej na *ROPC_Auth. XML*.
 2. Otevřete nový soubor a změňte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** na jedinečnou hodnotu. ID zásady je název vaší zásady. Například **B2C_1A_ROPC_Auth**.
 3. Změňte hodnotu atributu **ReferenceId** v **DefaultUserJourney** na `ResourceOwnerPasswordCredentials`.
 4. Změňte element **OutputClaims** tak, aby obsahoval pouze následující deklarace identity:
@@ -249,7 +250,7 @@ Dále aktualizujte soubor předávající strany, který zahájí cestu uživate
 
 5. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
 6. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *ROPC_Auth. XML* .
-7. Klikněte na **nahrát**.
+7. Klikněte na **Odeslat**.
 
 ## <a name="test-the-policy"></a>Testování zásad
 
@@ -257,22 +258,22 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
+- Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | ----- |
-| Jmen | `user-account` |
-| Zadáno | `password1` |
-| parametr grant_type | Zadáno |
-| rozsah | OpenID `application-id` offline_access |
+| uživatelské jméno | `user-account` |
+| heslo | `password1` |
+| grant_type | heslo |
+| scope | OpenID `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | id_token tokenu |
 
 - Nahraďte `user-account` názvem uživatelského účtu ve vašem tenantovi.
 - Nahraďte `password1` heslem uživatelského účtu.
 - Nahraďte `application-id` ID aplikace z registrace *ROPC_Auth_app* .
-- *Offline_access* je nepovinný, pokud chcete získat obnovovací token.
+- *Offline_access* je volitelné, pokud chcete získat obnovovací token.
 
 Skutečný požadavek POST vypadá jako v následujícím příkladu:
 
@@ -302,19 +303,19 @@ Sestavte následné volání jako tu, který je zde zobrazen. Použijte informac
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
+- Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | ----- |
-| parametr grant_type | refresh_token |
+| grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| prostředek | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Nahraďte `application-id` ID aplikace z registrace *ROPC_Auth_app* .
-- Nahraďte `refresh-token` za hodnotu **refresh_token** , která byla vrácena zpět v předchozí odpovědi.
+- Nahraďte `refresh-token` **refresh_token** , která byla zpětně odeslána v předchozí odpovědi.
 
 Úspěšná odpověď vypadá jako v následujícím příkladu:
 

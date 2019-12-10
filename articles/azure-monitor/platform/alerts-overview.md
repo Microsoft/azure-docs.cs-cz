@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802306"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951135"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -60,12 +60,12 @@ Níže jsou uvedené klíčové atributy pravidla výstrahy:
 
 ## <a name="what-you-can-alert-on"></a>K čemu můžete upozornit
 
-Můžete upozornit na metriky a protokoly, jak je popsáno v tématu [monitorování zdrojů dat](../../azure-monitor/platform/data-sources-reference.md). Patří mezi ně, ale nejsou omezeny na:
+Můžete upozornit na metriky a protokoly, jak je popsáno v tématu [monitorování zdrojů dat](../../azure-monitor/platform/data-sources-reference.md). Patří mezi ně mimo jiné:
 - Hodnoty metriky
-- Dotazy na hledání v protokolu
+- Vyhledávací dotazy na protokoly
 - Události protokolu aktivit
 - Stav základní platformy Azure
-- Testy pro dostupnost webu
+- Testy dostupnosti webů
 
 Dříve byly Azure Monitor metriky, Application Insights, Log Analytics a Service Health samostatné možnosti upozorňování. V průběhu času Azure vylepšil a kombinuje jak uživatelské rozhraní, tak i různé metody upozorňování. Tato konsolidace se pořád zpracovává. V důsledku toho stále existují některé možnosti upozorňování, které ještě nejsou v novém systému upozornění.  
 
@@ -82,8 +82,8 @@ Podporovány jsou následující stavy upozornění.
 | Stav | Popis |
 |:---|:---|
 | Novinka | Problém byl právě zjištěn a ještě nebyl revidován. |
-| Potvrzené | Správce zkontroloval výstrahu a začal na ní pracovat. |
-| ukončit | Problém byl vyřešen. Jakmile je výstraha zavřena, můžete ji znovu otevřít změnou na jiný stav. |
+| Potvrzení | Správce zkontroloval výstrahu a začal na ní pracovat. |
+| Uzavřeno | Problém byl vyřešen. Jakmile je výstraha zavřena, můžete ji znovu otevřít změnou na jiný stav. |
 
 *Stav výstrahy* se liší a nezávisle na *stavu monitorování*. Stav výstrahy je nastaven uživatelem. Stav monitorování je nastaven systémem. Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na *aktivováno*. Pokud je podkladová podmínka, která způsobila výstrahu, *vyhodnocena*jako nejasná, je stav monitorování nastaven na hodnotu Vyřešeno. Stav výstrahy se nezmění, dokud ji uživatel nezmění. Zjistěte, [Jak změnit stav výstrah a inteligentních skupin](https://aka.ms/managing-alert-smart-group-states).
 
@@ -121,7 +121,7 @@ V horní části stránky výstrahy vyberte následující hodnoty a otevřete t
 | Celkový počet pravidel upozornění | Celkový počet pravidel upozornění ve vybraném předplatném a skupině prostředků. Výběrem této hodnoty otevřete zobrazení pravidla filtrovaná ve vybraném předplatném a skupině prostředků.
 
 
-## <a name="manage-alert-rules"></a>Správa pravidel výstrah
+## <a name="manage-alert-rules"></a>Správa pravidel upozornění
 Chcete-li zobrazit stránku **pravidla** , vyberte možnost **Spravovat pravidla výstrah**. Stránka pravidla je jediné místo pro správu všech pravidel upozornění napříč předplatnými Azure. Uvádí všechna pravidla výstrah a je možné je seřadit na základě cílových prostředků, skupin prostředků, názvu pravidla nebo stavu. Na této stránce můžete také upravit, povolit nebo zakázat pravidla výstrah.  
 
  ![Snímek stránky s pravidly](./media/alerts-overview/alerts-preview-rules.png)
@@ -156,8 +156,8 @@ Zobrazení můžete filtrovat výběrem následujících hodnot v rozevíracích
 | Typ prostředku | Vyberte jeden nebo více typů prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli vybraného typu. Tento sloupec je k dispozici až po zadání skupiny prostředků. |
 | Prostředek | Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tímto prostředkem jako cíl. Tento sloupec je k dispozici až po zadání typu prostředku. |
 | Závažnost | Vyberte Závažnost výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech závažnosti. |
-| Podmínka monitorování | Vyberte podmínku monitorování nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
-| Stav výstrahy | Vyberte stav výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech stavů. |
+| Stav monitorování | Vyberte podmínku monitorování nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
+| Stav upozornění | Vyberte stav výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech stavů. |
 | Monitorovat službu | Vyberte službu nebo vyberte možnost **vše** , pokud chcete zahrnout všechny služby. Součástí jsou jenom výstrahy vytvořené pravidly, která používají službu jako cíl. |
 | Časové rozmezí | V zobrazení jsou zahrnuty pouze výstrahy aktivované v rámci vybraného časového rozsahu. Podporovány jsou hodnoty za poslední hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
@@ -211,6 +211,7 @@ Pomocí [REST API Alert Management](https://aka.ms/alert-management-api) můžet
 - [Další informace o skupinách akcí](../../azure-monitor/platform/action-groups.md)
 - [Správa instancí upozornění v Azure](https://aka.ms/managing-alert-instances)
 - [Správa inteligentních skupin](https://aka.ms/managing-smart-groups)
+- [Další informace o cenách Azure Alerts](https://azure.microsoft.com/pricing/details/monitor/)
 
 
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae73188fa8818c84806709dc7518e3d5760ae187
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2ce6c27487e834325b59fb21ba0d54d1e788ea57
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849526"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951373"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů Azure Automation spustit jako
 
@@ -67,7 +67,7 @@ Pokud chcete nakonfigurovat nebo prodloužit účty Spustit jako pro Azure Class
 V této části provedete následující kroky a aktualizujete svůj účet Azure Automation na webu Azure Portal. Vytvoříte samostatně účet Spustit jako a účet Spustit jako pro Azure Classic. Pokud nepotřebujete spravovat klasické prostředky, můžete vytvořit jenom účet Spustit jako pro Azure.
 
 1. Přihlaste se k webu Azure Portal pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
-2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Automation**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Účty Automation**.
+2. V Azure Portal vyhledejte a vyberte **účty Automation**.
 3. Na stránce **Účty Automation** vyberte ze seznamu svůj účet Automation.
 4. V levém podokně vyberte **Účty Spustit jako** v části **Nastavení účtu**.
 5. Podle toho, který účet požadujete, vyberte buď **Účet Spustit jako pro Azure**, nebo **Účet Spustit jako pro Azure Classic**. Po výběru se zobrazí podokno **Přidat účet Spustit jako pro Azure** nebo **Přidat účet Spustit jako pro Azure Classic**. Jakmile zkontrolujete souhrnné informace, klikněte na **Vytvořit** a pokračujte ve vytváření účtu Spustit jako.
@@ -86,7 +86,7 @@ Následující seznam uvádí požadavky na vytvoření účtu Spustit jako v pr
 
 Pokud chcete získat hodnoty pro *SubscriptionId*, *Resource*a *AutomationAccountName*, které jsou pro tento skript povinné, proveďte následující kroky:
 
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Automation**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Účty Automation**.
+1. V Azure Portal vyhledejte a vyberte **účty Automation**.
 1. Na stránce účtu Automation vyberte váš účet Automation a potom v části **Nastavení účtu** vyberte **Vlastnosti**.
 1. Poznamenejte si hodnoty **ID předplatného**, **název**a **skupiny prostředků** na stránce **vlastnosti** .
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849356"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951458"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s konfigurací požadovaného stavu (DSC)
 
@@ -89,6 +89,68 @@ Tato chyba je obvykle způsobena bránou firewall, počítač je za proxy server
 #### <a name="resolution"></a>Rozlišení
 
 Ověřte, že váš počítač má přístup ke správným koncovým bodům pro Azure Automation DSC, a zkuste to znovu. Seznam potřebných portů a adres najdete v tématu [Plánování sítě](../automation-dsc-overview.md#network-planning) .
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a>Scénář <a/><a name="unauthorized">: zprávy o stavu vrátí kód odpovědi "Neautorizováno".
+
+#### <a name="issue"></a>Problém
+
+Při registraci uzlu s konfigurací stavu (DSC) se zobrazí některá z následujících chybových zpráv:
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>Příčina
+
+Příčinou tohoto problému je chybný nebo prošlý certifikát.  Další informace najdete v tématu [vypršení platnosti certifikátu a jeho registrace](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration).
+
+### <a name="resolution"></a>Rozlišení
+
+Postupujte podle následujících kroků a znovu zaregistrujte neúspěšný uzel DSC.
+
+Nejprve zrušte registraci uzlu pomocí následujících kroků.
+
+1. V Azure Portal v části účty služby **Home** -> **Automation**– > {váš účet Automation} – > **Konfigurace stavu (DSC)**
+2. Klikněte na uzly a potom klikněte na uzel, který má potíže.
+3. Kliknutím na zrušit registraci uzel zrušte.
+
+Za druhé odinstalujte rozšíření DSC z uzlu.
+
+1. Z Azure Portal v části **domovská** -> **virtuální počítač** – > {selhání uzlu} – > **rozšíření**
+2. Klikněte na Microsoft. PowerShell. DSC.
+3. Kliknutím na odinstalovat odinstalujete rozšíření PowerShell DSC.
+
+Třetí, odeberte z uzlu všechny chybné nebo prošlé certifikáty.
+
+V uzlu selhání z příkazového řádku PowerShellu se zvýšenými oprávněními spusťte následující příkaz:
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+Nakonec znovu zaregistrujte uzel selhání pomocí následujících kroků.
+
+1. V Azure Portal v části účty služby **Home** -> **Automation** – > {váš účet Automation} – > **Konfigurace stavu (DSC)**
+2. Klikněte na uzly.
+3. Klikněte na tlačítko Přidat.
+4. Vyberte uzel, který selhal.
+5. Klikněte na připojit a vyberte požadované možnosti.
 
 ### <a name="failed-not-found"></a>Scénář: uzel je v neúspěšném stavu s chybou "Nenalezeno".
 
@@ -187,6 +249,49 @@ K této chybě obvykle dochází v případě, že se k uzlu přiřadí název k
 
 * Ujistěte se, že přiřazujete uzel s názvem konfigurace uzlu, který přesně odpovídá názvu ve službě.
 * Můžete zvolit, že nebudete zahrnovat název konfigurace uzlu, což bude mít za následek připojování uzlu, ale ne přiřazení konfigurace uzlu.
+
+### <a name="cross-subscription"></a>Scénář: registrace uzlu pomocí PowerShellu vrátí chybu "došlo k jedné nebo více chybám"
+
+#### <a name="issue"></a>Problém
+
+Při registraci uzlu pomocí `Register-AzAutomationDSCNode` nebo `Register-AzureRMAutomationDSCNode`se zobrazí následující chyba.
+
+```error
+One or more errors occurred.
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě dochází, když se pokusíte zaregistrovat uzel, který je umístěn v samostatném předplatném, než je účet Automation.
+
+#### <a name="resolution"></a>Rozlišení
+
+Považovat uzel mezi předplatnými, jako by se jednalo o samostatný nebo místní Cloud.
+
+K registraci uzlu použijte následující postup.
+
+* Windows – [fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws).
+* Linux – [fyzické nebo virtuální počítače s Linuxem v místním prostředí nebo v jiném cloudu než Azure](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure).
+
+### <a name="agent-has-a-problem"></a>Scénář: chybová zpráva – "zřizování nebylo úspěšné"
+
+#### <a name="issue"></a>Problém
+
+Při registraci uzlu se zobrazí chyba:
+
+```error
+Provisioning has failed
+```
+
+#### <a name="cause"></a>Příčina
+
+Tato zpráva se zobrazí, když dojde k potížím s připojením mezi uzlem a Azure.
+
+#### <a name="resolution"></a>Rozlišení
+
+Zjistěte, jestli je váš uzel v privátní virtuální síti, nebo jestli má jiné problémy s připojením k Azure.
+
+Další informace najdete v tématu [řešení chyb při připojování řešení](onboarding.md).
 
 ### <a name="failure-linux-temp-noexec"></a>Scénář: použití konfigurace v systému Linux, při obecné chybě dojde k selhání.
 

@@ -1,5 +1,6 @@
 ---
-title: Rychlý Start – Nastavení přihlášení pro desktopovou aplikaci pomocí Azure Active Directory B2C
+title: 'Rychlý Start: nastavení přihlášení pro desktopovou aplikaci'
+titleSuffix: Azure AD B2C
 description: V tomto rychlém startu spusťte ukázkovou desktopovou aplikaci WPF, která používá Azure Active Directory B2C k poskytnutí přihlášení k účtu.
 services: active-directory-b2c
 author: mmacy
@@ -11,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed92605c7fb74186ddde6ff193a1365146494594
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8265bad5b756ee2ac23bc41c9c58452251ce0717
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420221"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950643"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Rychlý start – Nastavení přihlášení pro desktopovou aplikaci pomocí služby Azure Active Directory B2C
 
@@ -24,7 +25,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
 - Účet sociální sítě z Facebooku, Google nebo Microsoft.

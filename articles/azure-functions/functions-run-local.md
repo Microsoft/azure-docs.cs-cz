@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784710"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941827"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -29,37 +29,47 @@ Vývoj funkcí v místním počítači a jejich publikování v Azure pomocí z�
 > * [Místní spuštění funkce](#start)
 > * [Publikování projektu do Azure](#publish)
 
-## <a name="core-tools-versions"></a>Verze základních nástrojů
+## <a name="core-tools-versions"></a>Verze nástrojů Core Tools
 
-Existují dvě verze Azure Functions Core Tools. Použitá verze závisí na vašem místním vývojovém prostředí, [výběru jazyka](supported-languages.md)a požadované úrovni podpory:
+Existují tři verze Azure Functions Core Tools. Použitá verze závisí na vašem místním vývojovém prostředí, [výběru jazyka](supported-languages.md)a požadované úrovni podpory:
 
-+ Verze 1. x: podporuje verzi 1. x modulu runtime. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm). V této verzi můžete vytvářet funkce v experimentálních jazycích, které se oficiálně nepodporují. Další informace najdete v tématu [podporované jazyky v Azure Functions](supported-languages.md)
++ **Verze 1. x**: podporuje verzi 1. x modulu runtime Azure Functions. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://www.npmjs.com/package/azure-functions-core-tools).
 
-+ [Verze 2. x](#v2): podporuje [modul runtime verze 2. x](functions-versions.md). Tato verze podporuje [Windows](#windows-npm), [MacOS](#brew)a [Linux](#linux). Používá pro instalaci správce balíčků pro konkrétní platformu nebo npm.
++ [**Verze 2. x/3. x**](#v2): podporuje buď [verzi 2. x, nebo 3. x modulu Azure Functions runtime](functions-versions.md). Tyto verze podporují [Windows](#windows-npm), [MacOS](#brew)a [Linux](#linux) a k instalaci používají správce balíčků pro konkrétní platformu nebo npm.
 
-Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 2. x.
+Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
 [Azure Functions Core Tools] obsahuje verzi stejného modulu runtime, který funguje Azure Functions runtime, který můžete spustit na místním vývojovém počítači. Poskytuje také příkazy pro vytváření funkcí, připojení k Azure a nasazení projektů funkcí.
 
-### <a name="v2"></a>Verze 2. x
+### <a name="v2"></a>Verze 2. x a 3. x
 
-Verze 2. x nástroje používá modul runtime Azure Functions 2. x, který je postaven na .NET Core. Tato verze se podporuje na všech platformách .NET Core 2. x, včetně [Windows](#windows-npm), [MacOS](#brew)a [Linux](#linux). 
+Verze 2. x/3. x nástroje používá modul runtime Azure Functions, který je postaven na .NET Core. Tato verze je podporovaná na všech platformách .NET Core podporovaných [systémem](#windows-npm), včetně Windows, [MacOS](#brew)a [Linux](#linux). 
 
 > [!IMPORTANT]
-> Požadavek na instalaci sady .NET Core 2. x SDK můžete obejít pomocí [sad rozšíření].
+> Požadavek na instalaci .NET Core SDK můžete obejít pomocí [sad rozšíření].
 
-#### <a name="windows-npm"></a>Systému
+#### <a name="windows-npm"></a>Windows
 
 Následující kroky používají npm k instalaci základních nástrojů v systému Windows. Můžete také použít [čokolády](https://chocolatey.org/). Další informace najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Nainstalujte [Node.js], který zahrnuje npm. Pro verzi 2. x nástroje se podporují jenom Node. js 8,5 a novější verze.
+1. Nainstalujte [Node.js], který zahrnuje npm.
+    - Pro verzi 2. x nástroje se podporují jenom Node. js 8,5 a novější verze.
+    - Pro verzi 3. x nástroje se podporuje jenom uzel 10 a novější verze.
 
 1. Nainstalujte balíček Core Tools:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     npm install -g azure-functions-core-tools
+    ```
+
+    ##### <a name="v3x"></a>V3. x
+
+    ```bash
+    npm install -g azure-functions-core-tools@3
     ```
 
    Stažení a instalace balíčku Core Tools může trvat několik minut, než se npm.
@@ -74,13 +84,21 @@ Následující kroky používají homebrew k instalaci základních nástrojů n
 
 1. Nainstalujte balíček Core Tools:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. Pokud neplánujete použít [sad rozšíření], nainstalujte [sadu .NET Core 2. x SDK pro MacOS](https://www.microsoft.com/net/download/macos).
+    ##### <a name="v3x"></a>V3. x
 
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@3
+    # if upgrading on a machine that has 2.x installed
+    brew link --overwrite azure-functions-core-tools@3
+    ```
 
 #### <a name="linux"></a>Linux (Ubuntu/Debian) s APT
 
@@ -109,12 +127,12 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. V souboru `/etc/apt/sources.list.d/dotnetdev.list` vyhledejte jeden z odpovídajících řetězců verze Linux uvedených níže:
 
-    | Distribuce systému Linux | Version |
+    | Linuxové distribuce | Version |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
-    | Ubuntu 18,10    | `cosmic`    |
+    | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
     | Ubuntu 16.04/Linux mentolová 18    | `xenial`  |
@@ -133,7 +151,7 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. Pokud neplánujete použít [sad rozšíření], nainstalujte [sadu .NET Core 2. x SDK pro Linux](https://www.microsoft.com/net/download/linux).
 
-## <a name="create-a-local-functions-project"></a>Vytvoření projektu místní funkce
+## <a name="create-a-local-functions-project"></a>Vytvořte projekt místní funkce
 
 Adresář projektu Functions obsahuje soubory [Host. JSON](functions-host-json.md) a [Local. Settings. JSON](#local-settings-file)spolu s podsložkami, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikace Function App v Azure. Další informace o struktuře složek Functions najdete v příručce pro [vývojáře Azure Functions](functions-reference.md#folder-structure).
 
@@ -199,7 +217,7 @@ Ve výchozím nastavení se tato nastavení nemigrují automaticky, když je pro
 Hodnoty nastavení aplikace Function App lze ve vašem kódu přečíst také jako proměnné prostředí. Další informace naleznete v části proměnné prostředí v těchto referenčních tématech specifických pro konkrétní jazyk:
 
 * [C#předkompilované](functions-dotnet-class-library.md#environment-variables)
-* [C#skript (. csx)](functions-reference-csharp.md#environment-variables)
+* [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -212,7 +230,7 @@ Pokud není nastaven žádný platný připojovací řetězec úložiště pro [
 I když používáte emulátor úložiště pro vývoj, budete možná chtít testovat pomocí skutečného připojení úložiště. Za předpokladu, že jste již [vytvořili účet úložiště](../storage/common/storage-create-storage-account.md), můžete získat platný připojovací řetězec úložiště jedním z následujících způsobů:
 
 - V [Azure Portal]vyhledejte a vyberte **účty úložiště**. 
-  ![vyberte účty úložiště z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
+  ![vybrat účty úložiště z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Vyberte svůj účet úložiště, vyberte **přístupové klíče** v **Nastavení**a pak zkopírujte jednu z hodnot **připojovacího řetězce** .
   ![zkopírování připojovacího řetězce z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
@@ -238,7 +256,7 @@ I když používáte emulátor úložiště pro vývoj, budete možná chtít te
 
 ## <a name="create-func"></a>Vytvoření funkce
 
-Chcete-li vytvořit funkci, spusťte následující příkaz:
+Vytvořit funkci, spusťte následující příkaz:
 
 ```bash
 func new
@@ -526,5 +544,5 @@ Pokud chcete zaslat žádost o chybu nebo funkci, [otevřete problém GitHubu](h
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
 [sad rozšíření]: functions-bindings-register.md#extension-bundles

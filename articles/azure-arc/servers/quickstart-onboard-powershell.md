@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace požadovaného stavu, S
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872685"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951441"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Rychlý Start: připojení počítačů k Azure pomocí ARC Azure pro servery – PowerShell
 
@@ -72,8 +72,11 @@ Z výstupu zkopírujte **heslo** a **ApplicationId** (z předchozího kroku) a u
 
 V instalačním skriptu instalace agenta:
 
-* Vlastnost **ApplicationId** se používá pro parametr `--service-principal-id`, který se používá při instalaci agenta.
-* Vlastnost **Password** se používá pro parametr `--service-principal-secret` v instalačním agentovi.
+* Vlastnost **ApplicationId** se používá pro parametr `--service-principal-id`, který se používá k připojení agenta.
+* Vlastnost **Password** se používá pro parametr `--service-principal-secret`, který se používá k připojení agenta.
+
+> [!NOTE]
+> Nezapomeňte použít vlastnost **ApplicationId** instančního objektu, nikoli vlastnost **ID** . **ID** nebude fungovat.
 
 ## <a name="manually-install-the-agent-and-connect-to-azure"></a>Ruční instalace agenta a připojení k Azure
 
@@ -90,7 +93,6 @@ U serverů se **systémem Linux** je agent distribuován prostřednictvím [úlo
 > [!NOTE]
 > Během Public Preview byl vydán pouze jeden balíček, který je vhodný pro Ubuntu 16,04 nebo 18,04.
 
-<!-- What about this aks? -->
 Nejjednodušší možností je zaregistrovat úložiště balíčků a pak balíček nainstalovat pomocí Správce balíčků distribuce.
 Skript bash umístěný v [https://aka.ms/azcmagent](https://aka.ms/azcmagent) provádí následující akce:
 

@@ -1,5 +1,6 @@
 ---
-title: Přidejte vlastní atributy do vlastních zásad v Azure Active Directory B2C | Microsoft Docs
+title: Přidání vlastních atributů do vlastních zásad
+titleSuffix: Azure AD B2C
 description: Návod k používání vlastností rozšíření a vlastních atributů a jejich zahrnutí v uživatelském rozhraní.
 services: active-directory-b2c
 author: mmacy
@@ -10,22 +11,22 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 82a796a3252a4de6eacabcad45c61c864e963fe0
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 92050261777482bae8055f697ef50c2295675c5b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066175"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948773"
 ---
-# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Použití vlastních atributů v zásadách úprav vlastního profilu
+# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: použití vlastních atributů v zásadách úprav vlastního profilu
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 V tomto článku vytvoříte vlastní atribut v adresáři Azure Active Directory B2C (Azure AD B2C). Tento nový atribut použijete jako vlastní deklaraci v profilu upravit cestu uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Postupujte podle kroků v článku [Azure Active Directory B2C: Začněte s vlastními zásadami](active-directory-b2c-get-started-custom.md).
+Postupujte podle kroků v článku [Azure Active Directory B2C: Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md).
 
 ## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-ad-b2c-by-using-custom-policies"></a>Použití vlastních atributů ke shromáždění informací o zákaznících v Azure AD B2C pomocí vlastních zásad
 Adresář Azure AD B2C obsahuje integrovanou sadu atributů. Příklady jsou **křestní jméno**, **příjmení**, **město**, **poštovní směrovací číslo**a **userPrincipalName**. Často je třeba vytvořit vlastní atributy, jako jsou tyto příklady:
@@ -55,21 +56,21 @@ Pokyny jsou uvedené v části **Další kroky** v tomto článku.
     * Název webové aplikace: **WebApp-GraphAPI-DirectoryExtensions**.
     * Typ aplikace: **Webová aplikace/rozhraní API**.
     * Přihlašovací adresa URL: **https://{tenant}. Microsoft. com/webapp-GraphAPI-DirectoryExtensions**.
-5. Vyberte **Vytvořit**.
+5. Vyberte **Create** (Vytvořit).
 6. Vyberte nově vytvořenou webovou aplikaci.
-7. Vyberte **Nastavení** > **požadovaná oprávnění**.
+7. Vyberte **nastavení** > **požadovaná oprávnění**.
 8. Vyberte Azure Active Directory rozhraní API pro **Windows**.
-9. Zadejte zaškrtnutí v oprávnění aplikace: **Čtení a zápis dat adresáře**. Potom vyberte **Uložit**.
+9. Zaškrtněte políčko oprávnění aplikace: **číst a zapsat data adresáře**. Potom vyberte **Uložit**.
 10. Klikněte na **udělit oprávnění** a potvrďte **Ano**.
 11. Zkopírujte do schránky následující identifikátory a uložte je:
-    * **ID aplikace** Příklad: `103ee0e6-f92d-4183-b576-8c3739027780`.
+    * **ID aplikace:** Příklad: `103ee0e6-f92d-4183-b576-8c3739027780`.
     * **ID objektu** Příklad: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Upravte vlastní zásadu a přidejte tak **ApplicationObjectId** .
 
-Když jste postupovali podle [kroků v Azure Active Directory B2C: Začněte s vlastními zásadami](active-directory-b2c-get-started-custom.md), stáhli a upravili [ukázkové soubory](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) s názvem **TrustFrameworkBase. XML**, **TrustFrameworkExtensions. XML**, **SignUpOrSignin. XML**, **ProfileEdit. XML**a  **PasswordReset. XML**. V tomto kroku provedete další úpravy těchto souborů.
+Když jste postupovali podle kroků v části [Azure Active Directory B2C: Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md), stáhli a upravili jste [ukázkové soubory](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) s názvem **TrustFrameworkBase. XML**, **TrustFrameworkExtensions. XML**, **SignUpOrSignin. XML**, **ProfileEdit. XML**a **PasswordReset. XML**. V tomto kroku provedete další úpravy těchto souborů.
 
-* Otevřete soubor **TrustFrameworkBase. XML** a přidejte `Metadata` část, jak je znázorněno v následujícím příkladu. Vložte ID objektu, které jste dříve nahráli `ApplicationObjectId` pro hodnotu, a ID aplikace, které jste si `ClientId` poznamenali pro tuto hodnotu:
+* Otevřete soubor **TrustFrameworkBase. XML** a přidejte část `Metadata`, jak je znázorněno v následujícím příkladu. Vložte ID objektu, které jste dříve nahráli pro `ApplicationObjectId` hodnotu, a ID aplikace, které jste si poznamenali pro `ClientId` hodnotu:
 
     ```xml
     <ClaimsProviders>
@@ -102,7 +103,7 @@ Když jste postupovali podle [kroků v Azure Active Directory B2C: Začněte s v
 ## <a name="use-the-new-extension-property-or-custom-attribute-in-a-user-journey"></a>Použití nové vlastnosti rozšíření nebo vlastního atributu v cestě uživatele
 
 1. Otevřete soubor **ProfileEdit. XML** .
-2. Přidejte vlastní deklaraci `loyaltyId`identity. Zahrnutím vlastní deklarace do `<RelyingParty>` prvku je zahrnuto do tokenu pro aplikaci.
+2. Přidejte `loyaltyId`vlastní deklarace identity. Zahrnutím vlastní deklarace do prvku `<RelyingParty>` je zahrnuto do tokenu pro aplikaci.
 
     ```xml
     <RelyingParty>
@@ -123,7 +124,7 @@ Když jste postupovali podle [kroků v Azure Active Directory B2C: Začněte s v
     </RelyingParty>
     ```
 
-3. Otevřete soubor **TrustFrameworkExtensions. XML** a přidejte`<ClaimsSchema>` element a jeho `BuildingBlocks` podřízené prvky do elementu:
+3. Otevřete soubor **TrustFrameworkExtensions. XML** a přidejte`<ClaimsSchema>` element a jeho podřízené prvky do elementu `BuildingBlocks`:
 
     ```xml
     <BuildingBlocks>
@@ -138,9 +139,9 @@ Když jste postupovali podle [kroků v Azure Active Directory B2C: Začněte s v
     </BuildingBlocks>
     ```
 
-4. Přidejte stejnou `ClaimType` definici do **souboru TrustFrameworkBase. XML**. Není nutné přidávat `ClaimType` definici do souborů Base i Extensions. Další kroky však přidají `extension_loyaltyId` do základního souboru do **TechnicalProfiles** . Proto validátor zásad odmítne nahrávání základního souboru bez něj. Může být užitečné sledovat spuštění cesty uživatele s názvem **ProfileEdit** v souboru **TrustFrameworkBase. XML** . V editoru vyhledejte cestu uživatele se stejným názvem. Všimněte si, že orchestrace krok 5 vyvolá **TechnicalProfileReferenceID = "SelfAsserted-ProfileUpdate**. Vyhledejte tento **TechnicalProfile** a prozkoumejte ho, abyste se seznámili s tokem.
+4. Přidejte stejnou definici `ClaimType` do **souboru TrustFrameworkBase. XML**. Není nutné přidávat definici `ClaimType` v souborech Base i Extensions. Další kroky však přidají `extension_loyaltyId` do **TechnicalProfiles** v základním souboru. Proto validátor zásad odmítne nahrávání základního souboru bez něj. Může být užitečné sledovat spuštění cesty uživatele s názvem **ProfileEdit** v souboru **TrustFrameworkBase. XML** . V editoru vyhledejte cestu uživatele se stejným názvem. Všimněte si, že orchestrace krok 5 vyvolá **TechnicalProfileReferenceID = "SelfAsserted-ProfileUpdate**. Vyhledejte tento **TechnicalProfile** a prozkoumejte ho, abyste se seznámili s tokem.
 
-5. Otevřete soubor **TrustFrameworkBase. XML** a přidejte `loyaltyId` jako vstupní a výstupní deklaraci identity v **TechnicalProfile SelfAsserted-ProfileUpdate**:
+5. Otevřete soubor **TrustFrameworkBase. XML** a přidejte `loyaltyId` jako vstupní a výstupní deklaraci do **TechnicalProfile SelfAsserted-ProfileUpdate**:
 
     ```xml
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -176,7 +177,7 @@ Když jste postupovali podle [kroků v Azure Active Directory B2C: Začněte s v
     </TechnicalProfile>
     ```
 
-6. V souboru **TrustFrameworkBase. XML** přidejte `loyaltyId` deklaraci identity do **TechnicalProfile AAD-UserWriteProfileUsingObjectId**. Toto sčítání uchovává hodnotu deklarace identity ve vlastnosti Extension pro aktuálního uživatele v adresáři:
+6. V souboru **TrustFrameworkBase. XML** přidejte deklaraci `loyaltyId` do **TechnicalProfile AAD-UserWriteProfileUsingObjectId**. Toto sčítání uchovává hodnotu deklarace identity ve vlastnosti Extension pro aktuálního uživatele v adresáři:
 
     ```xml
     <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
@@ -203,7 +204,7 @@ Když jste postupovali podle [kroků v Azure Active Directory B2C: Začněte s v
     </TechnicalProfile>
     ```
 
-7. V souboru **TrustFrameworkBase. XML** přidejte `loyaltyId` deklaraci identity do **TechnicalProfile AAD-UserReadUsingObjectId** pro čtení hodnoty atributu rozšíření při každém přihlášení uživatele. **TechnicalProfiles** se zatím změnila pouze v toku místních účtů. Pokud chcete nový atribut v toku pro sociální nebo federovaný účet, je nutné změnit jinou sadu **TechnicalProfiles** . Podívejte se na část **Další kroky** .
+7. V souboru **TrustFrameworkBase. XML** přidejte `loyaltyId` DEKLARACÍ **TechnicalProfile AAD-UserReadUsingObjectId** , abyste si přečetli hodnotu atributu Extension při každém přihlášení uživatele. **TechnicalProfiles** se zatím změnila pouze v toku místních účtů. Pokud chcete nový atribut v toku pro sociální nebo federovaný účet, je nutné změnit jinou sadu **TechnicalProfiles** . Podívejte se na část **Další kroky** .
 
     ```xml
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -233,7 +234,7 @@ Když jste postupovali podle [kroků v Azure Active Directory B2C: Začněte s v
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Otevřete okno Azure AD B2C a přejděte na**vlastní zásady** **architektury identity Experience Framework** > .
+1. Otevřete okno Azure AD B2C a přejděte na **rozhraní identity Experience Framework** > **vlastní zásady**.
 1. Vyberte vlastní zásady, které jste nahráli. Vyberte **Spustit nyní**.
 1. Zaregistrujte se pomocí e-mailové adresy.
 
@@ -256,7 +257,7 @@ Token ID odeslaný zpět do vaší aplikace zahrnuje novou vlastnost rozšířen
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 1. Přidejte novou deklaraci identity do toků, abyste se mohli přihlásit k účtům sociálních sítí změnou následujících **TechnicalProfiles**. Sociální a federované účty používají tyto dvě **TechnicalProfiles** k přihlášení. Zapisují a čtou data uživatelů pomocí **alternativeSecurityId** jako lokátoru objektu uživatele.
 
@@ -294,11 +295,12 @@ Token ID odeslaný zpět do vaší aplikace zahrnuje novou vlastnost rozšířen
    extension_<app-guid>_ActivationStatus via Graph API.
    ```
 
-## <a name="reference"></a>Reference
+## <a name="reference"></a>Referenční informace
 
 Další informace o vlastnostech rozšíření najdete v článku [rozšíření schématu adresáře | Graph API koncepty](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 
 > [!NOTE]
 > * **TechnicalProfile** je typ prvku nebo funkce, který definuje název, metadata a protokol koncového bodu. **TechnicalProfile** podrobně popisuje výměnu deklarací identity, které architektura prostředí identit provádí. Pokud je tato funkce volána v kroku orchestrace nebo z jiného **TechnicalProfile**, jsou **InputClaims** a **OutputClaims** zadány jako parametry volajícího.
-> * Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationObjectID_attributename`.
+> * Atributy rozšíření v Graph API jsou pojmenovány pomocí `extension_ApplicationObjectID_attributename`konvence.
 > * Vlastní zásady odkazují na atributy rozšíření jako **extension_attributename**. Tento odkaz vynechá **ApplicationObjectId** v XML.
+> * Je nutné zadat ID atributu v následujícím formátu **extension_attributename** bez ohledu na to, kam je odkazováno.

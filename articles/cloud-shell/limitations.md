@@ -1,6 +1,6 @@
 ---
-title: Omezení služby Azure Cloud Shell | Dokumentace Microsoftu
-description: Přehled omezení služby Azure Cloud Shell
+title: Omezení Azure Cloud Shell | Microsoft Docs
+description: Přehled omezení Azure Cloud Shell
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,76 +14,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
-ms.openlocfilehash: 8fd88221818d28c227c33719c03e522e815a408b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097023"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951475"
 ---
-# <a name="limitations-of-azure-cloud-shell"></a>Omezení služby Azure Cloud Shell
+# <a name="limitations-of-azure-cloud-shell"></a>Omezení Azure Cloud Shell
 
 Azure Cloud Shell má tato známá omezení:
 
 ## <a name="general-limitations"></a>Obecná omezení
 
-### <a name="system-state-and-persistence"></a>Stav systému a trvalosti
+### <a name="system-state-and-persistence"></a>Stav systému a trvalost
 
-Počítač, který poskytuje relace prostředí Cloud Shell je dočasný a bude recyklována po relaci je neaktivní po dobu 20 minut. Cloud Shell vyžaduje sdílenou složku Azure připojit. Předplatné musí být v důsledku toho nám nastavit prostředky úložiště pro přístup k službě Cloud Shell. Mezi další aspekty patří:
+Počítač, který poskytuje vaši relaci Cloud Shell, je dočasný a bude recyklován po neaktivním spuštění relace po dobu 20 minut. Cloud Shell vyžaduje, aby byla připojena sdílená složka Azure. V důsledku toho musí být vaše předplatné schopné nastavit prostředky úložiště pro přístup k Cloud Shell. Mezi další okolnosti patří:
 
-* Připojené úložiště, pouze změny v rámci `$Home` adresáře jsou trvalé.
-* Sdílené složky Azure je možné připojit pouze v rámci vaší [přiřazené oblasti](persisting-shell-storage.md#mount-a-new-clouddrive).
-  * V prostředí Bash, spusťte `env` najít vaši oblast nastavit jako `ACC_LOCATION`.
+* V případě připojeného úložiště jsou trvalé pouze změny v adresáři `$Home`.
+* Sdílené složky Azure je možné připojit pouze v rámci [přiřazené oblasti](persisting-shell-storage.md#mount-a-new-clouddrive).
+  * V bash spusťte `env`, abyste našli vaši oblast nastavenou jako `ACC_LOCATION`.
 
-### <a name="browser-support"></a>Podpora prohlížeče
+### <a name="browser-support"></a>Podpora prohlížečů
 
-Cloud Shell podporuje nejnovější verze Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox a Apple Safari. Safari v privátním režimu není podporováno.
+Cloud Shell podporuje nejnovější verze Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox a Apple Safari. Prohlížeč Safari v privátním režimu není podporován.
 
 ### <a name="copy-and-paste"></a>Kopírování a vkládání
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Pro daného uživatele může být aktivní pouze jeden prostředí
+### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Pro daného uživatele může být aktivní jenom jedno prostředí.
 
-Uživatelé mohou pouze spouštět jeden typ prostředí najednou, buď **Bash** nebo **Powershellu**. Však může mít více instancí spuštěných v jednom okamžiku Bashe nebo Powershellu. Prohození mezi Bashe nebo Powershellu pomocí nabídky způsobí, že službě Cloud Shell k restartování, která Ukončí existující relace. Alternativně můžete spustit bash v prostředí PowerShell zadáním `bash`, a prostředí PowerShell můžete spustit v prostředí bash zadáním `pwsh`.
+Uživatelé mohou spustit pouze jeden typ prostředí, buď **bash** nebo **PowerShell**. Může se ale stát, že v jednom okamžiku běží víc instancí bash nebo PowerShellu. Záměna mezi bash nebo PowerShellem pomocí nabídky způsobí, že se Cloud Shell restart, což ukončí existující relace. Alternativně můžete spustit bash v PowerShellu tak, že zadáte `bash`a můžete spustit PowerShell v bash zadáním `pwsh`.
 
 ### <a name="usage-limits"></a>Limity využití
 
-Cloud Shell je určen pro případy použití interaktivní. V důsledku toho se dlouho probíhající relace jako neinteraktivní skončilo bez upozornění.
+Cloud Shell je určena pro interaktivní případy použití. V důsledku toho jsou všechny dlouho běžící neinteraktivní relace ukončeny bez upozornění.
 
 ## <a name="bash-limitations"></a>Omezení bash
 
 ### <a name="user-permissions"></a>Uživatelská oprávnění
 
-Oprávnění se nastavují jako běžní uživatelé bez přístupu sudo. Všechny instalace mimo váš `$Home` adresář není trvalý.
+Oprávnění se nastaví jako běžné uživatele bez přístupu k sudo. Žádná instalace mimo váš `$Home` adresář není trvalá.
 
-### <a name="editing-bashrc-or-profile"></a>Úpravy .bashrc nebo $PROFILE
+### <a name="editing-bashrc-or-profile"></a>Editace. bashrc nebo $PROFILE
 
-Provést opatrní při úpravách .bashrc nebo Powershellu $PROFILE souboru, to může způsobit neočekávané chyby ve službě Cloud Shell.
+Při úpravách souboru $PROFILE prostředí PowerShell buďte opatrní. v takovém případě může dojít k neočekávaným chybám v Cloud Shell.
 
 ## <a name="powershell-limitations"></a>Omezení prostředí PowerShell
 
-### <a name="azuread-module-name"></a>`AzureAD` Název modulu
+### <a name="azuread-module-name"></a>název modulu `AzureAD`
 
-`AzureAD` Název modulu je aktuálně `AzureAD.Standard.Preview`, modul nabízí stejné funkce.
+Název modulu `AzureAD` je v tuto chvíli `AzureAD.Standard.Preview`, modul nabízí stejné funkce.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer` modul funkce
+### <a name="sqlserver-module-functionality"></a>funkce modulu `SqlServer`
 
-`SqlServer` Ve službě Cloud Shell zahrnuje modul má pouze předprodejní podpora pro PowerShell Core. Zejména `Invoke-SqlCmd` ještě není k dispozici.
+Modul `SqlServer` zahrnutý v Cloud Shell obsahuje jenom předprodejní podporu pro PowerShell Core. Konkrétně `Invoke-SqlCmd` ještě není k dispozici.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Výchozí umístění souboru při vytvoření z disku Azure:
+### <a name="default-file-location-when-created-from-azure-drive"></a>Výchozí umístění souboru při vytvoření z jednotky Azure:
 
-Pomocí rutin prostředí PowerShell, uživatelé nemůžou vytvářet soubory v Azure: disk. Když uživatelé vytvářejí nové soubory pomocí jiných nástrojů, jako je například vim nebo nano, soubory se uloží do `$HOME` ve výchozím nastavení. 
+Pomocí rutin PowerShellu uživatelé nemůžou vytvářet soubory v rámci jednotky Azure:. Když uživatelé vytvoří nové soubory pomocí jiných nástrojů, jako je například vim nebo nano, soubory se ve výchozím nastavení uloží do `$HOME`. 
 
-### <a name="gui-applications-are-not-supported"></a>Aplikace grafického uživatelského rozhraní se nepodporují.
+### <a name="gui-applications-are-not-supported"></a>Aplikace GUI nejsou podporované.
 
-Pokud uživatel spustí příkaz, který by se vytvořit dialogové okno Windows, jeden jako zobrazí chybová zpráva: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Pokud uživatel spustí příkaz, který by vytvořil dialogové okno Windows, zobrazí se jedna chybová zpráva, například: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
-### <a name="large-gap-after-displaying-progress-bar"></a>Velké mezeru po zobrazuje indikátor průběhu
+### <a name="large-gap-after-displaying-progress-bar"></a>Velká mezera po zobrazení indikátoru průběhu
 
-Pokud uživatel provede akci, která se zobrazí indikátor, tato karta při dokončení v `Azure:` jednotky, pak je možné, že kurzor nejsou správně nastaveny a mezera se zobrazí, pokud byla dříve indikátor průběhu.
+Pokud uživatel provede akci, která zobrazuje indikátor průběhu, jako je například karta dokončování v `Azure:` jednotce, pak je možné, že kurzor není správně nastaven a mezera se zobrazí tam, kde byl indikátor průběhu dříve.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Řešení potíží s Cloud Shell](troubleshooting.md) <br>
 [Rychlý start pro Bash](quickstart.md) <br>

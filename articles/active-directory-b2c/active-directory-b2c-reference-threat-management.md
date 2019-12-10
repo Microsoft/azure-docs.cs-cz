@@ -1,5 +1,6 @@
 ---
-title: Správa hrozeb pro prostředky a data v Azure Active Directory B2C
+title: Správa hrozeb pro prostředky a data
+titleSuffix: Azure AD B2C
 description: Seznamte se s technikami zjišťování a zmírnění útoků při odepření služby a útokech na heslo v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b236dba9b682bc4d62ef8cfc8b95e67370b3e0ea
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256908"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947736"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Správa hrozeb pro prostředky a data v Azure Active Directory B2C
 
@@ -43,12 +44,12 @@ Správa nastavení ochrany heslem, včetně prahové hodnoty uzamčení:
 1. V části **zabezpečení**vyberte **metody ověřování (Preview)** a pak vyberte **ochrana heslem**.
 1. Zadejte požadovaná nastavení ochrany heslem a pak vyberte **Uložit**.
 
-    ![Stránka Azure Portal ochrana heslem v nastavení Azure AD](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
+    Stránka ![Azure Portal ochrany heslem v nastavení Azure AD](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
     <br />*Nastavení prahové hodnoty pro uzamčení na 5 v nastavení **ochrany heslem*** .
 
 ## <a name="view-locked-out-accounts"></a>Zobrazit uzamčené účty
 
-Chcete-li získat informace o uzamčených účtech, můžete zaškrtnout [sestavu aktivita přihlášení](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)služby Active Directory. V části **stav**vyberte **selhání**. Neúspěšné pokusy o přihlášení `50053` pomocí **kódu chyby přihlášení** indikující uzamčený účet:
+Chcete-li získat informace o uzamčených účtech, můžete zaškrtnout [sestavu aktivita přihlášení](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)služby Active Directory. V části **stav**vyberte **selhání**. Neúspěšné pokusy o přihlášení s **kódem chyby při přihlašování** `50053` označují uzamčený účet:
 
 ![Část sestavy přihlášení ke službě Azure AD zobrazující účet uzamčeného účtu](media/active-directory-b2c-reference-threat-management/portal-01-locked-account.png)
 

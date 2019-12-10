@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: f2a153b1eef974c8c73df49a6eed53ef5dbf2353
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076218"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951849"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoop se systémem Hadoop ve službě HDInsight
 
@@ -33,7 +33,7 @@ Verze Sqoop podporované v clusterech HDInsight najdete v tématu [co je nového
 
 Cluster HDInsight obsahuje ukázková data. Použijete následující dvě ukázky:
 
-* Soubor protokolu Apache log4j, který se nachází na adrese `/example/data/sample.log`. Následující protokoly jsou extrahovány ze souboru:
+* Soubor protokolu Apache log4j, který je umístěný na adrese `/example/data/sample.log`. Následující protokoly jsou extrahovány ze souboru:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,18 +42,18 @@ Cluster HDInsight obsahuje ukázková data. Použijete následující dvě ukáz
 ...
 ```
 
-* Tabulka podregistru s `hivesampletable`názvem, která odkazuje na datový soubor umístěný `/hive/warehouse/hivesampletable`v. Tabulka obsahuje některá data mobilních zařízení.
+* Tabulka podregistru s názvem `hivesampletable`, která odkazuje na datový soubor umístěný v `/hive/warehouse/hivesampletable`. Tabulka obsahuje některá data mobilních zařízení.
   
-  | Pole | Datový typ |
+  | Pole | Data type |
   | --- | --- |
-  | ClientID |řetězec |
-  | querytime |řetězec |
-  | Uvádět |řetězec |
-  | deviceplatform |řetězec |
-  | devicemake |řetězec |
-  | devicemodel |řetězec |
-  | state |řetězec |
-  | Krajin |řetězec |
+  | ClientID |string |
+  | querytime |string |
+  | uvádět |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | země |string |
   | querydwelltime |double |
   | SessionID |bigint |
   | sessionpagevieworder |bigint |
@@ -61,6 +61,7 @@ Cluster HDInsight obsahuje ukázková data. Použijete následující dvě ukáz
 V tomto článku pomocí těchto dvou datových sad otestujete Sqoop import a export.
 
 ## <a name="create-cluster-and-sql-database"></a>Nastavení testovacího prostředí
+
 Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure Portal pomocí Azure Resource Manager šablony. Šablonu najdete v [šablonách rychlého startu Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Šablona Správce prostředků volá balíček BacPac pro nasazení schémat tabulek do databáze SQL.  Balíček BacPac se nachází ve veřejném kontejneru objektů blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Pokud chcete použít privátní kontejner pro soubory BacPac, použijte následující hodnoty v šabloně:
 
 ```json
@@ -75,13 +76,13 @@ Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. Zadejte tyto vlastnosti:
+2. Zadejte následující vlastnosti:
 
-    |Pole |Value |
+    |Pole |Hodnota |
     |---|---|
-    |Subscription |V rozevíracím seznamu vyberte své předplatné Azure.|
-    |Resource group |Z rozevíracího seznamu vyberte skupinu prostředků nebo vytvořte novou.|
-    |Location |V rozevíracím seznamu vyberte oblast.|
+    |Předplatné |V rozevíracím seznamu vyberte své předplatné Azure.|
+    |Skupina prostředků |Z rozevíracího seznamu vyberte skupinu prostředků nebo vytvořte novou.|
+    |Umístění |V rozevíracím seznamu vyberte oblast.|
     |Název clusteru |Zadejte název clusteru Hadoop. Použijte pouze malé písmeno.|
     |Uživatelské jméno přihlášení clusteru |Nechte předem vyplněnou hodnotu `admin`.|
     |Heslo přihlášení clusteru |Zadejte heslo.|
@@ -90,11 +91,11 @@ Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure 
     |Přihlášení správce SQL |Nechte předem vyplněnou hodnotu `sqluser`.|
     |Heslo správce SQL |Zadejte heslo.|
     |Umístění _artifacts | Pokud nechcete použít vlastní soubor BacPac v jiném umístění, použijte výchozí hodnotu.|
-    |Token SAS pro umístění _artifacts |Ponechte prázdné.|
+    |Token SAS pro _artifacts umístění |Ponechte prázdné.|
     |Název souboru BacPac |Pokud nechcete použít vlastní soubor BacPac, použijte výchozí hodnotu.|
-    |Location |Použijte výchozí hodnotu.|
+    |Umístění |Použijte výchozí hodnotu.|
 
-    Název Azure SQL Server bude `<ClusterName>dbserver`. Název databáze bude `<ClusterName>db`. Výchozí název účtu úložiště bude `e6qhezrh2pdqu`.
+    Název Azure SQL Server bude `<ClusterName>dbserver`. Název databáze bude `<ClusterName>db`. Výchozí název účtu úložiště se `e6qhezrh2pdqu`.
 
 3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**.
 
@@ -113,11 +114,12 @@ HDInsight může spouštět úlohy Sqoop pomocí různých metod. Pomocí násle
 ## <a name="limitations"></a>Omezení
 
 * Hromadný export – pomocí HDInsight se systémem Linux, konektor Sqoop používaný k exportu dat do Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
-* Dávkování – se systémem Linux HDInsight při použití `-batch` přepínače při provádění operací INSERT Sqoop provede vícenásobné vkládání místo dávkování operací vložení.
+* Dávkování – se systémem Linux HDInsight při použití přepínače `-batch` při provádění operací INSERT Sqoop provede vícenásobné vkládání místo dávkování operací vložení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
 
 * [Použití Apache Hive se službou HDInsight](../hdinsight-use-hive.md)
-* [Použití Apache prasete se službou HDInsight](../hdinsight-use-pig.md)
-* [Nahrát data do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight/Azure Blob Storage.
+* [Nahrávání dat do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight/Azure Blob Storage.
+* [Import a export dat mezi Apache Hadoopem ve službě HDInsight a SQL Database pomocí Apache Sqoopu](./apache-hadoop-use-sqoop-mac-linux.md)

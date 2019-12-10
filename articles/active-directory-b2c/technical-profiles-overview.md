@@ -1,6 +1,7 @@
 ---
-title: Informace o technických profilech v Azure Active Directory B2C vlastních zásadách | Microsoft Docs
-description: Přečtěte si, jak se ve službě Azure Active Directory B2C používají technické profily ve vlastních zásadách.
+title: Přehled technických profilů ve vlastních zásadách
+titleSuffix: Azure AD B2C
+description: Přečtěte si, jak se v Azure Active Directory B2C používají technické profily ve vlastních zásadách.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063332"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951033"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informace o technických profilech v Azure Active Directory B2C vlastních zásadách
 
@@ -48,7 +49,7 @@ Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat
  
 1. **InputClaimsTransformation** – vstupní deklarace identity každé [transformace vstupních deklarací](claimstransformations.md) se vybírají z kontejneru deklarací identity a po provedení se výstupní deklarace identity vrátí do kontejneru deklarací identity. Deklarace výstupů vstupní deklarace identity můžou být vstupními deklaracemi za následné transformace vstupních deklarací.
 2. **InputClaims** – deklarace identity se vybírají z kontejneru deklarací identity a používají se pro technický profil. Například [technický profil s vlastním uplatněním](self-asserted-technical-profile.md) používá vstupní deklarace identity, které vyplní výstupní deklarace identity, které uživatel poskytuje. REST API technický profil používá vstupní deklarace identity k posílání vstupních parametrů do koncového bodu REST API. Azure Active Directory používá pro čtení, aktualizaci nebo odstranění účtu vstupní deklaraci identity jako jedinečný identifikátor.
-3. **Provádění technického profilu** – technický profil vyměňuje deklarace identity s konfigurovanou stranou. Příklad:
+3. **Provádění technického profilu** – technický profil vyměňuje deklarace identity s konfigurovanou stranou. Například:
     - Přesměrujte uživatele na zprostředkovatele identity, abyste mohli dokončit přihlášení. Po úspěšném přihlášení se uživatel vrátí zpět a provádění technického profilu bude pokračovat.
     - Volání REST API při posílání parametrů jako InputClaims a získání informací zpět jako OutputClaims.
     - Vytvořte nebo aktualizujte uživatelský účet.
@@ -56,11 +57,11 @@ Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat
 4. **ValidationTechnicalProfiles** – pro [technický profil s vlastním uplatněním](self-asserted-technical-profile.md)můžete zavolat [technický profil pro ověření](validation-technical-profile.md)vstupu. Technický profil ověření ověřuje data profilovaná uživatelem a vrací chybovou zprávu nebo je v pořádku s výstupními deklaracemi nebo bez nich. Například předtím, než Azure AD B2C vytvoří nový účet, zkontroluje, zda uživatel již existuje v adresářových službách. Můžete zavolat REST API technický profil a přidat vlastní obchodní logiku.<p>Rozsah výstupních deklarací pro technický profil ověření je omezený na technický profil, který volá technický profil ověřování a další technické profily ověřování ve stejném technickém profilu. Pokud chcete použít výstupní deklarace v dalším kroku orchestrace, je nutné přidat výstupní deklarace identity do technického profilu, který vyvolá technický profil ověření.
 5. **OutputClaims** – deklarace identity se vrátí zpět do kontejneru deklarací identity. Tyto deklarace identity můžete použít v dalších krokech orchestrace nebo z výstupních transformací deklarací.
 6. **OutputClaimsTransformations** – vstupní deklarace všech výstupních [transformací deklarací identity](claimstransformations.md) se vybírají z kontejneru deklarací identity. Výstupní deklarace identity technického profilu z předchozích kroků můžou být vstupními deklaracemi výstupní transformace deklarací identity. Po spuštění se výstupní deklarace identity vrátí do kontejneru deklarací identity. Výstupní deklarace výstupní transformace deklarací identity můžou také vstupní deklarace identity následné výstupní transformace deklarací identity.
-7. **Správa relace jednotného přihlašování (SSO)**  - Správa relace[jednotného](active-directory-b2c-reference-sso-custom.md) přihlašování řídí interakci s uživatelem po ověření uživatele. Správce může třeba určit, jestli se má zobrazit výběr zprostředkovatelů identity, nebo jestli se mají zadat podrobnosti o místním účtu znovu.
+7. **Správa relací jednotného přihlašování (SSO)**  - [Správa relací jednotného](active-directory-b2c-reference-sso-custom.md) přihlašování řídí interakci s uživatelem po ověření uživatele. Správce může třeba určit, jestli se má zobrazit výběr zprostředkovatelů identity, nebo jestli se mají zadat podrobnosti o místním účtu znovu.
 
 Technický profil může dědit z jiného technického profilu a změnit nastavení nebo přidat nové funkce.  Element **IncludeTechnicalProfile** je odkazem na základní technický profil, ze kterého je odvozen technický profil.
 
-Například technický profil **AAD-UserReadUsingAlternativeSecurityId-inerror** zahrnuje **AAD-UserReadUsingAlternativeSecurityId**. Tento technický profil nastaví položku metadat **RaiseErrorIfClaimsPrincipalDoesNotExist** na `true`a vyvolá chybu, pokud účet sociální sítě v adresáři neexistuje. **AAD-UserReadUsingAlternativeSecurityId-** informování tohoto chování potlačí a zakáže chybovou zprávu, pokud uživatel neexistoval.
+Například technický profil **AAD-UserReadUsingAlternativeSecurityId-inerror** zahrnuje **AAD-UserReadUsingAlternativeSecurityId**. Tento technický profil nastaví položku metadat **RaiseErrorIfClaimsPrincipalDoesNotExist** na `true`a vyvolá chybu, pokud v adresáři neexistuje účet sociální sítě. **AAD-UserReadUsingAlternativeSecurityId-** informování tohoto chování potlačí a zakáže chybovou zprávu, pokud uživatel neexistoval.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
@@ -71,7 +72,7 @@ Například technický profil **AAD-UserReadUsingAlternativeSecurityId-inerror**
 </TechnicalProfile>
 ```
 
-**AAD-UserReadUsingAlternativeSecurityId** zahrnuje `AAD-Common` technický profil.
+**AAD-UserReadUsingAlternativeSecurityId** zahrnuje profil `AAD-Common` Technical.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
@@ -105,7 +106,7 @@ Parametr **AAD-UserReadUsingAlternativeSecurityId-inerror** a **AAD-UserReadUsin
 </TechnicalProfile>
 ```
 
-Technický profil může zahrnovat nebo zdědit jiný technický profil, který může obsahovat další. Počet úrovní není nijak omezený. V závislosti na podnikových požadavcích může vaše cesta uživatele volat **AAD-UserReadUsingAlternativeSecurityId** , která vyvolá chybu, pokud účet sociální sítě uživatele neexistuje nebo pokud není k dispozici **Chyba AAD-UserReadUsingAlternativeSecurityId-** bez vyvolá chybu.
+Technický profil může zahrnovat nebo zdědit jiný technický profil, který může obsahovat další. Počet úrovní není nijak omezený. V závislosti na podnikových požadavcích může vaše cesta uživatele volat **AAD-UserReadUsingAlternativeSecurityId** , která vyvolá chybu, pokud účet sociální sítě uživatele neexistuje nebo pokud není k dispozici **Chyba AAD-UserReadUsingAlternativeSecurityId-** , která nevyvolává chybu.
 
 
 

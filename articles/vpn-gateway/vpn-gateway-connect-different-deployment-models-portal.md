@@ -1,5 +1,5 @@
 ---
-title: 'Propojení klasických virtuálních sítí s Azure Resource Manager virtuální sítě: Portál | Microsoft Docs'
+title: 'Propojení klasických virtuálních sítí s Azure Resource Manager virtuální sítě: Portal | Microsoft Docs'
 description: Postup připojení klasického virtuální sítěu k Správce prostředků virtuální sítě pomocí VPN Gateway a portálu
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 722907328fe17c4116f4f8d948e081f9582ca712
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266561"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951730"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Propojení virtuálních sítí z různých modelů nasazení pomocí portálu
 
@@ -75,16 +75,16 @@ Pro tuto konfiguraci vytvoříte připojení brány sítě VPN přes tunelové p
 
 V následující tabulce je uveden příklad, jak jsou definovány příklady virtuální sítě a místní lokality:
 
-| Virtuální sítě | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
+| Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |USA – západ | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
+| ClassicVNet |(10.0.0.0/24) |Západní USA | RMVNetLocal (192.168.0.0/16) |
+| RMVNet | (192.168.0.0/16) |USA – východ |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>Oddíl 1 – Konfigurace nastavení klasické virtuální sítě
 
 V této části vytvoříte klasickou virtuální síť, místní síť (místní lokalitu) a bránu virtuální sítě. Snímky obrazovek slouží jen jako příklady. Nezapomeňte hodnoty nahradit vlastními, nebo použijte [ukázkové](#values) hodnoty.
 
-### 1. <a name="classicvnet"></a>Vytvoření klasické virtuální sítě
+### 1. <a name="classicvnet"> </a>vytvoření virtuální sítě Classic
 
 Pokud nemáte klasickou virtuální síť a spouštíte tyto kroky jako cvičení, můžete vytvořit virtuální síť pomocí [tohoto článku](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a výše uvedené [Příklady](#values) hodnot nastavení.
 
@@ -96,11 +96,11 @@ Pokud již máte virtuální síť s bránou sítě VPN, ověřte, zda je brána
 4. Vyhledejte ' Virtual Network ' ze seznamu vrácených a kliknutím na něj otevřete stránku Virtual Network. 
 5. Na stránce virtuální síť vyberte Classic a vytvořte klasickou virtuální síť. Pokud zde použijete výchozí nastavení, budete místo toho mít k disSprávce prostředků virtuální síť.
 
-### 2. <a name="local"></a>Konfigurace místní lokality
+### 2. <a name="local"> </a>konfigurace místní lokality
 
 1. Přejděte na **všechny prostředky** a vyhledejte v seznamu **ClassicVNet** .
-2. Na stránce **Přehled** v části **připojení VPN** klikněte na **Brána** a vytvořte bránu.
-  ![Konfigurace služby VPN Gateway](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Konfigurace služby VPN Gateway")
+2. Klikněte na **Brána** v části **Nastavení** v nabídce a pak kliknutím na banner vytvořte bránu.
+  ![Konfigurace brány VPN](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Cnapíšeme bránu VPN.)
 3. Na stránce **nové připojení VPN** pro **Typ připojení**vyberte **site-to-site**.
 4. U možnosti **místní lokalita**klikněte na **konfigurovat požadovaná nastavení**. Tím se otevře stránka **místní web** .
 5. Na stránce **místní lokalita** vytvořte název, který bude odkazovat na správce prostředků virtuální síť. Například ' RMVNetLocal '.
@@ -120,7 +120,7 @@ Pokud již máte virtuální síť s bránou sítě VPN, ověřte, zda je brána
 6. Ověřte, zda je **typ směrování** **dynamický**, a kliknutím na tlačítko **OK** se vraťte na stránku **nové připojení k síti VPN** .
 7. Na stránce **nové připojení VPN** klikněte na **OK** a začněte vytvářet bránu VPN. Dokončení vytváření brány sítě VPN může trvat až 45 minut.
 
-### <a name="ip"></a>4. Zkopírování veřejné IP adresy brány virtuální sítě
+### <a name="ip"></a>4. Zkopírujte veřejnou IP adresu brány virtuální sítě.
 
 Po vytvoření brány virtuální sítě si můžete zobrazit IP adresu brány. 
 
@@ -132,7 +132,7 @@ Po vytvoření brány virtuální sítě si můžete zobrazit IP adresu brány.
 
 V této části vytvoříte bránu virtuální sítě a bránu místní sítě pro vaši virtuální síť Správce prostředků. Snímky obrazovek slouží jen jako příklady. Nezapomeňte hodnoty nahradit vlastními, nebo použijte [ukázkové](#values) hodnoty.
 
-### <a name="1-create-a-virtual-network"></a>1. Vytvoření virtuální sítě
+### <a name="1-create-a-virtual-network"></a>1. vytvoření virtuální sítě
 
 **Příklady hodnot:**
 
@@ -170,10 +170,10 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 
 **Příklady hodnot:** Brána místní sítě = ClassicVNetLocal
 
-| Virtuální sítě | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |Veřejná IP adresa brány|
+| Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |Veřejná IP adresa brány|
 |:--- |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |USA – západ | RMVNetLocal (192.168.0.0/16) |Veřejná IP adresa, která je přiřazená bráně ClassicVNet|
-| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |Veřejná IP adresa, která je přiřazená bráně RMVNet.|
+| ClassicVNet |(10.0.0.0/24) |Západní USA | RMVNetLocal (192.168.0.0/16) |Veřejná IP adresa, která je přiřazená bráně ClassicVNet|
+| RMVNet | (192.168.0.0/16) |USA – východ |ClassicVNetLocal (10.0.0.0/24) |Veřejná IP adresa, která je přiřazená bráně RMVNet.|
 
 Brána místní sítě určuje rozsah adres a veřejnou IP adresu přidruženou k vaší klasické virtuální síti a její bráně virtuální sítě. Pokud provedete tyto kroky jako cvičení, přečtěte si příklady hodnot.
 
@@ -204,10 +204,10 @@ V této části nahradíte zástupnou IP adresu, kterou jste použili při zadá
 V těchto krocích nakonfigurujete připojení z Správce prostředků VNet na klasickou virtuální síť pomocí Azure Portal.
 
 1. V části **všechny prostředky**vyhledejte bránu místní sítě. V našem příkladu je brána místní sítě **ClassicVNetLocal**.
-2. Klikněte na **Konfigurace** a ověřte, jestli je hodnota IP adresa bránou sítě VPN pro klasickou virtuální síť. V případě potřeby aktualizujte a pak klikněte na **Uložit**. Zavřete stránku.
+2. Klikněte na **Konfigurace** a ověřte, jestli je hodnota IP adresa bránou sítě VPN pro klasickou virtuální síť. V případě potřeby aktualizujte a pak klikněte na **Uložit**. Stránku zavřete.
 3. V části **všechny prostředky**klikněte na bránu místní sítě.
 4. Kliknutím na **připojení** otevřete stránku připojení.
-5. Na stránce **připojení** klikněte **+** na Přidat připojení.
+5. Na stránce **připojení** kliknutím na **+** přidejte připojení.
 6. Na stránce **Přidat připojení zadejte** název připojení. Například ' RMtoClassic '.
 7. **Site-to-site** je již na této stránce vybrán.
 8. Vyberte bránu virtuální sítě, kterou chcete přidružit k tomuto webu.
@@ -218,7 +218,7 @@ V těchto krocích nakonfigurujete připojení z Správce prostředků VNet na k
 
 V těchto krocích nakonfigurujete připojení z klasické virtuální sítě k virtuální síti Správce prostředků. Tyto kroky vyžadují prostředí PowerShell. Toto připojení nemůžete vytvořit na portálu. Ujistěte se, že jste stáhli a nainstalovali rutiny prostředí PowerShell pro Classic (SM) a Správce prostředků (RM).
 
-### <a name="1-connect-to-your-azure-account"></a>1. Připojení k účtu Azure
+### <a name="1-connect-to-your-azure-account"></a>1. Připojte se k účtu Azure
 
 Otevřete konzolu PowerShellu se zvýšenými právy a přihlaste se ke svému účtu Azure. Po přihlášení se stáhne nastavení účtu, aby bylo možné Azure PowerShell. Následující rutina vás vyzve k zadání přihlašovacích údajů pro váš účet Azure pro model nasazení Správce prostředků:
 
@@ -256,9 +256,9 @@ Pokud máte více než jedno předplatné, zadejte předplatné, které chcete p
 Select-AzureSubscription -SubscriptionName "Name of subscription"
 ```
 
-### <a name="2-view-the-network-configuration-file-values"></a>2. Zobrazit hodnoty konfiguračního souboru sítě
+### <a name="2-view-the-network-configuration-file-values"></a>2. Prohlédněte si hodnoty konfiguračního souboru sítě.
 
-Když v Azure Portal vytvoříte virtuální síť, úplný název, který Azure používá, není viditelný v Azure Portal. Například virtuální síť, která se zdá mít název "ClassicVNet" v Azure Portal může mít v souboru konfigurace sítě mnohem delší název. Název může vypadat nějak takto: ' Group ClassicRG ClassicVNet '. V těchto krocích stáhnete konfigurační soubor sítě a zobrazíte hodnoty.
+Když v Azure Portal vytvoříte virtuální síť, úplný název, který Azure používá, není viditelný v Azure Portal. Například virtuální síť, která se zdá mít název "ClassicVNet" v Azure Portal může mít v souboru konfigurace sítě mnohem delší název. Název může vypadat nějak takto: "Group ClassicRG ClassicVNet". V těchto krocích stáhnete konfigurační soubor sítě a zobrazíte hodnoty.
 
 Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. V tomto příkladu se soubor konfigurace sítě exportuje do adresáře C:\AzureNet.
 
@@ -271,7 +271,7 @@ Otevřete soubor pomocí textového editoru a zobrazte název své klasické vir
 - Názvy virtuální sítě jsou uvedené jako **VirtualNetworkSite název =**
 - Názvy webů jsou uvedené jako **LocalNetworkSite název =**
 
-### <a name="3-create-the-connection"></a>3. Vytvoření připojení
+### <a name="3-create-the-connection"></a>3. vytvoření připojení
 
 Nastavte sdílený klíč a vytvořte připojení z klasické virtuální sítě k virtuální síti Správce prostředků. Pomocí portálu nemůžete nastavit sdílený klíč. Pokud jste se přihlásili pomocí klasické verze rutin PowerShellu, ujistěte se, že tyto kroky spustíte. Uděláte to tak, že použijete **příkaz Add-AzureAccount**. V opačném případě nebudete moci nastavit '-AzureVNetGatewayKey '.
 

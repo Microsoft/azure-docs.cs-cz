@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: a770fca4f14e5441e5ef4f7bc99d9c0abd9a59d3
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 4a1e621570f3bf5fdb78a2fd7b29ce0d1b51187f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241633"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951781"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning v HDInsight
 
@@ -21,23 +21,23 @@ HDInsight umožňuje strojové učení s velkými objemy dat a poskytuje možnos
 
 ## <a name="sparkml-and-mllib"></a>SparkML a MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) je [Apache Spark](https://spark.apache.org/)nabídka hostované v Azure, která představuje jednotnou Open Source architekturu paralelního zpracování dat, která podporuje zpracování v paměti, aby se zvýšila analýza velkých objemů dat. Modul pro zpracování Spark je založený na rychlosti, snadném použití a propracované analýze. Funkce distribuovaného výpočtu v paměti Sparku nabízí dobrou volbu pro iterativní algoritmy používané v strojovém učení a výpočtech grafů. Existují dvě škálovatelné knihovny strojového učení, které přinášejí funkce pro modelování algoritmu do tohoto distribuovaného prostředí: MLlib a SparkML. MLlib obsahuje původní rozhraní API postavené nad RDD. SparkML je novější balíček, který poskytuje rozhraní API vyšší úrovně postavené nad datovými snímky pro sestavování kanálů ML. SparkML ještě nepodporuje všechny funkce MLlib, ale nahrazuje MLlib jako standardní knihovnu strojového učení Spark.
+[HDInsight Spark](spark/apache-spark-overview.md) je [Apache Spark](https://spark.apache.org/)nabídka hostované v Azure, která představuje jednotnou Open Source architekturu paralelního zpracování dat, která podporuje zpracování v paměti, aby se zvýšila analýza velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. Existují dvě škálovatelné knihovny strojového učení, které přinášejí funkce pro modelování algoritmu do tohoto distribuovaného prostředí: MLlib a SparkML. MLlib obsahuje původní rozhraní API postavené nad RDD. SparkML je novější balíček, který poskytuje rozhraní API vyšší úrovně postavené nad datovými snímky pro sestavování kanálů ML. SparkML ještě nepodporuje všechny funkce MLlib, ale nahrazuje MLlib jako standardní knihovnu strojového učení Spark.
 
 Knihovna Microsoft Machine Learning pro Apache Spark je [MMLSpark](https://github.com/Azure/mmlspark). Tato knihovna je navržená tak, aby byly vědečtí data ve Sparku větší produktivita, zvýšila se rychlost experimentu a využila špičkové techniky strojového učení, včetně hloubkového učení, u velmi rozsáhlých datových sad. MMLSpark poskytuje vrstvu nad rozhraními API nízké úrovně SparkML při sestavování škálovatelných modelů ML, jako jsou indexování řetězců, vynucený data do rozložení očekávaného algoritmy strojového učení a nastavování vektorů funkcí. MMLSpark Library zjednodušuje tyto a další běžné úlohy pro vytváření modelů v PySpark.
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) je aktuálně nejoblíbenější statistická programovací jazyk na světě. Jedná se o open source nástroj pro vizualizaci dat s komunitou více než 2 500 000 uživatelů a rostoucím. Díky svému prosperující uživatelské základu a více než 8 000 balíčkům, R je pravděpodobně volba pro mnoho společností, které potřebují strojové učení. Můžete vytvořit cluster HDInsight se službami ML, který je připravený k použití s obrovskými datovými sadami a modely. Tato funkce poskytuje odborníci na data a statistiku se známým rozhraním jazyka R, které umožňuje škálování na vyžádání prostřednictvím služby HDInsight bez režie instalace a údržby clusteru.
+[R](https://www.r-project.org/) je aktuálně nejoblíbenější statistická programovací jazyk na světě. Je to open-source nástroj pro vizualizaci dat s komunitou více než 2 500 000 uživatelů a rostoucím počtem. Díky svému prosperující uživatelské základu a více než 8 000 balíčkům, R je pravděpodobně volba pro mnoho společností, které potřebují strojové učení. Můžete vytvořit cluster HDInsight se službami ML, který je připravený k použití s obrovskými datovými sadami a modely. Tato funkce poskytuje odborníci na data a statistiku se známým rozhraním jazyka R, které umožňuje škálování na vyžádání prostřednictvím služby HDInsight bez režie instalace a údržby clusteru.
 
 ![Školení pro předpověď s R serverem](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
-Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R.  Máte také možnost spouštět v uzlech clusteru skripty jazyka R pomocí výpočetních kontextů rozšíření Hadoop mapy Hadoop nebo Spark.
+Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R.  V uzlech clusteru můžete také spouštět skripty jazyka R pomocí výpočetních kontextů Hadoop v mapě Hadoop pro horizontální navýšení nebo Spark.
 
 Pomocí služby ML Services ve službě HDInsight se systémem Spark můžete paralelizovat školení napříč uzly clusteru pomocí výpočetního kontextu Spark. V případě potřeby můžete spouštět skripty jazyka R přímo na hraničním uzlu, a to pomocí všech dostupných jader současně. Alternativně můžete spustit kód z hraničního uzlu pro vypnutí zpracování, které je distribuováno napříč všemi uzly v clusteru. Služba ML Services ve službě HDInsight se systémem Spark také v případě potřeby povoluje funkce virtuálního z open source balíčků R.
 
 ## <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning a Apache Hive
 
-Azure Machine Learning poskytuje nástroje pro modelování prediktivních analýz a také plně spravovanou službu, kterou můžete použít k nasazení prediktivních modelů jako připravených webových služeb. Azure Machine Learning je kompletní řešení prediktivní analýzy v cloudu, které můžete použít k vytváření, testování, zprovoznění a správě prediktivních modelů. Vyberte si z velké knihovny algoritmů, použijte webové Studio pro vytváření modelů a jednoduše nasaďte model jako webovou službu.
+Azure Machine Learning poskytuje nástroje pro modelování prediktivních analýz a plně spravovanou službu, kterou můžete použít k nasazení prediktivních modelů jako připravených webových služeb. Azure Machine Learning je kompletní řešení prediktivní analýzy v cloudu, které můžete použít k vytváření, testování, zprovoznění a správě prediktivních modelů. Vyberte si z velké knihovny algoritmů, použijte webové Studio pro vytváření modelů a jednoduše nasaďte model jako webovou službu.
 
 ![Přehled Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 

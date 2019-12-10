@@ -1,5 +1,6 @@
 ---
-title: Řešení potíží s vlastními zásadami pomocí Application Insights-Azure Active Directory B2C
+title: Řešení potíží s vlastními zásadami pomocí Application Insights
+titleSuffix: Azure AD B2C
 description: Jak nastavit Application Insights pro trasování provádění vašich vlastních zásad.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602021"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950081"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
 
@@ -30,7 +31,7 @@ Podrobné protokoly aktivit popsané tady by měly být povolené **jenom** běh
 
 Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insights.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vaše předplatné Azure (ne váš Azure AD B2C adresář).
 1. V navigační nabídce vlevo vyberte **vytvořit prostředek** .
 1. Vyhledejte a vyberte **Application Insights**a pak vyberte **vytvořit**.
@@ -60,7 +61,7 @@ Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insight
     * `ClientEnabled="true"` odesílá ApplicationInsights skript na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"`přidáte do skriptu stránky Application Insights a obdržíte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné**a ve výchozím nastavení je nastavené na `false`.
     * `ServerEnabled="true"` odešle existující JSON UserJourneyRecorder jako vlastní událost pro Application Insights.
 
-    Příklad:
+    Například:
 
     ```XML
     <TrustFrameworkPolicy

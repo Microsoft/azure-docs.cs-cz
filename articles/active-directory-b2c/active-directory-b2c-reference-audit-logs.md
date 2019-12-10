@@ -1,6 +1,7 @@
 ---
-title: Ukázky a definice protokolů auditu v Azure Active Directory B2C
-description: Průvodce a ukázky pro přístup k protokolům auditu Azure AD B2C.
+title: Přístup k protokolům auditu a jejich kontrola
+titleSuffix: Azure AD B2C
+description: Přístup k protokolům auditu Azure AD B2C programově a v Azure Portal.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1070314767f280ec9d15390dc838fa80b5508e2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643601"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948228"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -38,7 +39,7 @@ Kategorie **B2C** v protokolech auditu obsahuje následující typy aktivit:
 |Aplikace | Operace vytvoření, čtení, aktualizace a odstranění (CRUD) v aplikacích B2C. |
 |Klíč |Operace CRUD na klíčích uložených v kontejneru klíčů B2C |
 |Prostředek |Operace CRUD u prostředků B2C Například zásady a zprostředkovatelé identity.
-|Ověřování |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
+|Ověření |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
 
 Pro aktivity objektů CRUD uživatele se podívejte do kategorie **základní adresář** .
 
@@ -52,13 +53,13 @@ Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 
 |Sekce|Pole|Popis|
 |-------|-----|-----------|
-| Aktivita | Name (Název) | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře vlastní přihlášení uživatele. |
-| Iniciované uživatelem (actor) | Objektu | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
+| Aktivita | Name (Název) | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
+| Iniciované uživatelem (actor) | ObjectId | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
-| Cíl (y) | Objektu | **ID objektu** uživatele, který se přihlašuje. |
+| Cíle | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
 | Další podrobnosti | TenantId | **ID tenanta** klienta Azure AD B2C. |
-| Další podrobnosti | policyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
-| Další podrobnosti | applicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
+| Další podrobnosti | `PolicyId` | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
+| Další podrobnosti | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Zobrazit protokoly auditu v Azure Portal
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ba95723e62cec9708684665a9d141b1e39ccb831
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816398"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951832"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -62,6 +62,9 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 | Formát archivu | .zip |
 | Maximální velikost archivu | 2 GB |
 
+> [!TIP]
+> Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Pokud potřebujete další data pro školení a testování, rozdělte je do několika souborů zip a nahrajte je samostatně. Později můžete zvolit výuku a testování z *více* datových sad.
+
 Pokud Váš zvuk nevyhovuje těmto vlastnostem nebo chcete zjistit, jestli to není, doporučujeme, abyste si stáhli [Sox](http://sox.sourceforge.net) a zkontrolovali nebo převedli zvuk. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku:
 
 | Aktivita | Popis | Sox – příkaz |
@@ -71,7 +74,7 @@ Pokud Váš zvuk nevyhovuje těmto vlastnostem nebo chcete zjistit, jestli to ne
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Audio + přepisované údaje přepisu pro testování/školení
 
-Chcete-li změřit přesnost přesnosti řeči na text od společnosti Microsoft při zpracování zvukových souborů, je nutné zadat přepisy (Word-by-Word) pro porovnání. I když je přepis uživatelsky popisku často časově náročný, je nutné vyhodnotit přesnost a vyškolit model pro vaše případy použití. Mějte na paměti, že vylepšení v oblasti rozpoznávání budou stejně vhodná jako poskytnutá data. Z tohoto důvodu je důležité, aby se nahrály jenom přepisy s vysokou kvalitou.  
+Chcete-li změřit přesnost přesnosti řeči na text od společnosti Microsoft při zpracování zvukových souborů, je nutné zadat přepisy (Word-by-Word) pro porovnání. I když je přepis uživatelsky popisku často časově náročný, je nutné vyhodnotit přesnost a vyškolit model pro vaše případy použití. Mějte na paměti, že vylepšení v oblasti rozpoznávání budou stejně vhodná jako poskytnutá data. Z tohoto důvodu je důležité, aby se nahrály jenom přepisy s vysokou kvalitou.
 
 | Vlastnost | Hodnota |
 |----------|-------|
@@ -82,6 +85,9 @@ Chcete-li změřit přesnost přesnosti řeči na text od společnosti Microsoft
 | Vzorový formát | PCM, 16 bitů |
 | Formát archivu | .zip |
 | Maximální velikost souboru ZIP | 2 GB |
+
+> [!TIP]
+> Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Pokud potřebujete další data pro školení a testování, rozdělte je do několika souborů zip a nahrajte je samostatně. Později můžete zvolit výuku a testování z *více* datových sad.
 
 Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slovech přibližně 10 až 1 000 hodin zvukového přenosu. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 

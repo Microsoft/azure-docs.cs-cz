@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 501e5bc1b2de91e0dd74ae0f0d9163d74dcb06f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900382"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941555"
 ---
 # <a name="references"></a>Odkazy
 
@@ -23,7 +23,7 @@ Rozhraní API Azure FarmBeats poskytují zemědělským firmám standardizované
 - Rozhraní API pro získání senzorů, fotoaparátů, pomocí dronů, počasí, satelitních a spravovaných pozemních dat.
 - Normalizace a kontext dat napříč společnými poskytovateli dat.
 - Schematized přístup a možnosti dotazování pro všechna ingestovaná data.
-- Automatické generování metadat, na které lze dotazovat, na základě agronomických funkcí. 
+- Automatické generování metadat, na které lze dotazovat, na základě agronomických funkcí.
 - Automaticky generované agregace časových sekvencí pro rychlé vytváření modelů.
 - Integrovaný modul Azure Data Factory, který umožňuje snadno vytvářet vlastní kanály zpracování dat.
 
@@ -102,7 +102,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 ### <a name="query-parameters"></a>Parametry dotazu
 
 V případě volání funkce REST můžete filtrovat, omezit velikost a seřadit data v odpovědi rozhraní API zahrnutím jednoho nebo více parametrů dotazu do identifikátoru URI požadavku. Parametry dotazu najdete v dokumentaci k rozhraní API a v jednotlivých voláních GET.
-Například při dotazování na seznam zařízení (získat hovor v/Device) lze zadat následující parametry dotazu: 
+Například při dotazování na seznam zařízení (získat hovor v/Device) lze zadat následující parametry dotazu:
 
 ![Seznam zařízení](./media/for-references/query-parameters-device-1.png)
 
@@ -163,12 +163,12 @@ K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registra
 
 4. Přejít do [DataHub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) a provést následující akce:
     - Přejít na **rozhraní RoleAssignment API**.
-    - Proveďte příspěvek pro vytvoření objektu **RoleAssignment** pro **ID objektu** , který jste právě vytvořili. 
+    - Proveďte příspěvek pro vytvoření objektu **RoleAssignment** pro **ID objektu** , který jste právě vytvořili.
 
   > [!NOTE]
   > Další informace o tom, jak přidat uživatele a registraci služby Active Directory, najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Po dokončení předchozích kroků může registrace vaší aplikace (klienta) volat rozhraní API Azure FarmBeats pomocí přístupového tokenu prostřednictvím ověření identity. 
+Po dokončení předchozích kroků může registrace vaší aplikace (klienta) volat rozhraní API Azure FarmBeats pomocí přístupového tokenu prostřednictvím ověření identity.
 
 Pomocí přístupového tokenu ho odešlete v následujících požadavcích rozhraní API v části záhlaví jako:
 

@@ -1,5 +1,5 @@
 ---
-title: Čištění a příprava dat pro Azure Machine Learning – vědecké zpracování týmových dat
+title: Příprava dat pro ML Studio (Classic) – vědecký proces týmového zpracování dat
 description: Předběžně zpracovat a vyčistit data, aby byl připravený k dá efektivně využít pro machine learning.
 services: machine-learning
 author: marktab
@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
+ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044596"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74936033"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
 Předběžné zpracování a čištění dat jsou důležité úkoly, které obvykle musí být provedeny před datové sady se dá efektivně využít pro machine learning. Nezpracovaná data se často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto dat pro modelování můžete vytvářet zavádějící výsledky. Tyto úlohy jsou součástí nástroje zpracování týmových dat vědy (TDSP) a obvykle postupujte podle počáteční zkoumání použít ke zjištění a plánování předběžného zpracování požadované datové sady. Další podrobné pokyny týkající se procesu TDSP, najdete v článku podle kroků uvedených v [vědecké zpracování týmových dat](overview.md).
 
 Předběžné zpracování a čištění úkoly, jako je úloha zkoumání dat, lze provádět v nejrůznějších prostředích, jako je SQL nebo Hive nebo Azure Machine Learning Studio a různé nástroje a jazyky, jako je R nebo Python, v závislosti, kde se vaše data uložená a jak je formátováno. Protože je iterativní ze své podstaty TDSP, tyto úlohy může proběhnout na různé kroky v procesu pracovního postupu.
 
-Tento článek představuje různé koncepty zpracování dat a úlohy, které mohou být provedeny před nebo po ingestovat data do Azure Machine Learning.
+V tomto článku se seznámíte s různými koncepty zpracování dat a úlohami, které je možné provést před nebo po ingestování dat do Azure ML Studio (Classic).
 
-Příklad zkoumání dat a předběžné zpracování v rámci Azure Machine Learning studio, najdete v článku [předběžného zpracování dat v Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videa.
+Příklad zkoumání a předběžného zpracování dat v rámci Azure ML Studio (Classic) najdete v tématu [předzpracování datových](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videí.
 
 ## <a name="why-pre-process-and-clean-data"></a>Proč předběžně zpracovat a vyčistit data?
 Shromáždění dat reálného světa z různých zdrojů a procesy a může obsahovat nesrovnalosti nebo poškozená data tím bylo narušeno kvalitu datové sady. Problémy s kvalitou typické dat, které vznikají jsou:
@@ -51,13 +51,13 @@ Obecné kvality dat můžete zkontrolovat tak, že zkontrolujete:
 
 Pokud narazíte na problémy s daty, **kroky zpracování** jsou nezbytné, což často zahrnuje vyčištění chybějících hodnot, data normalizace, diskretizace, zpracování textu můžete odebrat nebo nahradit vložené znaky, které může mít vliv na data v běžných zarovnání, různé datové typy, pole a další.
 
-**Využívá Azure Machine Learning ve správném formátu tabulková data**.  Pokud už data ve formě tabulky, předběžného zpracování dat můžete provést přímo s Azure Machine Learning v nástroji Machine Learning Studio.  Pokud data nejsou ve formě tabulky, Řekněme, který je ve formátu XML, analýza kódu může být potřeba, abyste mohli data převést do formátu tabulky.  
+**Využívá Azure Machine Learning ve správném formátu tabulková data**.  Pokud jsou data již v tabulkovém formátu, lze předběžné zpracování dat provést přímo s Azure ML Studio (Classic) v Machine Learning.  Pokud data nejsou ve formě tabulky, Řekněme, který je ve formátu XML, analýza kódu může být potřeba, abyste mohli data převést do formátu tabulky.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Jaké jsou některé z hlavních úloh v předběžné zpracování dat?
-* **Čištění dat**:  Vyplňte nebo chybějící hodnoty, zjistit a odebrat hlučného dat a odlehlé hodnoty.
-* **Transformace dat**:  Normalizujte data a snižuje tak dimenzí a šumu.
-* **Redukce dat**:  Ukázky datových záznamů nebo atributy pro snazší zpracování dat
-* **Data diskretizace**:  Pomocí některé metody machine learning převeďte souvislé atributy zařazené do kategorií atributy pro snadné použití.
+* **Čištění dat**: vyplnit nebo chybějící hodnoty, zjistit a odebrat hlučného dat a odlehlé hodnoty.
+* **Transformace dat**: normalizovat data a snižuje tak dimenzí a šumu.
+* **Redukce dat**: ukázkový atributy pro snazší zpracování dat nebo datových záznamů.
+* **Data diskretizace**: pomocí některé metody machine learning převádět souvislé atributy zařazené do kategorií atributy pro snadné použití.
 * **Čištění text**: odebrat vložené znaky, které může způsobit, že chybné zarovnání dat, například vložený karty v oddělené tabulátorem datový soubor, vložit nové řádky, které mohou přestat fungovat záznamy atd.
 
 Následující části podrobně popisují některé z těchto kroků zpracování dat.
@@ -65,31 +65,31 @@ Následující části podrobně popisují některé z těchto kroků zpracován
 ## <a name="how-to-deal-with-missing-values"></a>Jak zacházet s chybějící hodnoty?
 Vypořádat s chybějícími hodnotami, doporučujeme nejdřív zjistit příčinu pro chybějící hodnoty pro lepší zvládání problém. Typické chybí hodnota zpracování metody jsou následující:
 
-* **Odstranění**: Odebrat záznamy s chybějící hodnoty
-* **Zástupný nahrazení**: Chybějící hodnoty nahradit fiktivní hodnoty: například *neznámý* zařazené do kategorií nebo 0 pro numerické hodnoty.
-* **Znamenají nahrazení**: Pokud chybí data jsou číselná, nahraďte chybějící hodnoty střední.
-* **Časté nahrazení**: Pokud chybí data jsou zařazené do kategorií, chybějící hodnoty nahraďte nejčastěji se vyskytujících položky
-* **Nahrazení regrese**: Chybějící hodnoty nahraďte nižším hodnoty použijte metodu regrese.  
+* **Odstranění**: odebrat záznamy s chybějící hodnoty
+* **Zástupný nahrazení**: chybějící hodnoty nahradit fiktivní hodnoty: například *neznámý* zařazené do kategorií nebo 0 pro numerické hodnoty.
+* **Znamenají nahrazení**: Pokud chybí data jsou číselná, chybějící hodnoty nahradit střední.
+* **Časté nahrazení**: Pokud je chybějící data zařazená do kategorií, chybějící hodnoty nahradit nejčastěji se vyskytujících položky
+* **Nahrazení regrese**: chybějící hodnoty nahraďte nižším hodnoty použijte metodu regrese.  
 
 ## <a name="how-to-normalize-data"></a>Jak k normalizaci dat?
 Normalizace data znovu škáluje číselné hodnoty do zadaného rozsahu. Mezi oblíbenými datovými normalizace metody patří:
 
-* **Normalizace maximálních**: Lineární transformace dat na rozsah, Dejme tomu, že mezi 0 a 1, pokud je minimální hodnota škálovaný na hodnotu 0 a maximální velikosti na 1.
-* **Normalizace skóre Z**: Škálování dat na základě střední a směrodatná odchylka: dělení rozdíl mezi daty a střední směrodatnou odchylku.
-* **Desetinné škálování**: Škálování dat přesunutím desetinnou hodnotu atributu.  
+* **Normalizace maximálních**: Lineárně transformace dat na rozsah, Řekněme, že mezi 0 a 1, pokud je minimální hodnota škálovaný na hodnotu 0 a maximální velikosti na 1.
+* **Normalizace skóre Z**: škálování dat na základě střední a směrodatná odchylka: dělení rozdíl mezi daty a střední směrodatnou odchylku.
+* **Desetinné škálování**: škálování dat přesunutím desetinnou hodnotu atributu.  
 
 ## <a name="how-to-discretize-data"></a>Jak k diskretizaci dat?
 Data můžete diskretizovat převedením průběžné hodnoty na nominální atributy nebo intervalech. Jsou některé způsoby, jak to provést:
 
-* **Rovná Width Binning**: Rozdělit rozsah všech možných hodnot atributu do skupin v síti stejné velikosti a přiřadit hodnoty, které spadají do přihrádky číslem bin.
-* **Výška rovná Binning**: Rozdělit rozsah všech možných hodnot atributu do skupin v síti, každá obsahuje stejný počet instancí a pak přiřadit hodnoty, které spadají do přihrádky číslem bin.  
+* **Rovná-Width Binning**: rozsah všech možných hodnot atributu rozdělit do skupin v síti stejné velikosti a přiřadit hodnoty, které spadají do přihrádky číslem bin.
+* **Výška rovná Binning**: rozdělují rozsah všech možných hodnot atributu do skupin v síti, každá obsahuje stejný počet instancí a pak přiřadit hodnoty, které spadají do přihrádky číslem bin.  
 
 ## <a name="how-to-reduce-data"></a>Jak dosáhnout snížení dat?
 Existují různé metody pro snížení velikosti dat pro snadnější práci s daty. V závislosti na velikosti dat a doméně můžete použít následující metody:
 
-* **Zaznamenejte vzorkování**: Ukázky datových záznamů a pouze reprezentativní podmnožinu vybírat data.
-* **Atribut vzorkování**: Vyberte pouze podmnožinu vašich nejdůležitějších atributů data.  
-* **Agregace**: Data rozdělit do skupin a uložit čísla pro každou skupinu. Měsíční výnosy ke snížení množství dat může například agregovat denní počty výnosy řetězec restaurací v průběhu posledních 20 let.  
+* **Zaznamenejte vzorkování**: ukázkový záznamů dat a pouze reprezentativní podmnožinu vybírat data.
+* **Atribut vzorkování**: vyberte pouze podmnožinu vašich nejdůležitějších atributů data.  
+* **Agregace**: data rozdělit do skupin a uložit čísla pro každou skupinu. Měsíční výnosy ke snížení množství dat může například agregovat denní počty výnosy řetězec restaurací v průběhu posledních 20 let.  
 
 ## <a name="how-to-clean-text-data"></a>Jak vyčistit textová data?
 **Textová pole v tabulkových dat** může obsahovat znaky, které ovlivňují sloupce hranicích zarovnání a/nebo záznam. Například synchronizace souboru oddělené tabulátorem příčina sloupec součástí karty a vložené znaky nového řádku přerušení řádky záznamů. Text nesprávné kódování zpracování při zápisu/čtení textu vede k ztráty informací, zvyšuje ochranu před nechtěnými Úvod nečitelné znaky, například Null a může také vliv text analýza kódu. Pozor, analýze a úpravy může být potřeba, abyste mohli vyčistit textová pole pro správné zarovnání a/nebo k extrahování strukturovaná data z textu nestrukturovaná nebo semistrukturovaná data.
@@ -97,7 +97,7 @@ Existují různé metody pro snížení velikosti dat pro snadnější práci s 
 **Zkoumání dat** nabízí předčasné pohled na data. Počet problémů dat může nepokrytý během tohoto kroku a odpovídající metody lze použít pro vyřešení těchto problémů.  Je důležitá klást otázky, jako jsou novinky příčinu problému a jak tento problém může vzniknout. To také vám pomůže při rozhodování o zpracování dat kroky, které je třeba provést k jejich řešení. Druh přehledy, které jeden si klade za cíl odvozovat z dat lze také určit prioritu zpracování dat úsilí.
 
 ## <a name="references"></a>Odkazy
-> *Dolování dat: Concepts and Techniques*, Third Edition, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber, and Jian Pei
+> *Dolování dat: Koncepty a techniky*, třetí vydání, Nováková Kaufmann, 2011, Jiawei Han, Micheline Kamber a Jian Pei
 > 
 > 
 

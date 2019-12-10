@@ -2,18 +2,18 @@
 title: 'Architektura: místní Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9f532e7bbf9e24e431341344b3172c988f69bfc3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499254"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951526"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy pro architekturu
 
@@ -25,18 +25,18 @@ Mnoho místních Apache Hadoop nasazení se skládá z jednoho velkého clusteru
 
 Clustery Azure HDInsight jsou navržené pro konkrétní typ výpočetního využití. Vzhledem k tomu, že úložiště je možné sdílet mezi několika clustery, je možné vytvořit několik výpočetních clusterů optimalizovaných pro úlohy, které budou vyhovovat potřebám různých úloh. Každý typ clusteru má optimální konfiguraci pro konkrétní úlohu. Následující tabulka uvádí podporované typy clusterů ve službě HDInsight a příslušné úlohy.
 
-|**Úloha**|**Typ clusteru HDInsight**|
+|Úloha|Typ clusteru HDInsight|
 |---|---|
 |Dávkové zpracování (ETL/ELT)|Hadoop, Spark|
 |Datové sklady|Hadoop, Spark, interaktivní dotaz|
 |IoT/streamování|Kafka, vyplavení, Spark|
 |Zpracování transakcí NoSQL|HBase|
-|Interaktivní a rychlejší dotazy s ukládáním do mezipaměti v paměti|Interaktivní dotaz|
-|Pro datové vědy|Služby ML, Spark|
+|Interaktivní a rychlejší dotazy s ukládáním do mezipaměti v paměti|Interactive Query|
+|Datové vědy|Služby ML, Spark|
 
 V následující tabulce jsou uvedeny různé metody, které lze použít k vytvoření clusteru HDInsight.
 
-|**Nástroj**|**Založené na prohlížeči**|**Příkazový řádek**|**REST API**|**Sada SDK**|
+|Nástroj|Založené na prohlížeči|Příkazový řádek|Rozhraní REST API|SDK|
 |---|---|---|---|---|
 |[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|×||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|×|×|×|×|
@@ -54,15 +54,15 @@ Další informace najdete v článku [typy clusterů ve službě HDInsight](../h
 
 Clustery HDInsight se po dlouhou dobu nepoužívá. V zájmu úspory nákladů na prostředky podporuje služba HDInsight přechodný clustery na vyžádání, které je možné po úspěšném dokončení úlohy odstranit.
 
-Při odstraňování clusteru se neodstraní přidružený účet úložiště a externí metadata. Cluster se dá později znovu vytvořit pomocí stejných účtů úložiště a meta úložišť.
+Když odstraníte cluster, přidružený účet úložiště a externí metadata se neodeberou. Cluster se dá později znovu vytvořit pomocí stejných účtů úložiště a meta úložišť.
 
 Azure Data Factory můžete použít k plánování vytváření clusterů HDInsight na vyžádání. Další informace najdete v článku [Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
 
 ## <a name="decouple-storage-from-compute"></a>Oddělit úložiště od výpočetní služby
 
-Typická místní nasazení Hadoop používají stejnou sadu počítačů pro ukládání a zpracování dat. Vzhledem k tomu, že jsou společně umístěné, výpočetní prostředky a úložiště musí být škálované dohromady.
+Typická místní nasazení Hadoop používají stejnou sadu počítačů pro ukládání a zpracování dat. Vzhledem k tomu, že se společně nacházejí, výpočetní prostředky a úložiště musí být škálované dohromady.
 
-V clusterech HDInsight nemusí být úložiště společně umístěno s výpočetními prostředky a může být v Azure Storage, Azure Data Lake Storage nebo obojí. Odpojujení úložiště od výpočetní služby má následující výhody:
+V clusterech HDInsight nemusí být úložiště společně umístěno s výpočetními prostředky a může být buď v Azure Storage, Azure Data Lake Storage nebo obojí. Odpojujení úložiště od výpočetní služby má následující výhody:
 
 - Sdílení dat napříč clustery.
 - Použití přechodných clusterů, protože data nejsou závislá na clusteru.
@@ -74,9 +74,7 @@ Výpočetní clustery jsou vytvořeny blízko prostředků účtu úložiště v
 
 ## <a name="use-external-metadata-stores"></a>Použití externích úložišť metadat
 
-
 Existují dva hlavní metaúložiště, které pracují s clustery HDInsight: [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/). Metastore Hive je centrální úložiště schémat, které mohou používat moduly pro zpracování dat, včetně Hadoop, Spark, LLAP, presto a Apache prasete. Oozie metastore ukládá údaje o plánování a stavu probíhajících a dokončených úloh Hadoop.
-
 
 HDInsight používá Azure SQL Database pro podregistr a Oozie metaúložiště. Existují dva způsoby, jak nastavit metastore v clusterech HDInsight:
 
@@ -105,7 +103,7 @@ Mezi osvědčené postupy metastore Hive HDInsight patří následující:
 - Pravidelně zálohujte vlastní metastore.
 - Udržujte cluster metastore a HDInsight ve stejné oblasti.
 - Monitorujte metastore o výkonu a dostupnosti pomocí nástrojů pro monitorování Azure SQL Database, jako jsou protokoly Azure Portal nebo Azure Monitor.
-- Spusťte příkaz **analyzovat tabulku** podle potřeby, aby se vygenerovaly statistiky pro tabulky a sloupce. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Pro vygenerování statistik pro tabulky a sloupce spusťte `ANALYZE TABLE` příkaz podle potřeby. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Osvědčené postupy pro různé úlohy
 

@@ -2,18 +2,18 @@
 title: 'Infrastruktura: místní Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499217"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951509"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -23,10 +23,17 @@ Tento článek obsahuje doporučení pro správu infrastruktury clusterů Azure 
 
 K dispozici jsou následující klíčové volby pro plánování kapacity clusteru HDInsight:
 
-- **Vyberte oblast** – oblast Azure určuje, kde se cluster fyzicky zřídí. Aby se minimalizovala latence čtení a zápisu, měl by cluster být ve stejné oblasti jako data.
-- **Zvolit umístění a velikost úložiště** – výchozí úložiště musí být ve stejné oblasti jako cluster. Pro cluster 48 se doporučuje mít 4 až 8 účtů úložiště. I když již může existovat dostatečná celková velikost úložiště, každý účet úložiště poskytuje pro výpočetní uzly další šířku pásma sítě. Pokud je k dispozici více účtů úložiště, použijte pro každý účet úložiště náhodný název bez předpony. Účelem náhodného pojmenování je snížit pravděpodobnost kritických bodů úložiště (omezování) nebo selhání v běžném režimu napříč všemi účty. Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
-- **Vyberte velikost virtuálního počítače a typ (teď podporuje G-series)** – každý typ clusteru má sadu typů uzlů a každý typ uzlu má konkrétní možnosti pro velikost a typ virtuálního počítače. Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikosti paměti RAM a latenci sítě. Simulované úlohy lze použít k určení optimální velikosti a typu virtuálního počítače pro jednotlivé typy uzlů.
-- **Vyberte počet pracovních uzlů** – počáteční počet uzlů pracovních procesů lze určit pomocí simulovaných úloh. Cluster se dá škálovat později přidáním dalších pracovních uzlů pro splnění požadavků na špičku zatížení. Cluster lze později škálovat zpět, pokud nejsou požadovány další pracovní uzly.
+**Oblast**  
+Oblast Azure určuje, kde se cluster fyzicky zřídí. Aby se minimalizovala latence čtení a zápisu, měl by cluster být ve stejné oblasti jako data.
+
+**Umístění a velikost úložiště**  
+Výchozí úložiště musí být ve stejné oblasti jako cluster. Pro cluster 48 se doporučuje mít 4 až 8 účtů úložiště. I když již může existovat dostatečná celková velikost úložiště, každý účet úložiště poskytuje pro výpočetní uzly další šířku pásma sítě. Pokud je k dispozici více účtů úložiště, použijte pro každý účet úložiště náhodný název bez předpony. Účelem náhodného pojmenování je snížit pravděpodobnost kritických bodů úložiště (omezování) nebo selhání v běžném režimu napříč všemi účty. Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
+
+**Velikost a typ virtuálního počítače (teď podporuje G-series)**  
+Každý typ clusteru má sadu typů uzlů a každý typ uzlu má konkrétní možnosti pro velikost a typ virtuálního počítače. Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikosti paměti RAM a latenci sítě. Simulované úlohy lze použít k určení optimální velikosti a typu virtuálního počítače pro jednotlivé typy uzlů.
+
+**Počet uzlů pracovního procesu**  
+Počáteční počet uzlů pracovních procesů lze určit pomocí simulovaných úloh. Cluster se dá škálovat později přidáním dalších pracovních uzlů pro splnění požadavků na špičku zatížení. Cluster se dá později škálovat zpátky, když se další pracovní uzly nevyžadují.
 
 Další informace najdete v článku [plánování kapacity pro clustery HDInsight](../hdinsight-capacity-planning.md).
 
@@ -42,12 +49,12 @@ K ověření komponent a verzí Hadoop ve službě HDInsight můžete také pou�
 
 Aplikace nebo komponenty, které byly dostupné v místních clusterech, ale nejsou součástí clusterů HDInsight, se dají přidávat na hraničním uzlu nebo na virtuálním počítači ve stejné virtuální síti jako cluster HDInsight. Aplikace Hadoop třetí strany, která není dostupná v Azure HDInsight, se dá nainstalovat pomocí možnosti aplikace v clusteru HDInsight. Vlastní aplikace Hadoop můžete nainstalovat na cluster HDInsight pomocí akcí skriptů. V následující tabulce jsou uvedeny některé běžné aplikace a jejich možnosti integrace HDInsight:
 
-|**Použití**|**Spolupráci**
+|**Aplikace**|**Integrace**
 |---|---|
 |Tok dat|Hraniční uzel IaaS nebo HDInsight
 |Alluxio|IaaS  
 |Arcadia|IaaS 
-|Tamazight|Žádné (pouze HDP)
+|Atlas|Žádné (pouze HDP)
 |Datameer|Hraniční uzel HDInsight
 |DataStax (Cassandra)|IaaS (CosmosDB alternativa v Azure)
 |DataTorrent|IaaS 
@@ -61,7 +68,7 @@ Aplikace nebo komponenty, které byly dostupné v místních clusterech, ale nej
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
-|VEDE|IaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW alternativa v Azure)
 |Tableau|IaaS 
 |Hlavní|Hraniční uzel HDInsight
@@ -191,6 +198,4 @@ Další informace najdete v článku [připojení HDInsight k místní síti](..
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další článek v této sérii:
-
-- [Osvědčené postupy úložiště pro migraci z místního prostředí do Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-storage.md)
+Přečtěte si další článek v této sérii: [osvědčené postupy úložiště pro Azure HDInsight Hadoop migraci](apache-hadoop-on-premises-migration-best-practices-storage.md).

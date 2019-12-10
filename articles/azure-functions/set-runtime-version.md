@@ -3,12 +3,12 @@ title: Jak cílit na verze modulu runtime Azure Functions
 description: Azure Functions podporuje více verzí modulu runtime. Naučte se, jak určit běhovou verzi aplikace Function App hostované v Azure.
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 6f93ac7bcbd25c1b120cfeecae9dd4353524855f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0031fe08ee1e77c35a78b2128615f08846c1b612
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230321"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942269"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak cílit na verze modulu runtime Azure Functions
 
@@ -29,9 +29,9 @@ Následující tabulka uvádí `FUNCTIONS_EXTENSION_VERSION` hodnoty pro jednotl
 
 | Hlavní verze | hodnota `FUNCTIONS_EXTENSION_VERSION` |
 | ------------- | ----------------------------------- |
-| 3. x (Preview) | `~3` |
+| 3.x  | `~3` |
 | 2.x  | `~2` |
-| verze | `~1` |
+| verze  | `~1` |
 
 Změna verze modulu runtime způsobuje restartování aplikace Function App.
 
@@ -42,7 +42,7 @@ Můžete změnit verzi modulu runtime, kterou používá aplikace Function App. 
 > [!IMPORTANT]
 > I když je verze modulu runtime určena nastavením `FUNCTIONS_EXTENSION_VERSION`, měli byste tuto změnu provést v Azure Portal a ne změnou nastavení přímo. Důvodem je to, že portál ověří vaše změny a v případě potřeby provede další související změny.
 
-### <a name="from-the-azure-portal"></a>Z Azure Portal
+### <a name="from-the-azure-portal"></a>Pomocí webu Azure Portal
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 

@@ -1,5 +1,6 @@
 ---
-title: REST API vyměňuje deklarace identity jako ověření v Azure Active Directory B2C
+title: REST API výměny deklarací identity jako ověřování
+titleSuffix: Azure AD B2C
 description: Návod pro vytvoření Azure AD B2C cesty uživatele, která komunikuje s RESTful službami.
 services: active-directory-b2c
 author: mmacy
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 45fad1fab419c448febb3f3b760996fba278e154
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8730870bfae9f704ee43594497f79942b70a6181
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644977"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949368"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Průvodce: Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu uživatele
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu uživatele
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -30,13 +31,13 @@ IEF odesílá data v deklaracích identity a přijímá data zpět v deklaracíc
 - Dá se navrhovat jako REST API výměny deklarací identity nebo jako profil ověřování, který se nachází uvnitř kroku orchestrace.
 - Obvykle ověřuje vstup od uživatele. Pokud se hodnota od uživatele odmítne, uživatel se může pokusit znovu zadat platnou hodnotu s příležitostí k vrácení chybové zprávy.
 
-Můžete také navrhnout interakci jako krok orchestrace. Další informace najdete v tématu [Návod: Integrujte REST API výměn deklarací identity v cestě uživatele Azure AD B2C jako krok](active-directory-b2c-rest-api-step-custom.md)orchestrace.
+Můžete také navrhnout interakci jako krok orchestrace. Další informace najdete v tématu [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako krok orchestrace](active-directory-b2c-rest-api-step-custom.md).
 
 V příkladu profilu ověřování použijeme profil upravit cestu uživatele v souboru úvodní sady ProfileEdit. XML.
 
 Můžeme ověřit, že název zadaný uživatelem v rámci úpravy profilu není součástí seznamu vyloučení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Tenant Azure AD B2C nakonfigurovaný k dokončení registrace nebo přihlášení k místnímu účtu, jak je popsáno v tématu [Začínáme](active-directory-b2c-get-started-custom.md).
 - REST API koncový bod, se kterým chcete pracovat. Pro tento návod jsme nastavili ukázkový web s názvem [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) s využitím služby REST API.
@@ -46,7 +47,7 @@ Můžeme ověřit, že název zadaný uživatelem v rámci úpravy profilu není
 > [!NOTE]
 > Instalace funkcí REST API je mimo rámec tohoto článku. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) poskytuje vynikající sadu nástrojů pro vytváření služeb RESTful v cloudu.
 
-Vytvořili jsme funkci Azure, která obdrží deklaraci identity, kterou očekává jako `playerTag`. Funkce ověří, zda tato deklarace existuje. Můžete získat přístup k kompletnímu kódu funkce Azure [](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples)v GitHubu.
+Vytvořili jsme funkci Azure, která obdrží deklaraci identity, kterou očekáváme jako `playerTag`. Funkce ověří, zda tato deklarace existuje. Můžete získat přístup k kompletnímu kódu funkce Azure v [GitHubu](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
 ```csharp
 if (requestContentAsJObject.playerTag == null)
@@ -73,14 +74,14 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
 return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-IEF očekává `userMessage` deklaraci identity, kterou funkce Azure vrací. Tato deklarace identity se zobrazí jako řetězec pro uživatele, pokud se ověření nezdaří, například když se v předchozím příkladu vrátí stav konfliktu 409.
+IEF očekává deklaraci identity `userMessage`, kterou funkce Azure vrátí. Tato deklarace identity se zobrazí jako řetězec pro uživatele, pokud se ověření nezdaří, například když se v předchozím příkladu vrátí stav konfliktu 409.
 
 ## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2: Konfigurace výměny deklarací identity rozhraní API RESTful jako technického profilu v souboru TrustFrameworkExtensions. XML
 
-Technický profil je plná konfigurace serveru Exchange, který požaduje služba RESTful. Otevřete soubor TrustFrameworkExtensions. XML a přidejte následující fragment kódu XML do `<ClaimsProviders>` elementu.
+Technický profil je plná konfigurace serveru Exchange, který požaduje služba RESTful. Otevřete soubor TrustFrameworkExtensions. XML a přidejte následující fragment kódu XML do prvku `<ClaimsProviders>`.
 
 > [!NOTE]
-> V následujícím kódu XML je poskytovatel `Version=1.0.0.0` RESTful popsaný jako protokol. Berte v úvahu jako funkci, která bude komunikovat s externí službou. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+> V následujícím kódu XML `Version=1.0.0.0` poskytovatel RESTful je popsán jako protokol. Berte v úvahu jako funkci, která bude komunikovat s externí službou. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```xml
 <ClaimsProvider>
@@ -111,33 +112,33 @@ Technický profil je plná konfigurace serveru Exchange, který požaduje služb
 </ClaimsProvider>
 ```
 
-`InputClaims` Prvek definuje deklarace identity, které budou odeslány z IEF do služby REST. V tomto příkladu se obsah deklarace identity `givenName` pošle službě REST jako. `playerTag` V tomto příkladu IEF neočekává deklarace identity zpátky. Místo toho čeká na odpověď ze služby REST a funguje na základě stavových kódů, které obdrží.
+Element `InputClaims` definuje deklarace, které budou odeslány z IEF do služby REST. V tomto příkladu se obsah deklarace `givenName` do služby REST pošle jako `playerTag`. V tomto příkladu IEF neočekává deklarace identity zpátky. Místo toho čeká na odpověď ze služby REST a funguje na základě stavových kódů, které obdrží.
 
-Výše uvedené `AuthenticationType` komentáře a `AllowInsecureAuthInProduction` určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API pro RESTful pro produkční prostředí, najdete v tématu [zabezpečení rozhraní API RESTful se základními ověřováním](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) a [zabezpečením RESTful API pomocí ověřování certifikátů](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
+Komentáře uvedené výše `AuthenticationType` a `AllowInsecureAuthInProduction` určují změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API pro RESTful pro produkční prostředí, najdete v tématu [zabezpečení rozhraní API RESTful se základními ověřováním](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) a [zabezpečením RESTful API pomocí ověřování certifikátů](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Krok 3: Zahrňte výměnu deklarací identity služby RESTful do technického profilu s vlastním uplatněním, kde chcete ověřit vstup uživatele.
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Krok 3: zahrňte výměnu deklarací identity služby RESTful do technického profilu s vlastním uplatněním, kde chcete ověřit vstup uživatele.
 
-Nejběžnějším použitím tohoto kroku ověření je interakce s uživatelem. Všechny interakce, u kterých se očekává, že uživatel zadá vstup, jsou *technické profily s vlastním uplatněním*. V tomto příkladu přidáme ověření do technického profilu s vlastním kontrolním výrazem (ProfileUpdate). Toto je technický profil, který používá soubor `Profile Edit` zásad předávající strany (RP).
+Nejběžnějším použitím tohoto kroku ověření je interakce s uživatelem. Všechny interakce, u kterých se očekává, že uživatel zadá vstup, jsou *technické profily s vlastním uplatněním*. V tomto příkladu přidáme ověření do technického profilu s vlastním kontrolním výrazem (ProfileUpdate). Toto je technický profil, který používá soubor zásad předávající strany (RP) `Profile Edit`.
 
 Přidání výměny deklarací identity do technického profilu s vlastním uplatněním:
 
 1. Otevřete soubor TrustFrameworkBase. XML a vyhledejte `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
 2. Zkontrolujte konfiguraci tohoto technického profilu. Sledujte, jak se Exchange s uživatelem definuje jako deklarace identity, které budou požádáni o uživatele (vstupní deklarace identity) a deklarace identity, které se vrátí zpět od zprostředkovatele s vlastním uplatněním (výstupní deklarace).
-3. Vyhledejte a Všimněte si, že tento profil je vyvolán jako krok Orchestration `<UserJourney Id="ProfileEdit">`5. `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`
+3. Vyhledejte `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`a Všimněte si, že tento profil je vyvolán jako krok Orchestration 5 `<UserJourney Id="ProfileEdit">`.
 
-## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4: Nahrání a testování souboru zásad pro úpravu RP profilu
+## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4: nahrání a testování souboru zásad pro úpravu RP profilu
 
 1. Nahrajte novou verzi souboru TrustFrameworkExtensions. XML.
 2. Pomocí rutiny **Spustit nyní** otestujte soubor zásad pro úpravy v profilech.
 3. Otestujte ověření zadáním jednoho z existujících názvů (například mcvinny) do **daného pole název** . Pokud je všechno nastavené správně, měli byste obdržet zprávu upozorňující uživatele, že se už používá značka přehrávače.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Umožňuje upravit úpravy profilu a registraci uživatelů, aby bylo možné získat další informace od uživatelů.](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
-[Podrobné Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako krok orchestrace](active-directory-b2c-rest-api-step-custom.md)
+[Návod: integrace REST APIch výměn deklarací identity v Azure AD B2C cestě uživatele jako kroku orchestrace](active-directory-b2c-rest-api-step-custom.md)
 
-[Odkaz RESTful Technical Profile](restful-technical-profile.md)
+[Referenční dokumentace: RESTful Technical Profile](restful-technical-profile.md)
 
 Informace o tom, jak zabezpečit rozhraní API, najdete v následujících článcích:
 

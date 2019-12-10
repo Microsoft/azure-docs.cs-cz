@@ -1,6 +1,7 @@
 ---
-title: Kurz – přizpůsobení rozhraní pro uživatelské prostředí – Azure Active Directory B2C | Microsoft Docs
-description: Naučte se, jak přizpůsobit uživatelské rozhraní svých aplikací v Azure Active Directory B2C pomocí Azure Portal.
+title: 'Kurz: přizpůsobení uživatelského rozhraní'
+titleSuffix: Azure AD B2C
+description: Naučte se, jak přizpůsobit uživatelské rozhraní (UI) vašich aplikací v Azure Active Directory B2C pomocí Azure Portal.
 services: B2C
 author: mmacy
 manager: celestedg
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291095"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950863"
 ---
-# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: Přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
+# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
 Pro běžné uživatelské prostředí, jako je registrace, přihlašování a úpravy profilu, můžete použít [toky uživatelů](active-directory-b2c-reference-policies.md) v Azure Active Directory B2C (Azure AD B2C). Informace v tomto kurzu vám pomůžou s postupem [přizpůsobení uživatelského rozhraní (UI)](customize-ui-overview.md) těchto prostředí pomocí vlastních souborů HTML a CSS.
 
@@ -30,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [Vytvořte uživatelský tok](tutorial-create-user-flows.md) , který uživatelům umožní přihlásit se k aplikaci a přihlásit se k ní.
 
@@ -42,7 +43,7 @@ Vytvoříte účet a kontejner úložiště Azure a potom do kontejneru umístí
 
 I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto kurzu ukládat do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje vašeho tenanta Azure B2C.
 3. V levém horním rohu Azure Portal vyberte všechny služby, vyhledejte a vyberte **účty úložiště**.
 4. Vyberte **Přidat**.
@@ -62,7 +63,7 @@ I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto 
  Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, kterou zadáte v toku uživatele. Sdílení prostředků mezi zdroji (CORS) umožňuje omezit prostředky na webové stránce, které se mají požadovat z jiných domén.
 
 1. V nabídce vyberte **CORS**.
-2. V případě **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
+2. U **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
 3. U **povolených metod**vyberte `GET`,`PUT`a `OPTIONS`.
 4. U **povolených hlaviček**zadejte hvězdičku (*).
 5. U **zveřejněných hlaviček**zadejte hvězdičku (*).
@@ -74,9 +75,9 @@ I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto 
 
 ### <a name="create-the-customization-files"></a>Vytvoření souborů vlastního nastavení
 
-Chcete-li přizpůsobit uživatelské rozhraní prostředí pro registraci, začněte tím, že vytvoříte jednoduchý soubor HTML a CSS. HTML můžete nakonfigurovat způsobem, který chcete, ale musí mít element **div** s identifikátorem `api`. Například, `<div id="api"></div>`. Azure AD B2C vloží prvky do `api` kontejneru při zobrazení stránky.
+Chcete-li přizpůsobit uživatelské rozhraní prostředí pro registraci, začněte tím, že vytvoříte jednoduchý soubor HTML a CSS. HTML můžete nakonfigurovat způsobem, který chcete, ale musí mít element **div** s identifikátorem `api`. Například, `<div id="api"></div>`. Azure AD B2C vloží prvky do kontejneru `api` při zobrazení stránky.
 
-1. V místní složce vytvořte následující soubor a ujistěte se, že jste změnili `your-storage-account` název účtu úložiště a `your-container` název kontejneru, který jste vytvořili. Například, `https://store1.blob.core.windows.net/b2c/style.css`.
+1. V místní složce vytvořte následující soubor a ujistěte se, že jste změnili `your-storage-account` na název účtu úložiště a `your-container` na název vytvořeného kontejneru. Například, `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -145,7 +146,7 @@ V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště t
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-1. Ve vašem tenantovi Azure AD B2C vyberte **uživatelské toky** a pak vyberte tok uživatele *B2C_1_signupsignin1* .
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů** a vyberte *B2C_1_signupsignin1* tok uživatele.
 2. V horní části stránky klikněte na **Spustit tok uživatele**.
 3. Klikněte na tlačítko **Spustit tok uživatele** .
 

@@ -1,5 +1,6 @@
 ---
-title: Definování technický profil transformace deklarací identity ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
+title: Definice technického profilu transformace deklarací identity
+titleSuffix: Azure AD B2C
 description: Definujte technický profil transformace deklarací identity ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,22 +11,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fd2f77200741c54d1ed10f0a0eec1da76462b0a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf06fe7d4e529eb04b156a2d61011198a6fe0978
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511618"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949419"
 ---
-# <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování profilu technické transformace deklarací identity ve vlastních zásadách pro Azure Active Directory B2C
+# <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definice technického profilu transformace deklarací identity v Azure Active Directory B2C vlastní zásady
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Technický profil transformace deklarací identity umožňuje volat výstupní deklarace identit transformací pro manipulaci s hodnotami deklarace identity, ověřování deklarací identity nebo nastavit výchozí hodnoty pro sadu výstupní deklarace identit.
+Technický profil transformace deklarací identity umožňuje volat výstupní transformace deklarací identity, aby bylo možné manipulovat s hodnotami deklarací identity, ověřovat deklarace identity nebo nastavit výchozí hodnoty pro sadu výstupních deklarací identity.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protocol (Protokol)
 
-**Název** atribut **protokol** elementu musí být nastavena na `Proprietary`. **Obslužná rutina** atribut musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, který používá Azure AD B2C: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
+Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
 Následující příklad ukazuje technický profil transformace deklarací identity:
 
@@ -36,9 +37,9 @@ Následující příklad ukazuje technický profil transformace deklarací ident
   ...
 ```
 
-## <a name="output-claims"></a>Výstupní deklarace identit.
+## <a name="output-claims"></a>Deklarace výstupů
 
-**OutputClaims** element je povinný. Je vhodné zadat, že aspoň jednu výstupní deklarace identity vrátí technický profil. Následující příklad ukazuje, jak nastavit výchozí hodnoty na výstupní deklarace identit:
+Element **OutputClaims** je povinný. Měli byste zadat alespoň jednu výstupní deklaraci identity, kterou vrátil technický profil. Následující příklad ukazuje, jak nastavit výchozí hodnoty ve výstupních deklaracích:
 
 ```xml
 <OutputClaims>
@@ -47,9 +48,9 @@ Následující příklad ukazuje technický profil transformace deklarací ident
 </OutputClaims>
 ```
 
-## <a name="output-claims-transformations"></a>Výstupní deklarace identity transformace
+## <a name="output-claims-transformations"></a>Transformace výstupních deklarací identity
 
-**OutputClaimsTransformations** element může obsahovat kolekci **OutputClaimsTransformation** prvků, které slouží k úpravě deklarace identity nebo generovat nové značky. Následující volání technický profil **RemoveAlternativeSecurityIdByIdentityProvider** transformace deklarací identity. Tato deklarace identity transformace odebere z kolekce rozpoznat sociální **AlternativeSecurityIds**. Výstupní deklarace identit tohoto technického profilu jsou **identityProvider2**, který je nastaven na `facebook.com`, a **AlternativeSecurityIds**, který obsahuje seznam přidružený k tomuto sociálních identit uživatel po odebrání facebook.com identity.
+Element **OutputClaimsTransformations** může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě deklarací identity nebo k vygenerování nových. Následující technický profil volá transformaci deklarací identity **RemoveAlternativeSecurityIdByIdentityProvider** . Tato transformace deklarací odebírá sociální identifikaci z kolekce **AlternativeSecurityIds**. Výstupní deklarace identity tohoto technického profilu jsou **identityProvider2**, která je nastavená na `facebook.com`a **AlternativeSecurityIds**, která obsahuje seznam sociálních identit přidružených k tomuto uživateli po odebrání identity Facebook.com.
 
 ```XML
 <ClaimsTransformations>
@@ -81,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-Technický profil transformace deklarací identity umožňuje provedení transformace deklarací identity z krok Orchestrace všechny cesty uživatele. V následujícím příkladu, krok Orchestrace volá jeden z profilů technické odpojit, například **odpojit. Facebook OAUTH**. Tento technický profil volá deklarace identity transformace technický profil **RemoveAlternativeSecurityIdByIdentityProvider**, který vygeneruje nový **AlternativeSecurityIds2** deklarace identity, který obsahuje seznam sociálních identit uživatelů, odebírání Facebooková identita z kolekcí.
+Technický profil transformace deklarací identity umožňuje spustit transformaci deklarací identity z kroku orchestrace cesty uživatele. V následujícím příkladu krok Orchestration zavolá jeden z technických profilů odpojování, jako je například **odpojení Facebooku-OAuth**. Tento technický profil volá **RemoveAlternativeSecurityIdByIdentityProvidery**Technical Profile pro transformaci deklarací identity, která generuje novou deklaraci identity **AlternativeSecurityIds2** , která obsahuje seznam sociálních identit uživatelů, a současně odebírá identitu Facebooku z kolekcí.
 
 ```XML
 <UserJourney Id="AccountUnLink">
@@ -99,9 +100,9 @@ Technický profil transformace deklarací identity umožňuje provedení transfo
 </UserJourney>
 ```
 
-## <a name="use-a-validation-technical-profile"></a>Použít technický profil ověření
+## <a name="use-a-validation-technical-profile"></a>Použít technický profil ověřování
 
-Technický profil transformace deklarací identity je možné ověřit informace. V následujícím příkladu [samopopisné technický profil](self-asserted-technical-profile.md) s názvem **LocalAccountSignUpWithLogonEmail** vyzve uživatele k zadání e-mailu dvakrát a potom volá [technické ověření profil](validation-technical-profile.md) s názvem **ověřit e-mailu** k ověření e-mailů. **Ověřit e-mailu** technický profil volá transformace deklarací identity **AssertEmailAreEqual** k porovnání dvou deklarací **e-mailu** a **emailRepeat** a vyvolají výjimku, pokud nejsou stejné podle zadané porovnávací.
+K ověření informací lze použít technický profil transformace deklarací identity. V následujícím příkladu přihlášený [technický profil](self-asserted-technical-profile.md) s názvem **LocalAccountSignUpWithLogonEmail** vyzve uživatele k zadání e-mailu dvakrát a pak zavolá [technický profil ověření](validation-technical-profile.md) s názvem **Validate-email** a ověří e-maily. Technický profil **ověřit – e-mail** volá transformaci deklarací **AssertEmailAreEqual** k porovnání dvou deklarací identity **email** a **emailRepeat**a vyvolávají výjimku, pokud se neshodují podle zadaného porovnání.
 
 ```XML
 <ClaimsTransformations>
@@ -117,7 +118,7 @@ Technický profil transformace deklarací identity je možné ověřit informace
 </ClaimsTransformations>
 ```
 
-Technický profil volání transformace deklarací identity **AssertEmailAreEqual** deklarace identity transformace, která vyhodnotí, zda uživatel zadal e-mailů jsou stejné.
+Technický profil transformace deklarací identity volá transformaci deklarací **AssertEmailAreEqual** , která vyhodnotí, že e-maily, které uživatel poskytl, jsou stejné.
 
 ```XML
 <TechnicalProfile Id="Validate-Email">
@@ -136,7 +137,7 @@ Technický profil volání transformace deklarací identity **AssertEmailAreEqua
 </TechnicalProfile>
 ```
 
-A místním s prohlašovanou můžete volání technický profil ověření a zobrazit chybovou zprávu, jak je uvedeno v technickém profilu **UserMessageIfClaimsTransformationStringsAreNotEqual** metadat.
+Technický profil s vlastním uplatněním může volat technický profil ověření a zobrazit chybovou zprávu, jak je uvedeno v metadatech **UserMessageIfClaimsTransformationStringsAreNotEqual** .
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">

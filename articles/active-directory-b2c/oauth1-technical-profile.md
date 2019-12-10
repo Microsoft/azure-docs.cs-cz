@@ -1,6 +1,7 @@
 ---
-title: Definování technického profilu OAuth1 ve vlastních zásadách v Azure Active Directory B2C | Microsoft Docs
-description: Definujte technický profil OAuth1 ve vlastních zásadách v Azure Active Directory B2C.
+title: Definování technického profilu OAuth1 ve vlastních zásadách
+titleSuffix: Azure AD B2C
+description: V Azure Active Directory B2C ve vlastních zásadách definujte technický profil OAuth 1,0.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 97fa5757f8b77e29545f6d6f6b885334c7b526f1
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d97d908ddf5d55bf09d96a5ef16fa79a7afde7b4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063994"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951101"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OAuth1 v Azure Active Directory B2C vlastní zásady
 
@@ -23,9 +24,9 @@ ms.locfileid: "71063994"
 
 Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro poskytovatele identity [protokolu OAuth 1,0](https://tools.ietf.org/html/rfc5849) . Tento článek popisuje konkrétní technické profily pro interakci se zprostředkovatelem deklarací, který podporuje tento standardizovaný protokol. S technickým profilem OAuth1 můžete federovat s poskytovatelem identity založeném na OAuth1, jako je třeba Twitter. Federování se zprostředkovatelem identity umožňuje uživatelům přihlašovat se pomocí jejich stávajících sociálních nebo podnikových identit.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `OAuth1`hodnotu. Například protokol pro technický profil **Twitter-OAUTH1** je `OAuth1`.
+Atribut **Name** elementu **Protocol** musí být nastaven na `OAuth1`. Například protokol pro OAUTH1 Technical Profile **Twitteru** je `OAuth1`.
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
@@ -46,14 +47,14 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 Následující příklad ukazuje deklarace identity vrácené zprostředkovatelem identity Twitteru:
 
-- Deklarace identity **user_id** , která je namapovaná na deklaraci identity **issuerUserId**
-- Deklarace identity **screen_name** , která je namapovaná na deklaraci **DisplayName** .
+- Deklarace **user_id** , která je namapovaná na deklaraci identity **issuerUserId**
+- Deklarace **screen_name** , která je namapovaná na deklaraci **DisplayName** .
 - Deklarace **e-mailu** bez mapování názvů
 
 Technický profil také vrací deklarace identity, které nejsou vráceny zprostředkovatelem identity:
 
 - Deklarace identity **identityProvider** , která obsahuje název poskytovatele identity.
-- Deklarace identity **authenticationSource** s výchozí hodnotou `socialIdpAuthentication`.
+- **AuthenticationSource** deklarace identity s výchozí hodnotou `socialIdpAuthentication`.
 
 ```xml
 <OutputClaims>
@@ -67,7 +68,7 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | client_id | Ano | Identifikátor aplikace zprostředkovatele identity |
 | ProviderName | Ne | Název zprostředkovatele identity |
@@ -81,11 +82,11 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 
 Element **CryptographicKeys** obsahuje následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity.   |
 
-## <a name="redirect-uri"></a>Přesměrovat identifikátor URI
+## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
 Když nakonfigurujete adresu URL pro přesměrování poskytovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Ujistěte se, že jste **klienta** nahradili názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být malými písmeny. Přidejte adresu URL pro přesměrování pro všechny zásady, které používají přihlášení zprostředkovatele identity.
 
