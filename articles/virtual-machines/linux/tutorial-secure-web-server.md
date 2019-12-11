@@ -1,5 +1,5 @@
 ---
-title: Kurz – zabezpečení webového serveru Linux s certifikáty SSL v Azure
+title: 'Kurz: zabezpečení webového serveru Linux s certifikáty SSL v Azure'
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI zabezpečit virtuální počítač s Linuxem, na kterém běží webový server NGINX, pomocí certifikátů SSL uložených ve službě Azure Key Vault.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc327abae7210d5432896fe1f0688cc405ddade6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aaa3f32cc48c6d051a2ff2a959372886435e5dcb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034334"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976158"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači s Linuxem v Azure pomocí certifikátů SSL uložených v Key Vaultu
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečené nasazování certifikátů do virtuálních počítačů s Linuxem v Azure. Co se v tomto kurzu naučíte:
@@ -110,7 +110,7 @@ runcmd:
 ```
 
 ### <a name="create-a-secure-vm"></a>Vytvoření zabezpečeného virtuálního počítače
-Teď pomocí příkazu [az vm create](/cli/azure/vm) vytvořte virtuální počítač. Data certifikátu ze služby Key Vault se vloží pomocí parametru `--secrets`. Konfiguraci cloud-init předáte pomocí parametru `--custom-data`:
+Nyní vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Data certifikátu ze služby Key Vault se vloží pomocí parametru `--secrets`. Konfiguraci cloud-init předáte pomocí parametru `--custom-data`:
 
 ```azurecli-interactive 
 az vm create \

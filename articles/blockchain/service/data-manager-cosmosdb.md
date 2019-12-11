@@ -4,12 +4,12 @@ description: Použití blockchain Data Manager pro službu Azure blockchain k od
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849945"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977386"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Kurz: použití Data Manager blockchain k odesílání dat do Azure Cosmos DB
 
@@ -78,13 +78,15 @@ Smlouva ABI definuje rozhraní inteligentních kontraktů. Popisuje, jak pracova
 
 1. Uložte pole **ABI** jako soubor JSON. Například *ABI. JSON*. Tento soubor použijete v pozdějším kroku.
 
-Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontrakt. Nasazený bajt se liší od bajtového kódu inteligentního kontraktu. Můžete získat nasazený bajtový kód ze zkompilovaného souboru metadat smlouvy.
+Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontrakt. Nasazený bajt se liší od bajtového kódu inteligentního kontraktu. K zkopírování bytového kódu do schránky použijte rozšíření Azure blockchain Development Kit.
 
-1. Otevřete soubor s metadaty kontraktu obsaženým ve složce **Build/Contracts** projektu Solid of. Název souboru je název čipové smlouvy následovaný příponou **. JSON** .
-1. V souboru JSON vyhledejte element **deployedBytecode** .
-1. Zkopírujte hexadecimální hodnotu bez uvozovek.
+1. V podokně Průzkumník Visual Studio Code rozbalte složku **Build/Contracts** vašeho projektu Solid of.
+1. Klikněte pravým tlačítkem na soubor JSON metadat kontraktu. Název souboru je název čipové smlouvy následovaný příponou **. JSON** .
+1. Vyberte položku **Kopírovat bajtový kód transakce**.
 
-    ![Visual Studio Code podokno s podbajtem v metadatech](./media/data-manager-portal/bytecode-metadata.png)
+    ![Podokno Visual Studio Code s výběrem kopírovat bajtovou část transakce](./media/data-manager-cosmosdb/bytecode-devkit.png)
+
+    Kód bajtu je zkopírován do schránky.
 
 1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Příklad: *bytového kódu. JSON*. Tento soubor použijete v pozdějším kroku.
 

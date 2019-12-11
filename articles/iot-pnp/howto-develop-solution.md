@@ -1,20 +1,20 @@
 ---
 title: Interakce se zařízením IoT technologie Plug and Play Preview z řešení Azure IoT | Microsoft Docs
 description: Jako vývojář řešení se dozvíte, jak používat sadu SDK služby k interakci se zařízeními IoT technologie Plug and Play.
-author: YasinMSFT
-ms.author: yahajiza
+author: Philmea
+ms.author: philmea
 ms.date: 07/24/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5abfe0300bd61f5ccfbfccedf16659f055eb8ad4
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877995"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977586"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Připojení a interakce se zařízením IoT technologie Plug and Play Preview
 
@@ -30,7 +30,7 @@ npm install
 
 ## <a name="run-the-service-samples"></a>Spuštění ukázek služby
 
-Pomocí následujících ukázek můžete prozkoumat možnosti sady SDK služby Node. js. Ujistěte se, že `IOTHUB_CONNECTION_STRING` je proměnná prostředí nastavená v prostředí, které používáte:
+Pomocí následujících ukázek můžete prozkoumat možnosti sady SDK služby Node. js. Ujistěte se, že je v prostředí, které používáte, nastavená proměnná prostředí `IOTHUB_CONNECTION_STRING`:
 
 ### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Načtení digitálního vlákna a seznam rozhraní
 
@@ -70,7 +70,7 @@ Tato ukázka stáhne rozhraní **ModelDiscovery** a vytiskne tento model v termi
 
 ### <a name="run-queries-in-iot-hub-based-on-capability-models-and-interfaces"></a>Spouštění dotazů v IoT Hub na základě modelů a rozhraní schopností
 
-Jazyk dotazů IoT Hub podporuje `HAS_INTERFACE` , `HAS_CAPABILITYMODEL` jak je znázorněno v následujících příkladech:
+Dotazovací jazyk IoT Hub podporuje `HAS_INTERFACE` a `HAS_CAPABILITYMODEL`, jak je znázorněno v následujících příkladech:
 
 ```sql
 select * from devices where HAS_INTERFACE('id without version', version)
@@ -91,7 +91,7 @@ Vytvoření digitální zdvojené trasy:
 1. Na kartě **trasy** vyberte **Přidat**.
 1. Zadejte hodnotu do pole **název** a vyberte **koncový bod**. Pokud jste koncový bod nenakonfigurovali, vyberte **přidat koncový bod**.
 1. V rozevíracím seznamu **zdroj dat** vyberte možnost **digitální události změny**.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Následující JSON ukazuje příklad události digitálního vlákna změny:
 
@@ -138,6 +138,6 @@ Následující JSON ukazuje příklad události digitálního vlákna změny:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se dozvěděli o řešeních služeb, která komunikují se zařízeními IoT technologie Plug and Play, je navržený další krok informace o [zjišťování modelů](concepts-model-discovery.md).

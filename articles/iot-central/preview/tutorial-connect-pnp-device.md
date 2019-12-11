@@ -3,17 +3,17 @@ title: Kurz – připojení zařízení IoT technologie Plug and Play ve verzi P
 description: V tomto kurzu se dozvíte, jak pomocí modelu schopností zařízení vygenerovat kód zařízení. Pak spusťte kód zařízení, přečtěte si téma připojení k aplikaci IoT Central a použijte automaticky vygenerovaná zobrazení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/08/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2cb07a94b2ae85cc0755e1e7069a76e1ef2a5252
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702864"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977331"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Kurz: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play a jeho připojení k aplikaci IoT Central
 

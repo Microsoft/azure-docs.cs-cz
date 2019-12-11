@@ -1,6 +1,6 @@
 ---
 title: Kurz – zřizování zařízení napříč rozbočovači s vyrovnáváním zatížení pomocí Azure IoT Hub Device Provisioning Service
-description: V tomto kurzu se dozvíte, jak služba Device Provisioning umožňuje automatické zřizování zařízení napříč rozbočovači IoT s vyrovnáváním zatížení na webu Azure Portal
+description: V tomto kurzu se dozvíte, jak služba Device Provisioning Service (DPS) umožňuje automatické zřizování zařízení napříč rozbočovači IoT na webu Azure Portal.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: cf1246862a455cfa71f3e170478736e5e07ee6f7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701959"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976736"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Kurz: zřízení zařízení napříč centrem IoT s vyrovnáváním zatížení
 

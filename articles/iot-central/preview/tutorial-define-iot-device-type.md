@@ -3,18 +3,18 @@ title: Definování nového typu zařízení IoT v Azure IoT Central | Microsoft
 description: V tomto kurzu se dozvíte jako tvůrce, jak v aplikaci Azure IoT Central vytvořit novou šablonu zařízení Azure IoT. Definujete telemetrii, stav, vlastnosti a příkazy pro svůj typ.
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 177caaa5400c10ed8de80b04a3305dce7cae77d6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2127bec4d5fdf0d3bf76fb31c548eab98f910d42
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407020"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979015"
 ---
 # <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Kurz: definování nového typu zařízení IoT v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -46,7 +46,7 @@ Jako tvůrce máte k dispozici několik možností pro vytváření šablon zař
 - Vytvořte model schopností zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Model schopností zařízení naimportujte ručně do aplikace IoT Central a pak přidejte všechny vlastnosti cloudu, přizpůsobení a řídicí panely, které aplikace IoT Central potřebuje.
 - Vytvořte model schopností zařízení pomocí Visual Studio Code. Naimplementujte kód zařízení z modelu a připojte skutečné zařízení k vaší IoT Central aplikaci pomocí připojení zařízení, které se používá jako první. IoT Central najde a naimportuje model schopností zařízení z veřejného úložiště za vás. Pak můžete přidat libovolné vlastnosti cloudu, vlastní nastavení a řídicí panely, které vaše aplikace IoT Central potřebuje k šabloně zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](quick-deploy-iot-central.md).
 
@@ -115,7 +115,7 @@ Vytvoření rozhraní:
 
 1. Pokud se rozhodnete vytvořit vlastní rozhraní od začátku, můžete přidat možnosti svého zařízení. Možnosti zařízení jsou telemetrie, vlastnosti a příkazy.
 
-### <a name="telemetry"></a>Telemetrická data
+### <a name="telemetry"></a>Telemetrie
 
 Telemetrie je proud hodnot odeslaných ze zařízení, typicky ze senzoru. Senzor může například ohlásit okolní teplotu.
 
@@ -124,11 +124,11 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty telemetrie používané na řídicích panelech a formulářích |
-| Název | Název pole ve zprávě telemetrie IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
-| Typ schopnosti | Telemetrie. |
+| Name (Název) | Název pole ve zprávě telemetrie IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ funkce | Telemetrie. |
 | Sémantický typ | Sémantický typ telemetrie, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ telemetrie, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
-| Severity | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
+| Závažnost | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
 | Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
 | Jednotka | Jednotka pro hodnotu telemetrie, například **mph**, **%** nebo **&deg;C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
@@ -144,12 +144,12 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti používané na řídicích panelech a formulářích. |
-| Název | Název vlastnosti. IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
-| Typ schopnosti | Majetek. |
+| Name (Název) | Název vlastnosti IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ funkce | Majetek. |
 | Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
-| Zapisovatelné | Pokud vlastnost není zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central. Pokud je vlastnost zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central a IoT Central může odesílat aktualizace vlastností do zařízení.
-| Severity | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
+| Writeable | Pokud vlastnost není zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central. Pokud je vlastnost zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central a IoT Central může odesílat aktualizace vlastností do zařízení.
+| Závažnost | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
 | Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
 | Jednotka | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo **&deg;C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
@@ -165,8 +165,8 @@ Následující tabulka ukazuje nastavení konfigurace pro funkci příkazu:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název příkazu, který se používá na řídicích panelech a formulářích. |
-| Název | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
-| Typ schopnosti | Systému. |
+| Name (Název) | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Typ funkce | Systému. |
 | Příkaz | `SynchronousExecutionType`. |
 | Poznámka | Jakékoli komentáře k funkci příkazu. |
 | Popis | Popis funkce příkazu |
@@ -188,7 +188,7 @@ Následující tabulka ukazuje nastavení konfigurace pro cloudovou vlastnost:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti cloudu používaný na řídicích panelech a formulářích. |
-| Název | Název vlastnosti cloudu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Name (Název) | Název vlastnosti cloudu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
 | Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ cloudové vlastnosti, jako je například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. |
 
@@ -229,7 +229,7 @@ Přidání řídicího panelu do šablony zařízení:
 
 ### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurace zařízení Preview pro zobrazení řídicího panelu
 
-Řídicí panel zobrazíte a otestujete tak, že vyberete **Konfigurovat zařízení ve verzi Preview**. To vám umožní zobrazit řídicí panel tak, jak ho váš operátor uvidí po publikování. Tuto možnost použijte, pokud chcete ověřit, jestli se v zobrazeních zobrazují správná data. Můžete si vybrat z těchto možností:
+Řídicí panel zobrazíte a otestujete tak, že vyberete **Konfigurovat zařízení ve verzi Preview**. To vám umožní zobrazit řídicí panel tak, jak ho váš operátor uvidí po publikování. Tuto možnost použijte, pokud chcete ověřit, jestli se v zobrazeních zobrazují správná data. Na výběr jsou následující možnosti:
 
 - Žádné zařízení ve verzi Preview
 - Reálné testovací zařízení, které jste nakonfigurovali pro šablonu zařízení.
@@ -347,7 +347,7 @@ Přidání nové šablony zařízení do aplikace:
 
 Pro zařízení, která se připojují k zařízení brány, můžete přidat podřízené vztahy k modelům schopností zařízení.
 
-Vytvořte vztahy k modelům schopností pro příjem dat z libovolného zařízení. Vyberte **Uložit**.
+Vytvořte vztahy k modelům schopností pro příjem dat z libovolného zařízení. Vyberte **Save** (Uložit).
 
 ![Snímek obrazovky s šablonou inteligentního sestavování a zvýrazněnými různými možnostmi](./media/tutorial-define-iot-device-type/gateway-occupancy-s1-rel.png)
 
@@ -359,10 +359,10 @@ Vytvořte vztahy k modelům schopností pro příjem dat z libovolného zaříze
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádný          | Datum   |
-    | Jméno zákazníka     | Žádný          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
+    | Jméno zákazníka     | Žádné          | Řetězec |
 
-2. Vyberte **Uložit**.
+2. Vyberte **Save** (Uložit).
 
 ### <a name="add-customizations"></a>Přidat přizpůsobení
 
@@ -376,7 +376,7 @@ Nemůžete přizpůsobit název schopnosti ani typ schopnosti.
 
 Až budete hotovi s přizpůsobením, vyberte **Uložit**.
 
-### <a name="create-views"></a>Vytváření zobrazení
+### <a name="create-views"></a>Vytvoření zobrazení
 
 Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní informace o zařízení snímače životního prostředí pro operátora. Vlastní nastavení umožňuje operátorovi spravovat zařízení senzorů pro životní prostředí připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro operátora pro práci se zařízeními:
 

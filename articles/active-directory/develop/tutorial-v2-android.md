@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Androidem – Microsoft Identity Platform | Azure
-description: Jak aplikace pro Android získá přístupový token a zavolá Microsoft Graph rozhraní API nebo rozhraní API, které vyžadují přístupové tokeny od platformy Microsoft Identity Platform.
+title: Přihlášení uživatelů & volání Microsoft Graph (Android) – Microsoft Identity Platform | Azure
+description: Získání přístupového tokenu a volání Microsoft Graph nebo rozhraní API, která vyžadují přístupové tokeny z platformy Microsoft Identity Platform (Android)
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242217"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961553"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro Android
 
@@ -125,7 +125,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 
 ### <a name="create-the-apps-ui"></a>Vytvoření uživatelského rozhraní aplikace
 
-1. V okně Android Studio projektu přejděte do **aplikace** > **src** > **Main** > **res** > **layout** a otevřete **activity_main. XML** a otevřete **textové** zobrazení.
+1. V okně Android Studio projektu přejděte do **aplikace** > **src** > **Main** > **res** > **layout** a otevřete **soubor activity_main. XML** a otevřete **textové** zobrazení.
 2. Změňte rozložení aktivity, například: `<androidx.coordinatorlayout.widget.CoordinatorLayout` na `<androidx.coordinatorlayout.widget.DrawerLayout`. 
 3. Přidejte vlastnost `android:orientation="vertical"` do uzlu `LinearLayout`.
 4. Vložte následující kód do uzlu `LinearLayout` a nahraďte aktuální obsah:

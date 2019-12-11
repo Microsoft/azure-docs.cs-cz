@@ -1,5 +1,5 @@
 ---
-title: Návrh řídicího panelu v reálném čase s kurzem Azure Database for PostgreSQL – Citus)
+title: 'Kurz: Návrh řídicího panelu v reálném čase – Citus () – Azure Database for PostgreSQL'
 description: V tomto kurzu se dozvíte, jak vytvořit, naplnit a dotazovat distribuované tabulky na Azure Database for PostgreSQL Citus (Scale).
 author: jonels-msft
 ms.author: jonels
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482867"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978096"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: Návrh řídicího panelu analýzy v reálném čase pomocí Azure Database for PostgreSQL – škálovatelné (Citus)
 
@@ -196,7 +196,7 @@ Když je naše funkce na místě, spusťte ji a zaveďte data:
 SELECT rollup_http_request();
 ```
 
-A s našimi daty v předem agregované podobě se můžeme dotazovat na souhrnnou tabulku a získat tak stejnou sestavu jako dříve. Spusťte následující dotaz:
+A s našimi daty v předem agregované podobě se můžeme dotazovat na souhrnnou tabulku a získat tak stejnou sestavu jako dříve. Spusťte tento dotaz:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,

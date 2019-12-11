@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2019
-ms.openlocfilehash: d7a746c170d04ad17b86e8aca63384edffbe75ac
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806792"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975019"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do Azure SQL Database spravované instance online pomocí DMS
 
@@ -214,7 +214,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 
 > [!NOTE]
-  > Pokud se Azure Database Migration Service zobrazuje chyba "Systémová chyba 53" nebo "Systémová chyba 57", může dojít k tomu, že by výsledkem byla neschopnost Azure Database Migration Service přistupovat ke sdílené složce Azure. Pokud narazíte na jednu z těchto chyb, udělte vám přístup k úložišti účtu z virtuální sítě, a to podle pokynů uvedených [tady](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
+  > Pokud se Azure Database Migration Service zobrazuje chyba "Systémová chyba 53" nebo "Systémová chyba 57", může dojít k tomu, že by výsledkem byla neschopnost Azure Database Migration Service přistupovat ke sdílené složce Azure. Pokud narazíte na jednu z těchto chyb, udělte [vám pokyny k](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)účtu úložiště z virtuální sítě.
 
 
 2. Vyberte **Save** (Uložit).

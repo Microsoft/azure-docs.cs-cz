@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7b00fff9c979fe6bd2c52f67801a94cb50b1c660
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420447"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970342"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -84,7 +84,7 @@ Povolení protokolu TLS 1.2:
 
 Začněte tím, že povolíte komunikaci s datovými centry Azure a připravíte své prostředí pro Azure Proxy aplikací služby AD. Pokud je v cestě brána firewall, ujistěte se, že je otevřená. Otevřená brána firewall umožňuje konektoru předávat žádosti pomocí protokolu HTTPS (TCP) na proxy aplikace.
 
-### <a name="open-ports"></a>Otevřené porty
+### <a name="open-ports"></a>Otevřít porty
 
 Otevřete následující porty pro **odchozí** provoz.
 
@@ -99,9 +99,9 @@ Pokud brána firewall vynutila provoz na základě pocházejících uživatelů,
 
 Povolte přístup k následujícím adresám URL:
 
-| zprostředkovatele identity | Jak se používá |
+| Adresa URL | Jak se používá |
 | --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure tyto adresy URL používá k ověření certifikátů. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Konektor tyto adresy URL používá během procesu registrace. |
 
@@ -217,8 +217,9 @@ Chcete-li přidat testovacího uživatele:
 
 Otestování přihlášení k aplikaci:
 
-1. V prohlížeči přejděte na externí adresu URL, kterou jste nakonfigurovali během kroku publikování. Měla by se zobrazit obrazovka Start.
-1. Přihlaste se jako uživatel, kterého jste vytvořili v předchozí části.
+1. Z aplikace, kterou chcete testovat, vyberte **proxy aplikace**.
+2. V horní části stránky vyberte **test aplikace** , aby se spustila test aplikace a kontrolovaly se případné problémy s konfigurací.
+3. Nezapomeňte nejdřív spustit aplikaci, abyste otestovali přihlášení k aplikaci, a pak si stáhněte diagnostickou zprávu, kde najdete pokyny k vyřešení všech zjištěných problémů.
 
 Informace o řešení potíží najdete v tématu [řešení potíží se službou Application proxy a chybovými zprávami](application-proxy-troubleshoot.md).
 

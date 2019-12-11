@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 06f03e0005c4f98370bb1f6430fff506f9145d5a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688513"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971498"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Ukázky rozhraní příkazového řádku pro Azure App Service
 
@@ -32,6 +32,8 @@ Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure
 |**Škálování aplikace**||
 | [Ruční škálování aplikace](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří aplikaci App Service a škáluje ji napříč 2 instancemi. |
 | [Škálování aplikace po celém světě s využitím architektury s vysokou dostupností](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří dvě aplikace App Service ve dvou různých geografických oblastech a zpřístupňuje je prostřednictvím jediného koncového bodu pomocí Azure Traffic Manager. |
+|**Ochrana aplikace**||
+| [Integrace s Azure Application Gateway](./scripts/cli-integrate-app-service-with-application-gateway.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří aplikaci App Service a integruje ji s Application Gateway pomocí koncového bodu služby a omezení přístupu. |
 |**Připojení aplikace k prostředkům**||
 | [Připojení aplikace k SQL Database](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci App Service a databázi SQL a pak přidá připojovací řetězec databáze do nastavení aplikace. |
 | [Připojení aplikace k účtu úložiště](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci App Service a účet úložiště a pak přidá připojovací řetězec úložiště do nastavení aplikace. |

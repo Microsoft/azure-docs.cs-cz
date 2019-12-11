@@ -1,6 +1,6 @@
 ---
 title: Kurz – zřízení zařízení pomocí Azure IoT Hub Device Provisioning Service (.NET)
-description: V tomto kurzu se dozvíte, jak můžete zřídit zařízení pro jedno centrum IoT pomocí IoT Hub Device Provisioning Service Azure (.NET).
+description: V tomto kurzu se dozvíte, jak můžete zřídit zařízení pro jedno centrum IoT pomocí Azure IoT Hub Device Provisioning Service (DPS) pomocí .NET.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 98b2ef05a1abb6ebea8dac073fbf7671ed79c06e
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701995"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976770"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Kurz: registrace zařízení do služby IoT Hub pomocí klienta služby Azure IoT Hub Provisioning Service (.NET)
 

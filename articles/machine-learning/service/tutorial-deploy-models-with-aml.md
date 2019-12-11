@@ -1,5 +1,5 @@
 ---
-title: 'Kurz k klasifikaci imagí: nasazení modelů'
+title: 'Obrázek klasifikace kurz: nasazení modelů'
 titleSuffix: Azure Machine Learning
 description: V tomto kurzu se dozvíte, jak použít Azure Machine Learning k nasazení modelu klasifikace image s scikit-učení v poznámkovém bloku Python Jupyter. Tento kurz je druhým z řad se dvěma částmi.
 services: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae657daca86c979495ca14d9df845e2a7a769e0a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fb92132a1e8e05052bc2f7c7d19797a4342db54b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476160"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974202"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: nasazení modelu klasifikace imagí v Azure Container Instances
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ V této části kurzu použijete Azure Machine Learning pro následující úloh
 > * Nasaďte model do Container Instances.
 > * Otestujte nasazený model.
 
-Container Instances je skvělé řešení pro testování a porozumění pracovnímu postupu. V případě škálovatelných produkčních nasazení zvažte použití služby Azure Kubernetes. Další informace naleznete v tématu [Jak nasadit a kde](how-to-deploy-and-where.md).
+Container Instances je skvělé řešení pro testování a porozumění pracovnímu postupu. Pro nasazení v produkčním prostředí škálovatelné zvažte použití služby Azure Kubernetes Service. Další informace naleznete v tématu [Jak nasadit a kde](how-to-deploy-and-where.md).
 
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.41 verze.
@@ -67,7 +67,7 @@ import matplotlib.pyplot as plt
 import azureml
 from azureml.core import Workspace, Run
 
-# display the core SDK version number
+# Display the core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 

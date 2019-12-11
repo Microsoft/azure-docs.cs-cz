@@ -1,18 +1,18 @@
 ---
-title: Jak používat nástroj pro popisky dat Azure Machine Learning
+title: Označení obrázků v projektu s popisem
 title.suffix: Azure Machine Learning
-description: V tomto článku se naučíte, jak používat nástroje pro označování dat v Azure Machine Learning projektu značení.
+description: Naučte se používat nástroje pro označování dat v Azure Machine Learning projektu značení.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bc7eaeefcef042417b29eb7c887cc19acf8c5c02
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: b36eed1918be2c769bcf74c0d8dee09a5bd62756
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688217"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978130"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem
 
@@ -108,7 +108,7 @@ Po vytvoření ohraničujících polí pro obrázek vyberte **Odeslat** a uložt
 
 ## <a name="finish-up"></a>Dokončení
 
-Když odešlete stránku s tagovanými daty, Azure s novými neoznačenými daty z pracovní fronty. Pokud nejsou k dispozici žádná další neoznačená data, zobrazí se zpráva s odkazem na domovskou stránku portálu.
+Když odešlete stránku s tagovanými daty, Azure vám z pracovní fronty přiřadí nová neoznačená data. Pokud nejsou k dispozici žádná další neoznačená data, zobrazí se zpráva s odkazem na domovskou stránku portálu.
 
 Až budete s popiskem hotovi, vyberte své jméno v pravém horním rohu portálu pro označování a pak vyberte **Odhlásit**se. Pokud se odhlásíte, nakonec Azure vyprší časový limit a přiřadíte data jinému popisku.
 

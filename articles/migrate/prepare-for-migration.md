@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196425"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974780"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -99,7 +99,7 @@ Například pokud vaše místní instalace používá datový disk, který je p�
 1. Na místním počítači (ne na hostitelském serveru) otevřete příkazový řádek se zvýšenými oprávněními.
 2. Zadejte text **DiskPart**.
 3. Zadejte **San**. Pokud není zachováno písmeno jednotky hostovaného operačního systému, vrátí se offline **sdílená nebo offline** .
-4. Do příkazového řádku **DiskPart** zadejte **SANPOLICY = ONLINEALL**. Toto nastavení zajišťuje, že se disky přenesou do režimu online a jsou čitelné i zapisovatelné.
+4. Do příkazového řádku **DiskPart** zadejte **San Policy = OnlineAll**. Toto nastavení zajišťuje, že se disky přenesou do režimu online a jsou čitelné i zapisovatelné.
 5. Během migrace testu můžete ověřit, že jsou písmena jednotek zachovaná.
 
 

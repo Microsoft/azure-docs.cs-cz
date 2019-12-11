@@ -3,18 +3,18 @@ title: Kurz – definování nového typu Azure IoT Edge zařízení v Azure IoT
 description: V tomto kurzu se dozvíte jako tvůrce, jak vytvořit nové zařízení Azure IoT Edge v aplikaci Azure IoT Central. Definujete telemetrii, stav, vlastnosti a příkazy pro svůj typ.
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 97bfd2b1e8b571f44c0b782459567f5677dd36a7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702794"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979083"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Kurz: definování nového typu Azure IoT Edge zařízení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -103,7 +103,7 @@ Na stránce **Vybrat typ šablony** vyberte **Azure IoT Edge**a vyberte **Dalš�
 
 V IoT Edge můžete nasadit a spravovat obchodní logiku ve formě modulů. IoT Edge moduly jsou nejmenší jednotkou výpočtu spravovanou pomocí IoT Edge a můžou obsahovat služby Azure (například Azure Stream Analytics) nebo vlastní kód specifický pro řešení. Pokud chcete pochopit, jak se moduly vyvíjí, nasazují a udržují, přečtěte si téma [IoT Edge moduly](../../iot-edge/iot-edge-modules.md).
 
-Manifest nasazení je na vysoké úrovni seznamem vláken modulu, které jsou nakonfigurovány s požadovanými vlastnostmi. Manifest nasazení oznamuje IoT Edge zařízení (nebo skupině zařízení), které moduly se mají nainstalovat, a jak je nakonfigurovat. Manifesty nasazení obsahují požadované vlastnosti pro každý modul s dvojitou vlastností. IoT Edge zařízení hlásí zpět ohlášené vlastnosti pro každý modul.
+Manifest nasazení na vysoké úrovni, je seznam dvojčaty modulů, které jsou nakonfigurovány s jejich požadované vlastnosti. Manifest nasazení oznamuje IoT Edge zařízení (nebo skupině zařízení), které moduly se mají nainstalovat, a jak je nakonfigurovat. Manifesty nasazení obsahují požadované vlastnosti pro každý modul s dvojitou vlastností. IoT Edge zařízení hlásí zpět ohlášené vlastnosti pro každý modul.
 
 Pomocí Visual Studio Code vytvořit manifest nasazení. Další informace najdete v tématu [Azure IoT Edge Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
 
@@ -316,7 +316,7 @@ Až budete hotovi s přizpůsobením, vyberte **Uložit**.
 ![Snímek obrazovky se stránkou pro přizpůsobení šablony senzoru prostředí](./media/tutorial-define-edge-device-type/edgetemplatecustomize.png)
 
 
-### <a name="create-views"></a>Vytváření zobrazení
+### <a name="create-views"></a>Vytvoření zobrazení
 
 Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní informace o zařízení snímače životního prostředí pro operátora. Vlastní nastavení umožňuje operátorovi spravovat zařízení senzorů pro životní prostředí připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro operátora pro práci se zařízeními:
 

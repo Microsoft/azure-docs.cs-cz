@@ -1,20 +1,20 @@
 ---
-title: Získat popisky pro data
+title: Vytvořit projekt pro označování dat
 titleSuffix: Azure Machine Learning
-description: V tomto článku se dozvíte, jak vytvořit a spustit označování projektů k označení dat pro strojové učení.
+description: Přečtěte si o tom, jak vytvořit a spustit označování projektů k označení dat pro strojové učení.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c171310fd1c9caf78288fa156b353ecdd517d602
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bdedc3ee0c76eafc4b4bc95116fb5be846f4bee5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894692"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978232"
 ---
-# <a name="get-labels-for-data"></a>Získat popisky pro data
+# <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
 Popisování voluminous dat v projektech Machine Learning je často starostí. Projekty, které mají komponentu počítačového vidění, jako je například klasifikace obrázku nebo detekce objektu, obecně vyžadují popisky pro tisíce imagí.
  

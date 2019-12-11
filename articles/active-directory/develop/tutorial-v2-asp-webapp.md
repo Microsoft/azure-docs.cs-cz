@@ -1,5 +1,5 @@
 ---
-title: Začínáme s ASP.NET webovým serverem Azure AD v 2.0
+title: Přidání přihlašování do webové aplikace Azure AD ASP.NET
 titleSuffix: Microsoft identity platform
 description: Implementace přihlášení Microsoftu v řešení ASP.NET pomocí tradiční aplikace založené na webovém prohlížeči a standardu OpenID Connect
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66d2a9a958afd536dcffeca211a3fc56cf09ef8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803725"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964731"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -446,7 +446,7 @@ Chcete-li otestovat přístup jako anonymní uživatel k řadiči, který je chr
 
 Zobrazí se výzva k ověření, že se má použít zobrazení chráněného řadiče.
 
-## <a name="advanced-options"></a>Rozšířené možnosti
+## <a name="advanced-options"></a>Upřesnit možnosti
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Ochrana celého webu

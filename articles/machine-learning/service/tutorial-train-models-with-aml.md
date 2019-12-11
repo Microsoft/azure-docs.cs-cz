@@ -1,5 +1,5 @@
 ---
-title: 'Kurz pro klasifikaci imagí: modely vlaků'
+title: 'Kurz klasifikace obrázků: trénování modelů'
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak vytvořit model klasifikace obrázků pomocí scikit-učení v poznámkovém bloku Python Jupyter s Azure Machine Learning. Tento kurz je první částí z dvoudílné série.
 services: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca0f64fe67865e18c47009779cf8bd307a21c961
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581545"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978726"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: analýza modelů klasifikace imagí pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,9 +39,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.65 verze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Dokončete [kurz: Začínáme s vytvářením prvního experimentu ml](tutorial-1st-experiment-sdk-setup.md) na:
+* Dokončete [kurz: Začínáme s vytvořením prvního experimentu Azure ml](tutorial-1st-experiment-sdk-setup.md) :
     * Vytvoření pracovního prostoru
     * Naklonujte Poznámkový blok kurzů do složky v pracovním prostoru.
     * Vytvořte cloudový virtuální počítač s poznámkovým blokem.
@@ -148,7 +148,7 @@ else:
 
 Nyní máte k dispozici potřebné balíčky a výpočetní prostředky pro trénink modelu v cloudu.
 
-## <a name="explore-data"></a>Zkoumání dat
+## <a name="explore-data"></a>Prozkoumání dat
 
 Než začnete pracovat s modelem, potřebujete pochopit data, která používáte k jeho učení. V této části získáte informace o následujících postupech:
 
@@ -181,7 +181,7 @@ mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
 
 ### <a name="display-some-sample-images"></a>Zobrazení některých ukázkových obrázků
 
-Načtěte komprimované soubory do pole `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodných obrázků z datové sady s jejich popisky nad nimi. Tento krok vyžaduje funkci `load_data`, která je zahrnutá v souboru `util.py`. Tento soubor je umístěný ve složce s ukázkou. Ujistěte se, že je umístěn ve stejné složce jako tento poznámkový blok. Funkce `load_data` jednoduše analyzuje komprimované soubory do polí numpy.
+Načtěte komprimované soubory do pole `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodných obrázků z datové sady s jejich popisky nad nimi. Tento krok vyžaduje funkci `load_data`, která je zahrnutá v souboru `util.py`. Tento soubor je umístěný ve složce s ukázkou. Ujistěte se, že je umístěn ve stejné složce jako tento poznámkový blok. `load_data` Funkce jednoduše analyzuje komprimované soubory do numpy pole.
 
 ```python
 # make sure utils.py is in the same directory as this code
@@ -218,7 +218,7 @@ Nyní máte představu o tom, jak tyto obrázky vypadají, a o očekávaném vý
 Odešlete úlohu do clusteru pro vzdálené trénování, který jste nastavili dříve.  K odeslání úlohy je potřeba provést:
 * Vytvoření adresáře
 * Vytvoření trénovacího skriptu
-* Vytvoření objektu Estimator
+* Vytvoření objektu odhad
 * Odeslání úlohy
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
@@ -302,15 +302,15 @@ Všimněte si, jak skript získává data a ukládá modely:
 
 ### <a name="create-an-estimator"></a>Vytvoření estimátoru
 
-K odeslání běhu se použije objekt [skriptu sklearn Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) . Vytvořte Estimator spuštěním následujícího kódu k definování těchto položek:
+K odeslání běhu se použije objekt [skriptu sklearn Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) . Vytvořte estimátor spuštěním následujícího kódu, který definuje tyto položky:
 
-* Název objektu Estimator `est`.
+* Název objektu estimátoru je `est`.
 * Adresář, který obsahuje vaše skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
-* Cílové výpočetní prostředí. V takovém případě použijete výpočetní cluster Azure Machine Learning, který jste vytvořili.
-* Název školicího skriptu, **Train.py**.
-* Parametry požadované ze školicího skriptu.
+* Cílové výpočetní prostředí. V tomto případě používáte cluster pro výpočty služby Azure Machine Learning, který jste vytvořili.
+* Název trénovacího skriptu: **train.py**.
+* Parametry požadované z trénovacího skriptu.
 
-V tomto kurzu je tento cíl AmlCompute. Všechny soubory ve složce skriptu se nahrají do uzlů clusteru pro spuštění. **Data_folder** je nastavená na použití datové sady. Nejprve vytvořte objekt prostředí, který určuje závislosti požadované pro školení. 
+V tomto kurzu je tento cíl AmlCompute. Všechny soubory ve složce skriptu se nahrají do uzlů clusteru pro spuštění. **Data_folder** je nastaveno na použití datové sady. Nejprve vytvořte objekt prostředí, který určuje závislosti požadované pro školení. 
 
 ```python
 from azureml.core.environment import Environment
@@ -367,7 +367,7 @@ Co se stane, když počkáte:
 
 Průběh spuštěné úlohy můžete sledovat několika způsoby. V tomto kurzu se používá widget Jupyter a metoda `wait_for_completion`.
 
-### <a name="jupyter-widget"></a>Widget Jupyter
+### <a name="jupyter-widget"></a>Pomůcka Jupyter
 
 Sledujte průběh běhu pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobně jako odeslání běhu je pomůcka asynchronní a poskytuje aktualizace za provozu každých 10 až 15 sekund, dokud se nedokončí úloha:
 
@@ -430,7 +430,7 @@ print(model.name, model.id, model.version, sep='\t')
 Můžete také odstranit pouze výpočetní cluster Azure Machine Learning. Automatické škálování je ale zapnuté a minimum clusteru je nula. Takže se tomuto konkrétnímu prostředku neúčtují další poplatky za výpočetní prostředky, pokud se nepoužívá:
 
 ```python
-# optionally, delete the Azure Machine Learning Compute cluster
+# Optionally, delete the Azure Machine Learning Compute cluster
 compute_target.delete()
 ```
 

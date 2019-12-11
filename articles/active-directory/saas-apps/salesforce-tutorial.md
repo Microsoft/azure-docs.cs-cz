@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63cc4b902c0bd0281228e23076be6e0a18461597
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4d137a96a967e017c67da7dfabf25502de32ba7a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241420"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970002"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se službou Salesforce
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat Salesforce s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -46,9 +46,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Salesforce podporuje jednotné přihlašování (SSO) iniciované **SP**
 
-* Salesforce podporuje zřizování uživatelů **jenom v čase** .
+* Salesforce podporuje [ **automatizované** zřizování a rušení zřizování uživatelů](salesforce-provisioning-tutorial.md) (doporučeno)
 
-* Salesforce podporuje [ **automatizované** zřizování uživatelů.](salesforce-provisioning-tutorial.md)
+* Salesforce podporuje zřizování uživatelů **jenom v čase** .
 
 * Mobilní aplikace Salesforce se teď dá nakonfigurovat s Azure AD pro povolení jednotného přihlašování. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
@@ -125,7 +125,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
    
     > [!NOTE]
     > Atributy uživatele Salesforce rozlišují velká a malá písmena pro ověřování SAML.
@@ -230,7 +230,7 @@ Když kliknete na dlaždici Salesforce na přístupovém panelu, měli byste bý
 
     mobilní aplikace ![Salesforce](media/salesforce-tutorial/mobile-app5.png) ![mobilní aplikace Salesforce](media/salesforce-tutorial/mobile-app6.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

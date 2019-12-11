@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 11/17/2019
-ms.openlocfilehash: 97faa445a286574aa5fc05d084d21c0740bc8a8b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173859"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995928"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Kurz: ingestování a dotazování dat monitorování v Azure Průzkumník dat 
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Vytvoří všechny prostředky ve stejném umístění Azure nebo oblasti. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Cluster a databáze Azure Průzkumník dat](create-cluster-database-portal.md). V tomto kurzu je název databáze *TestDatabase*.
@@ -44,7 +44,7 @@ Zobrazení a pochopení dat poskytovaných diagnostikou Azure Monitor diagnostic
 Diagnostické metriky Azure a protokoly aktivit jsou vydávány službou Azure a poskytují údaje o provozu této služby. 
 
 # <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnostické metriky](#tab/diagnostic-metrics)
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 Diagnostické metriky jsou agregované s časovým intervalem 1 minuty. Následuje příklad schématu události služby Azure Průzkumník dat metrika při dobu trvání dotazu:
 
@@ -78,7 +78,7 @@ Diagnostické metriky jsou agregované s časovým intervalem 1 minuty. Následu
 ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnostické protokoly](#tab/diagnostic-logs)
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 Následuje příklad protokolu ingestování [diagnostiky](using-diagnostic-logs.md#diagnostic-logs-schema)Azure Průzkumník dat:
 
@@ -134,7 +134,7 @@ Následuje příklad protokolu ingestování [diagnostiky](using-diagnostic-logs
 }
 ```
 # <a name="activity-logstabactivity-logs"></a>[Protokoly aktivit](#tab/activity-logs)
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 Protokoly aktivit Azure jsou protokoly na úrovni předplatného, které poskytují přehled o operacích provedených u prostředků v rámci vašeho předplatného. Následuje příklad události protokolu aktivit pro kontrolu přístupu:
 
@@ -315,10 +315,10 @@ Chcete-li namapovat data protokolu aktivit na tabulku, použijte následující 
         | mv-expand events = Records
         | where isnotempty(events.metricName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             MetricName = tostring(events.metricName),
-            Count = toint(events.count),
+            Count = toint(events['count']),
             Total = todouble(events.total),
             Minimum = todouble(events.minimum),
             Maximum = todouble(events.maximum),
@@ -435,7 +435,7 @@ Vyberte prostředek, ze kterého se mají exportovat metriky. Několik typů pro
 
     ![Nastavení diagnostiky](media/ingest-data-no-code/diagnostic-settings.png)
 
-1. Otevře se podokno **nastavení diagnostiky** . Proveďte následující kroky:
+1. Otevře se podokno **nastavení diagnostiky** . Postupujte následovně:
    1. Poskytněte data diagnostického protokolu název *ADXExportedData*.
    1. V části **protokol**zaškrtněte políčka **SucceededIngestion** i **FailedIngestion** .
    1. V části **metrika**zaškrtněte políčko **výkon dotazu** .
@@ -450,7 +450,7 @@ Vyberte prostředek, ze kterého se mají exportovat metriky. Několik typů pro
     1. V seznamu **Vyberte název zásad centra událostí** vyberte **RootManagerSharedAccessKey**.
     1. Vyberte **OK**.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 # <a name="activity-logstabactivity-logs"></a>[Protokoly aktivit](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>Připojení protokolů aktivit k centru událostí
@@ -526,7 +526,7 @@ Nyní potřebujete vytvořit datová připojení pro diagnostické metriky a pro
     | **Mapování sloupců** | *DiagnosticRawRecordsMapping* | Mapování, které jste vytvořili v databázi *TestDatabase* , která mapuje příchozí data JSON na názvy sloupců a datové typy tabulky *DiagnosticRawRecords* .|
     | | |
 
-1. Vyberte **Vytvořit**.  
+1. Vyberte **Create** (Vytvořit).  
 
 # <a name="activity-logstabactivity-logs"></a>[Protokoly aktivit](#tab/activity-logs)
 
@@ -553,7 +553,7 @@ Nyní potřebujete vytvořit datová připojení pro diagnostické metriky a pro
     | **Mapování sloupců** | *ActivityLogsRawRecordsMapping* | Mapování, které jste vytvořili v databázi *TestDatabase* , která mapuje příchozí data JSON na názvy sloupců a datové typy tabulky *ActivityLogsRawRecords* .|
     | | |
 
-1. Vyberte **Vytvořit**.  
+1. Vyberte **Create** (Vytvořit).  
 ---
 
 ## <a name="query-the-new-tables"></a>Dotazování na nové tabulky
@@ -595,7 +595,7 @@ Výsledky dotazu:
 
 |   |   |
 | --- | --- |
-|   |  count_ | any_Database | any_Table | any_IngestionSourcePath
+|   |  COUNT | any_Database | any_Table | any_IngestionSourcePath
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 

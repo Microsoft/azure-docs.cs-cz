@@ -3,18 +3,18 @@ title: Přidání zařízení Azure IoT Edge do Azure IoT Central | Microsoft Do
 description: Jako operátor přidejte do aplikace Azure IoT Central Azure IoT Edge zařízení.
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f16db7ebff087b164228f2b23d6fa7ec302705bb
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e5d60c77e9bdc0733c12bca891eb6c3e33a1fceb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406330"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979066"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Kurz: Přidání zařízení Azure IoT Edge do aplikace Azure IoT Central
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 > * Odeslání příkazů do modulu běžícím na zařízení IoT Edge
 > * Nastavení vlastností modulu běžícího na IoT Edgem zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. [V tomto rychlém startu vytvoříte aplikaci Azure IoT Central](./quick-deploy-iot-central.md).
 
@@ -50,7 +50,7 @@ V této části vytvoříte nové zařízení IoT Edge pomocí šablony senzoru 
 
 ![Obrazovka stránky zařízení s zvýrazněnou šablonou senzoru prostředí](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
 
-Vyberte **+ Nová**a zadejte ID zařízení a název, který zvolíte. Vyberte **Vytvořit**.
+Vyberte **+ Nová**a zadejte ID zařízení a název, který zvolíte. Vyberte **Create** (Vytvořit).
 
 ![Snímek obrazovky s dialogovým oknem vytvořit nové zařízení s ID zařízení a zvýrazněným polem pro vytvoření](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
 
@@ -72,7 +72,7 @@ Vyberte **Pokračovat**.
 ![Snímek obrazovky s dialogovým oknem vytvořit tuto aplikaci v Azure se zvýrazněnou možností pokračovat](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
 
 
-Přejdete na Azure Portal. Vyberte **Vytvořit**.
+Přejdete na Azure Portal. Vyberte **Create** (Vytvořit).
 
 ![Snímek obrazovky Azure Portal se zvýrazněnou možností vytvořit](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
 
@@ -122,7 +122,7 @@ Upravte soubor IoT Edge config. yaml.
 
 Posuňte se dolů a odkomentujte část připojovacího řetězce souboru YAML. 
 
-**Uložení**
+**Dříve**
 
 ![Snímek obrazovky konzoly](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
 
@@ -132,11 +132,11 @@ Posuňte se dolů a odkomentujte část připojovacího řetězce souboru YAML.
 
 Odkomentujte část symetrického klíče souboru YAML. 
 
-**Uložení**
+**Dříve**
 
 ![Snímek obrazovky konzoly](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
 
-**Konci**
+**Nyní**
 
 ![Snímek obrazovky konzoly](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
 
