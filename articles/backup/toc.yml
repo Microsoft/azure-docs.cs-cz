@@ -222,6 +222,8 @@
       items:
         - name: Vytvoření trezoru služby Recovery Services
           href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: Aktualizace konfigurace trezoru služby Recovery Services
+          href: use-restapi-update-vault-properties.md
         - name: Vytvoření a aktualizace zásad zálohování
           href: backup-azure-arm-userestapi-createorupdatepolicy.md
         - name: Zálohování virtuálních počítačů Azure
