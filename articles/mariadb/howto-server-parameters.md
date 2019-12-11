@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 59d18ea11699ed77763c162e4930b159fcd19fe2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/9/2019
+ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888661"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976294"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Postup konfigurace parametrů serveru v Azure Database for MariaDB pomocí Azure Portal
 
@@ -37,21 +37,21 @@ Seznam parametrů podporovaný server s neustále roste. Na kartě parametrů se
 
 InnoDB vyrovnávací paměti fondu a maximální počet připojení nejsou konfigurovatelné a vázané na vaše [cenovou úroveň](concepts-pricing-tiers.md).
 
-|**Cenová úroveň**| **počet virtuálních jader:**|**Fond vyrovnávacích pamětí InnoDB (MB)**| **Maximální počet připojení**|
-|---|---|---|---|
-|Úroveň Basic| 1\. místo| 1024| 50|
-|Úroveň Basic| 2| 2560| 100|
-|Obecné použití| 2| 3584| 300|
-|Obecné použití| 4| 7680| 625|
-|Obecné použití| 8| 15360| 1250|
-|Obecné použití| 16| 31232| 2500|
-|Obecné použití| 32| 62976| 5000|
-|Obecné použití| 64| 125952| 10000|
-|Paměťově optimalizované| 2| 7168| 600|
-|Paměťově optimalizované| 4| 15360| 1250|
-|Paměťově optimalizované| 8| 30720| 2500|
-|Paměťově optimalizované| 16| 62464| 5000|
-|Paměťově optimalizované| 32| 125952| 10000|
+|**Cenová úroveň**| **počet virtuálních jader:**|**Fond vyrovnávacích pamětí InnoDB (MB)**|
+|---|---|---|
+|Úroveň Basic| 1\. místo| 1024|
+|Úroveň Basic| 2| 2560|
+|Obecné použití| 2| 3584|
+|Obecné použití| 4| 7680|
+|Obecné použití| 8| 15360|
+|Obecné použití| 16| 31232|
+|Obecné použití| 32| 62976|
+|Obecné použití| 64| 125952|
+|Paměťově optimalizované| 2| 7168|
+|Paměťově optimalizované| 4| 15360|
+|Paměťově optimalizované| 8| 30720|
+|Paměťově optimalizované| 16| 62464|
+|Paměťově optimalizované| 32| 125952|
 
 Tyto další server parametry nejsou konfigurovatelné v systému:
 

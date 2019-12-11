@@ -1,6 +1,6 @@
 ---
 title: Správa registrace zařízení pro Azure IoT Hub Device Provisioning Service v Azure Portal
-description: Jak spravovat registrace zařízení pro vaši službu Device Provisioning na webu Azure Portal
+description: Správa registrace zařízení pro službu Device Provisioning Service (DPS) na webu Azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 03559183e46182c4f80fe3d16ec542add9b1692b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229718"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974934"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Jak spravovat registrace zařízení pomocí webu Azure Portal
 
@@ -34,7 +34,7 @@ Existují dva způsoby, jak můžete zařízení zaregistrovat pomocí služby z
      a. Klikněte na **spravovat registrace**a pak vyberte kartu **skupiny** registrací.  
      b. Klikněte na tlačítko **Přidat** v horní části.  
      c. Jakmile se zobrazí panel Přidat skupinu registrací, zadejte informace pro položku seznamu registrace.  **Název skupiny** je povinný. Jako **typ certifikátu**vyberte taky CA nebo zprostředkující a nahrajte kořenový **primární certifikát** pro skupinu zařízení.  
-     d. Klikněte na možnost **Uložit**. Po úspěšném vytvoření skupiny registrací by se na kartě **skupiny** registrací měl zobrazit název skupiny.  
+     d. Klikněte na **Uložit**. Po úspěšném vytvoření skupiny registrací by se na kartě **skupiny** registrací měl zobrazit název skupiny.  
 
      [![skupina registrace na portálu](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
@@ -49,7 +49,7 @@ Existují dva způsoby, jak můžete zařízení zaregistrovat pomocí služby z
        a. Klikněte na **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** .  
        b. Klikněte na tlačítko **Přidat** v horní části.   
        c. Jakmile se zobrazí panel Přidat registraci, zadejte informace pro položku seznamu registrace. Nejdřív vyberte **mechanismus** ověření identity pro zařízení (X. 509 nebo TPM). X. 509 Attestation vyžaduje, abyste nahráli **primární certifikát** na úrovni zařízení. ČIP TPM vyžaduje, abyste zadali **ověřovací klíč** a **ID registrace** pro zařízení.  
-       d. Klikněte na možnost **Uložit**. Po úspěšném vytvoření skupiny registrací by se zařízení mělo zobrazit na kartě **jednotlivé registrace** .  
+       d. Klikněte na **Uložit**. Po úspěšném vytvoření skupiny registrací by se zařízení mělo zobrazit na kartě **jednotlivé registrace** .  
 
        [![jednotlivé registrace na portálu](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 

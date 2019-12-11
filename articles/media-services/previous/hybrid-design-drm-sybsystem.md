@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d15bfcfbae3b24e1a9b29dc74f9b41a979e63ae9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014683"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975189"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybridní návrh subsystémů DRM 
 
@@ -69,8 +69,8 @@ V rámci komplexní cloudové videokamery má Azure Media Services DRM návrh s 
 
 ### <a name="drm-license-delivery"></a>Doručování licencí DRM
 
-* AMS: Licence DRM je poskytována službou doručování licencí AMS.
-* Třetí strana: Licence DRM se doručuje prostřednictvím licenčního serveru DRM třetí strany mimo AMS.
+* AMS: licence DRM je poskytována službou doručování licencí AMS.
+* Třetí strana: licence DRM se doručuje prostřednictvím licenčního serveru DRM třetí strany mimo AMS.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Konfigurace na základě vašeho hybridního scénáře
 
@@ -81,7 +81,7 @@ Prostřednictvím konfigurace klíče obsahu můžete řídit následující atr
 * Klíč obsahu, který se používá pro dynamické šifrování DRM.
 * Obsah licence DRM, který bude dodán službami doručování licencí: práva, klíč obsahu a omezení.
 * Typ **omezení zásad autorizace klíče obsahu**: otevřená, IP nebo omezení tokenu.
-* Pokud se používá typ tokenu **omezení zásad autorizace klíče obsahu**, musí být před vystavením licence splněné **omezení zásad autorizace klíče obsahu** .
+* Pokud se používá typ **tokenu** **omezení zásad autorizace klíče obsahu**, musí být před vystavením licence splněné **omezení zásad autorizace klíče obsahu** .
 
 ### <a name="asset-delivery-policy"></a>Zásady doručení assetu
 
@@ -89,11 +89,11 @@ Prostřednictvím konfigurace zásad doručení assetů můžete řídit násled
 
 * Kombinace protokolů pro streamování a šifrování DRM, jako je například POMLČKa v CENC (PlayReady a Widevine), hladké streamování v oblasti PlayReady, HLS v oblasti Widevine nebo PlayReady.
 * Adresy URL pro doručování s výchozími a vloženými licencemi pro každý ze zúčastněných několikanásobnou
-* Zda jsou adresy URL pro získání licence (LA_URLs) v zápočtu na konci nebo v seznamu testů HLS obsahovat řetězec dotazu ID klíče (KID) pro Widevine a FairPlay, v uvedeném pořadí.
+* Zda jsou adresy URL pro získání licence (LA_URLs) v záHLSm znaku MPD nebo v seznamu testů pro Widevine a FairPlay řetězce dotazu obsahující ID klíče (KID).
 
 ## <a name="scenarios-and-samples"></a>Scénáře a ukázky
 
-Na základě vysvětlení v předchozí části používají následující pět hybridních scénářů příslušné kombinace konfigurace**zásad doručení assetů** **obsahu**-(ukázky uvedené v posledním sloupci následují v tabulce):
+Na základě vysvětlení v předchozí části používají následující pět hybridních scénářů odpovídající **klíče obsahu**-kombinacích konfigurace **zásad doručení assetů** (ukázky uvedené v posledním sloupci následují v tabulce):
 
 |**Hostování obsahu & původu**|**Šifrování DRM**|**Doručování licencí DRM**|**Konfigurovat klíč obsahu**|**Konfigurace zásad doručení assetu**|**Ukázka**|
 |---|---|---|---|---|---|
@@ -107,25 +107,29 @@ V ukázkách funguje ochrana PlayReady pro PŘERUŠOVANé i hladké streamován�
 
 ### <a name="sample-1"></a>Ukázka 1
 
-* Adresa URL zdroje (základní): https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
-* PlayReady LA_URL (PŘERUŠOVANá & hladká): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* Zdrojová (základní) adresa URL: https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
+* PlayReady LA_URL (PŘERUŠOVANé & hladké): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
 * Widevine LA_URL (POMLČKa): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
 * FairPlay LA_URL (HLS): https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
 
 ### <a name="sample-2"></a>Ukázka 2
 
-* Adresa URL zdroje (základní): https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady LA_URL (PŘERUŠOVANá & hladká): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
+* Zdrojová (základní) adresa URL: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* PlayReady LA_URL (PŘERUŠOVANé & hladké): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
 
 ### <a name="sample-3"></a>Ukázka 3
 
 * Zdrojová adresa URL: https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (PŘERUŠOVANá & hladká): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* PlayReady LA_URL (PŘERUŠOVANé & hladké): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
 
 ### <a name="sample-4"></a>Ukázka 4
 
 * Zdrojová adresa URL: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (PŘERUŠOVANá & hladká): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+* PlayReady LA_URL (PŘERUŠOVANé & hladké): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="summary"></a>Souhrn
 
@@ -136,6 +140,6 @@ Zobrazení Media Servicesch cest výuky.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí C# sady SDK | Microsoft Docs'
+title: 'Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu C# pomocí sady SDK | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí C# sady SDK.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: scottwhi
-ms.openlocfilehash: c7ac6d051c8333a6329a3c2ed238d78fb9da4a30
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 21b192d29f30d66e3d5f0ce6e04317d3ca7c860e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565722"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977144"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí C# sady SDK 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu C# pomocí sady SDK 
 
-Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí C# sady SDK. I když Vlastní vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Vlastní vyhledávání Bingu SDK poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)
+Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí C# sady SDK. I když Vlastní vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Vlastní vyhledávání Bingu SDK poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Instance Vlastní vyhledávání Bingu. Další [informace najdete v tématu rychlý Start: Pro další informace vytvořte první](quick-start.md) instanci vlastní vyhledávání Bingu.
+- Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md) .
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
 - Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
@@ -54,14 +54,14 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
 
 ## <a name="send-the-search-request-and-receive-a-response"></a>Odeslat žádost o vyhledávání a přijmout odpověď
     
-1. Odešlete vyhledávací dotaz pomocí `SearchAsync()` metody klienta a uložte odpověď. Nezapomeňte nahradit `YOUR-CUSTOM-CONFIG-ID` ID konfigurace vaší instance (ID můžete najít na [portálu vlastní vyhledávání Bingu](https://www.customsearch.ai/)). Tento příklad vyhledá "Xbox".
+1. Odešlete vyhledávací dotaz pomocí metody `SearchAsync()` klienta a uložte odpověď. Nezapomeňte svou `YOUR-CUSTOM-CONFIG-ID` nahradit ID konfigurace vaší instance (ID můžete najít na [portálu vlastní vyhledávání Bingu](https://www.customsearch.ai/)). Tento příklad vyhledá "Xbox".
 
     ```csharp
     // This will look up a single query (Xbox).
     var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
     ```
 
-2. Metoda `SearchAsync()` vrátí objekt `WebData`. Použijte objekt k iterování všech `WebPages` nalezených. Tento kód vyhledá první výsledek hledání webových stránek a vypíše název (`Name`) a adresu URL (`URL`) webové stránky.
+2. Metoda `SearchAsync()` vrátí objekt `WebData`. Použijte objekt k iterování všech `WebPages`, které byly nalezeny. Tento kód vyhledá první výsledek hledání webových stránek a vypíše název (`Name`) a adresu URL (`URL`) webové stránky.
 
     ```csharp
     if (webData?.WebPages?.Value?.Count > 0)

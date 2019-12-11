@@ -1,14 +1,28 @@
 ---
-author: erhopf
-ms.author: erhopf
+author: aahill
+ms.author: aahi
 ms.service: cognitiveservices
 ms.topic: include
-ms.date: 08/16/2018
-ms.openlocfilehash: d0c46c6a315166df0c72642675f01c4726fc0e8c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/09/2019
+ms.openlocfilehash: e68a61e570ae878432089bb93235e08c3b71225f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175289"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961471"
 ---
-K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API pro vyhledávání Bingu. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+## <a name="create-an-azure-resource"></a>Vytvoření prostředku Azure
+
+Začněte používat rozhraní API Bingu pro vyhledávání na webu vytvořením jednoho z níže uvedených prostředků Azure.
+
+* [Vytvořte prostředek zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Není potřeba žádné předplatné Azure.
+    * Platí po dobu sedmi dnů zdarma. Po registraci bude na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)dostupný zkušební klíč a koncový bod.
+
+* [Vytvořit prostředek vyhledávání Bingu v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.
+    * Pomocí cenové úrovně Free můžete službu vyzkoušet a upgradovat ji později na placenou úroveň pro produkční prostředí.
+
+* [Vytvoření prostředku s více službami](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.  
+    * Používejte stejný klíč a koncový bod pro vaše aplikace, a to napříč více Cognitive Services.

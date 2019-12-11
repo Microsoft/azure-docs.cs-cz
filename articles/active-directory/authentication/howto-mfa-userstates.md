@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55bba2ff51460a10feabd881458b8d4a15cde924
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914613"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964051"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -103,10 +103,15 @@ Nejdřív nainstalujte modul pomocí:
 > [!TIP]
 > Nezapomeňte se připojit jako první pomocí **Connect-MsolService** .
 
+   ```PowerShell
+   Connect-MsolService
+   ```
+
 Tento ukázkový skript PowerShellu umožňuje MFA pro jednotlivé uživatele:
 
    ```PowerShell
    Import-Module MSOnline
+   Connect-MsolService
    $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
    $st.RelyingParty = "*"
    $st.State = "Enabled"

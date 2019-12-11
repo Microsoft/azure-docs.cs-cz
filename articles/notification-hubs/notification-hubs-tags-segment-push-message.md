@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: 66388f139b63c63e1f0f8ee8ee063e0ddd0f9da5
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 236e222da9e9a64d4b93002d28c94fa6fe469c08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213034"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971973"
 ---
 # <a name="routing-and-tag-expressions"></a>Výrazy směrování a značek
 
@@ -37,17 +37,17 @@ Jediným způsobem, jak zaměřit na konkrétní registrace oznámení, je přid
 2. **Tag**: všechny registrace, které obsahují určenou značku, obdrží oznámení.
 3. **Výraz značky**: všechny registrace, jejichž sada značek odpovídá zadanému výrazu, obdrží oznámení.
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Značky
 
 Značkou může být libovolný řetězec, maximálně 120 znaků, obsahující alfanumerické znaky a následující jiné než alfanumerické znaky: _, @, #,,:,. Následující příklad ukazuje aplikaci, ze které můžete přijímat informační zprávy týkající se konkrétních hudebních skupin. V tomto scénáři je jediným způsobem, jak směrovat oznámení, je označovat registrace pomocí značek, které reprezentují různá pásma, jak je znázorněno na následujícím obrázku:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
+![Přehled značek](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
 V tomto obrázku bude označená zpráva **Beatles** dostane jenom tablet, který je zaregistrovaný pomocí značky **Beatles**.
 
 Další informace o vytváření registrací pro značky najdete v tématu [Správa registrace](notification-hubs-push-notification-registration-management.md).
 
-Oznámení můžete odesílat do značek pomocí metod `Microsoft.Azure.NotificationHubs.NotificationHubClient` odeslání oznámení třídy v sadě [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. Můžete také použít Node. js nebo rozhraní REST API nabízených oznámení.  Tady je příklad použití sady SDK.
+Oznámení můžete odesílat do značek pomocí metod odeslání oznámení třídy `Microsoft.Azure.NotificationHubs.NotificationHubClient` v sadě [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK. Můžete také použít Node. js nebo rozhraní REST API nabízených oznámení.  Tady je příklad použití sady SDK.
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
@@ -65,7 +65,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 Značky není nutné předem zřizovat a můžou odkazovat na více konceptů specifických pro aplikaci. Například uživatelé této ukázkové aplikace mohou komentovat pruhy a chtít dostávat informační zprávy, nejen komentáře k oblíbeným pásem, ale také pro všechny komentáře od jejich přátel bez ohledu na pásmo, na kterém jsou komentáře. Příklad tohoto scénáře vidíte na následujícím obrázku:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
+![Značky – přátelé](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
 V tomto obrázku Alice zajímá aktualizace pro Beatles a Bob má zájem o aktualizace Wailers. Bob je také zajímat o komentáře Charlie a Charlie se zajímá o Wailers. Když se pošle oznámení na Charlie komentář k Beatles, Alice i Bob obdrží.
 
@@ -80,9 +80,9 @@ I když můžete zakódovat více otázek ve značkách (například "band_Beatl
 
 Další možností použití značek je identifikovat všechna zařízení určitého uživatele. Registrace mohou být označeny značkou, která obsahuje ID uživatele, jak je znázorněno na následujícím obrázku:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
+![Označit uživatele](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-Na tomto obrázku se zobrazí zpráva UID označeného: Alice dosáhne všech registrací označených jako UID: Alice; proto všechna zařízení Alice.
+V tomto obrázku se jedná o UID označené zprávy: Alice dosáhne všech registrací označených jako UID: Alice; proto všechna zařízení Alice.
 
 ## <a name="tag-expressions"></a>Výrazy značek
 
@@ -94,7 +94,7 @@ Uvažujte o sportovní aplikaci, která pošle připomenutí všem v Boston o h�
 (follows_RedSox || follows_Cardinals) && location_Boston
 ```
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
+![Výrazy značek](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
 Výrazy značky mohou obsahovat všechny logické operátory, například a (& &), nebo (| |) a nikoli (!). Mohou obsahovat také závorky. Výrazy značek jsou omezeny na 20 značek, pokud obsahují pouze ORs; v opačném případě jsou omezeny na 6 značek.
 

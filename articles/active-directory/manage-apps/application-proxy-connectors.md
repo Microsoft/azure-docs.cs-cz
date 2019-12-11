@@ -12,16 +12,16 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4666a9d084f6fc12cd68b69d5c71cafc3de0439
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807780"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997033"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
-Konektory se Proxy aplikací Azure AD je to možné. Jsou to jednoduché, snadné ho nasadit a udržovat a velmi výkonné. Tento článek popisuje, jaké konektory jsou, jak fungují a některé návrhy, jak optimalizovat nasazení vašeho řešení.
+Konektory se Proxy aplikací Azure AD je to možné. Jsou jednoduché a snadno se nasazují a udržují a velmi výkonné. Tento článek popisuje, jaké konektory jsou, jak fungují a některé návrhy, jak optimalizovat nasazení vašeho řešení.
 
 ## <a name="what-is-an-application-proxy-connector"></a>Co je konektor Proxy aplikací?
 
@@ -29,12 +29,12 @@ Konektory jsou zjednodušené agentů nacházejí v místním usnadnění odchoz
 
 ## <a name="requirements-and-deployment"></a>Požadavky a nasazení
 
-Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jeden konektor, ale doporučujeme dva nebo více pro větší odolnost proti chybám. Nainstalujte connector v počítači se systémem Windows Server 2012 R2 nebo novější. Konektor potřebuje ke komunikaci s Proxy aplikace služby a místních aplikací, které publikujete.
+Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jeden konektor, ale doporučujeme dva nebo více pro větší odolnost proti chybám. Nainstalujte konektor na počítač se systémem Windows Server 2012 R2 nebo novějším. Konektor musí komunikovat se službou proxy aplikací a místními aplikacemi, které publikujete.
 
 ### <a name="windows-server"></a>Windows server
-Potřebujete server s Windows serverem 2012 R2 nebo novější na kterých je nainstalován konektor Proxy aplikací. Server potřebuje pro připojení k Proxy aplikace služby v Azure a místních aplikací, které publikujete.
+Potřebujete server s Windows serverem 2012 R2 nebo novější na kterých je nainstalován konektor Proxy aplikací. Server se musí připojit k aplikačním proxy službám v Azure a místním aplikacím, které publikujete.
 
-Windows server musí mít TLS 1.2 zapnutý předtím, než nainstalujete konektor Proxy aplikací. Povolení protokolu TLS 1.2 na serveru:
+Windows server musí mít TLS 1.2 zapnutý předtím, než nainstalujete konektor Proxy aplikací. Povolení TLS 1,2 na serveru:
 
 1. Nastavte následující klíče registru:
     
@@ -45,7 +45,7 @@ Windows server musí mít TLS 1.2 zapnutý předtím, než nainstalujete konekto
     [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
     ```
 
-1. Restartujte server
+1. Restartování serveru
 
 Další informace o požadavcích na síť pro konektor serveru najdete v tématu [začít pracovat s Proxy aplikací a nainstalovat konektor](application-proxy-add-on-premises-application.md).
 
@@ -59,7 +59,7 @@ Konektory také dotazování serveru a zjistěte, jestli je dostupná novější
 
 Můžete monitorovat své konektory z počítače, které, na kterém běží, pomocí protokolu událostí a čítače výkonu. Nebo můžete zobrazit jejich stav na stránce Proxy aplikací na webu Azure portal:
 
-![Příklad: Azure AD Application Proxy konektory](./media/application-proxy-connectors/app-proxy-connectors.png)
+![Příklad: konektory Azure Proxy aplikací služby AD](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 Není nutné ručně odstranit konektory, které nejsou používány. Konektor je spuštěný, zůstane aktivní jak připojí ke službě. Nepoužité konektory jsou označené jako _neaktivní_ a odeberou se po 10 dnů nečinnosti. Pokud chcete odinstalovat konektor, i když, odinstalujte službu konektoru i aktualizační službu ze serveru. Restartujte počítač, aby se službě úplně odebrala.
 
@@ -67,16 +67,16 @@ Není nutné ručně odstranit konektory, které nejsou používány. Konektor j
 
 Azure AD poskytuje automatické aktualizace pro všechny konektory, které nasadíte. Za předpokladu, službou Application Proxy Connector Updater k automatické aktualizaci konektoru. Pokud nevidíte konektor aktualizační službu na serveru, budete muset [znovu nainstalovat konektor](application-proxy-add-on-premises-application.md) zobrazíte všechny aktualizace.
 
-Pokud nechcete čekat automatických aktualizací na váš konektor, můžete provést ruční upgrade. Přejděte [stránku pro stažení konektoru](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) na serveru, kde je svůj konektor vyhledat a vybrat **Stáhnout**. Tento proces zahajuje upgrade pro místní konektor.
+Pokud nechcete čekat na připojení automatické aktualizace k vašemu konektoru, můžete provést ruční upgrade. Přejděte [stránku pro stažení konektoru](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) na serveru, kde je svůj konektor vyhledat a vybrat **Stáhnout**. Tento proces zahajuje upgrade pro místní konektor.
 
 U klientů s více konektorů jako cíl automatické aktualizace jeden konektor v daný okamžik v každé skupině redukován ve vašem prostředí.
 
 Po aktualizaci vašeho konektoru, pokud se můžete setkat s výpadky:
   
-- Máte jenom jeden konektor doporučujeme nainstalovat druhý konektor a [vytvořit skupinu konektorů, která](application-proxy-connector-groups.md). To zabraňuje výpadkům a zajištění vyšší dostupnosti.  
+- Máte jenom jeden konektor, doporučujeme nainstalovat druhý konektor a [vytvořit skupinu konektorů](application-proxy-connector-groups.md). Tím se vyhnete výpadkům a zajistíte vyšší dostupnost.  
 - Konektor byl uprostřed transakcí při zahájení aktualizace. I když dojde ke ztrátě počáteční transakce, váš prohlížeč automaticky operaci opakovat nebo můžete aktualizovat stránku. Když žádost se zopakuje, provoz se rozšíří do zálohování konektoru.
 
-Pokud chcete zobrazit informace o dřív vydaných verzí a změny, které jsou patří, naleznete v tématu [Application Proxy - historie vydaných verzí](application-proxy-release-version-history.md).
+Informace o dříve vydaných verzích a o tom, jaké změny zahrnuje, najdete v tématu o [verzi proxy aplikací – Historie verzí](application-proxy-release-version-history.md).
 
 ## <a name="creating-connector-groups"></a>Vytvoření skupiny konektorů
 
@@ -86,11 +86,11 @@ Skupiny konektorů usnadňují správu velkého nasazení. Také pomáhají zvý
 
 Další informace o skupinách konektoru najdete v tématu [publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů](application-proxy-connector-groups.md).
 
-## <a name="capacity-planning"></a>Plánování kapacity
+## <a name="capacity-planning"></a>Plánování kapacit
 
-Je důležité, abyste měli jistotu, že jste naplánovali dostatečnou kapacitu mezi konektorů pro zpracování očekávaného provozu. Doporučujeme vám, že má každá skupina konektor aspoň dva konektory k poskytování vysoké dostupnosti a škálování. V případě, že budete muset služby počítače v libovolném bodě je mít tři konektory optimální.
+Je důležité zajistit, aby bylo naplánováno dostatečné množství mezi konektory pro zpracování očekávaného objemu přenosů dat. Doporučujeme, aby každá skupina konektorů měla aspoň dva konektory, aby se zajistila vysoká dostupnost a škálování. Pro případ, že budete chtít mít k dispozici tři konektory, může být nutné provozovat počítač v jakémkoli bodě.
 
-V obecné, tím víc uživatelů, které máte, tím větší počítače s budete potřebovat. Níže je tabulka poskytuje přehled svazku a očekávaná latence, kterou může zpracovávat jiné počítače. Všimněte si je všechny založené na očekávaný transakce za druhé (TPS) místo uživatelem od použití vzorů se liší a nelze jej použít pro předpověď zatížení. Bude také některé rozdíly, na základě velikosti odpovědi a doba odezvy aplikace back-end – větší velikosti odpovědi a pomalejší doby odezvy bude účtovat nižší TPS Max. Doporučujeme také s další počítače tak, aby náklad napříč počítači vždy poskytuje dostatek vyrovnávací paměti. Kapacita navíc zajistí, abyste měli vysokou dostupnost a odolnost proti chybám.
+Obecně platí, že čím více uživatelů máte, tím větší je počítač, který budete potřebovat. Níže je tabulka, která poskytuje přehled o svazku a očekávané latence, které můžou zpracovat různé počítače. Všimněte si, že je vše založené na očekávaných transakcích za sekundu (TPS), a ne na uživatele, protože se vzorce používání liší a nelze je použít k předpovědi zátěže. V závislosti na velikosti odpovědí a velikosti odezvy back-end aplikace a delší dobu odezvy budou také k dispozici nižší maximální TPS. Doporučujeme také mít další počítače, aby distribuované zatížení mezi počítači vždy poskytovalo rozsáhlou vyrovnávací paměť. Kapacita navíc zajistí vysokou dostupnost a odolnost.
 
 |Jádra|Paměť RAM|Byl očekáván latence (MS)-P99|Maximální počet TPS|
 | ----- | ----- | ----- | ----- |
@@ -99,22 +99,24 @@ V obecné, tím víc uživatelů, které máte, tím větší počítače s bude
 |8|32|270|1190|
 |16|64|245|1200*|
 
-\* Tento počítač používat vlastní nastavení pro vyvolání některé výchozí limity připojení nad rámec .NET doporučené nastavení. Doporučujeme spustit test s výchozím nastavením, než se obrátíte na podporu, abyste mohli tento limit změnit pro vašeho tenanta.
+\* tento počítač použil vlastní nastavení k vyvolání některých výchozích omezení pro připojení nad rámec doporučených nastavení .NET. Doporučujeme spustit test s výchozím nastavením, než se obrátíte na podporu, abyste mohli tento limit změnit pro vašeho tenanta.
 
 > [!NOTE]
-> Není k dispozici velký rozdíl v maximální TPS mezi 4, 8 a 16 jader počítače. Hlavní rozdíl mezi těmito probíhá očekávaná latence.  
+> Není k dispozici velký rozdíl v maximální TPS mezi 4, 8 a 16 jader počítače. Hlavní rozdíl mezi těmito probíhá očekávaná latence.
+>
+> Tato tabulka se zaměřuje taky na očekávaný výkon konektoru na základě typu počítače, na kterém je nainstalovaný. To je oddělené od limitů omezování služby proxy aplikací, a to v tématu omezení [a omezení služby](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
 
 ## <a name="security-and-networking"></a>Zabezpečení a sítě
 
-Konektory lze nainstalovat kdekoli v síti, která umožňuje jejich k odesílání požadavků na službu Proxy aplikací. Důležité je, že má počítač spuštěným konektorem také přístup k vašim aplikacím. Konektory můžete nainstalovat uvnitř vaší podnikové síti nebo na virtuálním počítači, na kterém běží v cloudu. Konektory lze spustit v hraniční síti, označované také jako demilitarizovaná zóny (DMZ), ale není nutné, protože je výstupní veškerý provoz, proto síti zůstane v bezpečí.
+Konektory lze nainstalovat kdekoli v síti, která umožňuje jejich k odesílání požadavků na službu Proxy aplikací. Důležité je, že má počítač spuštěným konektorem také přístup k vašim aplikacím. Konektory můžete nainstalovat uvnitř vaší podnikové síti nebo na virtuálním počítači, na kterém běží v cloudu. Konektory se můžou spouštět v hraniční síti, označované taky jako demilitarizovaná zóna (DMZ), ale není to nutné, protože veškerý provoz je odchozí, takže vaše síť zůstane v bezpečí.
 
-Konektory odeslat pouze odchozích požadavků. Odeslání odchozího provozu pro službu Proxy aplikací a k publikovaným aplikacím. Není nutné otevřít příchozí porty, protože proudí obou směrech po vytvoření relace. Také není nutné konfigurovat příchozí přístup přes brány firewall.
+Konektory odeslat pouze odchozích požadavků. Odeslání odchozího provozu pro službu Proxy aplikací a k publikovaným aplikacím. Není nutné otevřít příchozí porty, protože proudí obou směrech po vytvoření relace. Nemusíte také konfigurovat příchozí přístup přes brány firewall.
 
 Další informace o konfiguraci odchozí pravidla brány firewall najdete v tématu [práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
 
-## <a name="performance-and-scalability"></a>Výkon a škálovatelnost
+## <a name="performance-and-scalability"></a>Výkon a škálovatelnost
 
-Škálování pro službu Proxy aplikací je transparentní, ale škálovací faktor pro konektory. Musíte mít dostatek konektorů pro zpracování provozu ve špičce. Vzhledem k tomu, že konektory jsou bezstavové, nejsou ovlivněny počet uživatelů a relací. Místo toho reagují, počet požadavků a jejich velikost datové části. Pomocí standardních webových přenosů průměrná počítače může zpracovávat několik tisíc požadavků za sekundu. Konkrétní kapacity závisí na vlastnosti přesné počítače.
+Škálování pro službu Proxy aplikací je transparentní, ale škálovací faktor pro konektory. Musíte mít dostatek konektorů pro zpracování provozu ve špičce. Vzhledem k tomu, že konektory jsou bezstavové, nejsou ovlivněny počtem uživatelů ani relací. Místo toho reagují, počet požadavků a jejich velikost datové části. Pomocí standardních webových přenosů průměrná počítače může zpracovávat několik tisíc požadavků za sekundu. Konkrétní kapacity závisí na vlastnosti přesné počítače.
 
 Výkon konektoru je vázán procesoru a sítě. Výkon procesoru je potřeba pro šifrování SSL a dešifrování, zatímco sítě je potřeba získat rychlé připojení k aplikacím a příslušné službě online Services v Azure.
 
@@ -124,9 +126,9 @@ Pokud z nějakého důvodu nedostupný konektoru nebo počítač, provoz se zač
 
 Dalším faktorem, který má vliv na výkon je kvalita sítě mezi konektorů, včetně:
 
-- **Služba online**: Pomalá nebo vysokou latencí připojení ke službě Proxy aplikací v Azure mají vliv na výkon konektoru. Pro zajištění nejlepšího výkonu připojení k Azure pomocí Expressroute vaší organizace. V opačném případě máte síťovým týmem Ujistěte se, že připojení k Azure jsou zpracovány jako efektivně.
+- **Služba online**: pomalý nebo vysokou latencí připojení k Proxy aplikace služby v Azure ovlivní výkon konektoru. Pro zajištění nejlepšího výkonu připojení k Azure pomocí Expressroute vaší organizace. V opačném případě máte síťovým týmem Ujistěte se, že připojení k Azure jsou zpracovány jako efektivně.
 - **Back-endové aplikace**: V některých případech jsou další proxy mezi konektoru a back-endové aplikace, které mohou zpomalit nebo zakázat připojení. Tento scénář lze vyřešit, otevřete prohlížeč ze serveru konektoru a pokusí o přístup k aplikaci. Pokud spustíte konektorů v Azure, ale aplikace jsou v místním, nemusí být prostředí co vaši uživatelé očekávají.
-- **Řadiče domény**: Pokud konektory provádět jednotné přihlašování (SSO) pomocí omezeného delegování protokolu Kerberos, se kontaktovat řadiče domény před odesláním požadavku do back-endu. Konektory mají mezipaměť lístky protokolu Kerberos, ale v prostředí zaneprázdněný rychlost odezvy řadičů domény může ovlivnit výkon. Tento problém je běžné pro konektory, které běží v Azure, ale komunikovat s řadiči domény, které jsou místně.
+- **Řadiče domény**: Pokud konektory provádějí jednotné přihlašování (SSO) pomocí omezeného delegování protokolu Kerberos, před odesláním žádosti do back-endu se obraťte na řadiče domény. Konektory mají mezipaměť lístky protokolu Kerberos, ale v prostředí zaneprázdněný rychlost odezvy řadičů domény může ovlivnit výkon. Tento problém je běžné pro konektory, které běží v Azure, ale komunikovat s řadiči domény, které jsou místně.
 
 Další informace o optimalizaci sítě najdete v tématu [aspekty topologie sítě, při použití Azure Active Directory Application Proxy](application-proxy-network-topology.md).
 
@@ -172,11 +174,11 @@ Konektory jste správce a relace protokoly. Protokoly správce obsahují klíče
 
 Zobrazit protokoly, přejděte do prohlížeče událostí, otevřete **zobrazení** nabídky a povolit **zobrazit analytické a ladit protokoly**. Pak povolte jejich spuštění shromažďování událostí. Tyto protokoly se nezobrazují v Proxy webových aplikací ve Windows serveru 2012 R2 jako konektory, které jsou založeny na novější verzi.
 
-Můžete zkontrolovat stav služby v okně služby. Konektor se skládá ze dvou služeb Windows: skutečný konektoru a aktualizátoru. Musíte obou z nich spustit celou dobu.
+Můžete zkontrolovat stav služby v okně služby. Konektor je tvořen dvěma službami systému Windows: skutečným konektorem a aktualizačním rozhraním. Musíte obou z nich spustit celou dobu.
 
- ![Příklad: Služby okno zobrazující místní služby Azure AD](./media/application-proxy-connectors/aad-connector-services.png)
+ ![Příklad: okno služby zobrazující místní služby Azure AD](./media/application-proxy-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů](application-proxy-connector-groups.md)
 - [Práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)

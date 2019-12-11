@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422578"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976957"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Entity a jejich účel v LUIS
 
@@ -75,7 +75,7 @@ Entity, které se [**naučily počítačem**](tutorial-machine-learned-entity.md
 
 Na základě kontextu získaného prostřednictvím školicích projevy se na počítač zavede triggery. **Omezení** jsou volitelná pravidla, která se vztahují na počítač, který se bude spouštět na základě definice přesného textu, který se v nestrojově identifikované entitě používá jako [seznam](reference-entity-list.md) nebo [regulární výraz](reference-entity-regular-expression.md). Například entita přeučená počítač `size` může mít omezení `sizeList` seznamu entit, které omezuje entitu `size`, aby se aktivovala pouze v případě, že jsou zjištěny hodnoty obsažené v entitě `sizeList`.
 
-[**Popisovače**](luis-concept-feature.md) jsou funkce aplikované na zvýšení relevance slov nebo frází pro předpověď. Nazývají se *popisovače* , protože se používají k *popisu* záměru nebo entity. Deskriptory popisují rozlišení vlastností nebo atributů dat, jako jsou důležitá slova nebo fráze. Tento LUIS sleduje a zjišťuje informace.
+[**Popisovače**](luis-concept-feature.md) jsou funkce aplikované na zvýšení relevance slov nebo frází pro předpověď. Nazývají se *popisovače* , protože se používají k *popisu* záměru nebo entity. Deskriptory popisují rozlišení vlastností nebo atributů dat, jako jsou důležitá slova nebo fráze, které LUIS sleduje a učí.
 
 Když ve své aplikaci LUIS vytvoříte funkci seznamu frází, je ve výchozím nastavení povolená globálně a v rámci všech záměrů a entit se aplikuje rovnoměrně. Pokud ale použijete seznam frází jako popisovač (funkce) pro určitou entitu (nebo *model*), bude se její obor omezit na použití jenom pro tento model a už se nepoužívá se všemi ostatními modely. Použití seznamu frází jako popisovače pro model pomáhá dekompozici tím, že pomáhá s přesností pro model, na který se aplikuje.
 
@@ -128,7 +128,7 @@ Pokud LUIS nalezne `location`, ale nemůže určit roli, entita umístění se p
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Pokud potřebujete více než maximální počet entit
 
-Pokud potřebujete víc, než je limit, obraťte se na podporu. Provedete to tak, že shromáždíte podrobné informace o vašem systému, přejdete na web [Luis](luis-reference-regions.md#luis-website) a pak vyberete **Podpora**. Pokud vaše předplatné Azure zahrnuje služby podpory, obraťte se na [technickou podporu Azure](https://azure.microsoft.com/support/options/).
+Pokud potřebujete víc, než je limit, obraťte se na podporu. Uděláte to tak, získat podrobné informace o systému, přejděte [LUIS](luis-reference-regions.md#luis-website) webu a pak vyberte **podporu**. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="entity-prediction-status"></a>Stav předpovědi entity
 
@@ -136,8 +136,9 @@ Portál LUIS se zobrazí, když entita ve vzorovém utterance má jinou předpov
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s koncepty dobré [projevy](luis-concept-utterance.md).
+Další koncepty o dobré [projevy](luis-concept-utterance.md).
 
-Další informace o tom, jak přidat entity do aplikace LUIS, najdete v tématu věnovaném [Přidání entit](luis-how-to-add-entities.md) .
+Zobrazit [přidat entity](luis-how-to-add-entities.md) získat další informace o přidání entity do aplikace LUIS.
 
 Viz [kurz: extrakce strukturovaných dat ze utterance uživatelů pomocí entit strojového učení v tématu Language Understanding (Luis)](tutorial-machine-learned-entity.md) , kde se dozvíte, jak extrahovat strukturovaná data z utterance pomocí této entity, kterou se naučila počítač.
+ 

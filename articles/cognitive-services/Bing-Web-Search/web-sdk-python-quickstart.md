@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Python'
+title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Python'
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v Pythonu. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 services: cognitive-services
@@ -8,31 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991627"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977212"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Python
+# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Python
 
 Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v Pythonu. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
 Chcete se rovnou podívat na kód? [Ukázky sady SDK Bingu pro vyhledávání na webu pro Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) jsou k dispozici na GitHubu.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Sada SDK Bingu pro vyhledávání na webu je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6. Pro tento článek Rychlý start doporučujeme použít virtuální prostředí.
 
 * Python 2.7, 3.3, 3.4, 3.5 nebo 3.6
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) pro Python 2.7
 * [venv](https://pypi.python.org/pypi/virtualenv) pro Python 3.x
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>Vytvoření a konfigurace virtuálního prostředí
 
@@ -82,7 +80,7 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
 
 1. Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru.
 
-1. Tento ukázkový kód zkopírujte do svého projektu:  
+1. Zkopírujte ukázkový kód do svého projektu. `endpoint` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.:  
 
     ```python
     # Import required modules.
@@ -166,13 +164,13 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
 
 1. Hodnotu `SUBSCRIPTION_KEY` nahraďte platným klíčem předplatného.
 
-1. Nahraďte `YOUR_ENDPOINT` s adresou url vašeho koncového bodu na portálu.
+1. Nahraďte `YOUR_ENDPOINT` adresou URL koncového bodu na portálu.
 
 1. Spusťte program. Například: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Definice funkcí a filtrování výsledků
 
-Teď, když jste provedli první volání do rozhraní API webové vyhledávání Bingu, Podívejme se na několik funkcí. V dalších částech zvýrazněte funkce sady SDK pro upřesnění dotazy a filtrování výsledků. Každá funkce lze přidat do programu Python, kterou jste vytvořili v předchozí části.
+Teď, když jste provedli první volání rozhraní API Bingu pro vyhledávání na webu, Podívejme se na několik funkcí. V následujících částech jsou vysvětlené funkce sady SDK pro zpřesnění dotazů a filtrování výsledků. Každou funkci lze přidat do programu Python, který jste vytvořili v předchozí části.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Omezení počtu výsledků vrácených Bingem
 
@@ -312,7 +310,7 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
 
 Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatného a deaktivovat virtuální prostředí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)

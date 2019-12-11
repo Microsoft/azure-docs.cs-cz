@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574255"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996931"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést na pracovišti z Facebooku a Azure AD, a automaticky zřizovat a zrušit zřizování uživatelských účtů z Azure AD až po Facebook.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s pracovištěm na Facebooku, budete potřebovat následující položky:
 
@@ -34,11 +34,11 @@ Pokud chcete nakonfigurovat integraci Azure AD s pracovištěm na Facebooku, bud
 - Pracoviště s povoleným jednorázovým přihlášením na Facebooku
 
 > [!NOTE]
-> K otestování kroků v tomto kurzu nedoporučujeme používat produkční prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-K otestování kroků v tomto kurzu byste měli postupovat podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte své provozní prostředí, pokud není nutné.
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
 - Pokud nemáte zkušební prostředí Azure AD, můžete [si ho stáhnout](https://azure.microsoft.com/pricing/free-trial/)na měsíc zdarma.
 
 ## <a name="assigning-users-to-workplace-by-facebook"></a>Přiřazení uživatelů k pracovišti pomocí Facebooku
@@ -76,7 +76,7 @@ Azure AD podporuje možnost automaticky synchronizovat podrobnosti účtu přiř
 
 4. Nastavte **režim zřizování** na **automaticky**. 
 
-    ![Zřizování](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![zřizování](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
 5. V části **přihlašovací údaje správce** zadejte přístupový token z pracoviště správcem Facebooku a nastavte hodnotu adresy URL klienta na `https://www.facebook.com/scim/v1/`. Podívejte se na tyto [pokyny](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) k vytvoření přístupového tokenu pro práci na pracovišti. 
 
@@ -88,7 +88,7 @@ Azure AD podporuje možnost automaticky synchronizovat podrobnosti účtu přiř
 
 9. V části mapování vyberte možnost **synchronizovat Azure Active Directory uživatelů na pracovišti pomocí Facebooku.**
 
-10. V části **mapování atributů** zkontrolujte atributy uživatelů, které jsou synchronizované z Azure AD, do pracoviště pomocí Facebooku. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů na pracovišti pomocí Facebooku pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+10. V části **mapování atributů** zkontrolujte atributy uživatelů, které jsou synchronizované z Azure AD, do pracoviště pomocí Facebooku. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů na pracovišti pomocí Facebooku pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
 
 11. Pokud chcete povolit službu zřizování Azure AD pro pracovní plochu na Facebooku, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -99,9 +99,9 @@ Další informace o tom, jak nakonfigurovat automatické zřizování, najdete v
 Nyní můžete vytvořit testovací účet. Počkejte až 20 minut, než ověříte, že je účet synchronizovaný na pracovišti pomocí Facebooku.
 
 > [!NOTE]
-> Úzce spolupracujeme s pracovištěm na Facebooku, abychom zajistili, že aplikace Azure AD je schválená a splňuje nové pokyny. Pracoviště po dnech na Facebooku je 16. prosince a očekáváme, že tyto termíny vyhoví. Zákazníci v této době neočekávají žádné práce. Od 28. února 2020 budou zákazníci muset přejít na novou integraci. Tady budeme publikovat, jakmile bude k dispozici cesta pro migraci.    
+> Aplikace třetí strany Azure AD v pracovním prostoru na pracovišti byla schválena. Zákazníci nebudou mít přerušení služby od 16. prosince. Když budete potřebovat přejít na novou aplikaci, zobrazí se na pracovišti na pracovišti Konzola pro správu Facebooku ukazující konečný termín 28. února 2020. Pracujeme na tom, aby se přechod co nejjednodušší, a na konci měsíce vám poskytne aktualizaci.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

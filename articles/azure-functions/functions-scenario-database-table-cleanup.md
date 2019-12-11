@@ -4,12 +4,12 @@ description: Použijte Azure Functions k naplánování úlohy, která se připo
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f70b5b83561e7c580dd7192850c8eb50be5aac0a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230384"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972230"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Připojení k Azure SQL Database pomocí Azure Functions
 
@@ -17,9 +17,9 @@ V tomto článku se dozvíte, jak pomocí Azure Functions vytvořit naplánovano
 
 Pokud se jedná o vaše první prostředí s C# funkcemi, měli byste si přečíst [referenční C# informace pro vývojáře Azure Functions](functions-dotnet-class-library.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-+ Dokončete kroky v článku [Vytvoření první funkce pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md) k vytvoření místní aplikace Function App, která cílí na modul runtime verze 2. x. Projekt musíte také publikovat do aplikace Function App v Azure.
++ Dokončete kroky v článku [Vytvoření první funkce pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md) k vytvoření místní aplikace Function App, která cílí na verzi 2. x nebo novější verzi modulu runtime. Projekt musíte také publikovat do aplikace Function App v Azure.
 
 + Tento článek ukazuje příkaz Transact-SQL, který provede operaci hromadného vyčištění v tabulce **SalesOrderHeader** v ukázkové databázi AdventureWorksLT. Chcete-li vytvořit ukázkovou databázi AdventureWorksLT, proveďte kroky v článku [Vytvoření databáze SQL Azure v Azure Portal](../sql-database/sql-database-get-started-portal.md).
 
@@ -29,7 +29,7 @@ Pokud se jedná o vaše první prostředí s C# funkcemi, měli byste si přeč�
 
 Pro databázi, kterou jste vytvořili po dokončení [vytváření databáze SQL Azure](../sql-database/sql-database-get-started-portal.md), musíte získat připojovací řetězec v Azure Portal.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. V nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte svou databázi.
 

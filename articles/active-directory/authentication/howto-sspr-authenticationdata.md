@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/09/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1c00d0f4ba365442762df6e041f02ea0a39f099
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847299"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964020"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez nutnosti registrace koncového uživatele
 
-Pokud chcete nasadit Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD), musí být k dispozici data ověřování. Některé organizace mají své uživatele, kteří sami vstupují svá ověřovací data. Ale mnoho organizací upřednostňuje synchronizaci s daty, která už ve službě Active Directory existují. Synchronizovaná data jsou k dispozici pro Azure AD a SSPR bez nutnosti zásahu uživatele, pokud:
+Pokud chcete nasadit Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD), musí být k dispozici data ověřování. Některé organizace mají své uživatele, kteří sami vstupují svá ověřovací data. Jiné organizace dávají přednost synchronizaci s daty, která již existují ve službě Active Directory. Tato synchronizovaná data jsou dostupná pro Azure AD a SSPR bez nutnosti zásahu uživatele, pokud splňujete následující požadavky:
 
 * Správně naformátujte data v místním adresáři.
 * Nakonfigurujte [Azure AD Connect pomocí expresního nastavení](../hybrid/how-to-connect-install-express.md).
@@ -41,21 +41,18 @@ Pokud použijete výchozí nastavení v Azure AD Connect, provedou se následuj�
 | telephoneNumber | Telefon do kanceláře |
 | Mobilní zařízení | Mobilní telefon |
 
-Jakmile uživatel ověří své číslo mobilního telefonu, pole telefon v části kontaktní údaje pro ověření ve službě Azure AD bude také vyplněno tímto číslem.
+Jakmile uživatel ověří své číslo mobilního telefonu, pole *telefon* v části **kontaktní údaje pro ověření** ve službě Azure AD se také vyplní tímto číslem.
 
 ## <a name="authentication-contact-info"></a>Kontaktní údaje pro ověření
 
-Globální správce může ručně nastavit kontaktní údaje pro ověření pro uživatele, jak je znázorněno na následujícím snímku obrazovky.
+Na stránce **metody ověřování** pro uživatele Azure AD v Azure Portal může globální správce ručně nastavit kontaktní údaje pro ověření, jak je znázorněno na následujícím ukázkovém snímku obrazovky:
 
 ![Kontaktní údaje pro ověření uživatele v Azure AD][Contact]
 
-Pokud je pole telefon vyplněné a v zásadách SSPR je povolený mobilní telefon, uživatel uvidí toto číslo na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
-
-Pro resetování hesla se nepoužívá pole alternativní telefon.
-
-Pokud je v zásadách SSPR zadáno pole E-mail a je povolen E-mail, uživatel uvidí tento e-mail na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
-
-Pokud je v zásadách SSPR zadáno alternativní pole e-mailu a v zásadách je povolen E-mail, uživatel tento **e-mail neuvidí na** registrační stránce pro resetování hesla, ale uvidí ho během pracovního postupu pro resetování hesla.
+* Pokud je pole **telefon** vyplněné a v zásadách SSPR je povolený **mobilní telefon** , uživatel uvidí toto číslo na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
+* Pole **alternativní telefon** se pro resetování hesla nepoužívá.
+* Pokud je v zásadách SSPR zadáno pole **e-mail** a je povolen **e-mail** , uživatel uvidí tento e-mail na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
+* Pokud je v zásadách SSPR zadáno **alternativní pole e-mail** a v zásadách je povolen **e-mail** , uživateli se tento e-mail na registrační stránce pro resetování **hesla nezobrazí.**
 
 ## <a name="security-questions-and-answers"></a>Bezpečnostní otázky a odpovědi
 
@@ -69,7 +66,7 @@ Po registraci uživatele registrační stránka nastaví následující pole:
 * **E-mail pro ověření**
 * **Bezpečnostní otázky a odpovědi**
 
-Pokud jste zadali hodnotu pro **mobilní telefon** nebo **alternativní e-mail**, můžou uživatelé tyto hodnoty hned použít k resetování hesel, i když nejsou zaregistrovaní u služby. Uživatelé tyto hodnoty uvidí i při prvním zápisu a můžou je upravovat, pokud chtějí. Po úspěšném zaregistrování budou tyto hodnoty trvale uložené v polích **telefon ověřování** a **e-mail pro ověření** v uvedeném pořadí.
+Pokud jste zadali hodnotu pro **mobilní telefon** nebo **alternativní e-mail**, můžou uživatelé tyto hodnoty hned použít k resetování hesel, i když nejsou zaregistrovaní u služby. Uživatelé tyto hodnoty uvidí i při prvním zápisu a můžou je upravovat, pokud chtějí. Po úspěšném zaregistrování jsou tyto hodnoty trvale uložené v polích **telefon ověřování** a **e-mail pro ověření** v uvedeném pořadí.
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>Nastavení a čtení ověřovacích dat prostřednictvím PowerShellu
 

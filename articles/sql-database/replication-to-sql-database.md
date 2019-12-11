@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815764"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997271"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do SQL Database jedné a sdružené databáze
 
@@ -32,14 +32,17 @@ SQL Server replikaci je možné nakonfigurovat na [servery SQL Database](sql-dat
 
 ## <a name="versions"></a>Verze  
 
-- Vydavatel a distributor musí mít alespoň jednu z následujících verzí:  
-- SQL Server 2017 (14. x)
-- SQL Server 2016 (13. x)
-- SQL Server 2014 (12. x) SP1 CU3
-- SQL Server 2014 (12. x) RTM CU10
-- SQL Server 2012 (11. x) SP2 CU8 nebo SP3
-- Pokud se pokusíte nakonfigurovat replikaci pomocí starší verze, může dojít k chybě MSSQL_REPL20084 (proces se nemohl připojit k odběrateli) a MSSQL_REPL40532 (nemůže otevřít server \<název > požadovaný přihlášením. Přihlášení se nezdařilo.).  
-- Pokud chcete používat všechny funkce Azure SQL Database, musíte používat nejnovější verze nástrojů [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
+Místní SQL Server vydavatelé a distributoři musí používat (aspoň jednu z následujících verzí):  
+
+- SQL Server 2016 a vyšší
+- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) nebo [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) nebo [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+
+> [!NOTE]
+> Pokud se pokusíte nakonfigurovat replikaci pomocí nepodporované verze, může dojít k chybě číslo MSSQL_REPL20084 (proces se nemohl připojit k odběrateli) a MSSQL_REPL40532 (nemůže otevřít server \<název > požadovaný přihlášením. Přihlášení se nezdařilo.).  
+
+Pokud chcete používat všechny funkce Azure SQL Database, musíte používat nejnovější verze nástrojů [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
+
   
 ## <a name="remarks"></a>Poznámky
 
@@ -56,7 +59,7 @@ SQL Server replikaci je možné nakonfigurovat na [servery SQL Database](sql-dat
 
 ## <a name="replication-architecture"></a>Architektura replikace  
 
-![replikace do SQL – databáze](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Scénáře  
 
@@ -103,10 +106,10 @@ Pro Azure SQL Database odběry nejsou podporovány následující možnosti:
 
 ## <a name="examples"></a>Příklady
 
-Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématu:
+Vytvořte publikaci a nabízený odběr. Další informace:
   
 - [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Database jako předplatitele (například **N'azuresqldbdns. Database. Windows. NET**) a názvu databáze SQL Azure jako cílové databáze (například **AdventureWorks** ).  
+- [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Database jako předplatitele (například **N'azuresqldbdns. Database. Windows. NET**) a názvu databáze SQL Azure jako cílové databáze (například **AdventureWorks**).  
 
 ## <a name="see-also"></a>Viz také  
 

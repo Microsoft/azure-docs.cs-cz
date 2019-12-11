@@ -1,18 +1,18 @@
 ---
 title: Jak zřídit zařízení pro víceklientské architektury v Azure IoT Hub Device Provisioning Service
-description: Jak zřídit zařízení pro víceklientské prostředí pomocí instance služby Device Provisioning
+description: Postup zřízení zařízení pro víceklientské prostředí pomocí instance služby Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 6d9755c076763a72d54abb66cfdf01b0ac7ffb9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228788"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974951"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientské architektury 
 
@@ -36,7 +36,7 @@ Tento článek používá ukázku simulovaného zařízení ze [sady Azure IoT C
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
 
@@ -409,7 +409,7 @@ V těchto krocích se předpokládá, že jste vytvořili všechny prostředky v
 
 Odstranění skupiny prostředků podle názvu:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 2. Do textového pole **filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaše prostředky, **Contoso-US-Resource-Group**. 
 

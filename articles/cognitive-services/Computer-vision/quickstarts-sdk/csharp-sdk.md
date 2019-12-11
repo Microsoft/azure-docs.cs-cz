@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 45cf376d54ef9f2e77acb2ece9529af640938853
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 72c66241965db1264cb508ed1f8f4c76a07883be
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931779"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974985"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>Rychlý Start: Klientská knihovna Počítačové zpracování obrazu pro .NET
 
@@ -25,14 +25,14 @@ Pomocí klientské knihovny Počítačové zpracování obrazu pro .NET:
 * Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
 * Vyrozpoznávají vytištěné a ručně psaný text pomocí rozhraní Batch Read API.
 
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)  | [Ukázka  |  ukázek](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | [Ukázka](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) | [ukázka zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
-## <a name="setting-up"></a>Nastavení
+## <a name="setting-up"></a>Probíhá nastavení
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Vytvoření prostředku Azure Počítačové zpracování obrazu
 
@@ -270,5 +270,5 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 > [!div class="nextstepaction"]
 >[Odkaz na rozhraní API pro počítačové zpracování obrazu (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
 
-* [Co je rozhraní API pro počítačové zpracování obrazu?](../Home.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs).
+* [Co je Počítačové zpracování obrazu?](../Home.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs)

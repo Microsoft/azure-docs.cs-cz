@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743702"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961535"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co je rozhraní API Azure pro rozpoznávání tváře?
 
@@ -22,7 +22,7 @@ Azure Cognitive Services Face API poskytuje algoritmy, které se používají ke
 
 Face API poskytuje několik různých funkcí. Každá funkce je popsaný v následujících částech. Přečtěte si další informace o těchto informacích.
 
-## <a name="face-detection"></a>Rozpoznávání tváře
+## <a name="face-detection"></a>Detekce tváře
 
 Face API detekuje lidské obličeje v obrázku a vrátí souřadnice obdélníku jejich umístění. V případě potřeby může rozpoznávání tváře extrahovat řadu atributů souvisejících s obličejem. Příklady jsou hlavní pozice, pohlaví, věk, emoce, vlasová čočka a brýle.
 
@@ -33,9 +33,9 @@ Face API detekuje lidské obličeje v obrázku a vrátí souřadnice obdélníku
 
 Další informace o detekci obličeje najdete v článku koncepty [rozpoznávání obličeje](concepts/face-detection.md) . Viz také referenční dokumentace k [rozhraní API pro detekci](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) .
 
-## <a name="face-verification"></a>Ověření tváře
+## <a name="face-verification"></a>Ověření tváří
 
-Rozhraní API pro ověřování provádí ověření dvou detekovaných tváří nebo jedné detekované tváře a jednoho objektu osob. Prakticky vyhodnotí, jestli dvě tváře patří stejné osobě. Tato funkce je potenciálně užitečná ve scénářích zabezpečení. Další informace najdete v příručce věnovaném koncepcím [rozpoznávání obličeje](concepts/face-recognition.md) nebo v dokumentaci k [ověření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
+Rozhraní API pro ověření provádí ověřování proti dvěma zjištěným ploškám nebo z jedné zjištěné plochy na jeden objekt Person. Prakticky vyhodnotí, jestli dvě tváře patří stejné osobě. Tato funkce je potenciálně užitečná ve scénářích zabezpečení. Další informace najdete v příručce věnovaném koncepcím [rozpoznávání obličeje](concepts/face-recognition.md) nebo v dokumentaci k [ověření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
 
 ## <a name="find-similar-faces"></a>Vyhledání podobných tváří
 
@@ -45,13 +45,13 @@ Následující příklad ukazuje cílovou plochu:
 
 ![Usmívající se žena](./Images/FaceFindSimilar.QueryFace.jpg)
 
-A toto jsou kandidátské tváře:
+A tyto obrázky jsou kandidátské obličeje:
 
 ![Pět obrázků usmívajících se lidí. Obrázky a a b zobrazují stejnou osobu.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Chcete-li najít čtyři podobné plošky, vrátí režim matchPerson a a b, který zobrazí stejnou osobu jako cílovou plochu. Režim matchFace vrací a, b, c a d, přesně čtyři kandidáty, a to i v případě, že někteří nejsou stejná osoba jako cíl nebo mají nízkou podobnost. Další informace najdete v příručce věnovaném koncepcím [rozpoznávání obličeje](concepts/face-recognition.md) nebo v dokumentaci [Najít podobné rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
+Chcete-li najít čtyři podobné plošky, vrátí režim matchPerson a a b, který zobrazí stejnou osobu jako cílovou plochu. Režim matchFace vrací a, b, c a d&mdash;přesně čtyři kandidáty, a to i v případě, že někteří nejsou stejná osoba jako cíl nebo mají nízkou podobnost. Další informace najdete v příručce věnovaném koncepcím [rozpoznávání obličeje](concepts/face-recognition.md) nebo v dokumentaci [Najít podobné rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
 
-## <a name="face-grouping"></a>Seskupování tváří
+## <a name="face-grouping"></a>Seskupení tváří
 
 Rozhraní API pro seskupování rozdělí sadu neznámých tváří do několika skupin podle podobnosti. Každá skupina je vlastní disjunktní podmnožina původní sady tváří. Všechny plošky ve skupině budou nejspíš patřit stejné osobě. Jedna osoba může mít několik různých skupin. Skupiny jsou odlišeny jiným faktorem, například výraz. Další informace najdete v příručce koncepty [rozpoznávání obličeje](concepts/face-recognition.md) nebo v referenční dokumentaci k [rozhraní API skupiny](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) .
 

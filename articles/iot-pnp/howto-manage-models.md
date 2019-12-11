@@ -1,19 +1,19 @@
 ---
 title: Správa modelů IoT technologie Plug and Play ve verzi Preview v úložišti | Microsoft Docs
 description: Jak spravovat modely schopností zařízení v úložišti pomocí portálu Azure Certified for IoT, Azure CLI a Visual Studio Code.
-author: YasinMSFT
+author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: yahajiza
-ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.author: philmea
+ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932855"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979100"
 ---
 # <a name="manage-models-in-the-repository"></a>Správa modelů v úložišti
 
@@ -47,7 +47,7 @@ Azure CLI nabízí příkazy pro správu modelů a rozhraní funkcí zařízení
 
 Otevřete zobrazení **úložiště modelu** v Visual Studio Code.
 
-1. Otevřete Visual Studio Code, použijte **CTRL + SHIFT + P**, zadejte a vyberte **IoT technologie Plug and Play: Otevřete úložiště**modelu.
+1. Otevřete Visual Studio Code, použijte **CTRL + SHIFT + P**, zadejte a vyberte **IoT technologie Plug and Play: otevřete úložiště modelu**.
 
 1. Můžete zvolit **otevření úložiště veřejného modelu** nebo **otevření úložiště organizačních modelů**. V případě úložiště modelu společnosti musíte zadat připojovací řetězec úložiště modelu. Tento připojovací řetězec najdete na [portálu Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com) na kartě **připojovací řetězce** pro **úložiště vaší společnosti**.
 
@@ -55,11 +55,11 @@ Otevřete zobrazení **úložiště modelu** v Visual Studio Code.
 
     Toto zobrazení slouží k přidání, stažení a odstranění modelů a rozhraní funkcí zařízení. Pomocí filtru můžete najít konkrétní položky v seznamu.
 
-1. Pokud chcete přepínat mezi úložištěm modelu vaší společnosti a veřejným úložištěm modelu, použijte **kombinaci kláves CTRL + SHIFT + P**, zadejte a vyberte **IoT technologie Plug and Play: Odhlásit úložiště**modelu. Pak použijte **technologie Plug and Play IoT: Znovu spusťte příkaz** úložiště modelu.
+1. Pokud chcete přepínat mezi úložištěm modelu společnosti a veřejným úložištěm modelu, použijte **kombinaci kláves CTRL + SHIFT + P**, zadejte a vyberte **IoT technologie Plug and Play: Odhlaste se od úložiště modelu**. Pak použijte příkaz **IoT technologie Plug and Play: znovu otevřít úložiště modelu** .
 
 > [!NOTE]
 > V VS Code úložiště veřejného modelu je jen pro čtení. Partneři Microsoftu můžou aktualizovat veřejné úložiště na [portálu Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Navržený další krok se naučíte, jak [Odeslat zařízení IoT technologie Plug and Play pro certifikaci](tutorial-certification-test.md).

@@ -1,18 +1,18 @@
 ---
 title: Navrácení certifikátů X. 509 v Azure IoT Hub Device Provisioning Service
-description: Postup nasazení certifikátů X. 509 s instancí služby Device Provisioning Service
+description: Postup nasazení certifikátů X. 509 pomocí instance služby Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 55ed99c434028b9761ef53fc09a01481bbd184e1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228756"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974883"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Postup nasazení certifikátů zařízení X. 509
 
@@ -59,7 +59,7 @@ Aktualizace položek registrace pro zahrnuté certifikáty se provádí na strá
 
 2. Klikněte na **Správa registrací**.
 
-    ![Spravovat registrace](./media/how-to-roll-certificates/manage-enrollments-portal.png)
+    ![Správa registrací](./media/how-to-roll-certificates/manage-enrollments-portal.png)
 
 
 Způsob, jakým se aktualizuje záznam registrace, bude záviset na tom, jestli používáte jednotlivé registrace, nebo když chcete seskupit registraci. Doporučené postupy se také liší v závislosti na tom, zda se jedná o certifikáty z důvodu porušení zabezpečení nebo vypršení platnosti certifikátu. Následující části popisují, jak tyto aktualizace zpracovat.
@@ -94,7 +94,7 @@ Později, když se sekundární certifikát taky blíží vypršení platnosti a
 
 1. Klikněte na **jednotlivé registrace**a v seznamu klikněte na položku ID registrace. 
 
-2. Klikněte na **sekundární certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Klikněte na možnost **Uložit**.
+2. Klikněte na **sekundární certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Klikněte na **Uložit**.
 
     ![Spravovat jednotlivé registrace pomocí sekundárního certifikátu](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -177,7 +177,7 @@ Později, když se sekundární certifikát taky blíží vypršení platnosti a
 
 1. Klikněte na **skupiny**registrací a v seznamu klikněte na název skupiny. 
 
-2. Klikněte na **sekundární certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Klikněte na možnost **Uložit**.
+2. Klikněte na **sekundární certifikát** a potom klikněte na ikonu složky a vyberte nový certifikát, který se má nahrát pro položku registrace. Klikněte na **Uložit**.
 
     Tento nový zprostředkující certifikát by měl být podepsaný ověřenou kořenovým certifikátem certifikační autority, který už je přidaný do služby zřizování. Další informace najdete v tématu [certifikáty X. 509](concepts-security.md#x509-certificates).
 

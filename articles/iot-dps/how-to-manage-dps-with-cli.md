@@ -1,22 +1,22 @@
 ---
 title: Správa IoT Hub Device Provisioning Service pomocí Azure CLI & rozšíření IoT
-description: Naučte se používat rozhraní příkazového řádku Azure a rozšíření IoT ke správě IoT Hub Device Provisioning Service.
+description: Naučte se používat rozhraní příkazového řádku Azure a rozšíření IoT ke správě IoT Hub Device Provisioning Service (DPS).
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0e276ca32d7cd02f9668b33b3729757404b13b00
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ba92279632a7283ea6ede423e808e3c7be82cff
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229747"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975155"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Jak používat rozhraní příkazového řádku Azure a rozšíření IoT ke správě IoT Hub Device Provisioning Service
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Edge. Rozhraní příkazového řádku Azure je dostupné v systémech Windows, Linux a MacOS. Azure CLI umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra.
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source pro různé platformy nástroj příkazového řádku pro správu prostředků Azure, jako je například IoT Edge. Rozhraní příkazového řádku Azure je dostupné v systémech Windows, Linux a MacOS. Azure CLI umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra.
 
 Rozšíření IoT rozšiřuje rozhraní příkazového řádku Azure pomocí funkcí, jako je Správa zařízení a plná IoT Edge funkce.
 

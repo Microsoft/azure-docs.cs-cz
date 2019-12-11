@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ff874ee74864c84c976096ac5f7fa4b20cfab48
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271499"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996999"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas koncového bodu Microsoft Identity Platform
 
@@ -86,7 +86,7 @@ Implementace Microsoft Identity Platform OpenID Connect obsahuje několik dobře
 
 Pokud aplikace provede přihlášení pomocí [OpenID Connect](active-directory-v2-protocols.md), musí požádat o obor `openid`. Obor `openid` se zobrazí na stránce s informacemi o pracovním účtu jako s oprávněním přihlásit se a na stránce osobní účet Microsoft pro vyjádření souhlasu jako "zobrazení vašeho profilu a připojení k aplikacím a službám pomocí účet Microsoft". S tímto oprávněním může aplikace získat jedinečný identifikátor pro uživatele ve formě deklarace `sub`. Také umožňuje aplikaci přístup ke koncovému bodu UserInfo. Obor `openid` lze použít na koncovém bodu tokenu platformy Microsoft identity a získat tokeny ID, které může aplikace použít k ověřování.
 
-### <a name="email"></a>email
+### <a name="email"></a>e-mail
 
 Obor `email` lze použít s oborem `openid` a všemi ostatními. Umožňuje aplikaci přístup k primární e-mailové adrese uživatele ve formě deklarace identity `email`. Deklarace `email` je obsažena v tokenu, pouze pokud je k uživatelskému účtu přidružena e-mailová adresa, která není vždy v případě případu. Pokud používá obor `email`, vaše aplikace by měla být připravená na zpracování případu, ve kterém deklarace identity `email` v tokenu neexistuje.
 
@@ -98,7 +98,10 @@ Obor `profile` lze použít s oborem `openid` a všemi ostatními. Poskytuje apl
 
 [Obor`offline_access`](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) poskytuje vaší aplikaci přístup k prostředkům jménem uživatele po delší dobu. Na stránce souhlasu se tento obor zobrazí jako "Správa přístupu k datům, ke kterým jste udělili oprávnění k přístupu. Když uživatel schválí `offline_access` rozsah, vaše aplikace může přijímat aktualizační tokeny z koncového bodu tokenu platformy Microsoft identity. Aktualizační tokeny jsou dlouhodobě dlouhodobé. Vaše aplikace může získat nové přístupové tokeny, jejichž platnost brzy vyprší.
 
-Pokud vaše aplikace explicitně nepožaduje obor `offline_access`, neobdrží aktualizační tokeny. To znamená, že při uplatnění autorizačního kódu v [toku autorizačního kódu OAuth 2,0](active-directory-v2-protocols.md)obdržíte pouze přístupový token z `/token`ho koncového bodu. Přístupový token je po krátkou dobu platný. Platnost přístupového tokenu obvykle vyprší za jednu hodinu. V tomto okamžiku potřebuje vaše aplikace přesměrovat uživatele zpátky na `/authorize` koncový bod a získat nový autorizační kód. V závislosti na typu aplikace může uživatel po tomto přesměrování znovu zadat své přihlašovací údaje nebo odsouhlasit oprávnění. I když je `offline_access` rozsah automaticky vyžádaný serverem, musí si ho klient ještě vyžádat, aby mohl získat obnovovací tokeny.
+> [!NOTE]
+> Toto oprávnění se zobrazí na všech obrazovkách souhlasu ještě dnes, a to i pro toky, které neposkytují obnovovací token ( [implicitní tok](v2-oauth2-implicit-grant-flow.md)).  Tato možnost se zabývá scénáři, kdy může klient začít v rámci implicitního toku, a pak přejít na tok kódu, kde je očekáván obnovovací token.
+
+Na platformě Microsoft identity (požadavky na koncový bod v 2.0) musí vaše aplikace explicitně požádat o obor `offline_access`, aby získala obnovovací tokeny. To znamená, že při uplatnění autorizačního kódu v [toku autorizačního kódu OAuth 2,0](active-directory-v2-protocols.md)obdržíte pouze přístupový token z `/token`ho koncového bodu. Přístupový token je po krátkou dobu platný. Platnost přístupového tokenu obvykle vyprší za jednu hodinu. V tomto okamžiku potřebuje vaše aplikace přesměrovat uživatele zpátky na `/authorize` koncový bod a získat nový autorizační kód. V závislosti na typu aplikace může uživatel po tomto přesměrování znovu zadat své přihlašovací údaje nebo odsouhlasit oprávnění. 
 
 Další informace o tom, jak získat a použít obnovovací tokeny, najdete v referenčních informacích k [protokolu platformy Microsoft Identity Platform](active-directory-v2-protocols.md).
 
@@ -123,7 +126,7 @@ Parametr `scope` je čárkami oddělený seznam delegovaných oprávnění, kter
 Jakmile uživatel zadá své přihlašovací údaje, koncový bod platformy Microsoft Identity ověří odpovídající záznam *souhlasu uživatele*. Pokud uživatel nesouhlasí s žádným z požadovaných oprávnění v minulosti ani správce nesouhlasí s těmito oprávněními jménem celé organizace, koncový bod platformy Microsoft Identity žádá uživatele, aby udělil požadovaná oprávnění.
 
 > [!NOTE]
-> V tuto chvíli `offline_access` ("udržovat přístup k datům, ke kterým jste udělili přístup") a `user.read` ("přihlášení a čtení vašeho profilu") jsou automaticky zahrnutá do počátečního souhlasu aplikace.  Tato oprávnění se obecně vyžadují pro správnou funkčnost aplikace – `offline_access` poskytuje aplikaci přístup k aktualizaci tokenů, kritickým pro nativní a webové aplikace, zatímco `user.read` poskytuje přístup k `sub` deklaraci identity, což klientovi nebo aplikaci umožní správně identifikovat uživatele. v průběhu času a přístup k informacím o uživatelích základní.  
+> V tuto chvíli `offline_access` ("udržovat přístup k datům, ke kterým jste udělili přístup") a `user.read` ("přihlášení a čtení vašeho profilu") jsou automaticky zahrnutá do počátečního souhlasu aplikace.  Tato oprávnění se obecně vyžadují pro správné funkce aplikací – `offline_access` poskytuje aplikaci přístup k aktualizaci tokenů, kritickým pro nativní a webové aplikace, zatímco `user.read` poskytuje přístup k `sub` deklaraci identity a umožňuje klientovi nebo aplikaci správně identifikovat uživatele v čase a přistupovat k základní informacím o uživateli.  
 
 ![Ukázkový snímek obrazovky, který zobrazuje souhlas pracovního účtu](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -199,11 +202,11 @@ Až budete připraveni požádat o oprávnění od správce vaší organizace, m
 
 | Parametr     | Podmínka     | Popis                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Požadováno | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazované pomocí `common`, jak je vidět v příkladu. |
-| `client_id` | Požadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
-| `redirect_uri` | Požadováno |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
-| `state` | Doporučeno | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-|`scope`        | Požadováno      | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statickou hodnotu (pomocí/.Default) nebo dynamické obory.  To může zahrnovat OIDC obory (`openid`, `profile`, `email`). | 
+| `tenant` | Požaduje se | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazované pomocí `common`, jak je vidět v příkladu. |
+| `client_id` | Požaduje se | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `redirect_uri` | Požaduje se |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
+| `state` | Doporučené | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
+|`scope`        | Požaduje se      | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statickou hodnotu (pomocí/.Default) nebo dynamické obory.  To může zahrnovat OIDC obory (`openid`, `profile`, `email`). | 
 
 
 V tomto okamžiku Azure AD vyžaduje, aby se k dokončení žádosti přihlásil správce tenanta. Správce se vyzve ke schválení všech oprávnění, která jste si vyžádali v parametru `scope`.  Pokud jste použili statickou (`/.default`) hodnotu, bude fungovat jako koncový bod souhlasu správce v 1.0 a žádost o souhlas pro všechny obory nalezené v požadovaných oprávněních pro danou aplikaci.

@@ -1,31 +1,22 @@
 ---
 title: Postup zakázání funkcí v Azure Functions
-description: Přečtěte si, jak zakázat a povolit funkce v Azure Functions 1. x a 2. x.
+description: Naučte se, jak zakázat a povolit funkce v Azure Functions.
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 7968580fcaa40575571a41f067fa74fbdc0a3a34
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/05/2019
+ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233046"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970971"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
 
-Tento článek vysvětluje, jak zakázat funkci v Azure Functions. Pro *vypnutí* funkce znamená, že modul runtime bude ignorovat automatickou aktivační událost, která je definována pro funkci. Způsob, jakým to provedete, závisí na verzi modulu runtime a programovacím jazyce:
+Tento článek vysvětluje, jak zakázat funkci v Azure Functions. Pro *vypnutí* funkce znamená, že modul runtime bude ignorovat automatickou aktivační událost, která je definována pro funkci. To umožňuje zabránit spuštění konkrétní funkce bez zastavení celé aplikace Function App.
 
-* Funkce 2. x:
-  * Jeden způsob pro všechny jazyky
-  * Volitelný způsob pro C# knihovny tříd
-* Funkce 1. x:
-  * Skriptovací jazyky
-  * C#knihovny tříd
+Doporučený způsob, jak funkci zakázat, je použití nastavení aplikace ve formátu `AzureWebJobs.<FUNCTION_NAME>.Disabled`. Toto nastavení aplikace můžete vytvořit a upravit mnoha různými způsoby, včetně použití [Azure CLI](/cli/azure/) a karty **Správa** vaší funkce v [Azure Portal](https://portal.azure.com). 
 
-## <a name="functions-2x---all-languages"></a>Functions 2. x – všechny jazyky
-
-Ve funkcích 2. x zakážete funkci pomocí nastavení aplikace ve formátu `AzureWebJobs.<FUNCTION_NAME>.Disabled`. Toto nastavení aplikace můžete vytvořit a upravit mnoha různými způsoby, včetně použití [Azure CLI](/cli/azure/) a karty **Správa** vaší funkce v [Azure Portal](https://portal.azure.com). 
-
-### <a name="azure-cli"></a>Azure CLI
+## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
 V rozhraní příkazového řádku Azure CLI pomocí příkazu [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) vytvořit a upravit nastavení aplikace. Následující příkaz zakáže funkci s názvem `QueueTrigger` tím, že vytvoří nastavení aplikace s názvem `AzureWebJobs.QueueTrigger.Disabled` nastaví na `true`. 
 
@@ -43,52 +34,19 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-### <a name="portal"></a>Portál
+## <a name="use-the-portal"></a>Použití portálu
 
 Na kartě **Spravovat** funkce můžete také použít přepínač **stavu funkce** . Přepínač funguje tak, že se vytvoří a odstraní nastavení aplikace `AzureWebJobs.<FUNCTION_NAME>.Disabled`.
 
 ![Přepínač stavu funkce](media/disable-function/function-state-switch.png)
 
-## <a name="functions-2x---c-class-libraries"></a>Knihovny Functions 2. C# x-Class
+## <a name="other-methods"></a>Jiné metody
 
-V knihovně tříd Functions 2. x doporučujeme použít metodu, která funguje pro všechny jazyky. Pokud ale dáváte přednost, můžete [použít atribut Disable jako ve funkci 1. x](#functions-1x---c-class-libraries).
+I když je metoda nastavení aplikace doporučována pro všechny jazyky a všechny verze modulu runtime, existuje několik dalších způsobů, jak zakázat funkce. Tyto metody, které se liší podle jazyka a verze modulu runtime, jsou zachovány kvůli zpětné kompatibilitě. 
 
-## <a name="functions-1x---scripting-languages"></a>Funkce 1. x – skriptovací jazyky
+### <a name="c-class-libraries"></a>C#knihovny tříd
 
-Pro skriptovací jazyky, jako C# jsou skripty a JavaScript, použijte vlastnost `disabled` souboru *Function. JSON* k oznámení, že modul runtime neaktivuje funkci. Tato vlastnost může být nastavena na hodnotu `true` nebo na název nastavení aplikace:
-
-```json
-{
-    "bindings": [
-        {
-            "type": "queueTrigger",
-            "direction": "in",
-            "name": "myQueueItem",
-            "queueName": "myqueue-items",
-            "connection":"MyStorageConnectionAppSetting"
-        }
-    ],
-    "disabled": true
-}
-```
-or 
-
-```json
-    "bindings": [
-        ...
-    ],
-    "disabled": "IS_DISABLED"
-```
-
-V druhém příkladu je funkce zakázána, pokud existuje nastavení aplikace s názvem IS_DISABLED a je nastaveno na `true` nebo 1.
-
-Soubor můžete upravit ve Azure Portal nebo použít přepínač **stavu funkce** na kartě **Spravovat** funkce. Přepínač portálu funguje změnou souboru *Function. JSON* .
-
-![Přepínač stavu funkce](media/disable-function/function-state-switch.png)
-
-## <a name="functions-1x---c-class-libraries"></a>Funkce 1. x – C# knihovny tříd
-
-V knihovně tříd Functions 1. x použijete atribut `Disable`, který zabrání spuštění funkce. Můžete použít atribut bez parametru konstruktoru, jak je znázorněno v následujícím příkladu:
+V knihovně tříd lze také pomocí atributu `Disable` zabránit aktivaci funkce. Můžete použít atribut bez parametru konstruktoru, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 public static class QueueFunctions
@@ -128,6 +86,39 @@ Tato metoda umožňuje povolit a zakázat funkci změnou nastavení aplikace, an
 > Totéž platí pro přepínač **stavu funkce** na kartě **Spravovat** , protože funguje změnou souboru *Function. JSON* .
 >
 > Všimněte si také, že portál může indikovat, že funkce je zakázaná, když ne.
+
+### <a name="functions-1x---scripting-languages"></a>Funkce 1. x – skriptovací jazyky
+
+Ve verzi 1. x můžete také použít vlastnost `disabled` souboru *Function. JSON* k oznámení, že modul runtime neaktivuje funkci. Tato metoda funguje pouze pro skriptovací jazyky, jako C# jsou skripty a JavaScript. Vlastnost `disabled` lze nastavit na hodnotu `true` nebo na název nastavení aplikace:
+
+```json
+{
+    "bindings": [
+        {
+            "type": "queueTrigger",
+            "direction": "in",
+            "name": "myQueueItem",
+            "queueName": "myqueue-items",
+            "connection":"MyStorageConnectionAppSetting"
+        }
+    ],
+    "disabled": true
+}
+```
+nebo 
+
+```json
+    "bindings": [
+        ...
+    ],
+    "disabled": "IS_DISABLED"
+```
+
+V druhém příkladu je funkce zakázána, pokud existuje nastavení aplikace s názvem IS_DISABLED a je nastaveno na `true` nebo 1.
+
+Soubor můžete upravit ve Azure Portal nebo použít přepínač **stavu funkce** na kartě **Spravovat** funkce. Přepínač portálu funguje změnou souboru *Function. JSON* .
+
+![Přepínač stavu funkce](media/disable-function/function-state-switch.png)
 
 ## <a name="next-steps"></a>Další kroky
 

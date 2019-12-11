@@ -1,40 +1,40 @@
 ---
-title: Vytvořit novou verzi image z existující verze image pomocí Image Builder pro Azure (preview)
-description: Vytvořte novou verzi image z existující verze image pomocí Image Builder pro Azure.
+title: Vytvoří novou verzi image virtuálního počítače z existující verze Image pomocí Azure image Builder (Preview).
+description: Vytvoří novou verzi image virtuálního počítače z existující verze Image pomocí Azure image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9155f6fc1243f0d2e4d63f2718ccfd6846ebbc50
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d226a7b31dc9f8cf219c6d0d0f886fb5b21741a6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671503"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976328"
 ---
-# <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Verze Preview: Vytvořit novou verzi image z existující verze image pomocí Image Builder pro Azure
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Preview: vytvoření nové verze image virtuálního počítače z existující verze Image pomocí Azure image Builder
 
-Tento článek ukazuje, jak využít stávající verze image [Galerie obrázků Shared](shared-image-galleries.md), aktualizujte ji a publikovat jako novou verzi image v galerii.
+V tomto článku se dozvíte, jak v [galerii sdílených imagí](shared-image-galleries.md)získat existující verzi image, aktualizovat ji a publikovat jako novou verzi image do galerie.
 
-Použijeme Ukázková šablona .json konfigurace image. Soubor .json, který se používá, je zde: [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
+K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIGfromSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
 
 
-## <a name="register-the-features"></a>Registrace funkce
-Pokud chcete použít Image Builder pro Azure ve verzi preview, budete muset registrovat novou funkci.
+## <a name="register-the-features"></a>Registrace funkcí
+Chcete-li používat Azure image Builder v rámci verze Preview, je nutné zaregistrovat novou funkci.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Zkontrolujte stav registrace funkce.
+Ověřte stav registrace funkce.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Zkontrolujte svou registraci.
+Ověřte vaši registraci.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -42,7 +42,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Pokud třeba není registrovaný, spusťte následující příkaz:
+Pokud nevyžadují registraci, spusťte tento příkaz:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -51,11 +51,11 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="set-variables-and-permissions"></a>Oprávnění a nastavení proměnných
+## <a name="set-variables-and-permissions"></a>Nastavení proměnných a oprávnění
 
-Pokud jste použili [vytvořit bitovou kopii a distribuovat do Galerie Imagí Shared](image-builder-gallery.md) vytvoření Galerie obrázků sdílené, jste už vytvořili určité proměnné potřebujeme. Pokud ne, nastavte prosím některé proměnné používané v tomto příkladu.
+Pokud jste k vytvoření galerie sdílených imagí použili [Vytvoření image a distribuci do galerie sdílených imagí](image-builder-gallery.md) , už jste vytvořili některé z proměnných, které potřebujeme. V takovém případě nastavte některé proměnné, které se mají použít v tomto příkladu.
 
-Ve verzi Preview image builder pro bude podporovat jenom vytváření vlastních imagí ve stejné skupině prostředků jako spravované image zdroje. Aktualizujte název skupiny prostředků v tomto příkladu bude stejné skupině prostředků jako zdroj spravované image.
+Pro verzi Preview podporuje tvůrce imagí jenom vytváření vlastních imagí ve stejné skupině prostředků jako spravovaná zdrojová image. Aktualizujte název skupiny prostředků v tomto příkladu tak, aby byla stejnou skupinou prostředků jako spravovaná zdrojová image.
 
 
 ```azurecli-interactive
@@ -73,13 +73,13 @@ imageDefName=myIbImageDef
 runOutputName=aibSIGLinuxUpdate
 ```
 
-Vytvoření proměnné pro ID vašeho předplatného. Můžete získat pomocí `az account show | grep id`.
+Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
 ```
 
-Získáte verzi image, kterou chcete aktualizovat.
+Získejte verzi image, kterou chcete aktualizovat.
 
 ```
 sigDefImgVersionId=$(az sig image-version list \
@@ -90,7 +90,7 @@ sigDefImgVersionId=$(az sig image-version list \
 ```
 
 
-Pokud už máte vlastní galerie obrázků Shared a neřídil předchozí příklad, musíte přiřadit oprávnění pro Image Builder pro přístup k skupinu prostředků, takže může přistupovat k galerii.
+Pokud už máte vlastní galerii sdílených imagí a nepoužili jste předchozí příklad, budete muset pro tvůrce imagí přiřadit oprávnění pro přístup ke skupině prostředků, aby měl přístup k této galerii.
 
 
 ```azurecli-interactive
@@ -101,11 +101,11 @@ az role assignment create \
 ```
 
 
-## <a name="modify-helloimage-example"></a>Upravte příklad helloImage
-Můžete zkontrolovat v příkladu jsme se chystáte použít tak, že otevřete soubor .json tady: [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) spolu s [referenčními informacemi k šablonám Image Builder](image-builder-json.md). 
+## <a name="modify-helloimage-example"></a>Příklad úpravy helloImage
+Můžete si prohlédnout příklad, který se chystáme použít otevřením souboru. JSON tady: [helloImageTemplateforSIGfromSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) spolu s [odkazem na šablonu image Builder](image-builder-json.md). 
 
 
-Stažení příkladu JSON při použití a nakonfigurovat proměnných. 
+Stáhněte si příklad. JSON a nakonfigurujte ho pomocí proměnných. 
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json -o helloImageTemplateforSIGfromSIG.json
@@ -121,7 +121,7 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromSIG.j
 
 ## <a name="create-the-image"></a>Vytvoření image
 
-Odeslání konfigurace image do služby Tvůrce Image virtuálního počítače.
+Odešlete konfiguraci image do služby tvůrce imagí virtuálních počítačů.
 
 ```azurecli-interactive
 az resource create \
@@ -142,7 +142,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Počkejte, než je sestavený na obrázku a replikace, než budete pokračovat k dalšímu kroku.
+Před přechodem k dalšímu kroku počkejte, než se obrázek sestaví a provede replikace.
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
@@ -163,7 +163,7 @@ Vytvořte připojení SSH k virtuálnímu počítači pomocí veřejné IP adres
 ssh azureuser@<pubIp>
 ```
 
-Měli byste vidět, že image byla přizpůsobený "zpráva dne" poté, co vaše připojení SSH.
+Měli byste vidět, že image byla upravena s "zprávou o dni", jakmile se naváže připojení SSH.
 
 ```console
 *******************************************************
@@ -173,15 +173,15 @@ Měli byste vidět, že image byla přizpůsobený "zpráva dne" poté, co vaše
 *******************************************************
 ```
 
-Typ `exit` pro ukončení připojení SSH.
+Zadejte `exit` pro zavření připojení SSH.
 
-Můžete také zařadit verze image, které jsou teď dostupné v galerii.
+Můžete také zobrazit seznam verzí imagí, které jsou nyní k dispozici v galerii.
 
 ```azurecli-interactive
 az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o table
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o součástech soubor .json, používané v tomto článku najdete v tématu [Image builder referenčními informacemi k šablonám](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

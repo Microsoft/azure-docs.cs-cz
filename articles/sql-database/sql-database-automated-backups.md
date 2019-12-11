@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 77442eda6c8b2aae71c5d647127ead9f851ec485
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421416"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997288"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -29,7 +29,7 @@ SQL Database automaticky vytvoří zálohy databáze udržované mezi 7 a 35 dny
 
 SQL Database používá technologii SQL Server k vytváření [úplných záloh](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) každý týden, [rozdílové zálohování](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) každých 12 hodin a [zálohování protokolů transakcí](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) každých 5-10 minut. Zálohy se ukládají v objektech [BLOB úložiště RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , které se replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md) kvůli ochraně před výpadkem datového centra. Při obnovení databáze vyřadí služba vyčíslení úplného, rozdílového a zálohy protokolu transakcí, které je třeba obnovit.
 
-Tyto zálohy můžete použít k těmto akcím:
+Tyto zálohy rovněž umožňují:
 
 - **Obnovte stávající databázi k určitému bodu v čase v minulosti** v rámci doby uchování pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. V izolovaných databázích a elastických fondech Tato operace vytvoří novou databázi na stejném serveru jako původní databázi. V rámci spravované instance Tato operace může vytvořit kopii databáze nebo stejné nebo jiné spravované instance v rámci stejného předplatného.
   - **[Změňte dobu uchování zálohy](#how-to-change-the-pitr-backup-retention-period)** mezi 7 až 35 dny a nakonfigurujte zásady zálohování.
@@ -44,7 +44,7 @@ Tyto zálohy můžete použít k těmto akcím:
 
 Některé z těchto operací můžete vyzkoušet v následujících příkladech:
 
-| | Azure Portal | Azure Powershell |
+| | Azure Portal | Azure PowerShell |
 |---|---|---|
 | Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
@@ -67,7 +67,7 @@ Pokud potřebujete uchovat zálohy po dobu delší, než je maximální doba uch
 
 ### <a name="backups-for-point-in-time-restore"></a>Zálohy pro obnovení k bodu v čase
 
-SQL Database podporuje samoobslužné obnovení (PITR) pomocí automatického vytváření úplných záloh, rozdílových záloh a záloh protokolů transakcí. Úplné zálohy databáze jsou vytvářeny týdně, rozdílové zálohy databáze jsou obvykle vytvářeny každých 12 hodin a zálohy protokolu transakcí jsou obvykle vytvářeny každých 5-10 minut, přičemž četnost je založena na výpočetní velikosti a množství aktivity databáze. První úplné zálohování je naplánováno ihned po vytvoření databáze. Obvykle se dokončí do 30 minut, ale může trvat déle, než databáze bude mít značnou velikost. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po prvním úplném zálohování se všechna další zálohování naplánují automaticky a budou spravovaná na pozadí. Přesné časování všech záloh databáze určuje služba SQL Database, protože vyrovnává celkovou úlohu systému. Úlohy zálohování nemůžete změnit ani zakázat. 
+SQL Database podporuje samoobslužné obnovení (PITR) pomocí automatického vytváření úplných záloh, rozdílových záloh a záloh protokolů transakcí. Úplné zálohy databáze jsou vytvářeny týdně, rozdílové zálohy databáze jsou obvykle vytvářeny každých 12 hodin a zálohy protokolu transakcí jsou obvykle vytvářeny každých 5-10 minut, přičemž četnost je založena na výpočetní velikosti a množství aktivity databáze. První úplné zálohování je naplánováno ihned po vytvoření databáze. Obvykle se dokončí do 30 minut, ale může trvat déle, než databáze bude mít značnou velikost. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po první úplné záloze se všechny další zálohy naplánují automaticky a budou se bezobslužně spravovat na pozadí. Přesné načasování všech záloh databáze určuje služba SQL Database, protože musí vyrovnat celkové zatížení systému. Úlohy zálohování nemůžete změnit ani zakázat. 
 
 Zálohy PITR jsou geograficky redundantní a chráněné [Azure Storage replikace mezi různými oblastmi](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) .
 
@@ -81,7 +81,7 @@ Podobně jako PITR, zálohy LTR jsou geograficky redundantní a chráněné [Azu
 
 Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
-## <a name="storage-costs"></a>Cena za uložení
+## <a name="storage-costs"></a>Náklady na úložiště
 U izolovaných databází a spravovaných instancí se minimální velikost záložního úložiště rovná 100% velikosti databáze poskytuje bez dalších poplatků. V případě elastických fondů se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond, a to bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
 
 Pomocí analýzy nákladů na předplatné Azure můžete zjistit aktuální výdaje na úložiště záloh.
@@ -115,7 +115,7 @@ Při migraci databáze z úrovně služby založené na DTU s výchozím PITR uc
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>Jak změnit dobu uchovávání záloh PITR
 
-Výchozí dobu uchovávání záloh PITR můžete změnit pomocí Azure Portal, PowerShellu nebo REST API. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchování na 28 dní.
+Výchozí dobu uchovávání záloh PITR můžete změnit pomocí Azure Portal, PowerShellu nebo REST API. Následující příklady ukazují, jak změnit PITR uchování na 28 dní.
 
 > [!WARNING]
 > Pokud zmenšíte aktuální dobu uchovávání, nebudou už všechny existující zálohy starší než nová doba uchování k dispozici. Pokud zvýšíte aktuální dobu uchovávání, SQL Database zachová stávající zálohy, dokud nedosáhnete delší doby uchovávání.
@@ -153,7 +153,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>Změna doby uchování PITR pomocí REST API
 
-#### <a name="sample-request"></a>Ukázkový požadavek
+#### <a name="sample-request"></a>Ukázková žádost
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview

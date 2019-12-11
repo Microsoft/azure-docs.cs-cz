@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: b6dd91dda559f778eaa8f5a17b46a22020dd8373
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484056"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996744"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -38,67 +38,58 @@ Každé číslo ve verzi označuje obecnou kompatibilitu s předchozí verzí:
 * Vedlejší verze se změní, když jsou provedeny změny funkčnosti, které jsou zpětně kompatibilní s ostatními podverzemi.
 * Opravy verzí se mění, když jsou provedeny zpětně kompatibilní opravy chyb.
 
-Obecně platí, že by se uživatelé měli Endeavor spustit nejnovější verzi opravy podverze, kterou používají. Pokud je například váš provozní cluster na *1.12.14* a *1.12.15* je nejnovější dostupná verze opravy dostupná pro řadu *1,12* , měli byste upgradovat na *1.12.15* , jakmile budete schopni zajistit, aby byl cluster plně opravený a podporovaný.
+Uživatelé by měli mít na úmysl spustit nejnovější verzi opravy podverze, kterou používají. například pokud je váš provozní cluster na *1.12.14* a *1.12.15* je nejnovější dostupná verze opravy dostupná pro řadu *1,12* , měli byste upgradovat na *1.12.15* , jakmile budete moci zajistit, aby byl cluster plně opravený a podporovaný.
 
 ## <a name="kubernetes-version-support-policy"></a>Zásady podpory verze Kubernetes
 
-> [!NOTE]
-> Od 9. prosince 2019 se AKS přesune na podporu nejnovějších (N) – 2 verzí Kubernetes. Tato změna je shodná s nadřazeným oknem podpory pro verze Kubernetes a zajišťují, že se používají nejnovější a nejbezpečnější verze. Pokud se chcete dozvědět víc, přečtěte si toto [oznámení](https://azure.microsoft.com/updates/azure-kubernetes-service-will-be-retiring-support-for-kubernetes-versions-1-11-and-1-12/).
-
-AKS podporuje čtyři dílčí verze Kubernetes:
+AKS podporuje tři dílčí verze Kubernetes:
 
 * Aktuální dílčí verze vydaná v AKS (N)
-* Tři předchozí dílčí verze. Každá podporovaná dílčí verze také podporuje dvě stabilní opravy.
+* Dvě předchozí vedlejší verze. Každá podporovaná dílčí verze také podporuje dvě stabilní opravy.
 
-To se označuje jako "N-3" – (N (nejnovější verze)-3 (podverze)).
+To se označuje jako "N-2": (N (nejnovější verze)-2 (podverze)).
 
-Například pokud AKS zavádí *otázku 1.13. a* , je k dispozici podpora pro následující verze:
+Například pokud AKS zavádí *1.15. a* ještě dnes, podpora je k dispozici pro následující verze:
 
 Nová dílčí verze    |    Seznam podporovaných verzí
 -----------------    |    ----------------------
-1.13. a               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1.10. a, 1.10. b
+1.15. a               |    1.15. a, 1.15. b, 1.14. c, 1.14. d, 1.13. e, 1.13. f
 
-Kde ". a" a ". b" jsou reprezentativními verzemi oprav. " "z" 1.13. a se může lišit od 1.12. a. Například 1.13.9 a 1.12.8.
+Kde ". Letter" představuje zástupce verzí oprav.
 
 Podrobnosti o komunikaci týkající se změn a očekávání verzí najdete v části "komunikace" níže.
 
-Pokud je zavedena nová podverze, je podpora nejstarší dílčí verze a vydání oprav zastaralá a odebrána. Pokud je například aktuální seznam podporovaných verzí:
+Pokud je zavedena nová podverze, je podpora nejstarší dílčí verze a vydání oprav zastaralá a odebrána. Pokud je například aktuální podporovaná verze seznam:
 
 ```
-1.12.a
-1.12.b
-1.11.a
-1.11.b
-1.10.a
-1.10.b
-1.9.a
-1.9.b
+1.15.a
+1.15.b
+1.14.c
+1.14.d
+1.13.e
+1.13.f
 ```
 
-A AKS verze 1,13. *to znamená, že 1,9.* verze (všechny verze 1,9) se odeberou a nepodporují.
+A AKS verze 1,16. *to znamená, že 1,13.* verze (všechny verze 1,13) se odeberou a nepodporují.
 
 > [!NOTE]
 > Upozorňujeme, že pokud na zákaznících běží Nepodporovaná verze Kubernetes, zobrazí se jim výzva k upgradu při žádosti o podporu pro cluster. Clustery, na kterých běží Nepodporovaná vydání Kubernetes, se nevztahují na [zásady podpory AKS](https://docs.microsoft.com/azure/aks/support-policies).
 
-
-Kromě výše uvedených v podverzi AKS podporuje dvě nejnovější *opravy** verze dané dílčí verze. Například s ohledem na následující podporované verze:
+Kromě výše uvedených v podverzi AKS podporuje dvě nejnovější **opravy** vydané dílčí verze. Například s ohledem na následující podporované verze:
 
 ```
 Current Supported Version List
 ------------------------------
-1.12.1, 1.12.2, 1.11.4, 1.11.5
+1.15.2, 1.15.1, 1.14.5, 1.14.4
 ```
 
-Pokud Kubernetes vydala 1.12.3 a 1.11.6 a AKS uvolní tyto verze opravy, nejstarší verze opravy jsou zastaralé a odebrané a seznam podporovaných verzí bude:
+Pokud Kubernetes vydala 1.15.3 a 1.14.6 a AKS uvolní tyto verze opravy, nejstarší verze opravy jsou zastaralé a odebrané a seznam podporovaných verzí bude:
 
 ```
 New Supported Version List
 ----------------------
-1.12.*2*, 1.12.*3*, 1.11.*5*, 1.11.*6*
+1.15.*3*, 1.15.*2*, 1.14.*6*, 1.14.*5*
 ```
-
-> [!NOTE]
-> Zákazníci by neměli připnout vytváření clusterů, CI ani jiné automatizované úlohy na konkrétní verze oprav. 
 
 ### <a name="communications"></a>Komunikace
 
@@ -110,14 +101,11 @@ New Supported Version List
   * Všem uživatelům se zobrazí oznámení o vydání nové verze opravy a k upgradu na nejnovější verzi opravy.
   * Upgrade na novější podporovanou verzi opravy pro uživatele má **30 dní** . Aby uživatelé před odebráním nejstarší verze nastavili upgrade na podporovanou verzi, mají **30 dní** .
 
-AKS definuje "vydanou" verzi jako obecnou dostupnost, která je povolená ve všech měřeních na SLO/kvalitu služeb a dostupná ve všech oblastech.
-
-> [!NOTE]
-> Zákazníkům se zobrazí oznámení o vydáních verzí Kubernetes a zastaralosti, pokud je podverze zastaralá/odebraných uživatelů je 60 dní na upgrade na podporovanou verzi. V případě opravných verzí jsou zákazníkům po dobu 30 dní upgradováni na podporovanou verzi.
+AKS definuje "vydanou verzi" jako všeobecně dostupné verze, která je povolená u všech oblastí SLO/Quality of Service měření a dostupná ve všech oblastech. AKS může podporovat i verze Preview, které jsou explicitně označené a podléhají podmínkám a ujednáním ve verzi Preview.
 
 #### <a name="notification-channels-for-aks-changes"></a>Kanály oznámení pro AKS změny
 
-AKS vydává týdenní aktualizaci služby, která shrnuje nové verze Kubernetes, změny služeb a aktualizace součástí, které byly vydány v rámci služby na [GitHubu](https://github.com/Azure/AKS/releases).
+AKS publikuje pravidelné aktualizace služeb, které shrnují nové verze Kubernetes, změny služeb a aktualizace součástí, které byly vydány v rámci služby na [GitHubu](https://github.com/Azure/AKS/releases).
 
 Tyto změny jsou v rámci pravidelné údržby nabízené jako součást spravované služby zahrnuty do všech zákazníků, některé vyžadují explicitní upgrady, zatímco jiné nevyžadují žádnou akci.
 
@@ -127,7 +115,7 @@ Oznámení se odesílají taky prostřednictvím:
 * Oznámení portálu Azure Portal
 * [Kanál pro aktualizaci Azure][azure-update-channel]
 
-### <a name="policy-exceptions"></a>Výjimky zásad
+### <a name="supported-versions-policy-exceptions"></a>Výjimky zásad podporovaných verzí
 
 AKS si vyhrazuje právo přidat nebo odebrat nové/existující verze, které byly identifikovány tak, aby měly jednu nebo více kritických chybových dopadů na produkční prostředí bez předchozího upozornění.
 
@@ -135,9 +123,9 @@ Konkrétní vydané verze oprav se můžou přeskočit nebo se zrychlí v závis
 
 ### <a name="azure-portal-and-cli-default-versions"></a>Výchozí verze Azure Portal a CLI
 
-Když nasadíte cluster AKS na portálu nebo pomocí rozhraní příkazového řádku Azure CLI, cluster se vždycky nastaví na N-1 dílčí verzi a nejnovější opravu. Například pokud AKS podporuje *1.13. a*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1.10. a* + *1.10 b*, je výchozí verze pro nové clustery *1.12. b*.
+Když nasadíte cluster AKS na portálu nebo pomocí rozhraní příkazového řádku Azure CLI, cluster se nastaví jako výchozí v podverzi N-1 a nejnovější oprava. Například pokud AKS podporuje *1.15. a*, *1.15. b*, *1.14. c*, *1.14. d*, *1.13. e*a *1.13. f*, vybraná výchozí verze je *1.14. c*.
 
-AKS má výchozí hodnotu N-1 (moll. latestPatch, například 1.12. b), aby zákazníkům poskytovala známou, stabilní a opravenou verzi ve výchozím nastavení.
+AKS zvolí výchozí hodnotu N-1, aby ve výchozím nastavení poskytovala zákazníkům známou, stabilní a opravenou verzi.
 
 ## <a name="list-currently-supported-versions"></a>Vypsat aktuálně podporované verze
 
@@ -147,33 +135,16 @@ Pokud chcete zjistit, jaké verze jsou aktuálně k dispozici pro vaše předpla
 az aks get-versions --location eastus --output table
 ```
 
-Výstup je podobný následujícímu příkladu, který ukazuje, že je nejnovější dostupná verze Kubernetes verze *1.14.6* :
-
-```
-KubernetesVersion    Upgrades
--------------------  ------------------------
-1.14.6               None available
-1.14.5               1.14.6
-1.13.10              1.14.5, 1.14.6
-1.13.9               1.13.10, 1.14.5, 1.14.6
-1.12.8               1.13.9, 1.13.10
-1.12.7               1.12.8, 1.13.9, 1.13.10
-1.11.10              1.12.7, 1.12.8
-1.11.9               1.11.10, 1.12.7, 1.12.8
-1.10.13              1.11.9, 1.11.10
-1.10.12              1.10.13, 1.11.9, 1.11.10
-```
-
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Co se stane, když zákazník upgraduje cluster Kubernetes s menší verzí, která není podporovaná?**
 
-Pokud se nacházíte na *n-4* verzi, jste mimo podporu a budete vyzváni k upgradu. Pokud upgrade z verze n-4 na n-3 uspěje, jste teď v rámci našich zásad podpory. Příklad:
+Pokud používáte verzi *n-3* , jste mimo podporu a budete vyzváni k upgradu. Pokud váš upgrade z verze n-3 na n-2 uspěje, jste teď v rámci našich zásad podpory. Například:
 
-- Pokud jsou podporované verze AKS *1.13. a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*a *1.10. f* + 1.10. *g* a jste na *1,9. h* nebo *1.9. i*, jste mimo podporu.
-- Pokud je upgrade z *1.9. h* nebo *1.9. i* na *1.10. f* nebo *1.10. g* úspěšný, jste zpátky v rámci našich zásad podpory.
+- Pokud je nejstarší podporovaná verze AKS *1.13.* a a jste na *1.12. b* nebo starším, jste mimo podporu.
+- Pokud upgrade z *1.12. b* na *1.13. a* nebo vyšší je úspěšný, jste zpátky v rámci našich zásad podpory.
 
-Upgrady na verze starší než *n-4* nejsou podporovány. V takových případech doporučujeme zákazníkům vytvořit nové clustery AKS a znovu nasazovat své úlohy.
+Nepodporují se upgrady na verze starší než podporované okno *N-2* . V takových případech doporučujeme zákazníkům vytvářet nové clustery AKS a znovu nasazovat úlohy s verzemi v podporovaném okně.
 
 **Co znamená "mimo podporu"**
 
@@ -181,15 +152,15 @@ Upgrady na verze starší než *n-4* nejsou podporovány. V takových případec
 
 **Co se stane, když zákazník škáluje cluster Kubernetes s menší verzí, která není podporovaná?**
 
-Pro menší verze, které AKS nepodporuje, se škálování nebo zmenšuje i nadále bez problémů.
+Pro podverze, které AKS nepodporuje, by se škálování nebo oddálení mělo dál pracovat, ale důrazně doporučujeme upgradovat cluster zpátky na podporu.
 
 **Může zákazník stále ve verzi Kubernetes zůstat?**
 
 Ano. Pokud se ale cluster nepoužívá v některé z verzí, které podporuje AKS, cluster neplatí pro zásady podpory AKS. Azure neupgraduje cluster automaticky ani neodstraní.
 
-**Jakou verzi má hlavní podpora v případě, že cluster agenta není v některé z podporovaných verzí AKS?**
+**Jakou verzi ovládací plocha podporuje, pokud fond uzlů není v některé z podporovaných verzí AKS?**
 
-Hlavní server se automaticky aktualizuje na nejnovější podporovanou verzi.
+Rovina ovládacího prvku musí být v rámci okna verzí ze všech fondů uzlů. Podrobnosti o upgradu roviny ovládacího prvku nebo fondů uzlů najdete v dokumentaci k [upgradu fondů uzlů](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 ## <a name="next-steps"></a>Další kroky
 

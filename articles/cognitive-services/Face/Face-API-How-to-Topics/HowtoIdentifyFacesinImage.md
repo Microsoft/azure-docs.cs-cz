@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 10ab11669569b16293ccf9b8777190cf271e5795
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744315"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977178"
 ---
 # <a name="example-identify-faces-in-images"></a>Příklad: identifikace plošek na obrázcích
 
@@ -33,16 +33,16 @@ Chcete-li provést ukázku této ukázky, připravte:
 - Několik fotek s tváří určité osoby. [Stáhněte si ukázkové fotky](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) pro Anna, Bill a Clare.
 - Série testovacích fotek. Fotografie mohou nebo nemusí obsahovat plošky Anna, Bill nebo Clare. Slouží k testování identifikace. Vyberte také některé ukázkové obrázky z předchozího odkazu.
 
-## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autorizace volání rozhraní API
+## <a name="step-1-authorize-the-api-call"></a>1\. krok: Autorizace volání rozhraní API
 
-Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného. Tento klíč lze buď předat parametrem řetězce dotazu, nebo zadat v hlavičce požadavku. Chcete-li předat klíč předplatného pomocí řetězce dotazu, přečtěte si adresu URL žádosti pro [obličej – rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) jako příklad:
+Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného (subscription key). Tento klíč lze buď předat parametrem řetězce dotazu, nebo zadat v hlavičce požadavku. Chcete-li předat klíč předplatného pomocí řetězce dotazu, přečtěte si adresu URL žádosti pro [obličej – rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) jako příklad:
 ```
 https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
 &subscription-key=<Subscription key>
 ```
 
 Jako alternativu zadejte klíč předplatného v hlavičce požadavku HTTP **OCP-APIM-Subscription-key &lt;:&gt;klíč předplatného** .
-Když použijete klientskou knihovnu, klíč předplatného se předává prostřednictvím konstruktoru třídy FaceClient. Příklad:
+Když použijete klientskou knihovnu, klíč předplatného se předává prostřednictvím konstruktoru třídy FaceClient. Například:
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
@@ -143,7 +143,7 @@ string testImageFile = @"D:\Pictures\test_img1.jpg";
 using (Stream s = File.OpenRead(testImageFile))
 {
     var faces = await faceClient.Face.DetectWithStreamAsync(s);
-    var faceIds = faces.Select(face => face.FaceId).ToArray();
+    var faceIds = faces.Select(face => face.FaceId.Value).ToArray();
  
     var results = await faceClient.Face.IdentifyAsync(faceIds, personGroupId);
     foreach (var identifyResult in results)

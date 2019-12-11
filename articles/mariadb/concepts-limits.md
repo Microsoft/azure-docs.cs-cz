@@ -5,61 +5,61 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fc89b6233602c81ea622a528c223adf2003f0f68
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 1f5824f349650e340e395221785266096da16d6f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772492"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969543"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení Azure Database for MariaDB
-Následující části popisují kapacitu, podporu modulu úložiště, podporu oprávnění, podporu příkazů pro manipulaci s daty a funkční omezení v databázové službě.
+Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby.
 
 ## <a name="maximum-connections"></a>Maximální počet připojení
-Maximální počet připojení na cenové úrovni a virtuální jádra je následující:
+Maximální počet připojení na cenová úroveň a virtuálními jádry jsou následující:
 
-|**Cenová úroveň**|**vCore (celkem)**| **Maximální počet připojení**|
+|**Cenová úroveň**|**počet virtuálních jader:**| **Maximální počet připojení**|
 |---|---|---|
 |Úroveň Basic| 1\. místo| 50|
 |Úroveň Basic| 2| 100|
-|Obecné použití| 2| 300|
-|Obecné použití| 4| 625|
-|Obecné použití| 8| 1250|
-|Obecné použití| 16| 2500|
-|Obecné použití| 32| 5000|
-|Obecné použití| 64| 10000|
-|Paměťově optimalizované| 2| 600|
-|Paměťově optimalizované| 4| 1250|
-|Paměťově optimalizované| 8| 2500|
-|Paměťově optimalizované| 16| 5000|
-|Paměťově optimalizované| 32| 10000|
+|Obecné použití| 2| 600|
+|Obecné použití| 4| 1250|
+|Obecné použití| 8| 2500|
+|Obecné použití| 16| 5000|
+|Obecné použití| 32| 10000|
+|Obecné použití| 64| 20000|
+|Paměťově optimalizované| 2| 800|
+|Paměťově optimalizované| 4| 2500|
+|Paměťově optimalizované| 8| 5000|
+|Paměťově optimalizované| 16| 10000|
+|Paměťově optimalizované| 32| 20000|
 
-Když připojení překročí limit, může se zobrazit následující chyba:
-> Chyba 1040 (08004): příliš mnoho připojení
+Při připojení překročí limit, může se zobrazit následující chyba:
+> Chyba 1040 (08004): Příliš mnoho připojení
 
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
 ### <a name="supported"></a>Podporováno
 - [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
-- [REZIDENT](https://mariadb.com/kb/en/library/memory-storage-engine/)
+- [PAMĚŤ](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
 ### <a name="unsupported"></a>Nepodporované
 - [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
-- [ZÁLOHOVAT](https://mariadb.com/kb/en/library/archive/)
+- [SMĚROVAČE BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
+- [ARCHIV](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>Podpora oprávnění
 
 ### <a name="unsupported"></a>Nepodporované
-- Role DBA: mnoho parametrů serveru a nastavení může nechtěně snížit výkon serveru nebo vlastnosti s nezápornou KYSELINou systému DBMS. Za účelem zachování integrity služby a smlouvy SLA na úrovni produktu Tato služba nevystavuje roli DBA. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje tomuto uživateli provádět většinu příkazů DDL a DML v instanci spravované databáze.
-- Superuživatele (SUPER Privileged Privilege) je taky omezené [oprávnění Super](https://mariadb.com/kb/en/library/grant/#global-privileges) .
+- DBA role: mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze.
+- Oprávnění SUPERUŽIVATELE: podobně [SUPER oprávnění](https://mariadb.com/kb/en/library/grant/#global-privileges) je také omezen.
 - DEFINe: vyžaduje pro vytvoření a omezení superuživatele oprávnění. Pokud importujete data pomocí zálohy, odeberte příkazy `CREATE DEFINER` ručně nebo pomocí příkazu `--skip-definer` při provádění mysqldump.
 
-## <a name="data-manipulation-statement-support"></a>Podpora příkazů manipulace s daty
+## <a name="data-manipulation-statement-support"></a>Podpora příkaz manipulace dat
 
 ### <a name="supported"></a>Podporováno
-- `LOAD DATA INFILE` se podporuje, ale je potřeba zadat parametr `[LOCAL]` a směrovat ho na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
+- `LOAD DATA INFILE` je podporováno, ale `[LOCAL]` parametr musí být zadán a směrované na cestu UNC (úložiště Azure připojit přes protokol SMB).
 
 ### <a name="unsupported"></a>Nepodporované
 - `SELECT ... INTO OUTFILE`
@@ -67,28 +67,28 @@ Když připojení překročí limit, může se zobrazit následující chyba:
 ## <a name="functional-limitations"></a>Funkční omezení
 
 ### <a name="scale-operations"></a>Operace škálování
-- Dynamické škálování na cenové úrovně Basic a z se v tuto chvíli nepodporuje.
-- Zmenšení velikosti úložiště serveru se nepodporuje.
+- Dynamické škálování do a ze základní cenové úrovně se aktuálně nepodporuje.
+- Snížení velikosti úložiště serveru se nepodporuje.
 
 ### <a name="server-version-upgrades"></a>Upgrady verze serveru
-- Automatizovaná migrace mezi hlavními verzemi databázového stroje není v současnosti podporovaná.
+- Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje.
 
 ### <a name="point-in-time-restore"></a>Obnovení do bodu v čase
-- Při použití funkce PITR je nový server vytvořen se stejnými konfiguracemi jako server, na kterém je založena.
-- Obnovení odstraněného serveru se nepodporuje.
+- Při použití funkce PITR se vytvoří nový server se stejnou konfiguraci jako server, který je založen na.
+- Obnovení odstraněné serveru není podporováno.
 
 ### <a name="subscription-management"></a>Správa předplatného
 - Dynamicky se přesouvá předem vytvořené servery v rámci předplatného a skupiny prostředků v současné době se nepodporují.
 
 ### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
-- Podpora koncových bodů služby virtuální sítě je určená jenom pro Pro obecné účely a paměťově optimalizované servery.
+- Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
 ### <a name="storage-size"></a>Velikost úložiště
 - Omezení velikosti úložiště na cenové úrovni najdete v [cenové úrovni](concepts-pricing-tiers.md) .
 
 ## <a name="current-known-issues"></a>Aktuální známé problémy
-- Instance serveru MariaDB po navázání připojení zobrazí nesprávnou verzi serveru. Správnou verzi modulu instance serveru získáte pomocí příkazu `select version();`.
+- Instance serveru MariaDB po navázání připojení zobrazí nesprávnou verzi serveru. Chcete-li získat správný server verze modulu instance, použijte `select version();` příkazu.
 
 ## <a name="next-steps"></a>Další kroky
-- [Co je dostupné v jednotlivých úrovních služby](concepts-pricing-tiers.md)
+- [Co je k dispozici na jednotlivých úrovních služby](concepts-pricing-tiers.md)
 - [Podporované verze databáze MariaDB](concepts-supported-versions.md)

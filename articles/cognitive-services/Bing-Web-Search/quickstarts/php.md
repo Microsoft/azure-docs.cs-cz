@@ -1,28 +1,28 @@
 ---
-title: 'Rychlý start: Hledání s využitím PHP – rozhraní API webové vyhledávání Bingu'
+title: 'Rychlý start: Hledání pomocí PHP – rozhraní API Bingu pro vyhledávání na webu'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků na rozhraní Web API vyhledávání Bingu REST pomocí PHP a přijetí odpovědi JSON
+description: Pomocí tohoto rychlého startu můžete posílat požadavky na Vyhledávání na webu Bingu REST API pomocí PHP a přijímat odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf3cf1f69f7b45dd90070f4074e85fa21359837d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648563"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961470"
 ---
-# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API webové vyhledávání Bingu  
+# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API Bingu pro vyhledávání na webu  
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci Node.js k rozhraní API odešle žádost o vyhledávání a ukázka odezvy. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
@@ -43,7 +43,7 @@ Než začneme, najděte soubor `php.ini` a zrušte komentář tohoto řádku:
 
 V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP. Nezapomeňte přidat počáteční a koncové značky `<?php` a `?>`.
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. Ověřte správnost hodnoty `$endpoint` a nahraďte hodnotu `$accesskey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `$term` zadat jinou hodnotu.
+Abychom mohli pokračovat, musíme nastavit několik proměnných. `$endpoint` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte správnost hodnoty `$endpoint` a nahraďte hodnotu `$accesskey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz přizpůsobíte tím, že místo `$term` zadáte jinou hodnotu.
 
 ```php
 $accessKey = 'enter key here';
@@ -83,7 +83,7 @@ function BingWebSearch ($url, $key, $query) {
 }
 ```
 
-## <a name="make-a-request-and-print-the-response"></a>Vytvoření požadavku a tisk výsledků
+## <a name="make-a-request-and-print-the-response"></a>Vytvoření požadavku a tisk odpovědi
 
 Tento kód ověří klíč předplatného, vytvoří požadavek a vytiskne odpověď.
 
@@ -281,7 +281,7 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)

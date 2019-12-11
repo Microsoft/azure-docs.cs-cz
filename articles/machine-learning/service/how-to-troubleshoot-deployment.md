@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7d7744aab6d83b3415f32ca9e311940836c6f93c
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123210"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997237"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
@@ -42,7 +42,7 @@ Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh.
 
 Další informace o tomto procesu v [Správa modelů ve službě](concept-model-management-and-deployment.md) úvod.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatného Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
@@ -267,7 +267,7 @@ Nastavení úrovně protokolování na ladění může způsobit, že budou prot
 
 ## <a name="function-fails-runinput_data"></a>Selže funkce: run(input_data)
 
-Pokud úspěšně nasazení služby, ale jeho dojde k chybě při odesílání dat na bodovací koncový bod, můžete přidat chyby zachytávání příkaz v vaše `run(input_data)` fungovat tak, že místo toho vrátí podrobnou chybovou zprávu. Příklad:
+Pokud úspěšně nasazení služby, ale jeho dojde k chybě při odesílání dat na bodovací koncový bod, můžete přidat chyby zachytávání příkaz v vaše `run(input_data)` fungovat tak, že místo toho vrátí podrobnou chybovou zprávu. Například:
 
 ```python
 def run(input_data):
@@ -505,7 +505,7 @@ Chcete-li provést změny v souborech v imagi, můžete se připojit ke spuště
     docker exec -it debug /bin/bash
     ```
 
-1. Chcete-li najít soubory používané službou, použijte následující příkaz z prostředí bash v kontejneru:
+1. Pokud chcete najít soubory používané službou, použijte následující příkaz z prostředí bash v kontejneru, pokud se výchozí adresář liší od `/var/azureml-app`:
 
     ```bash
     cd /var/azureml-app

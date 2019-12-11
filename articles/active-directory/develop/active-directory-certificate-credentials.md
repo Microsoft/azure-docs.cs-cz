@@ -1,5 +1,5 @@
 ---
-title: Přihlašovací údaje certifikátu v Azure AD
+title: Přihlašovací údaje certifikátu Azure AD
 titleSuffix: Microsoft identity platform
 description: Tento článek popisuje registraci a použití přihlašovacích údajů certifikátu pro ověřování aplikací.
 services: active-directory
@@ -15,20 +15,21 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845361"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963864"
 ---
-# <a name="certificate-credentials-for-application-authentication"></a>Přihlašovací údaje certifikátu pro ověřování aplikací
+# <a name="azure-ad-application-authentication-certificate-credentials"></a>Přihlašovací údaje k certifikátu ověřování aplikací Azure AD
 
 Azure Active Directory (Azure AD) umožňuje aplikaci používat pro ověřování vlastní přihlašovací údaje, například v toku udělení přihlašovacích údajů klienta OAuth 2,0 ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) a v toku za běhu ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
 
 Jedna forma přihlašovacích údajů, kterou může aplikace použít k ověřování, je kontrolní výraz JSON Web Token (JWT) podepsaný certifikátem, který vlastní aplikace.
 
 ## <a name="assertion-format"></a>Formát kontrolního výrazu
+
 Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihoven [JSON web token](https://jwt.ms/) v jazyce podle vašeho výběru. Tato informace je převedená tímto tokenem:
 
 ### <a name="header"></a>Hlavička

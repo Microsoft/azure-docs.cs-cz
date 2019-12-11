@@ -1,5 +1,5 @@
 ---
-title: Jednotné přihlašování mezi aplikacemi ADAL a MSAL na platformě iOS a macOS – Microsoft Identity Platform
+title: Jednotné přihlašování mezi aplikacemi ADAL a MSAL iOS/macOS – Microsoft Identity Platform | Azure
 description: ''
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a554602b9648190926168e4886d4f0773692225
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 13998982b778181febf99d8366eebd25482bc2bc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264149"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961501"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Postupy: jednotné přihlašování mezi aplikacemi ADAL a MSAL v macOS a iOS
 
@@ -53,8 +53,8 @@ Následující tabulka shrnuje rozdíly v identifikátorech účtů mezi ADAL a 
 | Identifikátor účtu                | MSAL                                                         | ADAL 2.7. x      | Starší knihovna ADAL (před ADAL 2.7. x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | zobrazitelný identifikátor            | `username`                                                   | `userId`        | `userId`                       |
-| jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | neuvedeno                            |
-| Není známé žádné ID účtu.               | Dotazování všech účtů prostřednictvím rozhraní API `allAccounts:` v `MSALPublicClientApplication` | neuvedeno             | neuvedeno                            |
+| jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | Nevztahuje se                            |
+| Není známé žádné ID účtu.               | Dotazování všech účtů prostřednictvím rozhraní API `allAccounts:` v `MSALPublicClientApplication` | Nevztahuje se             | Nevztahuje se                            |
 
 Toto je `MSALAccount` rozhraní, které poskytuje tyto identifikátory:
 
@@ -208,7 +208,7 @@ Vzhledem k tomu, že `homeAccountId` není k dispozici ve starších verzích AD
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Příklad:
+Například:
 
 Cíl-C:
 

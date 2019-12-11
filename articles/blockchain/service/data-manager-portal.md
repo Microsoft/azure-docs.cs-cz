@@ -4,12 +4,12 @@ description: Vytvoření a Správa blockchain Data Manager pro službu Azure blo
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
-ms.openlocfilehash: 9c682f449fbab823134d626870c7dcfe8a8f2847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455809"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977011"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurace Blockchain Data Manageru s využitím webu Azure Portal
 
@@ -20,7 +20,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 * Vytvoření instance blockchain Data Manager pro uzel transakce služby Azure blockchain
 * Přidání aplikací blockchain
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -32,7 +32,7 @@ Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí slu�
 
 Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení. Blockchain Data Manager podporuje vícenásobná odchozí připojení Event Grid tématu pro všechny dané instance služby blockchain Data Manager. Blockchain data můžete odesílat do jednoho cíle nebo odesílat blockchain data do více cílů. Pokud chcete přidat další cíl, stačí do instance přidat další odchozí připojení.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejít na člen služby Azure blockchain, který se má připojit k blockchain Data Manager. Vyberte **Blockchain data Manager**.
 1. Vyberte **Přidat**.
 
@@ -42,7 +42,7 @@ Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytvá�
 
     Nastavení | Popis
     --------|------------
-    Název | Zadejte jedinečný název pro připojenou blockchain Data Manager. Název Data Manager blockchain může obsahovat malá písmena a číslice a maximální délka je 20 znaků.
+    Name (Název) | Zadejte jedinečný název pro připojenou blockchain Data Manager. Název Data Manager blockchain může obsahovat malá písmena a číslice a maximální délka je 20 znaků.
     Uzel transakce | Vyberte uzel transakce. V seznamu jsou jenom uzly transakcí, ke kterým máte přístup pro čtení.
     Název připojení | Zadejte jedinečný název odchozího připojení, kde se odesílají data blockchain transakce.
     Koncový bod služby Event Grid | V rámci stejného předplatného, jako je blockchain Data Manager instance, vyberte téma Event Grid.
@@ -78,13 +78,15 @@ Smlouva ABI definuje rozhraní inteligentních kontraktů. Popisuje, jak pracova
 
 1. Uložte pole **ABI** jako soubor JSON. Například *ABI. JSON*. Tento soubor použijete v pozdějším kroku.
 
-Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontrakt. Nasazený bajt se liší od bajtového kódu inteligentního kontraktu. Můžete získat nasazený bajtový kód ze zkompilovaného souboru metadat smlouvy.
+Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontrakt. Nasazený bajt se liší od bajtového kódu inteligentního kontraktu. K zkopírování bytového kódu do schránky použijte rozšíření Azure blockchain Development Kit.
 
-1. Otevřete soubor s metadaty kontraktu obsaženým ve složce **Build/Contracts** projektu Solid of. Název souboru je název čipové smlouvy následovaný příponou **. JSON** .
-1. V souboru JSON vyhledejte element **deployedBytecode** .
-1. Zkopírujte hexadecimální hodnotu bez uvozovek.
+1. V podokně Průzkumník Visual Studio Code rozbalte složku **Build/Contracts** vašeho projektu Solid of.
+1. Klikněte pravým tlačítkem na soubor JSON metadat kontraktu. Název souboru je název čipové smlouvy následovaný příponou **. JSON** .
+1. Vyberte položku **Kopírovat bajtový kód transakce**.
 
-    ![Visual Studio Code podokno s podbajtem v metadatech](./media/data-manager-portal/bytecode-metadata.png)
+    ![Podokno Visual Studio Code s výběrem kopírovat bajtovou část transakce](./media/data-manager-portal/bytecode-devkit.png)
+
+    Kód bajtu je zkopírován do schránky.
 
 1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Příklad: *bytového kódu. JSON*. Tento soubor použijete v pozdějším kroku.
 
@@ -108,14 +110,14 @@ Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese
 
     | Pole | Popis |
     |-------|-------------|
-    | Název  | Pojmenujte kontejner. Například *smartcontract* |
+    | Name (Název)  | Pojmenujte kontejner. Například *smartcontract* |
     | Úroveň veřejného přístupu | Zvolit *privátní (bez anonymního přístupu)* |
 
 1. Kliknutím na **OK** kontejner vytvoříte.
 1. Vyberte kontejner a pak vyberte **nahrát**.
 1. Vyberte soubory JSON, které jste vytvořili v části [získání kontraktu ABI a bytového kódu](#get-contract-abi-and-bytecode) .
 
-    ![Nahrát objekt BLOB](./media/data-manager-portal/upload-blobs.png)
+    ![Nahrát objekt blob](./media/data-manager-portal/upload-blobs.png)
 
     Vyberte **Nahrát**.
 
@@ -144,7 +146,7 @@ Pro každý objekt BLOB vygenerujte sdílený přístupový podpis.
 
     Nastavení | Popis
     --------|------------
-    Název | Zadejte jedinečný název, který má blockchain aplikace sledovat.
+    Name (Název) | Zadejte jedinečný název, který má blockchain aplikace sledovat.
     ABI kontraktu | Cesta URL k souboru ABI kontraktu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
     Bajtový kód kontraktu | Cesta URL k souboru bytového kódu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
 

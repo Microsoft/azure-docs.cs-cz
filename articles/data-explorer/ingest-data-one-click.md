@@ -7,40 +7,40 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0d7c8b2661ee3361b3a485b8cae4eef3a8225120
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688191"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975240"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Ingestování dat do Azure Průzkumník dat pomocí přijímání jedním kliknutím
 
-V tomto článku se dozvíte, jak používat příjem jedním kliknutím pro rychlou příjem nové tabulky ve formátech JSON nebo CSV z úložiště nebo místního souboru do existující tabulky nebo do nové tabulky v Azure Průzkumník dat. Pomocí intuitivního průvodce a během několika minut se data ingestují, můžete tabulku upravit a spouštět dotazy pomocí webového uživatelského rozhraní.
+V tomto článku se dozvíte, jak používat přijímání jedním kliknutím pro rychlou příjem nové tabulky ve formátu JSON nebo CSV. Data je možné ingestovat z úložiště nebo místního souboru do existující tabulky nebo do nové tabulky. Použijte intuitivního průvodce jedním kliknutím a vaše data se ingestují během několika minut. Pak můžete tabulku upravit a spustit dotazy pomocí webového uživatelského rozhraní Azure Průzkumník dat.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlaste se k [aplikaci](https://dataexplorer.azure.com/).
-* Vytvoření [clusteru a databáze Azure Průzkumník dat](create-cluster-database-portal.md)
-* Přihlaste se k [webovému uživatelskému rozhraní](https://dataexplorer.azure.com/) a [přidejte připojení ke clusteru](/azure/data-explorer/web-query-data#add-clusters) .
-* Zdroj dat v Azure Storage.
+* Vytvořte [cluster a databázi Azure Průzkumník dat](create-cluster-database-portal.md).
+* Přihlaste se k [webovému uživatelskému rozhraní](https://dataexplorer.azure.com/) a [přidejte připojení ke clusteru](/azure/data-explorer/web-query-data#add-clusters).
+* Vytvoří zdroj dat v Azure Storage.
 
 ## <a name="ingest-new-data"></a>Přijímání nových dat
 
-1. Klikněte pravým tlačítkem myši na řádek *databáze* nebo *tabulky* v levé nabídce webového uživatelského rozhraní a vyberte možnost ingestovat **Nová data (Preview)** .
+1. Klikněte pravým tlačítkem myši na řádek *databáze* nebo *tabulky* v nabídce vlevo webového uživatelského rozhraní a vyberte možnost ingestovat **Nová data (Preview)** .
 
-    ![výběr jednoho kliknutí na přijímání ve webovém uživatelském rozhraní](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
+    ![Ve webovém uživatelském rozhraní vyberte možnost přijímání jedním kliknutím.](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
  
-1. V okně ingestovat **Nová data (Preview)** na kartě **zdroj** dokončete **Podrobnosti projektu**:
+1. V okně ingestovat **Nová data (Preview)** vyberte kartu **zdroj** a vyplňte **Podrobnosti projektu**:
 
-    * **Tabulka**: Vyberte existující název tabulky z rozevíracího seznamu nebo vyberte **vytvořit novou** a vytvořte novou tabulku.
-    * **Z úložiště** nebo **ze souboru**vyberte **typ** příjmu > .
-        * Pokud jste vybrali možnost **úložiště**, zadejte **odkaz na úložiště** a přidejte tak adresu URL do úložiště. Použijte [adresu URL SAS objektu BLOB](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) pro privátní účty úložiště. 
-        * Pokud jste vybrali možnost **ze souboru**, vyberte **Procházet** a přetáhněte ho do pole.
+    * V poli **tabulka**vyberte existující název tabulky z rozevírací nabídky nebo vyberte **vytvořit novou** a vytvořte novou tabulku.
+    * Jako **typ**příjmu vyberte buď **ze služby Storage** , nebo **ze souboru**.
+        * Pokud jste vybrali možnost **úložiště**, vyberte **odkaz na úložiště** a přidejte adresu URL. Použijte [adresu URL SAS objektu BLOB](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) pro privátní účty úložiště. 
+            * Pokud jste vybrali možnost **ze souboru**, vyberte **Procházet** a přetáhněte ho do pole.
     * Vyberte **Upravit schéma** pro zobrazení a úpravu konfigurace sloupce tabulky.
  
-    ![Podrobnosti o zdroji pro ingestování na jednom](media/ingest-data-one-click/one-click-ingestion-source.png) 
+    ![Podrobnosti zdroje ingestování jedním kliknutím.](media/ingest-data-one-click/one-click-ingestion-source.png) 
 
     > [!TIP]
     > Pokud na řádku *tabulky* vyberete možnost ingestovat **Nová data (Preview)** , zobrazí se v **podrobnostech o projektu**název vybrané tabulky.
@@ -53,37 +53,37 @@ V tomto článku se dozvíte, jak používat příjem jedním kliknutím pro ryc
 
 1. Na kartě **schéma** :
 
-    * Z rozevíracího seznamu vyberte **typ komprese** > **uncompressed** nebo **gzip**.
-    * Vyberte **Formát dat** z rozevíracího seznamu > **JSON**, **CSV**, **TSV**, **SCSV**, **SOHSV**, **TSVE**nebo **PSV**. 
-        * Když vyberete formát **JSON** , vyberte **úrovně JSON**: 1-10. Úrovně ovlivňují znázornění dat sloupce tabulky. 
-        * Pokud vyberete jiný formát než JSON: zaškrtněte políčko **zahrnout názvy sloupců** , aby se ignoroval řádek záhlaví souboru.    
+    * V rozevírací nabídce vyberte **typ komprese** a pak vyberte možnost **uncompressed** nebo **gzip**.
+    * V rozevírací nabídce vyberte **Formát dat** a pak vyberte **JSON**, **CSV**, **TSV**, **SCSV**, **SOHSV**, **TSVE**nebo **PSV**. 
+        * Když vyberete formát **JSON** , musíte taky vybrat **úrovně JSON**, od 1 do 10. Úrovně ovlivňují znázornění dat sloupce tabulky. 
+        * Pokud vyberete jiný formát než JSON, musíte zaškrtnout políčko **zahrnout názvy sloupců** , chcete-li ignorovat řádek záhlaví souboru.
     * **Mapování názvu** se nastaví automaticky, ale dá se upravit.
-    * Pokud jste vybrali existující tabulku, můžete vybrat tlačítko **mapovat sloupce** a otevřít okno **sloupce mapy** .
+    * Pokud jste vybrali existující tabulku, můžete vybrat **sloupce mapy** a otevřít okno **sloupce mapy** .
 
-    ![schéma formátu CSV pro přijímání zpráv o jednom kliknutím. png](media/ingest-data-one-click/one-click-csv-format.png)
+    ![Schéma formátu CSV pro přijímání jedním kliknutím.](media/ingest-data-one-click/one-click-csv-format.png)
 
-1. V **editoru** **výběrem tlačítka v pravé** straně otevřete Editor. V editoru můžete zobrazit a zkopírovat automatické dotazy vygenerované z vašich vstupů. 
+1. Nad oknem **editoru** otevřete Editor kliknutím na tlačítko **v** . V editoru můžete zobrazit a zkopírovat automatické dotazy vygenerované z vašich vstupů. 
 
 1.  V tabulce: 
-    * Kliknutím pravým tlačítkem myši na nová záhlaví sloupců můžete **změnit datový typ**, **Přejmenovat sloupec**, **Odstranit sloupec**, **Seřadit vzestupně**nebo **Seřadit sestupně**. V existujících sloupcích je k dispozici pouze řazení dat. 
+    * Kliknutím pravým tlačítkem myši na nová záhlaví sloupců můžete **změnit datový typ**, **Přejmenovat sloupec**, **Odstranit sloupec**, **Seřadit vzestupně**nebo **Seřadit sestupně**. U stávajících sloupců je k dispozici pouze řazení dat. 
     * Dvakrát klikněte na název nového sloupce, který chcete upravit.
 
-1. Vyberte **Spustit** ingestování pro vytvoření tabulky, vytvoření mapování a ingestování dat.
+1. Pokud chcete vytvořit tabulku a mapování a zahájit příjem dat, vyberte **Spustit** ingestování.
 
-    ![schéma formátu JSON pro ingestování jedním kliknutím](media/ingest-data-one-click/one-click-json-format.png) 
+    ![Schéma formátu JSON pro přijímání jedním kliknutím.](media/ingest-data-one-click/one-click-json-format.png) 
  
 ## <a name="query-data"></a>Dotazování dat
 
-1. V okně ingestování **dat** budou všechny tři kroky označeny zelenou značkou zaškrtnutí, pokud se přijímání dat úspěšně dokončilo. 
+1. V okně ingestování **dat** budou všechny tři kroky označeny zelenými značkami zaškrtnutí, pokud se příjem dat úspěšně dokončí.
  
-    ![dokončení příjmu dat jedním kliknutím](media/ingest-data-one-click/one-click-data-ingestion-complete.png)
+    ![Přijímání dat jedním kliknutím bylo dokončeno.](media/ingest-data-one-click/one-click-data-ingestion-complete.png)
 
-1. Výběrem **V** otevřete dotaz. Chcete-li upravit dotaz, zkopírujte do webového uživatelského rozhraní.
+1. Kliknutím na tlačítko **v** otevřete dotaz. Chcete-li upravit dotaz, zkopírujte do webového uživatelského rozhraní.
 
-1. Nabídka na pravé straně obsahuje **rychlé dotazy** a **nástroje**. 
+1. Nabídka na pravé straně obsahuje možnosti **rychlých dotazů** a **nástrojů** . 
 
     * **Rychlé dotazy** obsahují odkazy na webové uživatelské rozhraní s příklady dotazů.
-    * **Nástroje** obsahují odkaz na webové uživatelské rozhraní s **příkazy drop** , které umožňují řešit problémy spuštěním příslušného `.drop` příkazu.
+    * **Nástroje** obsahují odkaz na **vyřazení příkazů** ve webovém uživatelském rozhraní, které vám umožní řešit problémy spuštěním příslušných `.drop` příkazů.
 
     > [!TIP]
     > Data mohou být ztracena pomocí `.drop`ch příkazů. Používejte je pečlivě.

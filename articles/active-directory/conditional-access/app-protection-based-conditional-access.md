@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cbb6afb96ccea32aa78d1f587377e5d67e1a5b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381025"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964085"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Vyžadovat zásady ochrany aplikací pro cloudový přístup k aplikaci pomocí podmíněného přístupu (Preview)
 
-Vaši zaměstnanci používají mobilní zařízení pro osobní i pracovní úkoly. I když se rozhodnete, že vaše zaměstnanci můžou být produktivní, budete také chtít zabránit ztrátě dat. Pomocí podmíněného přístupu Azure Active Directory (Azure AD) můžete chránit podniková data tím, že omezíte přístup k vašim cloudovým aplikacím. Nejdřív použijte klientské aplikace se zásadami ochrany aplikací.
+Vaši zaměstnanci používají mobilní zařízení pro osobní a pracovní úkoly. I když se rozhodnete, že vaše zaměstnanci můžou být produktivní, budete také chtít zabránit ztrátě dat. Pomocí podmíněného přístupu Azure Active Directory (Azure AD) můžete chránit podniková data tím, že omezíte přístup k vašim cloudovým aplikacím. Nejdřív použijte klientské aplikace se zásadami ochrany aplikací.
 
 Tento článek vysvětluje, jak nakonfigurovat zásady podmíněného přístupu, které můžou vyžadovat zásady ochrany aplikací před tím, než se udělí přístup k datům.
 
@@ -60,7 +60,7 @@ V tomto článku se předpokládá, že jste obeznámeni s:
 - Základní koncepty [podmíněného přístupu v Azure Active Directory](overview.md).
 - Jak [nakonfigurovat zásadu podmíněného přístupu](app-based-mfa.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit zásadu podmíněného přístupu na základě ochrany aplikací, musíte:
 
@@ -330,7 +330,7 @@ Předtím, než se udělí přístup k podnikovým datům, jsou vyžadovány vš
 
 ### <a name="configuration"></a>Konfigurace
 
-**Krok 1: Konfigurace zásad podmíněného přístupu Azure AD pro Exchange Online**
+**Krok 1: Konfigurace zásad podmíněného přístupu Azure AD pro Exchange Online a SharePoint Online**
 
 Pro zásady podmíněného přístupu v tomto kroku nakonfigurujte následující komponenty:
 
@@ -338,7 +338,7 @@ Pro zásady podmíněného přístupu v tomto kroku nakonfigurujte následujíc�
 
 1. Zadejte název zásady podmíněného přístupu.
 1. V části **přiřazení**v části **Uživatelé a skupiny**vyberte alespoň jednoho uživatele nebo skupinu pro každou zásadu podmíněného přístupu.
-1. V **cloudových aplikacích**vyberte **Office 365 Exchange Online**. 
+1. V **cloudových aplikacích**vyberte **Office 365 Exchange online** a **Office 365 SharePoint Online**. 
 
    ![Podmíněný přístup](./media/app-protection-based-conditional-access/02.png)
 

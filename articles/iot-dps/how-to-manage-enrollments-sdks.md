@@ -1,29 +1,29 @@
 ---
 title: Správa registrace zařízení pomocí Azure DPS SDK
-description: Správa registrace zařízení v IoT Hub Device Provisioning Service pomocí sad SDK služby
+description: Správa registrace zařízení v IoT Hub Device Provisioning Service (DPS) pomocí sad SDK služby
 author: robinsh
 ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 75a24fd6b8cafe03ae8090e6f8bf71a27459c7eb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228803"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975070"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Správa registrace zařízení pomocí sad SDK služby Azure Device Provisioning
 *Registrace zařízení* vytvoří záznam o jednom zařízení nebo skupině zařízení, která se můžou v některých bodech zaregistrovat ve službě Device Provisioning. Záznam zápisu obsahuje počáteční požadovanou konfiguraci pro zařízení v rámci této registrace, včetně požadovaného centra IoT Hub. V tomto článku se dozvíte, jak spravovat registraci zařízení pro službu zřizování programově pomocí sad SDK služby zřizování pro Azure IoT.  Sady SDK jsou dostupné na GitHubu ve stejném úložišti jako sady SDK Azure IoT.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Získejte připojovací řetězec z instance služby Device Provisioning.
 * Získejte artefakty zabezpečení zařízení pro použitý [mechanismus ověřování](concepts-security.md#attestation-mechanism) :
     * [**Čip TPM (Trusted Platform Module)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Jednotlivá registrace: ID registrace a ověřovací klíč čipu TPM z fyzického zařízení nebo simulátoru TPM.
         * Skupina registrace se nevztahuje na ověření identity čipem TPM.
-    * [**X. 509**](/azure/iot-dps/concepts-security):
+    * [**X.509**](/azure/iot-dps/concepts-security):
         * Jednotlivá registrace: [listový certifikát](/azure/iot-dps/concepts-security) z fyzického zařízení nebo emulátoru [kostky](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) sady SDK.
         * Skupina registrací: [certifikační autorita/kořenový certifikát](/azure/iot-dps/concepts-security#root-certificate) nebo [zprostředkující certifikát](/azure/iot-dps/concepts-security#intermediate-certificate), který se používá k vytvoření certifikátu zařízení na fyzickém zařízení.  Dá se taky vygenerovat z emulátoru kostky sady SDK.
 * Přesná volání rozhraní API se můžou lišit v důsledku jazykových rozdílů. Podrobnosti najdete v ukázkách uvedených na GitHubu:

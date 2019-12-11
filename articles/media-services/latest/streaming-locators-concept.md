@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/26/2019
 ms.author: juliako
-ms.openlocfilehash: 6d13ca5b3657f1deac9e6b4218decf8fe57eb1d9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a227c5d0edfb9b49e70452cfcfd08b29ba381857
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113755"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969102"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
@@ -75,6 +75,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 Pokud chcete datový proud HLS šifrovat také pomocí CBCS (FairPlay), použijte Predefined_MultiDrmStreaming.
 
+> [!NOTE]
+> Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
+
 ## <a name="associate-filters-with-streaming-locators"></a>Přidružit filtry ke Lokátorům streamování
 
 Viz [filtry: přidružení ke lokátorům streamování](filters-concept.md#associating-filters-with-streaming-locator).
@@ -87,7 +90,7 @@ Viz téma [filtrování, řazení, stránkování Media Services entit](entities
 
 Chcete-li získat Lokátory streamování na základě přidruženého názvu Assetu, použijte následující operace:
 
-|Jazyk|Rozhraní API|
+|Jazyk|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
 |Rozhraní příkazového řádku|[AZ AMS Asset list-streaming-Lokátory](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|

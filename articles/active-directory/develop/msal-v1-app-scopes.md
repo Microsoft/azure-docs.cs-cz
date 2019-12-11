@@ -1,5 +1,5 @@
 ---
-title: Obory pro aplikaci v 1.0 (Microsoft Authentication Library) | Azure
+title: Obory MSAL pro aplikaci v 1.0 | Azure
 description: Seznamte se s obory pro aplikaci v 1.0 pomocí knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
 author: TylerMSFT
@@ -13,12 +13,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395b5105fdb067977f8414fe5675170032262fe0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0606376c455733ca90f1bff3d0295cbd1a075637
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921394"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963252"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Obory pro tokeny webového rozhraní API přijímající verze 1.0
 
@@ -26,7 +26,7 @@ Oprávnění OAuth2 jsou obory oprávnění, které aplikace Azure Active Direct
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Obory pro vyžádání přístupu ke konkrétním OAuth2 oprávnění aplikace v 1.0
 
-Chcete-li získat tokeny pro konkrétní obory aplikace v 1.0 (například graf Azure AD, který je https:\//graph.windows.net), je nutné vytvořit obory zřetězením požadovaného identifikátoru prostředku s požadovaným oprávněním OAuth2 pro daný prostředek.
+Pokud chcete získat tokeny pro konkrétní obory aplikace v 1.0 (například graf Azure AD, který je https://graph.windows.net), vytvořte obory zřetězením požadovaného identifikátoru prostředku s požadovaným oprávněním OAuth2 pro daný prostředek.
 
 Například pro přístup jménem uživatele a verze 1.0 webového rozhraní API, kde je identifikátor URI ID aplikace `ResourceId`:
 

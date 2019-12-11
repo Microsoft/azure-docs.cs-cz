@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 6004e08f5f30c7f3c63bb87437147db15da5e335
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b0fec44a59bd70c6f1d0236861d93e81aaba033c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016767"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969424"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu pomocí řízení přístupu pomocí Azure Media Services 
 
@@ -61,7 +61,7 @@ Následující tabulka shrnuje nativní platformy/nativní aplikace a prohlíže
 | **Klientskou platformu** | **Nativní podpora DRM** | **Prohlížeč nebo aplikaci** | **Formáty datových proudů** |
 | --- | --- | --- | --- |
 | **Smart TV, operátor STB, OTT STB** |PlayReady primárně, a/nebo Widevine, nebo jiné |Linux, Opera, komponenty WebKit, jiné |Různé formáty |
-| **Zařízení s Windows 10 (PC s Windows, tablety Windows, Windows Phone, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Univerzální platforma pro Windows |POMLČKA (HLS, technologie PlayReady nepodporuje)<br/><br/>DASH, Smooth Streaming (HLS, technologie PlayReady nepodporuje) |
+| **Zařízení s Windows 10 (PC s Windows, tablety Windows, Windows Phone, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Univerzální platforma Windows |POMLČKA (HLS, technologie PlayReady nepodporuje)<br/><br/>DASH, Smooth Streaming (HLS, technologie PlayReady nepodporuje) |
 | **Zařízení s androidem (telefony, tablety, TV)** |Widevine |Chrome/EME |DASH, HLS |
 | **iOS (iPhone, iPad), klienti OS X a Apple TV** |FairPlay |Safari 8 +/ EME |HLS |
 
@@ -131,11 +131,11 @@ Tyto aspekty jsou důležité
 
 Pokud chcete použít veřejný cloud pro naším vlastním doručováním licencí, trvalé a nonpersistent licence mít přímý vliv na náklady na licence doručování. Následující dva případy návrhů slouží pro ilustraci:
 
-* Měsíční předplatné: Použijte trvalou licenci a mapování klíč-to-Asset obsahu 1: n. Například všech dětí filmů, používáme jeden klíč k obsahu pro šifrování. V tomto případě:
+* Měsíční předplatné: použijte trvalou licenci a obsahu klíč assetu mapování 1: m. Například všech dětí filmů, používáme jeden klíč k obsahu pro šifrování. V tomto případě:
 
     Celkový počet licencí požadovaným pro všechny děti filmy/zařízení = 1
 
-* Měsíční předplatné: Použijte netrvalou licenci a mapování 1:1 mezi klíčem obsahu a Assetem. V tomto případě:
+* Měsíční předplatné: nonpersistent licenci a mapování 1: 1 mezi klíče k obsahu a prostředků. V tomto případě:
 
     Celkový počet licencí požadovaným pro všechny děti filmy/zařízení = [čísla filmů sledovali vysílání televizní] x [počet relací]
 
@@ -257,7 +257,7 @@ Použijte následující informace o odstraňování potíží pro pomoc při po
 
 * Členství ve skupině udělit deklarací oprávnění. Ujistěte se, že je v souboru manifestu aplikace Azure AD: 
 
-    "groupMembershipClaims": "All" (výchozí hodnota je null)
+    "groupMembershipClaims": "Vše" (výchozí hodnota je null)
 
 * Nastavte správný typ TokenType při vytváření omezení požadavků.
 
@@ -336,7 +336,7 @@ Registrace a konfigurace aplikace ukazatel ve službě Azure AD, proveďte násl
 
 2. Přidejte nový klíč aplikace prostředků.
 
-3. Aktualizujte soubor manifestu aplikace tak, aby vlastnost groupMembershipClaims měla hodnotu "groupMembershipClaims": "All".
+3. Aktualizujte soubor manifestu aplikace tak, aby vlastnost groupMembershipClaims má hodnotu "groupMembershipClaims": "Vše".
 
 4. V aplikaci Azure AD, která odkazuje na webové aplikace přehrávače, v části **oprávnění k ostatním aplikacím**, přidání aplikace prostředku, který byl přidán v kroku 1. V části **delegovaná oprávnění**vyberte **přístupu [resource_name]** . Tato možnost poskytuje oprávnění webové aplikace k vytvoření přístupové tokeny, které přístup k aplikaci prostředků. Proveďte pro místní a nasazené verze webové aplikace při vývoji v sadě Visual Studio a webové aplikace Azure.
 
@@ -368,13 +368,13 @@ Při použití vlastních služeb STS musí udělali dvě změny:
 
 Existují dva typy bezpečnostních klíčů:
 
-* Symetrický klíč: Stejný klíč se používá ke generování a ověření tokenu JWT.
-* Asymetrický klíč: V certifikátu x509 se pomocí privátního klíče pro šifrování, vygenerování tokenu JWT a s veřejným klíčem k ověření tokenu používá pár klíčů veřejného privátního klíče.
+* Symetrický klíč: stejný klíč se používá ke generování a ověřit token JWT.
+* Asymetrický klíč: pár veřejného a privátního klíče v x X509 certifikát se používá s privátním klíčem k šifrování a generovat token JWT a s veřejným klíčem k ověření tokenu.
 
 > [!NOTE]
 > Pokud používáte rozhraní .NET Framework a jazyka C# jako svou vývojovou platformu, X509 certifikát používaný pro asymetrické bezpečnostní klíč musí mít klíč délku aspoň 2048. Jde o požadavek třídy System.IdentityModel.Tokens.X509AsymmetricSecurityKey v rozhraní .NET Framework. V opačném případě je vyvolána následující výjimka:
 > 
-> IDX10630: Hodnota System. IdentityModel. Tokens. X509AsymmetricSecurityKey pro podpis nemůže být menší než 2048 bitů.
+> IDX10630: Nesmí být menší než "2048" bits "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" pro podepisování.
 
 ## <a name="the-completed-system-and-test"></a>Dokončené systému a testování
 Tato část vás provede následující scénáře v dokončené začátku do konce systému tak, aby základní přehled o chování může mít, než se ponoříte přihlašovací účet:
@@ -408,15 +408,15 @@ Autoři měli účet vytvoření nebo přidání za vás může kontaktovat.
 
 Na následujících snímcích obrazovky zobrazit různé přihlašovací stránky používá jinou doménu účty:
 
-**Vlastní účet domény tenanta Azure AD**: Přizpůsobená přihlašovací stránka vlastní domény tenanta Azure AD.
+**Vlastní služby Azure AD tenant účet domény**: přizpůsobené přihlašovací stránky z vlastní služby Azure AD tenanta domény.
 
 ![Účtu tenanta domény vlastní služby Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
-**Doménový účet Microsoft s čipovou kartou**: Přihlašovací stránka přizpůsobená Microsoftem IT Pomocí dvojúrovňového ověřování.
+**Microsoft doménový účet s čipovou kartu**: přihlašovací stránky přizpůsobený microsoftem podnikové IT s dvoufaktorovým ověřováním.
 
 ![Účtu tenanta domény vlastní služby Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
-**Účet Microsoft**: Přihlašovací stránka účet Microsoft pro příjemce.
+**Účet Microsoft**: přihlašovací stránku účtu Microsoft pro zákazníky.
 
 ![Účtu tenanta domény vlastní služby Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 
@@ -463,15 +463,20 @@ Následující snímek obrazovky ukazuje scénář, který se používá asymetr
 Ověřování uživatelů v obou předchozích případech zůstává stejný. To se provádí prostřednictvím služby Azure AD. Jediným rozdílem je, že jsou vydané tokeny Jwt vlastních služeb STS místo Azure AD. Když nakonfigurujete dynamické šifrování CENC ochranu, licenční omezení doručování služby určuje typ tokenů JWT symetrický nebo asymetrickým klíčem.
 
 ## <a name="summary"></a>Souhrn
+
 Tento dokument popsány CENC s více nativní DRM a řízením přístupu prostřednictvím ověřování pomocí tokenu, návrhem a její implementaci pomocí Azure Media Services a Media Player.
 
 * Referenční návrh byl vystaven, který obsahuje všechny potřebné komponenty v subsystému DRM/CENC.
 * Referenční implementace se zobrazí v Azure Media Services a Media Player.
 * Některá témata, která je přímo součástí návrhu a implementace byly také popsány.
 
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
+
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
  

@@ -1,5 +1,5 @@
 ---
-title: Webová aplikace, která se podepisuje uživateli (přehled) – Microsoft Identity Platform
+title: Přihlaste se k uživatelům z webové aplikace – Microsoft Identity Platform | Azure
 description: Naučte se vytvářet webové aplikace, které se přihlásí uživatelům (přehled).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,24 +15,24 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 316ab055a077b251e88421ab26997f8556a6e31f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 10a53f88a97cdba8626c9d6c421093e4ec327e19
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482487"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961603"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scénář: webová aplikace, která se přihlásí uživatelům
 
 Seznamte se s tím, co potřebujete k vytvoření webové aplikace, která používá Microsoft Identity Platform k přihlašování uživatelů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>Začínáme
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Pokud chcete vytvořit první přenosnou webovou aplikaci (ASP.NET Core), která se přihlašuje uživatelům, postupujte podle tohoto rychlého startu:
 
@@ -83,7 +83,7 @@ V druhé fázi můžete aplikaci povolit, aby vyvolala webová rozhraní API jm�
 
 ## <a name="next-steps"></a>Další kroky
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)

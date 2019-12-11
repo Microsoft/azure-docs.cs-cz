@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 481e2ab63263f77b513e6443479827cc9e168bbb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f1bb2731f5f14b80ca46f4fb28b9b9cb4284c4d7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926360"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972366"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions triggerů HTTP a vazeb
 
@@ -679,6 +679,24 @@ Ve výchozím nastavení jsou všechny trasy funkcí s předponou *rozhraní API
     }
 }
 ```
+
+### <a name="using-route-parameters"></a>Použití parametrů směrování
+
+Parametry směrování definované modelem `route` funkce jsou k dispozici pro každou vazbu. Například pokud máte trasu definovanou jako `"route": "products/{id}"` pak může vazba úložiště tabulky použít hodnotu parametru `{id}` v konfiguraci vazby.
+
+Následující konfigurace ukazuje, jak se parametr `{id}` předává do `rowKey`vazby.
+
+```json
+{
+    "type": "table",
+    "direction": "in",
+    "name": "product",
+    "partitionKey": "products",
+    "tableName": "products",
+    "rowKey": "{id}"
+}
+```
+
 
 ### <a name="working-with-client-identities"></a>Práce s identitami klientů
 

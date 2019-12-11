@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Střední videa a Přepisy v .NET – Content Moderator'
+title: 'Kurz: Moderování videí a přepisy v technologii .NET – Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: Tento kurz vám pomůže pochopit, jak vytvořit kompletní řešení pro moderování videa a přepisu pomocí moderování a vytváření revizí na základě počítačů.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564277"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976974"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
-V tomto kurzu se naučíte, jak vytvořit kompletní řešení pro moderování videa a přepisu pomocí moderování a vytváření revizí na základě počítačů.
+V tomto kurzu se naučíte, jak vytvořit kompletní řešení pro moderování videa a přepisu s integrací pro počítače s asistencí a kontrolou recenze pro člověka.
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -32,7 +32,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Moderování přepisu pomocí služby moderování textu
 > - Přidání moderovaného přepisu do kontroly videa
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Zaregistrujte se na webu [Nástroje pro kontrolu Content moderator](https://contentmoderator.cognitive.microsoft.com/) a vytvořte vlastní značky. Pokud potřebujete s tímto krokem pomáhat, přečtěte si téma [použití značek](Review-Tool-User-Guide/tags.md) .
 
@@ -40,9 +40,9 @@ V tomto kurzu získáte informace o následujících postupech:
 - Pokud chcete spustit ukázkovou aplikaci, potřebujete účet Azure, Azure Media Services prostředek, prostředek Azure Content Moderator a přihlašovací údaje Azure Active Directory. Pokyny k získání těchto prostředků najdete v příručce k [rozhraní API pro moderování videa](video-moderation-api.md) .
 - Stáhněte si [konzolovou aplikaci pro kontrolu videa](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) z GitHubu.
 
-## <a name="enter-credentials"></a>Zadat pověření
+## <a name="enter-credentials"></a>Zadat přihlašovací údaje
 
-Upravte soubor a přidejte název tenanta služby Active Directory, koncové body služeb a klíče předplatného, `#####`které uvádí. `App.config` Potřebujete tyto informace:
+Upravte soubor `App.config` a přidejte název tenanta služby Active Directory, koncové body služby a klíče předplatného, které jsou uvedené `#####`. Potřebujete tyto informace:
 
 |Klíč|Popis|
 |-|-|
@@ -82,7 +82,7 @@ Třída `Program` v souboru `Program.cs` je hlavní vstupní bod do aplikace mod
 Pokud nejsou přítomné žádné argumenty příkazového řádku, `Main()` zavolá metodu `GetUserInputs()`. Tato metoda vyzve uživatele, aby zadal cestu k jedinému souboru videa a určil, jestli se má vygenerovat přepis textu.
 
 > [!NOTE]
-> Konzolová aplikace používá [rozhraní API služby Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů z nahrané zvukové stopy videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
+> Konzolová aplikace používá [rozhraní Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
 
 ### <a name="initialize-and-processvideo-methods"></a>Metody Initialize a ProcessVideo
 
@@ -223,7 +223,7 @@ Výsledek úlohy moderování videa (viz [rychlý start moderování videa](vide
 Přepis zvuku z videa se vytvoří také při nastavení příznaku `GenerateVTT`.
 
 > [!NOTE]
-> Konzolová aplikace používá [rozhraní API služby Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů z nahrané zvukové stopy videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
+> Konzolová aplikace používá [rozhraní Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
 
 ## <a name="create-a-human-review"></a>Vytvoření lidské recenze
 
@@ -236,7 +236,7 @@ Proces moderování vrátí seznam klíčových snímků z videa společně s p�
 > [!NOTE]
 > Konzolová aplikace použije knihovnu [FFmpeg](https://ffmpeg.org/) ke generování miniatur. Tyto miniatury (obrázky) odpovídají časovým razítkům rámce ve výstupu moderování videa.
 
-|Úloha|Metody|File|
+|Úkol|Metody|Soubor|
 |-|-|-|
 |Extrakce klíčových snímků z videa a vytvoření miniatur z těchto snímků|`CreateVideoFrames()`<br>`GenerateFrameImages()`|`FrameGeneratorServices.cs`|
 |Kontrola přepisu textu, pokud je k dispozici, pro účely vyhledání obsahu pro dospělé nebo pikantního obsahu|`GenerateTextScreenProfanity()`| `VideoReviewAPI.cs`|
@@ -252,7 +252,7 @@ Dosud se kód uvedený v tomto kurzu zaměřoval na vizuální obsah. Kontrola m
 
 Aplikace provádí následující úlohy:
 
-|Úloha|Metody|File|
+|Úkol|Metody|Soubor|
 |-|-|-|
 |Určení, jestli se mají generovat přepisy textu|`Main()`<br>`GetUserInputs()`|`Program.cs`|
 |Pokud ano, odeslání úlohy přepisu jako součásti moderování|`ConfigureTranscriptTask()`|`VideoModerator.cs`|
@@ -310,7 +310,7 @@ Dále zkontrolujeme analyzované textové titulky pomocí rozhraní API pro text
 > [!NOTE]
 > Klíč služby Content Moderator má omezenou rychlost v jednotkách RPS (žádosti za sekundu). Když tento limit překročíte, sada SDK vyvolá výjimku s kódem chyby 429.
 >
-> Klíč úrovně Free má limit nastavený na 1 RPS.
+> Klíč úrovně Free má limit nastavený na jeden požadavek za vteřinu.
 
 [!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
@@ -357,9 +357,9 @@ Video review successfully completed...
 Total Elapsed Time: 00:05:56.8420355
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu nastavíte aplikaci, která bude střední obsah&mdash;videa, včetně obsahu&mdash;přepisu, a v nástroji pro revize se vytvoří recenze. Další informace najdete v podrobnostech o moderování videa.
+V tomto kurzu nastavíte aplikaci, která bude střední obsah videa&mdash;včetně přepisu obsahu&mdash;a v nástroji pro revize se vytvoří recenze. Další informace najdete v podrobnostech o moderování videa.
 
 > [!div class="nextstepaction"]
 > [Moderování videa](./video-moderation-human-review.md)

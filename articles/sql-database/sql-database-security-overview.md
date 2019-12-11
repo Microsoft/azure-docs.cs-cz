@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: b318d4b5076ff24612d5b5ce0ba619f0b38ac280
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483835"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997322"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -46,7 +46,7 @@ Pravidla brány firewall protokolu IP udělují přístup k databázím na zákl
 > [!IMPORTANT]
 > Správa databází a databázových serverů v Azure je řízena přiřazeními rolí uživatelského účtu portálu. Další informace o tomto článku najdete v tématu [řízení přístupu na základě role v Azure Portal](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Ověření
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database podporuje dva typy ověřování:
 
@@ -85,7 +85,7 @@ SQL Database zabezpečení zákaznických dat zajišťuje možnosti auditování
 
 SQL Database auditování sleduje aktivity databáze a pomáhá udržet dodržování standardů zabezpečení tím, že zaznamenává databázové události do protokolu auditu ve vlastnictví účtu Azure Storage vlastněných zákazníkem. Auditování umožňuje uživatelům sledovat probíhající databázové aktivity a analyzovat a prozkoumat historické aktivity a identifikovat potenciální hrozby nebo podezření na zneužití a narušení zabezpečení. Další informace najdete v tématu Začínáme s [auditováním SQL Database](sql-database-auditing.md).  
 
-### <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
+### <a name="advanced-threat-protection"></a>Advanced Threat Protection
 
 Rozšířená ochrana před internetovými útoky analyzuje protokoly SQL Server pro detekci neobvyklého chování a potenciálně škodlivých pokusů o přístup k databázím nebo jejich zneužití. Výstrahy se vytvářejí pro podezřelé aktivity, jako je například injektáže SQL, potenciální defiltrace dat a útoky hrubou silou nebo pro anomálie ve vzorech přístupu, aby bylo možné zachytit eskalace oprávnění a porušení přihlašovacích údajů. Výstrahy se zobrazují z [Azure Security Center](https://azure.microsoft.com/services/security-center/), kde jsou uvedeny podrobnosti o podezřelých aktivitách a doporučení pro další šetření, která jsou k dispozici, a s akcemi pro zmírnění hrozby. Rozšířená ochrana před internetovými útoky se dá pro jednotlivé servery povolit za další poplatek. Další informace najdete v tématu [Začínáme s SQL Database rozšířené ochrany před internetovými útoky](sql-database-threat-detection.md).
 
@@ -138,11 +138,11 @@ SQL Database dynamické maskování dat omezuje vystavení citlivých dat jejich
 
 ### <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 
-Klasifikace & Discovery dat (aktuálně ve verzi Preview) poskytuje pokročilé funkce, které jsou integrované do Azure SQL Database pro zjišťování, klasifikaci, označování a ochranu citlivých dat ve vašich databázích. Vyhledávání a klasifikace důležitých citlivých dat (podniková/finanční, zdravotní péče, osobní údaje atd.) může hrát pivotovou roli ve vaší organizaci stature Information Protection. Může sloužit jako infrastruktura pro:
+Klasifikace & Discovery dat (aktuálně ve verzi Preview) poskytuje pokročilé funkce, které jsou integrované do Azure SQL Database pro zjišťování, klasifikaci, označování a ochranu citlivých dat ve vašich databázích. Vyhledávání a klasifikace důležitých citlivých dat (podniková/finanční, zdravotní péče, osobní údaje atd.) může hrát pivotovou roli ve vaší organizaci stature Information Protection. Může sloužit jako infrastruktura na:
 
 - Různé scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklé přístup k citlivým datům.
 - Řízení přístupu a posílení zabezpečení databází obsahujících vysoce citlivá data.
-- Pomoc se splněním standardů ochrany osobních údajů a požadavků na dodržování legislativních předpisů.
+- podporu dodržování předpisů v oblasti ochrany osobních údajů a dalších regulací;
 
 Další informace najdete v tématu [Začínáme s klasifikací data discovery &](sql-database-data-discovery-and-classification.md).
 

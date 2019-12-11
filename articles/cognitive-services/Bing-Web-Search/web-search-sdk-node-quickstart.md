@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 79f0630c65aa438ac5d831b03842cc74b609cd3b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 059862255ca2cf0ce435496bf22d866a37c8be71
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132740"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977161"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Node.js
 
@@ -23,15 +23,14 @@ Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhled�
 
 Chcete se rovnou podívat na kód? [Ukázky sady SDK Bingu pro vyhledávání na webu pro Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) jsou k dispozici na GitHubu.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější
 * Klíč předplatného  
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
@@ -59,7 +58,7 @@ Nejprve si pro svůj projekt Node.js nastavíme vývojové prostředí.
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Vytvoření projektu a deklarace požadovaných modulů
 
-V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte ve stejném adresáři, jako je soubor `package.json`, nový projekt Node.js. Příklad: `sample.js`.
+V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte ve stejném adresáři, jako je soubor `package.json`, nový projekt Node.js. Například: `sample.js`.
 
 Teď zkopírujte tento kód do svého projektu. Načte moduly nainstalované v předchozí části.
 
@@ -70,7 +69,7 @@ const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
 
 ## <a name="instantiate-the-client"></a>Vytvoření instance klienta
 
-Tento kód vytvoří instanci klienta s použitím modulu `azure-cognitiveservices-websearch`. Než budete pokračovat, ujistěte se, že jste zadali platný klíč předplatného k účtu Azure.
+Tento kód vytvoří instanci klienta s použitím modulu `azure-cognitiveservices-websearch`. Než budete pokračovat, ujistěte se, že jste zadali platný klíč předplatného účtu Azure.
 
 ```javascript
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
@@ -109,6 +108,6 @@ Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatn
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Referenční informace k sadě Azure Node SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)

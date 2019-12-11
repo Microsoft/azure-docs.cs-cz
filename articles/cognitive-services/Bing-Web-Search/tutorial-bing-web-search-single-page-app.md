@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření webové jednostránkové aplikace – rozhraní API webové vyhledávání Bingu'
+title: 'Kurz: Vytvoření jednostránkové webové aplikace – rozhraní API Bingu pro vyhledávání na webu'
 titleSuffix: Azure Cognitive Services
 description: Na této jednostránkové aplikaci můžete vidět, jak se dá použít rozhraní API Bingu pro vyhledávání na webu k načtení, analýze a zobrazení relevantních výsledků vyhledávání v jednostránkové aplikaci.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390045"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977246"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API webové vyhledávání Bingu
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání na webu
 
 Na této jednostránkové aplikaci můžete vidět, jak načíst, analyzovat a zobrazit výsledky vyhledávání z rozhraní API Bingu pro vyhledávání na webu. V tomto kurzu se používají standardní jazyk HTML a šablony stylů CSS a kurz se zaměřuje na kód jazyka JavaScript. Jazyk HTML, šablony stylů CSS a soubory JS jsou k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) s pokyny pro rychlý start.
 
@@ -32,7 +32,7 @@ Tato ukázková aplikace může provádět následující akce:
 
 Abyste mohli použít tuto aplikaci, potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu pro vyhledávání. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete potřebovat ke spuštění aplikace:
 
@@ -89,7 +89,7 @@ Formulář HTML obsahuje možnosti, které se mapují k parametrům dotazu v [ro
 | `what` | Zaškrtávací políčka pro upřednostnění konkrétních typů výsledků. Když například upřednostníte obrázky, zvýší se hodnocení obrázků ve výsledcích hledání. |
 | `when` | Rozevírací nabídka, která umožní uživateli omezit výsledky vyhledávání na dnešek, tento týden nebo tento měsíc |
 | `safe` | Zaškrtávací políčko pro povolení funkce Bezpečné hledání v Bingu, která filtruje obsah pro dospělé |
-| `count` | Skryté pole. Počet výsledků hledání, který se má vrátit u jednotlivých žádostí. Pokud chcete zobrazit méně nebo více výsledků na stránku, můžete tuto hodnotu změnit. |
+| `count` | Skryté pole. Počet výsledků vyhledávání, které se mají vrátit pro jednotlivé požadavky. Pokud chcete zobrazit méně nebo více výsledků na stránku, můžete tuto hodnotu změnit. |
 | `offset` | Skryté pole. Odsazení prvního výsledku hledání v žádosti, které slouží ke stránkování. S každou novou žádostí se hodnota resetuje na `0`. |
 
 > [!NOTE]
@@ -287,11 +287,11 @@ function handleBingResponse() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-| Fáze | Potenciální chyby | Čím se zpracují |
+| Stage | Potenciální chyby | Čím se zpracuje |
 |-------|--------------------|------------|
 | Vytváření objektu žádosti | Neplatná adresa URL | Blok `try` / `catch` |
 | Provedení žádosti | Chyby sítě, přerušená připojení | Obslužné rutiny událostí `error` a `abort` |
-| Provedení vyhledávání | Neplatná žádost, neplatný JSON, omezení rychlosti | Testy v obslužné rutině události `load` |
+| Provedení vyhledávání | Neplatný požadavek, neplatný JSON, omezení rychlosti | Testy v obslužné rutině události `load` |
 
 Chyby se zpracují voláním `renderErrorMessage()`. Pokud odpověď úspěšně projde všemi testy chyb, volá se `renderSearchResults()` k zobrazení výsledků hledání.
 
@@ -435,12 +435,12 @@ Tady je příklad zobrazení obrázků v ukázkové aplikaci:
 
 Odpovědi z rozhraní API Bingu pro vyhledávání můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla s každou následující žádostí posílat zpátky do rozhraní API. Pokud používá vaše aplikace více než jedno rozhraní API Bingu pro vyhledávání na webu, je nutné poslat s každou žádostí napříč službami stejné ID klienta.
 
-Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna vyhledávání určitého uživatele. Zaprvé to umožňuje, aby vyhledávací web Bing použil při vyhledávání minulý kontext a našel výsledky, které lépe vyhoví žádosti. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, může pozdější vyhledání „uzlů“ přednostně vrátit informace o uzlech používaných při plavbě lodí. Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každou žádostí zajistí, že uživatelé vybraní k tomu, aby danou funkci viděli, ji uvidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání zdánlivě náhodně někdy vidět a jindy ne.
+Poskytnutí hlavičky `X-MSEdge-ClientID` umožňuje rozhraním API Bingu spojit si všechna vyhledávání určitého uživatele. Zaprvé to umožňuje, aby vyhledávací web Bing použil při vyhledávání minulý kontext a našel výsledky, které lépe vyhoví žádosti. Pokud uživatel v minulosti vyhledával třeba výrazy týkající se lodí, pozdější vyhledání „uzlů“ může přednostně vrátit informace o uzlech používaných při plavbě lodí. Za druhé může Bing náhodně vybírat uživatele k vyzkoušení nových funkcí, než budou všeobecně dostupné. Poskytnutí stejného ID klienta s každou žádostí zajistí, že uživatelé vybraní k tomu, aby danou funkci viděli, ji uvidí vždy. Bez ID klienta může uživatel funkci ve svých výsledcích hledání někdy vidět a jindy ne, zdánlivě náhodně.
 
-Zásady zabezpečení prohlížeče, jako je například sdílení prostředků mezi zdroji (CORS), můžou zabránit ukázkové aplikaci v přístupu k hlavičce `X-MSEdge-ClientID`. K tomuto omezení dochází, když má odpověď na vyhledávání jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
+Zásady zabezpečení prohlížeče, jako je například sdílení prostředků mezi zdroji (CORS), můžou zabránit ukázkové aplikaci v přístupu k hlavičce `X-MSEdge-ClientID`. K tomuto omezení dochází, když odpověď na vyhledávání má jiný zdroj než stránka, která o ni požádala. V produkčním prostředí je potřeba tyto zásady vyřešit hostováním skriptu na straně serveru, který provádí volání rozhraní API ve stejné doméně jako webová stránka. Protože tento skript má stejný původ jako webová stránka, hlavička `X-MSEdge-ClientID` je pak pro JavaScript dostupná.
 
 > [!NOTE]
-> Při tvorbě webové aplikace byste měli provádět žádost na straně serveru tak jako tak. Jinak musí být klíč předplatného rozhraní API Bingu pro vyhledávání součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i žádosti provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
+> Při tvorbě webové aplikace byste měli provádět žádost na straně serveru tak jako tak. Jinak musí být klíč předplatného rozhraní API Bingu pro vyhledávání součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
 Pro účely vývoje můžete žádost provést prostřednictvím proxy serveru CORS. Odpověď z takového typu proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
 
@@ -464,7 +464,7 @@ cors-proxy-server
 
 Při používání ukázkové aplikace nechejte otevřené příkazové okno. Pokud okno zavřete, proxy server se zastaví. V rozbalitelné části hlaviček protokolu HTTP pod výsledky hledání byste měli vidět hlavičku `X-MSEdge-ClientID`. Ověřte, že je u všech žádostí stejná.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Referenční informace k rozhraní API Bingu pro vyhledávání na webu verze 7](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

@@ -1,7 +1,7 @@
 ---
 title: Modely školicích řetězců pro hloubkové učení
 titleSuffix: Azure Machine Learning
-description: Naučte se spouštět PyTorch školicí skripty v podnikovém měřítku pomocí třídy Estimator zřetězení pro Azure Machine Learning.  Ukázkový skript klasifikuje ručně psané obrázky číslic, aby se vytvořila neuronové síť s hloubkovým učením pomocí knihovny Pythonu pro zřetězení, která běží nad numpy.
+description: Naučte se spouštět PyTorch školicí skripty v podnikovém měřítku pomocí třídy Estimator chainer pro Azure Machine Learning.  Ukázkový skript klasifikuje ručně psané obrázky číslic, aby se vytvořila neuronové síť s hloubkovým učením pomocí knihovny Pythonu pro zřetězení, která běží nad numpy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f384a6a870d891bbaf6fa20a896b0251e62b8d4f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40c1b7e1e4089db3e95b0da810a961b7fd202aac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224984"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969169"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Škálujte a Registrujte modely řetězení ve velkém měřítku pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak spustit školicí skripty pro [řetězení](https://chainer.org/) v podnikovém měřítku pomocí třídy [Estimator zřetězení](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) pro Azure Machine Learning. Ukázkový skript pro školení v tomto článku používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí hluboké neuronové sítě (DNN) vytvořené pomocí knihovny Pythonu v chainu, která běží na [numpy](https://www.numpy.org/).
+V tomto článku se dozvíte, jak spustit školicí skripty pro [řetězení](https://chainer.org/) v podnikovém měřítku pomocí třídy Azure Machine Learning [chainer Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) . Ukázkový skript pro školení v tomto článku používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí hluboké neuronové sítě (DNN) vytvořené pomocí knihovny Pythonu v chainu, která běží na [numpy](https://www.numpy.org/).
 
 Bez ohledu na to, jestli provedete výukový model služby hloubkového učení z provozu nebo přenášíte existující model do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh s využitím elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat a monitorovat modely produkčního prostředí. 
 
@@ -28,7 +28,7 @@ Přečtěte si další informace o službě [hloubkového učení vs Machine Lea
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Spusťte tento kód v jednom z těchto prostředí:
 
@@ -83,7 +83,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 V tomto kurzu se školicí skript **chainer_mnist. py** pro vás už poskytuje. V praxi byste měli být schopni vzít libovolný vlastní školicí skript a spustit ho s Azure ML bez nutnosti upravovat kód.
 
-Pokud chcete používat funkce sledování a metrik Azure ML, přidejte do školicího skriptu malý objem kódu Azure ML.  Školicí skript **chainer_mnist. py** ukazuje, jak protokolovat některé metriky do Azure ml Run pomocí objektu `Run` v rámci skriptu.
+Pokud chcete používat funkce pro sledování a metriky Azure ML, přidejte do školicího skriptu malý objem kódu Azure ML.  Školicí skript **chainer_mnist. py** ukazuje, jak protokolovat některé metriky do Azure ml Run pomocí objektu `Run` v rámci skriptu.
 
 Zadaný školicí skript používá ukázková data z funkce chainer `datasets.mnist.get_mnist`.  Pro vlastní data možná budete muset použít kroky, jako je například [nahrát datovou sadu a skripty](how-to-train-keras.md#data-upload) k zpřístupnění dat během školení.
 
@@ -97,7 +97,7 @@ shutil.copy('chainer_mnist.py', project_folder)
 
 ### <a name="create-a-deep-learning-experiment"></a>Vytvoření experimentu s hloubkovým učením
 
-Vytvořte experiment. V tomto příkladu vytvořte experiment nazvaný "chainer-mnist ručně zapsaných".
+Vytvoření experimentu V tomto příkladu vytvořte experiment nazvaný "chainer-mnist ručně zapsaných".
 
 ```
 from azureml.core import Experiment
@@ -212,8 +212,8 @@ for f in run.get_file_names():
 
 V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí zřetězení na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
 
-* [Ladit parametry](how-to-tune-hyperparameters.md)
+* [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
 
-* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
+* [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
 
 * [Podívejte se na naši referenční architekturu distribuovaného školení pro hloubkové učení v Azure.](/azure/architecture/reference-architectures/ai/training-deep-learning)

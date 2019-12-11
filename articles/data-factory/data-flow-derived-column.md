@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: ce774868acc281f769e7f2991472e7d2a5da9739
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930397"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972247"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozená transformace sloupce v toku mapování dat
 
@@ -27,6 +27,16 @@ Pokud chcete přepsat existující sloupec, vyberte ho přes rozevírací seznam
 Chcete-li přidat další odvozené sloupce, najeďte myší na existující odvozený sloupec a klikněte na ikonu se symbolem plus. Vyberte možnost **Přidat sloupec** nebo **Přidat vzor sloupce**. Vzorce sloupce mohou být užitečné, pokud jsou názvy sloupců z vašich zdrojů proměnné. Další informace najdete v tématu [vzory sloupců](concepts-data-flow-column-pattern.md).
 
 ![Nový odvozený výběr sloupce](media/data-flow/columnpattern.png "Nový odvozený výběr sloupce")
+
+## <a name="build-schemas-in-output-schema-pane"></a>Schémata sestavení v podokně výstupní schéma
+
+Sloupce, které upravujete a přidáváte do schématu, jsou uvedeny v podokně výstupní schéma. Tady můžete interaktivně vytvářet jednoduché a komplexní datové struktury. Chcete-li přidat další pole, vyberte možnost **Přidat sloupec**. Chcete-li vytvořit hierarchie, vyberte možnost **Přidat dílčí sloupec**.
+
+![Přidat Podsloupec](media/data-flow/addsubcolumn.png "Přidat Podsloupec")
+
+Další informace o zpracování složitých typů v toku dat najdete v tématu [zpracování JSON v toku dat mapování](concepts-data-flow-json.md) .
+
+![Přidat složitý sloupec](media/data-flow/complexcolumn.png "Přidání sloupců")
 
 ## <a name="data-flow-script"></a>Skript toku dat
 

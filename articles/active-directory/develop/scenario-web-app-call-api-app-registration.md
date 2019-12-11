@@ -1,6 +1,6 @@
 ---
-title: Webové aplikace, že volání webových rozhraní API (registrace aplikace) – platforma identit Microsoft
-description: Zjistěte, jak sestavit webovou aplikaci, že volání webových rozhraní API (registrace aplikace)
+title: Registrace webové aplikace, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+description: Zjistěte, jak zaregistrovat webovou aplikaci, která volá webová rozhraní API.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5becdc287f7cad28aa6c7c07ebc107586e9a2b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 784de823e94aace6f91222c19c1ff8130c3f995f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075187"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962929"
 ---
-# <a name="web-app-that-calls-web-apis---app-registration"></a>Webové aplikace, že volání webového rozhraní API – registrace aplikace
+# <a name="web-app-that-calls-web-apis---app-registration"></a>Webová aplikace, která volá webová rozhraní API – registrace aplikace
 
-Webové aplikace volání webového rozhraní API má stejné registraci jako webovou aplikaci přihlášení uživatele. Proto budete muset postupovat podle pokynů v [webová aplikace, které přihlásí uživatelé – registrace aplikace](scenario-web-app-sign-user-app-registration.md)
+Webová aplikace, která volá webová rozhraní API, má stejnou registraci jako přihlašování uživatelů webové aplikace. Proto budete muset postupovat podle pokynů ve [webové aplikaci, které přihlásí uživatele – registrace aplikace](scenario-web-app-sign-user-app-registration.md) .
 
-Ale od webové aplikace teď volá webové rozhraní API, stane se aplikace důvěrnému klientovi. To je důvod, proč je hodně navíc je nutná registrace: je potřeba sdílet s platformou identity Microsoft tajné kódy (přihlašovací údaje klienta).
+Vzhledem k tomu, že webová aplikace teď volá webová rozhraní API, se z nich stala důvěrná klientská aplikace. To je důvod, proč je vyžadována bitová kopie dodatečné registrace: musí sdílet tajné klíče (pověření klienta) s platformou Microsoft identity.
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
-## <a name="api-permissions"></a>Oprávnění k rozhraní API
+## <a name="api-permissions"></a>Oprávnění rozhraní API
 
-Webové aplikace volat rozhraní API jménem přihlášeného uživatele. Budou muset požadovat delegovaná oprávnění. Podrobnosti najdete v tématu [přidat oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
+Webové aplikace volají rozhraní API jménem přihlášeného uživatele. Potřebují požádat o delegovaná oprávnění. Podrobnosti najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Konfigurace kódu aplikace](scenario-web-app-call-api-app-configuration.md)

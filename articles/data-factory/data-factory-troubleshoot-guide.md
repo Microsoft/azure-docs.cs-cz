@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748354"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972332"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Řešení potíží s Azure Data Factory
 
@@ -43,9 +43,9 @@ V případě problémů s konektorem, například Chyba při použití aktivity 
 
 - **Doporučení**: zadejte cestu k poznámkovému bloku v aktivitě datacihly.
 
-<br/>    
-              
-- **Zpráva**: `Cluster   ... does not exist.`
+<br/>  
+
+- **Zpráva**: `Cluster... does not exist.`
 
 - **Příčina**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
@@ -53,7 +53,7 @@ V případě problémů s konektorem, například Chyba při použití aktivity 
 
 <br/>  
 
-- **Zpráva**: `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+- **Zpráva**: `Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
 
 - **Příčina**: `Bad authoring.`
 
@@ -334,56 +334,56 @@ Následující tabulka platí pro U-SQL.
 
 ### <a name="error-code--4121"></a>Kód chyby: 4121
 
-- **Zpráva**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Zpráva**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: vypršela platnost přihlašovacích údajů použitých pro přístup ke službě Azure ml.
+- **Příčina**: vypršela platnost přihlašovacích údajů použitých pro přístup k Azure Machine Learning.
 
 - **Doporučení**: Ověřte, že přihlašovací údaje jsou platné, a zkuste to znovu.
 
 
 ### <a name="error-code--4122"></a>Kód chyby: 4122
 
-- **Zpráva**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Zpráva**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: přihlašovací údaje zadané v propojené službě Azure ml jsou neplatné nebo nemají oprávnění k této operaci.
+- **Příčina**: přihlašovací údaje zadané v propojené službě Azure Machine Learning jsou neplatné nebo nemají oprávnění k této operaci.
 
-- **Doporučení**: Ověřte, že přihlašovací údaje v propojené službě jsou platné a mají oprávnění pro přístup ke službě Azure ml.
+- **Doporučení**: Ověřte, že přihlašovací údaje v propojené službě jsou platné a mají oprávnění pro přístup k Azure Machine Learning.
 
 
 ### <a name="error-code--4123"></a>Kód chyby: 4123
 
-- **Zpráva**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Zpráva**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+- **Příčina**: vlastnosti aktivity, například pipelineParameters, jsou pro kanál Azure ml neplatné.
 
 - **Doporučení**: Zkontrolujte hodnoty vlastností aktivity, aby odpovídaly očekávané datové části publikovaného kanálu Azure ml zadaného v propojené službě.
 
 
 ### <a name="error-code--4124"></a>Kód chyby: 4124
 
-- **Zpráva**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Zpráva**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **Příčina**: publikovaný koncový bod kanálu Azure ml neexistuje.
 
-- **Doporučení**: Ověřte, že publikovaný koncový bod kanálu Azure ml zadaný v propojené službě existují ve službě Azure ml.
+- **Doporučení**: Ověřte, že v Azure Machine Learning existuje publikovaný koncový bod kanálu Azure Machine Learning, který je zadaný v propojené službě.
 
 
 ### <a name="error-code--4125"></a>Kód chyby: 4125
 
-- **Zpráva**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Zpráva**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Příčina**: Chyba serveru ve službě Azure ml.
+- **Příčina**: Chyba serveru na Azure Machine Learning.
 
-- **Doporučení**: zkuste to prosím znovu později. Pokud problém trvá, obraťte se na tým služby Azure ML.
+- **Doporučení**: zkuste to prosím znovu později. Pokud problém trvá, obraťte se na tým Azure Machine Learning.
 
 
 ### <a name="error-code--4126"></a>Kód chyby: 4126
 
-- **Zpráva**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
+- **Zpráva**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
 - **Příčina**: selhalo spuštění kanálu Azure ml.
 
-- **Doporučení**: Zkontrolujte prosím službu Azure ml, kde najdete další protokoly chyb a opravte kanál ml.
+- **Doporučení**: Azure Machine Learning pro další protokoly chyb prosím vraťte se změnami a opravte kanál ml.
 
 
 
@@ -522,7 +522,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 ### <a name="error-code--2507"></a>Kód chyby: 2507
 
-- **Zpráva**: `The folder path does not exist or is empty: ....`
+- **Zpráva**: `The folder path does not exist or is empty: ...`
 
 - **Příčina**: v zadaném umístění nejsou žádné soubory v účtu úložiště.
 
@@ -673,7 +673,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 <br>
 
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou této žádosti o odeslání žádosti o úlohu, protože služba Templeton je zaneprázdněná s příliš velkým počtem žádostí o odeslání úlohy nebo kořenem fronty. joblauncher už má 500 aplikací, nemůže přijmout odeslání. To znamená, že do HDInsight se současně odesílají příliš mnoho úloh.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou této žádosti o odeslání žádosti o úlohu, protože služba Templeton je zaneprázdněná s příliš velkým počtem požadavků na odeslání úlohy nebo kořen fronty. joblauncher už má 500 aplikací, nemůže přijmout odeslání aplikace, to znamená, že se do HDInsight odesílá příliš mnoho úloh současně.
 
 - **Doporučení**: Zvažte omezení počtu souběžných úloh odeslaných do HDInsight. Pokud jsou úlohy odesílány stejnou aktivitou, přečtěte si téma Data Factory souběžnosti aktivity. Změna aktivačních událostí, aby souběžné běhy byly rozloženy v průběhu času. V dokumentaci k HDInsight si můžete upravit Templeton. parallellism. job. Submit, jak naznačuje chyba.
 
@@ -977,7 +977,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Příčina**: Vytvoření clusteru se nezdařilo a služba ADF se nedostala zpět do služby HDInsight.
 
-- **Doporučení**: Otevřete portál Azure Portal a pokuste se najít prostředek HDI se zadaným názvem a ověřte stav zřizování. Pokud potřebujete další pomoc, obraťte se na tým podpory HDInsight.
+- **Doporučení**: otevřete Azure Portal a pokuste se najít prostředek HDI se zadaným názvem a ověřte stav zřizování. Pokud potřebujete další pomoc, obraťte se na tým podpory HDInsight.
 
 
 ### <a name="error-code--2362"></a>Kód chyby: 2362
@@ -1018,7 +1018,7 @@ Použití Fiddler k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Pokud vaše webová aplikace používá protokol HTTPS, můžete přejít na **nástroje** > **Možnosti Fiddler** > **https**. Vyberte **zachytit protokol HTTPS připojení** a **dešifrování přenosu HTTPS**.
 
-![Fiddler možnosti](media/data-factory-troubleshoot-guide/fiddler-options.png)
+   ![Fiddler možnosti](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. Pokud vaše aplikace používá certifikáty SSL, přidejte do svého zařízení certifikát Fiddler. V **nabídce nástroje** > **Možnosti Fiddler** > **https** > **Akce** > **exportovat kořenový certifikát do plochy**.
 
@@ -1028,17 +1028,17 @@ Použití Fiddler k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Vytvořit požadavek:
 
-a. Vyberte kartu **Autor** .
+   1. Vyberte kartu **Autor** .
 
-b. Nastavte metodu HTTP a adresu URL.
+   1. Nastavte metodu HTTP a adresu URL.
+   
+   1. Pokud potřebujete, přidejte záhlaví a text žádosti.
 
-c. Pokud potřebujete, přidejte záhlaví a text žádosti.
+   1. Vyberte **Provést**.
 
-d. Vyberte **Provést**.
+1. Zapněte znovu zachytávání provozu a dokončete problematickou transakci na stránce.
 
-9. Zapněte znovu zachytávání provozu a dokončete problematickou transakci na stránce.
-
-10. Přejít na **soubor** > **Uložit** > **všechny relace**.
+1. Přejít na **soubor** > **Uložit** > **všechny relace**.
 
 Další informace najdete v tématu [Začínáme s Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
 
@@ -1046,7 +1046,7 @@ Další informace najdete v tématu [Začínáme s Fiddler](https://docs.telerik
 
 Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 
-*  [Blog věnovaný Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 *  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

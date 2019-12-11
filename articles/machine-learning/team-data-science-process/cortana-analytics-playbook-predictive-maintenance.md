@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ec87146c721222702073eae067a259aa9848d0f7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048991"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977127"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -41,10 +41,10 @@ Obsah BDM neočekává čtečka, která má mít žádnou znalost předchozí da
 
 ## <a name="business-case-for-predictive-maintenance"></a>Obchodní případ pro prediktivní údržbu
 
-Podniky vyžadují důležité zařízení běží na efektivitu ve špičce a využití, jak začít využívat jejich návratu na kapitálových investic. Tyto prostředky může sahat od leteckých motorů, turbíny, výtahů nebo průmyslové dochlazovače – které nákladů milionů – na každý den zařízení jako kopírkách, kávy počítače nebo chladiče vody.
-- Ve výchozím nastavení, Spolehněte se na většinu firem _opravné údržby_, kde nahrazuje částí a při jejich selhání. Nápravné Údržba zaručuje části se používají zcela (tedy ne plýtvání komponenty životnost), ale náklady obchodní výpadky, práci a neplánovanou údržbu požadavky (mimo hodin nebo nevhodné umístění).
-- Na další úrovni, postupem firmám _preventivní údržby_, kde určit užitečné životnosti pro určitou část a udržovat nebo nahradit před selhání. Preventivní údržba zabraňuje neplánovaným a katastrofální chyby. Ale vysokým nákladům spojeným s plánovaný výpadek, snížení využití součásti před úplnou dobu života použití a práci stále zůstanou.
-- Cílem _prediktivní údržby_ je k optimalizaci rovnováhu mezi opravné a preventivní údržby, povolením _právě včas_ nahrazení komponent. V rámci tohoto přístupu se nahrazují pouze komponenty, u kterých se blíží selhání. Tím, že rozšíří lifespans součásti (ve srovnání se preventivní údržba) a snížení neplánovanou údržbu a náklady na práci (přes opravné údržby), firmy získají úspory nákladů a konkurenční výhody.
+Aby se podnikům vrátily investiční náklady, potřebují, aby klíčové vybavení fungovalo s maximální efektivitou a využitím. Těmito prostředky může být cokoli od leteckých motorů, turbín, výtahů nebo průmyslových chladicích zařízení, která stojí miliony, až po všední zařízení, jako jsou kopírky, kávovary nebo chladiče vody.
+- Ve výchozím nastavení, Spolehněte se na většinu firem _opravné údržby_, kde nahrazuje částí a při jejich selhání. Nápravná údržba zajišťuje úplné využití součástek (a tedy brání jejich plýtvání), ale přináší podnikům náklady z hlediska výpadků, práce a požadavků na neplánovanou údržbu (mimo pracovní dobu nebo na nevhodných místech).
+- Na další úrovni, postupem firmám _preventivní údržby_, kde určit užitečné životnosti pro určitou část a udržovat nebo nahradit před selhání. Preventivní údržba brání neplánovaným a katastrofickým selháním. Ale vysokým nákladům spojeným s plánovaný výpadek, snížení využití součásti před úplnou dobu života použití a práci stále zůstanou.
+- Cílem _prediktivní údržby_ je k optimalizaci rovnováhu mezi opravné a preventivní údržby, povolením _právě včas_ nahrazení komponent. V rámci tohoto přístupu se nahrazují pouze komponenty, u kterých se blíží selhání. Prodloužením životnosti komponent (v porovnání s preventivní údržbou) a snížením nákladů na neplánovanou údržbu a práci (oproti nápravné údržbě) můžou podniky dosáhnout úspor nákladů a získat konkurenční výhodu.
 
 ## <a name="business-problems-in-pdm"></a>Obchodní problémy PdM
 Firmám čelí vysokou provozní rizika z důvodu neočekávaných chyb a mají omezené pohled na původní příčinu možných problémů v komplexních systémů. Zde jsou některé na klíčové otázky firmy:
@@ -203,7 +203,9 @@ Obchodní požadavky definují, jak daleko modelu má k předvídání budoucí.
 #### <a name="rolling-aggregates"></a>Agregace se zajištěním provozu
 Pro každý záznam prostředku postupné okno velikosti "W" vybrána jako počet časových jednotek pro výpočet agregací. Funkce Lag jsou pak vypočítán s použitím období W _před datem_ daného záznamu. Na obrázku 1 modré čáry zobrazit hodnoty čidel zaznamenaných pro určitý prostředek pro každou jednotku času. Souhrnný průměr hodnot funkce, označení za období velikost W = 3. Je souhrnný průměr vypočítaný přes všechny záznamy s časovými razítky v rozsahu t<sub>1</sub> (zvýrazněných oranžovou barvou) na t<sub>2</sub> (zeleně). Hodnota W je obvykle v minut nebo hodin v závislosti na povaze data. Ale pro některé problémy, výběr velké W (třeba 12 měsíců) poskytují celou historii prostředek až do okamžiku záznamu.
 
-![Obrázek 1. Agregační funkce se zajištěním provozu](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) obrázek 1. Agregační funkce se zajištěním provozu
+![Obrázek 1: Agregační funkce se zajištěním provozu](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+
+Obrázek 1: Agregační funkce se zajištěním provozu
 
 Příklady v časovém intervalu se zajištěním provozu agregace jsou počet, průměr, míry CUMESUM (kumulativní součet), minimální/maximální hodnoty. Kromě toho odchylky, směrodatná odchylka a počet odlehlé hodnoty nad rámec standardních odchylek N se často používají. Příklady agregace, které mohou být použity pro [případy použití](#sample-pdm-use-cases) v této příručce jsou uvedeny níže. 
 - _Zpoždění letu_: počet kódů chyb za poslední den/týden.
@@ -217,7 +219,9 @@ Další užitečné technikou v PdM je zaznamenat změny trendů, provozní špi
 #### <a name="tumbling-aggregates"></a>Aktivační událost pro přeskakující agregace
 U každého označeného záznamu prostředku je definováno okno velikosti _w-<sub>k</sub>_  , kde _k_ je počet oken velikosti _w_. Agregace se pak vytvoří přes _k_ _bubnu Windows_ _w-k, w-<sub>(n-1)</sub>,..., w-<sub>2</sub>, w-<sub>1</sub>_  pro období před časovým razítkem záznamu. _k_ může být malý počet zachycení krátkodobé účinky nebo velký počet zachycení dlouhodobé vzorce snížení. (viz obrázek 2).
 
-![Obrázek 2. Agregační funkce aktivační událost pro přeskakující](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) na obrázku 2. Přeskakujícího agregační funkce
+![Obrázek 2. Přeskakujícího agregační funkce](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+
+Obrázek 2. Přeskakujícího agregační funkce
 
 Například prodleva funkce pro případ použití větrné turbíny může být vytvořena pomocí W = 1 a k = 3. Tyto možnosti implikují prodleva pro každou z posledních tří měsíců používání horní a dolní odlehlé hodnoty.
 
@@ -227,7 +231,7 @@ Technické specifikace zařízení, jako je například datum výroby, číslo m
 
 Úsilí přípravy dat popsáno, pokud by měla vést k data jsou uspořádané, jak je znázorněno níže. Trénování, testování a ověřování dat by měly mít tento logický schéma (Tento příklad ukazuje čas v jednotkách, které dnů).
 
-| ID assetu | Čas | Sloupce funkce \<> | Štítek |
+| ID assetu | Time | Sloupce funkce \< | Štítek |
 | ---- | ---- | --- | --- |
 | A123 |1 den | . . . | . |
 | A123 |2\. den | . . . | . |
@@ -262,7 +266,9 @@ Při použití této techniky dva typy školení příklady jsou označeny. Pozi
 #### <a name="label-construction-for-binary-classification"></a>Popisek konstrukce pro binární klasifikaci
 Je tady na otázku: "co je pravděpodobnost, že prostředek se nezdaří v příštích X časových jednotkách?" Na tuto otázku, popisek X záznamů před selháním prostředek jako "přibližně na selhání" (label = 1) a označovat pomocí popisků všechny záznamy, jako je "normální" (Popisek = 0). (viz obrázek 3).
 
-![Obrázek 3. Popisky pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) obr. 3. Popisky pro binární klasifikaci
+![Obrázek 3. Popisky pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+
+Obrázek 3. Popisky pro binární klasifikaci
 
 Níže jsou uvedeny příklady vytváření popisků strategie pro některé případy použití.
 - _Zpoždění letu_: X může být zvolen jako 1 den, k předpovědi zpoždění v příštích 24 hodin. Potom všechny lety, které jsou během 24 hodin před selháním jsou označeny jako 1.
@@ -277,7 +283,9 @@ Regresní modely, které se používají pro _vypočítat zbývající životnos
 #### <a name="label-construction-for-regression"></a>Popisek konstrukce pro regresní
 Je tady na otázku: "Jak se zbývající životnosti (RUL) zařízení?" Pro každý záznam před selháním vypočítejte tento popisek se počet jednotek času, než budou další selhání. V této metodě jsou popisky průběžné proměnné. (Viz obrázek 4)
 
-![Obrázek 4. Vytváření popisků pro regresní](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) obr. 4. Vytváření popisků pro regresní
+![Obrázek 4. Vytváření popisků pro regresní](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+
+Obrázek 4. Vytváření popisků pro regresní
 
 Pro regresní označování popisky se provádí s odkazem na bod selhání. Výpočet není možné nainstalovat bez mého, jak dlouho má vydrželi prostředku před selhání. Proto oproti binární klasifikace prostředky bez jakýchkoliv dat nelze použít pro modelování. Tento problém je nejlepší řešený další statistické techniky označované jako [analýz přežití](https://en.wikipedia.org/wiki/Survival_analysis). Ale možných komplikací může nastat při použití této techniky PdM případy použití, které se týkají časově proměnlivých dat pomocí pravidelných intervalech. Další informace o analýz přežití, naleznete v tématu [tomto jeden stránkování](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf).
 
@@ -289,11 +297,15 @@ Roc klasifikačních technik lze použít v řešeních PdM pro dva scénáře:
 #### <a name="label-construction-for-multi-class-classification"></a>Konstrukce popisek klasifikace víc tříd
 Je tady na otázku: "co je pravděpodobnost, že prostředek se nezdaří v dalším _nZ_ časových jednotkách kde _n_ je počet období?" Na tuto otázku odpovědět, popisek nZ záznamů před selháním prostředku pomocí intervalů doby (3Z 2Z Z). Popisek všechny ostatní zaznamenává "normální" (label = 0). V této metodě Cílová proměnná drží _zařazené do kategorií_ hodnoty. (Viz obrázek 5).
 
-![Obrázek 5. Chyba času predikcí popisky klasifikace víc tříd](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) obr. 5. Popisky pro klasifikaci roc pro předpověď časové selhání
+![Obrázek 5. Popisky předpovědi doby selhání pro klasifikaci s více třídami](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+
+Obrázek 5. Popisky pro klasifikaci roc pro předpověď časové selhání
 
 Otázky zde: "co je pravděpodobnost, že prostředek se nezdaří v příštích X jednotkami času z důvodu hlavní příčinu/problém _P<sub>můžu</sub>_ ?" kde _můžu_ je počet možné hlavní příčiny. Na tuto otázku, popisek X záznamů před selháním prostředek jako "o selhat z důvodu hlavní příčinu _P<sub>můžu</sub>_ " (popisek = _P<sub>můžu</sub>_ ). Označte všechny záznamy, jako je "normální" (label = 0). V této metodě také popisky jsou zařazené do kategorií (viz obrázek 6).
 
-![Obrázek 6. Hlavní příčina predikcí popisky klasifikace víc tříd](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) obrázek 6. Popisky pro klasifikaci roc pro kořenové příčiny predikcí
+![Obrázek 6. Popisky předpovědi hlavní příčiny pro klasifikaci s více třídami](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+
+Obrázek 6. Popisky pro klasifikaci roc pro kořenové příčiny predikcí
 
 Model přiřadí pravděpodobnost selhání kvůli každý _P<sub>můžu</sub>_  a také pravděpodobnost bez chyby. Tyto pravděpodobnosti lze provést řazení podle velikosti umožňuje předpovědi problémy, které bývají nejčastějším dojít v budoucnosti.
 
@@ -329,7 +341,9 @@ Předpokládejme datový proud časovým razítkem události, například měře
 
 Pro rozdělení závislá na čase, vyberte _školení času přerušení T<sub>c</sub>_  jakou pro trénování modelu, s hyperparameters, která je vyladěná pomocí historických dat až po T<sub>c</sub>. Aby se zabránilo úniku budoucí popisky, které jsou nad rámec T<sub>c</sub> do trénovací data, zvolte nejnovější čas příklady školení popisek bude X jednotky před T<sub>c</sub>. V příkladu je vidět na obrázku 7 představuje každý čtvereček záznam v datové sadě, ve kterém funkce a popisky se vypočítávají jak je popsáno výše. Obrázek zobrazuje záznamy, které by měly patřit do trénování a testování sad pro X = 2 a W = 3:
 
-![Obrázek 7. Závislá na čase rozdělení pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) obrázek 7. Závislá na čase rozdělení pro binární klasifikaci
+![Obrázek 7. Závislá na čase rozdělení pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+
+Obrázek 7. Závislá na čase rozdělení pro binární klasifikaci
 
 Zelená čtverec představují záznamy, které patří do časové jednotky, které lze použít k trénování. Každý příklad školení je generován vzhledem k tomu, posledních tří období pro generování funkcí a dvou budoucích obdobích pro označování popisky před T<sub>c</sub>. Při libovolné části dvě budoucí období nad rámec T<sub>c</sub>, vyloučit tento příklad z trénovací datové sady, protože žádné viditelnost se předpokládá, že nad rámec T<sub>c</sub>.
 
@@ -411,11 +425,11 @@ Poslední části této příručky obsahuje seznam šablon řešení PdM, kurzy
 
 | # | Název | Popis |
 |--:|:------|-------------|
-| 2 | [Šablona řešení prediktivní údržby Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Šablonu řešení open source, která ukazuje ML modelování a kompletní infrastrukturou Azure dokáže v souvislosti s vzdáleného sledování IoT podporuje scénáře prediktivní údržby. |
+| 2 | [Šablona řešení prediktivní údržby Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Open Source šablona řešení, která ukazuje modelování Azure ML a kompletní infrastrukturu Azure s podporou scénářů prediktivní údržby v kontextu vzdáleného monitorování IoT. |
 | 3 | [Hloubkové učení pro prediktivní údržbu](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure Poznámkový blok s řešením ukázku použití sítí LSTM (Long krátkodobé paměti) (třída Rekurentní Neuronové sítě) pro prediktivní údržbu se [blogovém příspěvku s tímto příkladem](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Průvodce modelováním prediktivní údržby v jazyce R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Průvodce modelováním PdM pomocí skriptů v jazyce R.|
 | 5 | [Azure prediktivní Údržba pro letectví](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Jeden z první šablony řešení PdM založené na Azure ML v1.0 kvůli údržbě letadla. Tento průvodce, vytvoří se z tohoto projektu. |
-| 6 | [Azure AI Toolkit pro IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI v IoT edge používající TensorFlow; Sada nástrojů balíčky hloubkového učení modely v kontejnerech Dockeru kompatibilní se službou Azure IoT Edge a vystavit tyto modely jako rozhraní REST API.
+| 6 | [Azure AI Toolkit pro IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI v IoT Edge pomocí TensorFlow; sada Toolkit balí modely hloubkového učení v kontejnerech Docker kompatibilních s Azure IoT Edge a zpřístupňuje tyto modely jako rozhraní REST API.
 | 7 | [Prediktivní údržby Azure IoT](https://github.com/Azure/azure-iot-predictive-maintenance) | Počítače s - předkonfigurovaného řešení Azure IoT Suite. Šablona PdM letadla údržby pomocí sady IoT Suite. [Další dokument](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) a [návod](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) související do stejného projektu. |
 | 8 | [Šablona prediktivní údržby pomocí SQL Server R Services](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Ukázka zbývající dobu životnosti scénáře podle R services. |
 | 9 | [Průvodce modelováním prediktivní údržby](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Funkce datovou sadu údržby letadla analyzovány pomocí jazyka R s [experimenty](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) a [datových sad](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) a [Azure Notebooks](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) a [experimenty](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)v Azure ml v1.0|
@@ -426,14 +440,14 @@ Microsoft Azure nabízí postupy výuky pro základní principy PdM techniky, kr
 
 | Školení prostředků  | Dostupnost |
 |:-------------------|--------------|
-| [Postup výuky pro PdM pomocí stromy a doménové struktury Random](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Public | 
-| [Postup výuky pro PdM využívající hloubkové učení](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Public |
-| [Vývojář AI v Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
-| [Školní Microsoft AI](https://aischool.microsoft.com/learning-paths) | Public |
-| [Azure AI učení z Githubu](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
-| [LinkedIn Learning](https://www.linkedin.com/learning) | Public |
-| [Microsoft AI YouTube webináře](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
-| [Zobrazit Microsoft AI](https://channel9.msdn.com/Shows/AI-Show) | Public |
+| [Postup výuky pro PdM pomocí stromy a doménové struktury Random](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Veřejné | 
+| [Postup výuky pro PdM využívající hloubkové učení](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Veřejné |
+| [Vývojář AI v Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Veřejné |
+| [Školní Microsoft AI](https://aischool.microsoft.com/learning-paths) | Veřejné |
+| [Azure AI učení z Githubu](https://github.com/Azure/connectthedots/blob/master/readme.md) | Veřejné |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | Veřejné |
+| [Microsoft AI YouTube webináře](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Veřejné |
+| [Zobrazit Microsoft AI](https://channel9.msdn.com/Shows/AI-Show) | Veřejné |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partneři |
 | [Microsoft Partner Network](https://learningportal.microsoft.com) | Partneři |
 

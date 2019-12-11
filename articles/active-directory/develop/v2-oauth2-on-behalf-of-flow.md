@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity Platform a OAuth 2.0 s tokem za chodu | Azure
+title: Microsoft Identity Platform & OAuth 2.0 za běhu služby Flow | Azure
 description: Tento článek popisuje, jak pomocí zpráv HTTP implementovat ověřování Service to Service over pomocí toku OAuth 2.0 za běhu.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09d851572731ad9c83093b7076279df112585703
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa58f63e70c09e17328b849e7728604a65cb7ae1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207512"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964315"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
@@ -71,14 +71,14 @@ Při použití sdíleného tajného klíče obsahuje požadavek na přístupový
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| `grant_type` | Požadováno | Typ žádosti o token Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Požadováno | ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
-| `client_secret` | Požadováno | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na stránce Azure Portal-Registrace aplikací. |
-| `assertion` | Požadováno | Hodnota tokenu použitého v požadavku. |
-| `scope` | Požadováno | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md). |
-| `requested_token_use` | Požadováno | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavená na `on_behalf_of`. |
+| `grant_type` | Požaduje se | Typ žádosti o token Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Požaduje se | ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
+| `client_secret` | Požaduje se | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na stránce Azure Portal-Registrace aplikací. |
+| `assertion` | Požaduje se | Hodnota tokenu použitého v požadavku. |
+| `scope` | Požaduje se | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md). |
+| `requested_token_use` | Požaduje se | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavená na `on_behalf_of`. |
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 Následující příspěvek HTTP požaduje přístupový token a aktualizuje token s `user.read`m oborem pro https://graph.microsoft.com webové rozhraní API.
 
@@ -103,17 +103,17 @@ Požadavek na přístupový token služby na službu s certifikátem obsahuje n�
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| `grant_type` | Požadováno | Typ požadavku tokenu Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Požadováno |  ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
-| `client_assertion_type` | Požadováno | Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Požadováno | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o tom, jak zaregistrovat certifikát a formát kontrolního výrazu, najdete v tématu [přihlašovací údaje certifikátu](active-directory-certificate-credentials.md). |
-| `assertion` | Požadováno | Hodnota tokenu použitého v požadavku. |
-| `requested_token_use` | Požadováno | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavená na `on_behalf_of`. |
-| `scope` | Požadováno | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md).|
+| `grant_type` | Požaduje se | Typ požadavku tokenu Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Požaduje se |  ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
+| `client_assertion_type` | Požaduje se | Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Požaduje se | Kontrolní výraz (webový token JSON), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o tom, jak zaregistrovat certifikát a formát kontrolního výrazu, najdete v tématu [přihlašovací údaje certifikátu](active-directory-certificate-credentials.md). |
+| `assertion` | Požaduje se | Hodnota tokenu použitého v požadavku. |
+| `requested_token_use` | Požaduje se | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavená na `on_behalf_of`. |
+| `scope` | Požaduje se | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md).|
 
 Všimněte si, že parametry jsou skoro stejné jako v případě požadavku pomocí sdíleného tajného klíče s tím rozdílem, že parametr `client_secret` je nahrazen dvěma parametry: `client_assertion_type` a `client_assertion`.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 Následující příspěvek HTTP požaduje přístupový token s oborem `user.read` pro https://graph.microsoft.com webové rozhraní API s certifikátem.
 
@@ -183,7 +183,7 @@ Koncový bod tokenu vrátí chybovou odpověď při pokusu o získání přístu
 
 Služba střední vrstvy teď může použít token získaný výše k provádění ověřených požadavků webového rozhraní API pro příjem dat, a to nastavením tokenu v hlavičce `Authorization`.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```
 GET /v1.0/me HTTP/1.1
