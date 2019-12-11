@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a PHP'
+title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a PHP'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete rozpoznávat tváře na obrázku pomocí rozhraní API pro rozpoznávání tváře s PHP.
 services: cognitive-services
@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a0704f9e9a77eba2eb0d4f00bc1d880011e767de
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859209"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977926"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a PHP
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a PHP
 
 V tomto rychlém startu použijete REST API Azure Face s PHP k detekci lidských plošek v obraze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
 - Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download).
-- Balíček PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2)
+- Balíček PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) .
 - Webový prohlížeč s podporou PHP. Pokud jste toto nastavení nestavili, můžete to udělat tak, že na svém počítači nainstalujete a nanastavíte [XAMPP](https://www.apachefriends.org/) .
 
 ## <a name="initialize-the-html-file"></a>Inicializovat soubor HTML
@@ -43,7 +43,7 @@ Vytvořte nový soubor HTML *detectFaces. html*a přidejte následující kód.
 
 ## <a name="write-the-php-script"></a>Zápis skriptu PHP
 
-Do `body` prvku dokumentu přidejte následující kód. Tento kód nastaví základní uživatelské rozhraní s polem Adresa URL, tlačítko **analyzovat plochu** , podokno odpovědi a podokno zobrazení obrázku.
+Do prvku `body` dokumentu přidejte následující kód. Tento kód nastaví základní uživatelské rozhraní s polem Adresa URL, tlačítko **analyzovat plochu** , podokno odpovědi a podokno zobrazení obrázku.
 
 ```php
 <?php
@@ -99,7 +99,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-Budete muset aktualizovat `subscriptionKey` pole hodnotou klíče předplatného a musíte `uriBase` změnit řetězec tak, aby obsahoval správný řetězec koncového bodu. `returnFaceAttributes` Pole určuje, které atributy tváře mají být načteny. Tento řetězec můžete změnit v závislosti na zamýšleném použití.
+Musíte aktualizovat pole `subscriptionKey` hodnotou vašeho klíče předplatného a je třeba změnit řetězec `uriBase` tak, aby obsahoval správný řetězec koncového bodu. Pole `returnFaceAttributes` určuje, které atributy obličeje se mají načíst. Tento řetězec možná budete chtít změnit v závislosti na zamýšleném použití.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

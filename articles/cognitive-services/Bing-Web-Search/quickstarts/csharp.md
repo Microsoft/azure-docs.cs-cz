@@ -1,28 +1,28 @@
 ---
-title: 'Rychlý start: Provádět vyhledávání na webu s C# – rozhraní API REST webové vyhledávání Bingu'
+title: 'Rychlý Start: provedení vyhledávání na webu C# pomocí-vyhledávání na webu Bingu REST API'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků na používání rozhraní API REST webové vyhledávání Bingu C#a získejte odpověď ve formátu JSON.
+description: Pomocí tohoto rychlého startu můžete odesílat požadavky na Vyhledávání na webu Bingu REST API pomocí C#a přijímat odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 20cb5f65ed33bc3e737bbba902ed2d891eaf83be
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 6c847af4f6938923abdfced4d5e8b842ae84eca6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823357"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978811"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Rychlý start: Hledat na webu pomocí REST API pro vyhledávání Bingu Web aC#
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API aC#
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. To C# aplikace odešle požadavek hledání do rozhraní API a ukázka odezvy. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato C# aplikace odešle požadavek na hledání do rozhraní API a zobrazí odpověď. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
@@ -62,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. Ověřte, že hodnota `uriBase` je platná a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód `Program` třídy, jak bylo uvedeno výše.
+Abychom mohli pokračovat, musíme nastavit několik proměnných.  `uriBase` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte, že hodnota `uriBase` je platná a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz přizpůsobíte tím, že místo `searchTerm` zadáte jinou hodnotu. Nezapomeňte přidat tento kód do třídy `Program`, jak je uvedeno výše.
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Deklarace hlavní metody
 
-`Main()` Se vyžaduje metoda a je první metoda vyvolá při spuštění programu. V této aplikaci hlavní metoda ověří `accessKey`, vytvoří požadavek a vytiskne odpověď.
+Metoda `Main()` je povinná a je první metodou vyvolanou při spuštění programu. V této aplikaci hlavní metoda ověří `accessKey`, vytvoří požadavek a vytiskne odpověď.
 
 Nezapomeňte, že metoda `main()` závisí na metodách vytvořených v následujících několika oddílech.
 
@@ -109,7 +109,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Vytvoření struktury výsledků hledání
 
-Tato struktura vrátí výsledky hledání s příslušnými hlavičkami. Je volána při požadavku na rozhraní API webové vyhledávání Bingu k vytvoření objektu výsledků.
+Tato struktura vrátí výsledky hledání s příslušnými hlavičkami. Je volána při vytváření žádosti na rozhraní API Bingu pro vyhledávání na webu k vytvoření objektu výsledku.
 
 ```csharp
 // Returns search results with headers.
@@ -363,7 +363,7 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)

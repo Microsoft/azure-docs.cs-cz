@@ -1,6 +1,6 @@
 ---
 title: Registrace zařízení X. 509 do služby Azure Device Provisioning pomocíC#
-description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service C#pomocí.
+description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service (DPS) C#pomocí.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 3df9afa35b3ae9f7360a5d4b890d3fce209a4b12
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1986f51b834f177a7c8d70392cc532cbfadb7170
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423345"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974729"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí C#
 
@@ -28,9 +28,9 @@ I když postup v tomto článku funguje na počítačích se systémem Windows i
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/).
+* Nainstalujte sadu [Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Nainstalujte [Git](https://git-scm.com/download/).
 
@@ -119,7 +119,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    > * Uložení připojovacího řetězce pro správce služby zřizování v kódu je v rozporu s osvědčenými postupy zabezpečení. Místo toho by se měl připojovací řetězec uchovávat zabezpečeným způsobem, například v zabezpečeném konfiguračním souboru nebo v registru.
    > * Nezapomeňte nahrát pouze veřejnou část podpisového certifikátu. Nikdy nenahrávejte soubory .pfx (PKCS12) ani .pem obsahující privátní klíče ke službě zřizování.
 
-1. Přidejte následující metodu do třídy `Program`. Tento kód vytvoří položku skupiny registrací a potom zavolá metodu `CreateOrUpdateEnrollmentGroupAsync` v `ProvisioningServiceClient`, aby přidala skupinu registrací do služby zřizování.
+1. Přidejte do třídy `Program` následující metodu. Tento kód vytvoří položku skupiny registrací a potom zavolá metodu `CreateOrUpdateEnrollmentGroupAsync` v `ProvisioningServiceClient`, aby přidala skupinu registrací do služby zřizování.
 
    ```csharp
    public static async Task RunSample()

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vlastní vyhledávání Bingu klientskou knihovnu pro Java | Microsoft Docs'
+title: 'Rychlý Start: Vlastní vyhledávání Bingu klientskou knihovnu pro Java | Microsoft Docs'
 description: Začněte s knihovnou klienta Vlastní vyhledávání Bingu pro Java tím, že si vyžádáte výsledky hledání z vaší instance Vlastní vyhledávání Bingu.
 services: cognitive-services
 author: aahill
@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: quickstart
-ms.date: 09/17/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 7d1a7b2cdba082c78a1753ea0dcce6ead02ab036
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147976"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976056"
 ---
-# <a name="quickstart-bing-custom-search-client-library-for-java"></a>Rychlý start: Klientská knihovna Vlastní vyhledávání Bingu pro Java
+# <a name="quickstart-bing-custom-search-client-library-for-java"></a>Rychlý Start: Vlastní vyhledávání Bingu Klientská knihovna pro Java
 
 Začněte s knihovnou klienta Vlastní vyhledávání Bingu pro Java. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet v přizpůsobených prostředích vyhledávání bez reklamy pro témata, která vás zajímají.
 
@@ -26,14 +26,14 @@ Pomocí klientské knihovny Vlastní vyhledávání Bingu pro jazyk Java:
 
 [Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [artefaktů (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí.
-* Instance Vlastní vyhledávání Bingu. Viz rychlý Start [: Pro další informace vytvořte první](quick-start.md) instance Vlastní vyhledávání Bingu.
+* Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md) .
 
-## <a name="setting-up"></a>Nastavení
+## <a name="setting-up"></a>Probíhá nastavení
 
 ### <a name="create-a-bing-custom-search-azure-resource"></a>Vytvoření prostředku Azure Vlastní vyhledávání Bingu
 
@@ -102,7 +102,7 @@ public class BingCustomSearchSample {
 }
 ```
 
-Ve třídě vytvořte `main` metodu a proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, zavřete a znovu otevřete Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné. Metody budete definovat později.
+Ve třídě vytvořte metodu `main` a proměnnou pro klíč prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, zavřete a znovu otevřete Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné. Metody budete definovat později.
 
 [!code-java[main method](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=main)]
 
@@ -154,7 +154,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření vlastní vyhledávací webové aplikace](./tutorials/custom-search-web-page.md)

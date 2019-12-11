@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566238"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980721"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
@@ -66,6 +66,7 @@ Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve va
     | --- | --- |
     | **Konkrétní propojené organizace** | Tuto možnost vyberte, pokud chcete vybrat ze seznamu organizací, které jste přidali jako správce. Přístup k tomuto balíčku můžou vyžádat všichni uživatelé z vybraných organizací. |
     | **Všechny připojené organizace** | Tuto možnost vyberte, pokud všichni uživatelé ze všech připojených organizací můžou tento balíček přístupu požádat. |
+    | **Všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé)** | Tuto možnost vyberte, pokud všichni uživatelé ze všech připojených organizací můžou požádat o tento balíček přístupu a že nastavení seznam povolených a zakázaných B2B by mělo mít přednost pro všechny nové externí uživatele. |
 
     Připojená organizace je externí adresář nebo doména služby Azure AD, ke kterým máte relaci.
 
@@ -80,7 +81,7 @@ Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve va
 1. Po výběru všech připojených organizací klikněte na **Vybrat**.
 
     > [!NOTE]
-    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
+    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. Přeskočte dolů k části [schválení](#approval) .
 

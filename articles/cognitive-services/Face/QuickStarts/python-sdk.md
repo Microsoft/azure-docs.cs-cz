@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 9728ff86de8561c463886847494ecc4c1c007851
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cd797567b381fb89c568b06dc8b056648e5c734a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743191"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977807"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Python
 
@@ -22,7 +22,7 @@ Začínáme s klientskou knihovnou obličeje pro Python Pomocí těchto kroků n
 
 Pomocí klientské knihovny obličeje pro Python:
 
-* Rozpoznávání tváří v obrázku
+* Rozpoznávání tváří na obrázku
 * Vyhledání podobných tváří
 * Vytvoření a výuka skupiny osob
 * Identifikace obličeje
@@ -31,12 +31,12 @@ Pomocí klientské knihovny obličeje pro Python:
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) |  | [ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=face) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* [Python 3. x](https://www.python.org/)
+* [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Nastavení
+## <a name="setting-up"></a>Probíhá nastavení
 
 ### <a name="create-a-face-azure-resource"></a>Vytvoření prostředku Azure FACET
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 Následující třídy a rozhraní se řídí některými hlavními funkcemi sady Face SDK pro sadu Python.
 
-|Název|Popis|
+|Name (Název)|Popis|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
@@ -103,7 +103,7 @@ Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objek
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_auth)]
 
-## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří v obrázku
+## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří na obrázku
 
 Následující kód detekuje obličej ve vzdálené imagi. Vytiskne ID zjištěné plochy do konzoly a také je uloží do paměti programu. Pak detekuje plošky v obrázku s více lidmi a vytiskne také jejich ID do konzoly. Změnou parametrů v metodě [detect_with_url](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) můžete vracet různé informace s každým objektem [DetectedFace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python) .
 
@@ -117,7 +117,7 @@ Následující kód vytvoří výstup daného obrázku do zobrazení a Nakreslí
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
 
-![Mladí žena s červeným obdélníkem nakresleným kolem plochy](../images/face-rectangle-result.png)
+![Mladé ženu s červeným rámečkem vykreslen kolem typ písma](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>Vyhledání podobných tváří
 
@@ -129,7 +129,7 @@ Nejdřív spusťte kód v části výše ([detekuje plošky v obrázku](#detect-
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detectgroup)]
 
-Pak přidejte následující blok kódu pro vyhledání instancí první plochy ve skupině. Informace o tom, jak toto chování upravit, najdete v metodě [find_similar](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) .
+Pak přidejte následující blok kódu pro vyhledání instancí první plochy ve skupině. Informace o tom, jak toto chování změnit, najdete v metodě [find_similar](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) .
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar)]
 

@@ -4,12 +4,12 @@ description: Naučte se používat Azure Application Insights s Azure Functions 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 5f7f6c130226080cba635f89280f655498e5db27
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226901"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978079"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -119,14 +119,14 @@ requests
 
 Tabulky, které jsou k dispozici, jsou zobrazeny na kartě **schéma** na levé straně. Data generovaná pomocí volání funkcí najdete v následujících tabulkách:
 
-| Table | Popis |
+| Tabulka | Popis |
 | ----- | ----------- |
 | **trasování** | Protokoly vytvořené modulem runtime a kódem funkce. |
 | **požádal** | Jedna žádost pro každé vyvolání funkce. |
 | **výjimek** | Jakékoli výjimky vyvolané modulem runtime. |
 | **customMetrics** | Počet úspěšných a neúspěšných vyvolání, míra úspěšnosti a trvání. |
 | **customEvents** | Události sledované modulem runtime, například: požadavky HTTP, které aktivují funkci. |
-| **Čítače výkonu** | Informace o výkonu serverů, na kterých jsou spuštěny funkce. |
+| **performanceCounters** | Informace o výkonu serverů, na kterých jsou spuštěny funkce. |
 
 Ostatní tabulky jsou k dispozici pro testy dostupnosti a telemetrie klientů a prohlížečů. Můžete implementovat vlastní telemetrii a přidat do nich data.
 
@@ -151,29 +151,29 @@ Modul runtime Functions vytvoří protokoly s kategorií, která začíná na "h
 
 Pokud zapíšete protokoly do kódu funkce, kategorie je `Function` ve verzi 1. x modulu runtime Functions. V kategorii verze 2. x je `Function.<YOUR_FUNCTION_NAME>.User`kategorie.
 
-### <a name="log-levels"></a>Úrovně protokolu
+### <a name="log-levels"></a>Úrovně protokolování
 
 Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každým protokolem. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a celočíselný kód označuje relativní důležitost:
 
-|LogLevel    |Kód|
+|ÚroveňProtokolu    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladění       | 1 |
+|Ladění       | 1\. místo |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritická    | 5 |
-|Žádný        | 6 |
+|Kritické    | 5 |
+|Žádné        | 6 |
 
 `None` úrovně protokolu je vysvětleno v další části. 
 
 ### <a name="log-configuration-in-hostjson"></a>Protokolovat konfiguraci v Host. JSON
 
-Soubor [Host. JSON] nakonfiguruje, kolik protokolování funkcí aplikace odesílá do Application Insights. Pro každou kategorii označíte minimální úroveň protokolu k odeslání. Existují dva příklady: první příklad cílí na [funkce Functions verze 2. x runtime](functions-versions.md#version-2x) (.NET Core) a druhý příklad pro modul runtime verze 1. x.
+Soubor [Host. JSON] nakonfiguruje, kolik protokolování funkcí aplikace odesílá do Application Insights. Pro každou kategorii označíte minimální úroveň protokolu k odeslání. Existují dva příklady: první příklad cílí na [verzi 2. x a novější](functions-versions.md#version-2x) z modulu runtime Functions (s .NET Core) a druhým příkladem pro modul runtime verze 1. x.
 
-### <a name="version-2x"></a>Verze 2. x
+### <a name="version-2x-and-higher"></a>Verze 2. x a vyšší
 
-Modul runtime v2. x používá [hierarchii filtrů protokolování .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+Verze v2. x a novější verze modulu runtime Functions používají [hierarchii filtrů protokolování .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
 
 ```json
 {
@@ -216,7 +216,7 @@ Hodnota kategorie v prvku [Host. JSON] určuje protokolování pro všechny kate
 
 Pokud [Host. JSON] obsahuje několik kategorií, které začínají stejným řetězcem, budou se nejdřív shodovat. Předpokládejme, že chcete, aby se všechny z modulu runtime s výjimkou `Host.Aggregator` přihlásily na úrovni `Error`, ale chcete se `Host.Aggregator` přihlásit na `Information` úrovni:
 
-### <a name="version-2x"></a>Verze 2. x 
+### <a name="version-2x-and-later"></a>Verze 2. x a novější
 
 ```json
 {
@@ -271,7 +271,7 @@ Protokoly jsou k dispozici v tabulce **customMetrics** v Application Insights. J
 
 Všechny tyto protokoly jsou zapsány na `Information` úrovně. Pokud filtrujete `Warning` nebo výše, nezobrazí se žádná z těchto dat.
 
-### <a name="other-categories"></a>Jiné kategorie
+### <a name="other-categories"></a>Další kategorie
 
 Všechny protokoly pro jiné kategorie než ty, které jsou již uvedeny, jsou k dispozici v tabulce **trasování** v Application Insights.
 
@@ -298,7 +298,7 @@ Jak je uvedeno v předchozí části, modul runtime agreguje data o spouštění
 
 Application Insights má funkci [vzorkování](../azure-monitor/app/sampling.md) , která vám může chránit při vytváření příliš velkého množství dat telemetrie při dokončeném provádění v době špičky zatížení. Když frekvence příchozího provádění překročí zadanou prahovou hodnotu, Application Insights začne náhodně ignorovat některé příchozí spuštění. Výchozí nastavení maximálního počtu spuštění za sekundu je 20 (pět ve verzi 1. x). Vzorkování můžete nakonfigurovat v [Host. JSON].  Tady je příklad:
 
-### <a name="version-2x"></a>Verze 2. x 
+### <a name="version-2x-and-later"></a>Verze 2. x a novější
 
 ```json
 {
@@ -396,7 +396,7 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Protokolování vlastních metrik
 
-Pokud používáte [verzi 1. x](functions-versions.md#creating-1x-apps) funkcí runtime Functions, Node. js, může pomocí metody `context.log.metric` vytvořit vlastní metriky v Application Insights. Tato metoda není aktuálně podporovaná ve verzi 2. x. Zde je příklad volání metody:
+Pokud používáte [verzi 1. x](functions-versions.md#creating-1x-apps) funkcí runtime Functions, Node. js, může pomocí metody `context.log.metric` vytvořit vlastní metriky v Application Insights. Tato metoda není aktuálně podporovaná ve verzi 2. x a novější. Zde je příklad volání metody:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
@@ -408,9 +408,9 @@ Tento kód je alternativou pro volání `trackMetric` pomocí sady Node. js SDK 
 
 Pomocí balíčku NuGet [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) můžete odesílat vlastní data telemetrie do Application Insights. Následující C# příklad používá [vlastní rozhraní API telemetrie](../azure-monitor/app/api-custom-events-metrics.md). Příklad je pro knihovnu tříd .NET, ale kód Application Insights je stejný pro C# skript.
 
-### <a name="version-2x"></a>Verze 2. x
+### <a name="version-2x-and-later"></a>Verze 2. x a novější
 
-Modul runtime verze 2. x používá k automatickému sladění telemetrie s aktuální operací novější funkce v Application Insights. Není nutné ručně nastavit `Id`operace, `ParentId`nebo `Name` polí.
+Verze 2. x a novější verze modulu runtime používají v Application Insights novějších funkcí k automatickému korelaci telemetrie s aktuální operací. Není nutné ručně nastavit `Id`operace, `ParentId`nebo `Name` polí.
 
 ```cs
 using System;
@@ -653,7 +653,7 @@ az account set --subscription <subscriptionNameOrId>
 az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_NAME>
 ```
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Protokoly streamování můžete povolit pomocí [Azure PowerShell](/powershell/azure/overview). Pro prostředí PowerShell pomocí následujících příkazů přidejte svůj účet Azure, vyberte své předplatné a soubory protokolu streamu:
 
@@ -672,7 +672,7 @@ Pokud chcete zakázat integrované protokolování, odstraňte nastavení aplika
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
 * [Application Insights](/azure/application-insights/)
 * [Protokolování ASP.NET Core](/aspnet/core/fundamentals/logging/)

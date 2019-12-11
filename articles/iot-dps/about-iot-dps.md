@@ -1,6 +1,6 @@
 ---
 title: Přehled služby Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Popis zřizování zařízení v Azure pomocí služeb Device Provisioning a IoT Hub
+description: Popisuje zřizování zařízení v Azure pomocí služby Device Provisioning (DPS) a IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: e02f0de685dc1f67633e13fed1f4114c399afdea
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c29e687a787e59a03bb6825493d808ba036a1d68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280538"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975359"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení pomocí služby Azure IoT Hub Device Provisioning Service
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejných cloudových služeb pro všechny potřeby vašeho řešení IoT. IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném centru IoT, které nevyžaduje zásah člověka. Zákazníci tak můžou bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
@@ -85,7 +85,7 @@ Služba Device Provisioning obsahuje řadu funkcí, díky kterým je ideální p
 
 Další informace o konceptech a funkcích souvisejících se zřizováním zařízení najdete v [konceptech zařízení](concepts-device.md), [konceptech služby](concepts-service.md) a [konceptech zabezpečení](concepts-security.md).
 
-## <a name="cross-platform-support"></a>Podpora různých platforem
+## <a name="cross-platform-support"></a>Podpora pro víc platforem
 Služba Device Provisioning, stejně jako všechny služby Azure IoT, funguje na různých platformách s různými operačními systémy. Azure nabízí open source sady SDK v různých [jazycích](https://github.com/Azure/azure-iot-sdks), které usnadňují připojení zařízení a správu služby. Služba Device Provisioning podporuje připojení zařízení pomocí následujících protokolů:
 
 * HTTPS

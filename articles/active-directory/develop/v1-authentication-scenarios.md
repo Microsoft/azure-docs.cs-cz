@@ -1,5 +1,5 @@
 ---
-title: Ověřování na platformě Microsoft identity (verze 1.0) | Azure
+title: Ověřování platformy Microsoft Identity Platform (verze 1.0) | Azure
 description: Seznamte se se základy ověřování v Microsoft Identity Platform – modelu aplikace, rozhraní API, zřizování a nejběžnějších scénářů ověřování, které platforma Microsoft identity podporuje.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 445f301e2a526dc8f9e2c261e897fe8b1abe2f1e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149177"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966771"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 
@@ -64,16 +64,16 @@ Ve výše popsaném příkladu scénáře můžete aplikace klasifikovat podle t
 
 V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných platformou Microsoft identity.  Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf poskytuje přehled:
 
-|Tok | Nutné | id_token | přístupový token | aktualizovat token | autorizační kód | 
+|Tok | Vyžaduje | id_token | Přístupový token | aktualizovat token | autorizační kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Tok autorizačního kódu](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Implicitní tok](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybridní tok OIDC](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
 |[Aktualizovat uplatnění tokenu](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | aktualizovat token | x | x | x| |
-|[Tok On-Behalf-Of](v1-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
+|[Tok On-Behalf-Of](v1-oauth2-on-behalf-of-flow.md) | Přístupový token| x| x| x| |
 |[Přihlašovací údaje klienta](v1-oauth2-client-creds-grant-flow.md) | | | x (jenom aplikace)| | |
 
-Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nemají deklarace `groups` nebo `wids`. 
+Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nemají deklarace identity `groups` nebo `wids`. 
 
 Teď, když máte přehled základních informací, přečtěte si článek popisující model aplikace identity a rozhraní API, jak zřizování funguje na platformě Microsoft Identity Platform a odkazuje na podrobné informace o běžných scénářích, které Microsoft Identity Platform podporuje.
 

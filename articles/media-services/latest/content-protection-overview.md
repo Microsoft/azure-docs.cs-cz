@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eeb1dc44341768984bd6e337a2fe65a277f5aa77
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581222"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977773"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrana obsahu pomocí Media Services dynamického šifrování
 
-Pomocí Azure Media Services můžete lépe zabezpečit vaše média v době, kdy počítač opustí, a to prostřednictvím úložiště, zpracování a doručování. Pomocí Media Services můžete doručovat živý obsah na vyžádání a dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům.  
+Pomocí Azure Media Services můžete lépe zabezpečit vaše média v době, kdy počítač opustí, a to prostřednictvím úložiště, zpracování a doručování. Pomocí služby Media Services můžete doručovat na vyžádání a živého obsahu dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některý z systémy tři hlavní digital rights management (DRM): Apple FairPlay, Microsoft PlayReady a Google Widevine. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům.  
 
 V Media Services V3 je klíč obsahu přidružený k lokátoru streamování (viz [Tento příklad](protect-with-aes128.md)). Pokud používáte službu doručování klíčů Media Services, můžete nechat Azure Media Services vygenerovat klíč obsahu. Klíč obsahu by se měl vygenerovat sami, pokud používáte vlastní službu pro doručování klíčů, nebo pokud potřebujete, aby byl scénář s vysokou dostupností, kdy potřebujete stejný klíč obsahu ve dvou datových centrech.
 
-Když hráč vyžádá datový proud, Media Services použije zadaný klíč k dynamickému šifrování obsahu pomocí nezašifrovaného klíče AES nebo šifrování DRM. Aby se datový proud dešifroval, přehrávač požádá o klíč od Media Services služby doručování klíčů nebo služby pro doručování klíčů, kterou jste zadali. Pokud chcete zjistit, jestli má uživatel autorizaci získat klíč, služba vyhodnotí zásadu klíče obsahu, kterou jste zadali pro tento klíč.
+Datový proud je žádost přehrávač, Media Services využívá se zadaným klíčem k dynamické šifrování obsahu pomocí nezašifrovaného klíče AES a DRM šifrování. Přehrávač dešifrovat datového proudu, vyžaduje klíč z doručení klíče služby Media Services nebo doručení klíče, který jste zadali. Pokud chcete zjistit, jestli má uživatel autorizaci získat klíč, služba vyhodnotí zásadu klíče obsahu, kterou jste zadali pro tento klíč.
 
-Pomocí REST API nebo Media Services klientské knihovny můžete nakonfigurovat zásady ověřování a ověřování pro vaše licence a klíče.
+Rozhraní REST API nebo klientskou knihovnu služby Media Services můžete použít ke konfiguraci zásad ověřování a ověřování licencí a klíčů.
 
 Následující obrázek znázorňuje pracovní postup ochrany Media Services obsahu:
 
@@ -53,7 +53,7 @@ K úspěšnému dokončení systému ochrany obsahu je potřeba plně porozumět
   
 Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). Informace o tom, co je vhodné kombinovat, najdete v tématu [protokoly streamování a typy šifrování](#streaming-protocols-and-encryption-types).
 
-Příklad ukazuje, jak:
+Příklad ukazuje postup:
 
 1. Vytvořte a nakonfigurujte [zásady klíče obsahu](content-key-policy-concept.md).
 
@@ -70,13 +70,13 @@ Příklad ukazuje, jak:
 
 2. Vytvořte [Lokátor streamování](streaming-locators-concept.md) , který je nakonfigurovaný pro streamování šifrovaného prostředku.
   
-   Lokátor streamování musí být přidružený k [zásadě streamování](streaming-policy-concept.md). V tomto příkladu jsme nastavili `StreamingLocator.StreamingPolicyName` na zásady "Predefined_MultiDrmCencStreaming".
+   Lokátor streamování musí být přidružený k [zásadě streamování](streaming-policy-concept.md). V tomto příkladu nastavíme `StreamingLocator.StreamingPolicyName` na zásadu "Predefined_MultiDrmCencStreaming".
 
    Šifry PlayReady a Widevine se aplikují a klíč se doručí klientovi pro přehrávání na základě konfigurovaných licencí DRM. Pokud chcete datový proud zašifrovat pomocí CBCS (FairPlay), použijte zásadu "Predefined_MultiDrmStreaming".
 
    Lokátor streamování je také přidružen k zásadě klíče obsahu, kterou jste definovali.
 
-3. Vytvořte testovací token.
+3. Vytvořte token testu.
 
    Metoda `GetTokenAsync` ukazuje, jak vytvořit testovací token.
 4. Sestavte adresu URL streamování.
@@ -85,17 +85,17 @@ Příklad ukazuje, jak:
 
 ### <a name="player-with-an-aes-or-drm-client"></a>Přehrávač s klientem AES nebo DRM
 
-Aplikace přehrávače videa založená na sadě hráčů SDK (buď v nativním režimu, nebo v prohlížeči) musí splňovat následující požadavky:
+Přehrávač videa aplikaci založenou na přehrávač SDK (nativní nebo založené na prohlížeči) musí splňovat následující požadavky:
 
 * Sada Player SDK podporuje potřebné klienty DRM.
 * Sada Player SDK podporuje požadované protokoly streamování: hladké, PŘERUŠOVANé a/nebo HTTP Live Streaming (HLS).
 * Sada Player SDK dokáže zvládnout předávání tokenu JWT v žádosti o získání licence.
 
-Přehrávač můžete vytvořit pomocí [rozhraní Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Pomocí [rozhraní Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) určete, která technologie DRM se má používat na různých platformách DRM.
+Přehrávač můžete vytvořit pomocí [rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/). Použít [rozhraní API služby Azure Media Player ProtectionInfo](https://amp.azure.net/libs/amp/latest/docs/) zadat technologii DRM, která má používat na různých platformách DRM.
 
-Pro testování šifrování AES nebo CENC (Widevine nebo PlayReady) můžete použít [Azure Media Player](https://aka.ms/azuremediaplayer). Ujistěte se, že jste vybrali možnost **Pokročilé možnosti** a zkontrolujete možnosti šifrování.
+Pro testování AES nebo šifrování CENC (Widevine a/nebo technologií PlayReady) zašifrovaný obsah, můžete použít [Azure Media Player](https://aka.ms/azuremediaplayer). Ujistěte se, že jste vybrali možnost **Pokročilé možnosti** a zkontrolujete možnosti šifrování.
 
-Pokud chcete testovat FairPlay zašifrovaný obsah, použijte [Tento testovací přehrávač](https://aka.ms/amtest). Přehrávač podporuje Widevine, PlayReady a FairPlay několikanásobnou společně s šifrováním pomocí šifrovaného klíče AES-128.
+Pokud chcete testovat FairPlay zašifrovaný obsah, použijte [tento test přehrávač](https://aka.ms/amtest). Přehrávač podporuje Widevine, PlayReady a FairPlay několikanásobnou společně s šifrováním pomocí šifrovaného klíče AES-128.
 
 Vyberte si správný prohlížeč pro otestování různých několikanásobnou:
 
@@ -116,7 +116,7 @@ Služba tokenů zabezpečení (STS) vydává token JWT jako přístupový token 
 
 ## <a name="streaming-protocols-and-encryption-types"></a>Typy šifrování a protokoly streamování
 
-Pomocí Media Services můžete doručovat obsah dynamicky šifrovaný pomocí šifrovaného klíče AES nebo šifrování DRM pomocí PlayReady, Widevine nebo FairPlay. V současné době můžete šifrovat formáty HLS, MPEG POMLČKy a Smooth Streaming. Každý protokol podporuje následující metody šifrování.
+Media Services můžete doručovat obsah zašifrovaný dynamicky pomocí nezašifrovaného klíče AES a DRM šifrování pomocí PlayReady, Widevine a FairPlay. V současné době můžete šifrovat formáty HLS, MPEG POMLČKy a Smooth Streaming. Každý protokol podporuje následující metody šifrování.
 
 ### <a name="hls"></a>HLS
 
@@ -124,11 +124,11 @@ Protokol HLS podporuje následující formáty kontejnerů a schémata šifrová
 
 |Formát kontejneru|Schéma šifrování|Příklad adresy URL|
 |---|---|---|
-|Vše|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
-|MPG2 – TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
+|Všechno|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|MPG2 TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
 |CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
-|MPG2 – TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
-|CMAF(fmp4) |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cenc)`|
+|MPG2 TS |Šifrování CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
+|CMAF(fmp4) |Šifrování CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cenc)`|
 
 HLS/CMAF + FairPlay (včetně HEVC/H. 265) se podporuje na následujících zařízeních:
 
@@ -136,15 +136,15 @@ HLS/CMAF + FairPlay (včetně HEVC/H. 265) se podporuje na následujících zař
 * iPhone 8 nebo novější.
 * MacOS vysoký Sierra s PROCESORem Intel 7 pro generace.
 
-### <a name="mpeg-dash"></a>MPEG-POMLČKA
+### <a name="mpeg-dash"></a>MPEG-DASH
 
 Protokol MPEG-SPOJOVNÍK podporuje následující formáty kontejneru a schémata šifrování:
 
 |Formát kontejneru|Schéma šifrování|Příklady adres URL
 |---|---|---|
-|Vše|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
-|CSF (FMP4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
-|CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
+|Všechno|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|CSF(fmp4) |Šifrování CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
+|CMAF(fmp4)|Šifrování CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
 ### <a name="smooth-streaming"></a>Technologie Smooth Streaming
 
@@ -153,9 +153,9 @@ Protokol Smooth Streaming podporuje následující formáty kontejneru a schéma
 |Protocol (Protokol)|Formát kontejneru|Schéma šifrování|
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
-|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
+|fMP4 | Šifrování CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
 
-### <a name="browsers"></a>Nimi
+### <a name="browsers"></a>Prohlížeče
 
 Běžné prohlížeče podporují následující klienty DRM:
 
@@ -169,18 +169,18 @@ Běžné prohlížeče podporují následující klienty DRM:
 
 ## <a name="controlling-content-access"></a>Řízení přístupu k obsahu
 
-Konfigurací zásad klíče obsahu můžete určit, kdo má přístup k vašemu obsahu. Služba Media Services podporuje více způsobů autorizace uživatelů, kteří žádají o klíč. Klient (přehrávač) musí splnit zásadu, aby bylo možné klíč doručit klientovi. Zásady klíčů obsahu můžou mít omezení *Open* nebo *token* .
+Můžete řídit, kdo má přístup k vašemu obsahu tím, že nakonfigurujete zásady obsahu klíčů. Služba Media Services podporuje více způsobů autorizace uživatelů, kteří žádají o klíč. Klient (přehrávač) musí zásady splňovat, než tento klíč se dá doručit do klienta. Může mít obsahu klíče zásad *otevřete* nebo *token* omezení.
 
 Zásada pro klíč obsahu s omezeným přístupem se dá použít, když chcete licenci vydávat nikomu bez autorizace. Například pokud vaše tržby jsou založené na službě AD a nikoli na základě předplatného.  
 
 Pomocí zásad klíčového obsahu omezeného tokenu se klíč obsahu pošle jenom klientovi, který prezentuje platný token JWT, nebo jednoduchý webový token (SWT) v žádosti o licenci nebo klíč. Tento token musí být vydán službou STS.
 
-Můžete použít Azure AD jako STS nebo nasadit [vlastní STS](#using-a-custom-sts). Služba STS musí být nakonfigurovaná tak, aby vytvořila token podepsaný pomocí zadaného klíče a vydávala deklarace identity, které jste zadali v konfiguraci omezení tokenu. Služba Media Services License/Key Delivery Services vrátí požadovanou licenci nebo klíč klientovi, pokud existují obě tyto podmínky:
+Můžete použít Azure AD jako STS nebo nasadit [vlastní STS](#using-a-custom-sts). Služba tokenů zabezpečení musí být nakonfigurovaný k vytvoření tokenu podepsán zadaný klíč a vydávání deklarací identity, které jste zadali v konfiguraci omezení s tokenem. Služba Media Services License/Key Delivery Services vrátí požadovanou licenci nebo klíč klientovi, pokud existují obě tyto podmínky:
 
 * Token je platný.
 * Deklarace identity v tokenu se shodují s požadavky nakonfigurovanými pro licenci nebo klíč.
 
-Když konfigurujete zásady s omezením tokenu, musíte zadat primární ověřovací klíč, Vystavitel a parametry cílové skupiny. Primární ověřovací klíč obsahuje klíč, pomocí kterého byl token podepsán. Vystavitel je STS, který vydává token. Cílová skupina, někdy označovaná jako Scope, popisuje účel tokenu nebo prostředku, ke kterému token opravňuje přístup. Služba Media Services License/Key Delivery Services ověřuje, že se tyto hodnoty v tokenu shodují s hodnotami v šabloně.
+Když konfigurujete zásady s omezením tokenu, musíte zadat primární ověřovací klíč, Vystavitel a parametry cílové skupiny. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí. Vystavitel je STS, který vydává token. Cílová skupina, někdy označovaná jako Scope, popisuje účel tokenu nebo prostředku, ke kterému token opravňuje přístup. Služba Media Services License/Key Delivery Services ověřuje, že se tyto hodnoty v tokenu shodují s hodnotami v šabloně.
 
 ### <a name="token-replay-prevention"></a>Prevence opětovného přehrání tokenu
 
@@ -197,27 +197,27 @@ Funkce *Prevence opětovného přehrání tokenu* umožňuje Media Services zák
 
 ## <a name="using-a-custom-sts"></a>Použití vlastní služby STS
 
-Zákazník se může rozhodnout použít vlastní STS k poskytování tokenů. Důvody zahrnují:
+Zákazník se může rozhodnout použít vlastní STS k poskytování tokenů. Mezi důvody patří:
 
-* Zprostředkovatel identity (IDP) používaný zákazníkem nepodporuje službu STS. V takovém případě může být vlastní STS možnost.
-* Zákazník může potřebovat flexibilní nebo užší řízení pro integraci služby STS se zákaznickým fakturačním systémem zákazníka.
+* Zprostředkovatel identity (IDP) používaný zákazníkem nepodporuje službu STS. V takovém případě vlastních služeb STS, může být možnost.
+* Zákazník může být nutné flexibilní nebo užší ovládací prvek integrovat službu tokenů zabezpečení zákazníka odběratele fakturačním systémem.
 
-   Například operátor služby [OTT](https://en.wikipedia.org/wiki/Over-the-top_media_services) může nabízet několik balíčků předplatitelů, jako jsou Premium, Basic a sport. Operátor může chtít vyhledat deklarace identity v tokenu s balíčkem předplatitele, aby byl k dispozici pouze obsah v určitém balíčku. V takovém případě vlastní STS poskytuje potřebnou flexibilitu a kontrolu.
+   Například operátor služby [OTT](https://en.wikipedia.org/wiki/Over-the-top_media_services) může nabízet několik balíčků předplatitelů, jako jsou Premium, Basic a sport. Operátor může být vhodné tak, aby odpovídaly deklarací identity v tokenu s balíčkem předplatitele, tak, že jsou k dispozici pouze obsah v určitém balíčku. V takovém případě vlastních služeb STS nabízí potřebné flexibility a kontroly.
 
 * Pokud chcete do tokenu zahrnout vlastní deklarace identity, které se mají vybrat mezi různými ContentKeyPolicyOptions s různými licenčními parametry DRM (licence k předplatnému a licence k pronájmu).
 * Chcete-li zahrnout deklaraci identity představující identifikátor klíče obsahu klíče, ke kterému token uděluje přístup.
 
-Pokud používáte vlastní STS, je třeba provést dvě změny:
+Při použití vlastních služeb STS musí udělali dvě změny:
 
-* Při konfiguraci služby doručování licencí pro Asset musíte zadat klíč zabezpečení, který se používá pro ověření vlastní službou STS místo aktuálního klíče ze služby Azure AD.
-* Když se vygeneruje token JTW, místo privátního klíče aktuálního certifikátu x509 ve službě Azure AD se zadá bezpečnostní klíč.
+* Když nakonfigurujete službu doručování licencí pro určitý prostředek, musíte zadat klíč zabezpečení použijí k ověření pomocí vlastních služeb STS místo platnost aktuálního klíče ze služby Azure AD.
+* Při vygenerování tokenu JTW klíč zabezpečení je zadán místo aktuální X509 privátní klíč certifikátu ve službě Azure AD.
 
-Existují dva typy klíčů zabezpečení:
+Existují dva typy bezpečnostních klíčů:
 
-* Symetrický klíč: stejný klíč se používá ke generování a ověření tokenu JWT.
-* Asymetrická klávesa: v certifikátu x509 se používá privátní klíč privátního klíče pro šifrování/vygenerování JWT a s veřejným klíčem k ověření tokenu.
+* Symetrický klíč: stejný klíč se používá ke generování a ověřit token JWT.
+* Asymetrický klíč: pár veřejného a privátního klíče v x X509 certifikát se používá s privátním klíčem k šifrování a generovat token JWT a s veřejným klíčem k ověření tokenu.
 
-Pokud používáte .NET Framework/C# jako vývojovou platformu, certifikát x509, který se používá pro asymetrický bezpečnostní klíč, musí mít délku klíče minimálně 2048. Tato délka klíče je požadavkem třídy System. IdentityModel. Tokens. X509AsymmetricSecurityKey v .NET Framework. V opačném případě je vyvolána následující výjimka: IDX10630: ' System. IdentityModel. Tokens. X509AsymmetricSecurityKey ' pro Signing nemůže být menší než ' 2048 ' bitů.
+Pokud používáte rozhraní .NET Framework a jazyka C# jako svou vývojovou platformu, X509 certifikát používaný pro asymetrické bezpečnostní klíč musí mít klíč délku aspoň 2048. Tato délka klíče je požadavkem třídy System. IdentityModel. Tokens. X509AsymmetricSecurityKey v .NET Framework. V opačném případě je vyvolána následující výjimka: IDX10630: ' System. IdentityModel. Tokens. X509AsymmetricSecurityKey ' pro Signing nemůže být menší než ' 2048 ' bitů.
 
 ## <a name="custom-key-and-license-acquisition-url"></a>Adresa URL vlastního klíče a získání licence
 
@@ -236,7 +236,7 @@ Následující šablony použijte, pokud chcete zadat jinou službu pro doručov
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: stejné jako předchozí šablona, pouze pro Widevine. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: stejné jako předchozí šablona, pouze pro FairPlay.  
 
-Příklad:
+Například:
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
@@ -244,7 +244,10 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId` má hodnotu požadovaného klíče. `AlternativeMediaId` můžete použít, pokud chcete mapovat požadavek na entitu na vaší straně. Můžete například použít `AlternativeMediaId`, které vám pomůžou vyhledat oprávnění.
 
- Příklady REST, které používají vlastní licence nebo adresy URL pro získání klíčů, najdete v tématu [zásady streamování – vytvořit](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
+Příklady REST, které používají vlastní licence nebo adresy URL pro získání klíčů, najdete v tématu [zásady streamování – vytvořit](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
+
+> [!NOTE]
+> Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
@@ -258,9 +261,9 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Ochrana pomocí šifrování AES](protect-with-aes128.md)
-* [Ochrana pomocí DRM](protect-with-drm.md)
+* [Ochrana s využitím šifrování AES](protect-with-aes128.md)
+* [Ochrana s využitím DRM](protect-with-drm.md)
 * [Návrh sady multi-DRM pro ochranu obsahu pomocí řízení přístupu](design-multi-drm-system-with-access-control.md)
 * [Šifrování na straně úložiště](storage-account-concept.md#storage-side-encryption)
 * [Nejčastější dotazy](frequently-asked-questions.md)
-* [Obslužná rutina JSON Web Token](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)
+* [Obslužná rutina webových tokenů JSON](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)

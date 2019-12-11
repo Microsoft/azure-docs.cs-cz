@@ -1,5 +1,5 @@
 ---
-title: Uzly v Azure Database for PostgreSQL – Citus (škálování)
+title: Uzly – Citus (Velká měřítko) – Azure Database for PostgreSQL
 description: Přečtěte si o dvou typech uzlů, koordinátora a pracovní procesy ve skupině serverů v Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 5348c8bbe432cd024a8da93ca866ae4458f956e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468094"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973998"
 ---
 # <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Uzly v Azure Database for PostgreSQL – Citus (škálování)
 

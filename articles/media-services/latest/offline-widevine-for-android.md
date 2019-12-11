@@ -1,8 +1,8 @@
 ---
-title: Nastavte v účtu pro offline streamování obsahu Widevine chránit – Azure
-description: Toto téma ukazuje postup při konfiguraci účtu Azure Media Services pro offline datové proudy Widevine chráněný obsah.
+title: Konfigurace účtu pro offline streamování chráněného obsahu Widevine – Azure
+description: V tomto tématu se dozvíte, jak nakonfigurovat účet Azure Media Services pro offline streamování chráněného obsahu Widevine.
 services: media-services
-keywords: Android Offline režimu, ExoPlayer, DASH, technologie DRM, Widevine
+keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1c1142f995376a8a640f33402294e20c925bbfbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341018"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974151"
 ---
-# <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streamování pro Android
+# <a name="offline-widevine-streaming-for-android"></a>Online streamování Widevine pro Android
 
-Kromě ochrany obsah pro streamování online, obsah média předplatného a pronájem služby nabídky ke stažení obsahu, který funguje, když nejste připojeni k Internetu. Možná budete muset stáhnout veškerý obsah na váš telefon nebo tablet pro přehrávání v případě, že letíte režim v letadle odpojen od sítě. Další scénáře, ve kterých můžete chtít stahovat obsah:
+Kromě ochrany obsahu pro online streamování, předplatné mediálního obsahu a služby pronájmu nabízí obsah ke stažení, který funguje, když nejste připojení k Internetu. Je možné, že budete muset stáhnout obsah na telefon nebo tablet pro přehrávání v režimu v letadle, když se dolétající z sítě. Další scénáře, ve kterých byste mohli chtít stáhnout obsah:
 
-- Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení určitá země nebo oblast. Pokud chce uživatel sledovat obsah v zahraničí cestách, je potřeba ke stažení offline.
-- V některých zemích nebo oblastech je omezená dostupnost Internetu a/nebo šířky pásma. Uživatelé se můžou rozhodnout ke stahování obsahu se moci podívat v dostatečně vysoká řešení vyhovující zážitek.
+- Někteří poskytovatelé obsahu můžou zakázat doručování licencí DRM mimo hranici země nebo oblasti. Pokud chce uživatel sledovat obsah během cestování v cizině, je nutné offline stahování.
+- V některých zemích nebo oblastech je dostupnost Internetu a/nebo šířka pásma omezená. Uživatelé si můžou stáhnout obsah, abyste si ho mohli prohlédnout dostatečně dostatečně jako v dostatečném rozlišení.
 
-Tento článek popisuje, jak implementovat offline režimu přehrávání pro DASH obsah chráněný pomocí Widevine na zařízeních s Androidem. Offline DRM můžete zadat předplatné, pronájem a nákupní modely pro obsah, takže se zákazníci můžou vašich služeb snadno získat obsahu s nimi při odpojení od Internetu.
+Tento článek popisuje, jak implementovat přehrávání offline režimu pro ČÁRKOVANý obsah chráněný Widevine na zařízeních s Androidem. Technologie DRM v režimu offline vám umožňuje poskytovat pro svůj obsah modely předplatného, pronájmu a nákupu a umožnit tak zákazníkům služeb, aby při odpojení od internetu mohli obsah snadno přebírat.
 
-Pro vytváření aplikací pro Android player, uvádíme tři možnosti:
+Pro sestavování aplikací pro Android Player se vytvoří osnova tří možností:
 
 > [!div class="checklist"]
-> * Vytvořit pomocí jazyka Java API ExoPlayer SDK přehrávač
-> * Vytvořit přehrávač Xamarin vazbu ExoPlayer SDK
-> * Vytvořit přehrávač použitím rozšíření eme (Encrypted Media Extensions) a rozšíření zdroj média (MSE) v62 mobilního prohlížeče Chrome nebo novější
+> * Sestavení přehrávače pomocí rozhraní Java API sady ExoPlayer SDK
+> * Sestavení přehrávače pomocí sady Xamarin Binding of ExoPlayer SDK
+> * Sestavení přehrávače pomocí rozšíření EME (Encrypted Media Extension) a programu Media source Extension (MSE) v prohlížeči Chrome Mobile Browser v62 nebo novějším
 
-V článku najdete tady také odpovědi některé běžné dotazy týkající se offline streamování Widevine chráněný obsah.
+Článek také obsahuje odpovědi na některé běžné otázky týkající se offline streamování chráněného obsahu Widevine.
 
 > [!NOTE]
-> Offline DRM účtuje pouze pro provádění jednoho požadavku licenci, když si stáhnete obsah. Všechny chyby se nic neúčtuje.
+> Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
-Před implementací offline DRM pro Widevine na zařízeních s Androidem, měli byste nejdřív:
+Před implementací offline DRM pro Widevine v zařízeních s Androidem byste měli nejdřív:
 
-- Seznamte se s koncepty představenými pro online ochrany obsahu pomocí Widevine DRM. To je podrobně popsána v následujících dokumentech/samples:
+- Seznamte se s koncepty představenými pro online ochranu obsahu pomocí Widevine DRM. Tato informace je podrobně popsaná v následujících dokumentech/ukázkách:
     - [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
-    - [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
-- Klonování https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
+    - [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)
+- Klonovat https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
 
-    Budete muset upravit kód v [šifrovat pomocí DRM pomocí .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) přidání konfigurace Widevine.  
-- Seznamte se s Google ExoPlayer SDK pro Android, přehrávače videa na open-source SDK schopný zajistit podporu offline přehrávání Widevine DRM. 
+    Pokud chcete přidat konfigurace Widevine, budete muset změnit kód v části [šifrování pomocí DRM pomocí technologie .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) .  
+- Seznamte se se sadou Google ExoPlayer SDK pro Android, což je open source sada pro Video Player, která podporuje offline přehrávání Widevine DRM. 
     - [ExoPlayer SDK](https://github.com/google/ExoPlayer)
     - [Příručka pro vývojáře ExoPlayer](https://google.github.io/ExoPlayer/guide.html)
     - [Blog pro vývojáře EoPlayer](https://medium.com/google-exoplayer)
 
-## <a name="configure-content-protection-in-azure-media-services"></a>Konfigurace ochrany obsahu ve službě Azure Media Services
+## <a name="configure-content-protection-in-azure-media-services"></a>Konfigurace ochrany obsahu v Azure Media Services
 
-V [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) metody, jsou k dispozici následující nutné kroky:
+V metodě [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) jsou k dispozici následující kroky:
 
-1. Zadejte jak obsahu doručení klíče je ověřen ve službu doručování licencí: 
+1. Určete, jakým způsobem je doručování klíče obsahu autorizováno ve službě doručování licencí: 
 
     ```csharp
     ContentKeyPolicySymmetricTokenKey primaryKey = new ContentKeyPolicySymmetricTokenKey(tokenSigningKey);
@@ -73,13 +73,13 @@ V [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-serv
     ContentKeyPolicyTokenRestriction restriction 
         = new ContentKeyPolicyTokenRestriction(Issuer, Audience, primaryKey, ContentKeyPolicyRestrictionTokenType.Jwt, alternateKeys, requiredClaims);
     ```
-2. Nakonfigurujte šablonu licence Widevine:  
+2. Nakonfigurovat šablonu licence Widevine:  
 
     ```csharp
     ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
     ```
 
-3. Create ContentKeyPolicyOptions:
+3. Vytvořit ContentKeyPolicyOptions:
 
     ```csharp
     options.Add(
@@ -90,111 +90,111 @@ V [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-serv
         });
     ```
 
-## <a name="enable-offline-mode"></a>Povolit režim offline
+## <a name="enable-offline-mode"></a>Povolit offline režim
 
-Povolit **offline** režim pro licencí Widevine, je nutné nakonfigurovat [šabloně licence Widevine](widevine-license-template-overview.md). V **policy_overrides** objektu, nastaven **can_persist** vlastnost **true** (výchozí hodnota je false), jak je znázorněno v [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563). 
+Pokud chcete povolit **offline** režim pro licence Widevine, musíte nakonfigurovat [šablonu licence Widevine](widevine-license-template-overview.md). V objektu **policy_overrides** nastavte vlastnost **can_persist** na **hodnotu true** (výchozí hodnota je false), jak je znázorněno v [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563). 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#ConfigureWidevineLicenseTempate)]
 
-## <a name="configuring-the-android-player-for-offline-playback"></a>Konfigurace Android player pro offline přehrávání
+## <a name="configuring-the-android-player-for-offline-playback"></a>Konfigurace přehrávače pro Android pro přehrávání offline
 
-Nejjednodušší způsob, jak vyvíjet aplikace s nativní přehrávač pro zařízení s Androidem je použít [Google ExoPlayer SDK](https://github.com/google/ExoPlayer), přehrávače videa na open source sady SDK. ExoPlayer podporuje funkce aktuálně se nepodporuje pro Android native MediaPlayer rozhraní API, včetně MPEG-DASH a Microsoft Smooth Streaming doručovací protokoly.
+Nejjednodušší způsob, jak vyvíjet nativní aplikaci pro hráče pro zařízení s Androidem, je použití [sady Google ExoPlayer SDK](https://github.com/google/ExoPlayer), open source sady Video Player SDK. ExoPlayer podporuje funkce, které nejsou aktuálně podporované nativním rozhraním MediaPlayer API Androidu, včetně protokolů MPEG-POMLČKy a Microsoft Smooth Streaming Delivery.
 
-ExoPlayer verzi 2.6 nebo novější obsahuje mnoho tříd, které podporují přehrávání offline Widevine DRM. Zejména OfflineLicenseHelper třída poskytující funkce nástroje pro usnadnění použití DefaultDrmSessionManager pro stahování, obnovení a uvolnění offline licencí. Třídy k dispozici ve složce SDK "knihovny/core/src/main/java/com/google/android/exoplayer2/offline /" podporu offline video obsahu stahování.
+ExoPlayer verze 2,6 a vyšší zahrnuje mnoho tříd, které podporují přehrávání offline Widevine DRM. Konkrétně třída OfflineLicenseHelper poskytuje funkce nástroje pro usnadnění použití DefaultDrmSessionManager ke stažení, obnovení a uvolňování licencí offline. Třídy poskytované ve složce SDK "Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/" podporují stahování obsahu offline videa.
 
-Následující seznam tříd usnadňuje offline režimu v ExoPlayer SDK pro Android:
+Následující seznam tříd usnadňuje offline režim v sadě ExoPlayer SDK pro Android:
 
-- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/DRM/OfflineLicenseHelper.Java  
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/OfflineLicenseHelper. Java  
 - library/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSession.java
-- library/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSessionManager.java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/DRM/DefaultDrmSessionManager. Java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/DrmSession.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ErrorStateDrmSession.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
-- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/SegmentDownloader.Java
-- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/DownloaderConstructorHelper.Java 
-- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/Downloader.Java
-- library/dash/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/SegmentDownloader. Java
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/DownloaderConstructorHelper. Java 
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/stahovací. Java
+- Library/pomlčka/src/Main/Java/com/Google/Android/exoplayer2/source/pomlčka/offline/DashDownloader. Java 
 
-Vývojáři by měly odkazovat [ExoPlayer – Příručka pro vývojáře](https://google.github.io/ExoPlayer/guide.html) a odpovídající [Blog pro vývojáře](https://medium.com/google-exoplayer) během vývoje aplikace. Google nevydala plně zdokumentovaných referenční implementace nebo ukázkový kód pro ExoPlayer aplikace podporu Widevine offline v tuto chvíli proto informace je omezena na blog a příručka vývojářů. 
+Vývojáři by měli v průběhu vývoje aplikace odkazovat na [příručku pro vývojáře ExoPlayer](https://google.github.io/ExoPlayer/guide.html) a na odpovídajícím [blogu pro vývojáře](https://medium.com/google-exoplayer) . Google nevydal plně dokumentovaný odkaz na implementaci nebo vzorový kód pro aplikaci ExoPlayer podporující Widevine v režimu offline, takže informace jsou omezené na průvodce a blog pro vývojáře. 
 
-### <a name="working-with-older-android-devices"></a>Práce s starší zařízení s Androidem
+### <a name="working-with-older-android-devices"></a>Práce se staršími zařízeními s Androidem
 
-Pro některá starší zařízení s Androidem je potřeba nastavit hodnoty pro následující **policy_overrides** vlastnosti (definované v [šabloně licence Widevine](widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**, a **license_duration_seconds**. Alternativně je můžete nastavit na hodnotu nula, což znamená, že na dobu neurčitou/nekonečno.  
+U některých starších zařízení s Androidem je potřeba nastavit hodnoty pro následující vlastnosti **policy_overrides** (definované v [šabloně licence Widevine](widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**a **license_duration_seconds**. Případně je můžete nastavit na hodnotu nula, což znamená nekonečné nebo neomezené trvání.  
 
-Hodnoty musí být nastaveny, aby se zabránilo chybu celočíselného přetečení. Podrobnější vysvětlení týkající se problému, najdete v části https://github.com/google/ExoPlayer/issues/3150 a https://github.com/google/ExoPlayer/issues/3112. <br/>Pokud nenastavíte explicitně, hodnoty velmi velké hodnoty **PlaybackDurationRemaining** a **LicenseDurationRemaining** se přiřadí, (například 9223372036854775807, což je maximální počet kladnou hodnotu pro 64bitové celé číslo). V důsledku toho licencování Widevine se zobrazí vypršela platnost a proto se dešifrování neprovede. 
+Hodnoty musí být nastaveny, aby nedocházelo k chybě přetečení celého čísla. Další vysvětlení tohoto problému najdete v tématu https://github.com/google/ExoPlayer/issues/3150 a https://github.com/google/ExoPlayer/issues/3112. <br/>Pokud hodnoty explicitně nenastavíte, budou přiřazeny velmi velké hodnoty pro **PlaybackDurationRemaining** a **LicenseDurationRemaining** (například 9223372036854775807, což je maximální kladná hodnota pro 64 celé číslo). V důsledku toho se zdá, že licence Widevine vypršela, a proto se k dešifrování nestane. 
 
-Tento problém se nevyskytuje v Androidu 5.0 Lollipop nebo novějším s Androidem 5.0 je první verze Androidu, která byla navržena pro úplnou podporu ARMv8 ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) a 64bitové platformy, zatímco se systémem Android 4.4 KitKat původně určené pro podporu ARMv7 a 32bitové platformy jako ostatní starší verze Androidu.
+K tomuto problému nedochází na Androidu 5,0, nebo novějším, protože Android 5,0 je první verze Androidu, která je navržená tak, aby plně podporovala ARMv8 ([Advanced RISC počítač](https://en.wikipedia.org/wiki/ARM_architecture)) a 64-bitové platformy, zatímco Android 4,4 KitKat byl původně navržený tak, aby podporoval ARMv7 a 32 platformy jako jiné starší verze Androidu.
 
-## <a name="using-xamarin-to-build-an-android-playback-app"></a>Pomocí Xamarin pro vytváření aplikací pro Android přehrávání
+## <a name="using-xamarin-to-build-an-android-playback-app"></a>Použití Xamarin k sestavení aplikace pro přehrávání v Androidu
 
-Xamarinové vazby sady pro ExoPlayer můžete najít pomocí následujících odkazů:
+Vazby Xamarin pro ExoPlayer můžete najít pomocí následujících odkazů:
 
-- [Knihovna vazeb Xamarin Google ExoPlayer knihovny](https://github.com/martijn00/ExoPlayerXamarin)
-- [Xamarinové vazby sady pro ExoPlayer NuGet](https://www.nuget.org/packages/Xam.Plugins.Android.ExoPlayer/)
+- [Knihovna vazeb Xamarin pro knihovnu Google ExoPlayer](https://github.com/martijn00/ExoPlayerXamarin)
+- [Vazby Xamarin pro ExoPlayer NuGet](https://www.nuget.org/packages/Xam.Plugins.Android.ExoPlayer/)
 
-Další informace naleznete v následujících vlákna: [Xamarin vazby](https://github.com/martijn00/ExoPlayerXamarin/pull/57). 
+Podívejte se také na následující vlákno: [vytvoření vazby Xamarin](https://github.com/martijn00/ExoPlayerXamarin/pull/57). 
 
-## <a name="chrome-player-apps-for-android"></a>Aplikace pro Chrome přehrávače pro Android
+## <a name="chrome-player-apps-for-android"></a>Aplikace pro Chrome Player pro Android
 
-Počínaje vydáním [Chrome pro Android v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates), trvalou licenci v EME je podporována. [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) je nyní podporováno také v Chrome pro Android. To vám pomůže vytvářet aplikace v režimu offline přehrávání v prohlížeči Chrome, pokud koncoví uživatelé měli to umožňuje (nebo vyšší) verzi Chrome. 
+Od verze [Chrome pro Android v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)se podporuje trvalá licence v EME. [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) se teď podporuje i v Chrome pro Android. To vám umožní vytvářet offline aplikace pro přehrávání v Chrome, Pokud koncoví uživatelé mají tuto (nebo vyšší) verzi Chrome. 
 
-Kromě toho Google je vytvořen ukázkový progresivní Web App (PWA) open source a je: 
+Kromě toho společnost Google vytvořila ukázku progresivní webové aplikace (PWA) a open-source IT: 
 
 - [Zdrojový kód](https://github.com/GoogleChromeLabs/sample-media-pwa)
-- [Verze Google hostované](https://biograf-155113.appspot.com/ttt/episode-2/) (funguje pouze v Chrome v 62 a vyšší na zařízeních s Androidem)
+- [Hostovaná verze Google](https://biograf-155113.appspot.com/ttt/episode-2/) (funguje jenom v Chrome v 62 a vyšších na zařízeních s Androidem)
 
-Pokud upgradujete mobilního prohlížeče Chrome v62 (nebo vyšší) na telefon s Androidem a test výše uvedené hostované ukázkovou aplikaci, zobrazí se přehrávání online streamování a offline práci.
+Pokud upgradujete mobilní prohlížeč Chrome na v62 (nebo vyšší) na telefonu s Androidem a otestujete výše uvedenou ukázkovou aplikaci, uvidíte, že online streamování a offline přehrávání funguje.
 
-Výše uvedené aplikace PWA open source se vytváří v Node.js. Pokud chcete hostovat vlastní verzi na serveru se systémem Ubuntu, mějte na paměti následující běžné došlo k chybě problémy, které může zabránit přehrávání:
+Výše uvedená Open Source aplikace PWA je vytvořená v Node. js. Pokud chcete hostovat svou vlastní verzi na serveru Ubuntu, pamatujte na následující běžné problémy, které můžou bránit přehrávání:
 
-1. Problém CORS: Ukázkové video v ukázkové aplikaci je hostován v https://storage.googleapis.com/biograf-video-files/videos/. Google má nastavení CORS pro všechny své ukázky test hostované v intervalu Google Cloud Storage. Jsou poskytovány pomocí hlavičky CORS explicitním zadáním položky CORS: https://biograf-155113.appspot.com (doménou, ve které google hostitelem jejich ukázkové) brání přístupu podle jakýchkoli jiných lokalit. Pokud se pokusíte, zobrazí se následující chyba HTTP: Nepovedlo se načíst https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: žádné záhlaví 'Přístup-Control-Allow-Origin' je k dispozici u požadovaného prostředku. Původní "https:\//13.85.80.81:8080' není proto povolený přístup. Pokud odpověď neprůhledné slouží vašim potřebám, nastavte režim požadavek na "no-cors" Načíst prostředek s CORS zakázán.
-2. Problém certifikátu: Rozšíření EME pro Widevine od Chrome v 58, vyžaduje protokol HTTPS. Proto je nutné pro hostování ukázkové aplikace prostřednictvím protokolu HTTPS s x X509 certifikátu. Certifikát obvykle testů nefunguje kvůli následující požadavky: Musíte získat certifikát splňuje následující požadavky:
-    - Chrome a Firefox vyžadují nastavení alternativní název předmětu SAN existovat v certifikátu
-    - Musí mít certifikát důvěryhodné certifikační Autority a certifikát podepsaný svým držitelem vývoj nefunguje.
-    - Certifikát musí mít CN odpovídající názvu DNS na webovém serveru nebo brány
+1. Problém CORS: ukázkové video v ukázkové aplikaci je hostované v https://storage.googleapis.com/biograf-video-files/videos/. Google nastavila CORS pro všechny testovací vzorky hostované v sadě Google Cloud Storage. Jsou obsluhovány pomocí hlaviček CORS a explicitně specifikují položku CORS: https://biograf-155113.appspot.com (doména, ve které hostuje vaše ukázka) znemožňuje přístup jakýmkoli jiným webům. Pokud se pokusíte, zobrazí se následující chyba protokolu HTTP: Nepodařilo se načíst https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: není k dispozici hlavička Access-Control-Allow-Origin v požadovaném prostředku. Počátek https:\//13.85.80.81:8080 není proto povolený přístup. Pokud neprůhledná odpověď vyhovuje vašim potřebám, nastavte režim žádosti na No-CORS, aby bylo možné načíst prostředek s zakázáním CORS.
+2. Problém s certifikátem: od verze Chrome v 58 EME pro Widevine vyžaduje protokol HTTPS. Proto je třeba hostovat ukázkovou aplikaci přes protokol HTTPS s certifikátem x509. Běžný testovací certifikát nefunguje v důsledku následujících požadavků: potřebujete získat certifikát splňující následující minimální požadavky:
+    - Chrome a Firefox vyžadují, aby v certifikátu existovalo nastavení alternativního názvu subjektu sítě SAN.
+    - Certifikát musí mít důvěryhodnou certifikační autoritu a vývojový certifikát podepsaný svým držitelem nefunguje.
+    - Certifikát musí obsahovat CN, který odpovídá názvu DNS webového serveru nebo brány.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="question"></a>Otázka
 
-Jak může poskytovat trvalé licence (offline podporou) pro některé klienty a uživatele a dočasné licence (offline zakázána) pro ostatní uživatele? Budu muset duplicitní obsah a použijte samostatný klíč obsahu?
+Jak mohu doručovat trvalé licence (offline) pro některé klienty/uživatele a netrvalé licence (offline – zakázáno) pro jiné? Musím duplikovat obsah a použít samostatný klíč obsahu?
 
 ### <a name="answer"></a>Odpověď
-Protože Media Services v3 umožňuje mít více StreamingLocators prostředek. Můžete mít
+Vzhledem k tomu, že Media Services V3 umožňuje Assetu mít více StreamingLocators. Můžete mít
 
-1.  Jeden ContentKeyPolicy s license_type = "trvalé", ContentKeyPolicyRestriction s deklarací identity na "trvalé" a jeho StreamingLocator;
-2.  Jiné ContentKeyPolicy s license_type = "nonpersistent" ContentKeyPolicyRestriction s deklarací identity na "nonpersistent" a jeho StreamingLocator.
-3.  Dvě StreamingLocators mají různé ContentKey.
+1.  Jeden ContentKeyPolicy s license_type = "persistent", ContentKeyPolicyRestriction s deklarací "persistent" a jeho StreamingLocator;
+2.  Další ContentKeyPolicy s license_type = "nestálo", ContentKeyPolicyRestriction s deklarací "netrvalá" a jeho StreamingLocator.
+3.  Obě StreamingLocators mají různé ContentKey.
 
-V závislosti na obchodní logiku vlastních služeb STS jsou různé deklarací identity vystavených v tokenu JWT. S tímto tokenem lze získat pouze odpovídající licenci a jenom odpovídající adresy URL můžete přehrát.
+V závislosti na obchodní logice vlastní služby STS se v tokenu JWT vydávají různé deklarace identity. U tokenu lze získat pouze odpovídající licenci a přehrát lze pouze odpovídající adresu URL.
 
 ### <a name="question"></a>Otázka
 
-Pro úrovně zabezpečení Widevine, v Googlu [přehled architektury Widevine DRM doc](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentaci, definuje tři různé úrovně zabezpečení. Ale v [dokumentace ke službě Azure Media Services v šabloně licence Widevine](widevine-license-template-overview.md), jsou uvedeny pět různé úrovně zabezpečení. Co je relace nebo mapování mezi dvě různé sady úrovně zabezpečení?
+V případě Widevine úrovní zabezpečení v dokumentaci k dokumentaci k [Widevine architektury DRM](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) společnosti Google, definuje tři různé úrovně zabezpečení. V [Azure Media Services dokumentaci k šabloně licence Widevine](widevine-license-template-overview.md)je ale k disřádku pět různých úrovní zabezpečení. Jaký je vztah nebo mapování mezi dvěma různými sadami úrovní zabezpečení?
 
 ### <a name="answer"></a>Odpověď
 
-V Googlu [přehled architektury Widevine DRM](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf), definuje následující úrovně tři zabezpečení:
+V [přehledu architektury DRM](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)společnosti Google v Widevine se definuje následující tři úrovně zabezpečení:
 
-1.  Úroveň zabezpečení 1: Zpracování obsahu, šifrování a řízení jsou prováděny v rámci důvěryhodné spuštění prostředí (TEE). V některých modelů rychlou implementaci zpracování zabezpečení mohou být provedeny v různých čipy.
-2.  Zabezpečení úrovně 2: Provádí šifrování (ale ne videa zpracování) v rámci TEE: dešifrovaný vyrovnávací paměti jsou vráceny do domény aplikace a zpracovává prostřednictvím samostatných grafický hardware nebo software. Na úrovni 2 ale informace o kryptografických je stále zpracovávána pouze v rámci TEE.
-3.  Úroveň zabezpečení 3 nemá TEE na zařízení. Může být přijata vhodná opatření k ochraně kryptografických informace a dešifrovaným obsah na hostitelském operačním systému. Na úroveň 3 implementace může také obsahovat kryptografický modul hardwaru, ale pouze, která vylepšuje výkon, zabezpečení není.
+1.  Úroveň zabezpečení 1: zpracování, kryptografie a řízení obsahu se provádí v prostředí pro důvěryhodné spouštění (TEE). V některých implementačních modelech může být zpracování zabezpečení provedeno v různých čipy.
+2.  Úroveň zabezpečení 2: provádí kryptografii (ale ne zpracování videa) v rámci TEE: dešifrované vyrovnávací paměti jsou vraceny do aplikační domény a zpracovávány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 se však kryptografické informace stále zpracovávají pouze v rámci TEE.
+3.  Úroveň zabezpečení 3 nemá na zařízení TEE. K ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému můžou být podniknuta vhodná opatření. Implementace úrovně 3 může zahrnovat také hardwarový šifrovací modul, ale vylepšuje výkon, ne zabezpečení.
 
-Současně, v [dokumentace ke službě Azure Media Services v šabloně licence Widevine](widevine-license-template-overview.md), vlastnost security_level content_key_specs může mít následující pěti různých hodnot (odolnosti požadavky na klienta pro přehrávání):
+Ve stejnou dobu v [Azure Media Services dokumentaci k šabloně licence Widevine](widevine-license-template-overview.md)může mít vlastnost security_level content_key_specs následující pět různých hodnot (požadavky na odolnost klienta pro přehrávání):
 
-1.  Crypto softwarových whitebox je povinný.
-2.  Je vyžadována crypto softwaru a dekodér zastaralý.
-3.  Materiál klíče a kryptografické operace se musí provádět v rámci TEE zajištěné hardwaru.
-4.  Kryptografie a dekódování obsahu se musí provádět v rámci TEE zajištěné hardwaru.
-5.  Kryptografických dekódování a všechny zpracování médií (komprimovaným a nekomprimovaným formátem) musí zpracovat v rámci TEE zajištěné hardwaru.
+1.  Je vyžadováno šifrování WhiteBOX založené na softwaru.
+2.  Vyžaduje se softwarová kryptografie a zakódováný dekodér.
+3.  Klíčové operace a kryptografické operace se musí provádět v rámci zálohovaných TEE hardwaru.
+4.  Kryptografické a dekódování obsahu se musí provádět v rámci zálohovaných TEE hardwaru.
+5.  Šifrování, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) musí být zpracovávány v TEE hardwaru.
 
-Obě úrovně zabezpečení je definována v Google Widevine. Rozdíl je v jeho úroveň využití: architektura úrovni nebo rozhraní API. Pět zabezpečení úrovně se používají v rozhraní API Widevine. Content_key_specs objekt, který obsahuje security_level je deserializovat a předat službě Widevine globální doručování pomocí Licenční službu Azure Media Services Widevine. Následující tabulka uvádí mapování mezi těmito dvěma sadami úrovní zabezpečení.
+Obě úrovně zabezpečení jsou definované Google Widevine. Rozdíl je ve své úrovni použití: úroveň architektury nebo úroveň rozhraní API. V rozhraní API Widevine se používá pět úrovní zabezpečení. Objekt content_key_specs, který obsahuje security_level, je rekonstruován a předán službě Widevine Global Delivery Service pomocí služby Azure Media Services Widevine License Service. Následující tabulka ukazuje mapování mezi dvěma sadami úrovní zabezpečení.
 
-| **Úrovně zabezpečení, které jsou definovány v architektuře Widevine** |**Úrovně zabezpečení používané ve Widevine rozhraní API**|
+| **Úrovně zabezpečení definované v architektuře Widevine** |**Úrovně zabezpečení používané v rozhraní Widevine API**|
 |---|---| 
-| **Úroveň zabezpečení 1**: Zpracování obsahu, šifrování a řízení jsou prováděny v rámci důvěryhodné spuštění prostředí (TEE). V některých modelů rychlou implementaci zpracování zabezpečení mohou být provedeny v různých čipy.|**security_level=5**: Kryptografických dekódování a všechny zpracování médií (komprimovaným a nekomprimovaným formátem) musí zpracovat v rámci TEE zajištěné hardwaru.<br/><br/>**security_level=4**: Kryptografie a dekódování obsahu se musí provádět v rámci TEE zajištěné hardwaru.|
-**Úroveň zabezpečení 2**: Provádí šifrování (ale ne videa zpracování) v rámci TEE: dešifrovaný vyrovnávací paměti jsou vráceny do domény aplikace a zpracovává prostřednictvím samostatných grafický hardware nebo software. Na úrovni 2 ale informace o kryptografických je stále zpracovávána pouze v rámci TEE.| **security_level=3**: Materiál klíče a kryptografické operace se musí provádět v rámci TEE zajištěné hardwaru. |
-| **Úroveň zabezpečení 3**: Nemá TEE na zařízení. Může být přijata vhodná opatření k ochraně kryptografických informace a dešifrovaným obsah na hostitelském operačním systému. Na úroveň 3 implementace může také obsahovat kryptografický modul hardwaru, ale pouze, která vylepšuje výkon, zabezpečení není. | **security_level=2**: Crypto softwaru a dekodér obfuskovaný jsou povinné.<br/><br/>**security_level=1**: Crypto softwarových whitebox je povinný.|
+| **Úroveň zabezpečení 1**: zpracování, kryptografie a řízení obsahu se provádí v prostředí pro důvěryhodné spouštění (TEE). V některých implementačních modelech může být zpracování zabezpečení provedeno v různých čipy.|**security_level = 5**: šifrování, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) musí být zpracovávány v Tee hardwaru.<br/><br/>**security_level = 4**: šifrování a dekódování obsahu se musí provádět v rámci Tee zálohovaného hardwaru.|
+**Úroveň zabezpečení 2**: provádí kryptografii (ale ne zpracování videa) v rámci Tee: dešifrované vyrovnávací paměti jsou vraceny do aplikační domény a zpracovávány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 se však kryptografické informace stále zpracovávají pouze v rámci TEE.| **security_level = 3**: klíč materiálu a kryptografické operace se musí provádět v rámci Tee zálohovaného hardwaru. |
+| **Úroveň zabezpečení 3**: nemá na zařízení Tee. K ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému můžou být podniknuta vhodná opatření. Implementace úrovně 3 může zahrnovat také hardwarový šifrovací modul, ale vylepšuje výkon, ne zabezpečení. | **security_level = 2**: je vyžadováno šifrování softwaru a vypsaný dekodér.<br/><br/>**security_level = 1**: je vyžadováno šifrování WhiteBOX založené na softwaru.|
 
 ### <a name="question"></a>Otázka
 
@@ -202,13 +202,17 @@ Proč stahování obsahu trvá tak dlouho?
 
 ### <a name="answer"></a>Odpověď
 
-Existují dva způsoby, jak zlepšit rychlost stahování:
+Existují dva způsoby, jak zvýšit rychlost stahování:
 
-1.  Povolte CDN, aby koncoví uživatelé budou pravděpodobně přístupů CDN místo původu/koncový bod pro stahování obsahu. Pokud uživatel narazí na koncový bod streamování, každý HLS segment nebo DASH fragment se dynamicky zabalené a šifrována. I když latence v milisekundách škálování pro každý segment/fragment, když máte hodinu dlouho videa, mohou být velké, způsobí delší dobu stahování celkové latence.
-2.  Poskytnout koncovým uživatelům umožňuje stáhnout kvalita videa vrstvy a zvukové stopy místo veškerý obsah. Pro offline režim neexistuje žádný bod ke stažení všechny vrstvy kvality. Existují dva způsoby, jak toho dosáhnout:
-    1.  Klient řízené: vybere automaticky aplikace přehrávače nebo uživatel vybere kvalita videa vrstvy a zvukové stopy stáhnout;
-    2.  Služba řídí: jeden pomocí dynamické Manifest funkce ve službě Azure Media Services můžete vytvářet filtr (globální), který omezuje stop HLS nebo DASH MPD do vrstvy jedné kvalita videa a vybrali zvukové stopy. Adresa URL pro stahování budou zobrazovat koncovým uživatelům pak bude obsahovat tento filtr.
+1.  Povolte CDN, aby koncoví uživatelé měli více místa na síti CDN místo počátečního/streamování pro stažení obsahu. Pokud uživatel zaznamená datový koncový bod streamování, každý segment HLS nebo odspojovníkový fragment se dynamicky zabalí a zašifruje. I když je tato latence v milisekundách pro každý segment nebo fragment, pokud máte dlouhé video, může být kumulovaná latence velká, což by mohlo trvat delší dobu stahování.
+2.  Poskytněte koncovým uživatelům možnost selektivně stahovat vrstvy kvality videa a zvukové stopy místo veškerého obsahu. V režimu offline není žádný bod ke stažení všech vrstev kvality. Toho můžete dosáhnout dvěma způsoby:
+    1.  Řízená klientem: buď hráč aplikace Player automaticky vybere, nebo uživatel vybere vrstvu kvality videa a zvukové stopy ke stažení;
+    2.  Řízená služba: jedna může použít funkci dynamického manifestu v Azure Media Services k vytvoření (globálního) filtru, který omezí HLSý seznam testů nebo POMLČKy na jednu vrstvu kvality videa a vybrané zvukové stopy. Pak bude tento filtr zahrnovat adresa URL pro stažení prezentovaná koncovým uživatelům.
+
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="summary"></a>Souhrn
 
-Tento článek byl věnován implementace offline režimu přehrávání pro DASH obsah chráněný pomocí Widevine na zařízeních s Androidem.  Odpovědi také některé běžné dotazy týkající se offline streamování Widevine chráněný obsah.
+Tento článek popisuje, jak implementovat přehrávání offline režimu pro ČÁRKOVANý obsah chráněný Widevine na zařízeních s Androidem.  Také si odpověděli na některé běžné otázky týkající se offline streamování chráněného obsahu Widevine.

@@ -3,12 +3,12 @@ title: Správa přiřazení pomocí PowerShellu
 description: Naučte se spravovat přiřazení podrobných plánů pomocí oficiálního modulu PowerShellu pro Azure modrotisky, AZ. detail.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: 5e91197cac97475aa20df8fef8649d98d762d920
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873178"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973641"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Správa přiřazení pomocí PowerShellu
 
@@ -246,6 +246,8 @@ Místo předání parametrů rutině v příkladu se zobrazuje použití defini�
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -SubscriptionId '{subId}' `
     -AssignmentFile '.\assignment.json'
 ```
+
+Příklad souboru definice přiřazení JSON pro uživatelem přiřazenou spravovanou identitu najdete v textu žádosti v [příkladu: přiřazení s uživatelem přiřazenou spravovanou identitou](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity) pro REST API.
 
 ## <a name="update-blueprint-assignments"></a>Aktualizovat přiřazení podrobného plánu
 

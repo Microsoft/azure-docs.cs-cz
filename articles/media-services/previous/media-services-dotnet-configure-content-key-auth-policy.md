@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a2d978a68f6f654e3bdeea07c931cd7103f5850c
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 386b49698ca6b8ded2972aba14c1968620fcbb08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015531"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974491"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamické šifrování: Konfigurace zásad autorizace klíče obsahu
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -50,7 +50,7 @@ Další informace najdete v následujících článcích:
 * Služba doručení klíčů ukládá do mezipaměti ContentKeyAuthorizationPolicy a související objekty (možnosti zásad a omezení) po dobu 15 minut. Můžete vytvořit ContentKeyAuthorizationPolicy a určit, že se má použít omezení tokenu, otestovat ho a pak aktualizovat zásadu na otevřené omezení. Tento proces trvá zhruba 15 minut, než se zásada přepne na otevřenou verzi zásady.
 * Pokud přidáte nebo aktualizujete zásady pro doručení prostředku, musíte odstranit stávající lokátor a vytvořit nový.
 * V současné době nemůžete šifrovat progresivní stahování.
-* Koncový bod streamování Media Services nastaví jako zástupný znak\*hodnotu v hlavičce CORS "Access-Control-Allow-Origin" v odpovědi na kontrolu před výstupem. Tato hodnota dobře funguje u většiny hráčů, včetně Azure Media Player, roku a JWPlayer a dalších. Někteří hráči, kteří používají dashjs, ale nefungují, protože s režimem přihlašovacích údajů nastaveným na include, XMLHttpRequest ve svých dashjsch nepovoluje\*zástupný znak "" jako hodnotu "Access-Control-Allow-Origin". Jako alternativní řešení tohoto omezení v dashjs platí, že pokud Hostujte klienta z jedné domény, můžete tuto doménu v hlavičce odpovědi na předběžné služby zadat Media Services. Pokud potřebujete pomoc, otevřete lístek podpory prostřednictvím Azure Portal.
+* Koncový bod streamování Media Services nastaví jako zástupný znak "\*" hodnotu v hlavičce CORS "Access-Control-Allow-Origin" v odpovědi na kontrolu před výstupem. Tato hodnota dobře funguje u většiny hráčů, včetně Azure Media Player, roku a JWPlayer a dalších. Někteří hráči, kteří používají dashjs, ale nefungují, protože s režimem přihlašovacích údajů nastaveným na include, XMLHttpRequest ve svých dashjsch nepovoluje zástupný znak "\*" jako hodnotu "Access-Control-Allow-Origin". Jako alternativní řešení tohoto omezení v dashjs platí, že pokud Hostujte klienta z jedné domény, můžete tuto doménu v hlavičce odpovědi na předběžné služby zadat Media Services. Pokud potřebujete pomoc, otevřete lístek podpory prostřednictvím Azure Portal.
 
 ## <a name="aes-128-dynamic-encryption"></a>Dynamické šifrování AES-128
 ### <a name="open-restriction"></a>Otevřené omezení
@@ -426,12 +426,16 @@ Pokud chcete získat testovací token na základě omezení tokenu, které se po
     }
 ```
 
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
+
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když jste nakonfigurovali zásady autorizace klíče obsahu, najdete informace v tématu [Konfigurace zásad doručení assetu](media-services-dotnet-configure-asset-delivery-policy.md).
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083214"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978164"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -33,11 +33,11 @@ V tomto tématu najdete běžné scénáře pro doručování obsahu v [reálné
 
 ## <a name="overview"></a>Přehled
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 
-* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com).
+* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
 * Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
 
@@ -177,10 +177,10 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 #### <a name="availability"></a>Dostupnost
 
-|Název|Status|Datová centra
+|Name (Název)|Stav|Datacentra
 |---|---|---|
-|Standard|GA|Vše|
-|Premium|GA|Vše|
+|Úroveň Standard|GA|Všechno|
+|Premium|GA|Všechno|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
 
@@ -194,9 +194,9 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Status|Datová centra
+|Název procesoru médií|Stav|Datacentra
 |---|---|---|
-|Media Encoder Standard|GA|Vše|
+|Media Encoder Standard|GA|Všechno|
 |Pracovní postup kodéru Media Encoder Premium|GA|Všechny s výjimkou Číny|
 
 ### <a name="analytics-media-processors"></a>Analytické procesory médií
@@ -205,14 +205,14 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Status|Datová centra
+|Název procesoru médií|Stav|Datacentra
 |---|---|---|
-|Azure Media Face Detector|Preview|Vše|
-|Azure Media Indexer|GA|Vše|
-|Azure Media Motion Detector|Preview|Vše|
-|Azure Media OCR|Preview|Vše|
-|Azure Media Redactor|Preview|Vše|
-|Azure Media Video Thumbnails|Preview|Vše|
+|Azure Media Face Detector|Preview|Všechno|
+|Azure Media Indexer|GA|Všechno|
+|Azure Media Motion Detector|Preview|Všechno|
+|Azure Media OCR|Preview|Všechno|
+|Azure Media Redactor|Preview|Všechno|
+|Azure Media Video Thumbnails|Preview|Všechno|
 |Azure Media Indexer 2|Preview|Všechny s výjimkou Číny a oblasti federální vlády|
 
 ### <a name="protection"></a>Ochrana
@@ -221,12 +221,12 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 #### <a name="availability"></a>Dostupnost
 
-|Šifrování|Status|Datová centra|
+|Šifrování|Stav|Datacentra|
 |---|---|---| 
-|Storage|GA|Vše|
-|Klíče AES-128|GA|Vše|
-|FairPlay|GA|Vše|
-|PlayReady|GA|Vše|
+|Úložiště|GA|Všechno|
+|Klíče AES-128|GA|Všechno|
+|FairPlay|GA|Všechno|
+|PlayReady|GA|Všechno|
 |Widevine|GA|Všechna kromě oblastí Německo, Federální vláda a Čína.
 
 ### <a name="reserved-units-rus"></a>Rezervované jednotky (RU)
@@ -247,11 +247,15 @@ Další informace najdete v části popisující [škálování](#scaling).
 
 #### <a name="availability"></a>Dostupnost
 
-|Název typu RU|Status|Datová centra
+|Název typu RU|Stav|Datacentra
 |---|---|---|
-|S1|GA|Vše|
+|S1|GA|Všechno|
 |S2|GA|Všechna kromě oblastí Brazílie – jih a Indie – západ|
 |S3|GA|Všechna kromě oblasti Indie – západ|
+
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -259,6 +263,6 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

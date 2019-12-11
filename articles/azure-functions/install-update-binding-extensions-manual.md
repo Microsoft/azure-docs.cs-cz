@@ -3,16 +3,16 @@ title: Ruční instalace nebo aktualizace rozšíření vazby Azure Functions
 description: Přečtěte si, jak nainstalovat nebo aktualizovat rozšíření vazby Azure Functions pro nasazené aplikace Function App.
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226507"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977484"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ruční instalace nebo aktualizace rozšíření vazby Azure Functions z portálu
 
-Azure Functions verze 2. x runtime používá rozšíření vazby k implementaci kódu pro aktivační události a vazby. Rozšíření vazby jsou k dispozici v balíčcích NuGet. K registraci rozšíření v podstatě nainstalujete balíček. Při vývoji funkcí závisí způsob instalace rozšíření vazby na vývojovém prostředí. Další informace najdete v tématu [Registrace rozšíření vazby](./functions-bindings-register.md) v článku triggery a vazby.
+Počínaje verzí 2. x Azure Functions modul runtime používá rozšíření vazby k implementaci kódu pro aktivační události a vazby. Rozšíření vazby jsou k dispozici v balíčcích NuGet. K registraci rozšíření v podstatě nainstalujete balíček. Při vývoji funkcí závisí způsob instalace rozšíření vazby na vývojovém prostředí. Další informace najdete v tématu [Registrace rozšíření vazby](./functions-bindings-register.md) v článku triggery a vazby.
 
 Někdy je nutné ručně nainstalovat nebo aktualizovat rozšíření vazby v Azure Portal. Například může být nutné aktualizovat registrovanou vazbu na novější verzi. Je také možné, že budete muset zaregistrovat podporovanou vazbu, která se nedá nainstalovat na kartě **integrace** na portálu.
 
@@ -43,4 +43,4 @@ Pomocí následujícího postupu můžete ručně nainstalovat nebo aktualizovat
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

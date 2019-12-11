@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438631"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997220"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení funkcí Security Center (červenec 2019)
 
@@ -53,7 +53,7 @@ Vyřadíme řídicí panel události, který se zobrazil při výběru pracovní
 
 Doporučujeme, abyste k zobrazení důležitých událostí v pracovních prostorech používali nativní možnosti Azure Log Analytics.
 
-Pokud jste v Security Center vytvořili vlastní významné události, budou k dispozici. V Log Analytics klikněte na **vybrat pracovní prostor** > **uložená hledání**. Vaše data se neztratí ani nezmění. Nativní významné události jsou k dispozici také ze stejné obrazovky Log Analytics.
+Pokud jste v Security Center vytvořili vlastní významné události, budou k dispozici. V Log Analytics **Vyberte pracovní prostor** > **uložená hledání**. Vaše data se neztratí ani nezmění. Nativní významné události jsou k dispozici také ze stejné obrazovky Log Analytics.
 
 ![Hledání uložených pracovních prostorů][3]
 
@@ -169,7 +169,7 @@ Pokud máte stávající připojená řešení, doporučujeme přejít na služb
 
 Azure Security Center monitoruje konfiguraci zabezpečení tím, že pro posílení operačního systému uplatní sadu [více než 150 doporučených pravidel](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Tato pravidla se týkají bran firewall, auditování, zásad hesel a dalších. Pokud se na počítači zjistí zranitelná konfigurace, Security Center vygeneruje doporučení k zabezpečení. [Obrazovka upravit konfiguraci zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umožňuje zákazníkům přizpůsobit výchozí konfiguraci zabezpečení operačního systému v Security Center.
 
-Tuto funkci verze Preview jsme vyřadíme. Pokud chcete obnovit konfigurace zabezpečení zpátky na výchozí hodnoty po datu vyřazení, udělejte to přes rozhraní API nebo PowerShell podle [následujících pokynů](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization) .
+Tuto funkci verze Preview jsme vyřadíme. Pokud chcete obnovit konfigurace zabezpečení zpátky na výchozí hodnoty po datu vyřazení, udělejte to přes rozhraní API nebo PowerShell podle [následujících pokynů](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization).
 
 ![Upravit konfigurace zabezpečení][17]
 

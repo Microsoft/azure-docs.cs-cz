@@ -1,7 +1,7 @@
 ---
 title: Co jsou kanály ML
 titleSuffix: Azure Machine Learning
-description: V tomto článku se dozvíte, jaké jsou výhody kanálů strojového učení, které můžete sestavit pomocí sady Azure Machine Learning SDK pro Python. Machine learning (ML) kanály využívají odborníci přes data sestavení, optimalizovat a spravovat jejich strojového učení pracovních postupů.
+description: V tomto článku se dozvíte o výhodách kanálů pro strojové učení (ML), které můžete vytvořit pomocí sady Azure Machine Learning SDK pro Python. Kanály pro strojové učení jsou používány odborníky přes data k sestavování, optimalizaci a správě pracovních postupů strojového učení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 84a01597570a488652e3db2345bdf68b52d4bf5b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112397"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973573"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
@@ -26,7 +26,7 @@ Azure Machine Learning kanály umožňují vytvářet pracovní postupy v projek
 + Flexibilita
 + Správa verzí a sledování
 + Modularitu 
-+ Zabezpečování kvality
++ Kontrola kvality
 + Řízení nákladů
 
 Tyto výhody se stanou významnou, jakmile se váš projekt Machine Learning pohybuje mimo rámec čistého průzkumu a iterace. Můžou být užitečné i jednoduché kanály s jedním krokem. Projekty strojového učení jsou často ve složitém stavu a může být pro zajištění přesného splnění jednoho pracovního postupu jednoduchý proces.
@@ -40,7 +40,7 @@ Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline
 
 Cloud Azure nabízí několik dalších kanálů, z nichž každý má jiný účel. V následující tabulce jsou uvedeny různé kanály a jejich použití pro:
 
-| Kanál | Co dělá | Kanonický kanál |
+| Kanál | Výsledek | Kanonický kanál |
 | ---- | ---- | ---- |
 | Azure Machine Learning kanály | Definuje opakovaně použitelné pracovní postupy strojového učení, které se dají použít jako šablona pro scénáře vašeho strojového učení. | Model dat > |
 | [Kanály Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Seskupuje, transformuje a řídí aktivity, které jsou potřebné k provedení úkolu.  | Data-> data |
@@ -185,7 +185,7 @@ Můžete se snadno dostáváme o opětovném použití uložených v mezipaměti
 
 * Těžké párování mezi kroky kanálu. Pokud refaktoring závislého kroku často vyžaduje změnu výstupů předchozího kroku, je pravděpodobný, že samostatné kroky jsou aktuálně větší než výhoda. Další potvrzení, že kroky jsou u sebe vzájemně spojeny, jsou argumenty pro krok, který není data, ale příznaky pro řízení zpracování. 
 
-* Předčasně Optimalizujte výpočetní prostředky. Například je často několik fází přípravy dat a druhý se často zobrazuje "já", tady je místo, kde můžu použít `MpiStep` pro paralelní programování, ale tady je místo, kde můžu použít `PythonScriptStep` s méně výkonnými výpočetními cíli. , a tak dále. A v dlouhodobém běhu to může vést k výraznému provedení jemných kroků, které by se mohly ukázat jako vhodné, zejména v případě, že existuje možnost použít výsledky v mezipaměti, nikoli vždy přepočítat. Kanály ale neslouží jako náhrada za modul `multiprocessing`. 
+* Předčasně Optimalizujte výpočetní prostředky. Například je často několik fází přípravy dat a druhý se často zobrazuje "Oh", zde je místo, kde můžu použít `MpiStep` pro paralelní programování, ale tady je místo, kde můžu použít `PythonScriptStep` s méně výkonnými výpočetními cíli, a tak dále. A v dlouhodobém běhu to může vést k výraznému provedení jemných kroků, které by se mohly ukázat jako vhodné, zejména v případě, že existuje možnost použít výsledky v mezipaměti, nikoli vždy přepočítat. Kanály ale neslouží jako náhrada za modul `multiprocessing`. 
 
 Dokud projekt nezíská velké nebo téměř nasazování, kanály by se měly vymezit spíše než jemně odstupňované. Pokud si myslíte, že projekt ML se týká _fází_ a kanálu, který poskytuje kompletní pracovní postup k přesunutí do konkrétní fáze, jste na pravé cestě. 
 
@@ -200,7 +200,7 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 |**Opětovné použití**|Vytvořte šablony kanálu pro konkrétní scénáře, jako je například přeškolení a dávkové vyhodnocování. Triggery publikovaných kanálů z externích systémů prostřednictvím jednoduchých volání REST.|
 |**Sledování a správy verzí**|Namísto ručního sledování dat a cest výsledků při iteraci můžete použít sadu SDK pro kanály k explicitnímu pojmenování a používání datových zdrojů, vstupů a výstupů. Skripty a data můžete spravovat i samostatně pro zvýšení produktivity.|
 | **Modularitu** | Oddělení otázek a izolace změn umožňuje softwaru vyvíjet se rychleji s vyšší kvalitou. | 
-|**Prostřednictvím**|Kanály umožňují odborníkům přes data spolupracovat ve všech oblastech procesu návrhu strojového učení, přičemž můžou souběžně fungovat na postupech kanálu.|
+|**Spolupráce**|Kanály umožňují odborníkům přes data spolupracovat ve všech oblastech procesu návrhu strojového učení, přičemž můžou souběžně fungovat na postupech kanálu.|
 
 ## <a name="next-steps"></a>Další kroky
 

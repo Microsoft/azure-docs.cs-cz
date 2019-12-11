@@ -1,80 +1,80 @@
 ---
-title: Nastavení Azure Import/Export nástroj v1 | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit Příprava jednotky a nástroji pro službu Azure Import/Export pro opravu. To se vztahuje na v1 nástroje Import/Export.
-author: muralikk
+title: Nastavení nástroje Azure pro import/export v1 | Microsoft Docs
+description: Naučte se, jak nastavit nástroj pro přípravu a opravu jednotky pro službu Azure import/export. To odkazuje na v1 nástroje Import/export.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f523d1ebf5c96596142c6897af2be5f760b3d4b9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477565"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978947"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Import/Export Azure
-Nástroje Microsoft Azure Import/Export je jednotka přípravy a opravit nástroj, který vám pomůže se služby Microsoft Azure Import/Export. Nástroj můžete použít pro následující funkce:  
+# <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Azure pro import/export
+Nástroj Microsoft Azure Import/Export je nástroj pro přípravu a opravu jednotky, který můžete použít se službou Microsoft Azure Import/Export. Nástroj můžete použít pro následující funkce:  
   
--   Před vytvořením úlohy importu, můžete tento nástroj pro kopírování dat do pevné disky, které chcete k odeslání do datového centra Azure s Windows.  
+-   Před vytvořením úlohy importu můžete pomocí tohoto nástroje Kopírovat data na pevné disky, které budete dodávat do datového centra Microsoft Azure.  
   
--   Po dokončení úlohy importu můžete použít tento nástroj opravit všechny objekty BLOB, které došlo k poškození, chyběl nebo konfliktu s další objekty BLOB.  
+-   Po dokončení úlohy importu můžete pomocí tohoto nástroje opravit všechny objekty blob, které byly poškozeny nebo byly v konfliktu s jinými objekty blob.  
   
--   Po přijetí jednotky z úlohy dokončené export můžete použít tento nástroj opravit všechny soubory, které byly poškozeny nebo chybí na jednotkách.  
+-   Po přijetí jednotek z dokončené úlohy exportu můžete pomocí tohoto nástroje opravit všechny soubory, které byly na jednotkách poškozeny nebo nebyly nalezeny.  
   
-## <a name="prerequisites"></a>Požadavky  
-Pokud jsou Příprava disků pro úlohu importu, musíte splňovat následující požadavky:  
+## <a name="prerequisites"></a>Předpoklady  
+Pokud připravujete jednotky pro úlohu importu, budete muset splnit následující požadavky:  
   
 -   Musíte mít aktivní předplatné Azure.  
   
--   Předplatné musí obsahovat účet úložiště se dostatek volného místa pro uložení souborů, že chcete importovat.  
+-   Vaše předplatné musí obsahovat účet úložiště, který má dostatek volného místa pro uložení souborů, které chcete importovat.  
   
--   Budete potřebovat alespoň jeden z klíčů účtu pro účet úložiště.  
+-   Potřebujete alespoň jeden z klíčů účtu pro účet úložiště.  
   
--   Potřebujete počítač ("kopie počítače") s Windows 7, Windows Server 2008 R2 nebo novějším operačním systému Windows, který je nainstalovaný.  
+-   Potřebujete počítač ("kopírovací počítač") se systémem Windows 7, Windows Server 2008 R2 nebo novějším nainstalovaným operačním systémem Windows.  
   
--   Rozhraní .NET Framework 4, musí být nainstalován na počítači kopírování.  
+-   Na počítači pro kopírování musí být nainstalovaný .NET Framework 4.  
   
--   Na počítači kopírování musí povolit nástroj BitLocker.  
+-   Na kopírovacím počítači musí být povolený nástroj BitLocker.  
   
--   Budete potřebovat jeden nebo víc jednotek, které obsahuje data být prázdný nebo importované 3,5 SATA pevné disky připojené k počítači kopii.  
+-   Budete potřebovat jednu nebo více jednotek, které obsahují data, která mají být importována nebo prázdná 3,5 pevné disky SATA připojené k počítači kopie.  
   
--   Soubory, které máte v plánu importovat musí být přístupné z počítače kopírování, zda jsou sdílené síťové složky nebo místní pevný disk. 
+-   Soubory, které chcete importovat, musí být přístupné z kopie počítače bez ohledu na to, jestli jsou ve sdílené síťové složce nebo na místním pevném disku. 
   
-Pokud se pokoušíte import, který má částečně se nepodařilo opravit, budete potřebovat:  
+Pokud se pokoušíte opravit import, který se částečně nezdařil, budete potřebovat:  
   
-- Kopií souborů protokolu  
+- Kopírování souborů protokolu  
   
 - Klíč účtu úložiště  
   
-  Pokud se pokoušíte export, který má částečně se nepodařilo opravit, budete potřebovat:  
+  Pokud se pokoušíte opravit export, který se částečně nezdařil, budete potřebovat:  
   
-- Kopií souborů protokolu  
+- Kopírování souborů protokolu  
   
 - Soubory manifestu (volitelné)  
   
 - Klíč účtu úložiště  
   
-## <a name="installing-the-azure-importexport-tool"></a>Instalace nástroje Azure Import/Export  
- Nástroje Azure Import/Export se skládá z následujících souborů:  
+## <a name="installing-the-azure-importexport-tool"></a>Instalace nástroje Azure import/export  
+ Nástroj pro import/export v Azure se skládá z následujících souborů:  
   
-- WAImportExport.exe  
+- WAImportExport. exe  
   
 - WAImportExport.exe.config  
   
 - WAImportExportCore.dll  
   
-- WAImportExportRepair.dll  
+- WAImportExportRepair. dll  
   
 - Microsoft.WindowsAzure.Storage.dll  
   
 - Hddid.dll  
   
-  Zkopírujte tyto soubory do pracovního adresáře, například `c:\WAImportExport`. Dále otevřete okno příkazového řádku v režimu správce a nastavit výše uvedené adresáře jako aktuální adresář.  
+  Zkopírujte tyto soubory do pracovního adresáře, například `c:\WAImportExport`. V dalším kroku otevřete okno příkazového řádku v režimu správce a nastavte výše uvedený adresář jako aktuální adresář.  
   
-  Pokud chcete výstup nápovědy pro příkaz, spusťte nástroj bez parametrů:  
+  Pro výstup nápovědu pro příkaz spusťte nástroj bez parametrů:  
   
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
@@ -247,7 +247,7 @@ Examples:
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
   
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Náhled využití disku pro úlohu exportu](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   

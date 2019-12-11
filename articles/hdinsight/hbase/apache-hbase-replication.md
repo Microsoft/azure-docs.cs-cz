@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931495"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995911"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBA v Azure Virtual Networks
 
@@ -275,6 +275,10 @@ Při replikaci clusteru je nutné zadat tabulky, které chcete replikovat. V té
 
 Pokud chcete vytvořit tabulku **kontaktů** a vložit do ní nějaká data, postupujte podle pokynů v článku o [Apache HBA kurz: Začínáme používat Apache HBA v HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
+> [!NOTE]
+> Pokud chcete replikovat tabulky z vlastního oboru názvů, je nutné zajistit, aby byly definovány také příslušné vlastní obory názvů v cílovém clusteru.
+>
+
 ## <a name="enable-replication"></a>Povolení replikace
 
 Následující postup popisuje, jak volat skript akce skriptu z Azure Portal. Informace o spuštění akce skriptu pomocí Azure PowerShell a Azure Classic CLI najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
@@ -395,6 +399,10 @@ Pokud chcete replikaci zakázat, použijte jiný skript akce skriptu z [GitHubu]
 - **Zakažte replikaci u zadaných tabulek (Tabulka1, Tabulka2 a TABLE3)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+
+> [!NOTE]
+> Pokud máte v úmyslu odstranit cílový cluster, nezapomeňte jej odebrat ze seznamu partnerských uzlů zdrojového clusteru. To se dá udělat spuštěním příkazu remove_peer 1 v prostředí HBA na zdrojovém clusteru. Selhání tohoto zdrojového clusteru nemusí fungovat správně.
+>
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,22 +1,22 @@
 ---
-title: Správa pravidel brány firewall v Azure Database for PostgreSQL – Citus (škálování)
+title: Správa pravidel brány firewall – Citus (-Scale) – Azure Database for PostgreSQL
 description: Vytváření a Správa pravidel brány firewall pro Azure Database for PostgreSQL – Citus (škálovatelné) pomocí Azure Portal
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 1b132eb168f3d873c8150bc33b581aa0f0f8d124
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 660c395e6cff81b0abcac07e66385f80a538695f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273710"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977535"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Správa pravidel brány firewall pro Azure Database for PostgreSQL – Citus (škálování)
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k uzlu koordinátoru Citus () ze zadané IP adresy nebo rozsahu IP adres.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Skupina serverů [vytvoří skupinu serverů Azure Database for PostgreSQL – Citus (– škálovatelný rozsah)](quickstart-create-hyperscale-portal.md).
 
@@ -24,7 +24,7 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 
 > [!NOTE]
 > Tato nastavení jsou k dispozici také při vytváření skupiny serverů Azure Database for PostgreSQL Citus (). Na kartě **síť** klikněte na **veřejný koncový bod**.
-> ![Azure Portal – karta síť](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
+> karta Azure Portal ![sítě](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
 
 1. Na stránce skupiny serverů PostgreSQL pod záhlavím zabezpečení kliknutím na **sítě** otevřete pravidla brány firewall.
 
