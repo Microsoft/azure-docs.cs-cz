@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 360845d75c27fab0151c3a64846ff788f9f56b95
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2a2eaa3224fff117a30dfb742b4f8a35196dba4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931246"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973896"
 ---
 # <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití PowerShellu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
@@ -378,6 +378,7 @@ Následující tabulka ukazuje, jak rutiny používané pro Data Lake Storage Ge
 |Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|Rutina Get-AzDataLakeGen2FileContent stahuje obsah souboru do místního souboru.|
 |Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
 |New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|Tato rutina nahraje nový obsah souboru z místního souboru.|
+|Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item||
 |Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update – AzDataLakeGen2Item|Rutina Update-AzDataLakeGen2Item aktualizuje jenom jednu položku, a ne rekurzivně. Pokud chcete rekurzivně aktualizovat, vypište položky pomocí rutiny Get-AzDataLakeStoreChildItem a pak vytvořte kanál rutiny Update-AzDataLakeGen2Item.|
 |Test – AzDataLakeStoreItem|Get-AzDataLakeGen2Item|Rutina Get-AzDataLakeGen2Item oznámí chybu, pokud položka neexistuje.|
 

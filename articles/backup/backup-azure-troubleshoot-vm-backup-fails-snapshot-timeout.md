@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928246"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996268"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -29,7 +29,6 @@ Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekon
   - Pro virtuální počítače s Windows postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) a restartujte agenta hosta.<br>
   - Pro virtuální počítače se systémem Linux postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) a restartujte agenta hosta.
 
-
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nepovedlo se komunikovat s agentem virtuálního počítače pro stav snímku.
 
 **Kód chyby**: GuestAgentSnapshotTaskStatusError<br>
@@ -44,6 +43,8 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Příčina 3: [nejde načíst stav snímku nebo nejde udělat snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) .**
 
 **Příčina 4: [rozšíření zálohování se nepodařilo aktualizovat nebo načíst](#the-backup-extension-fails-to-update-or-load) .**
+
+**Příčina 5: [virtuální počítač – možnosti konfigurace agenta nejsou nastavené (pro virtuální počítače se systémem Linux)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – virtuální počítač je ve stavu selhání zřizování.
 
@@ -196,6 +197,11 @@ Pokud požadujete podrobné protokolování pro waagent, postupujte takto:
 1. V souboru/etc/waagent.conf vyhledejte následující řádek: **Povolit podrobné protokolování (y | n)**
 2. Změňte **log. verbose** hodnota z *n* na *y*.
 3. Uložte změnu a pak restartujte waagent, a to provedením kroků popsaných výše v této části.
+
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM – možnosti konfigurace agenta nejsou nastavené (pro virtuální počítače se systémem Linux)
+
+Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. Rozšíření možností konfiguračního souboru **. povolení** a **zřizování. Agent** by měl být nastaven na hodnotu **y** , aby fungovala záloha.
+Úplný seznam možností konfiguračního souboru agenta virtuálního počítače najdete prosím <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Stav snímku nelze načíst nebo nelze vytvořit snímek.
 

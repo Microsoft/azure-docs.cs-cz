@@ -1,28 +1,28 @@
 ---
-title: 'Rychlý start: Provádět vyhledávání na webu s využitím Node.js – rozhraní API REST webové vyhledávání Bingu'
+title: 'Rychlý Start: provedení hledání na webu pomocí Node. js – Vyhledávání na webu Bingu REST API'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků na Bingu Web Search REST API pomocí Node.js a přijetí odpovědi JSON
+description: Pomocí tohoto rychlého startu můžete odesílat požadavky na Vyhledávání na webu Bingu REST API pomocí Node. js a přijímat odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f45b6ce402a5f61faeabd1534d7e3562af81294c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60651062"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973862"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Rychlý start: Vyhledávání na webu pomocí rozhraní API REST webové vyhledávání Bingu a Node.js
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a Node. js
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci Node.js k rozhraní API odešle žádost o vyhledávání a ukázka odezvy. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
@@ -44,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Nastavení klíče předplatného
 
-Tento fragment kódu používá proměnnou prostředí `AZURE_SUBSCRIPTION_KEY`, pomocí které ukládá váš klíč předplatného. To je dobrý způsob, jak zabránit nechtěnému zveřejnění vašich klíčů, když se kód nasazuje. Přejděte [stránku vašeho rozhraní API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) k vyhledání váš klíč předplatného.
+Tento fragment kódu používá proměnnou prostředí `AZURE_SUBSCRIPTION_KEY`, pomocí které ukládá váš klíč předplatného. To je dobrý způsob, jak zabránit nechtěnému zveřejnění vašich klíčů, když se kód nasazuje. Pokud chcete vyhledat klíč předplatného, otevřete [stránku vašich rozhraní API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) .
 
 Pokud používání proměnných prostředí neznáte nebo chcete spustit tuto aplikaci co nejdříve, můžete nahradit hodnotu `process.env['AZURE_SUBSCRIPTION_KEY']` svým klíčem předplatného nastaveným jako řetězec.
 
@@ -57,7 +57,7 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>Vytvoření funkce k odeslání požadavku
 
-Tato funkce odešle zabezpečený požadavek GET a zároveň uloží vyhledávací dotaz jako parametr dotazu na dané cestě. `encodeURIComponent` se používá k uvození neplatných znaků a klíč předplatného se předává jako hlavička. Zpětné volání dostane [odpověď](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse), která provede registraci k události `data`, aby se agregoval text JSON, k události `error`, aby se protokolovaly veškeré problémy, a k události `end`, aby se vědělo, kdy se má zpráva považovat za šablonu. Až to bude hotové, aplikace vytiskne zajímavé hlavičky a text zprávy. Můžete libovolně upravovat barvy a nastavit hloubku tak, aby odpovídaly vašim představám. Hloubka `1` nabízí dobré shrnutí odpovědi.
+Tato funkce odešle zabezpečený požadavek GET a zároveň uloží vyhledávací dotaz jako parametr dotazu na dané cestě. `hostname` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.  `encodeURIComponent` se používá k uvození neplatných znaků a klíč předplatného se předává jako hlavička. Zpětné volání dostane [odpověď](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse), která provede registraci k události `data`, aby se agregoval text JSON, k události `error`, aby se protokolovaly veškeré problémy, a k události `end`, aby se vědělo, kdy se má zpráva považovat za šablonu. Až to bude hotové, aplikace vytiskne zajímavé hlavičky a text zprávy. Můžete libovolně upravovat barvy a nastavit hloubku tak, aby odpovídaly vašim představám. Hloubka `1` nabízí dobré shrnutí odpovědi.
 
 ```javascript
 function bingWebSearch(query) {
@@ -266,7 +266,7 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)

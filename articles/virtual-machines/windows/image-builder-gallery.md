@@ -1,26 +1,26 @@
 ---
 title: Použití Azure image Builder s galerií imagí pro virtuální počítače s Windows (Preview)
-description: Vytvářejte image Windows pomocí Azure image Builder a galerie sdílených imagí.
+description: Vytvářejte image virtuálních počítačů s Windows pomocí Azure image Builder a galerie sdílených imagí.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d9763ccc5f5967b9fc9932a11fff655e6120fd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698669"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976073"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: Vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených imagí 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření bitové kopie systému Windows a její distribuce do galerie sdílených imagí 
 
 V tomto článku se dozvíte, jak můžete pomocí Tvůrce imagí Azure vytvořit verzi image v [galerii sdílených imagí](shared-image-galleries.md)a pak ji distribuovat globálně.
 
 K nakonfigurování image budeme používat šablonu. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
 
-Pro distribuci image do galerie sdílených imagí šablona používá [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako hodnotu pro `distribute` oddíl šablony.
+Chcete-li distribuovat bitovou kopii do galerie sdílených imagí, šablona používá [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako hodnotu oddílu `distribute` šablony.
 
 > [!IMPORTANT]
 > Azure image Builder je momentálně ve verzi Public Preview.
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Udělte službě Azure image Builder oprávnění k vytváření prostředků v této skupině prostředků. `--assignee` Hodnota je ID registrace aplikace pro službu Tvůrce imagí. 
+Udělte službě Azure image Builder oprávnění k vytváření prostředků v této skupině prostředků. Hodnota `--assignee` je ID registrace aplikace pro službu Tvůrce imagí. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -191,11 +191,11 @@ Vytvořte připojení ke vzdálené ploše virtuálního počítače pomocí už
 dir c:\
 ```
 
-Měl by se zobrazit adresář s `buildActions` názvem, který byl vytvořen během přizpůsobení bitové kopie.
+Měl by se zobrazit adresář s názvem `buildActions`, který byl vytvořen během přizpůsobení obrázku.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud se teď chcete pokusit znovu přizpůsobit verzi image, aby se vytvořila nová verze stejné image, přeskočte **Tento krok** a přejděte k části [použití Azure image Builder k vytvoření další verze image](image-builder-gallery-update-image-version.md).
+Pokud se teď chcete pokusit znovu přizpůsobit verzi image, aby se vytvořila nová verze stejné image, **přeskočte tento krok** a přejděte k části [použití Azure image Builder k vytvoření další verze image](image-builder-gallery-update-image-version.md).
 
 
 Tato akce odstraní vytvořenou bitovou kopii spolu se všemi ostatními soubory prostředků. Před odstraněním prostředků se ujistěte, že jste hotovi s tímto nasazením.
@@ -211,7 +211,7 @@ az resource delete \
     -n helloImageTemplateforWinSIG01
 ```
 
-Získat verzi image vytvořenou tvůrcem imagí, vždy se `0.`spustí a pak se odstraní verze image.
+Získat verzi image vytvořenou tvůrcem imagí, vždy se spustí s `0.`a pak odstraní verzi image.
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

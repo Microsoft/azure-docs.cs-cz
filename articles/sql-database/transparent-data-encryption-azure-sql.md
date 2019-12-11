@@ -8,27 +8,27 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: b6af171eafbaf1f4d31bad649fcb0c69d8bdc24d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821712"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995877"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a datový sklad
 
-Transparentní šifrování dat (TDE) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a Azure Data Warehouse před hrozbou neoprávněné offline aktivity šifrováním dat v klidovém stavu. Provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakcí v reálném čase bez nutnosti změny aplikace. Ve výchozím nastavení je TDE povolený pro všechny nově nasazené databáze SQL Azure. TDE nelze použít k šifrování logické **Hlavní** databáze v SQL Database.  **Hlavní** databáze obsahuje objekty, které jsou potřebné k provedení operací TDE v uživatelských databázích.
+Transparentní šifrování dat (TDE) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a Azure Data Warehouse před hrozbou neoprávněné offline aktivity šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. Ve výchozím nastavení je transparentní šifrování dat povolené pro všechny nově nasazené databáze Azure SQL. TDE nelze použít k šifrování logické **Hlavní** databáze v SQL Database.  **Hlavní** databáze obsahuje objekty, které jsou potřebné k provedení operací TDE v uživatelských databázích.
 
 TDE se musí ručně povolit pro starší databáze Azure SQL Database, Azure SQL Managed instance nebo Azure SQL Data Warehouse.
 Databáze spravované instance vytvořené prostřednictvím obnovení dědí stav šifrování ze zdrojové databáze.
 
 Transparentní šifrování dat šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze. Tento šifrovací klíč databáze je chráněn transparentní ochranou šifrování dat. Ochrana je buď certifikát spravovaný službou (transparentní šifrování dat spravovaný službou), nebo asymetrický klíč uložený v Azure Key Vault (Bring Your Own Key). Ochranu transparentního šifrování dat nastavíte na úrovni serveru pro Azure SQL Database a datový sklad a na úrovni instance pro spravovanou instanci Azure SQL. Pojem *Server* v celém tomto dokumentu odkazuje na server i na instanci, pokud není uvedeno jinak.
 
-Při spuštění databáze se zašifrovaný šifrovací klíč databáze dešifruje a pak se použije k dešifrování a opětovnému šifrování souborů databáze v procesu SQL Server databázového stroje. Transparentní šifrování dat provádí šifrování v/v v reálném čase a dešifrování dat na úrovni stránky. Každá stránka je dešifrována, když je načtena do paměti a pak je před zápisem na disk zašifrována. Obecný popis transparentního šifrování dat najdete v tématu [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
+Při spuštění databáze se zašifrovaný šifrovací klíč databáze dešifruje a pak se použije k dešifrování a opětovnému šifrování souborů databáze v procesu SQL Server databázového stroje. Transparentní šifrování dat provádí šifrování v/v v reálném čase a dešifrování dat na úrovni stránky. Každá stránka se při načtení do paměti dešifruje a pak se před zápisem na disk zašifruje. Obecný popis transparentního šifrování dat najdete v tématu [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 
 SQL Server spuštěný na virtuálním počítači Azure taky může použít asymetrický klíč z Key Vault. Konfigurační postup se liší od použití asymetrického klíče v SQL Database a spravované instanci SQL. Další informace najdete v tématu [rozšiřitelná Správa klíčů pomocí Azure Key Vault (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server).
 
@@ -121,8 +121,8 @@ Připojte se k databázi pomocí přihlašovacího jména, které je správcem n
 | Příkaz | Popis |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | NASTAVENÍ šifrování ZAPNUTo nebo vypnuto šifrování nebo dešifrování databáze |
-| [sys. dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Vrátí informace o stavu šifrování databáze a přidružených šifrovacích klíčích databáze. |
-| [sys. dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Vrátí informace o stavu šifrování každého uzlu datového skladu a jeho přidružených šifrovacích klíčů databáze. |
+| [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Vrátí informace o stavu šifrování databáze a přidružených šifrovacích klíčích databáze. |
+| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Vrátí informace o stavu šifrování každého uzlu datového skladu a jeho přidružených šifrovacích klíčů databáze. |
 |  | |
 
 Nemůžete přepnout ochranu transparentního šifrování dat na klíč z Key Vault pomocí jazyka Transact-SQL. Použijte PowerShell nebo Azure Portal.

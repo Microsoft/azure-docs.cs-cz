@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 65775a9c7a6d66a088eccdfdb22ce7d6b01829d2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d6a17322c360040b8fa77ac243a1b568f0d10c1f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925408"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996489"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby úložiště objektů BLOB v Azure pro Azure Functions
 
@@ -463,7 +463,7 @@ Funkce JavaScriptu a Java načtou celý objekt blob do paměti a C# funkce to ud
 
 ## <a name="trigger---polling"></a>Trigger – cyklické dotazování
 
-Pokud monitorovaný kontejner objektů BLOB obsahuje více než 10 000 objektů BLOB (ve všech kontejnerech), modul runtime Functions prohledá soubory protokolu, aby se sledovaly pro nové nebo změněné objekty blob. Tento proces může mít za následek zpoždění. Funkce se nemusí aktivovat, dokud neproběhne několik minut nebo déle po vytvoření objektu BLOB.
+Cyklické dotazování funguje jako hybrid mezi kontrolou protokolů a spouštěním pravidelného prohledávání kontejnerů. Objekty BLOB se prohledávají ve skupinách po 10 000 s tokenem pokračování použitým mezi intervaly.
 
 > [!WARNING]
 > [Protokoly úložiště se navíc vytvářejí na základě nejlepšího úsilí](/rest/api/storageservices/About-Storage-Analytics-Logging) . Není zaručeno, že budou zachyceny všechny události. Za určitých podmínek můžou být protokoly zmeškané.

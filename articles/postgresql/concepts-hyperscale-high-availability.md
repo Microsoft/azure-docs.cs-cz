@@ -1,5 +1,5 @@
 ---
-title: Vysoká dostupnost v Azure Database for PostgreSQL – škálovatelné (Citus)
+title: Vysoká dostupnost – Citus (High-Scale) – Azure Database for PostgreSQL
 description: Koncepce vysoké dostupnosti a zotavení po havárii
 author: jonels-msft
 ms.author: jonels
@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 616b5bff735f52d137c12c58ac6023c38a2d4044
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514742"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975529"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Vysoká dostupnost v Azure Database for PostgreSQL – škálovatelné (Citus)
 
-Vysoká dostupnost (HA) brání výpadkům databáze tím, že udržuje pohotovostní repliky všech uzlů ve skupině serverů. Pokud dojde k výpadku uzlu, změní škálování příchozí připojení z neúspěšného uzlu do jeho úsporného režimu. Převzetí služeb při selhání proběhne během několika minut a propagované uzly mají vždycky nová data prostřednictvím replikace synchronního streamování PostgreSQL.
+Vysoká dostupnost (HA) zabraňuje výpadkům databází díky správě samostatných replik všech uzlů ve skupině serverů. Když se vypne uzel, Hyperscale přepne příchozí připojení z chybového uzlu na příslušný rezervní uzel. Během několika minut dojde k převzetí služeb při selhání a uzly se zvýšenou úrovní mají vždycky čerstvá data díky synchronní replikaci streamování PostgreSQL.
 
 Aby bylo možné využít výhod HA v uzlu koordinátora, musí databázové aplikace detekovat a opakovat zrušená připojení a neúspěšné transakce. Nově povýšený koordinátor bude přístupný se stejným připojovacím řetězcem.
 

@@ -1,6 +1,6 @@
 ---
-title: Jednostránkové aplikace (volání webového rozhraní API) – Microsoft Identity Platform
-description: Naučte se vytvářet jednostránkové aplikace (volání webového rozhraní API).
+title: Sestavení jednostránkové aplikace s voláním webového rozhraní API – Microsoft Identity Platform | Azure
+description: Naučte se vytvořit jednostránkovou aplikaci, která volá webové rozhraní API.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -15,12 +15,12 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4170a6642d35802581b5d1ff28eb802a6eb3482b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 1171d8c3bc28c7b325cc8daf6cc072965363339c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766153"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965327"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Jednostránkové aplikace: volání webového rozhraní API
 

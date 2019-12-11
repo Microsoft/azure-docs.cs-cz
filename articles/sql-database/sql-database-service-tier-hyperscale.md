@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927664"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978624"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -245,7 +245,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Managed Instance | Služba Azure SQL Database Managed instance se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současnosti nepodporují u SQL Databaseho škálování.|
 | Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BACPAC nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.).|
-| Migrace databází pomocí trvalých objektů v paměti | Pro škálování podporuje pouze netrvalé objekty v paměti (typy tabulek, nativní aktualizace SPs a funkce).  Trvalé tabulky v paměti a další objekty je nutné vyřadit a znovu vytvořit jako objekty, které nejsou v paměti, před migrací databáze na úroveň služby pro škálování na úrovni služby.|
+| Migrace databází s objekty OLTP v paměti | OLTP podporuje pouze podmnožinu typů objektů v paměti, včetně paměťově optimalizovaných typů tabulek, nativně kompilovaných uložených procedur a funkcí. Pokud se ale v databázi nacházejí nějaké objekty OLTP v paměti, není podporována přímá migrace z úrovní služeb Premium a Pro důležité obchodní informace do škálování na velká. Migrace takové databáze do škálování vyžaduje tři kroky: (1) vyřaďte všechny objekty OLTP v paměti a jejich závislosti. Chcete-li zachovat data v trvanlivých paměťově optimalizovaných tabulkách, převeďte je na diskové tabulky. (2) Změna úrovně služby databáze na škálování. (3) znovu vytvořit dříve vynechané objekty. Odolné a neodolné paměťově optimalizované tabulky se v současné době nepodporují v měřítku a musí zůstat na diskových tabulkách. Jsou podporovány proměnné tabulky optimalizované pro paměť. |
 | Sledování změn | Change Tracking je v současné době ve verzi Public Preview a dá se povolit pro nové nebo existující databáze s více instancemi. |
 | Geografická replikace  | U Azure SQL Databaseho škálování se ještě nedá konfigurovat geografickou replikaci. |
 | Kopie databáze | Ještě nemůžete použít kopii databáze k vytvoření nové databáze ve službě Azure SQL s škálovatelným škálováním. |

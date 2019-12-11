@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: dbce24ced0ed057eac829d5c4b7223a10fa96b3e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888474"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977756"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>Dynamické balení v Media Services
 
@@ -269,6 +269,9 @@ Chcete-li řídit počet běhů, formátů, přenosové rychlosti a časová obd
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
 
 *Dynamické šifrování* můžete použít k dynamickému šifrování živého obsahu nebo na vyžádání pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple Fairplay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](content-protection-overview.md).
+
+> [!NOTE]
+> Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="more-information"></a>Další informace
 

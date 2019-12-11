@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK | Microsoft Docs'
+title: 'Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí sady Python SDK.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 7a9d0d6619878299768e1f17b4da3280ea1ec1fc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98070ab8f715305fe01c940026ecf5f49f8c28f9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564610"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976039"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK 
 
-Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí sady Python SDK. I když Vlastní vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Vlastní vyhledávání Bingu SDK poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu s [](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) dalšími zpracováním chyb a poznámkami.
+Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí sady Python SDK. I když Vlastní vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Vlastní vyhledávání Bingu SDK poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) s dalšími zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Instance Vlastní vyhledávání Bingu. Další [informace najdete v tématu rychlý Start: Pro další informace vytvořte první](quick-start.md) instanci vlastní vyhledávání Bingu.
+- Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md) .
 - Python [2. x nebo 3. x](https://www.python.org/) 
 - [Sada SDK vlastní vyhledávání Bingu pro Python](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) 
 
@@ -53,13 +53,13 @@ from msrest.authentication import CognitiveServicesCredentials
     subscription_key = 'your-subscription-key'
     ```
 
-2. Vytvořte instanci `CustomSearchClient` `CognitiveServicesCredentials` pomocí objektu s klíčem předplatného. 
+2. Vytvořte instanci `CustomSearchClient`pomocí objektu `CognitiveServicesCredentials` s klíčem předplatného. 
 
     ```python
     client = CustomSearchClient(CognitiveServicesCredentials(subscription_key))
     ```
 
-3. Odešlete žádost o vyhledávání `client.custom_instance.search()`pomocí. Přidejte hledaný termín k `query` parametru a nastavte `custom_config` na vlastní ID konfigurace, aby bylo možné použít vaši instanci hledání. Své ID můžete získat z [portálu vlastní vyhledávání Bingu](https://www.customsearch.ai/)kliknutím na kartu **Výroba** .
+3. Odešlete žádost o hledání pomocí `client.custom_instance.search()`. Přidejte hledaný termín do parametru `query` a nastavte `custom_config` na vlastní ID konfigurace, aby bylo možné použít vaši instanci hledání. Své ID můžete získat z [portálu vlastní vyhledávání Bingu](https://www.customsearch.ai/)kliknutím na kartu **Výroba** .
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")
@@ -79,7 +79,7 @@ else:
     print("Didn't see any web data..")
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření vlastní vyhledávací webové aplikace](./tutorials/custom-search-web-page.md)

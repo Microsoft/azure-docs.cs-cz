@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1e67fc3a2f878e5e04834f67027c98e0b37e9059
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580619"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973590"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -23,14 +23,14 @@ Přečtěte si o architektuře, konceptech a pracovním postupu pro Azure Machin
 
 ![Azure Machine Learning architektura a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 Pracovní postup modelu Machine Learning se obvykle řídí tímto pořadím:
 
 1. **Průřez**
     + Vývoj školicích skriptů pro strojové učení v **Pythonu** nebo pomocí vizuálního návrháře.
-    + Vytvořte a nakonfigurujte **výpočetní cíl**.
-    + **Odešlete skripty** do konfigurovaného výpočetního cíle pro spuštění v daném prostředí. Během školení můžou skripty číst nebo zapisovat do **úložiště dat**. A záznamy o spuštění jsou uloženy jako **běhy** v **pracovním prostoru** a seskupeny pod **experimenty**.
+    + Vytvoření a konfigurace **cílové výpočetní prostředí**.
+    + **Odeslat skripty** do cílového výpočetního nakonfigurované prostředí pro spuštění v daném prostředí. Během školení můžou skripty číst nebo zapisovat do **úložiště dat**. A záznamy o spuštění jsou uloženy jako **běhy** v **pracovním prostoru** a seskupeny pod **experimenty**.
 
 1. **Balíček** – po nalezení uspokojivého spuštění Zaregistrujte trvalý model v **registru modelu**.
 
@@ -59,16 +59,16 @@ Použijte tyto nástroje pro Azure Machine Learning:
 + <a href="#compute-instance">Virtuální počítač poznámkového bloku</a>
 + <a href="#compute-targets">Cíle výpočtů</a>
 + <a href="#datasets-and-datastores">Datová sada & úložiště dat</a>
-+ <a href="#endpoints">Bod</a>
-+ <a href="#environments">Environment</a>
++ <a href="#endpoints">Koncové body</a>
++ <a href="#environments">Prostředí</a>
 + [Odhady](#estimators)
 + <a href="#experiments">Experimenty</a>
 + <a href="#github-tracking-and-integration">Sledování Gitu</a>
 + <a href="#iot-module-endpoints">Moduly IoT</a>
-+ <a href="#logging">Protokolu</a>
++ <a href="#logging">Protokolování</a>
 + <a href="#ml-pipelines">Kanály ML</a>
 + <a href="#models">Vzor</a>
-+ <a href="#runs">Spouštěl</a>
++ <a href="#runs">Spuštění</a>
 + <a href="#run-configurations">Konfigurace spuštění</a>
 + <a href="#snapshots">Snímek</a>
 + <a href="#training-scripts">Školicí skript</a>
@@ -77,10 +77,10 @@ Použijte tyto nástroje pro Azure Machine Learning:
 
 ### <a name="activities"></a>Aktivity
 
-Aktivita představuje dlouhou běžící operaci. Následující operace jsou příklady aktivit:
+Aktivita představuje dlouhotrvající operace. Příklady aktivit jsou následující operace:
 
-* Vytvoření nebo odstranění cíle výpočetního prostředí
-* Spuštění skriptu na výpočetním cíli
+* Vytvoření nebo odstranění cílové výpočetní prostředí
+* Spuštění skriptu na cílové výpočetní prostředí
 
 Aktivity můžou poskytovat oznámení prostřednictvím sady SDK nebo webového uživatelského rozhraní, abyste mohli snadno monitorovat průběh těchto operací.
 
@@ -90,7 +90,7 @@ Aktivity můžou poskytovat oznámení prostřednictvím sady SDK nebo webového
 
 Další informace o virtuálních počítačích poznámkových bloků
 
-### <a name="compute-targets"></a>Cíle výpočtů
+### <a name="compute-targets"></a>Cílových výpočetních prostředí
 
 [Cílový výpočetní](concept-compute-target.md) výkon vám umožní určit výpočetní prostředek, ve kterém spustíte školicí skript, nebo hostovat nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek.
 
@@ -151,7 +151,7 @@ Další informace najdete v následujících článcích:
 
 ### <a name="experiments"></a>Experimenty
 
-Experiment je seskupení mnoha běhů ze zadaného skriptu. Vždycky patří do pracovního prostoru. Po odeslání běhu zadáte název experimentu. Informace pro běh jsou uloženy v rámci tohoto experimentu. Pokud odešlete běh a určíte název experimentu, který neexistuje, automaticky se vytvoří nový experiment s tímto nově zadaným názvem.
+Experiment je seskupení mnoha běhů ze zadaného skriptu. Vždy patří do pracovního prostoru. Když odešlete spustit, zadejte název experimentu. Informace pro spuštění jsou uloženy v rámci testu. Pokud odešlete běh a určíte název experimentu, který neexistuje, automaticky se vytvoří nový experiment s tímto nově zadaným názvem.
 
 Příklad použití experimentu najdete v tématu [kurz: výuka prvního modelu](tutorial-1st-experiment-sdk-train.md).
 
@@ -168,7 +168,7 @@ Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vaše
 
 ### <a name="ml-pipelines"></a>Kanály ML
 
-Pomocí kanálů strojového učení můžete vytvářet a spravovat pracovní postupy, které dohromady spojí fáze strojového učení. Kanál může například zahrnovat přípravu dat, školení modelů, nasazení modelu a fáze odvození a bodování. Každá fáze může zahrnovat několik kroků, z nichž každá může běžet bez obsluhy v různých výpočetních cílech. 
+Pomocí kanálů strojového učení můžete vytvářet a spravovat pracovní postupy, které dohromady spojí fáze strojového učení. Kanál může například zahrnovat přípravu dat, školení modelů, nasazení modelu a fáze odvození a bodování. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí. 
 
 Kroky kanálu jsou opakovaně použitelné a je možné je spustit bez nutnosti znovu spustit následné kroky, pokud se výstup tohoto kroku nezměnil. V případě, že se data nezměnila, můžete například přeškolit model bez nutnosti znovu spustit nákladný postup přípravy dat. Kanály také umožňují pracovníkům dat spolupracovat při práci na samostatných oblastech pracovního postupu Machine Learning.
 
@@ -176,9 +176,9 @@ Další informace o kanálech strojového učení s touto službou najdete v té
 
 ### <a name="models"></a>Modely
 
-V nejjednodušším modelu je kód, který přebírá vstup a vytváří výstup. Vytvoření modelu Machine Learning zahrnuje výběr algoritmu a jeho poskytování dat a ladění parametrů. Školení je iterativní proces, který vytváří školicí model, který zapouzdřuje model, který byl zjištěn během procesu školení.
+V nejjednodušším model je část kódu, která přijímá vstup a výstup. Vytvoření modelu strojového učení zahrnuje výběr algoritmus, poskytuje s daty a ladění hyperparameters. Školení je iterativní proces, který vytváří trénovaného modelu, který zapouzdřuje modelu osvojené během procesu trénování.
 
-Model je vytvořen pomocí rutiny Run v Azure Machine Learning. Můžete také použít model, který je vyškolen mimo Azure Machine Learning. Model můžete zaregistrovat v pracovním prostoru Azure Machine Learning.
+Model je produkovaný spustit ve službě Azure Machine Learning. Můžete také použít model, který je vyškolen mimo Azure Machine Learning. Model můžete zaregistrovat v pracovním prostoru Azure Machine Learning.
 
 Azure Machine Learning je nezávislá Framework. Při vytváření modelu můžete použít jakoukoli oblíbenou architekturu strojového učení, jako je Scikit-Learning, XGBoost, PyTorch, TensorFlow a chainer.
 
@@ -186,7 +186,7 @@ Příklad školení modelu pomocí Scikit-učení a Estimator najdete v tématu 
 
 **Registr modelu** udržuje přehled o všech modelech v pracovním prostoru Azure Machine Learning.
 
-Modely se identifikují podle názvu a verze. Pokaždé, když zaregistrujete model se stejným názvem, jako má stávající, registr předpokládá, že se jedná o novou verzi. Verze se zvýší a nový model se zaregistruje pod stejným názvem.
+Modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem, jako má stávající, registr předpokládá, že se jedná o novou verzi. Verze se zvýší a nový model se zaregistruje pod stejným názvem.
 
 Při registraci modelu můžete zadat další značky metadat a pak použít značky při hledání modelů.
 
@@ -204,7 +204,7 @@ Spuštění je jediné spuštění školicího skriptu. Azure Machine Learning z
 * Metadata o běhu (časové razítko, doba trvání atd.)
 * Metriky, které jsou protokolovány vaším skriptem
 * Výstupní soubory, které jsou na základě experimentu shromažďovány nebo výslovně nahrány
-* Snímek adresáře, který obsahuje vaše skripty před spuštěním
+* Snímek adresáře, který obsahuje vaše skripty před spuštění
 
 Spuštění vytvoříte při odeslání skriptu pro výuku modelu. Spuštění může mít nula nebo více podřízených spuštění. Například spuštění na nejvyšší úrovni může mít dvě podřízená spuštění, z nichž každá může mít vlastní podřízený běh.
 
@@ -217,14 +217,14 @@ Konfiguraci spuštění lze zachovat do souboru v adresáři, který obsahuje š
 Například konfigurace spuštění najdete v tématu [Výběr a použití výpočetní cíle ke školení modelu](how-to-set-up-training-targets.md).
 ### <a name="snapshots"></a>Snímky
 
-Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor ZIP jako snímek jako součást záznamu spuštění. Kdokoli s přístupem k pracovnímu prostoru může procházet záznam spuštění a stáhnout snímek.
+Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor zip jako snímek jako součást spuštění záznamu. Každý, kdo má přístup k pracovním prostoru můžete procházet záznam spuštění a stáhnout snímek.
 
 > [!NOTE]
 > Aby nedocházelo k zahrnutí zbytečných souborů do snímku, udělejte soubor Ignore (. gitignore nebo. amlignore). Tento soubor umístěte do adresáře snímků a přidejte do něj názvy souborů, které chcete v něm ignorovat. Soubor. amlignore používá stejnou [syntaxi a vzory jako soubor. gitignore](https://git-scm.com/docs/gitignore). Pokud oba soubory existují, má soubor. amlignore přednost.
 
-### <a name="training-scripts"></a>Školicí skripty
+### <a name="training-scripts"></a>Trénovací skripty
 
-Pro výuku modelu zadáte adresář, který obsahuje školicí skript a přidružené soubory. Zadejte také název experimentu, který se používá k ukládání informací shromážděných během školení. Během školení se celý adresář zkopíruje do školicího prostředí (cíl výpočtů) a spustí se skript, který je zadaný v konfiguraci spuštění. Snímek adresáře je uložen také v experimentu v pracovním prostoru.
+Pro trénování modelu, určíte adresář, který obsahuje skript školení a přidružené soubory. Zadejte také název experimentu, který se používá k ukládání informací shromážděných během školení. Během školení se celý adresář zkopíruje do školicího prostředí (cíl výpočtů) a spustí se skript, který je zadaný v konfiguraci spuštění. Snímek adresáře je také uložen v rámci testu v pracovním prostoru.
 
 Příklad najdete v tématu [kurz: výuka modelu klasifikace obrázků pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
 

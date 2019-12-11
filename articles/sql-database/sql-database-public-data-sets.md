@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821288"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973539"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejné datové sady pro testování a vytváření prototypů
 
@@ -26,7 +26,7 @@ Projděte si tento seznam veřejných datových sad pro data, která můžete po
 
 | Zdroj dat | Informace o datech | O souborech |
 |---|---|---|
-| [Data pro státní správu USA](https://www.census.gov/data.html) | Více než 190 000 datových sad, které se týkají zemědělství, klimatu, spotřebitelů, ekosystémů, vzdělávání, energetiky, financí, zdravotnictví, místní samosprávy, výroby, mořského, oceánu, veřejného zabezpečení a vědy a výzkumu v USA | Soubory různých velikostí v různých formátech, mezi které patří HTML, XML, CSV, JSON, Excel a spousta dalších. Dostupné datové sady můžete filtrovat podle formátu souboru. |
+| [Data pro státní správu USA](https://catalog.data.gov/dataset) | Více než 250 000 datových sad, které se týkají zemědělství, klimatu, spotřebitelů, ekosystémů, vzdělávání, energetiky, financí, zdravotnictví, místní samosprávy, výroby, mořského, oceánu, veřejného zabezpečení a vědy a výzkumu v USA | Soubory různých velikostí v různých formátech, mezi které patří HTML, XML, CSV, JSON, Excel a spousta dalších. Dostupné datové sady můžete filtrovat podle formátu souboru. |
 | [Data o sčítání USA](https://www.census.gov/data.html) | Statistická data o naplnění USA | Datové sady jsou v různých formátech. |
 | [Země – věda – data z NASA](https://earthdata.nasa.gov/) | Více než 32 000 kolekcí dat, které se týkají zemědělství, atmosféry, biosféry, klimatu, cryosphere, lidských rozměrů, hydrosphere, půdního povrchu, oceánů, interakcí Sun-Earth a dalších. | Datové sady jsou v různých formátech. |
 | [Zpoždění leteckých letů a další přepravní data](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Středisko pro povýšení statistik přepravosti (tečka) v USA sleduje provoz domácích letů provozovaných v rámci velkých leteckých dopravců. Zobrazí se souhrnné informace o počtu neúspěšných, zpožděných, zrušených a předaných letů... v souhrnných tabulkách publikovaných na tomto webu. | Soubory jsou ve formátu CSV. |

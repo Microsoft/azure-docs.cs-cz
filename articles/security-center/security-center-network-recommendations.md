@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 21feed73d025e0c0a4b2c7bb07d23f450780126e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 5d13e944cbc083b314c71936d181101ec13037b4
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766782"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997135"
 ---
 # <a name="protect-your-network-resources"></a>Ochrana síťových prostředků
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
@@ -27,7 +27,7 @@ Tento článek vysvětluje stránku **síť** v části věnované zabezpečení
 
 Úplný seznam doporučení pro sítě najdete v tématu [doporučení pro sítě](recommendations-network.md).
 
-Tento článek se zabývá doporučeními, která se vztahují na vaše prostředky Azure z hlediska zabezpečení sítě. Doporučení pro sítě – centrum pro brány firewall nové generace, skupiny zabezpečení sítě, přístup k virtuálnímu počítači JIT přes povolující pravidla příchozího provozu a další. Seznam doporučení k síti a nápravné akce najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
+Tento článek se zabývá doporučeními, která se vztahují na vaše prostředky Azure z hlediska zabezpečení sítě. Doporučení pro sítě – centrum pro brány firewall nové generace, skupiny zabezpečení sítě, přístup k virtuálnímu počítači JIT, který má nadlimitně povolující pravidla příchozího provozu a další. Seznam doporučení k síti a nápravné akce najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
 > [!NOTE]
 > Stránka **síť** vám umožňuje hluboko podrobně do stavu prostředků Azure z hlediska sítě. Mapa sítě a adaptivní síťové ovládací prvky jsou k dispozici pouze pro Azure Security Center úrovně Standard. [Pokud používáte úroveň Free, můžete kliknutím na toto tlačítko **Zobrazit starší síťové sítě** a přijímat doporučení síťových prostředků](#legacy-networking).
@@ -136,7 +136,7 @@ V tomto zobrazení topologie zobrazuje první úroveň virtuální sítě. Druh�
 Třetí úroveň zobrazuje virtuální počítače, které jsou podobné tomu, co bylo popsáno dříve. Kliknutím na libovolný prostředek můžete získat další informace nebo použít požadovaný ovládací prvek zabezpečení nebo konfiguraci.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících tématech:
+Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
 * [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrana služby Azure SQL Service v Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)

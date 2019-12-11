@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub Device Provisioning Service – koncepty zabezpečení
-description: Popisuje koncepty zřizování zabezpečení, které jsou specifické pro zařízení se službou Device Provisioning a IoT Hub
+description: Popisuje koncepty zřizování zabezpečení, které jsou specifické pro zařízení se službou Device Provisioning Service (DPS) a IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: ad392d9d979986723c17b43f210959e2504a8fb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228829"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973454"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service koncepce zabezpečení 
 
@@ -40,7 +40,7 @@ Modul hardwarového zabezpečení (HSM) se používá k zabezpečenému hardwaro
 
 Tajné kódy zařízení je také možné ukládat v softwaru (paměti), ale jedná se o méně bezpečnou podobu úložiště než modul hardwarového zabezpečení (HSM).
 
-## <a name="trusted-platform-module"></a>Modul Trusted Platform
+## <a name="trusted-platform-module"></a>Čip TPM (Trusted Platform Module)
 
 ČIP TPM může odkazovat na standard pro bezpečné ukládání klíčů používaných k ověřování platformy, nebo může odkazovat na vstupně-výstupní rozhraní používané pro interakci s moduly, které implementují Standard. Čipy TPM může existovat jako diskrétní hardware, integrovaný hardware, firmware nebo software založený na firmwaru nebo softwaru. Přečtěte si další informace o [ověření identity čipy TPM a čipu TPM](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Služba Device Provisioning podporuje jenom čip TPM 2,0.
 
@@ -54,7 +54,7 @@ Ověřovací klíč je asymetrický klíč obsažený v čipu TPM, který byl in
 
 Kořenový klíč úložiště je uložený v čipu TPM a používá se k ochraně klíčů TPM vytvořených aplikacemi, aby se tyto klíče nemohly používat bez čipu TPM. Kořenový klíč úložiště se vygeneruje, když převezmete vlastnictví čipu TPM. když vymažete čip TPM, aby mohl převzít vlastnictví nový uživatel, vygeneruje se nový kořenový klíč úložiště. Přečtěte si další informace o [kořenovém klíči úložiště](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
 
-## <a name="x509-certificates"></a>Certifikáty X. 509
+## <a name="x509-certificates"></a>X.509 – certifikáty
 
 Používání certifikátů X. 509 jako mechanismu ověřování je skvělým způsobem, jak škálovat produkční prostředí a zjednodušit zřizování zařízení. Certifikáty X. 509 jsou obvykle uspořádány v řetězu certifikátů, ve kterém jsou jednotlivé certifikáty v řetězu podepsány privátním klíčem dalšího certifikátu, a tak dále, s ukončením kořenového certifikátu podepsaného svým držitelem. Toto uspořádání vytvoří delegovaný řetěz důvěryhodnosti z kořenového certifikátu vygenerovaného důvěryhodnou kořenovou certifikační autoritou (CA) prostřednictvím každé zprostředkující certifikační autority na certifikát "list" koncového prvku "na zařízení. Další informace najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509](/azure/iot-hub/iot-hub-x509ca-overview). 
 

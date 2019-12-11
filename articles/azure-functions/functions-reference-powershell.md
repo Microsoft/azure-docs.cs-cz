@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí prostředí PowerShell.
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226685"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974236"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -50,7 +50,7 @@ PSFunctionApp
 
 V kořenovém adresáři projektu je k dispozici sdílený [`host.json`](functions-host-json.md) soubor, který lze použít ke konfiguraci aplikace Function App. Každá funkce má složku se svým vlastním souborem kódu (. ps1) a konfiguračním souborem vazby (`function.json`). Název nadřazeného adresáře souboru Function. JSON je vždycky název vaší funkce.
 
-Některé vazby vyžadují přítomnost `extensions.csproj` souboru. Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou definována v souboru `extensions.csproj` se skutečnými soubory knihovny ve složce `bin`. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
+Některé vazby vyžadují přítomnost `extensions.csproj` souboru. Rozšíření vazby, která jsou vyžadována ve [verzi 2. x a novějších verzích](functions-versions.md) modulu runtime Functions, jsou definována v souboru `extensions.csproj` se skutečnými soubory knihovny ve složce `bin`. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
 
 Ve funkcích aplikace PowerShell Functions můžete volitelně mít `profile.ps1`, která se spustí, když se spustí aplikace Function App (jinak se ví jako *[studené spuštění](#cold-start)* ). Další informace najdete v tématu [profil PowerShellu](#powershell-profile).
 
@@ -75,9 +75,9 @@ $TriggerMetadata.sys
 
 | Vlastnost   | Popis                                     | Typ     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Když v UTC, byla funkce aktivována.        | DateTime |
-| MethodName | Název aktivované funkce     | řetězec   |
-| RandGuid   | Jedinečný identifikátor GUID tohoto spuštění funkce | řetězec   |
+| UtcNow     | Když v UTC, byla funkce aktivována.        | Datum a čas |
+| MethodName | Název aktivované funkce     | string   |
+| RandGuid   | Jedinečný identifikátor GUID tohoto spuštění funkce | string   |
 
 Každý typ triggeru má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje `InsertionTime`, `Id``DequeueCount`, mimo jiné. Další informace o metadatech triggeru fronty najdete v [oficiální dokumentaci k aktivačním událostem fronty](functions-bindings-storage-queue.md#trigger---message-metadata). V dokumentaci k [aktivačním událostem](functions-triggers-bindings.md) , se kterými pracujete, můžete zjistit, co se nachází uvnitř metadat triggeru.
 
@@ -125,9 +125,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Níže jsou uvedené platné parametry pro volání `Push-OutputBinding`:
 
-| Název | Typ | Pozice | Popis |
+| Name (Název) | Typ | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
+| **`-Name`** | Řetězec | 1\. místo | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
 | **`-Clobber`** | Přepínací parametr | Jmenovanou | Volitelné Když se tato hodnota zadá, vynutí nastavení hodnoty pro zadanou výstupní vazbu. | 
 
@@ -275,7 +275,7 @@ K dispozici je řada triggerů a vazeb pro použití s aplikací Function App. �
 Všechny triggery a vazby jsou reprezentovány v kódu jako několik reálných datových typů:
 
 * Hashtable
-* řetězec
+* string
 * Byte
 * int
 * double
@@ -296,12 +296,12 @@ Objekt Request, který je předán do skriptu, je typu `HttpRequestContext`, kte
 
 | Vlastnost  | Popis                                                    | Typ                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body` je serializován do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | objekt |
+| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body` je serializován do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | object |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | < Řetězec slovníku, > řetězce<sup>*</sup> |
-| **`Method`** | Metoda HTTP požadavku.                                | řetězec                    |
+| **`Method`** | Metoda HTTP požadavku.                                | string                    |
 | **`Params`**  | Objekt, který obsahuje parametry směrování požadavku. | < Řetězec slovníku, > řetězce<sup>*</sup> |
 | **`Query`** | Objekt, který obsahuje parametry dotazu.                  | < Řetězec slovníku, > řetězce<sup>*</sup> |
-| **`Url`** | Adresa URL požadavku.                                        | řetězec                    |
+| **`Url`** | Adresa URL požadavku.                                        | string                    |
 
 <sup>*</sup> U všech `Dictionary<string,string>` klíčů se nerozlišují velká a malá písmena.
 
@@ -311,8 +311,8 @@ Objekt Response, který byste měli odeslat zpět, je typu `HttpResponseContext`
 
 | Vlastnost      | Popis                                                 | Typ                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | objekt                    |
-| **`ContentType`** | Krátká ruka pro nastavení typu obsahu pro odpověď. | řetězec                    |
+| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | object                    |
+| **`ContentType`** | Krátká ruka pro nastavení typu obsahu pro odpověď. | string                    |
 | **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulka   |
 | **`StatusCode`**  | Stavový kód protokolu HTTP odpovědi.                       | řetězec nebo int             |
 
@@ -601,7 +601,7 @@ Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

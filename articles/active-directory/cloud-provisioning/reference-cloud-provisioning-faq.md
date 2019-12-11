@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k zřizování cloudu Azure AD Connect
+title: Nejčastější dotazy ke zřizování cloudu Azure AD Connect
 description: V tomto dokumentu jsou popsány nejčastější dotazy k zřizování cloudu.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93c88b167884c455ffb995f35356b121bce8a207
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793553"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997084"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -42,7 +42,7 @@ Ano. Zřizování cloudu se dá použít k synchronizaci z několika doménovýc
 
 **Otázka: jak se Agent aktualizuje?**
 
-Agenti jsou automaticky upgradováni společností Microsoft. Tím se snižuje zatížení a otestuje a ověří nové verze agenta. 
+Agenti jsou automaticky upgradováni společností Microsoft. Pro IT tým to snižuje zatížení, které musí testovat a ověřovat nové verze agentů. 
 
 **Otázka: mohu zakázat automatický upgrade?**
 

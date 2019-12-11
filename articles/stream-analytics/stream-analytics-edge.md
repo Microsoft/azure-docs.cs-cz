@@ -8,26 +8,26 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 07fa43563ca9b6c9ae247df6eb28894331b004c1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621015"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976430"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
-Azure Stream Analytics (ASA) v prostředí IoT Edge umožňuje vývojářům nasadit téměř v reálném čase inteligentní funkce analýzy blíže zařízením IoT tak, aby bylo možné odemknout plný potenciál dat generovaných zařízením. Azure Stream Analytics je určená pro nízkou latenci, odolnost a efektivní využití šířky pásma a dodržování předpisů. Podniky nyní můžete nasadit logiky ovládacího prvku blízko průmyslové operací a doplňují analýzy velkých objemů dat v cloudu.  
+Azure Stream Analytics (ASA) na IoT Edge umožňuje vývojářům nasadit inteligentní funkce analýzy téměř v reálném čase blíže zařízením IoT, aby bylo možné odemknout plný potenciál dat generovaných zařízením. Služba Azure Stream Analytics je určená k zajištění nízké latence, odolnosti, efektivního využití šířky pásma a dodržování předpisů. Podniky teď můžou nasadit řídicí logiku v blízkosti průmyslových provozů jako doplněk analýzy velkých objemů dat prováděné v cloudu.  
 
 Azure Stream Analytics na hraničních zařízeních IoT běží v rámci [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) rozhraní framework. Po vytvoření úlohy v Azure Stream Analytics můžete nasadit a spravovat ho pomocí služby IoT Hub.
 
 ## <a name="scenarios"></a>Scénáře
 ![Vysokoúrovňový diagram IoT Edge](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Příkaz s nízkou latencí a ovládací prvek**: Například výrobní bezpečnostních systémů musí odpovědět na provozních dat s mimořádně nízkou latencí. S Azure Stream Analytics na hraničních zařízeních IoT můžete analyzovat senzor, data v téměř reálném čase a vydávat příkazy při detekci anomálií zastavit na počítači nebo aktivovat upozornění.
-*   **Omezené připojení ke cloudu**: Středisko důležité systémy, jako je například vzdáleného hornictví zařízení, připojených plavidel nebo poskytuje procházení, potřebujete k analýze a reagovat na data, i když je přerušované připojení ke cloudu. S Azure Stream Analytics streamování logiky běží nezávisle na připojení k síti a můžete zvolit, jaké můžete odesílat do cloudu pro další zpracování nebo úložiště.
-* **Omezená šířka pásma**: Objem dat vytvářených jet moduly nebo auta připojená k síti může být tak velká, že data musí být filtrovaný nebo předem zpracovaných před odesláním do cloudu. Azure Stream Analytics můžete filtrovat nebo agregaci dat, kterou je potřeba odeslat do cloudu.
-* **Dodržování předpisů**: Některá data místně anonymizované nebo agregovaná před odesláním do cloudu může vyžadovat dodržování legislativních předpisů.
+* **Příkaz s nízkou latencí a ovládací prvek**: například výrobní bezpečnostních systémů musí odpovědět na provozních dat s mimořádně nízkou latencí. S Azure Stream Analytics na hraničních zařízeních IoT můžete analyzovat senzor, data v téměř reálném čase a vydávat příkazy při detekci anomálií zastavit na počítači nebo aktivovat upozornění.
+*   **Omezené připojení ke cloudu**: středisko důležité systémy, jako je například vzdáleného hornictví zařízení, připojených plavidel nebo poskytuje procházení, potřebujete k analýze a reagovat na data, i když je přerušované připojení ke cloudu. S Azure Stream Analytics streamování logiky běží nezávisle na připojení k síti a můžete zvolit, jaké můžete odesílat do cloudu pro další zpracování nebo úložiště.
+* **Omezená šířka pásma**: objem dat vytvářených jet moduly nebo auta připojená k síti může být tak velká, že data musí být filtrovaný nebo předem zpracovaných před odesláním do cloudu. Azure Stream Analytics můžete filtrovat nebo agregaci dat, kterou je potřeba odeslat do cloudu.
+* **Dodržování předpisů**: dodržování legislativních předpisů mohou vyžadovat nějaká data místně anonymizované nebo agregovaná před odesláním do cloudu.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Hraniční úlohy ve službě Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Co je "hraniční" úlohy?
@@ -46,7 +46,7 @@ Hlavní kroky jsou popsány v následující tabulce. Další podrobnosti jsou p
 
 |      |Krok   | Poznámky   |
 | ---   | ---   |  ---      |
-| 1   | **Vytvoření kontejneru úložiště**   | Kontejnery úložiště se používají k uložení vaší definice úlohy, ve kterém jsou dostupné v zařízení IoT. <br>  Můžete znovu použít jakékoli existující kontejner úložiště.     |
+| 1\. místo   | **Vytvoření kontejneru úložiště**   | Kontejnery úložiště se používají k uložení vaší definice úlohy, ve kterém jsou dostupné v zařízení IoT. <br>  Můžete znovu použít jakékoli existující kontejner úložiště.     |
 | 2   | **Vytvoření hraniční úlohy Azure Stream Analytics**   |  Vytvořit novou úlohu, vyberte **hrany** jako **hostitelské prostředí**. <br> Tyto úlohy jsou vytvořili spravovaných z cloudu a spustit na zařízeních IoT Edge.     |
 | 3   | **Nastavení prostředí IoT Edge na vaše zařízení**   | Pokyny, jak [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
 | 4   | **Nasazení Azure Stream Analytics na vaše zařízení IoT Edge**   |  Definice úlohy Azure Stream Analytics se exportují do kontejneru úložiště vytvořili dříve.       |
@@ -110,7 +110,7 @@ Tyto kroky jsou popsané v dokumentaci k IoT Edge pro [Windows](https://docs.mic
 
 > [!Note]
 > Azure Stream Analytics během tohoto kroku, vytvoří složku s názvem "EdgeJobs" v kontejneru úložiště (pokud ho ještě neexistuje). U každého nasazení se vytvoří novou podsložku ve složce "EdgeJobs".
-> Když nasadíte úlohy do hraničních zařízení IoT, Azure Stream Analytics vytvoří sdílený přístupový podpis (SAS) pro soubor s definicí úlohy. Klíč SAS se bezpečně přenášejí do zařízení IoT Edge pomocí dvojčete zařízení. Doba platnosti tohoto klíče má tři roky od jeho vytvoření. Při aktualizaci úlohy služby IoT Edge SAS se změní, ale nedojde ke změně verze image. Jakmile **aktualizovat**, pracovní postup nasazení a oznámení o aktualizaci se protokoluje u zařízení.
+> Když nasadíte úlohu do zařízení IoT Edge, ASA vytvoří pro soubor definice úlohy sdílený přístupový podpis (SAS). Klíč SAS se bezpečně přenášejí do zařízení IoT Edge pomocí dvojčete zařízení. Doba platnosti tohoto klíče má tři roky od jeho vytvoření. Když aktualizujete úlohu IoT Edge, změní se SAS, ale verze image se nezmění. Po **aktualizaci**použijte pracovní postup nasazení a na zařízení se zaprotokoluje oznámení o aktualizaci.
 
 
 Další informace o nasazení IoT Edge najdete v tématu [na této stránce](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -143,11 +143,11 @@ Tento příklad definuje následující trasy:
 
 ## <a name="technical-information"></a>Technické informace
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Aktuální omezení pro úlohy IoT Edge ve srovnání s cloudové úlohy
-Cílem je, aby parity mezi úlohy IoT Edge a cloudu. Podporují se většina funkcí jazyka dotazů SQL, povolení pro stejnou logiku cloudu i hraničních zařízeních IoT.
+Cílem je, aby parity mezi úlohy IoT Edge a cloudu. Podporuje se většina funkcí jazyka SQL Query a umožňuje spouštět stejnou logiku jak v cloudu, tak i v IoT Edge.
 Ale tyto funkce zatím nepodporuje hraniční úlohy:
 * Uživatelem definované funkce (UDF) v jazyce JavaScript. Jsou k dispozici v systému souborů UDF [ C# pro úlohy IoT Edge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (preview).
 * Uživatelem definované agregace (UDA).
-* Funkce Azure ML
+* Funkce Azure ML.
 * Použití více než 14 agregací v jediném kroku.
 * Formát AVRO pro vstup/výstup. V současné době jsou podporovány pouze CSV a JSON.
 * Následující operátory SQL:
@@ -160,7 +160,7 @@ Ke spuštění Azure Stream Analytics na hraničních zařízeních IoT, je tře
 
 Azure Stream Analytics a Azure IoT Edge, použijte **Docker** kontejnery a poskytovat přenosné řešení, na kterém běží ve více hostitelských operačních systémech (Windows, Linux).
 
-Azure Stream Analytics na hraničních zařízeních IoT je k dispozici jako Image Windows a Linuxem, spuštěné na x86 – x 64 nebo ARM (Advanced RISC počítače) architektury. 
+ASA v IoT Edge jsou k dispozici jako image Windows a Linux, které běží na architekturách X86-64 nebo ARM (Advanced RISC Machine). 
 
 
 ### <a name="input-and-output"></a>Vstup a výstup
@@ -202,33 +202,33 @@ Existují dva způsoby, jak aktualizovat referenční data:
 * [Azure Stream Analytics na hraničních zařízeních IoT licence](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Oznámení třetích stran pro Azure Stream Analytics na hraničních zařízeních IoT](https://go.microsoft.com/fwlink/?linkid=862828).
 
-## <a name="azure-stream-analytics-module-image-information"></a>Informace o bitové kopie modulu Azure Stream Analytics 
+## <a name="azure-stream-analytics-module-image-information"></a>Informace o imagi Azure Stream Analytics modulu 
 
-Informace o této verzi byl naposledy aktualizován. 2019-06-27:
+Informace o této verzi byly naposledy aktualizovány v 2019-06-27:
 
 - Obrázek: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
-   - základní image: microsoft/dotnet:2.1.6-runtime-alpine3.7
-   - Platforma:
+   - základní Image: Microsoft/dotNET: 2.1.6-runtime-Alpine 3.7
+   - platformy
       - Architektura: amd64
-      - operační systém: linux
+      - operační systém: Linux
   
 - Obrázek: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
-   - základní image: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
-   - Platforma:
-      - Architektura: arm
-      - operační systém: linux
+   - základní Image: Microsoft/dotNET: 2.1.6-runtime-Bionic-arm32v7
+   - platformy
+      - Architektura: ARM
+      - operační systém: Linux
   
 - Obrázek: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
-   - základní image: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
-   - Platforma:
+   - základní Image: Microsoft/dotNET: 2.1.6-runtime-nanoserver-1809
+   - platformy
       - Architektura: amd64
-      - operační systém: windows
+      - operační systém: Windows
       
       
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání nápovědy
 Potřebujete další pomoc, zkuste [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Další informace o Azure Iot Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [Azure Stream Analytics na hraničních zařízeních IoT kurz](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

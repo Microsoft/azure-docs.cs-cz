@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2019
+ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958637"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997067"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Přeskočit odstranění uživatelských účtů, které přesahují rozsah
 
@@ -30,7 +30,7 @@ V této příručce se dozvíte, jak pomocí rozhraní Microsoft Graph API a Mic
 * Pokud je ***SkipOutOfScopeDeletions*** nastavené na 0 (NEPRAVDA), pak se účty, které se přestanou z oboru, budou v cíli zakázané.
 * Pokud je ***SkipOutOfScopeDeletions*** nastavené na 1 (true), pak se účty, které se nacházejí mimo rozsah, nebudou v cíli zablokovat, tento příznak se nastaví na úrovni *aplikace pro zřizování* a dá se nakonfigurovat pomocí Graph API. 
 
-Vzhledem k tomu, že se tato konfigurace v tuto konfiguraci používá v rámci *služby Active Directory pro zřizování uživatelů* , následující kroky zahrnují snímky obrazovky aplikace v Workday. Tato možnost se ale dá použít i u jiných zřizovacích aplikací.
+Vzhledem k tomu, že se tato konfigurace v tuto konfiguraci používá v rámci *služby Active Directory pro zřizování uživatelů* , následující kroky zahrnují snímky obrazovky aplikace v Workday. To se ale dá použít i u **všech ostatních aplikací** (ServiceNow, Salesforce, Dropbox atd.).
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1: načtení ID objektu zabezpečení zřizování App Service (ID objektu)
 

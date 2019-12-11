@@ -1,6 +1,6 @@
 ---
 title: Zřízení simulovaného zařízení X. 509 pro Azure IoT Hub pomocí jazyka C
-description: V tomto rychlém startu se používají jednotlivé registrace. V tomto rychlém startu vytvoříte a zřídíte simulované zařízení X.509 pomocí sady SDK pro zařízení jazyka C pro službu Azure IoT Hub Device Provisioning.
+description: V tomto rychlém startu se používají jednotlivé registrace. V tomto rychlém startu vytvoříte a zřídíte simulované zařízení X. 509 pomocí sady SDK pro zařízení jazyka C pro Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 5d0b634de9d296bc56d18b2e7a4a92e6340b07c3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8ea962d1d7df9b3d4932a698703e42b27495298c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423163"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976889"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Rychlé zprovoznění: Zřízení simulovaného zařízení X.509 s využitím sady Azure IoT C SDK
 
@@ -32,7 +32,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povolenou úlohou [" C++vývoj pro stolní počítače"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
@@ -120,7 +120,7 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
 
 3. Na panelu **Přidat registraci** zadejte následující informace a stiskněte tlačítko **Uložit** .
 
-    - **Mechanismus:** Jako **Mechanismus** ověření identity vyberte *X.509*.
+    - **Mechanismus:** Jako *Mechanismus* ověření identity vyberte **X.509**.
     - **Primární soubor certifikátu. pem nebo. CER:** Zvolte **Vybrat soubor** a vyberte soubor certifikátu X509testcert. pem, který jste vytvořili dříve.
     - **ID zařízení centra IoT Hub:** Jako ID zařízení zadejte **test-docs-cert-device**.
 
@@ -134,7 +134,7 @@ Pomocí vzorového kódu ze sady Azure IoT C SDK vytvoříte certifikát, který
 
 ## <a name="simulate-first-boot-sequence-for-the-device"></a>Simulace první spouštěcí sekvence pro zařízení
 
-V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekvenci zařízení do instance služby Device Provisioning Service. Toto spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí službě IoT Hub propojené s instancí služby Device Provisioning.
+V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekvenci zařízení do instance služby Device Provisioning Service. Tato spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí službě IoT Hub propojené s instancí služby Device Provisioning Service.
 
 
 

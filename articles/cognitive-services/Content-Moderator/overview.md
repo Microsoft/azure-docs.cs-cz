@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a78a92a33075a97ddadb2e1fe677b7ded541d12c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c1ff74bc358f167612b2bfe05ca47e21203d8702
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565580"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973488"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 
-Rozhraní API Azure Content Moderatoru je služba Cognitive Services, která kontroluje potenciálně urážlivý, rizikový nebo jinak nežádoucí materiál v textu, obrázcích a videích. Pokud se takový materiál najde, použije služba pro obsah odpovídající popisky (příznaky). Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele. Další informace o tom, co ukazují různé příznaky obsahu, najdete v části [rozhraní API](#moderation-apis) pro moderování.
+Azure Content Moderator je služba pro rozpoznávání, která kontroluje text, obrázky a obsah videa pro materiál, který je potenciálně urážlivý, rizikové nebo jinak nežádoucí. Když se tento materiál najde, služba použije příslušné popisky (příznaky) k obsahu. Vaše aplikace pak může obsah označený příznakem zpracovat a zajistit tak dodržování předpisů nebo zachování zamýšleného prostředí pro uživatele. Další informace o tom, co ukazují různé příznaky obsahu, najdete v části [rozhraní API pro moderování](#moderation-apis) .
 
-## <a name="where-it-is-used"></a>Kde se používá
+## <a name="where-its-used"></a>Kde se používá
 
 Následuje několik scénářů, ve kterých by vývojář nebo tým vývojářů softwaru mohli službu Content Moderator využít:
 
@@ -32,7 +32,7 @@ Následuje několik scénářů, ve kterých by vývojář nebo tým vývojář�
 - K-12 poskytovatelé řešení pro vzdělávání odfiltrují obsah, který je nevhodný pro studenty a pedagogy.
 
 > [!NOTE]
-> Content Moderator nelze použít k detekci neplatných imagí pro zneužití. Kvalifikovaní organizace ale můžou použít(https://www.microsoft.com/photodna "cloudovou službu Microsoft PhotoDNA") [PhotoDNA Cloud]Service k zobrazení tohoto typu obsahu.
+> Content Moderator nelze použít k detekci neplatných imagí pro zneužití. Kvalifikovaní organizace ale můžou použít [cloudovou službu PhotoDNA](https://www.microsoft.com/photodna "Cloudová služba Microsoft PhotoDNA") na obrazovku pro tento typ obsahu.
 
 ## <a name="what-it-includes"></a>Co zahrnuje
 
@@ -49,7 +49,7 @@ Následující tabulka popisuje různé typy rozhraní API pro moderování.
 | Skupina rozhraní API | Popis |
 | ------ | ----------- |
 |[**Moderování textu**](text-moderation-api.md)| Kontroluje text pro urážlivý obsah, sexuální explicitní nebo sugestivní obsah, vulgární výrazy a osobní údaje.|
-|[**Seznamy vlastních výrazů**](try-terms-list-api.md)| Vyhledává v textu kromě předdefinovaných výrazů i výrazy z vlastního seznamu. Pomocí vlastních seznamů můžete blokovat nebo povolovat obsah podle vlastních zásad obsahu.|  
+|[**Seznamy vlastních výrazů**](try-terms-list-api.md)| Vyhledá text na základě vlastního seznamu podmínek spolu s vestavěnými podmínkami. Pomocí vlastních seznamů můžete blokovat nebo povolovat obsah podle vlastních zásad obsahu.|  
 |[**Moderování obrázků**](image-moderation-api.md)| Vyhledává na obrázcích obsah pro dospělé nebo nevhodný obsah, rozpoznává text na obrázcích pomocí funkce optického rozpoznávání znaků (OCR) a rozpoznává tváře.|
 |[**Seznamy vlastních obrázků**](try-image-list-api.md)| Vyhledává na obrázcích obrázky z vlastního seznamu. Pomocí seznamů vlastních obrázků můžete vyfiltrovat instance běžně se opakujícího obsahu, který nechcete znovu klasifikovat.|
 |[**Moderování videa**](video-moderation-api.md)| Vyhledává ve videích nevhodný obsah nebo obsah pro dospělé a vrací pro uvedený obsah časové značky.|
@@ -65,7 +65,7 @@ Rozhraní API pro kontrolu vám umožňují integrovat kanál moderování s lid
 
 ## <a name="the-review-tool"></a>Nástroj pro kontrolu
 
-Služba Content Moderator také zahrnuje webový [Nástroj](Review-Tool-User-Guide/human-in-the-loop.md)pro revizi, který hostuje revize obsahu pro lidské moderování ke zpracování. Lidský přínos neslouží k trénování služby, ale kombinace práce služby a lidského posuzovacího týmu umožní vývojářům dosáhnout správné rovnováhy mezi efektivitou a přesností. Nástroj pro kontrolu poskytuje také uživatelsky přívětivý front-end pro celou řadu Content Moderatorch prostředků.
+Služba Content Moderator také zahrnuje webový [Nástroj pro revizi](Review-Tool-User-Guide/human-in-the-loop.md), který hostuje revize obsahu pro lidské moderování ke zpracování. Lidské vstupy tuto službu nevlakují, ale kombinovaná práce týmů služby a lidských revizí umožňuje vývojářům přeškrtnout správné rovnováhu mezi efektivitou a přesností. Nástroj pro kontrolu také poskytuje uživatelsky přívětivý front-end pro několik Content Moderatorch prostředků.
 
 ![Úvodní stránka nástroje pro kontrolu prováděnou lidmi v Content Moderatoru](images/homepage.PNG)
 
@@ -73,6 +73,6 @@ Služba Content Moderator také zahrnuje webový [Nástroj](Review-Tool-User-Gui
 
 Stejně jako u všech Cognitive Services by měli vývojáři, kteří používají Content Moderator službu, znát zásady Microsoftu pro zákaznická data. Další informace najdete na [stránce Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) v centru zabezpečení Microsoftu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začněte používat službu Content Moderator podle pokynů v části [vyzkoušet Content moderator na webu](quick-start.md).

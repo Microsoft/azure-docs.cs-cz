@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 93005b181075ac671af6c8d73a3f2a06ed9eb0d8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186186"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977739"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -42,6 +42,9 @@ Pomocí Media Services můžete využít výhod [dynamického balení](dynamic-p
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
 
 Dynamické šifrování vám umožní dynamicky šifrovat živý a na vyžádání obsahu pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](content-protection-overview.md).
+
+> [!NOTE]
+> Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="dynamic-manifest"></a>Dynamický manifest
 
@@ -100,7 +103,7 @@ Abyste pochopili pracovní postup živého streamování v Media Services V3, mu
 12. Pokud jste dokončili streamování událostí a chcete dříve zřízené prostředky vyčistit, postupujte podle následujícího návodu.
 
     * Zastavte odesílání datového proudu z kodéru.
-    * Zastaví živou událost. Jakmile se živá událost zastaví, neúčtují se žádné poplatky. Když ho budete potřebovat znovu spustit, budete mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
+    * Zastaví živou událost. Jakmile se živá událost zastaví, neúčtují se žádné poplatky. Když bude potřeba kanál znovu spustit, bude mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
     * Pokud nechcete pokračovat v poskytování archivu živé události ve formě datového proudu na vyžádání, můžete koncový bod streamování zastavit. Pokud je živá událost v zastaveném stavu, neúčtují se žádné poplatky.
 
 Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení. 
@@ -111,7 +114,7 @@ Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na v
 ## <a name="other-important-articles"></a>Další důležité články
 
 - [Doporučené živé kodéry](recommended-on-premises-live-encoders.md)
-- [Použití cloudového videorekordéru](live-event-cloud-dvr.md)
+- [Použití cloudového DVR](live-event-cloud-dvr.md)
 - [Porovnání funkcí typů živých událostí](live-event-types-comparison.md)
 - [Stavy a fakturace](live-event-states-billing.md)
 - [Latence](live-event-latency.md)

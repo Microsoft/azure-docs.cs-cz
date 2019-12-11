@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití sady Vyhledávání na webu Bingu SDK proC#'
+title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro jazyk C#'
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 services: cognitive-services
@@ -8,24 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 2c55aaa0843574981a7643b11161700992ea0b09
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018212"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976447"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rychlý start: Použití sady Vyhledávání na webu Bingu SDK proC#
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro jazyk C#
 
 Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) nebo
@@ -33,6 +29,8 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
   * [C# pro Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
   * [Správce balíčků NuGet](https://github.com/jmrog/vscode-nuget-package-manager)
 * [Sada .NET Core SDK](https://www.microsoft.com/net/download)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Vytvoření projektu a instalace závislostí
 
@@ -422,7 +420,7 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
 
 Až projekt dokončíte, nezapomeňte z kódu aplikace odebrat klíč předplatného.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

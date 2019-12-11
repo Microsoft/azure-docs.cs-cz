@@ -1,5 +1,5 @@
 ---
-title: Konfigurace aplikace k vystavení webových rozhraní API – platforma Microsoftu identity
+title: Konfigurace aplikace k vystavování webových rozhraní API – Microsoft Identity Platform | Azure
 description: Zjistěte, jak nakonfigurovat aplikaci pro zveřejnění nového oprávnění nebo oboru a role a tím ji zpřístupnit klientským aplikacím.
 services: active-directory
 author: rwike77
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba582516002c3e34ca91ceddbfd826bafe0c282
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a45b3ee9bf9cea71255ac9a83f970d2b6c72b67f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921445"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966108"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý Start: Konfigurace aplikace k vystavení webových rozhraní API
 

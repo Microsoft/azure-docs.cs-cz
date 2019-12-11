@@ -1,6 +1,6 @@
 ---
 title: Registrace zařízení TPM do služby Azure Device Provisioning pomocí Pythonu
-description: Rychlý Start – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service pomocí sady SDK služby zřizování pro Python V tomto rychlém startu se používají jednotlivé registrace.
+description: Rychlý Start – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby zřizování pro Python V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 9774ba9ba94bdaf4f9219a65be2a223ff00ff489
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 6266ef3479e74103d0989b8eb0286626da5eb28f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554014"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976787"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby zřizování pro Python
 

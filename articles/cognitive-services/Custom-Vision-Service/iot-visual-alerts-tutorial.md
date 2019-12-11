@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: computer-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888277"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978028"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Kurz: použití Custom Vision se zařízením IoT k hlášení vizuálních stavů
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [!INCLUDE [create-resources](includes/create-resources.md)]
     > [!IMPORTANT]
@@ -56,7 +56,7 @@ Aplikace pro vizuální výstrahy IoT se spouští v souvislé smyčce, přičem
 
 Následující soubory zpracovávají hlavní funkce aplikace.
 
-| File | Popis |
+| Soubor | Popis |
 |-------------|-------------|
 | [MainPage. XAML](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Tento soubor definuje uživatelské rozhraní XAML. Je hostitelem ovládacího prvku webové kamery a obsahuje popisky používané pro aktualizace stavu.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Tento kód řídí chování uživatelského rozhraní XAML. Obsahuje kód pro zpracování stavového stroje.|
@@ -112,11 +112,11 @@ Postup opakování tohoto procesu ve vlastním scénáři:
 1. Až budete hotovi, vyberte tlačítko **výuka** .
 1. Po dokončení školení aplikace zjistí, že je k dispozici vyškolená iterace. Spustí proces exportu trained model, který ONNX a stáhne do zařízení.
 
-## <a name="use-the-trained-model"></a>Použití trained model
+## <a name="use-the-trained-model"></a>Použití vytrénovaného modelu
 
 Jakmile aplikace stáhne model trained, přepne do stavu **bodování** a spustí snímky z kamery v souvislé smyčce.
 
-U každého zaznamenaného obrázku aplikace zobrazí horní značku na obrazovce. Pokud nerozpozná vizuální stav, nezobrazí se **žádné shody**. Aplikace také pošle tyto zprávy do IoT Hub a pokud je zjištěna třída, bude zpráva zahrnovat popisek, skóre spolehlivosti a vlastnost s názvem `detectedClassAlert`, kterou mohou používat IoT Hub klienti, kteří mají zájem o rychlé směrování zpráv na základě Prop. rties.
+U každého zaznamenaného obrázku aplikace zobrazí horní značku na obrazovce. Pokud nerozpozná vizuální stav, nezobrazí se **žádné shody**. Aplikace také pošle tyto zprávy do IoT Hub a pokud je zjištěna třída, bude zpráva zahrnovat popisek, skóre spolehlivosti a vlastnost s názvem `detectedClassAlert`, kterou mohou používat IoT Hub klienti, kteří mají zájem o rychlé směrování zpráv na základě vlastností.
 
 Kromě toho je v ukázce k detekci, kdy je spuštěná na Malině PI s smyslovou jednotkou HAT, použitou [knihovnu HAT Hat](https://github.com/emmellsoft/RPi.SenseHat) , takže ji můžete použít jako zobrazení výstupu nastavením všech indikátorů zobrazení na červenou, kdykoli detekuje třídu a prázdné, když nedetekuje cokoli.
 

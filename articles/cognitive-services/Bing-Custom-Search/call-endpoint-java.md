@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka Java | Microsoft Docs'
+title: 'Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka Java | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu v jazyce Java.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: afb804dd3fd0fecd676f04f18db577f87861a163
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a470979ce4276d510f1a89bc9bc192d609c2083
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564684"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973505"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka Java
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka Java
 
 Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu. I když je tato aplikace napsaná v jazyce Java, rozhraní API pro vlastní vyhledávání Bingu je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Instance Vlastní vyhledávání Bingu. Další [informace najdete v tématu rychlý Start: Pro další informace vytvořte první](quick-start.md) instanci vlastní vyhledávání Bingu.
+- Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md) .
 
 - Nejnovější [sada Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 
@@ -50,7 +50,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte třídu s názvem `CustomSrchJava`a vytvořte proměnné pro klíč předplatného, vlastní koncový bod vyhledávání a ID vlastní konfigurace vaší instance hledání. 
+2. Vytvořte třídu s názvem `CustomSrchJava`a vytvořte proměnné pro klíč předplatného, vlastní koncový bod vyhledávání a ID vlastní konfigurace vaší instance hledání. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -61,7 +61,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
     ...
     ```
 
-3. Vytvořte další třídu s `SearchResults` názvem, aby obsahovala odpověď z vaší instance vlastní vyhledávání Bingu.
+3. Vytvořte další třídu s názvem `SearchResults`, která bude obsahovat odpověď z vaší instance Vlastní vyhledávání Bingu.
 
     ```csharp
     class SearchResults{
@@ -74,7 +74,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
     }
     ```
 
-4. Vytvořte funkci nazvanou `prettify()` pro naformátování odpovědi JSON z rozhraní API pro vlastní vyhledávání Bingu.
+4. Vytvořte funkci s názvem `prettify()` pro naformátování odpovědi JSON z rozhraní API pro vlastní vyhledávání Bingu.
 
     ```java
         // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -88,7 +88,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
 
 ## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí žádosti o vyhledávání 
 
-1. Vytvořte funkci s názvem `SearchWeb()` , která odešle požadavek a `SearchResults` vrátí objekt. Vytvořte adresu URL požadavku kombinováním vlastního ID konfigurace, dotazu a informací o koncovém bodu. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
+1. Vytvořte funkci s názvem `SearchWeb()`, která odešle požadavek a vrátí objekt `SearchResults`. Vytvořte adresu URL požadavku kombinováním vlastního ID konfigurace, dotazu a informací o koncovém bodu. Do hlavičky `Ocp-Apim-Subscription-Key` přidejte svůj klíč předplatného.
 
     ```java
     public class CustomSrchJava {
@@ -101,7 +101,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
     ...
     ```
 
-2. Vytvořte datový proud a uložte odpověď JSON do `SearchResults` objektu.
+2. Vytvořte datový proud a uložte odpověď JSON do objektu `SearchResults`.
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
         }
     ```
 
-3. V metodě Main vaší aplikace zavolejte `SearchWeb()` hledaný výraz, 
+3. V metodě Main vaší aplikace zavolejte `SearchWeb()` pomocí hledaného výrazu, 
 
     ```java
     System.out.println("\nJSON Response:\n");

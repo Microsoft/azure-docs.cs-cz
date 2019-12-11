@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 862643cb4eb26d7d88aa81d05433066a927a69aa
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 068b8b0a6e248caa70a8f88ea55d07c30a9437f0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424035"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997162"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrace z Windows Azure Media Encoder na Media Encoder Standard
 
-Tento článek popisuje postup migrace ze staršího procesoru Windows Azure Media Encoder (WAME) Media, který se v 1. březnu 2020 vyřadí do procesoru Media Encoder Standard Media.
+Tento článek popisuje kroky pro migraci z staršího procesoru Windows Azure Media Encoder (WAME), který se z 31. března 2020 přenáší na procesor Media Encoder Standard Media.
 
 Při kódování souborů pomocí WAME zákazníci obvykle použili pojmenovaný přednastavený řetězec, například `H264 Adaptive Bitrate MP4 Set 1080p`. Aby bylo možné provést migraci, váš kód musí být aktualizován, aby používal procesor **Media Encoder Standard** médií namísto WAME a jednu z ekvivalentních [předvoleb systému](media-services-mes-presets-overview.md) jako `H264 Multiple Bitrate 1080p`. 
 
@@ -74,7 +74,7 @@ Media Encoder Standard je robustnější, spolehlivější, má lepší výkon a
 * Media Encoder Standard vytváří artefakty, jako jsou soubory obsahující [metadata vstupních souborů](media-services-input-metadata-schema.md) a [metadata výstupních souborů](media-services-output-metadata-schema.md).
 * Jak je popsáno na [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/#encoding) (zejména v části Nejčastější dotazy), při kódování videí pomocí Media Encoder Standard se vám bude účtovat na základě doby trvání souborů vytvořených jako výstup. Pomocí WAME se bude účtovat podle velikosti vstupních videosouborů a souborů výstupních videí.
 
-## <a name="need-help"></a>Potřebujete pomoc?
+## <a name="need-help"></a>Potřebujete pomoct?
 
 Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 

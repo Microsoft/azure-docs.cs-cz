@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 570699fe83197a1b5442909d8b89e285a1dfa73b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 268775d125e783b0c640e565c5f63e416cb197fd
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275440"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996948"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nefungují pro aplikaci proxy aplikace.
 
@@ -38,7 +38,11 @@ Existují tři způsoby, jak tento problém vyřešit. Níže uvedené možnosti
 
 1.  Ujistěte se, že interní adresa URL je kořen, který obsahuje všechny relevantní odkazy pro aplikaci. To umožňuje, aby všechny odkazy byly vyřešeny jako obsah publikovaný v rámci stejné aplikace.
 
-    Pokud změníte interní adresu URL, ale nechcete změnit cílovou stránku pro uživatele, změňte adresu URL domovské stránky na dříve publikovanou interní adresu URL. Můžete to udělat tak, že v části Azure Active Directory&gt; registrace aplikací-&gt; vyberete vlastnosti aplikace-&gt;. Na této kartě Vlastnosti vidíte pole Adresa URL domovské stránky, které můžete upravit jako požadovanou cílovou stránku.
+    Pokud změníte interní adresu URL, ale nechcete změnit cílovou stránku pro uživatele, změňte adresu URL domovské stránky na dříve publikovanou interní adresu URL. Můžete to udělat tak, že v části Azure Active Directory&gt; registrace aplikací-&gt; vyberete značku aplikace-&gt;. V části branding se zobrazí pole Adresa URL domovské stránky, které můžete upravit jako požadovanou cílovou stránku. Pokud pořád používáte starší verze Registrace aplikací zkušeností, na kartě Vlastnosti se zobrazí podrobnosti adresa URL domovské stránky. 
+    
+    > [!IMPORTANT]
+    > Aby bylo možné provést výše uvedené změny, budete potřebovat práva k úpravám aplikačních objektů ve službě Azure AD. Uživateli musí být přiřazena role[správce aplikace](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/roles-delegate-app-roles#assign-built-in-application-admin-roles), která uživateli uděluje modificaion práva k aplikacím v Azure AD. 
+    >
 
 2.  Pokud vaše aplikace používají plně kvalifikované názvy domén (FQDN), publikujte své aplikace pomocí [vlastních domén](application-proxy-configure-custom-domain.md) . Tato funkce umožňuje používat stejnou adresu URL interně i externě.
 
@@ -47,5 +51,5 @@ Existují tři způsoby, jak tento problém vyřešit. Níže uvedené možnosti
 3.  Pokud žádná z těchto možností není proveditelná, existuje více možností pro povolení překladu vloženého odkazu. Mezi tyto možnosti patří použití rozšíření Intune Managed Browser, moje aplikace nebo použití nastavení překladu odkazů ve vaší aplikaci. Další informace o každé z těchto možností a o tom, jak je povolit, najdete v tématu [přesměrování pevně zakódované odkazů pro aplikace publikované pomocí Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="next-steps"></a>Další kroky
-[Práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
+[Práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
 

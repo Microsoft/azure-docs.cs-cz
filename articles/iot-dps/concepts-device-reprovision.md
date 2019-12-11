@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub Device Provisioning Service – koncepty zařízení
-description: Popisuje koncepty opětovného zřizování zařízení pro Azure IoT Hub Device Provisioning Service
+description: Popisuje koncepty opětovného zřízení zařízení pro Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0d6e5b5c7e8e8bf83646b417aa94658efd25b49e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228837"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975342"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>Koncepce opětovného zřizování zařízení IoT Hub
 
@@ -80,7 +80,7 @@ Následující vývojový diagram pomáhá Ukázat, kdy je chování k dispozici
 
 V následující tabulce jsou uvedené verze rozhraní API před tím, než bude dostupná podpora nativního opětovného zajišťování ve službě Device Provisioning:
 
-| REST API | SADA C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
+| Rozhraní REST API | SADA C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
 | [2018-04-01 a starší](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 a starší](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 a starší](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 nebo starší](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 nebo starší](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 nebo starší](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 

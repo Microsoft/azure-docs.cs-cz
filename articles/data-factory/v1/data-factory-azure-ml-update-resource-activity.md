@@ -1,6 +1,6 @@
 ---
 title: Aktualizace modelů Machine Learning pomocí Azure Data Factory
-description: Popisuje, jak vytvořit vytváření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning
+description: Popisuje postup vytváření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683125"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978709"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning pomocí aktivity aktualizovat prostředek
 
@@ -41,8 +41,8 @@ Tento článek doplňuje hlavní článek o integraci Azure Data Factory Azure M
 ## <a name="overview"></a>Přehled
 Prediktivní modely v experimentech s hodnocením Azure ML v průběhu času musí být převlakované pomocí nových vstupních datových sad. Až budete s rekurzem hotovi, chcete aktualizovat webovou službu bodování pomocí předaného modelu ML. Typický postup, jak povolit přeškolení a aktualizace modelů Azure ML prostřednictvím webových služeb, jsou tyto:
 
-1. Vytvořte experiment v [Azure ml Studio](https://studio.azureml.net).
-2. Až budete s modelem spokojeni, můžete pomocí Azure ML Studio publikovat webové služby pro **školicí experiment** i bodování i**prediktivní experiment**.
+1. Vytvořte experiment v [Azure Machine Learning Studio (Classic)](https://studio.azureml.net).
+2. Pokud jste s modelem spokojeni, použijte Azure Machine Learning Studio (Classic) k publikování webových služeb pro **školicí experiment** i bodování/**prediktivní experiment**.
 
 Následující tabulka popisuje webové služby použité v tomto příkladu.  Podrobnosti najdete v tématu [přeučení modelů Machine Learning programově](../../machine-learning/machine-learning-retrain-models-programmatically.md) .
 
@@ -88,7 +88,7 @@ Pokud je webová služba novým typem webové služby, který zveřejňuje Azure
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Můžete získat hodnoty pro držitele v adrese URL při dotazování webové služby na [portálu Azure Machine Learning Web Services](https://services.azureml.net/). Nový typ koncového bodu prostředku aktualizace vyžaduje token AAD (Azure Active Directory). V propojené službě AzureML zadejte **servicePrincipalId** a **servicePrincipalKey**. Přečtěte si téma [Vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../../active-directory/develop/howto-create-service-principal-portal.md). Tady je ukázka definice propojené služby AzureML: 
+Můžete získat hodnoty pro držitele v adrese URL při dotazování webové služby na [portálu Azure Machine Learning Web Services](https://services.azureml.net/). Nový typ koncového bodu prostředku aktualizace vyžaduje token AAD (Azure Active Directory). V propojené službě Azure Machine Learning zadejte **servicePrincipalId** a **servicePrincipalKey** . Přečtěte si téma [Vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../../active-directory/develop/howto-create-service-principal-portal.md). Tady je ukázka definice propojené služby AzureML: 
 
 ```json
 {
@@ -138,7 +138,7 @@ Tady je ukázka definice JSON propojené služby:
 ```
 
 ### <a name="training-input-dataset"></a>Vstupní datová sada pro školení:
-Následující datová sada představuje vstupní školicí data pro webovou službu školení Azure ML. Aktivita provádění dávky Azure ML vezme tuto datovou sadu jako vstup.
+Následující datová sada představuje vstupní školicí data pro webovou službu Azure Machine Learning Training. Aktivita spuštění dávky Azure Machine Learning přebírá tuto datovou sadu jako vstup.
 
 ```JSON
 {
@@ -192,7 +192,7 @@ Následující datová sada představuje výstupní soubor iLearner z webové sl
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Propojená služba pro Azure ML – koncový bod školení
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Propojená služba pro školicí koncový bod služby Azure Machine Learning
 Následující fragment kódu JSON definuje propojenou službu Azure Machine Learning, která odkazuje na výchozí koncový bod webové služby školení.
 
 ```JSON
@@ -208,12 +208,12 @@ Následující fragment kódu JSON definuje propojenou službu Azure Machine Lea
 }
 ```
 
-V **Azure ml Studio**následujícím způsobem Získejte hodnoty pro **mlEndpoint** a **apiKey**:
+V **Azure Machine Learning Studio (Classic)** proveďte následující kroky a získejte hodnoty pro **mlEndpoint** a **apiKey**:
 
 1. V nabídce vlevo klikněte na položku **webové služby** .
 2. Klikněte na **webovou službu školení** v seznamu webových služeb.
 3. Klikněte na Kopírovat vedle textového pole **klíč rozhraní API** . Vložte klíč do schránky do editoru JSON Data Factory.
-4. V **Azure ml studiu**klikněte na odkaz **spuštění dávky** .
+4. V **Azure Machine Learning Studio (Classic)** klikněte na odkaz **spuštění dávky** .
 5. Zkopírujte **identifikátor URI žádosti** z oddílu **žádosti** a vložte ho do Data Factory Editor JSON.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Propojená služba pro hodnoticí koncový bod Azure ML:

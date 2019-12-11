@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bff3547456c03ae313e7465238872670965765f1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ed67981a79e2bc998d0f1f64858206243c0a7070
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927689"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997203"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -105,7 +105,7 @@ Pokud nezadáte úvodní lomítko, "/", budete muset zadat předponu pracovního
 
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Nepodařilo se přečíst soubor Parquet z HTTP nebo ADLS Gen 2.
 
-Došlo k známému problému v rámci sady 1.1.25 služby AzureML pro přípravu dat, který způsobuje selhání při vytváření datové sady, a to čtením souborů Parquet z protokolu HTTP nebo ADLS Gen 2. `Cannot seek once reading started.`se nezdaří. Pokud chcete tento problém vyřešit, upgradujte prosím `azureml-dataprep` na verzi vyšší než 1.1.26, nebo downgradujte na verzi nižší než 1.1.24.
+Došlo k známému problému v sadě 1.1.25 sady SDK pro AzureML, který způsobuje selhání při vytváření datové sady, a to čtením souborů Parquet z protokolu HTTP nebo ADLS Gen 2. `Cannot seek once reading started.`se nezdaří. Pokud chcete tento problém vyřešit, upgradujte prosím `azureml-dataprep` na verzi vyšší než 1.1.26, nebo downgradujte na verzi nižší než 1.1.24.
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -141,7 +141,7 @@ Když v Azure Databricks používáte automatizované funkce machine learningu, 
 
 V případě automatizovaného nastavení strojového učení, pokud máte více než 10 iterací, nastavte `show_output` na `False` při odeslání běhu.
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Widget pro sadu Azure Machine Learning SDK/automatizované Machine Learning
+### <a name="widget-for-the-azure-machine-learning-sdk-and-automated-machine-learning"></a>Widget pro sadu Azure Machine Learning SDK a automatizované strojové učení
 
 Pomůcka Azure Machine Learning SDK není v poznámkovém bloku datacihly podporovaná, protože poznámkové bloky nemůžou analyzovat widgety HTML. Widget můžete zobrazit na portálu pomocí tohoto kódu Pythonu v buňce s Azure Databricksm poznámkového bloku:
 
@@ -261,6 +261,16 @@ kubectl get secret/azuremlfessl -o yaml
 ## <a name="recommendations-for-error-fix"></a>Doporučení pro opravu chyb
 Na základě obecného sledování najdete tady doporučení Azure ML, kde můžete opravit některé běžné chyby v Azure ML.
 
+### <a name="metric-document-is-too-large"></a>Dokument metriky je moc velký.
+Služba Azure Machine Learning má interní omezení velikosti objektů metriky, které je možné v rámci školicích běhů současně přihlásit. Pokud dojde k chybě "dokument metriky je příliš velký" při protokolování metriky s hodnotou seznamu, zkuste seznam rozdělit do menších bloků dat, například:
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+ Služba historie spuštění interně zřetězí bloky se stejným názvem metriky do souvislého seznamu.
+
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (žádný modul s názvem)
 Pokud při odesílání experimentů v Azure ML pracujete v ModuleErrors, znamená to, že skript školení očekává instalaci balíčku, ale nepřidá se. Až zadáte název balíčku, Azure ML nainstaluje balíček do prostředí, které se používá pro vaše školení. 
 
@@ -268,10 +278,11 @@ Pokud používáte [odhady](concept-azure-machine-learning-architecture.md#estim
 
 Azure ML také poskytuje odhady specificky pro rozhraní pro Tensorflow, PyTorch, chainer a skriptu sklearn. Pomocí těchto odhady se ujistěte, že se závislosti rozhraní instalují vaším jménem do prostředí používaného pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
  
- Azure ML zachovává image Docker a jejich obsah se může zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
+Azure ML zachovává image Docker a jejich obsah se může zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
 Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušnému rozhraní – [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
 
->[Poznámka!] Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
+> [!Note]
+> Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (název není definován), AttributeError (objekt nemá žádný atribut)
 Tato výjimka by se měla nacházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK můžete použít `run.get_details()` k zobrazení chybové zprávy. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript, opravte chybu a zkuste to znovu. 

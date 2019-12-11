@@ -1,5 +1,5 @@
 ---
-title: Vytváření sdílených imagí virtuálních počítačů Azure pro Linux pomocí portálu
+title: Vytvoření sdílených imagí virtuálních počítačů Azure pro Linux pomocí portálu
 description: Naučte se používat Azure Portal k vytváření a sdílení imagí virtuálních počítačů.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 9dff10848c42fd730f0bc77fd325f00cec554c9d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892868"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978692"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Vytvoření galerie sdílených imagí pomocí Azure Portal
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Vytvoření galerie sdílených imagí Azure pomocí portálu
 
 [Galerie sdílených imagí](shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spuštění úloh nasazení, jako jsou předem načtené aplikace, konfigurace aplikací a další konfigurace operačního systému. 
 

@@ -1,6 +1,6 @@
 ---
 title: Rychlé zprovoznění – zřízení simulovaného zařízení TPM pro Azure IoT Hub pomocí Node. js
-description: Rychlý Start – vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node. js SDK pro zařízení pro Azure IoT Hub Device Provisioning Service. V tomto rychlém startu se používají jednotlivé registrace.
+description: Rychlý Start – vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node. js SDK pro zařízení pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 942bc64153e1c35e3fb9c5bbb989607b7e443e9a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: b5c5aa59c520560ad8424994d78e3c68bb0dc57a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423464"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976634"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení Node. js pro IoT Hub Device Provisioning Service
 
@@ -66,7 +66,7 @@ V tomto článku si předvedeme jednotlivé registrace.
     ```
 
     > [!NOTE]
-    > Při instalaci výše uvedených balíčků dochází k několika známým problémům. Tyto problémy vyřešíte tak, že na příkazovém řádku v režimu `npm install --global --production windows-build-tools`Spustit jako správce**spustíte příkaz**, pak spustíte příkaz `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140`, ve kterém použijete cestu k vaší nainstalované verzi, a pak znovu spustíte výše uvedené příkazy pro instalaci.
+    > Při instalaci výše uvedených balíčků dochází k několika známým problémům. Tyto problémy vyřešíte tak, že na příkazovém řádku v režimu **Spustit jako správce** spustíte příkaz `npm install --global --production windows-build-tools`, pak spustíte příkaz `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140`, ve kterém použijete cestu k vaší nainstalované verzi, a pak znovu spustíte výše uvedené příkazy pro instalaci.
     >
 
 1. Nainstalujte následující balíčky, které obsahují komponenty používané během instalace:
@@ -93,7 +93,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 1. Pomocí textového editoru vytvořte ve složce **registerdevice** nový soubor **ExtractDevice.js**.
 
-1. Na začátek souboru `require`ExtractDevice.js**přidejte následující příkazy**:
+1. Na začátek souboru **ExtractDevice.js** přidejte následující příkazy `require`:
    
     ```
     'use strict';
@@ -140,7 +140,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 1. V nabídce služba Device Provisioning vyberte **spravovat registrace**. Vyberte kartu **jednotlivé registrace** a v horní části vyberte tlačítko **přidat jednotlivou registraci** . 
 
 1. Na panelu **Přidat registraci** zadejte následující informace:
-   - Jako **Mechanismus** ověření identity vyberte *TPM*.
+   - Jako *Mechanismus* ověření identity vyberte **TPM**.
    - Zadejte *ID registrace* a *ověřovací klíč* pro vaše zařízení TPM z hodnot, které jste si poznamenali dříve.
    - Vyberte centrum IoT propojené s vaší zřizovací službou.
    - Volitelně můžete zadat následující informace:
@@ -161,7 +161,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 1. Pomocí textového editoru vytvořte ve složce **registerdevice** nový soubor **RegisterDevice.js**.
 
-1. Na začátek souboru `require`RegisterDevice.js**přidejte následující příkazy**:
+1. Na začátek souboru **RegisterDevice.js** přidejte následující příkazy `require`:
    
     ```
     'use strict';

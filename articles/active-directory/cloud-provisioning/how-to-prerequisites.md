@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155edf72a60e079a609853e953e3cf66024cc83c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f033563bbd7888e53d910773cd1e0c501eaad098
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794247"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997101"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Předpoklady pro zřizování cloudu Azure AD Connect
 Toto téma poskytuje pokyny k výběru a používání zřizování cloudu Azure AD Connect jako řešení identity.
@@ -48,7 +48,7 @@ Zbývající část dokumentu vám poskytne podrobné pokyny pro tyto požadavky
      | --- | --- |
      | **80** | Stahuje seznamy odvolaných certifikátů (CRL) při ověřování certifikátu SSL. |
      | **443** | Zpracovává veškerou odchozí komunikaci se službou. |
-     | **8080** (volitelné) | Agenti hlásí svůj stav každých deset minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. Port _8080 se nepoužívá pro_ přihlášení uživatelů. |
+     | **8080** (volitelné) | Agenti hlásí svůj stav každých deset minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. |
      
      Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
    - Pokud vaše brána firewall nebo proxy server umožňují zadat bezpečné přípony, přidejte připojení k **\*. msappproxy.NET** a **\*. ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
@@ -73,7 +73,7 @@ Tento test ověří, jestli můžou vaši agenti komunikovat s Azure přes port 
 
 Systém Windows Server, který bude hostitelem agenta pro zřizování Azure AD Connect cloudu, musí mít povolený protokol TLS 1,2, než ho nainstalujete.
 
-Povolení TLS 1,2:
+Povolení protokolu TLS 1.2:
 
 1. Nastavte následující klíče registru:
     

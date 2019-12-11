@@ -1,5 +1,5 @@
 ---
-title: Jednostránkové aplikace (přesunout na produkční prostředí) – Microsoft Identity Platform
+title: Přesunutí jednostránkové aplikace do produkčního prostředí – Microsoft Identity Platform | Azure
 description: Naučte se vytvářet jednostránkové aplikace (přechod na produkční prostředí).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2dbb481c75323304d71f85a722fc45a9b634055
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ba41b29cfcea2d9dfcab2cd552040eaffa4e90ff
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766102"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965275"
 ---
 # <a name="single-page-application-move-to-production"></a>Jednostránkové aplikace: Přesun do produkčního prostředí
 

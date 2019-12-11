@@ -1,6 +1,6 @@
 ---
-title: Webová aplikace, která přihlašuje uživatele (registrace aplikací) – platforma Microsoftu identity
-description: Informace o tom, jak vytvořit webovou aplikaci, která přihlašuje uživatele (registrace aplikace)
+title: Registrace webové aplikace, která se podepisuje uživatelům – Microsoft Identity Platform | Azure
+description: Zjistěte, jak zaregistrovat webovou aplikaci, která se přihlásí uživatelům.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766068"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964816"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webová aplikace, která přihlašuje uživatele: registrace aplikace
 
@@ -58,7 +58,7 @@ Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 1. Vyberte nabídku **ověřování** a přidejte následující informace:
    1. Pro **adresu URL odpovědi**přidejte **https://localhost:44321/signin-oidc** typu **Web**.
    1. V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44321/signout-oidc** .
-   1. V části **implicitní udělení**vyberte možnost **tokeny ID**.
+   1. V části **Implicitní udělení** vyberte **Tokeny ID**.
    1. Vyberte **Save** (Uložit).
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)

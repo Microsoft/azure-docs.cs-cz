@@ -7,22 +7,22 @@ ms.subservice: security
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/19/2019
-ms.openlocfilehash: 6676a6f7c694ffd4f2edf3f63a8181863df0016c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c8a1e2a19fa3c8691cdb381669dc3d4db189c42d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227965"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995843"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
 
 Azure SQL [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) s klíčem spravovaným zákazníkem povoluje scénář BRING Your Own Key (BYOK) pro ochranu dat v klidovém umístění a umožňuje organizacím implementovat oddělení úloh v rámci správy klíčů a dat. U transparentního šifrování dat spravovaného zákazníkem je zákazník zodpovědný za a úplnou kontrolu nad správou životního cyklu klíčů (vytváření klíčů, nahrávání, rotace, odstraňování), oprávnění použití klíčů a auditování operací s klíči.
 
-V tomto scénáři je klíč, který se používá k šifrování šifrovacího klíče databáze (klíč DEK), označovaný jako TDE ochrana, asymetrický klíč spravovaný zákazníkem, který je uložený ve vaší společnosti a zákaznická [Azure Key Vault (integrace)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), která je založená na zákaznících, cloudová správa externích klíčů. souborů. Key Vault je vysoce dostupné a škálovatelné zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování pomocí klíče u autorizovaných entit. Klíč může být vygenerován trezorem klíčů, importován nebo [přenesen do trezoru klíčů ze zařízení Prem HSM](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+V tomto scénáři je klíč, který se používá k šifrování šifrovacího klíče databáze (klíč DEK), označovaný jako TDE ochrana, asymetrický klíč spravovaný zákazníkem, který je uložený v cloudu a zákazníkovi spravovaném [Azure Key Vault (integrace)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), což je cloudový externí systém správy klíčů. Key Vault je vysoce dostupné a škálovatelné zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování pomocí klíče u autorizovaných entit. Klíč může být vygenerován trezorem klíčů, importován nebo [přenesen do trezoru klíčů ze zařízení Prem HSM](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 Pro Azure SQL Database a Azure SQL Data Warehouse je ochrana TDE nastavena na úrovni logického serveru a děděna všemi šifrovanými databázemi přidruženými k tomuto serveru. V případě spravované instance Azure SQL je ochrana TDE nastavena na úrovni instance a zděděna všemi šifrovanými databázemi v této instanci. Pojem *Server* odkazuje jak na SQL Database logický Server a spravovanou instanci v celém tomto dokumentu, pokud není uvedeno jinak. 
 
@@ -158,7 +158,7 @@ Pokud chcete obnovit zálohu zašifrovanou pomocí ochrany TDE ochrany před Key
 > [!IMPORTANT]
 > V každém okamžiku může být pro server nedostupná více než jedna sada ochrany TDE. Je to klíč označený jako "nastavit klíč jako výchozí TDE ochrana" v okně Azure Portal. Na server ale můžete propojit víc dalších klíčů, aniž byste je museli označit jako ochranu pomocí TDE. Tyto klíče se nepoužívají k ochraně klíč DEK, ale během obnovování se dají použít při obnovení ze zálohy, pokud je záložní soubor zašifrovaný s klíčem s odpovídajícím kryptografickým otiskem.
 
-Pokud klíč, který je potřeba pro obnovení zálohy, už není k dispozici na cílovém serveru, bude se při obnovení vracet tato chybová zpráva: "cílový server `<Servername>` nemá přístup ke všem identifikátorům URI integrace vytvořeným v \<časového razítka #1 > a \<#2 časové razítko >. Opakujte prosím operaci po obnovení všech identifikátorů URI integrace. "
+Pokud klíč, který je potřeba pro obnovení zálohy, už není k dispozici na cílovém serveru, bude se při obnovení vracet tato chybová zpráva: "cílový server `<Servername>` nemá přístup ke všem identifikátorům URI integrace vytvořeným v \<časového razítka #1 > a \<časového razítka #2 >. Opakujte prosím operaci po obnovení všech identifikátorů URI integrace. "
 
 Pokud ho chcete zmírnit, spusťte rutinu [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) pro cílový SQL Database logický Server nebo rutinu [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) pro cílovou spravovanou instanci, která vrátí seznam dostupných klíčů a určí chybějící. Aby bylo možné obnovit všechny zálohy, ujistěte se, že cílový server pro obnovení má přístup ke všem potřebným klíčům. Tyto klíče není nutné označit jako ochranu pomocí TDE.
 

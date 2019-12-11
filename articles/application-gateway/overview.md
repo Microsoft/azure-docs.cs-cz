@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a61b1a44419ac35efa5888de2b5a6e4988dfb512
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 29962fa217c34088ed17fdea68c2c1189a3bfcd2
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422315"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996574"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -111,11 +111,11 @@ Další informace najdete v tématu Podpora [WebSocket](https://docs.microsoft.c
 
 ## <a name="connection-draining"></a>Vyprázdnění připojení
 
-Vyprázdnění připojení vám pomůže provést řádné odebrání členů back-endového fondu při plánovaných servisních aktualizacích. Toto nastavení je povoleno prostřednictvím nastavení HTTP back-endu a lze je použít při vytváření pravidla u všech členů back-endového fondu. Po povolení Application Gateway zajistí, že všechny instance rušení registrace ve fondu back-endu neobdrží žádnou novou žádost, zatímco se existující požadavky dokončí v nakonfigurovaném časovém limitu. To platí pro instance back-end, které se explicitně odebraly z fondu back-endu prostřednictvím volání rozhraní API, a back-endové instance, které jsou nahlášené jako chybné v závislosti na sondách stavu.
+Vyprázdnění připojení vám pomůže provést řádné odebrání členů back-endového fondu při plánovaných servisních aktualizacích. Toto nastavení je povoleno prostřednictvím nastavení HTTP back-endu a lze je použít při vytváření pravidla u všech členů back-endového fondu. Po povolení Application Gateway zajistí, že všechny odregistrované instance back-endu fondu neobdrží žádné nové žádosti, zatímco se stávající požadavky dokončí v nakonfigurovaném časovém limitu. To platí pro instance back-end, které se explicitně odebraly z fondu back-endu pomocí změny konfigurace uživatele, a back-endové instance, které jsou nahlášené jako chybné v závislosti na sondách stavu. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí, které byly odregistrovány explicitně, protože spřažení relace spravované bránou a bude pokračovat v připojení k instancím zrušení registrace.
 
 Další informace naleznete v části vyprazdňování připojení v tématu [Přehled konfigurace Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
 
-## <a name="custom-error-pages"></a>Vlastní chybové stránky
+## <a name="custom-error-pages"></a>Stránky vlastních chyb
 
 Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
 
@@ -133,7 +133,7 @@ Application Gateway podporuje možnost přidávat, odebírat nebo aktualizovat p
 
 Další informace najdete v tématu [přepis hlaviček protokolu HTTP](rewrite-http-headers.md).
 
-## <a name="sizing"></a>Velikost
+## <a name="sizing"></a>Velikosti
 
 Application Gateway Standard_v2 a WAF_v2 SKU je možné nakonfigurovat pro nasazení s automatickým škálováním nebo pevnou velikostí. Tyto SKU nenabízejí různé velikosti instancí. Další informace o výkonu a cenách v2 najdete v tématu Automatické [škálování v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 

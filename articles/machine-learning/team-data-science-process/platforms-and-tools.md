@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626365"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978505"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty datových věd
 
@@ -44,7 +44,7 @@ Virtuální počítač pro datové vědy nabízíme na Windows i Linuxem microso
 - Power BI desktopu pro Windows
 - SQL Server 2016 Developer Edition na Windows / Postgres v Linuxu
 
-Zahrnuje také **nástroje ML a AI** , jako jsou xgboost, mxnet a Vowpal Wabbit.
+Zahrnuje taky **nástroje ml a AI** , jako je xgboost, Mxnet a pro dostupné.
 
 Aktuálně je k dispozici v DSVM **Windows** a **Linux CentOS** operačních systémů. Vyberte velikost vašeho DSVM (počet jader procesoru) a velikost paměti na základě potřeb projekty datových věd, které máte v úmyslu spustit na ní. 
 
@@ -73,7 +73,7 @@ Další informace o Azure SQL Data Warehouse, najdete v článku [SQL Data Wareh
 
 Azure data lake je jako je úložiště na podnikové úrovni všechny typy dat soustředěné na jednom místě, před žádné formální požadavků nebo schématu se uložila. Díky této flexibilitě umožňuje všechny typy dat, které budou uloženy v data lake, bez ohledu na její velikost nebo strukturu nebo rychlost zpracování. Organizace pak může použít Hadoop nebo pokročilou analýzu k vyhledání vzory v těchto datech jezera. Datová jezera současně může sloužit jako úložiště pro přípravu dat s nižšími náklady než Správa dat a jeho přesunutím do datového skladu.
 
-Další informace o Azure Data Lake najdete v tématu [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zjistěte, jak sestavit řešení škálovatelné začátku do konce datové vědy s Azure Data Lake, najdete v článku [škálovatelné vědecké zkoumání dat ve službě Azure Data Lake: Návod začátku do konce](data-lake-walkthrough.md)
+Další informace o Azure Data Lake najdete v tématu [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zjistěte, jak sestavit řešení škálovatelné začátku do konce datové vědy s Azure Data Lake, najdete v článku [škálovatelné vědecké zkoumání dat ve službě Azure Data Lake: návod začátku do konce](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Clustery Azure HDInsight Hive (Hadoop)
@@ -124,28 +124,30 @@ Spusťte následující příkaz prostředí bash instalace Git na počítačíc
 
 Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git, musíte přidat veřejný klíč SSH z vašeho počítače do služby Azure DevOps tak, aby tento počítač je rozpoznáván DevOps služby Azure. Nejprve musíte vygenerovat veřejný klíč SSH a přidejte klíč k veřejné klíče SSH na stránce nastavení zabezpečení služby Azure DevOps. 
 
-- Vygenerujte klíč SSH, spusťte následující dva příkazy: 
+1. Vygenerujte klíč SSH, spusťte následující dva příkazy: 
 
-        ssh-keygen
-        cat .ssh/id_rsa.pub
+   ```
+   ssh-keygen
+   cat .ssh/id_rsa.pub
+   ```
+   
+   ![Příkazy ke generování klíče SSH](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-![Příkazy ke generování klíče SSH](./media/platforms-and-tools/resources-1-generate_ssh.png)
-
-- Zkopírujte celý ssh včetně klíče *ssh-rsa*. 
-- Přihlaste se k vašim službám Azure DevOps. 
-- Klikněte na tlačítko **< jméno\>**  v pravém horním rohu stránky a klikněte na tlačítko **zabezpečení**. 
+1. Zkopírujte celý ssh včetně klíče *ssh-rsa*. 
+1. Přihlaste se k vašim službám Azure DevOps. 
+1. Klikněte na tlačítko **< jméno\>**  v pravém horním rohu stránky a klikněte na tlačítko **zabezpečení**. 
     
-    ![Klikněte na své jméno a potom klikněte na tlačítko zabezpečení](./media/platforms-and-tools/resources-2-user-setting.png)
+   ![Klikněte na své jméno a potom klikněte na tlačítko zabezpečení](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- Klikněte na tlačítko **veřejné klíče SSH**a klikněte na tlačítko **+ přidat**. 
+1. Klikněte na tlačítko **veřejné klíče SSH**a klikněte na tlačítko **+ přidat**. 
 
-    ![Klikněte na veřejné klíče SSH a pak klikněte na + Přidat](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![Klikněte na veřejné klíče SSH a pak klikněte na + Přidat](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- Vložit ssh klíč zkopírovali do textového pole a uložení.
+1. Vložit ssh klíč zkopírovali do textového pole a uložení.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Úplné začátku do konce návody, které ukazují všechny kroky v procesu pro **konkrétních scénářů** jsou také k dispozici. Jsou uvedena v seznamu a propojené s Miniatura popisy v [příklad návody](walkthroughs.md) tématu. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
 
-Příklady provádět kroky v vědecké zpracování týmových dat, které používají Azure Machine Learning Studio, najdete v článku [pomocí Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) výuky.
+Příklady, které ukazují, jak provést kroky v rámci vědeckého zpracování týmových dat pomocí Azure Machine Learning Studio (Classic), najdete v části s výukovou cestou [Azure ml](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) .

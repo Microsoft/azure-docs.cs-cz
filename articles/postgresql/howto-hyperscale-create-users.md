@@ -1,17 +1,17 @@
 ---
-title: Vytváření uživatelů v Azure Database for PostgreSQL – Citus (škálování)
+title: Vytváření uživatelů – Citus (Velká měřítko) – Azure Database for PostgreSQL
 description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s Azure Database for PostgreSQL – Citus (škálování).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7187135b29f0a9a790c032330c73bcb1ae27229b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d093d4c23fcc44e7e9f3461f875607926f4b612d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515938"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977569"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Vytváření uživatelů v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -26,15 +26,13 @@ Nově vytvořená skupina serverů Citus () obsahuje několik předem definovan�
 * *postgres*
 * *citus*
 
-Uživatel s oprávněními správce serveru *citus*je členem role *azure_pg_admin* .
-Nejedná se však o součást role *Postgres* (Super User).  Vzhledem k tomu, že škálovatelná služba PaaS je spravovaná, pouze společnost Microsoft je součástí role Super uživatel.
-
 Modul PostgreSQL využívá oprávnění k řízení přístupu k databázovým objektům, jak je popsáno v [dokumentaci k produktu PostgreSQL](https://www.postgresql.org/docs/current/static/sql-createrole.html).
-V Azure Database for PostgreSQL má uživatel pro správu serveru udělená tato oprávnění: LOGIN, NOSUPERUSER, DĚDĚNí, CREATEDB, CREATEROLE, inreplikace.
+Uživatel správce serveru *citus*je členem role *azure_pg_admin* .
+Nejedná se však o součást role *Postgres* (Super User).  Vzhledem k tomu, že škálovatelná služba PaaS je spravovaná, pouze společnost Microsoft je součástí role Super uživatel. Uživatel *citus* má omezená oprávnění a nemůže například vytvářet nové databáze.
 
 ## <a name="how-to-create-additional-users"></a>Vytváření dalších uživatelů
 
-Účet správce *citus* nemá oprávnění k vytváření dalších uživatelů. Chcete-li přidat uživatele, použijte místo toho Azure Portal.
+Účet správce *citus* nemá oprávnění k vytváření dalších uživatelů. Chcete-li přidat uživatele, použijte rozhraní Azure Portal.
 
 1. Přejděte na stránku **role** pro skupinu serverů s vlastním škálováním a klikněte na **+ Přidat**:
 
@@ -84,4 +82,4 @@ Další informace o správě uživatelských účtů databáze najdete v dokumen
 
 * [Role a oprávnění databáze](https://www.postgresql.org/docs/current/static/user-manag.html)
 * [UDĚLIT syntaxi](https://www.postgresql.org/docs/current/static/sql-grant.html)
-* [Požadovaná](https://www.postgresql.org/docs/current/static/ddl-priv.html)
+* [Oprávnění](https://www.postgresql.org/docs/current/static/ddl-priv.html)

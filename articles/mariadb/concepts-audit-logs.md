@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 64662499b4ee782bbf04e9e706cd659e84c90eec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9c5f6aa2900570aa00ddbc50ec8be4dbb0d16a34
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773069"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978045"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Protokoly auditu v Azure Database for MariaDB
 
@@ -27,6 +27,9 @@ Ve výchozím nastavení je protokol auditu zakázán. Pokud ho chcete povolit, 
 Mezi další parametry, které můžete upravit, patří:
 
 - `audit_log_events`: řídí události, které mají být protokolovány. Konkrétní události auditu najdete v níže uvedené tabulce.
+- `audit_log_include_users`: MariaDB uživatelé, kteří mají být zahrnuti do protokolování. Výchozí hodnota pro tento parametr je prázdná, což bude zahrnovat všechny uživatele pro protokolování. Má vyšší prioritu než `audit_log_exclude_users`. Maximální délka parametru je 512 znaků.
+> [!Note]
+> `audit_log_include_users` má vyšší prioritu než `audit_log_exclude_users`. Pokud například `audit_log_include_users` = `demouser` a `audit_log_exclude_users` = `demouser`, bude uživatel zahrnut do protokolů auditu, protože `audit_log_include_users` má vyšší prioritu.
 - `audit_log_exclude_users`: MariaDB uživatele, kteří mají být vyloučeni z protokolování. Umožňuje maximálně čtyři uživatele. Maximální délka parametru je 256 znaků.
 
 | **Události** | **Popis** |
@@ -55,10 +58,10 @@ V následujících částech najdete popis toho, co má výstup MariaDB protokol
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
+| `Type` | Typ protokolu Vždy `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -82,10 +85,10 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
+| `Type` | Typ protokolu Vždy `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -110,10 +113,10 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
+| `Type` | Typ protokolu Vždy `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -121,7 +124,7 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Název serveru |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`nebo `DELETE` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` nebo `DELETE` |
 | `connection_id_d` | Jedinečné ID připojení generované MariaDB |
 | `db_s` | Název databázového přistupu |
 | `table_s` | Název přistupované tabulky |

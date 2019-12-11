@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení koncových bodů v IoT Device Provisioning Service | Dokumentace Microsoftu
-description: Principy – řízení přístupu k IoT Device Provisioning Service pro aplikace back-endu. Obsahuje informace o tokeny zabezpečení.
+title: Koncové body zabezpečení ve službě IoT Device Provisioning | Microsoft Docs
+description: Koncepty – jak řídit přístup k službě IoT Device Provisioning (DPS) pro back-endové aplikace. Obsahuje informace o tokenech zabezpečení.
 author: wesmc7777
 manager: philmea
 ms.service: iot-dps
@@ -8,47 +8,47 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f36a48e0cedc309deda8416face5549a54eb8c73
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626648"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975121"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
 
-Tento článek popisuje možnosti pro zabezpečení služby IoT Device Provisioning. Zřizovací služba používá *oprávnění* udělit přístup pro každý koncový bod. Oprávnění omezují přístup k instanci služby závislosti na funkcích.
+Tento článek popisuje možnosti zabezpečení služby IoT Device Provisioning. Služba zřizování používá *oprávnění* k udělení přístupu ke každému koncovému bodu. Oprávnění omezují přístup k instanci služby na základě funkčnosti.
 
 Tento článek popisuje:
 
-* Jiná oprávnění, abyste udělili do back-endu aplikace pro přístup k vaší službě zřizování.
-* V procesu ověřování a tokenů použije k ověření oprávnění.
+* Různá oprávnění, která můžete udělit aplikaci back-end pro přístup k vaší službě zřizování.
+* Proces ověřování a tokeny, které používá k ověření oprávnění.
 
-### <a name="when-to-use"></a>Kdy je použít
+### <a name="when-to-use"></a>When to use
 
-Musí mít příslušná oprávnění pro přístup k jakémukoli zřizování koncových bodů služby. Například aplikace s back-end musí obsahovat token obsahující zabezpečovací přihlašovací údaje spolu s každou zprávu, kterou odesílá do služby.
+Musíte mít příslušná oprávnění pro přístup ke všem koncovým bodům služby zřizování. Například back-end aplikace musí zahrnovat token, který obsahuje zabezpečovací pověření, spolu s každou zprávou, kterou posílá službě.
 
 ## <a name="access-control-and-permissions"></a>Řízení přístupu a oprávnění
 
-Můžete udělit [oprávnění](#device-provisioning-service-permissions) následujícími způsoby:
+[Oprávnění](#device-provisioning-service-permissions) můžete udělit následujícími způsoby:
 
-* **Sdílené zásady přístupu autorizace**. Zásady sdíleného přístupu udělit libovolnou kombinaci [oprávnění](#device-provisioning-service-permissions). Můžete definovat zásady v [webu Azure portal][lnk-management-portal], nebo prostřednictvím kódu programu pomocí [zařízení zřizování služby REST API][lnk-resource-provider-apis]. Nově vytvořenou službu zřizování má následující výchozí zásady:
+* **Zásady autorizace sdíleného přístupu**. Zásady sdíleného přístupu můžou udělit libovolnou kombinaci [oprávnění](#device-provisioning-service-permissions). V [Azure Portal][lnk-management-portal]můžete definovat zásady nebo programově pomocí [rozhraní REST API služby Device Provisioning][lnk-resource-provider-apis]. Nově vytvořená služba zřizování má následující výchozí zásady:
 
-* **provisioningserviceowner**: Zásady se všechna oprávnění.
-
-> [!NOTE]
-> Zobrazit [oprávnění](#device-provisioning-service-permissions) podrobné informace.
-
-## <a name="authentication"></a>Authentication
-
-Azure IoT Hub Device Provisioning Service uděluje přístup ke koncovým bodům pomocí ověření tokenu proti zásady sdíleného přístupu. Zabezpečovací přihlašovací údaje, jako jsou například symetrického klíče, se nikdy neodesílá přenosu.
+* **provisioningserviceowner**: zásada se všemi oprávněními.
 
 > [!NOTE]
-> Poskytovatele prostředků služby Device Provisioning zabezpečuje svým předplatným Azure, jako jsou všichni poskytovatelé v [Azure Resource Manageru][lnk-azure-resource-manager].
+> Podrobné informace najdete v tématu [oprávnění](#device-provisioning-service-permissions) .
 
-Další informace o tom, jak vytvořit a použít tokeny zabezpečení najdete v další části.
+## <a name="authentication"></a>Ověření
 
-Je jediný podporovaný protokol HTTP a implementuje ověřování zahrnutím platný token v **autorizace** hlavičky žádosti.
+Azure IoT Hub Device Provisioning Service uděluje přístup k koncovým bodům tím, že ověřuje token proti zásadám sdíleného přístupu. Přihlašovací údaje zabezpečení, jako jsou například symetrické klíče, se nikdy neodesílají přes síťový kabel.
+
+> [!NOTE]
+> Poskytovatel prostředků služby Device Provisioning je zabezpečený prostřednictvím vašeho předplatného Azure, stejně jako všichni poskytovatelé v [Azure Resource Manager][lnk-azure-resource-manager].
+
+Další informace o tom, jak vytvořit a používat tokeny zabezpečení, najdete v další části.
+
+Jediným podporovaným protokolem je HTTP a implementuje ověřování zahrnutím platného tokenu do hlavičky **autorizační** žádosti.
 
 #### <a name="example"></a>Příklad:
 ```csharp
@@ -57,17 +57,17 @@ SharedAccessSignature sr =
 ```
 
 > [!NOTE]
-> [Azure zřizování služby SDK pro zařízení IoT] [ lnk-sdks] automaticky generovat tokeny při připojování ke službě.
+> Sady [SDK služby Azure IoT Device Provisioning][lnk-sdks] automaticky generují tokeny při připojování ke službě.
 
 ## <a name="security-tokens"></a>Tokeny zabezpečení
 
-Služby Device Provisioning Service používá k ověření služby se odesílání klíče na lince tokeny zabezpečení. Kromě toho mají omezenou dobu platnosti a rozsahu tokenů zabezpečení. [Azure IoT zřizování služby sady SDK pro zařízení] [ lnk-sdks] automaticky generovat tokeny nevyžaduje žádnou zvláštní konfiguraci. Některé scénáře vyžadují vytvoření a použití tokenů zabezpečení přímo. Tyto scénáře zahrnují přímému použití povrchu HTTP.
+Služba Device Provisioning používá k ověřování služeb tokeny zabezpečení, aby nedocházelo k posílání klíčů na lince. Tokeny zabezpečení jsou navíc omezené v době platnosti a rozsahu. Sady [SDK služby Device Provisioning v Azure IoT][lnk-sdks] automaticky generují tokeny bez nutnosti jakékoli speciální konfigurace. Některé scénáře vyžadují, abyste přímo vygenerovali a použili tokeny zabezpečení. Takové scénáře zahrnují přímé použití povrchu HTTP.
 
 ### <a name="security-token-structure"></a>Struktura tokenu zabezpečení
 
-Použití tokenů zabezpečení pro udělení přístupu časově služby k určité funkce IoT Device Provisioning Service. Získat autorizaci k připojení ke službě zřizování, musíte odeslat služby tokenů zabezpečení, které jsou podepsané pomocí sdíleného přístupového nebo symetrický klíč.
+Tokeny zabezpečení slouží k udělení časově vázaného přístupu pro služby ke konkrétním funkcím ve službě IoT Device Provisioning. Aby bylo možné získat autorizaci k připojení ke službě zřizování, musí služby odesílat tokeny zabezpečení podepsané buď pomocí sdíleného přístupu, nebo symetrického klíče.
 
-Token podepsán sdíleného přístupového klíče uděluje přístup ke všem funkcím, které jsou přidružené k oprávnění zásad sdíleného přístupu. 
+Token podepsaný pomocí sdíleného přístupového klíče uděluje přístup ke všem funkcím přidruženým k oprávněním zásad sdíleného přístupu. 
 
 Token zabezpečení má následující formát:
 
@@ -77,14 +77,14 @@ Tady jsou očekávané hodnoty:
 
 | Hodnota | Popis |
 | --- | --- |
-| {podpis} |Řetězec podpisu HMAC SHA256 formuláře: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: Klíč je dekódovat z formátu base64 a použít jako klíč pro provádění výpočtů HMAC SHA256.|
-| {expiry} |Řetězce UTF8 pro počet sekund od 00:00:00 UTC epocha na 1. ledna 1970. |
-| {URL-encoded-resourceURI} | Nižší malá a velká kódování URL z identifikátoru URI prostředku malými písmeny. Předponu identifikátoru URI (podle segmentů) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele IoT Device Provisioning Service (žádný protokol). Například, `mydps.azure-devices-provisioning.net`. |
-| {policyName} |Název zásad sdíleného přístupu, na který odkazuje tento token. |
+| označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256.|
+| vypršení platnosti |Řetězce UTF8 po dobu v sekundách od epocha 00:00:00 UTC dne 1. ledna 1970. |
+| {URL-encoded-resourceURI} | Malá adresa URL – kódování identifikátoru URI pro malý případ prostředku. Předpona URI (podle segmentu) koncových bodů, ke kterým se dá dostat s tímto tokenem, počínaje názvem hostitele služby IoT Device Provisioning (bez protokolu). Například, `mydps.azure-devices-provisioning.net`. |
+| {policyName} |Název zásad sdíleného přístupu, na který tento token odkazuje |
 
-**Poznámka: na předponě**: Předponu identifikátoru URI se počítá podle segmentu a ne podle znaku. Například `/a/b` je předpona pro `/a/b/c` , ale nikoli pro `/a/bc`.
+**Poznámka k předponě**: PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c`, ale ne pro `/a/bc`.
 
-Následující fragment kódu Node.js ukazuje funkci s názvem **generateSasToken** , který počítá token z vstupy `resourceUri, signingKey, policyName, expiresInMins`. Následující části podrobně popisují, jak inicializovat různé vstupy pro případy použití v odlišných tokenu.
+Následující fragment kódu Node. js ukazuje funkci nazvanou **generateSasToken** , která vypočítá token ze vstupních `resourceUri, signingKey, policyName, expiresInMins`. Další části podrobně popisují, jak inicializovat různé vstupy pro různé případy použití tokenu.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -107,7 +107,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
 };
 ```
 
-Porovnání je ekvivalentní kód Python a vygenerovat token zabezpečení:
+Jako srovnání je ekvivalentní kód Pythonu pro vygenerování tokenu zabezpečení:
 
 ```python
 from base64 import b64encode, b64decode
@@ -133,29 +133,29 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 ```
 
 > [!NOTE]
-> Protože doba platnosti tokenu je ověřen na počítačích IoT Device Provisioning Service, musí být minimální posun hodin na počítač, který generuje token.
+> Vzhledem k tomu, že se doba platnosti tokenu ověřuje na počítačích služby IoT Device Provisioning, musí být posun na hodinách počítače, který generuje token, minimální.
 
-### <a name="use-security-tokens-from-service-components"></a>Použití tokenů zabezpečení ze služby komponent
+### <a name="use-security-tokens-from-service-components"></a>Použití tokenů zabezpečení z komponent služby
 
-Součásti služby můžou generovat jenom tokeny zabezpečení pomocí udělení příslušných oprávnění, jak bylo popsáno dříve zásady sdíleného přístupu.
+Součásti služby mohou generovat pouze tokeny zabezpečení pomocí zásad sdíleného přístupu udělujících příslušná oprávnění, která jsou vysvětlena dříve.
 
-Zde jsou funkce služby, které jsou zveřejněné na koncové body:
+Tady jsou funkce služby vystavené na koncových bodech:
 
 | Koncový bod | Funkce |
 | --- | --- |
-| `{your-service}.azure-devices-provisioning.net/enrollments` |Poskytuje operace registrace zařízení ve službě Device Provisioning Service. |
-| `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |Poskytuje operace pro správu skupin pro registraci zařízení. |
-| `{your-service}.azure-devices-provisioning.net/registrations/{id}` |Poskytuje operace pro načtení a správu stav registrací zařízení. |
+| `{your-service}.azure-devices-provisioning.net/enrollments` |Poskytuje operace registrace zařízení ve službě Device Provisioning. |
+| `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |Poskytuje operace pro správu skupin registrace zařízení. |
+| `{your-service}.azure-devices-provisioning.net/registrations/{id}` |Poskytuje operace pro načtení a správu stavu registrací zařízení. |
 
 
-Jako příklad service vygenerované pomocí předem vytvořené na úrovni shared zásadu přístupu **enrollmentread** by vytvořit token s následujícími parametry:
+Například služba vygenerovaná pomocí předem vytvořených zásad sdíleného přístupu s názvem **enrollmentread** by vytvořila token s následujícími parametry:
 
 * identifikátor URI prostředku: `{mydps}.azure-devices-provisioning.net`,
-* podpisový klíč: jeden z klíčů `enrollmentread` zásad,
+* podpisový klíč: jeden z klíčů zásady `enrollmentread`,
 * Název zásady: `enrollmentread`,
-* žádné time.backn vypršení platnosti
+* jakýkoli čas vypršení platnosti. backn
 
-![Vytvořit zásady sdíleného přístupu pro instanci služby Device Provisioning na portálu][img-add-shared-access-policy]
+![Vytvoření zásad sdíleného přístupu pro instanci služby Device Provisioning na portálu][img-add-shared-access-policy]
 
 ```javascript
 var endpoint ="mydps.azure-devices-provisioning.net";
@@ -165,25 +165,25 @@ var policyKey = '...';
 var token = generateSasToken(endpoint, policyKey, policyName, 60);
 ```
 
-Výsledek, který může poskytnout přístup ke čtení všechny záznamy o zápisu, by byl:
+Výsledek, který by udělil přístup ke čtení všech záznamů zápisu, by byl:
 
 `SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=enrollmentread`
 
 ## <a name="reference-topics"></a>Referenční témata:
 
-V následujících tématech vám poskytnout další informace o řízení přístupu ke službě IoT Device Provisioning Service.
+Následující referenční témata obsahují další informace o řízení přístupu ke službě IoT Device Provisioning.
 
-### <a name="device-provisioning-service-permissions"></a>Oprávnění služby zřizování zařízení
+### <a name="device-provisioning-service-permissions"></a>Oprávnění služby Device Provisioning
 
-V následující tabulce jsou uvedeny oprávnění, která můžete použít k řízení přístupu ke službě IoT Device Provisioning Service.
+Následující tabulka uvádí oprávnění, která můžete použít k řízení přístupu ke službě IoT Device Provisioning.
 
 | Oprávnění | Poznámky |
 | --- | --- |
-| **ServiceConfig** |Uděluje oprávnění k provádění změn konfigurace služeb. <br/>Toto oprávnění je používán back-endové cloudové služby. |
-| **EnrollmentRead** |Uděluje přístup pro čtení k registraci zařízení a skupin registrací. <br/>Toto oprávnění je používán back-endové cloudové služby. |
-| **EnrollmentWrite** |Uděluje oprávnění k zápisu na registraci zařízení a skupin registrací. <br/>Toto oprávnění je používán back-endové cloudové služby. |
-| **RegistrationStatusRead** |Uděluje přístup pro čtení k stav registrace zařízení. <br/>Toto oprávnění je používán back-endové cloudové služby. |
-| **RegistrationStatusWrite**  |Odstranit uděluje přístup ke stavu registrace zařízení. <br/>Toto oprávnění je používán back-endové cloudové služby. |
+| **ServiceConfig** |Udělí přístup ke změně konfigurací služby. <br/>Toto oprávnění používá cloudové služby back-end. |
+| **EnrollmentRead** |Uděluje oprávnění ke čtení pro registrace zařízení a skupiny registrací. <br/>Toto oprávnění používá cloudové služby back-end. |
+| **EnrollmentWrite** |Udělí přístup pro zápis zařízení a registrační skupiny. <br/>Toto oprávnění používá cloudové služby back-end. |
+| **RegistrationStatusRead** |Udělí oprávnění ke čtení stavu registrace zařízení. <br/>Toto oprávnění používá cloudové služby back-end. |
+| **RegistrationStatusWrite**  |Udělí odstranění přístup k stavu registrace zařízení. <br/>Toto oprávnění používá cloudové služby back-end. |
 
 <!-- links and images -->
 

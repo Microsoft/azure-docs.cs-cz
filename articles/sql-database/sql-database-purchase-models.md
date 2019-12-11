@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821263"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973522"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
@@ -55,7 +55,7 @@ Náklady na úložiště zálohování jsou stejné jako u důležitých podniko
 
 Popis způsobu definování kapacity a výpočtu nákladů na výpočetní úrovni serveru najdete v tématu [SQL Database bez serveru](sql-database-serverless.md).
 
-## <a name="storage-costs"></a>Cena za uložení
+## <a name="storage-costs"></a>Náklady na úložiště
 
 Různé typy úložiště se účtují jinak. Pro úložiště dat se vám budou účtovat zřízené úložiště založené na maximální velikosti databáze nebo fondu, který vyberete. Náklady se nezmění, pokud je maximální hodnota nesnížíte nebo nezvýšíte. Úložiště zálohování je přidruženo k automatizovaným zálohám vaší instance a dynamicky se přiřazuje. Zvýšení doby uchovávání záloh zvyšuje velikost úložiště zálohování spotřebovaného vaší instancí.
 
@@ -102,7 +102,7 @@ Prostředky používané úlohou nemají vliv na prostředky, které jsou k disp
 
 ![ohraničovací rámeček](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Příklad:
+DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Například:
 
 - Zdvojnásobuje se DTU zvýšením velikosti databáze, která je rovna zdvojnásobení sady prostředků, které jsou k dispozici pro danou databázi.
 - P11 databáze úrovně Premium Service s 1750 DTU poskytuje výpočetní výkon 350x větší než základní databáze úrovně služeb s 5 DTU.  
@@ -129,7 +129,7 @@ Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuální
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají elastický fond prostředků
 
-Fondy jsou vhodné pro databáze s nízkým průměrem využití prostředků a relativně málo časté špičky využití. SQL Database automaticky vyhodnocuje historické využití prostředků databáze na stávajícím serveru SQL Database a doporučuje příslušnou konfiguraci fondu v Azure Portal. Další informace najdete v tématu [Kdy byste měli zvážit SQL Database elastický fond?](sql-database-elastic-pool.md).
+Fondy jsou vhodné pro databáze s nízkým průměrem využití prostředků a relativně málo časté špičky využití. Další informace najdete v tématu [Kdy byste měli zvážit SQL Database elastický fond?](sql-database-elastic-pool.md).
 
 ## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 

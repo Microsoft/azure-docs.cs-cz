@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání ploch v imagi pomocí REST API a kudrlinkou Azure'
+title: 'Rychlý Start: detekce plošek v obrázku pomocí REST API a kudrlinkou Azure'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete REST API Azure Face s kudrlinkou k detekci ploch v obrázku.
 services: cognitive-services
@@ -8,39 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: da929744922f8653bc293b68dbbadb9347a447e9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 59ffaa68cb2ee537b4eb688746f70eafb492d3a2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859151"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977841"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rychlý start: Rozpoznávání plošek v obrázku pomocí REST API obličeje a kudrlinkou
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a kudrlinkou
 
 V tomto rychlém startu použijete REST API Azure Face s kudrlinkou k detekci lidských plošek v obraze.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
 
 ## <a name="write-the-command"></a>Zápis příkazu
  
-Použijete příkaz podobný následujícímu pro volání Face API a získání dat atributu Face z obrázku. Nejprve zkopírujte kód do textového editoru&mdash;. před spuštěním příkazu je třeba provést změny určitých částí příkazu.
+Použijete příkaz podobný následujícímu pro volání Face API a získání dat atributu Face z obrázku. Nejprve zkopírujte kód do textového editoru&mdash;před jeho spuštěním budete muset provést změny některých částí příkazu.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
 ### <a name="subscription-key"></a>Klíč předplatného
-Nahraďte `<Subscription Key>` platným klíčem pro odběr obličeje.
+Nahraďte `<Subscription Key>` vaším platným klíčem předplatného pro obličej.
 
 ### <a name="face-endpoint-url"></a>Adresa URL koncového bodu obličeje
 
-Adresa URL `https://<My Endpoint String>.com/face/v1.0/detect` indikuje koncový bod Azure Face pro dotazování. Možná budete muset změnit první část této adresy URL tak, aby odpovídala koncovému bodu, který odpovídá vašemu klíči předplatného.
+Adresa URL `https://<My Endpoint String>.com/face/v1.0/detect` označuje koncový bod Azure Face pro dotazování. Možná budete muset změnit první část této adresy URL tak, aby odpovídala koncovému bodu, který odpovídá vašemu klíči předplatného.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -61,7 +61,7 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 
 ## <a name="run-the-command"></a>Spuštěním příkazu
 
-Po provedení změn otevřete příkazový řádek a zadejte nový příkaz. V okně konzoly byste měli vidět informace o tváři jako data JSON. Příklad:
+Po provedení změn otevřete příkazový řádek a zadejte nový příkaz. V okně konzoly byste měli vidět informace o tváři jako data JSON. Například:
 
 ```json
 [
@@ -155,7 +155,7 @@ Po provedení změn otevřete příkazový řádek a zadejte nový příkaz. V o
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste napsali příkaz složeného příkazu, který volá Face API Azure pro detekci plošek v obrázku a vrácení jejich atributů. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace.
 

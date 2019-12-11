@@ -2,18 +2,17 @@
 title: Jak klonovat službu Azure IoT Hub
 description: Jak klonovat službu Azure IoT Hub
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083273"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976141"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak klonovat službu Azure IoT Hub do jiné oblasti
 
@@ -73,9 +72,7 @@ Toto je obecná metoda, kterou doporučujeme pro přesun služby IoT Hub z jedn�
    1. Přidejte cokoli, co nebylo exportováno do šablony. 
    
        Například skupiny uživatelů nejsou exportovány do šablony. Musíte přidat skupiny uživatelů do šablony ručně nebo použít [Azure Portal](https://portal.azure.com) po vytvoření centra. Existuje příklad, jak přidat jednu skupinu příjemců do šablony v článku [použití šablony Azure Resource Manager ke konfiguraci směrování zpráv IoT Hub](tutorial-routing-config-message-routing-rm-template.md).
-
-       [Rozšíření zprávy](iot-hub-message-enrichments-overview.md) se také neexportují do šablony. Ty se používají ve spojení se směrováním zpráv a při aktualizaci konfigurace směrování zpráv se budou muset aktualizovat ručně v novém centru.
-
+       
    1. Zkopírujte zařízení z původního centra do klonovaného. Tento postup je popsaný v části [Správa zařízení zaregistrovaných ve službě IoT Hub](#managing-the-devices-registered-to-the-iot-hub).
 
 ## <a name="how-to-handle-message-routing"></a>Postup zpracování směrování zpráv
@@ -103,9 +100,6 @@ Pokud centrum používá směrování zpráv, máte dvě možnosti.
    * Centrum stále odkazuje na původní prostředky směrování a směruje zprávy do nakonfigurovaných zdrojů.
 
    * Dojde k malému výkonu, protože prostředky centra a koncového bodu směrování nejsou ve stejném umístění.
-
-> [!NOTE]
-> Pokud vaše centrum používá [vylepšení zpráv](iot-hub-message-enrichments-overview.md), budete je muset nastavit ručně na novém centru IoT, protože nejsou exportovány pomocí šablony Správce prostředků.
 
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>Příprava na migraci centra do jiné oblasti
 
@@ -359,7 +353,7 @@ Vytvořte nové centrum v novém umístění pomocí šablony. Pokud máte prost
 
 1. Do vyhledávacího pole zadejte "nasazování šablony" a vyberte Enter.
 
-1. Vyberte **nasazení šablony (nasazení pomocí vlastních šablon)** . Tím přejdete na obrazovku pro Template deployment. Vyberte **Vytvořit**. Zobrazí se tato obrazovka:
+1. Vyberte **nasazení šablony (nasazení pomocí vlastních šablon)** . Tím přejdete na obrazovku pro Template deployment. Vyberte **Create** (Vytvořit). Zobrazí se tato obrazovka:
 
    ![Snímek obrazovky zobrazující příkaz pro vytvoření vlastní šablony](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -369,7 +363,7 @@ Vytvořte nové centrum v novém umístění pomocí šablony. Pokud máte prost
 
    ![Snímek obrazovky zobrazující příkaz pro nahrání souboru šablony](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
 
-1. Vyhledejte novou šablonu, kterou jste upravovali, vyberte ji a pak vyberte **otevřít**. Načte šablonu v okně Upravit. Vyberte **Uložit**. 
+1. Vyhledejte novou šablonu, kterou jste upravovali, vyberte ji a pak vyberte **otevřít**. Načte šablonu v okně Upravit. Vyberte **Save** (Uložit). 
 
    ![Snímek obrazovky, který ukazuje načtení šablony](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
 

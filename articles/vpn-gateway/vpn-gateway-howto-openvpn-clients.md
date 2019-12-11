@@ -1,42 +1,42 @@
 ---
-title: Postup konfigurace klientů OpenVPN pro Azure VPN Gateway | Dokumentace Microsoftu
-description: Postup konfigurace klientů OpenVPN pro Azure VPN Gateway
+title: Jak nakonfigurovat OpenVPN klienty pro Azure VPN Gateway | Microsoft Docs
+description: Postup konfigurace OpenVPN klientů pro Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: b8f1626da730178d2cd9c2f31c4f9876102b3d46
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477851"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997152"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway
 
-Tento článek vám pomůže s konfigurací **OpenVPN® protokol** klientů.
+Tento článek vám pomůže nakonfigurovat klienty **OpenVPN® protokolů** .
 
 ## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Podrobnosti najdete v tématu [OpenVPN konfigurace pro službu Azure VPN Gateway](vpn-gateway-howto-openvpn.md).
+Ověřte, že jste dokončili postup konfigurace OpenVPN pro vaši bránu VPN. Podrobnosti najdete v tématu [Konfigurace OpenVPN pro Azure VPN Gateway](vpn-gateway-howto-openvpn.md).
 
 ## <a name="windows"></a>Klienti Windows
 
-1. Stažení a instalace klienta OpenVPN (verze 2.4 nebo vyšší) z oficiální [OpenVPN webu](https://openvpn.net/index.php/open-source/downloads.html).
-2. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace Point-to-site na webu Azure Portal, nebo 'New-AzVpnClientConfiguration"v prostředí PowerShell.
-3. Rozbalte profil. Dále otevřete *vpnconfig.ovpn* konfigurační soubor ze složky OpenVPN pomocí poznámkového bloku.
-4. [Export](vpn-gateway-certificates-point-to-site.md#clientexport) P2S klientský certifikát můžete vytvořit a nahrát do vaší konfigurace P2S k bráně.
-5. Extrahování privátním klíčem a kryptografického otisku base64 z *.pfx*. To lze provést několika způsoby. Pomocí OpenSSL na vašem počítači je jedním ze způsobů. *Profileinfo.txt* soubor obsahuje privátní klíč a kryptografický otisk certifikační Autority a certifikát klienta. Nezapomeňte použít kryptografický otisk klientského certifikátu.
+1. Stáhněte si a nainstalujte klienta OpenVPN (verze 2,4 nebo vyšší) z oficiálního [webu OpenVPN](https://openvpn.net/index.php/open-source/downloads.html).
+2. Stáhněte si profil sítě VPN pro bránu. To se dá udělat na kartě Konfigurace typu Point-to-site v Azure Portal, nebo v PowerShellu New-AzVpnClientConfiguration.
+3. Rozbalte profil. Pak otevřete konfigurační soubor *vpnconfig. ovpn* ze složky OpenVPN pomocí poznámkového bloku.
+4. [Exportujte](vpn-gateway-certificates-point-to-site.md#clientexport) certifikát klienta P2S, který jste vytvořili a nahráli do konfigurace P2S v bráně.
+5. Extrahujte privátní klíč a kryptografický otisk Base64 z formátu *. pfx*. To lze provést několika způsoby. Použití OpenSSL na vašem počítači je jedním ze způsobů. Soubor *ProfileInfo. txt* obsahuje privátní klíč a kryptografický otisk pro certifikační autoritu a klientský certifikát. Nezapomeňte použít kryptografický otisk klientského certifikátu.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
    ```
-6. Otevřít *profileinfo.txt* v poznámkovém bloku. Pokud chcete získat kryptografický otisk certifikátu klienta (podřízený), vyberte text (včetně a mezi) "---BEGIN CERTIFICATE---" a "---konec certifikát---" pro podřízené certifikát a zkopírujte ho. Certifikát podřízené můžete identifikovat podle předmětu = / řádek.
-7. Přepněte *vpnconfig.ovpn* soubor otevřený v poznámkovém bloku z kroku 3. Část uvedenou níže najít a nahradit všechno mezi "cert" a "/ certifikátu".
+6. Otevřete v programu Poznámkový blok *ProfileInfo. txt* . Chcete-li získat kryptografický otisk certifikátu klienta (podřízeného), vyberte text (včetně a mezi) "-----BEGIN CERTIFICATE-----" a "-----END CERTIFICATE-----" pro podřízený certifikát a zkopírujte jej. Podřízený certifikát můžete identifikovat tak, že prohlížíte předmět =/řádek.
+7. V kroku 3 Přepněte na soubor *vpnconfig. ovpn* , který jste otevřeli v programu Poznámkový blok. Najděte níže uvedenou část a nahraďte vše mezi "CERT" a "/CERT".
 
    ```
    # P2S client certificate
@@ -45,8 +45,8 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Otevřít *profileinfo.txt* v poznámkovém bloku. Pokud chcete získat privátní klíč, vyberte text (včetně a mezi) "---BEGIN PRIVATE KEY---" a "-END PRIVATE KEY---" a zkopírujte ho.
-9. Vraťte se do souboru vpnconfig.ovpn v programu Poznámkový blok a najděte v této části. Vložte privátní klíč, který nahrazuje všechno mezi a "klíče" a "/ klíčů".
+8. Otevřete v programu Poznámkový blok *ProfileInfo. txt* . Pokud chcete získat privátní klíč, vyberte text (včetně a mezi) "-----zahájit privátní klíč-----" a "-----konec PRIVÁTNÍho klíče-----" a zkopírujte ho.
+9. V programu Poznámkový blok vraťte se do souboru vpnconfig. ovpn a najděte tuto část. Vložte privátní klíč, který nahrazuje vše mezi a "klíč" a "/Key".
 
    ```
    # P2S client root certificate private key
@@ -59,25 +59,25 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 11. Zkopírujte soubor vpnconfig.ovpn do složky C:\Program Files\OpenVPN\config.
 12. Klikněte pravým tlačítkem na ikonu OpenVPN na hlavním panelu a klikněte na Připojit.
 
-## <a name="mac"></a>Klienti se systémem Mac
+## <a name="mac"></a>Klienti Mac
 
-1. Stáhnout a nainstalovat OpenVPN klienta, jako například [TunnelBlick](https://tunnelblick.net/downloads.html). 
-2. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace point-to-site na webu Azure Portal nebo pomocí "New-AzVpnClientConfiguration" v prostředí PowerShell.
-3. Rozbalte profil. Otevřete konfigurační soubor vpnconfig.ovpn ze složky OpenVPN v poznámkovém bloku.
-4. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. Zobrazit [Export veřejného klíče](vpn-gateway-certificates-point-to-site.md#cer) informace o exportování certifikátu se získat kódované veřejný klíč.
-5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Zobrazit [exportovat soukromý klíč](https://openvpn.net/community-resources/how-to/#pki) informace o tom, jak extrahovat privátní klíč.
+1. Stáhněte a nainstalujte klienta OpenVPN, jako je například [TunnelBlick](https://tunnelblick.net/downloads.html). 
+2. Stáhněte si profil sítě VPN pro bránu. To se dá udělat na kartě Konfigurace typu Point-to-site v Azure Portal nebo pomocí rutiny New-AzVpnClientConfiguration v PowerShellu.
+3. Rozbalte profil. Otevřete konfigurační soubor vpnconfig. ovpn ze složky OpenVPN v programu Poznámkový blok.
+4. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. V tématu [Export veřejného klíče](vpn-gateway-certificates-point-to-site.md#cer) najdete informace o tom, jak vyexportovat certifikát pro získání kódovaného veřejného klíče.
+5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Informace o postupu při extrakci privátního klíče najdete v tématu [export privátního klíče](https://openvpn.net/community-resources/how-to/#pki) .
 6. Ostatní pole ponechte beze změny. S použitím vyplněné konfigurace ve vstupu klienta se připojte k síti VPN.
-7. Poklikejte na soubor profilu a vytvořte profil v Tunnelblick.
+7. Dvojím kliknutím na soubor profilu vytvořte profil v Tunnelblick.
 8. Spusťte Tunnelblick ze složky aplikace.
-9. Klikněte na ikonu Tunnelblick na hlavním panelu systému a připojit výběru.
+9. Na hlavním panelu systému klikněte na ikonu Tunnelblick a vyberte připojit.
 
 > [!IMPORTANT]
->Jenom iOS 11.0 a vyšší a MacOS 10.13 a novější podporují OpenVPN protokolu.
+>Protokol OpenVPN podporuje jenom iOS 11,0 a vyšší a MacOS 10,13 a novější.
 >
 
 ## <a name="linux"></a>Klienti Linux
 
-1. Otevřete novou relaci terminálu. Nová relace můžete otevřít stisknutím klávesy "Ctrl + Alt + t" ve stejnou dobu.
+1. Otevřete novou relaci terminálu. Novou relaci můžete otevřít stisknutím kombinace kláves CTRL + ALT + t ve stejnou dobu.
 2. Zadejte následující příkaz pro instalaci potřebných součástí:
 
    ```
@@ -85,18 +85,18 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
    sudo apt-get -y install network-manager-openvpn
    sudo service network-manager restart
    ```
-3. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace Point-to-site na webu Azure Portal.
-4. [Export](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) P2S klientský certifikát můžete vytvořit a nahrát do vaší konfigurace P2S k bráně. 
-5. Extrahování privátní klíč a kryptografický otisk base64 z soubor .pfx. To lze provést několika způsoby. Pomocí OpenSSL ve vašem počítači je jedním ze způsobů.
+3. Stáhněte si profil sítě VPN pro bránu. To se dá udělat na kartě Konfigurace Point-to-site v Azure Portal.
+4. [Exportujte](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) certifikát klienta P2S, který jste vytvořili a nahráli do konfigurace P2S v bráně. 
+5. Extrahujte privátní klíč a kryptografický otisk Base64 z formátu. pfx. To lze provést několika způsoby. Použití OpenSSL v počítači je jednosměrné.
 
     ```
     openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-   *Profileinfo.txt* soubor bude obsahovat privátní klíč a kryptografický otisk certifikační Autority a certifikát klienta. Nezapomeňte použít kryptografický otisk klientského certifikátu.
+   Soubor *ProfileInfo. txt* bude obsahovat privátní klíč a kryptografický otisk pro certifikační autoritu a klientský certifikát. Nezapomeňte použít kryptografický otisk klientského certifikátu.
 
-6. Otevřít *profileinfo.txt* v textovém editoru. Pokud chcete získat kryptografický otisk certifikátu klienta (podřízený), vyberte text, včetně a mezi "---začátek certifikát---" a "---konec certifikát---" pro podřízené certifikát a zkopírujte ho. Certifikát podřízené můžete identifikovat podle předmětu = / řádek.
+6. Otevřete *ProfileInfo. txt* v textovém editoru. Chcete-li získat kryptografický otisk certifikátu klienta (podřízeného), vyberte text včetně a mezi "-----BEGIN CERTIFICATE-----" a "-----END CERTIFICATE-----" pro podřízený certifikát a zkopírujte jej. Podřízený certifikát můžete identifikovat tak, že prohlížíte předmět =/řádek.
 
-7. Otevřít *vpnconfig.ovpn* souborů a vyhledejte část uvedenou níže. Nahradit vše mezi a "cert" a "/ certifikátu".
+7. Otevřete soubor *vpnconfig. ovpn* a vyhledejte část uvedenou níže. Nahraďte vše mezi hodnotami a "CERT" a "/CERT".
 
    ```
    # P2S client certificate
@@ -105,9 +105,9 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Otevřete profileinfo.txt v textovém editoru. Pokud chcete získat privátní klíč, vyberte text, včetně a mezi "---začátek PRIVÁTNÍ klíč---" a "-END PRIVATE KEY---" a zkopírujte ho.
+8. Otevřete ProfileInfo. txt v textovém editoru. Pokud chcete získat privátní klíč, vyberte text včetně a mezi "-----zahájit-----PRIVÁTNÍho klíče" a "-----konec PRIVÁTNÍho klíče-----" a zkopírujte ho.
 
-9. Otevřete soubor vpnconfig.ovpn v textovém editoru a najděte v této části. Vložte privátní klíč, který nahrazuje všechno mezi a "klíče" a "/ klíčů".
+9. V textovém editoru otevřete soubor vpnconfig. ovpn a vyhledejte tento oddíl. Vložte privátní klíč, který nahrazuje vše mezi a "klíč" a "/Key".
 
    ```
    # P2S client root certificate private key
@@ -118,22 +118,22 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
    ```
 
 10. Ostatní pole ponechte beze změny. S použitím vyplněné konfigurace ve vstupu klienta se připojte k síti VPN.
-11. Připojení pomocí příkazového řádku, zadejte následující příkaz:
+11. Pokud se chcete připojit pomocí příkazového řádku, zadejte následující příkaz:
   
     ```
-    sudo openvpn –-config <name and path of your VPN profile file>
+    sudo openvpn –-config <name and path of your VPN profile file>&
     ```
-12. Chcete-li připojit pomocí grafického uživatelského rozhraní, přejděte na nastavení systému.
-13. Klikněte na tlačítko **+** přidat nové připojení VPN.
-14. V části **přidat VPN**, vyberte **importovat ze souboru...**
-15. Vyhledejte soubor profilu a poklikáním nebo vyberte **otevřít**.
-16. Klikněte na tlačítko **přidat** na **přidat VPN** okna.
+12. Pokud se chcete připojit pomocí grafického uživatelského rozhraní, použijte možnost nastavení systému.
+13. Kliknutím na **+** přidejte nové připojení k síti VPN.
+14. V části **Přidat síť VPN**vyberte **Importovat ze souboru...**
+15. Přejděte k souboru profilu a dvakrát klikněte nebo vyberte **otevřít**.
+16. V okně **Přidat síť VPN** klikněte na **Přidat** .
   
     ![Importovat ze souboru](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
-17. Můžete připojit síť VPN zapnete **ON** na **nastavení sítě** stránky, nebo na ikonu sítě v oznamovací oblasti.
+17. Můžete se připojit zapnutím sítě VPN na stránce **nastavení sítě** **nebo pomocí ikony** síť v oznamovací oblasti na hlavním panelu systému.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete, aby klienti VPN bude mít přístup k prostředkům v jiné virtuální síti, postupujte podle pokynů [připojení typu VNet-to-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) článku nastavte připojení typu vnet-to-vnet. Je nutné povolit protokol BGP na brány a připojení, jinak nebude tok provozu.
+Pokud chcete, aby klienti VPN měli přístup k prostředkům v jiné virtuální síti, postupujte podle pokynů v článku [VNet-to-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) a nastavte připojení typu VNet-to-VNet. Nezapomeňte povolit protokol BGP u bran a připojení, jinak přenos nebude pokračovat.
 
 **"OpenVPN" je ochranná známka společnosti OpenVPN Inc.**

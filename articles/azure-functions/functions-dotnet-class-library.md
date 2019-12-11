@@ -3,12 +3,12 @@ title: Referenční C# informace pro vývojáře Azure Functions
 description: Naučte se vyvíjet Azure Functions pomocí C#.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665572"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975478"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční C# informace pro vývojáře Azure Functions
 
@@ -25,7 +25,15 @@ V tomto článku se předpokládá, že už jste si přečetli následující č
 
 ## <a name="supported-versions"></a>Podporované verze
 
-Modul runtime Azure Functions 2. x používá .NET Core 2,2. Kód funkce může používat rozhraní .NET Core 2,2 API aktualizací nastavení projektu sady Visual Studio. Šablony funkcí nejsou ve výchozím nastavení pro .NET Core 2,2, aby nedošlo k nepříznivým dopadům na zákazníky, kteří nemají nainstalované rozhraní .NET Core 2,2.
+Verze běhových funkcí fungují s konkrétními verzemi .NET. Následující tabulka ukazuje nejvyšší úroveň rozhraní .NET Core a .NET Framework a .NET Core, které lze použít s určitou verzí funkcí v projektu. 
+
+| Verze modulu runtime Functions | Maximální verze .NET |
+| ---- | ---- |
+| Funkce 3. x | .NET Core 3,1 |
+| Functions 2.x | .NET Core 2.2 |
+| Functions 1.x | .NET Framework 4.6 |
+
+Další informace najdete v tématu [Přehled verzí Azure Functions runtime](functions-versions.md) .
 
 ## <a name="functions-class-library-project"></a>Projekt knihovny tříd Functions
 
@@ -49,7 +57,7 @@ Při sestavování projektu se ve výstupním adresáři sestavení vygeneruje s
 Tento adresář se nasadí do vaší aplikace Function App v Azure. Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou [přidána do projektu jako balíčky NuGet](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Proces sestavení vytvoří soubor *Function. JSON* pro každou funkci. Tento soubor *Function. JSON* není určen k přímému upravování. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. Informace o tom, jak funkci zakázat, najdete v tématu [Jak zakázat funkce](disable-function.md#functions-2x---c-class-libraries).
+> Proces sestavení vytvoří soubor *Function. JSON* pro každou funkci. Tento soubor *Function. JSON* není určen k přímému upravování. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. Informace o tom, jak funkci zakázat, najdete v tématu [Jak zakázat funkce](disable-function.md).
 
 
 ## <a name="methods-recognized-as-functions"></a>Metody rozpoznané jako funkce
@@ -149,7 +157,7 @@ Vygenerovaný soubor *Function. JSON* obsahuje vlastnost `configurationSource`, 
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. SDK. Functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
 Generování souboru *Function. JSON* provádí balíček NuGet [Microsoft\.NET\.SDK\.funkce](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 

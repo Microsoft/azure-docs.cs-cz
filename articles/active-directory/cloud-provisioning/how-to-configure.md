@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956962503dcb3a6355d455ff96744143c5965d1e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794299"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997118"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect nová konfigurace zřizování cloudu
 
@@ -32,8 +32,7 @@ Při konfiguraci zřizování použijte následující postup:
 
 4.  Klikněte na **Nová konfigurace**.
 5.  Na obrazovce konfigurace se předběžně vyplní místní doména.
-6. Zadejte **e-mailové oznámení**. Tento e-mail bude upozorněn. 
-7. Když zřizování není v pořádku.  
+6. Zadejte **e-mailové oznámení**. Tento e-mail se upozorní, když zřizování není v pořádku.  
 8. Přesuňte selektor, který chcete **Povolit** , a klikněte na **Uložit**.
 ![](media/tutorial-single-forest/configure2.png)
 

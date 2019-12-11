@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576403"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997186"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálnímu počítači pomocí za běhu
 
-Přístup k virtuálnímu počítači za běhu (just-in-time) se dá použít k uzamknutí příchozího provozu do virtuálních počítačů Azure. tím se sníží riziko útoků na útoky a zároveň se vám umožní snadný přístup k virtuálním počítačům v případě potřeby.
+Pomocí přístupu k virtuálním počítačům podle potřeby (JIT) je možné zamezit příchozímu provozu do virtuálních počítačů Azure a tím omezit vystavení útokům při stálém poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
 
 > [!NOTE]
 > Funkce za běhu je k dispozici na úrovni Standard Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
@@ -93,20 +93,20 @@ Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k 
 
 5. Klikněte na **Povolit JIT na virtuálních počítačích**.
    -. V tomto okně se zobrazují výchozí porty doporučené aplikací Azure Security Center:
-      - 22. SSH
+      - 22 - SSH
       - 3389 – RDP
       - 5985 – WinRM 
       - 5986 – WinRM
 6. Můžete taky nakonfigurovat vlastní porty:
 
-      1. Klikněte na **Přidat**. Otevře se okno **Přidat konfiguraci portu** .
+      1. Klikněte na tlačítko **Přidat**. Otevře se okno **Přidat konfiguraci portu** .
       2. Pro každý port, který se rozhodnete nakonfigurovat, můžete nastavit výchozí i vlastní, abyste mohli přizpůsobit následující nastavení:
 
     - **Typ protokolu**– protokol, který je na tomto portu povolený, když je žádost schválená.
     - **Povolené zdrojové IP adresy**– ROZSAHy IP adres, které jsou na tomto portu povolené, když je žádost schválená.
     - **Maximální doba požadavku**– maximální časový interval, během kterého lze otevřít konkrétní port.
 
-     3. Klikněte na tlačítko **OK**.
+     3. Klikněte na **OK**.
 
 1. Klikněte na **Uložit**.
 
@@ -176,10 +176,10 @@ Pro usnadnění práce se můžete připojit k virtuálnímu počítači pomocí
 
 Aby bylo možné v rámci virtuálních počítačů snadno naprogramovat přístup za běhu, můžete nastavit virtuální počítač tak, aby umožňoval pouze přístup za běhu přímo z virtuálního počítače.
 
-1. V Azure Portal vyberte **virtuální počítače**.
-2. Klikněte na virtuální počítač, který chcete omezit na přístup za běhu.
-3. V nabídce klikněte na položku **Konfigurace**.
-4. V části **přístup za běhu** klikněte na **Povolit zásady**za běhu. 
+1. V [Azure Portal](https://ms.portal.azure.com)vyhledejte a vyberte **virtuální počítače**. 
+2. Vyberte virtuální počítač, který chcete omezit na přístup za běhu.
+3. V nabídce vyberte **Konfigurace**.
+4. V části **přístup za běhu**vyberte možnost **Povolit zásady**za běhu. 
 
 To umožňuje použít pro virtuální počítač přístup za běhu pomocí následujících nastavení:
 

@@ -1,6 +1,6 @@
 ---
 title: Rychlý Start – použití symetrického klíče ke zřízení simulovaného zařízení pro Azure IoT Hub pomocí jazyka C
-description: V tomto rychlém startu použijete sadu SDK pro zařízení jazyka C k vytvoření simulovaného zařízení, které používá symetrický klíč, pomocí služby Azure IoT Hub Device Provisioning Service.
+description: V tomto rychlém startu použijete sadu SDK pro zařízení C k vytvoření simulovaného zařízení, které používá symetrický klíč, s Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4d1e1ff5312cfb5aa0b2e378a24d5e0db7fb3605
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 20416f83c31857417e01de31b787528e20775cdf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423552"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976668"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči
 
@@ -32,7 +32,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povolenou úlohou [" C++vývoj pro stolní počítače"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
@@ -98,7 +98,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
 3. Na panelu **Přidat registraci** zadejte následující informace a stiskněte tlačítko **Uložit** .
 
-   - **Mechanismus:** Jako **Mechanismus** pro ověření identity vyberte *Symetrický klíč*.
+   - **Mechanismus:** Jako *Mechanismus* pro ověření identity vyberte **Symetrický klíč**.
 
    - **Automaticky generovat klíče**: zaškrtněte toto políčko.
 
@@ -108,7 +108,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
      ![Přidání jednotlivé registrace pro ověření symetrického klíče na webu Azure Portal](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
-4. Po uložení registrace se vygeneruje **primární klíč** a **sekundární klíč** a přidá se k položce registrace. Symetrický klíč registrace zařízení se zobrazí na kartě **Jednotlivé registrace** ve sloupci *ID registrace* jako *symm-key-device-007*. 
+4. Po uložení registrace se vygeneruje **primární klíč** a **sekundární klíč** a přidá se k položce registrace. Symetrický klíč registrace zařízení se zobrazí na kartě *Jednotlivé registrace* ve sloupci *ID registrace* jako **symm-key-device-007**. 
 
     Otevřete registraci a zkopírujte hodnotu vygenerovaného **primárního klíče**.
 
@@ -118,7 +118,7 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
 ## <a name="simulate-first-boot-sequence-for-the-device"></a>Simulace první spouštěcí sekvence pro zařízení
 
-V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekvenci zařízení do instance služby Device Provisioning Service. Toto spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí službě IoT Hub propojené s instancí služby Device Provisioning.
+V této části aktualizujete vzorový kód tak, aby odeslal spouštěcí sekvenci zařízení do instance služby Device Provisioning Service. Tato spouštěcí sekvence způsobí, že se zařízení rozpozná a přiřadí službě IoT Hub propojené s instancí služby Device Provisioning Service.
 
 
 

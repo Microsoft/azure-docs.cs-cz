@@ -1,29 +1,29 @@
 ---
-title: Pomocí rozhraní REST API služby Azure Import/Export | Dokumentace Microsoftu
-description: Zjistěte, kde můžete najít prostředky pro použití rozhraní REST API, včetně postupy a referenční materiály služby Azure Import/Export.
-author: muralikk
+title: Použití REST API služby importu a exportu v Azure | Microsoft Docs
+description: Naučte se najít prostředky pro použití REST API služby importu a exportu v Azure, včetně referenčního materiálu.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 1e8b60f37cefb81fbbbbb7823be7752dd1188dc3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 833b8c79fba57b7129092e084381c0671c396496
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320274"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978862"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Použití rozhraní REST API služby Azure Import/Export
 
-Služba Microsoft Azure Import/Export zpřístupňuje rozhraní REST API umožňují programové řízení úlohy import/export. Můžete provádět všechny operace importu/exportu, které můžete provádět pomocí rozhraní REST API [webu Azure portal](https://portal.azure.com/). Kromě toho můžete použít rozhraní REST API k provádění určitých detailní operací, jako jsou například dotazování procento dokončení úlohy, která není aktuálně k dispozici na webu Azure Portal.
+Služba Microsoft Azure Import/Export zpřístupňuje REST API umožňující programové řízení úloh importu/exportu. REST API můžete použít k provedení všech operací importu/exportu, které můžete s [Azure Portal](https://portal.azure.com/)provádět. Kromě toho můžete použít REST API k provádění určitých podrobných operací, jako je dotazování procentuálního dokončení úlohy, které není aktuálně k dispozici v Azure Portal.
 
-Zobrazit [pomocí služby Microsoft Azure Import/Export pro přenos dat do úložiště objektů Blob](../storage-import-export-service.md) přehledné informace o službě Import/Export a kurz, který ukazuje, jak pomocí portálu pro vytváření a správě import a export úloh.
+V tématu [použití služby Microsoft Azure import/export k přenosu dat do BLOB Storage](../storage-import-export-service.md) najdete přehled služby Import/export a kurz, který ukazuje, jak pomocí portálu vytvářet a spravovat úlohy importu a exportu.
 
 ## <a name="service-endpoints"></a>Koncové body služby
 
-Služba Azure Import/Export je poskytovatel prostředků Azure Resource Manageru a poskytuje sadu rozhraní REST API následující koncový bod HTTPS pro správu úlohy importu/exportu:
+Služba import/export Azure je poskytovatel prostředků pro Azure Resource Manager a poskytuje sadu rozhraní REST API pro správu úloh importu/exportu v následujícím koncovém bodu HTTPS:
 
 ```
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>
@@ -31,9 +31,9 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ## <a name="versioning"></a>Správa verzí
 
-Musíte zadat požadavky na službu Import/Export `api-version` parametr a nastavte jej na hodnotu `2016-11-01`.
+Požadavky na službu import/export musí určovat parametr `api-version` a nastavit jeho hodnotu na `2016-11-01`.
 
-## <a name="importexport-service-operations"></a>Operace služby Import/Export
+## <a name="importexport-service-operations"></a>Operace služby Import/export
 
 [Vytvoření úlohy importu](../storage-import-export-creating-an-import-job.md)
 
@@ -49,6 +49,6 @@ Musíte zadat požadavky na službu Import/Export `api-version` parametr a nasta
 
 [Diagnostika a zotavení z chyb pro úlohy Import/export](../storage-import-export-diagnostics-and-error-recovery.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Import/Export úložiště REST](/rest/api/storageimportexport)
+* [REST pro import/export úložiště](/rest/api/storageimportexport)

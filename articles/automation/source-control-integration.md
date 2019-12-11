@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/26/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850155"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996506"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -30,7 +30,7 @@ Azure Automation podporuje tři typy správy zdrojového kódu:
 
 * Úložiště správy zdrojového kódu (GitHub nebo Azure Repos)
 * [Účet Spustit jako](manage-runas-account.md)
-* Ujistěte se, že máte ve svém účtu Automation [nejnovější moduly Azure](automation-update-azure-modules.md) .
+* Ujistěte se, že máte ve svém účtu Automation [nejnovější moduly Azure](automation-update-azure-modules.md) , včetně modulu **AzureRM. Profile** . 
 
 > [!NOTE]
 > Úlohy synchronizace správy zdrojového kódu se spouštějí pod účtem automatizace uživatelů a účtují se stejnou sazbou jako ostatní úlohy automatizace.

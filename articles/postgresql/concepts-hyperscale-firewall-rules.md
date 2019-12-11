@@ -1,17 +1,17 @@
 ---
-title: Pravidla brány firewall v Azure Database for PostgreSQL – Citus (škálování)
+title: Pravidla brány firewall – Citus (-Scale) – Azure Database for PostgreSQL
 description: Tento článek popisuje pravidla brány firewall pro Azure Database for PostgreSQL – Citus (škálování).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 567fb27ed942a24ab7d031d791e18fa487956fad
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273736"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975563"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Pravidla brány firewall v Azure Database for PostgreSQL – Citus (škálování)
 Brána firewall serveru Azure Database for PostgreSQL zabraňuje všem přístupům k uzlu koordinátora Citus), dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
@@ -31,7 +31,7 @@ Brána firewall skupiny serverů Citus () určuje, kdo se může připojit k uzl
 
 Když brána firewall blokuje připojení, může způsobit chyby aplikace. Použití ovladače PostgreSQL JDBC například vyvolá chybu podobnou této:
 
-> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: Závažná chyba:\_No pg HBA. conf pro hostitele "123.45.67.890", User "citus", Database "citus", SSL
+> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: No pg\_HBA. conf pro hostitele "123.45.67.890", User "citus", Database "citus", SSL
 
 Informace o tom, jak jsou pravidla definovaná, najdete v tématu [Vytvoření a Správa pravidel brány firewall](howto-hyperscale-manage-firewall-using-portal.md) .
 
@@ -43,9 +43,9 @@ Když se přístup k Microsoft Azure databázi pro službu PostgreSQL-Citus () n
 * **Uživatel nemá oprávnění nebo se použilo nesprávné heslo:** Pokud uživatel nemá na serveru oprávnění nebo je použité heslo nesprávné, připojení k serveru je odepřené. Při vytváření nastavení brány firewall jsou jenom klienti s příležitostí k pokusu o připojení k vašemu serveru. Každý klient musí stále zadat potřebná zabezpečovací pověření.
 
 Například pomocí klienta JDBC se může zobrazit následující chyba.
-> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: ověřování heslem pro uživatele "uživatelské_jméno" se nezdařilo.
+> Java. util. souběžné. ExecutionException: Java. lang. RuntimeException –: org. PostgreSQL. util. PSQLException: ZÁVAŽNá: ověřování hesla pro uživatele "uživatelské_jméno" se nezdařilo.
 
-* **Dynamická IP adresa:** Pokud máte připojení k Internetu s dynamickým IP adresou a máte potíže s připojením přes bránu firewall, můžete vyzkoušet jedno z následujících řešení:
+* **Dynamická IP adresa:** Pokud vaše internetové připojení používá dynamické přidělování IP adres a máte problémy dostat se přes bránu firewall, můžete zkusit jedno z následujících řešení:
 
 * Zeptejte se poskytovatele internetových služeb (ISP) na rozsah IP adres přiřazený ke klientským počítačům, které přistupují k uzlu koordinátora Citus (webscale), a pak přidejte rozsah IP adres jako pravidlo brány firewall.
 

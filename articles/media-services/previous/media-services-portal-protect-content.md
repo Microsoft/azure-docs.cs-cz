@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zásad ochrany obsahu pomocí webu Azure portal | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak pomocí webu Azure portal nakonfigurovat zásady ochrany obsahu. Tento článek také ukazuje, jak povolit dynamické šifrování pro vaše prostředky.
+title: Konfigurace zásad ochrany obsahu pomocí Azure Portal | Microsoft Docs
+description: Tento článek ukazuje, jak pomocí Azure Portal nakonfigurovat zásady ochrany obsahu. Tento článek také ukazuje, jak povolit dynamické šifrování pro vaše prostředky.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,119 +14,123 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 65e5b5502b7d63d89845781487443f539a708816
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866973"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978198"
 ---
-# <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí webu Azure portal
+# <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurace zásad ochrany obsahu pomocí Azure Portal
 
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > Služba Media Services v2 se neustále přidávají žádné nové funkce nebo funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > Do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Projděte si nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 >
 
- Pomocí služby Azure Media Services můžete zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Služba Media Services můžete použít k doručování dynamicky šifrovaných s na Standard AES (Advanced Encryption) s použitím 128bitové šifrování klíče obsahu. Také můžete ho s používat standard common encryption (CENC) pomocí technologie PlayReady nebo Widevine správy digitálních práv (DRM) a Apple FairPlay. 
+ Pomocí Azure Media Services můžete své médium zabezpečit od okamžiku, kdy počítač opustí úložiště, zpracování a doručování. Media Services můžete použít k dynamickému šifrování obsahu pomocí standard AES (Advanced Encryption Standard) (AES) pomocí 128 bitových šifrovacích klíčů. Můžete ji také použít se společným šifrováním (CENC) pomocí technologie PlayReady nebo Widevine DRM (Správa digitálních práv) a Apple FairPlay. 
 
-Služba Media Services poskytuje službu k doručování licencí DRM a standardu AES Vymazat klíče autorizovaným klientům. Na webu Azure portal můžete vytvořit jednu zásadu autorizace klíčů nebo licencí pro všechny typy šifrování.
+Media Services poskytuje službu pro doručování licencí DRM a nezašifrovaných klíčů AES do autorizovaných klientů. Pomocí Azure Portal můžete vytvořit jednu zásadu autorizace klíče/licence pro všechny typy šifrování.
 
-Tento článek ukazuje, jak nakonfigurovat zásady ochrany obsahu pomocí portálu. Tento článek také ukazuje, jak použít dynamické šifrování na vaše prostředky.
+Tento článek ukazuje, jak nakonfigurovat zásady ochrany obsahu pomocí portálu. Tento článek také ukazuje, jak použít dynamické šifrování pro vaše prostředky.
 
-## <a name="start-to-configure-content-protection"></a>Počáteční konfigurace ochrany obsahu
-Konfigurace globální ochrany obsahu pomocí účtu Media Services pomocí portálu, proveďte následující kroky:
+## <a name="start-to-configure-content-protection"></a>Zahájení konfigurace ochrany obsahu
+Pokud chcete použít portál ke konfiguraci globální ochrany obsahu pomocí účtu Media Services, proveďte následující kroky:
 
-1. V [portál](https://portal.azure.com/), vyberte svůj účet Media Services.
+1. Na [portálu](https://portal.azure.com/)vyberte svůj účet Media Services.
 
-1. Vyberte **nastavení** > **Content protection**.
+1. Vyberte **nastavení** > **Content Protection**.
 
     ![Ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
-## <a name="keylicense-authorization-policy"></a>Zásady autorizace klíčů nebo licencí
-Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíčů nebo licencí. Je třeba nakonfigurovat zásady autorizace klíče obsahu. Váš klient pak musí zásady splňovat, než správu klíčů/licencí může doručit do ní. Zásady autorizace pro klíč k obsahu mohou obsahovat jedno nebo více omezení autorizace: buď otevřená omezení, nebo omezení s tokenem.
+## <a name="keylicense-authorization-policy"></a>Zásady autorizace klíčů a licencí
+Media Services podporuje více způsobů ověřování uživatelů, kteří vytvářejí požadavky na klíč nebo licenci. Je třeba nakonfigurovat zásady autorizace klíče obsahu. Váš klient pak musí zásadu splnit, aby bylo možné do ní doručovat klíč nebo licenci. Zásady autorizace pro klíč k obsahu mohou obsahovat jedno nebo více omezení autorizace: buď otevřená omezení, nebo omezení s tokenem.
 
-Na portálu můžete vytvořit jednu zásadu autorizace klíčů nebo licencí pro všechny typy šifrování.
+Portál můžete použít k vytvoření jedné zásady autorizace klíče a licence pro všechny typy šifrování.
 
-### <a name="open-authorization"></a>Otevřít autorizace
-Otevřít omezení znamená, že systém poskytuje všem uživatelům, kteří vytvoří klíče požadavek klíč. Toto omezení může být užitečná pro účely testování. 
+### <a name="open-authorization"></a>Otevřít autorizaci
+Otevřené omezení znamená, že systém doručuje klíč všem, kdo vytvoří požadavek na klíč. Toto omezení může být užitečné pro testovací účely. 
 
-### <a name="token-authorization"></a>Token autorizace
-Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve jednoduchý webový token (SWT) a formátů JSON Web Token (JWT). Služba Media Services neposkytuje služby tokenů zabezpečení. Můžete vytvořit vlastní službu STS, nebo použít Azure Access Control Service pro vydávání tokenů. Služba tokenů zabezpečení musí být nakonfigurovaný k vytvoření tokenu podepsán zadaný klíč a vydávání deklarací identity, které jste zadali v konfiguraci omezení s tokenem. Pokud je token platný a deklarace identity v tokenu odpovídají těm nakonfigurovaný pro klíče (nebo licencí), doručení klíče služby Media Services vrátí klientovi požadovaný klíč (nebo licencí).
+### <a name="token-authorization"></a>Autorizace tokenu
+Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátech jednoduchých webových tokenů (SWT) a JSON Web Token (JWT). Media Services neposkytuje službu STS. Můžete vytvořit vlastní STS nebo použít Azure Access Control Service k vydávání tokenů. Služba tokenů zabezpečení musí být nakonfigurovaný k vytvoření tokenu podepsán zadaný klíč a vydávání deklarací identity, které jste zadali v konfiguraci omezení s tokenem. Pokud je token platný a deklarace identity v tokenu se shodují s hodnotami nakonfigurovanými pro klíč (nebo licenci), služba doručování Media Services Key vrátí požadovaný klíč (nebo licenci) klientovi.
 
-Když konfigurujete zásady omezení tokenem, musíte zadat primární ověřovací klíč, vydavatele a parametry cílovou skupinu. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí. Vystavitel je služba tokenů zabezpečení, který vydá token. Cílová skupina (říká se jim oboru) by měl popisovat záměr tokenu nebo prostředek token, který autorizuje přístup k. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
+Když konfigurujete zásady s omezením tokenu, musíte zadat primární ověřovací klíč, Vystavitel a parametry cílové skupiny. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí. Vystavitel je služba tokenů zabezpečení, který vydá token. Cílová skupina (někdy označovaná jako obor) popisuje účel tokenu nebo prostředku, ke kterému token opravňuje přístup. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
 
-![Zásady autorizace klíčů nebo licencí](./media/media-services-portal-content-protection/media-services-content-protection002.png)
+![Zásady autorizace klíčů a licencí](./media/media-services-portal-content-protection/media-services-content-protection002.png)
 
 ## <a name="playready-license-template"></a>Šablona licencování PlayReady
-Šablona licencování PlayReady nastaví funkci, která je povolena na vaše licence PlayReady. Další informace o šabloně licence PlayReady, najdete v článku [Přehled šablon licencování Media Services PlayReady](media-services-playready-license-template-overview.md).
+Šablona licence PlayReady nastaví funkce, které jsou povolené v licenci PlayReady. Další informace o šabloně licence PlayReady najdete v tématu [Přehled šablon licencí](media-services-playready-license-template-overview.md)playready pro Media Services.
 
-### <a name="nonpersistent"></a>Zajišťováno
-Pokud nakonfigurujete jako nonpersistent licenci, je udržována v paměti pouze tehdy, když hráč používá licence.  
+### <a name="nonpersistent"></a>Netrvalé
+Pokud nakonfigurujete licenci jako netrvalou, bude uložena v paměti pouze v případě, že hráč používá licenci.  
 
-![Zajišťováno ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection003.png)
+![Netrvalá Ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection003.png)
 
-### <a name="persistent"></a>Trvalé
-Pokud konfigurujete licenci jako trvalé, se uloží do trvalého úložiště na straně klienta.
+### <a name="persistent"></a>Trvalý
+Pokud licenci nakonfigurujete jako trvalou, uloží se do trvalého úložiště na klientovi.
 
 ![Trvalá ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection004.png)
 
 ## <a name="widevine-license-template"></a>Šablona licencování Widevine
-Šablona licencování Widevine nastaví funkci, která je povolená licencí Widevine.
+Šablona licence Widevine nastaví funkce, které jsou povolené na vašich licencích Widevine.
 
-### <a name="basic"></a>Basic
-Když vyberete **základní**, vytvoření šablony s použitím všech výchozích hodnot.
+### <a name="basic"></a>Úroveň Basic
+Když vyberete **základní**, vytvoří se šablona se všemi výchozími hodnotami.
 
-### <a name="advanced"></a>Upřesnit
-Další informace o šablona práv Widevine, najdete v článku [Přehled šablon licencování Widevine](media-services-widevine-license-template-overview.md).
+### <a name="advanced"></a>Rozšířený
+Další informace o šabloně Widevine Rights najdete v tématu [Přehled šablon licencí Widevine](media-services-widevine-license-template-overview.md).
 
-![Rozšířená ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection005.png)
+![Pokročilá ochrana obsahu](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>Konfigurace FairPlay
-Pokud chcete povolit šifrování FairPlay, vyberte **konfigurace FairPlay**. Vyberte **certifikát aplikace** a zadejte **tajný klíč aplikace**. Další informace o požadavcích a konfigurace FairPlay najdete v tématu [chránit obsah pomocí Apple FairPlay nebo Microsoft PlayReady HLS](media-services-protect-hls-with-FairPlay.md).
+Pokud chcete povolit šifrování FairPlay, vyberte **Konfigurace Fairplay**. Pak vyberte **certifikát aplikace** a zadejte **tajný klíč aplikace**. Další informace o konfiguraci a požadavcích FairPlay najdete v tématu [Ochrana obsahu HLS pomocí Apple Fairplay nebo Microsoft PlayReady](media-services-protect-hls-with-FairPlay.md).
 
 ![Konfigurace FairPlay](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
-## <a name="apply-dynamic-encryption-to-your-asset"></a>Použít dynamické šifrování na prostředek
-Abyste mohli využívat dynamické šifrování, zdrojový soubor zakódujte do sady souborů MP4 s adaptivní přenosovou rychlostí.
+## <a name="apply-dynamic-encryption-to-your-asset"></a>Použití dynamického šifrování u prostředku
+Pokud chcete využít výhod dynamického šifrování, zakódujte zdrojový soubor do sady souborů MP4 s adaptivní přenosovou rychlostí.
 
-### <a name="select-an-asset-that-you-want-to-encrypt"></a>Vyberte asset, který chcete zašifrovat
-Pokud chcete zobrazit všechny vaše prostředky, vyberte **nastavení** > **prostředky**.
+### <a name="select-an-asset-that-you-want-to-encrypt"></a>Vyberte prostředek, který chcete zašifrovat.
+Pokud chcete zobrazit všechny prostředky, vyberte **nastavení** > **assety**.
 
-![Možnost prostředky](./media/media-services-portal-content-protection/media-services-content-protection007.png)
+![Možnost assetů](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
-### <a name="encrypt-with-aes-or-drm"></a>Šifrování s licencemi DRM nebo AES
-Když vyberete **šifrovat** pro určitý prostředek, se zobrazí dvě možnosti: **AES** nebo **DRM**. 
+### <a name="encrypt-with-aes-or-drm"></a>Šifrování pomocí AES nebo DRM
+Když pro prostředek vyberete možnost **šifrování** , zobrazí se dvě možnosti: **AES** nebo **DRM**. 
 
 #### <a name="aes"></a>AES
-AES je jasné, že je povoleno šifrování klíče na všechny streamovací protokoly: Technologie Smooth Streaming, HLS a MPEG-DASH.
+Šifrování standardu AES je povolené na všech protokolech streamování: Smooth Streaming, HLS a MPEG-POMLČKa.
 
 ![Konfigurace šifrování](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
 #### <a name="drm"></a>DRM
-1. Po výběru **DRM**, najdete v článku různých obsahu zásad ochrany (které je nutné nakonfigurovat tento bod) a sada streamovací protokoly:
+1. Po výběru **DRM**se zobrazí různé zásady ochrany obsahu (které se musí konfigurovat tímto bodem) a sada protokolů streamování:
 
-    a. **PlayReady a Widevine s MPEG-DASH** dynamicky šifruje pomocí PlayReady DRM nebo Widevine technologiemi DRM streamů MPEG-DASH.
+    a. **PlayReady a Widevine s MPEG-pomlčkou** dynamicky šifruje váš datový proud MPEG-spojovník pomocí PlayReady a Widevine několikanásobnou.
 
-    b. **PlayReady a Widevine s MPEG-DASH + FairPlay s HLS** dynamicky šifrovat pomocí PlayReady DRM nebo Widevine technologiemi DRM streamů MPEG-DASH. Tato možnost taky šifruje vaše HLS datové proudy s FairPlay.
+    b. **PlayReady a Widevine s MPEG-pomlčkou + Fairplay a HLS** dynamicky šifrují svůj Stream MPEG-spojovník pomocí PlayReady a Widevine několikanásobnou. Tato možnost také šifruje datové proudy HLS pomocí FairPlay.
 
-    c. **PlayReady jenom s technologie Smooth Streaming, HLS a MPEG-DASH** dynamicky šifruje datové proudy technologie Smooth Streaming, HLS a MPEG-DASH pomocí technologie PlayReady DRM.
+    c. **PlayReady jenom s Smooth Streaming, HLS a MPEG-pomlčkou** dynamicky šifruje Smooth Streaming, HLS a streamy MPEG-spojovníky pomocí technologie PlayReady DRM.
 
-    d. **Jenom Widevine s MPEG-DASH** dynamicky šifruje vaše MPEG-DASH pomocí Widevine DRM.
+    d. **Widevine jenom s MPEG-pomlčkou** dynamicky šifruje MPEG-pomlčku pomocí Widevine DRM.
     
-    e. **Jenom FairPlay s HLS** dynamicky šifruje datový proud s FairPlay HLS.
+    e. **Fairplay jenom s HLS** dynamicky šifruje datový proud HLS pomocí Fairplay.
 
-1. Povolit šifrování FairPlay, na **globální nastavení ochrany obsahu** okně vyberte **konfigurace FairPlay**. Vyberte **certifikát aplikace**a zadejte **tajný klíč aplikace**.
+1. Pokud chcete povolit šifrování FairPlay, v okně **Content Protection globální nastavení** vyberte **Konfigurace Fairplay**. Pak vyberte **certifikát aplikace**a zadejte **tajný klíč aplikace**.
 
     ![Typ šifrování](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-1. Po výběru možnosti šifrování, vyberte **použít**.
+1. Až provedete výběr šifrování, vyberte **použít**.
 
 >[!NOTE] 
->Pokud máte v plánu přehrávání HLS šifrováním AES v prohlížeči Safari, najdete v blogovém příspěvku [HLS se šifrováním v prohlížeči Safari](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+>Pokud v prohlížeči Safari chcete přehrát HLS šifrovaný standardem AES, přečtěte si Blogový příspěvek [zašifrovaný HLS v Safari](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
+
+## <a name="next-steps"></a>Další kroky
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

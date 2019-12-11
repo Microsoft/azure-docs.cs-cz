@@ -1,17 +1,17 @@
 ---
 title: Protokoly pomalých dotazů – Azure Database for MariaDB
 description: V této části najdete popis protokolů dostupných v Azure Database for MariaDB a dostupných parametrů pro povolení různých úrovní protokolování.
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9b9babc9db9dd7fa225b9649d4ac96b15debec2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772100"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976311"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
 V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -24,6 +24,8 @@ Pomocí Azure Portal a Azure CLI můžete zobrazit a stáhnout protokoly pomalý
 V Azure Portal vyberte server Azure Database for MariaDB. Pod hlavičkou **monitorování** vyberte stránku **protokoly serveru** .
 
 Další informace o rozhraní příkazového řádku Azure najdete v tématu [Konfigurace a přístup k protokolům serveru pomocí Azure CLI](howto-configure-server-logs-cli.md).
+
+Podobně můžete protokoly přesměrovat na Azure Monitor pomocí diagnostických protokolů. Další informace najdete [níže](concepts-server-logs.md#diagnostic-logs) .
 
 ## <a name="log-retention"></a>Uchovávání protokolů
 Protokoly jsou k dispozici po dobu až sedmi dnů od jejich vytvoření. Pokud celková velikost dostupných protokolů přesáhne 7 GB, pak se nejstarší soubory odstraní, dokud nebude k dispozici dostatek místa.
@@ -39,6 +41,7 @@ Mezi další parametry, které můžete upravit, patří:
 - **log_slow_admin_statements**: Pokud on zahrnuje příkazy pro správu, jako je ALTER_TABLE a ANALYZE_TABLE v příkazech zapsaných do slow_query_log.
 - **log_queries_not_using_indexes**: Určuje, zda jsou dotazy, které nepoužívají indexy, protokolovány do slow_query_log
 - **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví, když je log_queries_not_using_indexes nastaveno na ZAPNUTo.
+- **log_output**: Pokud "File", nástroj umožňuje zapsat protokol pomalých dotazů do úložiště místního serveru i do Azure monitor diagnostických protokolů. Pokud má hodnotu None, protokol pomalého dotazu se zapíše jenom do úložiště místního serveru. 
 
 Úplný popis pomalých parametrů protokolu dotazů naleznete v [dokumentaci k protokolu pomalého dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB.
 
@@ -55,10 +58,10 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated` [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Vždycky `AzureDiagnostics` |
+| `Type` | Typ protokolu Vždy `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Vždycky `MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -75,7 +78,7 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 | `insert_id_s` | Vložit ID |
 | `sql_text_s` | Úplný dotaz |
 | `server_id_s` | ID serveru |
-| `thread_id_s` | ID vlákna |
+| `thread_id_s` | ID podprocesu |
 | `\_ResourceId` | Identifikátor URI prostředku |
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning Service – ověření identity symetrického klíče
-description: Tento článek obsahuje koncepční přehled ověřování symetrického klíče pomocí služby IoT Device Provisioning.
+description: Tento článek obsahuje koncepční přehled ověřování symetrického klíče pomocí služby IoT Device Provisioning (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348351"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975291"
 ---
 # <a name="symmetric-key-attestation"></a>Osvědčení symetrického klíče
 
@@ -38,7 +38,7 @@ Zakázáním této možnosti můžete také poskytnout vlastní symetrické klí
 
 Ověření identity symetrického klíče se službou Device Provisioning se provádí pomocí stejných [tokenů zabezpečení](../iot-hub/iot-hub-devguide-security.md#security-token-structure) , které centra IoT podporuje k identifikaci zařízení. Tyto tokeny zabezpečení jsou [tokeny sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md). 
 
-Tokeny SAS mají signaturu  s hodnotou hash, která je vytvořena pomocí symetrického klíče. Služba Device Provisioning znovu vytvoří podpis, který ověří, jestli je token zabezpečení prezentovaný během ověření platný, nebo ne.
+Tokeny SAS mají *signaturu* s hodnotou hash, která je vytvořena pomocí symetrického klíče. Služba Device Provisioning znovu vytvoří podpis, který ověří, jestli je token zabezpečení prezentovaný během ověření platný, nebo ne.
 
 Tokeny SAS mají následující formát:
 
@@ -46,13 +46,13 @@ Tokeny SAS mají následující formát:
 
 Tady jsou komponenty každého tokenu:
 
-| Value | Popis |
+| Hodnota | Popis |
 | --- | --- |
-| označení |Řetězec pro podpis HMAC-SHA256. Pro jednotlivé registrace se tento podpis vytvoří pomocí symetrického klíče (primárního nebo sekundárního) k provedení hodnoty hash. Pro skupiny registrací se k provedení hodnoty hash používá klíč odvozený z klíče skupiny zápisu. Hodnota hash se provádí ve zprávě formuláře: `URL-encoded-resourceURI + "\n" + expiry`. **Důležité**informace: Klíč je nutné dekódovat z formátu base64, než se použije k provedení výpočtu HMAC-SHA256. Výsledek signatury musí být také kódovaný pomocí adresy URL. |
+| označení |Řetězec pro podpis HMAC-SHA256. Pro jednotlivé registrace se tento podpis vytvoří pomocí symetrického klíče (primárního nebo sekundárního) k provedení hodnoty hash. Pro skupiny registrací se k provedení hodnoty hash používá klíč odvozený z klíče skupiny zápisu. Hodnota hash se provádí ve zprávě formuláře: `URL-encoded-resourceURI + "\n" + expiry`. **Důležité**: klíč musí být před použitím pro výpočet HMAC-SHA256 dekódovat z formátu base64. Výsledek signatury musí být také kódovaný pomocí adresy URL. |
 | {resourceURI} |Identifikátor URI koncového bodu registrace, ke kterému má být přístup s tímto tokenem, počínaje ID oboru pro instanci služby Device Provisioning. Například `{Scope ID}/registrations/{Registration ID}`. |
 | vypršení platnosti |Řetězce UTF8 po dobu v sekundách od epocha 00:00:00 UTC dne 1. ledna 1970. |
 | {URL-encoded-resourceURI} |Malá adresa URL – kódování identifikátoru URI pro malý případ prostředku |
-| {policyName} |Název zásad sdíleného přístupu, na který tento token odkazuje Název zásady, který se používá při zřizování s symetrickým ověřením identity klíče, se registruje. |
+| {policyName} |Název zásad sdíleného přístupu, na který tento token odkazuje Název zásady, který se používá při zřizování s symetrickým ověřením identity klíče, se **registruje**. |
 
 Když se zařízení potvrdí pomocí individuální registrace, zařízení použije symetrický klíč definovaný v položce individuální registrace k vytvoření signatury s hodnotou hash pro token SAS.
 
@@ -114,6 +114,6 @@ Pokud v továrně nejsou nainstalované klíče zařízení, musí se k bezpečn
 
 Teď, když jste obeznámeni s ověřením symetrického klíče, Projděte si následující články, kde najdete další informace:
 
-* [Rychlé zprovoznění: Zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md)
+* [Rychlý Start: zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md)
 * [Přečtěte si o konceptech při automatickém zřizování](./concepts-auto-provisioning.md)
 * [Začínáme s automatickým zřizováním](./quick-setup-auto-provision.md) 

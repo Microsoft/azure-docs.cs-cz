@@ -11,19 +11,19 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10a150a64a058a4bf346f07e2ef298c974641256
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4ef1249a601334cc198662b90da95623247190e7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901303"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978181"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat modelů v produkčním prostředí
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> Sada Azure Machine Learning monitoring SDK bude brzy vyřazena. Sada SDK je stále vhodná pro vývojáře, kteří sledují posun dat v modelech. Většina vývojářů ale musí používat zjednodušené [monitorování dat s Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights).
+> Sada Azure Machine Learning monitoring SDK bude brzy vyřazena. Sada SDK je stále vhodná pro vývojáře, kteří aktuálně používají sadu SDK ke sledování posunu dat v modelech. Pro nové zákazníky ale doporučujeme používat zjednodušené [monitorování dat s Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights).
 
 V tomto článku se dozvíte, jak shromažďovat data vstupního modelu z Azure Machine Learning. Také ukazuje, jak nasadit vstupní data do clusteru Azure Kubernetes Service (AKS) a uložit výstupní data v úložišti objektů BLOB v Azure.
 
