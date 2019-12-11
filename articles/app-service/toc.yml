@@ -82,7 +82,11 @@
         - name: Přehled zabezpečení
           href: overview-security.md
     - name: Síťové funkce
-      href: networking-features.md
+      items:
+        - name: Přehled
+          href: networking-features.md
+        - name: Application Gateway s koncovými body služby
+          href: networking/app-gateway-with-service-endpoints.md
     - name: Příchozí a odchozí IP adresy
       href: overview-inbound-outbound-ips.md
     - name: Integrace virtuální sítě

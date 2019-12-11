@@ -513,3 +513,15 @@
       href: ./partner-center-portal/support.md
     - name: Analýzy partnerského centra
       href: ./partner-center-portal/analytics.md
+    - name: Vyplacení
+      items:
+        - name: Vyplacení
+          href: ./partner-center-portal/get-paid.md
+        - name: Nastavení platebního účtu a daňových formulářů
+          href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: 'Prahové hodnoty, způsoby a časové rámce plateb'
+          href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+        - name: Přehled plateb
+          href: ./partner-center-portal/payout-summary.md
+        - name: Podrobné informace o daních
+          href: ./partner-center-portal/tax-details-paid-transactions.md

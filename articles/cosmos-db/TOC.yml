@@ -972,6 +972,8 @@
           href: access-secrets-from-keyvault.md
         - name: Ověřování pomocí certifikátů s využitím Azure AD
           href: certificate-based-authentication.md
+        - name: Omezení přístupu uživatelů jenom na datové operace
+          href: how-to-restrict-user-data.md
     - name: Připravenost pro podnikové zpracování
       items:
         - name: Obnovení dat ze zálohy

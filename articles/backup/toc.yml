@@ -56,6 +56,8 @@
           href: backup-support-matrix-mars-agent.md
         - name: Matice podpory pro zálohování SAP HANA
           href: sap-hana-backup-support-matrix.md
+        - name: Podporované SKU virtuálních počítačů pro Azure Policy
+          href: backup-azure-policy-supported-skus.md
     - name: Zabezpečení
       items:
         - name: Řízení přístupu na základě rolí
@@ -174,6 +176,10 @@
               href: backup-azure-vms-encryption.md
             - name: Obnovení klíče a tajného kódu pro šifrované virtuální počítače
               href: backup-azure-restore-key-secret.md
+    - name: Integrovaná služba Azure Policy pro Azure Backup
+      items:
+        - name: Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
+          href: backup-azure-auto-enable-backup.md
     - name: Diagnostické události pro trezory služby Recovery Services
       items:
         - name: Použití nastavení diagnostiky pro trezory služby Recovery Services

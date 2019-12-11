@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentace k Virtual Machines
 metadata:
   document_id: na
-  title: 'Dokumentace k virtuálním počítačům Azure – kurzy, reference k rozhraní API | Microsoft Docs'
+  title: 'Dokumentace k virtuálním počítačům Azure – kurzy, reference k rozhraní API'
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace
@@ -13,8 +13,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: gwallace
-abstract:
-  description: 'Naučte se vytvářet virtuální počítače Azure. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak můžete vytvářet a nasazovat virtuální počítače s Windows a Linuxem a šablony virtuálních počítačů.'
+  description: Naučte se vytvářet a nasazovat virtuální počítače s Windows nebo Linuxem v Azure.
 sections:
   - title: null
     items:

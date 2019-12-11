@@ -29,6 +29,8 @@
           href: tutorial-iot-hub-maps.md
         - name: Směrování EV s využitím Azure Notebooks (Python)
           href: tutorial-ev-routing.md
+        - name: Analýza dat o počasí s využitím Azure Notebooks (Python)
+          href: weather-service-tutorial.md
 - name: Koncepty
   items:
     - name: Ověřování s využitím Azure Maps
