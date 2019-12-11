@@ -1,5 +1,5 @@
 ---
-title: Mobilní aplikace, která volá webová rozhraní API – přehled
+title: Vytvoření mobilní aplikace, která volá webová rozhraní API | Azure
 titleSuffix: Microsoft identity platform
 description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (přehled).
 services: active-directory
@@ -17,16 +17,16 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c6ebeed4a7806c013205d01621107ef65655e753
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803757"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965462"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: mobilní aplikace, která volá webová rozhraní API
 
-Naučte se všechno, co potřebujete vědět, abyste mohli vytvořit mobilní aplikaci, která volá webová rozhraní API.
+Naučte se, jak vytvořit mobilní aplikaci, která volá webová rozhraní API.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -34,7 +34,7 @@ Naučte se všechno, co potřebujete vědět, abyste mohli vytvořit mobilní ap
 
 ## <a name="getting-started"></a>Začínáme
 
-Vytvořte svou první mobilní aplikaci a vyzkoušejte si rychlý Start!
+Vytvořte svou první mobilní aplikaci a vyzkoušejte si rychlý Start.
 
 > [!div class="nextstepaction"]
 > [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro Android](./quickstart-v2-android.md)

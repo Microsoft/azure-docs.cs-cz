@@ -4,16 +4,16 @@ description: Jak exportovat data z aplikace Azure IoT Central do Azure Event Hub
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 10/15/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 35415fd1a552328faa8d1ad5812f44d8f4b6d5e4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894861"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974457"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>Export dat Azure IoT Central (funkce ve verzi Preview)
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak pomocí funkce pro export nepřetržitých dat v Az
 > [!Note]
 > Když zapnete export průběžných dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí průběžného exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte průběžný export dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte být správcem aplikace IoT Central.
 
@@ -37,13 +37,13 @@ Musíte být správcem aplikace IoT Central.
 
 Před konfigurací průběžného exportu dat musí existovat váš cíl exportu.
 
-### <a name="create-event-hubs-namespace"></a>Vytvořit obor názvů Event Hubs
+### <a name="create-event-hubs-namespace"></a>Vytvoření oboru názvů Event Hubs
 
 Pokud nemáte existující Event Hubs obor názvů pro export do, postupujte podle těchto kroků:
 
 1. Vytvořte [Nový obor názvů Event Hubs v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Další informace najdete v [dokumentaci k Azure Event Hubs](../../event-hubs/event-hubs-create.md).
 
-2. Vyberte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako aplikace IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
+2. Zvolte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako aplikace IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
 
 3. Vytvořte centrum událostí v oboru názvů Event Hubs. Vytvořte instanci centra událostí tak, že přejdete do svého oboru názvů a vyberete **+ centrum událostí** v horní části.
 
@@ -52,7 +52,7 @@ Pokud nemáte existující Event Hubs obor názvů pro export do, postupujte pod
 Pokud nemáte existující Service Bus obor názvů pro export do, postupujte podle těchto kroků:
 
 1. Vytvořte [Nový obor názvů Service Bus v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5). Další informace najdete v [dokumentaci Azure Service Bus](../../service-bus-messaging/service-bus-create-namespace-portal.md).
-2. Vyberte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako aplikace IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
+2. Zvolte předplatné. Můžete exportovat data do jiných předplatných, která nejsou ve stejném předplatném jako aplikace IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
 
 3. Pokud chcete vytvořit frontu nebo téma, do kterého chcete exportovat, klikněte na obor názvů Service Bus a vyberte **+ fronta** nebo **+ téma** v horní části.
 
@@ -104,7 +104,7 @@ Teď, když máte cíl exportovat data do, postupujte podle těchto kroků a nas
 
 7. V části **data, která chcete exportovat**, vyberte typy dat k exportu nastavením typ na **zapnuto**.
 
-8. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Uložit**.
+8. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Save** (Uložit).
 
 9. Po několika minutách se vaše data zobrazí ve zvoleném cíli.
 
@@ -123,7 +123,7 @@ V případě Blob Storage se data exportují jednou za minutu a každý soubor o
 Exportované soubory můžete procházet v Azure Portal tak, že přejdete do souboru a kliknete na kartu **Upravit objekt BLOB** .
 
 
-## <a name="telemetry"></a>Telemetrická data
+## <a name="telemetry"></a>Telemetrie
 
 V případě Event Hubs a Service Bus je nová zpráva exportována rychle po IoT Central přijetí zprávy ze zařízení a Každá exportovaná zpráva obsahuje úplnou zprávu, kterou zařízení odeslalo ve formátu JSON.
 

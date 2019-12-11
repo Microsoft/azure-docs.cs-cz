@@ -1,5 +1,5 @@
 ---
-title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (přehled) – Microsoft Identity Platform
+title: Sestavení desktopové aplikace, která volá webová rozhraní API – Microsoft Identity Platform | Azure
 description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (přehled)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,18 +15,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 545012629686e1fe3ece8a48ed852542e09e54fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268354"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965513"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: Desktopová aplikace, které volá webová rozhraní API
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: desktopová aplikace, která volá webová rozhraní API
 
 Naučte se všechno, co potřebujete k vytvoření desktopové aplikace, která volá webová rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
@@ -35,14 +35,14 @@ Naučte se všechno, co potřebujete k vytvoření desktopové aplikace, která 
 Pokud jste to ještě neudělali, vytvořte svou první aplikaci pomocí Průvodce rychlým startem pro Desktop, rychlý Start pro UWP nebo rychlý Start macOS nativní aplikace:
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Získání tokenu a volání Microsoft Graph API z desktopové aplikace pro Windows](./quickstart-v2-windows-desktop.md)
+> [Rychlý Start: získání tokenu a volání Microsoft Graph API z desktopové aplikace pro Windows](./quickstart-v2-windows-desktop.md)
 
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Získání tokenu a volání Microsoft Graph API z aplikace pro UWP](./quickstart-v2-uwp.md)
+> [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro UWP](./quickstart-v2-uwp.md)
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Získání tokenu a volání Microsoft Graph API z nativní aplikace macOS](./quickstart-v2-ios.md)
+> [Rychlý Start: získání tokenu a volání Microsoft Graph API z nativní aplikace macOS](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Přehled
 

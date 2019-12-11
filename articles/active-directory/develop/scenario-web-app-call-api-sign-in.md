@@ -1,6 +1,6 @@
 ---
-title: Webová aplikace, která volá webová rozhraní API (přihlášení) – Microsoft Identity Platform
-description: Informace o tom, jak vytvořit webovou aplikaci, která volá webová rozhraní API (přihlásit se)
+title: Odebrání účtů z mezipaměti při odhlašování – Microsoft Identity Platform | Azure
+description: Zjistěte, jak odebrat účet z mezipaměti tokenů při odhlášení.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,14 +15,14 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596366"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961654"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Webová aplikace, která volá webová rozhraní API – přihlášení
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Odebrání účtů z mezipaměti při globálním odhlašování
 
 Už víte, jak přidat přihlášení do vaší webové aplikace. Naučíte se, že ve [webové aplikaci, která přihlašuje uživatele, přidáte přihlášení](scenario-web-app-sign-user-sign-in.md).
 
@@ -32,7 +32,7 @@ To se liší v tom, že když se uživatel odhlásí z této aplikace nebo z jak
 
 Vaše aplikace může zachytit událost po `logout`, například, aby vymazala záznam mezipaměti tokenů přidružený k účtu, který se odhlásil. Webová aplikace bude ukládat tokeny přístupu pro uživatele v mezipaměti. Zachycení po `logout` zpětného volání umožňuje webové aplikaci odebrat uživatele z mezipaměti tokenů.
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Tento mechanismus je znázorněn v metodě `AddMsal()` [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
 
@@ -80,7 +80,7 @@ Ukázka Pythonu neodebírá účty z mezipaměti při globálním odhlašování
 
 ## <a name="next-steps"></a>Další kroky
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [Získání tokenu pro webovou aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)

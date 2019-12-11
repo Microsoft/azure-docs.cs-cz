@@ -1,35 +1,35 @@
 ---
-title: Pomocí nástroje Azure Import/Export - v1 | Dokumentace Microsoftu
-description: Další informace o použití nástroje Import/Export pro přípravu pevných disků pro úlohu importu, opravte úlohu importu nebo oprava úlohy exportu.
-author: muralikk
+title: Použití nástroje Azure import/export – v1 | Microsoft Docs
+description: Naučte se, jak pomocí nástroje Import/export připravit pevné disky pro úlohu importu, opravit úlohu importu nebo opravit úlohu exportu.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 1/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 6116212ae81eb334386eebab057af967309370d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd5fde2f47cca1b03efbc217d7764ac429d15fb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478534"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973930"
 ---
-# <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Pomocí nástroje Azure Import/Export (model nasazení classic)
+# <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Použití nástroje Azure import/export (model nasazení Classic)
 
-Nástroj Azure Import/Export (WAImportExport.exe) slouží k vytváření a Správa úloh pro službu Azure Import/Export umožňuje přenášet velké objemy dat do nebo z úložiště objektů Blob v Azure.
+Nástroj pro import/export pro Azure (WAImportExport. exe) se používá k vytváření a správě úloh pro službu Azure import/export, která umožňuje přenášet velké objemy dat do nebo z Azure Blob Storage.
 
-Tato dokumentace je pro model nasazení classic nástroje Import/Export Azure. Informace o použití nejnovější verze tohoto nástroje najdete v tématu [pomocí nástroje Azure Import/Export](../storage-import-export-tool-how-to.md).
+Tato dokumentace je určena pro model nasazení Classic nástroje Azure import/export. Informace o použití nejnovější verze tohoto nástroje najdete v tématu [použití nástroje Azure import/export](../storage-import-export-tool-how-to.md).
 
-Následující články ukazují, jak do:
+Následující články ukazují, jak:
 
-- Instalace a nastavení nástroje Import/Export.
-- Příprava pevných disků pro úlohu, pokud importujete data z disků do Azure Blob Storage.
-- Zkontrolujte stav úlohy s použitím kopií souborů protokolu. 
-- Oprava úlohy importu. 
-- Oprava úlohy exportu. 
-- Řešení potíží s nástrojem Import/Export Azure, v případě, že došlo k potížím během procesu. 
+- Nainstalujte a nastavte nástroj pro import/export.
+- Příprava pevných disků pro úlohu, při které importujete data z jednotek do Azure Blob Storage.
+- Zkontrolujte stav úlohy pomocí kopírování souborů protokolu. 
+- Opravte úlohu importu. 
+- Opravte úlohu exportu. 
+- Řešení potíží s nástrojem pro import/export Azure pro případ, že během procesu došlo k potížím. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nastavení nástroje WAImportExport](../storage-import-export-tool-how-to.md)

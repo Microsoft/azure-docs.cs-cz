@@ -1,18 +1,18 @@
 ---
 title: Zrušení zřízení zařízení, která byla zřízená s Azure IoT Hub Device Provisioning Service
-description: Postup zrušení zřízení zařízení, která byla zřízená s Azure IoT Hub Device Provisioning Service
+description: Postup zrušení zřízení zařízení, která byla zřízená s Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 60d0647522fbce2fea43531e164e0a6d1b0de144
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229697"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974832"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a Ruby'
+title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Ruby'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete rozpoznávat tváře z obrázku pomocí rozhraní API pro rozpoznávání tváře a Ruby.
 services: cognitive-services
@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e043d9bf0e87304868b2c573600578c911134856
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ce76136f166660bf34c81aab065ba761e4c2867a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859186"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977875"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a Ruby
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Ruby
 
 V tomto rychlém startu použijete REST API Azure Face s Ruby k detekci lidských plošek v obraze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
 - Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download)
@@ -60,11 +60,11 @@ end
 puts response.body
 ```
 
-Je nutné aktualizovat `request['Ocp-Apim-Subscription-Key']` hodnotu pomocí vašeho klíče předplatného a `uri` změnit řetězec tak, aby obsahoval správný koncový bod.
+Je nutné aktualizovat hodnotu `request['Ocp-Apim-Subscription-Key']` pomocí klíče předplatného a změnit řetězec `uri` tak, aby obsahoval správný koncový bod.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Můžete také chtít změnit `imageUri` pole tak, aby odkazovalo na vlastní vstupní image. Také možná budete chtít změnit `returnFaceAttributes` pole, které určuje, které atributy tváře se mají načíst.
+Můžete také chtít změnit pole `imageUri` tak, aby odkazovalo na vlastní vstupní image. Můžete také chtít změnit pole `returnFaceAttributes`, které určuje, které atributy tváře se mají načíst.
 
 ## <a name="run-the-script"></a>Spuštění skriptu
 
@@ -255,7 +255,7 @@ Měl by se zobrazit řetězec JSON zjištěných dat obličeje v konzole. Násle
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste napsali skript Ruby, který volá Azure Face API k detekci ploch v obrázku a vrácení jejich atributů. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace.
 

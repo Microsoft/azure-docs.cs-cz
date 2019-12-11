@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: efc9d7fb31dc9f63780c3f94238bbbfb17756089
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707693"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973624"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co je Návrhář Azure Machine Learning (Preview)? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -86,14 +86,14 @@ Další nápovědu k dispozici v knihovně strojového učení, najdete v témat
 
 ## <a name="compute"></a>Výpočetní prostředky
 
-Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kanál a hostovat nasazené modely jako koncové body v reálném čase nebo koncové body kanálu (pro odvození dávky). Podporované cíle výpočtů:
+Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kanál a hostovat nasazené modely jako koncové body v reálném čase nebo koncové body kanálu (pro odvození dávky). Cílových podporovaných výpočetních prostředí jsou:
 
 | Cílový výpočetní objekt | Školení | Nasazení |
 | ---- |:----:|:----:|
-| Azure Machine Learning COMPUTE | ✓ | |
+| Azure Machine Learning compute | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru](concept-workspace.md)Machine Learning. Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
+Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru Azure Machine Learning](concept-workspace.md). Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studio (Classic)](https://ml.azure.com).
 
 ## <a name="deploy"></a>Nasazení
 
@@ -122,7 +122,7 @@ V důsledku těchto aktualizací se některé koncepty a pojmy pro vizuální ro
 
 | Koncept v Návrháři | Dříve v vizuálním rozhraní |
 | ---- |:----:|
-| Koncept kanálu | Začátku |
+| Koncept kanálu | Experiment |
 | Koncový bod v reálném čase | Webová služba |
 
 ### <a name="migrating-to-the-designer"></a>Migrace do návrháře

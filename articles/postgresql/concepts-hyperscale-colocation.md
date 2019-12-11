@@ -1,18 +1,18 @@
 ---
-title: Koncepty serveru v Azure Database for PostgreSQL
-description: Tento článek popisuje informace a pokyny pro konfiguraci a správu Azure Database for PostgreSQLch serverů.
+title: Společné umístění tabulky – Citus (Velká) – Azure Database for PostgreSQL
+description: Jak ukládat související informace dohromady pro rychlejší dotazy
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482751"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967333"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Společné umístění tabulky v Azure Database for PostgreSQL – měřítko (Citus)
 
@@ -132,7 +132,7 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Vzhledem k tomu, že filtr a spojení v tenant_id, Citus () ví, že je možné odpovědět na celý dotaz pomocí sady společně umístěných horizontálních oddílů, které obsahují data tohoto konkrétního tenanta. Jeden uzel PostgreSQL může odpovědět na dotaz v jednom kroku.
+Vzhledem k tomu, že filtr a spojení tenant_id, Citus (škálování) ví, že je možné odpovědět na celý dotaz pomocí sady společně umístěných horizontálních oddílů, které obsahují data tohoto konkrétního tenanta. Jeden uzel PostgreSQL může odpovědět na dotaz v jednom kroku.
 
 ![Lepší dotaz](media/concepts-hyperscale-colocation/colocation-better-query.png)
 

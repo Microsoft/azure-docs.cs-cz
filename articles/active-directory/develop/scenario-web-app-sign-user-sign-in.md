@@ -1,5 +1,5 @@
 ---
-title: Webová aplikace, která přihlašuje uživatele (přihlášení) – Microsoft Identity Platform
+title: Zápis webové aplikace, která podepisuje uživatele – Microsoft Identity Platform | Azure
 description: Informace o tom, jak vytvořit webovou aplikaci, která přihlašuje uživatele (přihlášení)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b41e46401d600ebaba1febb86aafbd55c8399a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c8d7d5737a8332416a225154709ab7d66e447764
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482568"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961977"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webová aplikace, která přihlašuje uživatele: přihlášení a odhlášení
 
@@ -35,7 +35,7 @@ Přihlášení se skládá ze dvou částí:
 
 ### <a name="sign-in-button"></a>Tlačítko pro přihlášení
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 V ASP.NET Core se v `Views\Shared\_LoginPartial.cshtml`zveřejňuje tlačítko pro přihlášení. Zobrazuje se pouze v případě, že není k dispozici žádný ověřený účet. To znamená, že se zobrazí, když uživatel ještě není přihlášený nebo se odhlásil.
 
@@ -108,7 +108,7 @@ def index():
 
 ### <a name="signin-action-of-the-controller"></a>akce `SignIn` kontroleru
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Výběrem tlačítka pro **přihlášení** ve webové aplikaci v ASP.NET spustí akci `SignIn` na řadiči `AccountController`. V předchozích verzích šablon ASP.NET byl řadič `Account` vložený do webové aplikace. To už neplatí, protože kontroler je teď součástí ASP.NET Core Frameworku.
 
@@ -217,7 +217,7 @@ Další informace najdete v části [odeslání žádosti o přihlášení](v2-p
 
 ### <a name="application-registration"></a>Registrace aplikací
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Během registrace aplikace zaregistrujete identifikátor URI po odhlášení. V našem kurzu jste v poli **Adresa URL pro odhlášení** v části **Upřesnit nastavení** na stránce **ověřování** zaregistrovali `https://localhost:44321/signout-oidc`. Podrobnosti najdete v tématu [Registrace aplikace WebApp](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
 
@@ -237,7 +237,7 @@ Během registrace aplikace nemusíte registrovat další adresu URL pro odhláš
 
 ### <a name="sign-out-button"></a>Tlačítko pro odhlášení
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 V ASP.NET Core se v `Views\Shared\_LoginPartial.cshtml`zveřejňuje tlačítko pro odhlášení. Zobrazuje se pouze v případě, že je k dispozici ověřený účet. To znamená, že se zobrazí, když se uživatel dřív přihlásil.
 
@@ -322,7 +322,7 @@ V rychlém startu Pythonu se tlačítko pro odhlášení nachází v souboru [Te
 
 ### <a name="signout-action-of-the-controller"></a>akce `SignOut` kontroleru
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Výběrem tlačítka pro **odhlášení** ve webové aplikaci v ASP.NET spustí akci `SignOut` na řadiči `AccountController`. V předchozích verzích šablon ASP.NET Core byl kontroler `Account` vložen do webové aplikace. To už neplatí, protože kontroler je teď součástí ASP.NET Core Frameworku.
 
@@ -392,7 +392,7 @@ def logout():
 
 Identifikátor URI po odhlášení umožňuje aplikacím, aby se účastnili globálního odhlašování.
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Middleware ASP.NET Core OpenID Connect umožňuje vaší aplikaci zachytit volání služby Microsoft Identity Platform `logout` koncový bod tím, že poskytne událost OpenID Connect s názvem `OnRedirectToIdentityProviderForSignOut`. Příklad toho, jak se přihlásit k odběru této události (Pokud chcete vymazat mezipaměť tokenu), najdete v tématu [Microsoft. identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156).
 

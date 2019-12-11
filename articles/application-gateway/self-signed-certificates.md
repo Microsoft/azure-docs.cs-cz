@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075076"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975053"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Vygenerování certifikátu podepsaného svým držitelem Azure Application Gateway s vlastní kořenovou certifikační autoritou
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak:
 - Vytvoření certifikátu podepsaného svým držitelem podepsaného vaší vlastní certifikační autoritou
 - Nahrajte kořenový certifikát podepsaný svým držitelem do Application Gateway k ověření serveru back-end.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **[OpenSSL](https://www.openssl.org/) na počítači se systémem Windows nebo Linux** 
 
@@ -106,7 +106,7 @@ CSR je veřejný klíč, který se udělí certifikační autoritě při žádos
 1. K vytvoření certifikátu použijte následující příkaz:
 
    ```
-   openssl x509 -req -in fabrikam.csr -CA public.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
+   openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
 ### <a name="verify-the-newly-created-certificate"></a>Ověření nově vytvořeného certifikátu
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Pokud chcete nahrát certifikát v Application Gateway, musíte exportovat certifikát. CRT do formátu. cer Base-64 Encoded. Vzhledem k tomu, že. CRT již obsahuje veřejný klíč ve formátu kódování Base-64, stačí přejmenovat příponu souboru z. CRT na. cer. 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Důvěryhodný kořenový certifikát nahrajte z portálu tak, že vyberete **Nastavení http** a zvolíte protokol **https** .
 

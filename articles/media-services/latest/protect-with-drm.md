@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b88257271f5177657e66cadc23abad36ad14e890
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3d2dc7793c25fb20e267332beaa683f11ddcbfbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186050"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974066"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Kurz: použití dynamického šifrování DRM a služby doručování licencí
 
@@ -46,7 +46,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Vytvořte StreamingLocator se zadaným zásadou streamování.
 > * Vytvořte adresu URL používanou k přehrání souboru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující položky:
 
@@ -84,7 +84,7 @@ Výstupní [prostředek](assets-concept.md) uloží výsledek vaší úlohy kód
 
 ## <a name="get-or-create-an-encoding-transform"></a>Získání nebo vytvoření transformace kódování
 
-Když vytváříte novou instanci [Transformace](transforms-jobs-concept.md), musíte určit, co má být jejím výstupem. Požadovaný parametr je objekt `transformOutput`, jak je znázorněno v následujícím kódu. Každý TransformOutput obsahuje **přednastavení**. Předvolba popisuje podrobné pokyny k operacím zpracování videa nebo zvuku, které se mají použít ke generování požadovaných TransformOutput. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Přednastavení zakóduje vstupní video do automaticky vygenerovaného žebříku (páry přenosných rychlostí) na základě rozlišení vstupu a přenosové rychlosti a vytváří soubory ISO MP4 s H. 264 a zvukem AAC odpovídajícím dvojicím přenosové rychlosti. 
+Když vytváříte novou instanci [Transformace](transforms-jobs-concept.md), musíte určit, co má vytvořit jako výstup. Požadovaný parametr je objekt `transformOutput`, jak je znázorněno v následujícím kódu. Každý TransformOutput obsahuje **přednastavení**. Předvolba popisuje podrobné pokyny k operacím zpracování videa nebo zvuku, které se mají použít ke generování požadovaných TransformOutput. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Přednastavení zakóduje vstupní video do automaticky vygenerovaného žebříku (páry přenosných rychlostí) na základě rozlišení vstupu a přenosové rychlosti a vytváří soubory ISO MP4 s H. 264 a zvukem AAC odpovídajícím dvojicím přenosové rychlosti. 
 
 Než začnete vytvářet novou **transformaci**, ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje, jak vidíte v následujícím kódu.  Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 
@@ -112,7 +112,7 @@ Symetrický klíč poskytuje zabezpečený přístup k vašim prostředkům. Je 
 
 Je nutné nastavit požadavky (omezení) na **zásady klíče obsahu** , které musí být splněny pro doručení klíčů se zadanou konfigurací. V tomto příkladu jsme nastavili následující konfigurace a požadavky:
 
-* Konfiguraci
+* Konfigurace
 
     Licence [PlayReady](playready-license-template-overview.md) a [Widevine](widevine-license-template-overview.md) jsou nakonfigurované tak, že se dají doručit pomocí služby doručení licencí Media Services. I když Tato ukázková aplikace nekonfiguruje licenci [Fairplay](fairplay-license-overview.md) , obsahuje metodu, kterou můžete použít ke konfiguraci Fairplay. Konfiguraci FairPlay můžete přidat jako jinou možnost.
 
@@ -175,6 +175,10 @@ Spusťte následující příkaz rozhraní příkazového řádku:
 ```azurecli
 az group delete --name amsResourceGroup
 ```
+
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

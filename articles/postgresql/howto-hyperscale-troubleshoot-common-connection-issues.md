@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s připojením pro Azure Database for PostgreSQL – škálování (Citus)
+title: Řešení potíží s připojením – Citus (-Scale) – Azure Database for PostgreSQL
 description: Přečtěte si, jak řešit potíže s připojením Azure Database for PostgreSQL – Citus (škálování)
 keywords: připojení PostgreSQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
 author: jonels-msft
@@ -7,12 +7,12 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b812b730cebba4dbf0735f49f544e53bf7f8787c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952144"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977501"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Řešení potíží s připojením pro Azure Database for PostgreSQL – škálování (Citus)
 
@@ -50,7 +50,7 @@ Pokud se aplikace trvale nepřipojí ke škálování (Citus), nejběžnější 
 
 * Konfigurace brány firewall uzlu koordinátora: Ujistěte se, že je brána firewall serveru pro škálování na úrovni serveru nakonfigurovaná tak, aby povolovala připojení z vašeho klienta, včetně proxy serverů a bran.
 * Konfigurace brány firewall klienta: Brána firewall klienta musí umožňovat připojení k vašemu databázovému serveru. Některé brány firewall vyžadují, aby povolily nejen aplikaci podle názvu, ale povolily IP adresy a porty serveru.
-* Chyba uživatele: dvakrát ověřte připojovací řetězec. Je možné, že máte v uživatelském jménu parametry, jako je název serveru, nebo zapomenout *\@příponu servername* .
+* Chyba uživatele: dvakrát ověřte připojovací řetězec. Můžete mít netypové parametry, jako je název serveru. Připojovací řetězce můžete najít pro různé jazykové architektury a psql v Azure Portal. Přejít na stránku **připojovací řetězce** ve skupině serverů Citus (vlastní měřítko). Pamatujte také na to, že clustery Citus () mají pouze jednu databázi a její předdefinovaný název je **Citus**.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
 

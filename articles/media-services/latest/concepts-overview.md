@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910329"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970032"
 ---
 # <a name="media-services-concepts"></a>Media Services koncepty
 
@@ -32,7 +32,7 @@ Základní koncepty popsané v těchto tématech by měly být před zahájením
 
 V této části se dozvíte, jak se některé běžné obory mapují na rozhraní Media Services V3 API.
 
-### <a name="live-event"></a>Živá událost
+### <a name="live-event"></a>Živá akce
 
 **Živá událost** představuje kanál pro ingestování, překódování (volitelně) a balení živých streamů pro video, zvuk a metadata v reálném čase.
 
@@ -46,12 +46,12 @@ V odvětví streamování médií se tato služba obvykle označuje jako **balí
  
 ## <a name="cloud-upload-and-storage"></a>Nahrávání na cloud a úložiště
 
-Pokud chcete začít spravovat, šifrovat, kódovat, analyzovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services a nahrát své digitální soubory do assetů.
+Pokud chcete začít spravovat, šifrovat, kódovat, analyzovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services a nahrát své digitální soubory do **assetů**.
 
 - [Nahrávání do cloudu a úložiště](storage-account-concept.md)
 - [Koncept prostředků](assets-concept.md)
 
-## <a name="encoding"></a>Kódování
+## <a name="encoding"></a>Encoding
 
 Po nahrání vysoce kvalitních digitálních mediálních souborů do assetů je můžete kódovat do formátů, které se dají přehrávat na nejrůznějších prohlížečích a zařízeních. 
 
@@ -62,7 +62,7 @@ Pro kódování pomocí Media Services V3 potřebujete vytvořit **transformace*
 - [Transformace a úlohy](transforms-jobs-concept.md)
 - [Kódování pomocí Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Media Analytics
+## <a name="media-analytics"></a>Analýza médií
 
 Chcete-li analyzovat videosoubory a zvukové soubory, musíte také vytvořit **transformace** a **úlohy**.
 
@@ -78,7 +78,7 @@ Dynamické balení se používá bez ohledu na to, jestli Streamujte svůj obsah
 
 ![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Pomocí Media Services můžete doručovat živý obsah v reálném čase a na vyžádání dynamicky pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoli ze tří hlavních systémů DRM (Správa digitálních práv): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům.
+Pomocí Media Services můžete zajistit dynamické šifrování obsahu v reálném čase a na vyžádání s využitím standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoli ze tří hlavních systémů správy digitálních práv (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům.
 
 Pokud pro svůj Stream určíte možnosti šifrování, vytvořte **zásady klíčů obsahu** a přidružte je k **lokátoru streamování**. **Zásady klíčů obsahu** umožňují konfigurovat způsob doručení klíče obsahu koncovým klientům.
 
@@ -101,9 +101,12 @@ Můžete použít Media Services **dynamické manifesty** pro streamování pouz
 - [Dynamické manifesty](filters-dynamic-manifest-overview.md)
 - [Filtry](filters-concept.md)
 
+> [!NOTE]
+> Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
+
 ## <a name="live-streaming"></a>Živé streamování
 
-Azure Media Services vám umožní doručovat živé události zákazníkům v cloudu Azure. **Živé události** zodpovídají za ingestování a zpracování informačních kanálů živého videa. Když vytvoříte **živou událost**, vytvoří se vstupní koncový bod, který můžete použít k odeslání živého signálu ze vzdáleného kodéru. Jakmile datový proud přetéká do **živé události**, můžete zahájit streamování událostí vytvořením assetu, živého **výstupu**a lokátoru streamování. **Live Output** archivuje datový proud do **assetu** a zpřístupní ho uživatelům prostřednictvím koncového **bodu streamování**. **Živá událost** může být jeden ze dvou typů: **průchozí** a **živé kódování**.
+Azure Media Services vám umožní doručovat živé události zákazníkům v cloudu Azure. **Živé události** zodpovídají za ingestování a zpracování informačních kanálů živého videa. Když vytvoříte **živou událost**, vytvoří se vstupní koncový bod, který můžete použít k odeslání živého signálu ze vzdáleného kodéru. Jakmile datový proud přetéká do **živé události**, můžete zahájit streamování událostí vytvořením **assetu**, **živého výstupu**a **lokátoru streamování**. **Live Output** archivuje datový proud do **assetu** a zpřístupní ho uživatelům prostřednictvím **koncového bodu streamování**. **Živá událost** může být jeden ze dvou typů: **průchozí** a **živé kódování**.
 
 Následující obrázek znázorňuje pracovní postup předávacího typu:
 
@@ -112,11 +115,11 @@ Následující obrázek znázorňuje pracovní postup předávacího typu:
 - [Přehled živého streamování](live-streaming-overview.md)
 - [Živé události a výstupy](live-events-outputs-concept.md)
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="event-grid"></a>Event Grid
 
-Chcete-li zobrazit průběh úlohy, měli byste použít **Event Grid**. Media Services také emituje typy událostí typu Live. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. 
+Chcete-li zobrazit průběh úlohy, měli byste použít **Event Grid**. Media Services také emituje typy událostí typu Live. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pochází v podstatě z jakékoli služby Azure nebo vlastních zdrojů. 
 
 - [Zpracování událostí Event Grid](reacting-to-media-services-events.md)
 - [Schémata](media-services-event-schemas.md)
@@ -138,7 +141,7 @@ Azure Media Player můžete použít k přehrání multimediálního obsahu stre
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zakódovat vzdálené souborové video a streamování – REST](stream-files-tutorial-with-rest.md)
 * [Kódování nahraného souboru a streamování videa – .NET](stream-files-tutorial-with-api.md)

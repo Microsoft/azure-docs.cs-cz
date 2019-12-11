@@ -1,6 +1,6 @@
 ---
-title: Sestavit jednostránkovou aplikaci AngularJS pro přihlášení a odhlášení pomocí Azure AD | Microsoft Docs
-description: Zjistěte, jak vytvořit jednostránkovou aplikaci AngularJS, která se integruje s Azure AD pro přihlašování a s využitím OAuth volá rozhraní API chráněná pomocí Azure AD.
+title: Vytvoření jednostránkové aplikace AngularJS Azure AD pro přihlášení & Odhlásit se | Microsoft Docs
+description: Naučte se, jak vytvořit jednostránkovou aplikaci AngularJS, která integruje službu Azure AD, aby se přihlásila & odhlašování & zavolá rozhraní API chráněná službou Azure AD pomocí protokolu OAuth.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e97c985d0a19842e4a514705e3e34665eeb499
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921248"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963524"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rychlý start: Vytvoření jednostránková aplikace AngularJS pro přihlašování a odhlašování pomocí Azure Active Directory
 
@@ -64,7 +64,7 @@ Pokud chcete aplikaci umožnit ověřování uživatelů a získání tokenů, m
 1. V levém podokně klikněte na **Všechny služby** a pak vyberte **Azure Active Directory**.
 1. Klikněte na **Registrace aplikací**a pak vyberte **Nová registrace**.
 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+1. Under **Supported account types**, select **Accounts in any organizational directory and personal Microsoft accounts**.
 1. V části **identifikátor URI pro přesměrování** vyberte **webovou** platformu a nastavte hodnotu na `https://localhost:44326/` (umístění, do kterého budou služby Azure AD vracet tokeny).
 1. Až budete hotovi, vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** .
 1. Adal.js používá implicitní tok OAuth ke komunikaci s Azure AD. Pro aplikaci je nutné povolit implicitní tok. V levém navigačním podokně registrované aplikace vyberte **ověřování**.

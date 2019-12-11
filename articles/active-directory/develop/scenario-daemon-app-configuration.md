@@ -1,6 +1,6 @@
 ---
-title: Aplikace démona, která volá webová rozhraní API (konfigurace aplikace) – platforma Microsoftu identity
-description: Naučte se vytvářet aplikace démona, která volá webová rozhraní API (konfigurace aplikace).
+title: Konfigurace aplikací démona, které volají webová rozhraní API – Microsoft Identity Platform | Azure
+description: Naučte se konfigurovat kód pro aplikaci démona, která volá webová rozhraní API (konfigurace aplikace).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fbd4af78e02dad2a8a74ee21f9cb8c6ef0a976
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175504"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962640"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -35,7 +35,7 @@ Knihovny Microsoftu podporující aplikace démona jsou:
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporované platformy pro sestavení aplikace démona jsou .NET Framework a platformy .NET Core (ne UWP, Xamarin. iOS a Xamarin. Android, protože tyto platformy slouží k vytváření veřejných klientských aplikací).
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Vývoj v průběhu verze Public Preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Vývoj v průběhu verze Public Preview
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Vývoj v průběhu verze Public Preview
 
 ## <a name="configuration-of-the-authority"></a>Konfigurace autority
 
@@ -295,7 +295,7 @@ Další podrobnosti najdete v tématu [kontrolní výrazy klienta](msal-net-clie
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-V MSAL Pythonu můžete poskytovat deklarace identity klientů pomocí deklarací identity, které budou podepsány tímto `ConfidentialClientApplication` privátním klíčem.
+V MSAL Pythonu můžete poskytovat deklarace identity klientů pomocí deklarací identity, které budou podepsány tímto `ConfidentialClientApplication`privátním klíčem.
 
 ```Python
 config = json.load(open(sys.argv[1]))

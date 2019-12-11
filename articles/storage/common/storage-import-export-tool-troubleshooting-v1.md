@@ -1,39 +1,39 @@
 ---
-title: Řešení potíží s nástrojem Azure Import/Export | Dokumentace Microsoftu
-description: Přečtěte si o některých běžných problémů zobrazit při použití nástroje Import/Export Azure a způsob jejich zpracování.
-author: muralikk
+title: Řešení potíží s nástrojem Azure import/export | Microsoft Docs
+description: Seznamte se s některými běžnými problémy, ke kterým dochází při použití nástroje Azure import/export a jak je zpracovat.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 9a4e47143515c7f9c21d701809c35d61853d91ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e463e1cdd340f852af46e39cca0dd9bfce7b8da
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320444"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978930"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Řešení potíží s nástrojem Azure pro import/export
-Nástroje Microsoft Azure Import/Export vrátí chybové zprávy, pokud běží na problémy. Toto téma uvádí některé běžné problémy, které uživatelé můžou spouštět na.  
+Nástroj Microsoft Azure Import/Export vrátí chybové zprávy, pokud dojde k potížím. V tomto tématu jsou uvedeny některé běžné problémy, se kterými se uživatelé můžou spouštět.  
   
-## <a name="a-copy-session-fails-what-i-should-do"></a>Relace kopírování selže, co mám dělat?  
- Při kopírování relace se nezdaří, existují dvě možnosti:  
+## <a name="a-copy-session-fails-what-i-should-do"></a>Relace kopírování nefunguje, co mám dělat?  
+ Pokud dojde k chybě relace kopírování, existují dvě možnosti:  
   
- Pokud je chyba opakovatelná, například pokud síťové sdílené položce byla ve stavu offline na krátkou dobu a nyní je zpátky do online režimu, můžete obnovit kopii relace. Pokud chyba není opakovatelná, například pokud jste zadali nesprávný zdrojový adresář souboru v parametrech příkazového řádku, budete muset přerušení relace kopírování. Zobrazit [příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md) Další informace o obnovení a přerušení relace kopírování.  
+ Pokud je chyba opakovaným, například pokud byla sdílená složka po krátkou dobu offline a teď je zase online, můžete pokračovat v relaci kopírování. Pokud se chyba nedá opakovat, například pokud jste v parametrech příkazového řádku zadali nesprávný adresář zdrojového souboru, musíte přerušit relaci kopírování. Další informace o obnovení a přerušení relací kopírování najdete v tématu [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md) .  
   
-## <a name="i-cant-resume-or-abort-a-copy-session"></a>Nejde pokračovat nebo přerušení relace kopírování.  
- Když je relace kopie prvního kopírování relace pro jednotku, by měl uvést chybová zpráva: "Prvního kopírování relace se nedá obnovit nebo přerušena." V takovém případě můžete odstranit původní soubor deníku a spusťte příkaz znovu.  
+## <a name="i-cant-resume-or-abort-a-copy-session"></a>Nejde obnovit nebo přerušit relaci kopírování.  
+ Pokud je relace kopírování první relací kopírování pro jednotku, chybová zpráva by měla obsahovat: "první relace kopírování nemůže být obnovena nebo přerušena." V takovém případě můžete odstranit starý soubor deníku a znovu spustit příkaz.  
   
- Pokud relaci kopie není první z nich pro jednotku, můžete být vždy obnovit nebo přerušena.  
+ Pokud relace kopírování není první pro jednotku, může být vždy obnovena nebo přerušena.  
   
-## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Můžu ztráty soubor deníku, můžu přesto vytvářet úlohy?  
- Soubor deníku pro disk obsahuje kompletní informace o kopírování dat na této jednotce, a je potřeba přidat další soubory k jednotce se použijí k vytvoření úlohy importu. Pokud soubor deníku dojde ke ztrátě, budete muset znovu provést všechny kopie relace pro jednotku.  
+## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Ztratil (a) jsem soubor deníku, můžu i přesto vytvořit úlohu?  
+ Soubor deníku pro jednotku obsahuje kompletní informace o kopírování dat na tuto jednotku a je nutné přidat do jednotky další soubory a bude použit k vytvoření úlohy importu. Pokud dojde ke ztrátě souboru deníku, budete muset znovu provést všechny relace kopírování pro jednotku.  
   
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
  
-* [Nastavení nástroje azure import/export](../storage-import-export-tool-setup-v1.md)   
+* [Nastavení nástroje Azure pro import/export](../storage-import-export-tool-setup-v1.md)   
 * [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Oprava úlohy importu](../storage-import-export-tool-repairing-an-import-job-v1.md)   

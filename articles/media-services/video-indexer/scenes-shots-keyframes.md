@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806696"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976600"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scény, snímky a klíčové snímky
 
@@ -36,7 +36,7 @@ Video Indexer určuje, kdy se snímek ve videu změní na základě vizuálních
 
 ## <a name="keyframe-detection"></a>Detekce klíčových snímků
 
-Vybere rámce, které nejlépe reprezentují snímek. Klíčové snímky jsou reprezentativní snímky vybrané z celého videa na základě vlastností estetického zobrazení (například kontrast a stabilita). Video Indexer načte seznam ID klíčových snímků jako součást metadat snímku na základě toho, kteří zákazníci mohou miniatury klíčového snímku extrahovat. 
+Video Indexer vybere rámce, které nejlépe reprezentují každý snímek. Klíčové snímky jsou reprezentativní snímky vybrané z celého videa na základě vlastností estetického zobrazení (například kontrast a stabilita). Video Indexer načte seznam ID klíčových snímků jako součást metadat snímku na základě toho, kteří zákazníci mohou klíčového snímku extrahovat jako obrázek s vysokým rozlišením.  
 
 ### <a name="extracting-keyframes"></a>Extrakce klíčových snímků
 

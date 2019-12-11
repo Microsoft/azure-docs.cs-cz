@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73989770"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973406"
 ---
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Vytvoření Azure Database for PostgreSQL – Citus (škálování)
 
@@ -46,7 +46,7 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
    ![přidaných klientských IP](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
-   > Server Azure PostgreSQL komunikuje přes port 5432. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 5432.
+   > Server Azure PostgreSQL komunikuje přes port 5432. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit ke clusteru Citus (s vlastním škálováním), dokud vaše IT oddělení neotevře port 5432.
    >
 
 9. Kliknutím na tlačítko **zkontrolovat + vytvořit** a **vytvořit** Server zřiďte. Zřizování trvá několik minut.
@@ -57,10 +57,10 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
 
 Při vytváření serveru Azure Database for PostgreSQL se vytvoří výchozí databáze s názvem **citus** . Abyste se mohli připojit k databázovému serveru, potřebujete připojovací řetězec a heslo správce.
 
-1. Získejte připojovací řetězec. Na stránce skupiny serverů klikněte na položku nabídky **připojovací řetězce** . (Jedná se o **Nastavení**.) Vyhledejte řetězec označený  **C++ (libpq)** . Bude mít formu:
+1. Získejte připojovací řetězec. Na stránce skupiny serverů klikněte na položku nabídky **připojovací řetězce** . (Jedná se o **Nastavení**.) Vyhledejte řetězec označený jako **psql**. Bude mít formu:
 
    ```
-   host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
+   psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
    Zkopírujte řetězec. Heslo pro správu, které jste si zvolili dříve, budete muset nahradit {\_heslo}. Systém neuloží vaše heslo ve formátu prostého textu, a proto ho nemůže zobrazit v připojovacím řetězci.
@@ -69,7 +69,7 @@ Při vytváření serveru Azure Database for PostgreSQL se vytvoří výchozí d
 
 3. Na příkazovém řádku se připojte k serveru Azure Database for PostgreSQL pomocí nástroje [psql](https://www.postgresql.org/docs/current/app-psql.html) . Předá připojovací řetězec v uvozovkách, ujistěte se, že obsahuje vaše heslo:
    ```bash
-   psql "{connection_string}"
+   psql "host=..."
    ```
 
    Například následující příkaz se připojí k uzlu koordinátora skupiny serveru **mydemoserver**:

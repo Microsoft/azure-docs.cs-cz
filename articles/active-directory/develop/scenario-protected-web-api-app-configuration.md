@@ -1,5 +1,5 @@
 ---
-title: Chráněné webové rozhraní API – konfigurace kódu aplikace
+title: Konfigurace chráněných webových aplikací API | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet chráněné webové rozhraní API a konfigurovat kód vaší aplikace.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882631"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965394"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -32,7 +32,7 @@ Pokud chcete nakonfigurovat kód pro vaše chráněné webové rozhraní API, mu
 
 Podobně jako webové aplikace jsou webová rozhraní API ASP.NET/ASP.NET Core "chráněná", protože jejich akce kontrol jsou předponou atributu `[Authorize]`. To znamená, že akce kontroleru lze volat pouze v případě, že je rozhraní API voláno s identitou, která je autorizována.
 
-Vezměte v úvahu následující otázky:
+Zvažte následující otázky:
 
 - Jak webové rozhraní API zná identitu aplikace, která ji volá? (Webové rozhraní API může volat jenom aplikace.)
 - Jaká je identita uživatele v případě, že aplikace volala webové rozhraní API jménem uživatele?

@@ -1,27 +1,27 @@
 ---
 title: Použití Azure image Builder s galerií imagí pro virtuální počítače se systémem Linux (Preview)
-description: Vytvářejte image pro Linux pomocí Azure image Builder a galerie sdílených imagí.
+description: Vytvářejte image virtuálních počítačů se systémem Linux pomocí nástroje Azure image Builder a galerie sdílených imagí.
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695410"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976124"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: Vytvoření image pro Linux a její distribuce do galerie sdílených imagí 
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: vytvoření image pro Linux a její distribuce do galerie sdílených imagí 
 
 V tomto článku se dozvíte, jak můžete pomocí Tvůrce imagí Azure vytvořit verzi image v [galerii sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)a pak ji distribuovat globálně.
 
 
 K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIG. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-Pro distribuci image do galerie sdílených imagí šablona používá [sharedImage](image-builder-json.md#distribute-sharedimage) jako hodnotu pro `distribute` oddíl šablony.
+Chcete-li distribuovat bitovou kopii do galerie sdílených imagí, šablona používá [sharedImage](image-builder-json.md#distribute-sharedimage) jako hodnotu oddílu `distribute` šablony.
 
 > [!IMPORTANT]
 > Azure image Builder je momentálně ve verzi Public Preview.
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Udělte službě Azure image Builder oprávnění k vytváření prostředků v této skupině prostředků. `--assignee` Hodnota je ID registrace aplikace pro službu Tvůrce imagí. 
+Udělte službě Azure image Builder oprávnění k vytváření prostředků v této skupině prostředků. Hodnota `--assignee` je ID registrace aplikace pro službu Tvůrce imagí. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -186,7 +186,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Připojte se k virtuálnímu počítači přes SSH.
+SSH do virtuálního počítače.
 
 ```azurecli-interactive
 ssh aibuser@<publicIpAddress>
@@ -220,7 +220,7 @@ az resource delete \
     -n helloImageTemplateforSIG01
 ```
 
-Získat verzi image vytvořenou tvůrcem imagí, vždy se `0.`spustí a pak se odstraní verze image.
+Získat verzi image vytvořenou tvůrcem imagí, vždy se spustí s `0.`a pak odstraní verzi image.
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \
@@ -259,6 +259,6 @@ Odstraňte skupinu prostředků.
 az group delete -n $sigResourceGroup -y
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o [galeriích sdílených imagí Azure](shared-image-galleries.md).

@@ -1,6 +1,6 @@
 ---
-title: Webové rozhraní API, že volání webových rozhraní API (Přesun do produkčního prostředí) – platforma identit Microsoft
-description: Zjistěte, jak vytvořit webové rozhraní API, že směru server-klient volání webových rozhraní API (Přesun do produkčního prostředí).
+title: Přesunutí webového rozhraní API volání webových rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
+description: Přečtěte si, jak přesunout webové rozhraní API, které volá webová rozhraní API do produkčního prostředí.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7de892a0851e556c5046fe4b3691f39b42a9d237
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d59a5b2a74c10e36103713725113cbe8c9cc412
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074752"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965165"
 ---
-# <a name="web-api-that-calls-web-apis---move-to-production"></a>Webové rozhraní API, která volá webové rozhraní API – Přesun do produkčního prostředí
+# <a name="web-api-that-calls-web-apis---move-to-production"></a>Webové rozhraní API, které volá webová rozhraní API – přesun do produkčního prostředí
 
-Jakmile tokenu pro volání webových rozhraní API, které jste získali, můžete přesunout vaši aplikaci do produkčního prostředí.
+Jakmile získáte token pro volání webových rozhraní API, můžete aplikaci přesunout do produkčního prostředí.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="learn-more"></a>Víc se uč
+## <a name="learn-more"></a>Další informace
 
-Teď, když znáte základy toho, jak volat webové rozhraní API z vašeho vlastního webového rozhraní API, vás může zajímat, tento kurz, který popisuje kód, který se má použít k sestavení chráněné webové rozhraní API volá webové rozhraní API.
+Teď, když znáte základy volání webových rozhraní API z vlastního webového rozhraní API, může vás zajímat tento kurz, který popisuje kód, který se používá k vytvoření chráněného webového rozhraní API, které volá webová rozhraní API.
 
 | Ukázka | Platforma | Popis |
 |--------|----------|-------------|
-| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2.2 webového rozhraní API, plochy (WPF) | ASP.NET Core 2.2 webového rozhraní API volání Microsoft Graphu, samotný volat z aplikace WPF pomocí Microsoft identity platform (v2.0) |
+| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | Webové rozhraní API ASP.NET Core 2,2, Desktop (WPF) | Rozhraní Web API ASP.NET Core 2,2 volá Microsoft Graph, která se volá z aplikace WPF pomocí platformy Microsoft identity (v 2.0). |

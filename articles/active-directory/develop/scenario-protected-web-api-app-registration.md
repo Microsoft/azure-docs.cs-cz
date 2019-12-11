@@ -1,5 +1,5 @@
 ---
-title: Chráněné webové rozhraní API – registrace aplikace
+title: Registrace aplikace chráněného webového rozhraní API | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet chráněné webové rozhraní API a informace, které potřebujete k registraci aplikace.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c905dfd86fd80b9e55aa7bd5a9b9b03f277570c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 86c36661dd8b5d43417ca1d845eef5cdb146f1e9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802542"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962521"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
@@ -50,7 +50,7 @@ Po vytvoření aplikace můžete zjistit nebo změnit verzi přijatého tokenu p
 
 Webová rozhraní API nepotřebují registrovat identifikátor URI přesměrování, protože k interaktivnímu přihlášení není žádný uživatel.
 
-## <a name="expose-an-api"></a>Vystavení rozhraní API
+## <a name="expose-an-api"></a>Zpřístupnit rozhraní API
 
 Další nastavení specifické pro webová rozhraní API je vystavené rozhraní API a exponované obory.
 
@@ -75,7 +75,7 @@ Obory se také zobrazují na obrazovce pro vyjádření souhlasu, která se zobr
 1. Vyberte **Přidat obor**.
 1. Pokud se zobrazí výzva, přijměte navržený identifikátor URI (`api://{clientId}`) ID aplikace **a vyberte Uložit a pokračovat**.
 1. Zadejte tyto parametry:
-      - Pro **název oboru**použijte **access_as_user**.
+      - Jako **název oboru**použijte **access_as_user**.
       - Pro **uživatele, kteří můžou vyjádřit souhlas**, se ujistěte, že je vybraná možnost **Správci a uživatelé** .
       - V **zobrazení název souhlasu správce**zadejte **přístup TodoListService jako uživatel**.
       - V **popisu souhlasu správce**zadejte **přístup k webovému rozhraní API TodoListService jako uživatel**.

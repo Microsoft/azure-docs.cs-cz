@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 553234410a7b8b798d26f0e2fee6132a2602b1cc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 3fed615a767fee2fff1700f996b2103f411db825
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770505"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973471"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Správa serveru Azure Database for MySQL pomocí Azure Portal
-V tomto článku se dozvíte, jak spravovat databázi Afire pro servery MySQL. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
+V tomto článku se dozvíte, jak spravovat servery Azure Database for MySQL. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
 
 ## <a name="sign-in"></a>Přihlásit se
 Přihlaste se na web [Azure Portal](https://portal.azure.com).
@@ -79,7 +79,7 @@ Můžete změnit heslo role správce pomocí Azure Portal.
 
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
-   ![resetovat heslo](./media/howto-create-manage-server-portal/reset-password.png)
+   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kliknutím na **tlačítko OK** uložte nové heslo.
 
@@ -94,7 +94,7 @@ Server můžete odstranit, pokud ho už nepotřebujete.
 
 2. Zadáním názvu serveru do vstupního pole potvrďte, že se jedná o server, který chcete odstranit.
 
-    ![Potvrdit odstranění](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > Odstranění serveru je nevratné.

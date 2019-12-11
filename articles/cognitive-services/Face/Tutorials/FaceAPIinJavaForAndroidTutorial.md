@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Detekce a orámování ploch v imagi pomocí Android SDK'
+title: 'Kurz: Rozpoznávání a orámování tváří na obrázku pomocí sady Android SDK'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte jednoduchou aplikaci pro Android, která používá Face API k detekci a orámování ploch v imagi.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 740b3fae81521fec2cba31e3b8fd161f767c4380
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858984"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977790"
 ---
-# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace pro Android pro detekci a orámování plošek v obrázku
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace pro Android k rozpoznání a orámování tváří na obrázku
 
-V tomto kurzu vytvoříte jednoduchou aplikaci pro Android, která používá Face API Azure prostřednictvím sady Java SDK k detekci lidských plošek v obraze. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
+V tomto kurzu vytvoříte aplikaci pro Android, která používá Face API Azure prostřednictvím sady Java SDK k detekci lidských plošek v obraze. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -35,9 +35,9 @@ Kompletní vzorový kód je k dispozici v úložišti [Cognitive Services oblič
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `FACE_SUBSCRIPTION_KEY` názvem `FACE_ENDPOINT`a v uvedeném pořadí.
+- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `FACE_SUBSCRIPTION_KEY` a `FACE_ENDPOINT`v uvedeném pořadí.
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 - [Android Studio](https://developer.android.com/studio/) s rozhraním API úrovně 22 nebo novějším (vyžaduje Klientská knihovna pro obličej).
 
@@ -61,7 +61,7 @@ Otevřete *soubor activity_main. XML*. V editoru rozložení vyberte kartu **tex
 
 ### <a name="create-the-main-class"></a>Vytvoření hlavní třídy
 
-Otevřete *MainActivity. Java* a nahraďte existující `import` příkazy následujícím kódem.
+Otevřete *MainActivity. Java* a nahraďte existující příkazy `import` následujícím kódem.
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_imports)]
 
@@ -85,7 +85,7 @@ V podokně **Project** (Projekt) použijte selektor rozevíracího seznamu a vyb
 
 ### <a name="add-the-face-related-project-code"></a>Přidat kód projektu související s obličejem
 
-Vraťte se do **MainActivity. Java** a přidejte následující `import` příkazy:
+Vraťte se do **MainActivity. Java** a přidejte následující příkazy `import`:
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_face_imports)]
 
@@ -103,7 +103,7 @@ Vaše aplikace detekuje obličeje voláním metody **faceClient. Face. DetectWit
 
 Každý vrácený **obličej** obsahuje obdélník, který označuje jeho umístění v kombinaci s řadou volitelných atributů Facet. V tomto příkladu jsou požadovány pouze obdélníky obličeje.
 
-Do třídy **MainActivity** vložte následující dvě metody. Všimněte si, že když se rozpoznávání obličeje dokončí, aplikace zavolá metodu **drawFaceRectanglesOnBitmap** pro úpravu **ImageView**. Tuto metodu budete definovat jako další.
+Do třídy **MainActivity** vložte následující dvě metody. Když se rozpoznávání obličeje dokončí, aplikace zavolá metodu **drawFaceRectanglesOnBitmap** pro úpravu **ImageView**. Tuto metodu budete definovat jako další.
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 
@@ -115,13 +115,13 @@ Do třídy **MainActivity** vložte následující pomocnou metodu. Tato metoda 
 
 Nakonec Odkomentujte volání metody **detectAndFrame** v **onActivityResult**.
 
-## <a name="run-the-app"></a>Spuštění aplikace
+## <a name="run-the-app"></a>Spusťte aplikaci
 
 Spusťte aplikaci a vyhledejte obrázek, který obsahuje nějakou tvář. Počkejte několik sekund, než služba Rozpoznávání tváře zareaguje. Na všech plochách v obrázku byste měli vidět červený obdélník.
 
 ![Snímek obrazovky se systémem Android s červenými obdélníky nakreslenými kolem nich](../Images/android_getstarted2.1.PNG)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili základní proces používání sady Face API Java SDK a vytvořili jste aplikaci pro detekci a orámování plošek v obrázku. V dalším kroku se dozvíte více o podrobnostech detekce obličeje.
 

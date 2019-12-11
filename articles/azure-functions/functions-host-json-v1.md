@@ -3,12 +3,12 @@ title: Reference Host. JSON pro Azure Functions 1. x
 description: Referenční dokumentace k souboru Azure Functions Host. JSON s modulem Runtime v1
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 99a571483086343d4e7d6188b2f401abc616c1bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 256cd47fa0f309bef46c7f72951810d5f76d0fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230591"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975461"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Reference Host. JSON pro Azure Functions 1. x
 
@@ -19,7 +19,7 @@ ms.locfileid: "74230591"
 Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici pro modul runtime v1. Schéma JSON je na http://json.schemastore.org/host.
 
 > [!NOTE]
-> Tento článek je určený pro Azure Functions 1.x.  Odkaz na Host. JSON ve funkcích 2. x najdete v tématu [reference Host. JSON pro Azure Functions 2. x](functions-host-json.md).
+> Tento článek je určený pro Azure Functions 1.x.  Odkaz na Host. JSON ve funkcích 2. x a novějších naleznete v tématu [reference Host. JSON pro Azure Functions 2. x](functions-host-json.md).
 
 Další možnosti konfigurace aplikace Function App jsou spravované v [nastavení aplikace](functions-app-settings.md).
 
@@ -140,7 +140,7 @@ Nastavení konfigurace [aktivační události Azure Cosmos DB a vazeb](functions
 |---------|---------|---------|
 |GatewayMode|brána|Režim připojení, který funkce používá při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a `Gateway`|
 |Protocol (Protokol)|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .|
-|leasePrefix|neuvedeno|Předpona zapůjčení pro použití ve všech funkcích aplikace|
+|leasePrefix|–|Předpona zapůjčení pro použití ve všech funkcích aplikace|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -152,7 +152,7 @@ Nastavení konfigurace [aktivačních událostí a vazeb centra událostí](func
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>– funkce
+## <a name="functions"></a>functions
 
 Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spuštění všech funkcí. Určeno pro použití pouze při [místním spuštění](functions-run-local.md). V aplikacích Function App v Azure byste měli místo použití tohoto nastavení zakázat konkrétní funkce pomocí postupu v [Azure Functions](disable-function.md) .
 
@@ -190,7 +190,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|enabled|true (pravda)|Určuje, jestli je funkce povolená. | 
+|enabled|true|Určuje, jestli je funkce povolená. | 
 |healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
 |healthCheckWindow|2 minuty|Posuvné časové okno používané ve spojení s nastavením `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
@@ -213,7 +213,7 @@ Nastavení konfigurace [aktivačních událostí a vazeb HTTP](functions-binding
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|dynamicThrottlesEnabled|false (nepravda)|Když je toto nastavení povolené, bude v kanálu zpracování požadavků pravidelně kontrolovat čítače výkonu systému, jako jsou připojení/vlákna, procesy/paměti/CPU/a, pokud některý z těchto čítačů překročí vestavěnou vysokou prahovou hodnotu (80%), požadavky se odmítnou se 429 "příliš zaneprázdněnou", dokud se čítače nevrátí na normální úrovně.|
+|dynamicThrottlesEnabled|false|Když je toto nastavení povolené, bude v kanálu zpracování požadavků pravidelně kontrolovat čítače výkonu systému, jako jsou připojení/vlákna, procesy/paměti/CPU/a, pokud některý z těchto čítačů překročí vestavěnou vysokou prahovou hodnotu (80%), požadavky se odmítnou se 429 "příliš zaneprázdněnou", dokud se čítače nevrátí na normální úrovně.|
 |maxConcurrentRequests|bez vazby (`-1`)|Maximální počet funkcí http, které se spustí paralelně. To vám umožňuje řídit souběžnost, což pomáhá spravovat využití prostředků. Můžete mít například funkci http, která používá velké množství systémových prostředků (paměť/procesor/sokety), což způsobuje problémy, pokud je souběžnost příliš vysoká. Nebo může být funkce, která vytváří odchozí požadavky na službu třetí strany, a tyto hovory musí být omezené na míru. V těchto případech vám může pomáhat použití omezení.|
 |maxOutstandingRequests|bez vazby (`-1`)|Maximální počet nezpracovaných požadavků, které jsou v daném okamžiku uchovávány. Tento limit zahrnuje požadavky, které jsou ve frontě, ale nezačaly běžet, a také jakékoli probíhající provádění. Všechny příchozí žádosti přes toto omezení se odmítnou s 429 "příliš zaneprázdněnou" odezvou. Umožňuje volajícím využívat strategie opakování na základě času a také vám pomůže řídit maximální latenci žádostí. Tato možnost řídí služby Řízení front zpráv, ke kterým dochází v cestě spuštění hostitele skriptu. Další fronty, například fronta žádostí ASP.NET, budou stále platit a nebudou ovlivněny tímto nastavením.|
 |routePrefix|rozhraní api|Předpona trasy, která se vztahuje na všechny trasy. K odebrání výchozí předpony použijte prázdný řetězec. |
@@ -251,11 +251,11 @@ Pokud sdílíte účet úložiště napříč více aplikacemi Function App, uji
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|categoryFilter|neuvedeno|Určuje filtrování podle kategorie.| 
+|categoryFilter|–|Určuje filtrování podle kategorie.| 
 |defaultLevel|Informace|Pro jakékoli kategorie, které nejsou určené v poli `categoryLevels`, odešlete protokoly na této úrovni a výše do Application Insights.| 
-|categoryLevels|neuvedeno|Pole kategorií, které určuje minimální úroveň protokolu, která se má odeslat Application Insights pro každou kategorii. Zde uvedená kategorie řídí všechny kategorie, které začínají stejnou hodnotou a mají přednost před delšími hodnotami. V předchozím ukázkovém souboru *Host. JSON* všechny kategorie, které začínají na "host. agregátor" na úrovni `Information`. Všechny ostatní kategorie, které začínají na "hostitel", jako je například Host. exekutor, se přihlaste na úrovni `Error`.| 
+|categoryLevels|–|Pole kategorií, které určuje minimální úroveň protokolu, která se má odeslat Application Insights pro každou kategorii. Zde uvedená kategorie řídí všechny kategorie, které začínají stejnou hodnotou a mají přednost před delšími hodnotami. V předchozím ukázkovém souboru *Host. JSON* všechny kategorie, které začínají na "host. agregátor" na úrovni `Information`. Všechny ostatní kategorie, které začínají na "hostitel", jako je například Host. exekutor, se přihlaste na úrovni `Error`.| 
 
-## <a name="queues"></a>vytvořil
+## <a name="queues"></a>fronty
 
 Nastavení konfigurace [aktivačních událostí a vazeb fronty úložiště](functions-bindings-storage-queue.md)
 
@@ -292,7 +292,7 @@ Nastavení konfigurace pro [výstupní vazbu SendGrind](functions-bindings-sendg
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|from|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
+|od|–|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -310,8 +310,8 @@ Nastavení konfigurace pro [aktivační události Service Bus a vazby](functions
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo zahájit pumpu zpráv. Ve výchozím nastavení modul runtime služby Functions zpracovávat více zpráv souběžně. Pokud chcete modul runtime nasměrovat tak, aby zpracovával jenom jednu frontu nebo zprávu o tématu, nastavte `maxConcurrentCalls` na 1. | 
-|prefetchCount|neuvedeno|Výchozí PrefetchCount, který se použije základní MessageReceiver.| 
+|maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo zahájit pumpu zpráv. Ve výchozím nastavení modul runtime služby Functions zpracovávat více zpráv souběžně. Chcete-li řídit modul runtime najednou zpracovat pouze jedné frontě nebo tématu zprávy, nastavte `maxConcurrentCalls` na hodnotu 1. | 
+|prefetchCount|–|Výchozí PrefetchCount, který se použije základní MessageReceiver.| 
 |autoRenewTimeout|00:05:00|Maximální doba, ve kterém se automatické obnovení zámku zprávy.| 
 
 ## <a name="singleton"></a>Singleton
@@ -336,9 +336,9 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
 |lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
-|lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
+|lockAcquisitionPollingInterval|–|Interval mezi pokusy o získání zámku.| 
 
-## <a name="tracing"></a>probíhá
+## <a name="tracing"></a>sledování
 
 *Verze 1. x*
 

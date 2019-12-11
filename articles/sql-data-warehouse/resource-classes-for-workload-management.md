@@ -11,12 +11,12 @@ ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30a3be1365f152a88713604570169091f09f0536
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851736"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975427"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků v Azure SQL Data Warehouse
 
@@ -36,7 +36,7 @@ Existují dva typy tříd prostředků:
 
 Třídy prostředků používají pro měření spotřeby prostředků sloty souběžnosti.  [Sloty souběžnosti](#concurrency-slots) jsou vysvětleny dále v tomto článku.
 
-- Chcete-li zobrazit využití prostředků pro třídy prostředků, přečtěte si téma [limity paměti a souběžnosti] paměť-Concurrency-limits.md).
+- Chcete-li zobrazit využití prostředků pro třídy prostředků, přečtěte si téma [limity paměti a souběžnosti](memory-concurrency-limits.md).
 - Chcete-li upravit třídu prostředků, můžete spustit dotaz pod jiným uživatelem nebo změnit členství ve [třídě prostředku aktuálního uživatele](#change-a-users-resource-class) .
 
 ### <a name="static-resource-classes"></a>Třídy statických prostředků

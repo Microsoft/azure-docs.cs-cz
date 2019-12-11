@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zásad doručení assetu pomocí REST API služby Media Services | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak konfigurace zásad doručování různých prostředků pomocí REST API služby Media Services.
+title: Konfigurace zásad doručení assetu pomocí Media Services REST API | Microsoft Docs
+description: V tomto tématu se dozvíte, jak nakonfigurovat různé zásady doručování assetů pomocí Media Services REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e4e565b0b5272de19458617a9c4bd3509907cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1c71a1329b930beea38fe39518914b278f9372d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60817407"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968404"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Konfigurace zásad doručení assetu
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
-Pokud budete chtít doručování dynamicky šifrovaných prostředků, jeden z kroků v pracovním postupu doručování obsahu v Media Services je konfigurace zásad doručování prostředků. Zásady doručení assetu říká Media Services způsob pro váš prostředek, který bude doručen: do datových proudů protokol, který by měl váš asset dynamicky balí (pro příklad, MPEG DASH, HLS, technologie Smooth Streaming nebo všechny), jestli chcete šifrovat dynamicky váš asset a jak (Obálka nebo používat standard common encryption).
+Pokud plánujete doručování dynamicky šifrovaných prostředků, jeden z kroků v pracovním postupu pro doručování obsahu Media Services konfiguruje zásady doručování pro prostředky. Zásada doručení assetu oznamuje Media Services, jak chcete Asset doručovat: do kterého protokolu streamování by měl být Asset dynamicky zabalen (například MPEG POMLČKy, HLS, Smooth Streaming nebo vše) bez ohledu na to, jestli chcete dynamicky šifrovat. Váš Asset a jak (obálka nebo běžné šifrování).
 
 Toto téma popisuje, proč a jak vytvořit a nakonfigurovat zásady doručení assetu.
 
 > [!NOTE]
 > Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
 >
-> Abyste mohli používat dynamické balení a dynamického šifrování také, váš asset musí obsahovat sadu s adaptivní přenosovou rychlostí soubory MP4 rychlostmi nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí.
+> Aby bylo možné použít dynamické balení a dynamické šifrování, vaše Asset musí obsahovat sadu adaptivních přenosů rychlostmi nebo adaptivní přenosové rychlosti Smooth Streaming souborů.
 
-Do stejného assetu můžete použít různé zásady. Může například použít šifrování PlayReady na technologie Smooth Streaming a standardu AES Envelope šifrování a MPEG DASH, HLS. Veškeré protokoly, které nejsou v zásadách doručení definovány (například když přidáte jedinou zásadu, která jako protokol určuje pouze HLS), budou při streamování blokovány. Výjimkou je, pokud nemáte definovány vůbec žádné zásady doručení assetu. Pak budou všechny protokoly povolené v nešifrované podobě.
+U stejného prostředku můžete použít jiné zásady. Můžete například použít šifrování PlayReady pro Smooth Streaming a šifrování obálek AES na MPEG POMLČKy a HLS. Veškeré protokoly, které nejsou v zásadách doručení definovány (například když přidáte jedinou zásadu, která jako protokol určuje pouze HLS), budou při streamování blokovány. Výjimkou je, pokud nemáte definovány vůbec žádné zásady doručení assetu. Pak budou všechny protokoly povolené v nešifrované podobě.
 
-Pokud chcete dodávat šifrované prostředků úložiště, musíte nakonfigurovat zásady doručení assetu. Předtím, než můžete Streamovat prostředek, server streamování zruší šifrování úložiště a streamuje obsah pomocí zadaného doručování zásad. Například k poskytování asset zašifrovaná pomocí šifrování AES (Advanced Standard) obálky šifrovací klíč, nastavte typ zásad na **DynamicEnvelopeEncryption**. Pokud chcete odstranit úložiště šifrování a streamování majetku v nezašifrované podobě, nastavte typ zásad na **NoDynamicEncryption**. Postupujte podle příkladů, které ukazují, jak nakonfigurovat tyto typy zásad.
+Pokud chcete doručovat šifrovaný prostředek úložiště, musíte nakonfigurovat zásady doručování prostředků. Předtím, než bude možné Asset streamovat, server streamování odstraní šifrování úložiště a streamuje obsah pomocí zadaných zásad doručování. Pokud třeba chcete zajistit, aby se Asset zašifroval pomocí šifrovacího klíče standard AES (Advanced Encryption Standard) (AES), nastavte typ zásady na **DynamicEnvelopeEncryption**. Pokud chcete odstranit šifrování úložiště a streamovat prostředek v nejasném případě, nastavte typ zásady na **NoDynamicEncryption**. Příklady, které ukazují, jak nakonfigurovat tyto typy zásad, následují.
 
-V závislosti na tom, jak nakonfigurovat zásady doručení assetu by budete moci dynamicky balíček, dynamické šifrování a streamování následující streamovacích protokolů: Funkce Smooth Streaming, HLS, MPEG DASH datové proudy.
+V závislosti na tom, jak nakonfigurujete zásady doručení assetu, byste mohli dynamicky zabalit, dynamicky šifrovat a streamovat následující protokoly streamování: Smooth Streaming, HLS a MPEG SPOJOVNÍKy.
 
-Následující seznam obsahuje formát, který používáte k datový proud Smooth, HLS, DASH.
+Následující seznam obsahuje formáty, které používáte ke streamování hladce, HLS, POMLČKy.
 
-Technologie Smooth Streaming:
+Smooth Streaming:
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
 HLS:
 
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = M3U8-AAPL)
 
 MPEG DASH
 
-{streamování koncový bod služby media název účtu name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{streamování názvu koncového bodu – název účtu Media Services}. streamování. MediaServices. Windows. NET/{Locator ID}/{filename}.ism/Manifest (Format = MPD-Time-CSF)
 
 
 Pokyny k publikování assetu a vytvoření adresy URL streamování najdete v článku o [vytvoření adresy URL streamování](media-services-deliver-streaming-content.md).
 
 ## <a name="considerations"></a>Požadavky
-* Nelze odstranit AssetDeliveryPolicy přidružené k prostředku, zatímco Lokátor OnDemand (streamování) existuje pro tohoto prostředku. Doporučujeme odebrat zásadu z prostředku před odstraněním zásady.
-* Šifrované prostředků úložiště nelze vytvořit lokátor streamování, když nejsou nastavené žádné zásady doručení assetu.  Pokud prostředek není šifrování úložiště, systém vám umožní vytvořit Lokátor a streamování prostředků v nezašifrované podobě bez zásad doručení prostředku.
-* Můžete mít více zásad doručování prostředků přidružené k jedné assetu, ale můžete zadat pouze jeden způsob, jak zpracovat daný AssetDeliveryProtocol.  To znamená, pokud se pokusíte k propojení dvou zásady doručování, které určují AssetDeliveryProtocol.SmoothStreaming protokol, který způsobí chybu, protože systém neví, což je ta, ve které chcete použít, když klient odešle požadavek technologie Smooth Streaming.
-* Pokud máte prostředek s stávající Lokátor streamování, nelze propojit novou zásadu k assetu, odpojit existující zásady z prostředku nebo aktualizujete zásady pro doručení přidružené k assetu.  Nejprve musíte odebrat Lokátor streamování, upravte zásady a pak znovu vytvořte Lokátor streamování.  Když znovu vytvořit lokátor streamování, ale měli byste zajistit, že, který nebude způsobovat problémy pro klienty od mezipaměti obsahu počátek nebo příjem dat CDN, můžete použít stejné locatorId.
+* Nelze odstranit AssetDeliveryPolicy přidružené k assetu, zatímco pro daný prostředek existuje Lokátor OnDemand (streaming). Doporučujeme odstranit zásadu z assetu předtím, než zásadu odstraníte.
+* Lokátor streamování nejde vytvořit na prostředku šifrovaném úložiště, pokud není nastavená žádná zásada pro doručení prostředků.  Pokud prostředek není šifrovaný jako zašifrovaný, systém vám umožní vytvořit Lokátor a streamovat prostředek ve formě bez zásad doručení assetu.
+* K jednomu prostředku můžete mít k dispozici více zásad doručení prostředků, ale můžete zadat jenom jeden způsob, jak zpracovat daný AssetDeliveryProtocol.  To znamená, že se pokusíte propojit dvě zásady doručování, které určují protokol AssetDeliveryProtocol. SmoothStreaming, který bude mít za následek chybu, protože systém neví, který z nich chcete použít, když klient provede požadavek Smooth Streaming.
+* Pokud máte Asset s existujícím lokátorem služby streamování, nemůžete propojit nové zásady s Assetem, odkázat stávající zásady z assetu nebo aktualizovat zásady doručování přidružené k assetu.  Nejdřív musíte odebrat Lokátor streamování, upravit zásady a pak znovu vytvořit Lokátor streamování.  Stejné locatorId můžete použít při opětovném vytvoření lokátoru streamování, ale měli byste zajistit, aby nedošlo k potížím pro klienty, protože obsah může být uložený v mezipaměti od původu nebo přes CDN pro příjem dat.
 
 > [!NOTE]
 > 
-> Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty v požadavcích HTTP. Další informace najdete v tématu [instalace pro vývoj pro Media Services REST API](media-services-rest-how-to-use.md).
+> Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
+## <a name="connect-to-media-services"></a>Připojení k Media Services
 
-Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="clear-asset-delivery-policy"></a>Zásady doručení assetu vymazat
-### <a id="create_asset_delivery_policy"></a>Vytvoření zásady doručení assetu
-Následující požadavek HTTP vytvoří zásad doručení prostředku, který určuje k dynamické šifrování se nedá použít a k poskytování datový proud v některém z těchto protokolů:  Protokoly, MPEG DASH, HLS a Smooth Streaming. 
+## <a name="clear-asset-delivery-policy"></a>Vymazat zásady doručení assetu
+### <a id="create_asset_delivery_policy"></a>Vytvořit zásady doručení assetu
+Následující požadavek HTTP vytvoří zásadu doručení assetu, která určuje, že se nemá používat dynamické šifrování, a pokud chcete datový proud doručit v některém z následujících protokolů: MPEG POMLČKy, HLS a Smooth Streaming protokoly. 
 
-Informace o hodnoty, můžete zadat při vytváření AssetDeliveryPolicy, najdete v článku [typy používané při definování AssetDeliveryPolicy](#types) oddílu.   
+Informace o tom, jaké hodnoty můžete zadat při vytváření AssetDeliveryPolicy, najdete v tématu [typy používané při definování oddílu AssetDeliveryPolicy](#types) .   
 
 Požadavek:
 
@@ -120,8 +120,8 @@ Odpověď:
     "Created":"2015-02-08T06:21:27.6908329Z",
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
-### <a id="link_asset_with_asset_delivery_policy"></a>Propojení prostředku s zásady doručení assetu
-Následující požadavek HTTP odkazy na zásady doručení assetu pro zadaný prostředek.
+### <a id="link_asset_with_asset_delivery_policy"></a>Propojit prostředek se zásadami doručení assetu
+Následující požadavek HTTP propojí zadaný prostředek k zásadě doručení assetu.
 
 Požadavek:
 
@@ -143,14 +143,14 @@ Odpověď:
     HTTP/1.1 204 No Content
 
 
-## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption zásady doručení assetu
-### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Vytvoření klíče k obsahu typu EnvelopeEncryption a připojit ho k assetu
-Při zadávání DynamicEnvelopeEncryption zásady pro doručení, budete muset Ujistěte se, že odkaz na klíč k obsahu typu EnvelopeEncryption asset. Další informace naleznete v tématu: [Vytvoření klíče k obsahu](media-services-rest-create-contentkey.md)).
+## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>Zásady doručování prostředků DynamicEnvelopeEncryption
+### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Vytvořit klíč obsahu pro typ EnvelopeEncryption a propojit ho s Assetem
+Když zadáváte zásady doručování DynamicEnvelopeEncryption, musíte se ujistit, že propojíte svůj Asset s klíčem obsahu typu EnvelopeEncryption. Další informace najdete v tématu: [vytvoření klíče obsahu](media-services-rest-create-contentkey.md).
 
-### <a id="get_delivery_url"></a>Získat adresu URL doručování
-Získáte adresu URL doručování pro metodu zadané doručování obsahu klíč vytvořený v předchozím kroku. Klient používá vrácené adresu URL k vyžádání klíčem standardu AES nebo PlayReady licence v pořadí pro přehrávání chráněného obsahu.
+### <a id="get_delivery_url"></a>Získat adresu URL doručení
+Získejte adresu URL doručení pro zadanou metodu doručení klíče obsahu vytvořeného v předchozím kroku. Klient použije vrácenou adresu URL k vyžádání klíče AES nebo licence PlayReady, aby mohl přehrát chráněný obsah.
 
-Zadejte adresu URL získat v textu požadavku HTTP. Když chcete chránit obsah pomocí technologie PlayReady, žádost o adresu URL získání licencí Media Services PlayReady pomocí 1 pro keyDeliveryType: {"keyDeliveryType": 1}. Pokud chráníte obsahu pomocí šifrování obálky, adresa URL klíče pořízení požadavku tak, že zadáte 2 pro keyDeliveryType: {"keyDeliveryType": 2}.
+Zadejte typ adresy URL, která má být získána v těle požadavku HTTP. Pokud chráníte obsah pomocí PlayReady, požádejte o Media Services adresu URL pro získání licence PlayReady, a to pomocí 1 pro keyDeliveryType: {"keyDeliveryType": 1}. Pokud chráníte obsah pomocí šifrování obálky, požádejte o adresu URL pro získání klíče zadáním 2 pro keyDeliveryType: {"keyDeliveryType": 2}.
 
 Požadavek:
 
@@ -185,10 +185,10 @@ Odpověď:
     {"odata.metadata":"media.windows.net/api/$metadata#Edm.String","value":"https://amsaccount1.keydelivery.mediaservices.windows.net/?KID=dc88f996-2859-4cf7-a279-c52a9d6b2f04"}
 
 
-### <a name="create-asset-delivery-policy"></a>Vytvoření zásady doručení assetu
-Vytvoří následující požadavek HTTP **AssetDeliveryPolicy** , který je nakonfigurovaný na použití obálky dynamického šifrování (**DynamicEnvelopeEncryption**) k **HLS** protokol (v tomto příkladu jiné protokoly budou při streamování blokovány). 
+### <a name="create-asset-delivery-policy"></a>Vytvořit zásady doručení assetu
+Následující požadavek HTTP vytvoří **AssetDeliveryPolicy** , který je nakonfigurován na použití dynamického šifrování obálky (**DynamicEnvelopeEncryption**), do protokolu **HLS** (v tomto příkladu budou z datového proudu blokovány další protokoly). 
 
-Informace o hodnoty, můžete zadat při vytváření AssetDeliveryPolicy, najdete v článku [typy používané při definování AssetDeliveryPolicy](#types) oddílu.   
+Informace o tom, jaké hodnoty můžete zadat při vytváření AssetDeliveryPolicy, najdete v tématu [typy používané při definování oddílu AssetDeliveryPolicy](#types) .   
 
 Požadavek:
 
@@ -226,20 +226,20 @@ Odpověď:
     {"odata.metadata":"media.windows.net/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/\"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
 
 
-### <a name="link-asset-with-asset-delivery-policy"></a>Propojení prostředku s zásady doručení assetu
-Zobrazit [propojení prostředku s zásady doručení assetu](#link_asset_with_asset_delivery_policy)
+### <a name="link-asset-with-asset-delivery-policy"></a>Propojit prostředek se zásadami doručení assetu
+Podívejte [se na téma propojení assetu se zásadami doručení assetu](#link_asset_with_asset_delivery_policy)
 
-## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption zásady doručení assetu
-### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>Vytvoření klíče k obsahu typu CommonEncryption a připojit ho k assetu
-Při zadávání DynamicCommonEncryption zásady pro doručení, budete muset Ujistěte se, že odkaz na klíč k obsahu typu CommonEncryption asset. Další informace naleznete v tématu: [Vytvoření klíče k obsahu](media-services-rest-create-contentkey.md)).
+## <a name="dynamiccommonencryption-asset-delivery-policy"></a>Zásady doručování prostředků DynamicCommonEncryption
+### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>Vytvořit klíč obsahu pro typ CommonEncryption a propojit ho s Assetem
+Když zadáváte zásady doručování DynamicCommonEncryption, musíte se ujistit, že propojíte svůj Asset s klíčem obsahu typu CommonEncryption. Další informace najdete v tématu: [vytvoření klíče obsahu](media-services-rest-create-contentkey.md).
 
-### <a name="get-delivery-url"></a>Získat adresu URL doručování
-Získáte adresu URL doručování pro metodu doručení PlayReady obsahu klíče vytvořené v předchozím kroku. Klient použije adresu URL vrácené žádat o licenci PlayReady v pořadí pro přehrávání chráněného obsahu. Další informace najdete v tématu [získat adresu URL doručování](#get_delivery_url).
+### <a name="get-delivery-url"></a>Získat adresu URL doručení
+Získejte adresu URL doručení pro metodu doručení PlayReady klíče obsahu vytvořeného v předchozím kroku. Klient použije vrácenou adresu URL k vyžádání licence PlayReady za účelem přehrání chráněného obsahu. Další informace najdete v tématu [získání adresy URL pro doručení](#get_delivery_url).
 
-### <a name="create-asset-delivery-policy"></a>Vytvoření zásady doručení assetu
-Vytvoří následující požadavek HTTP **AssetDeliveryPolicy** , který je nakonfigurovaný na použití běžného dynamického šifrování (**DynamicCommonEncryption**) k **technologie Smooth Streaming**protokolu (v tomto příkladu jiné protokoly budou při streamování blokovány). 
+### <a name="create-asset-delivery-policy"></a>Vytvořit zásady doručení assetu
+Následující požadavek HTTP vytvoří **AssetDeliveryPolicy** , který je nakonfigurovaný na použití dynamického běžného šifrování (**DynamicCommonEncryption**) na protokol **Smooth Streaming** (v tomto příkladu se zablokují i jiné protokoly). 
 
-Informace o hodnoty, můžete zadat při vytváření AssetDeliveryPolicy, najdete v článku [typy používané při definování AssetDeliveryPolicy](#types) oddílu.   
+Informace o tom, jaké hodnoty můžete zadat při vytváření AssetDeliveryPolicy, najdete v tématu [typy používané při definování oddílu AssetDeliveryPolicy](#types) .   
 
 Požadavek:
 
@@ -258,25 +258,25 @@ Požadavek:
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Pokud chcete chránit obsah pomocí Widevine DRM, aktualizujte hodnoty AssetDeliveryConfiguration používat WidevineLicenseAcquisitionUrl (který má hodnotu 7) a zadejte adresu URL službu doručování licencí. Při doručování licencí Widevine můžete použít následující partneři AMS: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
+Pokud chcete chránit svůj obsah pomocí Widevine DRM, aktualizujte hodnoty AssetDeliveryConfiguration na použití WidevineLicenseAcquisitionUrl (která má hodnotu 7) a zadejte adresu URL služby doručování licencí. Následující partneři AMS vám pomůžou s poskytováním licencí Widevine: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
-Příklad: 
+Například: 
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
 > [!NOTE]
-> Při šifrování pomocí Widevine, by pouze možné doručit pomocí DASH. Nezapomeňte zadat POMLČKU (2) v doručovací protokol assetu.
+> Při šifrování pomocí Widevine byste mohli doručovat jenom POMLČKy. Ujistěte se, že v protokolu pro doručení assetu zadáte POMLČKu (2).
 > 
 > 
 
-### <a name="link-asset-with-asset-delivery-policy"></a>Propojení prostředku s zásady doručení assetu
-Zobrazit [propojení prostředku s zásady doručení assetu](#link_asset_with_asset_delivery_policy)
+### <a name="link-asset-with-asset-delivery-policy"></a>Propojit prostředek se zásadami doručení assetu
+Podívejte [se na téma propojení assetu se zásadami doručení assetu](#link_asset_with_asset_delivery_policy)
 
 ## <a id="types"></a>Typy používané při definování AssetDeliveryPolicy
 
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
 
-Následující výčet popisuje hodnoty, které můžete nastavit pro doručovací protokol assetu.
+Následující výčet popisuje hodnoty, které můžete nastavit pro protokol doručení assetu.
 
     [Flags]
     public enum AssetDeliveryProtocol
@@ -311,7 +311,7 @@ Následující výčet popisuje hodnoty, které můžete nastavit pro doručovac
 
 ### <a name="assetdeliverypolicytype"></a>AssetDeliveryPolicyType
 
-Následující výčet popisuje hodnoty, které lze zadat pro typ zásady doručení assetu.  
+Následující výčet popisuje hodnoty, které můžete nastavit pro typ zásad doručení assetu.  
 
     public enum AssetDeliveryPolicyType
     {
@@ -344,7 +344,7 @@ Následující výčet popisuje hodnoty, které lze zadat pro typ zásady doruč
 
 ### <a name="contentkeydeliverytype"></a>ContentKeyDeliveryType
 
-Následující výčet popisuje hodnoty, které vám umožní nakonfigurovat metodu doručení klíče k obsahu do klienta.
+Následující výčet popisuje hodnoty, které můžete použít ke konfiguraci metody doručení klíče obsahu klientovi.
     
     public enum ContentKeyDeliveryType
     {
@@ -377,7 +377,7 @@ Následující výčet popisuje hodnoty, které vám umožní nakonfigurovat met
 
 ### <a name="assetdeliverypolicyconfigurationkey"></a>AssetDeliveryPolicyConfigurationKey
 
-Následující výčet popisuje hodnoty, které lze nastavit na konfiguraci klíče, použít k získání konkrétní konfigurace zásad doručení prostředku.
+Následující výčet popisuje hodnoty, které můžete nastavit ke konfiguraci klíčů používaných k získání konkrétní konfigurace pro zásady doručení assetu.
 
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -422,9 +422,13 @@ Následující výčet popisuje hodnoty, které lze nastavit na konfiguraci klí
         WidevineLicenseAcquisitionUrl
     }
 
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
+
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

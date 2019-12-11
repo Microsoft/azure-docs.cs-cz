@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2019
+ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: 1bb5d979ff7c9fe6e2afec4c7ebd81649b4488e3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4549ee0f50c06040b70307c96b5ca96cd4162214
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581237"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974277"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Připojení k virtuálním počítačům přes prohlížeč 
 
@@ -26,10 +26,9 @@ DevTest Labs se integruje s [Azure bastionu](https://docs.microsoft.com/azure/ba
 
 Po povolení *připojení prohlížeče* k virtuálním počítačům můžou uživatelé testovacího prostředí přistupovat přes prohlížeč.  
 
-
 ## <a name="create-a-lab-virtual-machine"></a>Vytvořit virtuální počítač testovacího prostředí
 
-Nejdřív je potřeba vytvořit virtuální počítač testovacího prostředí v rámci virtuální sítě, ve které je bastionu nakonfigurovaná. Virtuální síť můžete vybrat během vytváření virtuálního počítače tak, že na kartě **Upřesnit nastavení** kliknete.
+Nejdřív je potřeba vytvořit virtuální počítač testovacího prostředí ve virtuální síti s nakonfigurovaným bastionu. Vyberte druhou **podsíť** , kterou jste vytvořili, nikoli AzureBastionSubnet. Virtuální síť můžete vybrat během vytváření virtuálního počítače tak, že na kartě **Upřesnit nastavení** kliknete.
 
 ![Vytvoření virtuálního počítače](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
 

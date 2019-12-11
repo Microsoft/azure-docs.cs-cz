@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s MSAL pro cílení na jazyk C
+title: Řešení potíží s protokolem SSL (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si, co dělat s různými problémy pomocí certifikátů SSL s MSAL. Cíl – knihovna C.
 services: active-directory
@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4cfb530deab0cce12247c2ec87e3efb3ce61810b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803667"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964714"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Postupy: řešení potíží s MSAL pro iOS a macOS SSL
 

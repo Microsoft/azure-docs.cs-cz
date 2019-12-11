@@ -1,5 +1,5 @@
 ---
-title: Odebrání aplikace zaregistrované na platformě Microsoft Identity Platform |Azure
+title: Odebrat aplikaci registrovanou na platformě Microsoft identity | Azure
 description: Zjistěte, jak odebrat aplikaci zaregistrovanou na platformě Microsoft Identity Platform.
 services: active-directory
 author: rwike77
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e31d16ff98c1218e0dfdc89fa197c9dc2d41a586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fff6d07bd0e353541dec23fd8c3edf7407ef6d68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921360"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963286"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Rychlý Start: odebrání aplikace registrované s platformou Microsoft identity
 

@@ -1,31 +1,29 @@
 ---
-title: 'Rychlý start: Provádět vyhledávání na webu s využitím Go – rozhraní API REST webové vyhledávání Bingu'
+title: 'Rychlý Start: provedení vyhledávání na webu pomocí Vyhledávání na webu Bingu přejít REST API'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků na rozhraní Web API vyhledávání Bingu REST pomocí jazyka Go a přijetí odpovědi JSON
+description: Pomocí tohoto rychlého startu můžete posílat požadavky na Vyhledávání na webu Bingu REST API pomocí jazyka přejít a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648444"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978794"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý start: Vyhledávání na webu pomocí API REST vyhledávání na webu Bingu a Go
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a přejít
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tato aplikace Go odešle požadavek hledání do rozhraní API a ukázka odezvy. Zatímco tato aplikace je napsána v cestách, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace přechodu odešle do rozhraní API požadavek hledání a zobrazí odpověď. I když je tato aplikace napsaná v cestách, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [Binární soubory Go](https://golang.org/dl/)
@@ -113,7 +111,7 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarace hlavní funkce a definování proměnných  
 
-Tento kód deklaruje hlavní funkci a nastaví potřebné proměnné. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu.
+Tento kód deklaruje hlavní funkci a nastaví potřebné proměnné. `endpoint` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz přizpůsobíte tím, že místo `searchTerm` zadáte jinou hodnotu.
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -309,7 +307,7 @@ func main() {
 
 ## <a name="sample-response"></a>Ukázková odpověď  
 
-Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Tato ukázková odpověď je formátován pomocí `BingAnswer` struktury a zobrazí `result.Name` a `result.URL`.
+Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Tato ukázková odpověď byla naformátována pomocí `BingAnswer` struktury a zobrazuje `result.Name` a `result.URL`.
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
@@ -323,7 +321,7 @@ Microsoft Cognitive Services || https://westus.dev.cognitive.microsoft.com/docs/
 Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/mt742868.aspx  
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)

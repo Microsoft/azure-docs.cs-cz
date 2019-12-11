@@ -1,7 +1,7 @@
 ---
-title: Témata nápovědy k portálu pro registraci aplikací
+title: Referenční informace k portálu pro registraci aplikací | Azure
 titleSuffix: Microsoft identity platform
-description: Popis různých funkcí na portálu pro registraci aplikací společnosti Microsoft.
+description: Popis funkcí na portálu pro registraci aplikací společnosti Microsoft.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15df5a5c655ac92d4f89eb5f9cdcdea94783a46e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1699aad41d8a5da153199f79f65af67bd04c6b2c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844613"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966091"
 ---
 # <a name="app-registration-reference"></a>Reference k registraci aplikací
 

@@ -11,36 +11,36 @@ ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fea35325f11878373db8dd52b9b2bf08a25b81d1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 28d239d47b46a5aafdf65c72ef826a0efb79f52b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692366"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974629"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Důležitost úloh Azure SQL Data Warehouse
 
 Tento článek vysvětluje, jak důležitost úloh může ovlivnit pořadí spouštění SQL Data Warehousech požadavků.
 
-## <a name="importance"></a>Závažnost
+## <a name="importance"></a>Význam
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-Obchodní potřeby můžou vyžadovat, aby úlohy datových skladů byly důležitější než jiné.  Vezměte v úvahu scénář, při kterém jsou data důležitých prodejů načtena před zavřením fiskálního období.  Načtení dat pro jiné zdroje, například data o počasí, nemá striktní SLA.   Nastavení vysoké důležitosti pro požadavek na načtení prodejních dat a nízkou důležitost požadavku na načtení dat, ať už data zajistí, že načtení dat z prodeje získá první přístup k prostředkům a dokončí se rychleji.
+Obchodní potřeby můžou vyžadovat, aby úlohy datových skladů byly důležitější než jiné.  Vezměte v úvahu scénář, při kterém jsou data důležitých prodejů načtena před zavřením fiskálního období.  Načtení dat pro jiné zdroje, například data o počasí, nemá striktní SLA. Nastavení vysoké důležitosti pro požadavek na načtení prodejních dat a nízkou důležitost požadavku na načtení dat, ať už data zajistí, že načtení dat z prodeje získá první přístup k prostředkům a dokončí se rychleji.
 
 ## <a name="importance-levels"></a>Úrovně důležitosti
 
-Existuje pět úrovní důležitosti: nízká, below_normal, Normal, above_normal a High.  Požadavky, které nemají nastavenou důležitost, jsou přiřazeny výchozí úrovni normální.  Žádosti, které mají stejnou úroveň důležitosti, mají stejné chování plánování, které už dnes existuje.
+Existuje pět úrovní důležitosti: nízká, below_normal, Normal, above_normal a High.  Požadavky, které nemají nastavenou důležitost, jsou přiřazeny výchozí úrovni normální. Žádosti, které mají stejnou úroveň důležitosti, mají stejné chování plánování, které už dnes existuje.
 
 ## <a name="importance-scenarios"></a>Scénáře důležitosti
 
 Mimo základní scénář důležitosti, který je popsaný výše s údaji o prodeji a počasí, jsou k dispozici další scénáře, kdy důležité úlohy pomáhají splnit požadavky na zpracování a dotazování dat.
 
-### <a name="locking"></a>Zamknut
+### <a name="locking"></a>Uzamčení
 
-Přístup k zámkům pro aktivitu čtení a zápisu představuje jednu oblast přirozeného sporu.  Aktivity, jako je [přepínání oddílů](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql) , vyžadují zvýšené zámky.  Bez důležitosti úloh SQL Data Warehouse optimalizuje propustnost.  Optimalizace pro propustnost znamená, že při spuštění a frontě požadavků mají být k dispozici stejné požadavky na uzamykání a prostředky, požadavky ve frontě mohou obejít požadavky s vyššími požadavky na uzamykání, které byly přijaty do fronty požadavků dříve.  Po použití důležitosti na požadavky s vyššími nároky na uzamykání. Požadavek s vyšší důležitostí se spustí před vyžádáním s nižší důležitostí.
+Přístup k zámkům pro aktivitu čtení a zápisu představuje jednu oblast přirozeného sporu. Aktivity, jako je [přepínání oddílů](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql) , vyžadují zvýšené zámky.  Bez důležitosti úloh SQL Data Warehouse optimalizuje propustnost.  Optimalizace pro propustnost znamená, že při spuštění a frontě požadavků mají být k dispozici stejné požadavky na uzamykání a prostředky, požadavky ve frontě mohou obejít požadavky s vyššími požadavky na uzamykání, které byly přijaty do fronty požadavků dříve.  Po použití důležitosti pro žádosti s vyššími nároky na uzamykání se požadavky s vyšší důležitostí spustí před vyžádáním s nižší důležitostí.
 
-Vezměte v úvahu následující příklad:
+Vezměte v úvahu v následujícím příkladu:
 
 Q1 aktivně běží a vybírá data z SalesFact.
 Q2 je zařazen do fronty čekání na dokončení Q1.  Byl odeslán na 9:00 a pokouší se rozdělit nová data do SalesFact.
@@ -50,7 +50,7 @@ Pokud má dotaz na hodnotu F2 a Q3 stejnou důležitost a je-li stále spuštěn
 
 ### <a name="non-uniform-requests"></a>Neuniformní žádosti
 
-Dalším scénářem, kde důležitost může přispět k splnění požadavků na dotazování, je při odeslání požadavků s různými třídami prostředků.  Jak bylo uvedeno výše, se stejnou důležitostí SQL Data Warehouse optimalizuje propustnost.  Pokud jsou požadavky na smíšenou velikost (například smallrc nebo mediumrc) zařazené do fronty, SQL Data Warehouse zvolí první požadavek na doručení, který se vejde do dostupných prostředků.  Pokud se používá důležitost úloh, naplánuje se další požadavek na důležitost.
+Dalším scénářem, kde důležitost může přispět k splnění požadavků na dotazování, je při odeslání požadavků s různými třídami prostředků.  Jak bylo uvedeno výše, se stejnou důležitostí SQL Data Warehouse optimalizuje propustnost. Pokud jsou požadavky na smíšenou velikost (například smallrc nebo mediumrc) zařazené do fronty, SQL Data Warehouse zvolí první požadavek na doručení, který se vejde do dostupných prostředků. Pokud se používá důležitost úloh, naplánuje se další požadavek na důležitost.
   
 Vezměte v úvahu následující příklad v DW500c:
 
@@ -58,12 +58,12 @@ V Q1, Q2, Q3 a Q4 se spouští dotazy smallrc.
 Q5 se odešle s třídou prostředků mediumrc na 9:00.
 Q6 se odešle s třídou prostředků smallrc na 9:01am.
 
-Vzhledem k tomu, že Q5 je mediumrc, vyžaduje dva sloty souběžnosti.  Q5 musí počkat na dokončení dvou spuštěných dotazů.  Pokud se ale jeden ze spuštěných dotazů (Q1-Q4) dokončí, Q6 se okamžitě naplánuje, protože prostředky existují ke spuštění dotazu.  Pokud má Q5 vyšší důležitost než Q6, Q6 počká, dokud nebude Q5 spuštěn, než bude moci začít s prováděním.
+Vzhledem k tomu, že Q5 je mediumrc, vyžaduje dva sloty souběžnosti. Q5 musí počkat na dokončení dvou spuštěných dotazů.  Pokud se ale jeden ze spuštěných dotazů (Q1-Q4) dokončí, Q6 se okamžitě naplánuje, protože prostředky existují ke spuštění dotazu.  Pokud má Q5 vyšší důležitost než Q6, Q6 počká, dokud nebude Q5 spuštěn, než bude moci začít s prováděním.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytvoření klasifikátoru najdete v tématu [Vytvoření klasifikátoru úloh (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Další informace o vytvoření klasifikátoru najdete v tématu [Vytvoření klasifikátoru úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql).  
 - Další informace o SQL Data Warehouse klasifikaci úloh najdete v tématu [klasifikace úloh](sql-data-warehouse-workload-classification.md).  
 - Informace o tom, jak vytvořit klasifikátor úloh, najdete v tématu rychlý Start – [Vytvoření klasifikátoru úloh](quickstart-create-a-workload-classifier-tsql.md) .
 - V článcích s postupy můžete [nakonfigurovat důležitost úloh](sql-data-warehouse-how-to-configure-workload-importance.md) a [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- V tématu [Sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) můžete zobrazit dotazy a přiřazené důležitost.
+- V tématu [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) můžete zobrazit dotazy a přiřazené důležitost.

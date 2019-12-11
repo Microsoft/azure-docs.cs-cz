@@ -1,6 +1,6 @@
 ---
 title: Koncepce služeb v Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Popisuje koncepty zřizování služeb, které jsou specifické pro zařízení se službou Device Provisioning a IoT Hub
+description: Popisuje koncepty zřizování služeb, které jsou specifické pro zařízení se službou Device Provisioning Service (DPS) a IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104365"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975597"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Device Provisioning Service koncepty
 
 IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, která slouží ke konfiguraci zařízení s nulovým dotykem pro zadané centrum IoT. Se službou Device Provisioning můžete [automaticky zřizovat](concepts-auto-provisioning.md) miliony zařízení zabezpečeným a škálovatelným způsobem.
 
-Zřizování zařízení je proces dvou částí. První část vytváří počáteční připojení mezi zařízením a řešením IoT tím, že zařízení registruje . Druhá část aplikuje správnou *konfiguraci* na zařízení na základě konkrétních požadavků řešení. Po dokončení obou kroků se zařízení kompletně *zřídilo*. Služba Device Provisioning oba kroky automatizuje a zajišťuje tak bezproblémové zřizování zařízení.
+Zřizování zařízení je proces dvou částí. První část vytváří počáteční připojení mezi zařízením a řešením IoT tím, že zařízení *registruje* . Druhá část aplikuje správnou *konfiguraci* na zařízení na základě konkrétních požadavků řešení. Po dokončení obou kroků se zařízení kompletně *zřídilo*. Služba Device Provisioning oba kroky automatizuje a zajišťuje tak bezproblémové zřizování zařízení.
 
 Tento článek poskytuje přehled konceptů zřizování, které jsou použitelné pro správu *služby*. Tento článek se nejvíce hodí pro osoby zapojené do [Nastavení cloudu](about-iot-dps.md#cloud-setup-step) , které vám pomůžou při přípravě zařízení na nasazení.
 
@@ -45,7 +45,7 @@ Nastavení na úrovni služby, které určuje, jak služba Device Provisioning p
 
 * **Statická konfigurace prostřednictvím seznamu**registrací: specifikace požadovaného centra IoT v seznamu registrací má prioritu pro zásady přidělování na úrovni služby.
 
-## <a name="enrollment"></a>Zápis
+## <a name="enrollment"></a>Registrace
 
 Registrace je záznam zařízení nebo skupin zařízení, která se můžou registrovat prostřednictvím automatického zřizování. Záznam zápisu obsahuje informace o zařízení nebo skupině zařízení, včetně:
 - [mechanismus ověřování](concepts-security.md#attestation-mechanism) používaný zařízením
@@ -73,6 +73,6 @@ Jednotlivá registrace je záznam pro jedno zařízení, které se může zaregi
 
 Registrace znamená, že se zařízení úspěšně zaregistrovalo nebo zřídí do IoT Hub prostřednictvím služby Device Provisioning. Registrační záznamy jsou vytvořeny automaticky; je možné je odstranit, ale nelze je aktualizovat.
 
-## <a name="operations"></a>Operace
+## <a name="operations"></a>Operations
 
 Operace jsou fakturační jednotka služby Device Provisioning. Jedna operace představuje úspěšné dokončení jedné instrukce ke službě. Operace zahrnují registraci a opakovanou registraci zařízení a také změny na straně služby, jako je přidání položek seznamu registrací a jejich aktualizace.

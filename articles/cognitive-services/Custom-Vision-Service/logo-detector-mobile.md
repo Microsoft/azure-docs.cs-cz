@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177796"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970223"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
 
@@ -49,7 +49,7 @@ Přihlaste se k [webu Custom Vision](https://customvision.ai/) a vytvořte nový
 
 ## <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-V dalším kroku nahlaste algoritmus detekce loga nahráváním imagí loga služeb Azure a jejich ručním označením. Úložiště AIVisualProvision zahrnuje sadu školicích imagí, které můžete použít. Na webu vyberte tlačítko **Přidat obrázky** na kartě **školicích imagí** . Pak přejdete do složky **Documents/images/Training_DataSet** úložiště. Je nutné ručně označit loga v každém obrázku, takže pokud testujete pouze testování tohoto projektu, můžete chtít nahrát pouze podmnožinu imagí. Nahrajte aspoň 15 instancí každé značky, kterou plánujete použít.
+V dalším kroku nahlaste algoritmus detekce loga nahráváním imagí loga služeb Azure a jejich ručním označením. Úložiště AIVisualProvision zahrnuje sadu školicích imagí, které můžete použít. Na webu vyberte tlačítko **Přidat obrázky** na kartě **školicích imagí** . Pak přejdete do složky **Documents/images/Training_DataSet** v úložišti. Je nutné ručně označit loga v každém obrázku, takže pokud testujete pouze testování tohoto projektu, můžete chtít nahrát pouze podmnožinu imagí. Nahrajte aspoň 15 instancí každé značky, kterou plánujete použít.
 
 Po nahrání školicích snímků vyberte na displeji první. Zobrazí se okno označování. Nakreslete pole a přiřaďte značky pro každé logo v každém obrázku. 
 
@@ -97,7 +97,7 @@ Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získ
 
 ![Služba Počítačové zpracování obrazu v Azure Portal s vybranou nabídkou pro rychlý Start. Odkaz na klíče je popsaný, jak je adresa URL koncového bodu rozhraní API.](media/azure-logo-tutorial/comvis-keys.png)
 
-Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte proměnné `ComputerVisionEndpoint` a `ComputerVisionKey` správnými hodnotami.
+Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte proměnné `ComputerVisionEndpoint` a `ComputerVisionKey` se správnými hodnotami.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
@@ -153,7 +153,7 @@ Pomocí těchto kroků spusťte aplikaci:
 1. Na první obrazovce zadejte ID klienta instančního objektu, ID tenanta a heslo. Vyberte tlačítko pro **přihlášení** .
 
     > [!NOTE]
-    > V některých emulátorech se v tomto kroku nemusí aktivovat tlačítko pro **přihlášení** . Pokud k tomu dojde, zastavte aplikaci, otevřete soubor *source/VisualProvision/Pages/LoginPage. XAML* , najděte element `Button` s popiskem **přihlášení**, odeberte následující řádek a pak znovu spusťte aplikaci.
+    > V některých emulátorech se v tomto kroku nemusí aktivovat tlačítko pro **přihlášení** . Pokud k tomu dojde, zastavte aplikaci, otevřete soubor *source/VisualProvision/Pages/LoginPage. XAML* , najděte `Button` element s popiskem **Login**, odeberte následující řádek a pak znovu spusťte aplikaci.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```

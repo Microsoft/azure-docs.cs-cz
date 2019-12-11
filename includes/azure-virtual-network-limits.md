@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/25/2019
+ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ac1687d371630089436640af15cf46491a38ab51
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485504"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981524"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager následujících omezení se vztahují jenom na síťové prostředky spravované prostřednictvím **Azure Resource Manager** pro jednotlivé oblasti a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 
@@ -32,9 +32,9 @@ ms.locfileid: "74485504"
 | Privátní IP adresy na virtuální počítač |256 |
 | Veřejné IP adresy na síťové rozhraní |256 |
 | Veřejné IP adresy na virtuální počítač |256 |
-| Souběžné toky TCP nebo UDP na síťové karty virtuálního počítače nebo instance role |500,000 |
-| Karty síťového rozhraní |65 536 |
-| Network Security Groups (Skupiny zabezpečení sítě) |5 000 |
+| [Souběžné toky TCP nebo UDP na síťové karty virtuálního počítače nebo instance role](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
+| Síťové karty |65 536 |
+| Skupiny zabezpečení sítě |5 000 |
 | Počet pravidel NSG na skupinu NSG |1 000 |
 | IP adresy a rozsahy zadané pro zdroj nebo cíl ve skupině zabezpečení |4,000 |
 | Skupiny zabezpečení aplikací |3000 |
@@ -89,6 +89,6 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Trasy definované uživatelem na směrovací tabulku |400 |400 |
 | Veřejné IP adresy (dynamické) |500 |500 |
 | Vyhrazené veřejné IP adresy |500 |500 |
-| Veřejné virtuální IP adresy na nasazení |5 |Kontaktování podpory |
-| Privátní VIP (interní vyrovnávání zatížení) na nasazení |1 |1 |
+| Veřejné virtuální IP adresy na nasazení |5 |Kontakty na podporu |
+| Privátní VIP (interní vyrovnávání zatížení) na nasazení |1\. místo |1\. místo |
 | Seznamy řízení přístupu (ACL) koncového bodu |50 |50 |

@@ -1,5 +1,5 @@
 ---
-title: Jednostránkové aplikace (registrace aplikace) – Microsoft Identity Platform
+title: Registrace jednostránkovéch aplikací – Microsoft Identity Platform | Azure
 description: Naučte se vytvářet jednostránkové aplikace (registrace aplikací).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ef23b08beeee4cd7e82a5fc33a01b4988ddffb6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 03115db0ad286c7a5c24590906d8e3715e43bac7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764691"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962436"
 ---
 # <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
 
@@ -42,7 +42,7 @@ Na stejné stránce **ověřování** musíte v části **Upřesnit nastavení**
 
 Pokud vaše aplikace také potřebuje získat přístupové tokeny pro volání rozhraní API, ujistěte se, že je zaškrtnuto i políčko **přístupové tokeny** . Další informace najdete v tématu [tokeny ID](./id-tokens.md) a [přístupové tokeny](./access-tokens.md).
 
-## <a name="api-permissions"></a>Oprávnění API
+## <a name="api-permissions"></a>Oprávnění rozhraní API
 
 Jednostránkové aplikace mohou volat rozhraní API jménem přihlášeného uživatele. Potřebují požádat o delegovaná oprávnění. Podrobnosti najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 

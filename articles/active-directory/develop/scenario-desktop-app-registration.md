@@ -1,5 +1,5 @@
 ---
-title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (registrace aplikací) – platforma Microsoftu identity
+title: Registrace desktopové aplikace, která volá webová rozhraní API – Microsoft Identity Platform | Azure
 description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (registrace aplikace)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,16 +17,16 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 648652ed32a5dea30de665b7fa49190171a7f10a
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 94f7f2dfdbf404a092773857a0f7727618cd429a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268393"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965530"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – registrace aplikace
 
-Tento článek obsahuje specifické pro registraci aplikací pro desktopovou aplikaci.
+Tento článek popisuje specifickou registraci aplikací pro desktopovou aplikaci.
 
 ## <a name="supported-accounts-types"></a>Podporované typy účtů
 
@@ -49,9 +49,9 @@ Identifikátory URI pro přesměrování používané v desktopové aplikaci bud
 - Pokud používáte **interaktivní ověřování** nebo **tok kódu zařízení**, budete chtít použít `https://login.microsoftonline.com/common/oauth2/nativeclient`. Tuto konfiguraci dosáhnete kliknutím na odpovídající adresu URL v části **ověřování** pro vaši aplikaci.
   
   > [!IMPORTANT]
-  > V současné době MSAL.NET používá jiný identifikátor URI pro přesměrování ve výchozím nastavení v desktopových aplikacích spuštěných ve Windows (`urn:ietf:wg:oauth:2.0:oob`). V budoucnu bude vhodné změnit toto výchozí nastavení, proto doporučujeme, abyste používali`https://login.microsoftonline.com/common/oauth2/nativeclient`
+  > V dnešní době MSAL.NET používá jiný identifikátor URI přesměrování ve výchozím nastavení v desktopových aplikacích běžících ve Windows (`urn:ietf:wg:oauth:2.0:oob`). V budoucnu bude vhodné změnit toto výchozí nastavení, proto doporučujeme, abyste používali `https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- Pokud vytváříte nativní cíl-C nebo aplikaci SWIFT pro macOS, budete chtít zaregistrovat redirectUri na základě identifikátoru sady prostředků vaší aplikace v následujícím formátu: **msauth. < Your. app. >://auth** (nahraďte < vaše aplikace. app. ID > s identifikátorem sady prostředků vaší aplikace)
+- Pokud vytváříte nativní cíl-C nebo aplikaci SWIFT pro macOS, budete chtít zaregistrovat redirectUri na základě identifikátoru sady prostředků vaší aplikace v následujícím formátu: **msauth. < Your. app... id >://auth** (nahraďte < vaší. app. revision. ID > identifikátorem sady prostředků vaší aplikace).
 - Pokud je vaše aplikace jenom pomocí integrovaného ověřování systému Windows nebo uživatelského jména a hesla, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. Tyto toky se týkají odezvy koncového bodu Microsoft Identity Platform v 2.0 a vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
 - Chcete-li odlišit tok kódu zařízení, integrované ověřování systému Windows a uživatelské jméno/heslo z toku důvěrné klientské aplikace, které nemají identifikátory URI pro přesměrování (tok přihlašovacích údajů klienta použitý v aplikacích démon), musíte vyjádřit, že vaše aplikace je veřejná klientská aplikace. Pokud chcete dosáhnout této konfigurace, přečtěte si část **ověřování** pro vaši aplikaci. Pak v podčásti **Upřesnit nastavení** v části **výchozí typ klienta** zvolte možnost **Ano** pro dotaz **zpracovat aplikaci jako veřejný klient**.
 

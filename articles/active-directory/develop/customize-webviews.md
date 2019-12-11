@@ -1,7 +1,7 @@
 ---
-title: Přizpůsobení prohlížečů a webových zobrazení
+title: Přizpůsobení prohlížečů & webových zobrazení | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak přizpůsobit prostředí prohlížeče používané MSAL pro iOS a macOS pro přihlášení uživatelů.
+description: Přečtěte si, jak přizpůsobit prostředí MSAL pro iOS/macOS pro uživatele, kteří se přihlásí.
 services: active-directory
 author: tylermsft
 manager: CelesteDG
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69b1e217bfa64ad08136e2763716d455332c5ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d5dbdadc6afa3a6822a76fdcecdfcaa6f2ad8c98
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843321"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963711"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Postupy: přizpůsobení prohlížečů a webových zobrazení pro iOS/macOS
 

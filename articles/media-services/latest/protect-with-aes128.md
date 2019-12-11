@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 3b56747d9bc8c8ae5884d4fb654c20d49527fed5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186078"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974168"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Kurz: šifrování videa pomocí AES-128 a používání služby pro doručování klíčů
 
@@ -51,13 +51,13 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující:
 
 * Přečíst si článek [Přehled ochrany obsahu](content-protection-overview.md)
 * Nainstalujte Visual Studio Code nebo Visual Studio.
-* [Vytvořte účet Media Services](create-account-cli-quickstart.md).
+* [Vytvoření účtu Media Services](create-account-cli-quickstart.md).
 * Získání přihlašovacích údajů potřebných k použití Media Services rozhraní API pomocí [přístupových rozhraní API](access-api-cli-how-to.md).
 
 ## <a name="download-code"></a>Stažení kódu
@@ -87,7 +87,7 @@ Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) ulož
 
 ## <a name="get-or-create-an-encoding-transform"></a>Získání nebo vytvoření transformace kódování
 
-Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Přednastavení zakóduje vstupní video do automaticky vygenerovaného žebříku přenosové rychlosti (páry přenosů s rozlišením) na základě vstupních rozlišení a přenosové rychlosti a pak vytvoří soubory ISO MP4 s H. 264 a zvukem AAC odpovídajícím páru rozlišení přenosové rychlosti.
+Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má vytvořit jako výstup. Objekt **TransformOutput** v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Přednastavení zakóduje vstupní video do automaticky vygenerovaného žebříku přenosové rychlosti (páry přenosů s rozlišením) na základě vstupních rozlišení a přenosové rychlosti a pak vytvoří soubory ISO MP4 s H. 264 a zvukem AAC odpovídajícím páru rozlišení přenosové rychlosti.
 
 Před vytvořením nové [transformace](https://docs.microsoft.com/rest/api/media/transforms)nejprve ověřte, zda již existuje pomocí metody **Get** , jak je znázorněno v následujícím kódu. Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 
@@ -167,7 +167,11 @@ az group delete --name amsResourceGroup
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
+
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ochrana pomocí DRM](protect-with-drm.md)
+> [Ochrana s využitím DRM](protect-with-drm.md)

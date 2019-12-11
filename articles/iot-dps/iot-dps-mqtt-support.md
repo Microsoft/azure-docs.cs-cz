@@ -1,18 +1,18 @@
 ---
 title: Vysvětlení podpory služby Azure IoT Device Provisioning MQTT | Microsoft Docs
-description: Příručka pro vývojáře – podpora pro zařízení, která se připojují k koncovému bodu s přístupem ke službě Azure IoT Device Provisioning pomocí protokolu MQTT.
+description: Příručka pro vývojáře – podpora zařízení, která se připojují ke koncovému bodu s přístupem k zařízení Azure IoT Device Provisioning (DPS) pomocí protokolu MQTT.
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
-ms.openlocfilehash: fb39979e321c4815aec74c801cd2d04e81b7e533
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093901"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973369"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Komunikace s DPS pomocí protokolu MQTT
 

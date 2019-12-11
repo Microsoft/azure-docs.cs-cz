@@ -3,12 +3,12 @@ title: Co může Azure Backup Server zálohování
 description: Tento článek obsahuje matrici podpory obsahující všechny úlohy, datové typy a instalace, které Azure Backup Server chrání.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: a7794ac82c70239693e91b3ae65c6292a6b4ed7f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841349"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996149"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 
@@ -38,7 +38,8 @@ V tomto článku jsou uvedené různé servery a úlohy, které můžete chráni
 |Servery (32bitové a 64bitové)|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Nepodporováno|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |Servery (32bitové a 64bitové)|Windows Server 2008 SP2|Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
 |Servery (32bitové a 64bitové)|Windows Storage Server 2008|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|V3, V2|Svazek, sdílená složka, složka, soubor, stav systému/úplné obnovení systému|
-|SQL Server|SQL Server 2017|Fyzický server <br /><br /> Místní virtuální počítač Hyper-V <br /> <br /> Virtuální počítače Azure <br /><br /> Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3|Všechny scénáře nasazení: Databáze|
+|SQL Server|SQL Server 2019|Fyzický server <br /><br /> Místní virtuální počítač Hyper-V <br /> <br /> Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure) <br /><br /> Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3|Všechny scénáře nasazení: Databáze|
+|SQL Server|SQL Server 2017|Fyzický server <br /><br /> Místní virtuální počítač Hyper-V <br /> <br /> Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure) <br /><br /> Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3|Všechny scénáře nasazení: Databáze|
 |SQL Server|SQL Server 2016 SP2|Fyzický server <br /><br /> Místní virtuální počítač Hyper-V <br /> <br /> Virtuální počítače Azure <br /><br /> Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Všechny scénáře nasazení: Databáze|
 |SQL Server|SQL Server 2016 SP1|Fyzický server <br /><br /> Místní virtuální počítač Hyper-V <br /> <br /> Virtuální počítače Azure <br /><br /> Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Všechny scénáře nasazení: Databáze|
 |SQL Server|SQL Server 2016|Fyzický server <br /><br /> Místní virtuální počítač Hyper-V <br /> <br /> Virtuální počítače Azure <br /><br /> Virtuální počítač s Windows ve VMWare (chrání úlohy na virtuálním počítači s Windows ve VMWare)<br /> <br /> Azure Stack|V3, V2|Všechny scénáře nasazení: Databáze|

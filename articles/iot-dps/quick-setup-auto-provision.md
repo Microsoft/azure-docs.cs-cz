@@ -1,6 +1,6 @@
 ---
 title: Nastavení IoT Hub Device Provisioning Service v Azure Portal
-description: Rychlý Start – Nastavení IoT Hub Device Provisioning Service Azure v Azure Portal
+description: Rychlý Start – Nastavení Azure IoT Hub Device Provisioning Service (DPS) v Azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b983a9591743b1fda79e23aedc1aca88add2a3e2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 32199623c6b3198f37854986745872aafa6747eb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228527"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969614"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service s využitím Azure Portal
 
@@ -22,7 +22,7 @@ Tyto kroky ukazují, jak na portálu nastavit cloudové prostředky Azure pro z�
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

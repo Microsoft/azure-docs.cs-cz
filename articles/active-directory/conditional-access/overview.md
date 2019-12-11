@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0463ffad87d00421c2fcb5c8357406d5f692144
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075336"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966273"
 ---
 # <a name="what-is-conditional-access"></a>Co je podmíněný přístup?
 
@@ -26,7 +26,7 @@ Podmíněný přístup je nástroj používaný Azure Active Directory k spojov�
 
 ![Koncepční podmíněný signál plus rozhodnutí pro získání vynucování](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-Zásady podmíněného přístupu jsou v nejjednodušším případě příkazy if a then, pokud chce uživatel získat přístup k prostředku, musí dokončit akci. Příklad: Správce mezd chce získat přístup k aplikaci mzdy a je nutný k tomu, aby k němu měl přístup přes službu Multi-Factor Authentication.
+Zásady podmíněného přístupu jsou v nejjednodušším případě příkazy if a then, pokud chce uživatel získat přístup k prostředku, musí dokončit akci. Příklad: správce mezd chce získat přístup k aplikaci mzdy a vyžaduje k přístupu k němu službu Multi-Factor Authentication.
 
 Správcům se čelí dva primární cíle:
 
@@ -61,7 +61,7 @@ Běžné signály, které může podmíněný přístup vzít v úvahu při rozh
 
 - Blokovat přístup
    - Nejvíce omezující rozhodnutí
-- Udělit přístup
+- Udělení přístupu
    - Minimální omezující rozhodnutí může stále vyžadovat jednu nebo více z následujících možností:
       - Vyžadovat Multi-Factor Authentication
       - Vyžadovat, aby zařízení bylo označené jako vyhovující
@@ -81,13 +81,20 @@ Mnoho organizací má společný přístup, ke kterým může pomáhat zásada p
 - Blokování rizikových přihlašovacích chování
 - Vyžadování zařízení spravovaných organizací pro konkrétní aplikace
 
+## <a name="customer-case-studies"></a>Zákaznické případové studie
+
+Zjistěte, jak jiné organizace používají podmíněný přístup Azure AD k definování a implementaci automatického rozhodování o řízení přístupu. Následující doporučené příběhy ukazují, jak se tyto požadavky zákazníků splní.
+
+* [Společnost Wipro zabezpečí mobilní produktivitu pomocí nástrojů Microsoft Cloud Security Tools a vylepšuje zapojení zákazníků.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Zásady podmíněného přístupu ve službě Azure AD povolily společnosti sdílet dokumenty, prostředky a aplikace s důvěryhodnými externími entitami---, kdo může používat vlastní přihlašovací údaje---a přitom zachovat kontrolu nad svými vlastními podnikovými daty.
+* [Aramex Delivery s omezeným přístupem – globální logistika a dopravní společnost vytváří Office propojené s cloudem a řešení pro správu identit a přístupu](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Zajištění bezpečného přístupu bylo obzvláště obtížné u vzdálených zaměstnanců Aramex. Společnost teď používá podmíněný přístup, aby tyto vzdálené zaměstnance měli přístup k jejich SaaS aplikacím mimo síť. Pravidlo podmíněného přístupu určí, jestli se má vyhodnotit Multi-Factor Authentication a že jenom ta, která mají správný přístup.
+
 ## <a name="license-requirements"></a>Licenční požadavky
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 Zákazníci s [licencemi Microsoft 365 Business](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají taky přístup k funkcím podmíněného přístupu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření zásad podmíněného přístupu podle kusu](concept-conditional-access-policies.md)
 

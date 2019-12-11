@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555403"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974644"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Izolace skupiny úloh SQL Data Warehouse (Preview)
 
@@ -24,13 +24,13 @@ Tento článek vysvětluje, jak lze pomocí skupin úloh nakonfigurovat izolaci 
 
 ## <a name="workload-groups"></a>Skupiny úloh
 
-Skupiny úloh jsou kontejnery pro sadu požadavků a jsou základem pro způsob, jakým je Správa úloh, včetně izolace úloh, nakonfigurovaná v systému.  Skupiny úloh se vytvářejí pomocí syntaxe [vytvořit skupinu úloh](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Jednoduchá konfigurace správy úloh může spravovat načítání dat a uživatelské dotazy.  Například skupina úloh s názvem `wgDataLoads` bude definovat aspekty úlohy pro data načítaná do systému. Skupina úloh s názvem `wgUserQueries` bude také definovat aspekty úloh pro uživatele, kteří spouštějí dotazy pro čtení dat ze systému.
+Skupiny úloh jsou kontejnery pro sadu požadavků a jsou základem pro způsob, jakým je Správa úloh, včetně izolace úloh, nakonfigurovaná v systému.  Skupiny úloh se vytvářejí pomocí syntaxe [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Jednoduchá konfigurace správy úloh může spravovat načítání dat a uživatelské dotazy.  Například skupina úloh s názvem `wgDataLoads` bude definovat aspekty úlohy pro data načítaná do systému. Skupina úloh s názvem `wgUserQueries` bude také definovat aspekty úloh pro uživatele, kteří spouštějí dotazy pro čtení dat ze systému.
 
 V následujících částech se dozvíte, jak skupiny úloh poskytují možnost definovat izolaci, omezení, definici prostředků žádosti a dodržovat pravidla spouštění.
 
 ## <a name="workload-isolation"></a>Izolace úloh
 
-Izolace úloh znamená, že prostředky jsou rezervované, výhradně pro skupinu úloh.  Izolaci úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) nakonfigurujete parametr MIN_PERCENTAGE_RESOURCE na hodnotu větší než nula.  Pro úlohy průběžného spouštění, které musí dodržovat těsné SLA, izolace zajišťuje, aby prostředky byly vždy dostupné pro skupinu úloh. 
+Izolace úloh znamená, že prostředky jsou rezervované, výhradně pro skupinu úloh.  Izolaci úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) nakonfigurujete parametr MIN_PERCENTAGE_RESOURCE na hodnotu větší než nula.  Pro úlohy průběžného spouštění, které musí dodržovat těsné SLA, izolace zajišťuje, aby prostředky byly vždy dostupné pro skupinu úloh. 
 
 Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti.  Když je MIN_PERCENTAGE_RESOURCE nastavená na 30% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavená na 2%, bude pro skupinu úloh zaručená úroveň pro 15-Concurrency.  Pro určení garantované souběžnosti zvažte následující metodu:
 
@@ -50,7 +50,7 @@ Uživatelé by se měli vyhnout řešení správy úloh, které konfiguruje 100%
 
 ## <a name="workload-containment"></a>Zahrnutí úloh
 
-Zahrnutí úloh znamená omezení množství prostředků, které může skupina úloh spotřebovat.  Omezení úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) nakonfigurujete parametr CAP_PERCENTAGE_RESOURCE na hodnotu menší než 100.  Vezměte v úvahu scénář, kdy uživatelé potřebují přístup pro čtení do systému, aby mohli spustit analýzu citlivosti pomocí dotazů ad-hoc.  Tyto typy požadavků mohou mít negativní dopad na jiné úlohy spuštěné v systému.  Při konfiguraci omezení se zajistí, že se omezí množství prostředků.
+Zahrnutí úloh znamená omezení množství prostředků, které může skupina úloh spotřebovat.  Omezení úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) nakonfigurujete parametr CAP_PERCENTAGE_RESOURCE na hodnotu menší než 100.  Vezměte v úvahu scénář, kdy uživatelé potřebují přístup pro čtení do systému, aby mohli spustit analýzu citlivosti pomocí dotazů ad-hoc.  Tyto typy požadavků mohou mít negativní dopad na jiné úlohy spuštěné v systému.  Při konfiguraci omezení se zajistí, že se omezí množství prostředků.
 
 Konfigurace omezení úloh implicitně definuje maximální úroveň souběžnosti.  S CAP_PERCENTAGE_RESOURCE nastavenou na 60% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavenou na 1% se pro skupinu úloh povoluje až 60 úroveň souběžnosti.  Zvažte, jak níže uvedená metoda určuje maximální souběžnost:
 
@@ -61,7 +61,7 @@ Konfigurace omezení úloh implicitně definuje maximální úroveň souběžnos
 
 ## <a name="resources-per-request-definition"></a>Definice prostředků na žádost
 
-Skupiny úloh poskytují mechanismus pro definování minimálních a maximálních objemů prostředků, které jsou přiděleny na žádost, pomocí parametrů REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT v syntaxi [Create Group](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) Resource.  Prostředky v tomto případě jsou CPU a paměť.  Konfigurace těchto hodnot určuje, kolik prostředků a jakou úroveň souběžnosti lze v systému dosáhnout.
+Skupiny úloh poskytují mechanismus pro definování minimálních a maximálních objemů prostředků, které jsou přiděleny na žádost, pomocí parametrů REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT v syntaxi [Create Group](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) Resource.  Prostředky v tomto případě jsou CPU a paměť.  Konfigurace těchto hodnot určuje, kolik prostředků a jakou úroveň souběžnosti lze v systému dosáhnout.
 
 > [!NOTE] 
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT je volitelný parametr, jehož výchozí hodnota je stejná jako ta, která je určená pro REQUEST_MIN_RESOURCE_GRANT_PERCENT.
@@ -75,7 +75,7 @@ Konfigurace REQUEST_MAX_RESOURCE_GRANT_PERCENT na hodnotu větší než REQUEST_
 
 ## <a name="execution-rules"></a>Pravidla spuštění
 
-V systémech generování sestav ad-hoc můžou zákazníci omylem provádět navýšení dotazů, které mají vážně vliv na produktivitu ostatních.  Správci systému jsou nuceni věnovat se dotazům na usmrcování času, aby uvolnili systémové prostředky.  Skupiny úloh nabízejí možnost konfigurovat pravidlo časového limitu spuštění dotazu pro zrušení dotazů, které překračují zadanou hodnotu.  Pravidlo se konfiguruje nastavením parametru `QUERY_EXECUTION_TIMEOUT_SEC` v syntaxi [vytvořit skupinu úloh](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .
+V systémech generování sestav ad-hoc můžou zákazníci omylem provádět navýšení dotazů, které mají vážně vliv na produktivitu ostatních.  Správci systému jsou nuceni věnovat se dotazům na usmrcování času, aby uvolnili systémové prostředky.  Skupiny úloh nabízejí možnost konfigurovat pravidlo časového limitu spuštění dotazu pro zrušení dotazů, které překračují zadanou hodnotu.  Pravidlo se konfiguruje nastavením parametru `QUERY_EXECUTION_TIMEOUT_SEC` v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="shared-pool-resources"></a>Prostředky sdíleného fondu
 
@@ -88,5 +88,5 @@ Přístup k prostředkům ve sdíleném fondu se přiděluje na základě [důle
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-tsql.md)
-- [VYTVOŘIT SKUPINU ÚLOH](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [VYTVOŘIT SKUPINU ÚLOH](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [Převeďte třídy prostředků na skupiny úloh](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).

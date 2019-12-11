@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a56096ffa760bcddd6bd423d1262e57dc1db3e3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420070"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973556"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -116,7 +116,6 @@ Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.
 
 Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Zaznamenání dat zásad správného řízení potřebných pro zachycení kompletního životního cyklu ML
 
 Azure ML poskytuje možnost sledovat komplexní záznam auditu všech vašich prostředků ML. Zejména:
@@ -129,6 +128,7 @@ Azure ML poskytuje možnost sledovat komplexní záznam auditu všech vašich pr
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Upozornění, automatizace a upozornění na události v životním cyklu ML
 Azure ML publikuje klíčové události do Azure EventGrid, které se dají použít k oznamování a automatizaci událostí v životním cyklu ML. Další informace najdete v [tomto dokumentu](how-to-use-event-grid.md).
 
+
 ## <a name="monitor-for-operational--ml-issues"></a>Monitorování problémů s provozní & ML
 
 Monitorování vám umožní pochopit, jaká data jsou odesílána do modelu, a předpovědi, který vrátí.
@@ -136,7 +136,6 @@ Monitorování vám umožní pochopit, jaká data jsou odesílána do modelu, a 
 Tyto informace vám pomohou pochopit, jak je model používán. Shromážděná vstupní data mohou být užitečná také při výuce budoucích verzí modelu.
 
 Další informace najdete v tématu [Jak povolit shromažďování dat modelu](how-to-enable-data-collection.md).
-
 
 ## <a name="automate-the-ml-lifecycle"></a>Automatizace životního cyklu ML 
 

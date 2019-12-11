@@ -3,17 +3,17 @@ title: Použití skupin zařízení v aplikaci Azure IoT Central | Microsoft Doc
 description: Jako operátor se naučíte používat skupiny zařízení k analýze telemetrie ze zařízení v aplikaci Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/29/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 281806999b08c3babbb753459835850ad9d733eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 981046f9417876a68c215c6d01a63c7f0a634464
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895433"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976209"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry-preview-features"></a>Kurz: použití skupin zařízení k analýze telemetrie zařízení (funkce ve verzi Preview)
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření skupiny zařízení
 > * Použití skupiny zařízení k analýze telemetrie zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste dokončit [Vytvoření aplikace IoT Central v Azure](./quick-deploy-iot-central.md) a [Přidat simulované zařízení do](./quick-create-pnp-device.md) rychlých startů pro aplikace IoT Central a vytvořit šablonu zařízení **snímače prostředí** , se kterou chcete pracovat.
 
@@ -67,7 +67,7 @@ Vytvoření skupiny zařízení:
 > [!NOTE]
 > U Azure IoT Edge zařízení vyberte Azure IoT Edge šablony a vytvořte skupinu zařízení.
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 
 Pomocí **analýzy** se skupinou zařízení můžete analyzovat telemetrii ze zařízení ve skupině. Můžete například vykreslovat průměrnou teplotu oznámenou všemi senzory prostředí contoso.
 

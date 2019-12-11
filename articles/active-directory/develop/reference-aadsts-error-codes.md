@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ověřování a kódů chyb autorizace | Microsoft Docs
+title: Kódy chyb ověřování a autorizace Azure AD | Azure
 description: Přečtěte si o kódech chyb AADSTS, které se vracejí ze služby tokenů zabezpečení Azure AD (STS).
 services: active-directory
 documentationcenter: ''
@@ -17,19 +17,19 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193181"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965802"
 ---
-# <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
 Hledáte informace o kódech chyb AADSTS, které vrací služba tokenů zabezpečení Azure Active Directory (Azure AD)? Přečtěte si tento dokument, kde najdete popis chyb AADSTS, opravy a některá navrhovaná řešení.
 
 > [!NOTE]
-> Tyto informace jsou předběžné a mohou se změnit. Máte dotaz nebo nemůžete najít, co hledáte? Vytvořte problém GitHubu nebo si přečtěte nápovědu [a možnosti pomoci pro vývojáře](active-directory-develop-help-support.md) , kde se dozvíte další informace o tom, jak můžete získat nápovědu a podporu.
+> Tyto informace jsou předběžné a můžou se změnit. Máte dotaz nebo nemůžete najít, co hledáte? Vytvořte problém GitHubu nebo si přečtěte nápovědu [a možnosti pomoci pro vývojáře](active-directory-develop-help-support.md) , kde se dozvíte další informace o tom, jak můžete získat nápovědu a podporu.
 >
 > Tato dokumentace je k dispozici pro vývojáře a pokyny pro správce, ale nikdy by neměla být používána samotným klientem. Kódy chyb se mohou kdykoli změnit, aby byly k dispozici podrobnější chybové zprávy, které mají pomáhat vývojářům při sestavování aplikace. Aplikace, které přijímají závislost na text nebo čísla chybových kódů, budou v průběhu času přerušeny.
 

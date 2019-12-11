@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 3572d2dffc38f18cbf02aa2e9de98b74ee8ff939
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 81f17de7627658b756edd19438a80fb32add859d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930964"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974083"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Vysvětlení automatizovaných výsledků strojového učení
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -266,4 +266,4 @@ Další informace o povolení funkcí pro interpretaci najdete v tématu [postup
 ## <a name="next-steps"></a>Další kroky
 
 + Přečtěte si další informace o [automatizovaném ml](concept-automated-ml.md) v Azure Machine Learning.
-+ Vyzkoušejte ukázkový Poznámkový blok pro [automatizovaný Machine Learning model vysvětlení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) .
++ Vyzkoušejte [model automatizovaného Machine Learning vysvětlení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) ukázkových poznámkových bloků.

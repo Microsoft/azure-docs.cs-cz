@@ -1,5 +1,5 @@
 ---
-title: Mobilní aplikace, která volá webová rozhraní API – volá webové rozhraní API.
+title: Volání webového rozhraní API z mobilní aplikace | Azure
 titleSuffix: Microsoft identity platform
 description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (volání webového rozhraní API).
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e70b828219fc497fc07e2bc128eb480a532a176
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: db58f94501590eb3150700d282377ec1b2378cea
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802567"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962538"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Mobilní aplikace, která volá webová rozhraní API – volá webové rozhraní API.
 
@@ -107,7 +107,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-SWIFT
+Swift:
 
 ```swift
 let urlRequest = NSMutableURLRequest()

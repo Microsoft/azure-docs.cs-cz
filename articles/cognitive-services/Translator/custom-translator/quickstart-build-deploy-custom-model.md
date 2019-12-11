@@ -1,28 +1,28 @@
 ---
-title: 'Rychlý start: Sestavování, nasazování a používání vlastního modelu – vlastní Překladatel'
+title: 'Rychlý Start: sestavení, nasazení a použití vlastního modelu – vlastní Překladatel'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu projdete podrobný postup sestavení systému překladu pomocí vlastního překladatele.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a450a91f29a9118c9e4c83f6bb964bac2d6ffb3c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595550"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975750"
 ---
-# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Rychlý start: Sestavování, nasazování a používání vlastního modelu pro překlad
+# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Rychlý Start: sestavení, nasazení a použití vlastního modelu pro překlad
 
 Tento článek poskytuje podrobné pokyny k sestavení překladu systému pomocí vlastního překladatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-1. Pokud chcete použít [vlastní](https://portal.customtranslator.azure.ai) portál překladatelů, budete pro přihlášení potřebovat účet [účet Microsoft](https://signup.live.com) nebo [Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (hostující účet organizace v Azure).
+1. Pokud chcete použít [vlastní portál překladatelů](https://portal.customtranslator.azure.ai) , budete pro přihlášení potřebovat účet [účet Microsoft](https://signup.live.com) nebo [Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (hostující účet organizace v Azure).
 
 2. Předplatné Translator Text API přes Azure Portal. Pro přidružení k pracovnímu prostoru ve vlastním překladateli budete potřebovat Translator Text API klíč předplatného. Podívejte se, [jak se zaregistrovat k Translator text API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
@@ -35,13 +35,13 @@ Na úvodní stránce portálu pro vlastní Překladatel klikněte na nový proje
 ![Vytvoření projektu](media/quickstart/ct-how-to-create-project.png)
 
 
-## <a name="upload-documents"></a>Odeslat dokumenty
+## <a name="upload-documents"></a>Uložení dokumentů
 
 Potom nahrajte [školení](training-and-model.md#training-dataset-for-custom-translator), [vyladění](training-and-model.md#tuning-dataset-for-custom-translator) a [testování](training-and-model.md#testing-dataset-for-custom-translator) sad dokumentů. Můžete nahrát [paralelní](what-are-parallel-documents.md) i kombinované dokumenty. Můžete také nahrát [slovník](what-is-dictionary.md).
 
 Dokumenty můžete odeslat buď na kartě dokumenty, nebo na stránce konkrétního projektu.
 
-![Odeslat dokumenty](media/quickstart/ct-how-to-upload.png)
+![Uložení dokumentů](media/quickstart/ct-how-to-upload.png)
 
 Při nahrávání dokumentů vyberte typ dokumentu (školení, ladění nebo testování) a dvojici jazyků. Při odesílání paralelních dokumentů budete muset zadat také název dokumentu. Další podrobnosti najdete na webu [odeslání dokumentu](how-to-upload-document.md).
 
@@ -69,8 +69,8 @@ Až budete připraveni nasadit svůj vyškolený model, klikněte na tlačítko 
 
 ## <a name="use-a-deployed-model"></a>Použití nasazeného modelu
 
-K nasazeným modelům se dá dostat prostřednictvím [rozhraní Microsoft Translator text API V3 zadáním KódKategorie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Další informace o Translator Text API najdete na webové stránce referenčního [rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
+K nasazeným modelům se dá dostat prostřednictvím [rozhraní Microsoft Translator text API V3 zadáním KódKategorie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Další informace o Translator Text API najdete na webové stránce [referenčního rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se procházet [vlastní pracovní prostor překladatelů a spravovat vaše projekty](workspace-and-project.md).

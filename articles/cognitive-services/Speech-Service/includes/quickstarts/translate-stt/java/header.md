@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: b1f60aaebb1fcf104a85b8d29700741c74459f8a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 28c2998e5fc7cc6d97ba48ff7f51187f8729fd88
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816947"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981011"
 ---
 Pokud si přejete přejít přímo v, můžete si prohlédnout nebo stáhnout všechny <a href="https://aka.ms/speech/github-java">ukázky sady Speech SDK Java</a> na GitHubu. V opačném případě můžeme začít.

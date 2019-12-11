@@ -1,21 +1,21 @@
 ---
-title: 'Kurz: Rozhraní API pro rozpoznávání tvářeC#'
+title: 'Kurz: Rozhraní API pro rozpoznávání tváře v jazyce C#'
 titleSuffix: Azure Cognitive Services
-description: Vytvoření aplikace Windows, který používá Cognitive Services Face API pro detekci funkce tváří v obrázku.
+description: Vytvořte aplikaci pro Windows, která používá Face API Cognitive Services k detekci funkcí plošek v obrázku.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606804"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970291"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Připojení k rozhraní API pro rozpoznávání tváře služeb Cognitive Services pomocí připojených služeb v sadě Visual Studio
 
@@ -23,10 +23,10 @@ S využitím rozhraní API pro rozpoznávání tváře služeb Cognitive Service
 
 Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio s rozhraním API pro rozpoznávání tváře služeb Cognitive Services. Tato možnost je dostupná v sadě Visual Studio 2017 15.7 nebo novější s nainstalovaným rozšířením Cognitive Services.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- Visual Studio 2017 verze 15.7 nebo novější s **vývoj pro Web** nainstalovaná úloha. [Stáhnout](https://www.visualstudio.com/downloads/)
+- Visual Studio 2017 verze 15,7 nebo novější s nainstalovanou úlohou **Vývoj webu** . [Stáhnout](https://www.visualstudio.com/downloads/)
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -79,7 +79,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
       }
    ```
 
-1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro rozpoznávání tváře](https://azure.microsoft.com/services/cognitive-services/face/). Klikněte pravým tlačítkem na některou k imagí, uložit na místní pevný disk a potom v okně Průzkumník řešení, klikněte pravým tlačítkem na složku Obrázky a zvolte **přidat** > **existující položku** ho přidat do projektu. V Průzkumníku řešení by měl projekt vypadat takto:
+1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro rozpoznávání tváře](https://azure.microsoft.com/services/cognitive-services/face/). Klikněte pravým tlačítkem na jeden z imagí, uložte ho na svůj místní pevný disk a pak v Průzkumník řešení klikněte pravým tlačítkem na složku images a zvolte **přidat** > **existující položku** a přidejte ji do svého projektu. V Průzkumníku řešení by měl projekt vypadat takto:
  
    ![Složka images se souborem obrázku](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -147,9 +147,9 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
             });
         }
    ```
-    Kód v tomto kroku se vytvoří požadavek HTTP pomocí volání rozhraní REST API pro rozpoznávání tváře, pomocí klíče, které jste přidali při přidání připojené služby.
+    Kód v tomto kroku vytvoří požadavek HTTP s voláním REST API obličeje pomocí klíče, který jste přidali při přidání připojené služby.
 
-1. Přidejte pomocné funkce GetImageAsByteArray a JsonPrettyPrint.
+1. Přidejte funkce pomocných rutin GetImageAsByteArray a JsonPrettyPrint.
 
    ```csharp
         /// <summary>
@@ -237,12 +237,12 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní služba Cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
+Odstraňte skupinu prostředků, pokud ji už nepotřebujete. Tím se odstraní kognitivní služba a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 1. Vyberte **Odstranit skupinu prostředků**.
 1. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o rozhraní API pro rozpoznávání tváře najdete v [dokumentaci k rozhraní API pro rozpoznávání tváře](Overview.md).

@@ -3,17 +3,17 @@ title: Správa zařízení v aplikaci Azure IoT Central | Microsoft Docs
 description: Jako operátor se naučíte spravovat zařízení ve vaší aplikaci Azure IoT Central.
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 07afe441b9463cace9076a07d89e762586730e1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bab5411b63cb71c47656696bd8049855ca797a57
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894770"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974100"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-preview-features"></a>Správa zařízení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -51,7 +51,7 @@ Postup přidání zařízení do aplikace Azure IoT Central:
 
 1. **Zapnout nebo** **vypnout** **simulované** přepínání Reálné zařízení je pro fyzické zařízení, které se připojujete k aplikaci Azure IoT Central. Simulované zařízení obsahuje ukázková data, která vám vygenerovala Azure IoT Central.
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 1. Toto zařízení se nyní zobrazí v seznamu zařízení pro tuto šablonu. Výběrem zařízení zobrazíte stránku s podrobnostmi o zařízení, která obsahuje všechna zobrazení pro dané zařízení.
 
@@ -71,7 +71,7 @@ Postup hromadné registrace zařízení v aplikaci:
     > [!NOTE]
     > Pokud ještě nemáte šablonu zařízení, můžete zařízení importovat do **všech zařízení** a zaregistrovat je bez šablony. Po dokončení importu zařízení je můžete migrovat do šablony.
 
-1. Vyberte **importovat**.
+1. Vyberte **Import** (Importovat).
 
     ![Importovat akci](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -124,7 +124,7 @@ Postup hromadného exportu zařízení z aplikace:
 
 1. Vyberte zařízení, která chcete exportovat, a pak vyberte akci **exportovat** .
 
-    ![Export](./media/howto-manage-devices/export1a.png)
+    ![Exportovat](./media/howto-manage-devices/export1a.png)
 
 
 1. Spustí se proces exportu. Stav můžete sledovat pomocí panelu operace zařízení.
@@ -147,7 +147,7 @@ Postup hromadného exportu zařízení z aplikace:
 
 Další informace o připojovacích řetězcích a připojení skutečných zařízení k aplikaci IoT Central najdete v tématu [připojení zařízení ve službě Azure IoT Central](overview-iot-central-get-connected.md).
 
-## <a name="delete-a-device"></a>Odstranění zařízení
+## <a name="delete-a-device"></a>Odstranit zařízení
 
 Odstranění reálného nebo simulovaného zařízení z aplikace IoT Central v Azure:
 
@@ -157,7 +157,7 @@ Odstranění reálného nebo simulovaného zařízení z aplikace IoT Central v 
 
 1. Pomocí nástrojů filtru můžete filtrovat a hledat vaše zařízení. Zaškrtněte políčko u zařízení, která chcete odstranit.
 
-1. Vyberte **Odstranit**. Stav tohoto odstranění můžete sledovat na panelu operace zařízení.
+1. Zvolte **Odstranit**. Stav tohoto odstranění můžete sledovat na panelu operace zařízení.
 
 ## <a name="change-a-property"></a>Změna vlastnosti
 

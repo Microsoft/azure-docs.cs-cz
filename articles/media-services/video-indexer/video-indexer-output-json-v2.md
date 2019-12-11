@@ -8,18 +8,23 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: bf4acf70b2937b3cb6b2552bf2d2ef9c2422743a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892715"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978300"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Kontrola výstupu Video Indexer vytvořeného rozhraním API
 
 Když zavoláte rozhraní API pro **získání indexu videa** a stav odpovědi je OK, získáte Podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobnosti o zadaných videích Insights. Přehledy zahrnují dimenze jako přepisy, OCRs, obličeje, témata, bloky atd. Dimenze mají instance časových rozsahů, které ukazují, kdy se ve videu objevila Každá dimenze.  
+
+1. Pro načtení souboru JSON volejte volání [Get video index API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) .
+1. Pokud vás zajímá také konkrétní artefakty, zavolejte na [získat rozhraní API pro stažení artefaktů videa](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) .
+
+    V volání rozhraní API zadejte požadovaný typ artefaktu (OCR, obličeje, klíčové snímky atd.).
 
 Můžete také vizuálně zkoumat souhrnné přehledy videa stisknutím tlačítka **Přehrát** na videu na webu [video indexer](https://www.videoindexer.ai/) . Další informace najdete v tématu [zobrazení a Úprava videí s přehledem](video-indexer-view-edit.md).
 

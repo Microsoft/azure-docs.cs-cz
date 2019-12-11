@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zásad autorizace klíče obsahu s využitím REST – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat zásadu autorizace pro klíč k obsahu pomocí rozhraní REST API pro Media Services.
+title: Konfigurace zásad autorizace klíče obsahu pomocí REST – Azure | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat zásady autorizace pro klíč obsahu pomocí REST API Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: cb9b784e612b1dca6b5251cb5a20140e908158c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c6986409f4cd9ad7e5799a55c4c301e51d5e879
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598462"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968166"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamické šifrování: Konfigurace zásad autorizace klíče obsahu  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Přehled
- Azure Media Services můžete použít k doručování obsahu (dynamicky) šifrován s na Standard AES (Advanced Encryption) pomocí 128bitového šifrování klíče a PlayReady nebo Widevine správy digitálních práv (DRM). Služba Media Services také poskytuje službu k doručování klíčů a licencí PlayReady/Widevine autorizovaným klientům.
+ Můžete použít Azure Media Services k doručování obsahu (dynamicky) pomocí standard AES (Advanced Encryption Standard) (AES) pomocí 128 bitových šifrovacích klíčů a technologie PlayReady nebo Widevine DRM (Správa digitálních práv). Media Services taky poskytuje službu pro doručování klíčů a licencí PlayReady/Widevine autorizovaným klientům.
 
-Pokud chcete Media Services k šifrování assetu, musíte přidružit šifrovacího klíče (CommonEncryption nebo EnvelopeEncryption) assetu. Další informace najdete v tématu [vytváření klíčů obsahu s využitím REST](media-services-rest-create-contentkey.md). Musíte také nakonfigurovat zásady autorizace pro klíč (jak je popsáno v tomto článku).
+Pokud chcete, Media Services k šifrování assetu, musíte k assetu přidružit šifrovací klíč (CommonEncryption nebo EnvelopeEncryption). Další informace najdete v tématu [vytvoření klíčů obsahu pomocí REST](media-services-rest-create-contentkey.md). Je také potřeba nakonfigurovat zásady autorizace pro klíč (jak je popsáno v tomto článku).
 
-Datový proud je žádost přehrávač, Media Services používá k dynamické šifrování obsahu pomocí šifrování AES nebo PlayReady se zadaným klíčem. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Pokud chcete zjistit, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
+Když hráč vyžádá datový proud, Media Services použije zadaný klíč k dynamickému šifrování vašeho obsahu pomocí šifrování AES nebo PlayReady. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Aby bylo možné zjistit, zda je uživatel autorizován pro získání klíče, služba vyhodnotí zásady autorizace, které jste zadali pro klíč.
 
-Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíč. Zásady autorizace klíče obsahu může mít jednu nebo více omezení autorizace pomocí omezení otevřené nebo s tokenem. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve jednoduchý webový token ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) a formátů JSON Web Token (JWT).
+Služba Media Services podporuje více způsobů ověřování uživatelů, kteří žádají o klíč. Zásady autorizace klíče obsahu můžou mít jedno nebo několik autorizačních omezení pomocí omezení Open nebo token. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátech jednoduchých webových tokenů ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) a JSON web token (Jwt).
 
-Služba Media Services neposkytuje službu tokenů zabezpečení. Můžete vytvořit vlastní službu STS nebo problém tokeny pomocí Azure Active Directory (Azure AD). Služba tokenů zabezpečení musí být nakonfigurovaný k vytvoření tokenu podepsán zadaný klíč a vydávání deklarací identity, které jste zadali v konfiguraci omezení s tokenem (jak je popsáno v tomto článku). Pokud je token platný a deklarace identity v tokenu odpovídají těm nakonfigurované pro symetrický klíč, doručení klíče služby Media Services vrátí klientovi šifrovací klíč.
+Media Services neposkytuje službu STS. Můžete vytvořit vlastní STS nebo použít Azure Active Directory (Azure AD) k vydávání tokenů. Služba STS musí být nakonfigurovaná tak, aby vytvořila token podepsaný pomocí zadaného klíče a vydávala deklarace identity, které jste zadali v konfiguraci omezení tokenu (jak je popsáno v tomto článku). Pokud je token platný a deklarace identity v tokenu odpovídají nastavením nakonfigurovaným pro klíč obsahu, služba doručování Media Services Key vrátí šifrovací klíč klientovi.
 
 Další informace najdete v následujících článcích:
-- [Ověření tokenu JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-- [Integrace aplikace využívající architekturu MVC OWIN Azure Media Services pomocí služby Azure Active Directory a omezit klíče doručování obsahu na základě deklarací identity tokenů JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+- [Ověřování tokenu JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
+- [Integrace aplikace založené na Azure Media Services OWIN MVC s Azure Active Directory a omezení doručování klíčů obsahu na základě deklarací JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
-### <a name="some-considerations-apply"></a>Určité předpoklady
-* Pokud chcete použít dynamické balení a dynamického šifrování, ujistěte se, že koncový bod streamování, ze kterého chcete Streamovat obsah ve stavu "Spuštěno".
-* Váš asset musí obsahovat sadu s adaptivní přenosovou rychlostí soubory MP4 rychlostmi nebo soubory technologie Smooth Streaming s adaptivní přenosovou rychlostí. Další informace najdete v tématu [kódování prostředku](media-services-encode-asset.md).
-* Nahrání a kódovat vaše prostředky pomocí možnosti AssetCreationOptions.StorageEncrypted.
-* Pokud chcete mít více klíčů obsahu, které vyžadují stejnou konfiguraci zásad, doporučujeme vytvořit jeden autorizační zásady a znovu použít s více klíčů obsahu.
-* Služba doručování klíčů ukládá do mezipaměti ContentKeyAuthorizationPolicy a její související objekty (Možnosti zásad a omezení) na 15 minut. Můžete vytvořit ContentKeyAuthorizationPolicy a zadat omezení s tokenem, otestovat a pak aktualizujte zásady na otevřené omezení. Tento proces trvá přibližně 15 minut před zásad přepínače otevřít verzi zásad.
+### <a name="some-considerations-apply"></a>Platí některé předpoklady.
+* Pokud chcete použít dynamické balení a dynamické šifrování, ujistěte se, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu spuštěno.
+* Vaše Asset musí obsahovat sadu adaptivních přenosů rychlostmi nebo souborů s adaptivní přenosovou rychlostí Smooth Streaming. Další informace najdete v tématu [kódování assetu](media-services-encode-asset.md).
+* Nahrajte a zakódujte své prostředky pomocí možnosti AssetCreationOptions. StorageEncrypted.
+* Pokud máte v úmyslu mít více klíčů obsahu, které vyžadují stejnou konfiguraci zásad, doporučujeme vytvořit jednu zásadu autorizace a znovu ji použít s více klíči obsahu.
+* Služba doručení klíčů ukládá do mezipaměti ContentKeyAuthorizationPolicy a související objekty (možnosti zásad a omezení) po dobu 15 minut. Můžete vytvořit ContentKeyAuthorizationPolicy a určit, že se má použít omezení tokenu, otestovat ho a pak aktualizovat zásadu na otevřené omezení. Tento proces trvá zhruba 15 minut, než se zásada přepne na otevřenou verzi zásady.
 * Pokud přidáte nebo aktualizujete zásady pro doručení prostředku, musíte odstranit stávající lokátor a vytvořit nový.
-* V současné době nelze zašifrovat progresivní stahování.
-* Koncový bod streamování služby Media Services nastaví hodnotu hlavičky CORS Access-Control-Allow-Origin v předběžné odpověď jako zástupný znak "\*." Tato hodnota se pracuje s většina přehrávače, včetně Azure Media Player, Roku a JWPlayer a dalších. Však některé přehrávačích souborem dash.js nefungují, protože v režimu pověření nastavte na "zahrnutí" XMLHttpRequest v jejich souborem dash.js nepovoluje zástupný znak "\*" jako hodnota Access-Control-Allow-Origin. Jako alternativní řešení pro toto omezení v souborem dash.js pokud hostujete vašeho klienta z jedné domény, Media Services můžete zadat tuto doménu v hlavičce odpovědi výstupem. Potřebujete pomoc otevřete lístek podpory prostřednictvím webu Azure portal.
+* V současné době nemůžete šifrovat progresivní stahování.
+* Koncový bod streamování Media Services nastaví hodnotu hlavičky Access-Control-Allow-Origin v odpovědi na kontrolu před výstupem jako zástupný znak "\*". Tato hodnota dobře funguje u většiny hráčů, včetně Azure Media Player, roku a JWPlayer a dalších. Někteří hráči, kteří používají pomlčku. js, ale nefungují, protože s režimem přihlašovacích údajů nastaveným na include, XMLHttpRequest ve svých pomlčkách. js nepovoluje zástupný znak "\*" jako hodnotu možnosti Access-Control-Allow-Origin. Jako alternativní řešení pro toto omezení v typu pomlčka. js, pokud hostuje klienta z jedné domény, Media Services může zadat tuto doménu v hlavičce odpovědi na předběžné služby. Pokud potřebujete pomoc, otevřete lístek podpory prostřednictvím Azure Portal.
 
 ## <a name="aes-128-dynamic-encryption"></a>Dynamické šifrování AES-128
 > [!NOTE]
-> Při práci s rozhraní REST API pro Media Services, platí následující aspekty.
+> Při práci s Media Services REST API platí následující požadavky.
 > 
-> Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty v požadavcích HTTP. Další informace najdete v tématu [instalace pro vývoj rozhraní REST API pro Media Services](media-services-rest-how-to-use.md).
+> Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 > 
 > 
 > 
 
-### <a name="open-restriction"></a>Otevřít omezení
-Otevřít omezení znamená, že systém poskytuje všem uživatelům, kteří vytvoří klíče požadavek klíč. Toto omezení může být užitečná pro účely testování.
+### <a name="open-restriction"></a>Otevřené omezení
+Otevřené omezení znamená, že systém přidává klíč každému uživateli, který posílá požadavek na klíč. Toto omezení může být užitečné pro účely testování.
 
-Následující příklad vytvoří zásadu autorizace otevřít a přidá jej do klíče k obsahu.
+Následující příklad vytvoří otevřené zásady autorizace a přidá je do klíče obsahu.
 
 #### <a id="ContentKeyAuthorizationPolicies"></a>Create ContentKeyAuthorizationPolicies
 Požadavek:
@@ -135,7 +135,7 @@ Odpověď:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:57829b17-1101-4797-919b-f816f4a007b7","Name":"policy","KeyDeliveryType":2,"KeyDeliveryConfiguration":"","Restrictions":[{"Name":"HLS Open Authorization Policy","KeyRestrictionType":0,"Requirements":null}]}
 
-#### <a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>Odkaz ContentKeyAuthorizationPolicies s možnostmi
+#### <a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>Propojit ContentKeyAuthorizationPolicies s možnostmi
 Požadavek:
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies('nb%3Ackpid%3AUUID%3A0baa438b-8ac2-4c40-a53c-4d4722b78715')/$links/Options HTTP/1.1
@@ -156,7 +156,7 @@ Odpověď:
 
     HTTP/1.1 204 No Content
 
-#### <a id="AddAuthorizationPolicyToKey"></a>Přidání zásad autorizace klíče obsahu
+#### <a id="AddAuthorizationPolicyToKey"></a>Přidání autorizačních zásad k klíči obsahu
 Požadavek:
 
     PUT https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A2e6d36a7-a17c-4e9a-830d-eca23ad1a6f9') HTTP/1.1
@@ -177,13 +177,13 @@ Odpověď:
 
     HTTP/1.1 204 No Content
 
-### <a name="token-restriction"></a>Omezení s tokenem
-Tato část popisuje, jak vytvořit zásadu autorizace klíče obsahu a přidružte jej k klíče k obsahu. Zásady autorizace popisuje, jaké požadavky na ověření musí být splněny k určení, pokud je uživatel oprávnění pro přijetí klíč. Například obsahuje seznam klíčů ověřovací klíč, který byl token podepsán pomocí?
+### <a name="token-restriction"></a>Omezení tokenu
+Tato část popisuje, jak vytvořit zásady autorizace klíčů obsahu a přidružit ji k klíči obsahu. Zásady autorizace popisují, jaké autorizační požadavky musí být splněné, aby bylo možné zjistit, jestli má uživatel oprávnění k přijetí klíče. Například seznam ověřovacích klíčů obsahuje klíč, pomocí kterého byl token podepsán?
 
-Konfigurace omezení s tokenem možnost, budete muset použít XML pro popis tokenu autorizace požadavky. Konfigurace omezení s tokenem XML musí odpovídat následujícím schématu XML:
+Chcete-li nakonfigurovat možnost omezení tokenu, je nutné použít XML k popisu požadavků na autorizaci tokenu. XML pro konfiguraci omezení tokenů musí odpovídat následujícímu schématu XML:
 
 
-#### <a id="schema"></a>Omezení s tokenem schématu
+#### <a id="schema"></a>Schéma omezení tokenu
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -231,12 +231,12 @@ Konfigurace omezení s tokenem možnost, budete muset použít XML pro popis tok
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Když konfigurujete zásady omezení tokenem, musíte zadat primární ověřovací klíč, vydavatele a parametry cílovou skupinu. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí. Vystavitel je služba tokenů zabezpečení, které vydá token. Cílová skupina (říká se jim oboru) by měl popisovat záměr tokenu nebo prostředek token, který autorizuje přístup k. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
+Když konfigurujete zásady s omezením tokenu, musíte zadat primární ověřovací klíč, Vystavitel a parametry cílové skupiny. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí. Vystavitel je STS, který vydává token. Cílová skupina (někdy označovaná jako obor) popisuje účel tokenu nebo prostředku, ke kterému token opravňuje přístup. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
 
-Následující příklad vytvoří zásadu autorizace se omezení s tokenem. V tomto příkladu klient musí poskytnout token, který obsahuje požadované deklarace identit, podpisový klíč (VerificationKey) a vydavatel tokenu.
+Následující příklad vytvoří zásadu autorizace s omezením tokenu. V tomto příkladu musí klient předložit token, který obsahuje podpisový klíč (VerificationKey), Vystavitel tokenu a požadované deklarace identity.
 
-### <a name="create-contentkeyauthorizationpolicies"></a>Create ContentKeyAuthorizationPolicies
-Vytvořit zásadu omezení s tokenem, jak je uvedeno v části "[vytvořit ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)."
+### <a name="create-contentkeyauthorizationpolicies"></a>Vytvořit ContentKeyAuthorizationPolicies
+Vytvořte zásady omezení tokenů, jak je znázorněno v části[Vytvoření ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies).
 
 ### <a name="create-contentkeyauthorizationpolicyoptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Požadavek:
@@ -274,21 +274,21 @@ Odpověď:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:e1ef6145-46e8-4ee6-9756-b1cf96328c23","Name":"Token option for HLS","KeyDeliveryType":2,"KeyDeliveryConfiguration":null,"Restrictions":[{"Name":"Token Authorization Policy","KeyRestrictionType":1,"Requirements":"<TokenRestrictionTemplate xmlns:i=\"https://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1\"><AlternateVerificationKeys><TokenVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>BklyAFiPTQsuJNKriQJBZHYaKM2CkCTDQX2bw9sMYuvEC9sjW0W7GUIBygQL/+POEeUqCYPnmEU2g0o1GW2Oqg==</KeyValue></TokenVerificationKey></AlternateVerificationKeys><Audience>urn:test</Audience><Issuer>http://testissuer.com/</Issuer><PrimaryVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>E5BUHiN4vBdzUzdP0IWaHFMMU3D1uRZgF16TOhSfwwHGSw+Kbf0XqsHzEIYk11M372viB9vbiacsdcQksA0ftw==</KeyValue></PrimaryVerificationKey><RequiredClaims><TokenClaim><ClaimType>urn:microsoft:azure:mediaservices:contentkeyidentifier</ClaimType><ClaimValue i:nil=\"true\" /></TokenClaim></RequiredClaims><TokenType>SWT</TokenType></TokenRestrictionTemplate>"}]}
 
-#### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Odkaz ContentKeyAuthorizationPolicies s možnostmi
-Propojit ContentKeyAuthorizationPolicies s možnostmi, jak je uvedeno v části "[vytvořit ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)."
+#### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Propojit ContentKeyAuthorizationPolicies s možnostmi
+Propojte ContentKeyAuthorizationPolicies s možnostmi, jak je znázorněno v oddílu "[Vytvoření ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)".
 
-#### <a name="add-an-authorization-policy-to-the-content-key"></a>Přidání zásad autorizace klíče obsahu
-Přidejte AuthorizationPolicy k ContentKey, jak je uvedeno v části "[přidat zásad autorizace klíče obsahu](#AddAuthorizationPolicyToKey)."
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>Přidání autorizačních zásad k klíči obsahu
+Přidejte AuthorizationPolicy do ContentKey, jak je znázorněno v části[Přidání zásady autorizace do klíče obsahu](#AddAuthorizationPolicyToKey).
 
-## <a name="playready-dynamic-encryption"></a>Dynamického šifrování PlayReady
-Služba Media Services můžete použít ke konfiguraci práv a omezení, které chcete, aby modul runtime PlayReady DRM vynucovat, když se uživatel pokusí o přehrávání chráněného obsahu. 
+## <a name="playready-dynamic-encryption"></a>Dynamické šifrování PlayReady
+Pomocí Media Services můžete nakonfigurovat práva a omezení, která má modul runtime PlayReady DRM vyhovět, když se uživatel pokusí přehrát chráněný obsah. 
 
-Pokud budete chránit obsah pomocí technologie PlayReady, jednou z věcí, je třeba zadat v zásadách autorizace je řetězec XML, který definuje [šablona licencování PlayReady](media-services-playready-license-template-overview.md). 
+Když chráníte obsah pomocí PlayReady, je jedním z věcí, které potřebujete zadat v zásadách autorizace, řetězec XML, který definuje [šablonu licence PlayReady](media-services-playready-license-template-overview.md). 
 
-### <a name="open-restriction"></a>Otevřít omezení
-Otevřít omezení znamená, že systém poskytuje všem uživatelům, kteří vytvoří klíče požadavek klíč. Toto omezení může být užitečná pro účely testování.
+### <a name="open-restriction"></a>Otevřené omezení
+Otevřené omezení znamená, že systém přidává klíč každému uživateli, který posílá požadavek na klíč. Toto omezení může být užitečné pro účely testování.
 
-Následující příklad vytvoří zásadu autorizace otevřít a přidá jej do klíče k obsahu.
+Následující příklad vytvoří otevřené zásady autorizace a přidá je do klíče obsahu.
 
 #### <a id="ContentKeyAuthorizationPolicies2"></a>Create ContentKeyAuthorizationPolicies
 Požadavek:
@@ -363,17 +363,17 @@ Odpověď:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:1052308c-4df7-4fdb-8d21-4d2141fc2be0","Name":"","KeyDeliveryType":1,"KeyDeliveryConfiguration":"<PlayReadyLicenseResponseTemplate xmlns:i=\"https://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1\"><LicenseTemplates><PlayReadyLicenseTemplate><AllowTestDevices>false</AllowTestDevices><ContentKey i:type=\"ContentEncryptionKeyFromHeader\" /><LicenseType>Nonpersistent</LicenseType><PlayRight /></PlayReadyLicenseTemplate></LicenseTemplates></PlayReadyLicenseResponseTemplate>","Restrictions":[{"Name":"Open","KeyRestrictionType":0,"Requirements":null}]}
 
-#### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Odkaz ContentKeyAuthorizationPolicies s možnostmi
-Propojit ContentKeyAuthorizationPolicies s možnostmi, jak je uvedeno v části "[vytvořit ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)."
+#### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Propojit ContentKeyAuthorizationPolicies s možnostmi
+Propojte ContentKeyAuthorizationPolicies s možnostmi, jak je znázorněno v oddílu "[Vytvoření ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)".
 
-#### <a name="add-an-authorization-policy-to-the-content-key"></a>Přidání zásad autorizace klíče obsahu
-Přidejte AuthorizationPolicy k ContentKey, jak je uvedeno v části "[přidat zásad autorizace klíče obsahu](#AddAuthorizationPolicyToKey)."
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>Přidání autorizačních zásad k klíči obsahu
+Přidejte AuthorizationPolicy do ContentKey, jak je znázorněno v části[Přidání zásady autorizace do klíče obsahu](#AddAuthorizationPolicyToKey).
 
-### <a name="token-restriction"></a>Omezení s tokenem
-Konfigurace omezení s tokenem možnost, budete muset použít XML pro popis tokenu autorizace požadavky. Konfigurace omezení s tokenem XML musí odpovídat schématu XML, které jsou uvedené v části "[Token omezení schématu](#schema)."
+### <a name="token-restriction"></a>Omezení tokenu
+Chcete-li nakonfigurovat možnost omezení tokenu, je nutné použít XML k popisu požadavků na autorizaci tokenu. XML pro konfiguraci omezení tokenů musí odpovídat schématu XML uvedenému v oddílu "[schéma omezení tokenu](#schema)".
 
-#### <a name="create-contentkeyauthorizationpolicies"></a>Create ContentKeyAuthorizationPolicies
-Vytvořte ContentKeyAuthorizationPolicies, jak je uvedeno v části "[vytvořit ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies2)."
+#### <a name="create-contentkeyauthorizationpolicies"></a>Vytvořit ContentKeyAuthorizationPolicies
+Vytvořte ContentKeyAuthorizationPolicies, jak je znázorněno v oddílu "[Vytvoření ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies2)".
 
 #### <a name="create-contentkeyauthorizationpolicyoptions"></a>Create ContentKeyAuthorizationPolicyOptions
 Požadavek:
@@ -411,11 +411,11 @@ Odpověď:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:e42bbeae-de42-4077-90e9-a844f297ef70","Name":"Token option","KeyDeliveryType":1,"KeyDeliveryConfiguration":"<PlayReadyLicenseResponseTemplate xmlns:i=\"https://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1\"><LicenseTemplates><PlayReadyLicenseTemplate><AllowTestDevices>false</AllowTestDevices><ContentKey i:type=\"ContentEncryptionKeyFromHeader\" /><LicenseType>Nonpersistent</LicenseType><PlayRight /></PlayReadyLicenseTemplate></LicenseTemplates></PlayReadyLicenseResponseTemplate>","Restrictions":[{"Name":"Token Authorization Policy","KeyRestrictionType":1,"Requirements":"<TokenRestrictionTemplate xmlns:i=\"https://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1\"><AlternateVerificationKeys><TokenVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>w52OyHVqXT8aaupGxuJ3NGt8M6opHDOtx132p4r6q4hLI6ffnLusgEGie1kedUewVoIe1tqDkVE6xsIV7O91KA==</KeyValue></TokenVerificationKey></AlternateVerificationKeys><Audience>urn:test</Audience><Issuer>http://testissuer.com/</Issuer><PrimaryVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>dYwLKIEMBljLeY9VM7vWdlhps31Fbt0XXhqP5VyjQa33bJXleBtkzQ6dF5AtwI9gDcdM2dV2TvYNhCilBKjMCg==</KeyValue></PrimaryVerificationKey><RequiredClaims><TokenClaim><ClaimType>urn:microsoft:azure:mediaservices:contentkeyidentifier</ClaimType><ClaimValue i:nil=\"true\" /></TokenClaim></RequiredClaims><TokenType>SWT</TokenType></TokenRestrictionTemplate>"}]}
 
-#### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Odkaz ContentKeyAuthorizationPolicies s možnostmi
-Propojit ContentKeyAuthorizationPolicies s možnostmi, jak je uvedeno v části "[vytvořit ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)."
+#### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Propojit ContentKeyAuthorizationPolicies s možnostmi
+Propojte ContentKeyAuthorizationPolicies s možnostmi, jak je znázorněno v oddílu "[Vytvoření ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)".
 
-#### <a name="add-an-authorization-policy-to-the-content-key"></a>Přidání zásad autorizace klíče obsahu
-Přidejte AuthorizationPolicy k ContentKey, jak je uvedeno v části "[přidat zásad autorizace klíče obsahu](#AddAuthorizationPolicyToKey)."
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>Přidání autorizačních zásad k klíči obsahu
+Přidejte AuthorizationPolicy do ContentKey, jak je znázorněno v části[Přidání zásady autorizace do klíče obsahu](#AddAuthorizationPolicyToKey).
 
 ## <a id="types"></a>Typy používané při definování ContentKeyAuthorizationPolicy
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
@@ -428,7 +428,7 @@ Přidejte AuthorizationPolicy k ContentKey, jak je uvedeno v části "[přidat z
 
 
 > [!NOTE]
-> Omezení IP adres v zásad autorizace klíče obsahu není k dispozici ve službě.
+> V této službě ještě není k dispozici omezení IP adres pro zásady autorizace klíče obsahu.
 
 
 ### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
@@ -440,13 +440,16 @@ Přidejte AuthorizationPolicy k ContentKey, jak je uvedeno v části "[přidat z
         Widevine = 3
     }
 
+## <a name="additional-notes"></a>Další poznámky
+
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste nakonfigurovali zásady autorizace klíče obsahu, najdete v článku [konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
+## <a name="next-steps"></a>Další kroky
+Teď, když jste nakonfigurovali zásady autorizace klíče obsahu, najdete informace v tématu [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 

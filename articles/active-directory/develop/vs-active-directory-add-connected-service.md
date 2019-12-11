@@ -1,5 +1,5 @@
 ---
-title: Přidání Azure Active Directory pomocí připojených služeb | Azure
+title: Přidání služby Azure AD pomocí připojených služeb
 description: Přidání Azure Active Directory pomocí dialogového okna Přidat připojené služby v aplikaci Visual Studio
 author: ghogen
 manager: jillfra
@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36827401060e330d57b6afac3db0abbde0c27dc2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 2bbbf002110d997d18c49fb03ad599342cdf618d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941932"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964195"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání Azure Active Directory pomocí připojených služeb v aplikaci Visual Studio
 
-Pomocí Azure Active Directory (Azure AD) můžete podporovat jednotné přihlašování (SSO) pro webové aplikace ASP.NET MVC nebo ověřování služby Active Directory ve službě webového rozhraní API. Pomocí ověřování Azure AD můžou vaši uživatelé používat svoje účty z Azure Active Directory pro připojení k vašim webovým aplikacím. Výhody ověřování Azure AD s webovým rozhraním API zahrnují vylepšené zabezpečení dat při vystavení rozhraní API z webové aplikace. S Azure AD nemusíte spravovat samostatný ověřovací systém s vlastním účtem a správou uživatelů.
+Pomocí Azure Active Directory (Azure AD) můžete podporovat jednotné přihlašování (SSO) pro webové aplikace ASP.NET MVC nebo ověřování služby Active Directory ve službě webového rozhraní API. Pomocí ověřování Azure AD můžou vaši uživatelé používat svoje účty z Azure Active Directory pro připojení k vašim webovým aplikacím. Výhodou ověřování AD Azure v kombinaci s webovým rozhraním API je například dokonalejší zabezpečení dat při zpřístupňování rozhraní API z webové aplikace. S Azure AD nemusíte spravovat samostatný ověřovací systém s vlastním účtem a správou uživatelů.
 
 Tento článek a jeho doprovodné články obsahují podrobné informace o používání funkce připojené služby sady Visual Studio pro službu Active Directory. Tato funkce je k dispozici v aplikaci Visual Studio 2015 nebo novější.
 
 Služba Active Directory Connected v současné době nepodporuje ASP.NET Core aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud ještě nemáte účet Azure, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 - **Visual Studio 2015** nebo novější. [Stáhněte si Visual Studio hned teď](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).

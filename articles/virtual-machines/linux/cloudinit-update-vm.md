@@ -1,11 +1,10 @@
 ---
-title: Použití Cloud-init k aktualizaci a instalaci balíčků na virtuálním počítači Linux v Azure
+title: Použití Cloud-init na virtuálním počítači se systémem Linux v Azure
 description: Jak pomocí Cloud-init aktualizovat a nainstalovat balíčky na virtuálním počítači Linux během vytváření pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
-author: rickstercdn
+author: cynthn
 manager: gwallace
-editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -13,16 +12,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: rclaus
-ms.openlocfilehash: ddea412598e02be7d71d5a3efafa444a5dc19e8c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: cynthn
+ms.openlocfilehash: 7bb48ec11ec042f021203c1716968daa9ab45047
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036734"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973131"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Použití Cloud-init k aktualizaci a instalaci balíčků na virtuálním počítači Linux v Azure
-V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthedocs.io) aktualizovat balíčky na virtuálním počítači (VM) se systémem Linux nebo Virtual Machine Scale Sets (VMSS) při zřizování v Azure. Tyto skripty Cloud-init se spouštějí při prvním spuštění, jakmile se prostředky zřídí v Azure. Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .
+V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthedocs.io) aktualizovat balíčky na virtuálním počítači (VM) se systémem Linux nebo ve službě Virtual Machine Scale Sets při zřizování v Azure. Tyto skripty Cloud-init se spouštějí při prvním spuštění, jakmile se prostředky zřídí v Azure. Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .
 
 ## <a name="update-a-vm-with-cloud-init"></a>Aktualizace virtuálního počítače pomocí Cloud-init
 Z bezpečnostních důvodů možná budete chtít nakonfigurovat virtuální počítač tak, aby při prvním spuštění používal nejnovější aktualizace. Protože Cloud-init funguje napříč různými distribucey Linux, není nutné pro správce balíčků zadávat `apt` ani `yum`. Místo toho definujete `package_upgrade` a povolíte procesu Cloud-init určení vhodného mechanismu pro distribuce, který se používá. Tento pracovní postup umožňuje použít stejné skripty Cloud-init napříč distribuce.

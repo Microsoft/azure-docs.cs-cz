@@ -1,6 +1,6 @@
 ---
 title: Data Factory – protokol změn rozhraní .NET API
-description: Popisuje zásadní změny, doplňky funkcí, opravy chyb atd... v určité verzi rozhraní .NET API pro Azure Data Factory.
+description: Popisuje zásadní změny, přidané funkce, opravy chyb a tak dále, v konkrétní verzi rozhraní .NET API pro Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: e1902db6bc3a127262f5e37f36e82b07ab15c7c9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683197"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978998"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – protokol změn rozhraní .NET API
 > [!NOTE]
@@ -151,10 +151,10 @@ Následující třídy byly přejmenovány. Nové názvy byly původní názvy t
 ### <a name="breaking-changes"></a>Změny způsobující chyby
 * Následující třídy/rozhraní byly přejmenovány.
 
-| Starý název | Nový název |
+| Starý název | Nové jméno |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| Tabulka |[Integrován](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| Tabulka |[Dataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |

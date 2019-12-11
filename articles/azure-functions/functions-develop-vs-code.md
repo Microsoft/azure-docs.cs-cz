@@ -3,12 +3,12 @@ title: Vývoj Azure Functions pomocí Visual Studio Code
 description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšíření Azure Functions pro Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f9ad40cd50863990b9af629c77321195dce5e97c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227060"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975580"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -20,7 +20,7 @@ Rozšíření Azure Functions poskytuje tyto výhody:
 * Publikujte projekt Azure Functions přímo do Azure.
 * Využijte výhod Visual Studio Code k psaní vašich funkcí v různých jazycích.
 
-Toto rozšíření se dá použít s následujícími jazyky, které podporuje modul runtime Azure Functions verze 2. x:
+Rozšíření lze použít s následujícími jazyky, které jsou podporovány modulem runtime Azure Functions od verze 2. x:
 
 * [C#zkompilovaná](functions-dotnet-class-library.md)
 * <sup>*skriptu</sup> [ C# ](functions-reference-csharp.md)
@@ -38,7 +38,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat rozšíření
 > [!IMPORTANT]
 > Nekombinujte vývoj místních vývojových a portálů pro jednu aplikaci Function App. Při publikování z místního projektu do aplikace Function App proces nasazení přepíše všechny funkce, které jste vytvořili na portálu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než nainstalujete a spustíte rozšíření [Azure Functions rozšíření][rozšíření azure functions pro visual studio code], musíte splnit tyto požadavky:
 
@@ -263,7 +263,7 @@ Rozšíření Azure Functions umožňuje spustit projekt funkcí na místním v�
 
 Chcete-li spustit projekt Functions v místním prostředí, je nutné splnit tyto další požadavky:
 
-* Nainstalujte verzi 2. x z [Azure Functions Core Tools](functions-run-local.md#v2). Balíček Core Tools se stáhne a nainstaluje automaticky při spuštění projektu místně. Základní nástroje zahrnují celý modul runtime Azure Functions, takže stažení a instalace můžou nějakou dobu trvat.
+* Nainstalujte verzi 2. x nebo novější z [Azure Functions Core Tools](functions-run-local.md#v2). Balíček Core Tools se stáhne a nainstaluje automaticky při spuštění projektu místně. Základní nástroje zahrnují celý modul runtime Azure Functions, takže stažení a instalace můžou nějakou dobu trvat.
 
 * Nainstalujte konkrétní požadavky pro vámi zvolený jazyk:
 
@@ -271,7 +271,7 @@ Chcete-li spustit projekt Functions v místním prostředí, je nutné splnit ty
     | -------- | --------- |
     | **C#** | [C#klapk](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Nástroje .NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Ladicí program pro rozšíření Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 nebo novější](https://maven.apache.org/) |
-    | **JavaScript** | <sup>*</sup> [Node. js](https://nodejs.org/) |  
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>Doporučuje se [Python 3.6.8](https://www.python.org/downloads/)|
 
     <sup>*</sup> Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
@@ -311,7 +311,7 @@ Hodnoty v **connectionStrings** se nikdy nepublikují.
 Hodnoty nastavení aplikace Functions lze v kódu přečíst také jako proměnné prostředí. Další informace najdete v oddílech s proměnnými prostředí těchto referenčních článků specifických pro konkrétní jazyk:
 
 * [C#předkompilované](functions-dotnet-class-library.md#environment-variables)
-* [C#skript (. csx)](functions-reference-csharp.md#environment-variables)
+* [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -404,7 +404,7 @@ Rozšíření Azure Functions poskytuje užitečné grafické rozhraní v oblast
 | **Nainstalovat nebo aktualizovat Azure Functions Core Tools** | Nainstaluje nebo aktualizuje [Azure Functions Core Tools], která se používá ke spouštění funkcí místně. |
 | **Znovu nasadit**  | Umožňuje znovu nasadit soubory projektu z připojeného úložiště Git do konkrétního nasazení v Azure. Chcete-li znovu publikovat místní aktualizace z Visual Studio Code, [projekt znovu publikujte](#republish-project-files). |
 | **Přejmenovat nastavení** | Změní název klíče stávajícího nastavení aplikace Function App v Azure. Tento příkaz nemá vliv na nastavení v souboru Local. Settings. JSON. Po přejmenování nastavení v Azure byste [tyto změny měli stáhnout do místního projektu](#download-settings-from-azure). |
-| **Službu** | Restartuje aplikaci Function App v Azure. Nasazení aktualizací také restartuje funkci aplikace Function App. |
+| **Restartovat** | Restartuje aplikaci Function App v Azure. Nasazení aktualizací také restartuje funkci aplikace Function App. |
 | **Nastavení AzureWebJobsStorage**| Nastaví hodnotu nastavení aplikace `AzureWebJobsStorage`. Toto nastavení vyžaduje Azure Functions. Nastavuje se při vytváření aplikace funkcí v Azure. |
 | **Start** | Spustí zastavenou aplikaci Function App v Azure. |
 | **Spustit streamování protokolů** | Spustí protokoly streamování aplikace Function App v Azure. Při řešení potíží se vzdáleným zpracováním v Azure použijte protokoly streamování, pokud potřebujete zobrazit informace o protokolování téměř v reálném čase. Další informace najdete v tématu [streamování protokolů](#streaming-logs). |

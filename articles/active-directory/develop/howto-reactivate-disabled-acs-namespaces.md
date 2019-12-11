@@ -1,6 +1,6 @@
 ---
-title: Postup opětovné aktivace zakázaných oborů názvů Azure Access Control Service (ACS)
-description: Přečtěte si, jak najít a povolit obory názvů Azure Access Control Service (ACS) a požádat o rozšíření, aby se povolilo až do 4. února 2019.
+title: Znovu aktivovat zakázané obory názvů Azure Access Control Service (ACS)
+description: Najděte a povolte své obory názvů Azure Access Control Service (ACS) a požádejte o rozšíření, aby se povolilo až do 4. února 2019.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917705"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966941"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postupy: opětovná aktivace zakázaných oborů názvů Access Control Service
 

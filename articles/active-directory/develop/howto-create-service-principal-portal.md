@@ -1,7 +1,7 @@
 ---
-title: Vytvoření identity pro aplikaci Azure na portálu
+title: Vytvoření instančního objektu & aplikace služby Azure AD pomocí portálu
 titleSuffix: Microsoft identity platform
-description: V této části najdete popis postupu vytvoření nové aplikace Azure Active Directory a instančního objektu, který se dá použít s řízením přístupu na základě role v Azure Resource Manager ke správě přístupu k prostředkům.
+description: Vytvořte nový Azure Active Directory App & instančního objektu pro správu přístupu k prostředkům pomocí řízení přístupu na základě role v Azure Resource Manager.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c883dc1f9743e4318db5fe21b0e52ea92d60dc5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 249c313f8f6195371985f3dad2e707638e52d0df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917858"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967111"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům
 

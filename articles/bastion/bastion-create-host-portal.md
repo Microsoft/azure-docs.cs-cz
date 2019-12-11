@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7838e1930a8ccd190c95740a6a8e3dadc68149f0
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 95f7d71c0de7570eee6e4c94e88fd65ff1d45ec8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422112"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973080"
 ---
 # <a name="create-an-azure-bastion-host"></a>Vytvoření hostitele Azure bastionu
 
@@ -64,7 +64,7 @@ Tato část vám pomůže vytvořit nový prostředek Azure bastionu z Azure Por
 
 Pokud vytvoříte hostitele bastionu na portálu pomocí existujícího virtuálního počítače, budou automaticky nastavena výchozí nastavení, která odpovídají vašemu virtuálnímu počítači nebo virtuální síti.
 
-1. Otevřete [portál Azure](https://portal.azure.com). Přejděte na virtuální počítač a pak klikněte na **připojit**.
+1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte na virtuální počítač a pak klikněte na **připojit**.
 
    ![Připojení k virtuálnímu počítači](./media/bastion-create-host-portal/vmsettings.png)
 1. Na pravém bočním panelu klikněte na **bastionu**a pak **použijte bastionu**.

@@ -1,15 +1,15 @@
 ---
 title: Použití Visual Studio Code k připojení ke službě Azure blockchain
 description: Připojte se k síti konsorcia služeb Azure blockchain pomocí sady Azure blockchain Development Kit pro Ethereem Extension v Visual Studio Code
-ms.date: 11/19/2019
+ms.date: 12/05/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4d4625df1cb07818dcadb88e2c98bf9ae1da1b1f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455980"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977053"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Rychlý Start: použití Visual Studio Code pro připojení k síti konsorcia služeb Azure blockchain
 
@@ -17,7 +17,7 @@ V tomto rychlém startu nainstalujete a použijete pro rozšíření Ethereem Vi
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
@@ -59,12 +59,12 @@ K členům konsorcia se můžete připojit pomocí rozšíření VS Code Azure b
 Pokud nemáte přístup k členovi konsorcia služeb Azure blockchain, proveďte kompletní [rychlé zprovoznění: Vytvoření členu blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena Azure blockchain Service BLOCKCHAIN pomocí Azure CLI](create-member-cli.md).
 
 1. V podokně Průzkumník VS Code rozbalte rozšíření **Azure blockchain** .
-1. Vyberte **připojit k konsorciu**.
+1. Vyberte **připojit k síti**.
 
-   ![Připojení k konsorciu](./media/connect-vscode/connect-consortium.png)
+   ![Připojit k síti](./media/connect-vscode/connect-consortium.png)
 
     Pokud se zobrazí výzva k ověření Azure, postupujte podle výzev k ověření pomocí prohlížeče.
-1. V rozevírací nabídce paleta příkazů vyberte **připojit ke službě Azure blockchain Service Consortium** .
+1. V rozevírací nabídce paleta příkazů vyberte **Azure blockchain Service** .
 1. Vyberte předplatné a skupinu prostředků, která je přidružená k vašemu členovi konsorcia Azure blockchain Service.
 1. Ze seznamu vyberte konsorcium.
 

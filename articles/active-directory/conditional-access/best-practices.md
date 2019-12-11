@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175777"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963932"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -35,7 +35,7 @@ Když vytvoříte novou zásadu, neexistují žádní uživatelé, skupiny, apli
 
 Pokud chcete, aby vaše zásady fungovaly, musíte nakonfigurovat:
 
-| Co           | Použití                                  | Proč |
+| Co           | Postup                                  | Proč |
 | :--            | :--                                  | :-- |
 | **Cloudové aplikace** |Vyberte jednu nebo více aplikací.  | Cílem zásad podmíněného přístupu je umožnit vám řídit, jak můžou autorizovaní uživatelé přistupovat ke cloudovým aplikacím.|
 | **Uživatelé a skupiny** | Vyberte aspoň jednoho uživatele nebo skupinu, kteří mají oprávnění pro přístup k vybraným cloudovým aplikacím. | Neaktivují se zásady podmíněného přístupu, které nemají přiřazené žádné uživatele a skupiny. |
@@ -45,17 +45,18 @@ Pokud chcete, aby vaše zásady fungovaly, musíte nakonfigurovat:
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Jak se používají zásady podmíněného přístupu?
 
-Při přístupu ke cloudové aplikaci se můžou použít víc než jedna zásada podmíněného přístupu. V takovém případě musí být splněné všechny zásady, které platí. Pokud třeba jedna zásada vyžaduje MFA a druhá vyžaduje vyhovující zařízení, musíte projít MFA a použít vyhovující zařízení. 
+Při přístupu ke cloudové aplikaci se můžou použít víc než jedna zásada podmíněného přístupu. V takovém případě musí být splněné všechny zásady, které platí. Pokud například jedna zásada vyžaduje vícefaktorové ověřování (MFA) a jiná vyžaduje vyhovující zařízení, je nutné provést ověřování MFA a použít vyhovující zařízení. 
 
 Všechny zásady se vynutily ve dvou fázích:
 
-- V **první** fázi jsou vyhodnoceny všechny zásady a shromažďují se všechny kontroly přístupu, které ještě nejsou splněné. 
-
-- Ve **druhé** fázi se zobrazí výzva, abyste splnili požadavky, které jste nevyhověli. Pokud některá z těchto zásad blokuje přístup, zablokují se a nezobrazí se výzva k navýšení jiných ovládacích prvků zásad. Pokud vám žádná z těchto zásad neblokuje, budete vyzváni k tomu, abyste naplnili jiné ovládací prvky zásad v tomto pořadí:
-
-   ![Objednávka](./media/best-practices/06.png)
-    
-   Další poskytovatelé MFA a podmínek použití jsou další.
+- Fáze 1: 
+   - Kolekce podrobností: Shromážděte podrobnosti k identifikaci zásad, které by už byly splněné.
+   - V průběhu této fáze se uživatelům může zobrazit výzva k zadání certifikátu, pokud je dodržování předpisů zařízením součástí zásad podmíněného přístupu. Tato výzva se může vyskytnout pro aplikace prohlížeče, pokud operační systém zařízení není Windows 10.
+   - Fáze 1 vyhodnocení zásad probíhá u všech povolených zásad a zásad v [režimu pouze sestavy](concept-conditional-access-report-only.md).
+- Fáze 2:
+   - Vynucování: Přihlaste se k podrobnostem shromážděným ve fázi 1 a vyžádejte uživatele, aby splnili jakékoli další požadavky, které nebyly splněny.
+   - Použijte výsledky pro relaci. 
+   - Fáze 2 vyhodnocení zásad probíhá u všech povolených zásad.
 
 ### <a name="how-are-assignments-evaluated"></a>Jak se vyhodnocuje přiřazení?
 
@@ -140,7 +141,7 @@ Zvažte možnost Migrace zásad, které jste nevytvořili v Azure Portal z těch
 - Všechny zásady podmíněného přístupu můžete spravovat v jednom centrálním umístění.
 - Portál Azure Classic byl vyřazený.   
 
-Další informace najdete v tématu [migrace klasických zásad v Azure Portal](policy-migration.md).
+Další informace najdete v článku [Migrace zásad z portálu Classic na portálu Azure Portal](policy-migration.md).
 
 ## <a name="next-steps"></a>Další kroky
 

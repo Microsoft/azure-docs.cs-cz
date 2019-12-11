@@ -11,18 +11,24 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b15389f25b54a377f75baca7993565b41e65462
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 86cce0ee2a4966e2c2c8d74ad63a50976c199eb6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847112"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967298"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
 Tato Nejčastější dotazy vám poodpoví na běžné otázky týkající se Azure Multi-Factor Authentication a používání služby Multi-Factor Authentication. Je rozdělené na dotazy týkající se služby obecně, fakturačních modelů, uživatelských zkušeností a řešení potíží.
 
 ## <a name="general"></a>Obecné
+
+> [!IMPORTANT]
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> [!NOTE]
+> Níže uvedené informace týkající se služby Azure Multi-Factor Authentication Server se vztahují jenom na uživatele, kteří už mají Server MFA spuštěný.
+
 
 **Otázka: jak Azure Multi-Factor Authentication Server zpracovává data uživatelů?**
 

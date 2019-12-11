@@ -1,6 +1,6 @@
 ---
 title: Koncepty zařízení v Azure Device Provisioning | Microsoft Docs
-description: Popisuje koncepty zřizování zařízení, které jsou specifické pro zařízení se službou Device Provisioning a IoT Hub
+description: Popisuje koncepty zřizování zařízení, které jsou specifické pro zařízení se službou Device Provisioning Service (DPS) a IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 11/06/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720531"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975308"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub Device Provisioning Service koncepty zařízení
 
