@@ -3,23 +3,23 @@ title: Reference Host. JSON pro Azure Functions 2. x
 description: Referenční dokumentace pro soubor Azure Functions Host. JSON s modulem runtime v2
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323077"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975444"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Reference Host. JSON pro Azure Functions 2. x  
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Reference Host. JSON pro Azure Functions 2. x a novější 
 
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Functions runtime, kterou používáte: "]
 > * [Verze 1](functions-host-json-v1.md)
 > * [Verze 2](functions-host-json.md)
 
-Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici pro modul runtime v2.  
+Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici od verze 2. x Azure Functions runtime.  
 
 > [!NOTE]
-> Tento článek je určen pro Azure Functions 2. x.  Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
+> Tento článek je určen pro Azure Functions 2. x a novější verze.  Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
 
 Další možnosti konfigurace aplikace Function App jsou spravované v [nastavení aplikace](functions-app-settings.md).
 
@@ -113,11 +113,11 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
+|isEnabled|true|Povolí nebo zakáže vzorkování.| 
 |maxTelemetryItemsPerSecond|20|Prahová hodnota, při které začíná vzorkování.| 
-|EnableLiveMetrics |true (pravda)|Povoluje shromažďování živých metrik.|
-|EnableDependencyTracking|true (pravda)|Povolí sledování závislostí.|
-|EnablePerformanceCountersCollection|true (pravda)|Povolí shromažďování čítačů výkonu Kudu.|
+|EnableLiveMetrics |true|Povoluje shromažďování živých metrik.|
+|EnableDependencyTracking|true|Povolí sledování závislostí.|
+|EnablePerformanceCountersCollection|true|Povolí shromažďování čítačů výkonu Kudu.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -131,7 +131,7 @@ Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durab
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
-## <a name="extensions"></a>SND
+## <a name="extensions"></a>přípony
 
 Vlastnost, která vrací objekt, který obsahuje všechna nastavení specifická pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
@@ -183,7 +183,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|enabled|true (pravda)|Určuje, jestli je funkce povolená. | 
+|enabled|true|Určuje, jestli je funkce povolená. | 
 |healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
 |healthCheckWindow|2 minuty|Posuvné časové okno používané ve spojení s nastavením `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
@@ -193,7 +193,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>protokolu
+## <a name="logging"></a>protokolování
 
 Řídí chování protokolování aplikace Function App, včetně Application Insights.
 
@@ -216,9 +216,9 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always``debugOnly`. |
-|logLevel|neuvedeno|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|konzola|neuvedeno| Nastavení protokolování [konzoly](#console) . |
-|applicationInsights|neuvedeno| Nastavení [applicationInsights](#applicationinsights) |
+|logLevel|–|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x a novější postupují podle ASP.NET Core rozložení pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|konzola|–| [console](#console) nastavení protokolování. |
+|applicationInsights|–| Nastavení [applicationInsights](#applicationinsights) |
 
 ## <a name="console"></a>konzola
 
@@ -238,7 +238,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí p
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
+|isEnabled|false|Povolí nebo zakáže protokolování konzoly.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
@@ -252,7 +252,7 @@ Spravovaná závislost je funkce, kterou momentálně podporuje jenom funkce zal
 }
 ```
 
-## <a name="queues"></a>vytvořil
+## <a name="queues"></a>fronty
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
 
@@ -286,7 +286,7 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
 |lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
-|lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
+|lockAcquisitionPollingInterval|–|Interval mezi pokusy o získání zámku.| 
 
 ## <a name="version"></a>version
 

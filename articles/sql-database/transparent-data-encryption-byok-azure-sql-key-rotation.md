@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 4b9a00b63644e35d23baa1b58c67bb6b8918274b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 553d8535d2fdbd7daa5c93535c7c4bd51f2da1a1
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422446"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995801"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Otočení ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 
@@ -30,7 +30,7 @@ Tato příručka popisuje dvě možnosti, jak na serveru otočit ochranu TDE.
 > [!IMPORTANT]
 > Po přecházení neodstraňujte předchozí verze klíče. Když se převezmou klíče, některá data se zašifrují s předchozími klíči, jako je třeba starší zálohy databáze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V tomto průvodci se předpokládá, že už používáte klíč z Azure Key Vault jako ochranu TDE pro Azure SQL Database nebo datový sklad. Viz [transparentní šifrování dat s podporou BYOK](transparent-data-encryption-byok-azure-sql.md).
 - Musíte mít nainstalovanou a spuštěnou Azure PowerShell.

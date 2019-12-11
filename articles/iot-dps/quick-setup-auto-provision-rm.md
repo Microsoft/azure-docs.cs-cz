@@ -1,6 +1,6 @@
 ---
 title: Nastavení IoT Hub Device Provisioning Azure pomocí šablony Azure Resource Manager
-description: Rychlý Start Azure – nastavení IoT Hub Device Provisioning Service Azure pomocí šablony
+description: Rychlý Start Azure – nastavení služby Azure IoT Hub Device Provisioning Service (DPS) pomocí šablony
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,19 +8,19 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b40e126ca23190fbe50a717016b18719be6950e2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276385"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969577"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service pomocí šablony Azure Resource Manager
 
 Pomocí [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) můžete prostřednictvím kódu programu nastavit cloudové prostředky Azure potřebné ke zřizování zařízení. Tyto kroky ukazují, jak vytvořit centrum IoT a nový IoT Hub Device Provisioning Service a propojit tyto dvě služby pomocí šablony Azure Resource Manager. V tomto rychlém startu se pomocí [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) provádí programové kroky potřebné k vytvoření skupiny prostředků a nasazení šablony, ale můžete snadno použít [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby nebo jiné programovací jazyky k provedení těchto kroků a nasazení šablony. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Tento rychlý Start vyžaduje, abyste spouštěli Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku (CLI), přečtěte si článek [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).

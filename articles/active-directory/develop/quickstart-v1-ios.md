@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace pro iOS integrované s Azure AD pro přihlášení pomocí OAuth 2,0 | Microsoft Docs
+title: Přihlaste se a zavolejte Microsoft Graph od iOS | Azure
 description: Zjistěte, jak přihlásit uživatele a zavolat rozhraní API pro Microsoft Graph z aplikace pro iOS.
 services: active-directory
 author: rwike77
@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c7064cff695b3aad9be69a7acbc07eb186201c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 055e954251654633bc948a98e0d5e33c9c8e11cb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920936"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963490"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app-v10"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS (v 1.0)
 

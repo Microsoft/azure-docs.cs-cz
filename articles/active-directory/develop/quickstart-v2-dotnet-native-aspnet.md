@@ -1,5 +1,5 @@
 ---
-title: Volání webového rozhraní API ASP.NET chráněného Azure AD – Microsoft identity
+title: Volání webového rozhraní API Protected ASP.NET Azure AD – Microsoft Identity Platform
 description: V tomto rychlém startu se dozvíte, jak volat webové rozhraní API ASP.NET chráněné Azure Active Directory z aplikace Windows Desktop (WPF). Klient WPF ověří uživatele, požádá o přístupový token a zavolá webové rozhraní API.
 services: active-directory
 author: jmprieur
@@ -12,12 +12,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1d9e402bff9d333957d51982dd917822d2c24d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920646"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963303"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Rychlý Start: volání webového rozhraní API ASP.NET chráněného službou Azure AD
 
@@ -55,8 +55,8 @@ Pokud chcete své aplikace registrovat ručně, je třeba nejprve tyto kroky:
 
 ### <a name="register-the-service-app-todolistservice"></a>Registrace aplikace služby (TodoListService)
 
-1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-1. Vyberte **Nová registrace**.
+1. Navigate to the Microsoft identity platform for developers [App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page.
+1. Select **New registration**.
 1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace:
    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `AppModelv2-NativeClient-DotNet-TodoListService`.
    - Změňte **podporované typy účtů** na **účty v libovolném organizačním adresáři**.
@@ -97,8 +97,8 @@ V tomto kroku nakonfigurujete projekt *TodoListClient* tak, že zaregistrujete n
 
 ### <a name="register-the-todolistclient-application-in-the-application-registration-portal"></a>Registrace aplikace *TodoListClient* na portálu pro *registraci aplikací*
 
-1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
-1. Vyberte **Nová registrace**.
+1. Navigate to the Microsoft identity platform for developers [App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page.
+1. Select **New registration**.
 1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace:
    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `NativeClient-DotNet-TodoListClient`.
    - Změňte **podporované typy účtů** na **účty v libovolném organizačním adresáři**.
@@ -106,12 +106,12 @@ V tomto kroku nakonfigurujete projekt *TodoListClient* tak, že zaregistrujete n
 1. Na stránce Přehled aplikace vyberte část **ověřování** .
    - V části **adresy URL pro přesměrování** | **Doporučené adresy URL pro přesměrování pro veřejné klienty (mobilní zařízení, stolní počítače)** ověřte **název urn: IETF: WG: OAuth: 2.0: OOB**
    - Vyberte **Save** (Uložit).
-1. Vyberte oddíl **oprávnění rozhraní API** .
-   - Klikněte na tlačítko **Přidat oprávnění** a pak na
+1. Select the **API permissions** section
+   - Click the **Add a permission** button and then,
    - Vyberte kartu **Moje rozhraní API** .
    - V seznamu rozhraní API vyberte `AppModelv2-NativeClient-DotNet-TodoListService API`nebo název, který jste zadali pro webové rozhraní API.
-   - Zaškrtněte **access_as_user** oprávnění, pokud ještě není zaškrtnuté. V případě potřeby použijte vyhledávací pole.
-   - Vyberte tlačítko **Přidat oprávnění** .
+   - Zaškrtněte **access_as_user** oprávnění, pokud ještě není zaškrtnuté. Use the search box if necessary.
+   - Select the **Add permissions** button
 
 ### <a name="configure-your-todolistclient-project"></a>Konfigurace projektu *TodoListClient*
 

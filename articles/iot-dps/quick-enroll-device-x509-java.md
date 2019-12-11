@@ -1,6 +1,6 @@
 ---
 title: Registrace zařízení X. 509 do služby Azure Device Provisioning pomocí Java
-description: V tomto rychlém startu se používají skupinové i jednotlivé registrace. V tomto rychlém startu zaregistrujete zařízení X.509 do služby Azure IoT Hub Device Provisioning pomocí Javy.
+description: V tomto rychlém startu se používají skupinové i jednotlivé registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service (DPS) pomocí Java.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 983e410c6f6298c6b251fdc2a4aff5c677d26906
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 4be7dc3e93b61f036a4167347a45725eff185f04
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423041"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969706"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Javy
 
@@ -28,7 +28,7 @@ Přestože sada SDK služby pro Javu funguje na počítačích s Windows i Linux
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte sadu [Java SE Development Kit 8](https://aka.ms/azure-jdks).
 * Nainstalujte [Maven 3](https://maven.apache.org/download.cgi). Aktuální verzi Mavenu zjistíte spuštěním tohoto příkazu:
@@ -108,7 +108,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
                         "-----END CERTIFICATE-----\n";
                 ```
 
-        9. Zavřete příkazové okno nebo po zobrazení výzvy k zadání **ověřovacího kódu** zadejte *n*. 
+        9. Zavřete příkazové okno nebo po zobrazení výzvy k zadání *ověřovacího kódu* zadejte **n**. 
  
     3. Volitelně můžete svou službu zřizování nakonfigurovat pomocí vzorového kódu:
         - Pokud chcete do ukázky přidat tuto konfiguraci, postupujte následovně:
@@ -198,7 +198,7 @@ Pokud chcete zaregistrovat jediné zařízení X.509, upravte následujícím zp
     Attestation attestation = X509Attestation.createFromClientCertificates(PUBLIC_KEY_CERTIFICATE_STRING);
     ```
 
-4. Pomocí postupu v části *Sestavení a spuštění vzorového kódu pro jednotlivou registraci* uložte, sestavte a spusťte soubor s ukázkou [jednotlivé registrace](quick-enroll-device-tpm-java.md#runjavasample).
+4. Pomocí postupu v části [Sestavení a spuštění vzorového kódu pro jednotlivou registraci](quick-enroll-device-tpm-java.md#runjavasample) uložte, sestavte a spusťte soubor s ukázkou *jednotlivé registrace*.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

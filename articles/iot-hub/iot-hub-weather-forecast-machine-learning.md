@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74079270"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976175"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Předpověď počasí pomocí dat ze senzorů ze služby IoT Hub v Azure Machine Learning
 
@@ -45,20 +45,20 @@ Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počas�
   - Aktivní předplatné Azure.
   - Azure IoT Hub v rámci vašeho předplatného.
   - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
-- Účet [Azure Machine Learning Studio](https://studio.azureml.net/) .
+- Účet [Azure Machine Learning Studio (Classic)](https://studio.azureml.net/) .
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Nasazení modelu předpovědi počasí jako webové služby
 
 1. Přejít na [stránku modelu předpovědi počasí](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
-1. V Microsoft Azure Machine Learning Studio klikněte na **otevřít v studiu** .
+1. Klikněte na **otevřít v studiu** v Microsoft Azure Machine Learning Studio (Classic).
    ![otevřít stránku modelu předpovědi počasí v Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
 1. Kliknutím na tlačítko **Spustit** ověříte kroky v modelu. Dokončení tohoto kroku může trvat 2 minuty.
-   ![otevřít model předpovědi počasí v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![otevřít model předpovědi počasí v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Klikněte na **nastavit webovou službu** > **prediktivní webovou službu**.
-   ![nasadit model předpovědi počasí do Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![nasadit model předpovědi počasí v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. V diagramu přetáhněte **Vstupní modul webové služby** někam do blízkosti modulu určení **skóre modelu** .
 1. Připojte modul **vstupu webové služby** k modulu **skóre modelu** .
-   ![propojit dva moduly v Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+   ![propojit dva moduly v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
 1. Kliknutím na tlačítko **Spustit** ověříte kroky v modelu.
 1. Kliknutím na **nasadit webovou službu** nasaďte model jako webovou službu.
 1. Na řídicím panelu modelu stáhněte **sešit aplikace Excel 2010 nebo starší** pro **požadavek nebo odpověď**.

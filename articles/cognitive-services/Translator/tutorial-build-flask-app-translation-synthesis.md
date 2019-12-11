@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 7b9f1cfeb6ebcbc693135d83ad167092e16f478d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647335"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978454"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
@@ -44,7 +44,7 @@ Pro ty, které chcete podrobně po tomto kurzu, je zde několik užitečných od
 * [Dokumentace k baňce](http://flask.pocoo.org/)
 * [Baňka pro Dummies – příručka pro začátečníky do baňky](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pojďme si projít klíče softwaru a předplatného, které pro tento kurz budete potřebovat.
 
@@ -68,7 +68,7 @@ Pro podrobné pokyny k vytváření prostředků použijte [v Azure Portal vytvo
 > [!IMPORTANT]
 > Pro tento kurz prosím vytvořte svoje prostředky v oblasti Západní USA. Pokud používáte jinou oblast, budete muset v každém ze svých souborů Pythonu upravit základní adresu URL.
 
-## <a name="set-up-your-dev-environment"></a>Vytvoření a nastavení vývojového prostředí
+## <a name="set-up-your-dev-environment"></a>Nastavení vývojového prostředí
 
 Před vytvořením webové aplikace v baňce budete muset vytvořit pracovní adresář pro váš projekt a nainstalovat několik balíčků Pythonu.
 
@@ -146,7 +146,7 @@ Dál musíme nainstalovat baňce. Baňka zpracovává směrování pro naši web
 
 2. Pokud chcete spustit aplikaci v baňce, můžete použít příkaz baňky nebo přepínač-m v Pythonu s baňkou. Než to budete moct udělat, musíte říct terminálu, se kterým má aplikace spolupracovat, a to tak, že exportuje proměnnou prostředí `FLASK_APP`:
 
-   **MacOS/Linux**:
+   **macOS/Linux**:
    ```
    export FLASK_APP=app.py
    ```
@@ -182,7 +182,7 @@ Tento kód zajišťuje, že když uživatel přejde na `http://your-web-app.com/
 
 I když tyto ukázky ilustrují, jak vykreslovat stránky HTML pro uživatele, trasy lze také použít k volání rozhraní API při stisknutí tlačítka nebo provedení libovolného počtu akcí, aniž byste museli opustit domovskou stránku. Tato akce se zobrazí v akci, když vytvoříte trasy pro syntézu překladu, mínění a řeči.
 
-### <a name="get-started"></a>Začínáme
+### <a name="get-started"></a>Začít
 
 1. Otevřete projekt v integrovaném vývojovém prostředí a pak vytvořte soubor s názvem `app.py` v kořenovém adresáři pracovního adresáře. Potom zkopírujte tento kód do `app.py` a uložte:
 
@@ -319,7 +319,7 @@ V následujících částech se tento proces opakuje při vytváření tras pro 
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>Aktualizovat `index.html`
+### <a name="update-indexhtml"></a>Aktualizace souboru `index.html`
 
 Teď, když máte funkci pro překlad textu a trasu do vaší aplikace, která ji volá, je dalším krokem zahájení vytváření HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -556,7 +556,7 @@ Pojďme v aplikaci v baňce vytvořit trasu, která volá `sentiment.py`. Tato t
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>Aktualizovat `index.html`
+### <a name="update-indexhtml"></a>Aktualizace souboru `index.html`
 
 Teď, když máte funkci pro spuštění analýzy mínění a trasu do vaší aplikace, která ji volá, je dalším krokem spuštění psaní HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -581,7 +581,7 @@ Teď, když máte funkci pro spuštění analýzy mínění a trasu do vaší ap
    </div>
    ```
 
-### <a name="update-mainjs"></a>Aktualizovat `main.js`
+### <a name="update-mainjs"></a>Aktualizace souboru `main.js`
 
 V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je obsah textové oblasti a selektor jazyka přiřazen k proměnným a pak je předána spolu s požadavkem `sentiment-analysis` trasy.
 
@@ -751,7 +751,7 @@ Pojďme v aplikaci v baňce vytvořit trasu, která volá `synthesize.py`. Tato 
        return audio_response
    ```
 
-### <a name="update-indexhtml"></a>Aktualizovat `index.html`
+### <a name="update-indexhtml"></a>Aktualizace souboru `index.html`
 
 Teď, když máte funkci pro převod textu na řeč a trasu v aplikaci, abyste ji mohli zavolat, je dalším krokem spuštění psaní HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -834,7 +834,7 @@ Teď, když máte funkci pro převod textu na řeč a trasu v aplikaci, abyste j
 
 5. Nezapomeňte svou práci uložit.
 
-### <a name="update-mainjs"></a>Aktualizovat `main.js`
+### <a name="update-mainjs"></a>Aktualizace souboru `main.js`
 
 V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je překlad a písmo hlasu přiřazen proměnným a pak předány do požadavku `text-to-speech` trasy.
 

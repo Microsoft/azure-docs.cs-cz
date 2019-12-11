@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření vlastní webové stránky vyhledávání – Vlastní vyhledávání Bingu'
+title: 'Kurz: Vytvoření webové stránky pro vlastní vyhledávání – Vlastní vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si, jak nakonfigurovat vlastní instanci vyhledávání Bingu a integrovat ji do webové stránky.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: aee84a4d9203d80b81f773df30d68c3539e5ec7c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564697"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977195"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
@@ -32,9 +32,9 @@ Probírají se tyto úlohy:
 > - Přidání připnutých položek
 > - Integrace vlastního vyhledávání do webové stránky
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Postup, jak klíč získat, najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+- Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Postup, jak získat klíč, naleznete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
 - Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2017 nebo novější, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Vytvoření instance vlastního vyhledávání
@@ -79,7 +79,7 @@ Pokud chcete vyloučit výsledky z konkrétních webů nebo adres URL, přidejte
 
 ## <a name="add-pinned-entries"></a>Přidání připnutých položek
 
-Pokud chcete určitou webovou stránku připnout na začátek výsledků hledání, přidejte danou webovou stránku a termín dotazu na kartě **Připnuté**. Karta **Připnuté** obsahuje seznam párů webových stránek a termínů dotazu určujících webové stránky, které se zobrazí jako nejlepší výsledek pro konkrétní dotaz. Webová stránka se připne pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu připnuté webové stránky na základě podmínky shody připnuté webové stránky. Ve vyhledávání se zobrazí pouze indexované webové stránky. Další informace najdete v tématu [Definování vlastního zobrazení](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
+Chcete-li připnout konkrétní webovou stránku na začátek výsledků hledání, přidejte webovou stránku a dotaz na **připnuté** kartu. **Připnutá** karta obsahuje seznam párů webových stránek a termínů dotazu, které určují webovou stránku, která se zobrazí jako nejvyšší výsledek konkrétního dotazu. Webová stránka se připne pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu připnuté webové stránky na základě podmínky shody připnuté webové stránky. Ve vyhledávání se zobrazí pouze indexované webové stránky. Další informace najdete v tématu [Definování vlastního zobrazení](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. Na stránce **Konfigurace** klikněte na kartu **Připnuté** a zadejte webovou stránku, kterou chcete vrátit jako nejlepší výsledek, a její termín dotazu.  
   
@@ -127,10 +127,10 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
 
 Hostované uživatelské rozhraní můžete používat dvěma způsoby.  
 
-- Možnost 1: Integrujte poskytnutý fragment kódu jazyka JavaScript do aplikace.
-- Možnost 2: Použijte zadaný koncový bod HTML.
+- Možnost 1: Integrace poskytnutého fragmentu kódu JavaScriptu do aplikace
+- Možnost 2: Použití poskytnutého koncového bodu HTML
 
-Zbývající část tohoto kurzu ilustruje **možnost 1: Fragment kódu**JavaScriptu.  
+Zbývající část tohoto kurzu ilustruje **Možnost 1: Fragment kódu JavaScriptu**.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Nastavení řešení v sadě Visual Studio
 
@@ -209,7 +209,7 @@ Při vyhledávání se následujícím způsobem budou vykreslovat výsledky:
 
 ![Snímek obrazovky s výsledky vlastního vyhledávání](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Volání koncového bodu vlastního vyhledávání Bingu (C#)](../call-endpoint-csharp.md)
