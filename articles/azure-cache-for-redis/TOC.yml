@@ -1,10 +1,10 @@
 - name: Dokumentace ke službě Azure Cache for Redis
-  href: index.md
+  href: index.yml
 - name: Přehled
   items:
     - name: Informace o službě Azure Cache for Redis
       href: cache-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Aplikace v ASP.NET
@@ -23,7 +23,7 @@
   items:
     - name: Použití ukládání do mezipaměti s tabulkami výsledků
       href: cache-web-app-cache-aside-leaderboard.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky služby Azure Cache for Redis
       href: cache-redis-samples.md

@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure IoT Hub?
       href: about-iot-hub.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Odeslání telemetrie
@@ -83,6 +83,8 @@
       href: tutorial-connectivity.md
 - name: Koncepty
   items:
+    - name: Vynucení protokolu TLS 1.2
+      href: tls-1.2-everywhere.md
     - name: Přehled obohacení zpráv
       href: iot-hub-message-enrichments-overview.md
     - name: Přehled správy zařízení

@@ -4,7 +4,7 @@
   items:
     - name: Informace o spravovaných identitách pro prostředky Azure
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Použití spravované identity na virtuálním počítači pro přístup k Azure Resource Manageru
       items:
@@ -22,8 +22,6 @@
           href: tutorial-vm-windows-access-storage.md
         - name: Přístup ke službě Azure Storage pomocí přístupové klávesy
           href: tutorial-windows-vm-access-storage.md
-        - name: Přístup ke službě Azure Storage pomocí SAS
-          href: tutorial-windows-vm-access-storage-sas.md
         - name: Přístup k Azure SQL
           href: tutorial-windows-vm-access-sql.md
         - name: Přístup ke službě Azure Key Vault

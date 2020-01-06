@@ -4,7 +4,7 @@
   items:
     - name: Co je Custom Vision?
       href: home.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Použití webového portálu
       items:
@@ -68,8 +68,6 @@
           href: export-model-python.md
     - name: Export nebo odstranění dat účtu
       href: ./export-delete-data.md
-    - name: Přesun projektu omezené zkušební verze do Azure
-      href: ./move-your-project-to-azure.md
     - name: Aktualizace aplikace na rozhraní API 3.0
       href: ./update-application-to-3.0-sdk.md
 - name: Referenční informace
@@ -96,7 +94,7 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: Zdroje a prostředky
   items:
-    - name: Ukázky
+    - name: ukázky
       href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
     - name: Omezení a kvóty
       href: limits-and-quotas.md

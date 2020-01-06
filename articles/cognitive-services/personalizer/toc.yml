@@ -9,7 +9,7 @@
     - name: Co je nového
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: 'Pomocí C#'
       href: csharp-quickstart-commandline-feedback-loop.md
@@ -72,7 +72,7 @@
           href: how-to-offline-evaluation.md
 - name: Referenční informace
   items:
-    - name: Ukázky
+    - name: ukázky
       href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
     - name: Reference k rozhraní REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
@@ -94,6 +94,8 @@
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
         - name: Python
           items:
+            - name: Referenční informace
+              href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python'
             - name: Balíček Pypi
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: Zdroje a prostředky

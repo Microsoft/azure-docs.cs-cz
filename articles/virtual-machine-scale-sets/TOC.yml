@@ -4,7 +4,7 @@
   items:
     - name: Co jsou škálovací sady virtuálních počítačů?
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření na webu Azure Portal
@@ -55,7 +55,7 @@
           href: tutorial-autoscale-powershell.md
         - name: Šablona
           href: tutorial-autoscale-template.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       href: cli-samples.md
@@ -64,7 +64,7 @@
 - name: Koncepty
   items:
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: Oblasti
       href: ../virtual-machines/windows/regions.md

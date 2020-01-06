@@ -15,7 +15,7 @@
       href: tutorial-firewall-dnat.md
     - name: Monitorování diagnostických protokolů
       href: tutorial-diagnostics.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
@@ -70,13 +70,13 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy
       href: firewall-faq.md
     - name: Tvorba šablon
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Komunitní šablony

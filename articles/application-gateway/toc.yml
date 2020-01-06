@@ -6,7 +6,7 @@
       href: overview.md
     - name: Co je nového?
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření Application Gateway – portál
@@ -27,7 +27,7 @@
       href: tutorial-url-redirect-cli.md
     - name: Automatické škálování a zónová redundance
       href: tutorial-autoscale-ps.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -247,7 +247,7 @@
       href: /rest/api/applicationgateway
     - name: Azure Resource Manager
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
     - name: Šablona Resource Manageru
       displayName: ARM
       href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
@@ -255,7 +255,7 @@
   items:
     - name: Tvorba šablon
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Komunitní šablony

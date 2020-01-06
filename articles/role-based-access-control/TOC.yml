@@ -7,7 +7,7 @@
       href: overview.md
     - name: Vysvětlení různých rolí
       href: rbac-and-directory-admin-roles.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Zobrazení přístupu pro uživatele
       href: check-access.md
@@ -99,7 +99,7 @@
     - name: Operace poskytovatele prostředků
       href: resource-provider-operations.md
     - name: Omezení RBAC
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

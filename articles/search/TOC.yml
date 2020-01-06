@@ -7,15 +7,15 @@
       href: search-what-is-azure-search.md
     - name: Co je nového
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření služby
       href: search-create-service-portal.md
     - name: Portál
       items:
-        - name: Vytvoření vyhledávacího indexu
+        - name: Vytvoření indexu
           href: search-get-started-portal.md
-        - name: Vytvoření aplikace (Preview)
+        - name: Vytvoření aplikace
           href: search-create-app-portal.md
         - name: Vytvoření sady kognitivních dovedností
           href: cognitive-search-quickstart-blob.md
@@ -61,7 +61,7 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: 'Ukázky C#'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'

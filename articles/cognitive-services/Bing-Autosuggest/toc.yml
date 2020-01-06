@@ -22,6 +22,12 @@
       href: quickstarts/python.md
     - name: Ruby
       href: quickstarts/ruby.md
+- name: Klientská knihovna
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp-sdk.md
+    - name: Přejít
+      href: quickstarts/go-sdk.md
 - name: Kurzy
   items:
     - name: Jednostránková webová aplikace

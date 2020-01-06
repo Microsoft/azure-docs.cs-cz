@@ -4,11 +4,9 @@
   items:
     - name: Co je Azure IoT Central
       href: overview-iot-central.md
-    - name: Možnosti řešení IoT
-      href: overview-iot-options.md
     - name: Prohlídka uživatelského rozhraní
       href: overview-iot-central-tour.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření nové aplikace

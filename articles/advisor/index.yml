@@ -4,18 +4,16 @@ summary: Azure Advisor prohledává vaši konfiguraci Azure, doporučuje změny 
 metadata:
   title: Dokumentace ke službě Azure Advisor
   description: Azure Advisor je přizpůsobený cloudový konzultant, který pomáhá dodržovat osvědčené postupy pro optimalizaci nasazení Azure. Analyzuje telemetrii využití a konfiguraci prostředků. Na jejich základě doporučuje řešení, která pomáhají zajistit vysoký výkon, zabezpečení a dostupnost vašich prostředků, a současně hledá možnosti, jak snížit vaše celkové náklady na Azure.
-  services: advisor
-  ms.service: advisor
   ms.topic: landing-page
   author: rboucher
   ms.author: robb
   ms.date: 10/16/2019
-  ms.openlocfilehash: d0a5dc66a752e49dd32cd742e3856d7edac0d879
-  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.openlocfilehash: 43e35c1d6afd96ff78ebd938fa76a503dd4e935d
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72963980"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443022"
 landingContent:
 - title: Informace o službě Azure Advisor
   linkLists:

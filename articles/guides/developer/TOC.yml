@@ -44,7 +44,7 @@
       href: 'https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function'
     - name: Nasazení webové aplikace Dockeru v Linuxu
       href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       items:
@@ -189,14 +189,14 @@
 - name: Zdroje a prostředky
   items:
     - name: Omezení a kvóty Azure
-      href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
     - name: Oblast Azure
       href: 'https://azure.microsoft.com/regions/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Ukázky
+    - name: ukázky
       href: 'https://azure.microsoft.com/resources/samples/'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/home/'

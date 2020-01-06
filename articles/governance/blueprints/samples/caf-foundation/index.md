@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu Základy CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Základy CAF.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: 8339b7335ff2946dcd602db6ece4637ac4bc1d92
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545435"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562557"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Základy
 
@@ -43,7 +43,7 @@ Všechny tyto prvky dodržují prověřené postupy publikované v článku zam�
 > Podrobný plán Základy CAF vymezuje základní architekturu pro vaše úlohy.
 > V rámci této základní architektury je ale pořád potřeba úlohy nasadit.
 
-Další informace najdete v tématu [Architektura přechodu na cloud pro Azure od Microsoftu – připraveno](/azure/architecture/cloud-adoption/ready/azure-readiness-guide/govern-org-compliance?tabs=AzurePolicy).
+Další informace najdete v tématu [Architektura přechodu na cloud pro Azure od Microsoftu – připraveno](/azure/cloud-adoption-framework/ready/).
 
 ## <a name="next-steps"></a>Další kroky
 
