@@ -4,16 +4,16 @@ description: Tento článek popisuje rozhraní REST API, která se používají 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 58f38cc3649c1d08187a4bb93be83422c8e7911b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841417"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644524"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Rozhraní Azure Enterprise REST API
 
@@ -75,7 +75,7 @@ Příklad: bearer \&lt;APIKey\&gt; |
 
 ### <a name="swagger"></a>Swagger
 
-Koncový bod Swagger je k dispozici v [následujících rozhraních API pro vytváření sestav v podnicích verze 3](https://consumption.azure.com/swagger/ui/index). Swagger usnadňuje kontrolu rozhraní API. Pomocí Swaggeru můžete vygenerovat klientské sady SDK [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](http://swagger.io/swagger-codegen/). Prostřednictvím rozhraní API jsou k dispozici data od 1. května 2014.
+Koncový bod Swagger je k dispozici v [následujících rozhraních API pro vytváření sestav v podnicích verze 3](https://consumption.azure.com/swagger/ui/index). Swagger usnadňuje kontrolu rozhraní API. Pomocí Swaggeru můžete vygenerovat klientské sady SDK [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](https://swagger.io/swagger-codegen/). Prostřednictvím rozhraní API jsou k dispozici data od 1. května 2014.
 
 ### <a name="api-response-codes"></a>Kódy odpovědí rozhraní API
 
@@ -122,9 +122,9 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Název předplatného | SubscriptionName | SubscriptionName |   |
 | Datum | Datum | Datum | Zobrazuje datum, kdy byla spuštěna sestava katalogu služeb. Formátem je řetězec data bez časového razítka. |
-| Měsíc | Month | Month |   |
-| Den | Day | Day |   |
-| Rok | Year | Year |   |
+| Month | Month | Month |   |
+| Den | Day | Den |   |
+| Rok | Rok | Year |   |
 | Produkt | BillableItemName | Produkt |   |
 | ID měření | ResourceGUID | MeterId |   |
 | Kategorie měření | Služba | MeterCategory | Užitečné při hledání služeb. Relevantní pro služby, které mají více položek ServiceType. Například Virtual Machines. |
@@ -158,8 +158,8 @@ Ze sestavy CSV se vygenerují data ve formátu JSON. Výsledný formát proto st
 | Název předplatného | SubscriptionName |  SubscriptionName |
 | Datum | BillingCycle |  Date (jen datový řetězec bez časového razítka)
 | Měsíc | Month |  Month |
-| Den | Day |  Day |
-| Rok | Year |  Year |
+| Den | Day |  Den |
+| Rok | Rok |  Rok |
 | ID měření | MeterResourceId |  MeterId |
 | Název vydavatele | PublisherFriendlyName |  Název vydavatele |
 | Název nabídky | OfferFriendlyName |  OfferName |

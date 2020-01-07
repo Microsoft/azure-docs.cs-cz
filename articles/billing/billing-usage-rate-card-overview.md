@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a8e189e8070de0fccf9428e26337e1091ba7f7b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34fcaef5416fe976c051317c0273d245f1ff8358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449131"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Programové získání přehledu o využití Azure pomocí rozhraní API pro fakturaci Azure
 Rozhraní API pro fakturaci Azure můžete využít k předání dat o využití a prostředcích do vašeho upřednostňovaného nástroje pro datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Tato rozhraní API se implementují jako poskytovatel prostředků a jsou součástí řady rozhraní API, která zveřejňuje Azure Resource Manager.  
@@ -71,4 +71,4 @@ Tady je několik scénářů, ve kterých můžete využít kombinaci rozhraní 
 
   * [Vzorový kód pro rozhraní API služby RateCard](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Další informace o Azure Resource Manageru najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
+* Další informace o Azure Resource Manageru najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md).
