@@ -4,7 +4,7 @@
   items:
     - name: Informace o AKS
       href: intro-kubernetes.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření clusteru AKS
@@ -218,6 +218,8 @@
           maintainContext: true
         - name: Rotace certifikátů
           href: certificate-rotation.md
+        - name: Vytvoření privátního clusteru
+          href: private-clusters.md
     - name: Monitorování a protokolování
       items:
         - name: Azure Monitor pro kontejnery
@@ -308,6 +310,9 @@
           href: gpu-cluster.md
         - name: Použití služby Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
+          maintainContext: true
+        - name: Použití Azure API Managementu
+          href: ../api-management/api-management-kubernetes.md
           maintainContext: true
     - name: Výběr a nasazení sítě služeb
       items:

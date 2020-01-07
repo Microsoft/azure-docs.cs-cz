@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Virtual Machines
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření virtuálního počítače – portál
@@ -46,7 +46,7 @@
       href: tutorial-iis-sql.md
     - name: 15. Zabezpečení webového serveru pomocí SSL
       href: tutorial-secure-web-server.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Index PowerShellu
       href: powershell-samples.md
@@ -141,7 +141,7 @@
 - name: Koncepty
   items:
     - name: Azure Resource Manager
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Oblasti
       href: regions.md
     - name: Dostupnost a výkon
@@ -186,6 +186,8 @@
               href: sizes-gpu.md
             - name: Nastavení ovladačů GPU
               href: n-series-driver-setup.md
+            - name: Nastavení ovladačů AMD GPU
+              href: n-series-amd-driver-setup.md
         - name: Vysokovýkonné výpočetní prostředí
           displayName: H-series
           href: sizes-hpc.md
@@ -672,7 +674,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Tvorba šablon
-      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines
     - name: Plány Azure do budoucna

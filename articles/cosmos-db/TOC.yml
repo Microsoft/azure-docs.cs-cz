@@ -4,7 +4,7 @@
   items:
     - name: Vítá vás Azure Cosmos DB
       href: introduction.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytváření prostředků Cosmos DB
@@ -60,7 +60,7 @@
       href: create-notebook-visualize-data.md
     - name: 5. Globální distribuce dat
       href: tutorial-global-distribution-sql-api.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky .NET V2 SDK
       href: sql-api-dotnet-samples.md
@@ -129,6 +129,8 @@
           href: set-throughput.md
         - name: Zřízení propustnosti – režim autopilota
           href: provision-throughput-autopilot.md
+        - name: Nejčastější dotazy k AutoPilotu
+          href: autopilot-faq.md
     - name: Referenční materiály k dotazům SQL
       items:
         - name: Začínáme
@@ -545,7 +547,7 @@
           href: cassandra-introduction.md
         - name: Podpora přenosového protokolu
           href: cassandra-support.md
-        - name: Šablony Rychlý start
+        - name: Rychlé starty
           items:
             - name: .NET
               href: create-cassandra-dotnet.md
@@ -609,7 +611,7 @@
           href: mongodb-feature-support.md
         - name: Podpora přenosového protokolu (3.6)
           href: mongodb-feature-support-36.md
-        - name: Šablony Rychlý start
+        - name: Rychlé starty
           items:
             - name: .NET
               href: create-mongodb-dotnet.md
@@ -699,7 +701,7 @@
           href: graph-introduction.md
         - name: Podpora přenosového protokolu
           href: gremlin-support.md
-        - name: Šablony Rychlý start
+        - name: Rychlé starty
           items:
             - name: Konzola Gremlin
               href: create-graph-gremlin-console.md
@@ -756,7 +758,7 @@
       items:
         - name: Úvod
           href: table-introduction.md
-        - name: Šablony Rychlý start
+        - name: Rychlé starty
           items:
             - name: .NET
               href: create-table-dotnet.md
@@ -777,7 +779,7 @@
               href: tutorial-query-table.md
             - name: 4. Globální distribuce dat
               href: tutorial-global-distribution-table.md
-        - name: Ukázky
+        - name: ukázky
           items:
             - name: .NET
               href: table-storage-how-to-use-dotnet.md
@@ -982,6 +984,8 @@
       items:
         - name: Monitorování Cosmos DB
           href: monitor-cosmos-db.md
+        - name: Monitorování s diagnostickými protokoly
+          href: cosmosdb-monitor-resource-logs.md
         - name: Azure Monitor pro Cosmos (Preview)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
         - name: Zobrazení metrik z účtu Cosmos DB

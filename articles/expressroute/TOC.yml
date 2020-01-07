@@ -157,7 +157,7 @@
           href: expressroute-monitoring-metrics-alerts.md
         - name: Konfigurace Network Performance Monitoru pro ExpressRoute
           href: how-to-npm.md
-    - name: Články věnované modelu nasazení Classic
+    - name: Classic a články starší verze
       items:
         - name: Úprava okruhu
           href: expressroute-howto-circuit-classic.md
@@ -169,6 +169,8 @@
           href: expressroute-howto-coexist-classic.md
         - name: Přidání brány do virtuální sítě
           href: expressroute-howto-add-gateway-classic.md
+        - name: Vytvoření a úprava veřejného partnerského vztahu
+          href: about-public-peering.md
     - name: Osvědčené postupy
       items:
         - name: Osvědčené postupy pro zabezpečení sítě a cloudové služby
@@ -223,7 +225,7 @@
     - name: SLA
       href: 'https://azure.microsoft.com/support/legal/sla/'
     - name: Předplatné a omezení služeb
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Azure ExpressRoute pro poskytovatele Cloud Solution Provider
       href: expressroute-for-cloud-solution-providers.md
     - name: Videa

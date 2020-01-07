@@ -4,16 +4,16 @@ description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 78fda5785d85b728c897bf758bc2a3cdee768d02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1f421abf1c9cff545c77a9fcbbb4acfd76d1e1d0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849900"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644405"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 

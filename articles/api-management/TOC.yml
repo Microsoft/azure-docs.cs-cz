@@ -6,7 +6,9 @@
       href: api-management-key-concepts.md
     - name: Dostupnost funkcí služby API Management
       href: api-management-features.md
-- name: Šablony Rychlý start
+    - name: Správa mikroslužeb nasazených v AKS
+      href: api-management-kubernetes.md
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření instance – portál
@@ -33,7 +35,7 @@
       href: api-management-get-started-publish-versions.md
     - name: 9. Přizpůsobení vývojářského portálu
       href: api-management-howto-developer-portal-customize.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Zásady
       href: policy-samples.md

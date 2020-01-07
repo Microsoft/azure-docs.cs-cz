@@ -49,7 +49,7 @@
               href: sql-database-service-tier-hyperscale-faq.md
             - name: Migrace z Premium RS
               href: sql-database-service-tiers-prs.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Databáze SQL
@@ -69,6 +69,8 @@
         - name: Přehled zabezpečení
           href: sql-database-security-overview.md
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+        - name: Osvědčené postupy zabezpečení
+          href: sql-database-security-best-practice.md
         - name: Správa přístupu
           items:
             - name: Řízení přístupu
@@ -292,7 +294,7 @@
               href: sql-database-elastic-scale-introduction.md
             - name: Glosář
               href: sql-database-elastic-scale-glossary.md
-            - name: Knihovna elastických klientů – konsolidace
+            - name: Knihovna elastických klientů
               href: sql-database-elastic-database-client-library.md
             - name: Mapy horizontálních oddílů
               href: sql-database-elastic-scale-shard-map-management.md
@@ -471,7 +473,7 @@
           href: sql-database-elastic-pool.md
         - name: Databázové servery
           href: sql-database-servers.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Vytvořit
           items:
@@ -560,7 +562,7 @@
               href: sql-database-machine-learning-services-overview.md
             - name: Klíčové rozdíly
               href: sql-database-machine-learning-services-differences.md
-            - name: Šablony Rychlý start
+            - name: Rychlé starty
               items:
                 - name: Vytváření skriptů R
                   href: sql-database-quickstart-r-create-script.md
@@ -672,7 +674,7 @@
               href: elastic-jobs-tsql.md
             - name: Migrace (z původních elastických úloh)
               href: elastic-jobs-migrate.md
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Azure CLI
           href: sql-database-cli-samples.md?tabs=single-database
@@ -683,16 +685,17 @@
         - name: Ukázky kódů
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Spravovaná instance SQL
+  href: sql-database-managed-instance-index.yml
   items:
-    - name: Dokumentace ke spravovaným instancím
-      href: sql-database-managed-instance-index.yml
     - name: Přehled
-      href: sql-database-managed-instance.md
-    - name: Fondy instancí
-      href: sql-database-instance-pools.md
-    - name: Nejčastější dotazy
-      href: sql-database-managed-instance-faq.md
-    - name: Šablony Rychlý start
+      items:
+        - name: Spravovaná instance
+          href: sql-database-managed-instance.md
+        - name: Fondy instancí
+          href: sql-database-instance-pools.md
+        - name: Nejčastější dotazy
+          href: sql-database-managed-instance-faq.md
+    - name: Rychlé starty
       items:
         - name: Vytvořit
           items:
@@ -718,14 +721,18 @@
       items:
         - name: Migrace s využitím DMS
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-        - name: Konfigurace transakční replikace
-          href: replication-with-sql-database-managed-instance.md
         - name: Konfigurace zabezpečení
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: Přidání spravované instance do skupiny převzetí služeb při selhání
           href: sql-database-managed-instance-failover-group-tutorial.md
         - name: Migrace místních uživatelů a skupin
           href: tutorial-managed-instance-azure-active-directory-migration.md
+        - name: Transakční replikace
+          items:
+            - name: MI Pub do MI Sub
+              href: replication-with-sql-database-managed-instance.md
+            - name: 'MI Pub, MI Dist, SQL Sub'
+              href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: Koncepty
       items:
         - name: Referenční informace k rozhraní API pro správu
@@ -778,7 +785,7 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Připojení aplikací
           href: sql-database-managed-instance-connect-app.md
-    - name: Ukázky
+    - name: ukázky
       items:
         - name: Azure CLI
           href: sql-database-cli-samples.md?tabs=managed-instance
