@@ -1,20 +1,14 @@
 ---
-title: Vytvořit upozornění Azure Advisor pro nová doporučení | Microsoft Docs
+title: Vytvořit výstrahy Azure Advisor pro nová doporučení
 description: Vytvořit upozornění Azure Advisor pro nové doporučení
-services: advisor
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/09/2019
-ms.author: sagupt
-ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443155"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Vytváření upozornění Azure Advisor při nových doporučeních 
 
@@ -24,8 +18,8 @@ Kdykoli Azure Advisor zjistí nové doporučení pro jeden z vašich prostředk�
 
 Můžete také určit typy doporučení pomocí těchto vlastností:
 
-* Category
-* Míra dopadu
+* Kategorie
+* Úroveň dopadu
 * Typ doporučení
 
 Můžete taky nakonfigurovat akci, která se provede, když se aktivuje výstraha:  
@@ -38,7 +32,7 @@ Další informace o skupinách akcí najdete v tématu [Vytváření a správa s
 > [!NOTE] 
 > Výstrahy služby Advisor jsou momentálně dostupné jenom pro doporučení vysoké dostupnosti, výkonu a nákladů. Doporučení zabezpečení nejsou podporovaná. 
 
-## <a name="in-the-azure-portal"></a>V Azure Portal
+## <a name="in-the-azure-portal"></a>Na webu Azure Portal
 1. Na **portálu**vyberte **Azure Advisor**.
 
     ![Azure Advisor na portálu](./media/advisor-alerts/create1.png)
@@ -274,7 +268,7 @@ Pokud nepoužíváte společné schéma, vaše datová část vypadá následovn
 }
 ```
 
-V obou schématech můžete identifikovat události doporučení poradce pomocí hledání **EventSource** `Recommendation` `Microsoft.Advisor/recommendations/available/action`a **operace** .
+V obou schématech můžete identifikovat události doporučení poradce pomocí hledání **EventSource** je `Recommendation` a **operace** `Microsoft.Advisor/recommendations/available/action`.
 
 Mezi další důležitá pole, která byste mohli chtít použít, patří: 
 

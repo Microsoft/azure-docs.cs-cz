@@ -1,5 +1,5 @@
 ---
-title: Kurz – snížit náklady na Azure s doporučeními optimalizace | Dokumentace Microsoftu
+title: Kurz – snížení nákladů na Azure s použitím doporučení
 description: Tento kurz pomůže snížit náklady na Azure, pokud budete jednat doporučení pro optimalizaci.
 services: cost-management
 keywords: ''
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a9dbb121cab49024aaf0dc65bbac938764d9f8b2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c3fc60ca623649a175fb1078efc6903ebde2811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444586"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů od doporučení.
 
-Azure Cost Management pracuje s využitím Azure Advisoru poskytnout doporučení pro optimalizaci nákladů. Azure Advisor vám pomůže optimalizovat a zvýšení efektivity díky identifikaci nečinnosti a nedostatečně využité prostředky. Tento kurz vás provede příkladem, kdy identifikaci nevyužitých prostředků Azure a pak přijmete opatření ke snížení nákladů.
+Služba Azure Cost Management spolupracuje s Azure Advisorem a nabízí doporučení, která se týkají optimalizace nákladů. Azure Advisor provádí optimalizaci a zvyšuje efektivitu tím, že identifikuje nečinné a nevyužité prostředky. Tento kurz vás provede příkladem, kdy identifikaci nevyužitých prostředků Azure a pak přijmete opatření ke snížení nákladů.
 
 V tomto kurzu se naučíte:
 
@@ -47,9 +47,9 @@ Chcete-li zobrazit doporučení pro skupinu pro správu, otevřete požadovaný 
 
 ![Doporučení k cenám Management Advisor webu Azure Portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
-Seznam doporučení identifikuje nedostatečné efektivity využití, nebo obsahuje doporučení pro nákup, které vám pomůžou ušetřit Další. Celkové **možné roční úspory** ukazují celkovou částku, kterou můžete uložit, pokud vypnete nebo zrušíte přidělení všech virtuálních počítačů, které splňují pravidla pro doporučení. Pokud nechcete, aby je vypnout, měli byste zvážit, změna velikosti je levnější skladovou Položku virtuálního počítače.
+Seznam doporučení identifikuje nedostatečné efektivity využití, nebo obsahuje doporučení pro nákup, které vám pomůžou ušetřit Další. Součty **potenciální roční úspory** ukazuje celkovou velikost, který můžete uložit, pokud vypnete nebo uvolnit všechny vaše virtuální počítače, které splňují pravidla doporučení. Pokud nechcete, aby je vypnout, měli byste zvážit, změna velikosti je levnější skladovou Položku virtuálního počítače.
 
-Kategorie **dopad** , společně s **možnými ročními úsporami**, je navržena tak, aby lépe identifikovala doporučení, která mají potenciál v co největší míře ukládat.
+**Dopad** kategorie, spolu s **potenciální roční úspory**, slouží k identifikaci doporučení, které by mohly uložit co největší míře.
 
 Mezi doporučení s vysokým dopadem patří:
 - [Nákup rezervovaných instancí virtuálních počítačů za účelem úspory peněz nad náklady na průběžné platby](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
@@ -69,7 +69,7 @@ Azure Advisor monitoruje využití virtuálních počítačů po dobu sedmi dnů
 
 I když některé scénáře, může způsobit nízké využití podle návrhu, můžete často ušetřit peníze změnou velikosti virtuálních počítačů na levnější velikosti. Vaše skutečné úspory se můžou lišit, pokud zvolíte akce změny velikosti. Projděme si příklad změny velikosti virtuálního počítače.
 
-V seznamu doporučení klikněte na doporučení **správné velikosti nebo vypnutí nevyužitých virtuálních počítačů** . V seznamu kandidátů na virtuální počítač vyberte virtuální počítač, aby změna velikosti a potom klikněte na virtuální počítač. Takže můžete ověřit metriky využití jsou uvedeny podrobnosti virtuálního počítače. **Potenciální roční hodnota úspory** je to, co můžete uložit při vypnutí nebo odebrání virtuálního počítače. Změna velikosti virtuálního počítače se pravděpodobně můžete ušetřit, ale nebude ukládat v plné výši potenciální roční úspory.
+V seznamu doporučení, klikněte **nastavení správné velikosti nebo vypnutí nevyužitých virtuálních počítačů** doporučení. V seznamu kandidátů na virtuální počítač vyberte virtuální počítač, aby změna velikosti a potom klikněte na virtuální počítač. Takže můžete ověřit metriky využití jsou uvedeny podrobnosti virtuálního počítače. **Potenciální roční úspory** hodnota je, co můžete uložit, pokud vypnete nebo odeberte virtuální počítač. Změna velikosti virtuálního počítače se pravděpodobně můžete ušetřit, ale nebude ukládat v plné výši potenciální roční úspory.
 
 ![Příklad podrobnosti doporučení](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
@@ -80,7 +80,7 @@ V podrobnostech o virtuálním počítači zkontrolujte využití virtuálního 
 Poznámka: velikost aktuálního virtuálního počítače. Po ověření, že by měl změnit velikost virtuálního počítače, zavřete podrobnosti o virtuálním počítači, kde můžete zobrazit seznam virtuálních počítačů.
 
 V seznamu kandidátů na vypnutí nebo změnu velikosti vyberte * * změnit velikost *&lt;FromVirtualMachineSKU&gt;* na *&lt;ToVirtualMachineSKU&gt;* * *.
-![příklad doporučení s možností změny velikosti virtuálního počítače](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+![Příklad doporučení s možností pro změnu velikosti virtuálního počítače](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 V dalším kroku se zobrazí se seznam možností změny velikosti k dispozici. Vyberte si ten, který vám poskytne nejlepší výkon a nákladovou efektivitu pro váš scénář. V následujícím příkladu vybraná možnost mění velikost z **Standard_D8s_v3** na **Standard_D2s_v3**.
 
@@ -108,4 +108,4 @@ V tomto kurzu jste se naučili:
 Pokud jste si ještě nepřečetli článek Cost Management o osvědčených postupech, poskytuje obecné pokyny a zásady, které je třeba zvážit při správě nákladů.
 
 > [!div class="nextstepaction"]
-> [Cost Management osvědčené postupy](cost-mgt-best-practices.md)
+> [Osvědčené postupy správy nákladů](cost-mgt-best-practices.md)

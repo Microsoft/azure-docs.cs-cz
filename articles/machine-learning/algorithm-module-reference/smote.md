@@ -1,7 +1,7 @@
 ---
 title: SMOTE
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul SMOTE ve službě Azure Machine Learning ke zvýšení počtu příkladů s nízkým dopadem v datové sadě pomocí převzorkování.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul SMOTE v Azure Machine Learning ke zvýšení počtu příkladů s nízkým dopadem v datové sadě pomocí převzorkování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: d78e3d0d30cc44f2f30b1a856297f2c31d8f8469
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428439"
 ---
 # <a name="smote"></a>SMOTE
 
@@ -40,11 +40,11 @@ Pokud přidáte datovou sadu do kanálu a vyberete **vizualizovat** na výstupu 
  
 Chcete-li zvýšit počet případů, můžete nastavit hodnotu **SMOTE procent**pomocí násobcích 100, a to následujícím způsobem:
 
-||Třída 0|Třída 1|čtení|  
+||Třída 0|Třída 1|celkem|  
 |-|-------------|-------------|-----------|  
 |Původní datová sada<br /><br /> (ekvivalentní k **SMOTE procentům** = **0**)|570<br /><br /> 76%|178<br /><br /> 24|748|  
 |**Procento SMOTE** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
-|**Procento SMOTE** = **200**|570<br /><br /> 52%|534<br /><br /> 48%|1 104|  
+|**Procento SMOTE** = **200**|570<br /><br /> 52 %|534<br /><br /> 48%|1 104|  
 |**Procento SMOTE** = **300**|570<br /><br /> 44%|712<br /><br /> 56%|1 282|  
   
 > [!WARNING]
@@ -99,5 +99,5 @@ Chcete-li zvýšit počet případů, můžete nastavit hodnotu **SMOTE procent*
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
 

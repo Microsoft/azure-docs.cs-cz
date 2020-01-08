@@ -1,14 +1,14 @@
 ---
 title: Pokyny pro omezované požadavky
-description: Přečtěte si, jak paralelně dávkovat, rozložit, stránkování a dotazovat, aby nedocházelo k omezení požadavků pomocí grafu prostředků Azure.
-ms.date: 11/21/2019
+description: Naučte se paralelně seskupovat, rozložit, stránkování a dotazovat, abyste se vyhnuli požadavkům, které Azure Resource Graph omezuje.
+ms.date: 12/02/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304680"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436067"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure
 
@@ -17,7 +17,7 @@ Při vytváření programového a častého využívání dat grafu prostředků
 Tento článek se věnuje čtyřem oblastem a vzorům, které souvisejí s vytvářením dotazů v Azure Resource graphu:
 
 - Vysvětlení hlaviček omezování
-- Dávkové dotazy
+- Seskupování dotazů
 - Rozložit dotazy
 - Dopad stránkování
 
@@ -37,9 +37,9 @@ Pro ilustraci, jak fungují hlavičky, se podívejme na odpověď na dotaz, kter
 
 Pokud chcete zobrazit příklad použití hlaviček k _omezení rychlostií_ dotazů na dotazy, přečtěte si ukázku v [dotazu paralelně](#query-in-parallel).
 
-## <a name="batching-queries"></a>Dávkové dotazy
+## <a name="grouping-queries"></a>Seskupování dotazů
 
-Dávkování dotazů podle předplatného, skupiny prostředků nebo jednotlivého prostředku je efektivnější než dotazy virtuálního. Náklady na kvótu většího dotazu jsou často nižší než náklady na kvótu pro velký počet malých a cílových dotazů. Velikost dávky se doporučuje být menší než _300_.
+Seskupování dotazů podle předplatného, skupiny prostředků nebo jednotlivého prostředku je efektivnější než dotazy virtuálního. Náklady na kvótu většího dotazu jsou často nižší než náklady na kvótu pro velký počet malých a cílových dotazů. Velikost skupiny se doporučuje být menší než _300_.
 
 - Příklad nedostatečně optimalizovaného přístupu
 
@@ -62,19 +62,19 @@ Dávkování dotazů podle předplatného, skupiny prostředků nebo jednotlivé
   }
   ```
 
-- Příklad #1 optimalizovaného přístupu k dávkám
+- Příklad #1 přístupu optimalizovaného seskupení
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
+          subscriptions: currSubscriptionGroup,
           query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
@@ -85,21 +85,25 @@ Dávkování dotazů podle předplatného, skupiny prostředků nebo jednotlivé
   }
   ```
 
-- Příklad #2 optimalizovaného přístupu k dávkám
+- Příklad #2 přístupu optimalizovaného seskupení pro získání více prostředků v jednom dotazu
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -149,12 +153,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Paralelní dotazování
 
-I když se dávkové zpracování doporučuje po paralelním použití, existují časy, ve kterých se dotazy nedají snadno dávkovat. V těchto případech můžete chtít dotazovat se na graf prostředků Azure tak, že paralelním způsobem odešlete více dotazů. Níže je uveden příklad, jak _omezení rychlosti_ na základě hlaviček omezení v takových scénářích:
+I když se seskupování doporučuje po paralelním použití, existují časy, ve kterých se dotazy nedají snadno seskupit. V těchto případech můžete chtít dotazovat se na graf prostředků Azure tak, že paralelním způsobem odešlete více dotazů. Níže je uveden příklad, jak _omezení rychlosti_ na základě hlaviček omezení v takových scénářích:
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {

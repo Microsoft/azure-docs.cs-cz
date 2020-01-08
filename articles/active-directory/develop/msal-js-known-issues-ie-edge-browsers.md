@@ -1,5 +1,5 @@
 ---
-title: Problémy MSAL. js v Internet Exploreru & Microsoft Edge | Azure
+title: Problémy v Internet Exploreru & Microsoft Edge (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Seznamte se s informacemi o tom, jaké jsou problémy při používání knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) s Internet Explorerem a prohlížeči Microsoft Edge.
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9f8ff420698d5afe617973abc7874256efe260
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916379"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424331"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Známé problémy v prohlížečích Internet Explorer a Microsoft Edge pomocí MSAL. js
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy v prohlížečích Internet Explorer a Microsoft Edge (MSAL. js)
 
 ## <a name="issues-due-to-security-zones"></a>Problémy způsobené zónami zabezpečení
 V IE a Microsoft Edge jsme měli několik sestav o problémech s ověřováním (od aktualizace *verze prohlížeče Microsoft Edge do 40.15063.0.0*). Sledujeme tyto informace a informovali o týmu Microsoft Edge. I když Microsoft Edge funguje na řešení, tady je popis často se vyskytujících potíží a možných alternativních řešení, která je možné implementovat.

@@ -1,20 +1,19 @@
 ---
 title: Správa sady .NET SDK pro Azure Stream Analytics
 description: Začínáme se Stream Analytics Management .NET SDK. Zjistěte, jak nastavit a spustit úlohy analýzy. Vytvoří projekt, vstupy, výstupy a transformace.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73b1392adb2beee9e60d078d865257889b3205f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612709"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426262"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Správa sady .NET SDK: Nastavení a spuštění úlohy analytics pomocí rozhraní API služby Azure Stream Analytics pro .NET
 Zjistěte, jak nastavit a spustit úlohy analytics pomocí rozhraní API pro Stream Analytics pro .NET pomocí sady .NET SDK správy. Nastavení projektu, vytvoření vstupní a výstupní zdroje, transformace a spuštění a zastavení úloh. Pro úlohy analýzy můžete Streamovat data z úložiště objektů Blob nebo z centra událostí.
@@ -27,11 +26,11 @@ Azure Stream Analytics je plně spravovaná služba poskytující zpracování u
 > Ukázkový kód v tomto článku jsme aktualizovali verze v2.x Management .NET SDK služby Azure Stream Analytics. Ukázkový kód pomocí verze sady SDK lagecy (1.x) používá, najdete v tématu [použití Management .NET SDK v1.x pro Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
 ## <a name="prerequisites"></a>Požadavky
-Před zahájením tohoto článku, musíte mít následující požadavky:
+Než začnete tento článek, musíte mít následující požadavky:
 
 * Nainstalujte Visual Studio 2019 nebo 2015.
 * Stáhněte a nainstalujte [sady Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Vytvořte skupinu prostředků Azure v rámci vašeho předplatného. V následujícím příkladu je ukázkový skript Azure Powershellu. Informace o Azure Powershellu najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview);  
+* Vytvořte skupinu prostředků Azure v rámci vašeho předplatného. Následující příklad je ukázkový skript Azure PowerShell. Informace o Azure Powershellu najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview);  
 
    ```powershell
    # Log in to your Azure account
@@ -50,7 +49,7 @@ Před zahájením tohoto článku, musíte mít následující požadavky:
 * Nastavení vstupní zdroj a cíl výstupu úlohy pro připojení k.
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
-Pokud chcete vytvořit úlohu služby analytics, použijte rozhraní API pro Stream Analytics pro platformu .NET, nejprve nastavte svůj projekt.
+Pokud chcete vytvořit úlohu analýzy, použijte rozhraní API Stream Analytics pro .NET, nejdřív nastavte svůj projekt.
 
 1. Vytvořte konzolovou aplikaci Visual Studio C# .NET.
 2. V konzole Správce balíčků pomocí následujících příkazů nainstalujte balíčky NuGet. První z nich je Azure Stream Analytics Management .NET SDK. Pro druhou kolekci slouží k ověřování klient služby Azure.
@@ -211,7 +210,7 @@ Vstupní zdroje z úložiště objektů Blob nebo centra událostí jsou vázan�
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Vytvořit cíl výstupu Stream Analytics
-Vytváří se cíl výstupu je podobné jako vytvoření vstupní zdroj Stream Analytics. Jako vstupní zdroje jsou výstup cíle vázané na konkrétní úlohy. Použití stejného cíle výstup pro různé úlohy, musí volat metodu znovu a zadejte jiný název úlohy.
+Vytvoření cíle výstupu je podobné jako vytvoření zdroje vstupu Stream Analytics. Jako vstupní zdroje jsou výstup cíle vázané na konkrétní úlohy. Použití stejného cíle výstup pro různé úlohy, musí volat metodu znovu a zadejte jiný název úlohy.
 
 Následující kód vytvoří cíl výstupu (Azure SQL database). Můžete upravit cíl výstupu datový typ nebo typ serializace.
 
@@ -288,8 +287,8 @@ Spuštěná úloha Stream Analytics můžete zastavit pomocí volání **Zastavi
 ## <a name="get-support"></a>Získat podporu
 Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další postup
-Když jste se naučili základy používání sady .NET SDK k vytváření a spouštění úloh analytics. Další informace naleznete v následujících článcích:
+## <a name="next-steps"></a>Další kroky
+Když jste se naučili základy používání sady .NET SDK k vytváření a spouštění úloh analytics. Další informace najdete v následujících článcích:
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

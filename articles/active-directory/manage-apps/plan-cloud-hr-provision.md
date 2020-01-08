@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 5d55aafc29b3b022d1023077d2d8f459b0608ae7
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 6f72371077aab813cc22c9bbbe755fdfaa9ac00a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433823"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -80,7 +80,7 @@ Pokud chcete nakonfigurovat aplikaci cloudového HR na integraci zřizování u�
 
 Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a je zajištěná v rámci služby AD nebo Azure AD, potřebujete také platnou licenci na předplatného Azure AD Premium P1 nebo vyšší. Jakýkoli nesprávný počet licencí vlastněných v aplikaci cloudového HR může vést k chybám při zřizování uživatelů.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Přístup globálního správce služby Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
 - Instance testu a výroby aplikace cloudového HR.
@@ -96,7 +96,7 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 | | [Jak nasadit zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/pKzyts6kfrw) |
 | Kurzy | Podívejte se na [Seznam kurzů, jak integrovat aplikace SaaS s Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) . |
 | | [Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
-| Časté otázky | [Automatizované zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#frequently-asked-questions) |
+| Časté otázky | [Automatizované zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Zřizování z Workday do Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -130,7 +130,7 @@ Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných oč
 
 Musíte zahrnout zástupce z organizace pro personální oddělení, který může poskytovat vstupy na stávající obchodní procesy a nároky pracovního procesu a požadavky na zpracování dat úloh.
 
-### <a name="plan-communications"></a>Plánování komunikace
+### <a name="plan-communications"></a>Plán komunikace
 
 Komunikace je zásadní pro úspěch jakékoli nové služby. Měli byste aktivně komunikovat s vašimi uživateli, jak se změní, když se změní, a jak získat podporu v případě, že dojde k problémům.
 
@@ -165,7 +165,7 @@ Integrace zřizování mezi aplikací cloudového HR a AD vyžaduje tyto čtyři
 - Tenant aplikace cloudového HR
 - Aplikace konektoru zřizování
 - Agent zřizování Azure AD Connect
-- Doména služby Active Directory
+- AD domain
 
 Topologie nasazení agenta Azure AD Connect zřizování závisí na počtu klientů aplikace cloudového HR a podřízených domén AD, které chcete integrovat. Pokud máte víc domén služby Active Directory, záleží na tom, jestli jsou domény AD souvislé [nebo nesouvislé.](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)
 
@@ -319,14 +319,14 @@ SSPR je jednoduchý způsob, jak správcům IT umožnit uživatelům resetovat h
 
 ## <a name="plan-for-initial-cycle"></a>Plánování počátečního cyklu
 
-Když se služba zřizování Azure AD poprvé spustí, provede [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-happens-during-provisioning) v rámci aplikace cloudového HR a vytvoří snímek všech uživatelských objektů v aplikaci cloudového hr. Doba potřebná pro počáteční cykly je přímo závislá na tom, kolik uživatelů se ve zdrojovém systému nachází. Počáteční cyklus pro některé klienty cloudových lidských aplikací s více než 100 000 uživateli může trvat dlouhou dobu.
+Když se služba zřizování Azure AD poprvé spustí, provede [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle) v rámci aplikace cloudového HR a vytvoří snímek všech uživatelských objektů v aplikaci cloudového hr. Doba potřebná pro počáteční cykly je přímo závislá na tom, kolik uživatelů se ve zdrojovém systému nachází. Počáteční cyklus pro některé klienty cloudových lidských aplikací s více než 100 000 uživateli může trvat dlouhou dobu.
 
 **Pro klienty aplikace pro velký cloudový personál (> 30 000) doporučujeme** spustit počáteční cyklus v progresivních fázích a spustit přírůstkové aktualizace až po ověření, že ve službě AD jsou pro různé scénáře zřizování uživatelů nastavené správné atributy. Postupujte podle následujícího pořadí:
 
 1. Spusťte počáteční cyklus pouze pro omezené skupiny uživatelů nastavením [filtru oborů](#plan-scoping-filters-and-attribute-mapping).
 2. Ověřte, jestli zřizování účtů AD a hodnoty atributů nastavené pro uživatele vybrané pro první spuštění. Pokud výsledek splňuje vaše očekávání, rozbalte filtr rozsah a postupně uveďte více uživatelů a ověřte výsledky pro druhý běh.
 
-Jakmile budete spokojeni s výsledky počátečního cyklu pro testovací uživatele, můžete spustit [přírůstkové aktualizace](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#incremental-cycles).
+Jakmile budete spokojeni s výsledky počátečního cyklu pro testovací uživatele, můžete spustit [přírůstkové aktualizace](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#incremental-cycles).
 
 ## <a name="plan-testing-and-security"></a>Plánování testování a zabezpečení
 
@@ -358,7 +358,7 @@ V rámci nasazení nové služby je běžné, že je nutné provést kontrolu za
 
 Pokud implementace zřizování uživatelů v cloudovém prostředí v produkčním prostředí nefunguje podle potřeby, následující kroky vrácení zpět vám můžou pomoct při návratu do předchozího známého funkčního stavu:
 
-1. Zkontrolujte [souhrnnou sestavu zřizování](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting#getting-provisioning-reports-from-the-azure-management-portal) a [protokoly zřizování](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting#provisioning-audit-logs) (informace najdete v tématu [Správa zřizování uživatelů cloudových lidských aplikací](#manage-your-configuration)), abyste zjistili, jaké nesprávné operace byly provedeny na ovlivněných uživatelích a skupinách.
+1. Zkontrolujte [souhrnnou sestavu zřizování](check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal) a [protokoly zřizování](check-status-user-account-provisioning.md#provisioning-logs-preview) (informace najdete v tématu [Správa zřizování uživatelů cloudových lidských aplikací](#manage-your-configuration)), abyste zjistili, jaké nesprávné operace byly provedeny na ovlivněných uživatelích a skupinách.
 2. Poslední známý dobrý stav uživatelů a skupin, které jsou ovlivněné, se dá určit prostřednictvím protokolů auditu zřizování nebo kontrolou cílových systémů (Azure AD nebo AD).
 3. Spolupracujte s vlastníkem aplikace a aktualizujte uživatele nebo skupiny, které ovlivnily přímo v aplikaci, pomocí posledních známých hodnot stavu dobrý stav.
 
@@ -374,7 +374,7 @@ Azure AD může poskytovat další poznatky k zřizování uživatelů a provozn
 
 ### <a name="gain-insights-from-reports-and-logs"></a>Získání přehledů ze sestav a protokolů
 
-Po úspěšném [počátečním cyklu](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-happens-during-provisioning)bude služba zřizování Azure AD i nadále spouštět přírůstkové přírůstkové aktualizace po neomezenou dobu v intervalech definovaných v kurzech specifických pro jednotlivé aplikace, dokud nedojde k jedné z následujících událostí:
+Po úspěšném [počátečním cyklu](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle)bude služba zřizování Azure AD i nadále spouštět přírůstkové přírůstkové aktualizace po neomezenou dobu v intervalech definovaných v kurzech specifických pro jednotlivé aplikace, dokud nedojde k jedné z následujících událostí:
 
 - Služba se ručně zastavila a nový počáteční cyklus se aktivoval pomocí [Azure Portal](https://portal.azure.com/) nebo pomocí příslušného příkazu [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) .
 - Nový počáteční cyklus se spustí z důvodu změny mapování atributů nebo filtrů oborů.

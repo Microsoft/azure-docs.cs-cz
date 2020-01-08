@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e826442c816f83c875b907bbf3054793ebb382a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033135"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358271"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows s více síťovými kartami
 K virtuálním počítačům v Azure můžou být připojené několik síťových adaptérů (nic). Běžným scénářem je použití různých podsítí pro front-endové a back-endové připojení. K virtuálnímu počítači můžete přidružit více síťových adaptérů k několika podsítím, ale tyto podsítě se musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s připojenými více síťovými rozhraními. Naučíte se také, jak přidat nebo odebrat síťové karty z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače.
@@ -218,7 +218,7 @@ Pokud chcete odebrat virtuální síťovou kartu z existujícího virtuálního 
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>Vytvoření více síťových karet pomocí šablon
-Šablony Azure Resource Manager poskytují způsob vytvoření více instancí prostředku během nasazování, například vytvoření více síťových karet. Správce prostředků šablony používají k definování vašeho prostředí deklarativní soubory JSON. Další informace najdete v tématu [přehled Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). K určení počtu instancí, které se mají vytvořit, můžete použít možnost *Kopírovat* :
+Šablony Azure Resource Manager poskytují způsob vytvoření více instancí prostředku během nasazování, například vytvoření více síťových karet. Správce prostředků šablony používají k definování vašeho prostředí deklarativní soubory JSON. Další informace najdete v tématu [přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md). K určení počtu instancí, které se mají vytvořit, můžete použít možnost *Kopírovat* :
 
 ```json
 "copy": {

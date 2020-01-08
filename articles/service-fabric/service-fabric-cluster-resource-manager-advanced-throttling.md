@@ -1,49 +1,40 @@
 ---
-title: Omezování v cluster resource manager Service Fabric | Dokumentace Microsoftu
-description: Naučte se konfigurovat omezení pomocí Service Fabric Cluster Resource Manager k dispozici.
-services: service-fabric
-documentationcenter: .net
+title: Omezení ve Správci prostředků clusteru Service Fabric
+description: Naučte se konfigurovat omezení poskytovaná Správce prostředků clusteru Service Fabric.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 4abc3e4a28b8b98070affe19b7b7ca38f904c45b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60384965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452161"
 ---
-# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Omezení šířky pásma Service Fabric Cluster Resource Manageru
-I v případě, že jste správně nakonfigurovali Cluster Resource Manager, můžete získat přerušit clusteru. Například může být současně uzlu a odolnost domény selhání – co by mohlo dojít, pokud, ke kterým došlo během upgradu? Cluster Resource Manageru se vždy pokusí opravit vše, využívání prostředků clusteru změnit uspořádání a opravy clusteru. Omezení pomáhají backstop tak, aby cluster můžete používat prostředky na stabilizaci - uzly se vraťte, rozdělení sítě opravy, nasadí opravený bitů.
+# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Omezování Service Fabric clusteru Správce prostředků
+I v případě, že cluster Správce prostředků správně nakonfigurovaný, může se cluster přerušit. Může se například jednat o současný počet selhání uzlů a domén selhání – co se stane, když během upgradu došlo k tomu? Cluster Správce prostředků se vždy snaží opravit vše a spotřebovávat prostředky clusteru, které se pokoušejí znovu uspořádat a opravit cluster. Omezení poskytují možnost zpětného zastavení, aby cluster mohl použít prostředky ke stabilizaci – uzly se vrátí. síťové oddíly zacelené a opravené bity se nasazují.
 
-Smyslem těchto řadu situací, Service Fabric Cluster Resource Manager obsahuje několik omezení. Tato omezení jsou všechny hammers docela velké. Obecně se nesmí změnit bez pečlivé plánování a testování.
+Aby bylo možné s těmito typy situací pomáhat, Cluster Service Fabric Správce prostředků zahrnuje několik omezení. Tato omezení jsou všechna poměrně velká kladiva. Obvykle by se neměly měnit bez pečlivého plánování a testování.
 
-Pokud změníte omezení Cluster Resource Manageru, by měl naladit skutečné očekávané zatížení. Můžete určit, že je potřeba mít několik omezení na místě, i v případě, znamená to, že cluster trvá déle stabilizovat v některých situacích. Testování je potřeba určit správné hodnoty pro omezení. Omezení musí být dostatečně vysoká, aby umožnit, aby cluster reakce na změny v přiměřené době a dostatečně nízko, aby se zabránilo ve skutečnosti příliš velkému využití prostředků. 
+Pokud změníte omezení Správce prostředků clusteru, měli byste je ladit na očekávané skutečné zatížení. Můžete určit, že je nutné mít nějaká omezení, i když to znamená, že cluster trvá v některých situacích déle. K určení správných hodnot omezení se vyžaduje testování. Omezení musí být dostatečně vysoká, aby cluster mohl reagovat na změny v rozumné době a dostatečně malý, aby nedocházelo k příliš velkému množství spotřeby prostředků. 
 
-Ve většině případů zaznamenali jsme zákazníkům použít omezení, které bylo, protože byl již v prostředí omezené prostředků. Několik příkladů by byla omezena šířka pásma sítě pro jednotlivé uzly nebo disky, které nejsou možné sestavit mnoho stavových replik paralelně vzhledem k omezením propustnosti. Bez omezení může operace zahlcovat tyto prostředky, způsobí operace selhat nebo být pomalé. V těchto situacích zákazníci používají omezení a věděl, že bylo rozšíření množství času by to obnášelo clusteru dosáhnout stabilního stavu. Zákazníci také rozumí, že můžou být nakonec spuštěnou na nižší celkovou spolehlivost byly omezené.
+Ve většině případů jsme zákazníkům viděli omezení, protože byly již v prostředí s omezeným využitím prostředků. V některých příkladech by byla omezená šířka pásma sítě pro jednotlivé uzly, nebo disky, které nemůžou sestavovat mnoho stavových replik paralelně v důsledku omezení propustnosti. Bez omezení můžou operace způsobit zahlcení těchto prostředků, což způsobí selhání operací nebo zpomalení. V těchto situacích zákazníci použili omezení a věděli, že prodlouží dobu, po kterou by cluster mohl dosáhnout stabilního stavu. Zákazníci také rozumí, že by mohli ukončit provoz při nižší celkové spolehlivosti, zatímco byly omezeny.
 
 
 ## <a name="configuring-the-throttles"></a>Konfigurace omezení
 
-Service Fabric má dva mechanismy pro omezení počtu pohybů plb typu repliky. Výchozí mechanismus, který existoval Service Fabric 5.7 představuje omezení jako absolutní počet přesune povolené. To nebude fungovat pro clustery všech velikostí. Zejména u velkých clusterech výchozí hodnota může být příliš malá, výrazně se zpomalení vyrovnávání i v případě, že je nezbytné, při nemají žádný vliv ve menší clustery. Tento mechanismus předchozí bylo nahrazeno založenou na procentech omezení šířky pásma, která škáluje líp s dynamické clustery, ve kterých počet služeb a uzlů pravidelně měnit.
+Service Fabric má dva mechanismy omezení počtu pohybů repliky. Výchozí mechanismus, který existoval před Service Fabric 5,7 představuje omezení jako absolutní počet povolených přesunutí. To nefunguje u clusterů všech velikostí. Zejména u velkých clusterů může být výchozí hodnota příliš malá, což výrazně zpomaluje vyvážení, i když je to nutné, a to bez vlivu na menší clustery. Tento předchozí mechanismus byl nahrazen omezením založeném na procentech, které se lépe škálují dynamickými clustery, ve kterých se počet služeb a uzlů pravidelně mění.
 
-Omezení jsou založeny na procento počet replik v clusterech. Povolit omezení procento na základě vyjádření pravidlo: "nelze přesunout více než 10 % repliky v intervalu 10 minut", např.
+Omezení vycházejí z procenta počtu replik v clusterech. Omezení na základě procenta povolit vyjádření pravidla: "Nepřesouvat více než 10% replik v intervalu 10 minut", například.
 
-Nastavení konfigurace pro založenou na procentech omezení jsou:
+Nastavení konfigurace pro omezení na základě procenta:
 
-  - GlobalMovementThrottleThresholdPercentage – maximální počet pohybů plb typu v clusteru povolené v okamžiku, vyjádřené jako procentní podíl celkového počtu replik v clusteru. Hodnota 0 znamená bez omezení. Výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThreshold nejsou zadány, použije se konzervativnější limit.
-  - GlobalMovementThrottleThresholdPercentageForPlacement – maximální počet pohybů plb typu povolené během fáze umístění vyjádřené jako procentní podíl celkového počtu replik v clusteru. Hodnota 0 znamená bez omezení. Výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThresholdForPlacement nejsou zadány, použije se konzervativnější limit.
-  - GlobalMovementThrottleThresholdPercentageForBalancing – maximální počet pohybů plb typu povolené vyrovnávání fázi, vyjádřené jako procentní podíl celkového počtu replik v clusteru. Hodnota 0 znamená bez omezení. Výchozí hodnota je 0. Pokud toto nastavení a GlobalMovementThrottleThresholdForBalancing nejsou zadány, použije se konzervativnější limit.
+  - GlobalMovementThrottleThresholdPercentage – maximální počet pohybů povolených v clusteru kdykoli, vyjádřený jako procento celkového počtu replik v clusteru. 0 označuje bez omezení. Výchozí hodnota je 0. Pokud je zadáno jak toto nastavení, tak GlobalMovementThrottleThreshold, použije se větší konzervativní limit.
+  - GlobalMovementThrottleThresholdPercentageForPlacement – maximální počet pohybů povolený během fáze umístění, vyjádřený jako procento celkového počtu replik v clusteru. 0 označuje bez omezení. Výchozí hodnota je 0. Pokud je zadáno jak toto nastavení, tak GlobalMovementThrottleThresholdForPlacement, použije se větší konzervativní limit.
+  - GlobalMovementThrottleThresholdPercentageForBalancing – maximální počet pohybů povolený během fáze vyrovnávání, vyjádřené jako procento celkového počtu replik v clusteru. 0 označuje bez omezení. Výchozí hodnota je 0. Pokud je zadáno jak toto nastavení, tak GlobalMovementThrottleThresholdForBalancing, použije se větší konzervativní limit.
 
-Při zadávání procento omezení, zadejte jako 0,05 5 %. Interval, ve kterém se řídí těchto omezení je GlobalMovementThrottleCountingInterval, které se zadávají v sekundách.
+Když zadáte procento omezení, zadáte 5% jako 0,05. Interval, ve kterém se tato omezení řídí, je GlobalMovementThrottleCountingInterval, který je zadaný v sekundách.
 
 
 ``` xml
@@ -55,7 +46,7 @@ Při zadávání procento omezení, zadejte jako 0,05 5 %. Interval, ve kterém 
 </Section>
 ```
 
-prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery:
+přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
 
 ```json
 "fabricSettings": [
@@ -83,14 +74,14 @@ prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.jso
 ]
 ```
 
-### <a name="default-count-based-throttles"></a>Výchozí omezení podle počtu
-Tyto informace jsou poskytnuté pro případ máte starší clustery nebo stále zachovat tyto konfigurace v clusterech, které od té doby byly upgradovány. Obecně se doporučuje, ty jsou nahrazeny výše uvedené omezení založenou na procentech. Protože založenou na procentech omezení je ve výchozím nastavení zakázané, zůstanou tato omezení výchozí omezení pro cluster, dokud jsou zakázány a nahradí omezení založenou na procentech. 
+### <a name="default-count-based-throttles"></a>Výchozí omezení na základě počtu
+Tyto informace jsou k dispozici v případě, že máte starší clustery nebo tyto konfigurace v clusterech, které byly upgradovány, zůstanou zachované. Obecně se doporučuje, aby se tyto míry nahradily výše uvedenými omezeními na základě procenta. Vzhledem k tomu, že omezování založené na procentech je ve výchozím nastavení zakázané, zůstanou tato omezení výchozím omezením pro cluster, dokud nejsou zakázaná a nahrazená omezeními založenými na procentech. 
 
-  - GlobalMovementThrottleThreshold – toto nastavení určuje celkový počet pohybů plb typu v clusteru nějakou dobu. Množství času se zadávají v sekundách, jako GlobalMovementThrottleCountingInterval. Výchozí hodnota GlobalMovementThrottleThreshold je 1000 a výchozí hodnota GlobalMovementThrottleCountingInterval je 600.
-  - MovementPerPartitionThrottleThreshold – toto nastavení určuje celkový počet pohybů plb typu pro libovolný oddíl služby nějakou dobu. Množství času se zadávají v sekundách, jako MovementPerPartitionThrottleCountingInterval. Výchozí hodnota MovementPerPartitionThrottleThreshold je 50 a výchozí hodnota MovementPerPartitionThrottleCountingInterval je 600.
+  - GlobalMovementThrottleThreshold – toto nastavení řídí celkový počet přesunů v clusteru v určitou dobu. Doba je určena v sekundách jako GlobalMovementThrottleCountingInterval. Výchozí hodnota pro GlobalMovementThrottleThreshold je 1000 a výchozí hodnota pro GlobalMovementThrottleCountingInterval je 600.
+  - MovementPerPartitionThrottleThreshold – toto nastavení řídí celkový počet přesunů pro libovolný oddíl služby za chvíli. Doba je určena v sekundách jako MovementPerPartitionThrottleCountingInterval. Výchozí hodnota pro MovementPerPartitionThrottleThreshold je 50 a výchozí hodnota pro MovementPerPartitionThrottleCountingInterval je 600.
 
-Konfiguraci těchto omezení používá stejný vzor jako založenou na procentech omezování.
+Konfigurace pro tato omezení následuje po stejném vzoru jako omezování založené na procentech.
 
-## <a name="next-steps"></a>Další postup
-- Přečtěte si o tom, jak Cluster Resource Manager spravuje a vyrovnává zatížení v clusteru, přečtěte si článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
-- Cluster Resource Manager má mnoho možností pro popis clusteru. Další informace o nich najdete v tomto článku na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
+## <a name="next-steps"></a>Další kroky
+- Informace o tom, jak cluster Správce prostředků spravuje a vyrovnává zatížení v clusteru, najdete v článku o [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md) .
+- Správce prostředků clusteru má mnoho možností pro popis clusteru. Pokud se o nich chcete dozvědět víc, přečtěte si článek [popisující Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) .

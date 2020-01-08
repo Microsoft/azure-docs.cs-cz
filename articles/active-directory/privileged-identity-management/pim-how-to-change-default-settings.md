@@ -10,20 +10,33 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee99a8e75fe8da85b1cf82623ed110991db24b66
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e15418524790e2169a6f60b79629f15f1d141ec4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429649"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
 Správce privilegovaných rolí může přizpůsobovat Privileged Identity Management (PIM) ve své organizaci Azure Active Directory (Azure AD), a to včetně změny prostředí pro uživatele, který aktivuje přiřazení oprávněné role.
+
+## <a name="determine-your-version-of-pim"></a>Určení vaší verze PIM
+
+Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktualizuje na novou verzi, která se shoduje s prostředími pro role prostředků Azure. Tím se vytvoří další funkce a také [změny stávajícího rozhraní API](azure-ad-roles-features.md#api-changes). I když je nová verze zahrnuta, postupy, které provedete v tomto článku, závisí na verzi Privileged Identity Management, kterou máte v současnosti k dispozici. Podle pokynů v této části určete, kterou verzi Privileged Identity Management máte. Po zjištění vaší verze Privileged Identity Management můžete vybrat postupy v tomto článku, které odpovídají této verzi.
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
+
+    ![Nové verze rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+
+Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro role Azure AD.
+
+# <a name="previous-versiontabprevious"></a>[Předchozí verze](#tab/previous)
 
 ## <a name="open-role-settings"></a>Otevřít nastavení role
 
@@ -31,21 +44,21 @@ Pomocí těchto kroků otevřete nastavení role Azure AD.
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Klikněte na **role Azure AD**.
+1. Vyberte **role Azure AD**.
 
-1. Klikněte na **Nastavení**.
+1. Vyberte **nastavení**.
 
     ![Role Azure AD – nastavení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
-1. Klikněte na **role**.
+1. Vyberte **role**.
 
-1. Klikněte na roli, jejíž nastavení chcete nakonfigurovat.
+1. Vyberte roli, jejíž nastavení chcete nakonfigurovat.
 
     ![Role Azure AD – role nastavení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
     Na stránce nastavení pro každou roli existuje několik nastavení, která můžete konfigurovat. Tato nastavení mají vliv jenom na uživatele, kteří jsou **oprávněná** přiřazení, ne na **trvalá** přiřazení.
 
-## <a name="activations"></a>Aktivací
+## <a name="activations"></a>Aktivace
 
 Pomocí posuvníku **Aktivace** nastavte maximální dobu v hodinách, po kterou role zůstane aktivní, než vyprší její platnost. Tato hodnota může být v rozmezí od 1 do 72 hodin.
 
@@ -65,7 +78,7 @@ Další informace najdete v tématu [e-mailová oznámení v Privileged Identity
 
 Použijte přepínač **lístku incident/požadavek** , který vyžádá oprávněným správcům, aby při aktivaci jejich role zahrnuli číslo lístku. Tento postup může zvýšit efektivitu přístupu k rolím.
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Multi-factor Authentication
 
 Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyžadovat, aby uživatelé před aktivací svých rolí vyžadovali ověření své identity pomocí vícefaktorového ověřování. Musí jenom ověřit identitu jenom jednou pro každou relaci, a ne pokaždé, když se role aktivuje. Při povolování vícefaktorového ověřování je potřeba mít na paměti dvě tipy:
 
@@ -102,15 +115,104 @@ Pokud chcete delegovat požadované schválení pro aktivaci role, postupujte po
 
     Pokud nezadáte žádné schvalovatele, bude správce privilegovaných rolí výchozím schvalovatelem a pak bude vyžadován ke schválení všech žádostí o aktivaci této role.
 
-1. Chcete-li zadat schvalovatele, klikněte na **Vybrat schvalovatele**.
+1. Chcete-li přidat schvalovatele, klikněte na **Vybrat schvalovatele**.
 
     ![Role Azure AD – nastavení-vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Kromě správce privilegovaných rolí vyberte aspoň jednoho schvalovatele a potom klikněte na **Vybrat**. Můžete vybrat uživatele nebo skupiny. Doporučujeme aspoň dva schvalovatele. I v případě, že jako schvalovatele přidáte sebe sama, nemůžete sami schválit aktivaci role. Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
+1. Kromě správce privilegovaných rolí vyberte aspoň jednoho schvalovatele a potom klikněte na **Vybrat**. Můžete vybrat uživatele nebo skupiny. Doporučujeme přidat alespoň dva schvalovatele. I v případě, že jako schvalovatele přidáte sebe sama, nemůžete sami schválit aktivaci role. Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
 
 1. Po zadání všech nastavení role uložte změny kliknutím na **Uložit** .
 
-<!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->
+# <a name="new-versiontabnew"></a>[Nová verze](#tab/new)
+
+## <a name="open-role-settings"></a>Otevřít nastavení role
+
+Pomocí těchto kroků otevřete nastavení role Azure AD.
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+
+1. Otevřete **Azure AD Privileged Identity Management**.
+
+1. Vyberte **role Azure AD**.
+
+1. Vyberte **Nastavení role**.
+
+    ![Stránka nastavení role výpis rolí prostředků Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+
+1. Vyberte roli, jejíž nastavení chcete nakonfigurovat.
+
+    ![Stránka s podrobnostmi nastavení role – seznam několika přiřazení a nastavení aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+
+1. Výběrem možnosti **Upravit** otevřete stránku nastavení rolí.
+
+    ![Stránka upravit nastavení role s možnostmi aktualizace nastavení přiřazení a aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+
+    V podokně nastavení role pro každou roli existuje několik nastavení, která můžete konfigurovat.
+
+## <a name="assignment-duration"></a>Doba trvání přiřazení
+
+Při konfiguraci nastavení role můžete vybrat ze dvou možností trvání přiřazení pro každý typ přiřazení (způsobilé a aktivní). Tyto možnosti se stanou výchozím maximálním trváním, když je uživatel přiřazen k roli v Privileged Identity Management.
+
+Můžete vybrat jednu z následujících možností trvání přiřazení s **nárokem** :
+
+| | |
+| --- | --- |
+| **Povolení trvalého oprávněného přiřazení** | Správci prostředků mohou přiřadit trvalé oprávněné přiřazení. |
+| **Vypršení platnosti oprávněného přiřazení** | Správci prostředků mohou vyžadovat, aby u všech oprávněných přiřazení bylo zadané počáteční a koncové datum. |
+
+A můžete zvolit jednu z těchto **aktivních** možností trvání přiřazení:
+
+| | |
+| --- | --- |
+| **Povoluje trvalé aktivní přiřazení** | Správci prostředků mohou přiřadit trvalé aktivní přiřazení. |
+| **Po vypršení platnosti aktivního přiřazení** | Správci prostředků mohou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum. |
+
+> [!NOTE]
+> Všechna přiřazení, která mají zadané koncové datum, může obnovit správci prostředků. Uživatelé můžou taky iniciovat žádosti samoobslužné služby a [prodloužit nebo prodloužit přiřazení rolí](pim-resource-roles-renew-extend.md).
+
+## <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
+
+Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure pro dva různé scénáře.
+
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Vyžadovat Multi-Factor Authentication aktivnímu přiřazení
+
+V některých případech můžete chtít přiřadit uživatele nebo skupinu do role po krátkou dobu (například jeden den). V takovém případě nemusíte přiřazeným uživatelům požádat o aktivaci. V tomto scénáři Privileged Identity Management nemůžou vymáhat ověřování službou Multi-Factor Authentication, pokud uživatel použije přiřazení role, protože už je v roli aktivní od okamžiku, kdy je přiřazený.
+
+Chcete-li zajistit, že správce prostředků, který odpovídá přiřazení, říká, že jsou k němu přihlášeni, můžete vynutit vícefaktorové ověřování u aktivního přiřazení zaškrtnutím políčka **vyžadovat Multi-Factor Authentication v aktivním přiřazení** .
+
+### <a name="require-multi-factor-authentication-on-activation"></a>Při aktivaci vyžadovat vícefaktorové ověřování
+
+Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, že používají Multi-Factor Authentication Azure, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
+
+Chcete-li před aktivací vyžadovat službu Multi-Factor Authentication, zaškrtněte políčko **vyžadovat Multi-Factor Authentication při aktivaci** .
+
+Další informace naleznete v tématu [Multi-Factor Authentication a Privileged Identity Management](pim-how-to-require-mfa.md).
+
+## <a name="activation-maximum-duration"></a>Maximální doba trvání aktivace
+
+Pomocí posuvníku **maximální doby trvání aktivace** můžete nastavit maximální dobu v hodinách, po kterou role zůstane aktivní, než vyprší její platnost. Tato hodnota může být od 1 do 24 hodin.
+
+## <a name="require-justification"></a>Vyžadovat odůvodnění
+
+Můžete vyžadovat, aby uživatelé při aktivaci zadali obchodní odůvodnění. Chcete-li vyžadovat odůvodnění, zaškrtněte políčko **vyžadovat odůvodnění u aktivního přiřazení** nebo políčko **vyžadovat odůvodnění při aktivaci** .
+
+## <a name="require-approval-to-activate"></a>Vyžadovat schválení pro aktivaci
+
+Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto kroků.
+
+1. Zaškrtněte políčko **vyžadovat schválení k aktivaci** .
+
+1. Vyberte **Vybrat schvalovatelé** a otevřete stránku **Vybrat člen nebo skupinu** .
+
+    ![Vyberte uživatele nebo podokno skupiny pro výběr schvalovatelů.](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+
+1. Vyberte aspoň jednoho uživatele nebo skupinu a potom klikněte na **Vybrat**. Můžete přidat libovolnou kombinaci uživatelů a skupin. Musíte vybrat aspoň jednoho schvalovatele. Neexistují žádní výchozí schvalovatelé.
+
+    Vaše výběry se zobrazí v seznamu vybraných schvalovatelů.
+
+1. Po zadání všech nastavení role vyberte **aktualizovat** , aby se změny uložily.
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

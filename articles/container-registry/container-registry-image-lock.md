@@ -3,12 +3,12 @@ title: Uzamknutí imagí
 description: Nastavte atributy pro Image kontejneru nebo úložiště, aby se nemohlo odstranit ani přepsat v registru kontejnerů Azure.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442216"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Uzamknutí image kontejneru ve službě Azure Container Registry
 
@@ -23,7 +23,11 @@ Tento článek vyžaduje, abyste spouštěli Azure CLI v Azure Cloud Shell nebo 
 
 Ve výchozím nastavení je označený obrázek v Azure Container Registry *proměnlivý*, takže s příslušnými oprávněními můžete opakovaně aktualizovat a nasdílet image se stejnou značkou do registru. V případě potřeby můžete také [Odstranit](container-registry-delete.md) image kontejneru. Toto chování je užitečné při vývoji imagí a potřebě udržovat velikost registru.
 
-Pokud však nasadíte image kontejneru do produkčního prostředí, budete možná potřebovat *neměnné* image kontejneru. Neproměnlivá Image je taková, kterou nemůžete omylem odstranit ani přepsat. Pomocí příkazu [AZ ACR úložiště Update][az-acr-repository-update] nastavte atributy úložiště, abyste mohli:
+Pokud však nasadíte image kontejneru do produkčního prostředí, budete možná potřebovat *neměnné* image kontejneru. Neproměnlivá Image je taková, kterou nemůžete omylem odstranit ani přepsat.
+
+V tématu [doporučení pro označování a image kontejnerů](container-registry-image-tag-version.md) , které se týkají označení a verze imagí v registru, najdete v tématu doporučení.
+
+Pomocí příkazu [AZ ACR úložiště Update][az-acr-repository-update] nastavte atributy úložiště, abyste mohli:
 
 * Uzamčení verze bitové kopie nebo celého úložiště
 
@@ -31,7 +35,7 @@ Pokud však nasadíte image kontejneru do produkčního prostředí, budete mož
 
 * Zabránit operacím čtení (přijetí) v imagi verze nebo v celém úložišti
 
-Příklady najdete v následujících oddílech.
+Příklady najdete v následujících oddílech. 
 
 ## <a name="lock-an-image-or-repository"></a>Uzamknutí obrázku nebo úložiště 
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3063767c73f4639e667d5f64b0563f1da396cfbf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439923"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadné kopírování z databáze pomocí řídicí tabulky
 
@@ -33,12 +33,16 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 - **Foreach** získá seznam oddílů z aktivity vyhledávání a projde každý oddíl aktivitou kopírování.
 - **Kopírovat** zkopíruje všechny oddíly ze zdrojového úložiště databáze do cílového úložiště.
 
-Šablona definuje pět parametrů:
+Šablona definuje následující parametry:
 - *Control_Table_Name* je vaše externí tabulka ovládacího prvku, která ukládá seznam oddílů pro zdrojovou databázi.
 - *Control_Table_Schema_PartitionID* je název sloupce v tabulce externích ovládacích prvků, ve kterém jsou uložena ID jednotlivých oddílů. Ujistěte se, že je ID oddílu jedinečné pro každý oddíl ve zdrojové databázi.
 - *Control_Table_Schema_SourceTableName* je vaše externí řídicí tabulka, která ukládá názvy jednotlivých tabulek ze zdrojové databáze.
 - *Control_Table_Schema_FilterQuery* je název sloupce v tabulce externích ovládacích prvků, ve kterém je uložený dotaz filtru, který získá data z každého oddílu zdrojové databáze. Pokud jste například děleni data po rocích, dotaz uložený v každém řádku může být podobný příkazu SELECT * FROM DataSource, kde LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' a LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' '.
-- *Data_Destination_Folder_Path* je cesta, kam se zkopírují data do cílového úložiště. Tento parametr je zobrazen pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud zvolíte SQL Data Warehouse jako cílové úložiště, tento parametr není povinný. Názvy tabulek a schématu v SQL Data Warehouse musí být stejné jako ty ve zdrojové databázi.
+- *Data_Destination_Folder_Path* je cesta, kam se zkopírují data do cílového úložiště (k dispozici, pokud je zvolený cíl "File System" nebo "Azure Data Lake Storage Gen1"). 
+- *Data_Destination_Container* je cesta ke kořenové složce, do které se zkopírují data do cílového úložiště. 
+- *Data_Destination_Directory* je cesta k adresáři v kořenovém adresáři, kam se zkopírují data do cílového úložiště. 
+
+Poslední tři parametry, které definují cestu v cílovém úložišti, jsou viditelné pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud jako cílové úložiště zvolíte Azure synapse Analytics (dřív SQL DW), tyto parametry se nevyžadují. Názvy tabulek a schématu v SQL Data Warehouse musí být stejné jako ty ve zdrojové databázi.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
@@ -68,7 +72,7 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 
 3. Vytvořte **nové** připojení ke zdrojové databázi, ze které kopírujete data.
 
-     ![Vytvoří nové připojení ke zdrojové databázi.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![Vytvoří nové připojení ke zdrojové databázi.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
 4. Vytvořte **nové** připojení k cílovému úložišti dat, do kterého kopírujete data.
 
@@ -76,8 +80,6 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 
 5. Vyberte **Použít tuto šablonu**.
 
-    ![Použít tuto šablonu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
-    
 6. Zobrazí se kanál, jak je znázorněno v následujícím příkladu:
 
     ![Kontrola kanálu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
@@ -90,7 +92,7 @@ Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z ext
 
     ![Kontrola výsledku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Volitelné Pokud jste jako cíl dat zvolili SQL Data Warehouse, musíte pro přípravu zadat připojení ke službě Azure Blob Storage, jak to vyžaduje SQL Data Warehouse základ. Ujistěte se, že kontejner ve službě BLOB Storage již byl vytvořen.
+9. Volitelné Pokud jste jako cíl dat vybrali Azure synapse Analytics (dřív SQL DW), musíte pro přípravu zadat připojení k úložišti objektů BLOB v Azure, jak to vyžaduje SQL Data Warehouse báze. Šablona automaticky vygeneruje cestu kontejneru pro úložiště objektů BLOB. Ověřte, zda byl kontejner vytvořen po spuštění kanálu.
     
     ![Základní nastavení](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

@@ -1,65 +1,58 @@
 ---
-title: Model hostingu Azure Service Fabric | Dokumentace Microsoftu
-description: Popisuje vztah mezi repliky (nebo instance) nasazené služby Service Fabric a proces hostitele služby.
-services: service-fabric
-documentationcenter: .net
+title: Model hostování Azure Service Fabric
+description: Popisuje vztah mezi replikami (nebo instancemi) nasazené služby Service Fabric a procesem hostitele služeb.
 author: harahma
-manager: chackdan
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60483567"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464594"
 ---
-# <a name="azure-service-fabric-hosting-model"></a>Model hostingu Azure Service Fabric
-Tento článek poskytuje přehled modelů poskytované Azure Service Fabric pro hostování aplikací a popisuje rozdíly mezi **sdílený proces** a **exkluzivní procesu** modely. Popisuje, jak vypadá aplikace nasazené na uzlu Service Fabricu a vztah mezi repliky (nebo instance), služby a služby hostitelský proces.
+# <a name="azure-service-fabric-hosting-model"></a>Model hostování Azure Service Fabric
+Tento článek obsahuje přehled modelů hostování aplikací poskytovaných službou Azure Service Fabric a popisuje rozdíly mezi **sdíleným procesem** a modely **exkluzivních procesů** . Popisuje, jak nasazená aplikace vypadá na Service Fabric uzlu, a vztahu mezi replikami (nebo instancemi) služby a procesem služby-Host.
 
-Než budete pokračovat, ujistěte se, že rozumíte různé koncepty a relace je vysvětleno v [modelování aplikace v Service Fabric][a1]. 
+Než budete pokračovat, ujistěte se, že rozumíte různým konceptům a vztahům, které jsou vysvětleny v tématu [modelování aplikace v Service Fabric][a1]. 
 
 > [!NOTE]
-> V tomto článku pokud výslovně uvedené jako to znamená něco jiného:
+> V tomto článku, pokud výslovně nezmiňujete o něco jiného:
 >
-> - *Repliky* odkazuje na obou repliku stavové služby a instance bezstavové služby.
-> - *CodePackage* je zpracováván jako ekvivalentní *ServiceHost* proces, který se registruje *ServiceType*a repliky hostitelé služeb, který *ServiceType*.
+> - *Replika* odkazuje jak na repliku stavové služby, tak na instanci bezstavové služby.
+> - *CodePackage* se považuje za ekvivalent procesu *ServiceHost* , který registruje *ServiceType*a hostuje repliky služeb tohoto *ServiceType*.
 >
 
-Informace o tom model hostingu, projděme si příklad. Řekněme, že máme *ApplicationType* "MyAppType", který má *ServiceType* "MyServiceType". Je poskytována "MyServiceType" *ServicePackage* "MyServicePackage", který má *CodePackage* "MyCodePackage". Zaregistruje "MyCodePackage" *ServiceType* "MyServiceType' při spuštění.
+Abychom porozuměli hostujícímu modelu, Podívejme se na příklad. Řekněme, že máme *typu ApplicationType* ' MyAppType ', který má *ServiceType* ' MyServiceType '. ' MyServiceType ' je poskytována ' *MyServicePackage* ', který má *CodePackage* ' MyCodePackage '. Při spuštění *zaregistruje ' MyCodePackage* ' MyServiceType '.
 
-Řekněme, že budeme mít cluster se třemi uzly a vytvoříme *aplikace* **fabric: / App1** typu "MyAppType". V této aplikaci **fabric: / App1**, můžeme vytvořit službu **fabric: / App1/ServiceA** typu "MyServiceType". Tato služba má dva oddíly (například **P1** a **P2**) a tři repliky na oddíl. Následující diagram znázorňuje zobrazení této aplikace, protože skončilo nasazené na uzlu.
-
-
-![Diagram uzlu zobrazení nasazené aplikace][node-view-one]
+Řekněme, že máme cluster se třemi uzly a vytvoříme *aplikační* **Fabric:/app1** typu MyAppType. V rámci této aplikace **Fabric:/app1**vytvoříme Service **Fabric:/app1/služba** typu MyServiceType. Tato služba má dva oddíly (například **P1** a **P2**) a tři repliky na oddíl. Následující diagram znázorňuje zobrazení této aplikace v případě, že skončí její nasazení na uzlu.
 
 
-Service Fabric aktivuje "MyServicePackage", který spouští "MyCodePackage", který je hostitelem repliky z obou oddílů. Všechny uzly v clusteru mít stejný zobrazení, protože jsme zvolili počet replik na oddíl musí rovnat počtu uzlů v clusteru. Pojďme vytvořit jiné služby, **fabric: / App1/ServiceB**, v aplikaci **fabric: / App1**. Tato služba obsahuje jeden oddíl (například **P3**) a tři repliky na oddíl. Následující diagram znázorňuje nové zobrazení na uzlu:
+![Diagram zobrazení uzlů nasazené aplikace][node-view-one]
 
 
-![Diagram uzlu zobrazení nasazené aplikace][node-view-two]
+Service Fabric aktivoval ' MyServicePackage ', který spustil ' MyCodePackage ', který hostuje repliky z obou oddílů. Všechny uzly v clusteru mají stejné zobrazení, protože jsme zvolili počet replik na oddíl, který se rovná počtu uzlů v clusteru. Pojďme vytvořit další službu, **Fabric:/app1/ServiceB**v Application **Fabric:/app1**. Tato služba má jeden oddíl (například **P3**) a tři repliky na oddíl. Následující diagram znázorňuje nové zobrazení na uzlu:
 
 
-Service Fabric umístit novou repliku pro oddíl **P3** služby **fabric: / App1/ServiceB** v existující aktivace "MyServicePackage". Nyní. Pojďme vytvořit jinou aplikaci **fabric: / počítači App2** typu "MyAppType". Uvnitř **fabric: / počítači App2**, vytvoření služby **fabric: / počítači App2/ServiceA**. Tato služba má dva oddíly (**P4** a **P5**) a tři repliky na oddíl. Následující diagram znázorňuje nové zobrazení uzlu:
+![Diagram zobrazení uzlů nasazené aplikace][node-view-two]
 
 
-![Diagram uzlu zobrazení nasazené aplikace][node-view-three]
+Service Fabric umístit novou repliku pro oddíl **P3** Service **Fabric:/app1/ServiceB** v existující aktivaci ' MyServicePackage '. Teď hned. Pojďme vytvořit další aplikační **Fabric:/app2** typu MyAppType. V **prostředcích infrastruktury:/app2**vytvořte Service **Fabric:/app2/Service**. Tato služba má dva oddíly (**P4** a **P5**) a tři repliky na oddíl. Následující diagram znázorňuje zobrazení nového uzlu:
 
 
-Service Fabric aktivuje novou kopii "MyServicePackage", který spouští novou kopii "MyCodePackage". Repliky z obou oddílů služby **fabric: / počítači App2/ServiceA** (**P4** a **P5**) jsou umístěné v této nové kopie "MyCodePackage".
+![Diagram zobrazení uzlů nasazené aplikace][node-view-three]
 
-## <a name="shared-process-model"></a>Sdílené model procesu
-Předchozí část popisuje výchozí model poskytuje Service Fabric se označuje jako model procesu sdíleného hostingu. V tomto modelu pro danou aplikaci, pouze jedna kopie daného *ServicePackage* se aktivuje v uzlu (které spustí všechny *CodePackages* jsou v něm obsažené). Všechny repliky všech služeb danou *ServiceType* jsou umístěny v *CodePackage* , který zaregistruje *ServiceType*. Jinými slovy, všechny repliky všech služeb v uzlu danou *ServiceType* sdílet stejný postup.
 
-## <a name="exclusive-process-model"></a>Výhradní model procesu
-Další model hostingu poskytuje Service Fabric je model exkluzivní procesu. V tomto modelu, v daném uzlu každá replika nachází ve vlastním vyhrazeném procesu. Service Fabric aktivuje novou kopii *ServicePackage* (které spustí všechny *CodePackages* jsou v něm obsažené). Repliky jsou umístěny v *CodePackage* , které registrované *ServiceType* služby, do které replika patří. 
+Service Fabric aktivuje novou kopii ' MyServicePackage ', která spustí novou kopii ' MyCodePackage '. V této nové kopii MyCodePackage jsou umístěné repliky z obou oddílů Service **Fabric:/app2/Service-** (**P4** a **P5**).
 
-Pokud používáte Service Fabric verze 5.6 nebo novější, můžete použít model exkluzivní procesu v době vytvoření služby (s použitím [PowerShell][p1], [REST] [ r1], nebo [FabricClient][c1]). Zadejte **ServicePackageActivationMode** jako "ExclusiveProcess".
+## <a name="shared-process-model"></a>Model sdíleného procesu
+Předchozí část popisuje výchozí model hostování poskytovaný Service Fabric, který je označován jako model sdíleného procesu. V tomto modelu se pro danou aplikaci aktivuje jenom jedna kopie určitého programu *ServicePack* na uzlu (tím se spustí všechny *CodePackages* v něm obsažené). Všechny repliky všech služeb daného *ServiceType* jsou umístěny do *CodePackage* , který registruje tento *ServiceType*. Jinými slovy všechny repliky všech služeb na uzlu daného *ServiceType* sdílejí stejný proces.
+
+## <a name="exclusive-process-model"></a>Exkluzivní model procesu
+Dalším modelem hostování, který poskytuje Service Fabric, je exkluzivní model procesu. V tomto modelu na daném uzlu každá replika bydlí ve vlastním vyhrazeném procesu. Service Fabric aktivuje novou kopii aplikace *ServicePack* (která spustí všechna *CodePackages* obsažená v ní). Repliky jsou umístěny v *CodePackage* , který zaregistroval *ServiceType* služby, ke které replika patří. 
+
+Pokud používáte Service Fabric verze 5,6 nebo novější, můžete zvolit exkluzivní model procesu v době vytváření služby (pomocí [PowerShellu][p1], [REST][r1]nebo [FabricClient][c1]). Zadejte **ServicePackageActivationMode** jako ExclusiveProcess.
 
 ```powershell
 PS C:\>New-ServiceFabricService -ApplicationName "fabric:/App1" -ServiceName "fabric:/App1/ServiceA" -ServiceTypeName "MyServiceType" -Stateless -PartitionSchemeSingleton -InstanceCount -1 -ServicePackageActivationMode "ExclusiveProcess"
@@ -80,7 +73,7 @@ var fabricClient = new FabricClient(clusterEndpoints);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Pokud máte službu výchozí v manifestu aplikace, můžete použít model exkluzivní procesu tak, že zadáte **ServicePackageActivationMode** atribut:
+Pokud máte ve svém manifestu aplikace výchozí službu, můžete zvolit exkluzivní model procesu zadáním atributu **ServicePackageActivationMode** :
 
 ```xml
 <DefaultServices>
@@ -91,95 +84,95 @@ Pokud máte službu výchozí v manifestu aplikace, můžete použít model exkl
   </Service>
 </DefaultServices>
 ```
-Nyní Pojďme vytvořit jiné služby, **fabric: / App1/ServiceC**, v aplikaci **fabric: / App1**. Tato služba má dva oddíly (například **P6** a **N7**) a tři repliky na oddíl. Nastavíte **ServicePackageActivationMode** na "ExclusiveProcess". Následující diagram znázorňuje nové zobrazení na uzlu:
+Nyní vytvoříme další službu, **Fabric:/app1/ServiceC**v Application **Fabric:/app1**. Tato služba má dva oddíly (například **P6** a **P7**) a tři repliky na oddíl. Nastavte **ServicePackageActivationMode** na ExclusiveProcess. Následující diagram znázorňuje nové zobrazení na uzlu:
 
 
-![Diagram uzlu zobrazení nasazené aplikace][node-view-four]
+![Diagram zobrazení uzlů nasazené aplikace][node-view-four]
 
 
-Jak je vidět, Service Fabric aktivuje dvě nové kopie "MyServicePackage" (jeden pro každou repliku z oddílu **P6** a **N7**). Service Fabric umístit každou repliku v jeho vyhrazená kopie *CodePackage*. Při použití modelu exkluzivní procesu pro danou aplikaci více kopií daný *ServicePackage* může být aktivní na uzlu. V předchozím příkladu jsou aktivní pro tři kopie "MyServicePackage" **fabric: / App1**. Každá z těchto aktivní kopií 'MyServicePackage' obsahuje **ServicePackageActivationId** s ním spojená. Toto ID identifikuje tuto kopii v rámci aplikace **fabric: / App1**.
+Jak vidíte, Service Fabric aktivovat dvě nové kopie ' MyServicePackage ' (jeden pro každou repliku z oddílu **P6** a **P7**). Service Fabric umístit každou repliku do vyhrazené kopie *CodePackage*. Použijete-li exkluzivní model procesu pro danou aplikaci, může být v uzlu aktivní více kopií této *ServicePack* . V předchozím příkladu jsou pro **Fabric:/app1**aktivní tři kopie ' MyServicePackage '. K jednotlivým aktivním kopiím ' MyServicePackage ' je přidružena **ServicePackageActivationId** . Toto ID identifikuje tuto kopii v rámci aplikace **Fabric:/app1**.
 
-Při použití pouze model procesu sdílet pro aplikace, je pouze jeden aktivní kopií *ServicePackage* na uzlu. **ServicePackageActivationId** u této aktivace *ServicePackage* je prázdný řetězec. To platí, například s **fabric: / počítači App2**.
-
-> [!NOTE]
->- Sdílet proces odpovídá model hostingu **ServicePackageActivationMode** rovná **SharedProcess**. Toto je výchozí model hostingu a **ServicePackageActivationMode** není nutné zadávat v okamžiku vytváření služby.
->
->- Výhradní proces model hostingu odpovídá **ServicePackageActivationMode** rovná **ExclusiveProcess**. Pokud chcete použít toto nastavení, je třeba zadat explicitně v době vytváření služby. 
->
->- Chcete-li zobrazit model hostingu služby, dotaz [popis služby][p2]a podívejte se na hodnotu **ServicePackageActivationMode**.
->
->
-
-## <a name="work-with-a-deployed-service-package"></a>Práce s balíčkem nasazené službě
-Aktivní kopií *ServicePackage* v uzlu se označuje jako [nasazený balíček služby][p3]. Při použití modelu exkluzivní proces pro vytvoření služby pro danou aplikaci, může být víc balíčků nasazené služby pro stejný *ServicePackage*. Pokud provádíte operace, které jsou specifické pro balíček nasazené služby, by měla poskytnout **ServicePackageActivationId** k identifikaci konkrétní nasazenou službu balíčku. Pokud jste třeba zadat ID [hlášení stavu balíčku nasazené služby] [ p4] nebo [restartování balíček kódu balíčku nasazené služby] [p5].
-
-Můžete zjistit **ServicePackageActivationId** balíčku nasazené služby pomocí dotazu na seznam [nasazené balíčky služeb] [ p3] na uzlu. Při dotazování na [nasazené typy služeb][p6], [nasazení repliky][p7], a [nasazené balíčky kódu ] [ p8] na uzlu, výsledek dotazu obsahuje také **ServicePackageActivationId** balíčku nadřazená nasazená služba.
+Použijete-li pro aplikaci pouze model sdíleného procesu, je na uzlu pouze jedna aktivní kopie aplikace *ServicePack* . **ServicePackageActivationId** pro tuto aktivaci služby *ServicePack* je prázdný řetězec. Jedná se například o případ s **prostředky Fabric:/app2**.
 
 > [!NOTE]
->- V rámci modelu hostingu sdílený proces na daný uzel pro danou aplikaci, pouze jedna kopie *ServicePackage* aktivován. Má **ServicePackageActivationId** rovna *prázdný řetězec*a není nutné zadávat při provádění operace související se balíček nasazené služby. 
+>- Model hostování sdíleného procesu odpovídá **ServicePackageActivationMode** rovná se **SharedProcess**. Toto je výchozí hostující model a v době vytváření služby není potřeba zadávat **ServicePackageActivationMode** .
 >
-> - V části exkluzivní proces hostování model na daný uzel pro danou aplikaci, jeden nebo více kopií *ServicePackage* může být aktivní. Má každá aktivace *neprázdný* **ServicePackageActivationId**zadané při provádění operace související se balíček nasazené služby. 
+>- Model hostování exkluzivních procesů odpovídá **ServicePackageActivationMode** rovná se **ExclusiveProcess**. Chcete-li použít toto nastavení, je nutné je explicitně zadat v době vytváření služby. 
 >
-> - Pokud **ServicePackageActivationId** je tento parametr vynechán, použije se výchozí *prázdný řetězec*. Pokud balíček nasazenou službu, která se aktivovala v rámci modelu sdílený proces je k dispozici, operace se provede na něj. Jinak se operace nezdaří.
->
-> - Dotaz není jednou a mezipaměti **ServicePackageActivationId**. ID se dynamicky vygeneruje a můžete změnit z různých důvodů. Před provedením operace, která potřebuje **ServicePackageActivationId**, byste nejprve zadá dotaz na seznam [nasazené balíčky služeb] [ p3] na uzlu. Potom použijte **ServicePackageActivationId** z výsledku dotazu pro původní operaci.
+>- Chcete-li zobrazit model hostování služby, proveďte dotaz na [Popis služby][p2]a podívejte se na hodnotu **ServicePackageActivationMode**.
 >
 >
 
-## <a name="guest-executable-and-container-applications"></a>Aplikace hosta spustitelný soubor a kontejnerů
-Service Fabric bude [spustitelný soubor typu Host] [ a2] a [kontejneru] [ a3] jako bezstavové služby, které jsou samostatné aplikace. Není žádný modul runtime Service Fabric v *ServiceHost* (procesu nebo kontejneru). Protože tyto služby jsou samostatný, počet replik na *ServiceHost* se nedá použít u těchto služeb. Nejběžnější konfigurace používají tyto služby je jedním oddílem, s [InstanceCount] [ c2] roven -1 (jedna kopie služby kód spuštěný na každém uzlu clusteru). 
+## <a name="work-with-a-deployed-service-package"></a>Práce s nasazeným balíčkem služby
+Aktivní kopie *ServicePack* na uzlu je označována jako [nasazený balíček služby][p3]. Když použijete exkluzivní model procesu pro vytváření služeb pro danou aplikaci, může existovat více nasazených balíčků služby pro stejnou *ServicePack*. Pokud provádíte operace specifické pro nasazený balíček služby, měli byste poskytnout **ServicePackageActivationId** k identifikaci konkrétního balíčku nasazené služby. Zadejte například ID, pokud [hlásíte stav nasazeného balíčku služby][p4] nebo [restartuje balíček kódu nasazeného balíčku služby][p5].
 
-Výchozí hodnota **ServicePackageActivationMode** pro tyto služby je **SharedProcess**, v takovém případě Service Fabric aktivuje pouze jednu kopii *ServicePackage* na uzlu pro danou aplikaci.  To znamená, že pouze jedna kopie kódu služby se spustí uzlu. Pokud chcete, aby několik kopií kódu služby provozovat na uzlu, zadejte **ServicePackageActivationMode** jako **ExclusiveProcess** v době vytváření služby. Například to můžete provést při vytváření více služeb (*Service1* k *ServiceN*) z *ServiceType* (zadané v poli *ServiceManifest*), nebo když je vaše služba s více oddílů. 
+**ServicePackageActivationId** nasazeného balíčku služby můžete zjistit dotazem na seznam [nasazených balíčků služby][p3] na uzlu. Při dotazování na [nasazené typy služeb][p6], [nasazené repliky][p7]a [nasazené balíčky kódu][p8] na uzel, výsledek dotazu obsahuje také **ServicePackageActivationId** nadřazeného balíčku nasazené služby.
 
-## <a name="change-the-hosting-model-of-an-existing-service"></a>Změňte model hostingu existující služby
-V současné době nelze změnit model hostingu existující služby z sdílený proces na exkluzivní procesu (nebo naopak).
+> [!NOTE]
+>- V rámci modelu hostování sdíleného procesu se v daném uzlu pro danou aplikaci aktivuje jenom jedna kopie *ServicePack* . Má **ServicePackageActivationId** , který se rovná *prázdnému řetězci*a při provádění operací souvisejících s nasazeným balíčkem služby není nutné zadávat žádné. 
+>
+> - V rámci modelu hostování exkluzivního procesu, v daném uzlu pro danou aplikaci, může být jedna nebo více kopií služby *ServicePack* . Každá aktivace má *neprázdné* **ServicePackageActivationId**, která se zadala při provádění operací souvisejících s nasazeným balíčkem služby. 
+>
+> - Pokud je vynecháno **ServicePackageActivationId** , výchozí hodnota je *prázdný řetězec*. Pokud je k dispozici nasazený balíček služby, který byl aktivován pomocí modelu sdíleného procesu, bude provedena operace. Jinak se operace nezdaří.
+>
+> - Nedotazovat se jen jednou a **ServicePackageActivationId**do mezipaměti. ID je dynamicky generované a může se změnit z různých důvodů. Před provedením operace, která potřebuje **ServicePackageActivationId**, byste nejdřív měli zadat dotaz na seznam [nasazených balíčků služby][p3] na uzlu. Pak použijte **ServicePackageActivationId** z výsledku dotazu k provedení původní operace.
+>
+>
 
-## <a name="choose-between-the-hosting-models"></a>Výběr mezi modelech hostování
-By měla vyhodnotit, které model hostingu nejlepší vyhovuje vašim požadavkům. Prostředky operačního systému používá model sdílený proces lépe, vzhledem k tomu, že se vytvoří podřízený proces menší počet procesů a víc replik v rámci stejného procesu můžete sdílet porty. Nicméně pokud jeden z repliky došlo k chybě, kde jsou potřeba převést dolů hostitele služby, ovlivňuje všechny repliky ve stejném procesu.
+## <a name="guest-executable-and-container-applications"></a>Spustitelné aplikace a aplikace typu Host
+Service Fabric považuje [spustitelné soubory hosta][a2] a [kontejnerové][a3] aplikace jako bezstavové služby, které jsou samostatně obsaženy. V *ServiceHost* není žádný modul runtime Service Fabric (proces nebo kontejner). Vzhledem k tomu, že tyto služby jsou samy obsažené, není možné pro tyto služby použít počet replik na *ServiceHost* . Nejběžnější konfigurace, která se používá pro tyto služby, je jeden oddíl, přičemž [InstanceCount][c2] se rovná-1 (jedna kopie kódu služby spuštěná na každém uzlu clusteru). 
 
- Model procesu exkluzivní poskytuje lepší izolace, se všemi replikami ve svém vlastním procesu. Pokud jeden z repliky došlo k chybě, neovlivní jiné repliky. Tento model je užitečný pro případy, kdy sdílení portů nepodporuje komunikační protokol. Usnadňuje to schopnosti uplatňovat zásady správného řízení prostředků na úrovni repliky. Výhradní proces však využívá více prostředků operačního systému, jak vytvoří jeden proces pro každou repliku na uzlu.
+Výchozí **ServicePackageActivationMode** pro tyto služby je **SharedProcess**. v takovém případě Service Fabric aktivovat pouze jednu kopii *ServicePack* na uzlu pro danou aplikaci.  To znamená, že se na jednom z kopií kódu služby spustí uzel. Pokud chcete, aby se na uzlu spouštělo více kopií kódu služby, zadejte v době vytváření služby **ServicePackageActivationMode** jako **ExclusiveProcess** . Můžete to například udělat, když vytvoříte více služeb (*Service1* *ServiceN*) pro *ServiceType* (určený v *ServiceManifest*) nebo když je vaše služba ve více oddílech. 
 
-## <a name="exclusive-process-model-and-application-model-considerations"></a>Důležité informace o modelu exkluzivní modelu procesu a aplikace
-Pro většinu aplikací, můžete modelovat vaši aplikaci v Service Fabric udržováním jeden *ServiceType* za *ServicePackage*. 
+## <a name="change-the-hosting-model-of-an-existing-service"></a>Změna modelu hostování existující služby
+V současné době nemůžete změnit model hostování existující služby ze sdíleného procesu na exkluzivní proces (nebo naopak).
 
-V některých případech, Service Fabric také umožňuje více než jeden *ServiceType* za *ServicePackage* (a jeden *CodePackage* lze registrovat více než jeden  *ServiceType*). Tady jsou některé scénáře, kde může být užitečné tyto konfigurace:
+## <a name="choose-between-the-hosting-models"></a>Výběr mezi modely hostování
+Měli byste vyhodnotit, který model hostování nejlépe vyhovuje vašim požadavkům. Model sdíleného procesu používá prostředky operačního systému lépe, protože jsou vytvořeny méně procesů a více replik ve stejném procesu může sdílet porty. Pokud ale jedna z replik obsahuje chybu, kde je potřeba vyvolat hostitele služby, má dopad na všechny ostatní repliky ve stejném procesu.
 
-- Chcete optimalizovat využití prostředků tak, že vytváření podřízeného procesu méně procesy a s vyšší hustotou replika jeden proces.
-- Repliky z různých *ServiceType* potřebujete sdílet některým společným datům, která má vysokou inicializace nebo paměti nákladů.
-- Máte nabídky bezplatné služby a chcete umístit omezení na využití prostředků vložením všech replik služby ve stejném procesu.
+ Exkluzivní model procesu poskytuje lepší izolaci se všemi replikami ve vlastním procesu. Pokud některá z replik obsahuje chybu, nemá vliv na jiné repliky. Tento model je vhodný pro případy, kdy komunikační protokol nepodporuje sdílení portů. Usnadňuje možnost uplatňovat zásady správného řízení prostředků na úrovni repliky. Exkluzivní proces ale spotřebovává více prostředků operačního systému, protože pro každou repliku na uzlu vytvoří jeden proces.
 
-Výhradní proces model hostingu není souvislé s modelem aplikace s více *ServiceType* za *ServicePackage*. Důvodem je, že více *ServiceType* za *ServicePackage* jsou navržené tak, abyste dosáhli vyšší prostředků sdílení mezi repliky a umožňuje vyšší hustota replika jeden proces. Model exkluzivní procesu slouží k dosažení různé výsledky.
+## <a name="exclusive-process-model-and-application-model-considerations"></a>Exkluzivní model procesu a požadavky modelu aplikace
+Pro většinu aplikací můžete modelovat aplikaci v Service Fabric tím, že zachováte jeden *ServiceType* za *ServicePack*. 
 
-Podívejte se na několika *ServiceType* za *ServicePackage*, s jiným *CodePackage* registrace jednotlivých *ServiceType*. Řekněme, že máme *ServicePackage* "MultiTypeServicePackage", který má dva *CodePackages*:
+V některých případech Service Fabric také umožňuje více než jeden *ServiceType* za *ServicePack* (a jeden *CodePackage* může registrovat více než jeden *ServiceType*). Níže jsou uvedeny některé z scénářů, ve kterých mohou být tyto konfigurace užitečné:
 
-- "MyCodePackageA", které je zaregistruje *ServiceType* "MyServiceTypeA".
-- "MyCodePackageB", které je zaregistruje *ServiceType* "MyServiceTypeB".
+- Chcete optimalizovat využití prostředků vytvořením menšího počtu procesů a vyšší hustoty replik na proces.
+- Repliky z různých *tříd ServiceType* musí sdílet některá společná data s vysokou inicializací nebo pamětí.
+- Máte bezplatnou nabídku služeb a chcete omezit využití prostředků tím, že do stejného procesu umístíte všechny repliky služby.
 
-Nyní Řekněme, že se nám vytvořit aplikaci, která **fabric: / SpecialApp**. Uvnitř **fabric: / SpecialApp**, můžeme vytvořit následující dvě služby s modelem exkluzivní procesu:
+Exkluzivní model hostování procesu není soudržný s modelem aplikace, který má více *tříd ServiceType* za službu *ServicePack*. Důvodem je to, že více *servicetypeí* za *ServicePack* je navrženo tak, aby bylo dosaženo většího sdílení prostředků mezi replikami, a umožňuje vyšší hustotu repliky na proces. Exkluzivní model procesu je navržený tak, aby dosáhl různých výsledků.
 
-- Služba **fabric: / SpecialApp/ServiceA** typu "MyServiceTypeA", se dva oddíly (například **P1** a **P2**) a tři repliky na oddíl.
-- Služba **fabric: / SpecialApp/ServiceB** typu "MyServiceTypeB", se dva oddíly (**P3** a **P4**) a tři repliky na oddíl.
+Vezměte v úvahu případ vícenásobných *servicetypeí* za každou *ServicePack*, s různými *CodePackage* registrací každého *ServiceType*. Řekněme *, že máme "MultiTypeServicePackage* ", který má dvě *CodePackages*:
 
-V daném uzlu obě služby mají dvě repliky. Protože model exkluzivní procesu jsme použili k vytvoření služby, Service Fabric aktivuje novou kopii "MyServicePackage" pro každou repliku. Každá aktivace "MultiTypeServicePackage" spustí kopii "MyCodePackageA" a "MyCodePackageB". Je však pouze jeden 'MyCodePackageA' nebo "MyCodePackageB" hostitelem repliky, pro kterou byl aktivován "MultiTypeServicePackage". Následující diagram znázorňuje zobrazení uzlu:
+- ' MyCodePackageA ', který registruje *ServiceType* ' MyServiceTypeA '.
+- ' MyCodePackageB ', který registruje *ServiceType* ' MyServiceTypeB '.
+
+Teď řekněme, že vytvoříme aplikaci, **Fabric:/SpecialApp**. V **prostředcích infrastruktury:/SpecialApp**vytvoříme tyto dvě služby s výhradním modelem procesu:
+
+- Service **Fabric:/SpecialApp/Service** ' typu ' MyServiceTypeA ', se dvěma oddíly (například **P1** a **P2**) a tři repliky na oddíl.
+- Service **Fabric:/SpecialApp/ServiceB** typu MyServiceTypeB, se dvěma oddíly (**P3** a **P4**) a třemi replikami na oddíl.
+
+V daném uzlu mají obě služby dvě repliky každý. Vzhledem k tomu, že jsme k vytváření služeb použili model exkluzivních procesů, Service Fabric pro každou repliku aktivovat novou kopii ' MyServicePackage '. Každá aktivace ' MultiTypeServicePackage ' spustí kopii ' MyCodePackageA ' a ' MyCodePackageB '. Pouze jedna z ' MyCodePackageA ' nebo ' MyCodePackageB ' hostuje repliku, pro kterou byla aktivována ' MultiTypeServicePackage '. Následující diagram znázorňuje zobrazení uzlu:
 
 
-![Diagram zobrazení uzlů nasazenou aplikaci.][node-view-five]
+![Diagram zobrazení uzlu nasazené aplikace][node-view-five]
 
 
-Při aktivaci "MultiTypeServicePackage" repliky oddílu **P1** služby **fabric: / SpecialApp/ServiceA**, "MyCodePackageA" je hostitelem repliky. 'MyCodePackageB' je spuštěná. Podobně při aktivaci "MultiTypeServicePackage" repliky oddílu **P3** služby **fabric: / SpecialApp/ServiceB**, "MyCodePackageB" je hostitelem repliky. 'MyCodePackageA' je spuštěná. Proto tím větší je počet *CodePackages* (registraci různých *ServiceType*) za *ServicePackage*, tím vyšší využití prostředků redundantní. 
+Při aktivaci ' MultiTypeServicePackage ' pro repliku oddílu **P1** služby Service **Fabric:/SpecialApp/Service**', ' MyCodePackageA ' hostuje repliku. ' MyCodePackageB ' je spuštěn. Podobně v aktivaci MultiTypeServicePackage pro repliku oddílu **P3** služby Service **Fabric:/SpecialApp/ServiceB**, ' MyCodePackageB ' hostuje repliku. ' MyCodePackageA ' je spuštěn. Čím větší je počet *CodePackages* (registrování různých *servicetypeí*) na každou *ServicePack*, tím vyšší je využívání redundantních prostředků. 
  
- Ale když vytvoříme služby **fabric: / SpecialApp/ServiceA** a **fabric: / SpecialApp/ServiceB** s modelem sdílený proces Service Fabric aktivuje jenom jednu kopii " MultiTypeServicePackage "pro aplikaci **fabric: / SpecialApp**. Všechny repliky pro službu hostuje "MyCodePackageA" **fabric: / SpecialApp/ServiceA**. Všechny repliky pro službu hostuje "MyCodePackageB" **fabric: / SpecialApp/ServiceB**. Následující diagram znázorňuje zobrazení uzlů v tomto nastavení: 
+ Pokud však vytvoříme služby **Fabric:/SpecialApp/Service-** a **Fabric:/SpecialApp/ServiceB** s modelem sdíleného procesu, Service Fabric pro aplikační **Fabric:/SpecialApp**aktivuje pouze jednu kopii ' MultiTypeServicePackage '. ' MyCodePackageA ' hostuje všechny repliky pro Service **Fabric:/SpecialApp/Service**. ' MyCodePackageB ' hostuje všechny repliky pro Service **Fabric:/SpecialApp/ServiceB**. Následující diagram znázorňuje zobrazení uzlu v tomto nastavení: 
 
 
-![Diagram zobrazení uzlů nasazenou aplikaci.][node-view-six]
+![Diagram zobrazení uzlu nasazené aplikace][node-view-six]
 
 
-V předchozím příkladu si možná myslíte, pokud "MyCodePackageA" registruje "MyServiceTypeA" a "MyServiceTypeB" a neexistuje žádná MyCodePackageB, neexistuje žádné redundantní *CodePackage* systémem. I když je to v pořádku, tento aplikační model není sladěný s výhradním procesu model hostingu. Pokud chcete změnit každé repliky na svůj vlastní vyhrazený proces je cílem, není potřeba zaregistrovat oba *ServiceType* ze stejné *CodePackage*. Místo toho můžete jednoduše umisťovat všechny *ServiceType* ve vlastním *ServicePackage*.
+V předchozím příkladu si myslíte, že pokud ' MyCodePackageA ' registruje ' MyServiceTypeA ' a ' MyServiceTypeB ' a neexistuje ' MyCodePackageB ', není spuštěn žádný redundantní *CodePackage* . I když je to správné, tento model aplikace se neshoduje s modelem hostování exkluzivních procesů. Pokud je cílem umístit každou repliku ve vlastním vyhrazeném procesu, nemusíte registrovat oba typy *ServiceType* ze stejného *CodePackage*. Místo toho je třeba jednotlivé *servicetypee* vkládat do své vlastní *ServicePack*.
 
-## <a name="next-steps"></a>Další postup
-[Balení aplikace] [ a4] a příprava na nasazení.
+## <a name="next-steps"></a>Další kroky
+[Zabalit aplikaci][a4] a připravit ji na nasazení.
 
-[Nasazení a odebírat aplikace][a5]. Tento článek popisuje použití Powershellu ke správě instance aplikace.
+[Nasaďte a odeberte aplikace][a5]. Tento článek popisuje, jak pomocí PowerShellu spravovat instance aplikací.
 
 <!--Image references-->
 [node-view-one]: ./media/service-fabric-hosting-model/node-view-one.png

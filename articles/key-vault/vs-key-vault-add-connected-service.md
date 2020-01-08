@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456997"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -26,7 +26,7 @@ Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby um
 
 - **Předplatné Azure**. Pokud předplatné nemáte, zaregistrujte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 - **Visual studio 2019 verze 16,3** nebo novější nebo **Visual studio 2017 verze 15,7** s nainstalovanou úlohou **Vývoj webu** . [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
-- Pro ASP.NET (ne jádro) se sadou Visual Studio 2017 potřebujete vývojové nástroje .NET Framework 4.7.1 nebo novější, které nejsou ve výchozím nastavení nainstalované. Pokud je chcete nainstalovat, spusťte Instalační program pro Visual Studio, zvolte **Upravit**a pak zvolte **jednotlivé komponenty**, pak na pravé straně, rozbalte **ASP.NET a vývoj webů**a zvolte **.NET Framework vývojové nástroje 4.7.1.** .
+- Pro ASP.NET (ne jádro) se sadou Visual Studio 2017 potřebujete vývojové nástroje .NET Framework 4.7.1 nebo novější, které nejsou ve výchozím nastavení nainstalované. Pokud je chcete nainstalovat, spusťte Instalační program pro Visual Studio, zvolte **Upravit**a pak zvolte **jednotlivé komponenty**, pak na pravé straně, rozbalte **ASP.NET a vývoj webů**a zvolte **.NET Framework vývojové nástroje 4.7.1**.
 - Je otevřený ASP.NET 4.7.1 nebo novější, nebo ASP.NET Core 2,0 nebo novější webový projekt.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Přidání podpory Key Vault do projektu
@@ -112,7 +112,7 @@ Nyní můžete k tajným klíčům přistupovat v kódu. Další postup se liš�
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        private static string GetKeyVaultEndpoint() => "https://WebApplication4-3-kv.vault.azure.net";
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
 1. Dále otevřete jeden ze stránkovacích souborů, jako je například *index.cshtml.cs* a napište následující kód:
@@ -176,15 +176,15 @@ Konfiguraci můžete nastavit tak, aby soubor Web. config měl fiktivní hodnotu
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní Key Vault a související prostředky. Odstranění skupiny prostředků přes portál:
+Odstraňte skupinu prostředků, pokud ji už nepotřebujete. Tím se odstraní Key Vault a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **Zadejte název skupiny prostředků:** zadejte název skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud váš Key Vault běží na jiném účet Microsoft než jste přihlášeni k aplikaci Visual Studio (například Key Vault je spuštěný ve vašem pracovním účtu, ale Visual Studio používá váš privátní účet), zobrazí se v souboru Program.cs chyba. , nemůže aplikace Visual Studio získat přístup k Key Vault. Chcete-li tento problém vyřešit:
+Pokud váš Key Vault běží na jiném účet Microsoft než jste přihlášeni k aplikaci Visual Studio (například Key Vault je spuštěný ve vašem pracovním účtu, ale Visual Studio používá váš privátní účet), zobrazí se v souboru Program.cs chyba. , nemůže aplikace Visual Studio získat přístup k Key Vault. Pokud chcete tento problém vyřešit:
 
 1. Přejít na [Azure Portal](https://portal.azure.com) a otevřete Key Vault.
 
@@ -205,7 +205,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a odkazy na balíček NuGet.
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -241,7 +241,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

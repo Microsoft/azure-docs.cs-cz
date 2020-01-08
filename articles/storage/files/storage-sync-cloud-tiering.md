@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431743"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
-Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Při vrstvení souboru Azure File Sync filtr systému souborů (StorageSync. sys) místně nahradí soubor objektem ukazatele nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor obsahuje atribut "offline" a atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
+Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Při vrstvení souboru Azure File Sync filtr systému souborů (StorageSync. sys) místně nahradí soubor objektem ukazatele nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
  
 Když uživatel otevře vrstvený soubor, Azure File Sync hladce znovu volá data souborů ze souborů Azure, aniž by musel znát, že soubor je ve skutečnosti uložený v Azure. 
  
@@ -73,16 +73,17 @@ Existuje několik způsobů, jak ověřit, zda byl soubor vrstven do sdílené s
         | Písmeno atributu | Atribut | Definice |
         |:----------------:|-----------|------------|
         | A | Archiv | Indikuje, že by měl být soubor zálohovaný zálohovacím softwarem. Tento atribut je vždy nastaven bez ohledu na to, zda je soubor na disku povrstvený nebo uložený jako plný. |
-        | P | Zhuštěný soubor | Označuje, že se jedná o zhuštěný soubor. Zhuštěný soubor je specializovaný typ souboru, který systém souborů NTFS nabízí pro efektivní použití v případě, že je soubor na diskovém streamu většinou prázdný. Azure File Sync používá zhuštěné soubory, protože soubor je buď úplně vrstven, nebo částečně odvolán. V plně vrstveném souboru je datový proud souboru uložený v cloudu. V částečně vráceném souboru je tato část souboru již na disku. Pokud je soubor zcela znovu volán na disk, Azure File Sync jej převede ze zhuštěného souboru do normálního souboru. |
-        | O | Bod rozboru | Označuje, že soubor obsahuje bod rozboru. Bod rozboru je speciální ukazatel pro použití filtrem systému souborů. Azure File Sync používá spojovací body pro definování do filtru souborů Azure File Sync systému souborů (StorageSync. sys), kde se nachází v cloudu, kde je soubor uložený. To podporuje bezproblémový přístup. Uživatelé nebudou muset znát, že se používá Azure File Sync nebo jak získat přístup k souboru ve sdílené složce Azure. Když je soubor zcela znovu vyvolán, Azure File Sync odebere bod rozboru ze souboru. |
+        | P | Zhuštěný soubor | Označuje, že se jedná o zhuštěný soubor. Zhuštěný soubor je specializovaný typ souboru, který systém souborů NTFS nabízí pro efektivní použití v případě, že je soubor na diskovém streamu většinou prázdný. Azure File Sync používá zhuštěné soubory, protože soubor je buď úplně vrstven, nebo částečně odvolán. V plně vrstveném souboru je datový proud souboru uložený v cloudu. V částečně vráceném souboru je tato část souboru již na disku. Pokud je soubor zcela znovu volán na disk, Azure File Sync jej převede ze zhuštěného souboru do normálního souboru. Tento atribut je nastaven pouze v systémech Windows Server 2016 a starších.|
+        | mil. | Odvolat při přístupu k datům | Indikuje, že data souboru nejsou plně přítomná v místním úložišti. Při čtení souboru dojde k tomu, že se alespoň část obsahu souboru načte ze sdílené složky Azure, ke které je připojený koncový bod serveru. Tento atribut je nastaven pouze v systému Windows Server 2019. |
+        | L | Spojovací bod | Označuje, že soubor obsahuje bod rozboru. Bod rozboru je speciální ukazatel pro použití filtrem systému souborů. Azure File Sync používá spojovací body pro definování do filtru souborů Azure File Sync systému souborů (StorageSync. sys), kde se nachází v cloudu, kde je soubor uložený. To podporuje bezproblémový přístup. Uživatelé nebudou muset znát, že se používá Azure File Sync nebo jak získat přístup k souboru ve sdílené složce Azure. Když je soubor zcela znovu vyvolán, Azure File Sync odebere bod rozboru ze souboru. |
         | O | Offline | Indikuje, že některé nebo všechny obsahy souboru nejsou uložené na disku. Když je soubor zcela znovu vyvolán, Azure File Sync tento atribut odstraní. |
 
         ![Dialogové okno Vlastnosti souboru s vybranou kartou podrobnosti](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
         Atributy pro všechny soubory ve složce můžete zobrazit tak, že přidáte pole **atributy** do zobrazení tabulky v Průzkumníkovi souborů. Provedete to tak, že kliknete pravým tlačítkem na existující sloupec (například **Velikost**), vyberete **Další**a v rozevíracím seznamu vyberete **atributy** .
         
-   * **Slouží `fsutil` ke kontrole bodů rozboru v souboru.**
-       Jak je popsáno v předchozí možnosti, vrstvený soubor má vždy nastaven bod rozboru. Ukazatel rozboru je speciální ukazatel pro Azure File Sync filtr systému souborů (StorageSync. sys). Pokud chcete zjistit, jestli má soubor bod rozboru, v příkazovém řádku se zvýšenými oprávněními nebo v okně PowerShellu spusťte `fsutil` nástroj:
+   * **Použijte `fsutil` ke kontrole bodů rozboru v souboru.**
+       Jak je popsáno v předchozí možnosti, vrstvený soubor má vždy nastaven bod rozboru. Ukazatel rozboru je speciální ukazatel pro Azure File Sync filtr systému souborů (StorageSync. sys). Pokud chcete zjistit, jestli má soubor bod rozboru, v příkazovém řádku se zvýšenými oprávněními nebo v okně PowerShellu spusťte nástroj `fsutil`:
     
         ```powershell
         fsutil reparsepoint query <your-file-name>
@@ -91,7 +92,7 @@ Existuje několik způsobů, jak ověřit, zda byl soubor vrstven do sdílené s
         Pokud má soubor bod rozboru, můžete očekávat, že se zobrazí **hodnota značky rozboru: 0x8000001E**. Tato hexadecimální hodnota je hodnota bodu rozboru, která je vlastněna Azure File Sync. Výstup také obsahuje data opětovného zpracování, která představují cestu k souboru ve sdílené složce Azure.
 
         > [!WARNING]  
-        > Příkaz `fsutil reparsepoint` nástroje má také možnost odstranit spojovací bod. Nespouštějte tento příkaz, pokud vám Azure File Sync technický tým nežádá. Spuštění tohoto příkazu může způsobit ztrátu dat. 
+        > Příkaz `fsutil reparsepoint` Utility má také možnost odstranit spojovací bod. Nespouštějte tento příkaz, pokud vám Azure File Sync technický tým nežádá. Spuštění tohoto příkazu může způsobit ztrátu dat. 
 
 <a id="afs-recall-file"></a>
 
@@ -105,14 +106,14 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
 
-Při `-Order CloudTieringPolicy` zadání se nejdřív odeberou poslední změněné soubory.
+Při zadání `-Order CloudTieringPolicy` se nejdřív odeberou poslední změněné soubory.
 Další nepovinné parametry:
-* `-ThreadCount`Určuje, kolik souborů lze paralelně volat.
-* `-PerFileRetryCount`Určuje, jak často se bude opakovat pokus o odvolání souboru, který je aktuálně blokován.
-* `-PerFileRetryDelaySeconds`Určuje dobu v sekundách mezi opakovanými pokusy o odvolání a měla by být vždy použita v kombinaci s předchozím parametrem.
+* `-ThreadCount` určuje, kolik souborů lze paralelně volat.
+* `-PerFileRetryCount`určuje, jak často se bude opakovat pokus o odvolání souboru, který je aktuálně blokován.
+* `-PerFileRetryDelaySeconds`určuje dobu v sekundách mezi opakovanými pokusy o odvolání a měla by být vždy použita v kombinaci s předchozím parametrem.
 
 > [!Note]  
-> Pokud místní svazek, který hostuje server, nemá dost volného místa pro odvolání všech vrstvených dat, rutina se `Invoke-StorageSyncFileRecall` nezdařila.  
+> Pokud místní svazek, který hostuje server, nemá dost volného místa pro odvolání všech vrstvených dat, rutina `Invoke-StorageSyncFileRecall` se nezdařila.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Proč velikost vlastnosti *disku* pro soubor neodpovídá vlastnosti *size* po použití Azure File Sync? 

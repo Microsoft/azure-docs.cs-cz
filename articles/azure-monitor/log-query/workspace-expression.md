@@ -1,18 +1,17 @@
 ---
 title: výraz pracovního prostoru () v Azure Monitor dotaz na protokol | Microsoft Docs
 description: Výraz pracovního prostoru se používá v dotazu protokolu Azure Monitor k načtení dat z konkrétního pracovního prostoru ve stejné skupině prostředků, jiné skupině prostředků nebo jiném předplatném.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932843"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364947"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>výraz pracovního prostoru () v Azure Monitor dotaz protokolu
 

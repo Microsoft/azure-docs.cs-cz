@@ -1,18 +1,18 @@
 ---
-title: Zpracování velkých zpráv
-description: Naučte se zpracovávat velké objemy zpráv pomocí bloků dat v Azure Logic Apps
+title: Zpracování velkých zpráv pomocí bloků dat
+description: Naučte se zpracovávat velké velikosti zpráv pomocí bloků dat v automatizovaných úlohách a pracovních postupech, které vytvoříte pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815083"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456553"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv pomocí bloků dat v Azure Logic Apps
 

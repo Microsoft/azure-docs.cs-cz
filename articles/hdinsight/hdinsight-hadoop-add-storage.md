@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665475"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435571"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště do HDInsight
 
@@ -24,7 +24,7 @@ Naučte se používat akce skriptů k přidání dalších *účtů* úložišt�
 ## <a name="prerequisites"></a>Požadavky
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* Název a klíč účtu úložiště Viz [Správa nastavení účtu úložiště v Azure Portal](../storage/common/storage-account-manage.md).
+* Název a klíč účtu úložiště Viz [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md).
 * [Správně použita název clusteru](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name).
 * Pokud používáte PowerShell, budete potřebovat AZ Module.  Další informace najdete v tématu [přehled Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 * Pokud jste nenainstalovali Azure CLI, přečtěte si téma [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
@@ -100,7 +100,7 @@ az hdinsight script-action execute ^
     --script-parameters "ACCOUNTNAME ACCOUNTKEY"
 ```
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Viz [použití akce skriptu na běžícím clusteru](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
@@ -108,7 +108,7 @@ Viz [použití akce skriptu na běžícím clusteru](hdinsight-hadoop-customize-
 
 ### <a name="storage-firewall"></a>Brána firewall úložiště
 
-Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran firewall a virtuální sítě** u **vybraných sítí**, ujistěte se, že je **povolená výjimka Povolit důvěryhodné služby Microsoftu...** , aby HDInsight mohla získat přístup k vašemu úložišti. zohledňují.
+Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran firewall a virtuální sítě** u **vybraných sítí**, Nezapomeňte povolit výjimku pro **důvěryhodné služby Microsoftu...** , aby HDInsight mohla získat přístup k vašemu účtu úložiště.
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Účty úložiště, které se nezobrazují v Azure Portal nebo nástrojích
 
@@ -160,7 +160,7 @@ curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api
 | jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
 ```
 
-### <a name="cmd"></a>přepsat
+### <a name="cmd"></a>cmd
 
 V obou skriptech nahraďte `CLUSTERNAME` správným názvem clusteru použita. Nejprve Identifikujte použitou verzi konfigurace služby zadáním následujícího příkazu:
 

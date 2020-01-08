@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: ce8ea76cfc1f3f30418b66cd21de43d244da6764
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 714621fdcc307ee8b29567fc0d95ca41d31aa9e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448260"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Střední obrázky z konzoly API
 
-Použití [rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) v Azure Content moderator k zahájení kontrol a revizí pracovních postupů moderování pro obsah obrázků. Úloha moderování zkontroluje obsah pro vulgární výrazy a porovná ho s vlastními a sdílenými zakázanými operacemi.
+Použití [rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) v Azure Content moderator k zahájení kontrol a revizí pracovních postupů moderování pro obsah obrázků. Úloha moderování kontroluje obsah pro vulgární výrazy a porovnává je s vlastními a sdílenými adres.
 
 ## <a name="use-the-api-console"></a>Použití konzoly API
 Než budete moct otestovat rozhraní API v online konzole, budete potřebovat svůj klíč předplatného. Najdete ho na kartě **Nastavení** v poli **OCP-APIM-Subscription-Key** . Další informace najdete v tématu [Přehled](overview.md).

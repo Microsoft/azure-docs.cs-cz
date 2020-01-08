@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73a5d30761b25f6233e298cac2602fb701a2987f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c4e820867e22d23135f9c50255902447e6063ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424478"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postupy: přihlášení libovolného Azure Active Directory uživatele pomocí vzoru aplikace pro více tenantů
 
@@ -38,7 +38,7 @@ Existují čtyři jednoduché kroky k převedení aplikace na více tenantů apl
 3. [Aktualizace kódu pro zpracování více hodnot vystavitelů](#update-your-code-to-handle-multiple-issuer-values)
 4. [Pochopení souhlasu uživatele a správce a provádění správných změn kódu](#understand-user-and-admin-consent)
 
-Pojďme se podrobněji podívat na jednotlivé kroky. Můžete také přejít přímo na [Tento seznam ukázek s více klienty][AAD-Samples-MT].
+Pojďme se podrobněji podívat na jednotlivé kroky. Můžete také přejít přímo na [Tento seznam ukázek s více klienty](https://docs.microsoft.com/samples/browse/?products=azure-active-directory).
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizace registrace na více tenantů
 
@@ -135,7 +135,7 @@ Vaše aplikace může mít více vrstev, z nichž každý představuje vlastní 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Více vrstev v jednom tenantovi
 
-To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Například:
+To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Příklad:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
@@ -177,7 +177,7 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihl�
 
 ## <a name="related-content"></a>Související obsah
 
-* [Ukázky aplikací pro více tenantů][AAD-Samples-MT]
+* [Ukázky aplikací pro více tenantů](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
 * [Pokyny pro přizpůsobení aplikací][AAD-App-Branding]
 * [Aplikační objekty a instanční objekty služby][AAD-App-SP-Objects]
 * [Integrace aplikací se službou Azure Active Directory][AAD-Integrating-Apps]
@@ -196,7 +196,7 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihl�
 [AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
+[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview

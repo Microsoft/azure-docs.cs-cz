@@ -1,6 +1,6 @@
 ---
-title: Vytvořit/vložení dat do Azure Cosmos DB Cassandra API z aplikace Spark
-description: Tento článek podrobně popisuje, jak vložit ukázková data do tabulek Azure Cosmos DB Cassandra API
+title: Vytvoření nebo vložení dat do Azure Cosmos DB rozhraní API Cassandra ze Sparku
+description: Tento článek popisuje, jak vložit ukázková data do Azure Cosmos DB rozhraní API Cassandra tabulky.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3eb23a3d8b1098110bd8b75faa22cc483637d183
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60894041"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442127"
 ---
-# <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Vytvořit/vložení dat do Azure Cosmos DB Cassandra API z aplikace Spark
+# <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Vytvoření nebo vložení dat do Azure Cosmos DB rozhraní API Cassandra ze Sparku
  
-Tento článek popisuje, jak vložit ukázková data do tabulky v Azure Cosmos DB Cassandra API z aplikace Spark.
+Tento článek popisuje, jak vložit ukázková data do tabulky v Azure Cosmos DB rozhraní API Cassandra ze Sparku.
 
 ## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní Cassandra API
 
@@ -47,7 +47,7 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 ## <a name="dataframe-api"></a>Datový rámec rozhraní API
 
-### <a name="create-a-dataframe-with-sample-data"></a>Vytvořte datový rámec s ukázkovými daty
+### <a name="create-a-dataframe-with-sample-data"></a>Vytvoření datového rámce s ukázkovými daty
 
 ```scala
 // Generate a dataframe containing five records
@@ -67,11 +67,11 @@ booksDF.show
 ```
 
 > [!NOTE]
-> "Vytvořit, pokud neexistuje" funkce na úrovni řádku, se ještě nepodporuje.
+> Funkce "vytvořit, pokud neexistují", na úrovni řádku, zatím není podporována.
 
-### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Zachovat do služby Azure Cosmos DB Cassandra API
+### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Zachovat Azure Cosmos DB rozhraní API Cassandra
 
-Při ukládání dat, můžete také nastavit time-to-live a konzistence nastavení zásad, jak je znázorněno v následujícím příkladu:
+Při ukládání dat můžete také nastavit nastavení zásad pro čas na živé a konzistenci, jak je znázorněno v následujícím příkladu:
 
 ```scala
 //Persist
@@ -83,16 +83,16 @@ booksDF.write
 ```
 
 > [!NOTE]
-> Hodnota TTL úrovni sloupce se ještě nepodporuje.
+> Hodnota TTL na úrovni sloupce se ještě nepodporuje.
 
-#### <a name="validate-in-cqlsh"></a>Ověření v cqlsh
+#### <a name="validate-in-cqlsh"></a>Ověřit v cqlsh
 
 ```sql
 use books_ks;
 select * from books;
 ```
 
-## <a name="resilient-distributed-database-rdd-api"></a>Rozhraní API pružné distribuovanou databázi (RDD)
+## <a name="resilient-distributed-database-rdd-api"></a>Rozhraní API odolné distribuované databáze (RDD)
 
 ### <a name="create-a-rdd-with-sample-data"></a>Vytvoření RDD s ukázkovými daty
 ```scala
@@ -114,11 +114,11 @@ booksRDD.take(2).foreach(println)
 ```
 
 > [!NOTE]
-> Vytvořit, pokud neexistuje funkce není dosud podporována.
+> Vytvořit, pokud funkce NOT EXISTS ještě není podporována.
 
-### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Zachovat do služby Azure Cosmos DB Cassandra API
+### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Zachovat Azure Cosmos DB rozhraní API Cassandra
 
-Při ukládání dat do rozhraní Cassandra API, můžete také nastavit time-to-live a konzistence nastavení zásad, jak je znázorněno v následujícím příkladu:
+Když ukládáte data do rozhraní API Cassandra, můžete také nastavit nastavení zásad pro čas na živý a konzistenci, jak je znázorněno v následujícím příkladu:
 
 ```scala
 import com.datastax.spark.connector.writer._
@@ -127,18 +127,18 @@ import com.datastax.spark.connector.writer._
 booksRDD.saveToCassandra("books_ks", "books", SomeColumns("book_id", "book_author", "book_name", "book_pub_year"),writeConf = WriteConf(ttl = TTLOption.constant(900000),consistencyLevel = ConsistencyLevel.ALL))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Ověření v cqlsh
+#### <a name="validate-in-cqlsh"></a>Ověřit v cqlsh
 
 ```sql
 use books_ks;
 select * from books;
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po vložení dat do tabulky Azure Cosmos DB Cassandra API, pokračujte v následujících článcích pro provádění jiných operací s daty uloženými v Cosmos DB Cassandra API:
+Po vložení dat do tabulky Azure Cosmos DB rozhraní API Cassandra proveďte další operace s daty uloženými v Cosmos DB rozhraní API Cassandra pomocí následujících článků:
  
-* [operace čtení](cassandra-spark-read-ops.md)
+* [Operace čtení](cassandra-spark-read-ops.md)
 * [Operace Upsert](cassandra-spark-upsert-ops.md)
 * [Operace odstranění](cassandra-spark-delete-ops.md)
 * [Agregační operace](cassandra-spark-aggregation-ops.md)

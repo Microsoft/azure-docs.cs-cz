@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1023583b5527e4d565580e8f094dc2f68d38f4ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424792"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz na nastavení Azure Active Directory podmíněného přístupu
 
@@ -55,7 +55,7 @@ Zásady podmíněného přístupu můžete přiřadit k těmto cloudovým aplika
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Registrace Microsoft Intune
+- Registrace v Microsoft Intune
 - Microsoft Planner
 - Microsoft PowerApps
 - Hledání ve službě Bing
@@ -65,7 +65,7 @@ Zásady podmíněného přístupu můžete přiřadit k těmto cloudovým aplika
 - Office 365 Exchange Online
 - Office 365 SharePoint Online
 - Office 365 Yammer
-- Office – Delvu
+- Office Delve
 - Sway pro Office
 - Outlook Groups
 - Služba Power BI
@@ -90,7 +90,7 @@ V zásadách podmíněného přístupu můžete nakonfigurovat podmínku pro pla
 
 - Android
 - iOS
-- telefon se systémem Windows
+- Windows Phone
 - Windows
 - macOS
 
@@ -115,14 +115,14 @@ V zásadách podmíněného přístupu můžete jako klientskou aplikaci vybrat 
 
 Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zásadu zařízení, třeba požadavky na vyhovující zařízení, podporují se tyto operační systémy a prohlížeče:
 
-| OS                     | Nimi                                        |
+| OS                     | Prohlížeče                                        |
 | :--                    | :--                                             |
 | Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows 8/8,1        | Internet Explorer, Chrome                       |
-| Windows 7              | Internet Explorer, Chrome                       |
+| Windows 7              | Internet Explorer, Chrome                       |
 | iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
 | Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
-| telefon se systémem Windows          | Microsoft Edge, Internet Explorer               |
+| Windows Phone          | Microsoft Edge, Internet Explorer               |
 | Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows Server 2016    | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer                       |
@@ -144,7 +144,7 @@ Pokud chcete toto rozšíření automaticky nasadit do prohlížečů Chrome, vy
 | --- | --- |
 | Cesta | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name (Název) | 1\. místo |
-| Typ | REG_SZ (řetězec) |
+| Typ | REG_SZ (String) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
 V případě podpory Chrome v **Windows 8.1 a 7**vytvořte následující klíč registru:
@@ -153,7 +153,7 @@ V případě podpory Chrome v **Windows 8.1 a 7**vytvořte následující klíč
 | --- | --- |
 | Cesta | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name (Název) | 1\. místo |
-| Typ | REG_SZ (řetězec) |
+| Typ | REG_SZ (String) |
 | Data | {"Pattern": "https://device.login.microsoftonline.com"; "Filter": {"ISSUER": {"CN": "MS-Organization-Access"}}} |
 
 Tyto prohlížeče podporují ověřování zařízení, což umožňuje, aby se zařízení identifikovalo a ověřilo na základě zásad. Pokud je prohlížeč spuštěný v privátním režimu, neproběhne jeho ověření.
@@ -175,14 +175,14 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 | Aplikace Office 2016, Office 2013 (s moderním ověřováním), klient synchronizace OneDrive (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
 | Aplikace Office 2016, univerzální aplikace Office, Office 2013 (s moderním ověřováním), synchronizační klient OneDrivu (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), podpora skupin Office je pro budoucnost plánována. Podpora aplikací SharePoint je pro budoucnost budoucí. | Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (jenom Word, Excel, PowerPoint, OneNote) Podpora OneDrivu pro firmy plánovaná pro budoucnost| Office 365 SharePoint Online| macOS|
-| Sada Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
+| Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
 | Mobilní aplikace Office | Office 365 SharePoint Online | Android, iOS |
 | Aplikace Office Yammer | Office 365 Yammer | Windows 10, iOS, Android |
 | Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
 | Outlook 2016 (Office pro macOS) | Office 365 Exchange Online | macOS |
 | Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Mobilní aplikace Outlook | Office 365 Exchange Online | Android, iOS |
-| Aplikace Power BI | služba Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
+| Aplikace Power BI | Služba Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
 | Skype pro firmy | Office 365 Exchange Online| Android, IOS |
 | Aplikace Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS a Android |
 
@@ -228,13 +228,14 @@ Toto nastavení platí pro následující klientské aplikace:
 - Microsoft To-Do
 - Microsoft Visio
 - Microsoft Word
-- Yammer Microsoftu
+- Microsoft Yammer
 
 **Poznámky**
 
 - Schválené klientské aplikace podporují funkci správy mobilních aplikací Intune.
 - Požadavek na **vyžadování schválené aplikace klienta** :
    - Podporuje jenom [podmínku platformy](#device-platform-condition)iOS a Android pro zařízení.
+- Podmíněný přístup nemůže vzít v úvahu schválenou klientskou aplikaci Microsoft Edge v režimu InPrivate.
 
 ## <a name="app-protection-policy-requirement"></a>Požadavek na zásady ochrany aplikací 
 

@@ -1,6 +1,5 @@
 ---
-title: Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – použití Mongoose pro připojení k Cosmos DB
-titleSuffix: Azure Cosmos DB
+title: Připojte úhlovou aplikaci k rozhraní API Azure Cosmos DB pro MongoDB pomocí Mongoose
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci Node. js pomocí úhlů a Express ke správě dat uložených v Cosmos DB. V této části použijete Mongoose k připojení k Azure Cosmos DB.
 author: johnpapa
 ms.service: cosmos-db
@@ -12,12 +11,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ba893eeb8c2560397f3524d1042566dbafee7d1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69616424"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444707"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – použití Mongoose pro připojení k Cosmos DB
 
@@ -34,7 +33,7 @@ V této části kurzu budete:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete s tímto kurzem, proveďte kroky v [části 4](tutorial-develop-mongodb-nodejs-part4.md).
 
@@ -88,7 +87,7 @@ Mongoose je knihovna ODM (Object data Modeling) pro MongoDB a Node. js. Pomocí 
     
 1. V podokně Průzkumník v části **Server**vytvořte složku s názvem **prostředí**. Ve složce **prostředí** vytvořte soubor s názvem **Environment. js**.
 
-1. V souboru Mongo. js musíme zahrnout hodnoty pro `dbName`, `key` a parametry `cosmosPort`. Do souboru **Environment. js** zkopírujte následující kód:
+1. V souboru Mongo. js musíme zahrnout hodnoty pro `dbName`, `key`a parametry `cosmosPort`. Do souboru **Environment. js** zkopírujte následující kód:
 
     ```javascript
     // TODO: replace if yours are different
@@ -120,7 +119,7 @@ Chcete-li připojit aplikaci k Azure Cosmos DB, je nutné aktualizovat nastaven�
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
     ```    
     
-    \<cosmosdb-Name > je název Azure Cosmos DB účtu, který jste vytvořili v [části 4](tutorial-develop-mongodb-nodejs-part4.md) tohoto kurzu.
+    \<cosmosdb-Name > je název účtu Azure Cosmos DB, který jste vytvořili v [části 4](tutorial-develop-mongodb-nodejs-part4.md) tohoto kurzu.
 
 1. Zkopírujte primární klíč do souboru **Environment. js** jako hodnotu `key`.
 
@@ -199,7 +198,7 @@ Po vytvoření modelu Hero je třeba definovat službu pro čtení dat a provád
    };
    ```
 
-## <a name="configure-routes"></a>Konfigurace tras
+## <a name="configure-routes"></a>Nakonfigurujte trasy
 
 Dál je potřeba nastavit trasy, které budou zpracovávat adresy URL pro žádosti získat, vytvořit, číst a odstranit. Metody směrování určují funkce zpětného volání (označované také jako _funkce obslužné rutiny_). Tyto funkce jsou volány, když aplikace obdrží požadavek na zadaný koncový bod a metodu HTTP. Pomocí následujících kroků přidejte službu Hero a definujte trasy:
 
@@ -232,9 +231,9 @@ Pojďme si projít několik minut a projít si předchozí kód. Nejprve se dora
 
 Dále spusťte aplikaci pomocí následujících kroků:
 
-1. V Visual Studio Code uložte všechny změny. Na levé straně vyberte tlačítko **ladit** ![Debug ikonu v Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) a pak vyberte tlačítko **Spustit ladění** ![Debug ikonu v Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
+1. V Visual Studio Code uložte všechny změny. Na levé straně vyberte tlačítko **ladit** ![ikonu ladění v Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)a pak vyberte tlačítko **Spustit ladění** ![ikona ladění v Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
 
-1. Teď přejděte do prohlížeče. Otevřete **Nástroje pro vývojáře** a **kartu síť**. Přejděte na `http://localhost:3000` a zobrazí se naše aplikace.
+1. Teď přejděte do prohlížeče. Otevřete **Nástroje pro vývojáře** a **kartu síť**. Přejděte na `http://localhost:3000`a zobrazí se naše aplikace.
 
     ![Nový účet služby Azure Cosmos DB na webu Azure Portal](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 

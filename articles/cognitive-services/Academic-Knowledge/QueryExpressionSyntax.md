@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 4056ecba7ac80436952228da9e1b74dc7382448c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448954"
 ---
 # <a name="query-expression-syntax"></a>Syntaxe výrazu dotazu
 
@@ -28,37 +28,38 @@ Každý atribut entity, který lze zahrnout do výrazu dotazu, má určitý dato
 
 Některá data entity jsou ukládána jako složené atributy, které jsou označeny tečkou "." v názvu atributu. Například informace o autorovi nebo afilaci jsou reprezentovány jako složený atribut. Obsahuje 4 součásti: AuN, AuId, AfN, AfId. Tyto součásti jsou oddělené části dat, které tvoří jednu hodnotu atributu entity.
 
+Poznámka: všechny výrazy dotazu musí být malými písmeny a bez speciálních znaků.
 
-**Řetězcový atribut: Jedna hodnota** (včetně shody s synonymy)  
+**Řetězcový atribut: jedna hodnota** (včetně shody s synonymy)  
 ČŘ = Indexing podle latentní sémantické analýzy  
 Složené (AA. AuN = ' Sue Dumais ')
 
-**Řetězcový atribut: Přesná jediná** hodnota (odpovídá jenom kanonickým hodnotám)  
+**Řetězcový atribut: přesná jediná hodnota** (odpovídá jenom kanonickým hodnotám)  
 ČŘ = = ' indexování pomocí latentní sémantické analýzy '  
 Složené (AA. AuN = = "Zuzana t Dumais")
      
-**Řetězcový atribut: Hodnota předpony**   
+**Řetězcový atribut: hodnota předpony**   
 Ti = "indexování pomocí latentních Seman"...  
 Složené (AA. AuN = ' Sue du '...)
 
-**Číselný atribut: Jedna hodnota**  
+**Číselný atribut: jedna hodnota**  
 Y=2010
  
-**Číselný atribut: Hodnota rozsahu**  
+**Číselný atribut: hodnota rozsahu**  
 Y>2005  
 Y > = 2005  
 Y<2010  
 Y<=2010  
-Y =\[2010, 2012\) (zahrnuje pouze levou hranici hodnoty: 2010, 2011)  
-Y =\[2010, 2012\] (zahrnuje obě hodnoty hranice: 2010, 2011, 2012)
+Y =\[2010, 2012\) (zahrnuje jenom levou hodnotu hranice: 2010, 2011)  
+Y =\[2010, 2012\] (zahrnuje hodnoty mezních hodnot: 2010, 2011, 2012)
  
-**Číselný atribut: Hodnota předpony**  
+**Číselný atribut: hodnota předpony**  
 Y = 19... (libovolná číselná hodnota, která začíná 19) 
  
-**Atribut data: Jedna hodnota**  
+**Atribut data: jedna hodnota**  
 D = "2010-02-04"
 
-**Atribut data: Hodnota rozsahu**  
+**Atribut data: hodnota rozsahu**  
 D > "2010-02-03"  
 D = [' 2010-02-03 ', ' 2010-02-05 ']
 
@@ -86,7 +87,7 @@ And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
 <br>Vzhledem k tomu, že je v této verzi použita možnost složené () pro autor a přidružení jednotlivě před a (), získáme všechny dokumenty, u nichž jeden z autorů je "Jan Novák" a jedna z afilací autoři je "Harvard". Tyto zvuky se podobají předchozímu příkladu dotazu, ale nejedná se o stejné věci.
 
-V části Obecné zvažte následující příklad: Máme složený atribut C, který má dvě komponenty A a B. Entita může mít více hodnot pro C. Jedná se o naše entity:
+Obecně platí, že je třeba vzít v úvahu následující příklad: máme složený atribut C, který má dvě komponenty A a B. Entita může mít více hodnot pro C. Jedná se o naše entity:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}

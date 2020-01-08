@@ -1,6 +1,6 @@
 ---
 title: Parametry webové služby – Azure Machine Learning Studio (Classic) | Microsoft Docs
-description: Jak používat Azure Machine Learning parametry webové služby pro úpravu chování modelu při použití webové služby.
+description: Jak používat parametry webové služby Azure Machine Learning k úpravě chování modelu při přístupu k webové službě.
 services: machine-learning
 author: xiaoharper
 ms.custom: seodec18
@@ -12,69 +12,69 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 62c6488cfcb30c969c388343c766c482cff7e03b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 984d2e02ff75df459275fd10e313a4950c8d79c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466983"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432183"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Použít parametry webové služby Azure Machine Learning Studio (Classic)
-Webová služba Azure Machine Learning je vytvořena publikováním experimentu obsahujícího moduly s konfigurovatelnými parametry. V některých případech můžete chtít změnit chování modulu, když je webová služba spuštěná. Tento úkol vám umožní použít *parametry webové služby* . 
+Webové služby Azure Machine Learning je vytvořen a publikujte experiment, který obsahuje moduly s konfigurovatelné parametry. V některých případech můžete změnit chování modulu, zatímco je webová služba spuštěna. *Webová služba parametry* umožňují provést tuto úlohu. 
 
 Běžným příkladem je nastavení modulu [Import dat][reader] tak, aby uživatel publikované webové služby mohl při použití webové služby zadat jiný zdroj dat. Nebo nakonfigurujte modul [exportu dat][writer] tak, aby bylo možné zadat jiný cíl. Mezi další příklady patří změna počtu bitů pro modul [hash funkcí][feature-hashing] nebo počet požadovaných funkcí pro modul [výběru funkcí založených na filtrech][filter-based-feature-selection] . 
 
-Můžete nastavit parametry webové služby a přidružit je k jednomu nebo více parametrům modulu v experimentu a můžete určit, jestli jsou povinné nebo volitelné. Uživatel webové služby pak může zadat hodnoty pro tyto parametry při volání webové služby. 
+Můžete nastavit parametry webové služby a přidružit jeden nebo více parametrů modulu v experimentu a můžete určit, jestli jsou povinné nebo volitelné. Uživatele webové službě jim pak můžou hodnoty těchto parametrů při volání webové služby. 
 
 
 
-## <a name="how-to-set-and-use-web-service-parameters"></a>Nastavení a použití parametrů webové služby
-Parametr webové služby definujete tak, že kliknete na ikonu vedle parametru pro modul a vyberete nastavit jako parametr webové služby. Tím se vytvoří nový parametr webové služby a připojí se k parametru tohoto modulu. Potom může uživatel při použití webové služby zadat hodnotu pro parametr webové služby a použije se pro parametr modulu.
+## <a name="how-to-set-and-use-web-service-parameters"></a>Jak nastavit a použití parametrů webové služby
+Kliknutím na ikonu vedle parametru pro modul a vyberte "Nastavit jako parametr webové služby" můžete definovat parametr webové služby. Tím se vytvoří nový parametr webové služby a připojí ji k parametru modulu. Potom při přístupu k webové službě, může uživatel zadat hodnotu pro parametr webové služby a je použít pro parametr modulu.
 
-Po definování parametru webové služby je tento parametr k dispozici pro všechny ostatní parametry modulu v experimentu. Pokud definujete parametr webové služby přidružený k parametru pro jeden modul, můžete použít stejný parametr webové služby pro jakýkoli jiný modul, pokud parametr očekává stejný typ hodnoty. Například pokud je parametr webové služby číselná hodnota, lze ji použít pouze pro parametry modulu, které očekávají číselnou hodnotu. Když uživatel nastaví hodnotu pro parametr webové služby, použije se u všech přidružených parametrů modulu.
+Jakmile definujete parametr webové služby, je k dispozici pro všechny ostatní parametry modulu v experimentu. Pokud definujete parametr webové služby související s parametrem pro jeden modul, můžete použít tento stejný parametr webové služby pro jakýkoli modul jako parametr očekává, že stejný typ hodnoty. Například pokud parametr webové služby je číselnou hodnotou, pak ho jde použít jenom pro parametry modulu, které očekávají číselnou hodnotu. Pokud uživatel nastaví hodnotu pro parametr webové služby, se použijí všechny parametry přidružené modulu.
 
-Můžete se rozhodnout, jestli chcete zadat výchozí hodnotu pro parametr webové služby. V takovém případě je parametr pro uživatele webové služby volitelný. Pokud nezadáte výchozí hodnotu, musí uživatel při použití webové služby zadat hodnotu.
+Můžete se rozhodnout, zda chcete zadat výchozí hodnotu pro parametr webové služby. Pokud tak učiníte, parametr je volitelný pro uživatele webové službě. Pokud nezadáte výchozí hodnotu, uživatel je potřeba zadat hodnotu při přístupu k webové službě.
 
-Dokumentace k rozhraní API webové služby obsahuje informace o tom, jak zadat parametr webové služby programově při přístupu k webové službě.
+Dokumentaci k rozhraní API pro webové služby obsahuje informace pro uživatelské web služby o tom, jak prostřednictvím kódu programu zadejte parametr webové služby při přístupu k webové službě.
 
 > [!NOTE]
-> Dokumentace rozhraní API pro klasickou webovou službu je k dispozici prostřednictvím odkazu na **stránku s nápovědu k rozhraní API** na **řídicím panelu** webové služby v Machine Learning Studio (Classic). Dokumentace k rozhraní API pro novou webovou službu je k dispozici prostřednictvím portálu [Azure Machine Learning webové služby](https://services.azureml.net/Quickstart) na stránkách **rozhraní API** pro **využívání** a Swagger pro vaši webovou službu.
+> Dokumentace rozhraní API pro klasickou webovou službu je k dispozici prostřednictvím odkazu na **stránku s nápovědu k rozhraní API** na **řídicím panelu** webové služby v Machine Learning Studio (Classic). Dokumentaci k rozhraní API pro nové webové služby je zajišťována [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart) na portálu **využívání** a **rozhraní API Swaggeru** pro vaše webové stránky Služba.
 > 
 > 
 
 ## <a name="example"></a>Příklad:
-Předpokládejme například, že máme experiment s modulem [exportu dat][writer] , který odesílá informace do úložiště objektů BLOB v Azure. Definujeme parametr webové služby s názvem "cesta objektu BLOB", který umožňuje uživateli webové služby měnit cestu k úložišti objektů blob, když je služba dostupná.
+Předpokládejme například, že máme experiment s modulem [exportu dat][writer] , který odesílá informace do úložiště objektů BLOB v Azure. Budeme definovat parametr webové služby s názvem "Blob cesty", který umožňuje uživateli webové služby změnit cestu k úložišti objektů blob při přístupu k službě.
 
-1. V klasické verzi Machine Learning Studio klikněte na modul [exportovat data][writer] a vyberte ho. Jeho vlastnosti jsou zobrazeny v podokně vlastnosti napravo od plátna experimentu.
+1. V Machine Learning Studio (Classic) klikněte na modul [exportovat data][writer] a vyberte ho. Její vlastnosti jsou uvedeny v podokně vlastností napravo od plátna experimentu.
 2. Zadejte typ úložiště:
    
-   * V části **Zadejte cíl dat**vyberte Azure Blob Storage.
-   * V části zadejte **typ ověřování**vyberte účet.
-   * Zadejte informace o účtu pro úložiště objektů BLOB v Azure. 
+   * V části **zadejte cíl dat**, vyberte "Azure Blob Storage".
+   * V části **zadejte typ ověřování**, vyberte "Účet".
+   * Zadejte informace o účtu pro úložiště objektů blob v Azure. 
 
-3. Klikněte na ikonu napravo od **cesty k objektu BLOB počínaje parametrem kontejneru**. Vypadá to takto:
+3. Klikněte na ikonu napravo **cestu k začátku s parametrem kontejneru objektů blob**. Vypadá takto:
    
-   ![Ikona parametru webové služby](./media/web-service-parameters/icon.png)
+   ![Ikona webové parametr služby](./media/web-service-parameters/icon.png)
    
-   Vyberte možnost nastavit jako parametr webové služby.
+   Vyberte "Nastavit jako parametr webové služby".
    
-   Položka se přidá do části **parametry webové služby** v dolní části podokna vlastností s názvem cesta k objektu BLOB začínajícího kontejnerem. Toto je parametr webové služby, který je nyní přidružen k tomuto parametru modulu [Export dat][writer] .
-4. Chcete-li přejmenovat parametr webové služby, klikněte na jeho název, zadejte "cestu k objektu BLOB" a stiskněte klávesu **ENTER** . 
-5. Pokud chcete zadat výchozí hodnotu pro parametr webové služby, klikněte na ikonu napravo od názvu, vyberte zadat výchozí hodnotu, zadejte hodnotu (například "container1/output1. csv") a stiskněte klávesu **ENTER** .
+   Položka se přidá do části **parametrů webové služby** v dolní části podokna Vlastnosti s názvem "Cesty pro začátek s kontejnerem objektů blob". Toto je parametr webové služby, který je nyní přidružen k tomuto parametru modulu [Export dat][writer] .
+4. Přejmenovat parametr webové služby, klikněte na název, zadejte "Cestu k objektu Blob" a stiskněte klávesu **Enter** klíč. 
+5. Zadejte výchozí hodnotu pro parametr webové služby, klikněte na ikonu napravo od názvu, vyberte "Zadat výchozí hodnotu", zadejte hodnotu (například "container1/output1.csv") a stiskněte klávesu **Enter** klíč.
    
    ![Parametr webové služby](./media/web-service-parameters/parameter.png)
 6. Klikněte na **Run** (Spustit). 
-7. Klikněte na **nasadit webovou službu** a vyberte **nasadit webovou službu [Classic]** nebo **nasazení webové služby [New]** pro nasazení webové služby.
+7. Klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba** nasadit webovou službu.
 
 > [!NOTE] 
-> Nasazení nové webové služby vyžaduje dostatečná oprávnění v předplatném, na které nasazujete webovou službu. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md). 
+> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, ke kterému, můžete nasazení webové služby. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md). 
 
 Uživatel webové služby teď může při přístupu k webové službě zadat nový cíl pro modul [Export dat][writer] .
 
 ## <a name="more-information"></a>Další informace
-Podrobnější příklad najdete v tématu o [parametrech webové služby](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) na [blogu Machine Learning](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
+Podrobnější příklad naleznete v tématu [parametrů webové služby](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) položku [Machine Learning Blog](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
-Další informace o přístupu k webové službě Machine Learning najdete v tématu [jak využívat webovou službu Azure Machine Learning](consume-web-services.md).
+Další informace o přístupu k webové službě Machine Learning najdete v tématu [jak využívat Azure Machine Learning webové služby](consume-web-services.md).
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976141"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429158"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak klonovat službu Azure IoT Hub do jiné oblasti
 
@@ -29,7 +29,7 @@ Tento článek popisuje způsoby, jak klonovat IoT Hub a poskytuje některé ot�
 K naklonování rozbočovače potřebujete předplatné s přístupem správce k původnímu centru. Nové centrum můžete umístit do nové skupiny prostředků a oblasti ve stejném předplatném jako původní centrum nebo dokonce i v novém předplatném. Pouze nemůžete použít stejný název, protože název centra musí být globálně jedinečný.
 
 > [!NOTE]
-> V současné době není k dispozici žádná funkce první třídy pro klonování služby IoT Hub. Je primárně ruční proces, a proto je poměrně náchylná k chybám. Složitost klonování rozbočovače je přímo úměrná složitosti rozbočovače. Například klonování služby IoT Hub bez směrování zpráv je poměrně jednoduché. Pokud přidáte směrování zpráv jako jen jednu složitost, klonování rozbočovače se změní nejméně na pořadí. Pokud přesouváte také prostředky používané pro koncové body směrování, je to jiné pořadí magnitureější. 
+> V současné době není k dispozici žádná funkce pro klonování služby IoT Hub automaticky. Je primárně ruční proces, a proto je poměrně náchylná k chybám. Složitost klonování rozbočovače je přímo úměrná složitosti rozbočovače. Například klonování služby IoT Hub bez směrování zpráv je poměrně jednoduché. Pokud přidáte směrování zpráv jako jen jednu složitost, klonování rozbočovače se změní nejméně na pořadí. Pokud přesouváte také prostředky používané pro koncové body směrování, je to jiné pořadí magnitureější. 
 
 ## <a name="things-to-consider"></a>Co je potřeba zvážit
 
@@ -353,7 +353,7 @@ Vytvořte nové centrum v novém umístění pomocí šablony. Pokud máte prost
 
 1. Do vyhledávacího pole zadejte "nasazování šablony" a vyberte Enter.
 
-1. Vyberte **nasazení šablony (nasazení pomocí vlastních šablon)** . Tím přejdete na obrazovku pro Template deployment. Vyberte **Create** (Vytvořit). Zobrazí se tato obrazovka:
+1. Vyberte **nasazení šablony (nasazení pomocí vlastních šablon)** . Tím přejdete na obrazovku pro Template deployment. Vyberte **Vytvořit**. Zobrazí se tato obrazovka:
 
    ![Snímek obrazovky zobrazující příkaz pro vytvoření vlastní šablony](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -363,7 +363,7 @@ Vytvořte nové centrum v novém umístění pomocí šablony. Pokud máte prost
 
    ![Snímek obrazovky zobrazující příkaz pro nahrání souboru šablony](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
 
-1. Vyhledejte novou šablonu, kterou jste upravovali, vyberte ji a pak vyberte **otevřít**. Načte šablonu v okně Upravit. Vyberte **Save** (Uložit). 
+1. Vyhledejte novou šablonu, kterou jste upravovali, vyberte ji a pak vyberte **otevřít**. Načte šablonu v okně Upravit. Vyberte **Uložit**. 
 
    ![Snímek obrazovky, který ukazuje načtení šablony](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
 

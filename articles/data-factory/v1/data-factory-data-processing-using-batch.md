@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 611c2a36cac5a589ecd6f9063f5f1bc325860ef6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438892"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
 > [!NOTE]
@@ -44,7 +44,7 @@ Pomocí služby Batch definujete výpočetní prostředky, které vaše aplikace
 Další informace o službě Batch najdete v [dokumentaci](https://docs.microsoft.com/azure/batch/)ke službě Batch.
 
 ## <a name="why-azure-data-factory"></a>Proč Azure Data Factory?
-Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Pomocí Data Factory můžete vytvářet spravované datové kanály, které přesouvají data z místních a cloudových úložišť do centralizovaného úložiště dat. Příkladem je úložiště objektů BLOB v Azure. Data Factory můžete použít ke zpracování nebo transformaci dat pomocí služeb, jako je Azure HDInsight a Azure Machine Learning. Datové kanály můžete také naplánovat tak, aby běžely naplánovaným způsobem (například každou hodinu, denně a týdně). Pokud chcete identifikovat problémy a provést akci, můžete kanály na první pohled monitorovat a spravovat.
+Data Factory je cloudová integrační služba, která organizuje a automatizuje pohyb a transformaci dat. Pomocí Data Factory můžete vytvářet spravované datové kanály, které přesouvají data z místních a cloudových úložišť do centralizovaného úložiště dat. Příkladem je úložiště objektů BLOB v Azure. Data Factory můžete použít ke zpracování nebo transformaci dat pomocí služeb, jako je Azure HDInsight a Azure Machine Learning. Datové kanály můžete také naplánovat tak, aby běžely naplánovaným způsobem (například každou hodinu, denně a týdně). Pokud chcete identifikovat problémy a provést akci, můžete kanály na první pohled monitorovat a spravovat.
 
   Pokud nejste obeznámeni s Data Factory, následující články vám pomůžou pochopit architekturu a implementaci řešení popsaného v tomto článku:  
 
@@ -121,7 +121,7 @@ Vytvořte fond Batch s aspoň dvěma výpočetními uzly.
 
    f. Vyberte **OK** a vytvořte fond.
 
-#### <a name="azure-storage-explorer"></a>Azure Storage Explorer
+#### <a name="azure-storage-explorer"></a>Průzkumník služby Azure Storage
 Pro kontrolu a změnu dat v projektech úložiště slouží [Průzkumník služby Azure Storage 6](https://azurestorageexplorer.codeplex.com/) nebo [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (ze softwaru ClumsyLeaf). Můžete také zkontrolovat a změnit data v protokolech aplikací hostovaných v cloudu.
 
 1. Vytvořte kontejner s názvem **myContainer** s privátním přístupem (bez anonymního přístupu).
@@ -192,7 +192,7 @@ Tato metoda má několik klíčových součástí, které je třeba pochopit:
 
    g. Vyberte **OK** a vytvořte projekt.
 
-1. Vyberte **nástroje** > **správce balíčků NuGet** > **konzole správce balíčků**.
+1. Vyberte **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
 
 1. V konzole správce balíčků spusťte následující příkaz pro import Microsoft. Azure. Management. datafactorys:
 
@@ -556,7 +556,7 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s datov
 
    ![Nové úložiště dat](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Nahraďte **název účtu** názvem vašeho účtu úložiště. Nahraďte **klíč účtu** přístupovým klíčem účtu úložiště. Informace o tom, jak získat přístupový klíč k úložišti, najdete v tématu [zobrazení, kopírování a opětovné vygenerování přístupových klíčů k úložišti](../../storage/common/storage-account-manage.md#access-keys).
+1. Nahraďte **název účtu** názvem vašeho účtu úložiště. Nahraďte **klíč účtu** přístupovým klíčem účtu úložiště. Informace o tom, jak získat přístupový klíč k úložišti, najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte propojenou službu.
 
@@ -667,21 +667,21 @@ V tomto kroku vytvoříte datové sady, které reprezentují vstupní a výstupn
 
     | **Průřez** | **Čas spuštění**          |
     |-----------|-------------------------|
-    | 1         | 2015-11.16T**00**: 00:00 |
-    | 2         | 2015-11 – 16T**01**: 00:00 |
-    | 3         | 2015-11 – 16T**02**: 00:00 |
-    | 4         | 2015-11 – 16T**03**: 00:00 |
-    | 5         | 2015-11 – 16T**04**: 00:00 |
+    | 1\. místo         | 2015-11-16T**00**:00:00 |
+    | 2         | 2015-11-16T**01**:00:00 |
+    | 3         | 2015-11-16T**02**:00:00 |
+    | 4         | 2015-11-16T**03**:00:00 |
+    | 5         | 2015-11-16T**04**:00:00 |
 
     **FolderPath** se počítá pomocí části rok, měsíc, den a hodina počátečního času řezu (**vlastnosti slicestart**). Tady je způsob, jak je vstupní složka namapována na řez.
 
     | **Průřez** | **Čas spuštění**          | **Vstupní složka**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11.16T**00**: 00:00 | 2015-11-16-**00** |
-    | 2         | 2015-11 – 16T**01**: 00:00 | 2015-11-16 –**01** |
-    | 3         | 2015-11 – 16T**02**: 00:00 | 2015-11-16 –**02** |
-    | 4         | 2015-11 – 16T**03**: 00:00 | 2015-11-16 –**03** |
-    | 5         | 2015-11 – 16T**04**: 00:00 | 2015-11-16 –**04** |
+    | 1\. místo         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
+    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
+    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
+    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
 1. Pro vytvoření a nasazení tabulky **InputDataset** vyberte **nasadit** na panelu nástrojů.
 
@@ -724,11 +724,11 @@ V tomto kroku vytvoříte další datovou sadu typu Azureblobu, která bude pře
 
     | **Průřez** | **Čas spuštění**          | **Výstupní soubor**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11.16T**00**: 00:00 | 2015-11-16-**00. txt** |
-    | 2         | 2015-11 – 16T**01**: 00:00 | 2015-11-16 –**01. txt** |
-    | 3         | 2015-11 – 16T**02**: 00:00 | 2015-11-16 –**02. txt** |
-    | 4         | 2015-11 – 16T**03**: 00:00 | 2015-11-16 –**03. txt** |
-    | 5         | 2015-11 – 16T**04**: 00:00 | 2015-11-16 –**04. txt** |
+    | 1\. místo         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
+    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
+    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
+    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
     Mějte na paměti, že všechny soubory ve vstupní složce (například 2015-11-16-00) jsou součástí řezu s časem spuštění 2015-11-16-00. Při zpracování tohoto řezu vlastní aktivita projde každým souborem a vytvoří ve výstupním souboru řádek s počtem výskytů hledaného výrazu "Microsoft". Pokud se ve složce 2015-11-16-00 nacházejí tři soubory, ve výstupním souboru 2015-11-16 -00. txt jsou tři řádky.
 
@@ -847,7 +847,7 @@ V tomto kroku otestujete kanál odstraněním souborů do vstupních složek. Za
 
 1. V okně **OutputDataset** klikněte pravým tlačítkem na řez s **časem zahájení řezu** nastaveným na **11/16/2015 01:00:00 dop**. Vyberte možnost **Spustit** pro opětovné spuštění nebo opětovné zpracování řezu. Řez teď má pět souborů místo jednoho souboru.
 
-    ![Spusťte](./media/data-factory-data-processing-using-batch/image17.png)
+    ![Spuštění](./media/data-factory-data-processing-using-batch/image17.png)
 
 1. Po spuštění řezu a jeho stav je **připravený**a ověřte obsah ve výstupním souboru pro tento řez (**2015-11-16 -01. txt**). Výstupní soubor se zobrazí v části `mycontainer` v `outputfolder` ve vašem úložišti objektů BLOB. Pro každý soubor řezu by měl být řádek.
 
@@ -913,7 +913,7 @@ Ladění se skládá z několika základních technik.
 
    ![Seznam souborů zip vlastní aktivity](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Zajistěte, aby byl parametr **AssemblyName** (MyDotNetActivity. dll), **EntryPoint** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) a **packageLinkedService** (mělo by odkazovat na úložiště objektů blob, které obsahuje soubor ZIP), je nastavené na správné hodnoty.
+1. Zajistěte, aby byl parametr **AssemblyName** (MyDotNetActivity. dll), **EntryPoint** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) a **packageLinkedService** (měl by odkazovat na úložiště objektů blob, které obsahuje soubor ZIP), nastaven na správné hodnoty.
 
 1. Pokud jste opravili chybu a chcete znovu zpracovat řez, klikněte pravým tlačítkem myši na řez v okně **OutputDataset** a vyberte **Spustit**.
 
@@ -960,7 +960,7 @@ Pokud chcete získat další informace o funkcích Data Factory a Batch, můžet
 Po zpracování dat je můžete využívat s online nástroji, jako je Power BI. Tady jsou odkazy, které vám pomůžou pochopit Power BI a jak ho používat v Azure:
 
 * [Prozkoumat datovou sadu v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Začínáme s Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Začínáme s Power BI Desktopem](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Aktualizovat data v Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure a Power BI: základní přehled](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 

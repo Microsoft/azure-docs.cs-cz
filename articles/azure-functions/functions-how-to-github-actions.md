@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f30211b2b5863294976420d3f903a36abe76deba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433162"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -25,7 +25,7 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 | Sekce | Úlohy |
 | ------- | ----- |
 | **Ověřování** | <ol><li>Definujte instanční objekt.</li><li>Stáhnout profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
-| **Budování** | <ol><li>Nastavte prostředí.</li><li>Sestavte aplikaci Function App.</li></ol> |
+| **Sestavení** | <ol><li>Nastavte prostředí.</li><li>Sestavte aplikaci Function App.</li></ol> |
 | **Nasazení** | <ol><li>Nasaďte aplikaci Function App.</li></ol>|
 
 > [!NOTE]
@@ -64,18 +64,11 @@ GitHub se teď může ověřit pro vaši aplikaci Function App v Azure.
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí 
 
-Nastavení prostředí je možné provést pomocí jedné z akcí nastavení publikování.
+Nastavení prostředí se provádí pomocí akce nastavení publikování pro konkrétní jazyk.
 
-|Jazyk | Akce nastavení |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**Java**    | `actions/setup-java` |
-|**JavaScript**     | `actions/setup-node` |
-|**Python**   | `actions/setup-python` |
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklady znázorňují část pracovního postupu, která nastavuje prostředí pro různé podporované jazyky:
-
-**JavaScript**
+Následující příklad ukazuje část pracovního postupu, který používá akci `actions/setup-node` k nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -88,7 +81,9 @@ Následující příklady znázorňují část pracovního postupu, která nasta
         node-version: '10.x'
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Následující příklad ukazuje část pracovního postupu, který používá akci `actions/setup-python` k nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +96,9 @@ Následující příklady znázorňují část pracovního postupu, která nasta
         python-version: 3.6
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Následující příklad ukazuje část pracovního postupu, který používá akci `actions/setup-dotnet` k nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -114,7 +111,9 @@ Následující příklady znázorňují část pracovního postupu, která nasta
         dotnet-version: '2.2.300'
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Následující příklad ukazuje část pracovního postupu, který používá akci `actions/setup-java` k nastavení prostředí:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -128,14 +127,15 @@ Následující příklady znázorňují část pracovního postupu, která nasta
         # Please change the Java version to match the version in pom.xml <maven.compiler.source>
         java-version: '1.8.x'
 ```
+---
 
 ## <a name="build-the-function-app"></a>Sestavení aplikace Function App
 
 To závisí na jazyku a jazycích podporovaných nástrojem Azure Functions, Tato část by měla být standardním postupem sestavení každého jazyka.
 
-Následující příklady znázorňují část pracovního postupu, který vytváří aplikaci Function App v různých podporovaných jazycích.:
+Následující příklad ukazuje část pracovního postupu, který vytváří aplikaci Function App, která je specifická pro jazyk:
 
-**JavaScript**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -150,7 +150,7 @@ Následující příklady znázorňují část pracovního postupu, který vytv�
         popd
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -164,7 +164,7 @@ Následující příklady znázorňují část pracovního postupu, který vytv�
         popd
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -177,7 +177,7 @@ Následující příklady znázorňují část pracovního postupu, který vytv�
         popd
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'
@@ -190,6 +190,7 @@ Následující příklady znázorňují část pracovního postupu, který vytv�
         mvn azure-functions:package
         popd
 ```
+---
 
 ## <a name="deploy-the-function-app"></a>Nasazení aplikace funkcí
 

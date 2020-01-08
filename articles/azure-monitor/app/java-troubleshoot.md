@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432536"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady je několik tipů.
@@ -52,7 +52,6 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 * Nakonfigurovali jste agenta Java pomocí následujícího [Nastavení agenta Java](java-agent.md) ?
 * Zajistěte, aby byl jar agenta Java a soubor AI-Agent. XML umístěny do stejné složky.
 * Ujistěte se, že závislost, kterou se pokoušíte automaticky shromažďovat, je podporovaná pro automatické shromažďování. V současné době podporujeme pro kolekci závislostí Redis jenom MySQL, MsSQL, Oracle DB a Azure cache.
-* Používáte JDK 1,7 nebo 1,8? V současné době nepodporujeme shromažďování závislostí v JDK 9.
 
 ## <a name="no-usage-data"></a>Žádná data o využití
 **Zobrazuje se data o požadavcích a časech odezvy, ale neexistují žádná zobrazení stránky, prohlížeče ani uživatelská data.**
@@ -75,7 +74,7 @@ V kódu:
     config.setTrackingIsDisabled(true);
 ```
 
-**Ani**
+**Nebo**
 
 Aktualizujte soubor ApplicationInsights. XML (ve složce Resources ve vašem projektu). Do kořenového uzlu přidejte následující:
 
@@ -100,7 +99,7 @@ Pomocí metody XML je nutné restartovat aplikaci při změně hodnoty.
 
 Pokud chcete získat další informace o tom, co se děje v rozhraní API, přidejte `<SDKLogger/>` pod kořenovým uzlem konfiguračního souboru ApplicationInsights. XML.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
 Můžete také instruovat protokolovací nástroj na výstup do souboru:
 

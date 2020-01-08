@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
-ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 45c04cc32733873061bd6ff44b2e5484b106a893
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819149"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406641"
 ---
 # <a name="application-insights-overview-dashboard"></a>Řídicí panel přehledu Application Insights
 
@@ -24,7 +24,7 @@ Nový řídicí panel přehled se teď ve výchozím nastavení spustí:
 
 ![Podokno náhledu – přehled](./media/overview-dashboard/overview.png)
 
-## <a name="better-performance"></a>Lepší výkon
+## <a name="better-performance"></a>Má vyšší výkon.
 
 Výběr časového rozsahu byl zjednodušen pro jednoduché rozhraní jedním kliknutím.
 

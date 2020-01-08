@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707141"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442764"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -22,8 +22,8 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 
 |Zdroj dat  |V paměti  |DirectQuery  |Poznámky |
 |---------|---------|---------|---------|
-|Azure SQL Database      |   Ano      |    Ano      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure SQL Data Warehouse      |   Ano      |   Ano       |<sup>[odst](#azprovider)</sup>|
+|Databáze SQL Azure      |   Ano      |    Ano      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure SQL Data Warehouse      |   Ano      |   Ano       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   Ano       |    Ne      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   Ano       |    Ne      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Ano        |  Ne        |<sup>[1](#tab1400a)</sup> |
@@ -40,37 +40,37 @@ je podporována <a name="azsqlmanaged">3</a> -Azure SQL Database spravovaná ins
 <a name="databricks">4</a> – Azure Databricks používání konektoru Sparku se v tuto chvíli nepodporuje.   
 <a name="gen2">5</a> -adls Gen2 konektor se momentálně nepodporuje, ale konektor Azure Blob Storage můžete použít se zdrojem dat adls Gen2.   
 
-## <a name="other-data-sources"></a>Další zdroje dat
+## <a name="other-data-sources"></a>Other data sources
 
 |Zdroj dat | V paměti | DirectQuery |Poznámky   |
 |  --- | --- | --- | --- |
-|Přístup k databázi     |  Ano | Ne |  |
+|Databáze aplikace Access     |  Ano | Ne |  |
 |Adresář služby Active Directory     |  Ano | Ne | <sup>[6](#tab1400b)</sup>  |
 |Analysis Services     |  Ano | Ne |  |
 |Systém Analytics Platform System     |  Ano | Ne |  |
 |Soubor CSV  |Ano | Ne |  |
 |Dynamics 365     |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Excelový sešit     |  Ano | Ne |  |
-|Exchange      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
+|Výměna      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Složka      |Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |IBM Informix  |Ano | Ne |  |
 |Dokument JSON      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Řádky z binárního souboru      | Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Databáze MySQL     | Ano | Ne |  |
-|Kanál OData      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
+|Datový kanál OData      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Dotaz ODBC     | Ano | Ne |  |
 |OLE DB     |   Ano | Ne |  |
 |Oracle  | Ano  |Ano  | <sup>[9](#oracle)</sup> |
-|Databáze PostgreSQL   | Ano | Ne | <sup>[6](#tab1400b)</sup> |
+|Zprostředkovatel   | Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Objekty Salesforce|  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Sestavy Salesforce |Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |SAP HANA     |  Ano | Ne |  |
 |SAP Business Warehouse    |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|SharePointový seznam      |   Ano | Ne | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|Sharepointový seznam      |   Ano | Ne | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
 |SQL Server |Ano   | Ano  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
-|SQL Server datový sklad |Ano   | Ano  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server Data Warehouse |Ano   | Ano  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Databáze Sybase     |  Ano | Ne |  |
-|Teradata | Ano  | Ano  | <sup>[10pruhový](#teradata)</sup> |
+|Teradata | Ano  | Ano  | <sup>[10](#teradata)</sup> |
 |Soubor TXT  |Ano | Ne |  |
 |Tabulka XML    |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 | | | |
@@ -87,7 +87,7 @@ Připojení k místním zdrojům dat z Azure Analysis Services serveru vyžaduje
 
 ## <a name="understanding-providers"></a>Principy zprostředkovatelů
 
-Při vytváření tabelárních projektů 1400 a vyšších modelů v aplikaci Visual Studio ve výchozím nastavení neurčíte poskytovatele dat při připojování ke zdroji dat pomocí **získat data**. Tabelární 1400 a vyšší modely používají konektory [Power Query](/power-query/power-query-what-is-power-query.md) ke správě připojení, datových dotazů a hybridních webových aplikací mezi zdrojem dat a Analysis Services. Někdy se v nastaveních vlastností připojení označují jako *strukturovaná* připojení zdrojů dat. Můžete ale povolit starší zdroje dat. Pokud je tato možnost povolená, můžete použít **Průvodce importem tabulky** pro připojení k určitým zdrojům dat, které jsou tradičně podporované v tabulkovém 1200 a nižších modelech jako *starší verze*nebo zdroje dat *poskytovatele* . Pokud je zadaný jako zdroj dat zprostředkovatele, můžete zadat konkrétního poskytovatele dat a další rozšířené vlastnosti připojení. Můžete se například připojit k místnímu datovému skladu SQL Server nebo dokonce k Azure SQL Database jako k staršímu zdroji dat. Pak můžete vybrat ovladač OLE DB pro poskytovatele dat SQL Server MSOLEDBSQL. V takovém případě může poskytovatel dat OLE DB poskytovat lepší výkon prostřednictvím konektoru Power Query. 
+Při vytváření tabelárních projektů 1400 a vyšších modelů v aplikaci Visual Studio ve výchozím nastavení neurčíte poskytovatele dat při připojování ke zdroji dat pomocí **získat data**. Tabelární 1400 a vyšší modely používají konektory [Power Query](/power-query/power-query-what-is-power-query) ke správě připojení, datových dotazů a hybridních webových aplikací mezi zdrojem dat a Analysis Services. Někdy se v nastaveních vlastností připojení označují jako *strukturovaná* připojení zdrojů dat. Můžete ale povolit starší zdroje dat. Pokud je tato možnost povolená, můžete použít **Průvodce importem tabulky** pro připojení k určitým zdrojům dat, které jsou tradičně podporované v tabulkovém 1200 a nižších modelech jako *starší verze*nebo zdroje dat *poskytovatele* . Pokud je zadaný jako zdroj dat zprostředkovatele, můžete zadat konkrétního poskytovatele dat a další rozšířené vlastnosti připojení. Můžete se například připojit k místnímu datovému skladu SQL Server nebo dokonce k Azure SQL Database jako k staršímu zdroji dat. Pak můžete vybrat ovladač OLE DB pro poskytovatele dat SQL Server MSOLEDBSQL. V takovém případě může poskytovatel dat OLE DB poskytovat lepší výkon prostřednictvím konektoru Power Query. 
 
 Při použití Průvodce importem tabulky v aplikaci Visual Studio připojení k jakémukoli zdroji dat vyžaduje poskytovatele dat. Pro vás je vybraný výchozí zprostředkovatel dat. V případě potřeby můžete změnit zprostředkovatele dat. Typ poskytovatele, který zvolíte, může záviset na výkonu, bez ohledu na to, jestli model používá úložiště v paměti nebo DirectQuery a které Analysis Services platforma, do které model nasazujete.
 

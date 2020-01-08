@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446945"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: sada Speech SDK pro zařízení
 
@@ -23,14 +23,14 @@ V následujících částech jsou uvedeny změny v posledních verzích.
 
 ## <a name="speech-devices-sdk-170"></a>Sada Speech 1.7.0 SDK pro zařízení:
 
-*   Systém Linux ARM je nyní podporován.
-*   K dispozici jsou počáteční binární soubory pro Roobov2 (Linux ARM64).
-*   Uživatelé systému Windows můžou použít AudioConfig. fromDefaultMicrophoneInput () nebo AudioConfig. fromMicrophoneInput (název_zařízení) k určení mikrofonu, který se má použít.
-*   Velikost knihovny byla optimalizována.
-*   Podpora pro rozpoznávání vícenásobného zapnutí pomocí stejného objektu pro rozpoznávání řeči nebo záměru.
-*   Opravte příležitostné zablokování, ke kterému by došlo při zastavování rozpoznávání.
-*   Ukázkové aplikace teď obsahují ukázkové účastníky. soubor vlastností, které demonstrují formát souboru.
-*   Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.7.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+- Systém Linux ARM je nyní podporován.
+- K dispozici jsou počáteční binární soubory pro Roobo v2 (Linux ARM64).
+- Uživatelé systému Windows můžou použít `AudioConfig.fromDefaultMicrophoneInput()` nebo `AudioConfig.fromMicrophoneInput(deviceName)` k určení mikrofonu, který se má použít.
+- Velikost knihovny byla optimalizována.
+- Podpora pro rozpoznávání vícenásobného zapnutí pomocí stejného objektu pro rozpoznávání řeči nebo záměru.
+- Opravte příležitostné zablokování, ke kterému by došlo při zastavování rozpoznávání.
+- Ukázkové aplikace teď obsahují ukázkové účastníky. soubor vlastností, které demonstrují formát souboru.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.7.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
 
 ## <a name="speech-devices-sdk-160"></a>Sada Speech 1.6.0 SDK pro zařízení:
 
@@ -68,8 +68,8 @@ V následujících částech jsou uvedeny změny v posledních verzích.
 
 - Zjednodušená [instalace klíčového slova](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) je teď součástí aplikace a nepotřebuje samostatnou instalaci na zařízení.
 - Rozpoznávání klíčového slova se změnilo a podporují se dvě události.
-  - RecognizingKeyword označuje, že výsledek rozpoznávání řeči obsahuje text klíčového slova (Neověřeno).
-  - RecognizedKeyword označuje, že rozpoznání klíčového slova dokončilo rozpoznávání daného klíčového slova.
+  - `RecognizingKeyword,` označuje, že výsledek rozpoznávání řeči obsahuje text klíčového slova (Neověřeno).
+  - `RecognizedKeyword`označuje, že rozpoznávání klíčového slova dokončilo rozpoznávání daného klíčového slova.
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech Devices SDK 1.1.0:2018. listopadu – vydání
 

@@ -4,15 +4,15 @@ description: Řešení System Center Operations Manager Health Check můžete po
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402871"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizujte své prostředí pomocí řešení System Center Operations Manager Health Check (Preview).
 
@@ -34,7 +34,7 @@ Po přidání řešení a provedení posouzení se souhrnné informace pro oblas
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 
-Řešení spolupracuje s Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager a Microsoft System. Center Operations Manager 1807
+Řešení spolupracuje s Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager a Microsoft System. Center Operations Manager 1807. V každém management server musí být nainstalovaná podporovaná verze .NET Framework 4.6.2.
 
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
@@ -56,7 +56,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 Řešení System Center Operations Manager Health Check shromažďuje data z následujících zdrojů:
 
 * Registr
-* Rozhraní WMI (Windows Management Instrumentation) (WMI)
+* Služba WMI (Windows Management Instrumentation)
 * Protokol událostí
 * Data souborů
 * Přímo z Operations Manager pomocí dotazů PowerShell a SQL ze management server, kterou jste určili.  
@@ -273,7 +273,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 
 *Pokud je po přidání System Center Operations Manager Health Check řešení zjištěn jiný server, bude zkontrolován?* Ano, po zjištění, že je zjišťování zaškrtnuto, je ve výchozím nastavení každých 7 dní.
 
-*Jaký je název procesu, který provádí shromažďování dat?* AdvisorAssessment. exe
+*Jaký je název procesu, který provádí shromažďování dat?* AdvisorAssessment.exe
 
 *Kde se spouští proces AdvisorAssessment. exe?* AdvisorAssessment. exe běží v procesu HealthService management server, kde je pravidlo kontroly stavu povolené. Pomocí tohoto procesu se dosahuje zjišťování celého prostředí prostřednictvím vzdáleného shromažďování dat.
 

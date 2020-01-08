@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432996"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Správa ověřování v Azure Maps
 
@@ -21,11 +21,11 @@ Po vytvoření účtu Azure Maps se vytvoří ID klienta a klíče pro podporu A
 
 ## <a name="view-authentication-details"></a>Zobrazit podrobnosti o ověřování
 
+Po vytvoření účtu Azure Maps se vygenerují primární a sekundární klíče. Při volání Azure Maps s použitím [ověřování pomocí sdíleného klíče](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)se doporučuje použít primární klíč jako klíč předplatného. Sekundární klíč lze použít ve scénářích, jako je například vracení klíčových změn. Další informace najdete v tématu [ověřování pomocí Azure Maps](https://aka.ms/amauth).
+
 Podrobnosti o ověřování můžete zobrazit na Azure Portal. Přejděte na svůj účet a v nabídce **Nastavení** vyberte **ověřování** .
 
 ![Podrobnosti ověřování](./media/how-to-manage-authentication/how-to-view-auth.png)
-
- Další informace najdete v tématu [ověřování pomocí Azure Maps](https://aka.ms/amauth).
 
 
 ## <a name="set-up-azure-ad-app-registration"></a>Nastavení registrace aplikace Azure AD
@@ -95,7 +95,7 @@ Po registraci aplikace a jejím přidružení k Azure Maps můžete požádat o 
 
 | Prostředí Azure   | Koncový bod tokenu Azure AD | ID prostředku Azure |
 | --------------------|-------------------------|-------------------|
-| Veřejné Azure        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Veřejný partnerský vztah Azure        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
 | Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 Další informace o tom, jak získat přístupové tokeny ze služby Azure AD pro uživatele a instanční objekty, najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).

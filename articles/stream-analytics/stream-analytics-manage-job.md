@@ -1,20 +1,18 @@
 ---
 title: Kurz – vytvoření a Správa Stream Analytics úlohy pomocí Azure Portal
 description: V tomto kurzu najdete ucelenou ukázku použití Azure Stream Analytics k analýze podvodných volání ve streamu telefonních hovorů.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: cca9f25fae9646b4207db7aa98f4c334457fc426
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 488664b028568b3014b9b839122705d35104861e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459568"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Kurz: Analýza dat telefonního hovoru pomocí Stream Analytics a vizualizace výsledků v řídicím panelu Power BI
 
@@ -30,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Testovat a spustit úlohu
 > * Vizualizovat výsledky v Power BI
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, proveďte následující akce:
 
@@ -55,17 +53,17 @@ Pomocí následujícího postupu vytvořte centrum událostí a odešlete do ně
    |---------|---------|---------|
    |Name (Název)     | myEventHubsNS        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
    |Předplatné     |   \<Vaše předplatné\>      |   Vyberte předplatné Azure, ve kterém chcete vytvořit centrum událostí.      |
-   |Skupina prostředků     |   MyASADemoRG      |  Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet.       |
+   |Skupina prostředků     |   MyASADemoRG      |  Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet.       |
    |Umístění     |   Západní USA 2      |    Umístění, kde můžete nasadit obor názvů centra událostí.     |
 
 4. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Vytvořit**.
 
-   ![Vytvořit obor názvů centra událostí v Azure Portal](media/stream-analytics-manage-job/create-event-hub-namespace.png)
+   ![Vytvořit obor názvů centra událostí na webu Azure portal](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
 5. Po dokončení nasazení oboru názvů přejděte do části **Všechny prostředky** a v seznamu prostředků Azure vyhledejte *myEventHubsNS*. Výběrem oboru názvů *myEventHubsNS* ho otevřete.
 6. Pak vyberte **+ Centrum událostí** a jako **Název** zadejte *MyEventHub* nebo jiný název podle vašeho výběru. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Vytvořit**. Potom počkejte na úspěšné dokončení nasazení.
 
-   ![Konfigurace centra událostí v Azure Portal](media/stream-analytics-manage-job/create-event-hub-portal.png)
+   ![Konfigurace centra událostí na webu Azure portal](media/stream-analytics-manage-job/create-event-hub-portal.png)
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udělení přístupu k centru událostí a získání připojovacího řetězce
 
@@ -218,7 +216,7 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
 
 4. **Uložte** dotaz.
 
-   ![Definování Stream Analytics dotazů na portálu](media/stream-analytics-manage-job/define-stream-analytics-query.png)
+   ![Definování dotazu Stream Analytics na portálu](media/stream-analytics-manage-job/define-stream-analytics-query.png)
 
 ## <a name="test-your-query"></a>Otestování dotazu
 
@@ -232,7 +230,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
    Ukázková data jsou dočasně uložena a jsou dostupná, dokud je otevřené okno dotazu. Pokud okno dotazu zavřete, ukázková data se zahodí, a pokud budete chtít provést testování, budete muset vytvořit novou sadu ukázkových dat. Alternativně můžete použít soubor JSON s ukázkovými daty z [GitHubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) a potom tento soubor JSON nahrát a použít jako ukázková data pro vstup *CallStream*.
 
-   ![Vizuál, jak vzorkovat vstupní data pro Stream Analytics](media/stream-analytics-manage-job/sample-input-data-asa.png)
+   ![Vizuál o tom, jak ukázková vstupní data pro Stream Analytics](media/stream-analytics-manage-job/sample-input-data-asa.png)
 
 4. Vyberte **Test** a otestujte dotaz. Měly by se zobrazit následující výsledky:
 
@@ -250,7 +248,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
 5. V horní části okna vyberte **Přidat dlaždici**. Potom vyberte **Vlastní streamovaná data** a **Další**. V části **Vaše datové sady** zvolte **ASAdataset**. V rozevíracím seznamu **typ vizualizace** vyberte **karta** a přidejte **falešná volání** do **polí**. Vyberte **Další**, zadejte název dlaždice a pak výběrem možnosti **Použít** dlaždici vytvořte.
 
-   ![Vytvoření dlaždic řídicího panelu Power BI](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
+   ![Vytvoření dlaždice řídicího panelu Power BI](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
 6. Zopakujte krok 5 s následujícími možnostmi:
    * Jako typ vizualizace vyberte spojnicový graf.
@@ -260,7 +258,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
 7. Po přidání obou dlaždic by váš řídicí panel měl vypadat jako v následujícím příkladu. Všimněte si, že pokud vaše aplikace pro odesílatele centra událostí a Stream Analytics běží, váš Power BI řídicí panel se pravidelně aktualizuje, protože dorazí na nová data.
 
-   ![Zobrazení výsledků v Power BIovém řídicím panelu](media/stream-analytics-manage-job/power-bi-results-dashboard.png)
+   ![Zobrazení výsledků na řídicím panelu Power BI](media/stream-analytics-manage-job/power-bi-results-dashboard.png)
 
 ## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>Vložení řídicího panelu Power BI do webové aplikace
 

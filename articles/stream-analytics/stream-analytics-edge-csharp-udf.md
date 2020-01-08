@@ -1,7 +1,6 @@
 ---
 title: Kurz – zápis C# uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics v aplikaci Visual Studio (Preview)
 description: V tomto kurzu se dozvíte, jak psát funkce definované uživatelem v jazyce c# pro úlohy Stream Analytics v aplikaci Visual Studio.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d600c891f35a0719012707bdc2cb45101e14e090
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1d71f4c5616efb05efe2733c49507b085ca2dcf6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707349"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426301"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Kurz: zápis C# uživatelsky definované funkce pro Azure Stream Analytics úlohy (Preview)
 
@@ -27,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Otestujte úlohu Stream Analytics místně.
 > * Publikujte svoji úlohu do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
@@ -114,11 +113,11 @@ Soubor CodeBehind je C# soubor přidružený k jednomu skriptu dotazu ASA. Nást
 
 2. V **Průzkumníku řešení** rozbalte **Inputs**, klikněte pravým tlačítkem na soubor **Input.json** a vyberte **Přidat místní vstup**.
 
-   ![Přidání místního vstupu do úlohy Stream Analytics v aplikaci Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
+   ![Přidat místní vstup do úlohy Stream Analytics v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
 3. Zadejte cestu k místnímu vstupnímu souboru s ukázkovými daty, která jste si stáhli, a vyberte **Uložit**.
 
-    ![Konfigurace místního vstupu pro úlohu Stream Analytics v aplikaci Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
+    ![Místní konfigurace vstupu úlohy Stream Analytics v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 
 4. V editoru skriptů klikněte na **Spustit místně**. Jakmile místní spuštění úspěšně uloží výsledky výstupu, stisknutím libovolné klávesy zobrazte výsledky ve formátu tabulky. 
 
@@ -133,11 +132,11 @@ Uživatelem definovanou funkci jazyka C# můžete ladit místně stejným způso
 
 1. Přidejte do funkce jazyka C# zarážky.
 
-    ![Přidání zarážek pro Stream Analytics uživatelsky definované funkci v aplikaci Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
+    ![Přidat zarážky do Stream Analytics uživatelem definované funkce v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
 2. Stisknutím klávesy **F5** spusťte ladění. Program se podle očekávání bude zastavovat na zarážkách.
 
-    ![Zobrazit Stream Analytics výsledky ladění uživatelem definovaných funkcí](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
+    ![Zobrazit Stream Analytics uživatelem definované funkce ladění výsledky](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 
 ## <a name="publish-your-job-to-azure"></a>Publikování úlohy do Azure
 Jakmile místně otestujete svůj dotaz, v editoru skriptů vyberte **Odeslat do Azure** a publikujte úlohu do Azure.
@@ -154,4 +153,4 @@ V tomto kurzu jste vytvořili jednoduchou C# uživatelsky definovanou funkci pom
 Další informace o různých způsobech použití C# uživatelsky definovaných funkcí pro úlohy Stream Analytics najdete v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Zapisovat C# funkce pro Azure Stream Analytics](stream-analytics-edge-csharp-udf-methods.md)
+> [Zápis C# funkce pro Azure Stream Analytics](stream-analytics-edge-csharp-udf-methods.md)

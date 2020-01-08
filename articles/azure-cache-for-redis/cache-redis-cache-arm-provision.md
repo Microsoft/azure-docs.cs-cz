@@ -1,18 +1,17 @@
 ---
-title: Zřízení mezipaměti Azure pro Redis pomocí Azure Resource Manager
-description: K nasazení mezipaměti Azure pro Redis použijte šablonu Azure Resource Manager.
-services: app-service
+title: Nasazení Azure cache pro Redis s Azure Resource Manager
+description: Naučte se používat šablonu Azure Resource Manager k nasazení mezipaměti Azure pro prostředek Redis. Šablony jsou k dispozici pro běžné scénáře.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: yegu
-ms.openlocfilehash: f215cb79adc02da857f7aa93d8933bd12c06818a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412410"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Vytvoření mezipaměti Azure pro Redis pomocí šablony
 
@@ -22,7 +21,7 @@ V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, kter
 
 V současné době se nastavení diagnostiky sdílí pro všechny mezipaměti ve stejné oblasti pro předplatné. Aktualizace jedné mezipaměti v oblasti má vliv na všechny ostatní mezipaměti v oblasti.
 
-Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Další informace o syntaxi a vlastnostech JSON pro typy prostředků mezipaměti najdete v tématu [typy prostředků Microsoft. cache](/azure/templates/microsoft.cache/allversions).
+Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Další informace o syntaxi a vlastnostech JSON pro typy prostředků mezipaměti najdete v tématu [typy prostředků Microsoft. cache](/azure/templates/microsoft.cache/allversions).
 
 Úplnou šablonu najdete v tématu [Šablona Azure cache pro Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
@@ -117,8 +116,6 @@ Vytvoří službu Azure cache pro Redis.
       ]
     }
 
-
-
 ## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
@@ -128,5 +125,3 @@ Vytvoří službu Azure cache pro Redis.
 
 ### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
-
-

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: zpřístupnění místní služby WCF REST externímu klientovi pomocí Azure WCF Relay'
+title: Zveřejnění služby REST Prem WCF klientům pomocí Azure Relay
 description: 'Kurz: Vytvoření aplikace klienta a služby pomocí WCF Relay.'
 services: service-bus-relay
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee090ca0d7bbdad70147b85644952143c086d336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452293"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Kurz: zpřístupnění místní služby WCF REST externímu klientovi pomocí Azure WCF Relay
 
@@ -47,7 +47,7 @@ V tomto kurzu provedete následující úlohy:
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* Předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Sada Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá Visual Studio 2019.
 * Sada Azure SDK pro .NET Nainstalujte ji ze [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
 
@@ -104,7 +104,7 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
    > Obor názvů kontraktu služby obvykle obsahuje schéma pojmenování s informacemi o verzi. Informace o verzi, které jsou v oboru názvů kontraktu služby, službám umožňuje službám izolovat výrazné změny pomocí definice nové služby s novým oborem názvů, která bude vystavená na novém koncovém bodu. Tímto způsobem můžou klienti dál používat původní kontrakt služby, aniž by se museli aktualizovat. Informace o verzi může mít podobu data nebo čísla sestavení. Další informace najdete v článku o [Správa verzí služeb](/dotnet/framework/wcf/service-versioning). Pro účely tohoto kurzu schéma pojmenování oboru názvů kontraktu služby neobsahuje informace o verzi.
    >
 
-1. V rozhraní `IEchoContract` deklarujte metodu pro jedinou operaci, kterou `IEchoContract` smlouva zpřístupňuje v rozhraní, a použijte atribut `OperationContractAttribute` pro metodu, kterou chcete zveřejnit jako součást veřejné WCF Relay kontraktu, a to následujícím způsobem. :
+1. V rozhraní `IEchoContract` deklarujte metodu pro jedinou operaci, kterou `IEchoContract` smlouva zpřístupňuje v rozhraní, a použijte atribut `OperationContractAttribute` pro metodu, kterou chcete zveřejnit jako součást veřejné WCF Relay kontraktu, a to takto:
 
     ```csharp
     [OperationContract]
@@ -165,7 +165,7 @@ Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt 
 
     Podobně jako u implementace jiných rozhraní můžete definici implementovat v jiném souboru. V tomto kurzu je ale implementace ve stejném souboru jako definice rozhraní a metoda `Main()`.
 
-1. Na rozhraní [ aplikujte atribut ](/dotnet/api/system.servicemodel.servicebehaviorattribute)ServiceBehaviorAttribute`IEchoContract`. Atribut specifikuje název služby a obor názvů. Když to dokončíte, třída `EchoService` bude vypadat takto:
+1. Na rozhraní `IEchoContract` aplikujte atribut [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute). Atribut specifikuje název služby a obor názvů. Když to dokončíte, třída `EchoService` bude vypadat takto:
 
     ```csharp
     [ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]

@@ -1,21 +1,21 @@
 ---
-title: Nastavte a nakonfigurujte integraci sestav AWS a nákladů na využití pomocí Azure Cost Management
+title: Nastavení integrace AWS s Azure Cost Management
 description: Tento článek vás provede nastavením a konfigurací integrace AWS nákladů a sestav využití pomocí Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/15/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 66dbe45ff1a8ee773fdf7fcb0aa7cfe8e6ad6437
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 77bc7772e1d9b8144199c865a8d82f818d5e1963
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444598"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace integrace sestav AWS a nákladů na využití
 
@@ -68,7 +68,7 @@ Použijte Průvodce vytvořením nové role:
 4. Na další stránce vyberte **jiný účet AWS**.
 5. Do **ID účtu**zadejte **432263259397**.
 6. V **Možnosti**vyberte **vyžadovat externí ID (osvědčené postupy, pokud bude tato role platit třetí strana)** .
-7. Do pole **externí ID**zadejte externí ID. Externí ID je sdílené heslo mezi rolí AWS a Azure Cost Management. Stejné externí ID se používá také na stránce **nový konektor** v cost management. Například externí ID se podobá _Companyname1234567890123_.
+7. Do pole **externí ID**zadejte externí ID, které je sdílené heslo mezi rolí AWS a Azure cost management. Stejné externí ID se používá také na stránce **nový konektor** v cost management. Microsoft doporučuje, abyste při zadávání externího ID použili zásady silného hesla.
 
     > [!NOTE]
     > Neměňte výběr pro **vyžadovat MFA**. Měla by zůstat nezaškrtnutá.
@@ -150,7 +150,7 @@ JSON zásad by měl vypadat podobně jako v následujícím příkladu. Parametr
 
 Pomocí následujících informací vytvořte konektor AWS a začněte monitorovat náklady na AWS:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Přejít na **cost management a fakturační** > **cost management**.
 3. V části **Nastavení**vyberte **cloudové konektory (Preview)** .  
     ![Příklad znázorňující nastavení cloudové konektory (Preview)](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).

@@ -1,17 +1,17 @@
 ---
-title: Computing databáze bez serveru – Azure Functions a Azure Cosmos DB
+title: Výpočetní databáze bez serveru s Azure Cosmos DB a Azure Functions
 description: Přečtěte si, jak Azure Cosmos DB a Azure Functions můžete použít společně k vytváření aplikací založených na událostech řízených serverem bez serveru.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: e1014c710d892e45f09999db22b1f59c0bb36300
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4ae2cc33275702a0d549f4e994a597614191b3e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614584"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444880"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní databáze bez serveru s využitím Azure Cosmos DB a Azure Functions
 
@@ -49,7 +49,7 @@ Následující případy použití ukazují několik způsobů, jak můžete vyu
 
 V implementacích IoT můžete funkci vyvolat, když se na připojeném automobilu zobrazuje světlo kontrolního modulu.
 
-**Provádění** Použití triggeru Azure Functions a výstupní vazby pro Cosmos DB
+**Implementace:** Použití triggeru Azure Functions a výstupní vazby pro Cosmos DB
 
 1. **Aktivační událost Azure Functions pro Cosmos DB** se používá ke spouštění událostí souvisejících s výstrahami na automobil, jako je například kontroler, který připravujeme v připojeném automobilu.
 2. Když se objeví světlo kontrolního modulu, odesílají se do Azure Cosmos DB data snímače.
@@ -67,7 +67,7 @@ Následující obrázek ukazuje kód napsaný v Azure Portal pro tuto aktivačn�
 
 V případě finančních implementací můžete funkci vyvolat, když zůstatek bankovního účtu klesne pod určitou částku.
 
-**Provádění** Aktivační událost časovače s Azure Cosmos DB vstupní vazbou
+**Implementace:** Aktivační událost časovače s Azure Cosmos DB vstupní vazbou
 
 1. Pomocí [triggeru časovače](../azure-functions/functions-bindings-timer.md)můžete načíst informace o zůstatku bankovního účtu uložené v kontejneru Azure Cosmos v časových intervalech pomocí **vstupní vazby**.
 2. Pokud je zůstatek pod prahovou hodnotou nízkého zůstatku nastaveným uživatelem, postupujte podle akce z funkce Azure Functions.
@@ -83,7 +83,7 @@ Následující obrázky znázorňují kód v Azure Portal pro tento scénář.
 
 Při vytvoření nového uživatele můžete v herních prostředích vyhledat další uživatele, kteří je můžou znát pomocí [Azure Cosmos DB rozhraní Gremlin API](graph-introduction.md). Pak můžete výsledky zapsat do [Azure Cosmos DB SQL Database] pro snadné načtení.
 
-**Provádění** Použití triggeru Azure Functions a výstupní vazby pro Cosmos DB
+**Implementace:** Použití triggeru Azure Functions a výstupní vazby pro Cosmos DB
 
 1. Pomocí databáze Azure Cosmos DB [Graph](graph-introduction.md) pro ukládání všech uživatelů můžete vytvořit novou funkci s triggerem Azure Functions pro Cosmos DB. 
 2. Vždy, když je vložen nový uživatel, je funkce vyvolána a výsledek je uložen pomocí **výstupní vazby**.
@@ -94,7 +94,7 @@ Při vytvoření nového uživatele můžete v herních prostředích vyhledat d
 
 V maloobchodních implementacích, když uživatel přidá položku na svůj koš, teď máte flexibilitu při vytváření a vyvolávání funkcí pro volitelné komponenty obchodních kanálů.
 
-**Provádění** Vícenásobné triggery Azure Functions pro Cosmos DB naslouchání jednomu kontejneru
+**Implementace:** Vícenásobné triggery Azure Functions pro Cosmos DB naslouchání jednomu kontejneru
 
 1. Můžete vytvořit více Azure Functions přidáním triggerů Azure Functions pro Cosmos DB každému – všem naslouchat stejnému informačnímu kanálu změny dat nákupního košíku. Všimněte si, že když více funkcí naslouchají stejnému informačnímu kanálu změn, je pro každou funkci nutná nová kolekce zapůjčení. Další informace o kolekcích zapůjčení najdete v tématu [Principy knihovny Change feed Processor](change-feed-processor.md).
 2. Pokaždé, když se do nákupního košíku uživatelů přidá nová položka, každá funkce se nezávisle vyvolá pomocí kanálu změn z kontejneru nákupního košíku.
@@ -122,11 +122,11 @@ Azure Functions poskytuje možnost vytvářet škálovatelné pracovní jednotky
 
 Azure Cosmos DB je doporučená databáze pro architekturu bez serveru z následujících důvodů:
 
-* **Okamžitý přístup ke všem datům**: Máte podrobný přístup ke všem uloženým hodnotám, protože Azure Cosmos DB ve výchozím nastavení [automaticky indexuje](index-policy.md) všechna data a tyto indexy jsou okamžitě k dispozici. To znamená, že budete moct průběžně dotazovat, aktualizovat a přidávat nové položky do databáze a mít okamžitý přístup prostřednictvím Azure Functions.
+* **Okamžitý přístup ke všem datům**: máte podrobný přístup ke všem uloženým hodnotám, protože Azure Cosmos DB [automaticky indexuje](index-policy.md) všechna data ve výchozím nastavení a zpřístupňuje tyto indexy okamžitě. To znamená, že budete moct průběžně dotazovat, aktualizovat a přidávat nové položky do databáze a mít okamžitý přístup prostřednictvím Azure Functions.
 
 * Bez **schématu**. Azure Cosmos DB je bez schématu, takže je jednoznačně možné zpracovat jakýkoliv výstup z funkce Azure Functions. Tento "popisovač" cokoli usnadňuje vytvoření nejrůznějších funkcí, které mají všechny výstupy Azure Cosmos DB.
 
-* **Škálovatelná propustnost**. Propustnost se dá v Azure Cosmos DB okamžitě škálovat nahoru a dolů. Pokud máte stovky nebo tisíce funkcí dotazování a zápis do stejného kontejneru, můžete horizontální navýšení kapacity pro [](request-units.md) zpracování zátěže škálovat. Všechny funkce můžou pracovat paralelně s využitím přidělených RU/s a vaše data jsou zaručená jako [konzistentní](consistency-levels.md).
+* **Škálovatelná propustnost**. Propustnost se dá v Azure Cosmos DB okamžitě škálovat nahoru a dolů. Pokud máte stovky nebo tisíce funkcí dotazování a zápis do stejného kontejneru, můžete horizontální navýšení [kapacity pro zpracování](request-units.md) zátěže škálovat. Všechny funkce můžou pracovat paralelně s využitím přidělených RU/s a vaše data jsou zaručená jako [konzistentní](consistency-levels.md).
 
 * **Globální replikace**. Můžete replikovat Azure Cosmos DB data po [celém světě](distribute-data-globally.md) , abyste snížili latenci a geograficky vyhledáváte data, která jsou nejblíže místu, kde jsou vaši uživatelé. Stejně jako u všech dotazů Azure Cosmos DB jsou data z triggerů řízených událostmi čtena data z Azure Cosmos DB nejblíže uživateli.
 
@@ -142,7 +142,7 @@ Výhody Azure Functions:
 
 Pokud si nejste jistí, jestli je pro vaši implementaci nejvhodnější tok, Logic Apps, Azure Functions nebo WebJobs, přečtěte si téma [Výběr mezi flow, Logic Apps, functions a WebJobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nyní se Azure Cosmos DB a Azure Functions připojit k reálnému: 
 

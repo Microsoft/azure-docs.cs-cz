@@ -6,18 +6,18 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 43972bc8e64e0bf88aae00126735d3e0c8751254
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499380"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660796"
 ---
 # <a name="what-is-azure-data-share"></a>Co je Azure Data Share?
 
 V dnešním světě se data zobrazují jako klíčový strategický prostředek, který mnoho organizací potřebuje jednoduše a bezpečně sdílet se svými zákazníky a partnery. Existuje mnoho způsobů, jak to zákazníci dnes dělají, včetně FTP, e-mailu, rozhraní API k pojmenování. Organizace můžou snadno ztratit přehled o tom, pomocí kterých data sdíleli. Sdílení dat prostřednictvím FTP nebo zaznamenání vlastní infrastruktury rozhraní API je často nákladné při zřizování a správě. Existují režijní náklady na správu spojené s používáním těchto metod sdílení ve velkém měřítku. 
 
-Mnoho organizací musí být pro data, která sdíleli, nutné. Kromě zodpovědnosti by mohli spousta organizací kontrolovat, spravovat a monitorovat všechna sdílení svých dat jednoduchým způsobem. V dnešním světě, kde se očekává, že se data budou dál rozšiřovat na exponenciální tempo, organizace potřebují jednoduchý způsob, jak sdílet velké objemy dat. Zákazníci požadují nejaktuálnější data, aby se zajistilo, že budou moci odvodit včas přehledy.
+Mnoho organizací musí být pro data, která sdíleli, nutné. Kromě zodpovědnosti by mohli spousta organizací kontrolovat, spravovat a monitorovat všechna sdílení svých dat jednoduchým způsobem. V dnešním světě, kde se očekává, že se data budou dál rozšiřovat na exponenciální tempo, organizace potřebují jednoduše sdílet velké objemy dat. Zákazníci požadují nejaktuálnější data, aby se zajistilo, že budou moci odvodit včas přehledy.
 
 Azure Data Share umožňuje organizacím jednoduše a bezpečně sdílet data s více zákazníky a partnery. V několika kliknutích můžete zřídit nový účet pro sdílení dat, přidat datové sady a pozvat své zákazníky a partnery do vaší sdílené složky. Poskytovatelé dat vždy ovládají data, která sdíleli. Azure Data Share usnadňuje správu a sledování dat, která byla sdílena, kdy a kým. 
 
@@ -47,7 +47,7 @@ Poskytovatelé dat můžou svým spotřebitelům dat postupně aktualizovat data
 
 Když příjemce dat přijme sdílenou složku, může přijímat data v úložišti dat podle svého výběru. Pokud například poskytovatel dat sdílí data pomocí Azure Blob Storage, příjemce dat může tato data přijímat v Azure Data Lake Store. Podobně platí, že pokud poskytovatel dat sdílí data z Azure SQL Data Warehouse, příjemce dat si může vybrat, jestli chtějí data přijímat, do Azure Data Lake Store, Azure SQL Database nebo Azure SQL Data Warehouse. V případě sdílení ze zdrojů založených na jazyce SQL může příjemce dat také zvolit, zda budou přijímat data v Parquet nebo CSV. 
 
-Místní sdílení je momentálně ve verzi omezené verze Preview pro Azure Průzkumník dat. Poskytovatelé dat můžou sdílet data, kde se nacházejí, bez přesunu dat prostřednictvím symbolického odkazu. Zaregistrujte si omezené verze Preview místního sdílení pro Azure Průzkumník dat [tady](https://aka.ms/azuredatasharepreviewsignup). 
+Místní sdílení je momentálně ve verzi omezené verze Preview pro Azure Průzkumník dat. Poskytovatelé dat můžou sdílet data, kde se nacházejí, bez přesunu dat prostřednictvím symbolického odkazu. Zaregistrujte si omezené verze Preview služby Azure Průzkumník dat [místní sdílení.](https://aka.ms/azuredatasharepreviewsignup) 
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e93666c9a6388fb008bbe85c836d732685ed63a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425307"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Řešení chybových zpráv z rozšíření serveru NPS pro Azure Multi-Factor Authentication
 
@@ -96,7 +96,11 @@ Pokud narazíte na jednu z těchto chyb, doporučujeme, abyste [kontaktovali pod
 
 Pokud uživatelé mají [problémy se dvoustupňové ověřováním](../user-help/multi-factor-authentication-end-user-troubleshoot.md), pomohou jim při vlastním diagnostikování problémů.
 
-### <a name="contact-microsoft-support"></a>Kontaktujte podporu Microsoftu
+### <a name="health-check-script"></a>Skript kontroly stavu
+
+[Skript kontroly stavu rozšíření Azure MFA NPS](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb) je k dispozici v Galerii TechNet a provede základní kontrolu stavu při řešení potíží s rozšířením NPS. Spusťte skript a vyberte možnost 3.
+
+### <a name="contact-microsoft-support"></a>Obraťte se na podporu Microsoftu
 
 Pokud potřebujete další pomoc, kontaktujte odborníka na podporu prostřednictvím [podpory Azure Multi-Factor Authentication Server](https://support.microsoft.com/oas/default.aspx?prid=14947). Při kontaktování nás je užitečné, pokud můžete zahrnout co nejvíce informací o vašem problému. Informace, které můžete dodat, zahrnují stránku, kde jste viděli chybu, konkrétní kód chyby, konkrétní ID relace, ID uživatele, který zobrazil chybu, a protokoly ladění.
 

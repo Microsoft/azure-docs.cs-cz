@@ -1,25 +1,16 @@
 ---
-title: Analýza událostí v Azure Service Fabric s využitím Application Insights | Microsoft Docs
+title: Analýza událostí v Azure Service Fabric s využitím Application Insights
 description: Seznamte se s vizualizací a analýzou událostí pomocí Application Insights pro monitorování a diagnostiku clusterů Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 8e682a5c768ed4b3f35382c87528c1b0d11a3c3d
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019714"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464750"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analýza a vizualizace událostí pomocí Application Insights
 
@@ -51,7 +42,7 @@ Chcete-li dále prozkoumat možnosti portálu Application Insights, přečtěte 
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Konfigurace Application Insights pomocí využitím eventflow
 
-Pokud k agregaci událostí používáte využitím eventflow, nezapomeňte importovat `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`balíček NuGet. Následující kód je vyžadován v části *výstupy* v *eventFlowConfig. JSON*:
+Pokud k agregaci událostí používáte využitím eventflow, nezapomeňte importovat balíček NuGet `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`. Následující kód je vyžadován v části *výstupy* v *eventFlowConfig. JSON*:
 
 ```json
 "outputs": [
@@ -70,7 +61,7 @@ Doporučuje se používat využitím eventflow a WAD jako agregační řešení,
 
 [Application Insights podpora mikroslužeb a kontejnerů](https://azure.microsoft.com/blog/app-insights-microservices/) zobrazuje některé nové funkce, které jsou právě zpracovávány (aktuálně stále ve verzi beta), což vám umožní mít širší možnosti monitorování s Application Insights. Mezi ně patří sledování závislostí (používá se při vytváření AppMap všech služeb a aplikací v clusteru a komunikace mezi nimi) a lepší korelace trasování přicházejících z vašich služeb (pomáhá lépe určit problém v pracovním postupu aplikace nebo služba).
 
-Pokud vyvíjíte v rozhraní .NET a pravděpodobně budete používat některé z programovacích modelů Service Fabric a máte ochotni používat Application Insights jako platformu pro vizualizaci a analýzu dat událostí a protokolů, doporučujeme, abyste provedli Application Insights Sada SDK je směrována jako pracovní postup monitorování a diagnostiky. Přečtěte si [](../azure-monitor/app/asp-net-trace-logs.md) [Tento](../azure-monitor/app/asp-net-more.md) článek a začněte s používáním Application Insights ke shromáždění a zobrazení protokolů.
+Pokud vyvíjíte v rozhraní .NET a pravděpodobně budete používat některé z programovacích modelů Service Fabric a máte ochotni používat Application Insights jako platformu pro vizualizaci a analýzu dat událostí a protokolů, doporučujeme, abyste provedli Application Insights Sada SDK je směrována jako pracovní postup monitorování a diagnostiky. Přečtěte si [Tento](../azure-monitor/app/asp-net-more.md) [článek a začněte](../azure-monitor/app/asp-net-trace-logs.md) s používáním Application Insights ke shromáždění a zobrazení protokolů.
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigace prostředku Application Insights v Azure Portal
 
@@ -80,7 +71,7 @@ Jakmile nakonfigurujete Application Insights jako výstup pro události a protok
 
 Kliknutím na **Analýza** přejdete na portál Application Insights Analytics, kde můžete zadávat dotazy na události a trasování s větším rozsahem a volitelnosti. Přečtěte si další informace o [analýze v Application Insights](../azure-monitor/app/analytics.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [V AI nastavte výstrahy](../azure-monitor/app/alerts.md) na změny výkonu nebo využití.
 * [Inteligentní zjišťování v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie, která se posílá do Application Insights upozorňující na potenciální problémy s výkonem.

@@ -1,6 +1,6 @@
 ---
-title: Správa přihlašovacích údajů účtu úložiště StorSimple Virtual Array | Dokumentace Microsoftu
-description: Vysvětluje, jak můžete na stránce konfigurace Správce zařízení StorSimple můžete přidat, upravit, odstranit nebo obměna klíčů zabezpečení pro přihlašovací údaje účtu úložiště přidruženého StorSimple Virtual Array.
+title: Spravovat přihlašovací údaje účtu úložiště virtuálních polí StorSimple | Microsoft Docs
+description: Vysvětluje, jak můžete pomocí stránky StorSimple Device Manager nakonfigurovat přidat, upravit, odstranit nebo otočit klíče zabezpečení pro přihlašovací údaje účtu úložiště přidružené k virtuálnímu poli StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,142 +14,142 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac539b44f09663e6eac5651646d3c9cd02e45b3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360000"
 ---
-# <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple ke správě přihlašovacích údajů účtu úložiště pro StorSimple Virtual Array
+# <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Použití Device Manager StorSimple ke správě přihlašovacích údajů účtu úložiště pro virtuální pole StorSimple
 
 ## <a name="overview"></a>Přehled
-**Konfigurace** okně služby Správce zařízení StorSimple StorSimple Virtual Array nabízí globální službu parametry, které lze vytvořit ve službě StorSimple Manager. Tyto parametry můžete použít pro všechna zařízení připojená ke službě a zahrnují:
+**Konfigurační** oddíl okna StorSimple Device Manager služby ve virtuálním poli StorSimple představuje globální parametry služby, které se dají vytvořit ve službě StorSimple Manager. Tyto parametry se dají použít pro všechna zařízení připojená ke službě a zahrnují:
 
 * Přihlašovací údaje účtu úložiště
 * Záznamy řízení přístupu
   
-  ![Řídicí panel služby Správce zařízení](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccts-dashboard.png)  
+  ![Řídicí panel služby Device Manager](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccts-dashboard.png)  
 
-Tento kurz vysvětluje, jak můžete přidat, upravit nebo odstranit přihlašovací údaje účtu úložiště pro StorSimple Virtual Array. Informace v tomto kurzu platí pouze pro StorSimple Virtual Array. Informace o tom, jak spravovat účty úložiště v 8000 series najdete v tématu [použít službu StorSimple Manager ke správě vašeho účtu úložiště](storsimple-manage-storage-accounts.md).
+V tomto kurzu se dozvíte, jak můžete přidat, upravit nebo odstranit přihlašovací údaje účtu úložiště pro virtuální pole StorSimple. Informace v tomto kurzu se vztahují jenom na virtuální pole StorSimple. Informace o tom, jak spravovat účty úložiště v řadě 8000, najdete v tématu [Správa účtu úložiště pomocí služby StorSimple Manager](storsimple-manage-storage-accounts.md).
 
-Přihlašovací údaje účtu úložiště obsahovat přihlašovací údaje, které zařízení použije pro přístup k vašemu účtu úložiště pomocí poskytovatele cloudových služeb. Pro účty úložiště Microsoft Azure jsou tyto přihlašovací údaje, jako je například název účtu a primární přístupový klíč.
+Přihlašovací údaje účtu úložiště obsahují přihlašovací údaje, které zařízení používá pro přístup k vašemu účtu úložiště ve vašem poskytovateli cloudové služby. U Microsoft Azure účtů úložiště se jedná o přihlašovací údaje, jako je název účtu a primární přístupový klíč.
 
-Na **přihlašovací údaje účtu úložiště** okno, všechny přihlašovací údaje účtu úložiště, které jsou vytvořené pro předplatné pro fakturaci se zobrazí v tabulkovém formátu, který obsahuje následující informace:
+V okně **přihlašovací údaje účtu úložiště** se všechny přihlašovací údaje účtu úložiště, které jsou vytvořené pro fakturační předplatné, zobrazují v tabulkovém formátu, který obsahuje následující informace:
 
-* **Název** – jedinečný název přiřazený k účtu při vytvoření rovnou uložil.
-* **Protokol SSL povolený** – SSL, zda je povolen a je komunikace typu zařízení cloud přes zabezpečený kanál.
+* **Název** – jedinečný název přiřazený k účtu při jeho vytvoření.
+* **Protokol SSL je povolený** – jestli je povolený protokol SSL a komunikace mezi zařízeními a cloudem přes zabezpečený kanál.
   
-  ![Oddíl konfigurace](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccountcredentials-blade.png)
+  ![Konfigurační oddíl](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccountcredentials-blade.png)
 
-Zvládnout běžné úkoly související se přihlašovací údaje účtu úložiště, které lze provést u **přihlašovací údaje účtu úložiště** okna jsou:
+Nejběžnější úlohy související s přihlašovacími údaji účtu úložiště, které je možné provádět v okně **přihlašovací údaje účtu úložiště** , jsou:
 
 * Přidání přihlašovacích údajů účtu úložiště
-* Upravit přihlašovací údaje účtu úložiště
-* Odstraňování přihlašovacích údajů účtu úložiště
+* Úprava přihlašovacích údajů účtu úložiště
+* Odstraní přihlašovací údaje účtu úložiště.
 
 ## <a name="types-of-storage-account-credentials"></a>Typy přihlašovacích údajů účtu úložiště
-Existují tři typy přihlašovacích údajů účtu úložiště, které je možné se zařízením StorSimple.
+Existují tři typy přihlašovacích údajů účtu úložiště, které se dají používat se zařízením StorSimple.
 
-* **Přihlašovací údaje účtu úložiště automaticky generované** – jak název napovídá, tento typ přihlašovacích údajů účtu úložiště se automaticky generuje při prvním vytvoření služby. Další informace o vytvoření tento přihlašovací údaj účtu úložiště najdete v tématu [vytvořit novou službu](storsimple-virtual-array-manage-service.md#create-a-service).
-* **přihlašovací údaje účtu úložiště v předplatném služby** – jde o přihlašovací údaje účtu úložiště Azure, které jsou přidruženy stejném předplatném jako služby. Další informace o tom, jak tyto úložiště jsou vytvořené přihlašovací údaje k účtu, najdete v článku [o účtech Azure Storage](../storage/common/storage-create-storage-account.md).
-* **přihlašovací údaje účtu úložiště mimo předplatné služby** – jde o přihlašovací údaje účtu úložiště Azure, které nejsou přidružené k vaší službě a pravděpodobně existovala předtím, než služba byla vytvořena.
+* **Automaticky vygenerované přihlašovací údaje účtu úložiště** – když název navrhuje, tento typ přihlašovacích údajů účtu úložiště se automaticky vygeneruje při prvním vytvoření služby. Další informace o tom, jak se tyto přihlašovací údaje k účtu úložiště vytvářejí, najdete v tématu [Vytvoření nové služby](storsimple-virtual-array-manage-service.md#create-a-service).
+* **přihlašovací údaje účtu úložiště v předplatném služby** – jedná se o přihlašovací údaje účtu úložiště Azure, které jsou přidružené ke stejnému předplatnému jako služba. Další informace o tom, jak se tyto přihlašovací údaje k účtu úložiště vytvářejí, najdete v tématu [informace o Azure Storagech účtech](../storage/common/storage-create-storage-account.md).
+* **přihlašovací údaje účtu úložiště mimo předplatné služby** – jedná se o přihlašovací údaje účtu úložiště Azure, které nejsou přidružené k vaší službě, a nejspíš existovaly před vytvořením služby.
 
 ## <a name="add-a-storage-account-credential"></a>Přidání přihlašovacích údajů účtu úložiště
-Konfigurace služby Správce zařízení StorSimple můžete přidat přihlašovací údaje účtu úložiště tím, že poskytuje jedinečný popisný název a přihlašovacích údajů pro přístup, které jsou propojeny do účtu úložiště. Máte také možnost zapnutí režimu secure Sockets Layer (SSL) layer vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením a cloudem.
+Přihlašovací údaje účtu úložiště můžete přidat do konfigurace služby StorSimple Device Manager zadáním jedinečného popisného názvu a přístupových přihlašovacích údajů, které jsou propojené s účtem úložiště. Máte také možnost povolit režim SSL (Secure Sockets Layer) a vytvořit zabezpečený kanál pro síťovou komunikaci mezi vaším zařízením a cloudem.
 
-Můžete vytvořit více účtů pro poskytovatele služeb daného cloudu. Při uložení přihlašovacích údajů účtu úložiště se služba pokusí komunikovat se svým poskytovatelem cloudových služeb. V tuto chvíli se ověřit přihlašovací údaje a přístup materiál, který jste zadali. Přihlašovací údaje účtu úložiště se vytvoří pouze v případě, že bude ověřování úspěšné. Pokud se ověření nezdaří, se zobrazí příslušná chybová zpráva.
+Pro daného poskytovatele cloudové služby můžete vytvořit několik účtů. Při ukládání přihlašovacích údajů účtu úložiště se služba pokusí o komunikaci s vaším poskytovatelem cloudových služeb. Přihlašovací údaje a přístupový materiál, které jste zadali, se v tuto chvíli ověřují. Přihlašovací údaje účtu úložiště se vytvoří jenom v případě, že je ověřování úspěšné. Pokud se ověření nepovede, zobrazí se příslušná chybová zpráva.
 
-Pomocí následujících postupů můžete přidat přihlašovací údaje účtu úložiště Azure:
+K přidání přihlašovacích údajů k účtu úložiště Azure použijte následující postupy:
 
-* Chcete-li přidat přihlašovací údaje účtu úložiště, který má stejné předplatné Azure jako službu Správce zařízení
-* Přidání Azure přihlašovací údaje účtu úložiště, které je mimo předplatné služby Správce zařízení
+* Přidání přihlašovacích údajů účtu úložiště, které mají stejné předplatné Azure jako služba Device Manager
+* Přidání přihlašovacích údajů účtu Azure Storage mimo předplatné služby Device Manager
 
-#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Chcete-li přidat přihlašovací údaje účtu úložiště, který má stejné předplatné Azure jako službu Správce zařízení
+#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Přidání přihlašovacích údajů účtu úložiště, které mají stejné předplatné Azure jako služba Device Manager
 
-1. Přejděte do služby Správce zařízení, vyberte a dvojím kliknutím. Tím se otevře **přehled** okno.
-2. Vyberte **přihlašovací údaje účtu úložiště** v rámci **konfigurace** oddílu.
+1. Přejděte ke službě Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
+2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** .
 3. Klikněte na tlačítko **Add** (Přidat).
-4. V **přidání účtu úložiště** okno, postupujte takto:
+4. V okně **Přidat účet úložiště** udělejte toto:
    
-    1. Pro **předplatné**vyberte **aktuální**.
-    2. Zadejte název účtu služby Azure storage.
-    3. Vyberte **povolit** vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudu. Vyberte **zakázat** pouze v případě, že pracujete v privátním cloudu.
-    4. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření účtu úložiště, se zobrazí oznámení.<br></br>
+    1. V **předplatném**vyberte **aktuální**.
+    2. Zadejte název svého účtu úložiště Azure.
+    3. Pokud chcete vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudem, vyberte **Povolit** . Vyberte možnost **Zakázat** pouze v případě, že pracujete v rámci privátního cloudu.
+    4. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření účtu úložiště se zobrazí oznámení.<br></br>
    
         ![Přidat existující přihlašovací údaje účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
-#### <a name="to-add-an-azure-storage-account-credential-that-is-outside-of-the-device-manager-service-subscription"></a>Přidání Azure přihlašovací údaje účtu úložiště, které je mimo předplatné služby Správce zařízení
+#### <a name="to-add-an-azure-storage-account-credential-that-is-outside-of-the-device-manager-service-subscription"></a>Přidání přihlašovacích údajů účtu Azure Storage mimo předplatné služby Device Manager
 
-1. Přejděte do služby Správce zařízení, vyberte a dvojím kliknutím. Tím se otevře **přehled** okno.
-2. Vyberte **přihlašovací údaje účtu úložiště** v rámci **konfigurace** oddílu. Vypíšou se všechny existující přihlašovací údaje účtu úložiště přidruženého ke službě Správce zařízení StorSimple.
+1. Přejděte ke službě Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
+2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** . Tato seznam obsahuje všechna existující pověření účtu úložiště přidružená ke službě StorSimple Device Manager.
 3. Klikněte na tlačítko **Add** (Přidat).
-4. V **přidání účtu úložiště** okno, postupujte takto:
+4. V okně **Přidat účet úložiště** udělejte toto:
    
-    1. Pro **předplatné**vyberte **jiných**.
+    1. U **předplatného**vyberte **jiné**.
    
-    2. Zadejte název své přihlašovací údaje účtu úložiště Azure.
+    2. Zadejte název přihlašovacích údajů k účtu úložiště Azure.
    
-    3. V **přístupový klíč účtu úložiště** textové pole, zadat primární přístupový klíč pro vaše přihlašovací údaje účtu úložiště Azure. Chcete-li tento klíč získat, přejděte do služby Azure Storage, vyberte vaše přihlašovací údaje účtu úložiště a klikněte na **spravovat klíče účtu**. Nyní můžete zkopírovat primární přístupový klíč.
+    3. Do textového pole **přístupový klíč účtu úložiště** zadejte primární přístupový klíč pro přihlašovací údaje k účtu úložiště Azure. Tento klíč získáte tak, že přejdete do služby Azure Storage, vyberete přihlašovací údaje účtu úložiště a kliknete na **spravovat klíče účtu**. Nyní můžete zkopírovat primární přístupový klíč.
    
-    4. Chcete-li povolit protokol SSL, klikněte na tlačítko **povolit** tlačítko vytvořit zabezpečený kanál pro síťovou komunikaci mezi službou Správce zařízení StorSimple a cloudu. Klikněte na tlačítko **zakázat** tlačítko pouze v případě, že pracujete v privátním cloudu.
+    4. Pokud chcete povolit SSL, klikněte na tlačítko **Povolit** a vytvořte zabezpečený kanál pro síťovou komunikaci mezi službou StorSimple Device Manager a cloudem. Klikněte na tlačítko **Zakázat** jenom v případě, že pracujete v privátním cloudu.
    
-    5. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření přihlašovacích údajů účtu úložiště, se zobrazí oznámení.
+    5. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření přihlašovacích údajů účtu úložiště se zobrazí oznámení.
 
-5. Zobrazí se přihlašovací údaje účtu úložiště vytvořeného v okně služby Správce zařízení StorSimple nakonfigurujte podle **přihlašovací údaje účtu úložiště**.
+5. Nově vytvořené přihlašovací údaje účtu úložiště se zobrazí v okně StorSimple konfigurace služby Device Manager v části **přihlašovací údaje účtu úložiště**.
    
-    ![Přidat přihlašovací údaj účtu úložiště mimo předplatné služby Správce zařízení](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-outside-storageacct.png)
+    ![Přidání přihlašovacích údajů účtu úložiště mimo předplatné služby Device Manager](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-outside-storageacct.png)
 
-## <a name="edit-a-storage-account-credential"></a>Upravit přihlašovací údaje účtu úložiště
-Můžete upravit přihlašovací údaje účtu úložiště vaše zařízení používá. Pokud upravíte přihlašovacích údajů účtu úložiště, který je aktuálně používán, lze upravit pole se přístupový klíč a režim SSL pro přihlašovací údaje účtu úložiště. Můžete zadat nový přístupový klíč úložiště nebo upravit **režim povolit šifrování SSL** výběru a uložte aktualizované nastavení.
+## <a name="edit-a-storage-account-credential"></a>Úprava přihlašovacích údajů účtu úložiště
+Můžete upravit přihlašovací údaje účtu úložiště používané vaším zařízením. Pokud upravíte přihlašovací údaje účtu úložiště, které se momentálně používají, jsou pole, která je k dispozici k úpravě, přístupová klávesa a režim SSL pro přihlašovací údaje účtu úložiště. Můžete dodat nový přístupový klíč k úložišti nebo upravit výběr **režimu SSL** a uložit aktualizované nastavení.
 
-#### <a name="to-edit-a-storage-account-credential"></a>Chcete-li upravit přihlašovací údaje účtu úložiště
-1. Přejděte do služby Správce zařízení, vyberte a dvojím kliknutím. Tím se otevře **přehled** okno.
-2. Vyberte **přihlašovací údaje účtu úložiště** v rámci **konfigurace** oddílu. Vypíšou se všechny existující přihlašovací údaje účtu úložiště přidruženého ke službě Správce zařízení StorSimple.
-3. Tabulkový seznam přihlašovacích údajů účtu úložiště vyberte a klikněte dvakrát na účet, který chcete upravit.
-4. V přihlašovacích údajů účtu úložiště **vlastnosti** okno, postupujte takto:
+#### <a name="to-edit-a-storage-account-credential"></a>Úprava přihlašovacích údajů účtu úložiště
+1. Přejděte ke službě Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
+2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** . Tato seznam obsahuje všechna existující pověření účtu úložiště přidružená ke službě StorSimple Device Manager.
+3. V tabulkovém seznamu pověření účtu úložiště vyberte a dvakrát klikněte na účet, který chcete upravit.
+4. V okně **vlastnosti** přihlašovacích údajů účtu úložiště udělejte toto:
    
-   1. Pokud třeba, můžete upravit **povolit šifrování SSL** režim výběru.
-   2. Můžete nastavit opětovné vygenerování přístupových klíčů přihlašovacích údajů účtu úložiště. Další informace najdete v tématu [obnovit klíče účtu úložiště](../storage/common/storage-account-manage.md#access-keys). Zadejte nový klíč přihlašovacích údajů účtu úložiště. Pro účet úložiště Azure, jedná se o primární přístupový klíč.
-   3. Klikněte na tlačítko **Uložit** v horní části **vlastnosti** okno a uložte nastavení. Nastavení se aktualizovala na **přihlašovací údaje účtu úložiště** okno.
+   1. V případě potřeby můžete upravit možnost **Povolit režim SSL** .
+   2. Můžete zvolit, že se mají znovu vygenerovat přístupové klíče přihlašovacích údajů účtu úložiště. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md). Zadejte nový klíč přihlašovacích údajů účtu úložiště. Pro účet služby Azure Storage se jedná o primární přístupový klíč.
+   3. Uložte nastavení kliknutím na **Uložit** v horní části okna **vlastnosti** . Nastavení se aktualizují v okně **pověření účtu úložiště** .
       
-      ![Upravit přihlašovací údaje účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)
+      ![Úprava přihlašovacích údajů účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)
 
-## <a name="delete-a-storage-account-credential"></a>Odstraňování přihlašovacích údajů účtu úložiště
+## <a name="delete-a-storage-account-credential"></a>Odstraní přihlašovací údaje účtu úložiště.
 > [!IMPORTANT]
-> Přihlašovací údaje účtu úložiště můžete odstranit pouze v případě, že není používán. Pokud přihlašovací údaje účtu úložiště se používá, se zobrazí oznámení.
+> Přihlašovací údaje účtu úložiště můžete odstranit jenom v případě, že se nepoužívá. Pokud se přihlašovací údaje účtu úložiště používají, dostanete oznámení.
 > 
 > 
 
-#### <a name="to-delete-a-storage-account-credential"></a>Chcete-li odstranit přihlašovací údaj účtu úložiště
-1. Přejděte do služby Správce zařízení, vyberte a dvojím kliknutím. Tím se otevře **přehled** okno.
-2. Vyberte **přihlašovací údaje účtu úložiště** v rámci **konfigurace** oddílu. Vypíšou se všechny existující přihlašovací údaje účtu úložiště přidruženého ke službě Správce zařízení StorSimple.
-3. Tabulkový seznam přihlašovacích údajů účtu úložiště vyberte a klikněte dvakrát na účet, který chcete odstranit.
-4. V přihlašovacích údajů účtu úložiště **vlastnosti** okno, postupujte takto:
+#### <a name="to-delete-a-storage-account-credential"></a>Odstranění přihlašovacích údajů účtu úložiště
+1. Přejděte ke službě Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
+2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** . Tato seznam obsahuje všechna existující pověření účtu úložiště přidružená ke službě StorSimple Device Manager.
+3. V tabulkovém seznamu pověření účtu úložiště vyberte a dvakrát klikněte na účet, který chcete odstranit.
+4. V okně **vlastnosti** přihlašovacích údajů účtu úložiště udělejte toto:
    
-   1. Klikněte na tlačítko **odstranit** se odstranit přihlašovací údaje.
-   2. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** pro pokračování v odstranění. Tabulkovém výpisu se aktualizuje tak, aby odrážely změny.
+   1. Kliknutím na **Odstranit** odstraňte přihlašovací údaje.
+   2. Po zobrazení výzvy k potvrzení klikněte na **Ano** , aby se odstraňování pokračovalo. Tabulkový výpis je aktualizován, aby odrážel změny.
       
-      ![Odstraňování přihlašovacích údajů účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-del-storageacct.png)
+      ![Odstraní přihlašovací údaje účtu úložiště.](./media/storsimple-virtual-array-manage-storage-accounts/ova-del-storageacct.png)
 
-## <a name="synchronizing-storage-account-credential-keys"></a>Synchronizují se klíče přihlašovacích údajů účtu úložiště
-Z bezpečnostních důvodů obměna klíčů je často požadavek v datových centrech. Správce Microsoft Azure můžete znovu nebo změnit primární nebo sekundární klíč přímý přístup k přihlašovací údaje účtu úložiště (prostřednictvím služby Microsoft Azure Storage). Služba Správce zařízení StorSimple nezobrazují tato změna automaticky.
+## <a name="synchronizing-storage-account-credential-keys"></a>Synchronizují se klíče přihlašovacích údajů účtu úložiště.
+Z bezpečnostních důvodů je střídání klíčů často v datových centrech potřeba. Správce Microsoft Azure může znovu vygenerovat nebo změnit primární nebo sekundární klíč přímým přístupem k přihlašovacím údajům k účtu úložiště (prostřednictvím služby Microsoft Azure Storage). Služba StorSimple Device Manager nevidí tuto změnu automaticky.
 
-Informovat službu Správce zařízení StorSimple změny, potřebujete přístup ke službě Správce zařízení StorSimple, přístup k přihlašovací údaje účtu úložiště a potom synchronizovat primární nebo sekundární klíč (podle toho, která byla změněna). Služba potom získá nejnovější klíč, šifruje klíčů a odešle zašifrovaný klíč do zařízení.
+Abyste informovali službu StorSimple Device Manager ke změně, budete potřebovat přístup ke službě StorSimple Device Manager, získat přístup k přihlašovacím údajům k účtu úložiště a pak synchronizovat primární nebo sekundární klíč (v závislosti na tom, který z nich byl změněn). Služba pak získá nejnovější klíč, zašifruje klíče a odešle šifrovaný klíč do zařízení.
 
-#### <a name="to-synchronize-keys-for-storage-account-credentials-in-the-same-subscription-as-the-service-azure-only"></a>Chcete-li synchronizovat klíče pro přihlašovací údaje účtu úložiště ve stejném předplatném jako služba (pouze Azure)
-1. V okně cílové služby vyberte svoji službu, klikněte dvakrát na název služby a pak v **konfigurace** klikněte na tlačítko **přihlašovací údaje účtu úložiště**.
-2. Na **přihlašovací údaje účtu úložiště** okno, v seznamu přihlašovacích údajů účtu úložiště, vyberte účet úložiště přihlašovacích údajů, které se mají synchronizovat klíči.
-3. V **vlastnosti** okno přihlašovací údaje účtu úložiště, postupujte takto:
+#### <a name="to-synchronize-keys-for-storage-account-credentials-in-the-same-subscription-as-the-service-azure-only"></a>Synchronizace klíčů pro přihlašovací údaje účtu úložiště ve stejném předplatném jako služba (jenom Azure)
+1. V okně cílová služba vyberte svou službu, dvakrát klikněte na název služby a potom v části **Konfigurace** klikněte na **přihlašovací údaje účtu úložiště**.
+2. V okně **přihlašovací údaje účtu úložiště** vyberte v seznamu přihlašovací údaje účtu úložiště přihlašovací údaje účtu úložiště, jejichž klíče se mají synchronizovat.
+3. V okně **vlastnosti** pro vybrané přihlašovací údaje účtu úložiště udělejte toto:
    
-    1. Klikněte na tlačítko **Další**a potom klikněte na tlačítko **synchronizace přístupového klíče**.
+    1. Klikněte na **Další**a pak klikněte na **synchronizovat přístupový klíč**.
    
-    2. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **synchronizovat klíč** na dokončení synchronizace.
+    2. Po zobrazení výzvy k potvrzení klikněte na **synchronizovat klíč** a dokončete synchronizaci.
     
-4. Ve službě Správce zařízení StorSimple budete muset aktualizovat klíč, který byl dříve změněn ve službě Microsoft Azure Storage. V **synchronizovat klíč účtu úložiště** okno, pokud primární přístupový klíč se změnil (znovu vygenerovalo), klikněte na primární a potom klikněte na tlačítko **synchronizovat klíč**. Pokud byl změněn sekundární klíč, klikněte na tlačítko **sekundární**a potom klikněte na tlačítko **synchronizovat klíč**.
+4. Ve službě StorSimple Device Manager musíte aktualizovat klíč, který se dříve změnil ve službě Microsoft Azure Storage. Pokud se primární přístupový klíč změnil (znovu vygeneroval) v okně **synchronizovat klíč účtu úložiště** , klikněte na primární a pak klikněte na **synchronizovat klíč**. Pokud se sekundární klíč změnil, klikněte na **sekundární**a pak klikněte na **synchronizovat klíč**.
    
-    ![Synchronizace přístupového klíče](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
+    ![Přístupový klíč synchronizace](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
-## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [spravovat StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+## <a name="next-steps"></a>Další kroky
+* Naučte se [spravovat virtuální pole StorSimple](storsimple-ova-web-ui-admin.md).
 

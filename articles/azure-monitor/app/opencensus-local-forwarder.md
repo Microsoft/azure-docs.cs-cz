@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights OpenCensus distribuované trasování pro místní službu pro distribuci (Preview) | Dokumentace Microsoftu
+title: Azure Application Insights OpenCensus – místní server pro přeposílání (Preview)
 description: Předejte OpenCensus distribuované trasování a rozsahy z jazyků, jako je Python, a přejít na Azure Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406607"
 ---
 # <a name="local-forwarder-preview"></a>Místní server pro přeposílání (Preview)
 
@@ -30,7 +30,7 @@ Místní server pro přeposílání je [otevřený zdrojový projekt na GitHubu]
 Nejjednodušší způsob, jak spustit místní službu pro překládání v systému Windows, je její instalace jako služba systému Windows. Verze se dodává se spustitelným souborem služby systému Windows (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), který lze snadno zaregistrovat s operačním systémem.
 
 > [!NOTE]
-> Místní služba pro přeposílání vyžaduje minimálně .NET Framework 4,7. Pokud nemáte .NET Framework 4,7, služba se nainstaluje, ale nespustí se. Chcete-li získat přístup k poslední verzi .NET Framework **[přejděte na stránku pro stažení .NET Framework](
+> Místní služba pro přeposílání vyžaduje minimálně .NET Framework 4,7. Pokud nemáte .NET Framework 4,7, služba se nainstaluje, ale nespustí se. Pro přístup k nejnovější verzi rozhraní .NET Framework **[najdete na stránce pro stažení rozhraní .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Stáhněte si LF. Soubor WindowsServiceHost. zip ze [stránky pro vydání místního serveru pro posílání](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) na GitHubu.
@@ -105,7 +105,7 @@ Mnoho uživatelů se systémem Linux bude chtít spustit místní server pro př
 Jako příklad vytvoříte službu démon pomocí systému. Použijeme verzi závislou na rozhraní, ale totéž můžete udělat i pro sebe, která obsahuje.
 
 * Vytvořte následující soubor služby s názvem *localforwarder. Service* a umístěte ho do */lib/systemd/System*.
-Tato ukázka předpokládá, že vaše uživatelské jméno je SAMPLE_USER a že jste zkopírovali binární soubory závislé na rozhraní pro směrování (z */ConsoleHost/Publish*) do */Home/SAMPLE_USER/LOCALFORWARDER_DIR*.
+Tato ukázka předpokládá, že vaše uživatelské jméno je SAMPLE_USER a že jste zkopírovali binární soubory závislé na rozhraní pro směrování (z */ConsoleHost/Publish*) do */home/SAMPLE_USER/LOCALFORWARDER_DIR*.
 
 ```
 # localforwarder.service

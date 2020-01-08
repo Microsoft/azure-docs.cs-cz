@@ -1,17 +1,17 @@
 ---
-title: Naučte se konfigurovat a spravovat dobu v provozu v Azure Cosmos DB
+title: Konfigurace a Správa času do provozu v Azure Cosmos DB
 description: Naučte se, jak nakonfigurovat a spravovat dobu provozu na kontejneru a položku v Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 51022956ad32059771b8d56f0ae177fb5165b450
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 55f94257b604a87460caa279fc0995f1434ac92c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873603"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441779"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
 

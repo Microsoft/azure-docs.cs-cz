@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell skriptu – Azure Cosmos DB vytvoření databáze a kontejneru rozhraní API SQL (jádro)
+title: Skript PowerShellu pro vytvoření Azure Cosmos DB databáze a kontejneru rozhraní API SQL (jádro)
 description: Azure PowerShell skriptu – Azure Cosmos DB vytvoření databáze a kontejneru rozhraní API SQL (jádro)
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: eee1e31808412dc5e4308dee92f3685507e771f3
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 5a57b8cb3e4e7076d3be73a9010d9a29a8b004a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441363"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Vytvoření databáze a kontejneru pro rozhraní API Azure Cosmos DB-SQL (jádro)
 
@@ -22,7 +22,7 @@ ms.locfileid: "71178807"
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří účet Cosmos pro rozhraní SQL (Core) API ve dvou oblastech s konzistencí úrovně relace, databází se sdílenou propustností a kontejnerem s klíčem oddílu, vlastními zásadami indexování, jedinečnou klíčovou zásadou, hodnotou TTL, vyhrazenou propustností a službou WINS posledního zapisovače. Zásady řešení konfliktů s vlastní cestou řešení konfliktů, která se použije, když `multipleWriteLocations=true`
+Tento skript vytvoří účet Cosmos pro rozhraní API SQL (Core) ve dvou oblastech s konzistencí úrovně relace, databází se sdílenou propustností a kontejnerem s klíčem oddílu, vlastními zásadami indexování, jedinečnou zásadou klíčů, hodnotou TTL, vyhrazenou propustností a posledními zásadami pro řešení konfliktů WINS, které se použijí při `multipleWriteLocations=true`.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5f3e6cf8c5de8d5f3de17ad0b5d4bb4c004c06df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442983"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ V Kubernetes Server rozhraní API přijímá požadavky na provádění akcí v 
 V tomto článku se dozvíte, jak pomocí rozsahů povolených IP adres serveru API omezit, které IP adresy a CIDRs můžou získat přístup k rovině řízení.
 
 > [!IMPORTANT]
-> V nových clusterech se rozsahy povolených IP adres serveru API podporují jenom v nástroji pro vyrovnávání zatížení *Standard* SKU. Stávající clustery s nakonfigurovanými rozsahy služby Load Balancer *základní* skladové položky a povolenými rozsahy IP adres serveru API budou dál fungovat tak, jak jsou. Tyto existující clustery je také možné upgradovat a budou fungovat i nadále.
+> V nových clusterech se rozsahy povolených IP adres serveru API podporují jenom v nástroji pro vyrovnávání zatížení *Standard* SKU. Stávající clustery s nakonfigurovanými rozsahy služby Load Balancer *základní* skladové položky a povolenými rozsahy IP adres serveru API budou nadále fungovat, jak je, ale nelze je migrovat do nástroje pro vyrovnávání zatížení *Standard* SKU. Tyto existující clustery budou i nadále fungovat, pokud se upgradují jejich verze Kubernetes nebo řídicí plocha.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -102,7 +102,7 @@ az aks create \
 
 ## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>Aktualizace rozsahů povolených IP adres serveru API clusteru
 
-Pokud chcete aktualizovat rozsahy IP adres autorizovaných pro Server API v existujícím clusteru, použijte příkaz [AZ AKS Update][az-aks-update] a použijte rozhraní *--API-Server-autorizované-IP-Ranges*, *--Load-Balancer-Outbound-IP-prefixs*, *--Load-Balancer-Outbound-* IP, nebo *--Vyrovnávání zatížení – parametry odchozí-IP-předpony* .
+Chcete-li aktualizovat rozsahy IP adres ověřených serverem API v existujícím clusteru, použijte příkaz [AZ AKS Update][az-aks-update] a *použijte parametr* *--API-Server-autorizovaných-IP-Ranges* *,* *--Load-Balancer-Outbound-IP-Prefixes*
 
 Následující příklad aktualizuje rozsahy IP adres ověřených serverem API v clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Rozsah IP adres, který se má autorizovat, je *73.140.245.0/24*:
 

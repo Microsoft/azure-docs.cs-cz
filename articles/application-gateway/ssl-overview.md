@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883588"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75657977"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Přehled ukončení protokolu SSL a koncového šifrování protokolu SSL s Application Gateway
 
@@ -42,15 +42,15 @@ Aby připojení SSL fungovalo, musíte zajistit, aby certifikát SSL splňoval n
 
 Application Gateway podporuje následující typy certifikátů:
 
-- Certifikát CA (certifikační autorita): Certifikát certifikační autority je digitální certifikát vydaný certifikační autoritou (CA).
-- Certifikát EV (rozšířené ověřování): Certifikát EV je standardní Oborová pravidla pro certifikáty. Tím se zamění i název společnosti na panelu lokátoru v prohlížeči a zároveň na jeho publikování.
+- Certifikát CA (certifikační autorita): certifikát certifikační autority je digitální certifikát vydaný certifikační autoritou (CA).
+- Certifikát EV (rozšířené ověřování): certifikát proev je standardními pokyny pro certifikát. Tím se zamění i název společnosti na panelu lokátoru v prohlížeči a zároveň na jeho publikování.
 - Certifikát se zástupnými znaky: Tento certifikát podporuje libovolný počet subdomén na základě *. site.com, kde by vaše subdoména nahradila *. Ale nepodporuje site.com, takže pokud uživatelé přistupují k webu, aniž by museli psát úvodní "www", certifikát se zástupnými znaky nebude pokrývat.
-- Certifikáty podepsané svým držitelem: Klientské prohlížeče nedůvěřují těmto certifikátům a upozorní uživatele, že certifikát virtuální služby není součástí řetězce důvěryhodnosti. Certifikáty podepsané svým držitelem jsou vhodné pro testování nebo prostředí, kde správci kontrolují klienty a můžou bezpečně obejít výstrahy zabezpečení v prohlížeči. Provozní úlohy by nikdy neměly používat certifikáty podepsané svým držitelem.
+- Certifikáty podepsané svým držitelem: klientské prohlížeče nedůvěřují těmto certifikátům a upozorní uživatele, že certifikát virtuální služby není součástí řetězce důvěryhodnosti. Certifikáty podepsané svým držitelem jsou vhodné pro testování nebo prostředí, kde správci kontrolují klienty a můžou bezpečně obejít výstrahy zabezpečení v prohlížeči. Provozní úlohy by nikdy neměly používat certifikáty podepsané svým držitelem.
 
 Další informace najdete v tématu [Konfigurace ukončení protokolu SSL pomocí služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>Velikost certifikátu
-V části [omezení Application Gateway](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) můžete zjistit, že je podporovaná maximální velikost certifikátu SSL.
+V části [omezení Application Gateway](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) můžete zjistit, že je podporovaná maximální velikost certifikátu SSL.
 
 ## <a name="end-to-end-ssl-encryption"></a>Koncové šifrování protokolu SSL
 
@@ -107,9 +107,9 @@ Ověřovací certifikáty jsou zastaralé a v SKU Application Gateway v2 byly na
 - Pokud je zvolená možnost **Vybrat název hostitele z back-endu** , místo pole hostitel v nastavení http back-endu, pak je hlavička sni vždycky nastavená na plně kvalifikovaný název domény fondu back-end a CN v certifikátu SSL back-end serveru musí odpovídat svému plně kvalifikovanému názvu domény. V tomto scénáři nejsou podporovány členy fondu back-end s IP adresami.
 - Kořenový certifikát je kořenový certifikát kódovaný v kódování Base64 od certifikátů back-end serveru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po získání informací o koncovém šifrování protokolu SSL v [prostředí PowerShell](application-gateway-end-to-end-ssl-powershell.md) použijte k vytvoření služby Application Gateway s KONCOVým protokolem SSL konfiguraci koncového a koncového protokolu ssl pomocí Application Gateway.
+Po získání informací o koncovém šifrování protokolu SSL v prostředí PowerShell použijte k vytvoření služby Application Gateway s koncovým PROTOKOLem SSL [konfiguraci koncového](application-gateway-end-to-end-ssl-powershell.md) a koncového protokolu ssl pomocí Application Gateway.
 
 <!--Image references-->
 

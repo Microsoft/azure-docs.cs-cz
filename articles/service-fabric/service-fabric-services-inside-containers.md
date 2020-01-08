@@ -1,25 +1,15 @@
 ---
 title: Kontejnerizace služby Azure Service Fabric ve Windows
 description: Naučte se kontejnerizace Service Fabric Reliable Services a Reliable Actors služby ve Windows.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466183"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Kontejnerizace Reliable Services Service Fabric a Reliable Actors ve Windows
 
@@ -55,7 +45,7 @@ Tento dokument poskytuje pokyny k tomu, abyste mohli spustit službu v kontejner
           {
    ```
 
-4. Sestavte a zabalite svůj projekt. [](service-fabric-package-apps.md#Package-App) Chcete-li sestavit a vytvořit balíček, klikněte pravým tlačítkem na projekt aplikace v Průzkumník řešení a vyberte příkaz **balíček** .
+4. Sestavte a [zabalite](service-fabric-package-apps.md#Package-App) svůj projekt. Chcete-li sestavit a vytvořit balíček, klikněte pravým tlačítkem na projekt aplikace v Průzkumník řešení a vyberte příkaz **balíček** .
 
 5. Pro každý balíček kódu, který potřebujete kontejnerizace, spusťte PowerShellový skript [CreateDockerPackage. ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1). Použití je následující:
 
@@ -73,7 +63,7 @@ Tento dokument poskytuje pokyny k tomu, abyste mohli spustit službu v kontejner
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Skript vytvoří složku s artefakty Docker na $dockerPackageOutputDirectoryPath. Upravte vygenerovanou souboru Dockerfile na `expose` libovolných portech, spusťte instalační skripty a tak dále. podle vašich potřeb.
+      Skript vytvoří složku s artefakty Docker na $dockerPackageOutputDirectoryPath. Upravte vygenerovanou souboru Dockerfile tak, aby `expose` jakékoli porty, spusťte instalační skripty a tak dále. podle vašich potřeb.
 
 6. Dál je potřeba [sestavit](service-fabric-get-started-containers.md#Build-Containers) a [Vložit](service-fabric-get-started-containers.md#Push-Containers) balíček kontejneru Docker do úložiště.
 
@@ -147,6 +137,6 @@ Tento dokument poskytuje pokyny k tomu, abyste mohli spustit službu v kontejner
 
 Nyní byste měli mít kontejner Service Fabric aplikace, ve které je spuštěný cluster.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-get-started-containers.md).
 * Informace o [životním cyklu aplikace](service-fabric-application-lifecycle.md) Service Fabric.

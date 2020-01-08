@@ -1,27 +1,18 @@
 ---
-title: Vytvoření první aplikace Service Fabric v C# | Microsoft Docs
+title: Vytvoření první aplikace Service Fabric vC#
 description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric se stavovou a stavovou službou.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d9b44d75-e905-468e-b867-2190ce97379a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: f3b3d5c3dcea7d190724ae946a27c47b34a26c31
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: e7c5c30dc7cbfa0a3f5a8dc76899c5c8bad6e6ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462815"
 ---
-# <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
+# <a name="get-started-with-reliable-services"></a>Začínáme s modelem Reliable Services
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-services-quick-start.md)
 > * [Java v Linuxu](service-fabric-reliable-services-quick-start-java.md)
@@ -33,10 +24,10 @@ Aplikace Azure Service Fabric obsahuje jednu nebo více služeb, které spoušt�
 ## <a name="basic-concepts"></a>Základní koncepty
 Abyste mohli začít s Reliable Services, stačí pochopit jenom několik základních konceptů:
 
-* **Typ služby**: Toto je vaše implementace služby. Je definována třídou, kterou napíšete, `StatelessService` která rozšiřuje a jakýkoli jiný kód nebo závislosti, společně s názvem a číslem verze.
-* **Instance pojmenované služby**: Chcete-li spustit službu, vytvoříte pojmenované instance typu služby, podobně jako při vytváření instancí objektů typu třídy. Instance služby má název ve formě identifikátoru URI s použitím "Fabric:/". schéma, jako je například Fabric:/MyApp/Mojesluzba.
-* **Hostitel služby**: Pojmenované instance služby, které vytvoříte, musí běžet v hostitelském procesu. Hostitel služby je jenom proces, ve kterém se můžou spouštět instance služby.
-* **Registrace služby**: Registrace přináší všechno dohromady. Typ služby musí být zaregistrován s modulem runtime Service Fabric v hostiteli služby, aby mohl Service Fabric vytvářet instance pro spuštění.  
+* **Typ služby**: Toto je vaše implementace služby. Je definována třídou, kterou zapisujete, která rozšiřuje `StatelessService` a jakýkoli jiný kód nebo závislosti, společně s názvem a číslem verze.
+* **Instance pojmenované služby**: Pokud chcete službu spustit, vytvoříte pojmenované instance typu služby, podobně jako při vytváření instancí objektů typu třídy. Instance služby má název ve formě identifikátoru URI s použitím "Fabric:/". schéma, jako je například Fabric:/MyApp/Mojesluzba.
+* **Hostitel služby**: pojmenované instance služby, které vytvoříte, musí běžet v hostitelském procesu. Hostitel služby je jenom proces, ve kterém se můžou spouštět instance služby.
+* **Registrace služby**: registrace přináší všechno dohromady. Typ služby musí být zaregistrován s modulem runtime Service Fabric v hostiteli služby, aby mohl Service Fabric vytvářet instance pro spuštění.  
 
 ## <a name="create-a-stateless-service"></a>Vytvoření bezstavové služby
 Bezstavová služba je typ služby, která je aktuálně normou v cloudových aplikacích. Je považována za bezstavovou, protože samotná služba neobsahuje data, která je třeba spolehlivě ukládat nebo mít vysokou dostupnost. Pokud dojde k výpadku instance nestavové služby, dojde ke ztrátě všech vnitřních stavů. V tomto typu služby musí být stav uložený v externím úložišti, jako jsou tabulky Azure nebo databáze SQL, aby byl vysoce dostupný a spolehlivý.
@@ -75,8 +66,8 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-V tomto kurzu se zaměříme na `RunAsync()` metodu vstupního bodu. Tady můžete hned začít s kódem.
-Šablona projektu obsahuje ukázkovou implementaci `RunAsync()` , která zvýší počet kumulovaných hodnot.
+V tomto kurzu se zaměříme na metodu vstupního bodu `RunAsync()`. Tady můžete hned začít s kódem.
+Šablona projektu obsahuje ukázkovou implementaci `RunAsync()`, která zvyšuje počet kumulovaných hodnot.
 
 > [!NOTE]
 > Podrobnosti o tom, jak pracovat s komunikačním zásobníkem, najdete v tématu [Service Fabric služby webového rozhraní API pomocí samoobslužného hostování Owin](service-fabric-reliable-services-communication-webapi.md) .
@@ -112,9 +103,9 @@ Platforma volá tuto metodu, když je umístěna instance služby a je připrave
 
 Tato orchestrace je spravovaná systémem, aby byla vaše služba vysoce dostupná a správně vyvážená.
 
-`RunAsync()`nemělo by se blokovat synchronně. Vaše implementace RunAsync by měla vrátit úlohu nebo očekávat jakékoli dlouhotrvající nebo blokující operace, aby bylo možné pokračovat v běhu. Poznámka ve `while(true)` smyčce v předchozím příkladu se používá vrácení `await Task.Delay()` úlohy. Pokud vaše úloha musí blokovat synchronně, měli byste naplánovat novou úlohu `Task.Run()` v rámci vaší `RunAsync` implementace.
+`RunAsync()` by se neměla blokovat synchronně. Vaše implementace RunAsync by měla vrátit úlohu nebo očekávat jakékoli dlouhotrvající nebo blokující operace, aby bylo možné pokračovat v běhu. Poznámka v `while(true)` smyčce v předchozím příkladu se používá `await Task.Delay()` vracející úlohy. Pokud vaše úloha musí blokovat synchronně, měli byste naplánovat novou úlohu s `Task.Run()` v implementaci `RunAsync`.
 
-Zrušení úloh je úsilí v družstvu, které provádí poskytnutý token zrušení. Systém bude čekat na ukončení úlohy (po úspěšném dokončení, zrušení nebo chybě), než se přesune. Je důležité přijmout token zrušení, dokončit práci a skončit `RunAsync()` co nejrychleji, když systém požaduje zrušení.
+Zrušení úloh je úsilí v družstvu, které provádí poskytnutý token zrušení. Systém bude čekat na ukončení úlohy (po úspěšném dokončení, zrušení nebo chybě), než se přesune. Je důležité dodržovat token zrušení, dokončit práci a ukončit `RunAsync()` co nejrychleji, když systém požaduje zrušení.
 
 V tomto příkladu služby bez stavu je počet uložený v místní proměnné. Vzhledem k tomu, že se jedná o bezstavovou službu, hodnota, která je uložena, je určena pouze pro aktuální životní cyklus své instance služby. Při přesunu nebo restartu služby dojde ke ztrátě hodnoty.
 
@@ -168,7 +159,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`funguje podobně jako stavová a Bezstavová služba. Ve stavové službě ale platforma před spuštěním `RunAsync()`provede další práci vaším jménem. Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
+`RunAsync()` funguje podobně jako stavové a bezstavové služby. Ve stavové službě ale před provedením `RunAsync()`platforma pro vás provede další práci. Tato práce může zahrnovat jistotu, že je správce spolehlivých stavů a spolehlivé kolekce připravený k použití.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a správce spolehlivého stavu
 ```csharp
@@ -198,7 +189,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Spolehlivé kolekce mají mnoho stejných operací, jako jsou jejich `System.Collections.Generic` `System.Collections.Concurrent` protějšky, s výjimkou LINQ. Operace na spolehlivých kolekcích jsou asynchronní. Důvodem je to, že operace zápisu s spolehlivými kolekcemi provádějí vstupně-výstupní operace pro replikaci a uchovávání dat na disk.
+Spolehlivé kolekce mají mnoho stejných operací, které jejich `System.Collections.Generic` a `System.Collections.Concurrent` protějšky dělají, s výjimkou LINQ. Operace na spolehlivých kolekcích jsou asynchronní. Důvodem je to, že operace zápisu s spolehlivými kolekcemi provádějí vstupně-výstupní operace pro replikaci a uchovávání dat na disk.
 
 Spolehlivé operace shromažďování dat jsou *transakční*, takže můžete udržovat stav konzistentní napříč několika spolehlivými kolekcemi a operacemi. Můžete například vyřadit pracovní položku ze spolehlivé fronty, provést na ní operaci a výsledek uložit ve spolehlivém slovníku, který je v rámci jedné transakce. Tato možnost se považuje za atomickou operaci a zaručuje, že celá operace bude úspěšná nebo se vrátí celá operace. Pokud dojde k chybě po vyřazení položky z fronty, ale před uložením výsledku, je celá transakce vrácena zpět a položka zůstane ve frontě ke zpracování.
 
@@ -214,7 +205,7 @@ Po spuštění služeb můžete v okně **diagnostické události** zobrazit gen
 
 ![Zobrazení diagnostických událostí v aplikaci Visual Studio](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Ladění aplikace Service Fabric v aplikaci Visual Studio](service-fabric-debugging-your-application.md)
 
 [Začínáme: Service Fabric služby webového rozhraní API pomocí samoobslužného hostování OWIN](service-fabric-reliable-services-communication-webapi.md)

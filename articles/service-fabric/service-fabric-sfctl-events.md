@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – události sfctl | Microsoft Docs
+title: Sfctl události CLI – Azure Service Fabric
 description: Popisuje příkazy Service Fabric CLI sfctl Events.
-services: service-fabric
-documentationcenter: na
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 858fd1971a22b1db2d243838558c3792d3a60cc9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 35dfbdb3f8b84e797d35c8d7ec1020509f7e8b57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466049"
 ---
 # <a name="sfctl-events"></a>události sfctl
 Načtěte události z úložiště událostí (Pokud je už nainstalovaná služba Eventstoru).
@@ -209,7 +200,7 @@ Odpovědí je seznam objektů NodeEvent.
 |Argument|Popis|
 | --- | --- |
 | --koncový čas – UTC [povinné] | Koncový čas vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
-| --Node-Name [povinné] | Název uzlu. |
+| --Node-Name [povinné] | Název uzlu |
 | --Start-Time-UTC [povinné] | Čas zahájení vyhledávacího dotazu ve formátu ISO UTC yyyy-MM-ddTHH\:mm\:ssZ. |
 | --Events-Types – filtr | Toto je řetězec oddělený čárkami určující typy FabricEvents, které by měly být zahrnuty pouze v odpovědi. |
 | --Exclude-analýza-události | Tento parametr zakáže načtení AnalysisEvents, pokud je hodnota true. |

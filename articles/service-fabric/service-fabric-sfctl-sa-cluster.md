@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl SA – cluster | Microsoft Docs
-description: V této části najdete popis příkazů samostatného clusteru Service Fabric CLI sfctl.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – sfctl SA – cluster
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro správu samostatných clusterů.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901018"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646020"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Spravujte samostatné Service Fabric clustery.
@@ -28,9 +19,9 @@ Spravujte samostatné Service Fabric clustery.
 
 |Příkaz|Popis|
 | --- | --- |
-| Konfigurace | Získejte konfiguraci samostatného clusteru Service Fabric. |
+| config | Získejte konfiguraci samostatného clusteru Service Fabric. |
 | konfigurace – upgrade | Spusťte upgrade konfigurace samostatného clusteru Service Fabric. |
-| upgrade – stav | Získá stav upgradu konfigurace clusteru Service Fabric samostatného clusteru. |
+| upgrade-status | Získá stav upgradu konfigurace clusteru Service Fabric samostatného clusteru. |
 
 ## <a name="sfctl-sa-cluster-config"></a>sfctl SA – konfigurace clusteru
 Získejte konfiguraci samostatného clusteru Service Fabric.
@@ -66,14 +57,14 @@ Ověřte zadané parametry upgradu konfigurace a spusťte upgrade konfigurace cl
 | --cluster-config [požadováno] | Konfigurace clusteru. |
 | --Application-Health-policies | Slovník kódovaný ve formátu JSON páry názvu typu aplikace a maximální procento není v pořádku před vyvoláním chyby. |
 | --Delta-není v pořádku – uzly | Maximální povolené procento rozdílového snížení stavu během upgradu. Povolené hodnoty jsou celočíselné hodnoty od nuly do 100. |
-| --Health-Check-opakování | Doba mezi pokusy o provedení kontrol stavu, pokud aplikace nebo cluster není v pořádku.  Výchozí\: PT0H0M0S. |
+| --health-check-retry | Doba mezi pokusy o provedení kontrol stavu, pokud aplikace nebo cluster není v pořádku.  Výchozí\: PT0H0M0S. |
 | --Health-Check-stabilní | Doba, po kterou musí aplikace nebo cluster zůstat v pořádku, než bude upgrade pokračovat na další upgradovací doménu.  Výchozí\: PT0H0M0S. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
-| --Health-Check-Wait | Doba, po kterou se má po dokončení upgradu domény počkat, než se spustí proces kontroly stavu.  Výchozí\: PT0H0M0S. |
+| --health-check-wait | Doba, po kterou se má po dokončení upgradu domény počkat, než se spustí proces kontroly stavu.  Výchozí\: PT0H0M0S. |
 | --Timeout-t | Výchozí\: 60. |
 | --není v pořádku – aplikace | Maximální povolené procento nezdravých aplikací během upgradu. Povolené hodnoty jsou celočíselné hodnoty od nuly do 100. |
 | – není v pořádku – uzly | Maximální povolené procento uzlů, které nejsou v pořádku během upgradu. Povolené hodnoty jsou celočíselné hodnoty od nuly do 100. |
-| --upgrade-Domain-rozdíl-není v pořádku – uzly | Maximální povolené procento rozdílového snížení stavu domény upgradu během upgradu. Povolené hodnoty jsou celočíselné hodnoty od nuly do 100. |
-| --upgrade-Domain – vypršel časový limit. | Doba, po kterou musí být každá upgradovací doména dokončena před provedením FailureAction.  Výchozí\: PT0H0M0S. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
+| --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento rozdílového snížení stavu domény upgradu během upgradu. Povolené hodnoty jsou celočíselné hodnoty od nuly do 100. |
+| --upgrade-domain-timeout | Doba, po kterou musí být každá upgradovací doména dokončena před provedením FailureAction.  Výchozí\: PT0H0M0S. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
 | --upgrade – časový limit | Doba, po kterou musí být celkový upgrade dokončen před provedením FailureAction.  Výchozí\: PT0H0M0S. <br><br> Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. |
 
 ### <a name="global-arguments"></a>Globální argumenty

@@ -1,6 +1,6 @@
 ---
-title: Integrace produktů zabezpečení Azure pomocí Azure Security Center
-description: Toto téma představuje produkty zabezpečení Azure, které jsou integrované s Azure Security Center.
+title: Detekce hrozeb pro produkty zabezpečení Azure v Azure Security Center
+description: Toto téma prezentuje produkty zabezpečení Azure, které Azure Security Center můžou poskytovat detekci hrozeb.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,20 +8,20 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 693e7d35a0bb4c7dfbb3e033690a5e86e2c398a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278331"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665721"
 ---
-# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integrace produktů zabezpečení Azure v Azure Security Center
+# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Detekce hrozeb pro Azure WAF a Azure DDoS Protection
 
-Azure Security Center poskytuje další licence Microsoftu pro práci s následujícími produkty zabezpečení:
+Azure Security Center může poskytovat detekci hrozeb pro následující produkty zabezpečení Azure (pro každý produkt se vyžaduje samostatná licence):
 
-* [WAF Azure](#azure-waf)
+* [Azure WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)
 
 ## WAF Azure<a name="azure-waf"></a>
@@ -38,12 +38,4 @@ Je známo, že je možné snadno spustit útok s cílem odepření služeb (DDoS
 
 Azure DDoS Protection v kombinaci s osvědčenými postupy návrhu aplikace poskytují ochranu před útoky DDoS. DDoS Protection poskytuje různé úrovně služeb. Další informace najdete v tématu [přehled Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
-DDoS Protection Standard může zmírnit následující typy útoků:
-
-> [!div class="mx-tableFixed"]
-
-|Výstrahy|Popis|
-|---|---|
-|**Zjištěn objem útoků**|Cílem tohoto útoku je zahlcení síťové vrstvy významnou velikostí zdánlivě legitimního provozu. Zahrnuje zaplavení UDP, zahlcení zesílení a další falešná zaplave paketů. DDoS Protection Standard snižuje riziko těchto potenciálních útoků s více gigabajty tím, že je absorbuje a nachází z globálního škálování do sítě, a to automaticky.|
-|**Byl zjištěn útok protokolu**|Tyto útoky generují cíl nepřístupný, protože využívají slabiny vrstev 3 a 4 protokolu vrstvy 4. Zahrnuje útoky na zaplavení SYN, útoky na reflexi a další útoky protokolu. DDoS Protection Standard tyto útoky omezuje, rozlišuje mezi škodlivým a oprávněným provozem interakci s klientem a blokuje škodlivý provoz.|
-|**Byl zjištěn útok na vrstvu prostředků (aplikace).**|Tyto útoky cílí na pakety webových aplikací, aby narušily přenos dat mezi hostiteli. K útokům patří narušení protokolu HTTP, vkládání SQL, skriptování mezi weby a další útoky vrstvy 7. K obraně před těmito útoky použijte Azure Application Gateway WAF s DDoS Protectionm standardem. K dispozici jsou také nabídky WAF třetích stran, které jsou k dispozici v Azure Marketplace.|
+Seznam výstrah Azure DDoS Protection najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureddos).

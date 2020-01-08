@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d11e20c790b3fcd40569b6af18f58f75530532d0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 814b1580996b444a5d42c98509e8a1e8dcedc756
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818114"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468739"
 ---
 > [!div class="nextstepaction"]
 > [Prozkoumejte C# ukázky na GitHubu](https://aka.ms/speech/github-csharp)

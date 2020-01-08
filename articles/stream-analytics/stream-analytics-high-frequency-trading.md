@@ -1,20 +1,19 @@
 ---
 title: Vysoká frekvence obchodování pomocí Azure Stream Analytics
 description: Provádění trénování a vyhodnocování modelu lineární regrese v úloze Azure Stream Analytics
-services: stream-analytics
-author: zhongc
-ms.author: zhongc
-ms.reviewer: jasonh
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9d3c1a730c34632403669794bdd97f95e3b3662d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426207"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Simulace vysokofrekvenčního obchodování pomocí Stream Analytics
 Kombinace jazyka SQL s uživatelem definovanými funkcemi (UDF) a uživatelem definovanými agregacemi (UDA) JavaScriptu v Azure Stream Analytics umožňuje uživatelům provádět pokročilé analýzy. Mezi pokročilé analýzy může patřit online trénování a vyhodnocování machine learningu a také simulace stavových procesů. Tento článek popisuje, jak provádět lineární regresi v úloze Azure Stream Analytics, která provádí průběžné trénování a vyhodnocování ve scénáři vysokofrekvenčního obchodování.
@@ -71,7 +70,7 @@ VOI (Volume Order Imbalance) je funkce aktuální kupní/prodejní ceny a objemu
 
 Natrénovaný model se pak použije k předvídání změny cen u nabídek v aktuálním obchodním dni v reálném čase. Pokud je předpokládaná změna ceny dostatečně velká, uzavře se obchod. V závislosti na nastavení prahové hodnoty se dají během trénovacího dne očekávat tisíce obchodů jedné akcie.
 
-![Definice nevyrovnanosti objednávky svazku](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
+![Svazek order imbalance definice](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
 
 Teď vyjádříme operace trénování a predikce v úloze Azure Stream Analytics.
 
@@ -203,7 +202,7 @@ modelInput AS (
 
 Vzhledem k tomu, že Azure Stream Analytics neobsahuje integrovanou funkci lineární regrese, koeficienty pro lineární model vypočítáme pomocí agregací **SUM** a **AVG**.
 
-![Matematický vzorec lineární regrese](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
+![Lineární regrese matematické vzorce](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
 
 ```SQL
 modelagg AS (
@@ -451,9 +450,9 @@ SELECT
 FROM simulation /* output trade simulation to PBI */
 ```
 
-![Vizuál obchodu Power BI grafu](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
+![Obchoduje grafu vizuálu v Power BI](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
 
-![Vizuál grafu Power BI PNL](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
+![Vizuální graf PNL Power BI](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
 ## <a name="summary"></a>Souhrn

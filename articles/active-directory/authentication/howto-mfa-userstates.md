@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c39546d47e9916dbc138a4660d73b79e54ebbe3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964051"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425246"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -29,9 +29,9 @@ Pro Vyžadování dvoustupňového ověřování můžete použít jeden ze dvou
 
 **Povoleno změnou stavu uživatele** – Toto je tradiční metoda pro Vyžadování dvoustupňového ověřování a je popsána v tomto článku. Funguje s Azure MFA v cloudu i v Azure MFA serveru. Použití této metody vyžaduje, aby uživatelé prováděli dvoustupňové ověřování **pokaždé, když** se přihlásí, a přepíše zásady podmíněného přístupu.
 
-Povoleno zásadami podmíněného přístupu – toto je nejpružnější způsob, jak pro uživatele povolit dvoustupňové ověřování. Povolení použití zásad podmíněného přístupu funguje jenom pro Azure MFA v cloudu a nabízí prémiovou funkci Azure AD. Další informace o této metodě najdete v [nasazení cloudové Multi-Factor Authentication Azure](howto-mfa-getstarted.md).
+**Povoleno zásadami podmíněného přístupu** – Toto je nejpružnější způsob, jak pro uživatele povolit dvoustupňové ověřování. Povolení použití zásad podmíněného přístupu funguje jenom pro Azure MFA v cloudu a nabízí prémiovou funkci Azure AD. Další informace o této metodě najdete v [nasazení cloudové Multi-Factor Authentication Azure](howto-mfa-getstarted.md).
 
-Povoleno pomocí Azure AD Identity Protection – tato metoda používá zásady rizik Azure AD Identity Protection k Vyžadování dvoustupňového ověřování založeného pouze na riziku přihlášení pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metodě najdete v [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
+**Povoleno pomocí Azure AD Identity Protection** – Tato metoda používá zásady rizik Azure AD Identity Protection k Vyžadování dvoustupňového ověřování založeného pouze na riziku přihlášení pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metodě najdete v [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
 > Další informace o licencích a cenách najdete na stránce s cenami [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534540"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460694"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Průvodce importem dat pro Azure Kognitivní hledání
 
@@ -109,7 +109,7 @@ Průvodce vygeneruje nekompletní index, který se naplní dokumenty získanými
 
 1. Nastavte atributy pro určení způsobu použití tohoto pole v indexu. 
 
-   Využijte tento krok v čase, protože atributy určují fyzický výraz polí v indexu. Pokud chcete změnit atributy později, dokonce i programově, je nutné index vyřadit a znovu sestavit. Základní atributy, jako **prohledávatelné** **a** získatelné, mají [zanedbatelný dopad na úložiště](search-what-is-an-index.md#storage-implications). Povolení filtrů a použití modulu pro návrhy zvyšují požadavky na úložiště. 
+   Využijte tento krok v čase, protože atributy určují fyzický výraz polí v indexu. Pokud chcete změnit atributy později, dokonce i programově, je nutné index vyřadit a znovu sestavit. Základní atributy, jako **prohledávatelné** **a** získatelné, mají [zanedbatelný dopad na úložiště](search-what-is-an-index.md#index-size). Povolení filtrů a použití modulu pro návrhy zvyšují požadavky na úložiště. 
    
    + **Prohledávání** umožňuje fulltextové vyhledávání. Každé pole, které se používá v bezplatných dotazech formuláře nebo ve výrazech dotazů, musí mít tento atribut. Obrácené indexy se vytvoří pro každé pole, které označíte jako **prohledávatelné**.
 

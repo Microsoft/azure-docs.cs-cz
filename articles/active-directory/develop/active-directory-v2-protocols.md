@@ -1,5 +1,5 @@
 ---
-title: Autorizační protokoly podporované platformou Microsoft Identity Platform | Azure
+title: Protokoly OAuth 2,0 a OpenID Connect – Microsoft Identity Platform | Azure
 description: Průvodce pro protokoly OAuth 2,0 a OpenID Connect, které podporuje koncový bod Microsoft Identity Platform.
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7b25f1753e6dcb415927ee6278c36b3b179dd353
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918284"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424729"
 ---
-# <a name="microsoft-identity-platform-protocols"></a>Protokoly platformy Microsoft Identity Platform
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Protokoly OAuth 2,0 a OpenID Connect na platformě Microsoft Identity Platform
 
 Koncový bod Microsoft Identity Platform pro identity jako službu s oborovými standardními protokoly OpenID Connect a OAuth 2,0. I když je služba kompatibilní se standardy, můžou být mezi dvěma implementacemi těchto protokolů malé rozdíly. Informace zde budou užitečné, pokud se rozhodnete napsat kód přímým odesláním a zpracováním požadavků HTTP nebo použitím open source knihovny od třetí strany, nikoli pomocí některé z našich [Open Source knihoven](reference-v2-libraries.md).
 

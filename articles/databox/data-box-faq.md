@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438611"
 ---
-# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
+# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
 Hybridní řešení Microsoft Azure Data Box umožňuje odesílat do Azure rychle, levně a bezpečně terabajty dat prostřednictvím přenosového zařízení. Tyto nejčastější dotazy obsahují otázky a odpovědi, které se týkají používání služby Data Box na webu Azure Portal. 
 
@@ -24,8 +24,8 @@ Otázky a odpovědi jsou uspořádané do těchto kategorií:
 - O službě
 - Objednání zařízení
 - Konfigurace a připojení 
-- Stav sledování
-- Kopírovat data 
+- Sledování stavu
+- Kopírování dat 
 - Dodání zařízení
 - Ověření a nahrání dat 
 - Podpora řetězce opatrovnictví
@@ -38,7 +38,7 @@ A.  Služba Azure Data Box je určená pro příjem dat offline. Tato služba sp
 ### <a name="q-what-is-azure-data-box"></a>Otázka: Co je Azure Data Box?
 A. Azure Data Box umožňuje rychlý, levný a zabezpečený přenos terabajtů dat do Azure. Zařízení Data Box si můžete objednat na webu Azure Portal. Společnost Microsoft se dodává s úložným zařízením o kapacitě 80 TB přes místní dopravce. 
 
-Jakmile vám zařízení přijde, můžete ho rychle nastavit v místním webovém uživatelském rozhraní. Zkopírujte data ze serverů do zařízení a pak ho pošlete zpět do Azure. V datacentru Azure se vaše data nahrají ze zařízení do Azure automaticky. Celý proces se od začátku do konce sleduje ve službě Data Box na webu Azure Portal.
+Jakmile vám zařízení přijde, můžete ho rychle nastavit v místním webovém uživatelském rozhraní. Zkopírujte data ze serverů do zařízení a pošlete ho zpět do Azure. V datacentru Azure se vaše data nahrají ze zařízení do Azure automaticky. Celý proces se od začátku do konce sleduje ve službě Data Box na webu Azure Portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>Otázka: Kdy mám použít Data Box?
 A. Data Box pro vás bude výhodný, pokud máte 40–500 TB dat, která chcete přenést do Azure. Pro velikosti dat < 40 TB použijte Data Box Disk a pro velikosti dat > 500 TB, zaregistrujte se [data box Heavy](data-box-heavy-overview.md).
@@ -59,7 +59,7 @@ A. Data Box se podporuje pro všechny oblasti v USA, Západní Evropa, Severní 
 A. V případě potíží s Data Boxem se prosím [obraťte na podporu Microsoftu](data-box-disk-contact-microsoft-support.md).
 
 ### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>Otázka: Ztratil jsem Data Box. Dojde ke ztrátě poplatků za zařízení?
-A. Ano. Účtuje se ztracený nebo poškozený poplatek za zařízení. Tento poplatek se účtuje na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/) a také v licenčních [podmínkami produktu](https://www.microsoft.com/licensing/product-licensing/products).
+A. Ano. Účtuje se ztracený nebo poškozený poplatek za zařízení. Tento poplatek se účtuje na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/) a také v [licenčních podmínkami produktu](https://www.microsoft.com/licensing/product-licensing/products).
 
 
 ## <a name="order-device"></a>Objednání zařízení
@@ -89,7 +89,7 @@ A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoř�
 ## <a name="configure-and-connect"></a>Konfigurace a připojení
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>Otázka: Jak se Data Box odemyká? 
-A.  Na webu Azure Portal přejděte k objednávce zařízení Data Box a otevřete **Detaily zařízení**. Zkopírujte si heslo pro odemčení. Toto heslo použijte při přihlášení k místnímu webovému uživatelskému rozhraní Data Boxu. Další informace najdete v [kurzu: Rozbalením, kabelu, připojte Azure Data Box](data-box-deploy-set-up.md).
+A.  Na webu Azure Portal přejděte k objednávce zařízení Data Box a otevřete **Detaily zařízení**. Zkopírujte si heslo pro odemčení. Toto heslo použijte při přihlášení k místnímu webovému uživatelskému rozhraní Data Boxu. Další informace najdete v [kurzu věnovanému rozbalení, zapojení a připojení k Azure Data Boxu](data-box-deploy-set-up.md).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>Otázka: Můžu se k zařízení Data Box připojit a kopírovat do něj data z hostitelského počítače s Linuxem?
 A.  Ano. Data Box můžete připojit ke klientům SMB a NFS. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-system-requirements.md) hostitelského počítače.
@@ -98,10 +98,10 @@ A.  Ano. Data Box můžete připojit ke klientům SMB a NFS. Další informace z
 A.  Objednávka se dá zrušit po objednání zařízení Data Box, dokud není objednávka zpracovaná. Zpracovanou objednávku zařízení Data Box nemůžete zrušit. 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>Otázka: Můžu Data Box současně připojit k více hostitelským počítačům, ze kterých chci přenášet data?
-A. Ano. K zařízení Data Box může být připojených více hostitelských počítačů, ze kterých budete přenášet data, a několik úloh kopírování může běžet současně. Další informace najdete v [kurzu: Zkopírujte data do Azure Data Box](data-box-deploy-copy-data.md).
+A. Ano. K zařízení Data Box může být připojených více hostitelských počítačů, ze kterých budete přenášet data, a několik úloh kopírování může běžet současně. Další informace nejdete v [kurzu o kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
 
 ### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>Otázka: Můžu se k přenosu dat připojit k rozhraní 10 GbE na Data Box?
-A. Ano. Rozhraní 10 GbE lze v Data Box připojit ke kopírování dat současně. Další informace o tom, jak kopírovat data, najdete [v kurzu: Zkopírujte data do Azure Data Box](data-box-deploy-copy-data.md).
+A. Ano. Rozhraní 10 GbE lze v Data Box připojit ke kopírování dat současně. Další informace o tom, jak kopírovat data, najdete v tématu [kurz: kopírování dat do Azure Data box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -115,7 +115,7 @@ A.
 ### Q. I could not set up Data Box on a private network. Why would this be?
 A.-->
 
-### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Otázka: Na předním ovládacím panelu svítí dioda, která signalizuje chybu systému. Co bych měl/a dělat?
+### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Otázka: Na předním ovládacím panelu svítí dioda, která signalizuje chybu systému. Co mám dělat?
 A. Pokud svítí dioda, která signalizuje chybu systému, znamená to, že systém není v pořádku. O dalším postupu se [poraďte s podporou Microsoftu](data-box-disk-contact-microsoft-support.md).
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Otázka: Nemám přístup k heslu pro odemčení Data Boxu na webu Azure Portal. Čím to může být?
@@ -124,7 +124,7 @@ A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>Otázka: Podporuje se Data Box konfigurace kanálu portů? Jak se funkce MPIO týká?
 A. V Data Box nepodporujeme konfiguraci kanálu portů, konfiguraci funkce Multipath v/v (MPIO) nebo konfiguraci sítě vLAN.
 
-## <a name="track-status"></a>Stav sledování
+## <a name="track-status"></a>Sledování stavu
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>Otázka: Jak můžu sledovat Data Box od okamžiku vystavení objednávky až do zpětného odeslání zařízení? 
 A.  Stav objednávky Data Boxu můžete sledovat na webu Azure Portal. Při vytváření objednávky se zobrazuje také výzva k zadání e-mailové adresy pro oznámení. Pokud jste tuto adresu zadali, budete prostřednictvím e-mailu dostávat oznámení o všech změnách stavu dané objednávky. Další informace o [konfiguraci e-mailových adres pro oznámení](data-box-portal-ui-admin.md#edit-notification-details).
@@ -141,7 +141,7 @@ A. Na webu Azure Portal přejděte k objednávce Data Boxu a pak přejděte na *
 A.  Data Box má využitelné úložiště o kapacitě 80 TB. Jedno zařízení Data Box můžete použít pro data o velikosti 40–80 TB. Pro větší velikosti dat až do 500 TB můžete objednat více Data Boxch zařízení. Pokud data přesahují 500 TB, zaregistrujte se do služby Data Box Heavy.  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>Otázka: Jak velké objekty blob bloku a objekty blob stránky Data Box podporuje? 
-A.  Maximální velikosti se řídí omezeními služby Azure Storage. Maximální velikost objektu blob bloku je přibližně 4,768 TiB a maximální velikost objektu blob stránky je 8 TiB. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage](../storage/common/storage-scalability-targets.md). 
+A.  Maximální velikosti se řídí omezeními služby Azure Storage. Maximální velikost objektu blob bloku je přibližně 4,768 TiB a maximální velikost objektu blob stránky je 8 TiB. Další informace najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../storage/blobs/scalability-targets.md).
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>Otázka: Jak zajistím, aby byla data při přenosu zabezpečená? 
 A. Data Box má implementovaných několik bezpečnostní funkcí, kterými je zařízení zabezpečené během přepravy. Jsou to například pečetě, hardwarová a softwarová detekce nedovolené manipulace a heslo pro odemčení zařízení. Další informace najdete v článku o [zabezpečení a ochraně dat ve službě Azure Data Box](data-box-security.md).
@@ -151,12 +151,12 @@ A.  Pokud používáte klienta SMB, můžete k přetažení a zkopírování dat
 
 Pokud používáte klienta NSF, můžete použít [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/). 
 
-Další informace najdete v [kurzu: Zkopírujte data do Azure Data Box](data-box-deploy-copy-data.md).
+Další informace nejdete v [kurzu o kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Otázka: Máte nějaké tipy pro zrychlení kopírování dat?
 A.  Pokud chcete zrychlit proces kopírování:
 
-- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o tom, jak [se používá přesný příkaz, najdete v kurzu: Kopírování dat do Azure Data Boxu a jejich ověření](data-box-deploy-copy-data.md).
+- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o přesných používaných příkazech najdete v [kurzu o kopírování dat do služby Azure Data Box a jejich ověření](data-box-deploy-copy-data.md).
 - Použijte více relací.
 - Místo kopírování dat přes sdílenou síťovou složku (při kterém můžete být omezeni rychlostí sítě) zajistěte, aby byla data přímo na počítači, ke kterému je zařízení Data Box připojené.
 - Proveďte srovnávací testy výkonu počítače, který se používá ke kopírování dat. Pro srovnávací testy výkonu hardwaru serveru si stáhněte a používejte [nástroj Bluestop FIO](https://ci.appveyor.com/project/axboe/fio). Vyberte nejnovější sestavení x86 nebo x64, vyberte kartu **artefakty** a Stáhněte soubor MSI.
@@ -177,7 +177,7 @@ A.  Ano. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro 
 
 <!--### Q. How do I schedule a pickup for my Data Box?--> 
 
-### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Otázka: Zařízení přišlo, ale zdá se být poškozené. Co bych měl/a dělat?
+### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Otázka: Zařízení přišlo, ale zdá se být poškozené. Co mám dělat?
 A. Pokud zařízení přišlo poškozené nebo s ním někdo nedovoleným způsobem manipuloval, nepoužívejte ho. [Obraťte se na podporu Microsoftu](data-box-disk-contact-microsoft-support.md) a co nejdříve zařízení vraťte. Můžete také vystavit novou objednávku náhradního zařízení Data Box. V uvedeném případě vám náhradní zařízení nebudeme účtovat.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Otázka: Můžu Data Box objednávku vybrat? Můžu Data Box vrátit přes dopravce, který zvolím?
@@ -200,7 +200,7 @@ A. Všechna Data Box zařízení jsou dodávána ze stejné země jako jejich c�
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>Otázka: Objednal (a) jsem Data Box v USA – východ, ale dostal jsem zařízení, které bylo odesláno z umístění v USA – západ. Kam se má zařízení vrátit?
 A. Snažíme se získat Data Box zařízení co nejrychleji. Podáváme prioritu dodávky z datového centra nejbližšího k vašemu umístění účtu úložiště, ale odešlete zařízení z libovolného datacentra Azure, které má dostupný inventář. Váš Data Box by měl být vrácen do stejného umístění, ze kterého byl dodán, jak je zobrazeno v expedičním štítku.
 
-### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Otázka: Na displeji s elektronickým inkoustem se nezobrazuje expediční štítek pro vrácení zásilky. Co bych měl/a dělat?
+### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Otázka: Na displeji s elektronickým inkoustem se nezobrazuje expediční štítek pro vrácení zásilky. Co mám dělat?
 A. Pokud se na displeji s elektronickým inkoustem nezobrazuje štítek pro vrácení zásilky, postupujte takto:
 - Odstraňte starý expediční štítek a všechny ostatní štítky, které se týkají minulé přepravy.
 - Na webu Azure Portal přejděte ke své objednávce. Přejděte na **Přehled** > **Stáhnout expediční štítek**. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).

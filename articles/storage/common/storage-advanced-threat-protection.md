@@ -1,5 +1,6 @@
 ---
-title: Rozšířená ochrana před internetovými útoky pro Azure Storage
+title: Konfigurace rozšířené ochrany před internetovými útoky
+titleSuffix: Azure Storage
 description: Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage k detekci anomálií v aktivitě účtu a upozornění na potenciálně nebezpečné pokusy o přístup k vašemu účtu.
 services: storage
 author: tamram
@@ -8,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495966"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457412"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Rozšířená ochrana před internetovými útoky pro Azure Storage
+# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage
 
 Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby bez nutnosti být odborníkem na zabezpečení nebo správou systémů monitorování zabezpečení.
 
@@ -54,7 +55,7 @@ Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Roz�
 1. V části **Vybrat cenovou úroveň podle typu prostředku** na řádku **účty úložiště** klikněte na **povoleno** nebo **zakázáno**.
 
     ![Povolit ATP v Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ### <a name="templatetabtemplate"></a>[Šablona](#tab/template)
 

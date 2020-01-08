@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4c53d1c1ffbc80e694a9a7b423b2aaf9c6d38b48
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5f69bcafbc3abb39b4185e0144ff6029808c0704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432976"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Vyžádat data v reálném čase pomocí služby Azure Maps mobility
 
@@ -29,7 +29,8 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby bylo možné volat Azure Maps rozhraní API pro veřejné průjezdy, potřebujete účet a klíč mapy. Informace o vytvoření účtu najdete v pokynech v tématu [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a postup pro získání primárního klíče předplatného pro váš účet pomocí kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) .
+Aby bylo možné volat Azure Maps rozhraní API pro veřejné průjezdy, potřebujete účet a klíč mapy. Pokud chcete získat informace o vytvoření účtu a získání klíče, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) pro vytvoření předplatného účtu Azure Maps a postupujte podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) pro získání primárního klíče pro váš účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
+
 
 V tomto článku se k sestavení volání REST používá [aplikace pro publikování](https://www.getpostman.com/apps) . Můžete použít libovolné vývojové prostředí API, které dáváte přednost.
 
@@ -129,7 +130,7 @@ Aby bylo možné vytvořit požadavek na rozhraní API pro získání informací
 
 Pokud chcete získat **dockID**, postupujte podle následujících kroků a vytvořte si požadavek na rozhraní API pro získání nejbližšího přenosu:
 
-1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho **získat ID Dock**.
+1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a název, který **získá ID Dock**.
 
 2.  Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL požadavku a klikněte na **Odeslat**.
  
@@ -205,7 +206,7 @@ Použijte následující postup, chcete-li vytvořit požadavek na rozhraní API
     ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak požadovat přenosová data pomocí služby mobility:
 

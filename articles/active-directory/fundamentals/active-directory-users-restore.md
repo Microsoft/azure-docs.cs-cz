@@ -1,5 +1,5 @@
 ---
-title: Obnovit nebo trvale odebrat nedávno odstraněného uživatele – Azure Active Directory | Dokumentace Microsoftu
+title: Obnovit nebo trvale odebrat nedávno odstraněný uživatel – Azure AD
 description: Postup zobrazení obnovitelné uživatelů, obnovení odstraněného uživatele nebo trvale odstranit uživatele v Azure Active Directory.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9864634020ad115a48bdb70a6736733919d0f0d3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422865"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odeberte nedávno odstraněného uživatele pomocí služby Azure Active Directory
 Po odstranění uživatele účet zůstane v pozastaveném stavu po dobu 30 dnů. Během tohoto časového období 30 dnů uživatelský účet můžete obnovit, spolu se všemi vlastnostmi. Po uplynutí 30 dnů okno uživatele je automaticky a chcete trvale odstranit.
@@ -37,7 +37,7 @@ Musí mít jeden z následujících rolí pro obnovení a trvale odstranit uživ
 
 - Podpora partnerů úrovně 2
 
-- Správce uživatelů
+- Správce uživatele
 
 ## <a name="view-your-restorable-users"></a>Zobrazit obnovitelné uživatele
 Zobrazí se všichni uživatelé, které byly odstraněny před méně než 30 dny. Tito uživatelé můžou obnovit.
@@ -79,7 +79,7 @@ Uživatele můžete z vaší organizace trvale odstranit, aniž byste čekali na
 
     ![Uživatelé – stránka odstraněných uživatelů se zvýrazněnou možností obnovení uživatele](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Poté, co jste obnovit nebo odstranit uživatele, můžete provést následující základní procesy:
 
 - [Přidání nebo odstranění uživatelů](add-users-azure-active-directory.md)

@@ -1,6 +1,6 @@
 ---
-title: Monitorování migrace pomocí Azure Database Migration Service | Dokumentace Microsoftu
-description: Naučte se používat Azure Database Migration Service monitorování migrace.
+title: Monitorování aktivity migrace – Azure Database Migration Service
+description: Naučte se používat Azure Database Migration Service k monitorování aktivity migrace.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,34 +8,34 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437932"
 ---
-# <a name="monitor-migration-activity"></a>Monitorování aktivit migrace
-V tomto článku se dozvíte, jak můžete sledovat průběh migrace na úrovni databáze i na úrovni tabulky.
+# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Monitorování aktivity migrace pomocí Azure Database Migration Service
+V tomto článku se dozvíte, jak monitorovat průběh migrace na úrovni databáze i na úrovni tabulky.
 
 ## <a name="monitor-at-the-database-level"></a>Monitorování na úrovni databáze
-Monitorování na úrovni databáze, zobrazte okno na úrovni databáze:
+Chcete-li monitorovat aktivitu na úrovni databáze, zobrazte okno na úrovni databáze:
 
 ![Okno na úrovni databáze](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
 
 > [!NOTE]
-> Výběrem hypertextového odkazu databáze zobrazí v seznamu tabulek a jejich průběh migrace.
+> Kliknutím na hypertextový odkaz databáze zobrazíte seznam tabulek a průběh migrace.
 
-V následující tabulce jsou uvedena pole, v okně databáze a popisuje různé hodnoty stavu spojené s jednotlivými.
+V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisuje různé stavové hodnoty, které jsou k nim přidruženy.
 
 <table id='overview' class='overview'>
   <thead>
     <tr>
       <th class="x-hidden-focus"><strong>Název pole</strong></th>
-      <th><strong>Podřízený stav pole</strong></th>
+      <th><strong>Dílčí stav pole</strong></th>
       <th><strong>Popis</strong></th>
     </tr>
   </thead>
@@ -43,103 +43,103 @@ V následující tabulce jsou uvedena pole, v okně databáze a popisuje různé
     <tr>
       <td rowspan="3" class="ActivityStatus"><strong>Stav aktivity</strong></td>
       <td>Spuštěno</td>
-      <td>Aktivit migrace běží.</td>
+      <td>Aktivita migrace je spuštěná.</td>
     </tr>
     <tr>
       <td>Úspěch</td>
-      <td>Migrace byla úspěšná bez problémů.</td>
+      <td>Migrace se úspěšně zdařila bez problémů.</td>
     </tr>
     <tr>
-      <td>Došlo k chybě</td>
-      <td>Migrace se nezdařila. Výběrem odkazu "Podrobnosti o chybě naleznete v tématu" v části Podrobnosti o migraci kompletní chybové zprávy.</td>
+      <td>Došlo chybě</td>
+      <td>Migrace se nezdařila. V části Podrobnosti o migraci pro úplnou chybovou zprávu vyberte odkaz Zobrazit podrobnosti o chybě.</td>
     </tr>
     <tr>
       <td rowspan="4" class="Status"><strong>Stav</strong></td>
-      <td>Inicializace</td>
-      <td>DMS je nastavení se kanál migrace.</td>
+      <td>Initializing</td>
+      <td>DMS nastavuje kanál migrace.</td>
     </tr>
     <tr>
       <td>Spuštěno</td>
-      <td>DMS kanálu je spuštěné a provedení migrace.</td>
+      <td>Kanál DMS je spuštěný a provádí migraci.</td>
     </tr>
     <tr>
-      <td>Dokončit</td>
-      <td>Migrace byla dokončena.</td>
+      <td>Kompletní řešení</td>
+      <td>Migrace se dokončila.</td>
     </tr>
     <tr>
       <td>Selhalo</td>
-      <td>Migrace se nezdařila. Klikněte na podrobnosti o migraci zobrazíte chyby při migraci.</td>
+      <td>Migrace se nezdařila. Kliknutím na podrobnosti o migraci zobrazíte chyby migrace.</td>
     </tr>
     <tr>
       <td rowspan="5" class="migration-details"><strong>Podrobnosti o migraci</strong></td>
-      <td>Zahajuje se kanál migrace</td>
-      <td>DMS je nastavení se kanál migrace.</td>
+      <td>Inicializuje se kanál migrace.</td>
+      <td>DMS nastavuje kanál migrace.</td>
     </tr>
     <tr>
-      <td>Úplné načtení dat v průběhu</td>
-      <td>DMS provádí počátečním načtení.</td>
+      <td>Probíhá úplné zatížení dat</td>
+      <td>DMS provádí počáteční zatížení.</td>
     </tr>
     <tr>
-      <td>Připravené pro přímou migraci</td>
-      <td>Po dokončení počáteční načtení DMS označí databáze jako připravené pro přímou migraci. Uživatele zaškrtněte, pokud data zachytila průběžné synchronizace.</td>
+      <td>Připraveno pro přímou migraci</td>
+      <td>Po dokončení počátečního načtení bude DMS označit databázi jako připravenou pro přímou migraci. Uživatel by měl kontrolovat, jestli se data při průběžné synchronizaci zachytila.</td>
     </tr>
     <tr>
-      <td>Všechny změny se použily v</td>
-      <td>Počátečním načtení a průběžná synchronizace se dokončí. Tento stav také vyvolá se po databáze je úspěšně přímou migraci.</td>
+      <td>Všechny změny aplikovány</td>
+      <td>Počáteční zatížení a průběžná synchronizace jsou dokončeny. K tomuto stavu dochází také po úspěšném přímou migraci databáze.</td>
     </tr>
     <tr>
-      <td>Viz podrobnosti o chybě</td>
+      <td>Zobrazit podrobnosti o chybě</td>
       <td>Kliknutím na odkaz zobrazíte podrobnosti o chybě.</td>
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Doba trvání</strong></td>
-      <td>neuvedeno</td>
-      <td>Celkový čas z aktivity migrace během inicializace migrace dokončeny nebo došlo k chybě migrace.</td>
+      <td>Nevztahuje se</td>
+      <td>Celková doba z migrační aktivity migrace do migrace byla dokončena nebo došlo k chybě migrace.</td>
     </tr>
      </tbody>
 </table>
 
-## <a name="monitor-at-table-level--quick-summary"></a>Monitorování na úrovni tabulky – stručný přehled
-Monitorování na úrovni tabulek, zobrazení okna úrovni tabulky. Horní části okna zobrazuje že podrobné počet řádků migrovat v plném zatížení a přírůstkové aktualizace. 
+## <a name="monitor-at-table-level--quick-summary"></a>Monitorování na úrovni tabulky – rychlý přehled
+Chcete-li monitorovat aktivitu na úrovni tabulky, zobrazte okno na úrovni tabulky. V horní části okna se zobrazuje podrobný počet řádků migrovaných v části úplné zatížení a přírůstkové aktualizace. 
 
-Dolní části okna obsahuje seznam tabulek a zobrazuje rychlý přehled průběh migrace.
+V dolní části okna jsou uvedené tabulky a zobrazí se rychlý souhrn průběhu migrace.
 
-![Okno úrovni tabulky – stručný přehled](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
+![Okno na úrovni tabulky – rychlý souhrn](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
 
-Následující tabulka popisuje pole zobrazená v úrovni tabulky Podrobnosti.
+Následující tabulka popisuje pole zobrazená v podrobnostech na úrovni tabulky.
 
 | Název pole        | Popis       |
 | ------------- | ------------- |
-| **Úplné načtení dokončeno**      | Počet tabulek dokončení úplné načtení dat. |
-| **Úplné načtení ve frontě**      | Počet tabulek byla zařazena do fronty pro úplné načtení.      |
-| **Úplné načtení** | Počet tabulek se nezdařilo.      |
-| **Přírůstkové aktualizace**      | Počet změn dat zachycení aktualizace (CDC) v řádcích použitý k cíli. |
-| **Přírůstkové vložení**      | Počet CDC vloží řádků, které jsou použity k cíli.      |
-| **Přírůstkové odstraní** | Počet CDC odstraní v řádcích použitý k cíli.      |
-| **Čekající změny**      | Počet CDC v řádcích, které stále čekají na získání použitý k cíli. |
-| **Provedené změny**      | Celkový počet CDC aktualizací, vkládání a odstranění řádků použitý k cíli.      |
-| **Tabulky v chybovém stavu** | Počet tabulek, které jsou ve stavu "Chyba" během migrace. Jsou některé příklady, které tabulky můžete přejít do chybového stavu, když existují duplicitní identifikované v cílové nebo data ještě nejsou kompatibilní, načítají se v cílové tabulce.      |
+| **Úplné načtení dokončeno**      | Počet tabulek dokončil úplné načtení dat. |
+| **Úplné načtení ve frontě**      | Počet tabulek, které jsou zařazeny do fronty pro úplné načtení.      |
+| **Úplné načtení zatížení** | Počet tabulek se nezdařil.      |
+| **Přírůstkové aktualizace**      | Počet aktualizací Change Data Capture (CDC) v řádcích použitých na cíl |
+| **Přírůstkové vkládání**      | Počet vkládání funkce CDC v řádcích použitých na cíl      |
+| **Přírůstková odstranění** | Počet odstranění CDC v řádcích použitých na cíl      |
+| **Probíhající změny**      | Počet CDC v řádcích, které stále čekají na použití pro cíl. |
+| **Použité změny**      | Celkový počet aktualizací CDC, vkládání a odstranění v řádcích použitých pro cíl      |
+| **Tabulky v chybovém stavu** | Počet tabulek, které jsou ve stavu Error během migrace. Některé příklady, které mohou tabulky přejít do chybového stavu, jsou v případě, že jsou v cíli zjištěny duplicity nebo data nejsou kompatibilní při načítání v cílové tabulce.      |
 
 ## <a name="monitor-at-table-level--detailed-summary"></a>Monitorování na úrovni tabulky – podrobný souhrn
-Existují dvě karty, které v plném zatížení a přírůstková synchronizace dat zobrazit průběh migrace.
+K dispozici jsou dvě karty, které znázorňují průběh migrace v plném zatížení a přírůstkové synchronizaci dat.
     
 ![Karta úplné načtení](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
 
-![Karta synchronizace dat](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
+![Karta pro přírůstkové synchronizace dat](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
 
-Následující tabulka popisuje pole zobrazená v průběhu migrace úrovně tabulky.
+Následující tabulka popisuje pole zobrazená v průběhu migrace na úrovni tabulky.
 
 | Název pole        | Popis       |
 | ------------- | ------------- |
-| **Stav - Probíhá synchronizace**      | Průběžná synchronizace probíhá. |
-| **Vložit**      | Počet CDC vloží řádků, které jsou použity k cíli.      |
-| **Aktualizace** | Počet CDC aktualizace řádků použitý k cíli.      |
-| **Odstranění**      | Počet CDC odstraní v řádcích použitý k cíli. |
-| **Celkově použito**      | Celkový počet CDC aktualizací, vkládání a odstranění řádků použitý k cíli. |
-| **Data chyby** | Počet chyb dat došlo v této tabulce. Tady je několik příkladů chyb *511: Nelze vytvořit řádek velikosti %d, což je více než povolená maximální velikost řádku % d, 8114: Při převodu datového typu %ls. % ls.*  Zákazník musí dotaz z dms_apply_exceptions tabulky v Azure cílové zobrazíte podrobnosti o chybě.    |
+| **Stav – synchronizace**      | Průběžná synchronizace je spuštěná. |
+| **Vložit**      | Počet vkládání funkce CDC v řádcích použitých na cíl      |
+| **Aktualizace** | Počet aktualizací CDC v řádcích použitých na cíl      |
+| **Odstranění**      | Počet odstranění CDC v řádcích použitých na cíl |
+| **Celkem použito**      | Celkový počet aktualizací CDC, vkládání a odstranění v řádcích použitých pro cíl |
+| **Chyby dat** | Počet chyb dat, které byly v této tabulce provedeny. Některé příklady chyb jsou *511: nelze vytvořit řádek o velikosti% d, což je více než maximální povolená velikost řádku% d, 8114: Chyba při převodu datového typu% ls na% ls.*  Zákazník by měl dotaz z dms_apply_exceptions tabulky v cíli Azure zobrazit podrobnosti o chybě.    |
 
 > [!NOTE]
-> CDC hodnoty Insert, Update a Delete a celkový počet použít může snížit, pokud je přímou migraci databáze nebo byl restartován migrace.
+> Hodnoty CDC v případě vložení, aktualizace a odstranění a celkem se můžou snížit, když je databáze přímou migraci nebo se restartuje migrace.
 
-## <a name="next-steps"></a>Další postup
-- Přečtěte si pokyny k migraci v Microsoftu [Průvodce migrací databází](https://datamigration.microsoft.com/).
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si pokyny k migraci v [Průvodci migrací databáze](https://datamigration.microsoft.com/)společnosti Microsoft.

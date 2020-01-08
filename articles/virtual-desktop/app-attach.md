@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356249"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
@@ -172,8 +172,8 @@ V prostředí virtuálních počítačů s Windows vytvořte sdílenou síťovou
 Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsaný svým držitelem, tady je postup, jak ho nainstalovat:
 
 1. Klikněte pravým tlačítkem na balíček a vyberte **vlastnosti**.
-2. V zobrazeném okně vyberte kartu **digitální podpisy** . V seznamu na kartě by měla být pouze jedna položka, jak je znázorněno na následujícím obrázku. Vyberte tuto položku, chcete-li položku zvýraznit, a pak vyberte * * de
-3. Jakmile se zobrazí okno Podrobnosti digitálního signálu, vyberte kartu **Obecné** a pak vyberte **instalovat certifikát**.
+2. V zobrazeném okně vyberte kartu **digitální podpisy** . V seznamu na kartě by měla být pouze jedna položka, jak je znázorněno na následujícím obrázku. Vyberte tuto položku, chcete-li položku zvýraznit, a pak vyberte **Podrobnosti**.
+3. Po zobrazení okna podrobnosti digitálního podpisu vyberte kartu **Obecné** a pak vyberte **instalovat certifikát**.
 4. Jakmile se instalační program otevře, vyberte **místní počítač** jako umístění úložiště a pak vyberte **Další**.
 5. Pokud se instalační program zeptá, jestli chcete aplikaci umožnit, aby na svém zařízení provedla změny, vyberte **Ano**.
 6. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak vyberte **Procházet**.
@@ -185,7 +185,7 @@ Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsa
 Připojení aplikace MSIX má čtyři samostatné fáze, které je potřeba provést v uvedeném pořadí:
 
 1. Stage
-2. Registrace
+2. Zaregistrovat
 3. Zrušení registrace
 4. Depříprava
 
@@ -199,12 +199,12 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
 
 2.  Klikněte pravým tlačítkem na virtuální pevný disk a vyberte **připojit**. Tím se virtuální pevný disk připojí k písmenu jednotky.
 
-3.  Po připojení virtuálního pevného disku se otevře okno **Průzkumník souborů** . Zachytit nadřazenou složku a aktualizovat **\$proměnnou parentFolder**
+3.  Po připojení virtuálního pevného disku se otevře okno **Průzkumník souborů** . Zachytit nadřazenou složku a aktualizovat **$parentFolder** proměnnou
 
     >[!NOTE]
     >Pokud se nezobrazuje nadřazená složka, znamená to, že se MSIX nerozšířila správně. Zopakuje předchozí oddíl a pak to zkuste znovu.
 
-4.  Otevřete nadřazenou složku. Pokud je správně rozbalený, zobrazí se složka se stejným názvem jako balíček. Aktualizujte proměnnou **\$název balíčku** tak, aby odpovídala názvu této složky.
+4.  Otevřete nadřazenou složku. Pokud je správně rozbalený, zobrazí se složka se stejným názvem jako balíček. Aktualizujte **$PackageName** proměnnou tak, aby odpovídala názvu této složky.
 
     Například, `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
@@ -227,7 +227,7 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
     ```
 
 
-6.  Aktualizujte **\$proměnnou volumeGuid** s identifikátorem GUID svazku, který jste právě zkopírovali.
+6.  Aktualizujte **$volumeGuid** PROMĚNNOU s identifikátorem GUID svazku, který jste právě zkopírovali.
 
 7. Otevřete příkazový řádek prostředí PowerShell pro správu a aktualizujte následující skript prostředí PowerShell s proměnnými, které se vztahují na vaše prostředí.
 
@@ -256,9 +256,9 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
 
     {
 
-    Mount-Diskimage -ImagePath \$vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
 
-    Write-Host ("Mounting of " + \$vhdSrc + " was completed!") -BackgroundColor Green
+    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
     }
 
@@ -266,7 +266,7 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
 
     {
 
-    Write-Host ("Mounting of " + \$vhdSrc + " has failed!") -BackgroundColor Red
+    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
 
     }
 
@@ -298,8 +298,8 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
 
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task\`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress\`2[TResult,TProgress])'})[0]
+    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
+    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
 
     $asTaskAsyncOperation =
     $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
@@ -344,7 +344,7 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 ### <a name="deregister-powershell-script"></a>Zrušit registraci skriptu PowerShellu
 
-Pro tento skript nahraďte zástupný symbol pro **\$název balíčku** názvem balíčku, který testujete.
+Pro tento skript nahraďte zástupný symbol pro **$PackageName** názvem testovaného balíčku.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -364,7 +364,7 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>Depříprava skriptu PowerShellu
 
-Pro tento skript nahraďte zástupný symbol pro **\$název balíčku** názvem balíčku, který testujete.
+Pro tento skript nahraďte zástupný symbol pro **$PackageName** názvem testovaného balíčku.
 
 ```powershell
 #MSIX app attach de staging sample

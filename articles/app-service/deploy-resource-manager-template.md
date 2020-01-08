@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 082ef9753f84aef3f867a9dee4b4e9fbf73dd379
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670097"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422098"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manager
 
@@ -47,7 +47,7 @@ Prostředky se nasazují v následujícím pořadí:
 * App Service certifikát – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
 * Nastavení konfigurace (připojovací řetězce, hodnoty Web. config, nastavení aplikace) – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
 
-**Vrstva 5**
+**Tier 5**
 * Vazby názvu hostitele – závisí na certifikátu, pokud je k dispozici. V opačném případě závisí na prostředku vyšší úrovně.
 * Rozšíření webu – závisí na nastavení konfigurace, pokud je k dispozici. V opačném případě závisí na prostředku vyšší úrovně.
 
@@ -94,7 +94,7 @@ Pokud vaše Správce prostředků šablona používá MSDeploy, může být obt�
 
 ## <a name="choose-a-unique-web-app-name"></a>Zvolit jedinečný název webové aplikace
 
-Název vaší webové aplikace musí být globálně jedinečný. Můžete použít konvenci pojmenování, která bude pravděpodobně jedinečná, nebo můžete použít [funkci uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) pro pomoc s vygenerováním jedinečného názvu.
+Název vaší webové aplikace musí být globálně jedinečný. Můžete použít konvenci pojmenování, která bude pravděpodobně jedinečná, nebo můžete použít [funkci uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) pro pomoc s vygenerováním jedinečného názvu.
 
 ```json
 {

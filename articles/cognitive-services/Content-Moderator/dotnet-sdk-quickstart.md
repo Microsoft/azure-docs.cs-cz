@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Klientská knihovna Content Moderator pro .NET | Microsoft Docs'
+title: 'Rychlý Start: Klientská knihovna Content Moderator pro .NET'
 titleSuffix: Azure Cognitive Services
-description: Začněte s klientskou knihovnou Content Moderator pro .NET.
+description: Začněte s tímto rychlým startem pomocí klientské knihovny Content Moderator pro .NET.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: cb812a0432e5fdb2828054751ef35f3de82226e7
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 52f00b1c35daab142e4131c60110aa0ed686a6bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539037"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382051"
 ---
 # <a name="quickstart-content-moderator-client-library-for-net"></a>Rychlý Start: Klientská knihovna Content Moderator pro .NET
 
@@ -27,9 +27,9 @@ Pomocí klientské knihovny Content Moderator pro .NET:
 * [Střední obrázky](#moderate-images)
 * [Vytvořit recenzi](#create-a-review)
 
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [Ukázka | ukázek](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [Ukázka](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet) | [ukázka zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -282,4 +282,4 @@ V tomto rychlém startu jste zjistili, jak pomocí knihovny Content Moderator .N
 > [Koncepty moderování obrázků](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Co je Azure Content Moderator?](./overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ContentModerator/Program.cs).
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ContentModerator/Program.cs)

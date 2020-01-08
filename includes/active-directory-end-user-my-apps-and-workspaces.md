@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 70b886286980c065379678ba21ab21e02d0e2bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f2e76229673033ab001c5499739090a7c435ef8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178085"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466597"
 ---
 | |
 |--|
-|Pokud se vám to, co vidíte na obrazovce, neshoduje s tím, co je zahrnuté v tomto článku, znamená to, že správce nezapnul nové **Moje prostředí moje aplikace** (Preview). Chcete-li používat staré prostředí, je nutné postupovat podle pokynů a informací v části [portál moje aplikace](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-overview) .|
-| |
+|Pokud váš správce zapnul ve vaší organizaci **nové prostředí** ve verzi Preview, zobrazí se v horní části stránky **Moje aplikace** zpráva s **aktualizovaným prostředím moje aplikace je k dispozici**. Pokud vyberete možnost **vyzkoušet**, okamžitě vás přejdete na novou adresu URL (myapplications.Microsoft.com) a aktualizované prostředí. Po této době se pokaždé, když se vrátíte na stránku **Moje aplikace** , automaticky přejdete na nové prostředí.<br><br>Pokud chcete přestat používat nové prostředí, můžete v horní části stránky nové **Moje aplikace** vybrat **Ano** v nápisu **opustit nové prostředí** . Okamžitě se vrátíte na starou adresu URL (myapps.microsoft.com) a prostředí. Po této době se pokaždé, když se vrátíte na stránku **Moje aplikace** , automaticky přejdete na původní prostředí.|
+|

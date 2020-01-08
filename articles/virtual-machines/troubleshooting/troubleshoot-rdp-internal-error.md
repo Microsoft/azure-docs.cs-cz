@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: dac941b621c8df6b5c242bb5d0e0d5cdd1f864a9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9eb7a80599966345d90cc4a079b586e743ca37d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451209"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Dojde k interní chybě při pokusu o připojení k virtuálnímu počítači Azure přes vzdálenou plochu
 
 Tento článek popisuje chybu, která může dojít při pokusu o připojení k virtuálnímu počítači (VM) v Microsoft Azure.
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -54,7 +54,7 @@ Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [op
 Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) části.
 
-#### <a name="step-1-check-the-rdp-port"></a>Krok 1. Podívejte se na port RDP.
+#### <a name="step-1-check-the-rdp-port"></a>Krok: Kontrola 1 RDP port
 
 1. V instanci prostředí PowerShell, použijte [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) ke kontrole, jestli port 8080 je použít v jiných aplikacích:
@@ -86,7 +86,7 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
 
     3. [Aktualizovat skupinu zabezpečení sítě pro nový port](../../virtual-network/security-overview.md) v Azure portal RDP port.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Nastavení správných oprávnění pro certifikát podepsaný svým držitelem protokolu RDP
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Nastavení správná oprávnění u certifikátu podepsaného svým držitelem protokolu RDP
 
 1.  V instanci prostředí PowerShell spusťte následující příkazy jeden po druhém prodloužit platnost certifikátu podepsaného svým držitelem protokol RDP:
 
@@ -135,7 +135,7 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
 
 4. Restartujte virtuální počítač a opakujte spuštění připojení vzdálené plochy k virtuálnímu počítači. Pokud chyba přetrvává, přejděte k dalšímu kroku.
 
-Krok 3: Povolit všechny podporované verze TLS
+#### <a name="step-3-enable-all-supported-tls-versions"></a>Krok 3: Povolení všechny podporované verze TLS
 
 Klienta protokolu RDP používá jako výchozí protokol TLS 1.0. To však můžete změnit na protokoly TLS 1.1, který se stal novým standardem. Pokud je zakázané protokolu TLS 1.1 na virtuálním počítači, připojení se nezdaří.
 1.  V instanci CMD povolte protokol TLS:

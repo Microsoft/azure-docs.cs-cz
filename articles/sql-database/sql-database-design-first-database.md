@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459624"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Kurz: návrh relační databáze v jedné databázi v rámci Azure SQL Database pomocí SSMS
 
@@ -23,7 +23,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 > [!div class="checklist"]
 > - Vytvořte jednu databázi pomocí Azure Portal *
 > - Nastavení pravidla brány firewall protokolu IP na úrovni serveru pomocí Azure Portal
-> - Připojení k databázi pomocí SSMS
+> - Připojit se k databázi pomocí SSMS
 > - Vytvářet tabulky pomocí SSMS
 > - Hromadně načítat data pomocí BCP
 > - Dotazování dat pomocí SSMS
@@ -33,7 +33,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 > [!TIP]
 > Následující Microsoft Learn modul vám pomůže naučit se zdarma, jak [vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje na Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), včetně vytvoření jednoduché databáze.
 > [!NOTE]
-> Pro účely tohoto kurzu používáme samostatnou databázi. Můžete použít také databázi ve fondu v elastickém fondu nebo databázi instancí ve spravované instanci. Informace o připojení ke spravované instanci najdete v tématu rychlé starty spravovaných instancí: [rychlý Start: konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database spravované instanci](sql-database-managed-instance-configure-vm.md) a [rychlé zprovoznění: Konfigurace připojení typu Point-to-site k Azure SQL Database Spravovaná instance z místního](sql-database-managed-instance-configure-p2s.md)prostředí.
+> Pro účely tohoto kurzu používáme samostatnou databázi. Můžete použít také databázi ve fondu v elastickém fondu nebo databázi instancí ve spravované instanci. Informace o připojení ke spravované instanci najdete v těchto rychlých startech spravované instance: [rychlý Start: konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database spravované instanci](sql-database-managed-instance-configure-vm.md) a [rychlé zprovoznění: Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního](sql-database-managed-instance-configure-p2s.md)prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,15 +44,15 @@ Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Vytvoření prázdné jedné databáze
 
-Jedna databáze ve Azure SQL Database je vytvořena s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a spravuje se pomocí [databázového serveru](sql-database-servers.md).
+Jedna databáze ve Azure SQL Database je vytvořena s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) a spravuje se pomocí [databázového serveru](sql-database-servers.md).
 
 Pomocí těchto kroků můžete vytvořit prázdnou jedinou databázi.
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
 2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
 
    ![Vytvoření prázdné databáze](./media/sql-database-design-first-database/create-empty-database.png)
@@ -111,7 +111,7 @@ Služba SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. 
 
 1. Kliknutím na **Přidat IP adresu klienta** na panelu nástrojů přidejte svoji aktuální IP adresu do nového pravidla brány firewall protokolu IP. Pravidlo brány firewall protokolu IP může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-1. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru SQL Database.
+1. Klikněte na možnost **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru SQL Database.
 
 1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 
@@ -151,10 +151,10 @@ K navázání připojení k vaší izolované databázi použijte [SQL Server Ma
 
 Vytvořte schéma databáze se čtyřmi tabulkami, které modelují systém správy studentů univerzity, pomocí [Transact-SQL](/sql/t-sql/language-reference):
 
-- Person (Osoba)
-- Course (Kurz)
+- Osoba
+- Kurz
 - Student
-- Prospěch
+- Kredit
 
 Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisejí. Některé z těchto tabulek odkazují na sloupce v jiných tabulkách. Například tabulka *student* odkazuje na sloupec *PersonId* v tabulce *Person (osoba* ). Prohlédněte si diagram, abyste pochopili, jak spolu tabulky v tomto kurzu souvisejí. Podrobný rozbor toho, jak vytvářet efektivní databázové tabulky, najdete v tématu [Vytváření efektivních databázových tabulek](https://msdn.microsoft.com/library/cc505842.aspx). Informace o výběru datových typů najdete v tématu [Datové typy](/sql/t-sql/data-types/data-types-transact-sql).
 

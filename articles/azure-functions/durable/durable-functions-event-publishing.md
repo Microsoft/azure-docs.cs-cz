@@ -3,12 +3,12 @@ title: Durable Functions publikování do Azure Event Grid (Preview)
 description: Naučte se konfigurovat automatické publikování Azure Event Grid pro Durable Functions.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231452"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613121"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do Azure Event Grid (Preview)
 
@@ -86,7 +86,7 @@ Do vlastnosti `durableTask` přidejte `eventGridTopicEndpoint` a `eventGridKeySe
 
 Možné konfigurační vlastnosti Azure Event Grid najdete v [dokumentaci Host. JSON](../functions-host-json.md#durabletask). Po nakonfigurování `host.json` souboru odešle Function App události životního cyklu do tématu Event Grid. To funguje, když aplikaci Function App spustíte místně i v Azure.
 
-Nastavte nastavení aplikace pro klíč tématu v Function App a `local.setting.json`. Následující JSON je ukázka `local.settings.json` pro místní ladění. Nahraďte `<topic_key>` klíčem tématu.  
+Nastavte nastavení aplikace pro klíč tématu v Function App a `local.settings.json`. Následující JSON je ukázka `local.settings.json` pro místní ladění. Nahraďte `<topic_key>` klíčem tématu.  
 
 ```json
 {

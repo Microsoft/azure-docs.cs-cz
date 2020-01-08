@@ -1,27 +1,27 @@
 ---
 title: Odesílání úloh Apache Hadoop v HDInsight
 description: Odesílání úloh Apache Hadoop ve službě Azure HDInsight pomocí sady Microsoft .NET SDK, technologie kudrlinkou nebo PowerShellu
-ms.reviewer: jasonh
-ms.author: hrasheed
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: a595d002ebeecee1a8fd62a52f47cab487474494
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.custom: hdinsightactive
+ms.date: 12/16/2019
+ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435698"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Odesílání úloh Apache Hadoop v HDInsight
 
 Můžete odesílat Apache Hadoop úlohy ve službě Azure HDInsight pomocí sady Microsoft .NET SDK pro HDInsight, kudrlinkou nebo Azure PowerShell.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Materiály
 
-- **SADA .NET SDK**:
+- **sada .NET SDK**:
 
   - [Vytváření aplikací .NET, které nejsou interaktivní pro ověřování](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
   - [Spouštění dotazů Apache Hive pomocí sady SDK pro HDInsight .NET](apache-hadoop-use-hive-dotnet-sdk.md)
@@ -40,6 +40,6 @@ Můžete odesílat Apache Hadoop úlohy ve službě Azure HDInsight pomocí sady
   - [Použití Apache Sqoop s Apache Hadoop ve službě HDInsight](apache-hadoop-use-sqoop-powershell.md)
   - [Spuštění úloh MapReduce s Apache Hadoop v HDInsight pomocí PowerShellu](apache-hadoop-use-mapreduce-powershell.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Dokumentace ke službě Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/)

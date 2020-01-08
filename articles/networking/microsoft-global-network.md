@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453077"
 ---
 # <a name="microsoft-global-network"></a>Globální síť Microsoftu
 
@@ -40,14 +40,14 @@ Pokud se třeba uživatel v Londýně pokusí získat přístup ke službě v Br
   
 Znamená to tedy jakýkoliv a veškerý provoz při používání služeb Microsoftu? Ano, jakýkoli provoz mezi datovými centry v rámci Microsoft Azure nebo mezi službami Microsoftu, jako jsou Virtual Machines, Office 365, XBox, SQL databáze, úložiště a virtuální sítě, je směrován v rámci naší globální sítě a nikdy přes veřejný Internet, aby bylo zajištěno optimální výkon a integrita.  
  
-Velkou škálu investic do kapacity a rozmanitosti zemního vlákna na cestách Metro, suchozemských a podmořských cest je rozhodující pro nás, aby se zajistila konzistence a vysoká úroveň služeb při současném nárůstu našeho cloudu a online služby. Poslední dodatky do naší globální sítě jsou naše [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) podmořský kabel, první Open line line (OLS) v oboru Subsea, mezi Bilbao, Španělsko a) – Virginia, plážový,) – Virginia, USA a také pochod [mezi New](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) York, USA a Dublinem, Irskem. a [nové mezi Tichomoří (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) mezi Tokio, japonskoem a Portland, Brno. 
+Velkou škálu investic do kapacity a rozmanitosti zemního vlákna na cestách Metro, suchozemských a podmořských cest je rozhodující pro nás, aby se zajistila konzistence a vysoká úroveň služeb při současném nárůstu našeho cloudu a online služby. Poslední dodatky do naší globální sítě jsou naše [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) podmořský kabel, první Open line line (OLS) v oboru Subsea, mezi Bilbao, Španělsko a) – Virginia pláž,) – Virginia, USA a také pochod mezi [New](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) York, USA a Dublinem, Irskem a [novým křížením (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) mezi Tokio, japonskoem a Portland. 
  
 
 ## <a name="our-network-is-your-network"></a>Naše síť je vaše síť.
 
 Provedli jsme dvě desetiletí zkušeností, společně s obrovskými investicemi do sítě, aby se zajistil optimální výkon na všech místech. Firmy můžou plně využít výhod našich síťových prostředků a sestavovat pokročilé architektury překryvů nahoře. 
  
-Microsoft Azure nabízí bohatou portfolio služeb a schopností, které zákazníkům umožňuje rychle a snadno sestavit, rozšířit a splnit požadavky na síť kdekoli. Naše rodina služeb připojení pokrývá partnerský vztah virtuálních sítí mezi oblastmi, hybridními a cloudy typu Point-to-site a architekturami typu Site-to-site a také s globálními scénáři přenosu IP adres.  Pro podniky, které chtějí připojit své vlastní datové centrum nebo síť k Azure, nebo zákazníkům s obrovskými pořízením nebo přenosem dat, [ExpressRoute](../expressroute/expressroute-introduction.md)a [ExpressRoute přímých](../expressroute/expressroute-erdirect-about.md) nabízí možnosti až 100 GB/s šířky pásma. Globální síť Microsoftu na místech partnerských vztahů po celém světě.  
+Microsoft Azure nabízí bohatou portfolio služeb a schopností, které zákazníkům umožňuje rychle a snadno sestavit, rozšířit a splnit požadavky na síť kdekoli. Naše rodina služeb připojení pokrývá partnerský vztah virtuálních sítí mezi oblastmi, hybridními a cloudy typu Point-to-site a architekturami typu Site-to-site a také s globálními scénáři přenosu IP adres.  Pro podniky, které chtějí připojit své vlastní datové centrum nebo síť k Azure, nebo zákazníkům s rozsáhlými pořízením nebo přenosem dat, [ExpressRoute](../expressroute/expressroute-introduction.md)a [ExpressRoute Direct](../expressroute/expressroute-erdirect-about.md) poskytují možnosti až 100 GB/s, a to přímo do globální sítě Microsoftu v umístěních partnerských vztahů po celém světě.  
  
 [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) je navržená tak, aby doplnila implementaci sítě WAN poskytovatele služeb a připojila vaše místní weby po celém světě. Pokud spustíte globální operaci, můžete použít ExpressRoute Global Reach ve spojení s upřednostňovanými a místními poskytovateli služeb pro připojení všech svých globálních lokalit pomocí globální sítě Microsoft. Rozšiřování nové sítě v cloudu (WAN) tak, aby zahrnovalo velký počet větví, se dá provést prostřednictvím Azure Virtual WAN, což přináší možnost bezproblémového připojení větví k globální síti Microsoft pomocí SDWAN & zařízení VPN (tj. Zákaznická zařízení nebo CPE) s integrovaným snadným používáním a automatizovaným řízením připojení a konfigurací. 
  
@@ -56,7 +56,7 @@ Microsoft Azure nabízí bohatou portfolio služeb a schopností, které zákazn
 
 ## <a name="well-managed-using-software-defined-innovation"></a>Dobře spravované pomocí softwarově definovaných inovací
 
-Po spuštění některého z špičkových cloudů na světě získala společnost Microsoft spoustu přehledů a zkušeností při sestavování [a správě](https://myignite.techcommunity.microsoft.com/sessions/66668) vysoce výkonné globální infrastruktury.  
+Po spuštění některého z špičkových cloudů na světě získala společnost Microsoft spoustu přehledů a zkušeností při sestavování a správě vysoce výkonné globální infrastruktury.  
  
 Dodržujeme robustní sadu funkčních principů: 
  

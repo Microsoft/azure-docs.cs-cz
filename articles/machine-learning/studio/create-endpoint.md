@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 891f680485ec3ee65c0bef102eb7f52cea0611c6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 57bc5739d8e6b1fa30482de69285c8895294cfa8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454760"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Vytvoření koncových bodů pro nasazené webové služby Azure Machine Learning Studio (Classic)
 
@@ -27,7 +27,7 @@ Každý koncový bod ve webové službě se nezávisle zabývá, omezuje a sprav
 
 ## <a name="add-endpoints-to-a-web-service"></a>Přidání koncových bodů do webové služby
 
-Koncový bod můžete k webové službě přidat pomocí portálu Azure Machine Learning Web Services. Po vytvoření koncového bodu ho můžete využívat přes synchronní rozhraní API, rozhraní API služby Batch a excelové listy.
+Koncový bod můžete k webové službě přidat pomocí portálu Azure Machine Learning Web Services. Po vytvoření koncového bodu můžete využívat přes synchronního rozhraní API, rozhraní API pro dávkové a listy aplikace excel.
 
 > [!NOTE]
 > Pokud jste do webové služby přidali další koncové body, nemůžete výchozí koncový bod odstranit.
@@ -35,11 +35,11 @@ Koncový bod můžete k webové službě přidat pomocí portálu Azure Machine 
 1. V Machine Learning Studio (Classic) v levém navigačním sloupci klikněte na webové služby.
 2. V dolní části řídicího panelu webové služby klikněte na možnost **Spravovat koncové body**. Portál Azure Machine Learning webové služby se otevře na stránce koncové body webové služby.
 3. Klikněte na možnost **Nové**.
-4. Zadejte název a popis nového koncového bodu. Názvy koncových bodů musí mít délku 24 znaků nebo méně a musí se nacházet z malých písmen nebo číslic. Vyberte úroveň protokolování a jestli jsou povolená ukázková data. Další informace o protokolování najdete v tématu [Povolení protokolování pro Machine Learning webové služby](web-services-logging.md).
+4. Zadejte název a popis pro nový koncový bod. Názvy koncových bodů musí být 24 znaků nebo méně délku a musí být tvořen malá písmena a číslice. Vyberte úroveň protokolování a povolení ukázková data. Další informace o protokolování najdete v tématu [Povolení protokolování pro Machine Learning webové služby](web-services-logging.md).
 
 ## <a id="scaling"></a>Škálování webové služby přidáním dalších koncových bodů
 
-Ve výchozím nastavení je každá publikovaná webová služba nakonfigurovaná tak, aby podporovala 20 souběžných požadavků a může být stejně vysoká jako 200 souběžných požadavků. Klasická verze Azure Machine Learning Studio automaticky optimalizuje nastavení tak, aby poskytovala nejlepší výkon pro vaši webovou službu, a hodnota portálu se ignoruje.
+Ve výchozím nastavení je každá publikovaná webová služba nakonfigurovaná tak, aby podporovala 20 souběžných požadavků a může být stejně vysoká jako 200 souběžných požadavků. Azure Machine Learning Studio (Classic) automaticky optimalizuje nastavení tak, aby poskytovalo nejlepší výkon webové služby, a hodnota portálu se ignoruje.
 
 Pokud máte v úmyslu volat rozhraní API s vyšší zátěží, než je maximální počet souběžných volání 200, bude třeba vytvořit více koncových bodů ve stejné webové službě. Potom můžete zatížení náhodně rozmístit napříč všemi nimi.
 

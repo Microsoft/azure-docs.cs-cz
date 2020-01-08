@@ -2,17 +2,17 @@
 title: Vytvoření privátního koncového bodu Azure pomocí Azure PowerShell | Microsoft Docs
 description: Informace o privátním propojení Azure
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430348"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShell
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. 
@@ -32,10 +32,10 @@ New-AzResourceGroup `
   -Location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Vytvoření Virtual Network
+## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 V této části vytvoříte virtuální síť a podsíť. Potom přidružíte podsíť k vašemu Virtual Network.
 
-### <a name="create-a-virtual-network"></a>Vytvoření Virtual Network
+### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
 Vytvořte virtuální síť pro privátní koncový bod pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří Virtual Network s názvem *MyVirtualNetwork*:
  
@@ -59,6 +59,9 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -PrivateEndpointNetworkPoliciesFlag "Disabled" `
   -VirtualNetwork $virtualNetwork
 ```
+
+> [!CAUTION]
+> Je snadné Zaměňujte parametr `PrivateEndpointNetworkPoliciesFlag` s jiným přístupným příznakem, `PrivateLinkServiceNetworkPoliciesFlag`, protože jsou to dlouhá slova a mají podobný vzhled.  Ujistěte se, že používáte tu správnou `PrivateEndpointNetworkPoliciesFlag`.
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Přidružte podsíť k Virtual Network
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6c35b52149e3c0117c727771d38d0f010180fc63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107053"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432812"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
@@ -104,10 +104,11 @@ Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu 
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps 
 
-Aby bylo možné implementovat obchodní logiku na základě Azure Maps prostorových analýz, musíme vytvořit účet Azure Maps ve skupině prostředků, kterou jsme vytvořili. Podle pokynů v části [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) Vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) Získejte primární klíč předplatného pro váš účet.
+Aby bylo možné implementovat obchodní logiku na základě Azure Maps prostorových analýz, musíme vytvořit účet Azure Maps ve skupině prostředků, kterou jsme vytvořili. Postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Aby bylo možné protokolovat data události, vytvoříme účet pro obecné účely **v2storage** ve skupině prostředků "ContosoRental" pro ukládání dat jako objektů BLOB. Pokud chcete vytvořit účet úložiště, postupujte podle pokynů v částech [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Dále bude nutné vytvořit kontejner pro ukládání objektů BLOB. Postupujte podle následujících kroků:
 
@@ -167,7 +168,7 @@ Otevřete aplikaci pro vystavování a podle následujících pokynů nahrajte g
     
     Hodnota "\ JSON" na parametru `dataFormat` v cestě URL představuje formát dat, která se nahrávají.
 
-3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí pro adresu URL požadavku POST. Nahraďte hodnotu klíč předplatného klíčem Azure Maps primární klíč předplatného.
+3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí pro adresu URL požadavku POST. Nahraďte hodnotu klíčového předplatného klíčem Azure Maps.
    
     ![Post – parametry klíč-hodnota](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 

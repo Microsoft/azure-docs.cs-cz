@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: af1870ecc9714eceaf69f2892537e59f068c6a70
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 85d882cff968c9b68ece104e850a7f16c33947b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435108"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
 
@@ -30,11 +30,10 @@ ms.locfileid: "74480321"
 
 Vaše volba šablony aplikace určuje, jestli vaše aplikace používá funkce IoT Central verze Preview, jako je technologie Plug and Play pro zařízení.
 
-V současné době šablony aplikací, které používají _všeobecně dostupné_ funkce, jsou:
+V současné době je šablona aplikace, která používá _všeobecně dostupné_ funkce, následující:
 
-- Vlastní aplikace > vlastní aplikace
-- Ukázka vlastní aplikace > contoso
-- Vlastní aplikace > Sample Devkits
+- Vlastní aplikace > starší verze aplikace
+
 
 V současné době jsou šablony aplikací, které používají funkce _veřejné verze Preview_ :
 
@@ -52,21 +51,21 @@ V současné době jsou šablony aplikací, které používají funkce _veřejn�
 - Zdravotní péče > nepřetržité monitorování pacientů
 
 > [!NOTE]
-> **Vlastní aplikace, ukázka contoso, ukázkové šablony Devkits** jsou aktuálně dostupné v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě** , zatímco jiné šablony jsou aktuálně dostupné jenom v **Evropě** a **USA** .
+> Šablony **starších verzí aplikací** jsou aktuálně k dispozici v **USA**, **Austrálii**, **Asie a Tichomoří**nebo v **Evropě** , zatímco jiné šablony jsou aktuálně dostupné pouze v **Evropě** a v umístění **USA** .
 
 ## <a name="industry-focused-templates"></a>Šablony zaměřené na odvětví
 
 Azure IoT Central je nezávislá aplikační platforma pro odvětví. Šablony aplikací jsou příklady zaměřené na obory, které jsou v současnosti dostupné pro tyto odvětví. Další informace jsou k dispozici v budoucnu:
 
-- [Prodejci](../retail/overview-iot-central-retail-pnp.md)
+- [Maloobchod](../retail/overview-iot-central-retail-pnp.md)
   - Propojená logistika
   - Digitální distribuční centrum
   - Analýzy v obchodě – monitorování podmínek
   - Analýza v obchodě – rezervace
   - Správa inteligentních inventářů
-- [Konfiguruje](../energy/overview-iot-central-energy.md)
-  - Monitorování inteligentních měřičů
-  - Sledování panelu slunečníku
+- [Energie](../energy/overview-iot-central-energy.md)
+  - Inteligentní monitorování měřičů
+  - Monitorování solárních panelů
 - [Schod](../government/overview-iot-central-government.md)
   - Propojená správa odpadů
   - Monitorování spotřeby vody

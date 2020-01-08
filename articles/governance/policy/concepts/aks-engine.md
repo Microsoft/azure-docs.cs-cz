@@ -3,12 +3,12 @@ title: Další Azure Policy pro modul AKS
 description: Přečtěte si, jak Azure Policy používá CustomResourceDefinitions a Open Agent zásad z gatekeeper V3 ke správě clusterů pomocí stroje AKS.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436429"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Vysvětlení Azure Policy pro modul AKS
 
@@ -33,7 +33,7 @@ Pokud chcete povolit a používat Azure Policy pro modul AKS s vaším samoobslu
 
 Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. PolicyInsights** a vytvořit přiřazení role pro instanční objekt služby. 
 
-1. Pokud chcete poskytovatele prostředků povolit, postupujte podle kroků v části [poskytovatelé a typy prostředků](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) nebo spusťte příkaz Azure CLI nebo Azure PowerShell:
+1. Pokud chcete poskytovatele prostředků povolit, postupujte podle kroků v části [poskytovatelé a typy prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spusťte příkaz Azure CLI nebo Azure PowerShell:
 
    - Azure CLI
 
@@ -44,7 +44,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
-   - Azure Powershell
+   - Azure PowerShell
    
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -255,7 +255,7 @@ Chcete-li odebrat Azure Policy doplněk a server gatekeeper z clusteru AKS Engin
 
 ## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Diagnostická data shromážděná pomocí doplňku Azure Policy
 
-Doplněk Azure Policy pro Kubernetes shromažďuje omezená diagnostická data clusteru. Tato diagnostická data jsou podstatná technická data týkající se softwaru a výkonu. Používá se následujícími způsoby:
+Doplněk Azure Policy pro Kubernetes shromažďuje omezená diagnostická data clusteru. Tato diagnostická data jsou podstatná technická data týkající se softwaru a výkonu. Jsou využívána následujícími způsoby:
 
 - Udržování Azure Policyho doplňku v aktuálním stavu
 - Udržování Azure Policy zabezpečených, spolehlivých a výkonných doplňků

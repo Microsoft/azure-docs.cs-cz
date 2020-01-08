@@ -1,25 +1,16 @@
 ---
 title: Monitorování stavu clusteru Kubernetes s využitím Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak můžete zobrazit a analyzovat stav svých clusterů AKS a non-AKS pomocí Azure Monitor for Containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/18/2019
-ms.author: magoedte
-ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 12/01/2019
+ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279641"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405098"
 ---
-# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Pochopení stavu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
+# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Pochopení stavu clusteru AKS pomocí služby Azure Monitor pro kontejnery
 
 U Azure Monitor pro kontejnery monitoruje a hlásí stav komponent spravované infrastruktury a všechny uzly spuštěné v jakémkoli clusteru Kubernetes podporovaném Azure Monitor for Containers. Toto prostředí překračuje stav clusteru vypočtený a nahlášený v [zobrazení více clusterů](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), kde teď můžete pochopit, jestli je jeden nebo více uzlů v clusteru omezené nebo že uzel nebo uzel je nedostupný, což by mohlo mít vliv na spuštěnou aplikaci v clusteru na základě spravovaných metrik.
 
@@ -57,13 +48,13 @@ Všechna monitorování se zobrazují v hierarchickém rozložení v podokně hi
 * Vyhodnotit využití paměti z uzlu a kontejneru.
 * Stav lusků a uzlů na základě výpočtu stavu připraveného pomocí Kubernetes.
 
-Následující ikony slouží k indikaci stavu:
+Toto jsou ikony používané k označení stavu:
 
 |Ikona|Význam|  
 |--------|-----------|  
-|![Zelená ikona check indikuje v pořádku](./media/container-insights-health/healthyicon.png)|Úspěch, stav je OK (zelený)|  
-|![Žlutý trojúhelník a vykřičník se označují jako upozornění.](./media/container-insights-health/warningicon.png)|Upozornění (žlutá)|  
-|![Červené tlačítko s bílým symbolem X označující kritický stav](./media/container-insights-health/criticalicon.png)|Kritická (červená)|  
+|![Zelená ikona zaškrtnutí označující bezvadný stav](./media/container-insights-health/healthyicon.png)|Úspěch, stav je OK (zelený)|  
+|![Žlutý trojúhelník a vykřičník představující upozornění](./media/container-insights-health/warningicon.png)|Varování (žlutý)|  
+|![Červené tlačítko s bílým symbolem X označující kritický stav](./media/container-insights-health/criticalicon.png)|Kritický (červený)|  
 |![Ikona šedá](./media/container-insights-health/grayicon.png)|Neznámé (šedá)|  
 
 ## <a name="monitor-configuration"></a>Konfigurace monitorování
@@ -72,13 +63,13 @@ Informace o chování a konfiguraci jednotlivých monitorů, které podporují A
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
+Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Zobrazení stavu clusteru AKS nebo non-AKS
 
-Přístup k funkci Azure Monitor for Containers Health (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně Azure Portal vyberete **přehledy** . V části **přehledy** vyberte **kontejnery**. 
+Přístup k funkci Azure Monitor for Containers Health (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně Azure Portal vyberete **přehledy** . V části **Insights** vyberte **kontejnery**. 
 
-Pokud chcete zobrazit stav z neAKSho clusteru, který je hostitelem AKS modulu, který je hostovaný místně nebo na Azure Stack, vyberte **Azure monitor** v levém podokně Azure Portal. V části **přehledy** vyberte **kontejnery**.  Na stránce více clusterů vyberte v seznamu cluster bez AKS.
+Pokud chcete zobrazit stav z neAKSho clusteru, který je hostitelem AKS modulu, který je hostovaný místně nebo na Azure Stack, vyberte **Azure monitor** v levém podokně Azure Portal. V části **Insights** vyberte **kontejnery**.  Na stránce více clusterů vyberte v seznamu cluster bez AKS.
 
 V Azure Monitor pro kontejnery na stránce **cluster** vyberte **stav**.
 

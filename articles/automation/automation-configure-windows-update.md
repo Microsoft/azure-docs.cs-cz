@@ -2,19 +2,15 @@
 title: Konfigurace nastavení web Windows Update pro práci s Azure Update Management
 description: Tento článek popisuje nastavení web Windows Update, která konfigurujete pro práci s Azure Update Management.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f6377012a2afd0fb36486edf0af0ac3591b5d1f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366851"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Konfigurace nastavení web Windows Update pro Update Management
 
@@ -47,7 +43,7 @@ Klíče registru uvedené v [části Konfigurace automatických aktualizací úp
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Povolit aktualizace pro ostatní produkty Microsoftu
 
-Ve výchozím nastavení web Windows Update poskytuje aktualizace pouze pro systém Windows. Pokud **při aktualizaci nastavení systému Windows povolíte aktualizace pro další produkty společnosti Microsoft** , obdržíte také aktualizace pro další produkty, včetně oprav zabezpečení pro Microsoft SQL Server a další software společnosti Microsoft. Tato možnost se nedá nakonfigurovat pomocí Zásady skupiny. Spusťte následující příkaz prostředí PowerShell v systémech, na kterých chcete povolit další aktualizace společnosti Microsoft. Update Management bude toto nastavení dodržovat.
+Web Windows Update ve výchozím nastavení nabízí pouze aktualizace pro Windows. Pokud **při aktualizaci nastavení systému Windows povolíte aktualizace pro další produkty společnosti Microsoft** , obdržíte také aktualizace pro další produkty, včetně oprav zabezpečení pro Microsoft SQL Server a další software společnosti Microsoft. Tato možnost se nedá nakonfigurovat pomocí Zásady skupiny. Spusťte následující příkaz prostředí PowerShell v systémech, na kterých chcete povolit další aktualizace společnosti Microsoft. Update Management bude toto nastavení dodržovat.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")

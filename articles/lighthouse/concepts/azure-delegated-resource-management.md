@@ -3,12 +3,12 @@ title: Správa delegovaných prostředků Azure
 description: Spravované služby umožňují poskytovatelům služeb prodávat nabídky správy prostředků zákazníkům v Azure Marketplace.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464021"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453629"
 ---
 # <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
@@ -33,7 +33,7 @@ Když zařadíte zákazníka do správy delegovaných prostředků Azure, budou 
 
 V takovém případě funguje Správa delegovaných prostředků v Azure na nejvyšší úrovni:
 
-1. Jako poskytovatel služeb identifikujete přístup (role), které vaše skupiny, instanční objekty nebo uživatelé budou potřebovat ke správě prostředků Azure daného zákazníka. Definice přístupu obsahuje ID tenanta poskytovatele služeb společně s požadovaným přístupem pro nabídku, která je definovaná pomocí **principalId** identit z vašeho tenanta namapovaného na [předdefinované **rutiny roledefinition** hodnoty](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (přispěvatel, virtuální počítač Přispěvatel, čtenář atd.).
+1. Jako poskytovatel služeb identifikujete přístup (role), které vaše skupiny, instanční objekty nebo uživatelé budou potřebovat ke správě prostředků Azure daného zákazníka. Definice přístupu obsahuje ID tenanta poskytovatele služeb společně s požadovaným přístupem pro nabídku, která je definovaná pomocí **principalId** identit z vašeho tenanta namapovaného na [předdefinované **rutiny roledefinition** hodnoty](../../role-based-access-control/built-in-roles.md) (přispěvatel, přispěvatel virtuálních počítačů, čtenář atd.).
 2. Tento přístup určíte a zařadíte zákazníka do správy delegovaných prostředků Azure jedním ze dvou způsobů:
    - [Publikování nabídky spravované služby Azure Marketplace](../how-to/publish-managed-services-offers.md) (soukromé nebo veřejné), kterou bude zákazník akceptovat
    - [Nasazení šablony Azure Resource Manager do tenanta zákazníka](../how-to/onboard-customer.md) pro jedno nebo více konkrétních předplatných nebo skupin prostředků

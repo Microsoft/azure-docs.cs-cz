@@ -1,25 +1,16 @@
 ---
-title: Konfigurace síťových režimů pro služby Azure Service Fabric Container Services | Microsoft Docs
+title: Konfigurace síťových režimů pro služby kontejneru
 description: Naučte se nastavit různé síťové režimy, které Azure Service Fabric podporuje.
-services: service-fabric
-documentationcenter: .net
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168792"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639798"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric síťové režimy kontejneru
 
@@ -30,7 +21,7 @@ Pokud máte v manifestu služby jednu službu kontejneru se statickým koncovým
 Když se služba kontejneru restartuje nebo přesune na jiný uzel v clusteru, IP adresa se změní. Z tohoto důvodu nedoporučujeme používat dynamicky přiřazenou IP adresu ke zjišťování služeb kontejneru. Pro zjišťování služeb by se měla použít jenom Naming Service Service Fabric nebo služba DNS. 
 
 >[!WARNING]
->Azure umožňuje celkem 65 356 IP adres na jednu virtuální síť. Součet počtu uzlů a počtu instancí služby kontejnerů (používajících režim otevření) nesmí v rámci virtuální sítě překročit 65 356 IP adres. U scénářů s vysokou hustotou doporučujeme použít režim sítě NAT. Další závislosti, jako je třeba nástroj pro vyrovnávání zatížení, budou mít i další [omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits) , která je potřeba zvážit. V současné době až 50 IP adres na uzel byly testovány a prověřeny stabilní. 
+>Azure umožňuje celkem 65 356 IP adres na jednu virtuální síť. Součet počtu uzlů a počtu instancí služby kontejnerů (používajících režim otevření) nesmí v rámci virtuální sítě překročit 65 356 IP adres. U scénářů s vysokou hustotou doporučujeme použít režim sítě NAT. Další závislosti, jako je třeba nástroj pro vyrovnávání zatížení, budou mít i další [omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) , která je potřeba zvážit. V současné době až 50 IP adres na uzel byly testovány a prověřeny stabilní. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nastavení režimu otevřené sítě
@@ -210,7 +201,7 @@ Když se služba kontejneru restartuje nebo přesune na jiný uzel v clusteru, I
    |Akce | Povolit  | |
    | | |
 
-4. Zadejte režim sítě v manifestu aplikace pro každou službu: `<NetworkConfig NetworkType="Open">`. V případě **otevřeného** síťového režimu dojde k získání vyhrazené IP adresy ve službě. Pokud není zadán režim, služba je výchozím režimem **překladu adres (NAT)** . V následujícím příkladu manifestu mohou služby `NodeContainerServicePackage1` a `NodeContainerServicePackage2` naslouchat na stejném portu (obě služby naslouchá na `Endpoint1`). Když je zadaný režim otevření sítě, nedají se zadat `PortBinding` konfigurací.
+4. Zadejte režim sítě v manifestu aplikace pro každou službu: `<NetworkConfig NetworkType="Open">`. V případě **otevřeného** síťového režimu dojde k získání vyhrazené IP adresy ve službě. Pokud není zadán režim, služba je výchozím režimem **překladu adres (NAT)** . V následujícím příkladu manifestu mohou služby `NodeContainerServicePackage1` a `NodeContainerServicePackage2` naslouchat na stejném portu (obě služby naslouchá na `Endpoint1`). Když je zadaný režim otevření sítě, nedají se zadat konfigurace `PortBinding`.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

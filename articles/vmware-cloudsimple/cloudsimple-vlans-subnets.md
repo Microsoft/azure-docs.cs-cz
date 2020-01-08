@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af191893d6b3cf1c38e5ff44a7a8a04509347a8
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543800"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372733"
 ---
 # <a name="vlans-and-subnets-overview"></a>Přehled sítí VLAN a podsítí
 
@@ -38,7 +38,7 @@ Privátní cloud se vytvoří jako izolovaný zásobník VMware (ESXi hosts, vCe
 * Minimální předpona rozsahu CIDR podsítě vSphere/síti vSAN: **/24**
 * Maximální předpona rozsahu CIDR podsítě vSphere/síti vSAN: **/21**
 
-> [!IMPORTANT]
+> [!CAUTION]
 > IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu.  Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>omezení rozsahu vSphere/síti vSAN podsítí CIDR
@@ -58,7 +58,7 @@ Při vytváření privátního cloudu se vytvoří následující podsítě pro 
 
 * **Správa systému**. Síť VLAN a podsíť pro virtuální sítě pro správu hostitele ESXi, server DNS a vCenter Server.
 * **VMotion**. Síť VLAN a podsíť pro vMotion hostitele ESXi.
-* **SÍTI VSAN**. Síť VLAN a podsíť pro síti vSAN hostitele ESXi.
+* **Síti vSAN**. Síť VLAN a podsíť pro síti vSAN hostitele ESXi.
 * **NsxtEdgeUplink1**. SÍŤ VLAN a podsíť pro odchozí připojení VLAN k externí síti.
 * **NsxtEdgeUplink2**. SÍŤ VLAN a podsíť pro odchozí připojení VLAN k externí síti.
 * **NsxtEdgeTransport**. SÍŤ VLAN a podsíť pro transportní zóny řídí dosah sítí vrstvy 2 v NSX-T.
@@ -80,6 +80,6 @@ Příklad:
 | NSX – T Edge Uplink1 | 192.168.7.224/28 | 192.168.3.224/28 | 192.168.1.224/28 | 192.168.0.224/28 |
 | NSX – T Edge uplink2 | 192.168.7.240/28 | 192.168.3.240/28 | 192.168.1.240/28 | 192.168.0.240/28 |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytváření a správa sítí VLAN a podsítí](create-vlan-subnet.md)

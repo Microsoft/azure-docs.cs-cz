@@ -1,113 +1,93 @@
 ---
 title: Technologie a řešení Azure Internet věcí (IoT)
-description: Představuje kolekci technologií a řešení PaaS či SaaS, které jsou k dispozici pro sestavení řešení Azure IoT.
+description: Popisuje shromažďování technologií a služeb, které můžete použít k sestavení řešení Azure IoT.
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: dd80095f50aa7bff488ac24e498afc0b41958dc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457169"
 ---
-# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>Technologie Internetu věcí (IoT) a řešení: PaaS a SaaS
+# <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>Technologie a služby Azure pro vytváření řešení IoT
 
-Microsoft sestavil portfolio, které vyhovuje potřebám všech zákazníků a umožňuje jim přístup k výhodám digitální transformace. Produktové portfolio Azure IoT je přehledem dostupných technologií a řešení PaaS či SaaS. Představuje dvě cesty, kterými se můžete při sestavování vlastního řešení vydat:
+Technologie a služby Azure IoT poskytují možnosti pro vytváření nejrůznějších řešení IoT, která umožňují digitální transformaci vaší organizace. Můžete například provést následující věci:
 
-- Platforma jako služba (PaaS): Svou aplikaci můžete sestavit s využitím jakékoli z následujících služeb.
-    - [Akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com/), což je kolekce předkonfigurovaných řešení na podnikové úrovni, která umožňuje zrychlit vývoj vlastních řešení IoT. 
-    - Služba [Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/), která umožňuje vymodelovat fyzické prostředí pro vytváření řešení IoT přizpůsobených kontextu s využitím grafu prostorové inteligence a objektových modelů specifických pro doménu.
+- Pomocí služby [Azure IoT Central](https://apps.azureiotcentral.com), spravované aplikační platformy IoT můžete sestavovat a nasazovat zabezpečené řešení IoT na podnikové úrovni. IoT Central nabízí kolekci šablon aplikací specifických pro odvětví, jako je maloobchodní a zdravotní péče, k urychlení procesu vývoje vašeho řešení.
+- Pokud chcete implementovat běžný scénář IoT, jako je vzdálené monitorování nebo prediktivní údržba, rozšíříte základ Open-Source kódu pro [akcelerátor řešení](https://www.azureiotsolutions.com) Azure IoT.
+- Využijte služby Azure IoT Platform, jako je [azure IoT Hub](../iot-hub/about-iot-hub.md) a sady [SDK pro zařízení Azure IoT](../iot-hub/iot-hub-devguide-sdks.md) , abyste vytvořili vlastní řešení IoT od začátku.
 
-- Software jako služba (SaaS): začněte rychleji díky [Azure IoT Central](https://azure.microsoft.com/services/iot-central/), což je nové řešení SaaS pro vývoj aplikací IoT, aniž byste se museli vystavit složitosti řešení IoT. Pokud vaše organizace nemá dostatek prostředků na vytvoření vlastního řešení IoT, využijte Azure IoT Central, což je řešení IoT bez kódu, které dokáže vytvořit modely zařízení, řídicí panely a pravidla v řádech minut.
+![Technologie, služby a řešení Azure IoT](./media/iot-services-and-technologies/iot-technologies-services.png)
 
-![Technologie a řešení Azure IoT](./media/iot-services-and-technologies/paas-saas-technologies-solutions.png)
+## <a name="azure-iot-central"></a>Azure IoT Central
 
-## <a name="solutions"></a>Řešení
+[IoT Central aplikační platforma](https://apps.azureiotcentral.com) snižuje zatížení a náklady na vývoj, správu a údržbu řešení IoT na podnikové úrovni. Přizpůsobitelné webové uživatelské rozhraní IoT Central v nástroji umožňuje monitorovat podmínky zařízení, vytvářet pravidla a spravovat miliony zařízení a jejich data v průběhu svého životního cyklu. Plocha rozhraní API v rámci IoT Central poskytuje programový přístup ke konfiguraci a interakci s řešením IoT.
 
-Nabídky SaaS a akcelerátory řešení vám umožní rychle se pustit do práce. Vyberte si z předkonfigurovaných řešení, které umožňují využívat běžné scénáře IoT, jako je vzdálené monitorování, prediktivní údržba a propojená továrna, a vytvořte plně přizpůsobitelné řešení. Nebo použijte plně spravované řešení Azure IoT Central, které umožňuje využívat výkonné scénáře IoT a nevyžaduje přitom zkušenosti s cloudovými řešeními.
+Azure IoT Central je plně spravovaná aplikační platforma, kterou můžete použít k vytvoření vlastních řešení IoT. IoT Central používá šablony aplikací k vytváření řešení. Existují šablony pro obecná řešení a pro konkrétní obory, jako je energie, zdravotnictví, státní správa a maloobchod. IoT Central šablony aplikací vám umožní nasadit IoT Central aplikaci během několika minut, kterou pak můžete přizpůsobit pomocí motivů, řídicích panelů a zobrazení.
 
-### <a name="azure-iot-solution-accelerators-paas"></a>Akcelerátory řešení Azure IoT (PaaS)
+Vyberte zařízení z [katalogu zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com) , abyste se mohli rychle připojit k vašemu řešení. Pomocí webového uživatelského rozhraní IoT Central můžete monitorovat a spravovat svoje zařízení, abyste je zachovali v pořádku a připojili. Pomocí konektorů a rozhraní API můžete svou aplikaci IoT Central integrovat s jinými podnikovými aplikacemi.
 
-Akcelerátory řešení Azure IoT Suite jsou přizpůsobitelná řešení PaaS na podnikové úrovni, která zajišťují vysokou úroveň kontroly nad vaším řešením IoT. Pokud vaše firma implementuje IoT kvůli propojeným operacím nebo má konkrétní požadavky na přizpůsobení propojených produktů, akcelerátory řešení Azure IoT vám požadovanou kontrolu zajistí. 
+Jako plně spravovaná aplikační platforma má IoT Central jednoduchý a předvídatelný cenový model.
 
-Příkladem společností, kterým by mohly akcelerátory řešení Azure IoT prospět, jsou organizace s velkým počtem zařízení nebo modelů zařízení a výrobci, kteří hledají řešení propojené továrny. Akcelerátory řešení IoT vytváří vysoce přizpůsobitelná řešení upravená na míru komplexním potřebám a nabízejí: 
+## <a name="azure-iot-solution-accelerators"></a>Akcelerátory řešení Azure IoT
 
-- Předem sestavená řešení
-    - Vzdálené monitorování
-    - Propojená továrna
-    - Prediktivní údržba
-    - Simulace zařízení
-- Možnost nasazení v řádu minut
-- Zrychlená doba realizace
-- Řešení s absolutní kontrolou 
- 
-### <a name="azure-iot-central-saas"></a>Azure IoT Central (SaaS)
+[Akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com) představují kolekci přizpůsobitelných řešení na podnikové úrovni. Tato řešení můžete nasadit tak, jak jsou, nebo můžete vyvinout vlastní řešení IoT pomocí Open Source zdrojového kódu Java nebo .NET.
 
-Azure IoT Central je plně spravované řešení SaaS, které vám umožňuje rychle začít i s minimem zkušeností s IoT. Modely SaaS by pro vaše potřeby implementace IoT mohly být ideálním řešením, pokud vám tolik nezáleží na přizpůsobení a jde vám hlavně o rychlost. 
+Akcelerátory řešení Azure IoT poskytují vysokou úroveň kontroly nad řešením IoT. Akcelerátory řešení obsahují předem vytvořená řešení pro běžné scénáře IoT, které můžete nasadit do svého předplatného Azure během několika minut. Mezi tyto scénáře patří:
 
-Výhod IoT prostřednictvím přístupu SaaS mohou nyní využívat organizace s menším počtem modelů zařízení, větším množstvím předvídatelných scénářů a omezenými funkcemi IoT nebo IT. Podniky, které v minulosti neměly dostatek času, peněz nebo zkušeností na vývoj propojených produktů, nyní mohou díky Azure IoT Central rychle začít. Microsoft je špičkou svého odvětví v oblasti poskytování vyspělých řešení SaaS, která řeší běžné implementační požadavky IoT. 
+  - Vzdálené monitorování
+  - Propojená továrna
+  - Prediktivní údržba
+  - Simulace zařízení
 
-- Plně spravované IoT SaaS
-- Nevyžadují se znalosti vývoje cloudových řešení
-- Konfigurovatelnost podle vašich potřeb
-- Vhodné pro jednoduché potřeby IoT
+Základ Open-Source kódu pro všechny akcelerátory řešení je k dispozici na GitHubu. Stáhněte si kód pro přizpůsobení akcelerátoru řešení tak, aby splňoval konkrétní požadavky IoT.
 
-### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Porovnání akcelerátorů řešení Azure IoT a Azure IoT Central
+Akcelerátory řešení používají služby Azure, jako je Azure IoT Hub a Azure Storage, které musíte spravovat ve vašem předplatném Azure.
 
-Pokud chcete implementovat typickou [architekturu řešení IoT](/azure/iot-fundamentals/iot-introduction), nabízí vám Azure IoT několik možností – [akcelerátory řešení Azure IoT](/azure/iot-suite) a [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) –, které jsou vhodné pro různé sady zákaznických požadavků.
+## <a name="custom-solutions"></a>Vlastní řešení
 
-Služba [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) představuje základní Azure PaaS a využívají ji Azure IoT Central i akcelerátory řešení Azure IoT. IoT Hub umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení IoT a cloudovým řešením. IoT Hub pomáhá plnit náročné úkoly implementace problémy, jako jsou:
+Pokud chcete vytvořit řešení IoT od začátku nebo rozšíříte řešení vytvořené pomocí IoT Central nebo akcelerátoru řešení, použijte jednu nebo více z následujících technologií a služeb Azure IoT:
+
+### <a name="devices"></a>Zařízení
+
+Pomocí sady [Azure IoT Starter Kit](https://catalog.azureiotsolutions.com/kits) můžete vyvíjet zařízení IoT nebo si vybrat zařízení, které chcete použít v [katalogu zařízení s certifikací Azure Certified for IoT](https://catalog.azureiotsolutions.com). Implementujte vložený kód pomocí [sad SDK](../iot-hub/iot-hub-devguide-sdks.md)Open Source zařízení. Sady SDK pro zařízení podporují více operačních systémů, například Linux, Windows a operační systémy v reálném čase. Existují sady SDK pro více programovacích jazyků, například [C](https://github.com/Azure/azure-iot-sdk-c), [Node. js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp)a [Python](https://github.com/Azure/azure-iot-sdk-python).
+
+Můžete ještě více zjednodušit vytváření vloženého kódu pro vaše zařízení pomocí služby [IoT technologie Plug and Play ve verzi Preview](../iot-pnp/overview-iot-plug-and-play.md) . IoT technologie Plug and Play umožňuje vývojářům řešení integrovat zařízení s jejich řešeními bez psaní vloženého kódu. V jádru IoT technologie Plug and Play je schéma _modelu schopností zařízení_ , které popisuje možnosti zařízení. Pomocí modelu schopností zařízení vygenerujte svůj integrovaný kód zařízení a nakonfigurujte cloudové řešení, jako je například aplikace IoT Central.
+
+[Azure IoT Edge](../iot-edge/about-iot-edge.md) umožňuje přesměrovat části úlohy IoT z cloudových služeb Azure na vaše zařízení. IoT Edge může snížit latenci ve vašem řešení, omezit objem dat, která vaše zařízení vyměňuje s cloudem, a povolit online scénáře. Zařízení IoT Edge můžete spravovat z IoT Central a některých akcelerátorů řešení.
+
+[Azure sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) je zabezpečená špičková aplikační platforma s integrovanými komunikačními funkcemi a funkcemi zabezpečení pro zařízení připojená k Internetu. Zahrnuje zabezpečenou mikrokontrolerů jednotku, vlastní operační systém Linux a cloudovou službu zabezpečení, která poskytuje nepřetržité a obnovitelné zabezpečení.
+
+### <a name="cloud-connectivity"></a>Cloudové připojení
+
+Služba [Azure IoT Hub](../iot-hub/about-iot-hub.md) umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení IoT a cloudovým řešením. [Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md) je pomocná služba pro IoT Hub. Služba poskytuje v pravém centru IoT samoobslužné zřizování zařízení za běhu bez nutnosti zásahu člověka. Tyto možnosti umožňují zákazníkům zabezpečeným a škálovatelným způsobem zřizovat miliony zařízení.
+
+IoT Hub je základní součástí akcelerátorů řešení a můžete ji použít ke splnění výzev implementace IoT, jako jsou:
 
 * Správa a připojení zařízení velkého rozsahu
 * Ingestování telemetrie velkého rozsahu
 * Příkazy a ovládání zařízení
 * Vynucení zabezpečení zařízení
 
-Volba produktu Azure IoT je důležitou součástí plánování řešení IoT. IoT Hub je individuální služba Azure, která sama o sobě neposkytuje kompletní řešení IoT. Službu IoT Hub můžete použít jako výchozí bod pro jakékoli řešení IoT a k jejímu využití nepotřebujete akcelerátory řešení Azure IoT ani Azure IoT Central. Akcelerátory řešení Azure IoT i Azure IoT Central využívají službu IoT Hub společně s dalšími službami Azure. Následující tabulka shrnuje hlavní rozdíly mezi akcelerátory řešení Azure IoT a Azure IoT Central a pomůže vám při výběru vhodné varianty pro vaše požadavky:
+### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>Přemostění mezery mezi fyzickým a digitálním světů
 
-|                        | Akcelerátory řešení Azure IoT | Azure IoT Central |
-| ---------------------- | --------- | ----------- |
-| Primární využití | Ke zrychlení vývoje vlastního řešení IoT, které vyžaduje maximální flexibilitu | Ke zkrácení doby uvedení na trh pro jednoduchá řešení IoT, která nevyžadují rozsáhlá přizpůsobení služeb |
-| Přístup k podkladovým službám PaaS          | Máte přístup k podkladovým službám Azure a můžete je spravovat nebo podle potřeby vyměnit. | SaaS. Plně spravovaná řešení, podkladové služby nejsou zveřejněné. |
-| Flexibilita            | Vysoká. Kód pro mikroslužby je typu open source a můžete ho upravit libovolným způsobem podle svých potřeb. Kromě toho můžete přizpůsobit infrastrukturu nasazení.| Střední. Můžete využít předdefinované uživatelské prostředí založené na prohlížeči a přizpůsobit model řešení a aspekty uživatelského rozhraní. Infrastrukturu nejde přizpůsobit, protože jednotlivé komponenty se nezveřejňují.|
-| Úroveň dovedností                 | Středně vysoká. K přizpůsobení back-endu řešení potřebujete znalosti Javy nebo .NET. K přizpůsobení vizualizace potřebujete znalosti JavaScriptu. | Nízká. K přizpůsobení řešení potřebujete znalosti modelování. Znalosti kódování nejsou potřeba. |
-| Úvodní prostředí | Akcelerátory řešení implementují běžné scénáře IoT. Je možné je nasadit v řádu minut. | Šablony aplikací a šablony zařízení poskytují předdefinované modely. Je možné je nasadit v řádu minut. |
-| Ceny                | Služby můžete doladit tak, abyste měli náklady pod kontrolou. | Jednoduchá a předvídatelná struktura cena. |
+[Digitální vlákna Azure](../digital-twins/about-digital-twins.md) je služba IoT, která umožňuje modelovat fyzické prostředí. K modelování vztahů mezi lidmi, mezerami a zařízeními používá graf prostorového zpravodajství. Pomocí spolusouvisejících dat napříč digitálními i fyzickými světů můžete vytvářet kontextová řešení s podporou.
 
-Rozhodnutí, který produkt využít k sestavení vašeho řešení IoT, určují hlavně:
-
-* Vaše obchodní požadavky
-* Typ řešení, které chcete sestavit
-* Dovednosti vaší organizace v oblasti sestavování a dlouhodobé správy řešení
-
-## <a name="technologies-paas"></a>Technologie (PaaS)
-
-Díky nejucelenějšímu portfoliu IoT se službami platformy, vám technologie typu platforma jako služba (PaaS), které se rozpínající napříč platformou Azure, umožňují snadno vytvářet, přizpůsobovat, a ovládat všechny aspekty řešení IoT. Navažte obousměrnou komunikaci s miliardami zařízení IoT a spravujte svá zařízení IoT ve velkém měřítku. Poté integrujte data zařízení IoT s ostatními službami platformy, jako je Azure Cosmos DB a Azure Time Series Insights, a vylepšete přehledy v celém řešení. 
-
-### <a name="device-support"></a>Podpora zařízení
-
-S důvěrou začněte svůj projekt IoT použitím [úvodních sad Azure IoT](https://catalog.azureiotsolutions.com/kits) nebo výběrem ze stovek zařízení Certified for IoT v [katalogu zařízení](https://catalog.azureiotsolutions.com/). Všechna zařízení jsou nezávislá na konkrétní platformě a prošla testy bezproblémového připojení k Centru IoT.
-Připojte všechna svoje zařízení k Azure IoT pomocí [sad SDK pro zařízení](/azure/iot-hub/iot-hub-devguide-sdks) typu open source. Sady SDK podporují více operačních systémů, například Linux, Windows a operační systémy pracující v reálném čase, a také více programovacích jazyků, například [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp) a [Python](https://github.com/Azure/azure-iot-sdk-python).
-
-### <a name="iot"></a>IoT 
-[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) je plně spravovaná služba, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení IoT a back-endem řešení. Služba Azure IoT Hub Device Provisioning je pomocná služba pro IoT Hub. Umožňuje plně automatizované zřizování za běhu ve správném IoT Hubu, které nevyžaduje zásah člověka. Zákazníci tak mohou bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
-
-### <a name="edge"></a>Edge
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) je služba IoT. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních, jinými slovy „na hraničních zařízeních“. Když přesunete část úloh na hraniční zařízení, snížíte tím latenci a získáte možnost offlinových scénářů.
-
-### <a name="spatial-intelligence"></a>Prostorová inteligence
-[Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) je služba IoT, která umožňuje vytvořit model fyzického prostředí. Poskytuje graf prostorové inteligence pro modelování vztahů mezi lidmi, prostory a zařízeními. Díky korelaci dat z digitálního a fyzického světa můžete vytvářet řešení přizpůsobená kontextu.  
+IoT Central používá digitální vlákna k synchronizaci zařízení a dat v reálném světě s digitálními modely, které uživatelům umožňují monitorovat a spravovat tato připojená zařízení.
 
 ### <a name="data-and-analytics"></a>Data a analýza
-Využijte ve svém řešení IoT řady nabídek PaaS pro produkty Azure pro data a analýzu. Máte na výběr řešení od přesunutí inteligentních cloudových funkcí do hraničních zařízení pomocí služby Azure Machine Learning, přes uložení dat zařízení IoT nákladově výhodným způsobem pomocí služby Azure Data Lake, až po vizualizaci obrovského množství dat ze zařízení IoT pomocí služby [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/).
 
-### <a name="visualization-and-integration"></a>Vizualizace a integrace
-Microsoft Azure nabízí úplné cloudové řešení, které kombinuje neustále rostoucí kolekci integrovaných cloudových služeb se závazkem ohledně špičkové ochrany a soukromí vašich dat. Další informace o [Microsoft Azure](https://azure.microsoft.com/).
+Zařízení IoT typicky generují velké objemy dat časových řad, jako je například čtení teploty ze senzorů. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) se můžou připojit ke službě IoT Hub, číst datový proud telemetrie z vašich zařízení, ukládat tato data a používat je k dotazování a vizualizaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete rychle a snadno prozkoumat funkce IoT, podívejte se do [části Začínáme v dokumentaci služby IoT Hub](/azure/iot-hub/iot-hub-get-started). Pokud stojíte o podrobnější praktické zkušenosti, vyzkoušejte jeden z [kurzů o službě IoT Edge](/azure/iot-edge/tutorial-simulate-device-windows).
+Pro praktické prostředí zkuste použít jeden z rychlých startů:
+
+- [Vytvoření aplikace Azure IoT Central](../iot-central/core/quick-deploy-iot-central.md)
+- [Odeslání telemetrie ze zařízení do služby IoT Hub](../iot-hub/quickstart-send-telemetry-cli.md)
+- [Vyzkoušení cloudového řešení pro vzdálené monitorování](../iot-accelerators/quickstart-remote-monitoring-deploy.md)

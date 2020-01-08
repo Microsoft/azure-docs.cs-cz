@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 0c243d216e00adf49a6425e5b7be0d38caeef043
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929047"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658538"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -35,7 +35,7 @@ Vaše migrace může pomáhat několik open-source nástrojů v závislosti na v
 
 * [Velero](https://velero.io/) (vyžaduje Kubernetes 1.7 +)
 * [Rozšíření CLI Azure Kube](https://github.com/yaron2/azure-kube-cli)
-* [Posunutí](https://github.com/mhausenblas/reshifter)
+* [ReShifter](https://github.com/mhausenblas/reshifter)
 
 V tomto článku shrnujeme podrobnosti o migraci pro:
 
@@ -91,7 +91,7 @@ Vzhledem k tomu, že během migrace budou do svého předplatného nasazené dal
 
 Možná budete muset požádat o zvýšení [kvót sítě](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) , abyste se ujistili, že nevyčerpáte IP adresy. Další informace najdete v tématu [sítě a rozsahy IP adres pro AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) .
 
-Další informace najdete v tématu [omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits). Pokud chcete zjistit aktuální kvóty, v Azure Portal v okně pro [předplatné](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)vyberte své předplatné a pak vyberte **využití + kvóty**.
+Další informace najdete v tématu [omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Pokud chcete zjistit aktuální kvóty, v Azure Portal v okně pro [předplatné](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)vyberte své předplatné a pak vyberte **využití + kvóty**.
 
 ## <a name="high-availability-and-business-continuity"></a>Vysoká dostupnost a provozní kontinuita
 
@@ -124,7 +124,7 @@ Pokud používáte Azure Managed Disks, můžete disk připojit pouze v případ
 Pokud ani jeden z těchto přístupů nefunguje, můžete použít možnosti zálohování a obnovení:
 * [Velero v Azure](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
 
-#### <a name="azure-files"></a>Soubory Azure
+#### <a name="azure-files"></a>Azure Files
 
 Na rozdíl od disků je možné soubory Azure připojit k více hostitelům současně. V clusteru AKS vám Azure a Kubernetes nebrání v vytváření pod tím, že váš cluster ACS stále používá. Aby nedošlo ke ztrátě dat a neočekávanému chování, zajistěte, aby clustery nepsaly do stejných souborů současně.
 

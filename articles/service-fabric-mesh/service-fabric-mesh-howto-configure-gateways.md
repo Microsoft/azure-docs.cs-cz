@@ -1,25 +1,17 @@
 ---
-title: Konfigurace brány na požadavky směrování | Microsoft Docs
+title: Konfigurace brány na požadavky směrování
 description: Zjistěte, jak nakonfigurovat bránu, která zpracovává příchozí provoz pro vaše aplikace běžící na Service Fabric síti.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b4fc6f91ee2429205974b9cb7ceb05b7cff53f15
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034212"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461964"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány na požadavky směrování
 
@@ -29,16 +21,16 @@ Prostředky brány musí být deklarovány jako součást šablony nasazení (JS
 
 ## <a name="options-for-configuring-your-gateway-resource"></a>Možnosti konfigurace prostředku brány
 
-Vzhledem k tomu, že prostředek brány slouží jako most mezi sítí vaší aplikace a sítí základní infrastruktury ( `open` sítě). Měli byste jenom nakonfigurovat jenom jednu bránu (ve verzi Preview, což je limit jedné brány na aplikaci). Deklarace prostředku se skládá ze dvou hlavních částí: metadata prostředku a vlastnosti. 
+Vzhledem k tomu, že prostředek brány slouží jako most mezi sítí vaší aplikace a sítí základní infrastruktury (`open` síť). Měli byste jenom nakonfigurovat jenom jednu bránu (ve verzi Preview, což je limit jedné brány na aplikaci). Deklarace prostředku se skládá ze dvou hlavních částí: metadata prostředku a vlastnosti. 
 
 ### <a name="gateway-resource-metadata"></a>Metadata prostředku brány
 
 Brána je deklarována s následujícími metadaty:
-* `apiVersion`– musí být nastavené na "2018-09-01-Preview" (nebo novější), a to v budoucnu.
-* `name`– název řetězce pro tuto bránu
-* `type`– "Microsoft. ServiceFabricMesh/gateways"
-* `location`– mělo by být nastavené na umístění vaší aplikace nebo sítě; obvykle bude odkaz na parametr Location v nasazení
-* `dependsOn`– síť, pro kterou bude tato brána sloužit jako vstupní bod pro
+* `apiVersion` – musí být nastavené na "2018-09-01-Preview" (nebo novější), a to v budoucnu.
+* `name` – název řetězce pro tuto bránu
+* `type`-"Microsoft. ServiceFabricMesh/gateways"
+* `location` – musí být nastavené na umístění vaší aplikace nebo sítě; obvykle bude odkaz na parametr Location v nasazení
+* `dependsOn` – síť, pro kterou bude tato brána sloužit jako vstupní bod pro
 
 Tady je postup, jak vypadá v šabloně nasazení Azure Resource Manager (JSON): 
 
@@ -87,9 +79,9 @@ Pravidla směrování se zadává na základě jednotlivých portů. Každý por
 #### <a name="tcp-routing-rules"></a>Pravidla směrování TCP 
 
 Pravidlo směrování TCP se skládá z následujících vlastností: 
-* `name`– odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
-* `port`– port, na kterém se má naslouchat příchozím žádostem 
-* `destination`– specifikace koncového bodu `applicationName`, `serviceName`která zahrnuje `endpointName`, a, kde je potřeba směrovat požadavky na
+* `name` – odkaz na pravidlo, které může být libovolný libovolný řetězec podle vašeho výběru 
+* `port` – port, na kterém se má naslouchat příchozím žádostem 
+* specifikace `destination`-Endpoint, která zahrnuje `applicationName`, `serviceName`a `endpointName`, pro které se požadavky musí směrovat na
 
 Tady je příklad pravidla směrování TCP:
 
@@ -114,18 +106,18 @@ Tady je příklad pravidla směrování TCP:
 #### <a name="http-routing-rules"></a>Pravidla směrování protokolu HTTP 
 
 Pravidlo směrování protokolu HTTP se skládá z následujících vlastností: 
-* `name`– odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
-* `port`– port, na kterém se má naslouchat příchozím žádostem 
-* `hosts`– pole zásad, které se vztahují na požadavky přicházející do různých hostitelů na výše uvedeném portu. Hostitelé jsou sada aplikací a služeb, které mohou být spuštěny v síti a mohou obsluhovat příchozí požadavky, tj. webovou aplikaci. Zásady hostitele jsou interpretovány v pořadí, takže byste měli vytvořit následující v sestupných úrovních specifičnosti.
-    * `name`– název DNS hostitele, pro který jsou zadána následující pravidla směrování. Pomocí tohoto postupu "*" můžete vytvořit pravidla směrování pro všechny hostitele.
-    * `routes`– pole zásad pro tohoto konkrétního hostitele
-        * `match`– specifikace příchozí struktury požadavků pro toto pravidlo, které se má použít, na základě`path`
-            * `path`-obsahuje `value` (příchozí identifikátor URI `rewrite` ) (jak chcete přesměrovat požadavek) a `type` (může aktuálně být jenom "prefix").
-            * `header`– je volitelná hodnota pole hlaviček, která se má shodovat s hlavičkou požadavku, pokud požadavek odpovídá specifikaci cesty (výše).
-              * Každá položka obsahuje `name` (název řetězce záhlaví, který se má shodovat) `value` , (Řetězcová hodnota hlavičky v `type` žádosti) a a (aktuálně může být pouze "přesný").
-        * `destination`– Pokud požadavek odpovídá, bude směrován do tohoto cíle, který je určen pomocí `applicationName`, `serviceName`a.`endpointName`
+* `name` – odkaz na pravidlo, které může být libovolný libovolný řetězec podle vašeho výběru 
+* `port` – port, na kterém se má naslouchat příchozím žádostem 
+* `hosts` – pole zásad, které se vztahují na požadavky přicházející do různých hostitelů na výše uvedeném portu. Hostitelé jsou sada aplikací a služeb, které mohou být spuštěny v síti a mohou obsluhovat příchozí požadavky, tj. webovou aplikaci. Zásady hostitele jsou interpretovány v pořadí, takže byste měli vytvořit následující v sestupných úrovních specifičnosti.
+    * `name` – název DNS hostitele, pro který jsou zadána následující pravidla směrování. Pomocí tohoto postupu "*" můžete vytvořit pravidla směrování pro všechny hostitele.
+    * `routes` – pole zásad pro tohoto konkrétního hostitele
+        * `match` – specifikace příchozí struktury požadavků pro toto pravidlo, které se má použít, na základě `path`
+            * `path` – obsahuje `value` (příchozí identifikátor URI), `rewrite` (jak chcete přesměrovat požadavek), a `type` (aktuálně může být jenom "prefix").
+            * `header` – je volitelná hodnota pole hlaviček, která se má shodovat s hlavičkou požadavku, a to v případě, že požadavek odpovídá specifikaci cesty (výše).
+              * Každá položka obsahuje `name` (název řetězce hlavičky, který se má shodovat), `value` (Řetězcová hodnota hlavičky v žádosti) a `type` (aktuálně může být pouze "přesný").
+        * `destination` – Pokud požadavek odpovídá, bude směrován do tohoto cíle, který je zadaný pomocí `applicationName`, `serviceName`a `endpointName`
 
-Tady je příklad pravidla směrování protokolu HTTP, které se vztahuje na žádosti přicházející na port 80 na všechny hostitele obsluhované aplikacemi v této síti. Má-li adresa URL požadavku strukturu, která odpovídá specifikaci cesty, tj. `<IPAddress>:80/pickme/<requestContent>`, pak bude přesměrována `myListener` do koncového bodu.  
+Tady je příklad pravidla směrování protokolu HTTP, které se vztahuje na žádosti přicházející na port 80 na všechny hostitele obsluhované aplikacemi v této síti. Má-li adresa URL požadavku strukturu, která odpovídá specifikaci cesty, tj. `<IPAddress>:80/pickme/<requestContent>`, bude přesměrována do koncového bodu `myListener`.  
 
 ```json
 "properties": {
@@ -227,8 +219,8 @@ Tady je postup, jak vypadá úplná konfigurace prostředku brány (Tato akce je
 ```
 
 Tato brána je nakonfigurovaná pro aplikaci pro Linux, "meshAppLinux", která se skládá z aspoň dvou služeb, "helloWorldService" a "counterService", která naslouchá na portu 80. V závislosti na struktuře adresy URL příchozího požadavku bude požadavek směrovat na jednu z těchto služeb. 
-* "\<IPAddress >: 80/helloWorld/\<Request\>" by způsobil přesměrování požadavku na "helloWorldListener" v helloWorldService. 
-* "\<IPAddress >: 80/Counter/\<Request\>" by způsobil přesměrování požadavku na "counterListener" v counterService. 
+* "\<IPAddress >: 80/Hello/\<Request\>" by byl požadavek směrován na "helloWorldListener" v helloWorldService. 
+* "\<IPAddress >: 80/čítač/\<žádosti\>" by byl požadavek směrován na "counterListener" v counterService. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Nasazením [ukázky](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) příchozího přenosu dat zobrazíte brány v akci.

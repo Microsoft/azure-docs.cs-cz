@@ -1,18 +1,18 @@
 ---
-title: Omezení přístupu pro IP adresy
-description: Seznamte se s postupem zabezpečení aplikace v Azure App Service výslovně povolenými IP adresami klientů nebo rozsahy adres.
+title: Omezení přístupu Azure App Service
+description: Přečtěte si, jak zabezpečit aplikaci v Azure App Service zadáním omezení přístupu.
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672185"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422227"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service #
 
@@ -24,7 +24,7 @@ Po podání žádosti do vaší aplikace se adresa z vyhodnotí na základě pra
 
 Funkce omezení přístupu je implementovaná v App Service rolích front-endu, které jsou v nadřazeném hostiteli hostitele, kde se váš kód spouští. Proto jsou omezení přístupu efektivně v síti seznamy ACL.
 
-Možnost omezit přístup k vaší webové aplikaci z Azure Virtual Network (VNet) se nazývá [koncové body služby][serviceendpoints]. Koncové body služby umožňují omezit přístup ke službě pro více tenantů z vybraných podsítí. Musí být povolená jak na straně sítě, tak i na službě, se kterou se povoluje. Nefunguje tak, aby se omezil provoz na aplikace, které jsou hostované v App Service Environment.  Pokud jste v App Service Environment, můžete řídit přístup k aplikaci pomocí pravidel IP adres.
+Možnost omezit přístup k vaší webové aplikaci z Azure Virtual Network (VNet) se nazývá [koncové body služby][serviceendpoints]. Koncové body služby umožňují omezit přístup ke službě pro více tenantů z vybraných podsítí. Musí být povolená jak na straně sítě, tak i na službě, se kterou se povoluje. Nefunguje tak, aby se omezil provoz na aplikace, které jsou hostované v App Service Environment. Pokud jste v App Service Environment, můžete řídit přístup k aplikaci pomocí pravidel IP adres.
 
 ![tok omezení přístupu](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -58,7 +58,7 @@ Koncové body služby umožňují omezit přístup k vybraným podsítím virtu�
 
 Koncové body služby nelze použít k omezení přístupu k aplikacím, které běží v App Service Environment. Když je vaše aplikace v App Service Environment, můžete řídit přístup k aplikaci pomocí pravidel přístupu IP. 
 
-Pomocí koncových bodů služby můžete nakonfigurovat aplikaci pomocí aplikačních bran nebo jiných zařízení WAF. Vícevrstvé aplikace můžete konfigurovat také pomocí zabezpečených back-endu. Další informace o některých možnostech najdete v článku [funkce sítě a App Service](networking-features.md).
+Pomocí koncových bodů služby můžete nakonfigurovat aplikaci pomocí aplikačních bran nebo jiných zařízení WAF. Vícevrstvé aplikace můžete konfigurovat také pomocí zabezpečených back-endu. Další informace o některých možnostech najdete v článku [funkce sítě a App Service](networking-features.md) a [Application Gateway integraci s koncovými body služby](networking/app-gateway-with-service-endpoints.md).
 
 ## <a name="managing-access-restriction-rules"></a>Správa pravidel omezení přístupu
 
@@ -90,34 +90,49 @@ Kromě toho, že je možné řídit přístup k vaší aplikaci, můžete také 
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programová manipulace s pravidly omezení přístupu ##
 
-Pro nová omezení přístupu momentálně není k dispozici žádný CLI ani PowerShell, ale hodnoty je možné nastavit ručně pomocí operace Put služby [Azure REST API](https://docs.microsoft.com/rest/api/azure/) Put v konfiguraci aplikace v Správce prostředků. Jako příklad můžete použít resources.azure.com a upravit blok ipSecurityRestrictions pro přidání požadovaného formátu JSON.
+[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) a [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) podporují úpravy omezení přístupu. Příklad přidání omezení přístupu pomocí Azure CLI:
+
+```azurecli-interactive
+az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
+    --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
+```
+Příklad přidání omezení přístupu pomocí Azure PowerShell:
+
+```azurepowershell-interactive
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName"
+    -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
+```
+
+Hodnoty lze také ručně nastavit pomocí operace Put služby [Azure REST API](https://docs.microsoft.com/rest/api/azure/) Put v konfiguraci aplikace v Správce prostředků nebo pomocí šablony Azure Resource Manager. Jako příklad můžete použít resources.azure.com a upravit blok ipSecurityRestrictions pro přidání požadovaného formátu JSON.
 
 Umístění pro tyto informace v Správce prostředků:
 
 **ID předplatného**Management.Azure.com/Subscriptions//resourceGroups/**skupiny prostředků**/Providers/Microsoft.Web/Sites/**název webové aplikace**/config/Web? API-Version = 2018-02-01
 
 Syntaxe JSON pro předchozí příklad je:
-
-    {
-      "properties": {
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "122.133.144.0/24",
-            "action": "Allow",
-            "tag": "Default",
-            "priority": 100,
-            "name": "IP example rule"
-          }
-        ]
+```json
+{
+  "properties": {
+    "ipSecurityRestrictions": [
+      {
+        "ipAddress": "122.133.144.0/24",
+        "action": "Allow",
+        "priority": 100,
+        "name": "IP example rule"
       }
-    }
+    ]
+  }
+}
+```
 
-## <a name="function-app-ip-restrictions"></a>Function App omezení IP adres
+## <a name="azure-function-app-access-restrictions"></a>Omezení přístupu k Azure Function App
 
-Omezení IP adres jsou k dispozici pro aplikace Function App se stejnou funkcí jako App Service plány. Povolením omezení IP adres zakážete Editor kódu na portálu pro jakékoli nepovolené IP adresy.
+Pro aplikace Function App jsou k dispozici omezení přístupu se stejnými funkcemi jako App Service plány. Povolením omezení přístupu se zakáže Editor kódu portálu pro jakékoli nepovolené IP adresy.
 
-[Další informace](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+## <a name="next-steps"></a>Další kroky
+[Omezení přístupu pro aplikace Function Azure](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
+[Integrace Application Gateway s koncovými body služby](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
 [serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

@@ -1,5 +1,6 @@
 ---
-title: Rychlé zprovoznění řešení Azure VMware podle CloudSimple – vytvoření privátního cloudu
+title: 'Rychlý Start: Vytvoření privátního cloudu'
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Naučte se vytvářet a konfigurovat privátní cloud pomocí řešení Azure VMware od CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e4890186022842179ef4b66c03db03dd9b58a3d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452392"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
 
@@ -139,7 +140,7 @@ Po vytvoření privátního cloudu Vytvořte síť VLAN, do které budete nasazo
 5. Ze seznamu vyberte ID sítě VLAN.  
 6. Zadejte název podsítě pro identifikaci podsítě.
 7. Zadejte rozsah a masku směrování mezi podsítěmi.  Tento rozsah se nesmí překrývat s žádnými stávajícími podsítěmi.
-8. Klikněte na **Odeslat**.
+8. Klikněte na **Submit** (Odeslat).
 
     ![Vytvořit podrobnosti o síti VLAN nebo podsíti](media/create-new-vlan-subnet-details.png)
 

@@ -1,21 +1,21 @@
 ---
-title: Vizualizace anomálií s využitím dávkového zjišťování a Power BI
+title: 'Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI'
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API detektoru anomálií a Power BI Vizualizujte anomálie v rámci vašich dat časových řad.
+description: Naučte se používat rozhraní API detektoru anomálií a Power BI k vizualizaci anomálií v rámci vašich dat časových řad.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: fa78e737cd863d19e294c5001dfd27b07760521f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840872"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448853"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Integrace Power BI Desktop s rozhraním API detektoru anomálií pro detekci anomálií služby Batch
 > * Vizualizujte anomálie nalezené v rámci vašich dat, včetně očekávaných a zobrazených hodnot a hranic detekce anomálií.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), k dispozici zdarma.
 * Excelový soubor (. xlsx), který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962) .
@@ -68,7 +68,7 @@ Ujistěte se, že je vybraný nový dotaz, a pak klikněte na **Rozšířený ed
 
 ![Obrázek tlačítka Rozšířený editor v Power BI](../media/tutorials/advanced-editor-screen.png)
 
-V Rozšířený editor použijte následující fragment kódu Power Query M k extrakci sloupců z tabulky a jejich odeslání do rozhraní API. Následně dotaz vytvoří tabulku z odpovědi JSON a vrátí ji. Nahraďte proměnnou `apiKey` platným klíčem rozhraní API detektoru anomálií a `endpoint` s vaším koncovým bodem. Po zadání dotazu do Rozšířený editor klikněte na **Hotovo**.
+V Rozšířený editor použijte následující fragment kódu Power Query M k extrakci sloupců z tabulky a jejich odeslání do rozhraní API. Následně dotaz vytvoří tabulku z odpovědi JSON a vrátí ji. Nahraďte `apiKey` proměnnou platným klíčem rozhraní API pro detekci anomálií a `endpoint` s vaším koncovým bodem. Po zadání dotazu do Rozšířený editor klikněte na **Hotovo**.
 
 ```M
 (table as table) => let
@@ -160,11 +160,11 @@ Na pravé straně okna Power BI pod podoknem **pole** klikněte pravým tlačít
 
 ![Obrázek nové obrazovky rychlé míry](../media/tutorials/new-quick-measure.png)
 
-Na obrazovce, která se zobrazí, vyberte **filtrovaná hodnota** jako výpočet. Nastavte **základní hodnotu** na `Sum of Value`. Potom přetáhněte `IsAnomaly` z **vyvolaných polí funkce** na **Filtr**. V rozevírací nabídce **Filtr** vyberte `True`.
+Na obrazovce, která se zobrazí, vyberte **filtrovaná hodnota** jako výpočet. Nastavte **základní hodnotu** na `Sum of Value`. Potom přetáhněte `IsAnomaly` z **vyvolaných polí funkcí** na **Filtr**. V rozevírací nabídce **Filtr** vyberte `True`.
 
 ![Obrázek nové obrazovky rychlé míry](../media/tutorials/new-quick-measure-2.png)
 
-Po kliknutí na **OK**budete mít pole `Value for True` v dolní části seznamu polí. Klikněte na něj pravým tlačítkem a přejmenujte ho na **anomálii**. Přidejte ho do **hodnot**grafu. Pak vyberte nástroj pro **formátování** a nastavte typ osy X na **kategorií**.
+Po kliknutí na **OK**budete mít pole `Value for True`, a to v dolní části seznamu polí. Klikněte na něj pravým tlačítkem a přejmenujte ho na **anomálii**. Přidejte ho do **hodnot**grafu. Pak vyberte nástroj pro **formátování** a nastavte typ osy X na **kategorií**.
 
 ![Obrázek nové obrazovky rychlé míry](../media/tutorials/format-x-axis.png)
 

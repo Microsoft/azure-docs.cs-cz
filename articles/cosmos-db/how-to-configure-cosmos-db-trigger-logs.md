@@ -1,17 +1,17 @@
 ---
-title: Konfigurace a čtení protokolů při použití triggeru Azure Functions pro Cosmos DB
+title: Konfigurace a čtení protokolů pomocí Azure Functions triggeru pro Cosmos DB
 description: Naučte se, jak vystavit protokoly do kanálu protokolování Azure Functions při použití triggeru Azure Functions pro Cosmos DB
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 17b2d4854e3222e5bdb607c6c80b0ec5ed6177d3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441832"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Jak nakonfigurovat a číst protokoly při použití triggeru Azure Functions pro Cosmos DB
 
@@ -25,7 +25,7 @@ Protokoly o stavu popisují, jak Azure Functions Trigger pro Cosmos DB při poku
 
 ## <a name="enabling-logging"></a>Povolení protokolování
 
-Pokud chcete povolit protokolování při použití triggeru Azure Functions pro Cosmos DB, `host.json` vyhledejte soubor v projektu Azure Functions nebo v aplikaci Azure functions a [nakonfigurujte úroveň požadovaného protokolování](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Je nutné povolit trasování pro `Host.Triggers.CosmosDB` , jak je znázorněno v následující ukázce:
+Pokud chcete povolit protokolování při použití triggeru Azure Functions pro Cosmos DB, vyhledejte soubor `host.json` v projektu Azure Functions nebo v Azure Functions aplikaci a [nakonfigurujte úroveň požadovaného protokolování](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Je nutné povolit trasování pro `Host.Triggers.CosmosDB`, jak je znázorněno v následující ukázce:
 
 ```js
 {
@@ -50,7 +50,7 @@ traces
 | where customDimensions.Category == "Host.Triggers.CosmosDB"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Povolte monitorování](../azure-functions/functions-monitoring.md) v aplikacích Azure Functions.
 * Naučte se [diagnostikovat a řešit běžné problémy](./troubleshoot-changefeed-functions.md) při použití triggeru Azure Functions pro Cosmos DB.

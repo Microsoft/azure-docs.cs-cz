@@ -11,18 +11,18 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 841041cb9fa20b034dd4522a5231813b71558bd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815800"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457804"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování Azure SQL Data Warehouse v Azure Portal
 
 Rychlé vytvoření a dotazování Azure SQL Data Warehouse pomocí Azure Portal.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!NOTE]
 > Vytvoření služby SQL Data Warehouse může znamenat, že se vám začne fakturovat nová služba. Další informace najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
@@ -37,7 +37,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
 
-Vytvoří se Azure SQL Data Warehouse s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-logical-servers.md). 
+Vytvoří se Azure SQL Data Warehouse s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-logical-servers.md). 
 
 Pomocí těchto kroků vytvořte SQL Data Warehouse obsahující ukázková data AdventureWorksDW. 
 
@@ -78,7 +78,7 @@ Pomocí těchto kroků vytvořte SQL Data Warehouse obsahující ukázková data
 
     ![konfigurace výkonu](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Klikněte na **Použít**.
+8. Klikněte na tlačítko **Použít**.
 
 9. Teď, když jste dokončili kartu základy formuláře SQL Data Warehouse, klikněte na **zkontrolovat + vytvořit** a zřiďte databázi. Zřizování trvá několik minut.
 
@@ -111,7 +111,7 @@ Služba SQL Data Warehouse vytvoří bránu firewall na úrovni serveru. Tato br
 
 1. Pokud chcete do nového pravidla brány firewall přidat svou aktuální IP adresu, klikněte na **Přidat IP adresu klienta** na panelu nástrojů. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-1. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
+1. Klikněte na možnost **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
 
 1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 

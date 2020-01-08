@@ -10,18 +10,23 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: d47f846f77d3552288dfea43b417d8c60856f41a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327889"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460417"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní Azure Time Series Insights API
 
 Tento dokument popisuje, jak zaregistrovat aplikaci v Azure Active Directory pomocí nového okna Azure Active Directory. Aplikace zaregistrované v Azure Active Directory umožňují uživatelům ověřování a autorizaci používat rozhraní API služby Azure Time Series Insights přidružené k prostředí Time Series Insights.
+
+> [!IMPORTANT]
+> Azure Time Series Insights podporuje obě následující knihovny ověřování:
+> * Novější [Knihovna Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Knihovna Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="service-principal"></a>Instanční objekt
 
@@ -76,74 +81,83 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
 
 ### <a name="client-app-initialization"></a>Inicializace klientské aplikace
 
-1. Použijte **ID aplikace** a **tajný klíč klienta** (aplikační klíč) z části registrace aplikace Azure Active Directory k získání tokenu jménem aplikace.
+* Vývojáři můžou k ověřování pomocí Azure Time Series Insights použít [knihovnu Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) nebo [knihovnu ověřování v knihovně ADAL (Azure Active Directory Authentication Library)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) .
 
-    V C#nástroji může následující kód získat token jménem aplikace. Úplnou ukázku najdete v tématu [dotazování na data C#pomocí ](time-series-insights-query-data-csharp.md).
+* Například pro ověřování pomocí ADAL:
 
-    ```csharp
-    // Enter your Active Directory tenant domain name
-    var tenant = "YOUR_AD_TENANT.onmicrosoft.com";
-    var authenticationContext = new AuthenticationContext(
-        $"https://login.microsoftonline.com/{tenant}",
-        TokenCache.DefaultShared);
+   1. Použijte **ID aplikace** a **tajný klíč klienta** (aplikační klíč) z části registrace aplikace Azure Active Directory k získání tokenu jménem aplikace.
 
-    AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-        // Set the resource URI to the Azure Time Series Insights API
-        resource: "https://api.timeseries.azure.com/",
-        clientCredential: new ClientCredential(
-            // Application ID of application registered in Azure Active Directory
-            clientId: "YOUR_APPLICATION_ID",
-            // Application key of the application that's registered in Azure Active Directory
-            clientSecret: "YOUR_CLIENT_APPLICATION_KEY"));
+   1. V C#nástroji může následující kód získat token jménem aplikace. Úplnou ukázku najdete v tématu [dotazování na data C#pomocí ](time-series-insights-query-data-csharp.md).
 
-    string accessToken = token.AccessToken;
-    ```
+        [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
-1. Token se pak může předat v hlavičce `Authorization`, když aplikace volá rozhraní API Time Series Insights.
+   1. Token se pak může předat v hlavičce `Authorization`, když aplikace volá rozhraní API Time Series Insights.
+
+* Alternativně se mohou vývojáři rozhodnout k ověřování pomocí MSAL. Další informace najdete v článku o [migraci na MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) . 
 
 ## <a name="common-headers-and-parameters"></a>Společné hlavičky a parametry
 
 Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP, které slouží k vytváření dotazů proti Time Series Insights rozhraní API GA a Preview. Požadavky na konkrétní rozhraní API jsou podrobněji popsány v [referenční dokumentaci Time Series Insights REST API](https://docs.microsoft.com/rest/api/time-series-insights/).
 
-### <a name="authentication"></a>Ověřování
+> [!TIP]
+> Další informace o tom, jak využívat rozhraní REST API, dělat požadavky HTTP a zpracovávat odpovědi HTTP, najdete v referenčních informacích k [Azure REST API](https://docs.microsoft.com/rest/api/azure/) .
+
+### <a name="authentication"></a>Ověření
 
 Aby bylo možné provádět ověřené dotazy proti [Time Series Insights rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#). 
-
-> [!IMPORTANT]
-> Token se musí vystavit přesně pro prostředek `https://api.timeseries.azure.com/` (označuje se také jako "cílová skupina" tokenu).
-> * Vaše [dodatečná](https://www.getpostman.com/) **AuthURLa** je proto vyhovující: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 
 > [!TIP]
 > Podívejte se na [ukázkovou vizualizaci sady SDK](https://tsiclientsample.azurewebsites.net/) hostovaného Azure Time Series Insights a zjistěte, jak pomocí rozhraní API [klienta pro JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) společně s grafy a grafy ověřit ověřování pomocí rozhraní API pro Time Series Insights prostřednictvím kódu programu.
 
 ### <a name="http-headers"></a>Hlavičky protokolu HTTP
 
-Požadované hlavičky žádosti:
+Požadované hlavičky požadavku jsou popsány níže.
 
-- `Authorization` pro ověřování a autorizaci musí být v autorizační hlavičce předán platný nosný token OAuth 2,0. Token se musí vystavit přesně pro prostředek `https://api.timeseries.azure.com/` (označuje se také jako "cílová skupina" tokenu).
+| Požadovaná hlavička žádosti | Popis |
+| --- | --- |
+| Autorizace | Chcete-li provést ověření pomocí Time Series Insights, musí být do **autorizační** hlavičky předána platný nosný token OAuth 2,0. | 
 
-Nepovinné hlavičky žádosti:
+> [!IMPORTANT]
+> Token se musí vystavit přesně pro prostředek `https://api.timeseries.azure.com/` (označuje se také jako "cílová skupina" tokenu).
+> * Vaše [dodatečná](https://www.getpostman.com/) **AuthURLa** bude tedy: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+> * `https://api.timeseries.azure.com/` je platný, ale `https://api.timeseries.azure.com` není.
 
-- je podporována pouze `Content-type` `application/json`.
-- `x-ms-client-request-id` – ID žádosti klienta. Služba zaznamenává tuto hodnotu. Umožňuje službě sledovat operace napříč službami.
-- `x-ms-client-session-id` – ID klientské relace. Služba zaznamenává tuto hodnotu. Umožňuje službě trasovat skupinu souvisejících operací napříč službami.
-- `x-ms-client-application-name` – název aplikace, která vygenerovala tento požadavek. Služba zaznamenává tuto hodnotu.
+Volitelné hlavičky požadavku jsou popsány níže.
 
-Hlavičky odpovědi:
+| Nepovinná hlavička požadavku | Popis |
+| --- | --- |
+| Typ obsahu | podporuje se jenom `application/json`. |
+| x-ms-client-request-id | ID žádosti klienta. Služba zaznamená tuto hodnotu. Umožňuje službě sledovat operace napříč službami. |
+| x-MS-Client-Session-ID | ID klientské relace. Služba zaznamená tuto hodnotu. Umožňuje službě trasovat skupinu souvisejících operací napříč službami. |
+| x-MS-Client-Application-Name | Název aplikace, která vygenerovala tento požadavek. Služba zaznamená tuto hodnotu. |
 
-- je podporována pouze `Content-type` `application/json`.
-- `x-ms-request-id` – ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti.
+Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
+
+| Hlavička odpovědi | Popis |
+| --- | --- |
+| Typ obsahu | Podporuje se jenom `application/json`. |
+| x-MS-Request-ID | ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti. |
+| x-MS-Property-Nenalezeno – chování | Volitelná hlavička odpovědi pro rozhraní API GA Možné hodnoty jsou `ThrowError` (výchozí) nebo `UseNull`. |
 
 ### <a name="http-parameters"></a>Parametry HTTP
 
-Požadované parametry řetězce dotazu adresy URL:
+> [!TIP]
+> Další informace o požadovaných a volitelných informacích o dotazech najdete v [referenční dokumentaci](https://docs.microsoft.com/rest/api/time-series-insights/).
 
-- `api-version=2016-12-12`
-- `api-version=2018-11-01-preview`
+Požadované parametry řetězce dotazu adresy URL závisí na verzi rozhraní API.
 
-Volitelné parametry řetězce dotazu adresy URL:
+| Vydání | Možné hodnoty verze rozhraní API |
+| --- |  --- |
+| Všeobecná dostupnost | `api-version=2016-12-12`|
+| Preview | `api-version=2018-11-01-preview` |
+| Preview | `api-version=2018-08-15-preview` |
 
-- `timeout=<timeout>` – časový limit pro provedení žádosti na straně serveru. Dá se použít jenom pro [události Get prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) a rozhraní API pro [agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu doby trvání ISO 8601, například `"PT20S"` a měla by být v rozsahu `1-30 s`. Výchozí hodnota je `30 s`.
+Volitelné parametry řetězce dotazu adresy URL zahrnují nastavení časového limitu pro dobu provádění požadavku HTTP.
+
+| Volitelný parametr dotazu | Popis | Verze |
+| --- |  --- | --- |
+| `timeout=<timeout>` | Časový limit pro provedení požadavku HTTP na straně serveru. Dá se použít jenom pro [události Get prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) a rozhraní API pro [agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu doby trvání ISO 8601, například `"PT20S"` a měla by být v rozsahu `1-30 s`. Výchozí hodnota je `30 s`. | GA |
+| `storeType=<storeType>` | Pro prostředí ve verzi Preview s povoleným teplým úložištěm je možné dotaz spustit buď na `WarmStore` nebo `ColdStore`. Tento parametr v dotazu definuje, na kterém úložišti se má dotaz spustit. Pokud není definován, dotaz se spustí v chladírenském skladu. Pro dotazování na záložní úložiště musí být **storeType** nastavené na `WarmStore`. Pokud není definován, dotaz se spustí pro chladírenský sklad. | Preview |
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -151,6 +165,6 @@ Volitelné parametry řetězce dotazu adresy URL:
 
 - Náhled ukázek kódu rozhraní API Time Series Insights najdete v tématu [dotazování dat C#ve verzi Preview pomocí ](./time-series-insights-update-query-data-csharp.md).
 
-- Referenční informace k rozhraní API najdete v tématu [Reference k rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
+- Referenční informace k rozhraní API najdete v [referenční dokumentaci rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) .
 
 - Naučte se [vytvořit instanční objekt](../active-directory/develop/howto-create-service-principal-portal.md).

@@ -2,16 +2,16 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 0dbfab9b1886b39f166b94447fed8dc6707404bd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f8d0c0b1f65cdbb9ae456d134696f6564078080
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795983"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468141"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
@@ -22,7 +22,7 @@ ms.locfileid: "74795983"
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  >  **New** (Nový)  >  **Class** (Třída).
+1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  > **New** (Nový)  > **Class** (Třída).
 
 1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
 
@@ -116,7 +116,7 @@ ms.locfileid: "74795983"
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-Stiskněte F11 nebo vyberte **Run** (Spustit)  >  **Debug** (Ladit).
+Stiskněte F11 nebo vyberte **Run** (Spustit)  > **Debug** (Ladit).
 V okně konzoly bude rozpoznáno a zaznamenáno prvních 15 sekund vstupu řeči ze zvukového souboru.
 
    ```text

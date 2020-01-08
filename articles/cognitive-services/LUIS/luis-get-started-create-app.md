@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Vytvoříte aplikaci LUIS, která používá předem připravenou doménu `HomeAutomation` pro zapínání a vypínání světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS, která používá předem vytvořenou doménu `HomeAutomation` pro zapnutí a vypnutí světla a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,42 +9,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73613720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448104"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
-
 V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem připravenou doménu `HomeAutomation` pro zapínání a vypínání světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
-
-## <a name="prerequisites"></a>Požadavky
-
-Pro účely tohoto článku potřebujete bezplatný účet LUIS, vytvořený na portálu LUIS na webu [https://www.luis.ai](https://www.luis.ai). 
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
-Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace). 
+Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace).
 
 1. Na portálu LUIS v seznamu Moje aplikace vyberte **+ vytvořit**.
 
     ![Na portálu LUIS vyberte v seznamu Moje aplikace možnost + vytvořit.](./media/create-app-in-portal.png)
 
-1. V dialogovém okně pojmenujte aplikaci `Home Automation` potom vyberte **Hotovo**. LUIS vytvoří aplikaci. Popis je volitelný a není používán k vytváření nebo předpovědi. Při vytváření aplikace v LUIS je prostředek předpovědi také nepovinný. Když publikujete aplikaci do produkčního prostředí, měli byste přiřadit prostředek předpovědi, aby vaše aplikace mohla zvládnout mnoho požadavků.  
+1. V dialogovém okně pojmenujte aplikaci `Home Automation` potom vyberte **Hotovo**. LUIS vytvoří aplikaci. Popis je volitelný a není používán k vytváření nebo předpovědi. Při vytváření aplikace v LUIS je prostředek předpovědi také nepovinný. Když publikujete aplikaci do produkčního prostředí, měli byste přiřadit prostředek předpovědi, aby vaše aplikace mohla zvládnout mnoho požadavků.
 
     ![V dialogovém okně pojmenujte svou aplikaci jako domovskou automatizaci.](./media/create-new-app-details.png)
 
     >[!NOTE]
-    >Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi. 
+    >Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi.
 
 ## <a name="add-prebuilt-domain"></a>Přidání předem připravené domény
 
@@ -61,7 +55,7 @@ Pokud chcete zkontrolovat záměry domény HomeAutomation, vyberte **záměry** 
 ![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")
 
 > [!NOTE]
-> **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací. 
+> **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací.
 
 Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam promluv, které jsou označené entitami.
 
@@ -72,7 +66,7 @@ Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Testování aplikace
-Jakmile aplikaci vytrénujete, můžete ji otestovat. Vyberte **test**. Do interaktivního testovacího podokna zadejte utterance testu, jako je `Turn off the lights`, a stiskněte klávesu ENTER. 
+Jakmile aplikaci vytrénujete, můžete ji otestovat. Vyberte **test**. Do interaktivního testovacího podokna zadejte utterance testu, jako je `Turn off the lights`, a stiskněte klávesu ENTER.
 
 ```
 Turn off the lights
@@ -88,7 +82,7 @@ Pokud si chcete prohlédnout Další informace o předpovědi, vyberte **zkontro
 
 ![Snímek obrazovky testovacího panelu s informacemi o kontrole](media/luis-quickstart-new-app/test.png)
 
-Znovu vyberte **Test** (Testovat) a sbalte podokno testování. 
+Znovu vyberte **Test** (Testovat) a sbalte podokno testování.
 
 <a name="publish-your-app"></a>
 
@@ -100,7 +94,7 @@ Znovu vyberte **Test** (Testovat) a sbalte podokno testování.
 
 ## <a name="query-the-v3-api-prediction-endpoint"></a>Dotaz na koncový bod prediktivního rozhraní API V3
 
-[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
 1. V adresním řádku prohlížeče pro řetězec dotazu se ujistěte, že jsou v adrese URL následující řádky názvů a hodnot. Pokud nejsou v řetězci dotazu, přidejte je:
 
@@ -201,7 +195,7 @@ Znovu vyberte **Test** (Testovat) a sbalte podokno testování.
     ```
 
     Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
-    
+
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

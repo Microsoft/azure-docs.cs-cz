@@ -1,18 +1,18 @@
 ---
 title: Vyhledat chyby fondu a uzlů – Azure Batch
-description: Chyby, které se mají kontrolovat a jak se jim vyhnout při vytváření fondů a uzlů
+description: Tento článek se zabývá operacemi na pozadí, ke kterým může dojít, a s chybami pro kontrolu a jejich zamezení při vytváření fondů a uzlů.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449792"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 
@@ -56,7 +56,7 @@ Informace o posledním automatickém vyhodnocení měřítka můžete získat po
 
 [Událost dokončení změny velikosti fondu](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) zachycuje informace o všech hodnoceních.
 
-### <a name="delete"></a>Odstranění
+### <a name="delete"></a>Odstranit
 
 Když odstraníte fond, který obsahuje uzly, první Batch tyto uzly odstraní. Pak odstraní samotný objekt fondu. Odstranění uzlů fondu může trvat několik minut.
 
@@ -92,19 +92,19 @@ Můžete zadat jeden nebo více odkazů na kontejner ve fondu. Batch stáhne zad
 
 ### <a name="node-in-unusable-state"></a>Uzel v nepoužitelném stavu
 
-Azure Batch může nastavit [stav uzlu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) na nepoužitelné z mnoha důvodů. Když je stav uzlu nastavený nanepoužitelné, úlohy nejde naplánovat na uzel, ale pořád se tam účtují poplatky.
+Azure Batch může nastavit [stav uzlu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) na **nepoužitelné** z mnoha důvodů. Když je stav uzlu nastavený na **nepoužitelné**, úlohy nejde naplánovat na uzel, ale pořád se tam účtují poplatky.
 
 Uzly v **nepoužitelném** stavu, ale bez [chyb](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) znamená, že Batch nemůže komunikovat s virtuálním počítačem. V takovém případě se dávka vždy pokusí o obnovení virtuálního počítače. Dávka se automaticky nepokusí obnovit virtuální počítače, které selhaly při instalaci balíčků nebo kontejnerů aplikací, i když jejich stav není **použitelný**.
 
 Pokud Batch může určit příčinu, vlastnost [chyb](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) uzlů ji ohlásí.
 
-Mezi další příklady příčin nepoužitelných uzlů patří:
+Mezi další příklady příčin **nepoužitelných** uzlů patří:
 
 - Vlastní image virtuálního počítače je neplatná. Například obrázek, který není správně připraven.
 
 - Virtuální počítač se přesune kvůli selhání infrastruktury nebo upgradu na nižší úrovni. Batch obnoví uzel.
 
-- Image virtuálního počítače se nasadila na hardware, který ho nepodporuje. Například při pokusu o spuštění image CentOS HPC na virtuálním počítači s [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) .
+- Image virtuálního počítače se nasadila na hardware, který ho nepodporuje. Například při pokusu o spuštění image CentOS HPC na [Standard_D1_v2m](../virtual-machines/linux/sizes-general.md#dv2-series) virtuálním počítači.
 
 - Virtuální počítače jsou ve [virtuální síti Azure](batch-virtual-network.md)a provoz se zablokoval na porty klíčů.
 
@@ -121,7 +121,7 @@ Proces dávkového agenta, který běží na jednotlivých uzlech fondu, může 
 Dočasná jednotka pro virtuální počítač uzlu fondu je používána dávkou pro soubory úloh, soubory úloh a sdílené soubory.
 
 - Soubory balíčků aplikací
-- Soubory prostředků úloh
+- Soubory prostředků úkolu
 - Soubory specifické pro aplikaci se stáhly do jedné ze složek Batch.
 - Stdout a stderr soubory pro každou úlohu spuštění aplikace
 - Výstupní soubory specifické pro aplikaci

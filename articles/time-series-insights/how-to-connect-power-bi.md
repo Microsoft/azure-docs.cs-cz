@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ef7d78b292561e87eac12200bc0b9d68299759d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443615"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Vizualizace dat z Time Series Insights v Power BI
 
@@ -29,7 +29,7 @@ V tomto případě se naučíte vizualizovat data časových řad prostřednictv
 
 Nezapomeňte si zaregistrovat [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Stáhněte a nainstalujte si nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 * Mít nebo vytvořit [instanci služby Azure Time Series Insights Preview](time-series-insights-update-how-to-manage.md)
@@ -70,7 +70,7 @@ Jak začít:
 
    1. Pokud jste instanci Time Series Insights pro **záložní úložiště**nenakonfigurovali, zobrazí se upozornění.
 
-       [![připojit](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [Upozornění na záložní úložiště ![](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
        > V Azure Portal můžete nakonfigurovat stávající instanci pro **teplé úložiště** .

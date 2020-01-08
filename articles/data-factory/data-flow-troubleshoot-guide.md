@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443952"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Řešení potíží s Azure Data Factory toky dat
 
@@ -92,8 +92,18 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Příčina**: datové proudy, které jsou spojeny, mají běžné názvy sloupců.
 
-- **Řešení**: přidejte Transforamtion po spojení a vyberte Odebrat duplicitní sloupce pro vstup i výstup.
+- **Řešení**: přidejte transformaci SELECT po spojení a vyberte možnost odebrat duplicitní sloupce pro vstup i výstup.
 
+### <a name="error-message-possible-cartesian-product"></a>Chybová zpráva: možná produkt kartézském
+
+- **Příznaky**: při spuštění toku dat se zjistilo, že se kartézském produkt v transformaci spojení nebo vyhledávání.
+
+- **Příčina**: Pokud jste nemuseli explicitně vytvořit ADF pro použití vzájemného spojení, tok dat může selhat.
+
+- **Řešení**: Změňte transformaci nebo Transformujte na JOIN pomocí vlastního vzájemného spojení a zadejte podmínku Lookup nebo JOIN v editoru výrazů. Pokud chcete explicitně vytvořit úplný kartézském produkt, použijte transformaci odvozeného sloupce v každém ze dvou nezávislých datových proudů předtím, než se připojíte k vytvoření syntetického klíče, který se má shodovat. Můžete například vytvořit nový sloupec v odvozeném sloupci v každém datovém proudu s názvem ```SyntheticKey``` a nastavit jej jako ```1```. Pak jako vlastní výraz JOIN použijte ```a.SyntheticKey == b.SyntheticKey```.
+
+> [!NOTE]
+> Nezapomeňte do vlastního vzájemného spojení zahrnout alespoň jeden sloupec z každé strany levého a pravého vztahu. Provádění vzájemného spojení se statickými hodnotami místo sloupců z každé strany má za následek úplnou kontrolu celé datové sady, což způsobí, že tok dat nebude dostatečně fungovat.
 
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží
 

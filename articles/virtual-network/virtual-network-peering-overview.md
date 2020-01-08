@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 59854d7d46f533510bea97a6845554fc0ce83dbb
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328349"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646740"
 ---
-# <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
+# <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
 Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení sítí v [Azure Virtual Network](virtual-networks-overview.md). Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
 
@@ -91,7 +91,7 @@ Následující omezení platí pouze v případě, že jsou virtuální sítě g
 * Prostředky v jedné virtuální síti nemůžou komunikovat s front-end IP adresou základního interního Load Balancer (interního nástroje) v globálně partnerské virtuální síti.
 * Některé služby, které používají základní nástroj pro vyrovnávání zatížení, nefungují prostřednictvím globálního partnerského vztahu virtuálních sítí. Další informace najdete v tématu [jaká omezení se týkají globálních partnerských vztahů mezi virtuálními sítěmi a vyrovnávání zatížení](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
-Další informace najdete v tématu [požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints). Další informace o podporovaném počtu partnerských vztahů najdete v tématu [omezení sítě](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Další informace najdete v tématu [požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints). Další informace o podporovaném počtu partnerských vztahů najdete v tématu [omezení sítě](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="permissions"></a>Oprávnění
 

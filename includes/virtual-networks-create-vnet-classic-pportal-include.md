@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: ac5599a38c3fcbc4a6c331d2b14c6b6c55c31d82
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8d13d5d93dba66fa0dce08ffbf569164fb03398d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850313"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468290"
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Jak vytvořit klasickou virtuální síť v Azure Portal
 Pokud chcete vytvořit klasickou virtuální síť v závislosti na předchozím scénáři, postupujte podle těchto kroků.
@@ -25,7 +25,7 @@ Pokud chcete vytvořit klasickou virtuální síť v závislosti na předchozím
 4. V podokně **virtuální síť** zadejte **název** virtuální sítě a klikněte na **adresní prostor**. Nakonfigurujte nastavení adresního prostoru pro virtuální síť a její první podsíť a pak klikněte na **OK**. Následující obrázek ukazuje nastavení bloku CIDR pro náš scénář.
    
     ![Podokno adresního prostoru](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
-5. Klikněte na **Skupina prostředků** a vyberte skupinu prostředků, do které chcete virtuální síť přidat, nebo kliknutím na **vytvořit novou skupinu prostředků** přidejte virtuální síť do nové skupiny prostředků. Následující obrázek ukazuje nastavení skupiny prostředků pro novou skupinu prostředků s názvem **TestRG**. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+5. Klikněte na **Skupina prostředků** a vyberte skupinu prostředků, do které chcete virtuální síť přidat, nebo kliknutím na **vytvořit novou skupinu prostředků** přidejte virtuální síť do nové skupiny prostředků. Následující obrázek ukazuje nastavení skupiny prostředků pro novou skupinu prostředků s názvem **TestRG**. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../articles/azure-resource-manager/management/overview.md#resource-groups).
    
     ![Podokno vytvořit skupinu prostředků](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 6. V případě potřeby změňte nastavení **Předplatné** a **Umístění** sítě VNet. 

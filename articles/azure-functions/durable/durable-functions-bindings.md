@@ -2,14 +2,14 @@
 title: Vazby pro Durable Functions – Azure
 description: Použití aktivačních procedur a vazeb pro rozšíření Durable Functions pro Azure Functions.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40b5f0f17cbb6867a6ef293a485d728141a012ef
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410225"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -36,7 +36,7 @@ Při psaní funkcí Orchestrator v skriptovacích jazycích (například JavaScr
 
 Interně se tato triggerová vazba dotazuje řady front ve výchozím účtu úložiště pro aplikaci Function App. Tyto fronty jsou podrobnosti o interní implementaci tohoto rozšíření, což znamená, proč nejsou explicitně nakonfigurované ve vlastnostech vazby.
 
-### <a name="trigger-behavior"></a>Chování triggeru
+### <a name="trigger-behavior"></a>Chování aktivační události
 
 Tady jsou některé poznámky k triggeru orchestrace:
 
@@ -143,7 +143,7 @@ Pokud používáte VS Code nebo Azure Portal pro vývoj, aktivační událost ak
 
 Interně se tato triggerová vazba dotazuje fronty ve výchozím účtu úložiště pro aplikaci Function App. Tato fronta představuje interní podrobnosti implementace rozšíření, což je důvod, proč není explicitně nakonfigurován ve vlastnostech vazby.
 
-### <a name="trigger-behavior"></a>Chování triggeru
+### <a name="trigger-behavior"></a>Chování aktivační události
 
 Zde jsou některé poznámky týkající se triggeru aktivity:
 
@@ -372,7 +372,7 @@ Když použijete nástroje sady Visual Studio pro Azure Functions, je aktivačn�
 
 Interně se tato triggerová vazba dotazuje řady front ve výchozím účtu úložiště pro aplikaci Function App. Tyto fronty jsou podrobnosti o interní implementaci tohoto rozšíření, což znamená, proč nejsou explicitně nakonfigurované ve vlastnostech vazby.
 
-### <a name="trigger-behavior"></a>Chování triggeru
+### <a name="trigger-behavior"></a>Chování aktivační události
 
 Tady jsou některé poznámky k triggeru entit:
 
@@ -398,7 +398,7 @@ Každá funkce entity má typ parametru `IDurableEntityContext`, který má nás
 * **DeleteState ()** : odstraní stav entity. 
 * **GetInput\<TInput > ()** : Získá vstup pro aktuální operaci. Parametr typu `TInput` musí být primitivního typu nebo typu JSON, který lze serializovat.
 * **Return (ARG)** : vrátí hodnotu do orchestrace, která volala operaci. Parametr `arg` musí být objekt primitivního typu nebo serializace JSON.
-* **SignalEntity (EntityId, operace, vstup)** : pošle jednosměrnou zprávu entitě. Parametr `operation` musí být řetězec, který není null, a parametr `input` musí být primitivním objektem nebo objektem JSON, který lze serializovat.
+* **SignalEntity (EntityId, scheduledTimeUtc, operace, vstup)** : pošle jednosměrnou zprávu entitě. Parametr `operation` musí být řetězec, který nemá hodnotu null, nepovinné `scheduledTimeUtc` musí být hodnota DateTime UTC, pro kterou má být vyvolána operace, a parametr `input` musí být objekt primitivního typu nebo serializace JSON.
 * **CreateNewOrchestration (orchestratorFunctionName, Input)** : spustí novou orchestraci. Parametr `input` musí být objekt primitivního typu nebo serializace JSON.
 
 Objekt `IDurableEntityContext` předaný do funkce entity je k dispozici pomocí vlastnosti `Entity.Current` Async-Local. Tento přístup je vhodný při použití programovacího modelu založeného na třídě.
@@ -464,7 +464,7 @@ Třídy entit mají zvláštní mechanismy pro interakci s vazbami a vkládání
 
 Následující kód je příkladem jednoduché entity *čítače* implementované jako trvalá funkce napsaná v JavaScriptu. Tato funkce definuje tři operace, `add`, `reset`a `get`, z nichž každá funguje v celočíselném stavu.
 
-**Function. JSON**
+**function.json**
 ```json
 {
   "bindings": [
@@ -478,7 +478,7 @@ Následující kód je příkladem jednoduché entity *čítače* implementovan�
 }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -519,7 +519,7 @@ Pokud pro vývoj používáte skriptovací jazyky (například soubory *. csx* n
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "durableClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -535,6 +535,7 @@ Ve funkcích .NET se obvykle vytváří vazba na `IDurableEntityClient`, která 
 
 * **ReadEntityStateAsync\<t >** : přečte stav entity. Vrátí odpověď, která označuje, zda cílová entita existuje, a pokud ano, jaký je její stav.
 * **SignalEntityAsync**: pošle jednosměrnou zprávu entitě a počká, až se zazařazuje do fronty.
+* **ListEntitiesAsync**: dotazování na stav více entit. Do entit se dá zadat dotaz podle *názvu* a *času poslední operace*.
 
 Před odesláním signálu není nutné vytvořit cílovou entitu – stav entity lze vytvořit v rámci funkce entity, která zpracovává signál.
 
@@ -601,7 +602,7 @@ Konkrétně není vhodné signalizovat operaci `Get`, protože není vrácena ž
 
 Tady je příklad funkce aktivované frontou, která signalizuje entitu "čítač" v JavaScriptu.
 
-**Function. JSON**
+**function.json**
 ```json
 {
     "bindings": [
@@ -621,7 +622,7 @@ Tady je příklad funkce aktivované frontou, která signalizuje entitu "číta�
   }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 

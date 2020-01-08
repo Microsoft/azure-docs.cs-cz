@@ -1,25 +1,14 @@
 ---
-title: Vytvoření clusteru Service Fabric v Azure Portal | Microsoft Docs
+title: Vytvoření clusteru služby Service Fabric na webu Azure Portal
 description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v Azure pomocí Azure Portal a Azure Key Vault.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2018
-ms.author: atsenthi
-ms.openlocfilehash: ca050e19ed37e2895507507338ebf4b4217851b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452301"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí Azure Portal
 > [!div class="op_single_selector"]
@@ -41,7 +30,7 @@ Toto je podrobný průvodce, který vás provede kroky nastavení clusteru Servi
 ## <a name="cluster-security"></a>Zabezpečení clusteru 
 Ve službě Service Fabric se k ověřování a šifrování pro zabezpečení různých aspektů clusteru a jeho aplikací využívají certifikáty. Další informace o použití certifikátů ve službě Service Fabric najdete v tématu věnovaném [scénářům zabezpečení clusteru Service Fabric][service-fabric-cluster-security].
 
-Pokud cluster Service Fabric vytváříte poprvé nebo nasazujete cluster pro testovací úlohy, můžete přejít k další části (**vytvořit cluster na webu Azure Portal**) a nechat systém vygenerovat certifikáty potřebné pro vaše clustery se systémem. testování zatížení. Pokud nastavujete cluster pro produkční úlohy, pak pokračujte ve čtení.
+Pokud cluster Service Fabric vytváříte poprvé nebo nasazujete cluster pro testovací úlohy, můžete přejít k další části (**vytvořit cluster na webu Azure Portal**) a nechat systém vygenerovat certifikáty potřebné pro clustery, které spouštějí testovací úlohy. Pokud nastavujete cluster pro produkční úlohy, pak pokračujte ve čtení.
 
 #### <a name="cluster-and-server-certificate-required"></a>Certifikát clusteru a serveru (povinné)
 Tento certifikát je nutný k zabezpečení clusteru a zabránění neoprávněnému přístupu k němu. Zabezpečení clusteru zajišťuje několik způsobů:
@@ -111,7 +100,7 @@ V okně základy musíte zadat základní podrobnosti pro svůj cluster.
 Nakonfigurujte uzly clusteru. Typy uzlů definují velikosti virtuálních počítačů, počet virtuálních počítačů a jejich vlastnosti. Cluster může mít více než jeden typ uzlu, ale typ primárního uzlu (první uzel, který definujete na portálu) musí mít aspoň pět virtuálních počítačů, protože se jedná o typ uzlu, kde jsou umístěné systémové služby Service Fabric. Nekonfigurujte **vlastnosti umístění** , protože je automaticky přidána výchozí vlastnost umístění pro "NodeType".
 
 > [!NOTE]
-> Běžným scénářem pro více typů uzlů je aplikace, která obsahuje front-end službu a back-endové služby. Chcete front-end službu umístit na menší virtuální počítače (velikosti virtuálních počítačů jako D2_V2) s porty otevřenými na internetu a umístit back-end službu na větší virtuální počítače (s velikostmi virtuálních počítačů, jako je D3_V2, D6_V2, D15_V2 atd.), a nemusíte mít otevřené žádné porty pro Internet.
+> Běžným scénářem pro více typů uzlů je aplikace, která obsahuje front-end službu a back-endové služby. Chcete front-end službu umístit na menší virtuální počítače (velikosti virtuálních počítačů, jako je D2_V2), porty otevřené na internetu a umístit back-end službu na větší virtuální počítače (s velikostmi virtuálních počítačů, jako jsou D3_V2, D6_V2, D15_V2 a tak dále), bez otevřených internetových portů.
 > 
 
 1. Vyberte název typu uzlu (1 až 12 znaků obsahujících jenom písmena a čísla).

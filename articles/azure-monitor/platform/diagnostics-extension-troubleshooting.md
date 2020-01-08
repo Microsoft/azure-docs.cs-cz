@@ -4,15 +4,15 @@ description: Řešení potíží při použití diagnostiky Azure v Azure Virtua
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450556"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží s Azure Diagnostics
 Tento článek popisuje informace o odstraňování potíží, které souvisí s používáním Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -30,25 +30,25 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Artefakt | Cesta |
 | --- | --- |
-| **Konfigurační soubor Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verze > \Config.txt |
-| **Soubory protokolu** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verze > \ |
-| **Místní úložiště pro diagnostická data** | > C:\Resources\Directory\<CloudServiceDeploymentID.\<RoleName >. DiagnosticStore\WAD0107\Tables |
-| **Konfigurační soubor agenta monitorování** | > C:\Resources\Directory\<CloudServiceDeploymentID.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Balíček rozšíření Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verze > |
+| **Konfigurační soubor Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
+| **Soubory protokolů** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
+| **Místní úložiště pro diagnostická data** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Tables |
+| **Konfigurační soubor agenta monitorování** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Balíček rozšíření Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **Cesta k nástroji pro shromažďování protokolů** | %SystemDrive%\Packages\GuestAgent\ |
-| **Soubor protokolu MonAgentHost** | > C:\Resources\Directory\<CloudServiceDeploymentID.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **Soubor protokolu MonAgentHost** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
-### <a name="virtual-machines"></a>Virtual Machines
+### <a name="virtual-machines"></a>Virtuální počítače
 | Artefakt | Cesta |
 | --- | --- |
-| **Konfigurační soubor Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verze > \RuntimeSettings |
-| **Soubory protokolu** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \ |
-| **Místní úložiště pro diagnostická data** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Tables |
-| **Konfigurační soubor agenta monitorování** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
-| **Stavový soubor** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verze > \Status |
-| **Balíček rozšíření Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion >|
+| **Konfigurační soubor Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
+| **Soubory protokolů** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
+| **Místní úložiště pro diagnostická data** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
+| **Konfigurační soubor agenta monitorování** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **Stavový soubor** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
+| **Balíček rozšíření Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **Cesta k nástroji pro shromažďování protokolů** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Data metriky se nezobrazí v Azure Portal
 Azure Diagnostics poskytuje data metrik, která se dají zobrazit v Azure Portal. Pokud máte problémy se zobrazením dat na portálu, podívejte se do tabulky WADMetrics\* v účtu úložiště Azure Diagnostics a podívejte se, jestli tam jsou odpovídající záznamy metriky.
@@ -232,13 +232,13 @@ Modul plug-in vrátí následující ukončovací kódy:
 | Ukončovací kód | Popis |
 | --- | --- |
 | 0 |Úspěch |
-| – 1 |Obecná chyba |
-| – 2 |Nepovedlo se načíst soubor RCF.<p>Tato vnitřní chyba by se měla nacházet pouze v případě, že je ve virtuálním počítači ručně vyvolán spouštěč spouštěče agenta hosta. |
-| – 3 |Nelze načíst konfigurační soubor diagnostiky.<p><p>Řešení: způsobené konfiguračním souborem neprošlým ověřením schématu. Řešením je poskytnout konfigurační soubor, který odpovídá schématu. |
+| -1 |Obecná chyba |
+| -2 |Nepovedlo se načíst soubor RCF.<p>Tato vnitřní chyba by se měla nacházet pouze v případě, že je ve virtuálním počítači ručně vyvolán spouštěč spouštěče agenta hosta. |
+| -3 |Nelze načíst konfigurační soubor diagnostiky.<p><p>Řešení: způsobené konfiguračním souborem neprošlým ověřením schématu. Řešením je poskytnout konfigurační soubor, který odpovídá schématu. |
 | -4 |Jiná instance diagnostiky agenta monitorování již používá místní adresář prostředků.<p><p>Řešení: Zadejte jinou hodnotu pro **LocalResourceDirectory**. |
-| – 6 |Spouštěč agenta hostovaného modulu plug-in se pokusil spustit diagnostiku s neplatným příkazovým řádkem.<p><p>Tato vnitřní chyba by se měla nacházet pouze v případě, že je ve virtuálním počítači ručně vyvolán spouštěč spouštěče agenta hosta. |
-| – 10 |Modul plug-in diagnostiky se ukončil s neošetřenou výjimkou. |
-| – 11 |Agent hosta nemohl vytvořit proces, který je zodpovědný za spuštění a monitorování agenta monitorování.<p><p>Řešení: Ověřte, že jsou k dispozici dostatečné systémové prostředky pro spuštění nových procesů.<p> |
+| -6 |Spouštěč agenta hostovaného modulu plug-in se pokusil spustit diagnostiku s neplatným příkazovým řádkem.<p><p>Tato vnitřní chyba by se měla nacházet pouze v případě, že je ve virtuálním počítači ručně vyvolán spouštěč spouštěče agenta hosta. |
+| -10 |Modul plug-in diagnostiky se ukončil s neošetřenou výjimkou. |
+| -11 |Agent hosta nemohl vytvořit proces, který je zodpovědný za spuštění a monitorování agenta monitorování.<p><p>Řešení: Ověřte, že jsou k dispozici dostatečné systémové prostředky pro spuštění nových procesů.<p> |
 | -101 |Neplatné argumenty při volání diagnostického modulu plug-in.<p><p>Tato vnitřní chyba by se měla nacházet pouze v případě, že je ve virtuálním počítači ručně vyvolán spouštěč spouštěče agenta hosta. |
 | -102 |Proces modulu plug-in se nemůže inicializovat sám sebe.<p><p>Řešení: Ověřte, že jsou k dispozici dostatečné systémové prostředky pro spuštění nových procesů. |
 | -103 |Proces modulu plug-in se nemůže inicializovat sám sebe. Konkrétně není možné vytvořit objekt protokolovacího nástroje.<p><p>Řešení: Ověřte, že jsou k dispozici dostatečné systémové prostředky pro spuštění nových procesů. |

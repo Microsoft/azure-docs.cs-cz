@@ -1,22 +1,22 @@
 ---
 title: Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
-description: Tento článek popisuje, jak kanál změn umožňuje společností maloobchodní porozumět trendům uživatele, provedení analýzy dat v reálném čase a vizualizace.
+description: Tento článek popisuje, jak může maloobchodní společnost využít změnu kanálu pro pochopení uživatelských vzorů, provádění analýzy a vizualizace dat v reálném čase.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442070"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
-Kanál změny Azure Cosmos DB je mechanismus, který získá průběžné a přírůstkové kanály záznamů z kontejneru Azure Cosmos při vytváření nebo úpravách těchto záznamů. Změna kanálu funguje podpora prostřednictvím naslouchání kontejner pro všechny změny. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Další informace o kanálu změn najdete v tématu [práce díky kanálu změn](change-feed.md) článku. 
+Kanál změny Azure Cosmos DB je mechanismus, který získá průběžné a přírůstkové kanály záznamů z kontejneru Azure Cosmos při vytváření nebo úpravách těchto záznamů. Změna kanálu funguje podpora prostřednictvím naslouchání kontejner pro všechny změny. Výstupem je pak seznam změněných dokumentů v pořadí podle času úprav. Další informace o kanálu změn najdete v tématu [práce díky kanálu změn](change-feed.md) článku. 
 
 Tento článek popisuje, jak kanál změn umožňuje společnost elektronického obchodování porozumět trendům uživatele, provedení analýzy dat v reálném čase a vizualizace. Probereme události, jako je například uživatel položku zobrazení, přidání položky do jejich košíku nebo zakoupení položku. Při jedné z těchto událostí se vytvoří nový záznam a změny kanálu protokolů, které zaznamenávají. Změna kanálu pak aktivační události sérii kroků, což vede k vizualizaci metrik, které analýzu výkonu společnosti a aktivity. Ukázkové metriky, které můžete vizualizovat zahrnout výnosy, jedinečných návštěvníků, Nejoblíbenější položky a průměrná cena zboží, které lze zobrazit a přidat do košíku a zakoupit. Tyto ukázkové metriky může pomoct e-commerce společnosti vyhodnotit své popularitě už web, vývoj jeho reklamy a cenové strategie a učinit rozhodnutí týkající se co inventáře investovat do.
 
@@ -30,7 +30,7 @@ Následující diagram znázorňuje tok dat a součásti účastnící se řeše
 
 ![Projekt visual](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Generování dat:** Simulátor dat se používá ke generování maloobchodních dat, která představují události, jako je například uživatel, který zobrazuje položku, přidání položky na košík a nákup položky. Velkou sadu ukázkových dat můžete vygenerovat pomocí generátoru dat. Generovaných vzorových dat obsahuje dokumenty v následujícím formátu:
+1. **Generování dat:** simulátor dat se používá ke generování prodejní data, která představuje události, jako je například uživatel položku zobrazení, přidání položky do jejich košíku a zakoupení položku. Velkou sadu ukázkových dat můžete vygenerovat pomocí generátoru dat. Generovaných vzorových dat obsahuje dokumenty v následujícím formátu:
    
    ```json
    {      
@@ -45,13 +45,13 @@ Následující diagram znázorňuje tok dat a součásti účastnící se řeše
 
 3. **Změnit kanál:** Kanál změn bude naslouchat změnám v kontejneru Azure Cosmos. Pokaždé, když do kolekce (která je při výskytu události, uživatelem zobrazení položky, přidání položky do jejich košíku nebo zakoupením položky) se přidá nový dokument, změna kanálu bude aktivovat [funkce Azure Functions](../azure-functions/functions-overview.md).  
 
-4. **Funkce Azure:** Funkce Azure zpracuje nová data a pošle je do [centra událostí Azure](../event-hubs/event-hubs-about.md).  
+4. **Funkce Azure:** funkce Azure Functions zpracovává nová data a odesílá je do [Azure Event Hubs](../event-hubs/event-hubs-about.md).  
 
-5. **Centrum událostí:** Centrum událostí Azure tyto události uloží a pošle je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) k provedení další analýzy.  
+5. **Centrum událostí:** Azure Event Hubs uchovává tyto události a odesílá je do [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) k další analýze.  
 
-6. **Azure Stream Analytics:** Azure Stream Analytics definuje dotazy, které zpracovávají události a provádějí analýzu dat v reálném čase. Tato data se pak posílají do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure Stream Analytics:** Azure Stream Analytics definuje dotazů pro zpracování událostí a analýze dat v reálném čase. Tato data se pak posílají do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **Power BI:** Power BI slouží k vizualizaci dat odesílaných Azure Stream Analytics. Můžete vytvořit řídicí panel zobrazit, jak změnit metrik v reálném čase.  
+7. **Power BI:** Power BI se využívá k vizualizaci dat odesílaných v Azure Stream Analytics. Můžete vytvořit řídicí panel zobrazit, jak změnit metrik v reálném čase.  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -165,7 +165,7 @@ Chcete-li zobrazit zpracování kanálu změn nové akce na webu elektronického
 
 1. Přejděte zpět do úložiště v Průzkumníkovi souborů a klikněte pravým tlačítkem na **ChangeFeedFunction.sln** znovu otevřít nové okno Visual Studio.  
 
-2. Přejděte do souboru **App. config** . V rámci bloku přidejte koncový bod a jedinečný **primární klíč** , který jste načetli Azure Cosmos DB účtu, který jste získali dříve. `<appSettings>`  
+2. Přejděte do souboru **App. config** . V rámci `<appSettings>` bloku přidejte koncový bod a jedinečný **primární klíč** , který jste získali Azure Cosmos DB účtu, který jste si dříve načetli.  
 
 3. Přidejte **kolekce** a **databáze** názvy. (Tyto názvy musí být **changefeedlabcollection** a **changefeedlabdatabase** nerozhodnete pojmenujte svůj odlišně.)
 
@@ -236,7 +236,7 @@ Azure Stream Analytics je plně spravovaná Cloudová služba pro zpracování s
 
 11. Nyní se vraťte k **streamjob1** a vyberte **Start** tlačítko v horní části stránky. Azure Stream Analytics může trvat několik minut se spustí, ale nakonec uvidíte ho změnit na "Spuštěno" z "Výchozí".
 
-## <a name="connect-to-power-bi"></a>Připojte se k Power BI
+## <a name="connect-to-power-bi"></a>Připojení k Power BI
 
 Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet přehledy. To je skvělé příklad, jak můžete strategicky vizualizovat analyzovaná data.
 
@@ -250,7 +250,7 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
  
 5. Vyberte **averagePrice** z **vaše datové sady**a pak vyberte **Další**.  
 
-6. V **typ vizualizace** zvolte **skupinový pruhový graf** z rozevírací nabídky. V části **osy**, přidání akce. Přeskočit **legendy** bez přidání cokoli. Poté, v dalším oddílu volat **hodnotu**, přidejte **avg**. Vyberte **Další**, pak nadpisu grafu a vyberte **použít**. Zobrazí se nový graf na řídicí panel!  
+6. V **typ vizualizace** zvolte **skupinový pruhový graf** z rozevírací nabídky. V části **osy**, přidání akce. Přeskočit **legendy** bez přidání cokoli. V další části s názvem **hodnota**přidejte **prům**. Vyberte **Další**, potom název grafu a vyberte **použít**. Zobrazí se nový graf na řídicí panel!  
 
 7. Nyní, pokud chcete zobrazit další metriky, můžete přejít zpět k **streamjob1** a vytvořit další tři výstupy u následujících polí.
 
@@ -316,7 +316,7 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
 
    ![vizualizace](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>Volitelné: Vizualizace s využitím webu elektronického obchodování
+## <a name="optional-visualize-with-an-e-commerce-site"></a>Volitelné: Vizualizace s webem elektronického obchodování
 
 Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připojení k webu skutečné elektronického obchodování. Aby bylo možné sestavit web elektronického obchodování, použijte databázi Azure Cosmos k uložení seznamu kategorií produktů (ženy, muži, Unisex), katalogu produktů a seznamu nejoblíbenějších položek.
 
@@ -392,7 +392,7 @@ Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připoje
 
 Pokud chcete odstranit prostředky, které jste vytvořili v tomto prostředí, přejděte do skupiny prostředků na [webu Azure Portal](https://portal.azure.com/)a pak vyberte **odstranit skupinu prostředků** v nabídce v horní části stránky a postupujte podle pokynů k dispozici.
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
   
 * Další informace o kanálu změn najdete v tématu [podpora práce s Změna kanálu ve službě Azure Cosmos DB](change-feed.md) 
 * [Změna kanálu oznámení řešení](change-feed-hl7-fhir-logic-apps.md) zdravotnické organizace pomocí služby Azure Cosmos DB.

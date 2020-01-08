@@ -1,46 +1,37 @@
 ---
-title: Azure Service Fabric aplikace úroveň monitorování | Dokumentace Microsoftu
-description: Další informace o aplikaci a událostí na úrovni služby a protokoly pro monitorování a Diagnostika clustery Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Monitorování úrovně aplikace v Azure Service Fabric
+description: Přečtěte si informace o událostech a protokolech na úrovni služby, které slouží k monitorování a diagnostice clusterů Azure Service Fabric.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 613faf5bbc9498b82bc04460d30b2e94c30340db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464722"
 ---
 # <a name="application-logging"></a>Protokolování aplikací
 
-Kód instrumentace je pouze způsob, jak získat přehled o uživatelích, ale také jediný způsob, jakým můžete mít přehled, zda se něco stalo ve vaší aplikaci a diagnostikovat, co je potřeba opravit. I když je technicky možné se připojit ladicí program k služby v produkčním prostředí, není běžnou praxí. S podrobná data instrumentace je tedy důležité.
+Instrumentace kódu není pouze způsob, jak získat přehled o vašich uživatelích, ale také pouze o tom, jak můžete zjistit, zda je v aplikaci něco špatného, a diagnostikovat, co je potřeba opravit. I když je technicky možné připojit ladicí program k produkční službě, nejedná se o běžný postup. Proto je důležité mít podrobná data instrumentace.
 
-Některé produkty automaticky vyladit kód. I když tato řešení může fungovat dobře, ruční instrumentace je téměř vždy musí být specifické pro vaši obchodní logiku. Nakonec musíte mít dostatek informací, které forensically ladění aplikace. Aplikace Service Fabric můžete instrumentována pomocí libovolné architektury protokolování. Tento dokument popisuje několik různé přístupy k instrumentaci kódu a kdy zvolit jeden ze způsobů před jiným. 
+Některé produkty automaticky instrumentují váš kód. I když tato řešení můžou dobře fungovat, ruční instrumentace je téměř vždy nutná, aby byla specifická pro vaši obchodní logiku. Na konci musíte mít dostatek informací, aby bylo možné aplikaci Forensically ladit. Service Fabric aplikace lze instrumentovat pomocí jakéhokoli protokolovacího rozhraní. Tento dokument popisuje několik různých přístupů k instrumentaci kódu a kdy zvolit jeden přístup přes jiný. 
 
-Příklady, jak používat tyto návrhy najdete v tématu [přidání protokolování do aplikace Service Fabric](service-fabric-how-to-diagnostics-log.md).
+Příklady použití těchto návrhů najdete v tématu [Přidání protokolování do aplikace Service Fabric](service-fabric-how-to-diagnostics-log.md).
 
-## <a name="application-insights-sdk"></a>Application Insights SDK
+## <a name="application-insights-sdk"></a>Sada Application Insights SDK
 
-Application Insights má bohaté integrace s platformou Service Fabric úprav. Uživatelé mohou přidat balíčky nuget AI Service Fabric a příjem dat a protokolů a shromažďují zobrazit na webu Azure Portal. Navíc uživatelé můžou přidávat své vlastní telemetrická data, pokud chcete diagnostikovat a ladit své aplikace a sledování, které jsou služby a ve svých aplikacích používají nejčastěji. [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) třídy v sadě SDK poskytuje mnoho způsobů, jak sledovat telemetrii ve svých aplikacích. Podívejte se na příklad toho, jak instrumentovat a přidejte application insights do vaší aplikace v našem kurzu pro [monitorování a Diagnostika aplikace .NET](service-fabric-tutorial-monitoring-aspnet.md)
+Application Insights má bohatou integraci s Service Fabric vycházejícími z boxu. Uživatelé můžou přidávat balíčky NuGet Service Fabric AI a přijímat data a protokoly vytvořené a shromážděné v Azure Portal. Kromě toho se uživatelům doporučuje přidat vlastní telemetrii, aby bylo možné diagnostikovat a ladit své aplikace a sledovat, které služby a části jejich aplikace jsou používány nejvíc. Třída [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) v sadě SDK poskytuje mnoho způsobů, jak sledovat telemetrii ve vašich aplikacích. Podívejte se na příklad, jak instrumentovat a přidat Application Insights do aplikace v našem kurzu pro [monitorování a diagnostiku aplikace .NET](service-fabric-tutorial-monitoring-aspnet.md) .
 
 ## <a name="eventsource"></a>EventSource
 
-Při vytváření řešení Service Fabric pomocí šablony v sadě Visual Studio **EventSource**-odvozené třídy (**ServiceEventSource** nebo **ActorEventSource**) se vygeneruje . Šablonu se vytvoří, ve kterém můžete přidat události pro vaše aplikace nebo služba. **EventSource** název **musí** být jedinečné a musí se přejmenovat z výchozí šablony řetězec společnost –&lt;řešení&gt;-&lt;projektu &gt;. S více **EventSource** definice, které používají stejný název způsobí, že problém v době běhu. Každý definovaný událost musí mít jedinečný identifikátor. Pokud není jedinečný identifikátor, dojde k selhání běhového prostředí. Některé organizace preassign rozsahy hodnot pro identifikátory, jak zamezit konfliktům mezi samostatné vývojové týmy. Další informace najdete v tématu [daňové na blogu](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) nebo [dokumentaci MSDN](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Při vytváření řešení Service Fabric ze šablony v aplikaci Visual Studio je vygenerována třída odvozená od objektu **EventSource**(**ServiceEventSource** nebo **ActorEventSource**). Vytvoří se šablona, do které můžete přidat události pro svou aplikaci nebo službu. Název **EventSource** **musí** být jedinečný a měl by být přejmenován z výchozí šablony řetězec společnost-&lt;řešení&gt;-&lt;projektu&gt;. Pokud máte více definic **EventSource** , které používají stejný název, způsobí problém v době běhu. Každá definovaná událost musí mít jedinečný identifikátor. Pokud identifikátor není jedinečný, dojde k chybě modulu runtime. Některé organizace předřadí rozsah hodnot pro identifikátory, aby nedocházelo ke konfliktům mezi samostatnými vývojovými týmy. Další informace najdete v [blogu Vance](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) nebo v [dokumentaci MSDN](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
 
-## <a name="aspnet-core-logging"></a>ASP.NET Core protokolování
+## <a name="aspnet-core-logging"></a>Protokolování ASP.NET Core
 
-Je důležité, abyste pečlivě naplánovat, jak se váš kód instrumentace. Instrumentace správný plán vám může pomoct vyhnout potenciálně destabilizing vašeho základu kódu a pak museli reinstrument kód. Chcete-li snížit riziko, můžete použít knihovnu instrumentace jako [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), které je součástí sady Microsoft ASP.NET Core. ASP.NET Core má [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) rozhraní, které můžete použít u poskytovatele podle vašeho výběru, při současné minimalizaci vlivu na existující kód. Kód můžete použít v ASP.NET Core ve Windows a Linuxu, a v úplné rozhraní .NET Framework, takže je váš kód instrumentace standardizované.
+Je důležité pečlivě naplánovat způsob, jakým budete svůj kód instrumentovat. Správný plán instrumentace vám může přispět k tomu, abyste se vyhnuli potenciálně destabilizující základu kódu a pak museli kód znovu instrumentovat. Chcete-li snížit riziko, můžete zvolit knihovnu instrumentace, například [Microsoft. Extensions. Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), která je součástí Microsoft ASP.NET Core. ASP.NET Core má rozhraní [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) , které můžete použít s poskytovatelem dle vašeho výběru a současně minimalizovat efekt na stávající kód. Můžete použít kód v ASP.NET Core v systému Windows a Linux a v úplném .NET Framework, aby byl kód instrumentace standardizován.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po výběru poskytovatele protokolování k instrumentaci aplikací a služeb, protokolů a událostí muset před odesláním na jakoukoli platformu analýzy se dají agregovat. Přečtěte si informace o [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) a [využitím EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) lépe pochopit některé služby Azure Monitor doporučené možnosti.
+Jakmile vyberete poskytovatele protokolování pro instrumentaci vašich aplikací a služeb, musí být vaše protokoly a události agregované předtím, než bude možné je odeslat do jakékoli analytické platformy. Přečtěte si o [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) a [využitím eventflow](service-fabric-diagnostics-event-aggregation-eventflow.md) , abyste lépe pochopili některé z Azure monitor doporučených možností.

@@ -1,18 +1,18 @@
 ---
 title: Připojit k serveru FTP
-description: Vytváření, sledování a Správa souborů na serveru FTP pomocí Azure Logic Apps
+description: Automatizace úloh a pracovních postupů, které vytvářejí, monitorují a spravují soubory na serveru FTP pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: c7b8c1ac94fd35a4a0cb30ad32d8c6ce39edc058
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445943"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytváření, sledování a Správa souborů FTP pomocí Azure Logic Apps
 
@@ -23,7 +23,7 @@ Pomocí Azure Logic Apps a konektoru FTP můžete vytvářet automatizované úl
 * Získá obsah souboru a metadata.
 * Extrahuje archivy do složek.
 
-Můžete použít triggery, které získávají odpovědi z vašeho serveru FTP a zpřístupnit výstup ostatním akcím. Pro správu souborů na serveru FTP můžete ve svých aplikacích logiky použít akce spuštění. Můžete také použít jiné akce výstup z akcí FTP. Pokud například pravidelně získáváte soubory ze serveru FTP, můžete odesílat e-maily o těchto souborech a jejich obsahu pomocí konektoru Office 365 Outlook Connector nebo konektoru Outlook.com. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Můžete použít triggery, které získávají odpovědi z vašeho serveru FTP a zpřístupnit výstup ostatním akcím. Pro správu souborů na serveru FTP můžete ve svých aplikacích logiky použít akce spuštění. Můžete také použít jiné akce výstup z akcí FTP. Pokud například pravidelně získáváte soubory ze serveru FTP, můžete odesílat e-maily o těchto souborech a jejich obsahu pomocí konektoru Office 365 Outlook Connector nebo konektoru Outlook.com. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 ## <a name="limits"></a>Omezení
 
@@ -43,13 +43,13 @@ Aktivační procedury FTP fungují při cyklickém dotazování systému soubor�
 
 | Klient SFTP | Akce |
 |-------------|--------|
-| WinSCP | Přejít na **možnosti** > **předvolby** > **přenos** > **Upravit** > **zachovat časové razítko** > **Zakázat** |
-| FileZilly | Přejít na **přenos** > **zachovejte časová razítka přenesených souborů** > **Zakázat** |
+| Winscp | Přejít na **možnosti** > **předvolby** > **přenos** > **Upravit** > **zachovat časové razítko** > **Zakázat** |
+| FileZilla | Přejít na **přenos** > **zachovejte časová razítka přenesených souborů** > **Zakázat** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -65,81 +65,107 @@ Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje,
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole "FTP" jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete.
+1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole `ftp` jako filtr. V seznamu **triggery** vyberte Trigger, který chcete.
 
    -nebo-
 
-   Pro existující aplikace logiky klikněte v posledním kroku na místo, kam chcete přidat akci, zvolte **Nový krok**a potom vyberte **přidat akci**. Do vyhledávacího pole zadejte "FTP" jako filtr. V seznamu akce vyberte akci, kterou chcete.
+   Pro existující aplikace logiky klikněte v posledním kroku na místo, kam chcete přidat akci, vyberte **Nový krok**a potom vyberte **přidat akci**. Do vyhledávacího pole zadejte `ftp` jako filtr. V seznamu **Akce** vyberte akci, kterou chcete.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Zvolte znaménko plus ( **+** ), které se zobrazí, a vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. Zadejte potřebné údaje pro připojení a pak zvolte **vytvořit**.
+1. Zadejte informace o připojení a vyberte **vytvořit**.
 
-1. Zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
+1. Zadejte informace pro vybraný Trigger nebo akci a pokračujte ve vytváření pracovního postupu aplikace logiky.
 
 ## <a name="examples"></a>Příklady
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>Aktivační událost serveru FTP: při přidání nebo úpravě souboru
+### <a name="add-ftp-trigger"></a>Přidat aktivační událost FTP
 
-Tato aktivační událost spustí pracovní postup aplikace logiky, když aktivační událost zjistí, kdy je soubor na serveru FTP přidán nebo změněn. Můžete například přidat podmínku, která zkontroluje obsah souboru a rozhodne, zda tento obsah získat na základě toho, zda tento obsah splňuje zadanou podmínku. Nakonec můžete přidat akci, která získá obsah souboru, a tento obsah umístit do složky na serveru SFTP.
+**Když se přidá nebo upraví soubor (jenom vlastnosti)** , spustí se aktivační procedura aplikace logiky, když aktivační událost zjistí, že se na serveru FTP přidal nebo změnil soubor. Můžete například přidat podmínku, která zkontroluje obsah souboru a rozhodne, zda tento obsah získá na základě toho, zda tento obsah splňuje zadanou podmínku. Nakonec můžete přidat akci, která získá obsah souboru, a tento obsah umístit do jiné složky na serveru SFTP.
 
-**Podnikový příklad**: tuto aktivační událost můžete použít k monitorování složky FTP pro nové soubory, které popisují objednávky zákazníků. Pak můžete použít akci FTP, jako je například **získání obsahu souboru**, takže můžete získat obsah objednávky pro další zpracování a uložení tohoto pořadí v databázi objednávek.
+Pomocí této aktivační události například můžete monitorovat složku FTP pro nové soubory, které popisují objednávky zákazníků. Pak můžete použít akci FTP, například **získat metadata souboru** , a získat tak vlastnosti pro tento nový soubor a potom pomocí **získat obsah souboru** získat obsah z tohoto souboru pro další zpracování a uložit ho v databázi objednávek.
 
-Tady je příklad, který ukazuje tuto aktivační událost: **když se přidá nebo upraví soubor** .
+Zde je příklad, který ukazuje, jak použít **při přidání nebo úpravě souboru (pouze vlastnosti)** aktivační událost.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole "FTP" jako filtr. V seznamu triggery vyberte tuto aktivační událost: **když se přidá nebo upraví položka-FTP** .
+1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole `ftp` jako filtr. V seznamu triggery vyberte tuto aktivační událost: **když se přidá nebo upraví dodané datum (jenom vlastnosti)** .
 
-   ![Vyhledání a výběr triggeru FTP](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
+   ![Vyhledejte a vyberte aktivační událost FTP.](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
-1. Zadejte potřebné údaje pro připojení a pak zvolte **vytvořit**.
+1. Zadejte potřebné údaje pro připojení a pak vyberte **vytvořit**.
 
    Ve výchozím nastavení tento konektor přenáší soubory v textovém formátu. Chcete-li přenášet soubory v binárním formátu, například, kde a kdy je použito kódování, vyberte **binární přenos**.
 
-   ![Vytvořit připojení k serveru FTP](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
+   ![Vytvořit připojení k serveru FTP](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. Vedle pole **Složka** vyberte ikonu složky, aby se zobrazil seznam. Chcete-li najít složku, kterou chcete monitorovat pro nové nebo upravované soubory, vyberte šipku pravého úhlu ( **>** ), přejděte do této složky a potom vyberte složku.
+1. V poli **Složka** vyberte ikonu složky, aby se zobrazil seznam. Chcete-li najít složku, kterou chcete monitorovat pro nové nebo upravované soubory, vyberte šipku pravého úhlu ( **>** ), přejděte do této složky a potom vyberte složku.
 
-   ![Najít a vybrat složku, která se má monitorovat](./media/connectors-create-api-ftp/select-folder.png)  
+   ![Najít a vybrat složku, která se má monitorovat](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 
    Vybraná složka se zobrazí v poli **Složka** .
 
-   ![Vybraná složka](./media/connectors-create-api-ftp/selected-folder.png)  
+   ![Vybraná složka se zobrazí ve vlastnosti "složka".](./media/connectors-create-api-ftp/selected-folder-ftp-trigger.png)
+
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Teď, když má aplikace logiky Trigger, přidejte akce, které chcete spustit, když aplikace logiky najde nový nebo upravovaný soubor. V tomto příkladu můžete přidat akci FTP, která získá nový nebo aktualizovaný obsah.
 
 <a name="get-content"></a>
 
-### <a name="ftp-action-get-content"></a>Akce FTP: získání obsahu
+### <a name="add-ftp-action"></a>Přidat akci FTP
 
-Tato akce načte obsah ze souboru na serveru FTP při přidání nebo aktualizaci tohoto souboru. Například můžete přidat Trigger z předchozího příkladu a akci, která po přidání nebo úpravě souboru získá obsah souboru.
-
-Tady je příklad, který ukazuje tuto akci: **získat obsah**
+Akce **získat metadata souboru** získá vlastnosti souboru, který je na serveru FTP, a akce **získat obsah souboru** získá obsah souboru na základě informací o tomto souboru na serveru FTP. Můžete například přidat Trigger z předchozího příkladu a tyto akce k získání obsahu souboru po jeho přidání nebo úpravě.
 
 1. V aktivační události nebo jakékoli jiné akci vyberte **Nový krok**.
 
-1. Do vyhledávacího pole zadejte "FTP" jako filtr. V seznamu akce vyberte tuto akci: **získat obsah souboru-FTP**
+1. Do vyhledávacího pole zadejte `ftp` jako filtr. V seznamu akce vyberte tuto akci: **získat metadata souboru** .
 
-   ![Vybrat akci FTP](./media/connectors-create-api-ftp/select-ftp-action.png)  
+   ![Vyberte akci získat metadata souboru.](./media/connectors-create-api-ftp/select-get-file-metadata-ftp-action.png)
 
-1. Pokud už máte připojení k serveru FTP a účtu, pokračujte na další krok. V opačném případě zadejte potřebné údaje pro toto připojení a pak zvolte **vytvořit**.
+1. Pokud už máte připojení k serveru FTP a účtu, pokračujte na další krok. V opačném případě zadejte potřebné údaje pro toto připojení a pak vyberte **vytvořit**.
 
    ![Vytvořit připojení k serveru FTP](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
 
-1. Po otevření akce **získat obsah souboru** klikněte do pole **soubor** , aby se zobrazil seznam dynamického obsahu. Nyní můžete vybrat vlastnosti pro výstupy z předchozích kroků. V seznamu dynamický obsah vyberte vlastnost **obsah souboru** , která obsahuje obsah pro přidaný nebo aktualizovaný soubor.  
+1. Po zobrazení akce **získat metadata souboru** klikněte do pole **soubor** , aby se zobrazil seznam dynamického obsahu. Nyní můžete vybrat vlastnosti pro výstupy z předchozích kroků. V seznamu dynamického obsahu v části **získat metadata souboru**vyberte vlastnost **seznam ID souborů** , která odkazuje na kolekci, do které byl soubor přidán nebo aktualizován.
 
-   ![Najít a vybrat soubor](./media/connectors-create-api-ftp/ftp-action-get-file-content.png)
+   ![Najde a vybere vlastnost seznam ID souborů.](./media/connectors-create-api-ftp/select-list-of-files-id-output.png)
 
-   Vlastnost **obsah souboru** se nyní zobrazí v poli **soubor** .
+   V poli **soubor** se teď zobrazí **seznam vlastností ID souborů** .
 
-   ![Vybraná vlastnost obsah souboru](./media/connectors-create-api-ftp/ftp-action-selected-file-content-property.png)
+   ![Vybraná vlastnost seznam ID souborů](./media/connectors-create-api-ftp/selected-list-file-ids-ftp-action.png)
 
-1. Uložte svou aplikaci logiky. Pokud chcete otestovat pracovní postup, přidejte soubor do složky FTP, kterou vaše aplikace logiky teď monitoruje.
+1. Teď přidejte tuto akci FTP: **získání obsahu souboru**
+
+   ![Vyhledejte a vyberte akci načíst obsah souboru.](./media/connectors-create-api-ftp/select-get-file-content-ftp-action.png)
+
+1. Po zobrazení akce **získat obsah souboru** klikněte do pole **soubor** , aby se zobrazil seznam dynamického obsahu. Nyní můžete vybrat vlastnosti pro výstupy z předchozích kroků. V seznamu dynamického obsahu v části **získat metadata souboru**vyberte vlastnost **ID** , která odkazuje na soubor, který se přidal nebo aktualizoval.
+
+   ![Najde a vybere vlastnost ID.](./media/connectors-create-api-ftp/get-file-content-id-output.png)
+
+   Vlastnost **ID** se teď zobrazí v poli **soubor** .
+
+   ![Vybraná vlastnost ID](./media/connectors-create-api-ftp/selected-get-file-content-id-ftp-action.png)
+
+1. Uložte svou aplikaci logiky.
+
+## <a name="test-your-logic-app"></a>Testování aplikace logiky
+
+Pokud chcete ověřit, že váš pracovní postup vrátí očekávaný obsah, přidejte další akci, která vám pošle obsah z odeslaného nebo aktualizovaného souboru.
+
+1. V akci **získat obsah souboru** přidejte akci, která vám pošle obsah souboru. Tento příklad přidá akci **Odeslat e-mail** pro Office 365 Outlook.
+
+   ![Přidat akci pro odeslání e-mailu](./media/connectors-create-api-ftp/select-send-email-action.png)
+
+1. Po zobrazení akce zadejte informace a přidejte vlastnosti, které chcete testovat. Například zahrňte vlastnost **Content Content (obsah souboru** ), která se zobrazí v seznamu dynamického obsahu po výběru **Zobrazit další** v části **získat obsah souboru** .
+
+   ![Zadání informací o akci e-mailu](./media/connectors-create-api-ftp/selected-send-email-action.png)
+
+1. Uložte svou aplikaci logiky. Pokud chcete aplikaci logiky spustit a aktivovat, na panelu nástrojů vyberte **Spustit**a pak přidejte soubor do složky FTP, kterou vaše aplikace logiky teď monitoruje.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

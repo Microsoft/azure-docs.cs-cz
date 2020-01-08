@@ -1,6 +1,6 @@
 ---
-title: Přidejte mnohoúhelníkovou vrstvu vytlačení do Azure Maps | Microsoft Docs
-description: Postup přidání mnohoúhelníkové vrstvy vytlačení do Azure Maps webové sady SDK.
+title: Přidejte vrstvu vysunutí mnohoúhelníku do Azure Maps | Microsoft Docs
+description: Postup přidání vrstvy vysunutí mnohoúhelníku do Azure Maps webové sady SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2019
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e6858359549f6a54513eda7bc692adcbc7d7e71b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a357545bedde6a4e859a671005083a0fc665340d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484335"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432843"
 ---
-# <a name="add-an-extrusion-polygon-layer-to-the-map"></a>Přidat mnohoúhelníkovou vrstvu vytlačení do mapy
+# <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Přidání vrstvy vysunutí mnohoúhelníku na mapu
 
 V tomto článku se dozvíte, jak použít vrstvu vysunutí mnohoúhelníku k vykreslení oblastí `Polygon` a `MultiPolygon` funkcí geometrií jako vytlačené obrazce na mapě. Sada Azure Maps Web SDK také podporuje vytváření geometrií kroužků, jak je definováno v [rozšířeném schématu pro stanovení biojson](extend-geojson.md#circle). Tyto kružnice jsou transformované na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií je také možné snadno aktualizovat, pokud jsou zabaleny pomocí nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)
 

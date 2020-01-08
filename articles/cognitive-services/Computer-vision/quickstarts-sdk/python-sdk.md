@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro Python | Microsoft Docs'
-description: Začněte s knihovnou klienta Počítačové zpracování obrazu pro Python.
+title: 'Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro Python'
+description: Začněte s tímto rychlým startem pomocí klientské knihovny Počítačové zpracování obrazu pro Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 1e91b204401033c7c6c47484140720ab8076f9f9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9c98c64722fa76f96161a92f93c3d984193a7a24
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971691"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382204"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro Python
 
@@ -30,12 +30,12 @@ Použití klientské knihovny Počítačové zpracování obrazu pro Python pro:
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) |  | [ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Probíhá nastavení
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Vytvoření prostředku Azure Počítačové zpracování obrazu
 

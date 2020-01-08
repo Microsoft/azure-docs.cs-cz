@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7afad7bdc0cd0fb957104e4963eaade96fa2d840
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423939"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -34,8 +34,8 @@ Knihovny Microsoftu podporující aplikace démona jsou:
   Knihovna MSAL | Popis
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporované platformy pro sestavení aplikace démona jsou .NET Framework a platformy .NET Core (ne UWP, Xamarin. iOS a Xamarin. Android, protože tyto platformy slouží k vytváření veřejných klientských aplikací).
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Vývoj v průběhu verze Public Preview
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Vývoj v průběhu verze Public Preview
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podpora pro aplikace démona v Pythonu
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Podpora pro aplikace démona v jazyce Java
 
 ## <a name="configuration-of-the-authority"></a>Konfigurace autority
 
@@ -136,7 +136,7 @@ Přidejte do své aplikace balíček NuGet [Microsoft. IdentityClient](https://w
 V MSAL.NET je aplikace důvěrného klienta reprezentovaná rozhraním `IConfidentialClientApplication`.
 Použití oboru názvů MSAL.NET ve zdrojovém kódu
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
@@ -164,7 +164,7 @@ Zde je kód pro vytvoření instance aplikace důvěrného klienta s tajným kl�
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
@@ -204,7 +204,7 @@ Zde je kód pro sestavení aplikace s certifikátem:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -243,7 +243,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         .build();
 ```
 
-nebo
+– nebo –
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -271,7 +271,7 @@ MSAL.NET má dvě metody pro poskytování podepsaných kontrolních výrazů do
 
 Pokud používáte `WithClientAssertion`, je nutné zadat podepsaný token JWT. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md) .
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -281,7 +281,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 Když použijete `WithClientClaims`, MSAL.NET vypočítá sám podepsaný kontrolní výraz, který obsahuje deklarace očekávané službou Azure AD a další deklarace identity klienta, které chcete odeslat.
 Zde je fragment kódu, jak to udělat:
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);

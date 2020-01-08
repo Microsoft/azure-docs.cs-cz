@@ -1,6 +1,5 @@
 ---
-title: Node.Js s využitím Angular aplikace pomocí rozhraní API MongoB (část 1)
-titleSuffix: Azure Cosmos DB
+title: Node. js, úhlová aplikace s využitím rozhraní API Azure Cosmos DB pro MongoB (part1)
 description: V této sérii kurzů založených na videích zjistíte, jak vytvořit aplikaci MongoDB s Angular a Node postavenou na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,18 +10,18 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: ec88b8e78c2d73ffa4badbc8ceaa468b4e5169e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765988"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444687"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md).
+Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md).
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Umožňuje vám rychle vytvořit a dotazovat databáze dokumentů, klíč/hodnota a grafů, které můžou využívat výhody globální distribuce a možností horizontálního škálování v jádru služby Cosmos DB. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Umožňuje rychle vytvořit a dotazovat databáze dokumentů, klíčů/hodnot a grafů, které využívají možnosti globální distribuce a horizontálního škálování v jádru Cosmos DB. 
 
 Tento vícedílný kurz se zabývá následujícími úlohami:
 
@@ -43,7 +42,7 @@ Chcete vytvořit stejnou aplikaci pomocí React? Podívejte se na [sérii videok
 
 Tento kurz vás postupně provede jednotlivými kroky vytvoření aplikace. Pokud si chcete stáhnout dokončený projekt, v [úložišti angular-cosmosdb](https://github.com/Azure-Samples/angular-cosmosdb) na GitHubu můžete získat hotovou aplikaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste provedli následující:
 

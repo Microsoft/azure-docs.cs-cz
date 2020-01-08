@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Language Understanding bot Node. js v4'
 titleSuffix: Azure Cognitive Services
-description: Pomocí Node.js vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
+description: Pomocí Node. js sestavíte v tomto kurzu konverzaci robota integrovaná s jazykem Language porozumění (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 754d9d74a5d2c74a873145eaaddaaced29aa2ca8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492672"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448003"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: použití robota webové aplikace s podporou Language Understanding v Node. js 
 
@@ -40,7 +40,7 @@ Pomocí Node. js můžete sestavit robota chatu integrovanou s jazykem Language 
 
 ## <a name="create-a-web-app-bot-resource"></a>Vytvoření prostředku robota webové aplikace
 
-1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit nový prostředek**.
+1. Na portálu **Azure Portal** vyberte [Vytvořit nový prostředek](https://portal.azure.com).
 
 1. Ve vyhledávací poli vyhledejte a vyberte **Web App Bot**. Vyberte **Vytvořit**.
 
@@ -56,9 +56,9 @@ Pomocí Node. js můžete sestavit robota chatu integrovanou s jazykem Language 
     |App name (Název aplikace)|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, například `luis-nodejs-bot-johnsmith`|
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
     |LUIS App location (Umístění aplikace LUIS)|Musí být stejné jako oblast prostředků LUIS|`westus`|
-    |Plán/umístění služby App Service|Neměňte z poskytnuté výchozí hodnoty.|
+    |Plán služby App Service / umístění|Neměňte z poskytnuté výchozí hodnoty.|
     |Application Insights|Neměňte z poskytnuté výchozí hodnoty.|
-    |ID a heslo aplikace od Microsoftu|Neměňte z poskytnuté výchozí hodnoty.|
+    |ID a heslo aplikace Microsoftu|Neměňte z poskytnuté výchozí hodnoty.|
 
 1. V **šabloně robota**vyberte následující a pak klikněte na tlačítko **Vybrat** pod těmito nastaveními:
 
@@ -83,9 +83,9 @@ Proces vytvoření služby robot také vytvoří novou aplikaci LUIS s záměry 
 |Kniha let|`Travel to Paris`|
 |Zrušit|`bye`|
 |Getpočasí|`what's the weather like?`|
-|Žádný|Cokoli mimo doménu aplikace|
+|Žádné|Cokoli mimo doménu aplikace|
 
-## <a name="test-the-bot-in-web-chat"></a>Testování robota ve webovém chatu
+## <a name="test-the-bot-in-web-chat"></a>Testování ve Web Chat robota
 
 1. I když jste stále v Azure Portal pro nový robot, vyberte **test na webu chat**. 
 1. Do textového pole **Zadejte text zprávy** zadejte text `Book a flight from Seattle to Berlin tomorrow`. Robot odpoví s ověřením, že chcete zarezervovat let. 

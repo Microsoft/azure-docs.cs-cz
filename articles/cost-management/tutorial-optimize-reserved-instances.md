@@ -1,5 +1,5 @@
 ---
-title: Kurz – Optimalizace nákladů na rezervované instance pomocí Cloudyn v Azure | Microsoft Docs
+title: Kurz – optimalizace nákladů na instance rezerv pomocí Cloudyn – Azure
 description: V tomto kurzu zjistíte, jak optimalizovat náklady na rezervované instance pro Azure a Amazon Web Services (AWS).
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444573"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -24,7 +24,7 @@ ms.locfileid: "74229867"
 
 V tomto kurzu zjistíte, jak vám Cloudyn může pomoct optimalizovat náklady na rezervované instance Azure a Amazon Web Services (AWS) a jejich využití. Rezervovaná instance u jakéhokoli poskytovatele cloudových služeb představuje dlouhodobý smluvní závazek, kdy se předem zavazujete k budoucímu využití virtuálního počítače. Potenciálně může také nabízet výrazné úspory oproti standardnímu cenovému modelu virtuálních počítačů s platbami za použití. Potenciálních úspor dosáhnete pouze při plném využití kapacity rezervovaných instancí.
 
-Tento kurz popisuje, jakým způsobem Cloudyn podporuje rezervované instance Azure a AWS. Popisuje také možnosti optimalizace nákladů na rezervované instance. Hlavně tím, že se vaše rezervace budou využívat naplno. V tomto kurzu se naučíte:
+Tento kurz popisuje, jakým způsobem Cloudyn podporuje rezervované instance Azure a AWS. Popisuje také možnosti optimalizace nákladů na rezervované instance. Hlavně tím, že se vaše rezervace budou využívat naplno. V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Porozumění nákladům na rezervované instance Azure

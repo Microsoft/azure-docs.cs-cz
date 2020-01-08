@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: blevens
-ms.openlocfilehash: bb6abc616be98f85228c4f84f37b26110b48c2ed
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9ad4841d805b604d0f44a9e0dc08eed15aa9c1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431994"
 ---
 # <a name="add-bank-and-tax-information"></a>Přidat bankovní a daňové informace  
 
@@ -22,7 +22,7 @@ Bankovní a daňové informace jsou požadovány pro všechny komerční nabídk
 
 ## <a name="partner-center"></a>Partnerské centrum
 
-Bankovní a daňové informace se teď spravují v partnerském centru. Pokyny pro konfiguraci těchto nastavení najdete v části finanční podrobnosti v tématu [Správa účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details).
+Bankovní a daňové informace se teď spravují v partnerském centru. Pokyny ke konfiguraci těchto nastavení najdete na stránce "Přehled komerčního obchodu" v tématu [Správa účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#payout-account).
 
 
 ## <a name="next-steps"></a>Další kroky

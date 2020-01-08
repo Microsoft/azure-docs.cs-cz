@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak povolit Azure Monitor pro virtuální 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 4a89eb36c9aa7369d6145304b572b4245cef3483
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365814"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Povolit Azure Monitor pro virtuální počítače (Preview) pomocí Azure Policy
 
@@ -77,35 +77,35 @@ Další informace o přiřazování zásad Azure najdete v tématu [Přehled slu
 
 Definice zásad pro virtuální počítač Azure jsou uvedené v následující tabulce.
 
-|Název |Popis |Typ |
+|Name (Název) |Popis |Typ |
 |-----|------------|-----|
 |\[Ve verzi Preview\]: Povolit monitorování Azure pro virtuální počítače |Povolí Azure Monitor pro virtuální počítače v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr používá pracovní prostor Log Analytics. |Iniciativa |
-|\[Preview\]: nasazení agenta závislostí auditu – image virtuálního počítače (OS) není v seznamu. |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) bez seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení agenta závislostí pro virtuální počítače se systémem Linux |Nasaďte agenta závislostí pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení agenta závislostí pro virtuální počítače s Windows |Nasaďte agenta závislostí pro virtuální počítače s Windows, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Nasaďte agenta Log Analytics pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows |Nasaďte agenta Log Analytics pro virtuální počítače s Windows, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
+|\[Preview\]: nasazení agenta závislostí auditu – image virtuálního počítače (OS) není v seznamu. |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) bez seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení agenta závislostí pro virtuální počítače se systémem Linux |Nasaďte agenta závislostí pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení agenta závislostí pro virtuální počítače s Windows |Nasaďte agenta závislostí pro virtuální počítače s Windows, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Nasaďte agenta Log Analytics pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows |Nasaďte agenta Log Analytics pro virtuální počítače s Windows, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásady |
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Zásady pro Azure Virtual Machine Scale Sets
 
 Definice zásad pro sadu škálování virtuálního počítače Azure jsou uvedené v následující tabulce.
 
-|Název |Popis |Typ |
+|Name (Název) |Popis |Typ |
 |-----|------------|-----|
 |\[Preview\]: povolení Azure Monitor pro Virtual Machine Scale Sets |Povolte Azure Monitor pro sadu škálování virtuálního počítače v zadaném oboru (skupina pro správu, předplatné nebo skupinu prostředků). Jako parametr používá pracovní prostor Log Analytics. Poznámka: Pokud je vaše zásada upgradu sady škálování nastavená na ruční, použijte rozšíření na všechny virtuální počítače v sadě voláním upgradu. V rozhraní příkazového řádku je to `az vmss update-instances`. |Iniciativa |
-|\[Preview\]: nasazení agenta závislostí auditu ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu. |Hlásí sadu virtuálních počítačů s měřítkem jako nedodržující předpisy, pokud image virtuálního počítače není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení agenta Log Analytics auditu ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu. |Hlásí sadu virtuálních počítačů s měřítkem jako nedodržující předpisy, pokud image virtuálního počítače není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení agenta závislostí pro virtuální počítače se systémem Linux Scale Sets |Nasaďte agenta závislostí pro sadu virtuálních počítačů se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení agenta závislostí pro sadu škálování virtuálních počítačů s Windows |Nasaďte agenta závislostí pro sadu Windows Virtual Machine Scale Sets, pokud je v seznamu definovaná image virtuálního počítače a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets |Nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
-|\[Preview\]: nasazení agenta Log Analytics pro Windows Virtual Machine Scale Sets |Nasaďte agenta Log Analytics pro Virtual Machine Scale Sets, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
+|\[Preview\]: nasazení agenta závislostí auditu ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu. |Hlásí sadu virtuálních počítačů s měřítkem jako nedodržující předpisy, pokud image virtuálního počítače není v seznamu definovaná a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení agenta Log Analytics auditu ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu. |Hlásí sadu virtuálních počítačů s měřítkem jako nedodržující předpisy, pokud image virtuálního počítače není v seznamu definovaná a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení agenta závislostí pro virtuální počítače se systémem Linux Scale Sets |Nasaďte agenta závislostí pro sadu virtuálních počítačů se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení agenta závislostí pro sadu škálování virtuálních počítačů s Windows |Nasaďte agenta závislostí pro sadu Windows Virtual Machine Scale Sets, pokud je v seznamu definovaná image virtuálního počítače a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets |Nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásady |
+|\[Preview\]: nasazení agenta Log Analytics pro Windows Virtual Machine Scale Sets |Nasaďte agenta Log Analytics pro Virtual Machine Scale Sets, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásady |
 
 Samostatné zásady (není zahrnutá v iniciativě) je popsaný tady:
 
-|Název |Popis |Typ |
+|Name (Název) |Popis |Typ |
 |-----|------------|-----|
-|\[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy |Vykázat virtuální počítače jako nedodržující předpisy, pokud se neprotokolují do Log Analyticsho pracovního prostoru zadaného v přiřazení zásady nebo iniciativy. |Zásada |
+|\[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy |Vykázat virtuální počítače jako nedodržující předpisy, pokud se neprotokolují do Log Analyticsho pracovního prostoru zadaného v přiřazení zásady nebo iniciativy. |Zásady |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Přiřadit iniciativu Azure Monitor
 
@@ -113,7 +113,7 @@ Pokud chcete vytvořit přiřazení zásad na stránce **Azure monitor pro virtu
 
 Když přiřadíte zásadu nebo iniciativu, může být obor vybraný v přiřazení oborem uvedeným zde nebo podmnožinou. Například jste mohli vytvořit přiřazení pro předplatné (rozsah zásad), nikoli skupinu pro správu (rozsah pokrytí). V takovém případě procento pokrytí by znamenalo, že virtuální počítače v oboru zásad nebo iniciativy jsou dělené virtuálními počítači v oboru pokrytí. V jiném případě jste možná vyloučili některé virtuální počítače nebo skupiny prostředků nebo předplatné z oboru zásad. Pokud je prázdný, znamená to, že buď zásada nebo podnět neexistuje, nebo nemáte oprávnění. Informace jsou k dispozici v části **stav přiřazení**.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Na webu Azure Portal, vyberte **monitorování**. 
 
@@ -145,10 +145,10 @@ Následující matice mapuje všechny možné stavy dodržování předpisů pro
 
 | Stav dodržování předpisů | Popis | 
 |------------------|-------------|
-| **Kompatibilní** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
+| **Kompatibilní:** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
 | **Nedodržující předpisy** | Ne všechny virtuální počítače v oboru nemají Log Analytics a v nich jsou nasazeni agenti závislostí a mohou vyžadovat nápravu.|
 | **Nezahájeno** | Bylo přidáno nové přiřazení. |
-| **Získáte** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
+| **Uzamčení** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
 | **Prázdné** | Nepřiřadily se žádné zásady. | 
 
 <sup>1</sup> Pokud ke skupině pro správu nemáte přístup, požádejte vlastníka o poskytnutí přístupu. Nebo si prohlédněte dodržování předpisů a spravujte přiřazení prostřednictvím podřízených skupin nebo předplatných pro správu. 
@@ -160,7 +160,7 @@ Následující tabulka namapuje všechny možné stavy přiřazení pro iniciati
 | **Nástup** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
 | **Upozornění** | Předplatné není ve skupině pro správu.|
 | **Nezahájeno** | Bylo přidáno nové přiřazení. |
-| **Získáte** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
+| **Uzamčení** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
 | **Prázdné** | Neexistují žádné virtuální počítače, nebo není zásada přiřazena. | 
 | **Akce** | Přiřaďte zásadu nebo upravte přiřazení. | 
 
@@ -196,7 +196,7 @@ Kdykoli poté, co přiřadíte iniciativu ke skupině nebo předplatnému pro sp
 
 - Název přiřazení
 - Popis
-- Přiřadil
+- Přiřadil(a)
 - Pracovní prostor Log Analytics
 - Výjimky
 

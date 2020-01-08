@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378377"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostika zrušených oznámení v Azure Notification Hubs
 
@@ -103,7 +103,7 @@ Každá dávka se odešle do služby nabízených oznámení, která zase přijm
 
 V takovém případě je registrace z databáze odebrána. Pak zopakujeme doručení oznámení pro zbývající zařízení v této dávce.
 
-Pokud chcete získat další informace o chybách při neúspěšném pokusu o doručení proti registraci, můžete použít Notification Hubs rozhraní REST API [na telemetrii zpráv: získat telemetrii zpráv s oznámeními](https://msdn.microsoft.com/library/azure/mt608135.aspx) a [PNS zpětnou vazbu](https://msdn.microsoft.com/library/azure/mt705560.aspx). Vzorový kód najdete v [příkladu odeslání REST](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
+Pokud chcete získat další informace o chybách při neúspěšném pokusu o doručení proti registraci, můžete použít Notification Hubs rozhraní REST API [na telemetrii zpráv: získat telemetrii zpráv s oznámeními](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) a [PNS zpětnou vazbu](https://msdn.microsoft.com/library/azure/mt705560.aspx). Vzorový kód najdete v [příkladu odeslání REST](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
 ## <a name="push-notification-service-issues"></a>Problémy se službou nabízených oznámení
 
@@ -127,7 +127,7 @@ Tady jsou cesty pro diagnostiku hlavní příčiny odhozených oznámení v Noti
 
 Ověřte přihlašovací údaje v příslušném portálu pro vývojáře služby nabízených oznámení (APNs, FCM, Služba oznamování systému Windows atd.). Další informace najdete v tématu [kurz: posílání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
-#### <a name="azure-portal"></a>portál Azure ####
+#### <a name="azure-portal"></a>Portál Azure ####
 
 Pokud chcete zkontrolovat přihlašovací údaje, které jste získali z portálu pro vývojáře služby nabízených oznámení, přejděte na kartu **zásady přístupu** v Azure Portal.
 
@@ -168,7 +168,7 @@ Mnoho zákazníků používá [Service Bus Exploreru](https://github.com/paolosa
 
 ### <a name="verify-message-notifications"></a>Ověření oznámení zprávy
 
-#### <a name="azure-portal"></a>portál Azure ####
+#### <a name="azure-portal"></a>Portál Azure ####
 
 Pokud chcete vašim klientům poslat testovací oznámení, aniž byste museli ukončit a spustit službu back-end, vyberte v části **Podpora a řešení potíží**možnost **Odeslat test odeslat**.
 
@@ -245,7 +245,7 @@ Tato zpráva znamená, že přihlašovací údaje nakonfigurované v Notificatio
 
 ### <a name="review-telemetry"></a>Kontrola telemetrie ###
 
-#### <a name="azure-portal"></a>portál Azure ####
+#### <a name="azure-portal"></a>Portál Azure ####
 
 Na portálu můžete získat rychlý přehled o všech aktivitách v centru oznámení.
 
@@ -261,7 +261,7 @@ Na portálu můžete získat rychlý přehled o všech aktivitách v centru ozn�
 
 4. Pokud není nastavení ověřování pro vaše centrum oznámení správné, zobrazí se **Chyba ověření PNS** zprávy. Je dobré se podívat, jak přihlašovací údaje služby nabízených oznámení kontrolovat.
 
-#### <a name="programmatic-access"></a>Programový přístup ####
+#### <a name="programmatic-access"></a>Programovatelný přístup ####
 
 Další informace o programovém přístupu najdete v tématu [programový přístup](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435564"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších
 
@@ -57,7 +57,7 @@ Postupujte podle pokynů na obrazovce. Níže jsou uvedeny podrobnosti pro:
 
 ## <a name="resource-group-name"></a>Název skupiny prostředků
 
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) vám pomůže pracovat s prostředky v aplikaci jako se skupinou, která se označuje jako skupina prostředků Azure. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat, monitorovat nebo odstranit v rámci jediné koordinované operace.
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) vám pomůže pracovat s prostředky v aplikaci jako se skupinou, která se označuje jako skupina prostředků Azure. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat, monitorovat nebo odstranit v rámci jediné koordinované operace.
 
 ## <a name="cluster-types"></a>Typy a konfigurace clusteru
 
@@ -108,7 +108,7 @@ Uživatelské jméno SSH má následující omezení:
 * Povolené speciální znaky: _ a @
 * Nepovolené znaky: #;. ",\/:! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maximální délka: 64
-* Rezervované názvy: Hadoop, uživatelé, Oozie, podregistr, mapred, Ambari-QA, Zookeeper, tez, HDFS, Sqoop, příze, hcat, AMS, HBA, doplňování, správce, správce, uživatel, uživatel1, test, uživatel2, test1, user3, admin1, 1, 123, a, ACTUser, ADM, admin2, ASPNET, Backup, Console, David, Host, Jan, vlastník, root, server, SQL, podpora, Support_388945a0, sys, test2, test3, user4, user5, Spark
+* Rezervované názvy: Hadoop, uživatelé, Oozie, podregistr, mapred, Ambari-QA, Zookeeper, tez, HDFS, Sqoop, příze, hcat, AMS, HBA, doplňování, správce, správce, uživatel, uživatel1, test, uživatel2, test1, user3, admin1, 1, 123, a, ACTUser, ADM, admin2, ASPNET, Backup, Console, David, Host, Jan, Owner, root, server, SQL, podpora, support_388945a0, sys, test2, test3, user4, user5, Spark
 
 Balíček Enterprise Security umožňuje integrovat HDInsight se službou Active Directory a Apache Ranger. Pomocí balíčku podnikového zabezpečení lze vytvořit více uživatelů.
 
@@ -226,7 +226,7 @@ Pokud chcete zjistit, jakou hodnotu byste měli použít k určení velikosti vi
 > [!IMPORTANT]  
 > Pokud v clusteru potřebujete víc než 32 pracovních uzlů, musíte vybrat velikost hlavního uzlu s aspoň 8 jádry a 14 GB paměti RAM.
 
-Další informace najdete v tématu [velikosti pro virtuální počítače](../virtual-machines/windows/sizes.md). Informace o cenách různých velikostí najdete v tématu ceny služby [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).
+Další informace najdete v tématu [velikosti virtuálních počítačů](../virtual-machines/windows/sizes.md). Informace o cenách různých velikostí najdete v tématu ceny služby [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).
 
 ## <a name="classic-cluster-setup"></a>Instalace klasického clusteru
 
@@ -254,20 +254,20 @@ Některé nativní komponenty Java, jako je Apache Mahout a Cascading, se dají 
 
 V některých případech budete chtít během procesu vytváření nakonfigurovat následující konfigurační soubory:
 
-* clusterIdentity. XML
+* clusterIdentity.xml
 * Core-site. XML
-* Gateway. XML
-* HBase-env. XML
-* HBase-site. XML
-* HDFS-site. XML
-* Hive-env. XML
-* Hive-site. XML
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred – lokalita
 * Oozie-site. XML
-* Oozie-env. XML
+* oozie-env.xml
 * Storm-site. XML
-* tez-site. XML
-* webhcat-site. XML
+* tez-site.xml
+* webhcat-site.xml
 * YARN-site. XML
 
 Další informace najdete v tématu [Přizpůsobení clusterů HDInsight pomocí nástroje Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).

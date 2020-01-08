@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 4534e20a1156f1d3550d247dfd15d9dc538e9d80
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409533"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy týkající se sítě v Azure Functions
 
@@ -51,9 +51,7 @@ Pomocí integrace virtuální sítě můžete získat přístup k prostředkům 
 
 Můžete umožnit volání aktivačních událostí HTTP z virtuální sítě pomocí [koncových bodů služby](./functions-networking-options.md#private-site-access). 
 
-Můžete také aktivovat funkci z prostředku ve virtuální síti nasazením aplikace Function App do App Service Environment. Podrobnosti o používání App Service Environment najdete v tématu [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
-
-Plán Premium a App Service podporuje triggery HTTP z virtuální sítě, ale jenom App Service prostředí podporuje všechny ostatní typy triggerů funkcí prostřednictvím virtuální sítě.
+Můžete také aktivovat funkci ze všech ostatních prostředků ve virtuální síti nasazením aplikace Function App do plánu Premium, App Service plánu nebo App Service Environment. Další informace najdete v tématu [triggery jiné virtuální sítě než http](./functions-networking-options.md#virtual-network-triggers-non-http) .
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Jak můžu nasadit aplikaci Function App ve virtuální síti?
 

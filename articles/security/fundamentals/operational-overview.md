@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443884"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
@@ -38,17 +38,17 @@ Provozní tým IT je zodpovědný za správu infrastruktury Datacenter, aplikac�
 
 Můžete konsolidovat data z nejrůznějších zdrojů a kombinovat data ze služeb Azure s existujícím místním prostředím. Protokoly Azure Monitor také jednoznačně oddělují shromažďování dat z akce provedené u těchto dat, takže všechny akce jsou k dispozici pro všechny druhy dat.
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 [Azure Automation](/azure/automation/automation-intro) poskytuje možnost automatizace ručních, dlouhotrvajících a často opakovaných úloh, které se běžně provádějí v cloudovém a podnikovém prostředí. Šetří čas a zvyšuje spolehlivost administrativních úloh. V pravidelných intervalech také plánuje automatické provádění těchto úkolů. Procesy můžete automatizovat pomocí runbooků nebo automatizovat správu konfigurace pomocí konfigurace požadovaného stavu.
 
-### <a name="backup"></a>Zálohování
+### <a name="backup"></a>Backup
 
 [Azure Backup](/azure/backup/backup-introduction-to-azure-backup) je služba založená na Azure, kterou můžete použít k zálohování (nebo ochraně) a obnovení dat v Microsoft Cloud. Azure Backup nahradí vaše stávající místní nebo jiné řešení zálohování cloudovým řešením, které je spolehlivé, bezpečné a nákladově konkurenční.
 
 Azure Backup nabízí komponenty, které stáhnete a nasadíte na příslušném počítači nebo serveru nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny součásti Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém prostředí) se dají použít k zálohování dat do trezoru Azure Recovery Services v Azure.
 
-Další informace najdete v [tabulce Azure Backup komponenty](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use).
+Další informace najdete v [tabulce Azure Backup komponenty](/azure/backup/backup-overview#what-can-i-back-up).
 
 ### <a name="site-recovery"></a>Site Recovery
 
@@ -75,7 +75,7 @@ Azure AD zahrnuje také plnou sadu [funkcí pro správu identit](/azure/security
 
 Díky Azure Active Directory mají všechny aplikace publikované pro vaše partnery a zákazníky (firmy nebo spotřebitele) stejné možnosti správy identit a přístupu. To vám umožňuje významně snižovat provozní náklady.
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="azure-security-center"></a>Centrum zabezpečení Azure
 
 [Azure Security Center](/azure/security-center/security-center-intro) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně tím, že zvýšená viditelnost (a kontrolu nad zabezpečením vašich prostředků Azure). Poskytuje integrované monitorování zabezpečení a správu zásad ve vašich předplatných. Pomáhá detekovat hrozby, které by jinak neinformovaly, a funguje s širokou ekosystémem řešení zabezpečení.
 
@@ -89,7 +89,7 @@ Díky Azure Active Directory mají všechny aplikace publikované pro vaše part
 
 Security Center používá [Access Control na základě rolí (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC poskytuje [předdefinované role](../../role-based-access-control/built-in-roles.md) , které je možné přiřadit uživatelům, skupinám a službám v Azure.
 
-Security Center posuzuje konfiguraci vašich prostředků pro identifikaci problémů a ohrožení zabezpečení. V Security Center se zobrazí informace týkající se prostředku pouze v případě, že máte přiřazenou roli vlastník, přispěvatel nebo čtenář pro předplatné nebo skupinu prostředků, do které prostředek patří.
+Security Center posuzuje konfiguraci vašich prostředků identifikovat problémy se zabezpečením a ohrožení zabezpečení. V Security Center se zobrazí informace týkající se prostředku pouze v případě, že máte přiřazenou roli vlastník, přispěvatel nebo čtenář pro předplatné nebo skupinu prostředků, do které prostředek patří.
 
 >[!Note]
 >Další informace o rolích a povolených akcích v Security Center najdete v tématu [oprávnění v Azure Security Center](/azure/security-center/security-center-permissions).
@@ -112,7 +112,7 @@ Azure Monitor obsahuje následující součásti.
 
 ### <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
-[Diagnostické protokoly Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Obsah těchto protokolů se liší podle typu prostředku.
+[Diagnostické protokoly Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Obsah tyto protokoly se liší podle typu prostředku.
 
 Protokoly událostí systému Windows jsou jednou z kategorií diagnostických protokolů pro virtuální počítače. Protokoly objektů blob, tabulek a front jsou kategoriemi diagnostických protokolů pro účty úložiště.
 
@@ -173,11 +173,11 @@ Modrotisky poskytují deklarativní způsob pro orchestraci nasazení různých 
 
 Před vývojem aplikací [(DevOps)](https://www.visualstudio.com/learn/what-is-devops/) byly týmy zpoplatněné shromažďování podnikových požadavků pro softwarový program a psaní kódu. Pak samostatný tým služby QA testoval program v izolovaném vývojovém prostředí. V případě splnění požadavků tým QA uvolnil kód pro operace, které chcete nasadit. Týmy nasazení byly dále rozděleny do skupin, jako jsou sítě a databáze. Pokaždé, když se softwarový program vyvolal přes zeď, do nezávislého týmu, přidal se k němu kritická místa.
 
-DevOps umožňuje týmům dodávat bezpečnější a vyšší kvalitu řešení rychleji a efektivněji. Zákazníci očekávají dynamický a spolehlivý zážitek při využívání softwaru a služeb. Týmy musí rychle iterovat na aktualizace softwaru a měřit dopad aktualizací. Musí rychle reagovat pomocí nových iterací vývoje, aby vyřešily problémy nebo poskytovaly více hodnot.  
+DevOps umožňuje týmům dodávat bezpečnější a vyšší kvalitu řešení rychleji a efektivněji. Zákazníci očekávají při používání aplikací a služeb dynamické a spolehlivé prostředí. Týmy musí rychle iterovat na aktualizace softwaru a měřit dopad aktualizací. Musí rychle reagovat pomocí nových iterací vývoje, aby vyřešily problémy nebo poskytovaly více hodnot.  
 
-Cloudové platformy, jako je Microsoft Azure, odstranily tradiční kritické body a pomohl pomohly infrastrukturu. Vládne softwaru v každé firmě jako klíčové rozlišení a faktor v obchodních výstupech. Pohyb DevOps není možné nebo by se neměl používat žádná organizace, vývojář nebo pracovník IT.
+Cloudové platformy, jako je Microsoft Azure, odstranily tradiční omezení a pomohly z infrastruktury udělat druh zboží. Software vládne v každé oblasti obchodu jako klíčový faktor ovlivňující obchodní výsledky. Pohyb DevOps není možné nebo by se neměl používat žádná organizace, vývojář nebo pracovník IT.
 
-Vyspělí DevOps lékaři přijímají několik z následujících postupů. Tyto postupy [zahrnují osoby](https://www.visualstudio.com/learn/what-is-devops-culture/) , které tvoří strategie založené na obchodních scénářích. Pomocí nástrojů můžete automatizovat různé postupy.
+Zkušení profesionálové DevOps používají některé z následujících postupů. Tyto postupy [zahrnují lidi](https://www.visualstudio.com/learn/what-is-devops-culture/), kteří vytvářejí strategie na základě obchodních scénářů. Vhodné nástroje můžou usnadnit automatizaci některých postupů.
 
 - Techniky [agilního plánování a řízení projektů](https://www.visualstudio.com/learn/what-is-agile/) slouží k plánování a izolaci práce do sprintů, správě kapacity týmu a pomáhat týmům rychle se přizpůsobit měnícím se potřebám firmy.
 - Správa [verzí, obvykle s Git](https://www.visualstudio.com/learn/what-is-git/), umožňuje týmům umístěným kdekoli na světě sdílet zdroje a integrovat s nástroji pro vývoj softwaru za účelem automatizace kanálu vydávání verzí.

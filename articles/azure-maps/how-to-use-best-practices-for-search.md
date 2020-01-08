@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: de9e484e43c87375c2fdf9b34dd2efce3bb8aa8c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6a51d764b8e42419bc331e3d4731ef5c5f511f91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408720"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Osvědčené postupy pro použití Azure Maps Search Service
 
@@ -27,7 +27,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) obs
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Informace o vytvoření účtu najdete v pokynech v tématu [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a postup pro získání primárního klíče předplatného pro váš účet pomocí kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) .
+Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Informace o vytvoření účtu najdete podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a postup načtení primárního klíče (předplatného) pro váš účet pomocí postupu v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 > [!Tip]
 > Pokud chcete zadat dotaz na vyhledávací službu, můžete k sestavení volání REST použít [aplikaci pro odesílání](https://www.getpostman.com/apps) nebo můžete použít jakékoli vývojové prostředí API, které dáváte přednost.

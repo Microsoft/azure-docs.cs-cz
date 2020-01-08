@@ -1,97 +1,88 @@
 ---
-title: Protokoly Azure Analysis Service Fabric události prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
-description: Další informace o vizualizaci a analýzu událostí pomocí Azure monitoru protokoly pro monitorování a diagnostiku clustery Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Analýza událostí v Azure Service Fabric pomocí protokolů Azure Monitor
+description: Seznamte se s vizualizací a analýzou událostí pomocí protokolů Azure Monitor pro monitorování a diagnostiku clusterů Azure Service Fabric.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464737"
 ---
-# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Události analýzy a vizualizace s protokoly Azure monitoru
- Protokoly Azure monitoru shromažďuje a analyzuje telemetrii z aplikace a služby hostované v cloudu a poskytuje analytické nástroje, které vám pomůžou maximálně využít jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v protokolech Azure Monitor k získání přehledu a řešení potíží s co se děje ve vašem clusteru. Se podrobněji probírají následující běžné otázky:
+# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analýza a vizualizace událostí pomocí protokolů Azure Monitor
+ Protokoly Azure Monitor shromažďuje a analyzuje telemetrii z aplikací a služeb hostovaných v cloudu a poskytuje analytické nástroje, které vám pomůžou maximalizovat jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v protokolech Azure Monitor a získat přehledy a řešit potíže s tím, co se děje ve vašem clusteru. Řeší se tyto běžné otázky:
 
-* Jak řešit události stavu
-* Jak poznám, kdy se uzel ocitne mimo provoz?
-* Jak poznám, že pokud služby vaší aplikace mají spouštění nebo zastavování?
+* Návody řešení potíží s událostmi stavu?
+* Návody informace o tom, kdy uzel zmizí?
+* Návody zjistit, jestli se služby Moje aplikace spustily nebo zastavily?
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview-of-the-log-analytics-workspace"></a>Přehled pracovního prostoru Log Analytics
 
 >[!NOTE] 
->Diagnostické úložiště je povolen ve výchozím nastavení při vytváření clusteru, stále musíte vytvořit pracovní prostor Log Analytics pro čtení z úložiště diagnostiky.
+>I když je ve výchozím nastavení v době vytváření clusteru povolené diagnostické úložiště, musíte nastavit pracovní prostor Log Analytics pro čtení z diagnostického úložiště.
 
-Azure Monitor protokoluje shromažďuje data ze spravovaných prostředků, včetně tabulku úložiště Azure nebo agenta a udržuje v centrálním úložišti. Data lze potom slouží pro analýzy, výstrahy a vizualizace nebo další exportu. Azure Monitor protokoly podporuje události, údaje o výkonu nebo jiné vlastní data. Podívejte se na [postup pro konfiguraci rozšíření diagnostiky pro agregaci událostí](service-fabric-diagnostics-event-aggregation-wad.md) a [kroky k vytvoření pracovního prostoru Log Analytics pro čtení z události ve službě storage](service-fabric-diagnostics-oms-setup.md) k Ujistěte se, že se data přenášejí do služby Azure Monitor ukládá do protokolu.
+Protokoly Azure Monitor shromažďuje data ze spravovaných prostředků, včetně tabulky Azure Storage nebo agenta, a udržuje je v centrálním úložišti. Data se pak dají použít k analýze, upozorňování a vizualizaci nebo k dalšímu exportu. Protokoly Azure Monitor podporují události, údaje o výkonu nebo jiná vlastní data. Projděte [si postup konfigurace diagnostického rozšíření pro agregované události](service-fabric-diagnostics-event-aggregation-wad.md) a [kroky pro vytvoření pracovního prostoru Log Analytics ke čtení z událostí v úložišti](service-fabric-diagnostics-oms-setup.md) , aby bylo zajištěno, že budou data předávána do protokolů Azure monitor.
 
-Po přijetí dat pomocí Azure monitoru protokoly Azure obsahuje několik *řešení pro monitorování* , která jsou připravená řešení nebo provozní řídicí panely se budou monitorovat příchozí data upravit tak, aby několik scénářů. Mezi ně patří *analýza služby Service Fabric* řešení a *kontejnery* řešení, které jsou dva nejdůležitější ty, které Diagnostika a monitorování clusterů Service Fabric. Tento článek popisuje, jak použít řešení analýza služby Service Fabric, který je vytvořen s pracovním prostorem.
+Po přijetí dat pomocí protokolů Azure Monitor má Azure několik *řešení monitorování* , která jsou předbalená řešení nebo provozní řídicí panely pro monitorování příchozích dat přizpůsobených několika scénářům. Patří mezi ně *Service Fabric Analytics* řešení a řešení *kontejnerů* , což jsou dvě nejdůležitější nástroje pro diagnostiku a monitorování při použití Service Fabric clusterů. Tento článek popisuje, jak používat řešení Service Fabric Analytics, které je vytvořené v pracovním prostoru.
 
-## <a name="access-the-service-fabric-analytics-solution"></a>Přístup k řešení analýza služby Service Fabric
+## <a name="access-the-service-fabric-analytics-solution"></a>Přístup k řešení Service Fabric Analytics
 
-V [webu Azure Portal](https://portal.azure.com), přejděte do skupiny prostředků, ve které jste vytvořili řešení analýza služby Service Fabric.
+Na webu [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics.
 
-Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>** .
+Vyberte prostředek **ServiceFabric\<\>nameOfOMSWorkspace** .
 
-V `Summary`, zobrazí se dlaždice ve formě grafu pro každou z řešení povolené, včetně pro Service Fabric. Klikněte na tlačítko **Service Fabric** grafu a pokračujte v Service Fabric analytického řešení.
+V `Summary`se zobrazí dlaždice ve formě grafu pro každé povolené řešení, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
 
 ![Řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-Následující obrázek ukazuje domovské stránce řešení analýza služby Service Fabric. Tato stránka Domovská stránka obsahuje zobrazení snímku, co se děje ve vašem clusteru.
+Následující obrázek ukazuje domovskou stránku Service Fabric Analytics řešení. Tato domovská stránka nabízí snímek toho, co se děje ve vašem clusteru.
 
 ![Řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
- Pokud jste povolili Diagnostika při vytváření clusteru, zobrazí se události pro 
+ Pokud jste při vytváření clusteru povolili diagnostiku, můžete zobrazit události pro 
 
-* [Události clusteru Service Fabric](service-fabric-diagnostics-event-generation-operational.md)
-* [Programovacího modelu Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
-* [Programovacího modelu Reliable Services](service-fabric-reliable-services-diagnostics.md)
+* [Service Fabric události clusteru](service-fabric-diagnostics-event-generation-operational.md)
+* [Reliable Actors události programovacího modelu](service-fabric-reliable-actors-diagnostics.md)
+* [Reliable Services události programovacího modelu](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Kromě události Service Fabric připravené, můžete shromážděná podrobnější systémové události [aktualizací konfigurace diagnostického rozšíření](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
+>Kromě Service Fabric událostí z pole mohou být shromážděny podrobnější systémové události prostřednictvím [aktualizace konfigurace diagnostického rozšíření](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
-## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Zobrazit události Service Fabric, včetně akce na uzlech
+## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Zobrazit Service Fabric události, včetně akcí na uzlech
 
-Na stránce Analýza služby Service Fabric, klikněte na graf pro **události Service Fabric**.
+Na stránce Service Fabric Analytics klikněte na graf pro **události Service Fabric**.
 
-![Service Fabric řešení provozní kanál](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+![Provozní kanál Service Fabric řešení](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-Klikněte na tlačítko **seznamu** k zobrazení událostí v seznamu. Jakmile tady se zobrazí všechny události systému, které byly shromážděny. Pro srovnání jde z **WADServiceFabricSystemEventsTable** ve službě Azure Storage jsou z těchto tabulek příslušných účtu a podobně spolehlivé služby a objekty actor události se zobrazí vedle.
+Kliknutím na **seznam** zobrazíte události v seznamu. Jakmile se zobrazí všechny systémové události, které byly shromážděny. Azure Storage v případě, že se jedná o referenci z **WADServiceFabricSystemEventsTable** účtu, a podobně události Reliable Services a Actors, které vidíte, jsou z příslušných tabulek.
     
-![Provozní kanál dotazu](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+![Provozní kanál dotazů](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-Můžete případně klikněte na lupu na levé straně a používat jazyk dotaz Kusto najít, co hledáte. Například pokud chcete najít všechny akce prováděné na uzlech v clusteru, můžete použít následující dotaz. ID událostí používá pod se nacházejí v [provozní kanál události – referenční informace](service-fabric-diagnostics-event-generation-operational.md).
+Případně můžete kliknout na tlačítko lupy vlevo a pomocí dotazovacího jazyka Kusto vyhledat, co hledáte. Pokud například chcete najít všechny akce prováděné na uzlech v clusteru, můžete použít následující dotaz. ID událostí, která se používají níže, najdete v [referenčních událostech pro události provozních kanálů](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId < 25627 and EventId > 25619 
 ```
 
-Můžete zadávat dotazy na mnoho více polí, jako je například konkrétním uzlům (počítač) služby system (název úlohy).
+Můžete zadávat dotazy na mnoho dalších polí, například na konkrétní uzly (počítač) systémové služby (název úlohy).
 
-## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Události služby Reliable Service Fabric zobrazení a objektu Actor
+## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Zobrazení Service Fabric spolehlivých událostí služby a objektu actor
 
-Na stránce Analýza služby Service Fabric, klikněte na graf pro **Reliable Services**.
+Na stránce Service Fabric Analytics klikněte na graf pro **Reliable Services**.
 
-![Řešení Service Fabric Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+![Reliable Services řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-Klikněte na tlačítko **seznamu** k zobrazení událostí v seznamu. Zde můžete zobrazit události z modelu reliable services. Můžete zobrazit jednotlivé události pro při runasync služby je spuštěno a dokončeno, obvykle probíhá na nasazení a upgrade. 
+Kliknutím na **seznam** zobrazíte události v seznamu. Tady vidíte události ze spolehlivých služeb. V případě, že je služba RunAsync spuštěná a dokončená, což se obvykle stává při nasazení a upgradech, se můžete podívat na různé události. 
 
-![Reliable Services v dotazu](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+![Reliable Services dotazů](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Události Reliable actors můžou zobrazit podobným způsobem. Pro konfiguraci podrobnější událostí reliable actors, budete muset změnit `scheduledTransferKeywordFilter` v konfiguraci rozšíření diagnostiky (viz dole). Podrobnosti o hodnoty pro tyto [události reliable actors – referenční informace](service-fabric-reliable-actors-diagnostics.md#keywords).
+Spolehlivé události objektu actor lze zobrazit podobným způsobem. Chcete-li nakonfigurovat podrobnější události pro Reliable Actors, je nutné změnit `scheduledTransferKeywordFilter` v konfiguraci pro diagnostické rozšíření (viz níže). Podrobnosti o hodnotách pro tyto položky jsou uvedeny v referenčních informacích o [událostech Reliable Actors](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -105,14 +96,14 @@ Události Reliable actors můžou zobrazit podobným způsobem. Pro konfiguraci 
                 },
 ```
 
-Je výkonný dotazovací jazyk Kusto. Další cenné dotaz, který můžete spustit je a zjistěte uzlů, které generují nejvíce událostem. Dotaz na snímku obrazovky níže zobrazí provozní události Service Fabric agregovat pomocí konkrétní službu a uzel.
+Dotazovací jazyk Kusto je výkonný. Další užitečný dotaz, který můžete spustit, je zjistit, které uzly generují nejvíc událostí. Dotaz na snímku obrazovky níže ukazuje Service Fabric provozní události agregované se specifickou službou a uzlem.
 
-![Dotaz události za uzel](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+![Události dotazu na uzel](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete povolit infrastruktury, například monitorování čítače výkonu, přejděte na [Přidání agenta Log Analytics](service-fabric-diagnostics-oms-agent.md). Agent shromažďuje čítače výkonu a přidá je do existujícího pracovního prostoru.
-* Místními clustery protokoly Azure Monitor nabízí brány (dopředu proxy server HTTP), který slouží k odesílání dat do Azure monitoru protokoly. Další informace o, že v [připojení počítače bez připojení k Internetu pomocí brány Log Analytics protokoly Azure monitoru](../azure-monitor/platform/gateway.md).
-* Konfigurace [automatické upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
-* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru.
-* Získejte podrobnější přehled o protokoly Azure monitoru a navíc nabízejí, přečtěte si [co je Azure Monitor protokoly?](../operations-management-suite/operations-management-suite-overview.md).
+* Aby bylo možné povolit monitorování infrastruktury, například čítače výkonu, převzetí služeb při [přidávání agenta Log Analytics](service-fabric-diagnostics-oms-agent.md). Agent shromáždí čítače výkonu a přidá je do existujícího pracovního prostoru.
+* U místních clusterů nabízí Azure Monitor protokoly bránu (proxy server HTTP, která se dá použít k odesílání dat do protokolů Azure Monitor. Přečtěte si další informace o tom, jak v [počítačích připojit počítače bez přístupu k internetu Azure monitor protokoly pomocí brány Log Analytics](../azure-monitor/platform/gateway.md).
+* Nakonfigurujte [automatizované upozorňování](../log-analytics/log-analytics-alerts.md) na pomoc při detekci a diagnostice.
+* Seznamte se s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor.
+* Podrobnější přehled Azure Monitor protokolů a co nabízí, najdete v článku [co je Azure monitor protokolů?](../operations-management-suite/operations-management-suite-overview.md).

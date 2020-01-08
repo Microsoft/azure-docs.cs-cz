@@ -4,33 +4,33 @@ description: Použijte proměnné prostředí a vytvořte možnosti, které povo
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434527"
 ---
-# <a name="give-modules-access-to-a-devices-local-storage"></a>Udělení přístupu k místnímu úložišti zařízení v modulech
+# <a name="give-modules-access-to-a-devices-local-storage"></a>Udělení přístupu k místnímu úložišti zařízení pro moduly
 
 Kromě ukládání dat pomocí služeb Azure Storage nebo v úložišti kontejnerů vašeho zařízení můžete také vyhradit úložiště na hostiteli IoT Edge samotném zařízení, aby se zlepšila spolehlivost, obzvláště když pracujete offline.
 
 ## <a name="link-module-storage-to-device-storage"></a>Propojení úložiště modulu s úložištěm zařízení
 
-Pokud chcete povolit odkaz z úložiště modulu do úložiště v hostitelském systému, vytvořte pro svůj modul proměnnou prostředí, která odkazuje na složku úložiště v kontejneru. Pak použijte možnosti vytvořit k navázání této složky úložiště do složky na hostitelském počítači.
+Pokud chcete povolit odkaz z úložiště modulu do úložiště v hostitelském systému, vytvořte pro svůj modul proměnnou prostředí, která odkazuje na složku úložiště v kontejneru. Pak použijte možnosti vytvořit pro přiřazení této složky úložiště do složky na hostitelském počítači.
 
-Pokud jste například chtěli povolit, aby Centrum IoT Edge ukládalo zprávy do místního úložiště vašeho zařízení a načetli je později, můžete nakonfigurovat proměnné prostředí a možnosti vytvoření v Azure Portal v **nastavení modulu runtime konfigurace pokročilého Edge.** oddíl.
+Pokud byste například chtěli povolit, aby Centrum IoT Edge ukládalo zprávy do místního úložiště vašeho zařízení a načetli je později, můžete nakonfigurovat proměnné prostředí a možnosti vytváření v Azure Portal v části **nastavení modulu runtime** .
 
 1. U IoT Edgeového centra i agenta IoT Edge přidejte proměnnou prostředí s názvem **storageFolder** , která odkazuje na adresář v modulu.
-1. U IoT Edgeového centra i agenta IoT Edge přidejte vazby pro připojení místního adresáře na hostitelském počítači k adresáři v modulu. Například:
+1. U IoT Edgeového centra i agenta IoT Edge přidejte vazby pro připojení místního adresáře na hostitelském počítači k adresáři v modulu. Příklad:
 
    ![Přidání možností vytvoření a proměnných prostředí pro místní úložiště](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení. Například:
+Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení. Příklad:
 
 ```json
 "systemModules": {
@@ -70,11 +70,11 @@ Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení
 }
 ```
 
-Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` vaším hostitelem a cestou úložiště modulu; obě hodnoty musí být absolutní cesta.
+Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` svým hostitelem a cestou úložiště modulu; obě hodnoty musí být absolutní cesta.
 
-Například v systému Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že se adresář **/etc/iotedge/Storage** v hostitelském systému mapuje na adresář **/iotedge/Storage/** v kontejneru. V systému Windows jako jiný příklad `"Binds":["C:\\temp:C:\\contemp"]` znamená, že adresář **c: \\temp** v hostitelském systému je namapován na adresář **c: \\contemp** v kontejneru.
+Například v systému Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že je adresář **/etc/iotedge/Storage** v hostitelském systému namapován na adresář **/iotedge/Storage/** v kontejneru. V systému Windows se jako jiný příklad `"Binds":["C:\\temp:C:\\contemp"]` znamená, že adresář **c:\\Temp** v hostitelském systému je namapovaný na adresář **c:\\** v tomto kontejneru.
 
-Na zařízeních se systémem Linux se navíc ujistěte, že má uživatelský profil pro váš modul potřebná oprávnění ke čtení, zápisu a spouštění pro adresář hostitelského systému. Když se vrátíte na předchozí příklad povolení IoT Edge centra pro ukládání zpráv do místního úložiště vašeho zařízení, musíte udělit oprávnění k profilu uživatele, UID 1000. (Agent IoT Edge funguje jako kořenový, takže nepotřebuje další oprávnění.) Existuje několik způsobů, jak spravovat oprávnění adresářů v systémech Linux, včetně použití `chown` ke změně vlastníka adresáře a následnému `chmod` ke změně oprávnění, jako například:
+Na zařízeních se systémem Linux se navíc ujistěte, že má uživatelský profil pro váš modul potřebná oprávnění ke čtení, zápisu a spouštění pro adresář hostitelského systému. Když se vrátíte na předchozí příklad povolení IoT Edge centra pro ukládání zpráv do místního úložiště vašeho zařízení, musíte udělit oprávnění k profilu uživatele, UID 1000. (Agent IoT Edge funguje jako kořenový, takže nepotřebuje další oprávnění.) K dispozici je několik způsobů, jak spravovat oprávnění adresářů v systémech Linux, včetně použití `chown` ke změně vlastníka adresáře a následnému `chmod` ke změně oprávnění, jako například:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

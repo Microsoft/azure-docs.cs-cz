@@ -3,17 +3,17 @@ title: Připojení zařízení v Azure IoT Central | Microsoft Docs
 description: Tento článek poskytuje přehled o tom, jak vám Azure IoT Central pomůže udržet zařízení připojená a v pořádku.
 author: aaronbjork
 ms.author: abjork
-ms.date: 10/21/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: ''
-ms.openlocfilehash: 20001247c608a52ffd18920c0b6b1f1aabd28313
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 938d93b1df077914323c7b5f4ee1d42276aeff04
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434917"
 ---
 # <a name="stay-connected-with-azure-iot-central-preview-features"></a>Zůstaňte připojení k Azure IoT Central (funkce ve verzi Preview)
 

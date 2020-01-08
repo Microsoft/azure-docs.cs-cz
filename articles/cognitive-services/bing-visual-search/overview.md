@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 08/30/2019
+ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446662"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
@@ -26,7 +26,7 @@ Pokud použijete [rozhraní API Bingu pro vyhledávání obrázků](../bing-imag
 > [!IMPORTANT]
 > Pokud získáte přehledy imagí pomocí rozhraní API Bingu pro vyhledávání obrázků, zvažte přechod na rozhraní API pro vizuální vyhledávání Bingu, který poskytuje komplexnější přehledy.
 
-## <a name="insights"></a>Insights
+## <a name="insights"></a>Poznatky
 
 Pomocí Vizuální vyhledávání Bingu můžete zjistit následující přehledy:
 
@@ -44,7 +44,7 @@ Kromě přehledů Vizuální vyhledávání Bingu vrací různé výrazy (tj. zn
 
 Výsledky Vizuální vyhledávání Bingu také obsahují ohraničující pole pro oblasti zájmu v obrázku. Pokud například obrázek obsahuje několik celebrit, mohou výsledky zahrnovat ohraničovací rámečky pro každou rozpoznanou celebrit. Nebo pokud Bing rozpoznává produkt nebo oděvy v imagi, výsledek může obsahovat ohraničovací rámeček pro rozpoznanou položku.
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 Rozhraní API pro vizuální vyhledávání Bingu je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON. Pro službu můžete použít buď REST API, nebo sadu SDK.
 
@@ -52,15 +52,17 @@ Rozhraní API pro vizuální vyhledávání Bingu je webová služba RESTful, kt
 2. Odešle požadavek do rozhraní API platným vyhledávacím dotazem.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nejprve vyzkoušejte rozhraní API pro vizuální vyhledávání Bingu [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
 Ukázka vám ukáže, jak rychle upravit vyhledávací dotaz a projeďte web pro obrázky.
 
-Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Pokud chcete rychle začít s prvním požadavkem, projděte si rychlé starty: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * Odkazy na [vizuální vyhledávání obrázky](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) popisují definice a informace o koncových bodech, hlavičkách požadavků, odpovědích a parametrech dotazů, které můžete použít k vyžádání výsledků hledání na základě bitové kopie.
 
 * [Požadavky na použití a zobrazení rozhraní api vyhledávání Bingu](../bing-web-search/use-display-requirements.md) určují přijatelné využití obsahu a informací získaných prostřednictvím rozhraní API pro vyhledávání Bingu.
+
+* Navštivte [stránku vyhledávání Bingu centrum rozhraní API](../bing-web-search/search-the-web.md) a Prozkoumejte další dostupná rozhraní API.

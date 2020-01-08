@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 41e0bdc1f04c9491ebe939f46b59ae4eb2bc7ab6
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5bdda54ef46085cb1f3e33fe1d9f60937da9706f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355211"
 ---
-# <a name="enable-diagnostic-logs-for-service-bus"></a>Povolit protokoly diagnostiky pro Service Bus
+# <a name="enable-diagnostics-logs-for-service-bus"></a>Povolit protokoly diagnostiky pro Service Bus
 
-Když začnete používat obor názvů Azure Service Bus, možná budete chtít sledovat, jak a kdy se Váš obor názvů vytvoří, odstranit nebo otevřít. Tento článek poskytuje přehled všech dostupných provozních a diagnostických protokolů.
+Když začnete používat Azure Service Bus obor názvů, můžete chtít sledovat, jak a kdy se Váš obor názvů vytváří, odstranil nebo je k němu přistupoval. Tento článek poskytuje přehled všech dostupných provozních a diagnostických protokolů.
 
-Azure Service Bus aktuálně podporuje protokoly aktivit a provozu, které zachytí **operace správy** , které se provádí v oboru názvů Azure Service Bus. Konkrétně tyto protokoly zachytí typ operace, včetně vytvoření fronty, použitých prostředků a stavu operace.
+Azure Service Bus aktuálně podporuje aktivity a provozní protokoly, které provádějí *operace správy* zachycení na Azure Service Bus oboru názvů. Konkrétně tyto protokoly zachytí typ operace, včetně vytvoření fronty, použitých prostředků a stavu operace.
 
-## <a name="operational-logs-schema"></a>Schéma provozních protokolů
+## <a name="operational-logs-schema"></a>Schéma provozní protokoly
 
-Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON) v následujících dvou umístěních.
+Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON) v následujících dvou umístěních:
 
-- **AzureActivity** – zobrazí protokoly z operací nebo akcí prováděných s vaším oborem názvů na portálu nebo prostřednictvím nasazení šablon Azure Resource Manager.
-- **AzureDiagnostics** – zobrazí protokoly z operací/akcí prováděných s vaším oborem názvů pomocí rozhraní API nebo prostřednictvím klientů pro správu v jazykové sadě SDK.
+- **AzureActivity**: zobrazuje protokoly z operací a akcí, které se provádí na vašem oboru názvů ve Azure Portal nebo prostřednictvím Azure Resource Manager šablon nasazení.
+- **AzureDiagnostics**: zobrazuje protokoly z operací a akcí, které se provádí v rámci vašeho oboru názvů pomocí rozhraní API, nebo prostřednictvím klientů pro správu v jazykové sadě SDK.
 
 Řetězce JSON provozního protokolu obsahují prvky uvedené v následující tabulce:
 
 | Name (Název) | Popis |
 | ------- | ------- |
-| ActivityId | Interní ID, které slouží k identifikaci zadané aktivity |
-| eventName | Název operace |
+| ID aktivity | Interní ID, které slouží k identifikaci zadané aktivity |
+| EventName | Název operace |
 | ResourceId | ID prostředku Azure Resource Manager |
 | SubscriptionId | ID předplatného |
 | EventTimeString | Čas operace |
@@ -65,57 +65,59 @@ Tady je příklad řetězce JSON provozního protokolu:
 }
 ```
 
-## <a name="what-eventsoperations-are-captured-in-operational-logs"></a>Jaké události/operace jsou zachyceny v provozních protokolech?
+## <a name="events-and-operations-captured-in-operational-logs"></a>Události a operace zaznamenané v provozních protokolech
 
-Protokoly operací zaznamenávají všechny operace správy provedené v oboru názvů Azure Service Bus. Datové operace nejsou zachyceny z důvodu vysokého objemu operací s daty, které jsou prováděny Azure Service Bus.
+Provozní protokoly zaznamenávají všechny operace správy, které jsou prováděny v oboru názvů Azure Service Bus. Datové operace nejsou zachyceny, protože se jedná o velký objem operací s daty, které jsou prováděny Azure Service Bus.
 
 > [!NOTE]
-> Pro lepší sledování datových operací doporučujeme použít trasování na straně klienta.
+> Abychom vám pomohli lépe sledovat datové operace, doporučujeme použít trasování na straně klienta.
 
-Následující operace správy jsou zachyceny v provozních protokolech – 
+Následující operace správy jsou zachyceny v provozních protokolech: 
 
 | Rozsah | Operace|
 |-------| -------- |
-| hosting | <ul> <li> Vytvořit obor názvů</li> <li> Aktualizovat obor názvů </li> <li> Odstranit obor názvů </li>  </ul> | 
+| Obor názvů | <ul> <li> Vytvořit obor názvů</li> <li> Aktualizovat obor názvů </li> <li> Odstranit obor názvů </li>  </ul> | 
 | Fronta | <ul> <li> Vytvořit frontu</li> <li> Fronta aktualizací</li> <li> Odstranit frontu </li> </ul> | 
 | Téma | <ul> <li> Vytvořit téma </li> <li> Aktualizovat téma </li> <li> Odstranit téma </li> </ul> |
 | Předplatné | <ul> <li> Vytvoření předplatného </li> <li> Aktualizovat předplatné </li> <li> Odstranit předplatné </li> </ul> |
 
 > [!NOTE]
-> V současné době nejsou operace **čtení** sledovány v provozních protokolech.
+> V současné době nejsou operace *čtení* sledovány v provozních protokolech.
 
-## <a name="how-to-enable-operational-logs"></a>Jak povolit provozní protokoly?
+## <a name="enable-operational-logs"></a>Povolit operační protokoly
 
-Provozní protokoly jsou ve výchozím nastavení zakázané. Chcete-li povolit diagnostické protokoly, proveďte následující kroky:
+Provozní protokoly jsou ve výchozím nastavení zakázané. Pokud chcete povolit diagnostické protokoly, udělejte toto:
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do oboru názvů Azure Service Bus a v části **monitorování**klikněte na **nastavení diagnostiky**.
+1. V [Azure Portal](https://portal.azure.com)přejdete do oboru názvů Azure Service Bus a v části **monitorování**vyberte **nastavení diagnostiky**.
 
-   ![navigační okno s diagnostickými protokoly](./media/service-bus-diagnostic-logs/image1.png)
+   ![Odkaz "nastavení diagnostiky"](./media/service-bus-diagnostic-logs/image1.png)
 
-2. Kliknutím na **Přidat nastavení diagnostiky** nakonfigurujte nastavení diagnostiky.  
+1. V podokně **nastavení diagnostiky** vyberte **Přidat nastavení diagnostiky**.  
 
-   ![zapnout diagnostické protokoly](./media/service-bus-diagnostic-logs/image2.png)
+   ![Odkaz Přidat nastavení diagnostiky](./media/service-bus-diagnostic-logs/image2.png)
 
-3. Konfigurace nastavení diagnostiky
-   1. Zadejte **název** pro identifikaci nastavení diagnostiky.
-   2. Vyberte cíl diagnostiky.
-      - Když vyberete **účet úložiště**, budete muset nakonfigurovat účet úložiště, ve kterém se bude Diagnostika ukládat.
-      - Pokud vyberete možnost **centra událostí**, je nutné nakonfigurovat příslušné centrum událostí, do kterého budou zasílat streamovaná nastavení diagnostiky.
-      - Pokud vyberete **Log Analytics**, je nutné určit, která instance Log Analytics bude Diagnostika odeslána.
-    3. Podívejte se na **OperationalLogs**.
+1. Nastavení diagnostiky nakonfigurujte pomocí následujícího postupu:
 
-       ![změnit diagnostické protokoly stavu](./media/service-bus-diagnostic-logs/image3.png)
+   a. Do pole **název** zadejte název nastavení diagnostiky.  
 
-4. Klikněte na **Uložit**.
+   b. Vyberte jedno z následujících tří míst pro diagnostické protokoly:  
+   - Pokud vyberete možnost **archivovat do účtu úložiště**, musíte nakonfigurovat účet úložiště, do kterého se budou protokoly diagnostiky ukládat.  
+   - Pokud vyberete **Stream do centra událostí**, budete muset nakonfigurovat centrum událostí, do kterého chcete streamovat diagnostické protokoly.
+   - Pokud vyberete možnost **Odeslat do Log Analytics**, je nutné určit, která instance Log Analytics bude Diagnostika odeslána.  
 
+   c. Zaškrtněte políčko **OperationalLogs** .
 
-Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v okně **protokoly diagnostiky** .
+    ![Podokno nastavení diagnostiky](./media/service-bus-diagnostic-logs/image3.png)
 
-Další informace o konfiguraci diagnostiky najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+1. Vyberte **Uložit**.
+
+Nové nastavení se projeví přibližně po 10 minutách. Protokoly se zobrazí v konfigurovaném cíli archivace v podokně **diagnostické protokoly** .
+
+Další informace o konfiguraci nastavení diagnostiky najdete v tématu [Přehled protokolů diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Service Bus najdete na následujících odkazech:
+Další informace o Service Bus najdete v těchto tématech:
 
 * [Úvod do Service Bus](service-bus-messaging-overview.md)
 * [Začínáme s Service Bus](service-bus-dotnet-get-started-with-queues.md)

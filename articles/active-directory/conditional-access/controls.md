@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424971"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou ovládací prvky přístupu v Azure Active Directory podmíněný přístup?
 
 Pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)můžete řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. V zásadách podmíněného přístupu definujete odpověď ("Udělejte to") na důvod, který aktivuje vaše zásady ("Pokud k tomu dojde").
 
-![Ovládací prvek](./media/controls/10.png)
+![Řízení](./media/controls/10.png)
 
 V kontextu podmíněného přístupu
 
@@ -31,7 +31,7 @@ V kontextu podmíněného přístupu
 
 Kombinace příkazu Condition s ovládacími prvky představuje zásadu podmíněného přístupu.
 
-![Ovládací prvek](./media/controls/61.png)
+![Řízení](./media/controls/61.png)
 
 Každý ovládací prvek je buď požadavkem, který musí splňovat osoba nebo systém přihlašování, nebo omezení, co může uživatel provést po přihlášení.
 
@@ -49,9 +49,9 @@ Pomocí ovládacích prvků grant můžete buď zablokovat přístup zcela, nebo
 - Všechny vybrané ovládací prvky, které se mají splnit (*a*)
 - Jeden vybraný ovládací prvek k splnění (*nebo*)
 
-![Ovládací prvek](./media/controls/18.png)
+![Řízení](./media/controls/18.png)
 
-### <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Tento ovládací prvek můžete použít k vyžádání vícefaktorového ověřování pro přístup k zadané cloudové aplikaci. Tento ovládací prvek podporuje následující Multi-Factor Providers:
 
@@ -76,7 +76,7 @@ Další informace najdete v tématu [jak vyžadovat spravovaná zařízení pro 
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Zařízení připojené k hybridní službě Azure AD
 
-Vyžadování zařízení připojeného k hybridní službě Azure AD je další možností, jak musíte nakonfigurovat zásady podmíněného přístupu na základě zařízení. Tento požadavek se vztahuje na stolní počítače, přenosné počítače a podnikové tablety, které jsou připojené k místní službě Active Directory. Pokud je vybraná tato možnost, zásada podmíněného přístupu udělí přístup k pokusům o přístup pomocí zařízení, která jsou připojená k místní službě Active Directory a k vašemu Azure Active Directory.  
+Vyžadování zařízení připojeného k hybridní službě Azure AD je další možností, jak musíte nakonfigurovat zásady podmíněného přístupu na základě zařízení. Tento požadavek se vztahuje na stolní počítače, přenosné počítače a podnikové tablety, které jsou připojené k místní službě Active Directory. Pokud je vybraná tato možnost, zásada podmíněného přístupu udělí přístup k pokusům o přístup pomocí zařízení, která jsou připojená k místní službě Active Directory a k vašemu Azure Active Directory. Zařízení Mac nepodporují hybridní službu Azure AD JOIN.
 
 Další informace najdete v tématu [nastavení Azure Active Directory zásad podmíněného přístupu na základě zařízení](require-managed-devices.md).
 
@@ -114,7 +114,7 @@ Mezi poskytovatele, kteří aktuálně nabízejí kompatibilní služby, patří
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Ověřit identitu](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- RSA
+- [RSA](https://community.rsa.com/docs/DOC-81278)
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Virtuální IP adresa Symantec](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
@@ -133,11 +133,11 @@ Zkopírujte data JSON a pak je vložte do příslušného textového pole. Nepro
 
 Možnost vytvořit vlastní ovládací prvek je v části **Správa** na stránce **podmíněný přístup** .
 
-![Ovládací prvek](./media/controls/82.png)
+![Řízení](./media/controls/82.png)
 
 Kliknutím na **Nový vlastní ovládací prvek**otevře okno s textovým polem pro data JSON ovládacího prvku.  
 
-![Ovládací prvek](./media/controls/81.png)
+![Řízení](./media/controls/81.png)
 
 ### <a name="deleting-custom-controls"></a>Odstranění vlastních ovládacích prvků
 
@@ -155,7 +155,7 @@ Chcete-li upravit vlastní ovládací prvek, je nutné odstranit aktuální ovl�
 
 Ovládací prvky relace umožňují omezené prostředí v rámci cloudové aplikace. Ovládací prvky relace jsou vynutily cloudové aplikace a využívají další informace, které Azure AD poskytuje do aplikace o této relaci.
 
-![Ovládací prvek](./media/controls/31.png)
+![Řízení](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Použít omezení pro uplatnění aplikace
 

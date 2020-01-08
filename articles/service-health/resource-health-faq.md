@@ -1,95 +1,91 @@
 ---
-title: Azure Resource Health – nejčastější dotazy | Dokumentace Microsoftu
+title: Nejčastější dotazy k Azure Resource Health
 description: Přehled Azure Resource Health
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.workload: Supportability
-ms.openlocfilehash: 03c5fb0f399e43af2584743655eeea8af4c5b2f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924447"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426522"
 ---
-# <a name="azure-resource-health-faq"></a>Azure Resource Health – nejčastější dotazy
-Přečtěte si odpovědi na běžné otázky o Azure Resource Health.
+# <a name="azure-resource-health-faq"></a>Nejčastější dotazy k Azure Resource Health
+Přečtěte si odpovědi na nejčastější dotazy týkající se Azure Resource Health.
 
 ## <a name="what-is-azure-resource-health"></a>Co je Azure Resource Health?
-Resource Health pomáhá při diagnostice a získání podpory v případě, že potíže s Azure ovlivňují vaše prostředky. Informuje o aktuálním a dřívějším stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc při potížích se službami Azure.  
+Resource Health pomáhá při diagnostice a získání podpory v případě, že potíže s Azure ovlivňují vaše prostředky. Informuje o aktuálním a minulém stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc s problémy se službami Azure.  
 
-## <a name="what-is-the-resource-health-intended-for"></a>Co je Resource Health určená?
-Jakmile byl zjištěn problém s prostředkem, Resource Health pomůže diagnostikovat původní příčinu. Poskytuje nápovědu ke zmírnění problému a technickou podporu, když budete potřebovat další pomoc s problémy se službami Azure.
+## <a name="what-is-the-resource-health-intended-for"></a>K čemu Resource Health slouží?
+Po zjištění problému s prostředkem vám Resource Health můžou diagnostikovat původní příčinu. Poskytuje pomoc při zmírnění potíží a technickou podporu, když potřebujete další pomoc s problémy se službami Azure.
 
-## <a name="what-health-checks-are-performed-by-resource-health"></a>Doplněk pro kontroly stavu, které provádí služba Resource Health?
-Služba Resource health provádí na základě různých kontrol [typ prostředku](resource-health-checks-resource-types.md). Tyto kontroly jsou navržené k implementaci tři druhy problémů: 
-- Restartování v případě neplánovaných událostí, například neočekávané hostitele
-- Plánované událostí, jako jsou aktualizace plánované hostitelský operační systém
-- Události aktivované uživatelské akce, třeba uživatel restartování virtuálního počítače
+## <a name="what-health-checks-are-performed-by-resource-health"></a>Jaké kontroly stavu provádí Resource Health?
+Stav prostředku provádí různé kontroly na základě [typu prostředku](resource-health-checks-resource-types.md). Tyto kontroly jsou navržené tak, aby se implementovaly tři typy problémů: 
+- Neplánované události, například neočekávané restartování hostitele
+- Plánované události, jako jsou plánované aktualizace operačního systému hostitele
+- Události aktivované akcemi uživatele, například uživatel, který restartuje virtuální počítač
 
-## <a name="what-does-each-of-the-health-status-mean"></a>Co každý stav znamená?
-Existují tři stavy různých stavů:
-- K dispozici: Na platformě Azure, který by mohl být ovlivňující tento prostředek nejsou žádné známé problémy
-- Není k dispozici: Služba Resource health zjistila problémy, které mají vliv na prostředek
-- Neznámé: Stav prostředku nelze určit stav prostředku, protože byla zastavena, příjem informací o něm. 
+## <a name="what-does-each-of-the-health-status-mean"></a>Co znamená každý stav?
+Existují tři různé stavy stavu:
+- K dispozici: na platformě Azure nejsou žádné známé problémy, které by mohly mít vliv na tento prostředek.
+- Nedostupné: stav prostředků zjistil problémy, které mají vliv na prostředek.
+- Neznámé: stav prostředku nemůže určit stav prostředku, protože přestal přijímat informace o něm. 
 
-## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Co znamená Neznámý stav Je něco špatného Můj prostředek?
-Stav je nastavena na neznámý při zastavení Resource Health obdrží informace o konkrétní prostředek. Přestože tento stav není úplným a rozhodujícím údaj o stavu prostředků v případech, kdy dochází k problému, může to znamenat, že došlo k potížím Azure.
+## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Co znamená neznámý stav? Je něco v mém prostředku špatné?
+Stav je nastaven na neznámý, pokud Resource Health zastaví příjem informací o konkrétním prostředku. I když tento stav není konečným náznakem stavu prostředku, v případech, kdy dochází k problémům, může to znamenat, že došlo k potížím s Azure.
 
-## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Jak lze získat nápovědu pro prostředek, který je k dispozici?
-Můžete odeslat žádost o podporu z okna Resource Health. Není nutné podporu smlouvy s Microsoftem se otevře žádost, když je prostředek nedostupný protože události platformy.
+## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Jak získám pomoc pro prostředek, který není k dispozici?
+Žádost o podporu můžete odeslat z okna Resource Health. K otevření žádosti, když je prostředek nedostupný, protože události platformy, nepotřebujete smlouvu o podpoře Microsoftu.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Resource Health rozlišovat mezi nedostupnost notaci podle problémy s platformou a něco, co jsme to udělali?
-Ano, pokud prostředek není k dispozici, Resource Health identifikuje původní příčinu v rámci jedné z těchto kategorií: 
--   Uživatelem iniciované akce
--   Plánované události 
--   Neplánované události
+## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Rozlišuje Resource Health nedostupnost použita problémy s platformou I něčím?
+Ano, pokud prostředek není k dispozici, Resource Health identifikuje hlavní příčinu v rámci jedné z těchto kategorií: 
+-   Akce zahájené uživatelem
+-   Plánovaná událost 
+-   Neplánovaná událost
 
-Na portálu se zobrazí uživatelem iniciované akce pomocí modré ikona během plánovaných i neplánovaných událostí jsou uvedeny pomocí červená varovná ikona. Další podrobnosti jsou uvedeny v [přehled Resource Health](Resource-health-overview.md).  
+Na portálu se uživatelem iniciované akce zobrazují pomocí modré ikony oznámení, zatímco plánované a neplánované události se zobrazují pomocí červené výstražné ikony. Další podrobnosti najdete v [přehledu Resource Health](Resource-health-overview.md).  
 
-## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Můžu integrovat s Moje monitorovací nástroje Resource Health?
-Služba Resource health je [ve verzi preview podporu](resource-health-alert-arm-template-guide.md) pro upozornění založená na protokolu aktivit. Použití upozornění protokolu aktivit [skupiny akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) uživatelům oznámit, že výstraha byla aktivována. Skupiny akcí podporují různé kanály oznámení, jako je e-mail, SMS, webhook a akce ITSM.
+## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Můžu Resource Health integrovat s nástroji pro monitorování?
+Resource Health má [podporu Preview](resource-health-alert-arm-template-guide.md) pro výstrahy založené na protokolu aktivit. Výstrahy protokolu aktivit používají [skupiny akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) k upozornění uživatelů na aktivaci výstrahy. Skupiny akcí podporují různé kanály oznámení, jako jsou e-maily, SMS, Webhooky a ITSM akce.
 
 ## <a name="where-do-i-find-resource-health"></a>Kde najdu Resource Health?
-Po přihlášení k webu Azure portal, mají několik možností, dostanete Resource Health:
-- Přejděte k prostředku. V levém navigačním panelu vyberte **Resource health**
-- Přejděte do okna Azure Service Health.  V levém navigačním panelu vyberte **Resource health**.
-- Otevřít **Nápověda a podpora** okno výběrem otazníku v pravém horním rohu portálu a pak vyberete **Nápověda a podpora**. Po otevření okna vyberte **Resource health**
+Až se přihlásíte k Azure Portal, máte k dispozici několik způsobů, jak získat přístup k Resource Health:
+- Přejděte k prostředku. V levém navigačním panelu vyberte **Resource Health** .
+- Otevřete okno Azure Service Health.  V levém navigačním panelu vyberte **stav prostředků**.
+- Otevřete okno **Nápověda a podpora** tak, že vyberete otazník v pravém horním rohu portálu a pak vyberete **Nápověda a podpora**. Jakmile se otevře okno, vyberte **stav prostředku** .
 
-Rozhraní API stavu prostředku můžete také použít k získání informací o stavu vašich prostředků.
+K získání informací o stavu vašich prostředků můžete použít také rozhraní Resource Health API.
 
-## <a name="is-resource-health-available-for-all-resource-types"></a>Je k dispozici pro všechny typy prostředků Resource Health?
-Seznam kontrol stavu a typy prostředků, které jsou podporované prostřednictvím služby Resource Health najdete [tady](resource-health-checks-resource-types.md).
+## <a name="is-resource-health-available-for-all-resource-types"></a>Je Resource Health k dispozici pro všechny typy prostředků?
+Seznam kontrol stavu a typů prostředků podporovaných prostřednictvím Resource Health najdete [tady](resource-health-checks-resource-types.md).
 
-## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Co mám dělat, když se zobrazuje Můj prostředek k dispozici, ale věřím, že není?"
-Při kontrole stavu prostředku, vpravo pod stavu můžete kliknout na **sestavy nesprávný stav**. Před odesláním do sestavy, máte možnost poskytnout další podrobnosti o proč si myslíte, že aktuální stav je nesprávný.
+## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Co mám dělat, když můj zdroj zobrazuje k dispozici, ale jsem přesvědčen, že není? "
+Když kontrolujete stav prostředku, napravo pod stavem stav můžete kliknout na **sestava nesprávný stav stavu**. Před odesláním sestavy máte možnost poskytnout další podrobnosti o tom, proč se domníváte, že aktuální stav je nesprávný.
 
-## <a name="is-resource-health-available-for-all-azure-regions"></a>Resource Health je k dispozici pro všemi oblastmi Azure? 
-Služba Resource health je k dispozici ve všech zeměpisných oblastech Azure.
+## <a name="is-resource-health-available-for-all-azure-regions"></a>Je Resource Health k dispozici pro všechny oblasti Azure? 
+Stav prostředku je k dispozici ve všech zeměpisných oblastech Azure.
 
-## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Čím se liší od stav služby Azure nebo řídicí panel stavu služeb Resource Health?
-Služba Resource Health na základě informací poskytnutých je konkrétnější než co poskytuje stav služby Azure nebo řídicí panel stavu služeb.
+## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Jak se Resource Health liší od stavu Azure nebo řídicího panelu Service Health?
+Informace, které poskytuje Resource Health, jsou konkrétnější, než je poskytované stavem Azure nebo řídicím panelem Service Health.
 
-Vzhledem k tomu [stav Azure](https://status.azure.com) a řídicí panel stavu služeb obsahují informace o problémech, které mají vliv široké škále zákazníků (třeba určitá oblast Azure), Resource Health poskytuje podrobnější událostí, které jsou relevantní jenom pro konkrétní prostředek. Například pokud hostitel neočekávaně restartuje, Resource Health upozorní pouze zákazníci, jehož virtuální počítače běžely na tomto hostiteli.
+Vzhledem k tomu, že [stav Azure](https://status.azure.com) a řídicí panel Service Health informují o problémech se službami, které mají vliv na širokou škálu zákazníků (například oblast Azure), Resource Health zveřejňuje podrobnější události, které jsou relevantní jenom pro konkrétní prostředek. Například pokud se hostitel neočekávaně restartuje, Resource Health upozorní pouze zákazníky, jejichž virtuální počítače byly na tomto hostiteli spuštěny.
 
-Je důležité si všimněte si, že poskytují kompletní přehled událostí dopadu na vaše prostředky, Resource Health poskytuje také informace o události, které jsou publikované na řídicím panelu stavu služeb.
+Je důležité si všimnout, že abyste mohli poskytnout kompletní přehled o událostech ovlivňujících vaše prostředky, Resource Health také události, které jsou publikovány na řídicím panelu Service Health.
 
-## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Je potřeba aktivovat pro jednotlivé prostředky Resource Health?
-Ne, informace o stavu je k dispozici pro všechny typy prostředků jsou dostupné prostřednictvím služby Resource Health. 
+## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Potřebuji u každého prostředku aktivovat Resource Health?
+Ne, informace o stavu jsou k dispozici pro všechny typy prostředků, které jsou k dispozici prostřednictvím Resource Health. 
 
-## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Potřebujeme pro naši organizaci povolit Resource Health?
-Ne.  Azure Resource Health je dostupný na webu Azure portal bez požadavků na instalaci.
+## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Musíme Resource Health pro moji organizaci povolit?
+Ne.  Azure Resource Health je k dispozici v Azure Portal bez jakýchkoli požadavků na instalaci.
 
-## <a name="is-resource-health-available-free-of-charge"></a>Služba Resource Health je k dispozici zdarma?
-Ano.  Azure Resource Health je zdarma.
+## <a name="is-resource-health-available-free-of-charge"></a>Je Resource Health k dispozici zdarma?
+Ano.  Azure Resource Health je bezplatná.
 
-## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Co jsou doporučení, které poskytuje služba Resource Health?
-Podle stavu, Resource Health poskytuje doporučení s cílem zkrácení doby že trvání řešení potíží. Pro prostředky dojde k výběru doporučení v tom, jak řešit nejčastější problémy zákazníků. Pokud je prostředek nedostupný z důvodu Azure neplánované události, zaměřuje bude na pomáhá během a po dokončení procesu obnovení. 
+## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Jaká doporučení Resource Health poskytuje?
+Na základě stavu Resource Health poskytuje doporučení s cílem zkrátit čas strávený odstraňováním potíží. V případě dostupných prostředků se v doporučeních zaměřujeme na řešení nejběžnějších problémů, ke kterým se zákazníci setkávají. Pokud prostředek není k dispozici z důvodu neplánované události Azure, zaměřte se na vás během procesu obnovení a po něm. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Resource Health:
+Další informace o Resource Health:
 -  [Přehled Azure Resource Health](Resource-health-overview.md)
 -  [Typy prostředků a kontroly stavu dostupné prostřednictvím služby Azure Resource Health](resource-health-checks-resource-types.md)

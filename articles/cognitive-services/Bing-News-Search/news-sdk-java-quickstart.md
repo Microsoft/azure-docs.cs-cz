@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: def964dd932f8a41a877a3d9568a8ec4825874b8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b8c2ca3bf919d70123b7b5b6d13c0301e0c1fd13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383574"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Rychlý Start: hledání zpráv pomocí sady Vyhledávání zpráv Bingu SDK pro jazyk Java
 
-V tomto rychlém startu můžete začít hledat zprávy s Vyhledávání zpráv Bingu SDK pro jazyk Java. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
+V tomto rychlém startu můžete začít hledat zprávy s Vyhledávání zpráv Bingu SDK pro jazyk Java. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -57,7 +57,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>Vytvoření vyhledávacího klienta a přihlašovacích údajů pro Store
 
-1. Vytvořte metodu nazvanou `getClient()`, která vrátí nového klienta `NewsSearchAPIImpl` vyhledávání. Přidejte svůj koncový bod jako první parametr nového objektu`NewsSearchAPIImpl` a nový objekt `ServiceClientCredentials` pro uložení vašich přihlašovacích údajů.
+1. Vytvořte metodu nazvanou `getClient()`, která vrátí nového klienta `NewsSearchAPIImpl` vyhledávání. Přidejte svůj koncový bod jako první parametr nového objektu`NewsSearchAPIImpl` a nový objekt `ServiceClientCredentials` pro uložení vašich přihlašovacích údajů. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {

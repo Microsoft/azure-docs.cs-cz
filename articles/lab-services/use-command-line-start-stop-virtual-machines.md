@@ -1,6 +1,6 @@
 ---
-title: Pomocí nástrojů příkazového řádku spouštět a zastavovat virtuální počítače Azure DevTest Labs | Dokumentace Microsoftu
-description: Další informace o použití nástroje příkazového řádku spouštět a zastavovat virtuální počítače ve službě Azure DevTest Labs.
+title: Použití nástrojů příkazového řádku ke spuštění a zastavení virtuálních počítačů Azure DevTest Labs | Microsoft Docs
+description: Naučte se používat nástroje příkazového řádku ke spouštění a zastavování virtuálních počítačů v Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,29 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e00de295a7f41bf0ff768c4f948a667bc188616
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456945"
 ---
-# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Pomocí nástrojů příkazového řádku spouštět a zastavovat virtuální počítače Azure DevTest Labs
-V tomto článku se dozvíte, jak pomocí Azure Powershellu nebo Azure CLI spuštěním a zastavením virtuálních počítačů v testovacím prostředí ve službě Azure DevTest Labs. Můžete vytvořit skripty Powershellu/CLI k automatizaci těchto operací. 
+# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Spuštění a zastavení Azure DevTest Labs virtuálních počítačů pomocí nástrojů příkazového řádku
+V tomto článku se dozvíte, jak pomocí Azure PowerShell nebo Azure CLI spouštět a zastavovat virtuální počítače v testovacím prostředí v Azure DevTest Labs. K automatizaci těchto operací můžete vytvořit skripty PowerShellu nebo rozhraní příkazového řádku. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
-Azure DevTest Labs je způsob, jak vytvářet rychlá, snadná a Štíhlá vývojová a testovací prostředí. Umožňuje vám spravovat náklady, rychle zřizovat virtuální počítače a minimalizovat ztráty.  Nejsou integrované funkce na webu Azure Portal, které vám umožní nakonfigurovat virtuální počítače v testovacím prostředí pro automatické spuštění a zastavení v určitých časech. 
+Azure DevTest Labs je způsob, jak vytvářet rychlá, snadná a štíhlá vývojová a testovací prostředí. Umožňuje vám spravovat náklady, rychle zřizovat virtuální počítače a minimalizovat odpad.  V Azure Portal jsou integrované funkce, které vám umožní nakonfigurovat virtuální počítače v testovacím prostředí tak, aby se v určitých časech automaticky spouštěly a zastavily. 
 
-Ale v některých případech můžete chtít automatizovat spouštění a zastavování virtuálních počítačů pomocí skriptů prostředí PowerShell nebo rozhraní příkazového řádku. Poskytuje pružnost s spuštění a zastavení jednotlivých počítačů v okamžiku místo v určitých časech. Tady jsou některé situace, ve kterých běží tyto úkoly pomocí skriptů by mohl být užitečný.
+V některých scénářích ale můžete chtít automatizovat spouštění a zastavování virtuálních počítačů ze skriptů PowerShellu nebo rozhraní příkazového řádku. Nabízí značnou flexibilitu při spouštění a zastavování jednotlivých počítačů kdykoli po určitou dobu. Tady je několik situací, ve kterých jsou tyto úlohy spuštěné pomocí skriptů užitečné.
 
-- Při použití 3vrstvé aplikace jako součást testovacího prostředí, úrovně nutné ke spuštění v sekvenci. 
-- Vypněte virtuální počítač ještě ušetříte peníze při splnění vlastních kritérií. 
-- Použijte jako úloha v pracovním postupu CI/CD na začátku toku, používejte virtuální počítače podle počítače sestavení, testovací počítače ani infrastrukturu a poté zastavte virtuální počítače po dokončení procesu. Příklad tohoto by objekt pro vytváření vlastní image s Azure DevTest Labs.  
+- Při použití 3 vrstvy aplikace jako součásti testovacího prostředí musí být vrstvy spuštěné v sekvenci. 
+- Vypněte virtuální počítač, když se splní vlastní kritéria pro uložení peněz. 
+- Použijte ji jako úlohu v rámci pracovního postupu CI/CD a začněte na začátku toku, použijte virtuální počítače jako počítače sestavení, testovací počítače nebo infrastrukturu a potom po dokončení procesu zastavte virtuální počítače. Příkladem může být vlastní továrna obrázků s Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Vyvolání AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) se zaměřuje především pro tento skript. **ResourceId** parametr je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. **Akce** parametr je tam, kde **Start** nebo **Zastavit** možnosti se nastavují v závislosti na tom, co je potřeba.
+
+> [!NOTE]
+> Následující skript používá Azure PowerShell AZ Module. 
+
+Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) je pro tento skript primárním fokusem. Parametr **ResourceID** je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. Parametr **Action** je, kde jsou nastaveny možnosti **Spustit** nebo **zastavit** v závislosti na tom, co je potřeba.
 
 ```powershell
 # The id of the subscription
@@ -53,11 +57,7 @@ $vmAction = "Start"
 Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Get the lab information
-if ($(Get-Module -Name AzureRM).Version.Major -eq 6) {
-    $devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
-} else {
-    $devTestLab = Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
-}
+$devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $devTestLabName
 
 # Start the VM and return a succeeded or failed status
 $returnStatus = Invoke-AzResourceAction `
@@ -75,7 +75,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-[Rozhraní příkazového řádku Azure](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) je další způsob, jak automatizovat spouštění a zastavování virtuálních počítačů DevTest Labs. Rozhraní příkazového řádku Azure může být [nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest) v různých operačních systémech. Následující skript vypíše příkazy za spouštění a zastavování virtuálních počítačů v testovacím prostředí. 
+Rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) je dalším způsobem, jak automatizovat spouštění a zastavování virtuálních počítačů DevTest Labs. Rozhraní příkazového řádku Azure CLI je možné [instalovat](/cli/azure/install-azure-cli?view=azure-cli-latest) v různých operačních systémech. Následující skript vám poskytne příkazy pro spouštění a zastavování virtuálních počítačů v testovacím prostředí. 
 
 ```azurecli
 # Sign in to Azure
@@ -92,5 +92,5 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 ```
 
 
-## <a name="next-steps"></a>Další postup
-Najdete v následujícím článku na webu Azure portal provádět tyto operace: [Restartovat virtuální počítač](devtest-lab-restart-vm.md).
+## <a name="next-steps"></a>Další kroky
+Pokud chcete použít Azure Portal k provedení těchto operací, přečtěte si následující článek: [restartování virtuálního počítače](devtest-lab-restart-vm.md).

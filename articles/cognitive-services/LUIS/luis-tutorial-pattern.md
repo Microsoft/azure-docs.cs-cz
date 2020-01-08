@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: vzory – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Použití vzorů ke zvýšení záměru a predikce entity pomocí menšího počtu ukázkových promluv. Vzor je k dispozici jako šablona příkladu promluvy, který obsahuje syntaxi identifikace entit a ignorovatelného textu.
+description: Pomocí vzorů můžete zvýšit záměr a předpověď entit a v tomto kurzu poskytnout méně ukázkového projevy. Vzor je k dispozici jako příklad šablony utterance, který obsahuje syntaxi pro identifikaci entit a ignorovatelné texty.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,29 +9,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 4e4f1787db86378eaeff9df196cc061c42d0ab1e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d52b2485436f0a9075dcc3f505806e46094340a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499009"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381694"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Kurz: Přidání běžných formátů šablon vzorů utterance
+# <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Kurz: Přidání běžných formátů šablon vzorků utterance ke zlepšení předpovědi
 
-V tomto kurzu budete požívat vzory ke zvýšení záměru a predikce entity pomocí menšího počtu ukázkových promluv. Vzor je k dispozici jako šablona příkladu promluvy, který obsahuje syntaxi identifikace entit a ignorovatelného textu. Vzor je kombinací párování jazykových výrazů a strojového učení.  Šablona příkladu promluvy spolu se záměrem promluvy umožňují LUIS lépe porozumět tomu, jaké promluvy odpovídají určitému záměru. 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+V tomto kurzu použijete vzory ke zvýšení záměru a předpovědi entit, což vám umožní poskytnout méně ukázkového projevy. Vzor je utterance šablony přiřazený záměru, který obsahuje syntaxi k identifikaci entit a ignorovatelné texty.
 
 **V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
-> * Importovat ukázkovou aplikaci 
-> * Vytvořit záměr
-> * Trénování
-> * Publikování
-> * Získat záměry a entity z koncového bodu
 > * Vytvořit vzor
 > * Ověřit vylepšení predikce vzoru
 > * Označit text jako ignorovatelný a vnořit ho do vzoru
@@ -39,321 +32,331 @@ V tomto kurzu budete požívat vzory ke zvýšení záměru a predikce entity po
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
+## <a name="utterances-in-intent-and-pattern"></a>Projevy v záměru a vzorci
 
-Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
+V aplikaci LUIS jsou uložené dva typy projevy:
+
+* Příklad projevy v záměru
+* Šablona projevy ve vzoru
+
+Přidání šablony projevy jako vzor umožňuje poskytnout méně ukázkového projevy jako celku záměru.
+
+Vzor se používá jako kombinace výrazů pro porovnávání a strojové učení.  Šablona utterance spolu s příkladem projevy poskytuje LUIS lepší porozumění, co projevy přizpůsobit záměru.
+
+## <a name="import-example-app-and-clone-to-new-version"></a>Importovat ukázkovou aplikaci a klonovat ji do nové verze
 
 Použijte k tomu následující postup:
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json) a uložte si ho.
+1.  Stáhněte a uložte [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true).
 
-2. Naimportujte soubor JSON do nové aplikace.
+1. Importujte JSON do nové aplikace na [portál Luis verze Preview](https://preview.luis.ai).
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `patterns`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `patterns`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Tvorba nových záměrů a jejich promluv
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. Na navigačním panelu vyberte **sestavení** .
 
-2. Na stránce **Intents** (Záměry) vyberte **Create new intent** (Vytvořit nový záměr). 
+1. Na stránce **záměry** vyberte **+ vytvořit** a vytvořte nový záměr.
 
-3. V automaticky otevíraném dialogovém okně zadejte `OrgChart-Manager` a pak vyberte **Done** (Hotovo).
+1. V automaticky otevíraném dialogovém okně zadejte `OrgChart-Manager` a pak vyberte **Done** (Hotovo).
 
     ![Vytvořte nové automaticky otevírané okno zpráv](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
-4. Přidejte do záměru ukázkové promluvy.
+1. Přidejte do záměru ukázkové promluvy. Tyto projevy nejsou _přesně_ stejné, ale mají vzor, který lze extrahovat.
 
     |Ukázkové promluvy|
     |--|
-    |Čí podřízený je Jan Novák?|
-    |Komu se Jan Novák zodpovídá?|
-    |Kdo je manažer Jana Nováka?|
-    |Komu se Jana Nováková přímo zodpovídá?|
-    |Kdo je nadřízený Jany Novákové?|
+    |`Who is John W. Smith the subordinate of?`|
+    |`Who does John W. Smith report to?`|
+    |`Who is John W. Smith's manager?`|
+    |`Who does Jill Jones directly report to?`|
+    |`Who is Jill Jones supervisor?`|
 
-    [![Snímek obrazovky s LUIS přidáním nového projevyu do záměru](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Snímek obrazovky s LUIS přidáním nového projevyu do záměru")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    Nedělejte si starosti, když je entita keyPhrase označená v promluvách záměru místo v entitě zaměstnance. Obě se správně predikují v testovacím podokně a koncovém bodu.
 
-    Nedělejte si starosti, když je entita keyPhrase označená v promluvách záměru místo v entitě zaměstnance. Obě se správně predikují v testovacím podokně a koncovém bodu. 
+1. Na levém navigačním panelu vyberte **Intents** (Záměry).
 
-5. Na levém navigačním panelu vyberte **Intents** (Záměry).
+1. Vyberte **+ vytvořit** pro vytvoření nového záměru. V automaticky otevíraném dialogovém okně zadejte `OrgChart-Reports` a pak vyberte **Done** (Hotovo).
 
-6. Vyberte **Create new intent** (Vytvořit nový záměr). 
-
-7. V automaticky otevíraném dialogovém okně zadejte `OrgChart-Reports` a pak vyberte **Done** (Hotovo).
-
-8. Přidejte do záměru ukázkové promluvy.
+1. Přidejte do záměru ukázkové promluvy.
 
     |Ukázkové promluvy|
     |--|
-    |Kdo jsou podřízení Jana Nováka?|
-    |Kdo se zodpovídá Janu Novákovi?|
-    |Čí manažer je Jan Novák?|
-    |Kdo se přímo zodpovídá Janě Novákové?|
-    |Čí nadřízená je Jana Nováková?|
+    |`Who are John W. Smith's subordinates?`|
+    |`Who reports to John W. Smith?`|
+    |`Who does John W. Smith manage?`|
+    |`Who are Jill Jones direct reports?`|
+    |`Who does Jill Jones supervise?`|
 
-## <a name="caution-about-example-utterance-quantity"></a>Upozornění na množství ukázkových promluv
+### <a name="caution-about-example-utterance-quantity"></a>Upozornění na množství ukázkových promluv
 
 [!INCLUDE [Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
-## <a name="train"></a>Trénování
+### <a name="train-the-app-before-testing-or-publishing"></a>Výuka aplikace před testováním nebo publikováním
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish"></a>Publikování
+### <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikování aplikace pro dotaz z koncového bodu
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu
+### <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. Na konec adresy URL zadejte `Who is the boss of Jill Jones?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
+1. Na konec adresy URL zadejte `Who is the boss of Jill Jones?`. Poslední parametr QueryString je utterance `query`.
 
     ```json
     {
-        "query": "who is the boss of jill jones?",
-        "topScoringIntent": {
-            "intent": "OrgChart-Manager",
-            "score": 0.353984952
-        },
-        "intents": [
-            {
-                "intent": "OrgChart-Manager",
-                "score": 0.353984952
-            },
-            {
-                "intent": "OrgChart-Reports",
-                "score": 0.214128986
-            },
-            {
-                "intent": "EmployeeFeedback",
-                "score": 0.08434003
-            },
-            {
-                "intent": "MoveEmployee",
-                "score": 0.019131
-            },
-            {
-                "intent": "GetJobInformation",
-                "score": 0.004819009
-            },
-            {
-                "intent": "Utilities.Confirm",
-                "score": 0.0043958663
-            },
-            {
-                "intent": "Utilities.StartOver",
-                "score": 0.00312064588
-            },
-            {
-                "intent": "Utilities.Cancel",
-                "score": 0.002265454
-            },
-            {
-                "intent": "Utilities.Help",
-                "score": 0.00133465114
-            },
-            {
-                "intent": "None",
-                "score": 0.0011388344
-            },
-            {
-                "intent": "Utilities.Stop",
-                "score": 0.00111166481
-            },
-            {
-                "intent": "FindForm",
-                "score": 0.0008900076
-            },
-            {
-                "intent": "ApplyForJob",
-                "score": 0.0007836131
-            }
-        ],
-        "entities": [
-            {
-                "entity": "jill jones",
-                "type": "Employee",
-                "startIndex": 19,
-                "endIndex": 28,
-                "resolution": {
-                    "values": [
-                        "Employee-45612"
-                    ]
+        "query": "Who is the boss of Jill Jones?",
+        "prediction": {
+            "topIntent": "OrgChart-Manager",
+            "intents": {
+                "OrgChart-Manager": {
+                    "score": 0.313054234
+                },
+                "OrgChart-Reports": {
+                    "score": 0.2462688
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0488328524
+                },
+                "GetJobInformation": {
+                    "score": 0.0156933
+                },
+                "MoveEmployee": {
+                    "score": 0.011265873
+                },
+                "Utilities.StartOver": {
+                    "score": 0.003065792
+                },
+                "Utilities.Stop": {
+                    "score": 0.00300148362
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00271081156
+                },
+                "None": {
+                    "score": 0.00212835032
+                },
+                "ApplyForJob": {
+                    "score": 0.0020669254
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00200891262
+                },
+                "FindForm": {
+                    "score": 0.00194145238
+                },
+                "Utilities.Help": {
+                    "score": 0.00182301877
                 }
             },
-            {
-                "entity": "boss of jill jones",
-                "type": "builtin.keyPhrase",
-                "startIndex": 11,
-                "endIndex": 28
+            "entities": {
+                "keyPhrase": [
+                    "boss of Jill Jones"
+                ],
+                "Employee": [
+                    [
+                        "Employee-45612"
+                    ]
+                ],
+                "$instance": {
+                    "keyPhrase": [
+                        {
+                            "type": "builtin.keyPhrase",
+                            "text": "boss of Jill Jones",
+                            "startIndex": 11,
+                            "length": 18,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "Employee": [
+                        {
+                            "type": "Employee",
+                            "text": "Jill Jones",
+                            "startIndex": 19,
+                            "length": 10,
+                            "modelTypeId": 5,
+                            "modelType": "List Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
-        ]
+        }
     }
     ```
 
-Uspěl tento dotaz? Pro potřeby tohoto kurzu uspěl. Skóre prvních dvou záměrů je těsné. Protože trénování LUIS není vždycky stejné a dochází k drobným odchylkám, může se skóre v dalším tréninkovém cyklu obrátit. Výsledkem pak může být vrácení špatného záměru. 
+Uspěl tento dotaz? Pro potřeby tohoto kurzu uspěl. Skóre obou nejvyšších záměrů je blízko, ale nejvyšší záměr není významně vysoký (více než 60%). a ještě mnohem větší než skóre dalšího záměru.
 
-Použitím vzorů výrazně procentuálně zvýšíte skóre správného záměru a zvětšíte tak jeho odstup od druhého nejvyššího skóre. 
+Protože trénování LUIS není vždycky stejné a dochází k drobným odchylkám, může se skóre v dalším tréninkovém cyklu obrátit. Výsledkem pak může být vrácení špatného záměru.
 
-Toto druhé okno prohlížeče ponechte otevřené. Použijete je později v průběhu kurzu. 
+Použitím vzorů výrazně procentuálně zvýšíte skóre správného záměru a zvětšíte tak jeho odstup od druhého nejvyššího skóre.
+
+Toto druhé okno prohlížeče ponechte otevřené. Použijete je později v průběhu kurzu.
 
 ## <a name="template-utterances"></a>Šablony promluv
 Vzhledem k povaze domény oddělení lidských zdrojů existuje několik běžných způsobů, jak se zeptat na zaměstnanecké vztahy v organizaci. Příklad:
 
 |Projevy|
 |--|
-|Komu se zodpovídá Jana Nováková?|
-|Kdo se zodpovídá Janě Novákové?|
+|`Who does Jill Jones report to?`|
+|`Who reports to Jill Jones?`|
 
-Tyto promluvy jsou si příliš blízké na to, aby bylo možné určit jejich obsahovou jedinečnost bez poskytnutí mnoha příkladů promluv. LUIS se učí obecné vzory promluv pro určitý záměr bez dodání většího množství příkladů promluv tak, že přidává vzory k záměru. 
+Tyto promluvy jsou si příliš blízké na to, aby bylo možné určit jejich obsahovou jedinečnost bez poskytnutí mnoha příkladů promluv. LUIS se učí obecné vzory promluv pro určitý záměr bez dodání většího množství příkladů promluv tak, že přidává vzory k záměru.
 
 Šablony příkladů promluvy pro tento záměr zahrnují:
 
 |Šablony příkladů promluv|význam syntaxe|
 |--|--|
-|Komu se zodpovídá {Employee}[?]|interchangeable {Employee}, ignore [?]}|
-|Kdo se zodpovídá {Employee}[?]|interchangeable {Employee}, ignore [?]}|
+|`Who does {Employee} report to[?]`|zaměnitelné `{Employee}`<br>ignorovat `[?]`|
+|`Who reports to {Employee}[?]`|zaměnitelné `{Employee}`<br>ignorovat `[?]`|
 
-Syntaxe `{Employee}` označí umístění entity v šabloně promluvy a to, o jakou entitu se jedná. Volitelná syntaxe `[?]` označuje slova nebo interpunkci, která jsou volitelná. LUIS páruje promluvy a ignoruje volitelný text v závorkách.
+Syntaxe `{Employee}` označí umístění entity v šabloně promluvy a to, o jakou entitu se jedná. Volitelná syntaxe, `[?]`, označuje slova nebo interpunkční znaménka, která jsou volitelná. LUIS páruje promluvy a ignoruje volitelný text v závorkách.
 
-I když syntaxe vypadá jako regulérní výraz, o regulérní výraz to není. Podporovaná je pouze syntaxe se složenými `{}` a hranatými `[]` závorkami. Můžou být vnořené až dvě úrovně.
+I když syntaxe vypadá jako regulární výraz, nejedná se o regulární výraz. Podporovaná je pouze syntaxe se složenými `{}` a hranatými `[]` závorkami. Můžou být vnořené až dvě úrovně.
 
-Entity v promluvě musejí nejdříve souhlasit s entitami v šabloně promluvy, aby se vzor k promluvě přiřadil. Šablona nepomůže predikovat entity, ale jen záměry. 
+Entity v promluvě musejí nejdříve souhlasit s entitami v šabloně promluvy, aby se vzor k promluvě přiřadil. To znamená, že entity musí mít dostatek příkladů v příkladu projevy s vysokým stupněm předpovědi před tím, než jsou vzory s entitami úspěšné. Šablona nepomůže predikovat entity, ale jen záměry.
 
 **Vzory sice umožňují poskytovat méně ukázkových promluv, když ale není detekovaná entita, vzor se nespáruje.**
 
-## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Přidejte vzory pro záměr vedoucího organizačního diagramu
+### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Přidejte vzory pro záměr vedoucího organizačního diagramu
 
 1. Vyberte **Sestavení** v horní nabídce.
 
-2. Vyberte **Vzory** v levém navigačním panelu v části **Zvýšení výkonu aplikace**.
+1. Vyberte **Vzory** v levém navigačním panelu v části **Zvýšení výkonu aplikace**.
 
-3. Vyberte záměr **OrgChart-Manager**, pak zadejte následující šablony promluv:
-
-    |Šablony promluv|
-    |:--|
-    |Komu je {Employee} podřízený[?]|
-    |Komu se zodpovídá {Employee}[?]|
-    |Kdo je manažer {Employee}[?]|
-    |Komu se {Employee} přímo zodpovídá[?]|
-    |Kdo je nadřízený {Employee}[?]|
-    |Kdo je šéf {Employee}[?]|
-
-    Entity s rolemi používají syntaxi, která obsahuje název role. Zabývá se jimi [samostatný kurz rolí](luis-tutorial-pattern-roles.md). 
-
-    Když zadáváte šablonu promluvy, pomůže vám LUIS po vložení levé složené závorky `{` doplnit entitu.
-
-    [![Screenshot zadávání šablony promluv záměru](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
-
-4. Pořád na stránce vzory vyberte záměr **organizačního diagramu – sestavy** a potom zadejte následující šablonu projevy:
+1. Vyberte záměr **OrgChart-Manager**, pak zadejte následující šablony promluv:
 
     |Šablony promluv|
     |:--|
-    |Kdo jsou podřízení {Employee}[?]|
-    |Kdo se zodpovídá {Employee}[?]|
-    |Čí manažer je {Employee}[?]|
-    |Kdo jsou přímí podřízení {Employee}[?]|
-    |Či nadřízený je {Employee}[?]|
-    |Čí šéf je {Employee}[?]|
+    |`Who is {Employee} the subordinate of[?]`|
+    |`Who does {Employee} report to[?]`|
+    |`Who is {Employee}['s] manager[?]`|
+    |`Who does {Employee} directly report to[?]`|
+    |`Who is {Employee}['s] supervisor[?]`|
+    |`Who is the boss of {Employee}[?]`|
 
-## <a name="query-endpoint-when-patterns-are-used"></a>Dotaz koncovému bodu při použití šablon
+1. Pořád na stránce vzory vyberte záměr **organizačního diagramu – sestavy** a potom zadejte následující šablonu projevy:
+
+    |Šablony promluv|
+    |:--|
+    |`Who are {Employee}['s] subordinates[?]`|
+    |`Who reports to {Employee}[?]`|
+    |`Who does {Employee} manage[?]`|
+    |`Who are {Employee} direct reports[?]`|
+    |`Who does {Employee} supervise[?]`|
+    |`Who does {Employee} boss[?]`|
+
+### <a name="query-endpoint-when-patterns-are-used"></a>Dotaz koncovému bodu při použití šablon
 
 Teď, když se do aplikace přidávají vzory, můžete ji publikovat a dotazovat na koncový bod předpovědi za běhu.
 
-1. Trénujte a publikujte aplikaci znovu.
+1. Vyberte **vlak**. Po dokončení školení vyberte **publikovat** a vyberte **produkční** slot a potom vyberte **Hotovo**.
 
-1. Přepněte panel prohlížeče zpět na panel webové adresy koncového bodu.
+1. Po dokončení publikování přepněte karty prohlížeče zpátky na kartu Adresa URL koncového bodu.
 
-1. Na konec adresy URL zadejte `Who is the boss of Jill Jones?` podle promluvy. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
+1. Na konec adresy URL zadejte `Who is the boss of Jill Jones?` podle promluvy. Poslední parametr řetězce dotazu je `query`.
 
     ```json
     {
-        "query": "who is the boss of jill jones?",
-        "topScoringIntent": {
-            "intent": "OrgChart-Manager",
-            "score": 0.9999989
-        },
-        "intents": [
-            {
-                "intent": "OrgChart-Manager",
-                "score": 0.9999989
+        "query": "Who is the boss of Jill Jones?",
+        "prediction": {
+            "topIntent": "OrgChart-Manager",
+            "intents": {
+                "OrgChart-Manager": {
+                    "score": 0.999997854
+                },
+                "OrgChart-Reports": {
+                    "score": 6.13748343E-05
+                },
+                "EmployeeFeedback": {
+                    "score": 8.052567E-06
+                },
+                "GetJobInformation": {
+                    "score": 1.18197136E-06
+                },
+                "MoveEmployee": {
+                    "score": 7.65549657E-07
+                },
+                "None": {
+                    "score": 3.975E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.53E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.38181822E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.38181822E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.38181822E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.25833333E-09
+                },
+                "FindForm": {
+                    "score": 1.15384613E-09
+                },
+                "ApplyForJob": {
+                    "score": 5.26923061E-10
+                }
             },
-            {
-                "intent": "OrgChart-Reports",
-                "score": 7.616303E-05
-            },
-            {
-                "intent": "EmployeeFeedback",
-                "score": 7.84204349E-06
-            },
-            {
-                "intent": "GetJobInformation",
-                "score": 1.20674213E-06
-            },
-            {
-                "intent": "MoveEmployee",
-                "score": 7.91245157E-07
-            },
-            {
-                "intent": "None",
-                "score": 3.875E-09
-            },
-            {
-                "intent": "Utilities.StartOver",
-                "score": 1.49E-09
-            },
-            {
-                "intent": "Utilities.Confirm",
-                "score": 1.34545453E-09
-            },
-            {
-                "intent": "Utilities.Help",
-                "score": 1.34545453E-09
-            },
-            {
-                "intent": "Utilities.Stop",
-                "score": 1.34545453E-09
-            },
-            {
-                "intent": "Utilities.Cancel",
-                "score": 1.225E-09
-            },
-            {
-                "intent": "FindForm",
-                "score": 1.123077E-09
-            },
-            {
-                "intent": "ApplyForJob",
-                "score": 5.625E-10
-            }
-        ],
-        "entities": [
-            {
-                "entity": "jill jones",
-                "type": "Employee",
-                "startIndex": 19,
-                "endIndex": 28,
-                "resolution": {
-                    "values": [
+            "entities": {
+                "keyPhrase": [
+                    "boss of Jill Jones"
+                ],
+                "Employee": [
+                    [
                         "Employee-45612"
                     ]
-                },
-                "role": ""
-            },
-            {
-                "entity": "boss of jill jones",
-                "type": "builtin.keyPhrase",
-                "startIndex": 11,
-                "endIndex": 28
+                ],
+                "$instance": {
+                    "keyPhrase": [
+                        {
+                            "type": "builtin.keyPhrase",
+                            "text": "boss of Jill Jones",
+                            "startIndex": 11,
+                            "length": 18,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "Employee": [
+                        {
+                            "type": "Employee",
+                            "text": "Jill Jones",
+                            "startIndex": 19,
+                            "length": 10,
+                            "modelTypeId": 5,
+                            "modelType": "List Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
-        ]
+        }
     }
     ```
 
-Předpověď záměrů je teď výrazně spolehlivější.
+Předpověď záměrů je teď významně spolehlivější a hodnocení dalšího nejvyššího záměru je výrazně nižší. Tyto dva záměry se při výuce Překlopí.
 
-## <a name="working-with-optional-text-and-prebuilt-entities"></a>Práce s volitelným textem a předpřipravenými entitami
+### <a name="working-with-optional-text-and-prebuilt-entities"></a>Práce s volitelným textem a předpřipravenými entitami
 
 Předchozí vzor šablony promluv použitý v tomto kurzu obsahoval několik ukázek volitelného textu`'s`, například použití `?`. Předpokládejme, že je třeba pro aktuální a budoucí kalendářní data v utterance textu.
 
@@ -366,9 +369,9 @@ Ukázkové promluvy jsou:
 |OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
 |OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
 
-Každý z těchto příkladů používá slovesný čas (`was`, `is`, `will be`) a datum (`March 3`, `now`, `in a month`), které LUIS potřebuje k tomu, aby predikoval správně. Všimněte si, že poslední dva příklady používají stejný text s výjimkou `in` a `on`.
+Každý z těchto příkladů používá slovesný čas (`was`, `is`, `will be`) a datum (`March 3`, `now`, `in a month`), které LUIS potřebuje k tomu, aby predikoval správně. Všimněte si, že poslední dva příklady v tabulce používají skoro stejný text kromě `in` a `on`.
 
-Příklad šablony projevy, která umožňuje tyto volitelné informace: 
+Příklad šablony projevy, která umožňuje tyto volitelné informace:
 
 |Záměr|Ukázkové promluvy s volitelným textem a předpřipravenými entitami|
 |:--|:--|
@@ -381,21 +384,21 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
 
 **Otázka: Proč jsou všechna `w` písmena, první písmeno v každé šabloně utterance malými písmeny? Neměla by být volitelně velká nebo malá?** Promluva, kterou klientská aplikace odesílá koncovému bodu dotazu, se převádí na malá písmena. V šabloně promluvy můžete použít jak malá, tak velká písmena. V promluvě koncového bodu také. Porovnání se provádí vždy až po převodu na malá písmena.
 
-**Otázka: Když se 3. březen predikuje jako číslo `3` i jako datum `March 3`, proč nejsou předpřipravená čísla součástí šablony promluvy?** Šablona promluvy podle kontextu použije datum buď doslova jako `March 3`, nebo abstrahovanou jako `in a month`. Datum sice může obsahovat číslo, ale ne každé číslo musí být nutně datum. Používejte vždy takovou entitu, která nejlépe vystihuje typ požadovaný ve výsledcích JSON predikce.  
+**Otázka: Když se 3. březen predikuje jako číslo `3` i jako datum `March 3`, proč nejsou předpřipravená čísla součástí šablony promluvy?** Šablona promluvy podle kontextu použije datum buď doslova jako `March 3`, nebo abstrahovanou jako `in a month`. Datum sice může obsahovat číslo, ale ne každé číslo musí být nutně datum. Používejte vždy takovou entitu, která nejlépe vystihuje typ požadovaný ve výsledcích JSON predikce.
 
-**Otázka: Co chabě formulované promluvy, jako třeba `Who will {Employee}['s] manager be on March 3?`.** Gramaticky rozdílné slovesné časy, jako tady, kde jsou `will` a `be` oddělené, musejí být v samostatných šablonách promluvy. Existující šablona promluvy se s nimi nespáruje. I když se záměr promluvy nezměnil, změnil se pořádek slov v promluvě. Tato změna ovlivní predikci LUIS. K kombinování těchto projevy můžete [Seskupit a nebo](#use-the-or-operator-and-groups) příkaz-časů. 
+**Otázka: Co chabě formulované promluvy, jako třeba `Who will {Employee}['s] manager be on March 3?`.** Gramaticky rozdílné slovesné časy, jako tady, kde jsou `will` a `be` oddělené, musejí být v samostatných šablonách promluvy. Existující šablona promluvy se s nimi nespáruje. I když se záměr promluvy nezměnil, změnil se pořádek slov v promluvě. Tato změna ovlivní predikci LUIS. K kombinování těchto projevy můžete [Seskupit a nebo](#use-the-or-operator-and-groups) příkaz-časů.
 
 **Pamatujte: nejdřív se najdou entity, pak se teprve spáruje vzor.**
 
-## <a name="edit-the-existing-pattern-template-utterance"></a>Úprava existujícího vzoru šablony promluvy
+### <a name="edit-the-existing-pattern-template-utterance"></a>Úprava existujícího vzoru šablony promluvy
 
-1. Na webu LUIS vyberte **Zkompilovat** v horní nabídce, pak vyberte **Vzory** v nabídce vlevo. 
+1. Na portálu LUIS Preview v horní nabídce vyberte **Build (sestavit** ) a v nabídce vlevo vyberte **vzory** .
 
-1. Vyhledejte existující šablonu utterance `Who is {Employee}['s] manager[?]`, vyberte tři tečky (***...***) vpravo a v místní nabídce vyberte **Upravit** . 
+1. Vyhledejte existující šablonu utterance `Who is {Employee}['s] manager[?]`, vyberte tři tečky (***...***) vpravo a v místní nabídce vyberte **Upravit** .
 
 1. Změňte šablonu promluvy na `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
-## <a name="add-new-pattern-template-utterances"></a>Přidání nových vzorů šablony promluv
+### <a name="add-new-pattern-template-utterances"></a>Přidání nových vzorů šablony promluv
 
 1. V sekci **Vzory** nabídky **Zkompilovat** přidejte několik nových vzorů šablon promluv. Vyberte **OrgChart-Manager** v rozevírací nabídce záměru a zadejte následující šablony promluv:
 
@@ -405,28 +408,33 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-2. Trénujte aplikaci.
+2. Pro výuku aplikace vyberte v navigačním panelu možnost **vlak** .
 
-3. Vyberte **Test** v horní části panelu. Tak otevřete testovací panel. 
+3. Po dokončení školení vyberte v horní části panelu **test** a otevřete panel testování.
 
-4. Zadejte několik testovacích promluv. Ověříte tak, jestli je vzor spárovaný a skóre záměru výrazně vysoké. 
+4. Zadejte několik testovacích promluv. Ověříte tak, jestli je vzor spárovaný a skóre záměru výrazně vysoké.
 
     Po zadání první promluvy vyberte **Zkontrolovat** pod výsledkem. Zobrazíte tak všechny výsledky predikce. Každý utterance by měl mít záměr **vedoucího organizačního diagramu** a měl by extrahovat hodnoty pro entity Employee a datetimeV2.
 
     |Promluva|
     |--|
-    |Kdo bude manažerem Jany Novákové|
-    |kdo bude manažerem jany novákové|
-    |Kdo bude manažerem Jany Novákové?|
-    |kdo bude 3. března manažerem Jany novákové|
-    |Kdo bude příští Měsíc manažerem Jany Novákové|
-    |Kdo bude za měsíc manažerem Jany Novákové?|
+    |`Who will be Jill Jones manager`|
+    |`who will be jill jones's manager`|
+    |`Who will be Jill Jones's manager?`|
+    |`who will be Jill jones manager on March 3`|
+    |`Who will be Jill Jones manager next Month`|
+    |`Who will be Jill Jones manager in a month?`|
 
-Ve všech promluvách jsou entity, proto se všechny shodují se stejným vzorem a mají vysoké skóre predikce.
+Ve všech promluvách jsou entity, proto se všechny shodují se stejným vzorem a mají vysoké skóre predikce. Přidali jste několik vzorů, které budou odpovídat mnoha variacím projevy. Nemuseli byste do tohoto záměru přidat žádný příklad projevy, aby šablona utterance pracovala ve vzorci.
 
-## <a name="use-the-or-operator-and-groups"></a>Použití operátoru nebo a skupin
+Toto použití zadaných vzorů:
+* skóre vyšší předpovědi
+* se stejným příkladem projevy v záměru
+* projevy ve vzorci stačí několik dobře konstruovaných šablon.
 
-Některé z předchozích šablon projevy jsou velmi blízko. K omezení projevy šablony použijte syntaxi **group** `()` a **nebo** `|`. 
+### <a name="use-the-or-operator-and-groups"></a>Použití operátoru nebo a skupin
+
+Některé z předchozích šablon projevy jsou velmi blízko. K omezení projevy šablony použijte syntaxi **group** `()` a **nebo** `|`.
 
 Následující dva vzory se dají zkombinovat do jednoho vzoru pomocí `()` skupiny a syntaxe `|`.
 
@@ -435,39 +443,132 @@ Následující dva vzory se dají zkombinovat do jednoho vzoru pomocí `()` skup
 |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-Nová šablona utterance bude: 
+Nová šablona utterance bude:
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
+`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
-K tomu se používá **Skupina** kolem požadované operace vhodné a volitelné `in` a `on` mezi nimi kanál **nebo** . 
+K tomu se používá **Skupina** kolem požadované operace vhodné a volitelné `in` a `on` mezi nimi kanál **nebo** .
 
-1. Na stránce **vzory** vyberte filtr **správce organizačního diagramu** . Upřesněte seznam tak, že vyhledáte `manager`. 
+1. Na stránce **vzory** vyberte filtr **správce organizačního diagramu** . Upřesněte seznam tak, že vyhledáte `manager`.
 
-    ![Hledat ve vzorcích záměru organizačního diagramu pro termín "správce"](./media/luis-tutorial-pattern/search-patterns.png)
+1. Ponechte jednu verzi šablony utterance (pro úpravy v dalším kroku) a odstraňte ostatní variace.
 
-1. Ponechte jednu verzi šablony utterance (pro úpravy v dalším kroku) a odstraňte ostatní variace. 
+1. Změňte utterance šablony na:
 
-1. Změňte utterance šablony na: 
+    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+2. Pro výuku aplikace vyberte v navigačním panelu možnost **vlak** .
 
-1. Trénujte aplikaci.
+3. Po dokončení školení vyberte v horní části panelu **test** a otevřete panel testování.
 
-1. Použijte testovací podokno k testování verzí utterance:
+    Použijte testovací podokno k testování verzí utterance:
 
     |Projevy pro vstup do podokna testu|
     |--|
     |`Who is Jill Jones manager this month`|
     |`Who is Jill Jones manager on July 5th`|
     |`Who was Jill Jones manager last month`|
-    |`Who was Jill Jones manager on July 5th`|    
+    |`Who was Jill Jones manager on July 5th`|
     |`Who will be Jill Jones manager in a month`|
     |`Who will be Jill Jones manager on July 5th`|
 
+Pomocí další syntaxe vzorů můžete snížit počet projevy šablon, které je třeba udržovat ve vaší aplikaci, a přitom stále dosáhnout vysokého skóre předpovědi.
 
-## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Použití počátečních a koncových kotev utterance
+### <a name="use-the-utterance-beginning-and-ending-anchors"></a>Použití počátečních a koncových kotev utterance
 
-Syntaxe vzoru poskytuje počáteční a koncovou syntaxi kotvy utterance blikajícího kurzoru, `^`. Úvodní a koncové kotvy utterance lze použít společně pro cílení na velmi konkrétní a případně literální utterance nebo pro cílové záměry samostatně. 
+Syntaxe vzoru poskytuje počáteční a koncovou syntaxi kotvy utterance blikajícího kurzoru, `^`. Úvodní a koncové kotvy utterance lze použít společně pro cílení na velmi konkrétní a případně literální utterance nebo pro cílové záměry samostatně.
+
+## <a name="using-patternany-entity"></a>Pomocí vzoru. kterákoli entita
+
+Entita Pattern.any umožňuje vyhledat data volného tvaru, kde je kvůli formulaci entity obtížné odlišit konec entity od zbytku promluvy.
+
+Tato aplikace pro lidské zdroje pomáhá zaměstnancům najít formuláře společnosti.
+
+|Promluva|
+|--|
+|Where is **HRF-123456**? (Kde je HRF-123456?)|
+|Who authored **HRF 123234**? (Kdo vytvořil HRF 123234?)|
+|**HRF-456098** is published in French? (Je HRF-456098 ve francouzštině?)|
+
+Každý formulář však má formátovaný název použitý v předchozí tabulce i popisný název, jako je například `Request relocation from employee new to the company 2018 version 5`.
+
+Projevy s popisnými názvy formulářů vypadají takto:
+
+|Promluva|
+|--|
+|Where is **Request relocation from employee new to the company 2018 version 5**? (Kde je Žádost o přeložení nového zaměstnance společnosti z roku 2018 verze 5?)|
+|Who authored **Request relocation from employee new to the company 2018 version 5**? (Kdo vytvořil Žádost o přeložení nového zaměstnance společnosti z roku 2018 verze 5?)|
+|**Request relocation from employee new to the company 2018 version 5**? (Je Žádost o přeložení nového zaměstnance společnosti z roku 2018 verze 5 ve francouzštině?)|
+
+Různá délka promluv zahrnuje slova, která můžou službě LUIS komplikovat určení konce entity. Když ve vzoru použijete entitu Pattern.any, můžete určit začátek a konec názvu formuláře, aby služba LUIS mohla správně extrahovat název formuláře.
+
+|Příklad šablony promluvy|
+|--|
+|Where is {FormName}[?] (Kde je {FormName}[?])|
+|Who authored {FormName}[?] (Kdo vytvořil {FormName}[?])|
+|{FormName} is published in French[?] (Je {FormName} ve francouzštině[?])|
+
+### <a name="add-example-utterances-with-patternany"></a>Přidejte příklad projevy se vzorem. any
+
+1. V horní navigaci vyberte **Build** (Sestavení) a pak v levé navigaci vyberte **Intents** (Záměry).
+
+1. V seznamu záměrů vyberte **FindForm** (Vyhledat formulář).
+
+1. Přidejte několik ukázkových promluv:
+
+    |Ukázková promluva|Název formuláře|
+    |--|--|
+    |Where is the form **What to do when a fire breaks out in the Lab** and who needs to sign it after I read it? (Kde je formulář „Co dělat, když v laboratoři vypukne požár“ a kdo ho musí podepsat, až ho přečtu?)|Co dělat, když se v testovacím prostředí naruší požár
+    |Where is **Request relocation from employee new to the company** on the server? (Kde na serveru je Žádost o přeložení nového zaměstnance společnosti?)|Požádat o přemístění od zaměstnance nového do společnosti|
+    |Who authored **Health and wellness requests on the main campus** and what is the most current version? (Kdo vytvořil „Zásady zachování zdraví a duševní pohody v hlavním kampusu“ a jaká je nejnovější verze?)|Požadavky na stav a wellness v hlavním areálu|
+    |I'm looking for the form named **Office move request including physical assets**. (Hledám formulář s názvem „Žádost o přesun kanceláře včetně fyzických prostředků“.) |Požadavek na přesun Office včetně fyzických prostředků|
+
+    Bez entity Pattern.any by pro službu LUIS bylo kvůli mnoha variantám názvů formulářů obtížné zjistit, kde končí název formuláře.
+
+### <a name="create-a-patternany-entity"></a>Vytvoření entity Pattern.any
+Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, protože vzor označuje začátek a konec entity pomocí syntaxe.
+
+1. V levé navigaci vyberte **Entities** (Entity).
+
+1. Vyberte **+ vytvořit**, zadejte název `FormName`a jako typ vyberte **vzor. any** . Vyberte **Vytvořit**.
+
+### <a name="add-a-pattern-that-uses-the-patternany"></a>Přidání vzoru využívajícího entitu Pattern.any
+
+1. V levé navigaci vyberte **Patterns** (Vzory).
+
+1. Vyberte záměr **FindForm** (Vyhledat formulář).
+
+1. Zadejte následující šablony promluv, které používají novou entitu:
+
+    |Šablony promluv|
+    |--|
+    |`Where is the form ["]{FormName}["] and who needs to sign it after I read it[?]`|
+    |`Where is ["]{FormName}["] on the server[?]`|
+    |`Who authored ["]{FormName}["] and what is the most current version[?]`|
+    |`I'm looking for the form named ["]{FormName}["][.]`|
+
+1. Trénujte aplikaci.
+
+### <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Test nového vzoru pro extrakci dat volného tvaru
+1. Výběrem možnosti **Test** na horním panelu otevřete panel testování.
+
+1. Zadejte následující promluvu:
+
+    `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
+
+1. Pod výsledkem vyberte **Inspect** (Prozkoumat) a zobrazte výsledky testu pro entitu a záměr.
+
+    Jako první se našla entita `FormName` a pak vzor určující záměr. Pokud máte výsledek testu, kde se nezjistily entity a tedy se ani nenašel vzor, musíte do záměru (ne do vzoru) přidat více ukázkových promluv.
+
+1. Zavřete panel testování výběrem tlačítka **Test** v horní navigaci.
+
+### <a name="using-an-explicit-list"></a>Použití explicitního seznamu
+
+Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](reference-pattern-syntax.md#explicit-lists).
+
+## <a name="what-did-this-tutorial-accomplish"></a>Co se v tomto kurzu nedokončilo?
+
+V tomto kurzu jsme přidali vzory, které vám pomůžou LUIS odhadnout záměr s výrazně vyšším skóre bez nutnosti přidat další příklad projevy. Označení entit a ignorovatelného textu umožnilo LUIS aplikovat vzor na širší rozmanitost promluv.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -475,7 +576,6 @@ Syntaxe vzoru poskytuje počáteční a koncovou syntaxi kotvy utterance blikaj�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu přidáme dva záměry promluvám, které bylo bez většího množství ukázkových promluv obtížné predikovat s vysokou přesností. Přidání vzorů pomohlo LUIS lépe predikovat záměr s výrazně vyšším skóre. Označení entit a ignorovatelného textu umožnilo LUIS aplikovat vzor na širší rozmanitost promluv.
 
 > [!div class="nextstepaction"]
 > [Naučte se, jak používat role spolu se vzorem](luis-tutorial-pattern-roles.md)

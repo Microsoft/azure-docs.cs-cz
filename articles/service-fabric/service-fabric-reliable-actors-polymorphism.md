@@ -1,36 +1,27 @@
 ---
-title: Polymorfismus v Reliable Actors rozhraní | Dokumentace Microsoftu
-description: Vytvoření hierarchie rozhraní .NET a typů v Reliable Actors v rámci opakovaně používat funkce a definice rozhraní API.
-services: service-fabric
-documentationcenter: .net
+title: Polymorfismus v rozhraní Reliable Actors Framework
+description: Umožňuje sestavit hierarchie rozhraní a typů .NET v rozhraní Reliable Actors, aby bylo možné znovu použít funkce a definice rozhraní API.
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348925"
 ---
-# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorfismus v Reliable Actors rozhraní framework
-Reliable Actors rozhraní umožňuje vytvářet objekty actor využívá spoustu stejné techniky, které použijete v objektově orientovaný návrh. Jeden z těchto postupů je polymorfismus, která umožňuje typy a rozhraní dědit z více zobecnit nadřazených objektů. Dědičnost v Reliable Actors v rámci obvykle řídí modelem .NET s několika další omezení. V případě Java/Linux se řídí modelem Java.
+# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorfismus v rozhraní Reliable Actors Framework
+Rozhraní Reliable Actors Framework umožňuje sestavovat objekty Actors pomocí mnoha stejných postupů, které byste použili v objektově orientovaném návrhu. Jedním z těchto postupů je polymorfismu, což umožňuje typům a rozhraním dědit z obecnější nadřazené položky. Dědičnost v rozhraní Reliable Actors Framework obvykle sleduje model .NET s několika dodatečnými omezeními. V případě jazyka Java/Linux se řídí modelem Java.
 
 ## <a name="interfaces"></a>Rozhraní
-Reliable Actors rozhraní framework vyžaduje, abyste definovat alespoň jedno rozhraní k implementaci typ actor. Toto rozhraní se používá ke generování třídy proxy, který může komunikovat s vaší actors používají klienti. Rozhraní může dědit z jiných rozhraní za předpokladu, každé rozhraní, které je implementované typem objektu actor a všech jejích nadřazených tříd nakonec odvozovat IActor (C#) nebo Actor(Java). IActor (C#) a Actor(Java) platformou definované základní rozhraní pro objekty actor v rozhraní .NET a Javu jsou v uvedeném pořadí. Klasické polymorfismus příklad použití tvarů proto může vypadat přibližně takto:
+Rozhraní Reliable Actors Framework vyžaduje, abyste definovali aspoň jedno rozhraní, které má váš typ objektu actor implementovat. Toto rozhraní se používá ke generování proxy třídy, kterou mohou klienti používat ke komunikaci s objekty actor. Rozhraní mohou dědit z jiných rozhraní, pokud je každé rozhraní implementované typem objektu actor a všemi jeho nadřazenými prvky nakonec odvozeny od IActor (C#) nebo actor (Java). IActor (C#) a actor (Java) jsou základní rozhraní definovaná platformou pro objekty actor v rozhraních .NET a Java. Proto příklad klasické polymorfismu pomocí tvarů může vypadat přibližně takto:
 
 ![Hierarchie rozhraní pro objekty actor obrazce][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Typy
-Můžete také vytvořit hierarchii typů objektu actor, které jsou odvozeny od základní třídy objektu Actor, který je poskytovaný platformou. V případě tvary, může mít základnu `Shape`(C#) nebo `ShapeImpl`(Java) typu:
+Můžete také vytvořit hierarchii typů objektů Actor, které jsou odvozeny ze základní třídy Actor, která je poskytována platformou. V případě tvarů můžete mít typ základní `Shape`(C#) nebo `ShapeImpl`(Java):
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -49,7 +40,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-Subtypes z `Shape`(C#) nebo `ShapeImpl`(Java) také přepsat metody ze základní třídy.
+Podtypy `Shape`(C#) nebo `ShapeImpl`(Java) mohou přepsat metody ze základní třídy.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -92,11 +83,11 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Poznámka: `ActorService` atribut na typ objektu actor. Tento atribut oznamuje Reliable Actors rozhraní framework, že by měl automaticky vytvoří služba pro hostování actors tohoto typu. V některých případech můžete chtít vytvořit základní typ, který je určený výhradně pro funkce pro sdílení obsahu s podtypy a nebude nikdy používat pro vytvoření instance konkrétní objekty actor. V těchto případech byste měli použít `abstract` – klíčové slovo k označení, že se nikdy nevytvářejte prvek "actor" na základě tohoto typu.
+Všimněte si atributu `ActorService` v typu objektu actor. Tento atribut oznamuje rozhraní Reliable Actor, že by měl automaticky vytvořit službu pro hostování aktérů tohoto typu. V některých případech můžete chtít vytvořit základní typ, který je určen výhradně pro sdílení funkcí s podtypy a nebude nikdy použit k vytvoření instance konkrétních aktérů. V těchto případech byste měli použít klíčové slovo `abstract` k označení, že nikdy nevytvoříte objekt actor na základě tohoto typu.
 
-## <a name="next-steps"></a>Další postup
-* Zobrazit [jak rozhraní Reliable Actors využívají platformu Service Fabric](service-fabric-reliable-actors-platform.md) zajistit spolehlivost, škálovatelnost a konzistentního stavu.
-* Další informace o [životního cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md).
+## <a name="next-steps"></a>Další kroky
+* Podívejte se, [jak Reliable Actors Framework využívá Service Fabric platformu](service-fabric-reliable-actors-platform.md) k zajištění spolehlivosti, škálovatelnosti a konzistentního stavu.
+* Přečtěte si informace o [životním cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md).
 
 <!-- Image references -->
 

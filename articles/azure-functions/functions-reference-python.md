@@ -2,13 +2,13 @@
 title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
-ms.date: 04/16/2018
-ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/13/2019
+ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409086"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -280,28 +280,30 @@ V této funkci se hodnota parametru dotazu `name` získá z parametru `params` o
 
 Podobně můžete nastavit `status_code` a `headers` zprávy odpovědi v vráceném objektu [HttpResponse] .
 
-## <a name="concurrency"></a>Souběžnost
+## <a name="scaling-and-concurrency"></a>Škálování a souběžnost
 
-Ve výchozím nastavení funkce modulu runtime jazyka Python mohou současně zpracovat pouze jedno vyvolání funkce. Tato úroveň souběžnosti nemusí být dostatečná pro jednu nebo více následujících podmínek:
+Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitele pro Python. Funkce používá předdefinované (neuživatelsky konfigurovatelné) prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-+ Snažíte se zpracovat několik vyvolání současně...
-+ Zpracováváte velký počet vstupně-výstupních událostí.
-+ Vaše aplikace je vázaná na vstupně-výstupní operace.
+Toto chování škálování je dostatečné pro mnoho aplikací. Aplikace s kteroukoli z následujících vlastností se ale nemusí škálovat efektivně:
 
-V těchto situacích můžete zlepšit výkon spuštěním asynchronního a pomocí více pracovních procesů v jazyce.  
+- Aplikace potřebuje zpracovat mnoho souběžných volání.
+- Aplikace zpracovává velký počet vstupně-výstupních událostí.
+- Aplikace je vázaná na vstupně-výstupní operace.
+
+V takových případech můžete zvýšit výkon tím, že budete využívat asynchronní vzorce a pomocí více pracovních procesů jazyka.
 
 ### <a name="async"></a>Async
 
-Doporučujeme použít příkaz `async def`, aby se funkce spouštěla jako asynchronní korutina.
+Vzhledem k tomu, že Python je modul runtime s jedním vláknem, může instance hostitele pro Python zpracovat pouze jedno vyvolání funkce najednou. Pro aplikace, které zpracovávají velký počet vstupně-výstupních událostí a/nebo jsou vázané na vstup/výstup, můžete zvýšit výkon spuštěním asynchronních funkcí.
+
+Chcete-li spustit funkci asynchronně, použijte příkaz `async def`, který spouští funkci s [asyncio](https://docs.python.org/3/library/asyncio.html) přímo:
 
 ```python
-# Runs with asyncio directly
-
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Když je funkce `main()` synchronní (bez kvalifikátoru `async`), funkce se automaticky spustí v `asyncio` fondu vláken.
+Funkce bez klíčového slova `async` se spustí automaticky ve fondu vláken asyncio:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -312,7 +314,9 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>Použít více pracovních procesů jazyka
 
-Ve výchozím nastavení má každá instance hostitele Functions pracovní proces s jedním jazykem. Nicméně podpora pro více jazykových pracovních procesů na instanci hostitele. Volání funkcí je pak možné rovnoměrně rozdělit mezi tyto jazykové pracovní procesy. Tuto hodnotu můžete změnit pomocí nastavení aplikace [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . 
+Ve výchozím nastavení má každá instance hostitele Functions pracovní proces s jedním jazykem. Počet pracovních procesů na hostitele můžete zvýšit (až 10) pomocí nastavení aplikace [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . Azure Functions se pak pokusí rovnoměrně distribuovat souběžná volání funkcí mezi tyto pracovní procesy. 
+
+FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce vytvoří při horizontálním navýšení kapacity aplikace, aby splňovala požadavky. 
 
 ## <a name="context"></a>Kontext
 
@@ -641,7 +645,7 @@ Tuto metodu používá prohlížeč Chrome k vyjednání seznamu povolených zdr
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících zdrojích:
+Další informace najdete v následujících materiálech:
 
 * [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)

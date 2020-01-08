@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: ac9de44603eb80ca526e358013d2148240f85258
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 90d2a5a985e904217a461b509fb171822d266f60
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514157"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610573"
 ---
-# <a name="connect-extrahop-revealx"></a>Připojit ExtraHop odhalovat (x)
+# <a name="connect-extrahop-revealx"></a>Připojení ExtraHop Reveal(x)
 
 Konektor dat ExtraHop (x) umožňuje snadno připojit systém zobrazení (x) ke službě Azure Sentinel pro zobrazení řídicích panelů, vytvářet vlastní výstrahy a vylepšit šetření. Tato integrace vám umožní získat přehled o síti vaší organizace a zlepšit možnosti vaší operace zabezpečení.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 
@@ -44,4 +44,6 @@ Konektor dat ExtraHop (x) umožňuje snadno připojit systém zobrazení (x) ke 
 V tomto dokumentu jste se dozvěděli, jak připojit ExtraHop Odhalek (x) do Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Pomocí sešitů](tutorial-monitor-your-data.md) můžete monitorovat data.
+
 

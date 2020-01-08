@@ -1,5 +1,5 @@
 ---
-title: Vyhodnoťte dotazy pomocí funkce profilu spuštění pro Azure Cosmos DB rozhraní Gremlin API
+title: Použití profilu spuštění k vyhodnocení dotazů v rozhraní Azure Cosmos DB API Gremlin
 description: Přečtěte si, jak řešit a zdokonalovat dotazy Gremlin pomocí kroku profil spuštění.
 services: cosmos-db
 author: luisbosquez
@@ -9,18 +9,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: ab5c55105eeb912281f35e3d6094c0c43a76f89a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441856"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Jak použít krok profilu spuštění k vyhodnocení dotazů Gremlin
 
 Tento článek poskytuje přehled toho, jak použít krok profilu spuštění pro Azure Cosmos DB databáze Gremlin API. Tento krok poskytuje relevantní informace pro řešení potíží a optimalizace dotazů a je kompatibilní s jakýmkoli dotazem Gremlin, který se dá provést na účtu rozhraní Gremlin API pro Cosmos DB.
 
-Chcete-li použít tento krok, stačí `executionProfile()` na konci dotazu Gremlin připojit volání funkce. **Dotaz Gremlin se** spustí a výsledek operace vrátí objekt odpovědi JSON s profilem spuštění dotazu.
+Chcete-li použít tento krok, stačí na konci dotazu Gremlin připojit volání funkce `executionProfile()`. **Dotaz Gremlin se** spustí a výsledek operace vrátí objekt odpovědi JSON s profilem spuštění dotazu.
 
 Příklad:
 
@@ -32,7 +32,7 @@ Příklad:
     g.V('mary').out().executionProfile()
 ```
 
-Po volání `executionProfile()` kroku bude odpověď objekt JSON, který obsahuje spuštěný krok Gremlin, celkový čas, který trval, a pole operátorů runtime Cosmos DB, jejichž výsledkem byl příkaz.
+Po volání kroku `executionProfile()` bude odpověď objekt JSON, který obsahuje spuštěný krok Gremlin, celkový čas, který trval, a pole Cosmos DBch operátorů runtime, na které příkaz vedlo.
 
 > [!NOTE]
 > Tato implementace profilu spuštění není definovaná ve specifikaci Apache Tinkerpop. Je specifická pro Azure Cosmos DB implementaci rozhraní API Gremlin.
@@ -134,34 +134,34 @@ V následujícím příkladu je zobrazený příklad výstupu s poznámkami, kte
 ```
 
 > [!NOTE]
-> Krok executionProfile spustí dotaz Gremlin. To zahrnuje `addV` kroky nebo `addE`, které budou mít za následek vytvoření a budou potvrzovat změny zadané v dotazu. V důsledku toho budou také účtovány jednotky žádostí vygenerované dotazem Gremlin.
+> Krok executionProfile spustí dotaz Gremlin. To zahrnuje `addV` nebo `addE`kroky, které budou mít za následek vytvoření a budou potvrzovat změny zadané v dotazu. V důsledku toho budou také účtovány jednotky žádostí vygenerované dotazem Gremlin.
 
 ## <a name="execution-profile-response-objects"></a>Objekty odezvy profilu spuštění
 
 Odezva funkce executionProfile () bude vracet hierarchii objektů JSON s následující strukturou:
-  - **Objekt operace Gremlin**: Představuje úplnou operaci Gremlin, která byla provedena. Obsahuje následující vlastnosti.
-    - `gremlin`: Explicitní příkaz Gremlin, který byl proveden.
-    - `totalTime`: Čas (v milisekundách), po který se krok uskutečnil. 
-    - `metrics`: Pole, které obsahuje všechny operátory modulu runtime Cosmos DB, které byly provedeny pro splnění dotazu. Tento seznam je seřazen v pořadí podle spuštění.
+  - **Objekt operace Gremlin**: představuje celou spuštěnou operaci Gremlin. Obsahuje následující vlastnosti.
+    - `gremlin`: byl spuštěn explicitní příkaz Gremlin.
+    - `totalTime`: čas (v milisekundách), po který se krok uskutečnil. 
+    - `metrics`: pole obsahující všechny operátory modulu runtime Cosmos DB, které byly provedeny pro splnění dotazu. Tento seznam je seřazen v pořadí podle spuštění.
     
-  - **Cosmos DB operátory runtime**: Představuje každou součást celé operace Gremlin. Tento seznam je seřazen v pořadí podle spuštění. Každý objekt obsahuje následující vlastnosti:
-    - `name`: Název operátora Toto je typ kroku, který byl vyhodnocen a proveden. Další informace najdete v následující tabulce.
-    - `time`: Množství času (v milisekundách), které daný operátor trval.
-    - `annotations`: Obsahuje další informace, které jsou specifické pro operátor, který se spustil.
-    - `annotations.percentTime`: Procentuální podíl celkového času, který trvalo provedení konkrétního operátoru.
-    - `counts`: Počet objektů, které byly vráceny z vrstvy úložiště tímto operátorem. Tato hodnota je obsažena `counts.resultCount` v skalární hodnotě v rámci.
-    - `storeOps`: Představuje operaci úložiště, která může být rozložená na jeden nebo více oddílů.
-    - `storeOps.fanoutFactor`: Představuje počet oddílů, které tato konkrétní operace úložiště získala.
-    - `storeOps.count`: Představuje počet výsledků, které tato operace úložiště vrátila.
-    - `storeOps.size`: Představuje velikost výsledku dané operace úložiště v bajtech.
+  - **Cosmos DB operátory runtime**: představují všechny součásti celé operace Gremlin. Tento seznam je seřazen v pořadí podle spuštění. Každý objekt obsahuje následující vlastnosti:
+    - `name`: název operátoru. Toto je typ kroku, který byl vyhodnocen a proveden. Další informace najdete v následující tabulce.
+    - `time`: množství času (v milisekundách), které daný operátor trval.
+    - `annotations`: obsahuje další informace, které jsou specifické pro operátor, který se spustil.
+    - `annotations.percentTime`: procento celkové doby, kterou trvalo spuštění konkrétního operátoru.
+    - `counts`: počet objektů vrácených z vrstvy úložiště tímto operátorem. Ta je obsažena v `counts.resultCount` skalární hodnota v rámci.
+    - `storeOps`: představuje operaci úložiště, která může být rozložená na jeden nebo více oddílů.
+    - `storeOps.fanoutFactor`: představuje počet oddílů, které tato konkrétní operace úložiště získala.
+    - `storeOps.count`: představuje počet výsledků, které tato operace úložiště vrátila.
+    - `storeOps.size`: představuje velikost výsledku dané operace úložiště v bajtech.
 
 Cosmos DB – operátor běhu Gremlin|Popis
 ---|---
 `GetVertices`| Tento krok získá predikátové sady objektů z trvalé vrstvy. 
 `GetEdges`| Tento krok získá hrany sousedící se sadou vrcholů. Tento krok může mít za následek jednu nebo více operací úložiště.
 `GetNeighborVertices`| Tento krok získá vrcholy, které jsou propojeny se sadou hran. Okraje obsahují klíče oddílu a ID pro jejich zdrojové i cílové vrcholy.
-`Coalesce`| Tento krok se používá pro vyhodnocení dvou operací při každém `coalesce()` spuštění Gremlin kroku.
-`CartesianProductOperator`| Tento krok vypočítá kartézském produkt mezi dvěma datovými sadami. Obvykle prováděna vždy, když `to()` jsou `from()` použity predikáty nebo.
+`Coalesce`| Tento krok je pro vyhodnocení dvou operací pokaždé, když se spustí krok `coalesce()` Gremlin.
+`CartesianProductOperator`| Tento krok vypočítá kartézském produkt mezi dvěma datovými sadami. Obvykle se spustí vždy, když se používají predikáty `to()` nebo `from()`.
 `ConstantSourceOperator`| Tento krok vypočítá výraz pro vytvoření konstantní hodnoty v důsledku.
 `ProjectOperator`| Tento krok připraví a zaserializace odpověď pomocí výsledku předchozích operací.
 `ProjectAggregation`| Tento krok připraví a serializace odpověď na agregační operaci.
@@ -219,11 +219,11 @@ Z **rozděleného grafu**Předpokládejme následující odpověď profilu spuš
 ```
 
 Z nich je možné provést následující závěry:
-- Dotaz je jednoduché vyhledávání ID, protože příkaz Gremlin se řídí vzorem `g.V('id')`.
-- Z `time` hlediska metriky je latence tohoto dotazu vysoká, protože se jedná o [více než 10ms pro jednu operaci čtení z bodu](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Pokud se do `storeOps` objektu podíváme, vidíte, `fanoutFactor` že je `5`to, což znamená, že tato operace získala [5 oddílů](https://docs.microsoft.com/azure/cosmos-db/partition-data) .
+- Dotaz je vyhledávání jediného ID, protože příkaz Gremlin následuje po vzorovém `g.V('id')`.
+- Z hlediska `time` metriky se latence tohoto dotazu jeví jako vysoká, protože se jedná o [více než 10ms pro jednu operaci čtení z bodu](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
+- Pokud se podíváme na objekt `storeOps`, uvidíme, že `fanoutFactor` je `5`, což znamená, že tato operace získala [5 oddílů](https://docs.microsoft.com/azure/cosmos-db/partition-data) .
 
-V závěru této analýzy můžeme určit, že první dotaz přistupuje k více oddílům, než je potřeba. Dá se to vyřešit zadáním klíče rozdělení do dotazu jako predikátu. To bude mít za následek menší latenci a méně nákladů na dotaz. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Optimální dotaz by byl `g.V('tt0093640').has('partitionKey', 't1001')`.
+V závěru této analýzy můžeme určit, že první dotaz přistupuje k více oddílům, než je potřeba. Dá se to vyřešit zadáním klíče rozdělení do dotazu jako predikátu. To bude mít za následek menší latenci a méně nákladů na dotaz. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). `g.V('tt0093640').has('partitionKey', 't1001')`je vhodnější dotaz.
 
 ### <a name="unfiltered-query-patterns"></a>Nefiltrované vzory dotazů
 
@@ -306,7 +306,7 @@ Tento první dotaz načte všechny vrcholy s popiskem `tweet` a pak získá jeji
 ]
 ```
 
-Všimněte si, že profil stejného dotazu, ale teď s dodatečným filtrem `has('lang', 'en')`, před prozkoumáním sousedících vrcholů:
+Před prozkoumáním sousedících vrcholů si všimněte profilu stejného dotazu, ale teď s dalším filtrem `has('lang', 'en')`.
 
 ```json
 [
@@ -384,9 +384,9 @@ Všimněte si, že profil stejného dotazu, ale teď s dodatečným filtrem `has
 ```
 
 Tyto dva dotazy dosáhly stejného výsledku, ale první z nich bude vyžadovat více jednotek požadavků, protože před dotazem sousedících položek je potřeba iterovat větší počáteční datovou sadu. Indikátory tohoto chování můžeme zobrazit při porovnávání následujících parametrů z obou odpovědí:
-- `metrics[0].time` Hodnota je vyšší v první odpovědi, což znamená, že tento jeden krok trvá déle, než se vyřeší.
-- `metrics[0].counts.resultsCount` Hodnota je vyšší i v první reakci, což znamená, že počáteční pracovní datová sada byla větší.
+- Hodnota `metrics[0].time` je vyšší v první odpovědi, což znamená, že tento jeden krok trvá déle, než se vyřeší.
+- Hodnota `metrics[0].counts.resultsCount` je vyšší i v první reakci, což znamená, že počáteční pracovní datová sada byla větší.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si o [podporovaných funkcích Gremlin](gremlin-support.md) v Azure Cosmos DB. 
 * Přečtěte si další informace o [rozhraní Gremlin API v Azure Cosmos DB](graph-introduction.md).

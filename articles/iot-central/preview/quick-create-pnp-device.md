@@ -3,17 +3,17 @@ title: Rychlý Start – přidání simulovaného zařízení do Azure IoT Centr
 description: V tomto rychlém startu se dozvíte, jak vytvořit šablonu zařízení a přidat do aplikace IoT Central simulované zařízení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 669bdcddc7e4bb0c63250d9b571ff7ef4343ef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434825"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>Rychlý Start: Přidání simulovaného zařízení do aplikace IoT Central (funkce ve verzi Preview)
 
@@ -30,7 +30,7 @@ V tomto rychlém startu vytvoříte šablonu zařízení **senzoru pro životní
 * Reaguje na příkazy, jako je zapnutí a vypnutí.
 * Sestavy obecných vlastností zařízení, jako je například verze firmwaru a sériové číslo.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central (náhled funkcí)](./quick-deploy-iot-central.md) a vytvořte aplikaci IoT Central pomocí vlastní šablony aplikace **> Preview** .
 
@@ -73,13 +73,13 @@ Následující kroky ukazují, jak naimportovat model schopností pro zařízen�
     | Zobrazovaný název      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
     | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
-    | Jméno zákazníka     | Žádné          | Řetězec |
+    | Název zákazníka     | Žádné          | Řetězec |
 
 1. Kliknutím na **Uložit** uložte změny:
 
     ![Vlastnosti cloudu](media/quick-create-pnp-device/cloudproperties.png)
 
-## <a name="create-views"></a>Vytváření zobrazení
+## <a name="create-views"></a>Vytvoření zobrazení
 
 Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní informace o zařízení snímače životního prostředí pro operátora. Vlastní nastavení umožňuje operátorovi spravovat zařízení senzorů pro životní prostředí připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro operátora pro práci se zařízeními:
 
@@ -162,7 +162,7 @@ Po vytvoření nového simulovaného zařízení může tvůrce pomocí tohoto z
 
 1. Vyberte libovolné zobrazení, které chcete upravit, nebo vytvořte nové zobrazení. Klikněte na **Konfigurovat verzi Preview zařízení**a pak **Vyberte ze spuštěného zařízení**. Tady si můžete vybrat, jestli nemá žádné zařízení ve verzi Preview, a to pomocí reálného zařízení, které můžete nakonfigurovat pro testování, nebo z existujícího zařízení, které jste přidali do IoT Central.
 
-1. V seznamu vyberte simulované zařízení. Pak vyberte **použít**. Teď můžete vidět stejné simulované zařízení v zobrazeních šablon zařízení. Toto zobrazení je užitečné pro grafy a další vizualizace.
+1. V seznamu vyberte simulované zařízení. Pak vyberte **Použít**. Teď můžete vidět stejné simulované zařízení v zobrazeních šablon zařízení. Toto zobrazení je užitečné pro grafy a další vizualizace.
 
     ![Konfigurace zařízení Preview](./media/quick-create-pnp-device/configure-preview.png)
 

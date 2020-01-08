@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382119"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430965"
 ---
 # <a name="how-to-investigate-risk"></a>Postupy: šetření rizik
 
@@ -30,7 +30,7 @@ Tři sestavy se nacházejí v **Azure Portal** > **Azure Active Directory** > **
 
 ## <a name="navigating-the-reports"></a>Navigace v sestavách
 
-Každá sestava se spustí se seznamem všech zjišťování pro období zobrazené v horní části sestavy. Každá sestava umožňuje přidání nebo odebrání sloupců na základě předvolby správce. Správci si mohou stáhnout data v nástroji. Formát CSV. Sestavy lze filtrovat pomocí filtrů v horní části sestavy.
+Každá sestava se spustí se seznamem všech zjišťování pro období zobrazené v horní části sestavy. Každá sestava umožňuje přidání nebo odebrání sloupců na základě předvolby správce. Správci si mohou stáhnout data v nástroji. Sdílený svazek clusteru nebo. Formát JSON. Sestavy lze filtrovat pomocí filtrů v horní části sestavy.
 
 Výběr jednotlivých položek může v horní části sestavy povolit další položky, jako je například možnost potvrdit přihlašování jako napadené nebo bezpečné, potvrdit uživatele jako napadený nebo odstranit riziko uživatele.
 
@@ -44,7 +44,7 @@ Pomocí informací uvedených v sestavě rizikové uživatele můžou správci n
 
 - Kteří uživatelé jsou ohroženi, došlo k nápravě rizik nebo byly vyrušeny riziko?
 - Podrobnosti o detekcích
-- Historie rizikových přihlášení
+- Historie všech rizikových přihlášení
 - Historie rizik
  
 Správci se pak mohou rozhodnout, že budou provádět akce s těmito událostmi. Správci se můžou rozhodnout:

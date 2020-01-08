@@ -1,10 +1,10 @@
 ---
-title: Vytváření řídicích panelů Azure prostřednictvím kódu programu | Dokumentace Microsoftu
-description: Tento článek vysvětluje, jak vytváření řídicích panelů Azure prostřednictvím kódu programu.
+title: Vytváření řídicích panelů Azure prostřednictvím kódu programu | Microsoft Docs
+description: Řídicí panel můžete v Azure Portal použít jako šablonu pro programové vytváření řídicích panelů Azure. Obsahuje odkaz JSON.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
@@ -12,90 +12,90 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mblythe
+ms.openlocfilehash: 498e0255cfa289f7d8ccb93040980c362cf510a0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552134"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640342"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
-Tento dokument vás provede procesem programové vytváření a publikování řídicích panelů Azure. Řídicí panel najdete níž je odkazováno v celém dokumentu.
+Tento dokument vás provede procesem programového vytváření a publikování řídicích panelů Azure. Na řídicím panelu uvedeném níže je odkazováno v celém dokumentu.
 
-![ukázkový řídicí panel](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
+![Ukázkový řídicí panel](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
 ## <a name="overview"></a>Přehled
 
-Sdílené řídicí panely v Azure jsou [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) stejně, jako jsou virtuální počítače a účty úložiště.  Proto, že je možné spravovat prostřednictvím kódu programu přes [rozhraní REST API Azure Resource Manageru](/rest/api/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure), [příkazy prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)a mnoho [ Azure portal](https://portal.azure.com) funkce postaveny tato rozhraní API pro usnadnění správy prostředků.  
+Sdílené řídicí panely v Azure jsou [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) stejně jako virtuální počítače a účty úložiště.  Proto je možné je spravovat programově prostřednictvím [rozhraní REST api Azure Resource Manager](/rest/api/), příkazů [Azure CLI](https://docs.microsoft.com/cli/azure), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)a mnoha [Azure Portalch](https://portal.azure.com) funkcí sestavování nad těmito rozhraními API, aby bylo snazší správa prostředků.  
 
-Každá z těchto rozhraní API a nástroje nabízí způsoby, jak vytvořit seznam, načíst, upravit a odstranit prostředky.  Vzhledem k tomu, že řídicí panely jsou prostředky, můžete vybrat vaše oblíbená rozhraní API / nástroj použít.
+Každé z těchto rozhraní API a nástrojů nabízí způsoby, jak vytvářet, vypisovat, načítat, upravovat a odstraňovat prostředky.  Vzhledem k tomu, že řídicí panely jsou prostředky, můžete si vybrat oblíbené rozhraní API nebo nástroj, které chcete použít.
 
-Bez ohledu na to, který nástroj použijete budete muset vytvořit reprezentaci JSON objektu řídicí panel, než bude možné volat jakékoli vytvoření prostředku rozhraní API. Tento objekt obsahuje informace o součástech (označovaný také jako dlaždice) na řídicím panelu. Zahrnuje velikost, umístění, prostředky, které jsou vázány na a jakýmikoli uživatelskými úpravami.
+Bez ohledu na to, který nástroj používáte, musíte vytvořit reprezentaci JSON objektu řídicího panelu, abyste mohli volat libovolné rozhraní API pro vytváření prostředků. Tento objekt obsahuje informace o částech (označuje se také jako dlaždice) na řídicím panelu. Zahrnuje velikosti, pozice, prostředky, ke kterým jsou svázané, a libovolné vlastní uživatelské nastavení.
 
-Nejvhodnější způsob, jak vytvořit tento dokument JSON je použití [portálu](https://portal.azure.com/) interaktivně přidávat a umístění dlaždice. Pak je exportovat ve formátu JSON. Nakonec vytvořte šablonu z výsledku pro pozdější použití ve skriptech, programů a nástroje pro nasazení.
+Nejpohodlnější způsob, jak vytvořit tento dokument JSON, je použít [portál](https://portal.azure.com/) k interaktivnímu přidávání a umísťování dlaždic. Pak exportujte JSON. Nakonec vytvoříte šablonu z výsledku pro pozdější použití ve skriptech, programech a nástrojích pro nasazení.
 
 ## <a name="create-a-dashboard"></a>Vytvoření řídicího panelu
 
-Pokud chcete vytvořit nový řídicí panel, použijte příkaz nový řídicí panel na hlavní obrazovce portálu společnosti.
+Nový řídicí panel vytvoříte pomocí příkazu nový řídicí panel na hlavní obrazovce portálu.
 
 ![nový řídicí panel – příkaz](./media/azure-portal-dashboards-create-programmatically/new-dashboard-command.png)
 
-Galerie dlaždic můžete vyhledat a přidat dlaždice. Dlaždice se přidal přetažením. Některé dlaždice podporovalo změnu velikosti prostřednictvím úchyt pro přetažení, zatímco jiné, podporu opraví velikostí, které si můžete prohlédnout ve své místní nabídky.
+Potom můžete pomocí Galerie dlaždic najít a přidat dlaždice. Dlaždice jsou přidány přetažením a přetažením. Některé dlaždice podporují změnu velikosti prostřednictvím úchytu přetažení, zatímco ostatní podporují velikosti, které lze zobrazit v místní nabídce.
 
 ### <a name="drag-handle"></a>Úchyt pro přetažení
-![Úchyt pro přetažení](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
+![Přetáhněte popisovač](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
 
-### <a name="fixed-sizes-via-context-menu"></a>Pevné velikosti přes místní nabídku
-![místní nabídka velikosti](./media/azure-portal-dashboards-create-programmatically/sizes-context-menu.png)
+### <a name="fixed-sizes-via-context-menu"></a>Pevné velikosti prostřednictvím kontextové nabídky
+![místní nabídka velikostí](./media/azure-portal-dashboards-create-programmatically/sizes-context-menu.png)
 
-## <a name="share-the-dashboard"></a>Sdílení řídicího panelu
+## <a name="share-the-dashboard"></a>Sdílet řídicí panel
 
-Po nakonfigurování řídicí panel podle vašich představ, které jsou tyto další kroky k publikování řídicího panelu (pomocí příkazu Share) a následné použití Průzkumníka prostředků k načtení ve formátu JSON.
+Až nakonfigurujete řídicí panel na míru, další postup je publikovat řídicí panel (pomocí příkazu share) a potom pomocí Průzkumníka prostředků načíst JSON.
 
-![příkaz pro sdílení](./media/azure-portal-dashboards-create-programmatically/share-command.png)
+![sdílet – příkaz](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Příkaz sdílené složky se zobrazí dialogové okno s dotazem, můžete zvolit, jaké předplatné a skupinu prostředků k publikování do. Mějte na paměti, která [musí mít oprávnění k zápisu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) k předplatné a skupinu prostředků, kterou zvolíte.
+Kliknutím na příkaz sdílet se zobrazí dialogové okno s výzvou k výběru předplatného a skupiny prostředků, do které se má publikovat. Mějte na paměti, že [musíte mít oprávnění k zápisu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) do předplatného a skupiny prostředků, kterou si zvolíte.
 
 ![sdílení a přístup](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
-## <a name="fetch-the-json-representation-of-the-dashboard"></a>Načíst reprezentaci JSON řídicího panelu
+## <a name="fetch-the-json-representation-of-the-dashboard"></a>Načtení reprezentace z řídicího panelu ve formátu JSON
 
-Publikování zabere jenom pár sekund.  Po dokončení, dalším krokem je použít [Průzkumníka prostředků](https://portal.azure.com/#blade/HubsExtension/ArmExplorerBlade) načíst ve formátu JSON.
+Publikování trvá jenom několik sekund.  Až to bude hotové, další krok je přejít na [Průzkumník prostředků](https://portal.azure.com/#blade/HubsExtension/ArmExplorerBlade) a načíst JSON.
 
 ![Procházet Průzkumníka prostředků](./media/azure-portal-dashboards-create-programmatically/browse-resource-explorer.png)
 
-V Průzkumníku prostředků přejděte předplatné a skupinu prostředků, kterou jste zvolili. Pak klikněte na nově publikovaný řídicí panel prostředek, který chcete zobrazit ve formátu JSON.
+V Průzkumníku prostředků přejděte do předplatného a skupiny prostředků, kterou jste zvolili. V dalším kroku klikněte na prostředek nově publikovaného řídicího panelu, aby se kód JSON vykryl.
 
-![Resource explorer json](./media/azure-portal-dashboards-create-programmatically/resource-explorer-json.png)
+![JSON pro Resource Explorer](./media/azure-portal-dashboards-create-programmatically/resource-explorer-json.png)
 
-## <a name="create-a-template-from-the-json"></a>Vytvoření šablony z JSON
+## <a name="create-a-template-from-the-json"></a>Vytvoření šablony z formátu JSON
 
-Dalším krokem je vytvoření šablony z tohoto formátu JSON, takže ho můžete znovu použít prostřednictvím kódu programu s odpovídající prostředek správy rozhraní API, nástrojů příkazového řádku, nebo na portálu.
+Dalším krokem je vytvoření šablony z tohoto formátu JSON, aby ji bylo možné znovu použít prostřednictvím odpovídajících rozhraní API pro správu prostředků, nástrojů příkazového řádku nebo na portálu.
 
-Není nutné, abyste úplně pochopili strukturu JSON řídicí panel k vytvoření šablony. Ve většině případů budete chtít zachovat strukturu a konfiguraci každého bloku a potom parametrizovat prostředky Azure, které se odkazuje na sadu. Podívejte se na řídicím panelu exportované JSON a vyhledejte všechny výskyty ID prostředků Azure. Náš příklad řídicí panel obsahuje dlaždice více odkazujících na jeden virtuální počítač Azure. Důvodem je, náš řídicí panel jenom zjistí tento jeden prostředek. Pokud hledáte ukázková json (je součástí na konec dokumentu) "/ předplatná", hledání několika výskytů číslem ID této.
+Pro vytvoření šablony není nutné plně porozumět struktuře JSON řídicího panelu. Ve většině případů chcete zachovat strukturu a konfiguraci každé dlaždice a pak parametrizovat sadu prostředků Azure, na které odkazují. Podívejte se na exportovaný řídicí panel JSON a vyhledejte všechny výskyty ID prostředků Azure. Náš ukázkový řídicí panel obsahuje několik dlaždic, které všechny odkazují na jeden virtuální počítač Azure. To je proto, že náš řídicí panel prohlíží jenom tento jediný prostředek. Pokud vyhledáte ukázkový kód JSON (který je součástí konce dokumentu) pro "/Subscriptions", zjistíte několik výskytů tohoto ID.
 
 `/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1`
 
-Publikování tohoto řídicího panelu pro jakýkoli virtuální počítač je v budoucnu potřeba parametrizovat všechny výskyty tohoto řetězce v kódu JSON. 
+Pokud chcete tento řídicí panel publikovat pro libovolný virtuální počítač v budoucnu, musíte v rámci formátu JSON parametrizovat všechny výskyty tohoto řetězce. 
 
-Existují dva typy rozhraní API, která vytváření prostředků v Azure. [Imperativní API](https://docs.microsoft.com/rest/api/resources/resources) , který současně, vytvořit jeden prostředek a [založené na šablonách nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) systém, který můžete orchestrovat vytváření více závislých prostředků pomocí jediného volání rozhraní API. Druhá možnost nativně podporuje Parametrizace a šablonování proto používáme v našem příkladu.
+Existují dva typy rozhraní API, které vytvářejí prostředky v Azure. [Imperativní rozhraní API](https://docs.microsoft.com/rest/api/resources/resources) , která současně vytvářejí jeden prostředek, a systém [nasazení založený na šablonách](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) , který dokáže orchestrovat vytvoření více závislých prostředků s jedním voláním rozhraní API. Druhá nativně podporuje Parametrizace a šablonování, takže ji používáme pro náš příklad.
 
-## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Prostřednictvím kódu programu vytvořte řídicí panel ze šablony pomocí šablony nasazení
+## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Programové vytvoření řídicího panelu ze šablony pomocí nasazení šablony
 
-Azure nabízí možnost můžete orchestrovat nasazení více prostředků. Můžete vytvořit šablonu nasazení, která vyjadřuje sadu prostředků pro nasazení a také vztahy mezi nimi.  Formát JSON každého prostředku je stejný, jako kdybyste vytvářeli je jeden po druhém. Rozdíl je, že [jazyk šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) přidá několik konceptů, jako jsou proměnné, parametry, základní funkce a další. To rozšířené syntaxe je podporován pouze v rámci nasazování šablony a nefunguje, pokud je použita s imperativní rozhraní API už jsme probírali výše.
+Azure nabízí možnost orchestrovat nasazení více prostředků. Vytvoříte šablonu nasazení, která vyjadřuje sadu prostředků k nasazení a také vztahy mezi nimi.  Formát JSON každého prostředku je stejný, jako kdybyste ho vytvořili jeden po jednom. Rozdílem je, že [jazyk šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) přidává několik konceptů, jako jsou proměnné, parametry, základní funkce a další. Tato rozšířená syntaxe je podporována pouze v kontextu nasazení šablony a nefunguje, pokud je použita s imperativními rozhraními API, která jsou popsána výše.
 
-Pokud budete tuto trasu, pak by mělo být provedeno Parametrizace pomocí syntaxe pro parametr šablony.  Můžete nahradit všechny výskyty id prostředku, které jsme zjistili dříve, jak je znázorněno zde.
+Pokud se chystáte o tuto trasu, parametrizace by se mělo provést pomocí syntaxe parametru šablony.  Nahradíte všechny výskyty ID prostředku, které jsme dříve našli, jak je znázorněno zde.
 
-### <a name="example-json-property-with-hard-coded-resource-id"></a>Příklad JSON vlastnost s pevně zakódované Id prostředku
+### <a name="example-json-property-with-hard-coded-resource-id"></a>Příklad vlastnosti JSON s pevně zakódovaným ID prostředku
 `id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"`
 
-### <a name="example-json-property-converted-to-a-parameterized-version-based-on-template-parameters"></a>Příklad JSON vlastnost převést na parametrizovaný verzi na základě parametrů šablony
+### <a name="example-json-property-converted-to-a-parameterized-version-based-on-template-parameters"></a>Ukázková vlastnost JSON převedená na parametrizovanou verzi založenou na parametrech šablony
 
 `id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"`
 
-Také musíte deklarovat některá metadata požadovanou šablonu a parametry v horní části šablony json takto:
+Musíte taky deklarovat některá požadovaná metadata šablony a parametry v horní části šablony JSON, jako je tato:
 
 ```json
 
@@ -118,15 +118,15 @@ Také musíte deklarovat některá metadata požadovanou šablonu a parametry v 
     ... rest of template omitted ...
 ```
 
-__Zobrazí se kompletní, funkční šablonu na konci tohoto dokumentu.__
+__Na konci tohoto dokumentu můžete zobrazit úplnou pracovní šablonu.__
 
-Jakmile máte vytvořený šablony můžete nasadit pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/group/deployment#az-group-deployment-create), nebo [stránku portálu šablony nasazení ](https://portal.azure.com/#create/Microsoft.Template).
+Po vyřazení šablony ji můžete nasadit pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/resources/deployments), [PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/group/deployment#az-group-deployment-create)nebo [stránky nasazení šablony portálu](https://portal.azure.com/#create/Microsoft.Template).
 
-Tady jsou dvě verze náš příklad řídicího panelu JSON. První je verze, která jsme exportovat z portálu, který byl již vázána na prostředek. Druhým je verze šablony, která mohou být prostřednictvím kódu programu vázány na všech virtuálních počítačů a nasazení pomocí Azure Resource Manageru.
+Tady jsou dvě verze našeho ukázkového kódu JSON řídicího panelu. První je verze, kterou jsme exportovali z portálu, který už je vázaný na prostředek. Druhá je verze šablony, která se dá programově svázat s jakýmkoli virtuálním počítačem a nasadit pomocí Azure Resource Manager.
 
-## <a name="json-representation-of-our-example-dashboard-before-templating"></a>Reprezentace JSON náš příklad řídicího panelu (před šablonování)
+## <a name="json-representation-of-our-example-dashboard-before-templating"></a>Reprezentace formátu JSON našeho ukázkového řídicího panelu (před šablonování)
 
-To je, co můžete očekávat zobrazíte, pokud budete postupovat podle starší pokynů k načtení reprezentaci JSON řídicí panel, který už je nasazená. Poznámka: identifikátory prostředků pevně zakódované, které ukazují, že tento řídicí panel odkazuje na konkrétní virtuální počítač Azure.
+To je to, co můžete očekávat, pokud budete postupovat podle předchozích pokynů k načtení reprezentace JSON řídicího panelu, který je již nasazený. Poznamenejte si pevně kódované identifikátory prostředků, které ukazují, že tento řídicí panel odkazuje na konkrétní virtuální počítač Azure.
 
 ```json
 
@@ -378,11 +378,11 @@ To je, co můžete očekávat zobrazíte, pokud budete postupovat podle starší
 
 ```
 
-### <a name="template-representation-of-our-example-dashboard"></a>Šablona reprezentace náš příklad řídicího panelu
+### <a name="template-representation-of-our-example-dashboard"></a>Reprezentace šablony našeho ukázkového řídicího panelu
 
-Verze šablony řídicího panelu definoval tři parametry, které volá __virtualMachineName__, __virtualMachineResourceGroup__, a __dashboardName__.  Parametry umožňují pokaždé, když nasazujete bod tento řídicí panel v různých virtuálních počítačů Azure. Parametrizované ID jsou zvýrazněny zobrazíte, že tento řídicí panel můžete prostřednictvím kódu programu nakonfigurovat a nasadit tak, aby odkazoval do libovolného virtuálního počítače Azure. Nejjednodušší způsob, jak testovat tuto funkci má následující šablony zkopírujte a vložte ho do [stránku nasazení šablony webu Azure portal](https://portal.azure.com/#create/Microsoft.Template). 
+Verze šablony řídicího panelu definovala tři parametry s názvem __virtualMachineName__, __virtualMachineResourceGroup__a název __řídicího panelu__.  Parametry umožňují Ukázat tento řídicí panel na jiném virtuálním počítači Azure při každém nasazení. Parametrizovaná ID jsou zvýrazněná a ukazují, že tento řídicí panel je možné programově nakonfigurovat a nasadit tak, aby odkazoval na libovolný virtuální počítač Azure. Nejjednodušší způsob, jak otestovat tuto funkci, je zkopírovat následující šablonu a vložit ji do [stránky nasazení šablony Azure Portal](https://portal.azure.com/#create/Microsoft.Template). 
 
-Tento příklad nasadí řídicí panel samostatně, ale jazyk šablony umožňuje nasazovat více zdrojů a zabalí jeden nebo několik řídicích panelů po straně je. 
+Tento příklad nasadí řídicí panel sám o sobě, ale jazyk šablony vám umožní nasadit více prostředků a seskupit jeden nebo více řídicích panelů, které jsou na nich umístěné. 
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ověřování na základě certifikátů pomocí Azure Cosmos DB
+title: Ověřování na základě certifikátů pomocí Azure Cosmos DB a služby Active Directory
 description: Naučte se konfigurovat identitu Azure AD pro ověřování pomocí certifikátů pro přístup k klíčům z Azure Cosmos DB.
 author: voellm
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce8bfb593b1973e76b90223de9261134ec71dd4
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483239"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442107"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Ověřování pomocí certifikátu pro identitu Azure AD pro přístup k klíčům z Azure Cosmos DB účtu
 
@@ -28,7 +28,7 @@ Ověřování na základě certifikátu umožňuje klientské aplikaci ověřit 
 
 V tomto kroku zaregistrujete ukázkovou webovou aplikaci do svého účtu služby Azure AD. Tato aplikace se později používá ke čtení klíčů z účtu Azure Cosmos DB. K registraci aplikace použijte následující postup: 
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete podokno Azure **Active Directory** , přejdete na **Registrace aplikací** podokno a vyberte **Nová registrace**. 
 
@@ -79,7 +79,7 @@ Přihlaste se k Azure AD, kde jste zaregistrovali aplikaci. Pomocí příkazu Co
 Connect-AzureAD 
 ```
 
-## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
 Otevřete jinou instanci Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell a spusťte následující příkazy k vytvoření certifikátu podepsaného svým držitelem a přečtěte si klíč přidružený k certifikátu:
 
@@ -104,7 +104,7 @@ Výše uvedený příkaz vede výstup podobný následujícímu snímku obrazovk
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Konfigurace účtu Azure Cosmos pro použití nové identity
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Přejděte k účtu Azure Cosmos, otevřete okno **řízení přístupu (IAM)** .
 
@@ -120,7 +120,7 @@ Přihlašovací údaje založené na certifikátech můžete přidružit k klien
 
 V registraci aplikace Azure pro klientskou aplikaci:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete podokno Azure **Active Directory** , v podokně **Registrace aplikací** a otevřete ukázkovou aplikaci, kterou jste vytvořili v předchozím kroku. 
 

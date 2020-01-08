@@ -1,25 +1,14 @@
 ---
-title: Vytvoření aplikace Azure Service Fabric Reliable Actors v Javě v Linuxu | Dokumentace Microsoftu
+title: Vytvoření aplikace Azure Service Fabric Reliable Actors v jazyce Java v systému Linux
 description: Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service Fabric Reliable Actors v Javě.
-services: service-fabric
-documentationcenter: java
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458161"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
@@ -50,8 +39,8 @@ K tomu, abyste mohli začít s Reliable Actors, vám stačí pochopit pár zákl
 * **Rozhraní objektu actor**. Rozhraní objektu actor se používá k definování veřejného rozhraní objektu actor silného typu. V terminologii modelu Reliable Actors rozhraní objektu actor definuje typ zpráv, kterým objekt actor rozumí a může je zpracovat. Rozhraní objektu actor používají ostatní objekty actor a klientské aplikace k (asynchronnímu) odesílání zpráv do objektu actor. Reliable Actors můžou implementovat více rozhraní.
 * **Třída ActorProxy**. Třídu ActorProxy používají klientské aplikace k vyvolání metod zveřejněných přes rozhraní objektu actor. Třída ActorProxy zajišťuje dvě důležité funkce:
   
-  * Překlad názvů: Objekt actor je schopný najít v clusteru (Najděte uzel clusteru, ve kterém je hostovaný).
-  * Zpracování selhání: Může opakovat volání metod a znovu přeložit umístění objektu actor, například selhání, které vyžaduje přemístění objektu actor do jiného uzlu v clusteru.
+  * Překlad názvů: Dokáže vyhledat objekt actor v clusteru (najít uzel clusteru, který je jeho hostitelem).
+  * Zpracování selhání: Dokáže opakovat vyvolání metod a znovu přeložit umístění objektu actor například po selhání, které vyžaduje přemístění objektu actor do jiného uzlu v clusteru.
 
 Za zmínku stojí následující pravidla týkající se rozhraní objektů actor:
 
@@ -303,8 +292,8 @@ Podpora Service Fabric Reliable Services pro vaši aplikaci.
   }
   ```
 
-### <a name="others"></a>Jiné
-#### <a name="transport"></a>Přenos
+### <a name="others"></a>Další
+#### <a name="transport"></a>Doprava
 
 Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.
 
@@ -346,7 +335,7 @@ Podpora na úrovni systému pro Service Fabric, která komunikuje s modulem runt
   }
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření první aplikace Service Fabric v Javě v Linuxu pomocí Eclipse](service-fabric-get-started-eclipse.md)
 * [Další informace o Reliable Actors](service-fabric-reliable-actors-introduction.md)

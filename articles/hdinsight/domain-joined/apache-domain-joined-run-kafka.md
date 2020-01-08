@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435857"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Apache Kafka v HDInsight pomocí Balíček zabezpečení podniku (Preview)
 
@@ -93,7 +93,7 @@ Chcete-li vytvořit dvě témata `salesevents` a `marketingspend`:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Položku `DOMAINADMIN` nahraďte uživatelem s oprávněními správce pro váš cluster nakonfigurovaný během [vytváření clusteru](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)a nahraďte `CLUSTERNAME` názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte heslo pro uživatelský účet správce. Další informace o použití `SSH` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+   Položku `DOMAINADMIN` nahraďte uživatelem s oprávněními správce pro váš cluster nakonfigurovaný během [vytváření clusteru](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)a nahraďte `CLUSTERNAME` názvem vašeho clusteru. Pokud se zobrazí výzva, zadejte heslo pro uživatelský účet správce. Další informace o použití `SSH` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Pomocí následujících příkazů uložte název clusteru do proměnné a nainstalujte nástroj pro parsování JSON `jq`. Po zobrazení výzvy zadejte název clusteru Kafka.
 
@@ -123,7 +123,7 @@ Chcete-li vytvořit dvě témata `salesevents` a `marketingspend`:
 
 ## <a name="test-the-ranger-policies"></a>Testování zásad Ranger
 
-V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** použít téma pro vytváření a zpracování `salesevents` ale nikoli pro `marketingspend`tématu. Naopak **marketing_user** může vytvářet a spotřebovávat téma `marketingspend` ale nikoli `salesevents`tématu.
+V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytvářet a spotřebovávat téma `salesevents` ale ne téma `marketingspend`. Naopak **marketing_user** můžou vytvářet a spotřebovávat téma `marketingspend` ale ne téma `salesevents`.
 
 1. Otevřete nové připojení SSH ke clusteru. Pomocí následujícího příkazu se přihlaste jako uživatel **sales_user1**:
 
@@ -145,9 +145,9 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** pou�
 
    Příklad: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Postupujte podle kroků 3 v části **sestavení a nasazení příkladu** v [kurzu: pomocí rozhraní API pro Apache Kafka výrobce a příjemce](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) ověřte, zda je `kafka-producer-consumer.jar` také k dispozici pro **sales_user**.
+4. Postupujte podle kroků 3 v části **sestavení a nasazení příkladu** v [kurzu: pomocí rozhraní API pro Apache Kafka výrobce a příjemce](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) ověřte, zda je `kafka-producer-consumer.jar` také k dispozici **sales_user**.
 
-5. Spuštěním následujícího příkazu ověřte, že **sales_user1** může vydávat k tématu `salesevents`:
+5. Spuštěním následujícího příkazu ověřte, že **sales_user1** může vydávat `salesevents` tématu:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
@@ -161,7 +161,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** pou�
 
    Ověřte, zda je možné číst zprávy.
 
-7. Spuštěním následujícího příkazu ve stejném okně SSH ověřte, že **sales_user1** neumožňuje vytvoření tématu `marketingspend`.
+7. Spuštěním následujícího příkazu ve stejném okně SSH ověřte, že **sales_user1** nejde vydávat k tématu `marketingspend`:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
@@ -169,7 +169,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** pou�
 
    Dojde k chybě autorizace, kterou můžete ignorovat.
 
-8. Všimněte si, že **marketing_user1** nemůže spotřebovávat z tématu `salesevents`.
+8. Všimněte si, že **marketing_user1** nemůže spotřebovávat z `salesevents`tématu.
 
    Opakujte kroky 1-4 výše, ale tentokrát jako **marketing_user1**.
 

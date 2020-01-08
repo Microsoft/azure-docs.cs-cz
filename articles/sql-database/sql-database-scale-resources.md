@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 678096037da69bbddf95933e3fdf988f540ca4a6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462610"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamické škálování prostředků databáze s minimálními výpadky
 
@@ -62,9 +62,9 @@ Při inicializaci akce horizontálního navýšení nebo snížení kapacity v n
 
 ## <a name="alternative-scale-methods"></a>Alternativní metody škálování
 
-Škálování prostředků je nejjednodušší a nejúčinnější způsob, jak zvýšit výkon databáze beze změny kódu databáze nebo aplikace. V některých případech se může stát, že i nejvyšší úrovně služeb, velikosti výpočtů a optimalizace výkonu nemůžou vaše zatížení zvládnout po úspěšném a nákladově efektivním způsobu. V takovém případě máte tyto další možnosti škálování databáze:
+Škálování prostředků je nejjednodušší a nejúčinnější způsob, jak vylepšit výkon databáze bez změny kódu databáze nebo aplikace. V některých případech se může stát, že i nejvyšší úrovně služeb, velikosti výpočtů a optimalizace výkonu nezvládnou úspěšné a nákladově efektivní způsob zpracování úloh. V takovém případě máte tyto další možnosti škálování databáze:
 
-- Možnost [škálování](sql-database-read-scale-out.md) na více instancí je funkce, ve které získáte jednu repliku dat jen pro čtení, kde můžete provádět náročné dotazy jen pro čtení, například sestavy. Replika jen pro čtení zpracuje úlohu jen pro čtení, aniž by to mělo vliv na využití prostředků v primární databázi.
+- Možnost [škálování na](sql-database-read-scale-out.md) více instancí je dostupná funkce, kde získáte jednu repliku, která je jen pro čtení, kde můžete provádět náročné dotazy jen pro čtení, jako jsou sestavy. Replika jen pro čtení zpracuje úlohu jen pro čtení, aniž by to mělo vliv na využití prostředků v primární databázi.
 - [Horizontálního dělení databáze](sql-database-elastic-scale-introduction.md) je sada technik, která umožňuje rozdělit data do několika databází a škálovat je nezávisle.
 
 ## <a name="next-steps"></a>Další kroky

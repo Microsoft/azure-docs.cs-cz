@@ -1,24 +1,16 @@
 ---
 title: Příklady manifestu aplikace Azure Service Fabric
 description: Naučte se konfigurovat nastavení manifestu aplikace a služby pro Service Fabric aplikaci.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 969f15ecb45164e3b3f26c22f756a022e55782ed
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451641"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Příklady manifestu aplikace a služby Service Fabric
 Tato část obsahuje příklady manifestů aplikace a služby. Tyto příklady nejsou určeny k zobrazení důležitých scénářů, ale k zobrazení různých nastavení, která jsou k dispozici a jak je používat. 

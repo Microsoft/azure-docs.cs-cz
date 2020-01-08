@@ -1,18 +1,18 @@
 ---
 title: Principy zpracování času v Azure Stream Analytics
 description: Přečtěte si, jak funguje zpracování v Azure Stream Analytics, jako je například volba nejlepšího času spuštění, jak zpracovávat zpožděné a včasné události a metriky zpracování času.
-author: jasonwhowell
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354651"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Principy zpracování času v Azure Stream Analytics
 
@@ -171,7 +171,7 @@ Následující obrázky znázorňují, jak vodoznaky probíhají v různých př
 
 V této tabulce jsou uvedena ukázková data, která jsou v grafu níže. Všimněte si, že čas události a čas doručení se liší, někdy se shodují a někdy ne.
 
-| Čas události | Čas doručení | deviceId |
+| Čas události | Čas doručení | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2

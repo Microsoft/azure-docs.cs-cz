@@ -1,7 +1,7 @@
 ---
 title: 'Kurz 1: předpověď úvěrového rizika'
 titleSuffix: ML Studio (classic) - Azure
-description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v klasické verzi Azure Machine Learning Studio. Tento kurz je první částí série kurzů se třemi částmi.  Ukazuje, jak vytvořit pracovní prostor, nahrát data a vytvořit experiment.
+description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning Studio (Classic). Tento kurz je první částí série kurzů se třemi částmi.  Ukazuje, jak vytvořit pracovní prostor, nahrát data a vytvořit experiment.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432245"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
 
@@ -25,7 +25,7 @@ V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. V
 
 Předpokládejme, že potřebujete předpovědět úvěrové riziko u jednotlivých zákazníků na základě údajů, které uvedli v žádosti o úvěr.  
 
-Posouzení úvěrového rizika je složitý problém, ale v tomto kurzu se tento kurz zjednodušuje. Použijete ho jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio (Classic). Pro toto řešení použijete klasickou verzi Azure Machine Learning Studio a Machine Learning webovou službu.  
+Posouzení úvěrového rizika je složitý problém, ale v tomto kurzu se tento kurz zjednodušuje. Použijete ho jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio (Classic). Pro toto řešení použijete Azure Machine Learning Studio (Classic) a Machine Learning webovou službu.  
 
 V tomto kurzu se třemi částmi začínáte veřejně dostupnými daty o úvěrovém riziku.  Pak vyvíjíte a naučíte prediktivní model.  Nakonec model nasadíte jako webovou službu.
 
@@ -56,14 +56,14 @@ Pokud chcete použít Machine Learning Studio (Classic), musíte mít pracovní 
 
 Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření a sdílení pracovního prostoru Azure Machine Learning Studio (Classic)](create-workspace.md).
 
-Po vytvoření pracovního prostoru otevřete Machine Learning Studio (Classic) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Pokud máte více než jeden pracovní prostor, můžete pracovní prostor vybrat na panelu nástrojů v pravém horním rohu okna.
+Po vytvoření pracovního prostoru otevřete Machine Learning Studio (Classic) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Pokud máte více než jeden pracovní prostor, můžete vybrat pracovní prostor v panelu nástrojů v pravém horním rohu okna.
 
 ![Výběr pracovního prostoru v nástroji Studio (klasický)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Pokud jste vlastníkem pracovního prostoru, můžete nasdílet experimenty, na kterých právě pracujete, a to tak, že v pracovním prostoru vyzvete ostatní. To můžete provést v Machine Learning Studio (Classic) na stránce **Nastavení** . Pro každého uživatele potřebujete pouze účet účet Microsoft nebo organizace.
+> Pokud jste vlastníkem pracovního prostoru, můžete nasdílet experimenty, na kterých právě pracujete, a to tak, že v pracovním prostoru vyzvete ostatní. To můžete provést v Machine Learning Studio (Classic) na stránce **Nastavení** . Stačí účet Microsoft nebo účtu organizace pro každého uživatele.
 > 
-> Na stránce **Nastavení** klikněte na **Uživatelé**a potom v dolní části okna klikněte na **pozvat další uživatele** .
+> Na **nastavení** klikněte na **uživatelé**, pak klikněte na tlačítko **POZVAT další uživatele** v dolní části okna.
 > 
 
 ## <a name="upload"></a>Nahrát existující data
@@ -95,7 +95,7 @@ V případě, že model chybně klasifikuje osobu jako nízké úvěrové riziko
 
 ### <a name="convert-the-dataset-format"></a>Převod formátu datové sady
 
-Původní datová sada používá formát oddělený prázdným znakem. Klasická verze Machine Learning Studio funguje lépe pomocí souboru s hodnotami oddělenými čárkami (CSV), takže tuto datovou sadu převedete tak, že nahradíte mezery čárkami.  
+Původní datová sada používá formát oddělený prázdným znakem. Machine Learning Studio (Classic) funguje lépe pomocí souboru s hodnotami oddělenými čárkami (CSV), takže tuto datovou sadu převedete tak, že nahradíte mezery čárkami.  
 
 Existuje mnoho způsobů, jak tato data převést. Jedním ze způsobů je použít následující příkaz Windows PowerShellu:   
 
@@ -109,7 +109,7 @@ V obou případech jste vytvořili verzi dat oddělených čárkami v souboru s 
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Nahrajte datovou sadu do Machine Learning Studio (Classic).
 
-Jakmile budou data převedena do formátu CSV, je nutné ji nahrát do klasické verze Machine Learning Studio. 
+Jakmile budou data převedena do formátu CSV, je nutné ji odeslat do Machine Learning Studio (Classic). 
 
 1. Otevřete domovskou stránku Machine Learning Studio (Classic) ([https://studio.azureml.net](https://studio.azureml.net)). 
 
@@ -145,7 +145,7 @@ Další informace o importování dalších typů dat do experimentu najdete v t
 
 ## <a name="create-an-experiment"></a>Vytvoření experimentu
 
-Dalším krokem v tomto kurzu je vytvoření experimentu v klasické verzi Machine Learning Studio, který používá datovou sadu, kterou jste nahráli.  
+Dalším krokem v tomto kurzu je vytvořit experiment v Machine Learning Studio (Classic), který používá datovou sadu, kterou jste nahráli.  
 
 1. V nástroji Studio (Classic) klikněte v dolní části okna na **+ Nový** .
 1. Vyberte **experiment**a potom vyberte "prázdný experiment". 
@@ -173,7 +173,7 @@ Dalším krokem v tomto kurzu je vytvoření experimentu v klasické verzi Machi
 
 Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: klikněte na výstupní port datové sady (malý kroužek v dolní části) a vyberte **vizualizovat**.  
 
-Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, nabízí klasická verze studia obecné nadpisy (Sloupe, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
+Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, Studio (Classic) poskytuje obecné nadpisy (Sloupec1, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
 
 Záhlaví sloupců můžete přidat pomocí modulu [Upravit metadata][edit-metadata] .
 
@@ -191,7 +191,7 @@ Chcete-li použít [úpravu metadat][edit-metadata], určete nejprve, které slo
 
     ![Přidávání metadat pro úpravy](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
 
-    Červený vykřičník označuje, že ještě nemáte nastavené vlastnosti pro tento modul. Provedete to dál.
+    Červený vykřičník označuje, že ještě nemáte nastavené vlastnosti pro tento modul. Uděláte to za chvíli.
 
     > [!TIP]
     > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V takovém případě poklikejte na modul [Upravit metadata][edit-metadata] a zadejte komentář "Přidání záhlaví sloupců". Textové pole zavřete kliknutím kamkoli jinde na plátně. Chcete-li zobrazit komentář, klikněte na šipku dolů v modulu.

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Klientská knihovna pro přizpůsobování pro Node. js | Microsoft Docs'
+title: 'Rychlý Start: Klientská knihovna pro přizpůsobování pro Node. js'
 titleSuffix: Azure Cognitive Services
-description: Začínáme s klientskou knihovnou přizpůsobování pro Node. js s využitím výukové smyčky.
+description: V tomto rychlém startu se dozvíte, jak začít s klientskou knihovnou přizpůsobování pro Node. js pomocí výukové smyčky.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494449"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446373"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Rychlý Start: Klientská knihovna pro přizpůsobování pro Node. js
 
@@ -200,4 +200,4 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Co je přizpůsobování?](what-is-personalizer.md)
 * [Kde můžete použít přizpůsobování?](where-can-you-use-personalizer.md)
 * [Řešení potíží](troubleshooting.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js).
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)

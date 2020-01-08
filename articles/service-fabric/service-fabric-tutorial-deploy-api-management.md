@@ -1,26 +1,15 @@
 ---
-title: Integrace služby API Management se Service Fabric v Azure | Microsoft Docs
+title: Integrace API Management s Service Fabric v Azure
 description: Naučte se rychle začít s Azure API Management a směrovat provoz do back-endové služby v Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465357"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrace API Management s Service Fabric v Azure
 
@@ -45,9 +34,9 @@ Než začnete:
 * Vytvořte zabezpečený [cluster se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
 * Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a**vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
-## <a name="network-topology"></a>Topologie sítě
+## <a name="network-topology"></a>Síťová topologie
 
-Teď, když máte zabezpečený [cluster Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure, nasadíte API Management do virtuální sítě (VNET) v PODSÍTI a NSG určené pro API Management. Pro účely tohoto článku je šablona API Management Správce prostředků předem nakonfigurovaná tak, aby používala názvy virtuální sítě, podsítě a NSG, které jste nastavili v tématu [kurz Windows cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) , v tomto článku se nasadí Tato topologie do Azure, ve které API Management a Service Fabric jsou v podsítích stejné Virtual Network:
+Teď, když máte zabezpečený [cluster Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure, nasadíte API Management do virtuální sítě (VNET) v PODSÍTI a NSG určené pro API Management. Pro účely tohoto článku je šablona API Management Správce prostředků předem nakonfigurovaná tak, aby používala názvy virtuální sítě, podsítě a NSG, které jste nastavili v [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . Tento článek nasadí následující topologii do Azure, ve které API Management a Service Fabric jsou v podsítích stejné Virtual Network:
 
  ![Popisek obrázku][sf-apim-topology-overview]
 
@@ -158,7 +147,7 @@ Pokud chcete přidat front-end operaci rozhraní API, vyplňte následující ho
 
 * **displayName** (zobrazovaný název) a **description** (popis) popisujíc operaci. V tomto článku použijte "Values".
 * **method** (metoda) určuje příkaz HTTP.  V tomto článku zadejte **Get**.
-* **urlTemplate** (šablona adresy URL) se připojí k základní adrese URL rozhraní API a identifikuje jednu operaci HTTP.  V tomto článku použijte `/api/values` , pokud jste přidali službu back-end rozhraní .NET nebo `getMessage` jste přidali back-end službu Java.  Zde zadaná cesta URL je ve výchozím nastavení cestou URL, která se odesílá do back-end služby Service Fabric. Pokud tady použijete stejnou cestu URL, jakou používá vaše služba, například /api/values, bude operace fungovat bez dalších úprav. Můžete tady zadat také jinou cestu URL, než kterou používá vaše back-end služba Service Fabric. V takovém případě je potřeba později také určit přepsání cesty v zásadách operace.
+* **urlTemplate** (šablona adresy URL) se připojí k základní adrese URL rozhraní API a identifikuje jednu operaci HTTP.  V tomto článku použijte `/api/values`, pokud jste přidali službu back-end rozhraní .NET nebo `getMessage`, pokud jste přidali back-end službu Java.  Zde zadaná cesta URL je ve výchozím nastavení cestou URL, která se odesílá do back-end služby Service Fabric. Pokud tady použijete stejnou cestu URL, jakou používá vaše služba, například /api/values, bude operace fungovat bez dalších úprav. Můžete tady zadat také jinou cestu URL, než kterou používá vaše back-end služba Service Fabric. V takovém případě je potřeba později také určit přepsání cesty v zásadách operace.
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
@@ -201,7 +190,7 @@ Vyplňte následující prázdné parametry v souboru *apim.parameters.json* pro
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|Vývojář|
+|apimSku|Developer|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
@@ -300,7 +289,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o použití [API Management](/azure/api-management/import-and-publish).
 

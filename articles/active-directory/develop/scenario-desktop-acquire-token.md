@@ -1,5 +1,5 @@
 ---
-title: Získání tokenu pro desktopové aplikace, které volají webová rozhraní API | Azure
+title: Získat token pro volání webového rozhraní API (desktopová aplikace) | Azure
 titleSuffix: Microsoft identity platform
 description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (získání tokenu pro aplikaci |)
 services: active-directory
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 89a9426b1ed0ccd3c5f9eec576e5d78bf3d3dfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920222"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423876"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – získat token
 
@@ -38,7 +38,7 @@ Webové rozhraní API je definováno jeho `scopes`. Bez ohledu na možnosti, kte
 
 ### <a name="in-msalnet"></a>V MSAL.NET
 
-```CSharp
+```csharp
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
@@ -155,7 +155,7 @@ Následující příklad ukazuje minimální kód pro interaktivní získání t
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>V MSAL.NET
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -184,7 +184,7 @@ V systému Android je nutné zadat také nadřazenou aktivitu (pomocí `.WithPar
 
 Je to interaktivní, uživatelské rozhraní je důležité. `AcquireTokenInteractive` má jeden konkrétní volitelný parametr, který umožňuje určit, pro platformy, které ho podporují, nadřazené uživatelské rozhraní. Při použití v desktopové aplikaci má `.WithParentActivityOrWindow` v závislosti na platformě jiný typ:
 
-```CSharp
+```csharp
 // net45
 WithParentActivityOrWindow(IntPtr windowPtr)
 WithParentActivityOrWindow(IWin32Window window)
@@ -202,7 +202,7 @@ Mark
 - V systému Windows je nutné volat `AcquireTokenInteractive` z vlákna uživatelského rozhraní tak, aby vložený prohlížeč dostal příslušný kontext synchronizace uživatelského rozhraní.  Nevolání z vlákna uživatelského rozhraní může způsobit, že zprávy nezpůsobí správné nebo zablokování scénářů pomocí uživatelského rozhraní. Jedním ze způsobů, jak volat MSAL z vlákna uživatelského rozhraní, pokud nejste na vlákně uživatelského rozhraní, se už používá `Dispatcher` v WPF.
 - Pokud používáte WPF, chcete-li získat okno z ovládacího prvku WPF, můžete použít třídu `WindowInteropHelper.Handle`. Volání je pak z ovládacího prvku WPF (`this`):
 
-  ```CSharp
+  ```csharp
   result = await app.AcquireTokenInteractive(scopes)
                     .WithParentActivityOrWindow(new WindowInteropHelper(this).Handle)
                     .ExecuteAsync();
@@ -226,7 +226,7 @@ Třída definuje následující konstanty:
 
 Tento modifikátor se používá v pokročilém scénáři, kdy chcete uživateli předběžně odsouhlasit několik zdrojů (a nechcete používat přírůstkový souhlas, který se obvykle používá s MSAL.NET nebo platformou Microsoft Identity). Podrobnosti najdete v tématu [Postupy: použití souhlasu uživatele před několika prostředky](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();
@@ -253,7 +253,7 @@ Hostitelem `end Url` je vždy `redirectUri`. K zachycení `end Url` můžete:
 
 `WithCustomWebUi` je bod rozšíření, který umožňuje poskytnout vlastní uživatelské rozhraní ve veřejných klientských aplikacích a umožnit uživateli projít koncový bod/Authorize zprostředkovatele identity a nechat ho přihlašovat a vyjádřit souhlas. MSAL.NET může, pak uplatnit ověřovací kód a získat token. Je to pro instanci, která se používá v sadě Visual Studio k tomu, aby Electrons aplikace (pro instanci a zpětnou vazbu) poskytovala webové interakce, ale ponechala MSAL.NET, aby pro většinu práce. Můžete ji také použít, pokud chcete poskytnout automatizaci uživatelského rozhraní. Ve veřejných klientských aplikacích MSAL.NET používá PKCE Standard ([RFC 7636-kontrolní klíč pro výměnu kódu pomocí veřejných klientů OAuth](https://tools.ietf.org/html/rfc7636)), aby se zajistilo dodržování zabezpečení: jenom MSAL.NET může uplatnit kód.
 
-  ```CSharp
+  ```csharp
   using Microsoft.Identity.Client.Extensions;
   ```
 
@@ -264,7 +264,7 @@ Aby bylo možné použít `.WithCustomWebUI`, je třeba:
   1. Implementujte rozhraní `ICustomWebUi` (viz [zde](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). V podstatě budete muset implementovat jednu metodu `AcquireAuthorizationCodeAsync` přijetí adresy URL autorizačního kódu (vypočítaného MSAL.NET), aby uživatel procházel prostřednictvím interakce s poskytovatelem identity a pak vrátil zpět adresu URL, kterou by zprostředkovatel identity volal jako zpětnou implementaci (včetně autorizačního kódu). Pokud máte problémy, vaše implementace by měla vyvolat výjimku `MsalExtensionException`, aby bylo možné s MSALně spolupracovat.
   2. Ve vašem volání `AcquireTokenInteractive` můžete použít modifikátor `.WithCustomUI()` předání instance vlastního webového uživatelského rozhraní.
 
-     ```CSharp
+     ```csharp
      result = await app.AcquireTokenInteractive(scopes)
                        .WithCustomWebUi(yourCustomWebUI)
                        .ExecuteAsync();
@@ -284,7 +284,7 @@ Z MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/mi
 
 Chcete-li použít tuto strukturu, můžete napsat něco jako následující:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 ...
 
@@ -443,7 +443,7 @@ Obvykle potřebujete pouze jeden parametr (`scopes`). V závislosti na tom, jak�
 
 Následující příklad prezentuje nejaktuálnější případ s vysvětlením druhu výjimek, které můžete získat a jejich zmírnění.
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -590,7 +590,7 @@ Platí taky následující omezení:
 
 Následující příklad představuje zjednodušený případ.
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -631,7 +631,7 @@ static async Task GetATokenForGraph()
 
 Následující příklad prezentuje nejaktuálnější případ s vysvětlením druhu výjimek, které můžete získat a jejich zmírnění.
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -894,7 +894,7 @@ Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč (pod
 
 `IPublicClientApplication`obsahuje metodu s názvem `AcquireTokenWithDeviceCode`
 
-```CSharp
+```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
                             Func<DeviceCodeResult, Task> deviceCodeResultCallback)
 ```
@@ -908,7 +908,7 @@ Tato metoda přijímá jako parametry:
 
 Následující vzorový kód představuje nejaktuálnější případ s vysvětlením druhu výjimek, které můžete získat, a jejich zmírnění.
 
-```CSharp
+```csharp
 private const string ClientId = "<client_guid>";
 private const string Authority = "https://login.microsoftonline.com/contoso.com";
 private readonly string[] Scopes = new string[] { "user.read" };
@@ -1119,7 +1119,7 @@ Níže je uveden příklad implementace Naive vlastní serializace mezipaměti t
 
 Po sestavení aplikace povolte serializaci voláním ``TokenCacheHelper.EnableSerialization()`` předání aplikace `UserTokenCache`
 
-```CSharp
+```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
     .Build();
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
@@ -1127,7 +1127,7 @@ TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 
 Tato pomocná třída vypadá jako následující fragment kódu:
 
-```CSharp
+```csharp
 static class TokenCacheHelper
  {
   public static void EnableSerialization(ITokenCache tokenCache)
@@ -1184,7 +1184,7 @@ Náhled serializátoru na základě souboru mezipaměti s tokeny kvality produkt
 
 Pokud chcete implementovat serializaci mezipaměti tokenů současně s formátem Unified cache (společný do ADAL.NET 4. x a MSAL.NET 2. x a s jinými MSALsy stejné generace nebo staršími verzemi, na stejné platformě), můžete nechte inspirovat získat pomocí následujícího kódu. :
 
-```CSharp
+```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;
 string cacheFolder = Path.GetFullPath(appLocation) + @"..\..\..\..");
 string adalV3cacheFileName = Path.Combine(cacheFolder, "cacheAdalV3.bin");
@@ -1201,7 +1201,7 @@ FilesBasedTokenCacheHelper.EnableSerialization(app.UserTokenCache,
 
 Tentokrát pomocná třída vypadá jako následující kód:
 
-```CSharp
+```csharp
 using System;
 using System.IO;
 using System.Security.Cryptography;

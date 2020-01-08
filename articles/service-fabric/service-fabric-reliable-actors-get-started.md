@@ -1,25 +1,16 @@
 ---
-title: Vytvoření služby založené na objektu actor v Azure Service Fabric | Microsoft Docs
+title: Vytvoření služby založené na objektu actor v Azure Service Fabric
 description: Naučte se vytvářet, ladit a nasazovat svou první službu založenou na objektech actor C# pomocí Service Fabric Reliable Actors.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466248"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
@@ -54,13 +45,13 @@ Vytvořený projekt zobrazuje následující strukturu:
 
 * **Projekt rozhraní (HelloWorld. Interfaces)** . Tento projekt obsahuje definici rozhraní objektu actor. Rozhraní objektu actor lze definovat v jakémkoli projektu s libovolným názvem.  Rozhraní definuje kontrakt objektu actor, který je sdílen implementací objektu actor, a klienty, kteří volají objekt actor.  Vzhledem k tomu, že klientské projekty mohou být na něm závislé, obvykle má smysl ho definovat v sestavení, které je odděleno od implementace objektu actor.
 
-* **Projekt služby objektu actor (HelloWorld)** . Tento projekt definuje službu Service Fabric, která bude hostovat objekt actor. Obsahuje implementaci objektu actor, *HelloWorld.cs*. Implementace objektu actor je třída, která je odvozena od základního typu `Actor` a implementuje rozhraní definovaná v projektu *MyActor. Interfaces* . Třída objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instanci `ActorId` a předává je do základní `Actor` třídy.
+* **Projekt služby objektu actor (HelloWorld)** . Tento projekt definuje službu Service Fabric, která bude hostovat objekt actor. Obsahuje implementaci objektu actor, *HelloWorld.cs*. Implementace objektu actor je třída odvozená od základního typu `Actor` a implementuje rozhraní definovaná v projektu *MyActor. Interfaces* . Třída objektu actor musí také implementovat konstruktor, který přijímá instanci `ActorService` a `ActorId` a předává je základní třídě `Actor`.
     
-    Tento projekt obsahuje také *program.cs*, který registruje třídy Actor pomocí modulu runtime Service Fabric `ActorRuntime.RegisterActorAsync<T>()`pomocí. `HelloWorld` Třída je již zaregistrována. Všechny další implementace objektu actor přidané do projektu musí být také registrovány v `Main()` metodě.
+    Tento projekt obsahuje také *program.cs*, který registruje třídy objektu actor pomocí modulu runtime Service Fabric pomocí `ActorRuntime.RegisterActorAsync<T>()`. Třída `HelloWorld` je už zaregistrovaná. Jakékoli další implementace objektu actor přidané do projektu musí být také registrovány v metodě `Main()`.
 
 ## <a name="customize-the-helloworld-actor"></a>Přizpůsobení objektu actor Hello
 
-Šablona projektu definuje některé metody v `IHelloWorld` rozhraní a implementuje je `HelloWorld` v implementaci objektu actor.  Nahraďte tyto metody, aby služba objektu actor vrátila jednoduchý řetězec "Hello World".
+Šablona projektu definuje některé metody v rozhraní `IHelloWorld` a implementuje je v implementaci objektu actor `HelloWorld`.  Nahraďte tyto metody, aby služba objektu actor vrátila jednoduchý řetězec "Hello World".
 
 V projektu *HelloWorld. Interfaces* v souboru *IHelloWorld.cs* Nahraďte definici rozhraní následujícím způsobem:
 
@@ -95,7 +86,7 @@ Stisknutím **kombinace kláves CTRL + SHIFT + B** Sestavte projekt a ujistěte 
 
 Vytvořte jednoduchou konzolovou aplikaci pro volání služby objektu actor.
 
-1. Klikněte pravým tlačítkem na řešení v Průzkumník řešení > **Přidat** > **Nový projekt...** .
+1. Klikněte pravým tlačítkem na řešení v Průzkumník řešení > **přidat** > **Nový projekt...** .
 
 2. V části typy projektů **.NET Core** vyberte **Konzolová aplikace (.NET Core)** .  Pojmenujte projekt *ActorClient*.
     
@@ -108,7 +99,7 @@ Vytvořte jednoduchou konzolovou aplikaci pro volání služby objektu actor.
     
     ![Vlastnosti sestavení][8]
 
-4. Klientský projekt vyžaduje balíček NuGet Reliable Actors.  Klikněte na **Nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.  V konzole správce balíčků zadejte následující příkaz:
+4. Klientský projekt vyžaduje balíček NuGet Reliable Actors.  Klikněte na **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.  V konzole správce balíčků zadejte následující příkaz:
     
     ```powershell
     Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
@@ -150,14 +141,14 @@ Stisknutím klávesy **F5** Sestavte, nasaďte a spusťte aplikaci místně ve S
 
 ![Okno výstupu ladění Service Fabric][3]
 
-Když výstup obsahuje text, *je aplikace připravená*, je možné otestovat službu pomocí aplikace ActorClient.  V Průzkumník řešení klikněte pravým tlačítkem na projekt **ActorClient** a pak klikněte na **ladit** > **spustit novou instanci**.  Aplikace příkazového řádku by měla zobrazit výstup ze služby objektu actor.
+Když výstup obsahuje text, *je aplikace připravená*, je možné otestovat službu pomocí aplikace ActorClient.  V Průzkumník řešení klikněte pravým tlačítkem na projekt **ActorClient** a pak klikněte na **ladění** > **spustit novou instanci**.  Aplikace příkazového řádku by měla zobrazit výstup ze služby objektu actor.
 
 ![Výstup aplikace][9]
 
 > [!TIP]
 > Modul runtime Service Fabric actor generuje některé [události a čítače výkonu související s metodami objektu actor](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Jsou užitečné v monitorování diagnostiky a výkonu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [tom, jak Reliable Actors používat platformu Service Fabric](service-fabric-reliable-actors-platform.md).
 
 

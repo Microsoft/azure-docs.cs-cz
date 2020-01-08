@@ -3,18 +3,18 @@ title: Co je Azure IoT Central | Microsoft Docs
 description: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT a pomáhá snižovat zatížení a náklady na operace správy IoT a vývoj. Tento článek obsahuje přehled funkcí Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 52504fb8333b286407b3f2df8f962da59b80ac53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479714"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434852"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Co je Azure IoT Central (funkce verze Preview)?
 
@@ -41,15 +41,11 @@ Tento článek popisuje, jak IoT Central:
 > [!Note]
 > Tyto známé problémy se vztahují pouze na aplikace IoT Central Preview.
 
-- Pravidla nepodporují všechny akce (jenom e-mail).
-- Pro komplexní typy nejsou podporovaná pravidla, analýza a skupiny zařízení.
 - Průběžný export dat nepodporuje formát Avro (nekompatibilní).
-- Simulovaná zařízení nepodporují všechny komplexní typy.
 - Pro injson není aktuálně podporováno.
 - Dlaždice mapy není momentálně podporovaná.
 - Úlohy nepodporují komplexní typy.
 - Typy schématu pole nejsou podporovány.
-- Export šablony aplikace a kopie aplikace nejsou podporovány.
 - Podporovaná je jenom sada SDK zařízení C a sady SDK zařízení a služeb Node. js.
 - Je k dispozici pouze v umístěních USA a Evropa.
 - Modely schopností zařízení musí mít všechna rozhraní definovaná vložené do stejného souboru.
@@ -104,7 +100,7 @@ Jako tvůrce řešení můžete také přizpůsobit uživatelské rozhraní apli
 - Nakonfigurovat vlastní řídicí panely, které operátorům pomůžou rychleji zjišťovat informace a řešit problémy
 - Nakonfigurovat vlastní analýzy pro zkoumání časových řad dat z připojených zařízení
 
-## <a name="connect-your-devices"></a>Připojení zařízení
+## <a name="connect-your-devices"></a>Připojit zařízení
 
 Jakmile tvůrce definuje typy zařízení, které se můžou připojovat k aplikaci, vývojář zařízení vytvoří kód, který na zařízeních poběží. Jako vývojář zařízení vytváříte kód zařízení pomocí open source [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks) od Microsoftu. Tyto sady SDK mají širokou škálu jazyků, platforem a protokolů, které splňují vaše požadavky na připojení vašich zařízení k vaší IoT Central aplikaci. Sady SDK vám pomůžou implementovat následující možnosti zařízení:
 
@@ -149,7 +145,7 @@ Každé předplatné Azure má výchozí kvóty, které by mohly mít vliv na ro
 
 Teď, když máte přehled o IoT Central, tady jsou doporučené další kroky:
 
-- Pochopte rozdíly mezi [IoT Central a akcelerátory řešení Azure IoT](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
+- Seznamte se s dostupnými [technologiemi a službami Azure pro vytváření řešení IoT](../../iot-fundamentals/iot-services-and-technologies.md).
 - Seznamte se s [uživatelským rozhraním Azure IoT Central](overview-iot-central-tour.md).
 - Začněte [vytvořením aplikace Azure IoT Central](quick-deploy-iot-central.md).
 - Další informace o [IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md)

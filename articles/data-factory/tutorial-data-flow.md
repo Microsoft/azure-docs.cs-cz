@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e686648680261e2d13707f1704c56f306c510397
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439474"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat pomocí mapování toků dat
 
@@ -30,7 +30,7 @@ V tomto kurzu provedete následující kroky:
 > * Testovací spuštění kanálu
 > * Monitorování aktivity toku dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. ADLS Storage použijete jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-quickstart-create-account.md), kde najdete postup jeho vytvoření.
 
@@ -57,10 +57,10 @@ V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvo
 
     b. Vyberte **Vytvořit novou** a zadejte název skupiny prostředků. 
          
-    Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md). 
+    Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
 6. Jako **Verzi** vyberte **V2**.
 7. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou mohou být v jiných oblastech.
-8. Vyberte **Create** (Vytvořit). 
+8. Vyberte **Vytvořit**. 
 9. Po dokončení vytváření se zobrazí oznámení v centru oznámení. Vyberte **Přejít k prostředku** a přejděte na stránku Datová továrna.
 10. Vyberte **Vytvořit a monitorovat**. Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
 
@@ -68,7 +68,7 @@ V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvo
 
 V tomto kroku vytvoříte kanál, který obsahuje aktivitu toku dat.
 
-1. Na stránce **Pusťme se do toho** vyberte **Vytvořit kanál**. 
+1. Na stránce **Začínáme** vyberte **Vytvořit kanál**. 
 
    ![Vytvoření kanálu](./media/doc-common-process/get-started-page.png)
 
@@ -167,7 +167,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 1. Vyberte **DelimitedText**. Klikněte na Pokračovat.
 
     ![Datová sada](media/tutorial-data-flow/dataset2.png)
-1. Pojmenujte datovou sadu jímky **MoviesSink**. V části propojená služba vyberte propojenou službu ADLS Gen2, kterou jste vytvořili v kroku 6. Zadejte výstupní složku, do které se budou zapisovat data. V tomto kurzu píšete do složky ' Output ' v kontejneru ' Sample-data '. Složka nemusí být předem k dispozici a je možné ji vytvořit dynamicky. Nastavte **první řádek jako záhlaví** jako true a pro **Import schématu**vyberte **None (žádné** ). Klikněte na tlačítko Dokončit.
+1. Pojmenujte datovou sadu jímky **MoviesSink**. V části propojená služba vyberte propojenou službu ADLS Gen2, kterou jste vytvořili v kroku 6. Zadejte výstupní složku, do které se budou zapisovat data. V tomto kurzu píšete do složky ' Output ' v kontejneru ' Sample-data '. Složka nemusí být předem k dispozici a je možné ji vytvořit dynamicky. Nastavte **první řádek jako záhlaví** jako true a pro **Import schématu**vyberte **None (žádné** ). Klikněte na Dokončit.
     
     ![Jímka](media/tutorial-data-flow/sink3.png)
 

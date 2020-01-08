@@ -1,0 +1,70 @@
+---
+title: Správa rolí Azure AD v Privileged Identity Management (PIM) | Microsoft Docs
+description: Správa rolí Azure AD pro přiřazování Privileged Identity Management (PIM)
+services: active-directory
+documentationcenter: ''
+author: curtand
+manager: mtillman
+ms.assetid: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 12/06/2019
+ms.author: curtand
+ms.custom: pim
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef2b27e1ca9c1f6f8dfec1bd2bce4ad09c599cae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75480889"
+---
+# <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Možnosti správy pro role Azure AD v Privileged Identity Management
+
+Prostředí pro správu rolí služby Azure AD v Privileged Identity Management bylo aktualizováno, aby bylo sjednoceno, jak se spravují role Azure AD a role prostředků Azure. Dřív Privileged Identity Management pro role prostředků Azure obsahoval několik klíčových funkcí, které pro role Azure AD nebyly k dispozici.
+
+Při současném uvedení aktualizace se tyto dva sloučí do jediného prostředí pro správu. v takovém případě získáte stejné funkce pro role Azure AD jako pro role prostředků Azure. Tento článek vás informuje o aktualizovaných funkcích a všech požadavcích.
+
+## <a name="time-bound-assignments"></a>Přiřazení s časovou vazbou
+
+Dříve v Privileged Identity Management pro role Azure AD jste obeznámeni s přiřazením rolí se dvěma možnými stavy – *způsobilých* a *trvalých*. Nyní můžete nastavit počáteční a koncový čas pro každý typ přiřazení. Tento dodatek vám poskytne čtyři možné stavy, ve kterých můžete přiřadit přiřazení:
+
+- Oprávněné trvalé
+- Aktivní trvale
+- Způsobilý pro přiřazení se zadaným počátečním a koncovým datem
+- Aktivní se zadaným počátečním a koncovým datem pro přiřazení
+
+V mnoha případech i v případě, že nechcete, aby uživatelé měli k dispozici oprávněné přiřazení a aktivovat role pokaždé, můžete chránit svoji organizaci Azure AD nastavením času vypršení platnosti přiřazení. Pokud máte například nějaké dočasné uživatele, kteří mají nárok, zvažte nastavení vypršení platnosti, aby se po dokončení jejich práce automaticky odebraly z přiřazení role.
+
+## <a name="new-role-settings"></a>Nové nastavení role
+
+Také přidáváme nová nastavení pro role Azure AD. Dřív jste mohli nakonfigurovat nastavení aktivace jenom u jednotlivých rolí. To znamená, že nastavení aktivace jako požadavky na vícefaktorové ověřování a požadavky lístku incidentu nebo žádosti byly aplikovány na všechny uživatele s nárokem na zadanou roli. Nyní můžete nakonfigurovat, zda má jednotliví uživatelé provádět službu Multi-Factor Authentication před tím, než budou moci aktivovat roli. Navíc můžete mít pokročilou kontrolu nad Privileged Identity Management e-maily, které souvisejí s konkrétními rolemi.
+
+## <a name="extend-and-renew-assignments"></a>Prodloužit a prodloužit přiřazení
+
+Jakmile napíšete přiřazení s časovou vazbou, bude se první otázka, kterou můžete zeptat, dělat, co se stane, když vypršela platnost role? V této nové verzi poskytujeme dvě možnosti pro tento scénář:
+
+- Rozšířit – když se přiřazení role blíží k vypršení platnosti, může uživatel použít Privileged Identity Management k vyžádání rozšíření pro přiřazení role.
+- Obnovit – Pokud vypršela platnost přiřazení role, může uživatel použít Privileged Identity Management k vyžádání obnovení pro přiřazení role.
+
+Akce iniciované uživatelem vyžadují schválení od správce globálního správce nebo privilegované role. Správci už nebudou muset být v podnikání v rámci správy těchto vypršení platnosti. Jenom potřebují počkat na rozšíření nebo žádosti o obnovení a schválit je, pokud je žádost platná.
+
+## <a name="api-changes"></a>Změny rozhraní API
+
+Když zákazníci mají aktualizovanou verzi, která je zahrnutá ve své organizaci Azure AD, existující rozhraní Graph API přestane fungovat. Abyste mohli použít [Graph API pro role prostředků Azure](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta), musíte přejít. Pokud chcete spravovat role Azure AD pomocí tohoto rozhraní API, Proměňte `/azureResources` `/aadroles` v signatuře a použijte ID adresáře pro `resourceId`.
+
+Snažili jsme se co nejlépe kontaktovat všem zákazníkům, kteří používají předchozí rozhraní API, a informovat o této změně ještě před časem. Pokud se vaše organizace Azure AD přesunula na novou verzi a pořád závisí na starém rozhraní API, obraťte se na tým na pim_preview@microsoft.com.
+
+## <a name="powershell-change"></a>Změna prostředí PowerShell
+
+Pro zákazníky, kteří používají modul Privileged Identity Management PowerShellu pro role Azure AD, přestane PowerShell pracovat s aktualizací. Místo předchozích rutin je nutné použít rutiny Privileged Identity Management v modulu Azure AD Preview PowerShell. Nainstalujte modul Azure AD PowerShell z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Rutiny jsou postaveny nad Graph API.
+
+## <a name="next-steps"></a>Další kroky
+
+- [Přiřazení vlastní role Azure AD](azure-ad-custom-roles-assign.md)
+- [Odebrání nebo aktualizace přiřazení vlastní role Azure AD](azure-ad-custom-roles-update-remove.md)
+- [Konfigurace přiřazení vlastní role Azure AD](azure-ad-custom-roles-configure.md)
+- [Definice rolí v Azure AD](../users-groups-roles/directory-assign-admin-roles.md)

@@ -1,51 +1,53 @@
 ---
-title: Správa automatického zařízení ve velkém měřítku s využitím Azure IoT Hub (CLI) | Dokumentace Microsoftu
-description: Pomocí správou automatického zařízení Azure IoT Hub můžete přiřadit konfigurace k více zařízení IoT
+title: Automatická správa zařízení ve velkém měřítku s využitím Azure IoT Hub (CLI) | Microsoft Docs
+description: Použití automatických konfigurací Azure IoT Hub ke správě více zařízení nebo modulů IoT
 author: ChrisGMsft
 manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: d57dbbdd7614d09d52fef0f613c43d4ca1d08136
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429290"
 ---
-# <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatická správa zařízení IoT ve velkém měřítku pomocí Azure CLI
+# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatická správa zařízení a modulů IoT pomocí Azure CLI
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Správa automatického zařízení ve službě Azure IoT Hub automatizuje mnoho opakovaných a složité úlohy správy flotily nebo velké zařízení. Se správou automatického zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definují požadovanou konfiguraci a pak umožní aktualizovat zařízení, když pocházejí do rozsahu služby IoT Hub. Tato aktualizace se provádí pomocí _automatické konfigurace_, které lze shrnout dokončení a dodržování předpisů, popisovač sloučení a konflikty a zavedení konfigurace v rámci fázového přístupu.
+Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakujících se a složitých úloh při správě rozsáhlých loďstva zařízení. Díky automatické správě zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definovat požadovanou konfiguraci a potom nechat zařízení IoT Hub aktualizovat, když vstoupí do rozsahu. Tato aktualizace se provádí pomocí _automatické konfigurace zařízení_ nebo _automatické konfigurace modulu_, která umožňuje shrnout dokončování a dodržování předpisů, zpracovávat sloučení a konflikty a nastavovat konfigurace v rámci postupného přístupu.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Funguje správa zařízení automatické aktualizace sadu dvojčata zařízení pomocí požadovaných vlastností a vytváření sestav, který je založen na dvojče zařízení Souhrn ohlášené vlastnosti.  Přináší nová třída a dokument JSON s názvem *konfigurace* , který má tři části:
+Automatická správa zařízení funguje tak, že aktualizuje sadu dvojitých vláken zařízení nebo nevláken modulu s požadovanými vlastnostmi a ohlásí souhrn, který vychází z nefunkčních hlášených vlastností.  Zavádí nový dokument třídy a JSON s názvem *Konfigurace* , která má tři části:
 
-* **Cílová podmínka** definuje rozsah dvojčata zařízení aktualizovat. Cílová podmínka je zadán jako dotaz na značky dvojčat zařízení a/nebo ohlášené vlastnosti.
+* **Podmínka cíle** definuje rozsah vláken zařízení nebo nepodmíněných vláken modulu, které se mají aktualizovat. Cílová podmínka je zadána jako dotaz na značky a/nebo hlášené vlastnosti zařízení.
 
-* **Směrovat obsah** definuje požadované vlastnosti, které chcete přidat ani aktualizovat v dvojčat cílové zařízení. Obsah obsahuje cestu k oddílu požadované vlastnosti změnit.
+* **Cílový obsah** definuje požadované vlastnosti, které se mají přidat nebo aktualizovat v cílovém zařízení vlákna nebo vlákna v modulu. Obsah zahrnuje cestu k oddílu požadovaných vlastností, které mají být změněny.
 
-* **Metriky** definovat souhrnný počet různých stavů konfigurace, jako **úspěch**, **probíhá**, a **chyba**. Vlastní metriky jsou zadané jako dotazy na zařízení ohlášené vlastnosti dvojčete.  Systémové metriky jsou výchozí metrik pro měření stavu aktualizace dvojčete, jako je počet dvojčata zařízení, na kterou cílí a počet dvojčat, které se úspěšně aktualizovaly.
+* **Metriky** definují Souhrnné počty různých stavů **konfigurace, například** **úspěch**, probíhá a **Chyba**. Vlastní metriky jsou zadány jako dotazy na nedokončené hlášené vlastnosti.  Systémové metriky jsou výchozí metriky, které měří stav s dvojitou aktualizací, jako je třeba počet nezpracovaných vláken a počet úspěšně aktualizovaných vláken.
 
-Konfigurace automatické spuštění poprvé krátce po konfiguraci a pak každých pět minut. Dotazy na metriky spouštět při každém spuštění automatické konfigurace.
+Automatické konfigurace se spouští poprvé po vytvoření konfigurace a pak v intervalu pěti minut. Dotazy na metriky se spouštějí při každém spuštění automatické konfigurace.
 
-## <a name="cli-prerequisites"></a>Požadavky na rozhraní příkazového řádku
+## <a name="cli-prerequisites"></a>Předpoklady rozhraní příkazového řádku
 
 * [Služby IoT hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure. 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimálně musí být vaše Azure CLI verze 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –-version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. 
 * [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
-## <a name="implement-device-twins-to-configure-devices"></a>Implementace dvojčata zařízení ke konfiguraci zařízení
+## <a name="implement-twins"></a>Implementovat vlákna
 
-Konfigurace automatického zařízení vyžadují použití dvojčat zařízení k synchronizaci stavu mezi cloudem a zařízení.  Odkazovat na [principy a použití dvojčat zařízení ve službě IoT Hub](iot-hub-devguide-device-twins.md) pokyny k použití dvojčat zařízení.
+Automatická konfigurace zařízení vyžaduje, aby se při synchronizaci stavu mezi cloudem a zařízeními použily vlákna zařízení.  Další informace najdete v tématu [Principy a použití dvojčat zařízení ve službě IoT Hub](iot-hub-devguide-device-twins.md).
 
-## <a name="identify-devices-using-tags"></a>Identifikace zařízení pomocí značek
+Automatická konfigurace modulů vyžaduje použití vláken modulu k synchronizaci stavu mezi cloudem a moduly. Další informace najdete v tématu [pochopení a použití vláken v modulu v IoT Hub](iot-hub-devguide-module-twins.md).
 
-Než začnete vytvářet konfigurace, je nutné zadat zařízení, která chcete ovlivnit. Azure IoT Hub identifikuje zařízení pomocí značek ve dvojčeti zařízení. Každé zařízení může mít více značek a můžete je definovat způsobem, který dává smysl pro vaše řešení. Například pokud budete spravovat zařízení v různých umístěních, přidejte následující značky do dvojčete zařízení:
+## <a name="use-tags-to-target-twins"></a>Použití značek k cílení na vlákna
+
+Před vytvořením konfigurace musíte určit, která zařízení nebo moduly mají mít vliv. Azure IoT Hub identifikuje zařízení a používá značky v zařízení, které jsou v práci, a identifikuje moduly pomocí značek v modulu s dvojitou signalizací. Každé zařízení nebo moduly může mít více značek a můžete je definovat jakýmkoli způsobem, který dává smysl pro vaše řešení. Pokud například spravujete zařízení v různých umístěních, přidejte do vlákna zařízení následující značky:
 
 ```json
 "tags": {
@@ -56,11 +58,11 @@ Než začnete vytvářet konfigurace, je nutné zadat zařízení, která chcete
 },
 ```
 
-## <a name="define-the-target-content-and-metrics"></a>Zadejte cíl obsahu a metriky
+## <a name="define-the-target-content-and-metrics"></a>Definování cílového obsahu a metrik
 
-Cíl obsahu a metriku dotazy jsou definované jako dokumenty JSON, které popisují zařízení dvojčete požadovaných vlastností do sady a ohlášené vlastnosti k měření.  Automatické konfiguraci pomocí Azure CLI vytvoříte uložte cíl obsahu a metriky místně jako soubory s příponou .txt. Když spustíte příkaz pro použití v konfiguraci zařízení použijete v další části cesty k souborům.
+Dotazy cílového obsahu a metriky jsou zadány jako dokumenty JSON, které popisují nedokončené a modulované vlastnosti vláken v zařízení, aby bylo možné nastavit a nahlásit vlastnosti pro měření.  Pokud chcete vytvořit automatickou konfiguraci pomocí Azure CLI, uložte cílový obsah a metriky místně jako soubory. txt. Cesty k souborům použijete v pozdější části, když spustíte příkaz, který aplikuje konfiguraci na vaše zařízení.
 
-Tady je ukázka základní cíl obsahu:
+Tady je základní ukázka cílového obsahu pro automatickou konfiguraci zařízení:
 
 ```json
 {
@@ -74,23 +76,47 @@ Tady je ukázka základní cíl obsahu:
 }
 ```
 
-Tady jsou příklady dotazy na metriky:
+Automatické konfigurace modulů se chovají velmi podobně, ale místo `deviceContent`zacílíte `moduleContent`.
+
+```json
+{
+  "content": {
+    "moduleContent": {
+      "properties.desired.chillerWaterSettings": {
+        "temperature": 38,
+        "pressure": 78
+      }
+    }
+}
+```
+
+Tady jsou příklady dotazů na metriky:
 
 ```json
 {
   "queries": {
-    "Compliant": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'",
-    "Error": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='error'",
-    "Pending": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='pending'"
+    "Compliant": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'",
+    "Error": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='error'",
+    "Pending": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='pending'"
+  }
+}
+```
+
+Dotazy na metriky pro moduly jsou také podobné dotazům na zařízení, ale můžete vybrat `moduleId` z `devices.modules`. Příklad: 
+
+```json
+{
+  "queries": {
+    "Compliant": "select deviceId, moduleId from devices.module where configurations.[[chillermodulesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'"
   }
 }
 ```
 
 ## <a name="create-a-configuration"></a>Vytvořit konfiguraci
 
-Cílová zařízení nakonfigurujete tak, že vytvoříte konfiguraci, která se skládá z obsahu cíl a metriky. 
+Cílová zařízení můžete nakonfigurovat vytvořením konfigurace, která se skládá z cílového obsahu a metrik. 
 
-Použijte následující příkaz pro vytvoření konfigurace:
+Pomocí následujícího příkazu vytvořte konfiguraci:
 
 ```cli
    az iot hub configuration create --config-id [configuration id] \
@@ -99,80 +125,80 @@ Použijte následující příkaz pro vytvoření konfigurace:
      --metrics [metric queries]
 ```
 
-* --**id konfigurace** – název konfigurace, která bude vytvořena ve službě IoT hub. Zadejte konfiguraci jedinečný název, který je až 128 malá písmena. Vyhněte se mezery a následující neplatné znaky: `& ^ [ ] { } \ | " < > /`.
+* --**config-ID** – název konfigurace, která se vytvoří ve službě IoT Hub. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezery a následující neplatné znaky: `& ^ [ ] { } \ | " < > /`.
 
-* --**popisky** -přidat popisky pro sledování vaší konfigurace. Popisky jsou název, páry hodnota, která popisují vaše nasazení. Například `HostPlatform, Linux` nebo `Version, 3.0.1`
+* **popisky** --– přidejte popisky, které vám pomůžou sledovat vaši konfiguraci. Popisky jsou název, páry hodnota, která popisují vaše nasazení. Například `HostPlatform, Linux` nebo `Version, 3.0.1`
 
-* --**obsah** -vložené JSON nebo cesta k cílové obsah nastavit jako dvojčete požadované vlastnosti. 
+* --formátu JSON vloženého **obsahu** nebo cesty k cílovému obsahu, který se má nastavit jako nevlákenná požadovaná vlastnost. 
 
-* --**název centra** – název služby IoT hub, ve kterém se vytvoří konfigurace. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
+* --**centrum – název** – název centra IoT, ve kterém se konfigurace vytvoří. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
 
-* --**Cílová podmínka** – zadejte cílovou podmínku k určení zařízení, která budou cílem s touto konfigurací. Podmínka je založen na značky dvojčat zařízení nebo požadované vlastnosti dvojčete zařízení a by měl odpovídat formátu výrazu. Například `tags.environment='test'` nebo `properties.desired.devicemodel='4000x'`. 
+* --**cíl-podmínka** – zadejte cílovou podmínku pro určení, která zařízení nebo moduly budou cílem této konfigurace. Pro automatickou konfiguraci zařízení je podmínka založená na nevyhovujících značkách zařízení nebo na vyplňování požadovaných vlastností zařízení a měla by odpovídat formátu výrazu. Například `tags.environment='test'` nebo `properties.desired.devicemodel='4000x'`. Pro automatickou konfiguraci modulu je podmínka založená na nepodmíněných značkách modulu nebo v modulu, který je pro něj požadovaný.. Například `from devices.modules where tags.environment='test'` nebo `from devices.modules where properties.reported.chillerProperties.model='4000x'`.
 
-* --**Priorita** -kladné celé číslo. V případě, že dva nebo více konfigurací cílí na stejném zařízení, budou platit konfigurace s nejvyšší číselnou hodnotou priority.
+* **priorita** --– kladné celé číslo. V případě, že dvě nebo více konfigurací cílí na stejné zařízení nebo modul, bude platit konfigurace s nejvyšší číselnou hodnotou priority.
 
-* --**metriky** -Filepath metriky dotazů. Metriky poskytují souhrnný počet různé stavy, které zařízení může nahlásit po použití obsah konfigurace. Například můžete vytvořit metriku pro čekající změny nastavení, metriky pro chyby a metriky pro úspěšné nastavení změny. 
+* --**metriky** – FilePath do dotazů na metriky. Metriky poskytují souhrnné počty různých stavů, které může zařízení nebo modul nahlásit zpět po použití konfiguračního obsahu. Můžete například vytvořit metriku pro změny nastavení čekání, metriky pro chyby a metriky pro úspěšné změny nastavení. 
 
 ## <a name="monitor-a-configuration"></a>Monitorování konfigurace
 
-Použijte následující příkaz k zobrazení obsahu, konfigurace:
+K zobrazení obsahu konfigurace použijte následující příkaz:
 
 ```cli
 az iot hub configuration show --config-id [configuration id] \
   --hub-name [hub name]
 ```
 
-* --**id konfigurace** – název konfigurace, který existuje ve službě IoT hub.
+* --**config-ID** – název konfigurace, která existuje ve službě IoT Hub.
 
-* --**název centra** – název služby IoT hub, ve které existuje v konfiguraci. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
+* --**centrum – název** – název centra IoT, ve kterém existuje konfigurace. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
 
-Zkontrolujte konfiguraci role v příkazovém okně. **Metriky** počet pro každou metriku, která se vyhodnocuje na základě každé centrum seznamů vlastností:
+Zkontrolujte konfiguraci v příkazovém okně. Vlastnost **metriky** uvádí počet pro každou metriku, která je vyhodnocována jednotlivými rozbočovači:
 
-* **targetedCount** – systém metriku, která určuje počet dvojčat zařízení ve službě IoT Hub, která splňují cílovou podmínku.
+* **targetedCount** – systémová metrika, která určuje počet vláken zařízení nebo nevláken modulu v IoT Hub, který odpovídá podmínce cílení.
 
-* **appliedCount** -metrika systému určuje počet zařízení, která jste využili cíl obsahu použita.
+* **appliedCount** – systémová metrika určuje počet zařízení nebo modulů, u kterých byl použit cílový obsah.
 
-* **Vlastní metrika** – všechny metriky, které jste definovali jsou metrik uživatele.
+* **Vaše vlastní metrika** – jakékoli metriky, které jste definovali, jsou metriky uživatelů.
 
-Pomocí následujícího příkazu můžete zobrazit seznam ID zařízení nebo objekty pro každý z metrik:
+Pomocí následujícího příkazu můžete zobrazit seznam ID zařízení, identifikátorů modulů nebo objektů pro každou z těchto metrik:
 
 ```cli
 az iot hub configuration show-metric --config-id [configuration id] \
    --metric-id [metric id] --hub-name [hub name] --metric-type [type] 
 ```
 
-* --**id konfigurace** – název nasazení, který existuje ve službě IoT hub.
+* --**config-ID** – název nasazení, které existuje ve službě IoT Hub.
 
-* --**Metrika id** – název metriky, pro kterou chcete zobrazit seznam zařízení ID, například `appliedCount`.
+* --**metrika-ID** – název metriky, pro kterou chcete zobrazit seznam ID zařízení nebo ID modulů, například `appliedCount`.
 
-* --**název centra** – název služby IoT hub, ve které existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`.
+* --**centrum – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`.
 
-* --**Typ metriky** -metriky typ může být `system` nebo `user`.  Systémové metriky jsou `targetedCount` a `appliedCount`. Veškerá jiná metrika jsou metrik uživatele.
+* --typ **metriky-Type** -metrika může být `system` nebo `user`.  Systémové metriky jsou `targetedCount` a `appliedCount`. Všechny ostatní metriky jsou metrikami uživatele.
 
-## <a name="modify-a-configuration"></a>Upravit konfigurace
+## <a name="modify-a-configuration"></a>Úprava konfigurace
 
-Pokud upravíte konfiguraci, replikaci změn okamžitě na všechna cílová zařízení. 
+Když upravíte konfiguraci, změny se okamžitě replikují na všechna cílová zařízení. 
 
 Pokud aktualizujete cílovou podmínku, dojde k následující aktualizace:
 
-* Pokud dvojčete zařízení nesplnilo původní cílovou podmínku, ale splňuje novou cílovou podmínku a tato konfigurace je nejvyšší prioritu tohoto dvojčete zařízení, tato konfigurace se použije k dvojčeti zařízení. 
+* Pokud se nepodmíněný objekt neshoduje se starou cílovou podmínkou, ale splňuje novou cílovou podmínku a tato konfigurace je nejvyšší prioritou pro tuto akci, pak se tato konfigurace použije. 
 
-* Pokud dvojčete zařízení již splňuje cílovou podmínku, nastavení z konfigurace se odeberou a dvojčeti zařízení budou upraveny konfigurací další nejvyšší prioritu. 
+* Pokud aktuálně spuštěná Tato konfigurace už nesplňuje cílovou podmínku, nastavení z konfigurace se odeberou a tato akce se upraví podle další konfigurace s nejvyšší prioritou. 
 
-* Pokud aktuálně spuštěné této konfigurace už dvojčete zařízení splňuje cílovou podmínku a nesplňuje cílová podmínka všechny ostatní konfigurace, nastavení z konfigurace se odeberou a provedeny žádné další změny v dvojčeti. 
+* Pokud aktuálně spuštěná Tato konfigurace již nesplňuje cílovou podmínku a nesplňuje cílovou podmínku žádné jiné konfigurace, bude nastavení z konfigurace odebráno a žádné další změny nebudou provedeny na tomto vlákna. 
 
-Použijte následující příkaz k aktualizaci konfigurace:
+Pomocí následujícího příkazu aktualizujte konfiguraci:
 
 ```cli
 az iot hub configuration update --config-id [configuration id] \
    --hub-name [hub name] --set [property1.property2='value']
 ```
 
-* --**id konfigurace** – název konfigurace, který existuje ve službě IoT hub.
+* --**config-ID** – název konfigurace, která existuje ve službě IoT Hub.
 
-* --**název centra** – název služby IoT hub, ve které existuje v konfiguraci. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`.
+* --**centrum – název** – název centra IoT, ve kterém existuje konfigurace. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`.
 
-* --**Nastavte** – umožňuje aktualizovat vlastnost v konfiguraci. Můžete aktualizovat následujícími vlastnostmi:
+* --**set** – aktualizuje vlastnost v konfiguraci. Můžete aktualizovat následujícími vlastnostmi:
 
     * targetCondition – například `targetCondition=tags.location.state='Oregon'`
 
@@ -180,33 +206,33 @@ az iot hub configuration update --config-id [configuration id] \
 
     * priorita
 
-## <a name="delete-a-configuration"></a>Odstranění konfigurace
+## <a name="delete-a-configuration"></a>Odstraní konfiguraci.
 
-Při konfiguraci odstranit, všechny dvojčata zařízení převezmou konfigurace jejich další nejvyšší prioritu. Dvojčata zařízení nesplňují cílovou podmínku ostatní konfigurace, se použijí žádná nastavení. 
+Při odstranění konfigurace se všechna vlákna zařízení nebo vlákna modulu převezmou v další konfiguraci s nejvyšší prioritou. Pokud vlákna nesplňují cílovou podmínku jakékoli jiné konfigurace, nebudou použita žádná další nastavení. 
 
-Pomocí následujícího příkazu odstraňte konfigurace:
+Pomocí následujícího příkazu odstraňte konfiguraci:
 
 ```cli
 az iot hub configuration delete --config-id [configuration id] \
    --hub-name [hub name] 
 ```
-* --**id konfigurace** – název konfigurace, který existuje ve službě IoT hub.
+* --**config-ID** – název konfigurace, která existuje ve službě IoT Hub.
 
-* --**název centra** – název služby IoT hub, ve které existuje v konfiguraci. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`.
+* --**centrum – název** – název centra IoT, ve kterém existuje konfigurace. Centrum musí být v rámci aktuálního předplatného. Přepněte na požadované předplatné s příkazem `az account set -s [subscription name]`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak konfigurovat a monitorovat zařízení IoT ve velkém měřítku. Další informace o správě služby Azure IoT Hub na následujících odkazech:
+V tomto článku jste zjistili, jak nakonfigurovat a monitorovat zařízení IoT ve velkém měřítku. Pokud chcete získat další informace o správě IoT Hub Azure, postupujte podle těchto odkazů:
 
 * [Hromadná správa identit zařízení služby IoT Hub](iot-hub-bulk-identity-mgmt.md)
-* [Metriky služby IoT Hub](iot-hub-metrics.md)
+* [IoT Hub metriky](iot-hub-metrics.md)
 * [Monitorování operací](iot-hub-operations-monitoring.md)
 
-Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
+Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md)
-* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
+* [Nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-Prozkoumat pomocí IoT Hub Device Provisioning Service umožňuje plně automatizované, just-in-time zřizování, najdete v tématech: 
+Pokud chcete prozkoumat použití IoT Hub Device Provisioning Service k povolení nulového dotykového zřizování za běhu, přečtěte si téma: 
 
 * [Služba Azure IoT Hub Device Provisioning](/azure/iot-dps)

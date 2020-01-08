@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440151"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse pomocí Azure Data Factory
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak pomocí Azure Data Factory kopírovat data z S
 > [!TIP]
 > Obecné informace o kopírování dat z SAP BW, včetně SAP BW otevřené integrace centra a postupu extrakce Delta, najdete v tématu [kopírování dat ze SAP Business Warehouse přes Open hub pomocí Azure Data Factory](connector-sap-business-warehouse-open-hub.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Azure Data Factory**: Pokud ho ještě nemáte, postupujte podle pokynů k [Vytvoření datové továrny](quickstart-create-data-factory-portal.md#create-a-data-factory).
 
@@ -68,7 +68,7 @@ Na webu Azure Portal přejděte k vaší datové továrně. Vyberte **vytvořit 
 
    3. Vyberte **Test připojení** , aby se ověřilo nastavení, a pak vyberte **Dokončit**.
 
-   4. Vytvoří se nové připojení. Vyberte **Další**.
+   4. Vytvoří se nové připojení. Vyberte **Next** (Další).
 
 5. Na stránce **Vyberte umístění centra** , která jsou k dispozici ve vašem SAP BW, přejděte na otevřená umístění centra. Vyberte OHD, ze kterých se mají kopírovat data, a pak vyberte **Další**.
 
@@ -156,11 +156,15 @@ Na stránce **Začínáme** pro datovou továrnu vyberte **vytvořit kanál ze �
 
    - **SAPOpenHubDestinationName**: zadejte název otevřené tabulky centra pro kopírování dat.
 
-   - **ADLSGen2SinkPath**: zadejte cílovou Azure Data Lake Storage Gen2 cestu pro kopírování dat. Pokud cesta neexistuje, aktivita Data Factory kopírování vytvoří během provádění cestu.
+   - **Data_Destination_Container**: zadejte cílovou Azure Data Lake Storage Gen2 kontejner, do kterého se mají kopírovat data. Pokud kontejner neexistuje, aktivita Data Factory kopírování ho vytvoří během provádění.
+  
+   - **Data_Destination_Directory**: zadejte cestu ke složce v kontejneru Azure Data Lake Storage Gen2, do které se mají kopírovat data. Pokud cesta neexistuje, aktivita Data Factory kopírování vytvoří během provádění cestu.
+  
+   - **HighWatermarkBlobContainer**: Určete kontejner, do kterého se má uložit hodnota s horním limitem.
 
-   - **HighWatermarkBlobPath**: zadejte cestu k uložení hodnoty horní meze, například `container/path`.
+   - **HighWatermarkBlobDirectory**: zadejte cestu ke složce v kontejneru, do které se uloží hodnota s horním limitem.
 
-   - **HighWatermarkBlobName**: zadejte název objektu blob, do kterého se uloží hodnota horní meze, například `requestIdCache.txt`. V části úložiště objektů blob, přejít na odpovídající cestu HighWatermarkBlobPath + HighWatermarkBlobName, jako je například *Container/cesta/requestIdCache. txt*. Vytvoří objekt BLOB s obsahem 0.
+   - **HighWatermarkBlobName**: zadejte název objektu blob, do kterého se uloží hodnota horní meze, například `requestIdCache.txt`. V části úložiště objektů blob, přejít na odpovídající cestu HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, jako je například *Container/cesta/requestIdCache. txt*. Vytvoří objekt BLOB s obsahem 0.
 
       ![Obsah objektu BLOB](media/load-sap-bw-data/blob.png)
 
@@ -185,11 +189,11 @@ Na stránce **Začínáme** pro datovou továrnu vyberte **vytvořit kanál ze �
          }
          ```
 
-      3. Přidejte akci **vytvořit objekt BLOB** . Pro **cestu ke složce** a **název objektu BLOB**použijte stejné hodnoty, které jste nakonfigurovali dříve v **HighWatermarkBlobPath** a **HighWatermarkBlobName**.
+      3. Přidejte akci **vytvořit objekt BLOB** . Pro **cestu ke složce** a **název objektu BLOB**použijte stejné hodnoty, které jste nakonfigurovali dříve v *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* a *HighWatermarkBlobName*.
 
-      4. Vyberte **Save** (Uložit). Pak zkopírujte hodnotu **http post URL** , která se použije v kanálu Data Factory.
+      4. Vyberte **Uložit**. Pak zkopírujte hodnotu **http post URL** , která se použije v kanálu Data Factory.
 
-4. Po zadání parametrů kanálu Data Factory vyberte možnost **ladění** > **Dokončit** , aby se spustila spuštění pro ověření konfigurace. Případně můžete kliknutím na **publikovat vše** publikovat změny a pak vybrat **aktivační událost** pro spuštění.
+4. Po zadání parametrů kanálu Data Factory vyberte možnost **ladění** > **Dokončit** , aby se spustila spuštění pro ověření konfigurace. Nebo vyberte **publikovat** a publikujte všechny změny a pak vyberte **Přidat Trigger** pro spuštění běhu.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW otevřít cílové konfigurace centra
 

@@ -1,19 +1,18 @@
 ---
 title: Zpracování událostí v reálném čase pomocí Azure Stream Analytics
 description: Tento článek popisuje referenční architekturu pro zajištění zpracování událostí a analýzy v reálném čase pomocí Azure Stream Analytics.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 21a0e4e468b606ec7bb7e33bf1a616e68cd6cf50
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d219b3fcb27b23527c0a651bc8e842a9e036bfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925111"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431483"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenční architektura: zpracování událostí v reálném čase pomocí Microsoft Azure Stream Analytics
 Referenční architektura pro zpracování událostí v reálném čase s Azure Stream Analytics je určena k poskytnutí obecného podrobného plánu pro nasazení řešení pro zpracování datových proudů platformy jako služby (PaaS) v reálném čase pomocí Microsoft Azure.
@@ -24,7 +23,7 @@ Analytická řešení jsou tradičně založená na možnostech, jako je ETL (ex
 Microsoft Azure poskytuje rozsáhlý katalog analytických technologií, které podporují pole různých scénářů řešení a požadavků. Výběr služeb Azure, které se mají nasadit pro ucelené řešení, může být výzvou s ohledem na širokou škálu nabídek. Tento dokument je navržený tak, aby popsal možnosti a spolupráci různých služeb Azure, které podporují řešení streamování událostí. Vysvětluje taky některé z scénářů, ve kterých můžou zákazníci využít tento typ přístupu.
 
 ## <a name="contents"></a>Obsah
-* Shrnutí vedoucího
+* Shrnutí
 * Úvod do analýz v reálném čase
 * Hodnota umístění dat v reálném čase v Azure
 * Běžné scénáře analýzy v reálném čase
@@ -48,7 +47,7 @@ Microsoft Azure poskytuje rozsáhlý katalog analytických technologií, které 
 Pokud potřebujete další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) .
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

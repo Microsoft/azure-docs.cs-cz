@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure CLI – Škálovací sada s jednou zónou | Microsoft Docs
-description: Ukázky Azure CLI
+title: Ukázky Azure CLI – sada škálování s jednou zónou
+description: Tento skript vytvoří sadu škálování virtuálního počítače Azure s Ubuntu v jedné zóně dostupnosti.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12e8ebea994b39b7c4324b52068b574749002117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45cef0e0e7d56baf8a5af3514f167d3a4565d15f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350993"
 ---
-# <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Vytvoření škálovací sady pomocí Azure CLI jednou zónou virtuálních počítačů
+# <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Vytvoření sady škálování virtuálních počítačů s jednou zónou pomocí Azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Ubuntu v jedné zóně dostupnosti. Po spuštění skriptu můžete k virtuálnímu počítači přistupovat přes protokol RDP.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -49,7 +49,7 @@ Tento skript k vytvoření skupiny prostředků, škálovací sady virtuálních
 | [az vmss create](/cli/azure/vmss) | Vytvoří škálovací sadu virtuálních počítačů a připojí ji k virtuální síti, podsíti a skupině zabezpečení sítě. Za účelem distribuce provozu do několika instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [az group delete](/cli/azure/ad/group) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
 Další ukázkové skripty Azure CLI pro škálovací sady virtuálních počítačů najdete v [dokumentaci ke škálovacím sadám virtuálních počítačů Azure](../cli-samples.md).

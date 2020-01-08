@@ -3,19 +3,19 @@ title: Jak používat diagnostiku Azure (.NET) s Cloud Servicesem | Microsoft Do
 description: Pomocí diagnostiky Azure můžete shromažďovat data z cloudových služeb Azure pro účely ladění, měření výkonu, monitorování, analýzy provozu a dalších.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: gwallace
-ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359687"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361109"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolení Azure Diagnostics v Azure Cloud Services
 Další informace najdete v tématu [přehled Azure Diagnostics](../azure-diagnostics.md) pro pozadí Azure Diagnostics.
@@ -26,7 +26,7 @@ Tento návod popisuje, jak implementovat roli pracovního procesu Azure, která 
 ### <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že máte předplatné Azure a používáte sadu Visual Studio se sadou Azure SDK. Pokud předplatné Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi][Free Trial]. Nezapomeňte [nainstalovat a nakonfigurovat Azure PowerShell verze 0.8.7 nebo novější][Install and configure Azure PowerShell version 0.8.7 or later].
 
-### <a name="step-1-create-a-worker-role"></a>Krok 1: Vytvoření role pracovního procesu
+### <a name="step-1-create-a-worker-role"></a>Krok 1: vytvoření role pracovního procesu
 1. Spusťte **Visual Studio**.
 2. Vytvořte projekt **cloudové služby Azure** ze šablony **cloudu** , která se zaměřuje na .NET Framework 4,5.  Pojmenujte projekt "WadExample" a klikněte na tlačítko OK.
 3. Vyberte **role pracovního procesu** a klikněte na OK. Projekt se vytvoří.
@@ -34,7 +34,7 @@ V tomto článku se předpokládá, že máte předplatné Azure a používáte 
 5. Na kartě **Konfigurace** zrušte kontrolu **Povolení diagnostiky** pro zakázání diagnostiky 1,0 (Azure SDK 2,4 a starší).
 6. Sestavte řešení, abyste ověřili, že nedošlo k chybám.
 
-### <a name="step-2-instrument-your-code"></a>Krok 2: Instrumentace kódu
+### <a name="step-2-instrument-your-code"></a>Krok 2: instrumentace kódu
 Obsah WorkerRole.cs nahraďte následujícím kódem. Třída SampleEventSourceWriter zděděná z [třídy EventSource][EventSource Class]implementuje čtyři metody protokolování: **SendEnums**, **MessageMethod**, **SetOther** a **HighFreq**. První parametr metody **WriteEvent** definuje ID příslušné události. Metoda Run implementuje nekonečnou smyčku, která volá každou metodu protokolování implementovanou do třídy **SampleEventSourceWriter** každých 10 sekund.
 
 ```csharp
@@ -118,25 +118,25 @@ namespace WorkerRole1
 ```
 
 
-### <a name="step-3-deploy-your-worker-role"></a>Krok 3: Nasazení role pracovního procesu
+### <a name="step-3-deploy-your-worker-role"></a>Krok 3: nasazení role pracovního procesu
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
-1. Nasaďte svoji pracovní roli do Azure ze sady Visual Studio tak, že vyberete projekt **WadExample** v nabídce Průzkumník řešení pak publikujete z nabídky **sestavit** .
+1. Nasaďte svoji pracovní roli do Azure ze sady Visual Studio tak, že vyberete projekt **WadExample** v nabídce Průzkumník řešení pak **publikujete** z nabídky **sestavit** .
 2. Zvolte vaše předplatné.
 3. V dialogovém okně **Microsoft Azure nastavení publikování** vyberte **vytvořit novou...** .
 4. V dialogu **vytvořit cloudovou službu a účet úložiště** zadejte **název** (například "WadExample") a vyberte oblast nebo skupinu vztahů.
 5. Nastavte **prostředí** na **fázování**.
 6. Podle potřeby upravte všechna další **Nastavení** a klikněte na **publikovat**.
-7. Po dokončení nasazení ověřte v Azure Portal, že je vaše cloudová služba ve spuštěném stavu.
+7. Po dokončení nasazení ověřte v Azure Portal, že je vaše cloudová služba ve **spuštěném** stavu.
 
-### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Krok 4: Vytvoření konfiguračního souboru diagnostiky a instalace rozšíření
+### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Krok 4: vytvoření konfiguračního souboru diagnostiky a instalace rozšíření
 1. Stáhněte si definici schématu veřejného konfiguračního souboru spuštěním následujícího příkazu PowerShellu:
 
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Kliknutím pravým tlačítkem myši na projekt **WorkerRole1** a výběrem **Přidat** -> **novou položku** přidejte do projektu **WorkerRole1** soubor XML. -> **C#** **Soubor XML**s**daty** ->  -> vizuálních položek. Pojmenujte soubor "WadExample. XML".
+2. Kliknutím pravým tlačítkem myši na projekt **WorkerRole1** a vybráním **Přidat** -> novou položku přidejte do projektu **WorkerRole1** soubor XML **...** -> **položky C# vizuálu** -> **soubor XML** -> **dat** . Pojmenujte soubor "WadExample. XML".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Přidružte soubor WadConfig. xsd ke konfiguračnímu souboru. Ujistěte se, že okno Editor WadExample. XML je aktivní okno. Stisknutím klávesy **F4** otevřete okno **vlastnosti** . V okně **vlastnosti** klikněte na vlastnost **schémata** . Klikněte na **...** ve vlastnosti **schemas** . Klikněte na tlačítko **Přidat...** a přejděte do umístění, kam jste uložili soubor XSD, a vyberte soubor WadConfig. xsd. Klikněte na **OK**.
@@ -166,11 +166,11 @@ namespace WorkerRole1
 </PublicConfig>
 ```
 
-### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Krok 5: Instalace diagnostiky do role pracovního procesu
-Rutiny PowerShellu pro správu diagnostiky na webu nebo v roli pracovního procesu jsou: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension a Remove-AzureServiceDiagnosticsExtension.
+### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Krok 5: instalace diagnostiky do role pracovního procesu
+Rutiny PowerShellu pro správu diagnostiky na webu nebo v roli pracovního procesu jsou: set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension a Remove-AzureServiceDiagnosticsExtension.
 
 1. Otevřete Azure PowerShell.
-2. Spusťte skript pro instalaci diagnostiky do role pracovního procesu (nahraďte *StorageAccountKey* klíčem účtu úložiště pro účet úložiště wadexample a *config_path* cestou k souboru *wadexample. XML* ):
+2. Spusťte skript pro instalaci diagnostiky do role pracovního procesu (nahraďte *StorageAccountKey* klíčem účtu úložiště pro účet úložiště wadexample a *config_path* s cestou k souboru *wadexample. XML* ):
 
 ```powershell
 $storage_name = "wadexample"
@@ -181,7 +181,7 @@ $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -Sto
 Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Staging -Role WorkerRole1
 ```
 
-### <a name="step-6-look-at-your-telemetry-data"></a>Krok 6: Podívejte se na data telemetrie.
+### <a name="step-6-look-at-your-telemetry-data"></a>Krok 6: Prohlédněte si data telemetrie
 V **Průzkumník serveru**sady Visual Studio přejděte do účtu úložiště wadexample. Po spuštění cloudové služby přibližně o pěti (5) minutách byste měli vidět tabulky **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** a **WADSetOtherTable**. Dvojitým kliknutím na jednu z tabulek zobrazíte shromážděnou telemetrii.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
@@ -201,3 +201,6 @@ Pokud chcete změnit shromažďovaná data, [Podívejte se na seznam souvisejíc
 [Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
+
+
+

@@ -1,20 +1,22 @@
 ---
-title: Instalovat balíčky v Jupyter notebook v Azure
-description: Jak nainstalovat Python, R, a F# balíčky z v rámci poznámkového bloku Jupyter běžící v Azure.
-ms.topic: article
+title: Instalace balíčků v poznámkových blocích Jupyter Azure Notebooks – Preview
+description: Naučte se instalovat Python, R a F# balíčky v rámci Jupyter poznámkového bloku běžícího na Azure.
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 5d85c8e936ce7c8bf38ec7bc9c27d9066cc8b155
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277533"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646224"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>Instalace balíčků z v rámci poznámkového bloku
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>Instalace balíčků z aplikace Azure Notebooks Preview
 
-I když můžete nakonfigurovat [prostředí pro svůj Poznámkový blok na úrovni projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), můžete chtít nainstalovat balíčky přímo v jednotlivém poznámkovém bloku.
+Přestože lze nakonfigurovat [prostředí pro poznámkový blok na úrovni projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), můžete chtít nainstalovat balíčky přímo v rámci jednotlivých poznámkového bloku.
 
 Balíčky nainstalované z poznámkového bloku platí pouze pro aktuální relaci serveru. Instalace balíčků se jako trvalý, po vypnutí serveru.
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -26,7 +28,7 @@ Balíčky pythonu můžete nainstalovat pomocí pip nebo conda pomocí příkaz�
 !conda install <package_name> -y
 ```
 
-Pokud výstup příkazu znamená, že tento požadavek již není splněna, pak poznámkových bloků Azure mohou zahrnovat balíček ve výchozím nastavení. Balíček může být také nainstalovaný v [kroku nastavení prostředí projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
+Pokud výstup příkazu znamená, že tento požadavek již není splněna, pak poznámkových bloků Azure mohou zahrnovat balíček ve výchozím nastavení. Balíček může se taky nainstalovat přes [krok instalace prostředí projektu](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
 
 ## <a name="r"></a>R
 
@@ -46,7 +48,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-Balíčky v F# nástroji je možné instalovat z [NuGet.org](https://www.nuget.org) voláním správce závislostí paket z buněk v kódu. Nejdřív načtěte stáhnout správce:
+Balíčky v F# si můžete nainstalovat pomocí [nuget.org](https://www.nuget.org) voláním závislostí stáhnout správce z v rámci buňky kódu. Nejdřív načtěte stáhnout správce:
 
 ```fsharp
 #load "Paket.fsx"
@@ -66,12 +68,12 @@ Pak načtěte generátor paket:
 #load "Paket.Generated.Refs.fsx"
 ```
 
-Otevřete knihovnou:
+Otevřete knihovnu:
 ```fsharp
 open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Postupy: konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Postupy: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
 - [Postupy: zobrazení prezentace](present-jupyter-notebooks-slideshow.md)

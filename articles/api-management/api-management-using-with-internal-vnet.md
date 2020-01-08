@@ -1,5 +1,6 @@
 ---
-title: Jak používat Azure API Management s interními virtuálními sítěmi | Microsoft Docs
+title: Použití Azure API Management s interními virtuálními sítěmi
+titleSuffix: Azure API Management
 description: Přečtěte si, jak nastavit a nakonfigurovat Azure API Management v interní virtuální síti.
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 29c86363842299870179b35a0466d2e44d2e56e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c4607a2dce995e554f0426f1beb810fe213015de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430598"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Použití služby Azure API Management s interní virtuální sítí
 S Azure Virtual Networks může Azure API Management spravovat rozhraní API, která nejsou přístupná na internetu. K vytvoření připojení je k dispozici řada technologií sítě VPN. API Management lze nasadit ve dvou hlavních režimech v rámci virtuální sítě:
@@ -50,7 +51,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
 + Když je ve virtuální síti nasazená služba API Management, použije se [seznam portů](./api-management-using-with-vnet.md#required-ports) , který je potřeba otevřít. 
 
 ## <a name="enable-vpn"> </a>Vytvoření API Management v interní virtuální síti
-Služba API Management v interní virtuální síti je hostovaná za interním nástrojem [pro vyrovnávání zatížení (Classic)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
+Služba API Management v interní virtuální síti je hostovaná za [interním nástrojem pro vyrovnávání zatížení (Classic)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Povolení připojení k virtuální síti pomocí Azure Portal
 
@@ -62,7 +63,7 @@ Služba API Management v interní virtuální síti je hostovaná za interním n
 
 4. Vyberte **Uložit**.
 
-Po úspěšném nasazení by se v okně Přehled měla zobrazit **privátní** virtuální IP adresa a **Veřejná** virtuální ip adresa vaší služby API Management. **Privátní** virtuální IP adresa je IP adresa s vyrovnáváním zatížení z API Management delegované podsítě, přes kterou `gateway`je možné `management` přistupovat k koncovým bodům, `portal`a `scm` . **Veřejná** virtuální IP adresa se používá **jenom** pro přenosy řídicích objektů do `management` koncového bodu přes port 3443 a je možné ji uzamknout na [ApiManagement][ServiceTags] servicetag.
+Po úspěšném nasazení by se v okně Přehled měla zobrazit **privátní** virtuální IP adresa a **Veřejná** virtuální ip adresa vaší služby API Management. **Privátní** virtuální IP adresa je IP adresa s vyrovnáváním zatížení z API Management delegované podsítě, přes kterou je možné přistupovat `gateway`, `portal`, `management` a `scm` koncových bodů. **Veřejná** virtuální IP adresa se používá **jenom** pro provoz řídicích rovin na `management` koncový bod přes port 3443 a dá se Zamknout dolů k servicetagu [ApiManagement][ServiceTags] .
 
 ![Řídicí panel API Management s nakonfigurovanou interní virtuální sítí][api-management-internal-vnet-dashboard]
 
@@ -75,9 +76,9 @@ Po úspěšném nasazení by se v okně Přehled měla zobrazit **privátní** v
 
 Připojení k virtuální síti můžete taky povolit pomocí rutin PowerShellu.
 
-* Vytvoření služby API Management ve virtuální síti: Pomocí rutiny [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) vytvořte službu Azure API Management v rámci virtuální sítě a nakonfigurujte ji tak, aby používala interní typ virtuální sítě.
+* Vytvoření služby API Management ve virtuální síti: pomocí rutiny [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) vytvoříte službu Azure API Management v rámci virtuální sítě a nakonfigurujete ji tak, aby používala interní typ virtuální sítě.
 
-* Aktualizace stávajícího nasazení API Management služby v rámci virtuální sítě: Pomocí rutiny [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) můžete přesunout existující API Management službu do virtuální sítě a nakonfigurovat ji tak, aby používala interní typ virtuální sítě.
+* Aktualizace stávajícího nasazení API Management služby ve virtuální síti: pomocí rutiny [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) můžete přesunout existující službu API Management v rámci virtuální sítě a nakonfigurovat ji tak, aby používala interní typ virtuální sítě.
 
 ## <a name="apim-dns-configuration"></a>Konfigurace DNS
 Když je API Management v režimu externí virtuální sítě, služba DNS se spravuje pomocí Azure. V případě režimu interní virtuální sítě musíte spravovat vlastní směrování.
@@ -124,7 +125,7 @@ Pokud ve virtuální síti používáte vlastní server DNS, můžete také vytv
 ## <a name="routing"></a> Směrování
 
 * *Privátní* virtuální IP adresa s vyrovnáváním zatížení z rozsahu podsítě bude vyhrazená a bude se používat pro přístup k koncovým bodům služby API Management v rámci virtuální sítě. Tuto *privátní* IP adresu najdete v okně Přehled pro službu v Azure Portal. Tato adresa musí být zaregistrovaná u serverů DNS, které používá virtuální síť.
-* *Veřejná* IP adresa (VIP) s vyrovnáváním zatížení bude také vyhrazena pro poskytování přístupu ke koncovému bodu služby správy přes port 3443. Tuto *veřejnou* IP adresu najdete v okně Přehled pro službu v Azure Portal. *Veřejná* IP adresa se používá jenom pro provoz řídicích rovin na `management` koncový bod přes port 3443 a může být zamčená na [ApiManagement][ServiceTags] servicetag.
+* *Veřejná* IP adresa (VIP) s vyrovnáváním zatížení bude také vyhrazena pro poskytování přístupu ke koncovému bodu služby správy přes port 3443. Tuto *veřejnou* IP adresu najdete v okně Přehled pro službu v Azure Portal. *Veřejná* IP adresa se používá jenom pro provoz řídicích rovin do koncového bodu `management` přes port 3443 a dá se Zamknout dolů k servicetagu [ApiManagement][ServiceTags] .
 * IP adresy z rozsahu IP adres podsítě (DIP) se přiřadí ke každému virtuálnímu počítači ve službě a použijí se pro přístup k prostředkům v rámci virtuální sítě. Veřejná IP adresa (VIP) se použije pro přístup k prostředkům mimo virtuální síť. Pokud se seznamy omezení IP adres používají k zabezpečení prostředků v rámci virtuální sítě, musí být zadaný rozsah pro podsíť, ve které je nasazená API Management služba, aby bylo možné udělit nebo omezit přístup ke službě.
 * Veřejné a privátní IP adresy vyrovnávání zatížení najdete v okně Přehled v Azure Portal.
 * IP adresy přiřazené veřejnému a privátnímu přístupu se mohou změnit, pokud je služba odebrána z a následně přidána zpátky do virtuální sítě. Pokud k tomu dojde, může být nutné aktualizovat registrace DNS, pravidla směrování a seznamy omezení IP adres v rámci virtuální sítě.

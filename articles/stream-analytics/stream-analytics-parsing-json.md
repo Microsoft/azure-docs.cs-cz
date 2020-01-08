@@ -1,28 +1,27 @@
 ---
-title: Analýza formátu JSON a AVRO v Azure Stream Analytics
-description: Tento článek popisuje, jak pracovat s komplexní datové typy jako pole JSON, CSV ve formátu data.
-services: stream-analytics
+title: Analýza JSON a AVRO v Azure Stream Analytics
+description: Tento článek popisuje, jak pracovat s komplexními datovými typy, jako jsou pole, JSON a formátovaná data ve formátu CSV.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: daf5b97e4ac586f89e5964ee16ee73c86f59b01d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431594"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Parsovat JSON nebo Avro, data ve službě Azure Stream Analytics
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analyzovat data JSON a Avro v Azure Stream Analytics
 
-Azure Stream Analytics podporují zpracování událostí v CSV, JSON a Avro datových formátů. Data JSON nebo Avro, může být strukturovaná a obsahují některé komplexní typy, jako jsou vnořené objekty (záznamy) a pole. 
-
-
+Azure Stream Analytics podporovat zpracování událostí v datových formátech CSV, JSON a Avro. Data JSON a Avro mohou být strukturovaná a obsahují některé komplexní typy, jako jsou například vnořené objekty (záznamy) a pole. 
 
 
-## <a name="record-data-types"></a>Záznam datové typy
-Typy záznamů dat se používá k reprezentování pole JSON a Avro případě odpovídající formáty používají vstupní datové proudy. Tyto příklady ukazují senzoru vzorku, který čte vstupní události ve formátu JSON. Tady je příklad jednu událost:
+
+
+## <a name="record-data-types"></a>Záznam typů dat
+Datové typy záznamu se používají k reprezentování polí JSON a Avro, když se v datových proudech vstupních dat používají odpovídající formáty. Tyto příklady ukazují vzorový senzor, který čte vstupní události ve formátu JSON. Tady je příklad jedné události:
 
 ```json
 {
@@ -48,8 +47,8 @@ Typy záznamů dat se používá k reprezentování pole JSON a Avro případě 
 ```
 
 
-### <a name="access-nested-fields-in-known-schema"></a>Přístup vnořená pole ve známé schématu
-Pomocí zápisu s tečkou (.) pro snadný přístup k vnořená pole přímo z dotazu. Například tento dotaz vybere souřadnice zeměpisné šířky a délky pod vlastností umístění v předchozím data JSON. Zápisu s tečkou slouží k navigaci více úrovní, jak je znázorněno níže.
+### <a name="access-nested-fields-in-known-schema"></a>Přístup k vnořeným polím ve známém schématu
+Pro snadný přístup k vnořeným polím přímo z dotazu použijte tečku (.). Tento dotaz například vybírá souřadnice Zeměpisná šířka a délka pod vlastností Location (umístění) v předchozích datech JSON. Zápis tečky lze použít k procházení více úrovní, jak je znázorněno níže.
 
 ```SQL
 SELECT
@@ -60,15 +59,15 @@ SELECT
 FROM input
 ```
 
-### <a name="select-all-properties"></a>Vyberte všechny vlastnosti
-Můžete vybrat všechny vlastnosti vnořené záznam pomocí "*" zástupný znak. Vezměte v úvahu v následujícím příkladu:
+### <a name="select-all-properties"></a>Vybrat všechny vlastnosti
+Můžete vybrat všechny vlastnosti vnořeného záznamu pomocí zástupného znaku *. Vezměte v úvahu v následujícím příkladu:
 
 ```SQL
 SELECT input.Location.*
 FROM input
 ```
 
-Výsledkem je:
+Výsledek je následující:
 
 ```json
 {
@@ -78,10 +77,10 @@ Výsledkem je:
 ```
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Přístup vnořená pole při název vlastnosti je proměnná
-Použití [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) fungovat, pokud název vlastnosti není proměnná. 
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Přístup k vnořeným polím, pokud je název vlastnosti proměnná
+Použijte funkci [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) , pokud je název vlastnosti proměnná. 
 
-Představte si například, že ukázkový datový proud musí být spojen s referenční data obsahující prahové hodnoty pro každý ze senzorů zařízení. Fragment kódu těchto referenčních dat je uveden níže.
+Představte si například, že vzorový datový proud musí být spojen s referenčními daty obsahujícími prahové hodnoty pro každý senzor zařízení. Fragment těchto referenčních dat je uveden níže.
 
 ```json
 {
@@ -104,8 +103,8 @@ WHERE
     -- the where statement selects the property value coming from the reference data
 ```
 
-### <a name="convert-record-fields-into-separate-events"></a>Převést pole záznamu do samostatných události
-Chcete-li převést pole záznamu samostatné události, použijte [použít](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátor spolu s [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) funkce. Například pokud předchozí příklad měli několik záznamů pro SensorReading, následující dotaz mohl být použit k extrakci o různých událostech:
+### <a name="convert-record-fields-into-separate-events"></a>Převod polí záznamu na samostatné události
+Chcete-li převést pole záznamu na samostatné události, použijte operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) společně s funkcí [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) . Pokud například předchozí příklad obsahovala několik záznamů pro SensorReading, je možné použít následující dotaz k extrakci v různých událostech:
 
 ```SQL
 SELECT
@@ -118,14 +117,14 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 
 
-## <a name="array-data-types"></a>Pole datových typů
+## <a name="array-data-types"></a>Datové typy polí
 
-Datové typy pole jsou uspořádaná kolekce hodnot. Některé typické operací na hodnotách pole je podrobně popsaný níže. Tyto příklady předpokládají, že vstupní události mají vlastnost s názvem "arrayField", který je datového typu pro pole.
+Datové typy pole jsou seřazené kolekce hodnot. Některé typické operace s hodnotami polí jsou popsány níže. Tyto příklady předpokládají, že vstupní události mají vlastnost s názvem "arrayField", která je datovým typem pole.
 
-Tyto příklady používají funkce [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)a [použít](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátor.
+V těchto příkladech se používají funkce [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)a operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) .
 
-### <a name="working-with-a-specific-array-element"></a>Práce s konkrétní pole elementu
-Vyberte pole prvku na zadaném indexu (výběrem první prvek pole):
+### <a name="working-with-a-specific-array-element"></a>Práce s konkrétním prvkem pole
+Vybrat prvek pole v zadaném indexu (Výběr prvního prvku pole):
 
 ```SQL
 SELECT
@@ -133,7 +132,7 @@ SELECT
 FROM input
 ```
 
-### <a name="select-array-length"></a>Vyberte délka pole
+### <a name="select-array-length"></a>Vybrat délku pole
 
 ```SQL
 SELECT
@@ -141,8 +140,8 @@ SELECT
 FROM input
 ```
 
-### <a name="convert-array-elements-into-separate-events"></a>Převést elementy pole do samostatných události
-Vyberte všechny elementu pole jako jednotlivé události. [Použít](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátor spolu s [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) předdefinované funkce extrahuje všechny prvky pole jako jednotlivé události:
+### <a name="convert-array-elements-into-separate-events"></a>Převést elementy pole na samostatné události
+Vyberte všechny prvky pole jako jednotlivé události. Operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) společně s vestavěnou funkcí [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) extrahuje všechny prvky pole jako jednotlivé události:
 
 ```SQL
 SELECT
@@ -154,4 +153,4 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 
 
 ## <a name="see-also"></a>Viz také
-[Datové typy ve službě Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Datové typy v Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý Start: vytvoření, výuka a publikování znalostní báze Knowledge Base – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Znalostní báze QnA Maker Knowledge Base v tomto příkladu se vytváří na základě jednoduchých webových stránek s nejčastějšími dotazy pro odpovědi na otázky týkající se obnovení klíče BitLockeru.
+description: V tomto rychlém startu se dozvíte, jak vytvořit QnA Maker znalostní bázi Knowledge Base (KB) z vlastního obsahu, jako jsou nejčastější dotazy nebo Příručky k produktu. Znalostní báze QnA Maker Knowledge Base v tomto příkladu se vytváří na základě jednoduchých webových stránek s nejčastějšími dotazy pro odpovědi na otázky týkající se obnovení klíče BitLockeru.
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/14/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: bc64196969b23f0aad77ff4d4495e4bb3e569c32
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8ec3e399459adfbb7cef9e3eafbaa024fec1589f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447607"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -36,23 +36,24 @@ Zahrňte do funkce CHITEST-chat preference, aby vaše znalosti uživatelů byly 
 
 1. Na portálu QnA Maker vyberte **vytvořit znalostní bázi**.
 
-1. Na stránce **vytvořit** vyberte možnost **vytvořit službu QnA**. Budete přesměrování na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), kde můžete nastavit službu QnA Maker ve vašem předplatném. 
+1. Na stránce **vytvořit** vyberte možnost **vytvořit službu QnA**. Budete přesměrování na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), kde můžete nastavit službu QnA Maker ve vašem předplatném.
 
-1. Na portálu QnA Maker v rozevíracích seznamech vyberte svoji QnA Maker službu. Pokud jste vytvořili novou službu QnA Maker, nezapomeňte aktualizovat stránku.
+1. V Azure Portal vytvořte prostředek. Mějte na paměti, že vaše Azure Active Directory ID, předplatné a název prostředku QnA jste zvolili při vytváření prostředku.
+1. Vraťte se na portál QnA Maker, aktualizujte webovou stránku na portálu a pokračujte v vytváření znalostní báze.
 
    ![Snímek obrazovky s výběrem znalostní báze služby QnA Maker](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
 1. Pojmenujte svůj znalostní báze **můj vzor QNA KB**.
 
-1. Přidat vzorový dokument aplikace Word jako adresu URL: 
+1. Přidat vzorový dokument aplikace Word jako adresu URL:
 
     `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
 
 1. Vyberte `+ Add URL`.
 
-1. Přidat  **_matematický_ program CHITEST – chat** do vaší znalostní báze 
+1. Přidat  **_matematický_ program CHITEST – chat** do vaší znalostní báze
 
-1. Vyberte **vytvořit znalostní báze**.
+1. Vyberte **vytvořit znalostní BÁZÍ**.
 
     Proces extrakce trvá několik minut, než se dokument přečte, a Identifikujte otázky a odpovědi.
 
@@ -60,8 +61,8 @@ Zahrňte do funkce CHITEST-chat preference, aby vaše znalosti uživatelů byly 
 
 ## <a name="add-a-new-question-and-answer-set"></a>Přidat novou sadu otázek a odpovědí
 
-1. Na QnA Makerovém portálu na stránce **Upravit** vyberte **Přidat dvojici QnA**.
-1. Přidejte následující otázku: 
+1. Na portálu QnA Maker na stránce **Upravit** vyberte **+ Přidat dvojici QnA** z panelu nástrojů kontextu.
+1. Přidejte následující otázku:
 
     `How many Azure services are used by a knowledge base?`
 
@@ -71,9 +72,9 @@ Zahrňte do funkce CHITEST-chat preference, aby vaše znalosti uživatelů byly 
 
     ![ Přidejte otázku jako text a odpověď formátovanou pomocí Markdownu.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
 
-    Symbol Markdownu `*`se používá pro body odrážek. `\n` se používá pro nový řádek.  
+    Symbol Markdownu `*`se používá pro body odrážek. `\n` se používá pro nový řádek.
 
-    Na stránce pro **Úpravy** se zobrazí Markdownu. Když použijete **testovací** panel později, zobrazí se Markdownu správně. 
+    Na stránce pro **Úpravy** se zobrazí Markdownu. Když použijete **testovací** panel později, zobrazí se Markdownu správně.
 
 ## <a name="save-and-train"></a>Uložení a natrénování
 
@@ -81,10 +82,10 @@ V pravém horním rohu vyberte **Save and train** (Uložit a natrénovat), aby s
 
 ## <a name="test-the-knowledge-base"></a>Testování znalostní báze
 
-1. Na portálu QnA Maker v pravém horním rohu vyberte **test** , abyste otestovali, že provedené změny se projevily. 
-1. Do textového pole zadejte ukázkový dotaz uživatele. 
+1. Na portálu QnA Maker v pravém horním rohu vyberte **test** , abyste otestovali, že provedené změny se projevily.
+1. Do textového pole zadejte ukázkový dotaz uživatele.
 
-    `How many Azure services are used by a knowledge base?`  
+    `How many Azure services are used by a knowledge base?`
 
     ![ Do textového pole zadejte ukázkový dotaz uživatele. ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
 
@@ -106,10 +107,10 @@ Při publikování znalostní báze se obsah vaší znalostní báze přesune z 
 
 ## <a name="create-a-bot"></a>Vytvoření robota
 
-Po publikování můžete vytvořit robota ze stránky **publikování** : 
+Po publikování můžete vytvořit robota ze stránky **publikování** :
 
-* Můžete rychle vytvořit několik robotyů, které ukazují na stejnou znalostní bázi pro různé oblasti nebo cenové tarify pro jednotlivé roboty. 
-* Pokud potřebujete jenom jednu robota pro znalostní bázi, použijte **zobrazení všechny roboty na odkaz Azure Portal** k zobrazení seznamu aktuálního roboty. 
+* Můžete rychle vytvořit několik robotyů, které ukazují na stejnou znalostní bázi pro různé oblasti nebo cenové tarify pro jednotlivé roboty.
+* Pokud potřebujete jenom jednu robota pro znalostní bázi, použijte **zobrazení všechny roboty na odkaz Azure Portal** k zobrazení seznamu aktuálního roboty.
 
 Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robotem dělat další akce. Je už nakonfigurovaná pro práci se znalostní bázeí a funguje se všemi budoucími změnami ve znalostní bázi. Pokaždé, když publikujete znalostní bázi, jsou automaticky aktualizovány všechny roboty připojené k ní.
 
@@ -117,36 +118,47 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
     ![Snímek obrazovky s vytvořením robota](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. Otevře se nová karta prohlížeče pro Azure Portal se stránkou pro vytvoření Azure Bot Service. Nakonfigurujte službu Azure bot Service. 
-    
-    * Při vytváření robota neměňte v Azure Portal následující nastavení. Jsou předem vyplněné pro stávající znalostní bázi: 
-        * QnA ověřovací klíč
-        * Plán a umístění služby App Service
-    * Robot a QnA Maker můžou sdílet plán služby Web App Service, ale nemůžou webovou aplikaci sdílet. To znamená, že **název aplikace** pro robot se musí lišit od názvu aplikace pro službu QnA maker. 
+1. Otevře se nová karta prohlížeče pro Azure Portal se stránkou pro vytvoření Azure Bot Service. Nakonfigurujte službu Azure bot Service. Robot a QnA Maker můžou sdílet plán služby Web App Service, ale nemůžou webovou aplikaci sdílet. To znamená, že **název aplikace** pro robot se musí lišit od názvu aplikace pro službu QnA maker.
 
-1. Po vytvoření robota otevřete prostředek **služby bot** . 
+    * **Do**
+        * Změnit popisovač robota – Pokud není jedinečný
+        * Vyberte jazyk sady SDK. Po vytvoření robota si můžete kód stáhnout do svého místního vývojového prostředí a pokračovat v procesu vývoje.
+    * **Ne**
+        * Při vytváření robota změňte následující nastavení v Azure Portal. Jsou předem vyplněné pro stávající znalostní bázi:
+           * QnA ověřovací klíč
+           * Plán a umístění služby App Service
+
+
+1. Po vytvoření robota otevřete prostředek **služby bot** .
 1. V části **Správa robota**vyberte **test na webu chat**.
 1. Na příkazovém řádku chatu **Zadejte zprávu**:
 
     `Azure services?`
 
-    Robotka chatu odpoví odpověď z vaší znalostní báze. 
+    Robotka chatu odpoví odpověď z vaší znalostní báze.
 
     ![Zadejte uživatelský dotaz do testovacího webového chatu.](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
 
+## <a name="what-did-you-accomplish"></a>Co jste provedli?
+
+Vytvořili jste novou znalostní bázi, Přidali jste do znalostní báze veřejnou adresu URL, Přidali jste vlastní QnA sadu, vyškolenou, testovaný a publikovaný základ znalostní báze.
+
+Po zveřejnění znalostní báze jste vytvořili robota a otestovali robota.
+
+To bylo provedeno za několik minut, aniž byste museli psát kód a vyčistit obsah.
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Vyčistěte prostředky QnA Maker a bot Framework v Azure Portal. 
+Vyčistěte prostředky QnA Maker a bot Framework v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete tady:
+Další informace:
 
 * [Formát Markdownu v odpovědích](../concepts/data-sources-supported.md)
 * [Testování Markdownu](../concepts/data-sources-supported.md#testing-your-markdown)
-* QnA Maker [zdroje dat](../Concepts/data-sources-supported.md). 
+* QnA Maker [zdroje dat](../Concepts/data-sources-supported.md).
 * [Nastavení konfigurace prostředků robota](../tutorials/create-qna-bot.md).
 
 > [!div class="nextstepaction"]
 > [Přidání otázek s metadaty](add-question-metadata-portal.md)
-

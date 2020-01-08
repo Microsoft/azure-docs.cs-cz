@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706263"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644592"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight – Nejčastější dotazy
 
@@ -114,7 +114,7 @@ Ne, Apache Kafka a Apache Spark na stejném clusteru HDInsight není možné spu
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Návody změnit časové pásmo v Ambari?
 
-1. Otevřete webové uživatelské rozhraní Ambari na https://CLUSTERNAME.azurehdinsight.net, kde název_clusteru je název vašeho clusteru.
+1. Otevřete webové uživatelské rozhraní Ambari na `https://CLUSTERNAME.azurehdinsight.net`, kde název_clusteru je název vašeho clusteru.
 2. V pravém horním rohu vyberte Správce | Možnost. 
 
    ![Nastavení Ambari](media/hdinsight-faq/ambari-settings.png)
@@ -251,7 +251,7 @@ V clusterech ESP Spark je LLAP povolený z bezpečnostních důvodů (tj. Apache
 Toho lze dosáhnout dvěma způsoby: 1 – cluster můžete znovu vytvořit a přidat další skupinu v době vytváření clusteru. Pokud v AAD-DS používáte vymezenou synchronizaci, ujistěte se, že je skupina B zahrnutá v rámci synchronizace s vymezeným oborem.
 2 – přidejte skupinu jako vnořenou dílčí skupinu předchozí skupiny, která se použila k vytvoření clusteru ESP. Pokud jste například vytvořili cluster ESP se skupinami `A`, můžete později přidat skupinu `B` jako vnořenou podskupinu `A` a po přibližně jednu hodinu bude synchronizována a k dispozici v clusteru automaticky. 
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Je možné přidat Azure Data Lake Storage Gen2 do stávajícího clusteru HDInsight jako další účet úložiště?
 
@@ -263,7 +263,7 @@ Nastavení můžete najít v **Data Lake Storage Gen1 přístupu** ve vlastnoste
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Jak mohu vypočítat využití účtů úložiště a kontejnerů objektů BLOB pro clustery HDInsight?
 
-Proveďte jednu z následujících akcí:
+Proveďte jednu z těchto akcí:
 
 - [Použití PowerShellu](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 

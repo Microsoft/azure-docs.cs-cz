@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – replika sfctl | Microsoft Docs
-description: Popisuje příkazy Service Fabric CLI sfctl.
-services: service-fabric
-documentationcenter: na
+title: Replika Azure Service Fabric CLI – sfctl
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro správu replik.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 34e53311e5338e540c1d987896112de39890de3b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901054"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646037"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Spravovat repliky patřící k oddílům služeb.
@@ -28,13 +19,13 @@ Spravovat repliky patřící k oddílům služeb.
 
 |Příkaz|Popis|
 | --- | --- |
-| nainstalována | Získá podrobnosti o replice nasazené na uzlu Service Fabric. |
-| nasazeno – seznam | Získá seznam replik nasazených na uzlu Service Fabric. |
+| deployed | Získá podrobnosti o replice nasazené na uzlu Service Fabric. |
+| deployed-list | Získá seznam replik nasazených na uzlu Service Fabric. |
 | zdravotnictví | Získá stav repliky stavové služby Service Fabric nebo instance bezstavové služby. |
-| Příjemce | Získá informace o replice Service Fabricho oddílu. |
+| info | Získá informace o replice Service Fabricho oddílu. |
 | list | Získá informace o replikách oddílu Service Fabric služby. |
-| Odebrány | Odebere repliku služby běžící na uzlu. |
-| Sestava – stav | Odešle zprávu o stavu repliky Service Fabric. |
+| remove | Odebere repliku služby běžící na uzlu. |
+| report-health | Odešle zprávu o stavu repliky Service Fabric. |
 | restart | Restartuje repliku služby trvalé služby spuštěné na uzlu. |
 
 ## <a name="sfctl-replica-deployed"></a>sfctl replika byla nasazena
@@ -46,7 +37,7 @@ Získá podrobnosti o replice nasazené na uzlu Service Fabric. Tyto informace z
 
 |Argument|Popis|
 | --- | --- |
-| --Node-Name [povinné] | Název uzlu. |
+| --Node-Name [povinné] | Název uzlu |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Replica-ID [povinné] | Identifikátor repliky |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
@@ -71,9 +62,9 @@ Získá seznam obsahující informace o replikách nasazených na uzlu Service F
 |Argument|Popis|
 | --- | --- |
 | --ID aplikace [povinné] | Identita aplikace Obvykle se jedná o úplný název aplikace bez schématu identifikátoru URI\:Fabric. Počínaje verzí 6,0 jsou hierarchické názvy odděleny znakem "\~". Například pokud je název aplikace "Fabric\:/MyApp/app1", identita aplikace by byla "MyApp\~app1" v 6.0 + a "MyApp/app1" v předchozích verzích. |
-| --Node-Name [povinné] | Název uzlu. |
+| --Node-Name [povinné] | Název uzlu |
 | --Partition-ID | Identita oddílu |
-| --Service-manifest-název | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
+| --service-manifest-name | Název manifestu služby registrovaného jako součást typu aplikace v clusteru Service Fabric. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -97,7 +88,7 @@ Získá stav repliky Service Fabric. Pomocí EventsHealthStateFilter můžete fi
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Replica-ID [povinné] | Identifikátor repliky |
-| --Events – stav – filtr | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
+| --events-health-state-filter | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -165,7 +156,7 @@ Toto rozhraní API simuluje selhání repliky Service Fabric odebráním repliky
 
 |Argument|Popis|
 | --- | --- |
-| --Node-Name [povinné] | Název uzlu. |
+| --Node-Name [povinné] | Název uzlu |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Replica-ID [povinné] | Identifikátor repliky |
 | --Force-Remove | Odeberte Service Fabric aplikaci nebo službu vynuceně, aniž byste museli projít sekvenci řádného vypnutí. Tento parametr lze použít k vynucenému odstranění aplikace nebo služby, pro kterou odstranění probíhá časování z důvodu problémů v kódu služby, který brání řádnému zavření replik. |
@@ -201,7 +192,7 @@ Hlásí stav zadané repliky Service Fabric. Sestava musí obsahovat informace o
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Číslo sekvence sestavy používá Health Store ke zjišťování zastaralých sestav. Není-li tento parametr zadán, je číslo sekvence automaticky generováno klientem stavu při přidání sestavy. |
 | --druh služby | Druh repliky služby (stavová nebo stavová), pro který je stav hlášen. Níže jsou uvedené možné hodnoty\: ' stavové ', ' stavová '.  Výchozí stav\:. |
 | --Timeout-t | Výchozí\: 60. |
-| --TTL | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti hlásí přechod, můžou nastavit čas na živého na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
+| --ttl | Doba, po kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 k zadání doby trvání. <br><br> Při pravidelné sestavě klientů by měly odesílat sestavy s vyšší frekvencí, než je čas do provozu. Pokud klienti hlásí přechod, můžou nastavit čas na živého na nekonečné. Po vypršení časového limitu životnosti události stavu, která obsahuje informace o stavu, se buď odeberou z Health Store, pokud je RemoveWhenExpired true, nebo se vyhodnotí při chybě, pokud RemoveWhenExpired false. Pokud není zadaný, hodnota TTL (Time to Live) nastaví nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -222,7 +213,7 @@ Restartuje repliku služby trvalé služby spuštěné na uzlu. Upozornění –
 
 |Argument|Popis|
 | --- | --- |
-| --Node-Name [povinné] | Název uzlu. |
+| --Node-Name [povinné] | Název uzlu |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Replica-ID [povinné] | Identifikátor repliky |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: 60. |

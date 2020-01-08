@@ -1,19 +1,18 @@
 ---
 title: Kopírování nebo zálohování úloh Azure Stream Analytics
 description: Tento článek popisuje, jak zkopírovat nebo zálohovat úlohu Azure Stream Analytics.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8ae97a3ef6e354bb07e257b4997341297e8abe51
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: d55f36a5b18eca2622216b6be9906a57a6f421c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457583"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopírování nebo zálohování úloh Azure Stream Analytics
 
@@ -22,19 +21,17 @@ Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomo
 ## <a name="before-you-begin"></a>Než začnete
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte [Azure Stream Analytics rozšíření pro Visual Studio Code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code#install-the-azure-stream-analytics-extension) nebo [Azure Stream Analytics nástroje pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code#install-the-azure-stream-analytics-extension).  
 
-
-
-## <a name="visual-studio-code"></a>Visual Studio Code 
+## <a name="visual-studio-code"></a>Visual Studio Code
 
 1. Klikněte na ikonu **Azure** na řádku Visual Studio Code aktivity a potom rozbalte uzel **Stream Analytics** . Vaše úlohy by se měly zobrazit v rámci vašich předplatných.
 
    ![Otevřít Stream Analytics Explorer](./media/vscode-explore-jobs/open-explorer.png)
 
-2. Chcete-li exportovat úlohu do místního projektu, vyhledejte úlohu, kterou chcete exportovat, v **průzkumníkovi Stream Analytics** v Visual Studio Code. Pak vyberte složku pro svůj projekt. 
+2. Chcete-li exportovat úlohu do místního projektu, vyhledejte úlohu, kterou chcete exportovat, v **průzkumníkovi Stream Analytics** v Visual Studio Code. Pak vyberte složku pro svůj projekt.
 
     ![Exportovat úlohu ASA v Visual Studio Code](./media/vscode-explore-jobs/export-job.png)
 
@@ -42,17 +39,15 @@ Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomo
 
     ![Exportovat úlohu ASA v Visual Studio Code](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
 
-3. Pokud chcete úlohu publikovat do jiné oblasti nebo zálohy s použitím jiného názvu, v editoru dotazů (\*. asaql) vyberte **vybrat z vašich předplatných** a postupujte podle pokynů. 
+3. Pokud chcete úlohu publikovat do jiné oblasti nebo zálohy s použitím jiného názvu, v editoru dotazů (\*. asaql) vyberte **vybrat z vašich předplatných** a postupujte podle pokynů.
 
-    ![Publikování do Azure v Visual Studio Code](./media/quick-create-vs-code/select-subscription.png)
+    ![Publikování do Azure v Visual Studio Code](./media/quick-create-vs-code/submit-job.png)
 
+## <a name="visual-studio"></a>Visual Studio
 
-## <a name="visual-studio"></a>Visual Studio 
+1. Postupujte podle [pokynů k projektu export Azure Stream Analytics nasazené úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project).
 
-1. Postupujte podle [pokynů k projektu export Azure Stream Analytics nasazené úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project). 
-
-2. V editoru dotazů otevřete soubor \*. asaql, v editoru skriptů vyberte **Odeslat do Azure** a postupujte podle pokynů pro publikování úlohy do jiné oblasti nebo zálohování pomocí nového názvu. 
-
+2. V editoru dotazů otevřete soubor \*. asaql, v editoru skriptů vyberte **Odeslat do Azure** a postupujte podle pokynů pro publikování úlohy do jiné oblasti nebo zálohování pomocí nového názvu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9ba68e90b5ac64c7bdb08af2b567f00c1a076808
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453916"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>Připojení zařízení MXChip IoT DevKit k aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -25,7 +25,7 @@ V tomto článku s postupem:
 - Připravte zařízení a připojte ho k aplikaci IoT Central.
 - Zobrazení telemetrie a vlastností ze zařízení v IoT Central.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující zdroje:
 
@@ -52,7 +52,7 @@ K dokončení kroků v tomto článku budete potřebovat následující zdroje:
 
 ## <a name="prepare-the-device"></a>Příprava zařízení
 
-1. Stáhněte si nejnovější [předem sestavený firmware Azure IoT Central technologie Plug and Play](https://github.com/MXCHIP/IoTDevKit/raw/master/pnp/iotc_devkit/bin/iotc_devkit.bin) pro zařízení DevKit z GitHubu.
+1. Stáhněte si nejnovější [předem sestavený firmware Azure IoT Central technologie Plug and Play](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin) pro zařízení DevKit z GitHubu.
 
 1. Připojte zařízení DevKit k vývojovému počítači pomocí kabelu USB. V systému Windows se otevře okno Průzkumník souborů na jednotce namapované na úložiště na zařízení DevKit. Například jednotka může být volána **AZ3166 (D:)** .
 

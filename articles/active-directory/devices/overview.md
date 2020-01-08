@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56319579bc8766bbd8467296daf41e25fc31862
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423123"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
@@ -38,13 +38,13 @@ Pokud chcete v Azure AD získat zařízení, máte několik možností:
 
 - **Registrace Azure AD**
    - Zařízení, která jsou registrovaná v Azure AD, jsou obvykle osobně vlastněná nebo mobilní zařízení a jsou přihlášená pomocí osobního účet Microsoft nebo jiného místního účtu.
-      - Windows 10
+      - Windows 10
       - iOS
       - Android
       - MacOS
 - **Připojeno k Azure AD**
    - Zařízení, která jsou připojená k Azure AD, jsou vlastněna organizací a přihlásili jste se k účtu Azure AD patřícímu do této organizace. Existují jenom v cloudu.
-      - Windows 10 
+      - Windows 10 
 - **k hybridní službě Azure AD**.
    - Zařízení, která jsou připojená k hybridní službě Azure AD, jsou vlastněna organizací a přihlásili jste se k účtu Azure AD patřícímu do této organizace. Existují v cloudu i v místním prostředí.
       - Windows 7, 8,1 nebo 10
@@ -58,7 +58,10 @@ Zařízení ve službě Azure AD je možné spravovat pomocí nástrojů pro spr
 
 ## <a name="resource-access"></a>Přístup k prostředkům
 
-Registrace a spojování umožní uživatelům bezproblémové přihlašování (SSO) ke cloudovým prostředkům a správcům možnost uplatňovat zásady podmíněného přístupu na tyto prostředky. 
+Registrace zařízení do služby Azure AD umožňuje uživatelům bezproblémové přihlašování (SSO) k prostředkům cloudu. Tento proces taky správcům umožňuje aplikovat zásady podmíněného přístupu na prostředky na základě zařízení, ze kterého se k nim přistupuje. 
+
+> [!NOTE]
+> Zásady podmíněného přístupu podle zařízení vyžadují buď zařízení připojená k Azure AD, nebo kompatibilní zařízení s registrovaným Azure AD.
 
 Zařízení, která jsou připojená k Azure AD nebo hybridní služba Azure AD, využívají výhody jednotného přihlašování k místním prostředkům vaší organizace i k prostředkům cloudu. Další informace najdete v článku [o tom, jak jednotné přihlašování k místním prostředkům funguje na zařízeních připojených k Azure AD](azuread-join-sso.md).
 
@@ -66,7 +69,7 @@ Zařízení, která jsou připojená k Azure AD nebo hybridní služba Azure AD,
 
 - **Zařízení registrovaná v Azure AD** využívají účet spravovaný koncovým uživatelem, tento účet je účet Microsoft nebo jiné místně spravované přihlašovací údaje, které jsou zabezpečené pomocí jedné nebo několika z následujících možností.
    - Heslo
-   - KOTVICÍ
+   - PŘIPNOUT
    - Vzor
    - Windows Hello
 - **Připojené služby Azure AD nebo zařízení připojená k hybridní službě Azure AD** využívají účet organizace ve službě Azure AD, který je zabezpečený pomocí jedné nebo několika z následujících možností.

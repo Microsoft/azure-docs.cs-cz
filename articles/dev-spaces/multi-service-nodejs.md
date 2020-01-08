@@ -3,14 +3,14 @@ title: 'Spuštění více závislých služeb: & Node. js Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit aplikaci Node. js s více službami ve službě Azure Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 357a03e154e3c0146d3275e8cba64bc2d966f5b8
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438297"
 ---
 # <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Spuštění více závislých služeb: Node. js a Visual Studio Code s Azure Dev Spaces
 
@@ -26,7 +26,7 @@ V této části vytvoříte druhou službu `mywebapi`, kterou bude `webfrontend`
 Měli byste už mít vzorový kód pro `mywebapi` pro tuto příručku ve složce s názvem `samples` (Pokud ne, přejdete na https://github.com/Azure/dev-spaces a vyberte **klonovat nebo stáhnout** pro stažení úložiště GitHubu.) Kód pro tuto část je `samples/nodejs/getting-started/mywebapi`.
 
 ### <a name="run-mywebapi"></a>Spuštění *mywebapi*
-1. V `mywebapi`samostatném okně editoru VS Code*otevřete složku*.
+1. V *samostatném okně editoru VS Code* otevřete složku `mywebapi`.
 1. Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů**) a pomocí automatického dokončování zadejte a vyberte tento příkaz: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. Nezaměňujte tento příkaz s příkazem `azds prep`, který projekt nakonfiguruje pro nasazení.
 1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Poznáte, že je připravený, když se v konzole ladění objeví zpráva *o naslouchání na portu 80* .
 1. Poznamenejte si adresu URL koncového bodu, která by měla vypadat zhruba takto `http://localhost:<portnumber>`. **Tip: VS Code stavový řádek se změní na oranžová a zobrazí se adresa URL pro kliknutí.** I když to vypadá, že kontejner je spuštěný v místním prostředí, ve skutečnosti je spuštěný ve vývojovém prostředí v Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
@@ -56,7 +56,7 @@ Teď napíšeme kód v projektu `webfrontend`, který vygeneruje požadavek do `
        });
     });
     ```
-   1. *Odeberte* `server.close()` řádek na konci `server.js`
+   1. *Odeberte*`server.close()` řádek na konci `server.js`
 
 Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího požadavku do odchozího požadavku. Později si ukážeme, jak to týmům pomáhá při společném vývoji.
 

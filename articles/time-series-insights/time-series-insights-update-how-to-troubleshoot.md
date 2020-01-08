@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452522"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnostika a řešení potíží s prostředím verze Preview
 
@@ -25,7 +25,7 @@ Tento článek shrnuje několik běžných problémů, se kterými se můžete s
 
 K tomuto problému může dojít, pokud nemáte oprávnění pro přístup k Time Series Insights prostředí. Uživatelé potřebují pro zobrazení svého Time Series Insightsho prostředí roli přístupu na úrovni čtenáře. Chcete-li ověřit aktuální úrovně přístupu a udělit další přístup, přejděte do části **zásady přístupu k datům** v prostředku Time Series Insights v [Azure Portal](https://portal.azure.com/).
 
-  [![prostředí](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![ověřit zásady přístupu k datům.](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problém: v Průzkumníkovi Preview se nezobrazí žádná data.
 
@@ -35,7 +35,7 @@ K dispozici je několik běžných důvodů, proč se data v Průzkumníkovi slu
 
     Ověřte, že váš zdroj událostí, což je centrum událostí nebo centrum IoT, přijímá data z vašich značek nebo instancí. Pokud to chcete ověřit, na stránce s přehledem na svém prostředku navštivte Azure Portal.
 
-    [Řídicí panel ![– přehledy](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![přehled metriky řídicího panelu.](media/preview-troubleshoot/verify-dashboard-metrics.png)](media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
 
 - Vaše zdrojová data události nejsou ve formátu JSON.
 
@@ -45,14 +45,15 @@ K dispozici je několik běžných důvodů, proč se data v Průzkumníkovi slu
 
   * V případě služby IoT Hub musíte zadat klíč, který má oprávnění **připojit ke službě** .
 
-    [![Konfigurace](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
+    [![Ověřte oprávnění pro IoT Hub.](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-  * Jak je znázorněno na předchozím obrázku, obě zásady **iothubowner** **i fungují,** protože mají oprávnění **k připojení ke službě** .
+    * Zásady **iothubowner** **i fungují,** protože mají oprávnění **k připojení ke službě** .
+
   * V centru událostí je nutné zadat klíč, který má oprávnění k **naslouchání** .
   
-    [![oprávnění](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [![zkontrolovat oprávnění centra událostí.](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-  * Jak je znázorněno na předchozím obrázku, obě zásady **číst** a **Spravovat** budou fungovat, protože mají oprávnění k **naslouchání** .
+    * Zásady **číst** i **Spravovat** budou fungovat, protože mají oprávnění k **naslouchání** .
 
 - Zadaná skupina uživatelů není výhradně Time Series Insights.
 
@@ -98,7 +99,7 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 
    Modely časových řad se podporují jenom v prostředí s průběžnými platbami. Další informace o tom, jak získat přístup k prostředí S1 nebo S2 z Průzkumníka Time Series Insights Preview, najdete v tématu [vizualizace dat v Průzkumníkovi](./time-series-insights-update-explorer.md).
 
-   [![Access](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [v prostředí ![žádné události.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
 - Možná nemáte oprávnění k zobrazení a úpravě modelu.
 
@@ -108,10 +109,12 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 
 K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v tématu [práce s modely časových řad](./time-series-insights-update-how-to-tsm.md).
 
-  [Modely časových řad ![](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [Při ![nenadřazených instancí se zobrazí upozornění.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si téma [práce s modely časových řad](./time-series-insights-update-how-to-tsm.md).
+
 - Přečtěte si o [podporovaných tvarech JSON](./how-to-shape-query-json.md).
+
 - Přečtěte si téma [plánování a omezení](./time-series-insights-update-plan.md) ve verzi Preview Azure Time Series Insights.

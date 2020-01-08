@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services def. LoadBalancerProbe schéma | Microsoft Docs
+title: Schéma Azure Cloud Services def. LoadBalancerProbe | Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -7,16 +7,16 @@ ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 14
 author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 6f82406772f650b4565f2c9240efe580545dcad9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: bc2c0f5137ce78392a8df7c6c2fdd402ded5355a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449059"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe schéma definice Azure Cloud Services
-Test nástroje pro vyrovnávání zatížení je sonda stavu definovaná zákazníkem koncových bodů a koncových bodů UDP v instancích rolí. `LoadBalancerProbe` Nejedná se o samostatný element; v kombinaci s webovou rolí nebo rolí pracovního procesu v definičním souboru služby. `LoadBalancerProbe` Může být použit více než jednou rolí.
+Test nástroje pro vyrovnávání zatížení je sonda stavu definovaná zákazníkem koncových bodů a koncových bodů UDP v instancích rolí. `LoadBalancerProbe` není samostatný element; je v kombinaci s webovou rolí nebo rolí pracovního procesu v definičním souboru služby. `LoadBalancerProbe` lze použít více než jednou rolí.
 
 Výchozí přípona souboru definice služby je. csdef.
 
@@ -41,27 +41,27 @@ Pokud používáte vlastní test nástroje pro vyrovnávání zatížení, je nu
 ```
 
 ## <a name="schema-elements"></a>Prvky schématu
-`LoadBalancerProbes` Element definičního souboru služby zahrnuje následující prvky:
+Element `LoadBalancerProbes` souboru definice služby obsahuje následující prvky:
 
 - [Element LoadBalancerProbes](#LoadBalancerProbes)
 - [Element LoadBalancerProbe](#LoadBalancerProbe)
 
 ##  <a name="LoadBalancerProbes"></a>Element LoadBalancerProbes
-`LoadBalancerProbes` Element popisuje kolekci sond nástroje pro vyrovnávání zatížení. Tento prvek je nadřazeným prvkem [elementu LoadBalancerProbe](#LoadBalancerProbe). 
+Element `LoadBalancerProbes` popisuje kolekci sond nástroje pro vyrovnávání zatížení. Tento prvek je nadřazeným prvkem [elementu LoadBalancerProbe](#LoadBalancerProbe). 
 
 ##  <a name="LoadBalancerProbe"></a>Element LoadBalancerProbe
-`LoadBalancerProbe` Prvek definuje sondu stavu pro model. Můžete definovat několik sond nástroje pro vyrovnávání zatížení. 
+Element `LoadBalancerProbe` definuje sondu stavu pro model. Můžete definovat několik sond nástroje pro vyrovnávání zatížení. 
 
-Následující tabulka popisuje atributy `LoadBalancerProbe` prvku:
+Následující tabulka popisuje atributy prvku `LoadBalancerProbe`:
 
-|Atribut|type|Popis|
+|Atribut|Typ|Popis|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | Povinný parametr. Název testu nástroje pro vyrovnávání zatížení. Název musí být jedinečný.|
-| `protocol`          | `string` | Povinný parametr. Určuje protokol koncového bodu. Možné hodnoty jsou `http` nebo `tcp`. Je `tcp` -li parametr zadán, je pro úspěšné dokončení testu vyžadováno přijaté potvrzení. Je `http` -li zadán parametr, je k úspěšnému dokončení testu nutná odpověď 200 OK ze zadaného identifikátoru URI.|
-| `path`              | `string` | Identifikátor URI, který se používá pro vyžádání stavu z virtuálního počítače. `path`je vyžadováno, `protocol` Pokud je nastaven `http`na. V opačném případě není povolena.<br /><br /> Neexistuje žádná výchozí hodnota.|
-| `port`              | `integer` | Volitelné. Port pro komunikaci sondy. To je volitelné pro libovolný koncový bod, protože stejný port se pak použije pro test. Pro své zjišťování můžete také nakonfigurovat jiný port. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně.<br /><br /> Výchozí hodnota je nastavená koncovým bodem.|
-| `intervalInSeconds` | `integer` | Volitelné. Interval (v sekundách), jak často se má testovat koncový bod pro stav. Interval je typicky menší než polovina přiděleného časového limitu (v sekundách), který umožňuje dvě úplné sondy před převzetím instance mimo rotaci.<br /><br /> Výchozí hodnota je 15, minimální hodnota je 5.|
-| `timeoutInSeconds`  | `integer` | Volitelné. Časový limit (v sekundách), který se použije na test, kdy žádná odpověď nevede k zastavení dalšího provozu v doručení do koncového bodu. Tato hodnota umožňuje, aby koncové body byly rychlejší nebo pomalejší než běžné časy používané v Azure (což jsou výchozí nastavení).<br /><br /> Výchozí hodnota je 31, minimální hodnota je 11.|
+| `name`              | `string` | Povinná hodnota. Název testu nástroje pro vyrovnávání zatížení. Název musí být jedinečný.|
+| `protocol`          | `string` | Povinná hodnota. Určuje protokol koncového bodu. Možné hodnoty jsou `http` nebo `tcp`. Je-li zadán `tcp`, je k úspěšnému dokončení testu vyžadováno přijaté potvrzení. Je-li zadána `http`, je k úspěšnému dokončení testu nutná odpověď 200 OK ze zadaného identifikátoru URI.|
+| `path`              | `string` | Identifikátor URI, který se používá pro vyžádání stavu z virtuálního počítače. `path` je vyžadována, pokud je `protocol` nastaveno na `http`. V opačném případě není povolena.<br /><br /> Není k dispozici žádná výchozí hodnota.|
+| `port`              | `integer` | Nepovinný parametr. Port pro komunikaci sondy. To je volitelné pro libovolný koncový bod, protože stejný port se pak použije pro test. Pro své zjišťování můžete také nakonfigurovat jiný port. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně.<br /><br /> Výchozí hodnota je nastavená koncovým bodem.|
+| `intervalInSeconds` | `integer` | Nepovinný parametr. Interval (v sekundách), jak často se má testovat koncový bod pro stav. Interval je typicky menší než polovina přiděleného časového limitu (v sekundách), který umožňuje dvě úplné sondy před převzetím instance mimo rotaci.<br /><br /> Výchozí hodnota je 15, minimální hodnota je 5.|
+| `timeoutInSeconds`  | `integer` | Nepovinný parametr. Časový limit (v sekundách), který se použije na test, kdy žádná odpověď nevede k zastavení dalšího provozu v doručení do koncového bodu. Tato hodnota umožňuje, aby koncové body byly rychlejší nebo pomalejší než běžné časy používané v Azure (což jsou výchozí nastavení).<br /><br /> Výchozí hodnota je 31, minimální hodnota je 11.|
 
 ## <a name="see-also"></a>Viz také
 [Schéma definice cloudové služby (Classic)](schema-csdef-file.md)

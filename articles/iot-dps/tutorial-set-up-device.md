@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 337ac2f60809370e6a07b2b0403d21ef7230b034
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434581"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Kurz: nastavení zařízení pro zřízení pomocí IoT Hub Device Provisioning Service Azure
 
@@ -34,12 +34,13 @@ Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 nebo novější s povolenou úlohou [" C++vývoj pro stolní počítače"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
+Následující požadavky jsou pro vývojové prostředí systému Windows. Informace o systému Linux nebo macOS najdete v příslušné části [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) v dokumentaci k sadě SDK.
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 se zapnutou úlohou pro [vývoj C++desktopových](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) aplikací. Podporují se také sady Visual Studio 2015 a Visual Studio 2017.
+
 * Nainstalovaná nejnovější verze [Gitu](https://git-scm.com/download/)
-
-
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Sestavení specifické verze sady SDK pro platformu
 
@@ -49,23 +50,26 @@ Klientská sada SDK služby Device Provisioning pomáhá implementovat software 
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
-1. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
-    
+2. Vyhledejte název značky pro [nejnovější verzi](https://github.com/Azure/azure-iot-sdk-c/releases/latest) sady SDK.
+
+3. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujících příkazů naklonujte nejnovější verzi úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) . Použijte značku, kterou jste našli v předchozím kroku, jako hodnotu parametru `-b`:
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
+
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-
-1. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. 
+4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-1. Sadu SDK pro svou vývojovou platformu sestavte na základě mechanismů ověřování, které budete používat. Použijte jeden z následujících příkazů (nezapomeňte u každého příkazu na dvě tečky na konci). Po dokončení CMake vytvoří podadresář `/cmake` s obsahem specifickým pro vaše zařízení:
+5. Sadu SDK pro svou vývojovou platformu sestavte na základě mechanismů ověřování, které budete používat. Použijte jeden z následujících příkazů (nezapomeňte u každého příkazu na dvě tečky na konci). Po dokončení CMake vytvoří podadresář `/cmake` s obsahem specifickým pro vaše zařízení:
  
     - Zařízení, která k ověřování používají simulátor TPM:
 
@@ -96,8 +100,9 @@ V závislosti na tom, jestli jste sestavili sadu SDK tak, aby používala ověř
 
 - U zařízení X.509 je potřeba získat certifikáty vydané pro vaše zařízení. Služba zřizování zveřejňuje dva typy položek registrace, které kontrolují přístup u zařízení používajících mechanismus ověřování X.509. Potřebné certifikáty závisí na typech registrací, které budete používat.
 
-    1. Jednotlivé registrace: registrace pro jedno konkrétní zařízení. Tento typ položky registrace vyžaduje [certifikáty koncové entity typu „list“](concepts-security.md#end-entity-leaf-certificate).
-    1. Skupiny registrací: tento typ položky registrace vyžaduje zprostředkující nebo kořenové certifikáty. Další informace najdete v části o [řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+    - Jednotlivé registrace: registrace pro jedno konkrétní zařízení. Tento typ položky registrace vyžaduje [certifikáty koncové entity typu „list“](concepts-security.md#end-entity-leaf-certificate).
+    
+    - Skupiny registrací: tento typ položky registrace vyžaduje zprostředkující nebo kořenové certifikáty. Další informace najdete v části o [řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ### <a name="simulated-devices"></a>Simulovaná zařízení
 

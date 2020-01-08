@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107094"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407833"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: nastavení geografického plotu pomocí Azure Maps
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps 
 
-K dokončení kroků v tomto kurzu postupujte podle pokynů v tématu [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) Získejte primární klíč předplatného pro váš účet.
+K dokončení kroků v tomto kurzu postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) pro vytvoření předplatného Azure Maps s cenovou úrovní S1 a postupujte podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) pro získání primárního klíče pro váš účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="upload-geofences"></a>Nahrát geografické ploty
 
@@ -56,7 +56,7 @@ Otevřete aplikaci pro vyúčtování a podle následujících pokynů nahrajte 
     
     Parametr "Al JSON" v cestě URL představuje formát dat odesílaných dat.
 
-3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí pro adresu URL požadavku POST. Nahraďte hodnotu klíč předplatného klíčem Azure Maps primární klíč předplatného.
+3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí pro adresu URL požadavku POST. Nahraďte hodnotu klíčového předplatného klíčem Azure Maps.
    
     ![Post – parametry klíč-hodnota](./media/tutorial-geofence/postman-key-vals.png)
 

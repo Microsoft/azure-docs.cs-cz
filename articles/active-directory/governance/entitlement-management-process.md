@@ -1,5 +1,5 @@
 ---
-title: Žádost o proces a e-mailová oznámení v Azure AD – Správa nároků – Azure Active Directory
+title: Oznámení o & procesu žádosti – Správa nároků Azure AD
 description: Přečtěte si o procesu požadavků pro balíček pro přístup a při posílání e-mailových oznámení v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422608"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Žádost o proces a e-mailová oznámení v Azure AD – Správa nároků
 
@@ -35,10 +35,10 @@ Uživatel, který potřebuje přístup k přístupovému balíčku, může odesl
 
 | Stav | Popis |
 | --- | --- |
-| Předán | Uživatel odešle požadavek. |
+| Odesláno | Uživatel odešle požadavek. |
 | Čeká na schválení | Pokud zásada pro balíček pro přístup vyžaduje schválení, požadavek se přesune na čeká na schválení. |
 | Platnost vypršela | Pokud žádný schvalovatel neschválí žádost v rámci časového limitu žádosti o schválení, vyprší platnost žádosti. Chcete-li akci opakovat, bude uživatel muset odeslat žádost znovu. |
-| Odepřen | Schvalovatel odepře požadavek. |
+| Zamítnutý | Schvalovatel odepře požadavek. |
 | Schválené | Schvalovatel schválí žádost. |
 | Doručování | Uživatel **nemá** přiřazený přístup ke všem prostředkům v balíčku pro přístup. Pokud se jedná o externího uživatele, uživatel pravděpodobně neotevřel adresář prostředků ještě předtím. Také možná nepřijali výzvu k vyjádření souhlasu. |
 | Doručeno | Uživatel má přiřazený přístup ke všem prostředkům v balíčku pro přístup. |
@@ -69,9 +69,9 @@ Následující diagram znázorňuje prostředí schvalovatelů fáze 1 a fáze 2
 ### <a name="email-notifications-table"></a>Tabulka e-mailových oznámení
 Následující tabulka poskytuje další podrobnosti o každé z těchto e-mailových oznámení. Pokud chcete tyto e-maily spravovat, můžete použít pravidla. Například v Outlooku můžete vytvořit pravidla pro přesun e-mailů do složky, pokud předmět obsahuje slova z této tabulky:
 
-| # | Předmět e-mailu | Při odeslání | Odesláno do |
+| # | Předmět e-mailu | Při odeslání | Odesláno uživateli |
 | --- | --- | --- | --- |
-| 1 | Požaduje se akce: schválení nebo zamítnutí přesměrovaného požadavku uživatelem *[Date]* | Tento e-mail se pošle alternativním schvalovatelům fáze-1 (po eskalaci žádosti), aby provedl akci. | Fáze 1 – alternativní schvalovatelé |
+| 1\. místo | Požaduje se akce: schválení nebo zamítnutí přesměrovaného požadavku uživatelem *[Date]* | Tento e-mail se pošle alternativním schvalovatelům fáze-1 (po eskalaci žádosti), aby provedl akci. | Fáze 1 – alternativní schvalovatelé |
 | 2 | Požaduje se akce: schválit nebo odepřít požadavek podle *[Date]* | Tento e-mail se pošle prvnímu schvalovateli, pokud je eskalace zakázaná a provede akci. | První schvalovatel |
 | 3 | Připomenutí: schvalte nebo odepřete požadavek pomocí *[Date]* pro *[žadatel]* . | Tento e-mail s připomenutím se pošle prvnímu schvalovateli, pokud je eskalace zakázaná. E-mail si vyžádá, aby probral akci, pokud ne. | První schvalovatel |
 | 4 | Schválit nebo zamítnout žádost pomocí *[Time]* dne *[Date]* | Tento e-mail se pošle prvnímu schvalovateli (Pokud je povolená eskalace), aby probral akci. | První schvalovatel |
@@ -79,8 +79,8 @@ Následující tabulka poskytuje další podrobnosti o každé z těchto e-mailo
 | 6 | Vypršela platnost žádosti pro *[access_package]* . | Tento e-mail se pošle prvnímu schvalovateli a prvnímu schvalovateli – 1 po vypršení platnosti žádosti. | První schvalovatel, fáze-1 alternativních schvalovatelů |
 | 7 | Žádost schválená pro *[žadatel]* na *[access_package]* | Tento e-mail se pošle prvnímu schvalovateli a prvnímu schvalovateli – 1 alternativním schvalovatelům při dokončení žádosti. | První schvalovatel, fáze-1 alternativních schvalovatelů |
 | 8 | Žádost schválená pro *[žadatel]* na *[access_package]* | Tento e-mail se pošle prvnímu schvalovateli a fázi 1 žádosti o 2 fázi při schválení žádosti fáze-1. | První schvalovatel, fáze-1 alternativních schvalovatelů |
-| 9 | Žádost byla zamítnuta *[access_package]* . | Tento e-mail se pošle žadateli, když je jeho žádost zamítnutá. | Žadatele |
-| 10 | Platnost vaší žádosti vypršela pro *[access_package]* . | Tento e-mail odešle žadateli na konci jedné nebo 2 fáze žádosti. E-mail oznámí žadateli, že platnost žádosti vypršela. | Žadatele |
+| 9 | Žádost byla zamítnuta *[access_package]* . | Tento e-mail se pošle žadateli, když je jeho žádost zamítnutá. | Requestor |
+| 10 | Platnost vaší žádosti vypršela pro *[access_package]* . | Tento e-mail odešle žadateli na konci jedné nebo 2 fáze žádosti. E-mail oznámí žadateli, že platnost žádosti vypršela. | Requestor |
 | 11 | Požaduje se akce: schválit nebo odepřít požadavek podle *[Date]* | Tento e-mail se pošle druhému schvalovateli, pokud je eskalace zakázaná, aby se mohla provést akce. | Druhý schvalovatel |
 | 12 | Připomenutí vyžadované akcí: schválit nebo zamítnout požadavek podle *[datum]* | Tento e-mail s připomenutím se pošle druhému schvalovateli, pokud je eskalace zakázaná. Oznámení se požádá, aby provedla akci, pokud ještě nebyla. | Druhý schvalovatel |
 | 13 | Požaduje se akce: schválit nebo zamítnout požadavek podle *[Date]* pro *[žadatel]* | Tento e-mail se pošle druhému schvalovateli, pokud je eskalace povolená a provede akci. | Druhý schvalovatel |
@@ -88,9 +88,9 @@ Následující tabulka poskytuje další podrobnosti o každé z těchto e-mailo
 | 15 | Požaduje se akce: schválení nebo zamítnutí přesměrovaného požadavku uživatelem *[Date]* | Tento e-mail se pošle alternativním schvalovatelům fáze 2, pokud je povolená eskalace, aby se tato akce mohla provést. | Fáze 2 – alternativní schvalovatele |
 | 16 | Žádost schválená pro *[žadatel]* na *[access_package]* | Tento e-mail se pošle druhým schvalovateli a fázi 2 – alternativní schvalovatele při schvalování žádosti. | Druhý schvalovatel, fáze 2 – alternativní schvalovatelé |
 | 17 | Vypršela platnost žádosti pro *[access_package]* . | Tento e-mail se pošle druhému schvalovateli nebo alternativním schvalovatelům po vypršení platnosti žádosti. | Druhý schvalovatel, fáze 2 – alternativní schvalovatelé |
-| 18 | Teď máte přístup k *[access_package]* . | Tento e-mail se pošle koncovým uživatelům, aby mohli začít používat svůj přístup. | Žadatele |
-| 19 | Rozšíří přístup pro *[access_package]* do *[Date]* . | Tento e-mail se pošle koncovým uživatelům předtím, než vyprší platnost přístupu. | Žadatele |
-| 20 | Pro *[access_package]* skončil přístup. | Tento e-mail se pošle koncovým uživatelům po vypršení platnosti přístupu. | Žadatele |
+| 18 | Teď máte přístup k *[access_package]* . | Tento e-mail se pošle koncovým uživatelům, aby mohli začít používat svůj přístup. | Requestor |
+| 19 | Rozšíří přístup pro *[access_package]* do *[Date]* . | Tento e-mail se pošle koncovým uživatelům předtím, než vyprší platnost přístupu. | Requestor |
+| 20 | Pro *[access_package]* skončil přístup. | Tento e-mail se pošle koncovým uživatelům po vypršení platnosti přístupu. | Requestor |
 
 ### <a name="access-request-emails"></a>E-maily žádostí o přístup
 

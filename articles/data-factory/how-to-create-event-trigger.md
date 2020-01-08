@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 0b1d9fad2992397a3a6768d0f5e7ff26a400a2b3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4301afafb48fb9a1b0c9e36dde9800e2b8390f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889331"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443925"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření triggeru, který spustí kanál v reakci na událost
 
@@ -30,7 +30,7 @@ Pokud chcete zobrazit Úvod a ukázku této funkce, podívejte se na následují
 
 
 > [!NOTE]
-> Integrace popsaná v tomto článku závisí na [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Ujistěte se, že vaše předplatné je zaregistrované u poskytovatele prostředků Event Grid. Další informace najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+> Integrace popsaná v tomto článku závisí na [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Ujistěte se, že vaše předplatné je zaregistrované u poskytovatele prostředků Event Grid. Další informace najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 
@@ -78,10 +78,10 @@ V předchozím příkladu je aktivační událost nakonfigurovaná tak, aby se a
 
 Následující tabulka poskytuje přehled prvků schématu, které souvisejí s triggery založenými na událostech:
 
-| **Element JSON** | **Popis** | **Typ** | **Povolené hodnoty** | **Požadovanou** |
+| **Element JSON** | **Popis** | **Typ** | **Povolené hodnoty** | **Vyžaduje** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **oboru** | ID prostředku Azure Resource Manager účtu úložiště. | Řetězec | ID Azure Resource Manager | Ano |
-| **událost** | Typ událostí, které způsobují, že se aktivační událost aktivuje. | Pole    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Ano, libovolná kombinace těchto hodnot. |
+| **událost** | Typ událostí, které způsobují, že se aktivační událost aktivuje. | Pole    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Ano, libovolná kombinace těchto hodnot. |
 | **blobPathBeginsWith** | Cesta objektu BLOB musí začínat vzorem poskytnutým pro aktivaci triggeru. `/records/blobs/december/` například aktivuje pouze Trigger objektů BLOB ve složce `december` v kontejneru `records`. | Řetězec   | | Je nutné zadat hodnotu alespoň pro jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith`. |
 | **blobPathEndsWith** | Cesta objektu BLOB musí končit vzorem poskytnutým pro aktivaci triggeru. `december/boxes.csv` například aktivuje Trigger jenom pro objekty BLOB s názvem `boxes` ve složce `december`. | Řetězec   | | Je nutné zadat hodnotu alespoň pro jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith`. |
 | **ignoreEmptyBlobs** | Bez ohledu na to, zda objekty BLOB s nulovým bajtem budou aktivovat spuštění kanálu. Ve výchozím nastavení je tato hodnota nastavena na true (pravda). | Logická hodnota | true nebo false | Ne |
@@ -93,7 +93,7 @@ V této části najdete příklady nastavení triggeru založeného na událoste
 > [!IMPORTANT]
 > Je nutné zahrnout `/blobs/` segmentu cesty, jak je znázorněno v následujících příkladech, kdykoli zadáte kontejner a složku, kontejner a soubor, nebo kontejner, složku a soubor. V případě **blobPathBeginsWith**bude uživatelské rozhraní Data Factory automaticky přidávat `/blobs/` mezi složkou a názvem kontejneru v kódu JSON triggeru.
 
-| Vlastnost | Příklad | Popis |
+| Vlastnost | Příklad: | Popis |
 |---|---|---|
 | **Cesta objektu BLOB začíná na** | `/containername/` | Přijímá události pro libovolný objekt BLOB v kontejneru. |
 | **Cesta objektu BLOB začíná na** | `/containername/blobs/foldername/` | Přijímá události pro všechny objekty BLOB v kontejneru `containername` a `foldername` složku. |

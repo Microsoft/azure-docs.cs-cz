@@ -1,5 +1,5 @@
 ---
-title: Migrace dat do Azure File Sync pomocí Azure Data Box a dalších metod
+title: Migrace dat do Azure File Sync s využitím Azure Data Box
 description: Migrujte Hromadná data způsobem, který je kompatibilní s Azure File Sync.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997787"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457378"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrace hromadných dat na Azure File Sync
 Hromadná data můžete migrovat do Azure File Sync dvěma způsoby:
@@ -51,7 +51,7 @@ Tady je postup nastavení Azure File Sync tak, aby byl kompatibilní s nástroji
 
 | Krok | Podrobnosti |
 |---|---------------------------------------------------------------------------------------|
-| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Seřazení data box](../../databox/data-box-deploy-ordered.md). Řada Data Box nabízí [několik produktů](https://azure.microsoft.com/services/storage/databox/data) , které vyhovují vašim potřebám. Po přijetí data box postupujte podle příslušné [dokumentace a zkopírujte data](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do této cesty UNC v data box:  *\\< DeviceIPAddres StorageAccountName_AzFile\> \>\<\< Název_sdílené_položky\>* . Tady je název sdílené pracovní složky. Odešlete Data Box zpět do Azure. |
+| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Seřazení data box](../../databox/data-box-deploy-ordered.md). Řada Data Box nabízí [několik produktů](https://azure.microsoft.com/services/storage/databox/data) , které vyhovují vašim potřebám. Po přijetí Data Box postupujte podle příslušné [dokumentace a zkopírujte data](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do této cesty UNC v Data Box: *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\>\<název_sdílené_položky\>* . Tady je *název sdílené pracovní* složky. Odešlete Data Box zpět do Azure. |
 | ![Krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Počkejte, než se soubory zobrazí ve sdílených složkách Azure, které jste zvolili jako dočasné pracovní sdílené složky. *Nepovolujte synchronizaci s těmito sdílenými složkami.* |
 | ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Pro každou sdílenou složku, kterou Data Box vytvořili, vytvořte novou prázdnou sdílenou složku. Tato nová sdílená složka by měla být ve stejném účtu úložiště jako sdílená složka Data Box. [Jak vytvořit novou sdílenou složku Azure](storage-how-to-create-file-share.md) |
 | ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Vytvořte skupinu synchronizace](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) ve službě synchronizace úložiště. Odkázat na prázdnou sdílenou složku jako koncový bod cloudu. Tento krok opakujte pro každou Data Box sdílenou složku. [Nastavte Azure File Sync](storage-sync-files-deployment-guide.md). |
@@ -86,6 +86,6 @@ Režim offline přenosu dat zakažte pouze v případě, že je stav **dokončen
 > [!IMPORTANT]
 > Když režim offline přenosu dat zakážete, nebudete ho moct znovu povolit, i když je stále dostupná pracovní sdílená složka z hromadné migrace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
 - [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)

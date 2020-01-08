@@ -1,5 +1,6 @@
 ---
-title: Problémy s připojením a sítí pro Microsoft Azure Cloud Services nejčastější dotazy | Microsoft Docs
+title: Problémy s připojením a sítí
+titleSuffix: Azure Cloud Services
 description: V tomto článku jsou uvedené Nejčastější dotazy týkající se připojení a sítě pro Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -14,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386744"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s připojením a sítí pro Azure Cloud Services: Nejčastější dotazy
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s připojením a sítí pro Azure Cloud Services: nejčastější dotazy
 
 Tento článek obsahuje nejčastější dotazy týkající se potíží s připojením a sítí pro [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informace o velikosti najdete na [stránce Cloud Services velikosti virtuálního počítače](cloud-services-sizes-specs.md).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Nejde si vyhradit IP adresu v cloudové službě s více VIP.
-Nejdřív se ujistěte, že je zapnutá instance virtuálního počítače, pro kterou se pokoušíte rezervovat IP adresu. Za druhé se ujistěte, že používáte rezervované IP adresy pro produkční i provozní nasazení. Neměňte nastavení během upgradu nasazení.
+Nejdřív se ujistěte, že je zapnutá instance virtuálního počítače, pro kterou se pokoušíte rezervovat IP adresu. Za druhé se ujistěte, že používáte rezervované IP adresy pro produkční i provozní nasazení. *Neměňte nastavení* během upgradu nasazení.
 
 ## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>Návody použít vzdálenou plochu, když mám NSG?
 Přidejte do NSG pravidla, která povolují provoz na portech **3389** a **20000**. Vzdálená plocha používá port **3389**. Instance cloudových služeb jsou vyrovnávány zatížení, takže nemůžete přímo určovat, ke které instanci se má připojit. Agenti *RemoteForwarder* a *RemoteAccess* SPRAVUJÍ provoz protokol RDP (Remote Desktop Protocol) (RDP) a umožňují klientovi odeslat soubor cookie RDP a zadat samostatnou instanci pro připojení. *RemoteForwarder* a *RemoteAccess* agenti vyžadují, aby byl port **20000** otevřený, což může být blokované, pokud máte NSG.
@@ -64,14 +65,14 @@ Použitý distribuční algoritmus je 5-Tuple (zdrojová IP adresa, zdrojový po
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Jak můžu přesměrovat příchozí provoz na výchozí adresu URL své cloudové služby na vlastní adresu URL?
 
-Modul pro přepis adresy URL služby IIS se dá použít k přesměrování provozu, který se nachází na výchozí adrese URL cloudové služby (například \*. cloudapp.NET), do nějakého vlastního názvu nebo adresy URL. Vzhledem k tomu, že je modul pro přepis adres URL ve výchozím nastavení povolený, a jeho pravidla jsou nakonfigurovaná v souboru Web. config aplikace, je vždycky k dispozici na virtuálním počítači bez ohledu na restartování a obnovení imagí. Další informace najdete v tématech:
+Modul pro přepis adresy URL služby IIS se dá použít k přesměrování provozu, který přichází na výchozí adresu URL pro cloudovou službu (například \*. cloudapp.net) do nějakého vlastního názvu nebo adresy URL. Vzhledem k tomu, že je modul pro přepis adres URL ve výchozím nastavení povolený, a jeho pravidla jsou nakonfigurovaná v souboru Web. config aplikace, je vždycky k dispozici na virtuálním počítači bez ohledu na restartování a obnovení imagí. Další informace najdete v tématech:
 
 - [Vytvořit pravidla pro přepsání pro modul URL pro přepis](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Odebrat výchozí odkaz](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Jak můžu blokovat nebo zakázat příchozí provoz na výchozí adresu URL mé cloudové služby?
 
-Můžete zabránit příchozímu provozu na výchozí adresu URL nebo název vaší cloudové služby (například \*. cloudapp.NET). V části Konfigurace vazeb webu v souboru definice cloudové služby (*.\.csdef) nastavte hlavičku hostitele na vlastní název DNS (například www MyCloudService.com), jak je uvedeno níže:
+Můžete zabránit příchozímu provozu na výchozí adresu URL nebo název vaší cloudové služby (například \*. cloudapp.net). V části Konfigurace vazeb webu v souboru definice cloudové služby (*. csdef) nastavte hlavičku hostitele na vlastní název DNS (například www\.MyCloudService.com), jak je uvedeno níže:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

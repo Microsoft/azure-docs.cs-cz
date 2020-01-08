@@ -1,5 +1,5 @@
 ---
-title: Datový model Azure Telemetrie Application Insights – sledovací telemetrie | Microsoft Docs
+title: Datový model Azure Application Insights – sledovací telemetrie
 description: Application Insights datový model pro telemetrii trasování
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,16 +8,16 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 855a93d8a6350c625fe0820fae83644aec3459ed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 6e188039a86f4c655df3098be1d769668dcf3571
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678121"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407134"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Sledovací telemetrie: datový model Application Insights
 
-Telemetrie trasování (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje `printf` příkazy pro trasování stylu, které jsou prohledávány při hledání textu. `Log4Net`, `NLog` a další textové položky souborů protokolu jsou přeloženy do instancí tohoto typu. Trasování nemá měření jako rozšiřitelnost.
+Telemetrie trasování (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje `printf` příkazy pro trasování stylu, které jsou prohledávány při hledání textu. `Log4Net`, `NLog`a další textové položky souborů protokolu jsou přeloženy do instancí tohoto typu. Trasování nemá měření jako rozšiřitelnost.
 
 ## <a name="message"></a>Zpráva
 

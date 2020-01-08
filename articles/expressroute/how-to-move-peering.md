@@ -5,15 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: f9ed841d347d99a2208971d164bbd7b9044e3b09
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436836"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Přesunout veřejného partnerského vztahu k partnerskému vztahu Microsoftu
 
@@ -83,9 +82,8 @@ Konfigurace filtrů směrování pomocí některého z následujících článk�
 
 Po ověření, že je nakonfigurován partnerský vztah Microsoftu a předpony, které chcete využívat jsou správně inzerované na partnerský vztah Microsoftu, pak můžete odstranit veřejný partnerský vztah. K odstranění veřejného partnerského vztahu, použijte některou z následujících článcích:
 
-* [Odstranění veřejného partnerského vztahu Azure pomocí webu Azure portal](expressroute-howto-routing-portal-resource-manager.md#deletepublic)<br>
-* [Odstranění veřejného partnerského vztahu Azure pomocí Azure Powershellu](expressroute-howto-routing-arm.md#deletepublic)<br>
-* [Odstranění veřejného partnerského vztahu Azure pomocí rozhraní příkazového řádku](howto-routing-cli.md#deletepublic)
+* [Odstranění veřejného partnerského vztahu Azure pomocí Azure Powershellu](about-public-peering.md#powershell)
+* [Odstranění veřejného partnerského vztahu Azure pomocí rozhraní příkazového řádku](about-public-peering.md#cli)
   
 ## <a name="view"></a>5. zobrazení partnerských vztahů
   

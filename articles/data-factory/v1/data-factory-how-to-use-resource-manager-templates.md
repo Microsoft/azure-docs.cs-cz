@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d9ee060b7d1f7a443357c7116c01e8aaf972e666
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 96adcfa4bbfc4ed0066ccfbdbe57f9840e8b07f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438810"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Vytváření Azure Data Factory entit pomocí šablon
 > [!NOTE]
@@ -32,7 +32,7 @@ V takovém případě se úkol musí opakovat ve stejném prostředí, ale s rů
 Vzhledem k tomu, že organizace chce nasadit tyto 10 datových továrn několikrát v různých prostředích, mohou šablony použít tuto reužitečnost **tím, že** využívá samostatné soubory parametrů pro vývoj, testování a produkční prostředí.
 
 ## <a name="templating-with-azure-resource-manager"></a>Šablonování s Azure Resource Manager
-[Šablony Azure Resource Manager](../../azure-resource-manager/template-deployment-overview.md) představují skvělý způsob, jak dosáhnout šablonování v Azure Data Factory. Správce prostředků šablony definují infrastrukturu a konfiguraci řešení Azure prostřednictvím souboru JSON. Vzhledem k tomu, že šablony Azure Resource Manager fungují se všemi/nejvíc službami Azure, je možné je široce využít ke snadné správě všech prostředků vašich assetů Azure. Další informace o šablonách Správce prostředků obecně najdete v tématu [vytváření Azure Resource Manager šablon](../../azure-resource-manager/resource-group-authoring-templates.md) .
+[Šablony Azure Resource Manager](../../azure-resource-manager/template-deployment-overview.md) představují skvělý způsob, jak dosáhnout šablonování v Azure Data Factory. Správce prostředků šablony definují infrastrukturu a konfiguraci řešení Azure prostřednictvím souboru JSON. Vzhledem k tomu, že šablony Azure Resource Manager fungují se všemi/nejvíc službami Azure, je možné je široce využít ke snadné správě všech prostředků vašich assetů Azure. Další informace o šablonách Správce prostředků obecně najdete v tématu [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md) .
 
 ## <a name="tutorials"></a>Kurzy
 Podrobné pokyny k vytváření Data Factory entit pomocí šablon Správce prostředků najdete v následujících kurzech:

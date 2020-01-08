@@ -1,26 +1,15 @@
 ---
-title: Vytvoření aplikace .NET pro Service Fabric v Azure | Microsoft Docs
+title: Vytvoření aplikace .NET v Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci s front-endem v ASP.NET Core a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b5acee47a13e0faa538c5d8464835297088d03e8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465472"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -28,7 +17,7 @@ Tento kurz je první částí série.  Dozvíte se, jak vytvořit aplikaci Azure
 
 ![AngularJS + ASP. NET API front end, připojení ke stavové back-endové službě na Service Fabric](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
-V první části této série se naučíte:
+V první části tohoto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořit službu webového rozhraní API pro ASP.NET Core jako spolehlivou stavovou službu
@@ -180,7 +169,7 @@ Otevřete **Views/Home/Index.cshtml**, což je zobrazení specifické pro kontro
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>Aktualizace souboru _Layout.cshtml
+### <a name="update-the-_layoutcshtml-file"></a>Aktualizace souboru _Layout.cshtml
 
 Otevřete **Views/Shared/_Layout.cshtml**, což je výchozí rozložení aplikace ASP.NET.  Nahraďte jeho obsah následujícím kódem a pak uložte provedené změny.
 

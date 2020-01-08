@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 3f7ba22fa8e2a8709fc37a891b3da64b6d83e654
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2fd5867d910d29533eb17a4660039cc7b9610290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449843"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověřování řešení Batch Management se službou Active Directory
 
@@ -35,7 +35,7 @@ Další informace o používání knihovny Batch Management .NET a ukázky služ
 
 Služba Azure [Active Directory Authentication Library][aad_adal] (ADAL) poskytuje programový rozhraní pro Azure AD pro použití v rámci svých aplikací. Pokud chcete volat ADAL z vaší aplikace, musíte aplikaci zaregistrovat v tenantovi Azure AD. Při registraci aplikace zadáte Azure AD s informacemi o vaší aplikaci, včetně názvu v rámci tenanta Azure AD. Azure AD pak poskytuje ID aplikace, které použijete k přidružení aplikace k Azure AD za běhu. Další informace o ID aplikace najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Pokud chcete zaregistrovat ukázkovou aplikaci službu AccountManagement, postupujte podle kroků v části [Přidání aplikace](../active-directory/develop/quickstart-register-app.md) v tématu [integrace aplikací s Azure Active Directory][aad_integrate]. Zadejte **nativní klientskou aplikaci** pro daný typ aplikace. Oborový standard OAuth 2,0 identifikátor URI pro **identifikátor URI přesměrování** je `urn:ietf:wg:oauth:2.0:oob`. Můžete ale pro **identifikátor URI přesměrování**zadat jakýkoli platný identifikátor URI `http://myaccountmanagementsample`(například), protože nemusí být skutečným koncovým bodem:
+Pokud chcete zaregistrovat ukázkovou aplikaci službu AccountManagement, postupujte podle kroků v části [Přidání aplikace](../active-directory/develop/quickstart-register-app.md) v tématu [integrace aplikací s Azure Active Directory][aad_integrate]. Zadejte **nativní klientskou aplikaci** pro daný typ aplikace. Oborový standardní identifikátor URI OAuth 2,0 pro **identifikátor URI přesměrování** je `urn:ietf:wg:oauth:2.0:oob`. Pro **identifikátor URI přesměrování**však můžete zadat jakýkoli platný identifikátor URI (například `http://myaccountmanagementsample`), protože nemusí být skutečným koncovým bodem:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -47,7 +47,7 @@ Po dokončení procesu registrace uvidíte ID aplikace a ID objektu (instanční
 
 V dalším kroku budete muset delegovat přístup k vaší aplikaci na rozhraní Azure Resource Manager API. Identifikátor Azure AD pro rozhraní Správce prostředků API je **rozhraní API pro správu služeb Windows Azure**.
 
-Postupujte podle následujících kroků v Azure Portal:
+Na webu Azure Portal postupujte podle těchto pokynů:
 
 1. V levém navigačním podokně Azure Portal vyberte **všechny služby**, klikněte na **Registrace aplikací**a pak klikněte na **Přidat**.
 2. V seznamu registrací aplikací vyhledejte název vaší aplikace:
@@ -58,7 +58,7 @@ Postupujte podle následujících kroků v Azure Portal:
 4. Kliknutím na **Přidat** přidejte nové požadované oprávnění. 
 5. V kroku 1 zadejte **Windows Azure rozhraní API pro správu služeb**, vyberte toto rozhraní API ze seznamu výsledků a klikněte na tlačítko **Vybrat** .
 6. V kroku 2 zaškrtněte políčko vedle **přístupu k modelu nasazení Azure Classic jako uživatelé organizace**a klikněte na tlačítko **Vybrat** .
-7. Klikněte na tlačítko Hotovo.
+7. Klikněte na tlačítko **Hotovo** .
 
 Okno **požadovaná oprávnění** teď zobrazuje, že oprávnění k vaší aplikaci se udělují rozhraním API ADAL i správce prostředků. Při první registraci aplikace v Azure AD jsou oprávnění ve výchozím nastavení udělena službě ADAL.
 
@@ -137,4 +137,4 @@ Pokud chcete ověřit aplikace služby Batch pomocí Azure AD, přečtěte si t�
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Integrace aplikací s Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: https://portal.azure.com
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md

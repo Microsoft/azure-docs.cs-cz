@@ -1,7 +1,7 @@
 ---
 title: Správa životního cyklu aplikací
 titleSuffix: ML Studio (classic) - Azure
-description: Použijte osvědčené postupy pro správu životního cyklu aplikací v klasické verzi Azure Machine Learning Studio
+description: Použití osvědčených postupů pro správu životního cyklu aplikací v Azure Machine Learning Studio (Classic)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,15 +9,15 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: 2dd401918edc0b2d08390b1012efbf44fe2be1e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3cc659bf633c74dab785b696cafb364974926aec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432226"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Správa životního cyklu aplikací v Azure Machine Learning Studio (Classic)
-Azure Machine Learning Studio (Classic) je nástroj pro vývoj experimentů strojového učení, které jsou provozované na cloudové platformě Azure. Vypadá to, že integrované vývojové prostředí (IDE) sady Visual Studio a Škálovatelná cloudová služba se sloučí do jediné platformy. Do klasické verze Azure Machine Learning Studio můžete zahrnout standardní postupy správy životního cyklu aplikací (ALM) od různých prostředků k automatizovanému spouštění a nasazování. Tento článek popisuje některé z možností a přístupů.
+Azure Machine Learning Studio (Classic) je nástroj pro vývoj experimentů strojového učení, které jsou provozované na cloudové platformě Azure. Vypadá to, že integrované vývojové prostředí (IDE) sady Visual Studio a Škálovatelná cloudová služba se sloučí do jediné platformy. Můžete začlenit standardní postupy správy životního cyklu aplikací (ALM) od různých prostředků k automatizovanému spouštění a nasazování do Azure Machine Learning Studio (Classic). Tento článek popisuje některé z možností a přístupů.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -25,7 +25,7 @@ Azure Machine Learning Studio (Classic) je nástroj pro vývoj experimentů stro
 Existují dva doporučené způsoby verze experimentů. Můžete buď spoléhat na vestavěnou historii spuštění, nebo exportovat experiment ve formátu JSON, abyste ho mohli externě spravovat. Každý přístup se dodává s jeho specialisty a nevýhody.
 
 ### <a name="experiment-snapshots-using-run-history"></a>Experimentování snímků pomocí historie spuštění
-V modelu spuštění klasické verze Azure Machine Learning Studio výuky experimentů se Plánovači úloh odesílá neproměnlivý snímek experimentu pokaždé, když v editoru experimentů kliknete na **Spustit** . Chcete-li zobrazit tento seznam snímků, klikněte na panelu příkazů v zobrazení Editor experimentů na příkaz **Spustit historii** .
+V modelu spuštění výukového experimentu pro Azure Machine Learning Studio (Classic) se do plánovače úloh odesílá neproměnlivý snímek experimentu pokaždé, když v editoru experimentů kliknete na **Spustit** . Chcete-li zobrazit tento seznam snímků, klikněte na panelu příkazů v zobrazení Editor experimentů na příkaz **Spustit historii** .
 
 ![Tlačítko historie spuštění](./media/version-control/runhistory.png)
 
@@ -33,17 +33,17 @@ Snímek můžete otevřít v uzamčeném režimu kliknutím na název experiment
 
 ![Spustit seznam historie](./media/version-control/runhistorylist.png)
 
-Po otevření můžete experiment snímků uložit jako nový experiment a pak ho upravit. Pokud snímek experimentu obsahuje prostředky, jako jsou například školené modely, transformace nebo datové sady, které mají aktualizované verze, snímek při pořízení snímku zachová odkazy na původní verzi. Pokud jste uzamčený snímek uložili jako nový experiment, klasická verze Azure Machine Learning Studio detekuje existenci novější verze těchto assetů a automaticky je aktualizuje v novém experimentu.
+Po otevření můžete experiment snímků uložit jako nový experiment a pak ho upravit. Pokud snímek experimentu obsahuje prostředky, jako jsou například školené modely, transformace nebo datové sady, které mají aktualizované verze, snímek při pořízení snímku zachová odkazy na původní verzi. Pokud uložíte uzamčený snímek jako nový experiment, Azure Machine Learning Studio (Classic) zjistí existenci novější verze těchto assetů a automaticky je aktualizuje v novém experimentu.
 
 Při odstranění experimentu se odstraní všechny snímky tohoto experimentu.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Experiment pro export/import ve formátu JSON
-Snímky historie spuštění udržují neproměnlivou verzi experimentu v klasické verzi Azure Machine Learning Studio pokaždé, když se odešle ke spuštění. Můžete také uložit místní kopii experimentu a vrátit ji se změnami do svého oblíbeného systému správy zdrojového kódu, jako je například Team Foundation Server a později znovu vytvořit experiment z tohoto místního souboru. K tomu můžete použít [Azure Machine Learning PowerShell](https://aka.ms/amlps) rutin [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) a [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) .
+Snímky historie spuštění udržují neproměnlivou verzi experimentu v Azure Machine Learning Studio (Classic) pokaždé, když se odešle ke spuštění. Můžete také uložit místní kopii experimentu a vrátit ji se změnami do svého oblíbeného systému správy zdrojového kódu, jako je například Team Foundation Server a později znovu vytvořit experiment z tohoto místního souboru. K tomu můžete použít [Azure Machine Learning PowerShell](https://aka.ms/amlps) rutin [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) a [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) .
 
 Soubor JSON je textová reprezentace grafu experimentu, která může obsahovat odkaz na prostředky v pracovním prostoru, jako je například datová sada nebo trained model. Neobsahuje serializovanou verzi assetu. Pokud se pokusíte importovat dokument JSON zpátky do pracovního prostoru, musí již existovat odkazované prostředky se stejnými ID assetů, na které se odkazuje v experimentu. V opačném případě nemůžete získat přístup k importovanému experimentu.
 
 ## <a name="versioning-trained-model"></a>Model vyškolený pro správu verzí
-Vyškolený model v klasické verzi Azure Machine Learning Studio je serializovaný do formátu označovaného jako soubor iLearner (`.iLearner`) a je uložený v účtu služby Azure Blob Storage, který je přidružený k pracovnímu prostoru. Jedním ze způsobů, jak získat kopii souboru iLearner, je prostřednictvím rozhraní API pro přeškolení. [Tento článek](/azure/machine-learning/studio/retrain-machine-learning-model) vysvětluje, jak funguje rozhraní API pro přeškolení. Postup vysoké úrovně:
+Vyškolený model v Azure Machine Learning Studio (Classic) je serializován do formátu označovaného jako soubor iLearner (`.iLearner`) a je uložen v účtu služby Azure Blob Storage přidruženém k pracovnímu prostoru. Jedním ze způsobů, jak získat kopii souboru iLearner, je prostřednictvím rozhraní API pro přeškolení. [Tento článek](/azure/machine-learning/studio/retrain-machine-learning-model) vysvětluje, jak funguje rozhraní API pro přeškolení. Postup vysoké úrovně:
 
 1. Nastavte experiment pro školení.
 2. Přidejte výstupní port webové služby do modulu výuka modelu nebo modul, který vytváří trained model, jako je například předparametr ladění modelu nebo vytvoření modelu R.
@@ -75,12 +75,12 @@ V průběhu času může být ve stejné webové službě vytvořeno mnoho konco
 Můžete také vytvořit mnoho identických koncových bodů webové služby a poté opravit různé verze souboru iLearner do koncového bodu, abyste dosáhli podobného efektu. [Tento článek](create-models-and-endpoints-with-powershell.md) podrobně vysvětluje, jak to provést.
 
 ### <a name="new-web-service"></a>Nová webová služba
-Pokud vytvoříte novou Azure Resource Manager webovou službu, konstrukce koncového bodu již nebude k dispozici. Místo toho můžete vygenerovat soubory WSD (Web Service Definition) ve formátu JSON z prediktivního experimentu pomocí rutiny [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) prostředí PowerShell rutiny nebo pomocí [*exportu AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) . PowerShell se rutiny z nasazené webové služby založené na Správce prostředků.
+Pokud vytvoříte novou Azure Resource Manager webovou službu, konstrukce koncového bodu již nebude k dispozici. Místo toho můžete vygenerovat soubory WSD (Web Service Definition) ve formátu JSON z prediktivního experimentu pomocí rutiny [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell rutiny nebo pomocí rutiny [*Export-AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell rutiny z nasazené webové služby založené na správce prostředků.
 
 Až budete mít exportovaný soubor WSD a správu verzí, můžete ho nasadit taky jako novou webovou službu v jiném plánu webové služby v jiné oblasti Azure. Stačí se ujistit, že jste zadali správnou konfiguraci účtu úložiště i nové ID plánu Web Service. Chcete-li opravit v různých souborech iLearner, můžete upravit soubor WSD a aktualizovat odkaz na umístění pro vyškolený model a nasadit ho jako novou webovou službu.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Automatizace provádění a nasazování experimentů
-Důležitým aspektem ALM je umožnit automatizaci procesu provádění a nasazení aplikace. V klasické verzi Azure Machine Learning Studio můžete to provést pomocí [modulu PowerShellu](https://aka.ms/amlps). Tady je příklad komplexních kroků, které jsou důležité pro standardní proces spuštění nebo nasazení ALM pomocí [modulu PowerShellu pro Azure Machine Learning Studio (Classic)](https://aka.ms/amlps). Každý krok je propojený s jedním nebo více rutiny prostředí PowerShell, které můžete použít k provedení tohoto kroku.
+Důležitým aspektem ALM je umožnit automatizaci procesu provádění a nasazení aplikace. V Azure Machine Learning Studio (Classic) to můžete provést pomocí [modulu PowerShellu](https://aka.ms/amlps). Tady je příklad komplexních kroků, které jsou důležité pro standardní proces spuštění nebo nasazení ALM pomocí [modulu PowerShellu pro Azure Machine Learning Studio (Classic)](https://aka.ms/amlps). Každý krok je propojený s jedním nebo více rutiny prostředí PowerShell, které můžete použít k provedení tohoto kroku.
 
 1. [Nahrajte datovou sadu](https://github.com/hning86/azuremlps#upload-amldataset).
 2. Do pracovního prostoru zkopírujte experiment z [pracovního prostoru](https://github.com/hning86/azuremlps#copy-amlexperiment) nebo z [Galerie](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)nebo [naimportujte](https://github.com/hning86/azuremlps#import-amlexperimentgraph) [exportovaný](https://github.com/hning86/azuremlps#export-amlexperimentgraph) experiment z místního disku.

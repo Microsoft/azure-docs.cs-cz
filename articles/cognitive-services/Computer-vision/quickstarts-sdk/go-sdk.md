@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro cestách | Microsoft Docs'
+title: 'Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro přejít'
 titleSuffix: Azure Cognitive Services
-description: Začínáme s klientskou knihovnou Počítačové zpracování obrazu pro přejít.
+description: Začněte s tímto rychlým startem pomocí Počítačové zpracování obrazu klientské knihovny pro.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.author: pafarley
-ms.openlocfilehash: f05ef80d34d1c0635bdcdca244aacba6185565fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382305"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>Rychlý Start: Počítačové zpracování obrazu klientskou knihovnu pro přejít
 
@@ -28,7 +28,7 @@ Pomocí klientské knihovny Počítačové zpracování obrazu můžete přejít
 
 [Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision) |  | [balíčku](https://github.com/Azure/azure-sdk-for-go) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
@@ -264,4 +264,4 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 > [Odkaz na rozhraní API pro počítačové zpracování obrazu (Přejít)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
 
 * [Co je rozhraní API pro počítačové zpracování obrazu?](../Home.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go).
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go)

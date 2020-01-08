@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922295"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422348"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydání verze
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -31,16 +31,27 @@ Téma |  Podrobnosti
 --------- | --------- |
 Postup upgradu z Azure AD Connect | Různé metody [upgradu z předchozí verze na nejnovější](how-to-upgrade-previous-version.md) verzi Azure AD Connect.
 Požadovaná oprávnění | Oprávnění potřebná k použití aktualizace najdete v tématu [účty a oprávnění](reference-connect-accounts-permissions.md#upgrade).
-Ke stažení| [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Stáhnout| [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Vydání nové verze Azure AD Connect je proces, který vyžaduje několik kroků řízení kvality, aby se zajistila funkčnost této služby. při tomto procesu se ale aktualizuje číslo verze nové verze a také stav vydání. odrážet nejnovější stav.
 I když procházíme tímto procesem, číslo verze vydaných verzí se zobrazí s číslem "X" v umístění vedlejší verze, jako v "1.3. X. 0" – to znamená, že poznámky k verzi v tomto dokumentu jsou platné pro všechny verze začínající znakem "1,3". Po dokončení procesu vydávání verzí bude číslo vydané verze aktualizováno na nejnovější vydanou verzi a stav vydání bude aktualizován na hodnotu Vydáno ke stažení a automatický upgrade.
 Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. Další informace o [automatickém upgradu](how-to-connect-install-automatic-upgrade.md) získáte pomocí tohoto odkazu.
 
+>[!IMPORTANT]
+> Od 1. listopadu 2020 zahájíme implementaci procesu vyřazení, přičemž verze Azure AD Connect vydané před více než 18 měsíci budou zastaralé. V tuto chvíli zahájíme tento proces tím, že vyřadíme všechny verze Azure AD Connect s verzí 1.1.751.0 (které byly vydané na 4/12/2018) a starší, a budeme pokračovat, abychom vyhodnotili vyřazení starších verzí Azure AD Connect pokaždé, když dojde k vydání nových verzí.
+>
+> Abyste získali optimální prostředí podpory, musíte mít jistotu, že používáte nejnovější verzi Azure AD Connect. 
+>
+>Pokud spustíte zastaralou verzi Azure AD Connect nebudete mít k dispozici nejnovější opravy zabezpečení, vylepšení výkonu, řešení potíží a diagnostické nástroje a vylepšení služeb. Pokud ale potřebujete podporu, můžeme vám být schopni poskytnout úroveň služba, kterou vaše organizace potřebuje.
+>
+>Pokud jste povolili Azure AD Connect pro synchronizaci, brzy automaticky zahájíte přijímání oznámení o stavu, která vás upozorní na nadcházející vyřazení, pokud používáte některou ze starších verzí.
+>
+>Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) .
+
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Stav verze
-12/6/2019: vydaná verze ke stažení Není k dispozici prostřednictvím automatického upgradu.
+12/9/2019: vydaná verze ke stažení Není k dispozici prostřednictvím automatického upgradu.
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 - Aktualizovali jsme synchronizaci hodnot hash hesel, aby Azure AD Domain Services správně zohlednila odsazení v hodnotách hash protokolu Kerberos.  Tím se zajistí zlepšení výkonu při synchronizaci hesel z AAD do Azure AD Domain Services.
 - Přidali jsme podporu spolehlivých relací mezi ověřovacím agentem a Service Bus.
@@ -49,7 +60,7 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 - Přidali jsme možnost zaměřit se na konkrétního agenta z cloudu na testování připojení agenta.
 
 ### <a name="fixed-issues"></a>Oprava potíží
-- Verze 1.4.18.0 využívala chybu, při které rutina PowerShellu pro DSSO používala přihlašovací údaje přihlašovacích údajů systému Windows místo přihlašovacích údajů správce, které jste zadali při spuštění PS. V důsledku toho nebylo možné povolit DSSO ve více doménových strukturách prostřednictvím uživatelského rozhraní AADConnect. 
+- Verze 1.4.18.0 využívala chybu, při které rutina PowerShellu pro DSSO používala přihlašovací údaje přihlašovacího uživatele systému Windows místo přihlašovacích údajů správce, které jste zadali při spuštění PS. V důsledku toho nebylo možné povolit DSSO ve více doménových strukturách prostřednictvím uživatelského rozhraní AADConnect. 
 - Byla provedena oprava umožňující DSSO současně ve všech doménových strukturách prostřednictvím uživatelského rozhraní AADConnect.
 
 ## <a name="14320"></a>1.4.32.0

@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem
+title: Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem – ukázka PowerShellu
 description: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 12a5aa8ee51ffe494f4e8b06a8c33c2d28d16c18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4514940918f33ee28fc4195b821018df54252e13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039005"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368484"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>Vytvoření virtuálního počítače s použitím existujícího spravovaného disku s operačním systémem pomocí PowerShellu
 
@@ -49,7 +49,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 Tento skript k získání vlastností spravovaného disku, připojení spravovaného disku k novému virtuálnímu počítači a vytvoření virtuálního počítače používá následující příkazy. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/Get-AzDisk) | Získá objekt disku na základě názvu a skupiny prostředků disku. Vlastnost ID vráceného objektu disku se použije k připojení disku k novému virtuálnímu počítači. |
 | [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |

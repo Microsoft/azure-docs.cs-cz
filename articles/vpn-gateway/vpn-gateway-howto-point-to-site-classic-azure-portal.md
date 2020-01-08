@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: d28893133c27fe4945918071c60b889e997b775b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 01327d24aebee02c3b14594c2b0b2f2f175211fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450803"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-site pomocí ověřování certifikátů (Classic)
 
@@ -87,13 +87,13 @@ Než začnete, ověřte, že máte předplatné Azure. Pokud ještě nemáte př
 
 ### <a name="part-1-create-a-virtual-network"></a>Část 1: Vytvoření virtuální sítě
 
-Pokud ještě nemáte virtuální síť (VNet), vytvořte ji. Snímky obrazovek slouží jen jako příklady. Nezapomeňte hodnoty nahradit vlastními. Pokud chcete vytvořit virtuální síť přes Azure Portal, použijte následující postup:
+Pokud ještě nemáte virtuální síť (VNet), vytvořte ji. Snímky obrazovek slouží jen jako příklady. Hodnoty na obrázcích nahraďte vlastními hodnotami. Pokud chcete vytvořit virtuální síť přes Azure Portal, použijte následující postup:
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**. Otevře se **Nová** stránka.
+1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**. **Nový** otevře se stránka.
 
-2. Do pole **Hledat na Marketplace** zadejte *Virtual Network* a ze vráceného seznamu vyberte **virtuální síť** . Otevře se stránka **virtuální síť** .
+2. V **Hledat na marketplace** zadejte *virtuální sítě* a vyberte **virtuální síť** z vráceném seznamu. **Virtuální síť** otevře se stránka.
 
-3. V seznamu **Vybrat model nasazení** vyberte **Classic**a pak vyberte **vytvořit**. Otevře se stránka **vytvořit virtuální síť** .
+3. V seznamu **Vybrat model nasazení** vyberte **Classic**a pak vyberte **vytvořit**. **Vytvořit virtuální síť** otevře se stránka.
 
 4. Na stránce **Vytvořit virtuální síť** nakonfigurujte nastavení virtuální sítě. Na této stránce přidáte první adresní prostor a jeden rozsah adres podsítě. Po dokončení vytváření sítě VNet můžete přejít zpět a přidat další podsítě a adresní prostory.
 
@@ -101,7 +101,7 @@ Pokud ještě nemáte virtuální síť (VNet), vytvořte ji. Snímky obrazovek 
 
 5. V rozevíracím seznamu vyberte **předplatné** , které chcete použít.
 
-6. Vyberte existující **skupinu prostředků**. Případně vytvořte novou skupinu prostředků tak, že vyberete **vytvořit novou** a zadáte název. Pokud vytváříte novou skupinu prostředků, pojmenujte skupinu prostředků podle svých plánovaných hodnot konfigurace. Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#resource-groups).
+6. Vyberte existující **skupinu prostředků**. Případně vytvořte novou skupinu prostředků tak, že vyberete **vytvořit novou** a zadáte název. Pokud vytváříte novou skupinu prostředků, pojmenujte skupinu prostředků podle svých plánovaných hodnot konfigurace. Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md#resource-groups).
 
 7. Vyberte **umístění** pro virtuální síť. Toto nastavení určuje zeměpisné umístění prostředků, které nasadíte do této virtuální sítě.
 

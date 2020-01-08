@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: dcd2f5f00c00ce0f74c07bfb7ba8e81316d9a53e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459985"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Nahrání virtuálního pevného disku do Azure pomocí Azure PowerShell
 
@@ -27,7 +27,7 @@ V současné době se podporuje přímé nahrávání pro disky Standard HDD, St
 
 - Stáhněte si nejnovější [verzi nástroje AzCopy v10 za účelem](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Nainstalujte modul Azure PowerShell](/powershell/azure/install-Az-ps).
-- Pokud máte v úmyslu nahrát VHD z PEM: virtuální pevný disk [připravený pro Azure](prepare-for-upload-vhd-image.md), uložený místně.
+- Pokud máte v úmyslu nahrát VHD z místního prostředí: virtuální pevný disk [připravený pro Azure](prepare-for-upload-vhd-image.md), uložený místně.
 - Nebo spravovaný disk v Azure, pokud máte v úmyslu provést akci kopírování.
 
 ## <a name="create-an-empty-managed-disk"></a>Vytvoření prázdného spravovaného disku

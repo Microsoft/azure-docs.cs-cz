@@ -1,51 +1,42 @@
 ---
-title: Běžné výjimky FabricClient | Dokumentace Microsoftu
-description: Popisuje běžné výjimky a chyby, které mohou být vyvolány pomocí rozhraní API FabricClient při provádění aplikace a operace správy clusterů.
-services: service-fabric
-documentationcenter: .net
+title: Byly vyvolány běžné výjimky FabricClient
+description: Popisuje běžné výjimky a chyby, které mohou být vyvolány rozhraními API FabricClient při provádění operací správy aplikací a clusterů.
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: bb821313-b221-479f-b08e-36cf07e60a07
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/20/2018
 ms.author: oanapl
-ms.openlocfilehash: 5bf17f4ced6bb01d8b62b6fa40ed1aeffe6f712f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ad3097a490d4728e05ea90652c17c24b79cac2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457931"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Běžné výjimky a chyby při práci s rozhraními API FabricClient
-[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) rozhraní API umožňují správcům aplikací a clusteru k provádění úloh správy v aplikaci Service Fabric, služby nebo clusteru. Například nasazení aplikace, upgrade a odebrání, kontrola stavu clusteru nebo testování služby. Vývojáři aplikací a Správce clusterů můžete použít rozhraní API FabricClient pro vývoj aplikací pro správu clusteru Service Fabric a aplikací.
+Rozhraní [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API umožňují správcům clusterů a aplikací provádět úlohy správy Service Fabric aplikace, služby nebo clusteru. Například nasazení aplikace, upgrade a odebrání, kontrola stavu clusteru nebo testování služby. Vývojáři aplikací a Správci clusterů můžou používat rozhraní FabricClient API k vývoji nástrojů pro správu Service Fabric clusteru a aplikací.
 
-Existuje mnoho různých typů operací, které je možné provádět pomocí FabricClient.  Každá metoda může vyvolat výjimky, chyby kvůli nesprávný vstup, chyby za běhu nebo problémů s infrastrukturou přechodné.  Zobrazit referenční dokumentaci rozhraní API k vyhledání výjimek, které jsou vyvolány pomocí konkrétní metody. Existují některé výjimky, ale které mohou být vyvolány mnoho různých [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) rozhraní API. V následující tabulce jsou uvedeny výjimky, které jsou společné pro rozhraní API FabricClient.
+Existuje mnoho různých typů operací, které lze provést pomocí FabricClient.  Každá metoda může vyvolat výjimky z důvodu nesprávného vstupu, chyb za běhu nebo přechodných problémů infrastruktury.  V dokumentaci Reference k rozhraní API najdete informace o tom, které výjimky jsou vyvolány konkrétní metodou. Existují však některé výjimky, které mohou být vyvolány mnoha různými [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) rozhraními API. V následující tabulce jsou uvedeny výjimky, které jsou společné napříč FabricClient rozhraními API.
 
 | Výjimka | Vyvolána, když |
 | --- |:--- |
-| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) objektu je v uzavřeném stavu. Vyřazení [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) používáte a vytvoření instance nového objektu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) objektu. |
-| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |Vypršel časový limit operace. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) je vrácena, když operace trvá déle než MaxOperationTimeout dokončete. |
-| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |Kontrola přístupu pro operace se nezdařila. E_ACCESSDENIED je vrácena. |
-| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |Při provádění operace došlo k chybě za běhu. Některé z metod FabricClient může potenciálně vyvolat [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception), [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception.ErrorCode) vlastnost určuje přesné příčině výjimky. Kódy chyb jsou definovány v [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) výčtu. |
-| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception) |Operace se nezdařila z důvodu přechodných chybový stav určitého druhu. Operace může například selhat, protože kvorum replik je dočasně nedostupná. Přechodným výjimkám odpovídají neúspěšné operace, které umožňují opakovaný pokus. |
+| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |Objekt [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) je v zavřeném stavu. Vyřazení objektu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) , který používáte, a vytvoření instance nového objektu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) . |
+| [System. TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |Vypršel časový limit operace. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) se vrátí, když operace trvá déle než MaxOperationTimeout. |
+| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |Ověření přístupu k operaci se nezdařilo. Je vrácena E_ACCESSDENIED. |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |Při provádění operace došlo k chybě modulu runtime. Kterákoli z metod FabricClient může potenciálně vyvolat [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception), vlastnost [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception.ErrorCode) indikuje přesný důvod výjimky. Kódy chyb jsou definovány ve výčtu [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) . |
+| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception) |Operace se nezdařila z důvodu přechodné chybové podmínky nějakého druhu. Operace může například selhat, protože kvorum replik je dočasně nedosažitelné. Přechodné výjimky odpovídají neúspěšným operacím, které lze opakovat. |
 
-Některé běžné [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) chyby, které mohou být vráceny v [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception):
+Některé běžné chyby [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) , které mohou být vráceny v [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception):
 
 | Chyba | Podmínka |
 | --- |:--- |
-| CommunicationError |Komunikační chyba způsobila operace, která se nezdaří, zkuste operaci zopakovat. |
+| CommunicationError |Chyba komunikace způsobila selhání operace, zkuste operaci zopakovat. |
 | InvalidCredentialType |Typ přihlašovacích údajů je neplatný. |
 | InvalidX509FindType |X509FindType je neplatný. |
-| InvalidX509StoreLocation |X509 umístění úložiště je neplatný. |
-| InvalidX509StoreName |X509 název úložiště je neplatný. |
-| InvalidX509Thumbprint |X509 řetězec kryptografického otisku certifikátu je neplatný. |
-| InvalidProtectionLevel |Úroveň ochrany je neplatný. |
-| InvalidX509Store |X509 nelze otevřít úložiště certifikátů. |
-| InvalidSubjectName |Název předmětu není platný. |
-| InvalidAllowedCommonNameList |Formát řetězce seznam běžných název je neplatný. Měla by být seznam oddělený čárkami. |
+| InvalidX509StoreLocation |Umístění úložiště x509 je neplatné. |
+| InvalidX509StoreName |Název úložiště x509 je neplatný. |
+| InvalidX509Thumbprint |Řetězec kryptografického otisku certifikátu x509 je neplatný. |
+| InvalidProtectionLevel |Úroveň ochrany je neplatná. |
+| InvalidX509Store |Úložiště certifikátů x509 nelze otevřít. |
+| InvalidSubjectName |Název subjektu je neplatný. |
+| InvalidAllowedCommonNameList |Formát řetězce seznamu běžných názvů je neplatný. Mělo by se jednat o čárkami oddělený seznam. |
 

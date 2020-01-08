@@ -1,5 +1,5 @@
 ---
-title: Použití rozhraní příkazového řádku Azure s Azure Storage | Microsoft Docs
+title: Použití Azure CLI s Azure Storage
 description: Naučte se používat rozhraní příkazového řádku Azure (Azure CLI) s Azure Storage k vytváření a správě účtů úložiště a práci s objekty BLOB a soubory Azure.
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259388"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460469"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Použití Azure CLI s Azure Storage
 
@@ -33,8 +33,8 @@ V příkladech v průvodci se předpokládá použití prostředí bash v Ubuntu
 V tomto průvodci se předpokládá, že rozumíte základním konceptům Azure Storage. Také předpokládá, že budete schopní splnit požadavky na vytvoření účtu, které jsou uvedené níže pro Azure a službu úložiště.
 
 ### <a name="accounts"></a>Účty
-* **Účet Azure:** Pokud ještě nemáte předplatné Azure, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/).
-* **Účet úložiště**: Přečtěte si téma [Vytvoření účtu úložiště](storage-quickstart-create-account.md) v tématu [informace o účtech úložiště Azure](storage-create-storage-account.md).
+* **Účet Azure**: Pokud ještě nemáte předplatné Azure, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* **Účet Storage**: Viz část [Vytvoření účtu úložiště](storage-quickstart-create-account.md) v článku [Informace o účtech Azure Storage](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
@@ -46,7 +46,7 @@ Stáhněte a nainstalujte rozhraní příkazového řádku Azure CLI podle pokyn
 
 ## <a name="working-with-the-cli"></a>Práce s rozhraním příkazového řádku
 
-Po instalaci rozhraní příkazového řádku můžete použít `az` příkaz v rozhraní příkazového řádku (bash, terminál, příkazový řádek) pro přístup k příkazům rozhraní příkazového řádku Azure CLI. Zadáním `az` příkazu zobrazíte úplný seznam základních příkazů (Následující příklad výstupu byl zkrácen):
+Po instalaci rozhraní příkazového řádku můžete pomocí příkazu `az` v rozhraní příkazového řádku (bash, terminál, příkazový řádek) získat přístup k příkazům Azure CLI. Zadáním příkazu `az` zobrazíte úplný seznam základních příkazů (Následující příklad výstupu byl zkrácen):
 
 ```
      /\
@@ -68,7 +68,7 @@ Here are the base commands:
     ...
 ```
 
-V rozhraní příkazového řádku spusťte příkaz `az storage --help` pro `storage` výpis podskupin příkazů. Popisy podskupin poskytují přehled o funkcích, které Azure CLI poskytuje pro práci s prostředky úložiště.
+V rozhraní příkazového řádku spusťte příkaz `az storage --help` pro výpis podskupin příkazů `storage`. Popisy podskupin poskytují přehled o funkcích, které Azure CLI poskytuje pro práci s prostředky úložiště.
 
 ```
 Group
@@ -92,12 +92,12 @@ Subgroups:
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>Připojení rozhraní příkazového řádku k předplatnému Azure
 
-Pokud chcete pracovat s prostředky ve vašem předplatném Azure, musíte se nejdřív přihlásit ke svému účtu Azure `az login`pomocí. K dispozici je několik způsobů, jak se můžete přihlásit:
+Pokud chcete pracovat s prostředky ve vašem předplatném Azure, musíte se nejdřív přihlásit k účtu Azure pomocí `az login`. K dispozici je několik způsobů, jak se můžete přihlásit:
 
-* **Interaktivní přihlášení**:`az login`
-* **Přihlaste se pomocí uživatelského jména a hesla**:`az login -u johndoe@contoso.com -p VerySecret`
+* **Interaktivní přihlášení**: `az login`
+* **Přihlaste se pomocí uživatelského jména a hesla**: `az login -u johndoe@contoso.com -p VerySecret`
   * Nefunguje s účty Microsoft nebo účty, které používají službu Multi-Factor Authentication.
-* **Přihlaste se pomocí instančního objektu**:`az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
+* **Přihlaste se pomocí instančního objektu**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
 ## <a name="azure-cli-sample-script"></a>Ukázkový skript Azure CLI
 
@@ -136,20 +136,20 @@ echo "Done"
 
 2. Dále aktualizujte proměnné skriptu tak, aby odrážely nastavení konfigurace. Nahraďte následující hodnoty uvedeným způsobem:
 
-   * storage_account_name název svého účtu úložiště. **\<\>**
-   * storage_account_key primární nebo sekundární přístupový klíč pro váš účet úložiště. **\<\>**
-   * container_name název nového kontejneru, který se má vytvořit, například "Azure-CLI-Sample-Container". **\<\>**
-   * blob_name název cílového objektu BLOB v kontejneru. **\<\>**
-   * file_to_upload cestu k malému souboru na místním počítači, například ~/images/HelloWorld.png. **\<\>**
-   * destination_file cestu k cílovému souboru, například ~/downloadedImage.png. **\<\>**
+   * **\<storage_account_name\>** Název vašeho účtu úložiště.
+   * **\<storage_account_key\>** Primární nebo sekundární přístupový klíč pro váš účet úložiště.
+   * **\<container_name\>** Název nového kontejneru, který se má vytvořit, například "Azure-CLI-Sample-Container".
+   * **\<blob_name\>** Název cílového objektu BLOB v kontejneru.
+   * **\<file_to_upload\>** Cesta k malému souboru v místním počítači, například ~/images/HelloWorld.png.
+   * **\<destination_file\>** Cesta k cílovému souboru, například "~/downloadedImage.png".
 
-3. Po aktualizaci potřebných proměnných uložte skript a ukončete Editor. V dalších krocích se předpokládá, že jste najmenovali skript **my_storage_sample. sh**.
+3. Po aktualizaci potřebných proměnných uložte skript a ukončete Editor. V dalších krocích se předpokládá, že máte název skriptu **my_storage_sample. sh**.
 
-4. Označte skript jako spustitelný soubor, pokud je to nutné:`chmod +x my_storage_sample.sh`
+4. Označte skript jako spustitelný soubor, pokud je to nutné: `chmod +x my_storage_sample.sh`
 
-5. Spusťte skript. Například v bash:`./my_storage_sample.sh`
+5. Spusťte skript. Například v bash: `./my_storage_sample.sh`
 
-Měl by se zobrazit výstup podobný následujícímu a **\<destination_file\>** , který jste zadali ve skriptu, by se měl zobrazit na místním počítači.
+Měl by se zobrazit výstup podobný následujícímu a **\<destination_file\>** , které jste zadali ve skriptu, by se měly zobrazit na místním počítači.
 
 ```
 Creating the container...
@@ -170,12 +170,12 @@ Done
 ```
 
 > [!TIP]
-> Předchozí výstup je ve formátu **tabulky** . Můžete určit, který výstupní formát se má použít, zadáním argumentu v příkazech rozhraní `--output` příkazového řádku nebo ho globálně nastavit pomocí. `az configure`
+> Předchozí výstup je ve formátu **tabulky** . Můžete určit, který výstupní formát se má použít, zadáním argumentu `--output` v příkazech rozhraní příkazového řádku nebo ho globálně nastavit pomocí `az configure`.
 >
 
 ## <a name="manage-storage-accounts"></a>Správa účtů úložiště
 
-### <a name="create-a-new-storage-account"></a>Vytvořit nový účet úložiště
+### <a name="create-a-new-storage-account"></a>Vytvoření nového účtu úložiště
 Pokud chcete vyzkoušet službu Azure Storage, potřebujete účet úložiště. Po nakonfigurování počítače pro připojení k vašemu předplatnému můžete vytvořit nový účet Azure Storage.
 
 ```azurecli
@@ -186,17 +186,17 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location`[Požadováno]: Oblasti. Například "Západní USA".
-* `--name`[Požadováno]: Název účtu úložiště. Název musí mít délku 3 až 24 znaků a musí obsahovat jenom malé alfanumerické znaky.
-* `--resource-group`[Požadováno]: Název skupiny prostředků
-* `--sku`[Požadováno]: SKU účtu úložiště. Povolené hodnoty:
+* `--location` [povinné]: umístění. Například "Západní USA".
+* `--name` [povinné]: název účtu úložiště. Název musí mít délku 3 až 24 znaků a musí obsahovat jenom malé alfanumerické znaky.
+* `--resource-group` [povinné]: název skupiny prostředků.
+* `--sku` [povinné]: SKU účtu úložiště. Povolené hodnoty:
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
-  * `Standard_GZRS`Tisk
-  * `Standard_RAGZRS`Tisk
+  * `Standard_GZRS` (Preview)
+  * `Standard_RAGZRS` (Preview)
 
 ### <a name="set-default-azure-storage-account-environment-variables"></a>Nastavení výchozích proměnných prostředí účtu úložiště Azure
 
@@ -218,7 +218,7 @@ export AZURE_STORAGE_ACCOUNT=<account_name>
 export AZURE_STORAGE_KEY=<key>
 ```
 
-Dalším způsobem, jak nastavit výchozí účet úložiště, je použití připojovacího řetězce. Nejprve získejte připojovací řetězec pomocí `show-connection-string` příkazu:
+Dalším způsobem, jak nastavit výchozí účet úložiště, je použití připojovacího řetězce. Nejprve získejte připojovací řetězec pomocí příkazu `show-connection-string`:
 
 ```azurecli
 az storage account show-connection-string \
@@ -226,35 +226,35 @@ az storage account show-connection-string \
     --resource-group <resource_group>
 ```
 
-Pak zkopírujte výstupní připojovací řetězec a nastavte `AZURE_STORAGE_CONNECTION_STRING` proměnnou prostředí (možná budete muset uzavřít připojovací řetězec v uvozovkách):
+Pak zkopírujte výstupní připojovací řetězec a nastavte proměnnou prostředí `AZURE_STORAGE_CONNECTION_STRING` (možná budete muset připojovací řetězec uzavřít do uvozovek):
 
 ```azurecli
 export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
-> Všechny příklady v následujících částech tohoto článku předpokládají, že jste nastavili `AZURE_STORAGE_ACCOUNT` proměnné prostředí a. `AZURE_STORAGE_KEY`
+> Všechny příklady v následujících částech tohoto článku předpokládají, že jste nastavili proměnné prostředí `AZURE_STORAGE_ACCOUNT` a `AZURE_STORAGE_KEY`.
 
-## <a name="create-and-manage-blobs"></a>Vytváření a správa objektů BLOB
+## <a name="create-and-manage-blobs"></a>Vytváření a správa objektů blob
 Azure Blob Storage je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data, ke kterým se dá dostat odkudkoli na světě přes HTTP nebo HTTPS. V této části se předpokládá, že už jste obeznámeni s koncepty služby Azure Blob Storage. Podrobné informace najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí](../blobs/storage-dotnet-how-to-use-blobs.md) [konceptů .NET a služby BLOB Service](/rest/api/storageservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
-Každý objekt BLOB ve službě Azure Storage musí být v kontejneru. Kontejner můžete vytvořit pomocí `az storage container create` příkazu:
+Každý objekt BLOB ve službě Azure Storage musí být v kontejneru. Kontejner můžete vytvořit pomocí příkazu `az storage container create`:
 
 ```azurecli
 az storage container create --name <container_name>
 ```
 
-Můžete nastavit jednu ze tří úrovní přístupu pro čtení pro nový kontejner zadáním volitelného `--public-access` argumentu:
+Můžete nastavit jednu ze tří úrovní přístupu pro čtení pro nový kontejner zadáním volitelného argumentu `--public-access`:
 
-* `off`(výchozí): Data kontejneru jsou soukromá pro vlastníka účtu.
-* `blob`: Veřejný přístup pro čtení objektů BLOB.
-* `container`: Veřejný přístup pro čtení a seznam přístupu k celému kontejneru.
+* `off` (výchozí): data kontejneru jsou soukromá pro vlastníka účtu.
+* `blob`: veřejný přístup pro čtení objektů BLOB.
+* `container`: veřejný přístup pro čtení a seznam k celému kontejneru.
 
 Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../blobs/storage-manage-access-to-resources.md).
 
 ### <a name="upload-a-blob-to-a-container"></a>Odeslání objektu blob do kontejneru
-Azure Blob Storage podporuje objekty blob bloku, Append a Page. Nahrajte objekty blob do kontejneru pomocí `blob upload` příkazu:
+Azure Blob Storage podporuje objekty blob bloku, Append a Page. Nahrajte objekty blob do kontejneru pomocí příkazu `blob upload`:
 
 ```azurecli
 az storage blob upload \
@@ -263,9 +263,9 @@ az storage blob upload \
     --name <blob_name>
 ```
 
-Pokud chcete nahrávat přímo do složky uvnitř kontejneru v účtu úložiště, nahraďte `--name <blob_name>`. `--name <folder/blob_name>`
+Pokud chcete nahrávat přímo do složky uvnitř kontejneru v účtu úložiště, nahraďte `--name <blob_name>` `--name <folder/blob_name>`.
 
- Ve výchozím nastavení `blob upload` příkaz nahraje soubory *. VHD do objektů blob stránky nebo objekty blob bloku jinak. Chcete-li při nahrávání objektu BLOB zadat jiný `--type` typ, můžete použít argument--povolené hodnoty jsou `append`, `block`a `page`.
+ Ve výchozím nastavení příkaz `blob upload` nahrává soubory *. VHD do objektů blob stránky nebo objekty blob bloku v opačném případě. Pokud chcete při nahrávání objektu BLOB zadat jiný typ, můžete použít `--type` argument--povolené hodnoty jsou `append`, `block`a `page`.
 
  Další informace o různých typech objektů BLOB najdete v tématu [Principy objektů blob bloku, doplňovacích objektů BLOB a objektů blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
@@ -323,7 +323,7 @@ az storage blob copy start \
 V předchozím příkladu musí cílový kontejner již existovat v cílovém účtu úložiště, aby operace kopírování proběhla úspěšně. Zdrojový objekt blob zadaný argumentem `--source-uri` musí navíc buď zahrnovat token sdíleného přístupového podpisu (SAS), nebo musí být veřejně přístupný jako v tomto příkladu.
 
 ### <a name="delete-a-blob"></a>Odstranění objektu blob
-Pokud chcete odstranit objekt blob, použijte `blob delete` příkaz:
+Pokud chcete odstranit objekt blob, použijte příkaz `blob delete`:
 
 ```azurecli
 az storage blob delete --container-name <container_name> --name <blob_name>
@@ -331,7 +331,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 
 ### <a name="set-the-content-type"></a>Nastavení typu obsahu
 
-Typ obsahu, který se označuje také jako typ MIME, identifikuje formát dat v objektu blob. Prohlížeče a další software používají typ obsahu k určení způsobu zpracování dat. Například typ obsahu pro obrázky PNG je `image/png`. Typ obsahu nastavíte pomocí `blob update` příkazu:
+Typ obsahu, který se označuje také jako typ MIME, identifikuje formát dat v objektu blob. Prohlížeče a další software používají typ obsahu k určení způsobu zpracování dat. Například typ obsahu pro obrázky PNG je `image/png`. Chcete-li nastavit typ obsahu, použijte příkaz `blob update`:
 
 ```azurecli
 az storage blob update
@@ -360,7 +360,7 @@ az storage directory create --name myDir --share-name myshare
 Cesta k adresáři může zahrnovat několik úrovní, například **Dir1/dir2**. Před vytvořením podadresáře je však nutné zajistit, aby existovaly všechny nadřazené adresáře. Například pro cestu **Dir1/dir2**je nutné nejprve vytvořit adresář **Dir1**a pak vytvořit adresář **Dir2**.
 
 ### <a name="upload-a-local-file-to-a-share"></a>Nahrání místního souboru do sdílené složky
-Následující příklad nahraje soubor z **~/TEMP/samplefile.txt** do kořenové složky sdílené složky **myshare** . `--source` Argument určuje existující místní soubor, který se má nahrát.
+Následující příklad nahraje soubor z **~/TEMP/samplefile.txt** do kořenové složky sdílené složky **myshare** . Argument `--source` určuje existující místní soubor, který se má nahrát.
 
 ```azurecli
 az storage file upload --share-name myshare --source ~/temp/samplefile.txt
@@ -375,7 +375,7 @@ az storage file upload --share-name myshare/myDir --source ~/temp/samplefile.txt
 Velikost souboru ve sdílené složce může být až 1 TB.
 
 ### <a name="list-the-files-in-a-share"></a>Výpis souborů ve sdílené složce
-Soubory a adresáře ve sdílené složce můžete vypsat pomocí `az storage file list` příkazu:
+Soubory a adresáře ve sdílené složce můžete zobrazit pomocí příkazu `az storage file list`:
 
 ```azurecli
 # List the files in the root of a share
@@ -398,13 +398,13 @@ az storage file copy start \
 ```
 
 ## <a name="create-share-snapshot"></a>Vytvořit snímek sdílené složky
-Snímek sdílené složky můžete vytvořit pomocí `az storage share snapshot` příkazu:
+Snímek sdílené složky můžete vytvořit pomocí příkazu `az storage share snapshot`:
 
 ```cli
 az storage share snapshot -n <share name>
 ```
 
-Ukázkový výstup
+Vzorový výstup
 ```json
 {
   "metadata": {},
@@ -420,7 +420,7 @@ Ukázkový výstup
 
 ### <a name="list-share-snapshots"></a>Výpis snímků sdílené složky
 
-Můžete vypsat snímky sdílené složky konkrétní sdílené složky pomocí`az storage share list --include-snapshots`
+Můžete vypsat snímky sdílené složky určité sdílené složky pomocí `az storage share list --include-snapshots`
 
 ```cli
 az storage share list --include-snapshots
@@ -463,7 +463,7 @@ az storage share list --include-snapshots
 ```
 
 ### <a name="browse-share-snapshots"></a>Procházení snímků sdílené složky
-Můžete také přejít do konkrétního snímku sdílené složky a zobrazit jeho obsah pomocí `az storage file list`. Jedna má zadat název `--share-name <snare name>` sdílené složky a časové razítko.`--snapshot '2017-10-04T19:45:18.0000000Z'`
+Můžete také přejít do konkrétního snímku sdílené složky a zobrazit jeho obsah pomocí `az storage file list`. Jedna má zadat název sdílené složky `--share-name <snare name>` a časové razítko `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive
 az storage file list --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z' -otable
@@ -485,7 +485,7 @@ IMG_1635.JPG    974058            file
 ```
 ### <a name="restore-from-share-snapshots"></a>Obnovení ze snímků sdílené složky
 
-Soubor můžete obnovit zkopírováním nebo stažením souboru ze snímku sdílené složky pomocí `az storage file download` příkazu.
+Soubor můžete obnovit zkopírováním nebo stažením souboru ze snímku sdílené složky pomocí příkazu `az storage file download`
 
 ```azurecli-interactive
 az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z'
@@ -521,13 +521,13 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 }
 ```
 ## <a name="delete-share-snapshot"></a>Odstranit snímek sdílené složky
-Snímek sdílené složky můžete odstranit pomocí `az storage share delete` příkazu `--snapshot` zadáním parametru s časovým razítkem snímku sdílené složky:
+Snímek sdílené složky můžete odstranit pomocí příkazu `az storage share delete` zadáním `--snapshot` parametru s časovým razítkem snímku sdílené složky:
 
 ```cli
 az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
 ```
 
-Ukázkový výstup
+Vzorový výstup
 ```json
 {
   "deleted": true
@@ -538,5 +538,5 @@ Ukázkový výstup
 Tady jsou některé další zdroje informací, které vám pomohou se dozvědět víc o práci s Azure CLI. 
 
 * [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Reference k příkazům Azure CLI](/cli/azure)
+* [Přehled příkazů Azure CLI](/cli/azure)
 * [Azure CLI na GitHubu](https://github.com/Azure/azure-cli)

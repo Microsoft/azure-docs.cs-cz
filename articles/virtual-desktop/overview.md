@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348809"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -64,7 +64,7 @@ K dispozici je několik věcí, které potřebujete k nastavení virtuální plo
 
 Plánujeme přidat podporu pro následující operačních systémech, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
 
-|Operační systém|Požadovaná licence|
+|OS|Požadovaná licence|
 |---|---|
 |Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
@@ -110,8 +110,11 @@ Pro zajištění optimálního výkonu zajistěte, aby vaše síť splňovala n�
 
 Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 
-* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
-* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+* [Windows](connect-windows-7-and-10.md)
+* [Web](connect-web.md)
+* [Mac](connect-macos.md)
+* [iOS](connect-ios.md)
+* [Android (Preview)](connect-android.md)
 
 ## <a name="supported-virtual-machine-os-images"></a>Podporované image operačních systémů virtuálních počítačů
 
@@ -134,7 +137,7 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 |Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
 |Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automaticky|
 |Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Ruční|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Manual|
 |Windows Server 2019|Ano|Ano|Ne|Ne|Automaticky|
 |Windows Server 2016|Ano|Ano|Ano|Ano|Automaticky|
 |Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automaticky|

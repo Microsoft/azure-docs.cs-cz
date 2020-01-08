@@ -11,16 +11,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4d3c74db9a0c4e13ee7c17eb78552d8c11cd7afb
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5669b606d7dc06483641c2bdd6ef27c82e75bf4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431876"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery
 
-*Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli databázový server pro izolované databáze a elastický fond v Azure [SQL Database](sql-database-technical-overview.md) nebo pro vaše databáze v [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje komunikaci. které se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s vaším Azure SQL Database a SQL Data Warehouse.
+*Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli databázový server pro vaše izolované databáze a elastický fond v Azure [SQL Database](sql-database-technical-overview.md) nebo pro vaše databáze v [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s vaším Azure SQL Database a SQL Data Warehouse.
 
 > [!IMPORTANT]
 > Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
@@ -158,15 +158,15 @@ Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azu
        > - Není nutné zadávat tajný klíč pomocí Azure Storage přístupového klíče, protože tento mechanismus používá [spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) v rámci pokrývání.
        > - Název IDENTITY by měl být **Identita spravované služby** , aby připojení k síti s Azure Storagem účtem zabezpečeném pro virtuální síť fungovalo.
 
-   1. Vytvoření externího zdroje dat pomocí schématu abfss://pro připojení k vašemu účtu úložiště pro obecné účely v2 pomocí základu:
+   1. Vytvořte externí zdroj dat pomocí schématu `abfss://` pro připojení k vašemu účtu úložiště pro obecné účely v2 pomocí základu:
 
        ```SQL
        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
        ```
 
        > [!NOTE]
-       > - Pokud už máte externí tabulky přidružené k účtu úložiště pro obecné účely v1 nebo blob, měli byste tyto externí tabulky nejdřív vyřadit a pak vyřadit odpovídající externí zdroj dat. Pak vytvořte externí zdroj dat s abfss://schématem připojujícím se k účtu úložiště pro obecné účely v2 a znovu vytvořte všechny externí tabulky pomocí tohoto nového externího zdroje dat. Pomocí [Průvodce Generovat a publikovat skripty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) můžete snadno vytvořit vytváření skriptů pro všechny externí tabulky.
-       > - Další informace o schématu abfss://najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+       > - Pokud už máte externí tabulky přidružené k účtu úložiště pro obecné účely v1 nebo blob, měli byste tyto externí tabulky nejdřív vyřadit a pak vyřadit odpovídající externí zdroj dat. Pak vytvořte externí zdroj dat pomocí schématu `abfss://` připojení k účtu úložiště pro obecné účely v2 a znovu vytvořte všechny externí tabulky pomocí tohoto nového externího zdroje dat. Pomocí [Průvodce Generovat a publikovat skripty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) můžete snadno vytvořit vytváření skriptů pro všechny externí tabulky.
+       > - Další informace o schématu `abfss://` najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
        > - Další informace o vytvoření externího zdroje dat najdete v tomto [Průvodci](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
 
    1. Dotazování jako normální pomocí [externích tabulek](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)
@@ -235,9 +235,9 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se na web [Azure Portal ][http-azure-portal-link-ref-477t].
+1. Přihlaste se na web [Azure Portal][http-azure-portal-link-ref-477t].
 
-2. Potom přejděte na portál a **servery SQL** &gt; **firewall/virtuální sítě**.
+2. Vyhledejte a vyberte **SQL servery**a pak vyberte svůj server. V části **zabezpečení**vyberte možnost **brány firewall a virtuální sítě**.
 
 3. Nastavte řízení **Povolení přístupu ke službám Azure** na vypnuto.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 08f9310c2ffdb2e7b8d4249495c2ee90b522d694
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 609b1c4500e1602c38f3383df6cbe176a3333bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439552"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -38,9 +38,9 @@ V tomto kurzu provedete následující kroky:
 
 Tento kurz používá Azure Portal. K interakci s Azure Data Factory můžete použít další mechanismy – podívejte se v obsahu na téma Šablony Rychlý start.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
 
@@ -144,7 +144,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
       - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
-        Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+        Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
@@ -154,7 +154,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     ![nasazování dlaždice datové továrny](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-   ![Domovská stránka datové továrny](./media/tutorial-control-flow-portal/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-control-flow-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Azure Data Factory.
 
 
@@ -195,7 +195,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
 
     1. Jako **Název** zadejte **AzureStorageLinkedService**.
     2. Jako **Název účtu úložiště** vyberte svůj účet úložiště Azure.
-    3. Klikněte na **Uložit**.
+    3. Klikněte na možnost **Uložit**.
 
    ![Nová propojená služba Azure Storage](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Jako složku zadejte `@pipeline().parameters.sourceBlobContainer` a jako název souboru zadejte `emp.txt`. Parametr kanálu sourceBlobContainer použijete k nastavení cesty ke složce pro datovou sadu. 
@@ -309,7 +309,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
     1. Jako hodnotu parametru **sourceBlobContainer** zadejte **adftutorial/dummy/input**. Ujistěte se, že v kontejneru adftutorial neexistuje složka dummy. 
     2. Jako hodnotu parametru **sinkBlobContainer** zadejte **adftutorial/dummy/output**. 
     3. Zadejte **e-mailovou adresu** **příjemce**. 
-    4. Klikněte na **Finish** (Dokončit).
+    4. Klikněte na **Dokončit**.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>Monitorování neúspěšného spuštění kanálu
 

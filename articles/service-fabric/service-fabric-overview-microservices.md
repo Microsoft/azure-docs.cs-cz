@@ -1,208 +1,197 @@
 ---
-title: Úvod do mikroslužeb v Azure | Dokumentace Microsoftu
-description: Přehled vytváření cloudových aplikací s přístup založený na mikroslužbách Proč je důležité pro vývoj moderních aplikací a jak Azure Service Fabric poskytuje platformu pro můžete toho dosáhnout.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Seznámení s mikroslužbami v Azure
+description: Přehled důvodů, proč je vytváření cloudových aplikací s přístupem k mikroslužbám důležité pro vývoj moderních aplikací a způsob, jakým Azure Service Fabric poskytuje platformu k tomuto účelu.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5bcb52165c7cae18b807eff03c80b51eae8e2717
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e23c571d2000b5565da018d6ddf70a6388cb9226
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466317"
 ---
-# <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat k vytváření aplikací přístup založený na mikroslužbách?
+# <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat přístup k mikroslužbám k sestavování aplikací?
 
-Pro vývojáře softwaru které budou zohledňovat aplikace do součásti je není nic nového. Vrstveného přístupu se obvykle používá, s back endové úložiště, střední vrstvy obchodní logiky a front-endu uživatelského rozhraní (UI). Co *má* mění v průběhu posledních několika letech je, že vývojáři vytvářejí distribuovaných aplikací pro cloud.
+Pro vývojáře softwaru není nic nového. Obvykle se používá vrstvený přístup s back-end úložištěm, obchodní logikou střední vrstvy a klientským uživatelským rozhraním (UI). V posledních několika letech *se změnily* vývojáři, kteří sestavují distribuované aplikace pro Cloud.
 
-Tady jsou některé měnícím se potřebám organizace:
+Tady je několik měnících se obchodních potřeb:
 
-* Služba, která má vybudovala a provozovala ve velkém měřítku k oslovení zákazníků v nové geografické oblasti.
-* Rychlejší doručování funkcí a možností pružně reagovat na požadavky zákazníků.
-* Využití prostředků vylepšené ke snížení nákladů.
+* Služba, která je sestavená a provozovaná s cílem oslovit zákazníky v nových geografických oblastech.
+* Rychlejší doručování funkcí a možností, které reagují na požadavky zákazníků agilním způsobem.
+* Zlepšilo se využití prostředků, aby se snížily náklady.
 
-Tyto obchodní potřeby. ovlivňují *jak* budeme vytvářet aplikace.
+Tyto obchodní potřeby mají vliv na to, *jak* sestavíme aplikace.
 
-Další informace o Azure přístup k mikroslužeb najdete v tématu [Mikroslužeb: Revoluci aplikací založené na cloudu](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+Další informace o přístupu k platformě Azure pro mikroslužby najdete v tématu [mikroslužby: otáčky aplikací poháněné cloudem](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
 
-## <a name="monolithic-vs-microservices-design-approach"></a>Monolitické vs. přístup v rámci návrhu mikroslužeb
+## <a name="monolithic-vs-microservices-design-approach"></a>Monolitické vs. přístup k návrhu mikroslužeb
 
-Aplikace v průběhu času vyvíjejí. Tím, že je užitečné pro osoby, vyvíjí úspěšné aplikace. Neúspěšné žádosti není vyvíjí a nakonec se považují za zastaralé. Tady je Otázka: kolik víte o vaše požadavky ještě dnes a co budou v budoucnu? Řekněme například, že vytváříte aplikace pro vytváření sestav pro oddělení ve vaší společnosti. Jste si jisti, aplikace použije pouze v rámci oboru vaší společnosti a, že sestavy nebudou uloženy dlouho. Váš přístup se bude lišit od, Řekněme, že, vytvářet služby, který poskytuje obsahu videa na desítky milionů zákazníků.
+Aplikace se v průběhu času vyvíjí. Úspěšné aplikace se vyvíjejí, protože jsou užitečné pro lidi. Neúspěšné aplikace se nevyvíjí a jsou nakonec zastaralé. Tady je otázka: jak moc víte o svých požadavcích ještě dnes a co budou v budoucnu? Řekněme například, že vytváříte aplikaci pro vytváření sestav pro oddělení ve vaší společnosti. Ujistěte se, že se aplikace používá pouze v rámci oboru vaší společnosti a že sestavy nebudou uchovány dlouho. Váš přístup se bude lišit od toho, řekněme, že vytváříte službu, která doručuje obsah videa na desítky milionů zákazníků.
 
-V některých případech něco letos uvedli na trh jako testování konceptu je řízení faktor. Víte, že aplikace může později přepracován. Je trochu bod v over-pass-the technické něco, který se nikdy používá. Na druhé straně společnosti build pro cloud, že budou při růstu a využití. Růst a škálování nepředvídatelné. Chceme, aby k rychlému vytvoření prototypu rychle zároveň také budete vědět, že jsme na cestu, která dokáže zpracovat budoucímu úspěchu. Jedná se o postup úsporného startupu: sestavování, měření, další informace a iterovat.
+V některých případech je k dispozici jako důkaz konceptu jako zkušební faktor. Víte, že aplikaci lze později změnit. Je málo místa ve více technikách, která se nikdy nepoužívá. Na druhé straně, když společnosti sestavují pro Cloud, očekává se nárůst a využití. Růst a škálování jsou nepředvídatelné. Chceme rychle vytvořit prototyp a zároveň vědět, že máme cestu, která dokáže zpracovat budoucí úspěšnost. Toto je postup štíhlého spuštění: sestavení, měření, učení a iterace.
 
-Během období klient/server jsme ošetření soustředit na vytváření vrstvené aplikace s použitím konkrétní technologie v každé úrovni. Termín *monolitické* aplikace se stal pro popis těchto přístupů. Rozhraní pro ošetření bude mezi vrstvami a návrh s větší provázaností použila mezi součástmi v rámci jednotlivých úrovní. Vývojáři navržené a dostaneme tříd, které byly kompilovány do knihoven a propojeny na několik knihoven DLL a spustitelné soubory.
+Během období klienta/serveru se můžeme zaměřit na vytváření vrstvených aplikací s využitím specifických technologií v jednotlivých úrovních. V rámci aplikace *monolitické* se ukázalo, že se tyto přístupy popíší. Rozhraní, která jsou mezi vrstvami a bylo použito více úzce vázaných návrhů mezi komponentami v rámci jednotlivých vrstev. Vývojáři navrhli a vyhodnotili třídy, které byly zkompilovány do knihoven a propojeny dohromady do několika spustitelných souborů a knihoven DLL.
 
-Existují výhody monolitický návrh přístup. Monolitické aplikace jsou často jednodušší návrh a volání mezi součástmi jsou rychlejší, protože tato volání jsou často přes meziprocesová komunikace (IPC). Navíc všechny testy jeden produkt, který je spíše zefektivnit tak využívání lidských zdrojů. Nevýhodou je, že je úzkou svázanost mezi vrstvené vrstvy a už nebude možné škálovat jednotlivé komponenty. Pokud je potřeba provést opravy nebo upgrade, budete muset počkat pro ostatní uživatele k dokončení jejich testování. Být agilní je obtížnější.
+Existují výhody přístupu k návrhu monolitické. Aplikace monolitické jsou často jednodušší pro navrhování a volání mezi komponentami je rychlejší, protože tato volání často využívají meziprocesovou komunikaci (IPC). Všichni také testuje jeden produkt, který představuje efektivnější využití lidských zdrojů. Nevýhodou je to, že existuje těsné propojení mezi vrstvenými vrstvami a nemůžete škálovat jednotlivé součásti. Pokud potřebujete provést opravy nebo upgrady, musíte počkat, až uživatelé dokončí testování. Je těžší je agilní.
 
-Mikroslužby vyřešte tyto nevýhody a více těsně propojit s předchozím obchodní požadavky. Ale mají také výhody a závazků. Mikroslužeb je, že každý z nich obvykle zapouzdřuje jednodušší obchodní funkce, které můžete vertikálně navyšovat nebo snižovat, otestovat, nasadit a spravovat nezávisle na sobě. Důležitou výhodou přístup založený na mikroslužbách je, že týmy se řídí informace podle obchodní scénáře než technologie. Menší týmy vývoj mikroslužeb založené na scénářích zákazníka a používat libovolný technologie, které chcete použít.
+Mikroslužby řeší tyto downsides a podrobněji se rovnají s předchozími obchodními požadavky. Ale zároveň mají i výhody i závazky. Výhodou mikroslužeb je, že každý z nich obvykle zapouzdřuje jednodušší obchodní funkce, které můžete škálovat směrem nahoru nebo dolů, testovat, nasazovat a spravovat nezávisle. Jednou z důležitých výhod přístupu k mikroslužbám je, že týmy jsou v rámci podnikových scénářů více zaměřené než technologie. Menší týmy vyvíjejí mikroslužby založené na scénáři zákazníka a využívají libovolné technologie, které chtějí použít.
 
-Jinými slovy organizace nemusí ke standardizaci Odborný udržovat vyladěných aplikací mikroslužeb. Jednotlivé týmy, co dává smysl pro ně podle znalostí týmu nebo co je nejvhodnější k vyřešení problému můžete provést vlastní služby. V praxi sadu doporučené technologie, jako jsou konkrétní NoSQL s dvojicí nebo architektura webové aplikace, je vhodnější.
+Jinými slovy organizace nemusí standardizovat technickou správu aplikací mikroslužeb. Jednotlivé týmy, které vlastní služby, umožňují jejich smysl na základě odborných znalostí v týmu nebo podle toho, co je nejvhodnější k vyřešení problému. V praxi je vhodnější sada doporučených technologií, jako je konkrétní NoSQL úložiště nebo architektura webové aplikace.
 
-Nevýhodou mikroslužeb je, že máte ke správě více samostatné entity a složitější nasazení a správy verzí. Síťový provoz mezi mikroslužby zvyšuje, stejně jako odpovídající síťovou latenci. Mnoho přetížení granulárních služeb může způsobit připomínající výkonu. Bez nástroje k zobrazení těchto závislostí je špatně vidět celý systém.
+Nevýhodou mikroslužeb je, že musíte spravovat více samostatných entit a zabývat se složitějšími nasazeními a správou verzí. Síťový provoz mezi mikroslužbami se zvyšuje, stejně jako odpovídající latence sítě. Spousta chatů, podrobných služeb může způsobit Nightmare výkonu. Bez nástrojů, které vám pomůžou tyto závislosti zobrazit, je obtížné zobrazit celý systém.
 
-Standardy zkontrolujte přístup založený mikroslužbách fungují tak, že určíte, jak komunikovat a únosnost pouze věci, třeba ze služby, nikoli od rigidních smluv. Je důležité definovat ještě před zahájením těchto smluv v návrhu, protože aktualizace služeb nezávisle na sobě. Další popis poprvé použit pro návrh s přístup založený na mikroslužbách je "podrobných orientované na služby architektura (SOA)."
+Standardy usnadňují práci mikroslužeb tím, že určují, jak komunikovat a tolerovat jenom věci, které potřebujete ze služby, a ne pevné smlouvy. Je důležité tyto smlouvy v návrhu předem definovat, protože služby se aktualizují nezávisle na sobě. Další popis mincí pro návrh s přístupem k mikroslužbám je "jemně odstupňované architektury orientované na služby" (SOA). "
 
-***V nejjednodušším přístupem návrhu mikroslužeb spočívá oddělující federačních služeb nezávislých změn u každého a normy odsouhlaseným pro komunikaci.***
+***V nejjednodušším případě přístup k návrhu mikroslužeb je zhruba o oddělenou federaci služeb, ale nezávislé změny v každé a dohodnuté normě pro komunikaci.***
 
-Protože se vytvářejí další cloudové aplikace, uživatelé zjistili, že tento rozložené celkové aplikace do služby nezávislé, zaměřuje scénář je lépe dlouhodobý přístup.
+Při vytvoření většího počtu cloudových aplikací si uživatelé zjistili, že toto dekompozice celkové aplikace je nezávislá na nezávislém scénáři, což je lepší dlouhodobý přístup.
 
-## <a name="comparison-between-application-development-approaches"></a>Porovnání mezi dvěma způsoby vývoje aplikací
+## <a name="comparison-between-application-development-approaches"></a>Porovnání mezi přístupy k vývoji aplikací
 
-![Vývoj aplikací pro platformy Service Fabric][Image1]
+![Vývoj aplikací Service Fabric Platform][Image1]
 
-1) Monolitické aplikace obsahuje funkci specifického pro doménu a je obvykle rozdělena do funkční vrstvy, jako jsou webové, obchodní a data.
+1) Aplikace monolitické obsahuje funkce specifické pro doménu a je obvykle rozdělená do funkčních vrstev, jako jsou web, podnikání a data.
 
-2) Škálování jednotlivou aplikaci naklonováním na více serverech a virtuálních počítačů a kontejnerů.
+2) Škálujte aplikaci monolitické tak, že ji naklonujte na více serverech/virtuálních počítačích nebo kontejnerech.
 
-3) Aplikace mikroslužeb odděluje funkcí do samostatných menších služeb.
+3) Aplikace mikroslužeb odděluje funkce na samostatné menší služby.
 
-4) Škálování přístup mikroslužeb navýšení kapacity o nasazení na jednotlivé služby nezávisle na sobě, vytváření instancí těchto služeb na různých serverech a virtuálních počítačů a kontejnerů.
+4) Přístup k mikroslužbám se škáluje tak, že se jednotlivé služby nasazují nezávisle a vytvářejí se instance těchto služeb napříč servery/virtuálními počítači nebo kontejnery.
 
-Návrh s založený na mikroslužbách přístup není vhodná pro všechny projekty, ale lépe zarovnat s obchodními záměry popsané výše. Počínaje monolitického přístupu může mít smysl, pokud víte, že budete mít možnost přepracovat kód později do návrhu mikroslužeb. Častěji začněte s monolitickými aplikacemi a pomalu jej rozdělte ve fázích, počínaje funkčních oblastí, které musí být škálovatelné nebo agile.
+Navrhování pomocí přístupu ke mikroslužbám není vhodné pro všechny projekty, ale úzce se zarovnává s obchodními záměry popsanými výše. Od monolitické přístupu může smysl objasnit, pokud víte, že budete mít příležitost znovu pracovat kód na návrh mikroslužeb. Častěji začínáte s aplikací monolitické a pomalu ji rozdělíte ve fázích, počínaje funkčními oblastmi, které je potřeba lépe škálovat nebo agilní.
 
-Použijete-li přístup založený na mikroslužbách, vytváříte aplikaci mnoha malých služeb. Tyto služby jsou spuštěny v kontejnerech, které jsou nasazeny napříč clusterem počítačů. Menší týmy vývoj služba, která se zaměřuje na scénáře a nezávisle testovat, verze, nasadit a škálovat jednotlivé služby, takže můžete vyvíjet v celé aplikaci.
+Když použijete přístup k mikroslužbám, vytvoříte aplikaci řady malých služeb. Tyto služby jsou spouštěny v kontejnerech, které jsou nasazeny v rámci clusteru počítačů. Menší týmy vyvíjejí službu, která se zaměřuje na scénář a nezávisle na testování, verzi, nasazení a škálování jednotlivých služeb, aby bylo možné vyvíjet celou aplikaci.
 
-## <a name="what-is-a-microservice"></a>Co je mikroslužby?
+## <a name="what-is-a-microservice"></a>Co je mikroslužba?
 
-Existují různé definice mikroslužeb. Ale většina tyto charakteristiky mikroslužeb jsou široce přijat:
+Existují různé definice mikroslužeb. Většina těchto vlastností mikroslužeb se ale široce přijímá:
 
-* Zapouzdření scénáři zákazníka nebo podnik. Jaký problém jste řešení?
-* Vyvinutá společností malému technickému týmu.
-* Napsané v jakémkoli programovacím jazyce a využitím libovolné architektury.
-* Skládají z kódu, a volitelně stavu, které jsou nezávisle vyvíjených, nasadit a škálovat.
-* Pracovat s další mikroslužeb prostřednictvím kvalitně definovanými rozhraními a protokoly.
-* Mít jedinečné názvy (adresy URL), které se používají k řešení jejich umístění.
-* Zůstávají konzistentní a k dispozici v případě chyb.
+* Zapouzdřte scénář pro zákazníky nebo firmy. Jaký problém řešíte?
+* Vyvinuto malým technickým týmem.
+* Napsané v libovolném programovacím jazyce pomocí libovolného rozhraní.
+* Se skládá z kódu a volitelně také v obou případech nezávisle na verzi, nasazení a škálování.
+* Interakce s dalšími mikroslužbami v dobře definovaných rozhraních a protokolech.
+* Mít jedinečné názvy (adresy URL), které se používají k překladu jejich umístění.
+* V případě výskytu selhání zůstat konzistentní a dostupná.
 
-Provede součet, který:
+K navýšení součtu:
 
-***Aplikace Mikroslužeb se skládají z malých, nezávisle vyvíjených a škálovatelné zaměřených na zákazníka služby, které komunikují pomocí standardních protokolů s kvalitně definovanými rozhraními.***
+***Aplikace mikroslužeb se skládají z malých, nezávisle se správou verzí a škálovatelných služeb zaměřených na zákazníky, které spolu komunikují přes standardní protokoly s dobře definovanými rozhraními.***
 
-### <a name="written-in-any-programming-language-using-any-framework"></a>Napsané v jakémkoli programovacím jazyce a využitím libovolné architektury
+### <a name="written-in-any-programming-language-using-any-framework"></a>Napsaný v libovolném programovacím jazyce s použitím libovolného rozhraní
 
-Jako vývojáři chcete zvolit na jazyk nebo architekturu, v závislosti na naše dovednosti a požadavky na službu, kterou vytváříme. U některých služeb může být hodnota přinese zlepšení výkonu C++ nad cokoli jiného. Ostatní uživatelé snadno spravovaný vývoj, který obdržíte od C# nebo Java může být důležité. V některých případech můžete potřebovat použít konkrétní partnerskou knihovny, technologie úložiště dat nebo metodu pro vystavení služby klientům.
+Jako vývojáři chceme zvolit jazyk nebo platformu v závislosti na našich dovednostích a potřebách služby, kterou vytváříme. U některých služeb můžete využít výhody výkonu C++ nad cokoli jiného. Pro ostatní může být snazší spravovaný vývoj, který získáte z C# nebo Java, důležitější. V některých případech může být nutné pro vystavení služby klientům používat konkrétní knihovnu partnerů, technologii úložiště dat nebo metodu.
 
-Až zvolíte, technologie, budete muset vezměte v úvahu provozní nebo životního cyklu správy a škálování služby.
+Po výběru technologie je potřeba vzít v úvahu provozní nebo životní cyklus správy a škálování služby.
 
-### <a name="allows-code-and-state-to-be-independently-versioned-deployed-and-scaled"></a>Umožňuje kódu a stav nezávisle vyvíjených, nasadit a škálovat
+### <a name="allows-code-and-state-to-be-independently-versioned-deployed-and-scaled"></a>Umožňuje kódu a stavu nezávisle na verzi, nasazení a škálování.
 
-Bez ohledu na to, jak psát mikroslužby, kód a volitelně stav by měl nezávisle na sobě nasazení, upgrade a škálování. Tento problém se těžko řeší, protože jde o technologií podle vlastního výběru. Pro škálování, porozumění oddíl (nebo horizontální oddíl) kód a stav je náročná. Použijete-li kód a stav různých technologií, které je dnes běžné, skripty nasazení pro vaši mikroslužeb musí být oba škálovat. Toto oddělení je také o agilnost a flexibilita, takže některé mikroslužby můžete upgradovat bez upgradu je všechny najednou.
+Bez ohledu na to, jakým způsobem píšete mikroslužby, kód a volitelně také stav, by měl nezávisle nasadit, upgradovat a škálovat. Tento problém je obtížné vyřešit, protože se nejedná o zvolenou technologii. Pro škálování můžete pochopit, jak rozdělit (nebo horizontálních oddílů) kód i stav je náročné. Když kód a stát používají různé technologie, které jsou běžné v současnosti, skripty nasazení pro vaši mikroslužbu musí být schopné škálovat obojí. Toto oddělení je také zaměřené na flexibilitu a flexibilitu, takže můžete upgradovat některé mikroslužby, aniž byste museli upgradovat všechny najednou.
 
-Vraťme se k naší porovnání přístupy monolitické a mikroslužby na chvíli zastavíme. Tento diagram znázorňuje rozdíly v přístupy k ukládání stavu:
+Pojďme se vrátit k našemu porovnání přístupů k monolitické a mikroslužbám za chvíli. Tento diagram znázorňuje rozdíly v přístupů k uložení stavu:
 
-#### <a name="state-storage-for-the-two-approaches"></a>Stavu úložiště pro tyto dvě metody
+#### <a name="state-storage-for-the-two-approaches"></a>Stavové úložiště pro dvě přístupy
 
-![Úložiště stavu platformy Service Fabric][Image2]
+![Service Fabric úložiště stavu platformy][Image2]
 
-***Monolitického přístupu na levé straně, má izolovaná databáze a úrovně konkrétní technologie.***
+***Přístup monolitické na levé straně má izolovanou databázi a úrovně konkrétních technologií.***
 
-***Přístup založený mikroslužbách, na pravé straně, je graf propojených mikroslužeb, kde stavu obvykle působí mikroslužbách a používají se různé technologie.***
+***Přístup k mikroslužbám na pravé straně má graf vzájemně propojených mikroslužeb, kde je stav obvykle vymezen na mikroslužbu a používají se různé technologie.***
 
-V monolitického přístupu aplikace obvykle používá jednu databázi. Výhodou použití jedné databáze je, že je na jednom místě, které umožňuje snadno nasadit. Každá komponenta může mít jednu tabulku pro ukládání stavu. Týmy musí striktně oddělení stavu, což je náročné. Nevyhnutelně uživatel bude mít tendenci získat přidání sloupce do existující tabulky zákazníků, proveďte spojení mezi tabulkami a vytvoření závislostí ve vrstvě úložiště. Jakmile k tomu dojde, už nebude možné škálovat jednotlivé komponenty.
+V monolitické přístupu aplikace obvykle používá jedinou databázi. Výhodou použití jedné databáze je, že je v jednom umístění, které usnadňuje jejich nasazení. Každá komponenta může mít jednu tabulku, do které se uloží svůj stav. Týmy potřebují výhradně samostatný stav, což je výzva. Je nevyhnutelné, že někdo bude zvážit přidání sloupce do existující tabulky zákazníků, provede spojení mezi tabulkami a vytvoří závislosti ve vrstvě úložiště. Až k tomu dojde, nemůžete škálovat jednotlivé součásti.
 
-V přístup založený mikroslužbách každá služba spravuje a ukládá svůj stav. Každá služba je zodpovědná za škálování kódu a stav společně s cílem splnit požadavky služby. Nevýhodou je, když je potřeba vytvořit zobrazení nebo dotazy dat vaší aplikace, budete muset dotazování napříč více úložišti stavu. Tento problém se běžně řeší samostatné mikroslužeb, která vytvoří zobrazení v kolekci z mikroslužeb. Pokud potřebujete spustit více neocenitelní dotazů na data, měli byste zvážit, zápis jednotlivých mikroslužeb dat do datového skladu služby pro offline analýzu.
+V přístupu k mikroslužbám spravuje každá služba a ukládá svůj vlastní stav. Každá služba zodpovídá za to, že je možné škálovat kód i stav dohromady, aby splňovaly požadavky služby. Nevýhodou je, že pokud potřebujete vytvořit zobrazení nebo dotazy na data vaší aplikace, musíte se dotazovat na více úložišť stavů. Tento problém je obvykle vyřešen samostatnou mikroslužbou, která sestaví zobrazení v rámci kolekce mikroslužeb. Pokud potřebujete pro data spustit více dotazů Impromptu, měli byste zvážit zápis dat jednotlivých mikroslužeb do služby datového skladu pro offline analýzu.
 
-Mikroslužby se systémovou správou verzí. Je možné pro různé verze mikroslužeb pro spuštění vedle sebe. Novější verzi mikroslužba by mohla převzetí služeb při během upgradu a musí se vrátit zpátky na starší verzi. Správa verzí je také užitečné pro A / B testování, kde různí uživatelé vyzkoušet různé verze služby. Například je společné pro upgrade mikroslužeb pro konkrétní sadu odběratelů před distribucí více široce otestovat nové funkce.
+Mikroslužby mají verzi. Je možné, že se různé verze mikroslužby spouštějí souběžně. V průběhu upgradu může dojít k selhání novější verze mikroslužeb a je potřeba se vrátit zpátky na předchozí verzi. Správa verzí je užitečná také pro testování A/B, kde různí uživatelé nastanou různé verze služby. Například je běžné upgradovat mikroslužbu pro konkrétní skupinu zákazníků, aby bylo možné testovat nové funkce před tím, než budou rozšířeny.
 
-### <a name="interacts-with-other-microservices-over-well-defined-interfaces-and-protocols"></a>Komunikuje s další mikroslužeb prostřednictvím kvalitně definovanými rozhraními a protokoly
+### <a name="interacts-with-other-microservices-over-well-defined-interfaces-and-protocols"></a>Vzájemně spolupracuje s dalšími mikroslužbami v dobře definovaných rozhraních a protokolech.
 
-V průběhu posledních 10 let byl publikován rozsáhlé informace popisující, schémata komunikace v architektury orientované na služby. Obecně platí komunikace služeb používá přístup REST s protokoly HTTP a TCP a XML nebo JSON jako formát serializace. Z hlediska rozhraní jde o díky přístupu návrh webové. Ale co by se měla zastavit pomocí binární protokoly nebo vlastních datových formátů. Právě mějte na paměti, že uživatelé budou mít obtížnější času pomocí mikroslužby, pokud nejsou otevřeně dostupné těchto protokolů a formátů.
+Za posledních 10 let byly publikovány obsáhlé informace popisující způsoby komunikace v architekturách orientovaných na služby. Obecně platí, že komunikace služby používá jako formát serializace přístup REST s protokoly HTTP a TCP a XML nebo JSON. Z perspektivy rozhraní se chystá přístup k návrhu webu. Ale nic by vám nemělo zastavovat používání binárních protokolů ani vlastních formátů dat. Mějte na paměti, že pokud tyto protokoly a formáty nejsou k dispozici, budou mít uživatelé obtížnější čas pomocí mikroslužeb.
 
-### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Má jedinečný název (URL) používá k překladu umístění
+### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Má jedinečný název (URL), který se používá k překladu jeho umístění.
 
-Vaše mikroslužeb musí být adresovatelný bez ohledu na to funguje. Pokud uvažujete o počítačích, který z nich je spuštěn konkrétní mikroslužeb může něco chybný rychle.
+Vaše mikroslužba musí být adresovatelná bez ohledu na to, kde je spuštěná. Pokud uvažujete o počítačích a na jednom z nich je spuštěná konkrétní mikroslužba, může jít o něco rychle.
 
-Stejným způsobem, že DNS překládá určité adresy URL na konkrétní počítač musí vaše mikroslužeb jedinečného názvu tak, aby jeho aktuálního umístění zjistitelné. Mikroslužby potřebují adresovatelný názvy, které jsou nezávislé na infrastrukturu, které běží na. To znamená, že interakci mezi způsob nasazení vaší služby a jak je zjištěno, protože musí být služba registru. Když selže na počítači, musí zjistíte, kde se služba přesunul do registru služby.
+Stejným způsobem, jakým server DNS překládá konkrétní adresu URL na konkrétní počítač, potřebuje vaše mikroslužba jedinečný název, aby bylo možné zjistit jeho aktuální umístění. Mikroslužby potřebují adresovatelné názvy, které jsou nezávislé na infrastruktuře, na které běží. To znamená, že existuje interakce mezi tím, jak je vaše služba nasazená, a jak je zjištěná, protože je potřeba mít registr služby. Když dojde k chybě počítače, služba registru musí sdělit, kam se služba přesunula.
 
-### <a name="remains-consistent-and-available-in-the-presence-of-failures"></a>Zůstává konzistentní a k dispozici v případě chyb
+### <a name="remains-consistent-and-available-in-the-presence-of-failures"></a>Zůstává konzistentní a k dispozici v přítomnosti selhání
 
-Práci s neočekávanými chybami je jedním z těch nejtěžších problémy vyřešit, zejména v distribuovaném systému. Velká část kódu, který jsme napsali jako vývojáři je pro zpracování výjimek. Při testování jsme také strávit nejvíce času na zpracování výjimek. Proces je složitější než psaní kódu pro zpracování chyb. Co se stane, když selže počítače, na kterém je spuštěný mikroslužbách? Budete muset zjistit chyby, které je obtížné problém sama o sobě. Ale bude také nutné restartovat vaše mikroslužeb.
+Řešení neočekávaných selhání je jedním z nejzávažných problémů, které je potřeba vyřešit, zejména v distribuovaném systému. Většina kódu, který píšete jako vývojáři, je určená ke zpracování výjimek. Během testování také strávíte nejvíce času při zpracování výjimek. Proces je více zapojen než psaní kódu pro zpracování selhání. Co se stane, když počítač, na kterém běží mikroslužba, se nezdařil? Je nutné zjistit selhání, což je pevný problém. Je ale také potřeba restartovat mikroslužbu.
 
-Mikroslužby dostupnosti, musí být odolné vůči selhání a možné spustit na jiném počítači. Kromě těchto požadavků na odolnost proti chybám nesmí dojít ke ztrátě dat a data musí zůstat konzistentní vzhledem k aplikacím.
+V případě dostupnosti musí být mikroslužba odolná vůči chybám a může se restartovat na jiném počítači. Kromě těchto požadavků na odolnost proti chybám by nemělo dojít ke ztrátě dat a data musí zůstat konzistentní.
 
-Odolnost proti chybám je obtížné dosáhnout při během upgradu aplikace dochází k chybám. Mikroslužby, práce s nasazení systému, nemusí obnovení. Je potřeba určit, jestli můžete nadále posunout vpřed na novější verzi nebo vrátit zpět na předchozí verzi k zachování konzistentního stavu. Je potřeba zvážit několik otázek, například zda jsou k dispozici zajistit přesun vpřed dost počítačů a jak obnovit předchozí verze mikroslužbách. Tato rozhodnutí, budete potřebovat mikroslužeb ke generování informací o stavu.
+Odolnost proti chybám je obtížné dosáhnout, když dojde k selhání během upgradu aplikace. Mikroslužba, která pracuje se systémem nasazení, nemusí obnovovat. Je potřeba určit, jestli se může dál přesouvat vpřed na novější verzi, nebo vrátit zpět k předchozí verzi a zachovat tak konzistentní stav. Je potřeba vzít v úvahu několik otázek, jako je třeba to, jestli je k dispozici dostatek počítačů pro pokračování a obnovení předchozích verzí mikroslužeb. K provedení těchto rozhodnutí budete potřebovat mikroslužbu k vygenerování informací o stavu.
 
-### <a name="reports-health-and-diagnostics"></a>Sestavy stav a Diagnostika
+### <a name="reports-health-and-diagnostics"></a>Oznamuje stav a diagnostiku.
 
-To může zdát zřejmé a je často přehlédnuta, ale mikroslužbě potřebuje nahlásit jeho stav a Diagnostika. Jinak máte malý přehled o tom, jeho stav z hlediska operace. Korelace diagnostické události sady nezávislých služeb a práci s počítači nepřesnostem dávat smysl pořadí událostí, je náročné. Stejným způsobem, který budete moct používat mikroslužbě přes odsouhlaseným protokolů a datových formátů budete muset standardizovat jak stavu a diagnostické události, které bude nakonec ukládaly do úložiště událostí pro dotazování a zobrazení protokolu. S přístup založený na mikroslužbách různé týmy musí shodnout na formát jednoho protokolování. Musí být konzistentní vzhledem k aplikacím přístup k zobrazení diagnostických událostí v aplikaci jako celek.
+Může se zdát být zřejmé a často je přehlédnutíná, ale mikroslužba potřebuje, aby nahlásila svůj stav a diagnostiku. Jinak máte z perspektivy operací malý přehled o svém stavu. V souvislosti s diagnostickými událostmi v rámci sady nezávislých služeb a při práci s hodinami strojového času je náročné, že je obtížné. Stejným způsobem, jakým komunikujete s mikroslužbami přes dohodnuté protokoly a formáty dat, je potřeba standardizovat způsob protokolování stavových a diagnostických událostí, které nakonec skončí v úložišti událostí pro dotazování a zobrazení. S přístupem k mikroslužbám musí různé týmy souhlasit s jedním formátem protokolování. Musí existovat konzistentní přístup k zobrazení diagnostických událostí v aplikaci jako celku.
 
-Stav se liší od diagnostiky. Stav je o mikroslužbách jeho aktuální stav přijmout vhodná opatření pro vytváření sestav. Dobrým příkladem je práce s mechanismy upgradu a nasazení dostupnost. I když služba může být aktuálně v chybném stavu chybové ukončení procesu nebo počítač restartovat počítač, služba může být stále provozní. Poslední věcí, které potřebujete je, aby situaci horší spuštěním upgradu. Nejlepším řešením je prozkoumat nejdříve, nebo počkejte na mikroslužeb pro obnovení. Události stavu v mikroslužbě Pomozte nám umožňují přijímat informovaná rozhodnutí a v důsledku toho vám pomůžou vytvořit samoopravení služby.
+Stav se liší od diagnostiky. Stav je o mikroslužbě, která hlásí svůj aktuální stav, aby mohla přijmout příslušné akce. Dobrým příkladem je práce s mechanismem upgradu a nasazení za účelem zachování dostupnosti. I když může být služba v současné době poškozená kvůli chybě procesu nebo restartování počítače, služba může pořád fungovat. Poslední věc, kterou potřebujete, je udělat při zahájení upgradu horší situaci. Nejlepším řešením je prozkoumat první nebo čas, kdy se mikroslužba obnoví. Události stavu z mikroslužeb nám pomáhají dělat kvalifikovaná rozhodnutí a v důsledku toho pomáhat vytvářet samoobslužné služby.
 
-## <a name="guidance-for-designing-microservices-on-azure"></a>Pokyny pro návrh mikroslužeb v Azure 
-Navštivte centrum architektury Azure pokyny na [návrh a vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/).
+## <a name="guidance-for-designing-microservices-on-azure"></a>Doprovodné materiály k navrhování mikroslužeb v Azure 
+Pokyny k [navrhování a vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)najdete v centru architektury Azure.
 
-## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric jako platformu mikroslužeb
+## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric jako platforma mikroslužeb
 
-Azure Service Fabric se stala při Microsoftu přešel ze doručování zabalené produkty, které byly obvykle monolitické, k zajištění služeb. Prostředí pro sestavování a provoz velkých služby, jako je Azure SQL Database a Azure Cosmos DB ve tvaru Service Fabric. Platforma se v čase, jako další služby přijal. Service Fabric se museli spouštět pouze v Azure, ale také v samostatných nasazeních systému Windows Server.
+Služba Azure Service Fabric v případě, kdy Microsoft přešla z doručování zabalených produktů, které se obvykle monolitické, na poskytování služeb. Prostředí pro vytváření a provozování velkých služeb, jako je Azure SQL Database a Azure Cosmos DB, Service Fabric tvarování. Platforma se v průběhu času vyvinula jako další služby, které ji přijaly. Service Fabric musela běžet nejen v Azure, ale také v samostatných nasazeních Windows serveru.
 
-***Cílem Service Fabric je řeší těžké problémy sestavení a spuštění služby a efektivně využívat prostředky infrastruktury, takže týmy mohou pomocí přístup založený na mikroslužbách řešení obchodních problémů.***
+***Cílem Service Fabric je vyřešit závažné problémy s vytvářením a provozem služby a efektivně využívat prostředky infrastruktury, takže týmy mohou řešit obchodní problémy pomocí přístupu k mikroslužbám.***
 
-Service Fabric umožňuje vytvářet aplikace, které používají přístup založený na mikroslužbách tím, že poskytuje následující operace:
+Service Fabric vám pomůže vytvářet aplikace, které využívají přístup k mikroslužbám, poskytováním těchto možností:
 
-* Platforma, která poskytuje systémové služby pro nasazení, upgrade, zjišťovat a restartujte služby se nezdařilo, zjišťovat služby, směrování zpráv, Správa stavu a monitorovat stav.
-* Možnost nasazovat aplikace buď spuštěný v kontejnerech nebo jako procesy. Service Fabric je kontejner a procesu orchestrator.
-* Produktivní programovací rozhraní API můžete vytvářet aplikace jako mikroslužeb: [ASP.NET Core a Reliable Actors, Reliable Services](service-fabric-choose-framework.md). Například můžete získat informace o stavu a diagnostické nástroje, nebo můžete využít integrovanou vysokou dostupnost.
+* Platforma, která poskytuje systémové služby pro nasazení, upgrade, detekci a restartování neúspěšných služeb, zjišťování služeb, směrování zpráv, správu stavu a monitorování stavu.
+* Možnost nasazovat aplikace buď v kontejnerech, nebo jako procesy. Service Fabric je kontejner a proces Orchestrator.
+* Rozhraní API pro programování, které vám pomůžou sestavovat aplikace jako mikroslužby: [ASP.NET Core, Reliable Actors a Reliable Services](service-fabric-choose-framework.md). Můžete například získat informace o stavu a diagnostice nebo můžete využít integrovanou vysokou dostupnost.
 
-***Service Fabric je nezávislá, o jak vytvářet služby, a můžete použít libovolné technologii. Ale nabízí integrovanou programovací rozhraní API, která usnadňují vytváření mikroslužeb.***
+***Service Fabric se nezávislá o tom, jak službu sestavíte, a můžete použít libovolnou technologii. Poskytuje ale Vestavěná rozhraní API pro programování, která usnadňují vytváření mikroslužeb.***
 
-### <a name="migrating-existing-applications-to-service-fabric"></a>Migraci stávajících aplikací do Service Fabric
+### <a name="migrating-existing-applications-to-service-fabric"></a>Migrace stávajících aplikací na Service Fabric
 
-Service Fabric umožňuje znovu použít existující kód a modernizujte pomocí nové mikroslužby. Existuje pět fází k modernizaci aplikací, a můžete spustit a zastavit v jakékoli fázi. Stavy jsou:
+Service Fabric umožňuje znovu použít stávající kód a modernizovat ho s novými mikroslužbami. Modernizace aplikací je pět fází a můžete začít a zastavovat v libovolné fázi. Fáze jsou:
 
-1) Začněte s tradiční monolitické aplikace.  
-2) Migrace. K hostování existující kód ve službě Service Fabric použít kontejnerech nebo spustitelných souborech hostů.  
-3) Modernizujte. Přidáte nové mikroslužby souběžně s existující kontejnerizovaných kód.  
-4) Inovujte. Rozdělte monolitické aplikace do mikroslužeb podle potřeb.  
-5) Transformujte aplikace do mikroslužeb. Transformace existujících monolitických aplikací nebo vytvářet nové aplikace úplně nové.
+1) Začněte s tradiční aplikací monolitické.  
+2) Přenes. Pomocí kontejnerů nebo spustitelných souborů hosta můžete hostovat existující kód v Service Fabric.  
+3) Modernizovat. Přidejte nové mikroslužby spolu s existujícím kontejnerovým kódem.  
+4) Inovujte. Podělte monolitické aplikaci na mikroslužby podle potřeby.  
+5) Transformujte aplikace na mikroslužby. Transformujte existující aplikace monolitické nebo vytvářejte nové aplikace bezserverová.
 
-![Migrace do mikroslužeb][Image3]
+![Migrace na mikroslužby][Image3]
 
-Mějte na paměti, můžete *spouštět a zastavovat na libovolné z těchto fází*. Není nutné mohla pokračovat do další fáze. 
+Nezapomeňte, že můžete *začít a zastavovat v kterékoli z těchto fází*. Nemusíte postupovat do další fáze. 
 
-Podívejme se na příklady pro každý z těchto fází.
+Pojďme se podívat na příklady pro každou z těchto fází.
 
 **Migrace**  
-Mnoho společností dvou důvodů migrujete existující monolitické aplikace do kontejnerů:
+Ve dvou případech mnoho společností migruje existující aplikace monolitické do kontejnerů:
 
-* Snížení nákladů, z důvodu konsolidace a odebrání stávající hardware nebo souvislosti se spuštěnými aplikacemi v s vyšší hustotou.
-* Konzistentní nasazování kontrakt mezi vývojem a provozem.
+* Snížení nákladů, buď z důvodu konsolidace a odebrání stávajícího hardwaru, nebo z důvodu spuštěných aplikací s vyšší hustotou.
+* Konzistentní smlouva k nasazení mezi vývojem a provozem.
 
-Snížení nákladů jsou jednoduché. V Microsoftu mnoho existujících aplikací jsou právě kontejnerizovaná, což vede k miliony dolarů úspory. Konzistentní nasazení je obtížnější k vyhodnocení, ale stejně důležité. Znamená to, že můžou vývojáři zvolit technologie, které jim vyhovují, ale operace bude přijímat pouze jedinou metodu pro nasazení a správu aplikací. Zmírňuje operací z museli potýkat se složitost podporu různých technologií bez vynucení vývojářům vybrat jenom některé z nich. Každá aplikace je v podstatě kontejnerizovaných do bitové kopie samostatná nasazení.
+Snížení nákladů je jednoduché. V Microsoftu je mnoho existujících aplikací v kontejneru, což vede k dosažení milionů dolarů. Konzistentní nasazení je těžší vyhodnocovat, ale stejně důležité. To znamená, že vývojáři si můžou vybrat technologie, které jim vyhovují, ale operace budou akceptovat jenom jednu metodu pro nasazení a správu aplikací. Rozlišuje operace od nutnosti zabývat se složitostí podpory různých technologií, aniž by se museli vynutit, aby si vývojáři zvolili jenom některé z nich. V podstatě je každá aplikace rozdělená do samostatných imagí nasazení.
 
-Mnoho organizací ukončit. Už mají výhody kontejnerů a poskytuje prostředí pro kompletní správu včetně nasazení, upgrady, správu verzí, vrácení zpět a monitorování stavu Service Fabric.
+Mnoho organizací se tady zastaví. Již mají výhody kontejnerů a Service Fabric poskytuje kompletní prostředí pro správu, včetně nasazení, upgradů, správy verzí, vrácení zpět a sledování stavu.
 
-**Modernizujte**  
-Modernizace, je přidání nových služeb společně s existující kontejnerizovaných kód. Pokud se chystáte zadat nový kód, je nejlepší postupujte po menších krůčcích rozhodli mikroslužeb. To může znamenat přidání nového koncového bodu rozhraní REST API nebo nové obchodní logiku. Tímto způsobem zahájíte proces vytváření nových mikroslužeb a postupů vývoje a jejich nasazování.
+**Modernizovat**  
+Modernizace je přidání nových služeb společně s existujícím kontejnerovým kódem. Pokud budete psát nový kód, doporučujeme, abyste v cestě k mikroslužbám prohlédli malými kroky. To může znamenat přidání nového koncového bodu REST API nebo nové obchodní logiky. Tímto způsobem začnete vytvářet nové mikroslužby a postupy pro vývoj a nasazování.
 
 **Inovace**  
-Přístup založený na mikroslužbách obsáhne měnícím se potřebám organizace. V této fázi musíte se rozhodnout, jestli se má spustit rozdělení monolitické aplikace do služby nebo inovace. Klasickým příkladem je, když se stane kritickým bodem zpracování databáze, který používáte jako do fronty pracovního postupu. Jako počet pracovního postupu žádostí o zvýšení, práci potřebuje pro škálování. Využijte tuto konkrétní aplikace, která není škálování nebo, který musí být možné aktualizovat častěji a rozdělit ho jako mikroslužby a inovace.
+Přístup k mikroslužbám se přizpůsobí měnícím se potřebám firmy. V této fázi se musíte rozhodnout, jestli se má začít s rozdělením aplikace monolitické do služeb nebo při inovacích. Tady je klasický příklad, kdy databáze, kterou používáte jako frontu pracovních postupů, se stane kritickým bodem zpracování. Jak se zvyšuje počet požadavků pracovního postupu, musí být práce distribuována pro škálování. Využijte tuto konkrétní část aplikace, která není škálovatelná, nebo které je potřeba aktualizovat častěji, a rozdělte ji jako mikroslužby a inovovat.
 
-**Transformovat aplikace do mikroslužeb**  
-V této fázi je vaše aplikace plně skládá z (nebo rozdělit do) mikroslužeb. K dosažení tohoto bodu, provedli cesty mikroslužeb. Začněte tady, ale k tomu bez založený na mikroslužbách platformy můžete navíc vyžadovala významnou investici.
+**Transformace aplikací na mikroslužby**  
+V této fázi je vaše aplikace plně složena z (nebo rozdělena do) mikroslužeb. Aby se dosáhlo tohoto bodu, provedli jste cestu mikroslužeb. Můžete začít, ale k tomu je potřeba bez platformy mikroslužeb, která vám bude pomáhat s tím, že vyžaduje významnou investici.
 
-### <a name="are-microservices-right-for-my-application"></a>Jsou to mikroslužby pro mé aplikace?
+### <a name="are-microservices-right-for-my-application"></a>Jsou pro moji aplikaci nejvhodnější mikroslužby?
 
-Podle potřeby. V Microsoftu jako začal více týmů pro vývoj pro cloud pro podnik, mnoho z nich realizované výhody díky přístupu jako mikroslužeb. Bing, například používá mikroslužeb let. Pro jiné týmy se nový přístup založený mikroslužbách. Týmy zjištěno, že existuje bylo těžké problémy vyřešit mimo jejich klíčové oblasti síly. To je důvod, proč Service Fabric získala výrazně nabývá na dynamice technologií pro vytváření služeb.
+Podle potřeby. V Microsoftu, protože tým začali sestavovat Cloud z obchodních důvodů, spousta z nich využila výhod pořizování přístupu typu mikroslužeb. Služba Bing například používala mikroslužby pro roky. Pro jiné týmy byl přístup k mikroslužbám nový. Týmy zjistily, že byly závažné problémy, které je potřeba vyřešit mimo jejich základní oblasti. To je důvod, proč Service Fabric získal jako technologii pro vytváření služeb trakci.
 
-Cílem Service Fabric je ke snížení složitosti vytváření vyladěných aplikací mikroslužeb, takže není nutné kvůli tomu provádět tolik nákladné pracovali. Začněte v malém, škálovat v případě potřeby, přestat používat služby, přidat nové a budou vyvíjet současně s využití ze strany zákazníků. Víme také, že existují mnoho problémů ještě mají být vyřešeny, chcete-li více přístupné mikroslužeb pro většinu vývojářů. Kontejnery a programovací model objektu actor jsou příklady malých kroků v tomto směru. Máme jistotu, že budou vznikat další inovace snazší přístup založený na mikroslužbách.
+Cílem Service Fabric je snížit složitosti vytváření aplikací mikroslužeb, abyste se nemuseli předávat tolik nákladných přepracování. Začněte s malým, Škálujte v případě potřeby, vyřadí služby, přidejte nové a vývoj s využitím zákazníků. Víme také, že je ještě mnoho dalších problémů vyřešených pro většinu vývojářů pro mikroslužby. Kontejnery a programovací model actor jsou příklady malých kroků v tomto směru. Máme jistotu, že k usnadnění přístupu k mikroslužbám se ukážeme víc.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Mikroslužby: Revoluci aplikací založené na cloudu](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Azure Architecture Center: Vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)
-* [Osvědčené postupy Azure aplikace Service Fabric a clusteru](service-fabric-best-practices-overview.md)
+* [Mikroslužby: aplikace s revoluce, kterou Cloud využívá](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Cetrum architektury Azure: vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Osvědčené postupy pro aplikace a Cluster Service Fabric pro Azure](service-fabric-best-practices-overview.md)
 * [Přehled terminologie Service Fabric](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png

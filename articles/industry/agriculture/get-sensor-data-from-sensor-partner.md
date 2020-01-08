@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 455652795a13fe9755c1ed57681bedaf7a70a5d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435172"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
 
@@ -18,16 +18,16 @@ Azure FarmBeats pomáhá přenést streamovaná data ze zařízení IoT a senzor
 
   ![Partneři FarmBeats](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Integrace dat zařízení s Azure FarmBeats vám pomůže získat základní data ze senzorů IoT nasazených ve vaší farmě do datového centra. Data, jakmile jsou k dispozici, je možné vizuálně vymezit pomocí akcelerátoru FarmBeats. Data se dají použít pro vytváření modelů datových fúzí a machine learningu a umělé Intelligence (ML/AI) pomocí FarmBeats.
+Integrace dat zařízení s Azure FarmBeats vám pomůže získat základní data ze senzorů IoT nasazených ve vaší farmě do DataHub. Data, jakmile jsou k dispozici, je možné vizuálně vymezit pomocí akcelerátoru FarmBeats. Data se dají použít pro vytváření modelů datových fúzí a machine learningu a umělé Intelligence (ML/AI) pomocí FarmBeats.
 
 Pokud chcete spustit streamování dat senzorů, zajistěte následující:
 
 -  Nainstalovali jste FarmBeats do Azure Marketplace.
 -  Rozhodli jste se senzory a zařízení, která chcete nainstalovat na farmu.
--  Pokud plánujete používat senzory vlhkosti v půdě, použijte mapu umístění snímače vlhkosti FarmBeats, abyste získali doporučení k počtu senzorů a tam, kde je přesně chcete umístit. Další informace najdete v tématu věnovaném [generování map](generate-maps.md).
+-  Pokud plánujete používat senzory vlhkosti v půdě, použijte mapu umístění snímače vlhkosti FarmBeats, abyste získali doporučení k počtu senzorů a tam, kde je přesně chcete umístit. Další informace najdete v tématu věnovaném [generování map](generate-maps-in-azure-farmbeats.md).
 - Zakoupíte a nasadíte zařízení nebo senzory od partnera zařízení ve vaší farmě. Ujistěte se, že máte přístup k datům ze senzorů prostřednictvím řešení partnerů pro zařízení.
 
-## <a name="enable-device-integration-with-farmbeats"></a>Povolit integraci zařízení s FarmBeats 
+## <a name="enable-device-integration-with-farmbeats"></a>Povolit integraci zařízení s FarmBeats
 
 Po spuštění streamování dat ze senzorů můžete zahájit proces získávání dat do systému FarmBeats. Poskytněte poskytovateli zařízení následující informace, které umožní integraci do FarmBeats:
 
@@ -155,4 +155,4 @@ Postupujte následovně.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď máte k dispozici data ze senzorů do instance služby Azure FarmBeats. Nyní se dozvíte, jak [vygenerovat mapy](generate-maps.md#generate-maps) pro vaše farmy.
+Teď máte k dispozici data ze senzorů do instance služby Azure FarmBeats. Nyní se dozvíte, jak [vygenerovat mapy](generate-maps-in-azure-farmbeats.md#generate-maps) pro vaše farmy.

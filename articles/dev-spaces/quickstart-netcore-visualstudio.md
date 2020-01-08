@@ -3,24 +3,24 @@ title: 'Ladění a iterace na Kubernetes: Visual Studio & .NET Core'
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: a151314bef14e302879f4db0f7c0094779bdcfec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: bfa798027a3905eff29bf1ce11251ce900bd7267
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438252"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio & .NET Core – Azure Dev Spaces
 
 V tomto průvodci se naučíte:
 
 - Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
-- Iterativně vyvíjet kód v kontejnerech pomocí sady Visual Studio
+- Iterativně vyvíjet kód v kontejnerech pomocí sady Visual Studio.
 - Ladění kódu spuštěného v clusteru pomocí sady Visual Studio.
 
 Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
@@ -54,7 +54,7 @@ V Azure Portal přejděte na svůj cluster AKS a klikněte na *vývojové prosto
 
 ## <a name="create-a-new-aspnet-web-app"></a>Vytvoření nové webové aplikace v ASP.NET
 
-1. Otevřít Visual Studio.
+1. Otevřete sadu Visual Studio.
 1. Vytvoření nového projektu
 1. Vyberte možnost *ASP.NET Core webová aplikace* a klikněte na tlačítko *Další*.
 1. Pojmenujte svůj projekt *webendu* a klikněte na *vytvořit*.
@@ -68,11 +68,11 @@ V projektu vyberte v rozevíracím seznamu nastavení spuštění možnost **Azu
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-V dialogovém okně Azure Dev Spaces vyberte své *předplatné* a *cluster Azure Kubernetes*. Ponechte nastavenou možnost *výchozí* a povolte zaškrtávací políčko *veřejně přístupné* . Klikněte na tlačítko *OK*.
+V dialogovém okně Azure Dev Spaces vyberte své *předplatné* a *cluster Azure Kubernetes*. Ponechte nastavenou možnost *výchozí* a povolte zaškrtávací políčko *veřejně přístupné* . Klikněte na *OK*.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Tento proces nasadí vaši službu do *výchozího* vývojového prostoru s veřejně přístupným URL. Pokud zvolíte cluster, který není nakonfigurovaný pro práci s Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat. Klikněte na tlačítko *OK*.
+Tento proces nasadí vaši službu do *výchozího* vývojového prostoru s veřejně přístupným URL. Pokud zvolíte cluster, který není nakonfigurovaný pro práci s Azure Dev Spaces, zobrazí se zpráva s dotazem, jestli ho chcete nakonfigurovat. Klikněte na *OK*.
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 

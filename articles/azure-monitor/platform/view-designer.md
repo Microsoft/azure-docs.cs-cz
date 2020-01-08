@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: a1a4dbffed37480178d1b94a77587ca251396db6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363196"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek obsahuje přehled návrháře zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
@@ -32,7 +32,7 @@ Zobrazení se zobrazí na stránce **přehled** Azure Monitor v Azure Portal. Tu
 
 Zobrazení, která vytvoříte pomocí návrháře zobrazení, obsahují prvky, které jsou popsány v následující tabulce:
 
-| Částí | Popis |
+| Část | Popis |
 |:--- |:--- |
 | Dlaždice | Se zobrazí na stránce s **přehledem** Azure monitor. Každá dlaždice zobrazuje vizuální souhrn vlastního zobrazení, které představuje. Každý typ dlaždice poskytuje jinou vizualizaci záznamů. Výběrem dlaždice zobrazíte vlastní zobrazení. |
 | Vlastní zobrazení | Zobrazí se při výběru dlaždice. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
@@ -59,7 +59,7 @@ Možnosti jsou popsány v následující tabulce:
 | +          | Definujte vlastní filtr, který je definován pro zobrazení. |
 
 
-## <a name="create-a-new-view"></a>Vytvořit nové zobrazení
+## <a name="create-a-new-view"></a>Vytvoření nového zobrazení
 Nové zobrazení můžete vytvořit v Návrháři zobrazení tak, že v nabídce pracovního prostoru Log Analytics vyberete **zobrazení Návrhář** .
 
 ![Dlaždice návrháře zobrazení](media/view-designer/view-designer-tile.png)
@@ -100,7 +100,7 @@ Možnosti pro práci se zobrazeními v režimu úprav jsou popsány v následuj�
 | Uložit        | Uloží změny a zavře zobrazení. |
 | Zrušit      | Zahodí vaše změny a zavře zobrazení. |
 | Odstranit zobrazení | Odstraní zobrazení. |
-| Exportovat      | Exportuje zobrazení do [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , kterou můžete importovat do jiného pracovního prostoru. Název souboru je název zobrazení a má příponu *omsview* . |
+| Exportovat      | Exportuje zobrazení do [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , kterou můžete importovat do jiného pracovního prostoru. Název souboru je název zobrazení a má příponu *omsview* . |
 | Import      | Importuje soubor *omsview* , který jste exportovali z jiného pracovního prostoru. Tato akce přepíše konfiguraci stávajícího zobrazení. |
 | Klon       | Vytvoří nové zobrazení a otevře ho v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s připojeným *kopírováním* . |
 

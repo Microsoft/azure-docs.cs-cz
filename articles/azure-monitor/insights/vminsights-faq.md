@@ -4,15 +4,15 @@ description: Odpovědi na časté otázky týkající se Azure Monitor pro virtu
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/09/2018
-ms.openlocfilehash: 579538996e934c7068c397a284d819f5ddb92f08
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fa47606112c562402a42bd5ca503ed2d9a311268
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400383"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Nejčastější dotazy k Azure Monitor pro virtuální počítače (Preview)
 Toto je seznam nejčastějších dotazů k Azure Monitor pro virtuální počítače. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -67,7 +67,7 @@ Pokud upravíte jakékoli nastavení instance kritéria stavu, upraví se všech
 Žádná kritéria stavu na úrovni jednotlivých procesorů a logických procesorů nejsou pro Windows zahrnutá, ve výchozím nastavení se monitoruje jenom celkové využití procesoru, aby se účinně vyhodnotilo zatížení procesoru na základě celkového počtu logických procesorů dostupných pro virtuální počítač Azure. 
 
 ## <a name="are-all-health-criteria-thresholds-configurable"></a>Konfigurovatelné jsou všechny prahové hodnoty kritérií stavu?  
-Prahové hodnoty pro kritéria stavu, která cílí na virtuální počítač s Windows, se nedají upravovat, protože jejich stavy jsou nastavené na *spouštění* nebo *k dispozici*. Při dotazování na stav z [rozhraní API pro sledování zatížení](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)zobrazuje *comparisonOperator* hodnotu **LessThan** nebo **GreaterThan** s *prahovou* hodnotou **4** pro službu nebo entitu, pokud:
+Prahové hodnoty pro kritéria, které se zaměřují virtuálního počítače s Windows nejsou upravitelné, protože jejich stavů jsou nastaveny na *systémem* nebo *dostupné*. Při dotazování stav z [úlohy monitorování API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), zobrazí *comparisonOperator* hodnotu **LessThan** nebo **GreaterThan** s *prahová hodnota* hodnotu **4** služby nebo entity pokud:
    - Stav služby Klient DNS – služba není spuštěná. 
    - Stav služby Klient DHCP – služba není spuštěná. 
    - Stav služby vzdáleného volání Procedur – služba není spuštěná. 
@@ -77,13 +77,13 @@ Prahové hodnoty pro kritéria stavu, která cílí na virtuální počítač s 
    - Stav služby vzdálené správy Windows – služba není spuštěná. 
    - Chyba systému souborů nebo poškození – je logický Disk není k dispozici.
 
-Prahové hodnoty pro následující kritéria stavu systému Linux nelze upravovat, protože jejich stav je již nastaven na *hodnotu true*. Stav zobrazuje *comparisonOperator* s hodnotou **LessThan** a *prahovou* hodnotou **1** , pokud se dotazuje z rozhraní API monitorování úloh pro entitu v závislosti na kontextu:
+Prahové hodnoty pro následující stav kritéria Linux nejsou upravitelné, protože jeho stav je již nastavena na *true*. Stav se zobrazí *comparisonOperator* s hodnotou **LessThan** a *prahová hodnota* hodnotu **1** při posílat dotaz z Úloha monitorování rozhraní API pro entitu, v závislosti na jeho kontextu:
    - Stav logického disku – logický disk není online / k dispozici
    - Stav disku – Disk není online / k dispozici
    - Stav síťového adaptéru – síťový adaptér je zakázána.
 
 ## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Návody upravit výstrahy, které jsou součástí funkce Health?
-Pravidla výstrah, které jsou definovány pro každé kritérium stavu se nezobrazují na portálu Azure portal. Pravidlo upozornění na stav můžete povolit nebo zakázat pouze v [rozhraní API monitorování úloh](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Nemůžete také přiřadit [Azure monitor skupinu akcí](../../azure-monitor/platform/action-groups.md) pro výstrahy týkající se stavu v Azure Portal. Pomocí rozhraní API pro nastavení oznámení můžete nakonfigurovat skupinu akcí, která se aktivuje při každém vyvolání výstrahy na stav. V současné době můžete k virtuálnímu počítači přiřadit skupiny akcí, aby všechny *výstrahy stavu* aktivované virtuálním počítačem měly stejné skupiny akcí. Na rozdíl od tradičních upozornění v Azure neexistuje koncept skupiny samostatnou akci pro každé pravidlo výstrahy stavu. Kromě toho pouze skupiny akcí, které jsou nakonfigurované na poskytování e-mailu nebo oznámení SMS jsou podporovány, když se aktivuje upozornění na stav. 
+Pravidla výstrah, které jsou definovány pro každé kritérium stavu se nezobrazují na portálu Azure portal. Můžete povolit nebo zakázat upozornění na stav pouze v pravidlo [úlohy monitorování rozhraní API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Nemůžete také přiřadit [Azure monitor skupinu akcí](../../azure-monitor/platform/action-groups.md) pro výstrahy týkající se stavu v Azure Portal. Pomocí rozhraní API pro nastavení oznámení můžete nakonfigurovat skupinu akcí, která se aktivuje při každém vyvolání výstrahy na stav. V současné době můžete přiřadit skupiny akcí na virtuálním počítači tak, aby všechny *výstrahy týkající se stavu* aktivuje proti aktivační událost virtuální počítač stejné skupiny akcí. Na rozdíl od tradičních upozornění v Azure neexistuje koncept skupiny samostatnou akci pro každé pravidlo výstrahy stavu. Kromě toho pouze skupiny akcí, které jsou nakonfigurované na poskytování e-mailu nebo oznámení SMS jsou podporovány, když se aktivuje upozornění na stav. 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Se mi nezobrazují některé nebo všech dat v grafech výkonu pro virtuální počítač
 Pokud nevidíte údaje o výkonu v tabulce disků nebo v některém z grafů výkonu, nemusí být v pracovním prostoru nakonfigurovány čítače výkonu. Pokud ho chcete vyřešit, spusťte následující [skript PowerShellu](vminsights-enable-at-scale-powershell.md#enable-with-powershell).

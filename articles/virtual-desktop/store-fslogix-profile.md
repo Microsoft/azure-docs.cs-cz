@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 3577b459a1b6612d24346428512cfbc509515f52
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e9410ce93d9e11d3023f4f461f3ba90a7bf74507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451315"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows
 
-Azure nabízí několik řešení úložiště, která můžete použít k uložení kontejneru profilu FSLogix. Tento článek porovnává řešení pro úložiště Azure Storage nabídky pro profily uživatelů kontejnerů profilů FSLogix virtuálních počítačů s Windows.
+Azure nabízí několik řešení úložiště, která můžete použít k uložení kontejneru profilu FSLogix. Tento článek porovnává řešení úložiště, které Azure nabízí pro kontejnery profilů uživatelů FSLogix virtuálních počítačů s Windows.
 
 Virtuální počítač s Windows nabízí kontejnery profilů FSLogix jako doporučené řešení profilace uživatele. FSLogix je navržená pro roaming profilů ve vzdálených výpočetních prostředích, jako je například virtuální počítač s Windows. Při přihlašování se tento kontejner dynamicky připojuje k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned dostupný a zobrazí se v systému přesně jako nativní profil uživatele.
 
@@ -24,22 +24,22 @@ V následujících tabulkách jsou porovnávána řešení úložiště Azure St
 
 ## <a name="azure-platform-details"></a>Podrobnosti o platformě Azure
 
-|Funkce|Soubory Azure|Azure NetApp Files|Prostory úložiště s přímým přístupem|
+|Funkce|Azure Files|Azure NetApp Files|Prostory úložiště s přímým přístupem|
 |--------|-----------|------------------|---------------------|
 |Služba platformy|Ano, řešení Azure v nativním režimu|Ano, řešení Azure v nativním režimu|Ne, samostatně spravovaná|
-|Regionální dostupnost|Všechny oblasti|[Vybrat oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Všechny oblasti|
+|Dostupnost podle oblastí|Všechny oblasti|[Vybrat oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Všechny oblasti|
 |Redundance|Místně redundantní/zóna – redundantní/geograficky redundantní|Místně redundantní|Místně redundantní/zóna – redundantní/geograficky redundantní|
-|Úrovně a výkon|Standard<br>Premium<br>Až do maximálního počtu 100 tisíc IOPS na sdílenou složku s 5 GB/s na sdílenou jednotku v rozmezí 3 MS|Standard<br>Premium<br>Extrémně<br>Až 320k (16 KB) IOPS s 4,5 GB/s na jeden svazek při asi 1 MS latence|HDD úrovně Standard: omezení až 500 vstupně-výstupních operací za sekundu na disk<br>SSD úrovně Standard: omezení až 4k IOPS na disk<br>SSD úrovně Premium: omezení až 20 tisíc IOPS na disk<br>Pro Prostory úložiště s přímým přístupem doporučujeme použít prémiové disky.|
+|Úrovně a výkon|Úroveň Standard<br>Premium<br>Až do maximálního počtu 100 tisíc IOPS na sdílenou složku s 5 GB/s na sdílenou jednotku v rozmezí 3 MS|Úroveň Standard<br>Premium<br>Extrémně<br>Až 320k (16 KB) IOPS s 4,5 GB/s na jeden svazek při asi 1 MS latence|HDD úrovně Standard: omezení až 500 vstupně-výstupních operací za sekundu na disk<br>SSD úrovně Standard: omezení až 4k IOPS na disk<br>SSD úrovně Premium: omezení až 20 tisíc IOPS na disk<br>Pro Prostory úložiště s přímým přístupem doporučujeme použít prémiové disky.|
 |Kapacita|100 TiB na sdílenou složku|100 TiB na svazek, až 12,5 PiB na předplatné|Maximální 32 TiB na disk|
 |Požadovaná infrastruktura|Minimální velikost sdílené složky 1 GiB|Minimální kapacita fondu 4 TiB, minimální velikost svazku 100 GiB|Dva virtuální počítače v Azure IaaS (+ disk s kopií cloudu) nebo minimálně tři virtuální počítače bez a s náklady na disky|
 |Protokoly|SMB 2.1/3. a REST|NFSv3, NFSv 4.1 (Preview), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
 
 ## <a name="azure-management-details"></a>Podrobnosti o správě Azure
 
-|Funkce|Soubory Azure|Azure NetApp Files|Prostory úložiště s přímým přístupem|
+|Funkce|Azure Files|Azure NetApp Files|Prostory úložiště s přímým přístupem|
 |--------|-----------|------------------|---------------------|
 |Přístup|Cloud, místní a hybridní (Azure File Sync)|Cloud, místní (přes ExpressRoute)|Cloud, místní prostředí|
-|Zálohování|Integrace snímků Azure Backup|Snímky Azure NetApp Files|Integrace snímků Azure Backup|
+|Backup|Integrace snímků Azure Backup|Snímky Azure NetApp Files|Integrace snímků Azure Backup|
 |Zabezpečení a dodržování předpisů|[Všechny podporované certifikáty Azure](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|Dokončeno ISO|[Všechny podporované certifikáty Azure](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Integrace Azure Active Directory|Azure Active Directory a Azure Active Directory Domain Services|[Azure Active Directory Domain Services a nativní služba Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Nativní služba Active Directory nebo Azure Active Directory Domain Services pouze podpora|
 

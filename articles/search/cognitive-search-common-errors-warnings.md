@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1e11c5a570f899a5ac18673a71fe79db95de0f80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461075"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -54,15 +54,15 @@ Indexer nemohl přečíst dokument ze zdroje dat. K tomu může dojít v důsled
 
 <a name="could-not-extract-document-content"/>
 
-## <a name="error-could-not-extract-document-content"></a>Chyba: nelze extrahovat obsah dokumentu
-Indexer se zdrojem dat objektu BLOB nemohl extrahovat obsah z dokumentu (například soubor PDF). K tomu může dojít v důsledku:
+## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Chyba: nepovedlo se extrahovat obsah nebo metadata z dokumentu.
+Indexer se zdrojem dat objektu BLOB nemohl extrahovat obsah nebo metadata z dokumentu (například soubor PDF). K tomu může dojít v důsledku:
 
 | Důvod | Podrobnosti/příklad | Rozlišení |
 | --- | --- | --- |
 | objekt BLOB překračuje limit velikosti. | Dokument je `'150441598'` bajtů, což překračuje maximální velikost `'134217728'` bajtů pro extrakci dokumentů pro aktuální úroveň služby. | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | objekt BLOB má nepodporovaný typ obsahu. | Dokument má nepodporovaný typ obsahu `'image/png'` | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | objekt BLOB je zašifrovaný. | Dokument se nepovedlo zpracovat – může být zašifrovaný nebo chráněný heslem. | Objekt blob můžete přeskočit s [nastavením objektu BLOB](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed). |
-| přechodné problémy | Chyba při zpracování objektu BLOB: požadavek byl přerušen: požadavek byl zrušen. | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
+| přechodné problémy | "Při zpracování objektu BLOB došlo k chybě: požadavek byl zrušen: požadavek byl zrušen." "Při zpracování vypršel časový limit dokumentu." | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
 
 <a name="could-not-parse-document"/>
 
@@ -158,7 +158,7 @@ Dokument byl načten a zpracován, ale kvůli neshodě v konfiguraci polí index
 
 | Důvod | Podrobnosti/příklad
 | --- | ---
-| Datový typ polí extrahovaných indexerem není kompatibilní s datovým modelem odpovídajícího pole cílového indexu. | Datové pole '_data_' v dokumentu s klíčem '_data_' má neplatnou hodnotu ' typu ' EDM. String ' '. Očekával se typ Collection (EDM. String). |
+| Datový typ polí extrahovaných indexerem není kompatibilní s datovým modelem odpovídajícího pole cílového indexu. | Datové pole '_data_' v dokumentu s klíčem ' 888 ' má neplatnou hodnotu ' typu ' EDM. String ' '. Očekával se typ Collection (EDM. String). |
 | Nepovedlo se extrahovat žádnou entitu JSON z řetězcové hodnoty. | Hodnotu typu EDM. String pole_data_nelze analyzovat jako objekt JSON. Chyba: po analýze hodnoty byl zjištěn neočekávaný znak: ' '. Cesta '_cesta_', řádek 1, pozice 3162. ' |
 | Extrakce kolekce entit JSON z řetězcové hodnoty se nezdařila.  | Hodnotu typu EDM. String pole_data_nelze analyzovat jako pole JSON. Chyba: po analýze hodnoty byl zjištěn neočekávaný znak: ' '. Cesta ' [0] ', řádek 1, pozice 27. ' |
 | Ve zdrojovém dokumentu byl zjištěn neznámý typ. | Neznámý typ_Unknown_nejde indexovat. |
@@ -174,10 +174,18 @@ K této chybě dochází, pokud indexer nemůže dokončit zpracování jednoho 
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
-## <a name="warning-could-not-execute-skill-because-a-skill-input-was-invalid"></a>Upozornění: nepovedlo se spustit dovednost, protože vstup odbornosti byl neplatný.
-Indexer nemohl v dovednosti spustit dovednost, protože chybí vstup pro dovednost, nesprávný typ nebo jinak neplatné.
+## <a name="warning-skill-input-was-invalid"></a>Upozornění: vstup dovedností byl neplatný.
+Vstup pro dovednost chyběl, nesprávný typ nebo je jinak neplatný. Zpráva upozornění bude označovat dopad:
+1) Nepovedlo se spustit dovednost.
+2) Byly provedeny dovednosti, ale mohou mít neočekávané výsledky.
 
-Dovednosti v rozpoznávání mají požadované vstupy a volitelné vstupy. Například dovednost pro [extrakci klíčových frází](cognitive-search-skill-keyphrases.md) má dva požadované vstupy `text`, `languageCode`a žádné volitelné vstupy. Pokud jsou požadované vstupy neplatné, dovednost se přeskočí a vygeneruje upozornění. Přeskočené dovednosti negenerují žádné výstupy, takže pokud jiné dovednosti využívají výstupy vynechaných dovedností, můžou generovat další upozornění.
+Dovednosti v rozpoznávání mají požadované vstupy a volitelné vstupy. Například dovednost pro [extrakci klíčových frází](cognitive-search-skill-keyphrases.md) má dva požadované vstupy `text`, `languageCode`a žádné volitelné vstupy. Vlastní vstupy dovedností se považují za volitelné vstupy.
+
+Pokud nějaké požadované vstupy chybí nebo pokud nějaký vstup není správného typu, dovednost se přeskočí a vygeneruje upozornění. Přeskočené dovednosti negenerují žádné výstupy, takže pokud jiné dovednosti využívají výstupy vynechaných dovedností, můžou generovat další upozornění.
+
+Pokud chybí nepovinný vstup, dovednost se pořád spustí, ale může způsobit neočekávaný výstup z důvodu chybějícího vstupu.
+
+V obou případech může být toto upozornění očekávané kvůli tvaru vašich dat. Například pokud máte dokument obsahující informace o lidech s poli `firstName`, `middleName`a `lastName`, můžete mít některé dokumenty, které pro `middleName`nemají položku. Pokud předáte `middleName` jako vstup do dovednosti v kanálu, očekává se, že tento vstup dovednosti může chybět určitou dobu. Budete muset vyhodnotit vaše data a scénář, abyste zjistili, jestli se v důsledku tohoto upozornění vyžaduje nějaká akce.
 
 Pokud chcete zadat výchozí hodnotu pro případ chybějícího vstupu, můžete použít [podmíněnou dovednost](cognitive-search-skill-conditional.md) k vygenerování výchozí hodnoty a potom použít výstup [podmíněné dovednosti](cognitive-search-skill-conditional.md) jako vstup dovednosti.
 
@@ -197,8 +205,8 @@ Pokud chcete zadat výchozí hodnotu pro případ chybějícího vstupu, můžet
 
 | Důvod | Podrobnosti/příklad | Rozlišení |
 | --- | --- | --- |
-| Nesprávný vstup dovednosti je nesprávného typu. | Požadovaný vstup `X` dovednosti není očekávaného typu `String`. Požadovaný vstup `X` dovednosti není v očekávaném formátu. | Určité dovednosti očekávají vstupy konkrétního typu, například [mínění dovednost](cognitive-search-skill-sentiment.md) očekává, že `text` být řetězec. Pokud vstup Určuje hodnotu, která není typu řetězec, pak se dovednost nespustí a negeneruje žádné výstupy. Ujistěte se, že vaše datová sada má v typu stejné vstupní hodnoty, nebo použijte [vlastní dovednost webového rozhraní API](cognitive-search-custom-skill-web-api.md) k předzpracování vstupu. Pokud provádíte iteraci dovedností v poli, ověřte, že kontext dovednosti a vstup mají `*` ve správných pozicích. Pro pole by měl být obvykle jak kontext, tak vstupní zdroj `*`. |
-| Chybí vstup dovedností. | `X` chybí požadovaný vstup pro dovednost. | Pokud se zobrazí všechny dokumenty s tímto upozorněním, pravděpodobně dojde k překlepu ve vstupních cestách a v cestě byste měli poklepat na název vlastnosti velká a malá písmena, `*` v cestě a dokumenty ze zdroje dat definovat požadované vstupy. |
+| Nesprávný vstup dovednosti je nesprávného typu. | "Požadovaný vstup dovedností nebyl očekávaného typu `String`. Název: `text`, zdroj: `/document/merged_content`. "  "Požadovaný vstup odbornosti nemá očekávaný formát. Název: `text`, zdroj: `/document/merged_content`. "  "Nelze iterovat přes `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`bez pole."  "Nelze vybrat `0` v `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`mimo pole" | Určité dovednosti očekávají vstupy konkrétního typu, například [mínění dovednost](cognitive-search-skill-sentiment.md) očekává, že `text` být řetězec. Pokud vstup Určuje hodnotu, která není typu řetězec, pak se dovednost nespustí a negeneruje žádné výstupy. Ujistěte se, že vaše datová sada má v typu stejné vstupní hodnoty, nebo použijte [vlastní dovednost webového rozhraní API](cognitive-search-custom-skill-web-api.md) k předzpracování vstupu. Pokud provádíte iteraci dovedností v poli, ověřte, že kontext dovednosti a vstup mají `*` ve správných pozicích. Pro pole by měl být obvykle jak kontext, tak vstupní zdroj `*`. |
+| Chybí vstup dovedností. | Nebyl nalezen požadovaný vstup dovednosti. Název: `text`, zdroj: `/document/merged_content`"" chybí hodnota `/document/normalized_images/0/imageTags`. "  "Nelze vybrat `0` v `/document/pages` pole délky `0`." | Pokud se zobrazí všechny dokumenty s tímto upozorněním, pravděpodobně dojde k překlepu ve vstupních cestách a v cestě byste měli poklepat na název vlastnosti velká a malá písmena, `*` v cestě a zajistit, aby dokumenty ze zdroje dat poskytovaly požadované vstupy. |
 | Vstup kódu pro jazyk dovednosti je neplatný. | `languageCode` pro zadávání dovedností má `X,Y,Z`následující kódy jazyka, minimálně jeden z nich je neplatný. | Další podrobnosti najdete [níže](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) . |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>

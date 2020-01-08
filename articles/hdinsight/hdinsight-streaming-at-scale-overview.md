@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435397"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
 
@@ -37,7 +37,7 @@ Další informace najdete v tématu [co je Apache Storm ve službě Azure HDInsi
 
 ## <a name="spark-streaming"></a>Streamování Sparku
 
-Streamování Sparku je rozšíření pro Spark, které umožňuje znovu použít stejný kód, který používáte pro dávkové zpracování. V rámci jedné aplikace můžete kombinovat dávkové i interaktivní dotazy. Na rozdíl od neúspěchu poskytuje streamování Spark stavovou sémantiku pro zpracování právě jednou. Při použití v kombinaci s [rozhraním Direct API Kafka](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), které zajišťuje, aby všechna Kafka data byla přijímána pouze jednou, je možné dosáhnout kompletních záruk přesně jednou. Jedna z možností streamování Sparku je odolná proti chybám, která umožňuje rychle obnovit chybové uzly, když se v clusteru používá víc uzlů.
+Streamování Sparku je rozšíření pro Spark, které umožňuje znovu použít stejný kód, který používáte pro dávkové zpracování. V rámci jedné aplikace můžete kombinovat dávkové i interaktivní dotazy. Na rozdíl od neúspěchu poskytuje streamování Spark stav přesně po sémantikě zpracování. Pokud se používá v kombinaci s [rozhraním API Kafka Direct](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), které zajišťuje, aby všechna Kafka data přijímala pouze jednou za vás, je možné, že se přesně zajistěte. Jedna z možností streamování Sparku je odolná proti chybám, která umožňuje rychle obnovit chybové uzly, když se v clusteru používá víc uzlů.
 
 Další informace najdete v tématu [co je Apache Spark streaming?](hdinsight-spark-streaming-overview.md).
 
@@ -45,11 +45,11 @@ Další informace najdete v tématu [co je Apache Spark streaming?](hdinsight-sp
 
 I když během vytváření můžete určit počet uzlů v clusteru, možná budete chtít zvětšit nebo zmenšit cluster tak, aby odpovídal zatížení. Všechny clustery HDInsight umožňují [změnit počet uzlů v clusteru](hdinsight-administer-use-portal-linux.md#scale-clusters). Clustery Spark můžete vyřadit bez ztráty dat, protože všechna data jsou uložená v Azure Storage nebo Data Lake Storage.
 
-Existují výhody pro oddělení technologií. Kafka je například technologie pro ukládání událostí do vyrovnávací paměti, takže je velmi náročné na vstupně-výstupní operace a nepotřebuje mnohem výpočetní výkon. V porovnání jsou datové procesory, jako je Spark streamování, náročné na výpočetní výkon, což vyžaduje výkonnější virtuální počítače. Díky tomu, že tyto technologie jsou oddělené v různých clusterech, je můžete škálovat nezávisle a přitom nejlépe využívat virtuální počítače.
+Existují výhody pro oddělení technologií. Kafka je například technologie pro ukládání událostí do vyrovnávací paměti, takže je velmi náročné na vstupně-výstupní operace a nevyžaduje mnohem výpočetní výkon. V porovnání jsou datové procesory, jako je Spark streamování, náročné na výpočetní výkon, což vyžaduje výkonnější virtuální počítače. Díky tomu, že tyto technologie jsou oddělené v různých clusterech, je můžete škálovat nezávisle a přitom nejlépe využívat virtuální počítače.
 
 ### <a name="scale-the-stream-buffering-layer"></a>Škálování vrstvy vyrovnávací paměti streamu
 
-Technologie ukládání do vyrovnávací paměti datového proudu Event Hubs a Kafka používají oddíly a spotřebitelé si z těchto oddílů čtou. Škálování vstupní propustnosti vyžaduje škálování počtu oddílů a přidání oddílů poskytuje rostoucí paralelismus. V Event Hubs se po nasazení nedá změnit počet oddílů, takže je důležité začít s cílovým škálováním. Pomocí Kafka je možné [přidávat oddíly](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)i v případě, že Kafka zpracovává data. Kafka poskytuje nástroj k opětovnému přiřazení oddílů `kafka-reassign-partitions.sh`. HDInsight poskytuje `rebalance_rackaware.py` [Nástroj pro vyrovnávání repliky oddílů](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj pro opětovné vyrovnávání zatížení zavolá `kafka-reassign-partitions.sh` nástroj takovým způsobem, že každá replika je v samostatné doméně selhání a aktualizační doméně, což Kafka zablokuje a zvyšuje odolnost proti chybám.
+Technologie ukládání do vyrovnávací paměti datového proudu Event Hubs a Kafka používají oddíly a spotřebitelé si z těchto oddílů čtou. Škálování vstupní propustnosti vyžaduje škálování počtu oddílů a přidání oddílů poskytuje rostoucí paralelismus. V Event Hubs se po nasazení nedá změnit počet oddílů, takže je důležité začít s cílovým škálováním. Pomocí Kafka je možné [Přidat oddíly](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)i v případě, že Kafka zpracovává data. Kafka poskytuje nástroj pro změnu přiřazení oddílů, `kafka-reassign-partitions.sh`. HDInsight poskytuje [Nástroj pro vyrovnávání repliky oddílu](https://github.com/hdinsight/hdinsight-kafka-tools)`rebalance_rackaware.py`. Tento nástroj pro nové vyrovnávání zatížení volá nástroj `kafka-reassign-partitions.sh` takovým způsobem, že každá replika je v samostatné doméně selhání a aktualizační doméně, což zastavuje Kafka stojan a zvyšuje odolnost proti chybám.
 
 ### <a name="scale-the-stream-processing-layer"></a>Škálování vrstvy zpracování datového proudu
 
@@ -57,7 +57,7 @@ Datové proudy Apache Storm i Spark podporují přidávání pracovních uzlů d
 
 Chcete-li využít výhody nových uzlů přidaných pomocí škálování na více verzí, je nutné znovu vyvážit všechny topologie zatížení spuštěné před zvýšením velikosti clusteru. Toto nové vyrovnávání se dá udělat pomocí webového uživatelského rozhraní systému, nebo jeho CLI. Další informace najdete v dokumentaci k [Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-Apache Spark používá tři klíčové parametry pro konfiguraci svého prostředí v závislosti na požadavcích aplikace: `spark.executor.instances`, `spark.executor.cores`a `spark.executor.memory`. *Vykonavatel* je proces, který se spustí pro aplikaci Spark. Prováděcí modul běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikost prováděcího modulu pro každý cluster se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tato čísla se ukládají do `spark-defaults.conf`souboru na každém hlavním uzlu clusteru.
+Apache Spark používá tři klíčové parametry pro konfiguraci svého prostředí v závislosti na požadavcích aplikace: `spark.executor.instances`, `spark.executor.cores`a `spark.executor.memory`. *Vykonavatel* je proces, který se spustí pro aplikaci Spark. Prováděcí modul běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikost prováděcího modulu pro každý cluster se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tato čísla se ukládají do souboru `spark-defaults.conf`v každém hlavním uzlu clusteru.
 
 Tyto tři parametry lze nakonfigurovat na úrovni clusteru, pro všechny aplikace, které jsou spuštěny v clusteru, a lze je také zadat pro každou jednotlivou aplikaci. Další informace najdete v tématu [Správa prostředků pro Apache Spark clustery](spark/apache-spark-resource-manager.md).
 

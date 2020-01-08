@@ -3,17 +3,17 @@ title: Zpracování událostí životního cyklu cloudové služby | Microsoft D
 description: Přečtěte si, jak se metody životního cyklu role cloudové služby dají používat v .NET.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: fa4eebfa64a296e6830db3730de31ca9b0565678
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358966"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385809"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu webové role nebo role pracovního procesu v .NET
 Když vytváříte roli pracovního procesu, rozšíříte třídu [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) , která poskytuje metody pro přepsání, které umožňují reagovat na události životního cyklu. Pro webové role je tato třída volitelná, takže ji musíte použít k reakci na události životního cyklu.
@@ -58,7 +58,7 @@ public override bool OnStart()
 }
 ```
 
-## <a name="onstop-method"></a>Metoda zastavení
+## <a name="onstop-method"></a>OnStop – metoda
 Metoda **instop** se volá po převedení instance role do režimu offline v Azure a před ukončením procesu. Tuto metodu můžete přepsat pro volání kódu, který je požadován pro vaši instanci role k čistěmu vypnutí.
 
 > [!IMPORTANT]
@@ -69,11 +69,14 @@ Metoda **instop** se volá po převedení instance role do režimu offline v Azu
 ## <a name="run-method"></a>Run – metoda
 Metodu **Run** můžete přepsat tak, aby pro vaši instanci role implementovala dlouhodobě běžící vlákno.
 
-Přepsání metody **Run** není vyžadováno; Výchozí implementace spustí vlákno, které je trvale úsporné. Pokud přepíšete metodu **Run** , váš kód by měl blokovat neomezenou dobu. Pokud se metoda **Run** vrátí, role se automaticky recykluje. Jinými slovy, Azure vyvolá událost **zastavení** a zavolá metodu restop, aby bylo možné spustit sekvence vypnutí, než bude role přepnuta do režimu offline.
+Přepsání metody **Run** není vyžadováno; Výchozí implementace spustí vlákno, které je trvale úsporné. Pokud přepíšete metodu **Run** , váš kód by měl blokovat neomezenou dobu. Pokud se metoda **Run** vrátí, role se automaticky recykluje. Jinými slovy, Azure vyvolá událost **zastavení** a zavolá metodu **restop** , aby bylo možné spustit sekvence vypnutí, než bude role přepnuta do režimu offline.
 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Implementace metod životního cyklu ASP.NET pro webovou roli
-Pomocí metod životního cyklu ASP.NET můžete kromě těch, které poskytuje třída **RoleEntryPoint** , spravovat inicializační a ukončovací sekvenci webové role. To může být užitečné pro účely kompatibility, Pokud předáváte existující aplikaci ASP.NET do Azure. Metody životního cyklu ASP.NET se volají v rámci metod **RoleEntryPoint** . Metoda **spuštění\_aplikace** je volána po dokončení metody **RoleEntryPoint. OnStart** . Metoda **End\_aplikace** je volána před voláním metody **RoleEntryPoint... stop** .
+Pomocí metod životního cyklu ASP.NET můžete kromě těch, které poskytuje třída **RoleEntryPoint** , spravovat inicializační a ukončovací sekvenci webové role. To může být užitečné pro účely kompatibility, Pokud předáváte existující aplikaci ASP.NET do Azure. Metody životního cyklu ASP.NET se volají v rámci metod **RoleEntryPoint** . Metoda **aplikace\_Start** je volána po dokončení metody **RoleEntryPoint. OnStart** . Metoda **aplikace\_end** je volána před voláním metody **RoleEntryPoint. stop** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si, jak [vytvořit balíček cloudové služby](cloud-services-model-and-package.md).
+
+
+
 

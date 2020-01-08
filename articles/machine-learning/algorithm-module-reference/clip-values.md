@@ -1,7 +1,7 @@
 ---
 title: Oříznutí hodnot
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul Clip Values ve službě Azure Machine Learning ke zjištění nevyužití a oříznutí nebo nahrazení jejich hodnot.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul Clip Values v Azure Machine Learning k detekci nevyužití a oříznutí nebo nahrazení jejich hodnot.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428589"
 ---
 # <a name="clip-values"></a>Oříznutí hodnot
 
@@ -116,8 +116,8 @@ Nyní vyzkoušejte stejný kanál s 60 jako prahovou hodnotu v horním percentil
   
 |Původní data|Nahradit chybějícími|Nahradit prahovou hodnotou|  
 |-------------------|--------------------------|----------------------------|  
-|1\. místo<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|PODMÍNKA<br /><br /> PODMÍNKA<br /><br /> 3, FALSE<br /><br /> 4, FALSE<br /><br /> 5, FALSE<br /><br /> 6, FALSE<br /><br /> 7, FALSE<br /><br /> 8, FALSE<br /><br /> 9, FALSE<br /><br /> PODMÍNKA|4, PRAVDA<br /><br /> 4, PRAVDA<br /><br /> 4, PRAVDA<br /><br /> 4, PRAVDA<br /><br /> 5, FALSE<br /><br /> 6, FALSE<br /><br /> 7, TRUE<br /><br /> 7, TRUE<br /><br /> 7, TRUE<br /><br /> 7, TRUE| 
+|1\. místo<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3, FALSE<br /><br /> 4, FALSE<br /><br /> 5, FALSE<br /><br /> 6, FALSE<br /><br /> 7, FALSE<br /><br /> 8, FALSE<br /><br /> 9, FALSE<br /><br /> TRUE|4, PRAVDA<br /><br /> 4, PRAVDA<br /><br /> 4, PRAVDA<br /><br /> 4, PRAVDA<br /><br /> 5, FALSE<br /><br /> 6, FALSE<br /><br /> 7, TRUE<br /><br /> 7, TRUE<br /><br /> 7, TRUE<br /><br /> 7, TRUE| 
  
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

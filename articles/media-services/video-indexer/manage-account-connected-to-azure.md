@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f3825f6c9186c5e04807dd3890a14fcc6d370989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454667"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Správa účtu Video Indexer připojeného k Azure
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak spravovat účet Video Indexer, který je připojen�
 > [!NOTE]
 > Musíte být vlastníkem účtu Video Indexer, abyste mohli provádět úpravy konfigurace účtu popsané v tomto tématu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Připojte svůj účet Video Indexer k Azure, jak je popsáno v tématu [připojení k Azure](connect-to-azure.md). 
 
@@ -49,6 +49,17 @@ Pokud je váš účet indexeru videí připojený k Azure, zobrazí se následuj
 * Počet a typ přidělených rezervovaných jednotek.
 
 Pokud váš účet potřebuje nějaké úpravy, zobrazí se na stránce **Nastavení** relevantní chyby a upozornění týkající se konfigurace vašeho účtu. Zprávy obsahují odkazy na přesná místa v Azure Portal, kde je třeba provést změny. Další informace najdete v části [chyby a upozornění](#errors-and-warnings) , která následují.
+
+## <a name="repair-the-connection-to-azure"></a>Oprava připojení k Azure
+
+V dialogovém okně **aktualizace připojení k Azure Media Services** stránky [video indexer](https://www.videoindexer.ai/) budete požádáni o zadání hodnot pro následující nastavení: 
+
+|Nastavení|Popis|
+|---|---|
+|ID předplatného Azure|ID předplatného se dá načíst z Azure Portal. Na levém panelu klikněte na **všechny služby** a vyhledejte "předplatná". Vyberte **předplatná** a v seznamu předplatných vyberte požadované ID.|
+|Název skupiny prostředků Azure Media Services|Název skupiny prostředků, ve které jste vytvořili Media Services účet.|
+|ID aplikace|ID aplikace Azure AD (s oprávněním pro zadaný účet Media Services), který jste vytvořili pro tento Video Indexer účet. <br/><br/>Pokud chcete získat ID aplikace, přejděte na Azure Portal. V části Media Services účet vyberte svůj účet a přejděte na **přístup přes rozhraní API**. Klikněte na **připojit k Media Services rozhraní API s instančním objektem** -> **aplikace Azure AD**. Zkopírujte příslušné parametry.|
+|Klíč aplikace|Klíč aplikace služby Azure AD přidružený k vašemu Media Services účtu, který jste zadali výše. <br/><br/>Klíč aplikace získáte tak, že přejdete na Azure Portal. V části Media Services účet vyberte svůj účet a přejděte na **přístup přes rozhraní API**. Klikněte na **připojit k Media Services rozhraní API s instančním objektem** -> **Spravovat** -> **certifikátů aplikací & tajných**kódů. Zkopírujte příslušné parametry.|
 
 ## <a name="auto-scale-reserved-units"></a>Jednotky rezervované pro automatické škálování
 

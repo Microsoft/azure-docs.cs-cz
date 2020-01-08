@@ -1,5 +1,5 @@
 ---
-title: Podporované typy účtů na platformě Microsoft identity | Azure
+title: Podporované typy účtů – Microsoft Identity Platform | Azure
 description: Koncepční dokumentace o cílových a podporovaných typech účtů v aplikacích
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04aac02623fe4918db671e2385c181653bdc344a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9303c8477bfdac3cb0b9c4bdaf28e5f2dea5e101
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423205"
 ---
 # <a name="supported-account-types"></a>Podporované typy účtu
 

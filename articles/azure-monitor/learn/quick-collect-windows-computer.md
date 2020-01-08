@@ -3,7 +3,7 @@ title: Shromažďování dat z hybridního počítače s Windows pomocí Azure M
 description: V tomto rychlém startu se dozvíte, jak nasadit agenta Log Analytics pro počítače se systémem Windows, na kterých běží mimo Azure, a jak povolit shromažďování dat pomocí protokolů Azure Monitor.
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
-ms.author: magoedte
+ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199022"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398947"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitor
 
@@ -93,7 +93,7 @@ Následující postup nainstaluje a nakonfiguruje agenta pro Log Analytics v Azu
 
 8. Po přidání nastavení konfigurace vyberte **Další** :
 
-    ![Instalace Microsoft Monitoring Agent](media/quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)
+    ![Instalace agenta Microsoft Monitoring Agent](media/quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)
 
 9. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak vyberte **Nainstalovat**.
 
@@ -149,7 +149,7 @@ Agenta můžete z počítače odebrat a odstranit Log Analytics pracovní prosto
 
 Chcete-li odebrat agenta, proveďte následující kroky:
 
-1. Otevřete ovládací panely.
+1. Otevřete okno Ovládací panely.
 
 2. Otevřete **Programy a funkce**.
 

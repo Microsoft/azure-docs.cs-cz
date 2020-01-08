@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b0e4fcf771f2441d9e1061ee57e83e26b6b1a241
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 389125b1ce3ed43e16f2c9c481e26f1297785a6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439352"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 
@@ -33,10 +33,10 @@ V tomto kurzu budete provádět následující kroky:
 > * Vytvoření propojených služeb SQL Server a Azure Storage 
 > * Vytvoření datových sad SQL Serveru a Azure Blob
 > * Vytvoření kanálu s aktivitou kopírování pro přesun dat
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -135,7 +135,7 @@ Pokud jej ve svém počítači ještě nemáte, nainstalujte nejnovější verzi
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující příkaz, zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) (v uvozovkách, například `"adfrg"`) a pak příkaz spusťte. 
+1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující příkaz, zadejte název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) (v uvozovkách, například `"adfrg"`) a pak příkaz spusťte. 
    
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -341,7 +341,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště Azure.
    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
    ```
 
-   Tady je ukázkový výstup:
+   Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -635,7 +635,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     }
     ```
 
-    Tady je výstup tohoto ukázkového spuštění:
+    Zde je výstup tohoto ukázkového spuštění:
 
     ```JSON
     ResourceGroupName    : <resourceGroupName>
@@ -663,7 +663,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     ($result | Where-Object {$_.ActivityName -eq "CopySqlServerToAzureBlobActivity"}).Output.ToString()
     ```
 
-    Tady je výstup tohoto ukázkového spuštění:
+    Zde je výstup tohoto ukázkového spuštění:
 
     ```json
     {  
@@ -723,7 +723,7 @@ Kanál v této ukázce kopíruje data z jednoho umístění do jiného v úloži
 > * Vytvoření propojených služeb SQL Server a Azure Storage 
 > * Vytvoření datových sad SQL Serveru a Azure Blob
 > * Vytvoření kanálu s aktivitou kopírování pro přesun dat
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
 Seznam úložišť dat podporovaných službou Data Factory najdete v tématu popisujícím [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

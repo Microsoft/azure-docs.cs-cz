@@ -1,76 +1,67 @@
 ---
-title: Service Fabric samostatné clustery – přehled | Dokumentace Microsoftu
-description: Clustery Service Fabricu spouštět na Windows Server a Linux, což znamená, že budete mít k nasazení a hostování aplikací Service Fabric kdekoli můžete spustit systém Windows Server nebo Linux.
-services: service-fabric
-documentationcenter: .net
+title: Přehled samostatných clusterů Service Fabric
+description: Clustery Service Fabric běží na Windows serveru a Linux, což znamená, že budete moct nasazovat a hostovat Service Fabric aplikace kdekoli, kde můžete používat Windows Server nebo Linux.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 5997526098980220014d9bb2d47efe6c9aedee3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465638"
 ---
-# <a name="overview-of-service-fabric-standalone-clusters"></a>Přehled Service Fabric samostatné clustery
+# <a name="overview-of-service-fabric-standalone-clusters"></a>Přehled samostatných clusterů Service Fabric
 
-Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel clusteru. Clustery je možné škálovat na tisíce uzlů. Pokud přidáte nové uzly do clusteru Service Fabric znovu vytvoří rovnováhu replik oddílů služby a instance napříč zvýšeného počtu uzlů. Celkově zlepšuje výkon aplikací a snižuje kolize pro přístup k paměti. Pokud uzly v clusteru nejsou používány efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu znovu vytvoří rovnováhu replik oddílů a instancí napříč snížený počet uzlů, abyste měli lepší využití hardwaru na každém uzlu.
+Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
 
-Typ uzlu definuje velikost, počet a vlastnosti pro sadu uzlů v clusteru. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. Typy uzlů se používají k definování rolí pro sadu uzlů clusteru, například „front-end“ nebo „back-end“. Cluster může mít více než jeden typ uzlu, ale v případě produkčních clusterů musí existovat alespoň pět virtuálních počítačů primárního typu (nebo minimálně tři virtuální počítače v případě testovacích clusterů). V uzlech primárního typu jsou umístěny [systémové služby Service Fabric](service-fabric-technical-overview.md#system-services).
+Typ uzlu definuje velikost, číslo a vlastnosti pro sadu uzlů v clusteru. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. Typy uzlů se používají k definování rolí pro sadu uzlů clusteru, například „front-end“ nebo „back-end“. Cluster může mít více než jeden typ uzlu, ale v případě produkčních clusterů musí existovat alespoň pět virtuálních počítačů primárního typu (nebo minimálně tři virtuální počítače v případě testovacích clusterů). V uzlech primárního typu jsou umístěny [systémové služby Service Fabric](service-fabric-technical-overview.md#system-services).
 
-Proces vytvoření v místním clusteru Service Fabric je podobný procesu vytváření clusteru v libovolném cloudu podle vašeho výběru s sadu virtuálních počítačů. První kroky ke zřízení virtuálních počítačů se řídí poskytovatele cloudu nebo v místním prostředí, kterou používáte. Až budete mít sadu virtuálních počítačů s připojením k síti povolena mezi nimi, potom postup nastavení balíčku Service Fabric, upravit nastavení clusteru a spuštění vytvoření clusteru a skripty pro správu jsou identické. Tím se zajistí, že vaše znalosti a zkušenosti s provoz a správu clusterů Service Fabric je nepřenosná při výběru cílit na nová hostitelská prostředí.
+Proces vytvoření místního clusteru Service Fabric se podobá procesu vytvoření clusteru v jakémkoli cloudu podle vašeho výběru se sadou virtuálních počítačů. Úvodní kroky pro zřízení virtuálních počítačů se řídí poskytovatelem cloudu nebo místním prostředím, které používáte. Jakmile budete mít k dispozici sadu virtuálních počítačů s povoleným připojením k síti, pak kroky pro nastavení balíčku Service Fabric, úpravě nastavení clusteru a spuštění skriptů pro vytváření a správu clusteru jsou identické. Tím zajistíte, že vaše znalosti a zkušenosti s provozem a správou Service Fabric clusterů jsou převoditelné, pokud se rozhodnete cílit na nová hostující prostředí.
 
 ## <a name="cluster-security"></a>Zabezpečení clusteru
-Cluster Service Fabric je prostředek, který vlastníte.  Je vaší odpovědností zajistit clusterům pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité při spouštění úloh v produkčním prostředí v clusteru.
+Cluster Service Fabric je prostředek, který vlastníte.  Je vaše zodpovědnost za zabezpečení clusterů, aby se zabránilo neoprávněným uživatelům v jejich připojení. Zabezpečený cluster je obzvláště důležitý při spuštění produkčních úloh v clusteru.
 
 ### <a name="node-to-node-security"></a>Zabezpečení mezi uzly
-Zabezpečení mezi uzly zabezpečuje komunikaci mezi virtuálními počítači nebo počítačích v clusteru. Tento scénář zabezpečení zajistíte, že jenom počítače, které mají oprávnění k připojení clusteru mohl podílet na hostování aplikací a služeb v clusteru. Service Fabric pomocí certifikátů X.509 zabezpečení clusteru a poskytuje funkce pro zabezpečení aplikací.  Certifikát clusteru je potřeba zabezpečit provoz clusteru a clusteru a serverem ověřování.  Vlastní certifikáty podepsané lze použít pro testovací clustery, ale certifikát od důvěryhodné certifikační autority by měla sloužit k zabezpečené produkční clustery.
+Zabezpečení mezi uzly zabezpečuje komunikaci mezi virtuálními počítači nebo počítači v clusteru. Tento scénář zabezpečení zajišťuje, že se můžou účastnit hostování aplikací a služeb v clusteru jenom počítače, které jsou autorizované pro připojení ke clusteru. Service Fabric k zabezpečení clusteru a poskytování funkcí zabezpečení aplikací používá certifikáty X. 509.  Certifikát clusteru je nutný k zabezpečení provozu clusteru a k zajištění ověřování clusteru a serveru.  Certifikáty podepsané svým držitelem se dají použít pro testovací clustery, ale k zabezpečení produkčních clusterů by se měly použít certifikát od důvěryhodné certifikační autority.
 
-Zabezpečení Windows může být povolená i u samostatného clusteru Windows. Pokud máte systém Windows Server 2012 R2 a Windows Active Directory, doporučujeme použít zabezpečení Windows s skupinových účtů spravované služby. S účty Windows, použijte zabezpečení Windows.
+Zabezpečení systému Windows lze také povolit pro samostatný cluster systému Windows. Pokud máte Windows Server 2012 R2 a Windows Active Directory, doporučujeme použít zabezpečení systému Windows se skupinovými účty spravované služby. V opačném případě použijte zabezpečení systému Windows s účty systému Windows.
 
-Další informace najdete v článku [zabezpečení mezi uzly](service-fabric-cluster-security.md#node-to-node-security)
+Další informace najdete v článku [zabezpečení mezi](service-fabric-cluster-security.md#node-to-node-security) uzly.
 
-### <a name="client-to-node-security"></a>Uzel klienta zabezpečení
-Uzel klienta zabezpečení ověřuje klienty a pomáhá zajistit komunikaci mezi klientem a jednotlivým uzlům v clusteru. Tento typ zabezpečení pomáhá zajistit, že jenom Autorizovaní uživatelé přístup ke clusteru a aplikace, které jsou nasazené na clusteru. Klienti jsou jednoznačně identifikované pomocí kteréhokoliv svoje přihlašovací údaje zabezpečení certifikátu X.509. Libovolný počet volitelné klientské certifikáty lze použít k ověřování klientů správce nebo uživatel s clusterem.
+### <a name="client-to-node-security"></a>Zabezpečení klient-uzel
+Zabezpečení typu klient-uzel ověřuje klienty a pomáhá zabezpečit komunikaci mezi klientem a jednotlivými uzly v clusteru. Tento typ zabezpečení pomáhá zajistit, že ke clusteru a aplikacím nasazeným v clusteru mají přístup jenom autorizovaní uživatelé. Klienti se jednoznačně identifikují pomocí přihlašovacích údajů zabezpečení certifikátů X. 509. K ověřování klientů správce nebo uživatelů s clusterem lze použít libovolný počet volitelných klientských certifikátů.
 
-Kromě klientských certifikátů je Azure Active Directory také nakonfigurovat k ověřování klientů s clusterem.
+Kromě klientských certifikátů je možné Azure Active Directory taky nakonfigurovat na ověřování klientů pomocí clusteru.
 
-Další informace najdete v článku [uzel klienta zabezpečení](service-fabric-cluster-security.md#client-to-node-security)
+Další informace najdete v článku [zabezpečení mezi klienty a uzly](service-fabric-cluster-security.md#client-to-node-security) .
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Service Fabric také podporuje řízení přístupu k omezení přístupu k určité operace clusteru pro různé skupiny uživatelů. To pomáhá lépe zabezpečit clusteru. Klienti připojující se ke clusteru podporují dva typy ovládacích prvků přístupu: Role správce a role uživatele.  
+Service Fabric také podporuje řízení přístupu pro omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, jsou podporovány dva typy řízení přístupu: role správce a role uživatele.  
 
-Další informace najdete v článku [řízení přístupu na základě Role (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
+Další informace najdete v [Access Control na základě rolí (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
 
 ## <a name="scaling"></a>Škálování
 
-Požadavky na aplikace v průběhu času měnit. Budete muset zvýšit prostředky clusteru k zajištění provozu aplikace vyšší zatížení nebo sítě nebo omezovat prostředky clusteru, jakmile poptávka poklesne. Po vytvoření clusteru Service Fabric, je možné škálovat cluster vodorovně (změnit počet uzlů), nebo svisle (změnit prostředky uzly). Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru. Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
+Aplikace vyžaduje změnu v průběhu času. Možná budete muset zvýšit prostředky clusteru tak, aby splňovaly zvýšené zatížení aplikace nebo síťový provoz nebo snížili prostředky clusteru, když na vyžádání klesne požadavek. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně (změnit počet uzlů) nebo vertikálně (změnit prostředky uzlů). Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru. I když se cluster škáluje, vaše aplikace se automaticky škálují.
 
-Další informace najdete v článku [škálování samostatné clustery](service-fabric-cluster-scaling-standalone.md).
+Další informace najdete v článku [škálování samostatných clusterů](service-fabric-cluster-scaling-standalone.md).
 
 ## <a name="upgrading"></a>Upgrade
 
-Samostatný cluster je prostředek, které zcela vlastní. Zodpovídáte za použití dílčích oprav základního operačního systému a inicializaci upgrady prostředků infrastruktury. Můžete nastavit cluster pro příjem upgradů automatické modulu runtime, když společnost Microsoft vydává nové verze, nebo vybrat podporovaná verze modulu runtime, který chcete. Kromě upgrady prostředků infrastruktury můžete také opravy operačního systému a aktualizovat konfiguraci clusteru, například certifikáty nebo porty aplikací. 
+Samostatný cluster je prostředek, který zcela vlastníte. Zodpovídáte za opravy základního operačního systému a zahájení upgradu prostředků infrastruktury. Cluster můžete nastavit tak, aby přijímal automatické upgrady za běhu, když společnost Microsoft vydává novou verzi, nebo vybrat podporovanou verzi modulu runtime, kterou požadujete. Kromě upgradů prostředků infrastruktury můžete také opravovat operační systém a aktualizovat konfiguraci clusteru, jako jsou certifikáty nebo porty aplikací. 
 
-Další informace najdete v článku [upgrade samostatné clustery](service-fabric-cluster-upgrade-standalone.md).
+Další informace najdete v článku [upgrade samostatných clusterů](service-fabric-cluster-upgrade-standalone.md).
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
-Budete moct vytvářet clustery na virtuální počítače nebo počítače s těmito operačními systémy (Linux se ještě nepodporuje):
+Můžete vytvářet clustery na virtuálních počítačích nebo počítačích, na kterých běží tyto operační systémy (Linux zatím není podporovaný):
 
 * Windows Server 2012 R2
 * Windows Server 2016 
 * Windows Server 2019
 
-## <a name="next-steps"></a>Další postup
-Další informace o [zabezpečení](service-fabric-cluster-security.md), [škálování](service-fabric-cluster-scaling-standalone.md), a [upgrade](service-fabric-cluster-upgrade-standalone.md) samostatné clustery.
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [zabezpečení](service-fabric-cluster-security.md), [škálování](service-fabric-cluster-scaling-standalone.md)a [upgradu](service-fabric-cluster-upgrade-standalone.md) samostatných clusterů.
 
-Další informace o [možnosti podpory pro Service Fabric](service-fabric-support.md).
+Přečtěte si o [možnostech podpory Service Fabric](service-fabric-support.md).

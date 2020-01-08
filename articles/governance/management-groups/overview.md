@@ -2,14 +2,14 @@
 title: Uspořádání prostředků pomocí skupin pro správu – zásady správného řízení Azure
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
-ms.date: 04/22/2019
+ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 7e121ed256e04332ca7fd33c9fc48cd2bc7bae03
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 72e37c3ef96f8068d9d9958910a6d75bbebd37fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960180"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436480"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -23,7 +23,7 @@ Můžete vytvořit flexibilní strukturu skupin pro správu a předplatných a u
 
 ![Příklad hierarchického stromu skupin pro správu](./media/tree.png)
 
-Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada se v této skupině pro správu bude dědit do obou předplatných EA a bude se vztahovat na všechny virtuální počítače v rámci těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
+Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada zdědí všechna předplatná EA, která jsou následníky této skupiny pro správu, a uplatní se na všechny virtuální počítače v těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
 
 Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí uživatelského přístupu k několika předplatným. Přesunutím několika předplatných do skupiny pro správu můžete v této skupině vytvořit jedno přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md) (RBAC), které zdědí tento přístup pro všechna předplatná.
 Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit přístup ke všemu, co potřebují, a není potřeba vytvářet skript řízení přístupu na základě role pro různá předplatná.
@@ -45,7 +45,7 @@ Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod n
 ### <a name="important-facts-about-the-root-management-group"></a>Důležité informace o kořenových skupinách pro správu
 
 - Zobrazovaný název kořenové skupiny pro správu ve výchozím nastavení je **Kořenová skupina tenanta**. ID je ID služby Azure Active Directory.
-- Pokud chcete tento zobrazovaný název změnit, musí váš účet mít pro příslušnou kořenovou skupinu pro správu roli Vlastník nebo Přispěvatel. Postup při změně názvu najdete v tématu věnovaném [změně názvu skupiny pro správu](manage.md#change-the-name-of-a-management-group).
+- Pokud chcete tento zobrazovaný název změnit, musí váš účet mít pro příslušnou kořenovou skupinu pro správu roli Vlastník nebo Přispěvatel. Viz [Změna názvu skupiny pro správu](manage.md#change-the-name-of-a-management-group) , aby se aktualizoval název skupiny pro správu.
 - Kořenová skupina pro správu se na rozdíl od ostatních skupin pro správu nedá přesunout ani odstranit.  
 - Všechna předplatná a skupiny pro správu v rámci adresáře spadají do jedné kořenové skupina pro správu.
   - Všechny prostředky v adresáři spadají do kořenové skupiny pro správu, která umožňuje globální správu.
@@ -82,12 +82,12 @@ Pokud máte k tomuto procesu obnovení nějaké dotazy, obraťte se na managemen
 ## <a name="management-group-access"></a>Přístup ke skupinám pro správu
 
 Skupiny pro správu Azure podporují [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md) pro všechny přístupy k prostředkům a definice rolí.
-Tato oprávnění se dědí do podřízených prostředků, které v hierarchii existují. Libovolná integrovaná role RBAC se dá přiřadit skupině pro správu, ze které ji v rámci hierarchie zdědí prostředky.
+Tato oprávnění se dědí do podřízených prostředků, které v hierarchii existují. Kterákoli role RBAC se dá přiřadit ke skupině pro správu, která zdědí hierarchii na prostředky.
 Skupině pro správu se dá například přiřadit role RBAC Přispěvatel virtuálních počítačů. Tato role nemá ve skupině pro správu žádnou akci, ale zdědí se do všech virtuálních počítačů v rámci této skupiny.
 
 Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
-| Název role RBAC             | Vytvoření | Přejmenovat | Přesun** | Odstranit | Přiřazení přístupu | Přiřazení zásad | Čtení  |
+| Název role RBAC             | Vytváření | Přejmenovat | Přesun** | Odstranit | Přiřazení přístupu | Přiřazení zásad | Čtení  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Vlastník                       | ×      | ×      | ×      | ×      | ×             | ×             | ×     |
 |Přispěvatel                 | ×      | ×      | ×      | ×      |               |               | ×     |
@@ -100,9 +100,86 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 *: Role Přispěvatel MG a Čtenář MG umožňují uživateli provádět tyto akce jenom v rozsahu příslušné skupiny pro správu.  
 \* *: Přiřazení rolí pro kořenovou skupinu pro správu se nevyžadují k přesunu předplatného nebo skupiny pro správu do a z ní.  Další informace o přesunu položek v rámci hierarchie najdete v tématu věnovaném [správě prostředků s využitím skupin pro správu](manage.md).
 
-### <a name="custom-rbac-role-definition-and-assignment"></a>Vlastní definice a přiřazení role RBAC
+## <a name="custom-rbac-role-definition-and-assignment"></a>Vlastní definice role RBAC a přiřazení
 
-Vlastní role RBAC se u skupin pro správu momentálně nepodporují. Aktuální stav si můžete prohlédnout na [fóru pro názory na skupiny pro správu](https://aka.ms/mgfeedback).
+Podpora vlastní role RBAC pro skupiny pro správu se v současné době podporuje s některými [omezeními](#limitations).  Můžete definovat rozsah skupiny pro správu v oboru přiřazení definice role.  Tato vlastní role RBAC pak bude k dispozici pro přiřazení v této skupině pro správu a skupině pro správu, předplatného, skupině prostředků nebo prostředku pod ní. Tato vlastní role zdědí hierarchii stejně jako všechny předdefinované role.    
+
+### <a name="example-definition"></a>Příklad definice
+[Definování a vytvoření vlastní role](../../role-based-access-control/custom-roles.md) se nemění se zahrnutím skupin pro správu. Pomocí úplné cesty definujte skupinu pro správu **/providers/Microsoft.Management/managementgroups/{GroupID}** . 
+
+Použijte ID skupiny pro správu, nikoli zobrazovaný název skupiny pro správu. Tato Obvyklá chyba je způsobená tím, že při vytváření skupiny pro správu jsou obě definovaná pole. 
+
+```json
+...
+{
+  "Name": "MG Test Custom Role",
+  "Id": "id", 
+  "IsCustom": true,
+  "Description": "This role provides members understand custom roles.",
+  "Actions": [
+    "Microsoft.Management/managementgroups/delete",
+    "Microsoft.Management/managementgroups/read",
+    "Microsoft.Management/managementgroup/write",
+    "Microsoft.Management/managementgroup/subscriptions/delete",
+    "Microsoft.Management/managementgroup/subscriptions/write",
+    "Microsoft.resources/subscriptions/read",
+    "Microsoft.Authorization/policyAssignments/*",
+    "Microsoft.Authorization/policyDefinitions/*",
+    "Microsoft.Authorization/policySetDefinitions/*",
+    "Microsoft.PolicyInsights/*",
+    "Microsoft.Authorization/roleAssignments/*",
+    "Microsoft.Authorization/roledefinitions/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+        "/providers/microsoft.management/managementGroups/ContosoCorporate"
+  ]
+}
+...
+```
+
+### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Problémy s přerušením cesty k definici rolí a hierarchii přiřazení
+Definice rolí se přiřadí oboru kdekoli v rámci hierarchie skupiny pro správu. Definici role můžete definovat pro nadřazenou skupinu pro správu, zatímco vlastní přiřazení role existuje v podřízeném předplatném. Vzhledem k tomu, že mezi dvěma položkami existuje vztah, při pokusu o oddělení přiřazení z jeho definice se zobrazí chyba. 
+
+Příklad: Pojďme se podívat na malou část hierarchie pro vizuál. 
+
+![dílčí strom](./media/subtree.png)
+
+Řekněme, že ve skupině pro správu marketingu je definovaná vlastní role. Tato vlastní role se pak přiřadí ke dvěma bezplatným zkušebním předplatným.  
+
+Pokud se pokusíme jeden z těchto předplatných přesunout jako podřízenou skupinu pro správu produkčního prostředí, tento přesun by přerušil cestu od přiřazení role předplatného k definici role skupiny pro správu marketingu. V tomto scénáři se zobrazí chyba oznamující, že přesun není povolený, protože tento vztah přeruší.  
+
+Tento scénář můžete vyřešit několika různými možnostmi:
+- Před přesunutím předplatného na nový nadřazený prvek MG odeberte přiřazení role z předplatného.
+- Přidejte předplatné do oboru přiřazení definice role.
+- Změňte rozsah přiřazení v rámci definice role. V předchozím příkladu můžete aktualizovat obory přiřazení z marketingu na kořenovou skupinu pro správu, aby definice mohla být dostupná jak v obou větvích hierarchie.   
+- Vytvořte další vlastní roli, která bude definovaná ve druhé větvi.  Tato nová role bude vyžadovat, aby se u předplatného změnilo i přiřazení role.  
+
+### <a name="limitations"></a>Omezení  
+Existují určitá omezení, která existují při použití vlastních rolí ve skupinách pro správu. 
+
+ - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu.  Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí.  K tomu dojde, když je předplatné nebo skupina pro správu s přiřazením role přesunuta na jiný nadřazený prvek, který nemá definici role.   
+ - Akce roviny dat RBAC nemůžou být definované ve vlastních rolích skupiny pro správu.  Toto omezení je nastavené tak, že dochází k potížím s latencí s aktualizacemi poskytovatelů prostředků datové roviny pomocí akcí RBAC. Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
+ - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role.  Pokud je v seznamu překlep nebo nesprávné ID skupiny pro správu, bude definice role stále vytvořena.   
+
+## <a name="moving-management-groups-and-subscriptions"></a>Přesun skupin pro správu a předplatných 
+
+Do skupiny pro správu nebo předplatného, které mají být podřízeny jiné skupině pro správu, je třeba vyhodnotit tři pravidla jako true.
+
+Pokud provádíte akci přesunutí, budete potřebovat: 
+
+-  Oprávnění pro zápis a přiřazení role pro skupinu pro správu pro podřízené předplatné nebo skupinu pro správu.
+   - Předdefinovaný příklad **vlastníka** role
+- Přístup k zápisu skupiny pro správu v cílové nadřazené skupině pro správu.
+   - Předdefinovaný příklad role: **vlastník**, **Přispěvatel**, **Přispěvatel skupiny pro správu**
+- Přístup k zápisu skupiny pro správu v existující nadřazené skupině pro správu.
+   - Předdefinovaný příklad role: **vlastník**, **Přispěvatel**, **Přispěvatel skupiny pro správu**
+
+**Výjimka**: Pokud je cílová nebo existující nadřazená skupina pro správu kořenovou skupinou pro správu, požadavky na oprávnění se nepoužijí. Vzhledem k tomu, že kořenová skupina pro správu je výchozím cílovým bodem pro všechny nové skupiny pro správu a odběry, nepotřebujete pro ni oprávnění k přesunutí položky.
+
+Pokud je role vlastníka v předplatném zděděná z aktuální skupiny pro správu, cíle přesunutí jsou omezené. Předplatné můžete přesunout jenom do jiné skupiny pro správu, kde máte roli vlastníka. Nemůžete ho přesunout do skupiny pro správu, kde jste přispěvatel, protože byste ztratili vlastnictví tohoto předplatného. Pokud jste přiřazeni přímo k roli vlastníka pro předplatné (nedědí se ze skupiny pro správu), můžete ho přesunout do jakékoli skupiny pro správu, kde jste přispěvatelem. 
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit
 

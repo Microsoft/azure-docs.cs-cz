@@ -1,75 +1,66 @@
 ---
-title: Simulace chyb v mikroslužeb Azure | Dokumentace Microsoftu
-description: Tento článek pojednává o akcemi testovatelnosti v Microsoft Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Simulace chyb v mikroslužbách Azure
+description: Tento článek pojednává o akcích testování zjištěných v Microsoft Azure Service Fabric.
 author: motanv
-manager: chackdan
-editor: heeldin
-ms.assetid: ed53ca5c-4d5e-4b48-93c9-e386f32d8b7a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 37a794387f3a2f02124805705d380ad9f1fc1270
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465588"
 ---
-# <a name="testability-actions"></a>Akce testovatelnosti
-K simulaci nespolehlivé infrastruktury Azure Service Fabric nabízí vás jako na vývojáři se způsoby, jak simulovat různých skutečná selhání a přechodů mezi stavy. Tyto jsou vystaveny jako akcemi testovatelnosti. Akce, které jsou nízké úrovně rozhraní API, která způsobí vkládání konkrétních chyb, přechod stavu nebo ověření. Díky kombinaci těchto akcí, můžete napsat komplexní testovací scénáře pro služby.
+# <a name="testability-actions"></a>Testovací akce
+Pro simulaci nespolehlivé infrastruktury vám Azure Service Fabric poskytne vývojářům možnosti simulovat různé chyby reálného světa a přechody do stavu. Jsou přístupné jako akce testování. Akce jsou rozhraní API na nízké úrovni, která způsobují konkrétní vkládání chyb, přechod stavu nebo ověřování. Kombinací těchto akcí můžete napsat komplexní testovací scénáře pro vaše služby.
 
-Service Fabric poskytuje že několik běžných scénářů testovací skládá z těchto akcí. Důrazně doporučujeme využívat tyto předdefinované scénáře, které jsou pečlivě zvolili k testování běžné přechodů mezi stavy a případy selhání. Akce je však možné vytvářet vlastní testovací scénáře, když chcete přidat pokrytí pro scénáře, které nejsou pokryty všemi integrované scénáře ještě nebo které jsou vlastní přizpůsobená pro vaši aplikaci.
+Service Fabric poskytuje některé běžné testovací scénáře složené z těchto akcí. Důrazně doporučujeme, abyste využili tyto integrované scénáře, které pečlivě vybraly k testování běžných přechodů mezi stavy a případů selhání. Nicméně akce lze použít k vytvoření vlastních testovacích scénářů, pokud chcete přidat pokrytí pro scénáře, které ještě nejsou zahrnuté v předdefinovaných scénářích nebo které jsou vlastní, přizpůsobené pro vaši aplikaci.
 
-C#implementace akce, které se nacházejí v sestavení System.Fabric.dll. Modul prostředí PowerShell systému prostředků infrastruktury se nachází ve Microsoft.ServiceFabric.Powershell.dll sestavení. Jako součást instalace modulu runtime je nainstalován modul ServiceFabric PowerShell umožňující snadné použití.
+C#implementace akcí se nacházejí v sestavení System. Fabric. dll. Modul PowerShellu pro System Fabric se nachází v sestavení Microsoft. ServiceFabric. PowerShell. dll. V rámci instalace modulu runtime je nainstalovaný modul ServiceFabric PowerShell, který umožňuje snadné použití.
 
-## <a name="graceful-vs-ungraceful-fault-actions"></a>Bezproblémové vs. vynuceném selhání akce
-Akcemi testovatelnosti dělí do dvou hlavních bloků:
+## <a name="graceful-vs-ungraceful-fault-actions"></a>Řádné a nedarované akce při selhání
+Testovací akce jsou klasifikovány do dvou hlavních sad:
 
-* Vynuceném chyb: Tyto chyby simulace selhání, jako je restartování počítače a zpracování chyb. V takových případech selhání zastaví náhle kontextu spuštění procesu. To znamená, že se že žádné čištění stavu můžete spustit před spuštěním aplikace znovu.
-* Bezproblémové chyb: Tyto chyby simulovat řádné akce, jako je replika přesunutí a drops aktivované služby Vyrovnávání zatížení. V takových případech služba obdržela oznámení okno zavřít a můžete vyčistit stavu před ukončením.
+* Nedarované chyby: tyto chyby simulují chyby, jako je restartování počítače a zpracování chyb. V takových případech selhání se kontext spuštění procesu náhle zastaví. To znamená, že nemůžete spustit žádné vyčištění stavu, než se aplikace znovu spustí.
+* Řádné chyby: tyto chyby simulují řádné akce, jako je například přesunutí a obnovení repliky aktivované vyrovnáváním zatížení. V takových případech služba získá oznámení o zavření a před ukončením může stav vyčistit.
 
-Pro lepší ověření kvality spuštění úlohy služby a obchodní při různých chyb bezproblémové a vynuceném nevyvolá. Vynuceném chyb výkonu scénáře, kde služba náhlé ukončení procesu uprostřed některé pracovního postupu. Tato funkce testuje cestu obnovení po obnovení repliky služby Service Fabric. To vám pomůže otestovat konzistenci dat a určuje, zda je stav služby udržuje správně po selhání. Další sadu test selhání (řádné selhání), který služba správně reaguje na repliky se přesouvat Service Fabric. To testy zpracování zrušení v metodě RunAsync. Služba potřebuje ke kontrole token rušení, který je nastaven, správně uložit svůj stav a ukončete metodě RunAsync.
+Pro lepší ověřování kvality spouštějte úlohy služby a podniku při vypínání různých řádných a nedarovaných chyb. Nedarované chyby způsobují scénáře, kdy se proces služby náhle ukončí v průběhu některých pracovních postupů. Tím se otestuje cesta pro obnovení po obnovení repliky služby pomocí Service Fabric. To vám pomůže zajistit konzistenci dat a to, jestli se stav služby udržuje správně po selhání. Druhá sada selhání (plynulé selhání) testuje, že služba správně reaguje na repliky, které se pohybují Service Fabric. Tento test zpracovává zrušení v metodě RunAsync. Služba musí ověřit, zda je nastaven token zrušení, správně uložit svůj stav a ukončit metodu RunAsync.
 
-## <a name="testability-actions-list"></a>Seznam akcí testovatelnosti
-| Akce | Popis | Spravované rozhraní API | Rutiny Powershellu | Bezproblémové/vynuceném chyb |
+## <a name="testability-actions-list"></a>Seznam akcí testování
+| Akce | Popis | Spravované rozhraní API | Rutina PowerShellu | Řádné/nedarované chyby |
 | --- | --- | --- | --- | --- |
-| CleanTestState |Odebere všechny stav testu z clusteru v případě chybný vypnutí ovladače testu. |CleanTestStateAsync |Remove-ServiceFabricTestState |Neuvedeno |
-| InvokeDataLoss |Indukuje ztrátě dat do oddílu služby. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Bezproblémové |
-| InvokeQuorumLoss |Oddíl dané stavové služby umístí do ztrátě kvora. |InvokeQuorumLossAsync |Vyvolání ServiceFabricQuorumLoss |Bezproblémové |
-| MovePrimary |Zadaný primární repliky stavové služby přesune do určeného uzlu clusteru. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Bezproblémové |
-| MoveSecondary |Posune aktuální sekundární repliky do stavové služby do jiného uzlu clusteru. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Bezproblémové |
-| RemoveReplica |Simuluje selhání repliky tak, že odeberete repliku z clusteru. To se zavře repliky a přejde k roli 'None', veškerý její stav odebrání z clusteru. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Bezproblémové |
-| RestartDeployedCodePackage |Selhání kódu balíček proces simuluje restartováním balíček kódu nasazené na uzly v clusteru. To přeruší proces balíček kódu, který restartuje všechny uživatele repliky služby hostované v tomto procesu. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Vynuceném |
-| RestartNode |Po restartování uzlu simuluje selhání uzlu clusteru Service Fabric. |RestartNodeAsync |Restart-ServiceFabricNode |Vynuceném |
-| RestartPartition |Simuluje scénáři nedostupnosti nedostupnosti nebo cluster datacentra restartováním některé nebo všechny repliky oddílu. |RestartPartitionAsync |Restart-ServiceFabricPartition |Bezproblémové |
-| RestartReplica |Simuluje selhání replik restartováním trvalý repliky v clusteru, zavírání repliky a znovu ji otevřete. |RestartReplicaAsync |Restart-ServiceFabricReplica |Bezproblémové |
-| StartNode |Spustí uzlu v clusteru, který je již zastavena. |StartNodeAsync |Start-ServiceFabricNode |Neuvedeno |
-| StopNode |Simuluje selhání uzlu pomocí zastavení uzlu v clusteru. Uzel zůstane dolů, dokud se nazývá StartNode. |StopNodeAsync |Stop-ServiceFabricNode |Vynuceném |
-| ValidateApplication |Ověří dostupnost a stav všech služeb Service Fabric v rámci aplikace, obvykle po nevyvolá některých chyb do systému. |ValidateApplicationAsync |Test-ServiceFabricApplication |Neuvedeno |
-| ValidateService |Ověří dostupnost a stav služby Service Fabric, obvykle po nevyvolá některých chyb do systému. |ValidateServiceAsync |Test-ServiceFabricService |Neuvedeno |
+| CleanTestState |Odebere všechny stavy testu z clusteru v případě chybného vypnutí ovladače testu. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nevztahuje se |
+| InvokeDataLoss |Vydělí ztrátu dat na oddíl služby. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Snížen |
+| InvokeQuorumLoss |Vloží daný stavovou službu do ztráty kvora. |InvokeQuorumLossAsync |Invoke – ServiceFabricQuorumLoss |Snížen |
+| MovePrimary |Přesune zadanou primární repliku stavové služby do zadaného uzlu clusteru. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Snížen |
+| Movesecondary jde provést |Přesune aktuální sekundární repliku stavové služby na jiný uzel clusteru. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Snížen |
+| RemoveReplica |Simuluje selhání repliky odstraněním repliky z clusteru. Tím se replika ukončí a převede ji na role ' None '. tím se odebere celý stav z clusteru. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Snížen |
+| RestartDeployedCodePackage |Simuluje selhání procesu balíčku kódu restartováním balíčku kódu nasazeného na uzlu v clusteru. Tím dojde k přerušení procesu balíčku kódu, který restartuje všechny repliky služby uživatele hostované v tomto procesu. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Nestandardním |
+| RestartNode |Simuluje selhání uzlu clusteru Service Fabric restartováním uzlu. |RestartNodeAsync |Restart-ServiceFabricNode |Nestandardním |
+| RestartPartition |Simuluje scénář Datacenter nedostupnosti nebo cluster nedostupnosti restartováním některých nebo všech replik oddílu. |RestartPartitionAsync |Restart-ServiceFabricPartition |Snížen |
+| RestartReplica |Simuluje selhání repliky restartováním trvalé repliky v clusteru, zavřením repliky a jejím opětovným otevřením. |RestartReplicaAsync |Restart-ServiceFabricReplica |Snížen |
+| StartNode |Spustí uzel v clusteru, který je již zastaven. |StartNodeAsync |Start-ServiceFabricNode |Nevztahuje se |
+| Příkaz stopnode |Simuluje selhání uzlu zastavením uzlu v clusteru. Uzel zůstane v nefunkčním případě volání StartNode. |StopNodeAsync |Stop-ServiceFabricNode |Nestandardním |
+| ValidateApplication |Ověří dostupnost a stav všech služeb Service Fabric v rámci aplikace, obvykle po vystavení nějaké chyby do systému. |ValidateApplicationAsync |Test-ServiceFabricApplication |Nevztahuje se |
+| ValidateService |Ověří dostupnost a stav služby Service Fabric, obvykle po vystavení nějaké chybě systému. |ValidateServiceAsync |Test-ServiceFabricService |Nevztahuje se |
 
-## <a name="running-a-testability-action-using-powershell"></a>Spouštění akce testovatelnosti pomocí Powershellu
-V tomto kurzu se dozvíte, jak provádět akce testovatelnosti pomocí prostředí PowerShell. Bude se dozvíte, jak ke spuštění akcí testovatelnosti místního clusteru (jedna box) nebo Azure. Microsoft.Fabric.Powershell.dll – modul Powershellu pro Service Fabric – je automaticky nainstalován při instalaci Microsoft Service Fabric MSI. Modul je načten automaticky, když otevřete příkazový řádek Powershellu.
+## <a name="running-a-testability-action-using-powershell"></a>Spuštění akce testování pomocí prostředí PowerShell
+V tomto kurzu se dozvíte, jak spustit akci testování pomocí prostředí PowerShell. Naučíte se, jak spustit akci testování v místním clusteru (s jedním box) nebo v clusteru Azure. Microsoft. Fabric. PowerShell. dll--modul Service Fabric PowerShellu – je nainstalován automaticky při instalaci nástroje Microsoft Service Fabric MSI. Modul se načte automaticky, když otevřete příkazový řádek PowerShellu.
 
-Kurz segmenty:
+Segmenty kurzu:
 
-* [Spustit akci pole jeden cluster](#run-an-action-against-a-one-box-cluster)
-* [Spustit akci proti clusteru služby Azure](#run-an-action-against-an-azure-cluster)
+* [Spuštění akce v rámci clusteru s jedním box](#run-an-action-against-a-one-box-cluster)
+* [Spuštění akce proti clusteru Azure](#run-an-action-against-an-azure-cluster)
 
-### <a name="run-an-action-against-a-one-box-cluster"></a>Spustit akci pole jeden cluster
-Spustit akce testovatelnosti místní cluster, nejprve připojte ke clusteru a otevřete příkazový řádek Powershellu v režimu správce. Podívejme se na **Restart-ServiceFabricNode** akce.
+### <a name="run-an-action-against-a-one-box-cluster"></a>Spuštění akce v rámci clusteru s jedním box
+Pokud chcete spustit testovací akci pro místní cluster, nejdřív se připojte ke clusteru a otevřete příkazový řádek PowerShellu v režimu správce. Podíváme se na akci **restart-ServiceFabricNode** .
 
 ```powershell
 Restart-ServiceFabricNode -NodeName Node1 -CompletionMode DoNotVerify
 ```
 
-Tady akce **Restart-ServiceFabricNode** běží na uzlu s názvem "Node1". Režim dokončování Určuje, že by neměla ověřit, jestli akce restartování uzlu ve skutečnosti úspěšně. Určuje režim dokončování, jak je "Ověřit" způsobí, že chcete ověřit, jestli akce restartování ve skutečnosti úspěšně. Místo určení přímo uzlu pomocí jeho názvu, můžete je zadat pomocí klíče oddílu a druh repliky, následujícím způsobem:
+Tady se akce **restart-ServiceFabricNode** spouští na uzlu s názvem "Uzel1". Režim dokončování určuje, že by neměl ověřit, zda byla akce restartování uzlu skutečně úspěšná. Zadáním režimu dokončení jako "ověřit" bude možné ověřit, zda akce restartování skutečně proběhla úspěšně. Místo přímého zadání uzlu podle jeho názvu ho můžete zadat pomocí klíče oddílu a typu repliky následujícím způsobem:
 
 ```powershell
 Restart-ServiceFabricNode -ReplicaKindPrimary  -PartitionKindNamed -PartitionKey Partition3 -CompletionMode Verify
@@ -84,32 +75,32 @@ Connect-ServiceFabricCluster $connection
 Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 ```
 
-**Restart-ServiceFabricNode** by měla sloužit k restartování uzlu Service Fabric v clusteru. Tento kód přestane Fabric.exe proces, který restartuje všechny systémové služby a uživatel služby repliky hostované v tomto uzlu. Pomocí tohoto rozhraní API k otestování služby pomáhá získat chyb podél cest obnovení převzetí služeb při selhání. Umožňuje simulovat selhání uzlů v clusteru.
+**Restart-ServiceFabricNode** by se měl použít k restartování uzlu Service Fabric v clusteru. Tím se zastaví proces Fabric. exe, ve kterém se restartuje všechny repliky systémové služby a uživatele hostované v tomto uzlu. Použití tohoto rozhraní API k otestování vaší služby pomáhá odhalit chyby po cestách obnovení převzetí služeb při selhání. Pomáhá simulovat selhání uzlu v clusteru.
 
-Následující snímek obrazovky ukazuje **Restart-ServiceFabricNode** příkaz testovatelnosti v akci.
+Na následujícím snímku obrazovky vidíte v akci příkaz k **restartování-ServiceFabricNode** testování.
 
 ![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-Výstup prvního **Get-ServiceFabricNode** (rutiny z modulu Powershellu pro Service Fabric) ukazuje, že místní cluster obsahuje pět uzlů: Node.1 k Node.5. Po akce testovatelnosti (rutiny) **Restart-ServiceFabricNode** je spuštěn na uzlu s názvem Node.4, vidíme, že uzel dostupnost se resetovalo.
+Výstup první rutiny **Get-ServiceFabricNode** (rutina z modulu Service Fabric PowerShellu) ukazuje, že místní cluster má pět uzlů: Node. 1 do Node. 5. Po provedení akce testování (rutina) **restart-ServiceFabricNode** na uzlu s názvem Node. 4 se zobrazí informace o tom, že doba provozu uzlu byla resetována.
 
-### <a name="run-an-action-against-an-azure-cluster"></a>Spustit akci proti clusteru služby Azure
-Spuštění akcí testovatelnosti (s použitím prostředí PowerShell) proti clusteru služby Azure se podobá spouštění akce v místním clusteru. Jediným rozdílem je, abyste mohli spustit akci místo připojování k místnímu clusteru budete muset nejprve připojte ke clusteru Azure.
+### <a name="run-an-action-against-an-azure-cluster"></a>Spuštění akce proti clusteru Azure
+Spuštění akce testování (pomocí prostředí PowerShell) proti clusteru Azure je podobné jako spuštění akce v rámci místního clusteru. Jediným rozdílem je, že před tím, než se připojíte k místnímu clusteru, musíte se nejdřív připojit ke clusteru Azure.
 
-## <a name="running-a-testability-action-using-c35"></a>Spouštění akce testovatelnosti pomocí jazyka C&#35;
-Spuštění akcí testovatelnosti pomocí C#, je třeba nejprve připojte ke clusteru pomocí FabricClient. Potom získejte parametry potřebné ke spuštění akce. Různé parametry lze použít ke spuštění stejnou akci.
-Akce RestartServiceFabricNode podíváme, můžete ho spustit také tak je pomocí uzlu informace (název uzlu a uzel ID instance) v clusteru.
+## <a name="running-a-testability-action-using-c35"></a>Spuštění akce testování pomocí jazyka C&#35;
+Chcete-li spustit akci testování pomocí C#, nejprve se ke clusteru musíte připojit pomocí FabricClient. Pak Získejte parametry potřebné ke spuštění akce. Ke spuštění stejné akce lze použít různé parametry.
+V případě, že se na akci RestartServiceFabricNode spustí jeden ze způsobů, jak ji spustit, je použít informace o uzlu (název uzlu a ID instance uzlu) v clusteru.
 
 ```csharp
 RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, CancellationToken.None)
 ```
 
-Vysvětlení parametrů:
+Vysvětlení parametru:
 
-* **CompleteMode** Určuje, že by neměla režim ověřit, jestli akce restartování ve skutečnosti úspěšně. Určuje režim dokončování, jak je "Ověřit" způsobí, že chcete ověřit, jestli akce restartování ve skutečnosti úspěšně.  
-* **OperationTimeout** Nastaví množství času pro operaci dokončit předtím, než je vyvolána výjimka TimeoutException.
-* **CancellationToken** umožňuje čekající volání budou zrušeny.
+* **CompleteMode** určuje, že režim by neměl ověřovat, zda akce restartování skutečně proběhla úspěšně. Zadáním režimu dokončení jako "ověřit" bude možné ověřit, zda akce restartování skutečně proběhla úspěšně.  
+* **OperationTimeout** nastaví dobu, po kterou bude operace dokončena, než bude vyvolána výjimka TimeoutException.
+* **CancellationToken** umožňuje zrušit probíhající volání.
 
-Místo určení přímo uzlu pomocí jeho názvu, můžete je zadat pomocí klíče oddílu a druh repliky.
+Místo přímého určení uzlu podle jeho názvu ho můžete zadat pomocí klíče oddílu a typu repliky.
 
 Další informace najdete v tématu PartitionSelector a ReplicaSelector.
 
@@ -181,9 +172,9 @@ class Test
 
 ## <a name="partitionselector-and-replicaselector"></a>PartitionSelector a ReplicaSelector
 ### <a name="partitionselector"></a>PartitionSelector
-PartitionSelector je pomocná v testovatelnost slouží k výběru konkrétního oddílu, na kterém chcete provést některé z akcí testovatelnosti Slouží k výběru konkrétního oddílu, pokud je ID oddílu je znám předem. Nebo můžete zadat klíč oddílu a operace se přeložit ID oddílu interně. Máte také možnost výběru náhodného oddílu.
+PartitionSelector je pomocná pomocná pro účely testování a slouží k výběru konkrétního oddílu, na kterém se provádí akce testování. Dá se použít k výběru konkrétního oddílu, pokud je ID oddílu známé předem. Nebo můžete zadat klíč oddílu a operace vyřeší ID oddílu interně. Máte také možnost vybrat náhodný oddíl.
 
-Použití této pomocné rutiny, vytvořit objekt PartitionSelector a vyberte oddíl, pomocí jedné z metod vyberte *. Pak předá objekt PartitionSelector rozhraní API, který jej vyžaduje. Pokud není zaškrtnuto, bude výchozí náhodné oddílu.
+Pro použití této pomocné rutiny vytvořte objekt PartitionSelector a vyberte oddíl pomocí jedné z metod SELECT *. Pak předejte objekt PartitionSelector do rozhraní API, které to vyžaduje. Pokud není vybraná žádná možnost, použije se výchozí náhodný oddíl.
 
 ```csharp
 Uri serviceName = new Uri("fabric:/samples/InMemoryToDoListApp/InMemoryToDoListService");
@@ -205,9 +196,9 @@ PartitionSelector uniformIntPartitionSelector = PartitionSelector.PartitionKeyOf
 ```
 
 ### <a name="replicaselector"></a>ReplicaSelector
-ReplicaSelector je pomocné rutiny v testovatelnost slouží k zajištění vyberte repliku, na kterém chcete provést některé z akcí testovatelnosti Je možné vybrat konkrétní repliky, pokud je ID repliky je znám předem. Kromě toho máte možnost vybrat primární repliku nebo náhodného sekundární lokality. ReplicaSelector je odvozena z PartitionSelector, proto je nutné vybrat repliky a oddílu, na kterém chcete provést operaci testovatelnost.
+ReplicaSelector je pomocná pomocná při testování a slouží k výběru repliky, na které se provádí akce testování. Dá se použít k výběru konkrétní repliky, pokud je ID repliky známé předem. Kromě toho máte možnost vybrat primární repliku nebo náhodnou sekundární hodnotu. ReplicaSelector je odvozen z PartitionSelector, takže je třeba vybrat repliku i oddíl, na kterém chcete provést operaci testování.
 
-Použití této pomocné rutiny, vytvořte objekt ReplicaSelector a nastavit tak, jak chcete vybrat repliky a oddílu. Poté jej lze předat do rozhraní API, který jej vyžaduje. Pokud není zaškrtnuto, bude výchozí náhodné repliky a náhodné oddílu.
+Chcete-li použít tohoto pomocníka, vytvořte objekt ReplicaSelector a nastavte způsob, jakým chcete vybrat repliku a oddíl. Pak ho můžete předat do rozhraní API, které to vyžaduje. Pokud není vybraná žádná možnost, použije se výchozí hodnota náhodně replika a náhodný oddíl.
 
 ```csharp
 Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829");
@@ -227,9 +218,9 @@ ReplicaSelector replicaByIdSelector = ReplicaSelector.ReplicaIdOf(partitionSelec
 ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(partitionSelector);
 ```
 
-## <a name="next-steps"></a>Další postup
-* [Scénářů testovatelnosti](service-fabric-testability-scenarios.md)
-* Postup testování služby
-  * [Simulace chyb během zatížení služeb](service-fabric-testability-workload-tests.md)
-  * [Selhání komunikace Service to service](service-fabric-testability-scenarios-service-communication.md)
+## <a name="next-steps"></a>Další kroky
+* [Scénáře testování](service-fabric-testability-scenarios.md)
+* Jak testovat službu
+  * [Simulace chyb během úloh služby](service-fabric-testability-workload-tests.md)
+  * [Chyby komunikace mezi službami a službami](service-fabric-testability-scenarios-service-communication.md)
 

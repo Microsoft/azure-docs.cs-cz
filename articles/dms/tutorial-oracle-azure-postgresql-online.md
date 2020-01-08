@@ -1,5 +1,6 @@
 ---
-title: 'Kurz: použití Azure Database Migration Service k provedení online migrace Oracle do Azure Database for PostgreSQL | Microsoft Docs'
+title: 'Kurz: migrace Oracle online na Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
 description: Naučte se provádět online migraci z místního prostředí Oracle nebo na virtuální počítače, abyste Azure Database for PostgreSQL pomocí Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 1ac5e4dd28f7565f546c700a4bbb0076fd793bb7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ed95d95db3849026763e4537a832c9feda98aa40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163430"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437589"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
 
@@ -27,7 +28,7 @@ V tomto kurzu se naučíte:
 >
 > * Vyhodnoťte úsilí při migraci pomocí nástroje ora2pg.
 > * Pomocí nástroje ora2pg migrujte vzorové schéma.
-> * Vytvořte instanci Azure Database Migration Service.
+> * Vytvořte instanci služby Azure Database Migration Service.
 > * Vytvořte projekt migrace pomocí Azure Database Migration Service.
 > * Spuštění migrace
 > * Monitorování migrace
@@ -42,7 +43,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje, jak provést online migraci z Oracle do Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -51,7 +52,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Stáhněte a nainstalujte ora2pg buď na [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) , nebo [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf).
 * [Vytvořte instanci v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
 * Připojte se k instanci a vytvořte databázi pomocí instrukcí v tomto [dokumentu](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
-* Vytvořte Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN. ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* Vytvořte Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
 
   > [!NOTE]
   > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
@@ -184,7 +185,7 @@ Můžete spustit ora2pg pro export všech databázových objektů do souborů. S
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Například:
+Příklad:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -237,14 +238,14 @@ Jak začít:
 
     Pokud název schématu ve zdroji Oracle odpovídá hodnotě v Azure Database for PostgreSQL, Azure Database Migration Service *vytvoří schéma tabulky pomocí stejného případu jako v cíli*.
 
-    Například:
+    Příklad:
 
     | Zdrojové schéma Oracle | Cílová databáze PostgreSQL. schéma | DMS vytvořil schéma. Table. Column. |
     | ------------- | ------------- | ------------- |
-    | HR | targetHR. Public | veřejné. země. Country_ID |
-    | HR | targetHR.trgthr | trgthr. zemích. Country_ID |
-    | HR | targetHR.TARGETHR | "TARGETHR"." ZEMĚ "." COUNTRY_ID" |
-    | HR | targetHR.HR | "HR". ZEMĚ "." COUNTRY_ID" |
+    | HR | targetHR. Public | veřejné. země. country_id |
+    | HR | targetHR.trgthr | trgthr. zemích. country_id |
+    | HR | targetHR.TARGETHR | "TARGETHR"." ZEMĚ "." COUNTRY_ID " |
+    | HR | targetHR.HR | "HR". ZEMĚ "." COUNTRY_ID " |
     | HR | targetHR.Hr | \* Nejde namapovat smíšené případy. |
 
     \* Pokud chcete v cílovém PostgreSQL vytvořit kombinaci velkých a malých písmen a názvů tabulek, obraťte se na [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com). V cílové databázi PostgreSQL můžeme poskytnout skript pro nastavení schématu smíšené velikosti tabulky.
@@ -320,7 +321,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 ## <a name="upload-oracle-oci-driver"></a>Nahrát ovladač Oracle OCI
 
-1. Vyberte **Uložit**a pak na obrazovce **instalovat ovladač OCI** se přihlaste k účtu Oracle a Stáhněte si ovladač **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37 128 586 bajtů) (kontrolní součet SHA1:865082268) z [tohoto místa. ](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
+1. Vyberte **Uložit**a pak na obrazovce **instalovat ovladač OCI** se přihlaste k účtu Oracle a Stáhněte si ovladač **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37 128 586 bajtů) (kontrolní součet SHA1:865082268) z [tohoto místa](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
 2. Stáhněte ovladač do sdílené složky.
 
    Ujistěte se, že je složka sdílená s uživatelským jménem, které jste zadali s minimálním přístupem jen pro čtení. Azure Database Migration Service přistupuje ke sdílené složce a přečte se z ní, aby se do Azure nahrál ovladač OCI vyvoláním uživatelského jména, které zadáte.
@@ -331,7 +332,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
 
-1. Vyberte **Uložit**a pak na obrazovce **cílové podrobnosti** zadejte podrobnosti o připojení pro cílový Azure Database for PostgreSQL Server, což je předem zřízená instance Azure Database for PostgreSQL, na kterou se schéma **HR** . nainstalována.
+1. Vyberte **Uložit**a pak na obrazovce **cílové podrobnosti** zadejte podrobnosti o připojení pro cílový Azure Database for PostgreSQL Server, což je předem zřízená instance Azure Database for PostgreSQL, na kterou se schéma **lidských zdrojů** nasadilo.
 
     ![Obrazovka Podrobnosti cíle](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 

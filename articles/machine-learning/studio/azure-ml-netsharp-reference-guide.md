@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839750"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427674"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Příručka k jazyku .NET # neuronové Network Specification pro Azure Machine Learning Studio (Classic)
 
@@ -54,9 +54,9 @@ NET # navíc podporuje následující čtyři druhy pokročilých sad připojen�
 + Sady **fondů** a **sady normalizace odpovědí**. Jedná se o podobné sady konvoluční v tom, že uživatel definuje malé okolí uzlů ve zdrojové vrstvě. Rozdílem je, že váhy hran v těchto svazekích nejsou vlakem. Místo toho se pro hodnoty zdrojového uzlu použije předdefinovaná funkce k určení hodnoty cílového uzlu.
 
 
-## <a name="supported-customizations"></a>Podporovaná přizpůsobení
+## <a name="supported-customizations"></a>Podporované kustomizace
 
-Architektura neuronovéch síťových modelů, které vytvoříte v klasické verzi Azure Machine Learning Studio, se dá výrazně přizpůsobit pomocí příkazu NET #. Můžete:
+Architektura neuronovéch síťových modelů, které vytvoříte v Azure Machine Learning Studio (Classic), se dá výrazně přizpůsobit pomocí příkazu NET #. Můžete:
 
 + Vytváření skrytých vrstev a řízení počtu uzlů v jednotlivých vrstvách.
 + Určete, jak mají být vrstvy vzájemně propojeny.
@@ -133,10 +133,10 @@ Podporují se následující výstupní funkce:
 + softmax
 + rlinear
 + čtvercové
-+ SQRT
++ sqrt
 + srlinear
-+ ABS
-+ Tanh –
++ abs
++ tanh
 + brlinear
 
 Například následující deklarace používá funkci **softmax** :
@@ -169,7 +169,7 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ V predikátu pro `ByRow`je `s` parametr reprezentující index do obdélníkového pole uzlů vstupní vrstvy, `Pixels`a `d` je parametr reprezentující index do pole uzlů skryté vrstvy. , `ByRow`. Typ `s` a `d` je řazená kolekce členů s celými čísly s délkou 2. V koncepčním rozsahu `s` rozsahy přes všechny páry celých čísel s `0 <= s[0] < 10` a `0 <= s[1] < 20`a `d` rozsahy přes všechny páry celých čísel, s `0 <= d[0] < 10` a `0 <= d[1] < 12`.
++ V predikátu pro `ByRow``s` je parametr reprezentující index do obdélníkového pole uzlů vstupní vrstvy, `Pixels`a `d` je parametr reprezentující index do pole uzlů skryté vrstvy, `ByRow`. Typ `s` a `d` je řazená kolekce členů s celými čísly s délkou 2. V koncepčním rozsahu `s` rozsahy přes všechny páry celých čísel s `0 <= s[0] < 10` a `0 <= s[1] < 20`a `d` rozsahy přes všechny páry celých čísel, s `0 <= d[0] < 10` a `0 <= d[1] < 12`.
 
 + Na pravé straně výrazu predikátu existuje podmínka. V tomto příkladu pro každou hodnotu `s` a `d` tak, že podmínka je pravdivá, existuje okraj z uzlu zdrojové vrstvy do cílového uzlu vrstvy. Proto tento výraz filtru označuje, že sada zahrnuje připojení z uzlu definovaného `s` k uzlu definovanému `d` ve všech případech, kde s [0] je rovno d [0].
 
@@ -259,7 +259,7 @@ Další informace o vrstvách sdružování najdete v těchto článcích:
 
 **Normalizace odpovědí** je místní schéma normalizace, které bylo poprvé zavedeno pomocí Geoffrey Hinton, et al, v [klasifikaci papírového ImageNetu s hlubokými konvolučními neuronovémi sítěmi](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
-Normalizace odezvy se používá k podpoře generalizace v neuronové sítích. Když se jedna neuron vychází na úrovni vysoké úrovně aktivace, potlačí se úroveň aktivace okolního neurons vrstvy pro normalizaci odezvy. K tomu je potřeba použít tři parametry (`α`, `β`a `k`) a strukturu konvoluční (neboli okolní tvar). Každý neuron v cílové vrstvě **y** odpovídá neuron **x** ve zdrojové vrstvě. Úroveň aktivace **y** je dána následujícím vzorcem, kde `f` je úroveň aktivace neuron a `Nx` je jádro (nebo sada, která obsahuje neurons v okolí **x**), jak je definováno následujícím konvoluční. strukturované
+Normalizace odezvy se používá k podpoře generalizace v neuronové sítích. Když se jedna neuron vychází na úrovni vysoké úrovně aktivace, potlačí se úroveň aktivace okolního neurons vrstvy pro normalizaci odezvy. K tomu je potřeba použít tři parametry (`α`, `β`a `k`) a strukturu konvoluční (neboli okolní tvar). Každý neuron v cílové vrstvě **y** odpovídá neuron **x** ve zdrojové vrstvě. Úroveň aktivace **y** je dána následujícím vzorcem, kde `f` je úroveň aktivace neuron a `Nx` je jádro (nebo sada, která obsahuje neurons v okolí **x**), jak je definováno následující strukturou konvoluční:
 
 ![vzorec pro strukturu konvoluční](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
@@ -454,7 +454,7 @@ output Digit [10] from Hid3 all;
 + Počet závaží na jádro je `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Nebo `26 * 50 = 1300`.
 + Uzly v každé z skrytých vrstev můžete vypočítat následujícím způsobem:
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5``NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + Celkový počet uzlů lze vypočítat pomocí deklarované dimenzionální velikosti vrstvy [50, 5, 5] následujícím způsobem: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`

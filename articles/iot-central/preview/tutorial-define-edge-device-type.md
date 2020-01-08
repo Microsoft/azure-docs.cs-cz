@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e5aa41023e1d7f84e8de095d13835d5ebdf66f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979083"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434860"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Kurz: definování nového typu Azure IoT Edge zařízení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -57,7 +57,7 @@ V tomto kurzu se naučíte:
 > * Přidejte relace do šablon zařízení pro příjem dat.
 > * Publikujte šablonu zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](quick-deploy-iot-central.md).
 
@@ -196,7 +196,7 @@ Následující vývojový diagram znázorňuje životní cyklus manifestu nasaze
 
 ![Vývojový diagram životního cyklu manifestu nasazení](./media/tutorial-define-edge-device-type/dmflow.png)
 
-V dalším kroku se zobrazí stránka pro kontrolu s podrobnostmi o manifestu nasazení. Tato stránka zobrazuje seznam modulů z manifestu nasazení. V tomto kurzu si všimněte, že je uvedený modul `SimulatedTemperatureSensor`. Vyberte **Create** (Vytvořit).
+V dalším kroku se zobrazí stránka pro kontrolu s podrobnostmi o manifestu nasazení. Tato stránka zobrazuje seznam modulů z manifestu nasazení. V tomto kurzu si všimněte, že je uvedený modul `SimulatedTemperatureSensor`. Vyberte **Vytvořit**.
 
 ![Snímek obrazovky se stránkou pro revize s modulem a zvýrazněnou možností vytvořit](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
 
@@ -296,7 +296,7 @@ Můžete vybrat model schopností pro příjem dat, nebo můžete vybrat symbol 
     | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
     | Jméno zákazníka     | Žádné          | Řetězec |
 
-2. Vyberte **Save** (Uložit).
+2. Vyberte **Uložit**.
 
   
     ![Snímek šablony senzoru prostředí se zvýrazněnou možností Uložit](./media/tutorial-define-edge-device-type/edgetemplatecloudproperties.png)
@@ -341,7 +341,7 @@ Ambientní telemetrie a telemetrie počítačů jsou komplexní objekty. Vytvá�
   
    ![Snímek šablony senzoru prostředí s vybranými různými možnostmi](./media/tutorial-define-edge-device-type/sensorambienttelemetrychart.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 Můžete přidat další dlaždice, které zobrazují další vlastnosti nebo hodnoty telemetrie. Můžete také přidat statický text, odkazy a obrázky. Chcete-li přesunout nebo změnit velikost dlaždice na řídicím panelu, přesuňte ukazatel myši na dlaždici a přetáhněte dlaždici na nové umístění nebo změňte jeho velikost.
   
@@ -363,7 +363,7 @@ Vytvoření formuláře pro zobrazení a úpravy vlastností senzoru životního
   
    ![Obrazovka stránky zobrazení šablon senzoru v prostředí s vybranými různými možnostmi](./media/tutorial-define-edge-device-type/views-properties.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ## <a name="publish-a-device-template"></a>Publikování šablony zařízení
 
@@ -400,4 +400,4 @@ V tomto kurzu jste se naučili:
 Teď, když jste v aplikaci Azure IoT Central vytvořili šablonu zařízení, můžete to udělat dál:
 
 > [!div class="nextstepaction"]
-> [Připojit zařízení](./tutorial-connect-pnp-device.md)
+> [Připojení hraničního zařízení](./tutorial-add-edge-as-leaf-device.md)

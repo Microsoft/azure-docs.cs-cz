@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023496"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457455"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -37,12 +37,12 @@ Příkaz synchronizovat se v několika ohledech liší od příkazu pro kopírov
 
 ## <a name="related-conceptual-articles"></a>Související koncepční články
 
-- [Začínáme s AzCopy](storage-use-azcopy-v10.md)
+- [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
 - [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-### <a name="advanced"></a>Upřesňující
+### <a name="advanced"></a>Rozšířený
 
 Pokud nezadáte příponu souboru, AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
 
@@ -78,7 +78,7 @@ Synchronizovat celý adresář včetně jeho podsložek (Všimněte si, že ve v
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-nebo
+– nebo –
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
@@ -106,8 +106,9 @@ Synchronizace jednoho objektu BLOB:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+```
 
-Sync a virtual directory:
+Synchronizovat virtuální adresář:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
@@ -138,6 +139,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--Exclude – řetězec atributů** (pouze Windows) vyloučení souborů, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
 
+**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
+
 **--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: *. jpg;* . PDF; přesný
 
 **-h,--** Help Help pro synchronizaci
@@ -159,6 +162,6 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [AzCopy](storage-ref-azcopy.md)

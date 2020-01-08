@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: f7859dbef486d4afa825b289f3991464dacf702c
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403149"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -37,17 +37,25 @@ Další informace o různých funkcích podporovaných nástrojem [Network Perfo
  
 ## <a name="supported-regions"></a>Podporované oblasti
 NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části světa, a to z pracovního prostoru hostovaného v jedné z následujících oblastí:
+* Severní Evropa
 * Západní Evropa
+* Francie – střed
+
 * Středozápadní USA
 * Středoseverní USA
-* USA – východ
+* Středojižní USA
+* Střední USA
+* Východní USA
 * Východ USA 2
+* Západní USA 2
 * Východní Japonsko
 * Jihovýchodní Asie
 * Austrálie – jihovýchod
 * Austrálie – střed
 * Austrálie – východ
 * Jižní Velká Británie
+* Východní Asie
+* Korea – střed
 * Střední Indie
 * ) – Virginia vlády USA
 * Čína – východ 2
@@ -78,7 +86,7 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
 
 * **Protokol TCP**: Pokud jako protokol pro monitorování zvolíte TCP, otevřete port brány firewall u agentů používaných pro Network Performance Monitor a monitorování ExpressRoute a ujistěte se, že se agenti mohou vzájemně připojit. Pokud chcete otevřít port, spusťte skript prostředí PowerShell [EnableRules. ps1](https://aka.ms/npmpowershellscript) bez parametrů v okně PowerShellu s oprávněními správce.
 
-    Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny pomocí skriptu. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. 
+    Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty pro tyto klíče se automaticky nastaví skript. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. 
 
     >[!NOTE]
     > Skript nakonfiguruje pouze místní bránu firewall systému Windows. Pokud máte bránu firewall sítě, ujistěte se, že umožňuje provoz určený pro port TCP používaný Network Performance Monitor.
@@ -100,7 +108,7 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
    ```
  
 
-### <a name="configure-the-solution"></a>Konfigurace řešení 
+### <a name="configure-the-solution"></a>Konfigurovat řešení 
 
 1. Přidejte řešení Network Performance Monitor do svého pracovního prostoru z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Můžete také použít proces popsaný v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md). 
 2. Otevřete pracovní prostor Log Analytics a vyberte dlaždici s **přehledem** . 
@@ -147,23 +155,23 @@ Všechny uzly, které mají nainstalovaného agenta, jsou uvedeny na kartě **uz
 
 1. Zaškrtněte nebo zrušte zaškrtnutí uzlů, které chcete monitorovat nebo zastavit monitorování. 
 2. Vyberte možnost **použít pro monitorování**nebo ji podle potřeby vymažte. 
-3. Vyberte **Save** (Uložit). 
+3. Vyberte **Uložit**. 
 
 
 Nakonfigurujte možnosti, které chcete:
 
 - [Sledování výkonu](network-performance-monitor-performance-monitor.md#configuration)
 - [Monitorování připojení služby](network-performance-monitor-performance-monitor.md#configuration)
-- [Monitorování ExpressRoute](network-performance-monitor-expressroute.md#configuration)
+- [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
 
  
 
-## <a name="data-collection-details"></a>Podrobnosti shromažďování dat
+## <a name="data-collection-details"></a>Podrobné informace o shromažďování dat
 Pokud chcete shromažďovat informace o ztrátě a latenci, Network Performance Monitor využívá pakety handshake TCP SYN-SYNACK-ACK, když jako protokol zvolíte TCP. Network Performance Monitor používá odezvu ECHO ICMP protokolu ICMP, když jako protokol zvolíte protokol ICMP. Trase trasování se používá také k získání informací o topologii.
 
 V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Network Performance Monitor.
 
-| Platforma | Přímý Agent | Agent System Center Operations Manager | Azure Storage | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
+| Platforma | Přímý Agent | Agent nástroje System Center Operations Manager | Azure Storage | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |Zprávy TCP handshake/ICMP ECHO každých 5 sekund, data odesílaná každé 3 minuty |
  

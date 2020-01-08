@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/02/2019
 ms.author: aahi
-ms.openlocfilehash: 847b2d0489dc04b4275465dbe957b72418bbf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ffa14a4e3628bdc3453e8d536797b0edf6129a12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750243"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446220"
 ---
 [Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) |  | [ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) [(RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
 
@@ -45,12 +45,14 @@ V souboru Ruby importujte následující balíčky.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-Vytvořte proměnné pro koncový bod a klíč Azure prostředku s názvem `TEXT_ANALYTICS_ENDPOINT` a `TEXT_ANALYTICS_SUBSCRIPTION_KEY`. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné. 
+Vytvořte proměnné pro koncový bod a klíč Azure prostředku. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-
-[!code-ruby[endpoint, key variables](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=vars)]
+```ruby
+const subscription_key = '<paste-your-text-analytics-key-here>'
+const endpoint = `<paste-your-text-analytics-endpoint-here>`
+```
 
 ## <a name="object-model"></a>Objektový model 
 
@@ -65,7 +67,7 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 Tyto fragmenty kódu ukazují, jak pomocí Analýza textu klientské knihovny pro Python provést následující akce:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza mínění](#sentiment-analysis)
+* [Analýza subjektivního hodnocení](#sentiment-analysis)
 * [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání entit](#entity-recognition)
 * [Extrakce klíčových frází](#key-phrase-extraction)
@@ -81,7 +83,7 @@ class TextAnalyticsClient
 end
 ```
 
-V této třídě vytvořte funkci nazvanou `initialize` pro ověření klienta. Použijte své proměnné prostředí `TEXT_ANALYTICS_SUBSCRIPTION_KEY` a `TEXT_ANALYTICS_ENDPOINT`. 
+V této třídě vytvořte funkci s názvem `initialize` k ověření klienta pomocí klíče a koncového bodu. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
@@ -91,7 +93,7 @@ Mimo třídu použijte k vytvoření instance funkci `new()` klienta.
 
 <a name="SentimentAnalysis"></a>
 
-## <a name="sentiment-analysis"></a>Analýza mínění
+## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
 
 V objektu klienta vytvořte funkci s názvem `AnalyzeSentiment()`, která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte funkci `sentiment()` klienta a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
@@ -119,7 +121,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 <a name="LanguageDetection"></a>
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>Detekce jazyka
 
 V objektu klienta vytvořte funkci s názvem `DetectLanguage()`, která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte funkci `detect_language()` klienta a získejte výsledek. Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu a zjištěné jazyky.
 

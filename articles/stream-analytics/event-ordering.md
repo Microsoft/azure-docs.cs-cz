@@ -1,82 +1,81 @@
 ---
-title: Konfigurace událostí řazení zásady pro Azure Stream Analytics
-description: Tento článek popisuje, jak přejít o konfiguraci ani nastavení řazení ve službě Stream Analytics
-services: stream-analytics
+title: Konfigurace zásad řazení událostí pro Azure Stream Analytics
+description: Tento článek popisuje, jak přejít na téma Konfigurace nastavení rovnoměrného řazení v Stream Analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 47a8ee2c03e67d4fd9b34888430ed0cc702205f6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461187"
 ---
-# <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurace událostí řazení zásady pro Azure Stream Analytics
+# <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurace zásad řazení událostí pro Azure Stream Analytics
 
-Tento článek popisuje, jak nastavit a používat ho ve službě Azure Stream Analytics události mimo pořadí zásad a opožděné dodání. Tyto zásady se použijí jenom v případě, že používáte [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) klauzule v dotazu.
+Tento článek popisuje, jak nastavit a použít zpožděné a neuspořádané zásady událostí v Azure Stream Analytics. Tyto zásady se použijí jenom v případě, že v dotazu použijete klauzuli [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) .
 
 ## <a name="event-time-and-arrival-time"></a>Čas události a čas přijetí
 
-Vaší úlohy Stream Analytics můžete zpracovávat události na základě některé *čas události* nebo *čas doručení*. **Čas události/aplikace** je k dispozici v datové části události časové razítko (Pokud byla událost vygenerována). **Čas doručení** je časové razítko, když událost byla přijata na vstupní zdroj (události rozbočovače a IoT Hub/Blob storage). 
+Vaše úloha Stream Analytics může zpracovávat události na základě času *události* nebo *doby doručení*. **Událost/čas aplikace** je časové razítko přítomné v datové části události (při generování události). **Doba doručení** je časové razítko, kdy se událost přijala na vstupním zdroji (Event Hubs/IoT Hub/BLOB Storage). 
 
-Ve výchozím nastavení, Stream Analytics zpracovává události podle *čas doručení*, ale můžete zpracovat události podle *čas události* pomocí [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) klauzule v dotazu. Pozdní doručení a mimo pořadí zásady platí jenom v případě, že zpracování událostí podle času události. Při konfiguraci těchto nastavení, zvažte požadavky na latenci a správnost pro váš scénář. 
+Ve výchozím nastavení Stream Analytics zpracovává události podle *času doručení*, ale můžete zvolit zpracování událostí podle *času události* pomocí klauzule [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) v dotazu. Zásady opožděného doručení a navýšení jsou platné pouze v případě, že zpracováváte události podle času události. Při konfiguraci těchto nastavení berte ohled na požadavky vašeho scénáře z hlediska latence a správnosti. 
 
-## <a name="what-is-late-arrival-policy"></a>Co je pozdně zásady doručení?
+## <a name="what-is-late-arrival-policy"></a>Co jsou zásady opožděného doručení?
 
-Někdy události dorazí pozdě z různých důvodů. Například událost, která dorazí pozdě 40 sekund bude mít čas události = 10:00:00 a doručení čas = 00:10:40. Pokud ji nastavíte na 15 sekund, událost, která je novější než 15 sekund se buď zahodí (nebyl zpracován služba Stream Analytics) nebo upravili jejich čas události dorazí pozdě zásady doručení. V předchozím příkladu jako události doručené 40 sekund později (více než sada zásad), jeho čas události bude upraveno, aby maximální opožděné přijetí zásad 00:10:25 (čas doručení - pozdní hodnota přijetí zásad). Výchozí zásada pozdní příjezdu je 5 sekund.
+Události v některých případech přicházejí pozdě z důvodu různých důvodů. Například událost, která dorazí na 40 sekund pozdě, bude mít čas události = 00:10:00 a čas doručení = 00:10:40. Pokud nastavíte zásadu opožděného doručení na 15 sekund, jakákoli událost, která dorazí později než 15 sekund, se buď vynechá (nezpracovává se Stream Analytics), nebo se upraví jejich čas události. Jak je uvedeno výše, protože událost byla doručena 40 sekund pozdě (víc než sada zásad), její čas události se upraví na maximum v případě opožděné zásady doručení 00:10:25 (hodnota zásady doba doručení – zpožděná). Výchozí zásada opožděného doručení je 5 sekund.
 
 ## <a name="what-is-out-of-order-policy"></a>Co jsou zásady mimo pořadí? 
 
-Také může do nefungujících událostí. Po času události je upravena podle pozdní přijetí zásad, můžete také automaticky vyřadit nebo upravit události, které jsou mimo pořadí. Pokud tyto zásady nastavíte na 8 sekund, všechny události, které dorazí mimo pořadí, ale v rámci okna 8 druhé přeuspořádají podle času události. Události, které přicházejí později bude vyřazen nebo upravena na hodnotu maximální zásady mimo pořadí. Výchozí zásada mimo pořadí je 0 sekund. 
+Událost může být doručena i mimo pořadí. Po úpravě času události na základě zásad opožděného doručení můžete také zvolit automatické vyřazení nebo úpravu událostí, které jsou mimo pořadí. Pokud nastavíte tuto zásadu na 8 sekund, všechny události, které dorazí mimo pořadí, ale v rámci 8 sekund se změní pořadí podle času události. Události, které přicházejí později, budou buď vyřazeny nebo upraveny na maximální hodnotu zásad mimo pořadí. Výchozí zásada mimo pořadí je 0 sekund. 
 
-## <a name="adjust-or-drop-events"></a>Upravit nebo vyřadit události
+## <a name="adjust-or-drop-events"></a>Úprava nebo vyřazení událostí
 
-Pokud události dorazí pozdě nebo mimo pořadí na základě zásad, které jste nakonfigurovali, můžete vyřadit tyto události (nebyl zpracován služba Stream Analytics) nebo mít čas jejich události upravit.
+Pokud události dorazí pozdě nebo mimo pořadí na základě zásad, které jste nakonfigurovali, můžete tyto události buď vyřadit (nezpracované Stream Analytics), nebo nechat svou událost upravenou.
 
-Dejte nám uvedený příklad těchto zásad v akci.
-<br> **Pozdní zásady doručení:** 15 sekund
-<br> **Mimo pořadí zásad:** 8 sekund
+Podíváme se na příklad těchto zásad v tématu Action (akce).
+<br> **Zásady opožděného doručení:** 15 sekund
+<br> **Zásada mimo pořadí:** 8 sekund
 
-| Číslo události | Čas události | Čas přijetí | System.Timestamp | Vysvětlení |
+| Událost – ne. | Čas akce | Čas doručení | System.Timestamp | Vysvětlení |
 | --- | --- | --- | --- | --- |
-| **1** | 00:10:00  | 00:10:40  | 00:10:25  | Události byly přijaty pozdní a mimo přípustnou úroveň. Čas události tak získá upravena maximální tolerance pozdního přijetí.  |
-| **2** | 00:10:30 | 00:10:41  | 00:10:30  | Události doručené pozdě, ale v rámci úroveň tolerance. Nastaví tak, čas události nelze získat.  |
-| **3** | 00:10:42 | 00:10:42 | 00:10:42 | Události byly přijaty včas. Není potřeba žádné úpravy.  |
-| **4** | 00:10:38  | 00:10:43  | 00:10:38 | Události doručené mimo pořadí, ale v toleranci 8 sekund. Ano získat upravit není čas události. Pro účely analýzy bude tato událost pokládán za předchozí číslo události je 4.  |
-| **5** | 00:10:35 | 00:10:45  | 00:10:37 | Události byly přijaty tolerance mimo pořadí a mimo 8 sekund. Ano čas události se upraví na maximální tolerance mimo pořadí. |
+| **1** | 00:10:00  | 00:10:40  | 00:10:25  | Událost přišla pozdě a mimo úroveň tolerance. Takže čas události se upraví na maximální toleranci doručení.  |
+| **2** | 00:10:30 | 00:10:41  | 00:10:30  | Událost byla doručena pozdě, ale v úrovni tolerance. Takže se čas události neupraví.  |
+| **3** | 00:10:42 | 00:10:42 | 00:10:42 | Událost byla doručena včas. Není potřeba žádná úprava.  |
+| **4** | 00:10:38  | 00:10:43  | 00:10:38 | Událost byla doručena mimo pořadí, ale v rámci tolerance 8 sekund. Takže se čas události neupraví. Pro účely analýzy se tato událost bude považovat za předchozí událost číslo 4.  |
+| **5** | 00:10:35 | 00:10:45  | 00:10:37 | Událost byla doručena mimo pořadí a mimo toleranci 8 sekund. Takže čas události se upraví na maximum z tolerance mimo pořadí. |
 
-## <a name="can-these-settings-delay-output-of-my-job"></a>Tato nastavení zpozdit výstup Moje úlohy? 
+## <a name="can-these-settings-delay-output-of-my-job"></a>Můžou tato nastavení zpozdit výstup mé úlohy? 
 
-Ano. Ve výchozím nastavení mimo pořadí zásad je nastaven na nula (00 minut a 00 sekund). Pokud změníte výchozí, první výstup vaší úlohy je zpožděné o tuto hodnotu (nebo vyšší). 
+Ano. Ve výchozím nastavení je zásada mimo pořadí nastavená na hodnotu nula (00 minut a 00 sekund). Změníte-li výchozí hodnotu, je první výstup úlohy zpožděn touto hodnotou (nebo vyšší). 
 
-Pokud jeden z oddílů vstupy událostí, měli byste očekávat výstupu, abyste zpozdit pozdní hodnotou zásady doručení. Informace o tom, proč, najdete v části Chyba InputPartition níže. 
+Pokud některý z oddílů vašich vstupů nepřijímá události, měli byste očekávat, že se výstup bude zpozdit hodnotou zásady pozdního doručení. Informace o tom, proč najdete níže v části věnované chybám pro InputPartition. 
 
-## <a name="i-see-lateinputevents-messages-in-my-activity-log"></a>Zobrazí zprávy LateInputEvents v mé protokolu aktivit
+## <a name="i-see-lateinputevents-messages-in-my-activity-log"></a>V protokolu aktivit se zobrazují zprávy LateInputEvents
 
-Tyto zprávy se zobrazují vás informovat, že jste tu pozdní a jsou buď vynechané nebo upravené události podle vaší konfigurace. Tyto zprávy můžete ignorovat, pokud jste nakonfigurovali pozdní zásady doručení odpovídajícím způsobem. 
+Zobrazují se tyto zprávy, které vás informují o tom, že události byly doručeny pozdě a jsou buď vyřazeny nebo upraveny podle vaší konfigurace. Pokud jste správně nakonfigurovali zásady pozdního doručení, můžete tyto zprávy ignorovat. 
 
-Příklad, tato zpráva je: <br>
+Příklad této zprávy: <br>
 <code>
 {"message Time":"2019-02-04 17:11:52Z","error":null,
 "message":"First Occurred: 02/04/2019 17:11:48 | Resource Name: ASAjob | Message: Source 'ASAjob' had 24 data errors of kind 'LateInputEvent' between processing times '2019-02-04T17:10:49.7250696Z' and '2019-02-04T17:11:48.7563961Z'. Input event with application timestamp '2019-02-04T17:05:51.6050000' and arrival time '2019-02-04T17:10:44.3090000' was sent later than configured tolerance.","type":"DiagnosticMessage","correlation ID":"49efa148-4asd-4fe0-869d-a40ba4d7ef3b"} 
 </code>
 
-## <a name="i-see-inputpartitionnotprogressing-in-my-activity-log"></a>Zobrazí InputPartitionNotProgressing v mé protokolu aktivit
+## <a name="i-see-inputpartitionnotprogressing-in-my-activity-log"></a>V protokolu aktivit se zobrazuje InputPartitionNotProgressing
 
-Vstupní zdroj (Event Hub/IoT Hub) pravděpodobně obsahuje několik oddílů. Azure Stream Analytics vytvoří výstup pro čas razítko t1 až po všech oddílů, které jsou spojené se minimálně v čase t1. Předpokládejme například, že dotaz načte z oddílu centra událostí, který má dva oddíly. Jeden z oddílů, P1, až do času t1 má události. Druhý oddíl P2, má událostí až do času t1 + x. Výstup se pak vytvářejí až do času t1. Ale pokud je klauzulí PartitionId oddíly průběh explicitní oddílu nezávisle na sobě. 
+Váš vstupní zdroj (centrum událostí/IoT Hub) má nejspíš více oddílů. Azure Stream Analytics vytváří výstup pro časové razítko T1 až po tom, co jsou všechny sloučené oddíly alespoň v čase t1. Předpokládejme například, že dotaz čte z oddílu centra událostí, který má dva oddíly. Jeden z oddílů P1 má události do času T1. Druhý oddíl, P2, obsahuje události do času T1 + x. Výstup se pak vytvoří až do času T1. Pokud však existuje explicitní klauzule partition by PartitionId, oba oddíly postupují samostatně. 
 
-Kombinaci více oddílů ze stejného vstupního datového proudu tolerance pozdního přijetí je maximální množství času, které každý oddíl čeká na nová data. Pokud byl jeden oddíl v Centru událostí nebo pokud vstupy služby IoT Hub, časovou osu pro tento oddíl není průběh až do dosažení pozdní prahovou hodnotu tolerance pozdního přijetí. Toto zpoždění výstupu pomocí pozdní prahové hodnoty tolerance pozdního přijetí. V takových případech může se zobrazit následující zpráva:
+Je-li kombinováno více oddílů ze stejného vstupního datového proudu, tolerance pozdního doručení je maximální doba, po kterou každý oddíl čeká na nová data. Pokud je v centru událostí jeden oddíl, nebo pokud IoT Hub neobdrží vstupy, časová osa tohoto oddílu nepokračuje, dokud nedosáhne prahové hodnoty tolerance pro pozdní doručení. Tím se zpozdí výstup prahové hodnoty tolerance pro pozdní doručení. V takových případech se může zobrazit následující zpráva:
 <br><code>
 {"message Time":"2/3/2019 8:54:16 PM UTC","message":"Input Partition [2] does not have additional data for more than [5] minute(s). Partition will not progress until either events arrive or late arrival threshold is met.","type":"InputPartitionNotProgressing","correlation ID":"2328d411-52c7-4100-ba01-1e860c757fc2"} 
 </code><br><br>
-Tuto zprávu informující, že aspoň jeden oddíl v váš vstup, je prázdný a bude zpozdit výstup prahovou hodnotu pozdní doručení. Abyste to vyřešili, je doporučeno buď:  
-1. Zajistěte, aby že všechny oddíly centra událostí centra/IoT vstup. 
-2. Oddílu použijte PartitionID klauzule v dotazu. 
+Tato zpráva vám informuje o tom, že minimálně jeden oddíl ve vstupu je prázdný a ve výstupu se dokončí prahová hodnota pozdního doručení. Chcete-li to překonat, doporučujeme buď:  
+1. Zajistěte, aby všechny oddíly centra událostí/IoT Hub přijímaly vstup. 
+2. Použijte v dotazu klauzuli partition by PartitionID. 
 
-## <a name="next-steps"></a>Další postup
-* [Důležité informace o zpracování času](stream-analytics-time-handling.md)
-* [Metriky, které jsou k dispozici ve službě Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+## <a name="next-steps"></a>Další kroky
+* [Požadavky na zpracování času](stream-analytics-time-handling.md)
+* [Metriky dostupné v Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)

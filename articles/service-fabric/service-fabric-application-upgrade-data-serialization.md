@@ -1,66 +1,56 @@
 ---
-title: 'Upgrade aplikací: serializace dat | Dokumentace Microsoftu'
-description: Osvědčené postupy pro serializaci dat a o jejím dopadu na postupné upgrady aplikací.
-services: service-fabric
-documentationcenter: .net
+title: 'Upgrade aplikací: serializace dat'
+description: Osvědčené postupy pro serializaci dat a jejich vliv na postupné upgrady aplikací.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 55cbd869e7434469ebddd7af493c91bfedafc594
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457492"
 ---
-# <a name="how-data-serialization-affects-an-application-upgrade"></a>Jak ovlivňuje serializaci dat upgrade aplikace
-V [aplikace upgrade se zajištěním provozu](service-fabric-application-upgrade.md), upgrade se použije pro dílčí sadu uzlů, jednu upgradovací doménu najednou. Během tohoto procesu jsou některé upgradovacích domén na novější verzi aplikace a jsou některé upgradu domény na starší verzi aplikace. Během zavádění novou verzi vaší aplikace musí být schopni číst staré verze vašich dat a starou verzi vaší aplikace musí být schopni číst novou verzi vaše data. Pokud formát dat není kompatibilní s vpřed a zpět, může upgrade selhat nebo horší, mohou být data ztrátě nebo poškození. Tento článek popisuje, co představuje datový formát a nabízí osvědčené postupy pro zajištění, že vaše data jsou dopředné a zpětné kompatibilní.
+# <a name="how-data-serialization-affects-an-application-upgrade"></a>Vliv serializace dat na upgrade aplikace
+V rámci [upgradu aplikace](service-fabric-application-upgrade.md)se upgrade aplikuje na podmnožinu uzlů, jednu upgradovací doménu v jednom okamžiku. Během tohoto procesu se některé domény upgradu nacházejí v novější verzi aplikace a některé domény upgradu se nacházejí ve starší verzi aplikace. Při zavedení musí být v nové verzi aplikace možné číst starou verzi vašich dat a stará verze vaší aplikace musí být schopná přečíst si novou verzi vašich dat. Pokud formát dat není předáván dál a zpětně kompatibilní, upgrade může selhat nebo může dojít ke ztrátě nebo poškození dat. Tento článek popisuje, co znamená váš formát dat, a nabízí osvědčené postupy pro zajištění, že vaše data jsou předávána a zpětně kompatibilní.
 
-## <a name="what-makes-up-your-data-format"></a>Co tvoří datový formát?
-V Azure Service Fabric, který je trvale uložila a replikovala data pochází z vašeho C# třídy. Pro aplikace, které používají [Reliable Collections](service-fabric-reliable-services-reliable-collections.md), že data jsou objekty v reliable slovníky a fronty. Pro aplikace, které používají [Reliable Actors](service-fabric-reliable-actors-introduction.md), to znamená stavu zálohování pro objekt actor. Tyto C# tříd musí být serializovatelný k trvale uložila a replikovala. Proto formát dat je definován tak, že pole a vlastnosti, které se serializují a jak se serializují. Například v `IReliableDictionary<int, MyClass>` data jsou serializovaného `int` a serializovaného `MyClass`.
+## <a name="what-makes-up-your-data-format"></a>Čím je váš formát dat?
+V Azure Service Fabric data, která jsou trvalá a replikovaná, pocházejí z C# vašich tříd. Pro aplikace, které používají [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md), jsou tato data objekty ve spolehlivých slovnících a frontách. Pro aplikace, které používají [Reliable Actors](service-fabric-reliable-actors-introduction.md), je to stav zálohování objektu actor. Tyto C# třídy musí být serializovatelný, aby bylo možné je zachovat a replikovat. Proto je formát dat definován pomocí polí a vlastností, které jsou serializovány, a také způsobem jejich serializace. Například v `IReliableDictionary<int, MyClass>` jsou data serializovaným `int` a serializovaným `MyClass`.
 
-### <a name="code-changes-that-result-in-a-data-format-change"></a>Změní kód, jejichž výsledkem je změnit formát dat
-Vzhledem k tomu, že formát dat je určeno C# třídy, změny tříd mohou způsobit změnu formátu data. Musí se dbát na to, že upgradu se zajištěním provozu může zpracovat změnu formátu data. Příklady, které by mohly způsobit změny formátu dat:
+### <a name="code-changes-that-result-in-a-data-format-change"></a>Změny kódu, které mají za následek změnu formátu dat
+Vzhledem k tomu, že formát dat C# je určen třídami, mohou změny v třídách způsobit změnu formátu dat. Je nutné dbát na to, aby se změny formátu dat mohly zpracovávat v rámci postupného upgradu. Příklady, které mohou způsobit změny formátu dat:
 
-* Přidáním nebo odebráním vlastnosti nebo pole
-* Přejmenování pole nebo vlastnosti
-* Změna typy polí a vlastností
-* Změna názvu třídy nebo oboru názvů
+* Přidání nebo odebrání polí nebo vlastností
+* Přejmenování polí nebo vlastností
+* Změna typů polí nebo vlastností
+* Změna názvu nebo oboru názvů třídy
 
 ### <a name="data-contract-as-the-default-serializer"></a>Kontrakt dat jako výchozí serializátor
-Serializátor je obecně zodpovědní za načtení dat a deserializovat ho do aktuální verze i v případě, data jsou ve starší nebo *novější* verze. Výchozí serializátor je [serializátor kontraktu dat. není](https://msdn.microsoft.com/library/ms733127.aspx), který má pravidla jasně definované správy verzí. Spolehlivé kolekce umožňují serializátoru, který má být přepsána, ale Reliable Actors v tuto chvíli nepodporují. Serializátor dat hraje důležitou roli při povolování postupné upgrady. Serializátor kontraktu dat. není je serializátoru, který doporučujeme pro aplikace Service Fabric.
+Serializátor je obecně zodpovědný za čtení dat a jejich deserializaci do aktuální verze, a to i v případě, že jsou data ve starší nebo *novější* verzi. Výchozí serializátor je [serializátor kontraktu dat](https://msdn.microsoft.com/library/ms733127.aspx), který má dobře definovaná pravidla správy verzí. Spolehlivé kolekce umožňují přepsat serializátor, ale Reliable Actors aktuálně ne. Serializátor dat hraje důležitou roli při povolování postupné inovace. Serializátor kontraktu dat je serializátor, který doporučujeme pro Service Fabric aplikace.
 
-## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Jak ovlivňuje formát dat upgradu se zajištěním provozu
-Během upgradu se zajištěním provozu, existují dva základní scénáře, kde může dojít serializátoru, který je starší verze nebo *novější* verze vašich dat:
+## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Vliv formátu dat na postupný upgrade
+Během postupného upgradu existují dva hlavní scénáře, kde serializátor může narazit na starší nebo *novější* verzi vašich dat:
 
-1. Poté, co uzel se upgraduje a opětovném spuštění, nové serializátoru, který načte data, která je trvalý disk pomocí staré verze.
-2. Během upgradu se zajištěním provozu cluster bude obsahovat kombinaci staré a nové verze kódu. Protože repliky můžete umístit v jiné doméně upgradu a repliky odesílání dat mezi sebou, setkat nové a/nebo staré verze vašich dat původní nebo novou verzi vaší serializátor.
+1. Po upgradu uzlu a spuštění zálohování nový serializátor načte data, která byla trvalá na disk se starou verzí.
+2. Během postupného upgradu bude cluster obsahovat kombinaci staré a nové verze kódu. Vzhledem k tomu, že repliky mohou být umístěny v různých upgradovacích doménách a repliky odesílají data vzájemně, je možné, že nová a/nebo stará verze vašeho serializátoru může být k dispozici pro novou a/nebo starou verzi vašich dat.
 
 > [!NOTE]
-> "Nové verze" a "starý" zde odkazovat na verzi kódu, na kterém běží. "Nové serializátor" odkazuje na kód serializátoru, který spouští v nové verzi vaší aplikace. "Nová data" odkazuje na serializovaný C# třídy z novou verzi vaší aplikace.
+> "Nová verze" a "stará verze" zde odkazuje na verzi kódu, na kterém je spuštěný. "Nový serializátor" odkazuje na kód serializátoru, který je spuštěn v nové verzi aplikace. "Nová data" odkazují na serializovanou C# třídu z nové verze vaší aplikace.
 > 
 > 
 
-Dvě verze formátu kód a data musí být dopředu i dozadu kompatibilní. Pokud nejsou kompatibilní, upgradu se zajištěním provozu může selhat nebo může dojít ke ztrátě dat. Upgradu se zajištěním provozu může selhat, protože kód nebo serializátor může vyvolat výjimky nebo chybu Pokud se setká s jinou verzi. Pokud například byla přidána nová vlastnost ale staré serializátor zahodí ji během deserializace, může dojít ke ztrátě dat.
+Obě verze kódu a formátu dat musí být kompatibilní s dopředně i zpět. Pokud nejsou kompatibilní, může upgrade za provozu selhat nebo může dojít ke ztrátě dat. Postupná inovace může selhat, protože kód nebo serializátor může vyvolat výjimky nebo chybu, když nalezne jinou verzi. Data mohou být ztracena, pokud například byla přidána nová vlastnost, ale starý serializátor je během deserializace zahozen.
 
-Kontrakt dat je doporučené řešení pro zajištění, že vaše data jsou kompatibilní. Obsahuje pravidla jasně definované správy verzí pro přidání, odebrání a změna polí. Je také podpora zabývají neznámé pole, zapojení do procesu serializace a deserializace a zabývajících se dědičnost tříd. Další informace najdete v tématu [pomocí kontraktu dat](https://msdn.microsoft.com/library/ms733127.aspx).
+Pro zajištění kompatibility vašich dat je doporučeným řešením kontraktu dat. Má jasně definovaná pravidla správy verzí pro přidání, odebrání a změnu polí. Také podporuje pro práci s neznámými poli, zapojení do procesu serializace a deserializace a řešit dědičnost tříd. Další informace najdete v tématu [použití kontraktu dat](https://msdn.microsoft.com/library/ms733127.aspx).
 
-## <a name="next-steps"></a>Další postup
-[Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
+## <a name="next-steps"></a>Další kroky
+[Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgradem aplikace pomocí sady Visual Studio.
 
-[Upgrade aplikace pomocí Powershellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgrade aplikace pomocí Powershellu.
+[Upgrade aplikace pomocí PowerShellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgradem aplikace pomocí PowerShellu.
 
-Řídí, jak vaše aplikace upgradovala pomocí [parametry upgradu](service-fabric-application-upgrade-parameters.md).
+Pomocí [parametrů upgradu](service-fabric-application-upgrade-parameters.md)lze řídit, jak se vaše aplikace upgradují.
 
-Zjistěte, jak používat pokročilé funkce při upgradu aplikace rekapitulací [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
+Naučte se používat pokročilé funkce při upgradu vaší aplikace, které odkazují na [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
 
-Vyřešit běžné problémy v upgradech aplikací odkazující na kroky v [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md).
+Pomocí postupu v části [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md)můžete opravit běžné problémy s upgrady aplikací.
 

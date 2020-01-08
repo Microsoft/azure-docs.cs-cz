@@ -1,6 +1,6 @@
 ---
 title: Plánování prostředí Preview – Azure Time Series Insights | Microsoft Docs
-description: Naučte se plánovat prostředí Azure Time Series Insights Preview.
+description: Osvědčené postupy pro konfiguraci, správu, plánování a nasazení prostředí pro Azure Time Series Insights ve verzi Preview
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9fb2dcf2c05b709340f8e9ae549bab5756e6abf2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420313"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452435"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí pro Azure Time Series Insights Preview
 
@@ -48,7 +48,7 @@ V rámci procesu zřizování určíte, jestli chcete povolit teplé úložišt�
 Dotazy na teplém úložišti jsou bezplatné, zatímco dotazy na chladírenský sklad účtují náklady. Je důležité porozumět vašim vzorům dotazů a odpovídajícím způsobem naplánovat konfiguraci pro svůj záložní obchod. Doporučujeme, aby se interaktivní analýzy na nejaktuálnějších datech nacházely v provozním úložišti a analýze vzorků a dlouhodobé trendy se nachází v chladu.
 
 > [!NOTE]
-> V současné době podporujeme maximálně 1 000 vlastností s teplým úložištěm.
+> Další informace o tom, jak zadávat dotazy na zahřívání data, [najdete tady](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
 
 Začněte tím, že budete potřebovat tři další položky:
 

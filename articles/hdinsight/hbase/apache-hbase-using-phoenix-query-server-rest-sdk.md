@@ -1,19 +1,19 @@
 ---
 title: Phoenix Query Server REST SDK – Azure HDInsight
 description: Nainstalujte a použijte sadu REST SDK pro Phoenix Query Server ve službě Azure HDInsight.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311676"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612253"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Sada SDK REST sady Apache Phoenix dotazů serveru
 
@@ -85,7 +85,7 @@ Tady jsou `TransactionIsolation` hodnoty:
 | Hodnota izolace | Popis |
 | -- | -- |
 | 0 | Transakce nejsou podporovány. |
-| 1 | Může dojít k nezměněnému čtení, čtení bez opakování a k fiktivnímu čtení. |
+| 1\. místo | Může dojít k nezměněnému čtení, čtení bez opakování a k fiktivnímu čtení. |
 | 2 | Nezměněné čtení se znemožňuje, ale může dojít k neopakovaným čtením a k operacím typu Fantom. |
 | 4 | Znemožňují se čtení neopakujících se čtením, ale může dojít k fiktivnímu čtení. |
 | 8 | Nezměněné čtení, čtení bez opakování a čtení s fiktivními záznamy jsou zabráněno. |
@@ -94,7 +94,7 @@ Tady jsou `TransactionIsolation` hodnoty:
 
 HBA, stejně jako jakékoli jiné RDBMS, ukládají data v tabulkách. Phoenix používá standardní dotazy SQL k vytváření nových tabulek a při definování primárních typů klíčů a sloupců.
 
-V tomto příkladu a všech následných příkladech použijte objekt `PhoenixClient` instance, jak je definován v části [Vytvoření nového objektu PhoenixClient](#instantiate-new-phoenixclient-object).
+V tomto příkladu a všech pozdějších příkladech použijte objekt `PhoenixClient` instance, jak je definován v části [Vytvoření nového objektu PhoenixClient](#instantiate-new-phoenixclient-object).
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -170,7 +170,7 @@ V tomto příkladu se zobrazuje jednotlivá vložení dat, odkazování na `List
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-Hodnota sloupce `StateProvince` tabulky se použije v následné operaci výběru.
+Hodnota sloupce `StateProvince` tabulky bude použita v pozdější operaci výběru.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,7 +277,7 @@ finally
 }
 ```
 
-Struktura pro provedení příkazu INSERT je podobná vytvoření nové tabulky. Všimněte si, že na konci `try` bloku je transakce explicitně potvrzena. V tomto příkladu se opakuje operace INSERT Transaction 300 krát. Následující příklad ukazuje efektivnější proces dávkového vkládání.
+Struktura pro provedení příkazu INSERT je podobná vytvoření nové tabulky. Na konci `try` bloku je transakce explicitně potvrzena. V tomto příkladu se opakuje operace INSERT Transaction 300 krát. Následující příklad ukazuje efektivnější proces dávkového vkládání.
 
 ## <a name="batch-insert-data"></a>Dávková vložení dat
 
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další kroky
 
 * [Apache Phoenix ve službě HDInsight](../hdinsight-phoenix-in-hdinsight.md)
 * [Použití sady REST SDK pro Apache HBA](apache-hbase-rest-sdk.md)

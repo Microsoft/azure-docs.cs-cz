@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/09/2018
-ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145594"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435239"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights s využitím Apache Spark ve službě HDInsight
 
@@ -41,7 +41,7 @@ Následující diagram znázorňuje architekturu služby tohoto příkladu:
 
 ![Tok dat z Application Insights do úložiště objektů blob, Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
-### <a name="azure-storage"></a>Úložiště Azure
+### <a name="azure-storage"></a>Azure Storage
 
 Application Insights lze nakonfigurovat tak, aby průběžně exportovali informace telemetrie do objektů BLOB. HDInsight pak může číst data uložená v objektech blob. Existují však některé požadavky, které je třeba provést:
 
@@ -50,7 +50,7 @@ Application Insights lze nakonfigurovat tak, aby průběžně exportovali inform
     > [!WARNING]  
     > Použití účtu úložiště v jiném umístění než HDInsight se nepodporuje.
 
-* **Typ objektu BLOB**: HDInsight podporuje jen objekty blob bloku. Application Insights používá výchozí hodnotu pro použití objektů blob bloku, takže by měl ve výchozím nastavení fungovat v HDInsight.
+* **Typ objektu BLOB**: HDInsight podporuje jenom objekty blob bloku. Application Insights používá výchozí hodnotu pro použití objektů blob bloku, takže by měl ve výchozím nastavení fungovat v HDInsight.
 
 Informace o přidání úložiště do existujícího clusteru najdete v dokumentu [Přidání dalších účtů úložiště](../hdinsight-hadoop-add-storage.md) .
 
@@ -60,7 +60,7 @@ Application Insights poskytuje informace o [modelu exportu dat](../../azure-moni
 
 ## <a name="export-telemetry-data"></a>Exportovat data telemetrie
 
-Postupujte podle kroků v části [Konfigurace průběžného exportu](../../azure-monitor/app/export-telemetry.md) a nakonfigurujte Application Insights k exportu informací o telemetrie do objektu BLOB služby Azure Storage.
+Postupujte podle kroků v části [Konfigurace průběžného exportu](../../azure-monitor/app/export-telemetry.md) a nakonfigurujte Application Insights k exportu informací o telemetrie do objektu blob Azure Storage.
 
 ## <a name="configure-hdinsight-to-access-the-data"></a>Konfigurace HDInsight pro přístup k datům
 
@@ -70,9 +70,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
 ## <a name="analyze-the-data-pyspark"></a>Analyzovat data: PySpark
 
-1. V [Azure Portal](https://portal.azure.com)vyberte svůj cluster Spark v HDInsight. V části **Rychlé odkazy** vyberte **řídicí panely clusteru**a pak vyberte **Jupyter notebook** v části Dashboard__ clusteru.
-
-    ![Pyspark řídicího panelu clusteru Azure Portal](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net/jupyter`, kde název_clusteru je název vašeho clusteru.
 
 2. V pravém horním rohu stránky Jupyter vyberte **Nový**a pak **PySpark**. Otevře se nová karta prohlížeče obsahující Jupyter Notebook založenou na Pythonu.
 
@@ -84,7 +82,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
     Tento kód nakonfiguruje Spark k rekurzivnímu přístupu ke struktuře adresářů pro vstupní data. Application Insights telemetrie se do adresářové struktury přihlásí podobně jako `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Kód spustíte **stisknutím SHIFT + ENTER** . Na levé straně buňky se zobrazí znak\*"" v závorkách, který označuje, že kód v této buňce je právě spuštěn. Po dokončení\*se text změní na číslo a výstup podobný následujícímu textu se zobrazí pod buňkou:
+4. Kód spustíte **stisknutím SHIFT + ENTER** . Na levé straně buňky se mezi závorkami zobrazí '\*', což značí, že kód v této buňce je právě spuštěn. Po dokončení se hodnota '\*' změní na číslo a výstup podobný následujícímu textu je zobrazen pod buňkou:
 
         Creating SparkContext as 'sc'
 
@@ -93,24 +91,25 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Nová buňka se vytvoří pod první. Do nové buňky zadejte následující text. `CONTAINER` Nahraďte `STORAGEACCOUNT` a názvem účtu úložiště Azure a názvem kontejneru objektů blob, který obsahuje Application Insights data.
+
+5. Nová buňka se vytvoří pod první. Do nové buňky zadejte následující text. Nahraďte `CONTAINER` a `STORAGEACCOUNT` názvem účtu Azure Storage a názvem kontejneru objektů blob, který obsahuje Application Insights data.
 
    ```python
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     Tuto buňku spustíte stisknutím **SHIFT + ENTER** . Zobrazí se výsledek podobný následujícímu textu:
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Vrácená cesta wasb je umístění dat telemetrie Application Insights. Změňte řádek v buňce, abyste použili vrácenou cestu wasb a pak stisknutím **klávesy SHIFT + ENTER** znovu spusťte tuto buňku. `hdfs dfs -ls` Tentokrát by se měly zobrazit adresáře, které obsahují data telemetrie.
+    Vrácená cesta wasbs je umístění dat telemetrie Application Insights. Změňte `hdfs dfs -ls` řádek v buňce, abyste použili vrácenou cestu wasbs a pak stisknutím **kombinace kláves SHIFT + ENTER** znovu spusťte tuto buňku. Tentokrát by se měly zobrazit adresáře, které obsahují data telemetrie.
 
    > [!NOTE]  
-   > V případě zbývajících kroků v této části `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` se použil adresář. Vaše adresářová struktura se může lišit.
+   > V případě zbývajících kroků v této části se použil `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` adresář. Vaše adresářová struktura se může lišit.
 
-6. Do další buňky zadejte následující kód: Nahraďte `WASB_PATH` cestou k předchozímu kroku.
+6. Do další buňky zadejte následující kód: Nahraďte `WASB_PATH` cestou z předchozího kroku.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -124,7 +123,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
    jsonData.printSchema()
    ```
 
-    Schéma pro každý typ telemetrie se liší. Následující příklad je schéma, které je vygenerováno pro webové požadavky (data uložená v `Requests` podadresáři):
+    Schéma pro každý typ telemetrie se liší. Následující příklad je schéma, které je vygenerováno pro webové požadavky (data uložená v podadresáři `Requests`):
 
         root
         |-- context: struct (nullable = true)
@@ -186,6 +185,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
+
 8. Pomocí následujícího příkazu zaregistrujte datový rámec jako dočasnou tabulku a spusťte dotaz na data:
 
    ```python
@@ -213,20 +213,19 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
 ## <a name="analyze-the-data-scala"></a>Analyzovat data: Scala
 
-1. V [Azure Portal](https://portal.azure.com)vyberte svůj cluster Spark v HDInsight. V části **Rychlé odkazy** vyberte **řídicí panely clusteru**a pak vyberte **Jupyter notebook** v části Dashboard__ clusteru.
-
-    ![Scala řídicího panelu clusteru Azure Portal](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net/jupyter`, kde název_clusteru je název vašeho clusteru.
 
 2. V pravém horním rohu stránky Jupyter vyberte **Nový**a pak **Scala**. Zobrazí se nová karta prohlížeče obsahující Jupyter Notebook na základě Scala.
+
 3. Do prvního pole (označovaného jako **buňka**) na stránce zadejte následující text:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Tento kód nakonfiguruje Spark k rekurzivnímu přístupu ke struktuře adresářů pro vstupní data. Application Insights telemetrie se do adresářové struktury přihlásí podobně jako `/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Tento kód nakonfiguruje Spark k rekurzivnímu přístupu ke struktuře adresářů pro vstupní data. Application Insights telemetrie se protokoluje do adresářové struktury podobně jako `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Kód spustíte **stisknutím SHIFT + ENTER** . Na levé straně buňky se zobrazí znak\*"" v závorkách, který označuje, že kód v této buňce je právě spuštěn. Po dokončení\*se text změní na číslo a výstup podobný následujícímu textu se zobrazí pod buňkou:
+4. Kód spustíte **stisknutím SHIFT + ENTER** . Na levé straně buňky se mezi závorkami zobrazí '\*', což značí, že kód v této buňce je právě spuštěn. Po dokončení se hodnota '\*' změní na číslo a výstup podobný následujícímu textu je zobrazen pod buňkou:
 
         Creating SparkContext as 'sc'
 
@@ -235,24 +234,25 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Nová buňka se vytvoří pod první. Do nové buňky zadejte následující text. `CONTAINER` Nahraďte `STORAGEACCOUNT` a názvem účtu úložiště Azure a názvem kontejneru objektů blob, který obsahuje protokoly Application Insights.
+
+5. Nová buňka se vytvoří pod první. Do nové buňky zadejte následující text. Nahraďte `CONTAINER` a `STORAGEACCOUNT` názvem účtu Azure Storage a názvem kontejneru objektů blob, který obsahuje protokoly Application Insights.
 
    ```scala
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     Tuto buňku spustíte stisknutím **SHIFT + ENTER** . Zobrazí se výsledek podobný následujícímu textu:
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Vrácená cesta wasb je umístění dat telemetrie Application Insights. Změňte řádek v buňce, abyste použili vrácenou cestu wasb a pak stisknutím **klávesy SHIFT + ENTER** znovu spusťte tuto buňku. `hdfs dfs -ls` Tentokrát by se měly zobrazit adresáře, které obsahují data telemetrie.
+    Vrácená cesta wasbs je umístění dat telemetrie Application Insights. Změňte `hdfs dfs -ls` řádek v buňce, abyste použili vrácenou cestu wasbs a pak stisknutím **kombinace kláves SHIFT + ENTER** znovu spusťte tuto buňku. Tentokrát by se měly zobrazit adresáře, které obsahují data telemetrie.
 
    > [!NOTE]  
-   > V případě zbývajících kroků v této části `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` se použil adresář. Tento adresář možná neexistuje, pokud nejsou data telemetrie pro webovou aplikaci.
+   > V případě zbývajících kroků v této části se použil `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` adresář. Tento adresář možná neexistuje, pokud nejsou data telemetrie pro webovou aplikaci.
 
-6. Do další buňky zadejte následující kód: Nahraďte `WASB\_PATH` cestou k předchozímu kroku.
+6. Do další buňky zadejte následující kód: Nahraďte `WASB\_PATH` cestou z předchozího kroku.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -268,7 +268,7 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
    jsonData.printSchema
    ```
 
-    Schéma pro každý typ telemetrie se liší. Následující příklad je schéma, které je vygenerováno pro webové požadavky (data uložená v `Requests` podadresáři):
+    Schéma pro každý typ telemetrie se liší. Následující příklad je schéma, které je vygenerováno pro webové požadavky (data uložená v podadresáři `Requests`):
 
         root
         |-- context: struct (nullable = true)
@@ -335,15 +335,13 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
    ```scala
    jsonData.registerTempTable("requests")
-   var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   var city = sqlContext.sql("select context.location.city from requests where context.location.city isn't null limit 10").show()
    ```
 
     Tento dotaz vrátí informace o městě pro prvních 20 záznamů, kde Context. Location. City není null.
 
    > [!NOTE]  
    > Struktura kontextu je přítomna ve všech telemetrii protokolovaných Application Insights. Do protokolů se nesmí naplnit element City. Použijte schéma k identifikaci dalších prvků, které můžete použít k dotazování, které mohou obsahovat data pro vaše protokoly.
-   >
-   >
 
     Tento dotaz vrátí informace podobné následujícímu textu:
 
@@ -361,9 +359,9 @@ Pokud chcete účet Azure Storage přidat do existujícího clusteru, použijte 
 
 Další příklady použití Apache Spark pro práci s daty a službami v Azure najdete v následujících dokumentech:
 
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI.](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 Informace o vytváření a spouštění aplikací Spark najdete v následujících dokumentech:

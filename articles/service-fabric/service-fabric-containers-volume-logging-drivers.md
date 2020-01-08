@@ -1,20 +1,14 @@
 ---
-title: Service Fabric ovladač svazku souborů Azure (GA) | Microsoft Docs
+title: Service Fabric ovladač svazku souborů Azure (GA)
 description: Service Fabric podporuje použití souborů Azure k zálohování svazků z vašeho kontejneru.
-services: service-fabric
-author: athinanthny
-manager: chackdan
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.author: atsenthi
-ms.openlocfilehash: 1287df567c60b7ad851c94a8ba787270255d0f35
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0bd84c8367f722c013abff5c2a6caaa991fa841f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464785"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric ovladač svazku souborů Azure
 Modul plug-in svazku soubory Azure, [modul plug-in Docker Volume](https://docs.docker.com/engine/extend/plugins_volume/) , který poskytuje svazky založené na [souborech Azure](/azure/storage/files/storage-files-introduction) pro kontejnery Docker, je teď **GA (všeobecně dostupná)** .

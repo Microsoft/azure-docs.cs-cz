@@ -1,21 +1,14 @@
 ---
-title: Seznámení s Azure Advisor | Microsoft Docs
+title: Úvod do Azure Advisor
 description: K optimalizaci nasazení Azure použijte Azure Advisor.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: sagupt
-ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443097"
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
 
@@ -25,9 +18,9 @@ Přečtěte si o klíčových funkcích Azure Advisor a Získejte odpovědi na n
 Advisor je přizpůsobený cloudový konzultant, který pomáhá dodržovat osvědčené postupy pro optimalizaci nasazení Azure. Analyzuje konfiguraci vašich prostředků a telemetrii jejich využívání a následně doporučí řešení, která zlepší finanční úspornost, výkon, dostupnost a zabezpečení vašich prostředků Azure.
 
 Pomocí Poradce můžete:
-* Získejte proaktivní, napadnutelná a přizpůsobená doporučení osvědčených postupů. 
+* Získat proaktivní přizpůsobená doporučení osvědčených postupů, na jejichž základě můžete jednat. 
 * Zvyšte výkon, zabezpečení a vysokou dostupnost svých prostředků, jak identifikujete příležitosti pro snížení celkové útraty Azure.
-* Získejte doporučení s vloženými navrhovanými akcemi.
+* Získat doporučení s navrhovanými akcemi.
 
 Ke službě Advisor můžete přistupovat prostřednictvím [Azure Portal](https://aka.ms/azureadvisordashboard). Přihlaste se k [portálu](https://portal.azure.com), vyhledejte **Poradce** v navigační nabídce nebo ho vyhledejte v nabídce **všechny služby** .
 

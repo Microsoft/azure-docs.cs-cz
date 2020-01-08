@@ -1,24 +1,23 @@
 ---
 title: Principy sledování úloh ve službě Azure Stream Analytics
 description: Tento článek popisuje, jak monitorovat úlohy Azure Stream Analytics na portálu Azure portal.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9432b43498cd48352427bf1ec2709a2d0f13a797
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172761"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431656"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Porozumění sledování úlohu Stream Analytics a monitorování dotazů
 
-## <a name="introduction-the-monitor-page"></a>Ukázek Stránka monitorování
+## <a name="introduction-the-monitor-page"></a>Představení: Stránka sledování
 Klíčové metriky výkonu Azure Portalch ploch, které se dají použít k monitorování a řešení problémů s výkonem a úlohami. Pokud chcete zobrazit tyto metriky, přejděte na úlohu Stream Analytics mají zájem o metriky pro zobrazení a zobrazení **monitorování** části na stránce Přehled.  
 
 ![Úlohy Stream Analytics monitorování odkaz](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
@@ -59,10 +58,10 @@ Můžete upravit typ grafu je vidět, metriky a časový rozsah v nastavení upr
 Další zajímavé datový bod a monitorování vaší úlohy je čas posledního výstupu, na stránce Přehled.
 Čas je čas aplikace (tj. čas pomocí časového razítka od data události) nejnovější výstupu úlohy.
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání nápovědy
 Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

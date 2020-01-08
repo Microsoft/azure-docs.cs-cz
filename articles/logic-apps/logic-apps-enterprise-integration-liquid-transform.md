@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456640"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Provádění pokročilých transformací JSON pomocí tekutých šablon v Azure Logic Apps
 
@@ -21,7 +21,7 @@ V Logic Apps můžete provádět základní transformace JSON s akcemi nativníc
 
 Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nutné nejprve definovat mapování JSON na JSON s šablonou Liquid a uložit tuto mapu v účtu integrace. V tomto článku se dozvíte, jak vytvořit a použít tuto šablonu nebo mapu kapalné. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Případně si [můžete zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
 
@@ -29,14 +29,14 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
 
 * Účet Basic [Integration](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* Základní znalosti o [jazyce kapalné šablony.](https://shopify.github.io/liquid/)
+* Základní znalosti o [jazyce kapalné šablony](https://shopify.github.io/liquid/)
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vytvořit šablonu nebo mapu pro svůj účet pro integraci
 
 1. V tomto příkladu vytvořte ukázkovou kapalinovou šablonu popsanou v tomto kroku. V šabloně kapalin můžete použít [kapalné filtry](https://shopify.github.io/liquid/basics/introduction/#filters), které používají [DotLiquid](https://dotliquidmarkup.org/) a C# konvence pojmenování. 
 
    > [!NOTE]
-   > Ujistěte se, že názvy filtrů používají pro šablonu *velká písmena ve větě* . V opačném případě nebudou filtry fungovat.
+   > Ujistěte se, že názvy filtrů používají pro šablonu *velká písmena ve větě* . V opačném případě nebudou filtry fungovat. Mapy také mají [omezení velikosti souborů](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits).
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -71,7 +71,7 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
    |----------|-------|-------------|
    | **Název** | JsonToJsonTemplate | Název pro mapu, která je v tomto příkladu "JsonToJsonTemplate" | 
    | **Typ mapy** | **ukazuje** | Typ pro mapu. Pro transformaci JSON na JSON musíte vybrat možnost **Liquid**. | 
-   | **Mapy** | "SimpleJsonToJsonTemplate. Liquid" | Existující šablona nebo soubor mapování v kapalném formátu, který je použit pro transformaci, která je v tomto příkladu "SimpleJsonToJsonTemplate. Liquid". K vyhledání tohoto souboru můžete použít nástroj pro výběr souborů. |
+   | **Mapa** | "SimpleJsonToJsonTemplate. Liquid" | Existující šablona nebo soubor mapování v kapalném formátu, který je použit pro transformaci, která je v tomto příkladu "SimpleJsonToJsonTemplate. Liquid". K vyhledání tohoto souboru můžete použít nástroj pro výběr souborů. Omezení velikosti mapování najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    ||| 
 
    ![Přidat kapalinovou šablonu](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b8ab4362945b84b4337859a1dad03906cc289c99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378241"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift
 
@@ -71,7 +71,7 @@ Vyberte umístění pro vytvoření clusteru. Seznam oblastí Azure, které podp
 LOCATION=<location>
 ```
 
-Nastavte `APPID` na hodnotu, kterou jste uložili v kroku 5 [Vytvoření registrace aplikace Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).  
+Nastavte `APPID` na hodnotu, kterou jste uložili v kroku 5 [Vytvoření registrace aplikace Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).
 
 ```bash
 APPID=<app ID value>
@@ -83,13 +83,13 @@ Nastavte GROUPID na hodnotu, kterou jste uložili v kroku 10 [Vytvoření skupin
 GROUPID=<group ID value>
 ```
 
-Nastavte `SECRET` na hodnotu, kterou jste uložili v kroku 8 [Vytvoření tajného klíče klienta](howto-aad-app-configuration.md#create-a-client-secret).  
+Nastavte `SECRET` na hodnotu, kterou jste uložili v kroku 8 [Vytvoření tajného klíče klienta](howto-aad-app-configuration.md#create-a-client-secret).
 
 ```bash
 SECRET=<secret value>
 ```
 
-Nastavte `TENANT` na hodnotu ID tenanta, kterou jste uložili v kroku 7 v části [Vytvoření nového tenanta](howto-create-tenant.md#create-a-new-azure-ad-tenant) .  
+Nastavte `TENANT` na hodnotu ID tenanta, kterou jste uložili v kroku 7 v části [Vytvoření nového tenanta](howto-create-tenant.md#create-a-new-azure-ad-tenant) .
 
 ```bash
 TENANT=<tenant ID>
@@ -105,7 +105,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 Pokud nepotřebujete připojit virtuální síť (VNET) clusteru, který jste vytvořili v existující virtuální síti prostřednictvím partnerského vztahu, tento krok přeskočte.
 
-Pokud se partnerský vztah k síti mimo výchozí předplatné pak v tomto předplatném, budete muset také zaregistrovat poskytovatele Microsoft. ContainerService. Uděláte to tak, že v tomto předplatném spustíte níže uvedený příkaz. Jinak, pokud virtuální síť, kterou využíváte, se nachází ve stejném předplatném, můžete přeskočit krok registrace. 
+Pokud se partnerský vztah k síti mimo výchozí předplatné pak v tomto předplatném, budete muset také zaregistrovat poskytovatele Microsoft. ContainerService. Uděláte to tak, že v tomto předplatném spustíte níže uvedený příkaz. Jinak, pokud virtuální síť, kterou využíváte, se nachází ve stejném předplatném, můžete přeskočit krok registrace.
 
 `az provider register -n Microsoft.ContainerService --wait`
 
@@ -113,13 +113,29 @@ Nejprve získejte identifikátor existující virtuální sítě. Identifikátor
 
 Pokud neznáte název sítě nebo skupinu prostředků, do které patří existující virtuální síť, přejděte do okna [virtuální sítě](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks) a klikněte na svou virtuální síť. Zobrazí se stránka virtuální síť a zobrazí se seznam názvů sítí a skupiny prostředků, do které patří.
 
-Pomocí následujícího příkazu rozhraní příkazového řádku v prostředí BASH definujte proměnnou VNET_ID:
+VNET_ID proměnnou definujte pomocí následujícího příkazu CLI v prostředí BASH:
 
 ```bash
 VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
 ```
 
 Příklad: `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
+
+### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>Volitelné: Připojte cluster ke službě Azure Monitoring.
+
+Nejprve získejte identifikátor **existujícího** pracovního prostoru Log-Analytics. Identifikátor bude ve formátu:
+
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
+
+Pokud neznáte název pracovního prostoru Log-Analytics nebo skupinu prostředků, ke které patří existující pracovní prostor Log-Analytics, přejděte do [pracovního prostoru Log-Analytics](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) a klikněte na pracovní prostory Log-Analytics. Zobrazí se stránka pracovní prostor Log Analytics a zobrazí se seznam názvů pracovních prostorů a skupiny prostředků, do které patří.
+
+_Vytvoření pracovního prostoru Log Analytics najdete v tématu [Vytvoření pracovního prostoru Log-Analytics](../azure-monitor/learn/quick-create-workspace-cli.md) ._
+
+WORKSPACE_ID proměnnou definujte pomocí následujícího příkazu CLI v prostředí BASH:
+
+```bash
+WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
+```
 
 ### <a name="create-the-cluster"></a>Vytvoření clusteru
 
@@ -128,20 +144,29 @@ Nyní jste připraveni vytvořit cluster. V následujícím seznamu se vytvoří
 > [!IMPORTANT]
 > [Před vytvořením clusteru se ujistěte](howto-aad-app-configuration.md#add-api-permissions) , že jste správně přidali vhodná oprávnění pro aplikaci Azure AD.
 
-Pokud svůj cluster **nechcete** navázat na virtuální síť, použijte následující příkaz:
+Pokud nechcete, **aby se váš** cluster navázán na virtuální síť nebo aby služba Azure Monitoring **nepoužívala** , použijte následující příkaz:
 
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
 Pokud **vytváříte partnerské vztahy** clusteru s virtuální sítí, použijte následující příkaz, který přidá příznak `--vnet-peer`:
- 
+
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
 ```
 
+Pokud chcete, aby Azure Monitoring s clusterem **měl** , použijte následující příkaz, který přidá příznak `--workspace-id`:
+
+```bash
+az openshift create --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
+```
+
 > [!NOTE]
 > Pokud se zobrazí chyba, že název hostitele není k dispozici, může to být způsobeno tím, že název clusteru není jedinečný. Zkuste odstranit původní registraci aplikace a zopakovat postup s jiným názvem clusteru v části [Vytvoření nové registrace aplikace](howto-aad-app-configuration.md#create-an-azure-ad-app-registration), přičemž vynechejte krok vytvoření nového uživatele a skupiny zabezpečení.
+
+
+
 
 Po několika minutách se `az openshift create` dokončí.
 

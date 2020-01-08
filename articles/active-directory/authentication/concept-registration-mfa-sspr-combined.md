@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425347"
 ---
 # <a name="combined-security-information-registration-preview"></a>Registrace informací o kombinovaném zabezpečení (Preview)
 
@@ -47,7 +47,7 @@ Stránky s profilem jsou lokalizovány na základě nastavení jazyka počítač
 
 Kombinovaná registrace podporuje následující metody ověřování a akce:
 
-|   | Registrace | Změnit | Odstranit |
+|   | Zaregistrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
 | Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
@@ -95,7 +95,7 @@ Tady je několik scénářů, ve kterých můžou být uživatelé vyzváni, aby
 
 Když se registrace vynutila, zobrazí se uživatelům minimální počet metod, které musí být v souladu se zásadami Multi-Factor Authentication a SSPR, od nejvíce po nejméně bezpečnou.
 
-Například:
+Příklad:
 
 - Uživatel je povolený pro SSPR. Zásada SSPR vyžadovala dvě metody resetování a povolení kódu mobilní aplikace, e-mailu a telefonu.
    - Tento uživatel je nutný k registraci dvou metod.
@@ -108,7 +108,7 @@ Tento vývojový diagram popisuje, které metody se zobrazí uživateli při př
 
 Pokud máte povolené Multi-Factor Authentication i SSPR, doporučujeme, abyste vynutili registraci Multi-Factor Authentication.
 
-Pokud zásady SSPR vyžadují, aby si uživatelé zkontrolovali své bezpečnostní údaje v pravidelných intervalech, přeruší se během přihlašování a zobrazí se všechny registrované metody. V případě, že je to aktuální, můžou potvrdit aktuální informace, nebo můžou dělat změny, pokud je potřebují.
+Pokud zásady SSPR vyžadují, aby si uživatelé zkontrolovali své bezpečnostní údaje v pravidelných intervalech, přeruší se během přihlašování a zobrazí se všechny registrované metody. V případě, že je to aktuální, můžou potvrdit aktuální informace, nebo můžou dělat změny, pokud je potřebují. Uživatelé musí při přístupu k této stránce provádět službu Multi-Factor Authentication.
 
 ### <a name="manage-mode"></a>Režim správy
 

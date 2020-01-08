@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 23e8e4f9a092e871e62da27c8bf0c58a3bb8eb5b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f61d4beac5b5285b80fb05521cffc961f7f702c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356514"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektura fyzického serveru do Azure pro zotavení po havárii
 
@@ -45,7 +45,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
     - Konfigurační server orchestruje správu replikace s Azure přes odchozí port HTTPS 443.
     - Procesový server přijímá data ze zdrojového počítače, optimalizuje je a šifruje, a pak je odesílá do úložiště Azure přes odchozí port 443.
     - Pokud povolíte konzistenci napříč několika virtuálními počítači, budou spolu počítače v replikační skupině komunikovat přes port 20004. Konzistence více virtuálních počítačů znamená, že seskupíte víc virtuálních počítačů do replikační skupiny, v rámci které se sdílí body obnovení konzistentní vzhledem k selháním a konzistentní vzhledem k aplikacím, když dojde k převzetí služeb při selhání. To je užitečné, pokud je počítačích spuštěná stejná úloha a je třeba, aby zůstala konzistentní.
-4. Provoz se přes internet replikuje do veřejných koncových bodů úložiště Azure. Alternativně můžete použít [veřejný partnerský vztah](../expressroute/expressroute-circuit-peerings.md#publicpeering) Azure ExpressRoute. Přenos replikačních dat přes síť site-to-site VPN z místního serveru do Azure není podporovaný.
+4. Provoz se přes internet replikuje do veřejných koncových bodů úložiště Azure. Alternativně můžete použít [veřejný partnerský vztah](../expressroute/about-public-peering.md) Azure ExpressRoute. Přenos replikačních dat přes síť site-to-site VPN z místního serveru do Azure není podporovaný.
 
 
 **Z fyzického procesu replikace do Azure**
@@ -54,7 +54,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 
 ## <a name="failover-and-failback-process"></a>Proces převzetí služeb při selhání a navrácení služeb po obnovení
 
-Po nastavení replikace a spuštění postupu pro zotavení po havárii (testovací převzetí služeb při selhání) ke kontrole, jestli všechno funguje podle očekávání, můžete v případě potřeby spustit převzetí služeb při selhání a navrácení služeb po obnovení. Všimněte si, že:
+Po nastavení replikace a spuštění postupu pro zotavení po havárii (testovací převzetí služeb při selhání) ke kontrole, jestli všechno funguje podle očekávání, můžete v případě potřeby spustit převzetí služeb při selhání a navrácení služeb po obnovení. Poznámky:
 
 - Plánované převzetí služeb není podporované.
 - Je nutné provést navrácení služeb po obnovení do místního virtuálního počítače VMware. To znamená, že budete potřebovat místní infrastrukturu VMware, a to i při replikaci místních fyzických serverů do Azure.

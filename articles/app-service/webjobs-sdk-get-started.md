@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684186"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640824"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s Azure WebJobs SDK pro zpracování na pozadí založené na událostech
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak pomocí sady Visual Studio 2019 vytvořit proj
 
 V tomto článku se dozvíte, jak nasadit WebJobs jako konzolovou aplikaci .NET Core. Pokud chcete nasadit WebJobs jako konzolovou aplikaci .NET Framework, přečtěte si téma [WebJobs jako .NET Framework konzolové aplikace](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Pokud vás zajímá Sada WebJobs SDK verze 2. x, která podporuje jenom .NET Framework, přečtěte si téma [vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Nainstalujte Visual Studio 2019](/visualstudio/install/) s úlohou **vývoj pro Azure** . Pokud již máte aplikaci Visual Studio, ale nemáte tuto úlohu, přidejte úlohu výběrem **nástrojů > získat nástroje a funkce**.
 
@@ -179,7 +179,7 @@ Počínaje verzí 3. x musíte explicitně nainstalovat rozšíření vazby úlo
 
    Parametr `message` nemusí být řetězec. Můžete také vytvořit propojení s objektem JSON, bajtovým polem nebo objektem [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) . [Viz Použití triggeru fronty](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Každý typ vazby (například fronty, objekty blob nebo tabulky) má jinou sadu typů parametrů, které lze svázat.
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, které vyžaduje Sada WebJobs SDK. Takže v této části vytvoříte účet úložiště v Azure a nakonfigurujete ho tak, aby ho používal. Pokud už máte účet úložiště, přeskočte dolů na krok 6.
 
@@ -195,7 +195,7 @@ Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, kt
 
 1. Vyberte si stejnou **oblast** , ve které jste vytvořili aplikaci App Service, nebo oblast, která je blízko vás.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
    ![Vytvořit účet úložiště](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -332,7 +332,7 @@ V této části provedete následující úlohy, abyste nastavili protokolován�
 
 1. Nahraďte *{Instrumentation Key}* klíčem instrumentace z Application Insights prostředku, který používáte.
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 1. Přidejte do projektu připojení Application Insights, abyste ho mohli spustit místně. V souboru *appSettings. JSON* přidejte pole `APPINSIGHTS_INSTRUMENTATIONKEY`, jako v následujícím příkladu:
 
@@ -399,15 +399,17 @@ Pokud chcete využít výhod protokolování [Application Insights](../azure-mon
 
 V této části se znovu spustíte místně a ověříte, že data protokolování teď Application Insights a také na konzolu.
 
-1. Pomocí **Průzkumník serveru** v aplikaci Visual Studio vytvořte zprávu fronty stejným způsobem jako [dříve](#trigger-the-function-in-azure), s výjimkou zadání *Hello Application Insights!* jako text zprávy.
+1. Pomocí **Průzkumník serveru** v aplikaci Visual Studio vytvořte zprávu fronty, jako jste použili [dříve](#test-locally), s výjimkou zadejte *Hello App Insights!* jako text zprávy.
 
 1. Spusťte projekt.
 
-   Sada WebJobs SDK zpracuje zprávu fronty a v okně konzoly se zobrazí protokoly.
+   Sada WebJobs SDK zpracuje zprávu fronty a protokoly se zobrazí v okně konzoly.
 
 1. Zavřete okno konzoly.
 
-1. Otevřete [Azure Portal](https://portal.azure.com/)a pokračujte na prostředek Application Insights.
+1. Pokud chcete zobrazit prostředek Application Insights, otevřete [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **Application Insights**.
+
+1. Vyberte instanci Application Insights.
 
 1. Vyberte **Hledat**.
 

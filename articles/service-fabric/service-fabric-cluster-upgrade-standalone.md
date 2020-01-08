@@ -1,25 +1,14 @@
 ---
-title: Upgrade samostatného clusteru Azure Service Fabric | Microsoft Docs
-description: Přečtěte si informace o upgradu verze nebo konfigurace samostatného clusteru Azure Service Fabric.  T
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Upgrade samostatného clusteru Azure Service Fabric
+description: Přečtěte si informace o upgradu verze nebo konfigurace samostatného clusteru Azure Service Fabric.  bil.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: bf99d5d59354745508d8ca88abfc4b42fe608025
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451830"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Upgrade a aktualizace samostatného clusteru Service Fabric
 
@@ -47,8 +36,8 @@ Pro každý typ uzlu můžete přidat vlastní metriky kapacity, které chcete p
 Aplikace orchestrace oprav (POA) je Service Fabric aplikace, která automatizuje opravy operačního systému v clusteru Service Fabric bez výpadků. [Aplikace orchestrace oprav pro Windows](service-fabric-patch-orchestration-application.md) se dá nasadit do clusteru a instalovat opravy do Orchestrace a zároveň přitom zachovat dostupné služby. 
 
 
-## <a name="next-steps"></a>Další postup
-* Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric](service-fabric-cluster-fabric-settings.md) pro clustery
+## <a name="next-steps"></a>Další kroky
+* Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric pro clustery](service-fabric-cluster-fabric-settings.md)
 * Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-up-down.md) .
 * Další informace o [upgradech aplikací](service-fabric-application-upgrade.md)
 

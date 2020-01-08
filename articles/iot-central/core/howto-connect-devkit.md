@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583009"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435079"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central
 
@@ -25,12 +25,12 @@ Tento článek popisuje, jak jako vývojář zařízení připojit zařízení M
 
 K dokončení kroků v tomto článku budete potřebovat následující zdroje:
 
-1. Aplikace IoT Central v Azure vytvořená z **ukázkové** šablony aplikace Devkits Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
+1. Aplikace Azure IoT Central vytvořená ze šablony **starší verze aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 1. Zařízení DevKit. Pokud si chcete koupit zařízení DevKit, přejděte na [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
 
-## <a name="sample-devkits-application"></a>Ukázková aplikace Devkits
+## <a name="add-a-device-template"></a>Přidání šablony zařízení
 
-Aplikace vytvořená z ukázkové šablony aplikace **Devkits** zahrnuje šablonu zařízení **MXChip** , která definuje následující vlastnosti zařízení:
+V aplikaci Azure IoT Central přidejte novou šablonu zařízení **MXChip** , která definuje následující vlastnosti zařízení:
 
 - Měření telemetrie pro **vlhkost**, **teplotu**, **tlak**, **magnetometer** (měřeno podél x, y, z osy z), **akcelerometr** (měřeno podél x, y, z osy z) a **vybavený gyroskopem** (měřeno podél x, y, z osy z).
 - Měření stavu **zařízení**.
@@ -40,6 +40,11 @@ Aplikace vytvořená z ukázkové šablony aplikace **Devkits** zahrnuje šablon
 - Vlastnost cloudu **vyrobená v**.
 - Příkazy **echo** a **odpočítávání**. Když reálné zařízení obdrží příkaz **echo** , zobrazí odeslanou hodnotu v zobrazení zařízení. Když reálné zařízení obdrží příkaz **odpočítávání** , indikátor LED projde vzorem a zařízení pošle hodnoty odpočítávání zpět do IoT Central.
 
+1. Z šablon zařízení ![vyberte **+ nový**](media/howto-connect-devkit/adddevicetemplate.png)
+   
+
+2. Vyberte **MXChip** a vytvořte šablonu zařízení MXChip ![přidat šablonu zařízení](media/howto-connect-devkit/newtemplate.png)
+
 Úplné podrobnosti o konfiguraci najdete v tématu [Podrobnosti o šabloně zařízení MXChip](#mxchip-device-template-details) .
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
@@ -48,7 +53,7 @@ Aplikace vytvořená z ukázkové šablony aplikace **Devkits** zahrnuje šablon
 
 V aplikaci Azure IoT Central přidejte reálné zařízení ze šablony zařízení **MXChip** a poznamenejte si podrobnosti o připojení zařízení: **ID oboru, ID zařízení a primární klíč**:
 
-1. Přidejte **reálné zařízení** z Device Explorer, vyberte **+ Nový > Real** a přidejte reálné zařízení.
+1. Přidejte **reálné zařízení** ze zařízení, vyberte **+ Nový > Real** a přidejte reálné zařízení.
 
     * Zadejte **ID zařízení**s malým písmenem nebo použijte navržené **ID zařízení**.
     * Zadejte **název zařízení**nebo použijte navrhovaný název.
@@ -192,30 +197,30 @@ Aplikace vytvořená z ukázkové šablony aplikace Devkits zahrnuje šablonu za
 
 ### <a name="measurements"></a>Měření
 
-#### <a name="telemetry"></a>Telemetrická data
+#### <a name="telemetry"></a>Telemetrie
 
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 0       | 100     | 0              |
-| názvem           | 7C     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | tlak       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1 000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1 000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1 000    | 0              |
 | accelerometerX | mg/Nm3     | -2000   | 2000    | 0              |
-| akcelerometr | mg/Nm3     | -2000   | 2000    | 0              |
+| accelerometerY | mg/Nm3     | -2000   | 2000    | 0              |
 | accelerometerZ | mg/Nm3     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Stavy 
-| Název          | Zobrazované jméno   | BĚŽNOU | Upozornění | BEZPEČNÁ | 
+| Name (Název)          | Zobrazované jméno   | NORMAL | Upozornění | BEZPEČNÁ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Stav zařízení   | Zelená  | Orange  | Červená    | 
 
 #### <a name="events"></a>Akce 
-| Název             | Zobrazované jméno      | 
+| Name (Název)             | Zobrazované jméno      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Stisknutí tlačítka B  | 
 
@@ -223,15 +228,15 @@ Aplikace vytvořená z ukázkové šablony aplikace Devkits zahrnuje šablonu za
 
 Číselná nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Pořizovací |
+| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napájení      | setVoltage | V voltech | 0              | 0       | 240     | 0       |
-| Aktivní      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
-| Rychlost ventilátoru    | fanSpeed   | /MIN   | 0              | 0       | 1 000    | 0       |
+| Aktuální      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
+| Rychlost větráku    | fanSpeed   | /MIN   | 0              | 0       | 1 000    | 0       |
 
 Přepnout nastavení
 
-| Zobrazované jméno | Název pole | Na text | Vypnuto textu | Pořizovací |
+| Zobrazované jméno | Název pole | Na text | Vypnuto textu | Počáteční |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | Vypnuto     |
 
@@ -241,14 +246,14 @@ Přepnout nastavení
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnost zařízení | Číslo Die   | dieNumber  | číslo    |
 | Vlastnost zařízení | Umístění zařízení   | location  | location    |
-| Text            | Vyrobeno v     | manufacturedIn   | Není dostupné.       |
+| Text            | Vyrobeno v     | manufacturedIn   | Nevztahuje se       |
 
 ### <a name="commands"></a>Příkazy
 
 | Zobrazované jméno | Název pole | Návratový typ | Zobrazovaný název vstupního pole | Název vstupního pole | Typ vstupního pole |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| Zvuk         | echo       | text        | hodnota, která se má zobrazit         | displayedValue   | text             |
-| Odpočítávání    | Odpočítávání  | číslo      | Počet z               | countFrom        | číslo           |
+| Echo         | echo       | text        | hodnota, která se má zobrazit         | displayedValue   | text             |
+| Odpočítávání    | odpočítávání  | číslo      | Počet z               | countFrom        | číslo           |
 
 ## <a name="next-steps"></a>Další kroky
 

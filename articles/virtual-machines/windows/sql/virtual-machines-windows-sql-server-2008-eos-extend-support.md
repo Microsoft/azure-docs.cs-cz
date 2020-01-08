@@ -14,20 +14,22 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357845"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
 
-SQL Server 2008 a SQL Server 2008 R2 se přiblíží ke [konci životního cyklu podpory (EOS)](https://www.microsoft.com/sql-server/sql-server-2008). Vzhledem k tomu, že mnoho zákazníků stále používá obě verze, nabízíme několik možností, jak pokračovat v získávání podpory. Místní instance SQL Server můžete migrovat na virtuální počítače Azure, migrovat na Azure SQL Database nebo zachovat místní a koupit rozšířené aktualizace zabezpečení.
+SQL Server 2008 a SQL Server 2008 R2 dosáhli [konce životního cyklu podpory (EOS)](https://www.microsoft.com/sql-server/sql-server-2008). Vzhledem k tomu, že mnoho zákazníků stále používá obě verze, nabízíme několik možností, jak pokračovat v získávání podpory. Místní instance SQL Server můžete migrovat na virtuální počítače Azure, migrovat na Azure SQL Database nebo zachovat místní a koupit rozšířené aktualizace zabezpečení.
 
 Na rozdíl od spravované instance není migrace na virtuální počítač Azure vyžadovat recertifikaci vašich aplikací. A na rozdíl od udržování místního prostředí se při migraci na virtuální počítač Azure vám budou zobrazovat bezplatné rozšířené opravy zabezpečení.
 
 Ve zbývající části tohoto článku najdete pokyny k migraci instance SQL Server na virtuální počítač Azure.
+
+Další informace o možnostech konce podpory najdete na [konci podpory](/sql/sql-server/end-of-support/sql-server-end-of-life-overview).
 
 ## <a name="provisioning"></a>Zřizování
 
@@ -40,7 +42,7 @@ Image nasazené prostřednictvím Azure Marketplace se dodávají s předinstalo
 > [!NOTE]
 > I když se SQL Server **vytvářet** a **Spravovat** okna, budou v Azure Portal fungovat s imagí SQL Server 2008 R2, nejsou _podporovány_následující funkce: automatické zálohování, Integrace Azure Key Vault, služby R a konfigurace úložiště.
 
-## <a name="licensing"></a>Licencování
+## <a name="licensing"></a>Správa licencí
 Nasazení s průběžnými platbami SQL Server 2008 R2 se dá převést na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Pokud chcete převést licenci na základě programu Software Assurance (SA) na průběžné platby, měli by se zákazníci zaregistrovat u [poskytovatele prostředků](virtual-machines-windows-sql-register-with-resource-provider.md)virtuálního počítače SQL. Po této registraci se typ licence SQL zamění mezi Zvýhodněné hybridní využití Azure a průběžnými platbami.
@@ -87,3 +89,7 @@ Začínáme s SQL Server v Azure Virtual Machines:
 Získejte odpovědi na nejčastější dotazy týkající se SQL Server virtuálních počítačů:
 
 * [Nejčastější dotazy k SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-faq.md)
+
+Přečtěte si další informace o možnostech konce podpory a rozšířených aktualizacích zabezpečení:
+
+* [Konec podpory](/sql/sql-server/end-of-support/sql-server-end-of-life-overview) & [Rozšířené aktualizace zabezpečení](/sql/sql-server/end-of-support/sql-server-extended-security-updates)

@@ -1,18 +1,17 @@
 ---
 title: Geografická a geoprostorové agregace pomocí Azure Stream Analytics
 description: Tento článek popisuje, jak používat Azure Stream Analytics pro geografickou a geoprostorové agregace.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: d44b2fae677554594f0cc280c1129bbd6effddf2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443644"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Scénáře použití geografického a geoprostorového agregace pomocí Azure Stream Analytics
 
@@ -36,7 +35,7 @@ Předdefinované geoprostorové funkce mohou pomocí definovaných geografickýc
 
 Následující tabulka představuje příklad referenčních dat geografického úložiště, která by mohla být uložená ve službě Azure Blob Storage nebo v tabulce Azure SQL. Všechny lokality jsou reprezentovány pomocí geoprostorového mnohoúhelníku a každé zařízení je přidruženo k povolenému ID webu.
 
-|Počty|Názvem|Monitorované geografické zóny|AllowedDeviceID|
+|Počty|SiteName|Monitorované geografické zóny|AllowedDeviceID|
 |------|--------|--------|---------------|
 |1\. místo|"Redmond budovy 41"|"MNOHOÚHELNÍK ((-122.1337357922017 47.63782998329432,-122.13373042778369 47.637634793257305,-122.13346757130023 47.637642022530954,-122.13348902897235 47.637508280806806,-122.13361777500506 47.637508280806806,-122.13361241058703 47.63732393354484,-122.13265754417773 47.63730947490855,-122.13266290859576 47.637519124743164,-122.13302232460376 47.637515510097955,-122.13301696018573 47.63764925180358,-122.13272728161212 47.63764925180358,-122.13274873928424 47.63784082716388,-122.13373579220172 47.63782998329432))"|B|
 |2|"Redmond budovy 40"|"MNOHOÚHELNÍK ((-122.1336154507967 47.6366745947009,-122.13361008637867 47.636483015064535,-122.13349206918201 47.636479400347675,-122.13349743360004 47.63636372927573,-122.13372810357532 47.63636372927573,-122.13373346799335 47.63617576323771,-122.13263912671528 47.63616491902258,-122.13264985555134 47.63635649982525,-122.13304682248554 47.636367344000604,-122.13305218690357 47.63650831807564,-122.13276250832996 47.636497473929516,-122.13277323716602 47.63668543881025,-122.1336154507967 47.6366745947009))"|Určitého|
@@ -46,11 +45,11 @@ Následující tabulka představuje příklad referenčních dat geografického 
 
 Zařízení mohou každou minutu vysílat své ID a umístění pomocí datového proudu s názvem `DeviceStreamInput`. Následující tabulka je datový proud vstupu.
 
-|DeviceID|Mikropozice|
+|ID zařízení|Mikropozice|
 |--------|-----------|
 |Určitého|"POINT (-122.13292341559497 47.636318374032726)"|
 |B|"POINT (-122.13338475554553 47.63743531308874)"|
-|R|"POINT (-122.13354001095752 47.63627622505007)"|
+|R|"POINT(-122.13354001095752 47.63627622505007)"|
 
 Můžete napsat dotaz, který spojuje datový proud zařízení s referenčními daty geografické plotu a vygeneruje výstrahu pokaždé, když je zařízení mimo povolené sestavení.
 
@@ -99,12 +98,12 @@ Tyto mnohoúhelníky jsou pouze pro referenci a nepředstavují skutečné logic
 
 Následující tabulka obsahuje streamovaná data "jezdí".
 
-|UserID|FromLocation|ToLocation|TripRequestedTime|
+|ID uživatele|FromLocation|ToLocation|TripRequestedTime|
 |------|------------|----------|-----------------|
 |Určitého|"POINT (-74.00726861389182 40.71610611981975)"|"POINT (-73.98615095917779 40.703107386025835)"|"2019-03-12T07:00:00Z"|
 |B|"POINT (-74.00249841021645 40.723827238895666)"|"POINT (-74.01160699942085 40.71378884930115)"|"2019-03-12T07:01:00Z"|
 |R|"POINT (-73.99680120565864 40.716439898624024)"|"POINT (-73.98289663412544 40.72582343969828)"|"2019-03-12T07:02:00Z"|
-|Trojrozměrné|"POINT (-74.00741090068288 40.71615626755086)"|"POINT (-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
+|"D"|"POINT (-74.00741090068288 40.71615626755086)"|"POINT (-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
 
 Následující dotaz spojuje datový proud zařízení s referenčními daty geografické plotu a vypočítává počet požadavků na oblast v časovém intervalu 15 minut každou minutu.
 

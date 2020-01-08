@@ -5,22 +5,21 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435502"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix ve službě Azure HDInsight
 
 [Apache Phoenix](https://phoenix.apache.org/) je open source vysoce paralelní relační databázová vrstva založená na [Apache HBA](hbase/apache-hbase-overview.md). Phoenix umožňuje používat dotazy podobné SQL přes HBA. V Phoenixu používá ovladače JDBC pod tím, že uživatelům umožňuje vytvářet, odstraňovat, měnit tabulky, indexy, zobrazení a sekvence a Upsert řádky, a to samostatně a hromadně. Phoenixu používá ke kompilaci dotazů nativní kompilaci noSQL a nepoužívá MapReduce k vytváření aplikací s nízkou latencí nad adaptéry HBA. Phoenix přidává spoluprocesory k podpoře spouštění kódu zadaného klientem v adresním prostoru serveru a provádění kódu společně umístěného s daty. Tento přístup minimalizuje přenos dat mezi klientem a serverem.
 
 Apache Phoenix otevře v nevývojářích dotazy na velké objemy dat, které místo programování můžou použít syntaxi podobnou SQL. Systém Phoenix je vysoce optimalizovaný pro adaptéry HBA, na rozdíl od jiných nástrojů, jako je [Apache Hive](hadoop/hdinsight-use-hive.md) a Apache Spark SQL. Výhodou pro vývojáře je psaní vysoce výkonných dotazů s mnohem menším kódem.
-<!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 Když odešlete dotaz SQL, Phoenix zkompiluje dotaz do HBA nativních volání a spustí vyhledávání (nebo plán) paralelně pro optimalizaci. Tato vrstva abstrakce uvolňuje vývojáře z psaní úloh MapReduce, aby se místo toho zaměřil na obchodní logiku a pracovní postup jejich aplikace v oblasti velkých objemů dat v Phoenixu.
 
@@ -51,8 +50,8 @@ Tady je například fyzická tabulka s názvem `product_metrics` s následujíc�
 ```sql
 CREATE  TABLE product_metrics (
     metric_type CHAR(1),
-    created_by VARCHAR, 
-    created_date DATE, 
+    created_by VARCHAR,
+    created_date DATE,
     metric_id INTEGER
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
@@ -135,6 +134,8 @@ Cluster An HDInsight HBA zahrnuje [uživatelské rozhraní Ambari](hdinsight-had
 
     ![Oddíl konfigurace SQL pro Ambari Phoenix](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Použití Apache Phoenix s clustery se systémem Linux v HDInsight](hbase/apache-hbase-query-with-phoenix.md)
+
+* [Použití Apache Zeppelin ke spouštění dotazů Apache Phoenix dotazů přes Apache HBA ve službě Azure HDInsight](./hbase/apache-hbase-phoenix-zeppelin.md)

@@ -1,25 +1,14 @@
 ---
-title: Přečtěte si o zabezpečení Azure Service Fabric aplikace | Microsoft Docs
+title: Přečtěte si o zabezpečení aplikací Service Fabric Azure
 description: Přehled, jak bezpečně spouštět aplikace mikroslužeb na Service Fabric. Naučte se spouštět služby a spouštěcí skripty v různých účtech zabezpečení, ověřovat a autorizovat uživatele, spravovat tajné klíče aplikací, zabezpečenou komunikaci služeb, používat bránu API a zabezpečovat neaktivní data aplikací.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452258"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric zabezpečení aplikací a služeb
 Architektura mikroslužeb může přinést [mnoho výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb je ale výzvou a odlišná od správy tradičních aplikací monolitické. 
@@ -31,14 +20,14 @@ Tento článek není průvodce zabezpečením mikroslužeb, ale k dispozici je m
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 Pro prostředky a rozhraní API vystavené službou je často potřeba omezit na určité důvěryhodné uživatele nebo klienty. Ověřování je proces spolehlivého zjišťování identity uživatele.  Autorizace je proces, který zpřístupňuje rozhraní API nebo služby pro některé ověřené uživatele, ale ne jiné.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Ověření
 Prvním krokem pro rozhodování o důvěryhodnosti na úrovni rozhraní API je ověřování. Ověřování je proces spolehlivého zjišťování identity uživatele.  Ve scénářích mikroslužeb se ověřování obvykle zpracovává centrálně. Pokud používáte bránu API, můžete na bránu přesměrovat [ověřování](/azure/architecture/patterns/gateway-offloading) . Pokud použijete tento přístup, ujistěte se, že k jednotlivým službám nemůžete získat přímý přístup (bez brány API), pokud se nejedná o další zabezpečení pro ověřování zpráv bez ohledu na to, jestli pocházejí z brány, nebo ne.
 
 Pokud se k službám dají získat přístup přímo, můžete k ověřování uživatelů použít ověřovací službu, jako je Azure Active Directory nebo vyhrazená mikroslužba ověřování, která funguje jako služba tokenů zabezpečení (STS). Rozhodnutí o důvěryhodnosti se sdílí mezi službami s tokeny zabezpečení nebo soubory cookie. 
 
 Pro ASP.NET Core je primárním mechanismem [ověřování uživatelů](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) ASP.NET Core systém členství v identitách. ASP.NET Core identity ukládá informace o uživateli (včetně přihlašovacích údajů, rolí a deklarací) do úložiště dat nakonfigurovaného vývojářem. ASP.NET Core identity podporuje dvojúrovňové ověřování.  Podporují se taky externí poskytovatelé ověřování, takže se uživatelé můžou přihlašovat pomocí stávajících procesů ověřování od poskytovatelů, jako je Microsoft, Google, Facebook nebo Twitter.
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>Autorizace
 Po ověření potřebují služby autorizaci přístupu uživatele nebo určení toho, co může uživatel dělat. Tento proces umožňuje službě zpřístupnit rozhraní API některým ověřeným uživatelům, ale ne všem. Autorizace je kolmá a nezávislá na ověřování, což je proces, který zjišťuje, kdo je uživatel. Ověřování může pro aktuálního uživatele vytvořit jednu nebo více identit.
 
 [Autorizaci ASP.NET Core](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) můžete provádět na základě rolí uživatelů nebo na základě vlastních zásad, které můžou zahrnovat kontrolu deklarací identity nebo jiné heuristiky.
@@ -103,7 +92,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Spuštění instalačního skriptu při spuštění služby](service-fabric-run-script-at-service-startup.md)
 * [Určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md)
 * [Nasazení aplikace](service-fabric-deploy-remove-applications.md)

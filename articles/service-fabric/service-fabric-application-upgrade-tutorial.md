@@ -1,29 +1,18 @@
 ---
-title: Kurz upgradu Service Fabric aplikace | Microsoft Docs
+title: Kurz upgradu aplikace Service Fabric
 description: Tento článek vás provede nasazením aplikace Service Fabric, změnou kódu a zavedením upgradu pomocí sady Visual Studio.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167377"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464818"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric kurz upgradu aplikací pomocí sady Visual Studio
 > [!div class="op_single_selector"]
-> * [Prostředí](service-fabric-application-upgrade-tutorial-powershell.md)
+> * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
@@ -43,12 +32,12 @@ Po výběru možnosti **publikovat** se zobrazí místní nabídka a **cílový 
 
 Nyní můžete v dialogovém okně kliknout na **publikovat** . [K zobrazení clusteru a aplikace](service-fabric-visualizing-your-cluster.md)můžete použít Service Fabric Explorer. Aplikace Visual Objects obsahuje webovou službu, na kterou můžete přejít zadáním [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) do panelu Adresa v prohlížeči.  Mělo by se zobrazit 10 plovoucích vizuálních objektů, které se pohybují na obrazovce.
 
-**Poznámka:** Pokud nasazujete na profil `Cloud.xml` (Azure Service Fabric), měla by být aplikace dostupná na adrese **http://{ServiceFabricName}. { Region}. cloudapp. Azure. com: 8081/visualobjects/** . Ujistěte se, že v Load Balancer máte nakonfigurované `8081/TCP` (Najděte Load Balancer ve stejné skupině prostředků jako instance Service Fabric).
+**Poznámka:** Pokud se nasazuje do profilu `Cloud.xml` (Azure Service Fabric), měla by být aplikace dostupná na adrese **http://{ServiceFabricName}. { Region}. cloudapp. Azure. com: 8081/visualobjects/** . Ujistěte se, že jste v Load Balancer nakonfigurovali `8081/TCP` (Najděte Load Balancer ve stejné skupině prostředků jako instance Service Fabric).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: aktualizace ukázky vizuálních objektů
 Můžete si všimnout, že ve verzi, která byla nasazena v kroku 1, se neotáčí vizuální objekty. Pojďme tuto aplikaci upgradovat na jednu, kde se také otočí vizuální objekty.
 
-V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor **VisualObjectActor.cs** . V tomto souboru přejdete do metody `MoveObject`, komentovat `visualObject.Move(false)` a Odkomentujete `visualObject.Move(true)`. Tato změna kódu otočí objekty po upgradu služby.  **Nyní můžete sestavit (ne znovu sestavit) řešení**, které vytvoří upravené projekty. Pokud vyberete možnost *znovu sestavit vše*, je nutné aktualizovat verze pro všechny projekty.
+V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor **VisualObjectActor.cs** . V tomto souboru přejdete do metody `MoveObject`, odkomentovat `visualObject.Move(false)`a odkomentujte `visualObject.Move(true)`. Tato změna kódu otočí objekty po upgradu služby.  **Nyní můžete sestavit (ne znovu sestavit) řešení**, které vytvoří upravené projekty. Pokud vyberete možnost *znovu sestavit vše*, je nutné aktualizovat verze pro všechny projekty.
 
 Musíme také poznáte verzi naší aplikace. Chcete-li provést změny verze po kliknutí pravým tlačítkem na projekt **VisualObjects** , můžete použít možnost **Upravit verze manifestu** aplikace Visual Studio. Když vyberete tuto možnost, zobrazí se dialogové okno pro verze edice následujícím způsobem:
 

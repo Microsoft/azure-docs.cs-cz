@@ -1,24 +1,21 @@
 ---
-title: Vnímání znalostí překladu textu (Preview)
+title: Vnímání znalostí překladu textu
 titleSuffix: Azure Cognitive Search
-description: Vyhodnotí text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka v kanálu rozšíření AI v Azure Kognitivní hledání. Tato dovednost je aktuálně ve verzi Public Preview.
+description: Vyhodnotí text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka v kanálu rozšíření AI v Azure Kognitivní hledání.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715415"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460772"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Vnímání znalostí překladu textu
-
-> [!IMPORTANT] 
-> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 Dovednost **překladu textu** vyhodnocuje text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka. Tato dovednost používá [Translator text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostupné v Cognitive Services.
 
@@ -39,7 +36,7 @@ Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
-V parametrech jsou rozlišována malá a velká písmena.
+U parametrů se rozlišují malá a velká písmena.
 
 | Vstupy                | Popis |
 |---------------------|-------------|
@@ -151,7 +148,7 @@ Pokud zadáte nepodporovaný kód jazyka pro jazyk z nebo do, je vygenerována c
 Pokud je text prázdný, bude se vytvářet upozornění.
 Pokud je text větší než 50 000 znaků, bude přeložen pouze prvních 50 000 znaků a bude vydáno upozornění.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425779"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway
 
@@ -63,7 +63,7 @@ Ověřte, že jste dokončili postup konfigurace OpenVPN pro vaši bránu VPN. P
 
 1. Stáhněte a nainstalujte klienta OpenVPN, jako je například [TunnelBlick](https://tunnelblick.net/downloads.html). 
 2. Stáhněte si profil sítě VPN pro bránu. To se dá udělat na kartě Konfigurace typu Point-to-site v Azure Portal nebo pomocí rutiny New-AzVpnClientConfiguration v PowerShellu.
-3. Rozbalte profil. Otevřete konfigurační soubor vpnconfig. ovpn ze složky OpenVPN v programu Poznámkový blok.
+3. Rozbalte profil. Otevřete konfigurační soubor vpnconfig. ovpn ze složky OpenVPN v textovém editoru.
 4. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. V tématu [Export veřejného klíče](vpn-gateway-certificates-point-to-site.md#cer) najdete informace o tom, jak vyexportovat certifikát pro získání kódovaného veřejného klíče.
 5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Informace o postupu při extrakci privátního klíče najdete v tématu [export privátního klíče](https://openvpn.net/community-resources/how-to/#pki) .
 6. Ostatní pole ponechte beze změny. S použitím vyplněné konfigurace ve vstupu klienta se připojte k síti VPN.
@@ -74,6 +74,39 @@ Ověřte, že jste dokončili postup konfigurace OpenVPN pro vaši bránu VPN. P
 > [!IMPORTANT]
 >Protokol OpenVPN podporuje jenom iOS 11,0 a vyšší a MacOS 10,13 a novější.
 >
+## <a name="iOS"></a>klienti iOS
+
+1. Nainstalujte klienta OpenVPN (verze 2,4 nebo vyšší) z App Storu.
+2. Stáhněte si profil sítě VPN pro bránu. To se dá udělat na kartě Konfigurace typu Point-to-site v Azure Portal nebo pomocí rutiny New-AzVpnClientConfiguration v PowerShellu.
+3. Rozbalte profil. Otevřete konfigurační soubor vpnconfig. ovpn ze složky OpenVPN v textovém editoru.
+4. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. V tématu [Export veřejného klíče](vpn-gateway-certificates-point-to-site.md#cer) najdete informace o tom, jak vyexportovat certifikát pro získání kódovaného veřejného klíče.
+5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Informace o postupu při extrakci privátního klíče najdete v tématu [export privátního klíče](https://openvpn.net/community-resources/how-to/#pki) .
+6. Ostatní pole ponechte beze změny.
+7. Pošlete soubor profilu (. ovpn) na váš e-mailový účet, který je nakonfigurovaný v e-mailové aplikaci na iPhonu. 
+8. Otevřete e-mail v aplikaci Mail na iPhonu a klepněte na přiložený soubor.
+
+    ![Otevřít e-mail](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
+
+9. Pokud nevidíte možnost **Kopírovat do OpenVPN** , klepněte na **Další** .
+
+    ![Kopírovat do OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
+
+10. Klepněte na **Kopírovat do OpenVPN** 
+
+    ![Kopírovat do OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
+
+11. Klepněte na **Přidat** na stránce **Importovat profil** .
+
+    ![Kopírovat do OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
+
+12. Klepněte na **Přidat** na stránce **importovaný profil** .
+
+    ![Kopírovat do OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
+
+13. Spusťte aplikaci OpenVPN a posuňte přepínač na stránce **profil** vpravo a připojte se.
+
+    ![Propojení](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+
 
 ## <a name="linux"></a>Klienti Linux
 

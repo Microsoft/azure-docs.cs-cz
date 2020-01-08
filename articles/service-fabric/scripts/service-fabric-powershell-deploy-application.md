@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu Azure PowerShell – nasazení aplikace do clusteru | Microsoft Docs
+title: Nasazení aplikace do clusteru v PowerShellu
 description: Ukázkový skript Azure PowerShell – nasazení aplikace do clusteru Service Fabric
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: d03eec5101f932caff43bf876a41219e3f1fa75d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 207f2a4e8173aa1e5009435665532973045d9198
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035552"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610297"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Nasazení aplikace do clusteru Service Fabric
 

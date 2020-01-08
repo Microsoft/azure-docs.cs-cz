@@ -1,6 +1,7 @@
 ---
-title: Článek o známých problémech nebo omezeních migrace pro online migrace do Azure SQL Database | Microsoft Docs
-description: Přečtěte si o známých problémech nebo omezeních migrace pro online migrace do Azure SQL Database.
+title: 'Známé problémy: Online migrace do SQL Database'
+titleSuffix: Azure Database Migration Service
+description: Přečtěte si o známých problémech nebo omezeních migrace s online migracemi k Azure SQL Database používání Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,22 +9,22 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 07/27/2019
-ms.openlocfilehash: 7cd8b7c2accae097c971aec4b92cf38ed5d3af08
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437831"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Známé problémy/omezení migrace pro online migrace Azure SQL Database
 
 Známé problémy a omezení související s online migracemi z SQL Server na Azure SQL Database jsou popsány níže.
 
 > [!IMPORTANT]
-> V případě online migrací SQL Server k Azure SQL Database migrace datových typů SQL_variant se nepodporuje.
+> S online migracemi SQL Server Azure SQL Database není podporována migrace datových typů SQL_variant.
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migrace dočasná tabulky není podporovaná.
 
@@ -51,7 +52,7 @@ Použijte následující postup.
 
 3. Spusťte znovu aktivitu migrace.
 
-**Prostředky**
+**Materiály**
 
 Další informace najdete v článku [dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
 

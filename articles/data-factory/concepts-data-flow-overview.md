@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/7/2019
-ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444509"
 ---
 # <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
 
@@ -35,7 +35,7 @@ Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfi
 
 ![Plátno](media/data-flow/canvas1.png "Plátno")
 
-### <a name="graph"></a>Graf
+### <a name="graph"></a>Grafová databáze
 
 Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace.
 
@@ -60,6 +60,8 @@ Můžete nastavit, aby služba ADF udržovala fond prostředků clusteru (VM) na
 Pokud pracujete s paralelními toky dat v kanálu, vytvoří se ADF samostatné Azure Databricks clustery pro každé spuštění aktivity na základě nastavení Azure Integration Runtime připojených ke každé aktivitě. Chcete-li navrhovat paralelní spouštění v kanálech ADF, přidejte aktivity toku dat bez omezení priority v uživatelském rozhraní.
 
 Z těchto tří možností se tato možnost bude v nejkratší době provádět. Každý paralelní tok dat se ale spustí ve stejnou dobu u samostatných clusterů, takže řazení událostí je nedeterministické.
+
+Pokud spouštíte aktivity toku dat paralelně uvnitř vašich kanálů, doporučujeme nepoužívat hodnotu TTL. Je to proto, že paralelní spouštění datových toků současně pomocí stejné Azure Integration Runtime bude mít za následek více instancí teplého fondu pro vaši datovou továrnu.
 
 ##### <a name="overload-single-data-flow"></a>Jeden tok dat přetížení
 

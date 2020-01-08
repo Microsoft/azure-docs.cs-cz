@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: a7511b8026cb3f53a23eed0f0c057632314320c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459502"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows
 
@@ -25,7 +25,9 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Přiřaďte roli aplikace TenantCreator uživateli ve vašem tenantovi Azure Active Directory.
 > * Vytvořte klienta virtuální plochy Windows.
 
-Tady je seznam toho, co potřebujete k nastavení tenanta pro virtuální počítače s Windows:
+## <a name="what-you-need-to-set-up-a-tenant"></a>Co potřebujete k nastavení tenanta
+
+Než začnete s nastavováním tenanta virtuálních klientů Windows, ujistěte se, že máte tyto věci:
 
 * ID tenanta [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) pro uživatele virtuálních klientů Windows.
 * Účet globálního správce v rámci tenanta Azure Active Directory.
@@ -33,6 +35,8 @@ Tady je seznam toho, co potřebujete k nastavení tenanta pro virtuální počí
    * Účet správce musí být nahlášený z klienta Azure Active Directory, ve kterém se snažíte vytvořit klienta virtuální plochy Windows. Tento proces nepodporuje Azure Active Directory účty B2B (Guest).
    * Účet správce musí být pracovní nebo školní účet.
 * Předplatné Azure.
+
+Musíte mít ID tenanta, účet globálního správce a předplatné Azure připravené, aby proces popsaný v tomto kurzu mohl správně fungovat.
 
 ## <a name="grant-permissions-to-windows-virtual-desktop"></a>Udělení oprávnění k virtuálnímu počítači s Windows
 
@@ -135,6 +139,12 @@ Hodnoty v závorkách nahraďte hodnotami, které jsou relevantní pro vaši org
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
+```
+
+K druhému uživateli je vhodné přiřadit přístup pro správu v případě, že jste se k vašemu účtu někdy odhlásili nebo jste na dovolenou a potřebujete někoho, aby ve vaší absenci pracoval jako správce tenanta. Chcete-li přiřadit přístup správce k druhému uživateli, spusťte následující rutinu s `<TenantName>` a `<Upn>` nahrazena názvem vašeho tenanta a hlavním názvem uživatele (UPN) druhého uživatele.
+
+```powershell
+New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>Další kroky

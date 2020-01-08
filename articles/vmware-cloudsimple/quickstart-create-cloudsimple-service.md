@@ -1,5 +1,6 @@
 ---
-title: Rychlé zprovoznění řešení Azure VMware podle CloudSimple – vytvoření služby
+title: 'Rychlý Start: vytvoření služby VMware CloudSimple'
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Naučte se vytvářet služby CloudSimple, koupit uzly a rezervovat uzly.
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 228ca0f43322c271b1a6db55a37c852ca1f66799
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452366"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Rychlý Start – vytvoření řešení Azure VMware pomocí služby CloudSimple
 
@@ -31,13 +32,13 @@ Přidělte bloku CIDR/28 pro podsíť brány.  Pro každou službu CloudSimple s
 
 Kontrola [požadavků na síť](cloudsimple-network-checklist.md). 
 
-## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>Vytvoření služby
 
-1. Vyberte **všechny služby**.
+1. Vyberte **Všechny služby**.
 2. Vyhledejte **službu CloudSimple**.
 
     ![Hledat službu CloudSimple](media/create-cloudsimple-service-search.png)
@@ -54,7 +55,7 @@ Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.c
 
     ![Vytvoření služby CloudSimple](media/create-cloudsimple-service.png)
 
-9. Klikněte na tlačítko **OK**.
+9. Klikněte na **OK**.
 
 Služba je vytvořena a přidána do seznamu služeb.
 
@@ -62,7 +63,7 @@ Služba je vytvořena a přidána do seznamu služeb.
 
 Pokud chcete nastavit kapacitu s průběžnými platbami pro prostředí privátního cloudu CloudSimple, nejdřív zřiďte uzly v Azure Portal.
 
-1. Vyberte **všechny služby**.
+1. Vyberte **Všechny služby**.
 2. Vyhledejte **uzly CloudSimple**.
 
     ![Hledat uzly CloudSimple](media/create-cloudsimple-node-search.png)
@@ -81,7 +82,7 @@ Pokud chcete nastavit kapacitu s průběžnými platbami pro prostředí privát
 11. Vyberte počet uzlů, které se mají zřídit.
 12. Vyberte **zkontrolovat + vytvořit**.
 13. Zkontrolujte nastavení. Chcete-li změnit nastavení, klikněte na tlačítko **Předchozí**.
-14. Vyberte **vytvořit**.
+14. Vyberte **Vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 

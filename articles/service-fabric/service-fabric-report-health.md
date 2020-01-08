@@ -1,75 +1,66 @@
 ---
-title: Přidání vlastních stavových sestav Service Fabric | Dokumentace Microsoftu
-description: Popisuje, jak k odesílání vlastních stavových sestav stavu entit Azure Service Fabric. Najdete tam doporučení pro navrhování a implementace sestav o stavu kvality.
-services: service-fabric
-documentationcenter: .net
+title: Přidání vlastních stavových sestav Service Fabric
+description: Popisuje, jak odesílat vlastní sestavy o stavu do entit Azure Service Fabric Health. Poskytuje doporučení pro návrh a implementaci sestav o stavu kvality.
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d00f740085b15bdb5fe698a069d97f168507f31f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451590"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidání vlastních stavových sestav Service Fabric
-Azure Service Fabric představuje [modelu stavu](service-fabric-health-introduction.md) navržené tak, aby příznak není v pořádku, cluster a aplikace podmínek u konkrétních entit. Health model používá **stavu reporters** (systémové součásti a watchdogs). Cílem je rychlou a snadnou diagnostiku a opravy. Služba zapisovače musí přemýšlet o stavu předem. Jakoukoli podmínku, která může mít vliv na stav by se měly hlásit, zejména v případě, že může být snazší příznak problémy blízko kořenový adresář. Informace o stavu můžete ušetřit čas a úsilí o ladění a šetření. Užitečnost je zvláště jasné, jakmile služba je spuštěná ve velkém měřítku v cloudu (privátní nebo Azure).
+Azure Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) , který je navržený tak, aby na konkrétní entity mohl označovat stav není v pořádku a podmínky použití aplikace. Model stavu používá **sestavy stavu** (systémové součásti a sledovací zařízení). Cílem je snadno a rychle diagnostikovat a opravit. Zapisovače služeb se musí představit předem o stavu. Všechny podmínky, které mohou ovlivnit stav, by měly být hlášeny, zejména v případě, že mohou přispět k potížím s příznakem blízko ke kořenu. Informace o stavu mohou ušetřit čas a úsilí při ladění a vyšetřování. Užitečnost je obzvláště jasné, když je služba v cloudu (soukromá nebo Azure) v provozu.
 
-Monitor Service Fabric reporters identifikovat podmínky, které vás zajímají. Tyto sestavy tyto podmínky na základě jejich místní zobrazení. [Health store](service-fabric-health-introduction.md#health-store) agreguje data o stavu odeslaných všechny reporters k určení, zda entity jsou globálně v pořádku. Model je určen jako bohaté, flexibilní a snadno se používá. Určuje kvalitu sestav o stavu přesností zobrazení stavu clusteru. Falešně pozitivních shod nesprávně zobrazit není v pořádku, problémy mohou mít negativní vliv na upgrady nebo jiné služby, které používají data o stavu. Příkladem takové služby jsou opravy služeb a mechanismy upozorňování. Proto je uvažujete potřebných k poskytování sestavy, které zaznamenávají podmínky zájem optimálně.
+Service Fabric sestavy monitorují identifikované podmínky zájmu. Vykazují tyto podmínky na základě jejich místního zobrazení. [Health Store](service-fabric-health-introduction.md#health-store) agreguje data o stavu odesílaná všemi sestavami, aby zjistila, jestli jsou entity globálně v pořádku. Model má být bohatě, flexibilní a snadno použitelný. Kvalita sestav stavu určuje přesnost zobrazení stavu clusteru. Falešné kladné hodnoty, které nesprávně ukazují problémy ve špatném stavu, můžou mít negativní dopad na upgrady nebo jiné služby, které používají data o stavu. Příklady takových služeb jsou opravné služby a mechanismy upozorňování. Proto je nutné, aby bylo možné poskytovat sestavy, které zachytí podmínky zájmu co nejlepším možným způsobem.
 
-Pro návrh a implementace sestav stavu watchdogs a musí být součástí systému:
+Pro návrh a implementaci vytváření sestav o stavu, sledovacích zařízení a systémových komponent musí:
 
-* Definujte podmínky, které je zajímají, způsob, jakým se monitoruje a sníží se dopad na funkčnost clusteru nebo aplikace. Na základě těchto informací, rozhodují o vlastnost sestavy stavu a stavu.
-* Určení [entity](service-fabric-health-introduction.md#health-entities-and-hierarchy) , sestava se vztahuje na.
-* Určení, kde reporting je Hotovo, z v rámci služby nebo z interních nebo externích sledovacích.
-* Definujte zdroj slouží k identifikaci osoby podávající hlášení.
-* Volba strategie generování sestav, pravidelně nebo na přechodů. Doporučený postup je pravidelně, protože vyžaduje jednodušší kódu a je náchylný k chybám.
-* Určete, jak dlouho sestavy není v pořádku podmínek by mělo zůstat v health store a jak ho by měla zůstat nezaškrtnutá. Na základě těchto informací rozhodněte sestavy Hodnota time to live a chování odebrat na vypršení platnosti.
+* Definujte podmínku, které vás zajímá, způsob jejího monitorování a dopad na fungování clusteru nebo aplikace. Na základě těchto informací se rozhodněte o vlastnosti sestavy o stavu a stavu.
+* Určete [entitu](service-fabric-health-introduction.md#health-entities-and-hierarchy) , na kterou se sestava vztahuje.
+* Určete, kde se vytváření sestav provádí, ze služby nebo z interního nebo externího sledovacího zařízení.
+* Definujte zdroj, který se používá k identifikaci zpravodaje.
+* Vyberte strategii vytváření sestav, ať už pravidelně, nebo na přechodech. Doporučený způsob je pravidelně, protože vyžaduje jednodušší kód a méně náchylná k chybám.
+* Určete, jak dlouho má sestava pro podmínky, které nejsou v pořádku, zůstat v Health Store a jak se má vymazat. Pomocí těchto informací se rozhodněte, jak dlouho má sestava fungovat a kdy se má chování zrušit při vypršení platnosti.
 
-Jak už bylo zmíněno, vytváření sestav se dá udělat z:
+Jak bylo zmíněno, vytváření sestav je možné provést z těchto kroků:
 
-* Monitorované repliku služby Service Fabric.
-* Interní watchdogs nasadit jako službu Service Fabric (například Service Fabric bezstavovou službu, která monitoruje podmínky a vydá sestavy). Může být watchdogs nasadit všechny uzly, nebo můžete spřažené s monitorované služby.
-* Interní watchdogs spuštění na uzlech Service Fabric, které jsou *není* implementovaná jako služeb Service Fabric.
-* Externí watchdogs, které pro zjišťování prostředků z *mimo* clusteru Service Fabric (například monitorování službě, jako je Gomez).
-
-> [!NOTE]
-> Hned po spuštění clusteru se vyplní sestav o stavu odeslané součásti systému. Další informace najdete v [stavu systému pomocí sestav pro řešení potíží s](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). Sestavy uživatelů se musí odeslat [entity stavu](service-fabric-health-introduction.md#health-entities-and-hierarchy) , které již byly vytvořeny v systému.
-> 
-> 
-
-Jednou stav vytváření sestav, je jasné, stavu sestavy lze zaslat snadno. Můžete použít [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) sestavy stav clusteru není-li [zabezpečené](service-fabric-cluster-security.md) nebo pokud fabric klient má oprávnění správce. Generování sestav můžete otevřít přes rozhraní API podle pomocí [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), prostřednictvím prostředí PowerShell, nebo prostřednictvím REST. Konfigurace knoflíky batch sestav za účelem vylepšení výkonu.
+* Replika služby monitorované Service Fabric.
+* Interní sledovací zařízení nasazená jako služba Service Fabric (například Service Fabric Bezstavová služba, která monitoruje stavy a hlášení problémů). Sledovací zařízení lze nasadit do všech uzlů nebo je lze spřažené do monitorované služby.
+* Interní sledovací zařízení, která běží na Service Fabricch uzlech, ale *nejsou implementovaná* jako Service Fabric služby.
+* Externí sledovací zařízení, která procházejí prostředkem *mimo* Service Fabric cluster (například monitorovací služba jako Gomez).
 
 > [!NOTE]
-> Sestava stavu je synchronní a představuje fungovat ověřování pouze na straně klienta. Fakt, že sestava je přijat ve stavu klienta nebo `Partition` nebo `CodePackageActivationContext` objekty neznamená, že se použije v úložišti. Je odeslán asynchronně a pravděpodobně dávce s dalšími sestavami. Zpracování na serveru stále může selhat: pořadové číslo může být zastaralá, entity, na kterém je nutné použít sestava byla odstraněna, atd.
+> V nedostatku se cluster naplní zprávami o stavu, které odesílají součásti systému. Další informace najdete v tématu [použití sestav stavu systému k řešení potíží](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). Sestavy uživatelů musí být odesílány na [entity stavu](service-fabric-health-introduction.md#health-entities-and-hierarchy) , které již byly vytvořeny systémem.
 > 
 > 
 
-## <a name="health-client"></a>Stav klienta
-Sestavy stavu odešlou do nástroje health manager prostřednictvím stavu klienta, který se nachází uvnitř klienta prostředků infrastruktury. Nástroje health manager uloží sestavy v health store. Stav klienta lze nastavit s následujícím nastavením:
-
-* **HealthReportSendInterval**: Zpoždění mezi časem, sestava se přidá do klienta a čas odeslání do Správce stavu. Používá k batch sestavy do jedné zprávy, namísto odesílání zpráv pro každou sestavu. Dávkování zvyšuje výkon. Výchozí hodnota: 30 sekund.
-* **HealthReportRetrySendInterval**: Interval, kdy stav klienta znovu odešle nahromaděné stavu sestav nástroje health manager. Výchozí hodnota: 30 sekund, minimální: 1 sekunda.
-* **HealthOperationTimeout**: Časový limit pro sestavy zpráva odeslaná do Správce stavu. Pokud vyprší časový limit zprávy, stavu klient pokus obnovuje se až do nástroje health manager potvrdí, že sestava se zpracovalo. Výchozí hodnota: dvě minuty.
+Jakmile je návrh vytváření sestav stavu jasný, je možné snadno odesílat sestavy o stavu. [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) můžete použít k hlášení stavu, Pokud cluster není [zabezpečený](service-fabric-cluster-security.md) nebo pokud má klient prostředků infrastruktury oprávnění správce. Vytváření sestav můžete provést prostřednictvím rozhraní API pomocí [FabricClient. HealthManager. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), prostřednictvím PowerShellu nebo pomocí REST. Ovladače konfigurace dávkují sestavy pro lepší výkon.
 
 > [!NOTE]
-> Pokud jsou sestavy v dávce, klienta fabric musí být zachováno pro alespoň HealthReportSendInterval zajistit, že jejich odesláním. Pokud dojde ke ztrátě zprávy nebo nástroje health manager nelze použít z důvodu přechodných chyb, klienta fabric musí být zachováno už nabízí příležitost dobře se zkuste to znovu.
+> Stav sestavy je synchronní a představuje pouze práci ověřování na straně klienta. Skutečnost, že je sestava přijata klientem stavu nebo `Partition` nebo `CodePackageActivationContext`, neznamená, že se používá ve Storu. Odesílá se asynchronně a pravděpodobně dávkuje s jinými sestavami. Zpracování na serveru může stále selhat: pořadové číslo může být zastaralé, entita, na které je nutné sestavu použít, byla odstraněna atd.
 > 
 > 
 
-Ukládání do vyrovnávací paměti, na straně klienta používá jedinečnost sestavy v úvahu. Například pokud je konkrétní chybný reportérka 100 sestav za sekundu na stejnou vlastnost u stejné entity, sestavy jsou nahrazeny poslední verzi. Nejvýše jeden takový sestavy existuje ve frontě klienta. Pokud dávkování je nakonfigurován, je počet sestav zasílaných do nástroje health manager právě jeden pro každý interval odeslat. Tato sestava je poslední přidané sestava, která odráží aktuální stav entity.
-Zadejte parametry konfigurace při `FabricClient` vytvoření předáním [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) s požadované hodnoty pro položky související se stavem.
+## <a name="health-client"></a>Klient stavu
+Sestavy o stavu se odesílají do Správce stavu prostřednictvím klienta Health, který je umístěn v rámci klienta prostředků infrastruktury. Správce stavu ukládá sestavy do Health Store. U klienta Health se dá nakonfigurovat toto nastavení:
 
-Následující příklad vytvoří klienta fabric a určuje, že když se přidají má být odeslán sestavy. Na časové limity a chyby, které umožňují opakovaný pokus opakované pokusy dojít každých 40 sekund.
+* **HealthReportSendInterval**: zpoždění mezi časem přidání sestavy do klienta a čas odeslání do Správce stavu. Slouží k dávkování sestav do jedné zprávy namísto odesílání jedné zprávy pro každou sestavu. Dávkování zvyšuje výkon. Výchozí hodnota: 30 sekund.
+* **HealthReportRetrySendInterval**: interval, ve kterém klient stavu znovu odesílá shromážděné zprávy o stavu do Správce stavu. Výchozí: 30 sekund, minimum: 1 sekunda.
+* **HealthOperationTimeout**: časový limit pro zprávu sestavy odeslanou správci stavu. Pokud dojde k vypršení časového limitu zprávy, klient stavu je znovu pokusí, dokud správce stavu nepotvrdí, že sestava byla zpracována. Výchozí: dvě minuty.
+
+> [!NOTE]
+> Při dávkovém zpracování sestav je potřeba, aby byl klient prostředků infrastruktury udržován na aktivním místě alespoň pro HealthReportSendInterval, aby bylo zajištěno jejich odeslání. Pokud dojde ke ztrátě zprávy nebo ji správce stavu nemůže použít kvůli přechodným chybám, musí být klient prostředků infrastruktury stále aktivní a dát mu možnost opakovat akci.
+> 
+> 
+
+Ukládání do vyrovnávací paměti klienta vezme v úvahu jedinečnosti sestav. Pokud například určitý špatný zpravodaj hlásí 100 sestav za sekundu na stejné vlastnosti stejné entity, nahradí se sestavy poslední verzí. Ve frontě klienta existuje nejvýše jedna taková sestava. Pokud nakonfigurujete dávkování, počet zpráv odeslaných do Správce stavu je pouze jeden za interval odeslání. Tato sestava je poslední přidanou sestavou, která odráží aktuální stav entity.
+Zadejte parametry konfigurace při vytváření `FabricClient` předáváním [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) s požadovanými hodnotami pro položky související se stavem.
+
+Následující příklad vytvoří klienta prostředků infrastruktury a určí, že se mají sestavy odesílat při jejich přidání. V případě časových limitů a chyb, které je možné opakovat, se opakování provádí každých 40 sekund.
 
 ```csharp
 var clientSettings = new FabricClientSettings()
@@ -81,9 +72,9 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-Doporučujeme klienta fabric výchozí nastavení, které nastavit `HealthReportSendInterval` na 30 sekund. Toto nastavení zajistí optimální výkon, protože dávkování. Pro kritické sestavy, které musí být odeslána co nejdříve, použijte `HealthReportSendOptions` s okamžité `true` v [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) rozhraní API. Okamžité sestavy obejít interval dávkování. Pomocí tohoto příznaku opatrně; Chceme, abyste mohli využívat stavu klienta do dávek, kdykoli je to možné. Okamžité odesílání je užitečné také, když se zavírá klienta fabric (například proces zjistil neplatný stav a potřebuje vypnout zabránit vedlejší účinky). Zajišťuje odesílání best effort nahromaděné sestav. Když přidáte jednu sestavu s okamžitou příznakem, stav klienta dávek všechny souhrnné sestavy od posledního odeslání.
+Doporučujeme ponechat výchozí nastavení klienta prostředků infrastruktury, které nastaví `HealthReportSendInterval` na 30 sekund. Toto nastavení zajišťuje optimální výkon z důvodu dávkování. V případě kritických sestav, které je třeba odeslat co nejdříve, použijte `HealthReportSendOptions` s okamžitým `true`m v rozhraní API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) . Okamžité sestavy vycházejí z intervalu dávkování. Pomocí tohoto příznaku se opatrně; Pokud je to možné, chceme využít dávkování klientů healthing. Okamžité odeslání je užitečné také v případě, že je klient Fabric ukončován (například proces zjistil neplatný stav a musí vypnout, aby se zabránilo vedlejším účinkům). Zajišťuje nejlepší úsilí při posílání kumulovaných sestav. Když se přidá jedna sestava s okamžitým příznakem, klient stavu se po posledním odeslání zařadí všechny shromážděné sestavy.
 
-Stejné parametry lze zadat, když se vytvoří připojení ke clusteru pomocí prostředí PowerShell. Následující příklad spustí připojení k místnímu clusteru:
+Při vytváření připojení ke clusteru prostřednictvím PowerShellu se dají zadat stejné parametry. Následující příklad spustí připojení k místnímu clusteru:
 
 ```powershell
 PS C:\> Connect-ServiceFabricCluster -HealthOperationTimeoutInSec 120 -HealthReportSendIntervalInSec 0 -HealthReportRetrySendIntervalInSec 40
@@ -111,80 +102,80 @@ GatewayInformation   : {
                        }
 ```
 
-Podobně k rozhraní API, sestavy lze zaslat pomocí `-Immediate` přepínač odeslané okamžitě, bez ohledu `HealthReportSendInterval` hodnotu.
+Podobně jako rozhraní API je možné zprávy odesílat pomocí `-Immediate` přepínač k okamžitému odeslání bez ohledu na hodnotu `HealthReportSendInterval`.
 
-Pro REST odesílají sestavy do brány Service Fabric, který má klientem interní infrastruktury. Ve výchozím nastavení, je tento klient nakonfigurovaný zasílání zpráv v dávce každých 30 sekund. Batch interval můžete změnit nastavení konfigurace clusteru `HttpGatewayHealthReportSendInterval` na `HttpGateway`. Jak už bylo zmíněno, je lepší volbou zasílání zpráv s `Immediate` hodnotu true. 
-
-> [!NOTE]
-> Aby bylo zajištěno, že neoprávněným služby nemůžete nahlásit stav pro entity v clusteru, konfigurace serveru tak, aby přijímal žádosti pouze zabezpečené klientů. `FabricClient` Pro vykazování, musí být schopný komunikovat s clusteru (například pomocí protokolu Kerberos nebo ověření certifikátem) povoleno zabezpečení. Další informace o [clusteru zabezpečení](service-fabric-cluster-security.md).
-> 
-> 
-
-## <a name="report-from-within-low-privilege-services"></a>Sestava z v rámci služeb s nízkým oprávněním
-Pokud služby Service Fabric nemají přístup správce ke clusteru, můžete vykázat stav entit na základě aktuálního kontextu prostřednictvím `Partition` nebo `CodePackageActivationContext`.
-
-* Pro bezstavové služby použijte [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) k sestavě na aktuální instanci služby.
-* Pro stavové služby, použijte [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) zprávu o aktuální replika.
-* Použití [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) zprávu o entitě aktuálního oddílu.
-* Použití [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) zprávu o aktuální aplikaci.
-* Použití [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) zprávu o aktuální aplikaci nasazenou na aktuálním uzlu.
-* Použití [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) chcete vygenerovat sestavu pro balíček služby pro aplikaci nasazenou na aktuálním uzlu.
+V případě REST se zprávy odesílají do Service Fabric brány, která má interního klienta prostředků infrastruktury. Ve výchozím nastavení je tento klient nakonfigurován tak, aby odesílal sestavy do dávky každých 30 sekund. Interval dávky můžete změnit pomocí nastavení konfigurace clusteru `HttpGatewayHealthReportSendInterval` v `HttpGateway`. Jak je uvedeno, lepší možnost je odesílat sestavy pomocí `Immediate` true. 
 
 > [!NOTE]
-> Interně `Partition` a `CodePackageActivationContext` uložení stavu klienta konfiguruje s výchozím nastavením. Jak je vysvětleno pro [stavu klienta](service-fabric-report-health.md#health-client), jsou sestavy vložit do dávky a odesílají na časovač. Objekty by měly být zachováno mít příležitost dobře se poslat zprávu.
+> Aby bylo zajištěno, že neautorizované služby nemohou hlásit stav na základě entit v clusteru, nakonfigurujte server tak, aby přijímal požadavky pouze od zabezpečených klientů. `FabricClient` používané pro vytváření sestav musí mít povolené zabezpečení, aby bylo možné komunikovat s clusterem (například pomocí protokolu Kerberos nebo ověřování certifikátů). Přečtěte si další informace o [zabezpečení clusteru](service-fabric-cluster-security.md).
 > 
 > 
 
-Můžete zadat `HealthReportSendOptions` při odesílání zprávy prostřednictvím `Partition` a `CodePackageActivationContext` stavu rozhraní API. Pokud máte kritické sestavy, které musí být odeslána co nejdříve použít `HealthReportSendOptions` s okamžité `true`. Okamžité sestavy obejít dávkování interval vnitřní stav klienta. Jak už bylo uvedeno dříve, pomocí tohoto příznaku opatrně; Chceme, abyste mohli využívat stavu klienta do dávek, kdykoli je to možné.
+## <a name="report-from-within-low-privilege-services"></a>Sestava v rámci služeb s nízkou úrovní oprávnění
+Pokud služba Service Fabric Services nemá přístup správce ke clusteru, můžete hlásit stav entit z aktuálního kontextu prostřednictvím `Partition` nebo `CodePackageActivationContext`.
 
-## <a name="design-health-reporting"></a>Návrh sestav stavu
-Prvním krokem při generování sestav vysoce kvalitní je identifikace podmínky, které může mít vliv na stav služby. Jakoukoli podmínku, který vám pomůže příznak problémy ve službě nebo v clusteru při jeho spuštění--nebo ještě lepší, než dojde k problému – můžete potenciálně ušetřit miliard dolarů. Mezi výhody patří méně výpadků, stráví méně noční hodin potřebného ke zkoumání a opravit problémy a vyšší spokojenost zákazníků.
-
-Jakmile jsou označeny podmínky, uživatelé vytvářející obsah sledovacího zařízení potřebovat zjistit nejlepší způsob, jak monitorovat pro vyvážení zatížení a užitečnost. Představte si třeba služba, která provádí složité výpočty, které používají některé dočasné soubory ve sdílené složce. Sledovacího zařízení může monitorovat sdílenou složku k zajištění, že je k dispozici dostatek místa. Může naslouchat oznámení změn souboru nebo adresáři. Pokud je dosaženo předem prahové hodnoty a hlášena chyba, pokud sdílená složka je plná ho může hlásit upozornění. Oprava systému na upozornění, by mohl spustit čištění starších souborů ve sdílené složce. V případě chyby může oprava systému Přesunout repliku služby do jiného uzlu. Všimněte si, jak jsou popsané podmínky stavy z hlediska stavu: stav podmínku, která lze považovat za v pořádku (ok) nebo není v pořádku (upozornění nebo chyba).
-
-Po nastavení monitorování podrobnosti jsou zapisovač sledovacího zařízení je potřeba zjistit, jak implementovat sledovacího zařízení. Pokud podmínky lze určit v rámci služby, sledovacího zařízení můžou být součástí monitorovaných samotné služby. Například kód služby můžete zkontrolovat využití sdílené složky a vytvářet zprávy při každém pokusu o zápis do souboru. Výhodou tohoto přístupu je, že generování sestav je jednoduché. Zabránit chyby sledovacího zařízení vliv na funkčnost služby musíte věnovat pozornost.
-
-Vytváření sestav v rámci monitorované služby není vždy možné. Sledovacího zařízení v rámci služby nemusí být schopna zjistit podmínky. Nemusí mít logiku nebo data rozhodnout. Režie monitorování podmínek může být vysoká. Podmínky také nemusí být specifické pro služby, ale místo toho ovlivnit interakci mezi službami. Další možností je, aby watchdogs v clusteru jako samostatné procesy. Watchdogs monitorování podmínek a sestavy, aniž by to ovlivnilo hlavní služby žádným způsobem. Například tyto watchdogs může implementovat jako bezstavové služby v jedné aplikaci nasadit na všech uzlech nebo na stejné uzly jako službu.
-
-V některých případech sledovacích spuštěné v clusteru není možné zvolit buď. Pokud monitorované podmínka je dostupnost nebo služby, jak ji uživatelé uvidí, je vhodné mít watchdogs na stejném místě jako klienti uživatele. Existuje jejich testování operací stejným způsobem, jakým uživatelé volat. Například můžete mít sledovacího zařízení, která se nachází mimo cluster, problémy s požadavky na službu a zkontroluje, latence a správnost výsledku. (Pro službu kalkulačky, například 2 + 2 nevrátí 4 v přiměřené době?)
-
-Jakmile máte byla dokončena. Podrobnosti o sledovacího zařízení, byste měli rozhodnout na ID zdroje, který ji jednoznačně identifikuje. Pokud více watchdogs stejného typu žijí v clusteru, musí vykazovat různé entity, nebo, pokud se ohlásí na stejnou entitu, použijte ID různé zdroje nebo vlastnost. Tímto způsobem své sestavy mohou existovat vedle sebe. Vlastnost sestava stavu by měl vystihnout monitorovaných podmínku. (V příkladu výše, může být vlastnost **ShareSize**.) Pokud více sestav použít stejná podmínka, by měl obsahovat vlastnost dynamických informací, které umožňuje sestavy existovat vedle sebe. Například pokud několik sdílených složek je potřeba monitorovat, název vlastnosti může být **ShareSize sharename**.
+* U bezstavových služeb použijte [IStatelessServicePartition. ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) k hlášení aktuální instance služby.
+* Pro stavové služby použijte [IStatefulServicePartition. ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) k hlášení o aktuální replice.
+* Pomocí [IServicePartition. ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) nahlaste aktuální entitu oddílu.
+* K hlášení aktuální aplikace použijte [CodePackageActivationContext. ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) .
+* Pomocí [CodePackageActivationContext. ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) můžete nahlásit aktuální aplikaci nasazenou v aktuálním uzlu.
+* Pomocí [CodePackageActivationContext. ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) nahlaste balíček služby pro aplikaci nasazenou na aktuálním uzlu.
 
 > [!NOTE]
-> Proveďte *není* sloužit k udržení informace o stavu úložiště stavů. Jenom informace související se stavem by měl označení stavu, protože tyto informace ovlivňuje vyhodnocování stavu entity. Úložiště stavu nebyl navržen jako úložiště pro obecné účely. Logika vyhodnocení stavu používá k agregaci všechna data na stav v pořádku. Odesílání informací, které nesouvisí se stav (jako je vytváření sestav stavu s stav OK) nebude mít vliv na agregovaný stav v pořádku, ale může negativně ovlivnit výkon úložiště stavů.
+> Interně `Partition` a `CodePackageActivationContext` pro klienta stavu nakonfigurované výchozí nastavení. Jak je vysvětleno pro [klienta Health](service-fabric-report-health.md#health-client), sestavy jsou dávkově a odesílány v časovači. Objekty by měly zůstat aktivní, aby měly možnost Odeslat zprávu.
 > 
 > 
 
-Dalším kritériem je na které entity do sestavy. Ve většině případů, podmínky jednoznačně identifikují entitu. Zvolte entitu s nejlepší možné členitosti. Pokud podmínka má vliv na všechny repliky v oddílu, sestavy v oddílu, ne na službu. Krajní případy, kde další přiměje je potřeba, i když nejsou k dispozici. Pokud podmínka má vliv na entitu, jako je například repliku, ale přání je označen jako podmínku pro více než doba života repliky, pak by měly být uvedeny v oddílu. V opačném případě při odstranění repliky úložiště stavu vyčistí všechny její sestavy. Uživatelé vytvářející obsah sledovacího zařízení musíte myslet na dobu života entity a sestavy. Musí být jasné, když by měla být vyčištěna sestavy z úložiště (třeba při chybě oznámené na entitě už neplatí).
+`HealthReportSendOptions` můžete zadat při odesílání sestav prostřednictvím rozhraní API pro `Partition` a `CodePackageActivationContext` stavu. Pokud máte důležité sestavy, které je třeba odeslat co nejdříve, použijte `HealthReportSendOptions` s okamžitou `true`. Okamžité sestavy obcházejí interval dávkování interního klienta stavu. Jak bylo uvedeno dříve, používejte tento příznak s péčí; Pokud je to možné, chceme využít dávkování klientů healthing.
 
-Podívejme se na příklad, který se umístí společně body, které můžu popsané. Vezměte v úvahu, že aplikace Service Fabric se skládá z hlavní stavové trvalé služby a sekundární bezstavových služeb nasazených na všech uzlech (jeden typ sekundární služby pro každý typ úlohy). Hlavní server má fronta zpracování, která obsahuje příkazy, které mají být provedeny podle sekundárních replik. Sekundárních replik provádění příchozích požadavků a odesílání signálů zpět potvrzení. Jednu podmínku, která by mohla být monitorovaná je délka fronty hlavní. Pokud délka fronty hlavní dosáhne prahové hodnoty, upozornění je hlášeno. Toto upozornění označuje, že sekundární databáze nemůže zpracovat zatížení. Pokud se nedosáhne maximální délku fronty a příkazy se zahodí, dojde k chybě, protože služby nelze obnovit. Sestavy mohou být na vlastnost **klidu**. Sledovacího zařízení kdekoli uvnitř služby, a to se pravidelně odesílají na hlavní primární repliku. Time to live je dvě minuty a odesláním pravidelně každých 30 sekund. Pokud primární ocitne mimo provoz, sestava se automaticky vyčistí z úložiště. Pokud je replika služby, ale je zablokovaná nebo pokud máte jiné potíže, sestavy vyprší platnost v health store. Entita v tomto případě je vyhodnocen při chybě.
+## <a name="design-health-reporting"></a>Vytváření sestav o stavu
+Prvním krokem při generování vysoce kvalitních sestav je určení podmínek, které mohou mít vliv na stav služby. Jakákoli podmínka, která může pomáhat při potížích s příznakem ve službě nebo v clusteru, když je spuštěná nebo ještě lepší, než se problém stane – může potenciálně ušetřit miliardy dolarů. Výhody zahrnují méně času, méně nočních hodin strávených zkoumáním a opravou problémů a vyšší spokojenost zákazníků.
 
-Další typ podmínek, které je možné monitorovat je čas spuštění úlohy. Hlavní distribuuje úkoly do sekundární databáze založená na typu úloh. V závislosti na návrhu může dotazovat hlavní sekundární databáze pro stav úlohy. Může také počkat na sekundární databáze k odesílání signálů zpět potvrzení, pokud to je všechno. V druhém případě musíte věnovat pozornost k detekci situacích, kdy jsou ztraceny kostka sekundární databáze nebo zprávy. Jednou z možností je pro hlavní server k odeslání žádosti příkazu ping na stejný sekundární, který odešle zpět jeho stav. Pokud neobdrží žádná stav hlavního serveru bude považovat za chybu a přeplánuje úkolu. Toto chování se předpokládá, že úkoly jsou idempotentní.
+Jakmile jsou podmínky identifikovány, zapisovače sledovacích zařízení musí zjistit nejlepší způsob, jak je monitorovat pro rovnováhu mezi režií a užitečnosti. Představte si třeba službu, která provádí složité výpočty, které používají některé dočasné soubory ve sdílené složce. Sledovací zařízení může monitorovat sdílenou složku, aby bylo zajištěno, že je k dispozici dostatek místa. Může naslouchat oznámení o změně souboru nebo adresáře. Může ohlásit upozornění, pokud je dosaženo prahové hodnoty pro začátek, a ohlásit chybu, pokud je sdílená složka plná. Systém opravy může na upozornění zahájit čištění starších souborů ve sdílené složce. Při chybě mohl systém opravy přesunout repliku služby na jiný uzel. Všimněte si, jak jsou stavy stavů popsány v tématu stav: stav podmínky, kterou lze považovat za v pořádku (ok) nebo není v pořádku (upozornění nebo chyba).
 
-Monitorované podmínku lze přeložit jako varování, pokud úloha není očekávána v určitém čase (**t1**, například 10 minut). Pokud úloha není dokončena v čase (**t2**, např. 20 minut), monitorovaných podmínku lze přeložit jako chyba. Tato oznámení můžete udělat několika různými způsoby:
+Po nastavení podrobností monitorování musí zapisovač sledovacích zařízení zjistit, jak se má sledovací modul implementovat. Pokud je možné určit podmínky v rámci služby, sledovací zařízení může být součástí samotné monitorované služby. Kód služby může například kontrolovat využití sdílení a pak pokaždé, když se pokusí zapisovat soubor. Výhodou tohoto přístupu je, že vytváření sestav je jednoduché. Je nutné dbát na to, aby se zabránilo chybám sledovacího zařízení z vlivu na funkčnost služby.
 
-* Hlavní primární repliky sestavy pravidelně sám na sobě. Můžete mít jednu vlastnost pro všechny čekající úkoly ve frontě. Pokud aspoň jedna úloha trvá déle, hlášení stavu na vlastnost **PendingTasks** upozornění nebo chyby, podle potřeby. Pokud neexistují žádné čekající úlohy nebo všech úloh spustil provádění pořadí, je hlášení stavu v pořádku. Úlohy jsou trvalé. Pokud primární ocitne mimo provoz, můžete dále připojovaly primární Generovat sestavy správně.
-* Jiné sledovací proces (v cloudu nebo externí) kontroluje úlohy (z mimo, na základě jejího výsledku) Chcete-li zobrazit, pokud se nedokončí. Pokud nerespektují prahové hodnoty, zpráva se odešle na hlavní službou. Sestavy se také odesílají na každý úkol, který obsahuje identifikátor úlohy, jako je třeba **PendingTask + taskId**. Sestavy má být odeslána pouze stavy není v pořádku. Nastavení doby živého obsahu i několik minut a označit sestav, které chcete odebrat, pokud platnost souhlasu vyprší zajistit vyčištění.
-* Sekundární, který spouští úlohu sestavy při trvá déle než obvykle k jeho spuštění. Sestavy o instanci služby na vlastnost **PendingTasks**. Sestava zjišťuje instance služby, který má problémy, ale nezachycuje situace, ve kterém instance přestane být funkční. Sestavy se potom vyčistí. Může zprávu o sekundární službu. Pokud se sekundární dokončí úlohu, sekundární instance vymaže sestavy z úložiště. Sestavu neukládá situaci, kdy dojde ke ztrátě zprávy potvrzení a úloha není dokončená z pohledu hlavní server.
+Vytváření sestav z monitorované služby není vždy možnost. Sledovací zařízení v rámci služby nemusí být schopné detekovat podmínky. Nemusí mít logiku nebo data, aby bylo možné provést stanovení. Režie monitorování podmínek může být vysoká. Podmínky také nemusí být specifické pro službu, ale místo toho ovlivňují interakce mezi službami. Další možností je mít v clusteru jako samostatné procesy sledovací zařízení. Sledovací zařízení sledují podmínky a sestavu, aniž by to mělo vliv na hlavní služby. Například tato sledovací zařízení by mohla být implementována jako bezstavové služby ve stejné aplikaci, nasazená na všech uzlech nebo na stejných uzlech, jako je služba.
 
-Ale vytváření sestav se provádí v případech je popsáno výše, sestavy zachyceny v stav aplikací při vyhodnocování stavu.
+V některých případech se sledovací zařízení běžící v clusteru nejedná o možnost ani jednu z možností. Pokud je monitorovaná podmínka dostupnost nebo funkce služby, jak ji uživatelé uvidí, je vhodné mít sledovací zařízení na stejném místě jako klienti uživatelů. Tam můžou tyto operace testovat stejným způsobem, jakým je uživatelé volají. Například můžete mít sledovací zařízení, které žije mimo cluster, vystavuje požadavky na službu a kontroluje latenci a správnost výsledku. (U služby kalkulačky například v rozumné době provede 2 + 2 vrácení 4?)
 
-## <a name="report-periodically-vs-on-transition"></a>Sestava pravidelně vs. na přechod
-Když použijete model vytváření sestav stavu, watchdogs odeslat sestavy pravidelně nebo přechody. Doporučený postup pro vytváření sestav sledovacího zařízení je pravidelně, protože kód je mnohem jednodušší a méně náchylná k chybám. Watchdogs musí přitom se snaží být co nejjednodušší, předejdete tak chybám, které aktivují nesprávné sestavy. Nesprávný *není v pořádku* ovlivnit sestavy vyhodnocení stavu a scénářů podle stavu, včetně upgradů. Nesprávný *v pořádku* sestavy skrýt problémy v clusteru, což není žádoucí.
+Jakmile budou podrobnosti sledovacího zařízení dokončeny, měli byste se rozhodnout pro ID zdroje, které ho jednoznačně identifikuje. Pokud v clusteru žije více sledovacích zařízení stejného typu, musí zprávy o různých entitách, nebo pokud jsou v sestavě stejné entity, použít jiné ID zdroje nebo vlastnost. Tímto způsobem můžou jejich sestavy existovat společně. Vlastnost sestavy o stavu by měla zachytit monitorovanou podmínku. (Pro výše uvedený příklad může být vlastnost **ShareSize**.) Pokud je u stejné podmínky použito více sestav, vlastnost by měla obsahovat některé dynamické informace, které umožní, aby sestavy existovaly současně. Pokud například potřebujete monitorovat více sdílených složek, název vlastnosti může být **ShareSize-název_sdílené_položky**.
 
-Pro pravidelné vytváření sestav, je možné implementovat sledovacího zařízení pomocí časovače. Na zpětné volání časovače můžete sledovacího zařízení zkontrolujte stav a odeslat zprávu na základě aktuálního stavu. Není nutné zobrazit, která sestava byl dříve odeslán nebo provést žádné optimalizace z hlediska zasílání zpráv. Stav klienta má dávkování logiku k pomoci s výkonem. Při stavu klienta je zachováno, znovu zkusí interně dokud sestavy je potvrzen úložiště stavu nebo sledovacího zařízení generuje novější sestavu s stejné entity, vlastností a zdroje.
+> [!NOTE]
+> Nepoužívejte *Health Store* k uchování informací o stavu. Pouze informace týkající se stavu by měly být hlášeny jako stav, protože tyto informace mají vliv na hodnocení stavu entity. Health Store nebyla navržena jako úložiště pro obecné účely. Pomocí logiky vyhodnocení stavu agreguje všechna data do stavu. Odesílání informací, které nesouvisí se stavem (například stav vytváření sestav s stavem OK) nemá vliv na agregovaný stav, ale může negativně ovlivnit výkon Health Store.
+> 
+> 
 
-Vytváření sestav o přechody vyžaduje pečlivé zpracování stavu. Sledovacích sleduje některé podmínky a sestavy, jenom když se změní podmínky. Vzhůru tohoto přístupu je, že je potřeba méně sestavy. Nevýhodou je komplexní logiku sledovacího zařízení. Sledovacího zařízení, musíte mít podmínky nebo sestavy, tak, aby mohly být zkontrolovány k určení stavu změny. Na převzetí služeb při selhání musí se sestavami přidán, ale dosud nebyl odeslán k úložišti stavů věnovat pozornost. Pořadové číslo musí být stále se zvětšujícím. V opačném případě sestavy jsou byl odmítnut jako zastaralé. Ve výjimečných případech, kde dojde ke ztrátě dat může být potřeba synchronizace mezi osoby podávající hlášení stavu a stavu health store.
+Dalším rozhodovacím bodem je entita, na které se má sestava nahlásit. Ve většině případů podmínka jednoznačně identifikuje entitu. Vyberte entitu s nejlepší možnou členitosti. Pokud podmínka ovlivní všechny repliky v oddílu, sestavte na oddílu, nikoli ve službě. Existují rohové případy, kde je potřeba více představit, ale. Pokud podmínka ovlivňuje entitu, jako je třeba replika, ale je potřeba, aby byla podmínka označená za více než po dobu životnosti repliky, pak by se měla nahlásit v oddílu. V opačném případě Health Store při odstranění repliky vyčistí všechny své sestavy. Zapisovače sledovacích zařízení musí uvažovat o životnosti entity a sestavy. Musí být jasné, pokud by měla být sestava vyčištěna z úložiště (například když se v entitě již nepoužívá chyba).
 
-Vytváření sestav o přechody dává smysl pro služby vytváření sestav o samotné, prostřednictvím `Partition` nebo `CodePackageActivationContext`. Při místní objekt (repliky nebo nasazený balíček služby / nasazené aplikace) je odebrána, všechny její sestavy se taky odeberou. Toto automatické čištění zmírňuje potřeba synchronizace mezi reportérka a úložištěm stavů. Pokud je sestava pro nadřazený oddíl nebo nadřazenou aplikací, musí věnovat pozornost na převzetí služeb při selhání, aby zastaralé sestavy v health store. Logiky musí přidat do udržovat správný stav a zrušte zaškrtnutí sestavy z úložiště, když už nejsou potřeba.
+Pojďme se podívat na příklad, který přináší výše popsané body. Vezměte v úvahu Service Fabric aplikaci složenou z hlavní stavové trvalé služby a sekundární stavové služby nasazené na všech uzlech (jeden typ sekundární služby pro každý typ úlohy). Hlavní server má frontu zpracování obsahující příkazy, které mají být spouštěny pomocí sekundárních. Sekundární spustí příchozí požadavky a pošle zpět signály pro potvrzení. Jednou podmínkou, kterou lze monitorovat, je délka fronty hlavního zpracování. Pokud délka hlavní fronty dosáhne prahové hodnoty, je hlášeno upozornění. Upozornění indikuje, že sekundární nedokáže zpracovat zatížení. Pokud fronta dosáhne maximální délky a příkazy se zahozeny, nahlásí se chyba, protože služba nemůže provést obnovení. Sestavy mohou být ve vlastnosti **QueueStatus**. Sledovací zařízení se nachází uvnitř služby a pravidelně se odesílají na hlavní primární repliku. Doba do provozu je dvě minuty a je pravidelně odesílána každých 30 sekund. Pokud primární databáze dojde k výpadku, vyčistí se sestava automaticky ze Storu. Pokud je replika služby zapnutá, ale je zablokovaná nebo má jiné problémy, vyprší platnost sestavy Health Store. V takovém případě je entita vyhodnocena chybou.
 
-## <a name="implement-health-reporting"></a>Implementace sestav stavu
-Jakmile podrobnosti entity a sestavy jsou jasně, funkci zasílání zpráv o stavu můžete udělat prostřednictvím rozhraní API, Powershellu nebo REST.
+Další podmínkou, kterou lze monitorovat, je čas spuštění úlohy. Hlavní distribuuje úlohy do sekundárních na základě typu úkolu. V závislosti na návrhu může hlavní tabulka dotazovat se na sekundární stav úlohy. Může také počkat na to, že sekundárnímu odeslání signalizuje potvrzení. V druhém případě je potřeba dbát na detekci situací, kdy dojde ke ztrátě sekundárních kostek nebo zpráv. Jednou z možností je, aby hlavní server odesílal požadavek příkazu pro odeslání na stejnou sekundární hodnotu, která odesílá zpět svůj stav. Pokud se neobdrží žádný stav, hlavní server to považuje za selhání a znovu naplánuje úlohu. Toto chování předpokládá, že se úkoly idempotentní.
 
-### <a name="api"></a>Rozhraní API
-Oznámit přes rozhraní API, je potřeba vytvořit sestavy stavu specifické pro typ entity, které se chcete v sestavě. Zadejte sestavu stavu klienta. Alternativně vytvořte informací o stavu a předejte jej chcete-li vytváření sestav metod na `Partition` nebo `CodePackageActivationContext` zprávu o aktuální entity.
+Monitorovaná podmínka se dá přeložit jako upozornění, pokud se úloha v určitou dobu neprovádí **(například**10 minut). Pokud úloha není dokončená v čase (**T2**, například 20 minut), monitorovaná podmínka se dá přeložit jako chyba. Vytváření sestav je možné provést několika způsoby:
 
-Následující příklad ukazuje pravidelné vytváření sestav ze sledovacího zařízení v rámci clusteru. Sledovacího zařízení zkontroluje, jestli externího prostředku lze přistupovat z v rámci uzlu. Prostředek je potřeba pro manifest služby v rámci aplikace. Pokud je prostředek nedostupný, ostatní služby v rámci aplikace může i nadále fungovat správně. Proto se zpráva se odešle na entitě balíček nasazené služby každých 30 sekund.
+* Hlavní primární replika sám o sobě sestavuje pravidelně. U všech čekajících úloh ve frontě můžete mít jednu vlastnost. Pokud nejméně jeden úkol trvá déle, je stav sestavy ve vlastnosti **PendingTasks** upozornění nebo chyba. Pokud neexistují žádné úlohy, které čekají na zpracování nebo jsou spuštěné všechny úlohy, stav sestavy je OK. Úkoly jsou trvalé. Pokud primární primární postup, může nově povýšená primární aplikace nadále správně nahlásit.
+* Jiný proces sledovacího procesu (v cloudu nebo externí) kontroluje úlohy (mimo jiné na základě požadovaného výsledku úkolu), aby bylo možné zjistit, zda jsou dokončeny. Pokud nerespektují prahové hodnoty, pošle se sestava do hlavní služby. Do každé úlohy, která zahrnuje identifikátor úkolu, jako je například **PendingTask + taskid**, se pošle zpráva. Sestavy by se měly odesílat jenom v případě, že stav není v pořádku. Nastavte čas na živé až několik minut a označte sestavy, které se mají odebrat, když vyprší jejich platnost, aby se zajistilo vyčištění.
+* Sekundární, který spouští sestavy úlohy, když trvá spuštění déle, než se čekalo. Oznamuje na instanci služby na vlastnosti **PendingTasks**. Tato sestava znamená instanci služby, která má problémy, ale nezachycuje situaci, kdy instance zemře. Sestavy se vyčistí. Může být hlášená na sekundární službu. Pokud sekundární instance úkol dokončí, sekundární instance vymaže sestavu ze Storu. Sestava nezachycuje situaci, kdy došlo ke ztrátě zprávy o potvrzení a úloha není dokončena z hlavního bodu zobrazení.
+
+Vytváření sestav se ale provádí v případech popsaných výše, sestavy se zaznamenávají do stavu aplikace, když se stav vyhodnocuje.
+
+## <a name="report-periodically-vs-on-transition"></a>Pravidelné sestavování vs. při přechodu
+Pomocí modelu vytváření sestav stavu můžou sledovací zařízení pravidelně odesílat sestavy nebo na přechody. Doporučený způsob vytváření sestav sledovacího zařízení je pravidelně, protože kód je mnohem jednodušší a méně náchylný k chybám. Sledovací zařízení se musí co nejrychleji snažit a vyhnout se chybám, které aktivují nesprávné sestavy. Nesprávné sestavy, které nejsou v *pořádku* , mají za důsledek vyhodnocení stavu a scénáře na základě stavu, včetně upgradů. Nesprávné zprávy v *pořádku* skryjí problémy v clusteru, což není žádoucí.
+
+Pro pravidelné generování sestav je možné sledovací zařízení implementovat pomocí časovače. Při zpětném volání časovače může sledovací zařízení kontrolovat stav a odeslat sestavu na základě aktuálního stavu. Není nutné, abyste viděli, která sestava byla dříve odeslána, nebo aby se zajistila optimalizace zasílání zpráv. Klient Health má logiku dávkování, která vám může pomáhat s výkonem. I když je klient stavu spuštěný jako aktivní, opakuje se interně, dokud Health Store sestavu nepotvrdí, nebo sledovacímu zařízení vygeneruje novější sestavu se stejnou entitou, vlastností a zdrojem.
+
+Vytváření sestav pro přechody vyžaduje pečlivé zpracování stavu. Sledovací zařízení monitoruje některé podmínky a sestavy pouze v případě, že se mění podmínky. Na straně tohoto přístupu je potřeba zajistit méně sestav. Nevýhodou je, že logika sledovacího zařízení je složitá. Sledovací zařízení musí udržovat podmínky nebo sestavy, aby bylo možné je zkontrolovat, aby bylo možné určit změny stavu. Při převzetí služeb při selhání je potřeba dbát na to, aby byly přidané sestavy, ale ještě nebyly odeslány do Health Store. Pořadové číslo se musí stále zvyšovat. V takovém případě se zprávy odmítnou jako zastaralé. Ve výjimečných případech, kdy dojde ke ztrátě dat, může být potřeba synchronizace mezi stavem zpravodaje a stavem Health Store.
+
+Vytváření sestav o přechodech dává smysl pro služby, které se samy hlásí, prostřednictvím `Partition` nebo `CodePackageActivationContext`. Když se odebere místní objekt (Replika nebo nasazená sada nebo nasazená aplikace), odeberou se taky všechny jeho sestavy. Díky tomuto automatickému vyčištění je potřeba synchronizovat mezi zpravodajem a Health Store. Pokud je sestava pro nadřazený oddíl nebo nadřazenou aplikaci, je nutné dbát na převzetí služeb při selhání, aby se předešlo zastaralým sestavám v Health Store. Aby bylo možné zachovat správný stav, je nutné přidat logiku a vymazat sestavu ze Storu, pokud již není potřebná.
+
+## <a name="implement-health-reporting"></a>Implementace vytváření sestav o stavu
+Jakmile jsou informace o entitě a sestavě jasné, můžete odesílat sestavy o stavu prostřednictvím rozhraní API, PowerShellu nebo REST.
+
+### <a name="api"></a>API
+K vytváření sestav přes rozhraní API potřebujete vytvořit sestavu o stavu, která je specifická pro typ entity, na kterou chtějí nahlásit. Poskytněte zprávu klientovi stavu. Případně můžete vytvořit informace o stavu a předávat je do správného způsobu vytváření sestav `Partition` nebo `CodePackageActivationContext` k hlášení o aktuálních entitách.
+
+Následující příklad ukazuje pravidelné generování sestav z sledovacího zařízení v rámci clusteru. Sledovací zařízení kontroluje, jestli je k externímu prostředku možné přistupovat v rámci uzlu. Prostředek vyžaduje manifest služby v rámci aplikace. Pokud prostředek není k dispozici, ostatní služby v aplikaci mohou stále fungovat správně. Proto je sestava odeslána na nasazenou entitu balíčku služby každých 30 sekund.
 
 ```csharp
 private static Uri ApplicationName = new Uri("fabric:/WordCount");
@@ -215,9 +206,9 @@ public static void SendReport(object obj)
 ```
 
 ### <a name="powershell"></a>PowerShell
-Odeslání sestav stavu s **odeslat ServiceFabric*EntityType*HealthReport**.
+Odesílání sestav o stavu pomocí **Send-ServiceFabric*EntityType*HealthReport**.
 
-Následující příklad ukazuje pravidelné vytváření sestav na hodnoty využití procesoru na uzlu. Sestavy by měly být odeslány každých 30 sekund a mají čas TTL dvě minuty. Pokud platnost souhlasu vyprší, má osoby podávající hlášení problémů, tak uzel je vyhodnocen při chybě. Když procesoru je nad prahovou hodnotou, sestava má stav varování. Pokud procesor zůstává nad prahovou hodnotou pro větší než nastavená doba, uvede se jako chyba. V opačném případě osoby podávající hlášení odešle stav OK.
+Následující příklad ukazuje pravidelné generování sestav o hodnotách procesoru v uzlu. Sestavy by se měly posílat každých 30 sekund a jejich doba je živá po dobu dvou minut. Pokud vyprší, má zpravodaj problémy, takže se uzel vyhodnocuje při chybě. Pokud je procesor nad prahovou hodnotou, má sestava stav varování. Pokud procesor zůstává nad prahovou hodnotou pro více než nakonfigurovaný čas, nahlásí se jako chyba. V opačném případě zpravodaj odešle stav OK.
 
 ```powershell
 PS C:\> Send-ServiceFabricNodeHealthReport -NodeName Node.1 -HealthState Warning -SourceId PowershellWatcher -HealthProperty CPU -Description "CPU is above 80% threshold" -TimeToLiveSec 120
@@ -254,7 +245,7 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/21/2015 9:01:21 PM
 ```
 
-Následující příklad sestavy přechodných upozornění v replice. Získá první ID oddílu a pak ID repliky pro službu, kterou ho zajímají. Pak odešle zprávu z **PowershellWatcher** na vlastnost **ResourceDependency**. Sestava je relevantní pouze dvě minuty a odebere se současně z úložiště automaticky.
+Následující příklad oznamuje přechodné upozornění na replice. Nejprve získá ID oddílu a pak ID repliky služby, které vás zajímá. Pak pošle sestavu z **PowershellWatcher** ve vlastnosti **ResourceDependency**. Sestava je zajímavá jenom za dvě minuty a z úložiště se automaticky odebere.
 
 ```powershell
 PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId
@@ -299,20 +290,20 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Odeslání sestav o stavu pomocí rozhraní REST s požadavky POST, přejděte na požadovanou entitu a mají v těle popis sestavy stavu. Například zjistit, jak odeslat REST [clusteru sestav o stavu](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) nebo [služby sestav o stavu](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Podporují se všechny entity.
+Odesílat sestavy o stavu pomocí REST s požadavky POST, které přecházejí na požadovanou entitu a mají v těle popis sestavy o stavu. Podívejte se například na téma odeslání [sestav stavu clusteru](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) REST nebo [sestav o stavu služby](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Všechny entity jsou podporovány.
 
-## <a name="next-steps"></a>Další postup
-Na základě dat o stavu služby autoři a Správci clusteru/aplikace si můžete představit různé způsoby získávání informací. Například, můžete zachytit závažných problémů před jejich způsobit výpadky nastavit výstrahy na základě stavu. Správci můžou také nastavit systémy opravu chcete automaticky opravit problémy s.
+## <a name="next-steps"></a>Další kroky
+Na základě dat o stavu, zapisovače služeb a správců clusterů a aplikací si můžete představit, jak tyto informace využívat. Můžou například nastavit výstrahy na základě stavu a zachytit vážné problémy před tím, než vyplní výpadky. Správci můžou také nastavit systémy oprav, aby automaticky opravily problémy.
 
-[Úvod do služby health Service Fabric monitorování](service-fabric-health-introduction.md)
+[Úvod do monitorování stavu Service Fabric](service-fabric-health-introduction.md)
 
-[Zobrazení sestav health Service Fabric](service-fabric-view-entities-aggregated-health.md)
+[Zobrazit Service Fabric sestavy o stavu](service-fabric-view-entities-aggregated-health.md)
 
-[Způsob hlášení a kontrola stavu služby](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+[Postup hlášení a kontroly stavu služby](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
 [Použití sestav stavu systému pro řešení potíží](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-[Monitorování a Diagnostika služeb místně](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[Místní monitorování a diagnostika služeb](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Upgrade aplikace Service Fabric](service-fabric-application-upgrade.md)
 

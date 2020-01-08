@@ -1,5 +1,5 @@
 ---
-title: Vytvoření konzolové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a golang SDK
+title: Konzolová aplikace, která používá rozhraní API Azure Cosmos DB pro MongoDB a golang SDK
 description: Představuje ukázku kódu golang, který můžete použít k připojení a dotazování pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441949"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Rychlý Start: Vytvoření konzolové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a golang SDK
 
@@ -31,14 +31,14 @@ Tento rychlý Start ukazuje, jak přijmout existující aplikaci MongoDB napsano
 
 Jinými slovy, vaše aplikace golang ví pouze to, že se připojuje pomocí klienta MongoDB. Je transparentní pro aplikaci, že jsou data uložena v databázi Cosmos.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete. 
 
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 - [Go](https://golang.org/dl/) a základní znalost jazyka [Go](https://golang.org/).
-- Rozhraní IDE – [GoLand](https://www.jetbrains.com/go/) podle JetBrains [Visual Studio Code](https://code.visualstudio.com/) , od Microsoftu nebo [Atom](https://atom.io/). V tomto kurzu používáme GoLand.
+- Integrované vývojové prostředí – [GoLand](https://www.jetbrains.com/go/) od Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) společností Microsoft, nebo [Atom](https://atom.io/). V tomto kurzu používám GoLand.
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
@@ -61,7 +61,7 @@ Naklonujte ukázkovou aplikaci a nainstalujte požadované balíčky.
     go get gopkg.in/mgo.v2
     ```
 
-Ovladač [MgO](https://labix.org/mgo) je ovladač [MongoDB](https://www.mongodb.com/) pro [jazyk](https://golang.org/) , který implementuje bohatou a dobře testovaný výběr funkcí v rámci velmi jednoduchého rozhraní API na úrovni Standard přejít na idiomy.
+[Mgo](https://labix.org/mgo) ovladač [MongoDB](https://www.mongodb.com/) ovladač [jazyk Go](https://golang.org/) , který implementuje bohatý a dobře otestovaný výběr funkcí v rámci velmi jednoduchého rozhraní API následující standardní Go idiomy.
 
 <a id="connection-string"></a>
 

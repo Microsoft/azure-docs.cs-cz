@@ -8,16 +8,23 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 32199623c6b3198f37854986745872aafa6747eb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e2b2f13c3570683b575d13b5aadb3e03ec549cab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434600"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service s využitím Azure Portal
 
-Tyto kroky ukazují, jak na portálu nastavit cloudové prostředky Azure pro zřizování zařízení. Tento článek obsahuje kroky pro vytvoření služby IoT Hub, vytvoření nové služby IoT Hub Device Provisioning a jejich propojení. 
+IoT Hub Device Provisioning Service můžete použít s IoT Hub a povolit tak nulové a nepotřebné zřizování za běhu do požadovaného centra IoT Hub bez nutnosti zásahu člověka, což zákazníkům umožňuje zajistit zabezpečený a škálovatelný přístup pro miliony zařízení IoT. Azure IoT Hub Device Provisioning Service podporuje zařízení IoT s ověřováním certifikátů TPM, symetrického klíče a X. 509. Další informace najdete v tématu [přehled IoT Hub Device Provisioning Service](./about-iot-dps.md) .
+
+V tomto rychlém startu se dozvíte, jak nastavit IoT Hub Device Provisioning Service na webu Azure Portal pro zřizování zařízení pomocí následujících kroků:
+> [!div class="checklist"]
+> * Vytvoření IoT Hub pomocí Azure Portal
+> * Vytvoření služby IoT Hub Device Provisioning a získání rozsahu ID pomocí webu Azure Portal
+> * Propojení centra IoT se službou Device Provisioning
+
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -27,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 
-## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>Vytvoření nové instance služby IoT Hub Device Provisioning
+## <a name="create-a-new-iot-hub-device-provisioning-service"></a>Vytvořit nový IoT Hub Device Provisioning Service
 
 1. Znovu vyberte tlačítko **+ vytvořit prostředek** .
 
@@ -77,4 +84,4 @@ Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu.
 V tomto rychlém startu jste nasadili službu IoT Hub a instanci služby Device Provisioning a propojili jste tyto dva prostředky. Informace o tom, jak pomocí tohoto nastavení zřídit simulované zařízení, najdete v rychlém startu pro vytvoření simulovaného zařízení.
 
 > [!div class="nextstepaction"]
-> [Rychlý Start k vytvoření simulovaného zařízení](./quick-create-simulated-device.md)
+> [Rychlý Start k vytvoření simulovaného zařízení](./quick-create-simulated-device-symm-key.md)

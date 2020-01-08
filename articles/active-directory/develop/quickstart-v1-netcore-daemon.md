@@ -1,5 +1,5 @@
 ---
-title: Získat token & volání rozhraní API Microsoft Graph z konzolových aplikací (v 1.0) | Azure
+title: Získat token & volání Microsoft Graph (konzola .NET Core) (v 1.0) | Azure
 description: Vytvoření aplikace démona rozhraní .NET, která se integruje s Azure AD & volá rozhraní API chráněná službou Azure AD pomocí OAuth 2,0
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: jmprieur
 ms.reviewer: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2858a0b14863195ee0f56c89fe2c55c9e63873de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d44dfe3eb03ff086d3785311c34ab1a6a5b3982a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424056"
 ---
-# <a name="quickstart-acquire-token-and-call-microsoft-graph-api-with-console-apps-identity-v10"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API pomocí identity konzolové aplikace (v 1.0) 
+# <a name="quickstart-acquire-token-and-call-microsoft-graph-using-console-apps-identity-v10"></a>Rychlý Start: získání tokenu a volání Microsoft Graph pomocí identity aplikace konzoly (v 1.0)
 
 [Platforma Microsoft Identity Platform](v2-overview.md) je vývoj platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která vytvořili vývojáři.
 

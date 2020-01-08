@@ -1,5 +1,6 @@
 ---
-title: Autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management | Microsoft Docs
+title: Autorizovat vývojářské účty pomocí OAuth 2,0 v API Management
+titleSuffix: Azure API Management
 description: Naučte se, jak autorizovat uživatele pomocí OAuth 2,0 v API Management.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 99a49aa4627dc23d5f7531ac961d63e3e75ccff9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430679"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management
 
@@ -73,7 +74,7 @@ V této příručce se dozvíte, jak nakonfigurovat instanci služby API Managem
 
     Výchozí nastavení pro **metody ověřování klienta** je **Basic**a **Metoda odesílání přístupového tokenu** je **autorizační hlavičkou**. Tyto hodnoty jsou konfigurovány v této části formuláře společně s **výchozím oborem**.
 
-6. Oddíl **přihlašovací údaje klienta** obsahuje **ID klienta** a **tajný klíč klienta**, které se získávají během procesu vytváření a konfigurace vašeho serveru OAuth 2,0. Po zadání **ID klienta** a **tajného klíče klienta** se vygeneruje **identifikátor redirect_uri** pro **autorizační kód** . Tento identifikátor URI se používá ke konfiguraci adresy URL odpovědi v konfiguraci serveru OAuth 2,0.
+6. Oddíl **přihlašovací údaje klienta** obsahuje **ID klienta** a **tajný klíč klienta**, které se získávají během procesu vytváření a konfigurace vašeho serveru OAuth 2,0. Jakmile zadáte **ID klienta** a **tajný klíč klienta** , vygeneruje se **redirect_uri** pro **autorizační kód** . Tento identifikátor URI se používá ke konfiguraci adresy URL odpovědi v konfiguraci serveru OAuth 2,0.
 
     ![Nový server OAuth 2,0](./media/api-management-howto-oauth2/oauth-04.png)
 

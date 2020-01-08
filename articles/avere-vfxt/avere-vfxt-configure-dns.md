@@ -6,24 +6,24 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: c28189bf227a6a81ae9e72e889a0dc598cd7949e
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 11ff310dae3c4733283d965a518df42a0711ce01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416038"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Konfigurace DNS clusteru Avere
 
-V této části najdete základní informace o konfiguraci systému DNS pro vyrovnávání zatížení clusteru avere vFXT. 
+V této části najdete základní informace o konfiguraci systému DNS pro vyrovnávání zatížení clusteru avere vFXT.
 
-Tento dokument *neobsahuje* pokyny k nastavení a správě serveru DNS v prostředí Azure. 
+Tento dokument *neobsahuje* pokyny k nastavení a správě serveru DNS v prostředí Azure.
 
-Místo používání služby DNS pro kruhové dotazování pro vyrovnávání zatížení clusteru vFXT v Azure zvažte použití ručních metod k přiřazování IP adres rovnoměrně mezi klienty, když jsou připojené. Několik metod je popsáno v tématu [připojení clusteru avere](avere-vfxt-mount-clients.md). 
+Místo používání služby DNS pro kruhové dotazování pro vyrovnávání zatížení clusteru vFXT v Azure zvažte použití ručních metod k přiřazování IP adres rovnoměrně mezi klienty, když jsou připojené. Několik metod je popsáno v tématu [připojení clusteru avere](avere-vfxt-mount-clients.md).
 
-Při rozhodování, jestli chcete používat server DNS, pamatujte na tyto věci: 
+Při rozhodování, jestli chcete používat server DNS, pamatujte na tyto věci:
 
-* Pokud k systému přistupovali pouze klienti systému souborů NFS, použití DNS není vyžadováno – je možné zadat všechny síťové adresy pomocí číselných IP adres. 
+* Pokud k systému přistupovali pouze klienti systému souborů NFS, použití DNS není vyžadováno – je možné zadat všechny síťové adresy pomocí číselných IP adres.
 
 * Pokud váš systém podporuje přístup přes protokol SMB (CIFS), vyžaduje se DNS, protože musíte zadat doménu DNS pro server služby Active Directory.
 
@@ -41,12 +41,12 @@ Pro zajištění optimálního výkonu nakonfigurujte server DNS tak, aby zpraco
 
 Na levé straně se zobrazí cluster VServer a IP adresy se zobrazí v centru a na pravé straně. Nakonfigurujte všechny klientské přístupové body pomocí záznamů a ukazatelů, jak je znázorněno.
 
-![diagram DNS pro kruhové dotazování clusteru avere](media/avere-vfxt-rrdns-diagram.png) 
+![diagram DNS pro kruhové dotazování clusteru avere](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Každá IP adresa pro klienta musí mít jedinečný název pro interní použití clusterem. (V tomto diagramu se IP adresy klientů nazývají VS1-Client-IP-* pro přehlednost, ale v produkčním prostředí byste pravděpodobně použili něco výstižného, jako je třeba klient *.)
 
-Klienti připojí cluster pomocí názvu VServer jako argumentu serveru. 
+Klienti připojí cluster pomocí názvu VServer jako argumentu serveru.
 
 Upravte soubor ``named.conf`` serveru DNS tak, aby se nastavila cyklická objednávka pro dotazy na vaše VServer. Tato možnost zajistí, že se všechny dostupné hodnoty cyklují cyklicky. Přidejte příkaz podobný následujícímu:
 
@@ -58,7 +58,7 @@ options {
 };
 ```
 
-Následující příkazy nsupdate obsahují příklad konfigurace DNS správně:
+Následující příkazy ``nsupdate`` poskytují příklad konfigurace DNS správně:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -81,5 +81,3 @@ Zadejte server DNS, který cluster vFXT používá, na stránce **clusteru** > n
 * Domény hledání DNS
 
 Další podrobnosti o použití této stránky najdete v Průvodci konfigurací clusteru avere v tématu věnovaném [nastavení DNS](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) .
-
-

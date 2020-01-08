@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 12/10/2019
 ms.author: szark
-ms.openlocfilehash: 16f3bc9e70f8fac6ab28318e1654742a2c3b76a1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c1c70243748c1f8d3b93eac501bd50f8d80ecd75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463803"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Oracle Linuxem pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,16 +29,16 @@ V tomto článku se předpokládá, že jste už Oracle Linux operační systém
 
 ### <a name="oracle-linux-installation-notes"></a>Poznámky k instalaci Oracle Linux
 * Další tipy k přípravě Linux pro Azure najdete v tématu [Obecné poznámky k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
-* Technologie Hyper-V a Azure podporuje jádro systému Oracle Red Hat kompatibilní s UEK3 (nedělitelné podnikové jádro). Pro dosažení nejlepších výsledků prosím nezapomeňte aktualizovat na nejnovější jádro při přípravě Oracle Linux VHD.
+* Technologie Hyper-V a Azure se Oracle Linux s využitím jádra neUEKho podnikového jádra () nebo Red Hat kompatibilního s prostředím Red Hat.
 * Technologie Hyper-V a Azure UEK2 se nepodporuje, protože neobsahují požadované ovladače.
 * Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny Convert-VHD.
 * Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou použít na datových discích, pokud jsou preferované.
-* Technologie NUMA není podporovaná pro větší velikosti virtuálních počítačů z důvodu chyby ve verzích jádra systému Linux, které jsou 2.6.37. Tento problém se týká především distribucí pomocí 2.6.32 jádra Red Hat. Ruční instalace agenta Azure Linux (waagent) automaticky zakáže technologii NUMA v konfiguraci GRUB pro jádro Linux. Další informace o tomto postupu najdete v následujících krocích.
+* Verze jádra Linux starší než 2.6.37 nepodporují architekturu NUMA na technologii Hyper-V s většími velikostmi virtuálních počítačů. Tento problém se týká především starších distribucí pomocí nadřazeného jádra Red Hat 2.6.32 a byl opraven v Oracle Linux 6,6 a novějším.
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 * Ujistěte se, že je povoleno úložiště `Addons`. Upravte soubor `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) nebo `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) a změňte řádek `enabled=0` na `enabled=1` v části **[ol6_addons]** nebo **[ol7_addons]** v tomto souboru.
 
-## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
+## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 a novější
 Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému provést konkrétní konfigurační kroky.
 
 1. V prostředním podokně Správce technologie Hyper-V vyberte virtuální počítač.
@@ -71,11 +71,11 @@ Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému
 8. Nainstalujte Python-pyasn1 spuštěním následujícího příkazu:
    
         # sudo yum install python-pyasn1
-9. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Uděláte to tak, že v textovém editoru otevřete "/boot/grub/menu.lst" a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
+9. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Uděláte to tak, že v textovém editoru otevřete "/boot/grub/menu.lst" a zajistěte, aby jádro zahrnovalo následující parametry:
    
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
+        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-   Tím se také zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění. Tato akce zakáže NUMA v důsledku chyby v jádru kompatibilním se systémem Oracle Red Hat.
+   Tím se zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění.
    
    Kromě výše uvedeného se doporučuje *Odebrat* následující parametry:
    
@@ -107,12 +107,12 @@ Aby se virtuální počítač spouštěl v Azure, musíte v operačním systému
 14. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
 ---
-## <a name="oracle-linux-70"></a>Oracle Linux 7.0 +
+## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7,0 a novější
 **Změny ve Oracle Linux 7**
 
 Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobná Oracle Linux 6, ale existuje několik důležitých rozdílů, které se zabývají:
 
-* V Azure se podporuje i jádro s podporou Red Hat i UEK3 Oracle.  Doporučuje se jádro UEK3.
+* Azure podporuje Oracle Linux s jádrem neUEK (Enterprise kernel) nebo se systémem Red Hat, který je kompatibilní s Red Hat. Doporučuje se Oracle Linux se UEK.
 * Balíček NetworkManager už není v konfliktu s agentem Azure Linux. Tento balíček se nainstaluje ve výchozím nastavení a doporučujeme, abyste ho neodebrali.
 * GRUB2 se teď používá jako výchozí zaváděcí program pro spouštění, takže se změnil postup pro úpravu parametrů jádra (viz níže).
 * XFS je teď výchozím systémem souborů. Systém souborů ext4 se může v případě potřeby i nadále použít.
@@ -151,7 +151,7 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Tím se také zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění. Také vypne nové zásady vytváření názvů pro síťové karty v OEL 7. Kromě výše uvedeného se doporučuje *Odebrat* následující parametry:
+   Tím se také zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění. Také vypne konvence pojmenování pro síťové karty v Oracle Linux 7 pomocí nepřerušeného podnikového jádra. Kromě výše uvedeného se doporučuje *Odebrat* následující parametry:
    
        rhgb quiet crashkernel=auto
    

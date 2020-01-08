@@ -7,13 +7,13 @@ ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
-ms.openlocfilehash: d867e9a1afcb495aee7e8b0e0b3b001104f48a4c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+manager: cpendle
+ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432791"
 ---
 # <a name="web-sdk-supported-browsers"></a>Podporované prohlížeče pro sadu Web SDK
 
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>Desktop
+## <a name="desktop"></a>Plocha
 
 Sada Azure Maps Web SDK podporuje následující desktopové prohlížeče:
 
@@ -40,7 +40,7 @@ Sada Azure Maps Web SDK podporuje následující desktopové prohlížeče:
 
 Viz také [cílení na starší verze prohlížečů](#Target-Legacy-Browsers) dále v tomto článku.
 
-## <a name="mobile"></a>Mobilní zařízení
+## <a name="mobile"></a>Mobilní technologie
 
 Sada Azure Maps Web SDK podporuje následující mobilní prohlížeče:
 
@@ -59,7 +59,7 @@ Sada Azure Maps Web SDK podporuje následující mobilní prohlížeče:
 
 V Node. js jsou podporovány také následující moduly web SDK:
 
-- Modul služby (npm[dokumentace](how-to-use-services-module.md) | –[modul](https://www.npmjs.com/package/azure-maps-rest))
+- Modul služby ([dokumentace](how-to-use-services-module.md) | [npm modul](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="Target-Legacy-Browsers"></a>Cílové starší verze prohlížečů
 
@@ -72,7 +72,7 @@ Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure M
 </iframe>
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Maps Web SDK:
 

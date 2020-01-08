@@ -1,5 +1,5 @@
 ---
-title: Použití knihovny hromadného prováděcího modulu .NET k provádění hromadných operací importu a aktualizace v Azure Cosmos DB
+title: Použití knihovny hromadného prováděcího modulu .NET v Azure Cosmos DB pro operace hromadného importu a aktualizace
 description: Hromadný import a aktualizace Azure Cosmos DBch dokumentů pomocí knihovny hromadného prováděcího modulu .NET.
 author: tknandu
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d76426e738d78391b92b008e821672017520b7d2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218396"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442183"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Použití knihovny hromadného prováděcího modulu .NET k provádění hromadných operací v Azure Cosmos DB
 
@@ -28,7 +28,7 @@ V současné době je knihovna hromadných prováděcích modulů podporována p
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-* [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) u `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).
+* [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s koncovým bodem `https://localhost:8081`. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).
 
 * Vytvořte Azure Cosmos DB účet rozhraní SQL API pomocí postupu popsaného v části [vytvoření databázového účtu](create-sql-api-dotnet.md#create-account) v článku rychlý Start pro .NET.
 
@@ -106,7 +106,7 @@ Aplikace "BulkImportSample" generuje náhodné dokumenty a hromadně je importuj
    |disableAutomaticIdGeneration    |    Příznak, který chcete zakázat automatické generování ID. Ve výchozím nastavení, je nastavena na hodnotu true.     |
    |maxConcurrencyPerPartitionKeyRange    | Maximální stupeň souběžnosti na rozsah klíče oddílu a nastavení na hodnotu null způsobí, že knihovna použije výchozí hodnotu 20. |
    |maxInMemorySortingBatchSize     |  Maximální počet dokumentů, které jsou získány z enumerátoru dokumentu, který se předává volání rozhraní API v každé fázi. Pro fázi řazení v paměti, která se před hromadným importem stane, nastavení tohoto parametru na hodnotu null způsobí, že knihovna použije výchozí minimální hodnotu (Documents. Count, 1000000).       |
-   |cancellationToken    |    Token zrušení pro řádné ukončení operace hromadného importu.     |
+   |CancellationToken    |    Token zrušení pro řádné ukončení operace hromadného importu.     |
 
    **Definice objektu odpovědi pro hromadné importy** Výsledek volání rozhraní API hromadného importu obsahuje následující atributy:
 
@@ -115,15 +115,15 @@ Aplikace "BulkImportSample" generuje náhodné dokumenty a hromadně je importuj
    |NumberOfDocumentsImported (dlouhý)   |  Celkový počet dokumentů, které byly úspěšně naimportovány z celkového počtu dokumentů dodaných do volání rozhraní API hromadného importu.       |
    |TotalRequestUnitsConsumed (Double)   |   Jednotky celkový počet žádostí (RU) využívaný hromadného importu volání rozhraní API.      |
    |TotalTimeTaken (TimeSpan)    |   Celková doba, kterou zabere volání rozhraní API hromadného importu k dokončení provádění.      |
-   |BadInputDocuments (seznam\<objektů >)   |     Seznam chybný formát dokumenty, které nebyly úspěšně naimportovány hromadně importovat volání rozhraní API. Opravte vrácené dokumenty a opakujte import. Dokumenty ve formátu chybný obsahovat dokumenty, jejichž ID hodnota není řetězec (datový typ null nebo jakékoli jiné se považuje za neplatný).    |
+   |BadInputDocuments (seznam\<> objektů)   |     Seznam chybný formát dokumenty, které nebyly úspěšně naimportovány hromadně importovat volání rozhraní API. Opravte vrácené dokumenty a opakujte import. Dokumenty ve formátu chybný obsahovat dokumenty, jejichž ID hodnota není řetězec (datový typ null nebo jakékoli jiné se považuje za neplatný).    |
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Hromadná aktualizace dat ve vašem účtu Azure Cosmos
 
-Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumenty. V tomto příkladu nastavíte `Name` pole na novou hodnotu a `Description` odeberete pole z existujících dokumentů. Úplnou sadu podporovaných operací aktualizace najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
+Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumenty. V tomto příkladu nastavíte pole `Name` na novou hodnotu a odeberete pole `Description` z existujících dokumentů. Úplnou sadu podporovaných operací aktualizace najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
 
 1. Přejděte do složky "BulkUpdateSample" a otevřete soubor "BulkUpdateSample. sln".  
 
-2. Definujte položky aktualizace společně s odpovídajícími operacemi aktualizace polí. V tomto příkladu `SetUpdateOperation` použijete k `Name` aktualizaci `Description` pole a `UnsetUpdateOperation` k odebrání pole ze všech dokumentů. Můžete také provádět jiné operace jako přírůstek pole dokumentu podle konkrétní hodnoty, nasdílení změn určité hodnoty do pole nebo odebrat konkrétní hodnoty z pole. Další informace o různých metodách, které poskytuje rozhraní API pro hromadnou aktualizaci, najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
+2. Definujte položky aktualizace společně s odpovídajícími operacemi aktualizace polí. V tomto příkladu použijete `SetUpdateOperation` k aktualizaci pole `Name` a `UnsetUpdateOperation` k odebrání `Description` pole ze všech dokumentů. Můžete také provádět jiné operace jako přírůstek pole dokumentu podle konkrétní hodnoty, nasdílení změn určité hodnoty do pole nebo odebrat konkrétní hodnoty z pole. Další informace o různých metodách, které poskytuje rozhraní API pro hromadnou aktualizaci, najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -155,7 +155,7 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
    |---------|---------|
    |maxConcurrencyPerPartitionKeyRange    |   Maximální stupeň souběžnosti na rozsah klíče oddílu, nastavením tohoto parametru na hodnotu null umožní knihovně používat výchozí hodnotu (20).   |
    |maxInMemorySortingBatchSize    |    Maximální počet položek aktualizace načtených z výčtu položek aktualizace předaných do volání rozhraní API v každé fázi. Pro fázi řazení v paměti, která se stane před hromadnou aktualizací, nastavení tohoto parametru na hodnotu null způsobí, že knihovna použije výchozí minimální hodnotu (updateItems. Count, 1000000).     |
-   | cancellationToken|Token zrušení pro řádné ukončení operace hromadné aktualizace. |
+   | CancellationToken|Token zrušení pro řádné ukončení operace hromadné aktualizace. |
 
    **Definice objektu odpovědi na hromadnou aktualizaci** Výsledek volání rozhraní API hromadné aktualizace obsahuje následující atributy:
 
@@ -173,9 +173,9 @@ Při použití knihovny hromadného prováděcího modulu zvažte následující
 
 * Doporučuje se vytvořit instanci jednoho `BulkExecutor` objektu pro celou aplikaci v jednom virtuálním počítači, který odpovídá konkrétnímu kontejneru Azure Cosmos.  
 
-* Vzhledem k tomu, že jedno spuštění rozhraní API hromadného zpracování spotřebovává velké množství dat procesoru klientského počítače a v/v sítě (k tomu dochází vytvořením několika úloh interně). Nevytvářejte v procesu aplikace více souběžných úloh, které spustí volání rozhraní API hromadného provozu. Pokud jedno volání rozhraní API hromadné operace, které běží na jednom virtuálním počítači, nedokáže spotřebovat propustnost celého kontejneru (Pokud propustnost kontejneru > 1 000 000 RU/s), je vhodnější vytvořit samostatné virtuální počítače pro souběžné spouštění. volání rozhraní API pro hromadnou operaci.  
+* Vzhledem k tomu, že jedno spuštění rozhraní API hromadného zpracování spotřebovává velké množství dat procesoru klientského počítače a v/v sítě (k tomu dochází vytvořením několika úloh interně). Nevytvářejte v procesu aplikace více souběžných úloh, které spustí volání rozhraní API hromadného provozu. Pokud jedno volání rozhraní API hromadné operace, které běží na jednom virtuálním počítači, nedokáže spotřebovat propustnost celého kontejneru (Pokud propustnost kontejneru > 1 000 000 RU/s), je vhodnější vytvořit samostatné virtuální počítače pro souběžné spouštění volání rozhraní API hromadné operace.  
 
-* Zajistěte, `InitializeAsync()` aby se metoda vyvolala po vytvoření instance objektu BulkExecutor, aby se načetla mapa oddílů cílového kontejneru Cosmos.  
+* Zajistěte, aby se metoda `InitializeAsync()` vyvolala po vytvoření instance objektu BulkExecutor, aby se načetla mapa oddílů cílového kontejneru Cosmos.  
 
 * V App. config aplikace ověřte, že je povolený **gcServer** pro lepší výkon.
   ```xml  

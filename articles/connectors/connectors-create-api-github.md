@@ -1,20 +1,20 @@
 ---
-title: Připojit k GitHubu
-description: Monitorování událostí GitHubu pomocí rozhraní REST API GitHubu a Azure Logic Apps
+title: Přístup, sledování a správa úložiště GitHub
+description: Umožňuje monitorovat události GitHubu a spravovat úložiště GitHub vytvořením automatizovaných pracovních postupů pomocí Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 7dc865f520b6f4667ace720e656a210e0252d1a1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378445"
 ---
-# <a name="connect-to-github-from-azure-logic-apps"></a>Připojení k GitHubu z Azure Logic Apps
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Monitorování a správa úložiště GitHub pomocí Azure Logic Apps
 
 GitHub je webová služba hostující úložiště Git, která nabízí všechny funkce distribuovaných revizí a správy zdrojového kódu (SCM) v Gitu a další funkce.
 

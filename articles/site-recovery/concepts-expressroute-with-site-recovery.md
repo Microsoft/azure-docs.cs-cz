@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954074"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465216"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute s Azure Site Recovery
 
@@ -31,7 +31,7 @@ K okruhu ExpressRoute je přidruženo více domén směrování. Další informa
 
 Azure Site Recovery umožňuje zotavení po havárii a migraci do Azure pro místní [virtuální počítače Hyper-V](hyper-v-azure-architecture.md), [virtuální počítače VMware](vmware-azure-architecture.md)a [fyzické servery](physical-azure-architecture.md). Pro všechny místní scénáře do Azure se data replikace odesílají do účtu Azure Storage a ukládají se do něj. Během replikace neplatíte žádné poplatky za virtuální počítače. Když spustíte převzetí služeb při selhání do Azure, Site Recovery automaticky vytvoří virtuální počítače Azure s IaaS.
 
-Site Recovery replikuje data na účet Azure Storage nebo replikovaný disk repliky v cílové oblasti Azure prostřednictvím veřejného koncového bodu. Pokud chcete pro Site Recovery provozu replikace použít službu ExpressRoute, můžete využít [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) nebo stávající [veřejný partnerský vztah](../expressroute/expressroute-circuit-peerings.md#publicpeering) (nepoužívané pro nová vytvoření). Partnerský vztah Microsoftu je doporučená doména směrování pro replikaci. Všimněte si, že replikace není podporovaná přes privátní partnerský vztah.
+Site Recovery replikuje data na účet Azure Storage nebo replikovaný disk repliky v cílové oblasti Azure prostřednictvím veřejného koncového bodu. Pokud chcete pro Site Recovery provozu replikace použít službu ExpressRoute, můžete využít [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) nebo stávající [veřejný partnerský vztah](../expressroute/about-public-peering.md) (nepoužívané pro nová vytvoření). Partnerský vztah Microsoftu je doporučená doména směrování pro replikaci. Všimněte si, že replikace není podporovaná přes privátní partnerský vztah.
 
 Zajistěte, aby byly splněny také [požadavky na síť](vmware-azure-configuration-server-requirements.md#network-requirements) pro konfigurační server. Konfigurační server vyžaduje k orchestraci replikace Site Recovery připojení ke konkrétním adresám URL. ExpressRoute nelze použít pro toto připojení. 
 

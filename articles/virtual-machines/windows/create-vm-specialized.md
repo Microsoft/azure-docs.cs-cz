@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460185"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows z specializovaného disku pomocí PowerShellu
 
@@ -70,7 +70,7 @@ Virtuální pevný disk teď můžete nahrát přímo do spravovaného disku. Po
 
 Pomocí snímku virtuálního počítače můžete vytvořit kopii virtuálního počítače, který používá spravované disky, a pak pomocí tohoto snímku vytvořit nový spravovaný disk a nový virtuální počítač.
 
-Pokud chcete zkopírovat existující virtuální počítač do jiné oblasti, můžete použít AzCopy k [Vytvoření kopie disku v jiné oblasti](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
+Pokud chcete zkopírovat existující virtuální počítač do jiné oblasti, můžete použít AzCopy a [vytvořit kopii disku v jiné oblasti](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Pořídit snímek disku s operačním systémem
 

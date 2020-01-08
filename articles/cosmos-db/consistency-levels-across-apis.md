@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8bfff7790fa4984241e1c3dda19a20c8b13591fb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441995"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
@@ -21,7 +21,6 @@ Azure Cosmos DB poskytuje nativní podporu pro rozhraní API kompatibilní se s�
 Při použití rozhraní API SQL, rozhraní Gremlin API a rozhraní API pro tabulky se používá výchozí úroveň konzistence nakonfigurovaná na účtu Azure Cosmos. 
 
 Pokud používáte rozhraní API Cassandra nebo rozhraní API Azure Cosmos DB pro MongoDB, aplikace získají úplnou sadu úrovní konzistence nabízených Apache Cassandra a MongoDB, a to ještě silnější konzistence a záruky trvanlivosti. Tento dokument zobrazuje odpovídající Azure Cosmos DB úrovně konzistence pro úrovně konzistence Apache Cassandra a MongoDB.
-
 
 ## <a id="cassandra-mapping"></a>Mapování mezi úrovněmi konzistence Apache Cassandra a Azure Cosmos DB
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 35eff70c12e6f98fa74a4180bf82a369c1ecfaa4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439763"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopírování souborů z více kontejnerů pomocí Azure Data Factory
 
@@ -34,9 +34,11 @@ Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiš
 - **Foreach** získá seznam kontejnerů z aktivity **GetMetadata** a pak projde seznam a předá do aktivity kopírování každý kontejner.
 - **Kopírovat** zkopíruje každý kontejner ze zdrojového úložiště úložiště do cílového úložiště.
 
-Šablona definuje dva parametry:
-- *SourceFilePath* je cesta k úložišti zdrojů dat, kde můžete získat seznam kontejnerů. Ve většině případů je cesta kořenovým adresářem, který obsahuje více složek kontejnerů. Výchozí hodnota tohoto parametru je `/`.
-- *DestinationFilePath* je cesta, do které budou soubory zkopírovány do cílového úložiště. Výchozí hodnota tohoto parametru je `/`.
+Šablona definuje následující parametry:
+- *SourceFileFolder* je cesta ke složce úložiště zdrojů dat, kde můžete získat seznam kontejnerů. Cesta je kořenový adresář, který obsahuje více složek kontejnerů. Výchozí hodnota tohoto parametru je `sourcefolder`.
+- *SourceFileDirectory* je cesta k podsložce v kořenovém adresáři úložiště zdrojů dat. Výchozí hodnota tohoto parametru je `subfolder`.
+- *DestinationFileFolder* je cesta ke složce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `destinationfolder`.
+- *DestinationFileDirectory* je cesta k podsložce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `subfolder`.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 

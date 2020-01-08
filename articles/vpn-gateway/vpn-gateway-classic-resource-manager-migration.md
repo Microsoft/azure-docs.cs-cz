@@ -1,6 +1,6 @@
 ---
-title: Brány VPN z modelu Classic do Resource Manageru migrace | Dokumentace Microsoftu
-description: Tato stránka poskytuje přehled VPN Gateway Classic při migraci správce prostředků.
+title: Migrace VPN Gateway Classic na Správce prostředků | Microsoft Docs
+description: Tato stránka poskytuje přehled Správce prostředků migrace VPN Gateway Classic.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: amsriva
-ms.openlocfilehash: b65b47389611bcc0e5acb3c7ebff672f72a87581
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 966df2a01d0178c19c2ae6e698a6610bf0e321c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425825"
 ---
-# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Brána VPN z modelu classic do Resource Manageru migrace
-VPN Gateway je nyní migrovat z klasického modelu nasazení Resource Manageru. Další informace o Azure Resource Manageru [funkce a výhody](../azure-resource-manager/resource-group-overview.md). V tomto článku se budeme podrobně popisují, jak migrovat z klasického nasazení do novější modelu založené na Resource Manageru. 
+# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Migrace VPN Gateway Classic na Správce prostředků
+Brány VPN se teď dají migrovat z modelu nasazení Classic na Správce prostředků. Další informace o [funkcích Azure Resource Manager a výhodách](../azure-resource-manager/management/overview.md)najdete v článku. V tomto článku najdete podrobné informace o tom, jak migrovat z klasických nasazení na novější model založený Správce prostředků. 
 
-VPN Gateway se migrují v rámci migrace virtuální sítě z modelu nasazení classic do Resource Manageru. Tato migrace probíhá jedné virtuální síti současně. Neexistuje žádné další požadavky z hlediska nástrojů nebo požadavky na migraci. Kroky migrace jsou shodné s existující migraci virtuální sítě a jsou zdokumentované v [stránky migrace prostředků IaaS](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Neexistuje žádný výpadek cesty dat během migrace, a proto by stávající úlohy nadále fungovat bez ztráty připojení s místními během migrace. Veřejná IP adresa přidružená k bráně VPN nezmění během procesu migrace. Z toho vyplývá, že nebudete muset znovu nakonfigurovat místní směrovač po dokončení migrace.  
+Brány VPN se migrují v rámci migrace virtuální sítě z klasického na Správce prostředků. Tato migrace se provádí po jedné virtuální síti v jednom okamžiku. Neexistují žádné další požadavky na nástroje nebo předpoklady pro migraci. Kroky migrace jsou stejné jako stávající migrace virtuální sítě a jsou zdokumentovány na [stránce migrace prostředků IaaS](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Během migrace nedochází k žádnému výpadku dat, takže stávající úlohy by během migrace nadále fungovaly bez ztráty místního připojení. Veřejná IP adresa přidružená k bráně VPN se během procesu migrace nemění. To znamená, že po dokončení migrace nebudete muset znovu nakonfigurovat místní směrovač.  
 
-Model ve službě Správce prostředků se liší od modelu classic a se skládá z brány virtuální sítě, místní síťové brány a připojení prostředků. Představují brány sítě VPN, lokalitě místní představující na místní adresní prostor a připojení mezi těmito dvěma v uvedeném pořadí. Po dokončení migrace nebude k dispozici v modelu classic bran a všechny operace správy ve službě brány virtuální sítě, místní síťové brány a objektů připojení musí být provedeno pomocí modelu Resource Manager.
+Model v Správce prostředků se liší od modelu Classic a skládá se z bran virtuální sítě, místních síťových bran a prostředků připojení. Tyto představují samotnou bránu VPN, místní lokalitu, která představuje místní adresní prostor a připojení mezi dvěma v uvedeném pořadí. Po dokončení migrace nebudou brány k dispozici v klasickém modelu a všechny operace správy u bran virtuální sítě, místních síťových bran a objektů připojení se musí provádět pomocí modelu Správce prostředků.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
-Nejběžnější scénáře připojení VPN jsou zahrnuté do modelu classic do Resource Manageru migrace. Mezi podporované scénáře patří-
+K většině běžných scénářů připojení k síti VPN se Správce prostředků migrace vztahuje Classic. Mezi podporované scénáře patří:
 
-* Přejděte na připojení k serveru
-* Server lokality připojení k bráně VPN připojení na umístění v místním prostředí
-* Virtuální síť k připojení k virtuální síti mezi dvěma virtuálními sítěmi pomocí bran VPN Gateway
-* Více virtuálních sítí připojené do stejné na umístění v místním prostředí
-* Připojení více lokalit
-* Vynucené tunelování povolené virtuální sítě
+* Ukázat na připojení k síti
+* Připojení lokality k pracovišti s VPN Gateway připojená k místnímu umístění
+* Připojení virtuální sítě k virtuální síti mezi dvěma virtuální sítě pomocí bran VPN
+* Několik virtuální sítě připojených ke stejnému místnímu umístění
+* Připojení k více lokalitám
+* Virtuální sítě povolené vynucené tunelování
 
-Scénáře, které nejsou podporovány zahrnují-  
+Nepodporované scénáře include-  
 
-* Virtuální síť, bránu ExpressRoute i VPN Gateway se momentálně nepodporuje.
-* Tranzitní scénáře, ve kterém jsou rozšíření virtuálních počítačů připojený k na místních serverech. Omezení přenosu VPN připojení je podrobně popsaný níže.
+* Virtuální síť s bránou ExpressRoute a VPN Gateway se momentálně nepodporuje.
+* Scénáře přenosu, kde jsou rozšíření virtuálních počítačů připojená k místním serverům. Omezení přenosu připojení k síti VPN jsou popsána níže.
 
 > [!NOTE]
-> Ověření CIDR v modelu Resource Manager je přísnější než jedna v klasickém modelu. Před migrací Ujistěte se, že zadané rozsahy classic adres odpovídají platný formát CIDR před zahájením migrace. CIDR může být ověřen pomocí žádné společné validátory CIDR. Virtuální síť nebo místní sítí pomocí neplatné rozsahy CIDR při migraci způsobovaly v chybovém stavu.
+> Ověřování CIDR v modelu Správce prostředků je více striktní než v klasickém modelu. Před migrací zajistěte, aby dané klasické rozsahy adres odpovídaly platnému formátu CIDR před zahájením migrace. CIDR lze ověřit pomocí všech běžných validátorů CIDR. Virtuální síť nebo místní lokality s neplatnými rozsahy CIDR v případě, že by migrace způsobily stav selhání.
 > 
 > 
 
-## <a name="vnet-to-vnet-connectivity-migration"></a>Virtuální síť k připojení k migraci virtuální sítě
-Virtuální síť k připojení virtuálních sítí v modelu classic se dosahuje vytvořením místní lokalita reprezentace připojené virtuální sítě. Zákazníci bylo potřeba vytvořit dvě místní lokality, které reprezentován dvěma virtuálními sítěmi, které společně připojený k Internetu potřeba. Pak byli připojeni k odpovídajícím virtuálním sítím pomocí tunelu IPsec k navázání připojení mezi dvěma virtuálními sítěmi. Tento model má problémy spravovatelnosti, protože změny rozsah adres v jedné virtuální síti musí lze udržovat také v odpovídající reprezentaci místní lokality. V modelu Resource Manager je už nejsou potřebná řešení. Připojení mezi dvěma virtuálními sítěmi jde přímo dosáhnout použitím typu připojení: Vnet2Vnet"v prostředku připojení. 
+## <a name="vnet-to-vnet-connectivity-migration"></a>Migrace připojení virtuální sítě k virtuální síti
+Připojení virtuální sítě k virtuální síti v klasickém prostředí bylo dosaženo vytvořením místní reprezentace připojené virtuální sítě. Zákazníci byli požádáni o vytvoření dvou místních webů, které představovaly dva virtuální sítěy, které jsou potřeba k vzájemnému propojení. Ty se pak připojily k odpovídajícímu virtuální sítě pomocí tunelu IPsec k navázání připojení mezi dvěma virtuální sítě. Tento model má problémy se správou, protože všechny změny rozsahu adres v jedné virtuální síti musí být zachovány i v odpovídajícím zastoupení místní lokality. V Správce prostředků modelu toto řešení už není potřeba. Připojení mezi dvěma virtuální sítě se dá přímo dosáhnout pomocí typu připojení Vnet2Vnet v prostředku připojení. 
 
-![Snímek obrazovky z virtuální sítě pro migraci virtuální sítě.](./media/vpn-gateway-migration/migration1.png)
+![Snímek virtuální sítě s migrací virtuální sítě](./media/vpn-gateway-migration/migration1.png)
 
-Při migraci virtuální sítě zjistíme, že připojené entita, která má aktuální VNet VPN gateway je jiné virtuální síti a ujistěte se, že po dokončení migrace v obou virtuálních sítích už uvidíte dvě místní lokality představuje jinou virtuální sítí. Klasického modelu, dvě brány sítě VPN, dvě místní sítě a dvě spojení mezi nimi se transformuje na model Resource Manager pomocí dvě brány virtuální privátní sítě a dvě spojení typu Vnet2Vnet.
+Při migraci virtuální sítě zjistíme, že připojená entita ke stávající virtuální síti VPN je jinou virtuální síť a že po dokončení migrace obou virtuální sítě už neuvidíte dvě místní lokality, které představují jinou virtuální síť. Klasický model dvou bran VPN Gateway, dvě místní lokality a dvě připojení mezi nimi jsou transformované na Správce prostředků model se dvěma branami VPN a dvěma připojeními typu Vnet2Vnet.
 
-## <a name="transit-vpn-connectivity"></a>Připojení k síti VPN přenosu
-VPN Gateway v topologii můžete nakonfigurovat tak, aby místní připojení pro virtuální síť můžete vytvořit připojení k jiné virtuální síti, která je přímo připojený k místnímu. Toto je přenosu připojení k síti VPN, ve kterých jsou instance v první virtuální sítě připojený k místním prostředkům prostřednictvím přenosu ke službě VPN gateway v připojené virtuální sítě, která je přímo připojený k místnímu. K dosažení této konfiguraci v modelu nasazení classic, je třeba vytvořit místní lokality, který má agregovat předpony představující obě připojené virtuální sítě a místní adresní prostor. Tato representational místní lokality je připojen k virtuální síti k dosažení připojení přenosu. Tento model classic má také podobné problémy spravovatelnosti vzhledem k tomu žádné změny v místní rozsah adres musí být udržovány také na místní lokalita představuje agregace virtuální sítí a místní. Zavedení podpory protokolu BGP v Resource Manageru nepodporuje brány zjednodušuje možnosti správy od připojení brány další trasy z místně bez nutnosti ruční úpravy předpon.
+## <a name="transit-vpn-connectivity"></a>Přenos připojení VPN
+Brány VPN můžete v topologii nakonfigurovat tak, aby se místní připojení k virtuální síti dosáhlo připojením k jiné virtuální síti, která je přímo připojená k místní síti. Toto je přenosová konektivita VPN, kde se instance v první virtuální síti připojují k místním prostředkům prostřednictvím přenosu do brány VPN v připojené virtuální síti, která je přímo připojená k místnímu prostředí. Pokud chcete tuto konfiguraci dosáhnout v modelu nasazení Classic, budete muset vytvořit místní lokalitu, která má agregované předpony, které představují připojenou virtuální síť i místní adresní prostor. Tato znovu prezentační místní lokalita je pak připojená k virtuální síti, aby bylo možné dosáhnout možností přenosu. Tento klasický model má také podobné výzvy ke spravovatelnosti, protože kterákoli změna v rozsahu místních adres musí být také udržována v místní lokalitě, která představuje agregaci virtuální sítě a místní. Zavedení podpory protokolu BGP v Správce prostředků podporovaných branách zjednodušuje správu, protože připojené brány se mohou naučit trasy z místního prostředí bez ručních úprav předpon.
 
-![Snímek obrazovky scénář směrování přenosu.](./media/vpn-gateway-migration/migration2.png)
+![Snímek obrazovky se scénářem směrování přenosu.](./media/vpn-gateway-migration/migration2.png)
 
-Protože transformujeme virtuální sítě pro připojení k virtuální síti bez nutnosti místní weby, ztratí scénáři přenosu místního připojení pro virtuální síť, která je nepřímo připojené k místní. Můžete minimalizovat ztráty připojení v následujících dvou způsobů, po dokončení migrace- 
+Vzhledem k tomu, že transformuje připojení VNet-to-VNet bez nutnosti místních lokalit, scénář přenosu ztratí místní připojení pro virtuální síť, která je nepřímo připojená k místní síti. Po dokončení migrace se může ztráta připojení zmírnit následujícími dvěma způsoby: 
 
-* O branách VPN Gateway, které jsou připojené dohromady a v místním povolte protokol BGP. Povoluje se protokol BGP obnovení připojení bez jakékoli další změny konfigurace, protože jsou zjistili a inzerované bran virtuální sítě trasy. Všimněte si, že možnost protokolu BGP je dostupný jenom u skladové položky Standard nebo vyšší.
-* Vytvořit explicitní připojení z ovlivněné virtuální sítě k místní síťové brány reprezentující místní umístění. Bude také vyžadovat změnu konfigurace na místní směrovač vytvořit a nakonfigurovat tunel IPsec.
+* Povolte protokol BGP u bran VPN, které jsou propojené společně a místně. Povolení protokolu BGP obnoví připojení bez jakékoli jiné změny konfigurace od chvíle, kdy se trasy procházejí a inzerují mezi bránami virtuální sítě. Upozorňujeme, že možnost BGP je dostupná jenom pro SKU Standard a vyšší.
+* Vytvořte explicitní připojení ze zasažené virtuální sítě k místní síťové bráně, která představuje místní umístění. To by taky vyžadovalo změnu konfigurace na místním směrovači a vytvoření a konfiguraci tunelu IPsec.
 
-## <a name="next-steps"></a>Další postup
-Po získání informací o podpoře migrace brány sítě VPN, přejděte na [platformou podporované migraci prostředků IaaS z modelu nasazení classic do Resource Manageru](../virtual-machines/windows/migration-classic-resource-manager-ps.md) začít.
+## <a name="next-steps"></a>Další kroky
+Po získání informací o podpoře migrace brány VPN můžete začít tím, že přejdete na [migraci prostředků IaaS podporovaných platformou z klasických na správce prostředků](../virtual-machines/windows/migration-classic-resource-manager-ps.md) .
 

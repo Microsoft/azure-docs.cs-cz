@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Azure Cosmos DB rozhraní API pro tabulky pomocí sady .NET Standard SDK
+title: Azure Cosmos DB rozhraní API pro tabulky pomocí sady .NET Standard SDK
 description: Naučte se ukládat a dotazovat strukturovaná data v Azure Cosmos DB rozhraní API pro tabulkym účtu.
 author: wmengmsft
 ms.author: wmeng
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 0a1ba00d2d24664590f76438a90f651e0826d419
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7341d86e68986a2e502f714a4dcf1f882200d384
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441066"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s Azure Cosmos DB rozhraní API pro tabulky a Azure Table Storage pomocí sady .NET SDK
 
@@ -25,7 +25,7 @@ Pomocí Azure Cosmos DB rozhraní API pro tabulky nebo úložiště tabulek Azur
 
 Tento kurz popisuje ukázku, která vám ukáže, jak používat [Microsoft Azure Cosmos DB knihovny tabulek pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) s Azure Cosmos DB rozhraní API pro tabulky a scénáři úložiště tabulek Azure. Je nutné použít připojení specifické pro službu Azure. Tyto scénáře jsou prozkoumány pomocí C# příkladů, které ilustrují vytváření tabulek, vkládání, aktualizaci dat, dotazování dat a odstraňování tabulek.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
@@ -49,7 +49,7 @@ V aplikaci Visual Studio vytvořte novou konzolovou aplikaci .NET. Následujíc�
 
 1. Do pole **název projektu** zadejte název vaší aplikace, například **CosmosTableSamples**. (V případě potřeby můžete zadat jiný název.)
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 Všechny příklady kódu v této ukázce lze přidat do metody Main () souboru **program.cs** vaší konzolové aplikace.
 

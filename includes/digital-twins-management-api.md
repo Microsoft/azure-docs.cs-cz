@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/12/2019
+ms.date: 01/06/2020
 ms.custom: include file
-ms.openlocfilehash: 3cc01182a7127794d69eb341d2881e0b62d7688c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bacb665eeffc6bb5351d11ec74139a272c95a9fb
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74062867"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692517"
 ---
 V níže uvedených příkladech `YOUR_MANAGEMENT_API_URL` odkaz na identifikátor URI digitálních vláken rozhraní API:
 
@@ -22,7 +22,7 @@ V níže uvedených příkladech `YOUR_MANAGEMENT_API_URL` odkaz na identifikát
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0
 ```
 
-| Název | Nahradit hodnotou |
+| Name (Název) | Nahradit hodnotou |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Název instance digitálního vlákna Azure |
 | YOUR_LOCATION | Oblast, ve které je vaše instance hostována |

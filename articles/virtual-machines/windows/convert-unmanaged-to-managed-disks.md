@@ -1,17 +1,17 @@
 ---
-title: Převod virtuálního počítače s Windows z nespravovaných disků na Managed disks – Azure Managed Disks
+title: Převod virtuálního počítače s Windows z nespravovaných disků na Managed disks
 description: Jak převést virtuální počítač s Windows z nespravovaných disků na Managed disks pomocí prostředí PowerShell v modelu nasazení Správce prostředků
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 92f70cbfcf261c218ea43b159ed49126f7b2ecd5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460125"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na Managed disks
 
@@ -94,7 +94,7 @@ Před převodem se ujistěte, že jsou všechna rozšíření virtuálních poč
 
 Nespravované disky můžete také převést na spravované disky pomocí Azure Portal.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
 3. V okně pro virtuální počítač vyberte z nabídky **disky** .
 4. V horní části okna **disky** vyberte **migrovat na Managed disks**.

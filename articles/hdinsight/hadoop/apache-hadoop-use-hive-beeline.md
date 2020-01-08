@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 26a166e61086af8cf10f761b608fcf66eb8734fd
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/12/2019
+ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435729"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hive
 
 Naučte se používat [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) ke spouštění dotazů Apache Hive v HDInsight.
 
-Beeline je klient podregistru, který je součástí hlavních uzlů clusteru HDInsight. Beeline používá JDBC pro připojení k HiveServer2, službě hostované v clusteru HDInsight. Beeline můžete použít také k vzdálenému přístupu k podregistru v HDInsight přes Internet. V následujících příkladech jsou uvedeny nejběžnější připojovací řetězce používané pro připojení ke službě HDInsight z Beeline:
+Beeline je klient podregistru, který je součástí hlavních uzlů clusteru HDInsight. Pokud chcete místně nainstalovat Beeline, přečtěte si článek [instalace klienta Beeline](#install-beeline-client)níže. Beeline používá JDBC pro připojení k HiveServer2, službě hostované v clusteru HDInsight. Beeline můžete použít také k vzdálenému přístupu k podregistru v HDInsight přes Internet. V následujících příkladech jsou uvedeny nejběžnější připojovací řetězce používané pro připojení ke službě HDInsight z Beeline:
 
 ## <a name="types-of-connections"></a>Typy připojení
 
@@ -59,19 +59,19 @@ Nahraďte `<username>` názvem účtu v doméně s oprávněními pro přístup 
 
 ### <a name="over-public-or-private-endpoints"></a>Přes veřejné nebo soukromé koncové body
 
-Při připojování ke clusteru pomocí veřejných nebo privátních koncových bodů je nutné zadat název přihlašovacího účtu clusteru (výchozí `admin`) a heslo. Například pomocí Beeline z klientského systému se připojte k `<clustername>.azurehdinsight.net` adrese. Toto připojení se provádí prostřednictvím `443`portu a je šifrované pomocí protokolu SSL:
+Při připojování ke clusteru pomocí veřejných nebo privátních koncových bodů je nutné zadat název přihlašovacího účtu clusteru (výchozí `admin`) a heslo. Například pomocí Beeline z klientského systému se připojte k `clustername.azurehdinsight.net` adrese. Toto připojení se provádí prostřednictvím `443`portu a je šifrované pomocí protokolu SSL:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
 nebo pro soukromý koncový bod:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `<username>` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
+Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (například user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
 Soukromé koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v tématu [omezení globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Pomocí příkazu `curl` s možností `-v` můžete řešit problémy s připojením s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
@@ -86,16 +86,16 @@ Apache Spark poskytuje vlastní implementaci HiveServer2, která se někdy ozna�
 Použitý připojovací řetězec je trochu odlišný. Místo obsahující `httpPath=/hive2` `httpPath/sparkhive2`:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 nebo pro soukromý koncový bod:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
-Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `<username>` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
+Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
 Soukromé koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v tématu [omezení globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Pomocí příkazu `curl` s možností `-v` můžete řešit problémy s připojením s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
@@ -238,7 +238,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
 
 6. K ukončení Beeline použijte `!exit`.
 
-## <a id="file"></a>Spuštění souboru HiveQL
+## <a name="run-a-hiveql-file"></a>Spuštění souboru HiveQL
 
 Toto je pokračování z předchozího příkladu. Pomocí následujících kroků vytvořte soubor a pak ho spusťte pomocí Beeline.
 
@@ -292,7 +292,64 @@ Toto je pokračování z předchozího příkladu. Pomocí následujících krok
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a id="summary"></a><a id="nextsteps"></a>Další kroky
+## <a name="install-beeline-client"></a>Nainstalovat klienta Beeline
+
+I když je Beeline obsažený v hlavních uzlech clusteru HDInsight, možná ho budete chtít nainstalovat na místní počítač.  Následující kroky pro instalaci Beeline na místním počítači jsou založené na subsystému [Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+
+1. Aktualizujte seznamy balíčků. Do prostředí bash zadejte následující příkaz:
+
+    ```bash
+    sudo apt-get update
+    ```
+
+1. Pokud není nainstalovaný, nainstalujte Java. Můžete se podívat pomocí příkazu `which java`.
+
+    1. Pokud není nainstalován žádný balíček Java, zadejte následující příkaz:
+
+        ```bash
+        sudo apt install openjdk-11-jre-headless
+        ```
+
+    1. Opravte soubor bashrc (obvykle se nachází v ~/.bashrc). Otevřete soubor pomocí `nano ~/.bashrc` a na konci souboru přidejte následující řádek:
+
+        ```bash
+        export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+        ```
+
+        Pak stiskněte klávesy **CTRL + X**, pak **Y**a potom zadejte.
+
+1. Stáhněte si archivy Hadoop a Beeline, zadejte následující příkazy:
+
+    ```bash
+    wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+    wget https://archive.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Rozbalte archivy a zadejte následující příkazy:
+
+    ```bash
+    tar -xvzf hadoop-2.7.3.tar.gz
+    tar -xvzf apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Dále opravte soubor bashrc. Budete muset určit cestu, kam se archivy nebalí. Pokud používáte [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10)a provedli jste přesně tento postup, vaše cesta by byla `/mnt/c/Users/user/`, kde `user` je vaše uživatelské jméno.
+
+    1. Otevřete soubor: `nano ~/.bashrc`
+    1. Níže uvedené příkazy upravte podle příslušné cesty a pak je zadejte na konci souboru bashrc:
+
+        ```bash
+        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
+        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        PATH=$PATH:$HIVE_HOME/bin
+        ```
+
+    1. Pak stiskněte klávesy **CTRL + X**, pak **Y**a potom zadejte.
+
+1. Zavřete a znovu otevřete relaci bash.
+
+1. Otestujte připojení. Použijte formát připojení z [více než veřejných nebo privátních koncových bodů](#over-public-or-private-endpoints)výše.
+
+## <a name="next-steps"></a>Další kroky
 
 * Obecnější informace o podregistru v HDInsight najdete v tématu [použití Apache Hive s Apache Hadoop v HDInsight](hdinsight-use-hive.md) .
 

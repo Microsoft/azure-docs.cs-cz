@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/05/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448972"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
@@ -56,7 +56,7 @@ Chcete-li spustit Poznámkový blok, proveďte následující kroky:
 1. Změňte `endpoint` proměnnou na koncový bod. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. V horním řádku nabídek klikněte na **buňka**a pak na **Spustit vše**.
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 Rozhraní API pro detekci anomálií je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON.
 
@@ -72,8 +72,12 @@ Po registraci:
 
 ## <a name="algorithms"></a>Algoritmy
 
-* Přečtěte si technické Blogy, které [zavádějí rozhraní API pro detekci anomálií Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) , a [Přehled algoritmu SR-CNN v Azure anomáliích detektor](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) o algoritmech v digestoři.
-* Informace o algoritmech SR-CNN, které vyvinul Microsoft, najdete v této [službě pro detekci anomálií](https://arxiv.org/abs/1906.03821) pro konference KDD 2019.
+* V následujících technických blogech najdete informace o použitých algoritmech:
+    * [Představujeme rozhraní API pro detekci anomálií Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
+    * [Přehled algoritmu SR-CNN v detektoru anomálií Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)
+
+[Službu pro detekci anomálií](https://arxiv.org/abs/1906.03821) na papíře si můžete přečíst v článku Microsoft (PŘIJATÝ serverem konference KDD 2019), kde najdete další informace o algoritmech SR-CNN vyvinutých společností Microsoft.
+
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 

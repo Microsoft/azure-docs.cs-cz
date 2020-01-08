@@ -1,22 +1,22 @@
 ---
-title: Zobrazit data aplikace v Azure Application Insights | Microsoft Docs
-description: Pomocí řešení Application Insights Connector můžete diagnostikovat problémy s výkonem a porozumět tomu, co uživatelé s vaší aplikací dělají při monitorování pomocí Application Insights.
+title: Zobrazení dat aplikací Azure Application Insights | Dokumentace Microsoftu
+description: Řešení Application Insights Connector můžete použít k diagnostice problémů s výkonem a pochopit, co uživatelé dělají s vaší aplikací při monitorovat pomocí Application Insights.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: b956c3bc7d04908db1cc45092cf5926ecfcc305c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0cfca44878130e870c633040afcfbdd55ba8b7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932752"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396555"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
 
-![Symbol Application Insights](./media/app-insights-connector/app-insights-connector-symbol.png)
+![Application Insights symbol](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
 > S podporou [dotazů mezi prostředky](../../azure-monitor/log-query/cross-workspace-query.md)už řešení pro správu Application Insights Connector není potřeba. Už se nepoužívá a odebírá se z Azure Marketplace společně s portálem OMS, který byl oficiálně zastaralý od 15. ledna 2019 pro komerční cloud Azure. Vyřadí se od 30. března 2019 pro státní správu Azure USA.
@@ -27,244 +27,244 @@ ms.locfileid: "72932752"
 >
 > 
 
-Řešení konektoru služby Application Insights pomáhá diagnostikovat problémy s výkonem a porozumět tomu, co uživatelé s vaší aplikací dělají při monitorování pomocí [Application Insights](../../azure-monitor/app/app-insights-overview.md). Zobrazení stejné telemetrie aplikace, kterou vývojáři uvidí v Application Insights, jsou k dispozici v Log Analytics. Když ale aplikace Application Insights integruje s Log Analytics, je lepší viditelnost vašich aplikací tím, že bude mít data o provozu a aplikacích na jednom místě. Stejná zobrazení vám umožní spolupracovat s vývojáři vaší aplikace. Běžné pohledy můžou zkrátit čas na detekci a řešení problémů s aplikacemi i platformou.
+Aplikace Insights Connector řešení vám pomůže diagnostikovat problémy s výkonem a pochopit, co uživatelé dělají s vaší aplikací při se monitoruje s [Application Insights](../../azure-monitor/app/app-insights-overview.md). Zobrazení stejné aplikace telemetrická data, která vývojářům zobrazit ve službě Application Insights jsou k dispozici ve službě Log Analytics. Však při integraci vašich aplikací služby Application Insights s Log Analytics se zvýší viditelnost vaší aplikace tím, že data o operacích a aplikacích na jednom místě. S stejného zobrazení vám umožňuje spolupracovat s vývojáři vaší aplikace. Obecná zobrazení může pomoct snížit čas a vyřešte aplikace od problémů platformy.
 
 Při použití řešení můžete:
 
-- Zobrazit všechny Application Insights aplikace na jednom místě, i když jsou v různých předplatných Azure
-- Korelace dat infrastruktury s daty aplikací
-- Vizualizace dat aplikací pomocí perspektiv v hledání v protokolu
-- Překlopit data z Log Analytics do Application Insights aplikace v Azure Portal
+- Zobrazit všechny vaše aplikace Application Insights na jednom místě, i když se nachází v různých předplatných Azure
+- Korelujte data infrastruktury se data aplikací
+- Vizualizace dat aplikace pomocí perspektiv v prohledávání protokolu
+- Otáčení z dat Log Analytics do vaší aplikace Application Insights na webu Azure Portal
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďována data pro Application Insights Connector agenti. Všechna data, která řešení používá, přichází přímo z Azure.
+Na rozdíl od většina jiných řešení Log Analytics data nejsou shromažďována pro Application Insights Connector agenty. Všechna data, která používá řešení pochází přímo z Azure.
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ne | Řešení neshromažďuje informace od agentů systému Windows. |
-| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace od agentů systému Linux. |
-| [Skupina pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ne | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
-| [Účet služby Azure Storage](collect-azure-metrics-logs.md) | Ne | Řešení neumožňuje shromažďování informací z Azure Storage. |
+| [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
+| [Skupiny pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ne | Řešení neshromažďuje informace z agentů v připojené skupině pro správu nástroje SCOM. |
+| [Účet služby Azure Storage](collect-azure-metrics-logs.md) | Ne | Toto řešení dělá není shromažďování informací ze služby Azure storage. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Pokud chcete získat přístup k informacím o Application Insights Connector, musíte mít předplatné Azure.
-- Musíte mít minimálně jeden nakonfigurovaný prostředek Application Insights.
-- Musíte být vlastníkem nebo přispěvatelem prostředku Application Insights.
+- Přístup k informacím Application Insights Connector, musíte mít předplatné Azure
+- Musí mít aspoň jeden nakonfigurované prostředku Application Insights.
+- Musíte být vlastníkem nebo přispěvatelem prostředek služby Application Insights.
 
 ## <a name="configuration"></a>Konfigurace
 
-1. Povolte řešení Azure Web Apps Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání Log Analytics řešení z galerie řešení](../../azure-monitor/insights/solutions.md).
-2. Přejděte na web [Azure Portal](https://portal.azure.com). Pro otevření Application Insights vyberte **všechny služby** . Pak vyhledejte Application Insights. 
-3. V části **předplatná**vyberte předplatné, které má Application Insights prostředky, a pak v části **název**vyberte jednu nebo více aplikací.
-4. Klikněte na **Uložit**.
+1. Povolení řešení Azure Web Apps Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../../azure-monitor/insights/solutions.md).
+2. Přejděte na web [Azure Portal](https://portal.azure.com). Vyberte **všechny služby** a otevře Application Insights. Vyhledejte Application Insights. 
+3. V části **předplatná**, vyberte předplatné, které má prostředky Application Insights a pak v části **název**, vyberte jednu nebo více aplikací.
+4. Klikněte na možnost **Uložit**.
 
-Během přibližně 30 minut budou data k dispozici a Application Insights dlaždice se aktualizují daty, podobně jako na následujícím obrázku:
+Během přibližně 30 minut budou data k dispozici a na dlaždici služby Application Insights se aktualizuje s daty, jako na následujícím obrázku:
 
-![Dlaždice Application Insights](./media/app-insights-connector/app-insights-tile.png)
+![Dlaždici služby Application Insights](./media/app-insights-connector/app-insights-tile.png)
 
-Další body, které je potřeba vzít v úvahu:
+Ostatní body brát v úvahu:
 
-- Application Insights aplikace můžete propojit pouze s jedním Log Analytics pracovním prostorem.
-- K Log Analytics můžete propojit jenom [základní a podnikové Application Insights prostředky](https://azure.microsoft.com/pricing/details/application-insights) . Můžete ale použít bezplatnou úroveň Log Analytics.
+- Aplikace Application Insights můžete propojit jenom k jednomu pracovnímu prostoru Log Analytics.
+- Lze propojit pouze [Basic nebo Enterprise Application Insights prostředky](https://azure.microsoft.com/pricing/details/application-insights) ke službě Log Analytics. Můžete však použít úroveň Free služby Log Analytics.
 
 ## <a name="management-packs"></a>Sady Management Pack
 
-Toto řešení neinstaluje žádné sady Management Pack v připojených skupinách pro správu.
+Toto řešení není možné nainstalovat všechny sady management Pack v připojených skupin pro správu.
 
 ## <a name="use-the-solution"></a>Použití řešení
 
-Následující části popisují, jak můžete pomocí oken zobrazených na řídicím panelu Application Insights zobrazit data z aplikací a pracovat s nimi.
+Následující části popisují, jak můžete okna zobrazené v řídicím panelu služby Application Insights k zobrazení a interakci s daty z vašich aplikací.
 
-### <a name="view-application-insights-connector-information"></a>Zobrazit Application Insights Connector informace
+### <a name="view-application-insights-connector-information"></a>Zobrazit informace o Application Insights Connector
 
-Kliknutím na dlaždici **Application Insights** otevřete řídicí panel **Application Insights** zobrazíte následující okna.
+Klikněte na tlačítko **Application Insights** otevřete dlaždici **Application Insights** řídicího panelu zobrazíte následující okna.
 
 ![Řídicí panel Application Insights](./media/app-insights-connector/app-insights-dash01.png)
 
 ![Řídicí panel Application Insights](./media/app-insights-connector/app-insights-dash02.png)
 
-Řídicí panel obsahuje okna zobrazená v tabulce. V každém okně je seznam až 10 položek, které vyhovují kritériím oboru a časového rozsahu daného okna. Můžete spustit hledání v protokolu, které vrátí všechny záznamy, když kliknete na **Zobrazit vše** ve spodní části okna nebo po kliknutí na záhlaví okna.
+Řídicí panel obsahuje listy v tabulce. V každém okně je seznam až 10 položek, které vyhovují kritériím oboru a časového rozsahu daného okna. Můžete spustit prohledávání protokolu, který vrátí všechny záznamy, po kliknutí na **zobrazit všechny** v dolní části okna, nebo když kliknete na záhlaví okna.
 
 
-| **Kolo** | **Popis** |
+| **Sloupec** | **Popis** |
 | --- | --- |
-| Aplikace – počet aplikací | Zobrazuje počet aplikací v aplikačních prostředcích. Uvádí také seznam názvů aplikací a pro každý z nich počet záznamů aplikací. Kliknutím na číslo spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Kliknutím na název aplikace spustíte prohledávání protokolu pro aplikaci, která zobrazuje záznamy aplikací na hostitele, záznamy podle typu telemetrie a všechna data podle typu (na základě posledního dne). |
-| Objem dat – hostitelé odesílající data | Zobrazuje počet hostitelů počítačů odesílajících data. Také uvádí seznam hostitelů počítačů a počtu záznamů pro každého hostitele. Kliknutím na číslo spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klikněte na název počítače a spusťte hledání protokolu pro hostitele, který zobrazuje záznamy aplikací na hostitele, záznamy podle typu telemetrie a všechna data podle typu (na základě posledního dne). |
-| Dostupnost – výsledky webového testu | Zobrazuje prstencový graf pro výsledky webového testu, který označuje úspěch nebo neúspěch. Kliknutím na graf spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Výsledky zobrazují počet průchodů a selhání pro všechny testy. Zobrazuje všechny Web Apps s přenosy za poslední minutu. Kliknutím na název aplikace zobrazíte prohledávání protokolu s podrobnostmi o neúspěšných webových testech. |
-| Požadavky na server – požadavky za hodinu | Zobrazuje spojnicový graf požadavků serveru za hodinu pro různé aplikace. Najeďte myší na čáru v grafu, abyste viděli horní 3 aplikace, které přijímají požadavky na určitý bod v čase. Zobrazuje také seznam aplikací, které přijímají požadavky a počet požadavků pro vybrané období. <br><br>Kliknutím na graf spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>, které zobrazuje podrobnější spojnicový graf požadavků serveru za hodinu pro různé aplikace. <br><br> Kliknutím na aplikaci v seznamu spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>, které zobrazuje seznam požadavků, grafy požadavků v čase a dobu trvání žádosti a seznam kódů odpovědí na žádosti.   |
-| Selhání – neúspěšné žádosti za hodinu | Zobrazuje spojnicový graf neúspěšných požadavků aplikace za hodinu. Najeďte myší na graf, abyste viděli horní 3 aplikace s neúspěšnými požadavky pro určitý bod v čase. Zobrazuje také seznam aplikací s počtem neúspěšných žádostí pro každý z nich. Kliknutím na graf spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>, které zobrazuje podrobnější spojnicový graf neúspěšných požadavků aplikace. <br><br>Kliknutím na položku v seznamu spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>, které zobrazuje neúspěšné žádosti, grafy pro neúspěšné žádosti v čase a dobu trvání žádosti a seznam kódů odpovědí na neúspěšné žádosti. |
-| Výjimky – výjimky za hodinu | Zobrazuje spojnicový graf výjimek za hodinu. Najeďte myší na graf, abyste viděli horní 3 aplikace s výjimkami pro určitý bod v čase. Zobrazuje také seznam aplikací s počtem výjimek pro každý z nich. Kliknutím na graf spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>, které zobrazuje podrobnější odkazový diagram výjimek. <br><br>Kliknutím na položku v seznamu spustíte prohledávání protokolu pro <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code>, které zobrazuje seznam výjimek, grafy výjimek v průběhu času a neúspěšné žádosti a seznam typů výjimek.  |
+| Aplikace – počet aplikací | Zobrazuje počet aplikací v prostředků aplikace. Také obsahuje seznam názvů aplikací a pro každou počet záznamů, aplikace. Kliknutím na příslušné číslo spustíte hledání v protokolu pro <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Klikněte na název aplikace spustíte hledání v protokolu aplikace, který zobrazuje záznamy aplikace na hostitele, záznamy podle typu telemetrie a všechna data podle typu (založené na poslední den). |
+| Objem dat – hostitele, kteří odesílají data | Zobrazuje počet počítač hostitele, kteří odesílají data. Obsahuje také seznam počítač hostuje a počet záznamů pro každého hostitele. Kliknutím na příslušné číslo spustíte hledání v protokolu pro <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klikněte na název počítače spustíte hledání v protokolu pro hostitele, který zobrazuje záznamy aplikace na hostitele, záznamy podle typu telemetrie a všechna data podle typu (založené na poslední den). |
+| Dostupnost – výsledky webového testu | Ukazuje prstencového grafu pro výsledků testu webu, která dokončeno nebo chyba. Klikněte na graf na spustíte hledání v protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Výsledky zobrazit počet průchodů a neúspěchů pro všemi testy. Zobrazuje všechny webové aplikace se provoz za poslední minutu. Klikněte na název aplikace zobrazení hledání v protokolu s podrobnostmi o neúspěšných webové testy. |
+| Požadavky serveru – žádosti za hodinu | Zobrazuje spojnicový graf požadavky serveru za hodinu pro různé aplikace. Najeďte myší na řádek v grafu pro zobrazení 3 nejpoužívanější aplikace přijímat žádosti do bodu v čase. Také zobrazuje seznam aplikací, které přijímají požadavky a počet požadavků pro vybrané období. <br><br>Klikněte na graf tak, aby spustíte hledání v protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> , který se zobrazí podrobnější spojnicový graf požadavky serveru za hodinu pro různé aplikace. <br><br> Klikněte na tlačítko spustíte hledání v protokolu pro aplikaci v seznamu <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , která zobrazuje seznam žádostí, grafy pro žádostí v průběhu času a žádost o dobu trvání a seznam požadavek kódy odpovědí.   |
+| Chyby – neúspěšné požadavky za hodinu | Zobrazuje spojnicový graf žádosti o selhání aplikace za hodinu. Najeďte myší na graf zobrazíte 3 nejpoužívanější aplikace s neúspěšné požadavky na bod v čase. Také zobrazuje seznam aplikací s počtem neúspěšných žádostí pro každý. Klikněte na graf na spustíte hledání v protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> , který se zobrazí podrobnější spojnicový graf žádosti o aplikace se nezdařilo. <br><br>Klikněte na položku v seznamu a spustíte hledání v protokolu pro <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , ukazuje neúspěšné požadavky, grafy pro převzetí služeb při selhání žádosti o času a žádost o době trvání a seznam kódů odpovědí chybných požadavků. |
+| Výjimky – výjimky za hodinu | Zobrazuje spojnicový graf výjimek za hodinu. Najeďte myší na graf zobrazíte 3 nejpoužívanější aplikace s výjimkami bodu v čase. Také zobrazuje seznam aplikací s počtem výjimky pro každý. Klikněte na graf na spustíte hledání v protokolu pro <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> , která zobrazuje podrobnější odkaz grafu výjimek. <br><br>Klikněte na položku v seznamu a spustíte hledání v protokolu pro <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> , která zobrazuje seznam výjimek, grafy pro výjimky v průběhu času i neúspěšné požadavky a seznam typů výjimek.  |
 
-### <a name="view-the-application-insights-perspective-with-log-search"></a>Zobrazení Application Insights perspektivy pomocí hledání v protokolu
+### <a name="view-the-application-insights-perspective-with-log-search"></a>Zobrazení perspektivy Application Insights s prohledáváním protokolů
 
-Když kliknete na libovolnou položku na řídicím panelu, zobrazí se Application Insights perspektiva uvedená v hledání. Perspektiva poskytuje rozšířenou vizualizaci na základě typu telemetrie, který jste vybrali. Proto se změny obsahu vizualizace pro různé typy telemetrie.
+Po kliknutí na libovolnou položku na řídicím panelu zobrazí perspektivy Application Insights zobrazí v hledání. Perspektiva poskytuje rozšířené vizualizace, podle typu telemetrie, které vybrali. Ano, vizualizace změny obsahu pro typy jiné telemetrie.
 
-Po kliknutí na libovolné místo v okně aplikace se zobrazí perspektiva výchozích **aplikací** .
+Po kliknutí na libovolné místo v okně aplikace, se zobrazí výchozí **aplikací** perspektivy.
 
-![Perspektiva Application Insightsch aplikací](./media/app-insights-connector/applications-blade-drill-search.png)
+![Application Insights aplikace perspektivy](./media/app-insights-connector/applications-blade-drill-search.png)
 
-Perspektiva zobrazuje přehled vybrané aplikace.
+Perspektivy ukazuje přehled aplikace, kterou jste vybrali.
 
-V okně **dostupnost** se zobrazí jiné zobrazení Perspektiva, kde můžete zobrazit výsledky webového testu a související neúspěšné žádosti.
+**Dostupnosti** okno se teď zobrazují různé perspektivy ve kterém uvidíte výsledků testu webu a související neúspěšných žádostí.
 
-![Perspektiva dostupnosti Application Insights](./media/app-insights-connector/availability-blade-drill-search.png)
+![Application Insights dostupnost perspektivy](./media/app-insights-connector/availability-blade-drill-search.png)
 
-Po kliknutí na libovolné místo v okně žádosti nebo **chyby** **serveru** se změní komponenty perspektivy, aby vám poskytovala vizualizaci, která souvisí s požadavky.
+Po kliknutí na libovolné místo v **požadavky serveru** nebo **selhání** oken, součástí perspektivy změna umožňují vizualizaci, která související s požadavky.
 
-![Okno chyby Application Insights](./media/app-insights-connector/server-requests-failures-drill-search.png)
+![Application Insights selhání okno](./media/app-insights-connector/server-requests-failures-drill-search.png)
 
-Když kliknete kamkoli v okně **výjimky** , zobrazí se vizualizace, která je přizpůsobená výjimkám.
+Po kliknutí na libovolné místo v **výjimky** okně zobrazí vizualizaci, která je vytvořený na míru k výjimkám.
 
-![Okno výjimek Application Insights](./media/app-insights-connector/exceptions-blade-drill-search.png)
+![Okno Application Insights výjimky](./media/app-insights-connector/exceptions-blade-drill-search.png)
 
-Bez ohledu na to, zda kliknete na některý z **Application Insights Connector** řídicího panelu, na samotné stránce pro **hledání** , bude v každém dotazu, který vrací Application Insights data, zobrazená perspektiva Application Insights. Pokud například zobrazujete Application Insights data, **&#42;** dotaz také zobrazuje kartu perspektiva jako na následujícím obrázku:
+Bez ohledu na to, zda klepnutí na něco **Application Insights Connector** řídicího panelu, v rámci **hledání** stránce samostatně, jakýkoli dotaz vrací data Application Insights zobrazí aplikace Insights perspektivy. Například, pokud se vám zobrazuje data Application Insights **&#42;** dotaz také zobrazí na kartě perspektivy jako na následujícím obrázku:
 
 ![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
-Komponenty perspektivy jsou aktualizovány v závislosti na vyhledávacím dotazu. To znamená, že výsledky můžete filtrovat pomocí libovolného vyhledávacího pole, které vám umožní zobrazit data z těchto možností:
+Součástí perspektivy jsou aktualizovány v závislosti na vyhledávací dotaz. To znamená, že výsledky můžete filtrovat pomocí vyhledávacího pole, která vám dává možnost vidět data z:
 
-- Všechny vaše aplikace
-- Jedna vybraná aplikace
-- Skupina aplikací
+- Všechny aplikace
+- Jeden vybrané aplikace
+- Skupiny aplikací
 
-### <a name="pivot-to-an-app-in-the-azure-portal"></a>Překlopení do aplikace v Azure Portal
+### <a name="pivot-to-an-app-in-the-azure-portal"></a>Uveďte do aplikace na webu Azure Portal
 
-Okna Application Insights Connector jsou navržená tak, aby vám *při použití Azure Portal*mohli na vybranou Application Insights aplikaci Překlopit. Řešení můžete použít jako platformu pro monitorování vysoké úrovně, která pomáhá řešit problémy s aplikací. Když se v některé z vašich připojených aplikací zobrazí potenciální problém, můžete k nim přejít v Log Analytics hledání nebo můžete přímo překlopit přímo do Application Insights aplikace.
+Application Insights Connector okna jsou určené k usnadnění a přesouvat na vybranou aplikaci Application Insights se tak *při použití na webu Azure portal*. Řešení můžete použít jako základní monitorovací platformě, která pomáhá při řešení problémů aplikace. Až uvidíte potenciální problém v některé z připojených aplikací, můžete buď přejít k podrobnostem ho ve službě Log Analytics search nebo můžete vytvořit kontingenční přímo do aplikace Application Insights.
 
-Chcete-li vytvořit kontingenční tabulku, klikněte na tlačítko se třemi tečkami ( **...** ), které se zobrazí na konci každého řádku, a vyberte možnost **otevřít v Application Insights**.
+Pro otáčení, klikněte na symbol tří teček ( **...** ), který se zobrazí na konci každého řádku a vyberte **otevřít ve službě Application Insights**.
 
 >[!NOTE]
->**Otevření v Application Insights** není k dispozici v Azure Portal.
+>**Otevřít ve službě Application Insights** není k dispozici na webu Azure Portal.
 
 ![Otevřít v Application Insights](./media/app-insights-connector/open-in-app-insights.png)
 
-### <a name="sample-corrected-data"></a>Ukázka – opravená data
+### <a name="sample-corrected-data"></a>Opravit ukázková data
 
-Application Insights poskytuje *[opravu vzorkování](../../azure-monitor/app/sampling.md)* , která pomůže snížit provoz telemetrie. Když povolíte vzorkování v aplikaci Application Insights, získáte omezený počet záznamů v Application Insights i v Log Analytics. I když se konzistence dat zachová na **Application Insights Connector** stránce a perspektivách, měli byste ručně opravit ukázková data pro vlastní dotazy.
+Application Insights poskytuje *[vzorkování opravy](../../azure-monitor/app/sampling.md)* ke snížení provozu telemetrie. Když povolíte vzorkování na své aplikaci Application Insights, získat menší počet položek uložených ve službě Application Insights a Log Analytics. Zatímco se zachovají konzistenci dat. v **Application Insights Connector** stránky a perspektivy, by měl ručně opravit jen Vzorkovaná data pro své vlastní dotazy.
 
-Tady je příklad opravy vzorkování v dotazu prohledávání protokolu:
+Tady je příklad opravy vzorkování vyhledávacího dotazu protokolu:
 
 ```
 ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by TelemetryType
 ```
 
-Pole s **počtem vzorků** je k dispozici ve všech položkách a zobrazuje počet datových bodů, které položka představuje. Pokud pro Application Insights aplikaci zapnete vzorkování, je **počet vzorků** větší než 1. Chcete-li spočítat skutečný počet položek, které vaše aplikace vygenerovala, sečtěte pole **počet vzorků** .
+**Vzorkovány počet** pole je k dispozici ve všech položek a zobrazuje počet datových bodů, které představuje položku. Pokud aplikace Application Insights, zapnout vzorkování **Vzorkovány počet** je větší než 1. Zjistit skutečný počet položek, které vaše aplikace generuje součet **Vzorkovány počet** pole.
 
-Vzorkování ovlivní pouze celkový počet položek, které aplikace generuje. Nemusíte opravovat vzorkování pro pole metriky, jako je **RequestDuration** nebo **AvailabilityDuration** , protože tato pole zobrazují průměr reprezentovaných položek.
+Vzorkování ovlivňuje jenom celkový počet záznamů, které vaše aplikace generuje. Není nutné opravit vzorkování pro metriku pole, jako jsou **RequestDuration** nebo **AvailabilityDuration** vzhledem k tomu, že tato pole Zobrazit průměr pro zastoupené položky.
 
 ## <a name="input-data"></a>Vstupní data
 
-Řešení přijímá následující typy telemetrie dat z vašich připojených aplikací Application Insights:
+Řešení přijímá následující typy dat telemetrie z připojených aplikací služby Application Insights:
 
 - Dostupnost
 - Výjimky
 - Požadavky
-- Zobrazení stránek – pro váš pracovní prostor, abyste mohli přijímat zobrazení stránek, musíte nakonfigurovat aplikace, aby tyto informace shromáždily. Další informace najdete v tématu [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Vlastní události – chcete-li, aby váš pracovní prostor přijímal vlastní události, je nutné aplikace nakonfigurovat tak, aby tyto informace shromáždily. Další informace najdete v tématu [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+- Zobrazení stránek – pro váš pracovní prostor pro příjem zobrazení stránek, je nutné nakonfigurovat aplikace ke shromažďování těchto informací. Další informace najdete v článku [zobrazení stránky](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
+- Vlastní události – pro vašeho pracovního prostoru pro příjem vlastní události, je nutné nakonfigurovat aplikace ke shromažďování těchto informací. Další informace najdete v článku [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-Data jsou přijímána Log Analytics z Application Insights, jakmile budou k dispozici.
+Log Analytics ze služby Application Insights přijme data, jakmile je k dispozici.
 
 ## <a name="output-data"></a>Výstupní data
 
-Záznam s *typem* *ApplicationInsights* se vytvoří pro každý typ vstupních dat. Záznamy ApplicationInsights mají vlastnosti, které jsou uvedeny v následujících částech:
+Záznam s *typ* z *ApplicationInsights* se vytvoří pro každý typ vstupní data. ApplicationInsights záznamy mají vlastnosti, které jsou uvedené v následujících částech:
 
-### <a name="generic-fields"></a>Obecná pole
+### <a name="generic-fields"></a>Obecné pole
 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ | ApplicationInsights |
-| IP adresa klienta |   |
+| Když |   |
 | TimeGenerated | Čas záznamu |
-| applicationId | Klíč instrumentace aplikace Application Insights |
-| ApplicationName | Název aplikace Application Insights |
-| RoleInstance | ID hostitelského serveru |
+| ApplicationId | Instrumentační klíč Application Insights aplikace |
+| ApplicationName | Název služby Application Insights aplikaci |
+| Instance role | ID hostitelského serveru |
 | deviceType | Klientské zařízení |
 | ScreenResolution |   |
-| Kontinent | Kontinent, kde žádost pochází |
+| Kontinent | Kontinent původu žádosti |
 | Země | Země nebo oblast, kde žádost pochází |
-| Oblasti | Okres, stát nebo národní prostředí, kde žádost pochází |
-| Město | Město nebo města, kde pochází požadavek |
-| Syntetické | Určuje, zda byla žádost vytvořena uživatelem nebo automatizovanou metodou. True = automatizovaná metoda nebo false = generovaná uživatelem |
-| SamplingRate | Procento telemetrie vygenerované sadou SDK, která je odeslána na portál. Rozsah 0,0 – 100,0. |
-| SampledCount | 100/(SamplingRate). Například 4 =&gt; 25% |
-| Ověřování typu | true nebo false |
-| OperationID | Položky, které mají stejné ID operace, se zobrazují jako související položky na portálu. Obvykle ID žádosti |
+| Kraj | Provincie, stavu nebo národní prostředí původu žádosti |
+| Město | Město nebo obec původu žádosti |
+| isSynthetic | Určuje, zda byla vytvořena uživatelem nebo automatizované metodou. True = automatizovaná metoda nebo false = generovaná uživatelem |
+| SamplingRate | Procento telemetrii generovanou sady SDK, která je odeslána na portál. V rozsahu od 0,0 100.0. |
+| SampledCount | 100/(SamplingRate). Například, 4 =&gt; 25 % |
+| Ověření identity | True nebo False |
+| ID operace | Položky, které mají stejnou operaci ID se zobrazují jako související položky na portálu. Obvykle ID požadavku |
 | ParentOperationID | ID nadřazené operace |
 | OperationName |   |
-| sessionId | Identifikátor GUID, který jednoznačně identifikuje relaci, ve které se vytvořila žádost |
+| ID relace | Identifikátor GUID k jednoznačné identifikaci relace, ve kterém byla vytvořena |
 | SourceSystem | ApplicationInsights |
 
-### <a name="availability-specific-fields"></a>Pole specifická pro dostupnost
+### <a name="availability-specific-fields"></a>Pole založené podle rámce dostupnosti
 
 | Vlastnost | Popis |
 | --- | --- |
 | TelemetryType | Dostupnost |
 | AvailabilityTestName | Název webového testu |
-| AvailabilityRunLocation | Geografický zdroj požadavku HTTP |
-| AvailabilityResult | Indikuje výsledek úspěšnosti webového testu. |
-| AvailabilityMessage | Zpráva připojená k webovému testu |
-| AvailabilityCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
-| DataSizeMetricValue | 1,0 nebo 0,0 |
-| DataSizeMetricCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
-| AvailabilityDuration | Doba trvání webového testu v milisekundách |
-| AvailabilityDurationCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
+| AvailabilityRunLocation | Geografické zdroj požadavku http |
+| AvailabilityResult | Označuje úspěšný výsledek webového testu |
+| AvailabilityMessage | Zpráva připojené do webového testu |
+| AvailabilityCount | 100 /(Sampling Rate). Například, 4 =&gt; 25 % |
+| DataSizeMetricValue | 1.0 nebo 0,0 |
+| DataSizeMetricCount | 100 /(Sampling Rate). Například, 4 =&gt; 25 % |
+| AvailabilityDuration | Doba v milisekundách, trvání webového testu |
+| AvailabilityDurationCount | 100 /(Sampling Rate). Například, 4 =&gt; 25 % |
 | AvailabilityValue |   |
 | AvailabilityMetricCount |   |
 | AvailabilityTestId | Jedinečný identifikátor GUID pro webový test |
 | AvailabilityTimestamp | Přesné časové razítko testu dostupnosti |
-| AvailabilityDurationMin | U ukázkových záznamů v tomto poli se zobrazuje minimální doba trvání webového testu (milisekundy) pro reprezentované datové body. |
-| AvailabilityDurationMax | U ukázkových záznamů v tomto poli se zobrazuje maximální doba trvání webového testu (milisekundy) pro reprezentované datové body. |
-| AvailabilityDurationStdDev | U ukázkových záznamů v tomto poli se zobrazuje směrodatná odchylka mezi všemi dobami trvání webových testů (milisekund) pro reprezentované datové body. |
+| AvailabilityDurationMin | Vzorky záznamů toto pole ukazuje minimální webového testu doba trvání (milisekundy) reprezentována datových bodů |
+| AvailabilityDurationMax | Vzorky záznamů toto pole ukazuje maximální webového testu doba trvání (milisekundy) reprezentována datových bodů |
+| AvailabilityDurationStdDev | Vzorky záznamů toto pole ukazuje směrodatnou odchylku mezi všechny webové dob trvání testů (milisekundy) na základě zastoupené datových bodů |
 | AvailabilityMin |   |
 | AvailabilityMax |   |
 | AvailabilityStdDev | &nbsp;  |
 
-### <a name="exception-specific-fields"></a>Pole specifická pro výjimku
+### <a name="exception-specific-fields"></a>Pole specifické pro výjimky
 
 | Typ | ApplicationInsights |
 | --- | --- |
 | TelemetryType | Výjimka |
-| Typvýjimky | Typ výjimky |
-| ExceptionMethod | Metoda, která vytvoří výjimku |
-| ExceptionAssembly | Sestavení zahrnuje architekturu a verzi a token veřejného klíče. |
-| Výjimka | Typ výjimky |
-| ExceptionHandledAt | Označuje úroveň, která zpracovává výjimku. |
-| ExceptionCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
+| ExceptionType | Typ výjimky |
+| ExceptionMethod | Metoda, která se vytvoří výjimka |
+| ExceptionAssembly | Sestavení obsahuje rozhraní framework a verzi a token veřejného klíče |
+| ExceptionGroup | Typ výjimky |
+| ExceptionHandledAt | Označuje úroveň, která zpracovává výjimku |
+| ExceptionCount | 100 /(Sampling Rate). Například, 4 =&gt; 25 % |
 | ExceptionMessage | Zpráva o výjimce |
-| ExceptionStack | Úplný zásobník výjimky |
-| ExceptionHasStack | True, pokud má výjimka zásobník |
+| Zásobník výjimky | Plnohodnotných výjimky |
+| ExceptionHasStack | Hodnota TRUE, pokud výjimka obsahuje zásobník |
 
 
 
-### <a name="request-specific-fields"></a>Pole specifická pro požadavek
+### <a name="request-specific-fields"></a>Pole specifické pro žádost
 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ | ApplicationInsights |
 | TelemetryType | Žádost |
-| ResponseCode | Odpověď HTTP se odeslala klientovi. |
-| RequestSuccess | Označuje úspěch nebo neúspěch. True nebo false. |
-| Identifikátor | ID pro jednoznačnou identifikaci žádosti |
-| Žádost o zadání | Základ pro GET/POST + URL |
-| RequestDuration | Doba trvání žádosti v sekundách |
-| Adresa URL | Adresa URL požadavku, který nezahrnuje hostitele |
-| Hostitel | Hostitel webového serveru |
-| URLBase | Úplná adresa URL požadavku |
-| ApplicationProtocol | Typ protokolu používaného aplikací |
-| requestCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
-| RequestDurationCount | 100/(vzorkovací frekvence). Například 4 =&gt; 25% |
-| RequestDurationMin | U ukázkových záznamů v tomto poli se zobrazuje minimální doba trvání požadavku (milisekundy) pro reprezentované datové body. |
-| RequestDurationMax | U ukázkových záznamů v tomto poli se zobrazuje maximální doba trvání požadavku (milisekundy) pro reprezentované datové body. |
-| RequestDurationStdDev | U ukázkových záznamů v tomto poli se zobrazuje směrodatná odchylka mezi všemi dobami trvání žádosti (milisekundy) pro reprezentované datové body. |
+| ResponseCode | Odpovědi HTTP odeslané do klienta |
+| RequestSuccess | Indikuje úspěch nebo neúspěch. True nebo false. |
+| ID žádosti | ID k jednoznačné identifikaci žádosti |
+| RequestName | GET/POST + základ adresy URL |
+| RequestDuration | Čas v sekundách, doba trvání žádosti |
+| Adresa URL | Adresa URL požadavku nezahrnuje hostitele |
+| Hostitel | Hostitele webového serveru |
+| URLBase musí | Úplná adresa URL požadavku |
+| ApplicationProtocol | Typ protokolu používaný aplikace |
+| RequestCount | 100 /(Sampling Rate). Například, 4 =&gt; 25 % |
+| RequestDurationCount | 100 /(Sampling Rate). Například, 4 =&gt; 25 % |
+| RequestDurationMin | Vzorky záznamů toto pole ukazuje minimální požadavek doba trvání (MS) pro zastoupené datových bodů. |
+| RequestDurationMax | Vzorky záznamů toto pole ukazuje maximální doba trvání požadavku (milisekundy) na základě zastoupené datových bodů |
+| RequestDurationStdDev | Vzorky záznamů toto pole ukazuje směrodatnou odchylku mezi všech dob trvání požadavku (milisekundy) na základě zastoupené datových bodů |
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 
-Toto řešení neobsahuje sadu vzorových hledání protokolu zobrazených na řídicím panelu. Ukázky dotazů na prohledávání protokolu s popisy se ale zobrazují v části [zobrazení Application Insights Connector informace](#view-application-insights-connector-information) .
+Toto řešení nemá sadu ukázky hledání v protokolech zobrazeny na řídicím panelu. Ale ukázkové dotazy prohledávání protokolu s popisy jsou uvedeny v [zobrazení Application Insights Connector informace](#view-application-insights-connector-information) oddílu.
 
 ## <a name="removing-the-connector-with-powershell"></a>Odebrání konektoru pomocí PowerShellu
 V případě zastaralého portálu OMS neexistuje způsob, jak nakonfigurovat a odebrat existující připojení z portálu. Existující připojení můžete odebrat pomocí následujícího skriptu PowerShellu. Tuto operaci lze provést pouze v případě, že jste vlastníkem nebo přispěvatelem pracovního prostoru a čtecího modulu Application Insightsho prostředku.
@@ -319,4 +319,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Další kroky
 
-- K zobrazení podrobných informací o aplikacích Application Insights použijte [hledání v protokolu](../../azure-monitor/log-query/log-query-overview.md) .
+- Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) k zobrazení podrobných informací pro vaše aplikace Application Insights.

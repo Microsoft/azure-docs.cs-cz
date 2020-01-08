@@ -1,50 +1,41 @@
 ---
-title: Zadejte nastavení metriky a umístění v Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak k popisu služby Service Fabric zadáním jiné zásady umístění, metriky a omezení umístění.
-services: service-fabric
-documentationcenter: .net
+title: Zadat metriky a nastavení umístění
+description: Přečtěte si, jak popsat Service Fabric službu zadáním metrik, omezení umístění a dalších zásad umístění.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 21fcac62c9335652d0c682a6ac889be82e649464
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4dcd319000edb204ba188ed14b4c797dba5cd38
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844138"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610093"
 ---
-# <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurace nastavení správce prostředků clusteru služby Service Fabric
-Service Fabric Cluster Resource Manager umožňuje velice přesně kontrolovat, pravidla, kterými se řídí každé jednotlivé s názvem služby. Každá služba s názvem můžete určit pravidla pro jak by měly být přiděleny v clusteru. Každá služba s názvem, můžete také definovat sadu metriky, které chce do sestavy, včetně jak důležité jsou na tuto službu. Konfigurace služeb rozdělí do tří různých úloh:
+# <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurace nastavení cluster Resource Manageru pro Service Fabric Services
+Cluster Service Fabric Správce prostředků umožňuje jemně odstupňovanou kontrolu nad pravidly, která řídí každou jednotlivou pojmenovanou službu. Každá pojmenovaná služba může určovat pravidla, jak by měla být přidělena v clusteru. Každá pojmenovaná služba může také definovat sadu metrik, které chce vykázat, včetně důležitosti této služby. Konfigurace služeb se rozdělí na tři různé úlohy:
 
 1. Konfigurace omezení umístění
 2. Konfigurace metrik
-3. Konfigurace zásady rozšířené umístění a dalších pravidel (méně běžné)
+3. Konfigurace pokročilých zásad umístění a dalších pravidel (méně časté)
 
 ## <a name="placement-constraints"></a>Omezení umístění
-Omezení umístění umožňují řídit, které uzly v clusteru služby můžete spouštět ve skutečnosti. Konkrétní se obvykle označuje jako instance služby nebo všech služeb daného typu s omezením spouštět na konkrétním typu uzlu. Omezení umístění je rozšiřitelné. Můžete definovat libovolnou sadu vlastností pro jednotlivé typ uzlu a pak vyberte pro ně omezení při vytváření služby. Můžete také změnit omezení umístění služby během jejího běhu. To umožňuje reagovat na změny v clusteru nebo požadavky na služby. Vlastnosti daný uzel můžete taky aktualizovat dynamicky v clusteru. Další informace o omezení umístění a jejich konfiguraci najdete v [v tomto článku](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
+Omezení umístění slouží k řízení, na kterých uzlech v clusteru můžete službu skutečně spustit. Obvykle je konkrétní pojmenovaná instance služby nebo všechny služby daného typu omezené tak, aby běžely na konkrétním typu uzlu. Omezení umístění jsou rozšiřitelná. Můžete definovat libovolnou sadu vlastností na typ uzlu a pak pro ně vybrat omezení při vytváření služeb. Můžete také změnit omezení umístění služby, pokud je spuštěná. To vám umožní reagovat na změny v clusteru nebo požadavky služby. Vlastnosti daného uzlu lze také dynamicky aktualizovat v clusteru. Další informace o omezeních umístění a způsobu jejich konfigurace najdete v [tomto článku](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) .
 
 ## <a name="metrics"></a>Metriky
-Metriky jsou sadu prostředků, které jsou v dané s názvem služby. Konfigurace metrik služby zahrnuje jak velká část tohoto prostředku jednotlivých replik stavových nebo bezstavových instance této služby spotřebovávají ve výchozím nastavení. Metriky zahrnují také váhu, která určuje, jak důležité je vyrovnávání tuto metriku na tuto službu, v případě kompromisy jsou nezbytné.
+Metriky představují sadu prostředků, které pojmenovaná služba potřebuje. Konfigurace metriky služby zahrnuje, kolik prostředků má každá stavová replika nebo stavová instance této služby ve výchozím nastavení spotřebovat. Metriky obsahují také váhu, která indikuje, jak důležité je vyrovnávání metriky, která je pro danou službu, v případě potřeby kompromisů.
 
-## <a name="advanced-placement-rules"></a>Pravidla pro pokročilé umístění
-Existují jiné druhy pravidla pro umístění, které jsou užitečné v méně běžné scénáře. Tady je několik příkladů:
-- Omezení, které pomáhají s geograficky oddělenými clustery
-- Některé architektury aplikace
+## <a name="advanced-placement-rules"></a>Pokročilá pravidla umístění
+Existují i jiné typy pravidel umístění, které jsou užitečné v méně běžných scénářích. Tady je několik příkladů:
+- Omezení, která vám pomůžou s geograficky distribuovanými clustery
+- Určité architektury aplikace
 
-Další pravidla pro umístění se konfigurují prostřednictvím korelace nebo zásad.
+Další pravidla umístění se konfigurují buď pomocí korelace, nebo zásad.
 
-## <a name="next-steps"></a>Další postup
-- Metriky se, jak spravuje správce prostředků Service Fabric Cluster využití a kapacitu v clusteru. Další informace o metrikách a způsob jejich konfigurace, podívejte se na [v tomto článku](service-fabric-cluster-resource-manager-metrics.md)
-- Spřažení je jeden režim, které můžete nakonfigurovat pro služby. Není běžné, ale pokud ho potřebujete informace o jeho [zde](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-- Existují pravidla pro mnoho různých umístění, které lze konfigurovat pro vaši službu ke zpracování další scénáře. Můžete získat informace o těchto různých umístění zásad [zde](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-- Začít od začátku a [Úvod do Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
-- Přečtěte si o tom, jak Cluster Resource Manager spravuje a vyrovnává zatížení v clusteru, přečtěte si článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
-- Cluster Resource Manager má mnoho možností pro popis clusteru. Další informace o nich najdete v tomto článku na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
+## <a name="next-steps"></a>Další kroky
+- Metriky představují způsob, jakým Správce prostředků clusteru Service Fabric spravuje spotřebu a kapacitu v clusteru. Další informace o metrikách a jejich konfiguraci najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md) .
+- Spřažení je jeden režim, který můžete pro své služby nakonfigurovat. Nejedná se o běžné, ale pokud ho potřebujete, můžete [o něm získat](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) Další informace.
+- Existuje mnoho různých pravidel pro umístění, které můžete ve vaší službě nakonfigurovat pro zpracování dalších scénářů. Informace o těchto různých zásadách umístění najdete [tady](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) .
+- Začněte od začátku a [Získejte Úvod do clusteru Service Fabric správce prostředků](service-fabric-cluster-resource-manager-introduction.md)
+- Informace o tom, jak cluster Správce prostředků spravuje a vyrovnává zatížení v clusteru, najdete v článku o [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md) .
+- Správce prostředků clusteru má mnoho možností pro popis clusteru. Pokud se o nich chcete dozvědět víc, přečtěte si článek [popisující Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) .

@@ -10,12 +10,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 62e760da58eeff265e560d7cbc5dc044bf053de2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e70a59a75531cb7c3a7e5c5573f9e50cc574ab09
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439145"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, který transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádání. V tomto kurzu provedete následující kroky:
@@ -24,12 +24,12 @@ V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, kt
 > * Vytvoření datové továrny 
 > * Vytvoření a nasazení propojených služeb
 > * Vytvoření a nasazení kanálu 
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
         main()
     ```
 2. Nahraďte **&lt;storageAccountName&gt;** názvem vašeho účtu služby Azure Storage. Pak soubor uložte. 
-3. Ve službě Azure Blob Storage, vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
+3. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje. 
 4. Vytvořte složku **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
 6. Do podsložky **script** uložte soubor **WordCount_Spark.py**. 
@@ -90,10 +90,7 @@ Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj násle
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       }
     }
 }
@@ -146,7 +143,7 @@ V definici propojené služby aktualizujte hodnoty následujících vlastností:
 ## <a name="author-a-pipeline"></a>Vytvoření kanálu 
 V tomto kroku vytvoříte nový kanál s aktivitou Sparku. Aktivita používá ukázku **word count** (počet slov). Pokud jste to ještě neudělali, stáhněte obsah z tohoto umístění.
 
-Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj následující definici JSON kanálu a potom tento soubor uložte jako **MySparkOnDemandPipeline.json**. 
+Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující definici JSON kanálu a potom tento soubor uložte jako **MySparkOnDemandPipeline.json**. 
 
 ```json
 {
@@ -251,7 +248,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     
 ## <a name="start-and-monitor-a-pipeline-run"></a>Spuštění kanálu a jeho monitorování  
 
-1. Zahájení spuštění kanálu Zaznamená se také ID spuštění kanálu pro budoucí monitorování.
+1. Zahajte spuštění kanálu. Zaznamená se také ID spuštění kanálu pro budoucí monitorování.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName  
@@ -283,7 +280,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     Write-Host "Activity `Error` section:" -foregroundcolor "Yellow"
     $result.Error -join "`r`n" 
     ```  
-3. Tady je výstup tohoto ukázkového spuštění: 
+3. Zde je výstup tohoto ukázkového spuštění: 
 
     ```
     Pipeline run status: In Progress
@@ -332,13 +329,13 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
 
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Naučili jste se tyto postupy: 
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny 
 > * Vytvoření a nasazení propojených služeb
 > * Vytvoření a nasazení kanálu 
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu
 
 Pokud chcete zjistit, jak transformovat data spuštěním skriptu Hivu v clusteru Azure HDInsight ve virtuální síti, přejděte k následujícímu kurzu. 

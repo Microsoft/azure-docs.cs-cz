@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 25e11ae1311df9d0392340b32e0691298f78ee1c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462244"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal
 
@@ -80,6 +80,32 @@ Pokud chcete vypsat přístup pro uživatele, skupinu, instanční objekt nebo s
     ![podokno přiřazení](./media/role-assignments-list-portal/check-access-assignments.png)
 
     V tomto podokně můžete zobrazit role přiřazené k vybranému objektu zabezpečení a oboru. Pokud jsou v tomto oboru k dispozici nějaká přiřazení odepřít nebo zděděná do tohoto oboru, budou uvedena.
+
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Seznam přiřazení rolí pro spravovanou identitu přiřazenou systémem
+
+1. V Azure Portal otevřete spravovanou identitu přiřazenou systémem.
+
+1. V nabídce vlevo klikněte na možnost **Identita**.
+
+    ![Spravovaná identita přiřazená systémem](./media/role-assignments-list-portal/identity-system-assigned.png)
+
+1. V části **přiřazení rolí**klikněte na **Zobrazit role Azure RBAC přiřazené této spravované identitě**.
+
+    Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené systémem v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
+
+    ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Seznam přiřazení rolí pro uživatelem přiřazenou spravovanou identitu
+
+1. V Azure Portal otevřete spravovanou identitu přiřazenou systémem.
+
+1. Klikněte na **prostředky Azure**.
+
+    Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené uživatelem v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
+
+    ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+
+1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
 
 ## <a name="next-steps"></a>Další kroky
 

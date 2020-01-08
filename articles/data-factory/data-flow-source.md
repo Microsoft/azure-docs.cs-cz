@@ -7,15 +7,15 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 12/12/2019
+ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440224"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
+# <a name="source-transformation-in-mapping-data-flow"></a>Transformace zdroje v toku dat mapování 
 
 Zdrojová transformace konfiguruje zdroj dat pro tok dat. Při navrhování toků dat bude váš první krok vždycky konfigurovat transformaci zdroje. Zdroj přidáte tak, že kliknete na pole **Přidat zdroj** v plátně toku dat.
 
@@ -23,18 +23,20 @@ Každý tok dat vyžaduje aspoň jednu zdrojovou transformaci, ale můžete při
 
 Každá transformace zdroje je přidružená k právě jedné datové sadě Data Factory. Datová sada definuje tvar a umístění dat, ke kterým chcete zapisovat, nebo z nich číst. Pokud používáte datovou sadu založenou na souborech, můžete ve zdroji použít zástupné znaky a seznamy souborů pro práci s více než jedním souborem v jednom okamžiku.
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>Podporované konektory v toku dat mapování
+## <a name="supported-source-connectors-in-mapping-data-flow"></a>Podporované zdrojové konektory v toku dat mapování
 
 Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (ELT) a pracuje s *přípravnými* datovými sadami, které jsou všechny v Azure. V současné době je možné v transformaci zdroje použít následující datové sady:
     
-* Azure Blob Storage (JSON, Avro, text, Parquet)
-* Azure Data Lake Storage Gen1 (JSON, Avro, text, Parquet)
-* Azure Data Lake Storage Gen2 (JSON, Avro, text, Parquet)
-* Azure SQL Data Warehouse
-* Azure SQL Database
-* Azure CosmosDB
+* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
+* [Azure synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
+* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [CosmosDB Azure](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Azure Data Factory má přístup k více než 80 nativním konektorům. Pokud chcete do toku dat zahrnout data z jiných zdrojů, použijte aktivitu kopírování a načtěte tato data do jedné z podporovaných pracovních oblastí.
+Nastavení specifická pro tyto konektory jsou umístěna na kartě **Možnosti zdrojového kódu** . informace o těchto nastaveních najdete v dokumentaci k konektoru. 
+
+Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Pokud chcete do toku dat zahrnout data z jiných zdrojů, použijte aktivitu kopírování a načtěte tato data do jedné z podporovaných pracovních oblastí.
 
 ## <a name="source-settings"></a>Nastavení zdroje
 
@@ -54,95 +56,12 @@ Jakmile přidáte zdroj, nakonfigurujte ho přes kartu **Nastavení zdroje** . T
 
 **Vzorkování:** Povolte vzorkování, abyste omezili počet řádků ze zdroje. Toto nastavení použijte při testování nebo vzorkování dat ze zdroje pro účely ladění.
 
-**Víceřádkové řádky:** Vyberte víceřádkové řádky, pokud zdrojový textový soubor obsahuje řetězcové hodnoty, které jsou rozloženy do více řádků, tj. newlines uvnitř hodnoty.
+**Víceřádkové řádky:** Vyberte víceřádkové řádky, pokud zdrojový textový soubor obsahuje řetězcové hodnoty, které jsou rozloženy do více řádků, tj. newlines uvnitř hodnoty. Toto nastavení je k dispozici pouze v DelimitedText datových sadách.
 
 Pokud chcete ověřit, že je váš zdroj správně nakonfigurovaný, zapněte režim ladění a načtěte data ve verzi Preview. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
 > Když je režim ladění zapnutý, při konfiguraci limitu řádků v nastavení ladění dojde k přepsání nastavení vzorkování ve zdroji během náhledu dat.
-
-## <a name="file-based-source-options"></a>Souborové možnosti zdroje
-
-Pokud používáte datovou sadu založenou na souborech, jako je například Azure Blob Storage nebo Azure Data Lake Storage, karta **Možnosti zdroje** vám umožní spravovat způsob čtení souborů ve zdroji.
-
-![Možnosti zdroje](media/data-flow/sourceOPtions1.png "Možnosti zdroje")
-
-**Cesta zástupného znaku:** Pomocí vzoru se zástupnými znaky nastavíte ADF, aby prochází každou shodnou složku a soubor v jediné zdrojové transformaci. Toto je efektivní způsob, jak zpracovat více souborů v rámci jednoho toku. Přidejte více vzorů pro porovnávání se zástupnými znaky s symbolem +, který se zobrazí při najetí myší na stávající zástupný vzor.
-
-Ze zdrojového kontejneru vyberte řadu souborů, které odpovídají vzoru. V datové sadě lze zadat pouze kontejner. Cesta ke zástupným znakům proto musí taky obsahovat cestu ke složce z kořenové složky.
-
-Příklady zástupných znaků:
-
-* ```*``` představuje libovolnou sadu znaků.
-* ```**``` představuje rekurzivní vnořování adresářů.
-* ```?``` nahrazuje jeden znak.
-* ```[]``` odpovídá jednomu nebo více znakům v závorkách.
-
-* ```/data/sales/**/*.csv``` získá všechny soubory CSV pod/data/Sales
-* ```/data/sales/20??/**``` získá všechny soubory ve dvacátém století.
-* ```/data/sales/2004/*/12/[XY]1?.csv``` získá všechny soubory CSV v 2004 v prosinci začínající znakem X nebo Y a číslem se dvěma číslicemi.
-
-**Kořenová cesta oddílu:** Pokud jste ve zdroji souborů nastavili dělené složky s formátem ```key=value``` (například Year = 2019), můžete přiřadit nejvyšší úroveň stromu složek oddílu k názvu sloupce v datovém proudu toku dat.
-
-Nejdřív nastavte zástupný znak tak, aby zahrnoval všechny cesty, které jsou rozdělené do oddílů, a soubory listů, které chcete číst.
-
-![Nastavení zdrojového souboru oddílu](media/data-flow/partfile2.png "Nastavení souboru oddílu")
-
-Nastavení kořenové cesty oddílu použijte k definování toho, co je nejvyšší úroveň struktury složek. Když zobrazíte obsah vašich dat prostřednictvím náhledu dat, uvidíte, že tento ADF bude přidávat vyřešené oddíly, které se nacházejí v jednotlivých úrovních vaší složky.
-
-![Kořenová cesta oddílu](media/data-flow/partfile1.png "Zobrazit kořenovou cestu oddílu")
-
-**Seznam souborů:** Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam relativních souborů cest ke zpracování. Najeďte na tento textový soubor.
-
-**Sloupec pro uložení názvu souboru:** Uložte název zdrojového souboru do sloupce v datech. Sem zadejte nový název sloupce pro uložení řetězce názvu souboru.
-
-**Po dokončení:** Po spuštění toku dat vyberte, že nechcete nic dělat se zdrojovým souborem, odstraňte zdrojový soubor nebo přesuňte zdrojový soubor. Cesty pro přesun jsou relativní.
-
-Chcete-li přesunout zdrojové soubory do následujícího následného zpracování, vyberte nejprve možnost přesunout pro operaci soubor. Potom nastavte adresář "z". Pokud pro cestu nepoužíváte žádné zástupné znaky, pak bude mít nastavení "od" stejnou složku jako vaše zdrojová složka.
-
-Pokud máte zdrojovou cestu se zástupným znakem, vaše syntaxe bude vypadat následovně:
-
-```/data/sales/20??/**/*.csv```
-
-Můžete zadat "od" jako
-
-```/data/sales```
-
-A "to" jako
-
-```/backup/priorSales```
-
-V tomto případě se všechny soubory, které se nacházely v/data/Sales, přesunuly do/backup/priorSales.
-
-> [!NOTE]
-> Operace se soubory běží jenom při spuštění toku dat ze spuštění kanálu (ladění kanálu nebo spuštění spuštění), které používá aktivitu spustit tok dat v kanálu. Operace *se* soubory neběží v režimu ladění toku dat.
-
-**Filtrovat podle poslední změny:** Můžete filtrovat, které soubory se mají zpracovat, zadáním rozsahu data při jejich poslední úpravě. Všechna data jsou v čase UTC. 
-
-### <a name="add-dynamic-content"></a>Přidat dynamický obsah
-
-Všechna nastavení zdroje lze zadat jako výrazy pomocí [jazyka výrazů transformace toku dat mapování](data-flow-expression-functions.md). Chcete-li přidat dynamický obsah, klikněte nebo umístěte ukazatel myši uvnitř polí na panelu nastavení. Klikněte na hypertextový odkaz **Přidat dynamický obsah**. Tím se spustí Tvůrce výrazů, kde můžete dynamicky nastavit hodnoty pomocí výrazů, hodnot statických literálů nebo parametrů.
-
-![Parametry](media/data-flow/params6.png "Parametry")
-
-## <a name="sql-source-options"></a>Možnosti zdroje SQL
-
-Pokud je váš zdroj v SQL Database nebo SQL Data Warehouse, na kartě **Možnosti zdroje** jsou k dispozici další nastavení specifická pro SQL. 
-
-**Vstup:** Vyberte, zda chcete nasměrovat zdroj v tabulce (ekvivalent ```Select * from <table-name>```), nebo zadejte vlastní dotaz SQL.
-
-**Dotaz**: Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání. Příklad: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
-
-**Velikost dávky**: zadejte velikost dávky pro velké objemy dat v čtení.
-
-**Úroveň izolace**: ve výchozím nastavení pro zdroje SQL v toku dat mapování je čtení nepotvrzené. Úroveň izolace můžete změnit tady na jednu z těchto hodnot:
-* Čtení potvrzeno
-* Čtení nepotvrzených
-* Opakované čtení
-* Serializovatelný
-* Žádné (ignorovat úroveň izolace)
-
-![Úroveň izolace](media/data-flow/isolationlevel.png "Úroveň izolace")
 
 ## <a name="projection"></a>Projekce
 
@@ -157,15 +76,6 @@ Můžete upravit typy dat sloupce v transformaci odvozeného sloupce z vedlejš�
 ### <a name="import-schema"></a>Importovat schéma
 
 Datové sady, jako jsou Avro a CosmosDB, které podporují komplexní datové struktury, nevyžadují, aby v datové sadě existovaly definice schématu. Proto budete moci kliknout na tlačítko **importovat schéma** na kartě **projekce** pro tyto typy zdrojů.
-
-## <a name="cosmosdb-specific-settings"></a>Konkrétní nastavení CosmosDB
-
-Při použití CosmosDB jako typu zdroje existuje několik možností, které je třeba vzít v úvahu:
-
-* Zahrnout systémové sloupce: Pokud zaškrtnete toto, ```id```, ```_ts```a další systémové sloupce budou zahrnuty do metadat toku dat z CosmosDB. Při aktualizaci kolekcí je důležité zahrnout to, abyste mohli existující ID řádku vzít.
-* Velikost stránky: počet dokumentů na stránku výsledku dotazu. Výchozí hodnota je-1, která dynamickou stránku služby používá až 1000.
-* Propustnost: nastavte volitelnou hodnotu pro počet ru, které chcete použít pro kolekci CosmosDB pro každé spuštění tohoto toku dat během operace čtení. Minimum je 400.
-* Preferované oblasti: můžete zvolit preferované oblasti čtení pro tento proces.
 
 ## <a name="optimize-the-source-transformation"></a>Optimalizace zdrojové transformace
 

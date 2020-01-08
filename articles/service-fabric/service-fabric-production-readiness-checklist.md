@@ -1,25 +1,14 @@
 ---
-title: Kontrolní seznam připravenosti na produkční prostředí pro Azure Service Fabric | Microsoft Docs
+title: Kontrolní seznam připravenosti na produkci pro Azure Service Fabric
 description: Připravte svou Service Fabricovou aplikaci a produkční clustery podle osvědčených postupů.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/05/2019
-ms.author: atsenthi
-ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90d600b01aa870f7b3a58e70ef32e774e7107524
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599350"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376796"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
@@ -27,7 +16,7 @@ Je vaše aplikace a cluster připravený přijmout provozní provoz? Spuštění
 
 
 ## <a name="prerequisites-for-production"></a>Předpoklady pro produkční prostředí
-1. Osvědčené postupy pro Azure Service Fabric: [Návrh aplikací](./service-fabric-best-practices-applications.md), [zabezpečení](./service-fabric-best-practices-security.md), [sítě](./service-fabric-best-practices-networking.md), [plánování a škálování kapacity](./service-fabric-best-practices-capacity-scaling.md), [Infrastruktura jako kód](./service-fabric-best-practices-infrastructure-as-code.md)a [monitorování a diagnostika](./service-fabric-best-practices-monitoring.md). 
+1. Osvědčené postupy pro Azure Service Fabric: [Návrh aplikace](./service-fabric-best-practices-applications.md), [zabezpečení](./service-fabric-best-practices-security.md), [sítě](./service-fabric-best-practices-networking.md), [plánování a škálování kapacity](./service-fabric-best-practices-capacity-scaling.md), [Infrastruktura jako kód](./service-fabric-best-practices-infrastructure-as-code.md)a [monitorování a diagnostika](./service-fabric-best-practices-monitoring.md). 
 1. Implementace konfigurace Reliable Actors zabezpečení při použití programovacího modelu Actors
 1. Pro clustery s více než 20 jádry nebo 10 uzly Vytvořte vyhrazený typ primárního uzlu pro systémové služby. Přidejte [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) pro rezervaci typu primárního uzlu pro systémové služby.
 1. Pro typ primárního uzlu použijte SKU D2v2 nebo vyšší. Doporučuje se vybrat SKU, která má minimálně 50 GB kapacity pevného disku.
@@ -52,7 +41,7 @@ Je vaše aplikace a cluster připravený přijmout provozní provoz? Spuštění
 
 
 Pokud používáte Service Fabric Reliable Services nebo Reliable Actors programovací model, je nutné zkontrolovat následující položky:
-1. Upgradujte aplikace během místního vývoje, abyste zkontrolovali, jestli kód služby dodržuje token zrušení v `RunAsync` metodě a zavřeli vlastní naslouchací procesy komunikace.
+1. Upgradujte aplikace během místního vývoje, abyste zkontrolovali, jestli kód služby dodržuje token zrušení v metodě `RunAsync` a zavřeli vlastní naslouchací procesy komunikace.
 1. Vyhněte se [běžným nástrah](service-fabric-work-with-reliable-collections.md) při používání spolehlivých kolekcí.
 1. Sledujte čítače výkonu paměti .NET CLR při spuštění zátěžových testů a kontrolujte vysoké míry uvolňování paměti nebo nárůstu haldy.
 1. Udržujte offline zálohování [Reliable Services a Reliable Actors](service-fabric-reliable-services-backup-restore.md) a otestujte proces obnovení.
@@ -62,10 +51,10 @@ Pokud používáte Service Fabric Reliable Services nebo Reliable Actors program
 
 I když se výše uvedené seznamy dostanou do produkčního prostředí, měly by se vzít v úvahu taky tyto položky:
 1. Připojte se k [modelu Service Fabric stavu](service-fabric-health-introduction.md) pro rozšíření integrovaného vyhodnocení stavu a vytváření sestav.
-1. Nasaďte vlastní sledovací zařízení, které monitoruje [zatížení](service-fabric-cluster-resource-manager-metrics.md) vaší aplikace a sestav pro vyrovnávání [prostředků](service-fabric-cluster-resource-manager-balancing.md). 
+1. Nasaďte vlastní sledovací zařízení, které monitoruje [zatížení](service-fabric-cluster-resource-manager-metrics.md) vaší aplikace a sestav pro [vyrovnávání prostředků](service-fabric-cluster-resource-manager-balancing.md). 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasazení Service Fabric clusteru se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * [Nasazení clusteru Service Fabric Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * Informace o [životním cyklu aplikace](service-fabric-application-lifecycle.md) Service Fabric.

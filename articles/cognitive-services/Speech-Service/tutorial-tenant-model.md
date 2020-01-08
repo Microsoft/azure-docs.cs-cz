@@ -1,7 +1,7 @@
 ---
 title: Vytvoření modelu tenanta (Preview) – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Automaticky vygenerujte model tenanta (Custom Speech s daty sady Office 365), který využívá data sady Office 365 k zajištění optimálního rozpoznávání řeči pro podnikové výrazy, které jsou bezpečné a kompatibilní.
+description: Automaticky vygenerujte zabezpečený, kompatibilní model klienta (Custom Speech s daty sady Office 365), který používá data sady Office 365 k zajištění optimálního rozpoznávání řeči pro konkrétní podnikové účely.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,95 +10,101 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446789"
 ---
-# <a name="create-a-tenant-model-preview"></a>Vytvoření modelu tenanta (Preview)
+# <a name="tutorial-create-a-tenant-model-preview"></a>Kurz: vytvoření modelu tenanta (Preview)
 
-Model tenanta (Custom Speech s daty Office 365) je služba pro zákazníky Office 365 Enterprise, která automaticky generuje vlastní model rozpoznávání řeči z Office 365ch dat vaší organizace. Model, který je vytvořen, je optimalizován pro technické výrazy, názvy žargonu a lidí, a to vše bezpečným a kompatibilním způsobem.
+Model tenanta (Custom Speech s daty sady Office 365) je služba pro zákazníky Office 365 Enterprise, která automaticky generuje vlastní model rozpoznávání řeči z dat pro sadu 365 Office vaší organizace. Model je optimalizovaný pro technické výrazy, žargonu a jména lidí, a to vše bezpečným a kompatibilním způsobem.
 
 > [!IMPORTANT]
-> Pokud se vaše organizace zaregistruje s modelem tenanta, Služba rozpoznávání řeči může získat přístup k jazykovém modelu vaší organizace, který je vygenerovaný z e-mailů a dokumentů veřejných skupin Office 365, které může vidět kdokoli ve vaší organizaci. Správce Office 365 ve vaší organizaci může zapnout nebo vypnout používání jazykových modelů v rámci organizace pomocí portálu pro správu sady Office 365.
+> Pokud se vaše organizace zaregistruje pomocí služby modelu klienta, služba Speech může získat přístup k jazykovým modelům vaší organizace. Model se generuje z e-mailů a dokumentů veřejné skupiny Office 365, které může vidět kdokoli ve vaší organizaci. Správce Office 365 ve vaší organizaci může na portálu pro správu Office 365 zapnout nebo vypnout používání jazykových modelů v rámci organizace.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Registrace pro použití modelu tenanta v centru pro správu Microsoft 365
+> * Zaregistrujte se do modelu tenanta pomocí centra pro správu Microsoft 365.
 > * Získat klíč předplatného pro rozpoznávání řeči
 > * Vytvoření modelu tenanta
 > * Nasazení modelu tenanta
 > * Použití modelu tenanta se sadou Speech SDK
 
-## <a name="enroll-using-the-microsoft-365-admin-center"></a>Registrace pomocí centra pro správu Microsoft 365
+## <a name="enroll-in-the-tenant-model-service"></a>Zaregistrujte se do služby modelu tenanta.
 
-Než budete moct nasadit model tenanta, nejdřív se musí zaregistrovat pomocí centra pro správu Microsoft 365. Tuto úlohu může dokončit jenom správce Microsoft 365.
+Než budete moct nasadit model tenanta, musíte být zaregistrované ve službě modelu tenanta. Registrace se dokončila v centru pro správu Microsoft 365 a může ji udělat jenom správce Microsoft 365.
 
-1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com ).
-2. Na levém panelu vyberte **Nastavení** a pak **aplikace**.
+1. Přihlaste se k [Centru pro správu Microsoftu 365](https://admin.microsoft.com).
 
-   ![Registrace modelu tenanta](media/tenant-language-model/tenant-language-model-enrollment.png)
+1. V levém podokně vyberte **Nastavení**, vyberte **aplikace**a pak vyberte **Azure Speech Services**.
 
-3. Vyhledejte a vyberte **Azure Speech Services**.
+   ![Podokno "& doplňky" Services](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-   ![Registrace modelu tenanta 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+1. Zaškrtněte políčko pro **Povolení jazykových modelů v rámci organizace** a pak vyberte **Uložit změny**. 
 
-4. Klikněte na zaškrtávací políčko a uložte.
+   ![Podokno služby Azure Speech Services](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
-Pokud potřebujete vypnout model tenanta, přejděte zpět na tuto obrazovku, zrušte zaškrtnutí políčka a uložte.
+Postup vypnutí instance modelu tenanta:
+1. Opakujte předchozí kroky 1 a 2.
+1. Zrušte zaškrtnutí políčka pro **Povolení jazykových modelů v rámci organizace** a pak vyberte **Uložit změny**.
 
 ## <a name="get-a-speech-subscription-key"></a>Získat klíč předplatného pro rozpoznávání řeči
 
-Aby bylo možné používat model tenanta se sadou Speech SDK, budete potřebovat prostředek pro rozpoznávání řeči a jeho přidružený klíč předplatného.
+Pokud chcete model tenanta použít se sadou Speech SDK, potřebujete prostředek pro rozpoznávání řeči a jeho přidružený klíč předplatného.
 
-1. Přihlaste se k webu [Azure Portal](https://aka.ms/azureportal).
-2. Vyberte **vytvořit prostředek**.
-3. Do vyhledávacího panelu zadejte: **Speech**.
-4. Vyberte **řeč**a pak klikněte na **vytvořit**.
-5. Pokud chcete vytvořit prostředek, postupujte podle pokynů na obrazovce. Zjisti:
+1. Přihlaste se na web [Azure Portal](https://aka.ms/azureportal).
+1. Vyberte **vytvořit prostředek**.
+1. Do **vyhledávacího** pole zadejte **Speech**.
+1. V seznamu výsledků vyberte **řeč**a pak vyberte **vytvořit**.
+1. Pokud chcete vytvořit prostředek, postupujte podle pokynů na obrazovce. Ujistěte se, že:
    * **Umístění** je nastaveno na hodnotu **eastus** nebo **westus**.
    * **Cenová úroveň** je nastavená na **S0**.
-6. Klikněte na **Vytvořit**.
-7. Po několika minutách se prostředek vytvoří. Klíč předplatného je k dispozici v části **Přehled** pro váš prostředek.
+1. Vyberte **Vytvořit**.
 
-## <a name="create-a-model"></a>Vytvoření modelu
+   Po několika minutách se prostředek vytvoří. Klíč předplatného je k dispozici v části **Přehled** pro váš prostředek.
+
+## <a name="create-a-language-model"></a>Vytvoření jazykového modelu
 
 Až správce povolí model tenanta pro vaši organizaci, můžete vytvořit jazykový model založený na datech Office 365.
 
 1. Přihlaste se ke službě [Speech Studio](https://speech.microsoft.com/).
-2. V pravém horním rohu vyhledejte a klikněte na ikonu ozubeného kolečka (nastavení) a pak vyberte **Nastavení modelu tenanta**.
+1. V pravém horním rohu vyberte **Nastavení** (ikona ozubeného kolečka) a pak vyberte **Nastavení modelu tenanta**.
 
-   ![Nabídka Nastavení](media/tenant-language-model/tenant-language-settings.png)
+   ![Odkaz "nastavení modelu tenanta"](media/tenant-language-model/tenant-language-settings.png)
 
-3. V tomto okamžiku se zobrazí zpráva s informacemi o tom, jestli jste oprávněni vytvořit model tenanta.
+   Speech Studio zobrazí zprávu, která vám umožní zjistit, jestli máte v úmyslu vytvořit model tenanta.
+
    > [!NOTE]
-   > Zákazníci Office 365 Enterprise v Severní Amerika mají nárok na vytvoření modelu tenanta (anglicky). Pokud se jedná o Customer Lockbox (CLB), klíč zákazníka (CK) nebo zákazníka Office 365, tato funkce není k dispozici. Pokud chcete zjistit, jestli jste zákazník Key Customer Lockbox nebo zákazníkem, postupujte podle těchto pokynů:
+   > Zákazníci Office 365 Enterprise v Severní Amerika mají nárok na vytvoření modelu tenanta (anglicky). Pokud jste Customer Lockbox, klíč zákazníka nebo zákazníkem pro státní správu Office 365, tato funkce není k dispozici. Pokud chcete zjistit, jestli Customer Lockbox jste zákazníkem zákaznického zákazníka, přečtěte si téma:
    > * [Customer Lockbox](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Klíč zákazníka](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Vládní organizace pro Office 365](https://www.microsoft.com/microsoft-365/government)
 
-4. V dalším kroku vyberte možnost přihlásit **se**. Po přípravě modelu tenanta vám obdržíte e-mail s pokyny.
+1. Vyberte **Přihlásit**. 
 
-## <a name="deploy-your-model"></a>Nasazení modelu
+   Až bude model tenanta připravený, obdržíte e-mailovou zprávu s potvrzením s dalšími pokyny.
 
-Když je model tenanta připravený, nasaďte svůj model pomocí těchto kroků:
+## <a name="deploy-your-tenant-model"></a>Nasazení modelu tenanta
 
-1. Klikněte na tlačítko **Zobrazit model** v e-mailu s potvrzením, které jste dostali, nebo se přihlaste ke službě [Speech Studio](https://speech.microsoft.com/)
-2. V pravém horním rohu vyhledejte a klikněte na ikonu ozubeného kolečka (nastavení) a pak vyberte **Nastavení modelu tenanta**.
+Když je vaše instance modelu tenanta připravená, nasaďte ji následujícím způsobem:
 
-   ![Nabídka Nastavení](media/tenant-language-model/tenant-language-settings.png)
+1. V potvrzovací e-mailové zprávě vyberte tlačítko **Zobrazit model** . Nebo se přihlaste ke službě [Speech Studio](https://speech.microsoft.com/).
+1. V pravém horním rohu vyberte **Nastavení** (ikona ozubeného kolečka) a pak vyberte **Nastavení modelu tenanta**.
 
-3. Klikněte na tlačítko **nasazení**.
-4. Při nasazení modelu se stav změní na **nasazeno**.
+   ![Odkaz "nastavení modelu tenanta"](media/tenant-language-model/tenant-language-settings.png)
 
-## <a name="use-your-model-with-the-speech-sdk"></a>Použití modelu se sadou Speech SDK
+1. Vyberte **Nasadit**.
 
-Teď, když jste model nasadili, ho můžete použít se sadou Speech SDK. V této části použijete vzorový kód poskytnutý pro volání služby Speech pomocí ověřování Azure AD.
+   Po nasazení modelu se stav změní na *nasazeno*.
 
-Pojďme se podívat na kód, který budete používat pro volání sady Speech SDK v C#. V tomto příkladu provedete rozpoznávání řeči pomocí modelu tenanta. Tato příručka předpokládá, že už máte nastavenou platformu. Pokud potřebujete pomáhat s nastavením, přečtěte si [rychlý Start: rozpoznávání řeči C# (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+## <a name="use-your-tenant-model-with-the-speech-sdk"></a>Použití modelu tenanta se sadou Speech SDK
+
+Teď, když jste model nasadili, ho můžete použít se sadou Speech SDK. V této části použijete vzorový kód pro volání služby Speech pomocí ověřování Azure Active Directory (Azure AD).
+
+Pojďme se podívat na kód, který budete používat pro volání sady Speech SDK v C#. V tomto příkladu provedete rozpoznávání řeči pomocí modelu tenanta. Tato příručka předpokládá, že už máte nastavenou platformu. Pokud potřebujete pomocníka s nastavením, přečtěte si [rychlý Start C# : rozpoznávání řeči (.NET Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
 
 Zkopírujte do svého projektu tento kód:
 
@@ -117,7 +123,7 @@ namespace PrincetonSROnly.FrontEnd.Samples
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Newtonsoft.Json.Linq;
 
-    // Note: ServiceApplicationId is a fixed value.  No need to change.
+    // ServiceApplicationId is a fixed value. No need to change it.
 
     public class TenantLMSample
     {
@@ -281,18 +287,21 @@ namespace PrincetonSROnly.FrontEnd.Samples
 }
 ```
 
-Dále budete potřebovat znovu sestavit a spustit projekt z příkazového řádku. Před spuštěním příkazu budete muset aktualizovat několik parametrů.
+Dále je nutné znovu sestavit a spustit projekt z příkazového řádku. Před spuštěním příkazu aktualizujte několik parametrů provedením následujícího postupu:
 
 1. Nahraďte `<Username>` a `<Password>` hodnotami platného uživatele tenanta.
-2. Nahraďte `<Subscription-Key>` klíčem předplatného pro váš prostředek řeči. Tato hodnota je k dispozici v části **Přehled** prostředku rozpoznávání řeči v [Azure Portal](https://aka.ms/azureportal).
-3. Nahraďte `<Endpoint-Uri>` koncovým bodem níže. Ujistěte se, že `{your-region}` nahradíte oblastí, ve které jste vytvořili prostředek řeči. Podporovány jsou tyto oblasti: `westus`, `westus2`a `eastus`. Informace o vaší oblasti jsou k dispozici v části **Přehled** pro prostředek řeči v [Azure Portal](https://aka.ms/azureportal).
+1. Nahraďte `<Subscription-Key>` klíčem předplatného pro váš prostředek řeči. Tato hodnota je k dispozici v části **Přehled** prostředku rozpoznávání řeči v [Azure Portal](https://aka.ms/azureportal).
+1. Nahraďte `<Endpoint-Uri>` následujícím koncovým bodem. Ujistěte se, že `{your region}` nahradíte oblastí, ve které jste vytvořili prostředek řeči. Podporovány jsou tyto oblasti: `westus`, `westus2`a `eastus`. Informace o vaší oblasti jsou k dispozici v části **Přehled** prostředku rozpoznávání řeči v [Azure Portal](https://aka.ms/azureportal).
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-4. Spusťte příkaz:
+1. Spusťte následující příkaz:
+
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
+
+V tomto kurzu jste se naučili, jak pomocí dat Office 365 vytvořit vlastní model rozpoznávání řeči, nasadit ho a použít ho v sadě Speech SDK.
 
 ## <a name="next-steps"></a>Další kroky
 

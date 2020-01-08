@@ -14,16 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: b97d9563f0bddcc2b3bf82807f41af68f3abbff1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 819aeb225c4f55f803a5fad19eff33bd1748bf46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034706"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368925"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Vytvoření úplné infrastruktury virtuálního počítače se systémem Linux v Azure pomocí Terraformu
 
 Terraformu umožňuje definovat a vytvářet kompletní nasazení infrastruktury v Azure. Šablony Terraformu můžete vytvářet v uživatelsky čitelném formátu, který umožňuje vytvářet a konfigurovat prostředky Azure konzistentním a reprodukovatelným způsobem. V tomto článku se dozvíte, jak vytvořit úplné prostředí Linux a podpůrné prostředky pomocí Terraformu. Můžete si také přečíst, jak [nainstalovat a nakonfigurovat terraformu](terraform-install-configure.md).
+
+> [!NOTE]
+> V případě podpory specifické pro Terraformu se prosím obraťte na Terraformu přímo pomocí některého z jejich kanálů komunity:
+>
+>   • [Část terraformu](https://discuss.hashicorp.com/c/terraform-core) na portálu komunity obsahuje otázky, případy použití a užitečné vzory.
+>
+>   • Pro otázky související se zprostředkovatelem si přečtěte část [poskytovatelé terraformu](https://discuss.hashicorp.com/c/terraform-providers) na portálu komunity.
 
 
 ## <a name="create-azure-connection-and-resource-group"></a>Vytvoření připojení Azure a skupiny prostředků
@@ -87,7 +94,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 ```
 
 
-## <a name="create-public-ip-address"></a>Vytvoření veřejné IP adresy
+## <a name="create-public-ip-address"></a>Vytvořit veřejnou IP adresu
 Pokud chcete získat přístup k prostředkům přes Internet, vytvořte a přiřaďte k VIRTUÁLNÍmu počítači veřejnou IP adresu. Následující část vytvoří veřejnou IP adresu s názvem *myPublicIP*:
 
 ```hcl

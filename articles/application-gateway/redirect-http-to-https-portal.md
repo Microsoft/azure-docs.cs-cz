@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012866"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613325"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření služby application gateway s protokolem HTTP na HTTPS přesměrování pomocí webu Azure portal
 
@@ -21,7 +21,7 @@ Na webu Azure portal můžete použít k vytvoření [služba application gatewa
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
 > * Přidat pravidlo naslouchací proces a přesměrování
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tento kurz vyžaduje, aby modul Azure PowerShell verze 1.0.0 nebo novější vytvořil certifikát a nainstaloval službu IIS. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Login-AzAccount` vytvořit připojení k Azure.
 
-## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
 Použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) pomocí rutiny [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). K exportu souboru pfx z certifikátu můžete použít rutinu [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) s vráceným kryptografickým otiskem.
 
@@ -63,7 +63,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
 
 Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvoříte. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro back-endové servery. Virtuální síť můžete vytvořit současně s aplikační bránou.
 
@@ -90,7 +90,7 @@ Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvořít
 7. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
 8. V části **konfigurace protokolu IP front-endu**, zkontrolujte **IP adres jako typu** je **veřejné**, a **vytvořit nový** je vybrána. Zadejte *myAGPublicIPAddress* pro název. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 9. V části **konfigurace naslouchacího procesu**vyberte **HTTPS**a pak vyberte **vyberte soubor** a přejděte do *c:\appgwcert.pfx* souboru a Vyberte **otevřít**.
-10. Typ *appgwcert* pro název certifikátu a *Azure123456!* jako heslo.
+10. Typ *appgwcert* pro název certifikátu a *Azure123456!* heslo.
 11. Ponechte firewallu webových aplikací, které jsou zakázané a pak vyberte **OK**.
 12. Zkontrolujte nastavení na stránce Souhrn a pak vyberte **OK** k vytvoření síťových prostředků a aplikační brány. Může trvat několik minut, než pro službu application gateway, chcete-li vytvořit, počkejte na úspěšné dokončení nasazení přejde k další části.
 
@@ -118,15 +118,15 @@ Nejprve přidejte naslouchací proces s názvem *myListener* pro port 80.
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Přidat pravidlo směrování s konfigurací přesměrování
 
-1. Na **myAppGateway**vyberte **pravidla** a pak vyberte **+ základní**.
-2. Pro **název**, typ *Rule2*.
+1. V **myAppGateway**vyberte **pravidla** a pak vyberte **+ pravidlo směrování žádostí**.
+2. Jako **název pravidla**zadejte *Rule2*.
 3. Zajištění **MyListener** je vybrán pro naslouchací proces.
-4. Vyberte **konfigurace přesměrování** zaškrtávací políčko.
+4. Klikněte na kartu **cílení na back-end** a vyberte **cílový typ** jako *přesměrování*.
 5. Pro **typ přesměrování**vyberte **trvalé**.
 6. Pro **cíl přesměrování**vyberte **naslouchací proces**.
 7. Zkontrolujte, **cílového naslouchacího procesu** je nastavena na **appGatewayHttpListener**.
-8. Vyberte **zahrnout řetězec dotazu** a **cesty zahrnutí** zaškrtávací políčka.
-9. Vyberte **OK**.
+8. Pro **řetězec dotazu include** a možnost **zahrnout cestu** vyberte *Ano*.
+9. Vyberte **Přidat**.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
@@ -172,7 +172,7 @@ Nakonec je třeba upgradovat škálovací sadu s těmito změnami.
 1. Vyberte **myvmss** škálovací sady.
 2. V části **nastavení**vyberte **instance**.
 3. Vyberte obě instance a pak vyberte **upgradovat**.
-4. Odstranění potvrďte výběrem **Ano**.
+4. Výběrem **Ano** potvrďte.
 5. Po dokončení tohoto postupu, přejděte zpět **myAppGateway** a vyberte **back-endové fondy**. Teď byste měli vidět, který **appGatewayBackendPool** má dva cíle a **myAppGatewaymyvmss** nemá žádnou cíle.
 6. Vyberte **myAppGatewaymyvmss**a pak vyberte **odstranit**.
 7. Vyberte **OK** potvrďte.
@@ -206,7 +206,7 @@ Po změně instance se službou IIS, je nutné znovu upgradovat škálovací sad
 1. Vyberte **myvmss** škálovací sady.
 2. V části **nastavení**vyberte **instance**.
 3. Vyberte obě instance a pak vyberte **upgradovat**.
-4. Odstranění potvrďte výběrem **Ano**.
+4. Výběrem **Ano** potvrďte.
 
 ## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 

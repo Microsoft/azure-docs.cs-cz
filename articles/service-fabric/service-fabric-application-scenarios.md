@@ -1,25 +1,14 @@
 ---
-title: Scénáře a návrh aplikací | Microsoft Docs
+title: Scénáře a návrh aplikací
 description: Přehled kategorií cloudových aplikací v Service Fabric. Popisuje návrh aplikace, který používá stavové a bezstavové služby.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 4/24/2019
-ms.author: atsenthi
-ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303518"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464904"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric scénáře aplikací
 Azure Service Fabric nabízí spolehlivou a flexibilní platformu, kde můžete psát a spouštět mnoho typů obchodních aplikací a služeb. Tyto aplikace a mikroslužby můžou být bezstavové nebo stavové a jsou mezi virtuálními počítači vyrovnávány prostředky, aby se maximalizovala efektivita. 
@@ -80,7 +69,7 @@ Tady je ukázková aplikace, která používá stavové služby: ![aplikace pou�
 * Pokyny k [vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)najdete na cetrum architektury Azure.
 * Přejít na [Azure Service Fabric a osvědčené postupy](service-fabric-best-practices-overview.md) pro vytváření aplikací pro návrh aplikace.
 
-* Podívejte se také na tato témata:
+* Další informace najdete také v těchto tématech:
   * [Informace o mikroslužbách](service-fabric-overview-microservices.md)
   * [Definování a Správa stavu služby](service-fabric-concepts-state.md)
   * [Dostupnost služeb Service Fabric Services](service-fabric-availability-services.md)

@@ -1,66 +1,58 @@
 ---
-title: Architektura služby Azure Service Fabric | Dokumentace Microsoftu
-description: Service Fabric je platforma distribuovaných systémů sloužící k sestavení škálovatelné, spolehlivé a snadno spravovatelných aplikací pro cloud. Tento článek popisuje architekturu Service Fabric.
+title: Architektura Service Fabric Azure
+description: Service Fabric je platforma distribuovaných systémů, která se používá k vytváření škálovatelných, spolehlivých a snadno spravovaných aplikací pro Cloud. Tento článek ukazuje architekturu Service Fabric.
 services: service-fabric
-documentationcenter: .net
 author: rishirsinha
-manager: chackdan
-editor: rishirsinha
-ms.assetid: 6b554243-70cb-4c22-9b28-1a8b4703f45e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/12/2017
 ms.author: rsinha
-ms.openlocfilehash: a1e68e2e39ea6f1c8cf8669e2e02d8dacaf0f284
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 862332d31808c7ba372b93accb8f2b9a3524ba79
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377884"
 ---
 # <a name="service-fabric-architecture"></a>Architektura Service Fabric
-Service Fabric je vytvořené s vrstvami subsystémů. Tyto subsystémy umožňují také napsat aplikace, které jsou:
+Service Fabric je sestavený pomocí vrstvených subsystémů. Tyto subsystémy umožňují psát aplikace, které jsou:
 
-* S vysokou dostupností
-* Škálovatelné
-* Spravovat
-* Možností intenzivního testování
+* Vysoce dostupné
+* Škálovatelnost
+* Spravovatelné
+* Testovatelné
 
 Následující diagram znázorňuje hlavní subsystémy Service Fabric.
 
 ![Diagram architektury Service Fabric](media/service-fabric-architecture/service-fabric-architecture.png)
 
-V distribuovaném systému možnost zabezpečeně komunikovat mezi uzly v clusteru je zásadní. Základní zásobníku je subsystém přenosu, který poskytuje zabezpečenou komunikaci mezi uzly. Nad přenos je subsystém subsystému federace, který clusterů různé uzly do jedné entity (s názvem clustery) tak, aby Service Fabric rozpoznávají poruchy, volba lídra nebo provádět a poskytují konzistentní směrování. Podsystém spolehlivosti jako vrstva nad podsystém federace je zodpovědná za spolehlivosti služeb Service Fabric prostřednictvím mechanismy, jako je replikace, Správa prostředků a převzetí služeb při selhání. Subsystém federation také základem hostování a aktivace subsystém, který spravuje životní cyklus aplikace v jednom uzlu. Subsystém správy slouží ke správě životního cyklu aplikací a služeb. Subsystém testovatelnosti pomáhá vývojářům aplikaci otestovat své služby simulované chyby před a po nasazení aplikace a služby do produkčního prostředí. Service Fabric nabízí možnost přeložit umístění služby prostřednictvím jeho komunikačním subsystému. Aplikačních programovacích modelů, které jsou vystaveny pro vývojáře pro jsou rozloženy do vrstev nad rámec těchto subsystémů spolu s modelem aplikace umožňující nástroje.
+V distribuovaném systému je možnost zabezpečená komunikace mezi uzly v clusteru zásadní. Základní část zásobníku je přenosový podsystém, který zajišťuje zabezpečenou komunikaci mezi uzly. Nad přenosový subsystém se nachází v rámci federačního subsystému, který clusteruje různé uzly do jedné entity (pojmenované clustery), aby Service Fabric mohl detekovat chyby, provádět volby vedoucího procesu a zajišťovat konzistentní směrování. Podsystém spolehlivosti, vrstvený nad federačním subsystému, zodpovídá za spolehlivost Service Fabricch služeb prostřednictvím mechanismů, jako je replikace, Správa prostředků a převzetí služeb při selhání. Subsystém federace také představuje hostitelský a aktivační subsystém, který spravuje životní cyklus aplikace na jednom uzlu. Subsystém správy spravuje životní cyklus aplikací a služeb. Podsystém testování pomáhá vývojářům aplikací testovat své služby prostřednictvím simulovaných chyb před a po nasazení aplikací a služeb do produkčního prostředí. Service Fabric poskytuje možnost přeložit umístění služby prostřednictvím svého komunikačního subsystému. Aplikační programovací modely vystavené vývojářům jsou vrstveny nad těmito subsystémy spolu s modelem aplikace, aby bylo možné nástroje povolit.
 
 ## <a name="transport-subsystem"></a>Subsystém přenosu
-Subsystém přenosu implementuje kanálu datagramu komunikace typu point-to-point. Tento kanál se používá pro komunikaci v rámci clustery service fabric a komunikace mezi klienty a service fabric cluster. Podporuje jednosměrná a komunikačních schémat požadavek odpověď, která poskytuje základ pro implementaci vysílání a vícesměrové vysílání ve vrstvě federace. Subsystém přenos zabezpečuje komunikaci pomocí X509 certifikáty nebo zabezpečení Windows. Tato subsystému používá se interně pomocí Service Fabric a není přímo přístupný pro vývojáře pro programování aplikací.
+Transportní subsystém implementuje komunikační kanál datagramu typu Point-to-Point. Tento kanál se používá ke komunikaci v rámci clusterů Service Fabric a komunikaci mezi clusterem Service Fabric a klienty. Podporuje jednosměrné a komunikační modely požadavků a odpovědí, které poskytují základ pro implementaci všesměrového a vícesměrového vysílání ve federační vrstvě. Transportní subsystém zabezpečuje komunikaci pomocí certifikátů x509 nebo zabezpečení systému Windows. Tento podsystém používá interní Service Fabric a není přímo přístupný vývojářům při programování aplikací.
 
 ## <a name="federation-subsystem"></a>Subsystém federace
-Aby bylo možné odůvodnitelný sada uzlů v distribuovaném systému, musíte mít konzistentní zobrazení systému. Podsystém federace používá komunikaci primitivy poskytované subsystému přenosu a spojí různé uzly do jednoho clusteru unified, který můžete odůvodnitelný. Poskytuje primitivy distribuovaných systémů vyžadované ostatních subsystémů – detekce selhání, volba lídra nebo a konzistentní směrování. Subsystém federace je nástavbou distribuované zatřiďovacích tabulek s mezerou token 128 bitů. Subsystém vytvoří kruhová topologie více uzlů s každý uzel v okruhu přidělenou podmnožinu token místa pro vlastnictví. Pro zjištění selhání vrstvy používá mechanismus "pronájmu", na základě srdce signálu a ustanovení o rozhodčím řízení. Subsystém federace zaručuje také prostřednictvím komplikované spojení a odeslání protokolů, které existuje jenom jeden vlastník tokenu v každém okamžiku. Tímto způsobem, volba lídra nebo a konzistentní směrování záruky.
+Vzhledem k tomu, že se jedná o sadu uzlů v distribuovaném systému, je nutné mít konzistentní pohled na systém. Subsystém federace používá komunikační primitivy poskytované transportním systémem a sestaví různé uzly do jediného sjednoceného clusteru, na který může mít důvod. Poskytuje základní systémy distribuovaných systémů, které vyžadují jiné subsystémy – detekce selhání, volby vedoucího procesu a konzistentní směrování. Subsystém federace je postaven nad distribuovanými zatřiďovacími tabulkami s 128m prostorem tokenu. Podsystém vytvoří v uzlech cyklickou topologii, přičemž každý uzel v okruhu přiděluje podmnožinu prostoru tokenu pro vlastnictví. V případě detekce selhání používá vrstva Leasingový mechanizmus na základě prezenčního oznámení a rozhodčího řízení. Subsystém federace také garantuje prostřednictvím komplikovaných protokolů připojení a odchodu, že v jednom okamžiku existuje pouze jeden vlastník tokenu. To poskytuje volbu vedoucího a konzistentní záruky směrování.
 
 ## <a name="reliability-subsystem"></a>Subsystém spolehlivosti
-Subsystém spolehlivost poskytuje mechanismus pro zajištění vysoké dostupnosti prostřednictvím stav služby Service Fabric *Replikátor*, *Správce převzetí služeb při selhání*, a *prostředků Nástroje pro vyrovnávání*.
+Subsystém pro spolehlivost poskytuje mechanismus pro zajištění vysoké dostupnosti stavu Service Fabric služby prostřednictvím použití *replikátoru*, *správce převzetí služeb při selhání*a *Nástroje pro vyrovnávání prostředků*.
 
-* Replikátor zajistí, že změny stavu v v primární replice služby budou automaticky replikovat do sekundární repliky, zachovat konzistenci mezi primární a sekundární repliky sady replik služby. Replikátor zodpovídá za správu kvora mezi repliky sady replik. Komunikuje se službou se jednotka převzetí služeb při selhání získat seznam operací replikace a agent Rekonfigurace poskytne mu konfiguraci sady replik. Tato konfigurace označuje replik, které operace disky se musí replikovat. Service Fabric poskytuje výchozí Replikátor volá Replikátor prostředků infrastruktury, kterým chcete-li služba stavu, vysoce dostupných a spolehlivých lze pomocí rozhraní API pro programovací model.
-* Správce převzetí služeb při selhání zajistí, že při uzly jsou přidán či odebrán z clusteru, zatížení automaticky rozloží mezi uzly k dispozici. Pokud selže jeden uzel v clusteru, cluster automaticky překonfiguruje repliky služby dostupnost.
-* Resource Manager umístí služby replik napříč domény selhání v clusteru a zajišťuje, že jsou funkční všechny jednotky převzetí služeb při selhání. Prostředky služeb Resource Manageru také vyrovnává napříč základní sdílený fond uzlů clusteru, abyste dosáhli optimálního jednotné zátěže mezi nimi.
+* Replikátor zajistí, že se změny stavu v primární replice služby automaticky replikují do sekundárních replik, což zachovává konzistenci mezi primárními a sekundárními replikami v sadě replik služby. Replikátor zodpovídá za správu kvora mezi replikami v sadě replik. Komunikuje s jednotkou převzetí služeb při selhání, aby získala seznam operací, které se mají replikovat, a Agent rekonfigurace ho poskytne konfiguraci sady replik. Tato konfigurace indikuje, které repliky se operace musí replikovat. Service Fabric poskytuje výchozí Replikátor nazvaný Replikátor Fabric, který může používat rozhraní API pro programování modelů k zajištění vysoké dostupnosti a spolehlivého stavu služby.
+* Správce převzetí služeb při selhání zajistí, že při přidání nebo odebrání uzlů z clusteru se zatížení automaticky rozšíří napříč dostupnými uzly. Pokud uzel v clusteru selže, cluster automaticky překonfiguruje repliky služby na zachování dostupnosti.
+* Správce prostředků umístí repliky služby napříč doménou selhání v clusteru a zajistí fungování všech jednotek převzetí služeb při selhání. Správce prostředků taky vyrovnává prostředky služby v rámci nadřazeného sdíleného fondu uzlů clusteru, aby se dosáhlo optimálního rovnoměrného rozložení zátěže.
 
 ## <a name="management-subsystem"></a>Subsystém správy
-Subsystém správu poskytuje služby začátku do konce a správa životního cyklu aplikací. Rutiny prostředí PowerShell a rozhraní API pro správu umožňují zřizovat, nasazovat, opravit, upgradovat ani zrušit zřízení aplikace bez ztráty dostupnosti. Subsystém správu to provádí prostřednictvím následujících služeb.
+Subsystém správy poskytuje ucelenou správu životního cyklu služeb a aplikací. Rutiny prostředí PowerShell a rozhraní API pro správu umožňují zřídit, nasadit, opravovat, upgradovat a zrušit zřízení aplikací bez ztráty dostupnosti. Subsystém pro správu provádí tyto služby prostřednictvím následujících služeb.
 
-* **Správce clusteru**: Toto je primární služba, která komunikuje pomocí převzetí služeb při selhání správce z spolehlivost k umístění aplikace na uzly podle omezení umístění služby. Správce prostředků v subsystému převzetí služeb při selhání zajišťuje omezení nejsou nikdy nefunkční. Správce clusteru slouží ke správě životního cyklu aplikací od zřízení ke zrušení zřízení. Se integruje s nástroje health manager k zajištění, že dostupnost aplikace není během upgradu ke ztrátě z hlediska sémantické stavu.
-* **Health Manager**: Tato služba umožňuje monitorování stavu aplikací, služeb a entity clusteru. Informace o stavu, který je pak agregují do centralizované health store může hlásit clusteru entity (například uzly, služba oddíly a repliky). Informace o tomto stavu poskytuje snímku celkové v daném okamžiku stavu služeb a uzlů distribuované napříč několika uzly v clusteru, můžete o všechny potřebné opravné akce. Stav dotazu, že rozhraní API umožňují dotazování událostí stavu hlášené stavu subsystému. Stav dotaz, který rozhraní API vrátí nezpracované stavu data uložená v úložišti health nebo agregovaná, interpretovat data o stavu pro konkrétní entitu.
-* **Image Store**: Tato služba poskytuje úložiště a distribuci binární soubory aplikace. Tato služba poskytuje jednoduché distribuované úložiště souborů ve kterém se aplikace odesílat a stahovat z.
+* **Správce clusterů**: Jedná se o primární službu, která spolupracuje se správce převzetí služeb při selháníou spolehlivostí pro umístění aplikací na uzlech na základě omezení umístění služby. Správce prostředků v subsystému převzetí služeb při selhání zajišťuje, že omezení nebudou nikdy přerušena. Správce clusteru spravuje životní cyklus aplikací od zřízení až po zrušení zřízení. Integruje se se správcem stavu, aby se zajistilo, že nedojde ke ztrátě dostupnosti aplikace z hlediska sémantického stavu během upgradů.
+* **Správce stavu**: Tato služba umožňuje sledování stavu aplikací, služeb a entit clusteru. Entity clusteru (například uzly, oddíly služeb a repliky) mohou hlásit informace o stavu, které jsou poté agregovány do centralizovaného Health Store. Tyto informace o stavu poskytují Celkový časový snímek služeb a uzlů distribuovaných napříč několika uzly v clusteru, což vám umožní provádět potřebné opravné akce. Rozhraní API pro dotazování stavu vám umožní dotazovat se na události stavu hlášené do subsystému stavu. Rozhraní API pro dotazování na stav vrací nezpracovaná data o stavu uložená v Health Store nebo agregovaná a interpretovaná data o stavu konkrétní entity clusteru.
+* **Image Store**: Tato služba poskytuje úložiště a distribuci binárních souborů aplikace. Tato služba poskytuje jednoduché distribuované úložiště souborů, ve kterém jsou aplikace nahrané a stažené z.
 
-## <a name="hosting-subsystem"></a>Hostování v subsystému
-Správce clusteru informuje hostování subsystém (spuštění na každém uzlu) služby, které potřebuje ke správě pro jednotlivé uzly. Hostování subsystému pak slouží ke správě životního cyklu aplikací v tomto uzlu. Komunikuje se službou spolehlivost a stavu součásti, které chcete zajistit, aby byly správně umístěny repliky a jsou v pořádku.
+## <a name="hosting-subsystem"></a>Hostující podsystém
+Správce clusterů informuje hostující subsystém (spuštěný v jednotlivých uzlech), které služby potřebuje ke správě pro určitý uzel. Hostující subsystém pak spravuje životní cyklus aplikace v tomto uzlu. Komunikuje se součástmi pro spolehlivost a stav, aby bylo zajištěno, že jsou repliky správně umístěny a jsou v pořádku.
 
 ## <a name="communication-subsystem"></a>Komunikační subsystém
-Tato subsystému poskytuje spolehlivé zasílání zpráv v rámci clusteru a služby zjišťování ve službě pojmenování. Služba pojmenování překládá názvy služeb do umístění v clusteru a umožňuje uživatelům spravovat názvy služeb a vlastnosti. Použijte službu pojmenování, klienti mohou bezpečně komunikovat s libovolný uzel v clusteru k přeložení názvu služby a načíst metadata služby. Pomocí jednoduchých rozhraní API klienta pojmenování, uživatelé Service Fabric můžete vyvíjet, služeb a klientů podporujících řešení aktuální umístění v síti bez ohledu na uzlu dynamiky nebo znovu velikosti clusteru.
+Tento podsystém poskytuje spolehlivé zasílání zpráv v rámci clusteru a zjišťování služby prostřednictvím názvové služby. Služba pojmenování překládá názvy služeb na umístění v clusteru a umožňuje uživatelům spravovat názvy a vlastnosti služby. Pomocí názvové služby můžou klienti bezpečně komunikovat s jakýmkoli uzlem v clusteru, aby se přeložil název služby a načetla se metadata služby. Pomocí jednoduchého klientského rozhraní API pro pojmenování může uživatelé Service Fabric vyvíjet služby a klienty, kteří budou schopni vyřešit aktuální síťové umístění navzdory dynamismům uzlů nebo změně velikosti clusteru.
 
-## <a name="testability-subsystem"></a>Subsystém testovatelnosti
-Testovatelnost je sada nástrojů, které jsou vytvořené speciálně pro testování služby postavené na platformě Service Fabric. Nástroje umožňují vývojář jednoduše vyvolat smysluplné chyby a spusťte scénáře testování výkonu a ověření řadu stavy a přechody, která službu budou moct používat v průběhu svého životního cyklu, všechny řízeným a bezpečným způsobem. Testovatelnost také poskytuje mechanismus pro delší zkoušky, které může iterovat v projít různé možné chyby bez ztráty dostupnosti. To vám poskytne testů v produkčním prostředí.
+## <a name="testability-subsystem"></a>Podsystém testování
+Testování je sada nástrojů speciálně navržených pro testování služeb postavených na Service Fabric. Nástroje umožňují vývojářům snadno vyvolat smysluplné chyby a spouštět testovací scénáře pro výkon a ověření řady stavů a přechodů, ke kterým bude mít služba po celou dobu životnosti, a to vše kontrolovaným a bezpečným způsobem. Možnost testování také poskytuje mechanismus pro spouštění delších testů, které mohou iterovat v různých možných selháních, aniž by došlo ke ztrátě dostupnosti. To vám poskytne prostředí pro testování v produkčním prostředí.
 

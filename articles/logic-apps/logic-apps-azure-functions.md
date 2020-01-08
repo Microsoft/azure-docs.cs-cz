@@ -1,17 +1,17 @@
 ---
-title: Přidání a volání služby Azure Functions z Azure Logic Apps
-description: Přidávání a spouštění Azure Functions z Logic Apps
+title: Přidání a volání Azure Functions z Azure Logic Apps
+description: Volání a spouštění vlastního kódu v Azure Functions z automatizovaných úloh a pracovních postupů v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 8e72cda1965280e0694493e533f49f71c746ebc6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453468"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Volání služby Azure Functions z Azure Logic Apps
 
@@ -26,7 +26,7 @@ Chcete-li spustit fragmenty kódu bez vytváření Azure Functions, přečtěte 
 > [!NOTE]
 > Integrace mezi Logic Apps a Azure Functions v současnosti nefunguje s povolenými sloty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -125,7 +125,7 @@ Než budete moct vytvořit funkci Azure, která začíná zevnitř aplikace logi
 
    1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena. Až to budete mít, vyberte **Vytvořit**.
 
-   Například:
+   Příklad:
 
    ![Definovat funkci](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

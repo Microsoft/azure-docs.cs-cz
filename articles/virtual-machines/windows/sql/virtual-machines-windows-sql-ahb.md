@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 00262b48b8fa2fd1292554155e8ec8e933d886e6
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790609"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690914"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Změna modelu licencí pro virtuální počítač s SQL Server v Azure
 Tento článek popisuje, jak změnit model licencí pro SQL Server virtuální počítač (VM) v Azure pomocí nového poskytovatele prostředků SQL VM, **Microsoft. SqlVirtualMachine**.
@@ -41,11 +41,11 @@ Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Serve
 
 Typ licence SQL Server se nastaví při zřizování virtuálního počítače. Můžete ho kdykoli změnit. Přepínání modelů licencí nepředstavuje žádné výpadky, nerestartuje virtuální počítač ani službu SQL Server, nepřidá žádné další náklady a okamžitě se projeví. Aktivace Zvýhodněné hybridní využití Azure *snižuje* náklady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Změna modelu licencování virtuálního počítače s SQL Server má následující požadavky: 
 
-- [Předplatné Azure](https://azure.microsoft.com/free/).
+- [Předplatného Azure](https://azure.microsoft.com/free/).
 - [SQL Server virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zaregistrovaný u [poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md).
 - [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) je požadavek na využití [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 
@@ -129,7 +129,7 @@ Změna licenčního modelu je:
    - Dostupné jenom pro zákazníky se [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview).
    - Podporuje se jenom pro edice Standard a Enterprise systému SQL Server. Změny licencí pro Express, web a vývojáře se nepodporují. 
    - Podporováno pouze pro virtuální počítače nasazené pomocí modelu Azure Resource Manager. Virtuální počítače nasazené prostřednictvím klasického modelu se nepodporují. 
-   - Dostupné jenom pro veřejné cloudové instalace. 
+   - K dispozici pouze pro veřejné nebo Azure Government cloudy. 
    - Podporuje se jenom na virtuálních počítačích, které mají jedno síťové rozhraní (NIC). 
 
 
@@ -144,14 +144,14 @@ K této chybě dojde, když se pokusíte změnit model licence na virtuálním p
 Budete muset zaregistrovat předplatné u poskytovatele prostředků a pak [zaregistrovat svůj SQL Server virtuální počítač s poskytovatelem prostředků](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
-## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Virtuální počítač\<VMName\>má přidruženou víc než jednu síťovou kartu.
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Virtuální počítač\<VMName\>má přidruženou víc než jednu síťovou kartu.
 
 K této chybě dochází na virtuálních počítačích, které mají více než jednu síťovou kartu. Před změnou modelu licencování odeberte jednu ze síťových adaptérů. I když po změně modelu licencí můžete síťové rozhraní přidat zpátky do virtuálního počítače, operace v Azure Portal, například automatické zálohování a opravy, se už nebudou podporovat. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících článcích: 
+Další informace najdete v těchto článcích: 
 
 * [Přehled SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-overview.md)
 * [Nejčastější dotazy k SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-faq.md)

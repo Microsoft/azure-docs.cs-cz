@@ -5,12 +5,12 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454997"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445740"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a naznačení verzí imagí kontejneru
 
@@ -25,7 +25,7 @@ Při doručování nasazování imagí kontejneru do registru kontejneru a jejic
 
 *Stabilní značky* znamenají, že vývojář nebo systém sestavení může pokračovat v vyžádání konkrétní značky, která bude nadále získávat aktualizace. Stabilita znamená, že obsah je zmrazený. Místo toho předpokládá, že by image měla být stabilní pro záměr této verze. Aby zůstala stálá, mohla by se provozovat na použití oprav zabezpečení nebo aktualizací rozhraní.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Tým rozhraní dodává verzi 1,0. Ví, že budou dodávat aktualizace, včetně menších aktualizací. Pro podporu stabilních značek pro danou hlavní a dílčí verzi mají dvě sady stabilních značek.
 
@@ -37,6 +37,10 @@ Tým používá také značku `:latest`, která odkazuje na nejnovější stabil
 Pokud jsou k dispozici základní aktualizace obrázků nebo jakýkoli typ servisního vydání rozhraní, bitové kopie s stabilními značkami se aktualizují na nejnovější výtah, který představuje nejaktuálnější verzi této verze.
 
 V tomto případě se průběžně obsluhují hlavní i vedlejší značky. V případě základní Image to umožňuje vlastníkovi obrázku poskytovat obsluhované bitové kopie.
+
+### <a name="delete-untagged-manifests"></a>Odstranit netagované manifesty
+
+Pokud je obrázek s stabilní značkou aktualizován, dříve označený obrázek není označený, výsledkem bude osamocený obrázek. Manifest předchozí image a jedinečná data vrstvy zůstávají v registru. Chcete-li zachovat velikost registru, můžete pravidelně odstraňovat netagované manifesty, které jsou způsobeny stabilními aktualizacemi imagí. Například [Automatické vymazání](container-registry-auto-purge.md) netagovaných manifestů, které jsou starší než zadaná doba trvání, nebo nastavte [zásady uchovávání informací](container-registry-retention-policy.md) pro netagované manifesty.
 
 ## <a name="unique-tags"></a>Jedinečné značky
 
@@ -50,6 +54,12 @@ Jedinečné označení jednoduše znamená, že každý obrázek, který byl vlo
 * **ID buildu** – Tato možnost může být nejlepší, protože je pravděpodobně přírůstková a umožňuje provést korelaci zpět k určitému sestavení a vyhledat všechny artefakty a protokoly. Podobně jako u výtahu manifestu ale může být obtížné číst člověka.
 
   Pokud má vaše organizace několik systémů sestavení, Předpona značky s názvem systému sestavení je variací této možnosti: `<build-system>-<build-id>`. Můžete například odlišit buildy ze systému sestavení Jenkinse týmu rozhraní API a webového týmu Azure Pipelines systém sestavení.
+
+### <a name="lock-deployed-image-tags"></a>Zamknout značky nasazené bitové kopie
+
+Jako osvědčený postup doporučujeme, abyste zavedli [uzamknutí](container-registry-image-lock.md) všech nasazených značek obrázků nastavením jeho `write-enabled` atributu na hodnotu `false`. Tímto postupem zabráníte nechtěnému odebrání image z registru a případnému přerušení nasazení. Krok zamykání můžete zahrnout do svého kanálu pro vydávání verzí.
+
+Uzamykání nasazené image vám pořád umožňuje odebrat jiné, nenasazené image z registru, a to pomocí funkcí Azure Container Registry k údržbě registru. Můžete například [automaticky vyprázdnit](container-registry-auto-purge.md) netagované manifesty nebo odemknuté obrázky starší než zadaná doba trvání nebo nastavit [zásady uchovávání informací](container-registry-retention-policy.md) pro netagované manifesty.
 
 ## <a name="next-steps"></a>Další kroky
 

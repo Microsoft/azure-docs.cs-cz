@@ -3,17 +3,17 @@ title: Běžné úkoly správy cloudových služeb | Microsoft Docs
 description: Naučte se spravovat Cloud Services v Azure Portal. V těchto příkladech se používá Azure Portal.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360901"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Správa Cloud Services v Azure Portal
 V **Cloud Services** oblasti Azure Portal můžete:
@@ -119,8 +119,11 @@ Okno **Přehled** má v horní části stavový řádek. Když vyberete pruh, ot
 
 [Azure portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md)
 * Přečtěte si, jak [nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
 * Nakonfigurujte [vlastní název domény](cloud-services-custom-domain-name-portal.md).
 * Nakonfigurujte [certifikáty SSL](cloud-services-configure-ssl-certificate-portal.md).
+
+
+

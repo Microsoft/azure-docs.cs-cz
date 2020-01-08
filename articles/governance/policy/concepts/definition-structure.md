@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f1baffb60234a154df544552dba3c34ced25b518
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436415"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -63,7 +63,7 @@ Například následující kód JSON ukazuje zásadu, která omezí, ve které j
 
 Všechny ukázky Azure Policy jsou na [Azure Policy Samples](../samples/index.md).
 
-## <a name="mode"></a>Režim
+## <a name="mode"></a>Mode
 
 **Režim** je nakonfigurován v závislosti na tom, zda je zásada cílena na vlastnost Azure Resource Manager nebo vlastnost poskytovatele prostředků.
 
@@ -374,9 +374,9 @@ Použití _šablonových funkcí_ v **hodnotě** umožňuje mnoho komplexních v
 }
 ```
 
-Vzorové pravidlo výše uvedené používá [podřetězec ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) pro porovnání prvních tří znaků **názvu** s **ABC**. Pokud je **název** kratší než tři znaky, výsledkem funkce `substring()` je chyba. Tato chyba způsobí, že se zásada stane účinkem **odepření** .
+Vzorové pravidlo výše uvedené používá [podřetězec ()](../../../azure-resource-manager/templates/template-functions-string.md#substring) pro porovnání prvních tří znaků **názvu** s **ABC**. Pokud je **název** kratší než tři znaky, výsledkem funkce `substring()` je chyba. Tato chyba způsobí, že se zásada stane účinkem **odepření** .
 
-Místo toho použijte funkci [if ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) ke kontrole, zda první tři znaky **názvu** odpovídají **ABC** bez povolení **názvu** kratšího než tři znaky, aby došlo k chybě:
+Místo toho použijte funkci [if ()](../../../azure-resource-manager/templates/template-functions-logical.md#if) ke kontrole, zda první tři znaky **názvu** odpovídají **ABC** bez povolení **názvu** kratšího než tři znaky, aby došlo k chybě:
 
 ```json
 {
@@ -655,7 +655,7 @@ Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou ak
 
 ### <a name="understanding-the--alias"></a>Principy alias [*]
 
-Několik dostupných aliasů má verzi, která se zobrazuje jako "normální" název a druhá, která má **\[\*\]** k ní připojená. Například:
+Několik dostupných aliasů má verzi, která se zobrazuje jako "normální" název a druhá, která má **\[\*\]** k ní připojená. Příklad:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

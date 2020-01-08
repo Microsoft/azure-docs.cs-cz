@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927225"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406751"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorování & diagnostiky s 1 sekundou latencí
 
@@ -35,7 +35,7 @@ Pro aplikace ASP.NET, ASP.NET Core, Azure Functions, Java a Node. js se aktuáln
 
 ## <a name="get-started"></a>Začít
 
-1. Pokud jste ještě [nenainstalovali Application Insights](../../azure-monitor/azure-monitor-app-hub.md) ve vaší webové aplikaci, udělejte to teď.
+1. Pokud jste ještě [nenainstalovali Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) ve vaší webové aplikaci, udělejte to teď.
 2. K povolení živého streamu metrik se vyžaduje kromě standardních Application Insights balíčků [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) .
 3. **Aktualizujte na nejnovější verzi** balíčku Application Insights. V aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**. Otevřete kartu **aktualizace** a vyberte všechny balíčky Microsoft. ApplicationInsights. *.
 
@@ -157,7 +157,7 @@ V případě aplikací Azure Function App (v2) lze zabezpečení kanálu pomocí
 
 Vytvořte klíč rozhraní API z Application Insights prostředku a v **nastavení aplikace** pro Function App použijte. Vyberte **Přidat nové nastavení** a zadejte název `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` a hodnotu, která odpovídá vašemu klíči rozhraní API.
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (vyžaduje Application Insights ASP.NET Core SDK 2.3.0-beta nebo vyšší)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (vyžaduje sadu Application Insights ASP.NET Core SDK 2.3.0 nebo vyšší)
 
 Upravte soubor startup.cs následujícím způsobem:
 

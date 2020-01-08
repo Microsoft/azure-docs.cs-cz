@@ -1,5 +1,5 @@
 ---
-title: Výběr správné úrovně konzistence pro vaši aplikaci, která používá Azure Cosmos DB
+title: Volba správné úrovně konzistence pro aplikaci Azure Cosmos DB
 description: Výběr správné úrovně konzistence vaší aplikace v Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 89c81e978c5f3dbbb8fac1ea5e75fc506612308f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: cea157e272a2bf464141e592b8e742f314a83233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384898"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441923"
 ---
 # <a name="choose-the-right-consistency-level"></a>Volba vhodné úrovně konzistence 
 
-Distribuované databáze spoléhají na replikaci kvůli vysoké dostupnosti, nízké latenci nebo obojímu, se základními kompromisy mezi tím, co je konzistence čtení a dostupností, latencí a propustností. Většina komerčně dostupných distribuovaných databází požádá vývojáře o výběr mezi dvěma extrémními modely konzistence: *silná* konzistence *a* konečná konzistence. Azure Cosmos DB umožňuje vývojářům vybírat z pěti dobře definovaných modelů konzistence: *silná*, *ohraničená neaktuálnost*, *relace*, *konzistentní předpona* a *konečné*. Každý z těchto modelů konzistence je dobře definovaný, intuitivní a dá se použít pro konkrétní scénáře reálného světa. Každý z pěti modelů konzistence poskytuje přesné [dostupnosti a kompromisy na výkon](consistency-levels-tradeoffs.md) a jsou zajištěny prostřednictvím komplexního SLA. Následující jednoduché pokyny vám pomůžou při rozhodování v mnoha běžných scénářích.
+Distribuované databáze spoléhají na replikaci kvůli vysoké dostupnosti, nízké latenci nebo obojímu, se základními kompromisy mezi tím, co je konzistence čtení a dostupností, latencí a propustností. Většina komerčně dostupných distribuovaných databází požádá vývojáře o výběr mezi dvěma extrémními modely konzistence: silná *konzistence a* konečná konzistence. Azure Cosmos DB umožňuje vývojářům vybírat z pěti dobře definovaných modelů konzistence: *silná*, *ohraničená neaktuálnost*, *relace*, *konzistentní předpona* a *konečné*. Každý z těchto modelů konzistence je dobře definovaný, intuitivní a dá se použít pro konkrétní scénáře reálného světa. Každý z pěti modelů konzistence poskytuje přesné [dostupnosti a kompromisy na výkon](consistency-levels-tradeoffs.md) a jsou zajištěny prostřednictvím komplexního SLA. Následující jednoduché pokyny vám pomůžou při rozhodování v mnoha běžných scénářích.
 
 ## <a name="sql-api-and-table-api"></a>Rozhraní SQL API a rozhraní API pro tabulky
 
@@ -46,17 +46,17 @@ Pokud je vaše aplikace sestavená pomocí rozhraní SQL API nebo rozhraní API 
 
 V praxi můžete často získat silnější záruky konzistence. Záruky konzistence pro operaci čtení odpovídají aktuálnosti a objednání stavu databáze, který požadujete. Konzistence čtení je vázána na řazení a šíření operací zápisu a aktualizace.  
 
-* Pokud je úroveň konzistence nastavená na zastaralost, Cosmos DB garantuje, že klienti vždycky čtou hodnotu předchozího zápisu s prodlevou, která je ohraničená oknem zastaralosti.
+* Pokud je úroveň konzistence nastavená na **zastaralost**, Cosmos DB garantuje, že klienti vždycky čtou hodnotu předchozího zápisu s prodlevou, která je ohraničená oknem zastaralosti.
 
 * Pokud je úroveň konzistence nastavena na hodnotu **Strong**, je okno zastaralosti stejné jako nula a klientům je zaručeno, že si přečtou poslední potvrzenou hodnotu operace zápisu.
 
-* Pro zbývající tři úrovně konzistence je okno zastaralosti závislé na vašich úlohách. Například pokud nejsou k dispozici žádné operace zápisu v databázi, může operace čtení s úrovněmi konzistence s případnými, **relací**nebo **konzistentní předponou** vracet stejné výsledky jako operace čtení se silným stupněm konzistence.
+* Pro zbývající tři úrovně konzistence je okno zastaralosti závislé na vašich úlohách. Například pokud nejsou k dispozici žádné operace zápisu v databázi, může operace čtení s úrovněmi konzistence s **případnými**, **relací**nebo **konzistentní předponou** vracet stejné výsledky jako operace čtení se silným stupněm konzistence.
 
-Pokud je váš účet Azure Cosmos nakonfigurovaný s úrovní konzistence jinou než silná konzistence, můžete zjistit pravděpodobnost, že klienti mohou získat silné a konzistentní čtení pro vaše úlohy, a to tak, že se podíváte na *probabilistically ohraničené.* Služba PBS (zastaralá) metrika. Tato metrika se zveřejňuje v Azure Portal. Další informace najdete v tématu [monitorování metriky služby PBS (probabilistically Bounded)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Pokud je váš účet Azure Cosmos nakonfigurovaný s úrovní konzistence jinou než silná konzistence, můžete zjistit pravděpodobnost, že klienti mohou získat silné a konzistentní čtení pro vaše úlohy, a to tak, že se podíváte na metriku služby PBS ( *probabilistically Bounded* ). Tato metrika se zveřejňuje v Azure Portal. Další informace najdete v tématu [monitorování metriky služby PBS (probabilistically Bounded)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 Pravděpodobnostní s ohraničenou neaktuálností ukazuje, jak je to vaše konečná konzistence. Tato metrika poskytuje přehled o tom, jak často můžete získat silnější konzistenci než úroveň konzistence, kterou jste v účtu Azure Cosmos aktuálně nakonfigurovali. Jinými slovy můžete zobrazit pravděpodobnost (měřeno v milisekundách) pro získání silně konzistentních čtení pro kombinaci oblastí zápisu a čtení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o úrovních konzistence najdete v následujících článcích:
 

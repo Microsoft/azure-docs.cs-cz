@@ -1,32 +1,36 @@
 ---
 title: 'Rychlý Start: extrakce příjmových dat pomocí nástroje pro rozpoznávání formulářů v Pythonu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s Pythonem k extrakci dat z imagí prodejních příjmů.
+description: V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s Pythonem k extrakci dat z imagí prodejních příjmů v USA.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ef5c9e8d548e8acbcbdbe83f6e7c9965c798ad44
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1f9272ed498401b2f9fa9f559d77d4922f89ac84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446457"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce údajů o příjemcích pomocí REST API pro rozpoznávání formulářů v Pythonu
 
-V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s Pythonem k extrakci a identifikaci relevantních informací v prodejních příjemkách.
+V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s Pythonem k extrakci a identifikaci relevantních informací v prodejních příjemkách USA.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+> [!IMPORTANT]
+> V tomto rychlém startu se používá rozhraní API pro rozpoznávání formulářů v 2.0. Pokud vaše předplatné není ve `West US 2` nebo `West Europe` oblasti, je potřeba použít rozhraní API v 1.0. Místo toho postupujte v [rychlém startu v 1.0](./curl-train-extract-v1.md) .
+
+## <a name="prerequisites"></a>Požadavky
+
 K dokončení tohoto rychlého startu musíte mít:
 - Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
-- Adresa URL obrázku účtenky Pro tento rychlý Start můžete použít [ukázkový obrázek](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) .
+- Adresa URL obrázku účtenky Pro tento rychlý Start můžete použít [ukázkový obrázek](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) .
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
@@ -34,196 +38,432 @@ K dokončení tohoto rychlého startu musíte mít:
 
 ## <a name="analyze-a-receipt"></a>Analýza účtenky
 
-Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **analýzy pro příjem** pomocí níže uvedeného skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
+Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** pomocí níže uvedeného skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
 1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání vašeho formuláře.
 1. Nahraďte `<your receipt URL>` adresou URL obrázku účtenky.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
     ```python
-    import http.client, urllib.request, urllib.parse, urllib.error, base64
+    ########### Python Form Recognizer Async Layout #############
 
-    source = r"<your receipt URL>"
-    body = {"url":source}
-    body = json.dumps(body)
-
+    import json
+    import time
+    from requests import get, post
+    
+    # Endpoint URL
+    endpoint = r"<Endpoint>"
+    apim_key = "<subscription key>"
+    post_url = endpoint + "/formrecognizer/v2.0-preview/prebuilt/receipt/analyze"
+    source = r"<path to your receipt>"
+    
     headers = {
         # Request headers
-        'Content-Type': 'application/json',
-        'Ocp-Apim-Subscription-Key': '<subscription key>',
+        'Content-Type': '<file type>',
+        'Ocp-Apim-Subscription-Key': apim_key,
     }
-
+    
+    params = {
+        "includeTextDetails": True
+    }
+    
+    with open(source, "rb") as f:
+        data_bytes = f.read()
+    
     try:
-        conn = http.client.HTTPSConnection('<Endpoint>')
-        conn.request("POST", "/formrecognizer/v1.0-preview/prebuilt/receipt/asyncBatchAnalyze", body, headers)
-        response = conn.getresponse()
-        data = response.read()
-        operationURL = "" + response.getheader("Operation-Location")
-        print ("Operation-Location header: " + operationURL)
-        conn.close()
+        resp = post(url = post_url, data = data_bytes, headers = headers, params = params)
+        if resp.status_code != 202:
+            print("POST analyze failed:\n%s" % resp.text)
+            quit()
+        print("POST analyze succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["operation-location"]
     except Exception as e:
-        print(e)
-        exit()
+        print("POST analyze failed:\n%s" % str(e))
+        quit()
     ```
 
 1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-Receipts.py*.
 1. Otevřete okno příkazového řádku.
 1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-receipts.py`.
 
-Dostanete odpověď na `202 (Success)`, která obsahuje hlavičku **operace – umístění** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav operace a získat výsledky analýzy. V následujícím příkladu hodnoty je řetězec po `operations/` ID operace.
+Dostanete odpověď na `202 (Success)`, která obsahuje hlavičku **operace – umístění** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu hodnoty je řetězec po `operations/` ID operace.
 
 ```console
-https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-receipt-results"></a>Získání výsledků pro příjem
 
-Po volání funkce **analyzovat příjem** rozhraní API zavolejte rozhraní API **získat výsledek příjemky** , abyste získali stav operace a extrahovaná data. Do dolní části skriptu Pythonu přidejte následující kód. Tím se extrahuje hodnota ID operace a předá ji novému volání rozhraní API. Operace je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud nebudou k dispozici výsledky. Doporučujeme interval jednoho sekundy nebo více.
+Po volání funkce **analyzovat příjem** rozhraní API zavoláte rozhraní API pro **[získání výsledku analýzy](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** pro získání stavu operace a extrahovaná data. Do dolní části skriptu Pythonu přidejte následující kód. Použije se hodnota ID operace v novém volání rozhraní API. Tento skript volá rozhraní API v pravidelných intervalech, dokud nebudou k dispozici výsledky. Doporučujeme interval jednoho sekundy nebo více.
 
 ```python
-operationId = operationURL.split("operations/")[1]
-
-conn = http.client.HTTPSConnection('<Endpoint>')
-while True:
+n_tries = 10
+n_try = 0
+wait_sec = 6
+while n_try < n_tries:
     try:
-        conn.request("GET", f"/formrecognizer/v1.0-preview/prebuilt/receipt/operations/{operationId}", "", headers)
-        responseString = conn.getresponse().read().decode('utf-8')
-        responseDict = json.loads(responseString)
-        conn.close()
-        print(responseString)
-        if 'status' in responseDict and responseDict['status'] not in ['NotStarted','Running']:
-            break
-        time.sleep(1)
+        resp = get(url = get_url, headers = {"Ocp-Apim-Subscription-Key": apim_key})
+        resp_json = json.loads(resp.text)
+        if resp.status_code != 200:
+            print("GET Layout results failed:\n%s" % resp_json)
+            quit()
+        status = resp_json["status"]
+        if status == "succeeded":
+            print("Layout Analysis succeeded:\n%s" % resp_json)
+            quit()
+        if status == "failed":
+            print("Analysis failed:\n%s" % resp_json)
+            quit()
+        # Analysis still running. Wait and retry.
+        time.sleep(wait_sec)
+        n_try += 1     
     except Exception as e:
-        print(e)
-        exit()
+        msg = "GET analyze results failed:\n%s" % str(e)
+        print(msg)
+        quit()
 ```
 
 1. Uložte skript.
-1. Znovu použijte příkaz `python` ke spuštění ukázky. Například, `python form-recognize-analyze.py`.
+1. Znovu použijte příkaz `python` ke spuštění ukázky. Například, `python form-recognizer-receipts.py`.
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace analyzovat. Pak budou ve formátu JSON vytištěna extrahovaná textová data. Pole `"recognitionResults"` obsahuje všechny řádky textu, které byly extrahovány z účtenky, a pole `"understandingResults"` obsahuje informace o klíč/hodnota pro nejrelevantnější části příjmu.
+Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat příjem** . Pak budou ve formátu JSON vytištěna extrahovaná textová data. Pole `"recognitionResults"` obsahuje všechny řádky textu, které byly extrahovány z účtenky, a pole `"understandingResults"` obsahuje informace o klíč/hodnota pro nejrelevantnější části příjmu.
 
 Podívejte se na následující obrázek účtenky a příslušný výstup JSON. Výstup byl zkrácen z důvodu čitelnosti.
 
-![Účtenka z obchodu contoso](../media/contoso-receipt.png)
+![Účtenka z obchodu contoso](../media/contoso-allinone.jpg)
+
+Uzel `"recognitionResults"` obsahuje veškerý rozpoznaný text. Text je uspořádán podle stránky, potom podle řádku, podle jednotlivých slov. Uzel `"understandingResults"` obsahuje hodnoty specifické pro příjem, které model zjistil. Tady najdete užitečné páry klíč/hodnota, jako je daň, celková, obchodní adresa atd.
 
 ```json
-{
-  "status": "Succeeded",
-  "recognitionResults": [{
-    "page": 1,
-    "clockwiseOrientation": 0.36,
-    "width": 1688,
-    "height": 3000,
-    "unit": "pixel",
-    "lines": [{
-      "boundingBox": [616, 291, 1050, 278, 1053, 384, 620, 397],
-      "text": "Contoso",
-      "words": [{
-        "boundingBox": [619, 292, 1051, 284, 1052, 382, 620, 398],
-        "text": "Contoso"
-      }]
-    }, {
-      "boundingBox": [322, 588, 501, 600, 497, 655, 318, 643],
-      "text": "Contoso",
-      "words": [{
-        "boundingBox": [330, 590, 501, 602, 499, 654, 326, 644],
-        "text": "Contoso"
-      }]
-    },
-    ...
-    ]
-  }],
-  "understandingResults": [{
-    "pages": [1],
-    "fields": {
-      "Subtotal": {
-        "valueType": "numberValue",
-        "value": 1098.99,
-        "text": "1098.99",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/14/words/1"
-        }]
-      },
-      "Total": {
-        "valueType": "numberValue",
-        "value": 1203.39,
-        "text": "1203.39",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/18/words/1"
-        }]
-      },
-      "Tax": {
-        "valueType": "numberValue",
-        "value": 104.4,
-        "text": "$104.40",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/16/words/0"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/16/words/1"
-        }]
-      },
-      "MerchantAddress": {
-        "valueType": "stringValue",
-        "value": "123 Main Street Redmond, WA 98052",
-        "text": "123 Main Street Redmond, WA 98052",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/2/words/0"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/2/words/1"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/2/words/2"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/3/words/0"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/3/words/1"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/3/words/2"
-        }]
-      },
-      "MerchantName": {
-        "valueType": "stringValue",
-        "value": "Contoso",
-        "text": "Contoso",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/1/words/0"
-        }]
-      },
-      "MerchantPhoneNumber": {
-        "valueType": "stringValue",
-        "value": null,
-        "text": "123-456-7890",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/4/words/0"
-        }]
-      },
-      "TransactionDate": {
-        "valueType": "stringValue",
-        "value": "2019-06-10",
-        "text": "6/10/2019",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/5/words/0"
-        }]
-      },
-      "TransactionTime": {
-        "valueType": "stringValue",
-        "value": "13:59:00",
-        "text": "13:59",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/5/words/1"
-        }]
+{ 
+  "status":"succeeded",
+  "createdDateTime":"2019-12-17T04:11:24Z",
+  "lastUpdatedDateTime":"2019-12-17T04:11:32Z",
+  "analyzeResult":{ 
+    "version":"2.0.0",
+    "readResults":[ 
+      { 
+        "page":1,
+        "angle":0.6893,
+        "width":1688,
+        "height":3000,
+        "unit":"pixel",
+        "language":"en",
+        "lines":[ 
+          { 
+            "text":"Contoso",
+            "boundingBox":[ 
+              635,
+              510,
+              1086,
+              461,
+              1098,
+              558,
+              643,
+              604
+            ],
+            "words":[ 
+              { 
+                "text":"Contoso",
+                "boundingBox":[ 
+                  639,
+                  510,
+                  1087,
+                  461,
+                  1098,
+                  551,
+                  646,
+                  604
+                ],
+                "confidence":0.955
+              }
+            ]
+          },
+          ...
+        ]
       }
-    }
-  }]
+    ],
+    "documentResults":[ 
+      { 
+        "docType":"prebuilt:receipt",
+        "pageRange":[ 
+          1,
+          1
+        ],
+        "fields":{ 
+          "ReceiptType":{ 
+            "type":"string",
+            "valueString":"Itemized",
+            "confidence":0.692
+          },
+          "MerchantName":{ 
+            "type":"string",
+            "valueString":"Contoso Contoso",
+            "text":"Contoso Contoso",
+            "boundingBox":[ 
+              378.2,
+              292.4,
+              1117.7,
+              468.3,
+              1035.7,
+              812.7,
+              296.3,
+              636.8
+            ],
+            "page":1,
+            "confidence":0.613,
+            "elements":[ 
+              "#/readResults/0/lines/0/words/0",
+              "#/readResults/0/lines/1/words/0"
+            ]
+          },
+          "MerchantAddress":{ 
+            "type":"string",
+            "valueString":"123 Main Street Redmond, WA 98052",
+            "text":"123 Main Street Redmond, WA 98052",
+            "boundingBox":[ 
+              302,
+              675.8,
+              848.1,
+              793.7,
+              809.9,
+              970.4,
+              263.9,
+              852.5
+            ],
+            "page":1,
+            "confidence":0.99,
+            "elements":[ 
+              "#/readResults/0/lines/2/words/0",
+              "#/readResults/0/lines/2/words/1",
+              "#/readResults/0/lines/2/words/2",
+              "#/readResults/0/lines/3/words/0",
+              "#/readResults/0/lines/3/words/1",
+              "#/readResults/0/lines/3/words/2"
+            ]
+          },
+          "MerchantPhoneNumber":{ 
+            "type":"phoneNumber",
+            "valuePhoneNumber":"+19876543210",
+            "text":"987-654-3210",
+            "boundingBox":[ 
+              278,
+              1004,
+              656.3,
+              1054.7,
+              646.8,
+              1125.3,
+              268.5,
+              1074.7
+            ],
+            "page":1,
+            "confidence":0.99,
+            "elements":[ 
+              "#/readResults/0/lines/4/words/0"
+            ]
+          },
+          "TransactionDate":{ 
+            "type":"date",
+            "valueDate":"2019-06-10",
+            "text":"6/10/2019",
+            "boundingBox":[ 
+              265.1,
+              1228.4,
+              525,
+              1247,
+              518.9,
+              1332.1,
+              259,
+              1313.5
+            ],
+            "page":1,
+            "confidence":0.99,
+            "elements":[ 
+              "#/readResults/0/lines/5/words/0"
+            ]
+          },
+          "TransactionTime":{ 
+            "type":"time",
+            "valueTime":"13:59:00",
+            "text":"13:59",
+            "boundingBox":[ 
+              541,
+              1248,
+              677.3,
+              1261.5,
+              668.9,
+              1346.5,
+              532.6,
+              1333
+            ],
+            "page":1,
+            "confidence":0.977,
+            "elements":[ 
+              "#/readResults/0/lines/5/words/1"
+            ]
+          },
+          "Items":{ 
+            "type":"array",
+            "valueArray":[ 
+              { 
+                "type":"object",
+                "valueObject":{ 
+                  "Quantity":{ 
+                    "type":"number",
+                    "text":"1",
+                    "boundingBox":[ 
+                      245.1,
+                      1581.5,
+                      300.9,
+                      1585.1,
+                      295,
+                      1676,
+                      239.2,
+                      1672.4
+                    ],
+                    "page":1,
+                    "confidence":0.92,
+                    "elements":[ 
+                      "#/readResults/0/lines/7/words/0"
+                    ]
+                  },
+                  "Name":{ 
+                    "type":"string",
+                    "valueString":"Cappuccino",
+                    "text":"Cappuccino",
+                    "boundingBox":[ 
+                      322,
+                      1586,
+                      654.2,
+                      1601.1,
+                      650,
+                      1693,
+                      317.8,
+                      1678
+                    ],
+                    "page":1,
+                    "confidence":0.923,
+                    "elements":[ 
+                      "#/readResults/0/lines/7/words/1"
+                    ]
+                  },
+                  "TotalPrice":{ 
+                    "type":"number",
+                    "valueNumber":2.2,
+                    "text":"$2.20",
+                    "boundingBox":[ 
+                      1107.7,
+                      1584,
+                      1263,
+                      1574,
+                      1268.3,
+                      1656,
+                      1113,
+                      1666
+                    ],
+                    "page":1,
+                    "confidence":0.918,
+                    "elements":[ 
+                      "#/readResults/0/lines/8/words/0"
+                    ]
+                  }
+                }
+              },
+              ...
+            ]
+          },
+          "Subtotal":{ 
+            "type":"number",
+            "valueNumber":11.7,
+            "text":"11.70",
+            "boundingBox":[ 
+              1146,
+              2221,
+              1297.3,
+              2223,
+              1296,
+              2319,
+              1144.7,
+              2317
+            ],
+            "page":1,
+            "confidence":0.955,
+            "elements":[ 
+              "#/readResults/0/lines/13/words/1"
+            ]
+          },
+          "Tax":{ 
+            "type":"number",
+            "valueNumber":1.17,
+            "text":"1.17",
+            "boundingBox":[ 
+              1190,
+              2359,
+              1304,
+              2359,
+              1304,
+              2456,
+              1190,
+              2456
+            ],
+            "page":1,
+            "confidence":0.979,
+            "elements":[ 
+              "#/readResults/0/lines/15/words/1"
+            ]
+          },
+          "Tip":{ 
+            "type":"number",
+            "valueNumber":1.63,
+            "text":"1.63",
+            "boundingBox":[ 
+              1094,
+              2479,
+              1267.7,
+              2485,
+              1264,
+              2591,
+              1090.3,
+              2585
+            ],
+            "page":1,
+            "confidence":0.941,
+            "elements":[ 
+              "#/readResults/0/lines/17/words/1"
+            ]
+          },
+          "Total":{ 
+            "type":"number",
+            "valueNumber":14.5,
+            "text":"$14.50",
+            "boundingBox":[ 
+              1034.2,
+              2617,
+              1387.5,
+              2638.2,
+              1380,
+              2763,
+              1026.7,
+              2741.8
+            ],
+            "page":1,
+            "confidence":0.985,
+            "elements":[ 
+              "#/readResults/0/lines/19/words/0"
+            ]
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili nástroj pro rozpoznávání formulářů REST API s Pythonem k vytvoření výukového modelu a jeho spuštění ve vzorovém scénáři. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
+V tomto rychlém startu jste k extrakci obsahu prodejní příjemky použili REST API pro rozpoznávání formuláře pomocí Pythonu. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)
+> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

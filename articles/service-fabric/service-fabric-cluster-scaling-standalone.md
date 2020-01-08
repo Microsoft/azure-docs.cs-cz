@@ -1,24 +1,16 @@
 ---
-title: Škálování samostatného clusteru pro Azure Service Fabric | Microsoft Docs
+title: Škálování samostatného clusteru v Azure Service Fabric
 description: Přečtěte si, jak škálovat nebo vypínat samostatné clustery, nebo jejich Service Fabric škálování nebo snížení kapacity.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: eedf80ec82a748f5da8e51aed8b4d403dffe4169
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451913"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Škálování Service Fabric samostatných clusterů
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou obsahovat potenciálně tisíce uzlů. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně (změnit počet uzlů) nebo vertikálně (změnit prostředky uzlů).  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -28,12 +20,12 @@ Proč škálovat cluster? Aplikace vyžaduje změnu v průběhu času.  Možná 
 ## <a name="scaling-in-and-out-or-horizontal-scaling"></a>Horizontální navýšení a zmenšení nebo horizontální škálování
 Změní počet uzlů v clusteru.  Jakmile se nové uzly připojí ke clusteru, Správce prostředků k nim [cluster](service-fabric-cluster-resource-manager-introduction.md) přesune služby, které snižují zatížení stávajících uzlů.  Můžete také snížit počet uzlů, pokud se prostředky clusteru nepoužívají efektivně.  Když uzly opustí cluster, služby se z těchto uzlů pohybují a zatížení zbývajících uzlů se zvýší.  Snížení počtu uzlů v clusteru spuštěném v Azure vám může ušetřit peníze, protože platíte za počet virtuálních počítačů, které používáte, a ne na těchto virtuálních počítačích.  
 
-- Výhody Nekonečná škála teoreticky.  Pokud je vaše aplikace navržena pro škálovatelnost, můžete povolit bez omezení nárůst přidáním dalších uzlů.  Nástroje v cloudovém prostředí usnadňují přidávání a odebírání uzlů, takže je možné snadno upravit kapacitu a platíte jenom za prostředky, které využijete.  
-- Nevýhody Aplikace musí být [navržené pro škálovatelnost](service-fabric-concepts-scalability.md).  Aplikační databáze a trvalosti mohou vyžadovat i další strukturální práci pro škálování.  [Spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md) v Service Fabric stavové služby, ale výrazně usnadňují škálování dat aplikací.
+- Výhody: nekonečná škála teoreticky.  Pokud je vaše aplikace navržena pro škálovatelnost, můžete povolit bez omezení nárůst přidáním dalších uzlů.  Nástroje v cloudovém prostředí usnadňují přidávání a odebírání uzlů, takže je možné snadno upravit kapacitu a platíte jenom za prostředky, které využijete.  
+- Nevýhody: aplikace musí být [navržené pro škálovatelnost](service-fabric-concepts-scalability.md).  Aplikační databáze a trvalosti mohou vyžadovat i další strukturální práci pro škálování.  [Spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md) v Service Fabric stavové služby, ale výrazně usnadňují škálování dat aplikací.
 
 Samostatné clustery umožňují nasazení Service Fabric clusteru v místním prostředí nebo ve vámi zvoleném poskytovateli cloudu.  Typy uzlů se skládají z fyzických počítačů nebo virtuálních počítačů v závislosti na vašem nasazení. Ve srovnání s clustery, které běží v Azure, se proces škálování samostatného clusteru trochu nezabývá.  Musíte ručně změnit počet uzlů v clusteru a pak spustit upgrade konfigurace clusteru.
 
-Odebrání uzlů může iniciovat více upgradů. Některé uzly jsou označeny `IsSeedNode=”true”` značkou a lze je identifikovat pomocí dotazu na manifest clusteru pomocí příkazu [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Odebrání takových uzlů může trvat déle než jiné, protože počáteční uzly se v takových scénářích musí pohybovat. Cluster musí udržovat minimálně tři uzly typu primární uzel.
+Odebrání uzlů může iniciovat více upgradů. Některé uzly jsou označeny `IsSeedNode=”true”` značkou a lze je identifikovat pomocí dotazování manifestu clusteru pomocí příkazu [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Odebrání takových uzlů může trvat déle než jiné, protože počáteční uzly se v takových scénářích musí pohybovat. Cluster musí udržovat minimálně tři uzly typu primární uzel.
 
 > [!WARNING]
 > Doporučujeme, abyste u clusteru nesnížili počet uzlů pod [Velikost clusteru úrovně spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) . To bude mít vliv na schopnost Service Fabric systémových služeb se replikovat napříč clusterem a pak bude cluster destabilizovat nebo může zničit.
@@ -47,8 +39,8 @@ Další informace najdete v tématu [škálování samostatného clusteru](servi
 
 ## <a name="scaling-up-and-down-or-vertical-scaling"></a>Vertikální škálování a svislé škálování 
 Změní prostředky (CPU, paměť nebo úložiště) uzlů v clusteru.
-- Výhody Architektura softwaru a aplikace zůstává stejná.
-- Nevýhody Omezené škálování, protože existuje omezení, kolik můžete zvýšit množství prostředků na jednotlivých uzlech. Výpadky, protože budete muset přebírat fyzické nebo virtuální počítače offline, aby bylo možné přidat nebo odebrat prostředky.
+- Výhody: architektura softwaru a aplikací zůstává stejná.
+- Nevýhody: omezené škálování, protože existuje omezení, kolik můžete zvýšit množství prostředků na jednotlivých uzlech. Výpadky, protože budete muset přebírat fyzické nebo virtuální počítače offline, aby bylo možné přidat nebo odebrat prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si o [škálovatelnosti aplikací](service-fabric-concepts-scalability.md).

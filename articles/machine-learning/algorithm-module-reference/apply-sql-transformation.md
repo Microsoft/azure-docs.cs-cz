@@ -1,7 +1,7 @@
 ---
 title: Použití transformace SQL
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul použití transformace SQL ve službě Azure Machine Learning ke spuštění dotazu SQLite na vstupních datových sadách pro transformaci dat.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul použití transformace SQL v Azure Machine Learning ke spuštění dotazu SQLite na vstupních datových sadách pro transformaci dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456523"
 ---
 # <a name="apply-sql-transformation"></a>Použití transformace SQL
 
@@ -33,7 +33,7 @@ Pomocí modulu použít transformaci SQL můžete:
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>Postup konfigurace použití transformace SQL  
 
-Modul může jako vstupy trvat až tři datové sady. Když odkazujete na datové sady připojené ke každému vstupnímu portu, musíte použít názvy `t1`, `t2` a `t3`. Číslo tabulky označuje index vstupního portu.  
+Modul může jako vstupy trvat až tři datové sady. Když odkazujete na datové sady připojené ke každému vstupnímu portu, musíte použít názvy `t1`, `t2`a `t3`. Číslo tabulky označuje index vstupního portu.  
   
 Zbývající parametr je dotaz SQL, který používá syntaxi SQLite. Při zadávání více řádků v textovém poli **skript SQL** ukončete jednotlivé příkazy středníkem. V opačném případě jsou zalomení řádků převedeny na mezery.  
 
@@ -55,13 +55,13 @@ I když SQLite podporuje většinu standardu ANSI SQL, nezahrnuje mnoho funkcí 
   
 - `LEFT OUTER JOIN` je implementován, ale není `RIGHT OUTER JOIN` nebo `FULL OUTER JOIN`.  
 
-- Příkazy `RENAME TABLE` a `ADD COLUMN` můžete použít spolu s příkazem `ALTER TABLE`, ale jiné klauzule nejsou podporovány, včetně `DROP COLUMN`, `ALTER COLUMN` a `ADD CONSTRAINT`.  
+- Příkazy `RENAME TABLE` a `ADD COLUMN` můžete použít spolu s příkazem `ALTER TABLE`, ale jiné klauzule nejsou podporovány, včetně `DROP COLUMN`, `ALTER COLUMN`a `ADD CONSTRAINT`.  
   
-- Můžete vytvořit zobrazení v rámci SQLite, ale zobrazení jsou až jen pro čtení. Nelze provést příkaz `DELETE`, `INSERT` nebo `UPDATE` pro zobrazení. Můžete ale vytvořit Trigger, který se aktivuje při pokusu o `DELETE`, `INSERT` nebo `UPDATE` zobrazení a provádění dalších operací v těle triggeru.  
+- Můžete vytvořit zobrazení v rámci SQLite, ale zobrazení jsou až jen pro čtení. Nelze provést příkaz `DELETE`, `INSERT`nebo `UPDATE` pro zobrazení. Můžete ale vytvořit Trigger, který se aktivuje při pokusu o `DELETE`, `INSERT`nebo `UPDATE` zobrazení a provádění dalších operací v těle triggeru.  
   
 
 Kromě seznamu nepodporovaných funkcí poskytovaných na oficiálním webu SQLite je na následujícím wikiwebu uveden seznam dalších nepodporovaných funkcí: [SQLite – nepodporovaný SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
     
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

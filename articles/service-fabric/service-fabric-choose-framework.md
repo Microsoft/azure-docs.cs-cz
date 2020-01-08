@@ -1,65 +1,56 @@
 ---
-title: Přehled programovacího modelu Service Fabric | Dokumentace Microsoftu
-description: 'Service Fabric nabízí dvě architektury pro vytváření služeb: rozhraní objektu actor a rozhraní služby. Nabízejí různé kompromisy v jednoduchost a řízení.'
-services: service-fabric
-documentationcenter: .net
+title: Přehled programovacího modelu Service Fabric
+description: 'Service Fabric nabízí dvě architektury pro vytváření služeb: rozhraní actor Framework a rozhraní služeb. Nabízejí v jednoduchosti a řízení různé kompromisy.'
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d764cbe2df78cb9029a4109caa2998ddded5d6ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8359a8f7e3652965fffd2d9be1d5c032e9f88387
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60341960"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377017"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Přehled programovacího modelu Service Fabric
-Service Fabric nabízí několik způsobů, jak zapisovat a spravovat vaše služby. Služby můžete zvolit použití rozhraní API služby Service Fabric plně využít funkce platformy a aplikace rozhraní. Služby mohou být také všechny zkompilovaný spustitelný program napsané v libovolném jazyce nebo kód spuštěný v kontejneru hostovaná v clusteru Service Fabric.
+Service Fabric nabízí několik způsobů, jak psát a spravovat vaše služby. Služby mohou používat rozhraní Service Fabric API k plnému využití funkcí platformy a architektur aplikací. Služby může být také spustitelný spustitelný program napsaný v jakémkoli jazyce nebo kódu spuštěném v kontejneru hostovaném na Service Fabricm clusteru.
 
 ## <a name="guest-executables"></a>Spustitelné soubory typu Host
-A [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.md) je existující libovolný spustitelný (napsané v libovolném jazyce), který může běžet jako služba ve vaší aplikaci. Spustitelné soubory typu Host přímo volat rozhraní API služby Service Fabric SDK. Ale jsou stále využívat funkce, které platforma nabízí, jako je například služba zjistitelnost, vlastních stavových a načíst reporting voláním rozhraní API REST vystavené Service Fabric. Mají také podporu životního cyklu celou aplikaci.
+[Spustitelný soubor hosta](service-fabric-guest-executables-introduction.md) je existující libovolný spustitelný soubor (napsaný v jakémkoli jazyce), který je možné spustit jako službu ve vaší aplikaci. Spustitelné soubory hosta přímo nevolají rozhraní API sady Service Fabric SDK. Stále však využívají funkce, které nabízí platforma, jako je například zjistitelnost služeb, vlastní stav a generování sestav voláním rozhraní REST API vystavených Service Fabric. Mají také úplnou podporu životního cyklu aplikací.
 
-Začínáme s spustitelné soubory hosta nasazením první [aplikace spustitelná hostem](service-fabric-deploy-existing-app.md).
+Začněte se spustitelnými soubory hosta nasazením první [spustitelné aplikace hosta](service-fabric-deploy-existing-app.md).
 
-## <a name="containers"></a>Containers
-Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric dokáže nasadit také služby v [kontejnery](service-fabric-containers-overview.md). Service Fabric podporuje nasazování kontejnerů Linuxu a kontejnery Windows ve Windows serveru 2016. Image kontejneru můžete získaných z jakékoli úložiště kontejnerů a nasadili do počítače. Stávající aplikace můžete nasadit jako spustitelných souborů hosta a Bezstavová nebo stavová spolehlivých služeb Service Fabric Reliable Actors v kontejnerech a je možné kombinovat služby v procesech a služby v kontejnerech ve stejné aplikaci.
+## <a name="containers"></a>Kontejnery
+Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric mohou také nasazovat služby v [kontejnerech](service-fabric-containers-overview.md). Service Fabric podporuje nasazení kontejnerů Linux a kontejnerů Windows v systému Windows Server 2016. Image kontejnerů se dají z libovolného úložiště kontejnerů načíst a nasadit do počítače. Stávající aplikace můžete nasadit jako spustitelné soubory typu Host, Service Fabric spolehlivé nebo stavové služby nebo Reliable Actors v kontejnerech a můžete kombinovat služby v procesech a službách v kontejnerech ve stejné aplikaci.
 
-[Další informace o uzavření do kontejneru služby ve Windows nebo Linux](service-fabric-deploy-container.md)
+[Další informace o uzavření vašich služeb v systému Windows nebo Linux](service-fabric-deploy-container.md)
 
 ## <a name="reliable-services"></a>Reliable Services
-Reliable Services je architektura nižšími nároky pro zápis služby, které integrace s platformou Service Fabric a využívat výhod celé sady funkcí platformy. Reliable Services poskytují minimální sadu rozhraní API, která umožňují modulu runtime Service Fabric pro správu životního cyklu služeb a, která umožňují vašich služeb k interakci s modulem runtime. Aplikační framework je minimální, získáte plnou kontrolu nad možností návrhu a implementace a je možné k hostování všechny ostatní aplikační platformy, jako je ASP.NET Core.
+Reliable Services je nevýznamová architektura pro psaní služeb, které se integrují s Service Fabricou platformou a využívají kompletní sadu funkcí platformy. Reliable Services poskytují minimální sadu rozhraní API, která umožňuje modulu runtime Service Fabric spravovat životní cyklus vašich služeb a umožňuje vašim službám pracovat s modulem runtime. Aplikační rozhraní je minimální a poskytuje plnou kontrolu nad návrhem a implementacemi a lze ji použít k hostování libovolné jiné aplikační architektury, například ASP.NET Core.
 
-Reliable Services může být bezstavové, podobně jako na většině platforem služby, jako jsou třeba webové servery, ve kterých každá instance služby je vytvářeny na stejné úrovni a stát se ukládají v externí řešení, jako je Azure DB nebo Azure Table Storage.
+Reliable Services může být Bezstavová, podobně jako u většiny platforem služeb, jako jsou například webové servery, ve kterých je každá instance služby vytvořena stejně a stav je trvalý v externím řešení, jako je například Azure DB nebo Azure Table Storage.
 
-Reliable Services může být také stavové, výhradně pro Service Fabric, ve kterém je trvalý stav přímo v službu samotnou použitím spolehlivých kolekcí. Stav vytvoření vysoce dostupné prostřednictvím replikace a distribuovaných přes dělení, všechny spravované automaticky pomocí Service Fabric.
+Reliable Services může být taky stavová, exkluzivní pro Service Fabric, kde stav je trvale přímo ve službě využívající spolehlivé kolekce. Stav je vysoce dostupný prostřednictvím replikace a distribuuje se prostřednictvím dělení, a to vše spravované automaticky pomocí Service Fabric.
 
-[Další informace o modelu Reliable Services](service-fabric-reliable-services-introduction.md) nebo začít tím, že [zápis první spolehlivé služby](service-fabric-reliable-services-quick-start.md).
+[Přečtěte si další informace o Reliable Services](service-fabric-reliable-services-introduction.md) nebo Začněte vytvořením [první spolehlivé služby](service-fabric-reliable-services-quick-start.md).
 
 ## <a name="aspnet-core"></a>ASP.NET Core
-ASP.NET Core je nové open-source a multiplatformní rozhraní pro vytváření moderních cloudových připojeného k Internetu aplikací, jako jsou webové aplikace, aplikace IoT a mobilních back-endů. Service Fabric se integruje s ASP.NET Core, ASP.NET Core bezstavových a stavových můžete psát aplikace, které budou využívat Reliable Collections a možnosti pokročilé Orchestrace Service Fabric.
+ASP.NET Core je nové rozhraní Open Source a platforma pro různé platformy pro vytváření moderních cloudových aplikací připojených k Internetu, jako jsou webové aplikace, aplikace IoT a mobilní back-endy. Service Fabric se integruje s ASP.NET Core, takže můžete napsat bezstavové a stavové ASP.NET Core aplikace, které využívají spolehlivé kolekce a možnosti pokročilé orchestrace Service Fabric.
 
-[Další informace o ASP.NET Core v Service Fabric](service-fabric-reliable-services-communication-aspnetcore.md) nebo začít tím, že [zápis svou první aplikaci ASP.NET Core Service Fabric](service-fabric-tutorial-create-dotnet-app.md).
+[Přečtěte si další informace o ASP.NET Core v Service Fabric](service-fabric-reliable-services-communication-aspnetcore.md) nebo začněte tím, že [napíšete první ASP.NET Core Service Fabric aplikaci](service-fabric-tutorial-create-dotnet-app.md).
 
 ## <a name="reliable-actors"></a>Reliable Actors
-Staví na modelu Reliable Services, Reliable Actors rozhraní framework je aplikační rozhraní, která implementuje vzoru virtuálního objektu Actor, podle návrhu vzor objektu actor. Reliable Actors rozhraní framework používá nezávislých jednotek výpočetního výkonu a stavu s názvem actors spuštění s jedním vláknem. Reliable Actors rozhraní poskytuje integrované komunikace pro objekty actor a přednastaveným stavu konfigurace trvalosti a horizontální navýšení kapacity.
+Technologie Reliable Actors, která je postavená na Reliable Services, je rozhraní aplikace, které implementuje vzor virtuálního objektu actor na základě vzoru návrhu objektu actor. Rozhraní Reliable actor používá nezávislé jednotky COMPUTE a State s jedním vláknovým spouštěním nazvaným Actors. Rozhraní Reliable Actors poskytuje vestavěnou komunikaci pro objekty actor a nastavení trvalosti a trvalého stavu a škálování na více systémů.
 
-Protože Reliable Actors je aplikační rozhraní založené na modelu Reliable Services, je plně integrovaná s platformou Service Fabric a výhody úplnou sadu funkcí nabízenými touto platformou.
+Vzhledem k tomu, že Reliable Actors je aplikační architektura postavená na Reliable Services, je plně integrovaná s platformou Service Fabric a výhodami z kompletní sady funkcí nabízených platformou.
 
-[Další informace o Reliable Actors](service-fabric-reliable-actors-introduction.md) nebo začít tím, že [zápis první služby Reliable Actors](service-fabric-reliable-actors-get-started.md)
+[Přečtěte si další informace o Reliable Actors](service-fabric-reliable-actors-introduction.md) nebo Začněte vytvořením [první služby Reliable actor](service-fabric-reliable-actors-get-started.md) .
 
 
-[Vytvoření front-endové služby pomocí ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
+[Sestavení front-endové služby pomocí ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## <a name="next-steps"></a>Další postup
-[Přehled Service Fabric a kontejnery](service-fabric-containers-overview.md)
+## <a name="next-steps"></a>Další kroky
+[Přehled Service Fabric a kontejnerů](service-fabric-containers-overview.md)
 
 [Přehled Reliable Services](service-fabric-reliable-services-introduction.md)
 

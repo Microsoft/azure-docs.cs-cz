@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3c6fd3de43f80c4cbe8f1f822faebad861c64d64
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496392"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610603"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -43,26 +43,27 @@ Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív p
 
 Služba Azure Sentinel podporuje následující metody datového připojení:
 
-- **Služby Microsoftu**:<br> Služby společnosti Microsoft jsou nativně propojeny, což využívá Azure Foundation k předem připravené integraci, lze pomocí několika kliknutí připojit následující řešení:
+- **Integrace služeb s**službami:<br> Některé služby jsou propojené nativně, jako jsou AWS a služby Microsoftu, využívají tyto služby Azure Foundation k předem připravené integraci. následující řešení je možné připojit několika kliknutími:
+    - [Amazon Web Services – CloudTrail](connect-aws.md)
     - [Office 365](connect-office-365.md)
     - [Protokoly a přihlášení k auditu Azure AD](connect-azure-active-directory.md)
     - [Aktivita Azure](connect-azure-activity.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Rozšířená ochrana před internetovými útoky Azure](connect-azure-atp.md)
+    - [Azure Advanced Threat Protection](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Události zabezpečení systému Windows](connect-windows-security-events.md) 
     - [Brána Windows Firewall](connect-windows-firewall.md)
 
 - **Externí řešení prostřednictvím rozhraní API**: některé zdroje dat jsou propojené pomocí rozhraní API, která jsou k dispozici v připojeném zdroji dat. Většina technologií zabezpečení obvykle poskytuje sadu rozhraní API, pomocí kterých lze načíst protokoly událostí. Rozhraní API se připojují k Azure Sentinel a shromažďují konkrétní datové typy a odesílají je do Azure Log Analytics. Mezi zařízení připojená přes rozhraní API patří:
     - [Barracuda](connect-barracuda.md)
-    - [Společnost](connect-symantec.md)
+    - [Symantec](connect-symantec.md)
     - [Citrix Analytics (zabezpečení)](connect-citrix-analytics.md)
 
 - **Externí řešení prostřednictvím agenta**: službu Azure Sentinel je možné připojit ke všem dalším zdrojům dat, které mohou provádět streamování protokolů v reálném čase pomocí protokolu syslog prostřednictvím agenta. <br>Většina zařízení používá protokol syslog k posílání zpráv o událostech, které obsahují samotný protokol a data o protokolu. Formát protokolů se liší, ale většina zařízení podporuje formátování založené na formátu CEF (Common Event Format) pro data protokolů. <br>Agent Azure Sentinel, který je založen na agentu Log Analytics, převede protokoly formátované CEF do formátu, který lze ingestovat pomocí Log Analytics. V závislosti na typu zařízení se agent nainstaluje buď přímo na zařízení, nebo na vyhrazený server Linux. Agent pro Linux přijímá události z procesu démona syslog přes protokol UDP, ale pokud se očekává, že počítač se systémem Linux shromáždí velký objem událostí syslog, pošle se přes protokol TCP z procesu démona syslog do agenta a tam, kde Log Analytics.
     - Brány firewall, proxy servery a koncové body:
-        - [Stisknutím](connect-f5.md)
+        - [F5](connect-f5.md)
         - [Kontrolní bod](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Fortinet](connect-fortinet.md)
@@ -95,39 +96,39 @@ Případně můžete agenta nasadit ručně na existující virtuální počíta
 
 | **Datový typ** | **Jak se připojit** | **Datový konektor?** | **Komentáře** |
 |------|---------|-------------|------|
-| AWSCloudTrail | [Připojit AWS](connect-aws.md) | ICES | |
-| AzureActivity | Přehled [připojení aktivit](connect-azure-activity.md) a [protokolů aktivit](../azure-monitor/platform/activity-logs-overview.md) Azure| ICES | |
-| AuditLogs | [Připojit Azure AD](connect-azure-active-directory.md)  | ICES | |
-| SigninLogs | [Připojit Azure AD](connect-azure-active-directory.md)  | ICES | |
-| AzureFirewall |[Diagnostika Azure](../firewall/tutorial-diagnostics.md) | ICES | |
-| InformationProtectionLogs_CL  | [Sestavy Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Připojit Azure Information Protection](connect-azure-information-protection.md)  | ICES | To obvykle používá funkci **InformationProtectionEvents** společně s datovým typem. Další informace najdete v tématu [Postup úpravy sestav a vytváření vlastních dotazů](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) .|
+| AWSCloudTrail | [Připojení AWS](connect-aws.md) | V | |
+| AzureActivity | Přehled [připojení aktivit](connect-azure-activity.md) a [protokolů aktivit](../azure-monitor/platform/activity-logs-overview.md) Azure| V | |
+| AuditLogs | [Připojit Azure AD](connect-azure-active-directory.md)  | V | |
+| SigninLogs | [Připojit Azure AD](connect-azure-active-directory.md)  | V | |
+| AzureFirewall |[Diagnostika Azure](../firewall/tutorial-diagnostics.md) | V | |
+| InformationProtectionLogs_CL  | [Sestavy Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Připojit Azure Information Protection](connect-azure-information-protection.md)  | V | To obvykle používá funkci **InformationProtectionEvents** společně s datovým typem. Další informace najdete v tématu [Postup úpravy sestav a vytváření vlastních dotazů](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) .|
 | AzureNetworkAnalytics_CL  | [Analýza](../network-watcher/traffic-analytics.md) provozu [analytického schématu](../network-watcher/traffic-analytics.md) provozu  | | |
-| CommonSecurityLog  | [Připojit CEF](connect-common-event-format.md)  | ICES | |
-| OfficeActivity | [Připojit sadu Office 365](connect-office-365.md) | ICES | |
-| SecurityEvents | [Připojit události zabezpečení systému Windows](connect-windows-security-events.md)  | ICES | Sešity nezabezpečených protokolů najdete v tématu [Nastavení sešitu nezabezpečených protokolů](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/) .  |
-| Syslog | [Připojit syslog](connect-syslog.md) | ICES | |
-| Firewall webových aplikací Microsoft (WAF) – (AzureDiagnostics) |[Připojení brány firewall webových aplikací od Microsoftu](connect-microsoft-waf.md) | ICES | |
-| SymantecICDx_CL | [Připojit Symantec](connect-symantec.md) | ICES | |
-| ThreatIntelligenceIndicator  | [Propojit analýzu hrozeb](connect-threat-intelligence.md)  | ICES | |
+| CommonSecurityLog  | [Připojit CEF](connect-common-event-format.md)  | V | |
+| OfficeActivity | [Připojení Office 365](connect-office-365.md) | V | |
+| SecurityEvents | [Připojit události zabezpečení systému Windows](connect-windows-security-events.md)  | V | Sešity nezabezpečených protokolů najdete v tématu [Nastavení sešitu nezabezpečených protokolů](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/) .  |
+| Syslog | [Připojit syslog](connect-syslog.md) | V | |
+| Firewall webových aplikací Microsoft (WAF) – (AzureDiagnostics) |[Připojení brány firewall webových aplikací od Microsoftu](connect-microsoft-waf.md) | V | |
+| SymantecICDx_CL | [Připojit Symantec](connect-symantec.md) | V | |
+| ThreatIntelligenceIndicator  | [Propojit analýzu hrozeb](connect-threat-intelligence.md)  | V | |
 | VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Mapa služby Azure Monitor](../azure-monitor/insights/service-map.md)<br>[Azure Monitor připojování k VIRTUÁLNÍm počítačům](../azure-monitor/insights/vminsights-onboard.md) <br> [Povolení Azure Monitorch přehledů virtuálních počítačů](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Použití samostatného připojení k virtuálnímu počítači](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [Použití při připojování prostřednictvím zásad](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| × | Sešit VM Insights  |
-| DnsEvents | [Připojit DNS](connect-dns.md) | ICES | |
+| DnsEvents | [Připojit DNS](connect-dns.md) | V | |
 | W3CIISLog | [Připojit protokoly služby IIS](../azure-monitor/platform/data-sources-iis-logs.md)  | × | |
 | WireData | [Připojení dat o kabelech](../azure-monitor/insights/wire-data.md) | × | |
-| WindowsFirewall | [Připojit bránu Windows Firewall](connect-windows-firewall.md) | ICES | |
-| AADIP SecurityAlert  | [Připojení Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | ICES | |
-| AATP SecurityAlert  | [Připojení Azure ATP](connect-azure-atp.md) | ICES | |
-| SecurityAlert ASC  | [Připojit Azure Security Center](connect-azure-security-center.md)  | ICES | |
-| MCAS SecurityAlert  | [Připojit Microsoft Cloud App Security](connect-cloud-app-security.md)  | ICES | |
+| WindowsFirewall | [Připojit bránu Windows Firewall](connect-windows-firewall.md) | V | |
+| AADIP SecurityAlert  | [Připojení Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | V | |
+| AATP SecurityAlert  | [Připojení Azure ATP](connect-azure-atp.md) | V | |
+| SecurityAlert ASC  | [Připojit Azure Security Center](connect-azure-security-center.md)  | V | |
+| MCAS SecurityAlert  | [Připojit Microsoft Cloud App Security](connect-cloud-app-security.md)  | V | |
 | SecurityAlert | | | |
 | Sysmon (událost) | [Připojit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Připojit události systému Windows](../azure-monitor/platform/data-sources-windows-events.md) <br> [Získání analyzátoru Sysmon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| × | Kolekce Sysmon není ve výchozím nastavení ve virtuálních počítačích nainstalovaná. Další informace o tom, jak nainstalovat agenta Sysmon, najdete v tématu [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [Automatizace inventáře virtuálních počítačů](../automation/automation-vm-inventory.md)| × | |
 | ConfigurationChange  | [Automatizace sledování virtuálních počítačů](../automation/change-tracking.md) | × | |
 | F5 BIG-IP | [Připojit F5 – BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel.md)  | × | |
 | McasShadowItReporting  |  | × | |
-| Barracuda_CL | [Připojit Barracuda](connect-barracuda.md) | ICES | |
+| Barracuda_CL | [Připojit Barracuda](connect-barracuda.md) | V | |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Abyste mohli začít používat službu Azure Sentinel, potřebujete Microsoft Azure předplatné. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+- Abyste mohli začít používat službu Azure Sentinel, potřebujete Microsoft Azure předplatné. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - Naučte se, jak začlenit [data do Azure Sentinel](quickstart-onboard.md)a [získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).

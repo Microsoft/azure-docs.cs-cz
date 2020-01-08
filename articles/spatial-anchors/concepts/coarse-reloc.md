@@ -8,20 +8,20 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3477bac051346e4b334ff3437085c402090b2c98
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 6143f50b9f1f6738daf3e69d4cc0e00742e1e35a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765457"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356358"
 ---
 # <a name="coarse-relocalization"></a>Přibližná relokalizace
 
-Hrubá opětovná rozmístění je funkce, která poskytuje úvodní odpověď na otázku: *kde je moje zařízení,/který obsah mám pozorovat?* Odpověď není přesná, ale je ve formátu: *blížíte se k těmto kotvám, zkuste jednu z nich najít*.
+Hrubá opětovná rozmístění je funkce, která poskytuje úvodní odpověď na otázku: *kde je moje zařízení,/který obsah mám pozorovat?* Odpověď není přesná, ale je ve formátu: *blížíte se k těmto kotvám; zkuste jednu z nich najít*.
 
-Hrubá revolba funguje tak, že přidruží různé čtecí senzory zařízení k vytváření i dotazování kotev. V případě scénářů v rámci venkovních scénářů jsou data snímače typicky umístěním GPS (Global Positioning System) zařízení. Pokud GPS není k dispozici nebo je nespolehlivá (například v případě nedostatku), data snímače se skládají z přístupových bodů Wi-Fi a signálů Bluetooth v dosahu. Všechna shromážděná data senzorů přispívají k údržbě prostorového indexu. Prostorový index vychází ze služby kotvy k rychlému určení kotev, které jsou v přibližně 100 metrech vašeho zařízení.
+Hrubá revolba funguje tak, že přidruží různé čtecí senzory zařízení k vytváření i dotazování kotev. V případě scénářů v rámci venkovních scénářů jsou data snímače typicky umístěním GPS (Global Positioning System) zařízení. Pokud GPS není k dispozici nebo je nespolehlivá (například z dvířek), data snímače se skládají z přístupových bodů Wi-Fi a signálů Bluetooth v dosahu. Všechna shromážděná data senzorů přispívají k údržbě prostorového indexu, který používají prostorové kotvy Azure k rychlému určení kotev, které jsou v přibližně 100 metrech vašeho zařízení.
 
-Rychlý pohled na kotvy s povoleným hrubým rozšířením zjednodušuje vývoj aplikací, které jsou zajištěny na světové úrovni (říká miliony geograficky distribuovaných) kotev. Složitá Správa ukotvení je skrytá, takže vám umožní soustředit se na vaši skvělou logiku aplikace. Všechny kotvy jsou pro vás provedeny na pozadí služby!
+Rychlý pohled na kotvy, které jsou povolené hrubou šířkou, zjednodušuje vývoj aplikací, které jsou zajištěné pomocí špičkových kolekcí (například miliony geograficky distribuovaných) kotev. Složitá Správa ukotvení je skrytá, takže vám umožní soustředit se na vaši skvělou logiku aplikace. Všechna kotva se po celém čase vyzvednutím prostorových ukotvení Azure provádí na pozadí.
 
 ## <a name="collected-sensor-data"></a>Shromážděná data senzorů
 
@@ -118,13 +118,13 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 ```
 ---
 
-V dalším kroku se budete muset rozhodnout, jaké senzory chcete použít pro hrubou reprostředí. Toto rozhodnutí je obecně specifické pro aplikaci, kterou vyvíjíte, ale doporučení v následující tabulce by vám měla poskytnout dobrý výchozí bod:
+V dalším kroku se budete muset rozhodnout, jaké senzory chcete použít pro hrubou reprostředí. Toto rozhodnutí je specifické pro aplikaci, kterou vyvíjíte, ale doporučení v následující tabulce by vám měla poskytnout dobrý výchozí bod:
 
 
 |             | Nedvířka | Otevřené |
 |-------------|---------|----------|
 | GPS         | Vypnuto | Zapnuto |
-| WiFi        | Zapnuto | Zapnuto (volitelné) |
+| Wi-Fi        | Zapnuto | Zapnuto (volitelné) |
 | Majáky v/v | Zapnuto (volitelné s upozorněními, viz níže) | Vypnuto |
 
 
@@ -182,8 +182,9 @@ Při použití GPS v aplikaci mějte na paměti, že čtení, které poskytuje h
 
 Obecně platí, že operační systém pro zařízení i prostorové ukotvení Azure provede některé filtrování a extrapolaci nezpracovaného signálu GPS při pokusu o zmírnění těchto problémů. Toto dodatečné zpracování vyžaduje další dobu konvergence, takže pro dosažení nejlepších výsledků byste měli zkusit:
 
-* Vytvořte poskytovatele otisku prstu senzoru co nejdříve ve vaší aplikaci.
-* Nechejte aktivní poskytovatele otisků prstů a sdílejte ho mezi několika relacemi.
+* Vytvoření jednoho poskytovatele otisků prstů na senzoru co nejdříve ve vaší aplikaci
+* ponechat poskytovatele otisku prstu snímače aktivní mezi více relacemi
+* sdílet poskytovatele otisků prstů senzorů mezi více relacemi
 
 Pokud máte v úmyslu použít poskytovatele otisku prstu před kotvou relace, ujistěte se, že jste ho spustili před vyhodnocením odhadů senzorů. Například následující kód postará o aktualizaci pozice zařízení na mapě v reálném čase:
 
@@ -418,7 +419,7 @@ sensors.BluetoothEnabled(true);
 
 ---
 
-Majáky jsou obvykle všestranná zařízení, kde je možné nakonfigurovat všechno, co zahrnuje identifikátory UUID a adresy MAC. Tato flexibilita může být problematická pro kotvy prostorů Azure, které považují signály za jedinečnou identifikaci jejich UUID. Nepovedlo se zajistit, aby se tato jedinečnost nejvíc přeložila na prostorové červy děr. Pro dosažení nejlepších výsledků byste měli:
+Majáky jsou obvykle všestranná zařízení, kde je možné nakonfigurovat všechno, co zahrnuje identifikátory UUID a adresy MAC. Tato flexibilita může být problematická pro prostorové kotvy Azure, protože považuje signály, aby je jednoznačně identifikovaly svými identifikátory UUID. Selhání, aby se zajistilo, že tato jedinečnost bude pravděpodobně způsobovat prostorové červy děr. Pro dosažení nejlepších výsledků byste měli:
 
 * Přiřaďte k majákům jedinečné identifikátory UUID.
 * Nasaďte je obvykle v běžném vzoru, jako je například mřížka.
@@ -490,13 +491,13 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Prostorové kotvy Azure budou sledovat jenom signály Bluetooth, které jsou v seznamu. Škodlivé signály, které jsou naprogramovány na povolené identifikátory UUID, můžou mít negativní vliv na kvalitu služby, i když. Z tohoto důvodu byste měli používat signály pouze v podaných prostorech, kde můžete řídit jejich nasazení.
+Prostorové kotvy Azure budou sledovat jenom signály Bluetooth, které jsou uvedené v seznamu známých identifikátorů UUID pro signály. Škodlivé signály, které jsou naprogramovány na povolené identifikátory UUID, můžou mít negativní vliv na kvalitu služby, i když. Z tohoto důvodu byste měli používat signály pouze v podaných prostorech, kde můžete řídit jejich nasazení.
 
 ## <a name="querying-with-sensor-data"></a>Dotazování na data senzorů
 
-Jakmile vytvoříte kotvy s přidruženými daty senzorů, můžete je začít načítat pomocí čtecího zařízení nahlášeného vaším zařízením. Už nepotřebujete, aby služba poskytovala seznam známých kotev, které očekáváte, místo toho stačí, když službu znáte umístění vašeho zařízení, jak je uvedeno v jeho senzorech zprovoznění. Služba prostorových kotev pak bude považovat sadu kotev blízko na vaše zařízení a pokusí se je vizuálně vyhledat.
+Jakmile vytvoříte kotvy s přidruženými daty senzorů, můžete je začít načítat pomocí čtecího zařízení nahlášeného vaším zařízením. Už nepotřebujete, aby služba poskytovala seznam známých kotev, které očekáváte, místo toho stačí, když službu znáte umístění vašeho zařízení, jak je uvedeno v jeho senzorech zprovoznění. Prostorové kotvy Azure pak přejdou sadu kotev blízko na vaše zařízení a pokusí se je vizuálně vyhledat.
 
-Chcete-li, aby dotazy používaly data ze senzorů, Začněte vytvořením kritérií hledání:
+Pokud chcete, aby dotazy používaly data ze senzorů, Začněte vytvořením kritéria "poblíž zařízení":
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -593,7 +594,7 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 Parametr `DistanceInMeters` určuje, jak daleko prozkoumáme graf ukotvení k načtení obsahu. Předpokládejme například, že jste nastavili nějaké místo s kotvami s konstantní hustotou 2 každý měřič. Kromě toho fotoaparát na vašem zařízení pozoruje jedno ukotvení a služba ho úspěšně nastavila. S největší pravděpodobně máte zájem načíst všechny kotvy, které jste umístili do blízkosti, nikoli na jedno ukotveno, které právě sledujete. Za předpokladu, že kotvy, které jste umístili, jsou propojeny v grafu, služba může získat všechny okolní kotvy za vás podle hran v grafu. Množství průchodu v grafu je řízeno `DistanceInMeters`em; budou se vám předávat všechny kotvy připojené k vašemu umístění, které je bližší než `DistanceInMeters`.
 
-Pamatujte, že velké hodnoty pro `MaxResultCount` mohou negativně ovlivnit výkon. Zkuste ji nastavit na hodnotu rozumné, která dává smysl pro vaši aplikaci.
+Pamatujte, že velké hodnoty pro `MaxResultCount` mohou negativně ovlivnit výkon. Nastavte ji na hodnotu rozumné pro vaši aplikaci.
 
 Nakonec budete muset sdělit relaci, aby používala vyhledávání založené na senzorech:
 
@@ -650,7 +651,7 @@ Následující tabulka odhadne očekávaný hledaný prostor pro každý typ sen
 | Elektrické      | Hledat v poloměru místa (přibližně) | Podrobnosti |
 |-------------|:-------:|---------|
 | GPS         | 20 m – 30 metrů | Určeno nejistotum GPS mezi ostatními faktory. Hlášené počty jsou odhadované pro střední přesnost GPS mobilních telefonů pomocí GPS, což je 7 metrů. |
-| WiFi        | 50 m – 100 m | Určuje rozsah bezdrátových přístupových bodů. Závisí na četnosti, síle vysílače, fyzických překážkách, rušení atd. |
+| Wi-Fi        | 50 m – 100 m | Určuje rozsah bezdrátových přístupových bodů. Závisí na četnosti, síle vysílače, fyzických překážkách, rušení atd. |
 | Majáky v/v |  70 m | Určuje rozsahem majáku. Závisí na četnosti, síle přenosu, fyzických překážkách, rušení atd. |
 
 ## <a name="per-platform-support"></a>Podpora pro platformy
@@ -661,7 +662,7 @@ Následující tabulka shrnuje data senzorů shromážděná na jednotlivých po
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
 | GPS         | Nevztahuje se | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
-| WiFi        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
+| Wi-Fi        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
 | Majáky v/v | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] |
 
 ## <a name="next-steps"></a>Další kroky
@@ -669,7 +670,7 @@ Následující tabulka shrnuje data senzorů shromážděná na jednotlivých po
 V aplikaci můžete použít hrubou reprostředí.
 
 > [!div class="nextstepaction"]
-> [Jednot](../how-tos/set-up-coarse-reloc-unity.md)
+> [Unity](../how-tos/set-up-coarse-reloc-unity.md)
 
 > [!div class="nextstepaction"]
 > [Objective-C](../how-tos/set-up-coarse-reloc-objc.md)

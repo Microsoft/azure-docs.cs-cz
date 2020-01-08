@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012501"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452743"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID řady času
 
@@ -23,23 +23,28 @@ Tento článek shrnuje důležitost ID časových řad pro prostředí Azure Tim
 
 ## <a name="choose-a-time-series-id"></a>Volba ID služby Time Series
 
-Volba ID řady času je třeba zvolit klíč oddílu pro databázi. Je potřeba ji vybrat při vytváření prostředí Time Series Insights Preview. Jedná se o *neměnitelnou* vlastnost. To znamená, že po vytvoření prostředí Time Series Insights ve verzi Preview s ID časové řady už ho pro toto prostředí nemůžete změnit. 
+Výběr vhodného ID časové řady je kritický. Volba ID řady času je třeba zvolit klíč oddílu pro databázi. Vyžaduje se při vytváření prostředí Time Series Insights Preview. 
 
 > [!IMPORTANT]
-> V ID časové řady se rozlišují malá a velká písmena.
+> ID časových řad:
+> * Vlastnost rozlišuje *velká a malá* písmena: písmena a znaky jsou používány v hledání, porovnávání, aktualizacích a při dělení.
+> * *Neproměnlivá* vlastnost: po vytvoření ji nelze změnit.
 
-Výběr vhodného ID časové řady je kritický. Tady jsou některé z osvědčených postupů, které můžete sledovat:
+> [!TIP]
+> Pokud je zdrojem událostí centrum IoT, ID vaší časové řady bude pravděpodobně ***iothub-ID zařízení-připojení***.
+
+Klíčové osvědčené postupy, které je potřeba provést, zahrnují:
 
 * Vyberte klíč oddílu s velkým počtem jedinečných hodnot (například stovky nebo tisíce). V mnoha případech to může být ID zařízení, ID senzoru nebo ID značky ve formátu JSON.
 * ID řady čas musí být jedinečný na úrovni uzel typu list vaše [modelu časové řady](./time-series-insights-update-tsm.md).
-* Pokud je zdrojem událostí centrum IoT, ID vaší časové řady bude pravděpodobně *iothub-ID zařízení-připojení*.
 * Omezení počtu znaků pro řetězec názvu vlastnosti časové řady je 128. Pro hodnotu vlastnosti ID časové řady je limit znaků 1 024.
 * Pokud hodnota jedinečné vlastnosti pro ID časové řady chybí, bude zpracována jako hodnota null a bude se jednat o stejné pravidlo omezení jedinečnosti.
 * Jako ID časové řady můžete také vybrat až *tři* vlastnosti klíče. Jejich kombinace bude složený klíč, který představuje ID časové řady.  
-
   > [!NOTE]
   > Vaše tři klíčové vlastnosti musí být řetězce.
   > Museli byste dotazovat na tento složený klíč místo na jednu vlastnost současně.
+
+## <a name="select-more-than-one-key-property"></a>Vybrat více než jednu vlastnost klíče
 
 Následující scénáře popisují výběr více než jedné vlastnosti klíče jako ID časové řady.  
 
@@ -67,9 +72,11 @@ Příklad nezpracované události:
 }
 ```
 
-V Azure Portal můžete tento složený klíč zadat jako: 
+V Azure Portal pak můžete složený klíč zadat následujícím způsobem: 
 
-`[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]`
+```JSON
+[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
+```
 
 ## <a name="next-steps"></a>Další kroky
 

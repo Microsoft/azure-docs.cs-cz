@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: a85f9f8b9d98f77cf673778f031d8f47f132fbe1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 875d8f498fc8405a53d8fb60631c52ce09b30a62
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431931"
 ---
 # <a name="live-transcription-preview"></a>Živý přepis (Preview)
 
@@ -102,7 +102,7 @@ Ve verzi Preview jsou tady uvedené známé problémy s živým přepisem.
 
 * Tato funkce je k dispozici pouze v Západní USA 2.
 * Aplikace musí používat rozhraní API verze Preview popsané ve specifikaci [Media Services V3 openapi Specification](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json) .
-* Jediným podporovaným jazykem je angličtina.
+* Jediným podporovaným jazykem je angličtina (EN-US).
 * V souvislosti s ochranou obsahu je podporována pouze šifrování obálek AES.
 
 ## <a name="next-steps"></a>Další kroky

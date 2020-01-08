@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4130b05be1a4abb2166514b730c3d21bd5ece97
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdd89ba7741257443cf5e7567c59a6986e43c20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424831"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Podmíněný přístup: podmíněný přístup na základě rizik
 
@@ -38,7 +38,7 @@ Povolení této zásady bude vyžadovat, aby se všichni uživatelé zaregistrov
    1. V části **vyloučit**vyberte **Vybrat vyloučené uživatele**, zvolte nouzový přístup nebo účty pro přerušení vaší organizace a vyberte **Vybrat**. 
    1. Vyberte **Done** (Hotovo).
 1. Nastavte **zásadu Vynutilit** na **zapnuto**.
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ## <a name="require-a-password-change-high-risk-users"></a>Vyžadovat změnu hesla s vysokým rizikem uživatelů
 
@@ -56,7 +56,7 @@ Microsoft spolupracuje při vyhledávání dvojic uživatelských jmen a hesel s
 1. V části **ovládací prvky** > **přístup**zvolte možnost **Povolení přístupu**a pak vyberte možnost **vyžadovat změnu hesla**.
    1. Klikněte na **Vybrat**.
 1. Nastavte **zásadu Vynutilit** na **zapnuto**.
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>Vyžadovat, aby se pro rizikové uživatele MFA nebo vysokého přihlašování
 
@@ -74,11 +74,13 @@ Většina uživatelů se chová běžným způsobem, který je možné sledovat.
 1. V části **ovládací prvky** > **přístup**zvolte možnost **Povolení přístupu**a pak vyberte možnost **vyžadovat vícefaktorové ověřování**.
    1. Klikněte na **Vybrat**.
 1. Nastavte **zásadu Vynutilit** na **zapnuto**.
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 

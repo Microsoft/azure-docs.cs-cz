@@ -1,6 +1,6 @@
 ---
 title: Sdílení vlastních zobrazení s parametrizovanými adresami URL – Azure Time Series Insights | Microsoft Docs
-description: Naučte se vyvíjet parametrizované adresy URL v Azure Time Series Insights, abyste mohli snadno sdílet přizpůsobená zobrazení.
+description: Naučte se vytvářet parametrizované adresy URL pro snadné sdílení vlastních zobrazení v Průzkumníkovi v Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 10/18/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 145af35f8c36d7f4659c3937209cb0d4d5b221a3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: fd6de7dfe9509e7f99adeed0e5de3e157335e6bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006379"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452817"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -33,7 +33,7 @@ Parametr `environmentId=<guid>` určuje ID cílového prostředí. Je to součá
 
 Příkladem parametru ID prostředí je `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Čas
+## <a name="time"></a>Time
 
 V parametrizované adrese URL můžete zadat absolutní nebo relativní časové hodnoty.
 
@@ -44,11 +44,12 @@ Pro absolutní časové hodnoty použijte parametry `from=<integer>` a `to=<inte
 * `from=<integer>` je hodnota v milisekundách JavaScriptu určující čas spuštění pro rozsah hledání.
 * `to=<integer>` je hodnota v milisekundách JavaScriptu určující čas ukončení pro rozsah hledání.
 
-Pokud chcete pro nějaké datum určit čas v milisekundách JavaScriptu, přečtěte si článek [Epoch & Unix Timestamp Converter](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html).
+> [!TIP]
+> Pokud chcete data snadno překládat na JavaScriptové milisekundy, zkuste [převaděč časových razítek epocha & UNIX](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html).
 
 ### <a name="relative-time-values"></a>Relativní časové hodnoty
 
-Pro relativní časovou hodnotu použijte parametr `relativeMillis=<value>`, kde *value* je časové období nejnovějších dat v back-endu v milisekundách JavaScriptu.
+Pro relativní časovou hodnotu použijte `relativeMillis=<value>`, kde je *hodnota* v jazyce JavaScript milisekund od nejnovějšího časového razítka přijatého z rozhraní API.
 
 Například `&relativeMillis=3600000` zobrazí data za posledních 60 minut.
 
@@ -65,7 +66,7 @@ Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Time 
 
 ### <a name="optional-parameters"></a>Volitelné parametry
 
-Parametr `timeSeriesDefinitions=<collection of term objects>` určuje Time Series Insights zobrazení:
+Parametr `timeSeriesDefinitions=<collection of term objects>` určuje výrazy predikátu, které se zobrazí v zobrazení Time Series Insights:
 
 | Parametr | Položka URL | Popis |
 | --- | --- | --- |
@@ -73,7 +74,11 @@ Parametr `timeSeriesDefinitions=<collection of term objects>` určuje Time Serie
 | **splitBy** | `\<string>` | Název sloupce, podle kterého se bude *rozdělovat*. |
 | **measureName** | `\<string>` | Název sloupce obsahujícího *míru*. |
 | **predikát** | `\<string>` | Klauzule *kde* pro filtrování na straně serveru. |
-| **useSum** | `true` | Volitelný parametr, který určuje použití součtu pro míru. </br>  Poznámka: Pokud je `Events` vybraná míra, ve výchozím nastavení je vybrán počet.  </br>  Pokud není vybraná možnost `Events`, je ve výchozím nastavení vybrána možnost průměr. |
+| **useSum** | `true` | Volitelný parametr, který určuje použití součtu pro míru. |
+
+> [!NOTE]
+> Pokud `Events` je vybraná míra **useSum** , ve výchozím nastavení je vybraná možnost počet.  
+> Pokud není vybraná možnost `Events`, je ve výchozím nastavení vybrána možnost průměr. |
 
 * Dvojice klíč-hodnota `multiChartStack=<true/false>` povoluje vrstvení v grafu.
 * Dvojice klíč-hodnota `multiChartSameScale=<true/false>` umožňuje stejné škálování osy Y napříč podmínkami v rámci volitelného parametru.  
@@ -83,15 +88,19 @@ Parametr `timeSeriesDefinitions=<collection of term objects>` určuje Time Serie
 | Páry | Popis |
 | --- | --- |
 | `multiChartStack=false` | `true` je ve výchozím nastavení povolená, takže přejdou `false` do zásobníku. |
-| `multiChartStack=false&multiChartSameScale=true` | Pokud chcete ve všech podmínkách použít stejné měřítko osy Y, musíte povolit umísťování do zásobníku.  Ve výchozím nastavení je to `false`, takže předáním hodnoty true se tato funkce povoluje. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Jednotky = dny, hodiny, minuty, sekundy a milisekundy.  Pro jednotku použijte vždy velká písmena. </br> Počet jednotek se definuje předáním požadované celočíselné hodnoty parametru timeBucketSize.  Plynulost je možné nastavit až na 7 dnů.  |
-| `timezoneOffset=-<integer>` | Celočíselná hodnota je vždy v milisekundách. </br> Všimněte si, že tato funkce se mírně liší od toho, co jsme povolili v Průzkumníkovi Time Series Insights, kde vám umožníme zvolit místní (čas v prohlížeči) nebo UTC. |
+| `multiChartStack=false&multiChartSameScale=true` | Pokud chcete ve všech podmínkách použít stejné měřítko osy Y, musíte povolit umísťování do zásobníku.  Ve výchozím nastavení je `false`, takže předáváním `true` tuto funkci povolíte. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Units = `days`, `hours`, `minutes`, `seconds`, `milliseconds`.  Pro jednotku použijte vždy velká písmena. </br> Určete počet jednotek předáním požadovaného celého čísla pro **timeBucketSize**.  |
+| `timezoneOffset=-<integer>` | Celočíselná hodnota je vždy v milisekundách. |
+
+> [!NOTE]
+> hodnoty **timeBucketUnit** mohou být vyhlazené až na 7 dní.
+> hodnoty **timezoneOffset** nejsou ani UTC ani místní čas.
 
 ### <a name="examples"></a>Příklady
 
 Pokud chcete do Time Series Insightsho prostředí přidat definice časových řad jako parametr URL, přidejte:
 
-```plaintext
+```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
 {"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
@@ -100,24 +109,28 @@ Použijte příklad definice časových řad pro:
 
 * ID prostředí
 * Poslední 60 minut dat
-* Výrazy (F1PressureID, F2TempStation a F3VibrationPL), které obsahují volitelné parametry
+* Výrazy (**F1PressureID**, **F2TempStation**a **F3VibrationPL**), které obsahují volitelné parametry
 
 Pro zobrazení můžete vytvořit následující parametrizovanou adresu URL:
 
-```plaintext
+```URL
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
+[Time Series Insights Parametrizovaná adresa URL aplikace ![Explorer](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+
 > [!TIP]
-> Prohlédněte si Průzkumníka v reálném čase [pomocí adresy URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]).
+> Podívejte se na téma Průzkumník Live pomocí výše uvedeného příkladu [adresy URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) .
 
-Výše uvedená adresa URL popisuje a vytvoří zobrazení Průzkumníka Time Series Insights:
+Výše uvedená adresa URL popisuje a zobrazí Time Series Insights zobrazení Průzkumníka s parametry. 
 
-[![Time Series Insights Explorer – výrazy](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+* Parametrizované predikáty.
 
-Úplné zobrazení (včetně grafu):
+  [![Time Series Insights Průzkumníkovi s parametrizovanými predikáty.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
-[zobrazení grafu ![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+* Sdílené zobrazení celého grafu.
+
+  [![sdíleného zobrazení celého grafu.](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

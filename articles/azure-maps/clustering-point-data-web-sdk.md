@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433033"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
 
@@ -88,12 +88,12 @@ Podívejte se na CodePen (@azuremaps) na <a href='https://codepen.io'></a>(<a hr
 
 Když dojde k událostem myši na vrstvě, která obsahuje seskupené datové body, bude se do události vracet skupinový datový bod jako objekt funkce bodu injson. Tato funkce Point bude mít následující vlastnosti:
 
-| Název vlastnosti | Typ | Popis |
-|---------------|------|-------------|
-| služby | Boolean | Indikuje, že funkce představuje cluster. |
-| cluster_id | řetězec | Jedinečné ID clusteru, které lze použít s metodami DataSource `getClusterExpansionZoom`, `getClusterChildren`a `getClusterLeaves`. |
-| point_count | číslo | Počet bodů, které cluster obsahuje. |
-| point_count_abbreviated | řetězec | Řetězec, který zkrátí `point_count` hodnotu, pokud je Long. (například 4 000 se bude 4K) |
+| Název vlastnosti             | Typ    | Popis   |
+|---------------------------|---------|---------------|
+| `cluster`                 | Boolean | Indikuje, že funkce představuje cluster. |
+| `cluster_id`              | string  | Jedinečné ID clusteru, které lze použít s metodami DataSource `getClusterExpansionZoom`, `getClusterChildren`a `getClusterLeaves`. |
+| `point_count`             | číslo  | Počet bodů, které cluster obsahuje.  |
+| `point_count_abbreviated` | string  | Řetězec, který zkrátí `point_count` hodnotu, pokud je Long. (například 4 000 se bude 4K)  |
 
 Tento příklad přebírá bublinovou vrstvu, která vykresluje body clusteru a přidává událost Click, která se aktivuje, vypočítá a přiblíží mapu k další úrovni přiblížení, při které se cluster rozdělí, pomocí metody `getClusterExpansionZoom` `DataSource` třídy a vlastnosti `cluster_id` v kliknutí na clusterovaný datový bod. 
 

@@ -1,7 +1,7 @@
 ---
 title: Ladění hyperparametrů modelů
-titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul předparametrů ladění modelu ve službě Azure Machine Learning k provedení parametru pro mazání parametrů v modelu, aby bylo možné určit optimální nastavení parametrů.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat modul předparametrů ladění modelu v Azure Machine Learning k provedení parametru pro čištění parametrů v modelu, abyste zjistili optimální nastavení parametrů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428410"
 ---
 # <a name="tune-model-hyperparameters"></a>Ladění hyperparametrů modelů
 
@@ -155,5 +155,5 @@ Téměř všichni učí v Azure Machine Learning podporují křížové ověřov
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
 

@@ -1,25 +1,14 @@
 ---
-title: Vytvoření aplikace Azure Service Fabric typu kontejner v Linuxu | Dokumentace Microsoftu
+title: Vytvoření aplikace Azure Service Fabric Container v systému Linux
 description: Vytvoříte svou první aplikaci typu kontejner pro Linux na platformě Azure Service Fabric. Sestavíte image Dockeru s vaší aplikací, nahrajete image do registru kontejneru a sestavíte a nasadíte aplikaci Service Fabric typu kontejner.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/4/2019
-ms.author: atsenthi
-ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457971"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -143,7 +132,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>Nahrání image do registru kontejneru
 Po ověření, že se aplikace spustí v Dockeru, nahrajte image do vašeho registru ve službě Azure Container Registry.
 
-Spusťte `docker login` , abyste se k registru kontejneru přihlásili pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
+Spusťte `docker login` a přihlaste se k registru kontejneru pomocí svých [přihlašovacích údajů do registru](../container-registry/container-registry-authentication.md).
 
 Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
 
@@ -176,7 +165,7 @@ Vzhledem k tomu, že tato image má definovaný vstupní bod úloh, není potře
 
 Jako počet instancí zadejte 1.
 
-Zadejte mapování portů v příslušném formátu. V tomto článku je třeba zadat ```80:4000``` mapování portů. Díky tomu jste nakonfigurovali, aby všechny příchozí požadavky přicházející na port 4000 na hostitelském počítači byly přesměrované na port 80 na kontejneru.
+Zadejte mapování portů v příslušném formátu. V tomto článku musíte zadat ```80:4000``` jako mapování portů. Díky tomu jste nakonfigurovali, aby všechny příchozí požadavky přicházející na port 4000 na hostitelském počítači byly přesměrované na port 80 na kontejneru.
 
 ![Generátor Service Fabric Yeoman pro kontejnery][sf-yeoman]
 
@@ -185,7 +174,7 @@ Zadejte mapování portů v příslušném formátu. V tomto článku je třeba 
 V tématu [ověřování úložiště kontejnerů](configure-container-repository-credentials.md)se dozvíte, jak nakonfigurovat různé typy ověřování pro stahování imagí kontejneru.
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
-V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace virtuálních počítačů, což pro kontejnery podporuje dva režimy izolace: proces a Hyper-V. V režimu izolace technologie Hyper-V jsou jádra izolovaná mezi jednotlivými kontejnery a hostitelem kontejneru. Izolace Hyper-V se implementuje pomocí prázdných [kontejnerů](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Režim izolace je určen pro clustery systému Linux v `ServicePackageContainerPolicy` elementu v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozím nastavením je režim izolace procesu. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
+V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace virtuálních počítačů, což pro kontejnery podporuje dva režimy izolace: proces a Hyper-V. V režimu izolace technologie Hyper-V jsou jádra izolovaná mezi jednotlivými kontejnery a hostitelem kontejneru. Izolace Hyper-V se implementuje pomocí prázdných [kontejnerů](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Režim izolace je určen pro clustery systému Linux v prvku `ServicePackageContainerPolicy` v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozím nastavením je režim izolace procesu. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
 
 ```xml
 <ServiceManifestImport>
@@ -200,7 +189,7 @@ V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace vir
 
 
 ## <a name="configure-resource-governance"></a>Konfigurace zásad správného řízení prostředků
-[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků lze nastavit pro následující prostředky: Paměť, MemorySwap, CpuShares (relativní váha procesoru), MemoryReservationInMB, BlkioWeight (relativní relativní váha). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
+[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků je možné nastavit pro tyto prostředky: Memory, MemorySwap, CpuShares (relativní váha CPU), MemoryReservationInMB, BlkioWeight (relativní váha BlockIO). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
 
 ```xml
 <ServiceManifestImport>
@@ -219,7 +208,7 @@ V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace vir
 
 Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. 
 
-Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená,zobrazí se zpráva o stavu **OK** , pokud je *health_status* *v pořádku* a **Chyba** se zobrazí, když *health_status* není v pořádku.
+Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená, zobrazí se zpráva o stavu **OK** , když *health_status* je *v pořádku* a zobrazí se **Chyba** , když *health_status* není v *pořádku*.
 
 Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru Dockerfile použitém při generování image kontejneru.
 
@@ -243,7 +232,7 @@ Chování **HEALTHCHECK** pro jednotlivé kontejnery můžete nakonfigurovat zad
     </Policies>
 </ServiceManifestImport>
 ```
-Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false.** . 
+Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
 
 Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true**, kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
 
@@ -260,14 +249,14 @@ Připojte se k místnímu clusteru služby Service Fabric.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Pomocí instalačního skriptu, který je součástí šablon https://github.com/Azure-Samples/service-fabric-containers/ v části, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte instanci aplikace.
+Pomocí instalačního skriptu, který je k dispozici v šablonách na https://github.com/Azure-Samples/service-fabric-containers/ ke zkopírování balíčku aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte instanci aplikace.
 
 
 ```bash
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte na adresu Service Fabric Explorer na adrese http\/:/localhost: 19080/Explorer (Pokud používáte Vagrant v Mac OS X, nahraďte localhost privátní IP adresou virtuálního počítače. Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http:\//localhost: 19080/Explorer (nahraďte localhost privátní IP adresou virtuálního počítače, pokud používáte Vagrant v Mac OS X). Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
 Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http:\//localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
@@ -381,7 +370,7 @@ Tady jsou kompletní manifesty aplikace a služby použité v tomto článku.
 Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pomocí Yeomana, proveďte následující kroky:
 
 1. Změňte adresář na kořenovou složku stávající aplikace. Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
-2. Spustit `yo azuresfcontainer:AddService`
+2. Spusťte `yo azuresfcontainer:AddService`.
 
 <a id="manually"></a>
 

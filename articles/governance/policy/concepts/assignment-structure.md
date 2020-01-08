@@ -3,16 +3,16 @@ title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5f6b097b82d31926b7b5d3099d1f3f23669e78c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279484"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436380"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
-Přiřazení zásad používají Azure Policy k definování prostředků, které se přiřazují v průběhu zásad nebo iniciativ. Přiřazení zásad může určit hodnoty parametrů pro danou skupinu prostředků v době přiřazení, což umožňuje znovu použít definice zásad, které řeší stejné vlastnosti prostředku s různými požadavky na dodržování předpisů.
+Přiřazení zásad používají Azure Policy k definování prostředků, které se přiřazují k jednotlivým zásadám nebo iniciativám. Přiřazení zásad může určit hodnoty parametrů pro danou skupinu prostředků v době přiřazení, což umožňuje znovu použít definice zásad, které řeší stejné vlastnosti prostředku s různými požadavky na dodržování předpisů.
 
 K vytvoření přiřazení zásady použijte JSON. Přiřazení zásady obsahuje prvky pro:
 
@@ -61,8 +61,8 @@ Tato vlastnost má následující hodnoty:
 
 |Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
 |-|-|-|-|-|-|
-|Povoleno |Výchozí |řetězec |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
-|Zakázáno |DoNotEnforce |řetězec |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
+|Povoleno |Výchozí |string |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
+|Zakázáno |DoNotEnforce |string |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
 
 Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , použije se _výchozí_ hodnota. Pro zásady [deployIfNotExists](./effects.md#deployifnotexists) se dají spouštět [úlohy nápravy](../how-to/remediate-resources.md) , a to i v případě, že **EnforcementMode** je nastavená na _DoNotEnforce_.
 

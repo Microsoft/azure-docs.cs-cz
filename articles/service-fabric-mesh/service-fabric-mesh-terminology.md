@@ -1,20 +1,16 @@
 ---
-title: Terminologie pro Azure Service Fabric sítě | Microsoft Docs
+title: Terminologie pro síť Azure Service Fabric
 description: Tento článek podrobně popisuje terminologii, kterou používá Azure Service Fabric mřížka, která vám pomůže lépe pochopit výrazy používané v dokumentaci.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663009"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351977"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologie Service Fabricch mřížek
 
@@ -72,15 +68,15 @@ Různá prostředí mají různé úrovně podpory pro architektury a modely nas
 
 | Typ aplikace | Popisuje | Síť Azure Service Fabric | Clustery Azure Service Fabric (libovolný operační systém)| Místní cluster | Samostatný cluster |
 |---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | Podporuje se |Nepodporováno | Windows – podporováno, Linux a Mac – nepodporováno | Windows – nepodporováno |
-|Service Fabric nativních aplikací | Nativní aplikační model (XML) | Nepodporuje se| Podporuje se|Podporuje se|Windows – podporováno|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | Podporováno |Nepodporováno | Windows – podporováno, Linux a Mac – nepodporováno | Windows – nepodporováno |
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | Nepodporuje se| Podporováno|Podporováno|Windows – podporováno|
 
 V následující tabulce jsou popsány různé modely aplikací a nástroje, které pro ně existují pro Service Fabric.
 
 | Typ aplikace | Popisuje | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
 | Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | VS 2017 |Nepodporováno |Nepodporováno | Podporované – jenom pro prostředí sítě | Nepodporuje se|
-|Service Fabric nativních aplikací | Nativní aplikační model (XML) | VS 2017 a VS 2015| Podporuje se|Podporuje se|Podporuje se|Podporuje se|
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | VS 2017 a VS 2015| Podporováno|Podporováno|Podporováno|Podporováno|
 
 ## <a name="next-steps"></a>Další kroky
 

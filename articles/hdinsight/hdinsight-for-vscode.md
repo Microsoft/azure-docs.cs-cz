@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 03d0d26a21e710c07019d3ffcb13a1482a96af50
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435688"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -284,7 +284,7 @@ Metoda 2 odešle soubor a Všimněte si, že složka. VSCode je automaticky při
 
     | jméno | description | type |
     | :- | :- | :- |
-    | file | Soubor obsahující aplikaci, která se má provést | Cesta (povinné) |
+    | soubor | Soubor obsahující aplikaci, která se má provést | Cesta (povinné) |
     | proxyUser | Uživatel, který se má zosobnit při spuštění úlohy | Řetězec |
     | className | Application – hlavní třída Java/Spark | Řetězec |
     | args | Argumenty příkazového řádku pro aplikaci | Seznam řetězců |
@@ -308,7 +308,7 @@ Metoda 2 odešle soubor a Všimněte si, že složka. VSCode je automaticky při
     | id | ID relace | Int |
     | appId | ID aplikace této relace | Řetězec |
     | appInfo | Podrobné informace o aplikaci | Mapa klíče = Val |
-    | protokolu | Řádky protokolu | Seznam řetězců |
+    | log | Řádky protokolu | Seznam řetězců |
     | state |Stav dávky | Řetězec |
 
     > [!NOTE]
@@ -403,7 +403,7 @@ Když odešlete úlohu do clusteru HDInsight pomocí Data Lake Storage Gen2, zob
 
 > [!NOTE]
 >
-> Přístupový klíč pro účet úložiště můžete získat z Azure Portal. Další informace najdete v tématu [zobrazení a zkopírování přístupových klíčů](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys).
+> Přístupový klíč pro účet úložiště můžete získat z Azure Portal. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md).
 
 ## <a name="unlink-cluster"></a>Zrušit propojení clusteru
 

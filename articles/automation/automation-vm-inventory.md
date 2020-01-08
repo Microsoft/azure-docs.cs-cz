@@ -2,20 +2,16 @@
 title: Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci | Dokumentace Microsoftu
 description: Správa virtuálního počítače se shromažďováním dat pro inventarizaci
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
 keywords: inventory, automation, change, tracking
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61304104"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419815"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci
 
@@ -25,24 +21,24 @@ Sledování inventáře pro virtuální počítač Azure můžete povolit na str
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
-Tento článek předpokládá, že máte ke konfigurování řešení, na virtuálním počítači. Pokud ještě nemáte virtuální počítač Azure, [vytvořte si virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
+V tomto článku se předpokládá, že máte virtuální počítač, na kterém chcete řešení nakonfigurovat. Pokud ještě nemáte virtuální počítač Azure, [vytvořte si virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Povolení shromažďování dat pro inventarizaci na stránce prostředků virtuálního počítače
 
 1. V levém podokně webu Azure Portal vyberte **Virtuální počítače**.
 2. V seznamu virtuálních počítačů vyberte virtuální počítač.
-3. Na **prostředků** nabídky v části **operace**vyberte **inventáře**.
-4. Vyberte pracovní prostor Log Analytics pro ukládání datových protokolů.
+3. V nabídce **prostředek** v části **operace**vyberte **inventarizace**.
+4. Vyberte Log Analytics pracovní prostor pro ukládání datových protokolů.
     Pokud v dané oblasti nemáte k dispozici žádný pracovní prostor, zobrazí se výzva k vytvoření výchozího pracovního prostoru a účtu Automation.
 5. Pokud chcete zahájit připojování vašeho počítače, vyberte **Povolit**.
 
    ![Zobrazení možností připojení](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Stavový řádek vás bude informovat o povolování řešení. Tento proces může trvat až 15 minut. Během této doby můžete okno zavřít nebo ho nechat otevřené a jeho vás upozorní, jakmile bude řešení povoleno. Stav nasazení můžete monitorovat v podokně oznámení.
+    Stavový řádek vás bude informovat o povolování řešení. Tento proces může trvat až 15 minut. Během této doby můžete okno zavřít nebo ho můžete nechat otevřené a upozorní vás, když je řešení povolené. Stav nasazení můžete monitorovat v podokně oznámení.
 
    ![Zobrazení řešení inventarizace ihned po připojení](./media/automation-vm-inventory/inventory-onboarded.png)
 
@@ -52,11 +48,11 @@ Po dokončení nasazení stavový řádek zmizí. Systém stále shromažďuje d
 
 Ve výchozím nastavení jsou pro shromažďování nakonfigurovány software, služby Windows a linuxové procesy démon. Pokud chcete shromažďovat data pro inventarizaci registru a souborů systému Windows, nakonfigurujte nastavení shromažďování dat pro inventarizaci.
 
-1. V **inventáře** zobrazení, vyberte **upravit nastavení** tlačítko v horní části okna.
+1. V zobrazení **inventáře** vyberte tlačítko **Upravit nastavení** v horní části okna.
 2. Pokud chcete přidat nové nastavení shromažďování, výběrem karet **Registr systému Windows**, **Soubory Windows** a **Soubory Linuxu** přejděte do kategorie nastavení, které chcete přidat.
-3. Vyberte odpovídající kategorii a klikněte na tlačítko **přidat** v horní části okna.
+3. Vyberte příslušnou kategorii a v horní části okna klikněte na **Přidat** .
 
-Následující tabulka obsahuje informace o jednotlivých vlastnostech, které je možné nakonfigurovat pro různé kategorie.
+Následující tabulky obsahují informace o jednotlivých vlastnostech, které lze nakonfigurovat pro různé kategorie.
 
 ### <a name="windows-registry"></a>Registr Windows
 
@@ -65,7 +61,7 @@ Následující tabulka obsahuje informace o jednotlivých vlastnostech, které j
 |Povoleno     | Určuje, jestli se nastavení používá.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
 |Skupina     | Název skupiny pro logické seskupení souborů        |
-|Klíč registru systému Windows   | Cesta ke kontrole souboru: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Klíč registru systému Windows   | Cesta, ve které se má soubor hledat. Například: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
 
 ### <a name="windows-files"></a>Soubory Windows
 
@@ -76,7 +72,7 @@ Následující tabulka obsahuje informace o jednotlivých vlastnostech, které j
 |Skupina     | Název skupiny pro logické seskupení souborů        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt
 
-### <a name="linux-files"></a>Soubory Linuxu
+### <a name="linux-files"></a>Soubory Linux
 
 |Vlastnost  |Popis  |
 |---------|---------|
@@ -89,23 +85,23 @@ Následující tabulka obsahuje informace o jednotlivých vlastnostech, které j
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
 |Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – Ignoruje symbolické odkazy a nezahrnuje odkazované soubory ani adresáře.<br>**Sledovat** – Během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – Sleduje symbolické odkazy a umožňuje zpracování vráceného obsahu.      |
 
-## <a name="manage-machine-groups"></a>Spravovat skupiny počítačů
+## <a name="manage-machine-groups"></a>Správa skupin počítačů
 
-Inventář můžete vytvářet a zobrazovat skupiny počítačů v Azure Monitor protokoly. Skupiny počítačů jsou kolekce počítačů, které jsou definované v dotazu v protokolech Azure Monitor.
+Inventarizace umožňuje vytvářet a zobrazovat skupiny počítačů v protokolech Azure Monitor. Skupiny počítačů jsou kolekce počítačů definované dotazem v protokolech Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Zobrazení skupin vyberte váš počítač **Machine skupiny** karty na stránce inventáře.
+Pokud chcete zobrazit skupiny počítačů, vyberte na stránce inventář kartu **skupiny počítačů** .
 
-![Skupiny počítačů zobrazení na stránce inventáře](./media/automation-vm-inventory/inventory-machine-groups.png)
+![Zobrazení skupin počítačů na stránce inventáře](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-Výběr skupiny počítačů ze seznamu otevře stránku skupiny počítačů. Tato stránka zobrazuje podrobnosti o skupině počítačů. Mezi tyto podrobnosti patří dotazu log analytics, který se používá k definování skupiny. V dolní části stránky je stránkovaného seznam počítačů, které jsou součástí této skupiny.
+Výběrem skupiny počítačů ze seznamu se otevře stránka skupiny počítačů. Tato stránka zobrazuje podrobnosti o skupině počítačů. Mezi tyto podrobnosti patří dotaz Log Analytics, který se používá k definování skupiny. V dolní části stránky je seznam počítačů, které jsou součástí této skupiny.
 
 ![Zobrazit stránku skupiny počítačů](./media/automation-vm-inventory/machine-group-page.png)
 
-Klikněte na tlačítko **+ klonování** tlačítko a klonování skupiny počítačů. Zde je třeba zadat skupiny nový název a alias pro skupinu. V tuto chvíli můžete změnit definici. Po změně stiskněte dotazu **ověřit dotaz** do počítače, které by být vybrán ve verzi preview. Až budete spokojení s skupiny klikněte na tlačítko **vytvořit** vytvořit skupinu počítačů
+Kliknutím na tlačítko **+ klonovat** naklonujte skupinu počítačů. Tady musíte dát skupině Nový název a alias pro skupinu. Definici lze v tomto okamžiku změnit. Po změně dotazu stisknutím tlačítka **ověřit dotaz** zobrazíte náhled počítačů, které budou vybrány. Když jste spokojeni se skupinou, klikněte na **vytvořit** a vytvořte skupinu počítačů.
 
-Pokud chcete vytvořit novou skupinu počítačů, vyberte **+ vytvořit skupinu počítačů**. Toto tlačítko otevře **vytvořit stránku skupiny počítačů** Tady můžete definovat nové skupiny. Klikněte na tlačítko **vytvořit** vytvořit skupinu.
+Pokud chcete vytvořit novou skupinu počítačů, vyberte **+ vytvořit skupinu počítačů**. Tímto tlačítkem otevřete **stránku vytvořit skupinu počítačů** , kde můžete definovat novou skupinu. Vytvořte skupinu kliknutím na **Vytvořit**.
 
 ![Vytvořit novou skupinu počítačů](./media/automation-vm-inventory/create-new-group.png)
 
@@ -118,14 +114,14 @@ Odebrání virtuálního počítače ze správy inventáře:
 3. V seznamu vyberte virtuální počítač, který chcete odpojit. U virtuálního počítače se zobrazí zelené zaškrtnutí vedle textu **Tento pracovní prostor** ve sloupci **Připojení OMS**.
 
    >[!NOTE]
-   >OMS se teď označuje jako protokoly Azure monitoru.
+   >OMS se teď označuje jako protokoly Azure Monitor.
    
 4. V horní části další stránky vyberte **Odpojit**.
 5. V potvrzovacím okně vyberte **Ano**.
     Tato akce odpojí počítač od správy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o správě změn nastavení souborů a registru na virtuálních počítačích najdete v tématu [Sledování změn softwaru v prostředí pomocí řešení Change Tracking](../log-analytics/log-analytics-change-tracking.md).
-* Další informace o správě Windows a aktualizace balíčků na virtuálních počítačích, najdete v článku [řešení Update Management v Azure](../operations-management-suite/oms-solution-update-management.md).
+* Další informace o správě aktualizací pro Windows a balíčky na virtuálních počítačích najdete v tématu [řešení Update Management v Azure](../operations-management-suite/oms-solution-update-management.md).
 

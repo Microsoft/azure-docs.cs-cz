@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: středně náročný obrázek produktů elektronického obchodování – Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Nastavte aplikaci pro analýzu a klasifikaci imagí produktu pomocí zadaných popisků (pomocí Azure Počítačové zpracování obrazu a Custom Vision). Označte nežádoucí obrázky, které se budou dále kontrolovat (pomocí Azure Content Moderator).
+description: V tomto kurzu se dozvíte, jak nastavit aplikaci pro analýzu a klasifikaci imagí produktu pomocí zadaných popisků (použití Azure Počítačové zpracování obrazu a Custom Vision). Označte nežádoucí obrázky, které se budou dále kontrolovat (pomocí Azure Content Moderator).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936038"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382153"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Kurz: středně náročné image produktů elektronického obchodování s využitím Azure Content Moderator
 
@@ -34,7 +34,7 @@ Kompletní vzorový kód je k dispozici v [ukázkách úložiště moderování 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
 - Počítačové zpracování obrazu klíč předplatného (stejné pokyny jako výše).

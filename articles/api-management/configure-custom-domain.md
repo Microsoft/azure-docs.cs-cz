@@ -1,5 +1,6 @@
 ---
-title: Konfigurace vlastního názvu domény pro vaši instanci Azure API Management | Microsoft Docs
+title: Konfigurace vlastního názvu domény pro instanci Azure API Management
+titleSuffix: Azure API Management
 description: Toto téma popisuje, jak nakonfigurovat vlastní název domény pro instanci Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -11,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472194"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442543"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
@@ -25,7 +26,7 @@ Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí sub
 > [!WARNING]
 > Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény > a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, místo toho budou > s ohledem na vlastnosti certifikátu, který neovládají, což není doporučený postup.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -73,7 +74,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
     >
     > Pokud je certifikát nastavený na automatické střídání, API Management se automaticky vybere nejnovější verze bez jakéhokoli výpadku služby (Pokud vaše API Management vrstva má smlouvu SLA – i. e. ve všech vrstvách kromě úrovně pro vývojáře).
 
-1. Klikněte na použít.
+1. Klikněte na tlačítko Použít.
 
     > [!NOTE]
     > Proces přiřazení certifikátu může v závislosti na velikosti nasazení trvat 15 minut nebo déle. SKU pro vývojáře má výpadky, základní a vyšší skladové jednotky nevýpadek.

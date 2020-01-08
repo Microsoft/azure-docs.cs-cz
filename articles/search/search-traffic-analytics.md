@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: b9b0ba85aed4d63fe6bb939c9ed3b99d3e789397
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426993"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Implementace vyhledávání analýzy provozu v Azure Kognitivní hledání
 
@@ -167,9 +167,7 @@ Pokaždé, když uživatel klikne na dokument, je signál, který musí být pro
 
 ## <a name="3---analyze-in-power-bi"></a>3\. analýza v Power BI
 
-Po instrumentaci aplikace a ověření, že je vaše aplikace správně připojená k Application Insights, můžete použít předdefinovanou šablonu, kterou vytvořila služba Azure Kognitivní hledání pro Power BI Desktop. 
-
-Rozpoznávání rozpoznávání v Azure poskytuje monitorování [Power BI balíčku obsahu](https://app.powerbi.com/getdata/services/azure-search) , abyste mohli analyzovat data protokolu. Sada Content Pack T přidává předdefinované grafy a tabulky, které jsou užitečné při analýze dalších dat zaznamenaných pro vyhledávání analýz provozu. Další informace najdete v tématu [stránce nápovědy balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
+Po instrumentaci aplikace a ověření, že je aplikace správně připojená k Application Insights, si stáhněte šablonu předdefinované sestavy, která bude analyzovat data v Power BI desktopu. Sestava obsahuje předdefinované grafy a tabulky, které jsou užitečné při analýze dalších dat zaznamenaných pro vyhledávání analýz provozu. 
 
 1. V levém navigačním podokně Azure Kognitivní hledání řídicího panelu v části **Nastavení**klikněte na **Prohledat analýzu provozu**.
 
@@ -179,7 +177,7 @@ Rozpoznávání rozpoznávání v Azure poskytuje monitorování [Power BI balí
 
 2. Na stejné stránce klikněte na **stáhnout Power BI sestavu**.
 
-3. Sestava se otevře v Power BI Desktop a zobrazí se výzva, abyste se připojili k Application Insights. Tyto informace můžete najít na stránce Azure Portal pro prostředek Application Insights.
+3. Sestava se otevře v Power BI Desktop a zobrazí se výzva, abyste se připojili k Application Insights a zadali přihlašovací údaje. Informace o připojení najdete na stránce Azure Portal pro prostředek Application Insights. Pro přihlašovací údaje zadejte stejné uživatelské jméno a heslo, které používáte pro přihlášení k portálu.
 
    ![Připojení k Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Připojte se k Application Insights")
 
@@ -189,11 +187,8 @@ Sestava obsahuje grafy a tabulky, které vám pomůžou dělat podrobnější ro
 
 Metriky obsahují následující položky:
 
-* Klikněte na rychlost (centrum): poměr uživatelů, kteří na konkrétní dokument kliknou, na celkový počet hledání.
+* Hledání ve svazku a nejoblíbenější páry termínů a dokumentů: podmínky, které vedou ke stejnému kliknutí na stejný dokument, seřazené kliknutím na tlačítko.
 * Hledání bez kliknutí: podmínka pro nejčastější dotazy, které registrují žádné kliknutí.
-* Nejpoužívanější dokumenty: nejvíce kliknuli dokumenty podle ID za posledních 24 hodin, 7 dní a 30 dnů.
-* Oblíbené páry termínů: podmínky, které mají za následek kliknutí na stejný dokument, seřazené kliknutím na tlačítko.
-* Doba, po kterou se má kliknout: po dobu od vyhledávacího dotazu se odblokuje na sebe.
 
 Následující snímek obrazovky zobrazuje předdefinované sestavy a grafy pro analýzu analýz provozu vyhledávání.
 

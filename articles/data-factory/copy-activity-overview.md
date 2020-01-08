@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 40bddaab6db5e7ed777ec55ca469a9e2d1c35c98
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440344"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -49,15 +49,13 @@ Chcete-li kopírovat data ze zdroje do jímky, služba, která spouští aktivit
 
 ### <a name="supported-file-formats"></a>Podporované formáty souborů
 
-Aktivitu kopírování můžete použít ke kopírování souborů mezi dvěma úložišti dat založených na souborech. V tomto případě jsou data zkopírována efektivně bez jakékoli serializace nebo deserializace.
-
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Můžete například provádět následující aktivity kopírování:
+Aktivitu kopírování můžete použít ke kopírování souborů mezi dvěma úložišti dat založených na souborech. v takovém případě se data zkopírují bez jakékoli serializace nebo deserializace. Kromě toho můžete také analyzovat nebo generovat soubory daného formátu, například můžete provést následující:
 
-* Kopírování dat z místní databáze SQL Server a zápis dat do Azure Data Lake Storage Gen2 ve formátu Parquet
+* Kopírování dat z místní databáze SQL Server a zápis do Azure Data Lake Storage Gen2 ve formátu Parquet
 * Kopírování souborů ve formátu textu (CSV) z místního systému souborů a zápis do úložiště objektů BLOB v Azure ve formátu Avro
-* Zkopírujte soubory zip z místního systému souborů, dekomprimujte je a zapište do Azure Data Lake Storage Gen2.
+* Zkopírujte soubory zip z místního systému souborů, dekomprimujte je průběžně a zapište extrahované soubory do Azure Data Lake Storage Gen2.
 * Z úložiště objektů BLOB v Azure zkopírujte data ve formátu. komprimovaný text (CSV) gzip a napište ho do Azure SQL Database.
 * Mnoho dalších aktivit, které vyžadují serializaci/deserializaci nebo kompresi/dekompresi.
 
@@ -131,13 +129,14 @@ Následující šablona aktivity kopírování obsahuje úplný seznam podporova
 | inputs | Určete datovou sadu, kterou jste vytvořili, která odkazuje na zdrojová data. Aktivita kopírování podporuje pouze jeden vstup. | Ano |
 | outputs | Určete datovou sadu, kterou jste vytvořili, která odkazuje na data jímky. Aktivita kopírování podporuje pouze jeden výstup. | Ano |
 | typeProperties | Zadejte vlastnosti pro konfiguraci aktivity kopírování. | Ano |
-| source | Zadejte typ zdroje kopie a odpovídající vlastnosti pro načtení dat.<br/><br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Ano |
-| sink | Zadejte typ jímky kopírování a odpovídající vlastnosti pro zápis dat.<br/><br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Ano |
-| translator | Zadejte mapování sloupce explicitní ze zdroje do jímky. Tato vlastnost se používá v případě, že výchozí chování kopírování nevyhovuje vašim potřebám.<br/><br/>Další informace najdete v tématu [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md). | Ne |
-| dataIntegrationUnits | Zadejte míru, která představuje množství energie, kterou [prostředí Azure Integration runtime](concepts-integration-runtime.md) používá pro kopírování dat. Tyto jednotky se dřív jmenovaly jako jednotky pro pohyb dat v cloudu (DMU). <br/><br/>Další informace najdete v tématu [jednotky pro integraci dat](copy-activity-performance.md#data-integration-units). | Ne |
-| parallelCopies | Zadejte paralelismus, které má aktivita kopírování použít při čtení dat ze zdroje a zápisu dat do jímky.<br/><br/>Další informace najdete v tématu [paralelní kopírování](copy-activity-performance.md#parallel-copy). | Ne |
-| enableStaging<br/>stagingSettings | Určete, jestli se mají připravit dočasná data v úložišti objektů BLOB místo přímého kopírování dat ze zdroje do jímky.<br/><br/>Informace o užitečných scénářích a podrobnostech konfigurace najdete v tématu [Příprava kopírování](copy-activity-performance.md#staged-copy). | Ne |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Vyberte, jak se má při kopírování dat ze zdroje do jímky zpracovat nekompatibilní řádky.<br/><br/>Další informace najdete v tématu odolnost [proti chybám](copy-activity-fault-tolerance.md). | Ne |
+| source | Zadejte typ zdroje kopie a odpovídající vlastnosti pro načtení dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Ano |
+| sink | Zadejte typ jímky kopírování a odpovídající vlastnosti pro zápis dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Ano |
+| translator | Zadejte mapování sloupce explicitní ze zdroje do jímky. Tato vlastnost se používá v případě, že výchozí chování kopírování nevyhovuje vašim potřebám.<br/>Další informace najdete v tématu [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md). | Ne |
+| dataIntegrationUnits | Zadejte míru, která představuje množství energie, kterou [prostředí Azure Integration runtime](concepts-integration-runtime.md) používá pro kopírování dat. Tyto jednotky se dřív jmenovaly jako jednotky pro pohyb dat v cloudu (DMU). <br/>Další informace najdete v tématu [jednotky pro integraci dat](copy-activity-performance.md#data-integration-units). | Ne |
+| parallelCopies | Zadejte paralelismus, které má aktivita kopírování použít při čtení dat ze zdroje a zápisu dat do jímky.<br/>Další informace najdete v tématu [paralelní kopírování](copy-activity-performance.md#parallel-copy). | Ne |
+| zachovat | Určete, jestli se při kopírování dat mají zachovat metadata nebo seznamy ACL. <br/>Další informace najdete v tématu [zachování metadat](copy-activity-preserve-metadata.md). |Ne |
+| enableStaging<br/>stagingSettings | Určete, jestli se mají připravit dočasná data v úložišti objektů BLOB místo přímého kopírování dat ze zdroje do jímky.<br/>Informace o užitečných scénářích a podrobnostech konfigurace najdete v tématu [Příprava kopírování](copy-activity-performance.md#staged-copy). | Ne |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Vyberte, jak se má při kopírování dat ze zdroje do jímky zpracovat nekompatibilní řádky.<br/>Další informace najdete v tématu odolnost [proti chybám](copy-activity-fault-tolerance.md). | Ne |
 
 ## <a name="monitoring"></a>Sledování
 
@@ -238,13 +237,9 @@ V části **výsledek spuštění aktivity kopírování** > **výstup** se vrá
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>Schéma a mapování datového typu
+## <a name="incremental-copy"></a>Přírůstkové kopírování
 
-Informace o tom, jak aktivita kopírování mapuje vaše zdrojová data do jímky, najdete v tématu [mapování schématu a datového typu](copy-activity-schema-and-type-mapping.md) .
-
-## <a name="fault-tolerance"></a>Odolnost proti chybám
-
-Ve výchozím nastavení aktivita kopírování zastaví kopírování dat a vrátí chybu, pokud jsou řádky zdrojového data nekompatibilní s řádky dat jímky. Aby bylo kopírování úspěšné, můžete nakonfigurovat aktivitu kopírování, která přeskočí a zaprotokoluje nekompatibilní řádky a kopíruje pouze kompatibilní data. Podrobnosti najdete v tématu odolnost [proti chybám aktivity kopírování](copy-activity-fault-tolerance.md) .
+Data Factory umožňuje přírůstkově kopírovat rozdílová data ze zdrojového úložiště dat do úložiště dat jímky. Podrobnosti najdete v tématu [kurz: přírůstkové kopírování dat](tutorial-incremental-copy-overview.md).
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
 
@@ -258,8 +253,17 @@ V této ukázce Data Factory v průběhu kopírování sledovat vysoké využit�
 
 ![Sledování kopírování pomocí tipů pro ladění výkonu](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Přírůstkové kopírování
-Data Factory umožňuje přírůstkově kopírovat rozdílová data ze zdrojového úložiště dat do úložiště dat jímky. Podrobnosti najdete v tématu [kurz: přírůstkové kopírování dat](tutorial-incremental-copy-overview.md).
+## <a name="preserve-metadata-along-with-data"></a>Zachování metadat spolu s daty
+
+Při kopírování dat ze zdroje do jímky ve scénářích, jako je třeba migrace Data Lake, můžete také zvolit, aby se metadata a seznamy ACL zachovaly spolu s daty pomocí aktivity kopírování. Podrobnosti najdete v tématu [zachování metadat](copy-activity-preserve-metadata.md) .
+
+## <a name="schema-and-data-type-mapping"></a>Schéma a mapování datového typu
+
+Informace o tom, jak aktivita kopírování mapuje vaše zdrojová data do jímky, najdete v tématu [mapování schématu a datového typu](copy-activity-schema-and-type-mapping.md) .
+
+## <a name="fault-tolerance"></a>Odolnost proti chybám
+
+Ve výchozím nastavení aktivita kopírování zastaví kopírování dat a vrátí chybu, pokud jsou řádky zdrojového data nekompatibilní s řádky dat jímky. Aby bylo kopírování úspěšné, můžete nakonfigurovat aktivitu kopírování, která přeskočí a zaprotokoluje nekompatibilní řádky a kopíruje pouze kompatibilní data. Podrobnosti najdete v tématu odolnost [proti chybám aktivity kopírování](copy-activity-fault-tolerance.md) .
 
 ## <a name="next-steps"></a>Další kroky
 Tyto rychlé starty, kurzy a ukázky, naleznete v tématu:

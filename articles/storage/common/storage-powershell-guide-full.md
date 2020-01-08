@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465093"
 ---
-# <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure Powershell s Azure Storage
+# <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure PowerShellu s Azure Storage
 
 Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V případě Azure Storage tyto rutiny spadají do dvou kategorií – rovina ovládacího prvku a rovina dat. Rutiny řídicí roviny se používají ke správě účtu úložiště – k vytváření účtů úložiště, nastavení vlastností, odstraňování účtů úložiště, otočení přístupových klíčů atd. Rutiny roviny dat se používají ke správě dat uložených *v* účtu úložiště. Například nahrávání objektů blob, vytváření sdílených složek a přidávání zpráv do fronty.
 
@@ -161,7 +161,7 @@ Pokud chcete znovu vygenerovat druhý klíč, místo `key1`použijte `key2` jako
 Znovu vygenerujte jeden z vašich klíčů a potom ho znovu načtěte, abyste viděli novou hodnotu.
 
 > [!NOTE]
-> Před obnovením klíče pro produkční účet úložiště byste měli provést pečlivé plánování. Opětovné generování jednoho nebo obou klíčů zruší platnost přístupu pro žádnou aplikaci pomocí klíče, který se znovu vygeneroval. Další informace najdete v části [Přístupové klíče](storage-account-manage.md#access-keys).
+> Před obnovením klíče pro produkční účet úložiště byste měli provést pečlivé plánování. Opětovné generování jednoho nebo obou klíčů zruší platnost přístupu pro žádnou aplikaci pomocí klíče, který se znovu vygeneroval. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](storage-account-keys-manage.md).
 
 
 ### <a name="delete-a-storage-account"></a>Odstranění účtu úložiště

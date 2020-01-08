@@ -3,20 +3,20 @@ title: Konfigurace vlastního názvu domény v Cloud Services | Microsoft Docs
 description: Pomocí konfigurace nastavení DNS se dozvíte, jak vystavit aplikaci nebo data Azure na internetu na vlastní doméně.  V těchto příkladech se používá Azure Portal.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8940d1a319d5bfabf8fd32b98f47cc6d283a8517
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386795"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurace vlastního názvu domény pro cloudovou službu Azure
-Když vytvoříte cloudovou službu, Azure ji přiřadí subdoménou **cloudapp.NET**. Pokud se například vaše cloudová služba jmenuje "contoso", budou mít vaši uživatelé přístup k vaší aplikaci na adrese URL, jako `http://contoso.cloudapp.net`je. Azure také přiřadí virtuální IP adresu.
+Když vytvoříte cloudovou službu, Azure ji přiřadí subdoménou **cloudapp.NET**. Pokud se například vaše cloudová služba jmenuje "contoso", budou mít vaši uživatelé přístup k vaší aplikaci na adrese URL, jako je `http://contoso.cloudapp.net`. Azure také přiřadí virtuální IP adresu.
 
 Svou aplikaci ale můžete zveřejnit i na vlastním názvu domény, jako je třeba **contoso.com**. Tento článek vysvětluje, jak vyhradit nebo nakonfigurovat vlastní název domény pro webové role cloudové služby.
 
@@ -41,10 +41,10 @@ Záznamy CNAME (nebo aliasy) a záznamy umožňují přidružit název domény k
 Záznam CNAME mapuje *konkrétní* doménu, například **contoso.com** nebo **www\.contoso.com**, na kanonický název domény. V tomto případě je kanonický název domény název domény **[MyApp]. cloudapp. NET** vaší hostované aplikace Azure. Po vytvoření CNAME vytvoří alias pro: **[MyApp]. cloudapp. NET**. Záznam CNAME se přeloží na IP adresu vaší **[MyApp]. cloudapp. NET** Service, takže pokud se IP adresa cloudové služby změní, nemusíte provádět žádnou akci.
 
 > [!NOTE]
-> Někteří registrátori domén umožňují mapovat subdomény jenom při použití záznamu CNAME, jako je například contoso.com www\., a ne kořenových názvů, jako je například contoso.com. Další informace o záznamech CNAME najdete v dokumentaci poskytnuté registrátorem, v [záznamu Wikipedii záznamu CNAME](https://en.wikipedia.org/wiki/CNAME_record)nebo v dokumentu [název domény IETF – implementace a specifikace](https://tools.ietf.org/html/rfc1035) .
+> Někteří registrátori domén umožňují mapovat subdomény jenom při použití záznamu CNAME, jako je například webová\.contoso.com, a ne kořenové názvy, jako je například contoso.com. Další informace o záznamech CNAME najdete v dokumentaci poskytnuté registrátorem, v [záznamu Wikipedii záznamu CNAME](https://en.wikipedia.org/wiki/CNAME_record)nebo v dokumentu [název domény IETF – implementace a specifikace](https://tools.ietf.org/html/rfc1035) .
 
 ### <a name="a-record"></a>Záznam
-Záznam *A* mapuje doménu, jako je například **contoso.com** nebo **Webová\.contoso.com**, *nebo doména*  **\*** se zástupnými znaky, jako je například. contoso.com, na IP adresu. V případě cloudové služby Azure je virtuální IP adresa služby. Hlavní výhodou záznamu a v rámci záznamu CNAME je, že můžete mít jednu položku, která používá zástupný znak, například \* **. contoso.com**, který zpracovává požadavky na více dílčích domén, jako je **mail.contoso.com**,  **Login.contoso.com**nebo **www\.contso.com**.
+Záznam *A* namapuje doménu, například **contoso.com** nebo **www\.contoso.com**, *nebo doménu se zástupnými znaky* , jako je například **\*. contoso.com**, na IP adresu. V případě cloudové služby Azure je virtuální IP adresa služby. Hlavní výhodou záznamu o záznamu CNAME je to, že můžete mít jednu položku, která používá zástupný znak, například \* **. contoso.com**, který zpracovává požadavky na více dílčích domén, jako je **mail.contoso.com**, **Login.contoso.com**nebo **www\.contso.com**.
 
 > [!NOTE]
 > Vzhledem k tomu, že je záznam A namapován na statickou IP adresu, nemůže automaticky vyřešit změny IP adresy vaší cloudové služby. IP adresa, kterou používá vaše cloudová služba, se přidělí při prvním nasazení do prázdného slotu (výroba nebo příprava). Pokud odstraníte nasazení pro slot, IP adresa se uvolní v Azure a jakékoli budoucí nasazení do slotu se může předávat nové IP adrese.
@@ -71,11 +71,11 @@ Chcete-li vytvořit záznam CNAME, je nutné přidat novou položku do tabulky D
 
      Uložte název domény, který se používá v adrese URL vrácené kteroukoli metodou, jak ho budete potřebovat při vytváření záznamu CNAME.
 2. Přihlaste se k webu registrátora DNS a na stránce pro správu DNS se můžete dostat na stránku. Vyhledejte odkazy nebo oblasti webu označené jako **název domény**, **DNS**nebo **Správa názvového serveru**.
-3. Nyní zjistíte, kde můžete vybrat nebo zadat záznam CNAME. Možná budete muset vybrat typ záznamu z rozevírací nabídky nebo přejít na stránku pokročilá nastavení. Měli byste hledat slova **CNAME**, **alias**nebo subdomény.
-4. Pokud chcete vytvořit alias pro **\.webovou customdomain.com**, musíte zadat také alias domény nebo subdomény pro záznam CNAME, jako je například **www** . Pokud chcete vytvořit alias pro kořenovou doménu, může být uvedený jako **\@** symbol v nástrojích DNS vašeho registrátora.
+3. Nyní zjistíte, kde můžete vybrat nebo zadat záznam CNAME. Možná budete muset vybrat typ záznamu z rozevírací nabídky nebo přejít na stránku pokročilá nastavení. Měli byste hledat slova **CNAME**, **alias**nebo **subdomény**.
+4. Pokud chcete vytvořit alias pro **webovou\.customdomain.com**, musíte zadat také alias domény nebo subdomény pro záznam CNAME, jako je například **www** . Pokud chcete vytvořit alias pro kořenovou doménu, může být uvedený jako symbol " **\@** " v nástrojích DNS vašeho registrátora.
 5. Pak musíte zadat kanonický název hostitele, který je v tomto případě **cloudapp.NET** doménou vaší aplikace.
 
-Například následující záznam CNAME přepošle veškerý provoz z **\.webové contoso.com** do **contoso.cloudapp.NET**, vlastní název domény nasazené aplikace:
+Například následující záznam CNAME přepošle veškerý provoz ze služby **www\.contoso.com** do **contoso.cloudapp.NET**, vlastní název domény nasazené aplikace:
 
 | Alias/název hostitele/subdoména | Kanonická doména |
 | --- | --- |
@@ -105,9 +105,9 @@ Pokud chcete vytvořit záznam A, musíte nejdřív najít virtuální IP adresu
      Uložte IP adresu, protože ji budete potřebovat při vytváření záznamu A.
 2. Přihlaste se k webu registrátora DNS a na stránce pro správu DNS se můžete dostat na stránku. Vyhledejte odkazy nebo oblasti webu označené jako **název domény**, **DNS**nebo **Správa názvového serveru**.
 3. Nyní zjistíte, kde můžete vybrat nebo zadat záznam. Možná budete muset vybrat typ záznamu z rozevírací nabídky nebo přejít na stránku pokročilá nastavení.
-4. Vyberte nebo zadejte doménu nebo subdoménu, které budou používat tento záznam. Pokud například chcete vytvořit alias pro **\.webovou customdomain.com**, vyberte možnost **www** . Pokud chcete vytvořit položku se zástupnými znaky pro všechny subdomény, zadejte * * * * *. To se bude vztahovat na všechny poddomény, jako jsou **mail.customdomain.com**, **Login.customdomain.com**a **www\.customdomain.com**.
+4. Vyberte nebo zadejte doménu nebo subdoménu, které budou používat tento záznam. Pokud například chcete vytvořit alias pro **webovou\.customdomain.com**, vyberte možnost **www** . Pokud chcete vytvořit položku se zástupnými znaky pro všechny subdomény, zadejte * * * * *. To bude zahrnovat všechny poddomény, jako jsou **mail.customdomain.com**, **login.customdomain.com**a **www\.customdomain.com**.
 
-    Pokud chcete vytvořit záznam A pro kořenovou doménu, může být uvedený jako **\@** symbol v nástrojích DNS vašeho registrátora.
+    Pokud chcete vytvořit záznam A pro kořenovou doménu, může být uvedený jako symbol " **\@** " v nástrojích DNS vašeho registrátora.
 5. Do poskytnutého pole zadejte IP adresu vaší cloudové služby. Tím přidružíte položku domény použitou v záznamu A s IP adresou nasazení cloudové služby.
 
 Například následující záznam přepošle veškerý provoz z **contoso.com** do **137.135.70.239**, IP adresu nasazené aplikace:
@@ -138,3 +138,6 @@ Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chc
 [Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
+
+
+

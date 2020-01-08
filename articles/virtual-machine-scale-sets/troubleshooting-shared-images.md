@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s sdílené bitové kopie v Azure | Dokumentace Microsoftu
-description: Informace o řešení potíží s galerií sdílené bitové kopie.
+title: Řešení potíží se sdílenými bitovými kopiemi v Azure
+description: Naučte se řešit problémy s galeriemi sdílených imagí ve službě Azure Virtual Machine Scale Sets.
 services: virtual-machine-scale-sets
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
@@ -17,18 +17,18 @@ ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 563f4ee432b6f0ee90d6532edd0e44ecebd5b292
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0496bb352721a19917e8f16d8dbe0ee3473a9f77
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621496"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460257"
 ---
-# <a name="troubleshoot-shared-image-galleries"></a>Řešení potíží s galerií sdílené bitové kopie
+# <a name="troubleshoot-shared-image-galleries"></a>Řešení potíží s galeriemi sdílených imagí
 
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../includes/virtual-machines-common-shared-image-troubleshooting.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [sdílené Galerie obrázků](shared-image-galleries.md).
+Přečtěte si další informace o [galeriích sdílených imagí](shared-image-galleries.md).

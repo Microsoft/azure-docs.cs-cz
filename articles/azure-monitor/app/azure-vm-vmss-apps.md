@@ -1,5 +1,5 @@
 ---
-title: Monitorování výkonu aplikací hostovaných na virtuálních počítačích Azure a Azure Virtual Machine Scale Sets | Microsoft Docs
+title: Monitorování výkonu na virtuálních počítačích Azure – Azure Application Insights
 description: Sledování výkonu aplikací pro virtuální počítače Azure a Azure Virtual Machine Scale Sets. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: 248dfb83c26d3f49fb492272ee3bd87d1e34fefa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2fdd07d01e6bb1258a3f2ae2e856e440e5ed2818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161472"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407339"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuální počítače Azure a Azure Virtual Machine Scale Sets
 
@@ -50,7 +50,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro virtuální po�
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Správa Application Insights agenta pro aplikace .NET na virtuálních počítačích Azure pomocí PowerShellu
 
 > [!NOTE]
-> Před instalací agenta Application Insights budete potřebovat klíč instrumentace. [Vytvořte nový prostředek Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) nebo zkopírujte klíč instrumentace z existujícího prostředku Application Insights.
+> Před instalací agenta Application Insights budete potřebovat připojovací řetězec. [Vytvořte nový prostředek Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) nebo zkopírujte připojovací řetězec z existujícího prostředku Application Insights.
 
 > [!NOTE]
 > Začínáte s PowerShellem? Přečtěte si [příručku Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0).
@@ -65,8 +65,9 @@ $publicCfgJsonString = '
         {
           "appFilter": ".*",
           "machineFilter": ".*",
+          "virtualPathFilter": ".*",
           "instrumentationSettings" : {
-            "instrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           }
         }
       ]
@@ -105,7 +106,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 Nainstalovaná rozšíření můžete zobrazit také v okně [virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) na portálu.
 
 > [!NOTE]
-> Ověřte instalaci kliknutím na Live Metrics Stream v rámci prostředku Application Insights přidruženého k klíči instrumentace, který jste použili k nasazení rozšíření agenta Application Insights. Pokud odesíláte data z více Virtual Machines, vyberte v části název serveru cílové virtuální počítače Azure. Může trvat až minutu, než se data začnou přesměrovat.
+> Ověřte instalaci kliknutím na Live Metrics Stream v rámci prostředku Application Insights přidruženého k připojovacímu řetězci, který jste použili k nasazení rozšíření agenta Application Insights. Pokud odesíláte data z více Virtual Machines, vyberte v části název serveru cílové virtuální počítače Azure. Může trvat až minutu, než se data začnou přesměrovat.
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>Správa Application Insights agenta pro aplikace .NET na Azure Virtual Machine Scale Sets pomocí PowerShellu
 
@@ -119,8 +120,9 @@ $publicCfgHashtable =
         @{
           "appFilter"= ".*";
           "machineFilter"= ".*";
-          "instrumentationSettings"= @{
-            "instrumentationKey"= "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; # Application Insights Instrumentation Key, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
+          "virtualPathFilter": ".*",
+          "instrumentationSettings" : {
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Application Insights connection string, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
           }
         }
       )

@@ -1,25 +1,16 @@
 ---
-title: Přehled služby Azure Service Fabric s API Management | Microsoft Docs
+title: Přehled služby Azure Service Fabric s API Management
 description: Tento článek představuje úvod k používání služby Azure API Management jako brány k vašim Service Fabricm aplikacím.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378106"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Přehled Service Fabric s využitím Azure API Management
 
@@ -48,7 +39,7 @@ V tomto scénáři se webové uživatelské rozhraní pořád obsluhuje prostře
 
 ## <a name="application-scenarios"></a>Scénáře aplikací
 
-Služby v Service Fabric můžou být bezstavové nebo stavové a můžou být rozdělené do oddílů pomocí jednoho ze tří schémat: singleton, int-64 rozsah a s názvem. Řešení koncového bodu služby vyžaduje určení konkrétního oddílu určité instance služby. Při vyhodnocování koncového bodu služby musí být zadána jak název instance služby (například `fabric:/myapp/myservice`), tak i konkrétní oddíl služby, s výjimkou případů, kdy je oddíl singleton.
+Služby v Service Fabric můžou být bezstavové nebo stavové a můžou být rozdělené do oddílů pomocí jednoho ze tří schémat: singleton, int-64 rozsah a s názvem. Řešení koncového bodu služby vyžaduje určení konkrétního oddílu určité instance služby. Při překladu koncového bodu služby musí být zadán název instance služby (například `fabric:/myapp/myservice`) i konkrétní oddíl služby, s výjimkou případu, kdy je oddíl singleton.
 
 Azure API Management lze použít s libovolnou kombinací bezstavových služeb, stavových služeb a všech schémat dělení.
 
@@ -56,20 +47,20 @@ Azure API Management lze použít s libovolnou kombinací bezstavových služeb,
 
 V nejjednodušším případě se přenos přepošle na bezstavovou instanci služby. Aby to bylo možné, operace API Management obsahuje zásady příchozího zpracování s back-end Service Fabric, které se mapují na určitou stavovou instanci služby v Service Fabric back-endu. Požadavky odeslané do této služby se odesílají do náhodné instance služby.
 
-#### <a name="example"></a>Příklad
-V následujícím scénáři Service Fabric aplikace obsahuje bezstavovou službu s názvem `fabric:/app/fooservice`, která zveřejňuje interní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódovaný přímo v API Management zásady příchozího zpracování. 
+#### <a name="example"></a>Příklad:
+V následujícím scénáři obsahuje Service Fabric aplikace bezstavovou službu s názvem `fabric:/app/fooservice`, která zveřejňuje interní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódovaný přímo v API Management zásady příchozího zpracování. 
 
 ![Service Fabric s Azure API Management topologii – přehled][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>Odeslání provozu do stavové služby
 
-Podobně jako u bezstavových služeb se přenos dá přeslat na instanci stavové služby. V takovém případě API Management operace obsahuje zásadu příchozího zpracování s back-end Service Fabric, která mapuje požadavek na konkrétní oddíl určité instance stavové služby. Oddíl, na který má být namapován každý požadavek, je vypočítán prostřednictvím metody lambda pomocí nějakého vstupu z příchozího požadavku HTTP, jako je například hodnota v cestě URL. Zásady je možné nakonfigurovat tak, aby odesílaly požadavky jenom na primární repliku, nebo na náhodnou repliku pro operace čtení.
+Podobně jako u bezstavových služeb se přenos dá přeslat na instanci stavové služby. V takovém případě API Management operace obsahuje zásadu příchozího zpracování s back-end Service Fabric, která mapuje požadavek na konkrétní oddíl určité instance *stavové* služby. Oddíl, na který má být namapován každý požadavek, je vypočítán prostřednictvím metody lambda pomocí nějakého vstupu z příchozího požadavku HTTP, jako je například hodnota v cestě URL. Zásady je možné nakonfigurovat tak, aby odesílaly požadavky jenom na primární repliku, nebo na náhodnou repliku pro operace čtení.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
-V následujícím scénáři Service Fabric aplikace obsahuje dělenou stavovou službu s názvem `fabric:/app/userservice` , která zveřejňuje interní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódovaný přímo v API Management zásady příchozího zpracování.  
+V následujícím scénáři obsahuje Service Fabric aplikace rozdělenou stavovou službu s názvem `fabric:/app/userservice`, která zveřejňuje interní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódovaný přímo v API Management zásady příchozího zpracování.  
 
-Služba je rozdělená pomocí schématu oddílu Int64 se dvěma oddíly a rozsahem klíče, který se `Int64.MinValue` rozpíná `Int64.MaxValue`na. Zásada back-end vypočítá klíč oddílu v tomto rozsahu převodem `id` hodnoty zadané v cestě požadavku URL na 64 celé číslo, i když zde můžete použít libovolný algoritmus, který vypočítá klíč oddílu. 
+Služba je rozdělená pomocí schématu oddílu Int64 se dvěma oddíly a rozsahem klíče, který pokrývá `Int64.MinValue` `Int64.MaxValue`. Zásady back-endu vypočítají klíč oddílu v tomto rozsahu převodem `id` hodnoty zadané v cestě požadavku URL na 64 celé číslo, i když zde můžete použít libovolný algoritmus, který vypočítá klíč oddílu. 
 
 ![Service Fabric s Azure API Management topologii – přehled][sf-apim-static-stateful]
 
@@ -79,16 +70,16 @@ V pokročilejších scénářích můžete definovat operaci API Management, kte
 
 Aby to bylo možné, operace API Management obsahuje zásady příchozího zpracování s back-end Service Fabric, který se mapuje na bezstavovou instanci služby v Service Fabric back-endu na základě hodnot načtených z příchozího požadavku HTTP. Požadavky na službu jsou odesílány do náhodné instance služby.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 V tomto příkladu je nová Bezstavová instance služby vytvořena pro každého uživatele aplikace s dynamicky generovaným názvem pomocí následujícího vzorce:
  
 - `fabric:/app/users/<username>`
 
-  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě žádosti URL. Příklad:
+  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě k žádosti URL. Příklad:
 
-  - Požadavek na `/api/users/foo` směrování do instance služby`fabric:/app/users/foo`
-  - Požadavek na `/api/users/bar` směrování do instance služby`fabric:/app/users/bar`
+  - Požadavek na `/api/users/foo` je směrován do instance služby `fabric:/app/users/foo`
+  - Požadavek na `/api/users/bar` je směrován do instance služby `fabric:/app/users/bar`
 
 ![Service Fabric s Azure API Management topologii – přehled][sf-apim-dynamic-stateless]
 
@@ -98,18 +89,18 @@ Podobně jako v případě nestavové služby může operace API Management mapo
 
 Aby to bylo možné, operace API Management obsahuje zásady příchozího zpracování s back-end Service Fabric, který se mapuje na instanci stavové služby v Service Fabric back-endu na základě hodnot načtených z příchozího požadavku HTTP. Kromě mapování požadavku na konkrétní instanci služby je možné požadavek také namapovat na konkrétní oddíl v rámci instance služby a volitelně buď na primární repliku, nebo na náhodnou sekundární repliku v rámci oddílu.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 V tomto příkladu se vytvoří nová stavová instance pro každého uživatele aplikace s dynamicky generovaným názvem pomocí následujícího vzorce:
  
 - `fabric:/app/users/<username>`
 
-  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name` hodnoty zadané v cestě URL požadavku. Příklad:
+  Každá služba má jedinečný název, ale názvy nejsou známy, protože služby jsou vytvořeny v reakci na vstup uživatele nebo správce, a proto nemohou být pevně zakódovány do zásad APIM nebo pravidel směrování. Místo toho se název služby, pro kterou se má odeslat žádost, vygeneruje v definici zásady back-endu z `name`, která poskytuje cestu k žádosti URL. Příklad:
 
-  - Požadavek na `/api/users/foo` směrování do instance služby`fabric:/app/users/foo`
-  - Požadavek na `/api/users/bar` směrování do instance služby`fabric:/app/users/bar`
+  - Požadavek na `/api/users/foo` je směrován do instance služby `fabric:/app/users/foo`
+  - Požadavek na `/api/users/bar` je směrován do instance služby `fabric:/app/users/bar`
 
-Každá instance služby je také rozdělená pomocí schématu oddílu Int64 se dvěma oddíly a rozsahem klíče, který se `Int64.MinValue` rozpíná na `Int64.MaxValue`. Zásada back-end vypočítá klíč oddílu v tomto rozsahu převodem `id` hodnoty zadané v cestě požadavku URL na 64 celé číslo, i když zde můžete použít libovolný algoritmus, který vypočítá klíč oddílu. 
+Každá instance služby je také rozdělená pomocí schématu oddílu Int64 se dvěma oddíly a rozsahem klíče, který pokrývá `Int64.MinValue` `Int64.MaxValue`. Zásady back-endu vypočítají klíč oddílu v tomto rozsahu převodem `id` hodnoty zadané v cestě požadavku URL na 64 celé číslo, i když zde můžete použít libovolný algoritmus, který vypočítá klíč oddílu. 
 
 ![Service Fabric s Azure API Management topologii – přehled][sf-apim-dynamic-stateful]
 

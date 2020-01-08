@@ -5,13 +5,13 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: 2be21b20c394ae8505ad18f2c411db7aab06215f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 12/29/2019
+ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74694002"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690287"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Kurz: monitorování jarních cloudových prostředků pomocí výstrah a skupin akcí
 
@@ -21,12 +21,12 @@ Pro nastavení kanálu výstrah existují dva kroky:
 1. Nastavte skupinu akcí s akcemi, které se mají provést, když se aktivuje výstraha, například e-mail, SMS, Runbook nebo Webhook. Skupiny akcí lze znovu použít mezi různými výstrahami.
 2. Nastavte pravidla upozornění. Pravidla vážou modely metrik se skupinami akcí na základě cílového prostředku, metriky, podmínky, agregace času atd.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Kromě požadavků na jarní Azure je tento kurz závislý na následujících zdrojích.
 
 * Nasazená instance cloudu Azure pro jaře.  Začněte podle našeho [rychlého](spring-cloud-quickstart-launch-app-cli.md) startu.
 
-* Prostředek Azure, který se má monitorovat, například databáze implementovaná v tomto článku: [Jak používat jarní Data rozhraní API pro Apache Cassandra s Azure Cosmos DB](https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+* Prostředek Azure, který se má monitorovat Tento příklad monitoruje instanci jarního cloudu.
  
 Následující postupy inicializují **skupinu akcí** a **výstrahu** počínaje možností **výstrahy** v levém navigačním podokně instance jarního cloudu. (Tento postup lze také spustit na stránce **Přehled monitorování** Azure Portal.) 
 
@@ -70,21 +70,46 @@ Chcete-li nakonfigurovat **výstrahu**, přejděte zpět na stránku **výstrahy
 
 1. Klikněte na **+ nové pravidlo výstrahy**.
 
-  ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3.png)
+   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3.png)
 
-1. Na stránce **vytvořit pravidlo** zadejte **prostředek**, **podmínku**a **akci**.  V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
+1. Na stránce **vytvořit pravidlo** zadejte **prostředek**.
 
-1. V části **Podrobnosti o výstraze**pojmenujte pravidlo upozornění.
+1. Nastavení **podmínky** poskytuje mnoho možností monitorování prostředků vaší **jarního cloudu** .  Kliknutím na **Přidat** otevřete podokno **Konfigurovat logiku signálu** .
+
+1. Vyberte podmínku. V tomto příkladu se používá **procento využití procesoru v systému**.
+
+   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-1.png)
+
+1. Posuňte se dolů na podokno **Konfigurovat logiku signálu** a nastavte **prahovou hodnotu** , která se má monitorovat.
+
+   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-2.png)
+
+1. Klikněte na **Done** (Hotovo).
+
+Podrobnosti o podmínkách, které je možné monitorovat, najdete v tématu [Možnosti metrik portálu User Portal](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options).
+
+ V části **Akce**klikněte na **Vybrat skupinu akcí**. V podokně **Akce** vyberte dříve definovanou **skupinu akcí**.
+
+   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-3.png) 
+
+1. Posuňte se dolů a v části **Podrobnosti o výstraze**pojmenujte pravidlo upozornění.
+
+1. Nastavte **závažnost**.
 
 1. Klikněte na **vytvořit pravidlo výstrahy**.
 
-  ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-4.png)
+   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-3-4.png)
 
 Ověřte, zda je povoleno nové pravidlo upozornění.
 
-  ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-5.png)
+   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-4.png)
+
+Pravidlo je také možné vytvořit pomocí stránky **metriky** :
+
+   ![Nové pravidlo výstrahy na portálu obrazovky](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Další kroky
+* [Možnosti metrik portálu User Portal](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 * [Vytváření a Správa skupin akcí v Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [Chování výstrah SMS ve skupinách akcí](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [Kurz: použití distribuovaného trasování u jarního cloudu Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

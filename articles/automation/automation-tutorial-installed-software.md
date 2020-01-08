@@ -3,26 +3,22 @@ title: Zjišťování, jaký software je nainstalovaný na počítačích, pomoc
 description: Využijte řešení Inventory ke zjišťování, jaký software je nainstalovaný na počítačích napříč prostředím.
 services: automation
 keywords: inventory, automation, change, tracking
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 04/11/2018
 ms.topic: tutorial
-ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 47313781756e460a8c30638661489874481b88a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420563"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Zjišťování, jaký software je nainstalovaný na počítačích Azure a jiných počítačích než Azure
 
 V tomto kurzu se naučíte zjistit, jaký software je nainstalovaný ve vašem prostředí. Můžete shromažďovat a zobrazovat inventář softwaru, souborů, linuxových procesů démon, služeb systému Windows a klíčů registru Windows na vašich počítačích. Sledování konfigurací vašich počítačů vám může pomoci přesně identifikovat provozní problémy napříč prostředím a lépe porozumět stavu vašich počítačů.
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Povolení řešení
@@ -39,7 +35,7 @@ Pro absolvování tohoto kurzu potřebujete:
 * [Účet Automation](automation-offering-get-started.md), který bude obsahovat sledovací proces, runbooky akcí a úlohu sledovacího procesu.
 * [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) pro připojení.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -61,7 +57,7 @@ Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika z
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
-Po povolení řešení informace o nainstalovaném softwaru a změny ve virtuálním počítači jsou přenášeny do protokoly Azure monitoru.
+Po povolení řešení budou informace o nainstalovaném softwaru a změnách na virtuálním počítači toky Azure Monitor protokoly.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ## <a name="onboard-a-vm"></a>Připojení virtuálního počítače
@@ -74,8 +70,8 @@ Vyberte **+ Přidat virtuální počítač Azure**. Otevře se stránka **Virtu�
 
 Pokud chcete přidat počítače mimo Azure, nainstalujte agenta pro [Windows](../azure-monitor/platform/agent-windows.md) nebo [Linux](automation-linux-hrw-install.md) v závislosti na vašem operačním systému. Jakmile bude agent nainstalovaný, přejděte ve svém účtu Automation do části **Inventory** v části **SPRÁVA KONFIGURACE**. Po kliknutí na **Spravovat počítače** se zobrazí seznam počítačů, které se hlásí do vašeho pracovního prostoru služby Log Analytics a které nemají řešení povolené. Vyberte odpovídající možnost pro vaše prostředí.
 
-* **Povolit na všech dostupných počítačích** – Tato možnost povolí řešení na všech počítačích, které se aktuálně hlásí do vašeho pracovního prostoru Log Analytics.
-* **Povolit na všech dostupných i budoucích počítačích** – Tato možnost povolí řešení na všech počítačích, které se hlásí do vašeho pracovního prostoru Log Analytics, a následně i na všech počítačích, které se do pracovního prostoru přidají v budoucnu.
+* **Povolit na všech dostupných počítačích** – Tato možnost povolí řešení na všech počítačích, které se aktuálně hlásí do vašeho pracovního prostoru služby Log Analytics.
+* **Povolit na všech dostupných i budoucích počítačích** – Tato možnost povolí řešení na všech počítačích, které se hlásí do vašeho pracovního prostoru služby Log Analytics, a následně i na všech počítačích, které se do pracovního prostoru přidají v budoucnu.
 * **Povolit na vybraných počítačích** – Tato možnost povolí řešení pouze na vybraných počítačích.
 
 ![Správa počítačů](./media/automation-tutorial-installed-software/manage-machines.png)
@@ -103,7 +99,7 @@ Pokud například vyhledáte Contoso, vrátí se veškerý software, jehož náz
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Vyhledávání nainstalovaného softwaru v protokolech inventáře
 
-Inventarizace generuje data protokolu, která se odešle protokoly Azure monitoru. Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Inventory** vyberte **Log Analytics**.
+Inventář generuje data protokolu, která se odesílají do protokolů Azure Monitor. Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Inventory** vyberte **Log Analytics**.
 
 Data řešení Inventory se ukládají jako typ **ConfigurationData** (Konfigurační data).
 Následující ukázkový dotaz Log Analytics vrátí výsledky inventáře, kde se Publisher (Vydavatel) rovná Microsoft Corporation.
@@ -115,11 +111,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Další informace o provozu a prohledávání souborů protokolů v protokoly Azure monitoru, najdete v článku [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md).
+Další informace o spouštění a hledání souborů protokolu v protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Inventarizace jediného počítače
 
-Pokud chcete zobrazit inventář softwaru pro jeden počítač, můžete na stránce prostředků virtuálního počítače Azure přejít k inventáři nebo použít protokoly Azure monitoru vyfiltrovat odpovídající počítač.
+Pokud chcete zobrazit inventář softwaru pro jeden počítač, můžete získat přístup k inventáři na stránce prostředku virtuálního počítače Azure nebo použít protokoly Azure Monitor k filtrování dolů na odpovídající počítač.
 Následující příklad dotazu Log Analytics vrátí seznam softwaru pro počítač ContosoVM.
 
 ```loganalytics
@@ -131,7 +127,7 @@ ConfigurationData
 | summarize by Publisher, SoftwareName
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak zobrazovat inventář softwaru, a například jste se naučili:
 

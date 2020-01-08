@@ -1,18 +1,18 @@
 ---
-title: Inteligentní zjišťování – snížení míry závažnosti trasování v Azure Application Insights | Microsoft Docs
-description: Monitorování trasování aplikace pomocí Azure Application Insights pro neobvyklé vzory v telemetrii trasování.
+title: Snížení míry závažnosti trasování – Azure Application Insights
+description: Monitorování trasování aplikace pomocí Azure Application Insights pro neobvyklé vzory v rámci telemetrie trasování s inteligentní detekcí.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/27/2017
-ms.openlocfilehash: 83c1296beabaaae78289a653c6b30f6665f725c2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b51cb66b59589c9b58d9115dfa6cefce0a20f3c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820542"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432422"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Snížení výkonu v poměru závažnosti trasování (Preview)
 
@@ -21,12 +21,12 @@ Trasování se v aplikacích často používají, protože pomůžou zjistit, co
 Tato funkce nevyžaduje žádné speciální nastavení, kromě konfigurace protokolování trasování pro vaši aplikaci (viz postup konfigurace naslouchacího procesu protokolu trasování pro [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) nebo [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)). Je aktivní, když vaše aplikace vygeneruje dostatek telemetrie výjimek.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Kdy získám tento typ oznámení inteligentního zjišťování?
-Tento typ oznámení se může zobrazit v případě, že poměr mezi "dobrými" trasování (trasování se protokoluje na úrovni *informací* nebo *podrobných*) a "špatných" trasování (trasování zaznamenaná na úrovni *varování*, *Chyba*nebo *závažná*) znamená snížení úrovně v konkrétní den v porovnání se směrným plánem vypočítaným během posledních sedmi dnů.
+Tento typ oznámení se může zobrazit v případě, že poměr mezi "dobrými" trasování (trasování se protokoluje na úrovni *informací* nebo *podrobných*) a "špatných" trasování (zaznamenaná úroveň *Upozornění*, *Chyba*nebo *závažná*) se v určitém dni v porovnání se směrným plánem vypočítaným během posledních sedmi dnů liší.
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>Má moje aplikace konečně nějaký problém?
 Ne, oznámení neznamená, že vaše aplikace má jednoznačně problém. I když snížení poměru mezi "dobrými" a "špatnými" trasování může znamenat problém s aplikací, tato změna v poměru může být neškodná. Například zvýšení může být způsobeno novým tokem v aplikaci, který emituje více "špatných" trasování než stávající toky.
 
-## <a name="how-do-i-fix-it"></a>Návody opravit?
+## <a name="how-do-i-fix-it"></a>Jak ho mám opravit?
 Oznámení zahrnují diagnostické informace pro podporu procesu diagnostiky:
 1. **Třídění.** V oznámení se dozvíte, kolik operací je ovlivněno. To vám může přispět k přiřazení priority k problému.
 2. **Oboru.** Má tento problém vliv na veškerý provoz nebo jenom nějaké operace? Tyto informace lze získat z oznámení.

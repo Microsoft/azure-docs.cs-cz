@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448074"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Když je vaše aplikace LUIS připravená na vrácení utterance předpovědi do klientské aplikace (například robota chatu), musíte aplikaci nasadit do koncového bodu předpovědi.
 
@@ -41,7 +39,7 @@ V Azure Portal vytvoříte prostředek koncového bodu předpovědi. Tento prost
 
    |Nastavení|Hodnota|Účel|
    |--|--|--|
-   |Název|`my-luis-resource`|Název prostředku Azure. Tento název budete potřebovat při přiřazení prostředku k aplikaci na portálu LUIS.|
+   |Name (Název)|`my-luis-resource`|Název prostředku Azure. Tento název budete potřebovat při přiřazení prostředku k aplikaci na portálu LUIS.|
    |Předplatné|Vaše předplatné|Vyberte jedno z předplatných přidružených k vašemu účtu.|
    |Skupina prostředků|`my-resource-group`|Vytvořte novou skupinu prostředků pro všechny prostředky služby vnímání. Až budete s prostředky hotovi, můžete odstranit skupinu prostředků, abyste mohli vyčistit své předplatné. |
    |Umístění pro vytváření obsahu|**Západní USA**|Oblast Azure pro vytváření obsahu.|
@@ -61,7 +59,7 @@ V Azure Portal vytvoříte prostředek koncového bodu předpovědi. Tento prost
 
 Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit prostředek k aplikaci LUIS. Po přiřazení Tento krok nebudete muset provádět znovu, dokud nevytvoříte nový prostředek. Můžete vytvořit nový prostředek pro rozšíření oblastí vaší aplikace nebo pro podporu většího počtu předpovědních dotazů.
 
-1. Přihlaste se k [portálu Luis](https://preview.luis.ai) a v seznamu aplikací vyberte aplikaci **myEnglishApp** .
+1. Přihlaste se k [portálu Luis verze Preview](https://preview.luis.ai) a v seznamu aplikací vyberte aplikaci **myEnglishApp** .
 
 1. V pravé horní nabídce vyberte **Spravovat** a pak vyberte **prostředky Azure**.
 
@@ -69,7 +67,7 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit 
 
     ![Pokud chcete přidat prostředek předpovědi LUIS, vyberte Přidat prostředek předpovědi.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřadit prostředek**.
+1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřazení prostředků**.
 
    ![Přiřadit prostředek vaší aplikace](./media/get-started-portal-deploy-app/assign-resource.png)
 

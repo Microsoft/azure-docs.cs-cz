@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 3368f72aeb7909c3e0a8653bb5b094729c4c45ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 44542fb299d769a3916407e09691a72efed01c79
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462431"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -81,7 +81,7 @@ Pomocí [Azure Security Center](../../security-center/index.yml) můžete integr
 **Podrobnosti**: [Správa potíží s ochranou endpoint Protection pomocí Security Center](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>Správa aktualizací virtuálních počítačů
-Virtuální počítače Azure, jako jsou všechny místní virtuální počítače, se považují za spravované uživatelem. Azure do nich nevloží aktualizace Windows. Musíte spravovat aktualizace virtuálních počítačů.
+Virtuální počítače Azure, jako jsou všechny místní virtuální počítače, se považují za spravované uživatelem. Azure v nich nenabízí instalaci aktualizací Windows. Musíte spravovat aktualizace virtuálních počítačů.
 
 **Osvědčený postup**: Udržujte své virtuální počítače aktuální.   
 **Podrobnosti**: pomocí řešení [Update Management](../../automation/automation-update-management.md) v Azure Automation můžete spravovat aktualizace operačního systému pro počítače s Windows a Linux, které jsou nasazené v Azure, v místních prostředích nebo v jiných poskytovatelích cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
@@ -99,7 +99,7 @@ Pokud používáte web Windows Update, nechte automatické nastavení web Window
 **Podrobnosti**: vyhledání a instalace všech aktualizací Windows jako prvního kroku při každém nasazení. Tato míra je obzvláště důležitá pro použití při nasazování bitových kopií, které pocházejí buď z vaší aplikace, nebo z vaší vlastní knihovny. I když se obrázky z Azure Marketplace ve výchozím nastavení automaticky aktualizují, může po veřejné verzi docházet k prodlevě (až na pár týdnů).
 
 **Osvědčený postup**: pravidelně znovu nasaďte virtuální počítače, abyste vynutili novou verzi operačního systému.   
-**Podrobnosti**: Definujte svůj virtuální počítač pomocí [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , abyste ho mohli snadno znovu nasadit. Pomocí šablony získáte opravu a zabezpečený virtuální počítač, když ho potřebujete.
+**Podrobnosti**: Definujte svůj virtuální počítač pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , abyste ho mohli snadno znovu nasadit. Pomocí šablony získáte opravu a zabezpečený virtuální počítač, když ho potřebujete.
 
 **Osvědčený postup**: rychlé použití aktualizací zabezpečení u virtuálních počítačů.   
 **Podrobnosti**: Povolte Azure Security Center (úroveň Free nebo úroveň Standard) k [identifikaci chybějících aktualizací zabezpečení a jejich použití](../../security-center/security-center-apply-system-updates.md).
@@ -152,13 +152,13 @@ Doporučujeme, abyste zašifroval virtuální pevné disky (VHD), které vám po
 Níže jsou uvedené osvědčené postupy pro používání Azure Disk Encryption:
 
 **Osvědčený postup**: povolení šifrování na virtuálních počítačích.   
-**Podrobnosti**: Azure Disk Encryption generuje a zapisuje šifrovací klíče do trezoru klíčů. Správa šifrovacích klíčů v trezoru klíčů se vyžaduje ověřování Azure AD. Vytvořte aplikaci Azure AD pro tento účel. Pro účely ověřování můžete použít buď ověřování na základě tajného klíče klienta, nebo [ověřování Azure AD založené na certifikátech klienta](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+**Podrobnosti**: Azure Disk Encryption generuje a zapisuje šifrovací klíče do trezoru klíčů. Správa šifrovacích klíčů v trezoru klíčů se vyžaduje ověřování Azure AD. Vytvořte aplikaci Azure AD pro tento účel. Pro účely ověřování, můžete použít buď ověřování na základě tajný kód klienta nebo [ověřování klienta na základě certifikátů Azure AD](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 **Osvědčený postup**: použijte klíč šifrování klíče (KEK) pro další vrstvu zabezpečení šifrovacích klíčů. Přidejte KEK do trezoru klíčů.   
 **Podrobnosti**: pomocí rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) vytvořte šifrovací klíč klíče v trezoru klíčů. KEK můžete také importovat z místního modulu hardwarového zabezpečení (HSM) pro správu klíčů. Další informace najdete v dokumentaci k [Key Vault](../../key-vault/key-vault-hsm-protected-keys.md). Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault. Udržování v úschově kopie tohoto klíče v modulu HSM místní správy klíčů nabízí další ochranu před náhodným odstraněním klíčů.
 
 **Osvědčený postup**: před zašifrováním disků si pořídit [snímek](../../virtual-machines/windows/snapshot-copy-managed-disk.md) a/nebo zálohu. Pokud během šifrování dojde k neočekávané chybě, zálohování poskytuje možnost obnovení.   
-**Podrobnosti**: virtuální počítače se spravovanými disky vyžadují zálohování před tím, než dojde k šifrování. Po provedení zálohy můžete použít rutinu **set-AzVMDiskEncryptionExtension** k šifrování spravovaných disků zadáním parametru *-skipVmBackup* . Další informace o zálohování a obnovení šifrovaných virtuálních počítačů najdete v článku o [Azure Backup](../../backup/backup-azure-vms-encryption.md) .
+**Podrobnosti**: virtuální počítače se spravovanými disky vyžadují zálohování před tím, než dojde k šifrování. Po provedení zálohy můžete použít rutinu **set-AzVMDiskEncryptionExtension** k šifrování spravovaných disků zadáním parametru *-skipVmBackup* . Další informace o tom, jak zálohování a obnovení šifrovaných virtuálních počítačů najdete v tématu [Azure Backup](../../backup/backup-azure-vms-encryption.md) článku.
 
 **Osvědčený postup**: aby se zajistilo, že šifrovací tajná klíč nepřekračuje regionální hranice, Azure Disk Encryption potřebuje Trezor klíčů a virtuální počítače umístěné ve stejné oblasti.   
 **Podrobnosti**: Vytvořte a použijte Trezor klíčů, který je ve stejné oblasti jako virtuální počítač, který chcete zašifrovat.

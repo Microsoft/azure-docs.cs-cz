@@ -1,5 +1,5 @@
 ---
-title: Delegování a role v Azure AD – Správa nároků – Azure Active Directory
+title: Delegování a role ve správě nároků – Azure AD
 description: Naučte se delegovat řízení přístupu od správců IT na manažery oddělení a vedoucí projektu, aby mohli spravovat přístup sami.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422586"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegování a role v Azure AD – Správa nároků
 
@@ -69,7 +69,7 @@ Po delegování mohou mít marketingové oddělení stejné role jako v následu
 | --- | --- | --- | --- |
 | Hana | Správce IT | Globální správce nebo Správce uživatelů |  |
 | Mamta | Marketingový manažer | Uživatel | Tvůrce katalogu a vlastník katalogu |
-| Bobem | Marketingový zájemce | Uživatel | Vlastník katalogu |
+| Bob | Marketingový zájemce | Uživatel | Vlastník katalogu |
 | Jessica | Manažer marketingového projektu | Uživatel | Přístup ke Správci balíčků |
 
 ## <a name="entitlement-management-roles"></a>Role správy oprávnění
@@ -84,14 +84,14 @@ Správa nároků má následující role, které jsou specifické pro správu n�
 
 Kromě toho má určený schvalovatel a žadatel pro přístupovou sadu také práva, i když se nejedná o role.
 
-| Kliknutím | Popis |
+| Pravé | Popis |
 | --- | --- |
 | Uživatelem | Autorizováno zásadou ke schválení nebo zamítnutí žádostí o přístup k balíčkům, i když nemůžou měnit definice přístupového balíčku. |
-| Žadatele | Autorizován zásadou přístupového balíčku pro vyžádání přístupového balíčku. |
+| Requestor | Autorizován zásadou přístupového balíčku pro vyžádání přístupového balíčku. |
 
 V následující tabulce jsou uvedeny úlohy, které mohou provádět role správy oprávnění.
 
-| Úkol | Správ | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků |
+| Úkol | Správce | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegovat na tvůrce katalogu](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Přidat připojenou organizaci](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |

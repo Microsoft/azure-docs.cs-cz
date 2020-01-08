@@ -1,25 +1,16 @@
 ---
-title: Zotavení po havárii Azure Service Fabric | Microsoft Docs
+title: Zotavení po havárii Azure Service Fabric
 description: Azure Service Fabric nabízí funkce potřebné k řešení všech typů katastrof. Tento článek popisuje typy havárií, ke kterým může dojít, a o tom, jak s nimi pracovat.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1be891d38eb918d65cd8efda86e9a81fa629cf38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f23624dd0be1e700731e3f5a63c8cd7a00ec4e16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883996"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458059"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
 Kritická součást poskytování vysoké dostupnosti zajišťuje, aby služby mohly zaručovat všechny různé typy selhání. To je obzvláště důležité pro neplánované chyby a mimo vaši kontrolu. Tento článek popisuje některé běžné režimy selhání, které by mohly selhat, pokud není modelem a spravováno správně. Také se zabývá riziky a akcemi, které se mají provést, pokud se přesto stala havárie. Cílem je omezit nebo odstranit riziko výpadku nebo ztráty dat, když dojde k chybám, plánovanému nebo jinému výskytu.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 34975a1752467c61ea5b329210473eee266c98d1
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ca60ed68277486ca5ed7d7d90ad72506a4844936
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398083"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Vytváření grafů a diagramů z Azure Monitorch dotazů protokolu
 
@@ -34,7 +34,7 @@ Heartbeat
 
 Ve výchozím nastavení se výsledky zobrazují jako tabulka:
 
-![Tabulka](media/charts/table-display.png)
+![Table](media/charts/table-display.png)
 
 Chcete-li získat lepší zobrazení, vyberte **graf**a zvolte možnost **výseč** k vizualizaci výsledků:
 

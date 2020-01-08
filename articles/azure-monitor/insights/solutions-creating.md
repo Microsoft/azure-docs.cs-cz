@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402046"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a sestavení řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -60,7 +60,7 @@ Zobrazení v Log Analytics slouží k vizualizaci dat z úložiště Log Analyti
 
 
 ## <a name="create-solution-file"></a>Vytvořit soubor řešení
-Jakmile nakonfigurujete a otestujete komponenty, které budou součástí vašeho řešení, můžete [vytvořit soubor řešení]( solutions-solution-file.md).  Komponenty řešení implementujete v [šabloně správce prostředků](../../azure-resource-manager/resource-group-authoring-templates.md) , která obsahuje [prostředek řešení]( solutions-solution-file.md#solution-resource) s vztahy k ostatním prostředkům v souboru.  
+Jakmile nakonfigurujete a otestujete komponenty, které budou součástí vašeho řešení, můžete [vytvořit soubor řešení]( solutions-solution-file.md).  Komponenty řešení implementujete v [šabloně správce prostředků](../../azure-resource-manager/templates/template-syntax.md) , která obsahuje [prostředek řešení]( solutions-solution-file.md#solution-resource) s vztahy k ostatním prostředkům v souboru.  
 
 
 ## <a name="test-your-solution"></a>Testování řešení
@@ -76,5 +76,5 @@ Jakmile dokončíte a otestujete své řešení, můžete je zpřístupnit záka
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [vytvořit soubor řešení]( solutions-solution-file.md) pro řešení správy.
-* Seznamte se s podrobnostmi o [vytváření Azure Resource Manager šablon](../../azure-resource-manager/resource-group-authoring-templates.md).
+* Seznamte se s podrobnostmi o [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md).
 * Vyhledejte v [šablonách rychlého startu Azure](https://azure.microsoft.com/documentation/templates) ukázky různých šablon Správce prostředků.

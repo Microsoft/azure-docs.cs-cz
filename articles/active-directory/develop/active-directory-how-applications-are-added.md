@@ -1,5 +1,5 @@
 ---
-title: Jak a proč přidat aplikace do služby Azure AD
+title: Jak a proč se aplikace přidávají do Azure AD
 titleSuffix: Microsoft identity platform
 description: Co to znamená, když se aplikace přidá do Azure AD a jak se tam dostanou?
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f031389dc37fbf48f8a69db8c42419eed9605373
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9f4814026de5ba92d6470c503f8d316c0ceba0da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424755"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 

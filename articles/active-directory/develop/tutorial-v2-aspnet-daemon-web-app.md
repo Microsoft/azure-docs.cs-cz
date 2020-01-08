@@ -13,20 +13,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130a962c14415c417eedecd6ae26af1131b2e86
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423393"
 ---
-# <a name="build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Sestavení procesu víceklientské architektury s použitím koncového bodu Microsoft Identity Platform
+# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Kurz: sestavení procesu víceklientské architektury s využitím koncového bodu Microsoft Identity Platform
 
 V tomto kurzu se naučíte používat Microsoft Identity Platform pro přístup k datům obchodních zákazníků Microsoftu v dlouhodobém, neinteraktivním procesu. Vzorový démon používá [pověření klienta OAuth2](v2-oauth2-client-creds-grant-flow.md) k získání přístupového tokenu. Démon pak pomocí tokenu volá [Microsoft Graph](https://graph.microsoft.io) a přistupuje k datům organizace.
+
+> [!div class="checklist"]
+> * Integrace aplikace démona s platformou Microsoft identity
+> * Udělení oprávnění k aplikaci přímo aplikaci správcem
+> * Získání přístupového tokenu pro volání rozhraní Microsoft Graph API
+> * Zavolejte Microsoft Graph rozhraní API.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 Aplikace je sestavená jako aplikace ASP.NET MVC. K přihlašování uživatelů používá middleware OWIN OpenID Connect.  
 
@@ -42,7 +50,7 @@ Vzhledem k tomu, že aplikace je víceklientské aplikace pro obchodní zákazn�
 
 Další informace o konceptech použitých v této ukázce najdete v dokumentaci k [protokolu přihlašovacích údajů klienta pro koncový bod platformy identity](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete ukázku spustit v tomto rychlém startu, budete potřebovat:
 
@@ -60,11 +68,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 Nebo [si ukázku Stáhněte v souboru ZIP](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>Registrace ukázkové aplikace v tenantovi Azure AD
+## <a name="register-your-application"></a>Registrace vaší aplikace
 
-Tato ukázka má jeden projekt. K její registraci můžete zadat jednu z těchto akcí:
+Tato ukázka má jeden projekt. Pokud chcete aplikaci zaregistrovat u svého tenanta Azure AD, můžete:
 
-- Postupujte podle kroků v části [registrace ukázky u svého tenanta Azure Active Directory](#register-the-sample-application-with-your-azure-ad-tenant) a [nakonfigurujete ukázku, aby používala vašeho tenanta Azure AD](#choose-the-azure-ad-tenant).
+- Postupujte podle kroků v části [registrace ukázky u svého tenanta Azure Active Directory](#register-your-application) a [nakonfigurujete ukázku, aby používala vašeho tenanta Azure AD](#choose-the-azure-ad-tenant).
 - Použijte skripty prostředí PowerShell, které:
   - *Automaticky* vytvořte aplikace Azure AD a související objekty (hesla, oprávnění, závislosti) za vás.
   - Upravte konfigurační soubory projektů sady Visual Studio.
@@ -113,7 +121,7 @@ Pokud nechcete používat automatizaci, postupujte podle kroků v následující
 1. V seznamu stránek pro aplikaci vyberte **Ověřování**. Potom:
    - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44316/Account/EndSession** .
    - V části **Upřesnit nastavení** > **implicitního udělení** přístupu vyberte **přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 1. Na stránce **certifikáty & tajné klíče** v části **tajné klíče klienta** vyberte **nový tajný klíč klienta**. Potom:
 
    1. Zadejte popis klíče (například **tajný klíč aplikace**),
@@ -221,9 +229,9 @@ Tento projekt má webové aplikace a projekty webového rozhraní API. Pokud je 
    1. Klikněte pravým tlačítkem na projekt v Průzkumník řešení a pak vyberte **publikovat**.
    1. Na dolním panelu vyberte **Importovat profil** a importujte profil publikování, který jste si stáhli dříve.
 1. Vyberte **Konfigurovat**.
-1. Na kartě **připojení** aktualizujte cílovou adresu URL tak, aby používala https. Použijte například [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Vyberte **Další**.
+1. Na kartě **připojení** aktualizujte cílovou adresu URL tak, aby používala https. Použijte například [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Vyberte **Next** (Další).
 1. Na kartě **Nastavení** se ujistěte, že je zaškrtnuté políčko **Povolit ověřování organizace** .  
-1. Vyberte **Save** (Uložit). Na hlavní obrazovce vyberte **publikovat** .
+1. Vyberte **Uložit**. Na hlavní obrazovce vyberte **publikovat** .
 
 Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese URL projektu. Pokud se zobrazí výchozí webová stránka projektu, publikace byla úspěšná.
 
@@ -237,7 +245,10 @@ Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese UR
 1. Konfiguraci uložte.
 1. Přidejte stejnou adresu URL do seznamu hodnot v nabídce **ověřování** **identifikátory URI přesměrování** > . Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
 
-## <a name="community-help-and-support"></a>Pomoc a podpora komunity
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .  Pokud chcete aplikaci odebrat, postupujte podle pokynů v části [odebrání aplikace vytvořené vámi nebo vaší organizací](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
+
+## <a name="get-help"></a>Získání nápovědy
 
 K získání podpory od komunity použijte [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) .
 Nejdřív si položte otázky na Stack Overflow a Projděte si stávající problémy, abyste viděli, jestli se někdo na svůj dotaz dotazoval.

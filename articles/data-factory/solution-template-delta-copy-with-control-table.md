@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4c72bd37a636ec31c13737705c22aaa895b9ad72
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928215"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439717"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Rozdílová kopie z databáze s řídicí tabulkou
 
@@ -38,10 +38,13 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
 - **Kopírovat** kopíruje pouze změny ze zdrojové databáze do cílového úložiště. Dotaz, který identifikuje změny ve zdrojové databázi, je podobný příkazu SELECT * FROM Data_Source_Table, kde TIMESTAMP_Column > "poslední horní mez" a TIMESTAMP_Column < = "Current High-meze" ".
 - **SqlServerStoredProcedure** zapisuje aktuální hodnotu horní meze do tabulky externích ovládacích prvků pro rozdílovou kopii v dalším čase.
 
-Šablona definuje pět parametrů:
+Šablona definuje následující parametry:
 - *Data_Source_Table_Name* je tabulka ve zdrojové databázi, ze které chcete načíst data.
 - *Data_Source_WaterMarkColumn* je název sloupce ve zdrojové tabulce, který se používá k identifikaci nových nebo aktualizovaných řádků. Typ tohoto sloupce je obvykle *DateTime*, *int*nebo podobný.
-- *Data_Destination_Folder_Path* nebo *Data_Destination_Table_Name* je místo, kam se data zkopírují do cílového úložiště.
+- *Data_Destination_Container* je kořenová cesta k místu, kam se data zkopírují do cílového úložiště.
+- *Data_Destination_Directory* je cesta k adresáři v kořenovém adresáři místa, kam se zkopírují data do cílového úložiště.
+- *Data_Destination_Table_Name* je místo, kam se data zkopírují do cílového úložiště (platí v případě, že je jako cíl pro data vybraná možnost Azure synapse Analytics (dříve SQL DW)).
+- *Data_Destination_Folder_Path* je místo, kam se data zkopírují do cílového úložiště (platí v případě, že je jako cíl pro data vybraná možnost "systém souborů" nebo "Azure Data Lake Storage Gen1").
 - *Control_Table_Table_Name* je tabulka externích ovládacích prvků, která ukládá hodnotu horní meze.
 - *Control_Table_Column_Name* je sloupec v tabulce externího ovládacího prvku, který ukládá hodnotu s horním limitem.
 
@@ -100,20 +103,18 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
     ![Vytvoří nové připojení k úložišti dat řídicí tabulky.](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
 7. Vyberte **Použít tuto šablonu**.
-
-     ![Použít tuto šablonu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. Zobrazí se dostupný kanál, jak je znázorněno v následujícím příkladu:
+  
+    ![Kontrola kanálu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-     ![Kontrola kanálu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+9. Vyberte **uloženou proceduru**. Jako **název uložené procedury**vyberte **[dbo]. [ update_watermark]** . Vyberte **importovat parametr**a pak vyberte **Přidat dynamický obsah**.  
 
-9. Vyberte **uloženou proceduru**. V části **název uložené procedury**vyberte možnost **[update_watermark]** . Vyberte **importovat parametr**a pak vyberte **Přidat dynamický obsah**.  
-
-     ![Nastavení aktivity uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+    ![Nastavení aktivity uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
 10. Zapište **\@obsahu {Activity (' LookupCurrentWaterMark '). Output. firstRow. NewWatermarkValue}** a pak vyberte **Dokončit**.  
 
-     ![Zapsat obsah pro parametry uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+    ![Zapsat obsah pro parametry uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
 11. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
 
@@ -132,13 +133,12 @@ Tato šablona nejprve načte starou hodnotu meze a porovná ji s aktuální hodn
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
+
 14. Pokud chcete znovu spustit kanál, vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
 
-    ![Vybrat * * ladit * *](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    Uvidíte, že do cílového umístění se zkopírovaly jenom nové řádky.
 
-    Vidíte, že do cíle byly zkopírovány pouze nové řádky.
-
-15. Volitelné Pokud jste jako cíl dat vybrali SQL Data Warehouse, musíte taky pro přípravu zadat připojení k úložišti objektů BLOB v Azure, které vyžaduje SQL Data Warehouse základ. Ujistěte se, že kontejner již byl vytvořen v úložišti objektů BLOB.
+15. Volitelné Pokud jako cíl dat vyberete Azure synapse Analytics (dříve SQL DW), musíte taky pro přípravu zadat připojení k úložišti objektů BLOB v Azure, které vyžaduje SQL Data Warehouse báze. Šablona vygeneruje cestu kontejneru. Po spuštění kanálu ověřte, jestli se kontejner vytvořil v úložišti objektů BLOB.
     
     ![Konfigurovat základ](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

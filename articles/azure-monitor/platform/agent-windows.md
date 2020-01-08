@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak připojit počítače s Windows hostov
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 42183ca7b02ba75b241ee1a83b5a0dc936a8c1c8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420419"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689996"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows k Azure Monitor
 
@@ -20,9 +20,9 @@ Aby bylo možné monitorovat a spravovat virtuální počítače nebo fyzické p
 
 Na monitorovaný počítač se systémem Windows je agent uveden jako služba Microsoft Monitoring Agent. Služba Microsoft Monitoring Agent shromažďuje události ze souborů protokolů a protokolu událostí systému Windows, údajů o výkonu a další telemetrie. I v případě, že Agent nemůže komunikovat s Azure Monitor IT zprávy, Agent pokračuje v běhu a zařadí shromážděná data do fronty na disk monitorovaného počítače. Po obnovení připojení služba Microsoft Monitoring Agent odesílá shromážděná data službě.
 
-Agent může být nainstalován pomocí jedné z následujících metod. Většina instalací používá kombinaci těchto metod k instalaci různých sad počítačů podle potřeby.  Podrobnosti o použití jednotlivých metod jsou uvedené dále v článku.
+Agent může být nainstalován pomocí jedné z následujících metod. Většina instalací využívá jejich kombinaci. Díky tomu je možné nainstalovat různé sady počítačů tak, aby vyhovovaly potřebám.  Podrobnosti o použití jednotlivých metod jsou uvedené dále v článku.
 
-* Ruční instalace Instalační program se ručně spustí na počítači pomocí Průvodce instalací nástroje z příkazového řádku nebo nasazení pomocí existujícího nástroje pro distribuci softwaru.
+* Ruční instalace. Instalační program se ručně spustí na počítači pomocí Průvodce instalací nástroje z příkazového řádku nebo nasazení pomocí existujícího nástroje pro distribuci softwaru.
 * Azure Automation konfiguraci požadovaného stavu (DSC). Použití DSC v Azure Automation se skriptem pro počítače se systémem Windows, které jsou již ve vašem prostředí nasazeny.  
 * PowerShellový skript.
 * Šablona Správce prostředků pro virtuální počítače, na kterých běží místní Windows, v Azure Stack. 
@@ -38,7 +38,7 @@ Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovan�
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
 Před instalací agenta Log Analytics pro Windows budete potřebovat ID a klíč pracovního prostoru pro pracovní prostor Log Analytics.  Tyto informace se vyžadují při instalaci z každé metody instalace, aby bylo možné správně nakonfigurovat agenta, a zajistit, aby mohl úspěšně komunikovat s Azure Monitor v cloudu pro státní správu Azure Commercial a USA. 
 
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
+1. V Azure Portal vyhledejte a vyberte **Log Analytics pracovní prostory**.
 2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, do kterého chcete agenta nakonfigurovat.
 3. Vyberte **Upřesňující nastavení**.<br><br> ![Upřesňující nastavení Log Analytics](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. Vyberte **Připojené zdroje** a pak **Servery Windows**.   
@@ -93,9 +93,9 @@ Stažený soubor pro agenta je samostatný instalační balíček.  Instalační
 
 V následující tabulce jsou vysvětlené konkrétní parametry podporované instalačním programem agenta, včetně nasazení pomocí Automatizace DSC.
 
-|Možnosti specifické pro MMA                   |Poznámky:         |
+|Možnosti specifické pro MMA                   |Poznámky         |
 |---------------------------------------|--------------|
-| NASTAVENÍ NOAPM = 1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikace .NET.|   
+| NOAPM=1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikace .NET.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = Konfigurace agenta pro hlášení do pracovního prostoru                |
 |OPINSIGHTS_WORKSPACE_ID                | ID pracovního prostoru (GUID) pro pracovní prostor, který se má přidat                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Klíč pracovního prostoru, který se používá k prvotnímu ověření v pracovním prostoru |
@@ -188,9 +188,9 @@ V **Ovládacích panelech** na počítači vyhledejte položku **Microsoft Monit
 
 V Azure Portal můžete také provádět jednoduché dotazy protokolu.  
 
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Azure monitor**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure monitor**.  
-2. V nabídce vyberte **protokoly** . 
-2. V podokně protokoly zadejte do pole dotazu:  
+1. V Azure Portal vyhledejte a vyberte **monitor**.
+1. V nabídce vyberte **protokoly** .
+1. V podokně **protokoly** zadejte do pole dotazu:  
 
     ```
     Heartbeat 

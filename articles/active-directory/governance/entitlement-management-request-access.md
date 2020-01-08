@@ -1,5 +1,5 @@
 ---
-title: Požádat o přístup k balíčku přístupu ve správě nároků Azure AD – Azure Active Directory
+title: Vyžádání přístupového balíčku – Správa nároků Azure AD
 description: Naučte se používat portál pro přístup k vyžádání přístupu k balíčku přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5a49c69b0f96add61501d9e2c5fc00ba564eba2a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422545"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Požádat o přístup k balíčku přístupu v Azure AD – Správa nároků
 

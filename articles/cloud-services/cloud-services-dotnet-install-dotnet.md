@@ -3,19 +3,19 @@ title: Instalace rozhraní .NET v Azure Cloud Services rolích | Microsoft Docs
 description: Tento článek popisuje, jak ručně nainstalovat .NET Framework na webové role a role pracovních procesů cloudové služby.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
-ms.author: gwallace
-ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360986"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Instalace rozhraní .NET pro Azure Cloud Services rolí
 Tento článek popisuje, jak nainstalovat verze .NET Framework, které nepřichází v hostovaném operačním systému Azure. .NET v hostovaném operačním systému můžete použít ke konfiguraci webových rolí a rolí pracovních procesů cloudové služby.
@@ -35,11 +35,11 @@ Chcete-li stáhnout webový instalační program pro .NET Framework, vyberte ver
 * [Webová instalační služba .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Přidání instalačního programu pro *webovou* roli:
-  1. V **Průzkumník řešení**v části **role** v projektu cloudové služby klikněte pravým tlačítkem na *webovou* roli a vyberte **Přidat** > **novou složku**. Vytvořte složku s názvem **bin**.
-  2. Klikněte pravým tlačítkem na složku bin a vyberte **Přidat** > **existující položku**. Vyberte instalační program .NET a přidejte ho do složky bin.
+  1. V **Průzkumník řešení**v části **role** v projektu cloudové služby klikněte pravým tlačítkem na *webovou* roli a vyberte **Přidat** > **Nová složka**. Vytvořte složku s názvem **bin**.
+  2. Klikněte pravým tlačítkem na složku bin a vyberte **přidat** > **existující položku**. Vyberte instalační program .NET a přidejte ho do složky bin.
   
 Postup přidání instalačního programu pro roli *pracovního procesu* :
-* Klikněte pravým tlačítkem na roli *pracovního procesu* a vyberte **Přidat** > **existující položku**. Vyberte instalační program .NET a přidejte ho do role. 
+* Klikněte pravým tlačítkem na roli *pracovního procesu* a vyberte **Přidat** > **existující položka**. Vyberte instalační program .NET a přidejte ho do role. 
 
 Když se soubory přidávají tímto způsobem do složky obsahu role, automaticky se přidají do balíčku cloudové služby. Soubory se pak nasadí do konzistentního umístění na virtuálním počítači. Tento postup opakujte pro každou webovou roli a roli pracovního procesu v cloudové službě, aby všechny role měly kopii instalačního programu.
 
@@ -73,7 +73,7 @@ Když se soubory přidávají tímto způsobem do složky obsahu role, automatic
     </Startup>
     ```
    
-    Předchozí konfigurace spustí příkaz `install.cmd` Console s oprávněními správce k instalaci .NET Framework. Konfigurace také vytvoří element **localStorage** s názvem **NETFXInstall**. Spouštěcí skript nastaví dočasnou složku pro použití tohoto místního prostředku úložiště. 
+    Předchozí konfigurace spustí příkaz konzoly `install.cmd` s oprávněními správce pro instalaci .NET Framework. Konfigurace také vytvoří element **localStorage** s názvem **NETFXInstall**. Spouštěcí skript nastaví dočasnou složku pro použití tohoto místního prostředku úložiště. 
     
     > [!IMPORTANT]
     > Chcete-li zajistit správnou instalaci rozhraní, nastavte velikost tohoto prostředku na alespoň 1 024 MB.
@@ -197,7 +197,7 @@ Když se soubory přidávají tímto způsobem do složky obsahu role, automatic
    EXIT /B 0
    ```
 
-3. Pomocí příkazu **Přidat** > **existující položku** v **Průzkumník řešení** přidejte do každé role soubor Install. cmd, jak je popsáno dříve v tomto tématu. 
+3. Pomocí příkazu **přidat** > **existující položku** v **Průzkumník řešení** přidejte do každé role soubor Install. cmd, jak je popsáno výše v tomto tématu. 
 
     Po dokončení tohoto kroku musí mít všechny role soubor Instalační služby .NET a soubor Install. cmd.
 
@@ -220,9 +220,9 @@ Chcete-li konfigurovat diagnostiku, otevřete soubor Diagnostics. wadcfgx a při
 Tento kód XML provede konfiguraci diagnostiky pro přenos souborů v adresáři protokolu v prostředku **NETFXInstall** do účtu úložiště diagnostiky v kontejneru objektů BLOB **netfx-Install** .
 
 ## <a name="deploy-your-cloud-service"></a>Nasazení cloudové služby
-Když nasadíte cloudovou službu, úlohy po spuštění nainstalují .NET Framework, pokud ještě není nainstalovaná. Role cloudové služby jsou po instalaci  rozhraní v zaneprázdněném stavu. Pokud instalace rozhraní vyžaduje restart, můžou se taky restartovat role služby. 
+Když nasadíte cloudovou službu, úlohy po spuštění nainstalují .NET Framework, pokud ještě není nainstalovaná. Role cloudové služby jsou po instalaci rozhraní v *zaneprázdněném* stavu. Pokud instalace rozhraní vyžaduje restart, můžou se taky restartovat role služby. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 * [Instalace .NET Framework][Installing the .NET Framework]
 * [Určit, které verze .NET Framework jsou nainstalovány][How to: Determine Which .NET Framework Versions Are Installed]
 * [Řešení potíží s .NET Framework instalací][Troubleshooting .NET Framework Installations]
@@ -234,3 +234,6 @@ Když nasadíte cloudovou službu, úlohy po spuštění nainstalují .NET Frame
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
+
+
+

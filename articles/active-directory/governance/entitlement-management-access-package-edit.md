@@ -1,5 +1,5 @@
 ---
-title: Skrytí nebo odstranění balíčku pro přístup ve správě nároků Azure AD – Azure Active Directory
+title: Skrytí nebo odstranění balíčku pro přístup ve správě nároků – Azure AD
 description: Přečtěte si, jak skrýt nebo odstranit balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4391cd20f3919e8def28fa3c1d5007f91b2d9f0b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cf410db5a483fc4f5d9efc1a6bd5c6202694ef4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174750"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422623"
 ---
 # <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Skrytí nebo odstranění balíčku přístupu v Azure AD – Správa nároků
 

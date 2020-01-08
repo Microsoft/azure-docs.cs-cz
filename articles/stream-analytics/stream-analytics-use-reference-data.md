@@ -1,19 +1,18 @@
 ---
 title: Použití referenčních dat pro vyhledávání v Azure Stream Analytics
 description: Tento článek popisuje, jak pomocí referenčních dat vyhledávat nebo korelovat data v návrhu dotazů Azure Stream Analytics úlohy.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369560"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 
@@ -33,13 +32,13 @@ Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, kte
 |---------|---------|
 |Alias pro vstup   | Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.   |
 |Účet úložiště   | Název účtu úložiště, ve kterém jsou umístěné objekty blob Pokud je ve stejném předplatném jako vaše Stream Analytics úlohy, můžete ho vybrat z rozevírací nabídky.   |
-|Klíč účtu úložiště   | Tajný klíč přidružený k účtu úložiště Tato funkce se automaticky naplní, pokud je účet úložiště ve stejném předplatném jako vaše úloha Stream Analytics.   |
-|Kontejner úložiště   | Kontejnery poskytují logické seskupení pro objekty blob uložené v Blob service Microsoft Azure. Po nahrání objektu blob do Blob service musíte zadat kontejner pro tento objekt BLOB.   |
-|Vzor cesty   | Cesta, která se používá k vyhledání objektů BLOB v zadaném kontejneru. V cestě se můžete rozhodnout, že chcete zadat jednu nebo více instancí následujících 2 proměnných:<BR>{Date}, {Time}<BR>Příklad 1: produkty/{Date}/{Time}/Product-list. csv<BR>Příklad 2: produkty/{Date}/Product-list. csv<BR>Příklad 3: Product-list. csv<BR><br> Pokud objekt BLOB v zadané cestě neexistuje, bude úloha Stream Analytics čekat na neomezenou dobu, než se objekt BLOB stane dostupným.   |
+|Klíč účtu úložiště   | Tajný klíč přidružený k účtu úložiště. Tato funkce se automaticky naplní, pokud je účet úložiště ve stejném předplatném jako vaše úloha Stream Analytics.   |
+|Kontejner úložiště   | Kontejnery poskytují možnost logického seskupování u objektů BLOB uložených ve službě Microsoft Azure Blob. Při nahrání objektu blob do služby Blob service, je nutné zadat kontejner pro tohoto objektu blob.   |
+|Vzor cesty   | Cesta, která se používá k vyhledání objektů BLOB v zadaném kontejneru. V cestě se můžete rozhodnout, že chcete zadat jednu nebo více instancí následujících 2 proměnných:<BR>{date} {time}<BR>Příklad 1: produkty/{Date}/{Time}/Product-list. csv<BR>Příklad 2: produkty/{Date}/Product-list. csv<BR>Příklad 3: Product-list. csv<BR><br> Pokud objekt BLOB v zadané cestě neexistuje, bude úloha Stream Analytics čekat na neomezenou dobu, než se objekt BLOB stane dostupným.   |
 |Formát data [nepovinné]   | Pokud jste {Date} použili v rámci zadaného vzoru cesty, můžete vybrat formát data, ve kterém jsou objekty blob seřazené z rozevírací nabídky podporovaných formátů.<BR>Příklad: RRRR/MM/DD, MM/DD/RRRR atd.   |
 |Formát času [nepovinné]   | Pokud jste v rámci zadaného vzoru cesty použili {Time}, můžete vybrat formát času, ve kterém jsou objekty blob seřazené z rozevírací nabídky podporovaných formátů.<BR>Příklad: HH, HH/mm nebo HH-mm.  |
 |Formát serializace události   | Chcete-li zajistit, aby dotazy fungovaly podle očekávání, Stream Analytics musí znát, který formát serializace používáte pro příchozí datové proudy. V případě referenčních dat jsou podporované formáty CSV a JSON.  |
-|Encoding   | Formát UTF-8 v tuto chvíli podporuje pouze kódování UTF-8.  |
+|Encoding   | V tuto chvíli je jediným podporovaným formátem kódování UTF-8.  |
 
 ### <a name="static-reference-data"></a>Statická referenční data
 
@@ -47,16 +46,16 @@ Pokud se nepředpokládá, že se vaše referenční data mění, je povolená p
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Generování referenčních dat podle plánu
 
-Pokud jsou vaše referenční data s pomalou změnou datové sady, je povolená podpora pro aktualizaci referenčních dat zadáním vzoru cesty ve vstupní konfiguraci pomocí náhradních tokenů {Date} a {Time}. Stream Analytics převezme aktualizované definice referenčních dat na základě tohoto vzoru cesty. Například vzor `sample/{date}/{time}/products.csv` s formátem data **"rrrr-mm-dd"** a formát času **"HH-mm"** přikáže Stream Analytics k výběru aktualizovaného objektu BLOB `sample/2015-04-16/17-30/products.csv` v 5:30. dubna 2015 časové pásmo UTC.
+Pokud jsou vaše referenční data s pomalou změnou datové sady, je povolená podpora pro aktualizaci referenčních dat zadáním vzoru cesty ve vstupní konfiguraci pomocí náhradních tokenů {Date} a {Time}. Stream Analytics převezme aktualizované definice referenčních dat na základě tohoto vzoru cesty. Například vzor `sample/{date}/{time}/products.csv` s formátem data **"rrrr-mm-dd"** a formát času **"HH-mm"** instruuje Stream Analytics k výběru aktualizovaného `sample/2015-04-16/17-30/products.csv`ho objektu BLOB v 5:30. dubna 2015 časová pásma UTC.
 
 Azure Stream Analytics automaticky hledá aktualizované objekty blob referenčních dat v jednom minutovém intervalu. Pokud se objekt BLOB s časovým razítkem 10:30:00 nahraje s malým zpožděním (například 10:30:30), všimnete se krátké prodlevy v Stream Analytics úlohy odkazující na tento objekt BLOB. Aby nedocházelo k takovým scénářům, doporučuje se nahrát objekt BLOB starší než cílový efektivní čas (10:30:00 v tomto příkladu), čímž umožníte Stream Analytics úlohy dostat dostatek času k tomu, aby se zjistila a načetla v paměti a prováděla operace. 
 
 > [!NOTE]
 > V současné době Stream Analytics úlohy hledají obnovení objektu BLOB pouze v případě, že čas počítače přejde k času zakódovanému v názvu objektu BLOB. Například úloha bude hledat `sample/2015-04-16/17-30/products.csv` co nejdříve, ale ne dříve než 5:30. dubna 2015 časová pásma UTC. *Nikdy* nebude Hledat objekt BLOB se zakódovaným časem starším než poslední zjištěný.
 > 
-> Když například úloha nalezne objekt BLOB `sample/2015-04-16/17-30/products.csv`, bude ignorovat všechny soubory s zakódovaným datem starším než 5:30. dubna 2015, takže pokud se opožděně vytvoří objekt BLOB `sample/2015-04-16/17-25/products.csv` ve stejném kontejneru, úloha ho nebude používat.
+> Když například úloha nalezne objekt BLOB `sample/2015-04-16/17-30/products.csv` bude ignorovat všechny soubory s zakódovaným datem starším než 5:30. dubna 2015, takže pokud se ve stejném kontejneru vytvoří `sample/2015-04-16/17-25/products.csv` objekt BLOB s pozdním doručením, úloha ho nebude používat.
 > 
-> Podobně pokud se `sample/2015-04-16/17-30/products.csv` vyrábí pouze v 10:03. dubna 2015, ale v kontejneru není přítomen žádný objekt BLOB se starším datem, úloha použije tento soubor počínaje od 10:03. dubna, 2015 a použijte předchozí referenční data, dokud nebude.
+> Podobně pokud se `sample/2015-04-16/17-30/products.csv` vyrábí pouze v 10:03. dubna 2015, ale v kontejneru není přítomen žádný objekt BLOB se starším datem, úloha použije tento soubor počínaje od 10:03. dubna, 2015 a použijte předchozí referenční data, dokud to nepůjde.
 > 
 > Výjimkou je to, že úloha potřebuje znovu zpracovat data zpět v čase nebo při prvním spuštění úlohy. V okamžiku spuštění úlohy hledá nejaktuálnější objekt BLOB vytvořený před zadaným počátečním časem úlohy. K tomu je potřeba zajistit, aby při spuštění úlohy byla nastavena **neprázdná** referenční datová sada. Pokud ho nejde najít, úloha zobrazí následující diagnostiku: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
@@ -72,7 +71,7 @@ Azure Stream Analytics automaticky hledá aktualizované objekty blob referenčn
 3. Referenční datové objekty blob **se** neúčtují podle času poslední změny objektu blob, ale jenom podle času a data zadaného v názvu objektu BLOB pomocí nahrazení {Date} a {Time}.
 3. Abyste se vyhnuli nutnosti vypsat velký počet objektů blob, zvažte odstranění velmi starých objektů blob, pro které se zpracování už nedokončí. Upozorňujeme, že ASA můžou v některých scénářích, jako je restartování, potřebovat znovu zpracovat malou část.
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Databáze SQL Azure
 
 Azure SQL Database referenční data jsou načítána úlohou Stream Analytics a jsou ukládána jako snímek v paměti ke zpracování. Snímek referenčních dat je uložený také v kontejneru v účtu úložiště, který zadáte v nastavení konfigurace. Kontejner se vytvoří automaticky při spuštění úlohy. Pokud se úloha zastaví nebo vstoupí do stavu selhání, automaticky vytvořené kontejnery se odstraní při restartování úlohy.  
 
@@ -92,7 +91,7 @@ Chcete-li nakonfigurovat referenční data SQL Database, musíte nejprve vytvoř
 |---------|---------|
 |Alias vstupu|Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.|
 |Předplatné|Zvolte vaše předplatné.|
-|Databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro Azure SQL Database Managed instance je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
+|databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro Azure SQL Database Managed instance je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
 |Uživatelské jméno|Uživatelské jméno přidružené k vašemu Azure SQL Database.|
 |Heslo|Heslo přidružené k vašemu Azure SQL Database.|
 |Pravidelně aktualizovat|Tato možnost umožňuje zvolit obnovovací frekvenci. Když zvolíte Zapnuto, budete moct zadat obnovovací frekvenci v DD: HH: MM.|
@@ -111,11 +110,11 @@ Stream Analytics podporuje referenční data s **maximální velikostí 300 MB**
 
 Zvýšení počtu jednotek streamování úlohy nad rámec 6 nezvyšuje maximální podporovanou velikost referenčních dat.
 
-Podpora komprese není pro referenční data k dispozici. 
+Podpora pro kompresi není k dispozici pro referenční data. 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure Portal](stream-analytics-quick-create-portal.md)
+> [Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

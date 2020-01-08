@@ -6,21 +6,21 @@ ms.date: 12/07/2016
 ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 35
-author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 0009f843f8de31b92817dc86ccd718fa5eeeb1ba
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: 71c0bb1b09d480a05a9e5a54b269d0da8fde5bc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449100"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Schéma konfigurace pro Azure Cloud Services (soubor. cscfg)
 Konfigurační soubor služby určuje počet instancí rolí, které mají být nasazeny pro každou roli ve službě, hodnoty nastavení konfigurace a kryptografické otisky pro všechny certifikáty přidružené k roli. Je-li služba součástí Virtual Network, musí být v konfiguračním souboru služby k dispozici informace o konfiguraci sítě, a to i v konfiguračním souboru virtuální sítě. Výchozí rozšíření konfiguračního souboru služby je. cscfg.
 
 Model služby je popsaný v rámci [schématu definice cloudové služby (Classic)](schema-csdef-file.md).
 
-Ve výchozím nastavení se soubor konfiguračního schématu Azure Diagnostics nainstaluje do `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` adresáře. Nahraďte `<version>` nainstalovanou verzí sady [Azure SDK](https://azure.microsoft.com/downloads/).
+Ve výchozím nastavení se soubor konfiguračního schématu Azure Diagnostics nainstaluje do adresáře `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas`. Nahraďte `<version>` nainstalovanou verzí sady [Azure SDK](https://azure.microsoft.com/downloads/).
 
 Další informace o konfiguraci rolí ve službě najdete v tématu [co je model cloudové služby](cloud-services-model-and-package.md).
 
@@ -42,7 +42,7 @@ Základní formát konfiguračního souboru služby je následující.
 ```
 
 ## <a name="schema-definitions"></a>Definice schémat
-Následující témata popisují schéma pro `ServiceConfiguration` element:
+Následující témata popisují schéma prvku `ServiceConfiguration`:
 
 - [Schéma rolí](schema-cscfg-role.md)
 - [Schéma NetworkConfiguration](schema-cscfg-networkconfiguration.md)
@@ -51,15 +51,15 @@ Následující témata popisují schéma pro `ServiceConfiguration` element:
 Obor názvů XML pro konfigurační soubor služby je: `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`.
 
 ##  <a name="ServiceConfiguration"></a>Element ServiceConfiguration
-`ServiceConfiguration` Element je element nejvyšší úrovně konfiguračního souboru služby.
+Element `ServiceConfiguration` je element nejvyšší úrovně konfiguračního souboru služby.
 
-Následující tabulka popisuje atributy `ServiceConfiguration` prvku. Všechny hodnoty atributů jsou typy řetězců.
+Následující tabulka popisuje atributy prvku `ServiceConfiguration`. Všechny hodnoty atributů jsou typy řetězců.
 
 | Atribut | Popis |
 | --------- | ----------- |
-|serviceName|Povinný parametr. Název cloudové služby. Zadaný název se musí shodovat s názvem zadaným v definičním souboru služby.|
-|Atribut|Volitelné. Určuje hostovaný operační systém, který se spustí na instancích role v cloudové službě. Informace o podporovaných verzích hostovaných operačních systémů najdete v tématu [věnovaném vydání hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Pokud nezahrnete `osFamily` hodnotu a `osVersion` nenastavíte atribut na konkrétní verzi hostovaného operačního systému, použije se výchozí hodnota 1.|
-|osVersion|Volitelné. Určuje verzi hostovaného operačního systému, který se spustí na instancích role v cloudové službě. Další informace o verzích operačního systému hosta najdete v tématu [věnovaném vydání hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Můžete určit, že se má hostovaný operační systém automaticky upgradovat na nejnovější verzi. To provedete tak, že nastavíte `osVersion` hodnotu atributu `*`na. Při nastavení na `*`se instance rolí nasazují pomocí nejnovější verze hostovaného operačního systému pro zadanou rodinu operačních systémů a při vydání nových verzí hostovaného operačního systému se automaticky upgradují.<br /><br /> Konkrétní verzi určíte ručně tak, že `Configuration String` použijete v tabulce v části **budoucí verze operačního systému hosta** v rámci [vydání Azure hostovaného operačního systému a v matici kompatibility SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Výchozí hodnota pro `osVersion` atribut je `*`.|
-|schemaVersion|Volitelné. Určuje verzi schématu konfigurace služby. Verze schématu umožňuje sadě Visual Studio vybrat správné nástroje sady SDK, které se mají použít při ověřování schématu, pokud je nainstalovaná více než jedna verze sady SDK vedle sebe. Další informace o kompatibilitě schématu a verzí najdete v tématu věnovaném [vydáním hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md) .|
+|serviceName|Povinná hodnota. Název cloudové služby. Zadaný název se musí shodovat s názvem zadaným v definičním souboru služby.|
+|Atribut|Nepovinný parametr. Určuje hostovaný operační systém, který se spustí na instancích role v cloudové službě. Informace o podporovaných verzích hostovaných operačních systémů najdete v tématu [věnovaném vydání hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Pokud nezahrnete hodnotu `osFamily` a nenastavíte atribut `osVersion` na konkrétní verzi operačního systému hosta, použije se výchozí hodnota 1.|
+|osVersion|Nepovinný parametr. Určuje verzi hostovaného operačního systému, který se spustí na instancích role v cloudové službě. Další informace o verzích operačního systému hosta najdete v tématu [věnovaném vydání hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Můžete určit, že se má hostovaný operační systém automaticky upgradovat na nejnovější verzi. To provedete tak, že nastavíte hodnotu atributu `osVersion` na `*`. Když nastavíte `*`, instance rolí se nasadí pomocí nejnovější verze hostovaného operačního systému pro zadanou rodinu operačních systémů a při vydání nových verzí hostovaného operačního systému se automaticky upgraduje.<br /><br /> Pokud chcete zadat konkrétní verzi ručně, použijte `Configuration String` v tabulce v části **budoucí, aktuální a přechodné verze operačního systému hosta** v tématu vydaná [vydání systému Azure Hosted a kompatibilita sady SDK](cloud-services-guestos-update-matrix.md).<br /><br /> Výchozí hodnota atributu `osVersion` je `*`.|
+|schemaVersion|Nepovinný parametr. Určuje verzi schématu konfigurace služby. Verze schématu umožňuje sadě Visual Studio vybrat správné nástroje sady SDK, které se mají použít při ověřování schématu, pokud je nainstalovaná více než jedna verze sady SDK vedle sebe. Další informace o kompatibilitě schématu a verzí najdete v tématu věnovaném [vydáním hostovaného operačního systému Azure a s maticí kompatibility SDK](cloud-services-guestos-update-matrix.md) .|
 
-Konfigurační soubor služby musí obsahovat jeden `ServiceConfiguration` prvek. Element může obsahovat libovolný `Role` počet prvků a 0 nebo 1 `NetworkConfiguration` prvky. `ServiceConfiguration`
+Konfigurační soubor služby musí obsahovat jeden `ServiceConfiguration` element. Element `ServiceConfiguration` může obsahovat libovolný počet `Role` prvků a 0 nebo 1 `NetworkConfiguration` prvky.

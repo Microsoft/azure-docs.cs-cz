@@ -1,6 +1,6 @@
 ---
-title: Vytváření a používání souborů prostředků – Azure Batch | Microsoft Docs
-description: Naučte se vytvářet soubory prostředků Azure Batch z různých vstupních zdrojů.
+title: Vytváření a používání souborů prostředků – Azure Batch
+description: Naučte se vytvářet soubory prostředků služby Batch z různých vstupních zdrojů. Tento článek obsahuje několik běžných metod, jak je vytvořit a umístit na virtuální počítač.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e890bce378327fe5b1f4068d6719e6b905404f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390050"
 ---
 # <a name="creating-and-using-resource-files"></a>Vytváření a používání souborů prostředků
 
@@ -32,9 +32,9 @@ K dispozici je několik různých možností pro generování souborů prostřed
 
 Možnosti pro vytvoření souboru prostředků:
 
-- [Adresa URL kontejneru úložiště](#storage-container-url): Vygeneruje soubor prostředků z libovolného kontejneru úložiště v Azure.
-- [Název kontejneru úložiště](#storage-container-name): Vygeneruje soubor prostředků z názvu kontejneru v účtu úložiště Azure propojeném s Batch.
-- [Webový koncový bod](#web-endpoint): Vygeneruje soubor prostředků z jakékoli platné adresy URL protokolu HTTP.
+- [Adresa URL kontejneru úložiště](#storage-container-url): vygeneruje soubor prostředků z jakéhokoli kontejneru úložiště v Azure.
+- [Název kontejneru úložiště](#storage-container-name): vygeneruje soubor prostředků z názvu kontejneru v účtu Azure Storage připojeném ke službě Batch.
+- [Webový koncový bod](#web-endpoint): vygeneruje soubor prostředků z jakékoli platné adresy URL protokolu HTTP.
 
 ### <a name="storage-container-url"></a>Adresa URL kontejneru úložiště
 
@@ -53,7 +53,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Pro přístup k kontejneru musíte mít obojí `Read` i `List` oprávnění, zatímco s přístupem k objektu BLOB budete potřebovat `Read` jenom oprávnění.
+> Pro přístup k kontejneru musíte mít oprávnění `Read` i `List`, zatímco s přístupem k objektu BLOB potřebujete jenom `Read` oprávnění.
 
 Po nakonfigurování oprávnění vytvořte token SAS a naformátujte adresu URL SAS pro přístup k kontejneru úložiště. Pomocí formátované adresy URL SAS kontejneru úložiště vygenerujte soubor prostředků s [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
 
@@ -106,7 +106,7 @@ Pokud je v úloze několik stovek souborů prostředků, může dávka odmítnou
 
 Pokud neexistuje žádný způsob, jak minimalizovat počet souborů, které váš úkol potřebuje, můžete optimalizovat úlohu vytvořením jednoho souboru prostředků, který odkazuje na kontejner úložiště souborů prostředků. Provedete to tak, že zadáte soubory prostředků do kontejneru Azure Storage a použijete různé režimy "kontejner" souborů prostředků. Pomocí možností předpony objektů BLOB určete kolekce souborů, které se mají stáhnout pro vaše úkoly.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Seznamte se s [balíčky aplikací](batch-application-packages.md) jako s alternativou k souborům prostředků.
 - Další informace o použití kontejnerů pro soubory prostředků najdete v tématu [úlohy kontejneru](batch-docker-container-workloads.md).

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 1652febf6c3eb906990b2405590274911a45348e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 91ba4d1f7d32071cce0de1de528abf02982ce7be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427618"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Vytvoření a sdílení pracovního prostoru Azure Machine Learning Studio (Classic)
 
@@ -30,14 +30,14 @@ Pokud chcete použít Azure Machine Learning Studio (Classic), musíte mít prac
     >
     > 
 
-2. Klikněte na **+ Nový** .
+2. Klikněte na tlačítko **+ nová**
 
-3. Do vyhledávacího pole zadejte **Machine Learning Studio (klasický) pracovní prostor** a vyberte si vyhovující položku. Pak vyberte v dolní části stránky klikněte na **vytvořit** .
+3. Do vyhledávacího pole zadejte **Machine Learning Studio (klasický) pracovní prostor** a vyberte si vyhovující položku. Potom klikněte na vybrat **vytvořit** v dolní části stránky.
 
 4. Zadejte informace o pracovním prostoru:
 
-   - *Název pracovního prostoru* může být až 260 znaků, ale nekončí mezerou. Název nesmí obsahovat tyto znaky: `< > * % & : \ ? + /`
-   - *Plán webové služby* , který zvolíte (nebo vytvoříte), spolu s přidruženou *cenovou úrovní* , kterou vyberete, se použije, pokud nasadíte webové služby z tohoto pracovního prostoru.
+   - *Název pracovního prostoru* může být až 260 znaků, není koncovou mezerou. Název nemůže obsahovat tyto znaky: `< > * % & : \ ? + /`
+   - *Plán web service* vyberete (nebo vytvoření), spolu s přidruženou *cenovou úroveň* vybrat, se používá při nasazení webové služby z tohoto pracovního prostoru.
 
      ![Vytvořit nový pracovní prostor studia (Classic)](./media/create-workspace/create-new-workspace.png)
 
@@ -47,7 +47,7 @@ Pokud chcete použít Azure Machine Learning Studio (Classic), musíte mít prac
 > Machine Learning Studio (Classic) spoléhá na účet služby Azure Storage, který poskytnete k uložení zprostředkujících dat při spuštění pracovního postupu. Po vytvoření pracovního prostoru, pokud se odstraní účet úložiště, nebo pokud se přístupové klíče změní, pracovní prostor přestane fungovat a všechny experimenty v tomto pracovním prostoru selžou.
 Pokud nechtěně odstraníte účet úložiště, vytvořte znovu účet úložiště se stejným názvem ve stejné oblasti jako odstraněný účet úložiště a znovu synchronizujte přístupový klíč. Pokud jste změnili přístupové klíče účtu úložiště, znovu je v pracovním prostoru synchronizujte přes portál Azure.
 
-Po nasazení pracovního prostoru ho můžete otevřít v klasické verzi Machine Learning Studio.
+Po nasazení pracovního prostoru ho můžete otevřít v Machine Learning Studio (Classic).
 
 1. V [https://studio.azureml.net/](https://studio.azureml.net/)přejděte na Machine Learning Studio (Classic).
 
@@ -55,9 +55,9 @@ Po nasazení pracovního prostoru ho můžete otevřít v klasické verzi Machin
 
     ![Výběr pracovního prostoru](./media/create-workspace/open-workspace.png)
 
-3. Klikněte na **Moje experimenty**.
+3. Klikněte na tlačítko **Moje experimenty**.
 
-    ![Otevřené experimenty](./media/create-workspace/my-experiments.png)
+    ![Otevřít experimentů](./media/create-workspace/my-experiments.png)
 
 Informace o správě pracovního prostoru studia (Classic) najdete v tématu [Správa pracovního prostoru Azure Machine Learning Studio (Classic)](manage-workspace.md).
 Pokud narazíte na problém s vytvořením pracovního prostoru, přečtěte si téma [Průvodce odstraňováním potíží: vytvoření a připojení k pracovnímu prostoru Machine Learning Studio (Classic)](troubleshooting-creating-ml-workspace.md).
@@ -66,36 +66,36 @@ Pokud narazíte na problém s vytvořením pracovního prostoru, přečtěte si 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Sdílení pracovního prostoru Azure Machine Learning Studio (Classic)
 Jakmile se vytvoří pracovní prostor Machine Learning Studio (Classic), můžete uživatele pozvat do svého pracovního prostoru a sdílet tak přístup k vašemu pracovnímu prostoru a všem jeho experimentům, datovým sadám, poznámkovým blokům atd. Uživatele můžete přidat v jedné ze dvou rolí:
 
-* **Uživatel pracovní** prostor může vytvořit, otevřít, upravit a odstranit experimenty, datové sady atd. v pracovním prostoru.
-* **Vlastník** – vlastník může pozvat a odebrat uživatele v pracovním prostoru, a to i to, co může uživatel dělat.
+* **Uživatel** -uživatel pracovní prostor může vytvoření, otevření, úprava a odstranění experimenty, datové sady atd., v pracovním prostoru.
+* **Vlastník** – může pozvat vlastník a odebírání uživatelů v pracovním prostoru, kromě uživatele, můžete provést.
 
 > [!NOTE]
-> Účet správce, který vytváří pracovní prostor, se automaticky přidá do pracovního prostoru jako vlastník pracovního prostoru. Dalším správcům nebo uživatelům v tomto předplatném není automaticky udělen přístup k pracovnímu prostoru – je třeba je pozvat explicitně.
+> Účet správce, který vytvoří pracovní prostor se automaticky přidá do pracovního prostoru jako vlastníka pracovního prostoru. Ale jiní správci nebo uživatelé v tomto předplatném nejsou automaticky udělí přístup k pracovnímu prostoru – je potřeba explicitně pozvánku.
 > 
 > 
 
 ### <a name="to-share-a-studio-classic-workspace"></a>Sdílení pracovního prostoru studia (Classic)
 
-1. Přihlášení k klasické verzi Machine Learning Studio v [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. Přihlaste se k Machine Learning Studio (Classic) na [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. Na levém panelu klikněte na **Nastavení** .
+2. Na levém panelu klikněte na tlačítko **nastavení**
 
-3. Klikněte na kartu **Uživatelé** .
+3. Klikněte na tlačítko **uživatelé** kartu
 
-4. V dolní části stránky klikněte na **pozvat více uživatelů** .
+4. Klikněte na tlačítko **POZVAT další uživatele** v dolní části stránky
 
-    ![Nastavení studia](./media/create-workspace/settings.png)
+    ![Nastavení sady Studio](./media/create-workspace/settings.png)
 
-5. Zadejte jednu nebo více e-mailových adres. Uživatelé potřebují platný účet Microsoft nebo účet organizace (z Azure Active Directory).
+5. Zadejte jeden nebo více e-mailové adresy. Uživatelé potřebují platný účet Microsoft nebo účtu organizace (z Azure Active Directory).
 
 6. Vyberte, zda chcete přidat uživatele jako vlastníka nebo uživatele.
 
-7. Klikněte na tlačítko pro zaškrtnutí tlačítka **OK** .
+7. Klikněte na tlačítko **OK** značku zaškrtnutí.
 
-Každý přidaný uživatel dostane e-mail s pokyny, jak se přihlásit ke sdílenému pracovnímu prostoru.
+Každý uživatel, kterého přidáte obdrží e-mail s pokyny, jak se přihlásit do sdíleného pracovního prostoru.
 
 > [!NOTE]
-> Aby mohli uživatelé v tomto pracovním prostoru nasazovat nebo spravovat webové služby, musí být v předplatném Azure přispěvatel nebo správce. 
+> Pro uživatele, abyste mohli nasazovat nebo spravovat webové služby v tomto pracovním prostoru musí být přispěvatelem nebo správcem v rámci předplatného Azure. 
 
 
 

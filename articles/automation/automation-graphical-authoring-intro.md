@@ -2,19 +2,15 @@
 title: Grafické vytváření v Azure Automation
 description: Vytváření grafických sestav umožňuje vytvářet Runbooky pro Azure Automation bez práce s kódem. Tento článek poskytuje Úvod do grafického vytváření a všechny podrobnosti potřebné k zahájení vytváření grafického Runbooku.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c1b864eb83a9ffb69c0cb532dc2061636010c60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450753"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření v Azure Automation
 
@@ -105,7 +101,7 @@ V následujícím příkladu má rutina Get-AzureRmVM tři sady parametrů. Nem�
 
 ![Sada parametrů](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
 
-#### <a name="parameter-values"></a>Hodnoty parametru
+#### <a name="parameter-values"></a>Hodnoty parametrů
 
 Když zadáte hodnotu parametru, vyberete zdroj dat, abyste určili, jak je hodnota zadaná. Zdroje dat, které jsou k dispozici pro konkrétní parametr, závisí na platných hodnotách pro daný parametr. Například hodnota null není dostupná možnost pro parametr, který nepovoluje hodnoty null.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 52faa2b6167606a46bf189d514a1eb314b443783
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803882"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424940"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Podmíněný přístup: vyžadovat MFA pro všechny uživatele
 
@@ -57,8 +57,24 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 
+### <a name="named-locations"></a>Pojmenovaná umístění
+
+Organizace se můžou rozhodnout zahrnout známá síťová umístění známá jako **pojmenovaná umístění** do zásad podmíněného přístupu. Tato pojmenovaná umístění můžou zahrnovat důvěryhodné sítě IPv4, jako jsou třeba pro hlavní pobočku. Další informace o konfiguraci pojmenovaných umístění najdete v článku [co je podmínka umístění v Azure Active Directory podmíněný přístup?](location-condition.md)
+
+V příkladech výše uvedených zásad se může organizace rozhodnout Nevyžadovat vícefaktorové ověřování, pokud přistupuje k cloudové aplikaci ze své podnikové sítě. V takovém případě by mohli do zásad přidat následující konfiguraci:
+
+1. V části **přiřazení**vyberte **podmínky** > **umístění**.
+   1. Nakonfigurujte **Ano**.
+   1. Uveďte **libovolné umístění**.
+   1. Vylučte **všechna důvěryhodná umístění**.
+   1. Vyberte **Done** (Hotovo).
+1. Vyberte **Done** (Hotovo).
+1. **Uložte** změny zásad.
+
 ## <a name="next-steps"></a>Další kroky
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

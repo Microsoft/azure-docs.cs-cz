@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Ruby.'
+title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Ruby'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: b395c9202ce6d67b76bc0dc6e203a0db275b4fa1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef5180aae04f71f3bbe6fbcd7d3df393b107be35
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565790"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448797"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Rychlý start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Ruby.
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Ruby
 
 Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace v rámci Ruby pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
@@ -38,7 +38,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
     require 'json'
     ```
 
-2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), částečný vyhledávací dotaz.
+2. Vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), částečný vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,7 +48,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
     query = 'sail'
     ```
 
-3. Vytvořte řetězec parametrů připojením kódu na trhu k `?mkt=` parametru a připojením dotazu `&q=` k parametru. Pak vytvořte identifikátor URI žádosti kombinací hostitele rozhraní API, cesty a řetězce parametrů.
+3. Vytvořte řetězec parametrů připojením kódu na trhu k parametru `?mkt=` a připojením dotazu k parametru `&q=`. Pak vytvořte identifikátor URI žádosti kombinací hostitele rozhraní API, cesty a řetězce parametrů.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query
@@ -57,7 +57,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
 
 ## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti rozhraní API
 
-1. Vytvořte žádost s identifikátorem URI a přidejte do `Ocp-Apim-Subscription-Key` hlavičky svůj klíč předplatného.
+1. Vytvořte žádost s identifikátorem URI a přidejte svůj klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`.
     
     ```ruby
     request = Net::HTTP::Get.new(uri)
@@ -151,7 +151,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
 - [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

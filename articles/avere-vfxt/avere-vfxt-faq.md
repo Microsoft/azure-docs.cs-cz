@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: rohogue
-ms.openlocfilehash: 7839530463ea834ed5f8ae2ae06854985a77c673
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415341"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure – nejčastější dotazy
 
@@ -77,7 +77,7 @@ Ano, avere vFXT se spouští výhradně jako řešení HA.
 
 Ano, zákazníci můžou použít více než jednoho poskytovatele cloudu s clusterem avere vFXT. Podporuje standardní bloky AWS S3, zásobníky Google Cloud Services Standard a kontejnery objektů blob Azure.
 
-> [!NOTE] 
+> [!NOTE]
 > Poplatek za software se vztahuje na použití avere vFXT v AWS nebo Google cloudu, ale ne v Azure.
 
 ## <a name="technical-compute"></a>Technický: COMPUTE
@@ -97,7 +97,6 @@ No, you must choose one virtual machine type or the other.
 ### Can I move between virtual machine types?
 
 Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
-
 -->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Je prostředí avere vFXT škálovat?
@@ -130,7 +129,7 @@ Ne. Model vysoké dostupnosti v avere vFXT v současné době nepodporuje jednot
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Můžu klonovat virtuální počítače s avere vFXT?
 
-Ne, pokud chcete přidat nebo odebrat uzly v clusteru avere vFXT, musíte použít podporovaný skript Pythonu. Další informace najdete v článku [Správa clusteru avere vFXT](avere-vfxt-manage-cluster.md).  
+Ne, pokud chcete přidat nebo odebrat uzly v clusteru avere vFXT, musíte použít podporovaný skript Pythonu. Další informace najdete v článku [Správa clusteru avere vFXT](avere-vfxt-manage-cluster.md).
 
 ### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Je k dispozici "virtuální" cloudová verze softwaru, kterou můžu spustit v mém vlastním místním prostředí?
 

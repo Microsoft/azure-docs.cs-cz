@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0caf8e8d5e18efc0a7332f97acccc394051ed360
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452393"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424822"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -91,8 +91,9 @@ U zařízení, které je označeno jako vyhovující, můžete předpokládat, �
 - Vaše firemní informace jsou chráněné tím, že pomáhají řídit způsob, jakým vaše zaměstnanci přistupují a sdílí je.
 - Zařízení a jeho aplikace vyhovují požadavkům na zabezpečení společnosti.
 
-> [!NOTE]
-> Pokud nakonfigurujete zásadu, která bude vyžadovat vyhovující zařízení, můžou se uživatelé na Macu, iOS a Androidu zobrazit výzva k výběru certifikátu zařízení během hodnocení zásad. Toto chování je známé.
+### <a name="known-behavior"></a>Známé chování
+
+Ve Windows 7, iOS, Androidu, macOS a některých webových prohlížečích třetích stran služba Azure AD identifikuje zařízení pomocí klientského certifikátu, který se zřídí při registraci zařízení ve službě Azure AD. Když se uživatel poprvé přihlásí prostřednictvím prohlížeče, zobrazí se uživateli výzva k výběru certifikátu. Koncový uživatel musí tento certifikát vybrat předtím, než bude moci pokračovat v používání prohlížeče.
 
 ## <a name="next-steps"></a>Další kroky
 

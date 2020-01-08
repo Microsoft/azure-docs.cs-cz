@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics výstup do Azure SQL Database
 description: Přečtěte si, jak vypisuje data SQL Azure z Azure Stream Analytics a dosahují vyšších sazeb propustnosti zápisu.
-services: stream-analytics
 author: chetanmsft
 ms.author: chetang
-manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 7845833a0269514c8fdbd093e18d4516ff9567d9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173004"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443603"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics výstup do Azure SQL Database
 
@@ -39,7 +37,7 @@ Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlep
 
 - **Dělená tabulka a indexy** – použití [dělené](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tabulky SQL a dělené indexy v tabulce se stejným sloupcem, jako má klíč oddílu (například PartitionID), může významně snížit počet kolizí mezi oddíly během zápisu. V případě dělené tabulky budete muset vytvořit [funkci oddílu](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) a [schéma oddílu](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) v primární skupině souborů. Tím se také zvýší dostupnost stávajících dat při načítání nových dat. Omezení v/v protokolu může být dosaženo na základě počtu oddílů, které lze zvýšit upgradováním SKU.
 
-- **Vyhněte se narušení jedinečnosti klíčů** – Pokud se v protokolu Azure Stream Analyticsch aktivit zobrazí [více výstražných zpráv o porušení klíčů](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , zajistěte, aby vaše úloha neovlivnila omezením jedinečnosti omezení, která se pravděpodobně vyskytují během případů obnovení. To je možné vyhnout nastavením možnosti [\_ignorovat klíč duplicity\_](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) na vašich indexech.
+- **Vyhněte se narušení jedinečnosti klíčů** – Pokud se v protokolu Azure Stream Analyticsch aktivit zobrazí [více výstražných zpráv o porušení klíčů](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , zajistěte, aby vaše úloha neovlivnila omezením jedinečnosti omezení, která se pravděpodobně vyskytují během případů obnovení. To je možné vyhnout nastavením možnosti [ignorovat\_\_klíče](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) na indexy.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Tabulky Azure Data Factory a v paměti
 
@@ -49,7 +47,7 @@ Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlep
 Hromadné vkládání dat je mnohem rychlejší než načítání dat pomocí jednoduchých vložení, protože opakovaná režie přenosu dat, analýza příkazu INSERT, spuštění příkazu a vystavení záznamu transakce se vyhne. Místo toho se k streamování dat v modulu úložiště používá efektivnější cesta. Náklady na instalaci této cesty jsou mnohem vyšší než jeden příkaz INSERT v tabulce založené na disku. Mezi 100 řádků, které jsou téměř vždy efektivnější, se obvykle pohybuje hranice. 
 
 Pokud je míra příchozích událostí nízká, může snadno vytvořit velikosti dávek nižší než 100 řádků, což znamená, že hromadné vložení je neefektivní a využívá příliš mnoho místa na disku. Chcete-li toto omezení obejít, můžete provést jednu z následujících akcí:
-* Vytvořte místo triggeru [](/sql/t-sql/statements/create-trigger-transact-sql) pro použití jednoduchého vložení pro každý řádek.
+* Vytvořte místo [triggeru](/sql/t-sql/statements/create-trigger-transact-sql) pro použití jednoduchého vložení pro každý řádek.
 * Použijte dočasnou tabulku v paměti, jak je popsáno v předchozí části.
 
 K dalšímu takovému scénáři dochází při psaní do neclusterovaných indexů columnstore (NCCI), kde menší hromadné vložení může vytvořit příliš mnoho segmentů, což může způsobit selhání indexu. V takovém případě doporučujeme místo toho použít clusterovaný index columnstore.

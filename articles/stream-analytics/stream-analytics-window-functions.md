@@ -1,58 +1,57 @@
 ---
-title: Úvod do služby Azure Stream Analytics okny
-description: Tento článek popisuje čtyři okny (přeskakujícího, kdy se skok provádí, klouzavé, relace), které se používají v úlohách Azure Stream Analytics.
-services: stream-analytics
+title: Úvod do Azure Stream Analyticsch funkcí okna
+description: Tento článek popisuje čtyři funkce okna (bubny, skákající, klouzavé, relace), které se používají v úlohách Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 530ff8d09d6c580a31ae26929fafcec5bb5b471b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369418"
 ---
-# <a name="introduction-to-stream-analytics-windowing-functions"></a>Úvod do služby Stream Analytics okny
+# <a name="introduction-to-stream-analytics-windowing-functions"></a>Úvod do Stream Analyticsch funkcí okna
 
-Ve scénářích streamování v čase provádění operací na data obsažená v dočasné systému windows je běžný vzor. Stream Analytics má nativní podporu pro okny, umožňuje vývojářům Autor zpracování komplexních datových proudů úloh s minimálním úsilím.
+V rámci scénářů streamování je provádění operací s daty obsaženými v dočasných oknech běžným vzorem. Stream Analytics má nativní podporu pro okny, umožňuje vývojářům Autor zpracování komplexních datových proudů úloh s minimálním úsilím.
 
-Existují čtyři druhy dočasné windows na výběr: [**Přeskakujícího**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [ **dosáhneme**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [ **klouzavé**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics), a [ **relace**  ](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) systému windows.  Použití funkcí okna v [ **Group** ](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) klauzule syntaxe dotazů ve svých úlohách Stream Analytics. Události můžete také agregovat přes pomocí více oken [ **Windows()** funkce](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
+Existují čtyři druhy dočasná okna, ze kterých můžete vybírat: [**bubny**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**skákající**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**posuvné**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)a okna [**relace**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) .  Použijte funkce okna v klauzuli [**Group by**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) syntaxe dotazu v úlohách Stream Analytics. Můžete také agregovat události do více oken pomocí [funkce **Windows ()** ](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
 
-Všechny [oddílová](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) operací vypsání výsledků na **end** okna. Výstup v okně bude jedinou událost na základě agregační funkce používá. Výstupní událost může mít časové razítko konce okna a všech funkcí okna jsou definovány s pevnou délkou. 
+Na **konci** okna se vrátí výstup všech operací s operacemi [Window](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) . Výstupem okna bude jediná událost založená na použité agregační funkci. Výstupní událost bude mít časové razítko konce okna a všechny funkce okna budou definovány s pevnou délkou. 
 
-![Koncepty funkcí okno Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
+![Stream Analytics – koncepty funkcí okna](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
-## <a name="tumbling-window"></a>Aktivační událost pro přeskakující okno
-Přeskakujícího okna, které funkce se používají pro segment datový proud do určité časové segmentů a provádět funkce proti nim, jako je například následující příklad. Klíčových předností aktivační událost pro Přeskakující okno se, že zopakují, proveďte není překrytí a události nemůže patřit do více než jedna aktivační událost pro přeskakující okno.
+## <a name="tumbling-window"></a>Okno bubnu
+Funkce bubnového okna se používají k segmentaci datového proudu do různých časových segmentů a k provedení funkce proti nim, jako je například příklad níže. Hlavním rozlišovacím znakem přeskakujícího okna je, že se opakuje, ale nepřekrývá, tzn. že událost nemůže patřit do více než jednoho přeskakujícího okna.
 
-![Stream Analytics aktivační událost pro přeskakující okno](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
+![Okno Stream Analyticsho bubnu](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
-## <a name="hopping-window"></a>Skákající okno
-Skákající okno funkce směrování vpřed v čase na pevné období. Může být snadno přirozeným způsobem jako aktivační událost pro Přeskakující okna, které může dojít k překrytí, takže události může patřit do více než jednu sadu výsledků Hopping okno. Chcete-li okno Hopping stejný jako aktivační událost pro Přeskakující okno, zadejte velikost skoku být stejná jako velikost okna. 
+## <a name="hopping-window"></a>Okno skákající
+Funkce skákajících oken skáčou v čase dopředu o pevně danou dobu. Můžete si je jednoduše představit jako přeskakující okna, která se překrývají, takže události můžou v sadě výsledků dotazu patřit do několika skákajících oken. Chcete-li, aby okno skákající bylo stejné jako okno s bubnem, určete velikost segmentu směrování, který bude stejný jako velikost okna. 
 
-![Skákající okno Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
+![Stream Analytics okno skákající](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Posuvné okno
-Posuvné okno funkce a na rozdíl od Přeskakujícího nebo windows, kdy se skok provádí vytvořit výstup **pouze** při výskytu události. Každé okno bude mít alespoň jednu událost a v okně průběžně přesune vpřed € (epsilon). Například kdy se skok provádí windows, můžete události patří do více než jeden posuvné okno.
+Funkce posuvných oken, na rozdíl od bubnu nebo skákající, vydávají výstup **pouze** v případě, že dojde k události. Každé okno bude mít alespoň jednu událost a toto okno se nepřetržitě posouvá dopředu o hodnotu € (epsilon). Stejně jako u skákajících oken můžou události patřit do několika posuvných oken.
 
-![Stream Analytics posuvné okno](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
+![Posuvné okno Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
 ## <a name="session-window"></a>Okno relace
-Funkce okna relace skupině událostí, které dorazí ve stejné době, odfiltrováním časová období tam, kde není žádná data. Má tři hlavní parametry: časový limit, maximální dobu trvání a dělení klíče (volitelné).
+Okno relace funkcí seskupuje události, které dorazí v podobných časech, a vyfiltruje tak časová období, ve kterých nejsou žádná data. Tato funkce má tři hlavní parametry: časový limit, maximální dobu trvání a dělicí klíč (volitelný).
 
 ![Okno relace Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
 
-Okno Relace začíná, když dojde k první události. Pokud dojde k jiné události v rámci zadaného časového limitu od poslední přijaté události, v okně rozšiřuje zahrnout nové události. Jinak Pokud dojde k žádné události v časovém limitu, pak zavření okna na časový limit.
+Okno relace začíná, když dojde k první události. Pokud v rámci zadaného časového limitu z poslední přijaté události dojde k jiné události, pak se okno rozšíří na novou událost. V opačném případě dojde v případě, že v rámci časového limitu neexistují žádné události, okno je v časovém limitu uzavřen
 
-Pokud události zachovat ke kterým dochází v rámci zadaného časového limitu, ponechte okno relace rozšíření, dokud nebude dosaženo maximální doba trvání. Maximální doba trvání kontroly intervalech jsou nastaveny na stejné velikosti jako zadané maximální dobu trvání. Například pokud maximální dobu trvání je 10, kontroly, je-li okno být delší než maximální doba trvání se stane v t = 0, 10, 20, 30, atd.
+Pokud se události v rámci zadaného časového limitu chovají, zůstane okno relace delší, než se dosáhne maximální doby trvání. Maximální intervaly kontroly doby trvání jsou nastavené tak, aby měly stejnou velikost jako zadaná maximální doba trvání. Například pokud je maximální doba trvání 10, pak kontroly, pokud by okno překročilo maximální dobu trvání, nastane při t = 0, 10, 20, 30 atd.
 
-Pokud se poskytne klíč oddílu, události, které jsou seskupeny podle klíče a okno relace platí pro každou skupinu nezávisle na sobě. Toto rozdělení do oddílů je užitečné pro případy, kdy potřebujete jinou relací windows pro různé uživatele nebo zařízení.
+Při zadání klíče oddílu se události seskupí podle klíče a okno relace se aplikuje na každou skupinu nezávisle na sobě. Tento oddíl je vhodný pro případy, kdy pro různé uživatele nebo zařízení potřebujete jiná okna relace.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)

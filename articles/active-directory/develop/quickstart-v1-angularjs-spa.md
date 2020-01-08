@@ -1,5 +1,5 @@
 ---
-title: Vytvoření jednostránkové aplikace AngularJS Azure AD pro přihlášení & Odhlásit se | Microsoft Docs
+title: Vytvoření jednostránkové aplikace AngularJS Azure AD pro přihlášení nebo odhlášení | Microsoft Docs
 description: Naučte se, jak vytvořit jednostránkovou aplikaci AngularJS, která integruje službu Azure AD, aby se přihlásila & odhlašování & zavolá rozhraní API chráněná službou Azure AD pomocí protokolu OAuth.
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aa82985fcde59c4cfd8d4bec75ae77643f7da448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963524"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424095"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rychlý start: Vytvoření jednostránková aplikace AngularJS pro přihlašování a odhlašování pomocí Azure Active Directory
 
@@ -48,12 +48,12 @@ Pokud chcete sestavit úplnou funkční aplikaci, budete k tomu potřebovat:
 2. Nainstalovat ADAL a konfigurovat jednostránkovou aplikaci
 3. Použít ADAL k zabezpečení stránek v jednostránkové aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte splnit následující požadavky:
 
 * Stáhnout si [kostru aplikace](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) nebo [úplnou ukázku](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
-* Tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ho ještě nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
+* Tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě tenanta nemáte, [zjistěte, jako ho získat](quickstart-create-new-tenant.md).
 
 ## <a name="step-1-register-the-directorysearcher-application"></a>Krok 1: Registrace aplikace DirectorySearcher
 
@@ -64,12 +64,12 @@ Pokud chcete aplikaci umožnit ověřování uživatelů a získání tokenů, m
 1. V levém podokně klikněte na **Všechny služby** a pak vyberte **Azure Active Directory**.
 1. Klikněte na **Registrace aplikací**a pak vyberte **Nová registrace**.
 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
-1. Under **Supported account types**, select **Accounts in any organizational directory and personal Microsoft accounts**.
+1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 1. V části **identifikátor URI pro přesměrování** vyberte **webovou** platformu a nastavte hodnotu na `https://localhost:44326/` (umístění, do kterého budou služby Azure AD vracet tokeny).
 1. Až budete hotovi, vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** .
 1. Adal.js používá implicitní tok OAuth ke komunikaci s Azure AD. Pro aplikaci je nutné povolit implicitní tok. V levém navigačním podokně registrované aplikace vyberte **ověřování**.
 1. V **Upřesnit nastavení** v části **Implicitní udělení oprávnění** zaškrtněte políčka **Tokeny ID** a **Přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 1. Udělte oprávnění pro aplikaci napříč vaším tenantem. V nabídce **oprávnění k rozhraní API**vyberte tlačítko **udělení souhlasu správce** v rámci **souhlasu udělit**.
 1. Výběrem **Ano** potvrďte.
 

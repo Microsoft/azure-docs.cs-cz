@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425081"
 ---
-# <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudového zřizování pro existující synchronizovanou doménovou strukturu AD 
+# <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
 Tento kurz vás provede pilotním zřizováním cloudu pro testovací doménovou strukturu Active Directory, která je už synchronizovaná pomocí služby Azure Active Directory (Azure AD) Connect Sync.
 
@@ -35,7 +35,7 @@ Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 
 4. Toto je pokročilý scénář. Ujistěte se, že postup je přesně popsaný v tomto kurzu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Testovací prostředí s Azure AD Connect synchronizace verze 1.4.32.0 nebo novější
 - Organizační jednotka nebo skupina, která je v rozsahu synchronizace a kterou lze použít pro pilotní nasazení. Doporučujeme začít s malou sadou objektů.
@@ -86,7 +86,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
     ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Na stránce pravidla **spojování** klikněte na **Další**.
- 6. Na stránce **transformace** přidejte konstantní transformaci: Flow true do atributu cloudNoFlow. Klikněte na tlačítko **Přidat**.
+ 6. Na stránce **transformace** přidejte konstantní transformaci: Flow true do atributu cloudNoFlow. Klikněte na tlačítko **Add** (Přidat).
  ![vlastní pravidlo](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stejný postup. Opakujte kroky podle nakonfigurované doménové struktury AD Connector/AD na jednu. 
@@ -119,21 +119,6 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Instalace agenta pro zřizování Azure AD Connect
 1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.  Pokud používáte [Základní kurz prostředí AD a prostředí Azure](tutorial-basic-ad-azure.md) , bude CP1.
-2. Stáhněte [si Azure AD Connect agenta zřizování](https://go.microsoft.com/fwlink/?linkid=2109037)cloudu.
-3. Spuštění zřizování cloudu Azure AD Connect (AADConnectProvisioningAgent. Installer)
-3. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>
-![Obrazovka Vítejte](media/how-to-install/install1.png)</br>
-
-4. Po dokončení této operace se spustí Průvodce konfigurací nástroje.  Přihlaste se pomocí účtu globálního správce služby Azure AD.
-5. Na obrazovce **připojit ke službě Active Directory** klikněte na **Přidat adresář** a pak se přihlaste pomocí účtu správce služby Active Directory.  Tato operace přidá váš místní adresář.  Klikněte na **Další**.</br>
-![Obrazovka Vítejte](media/how-to-install/install3.png)</br>
-
-6. Na obrazovce **Konfigurace byla dokončena** klikněte na **Potvrdit**.  Tato operace provede registraci a restart agenta.</br>
-![Obrazovka Vítejte](media/how-to-install/install4.png)</br>
-
-7. Po dokončení této operace by se měla zobrazit oznámení, že **vaše ověření bylo úspěšné.**  Můžete kliknout na tlačítko **konec**.</br>
-![Obrazovka Vítejte](media/how-to-install/install5.png)</br>
-8. Pokud se stále zobrazuje úvodní úvodní obrazovka, klikněte na **Zavřít**. 1. Přihlaste se k serveru, který budete používat s oprávněními podnikového správce.
 2. Stáhněte [si Azure AD Connect agenta zřizování](https://go.microsoft.com/fwlink/?linkid=2109037)cloudu.
 3. Spuštění zřizování cloudu Azure AD Connect (AADConnectProvisioningAgent. Installer)
 3. Na úvodní obrazovce **přijměte** licenční podmínky a klikněte na **nainstalovat**.</br>

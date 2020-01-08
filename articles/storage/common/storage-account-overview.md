@@ -1,21 +1,22 @@
 ---
-title: Přehled účtu Azure Storage | Microsoft Docs
+title: Přehled účtu úložiště
+titleSuffix: Azure Storage
 description: Seznamte se s možnostmi pro vytvoření a použití účtu Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: dc5869acffe9a42d154bca61b9de7821121c85ec
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460610"
 ---
-# <a name="azure-storage-account-overview"></a>Přehled účtu Azure Storage
+# <a name="storage-account-overview"></a>Přehled účtu úložiště
 
 Účet úložiště Azure obsahuje všechny vaše Azure Storage datové objekty: objekty blob, soubory, fronty, tabulky a disky. Účet úložiště poskytuje jedinečný obor názvů pro data Azure Storage, která jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS. Data v účtu úložiště Azure jsou trvalá a vysoce dostupná, zabezpečená a rozsáhlá.
 
@@ -55,11 +56,11 @@ Informace o tom, jak vytvořit účet úložiště Azure, najdete v tématu [Vyt
 
 Ve většině případů byste měli používat účty pro obecné účely v2. Účty pro obecné účely v1 můžete použít pro tyto scénáře:
 
-* Vaše aplikace vyžadují model nasazení Azure Classic. Účty pro obecné účely v2 a účty BLOB Storage podporují jenom model nasazení Azure Resource Manager.
+- Vaše aplikace vyžadují model nasazení Azure Classic. Účty pro obecné účely v2 a účty BLOB Storage podporují jenom model nasazení Azure Resource Manager.
 
-* Vaše aplikace jsou náročné na transakce nebo využívají značnou šířku pásma geografické replikace, ale nevyžadují velkou kapacitu. V tomto případě může být obecným účelem v1 největší ekonomická volba.
+- Vaše aplikace jsou náročné na transakce nebo využívají značnou šířku pásma geografické replikace, ale nevyžadují velkou kapacitu. V tomto případě může být obecným účelem v1 největší ekonomická volba.
 
-* Používáte verzi [REST API služby úložiště](https://msdn.microsoft.com/library/azure/dd894041.aspx) , která je starší než 2014-02-14 nebo Klientská knihovna s verzí nižší než 4. x. Nemůžete upgradovat svoji aplikaci.
+- Používáte verzi [REST API služby úložiště](https://msdn.microsoft.com/library/azure/dd894041.aspx) , která je starší než 2014-02-14 nebo Klientská knihovna s verzí nižší než 4. x. Nemůžete upgradovat svoji aplikaci.
 
 ### <a name="blockblobstorage-accounts"></a>Účty BlockBlobStorage
 
@@ -79,19 +80,19 @@ V porovnání s účty pro obecné účely v2 a BlobStorage účty BlockBlobStor
 
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
-- Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
-- Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
+- Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
+- Váš název účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemohou mít stejný název.
 
 ## <a name="performance-tiers"></a>Úrovně výkonu
 
 Účty úložiště pro obecné účely můžou být nakonfigurované pro jednu z následujících úrovní výkonu:
 
-* Standardní úroveň výkonu pro ukládání objektů blob, souborů, tabulek, front a disků virtuálních počítačů Azure.
-* Úroveň výkonu Premium pro ukládání pouze nespravovaných disků virtuálního počítače.
+- Standardní úroveň výkonu pro ukládání objektů blob, souborů, tabulek, front a disků virtuálních počítačů Azure. Další informace o cílech škálovatelnosti pro účty úložiště úrovně Standard najdete v tématu [cíle škálovatelnosti pro účty úložiště úrovně Standard](scalability-targets-standard-account.md).
+- Úroveň výkonu Premium pro ukládání pouze nespravovaných disků virtuálního počítače. Microsoft doporučuje místo nespravovaných disků používat spravované disky s virtuálními počítači Azure. Další informace o cílech škálovatelnosti pro úroveň výkonu Premium najdete v tématu [cíle škálovatelnosti pro účty úložiště objektů blob stránky úrovně Premium](../blobs/scalability-targets-premium-page-blobs.md).
 
-Účty úložiště BlockBlobStorage poskytují úroveň výkonu Premium pro ukládání objektů blob bloku a doplňovací objektů BLOB.
+Účty úložiště BlockBlobStorage poskytují úroveň výkonu Premium pro ukládání objektů blob bloku a doplňovací objektů BLOB. Další informace najdete v tématu [cíle škálovatelnosti pro účty úložiště objektů blob bloku úrovně Premium](../blobs/scalability-targets-premium-block-blobs.md).
 
-Účty úložiště úložiště obsahují úroveň výkonu Premium pro sdílené složky Azure.
+Účty úložiště úložiště obsahují úroveň výkonu Premium pro sdílené složky Azure. Další informace najdete v tématu [škálovatelnost a cíle výkonnosti souborů Azure](../files/storage-files-scale-targets.md).
 
 ## <a name="access-tiers-for-block-blob-data"></a>Úrovně přístupu pro data objektů blob bloku
 
@@ -99,9 +100,9 @@ Azure Storage poskytuje různé možnosti pro přístup k datům objektů blob b
 
 Dostupné úrovně přístupu jsou:
 
-* Vrstva **Hot** Access. Tato úroveň je optimalizovaná pro častější přístup k objektům v účtu úložiště. Přístup k datům v Hot úrovně je největší nákladově efektivní, zatímco náklady na úložiště jsou vyšší. Ve výchozím nastavení se v aktivní úrovni vytvoří nové účty úložiště.
-* **Studená** úroveň přístupu. Tato úroveň je optimalizovaná pro ukládání velkých objemů dat, která se nepoužívají zřídka a ukládají se nejméně na 30 dní. Ukládání dat ve studené vrstvě je cenově výhodnější, ale přístup k nim může být dražší než přístup k datům v horké vrstvě.
-* **Archivní** úroveň. Tato úroveň je k dispozici pouze pro jednotlivé objekty blob bloku. Archivní úroveň je optimalizovaná pro data, která můžou tolerovat několik hodin latence načítání a které zůstanou v archivní úrovni aspoň 180 dní. Úroveň archivace je nejefektivnější možností pro ukládání dat. Přístup k těmto datům je ale dražší než přístup k datům na horké nebo studené úrovni.
+- Vrstva **Hot** Access. Tato úroveň je optimalizovaná pro častější přístup k objektům v účtu úložiště. Přístup k datům v Hot úrovně je největší nákladově efektivní, zatímco náklady na úložiště jsou vyšší. Ve výchozím nastavení se v aktivní úrovni vytvoří nové účty úložiště.
+- **Studená** úroveň přístupu. Tato úroveň je optimalizovaná pro ukládání velkých objemů dat, která se nepoužívají zřídka a ukládají se nejméně na 30 dní. Ukládání dat ve studené vrstvě je cenově výhodnější, ale přístup k nim může být dražší než přístup k datům v horké vrstvě.
+- **Archivní** úroveň. Tato úroveň je k dispozici pouze pro jednotlivé objekty blob bloku. Archivní úroveň je optimalizovaná pro data, která můžou tolerovat několik hodin latence načítání a které zůstanou v archivní úrovni aspoň 180 dní. Úroveň archivace je nejefektivnější možností pro ukládání dat. Přístup k těmto datům je ale dražší než přístup k datům na horké nebo studené úrovni.
 
 Pokud dojde ke změně ve vzoru používání vašich dat, můžete kdykoli přepínat mezi těmito úrovněmi přístupu. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 
@@ -124,13 +125,13 @@ Všechna data v účtu úložiště se šifrují na straně služby. Další inf
 
 Pokud má například účet úložiště pro obecné účely název *mystorageaccount*, výchozí koncové body tohoto účtu jsou následující:
 
-* BLOB Storage: http://*mystorageaccount*. blob.Core.Windows.NET
-* Table Storage: http://*mystorageaccount*. Table.Core.Windows.NET
-* Queue Storage: http://*mystorageaccount*. Queue.Core.Windows.NET
-* Soubory Azure: http://*mystorageaccount*. File.Core.Windows.NET
+- Úložiště objektů BLOB: `https://*mystorageaccount*.blob.core.windows.net`
+- Table Storage: `https://*mystorageaccount*.table.core.windows.net`
+- Queue Storage: `https://*mystorageaccount*.queue.core.windows.net`
+- Soubory Azure: `https://*mystorageaccount*.file.core.windows.net`
 
 > [!NOTE]
-> Účty objektů blob bloku a BLOB Storage zpřístupňují jenom koncový bod služby BLOB Service.
+> Objekty blob bloku a účty BLOB Storage zpřístupňují jenom Blob service koncový bod.
 
 Vytvořte adresu URL pro přístup k objektu v účtu úložiště připojením umístění objektu v účtu úložiště ke koncovému bodu. Například adresa účtu pro objekty blob může mít tento formát: http://*můj_účet_úložiště*.blob.core.windows.net/*můj_kontejner*/*můj_objekt_blob*.
 
@@ -171,7 +172,7 @@ Knihovna pro přesun dat v Azure Storage pro .NET je založená na základní pl
 
 Můžete vytvořit vlastní aplikaci pro migraci dat z účtu úložiště pro obecné účely V1 na účet úložiště BLOB. Použijte jednu z klientských knihoven Azure nebo REST API služby Azure Storage. Azure Storage poskytuje množství knihoven klienta pro různé jazyky a platformy, jako například .NET, Java, C++, Node.JS, PHP, Ruby nebo Python. Knihovny klienta nabízí pokročilé možnosti a funkce, jako je například logika opakovaných pokusů, protokolování a paralelní ukládání. Můžete také psát aplikace přímo na rozhraní REST API, které může zavolat jakýkoli jazyk schopný vytvářet požadavky přes HTTP/HTTPS.
 
-Další informace o REST API Azure Storage najdete v tématu informace o [REST API služby Azure Storage Services](https://docs.microsoft.com/rest/api/storageservices/). 
+Další informace o REST API Azure Storage najdete v tématu informace o [REST API služby Azure Storage Services](https://docs.microsoft.com/rest/api/storageservices/).
 
 > [!IMPORTANT]
 > Objekty blob šifrované na straně klienta ukládají metadata šifrování s objektem blob. Pokud kopírujete objekt blob šifrovaný na straně klienta, ujistěte se, že operace kopírování zachová metadata objektu blob, zejména metadata šifrování. Pokud objekt blob zkopírujete bez metadat šifrování, obsah objektu blob bude nenávratně ztracený. Další informace o metadatech šifrování najdete v tématu [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
@@ -182,6 +183,5 @@ Další informace o REST API Azure Storage najdete v tématu informace o [REST A
 
 ## <a name="next-steps"></a>Další kroky
 
-* [vytvořit účet úložiště](storage-quickstart-create-account.md)
-* [Vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md)
-* [Správa účtů služby Azure Storage](storage-account-manage.md)
+- [vytvořit účet úložiště](storage-quickstart-create-account.md)
+- [Vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md)

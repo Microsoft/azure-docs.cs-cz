@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a6b696e16d2c946572cc213115fb440775fce3fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442976"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -91,7 +91,7 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
 
 - PROCESOR vyhrazený pro **procesor** závisí na typu uzlu a konfiguraci clusteru, což může způsobit, že by ALLOCATABLE procesor byl v důsledku spuštění dalších funkcí.
 
-| Jádra procesoru na hostiteli | 1 | 2 | 4 | 8 | 16 | 32|64|
+| Jádra procesoru na hostiteli | 1\. místo | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
 |Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
 
@@ -152,7 +152,7 @@ Další informace o tom, jak určit, kde mají být lusky, najdete v tématu [os
 
 Kubernetes používá *lusky* ke spuštění instance aplikace. Pod představuje jednu instanci vaší aplikace. Lusky mají typicky mapování 1:1 s kontejnerem, i když existují pokročilé scénáře, kde objekt pod může obsahovat více kontejnerů. Tyto lomené lusky jsou naplánované společně na stejném uzlu a umožňují kontejnerům sdílet související prostředky.
 
-Když vytvoříte pod, můžete definovat *omezení prostředků* pro vyžádání určitého množství prostředků procesoru nebo paměti. Plánovač Kubernetes se pokusí naplánovat lusky, aby běžely na uzlu s dostupnými prostředky pro splnění požadavku. Můžete také zadat maximální omezení prostředků, které brání danému zařízení v využívání příliš velkého množství výpočetních prostředků ze základního uzlu. Osvědčeným postupem je zahrnout do všech lusků omezení prostředků, které pomůžou plánovači Kubernetes pochopit, které prostředky jsou potřeba a povolené.
+Když vytvoříte pod, můžete definovat *požadavky* na prostředky pro vyžádání určitého množství prostředků procesoru nebo paměti. Plánovač Kubernetes se pokusí naplánovat lusky, aby běžely na uzlu s dostupnými prostředky pro splnění požadavku. Můžete také zadat maximální omezení prostředků, které brání danému zařízení v využívání příliš velkého množství výpočetních prostředků ze základního uzlu. Osvědčeným postupem je zahrnout do všech lusků omezení prostředků, které pomůžou plánovači Kubernetes pochopit, které prostředky jsou potřeba a povolené.
 
 Další informace najdete v tématu životní cyklus [Kubernetes lusky][kubernetes-pods] a [Kubernetes pod][kubernetes-pod-lifecycle].
 

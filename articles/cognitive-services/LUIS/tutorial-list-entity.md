@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 83644ac7144adaa664b13b6e7d7993c50da0e779
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851887"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447788"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Kurz: získání přesného textu se shodnými daty z entity utterance a list
 
 V tomto kurzu se seznámíte s tím, jak získat data, která se přesně shodují s předdefinovaným seznamem položek.
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
-**Co se v tomto kurzu naučíte:**
+**V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -51,7 +49,7 @@ Entita seznamu je vhodná pro tento typ dat, když platí následující:
 
 ## <a name="import-example-json-and-add-utterances"></a>Import example. JSON a přidání projevy
 
-1.  Stáhněte a uložte [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
+1.  Stáhněte a uložte [soubor JSON aplikace](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -82,7 +80,7 @@ Příklady primárního názvu a synonym jsou:
 
 1. Vyberte **+ vytvořit**.
 
-1. V automaticky otevíraném dialogovém okně entity zadejte `CrustList` jako název entity a **List** (Seznam) jako typ entity. Vyberte **Další**.
+1. V automaticky otevíraném dialogovém okně entity zadejte `CrustList` jako název entity a **List** (Seznam) jako typ entity. Vyberte **Next** (Další).
 
     > [!div class="mx-imgBorder"]
     > ![snímek obrazovky s dialogovým oknem vytvořit novou entitu](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)
@@ -203,7 +201,7 @@ Příklady primárního názvu a synonym jsou:
 * [Postup přidání entit pro extrakci dat](luis-how-to-add-entities.md)
 
 ## <a name="next-steps"></a>Další kroky
-Tento kurz přidal příklad projevy a pak vytvořil entitu seznamu pro extrakci přesně vyhovujících textů z projevy. Dotaz na koncový bod po trénování a publikování aplikace identifikoval záměr a vrátil extrahovaná data.
+Tento kurz přidal příklad projevy a pak vytvořil entitu seznamu pro extrakci přesně vyhovujících textů z projevy. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
 
 > [!div class="nextstepaction"]
 > [Přidat předem vytvořenou entitu s rolí](tutorial-entity-roles.md)

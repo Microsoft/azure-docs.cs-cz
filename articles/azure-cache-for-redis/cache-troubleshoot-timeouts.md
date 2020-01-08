@@ -1,17 +1,17 @@
 ---
 title: Řešení potíží s Azure cache pro vypršení časových limitů Redis
-description: Zjistěte, jak vyřešit běžné problémy s časovým limitem pomocí Azure cache pro Redis.
+description: Naučte se řešit běžné problémy s vypršením časového limitu v mezipaměti Azure pro Redis, jako jsou třeba opravy serveru Redis a výjimky StackExchange. Redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: yegu
-ms.openlocfilehash: e58b305a43cc5ad339fb87b9b8a09af04c410839
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121379"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412075"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s Azure cache pro vypršení časových limitů Redis
 
@@ -45,7 +45,7 @@ Tato chybová zpráva obsahuje metriky, které vám pomohou Ukázat příčinu a
 | qs |67 probíhajících operací bylo odesláno na server, ale odpověď zatím není k dispozici. Odpověď může být `Not yet sent by the server` nebo `sent by the server but not yet processed by the client.` |
 | qc |počet probíhajících operací zaznamenal odpovědi, ale ještě nebyly označeny jako splněné, protože čekají na cyklus dokončení. |
 | radiační |Existuje aktivní zapisovač (to znamená, že 6 neodeslaných požadavků se Neignoruje) bajtů/activewriters |
-| Pro |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
+| v |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
 
 Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 
@@ -113,7 +113,7 @@ Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 
 ## <a name="additional-information"></a>Další informace
 
-- [Řešení potíží s Azure cache pro Redis problémy na straně klienta](cache-troubleshoot-client.md)
-- [Řešení potíží s Azure cache pro Redis na straně serveru](cache-troubleshoot-server.md)
+- [Řešení potíží se službou Azure Cache for Redis na straně klienta](cache-troubleshoot-client.md)
+- [Řešení potíží se službou Azure Cache for Redis na straně serveru](cache-troubleshoot-server.md)
 - [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Jak monitorovat Azure cache pro Redis](cache-how-to-monitor.md)

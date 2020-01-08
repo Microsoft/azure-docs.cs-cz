@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell skript – Azure Cosmos DB aktualizace RU/s pro rozhraní API pro tabulky
+title: Skript PowerShellu pro aktualizaci RU/s pro Azure Cosmos DB rozhraní API pro tabulky
 description: Naučte se používat skript prostředí PowerShell k aktualizaci propustnosti databáze nebo kontejneru v Azure Cosmos DB rozhraní API pro tabulkym účtu.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8188089f216fa33ba958cf670bb321816387f5c9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 37e7ab82a42b8bcd633e0c083e1a3f51505a95cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444906"
 ---
 # <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Aktualizace RU/s pro tabulku pro Azure Cosmos DB rozhraní API pro tabulky
 

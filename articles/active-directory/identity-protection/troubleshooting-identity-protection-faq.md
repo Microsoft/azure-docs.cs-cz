@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d22973867782ddb64ced2ac95e84c0b27a3addd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443578"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
 
@@ -42,6 +42,14 @@ Přepnutí **zobrazení dat jako** SKRYJE sloupec **Poslední aktualizace rizika
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
+### <a name="why-is-a-user-is-at-risk"></a>Proč je uživatel ohrožen?
+
+Pokud jste zákazník Azure AD Identity Protection, přejděte do zobrazení [rizikové uživatelé](howto-identity-protection-investigate-risk.md#risky-users) a klikněte na uživatele s riziky. V zásuvce v dolní části se na kartě Historie rizik zobrazí všechny události, které vedly ke změně rizika uživatele. Pokud chcete zobrazit všechna riziková přihlášení pro uživatele, klikněte na rizikové přihlašování uživatele. Chcete-li zobrazit všechna zjištění rizik pro tohoto uživatele, klikněte na možnost detekce rizik uživatele.
+
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Jak získám sestavu zjištění určitého typu?
+
+Přejít na zobrazení detekce rizik a filtrovat podle typu detekce. Tuto sestavu pak můžete stáhnout v. Sdílený svazek clusteru nebo. Formátu JSON pomocí tlačítka **Stáhnout** v horní části. Další informace najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md#risk-detections).
+
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Proč nejde nastavit vlastní úrovně rizika pro každé zjišťování rizik?
 
 Úrovně rizika v ochraně identity jsou založené na přesnosti detekce a využívají se v našem strojovém učení. Pokud chcete přizpůsobit, jaké zkušenosti uživatelé prezentují, může správce zahrnout nebo vyloučit určité uživatele nebo skupiny z rizika uživatele a rizikových zásad přihlašování.
@@ -49,6 +57,20 @@ Přepnutí **zobrazení dat jako** SKRYJE sloupec **Poslední aktualizace rizika
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Proč se umístění přihlášení neshoduje s tím, kde se uživatel skutečně přihlásil?
 
 Mapování geografického umístění IP je v celém oboru. Pokud se domníváte, že umístění uvedené v sestavě přihlášení se neshoduje se skutečným umístěním, můžete se obrátit na podporu Microsoftu. 
+
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>Jak můžu uzavřít konkrétní detekci rizik, jako jsem ve starém uživatelském rozhraní?
+
+Zpětnou vazbu na detekci rizik můžete získat potvrzením propojeného přihlášení jako ohroženého nebo bezpečného. Zpětná vazba uvedená v trickles přihlašování ke všem detekcím provedeným na přihlášení. Pokud chcete ukončit detekce, které nejsou propojené s přihlášením, můžete tuto zpětnou vazbu poskytnout na úrovni uživatele. Další informace najdete v článku [Postupy: poskytnutí zpětné vazby o riziku v Azure AD Identity Protection](howto-identity-protection-risk-feedback.md).
+
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>Jak daleko se můžu vrátit v čase, abyste pochopili, co se na svém uživateli zaměří?
+
+- Zobrazení [rizikové uživatele](howto-identity-protection-investigate-risk.md#risky-users) zobrazuje riziko rizika uživatele na základě všech minulých přihlášení. 
+- Zobrazení [rizikových přihlášení](howto-identity-protection-investigate-risk.md#risky-sign-ins) zobrazuje v posledních 30 dnech znaménka rizika. 
+- Zobrazení [detekce rizik](howto-identity-protection-investigate-risk.md#risk-detections) zobrazuje zjišťování rizik provedených během posledních 90 dnů.
+
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>Jak se mohu dozvědět více o konkrétní detekci?
+
+Všechna zjišťování rizik jsou popsána v článku [co je to riziko](concept-identity-protection-risks.md#risk-types-and-detection). Pokud se chcete dozvědět víc o detekci, můžete ukazatel myši umístit na symbol (i) vedle detekce na Azure Portal.
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Jak funguje mechanismus zpětné vazby v ochraně identit?
 

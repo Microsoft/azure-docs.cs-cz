@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447887"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: extrakce kontextově souvisejících dat z utterance
 
@@ -24,9 +24,7 @@ V tomto kurzu vyhledáte související části dat na základě kontextu. Např�
 
 Roli lze použít pro libovolný předem sestavený nebo vlastní typ entity a používá se v obou příkladech projevy a Patterns.
 
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
-
-**Co se v tomto kurzu naučíte:**
+**V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
 > * Vytvoření nové aplikace
@@ -51,7 +49,11 @@ Role by se měla použít při extrakci dat entity:
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
-[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+1. Přihlaste se k portálu LUIS verze Preview pomocí adresy URL [https://preview.luis.ai](https://preview.luis.ai).
+
+1. Vyberte **vytvořit novou aplikaci**, zadejte název `HumanResources` a zachovejte výchozí jazykovou verzi **Angličtina**. Popis nechejte prázdný.
+
+1. Vyberte **Done** (Hotovo).
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Vytvoření záměru pro přesun zaměstnanců mezi městy
 
@@ -61,7 +63,8 @@ Role by se měla použít při extrakci dat entity:
 
 1. V automaticky otevíraném dialogovém okně zadejte `MoveEmployeeToCity` a pak vyberte **Done** (Hotovo).
 
-    ![Snímek obrazovky s dialogovým oknem pro vytvoření nového záměru](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ![snímek obrazovky s dialogovým oknem vytvořit nový záměr s](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. Přidejte do záměru ukázkové promluvy.
 
@@ -77,7 +80,8 @@ Role by se měla použít při extrakci dat entity:
     |Přenos Steve Standish z San Diegu směrem k Bellevue |
     |přezvednutí Tanner Václav z Kansas City a Shift na Chicago|
 
-    [![snímek obrazovky LUIS s novým projevy v MoveEmployee záměru](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![snímek obrazovky LUIS s novým projevy v MoveEmployee záměru](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Přidat předem sestavenou entitu geographyV2
 
@@ -87,16 +91,30 @@ Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně n
 
 1. Vyberte **Přidat předem vytvořenou entitu**a pak na panelu hledání vyberte `geo` pro filtrování předem sestavených entit.
 
-    ![Přidat předem vytvořenou entitu geographyV2 do aplikace](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![přidat předem vytvořenou entitu geographyV2 do aplikace](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+
 1. Zaškrtněte políčko a vyberte **Hotovo**.
 1. V seznamu **entity** vyberte **geographyV2** a otevřete novou entitu.
 1. Přidejte dvě role, `Origin`a `Destination`.
 
-    ![Přidání rolí k předem připravené entitě](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. Vyberte **záměry** z navigace na levé straně a pak vyberte záměr **MoveEmployeeToCity** . Všimněte si, že názvy měst jsou označené předem vytvořenou entitou **geographyV2**.
-1. V prvním utterance seznamu vyberte umístění původu. Zobrazí se rozevírací nabídka. V seznamu vyberte **geographyV2** a potom podle nabídky vedle vyberte **počátek**.
-1. Pomocí metody z předchozího kroku označíte všechny role umístění ve všech projevy.
+    > [!div class="mx-imgBorder"]
+    > ![přidat role do předem připravené](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png) entit
 
+1. Vyberte **záměry** z navigace na levé straně a pak vyberte záměr **MoveEmployeeToCity** . Všimněte si, že názvy měst jsou označené předem vytvořenou entitou **geographyV2**.
+1. Na panelu nástrojů kontextu vyberte **paleta entit**.
+
+    > [!div class="mx-imgBorder"]
+    > ![výběr palety entit z panelu nástrojů obsahu](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. Vyberte předem vytvořenou entitu **geographyV2**a pak vyberte **inspektor entit**.
+1. V okně **inspektor entit**vyberte jednu roli, **cíl**. Tím se změní ukazatel myši. Pomocí kurzoru označte text ve všech projevy, který je cílovým umístěním.
+
+    > [!div class="mx-imgBorder"]
+    > ![vybrat roli v paletě entit](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+
+
+1. Vraťte se do **inspektoru entit**a změňte roli na **počátek**. Pomocí kurzoru označte text ve všech projevy, který představuje původní umístění.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None
 

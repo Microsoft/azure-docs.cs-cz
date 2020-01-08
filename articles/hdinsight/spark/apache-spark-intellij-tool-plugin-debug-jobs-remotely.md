@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 5fede76fbc97b31cbbcdaec1b17f838100d35511
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: b2764e54d0938cbbdc00b19cf3ea1139d3d29828
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435271"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně ve službě HDInsight prostřednictvím sítě VPN
 
@@ -59,7 +59,7 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
 
     ![Výběr hostitelů v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Zobrazí se seznam hlavních uzlů, pracovních uzlů a uzlů Zookeeper. Hlavní uzly mají předponu **HN***. Vyberte první hlavní uzel.
+1. Zobrazí se seznam hlavních uzlů, pracovních uzlů a uzlů Zookeeper. Hlavní uzly mají předponu **HN**\*. Vyberte první hlavní uzel.
 
     ![Najděte hlavní uzel v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
@@ -149,7 +149,7 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
 
 1. Aktualizujte soubor `core-site.xml`, abyste provedli následující změny:
 
-   a. Nahraďte zašifrovaný klíč. Soubor `core-site.xml` obsahuje zašifrovaný klíč k účtu úložiště přidruženému ke clusteru. V souboru `core-site.xml`, který jste přidali do projektu, nahraďte zašifrovaný klíč skutečným klíčem úložiště přidruženým k výchozímu účtu úložiště. Další informace najdete v tématu [Správa přístupových klíčů k úložišti](../../storage/common/storage-account-manage.md#access-keys).
+   a. Nahraďte zašifrovaný klíč. Soubor `core-site.xml` obsahuje zašifrovaný klíč k účtu úložiště přidruženému ke clusteru. V souboru `core-site.xml`, který jste přidali do projektu, nahraďte zašifrovaný klíč skutečným klíčem úložiště přidruženým k výchozímu účtu úložiště. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
 
     ```xml
     <property>

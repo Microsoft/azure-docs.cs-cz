@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: f90933dea5421d68116d29df6b9429d298bb0d88
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ab8df188027ada2119334e058ffc5a10cca23914
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925082"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439155"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 
@@ -26,13 +26,13 @@ V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny
 > * Vytvoření a nastavení modulu runtime integrace v místním prostředí
 > * Vytvoření a nasazení propojených služeb
 > * Vytvoření a nasazení kanálu který obsahuje aktivitu Hivu
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu 
 > * Ověření výstupu 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,7 +63,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
        state
    FROM hivesampletable
    ```
-2. Ve službě Azure Blob Storage, vytvořte kontejner **adftutorial**, pokud ještě neexistuje.
+2. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje.
 3. Vytvořte složku s názvem **hivescripts**.
 4. Uložte soubor **hivescript.hql** do podsložky **hivescripts**.
 
@@ -134,7 +134,7 @@ V této části vytvoříte modul runtime integrace v místním prostředí a p�
    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted
    ```
     Tento příkaz vytvoří logickou registraci modulu runtime integrace v místním prostředí. 
-2. Pomocí PowerShellu načtěte ověřovací klíče pro registraci modulu runtime integrace v místním prostředí. Jeden z těchto klíčů zkopírujte pro registraci modulu runtime integrace v místním prostředí.
+2. Pomocí PowerShellu načtěte ověřovací klíče pro registraci modulu runtime integrace v místním prostředí. Jeden z těchto klíčů zkopírujte pro registraci místního prostředí Integration Runtime.
 
    ```powershell
    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName | ConvertTo-Json
@@ -174,10 +174,7 @@ Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj násle
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       },
       "connectVia": {
         "referenceName": "MySelfhostedIR",
@@ -221,7 +218,7 @@ Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující
 V definici propojené služby aktualizujte hodnoty následujících vlastností:
 
 - **userName**. Uživatelské jméno pro přihlášení clusteru, které jste zadali při vytváření clusteru. 
-- **password**. Heslo pro tohoto uživatele.
+- **password**. Heslo pro uživatele.
 - **clusterUri**. Zadejte adresu URL clusteru HDInsight v následujícím formátu: `https://<clustername>.azurehdinsight.net`.  V tomto článku se předpokládá, že máte ke clusteru přístup přes internet. To znamená, že se ke clusteru můžete připojit třeba na `https://clustername.azurehdinsight.net`. Tato adresa se používá veřejnou brány, která není dostupná, pokud jste k omezení přístupu z internetu použili skupiny zabezpečení sítě (NSG) nebo uživatelem definované trasy (UDR). Aby služba Data Factory mohla odesílat úlohy do clusterů HDInsight ve službě Azure Virtual Network, musíte ji nakonfigurovat tak, aby tuto adresu URL bylo možné přeložit na privátní IP adresu brány, kterou používá HDInsight.
 
   1. Na webu Azure Portal otevřete službu Virtual Network, ve které je HDInsight. Otevřete síťové rozhraní s názvem začínajícím textem `nic-gateway-0`. Poznamenejte si jeho privátní IP adresu. Příklad: 10.6.0.15. 
@@ -292,7 +289,7 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
 
 ## <a name="start-the-pipeline"></a>Spuštění kanálu 
 
-1. Zahájení spuštění kanálu Zaznamená se také ID spuštění kanálu pro budoucí monitorování.
+1. Zahajte spuštění kanálu. Zaznamená se také ID spuštění kanálu pro budoucí monitorování.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
@@ -325,7 +322,7 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
     $result.Error -join "`r`n"
     ```
 
-   Tady je výstup tohoto ukázkového spuštění:
+   Zde je výstup tohoto ukázkového spuštění:
 
     ```json
     Pipeline run status: In Progress
@@ -401,7 +398,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření a nastavení modulu runtime integrace v místním prostředí
 > * Vytvoření a nasazení propojených služeb
 > * Vytvoření a nasazení kanálu který obsahuje aktivitu Hivu
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění kanálu 
 > * Ověření výstupu 
 

@@ -1,6 +1,7 @@
 ---
-title: Vlastní role pro SQL Server pro SQL Database migrace spravované instance online | Microsoft Docs
-description: Naučte se používat vlastní role pro SQL Server k SQL Database migrací spravované instance online.
+title: 'Vlastní role: online SQL Server na migrace spravované instance SQL'
+titleSuffix: Azure Database Migration Service
+description: Naučte se používat vlastní role pro SQL Server k Azure SQL Database migrací spravované instance online.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 8148e029bf343613a230b20d0397fa7851c96712
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 85c70968eb0f8a5752bbfa338918a8bba2fe7794
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437700"
 ---
 # <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>Vlastní role pro SQL Server pro SQL Database migrace spravovaných instancí online
 
@@ -31,7 +32,7 @@ V současnosti doporučujeme vytvořit minimálně dvě vlastní role pro ID apl
 > [!NOTE]
 > Poslední požadavek na vlastní roli možná nebude možné odebrat, protože se do Azure nasadí nový kód spravované instance SQL Database.
 
-**Vlastní role pro ID aplikace** Tato role se vyžaduje pro Azure Database Migration Service migrace na úrovni *prostředku* nebo *skupiny prostředků* (Další informace o ID aplikace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, která má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
+**Vlastní role pro ID aplikace** Tato role se vyžaduje pro Azure Database Migration Service migrace na úrovni *prostředku* nebo *skupiny prostředků* (Další informace o ID aplikace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
 
 ```json
 {

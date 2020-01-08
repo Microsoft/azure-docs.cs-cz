@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d6762ac9253c838f715588451441aa9aa467f673
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 27b57477712c61fc97ae31ac353647896cca18af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406325"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -51,7 +51,7 @@ Váš tým definuje určitého uživatele jako kdokoli, kdo v daném měsíci po
 
     Tento kohorta nyní představuje všechna ID uživatelů odesílaná pomocí vlastní události nebo zobrazení stránky o 5 samostatných dní v posledních 28 dnech.
 
-5. Vyberte **Save** (Uložit).
+5. Vyberte **Uložit**.
 
    > [!TIP]
    > Dejte své kohorta jméno, například "propojující uživatelé (5 a dny)." V závislosti na Application Insights tom, jestli chcete, aby se kohorta viděli, uložte ho do sestav "Moje sestavy" nebo "sdílené sestavy".
@@ -106,7 +106,7 @@ Předchozí dva kohorty byly definovány pomocí rozevíracích seznamů. Může
 
    * Část dotazu, kde můžete definovat kohorta pomocí analytického dotazu.
 
-     V části dotaz [napíšete dotaz Analytics](/azure/kusto/query). Dotaz vybere určitou sadu řádků, které popisují kohorta, který chcete definovat. Nástroj kohorty pak implicitně přidá "| provede Shrnutí klauzule user_Id dotazu. Tato data jsou zobrazená pod dotazem v tabulce, takže můžete zajistit, aby dotaz vrátil výsledky.
+     V části dotaz [napíšete dotaz Analytics](/azure/kusto/query). Dotaz vybere určitou sadu řádků, které popisují kohorta, který chcete definovat. Nástroj kohorty pak implicitně přidá "| provede Shrnutí podle klauzule user_Id dotazu. Tato data jsou zobrazená pod dotazem v tabulce, takže můžete zajistit, aby dotaz vrátil výsledky.
 
      > [!NOTE]
      > Pokud se dotaz nezobrazuje, zkuste změnit velikost oddílu, aby se zajistilo jeho větší a odhalte dotaz. Animovaný soubor GIF na začátku této části znázorňuje chování při změně velikosti.

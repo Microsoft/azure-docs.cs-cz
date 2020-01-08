@@ -2,17 +2,17 @@
 title: Správa připojení privátního koncového bodu v Azure
 description: Naučte se spravovat připojení privátních koncových bodů v Azure.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452965"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Správa připojení privátního koncového bodu
 Privátní propojení Azure pracuje na modelu toku volání schválení, kde příjemce služby privátního propojení může požádat o připojení k poskytovateli služeb za účelem využívání služby. Poskytovatel služeb se pak může rozhodnout, jestli chcete, aby se příjemce mohl připojit nebo ne. Privátní propojení Azure umožňuje poskytovatelům služeb spravovat připojení privátního koncového bodu na svých prostředcích. Tento článek poskytuje informace o tom, jak spravovat připojení privátního koncového bodu.
@@ -28,9 +28,9 @@ V níže uvedené tabulce jsou uvedeny různé akce poskytovatele služeb a výs
 
 |Akce poskytovatele služeb   |Stav privátního koncového bodu příjemce služby   |Popis   |
 |---------|---------|---------|
-|Žádný    |    Čekající na vyřízení     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu.       |
+|Žádné    |    Čekající na vyřízení     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu.       |
 |Schválení    |  Schválené       |  Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití.     |
-|Odmítnout     | Odmítnutí        | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu.        |
+|Odmítnout     | Odmítnuto        | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu.        |
 |Odebrat    |  Odpojení       | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění.        |
 |   |         |         |
    

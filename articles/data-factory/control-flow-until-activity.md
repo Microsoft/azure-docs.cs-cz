@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679360"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440376"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Dokud aktivita v Azure Data Factory
 Aktivita dokud neposkytuje stejné funkce jako do struktury smyčky do, které poskytuje v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
@@ -55,8 +55,8 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 jméno | Název aktivity `Until` | Řetězec | Ano
 type | Musí být nastavené **na do**. | Řetězec | Ano
-vyjádření | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
-timeout | Vyprší časový interval smyčky po zadaném čase. | řetezce. `hh:mm:ss``d.hh:mm:ss` (nebo). Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dní. | Ne
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
+timeout | Vyprší časový interval smyčky po zadaném čase. | Řetězec. `hh:mm:ss``d.hh:mm:ss` (nebo). Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | Ne
 Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true`. | Pole aktivit. |  Ano
 
 ## <a name="example-1"></a>Příklad 1
@@ -199,10 +199,7 @@ Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky 
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -245,7 +242,7 @@ Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr *
 }
 ```
 
-### <a name="powershell-commands"></a>Příkazy PowerShellu
+### <a name="powershell-commands"></a>Příkazy prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

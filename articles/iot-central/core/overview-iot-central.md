@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048661"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434970"
 ---
 <!---
 Purpose of an Overview article: 
@@ -70,7 +70,7 @@ Jako tvůrce můžete taky přizpůsobit uživatelské rozhraní aplikace Azure 
 - Nakonfigurovat vlastní řídicí panely, které operátorům pomůžou rychleji zjišťovat informace a řešit problémy
 - Nakonfigurovat vlastní analýzy pro zkoumání časových řad dat z připojených zařízení
 
-## <a name="connect-your-devices"></a>Připojení zařízení
+## <a name="connect-your-devices"></a>Připojit zařízení
 
 Jakmile tvůrce definuje typy zařízení, které se můžou připojovat k aplikaci, vývojář zařízení vytvoří kód, který na zařízeních poběží. Jako vývojář zařízení vytváříte kód zařízení pomocí open source [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks) od Microsoftu. Tyto sady SDK nabízejí širokou podporu jazyků, platforem a protokolů, aby vyhověly vašim požadavkům na připojení vašich zařízení k aplikaci Azure IoT Central. Sady SDK vám pomůžou implementovat následující možnosti zařízení:
 
@@ -99,7 +99,7 @@ Správci spravují přístup k vaší aplikaci pomocí [rolí a oprávnění už
 
 Přečetli jste si přehled Azure IoT Central a tady jsou doporučené další kroky:
 
-- Pochopte rozdíly mezi [Azure IoT Central a akcelerátory řešení Azure IoT](overview-iot-options.md).
+- Seznamte se s dostupnými [technologiemi a službami Azure pro vytváření řešení IoT](../../iot-fundamentals/iot-services-and-technologies.md).
 - Seznamte se s [uživatelským rozhraním Azure IoT Central](overview-iot-central-tour.md).
 - Začněte [vytvořením aplikace Azure IoT Central](quick-deploy-iot-central.md).
 - Projděte si několik kurzů, kde se dozvíte, jak provést následující kroky:

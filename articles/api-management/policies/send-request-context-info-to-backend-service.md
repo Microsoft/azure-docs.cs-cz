@@ -1,5 +1,6 @@
 ---
-title: Ukázka zásad Azure API Management – odeslání informací o kontextu požadavku do služby back-endu | Microsoft Docs
+title: Ukázkové zásady API managementu – odeslání informací o kontextu požadavku do služby back-endu
+titleSuffix: Azure API Management
 description: Ukázka zásad Azure API Management – ukazuje, jak odesílat do back-end služby informace o kontextu požadavku.
 services: api-management
 documentationcenter: ''
@@ -12,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: cc770ff700155f8ab32bbbd6737c9dad7bc6e664
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8cef989ca7ce8ee649c4f4aeb579c43bf8a8d6ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442404"
 ---
 # <a name="send-request-context-information-to-the-backend-service"></a>Odeslat informace o kontextu požadavku do back-endu služby
 
 Tento článek ukazuje ukázku zásad služby Azure API Management, která demonstruje odeslání informací o kontextu požadavku do back-endu služby. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Vložte kód do **vstupního** bloku.
 

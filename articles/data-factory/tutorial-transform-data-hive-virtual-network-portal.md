@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd0de5415dc001f107221add7ea223450290b3f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925557"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439271"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 
@@ -30,9 +30,9 @@ V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který 
 > * Monitorování spuštění kanálu 
 > * Ověření výstupu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,14 +64,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
        state
    FROM hivesampletable
    ```
-2. Ve službě Azure Blob Storage, vytvořte kontejner **adftutorial**, pokud ještě neexistuje.
+2. Ve službě Azure Blob Storage, vytvořte kontejner nazvaný **adftutorial**, pokud ještě neexistuje.
 3. Vytvořte složku s názvem **hivescripts**.
 4. Uložte soubor **hivescript.hql** do podsložky **hivescripts**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).    
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).    
 2. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
    ![Nový -> Datová továrna](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
@@ -88,7 +88,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
-     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro datovou továrnu. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
 6. Zaškrtněte **Připnout na řídicí panel**.     
@@ -98,7 +98,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
      ![nasazování dlaždice datové továrny](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-    ![Domovská stránka datové továrny](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
+    ![Domovská stránka objektu pro vytváření dat](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory.
 11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku: 
 
@@ -166,7 +166,7 @@ V této části vytvoříte a nasadíte dvě propojené služby:
     2. V části **Připojit prostřednictvím prostředí Integration Runtime** zadejte **MySelfHostedIR**.
     3. Jako **Název účtu úložiště** vyberte svůj účet úložiště Azure. 
     4. Pokud chcete otestovat připojení k účtu úložiště, klikněte na **Test připojení**.
-    5. Klikněte na **Uložit**.
+    5. Klikněte na možnost **Uložit**.
    
         ![Zadání účtu služby Azure Blob Storage](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 

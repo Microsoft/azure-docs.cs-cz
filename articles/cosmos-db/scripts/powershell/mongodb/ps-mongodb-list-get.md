@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní MongoDB API
+title: Skript PowerShellu pro výpis a získání operací v rozhraní API Azure Cosmos DB pro MongoDB
 description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní MongoDB API
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 47d2f6a14fadfa75e5db28eb44b7ca3410e6503c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 4b5934e82c14f50ef1884a6c5618f4f98d663e1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178884"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441416"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Vypíše a získá databáze a grafy pro Azure Cosmos DB MongoDB API.
 

@@ -1,33 +1,24 @@
 ---
-title: Reliable Services WCF komunikačního balíku | Dokumentace Microsoftu
-description: Integrované komunikačního balíku WCF v Service Fabric nabízí služba klienta WCF komunikaci modelu Reliable Services.
-services: service-fabric
-documentationcenter: .net
+title: Komunikační balík Reliable Services WCF
+description: Integrovaný komunikační zásobník WCF v Service Fabric poskytuje komunikaci služby WCF klienta s Reliable Services.
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: ae8a0ab0382083ebfca0834d2238403668efa71d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433867"
 ---
-# <a name="wcf-based-communication-stack-for-reliable-services"></a>Komunikace na základě WCF zásobníku pro služby Reliable Services
-Reliable Services v rámci umožňuje autorům služby vyberte komunikační balík, které chtějí používat pro příslušnou službu. Můžete připojit v zásobníku komunikace podle vlastní volby, prostřednictvím **ICommunicationListener** vrácených [CreateServiceReplicaListeners nebo CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metody. Rozhraní poskytuje implementaci komunikačního balíku založené na Windows Communication Foundation (WCF) pro službu autory, kteří chtějí používat komunikace na základě WCF.
+# <a name="wcf-based-communication-stack-for-reliable-services"></a>Komunikační zásobník založený na WCF pro Reliable Services
+Rozhraní Reliable Services Framework umožňuje autorům služeb zvolit komunikační zásobník, který chtějí používat pro své služby. Mohou připojit komunikační zásobník podle svého výběru prostřednictvím **ICommunicationListener** vráceného z metod [CreateServiceReplicaListeners nebo CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) . Rozhraní poskytuje implementaci komunikačního zásobníku na základě Windows Communication Foundation (WCF) pro autory služeb, kteří chtějí používat komunikaci založenou na technologii WCF.
 
 ## <a name="wcf-communication-listener"></a>Naslouchací proces komunikace WCF
-Implementace specifické pro WCF **ICommunicationListener** je poskytován **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** třídy.
+Implementace **ICommunicationListener** specifická pro WCF je poskytována třídou **Microsoft. ServiceFabric. Services. Communication. WCF. Runtime. WcfCommunicationListener** .
 
-Přidejte Dejme tomu, že máme typu kontraktu služby `ICalculator`
+Lest řekněme, že máme kontrakt služby typu `ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -38,7 +29,7 @@ public interface ICalculator
 }
 ```
 
-Ve službě následujícím způsobem můžeme vytvořit naslouchací proces komunikace WCF.
+V rámci služby můžeme následujícím způsobem vytvořit naslouchací proces komunikace WCF.
 
 ```csharp
 
@@ -64,8 +55,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## <a name="writing-clients-for-the-wcf-communication-stack"></a>Zápis klientů pro komunikační balík WCF
-Pro psaní klientům pro komunikaci se službami pomocí WCF, poskytuje rozhraní **WcfClientCommunicationFactory**, což je implementace specifické pro WCF [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
+## <a name="writing-clients-for-the-wcf-communication-stack"></a>Zápis klientů pro komunikační zásobník WCF
+Pro psaní klientů ke komunikaci se službami pomocí technologie WCF poskytuje rozhraní **WcfClientCommunicationFactory**, což je implementace [CLIENTCOMMUNICATIONFACTORYBASE](service-fabric-reliable-services-communication.md)specifická pro WCF.
 
 ```csharp
 
@@ -77,7 +68,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-Komunikační kanál WCF je přístupný z **WcfCommunicationClient** vytvořené **WcfCommunicationClientFactory**.
+Na komunikační kanál WCF se dá dostat z **WcfCommunicationClient** vytvořeného pomocí **WcfCommunicationClientFactory**.
 
 ```csharp
 
@@ -91,7 +82,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-Klientský kód můžete použít **WcfCommunicationClientFactory** spolu s **WcfCommunicationClient** která implementuje **ServicePartitionClient** určit koncový bod služby a komunikovat se službou.
+Klientský kód může použít **WcfCommunicationClientFactory** spolu s **WcfCommunicationClient** , který implementuje **ServicePartitionClient** pro určení koncového bodu služby a komunikace se službou.
 
 ```csharp
 // Create binding
@@ -119,12 +110,12 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ```
 > [!NOTE]
-> Výchozí ServicePartitionResolver předpokládá, že klient je spuštěn ve stejném clusteru jako službu. Pokud tedy tomu tak není, vytvořte objekt ServicePartitionResolver a předejte koncovým bodům připojení clusteru.
+> Výchozí ServicePartitionResolver předpokládá, že klient je spuštěný ve stejném clusteru jako služba. V takovém případě vytvořte objekt ServicePartitionResolver a předejte ho koncovým bodům připojení clusteru.
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
-* [Volání vzdálených procedur u vzdálené komunikace modelu Reliable Services](service-fabric-reliable-services-communication-remoting.md)
-* [Webové rozhraní API s OWIN v modelu Reliable Services](service-fabric-reliable-services-communication-webapi.md)
-* [Zabezpečení komunikace pro služby Reliable Services](service-fabric-reliable-services-secure-communication-wcf.md)
+## <a name="next-steps"></a>Další kroky
+* [Vzdálené volání procedur s Reliable Services vzdálené komunikace](service-fabric-reliable-services-communication-remoting.md)
+* [Webové rozhraní API s OWIN v Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Zabezpečení komunikace pro Reliable Services](service-fabric-reliable-services-secure-communication-wcf.md)
 

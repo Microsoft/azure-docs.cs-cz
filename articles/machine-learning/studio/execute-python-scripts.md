@@ -1,5 +1,5 @@
 ---
-title: Spouštění skriptů Pythonu
+title: Provádění skriptů Pythonu
 titleSuffix: ML Studio (classic) - Azure
 description: Naučte se používat modul spouštěného skriptu Pythonu pro použití kódu Pythonu v Machine Learning Studio (klasických) experimentech a webových službách.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427656"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spouštění skriptů strojového učení v jazyce Python v Azure Machine Learning Studio (Classic)
 
@@ -53,7 +53,7 @@ Funkce `azureml_main` musí vracet jeden PANDAS dataframe zabalený do [sekvence
 
 ## <a name="translation-of-input-and-output-data-types"></a>Překlad vstupních a výstupních datových typů
 
-Datové sady studia nejsou stejné jako v případě Panda dataframes. V důsledku toho se vstupní datové sady v klasické verzi studia převedou na PANDAS dataframe a výstupní datové rámce se převedou zpátky na datové sady studia (Classic). Během tohoto procesu převodu jsou provedeny také následující překlady:
+Datové sady studia nejsou stejné jako v případě Panda dataframes. V důsledku toho se vstupní datové sady v studiu (Classic) převedou na PANDAS dataframe a výstupní datové snímky se převedou zpátky na datové sady studia (Classic). Během tohoto procesu převodu jsou provedeny také následující překlady:
 
  **Datový typ Pythonu** | **Postup překladu studia** |
 | --- | --- |
@@ -67,9 +67,9 @@ Datové sady studia nejsou stejné jako v případě Panda dataframes. V důsled
 
 ## <a id="import-modules"></a>Importují se existující moduly skriptu Pythonu.
 
-Back-end používaný ke spuštění Pythonu vychází z [Anaconda](https://www.anaconda.com/distribution/), široce používaného vědecké distribuce Pythonu. Obsahuje téměř 200 nejčastějších balíčků Python používaných v úlohách orientovaných na data. Klasická verze studia v současné době nepodporuje pro instalaci a správu externích knihoven použití systémů správy balíčků jako PIP nebo conda.  Pokud potřebujete přidat další knihovny, použijte jako vodítko následující scénář.
+Back-end používaný ke spuštění Pythonu vychází z [Anaconda](https://www.anaconda.com/distribution/), široce používaného vědecké distribuce Pythonu. Obsahuje téměř 200 nejčastějších balíčků Python používaných v úlohách orientovaných na data. Studio (Classic) v současné době nepodporuje pro instalaci a správu externích knihoven použití systémů správy balíčků, jako je PIP nebo conda.  Pokud potřebujete přidat další knihovny, použijte jako vodítko následující scénář.
 
-Běžným případem použití je zahrnutí stávajících skriptů Pythonu do klasické verze sady Studio experimentů. Modul [spuštění skriptu Pythonu][execute-python-script] přijímá soubor zip, který obsahuje moduly Pythonu na třetím vstupním portu. Soubor je v době běhu extrahován rozhraním a obsah se přidá do cesty knihovny interpretu Pythonu. Funkce vstupního bodu `azureml_main` pak může tyto moduly importovat přímo. 
+Běžným případem použití je zahrnutí stávajících skriptů Pythonu do studia (klasických) experimentů. Modul [spuštění skriptu Pythonu][execute-python-script] přijímá soubor zip, který obsahuje moduly Pythonu na třetím vstupním portu. Soubor je v době běhu extrahován rozhraním a obsah se přidá do cesty knihovny interpretu Pythonu. Funkce vstupního bodu `azureml_main` pak může tyto moduly importovat přímo. 
 
 Například zvažte, že soubor Hello.py obsahující jednoduchou funkci "Hello, World".
 
@@ -79,7 +79,7 @@ V dalším kroku vytvoříme soubor Hello. zip, který obsahuje Hello.py:
 
 ![Soubor ZIP obsahující kód Pythonu definovaný uživatelem](./media/execute-python-scripts/figure5.png)
 
-Nahrajte soubor ZIP jako datovou sadu do klasické verze studia. Pak vytvořte a spusťte experiment, který pomocí kódu Pythonu v souboru Hello. zip připojíte k třetímu vstupnímu portu modulu pro **spuštění skriptu Pythonu** , jak je znázorněno na následujícím obrázku.
+Nahrajte soubor ZIP jako datovou sadu do studia (Classic). Pak vytvořte a spusťte experiment, který pomocí kódu Pythonu v souboru Hello. zip připojíte k třetímu vstupnímu portu modulu pro **spuštění skriptu Pythonu** , jak je znázorněno na následujícím obrázku.
 
 ![Ukázkový experiment s Hello. zip jako vstup pro modul spuštění skriptu Pythonu](./media/execute-python-scripts/figure6a.png)
 
@@ -141,11 +141,11 @@ Tento proces je znázorněný v následujících obrázcích, které vytvoří m
 
 ![Vizualizace pro ukázkový experiment pomocí kódu Pythonu](./media/execute-python-scripts/figure-v2-9b.png)
 
-Je možné vrátit více hodnot tak, že je uložíte do různých imagí. Klasická verze studia runtime bere všechny obrázky a zřetězuje je pro vizualizaci.
+Je možné vrátit více hodnot tak, že je uložíte do různých imagí. Studio (Classic) runtime vybírá všechny obrázky a zřetězuje je pro vizualizaci.
 
 ## <a name="advanced-examples"></a>Rozšířené příklady
 
-Prostředí Anaconda nainstalované v klasické verzi studia obsahuje běžné balíčky, jako je NumPy, SciPy a Scikits – informace. Tyto balíčky je možné efektivně využít ke zpracování dat v kanálu strojového učení.
+Prostředí Anaconda nainstalované v studiu (Classic) obsahuje běžné balíčky, jako je NumPy, SciPy a Scikits – informace. Tyto balíčky je možné efektivně využít ke zpracování dat v kanálu strojového učení.
 
 Například následující experimenty a skripty ilustrují použití Scikitsch doplňků v – informace o hodnocení důležitosti funkcí pro datovou sadu. Skóre lze použít k provedení výběru funkcí pod dohledem před jejich odesláním do jiného modelu.
 
@@ -153,7 +153,7 @@ Tady je funkce Pythonu, která slouží k výpočtu skóre důležitosti a objed
 
 ![Funkce pro hodnocení funkcí podle skóre](./media/execute-python-scripts/figure8.png)
 
-Následující experiment pak vypočítá a vrátí hodnocení důležitosti funkcí v datové sadě "Pima indických diabetes" v klasické verzi Azure Machine Learning Studio:
+Následující experiment pak vypočítá a vrátí hodnocení důležitosti funkcí v datové sadě "Pima indických diabetes" v Azure Machine Learning Studio (Classic):
 
 ![Experimentování k funkcím Rank v Pima datové sadě indických diabetes pomocí Pythonu](./media/execute-python-scripts/figure9a.png)
 

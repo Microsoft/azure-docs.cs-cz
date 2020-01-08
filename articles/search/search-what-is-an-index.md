@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794197"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460748"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Vytvoření základního indexu v Azure Kognitivní hledání
 
@@ -175,10 +175,9 @@ Rozhraní API, která použijete k vytvoření indexu, mají proměnlivé výcho
 | `facetable` |Umožňuje použití pole ve struktuře [fasetové navigace](search-faceted-navigation.md) k filtrování, které je řízené samotným uživatelem. Jako fasety obvykle nejlépe fungují pole, která obsahují opakované hodnoty použitelné k seskupení více dokumentů (například více dokumentů, které spadají pod jednu značku nebo kategorii služeb). |
 | `searchable` |Označí pole jako fulltextově prohledávatelné. |
 
+## <a name="index-size"></a>Velikost indexu
 
-## <a name="storage-implications"></a>Důsledky úložiště
-
-Atributy, které vyberete, mají vliv na úložiště. Následující snímek obrazovky znázorňuje vzory úložiště indexů, které jsou výsledkem různých kombinací atributů.
+Velikost indexu je určena velikostí dokumentů, které nahráváte, a konfigurací indexu, například bez ohledu na to, zda jste zahrnuli moduly pro návrhy, a jak nastavíte atributy na jednotlivá pole. Následující snímek obrazovky znázorňuje vzory úložiště indexů, které jsou výsledkem různých kombinací atributů.
 
 Index je založený na [integrovaném zdroji ukázkových dat z reálného majetku](search-get-started-portal.md) , který můžete indexovat a dotazovat na portálu. I když nejsou uvedena schémata indexu, můžete odvodit atributy na základě názvu indexu. Index s možností vyhledávání *realestate* má například vybraný atribut, který není k dispozici, a není k dispozici žádný jiný index s *realestate* , který **je v indexu** s **možností** získat a tak dále.
 
@@ -186,13 +185,13 @@ Index je založený na [integrovaném zdroji ukázkových dat z reálného majet
 
 I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Má nastavení načístelné zvýšení velikosti indexu? Ne. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Ano.
 
-Indexy, které podporují filtrování a řazení, jsou proporcionálně větší než indexy podporující pouze fulltextové vyhledávání. Důvodem je, že dotaz filtru a řazení se shoduje s přesnými shodami, takže se dokumenty ukládají beze změny. Naproti tomu prohledávatelné pole podporující fulltextové a přibližné vyhledávání používá obrácené indexy, které jsou vyplněny pomocí tokenů, které spotřebovávají méně místa než celé dokumenty.
+Indexy, které podporují filtrování a řazení, jsou proporcionálně větší než ty podporující pouze fulltextové vyhledávání. Filtrování a řazení operací vyhledávání přesných shod, které vyžadují přítomnost nepoškozených dokumentů. Naproti tomu prohledávatelné pole podporující fulltextové a přibližné vyhledávání používá obrácené indexy, které jsou vyplněny pomocí tokenů, které spotřebovávají méně místa než celé dokumenty. 
 
 > [!Note]
 > Architektura úložiště se považuje za podrobné informace o implementaci Azure Kognitivní hledání a může se změnit bez předchozího upozornění. V budoucnu není zaručeno, že aktuální chování bude zachováno.
 
 ## <a name="suggesters"></a>Moduly pro návrhy
-Modul pro návrhy je oddíl schématu, který definuje, která pole v indexu se používají k podpoře automatického dokončování nebo dotazování typu dopředu v hledáních. V případě, že uživatel zadává vyhledávací dotaz a rozhraní API vrací sadu navrhovaných frází, jsou obvykle odesílány do [návrhů (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) částečné vyhledávací řetězce. 
+Modul pro návrhy je oddíl schématu, který definuje, která pole v indexu se používají k podpoře automatického dokončování nebo dotazování typu dopředu v hledáních. V případě, že uživatel zadává vyhledávací dotaz a rozhraní API vrací sadu navrhovaných dokumentů nebo frází, jsou obvykle odesílány do [návrhů (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) částečné vyhledávací řetězce. 
 
 Pole přidaná do modulu pro návrhy se používají k sestavení podmínek vyhledávání typu dopředu. Všechny hledané výrazy se vytvoří při indexování a ukládají se samostatně. Další informace o vytváření struktury návrhů najdete v tématu [Přidání návrhů](index-add-suggesters.md).
 
@@ -220,7 +219,7 @@ Pro CORS se dají nastavit tyto možnosti:
 
 ## <a name="encryption-key"></a>Šifrovací klíč
 
-I když jsou všechny indexy Azure Kognitivní hledání ve výchozím nastavení šifrované pomocí spravovaných klíčů Microsoftu, můžou být indexy nakonfigurované tak, aby se pomocí **zákaznických klíčů** v Key Vault zašifroval. Další informace najdete v tématu [Správa šifrovacích klíčů v Azure kognitivní hledání](search-security-manage-encryption-keys.md).
+I když jsou všechny indexy Azure Kognitivní hledání ve výchozím nastavení šifrované pomocí klíčů spravovaných Microsoftem, můžou být indexy nakonfigurované tak, aby se pomocí **klíčů spravovaných zákazníky** v Key Vault šifroval. Další informace najdete v tématu [Správa šifrovacích klíčů v Azure kognitivní hledání](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Další kroky
 

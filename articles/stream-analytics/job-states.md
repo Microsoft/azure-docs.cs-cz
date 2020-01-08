@@ -1,19 +1,18 @@
 ---
 title: Stavy úlohy Azure Stream Analytics
 description: Tento článek popisuje čtyři různé stavy Stream Analytics úlohy. spuštění, zastavení, degradace a selhání.
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c533463ff544dc315142f7fb95c34c67933f9614
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 454474333cac94dc25deae8196e9ba45bcb3a574
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359762"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Stavy úlohy Azure Stream Analytics
 
@@ -22,11 +21,11 @@ Stream Analytics úloha může být v každém okamžiku v jednom ze čtyř stav
 | Stav | Popis | Doporučené akce |
 | --- | --- | --- |
 | **Instalovanou** | Vaše úloha běží na Azure čtení událostí přicházejících z definovaných vstupních zdrojů, jejich zpracování a zápis výsledků do nakonfigurovaných výstupních umyvadel. | Osvědčeným postupem je sledovat výkon úlohy monitorováním [klíčových metrik](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor). |
-| **Ukončen** | Vaše úloha se zastavila a nezpracovává události. | Není k dispozici | 
-| **Degradovaný** | Vstupní a výstupní připojení můžou mít přerušované problémy. Tyto chyby se označují jako přechodné chyby, což může vést k tomu, že vaše úloha vstoupí do sníženého stavu. Stream Analytics se okamžitě pokusí o zotavení z takových chyb a návrat do běžícího stavu (během několika minut). K těmto chybám může dojít kvůli problémům se sítí, dostupnosti dalších prostředků Azure, chybám deserializaci atd. Výkon úlohy může být ovlivněný, pokud je úloha ve stavu sníženo.| Další informace o příčině těchto přechodných chyb najdete v [protokolech diagnostiky nebo činnosti](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) . V případech, jako jsou chyby deserializace, se doporučuje podniknout nápravná opatření, aby se zajistilo, že události nejsou poškozeny. Pokud úloha dosáhne limitu využití prostředků, zkuste zvýšit číslo SU nebo [paralelizovat vaši úlohu](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). V jiných případech, kdy nemůžete provést žádnou akci, Stream Analytics se pokusí o obnovení  do běžícího stavu. <br> Pomocí metriky [zpoždění vodoznaku](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) můžete zjistit, jestli tyto přechodné chyby ovlivnily výkon vaší úlohy.|
+| **Ukončen** | Vaše úloha se zastavila a nezpracovává události. | není k dispozici | 
+| **Degradovaný** | Vstupní a výstupní připojení můžou mít přerušované problémy. Tyto chyby se označují jako přechodné chyby, což může vést k tomu, že vaše úloha vstoupí do sníženého stavu. Stream Analytics se okamžitě pokusí o zotavení z takových chyb a návrat do běžícího stavu (během několika minut). K těmto chybám může dojít kvůli problémům se sítí, dostupnosti dalších prostředků Azure, chybám deserializaci atd. Výkon úlohy může být ovlivněný, pokud je úloha ve stavu sníženo.| Další informace o příčině těchto přechodných chyb najdete v [protokolech diagnostiky nebo činnosti](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) . V případech, jako jsou chyby deserializace, se doporučuje podniknout nápravná opatření, aby se zajistilo, že události nejsou poškozeny. Pokud úloha dosáhne limitu využití prostředků, zkuste zvýšit číslo SU nebo [paralelizovat vaši úlohu](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). V jiných případech, kdy nemůžete provést žádnou akci, Stream Analytics se pokusí o obnovení do *běžícího* stavu. <br> Pomocí metriky [zpoždění vodoznaku](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) můžete zjistit, jestli tyto přechodné chyby ovlivnily výkon vaší úlohy.|
 | **Se nezdařilo** | U úlohy došlo k závažné chybě, která má za následek selhání stavu. Události nejsou čteny a zpracovávány. Chyby za běhu představují běžnou příčinu úloh, které skončí ve stavu selhání. | Můžete [nakonfigurovat výstrahy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#set-up-alerts-in-the-azure-portal) , abyste se dostali na oznámení, že se úloha dostane do stavu selhání. <br> <br>Můžete ladit pomocí [protokolů aktivit a diagnostiky](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) k identifikaci hlavní příčiny a vyřešení problému.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nastavení výstrah pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md)
 * [Metriky dostupné v Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
 * [Řešení potíží pomocí protokolů aktivit a diagnostiky](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)

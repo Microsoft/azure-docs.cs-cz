@@ -2,17 +2,17 @@
 title: Automatické škálování cloudové služby na portálu | Microsoft Docs
 description: Naučte se používat portál ke konfiguraci pravidel automatického škálování webové role nebo role pracovního procesu cloudové služby v Azure.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360833"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu na portálu
 
@@ -34,14 +34,14 @@ Před konfigurací škálování pro aplikaci byste měli zvážit následujíc�
 
 * Pokud chcete povolit vysokou dostupnost vaší aplikace, měli byste zajistit, aby byla nasazená se dvěma nebo více instancemi role. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
 
-* Automatické škálování se stane pouze v případě, že jsou  všechny role ve stavu připraveno.  
+* Automatické škálování se stane pouze v případě, že jsou všechny role ve stavu **připraveno** .  
 
 
 ## <a name="where-scale-is-located"></a>Kde se nachází škálování
 Po výběru cloudové služby byste měli mít zobrazené okno cloudové služby.
 
 1. V okně cloudová služba na dlaždici **role a instance** vyberte název cloudové služby.   
-   **DŮLEŽITÉ:** Ujistěte se, že kliknete na roli Cloudová služba, nikoli na instanci role, která se nachází pod rolí.
+   **Důležité**: Ujistěte se, že kliknete na roli Cloudová služba, nikoli na instanci role, která se nachází pod rolí.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Vyberte dlaždici **škálování** .
@@ -105,3 +105,6 @@ Toto nastavení odebere z role automatické škálování a potom můžete nasta
 3. Instance role, na kterou se má škálovat
 
 Po nakonfigurování nastavení škálování vyberte ikonu **Uložit** v horní části.
+
+
+

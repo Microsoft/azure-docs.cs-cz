@@ -1,25 +1,14 @@
 ---
-title: Zobrazení protokolů kontejnerů v Azure Service Fabric | Microsoft Docs
+title: Zobrazení protokolů kontejnerů v Azure Service Fabric
 description: Popisuje postup zobrazení protokolů kontejneru pro běžící Service Fabric služby kontejneru pomocí Service Fabric Explorer.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/15/2018
-ms.author: atsenthi
-ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458179"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Zobrazit protokoly pro službu Service Fabric Container Service
 Azure Service Fabric je kontejner Orchestrator a podporuje [kontejnery Linux a Windows](service-fabric-containers-overview.md).  Tento článek popisuje, jak zobrazit protokoly kontejneru běžící služby kontejneru nebo mrtvého kontejneru, abyste mohli diagnostikovat a řešit problémy.
@@ -29,7 +18,7 @@ K protokolům kontejneru se dá dostat pomocí [Service Fabric Explorer](service
 
 Protokoly kontejnerů se nachází na uzlu clusteru, na kterém je instance služby kontejneru spuštěná. Jako příklad Získejte protokoly webového front-endu kontejneru pro [hlasovací ukázkovou aplikaci pro Linux](service-fabric-quickstart-containers-linux.md). Ve stromovém zobrazení rozbalte **Cluster**>**aplikace**>**VotingType**>**Fabric:/hlasovací/azurevotefront**.  Pak rozbalte oddíl (v tomto příkladu d1aa737e-f22a-e347-be16-eec90be24bc1) a podívejte se, že kontejner je spuštěný v uzlu clusteru *_lnxvm_0*.
 
-Ve stromovém zobrazení Najděte balíček kódu na uzlu *_lnxvm_0* rozbalením **uzlů**> **_Lnxvm_0**>**Fabric:/hlasovací**>**azurevotfrontPkg**>**Code**.>  Pak vyberte možnost **protokoly kontejnerů** a zobrazte tak protokoly kontejnerů.
+Ve stromovém zobrazení Najděte balíček kódu na uzlu *_lnxvm_0* rozbalením **uzlů**> **_Lnxvm_0**>**Fabric:/hlasovací**>**azurevotfrontPkg**>**Code**.  Pak vyberte možnost **protokoly kontejnerů** a zobrazte tak protokoly kontejnerů.
 
 ![Platforma Service Fabric][Image1]
 
