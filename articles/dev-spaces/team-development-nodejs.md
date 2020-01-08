@@ -3,14 +3,14 @@ title: Vývoj pro týmovou práci pomocí Node. js a Visual Studio Code
 services: azure-dev-spaces
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k vývoji týmu v aplikaci Node. js ve službě Azure Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 374a6f0944c7d2fe8d97ea2fa4610ba63598ee2e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e2124d6c3f903f6a9faa6c41a2015b7198faf42d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438122"
 ---
 # <a name="team-development-using-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Vývoj pro týmovou práci pomocí Node. js a Visual Studio Code s Azure Dev Spaces
 

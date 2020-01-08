@@ -4,12 +4,12 @@ description: Monitorujte Azure Backup úlohy a vytvářejte vlastní výstrahy p
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 983939a905c6c096f2e8e3007bd40cbbe9088395
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894058"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611692"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
@@ -35,9 +35,9 @@ Azure Resource Manager prostředky, jako je například trezor Recovery Services
 
 V části monitorování vyberte **nastavení diagnostiky** a zadejte cíl pro diagnostická data trezoru Recovery Services.
 
-![Nastavení diagnostiky Recovery Services trezoru, které cílí na Log Analytics](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
+![Nastavení diagnostiky Recovery Services trezoru, které cílí na Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-Log Analytics pracovní prostor můžete cílit z jiného předplatného. Pokud chcete monitorovat trezory v rámci předplatných na jednom místě, vyberte stejný pracovní prostor Log Analytics pro několik trezorů Recovery Services. Pokud chcete všechny informace, které souvisejí s Azure Backup, přepínat k pracovnímu prostoru Log Analytics, v zobrazeném přepínači zvolte **konkrétní prostředky** a vyberte následující události – **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**, **AddonAzureBackupProtectedInstance**. Další podrobnosti o konfiguraci nastavení diagnostiky LA najdete v [tomto článku](backup-azure-diagnostic-events.md) .
+Log Analytics pracovní prostor můžete cílit z jiného předplatného. Pokud chcete monitorovat trezory v rámci předplatných na jednom místě, vyberte stejný pracovní prostor Log Analytics pro několik trezorů Recovery Services. Pokud chcete všechny informace, které souvisejí s Azure Backup, přepínat do pracovního prostoru Log Analytics, v zobrazeném přepínači zvolte **AzureDiagnostics** a vyberte událost **AzureBackupReport** .
 
 > [!IMPORTANT]
 > Po dokončení konfigurace byste měli počkat 24 hodin na dokončení počátečního vkládání dat. Po této počáteční datové stránce jsou všechny události vloženy, jak je popsáno dále v tomto článku v [části frekvence](#diagnostic-data-update-frequency).
@@ -50,9 +50,6 @@ Log Analytics pracovní prostor můžete cílit z jiného předplatného. Pokud 
 Až budou data v pracovním prostoru Log Analytics, [Nasaďte šablonu GitHubu](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) , která Log Analytics k vizualizaci dat. Pokud chcete pracovní prostor správně identifikovat, ujistěte se, že mu udělíte stejnou skupinu prostředků, název pracovního prostoru a umístění pracovního prostoru. Pak nainstalujte tuto šablonu do pracovního prostoru.
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Zobrazení Azure Backup dat pomocí Log Analytics
-
-> [!IMPORTANT]
-> Šablona pro vytváření sestav pro LA aktuálně podporuje data ze starší služby Event AzureBackupReport v režimu AzureDiagnostics. Chcete-li použít tuto šablonu, bude nutné [nakonfigurovat nastavení diagnostiky trezoru v režimu Azure Diagnostics](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event). 
 
 - **Azure monitor**: v části **přehledy** vyberte **Další** a pak zvolte příslušný pracovní prostor.
 - **Log Analytics pracovní prostory**: vyberte příslušný pracovní prostor a potom v části **Obecné**vyberte možnost **Souhrn pracovního prostoru**.
@@ -113,65 +110,90 @@ Výchozí grafy vám umožní Kusto dotazy na základní scénáře, ve kterých
 - Všechny úspěšné úlohy zálohování
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Completed"
     ````
 
 - Všechny neúspěšné úlohy zálohování
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Failed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | where OperationName == "Job" and JobOperation_s == "Backup"
+    | where JobStatus_s == "Failed"
     ````
 
 - Všechny úspěšné úlohy zálohování virtuálních počítačů Azure
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - Všechny úspěšné úlohy zálohování protokolu SQL
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup" and JobOperationSubType=="Log"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 - Všechny úspěšné Azure Backup úlohy agenta
 
     ````Kusto
-    AddonAzureBackupJobs
-    | where JobOperation=="Backup"
-    | where JobStatus=="Completed"
+    AzureDiagnostics
+    | where Category == "AzureBackupReport"
+    | where SchemaVersion_s == "V2"
+    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
+    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
     | join kind=inner
     (
-        CoreAzureBackup
+        AzureDiagnostics
+        | where Category == "AzureBackupReport"
         | where OperationName == "BackupItem"
-        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
-        | distinct BackupItemUniqueId, BackupItemFriendlyName
+        | where SchemaVersion_s == "V2"
+        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
+        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
+        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
     )
-    on BackupItemUniqueId
+    on BackupItemUniqueId_s
+    | extend Vault= Resource
+    | project-away Resource
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>Frekvence aktualizace diagnostických dat
@@ -217,7 +239,7 @@ Můžete zobrazit všechny výstrahy vytvořené z protokolů aktivit a Log Anal
 I když můžete dostávat oznámení prostřednictvím protokolů aktivit, důrazně doporučujeme použít Log Analytics místo protokolů aktivit pro monitorování ve velkém měřítku. Důvody jsou následující:
 
 - **Omezené scénáře**: oznámení prostřednictvím protokolů aktivit se vztahují jenom na zálohy virtuálních počítačů Azure. Oznámení musí být nastavená pro každý trezor Recovery Services.
-- **Přizpůsobení definice**: naplánovaná aktivita zálohování se nevejde do poslední definice protokolů aktivit. Místo toho se zarovnává s [protokoly prostředků](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace). Při tomto zarovnání dojde k neočekávaným důsledkům při změně dat, která se přetékají přes kanál protokolu aktivit.
+- **Přizpůsobení definice**: naplánovaná aktivita zálohování se nevejde do poslední definice protokolů aktivit. Místo toho se zarovnává s [protokoly prostředků](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace). Při tomto zarovnání dojde k neočekávaným důsledkům při změně dat, která se přetékají přes kanál protokolu aktivit.
 - **Problémy s kanálem protokolu aktivit**: v úložištích Recovery Services se protokoly aktivit, které jsou z Azure Backup vycházejí z nového modelu. Tato změna má však vliv na generování protokolů aktivit v Azure Government, Azure Německo a Azure Čína 21Vianet. Pokud uživatelé těchto cloudových služeb vytvoří nebo nakonfigurují výstrahy z protokolů aktivit v Azure Monitor, výstrahy se neaktivují. Pokud uživatel ve všech veřejných oblastech Azure [shromažďuje Recovery Services protokoly aktivit do pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), tyto protokoly se nezobrazují.
 
 Použijte Log Analytics pracovní prostor pro monitorování a upozorňování ve velkém měřítku pro všechny vaše úlohy, které jsou chráněné Azure Backup.

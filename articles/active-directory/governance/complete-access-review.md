@@ -1,5 +1,5 @@
 ---
-title: Dokončení kontroly přístupu skupin nebo aplikací – Azure Active Directory | Microsoft Docs
+title: Dokončení kontroly přístupu skupin & aplikací – Azure AD
 description: Naučte se, jak dokončit kontrolu přístupu pro členy skupiny nebo přístup k aplikacím v Azure Active Directory kontroly přístupu.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0c6f3405354136e11600ae059f3e05890d3534ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422729"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin nebo aplikací v kontrolách přístupu ke službě Azure AD
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
 Jako správce [vytvoříte kontrolu přístupu pro skupiny nebo aplikace](create-access-review.md) a kontrolory, kteří [provádějí kontrolu přístupu](perform-access-review.md). Tento článek popisuje, jak zobrazit výsledky kontroly přístupu a použít výsledky.
 
@@ -34,7 +34,7 @@ Jako správce [vytvoříte kontrolu přístupu pro skupiny nebo aplikace](create
 - Azure AD Premium P2
 - Globální správce, Správce uživatelů, správce zabezpečení nebo čtecí modul zabezpečení
 
-Další informace najdete v tématu o uživatelích, [kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
+Další informace najdete v tématu o [uživatelích, kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="view-an-access-review"></a>Zobrazit kontrolu přístupu
 
@@ -66,7 +66,7 @@ Pokud se u prostředku pro kontrolu nepovolilo **automatické použití výsledk
 
 ![Použití změn kontroly přístupu](./media/complete-access-review/apply-changes.png)
 
-Stav revize se změní ze dokončených do  mezistavů, jako je **použití** a nakonec na **výsledek použití**. Měli byste očekávat, že v několika minutách se v případě potřeby odeberou Zakázaní uživatelé z členství ve skupině nebo přiřazení aplikace.
+Stav revize se změní ze **dokončených** do mezistavů, jako je **použití** a nakonec na **výsledek použití**. Měli byste očekávat, že v několika minutách se v případě potřeby odeberou Zakázaní uživatelé z členství ve skupině nebo přiřazení aplikace.
 
 Nakonfigurované automatické použití revize nebo volba **použít** nemá vliv na skupinu, která pochází z místního adresáře nebo dynamické skupiny. Pokud chcete změnit skupinu, která pochází z místního prostředí, Stáhněte výsledky a použijte tyto změny v zastoupení skupiny v tomto adresáři.
 
@@ -86,7 +86,7 @@ Chcete-li načíst všechny výsledky kontroly přístupu, klikněte na tlačít
 
  Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure Active Directory odstraněný na 30 dní, během kterých ho v případě potřeby může správce obnovit.  Po 30 dnech je tento uživatel odstraněn trvale.  Kromě toho může globální správce pomocí portálu Azure Active Directory explicitně [trvale odstranit nedávno odstraněného uživatele](../fundamentals/active-directory-users-restore.md) ještě před dosažením tohoto časového období.  Jakmile je uživatel trvale odstraněný, odeberou se následně data o tomto uživateli z aktivních kontrol přístupu.  Informace o auditování o odstraněných uživatelích zůstávají v protokolu auditu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Správa přístupu uživatelů pomocí kontrol přístupu Azure AD](manage-user-access-with-access-reviews.md)
 - [Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD](manage-guest-access-with-access-reviews.md)

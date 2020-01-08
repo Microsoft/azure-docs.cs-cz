@@ -10,24 +10,29 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446874"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Rychlý Start: Vytvoření vlastního příkazu (Preview)
 
 V tomto článku se dozvíte, jak vytvořit a otestovat hostované vlastní aplikace s příkazy.
 Aplikace rozpozná utterance jako "zapnout televizní program" a odpoví jednoduchou zprávou "OK, zapnutí televizního vysílání".
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné pro rozpoznávání řeči. [Vyzkoušejte službu Speech Service zdarma](~/articles/cognitive-services/speech-service/get-started.md).
+- Předplatné pro rozpoznávání řeči. 
+
+Pokud nemáte předplatné pro rozpoznávání řeči, můžete ho vytvořit tak, že přejdete do [studia pro rozpoznávání řeči](https://speech.microsoft.com/) a vyberete **vytvořit prostředek pro rozpoznávání řeči**.
+
+  > [!div class="mx-imgBorder"]
+  > [![vytvořit projekt](media/custom-speech-commands/create-new-subscription.png)](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > Během období Preview se pro klíče předplatného podporují jenom oblasti westus2.
+  > Během období Preview je podporována pouze oblast westus2.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Přejít do sady Speech Studio pro vlastní příkazy
 
@@ -65,6 +70,20 @@ Výchozím zobrazením je seznam aplikací s vlastním příkazy, které jste vy
 1. Po vytvoření vyberte svůj projekt.
 
 Zobrazení by teď mělo být přehled vaší aplikace pro vlastní příkazy.
+
+## <a name="update-luis-resources-optional"></a>Aktualizace prostředků LUIS (volitelné)
+
+Můžete aktualizovat sadu prostředků pro vytváření obsahu v okně Nový projekt a nastavit předpověď prostředku, který se používá k rozpoznávání vstupů za běhu. 
+
+> [!NOTE]
+> Budete muset nastavit předpověď prostředků, než aplikace požaduje předpovědi nad rámec požadavků 1 000, které poskytuje prostředek pro vytváření.
+
+> [!div class="mx-imgBorder"]
+> ![nastavení prostředků LUIS](media/custom-speech-commands/set-luis-resources.png)
+
+1. V levém podokně přejděte do podokna prostředky LUIS a v prostředním podokně vyberte **Nastavení** a pak **Luis prostředky** .
+1. Vyberte prostředek předpovědi, nebo ho vytvořte výběrem možnosti **vytvořit nový prostředek** .
+1. Vyberte **Uložit**.
 
 ## <a name="create-a-new-command"></a>Vytvoření nového příkazu
 
@@ -116,11 +135,10 @@ Nyní přidejte pravidlo dokončení pro reakci na uživatele s oznámením, že
 > [!div class="mx-imgBorder"]
 > ![vytvoření pravidla dokončování](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-
-| Nastavení    | Navrhovaná hodnota                        | Popis                                        |
-| ---------- | -------------------------------------- | -------------------------------------------------- |
-| Název pravidla  | "ConfirmationResponse"                 | Název popisující účel pravidla          |
-| Podmínky | Žádné                                   | Podmínky, které určují, kdy se pravidlo dá spustit    |
+| Nastavení    | Navrhovaná hodnota                          | Popis                                        |
+| ---------- | ---------------------------------------- | -------------------------------------------------- |
+| Název pravidla  | "ConfirmationResponse"                   | Název popisující účel pravidla          |
+| Podmínky | Žádné                                     | Podmínky, které určují, kdy se pravidlo dá spustit    |
 | Akce    | SpeechResponse "-OK, zapnutí televizního vysílání" | Akce, která se má provést, když je podmínka pravidla pravdivá |
 
 ## <a name="try-it-out"></a>Vyzkoušet

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 14f61d14b59dca4bcf2e0f4b93e918f101a61833
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444793"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzule ORDER BY v Azure Cosmos DB
 
@@ -29,9 +29,9 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   Určuje vlastnost nebo výraz, pro který se má seřadit sada výsledků dotazu. Sloupec řazení lze zadat jako název nebo alias vlastnosti.  
+   Určuje vlastnost nebo výraz, podle kterého chcete řazení sady výsledků dotazu. Sloupec řazení lze zadat jako název nebo alias vlastnosti.  
   
-   Lze zadat více vlastností. Názvy vlastností musí být jedinečné. Pořadí vlastností řazení v klauzuli ORDER BY definuje organizaci seřazené sady výsledků. To znamená, že sada výsledků je seřazená podle první vlastnosti a pak je seřazená podle druhé vlastnosti, a tak dále.  
+   Lze zadat více vlastností. Názvy vlastností musí být jedinečné. Pořadí vlastností řazení v klauzuli ORDER BY definuje organizaci seřazené sady výsledků. To znamená sada výsledků je seřazený podle první vlastnost a potom tuto seřazený seznam je seřazen podle druhý vlastnosti a tak dále.  
   
    Názvy vlastností, na které odkazuje klauzule ORDER BY, musí odpovídat buď vlastnosti v seznamu SELECT, nebo vlastnosti definované v kolekci určené v klauzuli FROM bez nejednoznačnosti.  
   
@@ -41,15 +41,18 @@ ORDER BY <sort_specification>
   
 - `<scalar_expression>`  
   
-   Podrobnosti najdete v části [skalární výrazy](sql-query-scalar-expressions.md) .  
+   Zobrazit [skalární výrazy](sql-query-scalar-expressions.md) podrobné informace.  
   
 - `ASC | DESC`  
   
-   Určuje, že hodnoty v zadaném sloupci by měly být seřazené ve vzestupném nebo sestupném pořadí. ASC seřadí z nejnižší hodnoty na nejvyšší hodnotu. DESC seřadí z nejvyšší hodnoty na nejnižší hodnotu. Výchozím pořadím řazení je ASC. Hodnoty null se považují za nejnižší možné hodnoty.  
+   Určuje, zda mají být řazeny hodnot v zadaném sloupci ve vzestupném nebo sestupném pořadí. ASC řadí od nejnižší hodnoty po nejvyšší hodnotu. DESC seřadí od nejvyšší hodnotu na nejnižší hodnotu. ASC se použije výchozí pořadí řazení. Hodnoty Null jsou považovány za nejnižší možné hodnoty.  
   
 ## <a name="remarks"></a>Poznámky  
   
    Klauzule ORDER BY vyžaduje, aby zásady indexování zahrnovaly index pro pole, která se seřadí. Modul runtime dotazu Azure Cosmos DB podporuje řazení proti názvu vlastnosti a nikoli k vypočítaným vlastnostem. Azure Cosmos DB podporuje více pořadí podle vlastností. Chcete-li spustit dotaz s více OBJEDNÁVKAmi podle vlastností, měli byste pro pole, která jsou seřazena, definovat [složený index](index-policy.md#composite-indexes) .
+   
+> [!Note] 
+> Pokud používáte sadu .NET SDK 3.4.0 nebo vyšší, mohou být v případě, že jsou vlastnosti seřazené proti, pro některé dokumenty nedefinovány, nutné pro tyto vlastnosti explicitně vytvořit index. Výchozí zásada indexování neumožní načtení dokumentů, kde není definovaná vlastnost Sort.
 
 ## <a name="examples"></a>Příklady
 
@@ -61,7 +64,7 @@ Tady je příklad dotazu, který načte rodiny ve vzestupném pořadí podle jm�
     ORDER BY f.address.city
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -76,7 +79,7 @@ Výsledky jsou:
     ]
 ```
 
-Následující dotaz načte rodinu `id`s v pořadí data vytvoření položky. Item `creationDate` je číslo představující *epocha čas*nebo uplynulý čas od ledna. 1, 1970 v sekundách.
+Následující dotaz načte rodinu `id`s v pořadí data vytvoření položky. Položka `creationDate` je číslo představující *epocha čas*nebo uplynulý čas od ledna. 1, 1970 v sekundách.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -84,7 +87,7 @@ Následující dotaz načte rodinu `id`s v pořadí data vytvoření položky. I
     ORDER BY f.creationDate DESC
 ```
 
-Výsledky jsou:
+Výsledky jsou následující:
 
 ```json
     [
@@ -99,7 +102,7 @@ Výsledky jsou:
     ]
 ```
 
-Navíc můžete řadit podle více vlastností. Dotaz, který ORDER by s více vlastnostmi vyžaduje [složený index](index-policy.md#composite-indexes). Vezměte v úvahu následující dotaz:
+Navíc můžete řadit podle více vlastností. Dotaz, který ORDER by s více vlastnostmi vyžaduje [složený index](index-policy.md#composite-indexes). Zamyslete se nad následujícím dotazem:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -107,7 +110,7 @@ Navíc můžete řadit podle více vlastností. Dotaz, který ORDER by s více v
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-Tento dotaz načte rodinu `id` ve vzestupném pořadí názvu města. Pokud má více položek stejný název města, dotaz bude seřazen podle `creationDate` v sestupném pořadí.
+Tento dotaz načte `id` řady ve vzestupném pořadí podle názvu města. Pokud má více položek stejný název města, dotaz bude seřazen podle `creationDate` v sestupném pořadí.
 
 ## <a name="next-steps"></a>Další kroky
 

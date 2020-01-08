@@ -1,17 +1,17 @@
 ---
-title: Vytváření a Správa proměnných pro ukládání hodnot
-description: Jak ukládat a spravovat hodnoty pomocí proměnných v Azure Logic Apps
+title: Vytváření a Správa proměnných pro ukládání a předávání hodnot
+description: Naučte se ukládat, spravovat, používat a předávat hodnoty pomocí proměnných v automatizovaných úlohách a pracovních postupech, které vytvoříte pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793165"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456692"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Ukládání a Správa hodnot pomocí proměnných v Azure Logic Apps
 
@@ -29,7 +29,7 @@ Proměnné existují a jsou globální jenom v instanci aplikace logiky, která 
 > [!IMPORTANT]
 > Ve výchozím nastavení se cyklická smyčka "for each" spouští paralelně. Když použijete proměnné ve smyčce, spusťte smyčku [sekvenčně](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) , aby proměnné vracely předvídatelné výsledky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -69,10 +69,10 @@ Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hod
    |----------|----------|-------|--------------|
    | **Název** | Ano | *název <variable*> | Název proměnné, která se má zvýšit |
    | **Typ** | Ano | <*proměnné typu*> | Datový typ proměnné |
-   | **Hodnota** | Ne | <*hodnoty Start-value*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
+   | **Hodnota** | Ne | <*start-value*> | Počáteční hodnota proměnné <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali počáteční hodnotu pro vaši proměnnou. |
    |||||
 
-   Například:
+   Příklad:
 
    ![Inicializovat proměnnou](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -211,7 +211,7 @@ Pokud chcete proměnnou *zvýšit nebo zvýšit na konstantní* hodnotu, přidej
    | **Hodnota** | Ne | <*přírůstek-hodnota*> | Hodnota použitá pro zvýšení proměnné. Výchozí hodnota je jedna. <p><p>**Tip**: Pokud je to volitelné, nastavte tuto hodnotu jako osvědčený postup, abyste vždy znali konkrétní hodnotu pro zvýšení vaší proměnné. |
    ||||
 
-   Například:
+   Příklad:
 
    ![Příklad hodnoty přírůstku](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 

@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: troubleshooting
-ms.date: 08/13/2018
+ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5652c5035c2e4cd35ac6943ef90c8bcc02b95dba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012967"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442891"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -23,7 +23,7 @@ Když vytváříte nebo spravujete clustery Azure Kubernetes Service (AKS), mů�
 Vyzkoušejte si [oficiální Průvodce odstraňováním potíží s clustery Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 Je zde také [Průvodce odstraňováním potíží](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md), který publikoval pracovník Microsoftu pro řešení potíží s lusky, uzly, clustery a dalšími funkcemi.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Zobrazuje se chyba překročení kvóty při vytváření nebo upgradu. Co bych měl/a dělat? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Zobrazuje se chyba překročení kvóty při vytváření nebo upgradu. Co mám dělat? 
 
 Musíte [požádat o jádra](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
@@ -32,7 +32,7 @@ Musíte [požádat o jádra](https://docs.microsoft.com/azure/azure-supportabili
 Pokud nasadíte cluster AKS do Azure Portal, je nastavení maximálního počtu lusků na jeden uzel ve výchozím nastavení 30.
 Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastavení maximálního počtu lusků na jeden uzel standardně 110. (Ujistěte se, že používáte nejnovější verzi rozhraní příkazového řádku Azure CLI). Toto výchozí nastavení lze změnit pomocí příznaku `–-max-pods` v příkazu `az aks create`.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co bych měl/a dělat?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co mám dělat?
 
 Pokud se používá Azure CNI (pokročilé sítě), AKS přiděluje IP adresy na základě "Max-lusků" na uzel nakonfigurovaný. V závislosti na nastaveném maximálním počtu lusků na uzel musí být velikost podsítě větší než součin počtu uzlů a nastavení maximálního počtu pod na uzel. Následující rovnice popisuje toto:
 
@@ -40,7 +40,7 @@ Velikost podsítě > počet uzlů v clusteru (berou v úvahu budoucí požadavky
 
 Další informace najdete v tématu [plánování adresování IP adres pro váš cluster](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Můj pod je zablokovaný v CrashLoopBackOff režimu. Co bych měl/a dělat?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Můj pod je zablokovaný v CrashLoopBackOff režimu. Co mám dělat?
 
 V tomto režimu mohou být v případě, že se zablokuje, k dispozici různé důvody. Můžete se podívat na:
 
@@ -53,17 +53,17 @@ Další informace o řešení problémů v nástroji najdete v tématu [ladění
 
 V současné době bohužel není podporováno povolení řízení přístupu na základě role (RBAC) u existujících clusterů. Je nutné explicitně vytvořit nové clustery. Pokud použijete rozhraní příkazového řádku, bude ve výchozím nastavení povolena možnost RBAC. Pokud použijete portál AKS, je k dispozici přepínací tlačítko pro povolení RBAC v pracovním postupu vytváření.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povolenou RBAC pomocí rozhraní příkazového řádku Azure s výchozími hodnotami nebo Azure Portal a teď se na řídicím panelu Kubernetes zobrazí mnoho upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povolenou RBAC pomocí rozhraní příkazového řádku Azure s výchozími hodnotami nebo Azure Portal a teď se na řídicím panelu Kubernetes zobrazí mnoho upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co mám dělat?
 
 Důvodem upozornění na řídicím panelu je to, že cluster je teď povolený pomocí RBAC a přístup k němu je ve výchozím nastavení zakázaný. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nemůžu se připojit k řídicímu panelu. Co bych měl/a dělat?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nemůžu se připojit k řídicímu panelu. Co mám dělat?
 
 Nejjednodušší způsob, jak získat přístup ke službě mimo cluster, je spustit `kubectl proxy`, které požadavky proxy odesílají na port místního hostitele 8001 na Server API Kubernetes. Odtud může Server API na vaši službu proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Pokud řídicí panel Kubernetes nevidíte, zkontrolujte, jestli je v oboru názvů `kube-system` spuštěná `kube-proxy` pod. Pokud není ve spuštěném stavu, odstraňte ho a restartuje se.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co bych měl/a dělat?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co mám dělat?
 
 Ujistěte se, že výchozí skupina zabezpečení sítě není upravená a že jsou pro připojení k serveru rozhraní API otevřené porty 22 a 9000. Pomocí příkazu `kubectl get pods --namespace kube-system` ověřte, zda `tunnelfront` pod ním běží v oboru názvů *Kube-System* . Pokud ne, vynutí odstranění položky pod a restartuje se.
 
@@ -79,7 +79,7 @@ K této chybě dojde v případě, že clustery vstupují do neúspěšného sta
 
 1. Dokud nebude cluster ne`failed` stav, `upgrade` a `scale` operace nebudou úspěšné. Mezi běžné kořenové problémy a jejich řešení patří:
     * Škálování s **nedostatečnou výpočetní (CRP) kvótou**. Pokud chcete řešení vyřešit, nejprve škálovat cluster zpátky do stabilního stavu cíle v rámci kvóty. Pak postupujte podle těchto [kroků a vyžádejte si zvýšení kvóty výpočetních](../azure-supportability/resource-manager-core-quotas-request.md) prostředků předtím, než se pokusíte o horizontální navýšení limitu kvóty.
-    * Škálování clusteru pomocí pokročilých síťových a **nedostatečných podsítí (síťových) prostředků**. Pokud chcete řešení vyřešit, nejprve škálovat cluster zpátky do stabilního stavu cíle v rámci kvóty. Pak postupujte podle [těchto kroků a vyžádejte si zvýšení kvóty prostředků](../azure-resource-manager/resource-manager-quota-errors.md#solution) , než se pokusíte o horizontální navýšení kapacity nad rámec počáteční kvóty.
+    * Škálování clusteru pomocí pokročilých síťových a **nedostatečných podsítí (síťových) prostředků**. Pokud chcete řešení vyřešit, nejprve škálovat cluster zpátky do stabilního stavu cíle v rámci kvóty. Pak postupujte podle [těchto kroků a vyžádejte si zvýšení kvóty prostředků](../azure-resource-manager/templates/error-resource-quota.md#solution) , než se pokusíte o horizontální navýšení kapacity nad rámec počáteční kvóty.
 2. Jakmile se podkladová příčina selhání upgradu vyřeší, cluster by měl být v úspěšném stavu. Po ověření stavu úspěšného dokončení zopakujte původní operaci.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Zobrazují se chyby při pokusu o upgrade nebo škálování, že se cluster právě aktualizuje nebo se nezdařil upgrade
@@ -153,19 +153,19 @@ Ověřte, že nastavení nejsou v konfliktu s žádným z požadovaných nebo vo
 
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Jaké jsou doporučené stabilní verze Kubernetes pro disk Azure? 
 
-| Verze Kubernetes | Doporučená verze |
+| Verze protokolu Kubernetes | Doporučená verze |
 | -- | :--: |
-| 1,12 | 1.12.9 nebo novější |
-| 1,13 | 1.13.6 nebo novější |
+| 1.12 | 1.12.9 nebo novější |
+| 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
 
 
 ### <a name="what-versions-of-kubernetes-have-azure-disk-support-on-the-sovereign-cloud"></a>Jaké verze Kubernetes mají v rámci svrchovaného cloudu podporu disků Azure?
 
-| Verze Kubernetes | Doporučená verze |
+| Verze protokolu Kubernetes | Doporučená verze |
 | -- | :--: |
-| 1,12 | 1.12.0 nebo novější |
-| 1,13 | 1.13.0 nebo novější |
+| 1.12 | 1.12.0 nebo novější |
+| 1.13 | 1.13.0 nebo novější |
 | 1,14 | 1.14.0 nebo novější |
 
 
@@ -189,11 +189,11 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 
 Tento problém byl opraven v následujících verzích Kubernetes:
 
-| Verze Kubernetes | Pevná verze |
+| Verze protokolu Kubernetes | Pevná verze |
 | -- | :--: |
 | 1,10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | neuvedeno |
+| 1,12 a novější | Nevztahuje se |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
 
@@ -261,13 +261,13 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 
 Tento problém byl opraven v následujících verzích Kubernetes:
 
-| Verze Kubernetes | Pevná verze |
+| Verze protokolu Kubernetes | Pevná verze |
 | -- | :--: |
 | 1,10 | 1.10.10 nebo novější |
 | 1,11 | 1.11.5 nebo novější |
-| 1,12 | 1.12.3 nebo novější |
-| 1,13 | 1.13.0 nebo novější |
-| 1,14 a novější | neuvedeno |
+| 1.12 | 1.12.3 nebo novější |
+| 1.13 | 1.13.0 nebo novější |
+| 1,14 a novější | Nevztahuje se |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, můžete problém zmírnit tím, že počkáte několik minut a zkusíte to znovu.
 
@@ -282,13 +282,13 @@ Počínaje verzí 1.9.2 se při souběžném spouštění několika operací př
 
 Tento problém byl opraven v následujících verzích Kubernetes:
 
-| Verze Kubernetes | Pevná verze |
+| Verze protokolu Kubernetes | Pevná verze |
 | -- | :--: |
 | 1,10 | 1.10.12 nebo novější |
 | 1,11 | 1.11.6 nebo novější |
-| 1,12 | 1.12.4 nebo novější |
-| 1,13 | 1.13.0 nebo novější |
-| 1,14 a novější | neuvedeno |
+| 1.12 | 1.12.4 nebo novější |
+| 1.13 | 1.13.0 nebo novější |
+| 1,14 a novější | Nevztahuje se |
 
 Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete problém zmírnit tím, že vyzkoušíte následující:
 
@@ -304,12 +304,12 @@ V některých případech platí, že pokud se při prvním pokusu operace odpoj
 
 Tento problém byl opraven v následujících verzích Kubernetes:
 
-| Verze Kubernetes | Pevná verze |
+| Verze protokolu Kubernetes | Pevná verze |
 | -- | :--: |
 | 1,11 | 1.11.9 nebo novější |
-| 1,12 | 1.12.7 nebo novější |
-| 1,13 | 1.13.4 nebo novější |
-| 1,14 a novější | neuvedeno |
+| 1.12 | 1.12.7 nebo novější |
+| 1.13 | 1.13.4 nebo novější |
+| 1,14 a novější | Nevztahuje se |
 
 Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete tento problém zmírnit ručním odpojením disku.
 
@@ -319,12 +319,12 @@ Když se disk s Azure nepovede odpojit, zopakuje se pokus o odpojení disku pomo
 
 Tento problém byl opraven v následujících verzích Kubernetes:
 
-| Verze Kubernetes | Pevná verze |
+| Verze protokolu Kubernetes | Pevná verze |
 | -- | :--: |
-| 1,12 | 1.12.9 nebo novější |
-| 1,13 | 1.13.6 nebo novější |
+| 1.12 | 1.12.9 nebo novější |
+| 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | neuvedeno |
+| 1,15 a novější | Nevztahuje se |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a váš virtuální počítač uzlu má zastaralý seznam disků, můžete problém zmírnit tím, že z virtuálního počítače odpojíte všechny neexistující disky jako jedinou hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -339,12 +339,12 @@ V některých hraničních případech může odpojení disku Azure částečně
 
 Tento problém byl opraven v následujících verzích Kubernetes:
 
-| Verze Kubernetes | Pevná verze |
+| Verze protokolu Kubernetes | Pevná verze |
 | -- | :--: |
-| 1,12 | 1.12.10 nebo novější |
-| 1,13 | 1.13.8 nebo novější |
+| 1.12 | 1.12.10 nebo novější |
+| 1.13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | neuvedeno |
+| 1,15 a novější | Nevztahuje se |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a virtuální počítač uzlu je ve stavu selhání, můžete problém zmírnit tím, že ručně aktualizujete stav virtuálního počítače pomocí jedné z níže uvedených akcí:
 
@@ -362,25 +362,25 @@ Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici
 
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>Jaké jsou doporučené stabilní verze Kubernetes pro soubory Azure?
  
-| Verze Kubernetes | Doporučená verze |
+| Verze protokolu Kubernetes | Doporučená verze |
 | -- | :--: |
-| 1,12 | 1.12.6 nebo novější |
-| 1,13 | 1.13.4 nebo novější |
+| 1.12 | 1.12.6 nebo novější |
+| 1.13 | 1.13.4 nebo novější |
 | 1,14 | 1.14.0 nebo novější |
 
 ### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Jaké verze Kubernetes mají podporu souborů Azure ve službě svrchovaného cloudu?
 
-| Verze Kubernetes | Doporučená verze |
+| Verze protokolu Kubernetes | Doporučená verze |
 | -- | :--: |
-| 1,12 | 1.12.0 nebo novější |
-| 1,13 | 1.13.0 nebo novější |
+| 1.12 | 1.12.0 nebo novější |
+| 1.13 | 1.13.0 nebo novější |
 | 1,14 | 1.14.0 nebo novější |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Jaké jsou výchozí mountOptions při používání služby soubory Azure?
 
 Doporučené nastavení:
 
-| Verze Kubernetes | hodnota fileMode a dirMode|
+| Verze protokolu Kubernetes | hodnota fileMode a dirMode|
 | -- | :--: |
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 a novější | 0777 |
@@ -457,11 +457,11 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 
 Tento problém byl opraven v následujících verzích Kubernetes:
 
-| Verze Kubernetes | Pevná verze |
+| Verze protokolu Kubernetes | Pevná verze |
 | -- | :--: |
-| 1,12 | 1.12.6 nebo novější |
-| 1,13 | 1.13.4 nebo novější |
-| 1,14 a novější | neuvedeno |
+| 1.12 | 1.12.6 nebo novější |
+| 1.13 | 1.13.4 nebo novější |
+| 1,14 a novější | Nevztahuje se |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 
@@ -482,3 +482,17 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 ```
 
 Po několika minutách uzel agenta znovu pokusí službu Azure File Mount s aktualizovaným klíčem úložiště.
+
+### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>Automatické škálování clusteru se nepovedlo škálovat. Chyba při opravě velikosti skupin uzlů
+
+Pokud automatický škálování clusteru nemění vertikální navýšení nebo snížení kapacity a v [protokolech automatického škálování clusteru][view-master-logs]se zobrazí chyba podobná následující.
+
+```console
+E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
+```
+
+Tato chyba je způsobená nepodmíněným konfliktem automatického škálování clusteru, kde automatické škálování clusteru končí jinou hodnotou, než je ta, která je ve skutečnosti v clusteru. Pokud se chcete dostat z tohoto stavu, stačí zakázat a znovu povolit [Automatické škálování clusteru][cluster-autoscaler].
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

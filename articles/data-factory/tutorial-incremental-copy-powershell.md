@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: d6b41f06f9e5d64532b5684e6bc40d017a8c4434
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 28a9631860691b29c1954d67e521d4ff54c901a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439195"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí PowerShellu
 
@@ -55,9 +55,9 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     * Vytvořte aktivitu uložené procedury StoredProcedure, která aktualizuje hodnotu meze pro příští spuštění kanálu. 
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -147,7 +147,7 @@ END
 ```
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
-1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v uvozovkách a pak příkaz spusťte. Příklad: `"adfrg"`. 
+1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Příklad: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -205,10 +205,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>",
-                    "type": "SecureString"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
@@ -239,10 +236,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+                "connectionString": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"
             }
         }
     }
@@ -710,7 +704,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     Error             : {errorCode, message, failureType, target}
 
     ```
-4. V úložišti objektů blob uvidíte, že se vytvořil další soubor. V tomto kurzu se tento nový jmenuje `Incremental-2fc90ab8-d42c-4583-aa64-755dba9925d7.txt`. Otevřete tento soubor a uvidíte, že obsahuje dva řádky záznamů.
+4. V úložišti objektů blob uvidíte, že byl vytvořen další soubor. V tomto kurzu se tento nový jmenuje `Incremental-2fc90ab8-d42c-4583-aa64-755dba9925d7.txt`. Otevřete tento soubor a uvidíte, že obsahuje dva řádky záznamů.
 
 5. Zkontrolujte nejnovější hodnotu z `watermarktable`. Uvidíte, že hodnota meze byla znovu aktualizována.
 

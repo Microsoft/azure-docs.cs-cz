@@ -1,31 +1,21 @@
 ---
-title: Zabalení a nasazení kontejnerů jako aplikace Service Fabric v Azure | Microsoft Docs
+title: Balení a nasazení kontejnerů
 description: V tomto kurzu se dozvíte, jak pomocí Yeomanu vygenerovat definici aplikace Azure Service Fabric a jak aplikaci zabalit.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, kontejnery, mikroslužby, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b4931b62aaf04db2ee4ff6f4a5e2b96274b8af88
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385034"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614022"
 ---
-# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeoman
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
 
-Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na generování šablon vygenerována definice aplikace Service Fabricu. Tuto aplikaci je pak možné použít k nasazení kontejnerů do Service Fabricu. V tomto kurzu se naučíte:
+Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na generování šablon vygenerována definice aplikace Service Fabricu. Tuto aplikaci je pak možné použít k nasazení kontejnerů do Service Fabricu. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Nainstalovat Yeoman
@@ -93,7 +83,7 @@ Následující kód zobrazuje vstup a výstup spuštění příkazu yo:
 Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pomocí Yeomanu, proveďte následující kroky:
 
 1. Změňte adresář o jednu úroveň nad adresářem **TestContainer**, například *./TestContainer*.
-2. Spustit `yo azuresfcontainer:AddService`
+2. Spusťte `yo azuresfcontainer:AddService`.
 3. Službu pojmenujte azurevoteback.
 4. Zadejte cestu k imagi kontejneru pro Redis – alpine:redis.
 5. Část Commands ponechte prázdnou a stisknutím klávesy Enter přejděte dál.
@@ -282,11 +272,11 @@ Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContain
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http:\//containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
+Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
 
 ![Service Fabric Explorer][sfx]
 
-Pokud se chcete připojit ke spuštěné aplikaci, otevřete webový prohlížeč a pokračujte na adresu URL clusteru – například http:\//containertestcluster.eastus.cloudapp.Azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
+Pokud se chcete připojit ke spuštěné aplikaci, otevřete webový prohlížeč a pokračujte na adresu URL clusteru – například http:\//containertestcluster.eastus.cloudapp.azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
 
 ![aplikacevoting][votingapp]
 

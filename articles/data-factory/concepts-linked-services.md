@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90e51e8b56bd3fb63d56c630d47770e97f439796
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681488"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563528"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Propojené služby v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-create-datasets.md)
-> * [Aktuální verze](concepts-datasets-linked-services.md)
+> * [Aktuální verze](concepts-linked-services.md)
 
 Tento článek popisuje, co jsou propojené služby, jak jsou definované ve formátu JSON a jak se používají v Azure Data Factorych kanálech.
 
@@ -66,7 +66,7 @@ Vlastnost | Popis | Požaduje se |
 jméno | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
 type | Typ propojené služby. Například: AzureStorage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Ano |
 typeProperties | Vlastnosti typu jsou pro každé úložiště dat nebo výpočetní prostředky odlišné. <br/><br/> Podporované typy úložiště dat a jejich vlastnosti typu najdete v tabulce [Typ datové sady](concepts-datasets-linked-services.md#dataset-type) v tomto článku. Přejděte do článku konektor úložiště dat, kde se dozvíte o vlastnostech typu specifických pro úložiště dat. <br/><br/> Podporované typy výpočtů a jejich vlastnosti typu najdete v tématu [propojené služby COMPUTE](compute-linked-services.md). | Ano |
-connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne
+connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne
 
 ## <a name="linked-service-example"></a>Příklad propojené služby
 Následující propojená služba je Azure Storage propojená služba. Všimněte si, že typ je nastaven na AzureStorage. Mezi vlastnosti typu propojené služby Azure Storage patří připojovací řetězec. Služba Data Factory používá tento připojovací řetězec pro připojení k úložišti dat za běhu.
@@ -77,10 +77,7 @@ Následující propojená služba je Azure Storage propojená služba. Všimnět
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -95,7 +92,7 @@ Následující propojená služba je Azure Storage propojená služba. Všimnět
 Propojené služby můžete vytvořit pomocí jednoho z těchto nástrojů nebo sad SDK: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager Template a Azure Portal
 
 ## <a name="data-store-linked-services"></a>Propojené služby úložiště dat
-Seznam dat, která podporuje Data Factory, najdete v článku [Přehled konektoru](copy-activity-overview.md#supported-data-stores-and-formats) . Kliknutím na úložiště dat získáte informace o podporovaných vlastnostech připojení.
+Seznam úložišť dat podporovaných nástrojem Data Factory najdete v článku [Přehled konektoru](copy-activity-overview.md#supported-data-stores-and-formats) . Kliknutím na úložiště dat získáte informace o podporovaných vlastnostech připojení.
 
 ## <a name="compute-linked-services"></a>Propojené služby Compute
 Referenční [výpočetní prostředí jsou podporovaná](compute-linked-services.md) pro podrobnosti o různých výpočetních prostředích, ke kterým se můžete připojit z vaší datové továrny i s různými konfiguracemi.

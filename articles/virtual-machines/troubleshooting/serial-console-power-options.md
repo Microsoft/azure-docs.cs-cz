@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
-ms.openlocfilehash: f17b96ad880742cf1232b074e4398f3b1d15e5ba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451200"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Možnosti napájení dostupné z konzole Azure Serial
 
-Konzola sériového prostředí Azure poskytuje několik výkonných nástrojů pro řízení spotřeby na vašem VIRTUÁLNÍm počítači nebo v sadě škálování virtuálních počítačů. Tyto možnosti řízení spotřeby můžou být matoucí, takže tento dokument představuje přehled jednotlivých nástrojů a zamýšleného případu použití.
+Konzola sériového prostředí Azure poskytuje několik výkonných nástrojů pro řízení spotřeby na vašem VIRTUÁLNÍm počítači nebo v sadě škálování virtuálních počítačů. Tyto možnosti řízení spotřeby můžou být matoucí, takže se jedná o přehled jednotlivých nástrojů a zamýšleného případu použití.
 
 Funkce sériové konzoly | Popis | Případ použití
 :----------------------|:------------|:---------

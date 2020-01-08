@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – vytvoření dvou virtuálních počítačů s interními a externími NSG
-description: Ukázkový skript Azure CLI – Vytvoření dvou virtuálních počítačů s interní a externí skupinou zabezpečení sítě
+title: 'Ukázka CLI: vytvoření dvou virtuálních počítačů s interním a externím NSG'
+description: Vytvoření dvou virtuálních počítačů s interními a externími NSG pro zabezpečení síťového provozu pomocí Azure CLI.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 857a2862a7ddf515567f96b2e688e54a957cd3d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039583"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458387"
 ---
-# <a name="secure-network-traffic-between-virtual-machines"></a>Zabezpečení provozu sítě mezi virtuálními počítači
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Zabezpečený síťový provoz mezi virtuálními počítači pomocí NSG
 
 Tento skript vytvoří dva virtuální počítače a zabezpečí příchozí provoz do obou z nich. Jeden virtuální počítač je přístupný na internetu a má nakonfigurovanou skupinu zabezpečení sítě (NSG), která povoluje provoz na portu 22 a 80. Druhý virtuální počítač není přístupný na internetu a má nakonfigurovanou skupinu NSG, která povoluje pouze provoz z prvního virtuálního počítače.
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup
 
 Tento skript k vytvoření skupiny prostředků, virtuálního počítače a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Vytvoří virtuální síť Azure a podsíť. |

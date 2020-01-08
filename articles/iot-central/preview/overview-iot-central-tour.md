@@ -3,18 +3,18 @@ title: Prohlídka uživatelského rozhraní Azure IoT Central | Microsoft Docs
 description: Seznamte se s klíčovými oblastmi uživatelského rozhraní Azure IoT Central, které můžete použít k vytvoření, správě a používání řešení IoT.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/21/2019
+ms.date: 12/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: f8aa467f95bb97c42e726d1392deca53e15df624
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 23deb77b6fda0b3801057d2ae97a740301449e28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434901"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Prohlídka uživatelského rozhraní Azure IoT Central (funkce ve verzi Preview)
 
@@ -98,7 +98,7 @@ Až budete v aplikaci IoT, můžete k různým oblastem přistupovat v levém po
 Na každé stránce se zobrazuje horní nabídka:
 
 > [!div class="mx-imgBorder"]
-> ](media/overview-iot-central-tour/toolbar-pnp.png) ![panelu nástrojů
+> ![Panel nástrojů](media/overview-iot-central-tour/toolbar-pnp.png)
 
 * Pokud chcete vyhledat šablony zařízení a zařízení, zadejte **hledanou** hodnotu.
 * Chcete-li změnit jazyk uživatelského rozhraní nebo motiv, klikněte na ikonu **Nastavení** . Další informace o [správě předvoleb vaší aplikace](../core/howto-manage-preferences.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)

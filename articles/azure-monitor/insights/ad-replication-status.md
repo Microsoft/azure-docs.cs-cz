@@ -4,15 +4,15 @@ description: Sada Active Directory Replication Status Pack řešení pravidelně
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 04112042c871f5268c64bda374f040f1bba92969
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406081"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitorovat stav replikace služby Active Directory pomocí Azure Monitor
 
@@ -20,12 +20,19 @@ ms.locfileid: "72931358"
 
 Active Directory je klíčová součást podnikového IT prostředí. Pro zajištění vysoké dostupnosti a vysokého výkonu má každý řadič domény svou vlastní kopii databáze služby Active Directory. Řadiče domény se vzájemně replikují za účelem rozšíření změn napříč podnikem. Selhání v rámci tohoto procesu replikace může způsobit nejrůznější problémy v celém podniku.
 
-Sada AD Replication Status Pack řešení pravidelně monitoruje prostředí služby Active Directory při selhání replikace.
+Řešení AD Replication Status pravidelně monitoruje prostředí Active Directory pro všechny chyby při replikaci.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
+
+### <a name="prerequisites"></a>Požadavky
+
+* Řešení AD Replication Status vyžaduje, aby na každém počítači, který má Log Analytics agenta pro Windows, byla nainstalovaná podporovaná verze .NET Framework 4.6.2 nebo novější (označovaná taky jako Microsoft Monitoring Agent (MMA)).  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
+* Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows Server 2016.
+* Pracovní prostor Log Analytics pro přidání řešení kontroly stavu služby Active Directory z webu Azure Marketplace v Azure Portal. Není vyžadována žádná další konfigurace.
+
 
 ### <a name="install-agents-on-domain-controllers"></a>Instalace agentů na řadičích domény
 Musíte nainstalovat agenty na řadiče domény, které jsou členy domény k vyhodnocení. Nebo musíte nainstalovat agenty na členské servery a nakonfigurovat agenty tak, aby odesílali data replikace AD na Azure Monitor. Informace o tom, jak připojit počítače s Windows k Azure Monitor najdete v tématu [připojení počítačů s Windows k Azure monitor](../../azure-monitor/platform/agent-windows.md). Pokud je váš řadič domény už součástí stávajícího System Center Operations Manager prostředí, ke kterému se chcete připojit Azure Monitor, přečtěte si téma [připojení Operations Manager k Azure monitor](../../azure-monitor/platform/om-agents.md).
@@ -35,7 +42,7 @@ Pokud nechcete, aby se žádné řadiče domény připojovaly přímo k Azure Mo
 
 1. Ověřte, zda je počítač členem domény, kterou chcete monitorovat pomocí řešení AD Replication Status.
 2. [Připojte počítač se systémem Windows, aby se Azure monitor](../../azure-monitor/platform/om-agents.md) , nebo [ho propojte pomocí stávajícího Operations Manager prostředí s Azure monitor](../../azure-monitor/platform/om-agents.md), pokud ještě není připojený.
-3. V tomto počítači nastavte následující klíč registru:<br>Key: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management groups\<ManagementGroupName > \Solutions\ADReplication**<br>Hodnota: **cíl**<br>Údaj hodnoty: **true**
+3. V tomto počítači nastavte následující klíč registru:<br>Key: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management skupiny\<ManagementGroupName > \Solutions\ADReplication**<br>Hodnota: **cíl**<br>Údaj hodnoty: **true**
 
    > [!NOTE]
    > Tyto změny se projeví až po restartování služby Microsoft Monitoring Agent (HealthService. exe).
@@ -46,7 +53,7 @@ Pokud nechcete, aby se žádné řadiče domény připojovaly přímo k Azure Mo
 ## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti o AD Replication Status shromažďování dat
 V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro AD Replication Status.
 
-| platformy | Přímý Agent | Agent SCOM | Azure Storage | Vyžaduje se SCOM? | Data agenta SCOM odesílaná prostřednictvím skupiny pro správu | Frekvence shromažďování |
+| Platforma | Přímý Agent | Agent nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta nástroje SCOM odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |každých pět dní |
 
@@ -127,7 +134,7 @@ Odpověď: Ne, je nutné přidat pouze jeden řadič domény. Máte-li v pracovn
 Odpověď: Ano. Můžete nastavit hodnotu klíče registru, abyste ho mohli povolit. Viz [Povolení neřadič domény](#enable-non-domain-controller).
 
 **Otázka: Jaký je název procesu, který provádí shromažďování dat?**
-Odpověď: AdvisorAssessment. exe
+A: AdvisorAssessment.exe
 
 **Otázka: jak dlouho trvá shromažďování dat?**
 Odpověď: čas shromažďování dat závisí na velikosti prostředí služby Active Directory, ale obvykle trvá méně než 15 minut.

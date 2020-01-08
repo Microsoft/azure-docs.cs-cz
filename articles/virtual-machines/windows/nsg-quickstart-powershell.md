@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 3577c97b55baebe08ca4020b0c570160d551dfd3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ecc996cc07cfbf22a04a620ca426ca97056a9a9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033075"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371203"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Postup otevření portů a koncových bodů pro virtuální počítač v Azure pomocí PowerShellu
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -95,7 +95,7 @@ Pro webové aplikace s vysokou dostupností byste měli své virtuální počít
 ## <a name="next-steps"></a>Další kroky
 V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení přenosů HTTP. Informace o vytváření podrobnějších prostředí najdete v následujících článcích:
 
-* [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)
+* [Přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
 * [Co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md)
 * [Přehled Azure Resource Manager pro nástroje pro vyrovnávání zatížení](../../load-balancer/load-balancer-arm.md)
 

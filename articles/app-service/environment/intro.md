@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 35b667056698fdb2563ad9b1be9af19bcc98c1cc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ca172e16fc13d2b8e10d0797f5b57b5b48136349
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430451"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Úvod do služby App Service Environment #
  
@@ -24,7 +24,7 @@ Azure App Service Environment je funkce služby Azure App Service, která poskyt
 * Webové aplikace pro Linux 
 * Kontejnery Dockeru
 * Mobilní aplikace
-* Functions
+* Funkce
 
 Služby App Service Environment (ASE) jsou vhodné pro úlohy aplikací, které mají tyto požadavky:
 
@@ -97,7 +97,7 @@ Verze ASEv1 používá jiný cenový model než verze ASEv2. Ve verzi ASEv1 se p
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

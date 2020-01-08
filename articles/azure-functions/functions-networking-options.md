@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a3df48115dde27478446614c0446d64709adbc6f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226799"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561928"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti Azure Functions sítě
 
@@ -32,8 +32,8 @@ Aplikace Function App můžete hostovat několika způsoby:
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Omezení příchozí IP adresy & přístupu k privátnímu webu](#inbound-ip-restrictions)|✅Ano|✅Ano|✅Ano|✅Ano|
 |[Integrace virtuální sítě](#virtual-network-integration)|❌ne|✅Ano (místní)|✅Ano (místní a brána)|✅Ano|
-|[Aktivační události virtuální sítě (jiné než HTTP)](#virtual-network-triggers-non-http)|❌ne| ❌ne|✅Ano|✅Ano|
-|[Hybrid Connections](#hybrid-connections)|❌ne|✅Ano|✅Ano|✅Ano|
+|[Aktivační události virtuální sítě (jiné než HTTP)](#virtual-network-triggers-non-http)|❌ne| ✅Ano |✅Ano|✅Ano|
+|[Hybridní připojení](#hybrid-connections) (jenom Windows)|❌ne|✅Ano|✅Ano|✅Ano|
 |[Omezení odchozích IP adres](#outbound-ip-restrictions)|❌ne| ❌ne|❌ne|✅Ano|
 
 ## <a name="inbound-ip-restrictions"></a>Omezení příchozích IP adres
@@ -91,7 +91,7 @@ Existuje několik věcí, které integrace virtuální sítě nepodporuje, včet
 
 * Připojení jednotky
 * Integrace Active Directory
-* Názv
+* NetBIOS
 
 Integrace virtuální sítě v Azure Functions používá sdílenou infrastrukturu s App Service webovými aplikacemi. Další informace o těchto dvou typech integrace virtuální sítě najdete v následujících tématech:
 
@@ -123,19 +123,51 @@ V současné době [Key Vault odkazy](../app-service/app-service-key-vault-refer
 
 ## <a name="virtual-network-triggers-non-http"></a>Aktivační události virtuální sítě (jiné než HTTP)
 
-Pokud v současné době chcete použít triggery funkcí jiné než HTTP z virtuální sítě, musíte aplikaci Function App spustit v plánu App Service nebo v App Service Environment.
+V současné době můžete v rámci virtuální sítě použít funkce triggeru jiného typu než HTTP jedním ze dvou způsobů: 
++ Spusťte aplikaci Function App v plánu Premium a aktivujte podporu triggeru virtuální sítě.
++ Spusťte aplikaci Function App v plánu App Service nebo App Service Environment.
 
-Předpokládejme například, že chcete nakonfigurovat Azure Cosmos DB pro příjem provozu pouze z virtuální sítě. Je potřeba nasadit aplikaci Function App v plánu služby App Service, který poskytuje integraci virtuální sítě s touto virtuální sítí, aby bylo možné nakonfigurovat Azure Cosmos DB triggery z tohoto prostředku. V průběhu období Preview konfigurace integrace virtuální sítě neumožní, aby plán Premium vyvolal tento Azure Cosmos DB prostředek.
+### <a name="premium-plan-with-virtual-network-triggers"></a>Plán Premium s triggery virtuální sítě
 
-V [tomto seznamu najdete všechny triggery jiného typu než http](./functions-triggers-bindings.md#supported-bindings) , které pokontrolují, co se podporuje.
+Při spuštění v plánu Premium můžete připojit funkce triggeru jiného typu než HTTP ke službám běžícím ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **Podpora triggeru virtuální sítě** najdete v [Azure Portal](https://portal.azure.com) v části **nastavení aplikace Function App**.
+
+![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
+
+Aktivační události virtuální sítě můžete povolit taky pomocí následujícího příkazu Azure CLI:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+```
+
+Aktivační události virtuální sítě se podporují ve verzi 2. x a novějších modulech runtime Functions. Jsou podporovány následující typy triggerů bez protokolu HTTP.
+
+| Přípona | Minimální verze |
+|-----------|---------| 
+|[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 nebo vyšší |
+|[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 nebo vyšší|
+|[Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 nebo vyšší|
+|[Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 nebo vyšší|
+|[Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 nebo vyšší|
+
+> [!IMPORTANT]
+> Při povolování podpory triggerů virtuální sítě se svojí aplikací dynamicky mění jenom typy triggerů výše. Stále můžete použít triggery, které nejsou uvedené výše, ale nejsou škálované nad rámec jejich předem zavedených instancí. Úplný seznam aktivačních událostí najdete v tématu [triggery a vazby](./functions-triggers-bindings.md#supported-bindings) .
+
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service plánování a App Service Environment s triggery virtuální sítě
+
+Když aplikace Function App běží buď v plánu App Service, nebo v App Service Environment, můžete použít funkce triggeru jiného typu než HTTP. Aby se funkce aktivovaly správně, musíte být připojení k virtuální síti s přístupem k prostředku definovanému v připojení triggeru. 
+
+Předpokládejme například, že chcete nakonfigurovat Azure Cosmos DB pro příjem provozu pouze z virtuální sítě. V takovém případě musíte aplikaci Function App nasadit v plánu App Service, který poskytuje integraci virtuální sítě s touto virtuální sítí. Tato funkce umožňuje aktivovat tuto funkci tímto Azure Cosmos DBm prostředkem. 
 
 ## <a name="hybrid-connections"></a>Hybridní připojení
 
-[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) je funkce Azure Relay, kterou můžete použít pro přístup k prostředkům aplikací v jiných sítích. Poskytuje přístup z vaší aplikace do koncového bodu aplikace. Nemůžete ho použít pro přístup k aplikaci. Hybrid Connections je k dispozici pro funkce spuštěné ve všech, ale v plánu spotřeby.
+[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) je funkce Azure Relay, kterou můžete použít pro přístup k prostředkům aplikací v jiných sítích. Poskytuje přístup z vaší aplikace do koncového bodu aplikace. Nemůžete ho použít pro přístup k aplikaci. Hybrid Connections je k dispozici pro funkce běžící ve Windows ve všech, ale v plánu spotřeby.
 
 Jak se používá v Azure Functions, každé hybridní připojení se koreluje s jedinou kombinací hostitele TCP a portu. To znamená, že koncový bod hybridního připojení může být v jakémkoli operačním systému a libovolné aplikaci, pokud přistupujete k portu naslouchání TCP. Funkce Hybrid Connections neví ani nezáleží na tom, co je aplikační protokol nebo k čemu přistupujete. Poskytuje jenom přístup k síti.
 
 Další informace najdete v dokumentaci k [App Service pro Hybrid Connections](../app-service/app-service-hybrid-connections.md). Tyto stejné konfigurační kroky Azure Functions podporují.
+
+>[!IMPORTANT]
+> Hybrid Connections se podporuje jenom v plánech Windows. Linux není podporován
 
 ## <a name="outbound-ip-restrictions"></a>Omezení odchozích IP adres
 

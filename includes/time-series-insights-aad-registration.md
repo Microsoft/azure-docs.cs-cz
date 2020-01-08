@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: c3eeb59809a4028702022e8a18db633a26b01d5c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4d32980e825f12c76b5c8bf8df0673fa82065751
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460419"
 ---
 1. V [Azure Portal](https://ms.portal.azure.com/)vyberte **Azure Active Directory** > **Registrace aplikací** > **nové registrace**.
 
@@ -41,9 +41,9 @@ ms.locfileid: "74981200"
 
     1. Povolte tok implicitního udělení kontrolou **přístupových tokenů** nebo **tokenů ID**.
 
-   [![vytvoření nového tajného klíče klienta](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+   [![vytváření identifikátorů URI pro přesměrování a konfigurace implicitního udělení](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
-   Klikněte na **Uložit**.
+   Klikněte na možnost **Uložit**.
 
 1. Vyberte **certifikáty & tajných klíčů** a **nový tajný klíč klienta** k vytvoření hesla aplikace, které klient může použít k prokázání jeho identity.
 

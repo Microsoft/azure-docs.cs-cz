@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4731a7265265c48bed02e836de91d61971b9be14
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17f02d38c77fce6a256e3c42d887f2b7d560add9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424239"
 ---
 # <a name="confidential-client-assertions"></a>Důvěrné kontrolní výrazy klienta
 
@@ -42,7 +42,7 @@ MSAL.NET má čtyři metody pro poskytnutí přihlašovacích údajů nebo kontr
 
 Podepsaný klientský kontrolní výraz má podobu podepsaného tokenu JWT s datovou částí, která obsahuje požadované deklarace identity ověřování, které jsou v Azure AD zakódované pomocí kódování Base64. Pokud ho chcete použít:
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -51,7 +51,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Služba Azure AD očekává deklarace identity:
 
-Typ deklarace identity | Hodnota | Popis
+Typ deklarace | Hodnota | Popis
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Deklarace "AUD" (cílová skupina) identifikuje příjemce, pro které je požadavek JWT určen (tady Azure AD), viz [RFC 7519, Section 4.1.3].
 exp | Čtvrtek června 27 2019 15:04:17 GMT + 0200 (románské země (letní čas)) | Deklarace "EXP" (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí může být požadavek JWT přijat ke zpracování. Viz [RFC 7519, kapitola 4.1.4]
@@ -62,7 +62,7 @@ sub | ClientID | Deklarace "sub" (Subject) identifikuje předmět tokenu JWT. De
 
 Tady je příklad, jak vytvořit tyto deklarace identity:
 
-```CSharp
+```csharp
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
@@ -88,7 +88,7 @@ private static IDictionary<string, string> GetClaims()
 
 Tady je postup, jak vytvořit podepsaný klientský kontrolní výraz:
 
-```CSharp
+```csharp
 string Encode(byte[] arg)
 {
     char Base64PadCharacter = '=';
@@ -138,7 +138,7 @@ string GetSignedClientAssertion()
 
 Máte také možnost použít k vytvoření kontrolního výrazu [Microsoft. IdentityModel. objekty JsonWebToken](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) . Kód bude elegantní, jak je znázorněno v následujícím příkladu:
 
-```CSharp
+```csharp
         string GetSignedClientAssertion()
         {
             var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
@@ -171,7 +171,7 @@ Máte také možnost použít k vytvoření kontrolního výrazu [Microsoft. Ide
 
 Jakmile budete mít podepsaného kontrolního výrazu klienta, můžete ho použít s rozhraními API MSAL, jak je znázorněno níže.
 
-```CSharp
+```csharp
             string signedClientAssertion = GetSignedClientAssertion();
 
             var confidentialApp = ConfidentialClientApplicationBuilder
@@ -184,7 +184,7 @@ Jakmile budete mít podepsaného kontrolního výrazu klienta, můžete ho použ
 
 ve výchozím nastavení `WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` vytvoří podepsaný kontrolní výraz obsahující deklarace, které očekává služba Azure AD, a další deklarace identity klientů, které chcete odeslat. Zde je fragment kódu, jak to provést.
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)

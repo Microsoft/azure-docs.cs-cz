@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení jednostránkovéch aplikací pomocí implicitního toku Microsoft Identity Platform | Azure
-description: Vytváření webových aplikací s využitím implementace implicitního toku pro jednostránkové aplikace Microsoft Identity Platform
+title: Protokol OAuth 2,0 – implicitní udělení udělení – Microsoft Identity Platform | Azure
+description: Používejte k zabezpečení jednostránkovéch aplikací Microsoft Identity Platform implicitní tok.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8afae9535c190c05bca3153dfbe5279cd4c47968
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a73056914d08cc9c0c90b1c91cc67c18eaad86da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919218"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423230"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform a implicitní tok udělení
 

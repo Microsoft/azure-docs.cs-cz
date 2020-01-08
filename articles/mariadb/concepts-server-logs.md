@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 9b9babc9db9dd7fa225b9649d4ac96b15debec2b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: 20e521c36db0ab98e4b11d948516ccd04b5f5fdd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976311"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432027"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Pomalé dotazování protokolů v Azure Database for MariaDB
 V Azure Database for MariaDB je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -41,7 +41,7 @@ Mezi další parametry, které můžete upravit, patří:
 - **log_slow_admin_statements**: Pokud on zahrnuje příkazy pro správu, jako je ALTER_TABLE a ANALYZE_TABLE v příkazech zapsaných do slow_query_log.
 - **log_queries_not_using_indexes**: Určuje, zda jsou dotazy, které nepoužívají indexy, protokolovány do slow_query_log
 - **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví, když je log_queries_not_using_indexes nastaveno na ZAPNUTo.
-- **log_output**: Pokud "File", nástroj umožňuje zapsat protokol pomalých dotazů do úložiště místního serveru i do Azure monitor diagnostických protokolů. Pokud má hodnotu None, protokol pomalého dotazu se zapíše jenom do úložiště místního serveru. 
+- **log_output**: Pokud "File", nástroj umožňuje zapsat protokol pomalých dotazů do úložiště místního serveru i do Azure monitor diagnostických protokolů. Pokud "none", protokol pomalého dotazu bude zapsán pouze do Azure Monitor diagnostické protokoly. 
 
 Úplný popis pomalých parametrů protokolu dotazů naleznete v [dokumentaci k protokolu pomalého dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB.
 

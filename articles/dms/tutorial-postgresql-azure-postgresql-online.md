@@ -1,5 +1,6 @@
 ---
-title: 'Kurz: použití Azure Database Migration Service k provedení online migrace PostgreSQL do Azure Database for PostgreSQL | Microsoft Docs'
+title: 'Kurz: migrace PostgreSQL online na Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
 description: Přečtěte si, jak provést online migraci z místního PostgreSQL do Azure Database for PostgreSQL pomocí Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/28/2019
-ms.openlocfilehash: 1b4eebafadcdbebfc89ce7265f4d4f77f4f5ac8c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a710512d7063a73fde42e2b076a3bb67c5efbf7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043230"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437362"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Online migrace PostgreSQL do služby Azure Database for PostgreSQL pomocí DMS
 
@@ -25,7 +26,7 @@ Pomocí Azure Database Migration Service můžete migrovat databáze z místní 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
-> * Pomocí nástroje pg_dump migrujte vzorové schéma.
+> * Pomocí nástroje pg_dump proveďte migraci ukázkového schématu.
 > * Vytvoření instance služby Azure Database Migration Service
 > * Vytvoření projektu migrace pomocí služby Azure Database Migration Service
 > * Spuštění migrace
@@ -37,7 +38,7 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Pro optimální prostředí migrace doporučuje Microsoft vytvořit instanci Azure Database Migration Service ve stejné oblasti Azure jako cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -46,7 +47,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     Kromě toho místní verze PostgreSQL musí odpovídat Azure Database for PostgreSQL. Například PostgreSQL verze 9.5.11.5 je možné migrovat pouze do služby Azure Database for PostgreSQL verze 9.5.11 a ne verze 9.6.7.
 
 * [Vytvořte instanci v Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).  
-* Vytvořte Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN. ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* Vytvořte Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
 
     > [!NOTE]
     > Pokud při instalaci virtuální sítě používáte ExpressRoute s partnerským vztahem k síti Microsoftu, přidejte do podsítě, ve které se služba zřídí, tyto [koncové body](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) služby:
@@ -106,7 +107,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    Například:
+    Příklad:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -225,7 +226,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    Například:
+    Příklad:
 
     ```
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
@@ -471,7 +472,7 @@ Aby byla všechna data zachycena, ověřte počet řádků mezi zdrojovými a c�
     az dms project task cutover -h
     ```
 
-    Například:
+    Příklad:
 
     ```
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --database-name Inventory

@@ -1,7 +1,7 @@
 ---
 title: Postup plnění vlastních příkazů na klientovi pomocí sady Speech SDK
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se zpracovávají vlastní příkazy v klientovi pomocí sady Speech SDK
+description: V tomto článku vysvětlujeme, jak zpracovávat vlastní příkazy v klientu pomocí sady Speech SDK.
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d17ccc67f8254f05461012a9ae443d96ffd58fa5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806146"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446928"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Postupy: plnění příkazů v klientovi pomocí sady Speech SDK (Preview)
 
@@ -26,7 +26,7 @@ V tomto článku:
 - Definování a odeslání vlastní datové části JSON z aplikace Custom Commands
 - Přijímání a vizualizace vlastního obsahu datové části JSON z klientské C# aplikace sady Speech pro rozpoznávání řeči
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Klíč předplatného Azure pro službu Speech Service

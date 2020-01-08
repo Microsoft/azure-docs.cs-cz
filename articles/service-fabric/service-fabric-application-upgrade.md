@@ -1,25 +1,14 @@
 ---
-title: Upgrade aplikace Service Fabric | Microsoft Docs
+title: Upgrade aplikace Service Fabric
 description: Tento článek obsahuje úvod k upgradu aplikace Service Fabric, včetně výběru režimů upgradu a provádění kontrol stavu.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3c50ee149f5bcdda6cbb697830945cdc7f7a15f4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167275"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426776"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade aplikace Service Fabric
 Aplikace Azure Service Fabric je kolekce služeb. Během upgradu Service Fabric porovná nový [manifest aplikace](service-fabric-application-and-service-manifests.md) s předchozí verzí a určí, které služby v aplikaci vyžadují aktualizace. Service Fabric porovná čísla verzí v manifestech služby s čísly verzí v předchozí verzi. Pokud se služba nezměnila, tato služba se neupgraduje.
@@ -67,7 +56,7 @@ Proto Service Fabric nepodporuje upgrade dvou různých služeb pomocí **stejn�
 Pokud se zobrazí zpráva o selhání upgradu s protokolem HTTPS, zobrazí se upozornění, že rozhraní API systému Windows HTTP server nepodporuje více certifikátů pro aplikace, které sdílejí port. "
 
 ## <a name="application-upgrade-flowchart"></a>Vývojový diagram upgradu aplikace
-Vývojový diagram následující tento odstavec vám pomůže pochopit proces upgradu aplikace Service Fabric. Konkrétně tento tok popisuje, jak časové limity, včetně *HealthCheckStableDuration*, *HealthCheckRetryTimeout*a *UpgradeHealthCheckInterval*, pomůžou řídit, kdy se upgrade v jedné aktualizační doméně považuje za úspěšný nebo selhání.
+Vývojový diagram následující tento odstavec vám pomůže pochopit proces upgradu aplikace Service Fabric. Tento tok zejména popisuje, jak časové limity, včetně *HealthCheckStableDuration*, *HealthCheckRetryTimeout*a *UpgradeHealthCheckInterval*, pomůžou řídit, kdy se upgrade v jedné aktualizační doméně považuje za úspěšný nebo neúspěšný.
 
 ![Proces upgradu aplikace Service Fabric][image]
 

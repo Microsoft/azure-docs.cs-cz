@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e921059caa0d34c9ba1e303ff7f4a8de027a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434991"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Architektura Azure IoT Central (funkce ve verzi Preview)
 
@@ -119,7 +119,7 @@ Azure IoT Central ukládá data aplikací v cloudu. Uložená data aplikací zah
 
 Azure IoT Central využívá úložiště časových řad k měření dat odesílaných z vašich zařízení. Data časové řady ze zařízení, která služba Analytics používá.
 
-## <a name="analytics"></a>Analýzy
+## <a name="analytics"></a>Analýza
 
 Služba analýzy zodpovídá za generování vlastních dat sestav, která aplikace zobrazuje. Operátor může [přizpůsobit analýzy](howto-create-analytics.md) zobrazené v aplikaci. Analytická služba je postavená na [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) a zpracovává data měření odesílaná z vašich zařízení.
 
@@ -152,7 +152,7 @@ V aplikaci IoT Central Azure můžete [vytvářet a spouštět úlohy](../core/h
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
 
-[Správce může definovat pravidla přístupu](howto-administer.md) pro aplikaci Azure IoT Central s použitím předdefinovaných rolí. Správce může přiřadit uživatele k rolím, které určují oblasti aplikace, ke které má uživatel přístup.
+[Správce může definovat pravidla přístupu](howto-manage-users-roles.md) pro aplikaci Azure IoT Central pomocí jedné z předdefinovaných rolí nebo vytvořením vlastní role. Role určují, ke kterým oblastem aplikace má uživatel přístup a jaké akce můžou provádět.
 
 ## <a name="security"></a>Zabezpečení
 

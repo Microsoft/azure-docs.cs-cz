@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: d9d0ef37c247107a902b1083e77541711f18e7b2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438787"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Vyvolání balíčku SSIS pomocí aktivity uložená procedura v Azure Data Factory
 Tento článek popisuje, jak vyvolat balíček SSIS z kanálu Azure Data Factory pomocí aktivity uložené procedury. 
@@ -26,9 +26,9 @@ Tento článek popisuje, jak vyvolat balíček SSIS z kanálu Azure Data Factory
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [vyvolání balíčků SSIS pomocí aktivity uložená procedura v](../how-to-invoke-ssis-package-stored-procedure-activity.md)tématu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
+### <a name="azure-sql-database"></a>Databáze SQL Azure 
 Návod v tomto článku používá databázi Azure SQL, která je hostitelem katalogu SSIS. Můžete také použít Azure SQL Database spravované instance.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Vytvoření prostředí Azure-SSIS Integration Runtime
@@ -44,7 +44,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 Následující postup popisuje kroky k vytvoření datové továrny. V této datové továrně vytvoříte kanál s aktivitou uložené procedury. Aktivita uložené procedury provede uloženou proceduru v databázi SSISDB ke spuštění balíčku SSIS.
 
-1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../../azure-resource-manager/resource-group-overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
+1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";

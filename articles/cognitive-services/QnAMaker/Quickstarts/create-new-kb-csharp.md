@@ -9,47 +9,72 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: a7114044f5e29af4bbf8e7c38b390b833ac818ec
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2b3ec7611fec779fcd387f45204f2e1cada1161c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447658"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Vytvoření znalostní báze ve službě QnA Maker pomocí jazyka C#
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Rychlý Start: vytvoření znalostní báze v QnA Maker s C# VYUŽITÍm REST
 
-Tento rychlý start vás provede vytvořením a publikováním ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
+Tento rychlý start vás provede vytvořením a publikováním ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API.
 
 Tento rychlý start volá rozhraní API služby QnA Maker:
-* [Create KB](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Create KB](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Získat podrobnosti operace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
-* [Publikování](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
+
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [ C# ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější verze sady [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/).
-* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** . 
+* Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Musíte mít [QnA maker prostředek](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
 
-> [!NOTE] 
-> Kompletní soubory řešení jsou k dispozici v [úložišti GitHub **Azure-Samples/vnímání-Services-qnamakerem-CSharp** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).
+### <a name="create-a-new-c-application"></a>Vytvoření nové C# aplikace
 
-## <a name="create-a-knowledge-base-project"></a>Vytvoření projektu znalostní báze
+Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE).
 
-[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
+V okně konzoly (například cmd, PowerShell nebo bash) použijte příkaz `dotnet new` a vytvořte novou konzolovou aplikaci s názvem `qna-maker-quickstart`. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: *program.cs*.
 
-## <a name="add-the-required-dependencies"></a>Přidejte požadované závislosti
+```dotnetcli
+dotnet new console -n qna-maker-quickstart
+```
+
+Změňte adresář na nově vytvořenou složku aplikace. Aplikaci můžete vytvořit pomocí:
+
+```dotnetcli
+dotnet build
+```
+
+Výstup sestavení by neměl obsahovat žádná upozornění ani chyby.
+
+```console
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
+
+## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
 V horní části souboru Program.cs nahraďte samostatný příkaz using následujícími řádky, které do projektu přidají potřebné závislosti:
 
 [!code-csharp[Add the required dependencies](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=1-11 "Add the required dependencies")]
 
-## <a name="add-the-required-constants"></a>Přidejte požadované konstanty
+## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
 
-Do horní části třídy Program přidejte následující konstanty, které umožní přístup ke službě QnA Maker:
+V horní části třídy program přidejte požadované konstanty pro přístup k QnA Maker.
+
+Nastavte následující hodnoty v proměnných prostředí:
+
+* `QNA_MAKER_SUBSCRIPTION_KEY` – **klíč** je řetězec znaků 32 a je k dispozici v Azure Portal na prostředku QnA maker na stránce rychlý Start. To není totéž jako klíč koncového bodu předpovědi.
+* `QNA_MAKER_ENDPOINT` – **koncový bod** je adresa URL pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 
@@ -59,7 +84,7 @@ Za konstanty přidejte následující definici znalostní báze:
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=28-58 "Add the knowledge base definition")]
 
-## <a name="add-supporting-functions-and-structures"></a>Přidejte podpůrné funkce a struktury
+## <a name="add-supporting-functions-and-structures"></a>Přidání podpůrných funkcí a struktur
 Přidejte následující blok kódu do třídy Program:
 
 [!code-csharp[Add supporting functions and structures](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=60-99 "Add supporting functions and structures")]
@@ -72,7 +97,7 @@ Následující kód odešle do rozhraní API služby QnA Maker požadavek HTTPS,
 
 [!code-csharp[Add a POST request to create KB](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=101-122 "Add a POST request to create KB")]
 
-Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i ID operace. Toto ID operace použijte ke zjištění, jestli byla daná znalostí báze úspěšně vytvořena. 
+Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i ID operace. Toto ID operace použijte ke zjištění toho, jestli se znalostí báze úspěšně vytvořila.
 
 ```JSON
 {
@@ -92,7 +117,7 @@ Zkontrolujte stav operace.
 
 [!code-csharp[Add GET request to determine creation status](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=124-143 "Add GET request to determine creation status")]
 
-Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i stav operace: 
+Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i stav operace:
 
 ```JSON
 {
@@ -104,7 +129,7 @@ Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje 
 }
 ```
 
-Volání opakujte, dokud neskočí úspěchem nebo neúspěchem: 
+Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 
 ```JSON
 {
@@ -119,7 +144,7 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 
 ## <a name="add-createkb-method"></a>Přidání metody CreateKB
 
-Následující metoda vytvoří znalostní bázi a opakovaně zkontroluje stav.  V poli hlavičky odpovědi POST **Location** se vrátí **ID operace** _vytváření_, které se pak použije jako část trasy v požadavku GET. Protože vytvoření znalostní báze může nějakou dobu trvat, je třeba volání na kontrolu stavu opakovat, dokud vrácený stav nebude úspěch nebo neúspěch. Pokud operace proběhne úspěšně, ve vlastnosti **resourceLocation** se vrátí ID znalostní báze. 
+Následující metoda vytvoří znalostní bázi a opakovaně zkontroluje stav.  V poli hlavičky odpovědi POST **Location** se vrátí **ID operace** _vytváření_, které se pak použije jako část trasy v požadavku GET. Protože vytvoření znalostní báze může nějakou dobu trvat, je třeba volání na kontrolu stavu opakovat, dokud vrácený stav nebude úspěch nebo neúspěch. Pokud operace proběhne úspěšně, ve vlastnosti **resourceLocation** se vrátí ID znalostní báze.
 
 [!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=189-254 "Add CreateKB method")]
 
@@ -131,12 +156,12 @@ Změňte metodu Main, aby volala metodu CreateKB:
 
 ## <a name="build-and-run-the-program"></a>Sestavení a spuštění programu
 
-Sestavte a spusťte program. Program automaticky odešle do rozhraní API služby QnA Maker požadavek na vytvoření znalostní báze a dál se bude každých 30 sekund dotazovat na výsledky. Každá odpověď je zobrazena v okně konzoly.
+Sestavte program a spusťte ho. Program automaticky odešle do rozhraní API služby QnA Maker požadavek na vytvoření znalostní báze a dál se bude každých 30 sekund dotazovat na výsledky. Každá odpověď se zobrazí v okně konzoly.
 
-Jakmile se znalostní báze vytvoří, můžete se na ni podívat na portálu služby QnA Maker na stránce [vašich znalostních bází](https://www.qnamaker.ai/Home/MyServices). 
+Jakmile se znalostní báze vytvoří, můžete se na ni podívat na portálu služby QnA Maker na stránce [vašich znalostních bází](https://www.qnamaker.ai/Home/MyServices).
 
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

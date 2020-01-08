@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny pro Python'
 titleSuffix: Azure Cognitive Services
-description: Začněte s klientskou knihovnou LUIS pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
+description: Začněte s tímto rychlým startem pomocí klientské knihovny LUIS pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97bb86dc702802fd071015364cf205c4f1bb11d5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 398220306fad4dc3459446fa5f77371ac669dd7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381490"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny pro Python
 
@@ -33,7 +33,7 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro P
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet portálu Language Understanding (LUIS): [Vytvořte si ho zdarma](https://www.luis.ai).
-* [Python 3. x](https://www.python.org/)
+* [Python 3.x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -207,4 +207,4 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Co je rozhraní API pro Language Understanding (LUIS)?](what-is-luis.md)
 * [Co je nového?](whats-new.md)
 * [Záměry](luis-concept-intent.md), [entity](luis-concept-entity-types.md)a [Příklady projevy](luis-concept-utterance.md)a [předem připravených entit](luis-reference-prebuilt-entities.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py).
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)

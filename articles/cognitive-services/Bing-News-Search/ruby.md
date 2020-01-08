@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Proveďte hledání zpráv pomocí Ruby a Vyhledávání zpráv Bingu REST API'
+title: 'Rychlý Start: provedení hledání zpráv pomocí Ruby a Vyhledávání zpráv Bingu REST API'
 titleSuffix: Azure Cognitive Services
 description: Pomocí tohoto rychlého startu můžete odeslat žádost do Vyhledávání zpráv Bingu REST API pomocí Ruby a přijmout odpověď JSON.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/19/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ab16a54269c2afe820d9d17d1400152d078186ed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448554"
 ---
-# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rychlý start: Proveďte hledání zpráv pomocí Ruby a Vyhledávání zpráv Bingu REST API
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení vyhledávání zpráv pomocí Ruby a Vyhledávání zpráv Bingu REST API
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání zpráv a přijetí odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz do rozhraní API a zpracuje výsledky.
 
@@ -30,8 +30,6 @@ I když je tato aplikace napsaná v Pythonu, je rozhraní API webovou službou R
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
 1. Importujte následující balíčky do souboru s kódem.
@@ -42,7 +40,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
     require 'json'
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, adresu URL pro vyhledávání zpráv, klíč předplatného a hledaný termín.
+2. Vytvořte proměnné pro koncový bod rozhraní API, adresu URL pro vyhledávání zpráv, klíč předplatného a hledaný termín. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```ruby
     accessKey = "enter key here"
@@ -176,7 +174,7 @@ puts JSON::pretty_generate(JSON(response.body))
 ```
 
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednotné aplikace](tutorial-bing-news-search-single-page-app.md)

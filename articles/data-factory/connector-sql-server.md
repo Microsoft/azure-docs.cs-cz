@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 8fa4f3b7dfbebb65b1ae60791027eb5fd31a24fb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9c9064778f29e9f53f48d8be2f127fe51e936af4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931043"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444215"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopírování dat do a z SQL Server pomocí Azure Data Factory
 
@@ -49,7 +49,7 @@ Konkrétně tento konektor SQL Server podporuje:
 >[!NOTE]
 >Tento konektor teď nepodporuje SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) . Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a ovladač SQL Server ODBC. Postupujte [podle pokynů ke](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017) stažení ovladače ODBC a konfigurací připojovacích řetězců.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -66,7 +66,7 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na **SQLServer**. | Ano |
-| connectionString |Zadejte informace **připojovacího řetězce** potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. Přečtěte si následující ukázky.<br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| connectionString |Zadejte informace **připojovacího řetězce** potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. Přečtěte si následující ukázky.<br/>Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | userName |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příkladem je **domainname\\username**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
 | connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ne |
@@ -82,10 +82,7 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
-            }
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -103,10 +100,7 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
-            },
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -132,10 +126,7 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
-            },
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;",
             "userName": "<domain\\username>",
             "password": {
                 "type": "SecureString",

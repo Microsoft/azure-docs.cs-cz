@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c8554fc3f691af05a2c6a660d07ffb9a6ff29f31
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 03b0269b1a4500fd8ae26cd5e56f48427c5506aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084335"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429188"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí aplikace proxy v jazyce C (Preview)
 
@@ -76,18 +76,19 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
 
     *Před* zahájením instalace cmake je důležité, aby byly požadavky sady Visual Studio (Visual Studio a *vývoj desktopových aplikací C++ s* úlohou) nainstalované na vašem počítači. Po dokončení požadavků a ověření, že je možné soubory stáhnout, můžete nainstalovat sestavovací systém CMake.
 
-1. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
+1. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujících příkazů naklonujte úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
 
-    ```
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-    ```
-
-    Očekává se, že tato operace bude trvat několik minut.
-
-1. Vytvořte podadresář *cmake* v kořenovém adresáři úložiště Git, jak je znázorněno v následujícím příkazu, a přejděte do této složky.
-
-    ```
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
     cd azure-iot-sdk-c
+    git submodule update --init
+    ```
+
+    Tato operace by měla trvat několik minut.
+
+1. Vytvořte podadresář *cmake* v kořenovém adresáři úložiště Git a přejděte do této složky. Z adresáře *Azure-IoT-SDK-c* spusťte následující příkazy:
+
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```
@@ -110,11 +111,14 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
       rem Or for VS2017
       cmake .. -G "Visual Studio 15 2017"
 
+      rem Or for VS2019
+      cmake .. -G "Visual Studio 16 2019"
+
       rem Then build the project
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 

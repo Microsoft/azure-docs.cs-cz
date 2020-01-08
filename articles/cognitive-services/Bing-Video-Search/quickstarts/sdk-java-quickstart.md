@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: cbe5f0023b16aec1ed68e7a78ddb3103f40eb85b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8222a940909b98fbcce9797fe2d59f0bfb554526
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378598"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448348"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Rychlý Start: provedení videa s Vvyhledávání videí Bingu SDK pro jazyk Java
 
@@ -161,7 +161,7 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
 > [!div class="nextstepaction"]
 > [Vytvoření webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
 * [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)
 * [Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

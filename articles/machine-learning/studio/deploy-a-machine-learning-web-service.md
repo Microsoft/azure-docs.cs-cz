@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454791"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Nasazení webové služby Azure Machine Learning Studio (Classic)
 
@@ -23,7 +23,7 @@ Azure Machine Learning Studio (Classic) umožňuje sestavit a otestovat predikti
 
 Webové služby Machine Learning Studio (Classic) poskytují rozhraní mezi aplikací a modelem vyhodnocování pracovního postupu pro Machine Learning Studio (Classic). Externí aplikace může komunikovat s modelem vyhodnocování pracovního postupu Machine Learning Studio (Classic) v reálném čase. Volání webové služby Machine Learning Studio (Classic) vrátí výsledky předpovědi do externí aplikace. Webovou službu můžete volat předáním klíče rozhraní API, který se vytvořil při nasazení této webové služby. Webová služba Machine Learning Studio (Classic) je založená na REST, na základě oblíbené architektury pro projekty webového programování.
 
-Klasická verze Azure Machine Learning Studio má dva typy webových služeb:
+Azure Machine Learning Studio (Classic) má dva typy webových služeb:
 
 * Služba Request-response (RR): nízká latence, vysoce škálovatelná služba, která odpovídá jednomu datovému záznamu.
 * Služba batch execution (BES): asynchronní služba, která vyrovnává dávku datových záznamů.
@@ -32,13 +32,13 @@ Vstup pro BES je podobný datové vstupu, který využívá RRS. Hlavním rozdí
 
 Z hlediska vysoké úrovně si model nasadíte ve třech krocích:
 
-* **[Vytvoření školicí experimentu]** – v klasické verzi studia můžete analyzovat a testovat model prediktivní analýzy pomocí školicích dat, která zadáte, a to pomocí rozsáhlé sady integrovaných algoritmů strojového učení.
+* **[Vytvoření školicí experimentu]** – v studiu (Classic) můžete vytvářet a testovat model prediktivní analýzy pomocí školicích dat, která zadáte, a to pomocí rozsáhlé sady integrovaných algoritmů strojového učení.
 * **[Převést na prediktivní experiment]** – Jakmile se model vyškole pomocí stávajících dat a jste připraveni ho použít k vyhodnocení nových dat, připravte a Zjednodušte svůj experiment pro předpovědi.
 * **Nasazení** jako **[nové webové služby]** nebo **[klasické webové služby]** – při nasazení prediktivního experimentu jako webové služby Azure mohou uživatelé odesílat data do modelu a přijímat předpovědi modelu.
 
 ## <a name="create-a-training-experiment"></a>Vytvořit výukový experiment
 
-K vytvoření výukového modelu prediktivní analýzy můžete použít klasickou verzi Azure Machine Learning Studio k vytvoření školicího experimentu, kde pro načtení dat potřebujete různé moduly, připravit data podle potřeby, použít algoritmy strojového učení a Vyhodnoťte výsledky. Můžete iterovat na experiment a vyzkoušet různé algoritmy strojového učení pro porovnání a vyhodnocení výsledků.
+K výuce modelu prediktivní analýzy použijte Azure Machine Learning Studio (Classic) k vytvoření školicího experimentu, který obsahuje různé moduly pro načtení školicích dat, přípravu dat podle potřeby, použití algoritmů strojového učení a vyhodnocení důsledk. Můžete iterovat na experiment a vyzkoušet různé algoritmy strojového učení pro porovnání a vyhodnocení výsledků.
 
 Proces vytváření a správy pokusů o školení se podrobněji pokryje jinde. Další informace najdete v těchto článcích:
 
@@ -95,9 +95,9 @@ Chcete-li testovat pomocí prostředku, v režimu zobrazení seznamu zadejte př
 
 ![Zadejte odpovídající hodnoty pro otestování webové služby.](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-Pokud chcete otestovat BES, klikněte na **Batch**. Na stránce test dávky klikněte na Procházet pod vaším vstupem a vyberte soubor CSV obsahující příslušné vzorové hodnoty. Pokud nemáte soubor CSV a vytvořili jste prediktivní experiment pomocí klasické verze Machine Learning Studio, můžete si stáhnout datovou sadu pro prediktivní experiment a použít ji.
+Pokud chcete otestovat BES, klikněte na **Batch**. Na stránce test dávky klikněte na Procházet pod vaším vstupem a vyberte soubor CSV obsahující příslušné vzorové hodnoty. Pokud nemáte soubor CSV a vytvořili jste prediktivní experiment pomocí Machine Learning Studio (Classic), můžete si stáhnout datovou sadu pro prediktivní experiment a použít ji.
 
-Chcete-li stáhnout datovou sadu, otevřete klasickou verzi Machine Learning Studio. Otevřete prediktivní experiment a klikněte pravým tlačítkem na vstup pro váš experiment. V místní nabídce vyberte **datová sada** a pak vyberte **Stáhnout**.
+Chcete-li stáhnout datovou sadu, otevřete Machine Learning Studio (Classic). Otevřete prediktivní experiment a klikněte pravým tlačítkem na vstup pro váš experiment. V místní nabídce vyberte **datová sada** a pak vyberte **Stáhnout**.
 
 ![Stáhněte si datovou sadu z plátna studia (Classic).](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
@@ -113,7 +113,7 @@ Na stránce **Konfigurace** můžete změnit popis, název, aktualizovat klíč 
 
 ### <a name="access-your-new-web-service"></a>Přístup k nové webové službě
 
-Po nasazení webové služby z klasické verze Machine Learning Studio můžete odesílat data do služby a programově přijímat odpovědi.
+Po nasazení webové služby z Machine Learning Studio (Classic) můžete odesílat data do služby a programově přijímat odpovědi.
 
 Stránka **využití** poskytuje všechny informace, které potřebujete pro přístup k webové službě. Například klíč rozhraní API je k dispozici pro povolení oprávněného přístupu ke službě.
 
@@ -136,7 +136,7 @@ Ceny jsou specifické pro oblast, takže je potřeba definovat plán fakturace p
 3. O plánech přes stránku zobrazení, klikněte na tlačítko **nový**.
 4. Z **předplatné** rozevíracím seznamu vyberte předplatné, ve kterém se bude nacházet nový plán.
 5. Z **oblasti** rozevírací seznam, vyberte oblast pro nový plán. Možnosti plánování pro vybrané oblasti se zobrazí v **možnosti plánování** části stránky.
-6. Z **skupiny prostředků** rozevíracím seznamu vyberte prostředek skupiny pro plán. Další informace o skupinách prostředků najdete v článku [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
+6. Z **skupiny prostředků** rozevíracím seznamu vyberte prostředek skupiny pro plán. Další informace o skupinách prostředků najdete v článku [přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md).
 7. V **název plánu** zadejte název plánu.
 8. V části **možnostech plánů**, klikněte na fakturace úroveň pro nový plán.
 9. Klikněte na **Vytvořit**.
@@ -149,7 +149,7 @@ Ceny jsou specifické pro oblast, takže je potřeba definovat plán fakturace p
 4. V **název webové služby**, zadejte nový název pro webovou službu.
 5. V **webové služby popis**, zadejte popis pro webovou službu.
 6. Z **předplatné** rozevíracím seznamu vyberte předplatné, ve kterém se bude nacházet nové webové služby.
-7. Z **skupiny prostředků** rozevíracím seznamu vyberte prostředek skupiny pro webovou službu. Další informace o skupinách prostředků najdete v článku [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
+7. Z **skupiny prostředků** rozevíracím seznamu vyberte prostředek skupiny pro webovou službu. Další informace o skupinách prostředků najdete v článku [přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md).
 8. Z **oblasti** rozevíracím seznamu vyberte oblast, ve které chcete nasadit také webovou službu.
 9. Z **účtu úložiště** rozevírací seznam, vyberte úložiště účtu pro uložení webové služby.
 10. Z **cenový plán** rozevíracím seznamu vyberte plán v oblasti, které jste vybrali v kroku 8.
@@ -169,9 +169,9 @@ Webovou službu můžete otestovat buď na portálu Machine Learning Studio (Cla
 
 Webovou službu Request response otestujete kliknutím na tlačítko **test** na řídicím panelu webové služby. Zobrazí se dialogové okno s žádostí o zadání vstupních dat pro službu. Toto jsou sloupce očekávané experimentem bodování. Zadejte sadu dat a pak klikněte na tlačítko **OK**. Výsledky vygenerované webovou službou se zobrazí v dolní části řídicího panelu.
 
-Kliknutím na odkaz **test** Preview můžete službu otestovat v klasické verzi Azure Machine Learning Studio portálu Web Services, jak je uvedeno dříve v části Nová webová služba.
+Kliknutím na odkaz **test** Preview můžete službu otestovat na portálu Azure Machine Learning Studio (Classic) Web Services, jak je uvedeno dříve v části Nová webová služba.
 
-Chcete-li otestovat službu spuštění dávky, klikněte na odkaz **test** Preview. Na stránce test dávky klikněte na Procházet pod vaším vstupem a vyberte soubor CSV obsahující příslušné vzorové hodnoty. Pokud nemáte soubor CSV a vytvořili jste prediktivní experiment pomocí klasické verze Machine Learning Studio, můžete si stáhnout datovou sadu pro prediktivní experiment a použít ji.
+Chcete-li otestovat službu spuštění dávky, klikněte na odkaz **test** Preview. Na stránce test dávky klikněte na Procházet pod vaším vstupem a vyberte soubor CSV obsahující příslušné vzorové hodnoty. Pokud nemáte soubor CSV a vytvořili jste prediktivní experiment pomocí Machine Learning Studio (Classic), můžete si stáhnout datovou sadu pro prediktivní experiment a použít ji.
 
 ![Test webové služby](./media/publish-a-machine-learning-web-service/figure-3.png)
 
@@ -187,7 +187,7 @@ Koncovým bodům webové služby můžete také nakonfigurovat na portálu Azure
 
 ### <a name="access-your-classic-web-service"></a>Přístup k klasické webové službě
 
-Po nasazení webové služby z klasické verze Machine Learning Studio můžete odesílat data do služby a programově přijímat odpovědi.
+Po nasazení webové služby z Azure Machine Learning Studio (Classic) můžete odesílat data do služby a programově přijímat odpovědi.
 
 Řídicí panel poskytuje všechny informace, které potřebujete pro přístup k webové službě. Například klíč rozhraní API je k dispozici pro povolení oprávněného přístupu ke službě a k dispozici jsou stránky s nápovědami k rozhraní API, které vám pomohou začít psát kód.
 

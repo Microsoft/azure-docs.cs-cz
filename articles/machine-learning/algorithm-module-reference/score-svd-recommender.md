@@ -1,7 +1,7 @@
 ---
 title: 'Doporučení pro skóre SVD: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak ve službě Azure Machine Learning použít modul doporučení skóre SVD k vyhodnocení skóre předpovědi pro datovou sadu.
+titleSuffix: Azure Machine Learning
+description: Naučte se, jak pomocí modulu skóre SVD doporučit v Azure Machine Learning k doporučení předpovědi pro skóre pro datovou sadu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: be590ba04de5c8ee671e7e865d04b4ea6c638c00
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456342"
 ---
-# <a name="score-svd-recommender"></a>Doporučení pro skóre SVD
+# <a name="score-svd-recommender"></a>Určení skóre doporučovacího systému SVD
 
 Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučení skóre SVD (Preview). Tento modul použijte k vytvoření předpovědi pomocí vyučeného modelu doporučení založeného na algoritmu SVD (Single Value rekompozice).
 
@@ -123,4 +123,4 @@ Když model zprovozněníte, obvykle změníte režim předpovědi tak, aby vytv
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

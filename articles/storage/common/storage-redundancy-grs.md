@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c44c13f268a561e3094ae76757504a86627e1f58
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6bb93c3fb6599a05978e11ef5fbc179ccfaa9ec2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895226"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614889"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geograficky redundantní úložiště (GRS): replikace mezi různými oblastmi pro Azure Storage
 
@@ -31,7 +31,7 @@ Při použití RA-GRS se Pamatujte na tyto skutečnosti:
 
 - Vaše aplikace musí spravovat, který koncový bod při práci s nástrojem RA-GRS pracuje.
 - Vzhledem k tomu, že asynchronní replikace zahrnuje zpoždění, změny, které ještě nebyly replikovány do sekundární oblasti, mohou být ztraceny, pokud nelze obnovit data z primární oblasti.
-- Můžete kontrolovat čas poslední synchronizace svého účtu úložiště. Čas poslední synchronizace je hodnota data a času GMT. Všechna primární zápisy před tím, než čas poslední synchronizace byla úspěšně zapsána do sekundárního umístění, což znamená, že jsou k dispozici pro čtení ze sekundárního umístění. Primární zápisy po čas poslední synchronizace se ještě nemusí k dispozici pro čtení. Tuto hodnotu můžete zadat dotazem pomocí [Azure Portal](https://portal.azure.com/), [Azure PowerShell](storage-powershell-guide-full.md)nebo z jedné z Azure Storage klientských knihoven.
+- Pro svůj účet úložiště můžete zjistit vlastnost **čas poslední synchronizace** . **Čas poslední synchronizace** je hodnota data a času GMT. Všechna primární zápisy provedená před **časem poslední synchronizace** byla úspěšně zapsána do sekundárního umístění, což znamená, že jsou k dispozici pro čtení ze sekundárního umístění. Primární zápisy po **čas poslední synchronizace** se ještě nemusí k dispozici pro čtení. Tuto hodnotu můžete zadat dotazem pomocí PowerShellu, rozhraní příkazového řádku Azure nebo některé z Azure Storage klientských knihoven. Další informace najdete v tématu **získání času poslední synchronizace** v tématu [navrhování vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení](storage-designing-ha-apps-with-ragrs.md#getting-the-last-sync-time).
 - Pokud zahájíte převzetí služeb při selhání (Preview) účtu GRS nebo RA-GRS do sekundární oblasti, bude po dokončení převzetí služeb při selhání obnoven přístup pro zápis k tomuto účtu. Další informace najdete v tématu [obnovení po havárii a převzetí služeb při selhání účtu úložiště (Preview)](storage-disaster-recovery-guidance.md).
 - RA-GRS je určené pro účely vysoké dostupnosti. Pokyny k škálovatelnosti najdete v [kontrolním seznamu výkonu](storage-performance-checklist.md).
 - Návrhy na návrh vysoké dostupnosti s využitím RA-GRS najdete v tématu [navrhování vysoce dostupných aplikací pomocí úložiště RA-GRS](storage-designing-ha-apps-with-ragrs.md).

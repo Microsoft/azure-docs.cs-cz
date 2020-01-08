@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ff43173823919f25f85d32996b77265a8a5864c3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 90573f77c77d614923f882053145d2f84598953d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440238"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 s využitím Azure Data Factory
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 >[!TIP]
 >Chcete-li kopírovat data z Azure Data Lake Storage Gen1 do Gen2, přečtěte si [Tento konkrétní návod](load-azure-data-lake-storage-gen2-from-gen1.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Účet Azure Storage s povoleným Data Lake Storage Gen2em: Pokud nemáte účet úložiště, [vytvořte účet](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
@@ -50,14 +50,14 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
  
     * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadADLSDemo\" není k dispozici," zadejte jiný název pro objekt pro vytváření dat. Můžete například použít název _**Your**_ **ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
-    * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+    * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
     * **Verze**: vyberte **v2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. 
 
-3. Vyberte **Create** (Vytvořit).
+3. Vyberte **Vytvořit**.
 4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku: 
    
-   ![Domovská stránka datové továrny](./media/load-azure-data-lake-storage-gen2/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](./media/load-azure-data-lake-storage-gen2/data-factory-home-page.png)
 
    Výběrem dlaždice **Author & Monitor** (Vytvořit a monitorovat) otevřete na samostatné kartě aplikaci pro integraci dat.
 
@@ -82,7 +82,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
    1. Zadejte hodnotu **ID přístupového klíče** .
    2. Zadejte hodnotu **tajného přístupového klíče** .
    3. Kliknutím na **Test připojení** ověřte nastavení a pak vyberte **Dokončit**.
-   4. Uvidíte, že se vytvoří nové připojení. Vyberte **Další**.
+   4. Uvidíte, že se vytvoří nové připojení. Vyberte **Next** (Další).
    
       ![Zadat účet Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       

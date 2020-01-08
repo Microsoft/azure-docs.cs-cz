@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 8c0328c1d82af5e96afca29f05a065450eab9ae4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435004"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšiřování IoT Central Azure pomocí vlastních pravidel pomocí Stream Analytics, Azure Functions a SendGrid
 
@@ -28,7 +28,7 @@ V této příručce se dozvíte, jak:
 * Vytvořte Stream Analytics dotaz, který zjistí, kdy zařízení zastavilo odesílání dat.
 * Odešlete e-mailové oznámení pomocí služeb Azure Functions a SendGrid.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
@@ -41,14 +41,14 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvo�
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Platební plán | Průběžné platby |
-| Šablona aplikace | Sample Contoso (Ukázka Contoso) |
+| Šablona aplikace | Starší verze aplikace |
 | Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
 | Adresa URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
 | Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
-| Oblast | USA – východ |
+| Region (Oblast) | Spojené státy |
 
-Příklady a snímky obrazovky v tomto článku používají oblast **východní USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
+Příklady a snímky obrazovky v tomto článku používají oblast **USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
 
 ### <a name="resource-group"></a>Skupina prostředků
 
@@ -64,10 +64,10 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Cenová úroveň | Úroveň Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
-| Umístění | USA – východ |
+| Umístění | Východní USA |
 | Jednotky propustnosti | 1\. místo |
 
-### <a name="stream-analytics-job"></a>Stream Analytics úlohy
+### <a name="stream-analytics-job"></a>Úloha Stream Analytics
 
 Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) s následujícím nastavením:
 
@@ -76,7 +76,7 @@ Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.co
 | Name (Název)    | Vyberte název vaší úlohy. |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
-| Umístění | USA – východ |
+| Umístění | Východní USA |
 | Hostitelské prostředí | Cloud |
 | Jednotky streamování | 3 |
 
@@ -90,10 +90,10 @@ Pomocí [Azure Portal vytvořte aplikaci funkcí](https://portal.azure.com/#crea
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | OS | Windows |
-| Plán hostování | Plán Consumption |
-| Umístění | USA – východ |
+| Plán Hosting | Plán Consumption |
+| Umístění | Východní USA |
 | Zásobník modulu runtime | .NET |
-| Úložiště | Vytvořit nový |
+| Storage | Vytvořit nový |
 
 ### <a name="sendgrid-account"></a>Účet SendGrid
 
@@ -298,7 +298,7 @@ Toto řešení používá Stream Analytics dotaz k detekci, kdy se zařízení z
         RightSide.deviceid2 is NULL
     ```
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 1. Chcete-li spustit úlohu Stream Analytics, zvolte možnost **Přehled**, **Spustit**, **nyní**a potom **Spusťte**příkaz:
 
     ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)

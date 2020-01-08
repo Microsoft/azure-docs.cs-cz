@@ -1,5 +1,5 @@
 ---
-title: Zabezpečený přístup k účtu Azure Cosmos DB pomocí koncového bodu služby Azure Virtual Network
+title: Zabezpečený přístup k účtům Azure Cosmos DB pomocí koncového bodu služby virtuální sítě
 description: Tento dokument popisuje informace o virtuální síti a řízení přístupu k podsíti pro účet Azure Cosmos.
 author: kanshiG
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 0023710ff3cfe180b628d1da14b8a3ea9c136026
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444620"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup k Azure Cosmos DB z virtuálních sítí (VNet)
 

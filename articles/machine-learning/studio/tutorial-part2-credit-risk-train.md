@@ -1,7 +1,7 @@
 ---
 title: 'Kurz 2: modely úvěrových rizik pro vlaky'
 titleSuffix: ML Studio (classic) - Azure
-description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v klasické verzi Azure Machine Learning Studio. Tento kurz je druhou částí série kurzů s třemi částmi. Ukazuje, jak proškolit a vyhodnocovat modely.
+description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning Studio (Classic). Tento kurz je druhou částí série kurzů s třemi částmi. Ukazuje, jak proškolit a vyhodnocovat modely.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
 ms.author: sgilley
@@ -10,20 +10,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: b3f0ebe2cad68759e7feeb7a7cc3dadbbd03ee7e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838655"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427490"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Kurz 2: modely úvěrových rizik výukového programu – Azure Machine Learning Studio (Classic)
 
-V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. Vyvíjíte jednoduchý model v klasické verzi Machine Learning Studio.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **druhou částí série kurzů s třemi částmi**.
+V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. V Machine Learning Studio (Classic) vyvíjíte jednoduchý model.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **druhou částí série kurzů s třemi částmi**.
 
 Předpokládejme, že potřebujete předpovědět úvěrové riziko u jednotlivých zákazníků na základě údajů, které uvedli v žádosti o úvěr.  
 
-Posouzení úvěrového rizika je složitý problém, ale v tomto kurzu se tento kurz zjednodušuje. Použijete ho jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio (Classic). Pro toto řešení použijete klasickou verzi Azure Machine Learning Studio a Machine Learning webovou službu.  
+Posouzení úvěrového rizika je složitý problém, ale v tomto kurzu se tento kurz zjednodušuje. Použijete ho jako příklad, jak můžete vytvořit řešení prediktivní analýzy pomocí Microsoft Azure Machine Learning Studio (Classic). Pro toto řešení použijete Azure Machine Learning Studio (Classic) a Machine Learning webovou službu.  
 
 V tomto kurzu se třemi částmi začínáte veřejně dostupnými daty o úvěrovém riziku.  Pak vyvíjíte a naučíte prediktivní model.  Nakonec model nasadíte jako webovou službu.
 
@@ -44,7 +44,7 @@ Vyplňte [první část kurzu](tutorial-part1-credit-risk.md).
 
 ## <a name="train"></a>Výuka více modelů
 
-Jednou z výhod použití klasické verze Azure Machine Learning Studio pro vytváření modelů strojového učení je možnost vyzkoušet v jednom experimentu více než jeden typ modelu a porovnat výsledky. Tento typ experimentu vám pomůže najít nejlepší řešení pro váš problém.
+Jednou z výhod použití Azure Machine Learning Studio (Classic) pro vytváření modelů strojového učení je možnost vyzkoušet v jednom experimentu více než jeden typ modelu a porovnat výsledky. Tento typ experimentu vám pomůže najít nejlepší řešení pro váš problém.
 
 V experimentu, který vyvíjíme v tomto kurzu, vytvoříte dva různé typy modelů a pak porovnáte výsledky jejich bodování a určíte, který algoritmus chcete použít v konečném experimentu.  
 
@@ -57,7 +57,7 @@ Existují různé modely, ze kterých si můžete vybrat. Pokud chcete zobrazit 
 
 Do tohoto experimentu přidáte jak modul [zvýšení rozhodovacího stromu obou tříd][two-class-boosted-decision-tree] , tak i modul [podpory dvou tříd][two-class-support-vector-machine] .
 
-### <a name="two-class-boosted-decision-tree"></a>Zvýšení rozhodovacího stromu se dvěma třídami
+### <a name="two-class-boosted-decision-tree"></a>Posílený rozhodovací strom se dvěma třídami
 
 Nejdřív nastavte model zesíleného rozhodovacího stromu.
 

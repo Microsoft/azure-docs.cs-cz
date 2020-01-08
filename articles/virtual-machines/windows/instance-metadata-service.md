@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f62406a341c7e1467cdf17b21662bb5c0993881c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 901e075572e0ed73dc7d0633941311c04b4f3c1c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232397"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358356"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -101,7 +101,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Ve výchozím nastavení Instance Metadata Service vrátí data ve formátu JSON (`Content-Type: application/json`). V případě potřeby ale jiná rozhraní API vrací data v různých formátech.
 Následující tabulka je odkazem na jiné rozhraní API datových formátů, které může podporovat.
 
-Rozhraní API | Výchozí formát dat | Jiné formáty
+API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
 /instance | json | text
 /scheduledevents | json | Žádná
@@ -344,8 +344,8 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 Data | Popis | Představená verze
 -----|-------------|-----------------------
 ověřuje přítomnost | Viz [Attestation data](#attested-data) | 2018-10-01
-identity | Spravované identity pro prostředky Azure. Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) . | 2018-02-01
-případě | Viz [rozhraní API instance](#instance-api) | 2017-04-02
+identita | Spravované identity pro prostředky Azure. Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) . | 2018-02-01
+instance | Viz [rozhraní API instance](#instance-api) | 2017-04-02
 scheduledevents | Viz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Rozhraní API instance
@@ -363,15 +363,15 @@ jméno | Název virtuálního počítače | 2017-04-02
 offer | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
-rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
+plánování | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
 platformUpdateDomain |  [Aktualizujte doménu](manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
-Zprostředkovatele | Poskytovatel virtuálního počítače | 2018-10-01
+Zprostředkovatel | Poskytovatel virtuálního počítače | 2018-10-01
 publicKeys | [Kolekce veřejných klíčů](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
 publisher | Vydavatel image virtuálního počítače | 2017-04-02
-resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) pro virtuální počítač | 2017-08-01
+resourceGroupName | [Skupina prostředků](../../azure-resource-manager/management/overview.md) pro virtuální počítač | 2017-08-01
 resourceId | [Plně kvalifikované](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID prostředku | 2019-03-11
-skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
+skj | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
 značek | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro virtuální počítač  | 2017-08-01
 tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
@@ -644,7 +644,7 @@ Verification successful
 Data | Popis
 -----|------------
 nonce | Uživatel zadal nepovinný řetězec s požadavkem. Pokud se v požadavku nezadala hodnota nonce, vrátí se aktuální časové razítko UTC.
-rozhraní | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
+plánování | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
 časové razítko/createdOn | Časové razítko, ve kterém byl vytvořen první podepsaný dokument
 časové razítko/expiresOn | Časové razítko, na kterém vyprší platnost podepsaného dokumentu
 vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
@@ -680,7 +680,7 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 
 V případech, kdy se zprostředkující certifikát nedá stáhnout kvůli omezením sítě během ověřování, jde zprostředkující certifikát připnout. Azure ale převezme certifikáty podle standardních postupů PKI. Připnuté certifikáty by se musely aktualizovat, když dojde k převrácení. Pokaždé, když se naplánuje změna aktualizace zprostředkujícího certifikátu, bude se aktualizovat blog Azure a budou se zákazníkům Azure informovat. Zprostředkující certifikáty najdete [tady](https://www.microsoft.com/pki/mscorp/cps/default.htm). Zprostředkující certifikáty pro jednotlivé oblasti se můžou lišit.
 
-### <a name="failover-clustering-in-windows-server"></a>Clustering s podporou převzetí služeb při selhání ve Windows serveru
+### <a name="failover-clustering-in-windows-server"></a>Clustering s podporou převzetí služeb při selhání v systému Windows Server
 
 V některých scénářích při dotazování na Instance Metadata Service s clusteringem s podporou převzetí služeb při selhání je nutné přidat trasu do směrovací tabulky.
 
@@ -758,10 +758,10 @@ My custom data.
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání služby metadat pomocí různých jazyků v rámci virtuálního počítače 
 
-Jazyk | Příklad
+Jazyk | Příklad:
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Přejít  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -773,7 +773,7 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 1. Zobrazuje se chyba `400 Bad Request, Required metadata header not specified`. Co to znamená?
    * Instance Metadata Service vyžaduje, aby byla v požadavku předána hlavička `Metadata: true` záhlaví. Předání této hlavičky v volání REST umožňuje přístup k Instance Metadata Service.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 00d8546cb20d12c5f1a94bdcababa04a77c73133
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134408"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422298"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes (AKS)
 
@@ -22,20 +22,7 @@ V tomto článku se dozvíte, jak otočit certifikáty v clusteru AKS.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
-
-
-### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
-
-Chcete-li použít tuto funkci, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.21 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.77 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS certifikáty, certifikační autority a účty služeb
 
@@ -51,7 +38,13 @@ AKS generuje a používá následující certifikáty, certifikační autority a
 * Klient `kubectl` má certifikát pro komunikaci s clusterem AKS.
 
 > [!NOTE]
-> Clustery AKS vytvořené před vydáním března 2019 obsahují certifikáty, jejichž platnost vyprší po dvou letech. Každý cluster vytvořený po uplynutí března 2019 nebo jakýkoli cluster s otočenými certifikáty má certifikáty, jejichž platnost vyprší po 30 letech.
+> Clustery AKS vytvořené před vydáním března 2019 obsahují certifikáty, jejichž platnost vyprší po dvou letech. Každý cluster vytvořený po uplynutí března 2019 nebo jakýkoli cluster s otočenými certifikáty má certifikáty, jejichž platnost vyprší po 30 letech. Pokud chcete ověřit, kdy byl cluster vytvořen, použijte `kubectl get nodes` k zobrazení *stáří* fondů uzlů.
+> 
+> Navíc můžete kontrolovat datum vypršení platnosti certifikátu vašeho clusteru. Například následující příkaz zobrazí podrobnosti o certifikátu pro cluster *myAKSCluster* .
+> ```console
+> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> openssl x509 -in my-cert.crt -text
+> ```
 
 ## <a name="rotate-your-cluster-certificates"></a>Otočení certifikátů clusteru
 

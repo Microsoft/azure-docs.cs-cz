@@ -1,31 +1,33 @@
 ---
-title: Integrovaná řešení | Azure
+title: Integrovaná řešení – Azure Marketplace
 description: Integrovaná řešení v Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: v-chjen
-ms.openlocfilehash: 420dfbc117a45c325db8e9fa2a622414bc78bd07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427179"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrovaná řešení v Azure Marketplace a AppSource
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Integrovaná řešení v Microsoft AppSource a Azure Marketplace
 
-Integrované řešení přináší společně špičkové technologie od partnerů Microsoftu, společně s konzultacemi, nasazením a podporou, které nabízí integrátory s odborníky (SI).
+Integrované řešení přináší dohromady špičkové technologie od partnerů Microsoftu, společně s konzultacemi, nasazením a podporou poskytovanou odborníky z odborníků na služby.
 
-Tato řešení jsou navržená tak, aby se vyrozuměla konkrétním zákaznickým potřebám nebo scénářům, který začíná pochopit otázky v oboru nebo složité. Dvě nebo více nejlepších technologií jsou integrovány pomocí SI SI můžete vytvořit jednotné a opakované prostředí pro nasazení pro zákazníky, které pomáhá rychle zajistit a spustit. Integrátor systému také poskytuje jeden kontaktní bod pro zákazníka, který poskytuje relevantní přizpůsobení, konzultace a podporu řešení.  Výsledkem je integrované řešení, včetně technologií a služeb.
+Dva nebo víc partnerů Microsoftu integruje své technologie a služby, aby vytvořily jednotné, bezproblémové a opakované nasazení, aby zákazníci mohli rychle začít pracovat.  Vedoucí pracovník v řešení (obvykle partner služeb) poskytuje jeden kontaktní bod pro zákazníka, který poskytuje relevantní přizpůsobení, konzultace a podporu řešení.
+
+V jiných scénářích se partneři společně prodávají nebo spolupracují na jejich řešení, zatímco integrované řešení je společně sestavené nové řešení, které integruje technologie a služby mezi partnery.
 
 ## <a name="advantages"></a>Výhody
 
 Mezi výhody integrovaného přístupu patří:
 
-* *Specializace v oboru*: systémy integrátorů poskytující konkrétní řešení a znalosti v oboru
+* *Oborové zkušenosti*: partneři služeb, kteří poskytují konkrétní řešení a znalosti v oboru
 * *Čas do hodnoty*: přístup k integrovanému nasazení, který vám může pomáhat s okamžitými výhodami
 * *Nejlepší řešení*: Seznamte se s usnadněním integrovaného nákupu a implementačního prostředí.
 

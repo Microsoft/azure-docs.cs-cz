@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461151"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
 Zákazníci se Software Assurance, Zvýhodněné hybridní využití Azure pro Windows Server, vám umožní využívat místní licence k Windows serveru a spouštět virtuální počítače s Windows v Azure s nižšími náklady. K nasazení nových virtuálních počítačů s operačním systémem Windows můžete použít Zvýhodněné hybridní využití Azure pro Windows Server. Tento článek se dokončí postupem, jak nasadit nové virtuální počítače s Zvýhodněné hybridní využití Azure pro Windows Server a jak aktualizovat existující běžící virtuální počítače. Další informace o Zvýhodněné hybridní využití Azure pro licencování Windows serveru a úspory nákladů najdete na [stránce zvýhodněné hybridní využití Azure licencování Windows serveru](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -201,4 +201,4 @@ Můžete si taky přečíst další informace o tom, jak [Upravit sadu škálov�
 - Přečtěte si další informace o [zvýhodněné hybridní využití Azure s podrobnými pokyny pro licencování Windows serveru](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
 - Přečtěte si další informace o [zvýhodněné hybridní využití Azure pro Windows Server a Azure Site Recovery díky migraci aplikací do Azure ještě více cenově výhodné](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) .
 - Další informace o [Windows 10 v Azure s oprávněním pro hostování s více klienty](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
-- Další informace o [používání šablon Správce prostředků](../../azure-resource-manager/resource-group-overview.md)
+- Další informace o [používání šablon Správce prostředků](../../azure-resource-manager/management/overview.md)

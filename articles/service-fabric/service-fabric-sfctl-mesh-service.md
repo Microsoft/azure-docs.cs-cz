@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – služba sítě sfctl | Microsoft Docs
-description: Service Fabric popisuje příkazy služby sfctl CLI.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI – služba sítě sfctl
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro získání podrobností o službě prostředku aplikace.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: d2ddc34f8b298a4037a1c8286eceb9ef13b1f416
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1ae04d054a254746d59b85f4fe366cebf19e3faf
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901156"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646088"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
 Získejte podrobnosti o službě a seznam služeb prostředku aplikace.

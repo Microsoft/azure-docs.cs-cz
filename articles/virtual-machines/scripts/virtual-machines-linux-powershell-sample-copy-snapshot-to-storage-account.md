@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu Azure PowerShell – export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště v jiné oblasti
+title: Ukázka prostředí PowerShell – export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště v jiné oblasti
 description: Ukázka skriptu Azure PowerShell – export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné jiné oblasti
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: c1ad520aadf8b2bafa9fdd03333e50b47612fa49
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1f93efb2dd03376110d1368672642d922651c2f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463715"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Export/kopírování spravovaných snímků jako VHD do účtu úložiště v jiné oblasti pomocí PowerShellu
 
@@ -40,7 +40,7 @@ Tento skript exportuje spravovaný snímek do účtu úložiště v jiné oblast
 
 Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a zkopírování snímku do účtu úložiště s použitím tohoto identifikátoru URI SAS používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [Grant-AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Generuje identifikátor URI SAS pro snímek, který se používá ke zkopírování do účtu úložiště. |
 | [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Vytvoří kontext účtu úložiště s použitím názvu a klíče účtu. Tento kontext je možné použít k provádění operací čtení a zápisu v účtu úložiště. |

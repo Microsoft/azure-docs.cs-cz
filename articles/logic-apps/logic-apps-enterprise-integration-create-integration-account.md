@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453418"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Vytváření a Správa integračních účtů pro integraci B2B Enterprise v Azure Logic Apps
 
@@ -33,7 +33,7 @@ V tomto tématu se dozvíte, jak provádět tyto úlohy:
 * Přesuňte účet pro integraci do jiné skupiny prostředků nebo předplatného Azure.
 * Odstraňte účet pro integraci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -57,9 +57,9 @@ Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | <*Integration-Account-name*> | Název vašeho účtu pro integraci, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). V tomto příkladu se používá "Fabrikam-Integration". |
+   | **Název** | Ano | <*integration-account-name*> | Název vašeho účtu pro integraci, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). V tomto příkladu se používá "Fabrikam-Integration". |
    | **Předplatné** | Ano | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |
-   | **Skupina prostředků** | Ano | <*Azure-Resource-Group-name*> | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) , která se má použít pro uspořádání souvisejících prostředků V tomto příkladu vytvořte novou skupinu prostředků s názvem "FabrikamIntegration-RG". |
+   | **Skupina prostředků** | Ano | <*Azure-resource-group-name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která se má použít pro uspořádání souvisejících prostředků V tomto příkladu vytvořte novou skupinu prostředků s názvem "FabrikamIntegration-RG". |
    | **Cenová úroveň** | Ano | <> *na úrovni cen* | Cenová úroveň pro účet pro integraci, kterou můžete později změnit. V tomto příkladu vyberte **Free (zdarma**). Další informace najdete v těchto tématech: <p>[cenový model - Logic Apps](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>[omezení a konfigurace - Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>[ceny - Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
    | **Umístění** | Ano | <*Azure – oblast*> | Oblast, kam se mají ukládat metadata účtu pro integraci Buď vyberte stejné umístění jako aplikace logiky, nebo vytvořte své aplikace logiky ve stejném umístění jako váš účet pro integraci. V tomto příkladu použijte "Západní USA". <p>**Poznámka**: Pokud chcete vytvořit účet pro integraci v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), vyberte tento ISE jako umístění. Další informace najdete v tématu [Vytvoření integračních účtů v ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | Ne | Vypnuto, zapnuto | Pro tento příklad nechejte nastavení **vypnuto** . |
@@ -206,7 +206,7 @@ Pokud chcete aplikaci logiky propojit s jiným účtem pro integraci nebo už ne
    },
    ```
 
-   Například:
+   Příklad:
 
    ![Najít objekt "integrationAccount"](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell skriptu – Azure Cosmos DB aktualizace RU/s pro Gremlin API
+title: Skript PowerShellu pro aktualizaci RU/s pro Azure Cosmos DB rozhraní Gremlin API
 description: Azure PowerShell skriptu – Azure Cosmos DB aktualizace RU/s pro Gremlin API
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 85344d4a8f37bfa34ab14d2dfb9152860973dd1a
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: c298ec58b0d69d20429413f0f36b3e28ff8e5e61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441444"
 ---
 # <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Aktualizace RU/s pro databázi nebo graf pro rozhraní Azure Cosmos DB Gremlin API
 

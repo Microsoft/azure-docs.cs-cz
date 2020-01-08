@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d1218b10eadf0788752bab2aec4b21614666888c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671285"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372206"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Vytvoření nebo odstranění kontejneru v Azure Storage pomocí .NET
 
@@ -126,7 +126,7 @@ Chcete-li odstranit kontejner v rozhraní .NET, použijte jednu z následující
 
 Metody **Delete** a **DeleteAsync** vyvolávají výjimku, pokud kontejner neexistuje.
 
-Metody **DeleteIfNotExists** a **DeleteIfNotExistsAsync** vrací logickou hodnotu, která označuje, zda byl kontejner odstraněn. Pokud zadaný kontejner neexistuje, vrátí tyto metody **hodnotu false** , aby označoval, že se kontejner neodstranil.
+Metody **DeleteIfExists** a **DeleteIfExistsAsync** vrací logickou hodnotu, která označuje, zda byl kontejner odstraněn. Pokud zadaný kontejner neexistuje, vrátí tyto metody **hodnotu false** , aby označoval, že se kontejner neodstranil.
 
 Po odstranění kontejneru nemůžete vytvořit kontejner se stejným názvem aspoň na 30 sekund a pravděpodobně déle. Při odstraňování kontejneru se pokus o vytvoření kontejneru se stejným názvem nezdaří s kódem chyby HTTP 409 (konflikt). Všechny ostatní operace na kontejneru nebo v objektech blob, které obsahuje, se nezdaří s kódem chyby HTTP 404 (Nenalezeno) při odstraňování kontejneru.
 
@@ -185,7 +185,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Vytvořit operaci kontejneru](/rest/api/storageservices/create-container)
 - [Operace Delete Container](/rest/api/storageservices/delete-container)

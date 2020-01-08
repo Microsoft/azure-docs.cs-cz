@@ -4,15 +4,15 @@ description: Azure Monitor může číst protokoly pro služby Azure, které zap
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 04/12/2017
-ms.openlocfilehash: 2d2d8d43cb5ee91810d639c4ee8925d185987954
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3e8968f544e347b7b4cfe6db484c2ce8bd404820
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893548"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395992"
 ---
 # <a name="collect-azure-resource-logs-from-azure-storage"></a>Shromažďovat protokoly prostředků Azure z Azure Storage
 

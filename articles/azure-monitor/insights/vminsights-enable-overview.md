@@ -4,15 +4,15 @@ description: Přečtěte si, jak nasadit a nakonfigurovat Azure Monitor pro virt
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400619"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -44,13 +44,13 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 - USA – východ 2
 - Střední USA
 - Středoseverní USA
-- Kanada – střed
-- Velká Británie – jih
+- Střední Kanada
+- Spojené království – jih
 - Severní Evropa
 - Západní Evropa
 - Východní Asie
 - Jihovýchodní Asie
-- Střed Indie
+- Střední Indie
 - Japonsko – východ
 - Austrálie – východ
 - Austrálie – jihovýchod
@@ -81,7 +81,7 @@ Pokud chcete nakonfigurovat pracovní prostor pro scénář ve velkém měřítk
 
 Následující tabulka uvádí operační systémy Windows a Linux, které Azure Monitor pro virtuální počítače podporuje. Později v této části najdete úplný seznam, který podrobně popisuje hlavní a podverze operačního systému Linux a podporované verze jádra.
 
-|Verze operačního systému |Výkon |Maps |
+|Verze operačního systému |Výkon |Mapy |
 |-----------|------------|-----|
 |Windows Server 2019 | × | × |
 |Windows Server 2016 1803 | × | × |
@@ -113,7 +113,7 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 7,6 | 3.10.0-957 |
+| 7.6 | 3.10.0-957 |
 | 7.5 | 3.10.0-862 |
 | 7.4 | 3.10.0-693 |
 
@@ -166,7 +166,7 @@ V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat r
 
 Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy v hybridním prostředí.
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
 | Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
@@ -174,12 +174,12 @@ Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
-| Soubor | Operační systém | Version | SHA-256 |
+| Soubor | OS | Verze | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
 
 K povolení a přístupu k funkcím v Azure Monitor pro virtuální počítače musíte mít roli *přispěvatel Log Analytics* . Chcete-li zobrazit data o výkonu, stavu a mapování, musíte mít roli *Čtenář monitorování* pro virtuální počítač Azure. Pracovní prostor Log Analytics musí být nakonfigurovaný pro monitorování Azure pro virtuální počítače.
 
@@ -218,7 +218,7 @@ Azure Monitor pro virtuální počítače nakonfiguruje pracovní prostor Log An
 |Logický disk |Bajty zapisování na disk/s |
 |Logický disk |Zápis disku/s |
 |Logický disk |Volné megabajty |
-|Memory (Paměť) |Počet MB k dispozici |
+|Paměť |Počet MB k dispozici |
 |Síťový adaptér |Přijaté bajty/s |
 |Síťový adaptér |Odeslané bajty/s |
 |Procesor |% Času procesoru |
@@ -235,7 +235,7 @@ Azure Monitor pro virtuální počítače nakonfiguruje pracovní prostor Log An
 |Logický Disk |Zápis disku/s |
 |Logický Disk |Volné megabajty |
 |Logický Disk |Bajtů logického disku/s |
-|Memory (Paměť) |Dostupná paměť v MB |
+|Paměť |Dostupná paměť v MB |
 |Network (Síť) |Celkový počet přijatých bajtů |
 |Network (Síť) |Celkový počet bajtů přenesených |
 |Procesor |% Času procesoru |

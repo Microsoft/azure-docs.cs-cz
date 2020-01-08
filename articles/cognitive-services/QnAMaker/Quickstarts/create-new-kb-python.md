@@ -8,44 +8,51 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 9114d491be1ae11623264c3beaf7c26f1fa143de
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 4aeee7ebf2c96166392d49d218f8ac5de6fe2709
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803146"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447570"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Rychlý start: Vytvoření znalostní báze ve službě QnA Maker pomocí Pythonu
 
-Tento rychlý start vás provede vytvořením a publikováním ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
+Tento rychlý start vás provede vytvořením a publikováním ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API.
 
 Tento rychlý start volá rozhraní API služby QnA Maker:
-* [Create KB](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Create KB](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Získat podrobnosti operace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Ukázka Pythonu](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Python 3.7](https://www.python.org/downloads/)
-* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** . 
-
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
 
 ## <a name="create-a-knowledge-base-python-file"></a>Vytvoření souboru Pythonu pro znalostní bázi
 
 Vytvořte soubor s názvem `create-new-knowledge-base-3x.py`.
 
-## <a name="add-the-required-dependencies"></a>Přidejte požadované závislosti
+## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
 Na začátek souboru `create-new-knowledge-base-3x.py` přidejte následující řádky k přidání potřebných závislostí do projektu:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
 
-## <a name="add-the-required-constants"></a>Přidejte požadované konstanty
-Za předcházející požadované závislosti přidejte požadované konstanty pro přístup ke službě QnA Maker. Hodnotu `<your-qna-maker-subscription-key>` a `<your-resource-name>` nahraďte vlastním klíčovým QnA Maker a názvem prostředku.
+## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
+Za předcházející požadované závislosti přidejte požadované konstanty pro přístup ke službě QnA Maker. Nahraďte hodnotu `<your-qna-maker-subscription-key>` a `<your-resource-name>` vlastním QnA Maker klíč a názvem prostředku.
+
+V horní části třídy program přidejte požadované konstanty pro přístup k QnA Maker.
+
+Nastavte následující hodnoty:
+
+* `<your-qna-maker-subscription-key>` – **klíč** je řetězec znaků 32 a je k dispozici v Azure Portal v prostředku QnA maker na stránce rychlý Start. To není totéž jako klíč koncového bodu předpovědi.
+* `<your-resource-name>` – **název prostředku** se používá k vytvoření adresy URL koncového bodu pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 
@@ -63,11 +70,12 @@ Přidejte následující funkci pro tisk souboru JSON v čitelném formátu:
 
 ## <a name="add-function-to-create-kb"></a>Přidání funkce pro vytvoření znalostní báze
 
-Přidejte následující funkci pro vytvoření požadavku HTTP POST na vytvoření znalostní báze. Toto volání rozhraní API vrátí odpověď JSON, která v poli hlavičky **Location** obsahuje ID operace. Toto ID operace použijte ke zjištění, jestli byla daná znalostí báze úspěšně vytvořena. `Ocp-Apim-Subscription-Key` je klíč služby QnA Maker používaný k ověřování. 
+Přidejte následující funkci pro vytvoření požadavku HTTP POST na vytvoření znalostní báze.
+Toto volání rozhraní API vrátí odpověď JSON, která v poli hlavičky **Location** obsahuje ID operace. Toto ID operace použijte ke zjištění toho, jestli se znalostí báze úspěšně vytvořila. `Ocp-Apim-Subscription-Key` je klíč služby QnA Maker používaný k ověřování.
 
 [!code-python[Add function to create KB](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=48-59 "Add function to create KB")]
 
-Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i ID operace. Toto ID operace použijte ke zjištění, jestli byla daná znalostí báze úspěšně vytvořena. 
+Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i ID operace. Toto ID operace použijte ke zjištění toho, jestli se znalostí báze úspěšně vytvořila.
 
 ```JSON
 {
@@ -85,7 +93,7 @@ Následující funkce přebírá adresu URL, která má na konci ID operace, a k
 
 [!code-python[Add function to check creation status](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=61-67 "Add function to check creation status")]
 
-Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i stav operace: 
+Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i stav operace:
 
 ```JSON
 {
@@ -97,7 +105,7 @@ Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje 
 }
 ```
 
-Volání opakujte, dokud neskočí úspěchem nebo neúspěchem: 
+Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 
 ```JSON
 {
@@ -111,13 +119,13 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 ```
 
 ## <a name="add-main-code-block"></a>Přidání hlavního bloku kódu
-Následující smyčka se pravidelně dotazuje na stav operace vytváření, dokud se operace nedokončí. 
+Následující smyčka se pravidelně dotazuje na stav operace vytváření, dokud se operace nedokončí.
 
 [!code-python[Add main code block](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=70-96 "Add main code block")]
 
 ## <a name="build-and-run-the-program"></a>Sestavení a spuštění programu
 
-Spusťte program zadáním následujícího příkazu na příkazovém řádku. Program pošle požadavek na vytvoření znalostní báze do rozhraní API služby QnA Maker a pak se bude dotazovat na výsledky každých 30 sekund. Každá odpověď je zobrazena v okně konzoly.
+Spusťte program zadáním následujícího příkazu na příkazovém řádku. Program pošle požadavek na vytvoření znalostní báze do rozhraní API služby QnA Maker a pak se bude dotazovat na výsledky každých 30 sekund. Každá odpověď se zobrazí v okně konzoly.
 
 ```bash
 python create-new-knowledge-base-3x.py
@@ -125,7 +133,7 @@ python create-new-knowledge-base-3x.py
 
 Jakmile se znalostní báze vytvoří, můžete se na ni podívat na portálu služby QnA Maker na stránce [vašich znalostních bází](https://www.qnamaker.ai/Home/MyServices). Vyberte název vaší znalostní báze, například QnA Maker FAQ, a zobrazte ji.
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

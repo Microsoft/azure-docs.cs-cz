@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace pomocí rozhraní API Cassandra a Java – Azure Cosmos DB
+title: Vytvoření aplikace Java pomocí Azure Cosmos DB rozhraní API Cassandra
 description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy.
 ms.service: cosmos-db
 author: SnehaGunda
@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5b1eacb1d0121f2dd0d97807f07042e828fe7932
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1f9151ab174a9a1f9e492bd068b5285772f6a546
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442045"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Rychlý start: Vytvoření aplikace Java pro správu rozhraní API Cassandra dat Azure Cosmos DB
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu dat Azure Cosmos DB rozhraní API Cassandra
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -218,7 +218,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, databáze Cassandra a kontejneru pomocí Průzkumníku dat a spuštění aplikace, která to samé udělá programově. Teď můžete do svého kontejneru Azure Cosmos importovat další data. 
 

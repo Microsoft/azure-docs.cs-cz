@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819283"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432545"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Shromažďovat distribuované trasování z webu přejít (Preview)
 
 Application Insights teď podporuje distribuované trasování aplikací v cestách prostřednictvím integrace s [OpenCensus](https://opencensus.io) a naší novou [místní službou pro předávání](./opencensus-local-forwarder.md). Tento článek vás seznámí s postupem nastavení OpenCensus pro přechod a získávání dat trasování pro Application Insights.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Mít předplatné Azure.
 - Chcete-li nainstalovat nástroj, použijte verzi 1,11 [ke stažení](https://golang.org/dl/).
 - Postupujte podle pokynů k instalaci [místního serveru pro přeposílání jako služby systému Windows](./opencensus-local-forwarder.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -34,7 +34,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 Nejdřív je potřeba vytvořit prostředek Application Insights, který vygeneruje klíč instrumentace (ikey). Ikey se pak použije ke konfiguraci místního předávacího serveru pro odesílání distribuovaných trasování z vaší OpenCensus instrumentované aplikace, aby bylo možné Application Insights.   
 
-1. Vyberte **vytvořit prostředek** > **vývojářské nástroje** **Application Insights** > .
+1. Vyberte **vytvořit prostředek** > **vývojářské nástroje** > **Application Insights**.
 
    ![Přidání prostředku Application Insights](./media/opencensus-Go/0001-create-resource.png)
 
@@ -43,11 +43,11 @@ Nejdřív je potřeba vytvořit prostředek Application Insights, který vygener
 
    Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
-    | Nastavení        | Hodnota           | Popis  |
+   | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | Východní USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 2. Klikněte na **Vytvořit**.
 

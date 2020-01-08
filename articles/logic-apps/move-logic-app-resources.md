@@ -6,24 +6,24 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: de646c790fc21ef17bf78789e0531503f2f32052
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456535"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Přesunutí prostředků aplikace logiky do jiných předplatných Azure, skupin prostředků nebo oblastí
 
 Pokud chcete přesunout aplikaci logiky nebo související prostředky do jiného předplatného Azure, skupiny prostředků nebo oblasti, budete mít k dispozici různé způsoby, jak tyto úlohy dokončit, například Azure Portal, Azure PowerShell, Azure CLI a REST API. Před přesunutím prostředků si prostudujte tyto informace: 
 
-* Mezi skupinami prostředků Azure nebo předplatnými můžete přesunout jenom [konkrétní typy prostředků aplikace logiky](../azure-resource-manager/move-support-resources.md#microsoftlogic) .
+* Mezi skupinami prostředků Azure nebo předplatnými můžete přesunout jenom [konkrétní typy prostředků aplikace logiky](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) .
 
 * Ověřte [omezení](../logic-apps/logic-apps-limits-and-config.md) počtu prostředků aplikace logiky, které můžete mít v předplatném Azure a v každé oblasti Azure. Tato omezení mají vliv na to, jestli můžete přesunout konkrétní typy prostředků, pokud tato oblast zůstane v rámci předplatných nebo skupin prostředků stejná. Pro každou oblast Azure v každém předplatném Azure můžete mít například jenom jeden účet pro integraci bezplatné úrovně.
 
 * Když přesunete prostředky, Azure vytvoří nová ID prostředků. Nezapomeňte místo toho použít nová ID a aktualizovat skripty nebo nástroje, které jsou přidruženy k přesunutým prostředkům. Po přesunutí Logic Apps mezi předplatnými, skupinami prostředků nebo oblastmi musíte znovu vytvořit nebo znovu autorizovat všechna připojení založená na protokolu OAuth.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Stejné předplatné Azure, které se použilo k vytvoření aplikace logiky nebo účtu pro integraci, který chcete přesunout
 
@@ -53,7 +53,7 @@ Pokud chcete přesunout prostředek, jako je aplikace logiky nebo účet pro int
 
 Pokud chcete přesunout prostředek, jako je aplikace logiky nebo účet pro integraci, do jiné skupiny prostředků Azure, můžete použít Azure Portal, Azure PowerShell, Azure CLI nebo REST API. Tyto kroky zahrnují Azure Portal, které můžete použít, když je oblast prostředku stejná. Další kroky a obecnou přípravu najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
-Před skutečným přesunutím prostředků mezi skupinami můžete otestovat, jestli můžete prostředek úspěšně přesunout do jiné skupiny. Další informace najdete v tématu [ověření vašeho přesunu](../azure-resource-manager/resource-group-move-resources.md#validate-move).
+Před skutečným přesunutím prostředků mezi skupinami můžete otestovat, jestli můžete prostředek úspěšně přesunout do jiné skupiny. Další informace najdete v tématu [ověření vašeho přesunu](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move).
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte prostředek aplikace logiky, který chcete přesunout.
 

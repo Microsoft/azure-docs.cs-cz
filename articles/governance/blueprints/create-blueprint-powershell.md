@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření podrobného plánu pomocí PowerShellu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí PowerShellu.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: ed337fa040804159dae3194de1befc43ff2b698f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327462"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436642"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Rychlý Start: definování a přiřazení Azure Blueprint s využitím PowerShellu
 
@@ -379,7 +379,9 @@ Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k
      > [!IMPORTANT]
      > Modrotisky nespravují spravovanou identitu přiřazenou uživatelem. Uživatelé zodpovídají za přiřazení dostatečných rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
 
-## <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+### <a name="unassign-a-blueprint"></a>Zrušení přiřazení podrobného plánu
 
 Podrobný plán můžete odebrat z předplatného. Odebrání se často provádí v případě, že už nepotřebujete prostředky artefaktů. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Chcete-li odebrat přiřazení podrobného plánu, použijte rutinu `Remove-AzBlueprintAssignment`:
 

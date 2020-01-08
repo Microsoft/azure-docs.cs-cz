@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 093050952ed826a540c35b2b73acd107fafc45ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440443"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Spustit aktivitu kanálu v Azure Data Factory
 Aktivita spustit kanál umožňuje Data Factory kanálu vyvolat jiný kanál.
@@ -63,7 +63,7 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 jméno | Název aktivity spustit kanál | Řetězec | Ano
 type | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Ano
-Kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Ano
+kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Ano
 parameters | Parametry, které se mají předat vyvolanému kanálu | Objekt JSON, který mapuje názvy parametrů na hodnoty argumentu | Ne
 waitOnCompletion | Definuje, zda provádění aktivit čeká na dokončení zpracování závislého kanálu. Výchozí hodnota je false. | Logická hodnota | Ne
 
@@ -168,10 +168,7 @@ Tento scénář má dva kanály:
     "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": {
-        "value": "DefaultEndpointsProtocol=https;AccountName=*****",
-        "type": "SecureString"
-      }
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
     }
   }
 }

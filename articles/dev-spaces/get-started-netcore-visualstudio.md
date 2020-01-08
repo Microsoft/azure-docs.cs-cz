@@ -5,21 +5,21 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: bd59046af58f63c974d5c8d6a97a372f63b848ae
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 71c0a87e8743ccbab8aa39888bf3a2edbf78000c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438568"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Vytvořte Kubernetes vývojového prostoru: Visual Studio a .NET Core s Azure Dev Spaces
 
 V tomto průvodci se naučíte:
 
 - Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
-- Iterativně vyvíjet kód v kontejnerech pomocí sady Visual Studio
+- Iterativně vyvíjet kód v kontejnerech pomocí sady Visual Studio.
 - Vyvíjet nezávisle dvě samostatné služby a pomocí zjišťování služby DNS v Kubernetes volat jinou službu
 - Produktivně vyvíjet a testovat kód v týmovém prostředí
 
@@ -56,13 +56,13 @@ Nainstalujte nejnovější verzi sady [Visual Studio](https://www.visualstudio.c
 
 V této části vytvoříte webovou aplikaci ASP.NET Core a získáte její spuštění v kontejneru v Kubernetes.
 
-### <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace v ASP.NET
+### <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
 
 V sadě Visual Studio vytvořte nový projekt. V současné době se musí jednat o projekt **Webová aplikace ASP.NET Core**. Dejte projektu název **webfrontend**.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
-Vyberte šablonu **Webová aplikace (model-zobrazení-kontroler)** a ujistěte se, že jsou ve dvou rozevíracích seznamech v horní části dialogového okna vybrané položky **.NET Core** a **ASP.NET Core 2.0**. Kliknutím na tlačítko **OK** vytvořte projekt.
+Vyberte šablonu **Webová aplikace (model-zobrazení-kontroler)** a ujistěte se, že jsou ve dvou rozevíracích seznamech v horní části dialogového okna vybrané položky **.NET Core** a **ASP.NET Core 2.0**. Klikněte na **OK**, tím vytvoříte projekt.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
@@ -114,7 +114,7 @@ Po úspěšném vytvoření vývojového prostoru můžete začít ladit aplikac
 
 Visual Studio bude komunikovat s vývojovým prostorem, aby se mohla aplikace sestavit a nasadit, a potom otevře prohlížeč se spuštěnou webovou aplikací. I když to může vypadat, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure. Adresa místního hostitele se zobrazuje proto, že služba Azure Dev Spaces vytvoří dočasný tunel SSH do kontejneru spuštěného v AKS.
 
-Zarážku aktivujete kliknutím na odkaz **O aplikaci** v horní části stránky. Máte plný přístup k informacím o ladění, jako jsou zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při místním spuštění kódu.
+Zarážku aktivujete kliknutím na odkaz **O aplikaci** v horní části stránky. Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při lokálním spuštění kódu.
 
 ## <a name="iteratively-develop-code"></a>Iterativní vývoj kódu
 

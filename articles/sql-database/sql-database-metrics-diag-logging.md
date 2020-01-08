@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 11/15/2019
-ms.openlocfilehash: 95953b4f052531c9804024410e225bb0b5c62aef
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.date: 11/16/2019
+ms.openlocfilehash: de1366b1bf45301d3d26a4f721ef2828f79be98d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539190"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460655"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metriky a protokolování diagnostiky
 
@@ -47,7 +47,7 @@ Můžete povolit a spravovat metriky a protokolování telemetrie diagnostiky po
 - Azure Monitor REST API
 - Šablona Azure Resource Manageru
 
-Když povolíte metriky a protokolování diagnostiky, musíte zadat cíl prostředku Azure pro shromažďování telemetrie diagnostiky. K dispozici jsou tyto možnosti:
+Když povolíte metriky a protokolování diagnostiky, musíte zadat cíl prostředku Azure pro shromažďování telemetrie diagnostiky. Mezi dostupné možnosti patří:
 
 - Azure SQL Analytics
 - Azure Event Hubs
@@ -79,7 +79,8 @@ Můžete nastavit databáze Azure SQL a databáze instancí pro shromažďován�
 > Elastické fondy a spravované instance mají svou vlastní samostatnou diagnostické telemetrie z databází, které obsahují. Je důležité si uvědomit, že se pro každý z těchto prostředků nakonfiguruje telemetrie diagnostiky samostatně, jak je uvedeno níže.
 
 > [!NOTE]
-> Pokud chcete povolit streamování protokolů auditu, přečtěte si téma [nastavení auditování pro vaši databázi](sql-database-auditing.md#subheading-2)a [protokoly auditování v Azure monitor protokoly a Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> - Pokud chcete povolit streamování protokolů auditu, přečtěte si téma [nastavení auditování pro vaši databázi](sql-database-auditing.md#subheading-2)a [protokoly auditování v Azure monitor protokoly a Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
+> - Nastavení diagnostiky nelze konfigurovat pro **systémové databáze**, jako jsou hlavní databáze, databáze msdb, model, prostředků a databáze tempdb.
 
 ## <a name="azure-portal"></a>Portál Azure
 
@@ -116,7 +117,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro prostředek elas
 1. Zaškrtněte políčko pro telemetrii diagnostiky elastického fondu: **základní** metriky.
    ![konfigurace diagnostiky pro elastické fondy](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 1. Kromě toho nakonfigurujte streamování diagnostiky pro každou databázi v elastickém fondu, který chcete monitorovat pomocí následujících kroků popsaných v následující části.
 
 > [!IMPORTANT]
@@ -141,7 +142,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro databáze s jedn
 1. V případě standardního prostředí monitorování založeného na událostech zaškrtněte následující políčka pro telemetrii protokolu diagnostiky databáze: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **chyby**, **DatabaseWaitStatistics**, **časové limity**, **bloky**a **zablokování**.
 1. V případě pokročilých možností monitorování na základě minut zaškrtněte políčko pro **základní** metriky.
    ![nakonfigurovat diagnostiku pro databáze s jedním, sdruženým nebo instancí](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 1. Opakujte tyto kroky pro každou databázi, kterou chcete monitorovat.
 
 > [!NOTE]
@@ -182,7 +183,7 @@ Chcete-li povolit streamování diagnostické telemetrie pro prostředek spravov
 
    ![Konfigurace diagnostiky pro spravovanou instanci](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 1. Kromě toho nakonfigurujte streamování diagnostiky pro každou databázi instancí v rámci spravované instance, kterou chcete monitorovat, podle postupu popsaného v následující části.
 
 > [!IMPORTANT]
@@ -206,7 +207,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro databáze instan
 1. Vyberte cílový prostředek pro data diagnostiky streamování: **archivujte do účtu úložiště**, **streamujte do centra událostí**nebo **Log Analytics odeslat**.
 1. Zaškrtněte políčka pro telemetrii diagnostiky databáze: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** a **Errors**.
    ![nakonfigurovat diagnostiku pro databáze instancí](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 1. Opakujte tyto kroky pro každou databázi instance, kterou chcete monitorovat.
 
 > [!TIP]
@@ -221,7 +222,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro databáze instan
 
 Metriky a protokolování diagnostiky můžete povolit pomocí prostředí PowerShell.
 
-- Pokud chcete povolit úložiště diagnostických protokolů v účtu úložiště, použijte tento příkaz:
+- Pokud chcete povolit úložiště pro diagnostické protokoly v účtu úložiště, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -229,19 +230,19 @@ Metriky a protokolování diagnostiky můžete povolit pomocí prostředí Power
 
    ID účtu úložiště je ID prostředku cílového účtu úložiště.
 
-- Pokud chcete povolit streamování diagnostických protokolů do centra událostí, použijte tento příkaz:
+- Pokud chcete povolit streamování protokolů diagnostiky do centra událostí, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
-   ID pravidla Azure Service Bus je řetězec s tímto formátem:
+   ID pravidla služby Azure Service Bus je řetězec v tomto formátu:
 
    ```powershell
    {service bus resource ID}/authorizationrules/{key name}
    ```
 
-- Pokud chcete povolit odesílání diagnostických protokolů do Log Analytics pracovního prostoru, použijte tento příkaz:
+- Povolení odesílání protokolů diagnostiky k pracovnímu prostoru Log Analytics, použijte tento příkaz:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
@@ -253,7 +254,7 @@ Metriky a protokolování diagnostiky můžete povolit pomocí prostředí Power
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-Tyto parametry můžete kombinovat, chcete-li povolit více možností výstupu.
+Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Konfigurace více prostředků Azure
 
@@ -303,7 +304,7 @@ Metriky a protokolování diagnostiky můžete povolit pomocí rozhraní příka
    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
    ```
 
-Tyto parametry můžete kombinovat, chcete-li povolit více možností výstupu.
+Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
 ### <a name="rest-api"></a>Rozhraní REST API
 
@@ -317,7 +318,7 @@ Přečtěte si informace o tom, jak [Povolit nastavení diagnostiky při vytvá�
 
 Azure SQL Analytics je cloudové řešení, které monitoruje výkon databází SQL Azure, elastických fondů a spravovaných instancí ve velkém rozsahu a mezi několika předplatnými. Může vám to usnadnit shromažďování a vizualizace Azure SQL Database metriky výkonu a obsahuje integrované inteligentní funkce pro řešení potíží s výkonem.
 
-![Přehled Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
+![Přehled služby Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 SQL Database metriky a diagnostické protokoly je možné streamovat do Azure SQL Analytics pomocí možnosti zabudované **Odeslat do Log Analytics** na kartě nastavení diagnostiky na portálu. Službu Log Analytics můžete taky povolit pomocí nastavení diagnostiky prostřednictvím rutin PowerShellu, rozhraní příkazového řádku Azure nebo Azure Monitor REST API.
 

@@ -6,14 +6,17 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 327b2aaadd77c00d847504ff16415813d2fcf89c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 555a60579c11a7ecb9b39753c5e4b35e801edeb1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422163"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (verze Preview) ve službě Web App for Containers
+
+> [!NOTE]
+> Vícenásobný kontejner je ve verzi Preview.
 
 Služba [Web App for Containers](app-service-linux-intro.md) poskytuje flexibilní způsob, jak používat image Dockeru. V tomto kurzu zjistíte, jak vytvořit vícekontejnerovou aplikaci pomocí WordPressu a MySQL. K dokončení tohoto kurzu použijete Cloud Shell. Ke spuštění těchto příkazů také můžete použít nástroj příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) (verze 2.0.32 nebo novější).
 
@@ -29,7 +32,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete zkušenosti s [Docker Compose](https://docs.docker.com/compose/).
 

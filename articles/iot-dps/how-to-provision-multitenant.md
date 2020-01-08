@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974951"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434740"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientské architektury 
 
@@ -36,7 +36,7 @@ Tento článek používá ukázku simulovaného zařízení ze [sady Azure IoT C
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
 
@@ -191,7 +191,6 @@ K jednoduššímu vyčištění se tyto virtuální počítače přidají do ste
 
 V této části budete naklonovat sadu Azure IoT C SDK na každém virtuálním počítači. Sada SDK obsahuje ukázku, která simuluje zřizování zařízení tenanta z každé oblasti.
 
-
 1. Pro každý virtuální počítač nainstalujte **cmake**, **g + +** , **RSZ**a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) pomocí následujících příkazů:
 
     ```bash
@@ -199,12 +198,14 @@ V této části budete naklonovat sadu Azure IoT C SDK na každém virtuálním 
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. Vyhledejte název značky pro [nejnovější verzi](https://github.com/Azure/azure-iot-sdk-c/releases/latest) sady SDK.
 
-1. Naklonujte [sadu Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) na obou virtuálních počítačích.
+1. Naklonujte [sadu Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) na obou virtuálních počítačích.  Použijte značku, kterou jste našli v předchozím kroku, jako hodnotu parametru `-b`:
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
@@ -404,12 +405,12 @@ Pokud máte v úmyslu pokračovat v práci s prostředky vytvořenými v tomto �
 V těchto krocích se předpokládá, že jste vytvořili všechny prostředky v tomto článku podle pokynů ve stejné skupině prostředků s názvem **Contoso-US-Resource-Group**.
 
 > [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
+> Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
 >
 
 Odstranění skupiny prostředků podle názvu:
 
-1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 2. Do textového pole **filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaše prostředky, **Contoso-US-Resource-Group**. 
 

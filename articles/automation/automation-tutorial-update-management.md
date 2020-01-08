@@ -2,19 +2,16 @@
 title: Správa aktualizací a oprav pro virtuální počítače Azure
 description: Tento článek poskytuje přehled o tom, jak pomocí Azure Automation Update Management spravovat aktualizace a opravy pro virtuální počítače Azure a mimo Azure.
 services: automation
-author: mgoedtel
-ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 12/03/2019
-ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 44372f32227bbfef46a72afa6f9b0bd88b29905b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0fd25863d26c38608b6f64f22782422b844fdec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420649"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -31,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Naplánování nasazení aktualizace
 > * Zobrazení výsledků nasazení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -150,7 +147,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
    |OS  |Typ  |
    |---------|---------|
-   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>Nástroje</br>Aktualizace        |
+   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>nástroje</br>Aktualizace        |
    |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |
 
    Popis typů klasifikace najdete v tématu popisujícím [klasifikace aktualizací](automation-view-update-assessments.md#update-classifications).

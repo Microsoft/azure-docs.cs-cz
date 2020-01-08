@@ -2,17 +2,17 @@
 title: Co je Azure Cloud Services | Microsoft Docs
 description: Přečtěte si, co je Azure Cloud Services.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386846"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Přehled služby Azure Cloud Services
 Azure Cloud Services je příkladem [platformy jako služby](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [Azure App Service](../app-service/overview.md)je tato technologie navržena tak, aby podporovala aplikace, které jsou škálovatelné, spolehlivé a nenákladné pro provoz. Stejným způsobem, jako hostuje App Service na virtuálních počítačích, je to také Cloud Services Azure. Máte ale větší kontrolu nad virtuálními počítači. Na virtuální počítače, které používají Azure Cloud Services, můžete nainstalovat vlastní software a k nim můžete přistupovat vzdáleně.
@@ -23,9 +23,9 @@ Další ovládací prvky také znamenají méně snadné použití. Pokud nepot�
 
 Existují dva typy rolí Azure Cloud Services. Jediným rozdílem mezi těmito dvěma způsoby je to, jak je vaše role hostovaná na virtuálních počítačích:
 
-* **Webová role**: Automaticky nasadí a hostuje vaši aplikaci prostřednictvím služby IIS.
+* **Webová role**: automaticky nasadí a hostuje vaši aplikaci prostřednictvím služby IIS.
 
-* **Role pracovního procesu**: Nepoužívá službu IIS a spouští samostatnou aplikaci.
+* **Role pracovního procesu**: nepoužívá službu IIS a spouští samostatnou aplikaci.
 
 Například jednoduchá aplikace může používat jenom jednu webovou roli, která obsluhuje Web. Složitější aplikace může použít webovou roli ke zpracování příchozích požadavků od uživatelů a pak tyto požadavky předat do role pracovního procesu ke zpracování. (Tato komunikace může používat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) nebo [Azure Queue Storage](../storage/common/storage-introduction.md).)
 
@@ -36,18 +36,21 @@ I když aplikace běží na virtuálních počítačích, je důležité pochopi
 ## <a name="scaling-and-management"></a>Škálování a Správa
 S Azure Cloud Services nevytváříte virtuální počítače. Místo toho zadáte konfigurační soubor, který oznamuje, kolik každého z nich chcete, například "tři instance webové role" a "dvě instance role pracovního procesu". Platforma je pak vytvoří za vás. Pořád si zvolíte, [jakou velikost](cloud-services-sizes-specs.md) záložních virtuálních počítačů by měly být, ale nebudete je explicitně vytvářet sami. Pokud vaše aplikace potřebuje zvládnout větší zatížení, můžete požádat o další virtuální počítače a Azure tyto instance vytvoří. Pokud se zatížení sníží, můžete tyto instance vypnout a začlenit jejich platby.
 
-Aplikace Azure Cloud Services je obvykle k dispozici uživatelům prostřednictvím procesu se dvěma kroky. Vývojář nejdřív [nahraje aplikaci](cloud-services-how-to-create-deploy-portal.md) do pracovní oblasti platformy. Když je vývojář připravený k zajištění provozu aplikace, používá Azure Portal k prohození pracovní části s produkčním prostředím. Tento [přepínač mezi](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) příchodem a výrobou se dá udělat bez výpadků, což umožňuje upgradování běžící aplikace na novou verzi bez narušení jejich uživatelů.
+Aplikace Azure Cloud Services je obvykle k dispozici uživatelům prostřednictvím procesu se dvěma kroky. Vývojář nejdřív [nahraje aplikaci](cloud-services-how-to-create-deploy-portal.md) do pracovní oblasti platformy. Když je vývojář připravený k zajištění provozu aplikace, používá Azure Portal k prohození pracovní části s produkčním prostředím. Tento [přepínač mezi příchodem a výrobou](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) se dá udělat bez výpadků, což umožňuje upgradování běžící aplikace na novou verzi bez narušení jejich uživatelů.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 Azure Cloud Services také nabízí monitorování. Stejně jako Virtual Machines detekuje neúspěšný fyzický server a restartuje virtuální počítače, které na tomto serveru běžely na novém počítači. Ale Azure Cloud Services také detekuje neúspěšné virtuální počítače a aplikace, nikoli jenom selhání hardwaru. Na rozdíl od Virtual Machines má agent uvnitř každé webové a pracovní role, takže při selhání může začít nové virtuální počítače a instance aplikace.
 
 PaaS povaha Azure Cloud Services má i jiné důsledky. Jedním z nejdůležitějších z nich je, že aplikace postavené na této technologii by se měly zapsat ke správnému spuštění, když dojde k chybě jakékoli instance webové nebo pracovní role. Aby to bylo možné dosáhnout, aplikace Cloud Services Azure by neměla udržovat stav v systému souborů svých vlastních virtuálních počítačů. Na rozdíl od virtuálních počítačů vytvořených pomocí Virtual Machines nejsou zápisy do virtuálních počítačů Azure Cloud Services trvalé. K dispozici není žádný podobný Virtual Machines datový disk. Místo toho by měla aplikace Cloud Services v Azure explicitně zapisovat všechny stavy do Azure SQL Database, objektů blob, tabulek nebo některých jiných externích úložišť. Sestavování aplikací tímto způsobem usnadňuje škálování a odolnější selhání, což jsou důležité cíle Azure Cloud Services.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Vytvoření aplikace cloudové služby v .NET](cloud-services-dotnet-get-started.md) 
 * [Vytvoření aplikace cloudové služby v Node. js](cloud-services-nodejs-develop-deploy-app.md) 
 * [Vytvoření aplikace cloudové služby v PHP](../cloud-services-php-create-web-role.md) 
 * [Vytvoření aplikace cloudové služby v Pythonu](cloud-services-python-ptvs.md)
+
+
+
 
 
 

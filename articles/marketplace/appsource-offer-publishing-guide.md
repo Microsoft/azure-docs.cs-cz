@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4a5d61d9434a73556d81010da7c7b3e96139a9e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 831da237c06657981e402fc1f8fd09ccd67f85fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427217"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Příručka pro publikování produktů Office 365, Dynamics 365, Power Apps a Power BI nabídky
 
 AppSource prezentace obsahuje nabídky, které sestavují nebo rozšířily Dynamics 365, Office 365, Power BI a Power Apps. Každý z těchto produktů má konkrétní dokumentaci, která vás provede procesem publikování. Níže naleznete odkazy na další podrobnosti pro každý typ nabídky. 
 
-AppSource má nabídky se seznamem a zkušební verze s voláním akce "kontaktujte mě" nebo "vyzkoušet" nyní. V AppSource aktuálně není žádná funkce transakce.
+AppSource má nabídky s platbami, seznamem a zkušební verze s voláním akce "získat IT", "kontaktujte mě" a "vyzkoušet si nyní". 
 
 ## <a name="product-specific-guides"></a>Příručky pro konkrétní produkt
 
@@ -37,7 +37,7 @@ Projděte si [Postup publikování a pokyny.](https://docs.microsoft.com/power-b
 
 ### <a name="dynamics-365"></a>Dynamics 365
 
-#### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 pro finance a operace
+#### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
 Při sestavování pro edici Enterprise si projděte téma [Postup publikování a pokyny](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) .
 
 Další informace o tom, jak publikovat nabídku v portál partnerů cloudu, najdete v tématu [Dynamics 365 pro finance a operace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) .

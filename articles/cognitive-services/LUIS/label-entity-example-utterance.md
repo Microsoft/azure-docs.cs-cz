@@ -8,33 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74383708"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448087"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Označení entity náročné na počítač v příkladu utterance
 
-Označení entity v příkladu utterance poskytuje LUIS příklad, co je entita a kde se entita může zobrazit v utterance. 
+Označení entity v příkladu utterance poskytuje LUIS příklad, co je entita a kde se entita může zobrazit v utterance.
 
 ## <a name="labeling-machine-learned-entity"></a>Označování uživatelem zjištěné entity
 
-Vezměte v úvahu frázi `hi, please I want a cheese pizza in 20 minutes`. 
+Vezměte v úvahu frázi `hi, please I want a cheese pizza in 20 minutes`.
 
 1. Vyberte nejvíce vlevo a pak vyberte text v entitě nejvíce vpravo a potom v tomto případě vyberte entitu, se kterou chcete popisek provést. _Úplná objednávka_ je označena na následujícím obrázku.
 
     > [!div class="mx-imgBorder"]
     > ![popisek dokončit](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)ou entitu, kterou získal počítač
 
-1. V místním okně vyberte entitu. Entita označená jako dokončená objednávka Pizza zahrnuje všechna slova (zleva doprava v angličtině), která jsou označená. 
+1. V místním okně vyberte entitu. Entita označená jako dokončená objednávka Pizza zahrnuje všechna slova (zleva doprava v angličtině), která jsou označená.
 
 ## <a name="review-labeled-text"></a>Zkontrolovat text s popiskem
 
-Po označení se podívejte na příklad utterance a ujistěte se, že vybraný rozsah textu byl podtržený zvolenou entitou. Plná čára indikuje, že text byl označený. 
+Po označení se podívejte na příklad utterance a ujistěte se, že vybraný rozsah textu byl podtržený zvolenou entitou. Plná čára indikuje, že text byl označený.
 
 > [!div class="mx-imgBorder"]
 > ![označený jako dokončený počítač – získaná entita](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
@@ -55,12 +55,12 @@ Alternativně můžete vybrat název entity nad textem a pak vybrat **Potvrdit p
 
 Paleta entit nabízí alternativu k předchozímu prostředí označování. Umožňuje přenášet text na text, abyste ho mohli hned označit entitou.
 
-1. Otevřete paletu entity tak, že vyberete ikonu zvýrazňovače v pravém horním rohu tabulky utterance. 
+1. Otevřete paletu entity tak, že vyberete ikonu zvýrazňovače v pravém horním rohu tabulky utterance.
 
     > [!div class="mx-imgBorder"]
     > ![ová paleta entit pro](media/label-utterances/example-1-label-machine-learned-entity-palette.png) získaná počítačová entita
 
-2. Vyberte součást entity. Tato akce je vizuálně označena novým kurzorem. Po přesunutí na portálu se ukazatel myši sleduje. 
+2. Vyberte součást entity. Tato akce je vizuálně označena novým kurzorem. Po přesunutí na portálu se ukazatel myši sleduje.
 
     > [!div class="mx-imgBorder"]
     > ![ová paleta entit pro](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png) získaná počítačová entita
@@ -77,17 +77,26 @@ Dílčí součásti v entitách jsou označeny stejným způsobem jako entity ne
 > [!div class="mx-imgBorder"]
 > ![ová paleta entit pro](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png) získaná počítačová entita
 
-Dílčí součásti lze označit pouze v případě, že je nadřazený také popisek. 
+Dílčí součásti lze označit pouze v případě, že je nadřazený také popisek.
+
+## <a name="labeling-entity-roles"></a>Označování rolí entit
+
+Role entit jsou označené pomocí palety entit.
+
+1. Na stránce s podrobnostmi záměru vyberte z panelu nástrojů kontext **paletu entity** .
+1. Po otevření palety entit vyberte ze seznamu entit entitu.
+1. Přejděte do **inspektoru entit**a buď vyberte existující roli, nebo vytvořte novou roli.
+1. V příkladu utterance text označte text pomocí role entity. 
 
 ## <a name="unlabel-entities"></a>Odznačení entit
 
-Chcete-li zrušit označení entity, vyberte název entity pod textem a vyberte možnost zrušit **označení**. Pokud entita, kterou se pokoušíte označit jako odznačení, má označené dílčí komponenty, pak musí být dílčí součásti před označením označeny jako první. 
+Chcete-li zrušit označení entity, vyberte název entity pod textem a vyberte možnost zrušit **označení**. Pokud entita, kterou se pokoušíte označit jako odznačení, má označené dílčí komponenty, pak musí být dílčí součásti před označením označeny jako první.
 
 ## <a name="editing-labels-using-the-entity-palette"></a>Úprava popisků pomocí palety entit
 
 Pokud při označování dojde k chybě, je paleta entit jednoduchý nástroj, který umožňuje rychlé úpravy. Pokud například popisek entity zahrnuje nadbytečné slovo omylem a již má označené dílčí komponenty, můžete použít paletu entit ke štětci přes požadované kratší rozsah slov.
 
-Například:
+Příklad:
 
 1. Dílčí komponenta typu Pizza zahrnuje "sýr Pizza s", který zahrnuje nadbytečné nesprávné slovo--"with".
 
@@ -98,7 +107,6 @@ Například:
 
     > [!div class="mx-imgBorder"]
     > ![ová paleta entit pro](media/label-utterances/edit-label-with-palette-2.png) získaná počítačová entita
-
 
 ## <a name="labels-for-matching-text-entities"></a>Popisky pro párové entity textu
 

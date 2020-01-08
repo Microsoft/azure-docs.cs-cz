@@ -1,22 +1,22 @@
 ---
-title: Připojení k IBM DB2
-description: Správa prostředků pomocí rozhraní REST API IBM DB2 a Azure Logic Apps
+title: Přístup k prostředkům IBM DB2 a jejich správa
+description: Vytváření automatizovaných pracovních postupů pomocí Azure Logic Apps pro čtení, úpravy, aktualizaci a správu prostředků IBM DB2
 services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789897"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446181"
 ---
-# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Správa prostředků IBM DB2 pomocí Azure Logic Apps
+# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Přístup k prostředkům IBM DB2 a jejich správa pomocí Azure Logic Apps
 
-Pomocí Azure Logic Apps a konektoru IBM DB2 můžete vytvářet automatizované úlohy a pracovní postupy na základě prostředků uložených v databázi DB2. Vaše pracovní postupy se můžou připojit k prostředkům ve vaší databázi, číst a vypisovat tabulky databáze, přidávat řádky, měnit řádky, odstraňovat řádky a další. Do svých aplikací logiky můžete zahrnout akce, které získají odpovědi z vaší databáze a zpřístupňují výstup pro jiné akce.
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru IBM DB2](/connectors/db2/)můžete vytvářet automatizované úlohy a pracovní postupy na základě prostředků uložených v databázi DB2. Vaše pracovní postupy se můžou připojit k prostředkům ve vaší databázi, číst a vypisovat tabulky databáze, přidávat řádky, měnit řádky, odstraňovat řádky a další. Do svých aplikací logiky můžete zahrnout akce, které získají odpovědi z vaší databáze a zpřístupňují výstup pro jiné akce.
 
 Tento článek ukazuje, jak můžete vytvořit aplikaci logiky, která provádí různé databázové operace. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
@@ -26,10 +26,10 @@ Konektor DB2 zahrnuje klienta Microsoftu, který komunikuje se vzdálenými serv
 
 Konektor IBM DB2 podporuje tyto platformy a verze IBM DB2 spolu s produkty kompatibilními s IBM DB2, které podporují DRDA (Distributed relační Database Architecture) verze 10 a 11:
 
-| Platforma | Version | 
+| Platforma | Verze | 
 |----------|---------|
-| IBM DB2 pro z/OS | 11,1, 10,1 |
-| IBM DB2 pro i | 7,3, 7,2, 7,1 |
+| IBM DB2 pro z/OS | 11.1, 10.1 |
+| IBM DB2 pro i | 7.3, 7.2, 7.1 |
 | IBM DB2 pro LUW | 11.10,5 |
 |||
 
@@ -47,7 +47,7 @@ Konektor IBM DB2 podporuje tyto databázové operace, které se mapují na odpov
 | Odebrání jednoho řádku pomocí odstranění | Odstranit řádek |
 |||
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -90,7 +90,7 @@ Pokud chcete nastavit připojení, zadejte tyto podrobnosti o připojení po zob
 | **Heslo** | Ano | Heslo pro databázi |
 ||||
 
-Například:
+Příklad:
 
 ![Podrobnosti o připojení cloudových databází](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -112,7 +112,7 @@ Před vytvořením připojení musíte mít už nainstalovanou místní bránu d
 | **Brána** | Ano | Název nainstalované místní brány dat <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje všechny nainstalované brány dat v rámci předplatného Azure a skupiny prostředků. |
 ||||
 
-Například:
+Příklad:
 
 ![Podrobnosti o připojení pro místní databáze](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -157,7 +157,7 @@ K načtení jednoho záznamu v databázové tabulce DB2 použijte akci **získat
    | **ID oblasti** | Ano | ID požadovaného záznamu, například "99999" v tomto příkladu |
    ||||
 
-   ![vybrat tabulku](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![Vybrat tabulku](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit**.
 
@@ -192,7 +192,7 @@ K načtení všech záznamů v databázové tabulce DB2 použijte akci **získat
 
 1. Otevřete seznam **název tabulky** a poté vyberte požadovanou tabulku, což je "oblast" v tomto příkladu:
 
-   ![vybrat tabulku](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![Vybrat tabulku](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. Chcete-li zadat filtr nebo dotaz pro výsledky, zvolte možnost **Zobrazit upřesňující možnosti**.
 
@@ -239,9 +239,9 @@ K přidání jednoho záznamu do tabulky databáze DB2 použijte akci **Vložit 
    | **ID oblasti** | Ano | ID oblasti, která se má přidat, například "102" |
    |||| 
 
-   Například:
+   Příklad:
 
-   ![vybrat tabulku](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![Vybrat tabulku](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit**.
 
@@ -287,9 +287,9 @@ Pokud chcete aktualizovat jeden záznam v databázové tabulce DB2, použijte ak
    | **ID oblasti** | Ano | Nové ID oblasti, například "102" |
    ||||
 
-   Například:
+   Příklad:
 
-   ![vybrat tabulku](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![Vybrat tabulku](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit**.
 
@@ -332,9 +332,9 @@ K odstranění jednoho záznamu z tabulky databáze DB2 použijte akci **Odstran
    | **ID řádku** | Ano | ID záznamu, který se má odstranit, například "99999" |
    ||||
 
-   Například:
+   Příklad:
 
-   ![vybrat tabulku](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![Vybrat tabulku](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit**.
 

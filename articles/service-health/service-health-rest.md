@@ -1,28 +1,25 @@
 ---
-title: Získat Azure resource health události pomocí rozhraní REST API | Dokumentace Microsoftu
-description: Získat události stavu prostředků Azure pomocí rozhraní REST API služby Azure.
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
+title: Získejte události stavu prostředků Azure pomocí REST API | Microsoft Docs
+description: K získání událostí stavu pro prostředky Azure použijte rozhraní Azure REST API.
 ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
-ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451379"
 ---
-# <a name="get-resource-health-using-the-rest-api"></a>Získat stav prostředku pomocí rozhraní REST API 
+# <a name="get-resource-health-using-the-rest-api"></a>Získat Resource Health pomocí REST API 
 
-Tento článek příklad ukazuje, jak načíst seznam události stavu prostředků Azure v předplatném pomocí [rozhraní Azure REST API](/rest/api/azure/).
+V tomto ukázkovém článku se dozvíte, jak načíst seznam událostí stavu pro prostředky Azure ve vašem předplatném pomocí [REST API Azure](/rest/api/azure/).
 
-Úplnou referenční dokumentaci a další ukázky pro rozhraní REST API jsou k dispozici v [Reference k rozhraní REST pro monitorování Azure](/rest/api/monitor). 
+Kompletní Referenční dokumentace a další ukázky pro REST API jsou k dispozici v [Referenční příručce Azure monitor REST](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Žádost o sestavení
+## <a name="build-the-request"></a>Sestavení požadavku
 
-Pomocí následujících `GET` požadavek protokolu HTTP na seznamu událostí stavu pro vaše předplatné v rozsahu mezi `2018-05-16` a `2018-06-20`.
+K vypsání událostí stavu předplatného na časové období mezi `2018-05-16` a `2018-06-20`použijte následující `GET` požadavek HTTP.
 
 ```http
 https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&%24filter=eventTimestamp%20ge%20'2018-05-16T04%3A36%3A37.6407898Z'%20and%20eventTimestamp%20le%20'2018-06-20T04%3A36%3A37.6407898Z'
@@ -30,29 +27,29 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Vyžadují se následující hlavičky: 
+Jsou vyžadovány následující hlavičky: 
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Authorization:*|Povinná hodnota. Nastavte na platný [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |  
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Name | Popis |
+| Name (Název) | Popis |
 | :--- | :---------- |
-| subscriptionId | ID předplatného, který identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| api-version | Verze rozhraní API, která se má použít pro daný požadavek.<br /><br /> Tento dokument popisuje verzi api-version `2015-04-01`, který je obsažen v adrese URL výše.  |
-| $filter | Filtrování možnost omezit sadu vrácených výsledků. Povolená vzory pro tento parametr jsou k dispozici [v referenční dokumentaci pro operaci protokoly aktivit](/rest/api/monitor/activitylogs/list#uri-parameters). Jak ukazuje příklad zaznamenány všechny události v časovém rozmezí mezi 2018-05-16 a 2018-06-20 |
+| subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| api-version | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje rozhraní API-Version `2015-04-01`zahrnuté do výše uvedené adresy URL.  |
+| $filter | Možnost filtrování pro snížení sady vrácených výsledků. Povolené vzory pro tento parametr jsou k dispozici [v odkazu na operaci protokolu aktivit](/rest/api/monitor/activitylogs/list#uri-parameters). Zobrazený příklad zachycuje všechny události v časovém rozsahu mezi 2018-05-16 a 2018-06-20. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Text požadavku
 
-Pro tuto operaci je potřeba není datová část požadavku.
+Pro tuto operaci není nutný žádný text žádosti.
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-Seznam stavů událostí hodnoty odpovídající parametr filtru spolu s se vrátí stavový kód 200 `nextlink` identifikátor URI pro načtení další stránky výsledků.
+Stavový kód 200 se vrátí se seznamem hodnot události stavu, který odpovídá parametru Filter, spolu s identifikátorem URI `nextlink` k načtení další stránky výsledků.
 
 ## <a name="example-response"></a>Příklad odpovědi 
 

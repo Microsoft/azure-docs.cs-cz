@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 02297a45c9560f867e97d7024862ea0de5d3f7b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466520"
 ---
 Pomocí následujících kroků můžete vytvořit virtuální síť pomocí modelu nasazení Resource Manager a webu Azure portal. Další informace o virtuálních sítích najdete v tématu [Přehled služby Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -42,10 +42,10 @@ Pomocí následujících kroků můžete vytvořit virtuální síť pomocí mod
 
    - **Předplatné**: Zkontrolujte, jestli je uvedeno správné předplatné. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
 
-   - **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou zadáním názvu nové skupiny prostředků. Pokud vytváříte novou skupinu, nazvěte skupinu prostředků v souladu s hodnotami plánované konfigurace. Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+   - **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou zadáním názvu nové skupiny prostředků. Pokud vytváříte novou skupinu, nazvěte skupinu prostředků v souladu s hodnotami plánované konfigurace. Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../articles/azure-resource-manager/management/overview.md#resource-groups).
 
    - **Umístění**: Vyberte umístění sítě VNet. Umístění Určuje, kde bude za prostředky, které nasadíte do této virtuální síti.
 
    - **Podsíť**: přidejte podsíť **název** a podsítě **rozsah adres**. Další podsítě můžete přidat později po vytvoření virtuální sítě. 
      
-5. Vyberte **Create** (Vytvořit).
+5. Vyberte **Vytvořit**.

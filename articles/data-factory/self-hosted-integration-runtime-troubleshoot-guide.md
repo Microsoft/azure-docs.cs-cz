@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: 9adbc3d7d30aeb8c7cb2b89c326ac2b39a2e8d2b
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439877"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -20,114 +20,120 @@ Tento článek popisuje běžné metody řešení potíží pro prostředí Inte
 
 ## <a name="common-errors-and-resolutions"></a>Běžné chyby a řešení
 
-### <a name="error-message-self-hosted-integration-runtime-is-unable-to-connect-to-cloud-service"></a>Chybová zpráva: Integration runtime v místním prostředí se nemůže připojit ke cloudové službě.
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Chybová zpráva: Integration runtime v místním prostředí se nemůže připojit ke cloudové službě.
 
-- **Příznak**: 
+![Problém s připojením IR v místním prostředí](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
-    ![Problém s připojením IR v místním prostředí](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+#### <a name="cause"></a>Příčina 
 
-- **Příčina**: místní prostředí Integration runtime se nemůže připojit ke službě Data Factory (back-end). Nejčastěji než to je způsobeno nastavením sítě v bráně firewall.
+Místní prostředí Integration runtime se nemůže připojit ke službě Data Factory (back-end). K tomuto problému obvykle dochází v důsledku nastavení sítě v bráně firewall.
 
-- **Řešení:** 
+#### <a name="resolution"></a>Rozlišení
 
-    1. Ověřte, zda je spuštěna služba Integration Runtime služby systému Windows.
+1. Ověřte, jestli je spuštěná služba Integration runtime.
     
-        ![Stav spuštění služby IR v místním prostředí](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![Stav spuštění služby IR v místním prostředí](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-    2. Pokud je spuštěná služba systému Windows, jak je uvedeno v [1], postupujte podle potřeby podle následujících pokynů:
+1. Pokud je služba spuštěná, pokračujte krokem 3.
 
-        1. Pokud "proxy" není nakonfigurováno v místním prostředí Integration runtime (výchozí nastavení není žádná konfigurace proxy serveru), spusťte níže uvedený příkaz prostředí PowerShell v počítači, ve kterém je nainstalován místní prostředí Integration Runtime: 
-            
-            ```powershell
-            (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
-            ```
-            > [!NOTE] 
-            > Adresa URL služby se může lišit v závislosti na umístění vaší datové továrny. Adresu URL služby najdete v části ADF UI – > připojení – > Integration runtime – > Upravit místně hostované uzly IR-> – > Zobrazit adresy URL služby.
-            
-            Níže je uvedená očekávaná odpověď:
-            
-            ![Odezva příkazu PowerShellu](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
-            
-            Pokud je odpověď odlišná, postupujte podle potřeby podle následujících pokynů:
-            
-            * Pokud se zobrazí chyba "vzdálený název nelze přeložit", dojde k potížím se službou DNS. Pokud chcete získat problém s překladem názvů DNS, obraťte se na kontaktování se síťovým týmem. 
-            * Pokud se zobrazí chyba "certifikát SSL/TLS není důvěryhodný", zkontrolujte prosím, jestli je certifikát pro https://wu2.frontend.clouddatahub.net/v počítači důvěryhodný, nainstalujte veřejný certifikát pomocí Správce certifikátů, který by měl tento problém zmírnit.
-            * Podívejte se na Windows – > prohlížeče událostí (protokoly) – > protokoly aplikací a služeb – > Integration Runtime pro případ selhání, většinou způsobená DNS, pravidlem brány firewall a nastavením sítě společnosti (vynuceně uzavřete připojení). Pro tento problém Zapojte svůj síťový tým pro další Troubleshot, protože každá společnost má vlastní nastavení sítě.
+1. Pokud není v místním prostředí Integration runtime nakonfigurovaný žádný proxy server (což je výchozí nastavení), spusťte následující příkaz PowerShellu na počítači, na kterém je nainstalovaný modul runtime integrace v místním prostředí:
 
-        2. Pokud je v místním prostředí Integration runtime nakonfigurovaný "proxy server", ověřte, jestli proxy server mít přístup k našemu koncovému bodu služby. Ukázku příkazu najdete v [tomto](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)tématu.    
+    ```powershell
+    (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
+    ```
+        
+   > [!NOTE]     
+   > Adresa URL služby se může lišit v závislosti na umístění Data Factory. Adresu URL služby najdete v části **uživatelské rozhraní ADF** > **připojení** > **prostředí Integration runtime** > **úpravách** **adres URL služby**v místním prostředí IR > ch > **uzlů** .
+            
+    Očekává se následující odpověď:
+            
+    ![Odezva příkazu PowerShellu](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+            
+1. Pokud neobdržíte očekávanou odpověď, použijte jednu z následujících metod, která je vhodná pro vaši situaci:
+            
+    * Pokud se zobrazí zpráva "vzdálený název nelze rozpoznat", dojde k problému se službou DNS (Domain Name System). Pokud chcete tento problém vyřešit, obraťte se na svého síťového týmu.
+    * Pokud se zobrazí zpráva "certifikát SSL/TLS není důvěryhodný", zkontrolujte, zda je certifikát pro https://wu2.frontend.clouddatahub.net/ v počítači důvěryhodný, a pak pomocí Správce certifikátů nainstalujte veřejný certifikát. Tato akce by měla zmírnit problém.
+    * V prohlížeči událostí **systému Windows** >  **(protokoly)**  > **protokoly aplikací a služeb** > **Integration runtime** a vyhledejte případné selhání způsobené službou DNS, pravidlem brány firewall nebo nastavením sítě společnosti. (Pokud narazíte na chybu, nuceně uzavřete připojení.) Vzhledem k tomu, že každá společnost má vlastní nastavení sítě, požádejte o řešení těchto problémů svého síťového týmu.
+
+1. Pokud je v místním prostředí Integration runtime nakonfigurovaný proxy server, ověřte, že váš proxy server má přístup ke koncovému bodu služby. Vzorový příkaz najdete v tématu [PowerShell, webové požadavky a proxy servery](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
-            ```powershell
-            $user = $env:username
-            $webproxy = (get-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet
-            Settings').ProxyServer
-            $pwd = Read-Host "Password?" -assecurestring
-            $proxy = new-object System.Net.WebProxy
-            $proxy.Address = $webproxy
-            $account = new-object System.Net.NetworkCredential($user,[Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd)), "")
-            $proxy.credentials = $account
-            $url = "https://wu2.frontend.clouddatahub.net/"
-            $wc = new-object system.net.WebClient
-            $wc.proxy = $proxy
-            $webpage = $wc.DownloadData($url)
-            $string = [System.Text.Encoding]::ASCII.GetString($webpage)
-            $string
-            ```
+    ```powershell
+    $user = $env:username
+    $webproxy = (get-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet
+    Settings').ProxyServer
+    $pwd = Read-Host "Password?" -assecurestring
+    $proxy = new-object System.Net.WebProxy
+    $proxy.Address = $webproxy
+    $account = new-object System.Net.NetworkCredential($user,[Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd)), "")
+    $proxy.credentials = $account
+    $url = "https://wu2.frontend.clouddatahub.net/"
+    $wc = new-object system.net.WebClient
+    $wc.proxy = $proxy
+    $webpage = $wc.DownloadData($url)
+    $string = [System.Text.Encoding]::ASCII.GetString($webpage)
+    $string
+    ```
 
-            Níže je uvedená očekávaná odpověď:
+Očekává se následující odpověď:
             
-            ![Odezva příkazu PowerShellu 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![Odezva příkazu PowerShellu 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
-            > [!NOTE] 
-            > Hlediska proxy serveru:
-            > * Ověřte, zda proxy server vyžaduje přidávání do seznamu povolených. V takovém případě mají [tyto domény](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) na seznamu povolených.
-            > * Ověřte, jestli je u proxy server důvěryhodný certifikát TLS/SSL pro "wu2.frontend.clouddatahub.net/".
-            > * Pokud na proxy serveru používáte ověřování pomocí služby Active Directory, změňte účet služby na uživatelský účet, který bude mít přístup k proxy serveru jako "Integration Runtime služba".
+> [!NOTE] 
+> Hlediska proxy serveru:
+> * Ověřte, zda proxy server musí být vloženy do seznamu bezpečných příjemců. Pokud ano, ujistěte se, že jsou [tyto domény](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) v seznamu bezpečných příjemců.
+> * Ověřte, jestli je certifikát TLS/SSL wu2.frontend.clouddatahub.net/na proxy server důvěryhodný.
+> * Pokud na proxy serveru používáte ověřování pomocí služby Active Directory, změňte účet služby na uživatelský účet, který bude mít přístup k proxy serveru jako služba Integration Runtime.
 
 ### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Chybová zpráva: uzel Integration runtime (v místním prostředí)/logický SHIR je v neaktivním stavu (s omezením).
 
-- **Příčina**: uzel IR v místním prostředí se může zobrazit v neaktivním stavu, jak je znázorněno na následujícím snímku obrazovky:
+#### <a name="cause"></a>Příčina 
 
-    ![Neaktivní místní hostitelský uzel IR](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+Hostující uzel integrovaného modulu runtime může mít **neaktivní** stav, jak je znázorněno na následujícím snímku obrazovky:
 
-    K tomu dochází, když uzly vzájemně nemůžou komunikovat. 
+![Neaktivní místní hostitelský uzel IR](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
-- **Řešení:** 
+K tomuto chování dochází, když uzly nemůžou vzájemně komunikovat.
 
-    Přihlaste se k virtuálnímu počítači hostovaného v uzlu a otevřete zobrazení událostí v části protokoly aplikací a služeb – > Integration Runtime vyfiltrujte všechny protokoly chyb. 
+#### <a name="resolution"></a>Rozlišení
 
-     1. Pokud protokol chyb obsahuje: 
+1. Přihlaste se k virtuálnímu počítači hostovanému na uzlu. V části **protokoly aplikací a služeb** > **Integration Runtime**, otevřete Prohlížeč událostí a vyfiltrujte všechny protokoly chyb.
+
+1. Zkontroluje, jestli protokol chyb obsahuje tuto chybu: 
     
-        **Chybový protokol**: System. ServiceModel. EndpointNotFoundException: Nelze se připojit k NET. TCP://xxxxxxx.bwld.com: 8060/ExternalService. svc/WorkerManager. Pokus o připojení uplynulý po časovém intervalu 00:00:00.9940994. Kód chyby TCP 10061: nebylo možné navázat spojení, protože cílový počítač ho aktivně odmítl 10.2.4.10:8060.  ---> System .NET. Sockets. SocketException: nebylo možné navázat spojení, protože cílový počítač ho aktivně odmítl 10.2.4.10:8060
-    
-           v System .NET. Sockets. Socket. DoConnect (koncový bod endPointSnapshot, SocketAddress socketAddress)
-           
-           v System .NET. Sockets. Socket. Connect (koncový bod remoteEP)
-           
-           v System. ServiceModel. Channels. SocketConnectionInitiator. Connect (identifikátor URI URI, časový limit TimeSpan)
-    
-        **Řešení:** spusťte příkazový řádek: telnet 10.2.4.10 8060
+    ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
+    System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 
+    10.2.4.10:8060
         
-        Pokud se vám zobrazí chybová zpráva, požádejte prosím o pomoc s opravou tohoto problému své kyberbezpečnosti. Po úspěšném dokončení programu Telnet se obraťte na podporu Microsoftu, pokud stále máte problémy se stavem uzlu IR.
+    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+               
+    at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+               
+    at System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+       
+1. If you see this error, run the following on a command line: 
+
+   **telnet 10.2.4.10 8060**.
+1. If you receive the following error, contact your IT department for help with fixing this issue. After you can successfully telnet, contact Microsoft Support if you still have issues with the integrative runtime node status.
         
-        ![Chyba příkazového řádku](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   ![Command-line error](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
-     2. Pokud protokol chyb obsahuje:
-     
-        **Protokol chyb:** Nelze se připojit ke Správci pracovních procesů: NET. TCP://xxxxxx: 8060/ExternalService. svc/pro azranlcir01r1 hostitele nejsou k dispozici žádné položky DNS. Žádný takový hostitel není známý podrobnosti o výjimce: System. ServiceModel. EndpointNotFoundException: pro hostitele xxxxx neexistují žádné položky DNS. ---> System .NET. Sockets. SocketException: žádný takový hostitel není známý v System .NET. DNS. GetAddrInfo (název řetězce) na System .NET. DNS. InternalGetHostByName (řetězec hostName, Boolean includeIPv6) na System .NET. DNS. GetHostEntry (String hostNameOrAddress ) v typu System. ServiceModel. Channels. DnsCache. Resolve (identifikátor URI URI)---konci trasování zásobníku vnitřních výjimek---trasování zásobníku serveru: v System. ServiceModel. Channels. DnsCache. Resolve (identifikátor URI URI) 
+1.  Check whether the error log contains the following:
+
+    ```Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)```
     
-        **Řešení:** Problém můžete vyřešit pomocí jedné z následujících dvou akcí:
-         1. Vložte všechny uzly do stejné domény.
-         2. Přidejte IP adresu do mapování hostitele ve všech souborech hostitelů hostovaného virtuálního počítače.
+1. To resolve the issue, try one or both of the following methods:
+    - Put all the nodes in the same domain.
+    - Add the IP to host mapping in all the hosted VM's host files.
 
 
-## <a name="next-steps"></a>Další kroky
+## Next steps
 
-Pro další nápovědu k řešení potíží zkuste tyto prostředky:
+For more help with troubleshooting, try the following resources:
 
-*  [Blog věnovaný Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-*  [Průvodce výkonem datových toků mapování ADF](concepts-data-flow-performance.md)
+*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory feature requests](https://feedback.azure.com/forums/270578-data-factory)
+*  [Azure videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [MSDN forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Stack overflow forum for Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Twitter information about Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Mapping data flows performance guide](concepts-data-flow-performance.md)

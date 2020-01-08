@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e08860579ca3a18093375652e0243c994c66d75b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 93e53362257126130438d75da1c9b7ee5cac8e68
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795663"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663137"
 ---
-Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-subscription-service-limits.md#networking-limits).
+Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 Na následujícím obrázku jsou virtuální počítače vyobrazené jako webové a databázové servery. Každá sada virtuálních počítačů je zařazena do oddělené podsítě VNet.
 

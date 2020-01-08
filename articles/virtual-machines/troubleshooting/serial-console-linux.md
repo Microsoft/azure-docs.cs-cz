@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c1ca3ac55c1c995ac858e758d6930b49c5ea1c
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: abee04afca45a2d6f558858b4490c8be1f37a2f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451286"
 ---
 # <a name="azure-serial-console-for-linux"></a>Sériová konzola Azure pro Linux
 
@@ -29,7 +29,7 @@ Sériová konzola funguje stejným způsobem pro virtuální počítače a insta
 Dokumentaci k sériové konzole pro Windows najdete v tématu [sériová Konzola pro Windows](../windows/serial-console.md).
 
 > [!NOTE]
-> Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure. Zatím není k dispozici v Azure government nebo Azure China cloudy.
+> Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure a ve veřejné verzi Preview v Azure Government. Ještě není k dispozici v cloudu Azure Čína.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -38,7 +38,7 @@ Dokumentaci k sériové konzole pro Windows najdete v tématu [sériová Konzola
 
 - Váš účet, který používá sériová konzola, musí mít [roli Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a účet úložiště [diagnostiky spouštění](boot-diagnostics.md) .
 
-- Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí mít uživatele založené na heslech. Můžete ho vytvořit pomocí funkce [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) rozšíření pro přístup k virtuálním počítačům. V části **Podpora a řešení potíží** vyberte **resetovat heslo** .
+- Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí mít uživatele založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu.
 
 - Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí mít povolenou [diagnostiku spouštění](boot-diagnostics.md) .
 
@@ -92,16 +92,16 @@ Ve výchozím nastavení mají všechny odběry povolený přístup pomocí sér
 ## <a name="serial-console-security"></a>Zabezpečení konzoly sériového portu
 
 ### <a name="access-security"></a>Zabezpečení přístupu
-Přístup ke konzole sériového portu je omezený na uživatele, kteří mají roli přístupu [přispěvatele virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nebo vyšší k virtuálnímu počítači. Pokud váš Azure Active Directory tenant vyžaduje vícefaktorové ověřování (MFA), bude mít přístup ke konzole sériového portu taky MFA, protože přístup ke konzole sériového prostředí probíhá přes [Azure Portal](https://portal.azure.com).
+Přístup ke konzole sériového portu je omezená na uživatele, kteří mají roli přístup z [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nebo vyšší, k virtuálnímu počítači. Pokud váš tenant Azure Active Directory vyžaduje vícefaktorové ověřování (MFA), je přístup ke konzole sériového portu bude také nutné vícefaktorové ověřování, protože přístup ke konzole sériového portu, je prostřednictvím [webu Azure portal](https://portal.azure.com).
 
 ### <a name="channel-security"></a>Zabezpečení kanálu
 Přenosu se šifrují všechna data, která se odešle vpřed a zpět.
 
 ### <a name="audit-logs"></a>Protokoly auditu
-Veškerý přístup ke konzole sériového portu je aktuálně přihlášený k protokolům [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) virtuálního počítače. Přístup k tyto protokoly jsou vlastněné a řídí správce virtuálních počítačů Azure.
+Veškerý přístup ke konzole sériového portu je aktuálně přihlášen [Diagnostika spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) protokoly virtuálního počítače. Přístup k tyto protokoly jsou vlastněné a řídí správce virtuálních počítačů Azure.
 
 > [!CAUTION]
-> Žádná hesla přístup pro konzolu jsou protokolovány. Nicméně pokud příkazy se spouští v rámci konzoly obsahovat nebo výstup hesla, tajné kódy, uživatelská jména nebo jakoukoli jinou formu identifikovatelné osobní údaje (PII), ty se zapíšou do protokolů diagnostiky spouštění virtuálního počítače. Se zapíšou spolu s všechny ostatní viditelného textu, jako součást provádění konzoly sériového portu přejděte zpět funkce. Tyto protokoly jsou cyklické a přístup k nim mají pouze uživatelé, kteří mají oprávnění ke čtení pro účet úložiště diagnostiky. Však doporučujeme osvědčený postup pomocí vzdálené plochy pro všechno, co, která může zahrnovat tajné kódy a/nebo identifikovatelné osobní údaje.
+> Žádná hesla přístup pro konzolu jsou protokolovány. Nicméně pokud příkazy se spouští v rámci konzoly obsahovat nebo výstup hesla, tajné kódy, uživatelská jména nebo jakoukoli jinou formu identifikovatelné osobní údaje (PII), ty se zapíšou do protokolů diagnostiky spouštění virtuálního počítače. Se zapíšou spolu s všechny ostatní viditelného textu, jako součást provádění konzoly sériového portu přejděte zpět funkce. Tyto protokoly jsou cyklické a přístup k nim mají pouze uživatelé, kteří mají oprávnění ke čtení pro účet úložiště diagnostiky. Pokud zadáváte nějaké příkazy pro práci s daty, které obsahují tajná data nebo PII, doporučujeme použít SSH, pokud není bezpodmínečně nutné použít sériová konzola.
 
 ### <a name="concurrent-usage"></a>Souběžné používání
 Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úspěšně požaduje přístup k tomuto virtuálnímu počítači stejný, bude první uživatel odpojen a druhý uživatel se připojil do stejné relace.
@@ -113,7 +113,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 Přístupnost je klíčovým fokusem pro konzolu sériového rozhraní Azure. Za tímto účelem jsme zajistili, že sériová konzola je plně přístupná.
 
 ### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice
-Pomocí klávesy **TAB** na klávesnici přejděte v rozhraní sériové konzoly z Azure Portal. Vaše poloha budou zvýrazněny na obrazovce. Pokud chcete opustit okno konzoly sériového portu, stiskněte klávesu **Ctrl**+**F6** na klávesnici.
+Použití **kartu** kláves na klávesnici a přejděte v konzole sériového portu rozhraní na webu Azure Portal. Vaše poloha budou zvýrazněny na obrazovce. Pokud chcete nechat fokus z okna konzoly sériového portu, stiskněte klávesu **Ctrl**+**F6** na klávesnici.
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Použití sériové konzoly se čtečkou obrazovky
 Konzole sériového portu je integrované podpoře čtečky obrazovky. Navigace pomocí čtečky obrazovky zapnuté vám umožní alternativní text pro aktuálně vybrané tlačítko nahlas číst čtečka obrazovky.
@@ -123,7 +123,7 @@ O některých problémech se používá konzola sériového portu a operační s
 
 Problém                           |   Omezení rizik
 :---------------------------------|:--------------------------------------------|
-Stisknutí klávesy **ENTER** po nápisu připojení nezpůsobí zobrazení výzvy k přihlášení. | Další informace najdete v tématu o tom, že [ENTER nedělá nic](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). K tomuto problému může dojít, pokud máte spuštěný vlastní virtuální počítač, zesílené zařízení nebo GRUB config, které způsobí, že se Linux nepřipojí k sériovému portu.
+Stisknutím klávesy **Enter** po připojení banner nezpůsobí výzvě přihlášení má být zobrazen. | Další informace najdete v tématu [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). K tomuto problému může dojít, pokud máte spuštěný vlastní virtuální počítač, zesílené zařízení nebo GRUB config, které způsobí, že se Linux nepřipojí k sériovému portu.
 Text Sériová konzola zabírá pouze část velikosti obrazovky (často po použití textového editoru). | Sériové konzoly nepodporují vyjednávání o velikosti okna ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), což znamená, že nebude k dispozici žádný signál SIGWINCH k aktualizaci velikosti obrazovky a virtuální počítač nebude mít žádné znalosti o velikosti terminálu. Nainstalujte xterm nebo podobný nástroj, který vám poskytne příkaz `resize` a potom spusťte `resize`.
 Vkládání dlouhé řetězce nebude fungovat. | Konzole sériového portu omezení délky řetězce do terminálu na 2 048 znaků, aby se zabránilo přetížení šířky pásma sériového portu.
 Nestabilní vstup klávesnice v obrázcích SLES BYOS. Vstup z klávesnice je jenom zřídka rozpoznaný. | Jedná se o problém s balíčkem Plymouth. Plymouth by se nemělo spouštět v Azure, protože nepotřebujete úvodní obrazovku a Plymouth brání možnosti platformy používat sériovou konzolu. Odeberte Plymouth pomocí `sudo zypper remove plymouth` a pak restartujte počítač. Případně můžete upravit řádek jádra GRUB config tak, že na konec řádku připojíte `plymouth.enable=0`. To můžete provést [úpravou spouštěcí položky při spuštění](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)nebo úpravou GRUB_CMDLINE_LINUXho řádku v `/etc/default/grub`, opětovným sestavením GRUB pomocí `grub2-mkconfig -o /boot/grub2/grub.cfg`a následným restartováním.
@@ -133,11 +133,11 @@ Nestabilní vstup klávesnice v obrázcích SLES BYOS. Vstup z klávesnice je je
 
 **Otázka: Jak mohu odeslat zpětnou vazbu?**
 
-A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese https://aka.ms/serialconsolefeedback. Případně (méně upřednostňovaná) můžete odeslat zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo ve https://feedback.azure.comkategorie virtuálního počítače.
+A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese https://aka.ms/serialconsolefeedback. Můžete také (méně upřednostňované), můžete odeslat zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuální počítač https://feedback.azure.com.
 
 **Otázka: podporuje konzola sériového kopírování/vkládání?**
 
-A. Ano. K zkopírování a vložení do terminálu použijte **kombinaci kláves ctrl**+**SHIFT**+**C** a **CTRL**+**SHIFT**+**V** .
+A. Ano. Použití **Ctrl**+**Shift**+**C** a **Ctrl**+**Shift** + **V** zkopírovat a vložit do terminálu.
 
 **Otázka: můžu použít sériovou konzolu místo připojení SSH?**
 
@@ -169,7 +169,7 @@ A. Ano. Vzhledem k tomu, že konzola sériového portu nevyžaduje klíče SSH, 
 ## <a name="next-steps"></a>Další kroky
 * Použijte konzolu sériového [přístupu pro přístup k grub a jednomu uživatelskému režimu](serial-console-grub-single-user-mode.md).
 * Použijte konzolu sériového rozhraní pro [volání NMI a SysRq](serial-console-nmi-sysrq.md).
-* Naučte se používat konzolu sériového portu k [Povolení GRUB v různých distribuce](serial-console-grub-proactive-configuration.md) . 
+* Naučte se používat konzolu sériového portu k [Povolení GRUB v různých distribuce](serial-console-grub-proactive-configuration.md) .
 * Pro [virtuální počítače s Windows](../windows/serial-console.md)je dostupná taky konzola sériového portu.
-* Přečtěte si další informace o [diagnostice spouštění](boot-diagnostics.md).
+* Další informace o [Diagnostika spouštění](boot-diagnostics.md).
 

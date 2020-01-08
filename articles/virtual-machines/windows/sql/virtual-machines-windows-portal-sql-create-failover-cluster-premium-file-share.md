@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792203"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464992"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na virtuálních počítačích Azure
 
@@ -71,7 +71,7 @@ Pokud chcete porovnat BYOL s průběžnými platbami a licencováním pro SQL Se
 
 FILESTREAM není podporován pro cluster s podporou převzetí služeb při selhání se sdílenou složkou Premium. Pokud chcete použít FILESTREAM, nasaďte cluster pomocí [prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -84,7 +84,6 @@ Před dokončením kroků v tomto článku byste už měli mít:
    - IP adresa pro každý FCI.
 - Služba DNS konfigurovaná na síti Azure odkazuje na řadiče domény.
 - [Prémiová sdílená složka](../../../storage/files/storage-how-to-create-premium-fileshare.md) na základě kvóty úložiště vaší databáze pro vaše datové soubory.
-- Sdílená složka pro zálohy, která se liší od sdílené složky Premium používané pro vaše datové soubory. Tato sdílená složka může být buď Standard, nebo Premium.
 
 V rámci těchto požadavků můžete začít vytvářet cluster s podporou převzetí služeb při selhání. Prvním krokem je vytvoření virtuálních počítačů.
 
@@ -100,7 +99,7 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
 
    1. V Azure Portal vyberte **vytvořit prostředek** a otevřete Azure Marketplace. Vyhledejte **skupinu dostupnosti**.
    1. Vyberte **skupinu dostupnosti**.
-   1. Vyberte **Create** (Vytvořit).
+   1. Vyberte **Vytvořit**.
    1. V části **vytvořit skupinu dostupnosti**zadejte tyto hodnoty:
       - **Name (název**): název skupiny dostupnosti.
       - **Předplatné**: vaše předplatné Azure.
@@ -144,7 +143,7 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
    1. Vyberte výchozí instanci.
    1. Odeberte všechny funkce ve **službě databázového stroje**. Neodstraňujte **sdílené funkce**. Uvidíte něco podobného jako na následujícím snímku obrazovky:
 
-        ![Výběr funkcí](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+        ![Vybrat funkce](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. Vyberte **Další**a pak vyberte **Odebrat**.
 
@@ -220,14 +219,14 @@ Pokud chcete cluster ověřit pomocí uživatelského rozhraní, proveďte násl
 
 1. V části **Správce serveru**vyberte **nástroje**a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
 1. V části **Správce clusteru s podporou převzetí služeb při selhání**vyberte **Akce**a pak vyberte **ověřit konfiguraci**.
-1. Vyberte **Další**.
+1. Vyberte **Next** (Další).
 1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Další**.
+1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Next** (Další).
 1. V části **Výběr testu**vyberte všechny testy s výjimkou **úložiště** a **prostory úložiště s přímým přístupem**, jak je znázorněno zde:
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="Výběr testů pro ověření clusteru":::
 
-1. Vyberte **Další**.
+1. Vyberte **Next** (Další).
 1. V části **potvrzení**vyberte **Další**.
 
 **Průvodce ověřením konfigurace** spustí ověřovací testy.
@@ -326,7 +325,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Vyberte **Přidat**. Vyhledejte **Load Balancer**Azure Marketplace. Vyberte **Load Balancer**.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 1. Nástroj pro vyrovnávání zatížení nastavte pomocí následujících hodnot:
 
@@ -357,7 +356,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Výběrem **OK** vytvořte fond back-end.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Konfigurace sondy stavu nástroje pro vyrovnávání zatížení
+### <a name="configure-a-load-balancer-health-probe"></a>Nakonfigurovat sondu stavu nástroje pro vyrovnávání zatížení
 
 1. V okně nástroje pro vyrovnávání zatížení vyberte **sondy stavu**.
 
@@ -431,7 +430,7 @@ Po nastavení sondy clusteru můžete zobrazit všechny parametry clusteru v pro
 
 ## <a name="step-8-test-fci-failover"></a>Krok 8: testování převzetí služeb při selhání FCI
 
-Testovací převzetí služeb při selhání pro FCI k ověření funkčnosti clusteru. Proveďte následující kroky:
+Testovací převzetí služeb při selhání pro FCI k ověření funkčnosti clusteru. Postupujte následovně:
 
 1. Připojte se k jednomu z SQL Server uzlů clusteru FCI pomocí protokolu RDP.
 

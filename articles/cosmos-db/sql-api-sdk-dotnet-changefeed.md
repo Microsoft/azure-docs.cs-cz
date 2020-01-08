@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: rozhraní API pro změny rozhraní .NET, sada SDK & prostředky'
+title: Azure Cosmos DB rozhraní API změny rozhraní .NET pro zpracování kanálu, poznámky k verzi sady SDK
 description: Seznamte se s rozhraním API pro změny kanálu a sadou SDK včetně data vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi sady SDK pro změny rozhraní .NET pro zpracování datových kanálů.
 author: ealsur
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: bd727e9c68a34c8e182a6726b257a6bf37178837
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444862"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro rozhraní Change feed pro .NET: stažení a poznámky k verzi
 
@@ -37,7 +37,7 @@ ms.locfileid: "74306773"
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní API pro změnu knihovny procesoru v informačním kanálu](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Začínáme**|[Začínáme s rozhraním .NET SDK Change feed Processor](change-feed.md)|
-|**Aktuální podporovaná architektura**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Aktuální podporované architektury**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
 > Pokud používáte procesor Change feed, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](change-feed-processor.md), která obsahuje kanál změn integrovaný do sady SDK. 
@@ -172,7 +172,7 @@ ms.locfileid: "74306773"
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
 
-Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** .
+Microsoft bude poskytovat oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 
@@ -180,7 +180,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 <br/>
 
-| Version | Datum vydání | Datum vyřazení z provozu |
+| Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
 | [2.2.8](#2.2.8) |28. října 2019 |--- |
 | [2.2.7](#2.2.7) |14. května 2019 |--- |
@@ -188,7 +188,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [2.2.5](#2.2.5) |13. prosince 2018 |--- |
 | [2.2.4](#2.2.4) |29. listopadu 2018 |--- |
 | [2.2.3](#2.2.3) |19. listopadu 2018 |--- |
-| [bodě](#2.2.2) |31. října 2018 |--- |
+| [2.2.2](#2.2.2) |31. října 2018 |--- |
 | [2.2.1](#2.2.1) |24. října 2018 |--- |
 | [1.3.3](#1.3.3) |8\. května 2018 |--- |
 | [1.3.2](#1.3.2) |18. dubna 2018 |--- |
@@ -198,10 +198,10 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [1.1.0](#1.1.0) |13. srpna 2017 |--- |
 | [1.0.0](#1.0.0) |7\. července 2017 |--- |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
+Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.

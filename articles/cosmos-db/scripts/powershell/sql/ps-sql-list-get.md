@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní API pro SQL (jádro)
+title: Skript PowerShellu pro výpis a získání operací pro rozhraní API pro Azure Cosmos DB SQL (jádro)
 description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní API pro SQL (jádro)
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4544b1d3346128f8ad88c2b0e123145f4e0632a6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1590136aa000538f6d176364fca22b353d4a48a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445010"
 ---
 # <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Vypíše a získá databáze a kontejnery pro rozhraní API Azure Cosmos DB-SQL (Core).
 

@@ -8,30 +8,30 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 31a9da0678f602afcc117e5b2f7927af379da668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468891"
 ---
 Služba Azure Managed disks v současné době nabízí čtyři typy disků. každý typ je zaměřený na konkrétní scénáře zákazníků.
 
 ## <a name="disk-comparison"></a>Porovnání disků
 
-V následující tabulce najdete porovnání disků Ultra, Premium Solid-State-Drives (SSD), Standard SSD a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou rozhodnout se, co se má použít.
+V následující tabulce najdete porovnání disků Ultra, Premium Solid-State Drives (SSD), Standard SSD a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou rozhodnout se, co použít.
 
-|   | Ultra disk   | Premium SSD   | SSD úrovně Standard   | Standard HDD   |
+|   | Disky Ultra   | Premium SSD   | SSD úrovně Standard   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
-|Scénář   |Úlohy náročné na v/v, jako jsou [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, lehce používané podnikové aplikace a vývoj a testování   |Zálohování, Nekritická, zřídka přístup   |
-|Maximální velikost disku   |65 536 gibibajt (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
-|Maximální propustnost   |soubory MiB 2 000/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maximální IOPS   |160 000    |20,000   |6,000   |2,000   |
+|Scénář   |Úlohy náročné na v/v, jako jsou [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používané podnikové aplikace a vývoj či testování   |Zálohování, úlohy, které nejsou kritické a používají se zřídka   |
+|Maximální velikost disku   |65 536 gibibajtů (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
+|Maximální propustnost   |2 000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximální počet vstupně-výstupních operací za sekundu   |160 000    |20,000   |6,000   |2 000   |
 
-## <a name="ultra-disk"></a>Ultra disk
+## <a name="ultra-disk"></a>Disky Ultra
 
-Disky Azure Ultra poskytují vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure s IaaS. Mezi další výhody prostředí Ultra disks patří schopnost dynamicky měnit výkon disku společně s vašimi úlohami, aniž by bylo potřeba restartovat virtuální počítač. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou SAP HANA, databáze nejvyšší úrovně a zatížení náročné na transakce. Disky Ultra se dají používat jenom jako datové disky. Jako disky s operačním systémem doporučujeme používat prémiové SSD.
+Disky Azure Ultra zajišťují vysokou propustnost, vysoké IOPS a představují konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure IaaS. Mezi další výhody prostředí Ultra disks patří schopnost dynamicky měnit výkon disku společně s vašimi úlohami, aniž by bylo potřeba restartovat virtuální počítač. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou úlohy SAP HANA, databáze nejvyšší úrovně a úlohy s velkým počtem transakcí. Disky tohoto typu se dají používat jen jako datové disky. Jako disky s operačním systémem doporučujeme používat disky SSD úrovně Premium.
 
 ### <a name="performance"></a>Výkon
 
@@ -51,12 +51,12 @@ Mezi klíčové funkce Ultra diskù patří:
 |4     |1,200         |300         |
 |8     |2,400         |600         |
 |16     |4,800         |1,200         |
-|32     |9 600         |2,000         |
-|64     |19 200         |2,000         |
-|128     |38 400         |2,000         |
-|256     |76 800         |2,000         |
-|512     |80,000         |2,000         |
-|1024 – 65536 (velikosti v tomto rozsahu se zvyšují v přírůstcích po 1 TiB)     |160 000         |2,000         |
+|32     |9 600         |2 000         |
+|64     |19 200         |2 000         |
+|128     |38 400         |2 000         |
+|256     |76 800         |2 000         |
+|512     |80,000         |2 000         |
+|1024 – 65536 (velikosti v tomto rozsahu se zvyšují v přírůstcích po 1 TiB)     |160 000         |2 000         |
 
 ### <a name="ga-scope-and-limitations"></a>Rozsah a omezení GA
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450667"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly v Azure Monitor
 
@@ -24,7 +24,7 @@ Soubory protokolů, které mají být shromažďovány, se musí shodovat s nás
 
 - Protokol musí mít buď jednu položku na řádek, nebo použít časové razítko, které odpovídá jednomu z následujících formátů na začátku každé položky.
 
-    RRRR-MM-DD HH: MM: SS<br>M/D/RRRR HH: MM: SS AM/PM<br>Mon DD, RRRR HH: MM: SS<br />rrmmdd HH: mm: SS<br />ddMMyy HH: mm: SS<br />MMM d hh: mm: SS<br />dd/MMM/rrrr: HH: mm: SS ZZZ<br />RRRR-MM-ddTHH: mm: ssK
+    RRRR-MM-DD HH: MM: SS<br>M/D/RRRR HH: MM: SS AM/PM<br>Mon DD, RRRR HH: MM: SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH: mm: SS<br />MMM d hh: mm: SS<br />dd/MMM/rrrr: HH: mm: SS ZZZ<br />yyyy-MM-ddTHH:mm:ssK
 
 - Soubor protokolu nesmí umožňovat cyklické protokolování nebo otočení v protokolu, kde je soubor přepsán novými položkami.
 - Soubor protokolu musí používat kódování ASCII nebo UTF-8.  Jiné formáty jako UTF-16 se nepodporují.
@@ -52,7 +52,7 @@ Průvodce vlastním protokolem se spouští v Azure Portal a umožňuje definova
 
 1. V Azure Portal vyberte **Log Analytics pracovní prostory** > > **Rozšířená nastavení**.
 2. Klikněte na **Data** > **vlastní protokoly**.
-3. Ve výchozím nastavení jsou všechny změny konfigurace automaticky vloženy do všech agentů. Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.
+3. Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů. Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.
 4. Kliknutím na tlačítko **Přidat +** otevřete Průvodce vlastním protokolem.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Krok 2. Nahrát a analyzovat ukázkový protokol
@@ -77,8 +77,8 @@ Následující tabulka uvádí příklady platných vzorů k určení různých 
 
 | Popis | Cesta |
 |:--- |:--- |
-| Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs.\\\*. txt |
-| Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log\*. txt |
+| Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs\\\*.txt |
+| Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log\*.txt |
 | Všechny soubory v */var/log/audit* s příponou. txt v agentovi Linux |/var/log/audit/*. txt |
 | Všechny soubory v */var/log/audit* s názvem začínajícím protokolem a příponou. txt v agentovi Linux |/var/log/audit/log\*. txt |
 
@@ -87,7 +87,7 @@ Následující tabulka uvádí příklady platných vzorů k určení různých 
 3. Opakujte tento postup pro všechny další cesty.
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Zadejte název a popis protokolu.
-Název, který zadáte, bude použit pro typ protokolu, jak je popsáno výše.  Bude vždycky končit _CL a odlišit ho jako vlastní protokol.
+Název, který zadáte, bude použit pro typ protokolu, jak je popsáno výše.  Bude vždycky končit _CL, aby ho rozlišil jako vlastní protokol.
 
 1. Zadejte název protokolu.  Přípona **\_CL** se poskytuje automaticky.
 2. Přidejte volitelný **Popis**.
@@ -123,7 +123,7 @@ Vlastní záznamy protokolu mají typ s názvem protokolu, který zadáte, a vla
 | TimeGenerated |Datum a čas, kdy byl záznam shromážděn nástrojem Azure Monitor.  Pokud protokol používá oddělovač založený na čase, pak se jedná o čas získaný z položky. |
 | SourceSystem |Typ agenta, ze kterého byl záznam shromážděn <br> OpsManager – Agent pro Windows, buď Direct Connect, nebo System Center Operations Manager <br> Linux – všichni agenti se systémem Linux |
 | RawData |Celý text shromážděné položky Tato data pravděpodobně budete chtít [analyzovat do jednotlivých vlastností](../log-query/parse-text.md). |
-| ManagementGroupName |Název skupiny pro správu pro agenty služby System Center Operations Management Agents.  Pro jiné agenty se jedná o AOI\<ID pracovního prostoru\> |
+| ManagementGroupName |Název skupiny pro správu pro agenty služby System Center Operations Management Agents.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Ukázkový návod k přidání vlastního protokolu
@@ -146,12 +146,12 @@ Soubory protokolu se budou nacházet v *C:\MyApp\Logs*.  Každý den se vytvoř�
 ![Cesta ke kolekci protokolů](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>Zadejte název a popis protokolu.
-Používáme název *MyApp_CL* a typ v **popisu**.
+Používáme název *MyApp_CL* a do **popisu**zadáte.
 
 ![Název protokolu](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Ověření, jestli se vlastní protokoly shromažďují
-K vrácení všech záznamů ze shromážděného protokolu používáme jednoduchý dotaz na *MyApp_CL* .
+K vrácení všech záznamů z shromážděného protokolu používáme jednoduchý dotaz na *MyApp_CL* .
 
 ![Dotaz protokolu bez vlastních polí](media/data-sources-custom-logs/query-01.png)
 
@@ -170,4 +170,4 @@ V případech, kdy vaše data nejde shromažďovat s vlastními protokoly, zvaž
 
 ## <a name="next-steps"></a>Další kroky
 * Metody pro analýzu jednotlivých importovaných položek protokolu na více vlastností naleznete v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md) .
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.

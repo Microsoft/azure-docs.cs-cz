@@ -1,6 +1,6 @@
 ---
-title: Ověřování platformy Microsoft Identity Platform (verze 1.0) | Azure
-description: Seznamte se se základy ověřování v Microsoft Identity Platform – modelu aplikace, rozhraní API, zřizování a nejběžnějších scénářů ověřování, které platforma Microsoft identity podporuje.
+title: Azure AD pro vývojáře (v 1.0) | Azure
+description: Naučte se základy ověřování pro Azure AD pro vývojáře (v 1.0), jako je model aplikace, rozhraní API, zřizování a nejběžnější scénáře ověřování.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 445f301e2a526dc8f9e2c261e897fe8b1abe2f1e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 783c840c4cfe2d8a1d2533e68d14f7b4a3993e64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423329"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 
@@ -31,14 +31,14 @@ ms.locfileid: "74966771"
 
 *Autorizace* je udělení oprávnění ověřenému objektu zabezpečení, aby mohl něco provést. Určuje, ke kterým datům máte povolený přístup a co s nimi můžete dělat. V angličtině se pro autorizaci někdy používá zkrácené slovo AuthZ.
 
-Microsoft Identity Platform usnadňuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly, jako je OAuth 2,0 a OpenID Connect, a také open source knihovny pro různé platformy. pomůže vám rychle začít vytvářet kódování.
+Azure Active Directory pro vývojáře (v 1.0) (Azure AD) zjednodušuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open source knihovny. pro různé platformy, které vám pomůžou rychle začít vytvářet kódování.
 
-V programovacím modelu Microsoft Identity Platform se nacházejí dva primární případy použití:
+V modelu programování Azure AD existují dva hlavní případy použití:
 
 * Během toku udělení autorizace OAuth 2.0 – když vlastník prostředku udělí autorizaci klientské aplikaci, čímž klientovi umožní přístup k prostředkům vlastníka prostředku.
 * Během přístupu k prostředkům ze strany klienta – podle implementace serverem prostředků, využívání hodnot deklarace identity přítomných v přístupovém tokenu k rozhodování o řízení přístupu na jejich základě.
 
-## <a name="authentication-basics-in-microsoft-identity-platform"></a>Základy ověřování v platformě Microsoft Identity Platform
+## <a name="authentication-basics-in-azure-ad"></a>Základy ověřování v Azure AD
 
 Představme si nejzákladnější scénář, ve kterém se vyžaduje identita: uživatel ve webovém prohlížeči se musí ověřit pro webovou aplikaci. Tento scénář je znázorněný na následujícím diagramu:
 
@@ -46,9 +46,9 @@ Představme si nejzákladnější scénář, ve kterém se vyžaduje identita: u
 
 O různých komponentách na obrázku potřebujete vědět tohle:
 
-* Microsoft Identity Platform je poskytovatel identity. Zprostředkovatel identity je zodpovědný za ověření identity uživatelů a aplikací existujících v adresáři organizace a při úspěšném ověření těchto uživatelů a aplikací vydává tokeny zabezpečení.
-* Aplikace, která chce externí ověřování na platformě Microsoft identity, musí být registrovaná v Azure Active Directory (Azure AD). Azure AD aplikaci zaregistruje a jednoznačně identifikuje v adresáři.
-* Vývojáři mohou pomocí Open Source knihoven ověřování Microsoft Identity Platform provádět ověřování snadno pomocí zpracování detailů protokolu. Další informace najdete v tématu knihovny ověřování Microsoft Identity Platform [v 2.0](reference-v2-libraries.md) a [knihovny ověřování v 1.0](active-directory-authentication-libraries.md).
+* Azure AD je zprostředkovatelem identity. Zprostředkovatel identity je zodpovědný za ověření identity uživatelů a aplikací existujících v adresáři organizace a při úspěšném ověření těchto uživatelů a aplikací vydává tokeny zabezpečení.
+* Aplikace, která chce externí ověřování ve službě Azure AD, musí být registrovaná v Azure Active Directory (Azure AD). Azure AD aplikaci zaregistruje a jednoznačně identifikuje v adresáři.
+* Vývojáři můžou využívat opensourcové knihovny ověřování Azure AD, které ověřování usnadňují tím, že podrobnosti protokolu zpracují za vás. Další informace najdete v tématu knihovny ověřování Microsoft Identity Platform [v 2.0](reference-v2-libraries.md) a [knihovny ověřování v 1.0](active-directory-authentication-libraries.md).
 * Po ověření uživatele musí aplikace ověřit uživatelův token zabezpečení, aby bylo celé ověření úspěšné. K dispozici jsou rychlé starty, kurzy a ukázky kódu v různých jazycích a architekturách, které ukazují, co musí aplikace dělat.
   * Pokud chcete rychle vytvořit aplikaci a přidat funkce, jako jsou získání tokenů, aktualizace tokenů, přihlášení uživatele, zobrazení některých informací o uživateli a další, projděte si v dokumentaci sekci **Rychlé starty**.
   * Pokud chcete získat podrobné postupy založené na scénářích pro hlavní ověřovací úkoly pro vývojáře, jako jsou získání přístupových tokenů a jejich používání ve volání rozhraní API Microsoft Graph a dalších rozhraní API, implementace přihlášení s Microsoftem v tradiční aplikaci založené na webovém prohlížeči pomocí OpenID Connect a další úkoly, projděte si v dokumentaci sekci **Kurzy**.
@@ -62,39 +62,39 @@ Ve výše popsaném příkladu scénáře můžete aplikace klasifikovat podle t
 
 ### <a name="how-each-flow-emits-tokens-and-codes"></a>Jak každý tok generuje tokeny a kódy
 
-V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných platformou Microsoft identity.  Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf poskytuje přehled:
+V závislosti na tom, jak je váš klient sestavený, může použít jeden (nebo několik) toků ověřování podporovaných službou Azure AD. Tyto toky můžou vytvářet různé tokeny (id_tokens, aktualizovat tokeny, přístupové tokeny) a také autorizační kódy a při práci vyžadovat jiné tokeny. Tento graf poskytuje přehled:
 
-|Tok | Vyžaduje | id_token | Přístupový token | aktualizovat token | autorizační kód | 
+|Tok | Vyžaduje | id_token | přístupový token | aktualizovat token | autorizační kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Tok autorizačního kódu](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Implicitní tok](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybridní tok OIDC](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
 |[Aktualizovat uplatnění tokenu](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | aktualizovat token | x | x | x| |
-|[Tok On-Behalf-Of](v1-oauth2-on-behalf-of-flow.md) | Přístupový token| x| x| x| |
+|[Tok On-Behalf-Of](v1-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
 |[Přihlašovací údaje klienta](v1-oauth2-client-creds-grant-flow.md) | | | x (jenom aplikace)| | |
 
 Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nemají deklarace identity `groups` nebo `wids`. 
 
-Teď, když máte přehled základních informací, přečtěte si článek popisující model aplikace identity a rozhraní API, jak zřizování funguje na platformě Microsoft Identity Platform a odkazuje na podrobné informace o běžných scénářích, které Microsoft Identity Platform podporuje.
+Když teď máte přehled o základech, pokračujte ve čtení, abyste se seznámili s aplikačním modelem identity a rozhraním API, fungováním zřizování v Azure AD a odkazy na podrobné informace o běžných scénářích, které Azure AD podporuje.
 
 ## <a name="application-model"></a>Aplikační model
 
-Platforma Microsoft Identity reprezentuje aplikace podle konkrétního modelu, který je navržený tak, aby splňoval dvě hlavní funkce:
+Azure AD zastupuje aplikace podle konkrétního modelu, který je navržený k plnění dvou hlavních funkcí:
 
-* **Identifikovat aplikaci podle ověřovacího protokolu, který podporuje** – to zahrnuje vytvoření výčtu všech identifikátorů, adres URL, tajných kódů a souvisejících informací, které jsou potřeba během ověřování. Platforma Microsoft Identity Platform:
+* **Identifikovat aplikaci podle ověřovacího protokolu, který podporuje** – to zahrnuje vytvoření výčtu všech identifikátorů, adres URL, tajných kódů a souvisejících informací, které jsou potřeba během ověřování. Azure AD tady:
 
     * Obsahuje všechna data potřebná pro podporu ověřování v době běhu.
     * Obsahuje všechna data pro rozhodování o tom, k jakým prostředkům může aplikace potřebovat přístup a jestli by se měl daný požadavek splnit a za jakých okolností.
     * Poskytuje infrastrukturu pro implementaci zřizování aplikace v rámci tenanta vývojáře aplikace a do jakéhokoli jiného tenanta Azure AD.
 
-* **Zpracování souhlasu uživatele během doby žádosti o tokeny a usnadnění dynamického zřizování aplikací napříč klienty** – tady je platforma Microsoft Identity Platform:
+* **Zpracovat souhlas uživatele během žádosti o token a usnadnit dynamické zřizování aplikací mezi tenanty** – tady Azure AD:
 
     * Umožňuje uživatelům a správcům dynamicky udělovat nebo odepírat souhlas s tím, aby aplikace jejich jménem měla přístup k prostředkům.
     * Umožňuje správcům nakonec rozhodnout, co můžou aplikace provádět a kteří uživatelé můžou konkrétní aplikace používat a jak se přistupuje k prostředkům adresáře.
 
-V rámci Microsoft Identity Platform **objekt aplikace** popisuje aplikaci jako abstraktní entitu. Vývojáři pracují s aplikacemi. V době nasazení používá platforma Microsoft Identity Platform daný objekt aplikace jako podrobný plán k vytvoření **instančního**objektu, který představuje konkrétní instanci aplikace v rámci adresáře nebo tenanta. Právě instanční objekt definuje, co aplikace v konkrétním cílovém adresáři ve skutečnosti může dělat, kdo ji může používat, k jakým prostředkům má přístup a tak dále. Platforma Microsoft Identity Platform vytvoří instanční objekt z objektu aplikace prostřednictvím **souhlasu**.
+**Objekt aplikace** v Azure AD popisuje aplikaci jako abstraktní entitu. Vývojáři pracují s aplikacemi. Azure AD v době nasazení používá daný objekt aplikace jako podrobný plán k vytvoření **instančního objektu**, který představuje konkrétní instanci aplikace v rámci adresáře a tenanta. Právě instanční objekt definuje, co aplikace v konkrétním cílovém adresáři ve skutečnosti může dělat, kdo ji může používat, k jakým prostředkům má přístup a tak dále. Azure AD vytváří instanční objekt z objektu aplikace prostřednictvím **souhlasu**.
 
-Následující diagram znázorňuje zjednodušený postup zřizování platformy Microsoft Identity Platform založený na základě souhlasu.  V tomto případě existují dva klienty (a a B), kde tenant vlastní aplikaci a tenant B vytváří instanci aplikace prostřednictvím instančního objektu.  
+Následující diagram znázorňuje zjednodušený tok zřizování v Azure AD s využitím souhlasu.  V tomto případě existují dva klienty (a a B), kde tenant vlastní aplikaci a tenant B vytváří instanci aplikace prostřednictvím instančního objektu.  
 
 ![Zjednodušený tok zřizování s využitím souhlasu](./media/v1-authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
@@ -103,14 +103,14 @@ V tomto toku zřizování:
 1. Uživatel z tenanta B se pokusí přihlásit k aplikaci, koncový bod autorizace požaduje token pro aplikaci.
 1. Přihlašovací údaje uživatele se získávají a ověřují pro ověřování.
 1. Uživateli se zobrazí výzva k poskytnutí souhlasu aplikace, aby získala přístup k tenantovi B.
-1. Platforma Microsoft Identity Platform používá aplikační objekt v tenantovi A jako plán pro vytvoření instančního objektu v tenantovi B.
+1. Azure AD používá aplikační objekt v tenantovi A jako plán pro vytvoření instančního objektu v tenantovi B.
 1. Uživatel obdrží požadovaný token.
 
 Tento proces můžete libovolně opakovat pro další klienty (C, D a tak dále). Tenant A uchovává podrobný plán aplikace (objekt aplikace). Uživatelé a správci všech ostatních tenantů, kde aplikace obdrží souhlas, si zachovají kontrolu nad tím, co aplikace může dělat, prostřednictvím odpovídajícího instančního objektu v každém tenantovi. Další informace najdete v tématu [aplikační a instanční objekty v platformě Microsoft Identity Platform](app-objects-and-service-principals.md).
 
-## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>Deklarace identity v tokenech zabezpečení Microsoft Identity Platform
+## <a name="claims-in-azure-ad-security-tokens"></a>Deklarace identity v tokenech zabezpečení Azure AD
 
-Tokeny zabezpečení (přístup a tokeny ID) vydané platformou Microsoft Identity Platform obsahují deklarace identity nebo kontrolní výrazy informací o subjektu, který byl ověřen. Aplikace můžou deklarace identity používat pro různé úkoly, včetně:
+Tokeny zabezpečení (přístupové a ID tokeny) vydané službou Azure AD obsahují deklarace identity neboli tvrzení informací o subjektu, který byl ověřen. Aplikace můžou deklarace identity používat pro různé úkoly, včetně:
 
 * Ověření tokenu
 * Identifikace tenanta adresáře subjektu
@@ -119,7 +119,7 @@ Tokeny zabezpečení (přístup a tokeny ID) vydané platformou Microsoft Identi
 
 Deklarace identity přítomné v jakémkoli tokenu zabezpečení jsou závislé na typu tokenu, typu přihlašovacích údajů pro ověření uživatele a konfiguraci aplikace.
 
-V následující tabulce je uveden stručný popis každého typu deklarace vysílaný platformou Microsoft identity. Podrobnější informace najdete v tématu [přístupové tokeny](access-tokens.md) a [tokeny ID](id-tokens.md) vydané platformou Microsoft Identity Platform.
+Stručný popis každého typu deklarace identity vygenerovaného službou Azure AD najdete v následující tabulce. Podrobnější informace najdete v tématu [přístupové tokeny](access-tokens.md) a [tokeny ID](id-tokens.md) vydané službou Azure AD.
 
 | Deklarovat | Popis |
 | --- | --- |
@@ -142,7 +142,7 @@ V následující tabulce je uveden stručný popis každého typu deklarace vys�
 | ID tenanta | Obsahuje neměnný a jedinečný identifikátor tenanta adresáře, který token vydal. |
 | Živostnost tokenu | Definuje časový interval, ve kterém je token platný. |
 | Hlavní název uživatele | Obsahuje hlavní název uživatele subjektu. |
-| Version | Obsahuje číslo verze tokenu. |
+| Verze | Obsahuje číslo verze tokenu. |
 
 ## <a name="next-steps"></a>Další kroky
 

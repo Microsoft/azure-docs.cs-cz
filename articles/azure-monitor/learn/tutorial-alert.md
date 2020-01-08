@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 370d86ae28e49bba9681c6bdc81cc05b4e12a97b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e45e6fb38296c5f3337f9edfb50cd9548ca5e210
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398433"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorování a upozornění na stav aplikace pomocí Azure Application Insights
 
@@ -25,9 +25,9 @@ Získáte informace o těchto tématech:
 > * Vytvořit test dostupnosti pro nepřetržitou kontrolu odezvy aplikace
 > * Při výskytu problému poslat e-mail správcům
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 Vytvořte [prostředek Application Insights](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights).
 
@@ -35,7 +35,7 @@ Vytvořte [prostředek Application Insights](https://docs.microsoft.com/azure/az
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-availability-test"></a>Vytvořit test dostupnosti
+## <a name="create-availability-test"></a>Vytvoření testu dostupnosti
 
 Testy dostupnosti v Application Insights umožňují automaticky testovat aplikaci z různých míst po celém světě.   V tomto kurzu provedete test adresy URL, abyste zajistili, že vaše webová aplikace bude k dispozici.  Můžete také vytvořit kompletní návod k otestování jeho podrobné operace. 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397846"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Spojení v Azure Monitor dotazy protokolu
 
@@ -40,7 +40,7 @@ SecurityEvent
 
 V tomto příkladu se první datová sada filtruje pro všechny přihlašovací události. Je spojen s druhou datovou sadou, která filtruje všechny události odhlášení. Mezi plánované sloupce patří _Computer_, _account_, _TargetLogonId_a _TimeGenerated_. Datové sady jsou korelují sdíleným sloupcem, _TargetLogonId_. Výstupem je jeden záznam na korelační, který má jak přihlašovací, tak i čas odhlášení.
 
-Pokud obě datové sady mají sloupce se stejnými názvy, budou mít sloupce datové sady na pravé straně číslo indexu, takže v tomto příkladu by se výsledky zobrazovaly jako _TargetLogonId_ s hodnotami z levé tabulky a _TargetLogonId1_ s hodnotami. z tabulky na pravé straně. V tomto případě byl druhý sloupec _TargetLogonId1_ odstraněn pomocí operátoru `project-away`.
+Pokud obě datové sady mají sloupce se stejnými názvy, budou mít sloupce datové sady na pravé straně číslo indexu, takže v tomto příkladu by se v tomto příkladu zobrazily _TargetLogonId_ s hodnotami z tabulky na levé straně a _TargetLogonId1_ s hodnotami z tabulky na pravé straně. V tomto případě byl druhý sloupec _TargetLogonId1_ odstraněn pomocí operátoru `project-away`.
 
 > [!NOTE]
 > Chcete-li zvýšit výkon, zachovejte pouze příslušné sloupce spojených datových sad pomocí operátoru `project`.
@@ -83,7 +83,7 @@ Zadejte typ spojení s argumentem _druh_ . Každý typ provádí odlišnou shodu
 | Typ spojení | Popis |
 |:---|:---|
 | innerunique | Toto je výchozí režim připojení. Nejprve jsou nalezeny hodnoty odpovídající sloupce v levé tabulce a duplicitní hodnoty budou odebrány.  Pak se sada jedinečných hodnot bude shodovat s pravou tabulkou. |
-| vnořen | Ve výsledcích jsou zahrnuty pouze vyhovující záznamy v obou tabulkách. |
+| vnitřní | Ve výsledcích jsou zahrnuty pouze vyhovující záznamy v obou tabulkách. |
 | leftouter | Všechny záznamy v levé tabulce a vyhovující záznamy v pravé tabulce jsou zahrnuty ve výsledcích. Nespárované výstupní vlastnosti obsahují hodnoty null.  |
 | leftanti | Do výsledků jsou zahrnuty záznamy z levé strany, které nemají shodu s právem. Tabulka výsledků má pouze sloupce z levé tabulky. |
 | leftsemi | Do výsledků jsou zahrnuty záznamy z levé strany, které mají shodu s právem. Tabulka výsledků má pouze sloupce z levé tabulky. |

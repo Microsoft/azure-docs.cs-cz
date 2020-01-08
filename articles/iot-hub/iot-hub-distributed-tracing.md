@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953159"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457048"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -88,22 +88,23 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 ### <a name="clone-the-source-code-and-initialize"></a>Klonovat zdrojový kód a inicializovat
 
-1. Pro Visual Studio 2015 nebo 2017 nainstalujte [úlohu vývoj desktopových aplikací s C++názvem](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) .
+1. Nainstalujte ["vývoj desktopových C++aplikací" pomocí úlohy](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) pro Visual Studio 2019. Podporují se také sady Visual Studio 2017 a 2015.
 
 1. Nainstalujte [cmake](https://cmake.org/). Zadáním `cmake -version` z příkazového řádku se ujistěte, že je ve vašem `PATH`.
 
-1. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
+1. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujících příkazů naklonujte nejnovější verzi úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
 
     ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-1. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky.
+1. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
 
     ```cmd
-    cd azure-iot-sdk-c    
     mkdir cmake
     cd cmake
     cmake ..
@@ -263,7 +264,7 @@ AzureDiagnostics
 
 Příklady protokolů, jak je znázorněno Log Analytics:
 
-| TimeGenerated | OperationName | Kategorie | Level | CorrelationId | Trvání v MS | Vlastnosti |
+| TimeGenerated | OperationName | Kategorie | Úroveň | CorrelationId | Trvání v MS | Vlastnosti |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
 | 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |

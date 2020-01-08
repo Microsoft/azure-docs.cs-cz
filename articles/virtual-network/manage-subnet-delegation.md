@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 340c9192b43cbcf2daacfb791d85135518dd970c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6eab9ac7cf4547cb7fe3e736c16c3c0bd5f5bd9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747882"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425890"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Přidání nebo odebrání delegování podsítě
 
@@ -38,7 +38,7 @@ V této části vytvoříte virtuální síť a podsíť, které později delegu
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název | Zadejte *MyVirtualNetwork*. |
+    | Name (Název) | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.0.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
@@ -90,7 +90,7 @@ Následující příklad vytvoří skupinu prostředků **myResourceGroup** v um
 ```
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-Pomocí příkazu **az network vnet create** vytvořte virtuální síť **myVnet** s podsítí **mySubnet** ve skupině prostředků [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
+Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) vytvořte virtuální síť **myVnet** s podsítí **mySubnet** ve skupině prostředků **myResourceGroup**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -124,7 +124,7 @@ Pomocí [AZ Network VNet Subnet Update aktualizujte](https://docs.microsoft.com/
 K ověření použití delegování použijte [AZ Network VNet Subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Ověřte, zda je služba delegována do podsítě pod vlastností **ServiceName**:
 
 ```azurecli-interactive
-  az network vnet show \
+  az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
   --vnet-name myVnet

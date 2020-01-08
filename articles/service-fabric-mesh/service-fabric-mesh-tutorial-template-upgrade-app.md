@@ -1,30 +1,21 @@
 ---
-title: Kurz – Upgrade aplikace spuštěné ve službě Azure Service Fabric Mesh | Microsoft Docs
+title: Kurz – upgrade aplikace běžící v Azure Service Fabric sítě
 description: V tomto kurzu zjistíte, jak upgradovat aplikaci Service Fabric spuštěnou ve službě Service Fabric Mesh.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351726"
 ---
-# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Kurz: Upgrade aplikace Service Fabric spuštěné v Service Fabric mřížky
+# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Kurz: Upgrade aplikace Service Fabric spuštěné ve službě Service Fabric Mesh
 
-Tento kurz je třetí částí série. Dozvíte se, jak upgradovat aplikaci Service Fabric, která se [předtím nasadila do služby Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md), a to zvýšením množství přidělených prostředků CPU.  Jakmile budete hotovi, budete mít webová front-end služba spuštěná s vyšší prostředků procesoru.
+Tento kurz je třetí částí série. Dozvíte se, jak upgradovat aplikaci Service Fabric, která se [předtím nasadila do služby Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md), a to zvýšením množství přidělených prostředků CPU.  Až budete hotovi, budete mít webovou front-end službu spuštěnou s vyššími prostředky procesoru.
 
 Ve třetí části této série se naučíte:
 
@@ -34,7 +25,7 @@ Ve třetí části této série se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Nasazení aplikace do služby Service Fabric Mesh pomocí šablony](service-fabric-mesh-tutorial-template-deploy-app.md)
+> * [Nasadit aplikaci do služby Service Fabric Mesh pomocí šablony](service-fabric-mesh-tutorial-template-deploy-app.md)
 > * [Škálování aplikace spuštěné ve službě Service Fabric Mesh](service-fabric-mesh-tutorial-template-scale-services.md)
 > * Upgrade aplikace spuštěné ve službě Service Fabric Mesh
 > * [Odebrání aplikace](service-fabric-mesh-tutorial-template-remove-app.md)
@@ -53,13 +44,13 @@ Než začnete s tímto kurzem:
 
 Jednou z hlavních výhod nasazování aplikací do služby Service Fabric Mesh je možnost snadné aktualizace konfigurace aplikace.  Jedná se například o prostředky CPU nebo paměti pro vaše služby.
 
-Tento kurz jako příklad používá ukázku Seznam úkolů, která se [nasadila dříve](service-fabric-mesh-tutorial-template-deploy-app.md) a teď by měla být spuštěná. Aplikace má dvě služby: WebFrontEnd a ToDoService. Každá z těchto služeb byla původně nasazená s prostředky CPU nastavenými na hodnotu 0,5.  Pokud chcete zobrazit prostředky CPU pro službu WebFrontEnd, spusťte následující příkaz:
+Tento kurz jako příklad používá ukázku Seznam úkolů, která se [nasadila dříve](service-fabric-mesh-tutorial-template-deploy-app.md) a teď by měla být spuštěná. Aplikace obsahuje dvě služby: WebFrontEnd a ToDoService. Každá z těchto služeb byla původně nasazená s prostředky CPU nastavenými na hodnotu 0,5.  Pokud chcete zobrazit prostředky CPU pro službu WebFrontEnd, spusťte následující příkaz:
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-V šabloně nasazení pro prostředek aplikace má každá služba vlastnost *cpu*, kterou můžete použít k nastavení požadovaného množství prostředků CPU. Aplikace se může skládat z několika služeb, z nichž každá má jedinečné nastavení *cpu* a které se nasazují a spravují společně. Pokud chcete zvýšit prostředků procesoru webovou front-end službu, upravte *cpue* hodnota v souboru šablony nebo parametrů nasazení.  Potom aplikaci upgradujte.
+V šabloně nasazení pro prostředek aplikace má každá služba vlastnost *cpu*, kterou můžete použít k nastavení požadovaného množství prostředků CPU. Aplikace se může skládat z několika služeb, z nichž každá má jedinečné nastavení *cpu* a které se nasazují a spravují společně. Chcete-li zvýšit prostředky procesoru webové front-end služby, upravte hodnotu *cpue* v šabloně nasazení nebo souboru parametrů.  Potom aplikaci upgradujte.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Úprava parametrů šablony nasazení
 
@@ -77,7 +68,7 @@ Místně otevřete soubor [parametrů mesh_rp.windows.parameter.json](https://gi
 
 Uložte provedené změny souboru parametrů.  
 
-Parametr *frontEndCpu* se deklaruje v části *parameters* [šablony nasazení mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json):
+Parametr *frontEndCpu* se deklaruje v části *parameters*[šablony nasazení mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json):
 
 ```json
 "frontEndCpu": {
@@ -133,7 +124,7 @@ Spustí se tím upgrade aplikace se zajištěním provozu a během několika min
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste se naučili:
 

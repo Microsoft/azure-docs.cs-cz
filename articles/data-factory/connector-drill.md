@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 69ea905bc8c0deefd34f5fe997cb90dec1b454ab
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e0f9e87fbef72db6f3a21d7531df3e1cefc6317f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444318"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Kopírování dat z procházení pomocí Azure Data Factory
 
@@ -33,7 +33,7 @@ Kopírování dat z přechod do libovolné podporovaného úložiště dat jímk
 
 Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -50,7 +50,7 @@ Pro procházení propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **procházení** | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení k procházení. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectionString | ODBC připojovací řetězec služby pro připojení k procházení. <br/>Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
@@ -61,10 +61,7 @@ Pro procházení propojené služby jsou podporovány následující vlastnosti:
     "properties": {
         "type": "Drill",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -82,10 +79,7 @@ Pro procházení propojené služby jsou podporovány následující vlastnosti:
     "properties": {
         "type": "Drill",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;"
-            },
+            "connectionString": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

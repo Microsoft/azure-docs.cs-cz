@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441252"
 ---
 # <a name="linq-to-sql-translation"></a>Technologie LINQ to SQL překladu
 
@@ -23,7 +23,7 @@ Zprostředkovatel dotazů podporuje následující skalární výrazy:
 
 - Konstantní hodnoty, včetně konstantních hodnot primitivních datových typů v době vyhodnocení dotazu.
   
-- Výrazy indexů vlastností nebo pole, které odkazují na vlastnost objektu nebo prvku pole. Například:
+- Výrazy indexů vlastností nebo pole, které odkazují na vlastnost objektu nebo prvku pole. Příklad:
   
   ```
     family.Id;
@@ -64,7 +64,7 @@ Zprostředkovatel LINQ zahrnutý v sadě SQL .NET SDK podporuje následující o
 - **OrderBy** a **OrderByDescending**: PŘELOŽÍ na pořadí pomocí ASC nebo DESC.
 - **Počet**, **součet**, **Min**, **maximální**, a **průměrné** operátory pro agregaci a jejich ekvivalenty asynchronní **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, a **AverageAsync**.
 - **Metoda CompareTo**: se přeloží na porovnání rozsahu. Běžně se používá pro řetězce, protože nejsou srovnatelné v rozhraní .NET.
-- **Proveďte**: přeloží se na horní část SQL pro omezení výsledků dotazu.
+- **Přeskočit** a **přijmout**: PŘELOŽÍ se na posun SQL a omezení pro omezení výsledků dotazu a stránkování.
 - **Matematické funkce**: podporuje překlad z `Abs`.net, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`a `Truncate` k ekvivalentním integrovaným funkcím SQL.
 - **Řetězcové funkce**: podporuje překlad z `Concat`.net, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`a `TrimStart` do ekvivalentních integrovaných funkcí SQL.
 - **Funkce pole**: podporuje překlad z rozhraní .NET `Concat`, `Contains`a `Count` na ekvivalentní integrované funkce SQL.

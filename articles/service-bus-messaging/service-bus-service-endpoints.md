@@ -1,6 +1,6 @@
 ---
 title: Koncové body služby virtuální sítě – Azure Service Bus
-description: Přidejte koncový bod služby Microsoft. ServiceBus do virtuální sítě.
+description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. ServiceBus do virtuální sítě.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -8,14 +8,14 @@ editor: spelluru
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5446ee12a6933a916444d4f64a0eb983a35a59f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462057"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Použití koncových bodů služby Virtual Network s Azure Service Bus
 
@@ -38,7 +38,7 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 >
 > Níže uvedené služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service
-> - Azure Functions
+> - Funkce Azure
 
 > [!IMPORTANT]
 > Virtuální sítě se podporují jenom v oborech názvů Service Bus [úrovně Premium](service-bus-premium-messaging.md) .
@@ -70,13 +70,13 @@ Následující šablona Správce prostředků umožňuje přidání pravidla vir
 Parametry šablony:
 
 * **obor názvů**: Service Bus obor názvů.
-* **virtualNetworkingSubnetId**: plně kvalifikovaná cesta správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
+* **virtualNetworkingSubnetId**: plně kvalifikovanou cestu Resource Manageru pro podsíť virtuální sítě, například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
 
 > [!NOTE]
 > I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
 > Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
 > 
-> from
+> od
 > ```json
 > "defaultAction": "Allow"
 > ```

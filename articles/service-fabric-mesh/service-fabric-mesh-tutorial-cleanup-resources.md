@@ -1,32 +1,23 @@
 ---
-title: Kurz – Vyčištění prostředků Azure Service Fabric Mesh | Microsoft Docs
+title: Kurz – vyčištění prostředků sítě pro síť Azure Service Fabric
 description: Naučte se, jak odebrat prostředky Azure Service Fabric Mesh, aby vám nebyly účtovány prostředky, které už nepoužíváte.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351876"
 ---
-# <a name="tutorial-remove-azure-resources"></a>Kurz: Odebrat prostředky Azure
+# <a name="tutorial-remove-azure-resources"></a>Kurz: Odebrání prostředků Azure
 
 V tomto kurzu, který je pátou částí série, se dozvíte, jak odstranit aplikaci a její prostředky, abyste za ně nemuseli platit.
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 > [!div class="checklist"]
 > * Vyčistit prostředky používané aplikací tak, aby vám za ně nenabíhaly poplatky
 
@@ -35,7 +26,7 @@ V této sérii kurzů se naučíte:
 > * [Vytvořit aplikaci Service Fabric Mesh v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
 > * [Ladit aplikaci Service Fabric Mesh běžící v místním clusteru pro vývoj](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Nasadit aplikaci Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
-> * [Upgradovat aplikaci Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
+> * [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 > * Vyčištění prostředků Service Fabric Mesh
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
@@ -62,9 +53,9 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-Alternativně můžete skupinu prostředků **sfmeshTutorial1RG** odstranit [z portálu](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups). 
+Alternativně můžete skupinu prostředků **sfmeshTutorial1RG** odstranit [z portálu](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nyní, když jste dokončili publikování aplikace Service Fabric Mesh do Azure, vyzkoušejte toto:
 

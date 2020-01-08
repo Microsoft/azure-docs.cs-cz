@@ -1,5 +1,6 @@
 ---
 title: Přístup k řešení Azure VMware pomocí CloudSimple z místního prostředí
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Přístup k řešení Azure VMware pomocí CloudSimple z místní sítě přes bránu firewall
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0f575417819f0e2d46565ad15aaa23a04fd7cf1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452409"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Přístup k prostředí privátního cloudu a k aplikacím v CloudSimple z místního prostředí
 
@@ -23,7 +24,7 @@ Připojení můžete nastavit z místní sítě na CloudSimple s využitím Azur
 
 Aby bylo možné přistupovat ke Správci privátního cloudu vCenter a NSX-T, musí se v místní bráně firewall otevřít porty definované v následující tabulce.  
 
-| Port       | Source                           | Cíl                      | Účel                                                                                                                |
+| Port       | Zdroj                           | Cíl                      | Účel                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)   | Místní servery DNS          | Servery DNS privátního cloudu        | Vyžaduje se pro přesměrování vyhledávání DNS *AZ.cloudsimple.IO* na servery DNS privátního cloudu z místní sítě.       |
 | 53 (UDP)   | Servery DNS privátního cloudu        | Místní servery DNS          | Vyžaduje se pro přesměrování DNS hledání místních názvů domén z privátního cloudu vCenter na místní servery DNS. |
@@ -36,7 +37,7 @@ Aby bylo možné přistupovat ke Správci privátního cloudu vCenter a NSX-T, m
 
 Pokud chcete nakonfigurovat místní službu Active Directory jako zdroj identity v privátním cloudu vCenter, musí se otevřít porty definované v tabulce.  Postup konfigurace najdete v tématu [použití Azure AD jako zprostředkovatele identity pro vCenter v CloudSimple privátním cloudu](https://docs.azure.cloudsimple.com/azure-ad/) .
 
-| Port         | Source                           | Cíl                                         | Účel                                                                                                                                          |
+| Port         | Zdroj                           | Cíl                                         | Účel                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | Servery DNS privátního cloudu        | Místní servery DNS                             | Vyžaduje se pro přesměrování DNS k vyhledání místních názvů domén služby Active Directory z privátního cloudu vCenter na místní servery DNS.          |
 | 389 (TCP/UDP) | Síť pro správu privátního cloudu | Místní řadiče domény služby Active Directory     | Vyžaduje se pro komunikaci protokolu LDAP z privátního cloudového serveru vCenter do řadičů domény služby Active Directory pro ověřování uživatelů.                |
@@ -48,7 +49,7 @@ Pokud chcete nakonfigurovat místní službu Active Directory jako zdroj identit
 
 Přístup k virtuálním počítačům s úlohami, které běží v privátním cloudu, vyžaduje otevření portů na místní bráně firewall.  V tabulce níže jsou uvedeny některé z běžných potřebných portů a jejich účel.  Všechny požadavky na porty specifické pro aplikaci najdete v dokumentaci k aplikaci.
 
-| Port         | Source                         | Cíl                          | Účel                                                                              |
+| Port         | Zdroj                         | Cíl                          | Účel                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22 (TCP)      | Místní síť            | Síť s úlohou privátního cloudu       | Zabezpečený přístup k prostředí pro virtuální počítače se systémem Linux běžící v privátním cloudu.              |
 | 3389 (TCP)    | Místní síť            | Síť s úlohou privátního cloudu       | Vzdálená plocha do virtuálních počítačů s Windows, které běží na privátním cloudu.                 |

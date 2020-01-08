@@ -1,22 +1,18 @@
 ---
-title: Kontejnerizace stávající aplikaci .NET pro Service Fabric sítě | Microsoft Docs
+title: Kontejnerizace stávající aplikace v .NET pro Service Fabric Mesh
 description: Přidejte Service Fabric podporu orchestrace kontejnerů na mřížku pro projekty ASP.NET a konzolu, které používají úplné rozhraní .NET Framework.
-services: service-fabric-mesh
-keywords: síť kontejnerizace Service Fabric
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462050"
 ---
-# <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Kontejnerizace stávající aplikaci .NET pro Service Fabric sítě
+# <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Kontejnerizace stávající aplikace v .NET pro Service Fabric Mesh
 
 V tomto článku se dozvíte, jak přidat Service Fabric podporu orchestrace kontejnerů na mřížku do existující aplikace .NET.
 

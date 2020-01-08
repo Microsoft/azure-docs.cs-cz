@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: bc676d50f84f18e0275a3ed52f14883dd25cf931
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 68e6ba0462563e4da295d73c821c1c4554568aef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440402"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>Kopírování dat z Vertica pomocí Azure Data Factory 
 
@@ -33,7 +33,7 @@ Kopírování dat z Vertica do jakékoli podporovaného úložiště dat jímky.
 
 Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -50,7 +50,7 @@ Vertica propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Vertica** | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení k Vertica.<br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectionString | ODBC připojovací řetězec služby pro připojení k Vertica.<br/>Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
@@ -61,10 +61,7 @@ Vertica propojené služby jsou podporovány následující vlastnosti:
     "properties": {
         "type": "Vertica",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -82,10 +79,7 @@ Vertica propojené služby jsou podporovány následující vlastnosti:
     "properties": {
         "type": "Vertica",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;"
-            },
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

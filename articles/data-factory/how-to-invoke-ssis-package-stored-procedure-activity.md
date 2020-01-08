@@ -13,19 +13,19 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: f45c317e64f63fe6192f4e32507876841f4322de
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 063728c03c689c2eafec889bdee8276772ae685a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444037"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s aktivitou uložené procedury v Azure Data Factory
 Tento článek popisuje, jak spustit balíček SSIS v kanálu Azure Data Factory pomocí aktivity uložené procedury. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
+### <a name="azure-sql-database"></a>Databáze SQL Azure 
 Návod v tomto článku používá databázi Azure SQL, která je hostitelem katalogu SSIS. Můžete také použít Azure SQL Database spravované instance.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Vytvoření prostředí Azure-SSIS Integration Runtime
@@ -55,7 +55,7 @@ Prvním krokem je vytvoření datové továrny pomocí Azure Portal.
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
-     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze umístění podporovaná službou Data Factory. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných umístěních.
 6. Zaškrtněte **Připnout na řídicí panel**.     
@@ -65,7 +65,7 @@ Prvním krokem je vytvoření datové továrny pomocí Azure Portal.
      ![nasazování dlaždice datové továrny](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-     ![Domovská stránka datové továrny](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+     ![Domovská stránka objektu pro vytváření dat](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Azure Data Factory. 
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Vytvoření kanálu s aktivitou uložených procedur
@@ -154,7 +154,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 Můžete buď použít stejný objekt pro vytváření dat, který má Azure-SSIS IR, nebo vytvořit samostatnou datovou továrnu. Následující postup popisuje kroky k vytvoření datové továrny. V této datové továrně vytvoříte kanál s aktivitou uložené procedury. Aktivita uložené procedury provede uloženou proceduru v databázi SSISDB ke spuštění balíčku SSIS. 
 
-1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
+1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -206,10 +206,7 @@ Vytvořte propojenou službu, která propojí vaši službu Azure SQL Database, 
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.windows.net,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-                }
+                "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }

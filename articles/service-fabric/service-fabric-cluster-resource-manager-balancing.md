@@ -1,48 +1,39 @@
 ---
-title: Vyrovnání clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Úvod do vyrovnávání clusteru pomocí Service Fabric Cluster Resource Manager.
-services: service-fabric
-documentationcenter: .net
+title: Vyvážení clusteru Azure Service Fabric
+description: Úvod k vyrovnávání clusteru s clusterem Service Fabric Správce prostředků.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3ea95405f68938906ba010836753cd74ab0f775e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452107"
 ---
-# <a name="balancing-your-service-fabric-cluster"></a>Vyrovnávání vašeho clusteru service fabric
-Service Fabric Cluster Resource Manager podporuje změny dynamického zatížení reakce na přidání nebo odebrání uzlů nebo služby. Také automaticky opraví narušení omezení a proaktivně znovu vytvoří rovnováhu clusteru. Ale jak často pocházejí tyto akce a co je aktivace?
+# <a name="balancing-your-service-fabric-cluster"></a>Vyvážení clusteru Service Fabric
+Cluster Service Fabric Správce prostředků podporuje změny dynamického načtení, které fungují na přidávání nebo odebírání uzlů nebo služeb. Také automaticky opravuje porušení omezení a proaktivně znovu vyrovnává cluster. Ale jak často jsou tyto akce podniknuty a které je aktivují?
 
-Existují tři různé druhy práce, která provede Cluster Resource Manager. Jsou to tyto:
+Existují tři různé kategorie práce, které cluster Správce prostředků provádí. Jsou to tyto:
 
-1. Umístění – tato fáze se zabývá uvedení jakékoli replik stavových nebo bezstavových instancí, které nebyly nalezeny. Umístění zahrnuje nové služby a zpracování replik stavových nebo bezstavových instancí, které selhaly. Tady jsou zpracovány odstranění a umístěním replik nebo instancí.
-2. Omezení kontroluje – tato fáze kontroluje a opravuje porušení omezení různých umístění (pravidla) v rámci systému. Příklady pravidel jsou třeba k zajištění, že uzly nejsou překročena kapacita a že jsou splněné omezení umístění služby.
-3. Vyrovnávání – této fázi kontroluje, jestli opětovné vyvážení je nezbytné podle nakonfigurované požadované úrovni vyrovnání pro různé požadované metriky. V takovém případě se pokusí najít uspořádání v clusteru, který je více s vyrovnáváním.
+1. Umístění – Tato fáze se zabývá umístěním všech stavových replik nebo nestavových instancí, které chybí. Umístění zahrnuje nové služby a zpracování stavových replik nebo nestavových instancí, u kterých došlo k chybě. Odstranění a odstranění replik nebo instancí se zpracovává tady.
+2. Kontroly omezení – Tato fáze kontroluje a opravuje porušení různých omezení umístění (pravidel) v rámci systému. Příklady pravidel jsou věci, jako je například zajištění toho, že uzly nejsou nad kapacitou a že jsou splněné omezení umístění služby.
+3. Vyrovnávání – Tato fáze zkontroluje, jestli je potřeba vyrovnávání zatížení na základě nakonfigurované požadované úrovně vyrovnání pro různé metriky. Pokud se tak pokusí najít uspořádání v clusteru, které je vyváženější.
 
-## <a name="configuring-cluster-resource-manager-timers"></a>Konfigurace časovače Cluster Resource Manageru
-První sada kontrolních mechanismů kolem vyrovnávání představují sadu časovače. Tyto časovače určují, jak často Cluster Resource Manager zkontroluje clusteru a provede nápravné akce.
+## <a name="configuring-cluster-resource-manager-timers"></a>Konfigurace časovačů Správce prostředků clusteru
+První sada ovládacích prvků kolem Vyrovnávání je sada časovačů. Tyto časovače určují, jak často cluster Správce prostředků prověřuje cluster a provede nápravné akce.
 
-Každý z těchto různých typů opravy, které můžete vytvořit Cluster Resource Manageru se řídí jiné časovače, které řídí jeho četnost. Když se aktivuje každou časovač je naplánován. Ve výchozím nastavení správce prostředků:
+Každý z těchto různých typů oprav Správce prostředků clusteru je možné řídit jiným časovačem, který řídí jeho četnost. Když se každý časovač aktivuje, úloha se naplánuje. Ve výchozím nastavení Správce prostředků:
 
-* kontrol stavu a aplikuje aktualizace (jako záznam, který je uzel dolů) každých 1/10 sekundy
-* Nastaví příznak Kontrola umístění za sekundu
-* Nastaví příznak kontroly omezení za sekundu
-* Nastaví příznak vyrovnávání každých pět sekund
+* Zkontroluje svůj stav a nainstaluje aktualizace (například nahrávání, že uzel je mimo provoz) každých 1/desátý druhý.
+* každou sekundu nastaví příznak kontroly umístění.
+* každou sekundu nastaví příznak kontroly omezení.
+* každých pět sekund nastaví příznak vyrovnávání.
 
-Níže jsou příklady konfigurace, kterými se řídí těmito časovače:
+Příklady konfigurace upravující tyto časovače jsou následující:
 
-ClusterManifest.xml:
+Manifestem clusteru. XML:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -53,7 +44,7 @@ ClusterManifest.xml:
         </Section>
 ```
 
-prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery:
+přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
 
 ```json
 "fabricSettings": [
@@ -81,18 +72,18 @@ prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.jso
 ]
 ```
 
-Dnes Cluster Resource Manager provádí pouze jednu z těchto akcí v době, postupně. To je důvod, proč označujeme jako "minimální intervaly" a akce, které získáte při časovače přejít jako "nastavení příznaků" provedeny tyto časovače. Například Cluster Resource Manageru se postará o čekající požadavky na vytvoření služeb před vyrovnávání clusteru. Jak je vidět ve výchozí časové intervaly zadaný Cluster Resource Manager prochází všechno, co je potřeba udělat často. Obvykle to znamená, sadu změn provedených během jednotlivých kroků, které je malý. Provádění změn malé často umožňuje Cluster Resource Manageru k buďte interaktivní, když nastane v clusteru. Výchozí časovače poskytují některé dávkové zpracování, protože mnoho stejné typy událostí, které jsou obvykle probíhají souběžně. 
+V současné době cluster Správce prostředků provádí pouze jednu z těchto akcí postupně. Proto na tyto časovače odkazujeme jako na "minimální intervaly" a na akce, které se provedou, když se časovače najdou jako "nastavení příznaků". Například cluster Správce prostředků postará o nedokončené žádosti o vytvoření služeb před vyrovnáváním clusteru. Jak vidíte ve výchozích časových intervalech, Správce prostředků clusteru vyhledá cokoli, co potřebuje k tomu často. Obvykle to znamená, že sada změn provedených během každého kroku je malá. Provádění malých změn často umožňuje, aby cluster Správce prostředků reagovat, když se v clusteru vyskytují nějaké věci. Výchozí časovače poskytují určitou dávkování, protože mnohé ze stejných typů událostí se obvykle vyskytují současně. 
 
-Například když uzly se nepovede dělají tak celý domén selhání najednou. Všechny tyto chyby jsou zaznamenána během další stav aktualizace po *PLBRefreshGap*. Opravy jsou určeny v průběhu následujících umístění, kontrola omezení a rozložení zátěže spustí. Ve výchozím nastavení Cluster Resource Manageru není skenování prostřednictvím hodin změny v clusteru a pokusu o vyřešení všech změn najednou. To by mohlo dojít k nárůstům provozu.
+Například když uzly selžou, můžou to udělat po celou dobu selhání. Všechny tyto chyby jsou zachyceny během příští aktualizace stavu po *PLBRefreshGap*. Opravy se určují během následujícího umístění, kontroly omezení a vyrovnávání spuštění. Ve výchozím nastavení Správce prostředků clusteru nekontrolují hodiny změn v clusteru a snaží se vyřešit všechny změny najednou. To by vedlo k nárůstu počtu změn.
 
-Cluster Resource Manager potřebuje také některé další informace, které určí, zda imbalanced clusteru. K tomu máme dva kusy konfigurace: *BalancingThresholds* a *ActivityThresholds*.
+Cluster Správce prostředků taky potřebuje nějaké další informace, abyste zjistili, jestli je cluster nevyvážený. V případě, že máme dvě další části konfigurace: *BalancingThresholds* a *ActivityThresholds*.
 
-## <a name="balancing-thresholds"></a>Vyrovnávání prahové hodnoty
-Vyrovnávání prahové hodnoty je hlavním ovládacím prvkem pro spuštění nové vyvážení. Je vyrovnávání prahové hodnoty pro metriku _poměr_. Pokud zatížení metriky na nejvíce načíst uzlu dělený objem zátěže na nejméně načíst uzlu překročí tuto metriku *BalancingThreshold*, dají se imbalanced clusteru. V důsledku vyrovnávání se aktivuje při příštím kontroluje Cluster Resource Manager. *MinLoadBalancingInterval* časovače definuje, jak často by měla Cluster Resource Manager zkontrolujte, zda opětovné vyvážení je nezbytné. Kontrola neznamená, že se nic nestane. 
+## <a name="balancing-thresholds"></a>Prahové hodnoty vyvážení
+Prahová hodnota pro vyrovnávání je hlavním ovládacím prvkem pro aktivaci opětovného vyrovnávání. Prahová hodnota vyvážení metriky je _poměr_. Pokud zatížení metriky na největším načteném uzlu dělené množstvím zatížení u nejmenšího načteného uzlu přesáhne tuto metriku *BalancingThreshold*, cluster se vyrovnává. Při příští kontrole Správce prostředků clusteru se aktivuje vyvážení výsledku. Časovač *MinLoadBalancingInterval* definuje, jak často by měl správce prostředků cluster kontrolovat, jestli je potřeba vyrovnávání zatížení. Kontrola neznamená, že dojde k nějakému problému. 
 
-Vyrovnávání prahové hodnoty jsou definovány na základě za metriku jako součást definice clusteru. Další informace týkající se metrik, projděte si [v tomto článku](service-fabric-cluster-resource-manager-metrics.md).
+Prahové hodnoty pro vyvážení jsou definovány na základě metriky jako součást definice clusteru. Další informace o metrikách najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md).
 
-ClusterManifest.xml
+Manifestem clusteru. XML
 
 ```xml
     <Section Name="MetricBalancingThresholds">
@@ -101,7 +92,7 @@ ClusterManifest.xml
     </Section>
 ```
 
-prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery:
+přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
 
 ```json
 "fabricSettings": [
@@ -123,37 +114,37 @@ prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.jso
 
 <center>
 
-![Příklad vyrovnávání prahová hodnota][Image1]
+Příklad prahové hodnoty pro vyrovnávání ![][Image1]
 </center>
 
-V tomto příkladu každá služba využívá jednu jednotku některé metriky. V horním příkladu maximálního zatížení na uzlu je pět a minimum je dva. Řekněme, že je vyrovnávání prahová hodnota pro tuto metriku tři. Protože poměr v clusteru je 5/2 = 2.5, který je nižší než zadané vyrovnávání tři prahovou hodnotu, jsou rovnoměrně clusteru. Žádné služby Vyrovnávání se aktivuje, když kontroluje Cluster Resource Manager.
+V tomto příkladu každá služba spotřebovává jednu jednotku nějaké metriky. V horním příkladu je maximální zatížení uzlu pět a minimum je dva. Řekněme, že prahová hodnota pro vyvážení této metriky je tři. Vzhledem k tomu, že poměr v clusteru je 5/2 = 2,5 a je menší než zadaná prahová hodnota pro vyrovnávání zatížení tři, cluster se vyrovnává. Když cluster Správce prostředků kontroluje, neaktivuje se žádné vyrovnávání.
 
-V příkladu dole maximálního zatížení na uzlu je 10, zatímco minimum je dvě, výsledkem je poměr pět. Pět zadefinujete, přesáhne určenou prahovou hodnotu vyrovnávání tří pro tuto metriku. V důsledku toho vyrovnávání spuštění bude naplánováno další vyrovnávání časovač vyvolá. V situaci, tímto způsobem je nějaké zatížení obvykle distribuován do Uzel3. Protože Service Fabric Cluster Resource Manager nepoužívá greedy přístup, může do Node2 distribuované nějaké zatížení. 
+V dolním příkladu je maximální zatížení uzlu 10, zatímco minimum je dva, což vede k poměru pěti. Pět je větší než stanovená prahová hodnota vyvážení tři pro tuto metriku. V důsledku toho bude při příštím spuštění časovače vyrovnávání zatížení naplánováno spuštění opětovného vyrovnávání. V situaci, kdy je toto načtení obvykle distribuováno do Uzel3. Vzhledem k tomu, že Cluster Service Fabric Správce prostředků nepoužívá hladový přístup, může být některé zatížení distribuováno také do Uzel2. 
 
 <center>
 
-![Vyrovnávání prahovou hodnotu příklad akce][Image2]
+Příklady ![ch prahových hodnot pro vyrovnávání][Image2]
 </center>
 
 > [!NOTE]
-> "Vyrovnávání" zpracovává dvě různé strategie pro správu zatížení v clusteru. Výchozí strategie, která používá Cluster Resource Manager je můžete distribuovat zatížení napříč uzly v clusteru. Další možností je [defragmentace](service-fabric-cluster-resource-manager-defragmentation-metrics.md). Defragmentace se provádí během stejné vyrovnávání spustit. Strategie vyrovnávání a defragmentace lze použít pro různé požadované metriky ve stejném clusteru. Služba může mít vyrovnávání a defragmentaci metrik. Pro defragmentaci metrik, poměr zatížení v clusteru spustí nové vyvážení po _níže_ vyrovnávání prahovou hodnotu. 
+> "Vyrovnává" zpracovává dvě různé strategie pro správu zatížení v clusteru. Výchozí strategií, kterou Správce prostředků cluster používá, je distribuce zatížení mezi uzly v clusteru. Další strategií je [Defragmentace](service-fabric-cluster-resource-manager-defragmentation-metrics.md). Defragmentace se provádí během stejného vyrovnávání běhu. Strategie vyrovnávání a defragmentace lze použít pro různé metriky v rámci stejného clusteru. Služba může mít metriky vyrovnávání i defragmentace. V případě metriky defragmentace se poměr zatížení v clusteru spustí znovu vyvážení, pokud je _pod_ prahovou hodnotou vyrovnávání. 
 >
 
-Získání pod prahovou hodnotou vyrovnávání není explicitní cíle. Vyrovnávání prahové hodnoty jsou jenom *aktivační událost*. Při vyrovnávání zatížení běží, Cluster Resource Manager Určuje zdokonaleních, může být, pokud existuje. To, že je vydáno vyrovnávání vyhledávání neznamená, že se že nic přesouvá. Někdy je cluster imbalanced ale moc omezené, chcete-li opravit. Můžete také vylepšení vyžadují pohybů plb typu, které jsou příliš [nákladné](service-fabric-cluster-resource-manager-movement-cost.md)).
+Získání pod prahovou hodnotou pro vyvážení není explicitní cíl. Prahové hodnoty vyvážení jsou pouze *triggerem*. Při vyrovnávání zatížení cluster Správce prostředků určuje, která vylepšení může dělat, pokud nějaké máte. Vzhledem k tomu, že se vypíná vyrovnávání vyhledávání, neznamená to, že se přesune. V některých případech je cluster nevyvážený, ale je moc omezený na správný. Další možností je, že vylepšení vyžadují příliš [nákladné](service-fabric-cluster-resource-manager-movement-cost.md)přesuny.
 
-## <a name="activity-thresholds"></a>Prahových hodnot aktivit
-Někdy, i když jsou poměrně imbalanced uzly *celkový* zatížením v clusteru je nízká. Chybějící zatížení může být přechodná vyhrazené IP adresy nebo polohy, protože clusteru je nový a teprve začíná. V obou případech nemusíte chtít ztrácet čas vyrovnávání clusteru, protože je malý být získány. Pokud cluster podstoupila vyrovnávání by věnovat síťové a výpočetní prostředky k přesunutí věcí bez provedení jakékoli velké *absolutní* rozdíl. Aby se zabránilo zbytečným přesune, existuje jiný ovládací prvek označované jako prahových hodnot aktivit. Prahových hodnot aktivit můžete zadat některé absolutní dolní mez pro aktivitu. Pokud žádný uzel nad touto prahovou hodnotou, neaktivuje vyrovnávání i v případě, že při dosažení prahové hodnoty vyrovnávání.
+## <a name="activity-thresholds"></a>Prahové hodnoty aktivity
+I když jsou uzly relativně nevyvážené, *celkové* množství zatížení v clusteru je nízké. Nedostatku zátěže může být přechodný DIP nebo to, že cluster je nový a jenom se načítá. V obou případech možná nebudete chtít strávit dobu vyrovnávání clusterů, protože je to málo. Pokud je vyrovnávání zatížení clusteru, strávíte tím síťové a výpočetní prostředky, které se budou pohybovat bez jakýchkoli velkých *absolutních* rozdílů. Aby nedocházelo k zbytečnému přesunutí, je další ovládací prvek známý jako prahové hodnoty aktivity. Prahové hodnoty aktivity umožňují zadat absolutní dolní mez pro aktivitu. Pokud žádný uzel není nad touto prahovou hodnotou, vyvážení se neaktivuje ani v případě, že je splněno prahová hodnota pro vyvážení.
 
-Řekněme, že můžeme uchovávat prahové hodnoty vyrovnávání tří pro tuto metriku. Předpokládejme také, že máme prahovou hodnotu aktivitu 1536. V prvním případě clusteru je imbalanced za vyrovnávání prahová hodnota neexistuje žádný uzel splňuje této prahové hodnoty aktivity, nic se nestane. V příkladu dole Node1 je nad prahovou hodnotou aktivity. Protože se překročila prahovou hodnotu vyrovnávání a aktivita prahové hodnoty pro metriku, vyrovnávání naplánován. Jako příklad Podívejme se na následující diagram: 
+Řekněme, že pro tuto metriku uchováváme prahovou hodnotu pro vyvážení tři. Řekněme také, že máme prahovou hodnotu aktivity 1536. V prvním případě je v případě, že cluster není vyrovnaný na prahovou hodnotu pro vyrovnávání zatížení, nesplňuje žádná prahová hodnota aktivity, takže nic nestane. V dolním příkladu je Uzel1 nad prahovou hodnotou aktivity. Vzhledem k tomu, že prahová hodnota pro vyvážení i prahová hodnota aktivity pro tuto metriku jsou, je vyrovnávání zatížení naplánováno. V příkladu se podívejme na následující diagram: 
 
 <center>
 
-![Příklad aktivity prahová hodnota][Image3]
+Příklad prahové hodnoty aktivity ![][Image3]
 </center>
 
-Stejně jako vyrovnávání prahové hodnoty prahových hodnot aktivit jsou definované na metrika prostřednictvím definice clusteru:
+Stejně jako prahové hodnoty pro vyvážení jsou prahové hodnoty aktivity definovány na základě metriky prostřednictvím definice clusteru:
 
-ClusterManifest.xml
+Manifestem clusteru. XML
 
 ``` xml
     <Section Name="MetricActivityThresholds">
@@ -161,7 +152,7 @@ ClusterManifest.xml
     </Section>
 ```
 
-prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery:
+přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
 
 ```json
 "fabricSettings": [
@@ -177,43 +168,43 @@ prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.jso
 ]
 ```
 
-Vyrovnávání a aktivita prahové hodnoty jsou obě váže na konkrétní metrika - vyrovnávání se aktivuje jenom v případě, že prahová hodnota vyrovnávání i aktivita prahová hodnota překročena stejné metriky.
+Prahové hodnoty vyrovnávání a aktivity jsou vázané na konkrétní vyrovnávání metrik se aktivují jenom v případě, že prahová hodnota pro vyrovnávání zatížení i prahová hodnota aktivity se pro stejnou metriku překročí.
 
 > [!NOTE]
-> Pokud není zadán, vyrovnávání prahové hodnoty pro metriku je 1, a aktivitu prahová hodnota je 0. To znamená, že Cluster Resource Manager se pokusí uchovávat tuto metriku dokonale vyrovnávání pro jakékoli dané zatížení. Pokud používáte vlastní metriky doporučujeme explicitně definovat vlastní rozložení zátěže a aktivita prahové hodnoty pro metriky. 
+> Není-li parametr zadán, je prahová hodnota pro vyrovnávání metriky 1 a prahová hodnota aktivity je 0. To znamená, že Správce prostředků clusteru se pokusí zajistit, aby metrika byla dokonale vyvážená pro jakékoli dané zatížení. Pokud používáte vlastní metriky, doporučujeme, abyste explicitně definovali vlastní prahové hodnoty pro vyrovnávání a aktivity pro vaše metriky. 
 >
 
-## <a name="balancing-services-together"></a>Služby Vyrovnávání dohromady
-Určuje, zda je cluster imbalanced nebo ne je celoclusterový rozhodnutí. Jednotlivé služby replik a instancí kolem, tak, jak bychom postupovali při její opravu přesouvá. To dává smysl, ne? Pokud paměti je skládaný na jeden uzel, více replik nebo instancí může přispět k němu. Řešení míru nevyrovnaného může vyžadovat přesunete replik stavových nebo bezstavových instancí, které používají imbalanced metriku.
+## <a name="balancing-services-together"></a>Vyrovnávání služeb dohromady
+Bez ohledu na to, jestli je cluster nevyvážený, nebo nejedná se o rozhodnutí v rámci clusteru. Nicméně způsob, jakým se chystáme opravit, přesouvá jednotlivé repliky služby a instance kolem. To je to smysl, který je správný? Pokud je paměť sestavená na jednom uzlu, může do ní přispívat více replik nebo instancí. Oprava nerovnováhy by mohla vyžadovat přesunutí jakékoli stavové repliky nebo bezstavových instancí, které používají nevyváženou metriku.
 
-Čas od času, ale služba, která sama imbalanced nebyla přesunuta (Nezapomeňte diskuzi o místní a globální oceňuje dříve). Proč by služba získat přesouvány při všech funkcí, které byly metriky služby s vyrovnáváním? Podívejme se na příklad:
+V některých případech je však přesun služby, která se sama vyrovnala (poznáte diskuzi o lokálních a globálních hmotnostech dříve). Proč by se služba mohla přesunout, když se vyrovnávají všechny metriky této služby? Pojďme se podívat na příklad:
 
-- Řekněme, že existují čtyři služby, Service1, Service2, Service3 a Service4. 
-- Service1 sestavy metrik Metric1 a Metric2. 
-- Service2 sestavy metrik Metric2 a Metric3. 
-- Service3 sestavy metrik Metric3 a Metric4.
-- Service4 sestavy metrik Metric99. 
+- Řekněme, že jsou k dispozici čtyři služby, Service1, Jazyka2, Service3 a Service4. 
+- Service1 hlásí metriky Metric1 a Metric2. 
+- Jazyka2 hlásí metriky Metric2 a Metric3. 
+- Service3 hlásí metriky Metric3 a Metric4.
+- Service4 hlásí metriku Metric99. 
 
-Seděl můžete vidět, kde jsme teď tady: Existuje řetězec! Nemáme skutečně čtyř nezávislých služeb, máme tři služby, které se týkají a jednu, která sama o sobě je vypnuté.
-
-<center>
-
-![Služby Vyrovnávání dohromady][Image4]
-</center>
-
-Z důvodu tento řetězec je možné, že nevyrovnanosti metriky 1 – 4 může způsobit replik nebo instancí patřící do služby 1-3 uspořádat jinak. Uvědomujeme si také, že nevyrovnanosti metriky 1, 2 nebo 3 nemůže způsobit pohybů plb typu v Service4. Nebudou mít žádný bod od přesunutí replik nebo instancí, které patří do Service4 kolem můžete neprovedení naprosto dopad na rovnováhu mezi metriky 1-3.
-
-Cluster Resource Manager automaticky přijde na to, jaké služby jsou související. Přidání, odebrání nebo změně metriky pro služby může ovlivnit jejich vztahy. Například mezi dvěma spuštěními vyrovnávání Service2 může byly aktualizovány Metric2 odebrat. Tím je prolomen řetězce mezi Service1 a Service2. Teď místo dvou skupin souvisejících služeb, jsou dostupné tři:
+Surely vidíte, kde tady nacházím: existuje řetězec! Ve skutečnosti nepoužíváme čtyři nezávislé služby, máme tři služby, které jsou v relaci, a jednu z nich.
 
 <center>
 
-![Služby Vyrovnávání dohromady][Image5]
+Služby Vyrovnávání ![][Image4]
 </center>
 
-## <a name="next-steps"></a>Další postup
-* Metriky se, jak spravuje správce prostředků Service Fabric Cluster využití a kapacitu v clusteru. Další informace o metrikách a způsob jejich konfigurace, podívejte se na [v tomto článku](service-fabric-cluster-resource-manager-metrics.md)
-* Náklady na přesunutí je jeden způsob, jak signalizace pro Cluster Resource Manager, že určité služby jsou dražší než jiné přesunout. Další informace o náklady na přesunutí, najdete v tématu [v tomto článku](service-fabric-cluster-resource-manager-movement-cost.md)
-* Cluster Resource Manager má několik omezení, které můžete nakonfigurovat zpomalovat četnosti změn v clusteru. Nejsou běžně potřebné, ale pokud je potřebujete informace o nich [zde](service-fabric-cluster-resource-manager-advanced-throttling.md)
+Z důvodu tohoto řetězce je možné, že nerovnováha v metrikách 1-4 může způsobit, že repliky nebo instance patřící ke službám 1-3 mají být přesunuty. Víme také, že nerovnováha v metrikách 1, 2 nebo 3 nemůže způsobit pohyb v Service4. Od přesunutí replik nebo instancí, které patří do Service4, by nedocházelo k žádnému okamžiku, který by ovlivnil rovnováhu metrik 1-3.
+
+Cluster Správce prostředků automaticky vyhodnotí, které služby jsou v relaci. Přidávání, odebírání a změny metrik pro služby mohou ovlivnit jejich vztahy. Například mezi dvěma spuštěními vyrovnávání Jazyka2 může být aktualizováno odebrání Metric2. Tím se přeruší řetěz mezi Service1 a Jazyka2. Nyní se místo dvou skupin souvisejících služeb nacházejí tři:
+
+<center>
+
+Služby Vyrovnávání ![][Image5]
+</center>
+
+## <a name="next-steps"></a>Další kroky
+* Metriky představují způsob, jakým Správce prostředků clusteru Service Fabric spravuje spotřebu a kapacitu v clusteru. Další informace o metrikách a jejich konfiguraci najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md) .
+* Náklady na pohyb jsou jedním ze způsobů signalizace clusteru Správce prostředků, že některé služby jsou dražší než ostatní. Další informace o nákladech na pohyb najdete v [tomto článku](service-fabric-cluster-resource-manager-movement-cost.md) .
+* Cluster Správce prostředků má několik omezení, která můžete nakonfigurovat pro zpomalení změn v clusteru. Nejsou obvykle nutné, ale pokud je potřebujete, můžete o nich získat informace [zde](service-fabric-cluster-resource-manager-advanced-throttling.md) .
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

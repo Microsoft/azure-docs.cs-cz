@@ -1,5 +1,5 @@
 ---
-title: Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows – Microsoft Azure
+title: Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows
 description: Seznamte se s cíli škálovatelnosti a výkonu pro disky virtuálních počítačů připojené k virtuálním počítačům s Windows.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: c525ec4becbfda305343a3c7244d5975d60604a3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: dee3da6b6aa38a60ed1109009ba5a292a131ce97
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039763"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645153"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows
 
@@ -31,6 +31,6 @@ Velikosti označené hvězdičkou jsou momentálně ve verzi Preview. V našich 
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
-[Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits)
+[Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)

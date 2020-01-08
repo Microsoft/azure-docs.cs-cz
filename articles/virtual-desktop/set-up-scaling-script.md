@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451341"
 ---
 # <a name="scale-session-hosts-dynamically"></a>Dynamické škálování hostitelů relace
 
@@ -50,7 +50,7 @@ Nejprve Připravte prostředí pro skript škálování:
 
 1. Přihlaste se k virtuálnímu počítači (virtuální počítač pro horizontální navýšení kapacity), který spustí naplánovanou úlohu s účtem správce domény.
 2. Vytvořte složku na virtuálním počítači pro škálování, která bude obsahovat skript škálování a jeho konfiguraci (například **C:\\Scale-HostPool1**).
-3. Stažení souborů **basicScale. ps1**, **config. XML**a **Functions-PSStoredCredentials. ps1** a složky **PowershellModules** z [úložiště skriptu škálování](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) a jejich zkopírování do složky, kterou jste vytvořili v kroku 2. Existují dva základní způsoby, jak soubory získat před jejich zkopírováním do virtuálního počítače se škálováním na více počítačů:
+3. Stažení souborů **basicScale. ps1**, **config. JSON**a **Functions-PSStoredCredentials. ps1** a složky **PowershellModules** z [úložiště skriptu škálování](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) a jejich zkopírování do složky, kterou jste vytvořili v kroku 2. Existují dva základní způsoby, jak soubory získat před jejich zkopírováním do virtuálního počítače se škálováním na více počítačů:
     - Naklonujte úložiště Git do místního počítače.
     - Zobrazte **nezpracované** verze každého souboru, zkopírujte a vložte obsah každého souboru do textového editoru a pak soubory uložte s odpovídajícím názvem souboru a typem souboru. 
 
@@ -73,13 +73,13 @@ V dalším kroku budete muset vytvořit bezpečně uložené přihlašovací úd
     ```
     
     Příklad **: set-Variable-Name cesta k nástroji – globální hodnota "c:\\škálování-HostPool1"**
-5. Spusťte rutinu **New-StoredCredential-path \$cesty** ke službě. Po zobrazení výzvy zadejte přihlašovací údaje k virtuálnímu počítači s Windows s oprávněními pro dotazování fondu hostitelů (fond hostitelů je zadaný v **souboru config. XML**).
+5. Spusťte rutinu **New-StoredCredential-path \$cesty** ke službě. Po zobrazení výzvy zadejte přihlašovací údaje k virtuálnímu počítači s Windows s oprávněními pro dotazování fondu hostitelů (fond hostitelů je zadaný v **souboru config. JSON**).
     - Pokud používáte jiné instanční objekty nebo standardní účet, spusťte rutinu **New-StoredCredential-path \$cesty** pro každý účet pro vytvoření místních uložených přihlašovacích údajů.
 6. Spuštěním rutiny **Get-StoredCredential-list** potvrďte, že se přihlašovací údaje úspěšně vytvořily.
 
-### <a name="configure-the-configxml-file"></a>Konfigurace souboru config. XML
+### <a name="configure-the-configjson-file"></a>Konfigurace souboru config. JSON
 
-Zadejte příslušné hodnoty do následujících polí pro aktualizaci nastavení skriptu škálování v souboru config. XML:
+Zadejte příslušné hodnoty do následujících polí pro aktualizaci nastavení skriptu škálování v souboru config. JSON:
 
 | Pole                     | Popis                    |
 |-------------------------------|------------------------------------|
@@ -103,7 +103,7 @@ Zadejte příslušné hodnoty do následujících polí pro aktualizaci nastaven
 
 ### <a name="configure-the-task-scheduler"></a>Nakonfigurovat Plánovač úloh
 
-Po konfiguraci souboru Configuration. XML bude nutné nakonfigurovat Plánovač úloh, aby se soubor basicScaler. ps1 spouštěl v pravidelných intervalech.
+Po konfiguraci souboru JSON konfigurace budete muset nakonfigurovat Plánovač úloh, aby se soubor basicScaler. ps1 spouštěl v pravidelných intervalech.
 
 1. Spusťte **Plánovač úloh**.
 2. V okně **Plánovač úloh** vyberte **vytvořit úlohu...**
@@ -117,13 +117,13 @@ Po konfiguraci souboru Configuration. XML bude nutné nakonfigurovat Plánovač 
 
 ## <a name="how-the-scaling-script-works"></a>Jak funguje skript škálování
 
-Tento skript pro škálování čte nastavení ze souboru config. XML, včetně začátku a konce období špičky využití během dne.
+Tento skript pro škálování čte nastavení ze souboru config. JSON, včetně začátku a konce období špičky využití během dne.
 
-Během špičky běhu skript zkontroluje aktuální počet relací a aktuálně spuštěnou kapacitu vzdálené plochy pro každý fond hostitelů. Počítá se v případě, že virtuální počítače hostitele spuštěné relace mají dostatečnou kapacitu pro podporu stávajících relací na základě parametru SessionThresholdPerCPU definovaného v souboru config. XML. V takovém případě se spustí skript s dalšími virtuálními počítači hostitele relace ve fondu hostitelů.
+Během špičky běhu skript zkontroluje aktuální počet relací a aktuálně spuštěnou kapacitu vzdálené plochy pro každý fond hostitelů. Počítá se v případě, že virtuální počítače hostitele spuštěné relace mají dostatečnou kapacitu pro podporu stávajících relací na základě parametru SessionThresholdPerCPU definovaného v souboru config. JSON. V takovém případě se spustí skript s dalšími virtuálními počítači hostitele relace ve fondu hostitelů.
 
-V době mimo špičku bude skript určovat, které virtuální počítače hostitele relace by se měly vypnout na základě parametru MinimumNumberOfRDSH v souboru config. XML. Skript nastaví virtuální počítače hostitele relace na režim vyprázdnění, aby se zabránilo novým relacím, které se připojují k hostitelům. Pokud nastavíte parametr **LimitSecondsToForceLogOffUser** v souboru config. XML na nenulovou kladnou hodnotu, skript upozorní všechny aktuálně přihlášené uživatele, aby ušetřili práci, počkali nakonfigurovanou dobu a pak vynutí, aby se uživatelé odhlásili. Jakmile se všechny uživatelské relace odhlásily na virtuálním počítači hostitele relace, skript vypne server.
+Během špičky využití skript určí, které virtuální počítače hostitele relace by se měly vypnout na základě parametru MinimumNumberOfRDSH v souboru config. JSON. Skript nastaví virtuální počítače hostitele relace na režim vyprázdnění, aby se zabránilo novým relacím, které se připojují k hostitelům. Pokud nastavíte parametr **LimitSecondsToForceLogOffUser** v souboru config. JSON na nenulovou kladnou hodnotu, skript upozorní všechny aktuálně přihlášené uživatele, aby ušetřili práci, čekali nakonfigurovanou dobu a pak vynutila odhlášení uživatelů. Jakmile se všechny uživatelské relace odhlásily na virtuálním počítači hostitele relace, skript vypne server.
 
-Pokud v souboru config. xml nastavíte parametr **LimitSecondsToForceLogOffUser** na hodnotu nula, skript umožní, aby nastavení konfigurace relace ve vlastnostech fondu hostitelů zpracovával podepisování uživatelských relací. Pokud se na virtuálním počítači hostitele relace nacházejí nějaké relace, ponechá se virtuální počítač hostitele relace spuštěný. Pokud se nevyskytly žádné relace, skript vypne virtuální počítač hostitele relace.
+Pokud v souboru config. JSON nastavíte parametr **LimitSecondsToForceLogOffUser** na hodnotu nula, skript umožní, aby nastavení konfigurace relace ve vlastnostech fondu hostitelů zpracovával podepisování uživatelských relací. Pokud se na virtuálním počítači hostitele relace nacházejí nějaké relace, ponechá se virtuální počítač hostitele relace spuštěný. Pokud se nevyskytly žádné relace, skript vypne virtuální počítač hostitele relace.
 
 Skript je navržený tak, aby pravidelně běžel na serveru virtuálních počítačů se škálováním na více systému pomocí Plánovač úloh. Vyberte odpovídající časový interval na základě velikosti prostředí vzdálené plochy a nezapomeňte, že spouštění a vypínání virtuálních počítačů může nějakou dobu trvat. Doporučujeme spouštět skript škálování každých 15 minut.
 

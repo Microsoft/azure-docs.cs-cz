@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: zjištění anomálií dat pomocí klientské knihovny detekce anomálií pro Python'
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro detekci anomálií použijte k detekci anomálií v datové řadě buď jako dávku, nebo na streamovaná data.
+description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní API pro detekci anomálií detekovat anomálie v datové řadě buď jako dávku, nebo na streamovaná data.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: f58f4f9c89e2c0bfb7d9eca6d39dab3f25b21990
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0493f9e4b45d8d4804d1933bb923d3483b87005e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483346"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448983"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>Rychlý Start: Klientská knihovna detektoru anomálií pro Python
 
@@ -32,7 +32,7 @@ Použijte klientskou knihovnu detektoru anomálií pro Python:
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Klíč a koncový bod detektoru anomálií
-* [Python 3. x](https://www.python.org/)
+* [Python 3.x](https://www.python.org/)
 * [Knihovna analýzy dat PANDAS](https://pandas.pydata.org/)
  
 ## <a name="setting-up"></a>Nastavení
@@ -63,7 +63,7 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 Klient detektoru anomálií je objekt [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí dvě metody detekce anomálií: na celé datové sadě pomocí [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)a na nejnovějším datovém bodu pomocí [Last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-). 
 
-Data časové řady se odesílají jako řada [bodů](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) v objektu [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) . Objekt `Request` obsahuje vlastnosti pro popis dat (například[členitosti](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) ) a parametrů pro detekci anomálií. 
+Data časové řady se odesílají jako řada [bodů](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) v objektu [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) . `Request` Objekt obsahuje vlastnosti pro popis dat a parametrů pro detekci anomálií.[(například členitosti)](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) 
 
 Odezva detektoru anomálií je objekt [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) nebo [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) v závislosti na použité metodě. 
 
@@ -84,7 +84,7 @@ Přidejte do koncového bodu proměnnou umístění Azure a ověřte klienta s k
 
 ## <a name="load-time-series-data-from-a-file"></a>Načtení dat časových řad ze souboru
 
-Stáhněte si ukázková data pro tento rychlý Start z [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
+Stáhněte si ukázková data pro tento rychlý start z [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
 1. V prohlížeči klikněte pravým tlačítkem na **raw**.
 2. Klikněte na **Uložit odkaz jako**.
 3. Uložte soubor do adresáře aplikace jako soubor. csv.

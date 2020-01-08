@@ -1,5 +1,5 @@
 ---
-title: Ukázka Azure CLI – zkopírování snímku do účtu úložiště v jiné oblasti
+title: Zkopírování snímku do účtu úložiště v jiné oblasti – ukázka CLI
 description: Ukázkový skript Azure CLI – Export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné nebo jiné oblasti.
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: e9390d6854ecfa43542d1713bae7d7e8fd8439ee
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01d3b17ab2623570e086b0edea17ff97c8fe8ae8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038260"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458519"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Export nebo kopírování snímku do účtu úložiště v jiné oblasti pomocí rozhraní příkazového řádku
 
@@ -41,7 +41,7 @@ Tento skript exportuje spravovaný snímek do účtu úložiště v jiné oblast
 
 Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a zkopírování snímku do účtu úložiště s použitím tohoto identifikátoru URI SAS používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot) | Vygeneruje sdílený přístupový podpis jen pro čtení, který se použije ke zkopírování základního souboru VHD do účtu úložiště nebo jeho stažení do místního prostředí.  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | Asynchronně zkopíruje objekt blob z jednoho účtu úložiště do jiného. |

@@ -1,7 +1,6 @@
 ---
 title: Test živých dat pomocí služby Azure Stream Analytics pro Visual Studio
 description: Zjistěte, jak k otestování místně pomocí dynamických streamovaných dat úlohy Azure Stream Analytics.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea55d2f96a87503d43a69d288ce85dcff32a39ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426040"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Živá data test místně pomocí nástroje Azure Stream Analytics pro Visual Studio (Preview)
 
@@ -63,7 +62,7 @@ Podporovány jsou následující možnosti místního testování:
 
 * Mít pouze vstupní možnosti cloudu [čas zásady](stream-analytics-out-of-order-and-late-events.md) podporují, zatímco místní možnosti vstupu, tomu tak není.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření úlohy Stream Analytics pomocí Azure Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md)
 * [Instalace nástroje Azure Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md)

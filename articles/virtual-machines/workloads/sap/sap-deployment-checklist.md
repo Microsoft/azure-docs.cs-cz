@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425935"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -77,7 +77,7 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
     - Zásady vytváření názvů pro virtuální počítače a další součásti infrastruktury nebo logické názvy.
 5.  Kontrakt Microsoft Premier Support. Identifikujte svého zástupce TAM (Technical Account Manager) společnosti Microsoft. Požadavky na podporu SAP najdete v [poznámkách k podpoře sap #2015553](https://launchpad.support.sap.com/#/notes/2015553).
 6.  Počet předplatných Azure a kvóta jádra pro odběry. [Otevřete žádosti o podporu pro zvýšení kvót předplatných Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) podle potřeby.
-7.  Omezení dat a plán migrace dat pro migraci dat SAP do Azure. Pro systémy SAP NetWeaver má SAP pokyny, jak omezit objem velkých objemů dat. Viz [Tato příručka](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF) pro systém SAP o správě dat v systému SAP ERP. Část obsahu platí i pro systémy NetWeaver a S/4HANA obecně.
+7.  Omezení dat a plán migrace dat pro migraci dat SAP do Azure. Pro systémy SAP NetWeaver má SAP pokyny, jak omezit objem velkých objemů dat. Viz [Tato příručka](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) pro systém SAP o správě dat v systému SAP ERP. Část obsahu platí i pro systémy NetWeaver a S/4HANA obecně.
 8.  Přístup k automatizovanému nasazení. Cílem automatizace nasazení infrastruktury v Azure je nasadit deterministický způsob a získat deterministické výsledky. Spousta zákazníků používá PowerShell nebo skripty založené na rozhraní příkazového řádku. Existují však různé Open Source technologie, které můžete použít k nasazení infrastruktury Azure pro SAP a dokonce i k instalaci softwaru SAP. Příklady najdete na GitHubu:
     - [Automatizované nasazení SAP v cloudu Azure](https://github.com/Azure/sap-hana)
     - [Instalace SAP HANA](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
@@ -122,7 +122,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
             -  Umístění aplikační vrstvy SAP a SAP DBMS v různých virtuálních sítích Azure, které nejsou partnerské vztahy, se nepodporuje.
             -  Pomocí [skupin zabezpečení aplikace a pravidel skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview) můžete definovat trasy mezi aplikační vrstvou SAP a vrstvou SAP DBMS.
         - Ujistěte se, že je na virtuálních počítačích, které se používají v aplikační vrstvě SAP a ve vrstvě SAP DBMS, zapnuté [akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) . Mějte na paměti, že pro podporu akcelerovaných síťových služeb v Azure jsou potřeba různé úrovně operačního systému:
-            - Windows Server 2012 R2 nebo novější.
+            - Windows Server 2012 R2 nebo novější
             - SUSE Linux 12 SP3 nebo novější.
             - RHEL 7,4 nebo novější.
             - Oracle Linux 7,5. Pokud používáte jádro RHCKL, je vyžadována verze 3.10.0-862.13.1. el7. Pokud používáte jádro Oracle UEK, je vyžadována verze 5.
@@ -244,7 +244,7 @@ Během fáze přechodu do živého prostředí nezapomeňte postupovat podle pla
         - Průměrná doba využití procesoru, každý jednotlivý procesor (128 procesorů na virtuálních počítačích s M128)
         - Čas jádra procesoru, každý jednotlivý procesor
         - Uživatelský čas procesoru, každý jednotlivý procesor
-    - Rezident.
+    - Memory:
         - Volná paměť
         - Paměťová stránka za sekundu
         - Nedostatek paměťové stránky za sekundu
@@ -255,7 +255,7 @@ Během fáze přechodu do živého prostředí nezapomeňte postupovat podle pla
         - Zápis na disk v KB/s, na jednotlivé disky
         - Zápis na disk za sekundu, na jednotlivé disky
         - Zápis na disk v mikrosekundách/čteních na jednotlivých discích
-    - Sítě.
+    - Síť.
         - Síťové pakety za sekundu
         - Odchozí síťové pakety za sekundu
         - Síť KB za sekundu

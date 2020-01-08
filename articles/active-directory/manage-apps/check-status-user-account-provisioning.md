@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430231"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: vytváření sestav o automatickém zřizování uživatelských účtů
 
@@ -55,8 +55,8 @@ Odtud můžete přístup k řádku průběh zřizování i k protokolům zřizov
 [Indikátor průběhu zřizování](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) se zobrazuje na kartě **zřizování** pro danou aplikaci. Je umístěný v části **aktuální stav** pod položkou **Nastavení**a zobrazuje stav aktuálního počátečního nebo přírůstkového cyklu. Tato část také obsahuje:
 
 * Celkový počet uživatelů a skupin, které byly synchronizovány a které jsou aktuálně v rozsahu pro zřizování mezi zdrojovým systémem a cílovým systémem.
-* Čas posledního spuštění synchronizace. K synchronizaci obvykle dochází každých 20-40 minut po dokončení [počátečního cyklu](user-provisioning.md#what-happens-during-provisioning) .
-* Bez ohledu na to, zda byl dokončen [počáteční cyklus](user-provisioning.md#what-happens-during-provisioning) .
+* Čas posledního spuštění synchronizace. K synchronizaci obvykle dochází každých 20-40 minut po dokončení [počátečního cyklu](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) .
+* Bez ohledu na to, zda byl dokončen [počáteční cyklus](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) .
 * Bez ohledu na to, jestli je proces zřizování umístěný do karantény, a jaký je důvod stavu karantény (například selhání komunikace s cílovým systémem z důvodu neplatných přihlašovacích údajů správce).
 
 **Aktuální stav** by měl být prvním místem, kde správci hledají provozní stav úlohy zřizování.
@@ -67,13 +67,13 @@ Odtud můžete přístup k řádku průběh zřizování i k protokolům zřizov
 
 Všechny aktivity prováděné službou zřizování se zaznamenávají v [protokolech zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)Azure AD. Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; **podnikové aplikace** &gt; **protokoly zřizování (Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Typy událostí protokolovaných aktivit zahrnují:
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Sestava souhrnu zřizování a zřizovacích protokolů hraje klíčovou roli, která pomáhá správcům řešit problémy s různými problémy zřizování uživatelských účtů.
 
 Pokyny k řešení potíží s automatickým zřizováním uživatelů najdete v tématu problémy s [konfigurací a zřizováním uživatelů do aplikace](application-provisioning-config-problem.md).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](what-is-single-sign-on.md)

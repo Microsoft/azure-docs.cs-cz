@@ -1,6 +1,6 @@
 ---
-title: Použití virtuálních počítačů Azure náročných na výpočetní výkon s využitím služby Batch | Microsoft Docs
-description: Jak využít výhody a velikosti virtuálních počítačů HPC a GPU v Azure Batch fondech
+title: Použití virtuálních počítačů Azure náročných na výpočetní výkon pomocí služby Batch
+description: Jak využít výhod velikosti virtuálních počítačů HPC a GPU v fondech Azure Batch. Seznamte se se závislostmi operačních systémů a podívejte se na několik příkladů scénářů.
 documentationcenter: ''
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 47d406eadbd3f5d608bfe0d13e82d0e32ae44ab1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350131"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390496"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Použití instancí RDMA nebo GPU ve fondech Batch
 
@@ -42,23 +42,23 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Fondy Linux – konfigurace virtuálních počítačů
 
-| Size | Funkce | Operační systémy | Požadovaný software | Nastavení fondu |
+| Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | PODPORUJÍ | Ubuntu 16,04 LTS nebo<br/>HPC založené na CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Ovladače systému Linux RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
-| [Řady NC, NCv2, NCv3, NDv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3 nebo 7,4<br/>(Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit | neuvedeno | 
-| [NV, NVv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16,04 LTS nebo<br/>CentOS 7.3<br/>(Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | neuvedeno |
+| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS nebo<br/>HPC založené na CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Ovladače systému Linux RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
+| [Řady NC, NCv2, NCv3, NDv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3 nebo 7,4<br/>(Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit | Nevztahuje se | 
+| [NV, NVv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16,04 LTS nebo<br/>CentOS 7.3<br/>(Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Nevztahuje se |
 
-<sup>*</sup>Velikosti N-Series podporující RDMA obsahují také NVIDIA Tesla GPU
+<sup>*</sup> Velikosti N-Series podporující RDMA obsahují také NVIDIA Tesla GPU
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Fondy Windows – konfigurace virtuálních počítačů
 
-| Size | Funkce | Operační systémy | Požadovaný software | Nastavení fondu |
+| Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | PODPORUJÍ | Windows Server 2016, 2012 R2 nebo<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 nebo novější nebo<br/> Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
-| [Řady NC, NCv2, NCv3, ND, NDv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Windows Server 2016 nebo <br/>2012 R2 (Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit| neuvedeno | 
-| [NV, NVv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 nebo<br/>2012 R2 (Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | neuvedeno |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 nebo<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 nebo novější nebo<br/> Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
+| [Řady NC, NCv2, NCv3, ND, NDv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Windows Server 2016 nebo <br/>2012 R2 (Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit| Nevztahuje se | 
+| [NV, NVv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 nebo<br/>2012 R2 (Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Nevztahuje se |
 
-<sup>*</sup>Velikosti N-Series podporující RDMA obsahují také NVIDIA Tesla GPU
+<sup>*</sup> Velikosti N-Series podporující RDMA obsahují také NVIDIA Tesla GPU
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Fondy Windows – konfigurace cloudových služeb
 
@@ -66,9 +66,9 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 > U fondů služby Batch s konfigurací cloudové služby se nepodporují velikosti řady N-Series.
 >
 
-| Size | Funkce | Operační systémy | Požadovaný software | Nastavení fondu |
+| Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | PODPORUJÍ | Windows Server 2016, 2012 R2, 2012 nebo<br/>2008 R2 (řada operačních systémů Host) | Microsoft MPI 2012 R2 nebo novější nebo<br/>Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly,<br/> zakázat souběžné provádění úloh |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 nebo<br/>2008 R2 (řada operačních systémů Host) | Microsoft MPI 2012 R2 nebo novější nebo<br/>Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly,<br/> zakázat souběžné provádění úloh |
 
 ## <a name="pool-configuration-options"></a>Možnosti konfigurace fondu
 
@@ -97,7 +97,7 @@ Pokud chcete pro fond Batch nakonfigurovat specializovanou velikost virtuálníh
 * [Batch loděnice](https://github.com/Azure/batch-shipyard) automaticky KONFIGURUJE ovladače GPU a RDMA, aby fungovaly transparentně s využitím kontejnerových úloh na Azure Batch. Dávková loděnice je zcela řízená pomocí konfiguračních souborů. K dispozici je celá řada ukázkových konfigurací, které umožňují úlohy GPU a RDMA, jako je [CNTKý recept](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI) na procesor řady N-Series, který nakonfiguruje ovladače GPU pro virtuální počítače řady N-Series a načítá Microsoft Cognitive Toolkit software jako image Docker.
 
 
-## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>Příklad: Ovladače NVIDIA GPU ve fondu virtuálních počítačů s Windows NC
+## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>Příklad: ovladače NVIDIA GPU ve fondu virtuálních počítačů s Windows NC
 
 Pokud chcete spouštět aplikace CUDA ve fondu uzlů Windows NC, musíte nainstalovat ovladače NVDIA GPU. Následující ukázkový postup slouží k instalaci ovladačů NVIDIA GPU pomocí balíčku aplikace. Tuto možnost můžete zvolit, pokud vaše zatížení závisí na konkrétní verzi ovladače GPU.
 
@@ -106,7 +106,7 @@ Pokud chcete spouštět aplikace CUDA ve fondu uzlů Windows NC, musíte nainsta
 3. Nahrajte balíček na účet Batch. Postup najdete v doprovodné příručce k [balíčkům aplikací](batch-application-packages.md) . Zadejte ID aplikace, například *GPUDriver*, a verzi, například *411,82*.
 1. Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond v konfiguraci virtuálního počítače s požadovaným počtem uzlů a škálování. V následující tabulce jsou uvedena ukázková nastavení pro bezobslužnou instalaci ovladačů NVIDIA GPU pomocí spouštěcího úkolu:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 | ---- | ----- | 
 | **Typ image** | Marketplace (Linux/Windows) |
 | **Publisher** | MicrosoftWindowsServer |
@@ -114,9 +114,9 @@ Pokud chcete spouštět aplikace CUDA ve fondu uzlů Windows NC, musíte nainsta
 | **Sku** | 2016 – Datacenter |
 | **Velikost uzlu** | NC6 Standard |
 | **Odkazy na balíček aplikace** | GPUDriver verze 411,82 |
-| **Spouštěcí úkol povolen** | Pravda<br>**Příkazový řádek** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Identita uživatele** – fond – autouser, správce<br/>**Počkat na úspěch** – pravda
+| **Spouštěcí úkol povolen** | Pravda<br>`cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"` - **příkazového řádku**<br/>**Identita uživatele** – fond – autouser, správce<br/>**Počkat na úspěch** – pravda
 
-## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Příklad: Ovladače NVIDIA GPU na fondu virtuálních počítačů se systémem Linux NC
+## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Příklad: ovladače NVIDIA GPU na fondu virtuálních počítačů se systémem Linux NC
 
 Chcete-li spouštět aplikace CUDA ve fondu uzlů systému Linux NC, je nutné nainstalovat potřebné ovladače NVIDIA Tesla GPU ze sady CUDA Toolkit. Následující příklady kroků vytvoří a nasadí vlastní image Ubuntu 16,04 LTS s ovladači GPU:
 
@@ -127,7 +127,7 @@ Chcete-li spouštět aplikace CUDA ve fondu uzlů systému Linux NC, je nutné n
 4. Vytvořte účet Batch v oblasti, která podporuje virtuální počítače NC.
 5. Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond s [použitím vlastní image](batch-sig-images.md) a požadovaného počtu uzlů a škálování. V následující tabulce jsou uvedena ukázková nastavení fondu pro bitovou kopii:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 | ---- | ---- |
 | **Typ image** | Vlastní image |
 | **Vlastní image** | *Název obrázku* |
@@ -146,14 +146,14 @@ Pokud chcete spouštět aplikace Windows MPI ve fondu uzlů virtuálních počí
 1. Postupujte podle pokynů pro vytvoření [Image Galerie sdílených imagí](batch-sig-images.md) pro dávku.
 1. Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond [pomocí Galerie sdílených imagí](batch-sig-images.md) a s požadovaným počtem uzlů a škálování. V následující tabulce jsou uvedena ukázková nastavení fondu pro bitovou kopii:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 | ---- | ---- |
 | **Typ image** | Vlastní image |
 | **Vlastní image** | *Název obrázku* |
 | **SKU agenta uzlu** | Batch. Node. Windows amd64 |
 | **Velikost uzlu** | H16r Standard |
 | **Komunikace mezi uzly povolena** | Pravda |
-| **Maximální počet úkolů na uzel** | 1 |
+| **Maximální počet úkolů na uzel** | 1\. místo |
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Příklad: Intel MPI ve fondu virtuálních počítačů se systémem Linux H16r
 
@@ -161,7 +161,7 @@ Pokud chcete spouštět aplikace MPI ve fondu uzlů H-Series, jedna možnost je 
 
 Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond s použitím tohoto obrázku a s požadovaným počtem uzlů a škálování. V následující tabulce jsou uvedena ukázková nastavení fondu:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 | ---- | ---- |
 | **Typ image** | Marketplace (Linux/Windows) |
 | **Publisher** | OpenLogic |
@@ -169,7 +169,7 @@ Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond s použitím tohot
 | **Sku** | 7.4 |
 | **Velikost uzlu** | H16r Standard |
 | **Komunikace mezi uzly povolena** | Pravda |
-| **Maximální počet úkolů na uzel** | 1 |
+| **Maximální počet úkolů na uzel** | 1\. místo |
 
 ## <a name="next-steps"></a>Další kroky
 

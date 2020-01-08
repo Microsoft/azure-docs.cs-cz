@@ -1,5 +1,5 @@
 ---
-title: Použití Pythonu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+title: Azure Data Lake Storage Gen2 Python SDK for Files & seznamy řízení přístupu (Preview)
 description: Pomocí Pythonu spravujte adresáře a seznamy řízení přístupu k souborům a adresářům (ACL) v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a65e8b2c5fbcdd4f6df0f8f39b24fa97b8deeca3
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e07bb6aa9d1fe22baaebb7bc7239ce03a728c6b9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431800"
 ---
-# <a name="use-python-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití Pythonu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
 V tomto článku se dozvíte, jak pomocí Pythonu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak pomocí Pythonu vytvářet a spravovat adresá
 
 [Package (index balíčku Python)](https://pypi.org/project/azure-storage-file-datalake/) | [Samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API Reference](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-python/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).

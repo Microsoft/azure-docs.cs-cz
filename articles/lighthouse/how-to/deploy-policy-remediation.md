@@ -3,20 +3,20 @@ title: Nasazení zásady, která se dá napravit
 description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4522c9ebad741f5ec0cb7e56e68467312ef8f037
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456870"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Nasazení zásady, která se dá opravit v rámci delegovaného předplatného
 
-[Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb vytvářet a upravovat definice zásad v rámci delegovaného předplatného. Pokud ale chcete nasadit zásady, které používají [úlohu nápravy](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) (to znamená zásady s efektem [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) nebo [úprav](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) ), budete muset vytvořit [spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) v tenantovi zákazníka. Tuto spravovanou identitu můžou použít Azure Policy k nasazení šablony v rámci zásad. V takovém případě jsou vyžadovány kroky, pokud zadáváte zákazníka pro správu delegovaných prostředků Azure a při nasazení samotné zásady.
+[Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb vytvářet a upravovat definice zásad v rámci delegovaného předplatného. Pokud ale chcete nasadit zásady, které používají [úlohu nápravy](../../governance/policy/how-to/remediate-resources.md) (to znamená zásady s efektem [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) nebo [úprav](../../governance/policy/concepts/effects.md#modify) ), budete muset vytvořit [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) v tenantovi zákazníka. Tuto spravovanou identitu můžou použít Azure Policy k nasazení šablony v rámci zásad. V takovém případě jsou vyžadovány kroky, pokud zadáváte zákazníka pro správu delegovaných prostředků Azure a při nasazení samotné zásady.
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Vytvoření uživatele, který může přiřadit role ke spravované identitě v tenantovi zákazníka
 
-Když zaškrtnete zákazníka pro správu delegovaných prostředků Azure, použijete [šablonu Azure Resource Manager](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template) společně se souborem parametrů, který definuje uživatele, skupiny uživatelů a instanční objekty ve vašem spravovaném tenantovi, které budou mít přístup k delegovaným prostředkům v tenantovi zákazníka. V souboru parametrů má každý z těchto uživatelů (**principalId**) přiřazenou [předdefinovanou roli](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roleDefinitionId**), která definuje úroveň přístupu.
+Když zaškrtnete zákazníka pro správu delegovaných prostředků Azure, použijete [šablonu Azure Resource Manager](onboard-customer.md#create-an-azure-resource-manager-template) společně se souborem parametrů, který definuje uživatele, skupiny uživatelů a instanční objekty ve vašem spravovaném tenantovi, které budou mít přístup k delegovaným prostředkům v tenantovi zákazníka. V souboru parametrů má každý z těchto uživatelů (**principalId**) přiřazenou [předdefinovanou roli](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**), která definuje úroveň přístupu.
 
 Aby **principalId** mohl vytvořit spravovanou identitu v tenantovi zákazníka, musíte nastavit její **RoleDefinitionId** na **Správce přístupu uživatele**. I když tato role není obecně podporovaná, dá se použít v tomto konkrétním scénáři, takže uživatelé s tímto oprávněním můžou k spravovaným identitám přiřadit jednu nebo více specifických rolí. Tyto role jsou definovány ve vlastnosti **delegatedRoleDefinitionIds** . Do této služby můžete zahrnout jakoukoli vestavěnou roli s výjimkou správce nebo vlastníka přístupu uživatele.
 
@@ -66,5 +66,5 @@ Následující příklad ukazuje přiřazení role s **delegatedManagedIdentityR
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
-- Seznamte se se [spravovanými identitami pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- Přečtěte si o [Azure Policy](../../governance/policy/index.yml).
+- Seznamte se se [spravovanými identitami pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).

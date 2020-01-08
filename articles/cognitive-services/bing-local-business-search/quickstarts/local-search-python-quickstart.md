@@ -1,7 +1,7 @@
 ---
 title: Rychlý Start – odeslání dotazu do rozhraní API v Pythonu – vyhledávání místních obchodů Bingu
 titleSuffix: Azure Cognitive Services
-description: Tento článek vám umožní začít používat rozhraní API Bingu pro vyhledávání místních obchodních aplikací v Pythonu.
+description: V tomto rychlém startu můžete začít používat rozhraní API Bingu pro vyhledávání místních obchodních aplikací v Pythonu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: a73851a4c88998a377a5123d411948946173fa89
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664926"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379739"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních hledání v Pythonu
 
@@ -23,11 +23,11 @@ Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API 
 
 Tato ukázková aplikace získá data místní odpovědi z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Python](https://www.python.org/) 2. x nebo 3. x
  
-Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-complete-application"></a>Spuštění úplné aplikace
 

@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření spravovaného disku ze souboru VHD v účtu úložiště ve stejném předplatném
+title: Vytvoření spravovaného disku ze souboru VHD v účtu úložiště ve stejném předplatném – ukázka CLI
 description: Ukázkový skript Azure CLI – Vytvoření spravovaného disku ze souboru VHD v účtu úložiště ve stejném předplatném
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 17407c2347fd8ee7f3a13e6f861ee703222ca179
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d15e0519e9ee5e5d1d6832e37c10119e40add890
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458494"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>Vytvoření spravovaného disku ze souboru VHD v účtu úložiště ve stejném předplatném pomocí rozhraní příkazového řádku
 
@@ -41,7 +41,7 @@ Tento skript vytvoří spravovaný disk ze souboru VHD v účtu úložiště ve 
 
 Tento skript k vytvoření spravovaného disku z virtuálního pevného disku používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Vytvoří spravovaný disk s použitím identifikátoru URI virtuálního pevného disku v účtu úložiště ve stejném předplatném. |
 

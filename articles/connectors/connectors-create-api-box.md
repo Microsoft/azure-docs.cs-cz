@@ -1,20 +1,20 @@
 ---
 title: Připojit k boxu
-description: Vytváření a Správa souborů s rozhraními REST API a Azure Logic Apps
+description: Automatizace úloh a pracovních postupů, které vytvářejí a spravují soubory v boxu, pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 38e061e918d445de07961af1789891f44c59090a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789863"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666767"
 ---
-# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Vytváření a Správa souborů v krabici pomocí Azure Logic Apps
+# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Vytváření a Správa souborů v boxu pomocí Azure Logic Apps
 
 Tento článek ukazuje, jak můžete vytvářet a spravovat soubory v krabicích zevnitř aplikace logiky pomocí konektoru box. Tímto způsobem můžete vytvářet aplikace logiky, které automatizují úlohy a pracovní postupy pro správu souborů a dalších akcí, například:
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak můžete vytvářet a spravovat soubory v krabicích
   Když tyto akce obdrží odpověď, zpřístupní výstup pro jiné akce. 
   Například když se změní soubor v poli, můžete tento soubor poslat e-mailem pomocí Office 365.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Účet box](https://www.box.com/home)
 

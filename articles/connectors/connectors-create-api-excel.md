@@ -1,22 +1,22 @@
 ---
-title: Připojení k Excelu online
-description: Správa dat pomocí rozhraní REST API Excelu online a Azure Logic Apps
+title: Správa dat, listů a tabulek v Excelu online
+description: Správa dat v listech a tabulkách v Excelu online pro firmy nebo Excel Online pro OneDrive pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445885"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Správa dat v Excelu online pomocí Azure Logic Apps
 
-Pomocí Azure Logic Apps a konektoru Excelu online můžete vytvářet automatizované úkoly a pracovní postupy na základě vašich dat v Excelu online pro firmy nebo OneDrive. Tento konektor poskytuje akce, které vám pomůžou pracovat s daty a spravovat tabulky, například:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a konektoru [Excel Online pro firmy](/connectors/excelonlinebusiness/) nebo [Excelu online pro konektor OneDrive](/connectors/excelonline/) můžete vytvářet automatizované úkoly a pracovní postupy na základě vašich dat v Excelu online pro firmy nebo OneDrive. Tento konektor poskytuje akce, které vám pomůžou pracovat s daty a spravovat tabulky, například:
 
 * Vytvořte nové listy a tabulky.
 * Získat a spravovat listy, tabulky a řádky.
@@ -29,7 +29,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](.
 > [!NOTE]
 > [Aplikace Excel Online pro firmy](/connectors/excelonlinebusiness/) a [Excel Online pro](/connectors/excelonline/) konektory OneDrive funguje s Azure Logic Apps a liší se od [konektoru aplikace Excel pro PowerApps](/connectors/excel/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

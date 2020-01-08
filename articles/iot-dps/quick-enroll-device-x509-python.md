@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 3970f24c704b36bcfd12684e6e72a34c853af8c2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 65945c9c12f4c5c41cac79022d0e11d1f07844d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974678"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434611"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Pythonu
 
@@ -32,7 +32,7 @@ Přestože postup v tomto článku funguje na počítačích s Windows i Linuxem
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Nainstalujte [Python 2.x nebo 3.x](https://www.python.org/downloads/). Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnných prostředí pro konkrétní platformu.
 - [Nainstalujte nebo upgradujte *pip*, systém správy balíčků Pythonu](https://pip.pypa.io/en/stable/installing/).
@@ -44,20 +44,23 @@ Pro účely tohoto rychlého startu potřebujete soubor .pem nebo .cer, který o
 
 Sada [SDK služby Azure IoT pro jazyk C](https://github.com/Azure/azure-iot-sdk-c) obsahuje testovací nástroje, které vám můžou pomoct vytvořit řetěz certifikátů X.509, nahrát kořenový nebo zprostředkující certifikát z tohoto řetězu a ověřit certifikát testováním vlastnictví pomocí této služby. Certifikáty vytvořené pomocí nástrojů sady SDK jsou určené **jenom k testování během vývoje**. Tyto certifikáty **se nesmí používat v produkčním prostředí**. Obsahují pevně zakódovaná hesla („1234“), jejichž platnost vyprší po 30 dnech. Informace o získání certifikátů vhodných pro použití v produkčním prostředí najdete v tématu věnovaném [získání certifikátu webu X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) v dokumentaci ke službě Azure IoT Hub.
 
-Pokud chcete vygenerovat certifikáty pomocí těchto testovacích nástrojů, proveďte následující kroky: 
- 
-1. Otevřete příkazový řádek nebo prostředí Git Bash a přejděte do pracovní složky na svém počítači. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
-    
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+Pokud chcete vygenerovat certifikáty pomocí těchto testovacích nástrojů, proveďte následující kroky:
 
-   Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
+1. Vyhledejte název značky pro [nejnovější verzi](https://github.com/Azure/azure-iot-sdk-c/releases/latest) sady Azure IoT C SDK.
 
-   Testovací nástroje se nacházejí ve složce *azure-iot-sdk-c/tools/CACertificates* úložiště, které jste naklonovali.    
+2. Otevřete příkazový řádek nebo prostředí Git Bash a přejděte do pracovní složky na svém počítači. Spuštěním následujících příkazů naklonujte nejnovější verzi úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) . Použijte značku, kterou jste našli v předchozím kroku, jako hodnotu parametru `-b`:
 
-2. Ukázky a kurzy najdete v článku [Správa testovacích certifikátů certifikační autority](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md). 
+    ```cmd/sh
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
 
+    Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
+
+   Testovací nástroje se nacházejí ve složce *azure-iot-sdk-c/tools/CACertificates* úložiště, které jste naklonovali.
+
+3. Ukázky a kurzy najdete v článku [Správa testovacích certifikátů certifikační autority](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md). 
 
 ## <a name="modify-the-python-sample-code"></a>Úprava vzorového kódu Pythonu
 

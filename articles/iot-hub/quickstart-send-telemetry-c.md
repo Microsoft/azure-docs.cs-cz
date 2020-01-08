@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 4ccfa45c56a7e59024ce0639f218861054e32395
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 769cb77f297fb30d619623c4a635ef6793825421
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166945"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429092"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a její čtení pomocí back-endové aplikace (C)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu odešlete telemetrická data z aplikace simulovaného zařízení prostřednictvím centra IoT do back-endové aplikace za účelem zpracování.
+IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu odešlete telemetrická data z aplikace simulovaného zařízení prostřednictvím služby IoT Hub do back-endové aplikace za účelem zpracování.
 
 V rychlém startu se používá k odesílání telemetrických dat do centra IoT ukázková aplikace C ze [sady SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md). Sady SDK pro zařízení Azure IoT jsou kvůli přenositelnosti a široké kompatibilitě platforem napsané v [ANSI C (C99)](https://wikipedia.org/wiki/C99). Před spuštěním ukázkového kódu vytvoříte centrum IoT a zaregistrujete simulované zařízení v tomto centru.
 
@@ -31,7 +31,7 @@ Tento článek je napsán pro systém Windows, ale tento rychlý Start můžete 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) s povoleným pracovním vytížením pro [desktopovou vývoj C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Nainstalujte nejnovější verzi [Git](https://git-scm.com/download/).
@@ -59,25 +59,28 @@ V tomto rychlém startu ale připravíte vývojové prostředí, které se použ
 
 1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
 
-    Před zahájením instalace `CMake` je důležité, aby byly nainstalovány požadavky sady Visual Studio C++(aplikace Visual Studio a úloha vývoj desktopových aplikací s). Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
+    Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
-2. Otevřete příkazový řádek nebo prostředí Git bash a přejděte do pracovního adresáře, do kterého chcete klonovat sadu Azure IoT C SDK. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
+2. Vyhledejte název značky pro [nejnovější verzi](https://github.com/Azure/azure-iot-sdk-c/releases/latest) sady SDK.
+
+3. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujících příkazů naklonujte nejnovější verzi úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) . Použijte značku, kterou jste našli v předchozím kroku, jako hodnotu parametru `-b`:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-3. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Do pracovního adresáře zadejte následující příkazy:
+4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-4. Spusťte následující příkaz, který sestaví verzi sady SDK specifickou pro vaši vývojovou platformu vašeho klienta. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení.
+5. Spusťte následující příkaz, který sestaví verzi sady SDK specifickou pro vaši vývojovou platformu vašeho klienta. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení.
 
     ```cmd
     cmake ..
@@ -150,7 +153,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
     static const char* connectionString = "[device connection string]";
     ```
 
-    Hodnotu konstanty `connectionString` nahraďte připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak uložte změny do souboru **iothub_convenience_sample.c**.
+    Hodnotu `connectionString` konstanty nahraďte připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak uložte změny do souboru **iothub_convenience_sample.c**.
 
 3. V okně místního terminálu přejděte v adresáři CMake do adresáře projektu *iothub_convenience_sample*, který jste vytvořili v sadě Azure IoT C SDK. Do pracovního adresáře zadejte tento příkaz:
 

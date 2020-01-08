@@ -1,26 +1,15 @@
 ---
-title: Přehled Service Fabric v Azure | Dokumentace Microsoftu
+title: Přehled Service Fabric v Azure
 description: Přehled platformy Service Fabric, kde se aplikace skládají z mnoha mikroslužeb pro zajištění škálování a odolnosti. Service Fabric je platforma distribuovaných systémů, která slouží k sestavování škálovatelných a spolehlivých aplikací se snadnou správou pro cloud.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider
-ms.assetid: bbcc652a-a790-4bc4-926b-e8cd966587c0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: overview
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0226c9f1b90495cdfd47a5c5c7a415a36761753d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a9b8c2051322a7d99af7359c31cb6c77f53d4b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466298"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Přehled Azure Service Fabric
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb a kontejnerů. Service Fabric také řeší důležité výzvy při vývoji a správě aplikací nativních pro cloud. Vývojáři a správci se můžou vyhnout komplexním problémům s infrastrukturou a soustředit se na implementaci důležitých a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné. Service Fabric představuje platformu nové generace pro vytváření a správu těchto cloudově škálovatelných aplikací úrovně 1 na podnikové úrovni běžících v kontejnerech.
@@ -32,13 +21,13 @@ Toto krátké video představuje Service Fabric a mikroslužby:
 Poskytovatel prostředků Azure Service Fabric je k dispozici ve všech oblastech Azure a je kompatibilní se všemi certifikáty dodržování předpisů, které má Azure. To zahrnuje následující: SOC, ISO, PCI DSS, HIPAA a GDPR. Úplný seznam certifikátů dodržování předpisů najdete v následujících příkladech: [nabídky dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings) .
 
 ## <a name="applications-composed-of-microservices"></a>Aplikace skládající se z mikroslužeb 
-Service Fabric umožňuje vytvářet a spravovat škálovatelné a odolné aplikace skládající se z mikroslužeb, které se spouštějí s vysokou hustotou ve sdíleném fondu počítačů, který se označuje jako cluster. Poskytuje propracovaný a nenáročný modul runtime pro sestavování distribuovaných, škálovatelných, bezstavových a stavových mikroslužeb spouštěných v kontejnerech. Poskytuje také komplexní možnosti správy aplikací umožňující zřizování, nasazování, monitorování, upgradování, opravování a odstraňování nasazených aplikací, včetně kontejnerizovaných služeb.
+Service Fabric umožňuje sestavovat a spravovat škálovatelné a spolehlivé aplikace skládající se z mikroslužeb. Tyto distribuované mikroslužby běží s vysokou hustotou ve sdíleném fondu počítačů, který se označuje jako cluster. Service Fabric poskytuje propracovaný a lehký modul runtime, který podporuje bezstavové a stavové mikroslužby. Poskytuje také komplexní možnosti správy aplikací pro zřizování, nasazování, monitorování, upgrade/opravy a odstraňování nasazených aplikací.
+
+Platforma Service Fabric je přizpůsobená pro vytváření nativních cloudových služeb, které můžou začínat jako malé a podle potřeby se rozrůstat a masivně škálovat na stovky nebo tisíce počítačů. Dnešní služby v internetovém měřítku se skládají z mikroslužeb. Mezi příklady mikroslužeb patří brány protokolů, profily uživatelů, nákupní košíky, zpracování inventáře, fronty a mezipaměti.
 
 Service Fabric dnes využívá řada služeb Microsoftu, včetně Azure SQL Database, Azure Cosmos DB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Dynamics 365, Skype pro firmy a mnoha dalších základních služeb Azure.
 
-Platforma Service Fabric je přizpůsobená pro vytváření nativních cloudových služeb, které můžou začínat jako malé a podle potřeby se rozrůstat a masivně škálovat na stovky nebo tisíce počítačů. Dnešní služby v internetovém měřítku se skládají z mikroslužeb. Mezi příklady mikroslužeb patří brány protokolů, profily uživatelů, nákupní košíky, zpracování inventáře, fronty a mezipaměti. 
-
-Service Fabric nabízí aplikacím, které se skládají z těchto mikroslužeb, komplexní možnosti správy modulu runtime a životního cyklu. Mikroslužby hostuje uvnitř kontejnerů, které se nasazují a aktivují napříč clusterem Service Fabric. Přesun z virtuálních počítačů na kontejnery umožňuje řádové zvýšení hustoty. Podobně je možné docílit dalšího řádového zvýšeni hustoty přesunem z kontejnerů na mikroslužby v těchto kontejnerech. Například jeden cluster pro službu Azure SQL Database se skládá ze stovek počítačů, na kterých se spouští desítky tisíc kontejnerů, které celkem hostují stovky tisíc databází. Každá databáze je stavovou mikroslužbou Service Fabric. 
+Service Fabric hostuje mikroslužby uvnitř kontejnerů, které se nasazují a aktivují napříč clusterem Service Fabric. Přesun z virtuálních počítačů na kontejnery umožňuje řádové zvýšení hustoty. Podobně je možné docílit dalšího řádového zvýšeni hustoty přesunem z kontejnerů na mikroslužby v těchto kontejnerech. Například jeden cluster pro službu Azure SQL Database se skládá ze stovek počítačů, na kterých se spouští desítky tisíc kontejnerů, které celkem hostují stovky tisíc databází. Každá databáze je stavovou mikroslužbou Service Fabric.
 
 Další informace o přístupu založeném na mikroslužbách najdete v tématu [Proč při sestavování aplikací zvolit přístup založený na mikroslužbách?](service-fabric-overview-microservices.md)
 

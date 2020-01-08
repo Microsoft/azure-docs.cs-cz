@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 424dfc1dac21f227869f23e7401a083b06cef1d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354049"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otevření portů a koncových bodů pro virtuální počítač se systémem Linux pomocí Azure CLI
 
@@ -92,5 +92,5 @@ Pro webové aplikace s vysokou dostupností byste měli své virtuální počít
 ## <a name="next-steps"></a>Další kroky
 V tomto příkladu jste vytvořili jednoduché pravidlo pro povolení přenosů HTTP. Informace o vytváření podrobnějších prostředí najdete v následujících článcích:
 
-* [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)
+* [Přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
 * [Co je skupina zabezpečení sítě (NSG)?](../../virtual-network/security-overview.md)

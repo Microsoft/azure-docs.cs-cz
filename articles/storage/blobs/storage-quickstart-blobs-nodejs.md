@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0a6d7ce8f1f6b81c3dbae3d41842345be5d2e551
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465115"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro JavaScript
 
@@ -29,7 +29,7 @@ Použijte klientskou knihovnu služby Azure Blob Storage V12 pro JavaScript:
 * Stažení objektu blob do místního počítače
 * Odstranění kontejneru
 
-[Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-blob) |  | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) [(Správce balíčků Node)](https://www.npmjs.com/package/@azure/storage-blob/v/12.0.0) | [ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+[Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-blob) |  | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) [(Správce balíčků Node)](https://www.npmjs.com/package/@azure/storage-blob) | [ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -114,11 +114,11 @@ Z adresáře projektu:
 
 1. Uložte nový soubor jako *BLOB-Quickstart-V12. js* v adresáři *objektů BLOB-rychlý Start-V12* .
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Objektový model
 
-Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Nestrukturovaná data jsou data, která nevyhovují konkrétnímu datovému modelu nebo definici, jako jsou textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
+Úložiště objektů BLOB v Azure je optimalizované pro ukládání obrovských objemů nestrukturovaných dat. Jde o data, která nevyhovují konkrétnímu datovému modelu nebo definici, například textová nebo binární data. Úložiště objektů BLOB nabízí tři typy prostředků:
 
 * Účet úložiště
 * Kontejner v účtu úložiště
@@ -154,11 +154,11 @@ Přidejte tento kód do funkce `main`:
 ```javascript
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the environment variable is
-// created after the application is launched in a console or with Visual Studio,
-// the shell or application needs to be closed and reloaded to take the
-// environment variable into account.
-const CONNECT_STR = process.env.CONNECT_STR;
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the
+// environment variable is created after the application is launched in a
+// console or with Visual Studio, the shell or application needs to be closed
+// and reloaded to take the environment variable into account.
+const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
@@ -174,7 +174,7 @@ Přidejte tento kód na konec funkce `main`:
 
 ```javascript
 // Create the BlobServiceClient object which will be used to create a container client
-const blobServiceClient = await BlobServiceClient.fromConnectionString(CONNECT_STR);
+const blobServiceClient = await BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
 // Create a unique name for the container
 const containerName = 'quickstart' + uuidv1();
@@ -308,16 +308,16 @@ Deleting container...
 Done
 ```
 
-Projděte si kód v ladicím programu a ověřte Azure Portal v průběhu celého procesu. Zkontrolujte, zda se kontejner vytváří. Objekt blob můžete otevřít uvnitř kontejneru a zobrazit jeho obsah.
+Projděte si kód v ladicím programu a ověřte [Azure Portal](https://portal.azure.com) v průběhu celého procesu. Zkontrolujte, zda se kontejner vytváří. Objekt blob můžete otevřít uvnitř kontejneru a zobrazit jeho obsah.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objekty BLOB pomocí JavaScriptu.
 
-Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
+Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu:
 
 > [!div class="nextstepaction"]
-> [Ukázky V12 JavaScriptu pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+> [Dokumentace k Azure pro JavaScript](/azure/javascript/)
 
-* Další informace najdete v tématu [sada Azure SDK pro JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md).
-* Kurzy, ukázky, rychlé starty a další dokumentace najdete v [dokumentaci k sadě Azure SDK pro JavaScript](/azure/javascript/).
+* Další informace najdete v tématu [Klientská knihovna pro úložiště objektů BLOB v Azure pro JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob).
+* Ukázková aplikace služby Blob Storage najdete v [ukázkách V12 JavaScriptu v klientské knihovně pro úložiště objektů BLOB v Azure](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples).

@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013993"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438062"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytváření a správa přiřazení rolí v digitálních prozdvojeních Azure
 
@@ -36,12 +36,12 @@ Každé přiřazení role odpovídá následující definici:
 
 Následující tabulka popisuje jednotlivé atributy:
 
-| Atribut | Název | Požaduje se | Typ | Popis |
+| Atribut | Name (Název) | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- | --- |
 | roleId | Identifikátor definice role | Ano | Řetězec | Jedinečné ID požadovaného přiřazení role Vyhledejte definice rolí a jejich identifikátor pomocí dotazu na následující tabulku rozhraní API systému nebo revize. |
 | ID objektu | Identifikátor objektu | Ano | Řetězec | ID Azure Active Directory, ID objektu zabezpečení služby nebo název domény. K čemu přiřazení role je přiřazeno. Přiřazení role musí být formátováno podle jeho přidruženého typu. Pro `DomainName` objectIdType musí objectId začínat znakem `“@”`. |
 | objectIdType | Typ identifikátoru objektu | Ano | Řetězec | Typ použitého identifikátoru objektu. Viz článek **podporované ObjectIdTypes** níže. |
-| path | Cesta k prostoru | Ano | Řetězec | Úplná cesta pro přístup k objektu `Space`. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy postupujte podle principu nejnižší úrovně oprávnění. |
+| Cesta | Cesta k prostoru | Ano | Řetězec | Úplná cesta pro přístup k objektu `Space`. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy postupujte podle principu nejnižší úrovně oprávnění. |
 | tenantId | Identifikátor tenanta | Různé | Řetězec | Ve většině případů Azure Active Directory ID tenanta. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro domainname ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Podporované identifikátory definice rolí
@@ -161,7 +161,7 @@ Pokud chcete zkontrolovat přiřazení konkrétní role, proveďte ověřený po
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Hodnota parametru** | **Požadováno** |  **Typ** |  **Popis** |
+| **Hodnota parametru** | **Vyžaduje** |  **Typ** |  **Popis** |
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  Pravda | Řetězec |   Identifikátor objectId pro identifikátor UserId objectIdType |
 | YOUR_PATH | Pravda | Řetězec |   Vybraná cesta pro kontrolu přístupu. |

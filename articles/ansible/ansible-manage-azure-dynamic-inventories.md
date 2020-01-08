@@ -4,12 +4,12 @@ description: Naučte se používat Ansible ke správě dynamických inventářů
 keywords: Ansible, Azure, DevOps, bash, cloudshellu, dynamický soupis
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442787"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Kurz: Konfigurace dynamického inventáře vašich prostředků Azure pomocí Ansible
 
@@ -32,7 +32,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 
 ## <a name="create-the-test-vms"></a>Vytvoření testovacích virtuálních počítačů
 
-1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -228,7 +228,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
           become: yes
           tasks:
           - name: install nginx
-            apt: pkg=nginx state=installed
+            apt: pkg=nginx state=present
             notify:
             - start nginx
     
@@ -237,7 +237,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
               service: name=nginx state=started
     ```
 
-1. Uložte soubor a ukončete Editor.
+1. Uložte tento soubor a ukončete editor.
 
 1. Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 

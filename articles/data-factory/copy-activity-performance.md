@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 1b1b02e310c98a78006d258333c0ec10e89e3b31
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444140"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce škálovatelností a výkonem aktivity kopírování
 
@@ -293,7 +293,8 @@ Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v p�
 
 Tady jsou odkazy na sledování výkonu a ladění pro některá z podporovaných úložišť dat:
 
-* Azure Storage, což zahrnuje úložiště objektů BLOB a úložiště tabulek: [Azure Storage cíle škálovatelnosti](../storage/common/storage-scalability-targets.md) a [Azure Storage kontrolní seznam pro výkon a škálovatelnost](../storage/common/storage-performance-checklist.md).
+* Azure Blob Storage: [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../storage/blobs/scalability-targets.md) a [Kontrolní seznam výkonu a škálovatelnosti pro úložiště objektů BLOB](../storage/blobs/storage-performance-checklist.md).
+* Azure Table Storage: [škálovatelnost a výkonnostní cíle pro úložiště tabulek](../storage/tables/scalability-targets.md) a pro [Kontrolní seznam výkonu a škálovatelnosti pro úložiště tabulek](../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: můžete [monitorovat výkon](../sql-database/sql-database-single-database-monitor.md) a kontrolovat procento transakčních jednotek databáze (DTU).
 * Azure SQL Data Warehouse: jeho schopnost se měří v jednotkách datového skladu (DWU). Viz [Správa výpočetního výkonu v Azure SQL Data Warehouse (přehled)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [úrovně výkonu v Azure Cosmos DB](../cosmos-db/performance-levels.md).

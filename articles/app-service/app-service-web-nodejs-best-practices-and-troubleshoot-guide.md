@@ -1,19 +1,19 @@
 ---
 title: Osvědčené postupy pro Node. js a řešení potíží
 description: Seznamte se s osvědčenými postupy a kroky pro řešení potíží pro aplikace Node. js běžící v Azure App Service.
-author: ranjithr
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bwren
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672047"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430564"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
@@ -83,11 +83,11 @@ Kromě toho je třeba pro streamování aplikací nastavit také responseBufferL
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Středníkem oddělený seznam souborů, které jsou sledovány pro změny. Při jakékoli změně souboru dojde k recyklování aplikace. Každá položka se skládá z volitelného názvu adresáře a názvu souboru, který je relativní vzhledem k adresáři, kde se nachází hlavní vstupní bod aplikace. Zástupné znaky jsou povoleny pouze v části název souboru. Výchozí hodnota je `*.js;iisnode.yml`
+Středníkem oddělený seznam souborů, které jsou sledovány pro změny. Při jakékoli změně souboru dojde k recyklování aplikace. Každá položka se skládá z volitelného názvu adresáře a názvu souboru, který je relativní vzhledem k adresáři, kde se nachází hlavní vstupní bod aplikace. Zástupné znaky jsou povoleny pouze v části název souboru. Výchozí hodnotou je `*.js;iisnode.yml`.
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Výchozí hodnota je false (NEPRAVDA). Pokud je povolená, může se vaše aplikace uzlů připojit k pojmenovanému kanálu (proměnná prostředí IISNODE\_ŘÍDICÍm KANÁLem\_a poslat zprávu o recyklaci. Tím dojde k řádnému recyklování W3wp.
+Výchozí hodnota je false. Pokud je povolená, může se vaše aplikace uzlů připojit k pojmenovanému kanálu (proměnná prostředí IISNODE\_ŘÍDICÍm KANÁLem\_a poslat zprávu o recyklaci. Tím dojde k řádnému recyklování W3wp.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -99,7 +99,7 @@ Výchozí hodnota je 0, což znamená, že tato funkce je zakázaná. Pokud je h
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Výchozí hodnota je false (NEPRAVDA). Pokud se nastaví na true, iisnode přidá hlavičku odpovědi HTTP `iisnode-debug` do každé odpovědi HTTP, kterou pošle `iisnode-debug` hodnota hlavičky je adresa URL. Jednotlivé části diagnostických informací lze získat tak, že si prohlížíte fragment adresy URL. vizualizace je však k dispozici otevřením adresy URL v prohlížeči.
+Výchozí hodnota je false. Pokud se nastaví na true, iisnode přidá hlavičku odpovědi HTTP `iisnode-debug` do každé odpovědi HTTP, kterou pošle `iisnode-debug` hodnota hlavičky je adresa URL. Jednotlivé části diagnostických informací lze získat tak, že si prohlížíte fragment adresy URL. vizualizace je však k dispozici otevřením adresy URL v prohlížeči.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -107,7 +107,7 @@ Toto nastavení řídí protokolování stdout a stderr pomocí iisnode. Iisnode
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-Výchozí hodnota je false (NEPRAVDA). Když se nastaví na true, iisnode zobrazí stavový kód HTTP a kód chyby Win32 v prohlížeči. Kód Win32 je užitečný při ladění určitých typů problémů.
+Výchozí hodnota je false. Když se nastaví na true, iisnode zobrazí stavový kód HTTP a kód chyby Win32 v prohlížeči. Kód Win32 je užitečný při ladění určitých typů problémů.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (Nepovolit pro živý produkční Web)
 

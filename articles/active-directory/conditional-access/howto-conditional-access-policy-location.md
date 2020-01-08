@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26299ca12071b521fc825a0b1ab1425f24af67e0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: bf34abaf072b7b80f5831f15d86b12ad2780a920
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424872"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Podmíněný přístup: blokovat přístup podle umístění
 
@@ -57,5 +57,7 @@ Další informace o podmínkách umístění v podmíněném přístupu najdete 
 ## <a name="next-steps"></a>Další kroky
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

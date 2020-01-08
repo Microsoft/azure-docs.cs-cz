@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytvoření sady škálování virtuálních počítačů pro Windows v Azure
-description: V tomto kurzu zjistíte, jak pomocí Azure PowerShell a škálovací sady virtuálních počítačů vytvořit a nasadit vysoce dostupné aplikace na virtuálním počítači s Windows.
+title: 'Kurz: vytvoření sady škálování virtuálních počítačů s Windows'
+description: Naučte se používat Azure PowerShell k vytvoření a nasazení vysoce dostupné aplikace na virtuálních počítačích s Windows pomocí sady škálování virtuálních počítačů.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6fcf0c14d58e70659ee5e21b03245b705294b445
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bf53b2777c5d1e4d774a9f5ee9df119a0deac9d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067889"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464974"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Kurz: Vytvoření škálovací sady virtuálních počítačů a nasazení vysoce dostupné aplikace ve Windows pomocí Azure PowerShell
 Sada škálování virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů v sadě škálování můžete škálovat ručně. Můžete také definovat pravidla pro automatické škálování na základě využití prostředků, jako je například CPU, nároky na paměť nebo síťový provoz. V tomto kurzu nasadíte sadu škálování virtuálního počítače v Azure a naučíte se:
@@ -37,7 +37,7 @@ Sada škálování virtuálních počítačů umožňuje nasadit a spravovat sad
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložit je do Cloud Shellu a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="scale-set-overview"></a>Přehled škálovací sady
 Sada škálování virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Virtuální počítače ve škálovací sadě se distribuují napříč logickými doménami selhání a aktualizačními doménami v jedné nebo více *skupinách umístění*. Skupiny umístění jsou skupiny podobně nakonfigurovaných virtuálních počítačů, podobně jako [sady dostupnosti](tutorial-availability-sets.md).

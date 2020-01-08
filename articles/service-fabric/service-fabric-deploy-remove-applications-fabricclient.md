@@ -1,25 +1,14 @@
 ---
 title: Nasazení Azure Service Fabric pomocí FabricClient
 description: Pomocí rozhraní FabricClient API můžete nasazovat a odebírat aplikace v Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: cdb5ae4efbd4119422101eb8a05ce71e7b58d51f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376966"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebrání aplikací pomocí FabricClient
 > [!div class="op_single_selector"]

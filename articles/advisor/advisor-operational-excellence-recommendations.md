@@ -1,19 +1,14 @@
 ---
-title: Zvyšte provozní excellency pro vaše předplatná Azure pomocí Azure Advisor | Microsoft Docs
-description: Pomocí služby Advisor můžete optimalizovat a dosáhnout provozní kvality předplatných Azure.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
+title: Zvyšte provozní excellency pro vaše předplatná Azure pomocí Azure Advisor
+description: Využijte poradce k optimalizaci a vyspělosti provozní kvality vašich předplatných Azure.
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: sagupt
-ms.openlocfilehash: 7cf3d3b34d0921cd111f8111bc2008ef0eced962
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443078"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Zajištění provozní kvality pomocí Azure Advisor
 
@@ -37,12 +32,12 @@ Azure Advisor zjistí pravidla upozornění, která mají v oddílu podmínky za
 
 ## <a name="follow-best-practices-using-azure-policy"></a>Dodržujte doporučené postupy pomocí Azure Policy
 
-Azure Policy je služba v Azure, která slouží k vytváření, přiřazování a správě zásad. Tyto zásady vynutily různá pravidla a vliv na vaše prostředky. Níže jsou uvedená doporučení k zásadám Azure, která vám pomůžou dosáhnout provozní excellency: 
-1. Správa značek pomocí Azure Policy: tyto zásady při vytváření nebo aktualizaci libovolného prostředku přidávají nebo nahradí zadanou značku a hodnotu. Stávající prostředky lze opravit aktivací úlohy nápravy. Tato změna také nemění značky ve skupinách prostředků.
+Azure Policy je služba v Azure, která slouží k vytváření, přiřazování a správě zásad. Tyto zásady vynucují různá pravidla a efekty pro vaše prostředky. Níže jsou uvedená doporučení k zásadám Azure, která vám pomůžou dosáhnout provozní excellency: 
+1. Správa značek pomocí Azure Policy: tyto zásady při vytváření nebo aktualizaci libovolného prostředku přidávají nebo nahradí zadanou značku a hodnotu. Stávající prostředky je možné napravit aktivací úlohy nápravy. Tato změna také nemění značky ve skupinách prostředků.
 2. Vysaďte požadavky na geografické dodržování předpisů pomocí Azure Policy: zásady vám umožní omezit umístění, která může organizace zadat při nasazování prostředků. 
 3. Zadejte povolené SKU virtuálních počítačů pro nasazení: Tato zásada umožňuje zadat sadu SKU virtuálních počítačů, které může vaše organizace nasazovat.
 4. Vynutilit audit virtuálních počítačů, které nepoužívají spravované disky, pomocí zásad Azure
-5. Použití příkazu zdědit značku ze skupin prostředků pomocí zásad Azure: když se nějaký prostředek vytvoří nebo aktualizuje, přidá nebo nahradí zadanou značku a hodnotu z nadřazené skupiny prostředků. Stávající prostředky lze opravit aktivací úlohy nápravy.
+5. Použití příkazu zdědit značku ze skupin prostředků pomocí zásad Azure: když se nějaký prostředek vytvoří nebo aktualizuje, přidá nebo nahradí zadanou značku a hodnotu z nadřazené skupiny prostředků. Stávající prostředky je možné napravit aktivací úlohy nápravy.
 
 ## <a name="next-steps"></a>Další kroky
 

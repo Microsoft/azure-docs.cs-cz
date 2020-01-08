@@ -7,7 +7,7 @@ author: Yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/10/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460795"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
@@ -48,7 +48,10 @@ Výchozím analyzátorem je standardní Lucene, který funguje dobře pro angli�
 
 ## <a name="configuring-analyzers"></a>Konfigurace analyzátorů
 
-Analyzátory jazyka se používají tak, jak jsou. Pro každé pole v definici indexu můžete nastavit vlastnost **Analyzer** na název analyzátoru, který určuje jazyk a jazykové sady (Microsoft nebo Lucene). Stejný analyzátor bude použit při indexování a hledání daného pole. Můžete mít například samostatná pole pro anglická, francouzská a španělská označení hotelu, která existují vedle sebe ve stejném indexu. Alternativně můžete místo **analyzátoru**použít **indexAnalyzer** a **searchAnalyzer** pro různá pravidla analýzy v době indexování a dobu dotazování. 
+Analyzátory jazyka se používají tak, jak jsou. Pro každé pole v definici indexu můžete nastavit vlastnost **Analyzer** na název analyzátoru, který určuje jazyk a jazykové sady (Microsoft nebo Lucene). Stejný analyzátor bude použit při indexování a hledání daného pole. Můžete mít například samostatná pole pro anglická, francouzská a španělská označení hotelu, která existují vedle sebe ve stejném indexu.
+
+> [!NOTE]
+> Není možné použít jiný analyzátor jazyka při indexování, než je doba dotazu v poli. Tato funkce je vyhrazena pro [vlastní analyzátory](index-add-custom-analyzers.md). Z tohoto důvodu, pokud se pokusíte nastavit vlastnosti **searchAnalyzer** nebo **indexAnalyzer** na název analyzátoru jazyka, REST API vrátí chybovou odpověď. Místo toho je nutné použít vlastnost **Analyzer** .
 
 Pomocí parametru dotazu **searchFields** určete, které pole pro konkrétní jazyk chcete v dotazech vyhledat. Můžete zkontrolovat příklady dotazů, které obsahují vlastnost Analyzer v [dokumentu hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
@@ -89,7 +92,7 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Irština||GA. Lucene|  
 |italština|it.microsoft|IT. Lucene|  
 |Japonština|ja.microsoft|Ja. Lucene|  
-|Kannada|kn.microsoft||  
+|Kannadština|kn.microsoft||  
 |Korejština|ko.microsoft|Ko. Lucene|  
 |Lotyština|lv.microsoft|Lotyšsko. Lucene|  
 |Litevština|lt.microsoft||  
@@ -120,7 +123,7 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 
  Všechny analyzátory s názvy popsanými pomocí **Lucene** jsou napájené z [analyzátorů jazyka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
-## <a name="see-also"></a>Viz také  
+## <a name="see-also"></a>Další informace najdete v tématech  
 
 + [Vytvoření indexu &#40;služby Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

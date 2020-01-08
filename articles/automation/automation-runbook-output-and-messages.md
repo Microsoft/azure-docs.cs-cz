@@ -2,19 +2,15 @@
 title: Výstup a zprávy Runbooku v Azure Automation
 description: Popisuje, jak vytvořit a načíst výstup a chybové zprávy z runbooků v Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: af199439fedddaef5b1bd3b219a60db697fb25ab
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 34246d66a48baec160a83411511ed78948c5dd8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421043"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Výstup a zprávy Runbooku v Azure Automation
 

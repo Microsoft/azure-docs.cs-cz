@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 62b42a39e2ce2c86d7f17c611e89d60bc583640e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 43110036c685cd17ba912766dd8ec19aa274e7c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816416"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459531"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
 
@@ -26,6 +26,18 @@ Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
+## <a name="default-rdp-properties"></a>Výchozí vlastnosti protokolu RDP
+
+Publikované soubory RDP ve výchozím nastavení obsahují následující vlastnosti:
+
+|Vlastnosti protokolu RDP | Stolní počítače | Vzdálené aplikace RemoteApp |
+|---|---| --- |
+| Režim více monitorů | Povoleno | Nevztahuje se |
+| Přesměrování jednotky povolena | Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty| Jednotky, schránka a tiskárny |
+| Režim vzdáleného zvuku | Přehrát místně | Přehrát místně |
+
+Tato výchozí nastavení se přepíšou všemi vlastními vlastnostmi, které definujete pro fond hostitelů.
+
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>Přidat nebo upravit jednu vlastní vlastnost RDP
 
 Pokud chcete přidat nebo upravit jednu vlastní vlastnost RDP, spusťte následující rutinu PowerShellu:
@@ -33,6 +45,7 @@ Pokud chcete přidat nebo upravit jednu vlastní vlastnost RDP, spusťte násled
 ```powershell
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty "<property>"
 ```
+
 ![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/singlecustomrdpproperty.png)
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Přidat nebo upravit více vlastních vlastností protokolu RDP
@@ -43,6 +56,7 @@ Chcete-li přidat nebo upravit více vlastních vlastností protokolu RDP, spus�
 $properties="<property1>;<property2>;<property3>"
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
+
 ![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>Resetovat všechny vlastní vlastnosti protokolu RDP
@@ -52,11 +66,12 @@ Jednotlivé vlastní vlastnosti protokolu RDP můžete obnovit na výchozí hodn
 ```powershell
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty ""
 ```
+
 ![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste přizpůsobili vlastnosti protokolu RDP pro daný fond hostitelů, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat je jako součást uživatelské relace. Provedete to tak, že přejdete do části s postupy pro připojení k virtuálnímu počítači s Windows:
+Teď, když jste přizpůsobili vlastnosti protokolu RDP pro daný fond hostitelů, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat je jako součást uživatelské relace. Tyto další dva postupy se dozvíte, jak se připojit k relaci pomocí klienta podle vašeho výběru:
 
-- [Připojení ze systému Windows 10 a Windows 7](connect-windows-7-and-10.md)
-- [Připojení z webového prohlížeče](connect-web.md)
+- [Připojení pomocí desktopového klienta Windows](connect-windows-7-and-10.md)
+- [Připojení k webovému klientovi](connect-web.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218873"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440983"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -45,7 +45,7 @@ Azure podporuje tři obory pro správu prostředků. Každý obor podporuje spr�
 
     Typ prostředku: [Microsoft. Resources/Subscriptions](/rest/api/resources/subscriptions)
 
-- [**Skupiny prostředků**](../azure-resource-manager/resource-group-overview.md#resource-groups) – logická seskupení souvisejících prostředků pro řešení Azure, která sdílejí stejný životní cyklus. Například prostředky, které se nasazují a odstraňují dohromady.
+- [**Skupiny prostředků**](../azure-resource-manager/management/overview.md#resource-groups) – logická seskupení souvisejících prostředků pro řešení Azure, která sdílejí stejný životní cyklus. Například prostředky, které se nasazují a odstraňují dohromady.
 
     Typ prostředku: [Microsoft. Resources/Subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
@@ -63,7 +63,7 @@ Cost Management podporuje následující předdefinované role pro každý z ná
 - [**Přispěvatel cost management**](../role-based-access-control/built-in-roles.md#cost-management-contributor) – může zobrazovat náklady, spravovat konfiguraci nákladů a zobrazovat doporučení.
 - [**Cost management Reader**](../role-based-access-control/built-in-roles.md#cost-management-reader) – může zobrazit data o nákladech, konfiguraci nákladů a zobrazit doporučení.
 
-Cost Management Přispěvatel je doporučená role nejnižší úrovně oprávnění. Umožňuje lidem vytvářet a spravovat rozpočty a exporty a efektivně monitorovat a vykazovat náklady. Přispěvatelé Cost Management mohou také vyžadovat další role pro podporu scénářů pro komplexní správu nákladů. Vezměte v úvahu následující scénáře:
+Cost Management Přispěvatel je doporučená role nejnižší úrovně oprávnění. Umožňuje lidem vytvářet a spravovat rozpočty a exporty a efektivně monitorovat a vykazovat náklady. Přispěvatelé Cost Management mohou také vyžadovat další role pro podporu scénářů pro komplexní správu nákladů. Zvažte následující scénáře:
 
 - **Působit při překročení rozpočtu** – cost management přispěvatelé také potřebují přístup k vytvoření nebo správě skupin akcí, které automaticky reagují na překročení limitu. Zvažte udělení [přispěvatele monitorování](../role-based-access-control/built-in-roles.md#monitoring-contributor) skupině prostředků obsahující skupinu akcí, která se má použít při překročení prahových hodnot rozpočtu. Automatizace konkrétních akcí vyžaduje další role pro používané konkrétní služby, jako je například automatizace a Azure Functions.
 - **Plánování exportu dat s náklady** – cost management přispěvatelé také potřebují přístup ke správě účtů úložiště a naplánování exportu pro kopírování dat do účtu úložiště. Zvažte možnost udělit [přispěvateli účtu úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor) do skupiny prostředků, která obsahuje účet úložiště, do kterého se exportují nákladová data.
@@ -252,4 +252,4 @@ Cost Management se aktuálně podporuje v [globálním](https://management.azure
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud jste ještě nedokončili první rychlý Start pro Cost Management, přečtěte si ho v části [zahájení analýzy nákladů](quick-acm-cost-analysis.md).
+- Pokud jste ještě nedokončili první tohoto rychlého startu Cost Management, přečtěte si ho na [začít analýza nákladů](quick-acm-cost-analysis.md).

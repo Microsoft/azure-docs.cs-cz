@@ -1,25 +1,16 @@
 ---
-title: Princip pravidelné konfigurace zálohování v Azure Service Fabric | Microsoft Docs
+title: Principy konfigurace pravidelného zálohování
 description: Použijte funkci periodického zálohování a obnovení Service Fabric k povolení pravidelného zálohování dat aplikací.
-services: service-fabric
-documentationcenter: .net
 author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAA45B4A-0258-4CB3-A825-7E8F70F28401
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: e0c40c005c27130d422e0dacaae29461b65b7df7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232499"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610144"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Princip pravidelné konfigurace zálohování v Azure Service Fabric
 
@@ -142,12 +133,12 @@ Zásady zálohování se skládají z následujících konfigurací:
 Po definování zásad zálohování tak, aby splňovaly požadavky na zálohování dat, by se zásady zálohování měly vhodně přidružit buď k _aplikaci_, nebo ke _službě_, nebo k _oddílu_.
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>Hierarchické šíření zásad zálohování
-V Service Fabric vztah mezi aplikací, službou a oddíly je hierarchický, jak je vysvětleno v [modelu aplikace](./service-fabric-application-model.md). Zásady zálohování je možné přidružit buď k _aplikaci_, _službě_, nebo k _oddílu_ v hierarchii. Zásady zálohování se šíří hierarchicky do další úrovně. Za předpokladu, že existuje pouze jedna zásada zálohování vytvořená a přidružená k _aplikaci_, všechny stavové oddíly patřící do všech _spolehlivých stavových služeb_ a _Reliable Actors_ _aplikace_ budou zálohovány pomocí zásady zálohování. Nebo pokud jsou zásady zálohování přidružené ke _spolehlivé stavové službě_, všechny její oddíly se zálohují pomocí zásad zálohování.
+V Service Fabric vztah mezi aplikací, službou a oddíly je hierarchický, jak je vysvětleno v [modelu aplikace](./service-fabric-application-model.md). Zásady zálohování je možné přidružit buď k _aplikaci_, _službě_, nebo k _oddílu_ v hierarchii. Zásady zálohování se šíří hierarchicky do další úrovně. Za předpokladu, že se pro _aplikaci_vytvoří jenom jedna zásada zálohování, budou se všechny stavové oddíly patřící do všech _spolehlivých stavových služeb_ a _Reliable Actors_ _aplikace_ zálohovat pomocí zásad zálohování. Nebo pokud jsou zásady zálohování přidružené ke _spolehlivé stavové službě_, všechny její oddíly se zálohují pomocí zásad zálohování.
 
 ### <a name="overriding-backup-policy"></a>Přepsání zásad zálohování
 Může nastat situace, kdy se pro všechny služby aplikace vyžaduje zálohování dat se stejným plánem zálohování s výjimkou konkrétních služeb, kde je potřeba mít zálohu dat pomocí vyššího plánu četnosti nebo zálohy na jiný účet úložiště. sdílení souborů. Pro vyřešení takových scénářů nabízí služba obnovení zálohovací služby možnost přepsat rozšířenou zásadu v oboru služeb a oddílu. Pokud jsou zásady zálohování přidružené k _službě_ nebo _oddílu_, potlačí zásady šíření záloh, pokud nějaké existují.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 V tomto příkladu se používá instalační program se dvěma aplikacemi, _MyApp_A_ a _MyApp_B_. Aplikace _MyApp_A_ obsahuje dvě spolehlivé stavové služby, _SvcA1_ & _SvcA3_a jednu službu Reliable actor _ActorA2_. _SvcA1_ obsahuje tři oddíly, zatímco _ActorA2_ a _SvcA3_ obsahují dva oddíly.  Aplikace _MyApp_B_ obsahuje tři spolehlivé stavové služby, _SvcB1_, _SvcB2_a _SvcB3_. _SvcB1_ a _SvcB2_ obsahují dva oddíly, zatímco _SvcB3_ obsahuje tři oddíly.
 
@@ -183,7 +174,7 @@ Následující diagram znázorňuje explicitně povolené zásady zálohování 
 ![Service Fabric hierarchie aplikace][0]
 
 ## <a name="disable-backup"></a>Zakázat zálohování
-Zásady zálohování je možné zakázat, pokud není nutné data zálohovat. Zásady zálohování povolené v _aplikaci_ je možné zakázat jenom ve stejné _aplikaci_ pomocí rozhraní API pro [zálohování aplikací](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) . zásady zálohování povolené v rámci _služby_ můžou být ve stejné _službě_ zakázané pomocí [Disable. ](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup)Rozhraní API pro zálohování služby a zásady zálohování povolené v _oddílu_ je možné zakázat ve stejném _oddílu_ pomocí rozhraní API pro [zálohování oddílů](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) .
+Zásady zálohování je možné zakázat, pokud není nutné data zálohovat. Zásady zálohování povolené v _aplikaci_ je možné zakázat jenom ve stejné _aplikaci_ , která používá zakázané rozhraní API pro [zálohování aplikací](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) . zásady zálohování povolené v rámci _služby_ můžou být ve stejné _službě_ zakázané pomocí rozhraní [disabled Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API a zásady zálohování povolené v _oddílu_ můžou být zakázané ve stejném _oddílu_ pomocí rozhraní API pro [zálohování oddílů](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) .
 
 * Zakázáním zásad zálohování pro _aplikaci_ se zastaví všechna pravidelná zálohování dat, která se děje v důsledku šíření zásad zálohování do spolehlivých oddílů stavových služeb nebo spolehlivých oddílů actor.
 

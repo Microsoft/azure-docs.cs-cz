@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a647dda21855f754754f76682e5c00443eaac55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884789"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432607"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak se k vyhledávání geografického umístění
 
 ## <a name="default-behavior"></a>Výchozí chování
 
-Ve výchozím nastavení jsou dočasně shromažďovány IP adresy, ale nejsou uloženy v Application Insights. Základní postup je následující:
+Ve výchozím nastavení jsou dočasně shromažďovány IP adresy, ale nejsou uloženy v Application Insights. Základní proces je tento:
 
 IP adresy se odesílají do Application Insights jako součást dat telemetrie. Po dosažení koncového bodu příjmu v Azure se IP adresa používá k prohledání geografického umístění pomocí [GeoLite2 z Maxmind](https://dev.maxmind.com/geoip/geoip2/geolite2/). Výsledky tohoto vyhledávání slouží k naplnění následujících polí `client_City`, `client_StateOrProvince``client_CountryOrRegion`. V tomto okamžiku se IP adresa zahodí a `0.0.0.0` se zapíše do pole `client_IP`.
 
@@ -101,7 +101,7 @@ Pokud potřebujete pouze změnit chování pro jeden Application Insights prost�
     
     V důsledku toho se vrátí seznam vlastností. Jedna z vlastností by měla číst `DisableIpMasking: true`. Pokud spustíte PowerShell před nasazením nové vlastnosti pomocí Azure Resource Manager, vlastnost neexistuje.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>Rest API
 
 Datová část [rozhraní REST API](https://docs.microsoft.com/rest/api/azure/) pro provádění stejných úprav je následující:
 
@@ -154,7 +154,7 @@ namespace MyWebApp
 > [!NOTE]
 > Pokud nemůžete získat přístup k `ISupportProperties`, zkontrolujte a ujistěte se, že používáte nejnovější stabilní verzi sady Application Insights SDK. `ISupportProperties` jsou určené pro hodnoty vysoké mohutnosti, zatímco `GlobalProperties` jsou vhodnější pro hodnoty nízké mohutnosti, jako je název oblasti, název prostředí atd. 
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>Povolit inicializátor telemetrie pro. ASP.NET
+### <a name="enable-telemetry-initializer-for-aspnet"></a>Povolit inicializátor telemetrie pro ASP.NET
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

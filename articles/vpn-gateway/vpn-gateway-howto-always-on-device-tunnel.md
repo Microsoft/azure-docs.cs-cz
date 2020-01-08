@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6f0c33ee7fd5790a060574230f1156c569a63936
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425671"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurace tunelu zařízení VPN AlwaysOn
 
@@ -37,7 +37,7 @@ Nakonfigurujte bránu VPN na používání protokolu IKEv2 a ověřování zalo�
 
 Aby bylo možné úspěšně vytvořit tunelové zařízení, musí být splněny následující požadavky:
 
-* Zařízení musí být počítač připojený k doméně, na kterém běží Windows 10 Enterprise nebo vzdělávací verze 1709 nebo novější.
+* Zařízení musí být počítač připojený k doméně, na kterém běží Windows 10 Enterprise nebo vzdělávací verze 1809 nebo novější.
 * Tunelové propojení je konfigurovatelné pouze pro integrované řešení sítě VPN systému Windows a je vytvořeno pomocí protokolu IKEv2 s ověřováním certifikátů počítače. 
 * Pro každé zařízení se dá nakonfigurovat jenom jedno tunelové zařízení.
 
@@ -139,15 +139,15 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
 1. Z příkazového řádku správce spusťte PowerShell spuštěním příkazu:
 
    ```
-   C:\PsTools\PsExec.exe Powershell for 32-bit Windows
-   C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
+   PsExec.exe Powershell for 32-bit Windows
+   PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![prostředí](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
+   ![powershell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. V PowerShellu přejděte do složky, kde se nachází **devicecert. ps1** a **VPNProfile. XML** , a spusťte následující příkaz:
 
    ```powershell
-   C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
+   .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
@@ -156,14 +156,14 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    ![Firma](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. Vyhledejte položku **MachineCertTest** a klikněte na **připojit**.
 
-   ![Připojení](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Propojení](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Pokud je připojení úspěšné, restartujte počítač. Tunel se automaticky připojí.
 
-## <a name="cleanup"></a>Čištění
+## <a name="cleanup"></a>Vyčištění
 
 Chcete-li odebrat profil, spusťte následující příkaz:
 
-![Čištění](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![Vyčištění](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
 

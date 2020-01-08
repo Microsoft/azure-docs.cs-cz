@@ -5,17 +5,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/20/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 53ccd439429dc7df311e086d79f7234e26fd8b0e
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 95639caddfa627290f4e7153d50f9f7799a1f320
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302311"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460559"
 ---
-> [!IMPORTANT]
-> Klíč účtu úložiště je podobný kořenovému heslu vašeho účtu úložiště. Klíč účtu úložiště vždycky pečlivě chraňte. Nedávejte ho jiným uživatelům, nezakódovávejte ho ani ho neukládejte někam do souboru ve formátu prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že je klíč účtu ohrožený, vygenerujte ho znovu pomocí webu Azure Portal.
->
-> Tokeny SAS (sdíleným přístupovým podpisům) jsou zásadní pro ochranu stejně jako přístupové klíče účtu. Zatímco poskytující členitosti SAS umožňuje klientům přístup k prostředkům ve vašem účtu úložiště a by se neměly veřejně sdílet. Při sdílení, je třeba Poradce při potížích s důvody zrevidovaně verzi všech souborů protokolu nebo odstranění tokeny SAS (pokud existuje) ze souborů protokolů a ujistěte se, že na snímcích obrazovky buď neobsahují informace o SAS.
+## <a name="protect-your-access-keys"></a>Ochrana přístupových klíčů
+
+Přístupové klíče účtu úložiště jsou podobné kořenovému heslu vašeho účtu úložiště. Vždy buďte opatrní, abyste chránili přístupové klíče. Pomocí Azure Key Vault můžete bezpečně spravovat a střídat klíče. Vyhněte se distribuci přístupových klíčů jiným uživatelům, pevným kódováním nebo uložením kamkoli do prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že by mohly být ohrožené, můžete klíče otočit.
+
+Pokud je to možné, použijte Azure Active Directory (Azure AD) k autorizaci požadavků do úložiště objektů BLOB a front namísto sdíleného klíče. Azure AD poskytuje vynikající zabezpečení a jednoduchost používání sdíleného klíče. Další informace o autorizaci přístupu k datům pomocí Azure AD najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../articles/storage/common/storage-auth-aad.md).

@@ -1,5 +1,5 @@
 ---
-title: Inteligentní zjišťování – potenciální nevracení paměti zjištěné službou Azure Application Insights | Microsoft Docs
+title: Detekce nevracení paměti – Azure Application Insights inteligentní zjišťování
 description: Monitorujte aplikace s využitím Azure Application Insights pro potenciální nevracení paměti.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
-ms.openlocfilehash: f07da754c6c9e0ad0541db12740c1d80f7f884fd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cc6074732a86be02a8d8c596c46e154db4e8ad7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406466"
 ---
 # <a name="memory-leak-detection-preview"></a>Detekce nevracení paměti (Preview)
 
@@ -26,7 +26,7 @@ Typické oznámení bude dodržovat konzistentní zvýšení spotřeby paměti p
 ## <a name="does-my-app-really-have-a-problem"></a>Má moje aplikace skutečně problém?
 Ne, oznámení neznamená, že vaše aplikace má jednoznačně problém. I když vzory nevracení paměti obvykle označují problém s aplikací, tyto vzory by mohly být typické pro váš konkrétní proces, nebo by mohly mít přirozené odůvodnění podniku a můžou se ignorovat.
 
-## <a name="how-do-i-fix-it"></a>Návody opravit?
+## <a name="how-do-i-fix-it"></a>Jak ho mám opravit?
 Oznámení zahrnují diagnostické informace pro podporu v procesu analýzy diagnostiky:
 1. **Třídění.** V oznámení se zobrazí množství zvýšení paměti (v GB) a časový rozsah, ve kterém se paměť zvýšila. To vám může přispět k přiřazení priority k problému.
 2. **Oboru.** Kolik počítačů vykazuje vzorek nevracení paměti? Kolik výjimek bylo aktivováno během potenciální nevrácené paměti? Tyto informace lze získat z oznámení.

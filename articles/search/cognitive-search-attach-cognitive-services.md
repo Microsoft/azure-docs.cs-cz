@@ -7,24 +7,33 @@ author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/17/2019
+ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461141"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Kognitivní hledání 
 
-Algoritmy AI: jednotky [rozšíření](cognitive-search-concept-intro.md) používané pro transformaci obsahu v Azure kognitivní hledání. Tyto algoritmy jsou založené na prostředcích Azure Cognitive Services, včetně [počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/) pro analýzu obrázků a optického rozpoznávání znaků (OCR) a [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pro rozpoznávání entit, extrakci klíčových frází a další obohacení. Jak se používá v Azure Kognitivní hledání pro účely rozšíření dokumentů, jsou algoritmy zabaleny uvnitř *dovednosti*, jsou umístěné v *dovednosti*a na ně odkazuje *indexer* během indexování.
+Při konfiguraci kanálu rozšíření v Azure Kognitivní hledání můžete rozšířit omezený počet dokumentů zdarma. V případě větších a častých úloh byste měli připojit Fakturovatelné Cognitive Services prostředku.
 
-Omezený počet dokumentů můžete rozšířit zdarma. Případně můžete k *dovednosti* připojit fakturovatelný prostředek Cognitive Services pro větší a častější zatížení. V tomto článku se dozvíte, jak připojit fakturovatelný Cognitive Services prostředek k rozšíření dokumentů během [indexování](search-what-is-an-index.md)Azure kognitivní hledání.
+V tomto článku se dozvíte, jak připojit prostředek přiřazením klíče k dovednosti, který definuje kanál pro rozšíření.
 
-> [!NOTE]
-> Fakturovatelné události zahrnují volání rozhraní API služeb Cognitive Services a extrakce obrázků jako součást fáze pro vystavování dokumentu ve službě Azure Kognitivní hledání. Za extrakci textu z dokumentů nebo pro dovednosti, které nevolají Cognitive Services, se neúčtují žádné poplatky.
->
-> Při provádění fakturovatelných dovedností se používá [Cognitive Services cena](https://azure.microsoft.com/pricing/details/cognitive-services/)za průběžné platby. Ceny za extrakci imagí najdete na [stránce s cenami pro Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+## <a name="resources-used-during-enrichment"></a>Prostředky použité během obohacení
+
+Azure Kognitivní hledání má závislost na Cognitive Services, včetně [počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/) pro analýzu obrazu a optické rozpoznávání znaků (OCR), [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pro zpracování přirozeného jazyka a dalších rozšíření, jako je [Převod textu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/). V souvislosti s obohacením v Azure Kognitivní hledání jsou tyto algoritmy AI zabaleny do *dovednosti*, jsou umístěné v *dovednosti*a na ně odkazuje *indexer* během indexování.
+
+## <a name="how-billing-works"></a>Jak funguje fakturace
+
++ Azure Kognitivní hledání využívá klíč prostředků Cognitive Services, který zadáte na dovednosti k fakturaci na obrázek a obohacení textu. Při provádění fakturovatelných dovedností se používá [Cognitive Services cena](https://azure.microsoft.com/pricing/details/cognitive-services/)za průběžné platby.
+
++ Extrakce imagí je operace Azure Kognitivní hledání, ke které dochází, když se dokumenty před obohacením procházejí. Extrakce obrázků je fakturovatelná. Ceny za extrakci imagí najdete na [stránce s cenami pro Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+
++ K extrakci textu dojde také během fráze pro trhliny dokumentu. Není fakturovatelná.
+
++ Dovednosti, které nevolají Cognitive Services, včetně podmíněného, Shaper, sloučení textu a dovedností pro rozdělení textu, nejsou Fakturovatelné.
 
 ## <a name="same-region-requirement"></a>Požadavek stejné oblasti
 
@@ -33,7 +42,7 @@ Vyžadujeme, aby Azure Kognitivní hledání a Azure Cognitive Services existova
 Neexistuje žádný způsob, jak přesunout službu mezi oblastmi. Pokud se zobrazí tato chyba, měli byste vytvořit nový prostředek Cognitive Services ve stejné oblasti jako Azure Kognitivní hledání.
 
 > [!NOTE]
-> Některé integrované dovednosti jsou založené na neoblastní Cognitive Services (například [dovednost překladu textu](cognitive-search-skill-text-translation.md)). Uvědomte si, že pokud do svého dovednosti přidáte jakoukoli z těchto dovedností, že vaše data nejsou zaručená zůstat ve stejné oblasti jako Kognitivní hledání Azure nebo prostředek Cognitive Services. Další podrobnosti najdete na [stránce Stav služby](https://aka.ms/allinoneregioninfo) .
+> Některé integrované dovednosti jsou založené na neoblastní Cognitive Services (například [dovednost překladu textu](cognitive-search-skill-text-translation.md)). Používání neregionálních dovedností znamená, že váš požadavek se může obsluhovat v jiné oblasti, než je oblast Azure Kognitivní hledání. Další informace neregionální služby najdete na stránce [Cognitive Services produktu podle oblasti](https://aka.ms/allinoneregioninfo) .
 
 ## <a name="use-free-resources"></a>Použití volných prostředků
 

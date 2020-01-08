@@ -3,18 +3,18 @@ title: Rychlý Start – konfigurace pravidel a akcí v Azure IoT Central
 description: V tomto rychlém startu se dozvíte, jak jako tvůrce nakonfigurovat pravidla a akce založené na telemetrie v aplikaci Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 489a512ea5658aaeaccdba4b91eae7def14a589c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706721"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434818"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>Rychlý Start: Konfigurace pravidel a akcí pro zařízení ve službě Azure IoT Central (funkce ve verzi Preview)
 
@@ -24,7 +24,7 @@ ms.locfileid: "74706721"
 
 V tomto rychlém startu vytvoříte pravidlo, které pošle e-mail, když teplota na zařízení snímače prostředí překračuje 90&deg; F.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, měli byste provést dvě předchozí rychlé starty a [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md) a [Přidat simulované zařízení do aplikace IoT Central](./quick-create-pnp-device.md) a vytvořit tak šablonu zařízení **snímače prostředí** , se kterou chcete pracovat.
 
@@ -65,7 +65,7 @@ Než začnete, měli byste provést dvě předchozí rychlé starty a [vytvořit
 
     ![Vytvořit akci pravidla](./media/quick-configure-rules/action.png)
 
-1. Vyberte **Save** (Uložit). Vaše pravidlo je uvedené na stránce **pravidla** .
+1. Vyberte **Uložit**. Vaše pravidlo je uvedené na stránce **Rules** (Pravidla).
 
 ## <a name="test-the-rule"></a>Testování pravidla
 

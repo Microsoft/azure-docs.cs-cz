@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172560"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680524"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -111,16 +111,9 @@ Možnost obnovit disk můžete použít, pokud chcete:
 
 Ano, můžete použít zálohy provedené před migrací disků z nespravovaného do spravovaného.
 
-- Ve výchozím nastavení úloha obnovení virtuálního počítače vytvoří nespravovaný virtuální počítač.
-- Můžete ale obnovit disky a použít je k vytvoření spravovaného virtuálního počítače.
-
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Jak obnovit virtuální počítač do bodu obnovení před migrací virtuálního počítače na spravované disky?
 
-Ve výchozím nastavení úloha obnovení virtuálního počítače vytvoří virtuální počítač s nespravovanými disky. Vytvoření virtuálního počítače se službou Managed disks:
-
-1. [Obnovte na nespravované disky](tutorial-restore-disk.md#restore-a-vm-disk).
-2. [Převeďte obnovené disky na Managed disks](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
-3. [Vytvořte virtuální počítač se spravovanými disky](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+Proces obnovení zůstává stejný. Pokud je bod obnovení k určitému bodu v čase, kdy má virtuální počítač nespravované disky, můžete [disky obnovit jako nespravované](tutorial-restore-disk.md#unmanaged-disks-restore). Pokud má virtuální počítač spravované disky, můžete [disky obnovit jako spravované disky](tutorial-restore-disk.md#managed-disk-restore). Pak můžete [z těchto disků vytvořit virtuální počítač](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
 
 [Přečtěte si další informace](backup-azure-vms-automation.md#restore-an-azure-vm) o tom, jak to provést v PowerShellu.
 

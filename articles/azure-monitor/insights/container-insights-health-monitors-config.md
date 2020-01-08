@@ -1,23 +1,14 @@
 ---
 title: Azure Monitor pro konfiguraci monitorování stavu kontejnerů | Microsoft Docs
 description: Tento článek poskytuje obsah popisující podrobnou konfiguraci monitorování stavu v Azure Monitor pro kontejnery.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/12/2019
-ms.author: magoedte
-ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.date: 12/01/2019
+ms.openlocfilehash: d2d602d767fa6a39b7f72650c426c90be210a6ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405046"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Průvodce konfigurací monitorování stavu kontejnerů Azure Monitor
 
@@ -29,9 +20,9 @@ Monitory jsou primárním prvkem pro měření stavu a zjišťování chyb v Azu
 
 ## <a name="monitors"></a>Monitory
 
-Monitorování měří stav nějakého aspektu spravovaného objektu. Jednotlivé monitory mají buď dva, nebo tři stavové stavy. Monitorování bude v jednom okamžiku pouze v jednom z jeho možných stavů. Když je monitor načtený agentem kontejneru, je inicializován do stavu v pořádku. Stav se změní pouze v případě, že jsou zjištěny zadané podmínky pro jiný stav.
+Monitorování měří stav některých aspektů spravovaného objektu. Monitorování mají dva nebo tři stavy. Monitorování bude v daném okamžiku v jednom a pouze jednom z jeho možných stavů. Když je monitor načtený agentem kontejneru, je inicializován do stavu v pořádku. Stav se změní pouze v případě, že jsou zjištěny zadané podmínky pro jiný stav.
 
-Celkový stav konkrétního objektu je určen z hlediska stavu každého z jeho monitorů. Tato hierarchie je znázorněna v podokně hierarchie stavu v Azure Monitor pro kontejnery. Zásady pro zahrnutí stavu jsou součástí konfigurace agregovaných monitorování.
+Celkový stav konkrétního objektu se určí na základě stavu každého z jeho monitorování. Tato hierarchie je znázorněna v podokně hierarchie stavu v Azure Monitor pro kontejnery. Zásady pro zahrnutí stavu jsou součástí konfigurace agregovaných monitorování.
 
 ## <a name="types-of-monitors"></a>Typy monitorování
 
@@ -63,7 +54,7 @@ Azure Monitor for Containers zahrnuje řadu klíčových scénářů monitorová
 
 ### <a name="unit-monitors"></a>Monitory jednotek
 
-|**Název monitorování** | Typ monitorování | **Popis** | **Ukazatele** | **Hodnota** |
+|**Název monitorování** | Typ monitorování | **Popis** | **Parametr** | **Hodnota** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Využití paměti uzlu |Monitorování jednotky |Toto monitorování vyhodnocuje využití paměti uzlu každou minutu pomocí cadvisor nahlášených dat. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Využití procesoru uzlů |Monitorování jednotky |Toto monitorování zkontroluje využití CPU v uzlu každou minutu pomocí cadvisor nahlášených dat. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

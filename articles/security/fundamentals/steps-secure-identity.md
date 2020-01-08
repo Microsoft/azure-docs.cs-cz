@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101409"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353235"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -112,9 +112,14 @@ Aplikace, které používají své vlastní starší metody k ověřování pomo
 
 S využitím duševního vlastnictví byste měli snížit dopad napadených uživatelských přihlašovacích údajů, když k nim dojde. Pro každou aplikaci ve vašem prostředí uvažujte o platných případech použití: které skupiny, které sítě, které zařízení a jiné prvky mají autorizaci – potom zablokujte zbytek. Pomocí [podmíněného přístupu Azure AD](../../active-directory/conditional-access/overview.md)můžete řídit, jak autorizovaní uživatelé přistupují k aplikacím a prostředkům na základě konkrétních podmínek, které definujete.
 
-### <a name="block-end-user-consent"></a>Zablokovat souhlas koncového uživatele
+### <a name="restrict-user-consent-operations"></a>Omezení operací souhlasu uživatele
 
-Ve výchozím nastavení mají všichni uživatelé ve službě Azure AD povolený přístup k aplikacím, které využívají OAuth 2,0 a oprávnění k přístupu k firemním datům v [rámci souhlasu](../../active-directory/develop/consent-framework.md) Microsoft identity. Zatímco souhlas s tím umožňuje uživatelům snadno získat užitečné aplikace, které se integrují s Microsoft 365 a Azure, může představovat riziko, pokud se nepoužívá a pečlivě monitoruje. [Zakázáním všech budoucích operací pro vyjádření souhlasu s uživateli](../../active-directory/manage-apps/methods-for-removing-user-access.md) můžete snížit plochu a zmírnit toto riziko. Pokud je souhlas koncového uživatele zakázaný, bude se i tak akceptovat předchozí granty, ale všechny budoucí operace souhlasu musí udělat správce. Než tuto funkci zakážete, doporučujeme, abyste zajistili, že uživatelé budou porozumět tomu, jak požádat o schválení správce pro nové aplikace. To by mělo přispět ke snížení tření uživatelů, minimalizaci objemu podpory a zajistěte, aby se uživatelé nemuseli registrovat k aplikacím pomocí přihlašovacích údajů jiných než Azure AD.
+Je důležité pochopit různá [prostředí pro vyjádření souhlasu s aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), [typy oprávnění a souhlas](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)a jejich dopady na zabezpečení stav vaší organizace. Ve výchozím nastavení mohou všichni uživatelé v Azure AD udělit aplikacím, které využívají platformu Microsoft identity, přístup k datům vaší organizace. I když uživatelům, kteří si můžou udělit souhlas sami, umožní uživatelům snadno získat užitečné aplikace, které se integrují s Microsoft 365, Azure a dalšími službami, může představovat riziko, pokud se nepoužije a pečlivě monitoruje.
+
+Společnost Microsoft doporučuje [zakázat budoucí operace souhlasu s uživatelem](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) , aby se snížila plocha a zmírnila toto riziko. Pokud je souhlas koncového uživatele zakázaný, bude se i nadále akceptovat předchozí granty souhlasu, ale všechny budoucí operace souhlasu musí udělat správce. Souhlas správce můžou vyžádat uživatelé prostřednictvím [pracovního postupu integrovaných žádostí o souhlas správce](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) nebo prostřednictvím vlastních procesů podpory. Než tuto funkci zakážete, doporučujeme zkontrolovat si protokol auditu, abyste zjistili, které aplikace uživatelé souhlasí, a odpovídajícím způsobem naplánovat změnu. Pro aplikace, kterým chcete umožnit přístup všem uživatelům, zvažte [udělení souhlasu jménem všech uživatelů](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), aby uživatelé, kteří dosud nesouhlasili samostatně, měli přístup k aplikaci. Pokud nechcete, aby byly tyto aplikace dostupné pro všechny uživatele ve všech scénářích, použijte [přiřazení aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) a [podmíněný přístup](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) k omezení přístupu uživatelů k aplikacím.
+
+Ujistěte se, že uživatelé můžou požádat o schválení správcem pro nové aplikace, aby se snížila jeho tření, minimalizoval objem podpory a aby si mohli uživatelé zaregistrovat aplikace pomocí přihlašovacích údajů jiných než Azure AD. Po regulování svých operací by správci měli pravidelně auditovat aplikace a souhlasná oprávnění.
+
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Implementovat Azure AD Privileged Identity Management
 
@@ -173,7 +178,9 @@ Azure AD Identity Protection poskytuje dvě důležité sestavy, které byste m�
 
 ### <a name="audit-apps-and-consented-permissions"></a>Auditovat aplikace a souhlasná oprávnění
 
-Uživatelé mohou být vyzrazeni na napadený web nebo aplikace, které získají přístup k informacím o profilu a uživatelským datům, jako je například jejich e-mailová adresa. Škodlivý objekt actor může použít odsouhlasená oprávnění, která obdržela k šifrování obsahu poštovní schránky a vyžádání Ransom k opětovnému získání dat poštovní schránky. [Správci by měli kontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli.
+Uživatelé mohou být vyzrazeni na napadený web nebo aplikace, které získají přístup k informacím o profilu a uživatelským datům, jako je například jejich e-mailová adresa. Škodlivý objekt actor může použít odsouhlasená oprávnění, která obdržela k šifrování obsahu poštovní schránky a vyžádání Ransom k opětovnému získání dat poštovní schránky. [Správci by měli kontrolovat a auditovat](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) oprávnění udělená uživateli nebo zakázat uživatelům udělit souhlas ve výchozím nastavení. 
+
+Kromě auditování oprávnění udělených uživateli může pomáhat při pokusu o [nalezení rizikových nebo nežádoucích aplikací OAuth](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth), což je funkce dostupná pro prostředí Premium.
 
 ## <a name="step-5---enable-end-user-self-service"></a>Krok 5 – povolení samoobslužné služby pro koncové uživatele
 

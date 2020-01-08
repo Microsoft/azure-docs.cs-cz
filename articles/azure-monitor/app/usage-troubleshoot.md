@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s nástroji pro analýzu chování uživatelů v Azure Application Insights
+title: Řešení potíží s nástroji pro analýzu uživatelů – Azure Application Insights
 description: Průvodce odstraňováním potíží – analýza využití webů a aplikací pomocí Application Insights.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9222f4611f87869c1bacf3084035c0ab9322fa40
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: aa540cdaef1af3016d87ab93768ceb30802cef0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899353"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432282"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástroji pro analýzu chování uživatelů v Application Insights
 Máte dotazy týkající se [nástrojů pro analýzy chování uživatelů v Application Insights](usage-overview.md): [Uživatelé, relace, události](usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](usage-flows.md), [uchovávání](usage-retention.md)nebo kohorty? Tady jsou některé odpovědi.

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 06c8784c235b157f5799bb727df9784dfaa2f376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440499"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
@@ -56,11 +56,11 @@ V rozevíracím seznamu **šablon ARM** vyberte **Exportovat šablonu ARM** a ex
 
 V továrnách testovacích a produkčních dat vyberte **Importovat šablonu ARM**. Tato akce přejde do Azure Portal, kde můžete importovat exportovanou šablonu. Vyberte **vytvořit vlastní šablonu v editoru** a otevřete tak editor šablon Správce prostředků.
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png) 
+![Vlastní nasazení buildu vlastní šablony](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
 Klikněte na **načíst soubor** a vyberte vygenerovanou šablonu správce prostředků.
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+![Vlastní šablona pro úpravu nasazení](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
 V podokně nastavení zadejte hodnoty konfigurace, například přihlašovací údaje k propojeným službám. Až budete hotovi, kliknutím na **koupit** nasaďte šablonu správce prostředků.
 
@@ -421,7 +421,7 @@ Níže je uveden popis způsobu konstrukce výše uvedené šablony, rozepsaný 
 
 * Všechny vlastnosti v rámci cesty `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například ve vlastnostech typu **IntegrationRuntimes** existují dvě vlastnosti: `computeProperties` a `ssisProperties`. Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
 
-#### <a name="triggers"></a>Aktivační procedury
+#### <a name="triggers"></a>Aktivační události
 
 * V části `typeProperties`jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency`, která má mít výchozí hodnotu a je typu`string`. Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency`.
 * Vlastnost `recurrence` je také Parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimkou je vlastnost `interval`, která je parametrizovaná jako typ Number a s názvem parametru s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobně vlastnost `freq` je řetězec a je parametrizovaná jako řetězec. Vlastnost `freq` je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.

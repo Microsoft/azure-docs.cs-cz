@@ -1,6 +1,6 @@
 ---
 title: Události obrazce – Azure Time Series Insights | Microsoft Docs
-description: Naučte se, jak pomocí Azure Time Series Insights ve verzi Preview přetvarovat události.
+description: Přečtěte si o osvědčených postupech a o tom, jak obrazce událostí pro dotazování v Azure Time Insights ve verzi Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd1b59ac2037669be021dfad3bf5032b794bef4a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 37846aacd9e2c5c63cdf5d29bccb42df8e02fce9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452618"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Tvar událostí pomocí Azure čas Series Insights ve verzi Preview
 

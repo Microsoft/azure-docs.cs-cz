@@ -1,33 +1,33 @@
 ---
 title: Použití PowerShellu k vytvoření SAS delegování uživatelů pro kontejner nebo objekt BLOB
 titleSuffix: Azure Storage
-description: Naučte se, jak pomocí PowerShellu vytvořit delegování uživatelů (ve verzi Preview) s přihlašovacími údaji Azure Active Directory.
+description: Naučte se vytvářet delegování uživatelů pomocí Azure Active Directory přihlašovacích údajů pomocí PowerShellu.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 63075152ea4b3bf1a3aa208cf2a9642ef46642db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371767"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Vytvoření SAS pro delegování uživatelů pro kontejner nebo objekt BLOB pomocí PowerShellu (Preview)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí PowerShellu
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-V tomto článku se dozvíte, jak pomocí pověření Azure Active Directory (Azure AD) vytvořit přidružení zabezpečení delegování uživatelů pro kontejner nebo objekt BLOB s Azure PowerShell (Preview).
+V tomto článku se dozvíte, jak pomocí pověření Azure Active Directory (Azure AD) vytvořit přidružení zabezpečení delegování uživatelů pro kontejner nebo objekt BLOB s Azure PowerShell.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-preview-module"></a>Instalace modulu Preview
+## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
-Pokud chcete k vytvoření SAS delegování uživatele použít PowerShell, musíte nejdřív nainstalovat modul AZ. Storage 1.3.1-Preview. Pomocí těchto kroků nainstalujte modul:
+Pokud chcete vytvořit SAS delegování uživatelů pomocí PowerShellu, nainstalujte verzi 1.10.0 nebo novější z modulu AZ. Storage. Pomocí těchto kroků nainstalujete nejnovější verzi modulu:
 
 1. Odinstalujte všechny předchozí instalace Azure PowerShell:
 
@@ -48,23 +48,18 @@ Pokud chcete k vytvoření SAS delegování uživatele použít PowerShell, mus�
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Nainstalujte modul Azure Storage Preview, který podporuje SAS delegování uživatele:
+1. Ujistěte se, že máte nainstalovanou verzi Azure PowerShell 3.2.0 nebo novější. Spuštěním následujícího příkazu nainstalujte nejnovější verzi modulu Azure Storage PowerShell:
 
     ```powershell
-    Install-Module Az.Storage `
-        –Repository PSGallery `
-        -RequiredVersion 1.3.1-preview `
-        –AllowPrerelease `
-        –AllowClobber `
-        –Force
+    Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
 1. Zavřete a znovu otevřete okno PowerShellu.
 
-Vzhledem k tomu, že PowerShell načítá nejnovější modul AZ. Storage ve výchozím nastavení, může být při spuštění konzoly nutné explicitně načíst modul 1.3.1-Preview. Chcete-li explicitně načíst modul verze Preview, spusťte příkaz [Import-Module](/powershell/module/microsoft.powershell.core/import-module) :
+Pokud chcete zjistit, která verze modulu AZ. Storage je nainstalovaná, spusťte následující příkaz:
 
 ```powershell
-Import-Module Az.Storage -RequiredVersion 1.3.1
+Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
 Další informace o instalaci Azure PowerShell najdete v tématu [instalace Azure PowerShell pomocí PowerShellGet](/powershell/azure/install-az-ps).

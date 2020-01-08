@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: e78b647d27b162c55eb262a7590e1d3ed997de41
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929891"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440084"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý Start: vytvoření datové továrny Azure pomocí PowerShellu
 
@@ -63,7 +63,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v uvozovkách a pak příkaz spusťte. Například: `"ADFQuickStartRG"`.
+1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v uvozovkách a pak příkaz spusťte. Například: `"ADFQuickStartRG"`.
 
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";
@@ -440,4 +440,4 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

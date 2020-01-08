@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f9036e78934ac14017a0437583109c91732ce4b3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 4c942040a36ae7b103f7dabac62376ea5a4e2890
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384532"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Odeslat žádost o vyhledávání pomocí sady Vyhledávání entit Bingu SDK proC#
 
-V tomto rychlém startu můžete začít vyhledávat entity pomocí sady Vyhledávání entit Bingu SDK C#pro. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch).
+V tomto rychlém startu můžete začít vyhledávat entity pomocí sady Vyhledávání entit Bingu SDK C#pro. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch)
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -55,7 +55,7 @@ Chcete-li přidat sadu Vyhledávání entit Bingu SDK do projektu aplikace Visua
 1. Vytvořit nového klienta vyhledávání. Přidejte svůj klíč předplatného tak, že vytvoříte nový `ApiKeyServiceClientCredentials`.
 
     ```csharp
-    var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+    var client = new EntitySearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
 1. K vyhledání dotazu použijte funkci `Entities.Search()` klienta:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 823527af81e0cb22fb59421b84983684d4cdfffd
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407513"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -66,7 +66,7 @@ Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.co
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.0" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.12.0" />
         </ItemGroup>
     ```
 
@@ -197,10 +197,10 @@ public void ConfigureServices(IServiceCollection services)
 
 |Nastavení | Popis | Výchozí
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | Povolit nebo zakázat funkci LiveMetrics | true (pravda)
-|EnableAdaptiveSampling | Povolit/zakázat adaptivní vzorkování | true (pravda)
-|EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartBeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true (pravda)
-|AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true (pravda)
+|EnableQuickPulseMetricStream | Povolit nebo zakázat funkci LiveMetrics | true
+|EnableAdaptiveSampling | Povolit/zakázat adaptivní vzorkování | true
+|EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartBeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true
+|AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true
 |RequestCollectionOptions.TrackExceptions | Povolí nebo zakáže vytváření sestav neošetřené sledování výjimek v modulu shromažďování požadavků. | false v NETSTANDARD 2.0 (protože výjimky jsou sledovány pomocí ApplicationInsightsLoggerProvider), v opačném případě true.
 
 Seznam [konfigurovatelných nastavení najdete v tématu `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
@@ -441,7 +441,7 @@ Tato sada SDK vyžaduje `HttpContext`, a proto nefunguje v žádném z aplikací
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK
 
-[Číst a přispívat do kódu](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
+[Číst a přispívat do kódu](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
 
 ## <a name="video"></a>Video
 

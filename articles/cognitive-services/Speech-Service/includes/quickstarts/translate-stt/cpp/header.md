@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 173f63943fdb65d6ddcf794ab631fa2c0bef2254
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e3ca67808d68c1b0be308fadd3a561c1f2a5eac3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981065"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468214"
 ---
 Pokud dáváte přednost přímo v, můžete si zobrazit nebo stáhnout všechny <a href="https://aka.ms/speech/github-cpp">ukázky sady C++ Speech SDK</a> na GitHubu. V opačném případě můžeme začít.

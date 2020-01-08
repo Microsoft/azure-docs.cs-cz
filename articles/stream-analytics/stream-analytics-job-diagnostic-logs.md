@@ -1,94 +1,89 @@
 ---
 title: Řešení potíží s Azure Stream Analytics a využívat protokoly diagnostiky
 description: Tento článek popisuje, jak analyzovat diagnostické protokoly v Azure Stream Analytics.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 68c40cf893bf150756f0a03056473e82cff5754f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 12/19/2019
+ms.openlocfilehash: f318b373f6a6f46ee3a85703c6099c76568580ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426161"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Řešení potíží s Azure Stream Analytics s využitím diagnostických protokolů
 
-V některých případech úlohy Azure Stream Analytics neočekávaně zastaví zpracování. Je důležité mít možnost vyřešit tento typ události. Selhání můžou být způsobená neočekávaným výsledkem dotazu, připojením k zařízením nebo neočekávaným výpadkem služby. Protokoly diagnostiky ve službě Stream Analytics může pomoct identifikovat příčiny problémů, pokud dojde k a zkrácení času obnovení.
+Zpracování úlohy Azure Stream Analytics se občas může neočekávaně zastavit. Je důležité mít možnost tento druh události vyřešit. Selhání můžou být způsobená neočekávaným výsledkem dotazu, připojením k zařízením nebo neočekávaným výpadkem služby. Diagnostické protokoly v Stream Analytics vám můžou poznat příčinu problémů, když k nim dojde, a zkrátit tak dobu obnovení.
 
-Důrazně doporučujeme povolit diagnostické protokoly pro všechny úlohy v produkčním prostředí.
+Důrazně doporučujeme povolit diagnostické protokoly pro všechny úlohy, protože to významně pomůže s laděním a monitorováním.
 
 ## <a name="log-types"></a>Typy protokolů
 
 Stream Analytics nabízí dva typy protokolů:
 
-* [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (AlwaysOn), které poskytují přehled o operace provedené na úlohy.
+* [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (Always On), které poskytují přehled o operacích provedených v úlohách.
 
-* [Protokoly diagnostiky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (možnost konfigurace), které poskytují podrobnější přehled o všechno, co, který se stane s úlohou. Při odstraňování úlohy, protokoly diagnostiky spuštění při vytvoření úlohy a ukončení. Při aktualizaci úlohy a během jejího běhu pokrývají události.
+* [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (konfigurovatelné), které poskytují podrobné přehledy o všech úlohách, které se v rámci úlohy děje. Diagnostické protokoly jsou spouštěny při vytvoření úlohy a končí při jejím odstranění. Při aktualizaci úlohy a během jejího běhu pokrývají události.
 
 > [!NOTE]
-> Můžete použít služby, jako je Azure Storage, Azure Event Hubs a Azure Monitor protokoly k analýze dat aplikace. Budou se vám účtovat podle cenového modelu pro služby.
+> K analýze nevyhovujících dat můžete použít služby, jako jsou Azure Storage, Azure Event Hubs a protokoly Azure Monitor. Budou se vám účtovat podle cenového modelu pro služby.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="debugging-using-activity-logs"></a>Ladění pomocí aktivity protokoly
+## <a name="debugging-using-activity-logs"></a>Ladění pomocí protokolů aktivit
 
-Protokoly aktivit jsou standardně povoleny a poskytnout podrobný přehled o operacích prováděných při vaší úlohy Stream Analytics. Informace v protokolech aktivit může pomoct odhalit jeho příčinu problémů vliv na vaši úlohu. Proveďte následující kroky a použít protokoly aktivit ve službě Stream Analytics:
+Protokoly aktivit jsou ve výchozím nastavení zapnuté a poskytují podrobné přehledy o operacích, které provádí vaše úloha Stream Analytics. Informace, které jsou k dispozici v protokolech aktivit, mohou pomáhat najít hlavní příčinu problémů, které mají vliv na vaši úlohu. K použití protokolů aktivit v Stream Analytics postupujte podle následujících kroků:
 
-1. Přihlaste se k Azure portal a vyberte **protokolu aktivit** pod **přehled**.
+1. Přihlaste se k Azure Portal a v části **Přehled**vyberte **Protokol aktivit** .
 
-   ![Stream Analytics protokolu aktivit](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
+   ![Protokol aktivit Stream Analytics](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
 
-2. Zobrazí se seznam operací, které byly provedeny. Všechny operace, která způsobila selhání úlohy má bublinu red informace.
+2. Můžete zobrazit seznam operací, které byly provedeny. Jakákoli operace, která způsobila selhání úlohy, má bublinu červené informace.
 
-3. Kliknutím na operaci zobrazíte jeho souhrnné zobrazení. Informace v tomto poli je často omezené. Přečtěte si další podrobnosti o operaci, klikněte na tlačítko **JSON**.
+3. Kliknutím na operaci zobrazíte její souhrnné zobrazení. Informace zde jsou často omezené. Chcete-li získat další informace o operaci, klikněte na tlačítko **JSON**.
 
-   ![Stream Analytics aktivitu protokolu operace souhrnu](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
+   ![Souhrn operací protokolu aktivit Stream Analytics](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Přejděte dolů k položce **vlastnosti** část JSON, který poskytuje podrobnosti o chybě, která způsobila selhání operace. V tomto příkladu k selhání došlo kvůli chybě v běhu from out of hodnoty zeměpisné šířky vázaná. Rozdíl v datech, která zpracovává úlohu Stream Analytics způsobí chybu data. Informace o různých [chyb vstupních a výstupních dat a proč k nim dojde](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+4. Přejděte dolů k části **vlastnosti** ve formátu JSON, která poskytuje podrobné informace o chybě, která způsobila neúspěšnou operaci. V tomto příkladu došlo k chybě kvůli chybě za běhu z nevázaných hodnot zeměpisné šířky. Nesoulad v datech, která jsou zpracována úlohou Stream Analytics, způsobuje chybu dat. Můžete se seznámit s různými [chybami vstupních a výstupních dat a proč k nim dojde](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
    ![Podrobnosti o chybě JSON](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
-5. Můžete provést opravné akce, které na základě chybové zprávy ve formátu JSON. V tomto příkladu zkontroluje, aby je zeměpisná šířka hodnota v rozmezí od-90 stupňů a 90 stupňů je potřeba přidat do dotazu.
+5. Můžete provést opravné akce na základě chybové zprávy ve formátu JSON. V tomto příkladu zkontroluje, jestli je hodnota zeměpisné šířky mezi-90 stupňů a 90m stupně je potřeba přidat do dotazu.
 
-6. Pokud chybová zpráva v protokolech aktivit se užitečné identifikovat hlavní příčinu, povolení diagnostických protokolů a protokoly Azure monitoru.
+6. Pokud chybová zpráva v protokolech aktivit není užitečná při identifikaci hlavní příčiny, povolte diagnostické protokoly a použijte protokoly Azure Monitor.
 
-## <a name="send-diagnostics-to-azure-monitor-logs"></a>Odeslat diagnostické protokoly Azure monitoru
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>Odeslání diagnostiky do protokolů Azure Monitor
 
-Důrazně doporučujeme zapnout diagnostické protokoly a jejich odesílání do protokoly Azure monitoru. Diagnostické protokoly jsou **vypnout** ve výchozím nastavení. Chcete-li zapnout diagnostické protokoly, postupujte takto:
+Důrazně se doporučuje zapnout diagnostické protokoly a jejich odesílání do protokolů Azure Monitor. Diagnostické protokoly jsou **vypnout** ve výchozím nastavení. Chcete-li zapnout diagnostické protokoly, postupujte takto:
 
-1.  Přihlaste se k webu Azure portal a přejděte do vaší úlohy Stream Analytics. V části **monitorování**vyberte **diagnostické protokoly**. Potom vyberte **zapnout diagnostiku**.
+1.  Přihlaste se k Azure Portal a přejděte do Stream Analytics úlohy. V části **monitorování**vyberte **diagnostické protokoly**. Pak vyberte **zapnout diagnostiku**.
 
     ![Navigace v okně diagnostické protokoly](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Vytvoření **název** v **nastavení diagnostiky** a zaškrtněte políčko vedle položky **odesílat do Log Analytics**. Pak přidejte existující nebo vytvořte novou **pracovní prostor Log analytics**. Zaškrtněte políčka pro **provádění** a **Authoring** pod **protokolu**, a **AllMetrics** pod **METRIKA** . Klikněte na **Uložit**. Doporučujeme použít pracovní prostor Log Analytics ve stejné oblasti Azure jako svou úlohu Stream Analytics zabránit spojené další náklady.
+2.  V **nastavení diagnostiky** vytvořte **název** a zaškrtněte políčko u možnosti **Odeslat do Log Analytics**. Pak přidejte existující **pracovní prostor Log Analytics**, nebo vytvořte nový. Zaškrtněte políčka pro **spouštění** a **vytváření** v části **log**a **AllMetrics** v části **metrika**. Klikněte na možnost **Uložit**. Doporučuje se použít Log Analytics pracovní prostor ve stejné oblasti Azure jako vaše úloha Stream Analytics a zabránit tak dalším nákladům.
 
     ![Nastavení pro diagnostické protokoly](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3. Při spuštění vaší úlohy Stream Analytics, diagnostické protokoly jsou směrovány do vašeho pracovního prostoru Log Analytics. Přejděte do pracovního prostoru Log Analytics a zvolte **protokoly** pod **Obecné** oddílu.
+3. Po spuštění úlohy Stream Analytics se protokoly diagnostiky směrují do vašeho pracovního prostoru Log Analytics. Chcete-li zobrazit protokoly diagnostiky pro vaši úlohu, vyberte v části **monitorování** možnost **protokoly** .
 
-   ![Protokoly Azure monitoru Obecné v části](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![Diagnostické protokoly v části monitorování](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Je možné [napsat vlastní dotaz](../azure-monitor/log-query/get-started-portal.md) hledat podmínky, rozpoznávejte trendy, analyzovat vzory a poskytují přehledy na základě vašich dat. Například můžete napsat dotaz pro filtrování pouze diagnostické protokoly, které mají zpráva "úloha streamování se nezdařilo." Diagnostické protokoly z Azure Stream Analytics se ukládají v **AzureDiagnostics** tabulky.
+4. Stream Analytics poskytuje předdefinované dotazy, které vám umožní snadno vyhledat protokoly, které vás zajímají. 3 kategorie jsou **Obecné**, **chyby vstupních dat** a **chyby výstupních dat**. Pokud například chcete zobrazit souhrn všech chyb vaší úlohy za posledních 7 dní, můžete vybrat **spuštění** příslušného předem definovaného dotazu. 
 
-   ![Diagnostika dotazu a výsledky](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-query.png)
+   ![Diagnostické protokoly v části monitorování](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
 
-5. Pokud máte dotaz, který je vyhledat správný protokoly, uložte ho výběrem **Uložit** a zadejte název a kategorie. Potom můžete vytvořit výstrahu tak, že vyberete **nové pravidlo upozornění**. Dále určete se vyskytl výstražný stav. Vyberte **podmínku** a zadejte prahovou hodnotu a frekvenci, s jakou se vyhodnotí toto vlastní protokol hledání.  
-
-   ![Vyhledávání diagnostických protokolů](./media/stream-analytics-job-diagnostic-logs/search-query.png)
-
-6. Vyberte skupinu akcí a zadejte podrobnosti výstrahy, jako je název a popis, abyste mohli vytvořit pravidlo upozornění. Diagnostické protokoly různé úlohy můžou směrovat do stejného pracovního prostoru Log Analytics. Můžete nastavit upozornění, jakmile, které fungují na všech úloh.  
+   ![Výsledky protokolů](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
 
 ## <a name="diagnostics-log-categories"></a>Kategorie protokolu diagnostiky
 
-Azure Stream Analytics zaznamená dvě kategorie protokoly diagnostiky:
+Azure Stream Analytics zachycuje dvě kategorie diagnostických protokolů:
 
-* **Vytváření**: Shromažďuje události protokolu, které se vztahují k úloze vytváření operace, jako je vytvoření úlohy, přidávání a odstraňování vstupy a výstupy, přidávání a aktualizaci dotazu a spouštění nebo zastavování úlohy.
+* **Vytváření obsahu**: zachycuje události protokolu, které souvisejí s operacemi vytváření úloh, jako je vytváření úloh, přidávání a odstraňování vstupů a výstupů, přidávání a aktualizace dotazu a spuštění nebo zastavení úlohy.
 
-* **Spuštění**: Jsou zaznamenané události, ke kterým dochází při provádění úlohy.
+* **Spuštění**: zachycuje události, ke kterým dojde během provádění úlohy.
     * Chyby připojení
     * Chyby zpracování dat, včetně:
         * Události, které nejsou v souladu s definicí dotazu (pole neodpovídající typy a hodnoty, chybějící pole a tak dále)
@@ -99,7 +94,7 @@ Azure Stream Analytics zaznamená dvě kategorie protokoly diagnostiky:
 
 Všechny protokoly se ukládají ve formátu JSON. Každý záznam obsahuje následující společných polí řetězec:
 
-Název | Popis
+Name (Název) | Popis
 ------- | -------
 time | Časové razítko (ve standardu UTC) v protokolu.
 resourceId | ID prostředku, že operace konal úplně, velkými písmeny. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -107,17 +102,17 @@ category | Kategorie, buď protokolu **provádění** nebo **Authoring**.
 operationName | Název operace, která je zaznamenána. Například **odesílat události: Chyba zápisu výstupu SQL do mysqloutput**.
 status | Stav operace. Například **neúspěšné** nebo **Succeeded**.
 úroveň | Úroveň protokolu. Například **chyba**, **upozornění**, nebo **informativní**.
-properties | Podrobnosti konkrétní položky protokolu serializován jako řetězec formátu JSON. Další informace najdete v následující části v tomto článku.
+properties | Podrobnosti konkrétní položky protokolu serializován jako řetězec formátu JSON. Další informace najdete v následujících částech tohoto článku.
 
 ### <a name="execution-log-properties-schema"></a>Schéma vlastnosti protokolu spuštění
 
-Protokoly spuštění obsahují informace o události, ke kterým došlo během provádění úlohy Stream Analytics. Schéma vlastnosti se liší v závislosti na tom, zda je událost chybě dat nebo Obecná událost.
+Protokoly spuštění obsahují informace o události, ke kterým došlo během provádění úlohy Stream Analytics. Schéma vlastností se liší v závislosti na tom, zda se jedná o chybu dat nebo o obecnou událost.
 
 ### <a name="data-errors"></a>Chyby dat
 
-Všechny chyby, ke které dojde během úlohy zpracování dat je v této kategorii protokolů. Nejčastěji tyto protokoly se vytvoří během data načtená, serializaci a operace zápisu. Tyto protokoly neobsahují chyby připojení. K chybám připojení jsou považovány za obecné události. Další informace o příčině různých různých [vstupní a výstupní data chyby](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+Všechny chyby, ke které dojde během úlohy zpracování dat je v této kategorii protokolů. Nejčastěji tyto protokoly se vytvoří během data načtená, serializaci a operace zápisu. Tyto protokoly neobsahují chyby připojení. K chybám připojení jsou považovány za obecné události. Můžete si přečíst další informace o příčině různých [vstupních a výstupních chybových dat](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
-Name | Popis
+Name (Název) | Popis
 ------- | -------
 Zdroj | Název úlohy vstup nebo výstup, kde došlo k chybě.
 Zpráva | Zpráva přidružená k chybě.
@@ -126,29 +121,29 @@ Data | Obsahuje data, která slouží k vytvoření přesně najít zdroje chyby
 
 V závislosti na tom **operationName** hodnota, data chyby mají následující schéma:
 
-* **Serializace událostí** dojít během události při operacích čtení. K nim dojde, když data na vstupu nevyhovuje schématu dotaz pro některého z těchto důvodů:
+* **Události serializace** dojde během operací čtení událostí. K nim dojde, když data na vstupu nevyhovuje schématu dotaz pro některého z těchto důvodů:
 
    * *Neshoda typů při události (de) serializovat*: Určuje pole, která je příčinou chyby.
 
-   * *Nelze přečíst událost, neplatná Serializační*: Obsahuje informace o umístění vstupních dat, kde došlo k chybě. Obsahuje název objektu blob pro vstupní objekt blob, posun a ukázková data.
+   * *Nelze přečíst událost, neplatná Serializační*: obsahuje informace o umístění vstupních dat, kde došlo k chybě. Obsahuje název objektu blob pro vstupní objekt blob, posun a ukázková data.
 
-* **Odesílání událostí** dojít během operace zápisu. Identifikují streamování událostí, která způsobila chybu.
+* **Posílání událostí** během operací zápisu. Identifikují streamování událostí, která způsobila chybu.
 
 ### <a name="generic-events"></a>Obecné události
 
 Obecné události pokrývají všechno ostatní.
 
-Název | Popis
+Name (Název) | Popis
 -------- | --------
-Chyba | (volitelné) Informace o chybě. Obvykle to je informace o výjimce, pokud je k dispozici.
-Message| Zpráva protokolu.
+Chyba | (volitelné) Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
+Zpráva| Zpráva protokolu.
 Typ | Typ zprávy. Mapuje na interní kategorizace chyb. Například **JobValidationError** nebo **BlobOutputAdapterInitializationFailure**.
 ID korelace | [Identifikátor GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , který jednoznačně identifikuje provádění úlohy. Zahájení úlohy všechny položky protokolu spuštění od okamžiku, dokud je úloha pozastavena mají stejné **ID korelace** hodnotu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálovat úlohy Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k Stream Analytics query language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Stream Analytics data chyby](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Chyby Stream Analytics dat](https://docs.microsoft.com/azure/stream-analytics/data-errors)

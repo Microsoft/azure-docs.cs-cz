@@ -1,25 +1,16 @@
 ---
-title: Vytvoření chaos a testů převzetí služeb při selhání pro Azure Service Fabric | Microsoft Docs
+title: Vytvoření chaos a testů převzetí služeb při selhání pro Azure Service Fabric
 description: Pomocí scénářů Service Fabric chaos test a převzetí služeb při selhání můžete navolávat chyby a ověřit spolehlivost vašich služeb.
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: rsinha
-editor: toddabel
-ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: 2ea30b59e3195a0229c2584212e2897aaff4ee31
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718233"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465535"
 ---
 # <a name="testability-scenarios"></a>Scénáře testování
 Velké distribuované systémy, jako jsou cloudové infrastruktury, jsou v podstatě nespolehlivé. Azure Service Fabric poskytuje vývojářům možnost psát služby, které se spouštějí na nespolehlivých infrastrukturách. Aby bylo možné zapisovat vysoce kvalitní služby, vývojáři musí být schopni tuto nespolehlivou infrastrukturu vyvolávat, aby otestovali stabilitu svých služeb.

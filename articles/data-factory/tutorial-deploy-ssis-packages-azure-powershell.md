@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: ff40867bc1e2778ec6f21f479360866b50d0c184
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f374bd386996cd02ab7e8bff975f757aec1a0bfc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439389"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Zřízení prostředí Azure-SSIS Integration Runtime ve službě Azure Data Factory pomocí PowerShellu
 
@@ -35,11 +35,11 @@ V tomto kurzu najdete postup, jak zřídit Azure-služba SSIS (SQL Server Integr
 > * Kontrola celého skriptu
 > * Nasazení balíčků SSIS
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete. Koncepční informace o Azure-SSIS IR najdete v [přehledu prostředí Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+- **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Koncepční informace o Azure-SSIS IR najdete v [přehledu prostředí Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 - **Server Azure SQL Database (volitelné)** . Pokud ještě nemáte databázový server, vytvořte ho v Azure Portal před tím, než začnete. ADF pak na tomto databázovém serveru vytvoří SSISDB. Doporučujeme vytvořit databázový server ve stejné oblasti Azure jako prostředí Integration Runtime. Tato konfigurace umožňuje prostředí Integration runtime zapisovat protokoly spouštění do SSISDB bez přechodu do oblastí Azure. 
     - V závislosti na vybraném databázovém serveru je možné databázi SSISDB vytvořit vaším jménem jako jednoúčelovou databázi, součást elastického fondu nebo ve spravované instanci a zpřístupnit ji ve veřejné síti nebo prostřednictvím připojení k virtuální síti. Pokyny k výběru typu databázového serveru pro hostování SSISDB najdete v tématu [porovnání Azure SQL Database izolované databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). Pokud používáte Azure SQL Database Server s koncovými body služby virtuální sítě/spravovanou instancí ve virtuální síti k hostování SSISDB nebo vyžadují přístup k místním datům, musíte se připojit k Azure-SSIS IR k virtuální síti, přečtěte si téma [vytvoření Azure-SSIS IR ve virtuální síti](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
     - Ujistěte se, že má databázový server povolené nastavení **Povolit přístup ke službám Azure**. Tato možnost se nevztahuje na použití serveru Azure SQL Database s koncovými body služby virtuální sítě/spravovanou instancí ve virtuální síti pro hostování SSISDB. Další informace najdete v tématu [Zabezpečení databáze Azure SQL](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Pokud chcete toto nastavení povolit pomocí PowerShellu, přečtěte si článek [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
@@ -150,7 +150,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $S
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md) pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina.
 
 Pokud vaše skupina prostředků už existuje, nekopírujte do skriptu tento kód. 
 

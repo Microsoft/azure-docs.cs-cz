@@ -1,5 +1,5 @@
 ---
-title: Vytvoření kontroly přístupu skupin nebo aplikací – Azure Active Directory | Microsoft Docs
+title: Vytvoření kontroly přístupu skupin & aplikací – Azure AD
 description: Naučte se, jak vytvořit kontrolu přístupu pro členy skupiny nebo přístup k aplikacím v Azure Active Directory kontroly přístupu.
 services: active-directory
 author: msaburnley
@@ -15,14 +15,14 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 230fb40c8e3a100d2fdfa0af6b40c93c3e5b47d2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 583eb62e6eeaaa799d2ea75261ee511fb8ddb7ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422672"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin nebo aplikací v kontrolách přístupu ke službě Azure AD
+# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
 Přístup k skupinám a aplikacím pro zaměstnance a hosty se v průběhu času mění. Aby se snížilo riziko spojené s nezastaralým přiřazením přístupu, můžou správci pomocí služby Azure Active Directory (Azure AD) vytvářet kontroly přístupu pro členy skupiny nebo přístup k aplikacím. Pokud potřebujete rutinní kontrolu přístupu, můžete také vytvořit opakované recenze přístupu. Další informace o těchto scénářích najdete v tématech [Správa přístupu uživatelů](manage-user-access-with-access-reviews.md) a [Správa přístupu hostů](manage-guest-access-with-access-reviews.md).
 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro �
 - Azure AD Premium P2
 - Globální správce nebo Správce uživatelů
 
-Další informace najdete v tématu o uživatelích, [kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
+Další informace najdete v tématu o [uživatelích, kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-one-or-more-access-reviews"></a>Vytvoření jedné nebo více kontrol přístupu
 
@@ -87,7 +87,7 @@ Další informace najdete v tématu o uživatelích, [kteří musí mít licence
 
     Chcete-li zobrazit seznam programů, přejděte na stránku kontroly přístupu a vyberte **programy**. Pokud se nacházíte v roli globálního správce nebo Správce uživatelů, můžete vytvořit další programy. Můžete například zvolit, aby měl jeden program pro každou iniciativu dodržování předpisů nebo obchodní cíl. Pokud už program nepotřebujete a k němu nejsou připojené žádné ovládací prvky, můžete ho odstranit.
 
-### <a name="upon-completion-settings"></a>Nastavení činností po dokončení
+### <a name="upon-completion-settings"></a>Nastavení po dokončení
 
 1. Chcete-li určit, co se stane po dokončení kontroly, rozbalte část **nastavení po dokončení** .
 
@@ -102,15 +102,15 @@ Další informace najdete v tématu o uživatelích, [kteří musí mít licence
     - **Schválit přístup** – schválení přístupu uživatele
     - **Využijte doporučení** – Vezměte v úvahu doporučení systému při odepření nebo schvalování trvalého přístupu uživatele.
 
-### <a name="advanced-settings"></a>Pokročilá nastavení
+### <a name="advanced-settings"></a>Upřesnit nastavení
 
 1. Chcete-li zadat další nastavení, rozbalte oddíl **Upřesnit nastavení** .
 
     ![Vytvoření kontroly přístupu – Pokročilá nastavení](./media/create-access-review/advanced-settings.png)
 
-1. Nastavením **Zobrazit doporučení** umožníte **, aby se** recenzenti zobrazovala doporučení k systému na základě informací o přístupu uživatele.
+1. Nastavením **Zobrazit doporučení** **umožníte, aby se** recenzenti zobrazovala doporučení k systému na základě informací o přístupu uživatele.
 
-1. Nastavte **vyžadovat důvod schválení** **, aby mohl** uživatel vyžadovat, aby kontrolor zadal důvod schválení.
+1. Nastavte **vyžadovat důvod schválení** , aby mohl uživatel vyžadovat **, aby kontrolor** zadal důvod schválení.
 
 1. Nastavte e- **mailová oznámení** , která **umožní** , aby služba Azure AD odesílala e-mailová oznámení kontrolorům při zahájení kontroly přístupu a správcům, když se kontrola dokončí.
 

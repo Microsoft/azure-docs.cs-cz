@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 738c0cf8c9fea61bedb53aa5f6c9bde089bac5f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930051"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440561"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí služby Azure Data Factory
 
@@ -39,7 +39,7 @@ Konektor Netezza podporuje paralelní kopírování ze zdroje. Podrobnosti najde
 
 Azure Data Factory poskytuje integrovaný ovladač umožňující připojení. Není nutné ručně nainstalovat všechny ovladače, které chcete použít tento konektor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -56,7 +56,7 @@ Netezza propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **Netezza**. | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení k Netezza. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectionString | ODBC připojovací řetězec služby pro připojení k Netezza. <br/>Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Následující tabulka popisuje další vlastnosti, které můžete nastavit:
@@ -74,10 +74,7 @@ Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=
     "properties": {
         "type": "Netezza",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -95,10 +92,7 @@ Připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=
     "properties": {
         "type": "Netezza",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;"
-            },
+            "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

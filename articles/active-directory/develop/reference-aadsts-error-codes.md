@@ -1,5 +1,5 @@
 ---
-title: Kódy chyb ověřování a autorizace Azure AD | Azure
+title: Ověřování Azure AD & kódy chyb autorizace
 description: Přečtěte si o kódech chyb AADSTS, které se vracejí ze služby tokenů zabezpečení Azure AD (STS).
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423968"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -133,6 +133,8 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers – řízení relace není pro průchozí uživatele podporováno. |
 | AADSTS50180 | WindowsIntegratedAuthMissing – vyžaduje se integrované ověřování systému Windows. Povolte tenantovi bezproblémové jednotné přihlašování. |
 | AADSTS50187 | DeviceInformationNotProvided – službě se nepodařilo provést ověřování zařízení. |
+| AADSTS50196 | LoopDetected – zjistila se smyčka klienta. Zkontrolujte logiku aplikace a ujistěte se, že je naimplementovaná mezipaměť tokenů a že se chybové stavy zpracovávají správně.  Aplikace provedla příliš krátkou řadu stejných požadavků v příliš krátkém období, což značí, že je v chybném stavu, nebo se jedná o urážlivý požadavek na tokeny. |
+| AADSTS50199 | CmsiInterrupt – pro toto ověřování se vyžaduje interakce uživatele.  Vzhledem k tomu, že se jedná o chybu "interaction_required", klient by měl provést interaktivní ověřování.  K tomu dochází, protože k vyžádání tokenu pro nativní aplikaci bylo použito systémové rozhraní WebView – uživatel musí být vyzván, aby požádal o to, jestli se jednalo o aplikaci, ke které se přihlašuje.|
 | AADSTS51000 | RequiredFeatureNotEnabled – Tato funkce je zakázaná. |
 | AADSTS51001 | Pomocný parametr DomainHintMustbePresent-Domain musí být přítomen u místního identifikátoru zabezpečení nebo místního hlavního názvu uživatele (UPN). |
 | AADSTS51004 | UserAccountNotInDirectory – uživatelský účet v adresáři neexistuje. |

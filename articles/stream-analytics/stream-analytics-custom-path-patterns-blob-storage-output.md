@@ -1,7 +1,6 @@
 ---
-title: Azure Stream Analytics, vlastní blob výstup dělení
-description: Tento článek popisuje vlastní vzorů cest data a času a vlastní atributy pole nebo funkce pro výstup úložiště objektů blob z úloh Azure Stream Analytics.
-services: stream-analytics
+title: Azure Stream Analytics vlastní dělení výstupu objektů BLOB
+description: Tento článek popisuje vlastní vzorce cesty DateTime a funkce vlastního pole nebo atributů pro výstup služby Blob Storage z Azure Stream Analytics úloh.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,62 +8,62 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789425"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426389"
 ---
-# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics, vlastní blob výstup dělení
+# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics vlastní dělení výstupu objektů BLOB
 
-Azure Stream Analytics podporuje dělení s vlastními poli nebo atributy a vlastní data a času vzorů cest výstupu vlastní objekt blob. 
+Azure Stream Analytics podporuje vytváření oddílů vlastního výstupu objektů BLOB s vlastními poli nebo atributy a vlastními vzory cesty DateTime. 
 
 ## <a name="custom-field-or-attributes"></a>Vlastní pole nebo atributy
 
-Vlastní pole nebo vstupní atributy zlepšit směru server-klient zpracování dat a vytváření sestav a pracovních postupů umožňující větší kontrolu nad výstup.
+Vlastní pole nebo vstupní atributy zlepšují pracovní postupy pro zpracování dat a vytváření sestav tím, že umožňují větší kontrolu nad výstupem.
 
-### <a name="partition-key-options"></a>Klíč oddílu, možnosti
+### <a name="partition-key-options"></a>Možnosti klíče oddílu
 
-Klíč oddílu, nebo název sloupce, umožňují rozdělit vstupní data mohou obsahovat alfanumerické znaky, pomlčky, podtržítka a mezery. Není možné používat vnořená pole jako klíč oddílu, není-li použít ve spojení s aliasy. Klíč oddílu musí být NVARCHAR(MAX).
+Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, můžou obsahovat alfanumerické znaky s pomlčkami, podtržítky a mezerami. Pokud se nepoužívají ve spojení s aliasy, není možné použít vnořená pole jako klíč oddílu. Klíč oddílu musí být NVARCHAR (MAX).
 
 ### <a name="example"></a>Příklad:
 
-Předpokládejme, že úloha přijímá vstupní data z živé uživatelské relace, které jsou připojené ke službě videohru externí kde přijatých dat obsahuje sloupec **client_id** k identifikaci relace. Rozdělit data podle **client_id**, nastavit pole vzor cesty objektu Blob, které chcete zahrnout token oddílu **{client_id}** ve výstupní vlastnosti objektu blob při vytváření projektu. Jako data s využitím různých **client_id** hodnoty procházet skrz úlohy Stream Analytics, výstupní data se uloží do samostatné složky podle jedné **client_id** hodnotu na složku.
+Předpokládejme, že úloha přebírá vstupní data z živých uživatelských relací připojených ke službě externí videohry, kde ingestovaná data obsahují sloupec **client_id** k identifikaci relací. Při vytváření oddílů dat **client_id**nastavte pole vzor cesty objektů BLOB tak, aby zahrnovalo token oddílu **{client_id}** v výstupních vlastnostech objektu BLOB při vytváření úlohy. Jelikož data s různými **client_idmi** hodnotami přecházejí prostřednictvím úlohy Stream Analytics, výstupní data se ukládají do samostatných složek na základě jedné **client_id** hodnoty na složku.
 
-![Vzor cesty s id klienta](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
+![Vzor cesty s ID klienta](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
-Podobně pokud úloha vstup byl dat snímačů ze miliony senzorů, kde má každý ze senzorů **sensor_id**, bude vzor cesty **{sensor_id}** rozdělení jednotlivých data ze senzorů do různých složek.  
+Podobně platí, že pokud byla vstupem úlohy senzorická data z milionů senzorů, ve kterých měl každý senzor **sensor_id**, bude vzor cesty **{sensor_id}** rozdělit jednotlivé údaje ze senzorů do různých složek.  
 
 
-Pomocí rozhraní REST API, výstupní sekce JSON soubor použitý pro tuto žádost může vypadat nějak takto:  
+Pomocí REST API oddíl Output souboru JSON, který se používá pro tento požadavek, může vypadat takto:  
 
-![Výstup rozhraní REST API](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
+![Výstup REST API](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
 
-Po spuštění úlohy, *klienti* kontejner může vypadat třeba takto:  
+Po spuštění úlohy může kontejner *klienti* vypadat takto:  
 
-![Klienti kontejneru](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
+![Kontejner klientů](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-Všechny složky, může obsahovat více objektů BLOB, kde každý objekt blob obsahuje jeden nebo více záznamů. V předchozím příkladu je jeden objekt blob ve složce označené "06000000" s následujícím obsahem:
+Každá složka může obsahovat několik objektů blob, kde každý objekt BLOB obsahuje jeden nebo víc záznamů. V předchozím příkladu je ve složce označené jako "06000000" jeden objekt BLOB s následujícím obsahem:
 
 ![Obsah objektu BLOB](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
-Všimněte si, že má každý záznam v objektu blob **client_id** název sloupce odpovídající složce od sloupec použitý k rozdělení výstupu do zadané výstupní cesty **client_id**.
+Všimněte si, že každý záznam v objektu BLOB má **client_id** sloupec odpovídající názvu složky, protože sloupec použitý k vytvoření oddílu výstupu ve výstupní cestě byl **client_id**.
 
 ### <a name="limitations"></a>Omezení
 
-1. Ve vlastnosti blob výstup vzor cesty smí obsahovat pouze jeden vlastním klíčem oddílu. Všechny následující vzorů cest, které jsou platné:
+1. Ve vlastnosti Output objektu BLOB vzoru cesty je povolený jenom jeden vlastní klíč oddílu. Všechny následující vzory cest jsou platné:
 
    * cluster1/{date}/{aFieldInMyData}  
-   * cluster1/{time}/{aFieldInMyData}  
+   * Cluster1/{Time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData} 
+   * Cluster1/{Date}/{Time}/{aFieldInMyData} 
    
-2. Klíče oddílů jsou malá a velká písmena, takže klíče oddílů, jako je "John" a "john" jsou ekvivalentní. Výrazy navíc nelze použít jako klíče oddílu. Například **{columnA + columnB}** nefunguje.  
+2. V klíčích oddílů se nerozlišují malá a velká písmena, takže klíče oddílů jako Jan a Jan jsou ekvivalentní. Výrazy se navíc nedají použít jako klíče oddílu. Například **{Column + columnB}** nefunguje.  
 
-3. Pokud vstupní datový proud se skládá ze záznamů s kardinalitou klíče oddílu v části 8000, záznamy se připojí k existující objekty BLOB a vytvářet jenom nové objekty BLOB, pokud je to nezbytné. Pokud je Kardinalita přes 8000 neexistuje žádná záruka existující objekty BLOB se zapíšou do a nové objekty BLOB se nevytvoří pro libovolný počet záznamů se stejným klíčem oddílu.
+3. Když vstupní datový proud sestává z záznamů s mohutnosti klíče oddílu v 8000, záznamy se připojí k existujícím objektům blob a v případě potřeby vytvoří jenom nové objekty blob. Pokud mohutnost překračuje 8000, nebudou se do nich zapisovat existující objekty BLOB a nevytvoří se nové objekty blob pro libovolný počet záznamů se stejným klíčem oddílu.
 
-## <a name="custom-datetime-path-patterns"></a>Vlastní data a času vzorů cest
+## <a name="custom-datetime-path-patterns"></a>Vlastní vzory cesty DateTime
 
 Vlastní data a času vzorů cest vám umožňují určit výstupní formát, který souladu s konvencemi Hive streamování, že umožňuje posílat data do Azure HDInsight a Azure Databricks pro směru server-klient zpracování Azure Stream Analytics. Vlastní data a času vzorů cest se snadno implementují pomocí `datetime` – klíčové slovo v poli Předpona cesty objektu výstup, spolu s specifikátor formátu. Například, `{datetime:yyyy}`.
 
@@ -76,7 +75,7 @@ Následující klíčová slova specifikátoru formátu lze použít samostatně
 |----------|-----------|------------|
 |{datetime:yyyy}|Rok jako čtyřmístné číslo|2018|
 |{datetime:MM}|Měsíc od 01 do 12|01|
-|{datetime:M}|Měsíc od 1 do 12|1|
+|{datetime:M}|Měsíc od 1 do 12|1\. místo|
 |{datetime:dd}|Den od 01 do 31.|02|
 |{datetime:d}|Den od 1 do 12|2|
 |{datetime:HH}|Pomocí 24 h formátu, od 00 do 23 hodin|10|
@@ -130,6 +129,6 @@ Při spuštění úlohy se vytvoří strukturu složek podle vzor cesty v kontej
 
 ![Stream Analytics blob výstup s vlastní vzorek cesty](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vysvětlení vytvořené jako výstupy z Azure Stream Analytics](stream-analytics-define-outputs.md)

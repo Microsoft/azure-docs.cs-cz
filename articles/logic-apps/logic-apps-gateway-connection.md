@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456572"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -50,7 +50,7 @@ Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connect
 
 Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations). I když samotné brány neúčtují další náklady, [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md) se vztahuje na tyto konektory a další operace v Azure Logic Apps.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Místní brána dat je už v místním počítači nainstalovaná](../logic-apps/logic-apps-gateway-install.md).
 
@@ -82,7 +82,7 @@ Po instalaci brány na místní počítač vytvořte prostředek Azure pro vaši
    |----------|-------------|
    | **Název prostředku** | Zadejte název prostředku brány, který obsahuje jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) nebo tečky (`.`). |
    | **Předplatné** | Vyberte předplatné Azure pro účet Azure, který se použil pro instalaci brány. Výchozí předplatné vychází z účtu Azure, který jste použili k přihlášení. |
-   | **Skupina prostředků** | [Skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) , kterou chcete použít |
+   | **Skupina prostředků** | [Skupina prostředků Azure](../azure-resource-manager/management/overview.md) , kterou chcete použít |
    | **Umístění** | Stejná oblast nebo umístění, které bylo vybráno pro cloudovou službu brány během [Instalace brány](../logic-apps/logic-apps-gateway-install.md). V opačném případě se instalace brány nezobrazí v seznamu **název instalace** . Vaše umístění vaší aplikace logiky se může lišit od umístění prostředku brány. |
    | **Název instalace** | Vyberte instalaci brány, která se zobrazí v seznamu jenom v případě, že jsou splněné tyto podmínky: <p><p>– Instalace brány používá stejnou oblast jako prostředek brány, který chcete vytvořit. <br>– Instalace brány není propojená s jiným prostředkem služby Azure Gateway. <br>– Instalace brány je propojená se stejným účtem Azure, který používáte k vytvoření prostředku brány. <br>– Váš účet Azure patří do tenanta jednoho [Azure Active Directory (Azure AD) nebo adresáře](../active-directory/fundamentals/active-directory-whatis.md#terminology) a je to stejný účet, který se použil pro instalaci brány. <p><p>Další informace najdete v části [Nejčastější dotazy](#faq) . |
    |||
@@ -150,7 +150,7 @@ Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jin
 
 1. Pokud jste to ještě neučinili, vyberte v nabídce prostředku brány místní **bránu dat**. Na panelu nástrojů prostředek brány vyberte **Odstranit**.
 
-   Například:
+   Příklad:
 
    ![Odstranění prostředku brány v Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Omezení uživatelů aplikace zaregistrovaných pro Azure Active Directory | Azure
+title: Omezení aplikace Azure AD na skupinu uživatelů | Azure
 titleSuffix: Microsoft identity platform
 description: Naučte se, jak omezit přístup k aplikacím registrovaným ve službě Azure AD na vybranou skupinu uživatelů.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ff6e9d101159af33a05a2dc50e227bc97970b12d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424467"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Postupy: omezení aplikace Azure AD na skupinu uživatelů
 
@@ -46,7 +46,7 @@ Možnost omezit aplikaci na určitou skupinu uživatelů nebo skupin zabezpečen
 
 Existují dva způsoby, jak vytvořit aplikaci s povoleným přiřazením uživatele. Jedna z nich vyžaduje roli **globálního správce** , druhá ne.
 
-### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>Podnikové aplikace (vyžaduje globální roli správce)
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Podnikové aplikace (vyžaduje roli globálního správce)
 
 1. Přejít na [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce**.
 1. V horním panelu vyberte přihlášený účet. 

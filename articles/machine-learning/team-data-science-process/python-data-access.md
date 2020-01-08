@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427387"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Klientská knihovna Python pro Microsoft Azure Machine Learning ve verzi preview můžete povolit zabezpečený přístup k vaší datové sady Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a Správa datových sad v pracovním prostoru.
@@ -96,7 +96,7 @@ Tokeny ověřování se spravují na **AUTORIZAČNÍCH TOKENECH** stránky **nas
     ![Kód vložte do poznámkového bloku][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Přístup k zprostředkující datovým sadám z experimenty Machine Learning
-Po spuštění experimentu v klasické verzi Machine Learning Studio je možné získat přístup k mezilehlé datové sadě z výstupních uzlů modulů. Zprostředkující datové sady jsou data, která byla vytvořena a používá se pro zprostředkující kroky při byl spuštěn nástroj modelu.
+Po spuštění experimentu v Machine Learning Studio (Classic) je možné získat přístup k mezilehlé datové sadě z výstupních uzlů modulů. Zprostředkující datové sady jsou data, která byla vytvořena a používá se pro zprostředkující kroky při byl spuštěn nástroj modelu.
 
 Zprostředkující datové sady je možný za předpokladu, formát dat je kompatibilní s klientské knihovny pro Python.
 

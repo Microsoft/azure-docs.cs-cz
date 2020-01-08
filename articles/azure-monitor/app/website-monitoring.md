@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 3b909f1cb65ae2b355451def53410c32ae482167
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 75c61452e73c50cbdaed03a27481d920e4c2ad86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406223"
 ---
 # <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
 
@@ -21,13 +21,13 @@ Azure Monitor Application Insights umožňuje snadné monitorování webu z hled
 
 Tento rychlý Start vás provede přidáním [Open source Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) , který vám umožní pochopit prostředí klienta nebo prohlížeče pro návštěvníky webu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+K dokončení tohoto rychlého startu je potřeba:
 
 - Mít předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -47,8 +47,8 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
     | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
-   | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat App Insights Můžete vytvořit novou skupinu prostředků nebo použít existující. |
+   | **Umístění** | Východní USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 2. Klikněte na **Vytvořit**.
 
@@ -96,7 +96,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 1. Teď můžete znovu otevřít stránku **Přehled** služby Application Insights na webu Azure Portal, kde jste získali svůj instrumentační klíč, a zobrazit podrobné informace o aktuálně spuštěné aplikaci. Čtyři výchozí grafy na stránce Přehled mají nastavený obor na data aplikace na straně serveru. Vzhledem k tomu, že instrumentujeme interakce se sadou JavaScript SDK na straně klienta nebo prohlížeče, toto konkrétní zobrazení nás nezajímá, pokud nemáme nainstalovanou také sadu SDK na straně serveru.
 
-2. Klikněte na ![ikonu Mapa aplikace](media/website-monitoring/006.png) **Analýza**.  Otevře se okno **Analýza** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. Pokud chcete zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
+2. Klikněte na ![ikona mapa aplikace](media/website-monitoring/006.png) **Analytics**.  Otevře se okno **Analýza** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. Pokud chcete zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
 
     ```kusto
     // average pageView duration by name
@@ -132,6 +132,9 @@ Pokud se chcete dozvědět o pokročilejších konfiguracích monitorování web
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud však pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené tímto rychlým startem na webu Azure Portal.
+
+> [!NOTE]
+> Pokud jste použili existující skupinu prostředků, následující pokyny nebudou fungovat a bude potřeba jenom odstranit jednotlivé prostředky Application Insights. Mějte na paměti, že kdykoli odstraníte skupinu prostředků, odstraní se všechny základního prostředky, které jsou členy této skupiny.
 
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.

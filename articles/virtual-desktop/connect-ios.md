@@ -5,31 +5,24 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: bfc7efa6e8ead3b53704e3c9bd189b18cb787618
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 472b8800a09cb12bc3e703ef53d0aab2b578e0d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460219"
 ---
 # <a name="connect-with-the-ios-client"></a>Připojení s klientem iOS
 
-> Platí pro: iOS 8,0 nebo novější. Kompatibilní s iPhone, iPad a iPod touch.
-
->[!NOTE]
-> Klient iOS je aktuálně stále ve verzi Preview.
+> Platí pro: iOS 13,0 nebo novější. Kompatibilní s iPhone, iPad a iPod touch.
 
 Pomocí našeho klienta ke stažení můžete získat přístup k prostředkům virtuálních klientů Windows ze zařízení s iOS. V této příručce se dozvíte, jak nastavit klienta iOS.
 
-## <a name="install-the-ios-beta-client"></a>Nainstalovat klienta iOS beta
-Instalace klienta iOS beta:
+## <a name="install-the-ios-client"></a>Instalace klienta iOS
 
-1. Nainstalujte aplikaci [Apple testovacího prostředí](https://apps.apple.com/us/app/testflight/id899247664) na zařízení s iOS.
-2. Na zařízení s iOS otevřete prohlížeč a přejděte na [aka.MS/rdiosbeta](https://aka.ms/rdiosbeta).
-3. V části popisek **Krok 2: Připojte se k beta verzi**vyberte **zahájit testování**.
-4. Až budete přesměrováni do aplikace testovacího prostředí, vyberte **přijmout**a pak vyberte **nainstalovat**.
+Začněte tím, že [si stáhnete](https://aka.ms/rdios) a nainstalujete klienta na zařízení s iOS.
 
 ## <a name="subscribe-to-a-feed"></a>Přihlášení k odběru informačního kanálu
 

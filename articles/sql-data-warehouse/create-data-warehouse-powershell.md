@@ -11,18 +11,18 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 44abf23ce632aa1ac630eab3313ffd675eef1a0b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461520"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý Start: vytvoření a dotazování Azure SQL Data Warehouse pomocí Azure PowerShell
 
 Azure SQL Data Warehouse pomocí Azure PowerShell rychle vytvořit.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!NOTE]
 > Vytvoření služby SQL Data Warehouse může znamenat, že se vám začne fakturovat nová služba.  Další informace najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
@@ -73,7 +73,7 @@ $databasename = "mySampleDataWarehosue"
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md) pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění `westeurope`.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění `westeurope`.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location

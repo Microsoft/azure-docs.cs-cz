@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462437"
 ---
 # <a name="workflow-automation-preview"></a>Automatizace pracovního postupu (Preview)
 
@@ -74,7 +74,7 @@ Tento článek popisuje funkci automatizace pracovního postupu (Preview) Azure 
 
 1. Po definování aplikace logiky se vraťte do podokna definice automatizace pracovního postupu (přidat automatizaci pracovního postupu). Kliknutím na **aktualizovat** zajistěte, aby byla nová aplikace logiky dostupná pro výběr.
 
-    ![Obnovení](media/workflow-automation/refresh-the-list-of-logic-apps.png)
+    ![Obnovit](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
 1. Vyberte svou aplikaci logiky a uložte automatizaci. Všimněte si, že v rozevírací nabídce aplikace logiky se zobrazí pouze Logic Apps s podpůrnými Security Center konektory uvedenými výše.
 
@@ -87,6 +87,9 @@ Pokud chcete aplikaci logiky spustit ručně, otevřete doporučení a klikněte
 
 [Ruční aktivace aplikace logiky ![](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
+## <a name="data-types-schemas"></a>Schémata datových typů
+
+Chcete-li zobrazit nezpracované schéma událostí výstrah zabezpečení nebo událostí doporučení předaných do instance aplikace logiky, přejděte na [schéma typů dat automatizace pracovního postupu](https://aka.ms/ASCAutomationSchemas). To může být užitečné v případech, kdy neSecurity Center používáte Integrované konektory aplikace logiky, které jsou uvedené výše, ale místo toho se používá obecný konektor HTTP aplikace logiky – můžete použít schéma JSON události a ručně ho analyzovat podle potřeby.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -98,3 +101,4 @@ Další související materiály najdete v následujících článcích:
 - [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
 - [O Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Konektory Logic Apps](https://docs.microsoft.com/connectors/)
+- [Schémata datových typů automatizace pracovního postupu](https://aka.ms/ASCAutomationSchemas)

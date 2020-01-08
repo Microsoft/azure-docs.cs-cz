@@ -1,25 +1,14 @@
 ---
-title: Serializace objektu spolehlivé kolekce v Azure Service Fabric | Microsoft Docs
-description: Serializace objektů Reliable Collections v Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Serializace objektu spolehlivé kolekce
+description: Přečtěte si o Azure Service Fabric serializaci objektů služby Reliable Collections, včetně výchozí strategie a definování vlastní serializace.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: atsenthi
-ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599313"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639543"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializace objektu spolehlivé kolekce v Azure Service Fabric
 Spolehlivé kolekce replikují a uchovávají jejich položky, aby se zajistilo, že jsou odolné proti selhání počítačů a výpadkům napájení.
@@ -40,22 +29,22 @@ Správce Reliable State má vestavěný serializátor pro následující typy:
 - SByte
 - Byte
 - char
-- řetězec
+- string
 - decimal
 - double
 - float
 - int
 - uint
-- long
+- Long
 - ulong
-- dostatečná
+- short
 - ushort
 
 ## <a name="custom-serialization"></a>Vlastní serializace
 
 Vlastní koserializátory se běžně používají ke zvýšení výkonu nebo k šifrování dat po drátě a na disku. Mimo jiné důvody jsou vlastní serializace obvykle efektivnější než obecné serializátor, protože nepotřebují serializaci informací o typu. 
 
-[IReliableStateManager. TryAddStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) slouží k registraci vlastního serializátoru pro daný typ T. Tato registrace by se měla proběhnout při vytváření StatefulServiceBase, aby se zajistilo, že před zahájením obnovení mají všechny spolehlivé kolekce přístup k příslušnému serializátoru, aby mohli číst trvalá data.
+[IReliableStateManager. TryAddStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) slouží k registraci vlastního serializátoru pro daný typ t. Tato registrace by se měla proběhnout při vytváření StatefulServiceBase, aby se zajistilo, že před zahájením obnovení mají všechny spolehlivé kolekce přístup k příslušnému serializátoru, aby mohli číst trvalá data.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +62,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Implementace vlastního serializátoru
 
-Vlastní serializátor musí implementovat rozhraní [\<IStateSerializer T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) .
+Vlastní serializátor musí implementovat rozhraní [IStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) .
 
 > [!NOTE]
-> IStateSerializer\<T > zahrnuje přetížení pro zápis a čtení, která přebírají v další T volané základní hodnotě. Toto rozhraní API je pro rozdílovou serializaci. Funkce rozdílové serializace není k dispozici. Proto tato dvě přetížení nejsou volána, dokud není k dispozici rozdílové serializace a povolena.
+> IStateSerializer\<T > zahrnuje přetížení pro zápis a čtení, která přebírají v další hodnotě T nazvané Base. Toto rozhraní API je pro rozdílovou serializaci. Funkce rozdílové serializace není k dispozici. Proto tato dvě přetížení nejsou volána, dokud není k dispozici rozdílové serializace a povolena.
 
 Následuje příklad vlastního typu s názvem OrderKey, který obsahuje čtyři vlastnosti.
 

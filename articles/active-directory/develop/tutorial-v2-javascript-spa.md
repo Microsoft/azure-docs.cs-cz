@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity Platform JavaScript – jednoduchá stránka – Průvodce aplikací | Azure
+title: Kurz jednoduché jednostránkové aplikace v JavaScriptu – Microsoft Identity Platform | Azure
 description: Jak aplikace JavaScript SPA můžou volat rozhraní API, které vyžaduje přístupové tokeny pomocí koncového bodu Azure Active Directory v 2.0
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 995210e720040448927b2aaac2c2eb590e3de981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919388"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423375"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
 
@@ -66,7 +66,7 @@ Tato příručka používá následující knihovnu:
 >
 > Chcete-li před spuštěním nakonfigurovat ukázku kódu, přejděte k [kroku konfigurace](#register-your-application).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pro spuštění tohoto kurzu potřebujete místní webový server, jako je například [Node. js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)nebo IIS Express integrace se sadou [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 
@@ -340,7 +340,7 @@ Do `index.html` souboru přidejte následující kód v rámci značek `<script>
 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V levém podokně registrované aplikace vyberte **ověřování**.
 1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 > #### <a name="set-a-redirect-url-for-nodejs"></a>Nastavení adresy URL pro přesměrování pro Node. js
 > Pro Node. js můžete nastavit port webového serveru v souboru *Server. js* . V tomto kurzu se používá port 30662, ale můžete použít jakýkoli jiný dostupný port.

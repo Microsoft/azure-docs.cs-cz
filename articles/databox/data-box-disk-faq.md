@@ -8,14 +8,14 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e5625ad7c9997c172aef6ead41b7cfa9ede652dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438641"
 ---
-# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Nejčastější dotazy
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: nejčastější dotazy
 
 Cloudové řešení Microsoft Azure Data Box Disk umožňuje odesílat do Azure rychle, levně a bezpečně terabajty dat. Tyto nejčastější dotazy obsahují otázky a odpovědi, které se týkají používání disků Data Box Disk na webu Azure Portal. 
 
@@ -23,7 +23,7 @@ Otázky a odpovědi jsou uspořádané do těchto kategorií:
 
 - O službě
 - Konfigurace a připojení 
-- Stav sledování
+- Sledování stavu
 - Migrovat data 
 - Ověření a nahrání dat 
 
@@ -113,7 +113,7 @@ Po dokončení kopírování a ověření dat proveďte následující kroky, ab
 A.  Řešení s disky Data Box Disk může mít až 5 disků s maximální využitelnou kapacitou 35 TB. Samotné disky mají velikost 8 TB (využitelných je 7 TB).
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>Otázka: Jaké maximální velikosti objektu blob bloku a objektu blob stránky disky Data Box Disk podporují? 
-A.  Maximální velikosti se řídí omezeními služby Azure Storage. Maximální velikost objektu blob bloku je přibližně 4,768 TiB a maximální velikost objektu blob stránky je 8 TiB. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage](../storage/common/storage-scalability-targets.md).
+A.  Maximální velikosti se řídí omezeními služby Azure Storage. Maximální velikost objektu blob bloku je přibližně 4,768 TiB a maximální velikost objektu blob stránky je 8 TiB. Další informace najdete v tématu [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../storage/blobs/scalability-targets.md).
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>Otázka: Jaká je u disků Data Box Disk rychlost přenosu dat?
 A. Při testování s disky připojenými přes USB 3.0 byl výkon disku až 430 MB/s. Skutečné hodnoty se liší v závislosti na velikosti použitých souborů. U menších souborů může být výkon nižší.
@@ -127,7 +127,7 @@ A.  Ke kopírování dat na disky použijte nástroj pro kopírování SMB, nap�
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Otázka: Máte nějaké tipy pro zrychlení kopírování dat?
 A.  Pokud chcete zrychlit proces kopírování:
 
-- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o tom, jak [se používá přesný příkaz, najdete v kurzu: Kopírování dat na Azure Data Box Disk a jejich ověření](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
+- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Přesnější informace o používaných příkazech získáte v [kurzu, který se týká kopírování dat na disk Azure Data Box Disk a ověření](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Použijte více relací.
 - Místo kopírování přes sdílenou síťovou složku (při kterém vás můžou omezovat rychlosti sítí) zajistěte, aby se data nacházela přímo na počítači, ke kterému jsou příslušné disky připojené.
 - Zkontrolujte, že během procesu kopírování používáte USB 3.0 nebo novější. K identifikaci řadičů USB a zařízení USB připojených k počítači si stáhněte a používejte [nástroj USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview).
@@ -145,9 +145,9 @@ A.  Ne. Pro použití s disky Data Box Disk se momentálně podporuje jenom jede
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Otázka: Jaká je sada nástrojů dostupná pro moje data s Data Box disky?
 A. Sada nástrojů dostupná s Data Box Disk obsahuje tři nástroje:
- - **Nástroj pro odemknutí data box disk**: Tento nástroj slouží k odemčení šifrovaných disků, které jsou dodávány od společnosti Microsoft. Při odemykání disků pomocí nástroje je potřeba poskytnout klíč dostupný v pořadí Data Box Disk v Azure Portal. 
+ - **Nástroj pro odemknutí data box disk**: Tento nástroj použijte k odemčení šifrovaných disků dodaných společností Microsoft. Při odemykání disků pomocí nástroje je potřeba poskytnout klíč dostupný v pořadí Data Box Disk v Azure Portal. 
  - **Nástroj pro ověření data box disk**: Tento nástroj použijte k ověření velikosti, formátu a názvů objektů BLOB podle konvencí pojmenování pro Azure. Vygeneruje taky kontrolní součty pro zkopírovaná data, která se pak použijí k ověření dat nahraných do Azure.
- - **Nástroj pro rozdělené kopírování data box disk**: Tento nástroj použijte v případě, že používáte více disků a máte velkou datovou sadu, kterou je třeba rozdělit a kopírovat napříč všemi disky. Tento nástroj je aktuálně k dispozici pro systém Windows. Tento nástroj není u spravovaných disků podporován. Tento nástroj také ověřuje, jak kopíruje data, takže při použití tohoto nástroje můžete přeskočit krok ověření.
+ - **Nástroj pro rozdělené kopírování data box disk**: Tento nástroj použijte, když používáte více disků a máte rozsáhlou datovou sadu, která musí být rozdělená a zkopírovaná napříč všemi disky. Tento nástroj je aktuálně k dispozici pro systém Windows. Tento nástroj není u spravovaných disků podporován. Tento nástroj také ověřuje, jak kopíruje data, takže při použití tohoto nástroje můžete přeskočit krok ověření.
 
 Sada nástrojů je k dispozici pro systémy Windows i Linux. Sadu nástrojů si můžete stáhnout tady:
 - [Stáhnout sadu nástrojů Data Box Disk pro Windows](https://aka.ms/databoxdisktoolswin) 
@@ -189,7 +189,7 @@ A. Ano. Vaše data se nahrála do Azure, ale Pokud nevidíte žádné spravovan�
  - Soubory Azure by přešly do kontejneru objektů blob bloku začínajícího na *databoxdisk-invalid-AF-* .
  - Spravované disky by mohly přejít na kontejner objektů blob bloku začínající na *databoxdisk-invalid-MD-* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Projděte si [požadavky na data box disk systém](data-box-disk-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Disk](data-box-disk-limits.md).

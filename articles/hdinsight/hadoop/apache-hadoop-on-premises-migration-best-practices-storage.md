@@ -2,18 +2,18 @@
 title: 'Úložiště: migrace místních Apache Hadoop do Azure HDInsight'
 description: Naučte se osvědčené postupy úložiště pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: b22c3c7e7dbbf7a93fff10ded1fbb7bef8fc5900
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: 6fe7dfaccc3cf1c3fbe4a9ea42578c56f910ea36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435771"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight
 
@@ -23,13 +23,13 @@ Tento článek obsahuje doporučení pro ukládání dat v systémech Azure HDIn
 
 Místní strukturu adresářů Apache Hadoopho systému souborů (HDFS) je možné v Azure Storage nebo Azure Data Lake Storage znovu vytvořit. Pak můžete bezpečně odstranit clustery HDInsight, které jsou používány pro výpočty, aniž by došlo ke ztrátě uživatelských dat. Obě služby se dají použít jako výchozí systém souborů i pro další systém souborů pro cluster HDInsight. Cluster HDInsight a účet úložiště musí být hostované ve stejné oblasti.
 
-### <a name="azure-storage"></a>Úložiště Azure
+### <a name="azure-storage"></a>Azure Storage
 
-Clustery HDInsight můžou použít kontejner objektů BLOB v Azure Storage jako výchozí systém souborů nebo jako další systém souborů. Účet úložiště úrovně Standard se podporuje pro použití s clustery HDInsight. Úroveň Premier není podporovaná. Výchozí kontejner objektu blob ukládá konkrétní informace, jako je historie úlohy a protokoly. Sdílení jednoho kontejneru objektů BLOB jako výchozího systému souborů pro více clusterů se nepodporuje.
+Clustery HDInsight můžou použít kontejner objektů BLOB v Azure Storage jako výchozí systém souborů nebo jako další systém souborů. Účet úložiště úrovně Standard se podporuje pro použití s clustery HDInsight. Vrstva Premier není podporovaná. Výchozí kontejner objektu blob ukládá konkrétní informace, jako je historie úlohy a protokoly. Sdílení jednoho kontejneru objektů BLOB jako výchozího systému souborů pro více clusterů se nepodporuje.
 
 Účty úložiště, které jsou definovány v procesu vytváření a jejich příslušné klíče, jsou uloženy v `%HADOOP_HOME%/conf/core-site.xml` na uzlech clusteru. V konfiguraci HDFS v uživatelském rozhraní Ambari je taky možné k nim přistupovat v části vlastní základní lokalita. Klíč účtu úložiště je ve výchozím nastavení zašifrovaný a k dešifrování klíčů před předáním do démonů Hadoop se používá vlastní šifrovací skript. Úlohy, jako jsou podregistry, MapReduce, Hadoop streaming a prase, obsahují popis účtů úložiště a metadat.
 
-Službu Azure Storage je možné geograficky replikovat. I když geografická replikace zajišťuje geografickou obnovu a redundanci dat, převzetí služeb při selhání geograficky replikovaným umístěním má vážně vliv na výkon a může se stát, že budou účtovány další náklady. Doporučení je zvolit v takovém případě geografickou replikaci a jenom v případě, že hodnota dat stojí za další náklady.
+Azure Storage lze geograficky replikovat. I když geografická replikace zajišťuje geografickou obnovu a redundanci dat, převzetí služeb při selhání geograficky replikovaným umístěním má vážně vliv na výkon a může se stát, že budou účtovány další náklady. Doporučení je zvolit v takovém případě geografickou replikaci a jenom v případě, že hodnota dat stojí za další náklady.
 
 Pro přístup k datům, která jsou uložená v Azure Storage, se dá použít jeden z následujících formátů:
 
@@ -39,8 +39,7 @@ Pro přístup k datům, která jsou uložená v Azure Storage, se dá použít j
 |`wasbs:///`|Přístup k výchozímu úložišti pomocí šifrované komunikace.|
 |`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Používá se při komunikaci s jiným než výchozím účtem úložiště. |
 
-
-[Azure Storage škálovatelnost a cíle výkonnosti](../../storage/common/storage-scalability-targets.md) vypíše aktuální limity účtů úložiště Azure. Pokud požadavky aplikace překročí cíle škálovatelnosti jednoho účtu úložiště, může být aplikace sestavená tak, aby používala více účtů úložiště, a pak rozdělit datové objekty mezi tyto účty úložiště.
+[Cíle škálovatelnosti pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md) obsahují aktuální limity pro účty Azure Storage. Pokud požadavky aplikace překročí cíle škálovatelnosti jednoho účtu úložiště, může být aplikace sestavená tak, aby používala více účtů úložiště, a pak rozdělit datové objekty mezi tyto účty úložiště.
 
 [Analýza úložiště Azure](../../storage/storage-analytics.md) poskytuje metriky pro všechny služby úložiště a Azure Portal je možné nakonfigurovat tak, aby byly metriky shromažďovány pro vizuální grafy. Výstrahy se dají vytvořit, pokud chcete upozorňovat na dosažení prahových hodnot pro metriky prostředků úložiště.
 
@@ -71,10 +70,11 @@ Ověřte, že přidaný certifikát je v úložišti důvěryhodnosti.
 keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 ```
 
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 
-- [Použití úložiště Azure s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
-- [Škálovatelnost a výkonnostní cíle Azure Storage](../../storage/common/storage-scalability-targets.md)
+- [Použití Azure Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
+- [Cíle škálovatelnosti pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md)
+- [Škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../../storage/blobs/scalability-targets.md)
 - [Kontrolní seznam pro výkon a škálovatelnost služby Microsoft Azure Storage](../../storage/common/storage-performance-checklist.md)
 - [Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [Monitorování účtu úložiště na webu Azure Portal](../../storage/common/storage-monitor-storage-account.md)
@@ -83,7 +83,7 @@ Další informace najdete v následujících článcích:
 
 Azure Data Lake Storage implementuje model řízení přístupu k stylu aplikace HDFS a POSIX. Poskytuje pro jemně odstupňované řízení přístupu první integraci třídy s AAD. Neexistují žádná omezení velikosti dat, která může uložit, nebo schopnost spouštět výkonné paralelní analýzy.
 
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 
 - [Vytváření clusterů HDInsight pomocí Data Lake Storage pomocí Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Použití Data Lake Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
@@ -112,7 +112,7 @@ Pro přístup k datům, která jsou uložená v ADLS Gen2, se dá použít jeden
 - `abfs:///`: přístup k výchozímu Data Lake Storage clusteru.
 - `abfs://file_system@account_name.dfs.core.windows.net`: používá se při komunikaci s jiným než výchozím Data Lake Storage.
 
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 
 - [Úvod do Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
 - [Ovladač systému souborů objektů BLOB v Azure (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
@@ -120,7 +120,7 @@ Další informace najdete v následujících článcích:
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Zabezpečení klíčů Azure Storage v rámci konfigurace místního clusteru Hadoop
 
-Klíče úložiště Azure, které se přidají do konfiguračních souborů Hadoop, navážou připojení mezi místními HDFS a úložištěm objektů BLOB v Azure. Tyto klíče lze chránit šifrováním pomocí architektury rozhraní Hadoop pro poskytovatele pověření. Po zašifrování je můžete bezpečně ukládat a přistupovat.
+Azure Storage klíčů, které jsou přidány do konfiguračních souborů Hadoop, navažte spojení mezi místními HDFS a úložištěm objektů BLOB v Azure. Tyto klíče lze chránit šifrováním pomocí architektury rozhraní Hadoop pro poskytovatele pověření. Po zašifrování je můžete bezpečně ukládat a přistupovat.
 
 **Postup při zřizování přihlašovacích údajů:**
 
@@ -181,35 +181,35 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
 
 9. Tento postup opakujte pro MapReduce2 a PŘÍZe.
 
-Existují tři důležité věci, které byste si měli pamatovat v souvislosti s používáním tokenů SAS v Azure:
+Existují tři důležité věci, jak si pamatovat v používání tokenů SAS v Azure:
 
 1. Pokud jsou tokeny SAS vytvořené pomocí oprávnění číst a seznam, uživatelé, kteří přistupují k kontejneru objektů BLOB s tímto tokenem SAS, nebudou moct zapisovat a odstraňovat data. Uživatelé, kteří přistupují k kontejneru objektů BLOB s tímto tokenem SAS a operaci zápisu nebo odstranění, obdrží zprávu, jako je `"This request is not authorized to perform this operation"`.
 
-2. Pokud jsou tokeny SAS generovány s oprávněním `READ + LIST + WRITE` (k omezení pouze `DELETE`), `hadoop fs -put` nejprve zapisovat do souboru `\_COPYING\_` a potom se pokusí přejmenovat soubor. Tato operace HDFS mapuje na `copy+delete` pro WASB. Protože nebylo zadáno oprávnění `DELETE`, "Put" selže. Operace `\_COPYING\_` je funkce Hadoop určená k poskytnutí nějakého řízení souběžnosti. V současné době neexistuje způsob, jak omezit pouze operaci "odstranit", aniž by to ovlivnilo i "WRITE" operace.
+2. Pokud jsou tokeny SAS generovány s oprávněním `READ + LIST + WRITE` (k omezení pouze `DELETE`), `hadoop fs -put` nejprve zapisovat do souboru `\_COPYING\_` a potom se pokusí přejmenovat soubor. Tato operace HDFS mapuje na `copy+delete` pro WASB. Vzhledem k tomu, že `DELETE` oprávnění nebylo zadáno, "Put" selže. Operace `\_COPYING\_` je funkce Hadoop určená k poskytnutí nějakého řízení souběžnosti. V současné době neexistuje způsob, jak omezit pouze operaci "odstranit", aniž by to ovlivnilo i "WRITE" operace.
 
-3. Poskytovatel pověření Hadoop a zprostředkovatel dešifrovacího klíče (ShellDecryptionKeyProvider) v současné době nefungují s tokeny SAS, takže se v současné době nedá chránit z viditelnosti.
+3. Poskytovatel pověření Hadoop a zprostředkovatel dešifrovacího klíče (ShellDecryptionKeyProvider) v současné době nepracují s tokeny SAS, takže v současné době není možné je chránit před viditelností.
 
 Další informace najdete v tématu [použití podpisů sdíleného přístupu Azure Storage k omezení přístupu k datům v HDInsight](../hdinsight-storage-sharedaccesssignature-permissions.md).
 
 ## <a name="use-data-encryption-and-replication"></a>Použití šifrování a replikace dat
 
-Všechna data zapsaná do Azure Storage se automaticky šifrují pomocí [šifrování služby Storage (SSE)](../../storage/common/storage-service-encryption.md). Data v účtu služby Azure Storage se vždycky replikují pro zajištění vysoké dostupnosti. Když vytváříte účet úložiště, můžete vybrat jednu z následujících možností replikace:
+Všechna data zapsaná do Azure Storage se automaticky šifrují pomocí [šifrování služby Storage (SSE)](../../storage/common/storage-service-encryption.md). Data v účtu Azure Storage jsou vždy replikována pro zajištění vysoké dostupnosti. Když vytváříte účet úložiště, můžete vybrat jednu z následujících možností replikace:
 
 - [Místně redundantní úložiště (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Zónově redundantní úložiště (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Geograficky redundantní úložiště (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
-Azure Data Lake Storage poskytuje místně redundantní úložiště (LRS), ale měli byste také zkopírovat kritická data do jiného účtu Data Lake Storage v jiné oblasti s frekvencí, která je zarovnaná na požadavky plánu zotavení po havárii. Existují různé metody kopírování dat, včetně [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), DistCp, [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)nebo [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Doporučuje se taky vyhovět zásadám přístupu pro účet Data Lake Storage, abyste zabránili nechtěnému odstranění.
+Azure Data Lake Storage poskytuje místně redundantní úložiště (LRS), ale měli byste také zkopírovat kritická data do jiného účtu Data Lake Storage v jiné oblasti s frekvencí, která je zarovnaná na požadavky plánu zotavení po havárii. Existují různé metody kopírování dat, včetně [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)nebo [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Doporučuje se také vyhovět zásadám přístupu pro účet Data Lake Storage, abyste zabránili nechtěnému odstranění.
 
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 
-- [Replikace úložiště Azure](../../storage/common/storage-redundancy.md)
+- [Účet replikace Azure Storage](../../storage/common/storage-redundancy.md)
 - [Pokyny k havárii pro Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Připojení dalších účtů úložiště Azure ke clusteru
+## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Připojení dalších účtů Azure Storage ke clusteru
 
-Během procesu vytváření služby HDInsight je jako výchozí systém souborů zvolen účet Azure Storage nebo účet Azure Data Lake úložiště. Kromě tohoto výchozího účtu úložiště můžete během procesu vytváření clusteru nebo po vytvoření clusteru přidat do stejného předplatného Azure nebo různých předplatných Azure další účty úložiště.
+Během procesu vytváření služby HDInsight je jako výchozí systém souborů zvolen účet Azure Storage nebo účet Azure Data Lake Storage. Kromě tohoto výchozího účtu úložiště můžete během procesu vytváření clusteru nebo po vytvoření clusteru přidat do stejného předplatného Azure nebo různých předplatných Azure další účty úložiště.
 
 Další účet úložiště je možné přidat jedním z následujících způsobů:
 - Ambari HDFS config Advanced Custom Core-site přidejte název účtu úložiště a klíč pro restartování služeb.
@@ -218,11 +218,8 @@ Další účet úložiště je možné přidat jedním z následujících způso
 > [!Note]
 > V platných případech použití se limity úložiště Azure dají zvýšit prostřednictvím žádosti o [podporu Azure](https://azure.microsoft.com/support/faq/).
 
-Další informace najdete v následujících článcích:
-- [Přidání dalších účtů úložiště do HDInsight](../hdinsight-hadoop-add-storage.md)
+Další informace najdete v tématu [Přidání dalších účtů úložiště do služby HDInsight](../hdinsight-hadoop-add-storage.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další článek v této sérii:
-
-- [Osvědčené postupy migrace dat pro migraci z místního prostředí do Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-data-migration.md)
+Přečtěte si další článek v této sérii: [osvědčené postupy migrace dat do místní migrace Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-data-migration.md).

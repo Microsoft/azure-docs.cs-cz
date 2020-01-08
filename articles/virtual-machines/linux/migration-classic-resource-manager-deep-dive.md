@@ -1,6 +1,6 @@
 ---
-title: Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager
-description: Tento článek poskytuje technickou podrobně migraci prostředků z modelu Classic na platformu, která je pro Azure Resource Manager podporovaná.
+title: Klasický Azure Resource Manager migrace – Technical hluboká podrobně
+description: Technická rozsáhlá podrobněá migrace prostředků z modelu nasazení Classic na platformu, která se podporuje Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: bf077758b24da4d4a80f1fed7eab2a0711d201ef
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e2774d8b45432ead621cef09af797effc86d73b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369112"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager
 

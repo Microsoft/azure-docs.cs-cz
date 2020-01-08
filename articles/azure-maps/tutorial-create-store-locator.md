@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107082"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408029"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
@@ -35,20 +35,18 @@ Přejděte dopředu na [příklad lokátoru Live Storu](https://azuremapscodesam
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív [vytvořit účet Azure Maps](./tutorial-search-location.md#createaccount) a podle kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) získat primární klíč předplatného pro váš účet.
+Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). Postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="design"></a>Návrh
 
 Před přechodem do kódu je dobré začít s návrhem. Vaše Lokátory úložiště můžou být jednoduché nebo složité podle toho, co chcete. V tomto kurzu vytvoříme jednoduchý Lokátor úložiště. Obsahujeme několik tipů, které vám pomůžou s rozšiřováním některých funkcí, pokud se rozhodnete. Vytvoříme Lokátor úložiště pro fiktivní společnost s názvem contoso káva. Následující obrázek ukazuje drátěný model obecného rozložení lokátoru úložiště, který v tomto kurzu sestavíme:
 
-<br/>
 <center>
 
 ![drátový model lokátoru úložiště pro umístění contoso kávy v kavárně](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Abychom maximalizovali užitečnost tohoto lokátoru úložiště, zahrnuli jsme rozložení, které se přizpůsobí, když je šířka obrazovky uživatele menší než 700 pixelů. Rozložení s odezvou usnadňuje používání lokátoru úložiště na malé obrazovce, například na mobilním zařízení. Zde je drátěný model rozložení malého obrazovky:  
 
-<br/>
 <center>
 
 ![drátový model lokátoru společnosti Contoso pro úložiště na mobilních zařízeních](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
@@ -73,7 +71,6 @@ Drátěné diagramy znázorňují poměrně jasné aplikace. Aplikace má vyhled
 
 Před vývojem aplikace lokátoru úložiště musíme vytvořit datovou sadu úložišť, které chceme na mapě zobrazit. V tomto kurzu používáme datovou sadu pro fiktivní kavárnu s názvem contoso káva. Datová sada pro tento jednoduchý Lokátor úložiště je spravovaná v excelovém sešitu. Datová sada obsahuje 10 213 contoso káva v kavárně se rozšíří v devíti zemích nebo oblastech: USA, Kanada, Spojené království, Francie, Německo, Itálie, Nizozemsko, Dánsko a Španělsko. Tady je snímek obrazovky, jak vypadají data:
 
-<br/>
 <center>
 
 ![snímku dat lokátoru úložiště v excelovém sešitu](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
@@ -95,14 +92,12 @@ Dalším přístupem je převést tuto datovou sadu na nestrukturovaný textový
 
 Chcete-li převést sešit na nestrukturovaný textový soubor, uložte sešit jako soubor s oddělovači na kartě. Každý sloupec je oddělen znakem tabulátoru, což umožňuje, aby se sloupce v našem kódu snadno analyzovaly. Můžete použít formát hodnot oddělených čárkami (CSV), ale tato možnost vyžaduje více logiky analýzy. Každé pole, které má čárku kolem, by bylo zabaleno do uvozovek. Pokud chcete tato data exportovat jako soubor s hodnotami oddělenými tabulátory v Excelu, vyberte **Uložit jako**. V rozevíracím seznamu **Uložit jako typ** vyberte **text (oddělený tabulátory) (*. txt)** . Pojmenujte soubor *ContosoCoffee. txt*. 
 
-<br/>
 <center>
 
 ![snímek obrazovky dialogového okna Uložit jako typ](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Pokud otevřete textový soubor v poznámkovém bloku, vypadá to podobně jako na následujícím obrázku:
 
-<br/>
 <center>
 
 ![snímek obrazovky souboru poznámkového bloku, který zobrazuje datovou sadu s oddělovači](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
@@ -112,7 +107,6 @@ Pokud otevřete textový soubor v poznámkovém bloku, vypadá to podobně jako 
 
 Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://visualstudio.microsoft.com) nebo Editor kódu dle vašeho výběru. Ve složce projektu vytvořte tři soubory: *index. html*, *indexovat. CSS*a *index. js*. Tyto soubory definují rozložení, styl a logiku pro aplikaci. Vytvořte složku s názvem *data* a přidejte do ní *ContosoCoffee. txt* . Vytvořte další složku s názvem *Image*. K ikonám, tlačítkům a značkám na mapě používáme deset imagí v této aplikaci. [Tyto image](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)si můžete stáhnout. Složka projektu by teď měla vypadat jako na následujícím obrázku:
 
-<br/>
 <center>
 
 ![snímek obrazovky složky projektu lokátoru jednoduchého úložiště](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
@@ -930,21 +924,18 @@ Teď máte plně funkční Lokátor úložiště. Ve webovém prohlížeči otev
 
 Když uživatel poprvé vybere tlačítko pro umístění, zobrazí se upozornění zabezpečení, které požádá o oprávnění k přístupu k umístění uživatele. Pokud uživatel souhlasí s sdílením svého umístění, mapa se přiblíží do umístění uživatele a zobrazí se okolní kavárny. 
 
-<br/>
 <center>
 
 ![snímek obrazovky žádosti prohlížeče o přístup k umístění uživatele](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 Když přiblížíte dostatek místa v oblasti, která má umístění v kavárně, clustery se rozdělují do jednotlivých umístění. Vyberte jednu z ikon na mapě nebo vyberte položku na bočním panelu, aby se zobrazilo překryvné okno, které zobrazuje informace o daném umístění.
 
-<br/>
 <center>
 
 ![snímku](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center> dokončeného lokátoru úložiště
 
 Pokud změníte velikost okna prohlížeče na méně než 700 pixelů na šířku nebo otevřete aplikaci na mobilním zařízení, změní se rozložení tak, aby bylo lépe vhodné pro menší obrazovky. 
 
-<br/>
 <center>
 
 ![snímku verze malého obrazovky](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center> lokátoru úložiště

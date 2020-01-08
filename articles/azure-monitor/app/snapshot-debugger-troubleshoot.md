@@ -8,12 +8,12 @@ author: brahmnes
 ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ded4a1a718d2cb061aba5f0d27565633e6cb603a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4544f42e7c024b21c4ae050d9b11e0f9e2786d57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432328"
 ---
 # <a id="troubleshooting"></a>Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
 Pokud jste u své aplikace povolili Application Insights Snapshot Debugger, ale nevidíte snímky pro výjimky, můžete tyto pokyny použít k řešení potíží. Může existovat mnoho různých důvodů, proč se snímky negenerují. Můžete spustit kontrolu stavu snímku a identifikovat některé z možných běžných příčin.
@@ -219,4 +219,4 @@ Pokud stále nevidíte výjimka s tímto ID snímku, nebyl telemetrie výjimek h
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>Upravit pravidla proxy nebo brány firewall sítě
 
-Pokud vaše aplikace připojuje k Internetu přes proxy server nebo brána firewall, budete muset upravit pravidla, aby vaše aplikace mohla komunikovat se službou Snapshot Debugger. Tady je [seznam IP adres a portů používaných Snapshot Debugger](../../azure-monitor/app/ip-addresses.md#snapshot-debugger).
+Pokud vaše aplikace připojuje k Internetu přes proxy server nebo brána firewall, budete muset upravit pravidla, aby vaše aplikace mohla komunikovat se službou Snapshot Debugger. IP adresy, které používá Snapshot Debugger, jsou součástí značky služby Azure Monitor.

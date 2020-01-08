@@ -1,28 +1,18 @@
 ---
-title: Vytvoření aplikace typu kontejner pro Windows na platformě Service Fabric v Azure | Microsoft Docs
+title: Vytvoření aplikace typu kontejner pro Windows v Service Fabric v Azure
 description: V tomto rychlém startu vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 096a398b8fc4f7f42dcc42feb7fe00b182d7649b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466265"
 ---
-# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Windows pro Service Fabric
+# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Windows do Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů.
 
@@ -98,9 +88,9 @@ Následující vzorový skript vytvoří cluster Service Fabric s pěti uzly zab
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/overview).
 
-Před spuštěním následujícího skriptu můžete v PowerShellu spustit `Connect-AzAccount` , aby se vytvořilo připojení k Azure.
+Před spuštěním následujícího skriptu v PowerShellu spusťte `Connect-AzAccount` a vytvořte připojení k Azure.
 
-Zkopírujte následující skript do schránky a otevřete **Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell**.  Vložte obsah do prázdného okna Untitled1. ps1. Pak zadejte hodnoty pro proměnné ve skriptu: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`a tak dále.  Adresář, který zadáte `certfolder` pro, musí existovat před spuštěním skriptu.
+Zkopírujte následující skript do schránky a otevřete **Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell**.  Vložte obsah do prázdného okna Untitled1. ps1. Pak zadejte hodnoty pro proměnné ve skriptu: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`a tak dále.  Adresář, který zadáte pro `certfolder`, musí existovat před spuštěním skriptu.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
@@ -115,9 +105,9 @@ ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/cluster
 
 ### <a name="install-the-certificate-for-the-cluster"></a>Instalace certifikátu pro cluster
 
-Nyní nainstalujeme PFX do úložiště certifikátů *do currentuser\my* . Soubor PFX bude v adresáři, který jste zadali pomocí `certfolder` proměnné prostředí ve výše uvedeném skriptu PowerShellu.
+Nyní nainstalujeme PFX do úložiště certifikátů *do currentuser\my* . Soubor PFX bude v adresáři, který jste zadali, pomocí proměnné prostředí `certfolder` ve skriptu PowerShellu výše.
 
-Přejděte do tohoto adresáře a spusťte následující příkaz prostředí PowerShell, kde nahraďte název souboru PFX, který je ve vašem `certfolder` adresáři, a heslo, které jste zadali `certpwd` v proměnné. V tomto příkladu je aktuální adresář nastavený na adresář určený `certfolder` proměnnou ve skriptu PowerShellu. Z tohoto `Import-PfxCertificate` příkazu se spustí příkaz:
+Přejděte do tohoto adresáře a spusťte následující příkaz PowerShellu a nahraďte název souboru PFX, který je ve vašem adresáři `certfolder`, a heslo, které jste zadali v proměnné `certpwd`. V tomto příkladu je aktuální adresář nastavený na adresář určený proměnnou `certfolder` ve skriptu PowerShellu. Z tohoto okna se spustí příkaz `Import-PfxCertificate`:
 
 ```powershell
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
@@ -142,17 +132,17 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
 
 V Průzkumníku řešení klikněte pravým tlačítkem na **MyFirstContainer** a zvolte **Publikovat**. Zobrazí se dialogové okno Publikovat.
 
-Při spuštění `Import-PfxCertificate` příkazu v okně PowerShellu zkopírujte obsah následující **CN =** a do něj přidejte port. `19000` Například, `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Zkopírujte ho do pole **koncový bod připojení** . Zapamatujte si tuto hodnotu, protože ji budete potřebovat v budoucím kroku.
+Po spuštění příkazu `Import-PfxCertificate` výše zkopírujte obsah následující **CN =** v okně prostředí PowerShell a přidejte do něj `19000` portů. Například, `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Zkopírujte ho do pole **koncový bod připojení** . Zapamatujte si tuto hodnotu, protože ji budete potřebovat v budoucím kroku.
 
 Klikněte na **Rozšířené parametry připojení** a ověřte informace o parametrech připojení.  Hodnoty *findValue* a *ServerCertThumbprint* musí odpovídat kryptografickému otisku certifikátu nainstalovaného při spuštění `Import-PfxCertificate` v předchozím kroku.
 
 ![Dialogové okno Publikovat](./media/service-fabric-quickstart-containers/publish-app.png)
 
-Klikněte na tlačítko **publikovat**.
+Klikněte na **Publikovat**.
 
 Každá aplikace v clusteru musí mít jedinečný název. Pokud dojde ke konfliktu názvů, přejmenujte projekt sady Visual Studio a znovu ho nasaďte.
 
-Otevřete prohlížeč a přejděte na adresu, kterou jste vložili do pole **koncový bod připojení** v předchozím kroku. Volitelně můžete před adresu URL přidat identifikátor schématu `http://` a připojit za ní port `:80`. Například http:\//mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
+Otevřete prohlížeč a přejděte na adresu, kterou jste vložili do pole **koncový bod připojení** v předchozím kroku. Volitelně můžete před adresu URL přidat identifikátor schématu `http://` a připojit za ní port `:80`. Například http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 
  Měla by se zobrazit výchozí webová stránka služby IIS: ![Výchozí webová stránka služby IIS][iis-default]
 
@@ -160,7 +150,7 @@ Otevřete prohlížeč a přejděte na adresu, kterou jste vložili do pole **ko
 
 Po spuštění clusteru se vám budou účtovat poplatky. Zvažte [odstranění clusteru](service-fabric-cluster-delete.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se naučili:
 

@@ -1,6 +1,6 @@
 ---
-title: Azure portal klávesové zkratky | Dokumentace Microsoftu
-description: Další informace o klávesových zkratek, které fungují na webu Azure Portal.
+title: Klávesové zkratky Azure Portal | Microsoft Docs
+description: Azure Portal podporuje globální klávesové zkratky, které vám pomůžou při provádění akcí, procházení a přechodu na umístění v Azure Portal.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,48 +12,48 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: kfollis
+ms.date: 12/20/2019
+ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551426"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641329"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky v Azure Portal
 
-Tento článek uvádí klávesové zkratky, které fungují všude, kde na webu Azure Portal. Jednotlivé služby může mít své vlastní klávesové zkratky.
+Tento článek obsahuje seznam klávesových zkratek, které fungují všude v Azure Portal. Jednotlivé služby mohou mít své vlastní klávesové zkratky.
 
 ## <a name="actions"></a>Akce
 
-|Pro tuto akci |Stisknutím klávesy |
+|Akce |Stiskněte na klávesnici |
 | --- | --- |
 |Vytvoření prostředku|G + N|
 |Otevřít **všechny služby**|G+B|
 |Hledat prostředky, služby a dokumenty|G+/|
-|Hledání položek nabídky prostředků|CTRL +/ |
-|Posunout nahoru levém bočním panelu vybrané položky |ALT + Shift + šipka nahoru|
-|Přesun vybrané levém bočním panelu položky dolů |ALT + Shift + šipka dolů|
+|Hledat položky nabídky prostředků|CTRL +/ |
+|Přesunout vybranou položku levého bočního panelu |ALT + SHIFT + šipka nahoru|
+|Přesunout vybranou položku levého bočního panelu dolů |ALT + SHIFT + šipka dolů|
 
 ## <a name="navigation"></a>Navigace
 
-|Provedete to tato navigace |Stisknutím klávesy |
+|K provedení této navigace |Stiskněte na klávesnici |
 | --- | --- |
-|Přesune fokus na panel příkazů |G+, |
-|Přepnout fokus mezi záhlavím a levém bočním panelu | G+. |
+|Přesunout fokus na panel příkazů |G+, |
+|Přepnout fokus mezi záhlavím a levým bočním panelem | G+. |
 
-## <a name="go-to"></a>Přejít na
+## <a name="go-to"></a>Přejděte na
 
-|Chcete-li přejít do tohoto umístění. |Stisknutím klávesy |
+|Přejít na toto umístění |Stiskněte na klávesnici |
 | --- | --- |
-|Přejděte na **řídicího panelu** |G + D |
-|Přejděte na **všechny prostředky**|G+A |
-|Přejděte na **skupiny prostředků**|G+R |
-|Otevřete položku levém bočním panelu na této pozici |G + číslo|
+|Přejít na **řídicí panel** |G + D |
+|Přejít na **všechny prostředky**|G+A |
+|Přejít na **skupiny prostředků**|G+R |
+|Otevřít levou položku bočního panelu na této pozici |Číslo G +|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zapnutí vysokého kontrastu nebo změna motivu](azure-portal-change-theme-high-contrast.md)
 - [Podporované prohlížeče a zařízení](../azure-preview-portal-supported-browsers-devices.md)

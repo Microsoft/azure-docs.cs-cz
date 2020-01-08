@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak zastavit monitorování virtuálních 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: 70e71688fde5aff4002c7d49b1408bcefeab1eed
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555161"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399310"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>Zakázání monitorování virtuálních počítačů v Azure Monitor pro virtuální počítače (Preview)
 

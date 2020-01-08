@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d70e87a9a0c7fb9b28f2a025db15ce4ba666255
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 69086ee8d8d64ada7379bdb6af24c8d604e00aed
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379601"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665112"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -34,13 +34,13 @@ K naplánování vaší implementace služby Azure AD JOIN byste se měli sezná
 
 |   |   |
 |---|---|
-|![Kontrola][1]|Kontrola scénářů|
-|![Kontrola][1]|Kontrola infrastruktury identity|
-|![Kontrola][1]|Posouzení správy zařízení|
-|![Kontrola][1]|Pochopení důležitých informací o aplikacích a prostředcích|
-|![Kontrola][1]|Informace o možnostech zřizování|
-|![Kontrola][1]|Konfigurace roamingu podnikového stavu|
-|![Kontrola][1]|Konfigurace podmíněného přístupu|
+|![Zaškrtnout][1]|Kontrola scénářů|
+|![Zaškrtnout][1]|Kontrola infrastruktury identity|
+|![Zaškrtnout][1]|Posouzení správy zařízení|
+|![Zaškrtnout][1]|Pochopení důležitých informací o aplikacích a prostředcích|
+|![Zaškrtnout][1]|Informace o možnostech zřizování|
+|![Zaškrtnout][1]|Konfigurace roamingu podnikového stavu|
+|![Zaškrtnout][1]|Konfigurace podmíněného přístupu|
 
 ## <a name="review-your-scenarios"></a>Kontrola scénářů 
 
@@ -75,7 +75,7 @@ Pokud používáte AD FS, je nutné povolit následující koncové body WS-Trus
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-Pokud Váš zprostředkovatel identity tyto protokoly nepodporuje, připojení k Azure AD nefunguje nativně. Počínaje systémem Windows 10 1809 se uživatelé můžou přihlásit k zařízení připojenému k Azure AD pomocí zprostředkovatele identity založeného na SAML prostřednictvím [webového přihlášení ve Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). V současné době je webové přihlašování funkcí verze Preview a nedoporučuje se pro produkční nasazení.
+Pokud Váš zprostředkovatel identity tyto protokoly nepodporuje, připojení k Azure AD nefunguje nativně. Počínaje systémem Windows 10 1809 se uživatelé můžou přihlásit k zařízení připojenému k Azure AD pomocí zprostředkovatele identity založeného na SAML prostřednictvím [webového přihlášení ve Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). V současné době je webové přihlašování funkcí verze Preview a není určeno pro produkční nasazení.
 
 >[!NOTE]
 > Připojení k Azure AD v současné době nefunguje s [AD FS 2019 nakonfigurovanými externími zprostředkovateli ověřování jako primární metodou ověřování](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Služba Azure AD JOIN ve výchozím nastavení používá ověřování hesla jako primární metodu, což má za následek selhání ověřování v tomto scénáři.
@@ -195,7 +195,7 @@ Službu Azure AD JOIN můžete zřídit pomocí následujících přístupů:
  
 Toto je srovnání těchto tří přístupů. 
  
-|   | Instalace samoobslužných služeb | Windows autopilot | Hromadná registrace |
+|   | Instalace samoobslužných služeb | Windows Autopilot | Hromadný zápis |
 | --- | --- | --- | --- |
 | Vyžadovat nastavení interakce s uživatelem | Ano | Ano | Ne |
 | Vyžadovat úsilí IT | Ne | Ano | Ano |
@@ -268,7 +268,7 @@ Existují tři adresy URL, které souvisejí s konfigurací MDM:
 
 - Adresa URL podmínek použití MDM
 - Adresa URL zjišťování MDM 
-- Adresa URL dodržování předpisů MDM
+- Adresa URL s předpisy služby MDM
 
 ![Přidání aplikace](./media/azureadjoin-plan/06.png)
 

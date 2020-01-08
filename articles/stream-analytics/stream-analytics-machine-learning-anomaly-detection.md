@@ -1,50 +1,49 @@
 ---
-title: Detekce anomálií ve službě Azure Stream Analytics
+title: Detekce anomálií v Azure Stream Analytics
 description: Tento článek popisuje, jak používat Azure Stream Analytics a Azure Machine Learning společně k detekci anomálií.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e2fd226f1c605821f0fd595832b2cbe26d994fb4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459611"
 ---
-# <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií ve službě Azure Stream Analytics
+# <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
-K dispozici v cloudu a Azure IoT Edge, Azure Stream Analytics nabízí integrovanou strojového učení na základě anomálií zjišťování, které lze použít k monitorování dvě nejčastěji se vyskytující anomálií: dočasné a trvalé. S **AnomalyDetection_SpikeAndDip** a **AnomalyDetection_ChangePoint** funkce, můžete provádět detekci anomálií přímo ve vaší úlohy Stream Analytics.
+K dispozici v cloudu i v Azure IoT Edge Azure Stream Analytics nabízí integrované možnosti detekce anomálií založené na strojovém učení, které se dají použít k monitorování dvou nejčastěji se vyskytujících se anomálií: dočasné a trvalé. Pomocí funkcí **AnomalyDetection_SpikeAndDip** a **AnomalyDetection_ChangePoint** můžete detekci anomálií provádět přímo v rámci úlohy Stream Analytics.
 
-Modely strojového učení předpokládají rovnoměrně vzorky časové řady. Pokud časové řady není jednotné, vložíte na krok agregace se aktivační událost pro přeskakující okno před voláním detekce anomálií.
+Modely strojového učení předpokládají jednotnou ukázkovou časovou řadu. Pokud časová řada není jednotná, můžete před vyvoláním detekce anomálií vložit krok agregace s bubnovým oknem.
 
-Operace machine learning nepodporují sezónnosti trendů nebo více s různými variantami korelace v tuto chvíli.
+Operace Machine Learningu v tuto chvíli nepodporují sezónnost trendy ani kovariate korelace.
 
 ## <a name="model-behavior"></a>Chování modelu
 
-Obecně platí jeho přesnost zlepšuje se další data v posuvné okno. Data v zadané posuvné okno je považován za součást své normální rozsah hodnot pro toto časové období. Historie událostí modelu uvažuje pouze přes posuvného okna zkontrolujte, jestli je aktuální událost neobvyklé. Při přesunu posuvné okno, staré hodnoty se vyřadí z trénování modelu.
+Obecně se přesnost modelu vylepšuje s dalšími daty v posuvných oknech. Data v zadaném posuvných oknech jsou považována za součást jejich normálního rozsahu hodnot pro daný časový rámec. Model považuje jenom historii událostí přes posuvné okno, aby zkontroloval, jestli je aktuální událost neobvyklé. Při přesunu klouzavého okna se staré hodnoty vyloučí z školení modelu.
 
-Funkce pracují tím, že některé normální založené na co se viděli zatím. Odlehlé hodnoty jsou označeny porovnání oproti zavedené normální, v rámci úroveň spolehlivosti. Velikost okna by měla vycházet z minimální události potřebné pro trénování modelu pro běžné chování tak, aby když se objeví anomálie, mohl by být schopen rozpoznat.
+Funkce fungují tak, že na základě toho, co ještě viděli, vytvoří určitý normální stav. Odlehlé hodnoty se identifikují porovnáním se standardem, který je v rámci úrovně spolehlivosti stanovený jako normální. Velikost okna by měla být založená na minimálních událostech, které jsou potřebné ke výukě modelu pro normální chování, aby při výskytu anomálie bylo možné ho rozpoznat.
 
-Doba odezvy modelu se zvyšuje s velikost historie, protože se musí porovnávat s vyšší počet minulých událostech. Zahrnout pouze nezbytné počet událostí pro zajištění lepšího výkonu se doporučuje.
+Doba odezvy modelu se zvětšuje s velikostí historie, protože je potřeba ji porovnat s vyšším počtem minulých událostí. Doporučuje se zahrnout jenom potřebný počet událostí pro lepší výkon.
 
-Mezery v časové řady může být výsledkem modelu není příjem událostí v určitých bodech v čase. Tato situace zařizuje služba Stream Analytics s využitím imputace logiku. Velikost historie, stejně jako doba trvání pro stejný posuvné okno se používá k výpočtu průměrnou rychlost, jakou se očekává doručení událostí.
+Mezery v časové řadě můžou být výsledkem modelu, který nepřijímá události v určitých okamžicích v čase. Tato situace je zpracována Stream Analytics pomocí logiky imputace. Velikost historie a také časový interval pro stejné posuvné okno se používá k výpočtu průměrné frekvence, s jakou se očekává, že se události dorazí.
 
-Generátor anomálií, která je k dispozici [tady](https://aka.ms/asaanomalygenerator) umožňuje kanálu služby Iot Hub s daty s jinou anomálií vzory. Úlohu Azure Stream Analytics můžete nastavit pomocí těchto funkcí detekce anomálií ke čtení z centra Iot Hub a detekci anomálií.
+[K dispozici je](https://aka.ms/asaanomalygenerator) generátor anomálií, který je možné použít k zakládání služby IoT Hub s daty s různými vzory anomálií. Úlohu ASA je možné nastavit s těmito funkcemi detekce anomálií pro čtení z tohoto centra IoT a zjišťování anomálií.
 
-## <a name="spike-and-dip"></a>(Špičky) a vyhrazené IP adresy
+## <a name="spike-and-dip"></a>Špička a DIP
 
-Dočasné anomálie v datovém proudu událostí řady času jsou označované jako špičky a poklesy. Provozní špičky a vyhrazené IP adresy je možné monitorovat pomocí operátoru využívajících Machine Learning [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+Dočasné anomálie v datovém proudu událostí časové řady se označují jako špičky a DIP. Špičky a DIP lze monitorovat pomocí operátoru založeného na Machine Learning [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ).
 
-![Příklad anomálií ve špičce a vyhrazené IP adresy](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
+![Příklad anomálií špičky a DIP](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-Ve stejném posuvné okno Pokud je menší než první, druhý zásobníku počítaný skóre pro menší zásobníku není pravděpodobně důležité dostatek ve srovnání s skóre pro první zásobníku v rámci hladina zadaný. Můžete vyzkoušet, snížení spolehlivosti modelu k detekci anomálií takové. Ale pokud začnete získat příliš mnoho výstrah, můžete použít vyšší interval spolehlivosti.
+Pokud je druhé špičky menší než první špička v jednom posuvných oknech, vypočítané skóre pro menší špičku se pravděpodobně ve srovnání se zadaným stupněm spolehlivosti nedostatečně významně neshoduje s skóre pro první špičku. Můžete zkusit snížit úroveň spolehlivosti modelu a detekovat takové anomálie. Pokud ale začnete dostávat příliš mnoho výstrah, můžete použít vyšší interval spolehlivosti.
 
-Následující příklad dotazu předpokládá jednotné vstupní sazba jednu událost za každou sekundu do posuvného okna 2 s historii událostí na 120. Poslední příkaz SELECT extrahuje a vypíše skóre a anomálií stavu hladina spolehlivosti 95 %.
+Následující příklad dotazu předpokládá jednotnou vstupní sazbu jedné události za sekundu v posuvných oknech po dvou minutách s historií 120 událostí. Finální příkaz SELECT extrahuje a vypíše skóre a stav anomálie s úrovní spolehlivosti 95%.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -69,19 +68,19 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Změnit bod
 
-Trvalé anomálie v datovém proudu událostí řady času jsou změny v distribuci hodnot v datovém proudu událostí, jako jsou změny na úrovni a trendy. Ve službě Stream Analytics tyto anomálie se zjišťují pomocí služby Machine Learning na základě [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) operátor.
+Trvalé anomálie v datovém proudu událostí v časové řadě jsou změny v distribuci hodnot v datovém proudu událostí, jako jsou například změny úrovně a trendy. V Stream Analytics se tyto anomálie zjišťují pomocí operátoru [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) založeného na Machine Learning.
 
-Trvalé změny mnohem delší než špičky a poklesy trvat a může znamenat katastrofické události. Trvalé změny se obvykle nezobrazí pouhým okem, ale s můžete zjistit **AnomalyDetection_ChangePoint** operátor.
+Trvalé změny jsou poslední mnohem delší než špičky a DIP a můžou označovat závažné události. Trvalé změny nejsou obvykle viditelné pro holé oči, ale lze je zjistit pomocí operátoru **AnomalyDetection_ChangePoint** .
 
-Na následujícím obrázku je příklad Změna úrovně:
+Následující obrázek je příkladem změny úrovně:
 
-![Příklad Změna úrovně anomálií](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
+![Příklad anomálie změny úrovně](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
 
-Na následujícím obrázku je příklad změny trendů:
+Následující obrázek je příkladem změny trendu:
 
-![Příklad trendu změn anomálií](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
+![Příklad anomálie změny trendu](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-Následující příklad dotazu předpokládá jednotné vstupní sazba jednu událost za každou sekundu v posuvné okno po 20 minutách se velikost historie událostí 1200. Poslední příkaz SELECT extrahuje a vypíše skóre a anomálií stavu úroveň spolehlivosti 80 %.
+Následující příklad dotazu předpokládá jednotnou vstupní sazbu jedné události za sekundu v posuvných oknech po 20 minutách s velikostí historie 1200 událostí. Finální příkaz SELECT extrahuje a vypíše skóre a stav anomálie s úrovní spolehlivosti 80%.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -105,57 +104,57 @@ FROM AnomalyDetectionStep
 
 ```
 
-## <a name="performance-characteristics"></a>Výkonové charakteristiky
+## <a name="performance-characteristics"></a>Charakteristiky výkonu
 
-Výkon těchto modelů závisí na velikost historie, doba trvání okna, události zatížení, a určuje, zda se používá funkce úrovně dělení. Tato část popisuje tyto konfigurace a obsahuje ukázky, jak udržovat ingestování míry 1 kB, 5 kB a 10 tisíc událostí za sekundu.
+Výkon těchto modelů závisí na velikosti historie, trvání okna, zatížení události a na tom, zda je použito dělení na úrovni funkcí. Tato část pojednává o těchto konfiguracích a obsahuje ukázky, jak tolerovat rychlosti přijímání 1 tisíc, 5K a 10 000 událostí za sekundu.
 
-* **Velikost historie** – tyto modely provádět lineárně s **velikost historie**. Čím déle v velikost historie, čím déle trvat modely ke stanovení skóre pro nová událost. Je to proto, že modely porovnání novou událost s každým z minulých událostech v historii příkazů.
-* **Doba trvání okna** – **doba trvání okna** by měly odrážet, jak dlouho trvá příjem tolik událostí uvedená velikost historie. Bez daný počet událostí v okně by dává Azure Stream Analytics chybějící hodnoty. Využití procesoru, proto je funkce velikost historie.
-* **Událost zatížení** – větší **zatížení událostmi**, tím více práce, která se provádí pomocí modely, které má vliv na využití procesoru. Úlohy lze škálovat tak, že jednoduše paralelně zpracovatelné, za předpokladu, že dává smysl pro obchodní logiku používat více vstupních oddíly.
-* **Funkce úrovně dělení** - **funkce úrovně dělení** pomocí provádí ```PARTITION BY``` ve volání funkce detekce anomálií. Tento typ dělení přidá režijní náklady, protože stav musí být zachovány pro více modelů ve stejnou dobu. Funkce úrovně dělení se používá v scénáře, jako jsou dělení na úrovni zařízení.
+* **Velikost historie** – tyto modely fungují lineárně s **velikostí historie**. Čím dál je velikost historie, tím déle bude trvat, než se v modelu vyhodnotí nová událost. Je to proto, že modely porovnávají novou událost s každou poslední událostí ve vyrovnávací paměti historie.
+* **Doba trvání okna** – **Doba trvání okna** by měla odrážet, jak dlouho trvá přijímání tolika událostí, kolik je určeno velikostí historie. Bez tohoto počtu událostí v okně Azure Stream Analytics by nedošlo ke imputaci chybějících hodnot. Proto je spotřeba procesoru funkcí velikosti historie.
+* **Zatížení událostí** – větší **zatížení události**, více práce prováděné modely, které mají dopad na spotřebu procesoru. Úlohu je možné škálovat tak, že ji zpracovatelné paralelně, což předpokládá, že obchodní logika bude používat víc vstupních oddílů.
+* Dělení na **úrovni funkcí** - **dělení na úrovni funkcí** se provádí pomocí ```PARTITION BY``` v rámci volání funkce detekce anomálií. Tento typ dělení přináší režii, protože stav musí být udržován pro více modelů současně. Dělení na úrovni funkcí se používá ve scénářích, jako je vytváření oddílů na úrovni zařízení.
 
 ### <a name="relationship"></a>Relace
-Velikost historie, doba trvání okna a celkový počet událostí load jsou související s následujícím způsobem:
+Velikost historie, doba trvání okna a celková zátěž události jsou v souvislosti s následujícím způsobem:
 
-windowDuration (v ms) = 1 000 * historySize / (celkem vstup událostí za sekundu / počet oddílů vstup)
+windowDuration (v MS) = 1000 * historySize/(celkový počet vstupních událostí za sekundu/počet vstupních oddílů)
 
-Když funkci dělení podle ID zařízení, přidejte "ROZDĚLIT podle ID zařízení" volání funkce, detekce anomálií.
+Při dělení funkce podle deviceId přidejte "PARTITION BY deviceId" do volání funkce detekce anomálií.
 
-### <a name="observations"></a>Poznámky
-Následující tabulka obsahuje pozorování propustnosti pro jednotlivé uzly (6 SU) pro případ bez oddílů:
+### <a name="observations"></a>Výsledky
+Následující tabulka obsahuje pozorování propustnosti pro jeden uzel (6 SU) pro případ bez oddílů:
 
-| Velikost historie (události) | Doba trvání okna (ms) | Celkový počet vstupních událostí za sekundu |
+| Velikost historie (události) | Doba trvání okna (MS) | Celkový počet událostí vstupu za sekundu |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2,200 |
-| 600 | 728 | 1,650 |
-| 6,000 | 10,910 | 1,100 |
+| 60 | 55 | 2 200 |
+| 600 | 728 | 1 650 |
+| 6,000 | 10 910 | 1 100 |
 
-Následující tabulka obsahuje pozorování propustnosti pro jednotlivé uzly (6 SU) pro dělené případ:
+Následující tabulka obsahuje pozorování propustnosti pro jeden uzel (6 SU) pro rozdělený případ:
 
-| Velikost historie (události) | Doba trvání okna (ms) | Celkový počet vstupních událostí za sekundu | Počet zařízení |
+| Velikost historie (události) | Doba trvání okna (MS) | Celkový počet událostí vstupu za sekundu | Počet zařízení |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1,091 | 1,100 | 10 |
-| 600 | 10,910 | 1,100 | 10 |
-| 6,000 | 218,182 | <550 | 10 |
-| 60 | 21,819 | 550 | 100 |
-| 600 | 218,182 | 550 | 100 |
-| 6,000 | 2,181,819 | <550 | 100 |
+| 60 | 1 091 | 1 100 | 10 |
+| 600 | 10 910 | 1 100 | 10 |
+| 6,000 | 218 182 | < 550 | 10 |
+| 60 | 21 819 | 550 | 100 |
+| 600 | 218 182 | 550 | 100 |
+| 6,000 | 2 181 819 | < 550 | 100 |
 
-Ukázkový kód pro spuštění konfigurace bez oddílů výše se nachází v [streamování na škálování úložiště](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) ukázek Azure. Kód vytvoří úlohy stream analytics se žádná funkce úrovně dělení, který používá jako vstup a výstup z centra událostí. Vstupní zatížení je generováno pomocí testovacích klientů. Každá událost vstupu je 1KB dokumentu json. Události simulace zařízení IoT odesílání dat JSON (pro zařízení s až 1 kB). Nad 2 vstupní oddíly jsou nastaveny velikost historie, doba trvání okna a celkový počet událostí zatížení.
+Vzorový kód pro spuštění výše uvedených konfigurací, které nejsou rozdělené do oddílů, se nachází ve [streamování v úložišti](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) ukázek Azure ve velkém měřítku. Kód vytvoří úlohu Stream Analytics bez vytváření oddílů na úrovni funkcí, která používá centrum událostí jako vstup a výstup. Vstupní zatížení je generováno pomocí testovacích klientů. Každá vstupní událost je dokument 1 KB JSON. Události simulují zařízení IoT odesílající data JSON (až do zařízení 1 tisíc). Velikost historie, doba trvání okna a celková zátěž události se mění ve dvou vstupních oddílech.
 
 > [!Note]
-> Pro přesnější odhad upravit ukázky, aby vyhovovala vašemu scénáři.
+> Pokud chcete přesnější odhad, přizpůsobte si ukázky podle svého scénáře.
 
-### <a name="identifying-bottlenecks"></a>Nalezení problémových míst
-Použití pokokna metriky v úloze Azure Stream Analytics identifikovat problémová místa ve vašem kanálu. Kontrola **vstupní a výstupní události** propustnost a ["Vodoznak zpoždění"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **události v Backlogu** zobrazíte, pokud je úloha uchovávání vstupní sazba. Metriky Event Hub, vyhledejte **omezuje požadavky** a odpovídajícím způsobem upravit jednotky prahovou hodnotu. Metriky služby Cosmos DB najdete v tématu **maximální počet spotřebovaných RU/s na rozsah klíče oddílu** pod propustnost pro zajištění rozsahy klíčů oddílů se rovnoměrně spotřebuje. Pro službu Azure SQL DB, sledovat **PROTOKOLOVACÍ** a **procesoru**.
+### <a name="identifying-bottlenecks"></a>Identifikace kritických bodů
+Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU**.
 
 ## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Detekce anomálií pomocí strojového učení v Azure Stream Analytics
 
-Následující video ukazuje, jak detekovat anomálie v reálném čase s využitím funkce machine learningu v Azure Stream Analytics. 
+Následující video ukazuje, jak detekovat anomálii v reálném čase pomocí funkcí strojového učení v Azure Stream Analytics. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

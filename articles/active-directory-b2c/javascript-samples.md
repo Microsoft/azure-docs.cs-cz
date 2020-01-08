@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064185"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659521"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky jazyka JavaScript pro použití v Azure Active Directory B2C
 
@@ -28,7 +28,11 @@ Do aplikací Azure Active Directory B2C (Azure AD B2C) můžete přidat vlastní
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vyberte rozložení stránky pro prvky uživatelského rozhraní vaší aplikace. Pokud máte v úmyslu používat jazyk JavaScript, je nutné ve vlastních zásadách definovat verzi rozložení stránky pro všechny definice obsahu.
+### <a name="select-a-page-layout"></a>Vybrat rozložení stránky
+
+* [Vyberte rozložení stránky](page-layout.md) pro prvky uživatelského rozhraní vaší aplikace.
+
+    Pokud máte v úmyslu použít JavaScript, je nutné [definovat verzi rozložení stránky](page-layout.md#replace-datauri-values) pro *všechny* definice obsahu ve vlastních zásadách.
 
 ## <a name="add-the-scriptexecution-element"></a>Přidejte prvek ScriptExecution
 
@@ -68,7 +72,7 @@ Při přizpůsobování rozhraní vaší aplikace pomocí jazyka JavaScript, pos
 - Pokud chcete přizpůsobit chybovou zprávu Azure AD B2C, použijte lokalizaci zásad.
 - Pokud nic jde dosáhnout s použitím zásad, obecně je doporučený postup.
 
-## <a name="javascript-samples"></a>Ukázky jazyka JavaScript
+## <a name="javascript-samples"></a>Ukázky JavaScriptu
 
 ### <a name="show-or-hide-a-password"></a>Umožňuje zobrazit nebo skrýt heslo
 
@@ -145,6 +149,6 @@ function addTermsOfUseLink() {
 
 V kódu, nahraďte `termsOfUseUrl` s odkazem na vaše smlouva o podmínkách použití. Pro váš adresář vytvořte nový atribut uživatele s názvem **termsOfUse** a pak jako atribut uživatele přidejte **termsOfUse** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o tom, jak můžete přizpůsobit uživatelského rozhraní aplikací v [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

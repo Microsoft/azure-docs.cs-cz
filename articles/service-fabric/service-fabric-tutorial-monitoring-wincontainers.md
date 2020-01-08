@@ -1,26 +1,16 @@
 ---
-title: Monitorování a diagnostika kontejnerů Windows na platformě Service Fabric v Azure | Microsoft Docs
+title: Monitorování a diagnostika kontejnerů Windows
 description: V tomto kurzu nakonfigurujete protokoly Azure Monitor pro monitorování a diagnostiku kontejnerů Windows v Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eeb279892f987ed1f26ced97ab267e8140ccb20e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933918"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614056"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Kurz: monitorování kontejnerů Windows na Service Fabric pomocí protokolů Azure Monitor
 
@@ -35,7 +25,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 

@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/28/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 518c57bc3327511b70deef143826f2a1b9df8639
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 74ef8270b5efcd3b7cdf756c103dcc2e1c935508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174677"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460493"
 ---
-Předtím, než přiřadíte roli RBAC k objektu zabezpečení, určete obor přístupu, který by měl mít objekt zabezpečení. Osvědčené postupy určují, že je vždy vhodné udělit pouze nejužší možná obor.
+Než přiřadíte roli RBAC objektu zabezpečení, určete rozsah přístupu, který má objekt zabezpečení mít. Osvědčené postupy určují, že vždy nejlépe přidělíte jenom nejužšímu možnému rozsahu.
 
-Následující seznam popisuje úrovně, ve kterém můžete upřesnit rozsah přístupu k prostředkům Azure blob a fronty, počínaje zpomalit:
+Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Azure Blob a Queue, počínaje nejužším rozsahem:
 
-- **Kontejner.** V tomto oboru přiřazení role se vztahuje na všechny objekty BLOB v kontejneru, jakož i kontejner vlastností a metadat.
-- **Jednotlivé fronty.** V tomto oboru přiřazení role se vztahuje na zprávy ve frontě, jakož i fronty vlastností a metadat.
-- **Účet úložiště.** V tomto oboru přiřazení role se týká všech kontejnerů a jeho objekty BLOB, všechny fronty a jejich zprávy.
-- **Skupina prostředků.** V tomto oboru přiřazení role se vztahuje na všechny kontejnery nebo fronty ve všech účtů úložiště ve skupině prostředků.
-- **Předplatné.** V tomto oboru přiřazení role se vztahuje na všechny kontejnery nebo fronty ve všech účtů úložiště ve všech skupinách prostředků v předplatném.
+- **Jednotlivý kontejner.** V tomto oboru se přiřazení role vztahuje na všechny objekty BLOB v kontejneru a také na vlastnosti kontejneru a metadata.
+- **Jednotlivé fronty.** V tomto oboru se přiřazení role vztahuje na zprávy ve frontě a také na vlastnosti fronty a metadata.
+- **Účet úložiště.** V tomto oboru se přiřazení role vztahuje na všechny kontejnery a jejich objekty blob nebo na všechny fronty a jejich zprávy.
+- **Skupina prostředků.** V tomto oboru se přiřazení role vztahuje na všechny kontejnery nebo fronty ve všech účtech úložiště ve skupině prostředků.
+- **Předplatné.** V tomto oboru se přiřazení role vztahuje na všechny kontejnery nebo fronty ve všech účtech úložiště ve všech skupinách prostředků v rámci předplatného.
 
 > [!IMPORTANT]
-> Pokud vaše předplatné obsahuje obor názvů služby Azure DataBricks, nepůjdou udělení přístupu k datům objektu blob a fronty rolí v oboru předplatného.
+> Pokud vaše předplatné obsahuje obor názvů Azure datacihly, role s oborem pro předplatné neudělí přístup k datům BLOB a Queue. Místo toho můžete použít role oboru pro skupinu prostředků, účet úložiště nebo kontejner nebo frontu.     

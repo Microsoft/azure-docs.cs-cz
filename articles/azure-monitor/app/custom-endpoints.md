@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor – Azure Application Insights přepsat výchozí koncové body sady SDK | Microsoft Docs
-description: Upravte výchozí koncové body sady Azure Application Insights SDK pro oblasti, jako je Azure Government.
+title: Přepsání výchozích koncových bodů sady SDK v Azure Application Insights
+description: Upravte výchozí Azure Monitor koncové body sady Application Insights SDK pro oblasti, jako je Azure Government.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432593"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights přepsání výchozích koncových bodů
 
-Pokud chcete odesílat data z Application Insights do určitých oblastí, budete muset přepsat výchozí adresy koncových bodů. Každá sada SDK vyžaduje mírně odlišnou změnu, která je popsána v tomto článku. Tyto změny vyžadují úpravu ukázkového kódu a nahrazení hodnot zástupných symbolů pro `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` a `Profile_Query_Endpoint_address` skutečnými adresami koncových bodů pro konkrétní oblast. Na konci tohoto článku najdete odkazy na adresy koncových bodů v oblastech, kde je tato konfigurace nutná.
+Pokud chcete odesílat data z Application Insights do určitých oblastí, budete muset přepsat výchozí adresy koncových bodů. Každá sada SDK vyžaduje mírně odlišnou změnu, která je popsána v tomto článku. Tyto změny vyžadují úpravu ukázkového kódu a nahrazení hodnot zástupných symbolů pro `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address`a `Profile_Query_Endpoint_address` skutečnými adresami koncových bodů pro konkrétní oblast. Na konci tohoto článku najdete odkazy na adresy koncových bodů v oblastech, kde je tato konfigurace nutná.
 
 ## <a name="sdk-code-changes"></a>Změny kódu SDK
 
@@ -195,7 +195,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) a [Azure Čína](https://docs.microsoft.com/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
 
-|Oblast |  Název koncového bodu | Hodnota |
+|Region (Oblast) |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
 | Azure (Čína) | Kanál telemetrie | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure (Čína) | QuickPulse (živé metriky) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -207,7 +207,7 @@ V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure
 Pokud aktuálně používáte [REST API Application Insights](https://dev.applicationinsights.io/
 ) , ke kterému se běžně používá API.ApplicationInsights.IO prostřednictvím "", budete muset použít koncový bod, který je místní pro vaši oblast:
 
-|Oblast |  Název koncového bodu | Hodnota |
+|Region (Oblast) |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
 | Azure (Čína) | Rozhraní REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | Rozhraní REST API | `api.applicationinsights.us`|

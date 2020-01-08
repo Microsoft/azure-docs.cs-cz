@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/04/2019
-ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/11/2019
+ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407237"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -77,9 +77,9 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
 # <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1 ASP.NET Core 2,2
+Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
 
-Cílení na plnou verzi rozhraní .NET Core, samostatné nasazení a ASP.NET Core 3,0 se v současnosti **nepodporují** pomocí monitorování založeného na agentech nebo rozšíření. ([Ruční instrumentace](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) přes kód bude fungovat ve všech předchozích scénářích.)
+Použití cílení na úplné rozhraní z rozhraní .NET Core, samostatného nasazení a aplikací založených na systému Linux není v současné době **podporováno** monitorováním na základě agentů nebo rozšíření. ([Ruční instrumentace](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) přes kód bude fungovat ve všech předchozích scénářích.)
 
 1. **Vyberte Application Insights** v Ovládacích panelech Azure pro vaši službu App Service.
 
@@ -92,7 +92,7 @@ Cílení na plnou verzi rozhraní .NET Core, samostatné nasazení a ASP.NET Cor
 
      ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource-01.png)
 
-2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. .NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro .net Core 2,0, 2,1 a 2,2.
+2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. .NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro .net Core 2,0, 2,1, 2,2 a 3,0.
 
     ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new-net-core.png)
 

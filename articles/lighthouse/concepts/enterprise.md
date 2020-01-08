@@ -3,12 +3,12 @@ title: Azure Lighthouse v podnikových scénářích
 description: Funkce Azure Lighthouse se dají použít ke zjednodušení správy mezi klienty v rámci podniku, který používá víc tenantů Azure AD.
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ae10ef2a18ace13d7b86347674c04f972e1ab8d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456897"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse v podnikových scénářích
 
@@ -38,7 +38,7 @@ V obou případech nezapomeňte [při definování, kteří uživatelé budou m�
 
 Azure Lighthouse a Azure delegované správy prostředků poskytují pouze logické odkazy mezi správou tenanta a spravovaných tenantů místo fyzického přesouvání dat nebo prostředků. Přístup navíc vždy probíhá pouze v jednom směru, od správy tenanta po spravované klienty.  Uživatelé a skupiny v tenantovi pro správu by měli i nadále používat vícefaktorové ověřování při provádění operací správy u prostředků spravovaného tenanta.
 
-Podniky s interním nebo externím řízením a dodržováním předpisů guardrails můžou používat [protokoly aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) ke splnění svých požadavků na transparentnost. Když podniková klienti navázali vztahy správy a spravovaného tenanta, můžou uživatelé v každém tenantovi monitorovat a získávat přehled o akcích provedených uživateli v jiném tenantovi zobrazením protokolované aktivity.
+Podniky s interním nebo externím řízením a dodržováním předpisů guardrails můžou používat [protokoly aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) ke splnění svých požadavků na transparentnost. Když podniková klienti navázali vztahy správy a spravovaného tenanta, můžou uživatelé v každém tenantovi monitorovat a získávat přehled o akcích provedených uživateli v jiném tenantovi zobrazením protokolované aktivity.
 
 ## <a name="onboarding-process-considerations"></a>Požadavky na registraci
 

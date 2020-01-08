@@ -1,48 +1,39 @@
 ---
-title: Service Fabric Cluster Resource Manager – skupin aplikací | Dokumentace Microsoftu
-description: Přehled funkcí skupiny aplikací v Service Fabric Cluster Resource Manager
-services: service-fabric
-documentationcenter: .net
+title: Správce prostředků Service Fabric clusteru – skupiny aplikací
+description: Přehled funkce skupiny aplikací v clusteru Service Fabric Správce prostředků
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62114069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452156"
 ---
-# <a name="introduction-to-application-groups"></a>Úvod do skupiny aplikací
-Service Fabric Cluster Resource Manageru obvykle spravuje prostředky clusteru rozložení zátěže (reprezentované prostřednictvím [metriky](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v celém clusteru. Service Fabric spravuje kapacity uzlů v clusteru a clusteru jako celek prostřednictvím [kapacity](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacitu fungují velmi vhodné pro mnoho úloh, ale vzorce, které se hojně používají různé instance aplikace Service Fabric v některých případech umožňuje přinést si další požadavky. Například můžete chtít:
+# <a name="introduction-to-application-groups"></a>Seznámení se skupinami aplikací
+Cluster Service Fabric Správce prostředků obvykle spravuje prostředky clusteru rozšíří zatížení (reprezentované prostřednictvím [metrik](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v celém clusteru. Service Fabric spravuje kapacitu uzlů v clusteru a clusteru jako celku přes [kapacitu](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacita fungují skvěle pro mnoho úloh, ale vzory, které výrazně využívají různé Service Fabric instance aplikace, někdy přinášejí další požadavky. Můžete například potřebovat:
 
-- Rezervovat pro služby v rámci některé instance s názvem aplikace nějakým na uzlech v clusteru
-- Omezit celkový počet uzlů, které běží v rámci instance pojmenované aplikace na (místo aby rozložil je navýšení kapacity za celý cluster)
-- Definovat kapacity na samotné lze omezit, služeb nebo celkový počet spotřebovaných služeb dovnitř instanci s názvem aplikace
+- Vyhradit u uzlů v clusteru určitou kapacitu pro služby v rámci některé pojmenované instance aplikace
+- Omezí celkový počet uzlů, na kterých běží služby v pojmenované instanci aplikace (místo jejich rozprostření přes celý cluster).
+- Definujte kapacity na samotné instanci pojmenované aplikace, abyste omezili počet služeb nebo celkovou spotřebu prostředků služeb uvnitř ní.
 
-Budou odpovídat vašim požadavkům, Service Fabric Cluster Resource Manager podporuje funkci s názvem skupiny aplikací.
+Aby bylo možné tyto požadavky splnit, Cluster Service Fabric Správce prostředků podporuje funkci nazvanou skupiny aplikací.
 
-## <a name="limiting-the-maximum-number-of-nodes"></a>Omezení maximální počet uzlů
-Nejjednodušší případ použití pro kapacity aplikace při instance aplikace musí být omezené na určité maximální počet uzlů. To spojuje všechny služby v rámci této instance aplikace na stanovený počet počítačů. Konsolidace je užitečné, když se snažíte předpovídat nebo limit fyzický prostředek používá prostřednictvím služeb v rámci této instance s názvem aplikace. 
+## <a name="limiting-the-maximum-number-of-nodes"></a>Omezení maximálního počtu uzlů
+Nejjednodušší případ použití pro kapacitu aplikace je v případě, že instance aplikace musí být omezena na určitý maximální počet uzlů. Tím se všechny služby v rámci této instance aplikace konsolidují do nastaveného počtu počítačů. Konsolidace je užitečná, když se pokoušíte odhadnout nebo Cap fyzické prostředky využívají služby v rámci této pojmenované instance aplikace. 
 
-Instance aplikace a nemusíte maximální počet uzlů, které jsou definované na následujícím obrázku:
+Následující obrázek ukazuje instanci aplikace s maximálním počtem definovaných uzlů a bez nich:
 
 <center>
 
-![Instance aplikace definuje maximální počet uzlů][Image1]
+![instance aplikace definující maximální počet uzlů][Image1]
 </center>
 
-V levém příkladu aplikace nemá maximální počet uzlů, které jsou definovány a má tři služby. Cluster Resource Manager má rozprostřete všech replik napříč šesti dostupné uzly k dosažení nejlepší poměr v clusteru (výchozí chování). V pravém příkladu vidíme stejnou aplikaci omezené na tři uzly.
+V levém příkladu nemá aplikace definováno maximální počet uzlů a má tři služby. Správce prostředků clusteru rozšíří všechny repliky ve šesti dostupných uzlech, aby se dosáhlo nejlepšího zůstatku v clusteru (výchozí chování). V pravém příkladu uvidíme stejnou aplikaci, která je omezená na tři uzly.
 
-Parametr, který určuje toto chování je volat MaximumNodes. Tento parametr lze nastavit během vytváření aplikace nebo aktualizovat pro instanci aplikace, která je již spuštěna.
+Parametr, který řídí toto chování, se nazývá MaximumNodes. Tento parametr lze nastavit během vytváření aplikace nebo aktualizovaný pro instanci aplikace, která již byla spuštěna.
 
 PowerShell
 
@@ -67,18 +58,18 @@ await fc.ApplicationManager.UpdateApplicationAsync(adUpdate);
 
 ```
 
-V rámci sady uzlů Cluster Resource Manager nezaručuje objektů, které služba umístěny společně nebo získat uzlů, které používá.
+V rámci sady uzlů Správce prostředků clusteru nezaručuje, které objekty služby se mají umístit dohromady nebo které uzly se používají.
 
-## <a name="application-metrics-load-and-capacity"></a>Metriky aplikací, načítání a kapacita
-Skupiny aplikací také umožňují definovat metriky, které jsou přidružené k dané aplikaci s názvem instance a kapacitu této instance aplikace pro tyto metriky. Metriky aplikací umožňují sledovat, rezervovat a omezit spotřebu prostředků služeb v této instanci aplikace.
+## <a name="application-metrics-load-and-capacity"></a>Metriky, zatížení a kapacita aplikace
+Skupiny aplikací také umožňují definovat metriky přidružené k dané pojmenované instanci aplikace a kapacitu instance aplikace pro tyto metriky. Metriky aplikací umožňují sledovat, vyhradit a omezit spotřebu prostředků služeb uvnitř dané instance aplikace.
 
-Pro jednotlivé aplikace metriky jsou dvě hodnoty, které je možné nastavit:
+U každé metriky aplikace můžete nastavit dvě hodnoty:
 
-- **Celková kapacita aplikace** – toto nastavení představuje celkové kapacity aplikace konkrétní metriky. Cluster Resource Manager nepovoluje vytvoření jakékoli nové služby v rámci této instance aplikace, která může způsobit celkové zatížení překročí tuto hodnotu. Řekněme například, instance aplikace měli kapacitou 10 a již má pět zatížení. Vytvoření služby s výchozí celkové zatížení 10 bude zakázáno.
-- **Maximální kapacita uzlu** – toto nastavení určuje maximální celkové zatížení aplikace v jednom uzlu. Zatížení překročí tuto kapacitu, přesune Cluster Resource Manager repliky na jiné uzly tak, aby zatížení sníží.
+- **Celková kapacita aplikace** – toto nastavení představuje celkovou kapacitu aplikace pro určitou metriku. Cluster Správce prostředků nepovoluje vytváření jakýchkoli nových služeb v rámci této instance aplikace, což by způsobilo, že celkové zatížení tuto hodnotu překročí. Řekněme například, že instance aplikace měla kapacitu 10 a již byla načtena pět. Vytváření služby s celkovým výchozím zatížením 10 se nepovoluje.
+- **Maximální kapacita uzlu** – toto nastavení určuje maximální celkové zatížení aplikace na jednom uzlu. Pokud zatížení přechází z této kapacity, cluster Správce prostředků přesune repliky do jiných uzlů, aby se zátěž snižuje.
 
 
-Powershell:
+PowerShell:
 
 ``` posh
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -Metrics @("MetricName:Metric1,MaximumNodeCapacity:100,MaximumApplicationCapacity:1000")
@@ -100,35 +91,35 @@ ad.Metrics.Add(appMetric);
 await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
-## <a name="reserving-capacity"></a>Rezervaci kapacity
-Dalším běžným způsobem použití u skupiny aplikací je zajistit, že prostředky v rámci clusteru jsou vyhrazené pro instance dané aplikace. Místo je vyhrazený vždy při vytvoření instance aplikace.
+## <a name="reserving-capacity"></a>Rezervace kapacity
+Dalším běžným použitím pro skupiny aplikací je zajistit, aby prostředky v rámci clusteru byly rezervované pro danou instanci aplikace. Místo je vždy rezervované při vytvoření instance aplikace.
 
-Rezervování prostoru v clusteru pro aplikace se okamžitě stane i v případě:
-- instance aplikace se vytvoří, ale ještě nemá žádné služby v rámci něj
-- počet služeb v rámci instance aplikace změní pokaždé, když 
-- služby existuje, ale nejsou využívající tyto prostředky 
+Rezervace místa v clusteru pro aplikaci proběhne okamžitě, i když:
+- instance aplikace je vytvořená, ale ještě nemá žádné služby.
+- počet služeb v instanci aplikace se mění pokaždé, když 
+- služby existují, ale nespotřebovávají prostředky. 
 
-Rezervování prostředků pro instanci aplikace vyžaduje určení další dva parametry: *MinimumNodes* a *NodeReservationCapacity*
+Rezervace prostředků pro instanci aplikace vyžaduje zadání dvou dalších parametrů: *MinimumNodes* a *NodeReservationCapacity* .
 
-- **MinimumNodes** – Určuje minimální počet uzlů, které by se spustit na instanci aplikace.  
-- **NodeReservationCapacity** – toto nastavení je na metriku pro aplikaci. Hodnota je množství tuto metriku vyhrazena pro aplikaci ve všech uzlech kde spuštění služby v dané aplikaci.
+- **MinimumNodes** – definuje minimální počet uzlů, ve kterých by instance aplikace měla běžet.  
+- **NodeReservationCapacity** – toto nastavení je na metriku pro aplikaci. Hodnota je množství metriky rezervované pro aplikaci na jakémkoli uzlu, ve kterém je spuštěná služba v dané aplikaci.
 
-Kombinování **MinimumNodes** a **NodeReservationCapacity** zaručuje rezervace minimální zatížení pro aplikaci v rámci clusteru. Pokud má menší zbývající kapacity v clusteru než celkový počet rezervací vyžaduje, vytvoření aplikace se nezdaří. 
+Kombinování **MinimumNodes** a **NodeReservationCapacity** garantuje minimální rezervaci zatížení pro aplikaci v rámci clusteru. Pokud je v clusteru méně zbývající kapacita než celková požadovaná rezervace, vytvoření aplikace se nezdařilo. 
 
-Podívejme se na příklad rezervaci kapacity:
+Pojďme se podívat na příklad rezervace kapacity:
 
 <center>
 
-![Definování záložní kapacitu instancí aplikace][Image2]
+![aplikační instance definující rezervovanou kapacitu][Image2]
 </center>
 
-V levém příklad aplikací není nutné žádné kapacity aplikace definované. Cluster Resource Manager vyrovnává všechno, co podle obvyklých pravidel.
+V levém příkladu nemají aplikace definovanou žádnou kapacitu aplikace. Cluster Správce prostředků vyrovnává všechny závislosti na běžných pravidlech.
 
-V příkladu na pravé straně Řekněme, že Application1 byl vytvořen s následujícími nastaveními:
+V příkladu na pravé straně řekněme, že byl vytvořen Application1 s následujícím nastavením:
 
-- MinimumNodes nastavena na dvě
-- Metrika definovaná pomocí aplikace
-  - NodeReservationCapacity of 20
+- MinimumNodes nastavené na dvě
+- Metrika aplikace definovaná s
+  - NodeReservationCapacity o 20
 
 PowerShell
 
@@ -154,12 +145,12 @@ ad.Metrics.Add(appMetric);
 await fc.ApplicationManager.CreateApplicationAsync(ad);
 ```
 
-Service Fabric rezervuje kapacitu na dvou uzlech pro Application1 a neumožňuje z Application2 i v případě, že nejsou že žádné zatížení spotřebovává služby uvnitř Application1 v době využívat kapacitu této služby. Tato kapacita vyhrazená aplikace se považuje za spotřebované a počítat zbývající kapacity v tomto uzlu a v rámci clusteru.  Rezervace se odečte od zbývající kapacita clusteru okamžitě, ale využití rezervovaných je odečtena od objemu konkrétním uzlu pouze v případě, že objekt nejméně jedné služby se umístí na něm. Tato vyšší rezervace umožňuje flexibilitu a lepší využití prostředků od prostředků jsou vyhrazeny pouze na uzlech v případě potřeby.
+Service Fabric rezervuje kapacitu na dvou uzlech pro Application1 a nepovoluje službám z Application2 využívání této kapacity, i když služby uvnitř Application1 v daném čase nespotřebovává žádné zatížení. Tato Rezervovaná kapacita aplikace se považuje za spotřebované a počítá se se zbývající kapacitou v tomto uzlu a v rámci clusteru.  Rezervace se od zbývající kapacity clusteru odečte okamžitě, ale rezervovaná spotřeba se odečte od kapacity konkrétního uzlu jenom v případě, že je na ni umístěný aspoň jeden objekt služby. Tato rezervace umožňuje flexibilitu a lepší využití prostředků, protože prostředky jsou v případě potřeby rezervovány pouze v uzlech.
 
-## <a name="obtaining-the-application-load-information"></a>Získávání informací o zatížení aplikace
-Pro každou aplikaci, která má kapacity aplikace definované pro jednu nebo víc metrik, které můžete získat informace o agregované zatížení hlášených repliky z jejích služeb.
+## <a name="obtaining-the-application-load-information"></a>Získání informací o načtení aplikace
+Pro každou aplikaci, která má kapacitu aplikace definovanou pro jednu nebo více metrik, můžete získat informace o agregovaném zatížení hlášené replikami svých služeb.
 
-Powershell:
+PowerShell:
 
 ``` posh
 Get-ServiceFabricApplicationLoadInformation –ApplicationName fabric:/MyApplication1
@@ -178,44 +169,44 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 }
 ```
 
-Vrátí dotaz ApplicationLoad základní informace o kapacitě aplikace, který byl zadán pro aplikaci. Tyto informace zahrnují informace, které uzly minimální a maximální počet uzlů a číslo, které aplikace je aktuálně zabírá. Obsahuje také informace o jednotlivých metrika zatížení aplikace, včetně:
+Dotaz ApplicationLoad vrací základní informace o kapacitě aplikace, která byla zadána pro aplikaci. Tyto informace zahrnují minimální informace o uzlech a maximálních uzlech a číslo, které aktuálně aplikace zabírá. Obsahuje také informace o každé metrikě zatížení aplikace, včetně:
 
-* Název metriky: Název metriky.
-* Rezervované kapacity: Kapacita clusteru, který je vyhrazen v clusteru pro tuto aplikaci.
-* Zatížení aplikace: Celkové zatížení replik podřízené této aplikace.
-* Kapacity aplikace: Maximální povolená hodnota zatížení aplikace.
+* Název metriky: název metriky.
+* Kapacita rezervace: kapacita clusteru, která je v clusteru vyhrazena pro tuto aplikaci.
+* Zatížení aplikace: celkové načtení podřízených replik této aplikace.
+* Kapacita aplikace: maximální povolená hodnota zatížení aplikace.
 
-## <a name="removing-application-capacity"></a>Odebrání kapacity aplikace
-Po parametrech kapacity aplikace nastavené pro aplikaci, lze je odstranit pomocí rutiny Powershellu ani rozhraní API aktualizace aplikace. Příklad:
+## <a name="removing-application-capacity"></a>Odebírá se kapacita aplikace.
+Jakmile jsou parametry kapacity aplikace nastavené pro aplikaci, dají se odebrat pomocí rozhraní Update API aplikace nebo rutin PowerShellu. Příklad:
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity
 
 ```
 
-Tento příkaz odebere všechny parametry správy kapacity aplikace z instance aplikace. To zahrnuje MinimumNodes MaximumNodes a metriky vaší aplikace, pokud existuje. Efekt příkazu se okamžitě. Po dokončení tohoto příkazu Cluster Resource Manager použije výchozí chování pro správu aplikací. Parametry kapacity aplikace se dá nastavit znovu prostřednictvím `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
+Tento příkaz odebere všechny parametry správy kapacity aplikace z instance aplikace. To zahrnuje MinimumNodes, MaximumNodes a metriky aplikace, pokud existují. Účinek příkazu je okamžitý. Po dokončení tohoto příkazu cluster Správce prostředků použije výchozí chování pro správu aplikací. Parametry kapacity aplikace je možné zadat znovu prostřednictvím `Update-ServiceFabricApplication`/`System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`.
 
-### <a name="restrictions-on-application-capacity"></a>Omezení kapacity aplikace
-Existuje několik omezení kapacity aplikace parametry, které musí být zachovány. Pokud došlo k chybám při ověření žádné změny provést.
+### <a name="restrictions-on-application-capacity"></a>Omezení pro kapacitu aplikace
+Existují několik omezení pro parametry kapacity aplikace, které musí být respektovány. Pokud dojde k chybám ověření, probíhají žádné změny.
 
-- Všechny celočíselné parametry musí být záporná čísla.
-- MinimumNodes musí být nikdy delší než MaximumNodes.
-- Pokud jsou definovány pro zatížení metriku kapacity, se musí dodržovat tato pravidla:
-  - Kapacita uzlu rezervace nesmí být větší než maximální kapacita uzlu. Nelze například omezení kapacity pro metriku "CPU" na uzel, který má dvě jednotky a zkuste to rezervovat tři jednotky na každém uzlu.
-  - Je zadán MaximumNodes, produktu MaximumNodes a maximální kapacitu uzlu nesmí být větší než celkové kapacity aplikace. Řekněme například, maximální kapacitu uzlu "CPU" je nastavena na osm metriky zatížení. Vezměme si také třeba že nastavit maximální počet uzlů na 10. Celkové kapacity aplikace v tomto případě musí být větší než 80 pro tato metrika zatížení.
+- Všechny celočíselné parametry musí být nezáporná čísla.
+- MinimumNodes nesmí být větší než MaximumNodes.
+- Pokud jsou definované kapacity pro metriku zatížení, musí dodržovat tato pravidla:
+  - Kapacita rezervovaného uzlu nesmí být větší než maximální kapacita uzlu. Například nemůžete omezit kapacitu metriky "CPU" na uzlu na dvě jednotky a zkusit na každém uzlu rezervovat tři jednotky.
+  - Pokud zadáte MaximumNodes, pak produkt MaximumNodes a maximální kapacitu uzlu nesmí být větší než celková kapacita aplikace. Řekněme například, že maximální kapacita uzlu pro metriku zatížení CPU je nastavená na osm. Řekněme také, že jste nastavili maximum uzlů na hodnotu 10. V tomto případě musí být celková kapacita aplikace větší než 80 pro tuto metriku zatížení.
 
-Omezení se vynucují, jak při vytváření aplikací a aktualizací.
+Tato omezení se vynutila během vytváření a aktualizace aplikací.
 
-## <a name="how-not-to-use-application-capacity"></a>Jak nepoužívat kapacity aplikace
-- Nepokoušejte se použít funkce skupiny aplikací k omezení aplikace _konkrétní_ dílčí sadu uzlů. Jinými slovy, můžete určit, že aplikace bude spuštěna na nejvíce pět uzlů, ale ne konkrétní pět uzlů, které v clusteru. Omezení aplikace ke konkrétním uzlům lze dosáhnout pomocí omezení umístění služby.
-- Nepokoušejte se použít k zajištění, že dvě služby ze stejné aplikace jsou umístěné na stejné uzly kapacity aplikace. Místo toho použijte [spřažení](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) nebo [omezení umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
+## <a name="how-not-to-use-application-capacity"></a>Jak používat kapacitu aplikace
+- Nepokoušejte se používat funkce skupin aplikací k omezení aplikace na _určitou_ podmnožinu uzlů. Jinými slovy můžete určit, že aplikace běží na nejvíce pěti uzlech, ale ne na konkrétní pět uzlů v clusteru. Omezení aplikace na konkrétní uzly lze dosáhnout pomocí omezení umístění pro služby.
+- Nepokoušejte se použít kapacitu aplikace, abyste se ujistili, že dvě služby ze stejné aplikace jsou umístěné na stejných uzlech. Místo toho použijte omezení [spřažení](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) nebo [umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
-## <a name="next-steps"></a>Další postup
-- Další informace o konfiguraci služby [informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
-- Přečtěte si o tom, jak Cluster Resource Manager spravuje a vyrovnává zatížení v clusteru, přečtěte si článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
-- Začít od začátku a [Úvod do Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
-- Další informace o fungování metriky obecně, přečtěte si [metriky zatížení Service Fabric](service-fabric-cluster-resource-manager-metrics.md)
-- Cluster Resource Manager má mnoho možností pro popis clusteru. Další informace o nich najdete v tomto článku na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
+## <a name="next-steps"></a>Další kroky
+- Další informace o konfiguraci služeb najdete v informacích [o konfiguraci služeb](service-fabric-cluster-resource-manager-configure-services.md) .
+- Informace o tom, jak cluster Správce prostředků spravuje a vyrovnává zatížení v clusteru, najdete v článku o [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md) .
+- Začněte od začátku a [Získejte Úvod do clusteru Service Fabric správce prostředků](service-fabric-cluster-resource-manager-introduction.md)
+- Další informace o tom, jak metriky fungují obecně, najdete v [Service Fabric metriky zatížení](service-fabric-cluster-resource-manager-metrics.md) .
+- Správce prostředků clusteru má mnoho možností pro popis clusteru. Pokud se o nich chcete dozvědět víc, přečtěte si článek [popisující Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) .
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

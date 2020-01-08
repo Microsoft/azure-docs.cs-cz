@@ -2,19 +2,15 @@
 title: Funkce Hybrid Runbook Worker služby Azure Automation v Linuxu
 description: Tento článek poskytuje informace o instalaci Hybrid Runbook Worker Azure Automation, takže můžete spouštět Runbooky v počítačích se systémem Linux v místním datovém centru nebo v cloudovém prostředí.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 06/28/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 01dcb30fca2819bc4cf85ea624de5735cc84801b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421923"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 

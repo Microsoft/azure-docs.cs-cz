@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cb43f558a5c983a8a4cc3823b278b75cb8cde78d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230749"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562030"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Rychlý Start: použití Java a Maven k vytvoření a publikování funkce v Azure
 
@@ -72,17 +72,20 @@ Maven vás vyzve k zadání hodnot potřebných k dokončení generování proje
 | ----- | ----------- |
 | **groupId** | Hodnota, která jednoznačně identifikuje váš projekt napříč všemi projekty, podle [pravidel pro pojmenovávání balíčků](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) pro Java. Příklady v tomto rychlém startu používají `com.fabrikam.functions`. |
 | **artifactId** | Hodnota, která představuje název jar bez čísla verze. Příklady v tomto rychlém startu používají `fabrikam-functions`. |
-| **znění** | Vyberte výchozí hodnotu `1.0-SNAPSHOT`. |
+| **version** | Vyberte výchozí hodnotu `1.0-SNAPSHOT`. |
 | **balíček** | Hodnota, která je balíčkem Java pro vygenerovaný kód funkce. Použijte výchozí hodnotu. Příklady v tomto rychlém startu používají `com.fabrikam.functions`. |
 | **appName** | Globálně jedinečný název, který identifikuje novou aplikaci Function App v Azure. Použijte výchozí, což je _artifactId_ připojené k náhodnému číslu. Poznamenejte si tuto hodnotu, budete ji potřebovat později. |
 | **appRegion** | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. Výchozí formát je `westus`. Spuštěním tohoto příkazu rozhraní příkazového [Azure CLI] zobrazíte seznam všech oblastí:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | Název nové [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) , ve které se má aplikace Function App vytvořit Použijte `myResourceGroup`, které jsou používány příklady v tomto rychlém startu. Skupina prostředků musí být pro vaše předplatné Azure jedinečná.|
+| **resourceGroup** | Název nové [skupiny prostředků](../azure-resource-manager/management/overview.md) , ve které se má aplikace Function App vytvořit Použijte `myResourceGroup`, které jsou používány příklady v tomto rychlém startu. Skupina prostředků musí být pro vaše předplatné Azure jedinečná.|
 
 Zadejte `Y` nebo stiskněte klávesu ENTER a potvrďte ji.
 
 Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který v tomto příkladu je `fabrikam-functions`. 
 
 Otevřete nový soubor Function. Java z cesty *Src/Main/Java* v textovém editoru a zkontrolujte generovaný kód. Tento kód je funkce [aktivovaná protokolem HTTP](functions-bindings-http-webhook.md) , která vypisuje tělo žádosti. 
+
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
@@ -119,6 +122,9 @@ Hello AzureFunctions!
 ```
 [Klíč funkce](functions-bindings-http-webhook.md#authorization-keys) není vyžadován při místním spuštění. Pomocí klávesové zkratky `Ctrl+C` v terminálu zastavte kód aplikace.
 
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
 Aplikace Function App a související prostředky se vytvoří v Azure při prvním nasazení aplikace Function App. Než budete moct nasadit, přihlaste se k předplatnému Azure pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli) Azure CLI. 
@@ -139,7 +145,7 @@ mvn azure-functions:deploy
 Tento `azure-functions:deploy` cíl Maven v Azure vytvoří následující prostředky:
 
 + Skupina prostředků. Pojmenovaná se _zdrojem_ prostředků, kterou jste zadali.
-+ účet úložiště. Požadováno funkcemi. Název se vygeneruje náhodně na základě požadavků na název účtu úložiště.
++ Účet úložiště. Požadováno funkcemi. Název se vygeneruje náhodně na základě požadavků na název účtu úložiště.
 + Plán služby App Service. Hostování bez serveru pro vaši aplikaci Function App v zadaném _appRegion_. Název se vygeneruje náhodně.
 + Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název je vaše _AppName_a je připojen s náhodně generovaným číslem. 
 
@@ -147,11 +153,14 @@ Nasazení také zabalí soubory projektu a nasadí je do nové aplikace Function
 
 Po dokončení nasazení se zobrazí adresa URL, kterou můžete použít pro přístup k koncovým bodům aplikace Function App. Protože Trigger HTTP, který jsme publikovali, používá `authLevel = AuthorizationLevel.FUNCTION`, je potřeba získat klíč funkce, který bude volat koncový bod funkce přes protokol HTTP. Nejjednodušší způsob, jak získat klíč funkce, je z [Azure Portal].
 
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+
 ## <a name="get-the-http-trigger-url"></a>Získat adresu URL triggeru HTTP
 
 <!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
 
-Z Azure Portal můžete získat adresu URL, která je vyžadována pro Trigger funkce, s klíčem funkce. 
+Můžete získat adresu URL potřebnou k aktivaci vaší funkce s klíčem funkce z Azure Portal. 
 
 1. Přejděte na [Azure Portal], přihlaste se **, do horní** části stránky zadejte _AppName_ vaší aplikace Function App a stiskněte klávesu ENTER.
  
@@ -176,6 +185,9 @@ Tím se odešle požadavek POST koncovému bodu funkce s `AzureFunctions` v těl
 ```Output
 Hello AzureFunctions!
 ```
+
+> [!div class="nextstepaction"]
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
 title: Zpracování chyb a výjimek
-description: Přečtěte si o vzorech pro zpracování chyb a výjimek v Azure Logic Apps
+description: Naučte se zpracovávat chyby a výjimky, ke kterým dochází v automatizovaných úlohách a pracovních postupech vytvořených pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: dereklee
@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa197a04b91f398bda2e402b18a638b9bf0ab9a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792084"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453389"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -32,7 +32,7 @@ Tady jsou typy zásad opakování:
 | **Výchozí** | Tato zásada odesílá až čtyři opakované pokusy ve *exponenciálně rostoucích* intervalech, které se škálují po 7,5 sekund, ale jsou omezené mezi 5 a 45 sekundami. | 
 | **Exponenciální interval**  | Tato zásada počká náhodný interval vybraný z exponenciálně rostoucího rozsahu před odesláním dalšího požadavku. | 
 | **Pevný interval**  | Tato zásada počká zadaný interval před odesláním dalšího požadavku. | 
-| **NTato**  | Neodešlete požadavek znovu. | 
+| **Žádné**  | Neodešlete požadavek znovu. | 
 ||| 
 
 Informace o omezeních zásad opakování najdete v tématu [omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -67,21 +67,21 @@ Případně můžete zásady opakování zadat ručně v části `inputs` pro ak
 }
 ```
 
-*Požadovanou*
+*Vyžaduje*
 
 | Hodnota | Typ | Popis |
 |-------|------|-------------|
-| <*Opakovat-typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default`, `none`, `fixed`nebo `exponential` | 
-| *interval opakování <–* > | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí interval minimální hodnoty je `PT5S` a maximální interval je `PT1D`. Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. | 
-| <opakované *pokusy*> | Integer | Počet pokusů o opakování, který musí být mezi 1 a 90. | 
+| <*retry-policy-type*> | Řetězec | Typ zásady opakování, který chcete použít: `default`, `none`, `fixed`nebo `exponential` | 
+| <*retry-interval*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí interval minimální hodnoty je `PT5S` a maximální interval je `PT1D`. Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. | 
+| <*retry-attempts*> | Integer | Počet pokusů o opakování, který musí být mezi 1 a 90. | 
 ||||
 
 *Volitelné*
 
 | Hodnota | Typ | Popis |
 |-------|------|-------------|
-| > *minimální interval* < | Řetězec | Pro pravidlo exponenciálního intervalu, nejmenší interval náhodně vybraného intervalu ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*Maximum – interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejdelší interval pro náhodně vybraný interval ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimum-interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejmenší interval náhodně vybraného intervalu ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimum-interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejdelší interval pro náhodně vybraný interval ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 |||| 
 
 Zde jsou další informace o různých typech zásad.

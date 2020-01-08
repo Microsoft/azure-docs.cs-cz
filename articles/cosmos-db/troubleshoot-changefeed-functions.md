@@ -1,5 +1,5 @@
 ---
-title: Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
+title: Řešení potíží při použití triggeru Azure Functions pro Cosmos DB
 description: Běžné problémy, alternativní řešení a diagnostické kroky při použití triggeru Azure Functions pro Cosmos DB
 author: ealsur
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064106"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441124"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
 
@@ -78,12 +78,12 @@ Když vaše funkce Azure přijme změny, často je zpracuje a může volitelně 
 
 Pokud v cíli chybějí nějaké změny, může to znamenat, že došlo k chybě při provádění funkce Azure po přijetí změn.
 
-V tomto scénáři je nejlepší akcí přidání `try/catch`ch bloků do kódu a uvnitř smyček, které mohou zpracovávat změny, pro zjištění selhání konkrétní podmnožiny položek a jejich následné zpracování (jejich následné odeslání do jiného úložiště). Analýza nebo opakování). 
+V tomto scénáři je nejlepší akcí přidání `try/catch`ch bloků do kódu a uvnitř smyček, které mohou zpracovávat změny, pro zjištění selhání pro určitou podmnožinu položek a jejich odpovídajícím způsobem (Odeslat je do jiného úložiště pro další analýzu nebo opakovat). 
 
 > [!NOTE]
 > Aktivační událost Azure Functions pro Cosmos DB ve výchozím nastavení neopakuje dávku změn, pokud došlo k neošetřené výjimce během provádění kódu. To znamená, že důvodem nedoručení změn do cíle je to, že nebudete schopni je zpracovat.
 
-Pokud zjistíte, že Trigger nepřijal vůbec nějaké změny, nejběžnějším scénářem je, že je **spuštěná jiná funkce Azure**. Může to být jiná funkce Azure nasazená v Azure nebo funkce Azure spuštěná místně na počítači vývojáře, který má **přesně stejnou konfiguraci** (stejný monitorovaný a kontejner zapůjčení), a tato funkce Azure ukrást podmnožinu změn, které očekává, že vaše funkce Azure Functions zpracuje.
+Pokud zjistíte, že Trigger nepřijal vůbec nějaké změny, nejběžnějším scénářem je, že je **spuštěná jiná funkce Azure**. Může to být jiná funkce Azure nasazená v Azure nebo funkce Azure spuštěná místně na počítači vývojáře, který má **přesně stejnou konfiguraci** (stejný monitorované a zapůjčení), a tato funkce Azure ukrást podmnožinu změn, které byste očekávali při zpracování funkce Azure.
 
 Pokud víte, kolik instancí Azure Function App máte spuštěné, můžete taky ověřit scénář. Pokud provedete kontrolu kontejneru zapůjčení a určíte počet položek zapůjčení v rámci, budou jedinečné hodnoty vlastnosti `Owner` v nich rovny počtu instancí vašeho Function App. Pokud existuje více vlastníku než známých instancí aplikace funkcí Azure, znamená to, že tito další vlastníci „kradou“ změny.
 

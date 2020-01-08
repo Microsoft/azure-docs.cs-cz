@@ -7,14 +7,14 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
-description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio k vývoji týmu v aplikaci .NET Core ve službě Azure Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 895d2edbb268eab9944909ecda7193ce945bbf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: f88a0b146a53a5b14ab17ae0d959e9b8a5567302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438179"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Vývoj pro týmovou práci pomocí .NET Core a sady Visual Studio s Azure Dev Spaces
 
@@ -92,7 +92,7 @@ K vytvoření nového prostoru použijte následující postup:
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. V dialogovém okně **Přidat prostor** nastavte nadřazený prostor na **dev**a zadejte název nového prostoru. Můžete pro nový prostor použít svoje jméno (například „scott“), aby bylo vašim kolegům jasné, že se jedná o prostor, ve kterém pracujete vy. Klikněte na tlačítko **OK**.
+6. V dialogovém okně **Přidat prostor** nastavte nadřazený prostor na **dev**a zadejte název nového prostoru. Můžete pro nový prostor použít svoje jméno (například „scott“), aby bylo vašim kolegům jasné, že se jedná o prostor, ve kterém pracujete vy. Klikněte na **OK**.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 

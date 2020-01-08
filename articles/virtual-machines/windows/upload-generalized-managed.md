@@ -1,25 +1,20 @@
 ---
-title: Vytvoření spravovaného virtuálního počítače Azure z zobecněného místního virtuálního pevného disku
+title: Vytvoření virtuálního počítače z odeslaného zobecněného virtuálního pevného disku
 description: Nahrajte zobecněný virtuální pevný disk do Azure a použijte ho k vytvoření nových virtuálních počítačů v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: d0995fed61d169cc173ca01767c2e48f4f798b0d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c482caf2407c89ffdb6c55c9184c31e2e3197c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464950"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Nahrajte zobecněný virtuální pevný disk a použijte ho k vytvoření nových virtuálních počítačů v Azure.
 
@@ -33,11 +28,9 @@ Vzorový skript najdete v tématu [ukázkový skript pro nahrání virtuálního
 - Než začnete s migrací do [Managed disks](managed-disks-overview.md), přečtěte si téma [plánování migrace na Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) .
 
  
-
-
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Generalizace zdrojového virtuálního počítače pomocí nástroje Sysprep
 
-Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Podrobnosti o nástroji Sysprep najdete v tématu [Přehled nástroje Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+Pokud jste to ještě neudělali, musíte virtuální počítač Sysprep před nahráním virtuálního pevného disku do Azure. Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Podrobnosti o nástroji Sysprep najdete v tématu [Přehled nástroje Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
@@ -56,40 +49,49 @@ Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počíta
 6. Po dokončení programu Sysprep vypne virtuální počítač. Nerestartujte virtuální počítač.
 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>Nahrání virtuálního pevného disku do účtu úložiště
+## <a name="upload-the-vhd"></a>Nahrání virtuálního pevného disku 
 
 Virtuální pevný disk teď můžete nahrát přímo do spravovaného disku. Pokyny najdete v tématu [nahrání virtuálního pevného disku do Azure pomocí Azure PowerShell](disks-upload-vhd-to-managed-disk-powershell.md).
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Vytvoření spravované image z nahraného virtuálního pevného disku 
 
-Vytvořte spravovanou bitovou kopii z zobecněného spravovaného disku s operačním systémem. Nahraďte následující hodnoty vlastními informacemi.
+Po nahrání virtuálního pevného disku na spravovaný disk musíte použít [příkaz Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) k získání spravovaného disku.
 
-
-Nejdřív nastavte některé parametry:
-
-```powershell
-$location = "East US" 
-$imageName = "myImage"
+```azurepowershell-interactive
+$disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 
-Vytvořte Image pomocí zobecněného virtuálního pevného disku s operačním systémem.
+## <a name="create-the-image"></a>Vytvoření image
+Vytvořte spravovanou bitovou kopii z zobecněného spravovaného disku s operačním systémem. Nahraďte následující hodnoty vlastními informacemi.
+
+Nejdřív nastavte některé proměnné:
 
 ```powershell
+$location = 'East US'
+$imageName = 'myImage'
+$rgName = 'myResourceGroup'
+```
+
+Vytvořte Image pomocí spravovaného disku.
+
+```azurepowershell-interactive
 $imageConfig = New-AzImageConfig `
    -Location $location
 $imageConfig = Set-AzImageOsDisk `
    -Image $imageConfig `
-   -OsType Windows `
    -OsState Generalized `
-   -BlobUri $urlOfUploadedImageVhd `
-   -DiskSizeGB 20
-New-AzImage `
+   -OsType Windows `
+   -ManagedDiskId $disk.Id
+```
+
+Vytvořte image.
+
+```azurepowershell-interactive
+$image = New-AzImage `
    -ImageName $imageName `
    -ResourceGroupName $rgName `
    -Image $imageConfig
 ```
-
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
@@ -100,7 +102,7 @@ Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtu�
 New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
-    -ImageName $imageName `
+    -Image $image.Id `
     -Location $location `
     -VirtualNetworkName "myVnet" `
     -SubnetName "mySubnet" `

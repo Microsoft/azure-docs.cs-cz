@@ -7,14 +7,14 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: victorh
-ms.openlocfilehash: cb8a2fdd14cfa7d361e3d78a64f3aaf60ea7676d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436775"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>Co jsou důvěryhodní partneři zabezpečení (Preview)?
+# <a name="what-are-trusted-security-partners-preview"></a>Kdo jsou důvěryhodní partneři pro zabezpečení (Preview)?
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -23,11 +23,11 @@ ms.locfileid: "73468564"
 
 S rychlou konfigurací můžete zabezpečit centrum s podporovaným partnerem zabezpečení a směrovat a filtrovat internetový provoz z virtuálních sítí (virtuální sítě) nebo umístění větví v rámci jedné oblasti. To se provádí pomocí automatizované správy směrování, aniž byste nastavili a spravovali trasy definované uživatelem (udr).
 
-Můžete nasadit zabezpečená centra nakonfigurovaná s partnerem zabezpečení podle vašeho výběru ve více oblastech Azure, abyste získali připojení a zabezpečení pro uživatele kdekoli na celém světě v těchto oblastech. Díky možnosti použít nabídku partnera zabezpečení pro provoz aplikace Internet/SaaS a Azure Firewall privátních přenosů v zabezpečených centrech teď můžete začít sestavovat hraniční zabezpečení v Azure, která se blíží globálním distribuovaným uživatelům a vyrovnání.
+Můžete nasadit zabezpečená centra nakonfigurovaná s partnerem zabezpečení podle vašeho výběru ve více oblastech Azure, abyste získali připojení a zabezpečení pro uživatele kdekoli na celém světě v těchto oblastech. Díky možnosti použít nabídku partnera zabezpečení pro provoz aplikace Internet/SaaS a Azure Firewall privátních přenosů v zabezpečených centrech teď můžete začít sestavovat hraniční zabezpečení v Azure, které je blízko globálně distribuovaných uživatelů a aplikací.
 
 V této verzi Preview jsou podporovaným partnerem zabezpečení **ZScaler** a **iboss**. Podporované oblasti jsou WestCentralUS, NorthCentralUS, WestUS, WestUS2 a EastUS.
 
-![Důvěryhodní partneři zabezpečení](media/trusted-security-partners/trusted-security-partners.png)
+![Důvěryhodní partneři pro zabezpečení](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Hlavní scénáře
 
@@ -75,7 +75,7 @@ V případě systému Office 365 jsou latence sítě a výkon zásadní pro úsp
 
 [Principy připojení k síti office 365](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) volání síťových připojení sady Office 365 k místnímu směrování z uživatelské větve nebo mobilního zařízení a přímo přes Internet do nejbližšího síťového bodu Microsoftu.
 
-Připojení k Office 365 jsou navíc silně šifrovaná pro ochranu osobních údajů a využívají efektivní a proprietární protokoly z důvodů výkonu. To je nepraktické a mělo by to mít vliv na to, aby se tato připojení mohla vztahovat na tradiční řešení zabezpečení na úrovni sítě. Z těchto důvodů důrazně doporučujeme, aby zákazníci odesílali provoz Office 365 přímo z větví, a to ještě před odesláním zbytku dat prostřednictvím Azure. Microsoft spolupracuje s několika poskytovateli řešení SD-WAN, kteří se integrují s Azure a Office 365, a usnadňuje zákazníkům možnost Povolit sadu Office 365 Direct a Local Internet užitečných. Podrobnosti najdete v tématu [návody nastavení zásad O365 přes virtuální síť WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview#how-do-i-set-my-o365-policies-via-virtual-wan)
+Připojení k Office 365 jsou navíc silně šifrovaná pro ochranu osobních údajů a využívají efektivní a proprietární protokoly z důvodů výkonu. To je nepraktické a mělo by to mít vliv na to, aby se tato připojení mohla vztahovat na tradiční řešení zabezpečení na úrovni sítě. Z těchto důvodů důrazně doporučujeme, aby zákazníci odesílali provoz Office 365 přímo z větví, a to ještě před odesláním zbytku dat prostřednictvím Azure. Microsoft spolupracuje s několika poskytovateli řešení SD-WAN, kteří se integrují s Azure a Office 365, a usnadňuje zákazníkům možnost Povolit sadu Office 365 Direct a Local Internet užitečných. Podrobnosti najdete v tématu [návody nastavení zásad O365 přes virtuální síť WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
 
 
 ## <a name="next-steps"></a>Další kroky

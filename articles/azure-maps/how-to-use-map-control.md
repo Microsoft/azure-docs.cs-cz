@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ff183261f67ff76f56fc034d8102e3aa3a4838a8
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432916"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
 
@@ -36,7 +36,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 
     b. Případně můžete zdrojový kód Azure Maps Web SDK načíst místně pomocí balíčku [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) npm a hostovat ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
 
-    > NPM instalace Azure-Maps-Control
+    > **NPM instalace Azure-Maps-Control**
 
     Pak přidejte odkazy na Azure Maps šablon stylů a odkazů na zdrojový odkaz na element `<head>` souboru:
 
@@ -74,7 +74,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     </body>
     ```
 
-5. Chcete-li inicializovat mapový ovládací prvek, definujte nový oddíl v těle HTML a vytvořte skript. Při vytváření instance třídy `Map` předat `id` mapování `<div>` nebo `HTMLElement` (například `document.getElementById('myMap')`) jako první parametr. Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete vytvořit účet nebo najít klíč, přečtěte si téma [Správa účtu Azure Maps a klíčů](how-to-manage-account-keys.md). Možnost **Language** určuje jazyk, který má být použit pro popisky a ovládací prvky mapy. Další informace o podporovaných jazycích najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
+5. Chcete-li inicializovat mapový ovládací prvek, definujte nový oddíl v těle HTML a vytvořte skript. Při vytváření instance třídy `Map` předat `id` mapování `<div>` nebo `HTMLElement` (například `document.getElementById('myMap')`) jako první parametr. Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete vytvořit účet nebo najít klíč, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) pro vytvoření předplatného účtu Azure Maps a postupujte podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) pro získání primárního klíče pro váš účet. Možnost **Language** určuje jazyk, který má být použit pro popisky a ovládací prvky mapy. Další informace o podporovaných jazycích najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
 
     ```HTML
     <script type="text/javascript">
@@ -210,6 +210,26 @@ Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a v místn
 ![Obrázek mapy znázorňující popisky ve francouzštině](./media/how-to-use-map-control/websdk-localization.png)
 
 Úplný seznam podporovaných jazyků a regionálních zobrazení je popsán [zde](supported-languages.md).
+
+## <a name="azure-government-cloud-support"></a>Podpora cloudu Azure Government
+
+Sada Azure Maps Web SDK podporuje cloud Azure Government. Všechny adresy URL JavaScriptu a CSS použité pro přístup k sadě Azure Maps Web SDK zůstávají stejné, ale následující úlohy se musí udělat pro připojení k Azure Government cloudové verzi Azure Maps platformy.
+
+Při použití interaktivního ovládacího prvku mapy přidejte následující řádek kódu před vytvořením instance třídy `Map`. 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+Při ověřování map a služeb nezapomeňte použít podrobnosti ověřování Azure Maps z Azure Government cloudové platformy.
+
+Při použití modulu služeb musí být při vytváření instance koncového bodu adresy URL rozhraní API nastavena doména pro služby. Například následující kód vytvoří instanci třídy `SearchURL` a nasměruje doménu do cloudu Azure Government.
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL na `atlas.azure.us`. Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na `https://atlas.azure.us/search/`.
 
 ## <a name="next-steps"></a>Další kroky
 

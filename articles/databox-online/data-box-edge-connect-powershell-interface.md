@@ -1,6 +1,6 @@
 ---
-title: Připojení k a správu Microsoft Azure Data Box hraničních zařízení prostřednictvím rozhraní Windows PowerShell | Dokumentace Microsoftu
-description: Popisuje, jak k připojení a potom spravovat okraj pole Data prostřednictvím rozhraní Windows PowerShell.
+title: Připojení a Správa Microsoft Azure Data Box Edge zařízení přes rozhraní Windows PowerShellu | Microsoft Docs
+description: Popisuje, jak se připojit ke službě Data Box Edge přes rozhraní Windows PowerShell a potom je spravovat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,34 +8,34 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448629"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613852"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Správa Azure Data Box hraničního zařízení pomocí Windows Powershellu
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Správa zařízení Azure Data Box Edge přes Windows PowerShell
 
-Azure Data Box řešení vám umožní zpracování dat a odesílání přes síť do Azure. Tento článek popisuje některé z úloh konfigurace a správa pro vaše zařízení Data Box Edge. Na webu Azure portal, místního webového uživatelského rozhraní nebo rozhraní Windows PowerShell můžete použít ke správě vašeho zařízení.
+Azure Data Box Edge řešení umožňuje zpracovávat data a odesílat je přes síť do Azure. Tento článek popisuje některé úlohy konfigurace a správy pro vaše zařízení Data Box Edge. Ke správě zařízení můžete použít rozhraní Azure Portal, místní webové uživatelské rozhraní nebo prostředí Windows PowerShell.
 
-Tento článek se zaměřuje na úlohy, které můžete provést pomocí rozhraní PowerShell.
+Tento článek se zaměřuje na úlohy, které provedete pomocí prostředí PowerShell.
 
 Tento článek obsahuje následující postupy:
 
-- Připojení k rozhraní prostředí PowerShell
-- Vytvořit balíček pro podporu
+- Připojení k rozhraní PowerShell
+- Vytvoření balíčku pro podporu
 - Nahrání certifikátu
 - Resetování zařízení
-- Zobrazení informací o zařízení
-- Získání protokolů výpočetní prostředky
-- Monitorování a odstraňování potíží výpočetní moduly
+- Zobrazit informace o zařízení
+- Získat výpočetní protokoly
+- Monitorování a řešení potíží s výpočetními moduly
 
-## <a name="connect-to-the-powershell-interface"></a>Připojení k rozhraní prostředí PowerShell
+## <a name="connect-to-the-powershell-interface"></a>Připojení k rozhraní PowerShell
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
-## <a name="create-a-support-package"></a>Vytvořit balíček pro podporu
+## <a name="create-a-support-package"></a>Vytvoření balíčku pro podporu
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
@@ -43,35 +43,35 @@ Tento článek obsahuje následující postupy:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Můžete také nahrát certifikáty IoT Edge umožňuje zabezpečené připojení mezi zařízení IoT Edge a podřízené zařízení může připojit k němu. Existují tři certifikáty IoT Edge ( *.pem* formátu), který je potřeba nainstalovat:
+Můžete také nahrát IoT Edge certifikátů a povolit tak zabezpečené připojení mezi zařízením IoT Edge a zařízeními pro příjem dat, která se k němu mohou připojit. Existují tři certifikáty IoT Edge (formát *. pem* ), které je třeba nainstalovat:
 
-- Certifikát kořenové certifikační Autority nebo vlastník certifikační Autority
+- Certifikát kořenové certifikační autority nebo certifikační autorita vlastníka
 - Certifikát certifikační Autority zařízení
-- Zařízení klíče certifikátu
+- Certifikát klíče zařízení
 
-Následující příklad ukazuje použití této rutiny instalace certifikátů IoT Edge:
+Následující příklad ukazuje použití této rutiny k instalaci IoT Edgech certifikátů:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-Při spuštění této rutiny se výzva k zadání hesla pro sdílené síťové složce.
+Při spuštění této rutiny se zobrazí výzva, abyste zadali heslo pro sdílenou síťovou složku.
 
-Další informace o certifikátech naleznete v části [certifikáty Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) nebo [nainstalujte certifikáty na bránu](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
+Další informace o certifikátech najdete v [Azure IoT Edge certifikáty](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) nebo [Instalace certifikátů na bránu](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
 
-## <a name="view-device-information"></a>Zobrazení informací o zařízení
+## <a name="view-device-information"></a>Zobrazit informace o zařízení
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
-## <a name="reset-your-device"></a>Tovární nastavení zařízení
+## <a name="reset-your-device"></a>Resetování zařízení
 
 [!INCLUDE [Reset your device](../../includes/data-box-edge-gateway-deactivate-device.md)]
 
-## <a name="get-compute-logs"></a>Získání protokolů výpočetní prostředky
+## <a name="get-compute-logs"></a>Získat výpočetní protokoly
 
-Pokud výpočetní roli je nakonfigurovaný na vašem zařízení, můžete také získat protokoly výpočetní prostřednictvím rozhraní PowerShell.
+Pokud je v zařízení nakonfigurovaná výpočetní role, můžete získat výpočetní protokoly i přes rozhraní PowerShell.
 
-1. [Připojení k rozhraní PowerShell](#connect-to-the-powershell-interface).
-2. Použití `Get-AzureDataBoxEdgeComputeRoleLogs` vám pomůže získat protokoly výpočetní prostředky pro vaše zařízení.
+1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
+2. K získání výpočetních protokolů pro vaše zařízení použijte `Get-AzureDataBoxEdgeComputeRoleLogs`.
 
     Následující příklad ukazuje použití této rutiny:
 
@@ -79,19 +79,19 @@ Pokud výpočetní roli je nakonfigurovaný na vašem zařízení, můžete tak�
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
-    Tady je popis parametrů použitých pro tuto rutinu:
-    - `Path`: Zadejte síťovou cestu ke sdílené složce, ve kterém chcete vytvořit balíček protokolu výpočetní prostředky.
-    - `Credential`: Zadejte uživatelské jméno pro sdílené síťové složce. Při spuštění této rutiny je potřeba zadat heslo sdílené složky.
-    - `FullLogCollection`: Tento parametr zajišťuje, že balíček protokolu bude obsahovat všechny protokoly výpočetní prostředky. Ve výchozím nastavení balíček protokolu obsahuje pouze podmnožinu protokolů.
+    Tady je popis parametrů použitých pro rutinu:
+    - `Path`: zadejte síťovou cestu ke sdílené složce, ve které chcete vytvořit balíček výpočetního protokolu.
+    - `Credential`: zadejte uživatelské jméno pro sdílenou síťovou složku. Při spuštění této rutiny budete muset zadat heslo pro sdílení.
+    - `FullLogCollection`: Tento parametr zajistí, že bude balíček protokolu obsahovat všechny protokoly výpočtů. Ve výchozím nastavení obsahuje balíček protokolu pouze podmnožinu protokolů.
 
-## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorování a odstraňování potíží výpočetní moduly
+## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorování a řešení potíží s výpočetními moduly
 
 [!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
-## <a name="exit-the-remote-session"></a>Ukončete relaci vzdálené
+## <a name="exit-the-remote-session"></a>Ukončit vzdálenou relaci
 
-Pro ukončení vzdálené relace prostředí PowerShell, zavřete okno prostředí PowerShell.
+Pokud chcete ukončit vzdálenou relaci PowerShellu, zavřete okno PowerShell.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Rychle nasaďte [Azure Data Box Edge](data-box-edge-deploy-prep.md) na webu Azure Portal.

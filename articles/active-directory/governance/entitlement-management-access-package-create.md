@@ -1,5 +1,5 @@
 ---
-title: Vytvoření nového balíčku pro přístup ve správě nároků Azure AD – Azure Active Directory
+title: Vytvoření nového přístupového balíčku v rámci správy nároků – Azure AD
 description: Naučte se, jak vytvořit nový balíček pro přístup k prostředkům, které chcete sdílet, v Azure Active Directory správu nároků.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71aa999809ba3d3e32d38162dfaba869d9716031
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602707"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422698"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -57,7 +57,7 @@ Tady je postup vysoké úrovně pro vytvoření nového přístupového balíčk
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
 
@@ -119,7 +119,7 @@ V závislosti na tom, kdo má být schopný požádat o přístup k tomuto balí
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>Zkontrolovat a vytvořit
+## <a name="review--create"></a>Revize a vytvoření
 
 Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat chyby ověřování.
 

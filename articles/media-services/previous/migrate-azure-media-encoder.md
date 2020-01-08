@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: e9c83a25147696b5e492241a191b3104df001c7c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7bbebe71f6a3278d70767ac9f9dbb9d55e6d481a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453381"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrace z Azure Media Encoder na Media Encoder Standard
 
-Tento článek popisuje kroky pro migraci z starší verze Azure Media Encoder (s dodaným), který se z 1. března 2020 přenáší na procesor Media Encoder Standard Media.  
+Tento článek popisuje kroky pro migraci z starší verze Azure Media Encoder (s dodaným), který se z 31. března 2020 na procesor Media Encoder Standard Media.  
 
 Při kódování souborů pomocí ázev zákazníci obvykle použili pojmenovaný přednastavený řetězec, například `H264 Adaptive Bitrate MP4 Set 1080p`. Aby bylo možné provést migraci, je nutné aktualizovat kód tak, aby používal procesor **Media Encoder Standard** Media místo ázev a jednu z ekvivalentních [systémových předvoleb](media-services-mes-presets-overview.md) jako `H264 Multiple Bitrate 1080p`. 
 
@@ -67,7 +67,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 Pokud jste vytvořili vlastní předvolby kódování pro ázev pro \ jméno pomocí svého schématu, existuje [stejné schéma pro Media Encoder Standard](media-services-mes-schema.md). Pokud máte dotazy k namapování starších nastavení na nový kodér, obraťte se na nás prostřednictvím mailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Známé rozdíly 
 
-Media Encoder Standard je robustnější, spolehlivější, má lepší výkon a produkuje kvalitní výstup než starší ázev kodéru. Navíc platí: 
+Media Encoder Standard je robustnější, spolehlivější, má lepší výkon a produkuje kvalitní výstup než starší ázev kodéru. Dále musí být splněny všechny tyto podmínky: 
 
 * Media Encoder Standard vytváří výstupní soubory s jinou konvencí pojmenování, než je ázev.
 * Media Encoder Standard vytváří artefakty, jako jsou soubory obsahující [metadata vstupních souborů](media-services-input-metadata-schema.md) a [metadata výstupních souborů](media-services-output-metadata-schema.md).

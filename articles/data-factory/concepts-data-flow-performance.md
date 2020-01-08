@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444514"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -81,7 +81,7 @@ I když vaše data v cílových tabulkách nejsou rozdělená do oddílů, dopor
 
 ### <a name="disable-indexes-on-write"></a>Zakázat indexy při zápisu
 
-V kanálu přidejte [aktivitu uložené procedury](transform-data-using-stored-procedure.md) do aktivity toku dat, která zakáže indexy na cílových tabulkách napsaných z jímky. Po aktivitě toku dat přidejte další aktivitu uložené procedury, která povoluje tyto indexy.
+V kanálu přidejte [aktivitu uložené procedury](transform-data-using-stored-procedure.md) do aktivity toku dat, která zakáže indexy na cílových tabulkách napsaných z jímky. Po aktivitě toku dat přidejte další aktivitu uložené procedury, která povoluje tyto indexy. Nebo využijte skripty předběžného zpracování a následného zpracování v jímky databáze.
 
 ### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Zvětšete velikost vaší databáze SQL Azure a DW.
 
@@ -114,7 +114,7 @@ Aby se zabránilo vyčerpání prostředků výpočetních uzlů, ponechte vých
 
 ### <a name="looping-through-file-lists"></a>Procházení seznamem souborů
 
-Tok dat mapování bude proveden lépe, pokud zdrojová transformace prochází přes více souborů místo smyček prostřednictvím smyčky pro každou aktivitu. Ve zdrojové transformaci doporučujeme používat zástupné znaky nebo seznamy souborů. Proces toku dat se zrychluje tím, že umožňuje opakování smyčky v rámci clusteru Spark. Další informace najdete v tématu [zástupné znaky v transformaci zdroje](data-flow-source.md#file-based-source-options).
+Tok dat mapování bude proveden lépe, pokud zdrojová transformace prochází přes více souborů místo smyček prostřednictvím smyčky pro každou aktivitu. Ve zdrojové transformaci doporučujeme používat zástupné znaky nebo seznamy souborů. Proces toku dat se zrychluje tím, že umožňuje opakování smyčky v rámci clusteru Spark. Další informace najdete v tématu [zástupné znaky v transformaci zdroje](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
 
 Pokud máte například seznam datových souborů z července 2019, které chcete zpracovat ve složce v Blob Storage, níže je zástupný znak, který můžete použít ve své zdrojové transformaci.
 
@@ -127,8 +127,8 @@ Když použijete zástupné znaky, kanál bude obsahovat jenom jednu aktivitu to
 Nastavení propustnosti a vlastností dávky u jímky CosmosDB se projeví pouze během provádění tohoto toku dat z aktivity toku dat kanálu. Po spuštění toku dat budou v CosmosDB dodržena původní nastavení kolekce.
 
 * Velikost dávky: Vypočítejte přibližnou velikost řádků dat a ujistěte se, že velikost dávky rowSize * je menší než 2 000 000. Pokud je, zvyšte velikost dávky, abyste získali lepší propustnost.
-* Througput: tady nastavte vyšší propustnost, aby bylo možné dokumentům zapisovat rychleji na CosmosDB. Na základě nastavení vysoké propustnosti Prosím mějte na paměti vyšší náklady na RU.
-*   Rozpočet propustnosti zápisu: použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem Spark partitiongs, nastavení propustnosti rozpočtu umožníte větší rovnováhu mezi těmito oddíly.
+* Propustnost: tady nastavte vyšší propustnost, aby bylo možné dokumentům psát rychleji CosmosDB. Na základě nastavení vysoké propustnosti Prosím mějte na paměti vyšší náklady na RU.
+*   Rozpočet propustnosti zápisu: použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem oddílů Spark, nastavení propustnosti rozpočtu umožní v těchto oddílech větší rovnováhu.
 
 ## <a name="next-steps"></a>Další kroky
 

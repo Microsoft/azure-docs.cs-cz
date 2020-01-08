@@ -1,6 +1,6 @@
 ---
-title: Ukázka skriptu Azure PowerShell – kopírování (Přesun) spravovaných disků do stejného nebo jiného předplatného
-description: Ukázka skriptu Azure PowerShell – kopírování (Přesun) spravovaných disků do stejného nebo jiného předplatného
+title: Kopírování spravovaných disků do předplatného – ukázka PowerShellu
+description: Ukázka skriptu Azure PowerShell – kopírování (nebo přesun) spravovaných disků do stejného nebo jiného předplatného
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: bb473a2f543c1621b99904b5a58dc7fc6625f6fc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e655ce33c8952acab7228f4caae81f09c2d56ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021466"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375895"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Kopírování spravovaných disků v rámci stejného předplatného nebo jiného předplatného pomocí PowerShellu
 
@@ -39,7 +39,7 @@ Tento skript vytvoří kopii existujícího spravovaného disku ve stejném pře
 
 Tento skript k vytvoření nového spravovaného disku v cílovém předplatném pomocí ID zdrojového spravovaného disku používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Vytvoří konfiguraci disku, která se použije při vytvoření disku. Zahrnuje ID prostředku nadřazeného disku a umístění, které je stejné jako umístění nadřazeného disku.  |
 | [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Vytvoří disk pomocí konfigurace disku, názvu disku a názvu skupiny prostředků, které použije jako parametry. |

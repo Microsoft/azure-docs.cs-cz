@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace Azure Cosmos DB .NET Framework nebo .NET Core využívající rozhraní Gremlin API
+title: Vytvoření Azure Cosmos DB .NET Framework, základní aplikace pomocí rozhraní Gremlin API
 description: Obsahuje ukázku kódu v .NET Framework a .NET Core, kterou můžete použít k připojení ke službě Azure Cosmos DB a jejímu dotazování.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: lbosq
-ms.openlocfilehash: c4acfc640829d323752619122e5df0e8b4dc58a7
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: d74a7d2171f926a7a97562339d4cab36b354bfbe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441971"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rychlý start: Vytvoření .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: vytvoření .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -26,7 +26,7 @@ ms.locfileid: "68735281"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
 
 Tento rychlý Start ukazuje, jak vytvořit Azure Cosmos DB účet [rozhraní API Gremlin](graph-introduction.md) , databázi a graf (kontejner) pomocí Azure Portal. Potom sestavíte a spustíte konzolovou aplikaci pomocí open source ovladače [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
 
@@ -48,7 +48,7 @@ Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si st
 
 Teď naklonujeme aplikaci rozhraní Gremlin API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
     ```bash
     md "C:\git-samples"
@@ -216,7 +216,7 @@ Teď se můžete vrátit do Průzkumníku dat na webu Azure Portal, procházet n
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření grafu pomocí Průzkumníku dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 

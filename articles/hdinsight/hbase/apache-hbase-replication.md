@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435667"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBA v Azure Virtual Networks
 
@@ -38,7 +38,7 @@ Následující jsou adaptéry HBA v případech využití replikace pro dvě vir
 
 Clustery můžete replikovat pomocí skriptů [skriptových akcí](../hdinsight-hadoop-customize-cluster-linux.md) z [GitHubu](https://github.com/Azure/hbase-utils/tree/master/replication).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než začnete tento článek, musíte mít předplatné Azure. Viz [získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="set-up-the-environments"></a>Nastavení prostředí
@@ -51,7 +51,7 @@ Máte tři možnosti konfigurace:
 
 Tento článek se věnuje scénáři geografické replikace.
 
-Abychom vám pomohli nastavit prostředí, vytvořili jsme několik [šablon Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Pokud dáváte přednost nastavení prostředí pomocí jiných metod, přečtěte si:
+Abychom vám pomohli nastavit prostředí, vytvořili jsme několik [šablon Azure Resource Manager](../../azure-resource-manager/management/overview.md). Pokud dáváte přednost nastavení prostředí pomocí jiných metod, přečtěte si:
 
 - [Vytváření clusterů Apache Hadoop ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Vytváření clusterů Apache HBA v Azure Virtual Network](apache-hbase-provision-vnet.md)
@@ -85,7 +85,7 @@ Některé pevně zakódované hodnoty v šabloně:
 
 | Vlastnost | Hodnota |
 |----------|-------|
-| Umístění | USA – východ |
+| Umístění | Východní USA |
 | Název virtuální sítě | &lt;ClusterNamePrevix > – vnet2 |
 | Předpona adresního prostoru | 10.2.0.0/16 |
 | Název podsítě | podsíť 1 |
@@ -104,7 +104,7 @@ V poslední části šablona vytvoří virtuální počítač s Ubuntu v každé
 
 Aby bylo možné službu BIND nainstalovat, Yon musí najít veřejnou IP adresu dvou virtuálních počítačů DNS.
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 2. Otevřete virtuální počítač DNS tak, že vyberete **skupiny prostředků > [název skupiny prostředků] > [vnet1DNS]** .  Název skupiny prostředků je ten, který vytvoříte v posledním postupu. Výchozí názvy virtuálních počítačů DNS jsou *vnet1DNS* a *vnet2NDS*.
 3. Výběrem **vlastnosti** otevřete stránku vlastností virtuální sítě.
 4. Zapište si **veřejnou IP adresu**a taky ověřte **privátní IP adresu**.  Privátní IP adresa musí být **10.1.0.4** pro vnet1DNS a **10.2.0.4** pro vnet2DNS.  
@@ -303,7 +303,7 @@ Následující postup popisuje, jak volat skript akce skriptu z Azure Portal. In
       >
       > Tento názorný postup předpokládá HN1 jako aktivní hlavnímu uzlu. Zkontrolujte prosím cluster, abyste identifikovali aktivní hlavní uzel.
 
-6. Vyberte **Create** (Vytvořit). Spuštění skriptu může trvat delší dobu, zejména při použití argumentu **-COPYDATA** .
+6. Vyberte **Vytvořit**. Spuštění skriptu může trvat delší dobu, zejména při použití argumentu **-COPYDATA** .
 
 Požadované argumenty:
 
@@ -392,7 +392,7 @@ Pokud chcete replikaci zakázat, použijte jiný skript akce skriptu z [GitHubu]
 - **Zakázat replikaci na všech tabulkách**:
 
         -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
-  nebo
+  – nebo –
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 

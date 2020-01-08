@@ -1,6 +1,6 @@
 ---
-title: Přidat nebo aktualizovat informace o profilu uživatele – Azure Active Directory | Microsoft Docs
-description: Pokyny k přidání informací do profilu uživatele v Azure Active Directory, včetně podrobností o obrázku a úloze.
+title: Přidání nebo aktualizace informací o profilu uživatele – Azure AD
+description: Pokyny ohledně toho, jak přidat informace do profilu uživatele v Azure Active Directory, včetně obrázků a úlohy podrobnosti.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,58 +12,58 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c416d7279dd558b8a793064e295b7654925b1c8
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8ba51b0ad7f314058f34092dff4e26411020086a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422884"
 ---
-# <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory
-Přidejte informace o profilu uživatele, včetně profilového obrázku, informací specifických pro úlohu a některých nastavení pomocí Azure Active Directory (Azure AD). Další informace o přidání nových uživatelů najdete v tématu [Postup přidání nebo odstranění uživatelů v Azure Active Directory](add-users-azure-active-directory.md).
+# <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Přidat nebo aktualizovat informace o profilu uživatele pomocí služby Azure Active Directory
+Přidejte informace o profilu uživatele, včetně profilový obrázek, informace specifické pro úlohy a některá nastavení pomocí Azure Active Directory (Azure AD). Další informace o přidávání nových uživatelů najdete v tématu [postup přidání nebo odstranění uživatelů ve službě Azure Active Directory](add-users-azure-active-directory.md).
 
-## <a name="add-or-change-profile-information"></a>Přidat nebo změnit informace o profilu
-Jak vidíte, v profilu uživatele jsou k dispozici další informace, než kolik máte v průběhu vytváření uživatele možné přidat. Všechny tyto další informace jsou volitelné a je možné je podle potřeby přidat do vaší organizace.
+## <a name="add-or-change-profile-information"></a>Přidání nebo změně informací profilu
+Jak uvidíte, existuje další informace k dispozici v profilu uživatele, než co budete moci přidat při vytváření uživatele. Tyto další informace je volitelné a můžete přidat podle potřeby vaší organizací.
 
-## <a name="to-add-or-change-profile-information"></a>Přidání nebo změna informací o profilu
+## <a name="to-add-or-change-profile-information"></a>Přidání nebo změně informací profilu
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce uživatele pro organizaci.
 
-2. Vyberte **Azure Active Directory**, vyberte **uživatele**a pak vyberte uživatele. Například _Alain Charon_.
+2. Vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte uživatele. Například _Alain Charon_.
 
-    Zobrazí se stránka **Alain Charon-Profile** .
+    **Alain Charon – profil** se zobrazí stránka.
 
-    ![Stránka profilu uživatele, včetně upravitelných informací](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
+    ![Stránka profilu uživatele, včetně upravitelné informace](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. Pokud chcete přidat nebo aktualizovat informace obsažené v jednotlivých dostupných oddílech, vyberte **Upravit** .
+3. Vyberte **upravit** volitelně přidat nebo aktualizovat informace obsažené v každém dostupné oddíly.
 
-    ![Stránka profilu uživatele zobrazující upravitelné oblasti](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
+    ![Stránka profilu uživatele, zobrazuje upravitelné oblasti](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
 
-    - **Profilový obrázek** Vyberte obrázek miniatury pro uživatelský účet. Tento obrázek se zobrazí v Azure Active Directory a na osobních stránkách uživatele, jako je například stránka myapps.microsoft.com.
+    - **Profilový obrázek.** Vyberte obrázek miniatury pro uživatelský účet. Tento obrázek se zobrazí v Azure Active Directory a na stránkách osobní uživatele, jako je například myapps.microsoft.com stránky.
 
-    - **Odcizen.** Přidejte nebo aktualizujte další hodnotu identity pro uživatele, například název svatby příjmení. Tento název můžete nastavit nezávisle na hodnotách jméno a příjmení. Můžete ho například použít k zahrnutí iniciály, názvu společnosti nebo ke změně pořadí zobrazených názvů. V jiném příkladu můžete pro dva uživatele, jejichž názvy mají "Novák zelený", použít řetězec identity k nastavení jejich názvů na "Novák B. zelený" ' Novák R. zelená (Contoso).
+    - **Identita.** Přidejte nebo aktualizujte další hodnotu identity pro uživatele, například název svatby příjmení. Tento název můžete nastavit nezávisle na hodnotách jméno a příjmení. Můžete ho například použít k zahrnutí iniciály, názvu společnosti nebo ke změně pořadí zobrazených názvů. V jiném příkladu můžete pro dva uživatele, jejichž názvy mají "Novák zelený", použít řetězec identity k nastavení jejich názvů na "Novák B. zelený" ' Novák R. zelená (Contoso).
 
-    - **Informace o úloze** Přidejte jakékoli informace související s úlohou, jako je například pracovní pozice, oddělení nebo manažer uživatele.
+    - **Informace o úloze.** Přidáte jakýchkoli informací souvisejících s úlohami, například pracovní pozice uživatele, oddělení nebo správce.
 
-    - **Možnost.** Rozhodněte, jestli se uživatel může přihlásit k Azure Active Directory tenanta. Můžete také zadat globální umístění uživatele.
+    - **Nastavení.** Rozhodněte, jestli uživatel může přihlásit k tenantovi Azure Active Directory. Můžete také zadat globální umístění uživatele.
 
-    - **Kontaktní údaje.** Přidejte jakékoli relevantní kontaktní informace pro uživatele, s výjimkou telefonu nebo mobilního kontaktu některých uživatelů (pro uživatele v rolích správce se může aktualizovat jenom globální správce).
+    - **Kontaktní informace.** Přidejte jakékoli relevantní kontaktní informace pro uživatele, s výjimkou telefonu nebo mobilního kontaktu některých uživatelů (pro uživatele v rolích správce se může aktualizovat jenom globální správce).
 
-    - **Kontaktní údaje pro ověření** Ověřte tyto informace a ujistěte se, že pro uživatele existuje aktivní telefonní číslo a e-mailová adresa. Tyto informace používá Azure Active Directory k tomu, abyste se ujistili, že uživatel je během přihlašování skutečně uživatelem. Kontaktní údaje pro ověření se dají aktualizovat jenom globálním správcem.
+    - **Kontaktní údaje pro ověření.** Zkontrolujte tyto informace, abyste měli jistotu, že není aktivní telefonní číslo a e-mailovou adresu uživatele. Tyto informace slouží službou Azure Active Directory, abyste měli jistotu, že uživatel je ve skutečnosti uživatele během přihlášení. Kontaktní údaje pro ověření můžete aktualizovat jenom globální správce.
 
-4. Vyberte **Save** (Uložit).
+4. Vyberte **Uložit**.
 
-    Všechny vaše změny se uloží pro uživatele.
+    Všechny změny se uloží pro uživatele.
 
     >[!Note]
-    >Abyste mohli aktualizovat identitu, kontaktní údaje nebo informace o úlohách pro uživatele, jejichž zdroj oprávnění je Windows Server Active Directory, musíte použít Windows Server Active Directory. Po dokončení aktualizace musíte počkat na dokončení dalšího cyklu synchronizace, než se změny projeví.
+    >Identity a kontaktní údaje nebo informace o úloze pro uživatele, jehož zdrojem autorita je Windows Server Active Directory aktualizovat, musíte použít Windows Server Active Directory. Po dokončení aktualizace, je nutné počkat na další cyklus synchronizace dokončit předtím, než uvidíte změny.
 
 ## <a name="next-steps"></a>Další kroky
-Po aktualizaci profilů uživatelů můžete provádět následující základní procesy:
+Po aktualizaci profily uživatelů, můžete provést následující základní procesy:
 
-- [Přidat nebo odstranit uživatele](add-users-azure-active-directory.md)
+- [Přidání nebo odstranění uživatelů](add-users-azure-active-directory.md)
 
 - [Přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md)
 
 - [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
 
-Nebo můžete provádět další úlohy správy uživatelů, jako je přiřazení delegátů, používání zásad a sdílení uživatelských účtů. Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../users-groups-roles/index.yml).
+Nebo můžete provádět další úkoly při správě uživatelů, jako je například přiřazení delegáty, pomocí zásad, sdílení a uživatelské účty. Další informace o dalších dostupných akcí najdete v tématu [dokumentace ke službě Azure Active Directory uživatele management](../users-groups-roles/index.yml).

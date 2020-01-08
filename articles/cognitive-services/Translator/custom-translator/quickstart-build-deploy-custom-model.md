@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975750"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446752"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Rychlý Start: sestavení, nasazení a použití vlastního modelu pro překlad
 
 Tento článek poskytuje podrobné pokyny k sestavení překladu systému pomocí vlastního překladatele.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Pokud chcete použít [vlastní portál překladatelů](https://portal.customtranslator.azure.ai) , budete pro přihlášení potřebovat účet [účet Microsoft](https://signup.live.com) nebo [Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (hostující účet organizace v Azure).
 
@@ -37,7 +37,7 @@ Na úvodní stránce portálu pro vlastní Překladatel klikněte na nový proje
 
 ## <a name="upload-documents"></a>Uložení dokumentů
 
-Potom nahrajte [školení](training-and-model.md#training-dataset-for-custom-translator), [vyladění](training-and-model.md#tuning-dataset-for-custom-translator) a [testování](training-and-model.md#testing-dataset-for-custom-translator) sad dokumentů. Můžete nahrát [paralelní](what-are-parallel-documents.md) i kombinované dokumenty. Můžete také nahrát [slovník](what-is-dictionary.md).
+Potom nahrajte [školení](training-and-model.md#training-document-type-for-custom-translator), [vyladění](training-and-model.md#tuning-document-type-for-custom-translator) a [testování](training-and-model.md#testing-dataset-for-custom-translator) sad dokumentů. Můžete nahrát [paralelní](what-are-parallel-documents.md) i kombinované dokumenty. Můžete také nahrát [slovník](what-is-dictionary.md).
 
 Dokumenty můžete odeslat buď na kartě dokumenty, nebo na stránce konkrétního projektu.
 
@@ -49,7 +49,7 @@ Při nahrávání dokumentů vyberte typ dokumentu (školení, ladění nebo tes
 
 Po nahrání všech požadovaných dokumentů je dalším krokem sestavení modelu.
 
-Vyberte projekt, který jste vytvořili. Zobrazí se všechny dokumenty, které jste nahráli, a tento projekt sdílí dvojici jazyků. Vyberte dokumenty, které chcete zahrnout do modelu. Můžete vybrat [školení](training-and-model.md#training-dataset-for-custom-translator), [ladění](training-and-model.md#tuning-dataset-for-custom-translator)a [testování](training-and-model.md#testing-dataset-for-custom-translator) dat nebo vybrat pouze školicí data a umožnit vlastní překladateli automaticky sestavit optimalizace a sady testů pro váš model.
+Vyberte projekt, který jste vytvořili. Zobrazí se všechny dokumenty, které jste nahráli, a tento projekt sdílí dvojici jazyků. Vyberte dokumenty, které chcete zahrnout do modelu. Můžete vybrat [školení](training-and-model.md#training-document-type-for-custom-translator), [ladění](training-and-model.md#tuning-document-type-for-custom-translator)a [testování](training-and-model.md#testing-dataset-for-custom-translator) dat nebo vybrat pouze školicí data a umožnit vlastní překladateli automaticky sestavit optimalizace a sady testů pro váš model.
 
 ![Vytvoření modelu](media/quickstart/ct-how-to-train.png)
 

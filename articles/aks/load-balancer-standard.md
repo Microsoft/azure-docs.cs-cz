@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43a2c64560b145531e15a35deb9321b6553782a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430826"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -54,6 +54,10 @@ Při vytváření a správě clusterů AKS, které podporují Nástroj pro vyrov
 * Definování SKU nástroje pro vyrovnávání zatížení se dá provést jenom při vytváření clusteru AKS. SKU nástroje pro vyrovnávání zatížení nelze změnit po vytvoření clusteru AKS.
 * V jednom clusteru můžete použít jenom jeden typ SKU nástroje pro vyrovnávání zatížení (Basic nebo Standard).
 * *Standardní* Služby Vyrovnávání zatížení SKU podporují jenom IP adresy *standardních* SKU.
+
+## <a name="use-the-standard-sku-load-balancer"></a>Použijte nástroj pro vyrovnávání zatížení *Standard* SKU
+
+Když vytvoříte cluster AKS, použije se ve výchozím nastavení nástroj pro vyrovnávání zatížení *Standard* SKU při spouštění služeb v tomto clusteru. Například [rychlý Start pomocí Azure CLI][aks-quickstart-cli] nasadí ukázkovou aplikaci, která používá nástroj pro vyrovnávání zatížení *Standard* SKU. 
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurace nástroje pro vyrovnávání zatížení jako interního
 
@@ -177,12 +181,34 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 V příkladu výstupu je *AllocatedOutboundPorts* 0. Hodnota pro *AllocatedOutboundPorts* znamená, že se přidělení portu SNAT vrátí na automatické přiřazení na základě velikosti fondu back-endu. Další podrobnosti najdete v tématu [Load Balancer odchozích pravidel][azure-lb-outbound-rules] a [odchozích připojení v Azure][azure-lb-outbound-connections] .
 
+## <a name="restrict-access-to-specific-ip-ranges"></a>Omezení přístupu ke konkrétním rozsahům IP adres
+
+Skupina zabezpečení sítě (NSG) přidružená k virtuální síti pro nástroj pro vyrovnávání zatížení má ve výchozím nastavení pravidlo pro povolení všech příchozích externích přenosů. Toto pravidlo můžete aktualizovat tak, aby povolovalo pouze konkrétní rozsahy IP adres pro příchozí provoz. Následující manifest používá *loadBalancerSourceRanges* k určení nového rozsahu IP adres pro příchozí externí provoz:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+  loadBalancerSourceRanges:
+  - MY_EXTERNAL_IP_RANGE
+```
+
+Výše uvedený příklad aktualizuje pravidlo tak, aby povolovalo příchozí externí přenosy jenom z rozsahu *MY_EXTERNAL_IP_RANGE* . Další informace o použití této metody pro omezení přístupu ke službě Vyrovnávání zatížení je k dispozici v [dokumentaci k Kubernetes][kubernetes-cloud-provider-firewall].
+
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o službách Kubernetes Services najdete v [dokumentaci ke službám Kubernetes][kubernetes-services].
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

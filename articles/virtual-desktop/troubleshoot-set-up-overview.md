@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 11/09/2019
+ms.date: 12/06/2019
 ms.author: helohr
-ms.openlocfilehash: 7f80fb07bbed3bdb478bce557241a92cd571cc83
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 817cd09797ad861521a462da9c5d0850c65bf562
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904899"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459573"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží, zpětná vazba a podpora
 
 Tento článek poskytuje přehled o problémech, se kterými se můžete setkat při nastavování prostředí tenanta virtuálních počítačů s Windows, a poskytuje způsoby, jak tyto problémy vyřešit.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -29,7 +29,7 @@ Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se 
 >[!NOTE]
 > Máme Fórum odborné komunity, které můžete navštívit a diskutovat o problémech s produktovým týmem a aktivními členy komunity. Navštivte [technickou komunitu virtuálních počítačů s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) a 
 
-| **Chybu**                                                            | **Navrhované řešení**  |
+| **Problém**                                                            | **Navrhované řešení**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | Vytváření tenanta                                                    | Pokud dojde k výpadku Azure, obraťte se na [podporu Azure](https://azure.microsoft.com/support/options/). jinak **otevřete žádost o podporu pro virtuální počítač s Windows (COMPUTE)** .|
 | Přístup k šablonám Marketplace v Azure Portal       | Pokud dojde k výpadku Azure, obraťte se na [podporu Azure](https://azure.microsoft.com/support/options/). <br> <br> Azure Marketplace šablony virtuálních klientů Windows jsou volně dostupné.|
@@ -38,21 +38,22 @@ Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se 
 | Vytvoření virtuálního počítače fondu hostitelů relace, když se nepoužívají šablony Azure Resource Manager s virtuálním počítačem s Windows | Kontaktujte **podporu Azure (COMPUTE)** . <br> <br> Problémy s Azure Resource Manager šablonami, které jsou k dispozici s virtuálním počítačem s Windows, najdete v části Vytvoření tenanta virtuálních počítačů s Windows v tématu vytváření [fondů klientů a fondů hostitelů](troubleshoot-set-up-issues.md). |
 | Správa prostředí hostitele relace virtuálních počítačů s Windows z Azure Portal    | Kontaktujte **podporu Azure**. <br> <br> Problémy se správou při používání PowerShellu služby Vzdálená plocha/prostředí PowerShell pro virtuální počítače s Windows najdete v tématu [virtuální plocha Windows PowerShell](troubleshoot-powershell.md) nebo **otevřete žádost o podporu pro virtuální plochu Windows (COMPUTE)** . |
 | Správa konfigurace virtuálních klientských počítačů s Windows vázaných na fondy hostitelů a skupiny aplikací (skupiny aplikací)      | Podívejte se na téma [PowerShell virtuální plochy Windows](troubleshoot-powershell.md)nebo **otevřete žádost o podporu pro virtuální plochu Windows (COMPUTE)** . <br> <br> Pokud jsou problémy svázané s ukázkovým grafickým uživatelským rozhraním (GUI), můžete se obrátit na komunitu Yammer.|
-| Selhání klientů vzdálené plochy při spuštění                                                 | Podívejte se na [připojení klienta vzdálené plochy](troubleshoot-client-connection.md) . Pokud to problém nevyřeší, **otevřete žádost o podporu pro virtuální plochu Windows (COMPUTE)** .  <br> <br> Pokud se jedná o problém v síti, uživatelé musí kontaktovat svého správce sítě. |
-| Připojeno, ale bez kanálu                                                                 | Řešení potíží s použitím "připojovat uživatele", ale nic se nezobrazuje (bez informačního kanálu) oddílu [připojení klienta vzdálené plochy](troubleshoot-client-connection.md). <br> <br> Pokud byli vaši uživatelé přiřazeni ke skupině aplikací, **otevřete žádost o podporu pro virtuální plochu Windows (COMPUTE)** . |
+| Selhání klientů vzdálené plochy při spuštění                                                 | Podívejte [se na téma Poradce při potížích s klientem vzdálené plochy](troubleshoot-client.md) a v případě, že problém nevyřeší, **otevřete žádost o podporu pro virtuální plochu Windows (COMPUTE)** .  <br> <br> Pokud se jedná o problém v síti, uživatelé musí kontaktovat svého správce sítě. |
+| Připojeno, ale bez kanálu                                                                 | Řešení potíží pomocí "uživatel se připojuje, ale nic se nezobrazuje (bez informačního kanálu)" [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md). <br> <br> Pokud byli vaši uživatelé přiřazeni ke skupině aplikací, **otevřete žádost o podporu pro virtuální plochu Windows (COMPUTE)** . |
 | Podávat potíže se zjišťováním v důsledku sítě                                            | Uživatelé musí kontaktovat svého správce sítě. |
-| Připojování klientů                                                                    | Viz [připojení klientů vzdálené plochy](troubleshoot-client-connection.md) a pokud problém nevyřeší, přečtěte si téma [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md). |
+| Připojování klientů                                                                    | Viz [připojení k virtuálním počítačům s Windows](troubleshoot-service-connection.md) a pokud to problém nevyřeší, přečtěte si téma [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md). |
 | Reakce vzdálených aplikací nebo plochy                                      | Pokud jsou problémy svázané s konkrétní aplikací nebo produktem, obraťte se na tým, který je zodpovědný za daný produkt. |
 | Licenční zprávy a chyby                                                          | Pokud jsou problémy svázané s konkrétní aplikací nebo produktem, obraťte se na tým, který je zodpovědný za daný produkt. |
-| Problémy při používání nástrojů virtuálních klientů Windows na GitHubu (šablony Azure Resource Manager, nástroj pro diagnostiku, nástroj pro správu) | Nahlásit problémy v [šablonách ARM pro vzdálenou plochu](https://github.com/Azure/RDS-Templates/blob/master/README.md) . |
+| Problémy při používání nástrojů virtuálních klientů Windows na GitHubu (šablony Azure Resource Manager, nástroj pro diagnostiku, nástroj pro správu) | Další informace najdete v tématu [šablony Azure Resource Manager pro službu Vzdálená plocha](https://github.com/Azure/RDS-Templates/blob/master/README.md) k nahlášení problémů. |
 
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
-- Informace o řešení problémů s připojením klienta k virtuální ploše Windows najdete v tématu [připojení klientů vzdálené plochy](troubleshoot-client-connection.md).
+- Informace o řešení potíží s klientskými připojeními k virtuální ploše Windows najdete v tématu [připojení ke službě Virtual Desktop systému Windows](troubleshoot-service-connection.md).
+- Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .
 - Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
-- Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).
+- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/resource-group-audit.md).
+- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/resource-manager-deployment-operations.md).

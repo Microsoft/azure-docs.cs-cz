@@ -2,18 +2,18 @@
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: 485a76cb91e5146f59e6be592ffd9cbba68e585a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f63510771e4bd71a3ab6cf048bc5fb5296042a4d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175124"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564754"
 ---
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
-V tomto kurzu pomocí rozšíření nástroje Azure IoT sestavíte modul a vytvořte **image kontejneru** ze souborů. Tuto image pak nasdílíte do **registru**, ve kterém se ukládají a spravují vaše image. Nakonec nasadíte svou image z registru pro spuštění na zařízení IoT Edge.
+V tomto kurzu pomocí rozšíření Azure IoT Tools sestavíte modul a ze souborů se vytvoří **Image kontejneru** . Tuto image pak nasdílíte do **registru**, ve kterém se ukládají a spravují vaše image. Nakonec nasadíte svou image z registru pro spuštění na zařízení IoT Edge.
 
 Pro uložení imagí kontejnerů, můžete použít jakýkoli registr kompatibilní s Dockerem. Jsou dvě oblíbené služby registrů Dockeru [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) a [Docker Hubu](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). V tomto kurzu se používá služba Azure Container Registry.
 
@@ -30,12 +30,12 @@ Pokud ještě nemáte registr kontejnerů, postupujte podle těchto kroků a vyt
    | Skupina prostředků | Pro všechny testovací prostředky, které vytvoříte v průběhu rychlých startů a kurzů pro IoT Edge, doporučujeme použít stejnou skupinu prostředků. Například **IoTEdgeResources**. |
    | Umístění | Zvolte umístění, které je blízko vás. |
    | Uživatel s rolí správce | Nastavte na **Povolit**. |
-   | Skladová jednotka (SKU) | Vyberte **Basic**. |
+   | Skladová položka | Vyberte **Basic**. |
 
-5. Vyberte **Vytvořit**.
+3. Vyberte **Vytvořit**.
 
-6. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**.
+4. Po vytvoření registru kontejneru ho vyhledejte a v levém podokně vyberte **přístupové klíče** z nabídky, která se nachází v části **Nastavení**.
 
-7. Zkopírujte hodnoty **přihlašovací server**, **uživatelské jméno**, a **heslo** a uložit je někde vhodné. Tyto hodnoty v celém tomto kurzu použijete pro poskytnutí přístupu k registru kontejneru.
+5. Zkopírujte hodnoty pro **přihlašovací server**, **uživatelské jméno**a **heslo** a uložte je někam do vhodného. Tyto hodnoty použijete v celém rámci tohoto kurzu k poskytnutí přístupu k registru kontejneru.
 
-   ![Zkopírovat přihlašovací server, uživatelské jméno a heslo pro registr kontejneru](./media/iot-edge-create-container-registry/registry-access-key.png)
+   ![Kopírovat přihlašovací server, uživatelské jméno a heslo pro registr kontejnerů](./media/iot-edge-create-container-registry/registry-access-key.png)

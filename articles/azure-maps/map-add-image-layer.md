@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fadaaf7c64b11a6d6d94c68234f8288d1b3f8d07
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 631a9e2d44b798404ee7567d3ccfed90628d2f8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480487"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432852"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Přidat vrstvu obrázku do mapy
 
-V tomto článku se dozvíte, jak můžete překrýt obrázek do pevné sady souřadnic na mapě. Existuje mnoho scénářů, ve kterých je překrytí obrázku na mapě provedeno. Tady je několik příkladů typu imagí, které se často překrývají na mapách.
+V tomto článku se dozvíte, jak můžete překrýt obrázek na pevně danou sadu souřadnic na mapě. Tady je několik příkladů typu imagí, které se často překrývají na mapách:
 
-* Obrázky zachycené z DRONY zachraňují životy.
-* Sestavování floorplans.
-* Historické nebo jiné specializované image map.
-* Modrotisky webů úloh.
+* Obrázky zachycené z DRONY zachraňují životy
+* Sestavování floorplans
+* Historické nebo jiné specializované image map
+* Modrotisky webů úloh
 * Obrázky paprsků s počasí
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) je rychlý jednoduchý způsob, jak překrýt obrázek na mapě. Pokud je však obrázek velký, prohlížeč je může bojovat načíst. V takovém případě zvažte rozdělení obrázku do dlaždic a jejich načtení do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) je jednoduchý způsob, jak překrýt obrázek na mapě. Všimněte si, že prohlížeče mohou mít potíže při načítání velkého obrázku. V takovém případě zvažte rozdělení obrázku do dlaždic a jejich načtení do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
 
 Vrstva image podporuje následující formáty obrázků:
 
@@ -38,7 +38,7 @@ Vrstva image podporuje následující formáty obrázků:
 
 ## <a name="add-an-image-layer"></a>Přidání vrstvy obrázků
 
-V následujícím kódu překrývá obrázek [mapy newyorském New Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapě. [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) je vytvořen PŘEDÁNÍM adresy URL obrázku a souřadnicemi pro čtyři rohy ve formátu `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
+Následující kód překrývá obrázek [mapy newyorském, New Jersey, z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapě. [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) se vytvoří PŘEDÁNÍM adresy URL obrázku a souřadnicemi pro čtyři rohy ve formátu `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -53,7 +53,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce.
+Zde je ukázka kompletního běžícího kódu předchozího kódu.
 
 <br/>
 
@@ -62,9 +62,9 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 ## <a name="import-a-kml-ground-overlay"></a>Import překrytí základní desky KML
 
-V této ukázce se dozvíte, jak překrýt informace o překrytí KML základní desky jako vrstvu obrázku na mapě. KML překryvná deska poskytují souřadnice Severní, Jižní, východní a západní délky hodinových ručiček, zatímco vrstva obrázku očekává souřadnice pro každý roh obrázku. Překrytí základní desky KML v této ukázce je Chartres Cathedral a zdroj z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+Tento další příklad ukazuje, jak překrýt informace o překrytí KML, jako vrstvu obrázku na mapě. KML překryvná deska poskytují souřadnice Severní, Jižní, východní a západní osy a rotace po směru hodinových ručiček, zatímco vrstva obrázku očekává souřadnice pro každý roh obrázku. Překrytí základní desky KML v této ukázce je Chartres Cathedral a je ze zdroje [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
 
-Následující kód používá funkci static `getCoordinatesFromEdges` třídy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) k výpočtu čtyř rohů obrázku z informací o Severní, Jižní, východní, západní a rotaci z KMLové překryvné desky.
+Následující kód používá funkci static `getCoordinatesFromEdges` třídy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) . Vypočítá čtyři rohy obrázku z informací o Severní, Jižní, východní a západní oblasti a informace o rotaci z překrytí základní desky KML.
 
 <br/>
 

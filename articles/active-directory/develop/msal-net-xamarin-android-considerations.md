@@ -3,7 +3,7 @@ title: Předpoklady pro Xamarin Android (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb28b8465bf74351c5c6efe9d80dcc01137be5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424154"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Doporučení pro Xamarin Android týkající se MSAL.NET
 Tento článek popisuje konkrétní informace týkající se použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
@@ -35,7 +35,7 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 Můžete ji také nastavit na úrovni PublicClientApplication (v MSAL 4.2 +) prostřednictvím zpětného volání.
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -45,7 +45,7 @@ var pca = PublicClientApplicationBuilder
 
 Doporučením je [použít CurrentActivityPlugin.](https://github.com/jamesmontemagno/CurrentActivityPlugin)  Váš kód tvůrce PublicClientApplication by pak vypadal takto:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -82,6 +82,23 @@ Tento řádek zajistí, že se ovládací prvek vrátí zpět na MSAL, jakmile s
          </intent-filter>
 </activity>
 ```
+
+Nebo můžete [aktivitu vytvořit v kódu](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) a nemusíte je ručně upravovat `AndroidManifest.xml`. V takovém případě je nutné vytvořit třídu, která má atribut `Activity` a `IntentFilter`. Třída, která představuje stejné hodnoty výše uvedeného XML, by byla:
+
+```csharp
+  [Activity]
+  [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, Intent.CategoryDefault },
+        DataHost = "auth",
+        DataScheme = "msal{client_id}")]
+  public class MsalActivity : BrowserTabActivity
+  {
+  }
+```
+
+### <a name="xamarinforms-43x-manifest"></a>XamarinForms 4.3. X – manifest
+
+Kód vygenerovaný XamarinForms 4.3. x nastaví atribut `package` tak, aby `com.companyname.{appName}` v `AndroidManifest.xml`. Pokud používáte `DataScheme` jako `msal{client_id}`, můžete změnit hodnotu na stejné jako obor názvů `MainActivity.cs`.
 
 ## <a name="use-the-embedded-web-view-optional"></a>Použít vložené webové zobrazení (volitelné)
 

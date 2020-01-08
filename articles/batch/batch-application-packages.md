@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e8fdafc3e8f83cb529718993ffe9d0f7383c10c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70095680"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449824"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -94,7 +94,7 @@ Doporučujeme vytvořit účet úložiště *konkrétně* pro použití s účte
 > V současné době nemůžete použít balíčky aplikací s účtem Azure Storage, který je nakonfigurovaný pomocí [pravidel brány firewall](../storage/common/storage-network-security.md).
 > 
 
-Služba Batch používá Azure Storage k ukládání balíčků aplikací jako objektů blob bloku. Poplatky za data objektů blob bloku se [účtují jako normální][storage_pricing] a velikost každého balíčku nemůže překročit [maximální velikost objektu blob bloku](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets). Nezapomeňte vzít v úvahu velikost a počet balíčků aplikací a pravidelně odebírat zastaralé balíčky pro minimalizaci nákladů.
+Služba Batch používá Azure Storage k ukládání balíčků aplikací jako objektů blob bloku. Poplatky za data objektů blob bloku se [účtují jako normální][storage_pricing] a velikost každého balíčku nemůže překročit maximální velikost objektu blob bloku. Další informace najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../storage/blobs/scalability-targets.md). Nezapomeňte vzít v úvahu velikost a počet balíčků aplikací a pravidelně odebírat zastaralé balíčky pro minimalizaci nákladů.
 > 
 > 
 
@@ -110,7 +110,7 @@ Po výběru této možnosti nabídky se otevře okno **aplikace** :
 V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
 * **Balíčky**: počet verzí přidružených k této aplikaci.
-* **Výchozí verze**: verze aplikace je nainstalovaná, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je volitelné.
+* **Výchozí verze**: verze aplikace je nainstalovaná, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je nepovinné.
 * **Povolit aktualizace**: hodnota, která určuje, zda jsou povoleny aktualizace balíčků, odstraňování a přidání. Pokud je toto nastavení nastaveno na **ne**, aktualizace balíčků a odstranění jsou pro aplikaci zakázané. Přidat lze pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
 
 Pokud chcete zobrazit strukturu souborů balíčku aplikace na výpočetním uzlu, přejděte na portál na účet Batch. Z účtu Batch přejděte na **fondy**. Vyberte fond, který obsahuje výpočetní uzel (y), na které vás zajímáte.
@@ -171,7 +171,7 @@ Po výběru souboru kliknutím na tlačítko **OK** zahajte nahrávání na Azur
 > 
 
 ### <a name="add-a-new-application-package"></a>Přidat nový balíček aplikace
-Chcete-li přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v oknech **aplikace** a klikněte na **balíčky**  > **Přidat**.
+Chcete-li přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v oknech **aplikace** a klikněte na **balíčky** > **Přidat**.
 
 ![Okno Přidat balíček aplikace v Azure Portal][8]
 
@@ -260,7 +260,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Například:
+V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Příklad:
 
 ```
 Linux:

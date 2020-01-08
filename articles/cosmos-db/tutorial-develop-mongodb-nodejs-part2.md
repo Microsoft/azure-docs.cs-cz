@@ -1,6 +1,5 @@
 ---
-title: Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB – vytvoření aplikace Node.js Express
-titleSuffix: Azure Cosmos DB
+title: Vytvoření aplikace Node. js Express s rozhraním API Azure Cosmos DB pro MongoDB (Část2)
 description: Druhá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441133"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB – vytvoření aplikace Node.js Express
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – vytvoření aplikace Node. js Express
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md).
+Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md).
 
 Druhá část kurzu vychází z [úvodu](tutorial-develop-mongodb-nodejs.md) a zabývá se následujícími úlohami:
 
@@ -103,7 +102,7 @@ V tomto kurzu budete také potřebovat:
     * Obsluhuje všechno ve složce dist, což bude statický obsah.
     * Obsluhuje aplikaci a na každý požadavek GET, který se nenajde na serveru (pro přímé odkazy), vrátí soubor index.html.
     * Spustí server pomocí funkce app.listen.
-    * Používá funkci šipky k protokolování, že port je aktivní
+    * Pomocí funkce šipky zaznamená, že je port aktivní.
     
    ```node
    const express = require('express');
@@ -148,11 +147,11 @@ V tomto kurzu budete také potřebovat:
 
 7. Uložte všechny upravené soubory. 
 
-8. Ve Visual Studio Code klikněte na tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) a klikněte na tlačítko ozubeného kola ![Tlačítko ozubeného kola ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Ve Visual Studio Code se otevře nový soubor launch.js.
+8. Ve Visual Studio Code klikněte na tlačítko **Ladit**![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) a klikněte na tlačítko ozubeného kola ![Tlačítko ozubeného kola ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Ve Visual Studio Code se otevře nový soubor launch.js.
 
 8. Na řádku 11 souboru launch.json změňte `"${workspaceFolder}\\server"` na `"program": "${workspaceRoot}/src/server/index.js"` a uložte soubor.
 
-9. Kliknutím na tlačítko **Spustit ladění** ![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) spusťte aplikaci.
+9. Kliknutím na tlačítko **Spustit ladění**![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) spusťte aplikaci.
 
     Aplikace by se měla spustit bez chyb.
 
@@ -167,7 +166,7 @@ V tomto kurzu budete také potřebovat:
     ![Postman se zobrazeným požadavkem a odpovědí](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste provedli následující:
 

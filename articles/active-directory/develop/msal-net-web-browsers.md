@@ -1,5 +1,5 @@
 ---
-title: Používání webových prohlížečů s MSAL.NET | Azure
+title: Používání webových prohlížečů (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
@@ -14,14 +14,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44698bc88b87aa76dd55ab5d632ad7276a49aea5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424174"
 ---
-# <a name="using-web-browsers-in-msalnet"></a>Používání webových prohlížečů v MSAL.NET
+# <a name="using-web-browsers-msalnet"></a>Používání webových prohlížečů (MSAL.NET)
+
 Pro interaktivní ověřování se vyžadují webové prohlížeče. Ve výchozím nastavení podporuje MSAL.NET [webový prohlížeč systému](#system-web-browser-on-xamarinios-xamarinandroid) na Xamarin. iOS a Xamarin. Android. [Můžete ale také povolit vložený webový prohlížeč](#enable-embedded-webviews-on-ios-and-android) v závislosti na vašich požadavcích (uživatelské rozhraní, nutnosti jednotného přihlašování (SSO), zabezpečení) v aplikacích [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) a [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) . A můžete dokonce [zvolit](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) , který webový prohlížeč se má použít, na základě přítomnosti Chrome nebo prohlížeče, který podporuje vlastní karty Chrome v Androidu. MSAL.NET podporuje pouze prohlížeč systému v aplikacích klasické pracovní plochy .NET Core.
 
 ## <a name="web-browsers-in-msalnet"></a>Webové prohlížeče v MSAL.NET
@@ -149,7 +150,7 @@ Mezi vloženým webovým zobrazením a systémovým prohlížečem v MSAL.NET js
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí vloženého webviewu:**
 
-![seznam](media/msal-net-web-browsers/embedded-webview.png)
+![vložený](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interaktivní přihlašování pomocí MSAL.NET pomocí systémového prohlížeče:**
 

@@ -1,25 +1,14 @@
 ---
-title: Stavové služby testování částí v Azure Service Fabric | Microsoft Docs
+title: Stavové služby testování částí v Azure Service Fabric
 description: Přečtěte si o konceptech a postupech testování částí Service Fabric stavových služeb.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433912"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Testování částí stavových služeb v Service Fabric
 
@@ -51,13 +40,13 @@ Kromě toho více instancí umožňuje testům přepínat role každé z těchto
 Správce stavu by měl být považován za vzdálený prostředek, a proto je vypsaný. Při napodobování manažera stavu musí být k dispozici určité základní úložiště v paměti pro sledování, co je uloženo do Správce stavu, aby bylo možné ho přečíst a ověřit. Jednoduchým způsobem, jak toho dosáhnout, je vytvořit maketu instancí každého z typů spolehlivých kolekcí. V rámci těchto napodobenin použijte datový typ, který úzce zarovnává s operacemi provedenými proti této kolekci. Následuje několik navrhovaných typů dat pro každou spolehlivou kolekci.
 
 - IReliableDictionary < TKey, TValue >-> System. Collections. současných ConcurrentDictionary < TKey, TValue >
-- IReliableQueue\<T >-> System. Collections. Generic.\<Queue T >
-- IReliableConcurrentQueue\<T >-> System. Collections. souběžný\<. ConcurrentQueue T >
+- IReliableQueue\<T >-> System. Collections. Generic. Queue\<T >
+- IReliableConcurrentQueue\<T >-> System. Collections. současných. ConcurrentQueue\<T >
 
 #### <a name="many-state-manager-instances-single-storage"></a>Mnoho instancí správce stavu, jednotné úložiště
 Jak už bylo zmíněno dříve, správce stavu a spolehlivé kolekce by se měly považovat za vzdálený prostředek. Proto by se tyto prostředky měly a nacházet v rámci testů jednotek. Pokud ale spustíte více instancí stavové služby, bude se jednat o výzvu k tomu, aby byl každý nadaný správce stavu synchronizovaný napříč různými instancemi stavové služby. Když je v clusteru spuštěná stavová služba, Service Fabric se postará o udržování správce stavu jednotlivých sekundárních replik v souladu s primární replikou. Proto by testy měly fungovat stejně, aby mohly simulovat změny rolí.
 
-Jednoduchou způsob, jak tuto synchronizaci dosáhnout, je použít vzor singleton pro základní objekt, který ukládá data zapsaná do každé spolehlivé kolekce. Například pokud stavová služba používá `IReliableDictionary<string, string>`. Správce státních stavů by měl vrátit objekt typu `IReliableDictionary<string, string>`. Tento druh může použít `ConcurrentDictionary<string, string>` k udržení přehledu o zapsaných páru klíč/hodnota. `ConcurrentDictionary<string, string>` By měl být typu Singleton používaného všemi instancemi správců stavu předaných službě.
+Jednoduchou způsob, jak tuto synchronizaci dosáhnout, je použít vzor singleton pro základní objekt, který ukládá data zapsaná do každé spolehlivé kolekce. Například pokud stavová služba používá `IReliableDictionary<string, string>`. Správce státních stavů by měl vracet `IReliableDictionary<string, string>`. Tento model může použít `ConcurrentDictionary<string, string>` k udržení přehledu o zapsaných páru klíč/hodnota. `ConcurrentDictionary<string, string>` by měl být typu Singleton používaného všemi instancemi správců stavu předaných službě.
 
 #### <a name="keep-track-of-cancellation-tokens"></a>Sledovat tokeny zrušení
 Tokeny zrušení jsou důležité, ale obecně se jedná o aspekty stavových služeb. Když Service Fabric spouští primární repliku stavové služby, je k dispozici token zrušení. Tento token zrušení je určen k signalizaci službě při jejím odebrání nebo snížení úrovně na jinou roli. Stavová služba by měla zastavit všechny dlouhotrvající nebo asynchronní operace, aby Service Fabric mohl dokončit pracovní postup změny role.
@@ -79,7 +68,7 @@ Testy jednotek by se měly spouštět co nejvíc kódu aplikace, který může u
     Then the request should should return the "John Smith" employee
 ```
 
-Tento test vyhodnotí, že data zaznamenaná na jedné replice jsou dostupná pro sekundární repliku, když je povýšen na primární. Za předpokladu, že spolehlivá kolekce je záložním úložištěm pro údaje o zaměstnancích, v případě, že se kód aplikace nespustí `CommitAsync` v transakci k uložení nového zaměstnance, je možné, že se v tomto testu nepoužila chyba. V takovém případě druhý požadavek na získání zaměstnanců nevrátí zaměstnance přidaný prvním požadavkem.
+Tento test vyhodnotí, že data zaznamenaná na jedné replice jsou dostupná pro sekundární repliku, když je povýšen na primární. Za předpokladu, že spolehlivá kolekce je záložní úložiště pro údaje o zaměstnancích, v případě, že se kód aplikace nespustí `CommitAsync` na transakci pro uložení nového zaměstnance. V takovém případě druhý požadavek na získání zaměstnanců nevrátí zaměstnance přidaný prvním požadavkem.
 
 ### <a name="acting"></a>Slouží
 #### <a name="mimic-service-fabric-replica-orchestration"></a>Napodobení Service Fabric orchestrace replik
@@ -122,5 +111,5 @@ Dlouhotrvající nebo asynchronní procesy, které by měly být ukončeny, poku
 #### <a name="verify-which-replicas-should-serve-requests"></a>Ověření, které repliky by měly obsluhovat požadavky
 Testy by měly vyhodnotit očekávané chování, je-li požadavek směrován do jiné než primární repliky. Service Fabric poskytuje možnost mít sekundární repliky, které obsluhují požadavky. Zápisy do spolehlivých kolekcí se ale můžou vyskytovat jenom z primární repliky. Pokud vaše aplikace považuje pouze primární repliky na obsluhu požadavků nebo, může být pouze podmnožina požadavků zpracována sekundárním objektem, testy by měly vyhodnotit očekávané chování jak pro kladné, tak i pro negativní případy. Negativní případ, kdy je požadavek směrován do repliky, která by neměla požadavek zpracovávat, a kladné, že se jedná o opak.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Naučte se, jak [jednotkově testovat stavové služby](service-fabric-how-to-unit-test-stateful-services.md).

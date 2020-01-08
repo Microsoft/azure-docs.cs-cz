@@ -1,5 +1,5 @@
 ---
-title: Vytvoření snímku VHD v Azure
+title: Vytvoření snímku virtuálního pevného disku v Azure
 description: Naučte se, jak vytvořit kopii virtuálního počítače Azure, který se použije jako záložní nebo pro řešení problémů.
 documentationcenter: ''
 author: roygara
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b564e20ca8aa5acd7fbd4ea69ac2b1cd72e66d5e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bc74a3eea1f99de6080788d6f3fddcac823092dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370897"
 ---
 # <a name="create-a-snapshot"></a>Vytvoření snímku
 
@@ -27,21 +27,22 @@ Snímek je plná kopie virtuálního pevného disku jen pro čtení (VHD). Můž
 
 Pokud se chystáte použít snímek k vytvoření nového virtuálního počítače, doporučujeme před pořizováním snímku vyčistit virtuální počítač a odstranit tak všechny procesy, které probíhají.
 
-## <a name="use-the-azure-portal"></a>Použití webu Azure Portal 
+## <a name="use-the-azure-portal"></a>Použití portálu Azure 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo vyberte **vytvořit prostředek**a pak vyhledejte a vyberte **snímek**.
+Chcete-li vytvořit snímek, proveďte následující kroky: 
+1.  V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**.
+2. Vyhledejte a vyberte **snímek**.
 3. V okně **snímku** vyberte **vytvořit**. Zobrazí se okno **vytvořit snímek** .
 4. Zadejte **název** snímku.
-5. Vyberte existující [skupinu prostředků](../../azure-resource-manager/resource-group-overview.md#resource-groups) nebo zadejte název nového. 
+5. Vyberte existující [skupinu prostředků](../../azure-resource-manager/management/overview.md#resource-groups) nebo zadejte název nového. 
 6. Vyberte **umístění** datového centra Azure.  
 7. Pro **zdrojový disk**vyberte spravovaný disk, který se má snímek.
 8. Vyberte **typ účtu** , který chcete použít k uložení snímku. Vyberte **Standard_HDD**, pokud nepotřebujete, aby byl snímek uložen na disku s vysokým výkonem.
 9. Vyberte **Vytvořit**.
 
-## <a name="use-powershell"></a>Použití prostředí PowerShell
+## <a name="use-powershell"></a>Použití PowerShellu
 
-Následující kroky ukazují, jak zkopírovat disk VHD, vytvořit konfiguraci snímku a pořídit snímek disku pomocí rutiny [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
+Následující kroky ukazují, jak zkopírovat disk VHD a vytvořit konfiguraci snímku. Pak můžete pořídit snímek disku pomocí rutiny [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
 
  
 

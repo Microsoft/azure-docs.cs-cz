@@ -1,25 +1,16 @@
 ---
-title: Diagnostika a monitorování Azure ServiceFabric | Microsoft Docs
+title: Diagnostika a monitorování Azure ServiceFabric
 description: Tento článek popisuje funkce monitorování výkonu v Service Fabric Reliable ServiceRemoting runtime, jako jsou čítače výkonu emitované.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: suchiagicha
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170478"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426701"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Monitorování diagnostiky a výkonu pro vzdálenou komunikaci spolehlivé služby
 ServiceRemoting runtime Reliable vygeneruje [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Poskytují přehled o tom, jak ServiceRemoting pracuje a umožňuje řešení potíží a monitorování výkonu.
@@ -41,7 +32,7 @@ Aplikace [sledování výkonu systému Windows](https://technet.microsoft.com/li
 Cluster, který má velký počet ServiceRemoting služeb nebo oddílů, má velký počet instancí čítače výkonu. Názvy instancí čítače výkonu vám pomůžou identifikovat konkrétní oddíl a metodu služby (Pokud je k dispozici), ke které je přidružená instance čítače výkonu.
 
 #### <a name="service-fabric-service-category"></a>Kategorie služby Service Fabric
-Pro kategorii `Service Fabric Service` jsou názvy instancí čítače v následujícím formátu:
+V případě `Service Fabric Service`kategorie jsou názvy instancí čítače v následujícím formátu:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
@@ -55,10 +46,10 @@ Následuje příklad názvu instance čítače pro čítač, který patří do k
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-V předchozím příkladu je `2740af29-78aa-44bc-a20b-7e60fb783264` řetězcové vyjádření ID oddílu Service Fabric, `635650083799324046` je řetězcové vyjádření repliky/InstanceId a `5008379932` je 64 ID, které je generováno pro interní použití modulu runtime.
+V předchozím příkladu je `2740af29-78aa-44bc-a20b-7e60fb783264` řetězcové vyjádření ID oddílu Service Fabric, `635650083799324046` je řetězcová reprezentace repliky/InstanceId a `5008379932` je 64 ID, které je vygenerováno pro interní použití modulu runtime.
 
 #### <a name="service-fabric-service-method-category"></a>Kategorie metody služby Service Fabric
-Pro kategorii `Service Fabric Service Method` jsou názvy instancí čítače v následujícím formátu:
+V případě `Service Fabric Service Method`kategorie jsou názvy instancí čítače v následujícím formátu:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
@@ -76,7 +67,7 @@ Následuje příklad názvu instance čítače pro čítač, který patří do k
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název metody. `2` je 32 ID bitu generované pro interní použití modulu runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` je řetězcová reprezentace ID Service Fabricho oddílu, `635650083804480486` je řetězcové vyjádření Service Fabric repliky/ ID instance a `5008380` je identifikátor 64 generovaný pro interní použití modulu runtime.
+V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název metody, `2` je 32 identifikátor ID generovaný pro interní použití modulu runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` je řetězcová reprezentace ID Service Fabricho oddílu,`635650083804480486` je řetězcové vyjádření ID repliky nebo instance Service Fabric a `5008380` je identifikátor 64 bitů generovaný pro interní použití modulu runtime.
 
 ## <a name="list-of-performance-counters"></a>Seznam čítačů výkonu
 ### <a name="service-method-performance-counters"></a>Čítače výkonu metody služby

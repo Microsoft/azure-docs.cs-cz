@@ -1,22 +1,24 @@
 ---
 title: Vytvoření skupin pro správu pro uspořádání prostředků – zásady správného řízení Azure
 description: Naučte se vytvářet skupiny pro správu Azure pro správu více prostředků pomocí portálu, Azure PowerShell a Azure CLI.
-ms.date: 04/05/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 335dd8f7f3a9ec20c2b7740e4ec97454489027f6
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436535"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci a správu prostředků
 
 Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v různých předplatných. Vytvořte tyto kontejnery, abyste vytvořili efektivní a efektivní hierarchii, která se dá použít s [Azure Policy](../policy/overview.md) a [řízení přístupu na základě rolí Azure](../../role-based-access-control/overview.md). Další informace o skupinách pro správu najdete v tématu [uspořádání prostředků pomocí skupin pro správu Azure](overview.md).
 
-První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení.
+První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení. Další informace najdete v tématu [počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups). 
 
 ## <a name="create-a-management-group"></a>Vytvoření skupiny pro správu
+
+Libovolný uživatel služby Azure AD v tenantovi může vytvořit skupinu pro správu bez oprávnění k zápisu skupiny pro správu přiřazeného tomuto uživateli.  Tato nová skupina pro správu bude podřízenou skupinou kořenové skupiny pro správu a tvůrci bude přiřazeno přiřazení role "vlastník". Služba skupiny pro správu umožňuje této možnosti, aby přiřazení rolí nebylo nutné na kořenové úrovni. Žádní uživatelé nemají přístup ke kořenové skupině pro správu při jejím vytvoření.  Aby nedocházelo k tomu, že by globální Správci služby Azure AD mohli začít používat skupiny pro správu, umožníme vytváření počátečních skupin pro správu na kořenové úrovni.      
 
 Skupinu pro správu můžete vytvořit pomocí portálu, PowerShellu nebo rozhraní příkazového řádku Azure CLI. V současné době nemůžete použít šablony Správce prostředků k vytvoření skupin pro správu.
 

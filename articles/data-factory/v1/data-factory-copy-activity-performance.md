@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438925"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 
@@ -70,7 +70,7 @@ Jako referenční informace zobrazuje následující tabulka číslo propustnost
         <td>128 GB</td>
     </tr>
     <tr>
-        <td>Síť</td>
+        <td>Network (Síť)</td>
         <td>Internetové rozhraní: 10 GB/s; rozhraní sítě intranet: 40 GB/s</td>
     </tr>
     </table>
@@ -416,7 +416,8 @@ V takovém případě může být komprese dat bzip2 zpomalení celého kanálu.
 ## <a name="reference"></a>Referenční informace
 Tady jsou odkazy na sledování výkonu a ladění pro některá z podporovaných úložišť dat:
 
-* Azure Storage (včetně úložiště objektů Blob a Table storage): [cíle škálovatelnosti služby Azure Storage](../../storage/common/storage-scalability-targets.md) a [kontrolní seznam výkonu a škálovatelnosti služby Azure Storage](../../storage/common/storage-performance-checklist.md)
+* Azure Blob Storage: [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../../storage/blobs/scalability-targets.md) a [Kontrolní seznam výkonu a škálovatelnosti pro úložiště objektů BLOB](../../storage/blobs/storage-performance-checklist.md).
+* Azure Table Storage: [škálovatelnost a výkonnostní cíle pro úložiště tabulek](../../storage/tables/scalability-targets.md) a pro [Kontrolní seznam výkonu a škálovatelnosti pro úložiště tabulek](../../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: Můžete [sledovat výkon](../../sql-database/sql-database-single-database-monitor.md) a zkontrolovat procento databáze transakce jednotek (DTU)
 * Azure SQL Data Warehouse: Jeho funkce se měří v jednotkách datového skladu (Dwu); Zobrazit [spravovat výpočetní výkon v Azure SQL Data Warehouse (přehled)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [úrovní výkonu ve službě Azure Cosmos DB](../../cosmos-db/performance-levels.md)

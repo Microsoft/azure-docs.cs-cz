@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 11/05/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a78a44f9e4dd1b64ae989dffa04892a490b986d4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ff5a42150140035105298802a7ce8b4d0e25959c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748141"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436950"
 ---
-Pomocí Azure Cloud Shell můžete spustit většinu rutin PowerShellu místo instalace Azure PowerShell místně. Azure Cloud Shell je bezplatné interaktivní prostředí, které má předinstalované běžné nástroje Azure a je nakonfigurované pro použití s vaším účtem.
-Chcete-li spustit libovolný kód obsažený v tomto článku v Azure Cloud Shell, otevřete relaci Cloud Shell, pomocí tlačítka **kopírování** na bloku kódu kód zkopírujte a vložte jej do relace Cloud shell s __kombinací kláves CTRL + SHIFT + v__ v systémech Windows a Linux nebo __Cmd + Shift + v__ v macOS. Vkládaný text není automaticky spuštěn, stisknutím klávesy **ENTER** spustíte kód.
+Ke spuštění většiny rutin PowerShellu a příkazů rozhraní příkazového řádku můžete použít Azure Cloud Shell a nemusíte místně instalovat Azure PowerShell nebo rozhraní příkazového řádku. Azure Cloud Shell je bezplatné interaktivní prostředí, které má předinstalované běžné nástroje Azure a je nakonfigurované pro použití s vaším účtem.
+Chcete-li spustit libovolný kód obsažený v tomto článku v Azure Cloud Shell, otevřete relaci Cloud Shell, pomocí tlačítka **kopírování** na bloku kódu kód zkopírujte a vložte jej do relace Cloud shell s __kombinací kláves CTRL + SHIFT + v__ v systémech Windows a Linux nebo __Cmd + Shift + v__ v MacOS. Vkládaný text není automaticky spuštěn, stisknutím klávesy **ENTER** spustíte kód.
 
 Existuje několik způsobů, jak Cloud Shell spustit:
 

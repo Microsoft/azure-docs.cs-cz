@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838083"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644898"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Testovací verze Azure Resource Manageru
 
@@ -85,10 +85,10 @@ Je také důležité si uvědomit, že **všechny parametry jsou volitelné**, p
 
 | Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
 |---|---|---|---|
-| **BaseURI**     | řetězec          | Základní identifikátor URI balíčku nasazení| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
-| **uživatelské jméno**    | řetězec          | Nový náhodný uživatelské jméno.| admin68876      |
+| **BaseURI**     | string          | Základní identifikátor URI balíčku nasazení| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
+| **uživatelské jméno**    | string          | Nový náhodný uživatelské jméno.| admin68876      |
 | **Heslo**    | zabezpečený řetězec    | Nový náhodné heslo | LP! ACS\^2kh     |
-| **Id relace**   | řetězec          | Testovací verze relace jedinečný Identifikátor (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **Id relace**   | string          | Testovací verze relace jedinečný Identifikátor (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="username"></a>uživatelské jméno
 
@@ -289,7 +289,7 @@ Příklad:
 
 Ještě jedna věc byste měli vzít v úvahu je předplatné a omezení služby. Například pokud chcete nasadit až deset 4jádrový virtuální počítače, musíte zajistit, aby předplatné, můžete použít pro testovací prostředí umožňuje používat 40 jader.
 
-Můžete najít další informace o předplatném Azure a omezení služby [v tomto článku](https://docs.microsoft.com/azure/azure-subscription-service-limits). Jak více jednotek testů lze provést ve stejnou dobu, ověřte, že vaše předplatné může zpracovávat \# jader vynásobené celkovým počtem souběžných Test jednotky, dá se přenést.
+Můžete najít další informace o předplatném Azure a omezení služby [v tomto článku](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Jak více jednotek testů lze provést ve stejnou dobu, ověřte, že vaše předplatné může zpracovávat \# jader vynásobené celkovým počtem souběžných Test jednotky, dá se přenést.
 
 ### <a name="what-to-upload"></a>Co se má nahrát
 
@@ -420,7 +420,7 @@ Zadané aplikace se používá k nasazení do předplatného, potřebujeme pro t
 
 Teď, když máte všechna vaše testovací verze pole doplnit, projděte si a **znovu publikovat** vaší nabídky. Jakmile se vaše testovací verze uplynutí certifikace, byste se měli zúčastnit rozsáhlé testování prostředí pro zákazníky v **ve verzi preview** o vaší nabídce. Spusťte si testovací jízdu v uživatelském rozhraní a otevřete vašeho předplatného Azure v portálu Azure portal a ověřte, že vaše testovací verze se plně nasazují správně.
 
-![portál Azure](./media/azure-resource-manager-test-drive/subdetails9.png)
+![Portál Azure](./media/azure-resource-manager-test-drive/subdetails9.png)
 
 Je důležité si uvědomit, jako jsou zřízené pro vaše zákazníky, tak službu Test Drive automaticky vyčistí tyto skupiny prostředků po dokončení se zákazník není odstranit všechny instance testovací verze.
 

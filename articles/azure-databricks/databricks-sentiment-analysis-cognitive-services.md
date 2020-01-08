@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 13afdf4d6c45927c60e8de9fd228f70b7c0a3c68
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ff16458bb853323181ad8006e378a061572db463
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411137"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Kurz: Analýza mínění na streamovaných datech pomocí Azure Databricks
 
@@ -57,13 +57,13 @@ Tyto požadavky můžete splnit dokončením kroků v článku [Vytvoření obor
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. Na portálu Azure Portal vyberte **Vytvořit prostředek** > **Data + analýzy** > **Azure Databricks**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks**.
 
     ![Datacihly na Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -77,7 +77,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/resource-group-overview.md). |
+    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
     |**Umístění**     | Vyberte **Východní USA 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
 
@@ -160,7 +160,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
 V tomto kurzu použijete [rozhraní API služby Azure Cognitive Services analýza textu](../cognitive-services/text-analytics/overview.md) ke spouštění analýzy mínění pro datový proud tweety téměř v reálném čase. Předtím, než použijete rozhraní API, musíte vytvořit účet Azure Cognitive Services v Azure a načíst přístupový klíč pro použití rozhraní API Analýza textu.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 2. Vyberte **+ Vytvořit prostředek**.
 
@@ -180,7 +180,7 @@ V tomto kurzu použijete [rozhraní API služby Azure Cognitive Services analýz
 
      Vyberte **Vytvořit**.
 
-5. Po vytvoření účtu vyberte na kartě **Přehled** možnost **Zobrazit přístupové klíče**.
+5. Po vytvoření účtu se z **přehled** kartu, vyberte možnost **zobrazení přístupových klíčů**.
 
     ![Zobrazit přístupové klíče](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Zobrazit přístupové klíče")
 
@@ -622,7 +622,7 @@ Po dokončení tohoto kurzu můžete cluster ukončit. Pokud to chcete udělat, 
 
 ![Zastavení clusteru datacihly](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
 
-Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_\_ minut při nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
+Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak pomocí Azure Databricks streamovat data do služby Azure Event Hubs a pak streamovaná data v reálném čase číst ze služby Event Hubs. Naučili jste se tyto postupy:

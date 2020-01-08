@@ -8,14 +8,14 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406537"
 ---
-# <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
+# <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
 > [!NOTE]
 > Tento článek popisuje, jak pochopit a řídit náklady na Application Insights.  Související článek, [sledování využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcemi monitorování Azure pro různé cenové modely.
@@ -40,7 +40,7 @@ Existují dva přístupy: použití výchozího monitorování a adaptivního vz
 
 Díky [adaptivnímu vzorkování](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)sady ASP.NET SDK se datový svazek automaticky upraví tak, aby udržoval v rámci zadané maximální míry provozu pro výchozí Application Insights monitorování. Pokud aplikace vytvoří nízké množství telemetrie, například při ladění nebo z důvodu nízkého využití, položky se nebudou vyřadit procesorem vzorkování, pokud je svazek pod úrovní konfigurovaných událostí za sekundu. U vysoce výkonných aplikací s výchozí prahovou hodnotou pět událostí za sekundu se adaptivní vzorkování omezí počet denních událostí na 432 000. Při použití typické průměrné velikosti události 1 KB odpovídá to 13,4 GB telemetrie za 31 dní na uzel, který je hostitelem vaší aplikace (vzhledem k tomu, že vzorkování je provedeno místně pro každý uzel). 
 
-Pro sady SDK, které nepodporují adaptivní vzorkování, můžete využívat [vzorkování](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)ingestování, které vzorky při přijímání dat Application Insights na základě procentuálního podílu dat, které se mají zachovat, nebo [vzorkování s pevnou sazbou pro ASP.NET, ASP.NET Core a Java. webové stránky](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) , které snižují provoz odeslaný z webového serveru a webových prohlížečů
+Pro sady SDK, které nepodporují adaptivní vzorkování, můžete využívat [vzorkování](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)ingestování, které vzorky, když jsou data přijímána, Application Insights na základě procenta dat, která se mají zachovat, nebo [vzorkování s pevnou sazbou pro ASP.NET, ASP.NET Core a weby Java](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) , aby se snížil provoz odeslaný z webového serveru a webových prohlížečů.
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Další informace o shromažďování podobných zákazníků
 
@@ -157,9 +157,9 @@ K omezení shromážděných dat můžete použít denní limit objemu. Pokud se
 
 Místo používání denního limitu objemu použijte [vzorkování](../../azure-monitor/app/sampling.md) pro optimalizaci objemu dat na požadovanou úroveň. Pak použijte denní limit jenom jako "poslední" – pro případ, že vaše aplikace neočekávaně začne odesílat mnohem větší objem telemetrie.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Určete, který denní limit dat se má definovat.
+### <a name="identify-what-daily-data-limit-to-define"></a>Identifikujte jaké denního limitu pro definování dat
 
-Přečtěte si Application Insights využití a odhadované náklady, abyste porozuměli trendům příjmu dat a jaký je denní zakončení pro definování. Mělo by se brát v úvahu opatrně, protože po dosažení limitu už nebudete moct monitorovat vaše prostředky. 
+Přečtěte si Application Insights využití a odhadované náklady, abyste porozuměli trendům příjmu dat a jaký je denní zakončení pro definování. Je nutné zvážit opatrně, protože nebude možné po dosažení limitu monitorování prostředků. 
 
 ### <a name="set-the-daily-cap"></a>Nastavení denního limitu
 
@@ -195,7 +195,7 @@ Pokud chcete zjistit skutečnou vzorkovací frekvenci, bez ohledu na to, kde se 
 
 V každém zachované záznamu `itemCount` označuje počet původních záznamů, které představuje. Rovná se 1 + počet předchozích vyřazených záznamů. 
 
-## <a name="change-the-data-retention-period"></a>Změnit dobu uchovávání dat
+## <a name="change-the-data-retention-period"></a>Změnit dobu uchování dat
 
 Výchozí doba uchování pro Application Insights prostředky je 90 dní. Pro jednotlivé prostředky Application Insights je možné vybrat různé doby uchovávání. Úplná sada dostupných dob uchovávání dat je 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. 
 
@@ -259,7 +259,7 @@ Vzhledem k tomu, že tato úroveň platí jenom pro zákazníky s předplatným 
 |:---------------------------------------|:----------------:|
 | 1 aplikace s využitím 3 instancí Azure App Service a 1 virtuálního serveru | 4 |
 | 3 aplikace běžící na 2 virtuálních počítačích; prostředky Application Insights pro tyto aplikace jsou ve stejném předplatném a na úrovni jednotlivých uzlů. | 2 | 
-| 4 aplikace, jejichž prostředky Application Insights jsou ve stejném předplatném. Každá aplikace, která spouští 2 instance během 16 hodin špičky, a 4 instance během 8 hodin špičky | 13,33 | 
+| 4 aplikace, jejichž prostředky Application Insights jsou ve stejném předplatném. Každá aplikace, která spouští 2 instance během 16 hodin špičky, a 4 instance během 8 hodin špičky | 13.33 | 
 | Cloudové služby s 1 rolí pracovního procesu a 1 webovou rolí, každá spuštěná 2 instance | 4 | 
 | Cluster Azure Service Fabric s 5 uzly, který běží na mikroslužbách 50; Každá mikroslužba běžící na 3 instancích | 5|
 

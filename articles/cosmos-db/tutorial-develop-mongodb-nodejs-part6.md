@@ -1,6 +1,5 @@
 ---
-title: Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB - CRUD přidat funkce do aplikace
-titleSuffix: Azure Cosmos DB
+title: Přidání funkcí CRUD do úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB
 description: Šestá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,20 +10,20 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441105"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB - CRUD přidat funkce do aplikace
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – přidání funkcí CRUD do aplikace
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md). Šestá část kurzu vychází z [části 5](tutorial-develop-mongodb-nodejs-part5.md) a zabývá se následujícími úlohami:
+Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md). Šestá část kurzu vychází z [části 5](tutorial-develop-mongodb-nodejs-part5.md) a zabývá se následujícími úlohami:
 
 > [!div class="checklist"]
 > * Vytvoření funkcí Post, Put a Delete pro službu hero
-> * Spuštění aplikace
+> * Spusťte aplikaci
 
 > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]
 
@@ -37,7 +36,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Přidání funkce Post do služby hero
 
-1. Ve Visual Studio Code otevřete soubory **routes.js** a **hero.service.js** vedle sebe stisknutím tlačítka **Rozdělit editor** ![Tlačítko Rozdělit editor ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png).
+1. Ve Visual Studio Code otevřete soubory **routes.js** a **hero.service.js** vedle sebe stisknutím tlačítka **Rozdělit editor**![Tlačítko Rozdělit editor ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png).
 
     Podívejte se, že řádek 7 v souboru routes.js volá funkci `getHeroes` na řádku 5 v souboru **hero.service.js**.  Stejné párování potřebujeme vytvořit i pro funkce post, put a delete. 
 
@@ -85,7 +84,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     });
     ```
 
-5. Spusťte aplikaci a zkontrolujte, že vše funguje. Ve Visual Studio Code uložte všechny provedené změny, vyberte tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) na levé straně a pak vyberte tlačítko **Spustit ladění** ![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Spusťte aplikaci a zkontrolujte, že vše funguje. Ve Visual Studio Code uložte všechny provedené změny, vyberte tlačítko **Ladit**![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) na levé straně a pak vyberte tlačítko **Spustit ladění**![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
 6. Nyní přejděte zpět do internetového prohlížeče a stisknutím klávesy F12 (na většině počítačů) otevřete Vývojářské nástroje a kartu Síť. Přejděte na adresu [http://localhost:3000](http://localhost:3000) a sledujte prováděná volání přes síť.
 
@@ -170,7 +169,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     };
     ```
 
-4. Teď, když jste aktualizovali kód, vyberte ve Visual Studio Code tlačítko **Restartovat** ![Tlačítko Restartovat ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png).
+4. Teď, když jste aktualizovali kód, vyberte ve Visual Studio Code tlačítko **Restartovat**![Tlačítko Restartovat ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png).
 
 5. V internetovém prohlížeči aktualizujte stránku a vyberte tlačítko **Add New Hero** (Přidat nového hrdinu). Přidejte nového hrdinu s ID 9, jménem (name) Starlord a slavným výrokem (saying) „Hi“. Výběrem tlačítka **Save** (Uložit) nového hrdinu uložte.
 
@@ -186,7 +185,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
     Pokud stránku aktualizujete, na kartě Síť se zobrazí čas potřebný k získání hrdinů. I když jsou tyto časy rychlé, hodně záleží na tom, kde na světě se vaše data nacházejí, a na vaší schopnosti geograficky je replikovat do oblastí blízko vašim uživatelům. Další informace o geografické replikaci najdete v dalším kurzu, který bude vydaný už brzy.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste provedli následující:
 

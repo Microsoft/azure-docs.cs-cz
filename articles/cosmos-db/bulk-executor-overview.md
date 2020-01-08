@@ -1,5 +1,5 @@
 ---
-title: Hromadný import a aktualizace dat v Azure Cosmos DB pomocí knihovny hromadného prováděcího modulu
+title: Přehled knihovny hromadného prováděcího modulu Azure Cosmos DB
 description: Provádějte hromadné operace v Azure Cosmos DB prostřednictvím hromadného importu a rozhraní API hromadné aktualizace nabízené knihovnou hromadného prováděcího modulu.
 author: tknandu
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442160"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny hromadného prováděcího modulu Azure Cosmos DB
  

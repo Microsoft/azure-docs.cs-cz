@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: e9d7aeabceb77597d826d6c76dbdddc625ad45cc
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6ae8afefae9a539812748c0ae5380ddaf1fb084c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382663"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Node. js
 
@@ -39,7 +39,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
     let https = require('https');
     ```
 
-2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a hledaný výraz.
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a hledaný výraz. `host` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -210,6 +210,6 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 > [!div class="nextstepaction"]
 > [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

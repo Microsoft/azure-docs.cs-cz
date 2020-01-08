@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 569846755ea363cd3816a22469cd7f05d8c42f4c
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 44b53cbfdb1982d9f9e6a0cb6408a16b1d660d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794085"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447422"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí Javy
 
-Tento rychlý Start založený na REST vás provede programově publikováním znalostní báze (KB). Publikování nabídne nejnovější verzi znalostní báze do vyhrazeného indexu služby Azure Kognitivní hledání a vytvoří koncový bod, který se dá volat ve vaší aplikaci nebo robotovi pro chat.
+V tomto rychlém startu založené na protokolu REST provede programově publikování znalostní bázi (KB). Publikování nabídne nejnovější verzi znalostní báze do vyhrazeného indexu služby Azure Kognitivní hledání a vytvoří koncový bod, který se dá volat ve vaší aplikaci nebo robotovi pro chat.
 
 Tento rychlý start volá rozhraní API služby QnA Maker:
 * [Publikování](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) –toto rozhraní API nevyžaduje v těle požadavku žádné informace.
@@ -28,39 +28,39 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 ## <a name="prerequisites"></a>Požadavky
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* Tato ukázka používá klienta Apache [http](https://hc.apache.org/httpcomponents-client-ga/) ze součástí http. Do projektu musíte přidat tyto klientské knihovny Apache HTTP: 
-    * HttpClient-4.5.3. jar
-    * httpcore-4.4.6. jar
-    * Commons-Logging-1.2. jar
+* Tato ukázka používá Apache [klienta HTTP](https://hc.apache.org/httpcomponents-client-ga/) ze součástí HTTP. Je potřeba přidat následující knihovny klienta Apache HTTP do projektu:
+    * httpclient 4.5.3.jar
+    * httpcore 4.4.6.jar
+    * Commons. protokolování 1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
-* ID znalostní báze služby QnA Maker, které najdete v adrese URL v parametru kbid řetězce dotazu, jak vidíte níže.
+* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
+* V adrese URL v parametru řetězce dotazu `kbid` QnA Maker ID znalostní báze (KB), jak je znázorněno níže.
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
     Pokud znalostní bázi ještě nemáte, můžete si vytvořit ukázkovou znalostní bázi a použít ji v tomto rychlém startu. Přečtěte si o [vytvoření nové znalostní báze](create-new-kb-csharp.md).
 
-> [!NOTE] 
+> [!NOTE]
 > Kompletní soubory řešení jsou k dispozici v [úložišti GitHub **Azure-Samples/vnímání-Services-qnamakerem-Java** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
-## <a name="create-a-java-file"></a>Vytvoření souboru Java
+## <a name="create-a-java-file"></a>Vytvořte soubor Java
 
 Otevřete VSCode a vytvořte nový soubor s názvem `PublishKB.java`.
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
-V horní části `PublishKB.java`nad třídou přidejte následující řádky pro přidání nezbytných závislostí do projektu:
+V horní části `PublishKB.java`, nad třídy, přidejte následující řádky do potřebné závislosti přidejte do projektu:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=1-13 "Add the required dependencies")]
 
-## <a name="create-publishkb-class-with-main-method"></a>Vytvořit třídu PublishKB s metodou Main
+## <a name="create-publishkb-class-with-main-method"></a>Vytvořte třídu PublishKB s main – metoda
 
 Po závislostech přidejte následující třídu:
 
 ```Go
 public class PublishKB {
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
     }
 }
@@ -68,13 +68,13 @@ public class PublishKB {
 
 ## <a name="add-required-constants"></a>Přidání požadovaných konstant
 
-V metodě **Main** přidejte požadované konstanty pro přístup k QnA maker. Nahraďte hodnoty vlastními.
+V **hlavní** metodu, přidejte požadované konstanty na používání nástroje QnA Maker. Nahraďte hodnoty vlastními.
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=27-30 "Add the required constants")]
 
-## <a name="add-post-request-to-publish-knowledge-base"></a>Přidat požadavek POST pro publikování znalostní báze
+## <a name="add-post-request-to-publish-knowledge-base"></a>Přidání požadavku POST k publikování znalostní báze
 
-Po požadovaných konstantách přidejte následující kód, který vytvoří požadavek HTTPS rozhraní API služby QnA Maker k publikování znalostní báze a obdrží odpověď:
+Za požadované konstanty přidejte následující kód, který odešle požadavek HTTPS API nástroje QnA Maker na publikování znalostní báze a přijímat odpovědi:
 
 [!code-java[Add a POST request to publish knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=32-44 "Add a POST request to publish knowledge base")]
 
@@ -84,9 +84,9 @@ V případě jakékoli jiné odpověď se vrátí tato odpověď beze změny.
 
 ## <a name="build-and-run-the-program"></a>Sestavení a spuštění programu
 
-Sestavte a spusťte program z příkazového řádku. Požadavek bude automaticky odesílat do rozhraní API služby QnA Maker a pak bude vytištěn v okně konzoly.
+Sestavit a spustit program z příkazového řádku. Automaticky se odešle požadavek rozhraní API nástroje QnA Maker a vytiskne se do okna konzoly.
 
-1. Sestavte soubor:
+1. Sestavení souboru:
 
     ```bash
     javac -cp "lib/*" PublishKB.java
@@ -98,11 +98,11 @@ Sestavte a spusťte program z příkazového řádku. Požadavek bude automatick
     java -cp ".;lib/*" PublishKB
     ```
 
-[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Po publikování znalostní báze budete potřebovat [adresu URL koncového bodu, aby se vygenerovala odpověď](../Tutorials/create-publish-answer.md#generating-an-answer).  
+Po publikování znalostní báze, je nutné [adresu URL koncového bodu pro generování odpovědi](../Tutorials/create-publish-answer.md#generating-an-answer).
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

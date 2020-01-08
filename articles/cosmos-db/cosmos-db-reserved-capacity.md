@@ -1,5 +1,5 @@
 ---
-title: Optimalizace nákladů na prostředky Azure Cosmos DB s využitím rezervované kapacity
+title: Rezervovaná kapacita v Azure Cosmos DB pro optimalizaci nákladů
 description: Naučte se koupit Azure Cosmos DB rezervovanou kapacitu, abyste ušetřili náklady na výpočetní výkon.
 author: bandersmsft
 ms.service: cosmos-db
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0ee43fe0996c05f4e59f6107ba52fac19b83cdef
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441932"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizace nákladů pomocí rezervované kapacity v Azure Cosmos DB
 
 Azure Cosmos DB Rezervovaná kapacita vám pomůže ušetřit peníze tím, že se potvrzováním rezervace za prostředky Azure Cosmos DB po dobu jednoho roku nebo tří let. Díky Azure Cosmos DB rezervované kapacity můžete získat slevu na propustnost zajištěnou pro prostředky Cosmos DB. Příklady prostředků jsou databáze a kontejnery (tabulky, kolekce a grafy).
 
-Azure Cosmos DB Rezervovaná kapacita může významně snížit náklady na Cosmos DB &mdash;up 65 procent v pravidelných cenách s předplatným na jednoletém nebo tříletém závazku. Rezervovaná kapacita poskytuje fakturační slevu a nemá vliv na běhový stav vašich Azure Cosmos DBch prostředků.
+Azure Cosmos DB Rezervovaná kapacita může významně snížit náklady na Cosmos DB&mdash;až 65 procent za běžné ceny s předplatným jednoletého a tříletého závazku. Rezervovaná kapacita poskytuje fakturační slevu a nemá vliv na běhový stav vašich Azure Cosmos DBch prostředků.
 
 Rezervovaná kapacita Azure Cosmos DB pokrývá propustnost zajištěná pro vaše prostředky. Nevztahuje se na poplatky za úložiště a sítě. Jakmile si koupíte rezervaci, poplatky za propustnost, které odpovídají atributům rezervace, se už nebudou účtovat podle tarifů průběžných plateb. Další informace o rezervacích najdete v článku věnovaném [rezervacím Azure](../billing/billing-save-compute-costs-reservations.md) .
 
@@ -42,7 +42,7 @@ Velikost rezervace by měla být založena na celkovém objemu propustnosti, kte
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).  
 
-2. Vyberte **všechny služby**  > **rezervacích**  > **Přidat**.  
+2. Vyberte **všechny služby** > **rezervacích** > **Přidat**.  
 
 3. V podokně **rezervace nákupu** vyberte možnost **Azure Cosmos DB** a kupte novou rezervaci.  
 

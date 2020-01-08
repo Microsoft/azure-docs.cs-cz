@@ -1,5 +1,5 @@
 ---
-title: Diagnostika a řešení potíží s dotazy při použití Azure Cosmos DB
+title: Řešení potíží s dotazy při použití Azure Cosmos DB
 description: Naučte se identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL.
 author: ginamr
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1859fa8f71b5c4c44d6e5da1b6a36ca9d9399516
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444730"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Řešení potíží s výkonem dotazů pro Azure Cosmos DB
 Tento článek popisuje, jak identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB problémy s dotazy SQL. Chcete-li dosáhnout optimálního výkonu pro Azure Cosmos DB dotazy, postupujte podle následujících kroků pro řešení potíží. 
@@ -26,7 +26,7 @@ Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající
 
 ## <a name="log-the-executed-sql-query"></a>Protokolovat spuštěný dotaz SQL 
 
-Spuštěný dotaz SQL můžete protokolovat v účtu úložiště nebo v tabulce diagnostického protokolu. [Protokoly dotazů SQL prostřednictvím diagnostických protokolů](monitor-cosmos-db.md#diagnostic-settings) umožňují protokolovat zavedený dotaz do účtu úložiště podle vašeho výběru. To vám umožní podívat se na protokoly a najít dotaz, který používá vyšší ru. Později můžete použít ID aktivity tak, aby odpovídalo skutečnému dotazu v QueryRuntimeStatistics. Dotaz je zakódován z důvodu zabezpečení a názvů parametrů dotazu a jejich hodnoty v klauzulích WHERE se liší od skutečných názvů a hodnot. Pomocí protokolování do účtu úložiště můžete zachovat dlouhodobé uchovávání provedených dotazů.  
+Spuštěný dotaz SQL můžete protokolovat v účtu úložiště nebo v tabulce diagnostického protokolu. [Protokoly dotazů SQL prostřednictvím diagnostických protokolů](cosmosdb-monitor-resource-logs.md) umožňují protokolovat zavedený dotaz do účtu úložiště podle vašeho výběru. To vám umožní podívat se na protokoly a najít dotaz, který používá vyšší ru. Později můžete použít ID aktivity tak, aby odpovídalo skutečnému dotazu v QueryRuntimeStatistics. Dotaz je zakódován z důvodu zabezpečení a názvů parametrů dotazu a jejich hodnoty v klauzulích WHERE se liší od skutečných názvů a hodnot. Pomocí protokolování do účtu úložiště můžete zachovat dlouhodobé uchovávání provedených dotazů.  
 
 ## <a name="log-query-metrics"></a>Metriky dotazů protokolu
 

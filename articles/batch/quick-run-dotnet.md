@@ -1,6 +1,6 @@
 ---
 title: Rychlý start Azure – spuštění úlohy služby Batch – .NET
-description: Úlohu a úkoly služby Batch lze rychle spustit pomocí klientské knihovny Batch .NET.
+description: Rychle spusťte ukázkovou úlohu Azure Batch a úlohy z C# aplikace pomocí klientské knihovny Batch .NET.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 613f771af71c4f03f7ccf9283b98c09836c312cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390324"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první Azure Batch úlohy pomocí rozhraní .NET API
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
 V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace C# sestavené pomocí rozhraní API .NET služby Azure Batch. Aplikace odešle několik vstupních datových souborů do služby Azure Storage a potom vytvoří *fond* výpočetních uzlů služby Batch (virtuálních počítačů). Potom vytvoří ukázkovou *úlohu*, která pomocí základního příkazu spouští *úkoly* pro zpracování jednotlivých vstupních souborů ve fondu. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
 
@@ -244,11 +244,11 @@ foreach (CloudTask task in completedtasks)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Za fond, ve kterém jsou spuštěné uzly, se účtují poplatky, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech.
+Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech.
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Na webu Azure Portal to provedete tak, že vyberete skupinu prostředků účtu Batch a kliknete na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste spustili malou aplikaci sestavenou pomocí rozhraní API .NET služby Batch a ta vytvořila fond a úlohu služby Batch. Úloha spustila ukázkové úkoly a stáhla výstup vytvořený v uzlech. Teď chápete klíčové koncepty služby Batch a můžete službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě. Další informace o službě Azure Batch a vysvětlení paralelních úloh v reálné aplikaci najdete v kurzu o rozhraní .NET služby Batch.
 

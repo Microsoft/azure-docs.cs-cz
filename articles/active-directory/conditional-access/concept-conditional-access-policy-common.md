@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3d85850fb18b80490bba44b293ece7765124133
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1d8d803a8256845c61def1b1df4d633ce95a3ce6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846109"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424995"
 ---
 # <a name="common-conditional-access-policies"></a>Běžné zásady podmíněného přístupu
 
-Zásady ochrany základní úrovně jsou skvělé, ale mnoho organizací potřebuje větší flexibilitu než nabídky. Mnoho organizací například potřebuje možnost vyloučit konkrétní účty, jako jsou jejich nouzový přístup nebo účty pro správu se zábrusem ze zásad podmíněného přístupu, které vyžadují vícefaktorové ověřování. Pro tyto organizace se můžou použít běžné zásady, na které se odkazuje v tomto článku.
+[Výchozí nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) je skvělé pro některé, ale mnoho organizací potřebuje větší flexibilitu než nabídky. Mnoho z nich třeba umožňuje vyloučit konkrétní účty, jako jsou jejich nouzový přístup nebo účty pro správu ze skla, od zásad podmíněného přístupu, které vyžadují vícefaktorové ověřování. Pro tyto organizace se můžou použít běžné zásady, na které se odkazuje v tomto článku.
 
 ![Zásady podmíněného přístupu v Azure Portal](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 0209b004ba54417a26cd41716687d328ec1431cf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682984"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438995"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ Před vytvořením kanálu je nejdřív potřeba vytvořit několik entit služb
 V tomto kroku propojíte svůj účet služby Azure Storage a cluster Azure HDInsight na vyžádání s objektem pro vytváření dat. Účet služby Azure Storage v této ukázce obsahuje vstupní a výstupní data pro kanál. Propojená služba HDInsight slouží v této ukázce ke spuštění skriptu Hive určeného v aktivitě kanálu. Určete, jaké úložiště dat a výpočetní služby se ve vašem scénáři používají, a vytvořením propojených služeb propojte tyto služby s objektem pro vytváření dat.
 
 ### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
-V tomto kroku se svým objektem pro vytváření dat propojíte účet služby Azure Storage. Stejný účet služby Azure Storage použijete také k uložení vstupních a výstupních dat a souboru skriptu HQL.
+V tomto kroku propojíte se svým objektem pro vytváření dat svůj účet služby Azure Storage. Stejný účet služby Azure Storage použijete také k uložení vstupních a výstupních dat a souboru skriptu HQL.
 
 1. Ve složce C:\ADFGetStarted vytvořte soubor JSON s názvem StorageLinkedService.json s následujícím obsahem. Pokud složka ADFGetStarted neexistuje, vytvořte ji.
 
@@ -117,7 +117,7 @@ V tomto kroku se svým objektem pro vytváření dat propojíte účet služby A
         }
     }
     ```
-    Nahraďte **název účtu** názvem účtu služby Azure Storage a **klíč účtu** přístupovým klíčem k účtu Azure Storage. Chcete-li zjistit, jak získat přístupový klíč k úložišti, přečtěte si informace o zobrazení, kopírování a opětovném vygenerování přístupových klíčů k úložišti v tématu [Správa účtu úložiště](../../storage/common/storage-account-manage.md#access-keys).
+    Nahraďte **název účtu** názvem účtu služby Azure Storage a **klíč účtu** přístupovým klíčem k účtu Azure Storage. Informace o tom, jak získat přístupový klíč k úložišti, najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
 2. V prostředí Azure PowerShell přejděte do složky ADFGetStarted.
 3. Můžete použít rutinu **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu. Tato rutina a další rutiny služby Data Factory používané v tomto kurzu vyžadují, abyste zadali hodnoty parametrů *ResourceGroupName* a *DataFactoryName*. Alternativně můžete použít rutinu **Get-AzDataFactory** k získání objektu **DataFactory** a předání objektu bez zadání *ResourceGroupName* a *DataFactory* při každém spuštění rutiny. Spuštěním následujícího příkazu přiřaďte výstup rutiny **Get-AzDataFactory** k proměnné **$DF** .
 
@@ -228,7 +228,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     ```
 
 ### <a name="create-output-dataset"></a>Vytvoření výstupní datové sady
-Nyní vytvoříte výstupní datovou sadu, která bude představovat výstupní data ve službě Azure Blob Storage.
+Teď vytvoříte výstupní datovou sadu, která bude představovat výstupní data ve službě Azure Blob Storage.
 
 1. Ve složce **C:\ADFGetStarted** vytvořte soubor JSON s názvem **OutputTable.json** s následujícím obsahem.
 
@@ -346,7 +346,7 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
     ```
-    Všimněte si, že hodnota StartDateTime, kterou tady určíte, je stejná jako počáteční čas uvedený v kódu JSON kanálu. Zde je ukázkový výstup:
+    Všimněte si, že hodnota StartDateTime, kterou tady určíte, je stejná jako počáteční čas uvedený v kódu JSON kanálu. Tady je ukázkový výstup:
 
     ```PowerShell
     ResourceGroupName : ADFTutorialResourceGroup
@@ -366,7 +366,7 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
     Get-AzDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
     ```
 
-    Zde je ukázkový výstup: 
+    Tady je ukázkový výstup: 
 
     ```PowerShell
     Id                  : 0f6334f2-d56c-4d48-b427-d4f0fb4ef883_635268096000000000_635292288000000000_AzureBlobOutput
@@ -409,7 +409,7 @@ V tomto kurzu jste vytvořili objekt pro zpracování dat Azure, který zpracov�
 4. Vytvořili jste **kanál** s aktivitou **HDInsight Hive**.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru Azure HDInsight na vyžádání spouští skript Hive. Pokud chcete zjistit, jak pomocí aktivity kopírování zkopírovat data z objektu blob Azure do Azure SQL, projděte si článek [Kurz: Kopírování dat z objektu blob Azure do Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru Azure HDInsight na vyžádání spouští skript Hive. Pokud chcete zjistit, jak pomocí aktivity kopírování zkopírovat data z Azure Blob do Azure SQL, projděte si článek [Kurz: Kopírování dat z Azure Blob do Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Viz také
 

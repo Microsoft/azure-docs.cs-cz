@@ -1,5 +1,5 @@
 ---
-title: Jak používat Azure Table storage nebo Azure Cosmos DB Table API z Node.js
+title: Použití služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Node. js
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a5246ed4018fd4d5bc38649d6a476bc82bcbbf7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441206"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -94,7 +94,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 `result.created` má hodnotu `true`, pokud se vytvoří nová tabulka, a hodnotu `false`, pokud tabulka již existuje. `response` obsahuje informace o požadavku.
 
 ### <a name="filters"></a>Filtry
-Na operace provedené pomocí objektu **TableService** můžete použít volitelné filtrování. Filtrování operací může zahrnovat protokolování, automatické opakování pokusů atd. Filtry jsou objekty, které implementují metodu s podpisem:
+Na operace provedené pomocí objektu **TableService** můžete použít volitelné filtrování. Operace filtrování můžou zahrnovat protokolování, automatické opakování, atd. Filtry jsou objekty, které implementují metodu s podpisem:
 
 ```javascript
 function handle (requestOptions, next)
@@ -264,7 +264,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 
 Po dokončení operace bude `result` obsahovat příslušnou entitu.
 
-## <a name="query-a-set-of-entities"></a>Dotazování sady entit
+## <a name="query-a-set-of-entities"></a>Dotaz na sadu entit
 Pokud chcete dotazovat tabulku, pomocí objektu **TableQuery** sestavte výraz dotazu s použitím následujících klauzulí:
 
 * **select** – Pole, která má dotaz vrátit.
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 Při zkoumání objektu `continuationToken` si můžete všimnout vlastností, jako jsou `nextPartitionKey`, `nextRowKey` a `targetLocation`, které je možné použít k iteraci výsledky.
 
-Můžete také použít `top` společně s nástrojem `continuationToken` k nastavení velikosti stránky. 
+K nastavení velikosti stránky můžete použít také `top` společně s `continuationToken`. 
 
 ## <a name="work-with-shared-access-signatures"></a>Práce se sdílenými přístupovými podpisy
 Sdílené přístupové podpisy (SAS) představují bezpečný způsob zajištění podrobného přístupu k tabulkám bez nutnosti zadávat název nebo klíče vašeho účtu služby Storage. SAS se často používá k zajištění omezeného přístupu k datům, jako je například povolení dotazování záznamů pro mobilní aplikaci.
@@ -454,7 +454,7 @@ Po nastavení seznamu ACL pak můžete pro zásadu vytvořit SAS založený na I
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace najdete v následujících materiálech.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

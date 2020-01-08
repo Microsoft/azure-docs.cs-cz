@@ -1,5 +1,5 @@
 ---
-title: Pokyny pro značky aplikace Azure AD
+title: Pokyny pro značky aplikace | Azure
 titleSuffix: Microsoft identity platform
 description: Komplexní průvodce prostředky služby Azure Active Directory určenými pro vývojáře
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ad786429eb23b51cc2da5da5d8af11d19985c9a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d130bfb055b41ea3d2726c83c06430a0ea58fe98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424557"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
@@ -69,7 +69,7 @@ Jakmile správce vyjádří souhlas s vaší aplikací, může ji uživatelům p
 
 ![Tlačítko, které zobrazuje text loga Microsoftu a "Přidat k mojí organizaci"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Například:
+Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
 
 > *Pokud už používáte Office 365 nebo jiné obchodní služby od Microsoftu, můžete udělit < your_app_name > přístup k datům vaší organizace. Uživatelé tak budou mít přístup k < your_app_name > se stávajícími pracovními účty.*
 

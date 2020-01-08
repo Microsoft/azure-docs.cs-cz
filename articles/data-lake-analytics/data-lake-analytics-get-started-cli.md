@@ -7,12 +7,12 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 94399490453c6a2774f71ef527fd24d543e2a7e2
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: c9781165affb1755e73919931d8d158ae9b535ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316578"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438769"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Začínáme s Azure Data Lake Analytics s využitím rozhraní Azure CLI
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -27,7 +27,7 @@ Než začnete, budete potřebovat tyto položky:
 
 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlášení k předplatnému Azure:
 
@@ -49,7 +49,7 @@ az account set --subscription <subscription id>
 ## <a name="create-data-lake-analytics-account"></a>Vytvoření účtu Data Lake Analytics
 Je nutné, abyste před spuštěním jakékoli úlohy měli účet Data Lake Analytics. Pokud chcete vytvořit účet Data Lake Analytics, je nutné zadat následující položky:
 
-* **Skupina prostředků Azure**. Účet Data Lake Analytics se musí vytvořit v rámci Skupiny prostředků Azure. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) umožňuje pracovat s prostředky v aplikaci jako se skupinou. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace.  
+* **Skupina prostředků Azure**. Účet Data Lake Analytics se musí vytvořit v rámci Skupiny prostředků Azure. [Azure Resource Manager](../azure-resource-manager/management/overview.md) umožňuje pracovat s prostředky v aplikaci jako se skupinou. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace.  
 
 Výpis seznamu stávajících skupin prostředků v rámci vašeho předplatného:
 
@@ -65,7 +65,7 @@ az group create --name "<Resource Group Name>" --location "<Azure Location>"
 
 * **Název účtu Data Lake Analytics**. Každý účtu Data Lake Analytics má název.
 * **Umístění**. Použijte jedno z datových center Azure, které podporuje Data Lake Analytics.
-* **Výchozí účet Data Lake Store**: Každý Data Lake Analytics účet má výchozí účet Data Lake Store.
+* **Výchozí účet Data Lake Store:** Každý účet Data Lake Analytics má výchozí účet Data Lake Store.
 
 Zobrazení seznamu stávajícího účtu Data Lake Store:
 

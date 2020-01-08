@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3e60c0e165b8f9ec79aac2048011d9e315b0ce18
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483957"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666631"
 ---
 # <a name="using-custom-security-policies-preview"></a>Použití vlastních zásad zabezpečení (Preview)
 
 Kvůli lepšímu zabezpečení systémů a prostředí Azure Security Center vygeneruje doporučení zabezpečení. Tato doporučení jsou založená na osvědčených postupech, které jsou součástí obecných výchozích zásad zabezpečení dodaných všem zákazníkům. Můžou také pocházet ze zkušeností Security Center v oboru a zákonných standardů.
 
-Pomocí této funkce ve verzi Preview můžete přidat *vlastní iniciativy.* Pak dostanete doporučení, pokud vaše prostředí nedodržuje zásady, které vytvoříte.
+Pomocí této funkce ve verzi Preview můžete přidat *vlastní iniciativy.* Pak dostanete doporučení, pokud vaše prostředí nedodržuje zásady, které vytvoříte. Všechny vlastní podněty, které vytvoříte, se zobrazí společně s integrovanou iniciativou na řídicím panelu dodržování předpisů, který je popsaný v kurzu. [tím se vylepšit dodržování předpisů](security-center-compliance-dashboard.md).
 
 Jak je [popsáno v](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) dokumentaci k Azure Policy, když zadáte umístění pro vlastní iniciativu, musí se jednat o skupinu pro správu nebo o předplatné. 
 
@@ -58,6 +58,12 @@ Jak je [popsáno v](https://docs.microsoft.com/azure/governance/policy/concepts/
 
     > [!NOTE]
     > Vytváření nových iniciativ vyžaduje přihlašovací údaje vlastníka předplatného. Další informace o rolích Azure najdete [v tématu oprávnění v Azure Security Center](security-center-permissions.md).
+
+    Vaše nová iniciativa se projeví a dopad můžete zobrazit následujícími dvěma způsoby:
+
+    * Na bočním panelu Security Center v části zásady & Kompatibilita vyberte **dodržování předpisů**. Otevře se řídicí panel dodržování předpisů, ve kterém se zobrazí vaše nová vlastní iniciativa spolu s integrovanými iniciativami.
+    
+    * Začnete dostávat doporučení, pokud vaše prostředí nedodržuje zásady, které jste definovali.
 
 1. Pokud si chcete zobrazit výsledná doporučení pro vaši zásadu, otevřete stránku doporučení kliknutím na **doporučení** na postranním panelu. Doporučení se zobrazí s popiskem "vlastní" a budou k dispozici do přibližně jedné hodiny.
 

@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý Start: rozpoznávání digitálního inkoustu pomocí REST API pro rozpoznávání rukopisuC#'
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro rozpoznávání rukopisu můžete začít rozpoznávat tahy digitálního inkoustu.
+description: V tomto rychlém startu se dozvíte, jak pomocí rozhraní API pro rozpoznávání rukopisu začít rozpoznávat tahy digitálního inkoustu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 6ef58d1444eb0ec7b2b8891f944b428a613edf3a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c5379452449188f17b75036eb09c3ca15bae0c2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515606"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448168"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí REST API pro rozpoznávání rukopisuC#
 
@@ -29,10 +29,10 @@ Obvykle byste volali rozhraní API z digitální aplikace pro psaní rukou. V to
 
 Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089502).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-- [Newtonsoft. JSON](https://www.newtonsoft.com/json)
+- [Newtonsoft.Json](https://www.newtonsoft.com/json)
     - Postup instalace Newtonsoft. JSON jako balíčku NuGet v aplikaci Visual Studio:
         1. Klikněte pravým tlačítkem na **správce řešení** .
         2. Klikněte na **Spravovat balíčky NuGet...**
@@ -59,9 +59,9 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 1. Vytvořte novou asynchronní funkci nazvanou `Request`, která přebírá proměnné vytvořené výše.
 
-2. Nastavte informace o protokolu zabezpečení klienta a hlavičce pomocí objektu `HttpClient`. Nezapomeňte přidat klíč předplatného do hlavičky `Ocp-Apim-Subscription-Key`. Pak pro požadavek vytvořte objekt `StringContent`.
+2. Pomocí objektu `HttpClient` nastavte informace o protokolu zabezpečení a hlavičce klienta. Nezapomeňte do hlavičky `Ocp-Apim-Subscription-Key` přidat svůj klíč předplatného. Pak vytvořte objekt `StringContent` pro požadavek.
  
-3. Odešlete požadavek s `PutAsync()`. Pokud je požadavek úspěšný, vrátí odpověď.  
+3. Odešlete žádost pomocí `PutAsync()`. Pokud je požadavek úspěšný, vrátí odpověď.  
     
     [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
@@ -75,7 +75,7 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 ## <a name="load-your-digital-ink-data"></a>Načtení dat digitálního inkoustu
 
-Vytvořením funkce s názvem `LoadJson()` načtete soubor JSON pro tisk dat. K vytvoření `JObject` použijte `StreamReader` a `JsonTextReader` a vraťte ho.
+Vytvořte funkci nazvanou `LoadJson()`, která načte soubor JSON pro tisk dat. Pomocí `StreamReader` a `JsonTextReader` vytvořte `JObject` a vraťte ho.
 
 [!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
@@ -83,7 +83,7 @@ Vytvořením funkce s názvem `LoadJson()` načtete soubor JSON pro tisk dat. K 
 
 1. V metodě Main aplikace načtěte data JSON pomocí funkce vytvořené výše. 
 
-2. Zavolejte funkci `recognizeInk()` vytvořenou výše. Pomocí `System.Console.ReadKey()` nechejte okno konzoly otevřené po spuštění aplikace.
+2. Zavolejte funkci `recognizeInk()` vytvořenou výše. Pomocí `System.Console.ReadKey()` ponechejte okno konzoly otevřené po spuštění aplikace.
     
     [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 

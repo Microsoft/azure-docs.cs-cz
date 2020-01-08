@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033109"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371407"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Postup otevření portů na virtuálním počítači s Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -85,5 +85,5 @@ V případě webových aplikací s vysokou dostupností zvažte umístění virt
 V tomto článku jste vytvořili skupinu zabezpečení sítě, vytvořili příchozí pravidlo, které umožňuje přenosy HTTP na portu 80 a pak toto pravidlo přidružit k podsíti. 
 
 Informace o vytváření podrobnějších prostředí najdete v následujících článcích:
-- [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)
+- [Přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
 - [Skupiny zabezpečení](../../virtual-network/security-overview.md)

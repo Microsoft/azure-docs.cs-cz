@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 88934d469ddcca50d7dfc3f35b18ab332d4bd172
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7dc8001d74ea026625d7496fb84053b4e9109dce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406155"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
 
@@ -29,7 +29,7 @@ Aby bylo možné získat pozor v celém prostředí, je nutné povolit monitorov
 - [Azure DevOps Projects](../devops-project/overview.md) poskytují zjednodušené prostředí s existujícím kódem a úložištěm Git nebo si můžete vybrat některou z ukázkových aplikací a vytvořit tak kanál průběžné integrace (CI) a průběžného doručování (CD) do Azure.
 - [Nepřetržité monitorování kanálu vydání DevOps](../azure-monitor/app/continuous-monitoring.md) vám umožní bránu nebo vrátit zpět nasazení na základě dat monitorování.
 - [Monitorování stavu](../azure-monitor/app/monitor-performance-live-website-now.md) umožňuje instrumentovat živou aplikaci .NET ve Windows pomocí Azure Application Insights, aniž byste museli upravovat nebo znovu nasazovat kód.
-- Máte-li přístup k kódu pro vaši aplikaci, povolte úplné monitorování pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md) instalací sady Azure monitor Application Insights SDK pro [rozhraní .NET](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node. js](../azure-monitor/learn/nodejs-quick-start.md)nebo [jakékoli jiné programování. jazyky](../azure-monitor/app/platforms.md). Díky tomu můžete zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaši firmu.
+- Máte-li přístup k kódu pro aplikaci, pak povolte úplné monitorování pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md) instalací sady Azure monitor Application Insights SDK pro [rozhraní .NET](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node. js](../azure-monitor/learn/nodejs-quick-start.md)nebo [jakékoli jiné programovací jazyky](../azure-monitor/app/platforms.md). Díky tomu můžete zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaši firmu.
 
 
 

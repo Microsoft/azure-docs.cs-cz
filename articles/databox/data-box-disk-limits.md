@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cd40c5d11414c91ff2f2febc0621e1e06f79e9cf
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646966"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613784"
 ---
 # <a name="azure-data-box-disk-limits"></a>Omezení Azure Data Box Disk
 
@@ -59,7 +59,7 @@ Nejnovější informace o omezeních služby Azure Storage a osvědčených post
 
 ## <a name="azure-storage-account-size-limits"></a>Omezení velikosti účtu Azure Storage
 
-Tady jsou limity velikosti dat, která se zkopírují do účtu úložiště. Ujistěte se, že data, která nahráváte, jsou v souladu s těmito omezeními. Nejaktuálnější informace o těchto omezeních najdete v části [cíle škálování Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) a [cíle škálování souborů Azure](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Tady jsou limity velikosti dat, která se zkopírují do účtu úložiště. Ujistěte se, že data, která nahráváte, jsou v souladu s těmito omezeními. Nejaktuálnější informace o těchto omezeních najdete v části [cíle škálování Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) a [cíle škálování souborů Azure](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts).
 
 | Velikost dat zkopírovaných do účtu služby Azure Storage                      | Výchozí omezení          |
 |---------------------------------------------------------------------|------------------------|
@@ -74,7 +74,7 @@ Tady jsou velikosti objektů Azure, které se dají zapsat. Zajistěte, aby vše
 |-------------------|-----------------------------------------------------------|
 | Objekt blob bloku        | ~ 4,75 TiB                                                 |
 | Objekt blob stránky         | 8 TiB <br> (Každý soubor nahraný ve formátu objektu blob stránky musí být 512 bajtů, jinak se nahrávání nepovede. <br> VHD i VHDX jsou zarovnaný 512 bajtů.) |
-|Soubory Azure        | 1 TiB <br> Max. Velikost sdílené složky je 5 TiB.     |
+|Azure Files        | 1 TiB <br> Nejvýše k Velikost sdílené složky je 5 TiB.     |
 | Spravované disky     |4 TiB <br> Další informace o velikosti a omezeních najdete v těchto tématech: <li>[Cíle škálovatelnosti pro spravované disky](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 

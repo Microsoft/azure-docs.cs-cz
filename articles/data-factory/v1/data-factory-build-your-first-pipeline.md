@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 90084864f9a93117a0f94dc1d36e6119e88ee335
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bb77182489e08795e5eb482740eed6c67d2f1627
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438946"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Kurz: vytvoření prvního kanálu pro transformaci dat pomocí clusteru Hadoop
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ Z výše uvedených vzorových řádků je první z nich (s 2016-01-01) zapsán 
 Je nutné, abyste před zahájením tohoto kurzu splňovali následující požadavky:
 
 1. **Předplatné Azure** – Pokud nemáte předplatné Azure, můžete si během několika minut vytvořit bezplatný zkušební účet. Postup při vytváření bezplatného zkušebního účtu najdete v článku [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
-2. **Úložiště Azure** – Pro ukládání dat v rámci tohoto kurzu budete používat účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště si poznamenejte **název účtu** a **přístupový klíč**. Přečtěte si článek [Zobrazení, kopírování a opětovné vygenerování přístupových klíčů k úložišti](../../storage/common/storage-account-manage.md#access-keys).
+2. **Úložiště Azure** – Pro ukládání dat v rámci tohoto kurzu budete používat účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště si poznamenejte **název účtu** a **přístupový klíč**. Informace o tom, jak načíst přístupové klíče účtu úložiště, najdete v tématu [Správa přístupových](../../storage/common/storage-account-keys-manage.md)klíčů účtu úložiště.
 3. Stáhněte a zkontrolujte soubor dotazu na podregistr (**HQL**) umístěný na adrese: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Tento dotaz transformuje vstupní data a vytváří výstupní data. 
 4. Stáhněte si a zkontrolujte vzorový vstupní soubor (**input. log**) umístěný na adrese: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Ve Blob Storage Azure vytvořte kontejner objektů BLOB s názvem **adfgetstarted** . 

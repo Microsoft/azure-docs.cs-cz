@@ -1,6 +1,6 @@
 ---
-title: Školicí příručka pro přechod z Registrace aplikací (starší verze) na nové prostředí Registrace aplikací v Azure Portal
-description: Úvod k novému prostředí pro registraci aplikací v Azure Portal
+title: Příručka pro školení k registraci aplikací Azure Portal
+description: Zavádí nové prostředí pro registraci Azure Portal aplikací.
 services: active-directory
 author: archieag
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424666"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Přechod z Registrace aplikací (starší verze) na nové prostředí Registrace aplikací na webu Azure Portal
+# <a name="new-azure-portal-app-registration-training-guide"></a>Příručka pro školení k registraci aplikací Azure Portal
 
 Mnoho vylepšení v novém prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) v Azure Portal najdete v části. Pokud jste obeznámeni s Registrace aplikacím (starším) prostředím Azure Portal, využijte tento průvodce školením, abyste mohli začít používat nové prostředí.
 
@@ -59,7 +59,7 @@ Starší verze prostředí měly stránku **vlastností** . **Vlastnosti** měly
 - **ID objektu**
 - **ID aplikace**
 - **Identifikátor URI ID aplikace**
-- **Symbol**
+- **Logo**
 - **Adresa URL domovské stránky**
 - **Odhlašovací adresa URL**
 - **Adresa URL podmínek služby**

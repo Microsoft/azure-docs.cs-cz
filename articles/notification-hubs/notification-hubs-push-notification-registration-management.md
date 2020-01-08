@@ -12,20 +12,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 12/17/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 0725b4fc80fc3a41491bdb9ed084d33b36b490b8
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 6ddadcafd4f068f6516039017a3d491095c78e30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378258"
 ---
 # <a name="registration-management"></a>Správa registrací
-
-## <a name="overview"></a>Přehled
 
 Toto téma vysvětluje, jak registrovat zařízení pomocí Centra oznámení, aby bylo možné přijímat nabízená oznámení. Téma popisuje registrace na vysoké úrovni a pak zavádí dva hlavní vzory pro registraci zařízení: registraci ze zařízení přímo do centra oznámení a jejich registraci prostřednictvím back-endu aplikace.
 
@@ -42,15 +40,15 @@ Registrace přidružuje popisovač PNS (Platform Notification Service) pro zař�
 
 ### <a name="installations"></a>Instalovány
 
-Instalace je vylepšená registrace, která zahrnuje kontejner souvisejících vlastností nabízených oznámení. Je to nejnovější a nejlepší přístup k registraci vašich zařízení. Není ale podporována na straně klienta .NET SDK ([oznámení SDK pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)).  To znamená, že pokud provádíte registraci z samotného klientského zařízení, budete muset použít [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) přístup k podpoře instalací. Pokud používáte back-end službu, měli byste být schopni použít [sadu SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Instalace je vylepšená registrace, která zahrnuje kontejner souvisejících vlastností nabízených oznámení. Je to nejnovější a nejlepší přístup k registraci vašich zařízení. Není ale podporována na straně klienta .NET SDK ([oznámení SDK pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)).  To znamená, že pokud provádíte registraci z samotného klientského zařízení, budete muset použít [Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation) přístup k podpoře instalací. Pokud používáte back-end službu, měli byste být schopni použít [sadu SDK centra oznámení pro back-endové operace](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 Níže jsou uvedeny některé klíčové výhody použití instalací:
 
 - Vytvoření nebo aktualizace instalace je plně idempotentní. Takže ho můžete opakovat bez jakýchkoli obav o duplicitních registracích.
-- Model instalace podporuje speciální formát značek (`$InstallationId:{INSTALLATION_ID}`), který umožňuje posílání oznámení přímo na konkrétní zařízení. Například pokud kód aplikace nastaví ID `joe93developer` instalace pro toto konkrétní zařízení, může vývojář toto zařízení cílit při odesílání oznámení `$InstallationId:{joe93developer}` do značky. To vám umožní zaměřit se na konkrétní zařízení, aniž byste museli provádět žádné další kódování.
+- Model instalace podporuje speciální formát označení (`$InstallationId:{INSTALLATION_ID}`), který umožňuje posílání oznámení přímo na konkrétní zařízení. Například pokud kód aplikace nastaví ID instalace `joe93developer` pro toto konkrétní zařízení, může vývojář toto zařízení cílit při odesílání oznámení do značky `$InstallationId:{joe93developer}`. To vám umožní zaměřit se na konkrétní zařízení, aniž byste museli provádět žádné další kódování.
 - Použití instalací také umožňuje provádět částečné aktualizace registrace. Částečná aktualizace instalace se vyžaduje pomocí metody PATCH [standardu JSON-patch](https://tools.ietf.org/html/rfc6902). To je užitečné, když chcete aktualizovat značky v registraci. Nemusíte si vyžádat celou registraci a znovu znovu odeslat všechny předchozí značky.
 
-Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace najdete v tématu [Vytvoření nebo přepsání instalace pomocí REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) nebo [vlastností instalace](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
+Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace najdete v tématu [Vytvoření nebo přepsání instalace pomocí REST API](/rest/api/notificationhubs/create-overwrite-installation) nebo [vlastností instalace](/dotnet/api/microsoft.azure.notificationhubs.installation).
 
 ```json
 // Example installation format to show some supported properties
@@ -100,7 +98,7 @@ Registrace a instalace musí obsahovat platný popisovač PNS pro každé zaří
 
 Pokud chcete používat [šablony](notification-hubs-templates-cross-platform-push-messages.md), má instalace zařízení také všechny šablony přidružené k danému zařízení ve formátu JSON (viz Ukázka výše). Názvy šablon můžou pro stejné zařízení cílit na jiné šablony.
 
-Každý název šablony se mapuje na tělo šablony a volitelná sada značek. Každá platforma navíc může mít další vlastnosti šablony. Pro Windows Store (s použitím WNS) a Windows Phone 8 (pomocí MPNS) může být součástí šablony další sada hlaviček. V případě APNs můžete nastavit vlastnost vypršení platnosti buď na konstantu, nebo na výraz šablony. Úplný seznam vlastností instalace najdete v tématu [Vytvoření nebo přepsání instalace pomocí tématu REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) .
+Každý název šablony se mapuje na tělo šablony a volitelná sada značek. Každá platforma navíc může mít další vlastnosti šablony. Pro Windows Store (s použitím WNS) a Windows Phone 8 (pomocí MPNS) může být součástí šablony další sada hlaviček. V případě APNs můžete nastavit vlastnost vypršení platnosti buď na konstantu, nebo na výraz šablony. Úplný seznam vlastností instalace najdete v tématu [Vytvoření nebo přepsání instalace pomocí tématu REST](/rest/api/notificationhubs/create-overwrite-installation) .
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundární dlaždice pro aplikace pro Windows Store
 
@@ -112,7 +110,7 @@ Slovník SecondaryTiles používá stejný TileId, který se používá k vytvo�
 
 Při správě registrace zařízení z klientských aplikací zodpovídá back-end jenom za posílání oznámení. Klientské aplikace udržují PNS a zaregistrují značky. Tento model je znázorněn na následujícím obrázku.
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
+![Registrace ze zařízení](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
 Zařízení nejdřív načte popisovač PNS z PNS a potom se zaregistruje přímo do centra oznámení. Po úspěšné registraci může back-end aplikace odeslat oznámení cílené na registraci. Další informace o tom, jak odesílat oznámení, najdete v tématu [výrazy směrování a značek](notification-hubs-tags-segment-push-message.md).
 
@@ -125,11 +123,11 @@ Registrace ze zařízení je nejjednodušší způsob, ale má několik nevýhod
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Ukázkový kód pro registraci v centru oznámení ze zařízení pomocí instalace
 
-V současné době je tato podpora podporována pouze pomocí [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
+V současné době je tato podpora podporována pouze pomocí [Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation).
 
 K aktualizaci instalace můžete použít také metodu PATCH s použitím [standardu JSON-patch](https://tools.ietf.org/html/rfc6902) .
 
-```
+```csharp
 class DeviceInstallation
 {
     public string installationId { get; set; }
@@ -210,7 +208,7 @@ else
 
 Tyto metody vytvoří nebo aktualizují registraci pro zařízení, na kterém se nazývají. To znamená, že aby bylo možné aktualizovat popisovač nebo značky, je nutné přepsat celou registraci. Nezapomeňte, že registrace jsou přechodné, takže byste měli mít vždy spolehlivý obchod s aktuálními značkami, které konkrétní zařízení potřebuje.
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -265,7 +263,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 Správa registrací ze služby back-end vyžaduje zápis dalšího kódu. Aplikace ze zařízení musí k back-endu poskytovat aktualizovaný PNS pokaždé, když se aplikace spustí (spolu se značkami a šablonami), a back-end musí tento popisovač aktualizovat v centru oznámení. Tento návrh je znázorněn na následujícím obrázku.
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
+![Správa registrací](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
 Výhody správy registrací z back-endu zahrnují možnost upravit značky na registrace i v případě, že je odpovídající aplikace v zařízení neaktivní a ověřit klientskou aplikaci před přidáním značky k registraci.
 
@@ -275,7 +273,7 @@ Klientské zařízení stále získá svůj PNS popisovač a relevantní vlastno
 
 K aktualizaci instalace můžete použít také metodu PATCH s použitím [standardu JSON-patch](https://tools.ietf.org/html/rfc6902) .
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -321,7 +319,7 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 
 Z back-endu vaší aplikace můžete provádět základní operace CRUD při registracích. Příklad:
 
-```
+```csharp
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 
 // create a registration description object of the correct type, e.g.

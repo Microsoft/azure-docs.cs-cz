@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: ef32a5d3a1439cded6cd092f076e7b26c178cb7a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: 5ce8414376862b66314f754252aba3ab6afdaf25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122106"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435325"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Konfigurace úložiště a škálovatelnosti pro platformu Apache Kafka v prostředí HDInsight
 
@@ -25,18 +25,18 @@ Následující diagram porovnává platformu Kafka ve službě HDInsight před p
 
 ![Architektura Kafka se spravovanými disky](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## <a name="configure-managed-disks-azure-portal"></a>Konfigurace spravovaných disků: portál Azure
+## <a name="configure-managed-disks-azure-portal"></a>Konfigurace spravovaných disků: portál Azure Portal
 
-1. Postupujte podle kroků v tématu [Vytvoření clusteru HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md), kde se dozvíte, jaký je obecný postup pro vytvoření clusteru pomocí portálu. Proces vytvoření clusteru pomocí portálu nedokončujte.
+1. Postupujte podle kroků v tématu [Vytvoření clusteru HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md), kde se dozvíte, jaký je obecný postup pro vytvoření clusteru pomocí portálu. Nedokončujte proces vytváření portálu.
 
-2. V části __Velikost clusteru__ pomocí pole __Počet disků v pracovním uzlu__ nakonfigurujte počet disků.
+2. V části **Configuration & Price** nakonfigurujte počet disků pomocí pole __počet uzlů__ .
 
     > [!NOTE]  
     > Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Prémiové disky se používají u virtuálních počítačů řady DS a GS. Všechny ostatní typy virtuálních počítačů používají standardní disky.
 
-    ![oddíl velikost clusteru se zvýrazněnými disky na pracovní uzel](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    ![oddíl velikost clusteru se zvýrazněnými disky na pracovní uzel](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka.png)
 
-## <a name="configure-managed-disks-resource-manager-template"></a>Konfigurace spravovaných disků: Šablona Resource Manageru
+## <a name="configure-managed-disks-resource-manager-template"></a>Konfigurace spravovaných disků: šablony Resource Manageru
 
 Pokud chcete nastavit počet disků, které využívají pracovní uzly v clusteru Kafka, použijte následující část šablony:
 
@@ -48,7 +48,7 @@ Pokud chcete nastavit počet disků, které využívají pracovní uzly v cluste
     ],
 ```
 
-Úplnou šablonu, která ukazuje, jak konfigurovat spravované disky, najdete na adrese [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json).
+Úplnou šablonu, která demonstruje způsob konfigurace spravovaných disků, najdete v [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 618216208b61051d5446f96fb5b28a451b188c35
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954107"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435032"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
 
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak:
 * Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
 * Vytvořte prostředí Azure Databricks pro analýzu a vykreslení telemetrie zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
@@ -40,14 +40,14 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvo�
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Platební plán | Průběžné platby |
-| Šablona aplikace | Sample Contoso (Ukázka Contoso) |
+| Šablona aplikace | Starší verze aplikace |
 | Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
 | Adresa URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
 | Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
-| Oblast | USA – východ |
+| Region (Oblast) | Spojené státy |
 
-Příklady a snímky obrazovky v tomto článku používají oblast **východní USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
+Příklady a snímky obrazovky v tomto článku používají oblast **USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
 
 ### <a name="resource-group"></a>Skupina prostředků
 
@@ -63,7 +63,7 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Cenová úroveň | Úroveň Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
-| Umístění | USA – východ |
+| Umístění | Východní USA |
 | Jednotky propustnosti | 1\. místo |
 
 ### <a name="azure-databricks-workspace"></a>Pracovní prostor Azure Databricks
@@ -75,7 +75,7 @@ Pomocí [Azure Portal vytvořte službu Azure Databricks](https://portal.azure.c
 | Název pracovního prostoru    | Volba názvu pracovního prostoru |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
-| Umístění | USA – východ |
+| Umístění | Východní USA |
 | Cenová úroveň | Úroveň Standard |
 
 Po vytvoření požadovaných prostředků vypadá vaše skupina prostředků **IoTCentralAnalysis** jako na následujícím snímku obrazovky:
@@ -132,13 +132,13 @@ K vytvoření clusteru použijte informace v následující tabulce:
 | ------- | ----- |
 | Název clusteru | centralanalysis |
 | Režim clusteru | Úroveň Standard |
-| Verze Databricks Runtime | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Verze modulu runtime Databricks | 5,3 (Scala 2,11, Spark 2.4.0) |
 | Verze Pythonu | 3 |
 | Povolení automatického škálování | Ne |
 | Ukončit po minutách nečinnosti | 30 |
 | Typ pracovního procesu | Standard_DS3_v2 |
-| Pracovníků | 1\. místo |
-| Typ ovladače | Stejné jako pracovní proces |
+| Pracovní procesy | 1\. místo |
+| Typ ovladače | Stejný jako pracovní proces |
 
 Vytvoření clusteru může trvat několik minut, než budete pokračovat, počkejte na dokončení vytváření clusteru.
 

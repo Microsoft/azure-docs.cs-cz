@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: affd5b58c312e07177fbfdaaf88f689b1a8caebd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435112"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
 
-**Řídicí panel** je stránka, která se načte, když uživatelé, kteří mají přístup k aplikaci, navigují na adresu URL aplikace. Pokud jste aplikaci vytvořili z některé z **šablon aplikace**, bude mít aplikace předem definovaný řídicí panel. Pokud jste aplikaci vytvořili v šabloně **vlastní aplikace aplikace** , bude se tento řídicí panel na začátku vyprázdnit.
+**Řídicí panel** je stránka, která se načte, když uživatelé, kteří mají přístup k aplikaci, navigují na adresu URL aplikace. Pokud jste aplikaci vytvořili z některé z **šablon aplikace**, bude mít aplikace předem definovaný řídicí panel. Pokud jste aplikaci vytvořili ze šablony **starší verze** aplikace, bude řídicí panel prázdný, aby se spouštěl.
 
 > [!NOTE]
 > Uživatelé mohou kromě výchozího řídicího panelu aplikace [vytvořit několik řídicích panelů](howto-create-personal-dashboards.md) . Tyto řídicí panely mohou být osobní pouze uživateli nebo sdíleny napříč všemi uživateli aplikace. 
@@ -70,10 +70,10 @@ Vizualizaci grafu můžete také změnit kliknutím na ikonu **pravítka** na dl
 
 Následující tabulka shrnuje použití dlaždic v Azure IoT Central:
  
-| Podobě | Řídicí panel | Popis
+| Dlaždice | Řídicí panel | Popis
 | ----------- | ------- | ------- |
 | Obsah | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice podporované Markdownu jsou kliknutí na dlaždice, které zobrazují nadpis a text popisu. Tuto dlaždici můžete použít také jako dlaždici odkazů a povolit tak uživateli přejít na adresu URL, která se vztahuje k vaší aplikaci.|
-| Image | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice obrázku zobrazují vlastní obrázek a lze na něj kliknout. Pomocí dlaždice obrázek můžete přidat grafiku na řídicí panel a volitelně povolit uživateli přejít na adresu URL, která se vztahuje k vaší aplikaci.|
+| Obrázek | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice obrázku zobrazují vlastní obrázek a lze na něj kliknout. Pomocí dlaždice obrázek můžete přidat grafiku na řídicí panel a volitelně povolit uživateli přejít na adresu URL, která se vztahuje k vaší aplikaci.|
 | Štítek | Řídicí panely aplikace |Dlaždice popisku zobrazují na řídicím panelu vlastní text. Můžete zvolit velikost textu. Pomocí dlaždice popisku můžete na řídicím panelu Přidat relevantní informace, jako jsou popisy, kontaktní údaje nebo pomocníka.|
 | Mapa | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice mapy zobrazují umístění a stav zařízení na mapě. Můžete například zobrazit, kde je zařízení a zda je jeho ventilátor zapnutý.|
 | Spojnicový graf | Řídicí panely aplikací a zařízení |Dlaždice spojnicového grafu zobrazují graf agregovaného měření pro zařízení za určité časové období. Můžete například zobrazit spojnicový graf, který zobrazuje průměrnou teplotu a tlak zařízení za poslední hodinu.|
@@ -81,7 +81,7 @@ Následující tabulka shrnuje použití dlaždic v Azure IoT Central:
 | Výsečový graf | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice výsečového grafu zobrazují graf agregovaných měření pro zařízení za určité časové období.|
 | Heat mapa | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice Heat mapy zobrazují informace o sadě zařízení reprezentované jako barvy.|
 | Historie událostí | Řídicí panely aplikací a zařízení |Dlaždice historie událostí zobrazují události pro zařízení za časové období. Můžete ho například použít k zobrazení všech změn teploty zařízení během poslední hodiny.|
-| Historie stavu | Řídicí panely aplikací a zařízení |Dlaždice historie stavu zobrazují hodnoty měření za časové období. Můžete ho například použít k zobrazení hodnot teploty pro zařízení během poslední hodiny.|
+| Historie stavů | Řídicí panely aplikací a zařízení |Dlaždice historie stavu zobrazují hodnoty měření za časové období. Můžete ho například použít k zobrazení hodnot teploty pro zařízení během poslední hodiny.|
 | Klíčové ukazatele výkonu | Řídicí panely aplikací a zařízení | Dlaždice klíčových ukazatelů výkonu zobrazují agregovanou telemetrii nebo měření událostí za časové období. Můžete ho například použít k zobrazení maximální teploty zařízení během poslední hodiny.|
 | Poslední známá hodnota | Řídicí panely aplikací a zařízení |Dlaždice Poslední známá hodnota zobrazují nejnovější hodnotu pro telemetrii nebo měření stavu. Pomocí této dlaždice můžete například zobrazit nejnovější měření teploty, tlaku a vlhkosti zařízení.|
 

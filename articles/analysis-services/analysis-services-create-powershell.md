@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 073193329950e1d7e6a812da4555ec8ba76f65e3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 071c44136d917874843bdf080de775ec6739937a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442874"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Rychlý start: Vytvoření serveru – PowerShell
 
@@ -24,7 +24,7 @@ Tento rychlý start popisuje použití PowerShellu z příkazového řádku k vy
 
 - **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
 - **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory a musíte mít účet v tomto adresáři. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
-- **Azure PowerShell**. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+- **Azure PowerShell**. Nainstalovanou verzi zjistíte spuštěním rutiny `Get-Module -ListAvailable Az`. Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="import-azanalysisservices-module"></a>Import AZ. AnalysisServices Module
 
@@ -44,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-[Skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina. Při vytváření serveru je potřeba zadat skupinu prostředků ve vašem předplatném. Pokud ještě nemáte skupinu prostředků, můžete vytvořit novou pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Následující příklad vytvoří skupinu prostředků `myResourceGroup` v oblasti Západní USA.
+[Skupina prostředků Azure](../azure-resource-manager/management/overview.md) je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina. Při vytváření serveru je potřeba zadat skupinu prostředků ve vašem předplatném. Pokud ještě nemáte skupinu prostředků, můžete vytvořit novou pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Následující příklad vytvoří skupinu prostředků `myResourceGroup` v oblasti Západní USA.
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"

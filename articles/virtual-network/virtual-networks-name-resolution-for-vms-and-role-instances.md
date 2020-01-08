@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368031"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky v Azure Virtual Networks
 
@@ -44,7 +44,7 @@ To, který typ překladu názvů použijete, závisí na tom, jak spolu vaše pr
 | Rozlišení místních počítačů a názvů služeb z virtuálních počítačů nebo instancí rolí v Azure. |Servery DNS spravované zákazníky (místní řadič domény, místní řadič domény jen pro čtení nebo sekundární služba DNS, která se synchronizuje pomocí zónových přenosů, například). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů hostitelů Azure z místních počítačů. |Předává dotazy do služby DNS spravované zákazníkem proxy server v odpovídající virtuální síti, proxy server předává dotazy do Azure pro řešení. Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Reverzní DNS pro interní IP adresy |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Nevztahuje se |
-| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Nelze použít. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Nevztahuje se|
+| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Není k dispozici. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Nevztahuje se|
 
 ## <a name="azure-provided-name-resolution"></a>Překlad názvů poskytovaných službou Azure
 
@@ -193,22 +193,16 @@ Pokud používáte vlastní servery DNS, poskytuje Azure možnost zadat několik
 
 > [!NOTE]
 > Vlastnosti síťového připojení, například IP adresy serveru DNS, by se neměly upravovat přímo v rámci virtuálních počítačů. Důvodem je to, že při zaretušování služby se můžou vymazat, když se virtuální síťový adaptér nahradí. To platí pro virtuální počítače se systémem Windows i Linux.
->
->
 
 Pokud používáte model nasazení Azure Resource Manager, můžete zadat servery DNS pro virtuální síť a síťové rozhraní. Podrobnosti najdete v tématu [Správa virtuální sítě](manage-virtual-network.md) a [Správa síťového rozhraní](virtual-network-network-interface.md).
 
 > [!NOTE]
 > Pokud se rozhodnete pro vlastní server DNS pro virtuální síť, musíte zadat aspoň jednu IP adresu serveru DNS. v opačném případě bude virtuální síť ignorovat konfiguraci a místo toho použít službu DNS poskytovanou službou Azure.
->
->
 
 Pokud používáte model nasazení Classic, můžete zadat servery DNS pro virtuální síť v Azure Portal nebo v [souboru konfigurace sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro Cloud Services můžete zadat servery DNS prostřednictvím [konfiguračního souboru služby](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell s rutinou [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je již nasazený, bude nutné provést obnovení zapůjčení služby DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti. Pro virtuální počítače s operačním systémem Windows to můžete provést zadáním `ipconfig /renew` přímo do virtuálního počítače. Postup se liší v závislosti na operačním systému. Podívejte se na příslušnou dokumentaci pro typ operačního systému. 
->
->
+> Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je již nasazený, bude nutné provést obnovení zapůjčení služby DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti. Pro virtuální počítače s operačním systémem Windows to můžete provést zadáním `ipconfig /renew` přímo do virtuálního počítače. Postup se liší v závislosti na operačním systému. Podívejte se na příslušnou dokumentaci pro typ operačního systému.
 
 ## <a name="next-steps"></a>Další kroky
 

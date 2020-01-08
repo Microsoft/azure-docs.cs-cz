@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1986f51b834f177a7c8d70392cc532cbfadb7170
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 64bc3921a606ab3211173b46b268ded53952c8bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974729"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434664"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí C#
 
@@ -28,7 +28,7 @@ I když postup v tomto článku funguje na počítačích se systémem Windows i
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte sadu [Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
@@ -49,17 +49,21 @@ Pro účely tohoto rychlého startu potřebujete soubor .pem nebo .cer, který o
 
 Chcete-li použít toto testovací nástroje pro generování certifikátů, proveďte následující kroky:
 
-1. Otevřete okno příkazového řádku nebo prostředí Git bash a přejděte do pracovní složky ve vašem počítači. Spuštěním následujícího příkazu naklonujte úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
+1. Vyhledejte název značky pro [nejnovější verzi](https://github.com/Azure/azure-iot-sdk-c/releases/latest) sady Azure IoT C SDK.
 
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+2. Otevřete příkazový řádek nebo prostředí Git Bash a přejděte do pracovní složky na svém počítači. Spuštěním následujících příkazů naklonujte nejnovější verzi úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) . Použijte značku, kterou jste našli v předchozím kroku, jako hodnotu parametru `-b`:
 
-   Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
+    ```cmd/sh
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
+
+    Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
    Testovací nástroje se nacházejí ve složce *azure-iot-sdk-c/tools/CACertificates* úložiště, které jste naklonovali.
 
-1. Ukázky a kurzy najdete v článku [Správa testovacích certifikátů certifikační autority](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
+3. Ukázky a kurzy najdete v článku [Správa testovacích certifikátů certifikační autority](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
 Kromě nástrojů v sadě C SDK je [Ukázka ověření certifikátu skupiny](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) v sadě *Microsoft Azure IoT SDK pro .NET* předvádí, jak C# se má prověřování pomocí existujícího certifikátu X. 509 Intermediate nebo Root CA.
 
@@ -119,7 +123,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    > * Uložení připojovacího řetězce pro správce služby zřizování v kódu je v rozporu s osvědčenými postupy zabezpečení. Místo toho by se měl připojovací řetězec uchovávat zabezpečeným způsobem, například v zabezpečeném konfiguračním souboru nebo v registru.
    > * Nezapomeňte nahrát pouze veřejnou část podpisového certifikátu. Nikdy nenahrávejte soubory .pfx (PKCS12) ani .pem obsahující privátní klíče ke službě zřizování.
 
-1. Přidejte do třídy `Program` následující metodu. Tento kód vytvoří položku skupiny registrací a potom zavolá metodu `CreateOrUpdateEnrollmentGroupAsync` v `ProvisioningServiceClient`, aby přidala skupinu registrací do služby zřizování.
+1. Přidejte následující metodu do třídy `Program`. Tento kód vytvoří položku skupiny registrací a potom zavolá metodu `CreateOrUpdateEnrollmentGroupAsync` v `ProvisioningServiceClient`, aby přidala skupinu registrací do služby zřizování.
 
    ```csharp
    public static async Task RunSample()

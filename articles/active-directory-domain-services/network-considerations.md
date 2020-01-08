@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425536"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure AD Domain Services
 
-Jak Azure Active Directory Domain Services (služba AD DS) poskytuje službám pro ověřování a správu jiné aplikace a úlohy, síťové připojení je klíčová komponenta. Bez patřičně nakonfigurovaných prostředků virtuální sítě nemůžou aplikace a úlohy komunikovat se službou a používat funkce, které poskytuje Azure služba AD DS. Pokud svou virtuální síť naplánujete správně, ujistěte se, že Azure služba AD DS může podle potřeby obsluhovat vaše aplikace a úlohy.
+Jak Azure Active Directory Domain Services (služba AD DS) poskytuje službám pro ověřování a správu jiné aplikace a úlohy, síťové připojení je klíčová komponenta. Bez patřičně nakonfigurovaných prostředků virtuální sítě nemůžou aplikace a úlohy komunikovat s funkcemi poskytovanými službou Azure služba AD DS a používat je. Pokud svou virtuální síť naplánujete správně, ujistěte se, že Azure služba AD DS může podle potřeby obsluhovat vaše aplikace a úlohy.
 
 Tento článek popisuje požadavky na návrh a požadavky pro virtuální síť Azure, které podporují Azure služba AD DS.
 
@@ -60,7 +60,7 @@ Jak je uvedeno v předchozí části, můžete v Azure vytvořit jenom Azure AD 
 Aplikační úlohy hostované v jiných virtuálních sítích Azure můžete připojit pomocí jedné z následujících metod:
 
 * Partnerský vztah virtuální sítě
-* Virtuální privátní sítě (VPN)
+* Virtuální privátní síť (VPN)
 
 ### <a name="virtual-network-peering"></a>Virtual Network partnerský vztah
 
@@ -142,7 +142,7 @@ Pro Azure služba AD DS k poskytování služeb ověřování a správy se vyža
 * Slouží k provádění úloh správy pomocí vzdálené komunikace PowerShellu ve spravované doméně Azure služba AD DS.
 * Bez přístupu k tomuto portu se vaše spravovaná doména Azure služba AD DS nedá aktualizovat, konfigurovat, zálohovat ani sledovat.
 * Pro Azure služba AD DS spravované domény, které používají virtuální síť založenou na Správce prostředků, můžete omezit příchozí přístup k tomuto portu na značku služby *AzureActiveDirectoryDomainServices* .
-    * Pro starší verze Azure služba AD DS spravované domény pomocí klasické virtuální sítě můžete omezit příchozí přístup k tomuto portu na následující zdrojové IP adresy: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223* , *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*a *104.40.87.209*.
+    * Pro starší verze Azure služba AD DS spravované domény pomocí klasické virtuální sítě můžete omezit příchozí přístup k tomuto portu na následující zdrojové IP adresy: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*a *104.40.87.209*.
 
 ## <a name="user-defined-routes"></a>Trasy definované uživatelem
 

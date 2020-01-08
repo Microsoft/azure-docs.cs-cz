@@ -3,18 +3,18 @@ title: Rychlý Start – monitorování zařízení v Azure IoT Central
 description: Jako operátor použijte svou aplikaci Azure IoT Central k monitorování zařízení v tomto rychlém startu.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a6bc4b76dc00330e39526aec8bc5651b9abb590b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e0f0e765ba6bb8b0969fbf639c8427e8b65214fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706746"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434760"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices-preview-features"></a>Rychlý Start: použití IoT Central Azure ke sledování vašich zařízení (funkce ve verzi Preview)
 
@@ -24,11 +24,11 @@ ms.locfileid: "74706746"
 
 V tomto rychlém startu se dozvíte, jak pomocí Microsoft Azure IoT Central aplikace monitorovat vaše zařízení a měnit nastavení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, měli byste provést tři předchozí rychlé starty a [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md), [Přidat simulované zařízení do aplikace IoT Central](./quick-create-pnp-device.md) a [nakonfigurovat pravidla a akce pro vaše zařízení](quick-configure-rules.md).
 
-## <a name="receive-a-notification"></a>Příjem oznámení
+## <a name="receive-a-notification"></a>Přijmout oznámení
 
 Azure IoT Central posílá oznámení o zařízení v podobě e-mailových zpráv. Tvůrce přidal pravidlo pro odeslání oznámení v případě, že teplota v připojeném zařízení snímače prostředí překročila prahovou hodnotu. Zprávu najdete v e-mailech odeslaných na účet, který tvůrce zvolil pro příjem oznámení.
 
@@ -48,7 +48,7 @@ Kliknutím na zobrazení **přehledu** zobrazíte informace o zařízení.
 
 Graf na řídicím panelu vykresluje teplotní křivku zařízení. Rozhodnete se, že je teplota zařízení příliš vysoká.
 
-## <a name="remediate-an-issue"></a>Opravit problém
+## <a name="remediate-an-issue"></a>Oprava problému
 
 Chcete-li provést změnu zařízení, použijte stránku **vlastností senzoru životního prostředí** .
 
@@ -60,9 +60,9 @@ Vyberte **vlastnosti senzoru životního prostředí**. Změňte **úroveň jasu
 
 V tomto rychlém startu jste se naučili:
 
-* Příjem oznámení
+* Přijmout oznámení
 * Průzkum problému
-* Opravit problém
+* Oprava problému
 
 Teď, když už víte, jak zařízení monitorovat, je navržený další krok:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: b43ec36f6f3a9111656892c65af2592fce6eaed2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5fd13531e438b8bcda8e3720758e338c964f77af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444255"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -50,7 +50,7 @@ Konkrétně tento konektor Oracle podporuje:
 > [!Note]
 > Proxy server Oracle se nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
 
@@ -69,7 +69,7 @@ Propojená služba Oracle podporuje následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavena na hodnotu **Oracle**. | Ano |
-| connectionString | Určuje informace potřebné pro připojení k instanci Oracle Database. <br/>Označte toto pole jako `SecureString` pro bezpečné uložení v Data Factory. Můžete také vložit heslo do Azure Key Vault a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md) . <br><br>**Podporovaný typ připojení**: k identifikaci databáze můžete použít název **Oracle SID** nebo **Oracle** :<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ano |
+| connectionString | Určuje informace potřebné pro připojení k instanci Oracle Database. <br/>Můžete také vložit heslo do Azure Key Vault a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md) . <br><br>**Podporovaný typ připojení**: k identifikaci databáze můžete použít název **Oracle SID** nebo **Oracle** :<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!TIP]
@@ -130,10 +130,7 @@ Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
     "properties": {
         "type": "Oracle",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;"
-            }
+            "connectionString": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -151,10 +148,7 @@ Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
     "properties": {
         "type": "Oracle",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;"
-            },
+            "connectionString": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -362,7 +356,7 @@ Při kopírování dat z a do Oracle platí následující mapování. Další i
 | DATE (Datum) |Datum a čas |
 | FLOAT |Decimal, String (Pokud přesnost > 28) |
 | INTEGER |Decimal, String (Pokud přesnost > 28) |
-| DLOUHÝ |Řetězec |
+| DLOUHOU |Řetězec |
 | LONG RAW |Byte[] |
 | NCHAR |Řetězec |
 | NCLOB |Řetězec |

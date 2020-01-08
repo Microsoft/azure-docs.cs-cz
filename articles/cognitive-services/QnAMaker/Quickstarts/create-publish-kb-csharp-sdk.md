@@ -1,29 +1,29 @@
 ---
 title: 'Rychlý Start: Klientská knihovna QnA Maker pro .NET'
 titleSuffix: Azure Cognitive Services
-description: Začněte s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
+description: V tomto rychlém startu se dozvíte, jak začít s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 1c403d4d9b5c95c1cb1079b951a26dcaabb805fe
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: db45ff1a9114a661da90f4922003b35e1cfbe57a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447565"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>Rychlý Start: Klientská knihovna QnA Maker pro .NET
 
-Začněte s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. 
+Začněte s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 
 Pomocí klientské knihovny QnA Maker pro .NET:
 
-* Vytvoření znalostní báze 
+* Vytvoření znalostní báze
 * Správa znalostní báze
 * Publikování znalostní báze
 * Vygenerovat odpověď ze znalostní báze Knowledge Base
@@ -41,15 +41,15 @@ Pomocí klientské knihovny QnA Maker pro .NET:
 
 ### <a name="create-a-qna-maker-azure-resource"></a>Vytvoření prostředku Azure QnA Maker
 
-Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. 
+Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači.
 
 Po získání klíče a koncového bodu pro váš prostředek [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `QNAMAKER_SUBSCRIPTION_KEY`. Název prostředku se používá jako součást adresy URL koncového bodu.
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové C# aplikace
 
-Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). 
+Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE).
 
-V okně konzoly (například cmd, PowerShell nebo bash) použijte příkaz `dotnet new` a vytvořte novou konzolovou aplikaci s názvem `qna-maker-quickstart`. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: *program.cs*. 
+V okně konzoly (například cmd, PowerShell nebo bash) použijte příkaz `dotnet new` a vytvořte novou konzolovou aplikaci s názvem `qna-maker-quickstart`. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: *program.cs*.
 
 ```dotnetcli
 dotnet new console -n qna-maker-quickstart
@@ -61,7 +61,7 @@ Změňte adresář na nově vytvořenou složku aplikace. Aplikaci můžete vytv
 dotnet build
 ```
 
-Výstup sestavení by neměl obsahovat žádná upozornění ani chyby. 
+Výstup sestavení by neměl obsahovat žádná upozornění ani chyby.
 
 ```console
 ...
@@ -86,11 +86,11 @@ Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio,
 
 Klient QnA Maker je objekt [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) , který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
 
-Po vytvoření klienta použijte vlastnost [znalostní báze](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_QnAMakerClient_Knowledgebase) k vytvoření, správě a publikování znalostní báze. 
+Po vytvoření klienta použijte vlastnost [znalostní báze](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_QnAMakerClient_Knowledgebase) k vytvoření, správě a publikování znalostní báze.
 
-Spravujte znalostní bázi odesláním objektu JSON. Pro okamžité operace metoda obvykle vrací objekt JSON indikující stav. V případě dlouhotrvajících operací je odpověď ID operace. Zavolejte [klientovi. Operations. GetDetailsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.operationsextensions.getdetailsasync?view=azure-dotnet) metoda s ID operace k určení [stavu požadavku](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-dotnet). 
+Spravujte znalostní bázi odesláním objektu JSON. Pro okamžité operace metoda obvykle vrací objekt JSON indikující stav. V případě dlouhotrvajících operací je odpověď ID operace. Zavolejte [klientovi. Operations. GetDetailsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.operationsextensions.getdetailsasync?view=azure-dotnet) metoda s ID operace k určení [stavu požadavku](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-dotnet).
 
- 
+
 ## <a name="code-examples"></a>Příklady kódu
 
 Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientské knihovny QnA Maker pro .NET:
@@ -115,7 +115,11 @@ V metodě **Main** Vytvořte proměnnou pro klíč Azure prostředku načtenou z
 
 Potom vytvořte objekt [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.apikeyserviceclientcredentials?view=azure-dotnet) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) .
 
-Změňte proměnnou **koncového bodu** `<your-custom-domain>`na název vaší vlastní domény. Toto umístění najdete na stránce **Přehled** pro prostředek QnA Maker v Azure Portal.
+|Proměnná prostředí|proměnná|Příklad:|
+|--|--|--|
+|`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|Klíč je řetězec znaků 32 a je k dispozici v Azure Portal v prostředku QnA Maker na stránce rychlý Start. To není totéž jako klíč koncového bodu předpovědi.|
+|`QNAMAKER_HOST`|`Endpoint`| Váš koncový bod pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`obsahuje název vašeho **prostředku**. Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.|
+||||
 
 ```csharp
 var subscriptionKey = Environment.GetEnvironmentVariable("QNAMAKER_SUBSCRIPTION_KEY");
@@ -124,7 +128,7 @@ var client = new QnAMakerClient(new ApiKeyServiceClientCredentials(subscriptionK
 
 ## <a name="authenticate-the-runtime-for-generating-an-answer"></a>Ověření modulu runtime pro vygenerování odpovědi
 
-V metodě **Main** Vytvořte proměnnou pro ověřování prostředku z proměnných prostředí s názvem `QNAMAKER_ENDPOINT_HOSTNAME` a `QNAMAKER_ENDPOINT_KEY`. Když publikujete znalostní bázi, vrátí se tyto hodnoty. Po publikování můžete tato nastavení najít na stránce **Nastavení** na portálu QnA maker. 
+V metodě **Main** Vytvořte proměnnou pro ověřování prostředku z proměnných prostředí s názvem `QNAMAKER_ENDPOINT_HOSTNAME` a `QNAMAKER_ENDPOINT_KEY`. Když publikujete znalostní bázi, vrátí se tyto hodnoty. Po publikování můžete tato nastavení najít na stránce **Nastavení** na portálu QnA maker.
 
 Vytvořte [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) pro dotazování znalostní báze a vygenerujte odpověď nebo vlak z aktivního učení.
 
@@ -135,16 +139,16 @@ Vytvořte [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsof
 Znalostní báze ukládá páry dotazů a odpovědí pro objekt [CreateKbDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.createkbdto?view=azure-dotnet) ze tří zdrojů:
 
 * Pro **redakční obsah**použijte objekt [QnADTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadto?view=azure-dotnet) .
-* Pro **soubory**použijte objekt [FileDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-dotnet) . 
+* Pro **soubory**použijte objekt [FileDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-dotnet) .
 * Pro **adresy URL**použijte seznam řetězců.
 
-Zavolejte metodu [CreateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.createasync?view=azure-dotnet) a pak předejte vrácené ID operace do metody [MonitorOperation](#get-status-of-an-operation) pro dotazování na stav. 
+Zavolejte metodu [CreateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.createasync?view=azure-dotnet) a pak předejte vrácené ID operace do metody [MonitorOperation](#get-status-of-an-operation) pro dotazování na stav.
 
-Poslední řádek následujícího kódu vrátí ID znalostní báze z odpovědi z MonitorOoperation. 
+Poslední řádek následujícího kódu vrátí ID znalostní báze z odpovědi z MonitorOoperation.
 
 [!code-csharp[Create a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=CreateKB&highlight=29,30)]
 
-Aby bylo možné úspěšně vytvořit znalostní bázi, ujistěte se, že zahrnuje funkci [`MonitorOperation`](#get-status-of-an-operation) , na kterou se odkazuje ve výše uvedeném kódu. 
+Aby bylo možné úspěšně vytvořit znalostní bázi, ujistěte se, že zahrnuje funkci [`MonitorOperation`](#get-status-of-an-operation) , na kterou se odkazuje ve výše uvedeném kódu.
 
 ## <a name="update-a-knowledge-base"></a>Aktualizace znalostní báze
 
@@ -152,7 +156,7 @@ Znalostní bázi můžete aktualizovat tak, že předáte ID znalostní báze a 
 
 [!code-csharp[Update a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=UpdateKB&highlight=4,13)]
 
-Aby bylo možné úspěšně aktualizovat znalostní bázi, ujistěte se, že zahrnuje funkci [`MonitorOperation`](#get-status-of-an-operation) , na kterou se odkazuje ve výše uvedeném kódu. 
+Aby bylo možné úspěšně aktualizovat znalostní bázi, ujistěte se, že zahrnuje funkci [`MonitorOperation`](#get-status-of-an-operation) , na kterou se odkazuje ve výše uvedeném kódu.
 
 ## <a name="download-a-knowledge-base"></a>Stáhnout znalostní bázi
 
@@ -162,28 +166,28 @@ Použijte metodu [DownloadAsync](https://docs.microsoft.com/dotnet/api/microsoft
 
 ## <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
 
-Publikujte znalostní bázi pomocí metody [PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.publishasync?view=azure-dotnet) . Tím se převezme aktuální uložený a vycvičený model, na který odkazuje ID znalostní báze, a publikuje ho na koncovém bodu. 
+Publikujte znalostní bázi pomocí metody [PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.publishasync?view=azure-dotnet) . Tím se převezme aktuální uložený a vycvičený model, na který odkazuje ID znalostní báze, a publikuje ho na koncovém bodu.
 
 [!code-csharp[Publish a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=PublishKB&highlight=2)]
 
 ## <a name="generate-an-answer-from-the-knowledge-base"></a>Vygenerovat odpověď ze znalostní báze Knowledge Base
 
-Vygenerujte odpověď z publikované znalostní báze pomocí [RuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_QnAMakerClient_Knowledgebase). Metoda [GenerateAnswerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswerasync?view=azure-dotnet) Tato metoda přijímá ID znalostní báze a [QueryDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto?view=azure-dotnet). Získejte přístup k dalším vlastnostem QueryDTO, jako je například [začátek](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto.top?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_Top) a [kontext](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto.context?view=azure-dotnet) , který se má použít v robotu chatu. 
+Vygenerujte odpověď z publikované znalostní báze pomocí [RuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_QnAMakerClient_Knowledgebase). Metoda [GenerateAnswerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswerasync?view=azure-dotnet) Tato metoda přijímá ID znalostní báze a [QueryDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto?view=azure-dotnet). Získejte přístup k dalším vlastnostem QueryDTO, jako je například [začátek](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto.top?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_Top) a [kontext](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.querydto.context?view=azure-dotnet) , který se má použít v robotu chatu.
 
 [!code-csharp[Generate an answer from a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=GenerateAnswer&highlight=2)]
 
 
 ## <a name="delete-a-knowledge-base"></a>Odstranění znalostní báze
 
-Odstraňte znalostní bázi pomocí metody [DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.deleteasync?view=azure-dotnet) s parametrem ID znalostní báze. 
+Odstraňte znalostní bázi pomocí metody [DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.deleteasync?view=azure-dotnet) s parametrem ID znalostní báze.
 
 [!code-csharp[Delete a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=DeleteKB&highlight=2)]
 
 ## <a name="get-status-of-an-operation"></a>Získat stav operace
 
-Některé metody, jako například vytváření a aktualizace, mohou trvat dostatek času, než čeká na dokončení procesu, a vrátí se [operace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.operation?view=azure-dotnet) . K určení stavu původní metody použijte [ID operace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.operation.operationid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_Operation_OperationId) z operace k dotazování (s logikou opakování). 
+Některé metody, jako například vytváření a aktualizace, mohou trvat dostatek času, než čeká na dokončení procesu, a vrátí se [operace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.operation?view=azure-dotnet) . K určení stavu původní metody použijte [ID operace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.operation.operationid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_Operation_OperationId) z operace k dotazování (s logikou opakování).
 
-_Smyčka_ a _úloha. zpoždění_ v následujícím bloku kódu slouží k simulaci logiky opakování. Ty by měly být nahrazeny vlastní logikou opakování. 
+_Smyčka_ a _úloha. zpoždění_ v následujícím bloku kódu slouží k simulaci logiky opakování. Ty by měly být nahrazeny vlastní logikou opakování.
 
 [!code-csharp[Monitor an operation](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=MonitorOperation&highlight=10)]
 

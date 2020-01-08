@@ -1,7 +1,7 @@
 ---
 title: Sledovat chování uživatele pomocí Application Insights
 titleSuffix: Azure AD B2C
-description: Naučte se, jak povolit protokoly událostí v Application Insights z Azure AD B2Cch cest uživatelů pomocí vlastních zásad (Preview).
+description: Naučte se, jak povolit protokoly událostí v Application Insights z Azure AD B2Cch cest uživatelů pomocí vlastních zásad.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8376deecb5e184c01b41495b868b57bd8fd745d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367956"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Sledovat chování uživatele v Azure Active Directory B2C pomocí Application Insights
 
@@ -33,11 +33,11 @@ Pokud používáte Azure Active Directory B2C (Azure AD B2C) společně s Azure 
 
 Architektura prostředí identit v Azure AD B2C zahrnuje `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`poskytovatele. Odesílá data události přímo do Application Insights pomocí klíče instrumentace, který je k dispozici Azure AD B2C.
 
-Technický profil používá tohoto poskytovatele k definování události z Azure AD B2C. Profil určuje název události, zaznamenané deklarace a klíč instrumentace. K odeslání události se technický profil přidá jako `orchestration step`nebo jako `validation technical profile` ve vlastní cestě uživatele.
+Technický profil používá tohoto poskytovatele k definování události z Azure AD B2C. Profil určuje název události, zaznamenané deklarace a klíč instrumentace. K odeslání události se technický profil přidá jako `orchestration step` ve vlastní cestě uživatele.
 
 Application Insights může sjednotit události pomocí ID korelace pro záznam uživatelské relace. Application Insights zpřístupňuje událost a relaci během několika sekund a prezentuje mnoho nástrojů pro vizualizaci, export a analýzu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky v části Začínáme [s vlastními zásadami](active-directory-b2c-get-started-custom.md). V tomto článku se předpokládá, že používáte Startovní sadu Custom Policy. Úvodní sada ale není povinná.
 

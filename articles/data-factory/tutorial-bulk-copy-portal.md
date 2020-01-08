@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: e0e6ffc45d55dc76abdbdf839958479b2ac5d40b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c44f1b39ae700fbd11b7c0866e7150d1edec8c4f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926699"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439518"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 
@@ -32,7 +32,7 @@ Tento kurz zahrnuje následující základní kroky:
 > * Vytvoření propojených služeb Azure SQL Database, Azure SQL Data Warehouse a Azure Storage
 > * Vytvoření datových sad Azure SQL Database a Azure SQL Data Warehouse
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění aktivit a kanálu
 
 Tento kurz používá Azure Portal. Další informace o vytvoření datové továrny pomocí jiných nástrojů nebo sad SDK najdete v tématu [Šablony Rychlý start](quickstart-create-data-factory-dot-net.md). 
@@ -47,7 +47,7 @@ V tomto scénáři máte několik tabulek ve službě Azure SQL Database, které
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Účet služby Azure Storage**. Účet Azure Storage se v operaci hromadného kopírování používá jako pracovní úložiště objektů blob. 
 * **Azure SQL Database**. Tato databáze obsahuje zdrojová data. 
 * **Azure SQL Data Warehouse**. Tento datový sklad obsahuje data zkopírovaná z SQL Database. 
@@ -85,7 +85,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server 
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
-     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 1. Jako **verzi** vyberte **V2**.
 1. Vyberte **umístění** pro datovou továrnu. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 1. Klikněte na **Vytvořit**.
@@ -387,7 +387,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb Azure SQL Database, Azure SQL Data Warehouse a Azure Storage
 > * Vytvoření datových sad Azure SQL Database a Azure SQL Data Warehouse
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění aktivit a kanálu
 
 Pokud se chcete dozvědět víc o přírůstkovém kopírování ze zdroje do cíle, přejděte k následujícímu kurzu:

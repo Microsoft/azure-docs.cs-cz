@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 74375fdb5bf8d571cbdbc778c3c6e7b7b93f59ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367994"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: použití Graph API Azure AD
 
@@ -30,10 +30,7 @@ Pro klienty B2C existují dva primární režimy komunikace s Graph API:
 
 V tomto článku se dozvíte, jak provést automatizovaný případ použití. Vytvoříte `B2CGraphClient` .NET 4,5, která provede operace vytvoření, čtení, aktualizace a odstranění (CRUD) uživatelem. Klient bude mít rozhraní příkazového řádku (CLI) systému Windows, které umožňuje vyvolání různých metod. Kód je však napsán tak, aby se choval v neinteraktivním, automatizovaném způsobem.
 
->[!IMPORTANT]
-> Ke správě uživatelů v adresáři Azure AD B2C je **nutné** použít [Graph API Azure AD](../active-directory/develop/active-directory-graph-api-quickstart.md) . Graph API Azure AD se liší od rozhraní Microsoft Graph API. Další informace najdete v tomto příspěvku na blogu MSDN: [Microsoft Graph nebo Azure AD Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než budete moci vytvořit aplikace nebo uživatele, potřebujete klienta Azure AD B2C. Pokud ho ještě nemáte, [Vytvořte klienta Azure Active Directory B2C](tutorial-create-tenant.md).
 
@@ -63,8 +60,9 @@ Oprávnění *ke čtení a zápisu dat adresáře* , které jste předtím uděl
 
 Pokud chcete aplikaci umožnit, aby odstranila uživatele nebo aktualizovala hesla, musíte jí udělit roli *správce uživatele* .
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do adresáře, který obsahuje vašeho tenanta Azure AD B2C.
-1. V nabídce vlevo vyberte **Azure AD B2C** . Případně vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **role a správci**.
 1. Vyberte roli **správce uživatele** .
 1. Vyberte **Přidat přiřazení**.
@@ -290,7 +288,7 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Například:
+Příklad:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
@@ -332,7 +330,7 @@ B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-Výstup odhalí podrobnosti každého vlastního atributu. Například:
+Výstup odhalí podrobnosti každého vlastního atributu. Příklad:
 
 ```json
 {

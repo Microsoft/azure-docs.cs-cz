@@ -1,14 +1,14 @@
 ---
 title: Aspekty programu Cloud Solution Provider
 description: Pro partnery CSP pomáhá Správa delegovaných prostředků Azure zdokonalit zabezpečení a řízení tím, že umožňuje podrobná oprávnění.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7e1e371d8c31c45828ee0565545cb40145b40e92
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 66ea74751f12a499a1e2d9e083497da31746e3c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463960"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456906"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Program Azure Lighthouse a Cloud Solution Provider
 
@@ -34,9 +34,9 @@ Registrace předplatného, které jste vytvořili prostřednictvím programu CSP
 ![Správa tenanta pomocí ADMINISTRATE a správy delegovaných prostředků Azure](../media/csp-2.jpg)
 
 > [!NOTE]
-> Stránka [ **moji zákazníci** v Azure Portal](../how-to/view-manage-customers.md) teď obsahuje oddíl **Cloud Solution Provider (Preview)** , který zobrazuje informace o fakturaci a prostředky pro zákazníky CSP, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) a jsou v rámci plánu Azure. Další informace najdete v tématu [Začínáme s fakturačním účtem Microsoft Partner Agreement](https://docs.microsoft.com/azure/billing/mpa-overview).
+> Stránka [ **moji zákazníci** v Azure Portal](../how-to/view-manage-customers.md) teď obsahuje oddíl **Cloud Solution Provider (Preview)** , který zobrazuje informace o fakturaci a prostředky pro zákazníky CSP, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](https://docs.microsoft.com/partner-center/azure-plan-get-started). Další informace najdete v tématu [Začínáme s fakturačním účtem Microsoft Partner Agreement](../../billing/mpa-overview.md).
 >
-> Zákazníci CSP se můžou v této části vyskytnout bez ohledu na to, jestli jsou připojené ke správě delegovaných prostředků Azure. Pokud mají, pak se zobrazí také v části **zákazníci** , jak je popsáno v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](../how-to/view-manage-customers.md).
+> Zákazníci CSP se můžou v této části Zobrazit bez ohledu na to, jestli jsou taky připojené ke správě delegovaných prostředků Azure. Pokud jsou, zobrazí se také v části **zákazníci** , jak je popsáno v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](../how-to/view-manage-customers.md). Obdobně se zákazník CSP nemusí zobrazit v části **Poskytovatel řešení cloudu (Preview)** ve **svých zákaznících** , aby je bylo možné integrovat do správy delegovaných prostředků Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 2448550cf35f92bc8d91bc6ad9d5b22cc90b5ae0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47bcc9a4f906fa1e0cc0560cdbd2e0cebec481ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494315"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435382"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrace Apache Spark a Apache Hive s konektorem skladu podregistru
 
@@ -56,19 +56,19 @@ Zkopírujte informace o uzlu ze souboru `/etc/hosts` v headnode0 vašeho cluster
 
 1. Přejděte na domovskou stránku Apache Ambari clusteru pomocí `https://LLAPCLUSTERNAME.azurehdinsight.net`, kde `LLAPCLUSTERNAME` je název vašeho clusteru interaktivních dotazů.
 
-1. Přejděte do **podregistru** > **config** > **Advanced** > **Advanced podregistr-site** >  –**Zookeeper. kvorum** a poznamenejte si hodnotu. Hodnota může být podobná: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
+1. Přejděte do **podregistru** > **Configurations** > **Pokročilé** > **Pokročilé – lokalita registru** > **podregistr. Zookeeper. kvorum** a poznamenejte si hodnotu. Hodnota může být podobná: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
-1. Přejděte do **podregistru** > **config** > **Advanced** > **General** > .**URI** a poznamenejte si hodnotu. Hodnota může být podobná: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Přejděte do **podregistru** > **config** > **Advanced** > **General** > **podregistr. metastore. URI** a poznamenejte si hodnotu. Hodnota může být podobná: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
 #### <a name="from-your-apache-spark-cluster"></a>Z Apache Spark clusteru
 
 1. Přejděte na domovskou stránku Apache Ambari clusteru pomocí `https://SPARKCLUSTERNAME.azurehdinsight.net`, kde `SPARKCLUSTERNAME` je název vašeho clusteru Apache Spark.
 
-1. Přejděte do **podregistru** > **config** > **Advanced** > **Advanced podregistr-Interactive-site** >  –**llap. daemon. Service. Hosts** a poznamenejte si hodnotu. Hodnota může být podobná: `@llap0`.
+1. Přejděte do **podregistru** > **Configurations** > **Pokročilé** > **pokročilá interaktivita podregistru** **, > podregistr. llap. démon. Service. Hosts** a poznamenejte si hodnotu. Hodnota může být podobná: `@llap0`.
 
 ### <a name="configure-spark-cluster-settings"></a>Konfigurace nastavení clusteru Spark
 
-Z webového uživatelského rozhraní Spark Ambari přejděte na **Spark2** > **config** > **Custom Spark2-Defaults**.
+Z webového uživatelského rozhraní Spark Ambari přejděte do složky **Spark2** > **config** > **Custom Spark2-Defaults**.
 
 ![Konfigurace Spark2 Apache Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
@@ -107,7 +107,7 @@ Chcete-li spustit relaci Spark-Shell, proveďte následující kroky:
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.2.1-8.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
@@ -132,7 +132,7 @@ Balíček zabezpečení podniku (ESP) poskytuje podnikové funkce, jako je ově�
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/3.0.1.0-183/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.1.0-183.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     --conf spark.hadoop.hive.llap.daemon.service.hosts='<LLAP_APP_NAME>'
     --conf spark.sql.hive.hiveserver2.jdbc.url='jdbc:hive2://<ZOOKEEPER_QUORUM>;serviceDiscoveryMode=zookeeper;zookeeperNamespace=hiveserver2-interactive'
@@ -224,7 +224,7 @@ Pomocí následujících kroků vytvořte příklad konektoru skladu s podmnoži
     hive.table("stream_table").show()
     ```
 
-Pomocí **kombinace kláves CTRL + C** zastavte NetCat v druhé relaci SSH. Pomocí `:q` ukončíte prostředí Spark-Shell v první relaci SSH.
+Pomocí **kombinace kláves CTRL + C** zastavte NetCat v druhé relaci SSH. Pomocí `:q` ukončete prostředí Spark-Shell na první relaci SSH.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Zabezpečení dat v clusterech Spark ESP
 
@@ -246,14 +246,14 @@ Pomocí **kombinace kláves CTRL + C** zastavte NetCat v druhé relaci SSH. Pomo
     ![Ukázková tabulka před použitím zásad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
 
 1. Použijte zásadu maskování sloupců, která zobrazuje jenom poslední čtyři znaky sloupce.  
-    1. V `https://CLUSTERNAME.azurehdinsight.net/ranger/` přejdete do uživatelského rozhraní správce Ranger.
+    1. V `https://CLUSTERNAME.azurehdinsight.net/ranger/`otevřete uživatelské rozhraní správce Ranger.
     1. Klikněte na podregistr Service pro váš cluster v **podregistru**.
         ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
     1. Klikněte na kartu **maskování** a pak **přidejte nové zásady** .
 
         ![seznam zásad podregistru Ranger konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na tlačítko **Přidat**.
+    a. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na tlačítko **Add** (Přidat).
                 ![vytvoření zásady](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Znovu zobrazte obsah tabulky. Po použití zásad Ranger uvidíme jenom poslední čtyři znaky sloupce.
 

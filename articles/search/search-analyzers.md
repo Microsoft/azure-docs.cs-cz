@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/10/2019
+ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460714"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyzátory pro zpracování textu v Azure Kognitivní hledání
 
@@ -55,11 +55,14 @@ Několik předdefinovaných analyzátorů, jako je například **vzor** nebo **z
 
 3. Volitelně můžete místo jedné vlastnosti **analyzátoru** nastavit různé analyzátory pro indexování a dotazování pomocí parametrů polí **indexAnalyzer** a **searchAnalyzer** . Pokud jedna z těchto aktivit vyžaduje určitou transformaci, která není vyžadována druhou, použijte pro přípravu a načítání dat různé analyzátory.
 
+> [!NOTE]
+> Není možné použít jiný [analyzátor jazyka](index-add-language-analyzers.md) při indexování, než je doba dotazu v poli. Tato funkce je vyhrazena pro [vlastní analyzátory](index-add-custom-analyzers.md). Z tohoto důvodu, pokud se pokusíte nastavit vlastnosti **searchAnalyzer** nebo **indexAnalyzer** na název analyzátoru jazyka, REST API vrátí chybovou odpověď. Místo toho je nutné použít vlastnost **Analyzer** .
+
 Přiřazení **analyzátoru** nebo **indexAnalyzer** k poli, které již bylo fyzicky vytvořeno, není povoleno. Pokud některý z těchto možností není jasný, přečtěte si následující tabulku, kde najdete rozpis akcí vyžadujících nové sestavení a proč.
  
  | Scénář | Dopad | Kroky |
  |----------|--------|-------|
- | Přidat nové pole | Poskytuje | Pokud pole ve schématu ještě neexistuje, neexistuje žádná revize pole, která by se dala provést, protože pole ještě nemá v indexu fyzickou přítomnost. Pomocí [aktualizačního indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) můžete přidat nové pole do existujícího indexu a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ho naplnit.|
+ | Přidání nového pole | poskytuje | Pokud pole ve schématu ještě neexistuje, neexistuje žádná revize pole, která by se dala provést, protože pole ještě nemá v indexu fyzickou přítomnost. Pomocí [aktualizačního indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) můžete přidat nové pole do existujícího indexu a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ho naplnit.|
  | Přidejte **Analyzer** nebo **indexAnalyzer** do existujícího indexovaného pole. | [znovu sestavit](search-howto-reindex.md) | Obrácený index pro toto pole musí být od základu znovu vytvořen a obsah těchto polí musí být znovu indexován. <br/> <br/>V případě indexů v rámci aktivního vývoje [odstraňte](https://docs.microsoft.com/rest/api/searchservice/delete-index) a [vytvořte](https://docs.microsoft.com/rest/api/searchservice/create-index) index pro výběr definice nové pole. <br/> <br/>U indexů v produkčním prostředí můžete odložit opětovné sestavení tak, že vytvoříte nové pole pro zadání revidované definice a začnete ho používat místo staré. Pomocí [aktualizačního indexu](https://docs.microsoft.com/rest/api/searchservice/update-index) zahrňte nové pole a [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) k jeho naplnění. Později jako součást plánované údržby indexu můžete vyčistit index a odebrat tak zastaralá pole. |
 
 ## <a name="when-to-add-analyzers"></a>Kdy přidat analyzátory
@@ -113,7 +116,7 @@ Procházení v tomto příkladu:
 
 * Analyzátory jsou vlastností třídy pole pro pole, které lze prohledávat.
 * Vlastní analyzátor je součástí definice indexu. Může být lehce přizpůsobená (například přizpůsobení jedné možnosti v jednom filtru) nebo přizpůsobená na více místech.
-* V tomto případě je vlastní analyzátor "my_analyzer", který dále používá vlastní provádějících tokenizaci "my_standard_tokenizer" a dva filtry tokenů: malá písmena a přizpůsobení asciifolding filtru "my_asciifolding".
+* V tomto případě je vlastní analyzátor "my_analyzer", který zase používá přizpůsobené standardní provádějících tokenizaci "my_standard_tokenizer" a dva filtry tokenů: malá písmena a přizpůsobený asciifolding filtr "my_asciifolding".
 * Definuje také 2 vlastní filtry znaků "map_dash" a "remove_whitespace". První z nich nahrazuje všechny pomlčky podtržítkem a druhá z nich odstraní všechny mezery. V pravidlech mapování musí být mezery v kódování UTF-8. Filtry znaků jsou aplikovány před tokenizace a budou mít vliv na výsledné tokeny (standardní provádějících tokenizaci se dělí na pomlčky a mezery, ale ne na podtržítko).
 
 ~~~~
@@ -346,7 +349,7 @@ Vytvořte objekt [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsof
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
- [Hledat dokumenty REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+ [Rozhraní API pro vyhledávání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
  [Jednoduchá syntaxe dotazů](query-simple-syntax.md) 
 

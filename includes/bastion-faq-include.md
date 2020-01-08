@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466993"
 ---
 ### <a name="regions"></a>Které oblasti jsou k dispozici?
 
@@ -22,6 +22,10 @@ ms.locfileid: "74875437"
 ### <a name="publicip"></a>Potřebuji na svém virtuálním počítači veřejnou IP adresu?
 
 Na virtuálním počítači Azure, ke kterému se připojujete pomocí služby Azure bastionu, nepotřebujete veřejnou IP adresu. Služba bastionu otevře relaci RDP/SSH nebo připojení k virtuálnímu počítači přes soukromou IP adresu vašeho virtuálního počítače v rámci vaší virtuální sítě.
+
+### <a name="is-ipv6-supported"></a>Je podporován protokol IPv6?
+
+V současné době se nepodporuje protokol IPv6. Azure bastionu podporuje jenom protokol IPv4.
 
 ### <a name="rdpssh"></a>Potřebuji klienta RDP nebo SSH?
 

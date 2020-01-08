@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: aa92b72b09ed28b41d85ac7c7605077761657d40
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5ffee146bdbd666d4175af2f49f6b447743b2bc0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721563"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457690"
 ---
-# <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
+# <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue Storage s použitím .NET
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
@@ -51,8 +51,8 @@ Potom si nastavte vývojové prostředí v sadě Visual Studio, abyste byli při
 
 V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v aplikaci Visual Studio 2019. Kroky u ostatních verzí sady Visual Studio jsou podobné.
 
-1. Vyberte **Soubor**  >  **Nový**  >  **Projekt**.
-2. Vybrat**okna** **platformy** > 
+1. Vyberte **Soubor** > **Nový** > **Projekt**.
+2. Vybrat **platformu** > **Windows**
 3. Vyberte **Aplikace konzoly (.NET Framework)** .
 4. Vyberte **Další**.
 5. Do pole **název projektu** zadejte název vaší aplikace.
@@ -66,9 +66,9 @@ Můžete použít klientské knihovny Azure Storage v jakémkoli typu aplikace .
 
 Abyste mohli dokončit tento kurz, musíte odkazovat na následující tři balíčky v projektu:
 
-* [Microsoft Azure Storage společnou klientskou knihovnu pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Tento balíček poskytuje programový přístup k datovým prostředkům ve vašem účtu úložiště.
-* [Knihovna front Microsoft Azure Storage pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Tato Klientská knihovna umožňuje práci s Microsoft Azure Storage Služba front pro ukládání zpráv, ke kterým může klient přicházet.
-* [Microsoft Azure Configuration Manager Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Tento balíček poskytuje třídu pro analýzu připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
+* [Microsoft Azure Storage Common Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Tento balíček poskytuje programový přístup k datovým prostředkům ve vašem účtu úložiště.
+* [Knihovna Microsoft Azure Storage Queue Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Tato Klientská knihovna umožňuje pracovat s služba front Microsoft Azure Storage pro ukládání zpráv, ke kterým může klient přicházet.
+* [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
 K získání těchto balíčků můžete použít NuGet. Postupujte následovně:
 
@@ -89,7 +89,7 @@ Ke spuštění příkladů z této příručky máte dvě možnosti prostředí:
 * Svůj kód můžete spustit na účtu služby Azure Storage v cloudu.
 * Svůj kód můžete spustit v emulátoru úložiště Azure. Emulátor úložiště je místní prostředí, které emuluje účet služby Azure Storage v cloudu. Emulátor je bezplatnou možností pro testování a ladění kódu během vývoje aplikace. Emulátor používá známý účet a klíč. Další informace najdete v článku [Použití emulátoru úložiště Azure pro vývoj a testování](../common/storage-use-emulator.md).
 
-Pokud se zaměřujete na účet úložiště v cloudu, zkopírujte z webu Azure Portal primární přístupový klíč svého účtu úložiště. Další informace najdete v části [Přístupové klíče](../common/storage-account-manage.md#access-keys).
+Pokud se zaměřujete na účet úložiště v cloudu, zkopírujte z webu Azure Portal primární přístupový klíč svého účtu úložiště. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../common/storage-account-keys-manage.md).
 
 > [!NOTE]
 > Pokud se chcete vyhnout nákladům spojeným se službou Azure Storage, můžete se zaměřit na emulátor úložiště. I když se zaměříte na účet úložiště Azure v cloudu, budou náklady na vyzkoušení postupů z tohoto kurzu zanedbatelné.
@@ -103,7 +103,7 @@ Další informace o připojovacích řetězcích najdete v tématu věnovaném [
 > [!NOTE]
 > Klíč účtu úložiště je podobný kořenovému heslu vašeho účtu úložiště. Vždy klíč účtu úložiště pečlivě chraňte. Nedávejte ho jiným uživatelům, nezakódovávejte ho ani ho neukládejte do souboru ve formátu prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že klíč je ohrožený, vygenerujte ho znovu pomocí webu Azure Portal.
 
-Pokud chcete nakonfigurovat připojovací řetězec, otevřete soubor **App. config** z Průzkumník řešení v aplikaci Visual Studio. Přidejte obsah **\<elementu appSettings\>** zobrazeného níže. Nahraďte *název účtu* názvem svého účtu úložiště a klíčovým klíčem *účtu* pro přístup k účtu:
+Pokud chcete nakonfigurovat připojovací řetězec, otevřete soubor **App. config** z Průzkumník řešení v aplikaci Visual Studio. Přidejte obsah elementu **\<appSettings\>** níže zobrazeným. Nahraďte *název účtu* názvem svého účtu úložiště a klíčovým klíčem *účtu* pro přístup k účtu:
 
 ```xml
 <configuration>
@@ -374,7 +374,7 @@ queue.Delete();
 Teď, když jste se naučili základy používání služby Queue Storage, podívejte se na následujících odkazech na další informace o složitějších úlohách úložiště.
 
 * Projděte si referenční dokumentaci ke Službě front, kde najdete úplné podrobnosti o dostupných rozhraních API:
-  * [Klientská knihovna pro úložiště pro .NET – referenční informace](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+  * [Klientská knihovna Storage pro .NET – referenční informace](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
   * [REST API – referenční informace](https://msdn.microsoft.com/library/azure/dd179355)
 * Zjistěte, jak můžete zjednodušit kód, který vytváříte, aby fungoval s Azure Storage, pomocí sady [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 * Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.

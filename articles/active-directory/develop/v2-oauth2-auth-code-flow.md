@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity Platform & tok autorizačního kódu OAuth | Azure
-description: Vytváření webových aplikací s využitím implementace ověřovacího protokolu OAuth 2,0 od Microsoft Identity Platform.
+title: Tok autorizačního kódu OAuth – platforma Microsoftu identity | Azure
+description: Sestavujte webové aplikace pomocí implementace ověřovacího protokolu OAuth 2,0 od Microsoft Identity Platform.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58a82caf825daf83ce58dffdf7056e063e74faa6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1f49e93d6dd405e849dec3806c979b1ea2fc1d37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423276"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -76,7 +76,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `prompt`  | volitelné    | Určuje typ interakce uživatele, která je povinná. V tuto chvíli jsou k dispozici pouze platné hodnoty `login`, `none`a `consent`.<br/><br/>- `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování.<br/>- `prompt=none` je opakem, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncový bod platformy Microsoft Identity `interaction_required` chybu.<br/>- `prompt=consent` spustí dialog souhlasu OAuth po přihlášení uživatele a požádá uživatele, aby aplikaci udělil oprávnění. |
 | `login_hint`  | volitelné    | Dá se použít k předvyplnění pole uživatelské jméno a e-mailová adresa přihlašovací stránky pro uživatele, pokud znáte své uživatelské jméno předem. Aplikace budou často používat tento parametr během opakovaného ověřování, kteří již rozvěděli uživatelské jméno z předchozího přihlášení pomocí `preferred_username` deklarace identity.   |
 | `domain_hint`  | volitelné    | Může to být jedna z `consumers` nebo `organizations`.<br/><br/>Pokud je zahrnuto, přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na přihlašovací stránce, což vede k poněkud efektivnějšímu uživatelskému prostředí. Aplikace budou často používat tento parametr během opakovaného ověřování, a to extrakcí `tid` z předchozího přihlášení. Pokud je hodnota deklarace `tid` `9188040d-6c67-4c5b-b112-36a304b66dad`, měli byste použít `domain_hint=consumers`. V opačném případě použijte `domain_hint=organizations`.  |
-| `code_challenge_method` | volitelné    | Metoda použitá ke kódování `code_verifier` pro parametr `code_challenge` To může být jedna z následujících hodnot:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Pokud je tato hodnota vyloučená, `code_challenge` se při zahrnutí `code_challenge` považovat za prostý text. Platforma Microsoft Identity Platform podporuje `plain` i `S256`. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). |
+| `code_challenge_method` | volitelné    | Metoda použitá ke kódování `code_verifier` pro parametr `code_challenge` Může to být jedna z následujících hodnot:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Pokud je tato hodnota vyloučená, `code_challenge` se při zahrnutí `code_challenge` považovat za prostý text. Platforma Microsoft Identity Platform podporuje `plain` i `S256`. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 | `code_challenge`  | volitelné | Slouží k zabezpečení autorizačního kódu prostřednictvím kontrolního klíče pro výměnu kódu (PKCE) z nativního klienta. Vyžaduje se, pokud je zahrnut `code_challenge_method`. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
 V tomto okamžiku se uživateli zobrazí výzva k zadání přihlašovacích údajů a dokončení ověřování. Koncový bod platformy Microsoft Identity také zajistí, že uživatel souhlasí s oprávněními uvedenými v parametru `scope` dotazu. Pokud uživatel nesouhlasí s žádným z těchto oprávnění, požádá uživatele o souhlas s požadovanými oprávněními. Podrobnosti o [oprávněních, souhlasu a víceklientské aplikacích najdete tady](v2-permissions-and-consent.md).

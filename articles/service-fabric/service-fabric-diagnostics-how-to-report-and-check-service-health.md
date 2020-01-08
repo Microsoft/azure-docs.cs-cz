@@ -1,80 +1,71 @@
 ---
-title: Hlášení a kontrola stavu pomocí Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak zasílání zpráv o stavu z vašeho kódu služby a o tom, aby zkontroloval stav vaší služby pomocí nástrojů pro monitorování stavu, které poskytuje Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Sestavování a kontroly stavu pomocí Azure Service Fabric
+description: Naučte se odesílat zprávy o stavu z kódu služby a jak kontrolovat stav služby pomocí nástrojů pro monitorování stavu, které poskytuje Azure Service Fabric.
 author: srrengar
-manager: mfussell
-editor: ''
-ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 0db341a9e36d61761321821de5631a564adea050
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464639"
 ---
-# <a name="report-and-check-service-health"></a>Hlášení a kontrola stavu služeb
-Když vaše služby dojde k potížím, schopnost reagovat na a vyřešit incidenty a výpadků a Dosáhněte závisí na vaši schopnost rychle rozpoznat problémy. Pokud hlásit problémy a chyby do nástroje health manager Azure Service Fabric z vašeho kódu služby můžete použít standardní nástroje, které Service Fabric nabízí ke kontrole stavu pro monitorování stavu.
+# <a name="report-and-check-service-health"></a>Sestavy a kontrola stavu služeb
+Pokud vaše služby nastanou problémy, vaše schopnost reagovat na incidenty a výpadky závisí na vaší schopnosti rychle detekovat problémy. Pokud nahlásíte problémy a chyby do služby Azure Service Fabric Health Manager z kódu služby, můžete použít standardní nástroje pro monitorování stavu, které Service Fabric poskytuje ke kontrole stavu.
 
-Existují tři způsoby, můžete odesílat zprávy o stavu ze služby:
+Existují tři způsoby, jak můžete hlásit stav ze služby:
 
-* Použití [oddílu](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) nebo [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) objekty.  
-  Můžete použít `Partition` a `CodePackageActivationContext` objekty hlášení stavu prvky, které jsou součástí aktuálního kontextu. Například kód, který běží jako část repliky může hlásit stav jenom u repliky, oddílu, který patří do a aplikace, která je součástí.
-* Použití `FabricClient`.   
-  Můžete použít `FabricClient` sestavy stav z kódu služby clusteru není-li [zabezpečené](service-fabric-cluster-security.md) nebo pokud je služba spuštěna s oprávněním správce. Většina scénářů reálného světa nepoužívejte nezabezpečené clustery, nebo zadejte oprávnění správce. S `FabricClient`, stavu může podávat Každá entita, která je součástí clusteru. V ideálním případě by však kódu služby by měl pouze odesílat zprávy, které se vztahují na svůj vlastní stav.
-* Pomocí rozhraní REST API v clusteru, aplikace, nasazené aplikace, služby, balíček služby, oddílu, repliky nebo uzel úrovně. To je možné nahlásit stav z v rámci kontejneru.
+* Použijte [partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) nebo [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) objekty.  
+  Objekty `Partition` a `CodePackageActivationContext` lze použít k hlášení stavu prvků, které jsou součástí aktuálního kontextu. Například kód, který se spouští jako součást repliky, může hlásit stav pouze v této replice, oddíl, do kterého patří, a aplikaci, které je součástí.
+* Použijte `FabricClient`.   
+  Pokud není cluster [zabezpečený](service-fabric-cluster-security.md) nebo pokud je služba spuštěná s oprávněními správce, můžete použít `FabricClient` k hlášení stavu z kódu služby. Většina scénářů reálného světa nepoužívá nezabezpečené clustery nebo poskytuje oprávnění správce. Pomocí `FabricClient`můžete hlásit stav jakékoli entity, která je součástí clusteru. V ideálním případě by však měl kód služby odesílat pouze zprávy, které souvisejí s jeho vlastním stavem.
+* Použijte rozhraní REST API na úrovni clusteru, aplikace, nasazené aplikace, služby, balíčku, oddílu, repliky nebo uzlu. Dá se použít k hlášení stavu z kontejneru.
 
-Tento článek vás provede příkladem hlásí stav z kódu služby. Příklad také ukazuje, jak lze pomocí nástroje poskytované systémem Service Fabric kontroluje stav. Tento článek je určený jako rychlý úvod k monitorování funkce Service Fabric stavu. Podrobnější informace si můžete přečíst řadu podrobné články o stavu, které začínají s odkazem na konci tohoto článku.
+Tento článek vás provede příkladem, který hlásí stav z kódu služby. Tento příklad také ukazuje, jak lze použít nástroje poskytované Service Fabric ke kontrole stavu. Tento článek je určený jako rychlý Úvod k funkcím monitorování stavu Service Fabric. Podrobnější informace si můžete přečíst v podrobných článcích o stavu, který začíná odkazem na konci tohoto článku.
 
 ## <a name="prerequisites"></a>Požadavky
-Musíte mít nainstalované tyto položky:
+Musíte mít nainstalované následující:
 
 * Visual Studio 2015 nebo Visual Studio 2019
 * Sada Service Fabric SDK
 
-## <a name="to-create-a-local-secure-dev-cluster"></a>Chcete-li vytvořit zabezpečené místním vývojovém clusteru
+## <a name="to-create-a-local-secure-dev-cluster"></a>Vytvoření místního clusteru zabezpečeného vývojového prostředí
 * Otevřete PowerShell s oprávněními správce a spusťte následující příkazy:
 
-![Příkazy, které ukazují, jak vytvořit cluster zabezpečený vývoj](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
+![Příkazy, které ukazují, jak vytvořit zabezpečený cluster pro vývoj](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
 
-## <a name="to-deploy-an-application-and-check-its-health"></a>Nasazení aplikace a zkontrolujte jeho stav
-1. Otevřít Visual Studio jako správce.
-1. Vytvořte projekt pomocí **stavová služba** šablony.
+## <a name="to-deploy-an-application-and-check-its-health"></a>Nasazení aplikace a zjištění jejího stavu
+1. Otevřete Visual Studio jako správce.
+1. Vytvořte projekt pomocí šablony **stavové služby** .
    
-    ![Vytvoření aplikace Service Fabric s stavová služba](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
-1. Stisknutím klávesy **F5** ke spuštění aplikace v režimu ladění. Aplikace je nasazená do místního clusteru.
-1. Jakmile je aplikace spuštěna, klikněte pravým tlačítkem na ikonu Local Cluster Manager v oznamovací oblasti a vyberte **Správa místního clusteru** v místní nabídce otevřete Service Fabric Explorer.
+    ![Vytvoření aplikace Service Fabric se stavovou službou](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
+1. Stisknutím klávesy **F5** spusťte aplikaci v režimu ladění. Aplikace se nasadí do místního clusteru.
+1. Po spuštění aplikace klikněte pravým tlačítkem myši na ikonu správce místního clusteru v oznamovací oblasti a v místní nabídce vyberte **Spravovat místní cluster** a otevřete Service Fabric Explorer.
    
-    ![Otevřete Service Fabric Explorer z oznamovací oblasti](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
-1. Stav aplikace má být zobrazena jako v tomto obrázku. V tuto chvíli by aplikace měla být v pořádku bez chyb.
+    ![Otevřít Service Fabric Explorer z oznamovací oblasti](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
+1. Stav aplikace by měl být zobrazen jako v tomto obrázku. V tuto chvíli by měla být aplikace v pořádku bez chyb.
    
-    ![V dobrém stavu aplikace v Service Fabric Exploreru](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
-1. Stav můžete zkontrolovat také pomocí prostředí PowerShell. Můžete použít ```Get-ServiceFabricApplicationHealth``` ke kontrole stavu aplikace a vy můžete použít ```Get-ServiceFabricServiceHealth``` ke kontrole stavu služby. Sestava stavu pro stejnou aplikaci v prostředí PowerShell je na tomto obrázku.
+    ![Aplikace v pořádku v Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
+1. Stav můžete také ověřit pomocí prostředí PowerShell. ```Get-ServiceFabricApplicationHealth``` můžete použít ke kontrole stavu aplikace a můžete použít ```Get-ServiceFabricServiceHealth``` ke kontrole stavu služby. Sestava stavu pro stejnou aplikaci v prostředí PowerShell je na tomto obrázku.
    
-    ![V dobrém stavu aplikace v prostředí PowerShell](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
+    ![V prostředí PowerShell aplikace v pořádku](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
-## <a name="to-add-custom-health-events-to-your-service-code"></a>Přidání vlastních stavových události do vašeho kódu služby
-Šablony projektu Service Fabric v sadě Visual Studio obsahují ukázkový kód. Následující kroky ukazují, jak můžete ohlásit vlastní stav události z kódu vaší služby. Tyto zprávy se nezobrazí automaticky ve standardní nástroje pro monitorování stavu, že Service Fabric nabízí, jako je Service Fabric Explorer, zobrazení stavu Azure portal a PowerShell.
+## <a name="to-add-custom-health-events-to-your-service-code"></a>Přidání vlastních událostí stavu do kódu služby
+Šablony projektu Service Fabric v aplikaci Visual Studio obsahují vzorový kód. Následující kroky ukazují, jak můžete hlásit vlastní události stavu z kódu vaší služby. Tyto sestavy se zobrazují automaticky ve standardních nástrojích pro monitorování stavu, které Service Fabric poskytuje, jako je Service Fabric Explorer, Azure Portal zobrazení stavu a prostředí PowerShell.
 
-1. Znovu otevřete aplikaci, kterou jste vytvořili dříve v sadě Visual Studio, nebo vytvořte novou aplikaci s použitím **stavová služba** šablony sady Visual Studio.
-1. Otevřete soubor Stateful1.cs a najít `myDictionary.TryGetValueAsync` volání v `RunAsync` metody. Uvidíte, že tato metoda vrátí hodnotu `result` , který obsahuje aktuální hodnotu čítače, protože klíče logika v této aplikaci je udržovat počtu spuštění. Pokud tato aplikace byla aplikace skutečný, a pokud chybějící výsledek selhání, byste měli označit tuto událost.
-1. Oznamuje událost stavu Pokud chybějící výsledek představuje selhání, přidejte následující kroky.
+1. Znovu otevřete aplikaci, kterou jste vytvořili dříve v aplikaci Visual Studio, nebo vytvořte novou aplikaci pomocí šablony **stavové služby** sady Visual Studio.
+1. Otevřete soubor Stateful1.cs a vyhledejte `myDictionary.TryGetValueAsync` volání v metodě `RunAsync`. Můžete vidět, že tato metoda vrací `result`, která obsahuje aktuální hodnotu čítače, protože klíčová logika v této aplikaci má zůstat spuštěný počet. Pokud byla tato aplikace skutečnou aplikací a chybějící výsledek představoval chybu, měli byste tuto událost označit příznakem.
+1. Chcete-li ohlásit událost stavu, když chybějící výsledek představuje selhání, přidejte následující kroky.
    
-    a. Přidat `System.Fabric.Health` oboru názvů do souboru Stateful1.cs.
+    a. Přidejte `System.Fabric.Health` obor názvů do souboru Stateful1.cs.
    
     ```csharp
     using System.Fabric.Health;
     ```
    
-    b. Přidejte následující kód za `myDictionary.TryGetValueAsync` volání
+    b. Po volání `myDictionary.TryGetValueAsync` přidejte následující kód
    
     ```csharp
     if (!result.HasValue)
@@ -83,9 +74,9 @@ Musíte mít nainstalované tyto položky:
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-    Vytvoříme sestavy stavu repliky, protože je hlášena z stavové služby. `HealthInformation` Parametr ukládá informace o tohoto problému se stavem, která hlásí.
+    Stav repliky oznamujeme, protože je hlášen ze stavové služby. Parametr `HealthInformation` ukládá informace o problému se stavem, který je hlášený.
    
-    Pokud jste vytvořili bezstavovou službu, použijte následující kód
+    Pokud jste vytvořili bezstavovou službu, použijte následující kód:
    
     ```csharp
     if (!result.HasValue)
@@ -94,15 +85,15 @@ Musíte mít nainstalované tyto položky:
         this.Partition.ReportInstanceHealth(healthInformation);
     }
     ```
-1. Pokud vaše služba je spuštěná s oprávněními správce, nebo pokud clusteru není [zabezpečené](service-fabric-cluster-security.md), můžete použít také `FabricClient` do sestav stavu, jak je znázorněno v následujícím postupu.  
+1. Pokud je vaše služba spuštěná s oprávněními správce nebo pokud není cluster [zabezpečený](service-fabric-cluster-security.md), můžete k hlášení stavu použít taky `FabricClient`, jak je znázorněno v následujícím postupu.  
    
-    a. Vytvořte `FabricClient` instance po `var myDictionary` deklarace.
+    a. Po deklaraci `var myDictionary` vytvořte instanci `FabricClient`.
    
     ```csharp
     var fabricClient = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });
     ```
    
-    b. Přidejte následující kód za `myDictionary.TryGetValueAsync` volání.
+    b. Po volání `myDictionary.TryGetValueAsync` přidejte následující kód.
    
     ```csharp
     if (!result.HasValue)
@@ -114,7 +105,7 @@ Musíte mít nainstalované tyto položky:
         fabricClient.HealthManager.ReportHealth(replicaHealthReport);
     }
     ```
-1. Můžeme simulovat selhání a zobrazit jej zobrazit v nástrojích pro monitorování stavu. K simulaci selhání, okomentujte první řádek ve stavu vytváření sestav kód, který jste přidali dříve. Po okomentujte první řádek kódu bude vypadat jako v následujícím příkladu.
+1. Pojďme tuto chybu simulovat a zobrazit v nástrojích pro sledování stavu. Chcete-li simulovat chybu, odkomentujte první řádek v kódu vytváření sestav stavu, který jste přidali dříve. Po zakomentování prvního řádku bude kód vypadat jako v následujícím příkladu.
    
     ```csharp
     //if(!result.HasValue)
@@ -123,24 +114,24 @@ Musíte mít nainstalované tyto položky:
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-   Tento kód aktivuje pokaždé, když se sestava stavu `RunAsync` spustí. Když provedete změny, stiskněte klávesu **F5** ke spuštění aplikace.
-1. Jakmile je aplikace spuštěna, otevřete Service Fabric Exploreru zkontrolujte stav aplikace. Tentokrát, Service Fabric Explorer ukazuje, že aplikace je v pořádku. Aplikace zobrazí jako není v pořádku, protože došlo k chybě, která ohlášené z kódu, který jsme přidali dříve.
+   Tento kód aktivuje sestavu stavu pokaždé, když `RunAsync` spustí. Po provedení změny stiskněte klávesu **F5** ke spuštění aplikace.
+1. Po spuštění aplikace otevřete Service Fabric Explorer pro kontrolu stavu aplikace. Tentokrát Service Fabric Explorer ukáže, že aplikace není v pořádku. Aplikace zobrazuje stav není v pořádku, protože došlo k chybě, která byla hlášena z kódu, který byl dříve přidán.
    
-    ![Poškozená aplikace v Service Fabric Exploreru](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
-1. Pokud vyberete primární repliky ve stromovém zobrazení Service Fabric Explorer, zobrazí se, která **stav** příliš označuje chybu. Service Fabric Explorer také zobrazí podrobnosti o stavu sestavy, které jste přidali `HealthInformation` parametru v kódu. Zobrazí se stejné sestavy stavu v prostředí PowerShell a webu Azure portal.
+    ![Poškozená aplikace v Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
+1. Pokud ve stromovém zobrazení Service Fabric Explorer vyberete primární repliku, zobrazí se v něm **stav** , že se zobrazuje chyba. Service Fabric Explorer také zobrazí podrobnosti o sestavě o stavu, které byly přidány do parametru `HealthInformation` v kódu. V PowerShellu a Azure Portal uvidíte stejné sestavy o stavu.
    
-    ![Stav repliky v Service Fabric Exploreru](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
+    ![Stav repliky v Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
 
-Tato sestava zůstane v nástroje health manager, dokud je nahrazen jiné sestavy nebo dokud nebude tato replika se odstraní. Protože jsme nenastavil `TimeToLive` této sestavy stavu v `HealthInformation` objektu sestavy nikdy nevyprší.
+Tato sestava zůstane ve Správci stavu, dokud není nahrazena jinou sestavou nebo dokud se tato replika neodstraní. Vzhledem k tomu, že jsme nenastavili `TimeToLive` pro tuto sestavu stavu v objektu `HealthInformation`, sestava nikdy nevyprší.
 
-Doporučujeme vám, že by měl na nejpodrobnější úrovni, které v tomto případě je replika hlásí stav. Může také nahlásit stav na `Partition`.
+Doporučujeme, aby se stav nahlásil na nejpodrobnější úrovni, která je v tomto případě replikou. Můžete také ohlásit stav `Partition`.
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
 this.Partition.ReportPartitionHealth(healthInformation);
 ```
 
-Sestava Stav na `Application`, `DeployedApplication`, a `DeployedServicePackage`, použijte `CodePackageActivationContext`.
+K hlášení stavu `Application`, `DeployedApplication`a `DeployedServicePackage`použijte `CodePackageActivationContext`.
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
@@ -148,8 +139,8 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>Další postup
-* [Podrobné informace o službě health Service Fabric](service-fabric-health-introduction.md)
-* [Rozhraní REST API pro generování sestav stavu služby](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [Rozhraní REST API pro generování sestav stavu aplikace](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
+## <a name="next-steps"></a>Další kroky
+* [Hluboká podrobněa stavu Service Fabric](service-fabric-health-introduction.md)
+* [REST API pro stav služby Reporting Services](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
+* [REST API pro vytváření sestav stavu aplikace](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
 

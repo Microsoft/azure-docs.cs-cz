@@ -1,5 +1,6 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – údržba a aktualizace CloudSimple
+title: Údržba a aktualizace CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Popisuje proces služby CloudSimple pro plánovanou údržbu a aktualizace.
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372819"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>Údržba a aktualizace CloudSimple
 
@@ -37,9 +38,9 @@ CloudSimple také sleduje chyby v nepřetržitém důsledku:
 * Pevné disky
 * Fyzické porty NIC
 * Servery
-* Větrák
-* Vypněte
-* Přepínače
+* Fans
+* Power
+* přepínače,
 * Porty přepínače
 
 Pokud dojde k chybě disku nebo uzlu, do ovlivněného clusteru VMware se automaticky přidá nový uzel, aby byl okamžitě vrácen do stavu.
@@ -48,7 +49,7 @@ CloudSimple zálohuje, udržuje a aktualizuje tyto prvky VMware v privátních c
 
 * ESXi
 * Služby platformy vCenter
-* Kontrolér
+* Správce
 * vSAN
 * NSX
 
@@ -103,6 +104,6 @@ CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici z V
 
 CloudSimple poskytuje čtvrtletní aktualizace pro softwarové komponenty VMware. Když je k dispozici nová hlavní verze softwaru VMware, CloudSimple spolupracuje se zákazníky na koordinaci vhodného časového období údržby pro upgrade.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Zálohování virtuálních počítačů s úlohou pomocí Veeam](backup-workloads-veeam.md)

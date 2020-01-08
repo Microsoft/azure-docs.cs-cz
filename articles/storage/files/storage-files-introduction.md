@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7fe95a35a6b78bae66521a09d63d376ec8757479
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 43d19f5b3f291f69e7b6f765dcee230345421d1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699676"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431788"
 ---
 # <a name="what-is-azure-files"></a>Co je služba Soubory Azure?
 Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. Sdílené složky Azure je navíc možné ukládat do mezipaměti ve Windows Serveru pomocí Synchronizace souborů Azure, aby byly rychle přístupné poblíž místa, kde se data používají.

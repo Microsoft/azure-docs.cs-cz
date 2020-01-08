@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919286"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423289"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0
 
@@ -65,7 +65,7 @@ Tento typ autorizace je společný pro démony a účty služeb, které potřebu
 
 ### <a name="application-permissions"></a>Oprávnění aplikace
 
-Místo používání seznamů ACL můžete použít rozhraní API k vystavení sady oprávnění aplikace. Oprávnění aplikace je uděleno správcem organizace a je možné je používat jenom pro přístup k datům, která patří do této organizace a jejích zaměstnanců. Například Microsoft Graph zveřejňuje několik oprávnění aplikace, aby bylo možné provést následující akce:
+Místo používání seznamů ACL můžete použít rozhraní API k vystavení sady **oprávnění aplikace**. Oprávnění aplikace je uděleno správcem organizace a je možné je používat jenom pro přístup k datům, která patří do této organizace a jejích zaměstnanců. Například Microsoft Graph zveřejňuje několik oprávnění aplikace, aby bylo možné provést následující akce:
 
 * Čtení pošty ve všech poštovních schránkách
 * Čtení a zápis pošty ve všech poštovních schránkách
@@ -75,6 +75,11 @@ Místo používání seznamů ACL můžete použít rozhraní API k vystavení s
 Další informace o oprávněních aplikací najdete v [Microsoft Graph](https://developer.microsoft.com/graph).
 
 Pokud chcete ve své aplikaci použít oprávnění aplikace, postupujte podle kroků popsaných v následujících částech.
+
+
+> [!NOTE]
+> Při ověřování jako aplikace na rozdíl od uživatele nelze použít "delegovaná oprávnění" (obory, které jsou uděleny uživatelem).  Je nutné použít "oprávnění aplikace", označované také jako "role", které jsou uděleny správcem aplikace (nebo prostřednictvím předběžného ověřování webového rozhraní API).    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Vyžádání oprávnění na portálu pro registraci aplikací
 

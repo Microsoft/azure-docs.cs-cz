@@ -1,14 +1,14 @@
 ---
 title: Nabídky spravovaných služeb na Azure Marketplace
 description: Spravované služby umožňují poskytovatelům služeb prodávat nabídky správy prostředků zákazníkům v Azure Marketplace.
-ms.date: 09/19/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7dcaa34b1fb471823acd74a7d9b05e42dd44161
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1b4f0d7457a74afe710a48f429cfe47535a9b122
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453587"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Nabídky spravovaných služeb na Azure Marketplace
 
@@ -22,19 +22,20 @@ Potom budou uživatelé ve vaší organizaci moci provádět úlohy správy pro 
 
 ## <a name="public-and-private-offers"></a>Veřejné a soukromé nabídky
 
-Každá nabídka spravovaných služeb obsahuje jeden nebo více plánů. Tyto plány můžou být buď soukromé, nebo veřejné.
+Každá nabídka spravovaných služeb obsahuje jeden nebo více plánů. Plány můžou být buď soukromé, nebo veřejné. 
 
-Pokud chcete omezit nabídku na konkrétní zákazníky, můžete publikovat soukromý plán. V takovém případě lze plán zakoupit pouze pro konkrétní ID předplatného, které zadáte. Další informace najdete v tématu [soukromé nabídky](https://docs.microsoft.com/azure/marketplace/private-offers).
+Pokud chcete omezit nabídku na konkrétní zákazníky, můžete publikovat soukromý plán. V takovém případě lze plán zakoupit pouze pro konkrétní ID předplatného, které zadáte. Další informace najdete v tématu [soukromé nabídky](../../marketplace/private-offers.md).
 
 Veřejné plány umožňují propagovat vaše služby na nové zákazníky. To je obvykle vhodnější, pokud požadujete pouze omezený přístup k tenantovi zákazníka. Po navázání vztahu se zákazníkem, pokud se rozhodne udělit vaší organizaci dodatečný přístup, můžete to udělat buď publikováním nového privátního plánu jenom pro tohoto zákazníka, nebo jeho [zprovozněním pro další přístup pomocí šablon Azure Resource Manager](../how-to/onboard-customer.md).
 
-Mějte na paměti, že jakmile je plán publikovaný jako veřejný, nemůžete ho změnit na privátní. Navíc nemůžete omezit dostupnost veřejného plánu na konkrétní zákazníky ani na určitý počet zákazníků, i když se rozhodnete, že plán zcela zastavíte.
-
 V případě potřeby můžete do stejné nabídky zahrnout jak veřejné, tak i privátní plány.
+
+> [!IMPORTANT]
+> Jakmile je plán publikovaný jako veřejný, nemůžete ho změnit na privátní. Chcete-li určit, kteří zákazníci mohou přijmout vaši nabídku a delegovat prostředky, použijte privátní plán. S veřejným plánem nemůžete omezit dostupnost na konkrétní zákazníky nebo dokonce na určitý počet zákazníků (i když se rozhodnete, že můžete plán úplně zastavit). V současné době není k dispozici žádný mechanismus pro zamítnutí nebo odebrání delegování, když zákazník nabídku přijme, i když se můžete kdykoli obrátit na zákazníka a požádat ho, aby [Váš přístup odebral](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 ## <a name="publish-managed-service-offers"></a>Publikování nabídek spravovaných služeb
 
-Informace o tom, jak publikovat nabídku spravovaných služeb, najdete v tématu [publikování nabídky spravovaných služeb na Azure Marketplace](../how-to/publish-managed-services-offers.md). Obecné informace o publikování Azure Marketplace pomocí portál partnerů cloudu najdete v tématu Příručka pro [publikování Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) a [Správa nabídek Azure a AppSource Marketplace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
+Informace o tom, jak publikovat nabídku spravovaných služeb, najdete v tématu [publikování nabídky spravovaných služeb na Azure Marketplace](../how-to/publish-managed-services-offers.md). Obecné informace o publikování Azure Marketplace pomocí portál partnerů cloudu najdete v tématu Příručka pro [publikování Azure Marketplace a AppSource](../../marketplace/marketplace-publishers-guide.md) a [Správa nabídek Azure a AppSource Marketplace](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md).
 
 ## <a name="next-steps"></a>Další kroky
 

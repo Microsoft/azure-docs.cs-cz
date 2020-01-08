@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 493c60e8148b666ba1f514d303229b7a11c2e43e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425046"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Kurz: Hromadná Pozvánka pro uživatele spolupráce Azure AD B2B (Preview)
 
@@ -25,6 +25,8 @@ ms.locfileid: "74272352"
 | Tento článek popisuje funkci veřejné verze Preview aplikace Azure Active Directory. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
+> [!NOTE]
+> Od 12/22/2019 byla funkce hromadného pozvání uživatelů (Preview) dočasně zakázaná.
 
 Pokud k práci se svými externími partnery používáte spolupráci B2B služby Azure Active Directory (Azure AD), můžete do organizace pozvat více uživatelů typu host najednou. V tomto kurzu se naučíte, jak pomocí Azure Portal posílat hromadné pozvánky externím uživatelům. Konkrétně provedete následující:
 

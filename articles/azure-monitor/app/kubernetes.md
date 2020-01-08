@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 3056b6c56be32cf5c054c4526a88157650a3e30b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432522"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Nulová monitorování aplikací instrumentace pro hostované aplikace Kubernetes
 
@@ -21,12 +21,12 @@ ms.locfileid: "72820780"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k tomu, aby poskytovala monitorování aplikací pro všechny hostované aplikace Kubernetes. Pomocí výchozích funkcí Application Insights, jako je [Mapa aplikací](../../azure-monitor/app/app-map.md) , můžete modelovat závislosti, [Live Metrics Stream](../../azure-monitor/app/live-stream.md) pro monitorování v reálném čase, výkonné vizualizace s [výchozím řídicím panelem](../../azure-monitor/app/overview-dashboard.md), [průzkumníkem metrik](../../azure-monitor/platform/metrics-getting-started.md)a [ Sešity](../../azure-monitor/app/usage-workbooks.md). Tato funkce pomůže uživatelům, aby na všech svých Kubernetes úlohách v rámci vybraného oboru názvů Kubernetes zavedli slabá místa ve výkonu a hotspoty selhání. Díky tomu, že vaše stávající investice do sítě na síti s technologiemi, jako je Istio Azure Monitor, umožňují monitorování automaticky instrumentované aplikace bez jakýchkoli úprav kódu vaší aplikace.
+Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k tomu, aby poskytovala monitorování aplikací pro všechny hostované aplikace Kubernetes. Pomocí výchozích funkcí Application Insights, jako je [Mapa aplikací](../../azure-monitor/app/app-map.md) , můžete modelovat závislosti [Live Metrics Stream](../../azure-monitor/app/live-stream.md) pro monitorování v reálném čase, výkonné vizualizace s [výchozím řídicím panelem](../../azure-monitor/app/overview-dashboard.md), [průzkumníkem](../../azure-monitor/platform/metrics-getting-started.md)a [sešity](../../azure-monitor/app/usage-workbooks.md). Tato funkce pomůže uživatelům, aby na všech svých Kubernetes úlohách v rámci vybraného oboru názvů Kubernetes zavedli slabá místa ve výkonu a hotspoty selhání. Díky tomu, že vaše stávající investice do sítě na síti s technologiemi, jako je Istio Azure Monitor, umožňují monitorování automaticky instrumentované aplikace bez jakýchkoli úprav kódu vaší aplikace.
 
 > [!NOTE]
-> Toto je jeden z mnoha způsobů, jak provádět monitorování aplikací v Kubernetes. Jakoukoli aplikaci hostovanou v Kubernetes můžete také instrumentovat pomocí [sady SDK Application Insights](../../azure-monitor/azure-monitor-app-hub.md) bez nutnosti použití sítě. Pokud chcete monitorovat Kubernetes bez instrumentace aplikace pomocí sady SDK, můžete použít níže uvedenou metodu.
+> Toto je jeden z mnoha způsobů, jak provádět monitorování aplikací v Kubernetes. Jakoukoli aplikaci hostovanou v Kubernetes můžete také instrumentovat pomocí [sady SDK Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) bez nutnosti použití sítě. Pokud chcete monitorovat Kubernetes bez instrumentace aplikace pomocí sady SDK, můžete použít níže uvedenou metodu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Cluster Kubernetes](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads).
 - Konzola má přístup ke clusteru, aby bylo možné spustit *kubectl*.
@@ -74,7 +74,7 @@ Aplikace spuštěné mimo síť nejsou ovlivněny.
 
 1. Stáhněte a extrahujte [verzi *Application Insightsho adaptéru* ](https://github.com/Microsoft/Application-Insights-Istio-Adapter/releases/).
 2. V rámci složky pro vydání přejděte na */Src/Kubernetes/* .
-3. Úprava *Application-Insights-istio-mixer-Adapter-Deployment. yaml*
+3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
     - Upravte hodnotu proměnné prostředí *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* tak, aby obsahovala klíč instrumentace prostředku Application Insights v Azure Portal, aby obsahovala telemetrii.
     - V případě potřeby upravte hodnotu proměnné prostředí *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* tak, aby obsahovala seznam oborů názvů oddělených čárkami, pro které chcete monitorování povolit. Pokud chcete monitorovat všechny obory názvů, ponechte pole prázdné.
 4. Použijte *všechny* soubory YAML nalezené pod *Src/Kubernetes/* spuštěním následujícího (stále musíte být uvnitř */Src/Kubernetes/* ):
@@ -103,8 +103,8 @@ Aplikace spuštěné mimo síť nejsou ovlivněny.
 Níže je uvedený postup řešení potíží, který se použije v případě, že se telemetrie neobjeví v Azure Portal podle očekávání.
 
 1. Ujistěte se, že je aplikace zatížená a posílá nebo přijímá požadavky v prostém protokolu HTTP. Vzhledem k tomu, že telemetrie jsou z provozu přerušená, není šifrovaný provoz podporovaný. Pokud neexistují žádné příchozí nebo odchozí požadavky, nebudete ani žádné telemetrie.
-2. Ujistěte se, že je v proměnné prostředí *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* v *Application-Insights-ISTIO-mixer-Adapter-Deployment. yaml*zadaný správný klíč instrumentace. Klíč instrumentace najdete na kartě *přehled* Application Insights prostředku v Azure Portal.
-3. Ujistěte se, že je v proměnné prostředí *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* v *Application-Insights-ISTIO-mixer-Adapter-Deployment. yaml*zadaný správný obor názvů Kubernetes. Pokud chcete monitorovat všechny obory názvů, ponechte pole prázdné.
+2. Ujistěte se, že je ve *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* proměnné prostředí v *Application-Insights-ISTIO-mixer-Adapter-Deployment. yaml*zadaný správný klíč instrumentace. Klíč instrumentace najdete na kartě *přehled* Application Insights prostředku v Azure Portal.
+3. Ujistěte se, že je ve *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* proměnné prostředí v *Application-Insights-ISTIO-mixer-Adapter-Deployment. yaml*zadaný správný obor názvů Kubernetes. Pokud chcete monitorovat všechny obory názvů, ponechte pole prázdné.
 4. Zajistěte, aby byly lusky vaší aplikace na vozíku vloženy pomocí Istio. Ověřte, že se na každém z pod nachází postranní vozík Istio.
 
    ```console

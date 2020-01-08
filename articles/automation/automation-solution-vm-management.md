@@ -2,19 +2,15 @@
 title: Řešení Start/Stop VMs during off-hours
 description: Toto řešení správy virtuálních počítačů spustí a zastaví vaše Azure Resource Manager virtuálních počítačů podle plánu a proaktivně monitoruje z protokolů Azure Monitor.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420808"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Řešení Start/Stop VMs during off-hours v Azure Automation
 
@@ -41,7 +37,7 @@ Toto jsou omezení s aktuálním řešením:
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Runbooky pro toto řešení fungují s [účtem spustit jako pro Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože používá ověřování certifikátů namísto hesla, které může vypršet nebo často měnit.
 

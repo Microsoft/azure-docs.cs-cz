@@ -1,6 +1,7 @@
 ---
-title: 'Kurz: Použití Azure Database Migration Service k migraci MongoDB do rozhraní API Azure Cosmos DB pro MongoDB online | Microsoft Docs'
-description: Naučte se migrovat z Azure Cosmos DB místního prostředí MongoDB na rozhraní API pro MongoDB online pomocí Azure Database Migration Service.
+title: 'Kurz: migrace MongoDB do online režimu Azure Cosmos DB API pro MongoDB'
+titleSuffix: Azure Database Migration Service
+description: Naučte se migrovat z místního prostředí MongoDB do Azure Cosmos DB API pro MongoDB online pomocí Azure Database Migration Service.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -8,24 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: a73f3eefbf76b2ea24f34ed496ff45c5d2467e3e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1090a7f75bd5dc2200dd619a785a0e389259040a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437639"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Kurz: Migrace MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB online pomocí DMS
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Kurz: migrace MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB online pomocí DMS
 
 Azure Database Migration Service můžete použít k provedení online (minimálního výpadku) migrace databází z místní nebo cloudové instance MongoDB do Azure Cosmos DB API pro MongoDB.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
-> * Vytvořte instanci Azure Database Migration Service.
+> * Vytvořte instanci služby Azure Database Migration Service.
 > * Vytvořte projekt migrace pomocí Azure Database Migration Service.
 > * Spuštění migrace
 > * Monitorování migrace
@@ -76,7 +77,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 3. Vyhledejte „migration“ a pak napravo od **Microsoft.DataMigration** vyberte **Zaregistrovat**.
 
-    ![Zaregistrovat poskytovatele prostředků](media/tutorial-mongodb-to-cosmosdb-online/portal-register-resource-provider.png)    
+    ![Registrace poskytovatele prostředků](media/tutorial-mongodb-to-cosmosdb-online/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>Vytvoření instance
 
@@ -123,7 +124,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 3. Vyberte **+ Nový projekt migrace**.
 
-4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli **typ zdrojového serveru** vyberte možnost **MongoDB**, v textovém poli **typ CÍLOVÉHO serveru** vyberte možnost **CosmosDB (MongoDB API)** a pak **Zvolte typ. Aktivity**vyberte možnost **migrace online dat [Preview]** .
+4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli **typ zdrojového serveru** vyberte možnost **MongoDB**, v textovém poli **typ CÍLOVÉHO serveru** vyberte možnost **CosmosDB (MongoDB API)** a potom pro **možnost zvolit typ aktivity**vyberte možnost **migrace online dat [Preview]** .
 
     ![Vytvořit Database Migration Service projekt](media/tutorial-mongodb-to-cosmosdb-online/dms-create-project1.png)
 
@@ -177,7 +178,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 2. Vyberte **Uložit**.
 
-## <a name="map-to-target-databases"></a>Mapovat na cílové databáze
+## <a name="map-to-target-databases"></a>Mapování na cílové databáze
 
 1. Na obrazovce **mapování na cílové databáze** namapujte zdrojovou a cílovou databázi pro migraci.
 
@@ -187,7 +188,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
    Pokud chcete v této fázi migrace sdílet propustnost v databázi, zadejte propustnost RU. V Cosmos DB můžete zřídit propustnost buď na úrovni databáze, nebo jednotlivě pro každou kolekci. Propustnost se měří v [jednotkách žádosti](https://docs.microsoft.com/azure/cosmos-db/request-units) (ru). Přečtěte si další informace o [cenách Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-   ![Mapovat na cílové databáze](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
+   ![Mapování na cílové databáze](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
 
 2. Vyberte **Uložit**.
 
@@ -200,7 +201,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     > [!NOTE]
     > Migraci a shromažďování databáze můžete provádět paralelně pomocí několika instancí Azure Database Migration Service v případě potřeby zrychlit spuštění.
 
-   Můžete také zadat horizontálních oddílů klíč, který bude využívat [dělení v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) pro zajištění optimální škálovatelnosti. Nezapomeňte si projít osvědčené [postupy pro výběr klíče horizontálních oddílů/partition](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). Pokud nemáte klíč oddílu, můžete pro lepší propustnost vždy použít **_ID** jako klíč horizontálních oddílů.
+   Můžete také zadat horizontálních oddílů klíč, který bude využívat [dělení v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) pro zajištění optimální škálovatelnosti. Nezapomeňte si projít [osvědčené postupy pro výběr klíče horizontálních oddílů/partition](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). Pokud nemáte klíč oddílu, můžete pro lepší propustnost vždy použít **_ID** jako klíč horizontálních oddílů.
 
    ![Vybrat tabulky kolekcí](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 
@@ -208,7 +209,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 5. Na obrazovce **Shrnutí migrace** do textového pole **Název aktivity** zadejte název aktivity migrace.
 
-    ![Shrnutí migrace](media/tutorial-mongodb-to-cosmosdb-online/dms-migration-summary1.png)
+    ![Souhrn migrace](media/tutorial-mongodb-to-cosmosdb-online/dms-migration-summary1.png)
 
 ## <a name="run-the-migration"></a>Spuštění migrace
 
@@ -246,7 +247,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 Po migraci dat uložených v databázi MongoDB Azure Cosmos DB k rozhraní API pro MongoDB se můžete připojit k Azure Cosmos DB a spravovat data. Můžete také provést další kroky optimalizace po migraci, jako je například optimalizace zásad indexování, aktualizace výchozí úrovně konzistence nebo konfigurace globální distribuce pro účet Azure Cosmos DB. Další informace najdete v článku věnovaném [optimalizaci po migraci](../cosmos-db/mongodb-post-migration.md) .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Informace o Cosmos DB službě](https://azure.microsoft.com/services/cosmos-db/)
 

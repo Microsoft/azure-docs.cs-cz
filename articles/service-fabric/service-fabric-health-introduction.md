@@ -1,25 +1,16 @@
 ---
-title: Monitorování stavu v Service Fabric | Microsoft Docs
+title: Monitorování stavu v Service Fabric
 description: Úvod do modelu sledování stavu služby Azure Service Fabric, který poskytuje monitorování clusteru a jeho aplikací a služeb.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60949133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433898"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric zavádí model stavu, který poskytuje bohatě, flexibilní a rozšiřitelné vyhodnocení stavu a vytváření sestav. Model umožňuje monitorovat stav clusteru a služby, které jsou v něm spuštěné, do téměř v reálném čase. Můžete snadno získat informace o stavu a opravit případné problémy, které se budou zastarat, a způsobit obrovské výpadky. V typickém modelu odesílají služby sestavy na základě místních zobrazení a tyto informace jsou agregované tak, aby poskytovaly celkové zobrazení na úrovni clusteru.
@@ -41,7 +32,7 @@ Entity stavu zrcadlí Service Fabric entit. (Například **entita aplikace Healt
 
 Entity a hierarchie stavu umožňují, aby cluster a aplikace byly efektivně hlášeny, laděny a monitorovány. Model stavu poskytuje přesné a *podrobné* znázornění stavu mnoha přesunů v clusteru.
 
-![Entity stavu.][1]
+![entit stavu.][1]
 Entity stavu uspořádané v hierarchii na základě vztahů nadřazenosti a podřízenosti.
 
 [1]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy.png
@@ -67,14 +58,14 @@ Interní a externí sledovací zařízení mohou hlásit stejné entity na zákl
 Naplánujte investici, jak ohlásit a reagovat na stav při návrhu velké cloudové služby. Tato přední investice usnadňuje ladění, sledování a provoz služby.
 
 ## <a name="health-states"></a>Stav
-Service Fabric používá k popisu, jestli je entita v pořádku, tři stavy: OK, varování a chyba. Všechny sestavy odeslané do Health Store musí určovat jeden z těchto stavů. Výsledkem vyhodnocení stavu je jeden z těchto stavů.
+Service Fabric používá tři stavové stavy k popisu, jestli je entita v pořádku, nebo ne: OK, varování a chyba. Všechny sestavy odeslané do Health Store musí určovat jeden z těchto stavů. Výsledkem vyhodnocení stavu je jeden z těchto stavů.
 
 Možné [stavy](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) :
 
 * **OK**. Entita je v pořádku. Neexistují žádné známé problémy, které jsou na něm hlášeny (Pokud je to možné).
 * **Upozornění**: Entita obsahuje nějaké problémy, ale přesto může fungovat správně. Existují například prodlevy, ale ještě nezpůsobují žádné funkční problémy. V některých případech se může podmínka upozornění opravit bez vnějšího zásahu. V těchto případech sestavy o stavu zvyšují povědomí a poskytují přehled o tom, co se prochází. V jiných případech může stav varování snížit závažnost problému bez zásahu uživatele.
 * **Error** (Chyba). Entita není v pořádku. Měla by být provedena akce pro opravu stavu entity, protože nemůže správně fungovat.
-* **Neznámý**. Entita v Health Store neexistuje. Tento výsledek lze získat z distribuovaných dotazů, které sloučí výsledky z více součástí. Například dotaz získat seznam uzlů přejde na **FailoverManager**, **ClusterManager**a **HealthManager**; získat dotaz na seznam aplikací přejde na **ClusterManager** a **HealthManager**. Tyto dotazy sloučí výsledky z více systémových součástí. Pokud jiná systémová součást vrátí entitu, která není přítomna v Health Store, má sloučený výsledek neznámý stav. Entita není v úložišti, protože sestavy o stavu ještě nejsou zpracované nebo se entita vyčistila po jejím odstranění.
+* **Neznámé**: Entita v Health Store neexistuje. Tento výsledek lze získat z distribuovaných dotazů, které sloučí výsledky z více součástí. Například dotaz získat seznam uzlů přejde na **FailoverManager**, **ClusterManager**a **HealthManager**; získat dotaz na seznam aplikací přejde na **ClusterManager** a **HealthManager**. Tyto dotazy sloučí výsledky z více systémových součástí. Pokud jiná systémová součást vrátí entitu, která není přítomna v Health Store, má sloučený výsledek neznámý stav. Entita není v úložišti, protože sestavy o stavu ještě nejsou zpracované nebo se entita vyčistila po jejím odstranění.
 
 ## <a name="health-policies"></a>Zásady stavu
 Health Store používá zásady stavu k určení, jestli je entita v pořádku, na základě jejich sestav a jejích podřízených položek.
@@ -153,7 +144,7 @@ Uživatelé a automatizované služby mohou kdykoli vyhodnotit stav jakékoli en
 ### <a name="health-report-aggregation"></a>Agregace sestavy stavu
 Jedna entita může mít několik sestav o stavu odesílaných různými sestavami (součásti systému nebo sledovacích zařízení) v různých vlastnostech. Agregace používá přidružené zásady stavu, zejména ConsiderWarningAsError člena zásad stavu aplikace nebo clusteru. ConsiderWarningAsError určuje, jak vyhodnotit upozornění.
 
-Agregovaný stav je aktivovaný v nejhorších sestavách o stavu entity. Pokud existuje alespoň jedna zpráva o stavu chyby, agregovaný stav je chyba.
+Agregovaný stav je aktivovaný v *nejhorších* sestavách o stavu entity. Pokud existuje alespoň jedna zpráva o stavu chyby, agregovaný stav je chyba.
 
 ![Agregace sestavy stavu s chybovou zprávou.][2]
 
@@ -188,7 +179,7 @@ Jakmile Health Store vyhodnotí všechny podřízené položky, agreguje jejich 
 ## <a name="health-reporting"></a>Vytváření sestav o stavu
 Komponenty systému, aplikace systémových prostředků infrastruktury a interní/externí sledovací zařízení mohou hlásit Service Fabric entit. Sestavy provádějí *místní* určení stavu monitorovaných entit na základě podmínek, které monitorují. Nemusí se pohlížet na žádná globální stav ani agregovaná data. Požadovaným chováním je jednoduché sestavování a ne komplexní organismy, které potřebují prohledat informace, které se mají odeslat, a získat tak mnoho věcí.
 
-Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifikovat ovlivněnou entitu a vytvořit sestavu o stavu. K odeslání sestavy použijte rozhraní API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , vystavení rozhraní API pro stav vystavená `CodePackageActivationContext` na `Partition` objektech nebo, rutinách PowerShellu nebo REST.
+Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifikovat ovlivněnou entitu a vytvořit sestavu o stavu. K odeslání sestavy použijte rozhraní API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , vystavte rozhraní API pro stav vystavená na objektech `Partition` nebo `CodePackageActivationContext`, rutinách prostředí POWERSHELL nebo REST.
 
 ### <a name="health-reports"></a>Sestavy stavu
 [Sestavy o stavu](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) pro každou entitu v clusteru obsahují následující informace:
@@ -205,7 +196,7 @@ Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifi
   * DeployedApplication. Název aplikace (URI) a název uzlu (řetězec).
   * DeployedServicePackage. Název aplikace (URI), název uzlu (řetězec) a název manifestu služby (řetězec).
 * **Vlastnost**. *Řetězec* (nejedná se o pevný výčet), který umožňuje zpravodaji kategorizovat událost stavu pro konkrétní vlastnost entity. Například zpravodaj A může hlásit stav vlastnosti "úložiště" Node01 a zpravodaj B může ohlásit stav vlastnosti "připojení" Node01. V Health Store se tyto sestavy považují za samostatné události stavu pro entitu Node01.
-* **Popis**. Řetězec, který umožňuje zpravodaji poskytovat podrobné informace o události stavu. **SourceId**, **Property**a **elementu** stav by měly plně popsat sestavu. Popis přidá do sestavy informace o tom, které se dají přečíst lidmi. Tento text usnadňuje správcům a uživatelům pochopení sestavy o stavu.
+* **Popis**: Řetězec, který umožňuje zpravodaji poskytovat podrobné informace o události stavu. **SourceId**, **Property**a **elementu** stav by měly plně popsat sestavu. Popis přidá do sestavy informace o tom, které se dají přečíst lidmi. Tento text usnadňuje správcům a uživatelům pochopení sestavy o stavu.
 * Stav **elementu**. [Výčet](service-fabric-health-introduction.md#health-states) , který popisuje stav sestavy. Přijaté hodnoty jsou OK, varování a chyba.
 * **TimeToLive**. Interval TimeSpan, který určuje, jak dlouho je sestava stavu platná. Společně s **RemoveWhenExpired**umožňuje Health Store zjistit, jak vyhodnotit události, jejichž platnost vypršela. Ve výchozím nastavení je hodnota nekonečno a sestava je platná trvale.
 * **RemoveWhenExpired**. Logická hodnota. Pokud je nastavená hodnota true, zpráva o stavu s vypršenou platností se automaticky odebere z Health Store a sestava nebude mít vliv na hodnocení stavu entity. Používá se, když je sestava platná jenom po zadanou dobu, a zpravodaj je nepotřebuje explicitně vymazat. Používá se také k odstranění sestav z Health Store (například sledovací zařízení se změnilo a zastaví odesílání sestav s předchozím zdrojem a vlastností). Může odeslat sestavu se stručným TimeToLive společně s RemoveWhenExpired, aby se vymazal jakýkoli předchozí stav z Health Store. Pokud je hodnota nastavená na false, zpráva o vypršení platnosti se považuje za chybu při vyhodnocování stavu. Hodnota false signalizuje Health Store, že zdroj by měl pravidelně vykazovat tuto vlastnost. Pokud tomu tak není, musí být u sledovacího zařízení něco špatné. Stav sledovacího zařízení se zachycuje s ohledem na událost jako chybu.
@@ -229,7 +220,7 @@ Pole přechodu stavu lze použít pro informace o událostech s inteligentními 
 * Výstraha pouze pro podmínky, které se změnily za posledních X minut. Pokud se již sestava stala chybou před určenou časem, může být ignorována, protože již byla signalizována dříve.
 * Pokud je vlastnost přepínání mezi upozorněním a chybou, určete, jak dlouho není v pořádku (tj. ne OK). Například výstraha v případě, že vlastnost není v pořádku na více než pět minut, může být převedena na (Stavový! = ok a nyní-LastOkTransitionTime > 5 minut).
 
-## <a name="example-report-and-evaluate-application-health"></a>Příklad: Sestavování a vyhodnocení stavu aplikace
+## <a name="example-report-and-evaluate-application-health"></a>Příklad: sestava a vyhodnocení stavu aplikace
 Následující příklad pošle zprávu o stavu prostřednictvím PowerShellu v Application **Fabric:/WORDCOUNT** ze zdrojového **MyWatchdog**. Zpráva o stavu obsahuje informace o vlastnostech stavu "dostupnost" v chybovém stavu s nekonečné TimeToLive. Pak se dotazuje na stav aplikace, který vrátí souhrnné chyby stavu a hlášené události stavu v seznamu událostí stavu.
 
 ```powershell
@@ -303,7 +294,7 @@ Jiné systémy mají jedinou centralizovanou službu na úrovni clusteru, která
 
 Model stavu se silně používá pro monitorování a diagnostiku, pro vyhodnocení stavu clusteru a aplikací a pro monitorované upgrady. Jiné služby používají data o stavu k provádění automatických oprav, sestavení historie stavu clusteru a vydávání výstrah pro určité podmínky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Zobrazit Service Fabric sestavy o stavu](service-fabric-view-entities-aggregated-health.md)
 
 [Použití sestav stavu systému pro řešení potíží](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)

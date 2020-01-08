@@ -1,5 +1,5 @@
 ---
-title: Rychlý start pro správu sdílených složek Azure pomocí Průzkumníka služby Azure Storage
+title: Správa sdílených složek Azure pomocí Průzkumník služby Azure Storage
 description: V tomto rychlém startu zjistíte, jak pomocí Průzkumníka služby Azure Storage spravovat službu Soubory Azure.
 author: roygara
 ms.service: storage
@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b034b3e7aa5fcb61cf83565f3e4c3b1c83f3610c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431826"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Rychlý start: Vytvoření a Správa sdílených složek Azure pomocí Průzkumník služby Azure Storage
+# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí Průzkumníka služby Azure Storage
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Průzkumníka služby Azure Storage. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
 
 Průzkumník služby Azure Storage je oblíbený klientský nástroj, který je k dispozici pro Windows, macOS a Linux. Můžete ho použít ke správě sdílených složek Azure a dalších prostředků úložiště.
@@ -24,7 +24,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 Tento postup vyžaduje nainstalovaného Průzkumníka služby Storage. Stáhnout ho a následně ho nainstalovat můžete ze stránky [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 Průzkumníka služby Storage není možné použít k vytvoření nových prostředků. Pro účely této ukázky si vytvořte účet úložiště na webu [Azure Portal](https://portal.azure.com/). 
 
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
@@ -32,9 +32,9 @@ Průzkumníka služby Storage není možné použít k vytvoření nových prost
 ## <a name="connect-storage-explorer-to-azure-resources"></a>Připojení Průzkumníka služby Storage k prostředkům Azure
 Když poprvé spustíte Průzkumníka služby Storage, objeví se okno **Průzkumník služby Microsoft Azure Storage – Připojení**. Průzkumník služby Storage nabízí několik způsobů, jak se k účtům úložiště připojit: 
 
-- Přihlaste se **pomocí svého účtu Azure**: Můžete se přihlásit pomocí přihlašovacích údajů uživatele pro vaši organizaci nebo účet Microsoft. 
-- Připojení **ke konkrétnímu účtu úložiště pomocí připojovacího řetězce nebo tokenu SAS**: Připojovací řetězec je speciální řetězec, který obsahuje název účtu úložiště a klíč účtu úložiště nebo token SAS. Díky tomuto tokenu získá Průzkumník služby Storage přístup přímo k účtu úložiště (místo zobrazení všech účtů úložiště obsažených na účtu Azure). Další informace o připojovacích řetězcích najdete v tématu [Konfigurace připojovacích řetězců úložiště Azure](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Připojte se ke konkrétnímu účtu úložiště pomocí názvu a klíče účtu úložiště**: K připojení ke službě Azure Storage použijte název účtu úložiště a klíč pro váš účet úložiště.
+- **Přihlášení pomocí účtu Azure**: Můžete se přihlásit pomocí přihlašovacích údajů uživatele své organizace nebo účtu Microsoft. 
+- **Připojení ke konkrétnímu účtu úložiště pomocí připojovacího řetězce nebo tokenu SAS**: Připojovací řetězec je speciální řetězec, který obsahuje název účtu úložiště a klíč účtu úložiště nebo token SAS. Díky tomuto tokenu získá Průzkumník služby Storage přístup přímo k účtu úložiště (místo zobrazení všech účtů úložiště obsažených na účtu Azure). Další informace o připojovacích řetězcích najdete v tématu [Konfigurace připojovacích řetězců úložiště Azure](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Připojení ke konkrétnímu účtu úložiště pomocí názvu a klíče účtu úložiště:** Připojte se k úložišti Azure použitím názvu a klíče účtu úložiště.
 
 Pro účely tohoto rychlého startu se přihlaste pomocí svého účtu Azure. Vyberte **Přidat účet Azure** a pak vyberte **Přihlásit**. Podle pokynů se přihlaste ke svému účtu Azure.
 
@@ -66,7 +66,7 @@ Přidání adresáře zajistí hierarchickou strukturu pro správu sdílené slo
 
 Adresář *myDirectory* bude uvedený v seznamu na kartě sdílené složky *myshare*.
 
-### <a name="upload-a-file"></a>Nahrát soubor 
+### <a name="upload-a-file"></a>Nahrání souboru 
 Z místního počítače můžete do nového adresáře ve sdílené složce nahrát soubor. Můžete nahrát jeden soubor nebo celou složku.
 
 1. V horní nabídce vyberte **Nahrát**. Tímto způsobem můžete nahrát složku nebo soubor.
@@ -75,7 +75,7 @@ Z místního počítače můžete do nového adresáře ve sdílené složce nah
 
 Po dokončení se tento soubor objeví na seznamu v podokně *myDirectory*.
 
-### <a name="download-a-file"></a>Stáhnout soubor
+### <a name="download-a-file"></a>Stažení souboru
 Kopii souboru ze sdílené složky stáhnete pravým kliknutím na daný soubor a následným výběrem možnosti **Stáhnout**. Zvolte, kam chcete soubor na místním počítači uložit, a potom vyberte **Uložit**.
 
 V podokně **Aktivity** v dolní části okna se zobrazí průběh stahování.

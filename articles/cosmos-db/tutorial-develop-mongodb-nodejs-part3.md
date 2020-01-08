@@ -1,6 +1,5 @@
 ---
-title: Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB – sestavení uživatelského rozhraní pomocí Angular
-titleSuffix: Azure Cosmos DB
+title: Vytvoření uživatelského rozhraní úhlů aplikace s rozhraním API Azure Cosmos DB pro MongoDB (Část3)
 description: Třetí část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444746"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB – sestavení uživatelského rozhraní pomocí Angular
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – Sestavte uživatelské rozhraní pomocí úhlů.
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md).
+Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md).
 
 Třetí část kurzu vychází z [části 2](tutorial-develop-mongodb-nodejs-part2.md) a zabývá se následujícími úlohami:
 
@@ -417,7 +416,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
 2. Ve Visual Studio Code přejděte zpět do souboru **heroes.components.ts**. Všimněte si, že na řádku `constructor(private heroService: HeroService) {}` (řádek 13) má `HeroService` červené podtržení. Klikněte na `HeroService` a na levé straně bloku kódu se zobrazí žárovka. Klikněte na žárovku a pak klikněte na **Importovat HeroService z umístění ./hero.service**. nebo **Importovat HeroService z umístění /app/hero.service**.
 
-    Kliknutím na žárovku se vloží nový řádek kódu na řádku 2. Pokud řádek 2 odkazuje na složku /app/hero.service, ho upravit tak, aby odkazoval na soubor hero v místní složce (. / hero.service). Řádek 2 by měl vypadat takto:
+    Kliknutím na žárovku se vloží nový řádek kódu na řádku 2. Pokud řádek 2 odkazuje na složku/App/Hero.Service, upravte ji tak, aby odkazovala na soubor Hero z místní složky (./Hero.Service). Řádek 2 by měl vypadat takto:
     
     ```javascript
     import { HeroService } from "./hero.service"
@@ -487,13 +486,13 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
     Teď aplikaci spustíme.
 
-2. Ve Visual Studio Code klikněte na tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) na levé straně a pak klikněte na tlačítko **Spustit ladění** ![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
+2. Ve Visual Studio Code klikněte na tlačítko **Ladit**![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) na levé straně a pak klikněte na tlačítko **Spustit ladění**![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
 
 3. Nyní otevřete internetový prohlížeč a přejděte na adresu **localhost:3000**, kde se zobrazí místně spuštěná aplikace.
 
      ![Místně spuštěná aplikace Heroes](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste provedli následující:
 

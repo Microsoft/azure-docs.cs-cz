@@ -1,20 +1,18 @@
 ---
 title: Javascriptové uživatelsky definované agregace v Azure Stream Analytics
 description: Tento článek popisuje, jak provádět pokročilé mechanismy dotazů s uživatelsky definovanými agregacemi jazyka JavaScript v Azure Stream Analytics.
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6c590ae62e080a6681e49c87264089f9a5f4ce2f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426098"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics uživatelsky definovaných agregací jazyka JavaScript
  
@@ -80,7 +78,7 @@ Jednotlivé UDAy JavaScriptu jsou definovány deklarací objektu funkce. Níže 
 
 ### <a name="function-alias"></a>Alias funkce
 
-Alias funkce je UDA identifikátor. Při volání v Stream Analytics dotaz vždy použijte alias UDA spolu s "Uda". směr.
+Alias funkce je UDA identifikátor. Při volání v Stream Analytics dotaz vždy použijte alias UDA spolu s "Uda". „com.microsoft.intune.mam“.
 
 ### <a name="function-type"></a>Typ funkce
 
@@ -225,11 +223,11 @@ Vytvořte místní soubor JSON s níže uvedeným obsahem, nahrajte soubor do St
 ]
 ```
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání nápovědy
 
 Pokud potřebujete další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

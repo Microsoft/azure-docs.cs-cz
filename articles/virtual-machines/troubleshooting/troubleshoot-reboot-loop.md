@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443581"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Smyčka restartování Windows na virtuálním počítači Azure
 Tento článek popisuje smyčku restartování, se kterou se můžete setkat na virtuálním počítači s Windows v Microsoft Azure.
@@ -62,7 +62,7 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systéme
 
 4. Na záchranném virtuálním počítači otevřete Editor registru systému Windows (Regedit).
 
-5. Vyberte klíč **HKEY_LOCAL_MACHINE** a v nabídce vyberte **možnost** > **Načíst podregistr** .
+5. Vyberte klíč **HKEY_LOCAL_MACHINE** a potom z nabídky vyberte **soubor** > **Načíst podregistr** .
 
 6. Přejděte k SYSTÉMOVÉmu souboru ve složce **\Windows\System32\config** .
 
@@ -86,7 +86,7 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk s operačním systéme
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Vyberte klíč **BROKENSYSTEM** a potom z nabídky vyberte možnost**načíst** **soubor** > .
+13. Vyberte klíč **BROKENSYSTEM** a potom z nabídky vyberte **soubor** > **Uvolnit podregistr** .
 
 14. Odpojte disk s operačním systémem od virtuálního počítače pro řešení potíží.
 

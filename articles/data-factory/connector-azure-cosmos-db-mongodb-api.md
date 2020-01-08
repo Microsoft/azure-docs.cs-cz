@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 0b38bc3309d8cf265a554a10e36311f53e6fe8a9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 33cc4537a8339b9329a3be059c0e86a1ffe69941
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440804"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopírování dat do nebo z rozhraní API Azure Cosmos DB pro MongoDB pomocí Azure Data Factory
 
@@ -48,7 +48,7 @@ Pro propojenou službu MongoDB se podporují následující vlastnosti rozhraní
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** musí být nastavená na **CosmosDbMongoDbApi**. | Ano |
-| connectionString |Zadejte připojovací řetězec pro rozhraní API Azure Cosmos DB pro MongoDB. Můžete ji najít v Azure Portal – Cosmos DB > primárním nebo sekundárním připojovacím řetězcem >, a to se vzorem `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| connectionString |Zadejte připojovací řetězec pro rozhraní API Azure Cosmos DB pro MongoDB. Můžete ji najít v Azure Portal – Cosmos DB > primárním nebo sekundárním připojovacím řetězcem >, a to se vzorem `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Můžete také vložit heslo do Azure Key Vault a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) .|Ano |
 | databáze | Název databáze, ke které chcete získat přístup. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace v Azure nebo místního prostředí integration runtime. Pokud není tato vlastnost určena, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -60,10 +60,7 @@ Pro propojenou službu MongoDB se podporují následující vlastnosti rozhraní
     "properties": {
         "type": "CosmosDbMongoDbApi",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-            },
+            "connectionString": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb",
             "database": "myDatabase"
         },
         "connectVia": {
@@ -174,6 +171,9 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky**
 | writeBatchSize | Vlastnost **writeBatchSize** určuje velikost dokumentů pro zápis v každé dávce. Můžete zkusit zvýšit hodnotu pro **writeBatchSize** a zvýšit tak výkon a snížit hodnotu, pokud je velikost dokumentu velká. |Ne<br />(výchozí hodnota je **10 000**) |
 | writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu. Povolená hodnota je TimeSpan. | Ne<br/>(výchozí hodnota je **00:30:00** – 30 minut) |
 
+>[!TIP]
+>Pokud chcete importovat dokumenty JSON tak, jak jsou, přečtěte si část [Import nebo export dokumentů JSON](#import-and-export-json-documents) . Chcete-li kopírovat z tabulkových dat, přečtěte si téma [mapování schématu](#schema-mapping).
+
 **Příklad**
 
 ```json
@@ -206,18 +206,18 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky**
 ]
 ```
 
->[!TIP]
->Pokud chcete importovat dokumenty JSON tak, jak jsou, přečtěte si část [Import nebo export dokumentů JSON](#import-or-export-json-documents) . Chcete-li kopírovat z tabulkových dat, přečtěte si téma [mapování schématu](#schema-mapping).
-
-## <a name="import-or-export-json-documents"></a>Import a export dokumentů JSON
+## <a name="import-and-export-json-documents"></a>Import a export dokumentů JSON
 
 Tento konektor služby Azure Cosmos DB můžete snadno:
 
-* Importujte dokumenty JSON z různých zdrojů do služby Azure Cosmos DB, včetně z úložiště objektů Blob v Azure, Azure Data Lake Store a další souborové úložiště, které podporuje Azure Data Factory.
-* Exportujte dokumentů JSON z kolekce Azure Cosmos DB do různých úložišť založená na souborech.
 * Zkopírujte dokumenty mezi dvě kolekce Azure Cosmos DB jako-je.
+* Import dokumentů JSON z různých zdrojů do Azure Cosmos DB, včetně MongoDB, úložiště objektů BLOB v Azure, Azure Data Lake Store a dalších úložišť založených na souborech, které Azure Data Factory podporuje.
+* Exportujte dokumentů JSON z kolekce Azure Cosmos DB do různých úložišť založená na souborech.
 
-Chcete-li dosáhnout takového schématu – nezávislá kopírování, přeskočte oddíl Structure (označuje se také jako *schéma*) v datové sadě a mapování schématu v aktivitě kopírování.
+K dosažení dogmaticky na schématu kopírování:
+
+* Při použití nástroje pro kopírování dat vyberte **exportovat jako-soubory JSON nebo kolekce Cosmos DB** možnost.
+* Pokud používáte vytváření aktivit, vyberte formát JSON s odpovídajícím úložištěm souborů pro zdroj nebo jímku.
 
 ## <a name="schema-mapping"></a>Schema mapping
 

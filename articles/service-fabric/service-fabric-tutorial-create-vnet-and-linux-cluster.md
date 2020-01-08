@@ -1,26 +1,15 @@
 ---
-title: Vytvoření clusteru Service Fabric s Linuxem v Azure | Dokumentace Microsoftu
+title: Vytvoření clusteru se systémem Linux Service Fabric v Azure
 description: Naučte se nasadit cluster Service Fabric s Linuxem do existující virtuální sítě Azure s použitím rozhraní příkazového řádku Azure.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2ba157d7bf2e6effbaf7ab129dbbbfd1ca8b9667
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 059f0f4b1eac9546f1adc05bf1f2799affc0dd8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465409"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru se systémem Linux Service Fabric do virtuální sítě Azure
 
@@ -53,29 +42,29 @@ V prostředku **Microsoft.ServiceFabric/clusters** se nasazuje cluster s Linuxem
 
 * tři typy uzlů
 * pět uzlů v typu primárního uzlu (konfigurovatelné v parametrech šablony), jeden uzel v každém z ostatních typů uzlů
-* Operační systém: Ubuntu 16,04 LTS (konfigurovatelné v parametrech šablony)
+* operační systém: Ubuntu 16.04 LTS (možnost konfigurace v parametrech šablony)
 * zabezpečení pomocí certifikátu (možnost konfigurace v parametrech šablony)
 * [služba DNS](service-fabric-dnsservice.md) je povolena
 * bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
 * stříbrná [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
-* koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony)
-* Koncový bod služby HTTP Gateway: 19080 (konfigurovatelné v parametrech šablony)
+* koncový bod připojení klienta: 19000 (možnost konfigurace v parametrech šablony)
+* koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony)
 
 ### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
 V prostředku **Microsoft.Network/loadBalancers** dochází ke konfiguraci nástroje pro vyrovnávání zatížení a k nastavení sond a pravidel pro následující porty:
 
 * koncový bod připojení klienta: 19000
-* Koncový bod služby HTTP Gateway: 19080
-* Port aplikace: 80
-* Port aplikace: 443
+* koncový bod brány HTTP: 19080
+* port aplikací: 80
+* port aplikací: 443
 
 ### <a name="virtual-network-and-subnet"></a>Virtuální síť a podsíť
 
 Názvy virtuální sítě a podsítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
-* adresní prostor virtuální sítě: 10.0.0.0/16
-* Service Fabric adresní prostor podsítě: 10.0.2.0/24
+* adresní prostory virtuální sítě: 10.0.0.0/16
+* adresní prostor podsítě Service Fabric: 10.0.2.0/24
 
 Pokud jsou potřebné další porty aplikací, je třeba upravit prostředek Microsoft.Network/loadBalancers, aby povoloval příchozí provoz.
 
@@ -90,7 +79,7 @@ Soubor parametrů [AzureDeploy. Parameters][parameters] deklaruje mnoho hodnot, 
 |clusterName|mysfcluster123| Název clusteru. |
 |location|southcentralus| Umístění clusteru. |
 |certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který se dříve odeslal do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu SHA1. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“. </p>|
-|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Například: /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
@@ -162,7 +151,7 @@ sfctl cluster health
 
 Pokud nechcete ihned pokračovat dalším článkem, můžete [cluster odstranit](service-fabric-cluster-delete.md), aby se vám neúčtovaly poplatky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se [škálovat cluster](service-fabric-tutorial-scale-cluster.md).
 

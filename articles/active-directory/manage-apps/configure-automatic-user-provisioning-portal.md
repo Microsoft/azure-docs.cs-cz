@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430185"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 
-Tento článek popisuje, jak pomocí [Azure Portal](https://portal.azure.com) spravovat Automatické zřizování uživatelských účtů a zrušení zřizování pro aplikace, které ho podporují. Další informace o automatickém zřizování uživatelských účtů a o tom, jak funguje, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](user-provisioning.md).
+Tento článek popisuje obecné kroky pro správu automatického zřizování uživatelských účtů a zrušení zajišťování pro aplikace, které ho podporují. *Zřizování uživatelských účtů* je proces vytváření, aktualizace nebo zakázání záznamů uživatelských účtů v úložišti profilů místního uživatele aplikace. Většina cloudových a SaaS aplikací ukládá role uživatelů a oprávnění do vlastního místního úložiště profilů uživatele a k získání jednotného přihlašování se *vyžaduje* přítomnost takového záznamu uživatele v místním úložišti uživatele a přístup k práci. Další informace o automatickém zřizování uživatelských účtů najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](user-provisioning.md).
+
+> [!IMPORTANT]
+> Azure Active Directory (Azure AD) obsahuje galerii obsahující tisíce předem integrovaných aplikací, u kterých je povolené Automatické zřizování pomocí Azure AD. Měli byste začít tak, že v [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/), provedete konkrétní kurz nastavení zřizování, který je specifický pro vaši aplikaci. Pravděpodobně najdete podrobné pokyny pro konfiguraci aplikace i služby Azure AD pro vytvoření zřizovacího připojení.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Hledání aplikací na portálu
 

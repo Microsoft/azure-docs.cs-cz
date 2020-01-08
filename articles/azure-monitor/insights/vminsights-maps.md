@@ -4,15 +4,15 @@ description: Mapa je funkce Azure Monitor pro virtuální počítače. Automatic
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450710"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Použití funkce map Azure Monitor pro virtuální počítače (Preview) k porozumění součástem aplikace
 V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Virtuální počítače můžete sledovat dvěma způsoby. Zobrazit mapu přímo z virtuálního počítače nebo zobrazit mapu z Azure Monitor, abyste viděli komponenty napříč skupinami virtuálních počítačů. Tento článek vám pomůže pochopit tyto dvě metody zobrazení a způsob použití funkce map. 
@@ -54,7 +54,7 @@ Další informace o výstrahách Azure a vytváření pravidel výstrah najdete 
 
 V pravém horním rohu možnost **Legenda** popisuje symboly a role na mapě. Pro bližší zobrazení mapy a jejich přesunu použijte ovládací prvky přiblížení v pravém dolním rohu. Můžete nastavit úroveň přiblížení a přizpůsobit mapu velikosti stránky.  
 
-## <a name="connection-metrics"></a>Metriky připojení
+## <a name="connection-metrics"></a>Metrik připojení
 V podokně **připojení** se zobrazí standardní metriky pro vybrané připojení z virtuálního počítače přes port TCP. Metriky zahrnují dobu odezvy, požadavky za minutu, propustnost provozu a odkazy.  
 
 ![Grafy připojení k síti v podokně připojení](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
@@ -115,13 +115,13 @@ Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidě
 ![Přehled mapování přímých virtuálních počítačů](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->Přístup k mapě konkrétní instance můžete získat také ze zobrazení **instance** pro sadu škálování virtuálního počítače. V části **Nastavení** přejdete na **instance**  > **Insights (Preview)** .
+>Přístup k mapě konkrétní instance můžete získat také ze zobrazení **instance** pro sadu škálování virtuálního počítače. V části **Nastavení** přejdete na **instance** > **Insights (Preview)** .
 
 ## <a name="view-a-map-from-azure-monitor"></a>Zobrazit mapu z Azure Monitor
 
 V Azure Monitor funkce mapa poskytuje globální pohled na vaše virtuální počítače a jejich závislosti. Přístup k funkci mapa v Azure Monitor:
 
-1. V Azure Portal vyberte **monitorovat**. 
+1. Na webu Azure Portal, vyberte **monitorování**. 
 2. V části **přehledy** vyberte možnost **Virtual Machines (Preview)** .
 3. Vyberte kartu **Mapa** .
 

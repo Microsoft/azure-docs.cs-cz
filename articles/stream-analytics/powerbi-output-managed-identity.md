@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0c5f64e08446698bbd8d1ee4af5454e3aa1dd5ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459686"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy do Power BI (Preview)
 
@@ -170,6 +170,29 @@ Teď, když je úloha Stream Analytics vytvořená, může být dána přístup 
 
    ![Přidat úlohu Stream Analytics do pracovního prostoru Power BI](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
+### <a name="use-the-power-bi-powershell-cmdlets"></a>Použití rutin Power BI PowerShellu
+
+1. Nainstalujte rutiny Power BI `MicrosoftPowerBIMgmt` PowerShellu.
+
+   > [!Important]
+   > Ujistěte se prosím, že používáte verzi 1.0.821 nebo novější z rutin.
+
+```powershell
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+2. Přihlaste se k Power BI.
+
+```powershell
+Login-PowerBI
+```
+
+3. Přidejte úlohu Stream Analytics jako přispěvatel do pracovního prostoru.
+
+```powershell
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
 ### <a name="use-the-power-bi-rest-api"></a>Použití Power BI REST API
 
 Úlohu Stream Analytics lze také přidat jako Přispěvatel k pracovnímu prostoru pomocí REST API přímo přidat skupinu uživatelů. Úplnou dokumentaci k tomuto rozhraní API najdete tady: [skupiny – přidat uživatele skupiny](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
@@ -201,4 +224,4 @@ Níže jsou uvedena omezení této funkce:
 ## <a name="next-steps"></a>Další kroky
 
 * [Integrace řídicího panelu Power BI s Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
-* [Porozumění výstupům z Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Vysvětlení vytvořené jako výstupy z Azure Stream Analytics](./stream-analytics-define-outputs.md)

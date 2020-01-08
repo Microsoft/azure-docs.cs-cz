@@ -1,26 +1,15 @@
 ---
-title: Přidání koncového bodu HTTPS využívajícího Kestrel do aplikace Service Fabric v Azure | Microsoft Docs
+title: Přidání koncového bodu HTTPS pomocí Kestrel
 description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET Core využívající Kestrel přidat koncový bod HTTPS a nasadit tuto aplikaci do clusteru.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: e38822e1d774cc32590a13239edb34d7a15e2d02
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545765"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614073"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
 
@@ -32,7 +21,7 @@ Ve třetí části této série se naučíte:
 > * Definovat ve službě koncový bod HTTPS
 > * Nakonfigurovat Kestrel k používání HTTPS
 > * Nainstalovat certifikát SSL na uzly vzdáleného clusteru
-> * Poskytnutí přístupu k privátnímu klíči certifikátu účtu NETWORK SERVICE
+> * Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 > * Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
 > * Nasadit aplikaci do vzdáleného clusteru
 
@@ -47,7 +36,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 
@@ -185,7 +174,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 }
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>Poskytnutí přístupu k privátnímu klíči certifikátu účtu NETWORK SERVICE
+## <a name="give-network-service-access-to-the-certificates-private-key"></a>Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 
 V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Nyní explicitně udělte účtu, který spouští službu (ve výchozím nastavení síťová služba) přístup k privátnímu klíči certifikátu. Tento krok můžete provést ručně (pomocí nástroje Certlm. msc), ale je lepší automaticky spouštět skript prostředí PowerShell [konfigurací spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v **SetupEntryPoint** manifestu služby.
 
@@ -408,7 +397,7 @@ V této části kurzu jste se naučili:
 > * Definovat ve službě koncový bod HTTPS
 > * Nakonfigurovat Kestrel k používání HTTPS
 > * Nainstalovat certifikát SSL na uzly vzdáleného clusteru
-> * Poskytnutí přístupu k privátnímu klíči certifikátu účtu NETWORK SERVICE
+> * Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 > * Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
 > * Nasadit aplikaci do vzdáleného clusteru
 

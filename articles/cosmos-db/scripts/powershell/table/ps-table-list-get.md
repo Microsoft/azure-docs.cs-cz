@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní API pro tabulky
+title: Skript prostředí PowerShell pro výpis a získání Azure Cosmos DBch operací rozhraní API pro tabulky
 description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní API pro tabulky
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: d4d299f9cec7170256e66ec161eff3976c5211ca
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9e904bdb635111b3fb0c3120be08f26e2e097236
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444948"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Seznam a získání tabulek pro Azure Cosmos DB-rozhraní API pro tabulky
 

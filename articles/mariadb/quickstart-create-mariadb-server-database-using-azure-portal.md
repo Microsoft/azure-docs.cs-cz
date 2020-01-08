@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 240329ba3dc50cef249716f951595fea0cdc67eb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432038"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Vytvoření serveru Azure Database for MariaDB pomocí webu Azure Portal
 
@@ -26,7 +26,7 @@ Ve webovém prohlížeči přejděte na web [Azure Portal](https://portal.azure.
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Vytvoření serveru Azure Database for MariaDB
 
-Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetních prostředků a prostředků úložiště](concepts-pricing-tiers.md). Server vytvoříte v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetních prostředků a prostředků úložiště](concepts-pricing-tiers.md). Server vytvoříte v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md).
 
 Vytvoření serveru Azure Database for MariaDB:
 
@@ -50,7 +50,7 @@ Vytvoření serveru Azure Database for MariaDB:
     Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
-    Version | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
+    Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
     Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň** > **Pro obecné účely**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**Vcore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
   
    > [!NOTE]
@@ -213,7 +213,7 @@ Připojení k serveru pomocí aplikace MySQL Workbench:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete odstranit [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md). Tím se odstraní všechny prostředky v dané skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze příslušný prostředek serveru.
+Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete odstranit [skupinu prostředků Azure](../azure-resource-manager/management/overview.md). Tím se odstraní všechny prostředky v dané skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze příslušný prostředek serveru.
 
 > [!TIP]
 > Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty pro Azure Database for MariaDB, neodstraňujte prostředky, které jste vytvořili v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky, které jste v tomto rychlém startu vytvořili.

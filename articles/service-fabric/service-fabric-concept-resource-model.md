@@ -1,18 +1,14 @@
 ---
-title: Model prostředků aplikace Azure Service Fabric | Microsoft Docs
+title: Model prostředků aplikace Azure Service Fabric
 description: Tento článek poskytuje přehled správy aplikace Service Fabric Azure pomocí Azure Resource Manager
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.author: atsenthi
-ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b3cf0b8f21565a8d51b16ff6c8b4c52bbfe8edc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464803"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Co je model prostředků aplikace Service Fabric?
 Doporučuje se Service Fabric aplikace nasadit do Service Fabric clusteru prostřednictvím Azure Resource Manager. Tato metoda umožňuje popsat aplikace a služby ve formátu JSON a nasazovat je do stejné šablony Správce prostředků jako váš cluster. Na rozdíl od nasazení a správy aplikací přes PowerShell nebo Azure CLI není nutné čekat na to, aby cluster byl připravený. Proces registrace, zřizování a nasazování aplikací potom může probíhat v jediném kroku. Je to osvědčený postup pro správu životního cyklu aplikací ve vašem clusteru. Další informace najdete v článku [osvědčené postupy](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
@@ -38,7 +34,7 @@ Pak vytvořte šablonu Azure Resource Manager, aktualizujte soubor parametrů s 
 ### <a name="create-a-storage-account"></a>Vytvoření účtu Storage 
 Nasazení aplikace ze šablony Správce prostředků vyžaduje účet úložiště pro přípravu image aplikace. Můžete znovu použít existující účet úložiště nebo vytvořit nový účet úložiště pro přípravu svých aplikací. Pokud chcete použít existující účet úložiště, můžete tento krok přeskočit. 
 
-![vytvořit účet úložiště][CreateStorageAccount]
+![Vytvoření účtu úložiště][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Konfigurace účtu úložiště 
 Po vytvoření účtu úložiště je potřeba vytvořit kontejner objektů blob, kde můžete aplikace připravit. V Azure Portal přejděte do účtu úložiště, do kterého chcete aplikace uložit. Vyberte okno **objekty blob** a klikněte na tlačítko **Přidat kontejner** . Prostředky v clusteru je možné zabezpečit nastavením úrovně veřejného přístupu na Private. Přístup lze udělit několika způsoby:
@@ -57,10 +53,10 @@ Předtím, než bude možné aplikaci nasadit, je nutné ji připravit v úloži
 1. V aplikaci Visual Studio klikněte pravým tlačítkem myši na hlasovací projekt a vyberte možnost balíček.   
 ![Aplikace balíčku][PackageApplication]  
 2. Otevřete adresář **.\Service-Fabric-dotnet-quickstart\Voting\pkg\Debug** , který jste právě vytvořili, a nahlaste obsah do souboru s názvem **hlasovat. zip** , aby soubor souboru ApplicationManifest. XML byl v kořenu souboru ZIP.  
-![Zip ][ZipApplication] aplikace  
+Aplikace ![zip][ZipApplication]  
 3. Přejmenujte příponu souboru z. zip na **. sfpkg**.
 4. V Azure Portal v kontejneru **aplikace** svého účtu úložiště klikněte na **nahrát** a nahrajte **hlasování. sfpkg**.  
-Balíček aplikace ![Upload ][UploadAppPkg]
+![odeslat balíček aplikace][UploadAppPkg]
 
 Aplikace je teď připravená. Nyní jsme připraveni vytvořit šablonu Azure Resource Manager pro nasazení aplikace.      
    
@@ -75,10 +71,10 @@ Ukázková aplikace obsahuje [Azure Resource Manager šablony](https://github.co
 | Parametr              | Popis                                 | Příklad:                                                      | Komentáře                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Název clusteru, do kterého nasazujete | SF – cluster123                                                |                                                              |
-| Použití            | Název aplikace                 | Právem                                                       |
+| aplikace            | Název aplikace                 | Právem                                                       |
 | applicationTypeName    | Název typu aplikace           | VotingType                                                   | Musí odpovídat, co je v souboru ApplicationManifest. XML.                 |
-| ApplicationTypeVersion | Verze typu aplikace         | 1.0.0                                                        | Musí odpovídat, co je v souboru ApplicationManifest. XML.                 |
-| ServiceName            | Název služby, kterou služba         | Hlasovacího tlačítka ~ VotingWeb                                             | Musí být ve formátu ApplicationName ~ ServiceType            |
+| applicationTypeVersion | Verze typu aplikace         | 1.0.0                                                        | Musí odpovídat, co je v souboru ApplicationManifest. XML.                 |
+| serviceName            | Název služby, kterou služba         | Hlasovacího tlačítka ~ VotingWeb                                             | Musí být ve formátu ApplicationName ~ ServiceType            |
 | serviceTypeName        | Název typu služby                | VotingWeb                                                    | Musí odpovídat, co je v souboru ServiceManifest. XML.                 |
 | appPackageUrl          | Adresa URL pro úložiště objektů BLOB aplikace     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Adresa URL balíčku aplikace v úložišti objektů BLOB (postup nastavení je popsaný níže) |
        

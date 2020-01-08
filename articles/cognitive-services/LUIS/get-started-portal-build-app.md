@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278584"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381983"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Nejdřív vytvoříte základní části aplikace, **záměrů**a **entit**. Pak otestujete aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
 
@@ -37,8 +35,8 @@ Sestavování aplikace je bezplatné a nevyžaduje předplatné Azure. Až budet
 
    |Název nastavení| Hodnota | Účel|
    |--|--|--|
-   |Název|`myEnglishApp`|Jedinečný název aplikace LUIS<br>požadovanou|
-   |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>požadovanou|
+   |Name (Název)|`myEnglishApp`|Jedinečný název aplikace LUIS<br>required|
+   |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>required|
    |Popis (volitelné)|`App made with LUIS Portal`|Popis aplikace<br>volitelné|
    |Prostředek předpovědi (volitelné) |-  |Nevybírejte. LUIS vám nabízí počáteční klíč, který můžete zdarma použít pro vytváření a 1 000 požadavků na koncový bod předpovědi. |
 
@@ -78,7 +76,7 @@ Přidejte následující 15 příkladů projevy do záměru `FindForm`.
 
 |#|Ukázkové promluvy|
 |--|--|
-|1|Hledání HRF-123456|
+|1\. místo|Hledání HRF-123456|
 |2|Kde se nachází formulář lidské zdroje HRF-234591?|
 |3|HRF-345623, kde je|
 |4|Je možné poslat mi HRF-345794|
@@ -97,7 +95,7 @@ Přidejte následující 15 příkladů projevy do záměru `FindForm`.
 Podle návrhu se tyto příklady projevy liší následujícími způsoby:
 
 * Délka utterance
-* Oddělovač
+* interpunkce
 * Volba Wordu
 * příkaz vhodné (is, was, bude)
 * pořadí slov

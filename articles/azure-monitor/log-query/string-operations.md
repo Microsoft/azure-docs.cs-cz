@@ -1,18 +1,17 @@
 ---
 title: Práce s řetězci v Azure Monitorch dotazech protokolu | Microsoft Docs
 description: Popisuje, jak upravit, porovnat, vyhledat a provést různé operace s řetězci v Azure Monitorch dotazech protokolu.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397466"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v Azure Monitorch dotazech protokolu
 
@@ -45,7 +44,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
 
-## <a name="string-comparisons"></a>Porovnávání řetězců
+## <a name="string-comparisons"></a>Porovnání řetězců
 
 Operátor       |Popis                         |Rozlišovat velká a malá písmena|Příklad (poskytuje `true`)
 ---------------|------------------------------------|--------------|-----------------------
@@ -91,12 +90,12 @@ Spočítá výskyty podřetězce v řetězci. Může odpovídat prostým řetěz
 countof(text, search [, kind])
 ```
 
-### <a name="arguments"></a>Náhodné
+### <a name="arguments"></a>Argumenty:
 - `text` – vstupní řetězec 
 - `search` – prostý řetězec nebo regulární výraz pro spárování uvnitř textu
 - `kind` - _normálního_ _regulárního výrazu_ | (výchozí: Normal).
 
-### <a name="returns"></a>Vrátí
+### <a name="returns"></a>Vrací
 
 Počet, kolikrát může být hledaný řetězec v kontejneru spárován. Shody s prostým řetězcem se mohou překrývat, zatímco se neshodují regulární výrazy
 
@@ -138,7 +137,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` – řetězec, který se má hledat.
 - `typeLiteral` – volitelný literál typu (například typeof (Long)). Je-li tento příkaz zadán, extrahovaný dílčí řetězec je převeden na tento typ.
 
-### <a name="returns"></a>Vrátí
+### <a name="returns"></a>Vrací
 Podřetězec se shoduje s určenou skupinou zachycení skupiny zachycení, volitelně převedena na typeLiteral.
 Pokud se neshoduje, nebo převod typu se nezdařil, vrátí hodnotu null.
 
@@ -228,7 +227,7 @@ Výsledek bude:
 ```
 
 
-## <a name="replace"></a>náhrady
+## <a name="replace"></a>replace
 
 Nahradí všechny regulární výrazy shodný s jiným řetězcem. 
 
@@ -244,7 +243,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` – regulární regulární výraz pro jakoukoliv shodu provedenou odpovídajícím regulárním výrazem. Pomocí \ 0 se můžete podívat na celou shodu, \ 1 pro první skupinu zachycení, \ 2 atd. pro další skupiny zachycení.
 - `input_text` – vstupní řetězec, ve kterém se má hledat.
 
-### <a name="returns"></a>Vrátí
+### <a name="returns"></a>Vrací
 Text po nahrazení všech shod regulárního výrazu pomocí vyhodnocení přepisu Shoda se nekryje.
 
 ### <a name="examples"></a>Příklady
@@ -272,7 +271,7 @@ Rozdělí daný řetězec na základě zadaného oddělovače a vrátí pole vý
 split(source, delimiter [, requestedIndex])
 ```
 
-### <a name="arguments"></a>Náhodné
+### <a name="arguments"></a>Argumenty:
 
 - `source` – řetězec, který má být rozdělen podle zadaného oddělovače.
 - `delimiter` – oddělovač, který bude použit k rozdělení zdrojového řetězce.
@@ -320,7 +319,7 @@ print strlen("hello")   // result: 5
 ```
 
 
-## <a name="substring"></a>podřetězec
+## <a name="substring"></a>substring
 
 Extrahuje podřetězec z daného zdrojového řetězce, počínaje zadaným indexem. Volitelně lze zadat délku požadovaného podřetězce.
 
@@ -329,7 +328,7 @@ Extrahuje podřetězec z daného zdrojového řetězce, počínaje zadaným inde
 substring(source, startingIndex [, length])
 ```
 
-### <a name="arguments"></a>Náhodné
+### <a name="arguments"></a>Argumenty:
 
 - `source` – zdrojový řetězec, ze kterého se bude podřetězec považovat.
 - `startingIndex` – počáteční pozice znaku požadovaného podřetězce na základě nuly.

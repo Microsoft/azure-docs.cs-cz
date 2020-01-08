@@ -2,24 +2,20 @@
 title: Automatizace nasazení virtuálního počítače v Amazon Web Services
 description: Tento článek ukazuje, jak použít Azure Automation k automatizaci vytváření virtuálního počítače webové služby Amazon.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2a58d3e79301f277143d8c4b6e810a377a211b9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b149a21ef60b22c2e549c91007265ce99babdbe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420924"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation scénář – zřízení virtuálního počítače s AWS
 V tomto článku se dozvíte, jak můžete pomocí Azure Automation zřídit virtuální počítač v předplatném Amazon Web Service (AWS) a dát tomuto VIRTUÁLNÍmu počítači konkrétní název, který AWS odkazuje na označení virtuálního počítače jako "označování".
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro účely tohoto článku potřebujete účet Azure Automation a předplatné AWS. Další informace o nastavení účtu Azure Automation a jeho konfiguraci s přihlašovacími údaji pro předplatné AWS najdete v [konfiguraci ověřování pomocí Amazon Web Services](automation-config-aws-account.md). Tento účet by se měl před pokračováním vytvořit nebo aktualizovat pomocí přihlašovacích údajů předplatného AWS, jak odkazujete na tento účet v následujících krocích.
 
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Nasazení modulu Amazon Web Services PowerShell

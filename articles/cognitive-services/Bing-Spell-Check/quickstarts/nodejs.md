@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Node. js – Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky pomocí tohoto rychlého startu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: aahill
-ms.openlocfilehash: ab8f1d52b5a0b9f5f2539de0acc4728277f9f7b2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/16/2019
+ms.author: aahi
+ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382846"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node. js
 
@@ -30,7 +30,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Nastavte striktní a vyžadovat `https`. Pak vytvořte proměnné pro hostitele, cestu a klíč předplatného koncového bodu rozhraní API.
+1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Nastavte striktní a vyžadovat `https`. Pak vytvořte proměnné pro hostitele, cestu a klíč předplatného koncového bodu rozhraní API. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```javascript
     'use strict';
@@ -96,6 +96,18 @@ let req = https.request (request_params, response_handler);
 req.write ("text=" + text);
 req.end ();
 ```
+
+
+## <a name="run-the-application"></a>Spuštění aplikace
+
+Sestavte a spusťte projekt.
+
+Pokud používáte příkazový řádek, pomocí následujících příkazů Sestavte a spusťte aplikaci.
+
+```bash
+node <FILE_NAME>.js
+```
+
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 

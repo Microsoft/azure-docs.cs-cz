@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 8ca5dec833f3e726aed0d469525ca3d9735fc33c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 01/06/2020
+ms.openlocfilehash: bdf687437a278a125bcb6196f44dcaccff4cc3f1
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114965"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689395"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>Připojit Time Series Insights k Power BI  
  

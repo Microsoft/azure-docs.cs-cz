@@ -1,6 +1,6 @@
 ---
-title: Modelování vztahů v návrh tabulky Azure storage | Dokumentace Microsoftu
-description: Vysvětlení procesu modelování při návrhu řešení pro úložiště tabulky.
+title: Vztahy modelování v Azure Table Storage – návrh | Microsoft Docs
+description: Pochopení procesu modelování při navrhování řešení úložiště tabulek.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457561"
 ---
 # <a name="modeling-relationships"></a>Modelování relací
-Tento článek popisuje proces modelování při návrhu řešení Azure Table storage.
+Tento článek popisuje proces modelování, který vám může pomáhat navrhovat řešení úložiště tabulek v Azure.
 
 Vytváření modelů domény je klíče krokem návrhu komplexních systémů. Proces modelování se obvykle používají k identifikaci entit a vztahů mezi nimi jako způsob, jak pochopit obchodní domény a informujte návrhu vašeho systému. Tato část se zaměřuje na způsob lze přeložit některé nejčastější typy relací v doméně modelů a návrhů pro služby Table service. Proces mapování ze logický datový model do fyzické SQL Server – modelu dat se liší od, který používá při navrhování relační databáze. Návrh relačních databází obvykle předpokládá optimalizována pro minimalizaci redundance – a deklarativní zjišťování schopností, který získává implementaci jak databázi fungování procesu normalizace data.  
 
@@ -26,7 +26,7 @@ Vytváření modelů domény je klíče krokem návrhu komplexních systémů. P
 Podívejte se na příklad velké korporace zemí s desítkami tisíc oddělení a zaměstnance entit, kde každé oddělení má mnoho zaměstnance a zaměstnance, jako přidružený k jedné konkrétní oddělení. Jedním z přístupů je uložit samostatné oddělení a entity zaměstnance například tyto:  
 
 
-![Store samostatné oddělení a zaměstnance entity](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
+![Ukládat samostatné entity oddělení a zaměstnanců](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
 
 Tento příklad ukazuje implicitní vztah jeden mnoho mezi typy, na základě **PartitionKey** hodnotu. Každé oddělení může mít mnoho zaměstnanců.  
 
@@ -63,7 +63,7 @@ Následující tabulka shrnuje výhody a nevýhody jednotlivých uvedených vý�
 </td>
 </tr>
 <tr>
-<td>Typy entit, různé oddíly nebo tabulek účty úložiště</td>
+<td>Samostatné typy entit, různé oddíly nebo tabulky nebo účty úložiště</td>
 <td>
 <ul>
 <li>Oddělení entity nebo zaměstnance entity můžete aktualizovat pomocí jedné operace.</li>
@@ -101,28 +101,28 @@ Doménových modelů může obsahovat mezi entitami relace 1: 1. Pokud potřebuj
 Existují také důležité informace o implementaci, které by mohly vést k implementaci relace 1: 1 ve službě Table service:  
 
 * Zpracování velkých entit (Další informace najdete v tématu [velkých entit vzor](table-storage-design-patterns.md#large-entities-pattern)).  
-* Implementace řízení přístupu (Další informace najdete v tématu řízení přístupu s podpisy sdíleného přístupu).  
+* Implementace ovládacích prvků přístupu (Další informace najdete v tématu řízení přístupu pomocí sdílených přístupových podpisů).  
 
 ## <a name="join-in-the-client"></a>Připojte se k v klientovi
 I když existují způsoby pro modelování vztahů ve službě Table service, by neměla zapomenete, že jsou dva primární důvody pro použití služby Table service škálovatelnost a výkon. Pokud zjistíte, že jsou modelována mnoho vztahů, které ohrožují výkon a škálovatelnost řešení, které by měl položte si otázku: Pokud je potřeba vytvořit všechny vztahy mezi daty do návrhu tabulky. Je možné, zjednodušuje návrh a zlepšit škálovatelnost a výkon vašeho řešení, pokud jste povolili klientské aplikace provádět žádné nezbytné spojení.  
 
-Například pokud máte malé tabulky obsahující data, která se nemění často, potom můžete tato data načíst jednou a uložení do mezipaměti na straně klienta. To se můžete vyhnout opakované výměn dat k načtení stejná data. V příkladech, které jsme v této příručce se podívat na sadu oddělení v malé organizaci je pravděpodobně být malé a zřídka díky tomu je vhodným kandidátem pro data, která můžete po stažení aplikace pro klienta a mezipaměti jako vyhledávací data změnit.  
+Například pokud máte malé tabulky obsahující data, která se nemění často, potom můžete tato data načíst jednou a uložení do mezipaměti na straně klienta. To se můžete vyhnout opakované výměn dat k načtení stejná data. V příkladech, které jsme prohlédli v tomto průvodci, se sada oddělení v malé organizaci pravděpodobně stane malou a v případě, že je to pro data, která může klientská aplikace Stáhnout jednou, je vhodné je změnit.  
 
 ## <a name="inheritance-relationships"></a>Vztahy dědičnosti
 Pokud vaše klientská aplikace využívá sadu tříd, které tvoří součást vztah dědičnosti představující obchodní entity, je možné snadno zachovat těchto entit ve službě Table service. Například můžete mít následující sadu tříd definovaných v klientské aplikaci kde **osoba** je abstraktní třída.
 
-![Abstraktní třída osoby](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
+![Abstraktní třída person](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
 
 Je možné zachovat instancemi dvou tříd konkrétní ve službě Table service pomocí jedné osobě tabulky pomocí entit v tento vzhled takto:  
 
-![Tabulka osoby](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
+![Tabulka Person](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-Další informace o práci s více typy entit ve stejné tabulce v kódu klienta najdete v části Práce s typy entit heterogenní dál v této příručce. To poskytuje příklady toho, jak rozpoznat typ entity v klientském kódu.  
+Další informace o práci s více typy entit ve stejné tabulce v kódu klienta najdete v části práce s heterogenními typy entit dále v této příručce. To poskytuje příklady toho, jak rozpoznat typ entity v klientském kódu.  
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vzory návrhu tabulky](table-storage-design-patterns.md)
+- [Vzory návrhu tabulek](table-storage-design-patterns.md)
 - [Návrh pro dotazování](table-storage-design-for-query.md)
-- [Šifrování dat tabulky](table-storage-design-encrypt-data.md)
+- [Šifrovat data tabulky](table-storage-design-encrypt-data.md)
 - [Návrh pro úpravu dat](table-storage-design-for-modification.md)

@@ -1,5 +1,5 @@
 ---
-title: Správa přístupu hostů pomocí kontrol přístupu – Azure Active Directory | Microsoft Docs
+title: Správa přístupu hosta pomocí kontrol přístupu – Azure AD
 description: Správa uživatelů typu Host jako členů skupiny nebo přiřazení k aplikaci s využitím kontrol přístupu Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a982b97bcef6a24f026bf6ad2943661db18d6af0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 562a94bbbd1999b9ca9cf0c65cdb816848648133
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422479"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hosta pomocí kontrol přístupu Azure AD
 
@@ -37,7 +37,7 @@ Můžete taky snadno zajistit, aby měli uživatelé typu Host odpovídající p
 
 - Azure AD Premium P2
 
-Další informace najdete v tématu o uživatelích, [kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
+Další informace najdete v tématu o [uživatelích, kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Vytvoření a provedení kontroly přístupu pro hosty
 
@@ -74,7 +74,7 @@ Můžete požádat o sponzora, například vlastníka skupiny, a zkontrolovat po
 
 1. Chcete-li vytvořit kontrolu přístupu pro skupinu, vyberte revizi, která bude obsahovat pouze uživatelské členy typu Host. Pak zadejte jednoho nebo více revidujících. Další informace najdete v tématu [Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md).
 
-2. Požádejte revidující o informace. Ve výchozím nastavení každý z nich obdrží e-mail od Azure AD s odkazem na přístupový panel, kde se posoudí [o přístupu ke skupinám nebo aplikacím](perform-access-review.md).
+2. Požádejte revidující o informace. Ve výchozím nastavení každý z nich obdrží e-mail od Azure AD s odkazem na přístupový panel, kde se [posoudí o přístupu ke skupinám nebo aplikacím](perform-access-review.md).
 
 3. Jakmile revidující poskytnou potřebné informace, zastavte kontrolu přístupu a proveďte příslušné změny. Další informace najdete v tématu [dokončení kontroly přístupu skupin nebo aplikací](complete-access-review.md).
 
@@ -96,7 +96,7 @@ Můžete požádat o sponzora, jako je třeba vlastník aplikace, a zkontrolovat
 
 1. Chcete-li vytvořit kontrolu přístupu pro aplikaci, vyberte tuto kontrolu, aby zahrnovala pouze hosty. Pak zadejte jednoho nebo více uživatelů jako kontrolory. Další informace najdete v tématu [Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md).
 
-2. Požádejte revidující o informace. Ve výchozím nastavení každý z nich obdrží e-mail od Azure AD s odkazem na přístupový panel, kde se posoudí [o přístupu ke skupinám nebo aplikacím](perform-access-review.md).
+2. Požádejte revidující o informace. Ve výchozím nastavení každý z nich obdrží e-mail od Azure AD s odkazem na přístupový panel, kde se [posoudí o přístupu ke skupinám nebo aplikacím](perform-access-review.md).
 
 3. Jakmile revidující poskytnou potřebné informace, zastavte kontrolu přístupu a proveďte příslušné změny. Další informace najdete v tématu [dokončení kontroly přístupu skupin nebo aplikací](complete-access-review.md).
 
@@ -117,7 +117,7 @@ V některých organizacích nemusí hosté vědět o jejich členství ve skupin
 
 5. Odeberte přístup hosta pro hosty, kterým byla zamítnutá, nedokončili jste kontrolu nebo jste předtím nepřijali svoji pozvánku. Pokud se některým z hostů nachází kontakty, které byly vybrány k účasti na revizi nebo dříve nepřijali pozvánku, můžete účty zakázat pomocí Azure Portal nebo PowerShellu. Pokud již uživatel nemá přístup, a není to kontakt, můžete z adresáře odebrat jeho objekt uživatele pomocí Azure Portal nebo PowerShellu k odstranění objektu uživatele typu Host.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření kontroly přístupu skupin nebo aplikací](create-access-review.md)
 

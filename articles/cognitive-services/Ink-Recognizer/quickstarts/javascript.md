@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a Node. js'
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro rozpoznávání rukopisu můžete začít rozpoznávat tahy digitálního inkoustu.
+description: Pomocí rozhraní API pro rozpoznávání rukopisu můžete začít rozpoznávat digitální rukopisné tahy v tomto rychlém startu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 19626bd68ad82108b2ebaa823d196d0f22008e29
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448130"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí REST API a JavaScriptu pro rozpoznávání rukopisu
 

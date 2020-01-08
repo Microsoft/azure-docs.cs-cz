@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431461"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). P�
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -163,25 +163,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **metadata** a **certifikát federace (Base64)** a pak vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz na stažení certifikátu](common/metadataxml.png)
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
 1. V části **nastavit na F5** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Vyberte **nového uživatele** v horní části obrazovky.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k F5.
 
@@ -189,7 +189,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **F5**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -370,7 +370,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
     >[!Note]
     > Budete potřebovat vytvořit a zadat účet delegování protokolu Kerberos. Odkazování na oddíl KCD (viz příloha odkazy na proměnné)
 
-    * **Username source**: Session.SAML.Last.attr.Name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **Username source**: Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenName
 
     * **Zdroj sféry uživatele**: Session. Logon. Last. Domain
 
@@ -477,11 +477,11 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 ### <a name="create-f5-test-user"></a>Vytvořit testovacího uživatele F5
 
-V této části vytvoříte na F5 uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě F5, pracujte s nástrojem [F5 Client Support Team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
+V této části vytvoříte na F5 uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě F5, pracujte s nástrojem [F5 Client Support Team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

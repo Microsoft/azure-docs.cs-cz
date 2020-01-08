@@ -3,18 +3,18 @@ title: Příručka Začínáme s Node.js
 description: Naučte se vytvořit jednoduchou webovou aplikaci Node.js a nasadit ji v cloudové službě Azure Cloud Service.
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 81ad3bce6c7e331fd67fba60b35de6b8a37c5da9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359533"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386183"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service
 
@@ -55,8 +55,8 @@ Proveďte následující kroky, a vytvořte tak nový projekt Azure Cloud Servic
 
     Rutina vytvoří následující soubory:
 
-   * **ServiceConfiguration. Cloud. cscfg**, **ServiceConfiguration. Local. cscfg** a **ServiceDefinition. csdef**: Soubory specifické pro Azure, které jsou nezbytné pro publikování vaší aplikace. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
-   * **deploymentSettings.json**: Ukládá místní nastavení, která jsou používána rutinami nasazení Azure PowerShell.
+   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** a **ServiceDefinition.csdef**: soubory specifické pro Azure, které jsou zapotřebí pro publikování aplikace. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
+   * **deploymentSettings.json**: uloží místní nastavení, které používají rutiny Azure PowerShellu sloužící k nasazení.
 4. Zadejte následující příkaz pro přidání nové webové role:
 
        Add-AzureNodeWebRole
@@ -154,7 +154,7 @@ Může se stát, že po nasazení budete chtít aplikaci zastavit a vyhnout se t
    > [!NOTE]
    > Odstraněním služby nedojde k odstranění účtu úložiště, který byl vytvořen při prvním publikování služby. Budou vám tedy i nadále účtovány poplatky za využívání úložiště. Pokud se úložiště nepoužívá pro nic jiného, můžete je odstranit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace najdete ve [Středisko pro vývojáře Node.js].
 
 <!-- URL List -->
@@ -177,3 +177,6 @@ Další informace najdete ve [Středisko pro vývojáře Node.js].
 [A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+
+
+

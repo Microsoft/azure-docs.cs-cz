@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI – sfctl chaos Schedule | Microsoft Docs
-description: Popisuje příkazy plánování Service Fabric CLI sfctl chaos.
-services: service-fabric
-documentationcenter: na
+title: Plán Azure Service Fabric CLI – sfctl chaos
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro plánování chaos.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897544"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639169"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Získejte a nastavte plán chaos.
@@ -28,7 +19,7 @@ Získejte a nastavte plán chaos.
 
 |Příkaz|Popis|
 | --- | --- |
-| Čtěte | Získejte plán chaos definující, kdy a jak se má spustit chaos. |
+| získat | Získejte plán chaos definující, kdy a jak se má spustit chaos. |
 | set | Nastavte plán používaný nástrojem chaos. |
 
 ## <a name="sfctl-chaos-schedule-get"></a>sfctl chaos plánu Get

@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 481bc700f86dfd8a28c074134fd5dcc85bb748c4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448358"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a PHP
 
 Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď. I když je tato aplikace napsaná v jazyce JavaScript a používá Node. js, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 Ukázka kódu byla napsaná tak, aby fungovala v PHP 5.6.
 
-V [referenčních informacích k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) najdete technické podrobnosti o rozhraních API.
+Technické podrobnosti o rozhraních API najdete v [referenci k API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ V [referenčních informacích k rozhraní API](https://docs.microsoft.com/rest/
 1. Ujistěte se, že je v souboru `php.ini` povolena podpora zabezpečeného protokolu HTTP, jak je to popsáno v komentáři kódu.
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.
 3. Přidejte níže uvedený kód.
-4. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
+4. Hodnotu `$accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné. `$endpoint` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 5. Spusťte program.
 
 ```php
@@ -215,6 +215,6 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 > [!div class="nextstepaction"]
 > [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

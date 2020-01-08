@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/15/2019
+ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: ecef301d2745cf7c86f61f0ffa9106c7bfd10623
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 958335892b62c17e7e8bc3129796e2906cff2070
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219212"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441033"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme s Azure Cost Management pro partnery
 
@@ -28,6 +28,7 @@ Partneři CSP používají Cost Management k těmto akcím:
 - Prohlédněte si náklady na prostředky, které mají pro účely analýzy nákladů použité kredity pro partnery (PEC).
 - Nastavení oznámení a automatizace pomocí programových [rozpočtů](tutorial-acm-create-budgets.md) a výstrah v případě, že náklady přesahují rozpočty
 - Povolte zásady Azure Resource Manager, které poskytují zákazníkům přístup k datům Cost Management. Zákazníci si pak můžou zobrazit data nákladů na spotřebu pro svá předplatná podle [tarifů](https://azure.microsoft.com/pricing/calculator/)průběžných plateb.
+- Exportujte své náklady a data o využití do objektu BLOB úložiště s předplatným s průběžnými platbami.
 
 Tady je příklad znázorňující náklady pro všechny zákazníky.
 ![Příklad znázorňující náklady na všechny zákazníky](./media/get-started-partners/customer-costs1.png)
@@ -39,9 +40,15 @@ Všechny funkce, které jsou dostupné v Azure Cost Management, jsou dostupné t
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure Cost Management vyžaduje přístup pro čtení k fakturačnímu účtu nebo předplatnému. Přístup je možné udělit na libovolné úrovni výše než vašich prostředků, od fakturačního účtu nebo skupiny pro správu až po jednotlivé skupiny prostředků, kde spravujete své aplikace. Další informace o povolení a přiřazení přístupu k Azure Cost Management pro fakturační účet najdete v tématu [přiřazení rolí uživatelů a oprávnění](/partner-center/permissions-overview). Role **globálního správce** a **agenta správce** mohou spravovat náklady na fakturační účet.
+Azure Cost Management je jako partner nativně dostupný jenom pro předplatná, která jsou v plánu Azure.
 
-Úplný seznam podporovaných typů účtů najdete v tématu [pochopení cost management dat](understand-cost-mgt-data.md).
+Pokud chcete povolit Azure Cost Management v Azure Portal, musíte potvrdit přijetí zákaznických smluv Microsoftu (jménem zákazníka) a převede zákazníka na plán Azure. V Azure Cost Management jsou k dispozici pouze náklady na předplatná, která jsou převedena do plánu Azure.
+
+Azure Cost Management vyžaduje přístup pro čtení k fakturačnímu účtu nebo předplatnému.
+
+Další informace o povolení a přiřazení přístupu k Azure Cost Management pro fakturační účet najdete v tématu [přiřazení rolí uživatelů a oprávnění](/partner-center/permissions-overview). Role **globálního správce** a **agenta správce** mohou spravovat náklady na fakturační účet.
+
+Pro přístup k Azure Cost Management v oboru předplatného může každý uživatel s přístupem RBAC k předplatnému zobrazit náklady v maloobchodních sazbách (průběžné platby). Nicméně zásada viditelnosti nákladů pro tenanta zákazníka musí být povolená. Úplný seznam podporovaných typů účtů najdete v tématu [pochopení cost management dat](understand-cost-mgt-data.md).
 
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management používá obory
@@ -88,7 +95,7 @@ Partneři můžou pomocí oboru sjednotit faktury. A používají obor k nastave
 - Skupina prostředků
 - Prostředek
 - Služba Azure
-- Měřič
+- Měření
 - ResellerMPNID
 
 ### <a name="customer-scope"></a>Obor zákazníka
@@ -113,13 +120,13 @@ Bez ohledu na zásadu si partneři můžou náklady zobrazit i v případě, že
 
 Partneři pomocí následujících informací umožňují zásadám zobrazovat poplatky za využití Azure pro své zákazníky.
 
-V Azure Portal se přihlaste k partnerskému tenantovi a klikněte na **cost management + fakturace**. Vyberte fakturační účet a pak klikněte na **zákazníci**. Seznam zákazníků je přidružený k fakturačnímu účtu.
+V Azure Portal se přihlaste k partnerskému tenantovi a vyberte **cost management + fakturace**. Vyberte fakturační účet a pak vyberte **zákazníci**. Seznam zákazníků je přidružený k fakturačnímu účtu.
 
 V seznamu zákazníků vyberte zákazníka, kterému chcete dovolit zobrazit náklady.
 
 ![Vybrat zákazníky v Cost Management](./media/get-started-partners/customer-list.png)
 
-V části **Nastavení**klikněte na **zásady**.
+V části **Nastavení**vyberte **zásady**.
 
 V této zásadě se účtují poplatky za **využití Azure** spojené s předplatnými pro vybraného zákazníka.
 ![zásada, která zákazníkům umožní zobrazovat poplatky za průběžné platby](./media/get-started-partners/cost-management-billing-policies.png)
@@ -130,15 +137,15 @@ Když je zásada nákladů nastavená na **Ano**, uživatelé předplatného př
 
 Když je zásada viditelnost nákladů povolená, všechny služby, které mají využití předplatného, budou zobrazovat náklady podle tarifů průběžných plateb. Využití rezervace se zobrazí s nulovými poplatky za skutečné a účtované náklady. Nákupy a nároky nejsou přidružené ke konkrétnímu předplatnému. Nákupy se tak nezobrazí v oboru předplatného.
 
-Pokud chcete zobrazit náklady na tenanta zákazníka, otevřete Cost Management + fakturace a pak klikněte na fakturační účty. V seznamu fakturačních účtů klikněte na fakturační účet.
+Pokud chcete zobrazit náklady na tenanta zákazníka, otevřete Cost Management + fakturace a pak vyberte fakturační účty. V seznamu fakturačních účtů vyberte fakturační účet.
 
 ![Vybrat fakturační účet](./media/get-started-partners/select-billing-account.png)
 
-V části **fakturace**klikněte na **předplatná Azure**a potom klikněte na zákazníka.
+V části **fakturace**vyberte **předplatná Azure**a pak vyberte zákazníka.
 
 ![Vybrat zákazníka předplatného Azure](./media/get-started-partners/subscriptions-select-customer.png)
 
-Klikněte na **Analýza nákladů** a začněte kontrolovat náklady.
+Vyberte **Analýza nákladů** a spusťte kontrolu nákladů.
 Analýza nákladů, rozpočty a výstrahy jsou k dispozici pro obory a rozsahy RBAC u předplatného s průběžnými platbami podle aktuálního využití.
 
 ![Zobrazení analýzy nákladů jako zákazníka ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
@@ -147,7 +154,9 @@ Amortizacovaná zobrazení a skutečné náklady na rezervované instance v obor
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analýza nákladů při analýze nákladů
 
-Partneři můžou prozkoumat a analyzovat náklady na analýzu nákladů napříč zákazníky pro konkrétního zákazníka nebo fakturu. V zobrazení [Analýza nákladů](quick-acm-cost-analysis.md) můžete také [ukládat zobrazení](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) a exportovat data do [souborů CSV a PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis).
+Partneři s přístupem k oborům fakturace v partnerském tenantovi můžou prozkoumat a analyzovat fakturované náklady na analýzu nákladů napříč zákazníky pro konkrétního zákazníka nebo fakturu. V zobrazení [Analýza nákladů](quick-acm-cost-analysis.md) můžete také [ukládat zobrazení](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) a exportovat data do [souborů CSV a PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis).
+
+Uživatelé RBAC s přístupem k předplatnému v tenantovi zákazníka můžou také analyzovat maloobchodní náklady na předplatná v tenantovi zákazníka, ukládat zobrazení a exportovat data do souborů CSV a PNG.
 
 Pomocí funkcí Filter a Group by v analýze nákladů můžete analyzovat náklady podle několika polí. Pole specifická pro partnera jsou uvedena v následující části.
 
@@ -158,80 +167,80 @@ V souborech podrobností o využití a Cost Management rozhraní API se nacháze
 | **Název pole** | **Popis** | **Ekvivalent partnerského centra** |
 | --- | --- | --- |
 | invoiceId | ID faktury zobrazené na faktuře pro konkrétní transakci | Číslo faktury, kde se transakce zobrazuje |
-| previousInvoiceID | Odkaz na původní fakturu je refundace (záporné náklady). Vyplněno pouze v případě, že existuje refundace. | neuvedeno |
-| billingAccountName | Název fakturačního účtu, který představuje partnera. Účtují se všechny náklady na zákazníky, kteří se připojili k smlouvě o zákaznících Microsoftu a zákazníkům CSP, kteří učinili nárok na nákupy jako SaaS, Azure Marketplace a rezervace. | neuvedeno |
+| previousInvoiceID | Odkaz na původní fakturu je refundace (záporné náklady). Vyplněno pouze v případě, že existuje refundace. | Nevztahuje se |
+| billingAccountName | Název fakturačního účtu, který představuje partnera. Účtují se všechny náklady na zákazníky, kteří se připojili k smlouvě o zákaznících Microsoftu a zákazníkům CSP, kteří učinili nárok na nákupy jako SaaS, Azure Marketplace a rezervace. | Nevztahuje se |
 | billingAccountID | Identifikátor fakturačního účtu, který představuje partnera. | ID kořenového adresáře partnerského obchodu MCAPI Používá se v žádosti, ale není součástí odpovědi.|
 | billingProfileID | Identifikátor pro fakturační profil, který seskupuje náklady napříč fakturami v jedné fakturační měně mezi zákazníky, kteří se připojili k smlouvě o zákaznících Microsoftu a zákazníkům CSP, kteří učinili nárok na nákupy jako SaaS, Azure Marketplace a rezervace. | ID fakturační skupiny MCAPI partnera Používá se v žádosti, ale není součástí odpovědi. |
-| billingProfileName | Název fakturačního profilu, který seskupuje náklady napříč fakturami v jedné fakturační měně mezi zákazníky, kteří se připojili k smlouvě o zákaznících Microsoftu a zákazníkům CSP, kteří učinili nárok na nákupy jako SaaS, Azure Marketplace a rezervace. | neuvedeno |
-| invoiceSectionName | Název projektu, který se účtuje na faktuře. Neplatí pro smlouvy o zákaznících Microsoftu, které jsou zaregistrované partnery. | neuvedeno |
-| invoiceSectionID | Identifikátor projektu, který se účtuje na faktuře Neplatí pro smlouvy o zákaznících Microsoftu, které jsou zaregistrované partnery. | neuvedeno |
+| billingProfileName | Název fakturačního profilu, který seskupuje náklady napříč fakturami v jedné fakturační měně mezi zákazníky, kteří se připojili k smlouvě o zákaznících Microsoftu a zákazníkům CSP, kteří učinili nárok na nákupy jako SaaS, Azure Marketplace a rezervace. | Nevztahuje se |
+| invoiceSectionName | Název projektu, který se účtuje na faktuře. Neplatí pro smlouvy o zákaznících Microsoftu, které jsou zaregistrované partnery. | Nevztahuje se |
+| invoiceSectionID | Identifikátor projektu, který se účtuje na faktuře Neplatí pro smlouvy o zákaznících Microsoftu, které jsou zaregistrované partnery. | Nevztahuje se |
 | **CustomerTenantID** | Identifikátor tenanta Azure Active Directory předplatného zákazníka. | ID organizace zákazníka – Azure Active Directory TenantID zákazníka. |
 | **CustomerName** | Název tenanta Azure Active Directory pro předplatné zákazníka | Název organizace zákazníka, jak je znázorněno v partnerském centru. Důležité pro sjednocení faktury s informacemi o systému. |
 | **CustomerTenantDomainName** | Název domény pro klienta Azure Active Directory předplatného zákazníka. | Zákazník Azure Active Directory doména klienta. |
 | **PartnerTenantID** | Identifikátor tenanta Azure Active Directory partnera. | Partner Azure Active Directory ID klienta označované jako ID partnera ve formátu identifikátoru GUID. |
 | **PartnerName** | Název partnerského Azure Active Directory tenanta. | Název partnera. |
 | **ResellerMPNID** | MPNID pro prodejce, který je přidružený k předplatnému. | ID MPN prodejce na záznamu pro předplatné Není k dispozici pro aktuální aktivitu. |
-| costCenter | Nákladové středisko přidružené k předplatnému. | neuvedeno |
-| billingPeriodStartDate | Počáteční datum fakturačního období, jak je znázorněno na faktuře. | neuvedeno |
-| billingPeriodEndDate | Datum ukončení fakturačního období, jak je znázorněno na faktuře. | neuvedeno |
+| costCenter | Nákladové středisko přidružené k předplatnému. | Nevztahuje se |
+| billingPeriodStartDate | Počáteční datum fakturačního období, jak je znázorněno na faktuře. | Nevztahuje se |
+| billingPeriodEndDate | Datum ukončení fakturačního období, jak je znázorněno na faktuře. | Nevztahuje se |
 | servicePeriodStartDate | Počáteční datum období hodnocení, kdy se vyhodnotilo využití služby za poplatky. Ceny služeb Azure se určují pro období hodnocení. | ChargeStartDate v partnerském centru. Datum zahájení fakturačního cyklu s výjimkou, kdy prezentují data dříve neplatných latentních dat z předchozího fakturačního cyklu. Čas je vždy začátek dne, 0:00. |
-| servicePeriodEndDate | Koncové datum období, kdy bylo využití služby vyhodnoceno za poplatek. Ceny služeb Azure se určují na základě období hodnocení. | neuvedeno |
-| date | Pro data o spotřebě Azure zobrazuje datum využití jako hodnocené. V případě rezervované instance se zobrazí datum nákupu. Pro periodické poplatky a jednorázové poplatky, jako je například Marketplace a podpora, se zobrazuje datum nákupu. | neuvedeno |
+| servicePeriodEndDate | Koncové datum období, kdy bylo využití služby vyhodnoceno za poplatek. Ceny služeb Azure se určují na základě období hodnocení. | Nevztahuje se |
+| date | Pro data o spotřebě Azure zobrazuje datum využití jako hodnocené. V případě rezervované instance se zobrazí datum nákupu. Pro periodické poplatky a jednorázové poplatky, jako je například Marketplace a podpora, se zobrazuje datum nákupu. | Nevztahuje se |
 | productID | Identifikátor produktu, který má za sebou účtováné poplatky podle využití nebo nákupu. Je to zřetězený klíč productID a SKuID, jak je znázorněno v partnerském centru. | ID produktu |
 | product | Název produktu, který účtuje náklady podle spotřeby nebo nákupu, jak je vidět na faktuře. | Název produktu v katalogu. |
-| serviceFamily | Zobrazuje rodinu služeb pro zakoupené nebo účtované produkty. Například úložiště nebo výpočetní prostředky. | neuvedeno |
-| productOrderID | Identifikátor prostředku nebo plánu Azure, ke kterému předplatné patří Například plán Azure. | neuvedeno |
-| productOrderName | Název plánu Azure, ke kterému předplatné patří Například plán Azure. | neuvedeno|
+| serviceFamily | Zobrazuje rodinu služeb pro zakoupené nebo účtované produkty. Například úložiště nebo výpočetní prostředky. | Nevztahuje se |
+| productOrderID | Identifikátor prostředku nebo plánu Azure, ke kterému předplatné patří Například plán Azure. | Nevztahuje se |
+| productOrderName | Název plánu Azure, ke kterému předplatné patří Například plán Azure. | Nevztahuje se|
 | consumedService | Spotřebované služby (starší taxonomie), které se používají ve starších podrobnostech použití EA. | Služba zobrazená v partnerském centru. Například Microsoft. Storage, Microsoft. COMPUTE a Microsoft. operationalinsights. |
 | meterID | Měřený identifikátor pro měřenou spotřebu. | ID použitého měřiče. |
 | meterName | Určuje název měřiče pro měřenou spotřebu. | Název spotřebovaného měřiče. |
 | meterCategory | Identifikuje službu nejvyšší úrovně pro použití. | Služba nejvyšší úrovně pro použití. |
 | meterSubCategory | Definuje typ nebo podkategorii služby Azure, které můžou mít vliv na tuto sazbu. | Typ služby Azure, který může mít vliv na sazbu.|
 | meterRegion | Určuje polohu datového centra. U některých služeb vycházejí ceny z umístění datového centra. | Regionální umístění datového centra pro služby, pokud je to možné a naplněné. |
-| subscription ID | Jedinečný identifikátor vygenerovaný společností Microsoft pro předplatné Azure. | neuvedeno |
-| subscriptionName | Název předplatného Azure. | neuvedeno |
-| Označení | Zobrazí období platnosti nabídky. Například rezervované instance zobrazují 12 měsíců z ročního období rezervované instance. Pro jednorázové nákupy nebo opakované nákupy se termín zobrazuje jeden měsíc pro SaaS, Azure Marketplace a podporu. Nedá se použít pro spotřebu v Azure. | neuvedeno |
-| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Typ vydavatele, který identifikuje vydavatele jako první stranu, prodejce třetích stran nebo agenturu třetích stran. | neuvedeno |
-| partNumber | Číslo součásti pro nevyužité rezervované instance a Azure Marketplace služby. | neuvedeno |
+| subscription ID | Jedinečný identifikátor vygenerovaný společností Microsoft pro předplatné Azure. | Nevztahuje se |
+| subscriptionName | Název předplatného Azure. | Nevztahuje se |
+| Doba účinnosti | Zobrazí období platnosti nabídky. Například rezervované instance zobrazují 12 měsíců z ročního období rezervované instance. Pro jednorázové nákupy nebo opakované nákupy se termín zobrazuje jeden měsíc pro SaaS, Azure Marketplace a podporu. Nedá se použít pro spotřebu v Azure. | Nevztahuje se |
+| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Typ vydavatele, který identifikuje vydavatele jako první stranu, prodejce třetích stran nebo agenturu třetích stran. | Nevztahuje se |
+| partNumber | Číslo součásti pro nevyužité rezervované instance a Azure Marketplace služby. | Nevztahuje se |
 | publisherName | Jméno vydavatele služby, včetně vydavatelů společnosti Microsoft nebo třetích stran. | Název vydavatele produktu|
-| reservationId | Identifikátor pro nákup rezervované instance | neuvedeno |
-| reservationName | Název rezervované instance. | neuvedeno |
-| reservationOrderId | ČísloObjednávky pro rezervovanou instanci. | neuvedeno |
-| frequency | Četnost platby pro rezervovanou instanci. | neuvedeno |
+| reservationId | Identifikátor pro nákup rezervované instance | Nevztahuje se |
+| reservationName | Název rezervované instance. | Nevztahuje se |
+| reservationOrderId | ČísloObjednávky pro rezervovanou instanci. | Nevztahuje se |
+| frequency | Četnost platby pro rezervovanou instanci. | Nevztahuje se |
 | resourceGroup | Název skupiny prostředků Azure, která se používá pro správu prostředků životního cyklu. | Název skupiny prostředků. |
 | instanceID (nebo) ResourceID | Identifikátor instance prostředku | Zobrazuje se jako ResourceURI, který obsahuje vlastnosti kompletního prostředku. |
 | resourceLocation | Název umístění prostředku. | Umístění prostředku |
-| Umístění | Normalizované umístění prostředku. | neuvedeno |
+| Umístění | Normalizované umístění prostředku. | Nevztahuje se |
 | effectivePrice | Efektivní Jednotková cena služby v cenové měně. Jedinečné pro produkt, rodinu služeb, měřič a nabídku. Používá se s cenami v ceníku pro fakturační účet. V případě, že jsou k dispozici vrstvené ceny nebo zahrnuté množství, zobrazuje se za ni smíšená cena za spotřebu. | Jednotková cena po provedení úprav. |
 | Množství | Nakoupené nebo spotřebované měřené množství. Množství měřiče použitého během fakturačního období. | Počet jednotek Zajistěte, aby během odsouhlasení odpovídaly informacím v systému fakturace. |
 | unitOfMeasure | Určuje jednotku, ve které se služba účtuje. Například GB a hodiny. | Určuje jednotku, ve které se služba účtuje. Například GB, hodiny a 10, tisících. |
-| pricingCurrency | Měna, která definuje jednotkovou cenu | Měna v Pricelist.|
+| pricingCurrency | Měna, která definuje jednotkovou cenu | Měna v ceníku|
 | billingCurrency | Měna definující fakturované náklady. | Měna geografické oblasti zákazníka |
 | chargeType | Definuje typ poplatků, který představuje náklady v Azure Cost Management jako nákup a refundace. | Typ poplatků nebo úprav. Není k dispozici pro aktuální aktivitu. |
-| costinBillingCurrency | ExtendedCost nebo promísící náklady před zdaněním v účtované měně. | neuvedeno |
-| costinPricingCurrency | ExtendedCost nebo smíšené náklady před zdaněním v cenové měně za účelem korelace s cenami. | neuvedeno |
-| **costinUSD** | Odhadované ExtendedCost nebo smíšené náklady před zdaněním v USD. | neuvedeno |
-| **paygCostInBillingCurrency** | Zobrazuje náklady, pokud jsou ceny v maloobchodních cenách. Zobrazuje ceny za průběžné platby ve fakturační měně. K dispozici pouze v oborech RBAC. | neuvedeno |
-| **paygCostInUSD** | Zobrazuje náklady, pokud jsou ceny v maloobchodních cenách. Zobrazuje ceny za průběžné platby v USD. K dispozici pouze v oborech RBAC. | neuvedeno |
+| costinBillingCurrency | ExtendedCost nebo promísící náklady před zdaněním v účtované měně. | Nevztahuje se |
+| costinPricingCurrency | ExtendedCost nebo smíšené náklady před zdaněním v cenové měně za účelem korelace s cenami. | Nevztahuje se |
+| **costinUSD** | Odhadované ExtendedCost nebo smíšené náklady před zdaněním v USD. | Nevztahuje se |
+| **paygCostInBillingCurrency** | Zobrazuje náklady, pokud jsou ceny v maloobchodních cenách. Zobrazuje ceny za průběžné platby ve fakturační měně. K dispozici pouze v oborech RBAC. | Nevztahuje se |
+| **paygCostInUSD** | Zobrazuje náklady, pokud jsou ceny v maloobchodních cenách. Zobrazuje ceny za průběžné platby v USD. K dispozici pouze v oborech RBAC. | Nevztahuje se |
 | exchangeRate | Směnný kurz, který se používá k převodu z cenové měny na fakturační měnu | V partnerském centru se označuje jako PCToBCExchangeRate. Měna cenové měny pro fakturaci směnného kurzu.|
 | exchangeRateDate | Datum směnného kurzu, který se používá k převodu z cenové měny na fakturační měnu. | V partnerském centru se označuje jako PCToBCExchangeRateDat. Datum směnného kurzu pro fakturační měnu.|
-| isAzureCreditEligible | Uvádí, zda náklady mají nárok na platby prostřednictvím kreditů Azure. | neuvedeno |
+| isAzureCreditEligible | Uvádí, zda náklady mají nárok na platby prostřednictvím kreditů Azure. | Nevztahuje se |
 | serviceInfo1 | Starší verze pole, která zachycuje volitelná metadata specifická pro službu. | Interní metadata služby Azure. |
 | serviceInfo2 | Starší verze pole, která zachycuje volitelná metadata specifická pro službu. | Informace o službě. Například typ obrázku pro virtuální počítač a název poskytovatele internetových služeb pro ExpressRoute.|
 | additionalInfo | Metadata konkrétních služeb. Například typ image u virtuálního počítače. | Jakékoli další informace, které nejsou pokryté v jiných sloupcích. Metadata specifická pro službu. Například typ image u virtuálního počítače.|
 | značek | Značka, kterou přiřadíte k měřiči. Pomocí značek můžete seskupovat záznamy fakturace. Pomocí značek můžete například distribuovat náklady podle oddělení, které používá měřič. | Značky přidané zákazníkem|
 | **partnerEarnedCreditRate** | Pokud je na základě přístupu k partnerovi pro správu partnerského serveru k dispozici kredity, je sazba uplatněna. | Míra získaného kreditu pro partnery (PEC). Například 0% nebo 15%. |
-| **partnerEarnedCreditApplied** | Označuje, zda byl použit partnerský kredit. | neuvedeno |
+| **partnerEarnedCreditApplied** | Označuje, zda byl použit partnerský kredit. | Nevztahuje se |
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>Zobrazení nákladů na prostředky PEC (Partnerd Credit)
 
 V Azure Cost Management můžou partneři pomocí analýzy nákladů zobrazit náklady, které obdržely výhody PEC.
 
-V Azure Portal se přihlaste k partnerskému tenantovi a vyberte **cost management + fakturace**. V části **cost management**klikněte na **Analýza nákladů**.
+V Azure Portal se přihlaste k partnerskému tenantovi a vyberte **cost management + fakturace**. V části **cost management**vyberte **Analýza nákladů**.
 
 V zobrazení analýza nákladů se zobrazí náklady na fakturační účet partnera. Vyberte **Rozsah** podle potřeby pro partnera, konkrétního zákazníka nebo Fakturační profil, který bude odsouhlasit faktury.
 
-V prstencovém grafu klikněte na rozevírací seznam a vyberte **PartnerEarnedCreditApplied** , abyste přešli na náklady na řadič PEC.
+V prstencovém grafu vyberte rozevírací seznam a vyberte **PartnerEarnedCreditApplied** pro přechod k podrobnostem o nákladech pec.
 
 ![Příklad ukazující, jak zobrazit kredit získaný partnerem](./media/get-started-partners/cost-analysis-pec1.png)
 
@@ -245,6 +254,26 @@ Data o využití služby normálně zabírají v Cost Management 8-24 hodin. Dal
 Pomocí možností **Group by** můžete také seskupit a filtrovat podle vlastnosti **PartnerEarnedCreditApplied** . Pomocí možností můžete prošetřit náklady, které mají a nemají PEC.
 
 ![Seskupit nebo filtrovat podle partnera – realizovaného kreditu](./media/get-started-partners/cost-analysis-pec2.png)
+
+## <a name="export-cost-data-to-azure-storage"></a>Exportovat nákladová data do Azure Storage
+
+Partneři s přístupem k oborům fakturace v partnerském tenantovi můžou exportovat své náklady a data o využití do objektu blob Azure Storage. Objekt BLOB musí být v rámci předplatného partnerského tenanta, který není předplatném sdílené služby nebo předplatným zákazníka. Pokud chcete povolit export nákladů na data, doporučujeme, abyste v partnerském tenantovi nastavili nezávislé předplatné s průběžnými platbami, aby se mohla hostovat vyexportovaná nákladová data. Účet úložiště pro export se vytvoří v objektu blob Azure Storage hostovaným v rámci předplatného s průběžnými platbami. V závislosti na rozsahu, ve kterém partner vytvoří export, se přidružená data automaticky exportují do účtu úložiště.
+
+Uživatelé s přístupem RBAC k předplatnému můžou také exportovat nákladová data do objektu BLOB služby Azure Storage hostovaného v jakémkoli předplatném v tenantovi zákazníka.
+
+### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Vytvoření exportu v partnerském tenantovi nebo tenantovi zákazníka
+
+V Azure Portal se přihlaste k tenantovi partnera nebo zákazníkovi a vyberte **cost management + fakturace**. Vyberte příslušný obor, například fakturační účet, a pak vyberte **Analýza nákladů**. Po načtení stránky vyberte **exportovat**. Vyberte **Zobrazit všechny exporty** v části naplánovat export.
+
+Potom vyberte **Přidat** a zadejte název a vyberte typ exportu. Vyberte kartu **úložiště** a zadejte požadované informace.
+
+Při vytváření exportu v partnerském tenantovi vyberte předplatné s průběžnými platbami v partnerském tenantovi. Vytvořte účet Azure Storage pomocí tohoto předplatného.
+
+Pro uživatele RBAC v tenantovi zákazníka vyberte předplatné v tenantovi zákazníka. Vytvořte účet Azure Storage pomocí předplatného.
+
+Zkontrolujte obsah a pak vyberte **vytvořit** a naplánujte export.
+
+Pokud chcete ověřit data v seznamu exportu, vyberte název účtu úložiště. Na stránce účet úložiště vyberte **kontejnery** a pak vyberte kontejner. Přejděte do odpovídající složky a vyberte soubor CSV. Vyberte **Stáhnout** a získejte soubor CSV a otevřete ho. Export exportovaných dat se podobá datovým datům, který se podobá podrobnostem o využití Azure Portal.
 
 ## <a name="cost-management-rest-apis"></a>Rozhraní REST API pro Cost Management
 

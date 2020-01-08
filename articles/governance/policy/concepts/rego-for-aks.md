@@ -3,12 +3,12 @@ title: Informace Azure Policy pro službu Azure Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů ve službě Azure Kubernetes.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a4dd6bbc71c66c3ff37200ed57859b309909ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279398"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436395"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Vysvětlení Azure Policy pro službu Azure Kubernetes
 
@@ -33,7 +33,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
 - Azure Portal:
 
-  1. Zaregistrujte poskytovatele prostředků **Microsoft. ContainerService** a **Microsoft. PolicyInsights** . Postup najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+  1. Zaregistrujte poskytovatele prostředků **Microsoft. ContainerService** a **Microsoft. PolicyInsights** . Postup najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
   1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
@@ -123,7 +123,7 @@ Před instalací doplňku v clusteru AKS je nutné nainstalovat rozšíření Pr
 
 Až se požadavky dokončí, nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
 
-- portál Azure
+- Portál Azure
 
   1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 
@@ -206,7 +206,7 @@ Pokud chcete zobrazit protokoly z kontejnerů gatekeeper, postupujte podle krok�
 
 Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Portal nebo rozhraní příkazového řádku Azure:
 
-- portál Azure
+- Portál Azure
 
   1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 
@@ -230,7 +230,7 @@ Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Porta
 
 ## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Diagnostická data shromážděná pomocí doplňku Azure Policy
 
-Doplněk Azure Policy pro Kubernetes shromažďuje omezená diagnostická data clusteru. Tato diagnostická data jsou podstatná technická data týkající se softwaru a výkonu. Používá se následujícími způsoby:
+Doplněk Azure Policy pro Kubernetes shromažďuje omezená diagnostická data clusteru. Tato diagnostická data jsou podstatná technická data týkající se softwaru a výkonu. Jsou využívána následujícími způsoby:
 
 - Udržování Azure Policyho doplňku v aktuálním stavu
 - Udržování Azure Policy zabezpečených, spolehlivých a výkonných doplňků

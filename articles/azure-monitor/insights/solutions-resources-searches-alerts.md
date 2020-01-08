@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401768"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložených hledání a upozornění do řešení pro správu (Preview)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74304922"
 > V ukázkách v tomto článku se používají parametry a proměnné, které jsou buď vyžadované, nebo běžné pro řešení pro správu, popsaná v článku [Návrh a sestavení řešení pro správu v Azure](solutions-creating.md) .
 
 ## <a name="prerequisites"></a>Požadavky
-V tomto článku se předpokládá, že už jste obeznámeni s tím, jak [vytvořit řešení pro správu](solutions-creating.md) a strukturu [Správce prostředků šablony](../../azure-resource-manager/resource-group-authoring-templates.md) a souboru řešení.
+V tomto článku se předpokládá, že už jste obeznámeni s tím, jak [vytvořit řešení pro správu](solutions-creating.md) a strukturu [Správce prostředků šablony](../../azure-resource-manager/templates/template-syntax.md) a souboru řešení.
 
 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
@@ -74,7 +74,7 @@ Každá vlastnost uloženého hledání je popsána v následující tabulce.
 | Vlastnost | Popis |
 |:--- |:--- |
 | category | Kategorie uloženého hledání  Všechna uložená hledání ve stejném řešení budou často sdílet jednu kategorii, aby byly seskupeny dohromady v konzole nástroje. |
-| DisplayName | Název, který se má zobrazit u uloženého hledání na portálu. |
+| displayName | Název, který se má zobrazit u uloženého hledání na portálu. |
 | query | Dotaz, který se má spustit |
 
 > [!NOTE]
@@ -169,7 +169,7 @@ Vlastnosti pro prostředky akce výstrah jsou popsány v následujících tabulk
 | `type` | Ano | Typ akce.  Toto **Upozornění se upozorní** na akce výstrah. |
 | `name` | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidlo výstrahy. |
 | `description` | Ne | Volitelný popis výstrahy |
-| `severity` | Ano | Závažnost záznamu výstrahy z následujících hodnot:<br><br> **kritické**<br>**Upozornění**<br>**informativní**
+| `severity` | Ano | Závažnost záznamu výstrahy z následujících hodnot:<br><br> **critical**<br>**warning**<br>**informativní**
 
 #### <a name="threshold"></a>Prahová hodnota
 Tato část je povinná. Definuje vlastnosti prahové hodnoty pro výstrahu.
@@ -189,7 +189,7 @@ Tato část je volitelná. Zahrňte pro upozornění měření metriky.
 | `Value` | Ano | Počet, kolikrát musí být splněna kritéria pro aktivaci výstrahy. |
 
 
-#### <a name="throttling"></a>Omezování
+#### <a name="throttling"></a>Throttling
 Tato část je volitelná. Tuto část uveďte, pokud chcete potlačit výstrahy ze stejného pravidla po určitou dobu po vytvoření výstrahy.
 
 | Název elementu | Požaduje se | Popis |

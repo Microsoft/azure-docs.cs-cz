@@ -2,18 +2,18 @@
 title: Vytváření clusterů Apache Hadoop s využitím Azure REST API – Azure
 description: Naučte se vytvářet clustery HDInsight odesláním Azure Resource Manager šablon do Azure REST API.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.author: hrasheed
-ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152008"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435529"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů Apache Hadoop pomocí Azure REST API
 
@@ -227,7 +227,7 @@ Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](https://d
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    V seznamu vyberte předplatné, které chcete použít, a poznamenejte si sloupce **Subscription_ID** a __Tenant_ID__ . Uložte tyto hodnoty.
+    V seznamu vyberte předplatné, které chcete použít, a poznamenejte si **Subscription_ID** a __Tenant_ID__ sloupce. Uložte tyto hodnoty.
 
 2. K vytvoření aplikace v Azure Active Directory použijte následující příkaz.
 
@@ -343,7 +343,7 @@ Tento příkaz vrátí dokument JSON obsahující informace o operaci nasazení.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-hadoop-create-linux-clusters-portal.md).
+Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -352,7 +352,6 @@ Teď, když jste úspěšně vytvořili cluster HDInsight, se dozvíte, jak prac
 ### <a name="apache-hadoop-clusters"></a>Clustery Apache Hadoop
 
 * [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití Apache prasete se službou HDInsight](hadoop/hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Clustery Apache HBA

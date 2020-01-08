@@ -1,19 +1,19 @@
 ---
 title: Vysoká dostupnost pomocí Apache Kafka – Azure HDInsight
 description: Zjistěte, jak zajistit vysokou dostupnost s využitím Apache Kafka ve službě Azure HDInsight. Naučte se obnovit rovnováhu replik oddílů v Kafka, aby byly v různých doménách selhání v rámci oblasti Azure, která obsahuje HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.openlocfilehash: d570cdf32ccf0f7037fd772f71a4296904ba7921
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: a90be471ca068869ee26fb02bba77dfdd476a44e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849097"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435293"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>Vysoká dostupnost dat s využitím Apache Kafka ve službě HDInsight
 
@@ -47,7 +47,7 @@ Příklad vytváření témat a nastavení faktoru replikace najdete v dokumentu
 
 ## <a name="how-to-rebalance-partition-replicas"></a>Jak obnovit rovnováhu replik oddílů
 
-Pomocí nástroje pro vyrovnávání [zatížení oddílu Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools) vyvážit vybraná témata. Tento nástroj se musí spustit z relace SSH na hlavní uzel clusteru Kafka.
+Pomocí [Nástroje pro vyrovnávání zatížení oddílu Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools) vyvážit vybraná témata. Tento nástroj se musí spustit z relace SSH na hlavní uzel clusteru Kafka.
 
 Další informace o připojení ke službě HDInsight pomocí SSH najdete v dokumentu [Použití SSH s HDInsightem](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

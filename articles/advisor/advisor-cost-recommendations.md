@@ -1,19 +1,14 @@
 ---
-title: Snížení nákladů na službu pomocí Azure Advisor | Microsoft Docs
+title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
-services: advisor
-documentationcenter: NA
-author: saket-ms
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: sagupt
-ms.openlocfilehash: 9f074c8077f41392fa9d45022a6a7a537964afa9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74180589"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443129"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -50,13 +45,15 @@ Advisor identifikuje veřejné IP adresy, které nejsou aktuálně přidružené
 Azure Advisor detekuje Azure Data Factory kanály, které opakovaně selžou, a doporučuje, abyste vyřešili problémy nebo odstranili neúspěšné kanály, pokud už je nepotřebujete. Tyto kanály se budou fakturovat i v případě, že vám nejsou zachovány. 
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Pro Managed Disks použít standardní snímky
-Pokud chcete ušetřit 60% nákladů, doporučujeme ukládat snímky ve službě Storage úrovně Standard bez ohledu na typ úložiště nadřazeného disku. Toto je výchozí možnost pro Managed Disks snímky. Azure Advisor identifikuje snímky uložené Premium Storage a doporučuje migraci snímku z úrovně Premium na úložiště Standard. [Další informace o cenách spravovaného disku](https://aka.ms/aa_manageddisksnapshot_learnmore)
+Pokud chcete ušetřit 60 % nákladů, doporučujeme uložit snímky ve službě Storage úrovně Standard bez ohledu na typ úložiště nadřazeného disku. Tato možnost je výchozí možností pro Managed Disks snímky. Azure Advisor identifikuje snímky uložené Premium Storage a doporučuje migraci snímku z úrovně Premium na úložiště Standard. [Další informace o cenách spravovaného disku](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-2.  Na řídicím panelu Advisor klikněte na kartu **náklady** .
+1. Vyhledejte a vyberte [**Advisor**](https://aka.ms/azureadvisordashboard) na libovolné stránce.
+
+1. Na řídicím panelu **Advisor** vyberte kartu **náklady** .
 
 ## <a name="next-steps"></a>Další kroky
 

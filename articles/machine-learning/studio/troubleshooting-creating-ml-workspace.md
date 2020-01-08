@@ -1,7 +1,7 @@
 ---
 title: Řešení potíží s pracovním prostorem
 titleSuffix: ML Studio (classic) - Azure
-description: Tato příručka poskytuje řešení pro některé časté problémy, které se vyskytly při nastavování klasické verze Azure Machine Learning Studio pracovních prostorů.
+description: Tato příručka poskytuje řešení pro některé časté problémy, které se vyskytly při nastavování Azure Machine Learning Studioch (klasických) pracovních prostorů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 88f4e1edae84892892d1a8a9e76499d71d551abf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3f2cc3dcc5c9e34590d1cb2d0d3747fd1255f0e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427470"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>Průvodce odstraňováním potíží: vytvoření a připojení k pracovnímu prostoru Azure Machine Learning Studio (klasické)
 Tato příručka poskytuje řešení pro některé časté problémy, které se vyskytly při nastavování Azure Machine Learning Studioch (klasických) pracovních prostorů.
@@ -53,7 +53,7 @@ Po vytvoření nového pracovního prostoru Machine Learning Studio (Classic) se
 
 3. V dialogovém okně **Odstranit historii procházení** zkontrolujte, že jsou vybrané **soubory cookie a data webu** , a klikněte na **Odstranit**.
 
-   ![Odstranit soubory cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
+   ![Odstranění souborů cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
 
 Po odstranění souborů cookie Restartujte prohlížeč a pak přejdete na stránku [Microsoft Azure Machine Learning Studio (Classic)](https://studio.azureml.net) . Až se zobrazí výzva k zadání uživatelského jména a hesla, zadejte stejné účet Microsoft, jako jste použili k vytvoření pracovního prostoru.
 

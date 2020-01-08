@@ -1,17 +1,17 @@
 ---
 title: Zprostředkovatel výstupní mezipaměti ASP.NET pro Azure cache pro Redis
-description: Naučte se ukládat výstup stránky ASP.NET pomocí Azure cache pro Redis.
+description: Přečtěte si, jak ukládat výstup stránky ASP.NET do mezipaměti pomocí Azure cache pro Redis. Zprostředkovatel výstupní mezipaměti Redis je nezpracovávající mechanismus úložiště pro data výstupní mezipaměti.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.author: yegu
-ms.openlocfilehash: 5d7099779f330bc0a92f0c8f305ac534ab385119
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1a375f063d398c19ed86a0a401e2a41c696ef4e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412991"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Zprostředkovatel výstupní mezipaměti ASP.NET pro Azure cache pro Redis
 
@@ -53,20 +53,20 @@ Nakonfigurujte atributy s hodnotami z okna cache v portál Microsoft Azure a pod
 
 | Atribut | Typ | Výchozí | Popis |
 | --------- | ---- | ------- | ----------- |
-| *host* | řetězec | místního | IP adresa nebo název hostitele serveru Redis |
+| *host* | string | místního | IP adresa nebo název hostitele serveru Redis |
 | *přístavní* | kladné celé číslo | 6379 (bez SSL)<br/>6380 (SSL) | Port serveru Redis |
-| *accessKey* | řetězec | "" | Redis heslo serveru, když je povolená autorizace Redis. Ve výchozím nastavení je hodnota prázdný řetězec, což znamená, že zprostředkovatel stavu relace nebude při připojování k serveru Redis používat žádné heslo. **Pokud je server Redis ve veřejně přístupné síti, jako je Azure Redis Cache, Nezapomeňte povolit autorizaci Redis pro zlepšení zabezpečení a zadat zabezpečené heslo.** |
-| *ssl* | Boolean | **chybné** | Zda se chcete připojit k serveru Redis prostřednictvím protokolu SSL. Ve výchozím nastavení je tato hodnota **false** , protože Redis nepodporuje protokol SSL. **Pokud používáte Azure Redis Cache, který podporuje protokol SSL, nezapomeňte tuto vlastnost nastavit na hodnotu true, aby se zlepšila zabezpečení.**<br/><br/>Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Pro toto nastavení zadejte **hodnotu true** , pokud chcete použít port SSL. Další informace o povolení portu bez SSL najdete v části [přístupové porty](cache-configure.md#access-ports) v tématu [Konfigurace mezipaměti](cache-configure.md) . |
+| *accessKey* | string | "" | Redis heslo serveru, když je povolená autorizace Redis. Ve výchozím nastavení je hodnota prázdný řetězec, což znamená, že zprostředkovatel stavu relace nebude při připojování k serveru Redis používat žádné heslo. **Pokud je server Redis ve veřejně přístupné síti, jako je Azure Redis Cache, Nezapomeňte povolit autorizaci Redis pro zlepšení zabezpečení a zadat zabezpečené heslo.** |
+| *ssl* | Boolean | **false** | Zda se chcete připojit k serveru Redis prostřednictvím protokolu SSL. Ve výchozím nastavení je tato hodnota **false** , protože Redis nepodporuje protokol SSL. **Pokud používáte Azure Redis Cache, který podporuje protokol SSL, nezapomeňte tuto vlastnost nastavit na hodnotu true, aby se zlepšila zabezpečení.**<br/><br/>Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Pro toto nastavení zadejte **hodnotu true** , pokud chcete použít port SSL. Další informace o povolení portu bez SSL najdete v části [přístupové porty](cache-configure.md#access-ports) v tématu [Konfigurace mezipaměti](cache-configure.md) . |
 | *databaseIdNumber* | kladné celé číslo | 0 | *Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Určete, která databáze Redis se má použít. |
 | *connectionTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange. Redis | Slouží k nastavení *ConnectTimeout* při vytváření stackexchange. Redis. ConnectionMultiplexer. |
 | *operationTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange. Redis | Slouží k nastavení *SyncTimeout* při vytváření stackexchange. Redis. ConnectionMultiplexer. |
-| *ConnectionString* (platný připojovací řetězec stackexchange. Redis) | řetězec | *není k dispozici* | Buď odkaz na parametr AppSettings nebo Web. config, nebo jiný platný připojovací řetězec StackExchange. Redis. Tento atribut může poskytovat hodnoty pro *hostitel*, *port*, *AccessKey*, *SSL*a další atributy stackexchange. Redis. Bližší pohled na *ConnectionString*najdete v tématu [Nastavení ConnectionString](#setting-connectionstring) v oddílu [poznámky k atributu](#attribute-notes) . |
-| *settingsClassName*<br/>*settingsMethodName* | řetězec<br/>řetězec | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Tyto atributy použijte k poskytnutí připojovacího řetězce. *settingsClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *settingsMethodName*.<br/><br/>Metoda určená parametrem *settingsMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **řetězce**. Tato metoda vrátí skutečný připojovací řetězec. |
-| *loggingClassName*<br/>*loggingMethodName* | řetězec<br/>řetězec | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Tyto atributy použijte k ladění aplikace poskytováním protokolů z stavu relace/výstupní mezipaměti spolu s protokoly z StackExchange. Redis. *loggingClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *loggingMethodName*.<br/><br/>Metoda určená parametrem *loggingMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **System. IO. TextWriter**. |
-| *applicationName* | řetězec | Název modulu aktuálního procesu nebo "/" | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Předpona názvu aplikace, která se má použít v Redis Cache Zákazník může používat stejnou mezipaměť Redis pro různé účely. Aby se zajistilo, že klíče relace nekolidují, může být předpona s názvem aplikace. |
-| *throwOnError* | Boolean | true (pravda) | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Určuje, zda má být při výskytu chyby vyvolána výjimka.<br/><br/>Další informace o *parametr throwOnError*naleznete v tématu [poznámky k *parametr throwOnError* ](#notes-on-throwonerror) v oddílu [poznámky k atributu](#attribute-notes) . |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
+| *ConnectionString* (platný připojovací řetězec stackexchange. Redis) | string | *není k dispozici* | Buď odkaz na parametr AppSettings nebo Web. config, nebo jiný platný připojovací řetězec StackExchange. Redis. Tento atribut může poskytovat hodnoty pro *hostitel*, *port*, *AccessKey*, *SSL*a další atributy stackexchange. Redis. Bližší pohled na *ConnectionString*najdete v tématu [Nastavení ConnectionString](#setting-connectionstring) v oddílu [poznámky k atributu](#attribute-notes) . |
+| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Tyto atributy použijte k poskytnutí připojovacího řetězce. *settingsClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *settingsMethodName*.<br/><br/>Metoda určená parametrem *settingsMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **řetězce**. Tato metoda vrátí skutečný připojovací řetězec. |
+| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Tyto atributy použijte k ladění aplikace poskytováním protokolů z stavu relace/výstupní mezipaměti spolu s protokoly z StackExchange. Redis. *loggingClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *loggingMethodName*.<br/><br/>Metoda určená parametrem *loggingMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **System. IO. TextWriter**. |
+| *applicationName* | string | Název modulu aktuálního procesu nebo "/" | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Předpona názvu aplikace, která se má použít v Redis Cache Zákazník může používat stejnou mezipaměť Redis pro různé účely. Aby se zajistilo, že klíče relace nekolidují, může být předpona s názvem aplikace. |
+| *throwOnError* | Boolean | true | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Určuje, zda má být při výskytu chyby vyvolána výjimka.<br/><br/>Další informace o *parametr throwOnError*naleznete v tématu [poznámky k *parametr throwOnError* ](#notes-on-throwonerror) v oddílu [poznámky k atributu](#attribute-notes) . |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
 | *retryTimeoutInMilliseconds* | kladné celé číslo | 5000 | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí souboru Web. config nebo AppSettings.*<br/><br/>Doba, po kterou se bude opakovat pokus o neúspěch operace. Pokud je tato hodnota menší než *operationTimeoutInMilliseconds*, poskytovatel se nezopakuje.<br/><br/>Další informace o *retryTimeoutInMilliseconds*naleznete v tématu [poznámky k *retryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) v oddílu [poznámky k atributu](#attribute-notes) . |
-| *redisSerializerType* | řetězec | *není k dispozici* | Určuje kvalifikovaný název typu sestavení třídy, která implementuje Microsoft. Web. Redis. ISerializer a obsahuje vlastní logiku k serializaci a deserializaci hodnot. Další informace naleznete v části [o *redisSerializerType* ](#about-redisserializertype) v oddílu [poznámky k atributu](#attribute-notes) . |
+| *redisSerializerType* | string | *není k dispozici* | Určuje kvalifikovaný název typu sestavení třídy, která implementuje Microsoft. Web. Redis. ISerializer a obsahuje vlastní logiku k serializaci a deserializaci hodnot. Další informace naleznete v části [o *redisSerializerType* ](#about-redisserializertype) v oddílu [poznámky k atributu](#attribute-notes) . |
 |
 
 ## <a name="attribute-notes"></a>Poznámky k atributu

@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý Start: Kontrola pravopisu pomocí REST API a Ruby-Kontrola pravopisu Bingu'
 titleSuffix: Azure Cognitive Services
-description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky pomocí tohoto rychlého startu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e80a7bd3b56ccfd13a20c11f845d076271448b76
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448421"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Ruby
 
@@ -32,13 +32,13 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání Kontrola
 
 1. V oblíbených editorech nebo v integrovaném vývojovém prostředí vytvořte nový soubor Ruby a přidejte následující požadavky. 
 
-    ```javascript
+    ```ruby
     require 'net/http'
     require 'uri'
     require 'json'
     ```
 
-2. Vytvořte proměnné pro klíč předplatného, identifikátor URI a cestu koncového bodu. Vytvořte parametry žádosti připojením parametru `mkt=` k vašemu trhu a `&mode` do `proof` režimu kontroly pravopisu.
+2. Vytvořte proměnné pro klíč předplatného, identifikátor URI a cestu koncového bodu. Vytvořte parametry žádosti připojením parametru `mkt=` k vašemu trhu a `&mode` do `proof` režimu kontroly pravopisu. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -81,6 +81,16 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání Kontrola
     result = JSON.pretty_generate(JSON.parse(response.body))
     puts result
     ```
+
+## <a name="run-the-application"></a>Spuštění aplikace
+
+Sestavte a spusťte projekt.
+
+Pokud používáte příkazový řádek, spusťte aplikaci pomocí následujícího příkazu.
+
+```bash
+ruby <FILE_NAME>.rb
+```
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 

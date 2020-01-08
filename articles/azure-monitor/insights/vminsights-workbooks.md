@@ -4,15 +4,15 @@ description: Zjednodušte vytváření složitých sestav s předdefinovanými a
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365916"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Vytváření interaktivních sestav Azure Monitor pro virtuální počítače se sešity
 
@@ -27,7 +27,7 @@ Sešity jsou užitečné pro scénáře, jako například:
 
 Azure Monitor pro virtuální počítače obsahuje několik sešitů, které vám pomohou začít, a v následujících tabulkách jsou shrnuty.
 
-| Pracovní | Popis | Rozsah |
+| Pracovní sešity | Popis | Rozsah |
 |----------|-------------|-------|
 | Výkon | Poskytuje přizpůsobitelnou verzi našeho horního zobrazení seznamu a grafů v jednom sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Ve velkém měřítku |
 | Čítače výkonu | Zobrazení grafu na nejvyšší úrovni napříč celou sadou čítačů výkonu. | Ve velkém měřítku |
@@ -47,11 +47,11 @@ Sešit je tvořen oddíly, které se skládají z nezávisle upravitelných graf
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-2. Vyberte **Virtual Machines**.
+2. Vyberte **virtuálních počítačů**.
 
 3. V seznamu vyberte virtuální počítač.
 
-4. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
+4. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)** .
 
 5. Na stránce s přehledy virtuálních počítačů vyberte kartu **výkon** nebo **mapy** a pak na stránce klikněte na odkaz **Zobrazit sešity** . 
 

@@ -1,5 +1,5 @@
 ---
-title: Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací na webu Azure Portal
+title: Nové prostředí pro registraci Azure Portal aplikací
 titleSuffix: Microsoft identity platform
 description: Úvod k novému prostředí pro registraci aplikací v Azure Portal
 services: active-directory
@@ -14,27 +14,27 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424643"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací na webu Azure Portal
+# <a name="the-new-azure-portal-app-registration-experience"></a>Nové prostředí pro registraci aplikací Azure Portal
 
 Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) v Azure Portal přináší mnoho vylepšení. Pokud jste obeznámeni s prostředím portál pro registraci aplikací (apps.dev.microsoft.com) pro registraci nebo správu sblížených aplikací, které se označují jako staré, pomůže vám tato výuková příručka začít používat nové prostředí.
 
 ## <a name="whats-not-changing"></a>Co se nemění?
 
--   Vaše aplikace a související konfigurace se dají najít tak, jak jsou, v novém prostředí. Nemusíte znovu registrovat aplikace a uživatelé vašich aplikací se nemusí znovu přihlašovat.
+- Vaše aplikace a související konfigurace se dají najít tak, jak jsou, v novém prostředí. Nemusíte znovu registrovat aplikace a uživatelé vašich aplikací se nemusí znovu přihlašovat.
 
     > [!NOTE]
     > Musíte se přihlásit pomocí účtu, který jste použili k registraci aplikací, abyste je našli v Azure Portal. Doporučujeme, abyste zkontrolovali, že přihlášený uživatel v Azure Portal odpovídá uživateli, který se přihlásil k portálu pro registraci aplikací porovnáním e-mailové adresy z vašeho profilu.
     > 
     > V některých případech, zejména když se přihlašujete pomocí osobních účtů Microsoft (např. Outlook, Live, Xbox atd.) pomocí e-mailové adresy Azure AD, jsme zjistili, že když přejdete na Azure Portal ze starého prostředí, přihlásíte se k jinému účtu se stejným e-mail v tenantovi Azure AD. Pokud stále nevíte, že vaše aplikace chybí, odhlaste se a přihlaste se pomocí správného účtu.
 
--   Živé aplikace sady SDK vytvořené pomocí osobních účtů Microsoft se v Azure Portal ještě nepodporují a ve starém prostředí se v blízké budoucnosti nadále zůstanou.
+- Živé aplikace sady SDK vytvořené pomocí osobních účtů Microsoft se v Azure Portal ještě nepodporují a ve starém prostředí se v blízké budoucnosti nadále zůstanou.
 
 ## <a name="key-changes"></a>Změny klíčů
 

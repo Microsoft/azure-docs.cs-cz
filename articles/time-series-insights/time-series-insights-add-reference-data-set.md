@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d1bbfb43c6e2319706f5eeac15fa1d60791b62b9
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460302"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí Azure Portal
 
@@ -68,9 +68,9 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
    Pokud při analýze hodnot dat dojde k chybě, zobrazí se chyba červeně v dolní části stránky, například `CSV parsing error, no rows extracted`.
 
-1. Po úspěšném analyzování dat se zobrazí datová mřížka zobrazující sloupce a řádky reprezentující data.  Zkontrolujte datovou mřížku, abyste zajistili správnost.
+1. Po úspěšném analyzování dat se zobrazí datová mřížka zobrazující sloupce a řádky reprezentující data. Zkontrolujte datovou mřížku, abyste zajistili správnost.
 
-   [![přidání referenčních dat](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
+   [![Kontrola referenčních dat](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
 1. Projděte si jednotlivé sloupce, abyste viděli typ dat, který se předpokládá, a v případě potřeby změňte datový typ.  Vyberte symbol datového typu v záhlaví sloupce: **#** pro dvojitá (číselná data), **t | F** pro logickou hodnotu nebo **ABC** pro řetězec.
 

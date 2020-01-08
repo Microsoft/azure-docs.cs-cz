@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 46e44804ddbabd8bf5620ad9516f1ca2d5017bfa
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019312"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442925"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení clusteru a inovace ve službě Azure Kubernetes Service (AKS)
 
@@ -27,6 +27,8 @@ Tento článek se zaměřuje na zabezpečení clusteru AKS. Získáte informace 
 > * Zachovat aktualizace uzlů na datum a automatické opravy zabezpečení
 
 Můžete si také přečíst osvědčené postupy pro [správu imagí kontejnerů][best-practices-container-image-management] a pro [zabezpečení pod][best-practices-pod-security].
+
+[Integraci služeb Azure Kubernetes Services s Security Center][security-center-aks] můžete také využít k detekci hrozeb a zobrazení doporučení pro zabezpečení clusterů AKS.
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Zabezpečený přístup k rozhraní API serveru a clusterovým uzlem
 
@@ -195,7 +197,7 @@ Další informace o upgradech v AKS najdete v tématu [podporované verze Kubern
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Zpracování aktualizací a restartování uzlu Linux pomocí kured
 
-**Doprovodné** materiály k osvědčeným postupům – AKS automaticky stáhne a nainstaluje opravy zabezpečení na jednotlivé uzly Linux, ale v případě potřeby se nerestartuje automaticky. Použití `kured` čekající restartování počítače, podívejte se pak bezpečně kordon a výpusť uzlu povolit uzel restartovat, se aktualizace nainstalovaly a být tak bezpečné jako možné s ohledem na operační systém. Pro uzly Windows serveru (v současné době ve verzi Preview v AKS) pravidelně provádějte operaci upgradu AKS a bezpečně Cordon a vyprázdněte a nasaďte aktualizované uzly.
+**Doprovodné materiály k osvědčeným postupům** – AKS automaticky stáhne a nainstaluje opravy zabezpečení na jednotlivé uzly Linux, ale v případě potřeby se nerestartuje automaticky. Použití `kured` čekající restartování počítače, podívejte se pak bezpečně kordon a výpusť uzlu povolit uzel restartovat, se aktualizace nainstalovaly a být tak bezpečné jako možné s ohledem na operační systém. Pro uzly Windows serveru (v současné době ve verzi Preview v AKS) pravidelně provádějte operaci upgradu AKS a bezpečně Cordon a vyprázdněte a nasaďte aktualizované uzly.
 
 Každý večer, uzly Linux v AKS získá opravy zabezpečení dostupné prostřednictvím kanálu aktualizace distribuce. Toto chování je automaticky nakonfigurovaný, jako jsou nasazené uzly v clusteru AKS. Chcete-li minimalizovat narušení a možnému dopadu na běžící úlohu, uzly nejsou restartuje automaticky pokud úroveň opravy zabezpečení nebo aktualizace jádra vyžaduje.
 
@@ -235,3 +237,4 @@ Tento článek se zaměřuje na tom, jak zabezpečit AKS cluster. K provedení n
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
+[security-center-aks]: /azure/security-center/azure-kubernetes-service-integration

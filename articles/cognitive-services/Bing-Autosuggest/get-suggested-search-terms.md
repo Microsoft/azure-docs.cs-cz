@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5b1e4cc8dfc89d6dcc5d29a368e089402b284352
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448836"
 ---
 # <a name="what-is-bing-autosuggest"></a>Co jsou Automatické návrhy Bingu?
 
@@ -27,7 +27,7 @@ Pokud vaše aplikace odesílá dotazy do některého z rozhraní API pro vyhled�
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Navrhování hledaných termínů v reálném čase](concepts/get-suggestions.md) | Vylepšete prostředí vaší aplikace pomocí rozhraní API pro automatické návrhy, abyste zobrazili navrhované hledané výrazy při psaní. |
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 Rozhraní API pro automatické návrhy Bingu je webová služba RESTful, která se dá snadno volat ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON. 
 
@@ -49,6 +49,9 @@ Pokud chcete rychle začít s vaším prvním požadavkem, projděte si popis [v
 
 Seznamte se s referenčními informacemi k [rozhraní API pro automatické návrhy Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference). Tyto referenční informace obsahují seznam koncových bodů, hlaviček a parametrů dotazů, které můžete použít při odesílání požadavků na navrhované výrazy dotazů, a definice objektů odpovědi.
 
-Naučte prohledávat web s využitím [rozhraní API Bingu pro vyhledávání na webu](../bing-web-search/search-the-web.md).
+Navštivte [stránku vyhledávání Bingu centrum rozhraní API](../bing-web-search/search-the-web.md) a Prozkoumejte další dostupná rozhraní API.
+
+
+Naučte se hledat na webu pomocí [rozhraní API Bingu pro vyhledávání na webu](../bing-web-search/search-the-web.md)a prozkoumat druhý[rozhraní API pro vyhledávání Bingu](../bing-web-search/index.yml).
 
 Nezapomeňte si přečíst [požadavky Bingu na zobrazení a použití](./useanddisplayrequirements.md), abyste neporušili žádná pravidla používání výsledků hledání.

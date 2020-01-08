@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427431"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Použití ukázkových datových sad v Azure Machine Learning Studio (klasický)
 [top]: #machine-learning-sample-datasets
@@ -169,7 +169,7 @@ Kolekce simulovaných energetických profilů na základě 12 různých stavebn�
   <td>
 Data o výkonu pro osobní čas, která jsou přijímána z kolekce TranStatsch dat ministerstva dopravy USA (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">včas).</a>
 <p></p>
-Datová sada se zabývá časovým obdobím od dubna do října 2013. Před nahráním do klasické verze Azure Machine Learning Studio byla datová sada zpracována takto:
+Datová sada se zabývá časovým obdobím od dubna do října 2013. Před nahráním do Azure Machine Learning Studio (Classic) byla datová sada zpracována následujícím způsobem:
 <ul>
   <li>Datová sada se vyfiltruje tak, aby se kryla jenom 70 nejvytíženější letiště v kontinentální části USA.</li>
   <li>Zrušené lety byly označeny za zpožděné o více než 15 minut.</li>
@@ -255,7 +255,7 @@ Podmnožina dat z Národního institutu databáze nemocí diabetes a trávící 
 <p></p>
 <b>Použití:</b> Předpovědět, zda má předmět diabetes (binární klasifikace). 
 <p></p>
-<b>Související výzkum:</b> Sigillito, V. (1990). UCI Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/mlúložiště "</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> Sigillito, V. (1990). UCI Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml úložiště "</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -270,7 +270,7 @@ Sada metadat o zákaznících, včetně demografických údajů a předvoleb.
 </tr>
 
 <tr>
-  <td>Data funkcí restaurace</td>
+  <td>Funkční data restaurace</td>
   <td>
 Sada metadat o restauracích a jejich funkcích, jako je například typ potraviny, druh stravování a umístění.
 <p></p>
@@ -281,7 +281,7 @@ Sada metadat o restauracích a jejich funkcích, jako je například typ potravi
 </tr>
 
 <tr>
-  <td>Hodnocení restaurace</td>
+  <td>Hodnocení restaurací</td>
   <td>
 Obsahuje hodnocení vydaná uživateli do restaurací na škále od 0 do 2.
 <p></p>
@@ -329,7 +329,7 @@ Všimněte si také, že počet událostí na pozadí (h, pro hadronic sprchy) j
   <td>
 Hodinově založené počasí z NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">sloučená data z 201304 do 201310</a>).
 <p></p>
-Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají dobu od dubna do října 2013. Před nahráním do klasické verze Azure Machine Learning Studio byla datová sada zpracována takto:
+Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají dobu od dubna do října 2013. Před nahráním do Azure Machine Learning Studio (Classic) byla datová sada zpracována následujícím způsobem:
 <ul>
   <li>ID povětrnostních stanic byly namapovány na odpovídající ID letišť.</li>
   <li>Nefiltrované povětrnostní stanice, které nejsou spojené s nejvytíženější letiště 70.</li>
@@ -344,7 +344,7 @@ Hodinově založené počasí z NOAA (<a href="https://az754797.vo.msecnd.net/da
   <td>
 Data jsou odvozena z Wikipedii (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) na základě článků z každé & P 500 společnosti, která je uložená jako data XML.
 <p></p>
-Před nahráním do klasické verze Azure Machine Learning Studio byla datová sada zpracována takto:
+Před nahráním do Azure Machine Learning Studio (Classic) byla datová sada zpracována následujícím způsobem:
 <ul>
   <li>Extrakce textového obsahu pro každou konkrétní firmu</li>
   <li>Odebrat formátování wikiwebu</li>

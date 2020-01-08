@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
-ms.date: 02/01/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8f43401296a154ee40e7c214ad63da878129244a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 2f374e29f4dc5406956cd56d1bb0bd1466e65773
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384515"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Co je rozhraní API Bingu pro vyhledávání entit?
 
@@ -27,7 +27,7 @@ Rozhraní API Bingu pro vyhledávání entit odešle vyhledávací dotaz do Bing
 | [Nejednoznačnost entit](concepts/search-for-entities.md#the-bing-entity-search-api-response)  | Získejte více entit pro dotazy s více možnými významy. |
 | [Najít místa](concepts/search-for-entities.md#find-places) | Hledání a vracení informací o místních firmách a entitách  |
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 Rozhraní API Bingu pro vyhledávání entit je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON. Službu můžete použít buď pomocí REST API, nebo pomocí sady SDK.
 
@@ -35,9 +35,10 @@ Rozhraní API Bingu pro vyhledávání entit je webová služba RESTful, která 
 2. Odešle požadavek do rozhraní API s platným vyhledávacím dotazem.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vyzkoušejte si [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) pro rozhraní API Bingu pro vyhledávání entit. 
 * Pokud chcete rychle začít s vaším prvním požadavkem, vyzkoušejte si [rychlý Start](quickstarts/csharp.md).
 * Referenční část [rozhraní API Bingu pro vyhledávání entit v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) .
 * [Požadavky Bingu na zobrazení a použití](./use-display-requirements.md) určují přijatelné způsoby použití obsahu a informací získaných prostřednictvím rozhraní API pro vyhledávání Bingu.
+* Navštivte [stránku vyhledávání Bingu centrum rozhraní API](../bing-web-search/search-the-web.md) a Prozkoumejte další dostupná rozhraní API.

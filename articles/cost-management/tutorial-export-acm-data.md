@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytváření a Správa exportovaných dat z Azure Cost Management
+title: Kurz – export dat z Azure Cost Management
 description: V tomto článku se dozvíte, jak můžete vytvářet a spravovat exportovaná Azure Cost Management data, abyste je mohli použít v externích systémech.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a462b3d165a596673049abbbb8b5b8d346f5fc9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d5f6bc4620d60d3eb776a6229450e02035b8290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441022"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -50,7 +50,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevřete požadovaný obor v Azure Portal a v nabídce vyberte **Analýza nákladů** . Přejděte například na **odběry**, vyberte předplatné ze seznamu a potom v nabídce vyberte **Analýza nákladů** . V horní části stránky analýza nákladů klikněte na **exportovat** a pak zvolte možnost exportu. Klikněte například na položku **naplánovat export**.  
 
 > [!NOTE]
-> - Kromě předplatných můžete vytvářet exporty pro skupiny prostředků, účty, oddělení a registrace. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
+> - Kromě předplatných můžete vytvářet exporty skupin prostředků, účtů, oddělení a registrací. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
 >- Když jste se přihlásili jako partner v oboru fakturačního účtu nebo v tenantovi zákazníka, můžete data exportovat do účtu Azure Storage, který je propojený s vaším účtem úložiště partnera. V tenantovi CSP ale musíte mít aktivní předplatné.
 >
 
@@ -63,27 +63,27 @@ Zadejte předplatné pro svůj účet úložiště Azure a pak vyberte svůj ú�
 
 ![Nový příklad pro export zobrazuje podrobnosti o účtu úložiště](./media/tutorial-export-acm-data/storage_exports.png)
 
-Zkontrolujte podrobnosti o exportu a klikněte na **vytvořit**.
+Projděte si podrobnosti o vašem export a klikněte na tlačítko **vytvořit**.
 
 Nový export se zobrazí v seznamu exportů. Ve výchozím nastavení jsou nové exporty povolené. Pokud chcete zakázat nebo odstranit naplánovaný export, klikněte na libovolnou položku v seznamu a pak klikněte na **Zakázat** nebo **Odstranit**.
 
 Na začátku může trvat jednu až dvě hodiny, než se export spustí. Může však trvat až čtyři hodiny, než se v exportovaných souborech zobrazí data.
 
-### <a name="export-schedule"></a>Exportovat plán
+### <a name="export-schedule"></a>Plán exportu
 
-Plánované exporty ovlivňují čas a den v týdnu od počátečního vytvoření exportu. Při vytváření plánovaného exportu se export spustí ve stejnou denní dobu pro každý následný export. Například můžete vytvořit denní export v 1:00 PM. Další export se spustí v 1:00. následující den. Aktuální čas má vliv na všechny ostatní typy exportu stejným způsobem – vždy se spustí ve stejnou denní dobu jako při počátečním vytvoření exportu. V jiném příkladu vytvoříte týdenní export na 4:00 PM v pondělí. Další sestava se spustí v 4:00. odp. v následujícím pondělí. *Exportovaná data jsou k dispozici do čtyř hodin doby běhu.*
+Plánované exporty ovlivňuje čas a den v týdnu počátečního vytvoření exportu. Když vytvoříte plánovaný export, bude se každý následný export spouštět ve stejnou denní dobu. Vytvoříte například denní export v 13:00. Další export se spustí v 13:00 následující den. Aktuální čas má vliv na všechny ostatní typy exportu stejným způsobem – vždy se spustí ve stejnou denní dobu jako při počátečním vytvoření exportu. V jiném příkladu vytvoříte týdenní export v pondělí v 16:00. Další export se spustí v 16:00 následující pondělí. *Exportovaná data jsou k dispozici do čtyř hodin od spuštění.*
 
-Každý export vytvoří nový soubor, takže starší exporty nejsou přepsány.
+Každý export vytvoří nový soubor, takže starší exporty se nepřepíší.
 
-Existují tři typy možností exportu:
+Rozlišujeme tři typy možností exportu:
 
-**Denní export nákladů na měsíc** – počáteční export se spustí hned. Následné exporty spustí následující den ve stejnou dobu jako počáteční export. Nejnovější data jsou agregována z předchozích denních exportů.
+**Denní export nákladů na měsíc** – počáteční export se spustí hned. Následné exporty se spustí následující den ve stejnou dobu jako počáteční export. Nejnovější data jsou agregována z předchozích denních exportů.
 
-**Týdenní export nákladů za posledních 7 dní** – počáteční export se spustí okamžitě. Následné exporty běží v den v týdnu a ve stejnou dobu jako při počátečním exportu. Náklady jsou za posledních sedm dnů.
+**Týdenní export nákladů za posledních 7 dní** – počáteční export se spustí okamžitě. Následné exporty se spustí v den v týdnu a ve stejnou dobu jako počáteční export. Náklady jsou za posledních sedm dnů.
 
 **Vlastní** – umožňuje naplánovat týdenní a měsíční export s možnostmi v týdnu na aktuální a měsíc. *Počáteční export se spustí hned.*
 
-Pokud máte předplatné s průběžnými platbami, MSDN nebo Visual Studio, fakturační období faktury se nemusí zarovnat k kalendářnímu měsíci. U těchto typů předplatných a skupin prostředků můžete vytvořit export, který je zarovnán k fakturačnímu období nebo kalendářním měsícům. Pokud chcete vytvořit Export zarovnaný k vašemu měsíci faktury, přejděte na **vlastní**a vyberte **Fakturovatelné – období k datu**.  Pokud chcete vytvořit Export přirovnaný k kalendářnímu měsíci, vyberte možnost **od začátku měsíce**.
+Pokud máte předplatné s průběžnými platbami, MSDN nebo Visual Studio, fakturační období faktury nemusí přesně odpovídat kalendářnímu měsíci. Pro tyto typy předplatného a skupiny prostředků můžete vytvořit export, který bude odpovídat období faktury nebo kalendářním měsícům. Pokud chcete vytvořit Export zarovnaný k vašemu měsíci faktury, přejděte na **vlastní**a vyberte **Fakturovatelné – období k datu**.  Pokud chcete vytvořit Export přirovnaný k kalendářnímu měsíci, vyberte možnost **od začátku měsíce**.
 >
 >
 

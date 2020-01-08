@@ -3,19 +3,19 @@ title: Spravované Registry kontejnerů
 description: Úvod do služby Azure Container Registry poskytující cloudové, spravované, privátní registry Dockeru.
 author: stevelas
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 12/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2ceae0a6d6eb4dc989a53b35dc4a2f64472a5f54
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445719"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
-Azure Container Registry je spravovaná privátní služba registru Docker založená na Open Source registru Docker 2,0. Vytvářejte a udržujte Registry kontejnerů Azure pro ukládání a správu vašich privátních imagí kontejnerů Docker.
+Azure Container Registry je spravovaná privátní služba registru Docker založená na Open Source registru Docker 2,0. Vytvářejte a udržujte Registry kontejnerů Azure pro ukládání a správu vašich privátních imagí kontejnerů Docker a souvisejících artefaktů.
 
 Využijte Azure Container Registry se stávajícími kanály pro vývoj a nasazení kontejnerů nebo použijte úlohy Azure Container Registry k vytváření imagí kontejnerů v Azure. Sestavujte na vyžádání nebo plně Automatizujte sestavení s triggery, jako jsou potvrzení zdrojového kódu a aktualizace základního obrázku.
 
@@ -38,11 +38,18 @@ Azure poskytuje nástroje, včetně rozhraní příkazového řádku Azure, Azur
 
 * **SKU registru** – vytvořte v předplatném Azure jednu nebo víc registrů kontejnerů. Registry jsou dostupné ve třech skladových položkách: [Basic, Standard a Premium](container-registry-skus.md), z nichž každý podporuje integraci webhooků, ověřování registru pomocí Azure Active Directory a odstraňování funkcí. Využijte místní úložiště imagí kontejnerů v síťové blízkosti vytvořením registru ve stejném umístění Azure, jako jsou vaše nasazení. Funkci [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium můžete využít ve scénářích pokročilé replikace a distribuce imagí kontejnerů. 
 
-  Přístup k registru kontejnerů [ovládáte](container-registry-authentication.md) pomocí identity Azure, [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md), který je Azure Active Directory zálohovaný, nebo zadaného účtu správce. Přihlaste se k registru pomocí Azure CLI nebo příkazu standardní `docker login`.
+* **Zabezpečení a přístup** – Přihlaste se k registru pomocí rozhraní příkazového řádku Azure CLI nebo standardního příkazu `docker login`. Azure Container Registry přenáší image kontejneru přes protokol HTTPS a podporuje TLS k zabezpečení připojení klientů. 
+
+  > [!IMPORTANT]
+  > Od 13. ledna 2020 bude Azure Container Registry vyžadovat, aby všechna zabezpečená připojení ze serverů a aplikací používala protokol TLS 1,2. Bude vyřazena podpora TLS 1,0 a 1,1.
+
+  Přístup k registru kontejnerů [ovládáte](container-registry-authentication.md) pomocí identity Azure, [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md), který je Azure Active Directory zálohovaný, nebo zadaného účtu správce. Použijte řízení přístupu na základě role (RBAC) k přiřazení uživatelů nebo systémů jemně odstupňovaná oprávnění k registru.
+
+  Funkce zabezpečení SKU Premium zahrnují [vztah důvěryhodnosti obsahu](container-registry-content-trust.md) pro podepisování značek image a [brány firewall a virtuální sítě (Preview)](container-registry-vnet.md) , aby se omezil přístup k registru. Azure Security Center se volitelně integruje s Azure Container Registry pro [skenování imagí](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) vždy, když se do registru vloží obrázek.
 
 * **Podporované image a artefakty** – seskupené do úložiště, každý obrázek je snímkem, který je jen pro čtení kontejneru kompatibilního s Docker. Registry kontejnerů Azure mohou zahrnovat image systémů Windows i Linux. Názvy imagí pro všechna nasazení kontejnerů určujete vy. Pomocí standardních [příkazů Dockeru](https://docs.docker.com/engine/reference/commandline/) můžete nahrávat image do úložiště nebo si z úložiště image stáhnout. Kromě imagí kontejnerů Docker Azure Container Registry ukládá [související formáty obsahu](container-registry-image-formats.md) , jako jsou grafy a obrázky [Helm](container-registry-helm-repos.md) sestavené do [specifikace formátu rozhraní OCI (Open container Initiative)](https://github.com/opencontainers/image-spec/blob/master/spec.md).
 
-* **Úkoly Azure Container Registry** – pomocí [úloh Azure Container Registry](container-registry-tasks-overview.md) (úlohy ACR) můžete zjednodušit vytváření, testování, doručování a nasazování imagí v Azure. ACR úkoly můžete například využít k rozšiřování vnitřních smyček vývoje do cloudu díky přesměrování operací `docker build` do Azure. Můžete nakonfigurovat úlohy sestavení tak, aby se kanál oprav operačního systému a architektury kontejneru automatizoval a aby se image po potvrzení kódu vaším týmem ve správě zdrojového kódu automaticky sestavovaly.
+* **Automatizované sestavení imagí** – pomocí [úloh Azure Container Registry](container-registry-tasks-overview.md) (úlohy ACR) můžete zjednodušit sestavování, testování, doručování a nasazování imagí v Azure. ACR úkoly můžete například využít k rozšiřování vnitřních smyček vývoje do cloudu díky přesměrování operací `docker build` do Azure. Můžete nakonfigurovat úlohy sestavení tak, aby se kanál oprav operačního systému a architektury kontejneru automatizoval a aby se image po potvrzení kódu vaším týmem ve správě zdrojového kódu automaticky sestavovaly.
 
   [Úlohy s více kroky](container-registry-tasks-overview.md#multi-step-tasks) poskytují definice úloh založené na kroku a provádění pro vytváření, testování a opravy imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 

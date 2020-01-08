@@ -1,5 +1,5 @@
 ---
-title: Převod úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard
+title: Převod úložiště spravovaných disků mezi Standard a SSD
 description: Jak převést úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard pomocí Azure CLI.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abd3c7112a70850d137f77d28e83c60916a96ea3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd9bb92b3ed86c3a57b5fc70411a4593335acedb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036624"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431491"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Převod úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard
 
@@ -131,7 +131,7 @@ az vm start --ids $vmId
 
 Postupujte následovně:
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V seznamu **virtuálních počítačů**vyberte virtuální počítač.
 3. Pokud se virtuální počítač nezastavil, v horní části podokna **přehledu** virtuálních počítačů vyberte **zastavit** a počkejte, než se virtuální počítač zastaví.
 4. V podokně pro virtuální počítač vyberte z nabídky **disky** .

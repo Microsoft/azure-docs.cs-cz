@@ -1,5 +1,5 @@
 ---
-title: 'Kopírování dat z Azure Blob Storage do SQL Database '
+title: Kopírování dat z Azure Blob Storage do Azure SQL Database
 description: Tento kurz obsahuje podrobné pokyny pro kopírování dat z Azure Blob Storage do Azure SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seo-lt-2019
-ms.date: 02/20/2019
+ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 93f674cf080ccbc94b9dbdc6ee9a66eb091c3542
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439442"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 
-V tomto kurzu vytvoříte kanál datové továrny, který kopíruje data ze služby Azure Blob Storage do Azure SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
+V tomto kurzu vytvoříte kanál datové továrny, který kopíruje data ze služby Azure Blob Storage do Azure SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat podporovaných jako zdroje a jímky najdete v tématu [podporovaná úložiště dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
 V tomto kurzu provedete následující kroky:
 
@@ -30,39 +29,43 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření propojených služeb Azure Storage a Azure SQL Database
 > * Vytvoření datových sad objektů blob Azure a Azure SQL Database
 > * Vytvoření kanálu obsahujícího aktivitu kopírování
-> * Zahájení spuštění kanálu
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění aktivit a kanálu
 
-Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít další mechanismy – podívejte se na ukázky v části Šablony Rychlý start.
+Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Podívejte se na ukázky v části **rychlé starty**.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* **Účet služby Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
-* **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
-* **Visual Studio** 2015 nebo 2017. Názorný postup v tomto článku využívá Visual Studio 2017.
-* **Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/)** a nainstalujte ji.
-* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
+* *Účet služby Azure Storage*. Úložiště objektů blob použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště pro obecné účely](../storage/common/storage-quickstart-create-account.md).
+* *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../sql-database/sql-database-single-database-get-started.md).
+* Sadu *Visual Studio*. Návod v tomto článku používá Visual Studio 2019.
+* *[Sada Azure SDK pro .NET](/dotnet/azure/dotnet-tools)*
+* *Azure Active Directory aplikace* Pokud nemáte aplikaci Azure Active Directory, přečtěte si část [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) tématu [Postupy: použití portálu k vytvoření aplikace služby Azure AD](../active-directory/develop/howto-create-service-principal-portal.md). Zkopírujte následující hodnoty pro použití v pozdějších krocích: **ID aplikace (klienta)** , **ověřovací klíč**a **ID adresáře (tenant)** . Podle pokynů ve stejném článku přiřaďte aplikaci k roli **přispěvatele** .
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
-Teď připravte objekt blob Azure a Azure SQL Database pro tento kurz provedením následující kroků:
+Teď připravte svůj objekt blob Azure a Azure SQL Database pro kurz vytvořením zdrojového blogu a tabulky SQL jímky.
 
 #### <a name="create-a-source-blob"></a>Vytvoření zdrojového objektu blob
 
-1. Spusťte Poznámkový blok. Zkopírujte následující text a uložte ho na disk jako soubor **inputEmp.txt**.
+Nejdřív vytvořte zdrojový objekt BLOB tak, že vytvoříte kontejner a nahrajete do něj vstupní textový soubor:
 
-    ```
+1. Otevřete poznámkový blok. Zkopírujte následující text a uložte ho místně do souboru s názvem *soubor inputemp. txt*.
+
+    ```inputEmp.txt
     John|Doe
     Jane|Doe
     ```
 
-2. Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/), vytvořte kontejner **adfv2tutorial** a odešlete soubor **inputEmp.txt** do tohoto kontejneru.
+2. Pomocí nástroje, jako je například [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) , vytvořte kontejner *adfv2tutorial* a odešlete soubor *soubor inputemp. txt* do kontejneru.
 
 #### <a name="create-a-sink-sql-table"></a>Vytvoření tabulky SQL jímky
 
-1. Pomocí následujícího skriptu SQL vytvořte tabulku **dbo.emp** v Azure SQL Database.
+Dále vytvořte tabulku jímky SQL:
+
+1. Pomocí následujícího skriptu SQL vytvořte tabulku *dbo.emp* v Azure SQL Database.
 
     ```sql
     CREATE TABLE dbo.emp
@@ -76,51 +79,62 @@ Teď připravte objekt blob Azure a Azure SQL Database pro tento kurz provedení
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Povolte službám Azure přístup k SQL serveru. Zkontrolujte, že nastavení **Povolit přístup ke službám Azure** je pro server SQL Azure **ZAPNUTÉ**, aby služba Data Factory mohla na server Azure SQL zapisovat data. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
+2. Povolte službám Azure přístup k SQL serveru. Ujistěte se, že máte ve svém serveru SQL Azure povolený přístup ke službám Azure, aby služba Data Factory mohla zapisovat data na váš server SQL Azure. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
 
-    1. Klikněte na **Další služby** na levé straně a potom klikněte na **Servery SQL**.
-    2. Vyberte svůj server a v části **NASTAVENÍ** klikněte na **Brána firewall**.
-    3. Na stránce **Nastavení brány firewall** klikněte na **ZAPNUTO** u možnosti **Povolit přístup ke službám Azure**.
+    1. Pro správu SQL serveru přejdete na [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **SQL servery**.
 
+    2. Vyberte svůj server.
+    
+    3. V záhlaví **zabezpečení** nabídky serveru SQL vyberte možnost **brány firewall a virtuální sítě**.
+
+    4. Na stránce **Brána firewall a virtuální sítě** v části **Povolení přístupu ke službám a prostředkům Azure pro přístup k tomuto serveru**vyberte **zapnuto**.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
+Pomocí sady Visual Studio vytvořte konzolovou aplikaci C# .NET.
 
-1. Spusťte **Visual Studio**.
-2. Klikněte na **Soubor**, přejděte na **Nový** a klikněte na **Projekt**.
-3. V seznamu typů projektů napravo vyberte **Visual C#**  -> **Aplikace konzoly (.NET Framework)** . Vyžaduje se .NET verze 4.5.2 nebo novější.
-4. Jako název zadejte **ADFv2Tutorial**.
-5. Klikněte na **OK**, tím vytvoříte projekt.
+1. Otevřete sadu Visual Studio.
+2. V okně **Start** vyberte **vytvořit nový projekt**.
+3. V okně **vytvořit nový projekt** vyberte v seznamu typů projektů C# verzi **aplikace konzoly (.NET Framework)** . Pak vyberte **Další**.
+4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *ADFv2Tutorial*. V poli **umístění**vyhledejte a/nebo vytvořte adresář, do kterého chcete projekt uložit. Potom vyberte **Vytvořit**. Nový projekt se zobrazí v integrovaném vývojovém prostředí sady Visual Studio.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Klikněte na **Nástroje**  ->  **Správce balíčků NuGet**  ->  **Konzola správce balíčků**.
-2. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
+Dále nainstalujte požadované balíčky knihovny pomocí Správce balíčků NuGet.
 
-    ```powershell
+1. V řádku nabídek vyberte **nástroje** > **správce balíčků NuGet** > **Konzola správce balíčků**.
+2. V podokně **konzoly Správce balíčků** spusťte následující příkazy pro instalaci balíčků. Informace o Azure Data Factory balíčku NuGet najdete v tématu [Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
+
+    ```package manager console
     Install-Package Microsoft.Azure.Management.DataFactory
-    Install-Package Microsoft.Azure.Management.ResourceManager
+    Install-Package Microsoft.Azure.Management.ResourceManager -PreRelease
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 
 ## <a name="create-a-data-factory-client"></a>Vytvoření klienta datové továrny
 
-1. Otevřete soubor **Program.cs** a vložte do něj následující příkazy. Přidáte tak odkazy na obory názvů.
+Pomocí těchto kroků vytvořte klienta datové továrny.
+
+1. Otevřete *program.cs*a pak přepište existující příkazy `using` pomocí následujícího kódu, abyste mohli přidat odkazy na obory názvů.
 
     ```csharp
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.DataFactory;
     using Microsoft.Azure.Management.DataFactory.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-    
-2. Do metody **Main** přidejte následující kód, který nastaví proměnné. Zástupné znaky nahraďte vlastními hodnotami. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Do metody `Main`, která nastavuje proměnné, přidejte následující kód. Hodnoty 14 zástupných symbolů nahraďte vlastními hodnotami.
+
+    Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). V rozevíracím seznamu **produkty** vyberte možnost **procházet** > **Analytics** > **Data Factory**. Pak v rozevíracím seznamu **oblasti** vyberte oblasti, které vás zajímají. Zobrazí se mřížka se stavem dostupnosti Data Factory produktů pro vybrané oblasti.
+
+    > [!NOTE]
+    > Úložiště dat, například Azure Storage a Azure SQL Database, a výpočetní služby, jako je HDInsight, které Data Factory používají, můžou být v jiných oblastech, než kolik zvolíte pro Data Factory.
 
     ```csharp
     // Set variables
@@ -130,8 +144,8 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
     string subscriptionId = "<your subscription ID to create the factory>";
     string resourceGroup = "<your resource group to create the factory>";
 
-    string region = "East US";
-    string dataFactoryName = "<specify the name of a data factory to create. It must be globally unique.>";
+    string region = "<location to create the data factory in, such as East US>";
+    string dataFactoryName = "<name of data factory to create (must be globally unique)>";
 
     // Specify the source Azure Blob information
     string storageAccount = "<your storage account name to copy data>";
@@ -140,7 +154,12 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = "Server=tcp:<your server name>.database.windows.net,1433;Database=<your database name>;User ID=<your username>@<your server name>;Password=<your password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
+    string azureSqlConnString = 
+        "Server=tcp:<your server name>.database.windows.net,1433;" +
+        "Database=<your database name>;" +
+        "User ID=<your username>@<your server name>;" +
+        "Password=<your password>;" +
+        "Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
     string azureSqlTableName = "dbo.emp";
 
     string storageLinkedServiceName = "AzureStorageLinkedService";
@@ -150,20 +169,22 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
     string pipelineName = "Adfv2TutorialBlobToSqlCopy";
     ```
 
-3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy **DataFactoryManagementClient**. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu.
+3. Do metody `Main` přidejte následující kód, který vytvoří instanci třídy `DataFactoryManagementClient`. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu.
 
     ```csharp
     // Authenticate and create a data factory management client
     var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
     ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
-    AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
+    AuthenticationResult result = context.AcquireTokenAsync(
+        "https://management.azure.com/", cc
+    ).Result;
     ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-Do metody **Main** přidejte následující kód, který vytvoří **datovou továrnu**.
+Do metody `Main` přidejte následující kód, který vytvoří *datovou továrnu*.
 
 ```csharp
 // Create a data factory
@@ -172,12 +193,18 @@ Factory dataFactory = new Factory
 {
     Location = region,
     Identity = new FactoryIdentity()
-
 };
-client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
-Console.WriteLine(SafeJsonConvert.SerializeObject(dataFactory, client.SerializationSettings));
 
-while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
+client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(dataFactory, client.SerializationSettings)
+);
+
+while (
+    client.Factories.Get(
+        resourceGroup, dataFactoryName
+    ).ProvisioningState == "PendingCreation"
+)
 {
     System.Threading.Thread.Sleep(1000);
 }
@@ -185,11 +212,11 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
-V tomto kurzu vytvoříte dvě propojené služby pro zdroj a jímku:
+V tomto kurzu vytvoříte dvě propojené služby pro zdroj a jímku, v uvedeném pořadí.
 
 ### <a name="create-an-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
 
-Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure Storage**. V tématu věnovaném [vlastnostem propojených služeb Azure Blob](connector-azure-blob-storage.md#linked-service-properties) se o podporovaných vlastnostech dozvíte víc.
+Do metody `Main` přidejte následující kód, který vytvoří *propojenou službu Azure Storage*. Informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Vlastnosti propojené služby Azure Blob](connector-azure-blob-storage.md#linked-service-properties).
 
 ```csharp
 // Create an Azure Storage linked service
@@ -198,16 +225,24 @@ Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...")
 LinkedServiceResource storageLinkedService = new LinkedServiceResource(
     new AzureStorageLinkedService
     {
-        ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
+        ConnectionString = new SecureString(
+            "DefaultEndpointsProtocol=https;AccountName=" + storageAccount +
+            ";AccountKey=" + storageKey
+        )
     }
 );
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, storageLinkedService);
-Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
+
+client.LinkedServices.CreateOrUpdate(
+    resourceGroup, dataFactoryName, storageLinkedServiceName, storageLinkedService
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings)
+);
 ```
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
 
-Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure SQL Database**. V tématu věnovaném [vlastnostem propojených služeb Azure SQL Database](connector-azure-sql-database.md#linked-service-properties) se o podporovaných vlastnostech dozvíte víc.
+Do metody `Main` přidejte následující kód, který vytvoří *propojenou službu Azure SQL Database*. Informace o podporovaných vlastnostech a podrobnostech najdete v článku [Vlastnosti propojené služby Azure SQL Database](connector-azure-sql-database.md#linked-service-properties).
 
 ```csharp
 // Create an Azure SQL Database linked service
@@ -219,23 +254,28 @@ LinkedServiceResource sqlDbLinkedService = new LinkedServiceResource(
         ConnectionString = new SecureString(azureSqlConnString)
     }
 );
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, sqlDbLinkedServiceName, sqlDbLinkedService);
-Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.SerializationSettings));
+
+client.LinkedServices.CreateOrUpdate(
+    resourceGroup, dataFactoryName, sqlDbLinkedServiceName, sqlDbLinkedService
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.SerializationSettings)
+);
 ```
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-V této části vytvoříte dvě datové sady, jednu pro zdroj a druhou pro jímku. 
+V této části vytvoříte dvě datové sady: jeden pro zdroj, druhý pro jímku. 
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Vytvoření datové sady pro zdrojový objekt blob Azure
 
-Do metody **Main** přidejte následující kód, který vytvoří **datovou sadu objektů blob Azure**. V tématu věnovaném [vlastnostem datových sad objektů blob Azure](connector-azure-blob-storage.md#dataset-properties) se o podporovaných vlastnostech dozvíte víc.
+Do metody `Main` přidejte následující kód, který vytvoří *datovou sadu objektů BLOB v Azure*. Informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Vlastnosti datové sady objektů BLOB v Azure](connector-azure-blob-storage.md#dataset-properties).
 
-Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
+Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
 
-- Umístění objektu blob, ze kterého se má kopírovat: **FolderPath** a **FileName**.
-- Formát objektu udávající, jak analyzovat obsah: **TextFormat** a příslušná nastavení (například oddělovač sloupců).
-- Strukturu dat, včetně názvů sloupců a typů dat, které se v tomto případě mapují na tabulku SQL jímky.
+- Umístění objektu blob, ze kterého se má kopírovat: `FolderPath` a `FileName`
+- Formát objektu blob, který ukazuje, jak analyzovat obsah: `TextFormat` a jeho nastavení, jako je například Oddělovač sloupců
+- Datová struktura, včetně názvů sloupců a datových typů, které jsou v tomto příkladu namapovány na tabulku SQL jímky
 
 ```csharp
 // Create an Azure Blob dataset
@@ -243,35 +283,31 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference
-        {
-            ReferenceName = storageLinkedServiceName
+        LinkedServiceName = new LinkedServiceReference { 
+            ReferenceName = storageLinkedServiceName 
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
         Format = new TextFormat { ColumnDelimiter = "|" },
         Structure = new List<DatasetDataElement>
         {
-            new DatasetDataElement
-            {
-                Name = "FirstName",
-                Type = "String"
-            },
-            new DatasetDataElement
-            {
-                Name = "LastName",
-                Type = "String"
-            }
+            new DatasetDataElement { Name = "FirstName", Type = "String" },
+            new DatasetDataElement { Name = "LastName", Type = "String" }
         }
     }
 );
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobDatasetName, blobDataset);
-Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
+
+client.Datasets.CreateOrUpdate(
+    resourceGroup, dataFactoryName, blobDatasetName, blobDataset
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings)
+);
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-sql-database"></a>Vytvoření datové sady pro Azure SQL Database jímky
 
-Do metody **Main** přidejte následující kód, který vytvoří **datovou sadu Azure SQL Database**. V tématu věnovaném [vlastnostem datových sad Azure SQL Database](connector-azure-sql-database.md#dataset-properties) se o podporovaných vlastnostech dozvíte víc.
+Do metody `Main` přidejte následující kód, který vytvoří *datovou sadu Azure SQL Database*. Informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Azure SQL Database vlastnosti datové sady](connector-azure-sql-database.md#dataset-properties).
 
 Definujete datovou sadu, která představuje data jímky ve službě Azure SQL Database. Tato datová sada odkazuje na propojenou službu Azure SQL Database, kterou jste vytvořili v předchozím kroku. Určuje také tabulku SQL, který obsahuje zkopírovaná data. 
 
@@ -288,13 +324,18 @@ DatasetResource sqlDataset = new DatasetResource(
         TableName = azureSqlTableName
     }
 );
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, sqlDatasetName, sqlDataset);
-Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDataset, client.SerializationSettings));
+
+client.Datasets.CreateOrUpdate(
+    resourceGroup, dataFactoryName, sqlDatasetName, sqlDataset
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(sqlDataset, client.SerializationSettings)
+);
 ```
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-Do metody **Main** přidejte následující kód, který vytvoří **kanál s aktivitou kopírování**. V tomto kurzu kanál obsahuje jednu aktivitu: aktivitu kopírování, která jako zdroj používá datovou sadu objektů blob jako zdroj a jako jímku používá jinou datovou sadu SQL. Podrobné informace o aktivitě kopírování najdete v tématu [Přehled aktivit kopírování](copy-activity-overview.md).
+Do metody `Main` přidejte následující kód, který vytvoří *kanál s aktivitou kopírování*. V tomto kurzu tento kanál obsahuje jednu aktivitu: `CopyActivity`, která jako zdroj používá datovou sadu objektů BLOB jako zdroj a datovou sadu SQL jako jímku. Informace o podrobnostech o aktivitě kopírování najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
 
 ```csharp
 // Create a pipeline with copy activity
@@ -308,41 +349,42 @@ PipelineResource pipeline = new PipelineResource
             Name = "CopyFromBlobToSQL",
             Inputs = new List<DatasetReference>
             {
-                new DatasetReference()
-                {
-                    ReferenceName = blobDatasetName
-                }
+                new DatasetReference() { ReferenceName = blobDatasetName }
             },
             Outputs = new List<DatasetReference>
             {
-                new DatasetReference
-                {
-                    ReferenceName = sqlDatasetName
-                }
+                new DatasetReference { ReferenceName = sqlDatasetName }
             },
             Source = new BlobSource { },
             Sink = new SqlSink { }
         }
     }
 };
+
 client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, pipeline);
-Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.SerializationSettings));
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(pipeline, client.SerializationSettings)
+);
 ```
 
 ## <a name="create-a-pipeline-run"></a>Vytvoření spuštění kanálu
 
-Do metody **Main** přidejte následující kód, který **aktivuje spuštění kanálu**.
+Do metody `Main`, která *aktivuje spuštění kanálu*, přidejte následující kód.
 
 ```csharp
 // Create a pipeline run
 Console.WriteLine("Creating pipeline run...");
-CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName).Result.Body;
+CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
+    resourceGroup, dataFactoryName, pipelineName
+).Result.Body;
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Monitorování spuštění kanálu
 
-1. Do metody **Main** přidejte následující kód, který nepřetržitě kontroluje stav spuštění kanálu, dokud se kopírování dat nedokončí.
+Nyní vložte kód pro kontrolu stavu běhu kanálu a Získejte podrobné informace o spuštění aktivity kopírování.
+
+1. Do metody `Main` přidejte následující kód, který bude nepřetržitě kontrolovat stav spuštění kanálu, dokud nedokončí kopírování dat.
 
     ```csharp
     // Monitor the pipeline run
@@ -350,7 +392,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     PipelineRun pipelineRun;
     while (true)
     {
-        pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
+        pipelineRun = client.PipelineRuns.Get(
+            resourceGroup, dataFactoryName, runResponse.RunId
+        );
         Console.WriteLine("Status: " + pipelineRun.Status);
         if (pipelineRun.Status == "InProgress")
             System.Threading.Thread.Sleep(15000);
@@ -359,21 +403,26 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. Do metody **Main** přidejte následující kód, který načte podrobnosti o spuštění aktivity kopírování, například velikost načtených/zapsaných dat.
+2. Do metody `Main` přidejte následující kód, který načte podrobnosti o spuštění aktivity kopírování, například velikost dat, která byla načtena nebo zapsána.
 
     ```csharp
     // Check the copy activity run details
     Console.WriteLine("Checking copy activity run details...");
 
-    List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
-    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
+    RunFilterParameters filterParams = new RunFilterParameters(
+        DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)
+    );
+
+    ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
+        resourceGroup, dataFactoryName, runResponse.RunId, filterParams
+    );
  
     if (pipelineRun.Status == "Succeeded")
     {
-        Console.WriteLine(activityRuns.First().Output);
+        Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
-        Console.WriteLine(activityRuns.First().Error);
+        Console.WriteLine(queryResponse.Value.First().Error);
     
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
@@ -381,9 +430,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Sestavte a spusťte aplikaci a potom ověřte spuštění kanálu.
+Sestavte aplikaci výběrem možnosti **sestavit** > **Sestavit řešení**. Pak spusťte aplikaci výběrem možnosti **ladění** > **Spustit ladění**a ověřte spuštění kanálu.
 
-Konzola vytiskne průběh vytváření datové továrny, propojené služby, datové sady, kanál a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, dokud aktivita kopírování nezobrazí údaje o velikosti načtených/zapsaných dat. Potom použijte nástroje, jako je SSMS (SQL Server Management Studio) nebo Visual Studio, připojte se k cílové službě Azure SQL a zkontrolujte, jestli se data zkopírovala do tabulky, kterou jste zadali.
+Konzola vytiskne průběh vytváření datové továrny, propojené služby, datové sady, kanál a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, dokud se nezobrazí podrobnosti o spuštění aktivity kopírování s velikostí přečtených a zapsaných dat. Pak můžete pomocí nástrojů, jako je SQL Server Management Studio (SSMS) nebo Visual Studio, připojit se k cíli Azure SQL Database a ověřit, zda cílová tabulka obsahuje zkopírovaná data.
 
 ### <a name="sample-output"></a>Ukázkový výstup
 
@@ -513,19 +562,17 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-
 ## <a name="next-steps"></a>Další kroky
 
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Naučili jste se tyto postupy: 
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny
 > * Vytvoření propojených služeb Azure Storage a Azure SQL Database
 > * Vytvoření datových sad objektů blob Azure a Azure SQL Database
-> * Vytvoření kanálu obsahujícího aktivitu kopírování
-> * Zahájení spuštění kanálu
+> * Vytvoření kanálu obsahujícího aktivitu kopírování.
+> * Zahajte spuštění kanálu.
 > * Monitorování spuštění aktivit a kanálu
-
 
 Pokud se chcete dozvědět víc o kopírování dat z místního prostředí do cloudu, přejděte k následujícímu kurzu: 
 

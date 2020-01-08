@@ -1,36 +1,27 @@
 ---
-title: Upgradovat konfiguraci samostatného clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak upgradovat konfiguraci, na kterém běží samostatného clusteru Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Upgrade konfigurace samostatného clusteru
+description: Naučte se upgradovat konfiguraci, která spouští samostatný cluster Service Fabric.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: f99c1ebb64bf881bcd42f15e13bb81b96ccfa064
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387124"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610114"
 ---
-# <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Upgradovat konfiguraci samostatného clusteru 
+# <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Upgrade konfigurace samostatného clusteru 
 
-Možnosti upgradu pro moderního systému, je klíčem k dlouhodobý úspěch vašeho produktu. Cluster Azure Service Fabric je prostředek, který vlastníte. Tento článek popisuje, jak upgradovat konfigurační nastavení samostatného clusteru Service Fabric.
+Pro všechny moderní systémy je možnost upgradu klíčem na dlouhodobou úspěšnost vašeho produktu. Cluster Azure Service Fabric je prostředek, který vlastníte. Tento článek popisuje, jak upgradovat nastavení konfigurace samostatného clusteru Service Fabric.
 
-## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>Nastavení clusteru v souboru ClusterConfig.json
-Samostatné clustery se konfigurují *ClusterConfig.json* souboru. Další informace o různých nastaveních najdete v tématu [nastavení konfigurace pro samostatný cluster Windows](service-fabric-cluster-manifest.md).
+## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>Přizpůsobení nastavení clusteru v souboru ClusterConfig. JSON
+Samostatné clustery jsou nakonfigurovány prostřednictvím souboru *ClusterConfig. JSON* . Další informace o různých nastaveních najdete v tématu [nastavení konfigurace samostatného clusteru Windows](service-fabric-cluster-manifest.md).
 
-Přidání, aktualizace nebo odebrání nastavení v `fabricSettings` části [vlastnosti clusteru](./service-fabric-cluster-manifest.md#cluster-properties) tématu *ClusterConfig.json*. 
+Můžete přidat, aktualizovat nebo odebrat nastavení v části `fabricSettings` v části [Vlastnosti clusteru](./service-fabric-cluster-manifest.md#cluster-properties) v *ClusterConfig. JSON*. 
 
-Například následující kód JSON přidá nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* části `fabricSettings`:
+Například následující JSON přidá nové nastavení *MaxDiskQuotaInMB* do části *diagnostika* v části `fabricSettings`:
 
 ```json
       {
@@ -44,10 +35,10 @@ Například následující kód JSON přidá nové nastavení *MaxDiskQuotaInMB*
       }
 ```
 
-Poté, co jste změnili nastavení v souboru ClusterConfig.json [testování konfigurace clusteru](#test-the-cluster-configuration) a potom [upgradovat konfiguraci clusteru](#upgrade-the-cluster-configuration) používat nastavení pro váš cluster. 
+Po úpravě nastavení v souboru ClusterConfig. JSON [otestujte konfiguraci clusteru](#test-the-cluster-configuration) a pak [upgradujte konfiguraci clusteru](#upgrade-the-cluster-configuration) , aby se nastavení projevilo u vašeho clusteru. 
 
 ## <a name="test-the-cluster-configuration"></a>Test konfigurace clusteru
-Než zahájíte configuration upgrade, můžete otestovat novou konfiguraci clusteru JSON spuštěním následujícího skriptu prostředí PowerShell v samostatném balíčku:
+Než začnete s upgradem konfigurace, můžete otestovat nový formát JSON konfigurace clusteru spuštěním následujícího skriptu PowerShellu v samostatném balíčku:
 
 ```powershell
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
@@ -59,33 +50,33 @@ Nebo použijte tento skript:
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
 ```
 
-Některé konfigurace se nedá upgradovat, jako jsou koncové body, název clusteru, IP adresu uzlu, atd. Novou konfiguraci clusteru JSON je testován oproti původní a vyvolá chyby v okně Powershellu, pokud se vyskytl problém.
+Některé konfigurace není možné upgradovat, jako jsou koncové body, název clusteru, IP adresa uzlu atd. Nový kód JSON konfigurace clusteru se testuje proti starému a vyvolá chyby v okně PowerShellu, pokud dojde k nějakému problému.
 
-## <a name="upgrade-the-cluster-configuration"></a>Upgradovat konfiguraci clusteru
-Chcete-li upgradovat konfigurace upgradu clusteru, spusťte [Start ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade). Konfigurace upgradu je zpracovaných upgradovací doména podle upgradovací domény.
+## <a name="upgrade-the-cluster-configuration"></a>Upgrade konfigurace clusteru
+Pokud chcete upgradovat upgrade konfigurace clusteru, spusťte rutinu [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade). Upgrade konfigurace je zpracována upgradovací doména podle upgradované domény.
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 ```
 
-## <a name="upgrade-cluster-certificate-configuration"></a>Upgradovat konfiguraci certifikátů clusteru
-Certifikát clusteru se používá k ověřování mezi uzly clusteru. Certifikáty vyměnit by měl provést další opatrně, protože selhání blokuje komunikaci mezi uzly clusteru.
+## <a name="upgrade-cluster-certificate-configuration"></a>Upgradovat konfiguraci certifikátu clusteru
+Certifikát clusteru se používá pro ověřování mezi uzly clusteru. Změna certifikátu by se měla provádět s mimořádnou opatrností, protože selhání blokuje komunikaci mezi uzly clusteru.
 
-Podporovány jsou čtyři parametry:  
+Podporovány jsou čtyři možnosti:  
 
-* Jeden certifikát upgradu: Způsob upgradu je certifikát (primární) -> certifikát B (primární) -> C certifikát (primární) ->...
+* Upgrade jednoho certifikátu: cesta pro upgrade je certifikát A (primární) – > certifikát B (primární) – > certifikát C (primární) – >....
 
-* Double upgradu certifikátu: Způsob upgradu je certifikát (primární) -> certifikátu (primární) a B (sekundární) -> certifikát B (primární) -> certifikát B (primární) a jazyka C (sekundární) -> C certifikát (primární) ->...
+* Dvojitý upgrade certifikátu: cesta pro upgrade je certifikát A (primární) – > certifikát a (primární) a B (sekundární) – > certifikát B (primární) – > certifikát B (primární) a C (sekundární) – > certifikát C (primární) – >....
 
-* Upgrade typ certifikátu: Konfigurace certifikátu na základě CommonName configuration <> – na základě kryptografického otisku certifikátu. Například kryptografický otisk certifikátu (primární) a kryptografický otisk B (sekundární) -> certifikát CommonName C.
+* Upgrade typu certifikátu: Konfigurace certifikátu založená na kryptografických Otiskech <-> konfiguraci certifikátu založeného na společném certifikátu. Například kryptografický otisk certifikátu (primární) a kryptografický otisk B (sekundární) – > Common C certifikátu.
 
-* Upgrade kryptografický otisk vystavitele certifikátu: Způsob upgradu je CN certifikát = A, IssuerThumbprint = IT1 (primární) -> CN certifikát = A, IssuerThumbprint = IT1 IT2 (primární) -> certifikátů CN = A, IssuerThumbprint = IT2 (primární).
+* Upgrade kryptografického otisku vystavitele certifikátu: cesta pro upgrade je certifikát CN = A, IssuerThumbprint = IT1 (primární)-> certifikát CN = A, IssuerThumbprint = IT1, IT2 (primární)-> certifikát CN = A, IssuerThumbprint = IT2 (primární).
 
 
-## <a name="next-steps"></a>Další postup
-* Zjistěte, jak přizpůsobit některé [nastavení clusteru Service Fabric](service-fabric-cluster-fabric-settings.md).
-* Zjistěte, jak [škálování clusteru dovnitř a ven](service-fabric-cluster-scale-up-down.md).
-* Další informace o [upgrady aplikací](service-fabric-application-upgrade.md).
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si, jak přizpůsobit některá [Service Fabric nastavení clusteru](service-fabric-cluster-fabric-settings.md).
+* Přečtěte si, jak [škálovat cluster na úrovni a](service-fabric-cluster-scale-up-down.md).
+* Seznamte se s [upgrady aplikací](service-fabric-application-upgrade.md).
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

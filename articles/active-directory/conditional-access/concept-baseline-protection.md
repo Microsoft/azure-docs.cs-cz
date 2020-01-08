@@ -5,28 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb, rogoya
+ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9bb384045c8b2e0a5743fdc301a829792639b7e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a15b55aa3d8cc8f16a35c858d11e3d20c260bff8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425023"
 ---
 # <a name="what-are-baseline-policies"></a>Co jsou základní zásady?
 
-Základní zásady představují sadu předdefinovaných zásad, které vám pomůžou chránit organizace před velkým počtem běžných útoků. Mezi tyto běžné útoky můžou patřit spreje, přehrávání a útoky prostřednictvím hesla. Základní zásady jsou k dispozici ve všech edicích služby Azure AD. Společnost Microsoft tyto zásady ochrany základní úrovně zpřístupňuje všem, protože útoky na základě identity byly na nárůstu za posledních několik let. Cílem těchto čtyř zásad je zajistit, aby u všech organizací byla povolená základní úroveň zabezpečení bez dalších poplatků.  
+Základní zásady představují sadu předdefinovaných zásad, které vám pomůžou chránit organizace před velkým počtem běžných útoků. Mezi tyto běžné útoky můžou patřit spreje, přehrávání a útoky prostřednictvím hesla. Základní zásady jsou k dispozici ve všech edicích služby Azure AD. Společnost Microsoft tyto zásady ochrany základní úrovně zpřístupňuje všem, protože útoky na základě identity byly na nárůstu za posledních několik let. Cílem těchto čtyř zásad je zajistit, aby u všech organizací byla povolená základní úroveň zabezpečení bez dalších poplatků.
 
 Správa vlastních zásad podmíněného přístupu vyžaduje licenci Azure AD Premium.
 
+> [!IMPORTANT]
+> Depricated se základní zásady. Další informace najdete [v tématu Co je nového v Azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) .
+
 ## <a name="baseline-policies"></a>Základní zásady
 
-![Základní zásady podmíněného přístupu v Azure Portal](./media/concept-baseline-protection/conditional-access-policies.png)
+![Základní zásady podmíněného přístupu v Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Existují čtyři základní zásady:
 
@@ -36,6 +39,10 @@ Existují čtyři základní zásady:
 * Vyžadovat MFA pro správu služby (Preview)
 
 Všechny čtyři tyto zásady budou mít vliv na starší toky ověřování, jako jsou POP, IMAP a starší Office desktopových klientů.
+
+### <a name="exclusions"></a>Vyloučení
+
+Když se základní zásady přestanou do jejich prvotní verze Public Preview, bylo by k dispozici možnost vyloučit uživatele ze zásad. Tato funkce se vyvinula v rámci verze Preview a odebrala se v červenci 2019. Organizace, které již vytvořili vyloučení, mohly nadále zachovat, aby noví uživatelé nemohli přidat vyloučení do zásad.
 
 ### <a name="require-mfa-for-admins-preview"></a>Vyžadovat MFA pro správce (Preview)
 
@@ -60,8 +67,8 @@ Vysoce privilegovaní správci nejsou jediným cílem útoků. Chybné objekty a
 
 **Ochrana koncového uživatele (Preview)** je základní zásada, která chrání všechny uživatele v adresáři. Když se tyto zásady povolí, vyžaduje se, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication do 14 dnů. Po registraci se uživatelům zobrazí výzva k MFA jenom během pokusů o rizikové přihlašování. Ohrožení uživatelských účtů se zablokuje, dokud se resetování hesla nevrátí a nehrozí. 
 
-[!NOTE]
-Všichni uživatelé, kteří byli dříve označeni příznakem rizika, budou zablokováni, dokud nevyberete heslo a nehrozí riziko při aktivaci zásad
+> [!NOTE]
+> Všichni uživatelé, kteří byli dříve označeni příznakem rizika, budou zablokováni, dokud nevyberete heslo a nehrozí riziko při aktivaci zásad
 
 ### <a name="block-legacy-authentication-preview"></a>Blokovat starší verze ověřování (Preview)
 
@@ -75,8 +82,8 @@ Zásada směrného plánu **starší verze ověřování (Preview)** blokuje ž�
 
 Organizace využívají celou řadu služeb Azure a spravují je od Azure Resource Managerch nástrojů, jako jsou:
 
-* portál Azure
-* Azure Powershell
+* Portál Azure
+* Azure PowerShell
 * Azure CLI
 
 Použití některého z těchto nástrojů k provedení správy prostředků je vysoce privilegované akce. Tyto nástroje můžou upravovat konfigurace v rámci předplatného, jako je třeba nastavení služby a fakturace předplatného.
@@ -85,8 +92,8 @@ Aby bylo možné chránit privilegované akce, bude **vyžadovat vícefaktorové
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v tématu:
+Další informace:
 
+* [Povolení výchozích hodnot zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md)
 * [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
-* [Pět kroků k zabezpečení infrastruktury identit](../../security/fundamentals/steps-secure-identity.md)
-* [Co je podmíněný přístup v Azure Active Directory?](overview.md)
+* [Pět kroků k zabezpečení vaší infrastruktury pro správu identit](../../security/fundamentals/steps-secure-identity.md)

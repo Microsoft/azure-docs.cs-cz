@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86cce0ee2a4966e2c2c8d74ad63a50976c199eb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425143"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -26,9 +26,12 @@ Tato Nejčastější dotazy vám poodpoví na běžné otázky týkající se Az
 
 > [!IMPORTANT]
 > Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
+> 
+> Licencování na základě spotřeby už od 1. září 2018 není k dispozici pro nové zákazníky.
+> Od 1. září 2018 již možná nebudou vytvořeny Noví zprostředkovatelé ověřování. Stávající zprostředkovatelé ověřování se můžou dál používat a aktualizovat. Multi-Factor Authentication bude nadále dostupná funkce v Azure AD Premium licencích.
+
 > [!NOTE]
 > Níže uvedené informace týkající se služby Azure Multi-Factor Authentication Server se vztahují jenom na uživatele, kteří už mají Server MFA spuštěný.
-
 
 **Otázka: jak Azure Multi-Factor Authentication Server zpracovává data uživatelů?**
 
@@ -202,7 +205,7 @@ Existuje několik důvodů, proč se uživatelům zobrazí výzva k registraci i
 - Organizace vytvořila a povolila zásady registrace MFA, které se pro uživatele nastavily.
 - Uživatel, který byl dříve zaregistrován pro MFA, ale zvolil metodu ověřování, kterou správce od zakázání zakázal. Uživatel musí proto znovu projít registrací MFA a vybrat novou výchozí metodu ověřování.
 
-## <a name="errors"></a>Chyby
+## <a name="errors"></a>chyby
 
 **Otázka: co by měli uživatelé dělat, pokud se při použití oznámení mobilní aplikace zobrazí chybová zpráva "žádost o ověření není pro aktivovaný účet"?**
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443830"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -48,7 +48,7 @@ Velikost OLTP prostoru v paměti v [pro důležité obchodní informace](sql-dat
 | OLTP místo v paměti  | **Gen5** | **COMPUTE GEN4 –** |
 | --- | --- | --- |
 | 4 virtuální jádra  | 3,14 GB | |   
-| 8 virtuální jádra  | 6,28 GB | 8 GB |
+| 8 virtuálních jader  | 6,28 GB | 8 GB |
 | 16 virtuální jádra | 15,77 GB | 20 GB |
 | 24 virtuální jádra | 25,25 GB | 36 GB |
 | 32 virtuální jádra | 37,94 GB | |
@@ -75,9 +75,9 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 | Maximální velikost datového souboru | Omezeno na aktuálně dostupnou velikost úložiště instance (max. 2 TB-8 TB) a [místo přidělení diskového úložiště Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Omezeno na velikost úložiště aktuálně dostupné instance (až do velikosti 1 TB až 4 TB). |
 | Maximální velikost souboru protokolu | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. |
 | Data/protokol IOPS (přibližná) | Až 30-40 K IOPS na instanci *, 500-7500 na jeden soubor<br/>\*[zvětšit velikost souboru a získat tak více IOPS](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
-| Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Maximální 48 MB/s |
+| Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Max 48 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](#file-io-characteristics-in-general-purpose-tier) . | Neomezeno. |
-| Latence v/v úložiště (přibližná) | 5-10 MS | 1-2 MS |
+| Latence v/v úložiště (přibližná) | 5-10 ms | 1-2 ms |
 | OLTP v paměti | Nepodporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
 | [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
@@ -87,7 +87,7 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 > - Velikost dat a souborů protokolu v uživatelských i systémových databázích jsou zahrnuté do velikosti úložiště instance, která je porovnávána s limitem maximální velikosti úložiště. Pomocí zobrazení <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">Sys. master_files</a> systému určíte celkové využité místo databáze. Protokoly chyb nejsou trvale uložené a nejsou zahrnuté do velikosti. Zálohy nejsou zahrnuté do velikosti úložiště.
 > - Propustnost a IOPS v Pro obecné účely úrovni závisí taky na [velikosti souboru](#file-io-characteristics-in-general-purpose-tier) , která není explicitně omezená pomocí spravované instance.
 > - Pomocí skupin s automatickým převzetím služeb při selhání můžete vytvořit další čitelnou repliku v jiné oblasti Azure.
-> - Maximální instance IOPS závisí na rozložení souborů a distribuci úlohy. Pokud například vytváříte soubory o velikosti 7 až 1 GB s maximálním počtem 5K IOPS každý a 7 malým počtem souborů (menší než 128 GB) s 500 IOPS, můžete pro každou instanci získat 38500 IOPS (7x5000 + 7x500), pokud vaše úloha může použít všechny soubory. Všimněte si, že pro automatické zálohování se používá také určité množství IOPS.
+> - Maximální instance IOPS závisí na rozložení souborů a distribuci úlohy. Pokud například vytváříte soubory o velikosti 7 až 1 TB s maximálním počtem 5K IOPS, každý a 7 malých souborů (menší než 128 GB) s 500 IOPS za sekundu, můžete získat 38500 IOPS na instanci (7x5000 + 7x500), pokud vaše úloha může použít všechny soubory. Všimněte si, že pro automatické zálohování se používá také určité množství IOPS.
 
 > [!NOTE]
 > Další informace o [omezeních prostředků ve fondech spravované instance v tomto článku](sql-database-instance-pools.md#instance-pools-resource-limitations).
@@ -99,7 +99,7 @@ Na úrovni služby Pro obecné účely každý databázový soubor získává vy
 | Velikost souboru           | 0-128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5 – 1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Počet IOPS na soubor       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
-| Propustnost na jeden soubor | soubory MiB 100/s | soubory MiB 125/s | soubory MiB 150/s | soubory MiB 200/s | soubory MiB 250/s | soubory MiB 250/s | soubory MiB 480/s | 
+| Propustnost na jeden soubor | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | soubory MiB 480/s | 
 
 Pokud si všimnete vysoké latence v/v některých databázových souborů nebo zjistíte, že počet IOPS/propustnost dosáhne limitu, můžete zvýšit výkon [zvýšením velikosti souboru](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).
 
@@ -153,7 +153,7 @@ Postup pro zahájení procesu získání větší kvóty:
 
 1. Otevřete **help + podpora**a klikněte na **Nová žádost o podporu**.
 
-   ![Pomoc a podpora](media/sql-database-managed-instance-resource-limits/help-and-support.png)
+   ![Nápověda a podpora](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Na kartě základy nové žádosti o podporu:
    - Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
    - V části **Předplatné** vyberte své předplatné.

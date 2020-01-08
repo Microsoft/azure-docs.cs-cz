@@ -1,5 +1,5 @@
 ---
-title: Řízení přístupu Azure Service Bus se sdílenými přístupovými podpisy | Microsoft Docs
+title: Řízení přístupu Azure Service Bus pomocí sdílených přístupových podpisů
 description: Přehled řízení přístupu Service Bus pomocí podpisů sdíleného přístupu najdete v podrobnostech o autorizaci SAS pomocí Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
@@ -11,41 +11,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013055"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462075"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
-*Sdílené přístupové podpisy* (SAS) jsou primárním mechanismem zabezpečení pro Service Bus zasílání zpráv. Tento článek popisuje SAS, jak fungují, a jak je používat na platformě nezávislá.
+*Sdílené přístupové podpisy* (SAS) jsou primární mechanismus zabezpečení pro Service Bus zasílání zpráv. Tento článek popisuje SAS, jak fungují, a jak je používat na platformě nezávislá.
 
 SAS chrání přístup k Service Bus na základě autorizačních pravidel. Ty jsou nakonfigurovány buď v oboru názvů, nebo v entitě zasílání zpráv (Relay, Queue nebo téma). Autorizační pravidlo má název, je spojeno s konkrétními právy a přináší dvojici kryptografických klíčů. Název a klíč pravidla použijete prostřednictvím sady Service Bus SDK nebo ve vlastním kódu pro vygenerování tokenu SAS. Klient pak může token předat Service Bus, aby prokáže autorizaci pro požadovanou operaci.
 
 > [!NOTE]
 > Azure Service Bus podporuje autorizaci přístupu k oboru názvů Service Bus a jeho entitám pomocí Azure Active Directory (Azure AD). Ověřování uživatelů nebo aplikací pomocí tokenu OAuth 2,0 vráceného službou Azure AD poskytuje vynikající zabezpečení a usnadňuje použití přes sdílené přístupové podpisy (SAS). V případě Azure AD není nutné ukládat tokeny do kódu a ohrozit potenciální ohrožení zabezpečení.
 >
-> Microsoft doporučuje používat Azure AD s aplikacemi Azure Service Bus, pokud je to možné. Další informace najdete v následujících článcích:
-> - [Ověřování a autorizace aplikace s Azure Active Directory pro přístup](authenticate-application.md)k Azure Service BUSM entitám.
+> Microsoft doporučuje používat Azure AD s aplikacemi Azure Service Bus, pokud je to možné. Další informace najdete v těchto článcích:
+> - [Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service BUSM entitám](authenticate-application.md).
 > - [Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus](service-bus-managed-service-identity.md)
 
 ## <a name="overview-of-sas"></a>Přehled SAS
 
 Sdílené přístupové podpisy jsou mechanizmus ověřování založeného na deklaracích využívajících jednoduché tokeny. Pomocí SAS se klíče nikdy nepředávají na lince. Klíče se používají pro kryptografické podepisování informací, které může služba později ověřit. SAS se dá použít podobně jako uživatelské jméno a schéma hesla, kde je klient v bezprostředním vlastnictví názvu autorizačního pravidla a odpovídajícího klíče. SAS se taky dá použít podobně jako model federovaného zabezpečení, kde klient obdrží token zabezpečení s omezeným přístupem od služby tokenů zabezpečení, aniž by musel mít k dispozici podpisový klíč.
 
-Ověřování SAS v Service Bus je nakonfigurované s pojmenovanými [autorizačními pravidly přístupu](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , která mají přidružená přístupová práva, a pár primárních a sekundárních kryptografických klíčů. Klíče jsou 256 hodnoty v reprezentaci base64. Pravidla můžete konfigurovat na úrovni oboru názvů, při Service Busch [](../service-bus-relay/relay-what-is-it.md)přenosech [](service-bus-messaging-overview.md#queues), frontách a [tématech](service-bus-messaging-overview.md#topics).
+Ověřování SAS v Service Bus je nakonfigurované s pojmenovanými [autorizačními pravidly přístupu](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , která mají přidružená přístupová práva, a pár primárních a sekundárních kryptografických klíčů. Klíče jsou 256 hodnoty v reprezentaci base64. Pravidla můžete konfigurovat na úrovni oboru [názvů, při Service Busch](../service-bus-relay/relay-what-is-it.md)přenosech, [frontách](service-bus-messaging-overview.md#queues)a [tématech](service-bus-messaging-overview.md#topics).
 
-Token [sdíleného přístupového podpisu](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) obsahuje název zvoleného autorizačního pravidla, identifikátor URI prostředku, ke kterému se přistupuje, okamžitá platnost a kryptografický podpis HMAC-SHA256 počítaný přes tato pole, a to pomocí primární nebo sekundární kryptografický klíč vybraného autorizačního pravidla
+Token [sdíleného přístupového podpisu](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) obsahuje název zvoleného autorizačního pravidla, identifikátor URI prostředku, ke kterému se má získat přístup, okamžitá platnost a kryptografický podpis HMAC-SHA256 počítaný přes tato pole pomocí primárního nebo sekundárního kryptografického klíče zvoleného autorizačního pravidla.
 
 ## <a name="shared-access-authorization-policies"></a>Zásady autorizace sdíleného přístupu
 
 Každý Service Bus obor názvů a každá Service Bus entita má nastavené zásady autorizace sdíleného přístupu z pravidel. Zásady na úrovni oboru názvů platí pro všechny entity v oboru názvů bez ohledu na jejich jednotlivé konfigurace zásad.
 
-U každého pravidla zásad autorizace se rozhodujete o třech údajích, které se týkají **názvu**, **oboru**a **práv**. **Název** je pouze to; jedinečný název v rámci tohoto oboru. Obor je dostatečně snadný: Jedná se o identifikátor URI daného prostředku. V případě oboru názvů Service Bus obor je plně kvalifikovaný název domény (FQDN), například `https://<yournamespace>.servicebus.windows.net/`.
+U každého pravidla zásad autorizace se rozhodujete o třech údajích, které se týkají **názvu**, **oboru**a **práv**. **Název** je pouze to; jedinečný název v rámci tohoto oboru. Obor je dostatečně snadný: Jedná se o identifikátor URI daného prostředku. V případě oboru názvů Service Bus obor je plně kvalifikovaný název domény (FQDN), jako je například `https://<yournamespace>.servicebus.windows.net/`.
 
 Práva, která jsou odvozená pravidlem zásad, můžou být kombinací:
 
@@ -63,11 +63,11 @@ Když vytvoříte obor názvů Service Bus, pro obor názvů se automaticky vytv
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Konfigurace pro ověřování sdíleného přístupového podpisu
 
-Pravidlo [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) můžete nakonfigurovat na Service Bus obory názvů, fronty nebo témata. Konfigurace [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) v předplatném Service Bus v tuto chvíli není podporovaná, ale pro zabezpečení přístupu k předplatným můžete použít pravidla konfigurovaná v oboru názvů nebo tématu. Pracovní ukázku, která tento postup znázorňuje, najdete v ukázce [použití ověřování pomocí sdíleného přístupového podpisu (SAS) s](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) ukázkami předplatného Service Bus.
+Pravidlo [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) můžete nakonfigurovat na Service Bus obory názvů, fronty nebo témata. Konfigurace [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) v předplatném Service Bus v tuto chvíli není podporovaná, ale pro zabezpečení přístupu k předplatným můžete použít pravidla konfigurovaná v oboru názvů nebo tématu. Pracovní ukázku, která tento postup znázorňuje, najdete v ukázce [použití ověřování pomocí sdíleného přístupového podpisu (SAS) s ukázkami Předplatného Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) .
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-Na tomto obrázku se autorizační pravidla *manageRuleNS*, *sendRuleNS*a *ListenRuleNS* vztahují na front-Q1 i na téma T1, zatímco *listenRuleQ* a *SendRuleQ* se použijí jenom pro frontu Q1 a *sendRuleT* pouze. na téma T1.
+Na tomto obrázku se autorizační pravidla *manageRuleNS*, *sendRuleNS*a *ListenRuleNS* vztahují na front-Q1 i na téma T1, zatímco *listenRuleQ* a *SendRuleQ* platí jenom pro zařazení do fronty F1 a *sendRuleT* platí jenom pro téma T1.
 
 ## <a name="generate-a-shared-access-signature-token"></a>Generování tokenu sdíleného přístupového podpisu
 
@@ -77,12 +77,12 @@ Každý klient, který má přístup k názvu autorizačního pravidla a jeden z
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`** – Okamžité vypršení platnosti tokenu Celé číslo odráží sekundy od epocha `00:00:00 UTC` dne 1. ledna 1970 (UNIX epocha), až vyprší platnost tokenu.
-* **`skn`** – Název autorizačního pravidla.
-* **`sr`** – Identifikátor URI přistupované prostředku.
-* **`sig`** Označení.
+* **`se`** – okamžité vypršení platnosti tokenu Celé číslo odráží sekundy od epocha `00:00:00 UTC` od 1. ledna 1970 (UNIX epocha), až vyprší platnost tokenu.
+* **`skn`** – název autorizačního pravidla.
+* **`sr`** – identifikátor URI přistupované prostředku
+* **`sig`** -signatura
 
-Je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (obor, jak je popsáno v předchozí části), a řetězcové vyjádření funkce vypršení platnosti tokenu, která je oddělená znakem CRLF. `signature-string`
+`signature-string` je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (**Rozsah** jak je popsáno v předchozí části) a řetězcové vyjádření funkce vypršení platnosti tokenu, která je oddělená znaky CRLF.
 
 Výpočet hodnoty hash se podobá následujícímu pseudo kódu a vrací hodnotu hash s 256 bity a 32 bajty.
 
@@ -92,13 +92,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Token obsahuje hodnoty, které nejsou hash, aby příjemce mohl znovu vypočítat hodnotu hash se stejnými parametry a ověřit, zda má Vystavitel k dispozici platný podpisový klíč.
 
-Identifikátor URI prostředku je úplný identifikátor URI Service Bus prostředku, ke kterému je nárok na přístup. Například `http://<namespace>.servicebus.windows.net/<entityPath>` `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`nebo `sb://<namespace>.servicebus.windows.net/<entityPath>`; to znamená. 
+Identifikátor URI prostředku je úplný identifikátor URI Service Bus prostředku, ke kterému je nárok na přístup. Například `http://<namespace>.servicebus.windows.net/<entityPath>` nebo `sb://<namespace>.servicebus.windows.net/<entityPath>`; To znamená, `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
 
-**Identifikátor URI musí být [kódovaný](https://msdn.microsoft.com/library/4fkewx0t.aspx)v procentech.**
+**Identifikátor URI musí být [kódovaný v procentech](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
 
-Autorizační pravidlo sdíleného přístupu použité pro podepisování musí být nakonfigurováno pro entitu určenou tímto identifikátorem URI nebo jedním z jeho hierarchických nadřazených prvků. Například `http://contoso.servicebus.windows.net/contosoTopics/T1` nebo`http://contoso.servicebus.windows.net` v předchozím příkladu.
+Autorizační pravidlo sdíleného přístupu použité pro podepisování musí být nakonfigurováno pro entitu určenou tímto identifikátorem URI nebo jedním z jeho hierarchických nadřazených prvků. Například `http://contoso.servicebus.windows.net/contosoTopics/T1` nebo `http://contoso.servicebus.windows.net` v předchozím příkladu.
 
-Token SAS je platný pro všechny prostředky s `<resourceURI>` předponou použitou `signature-string`v.
+Token SAS je platný pro všechny prostředky s předponou `<resourceURI>` použitou v `signature-string`.
 
 ## <a name="regenerating-keys"></a>Opětovné generování klíčů
 
@@ -110,11 +110,11 @@ Pokud víte nebo máte podezření, že došlo k ohrožení bezpečnosti klíče
 
 Zde popsané scénáře zahrnují konfiguraci autorizačních pravidel, generování tokenů SAS a autorizaci klientů.
 
-Úplnou pracovní ukázku aplikace Service Bus, která ilustruje konfiguraci a používá autorizaci SAS, najdete v tématu [ověřování pomocí sdíleného přístupového podpisu s Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Související ukázka, která demonstruje použití autorizačních pravidel SAS nakonfigurovaných v oborech názvů nebo tématech k zabezpečení předplatného Service Bus, je k dispozici zde: [Pomocí ověřování pomocí sdíleného přístupového podpisu (SAS) s Předplatnými Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Úplnou pracovní ukázku aplikace Service Bus, která ilustruje konfiguraci a používá autorizaci SAS, najdete v tématu [ověřování pomocí sdíleného přístupového podpisu s Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Související ukázka, která demonstruje použití autorizačních pravidel SAS nakonfigurovaných v oborech názvů nebo tématech k zabezpečení předplatného Service Bus, najdete tady: [použití ověřování pomocí sdíleného přístupového podpisu (SAS) s Předplatnými Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Přístup k autorizačním pravidlům sdíleného přístupu pro entitu
 
-Pomocí knihoven Service Bus .NET Framework můžete přistupovat k objektu [Microsoft. ServiceBus. Messaging. SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) nakonfigurovanému ve frontě Service Bus nebo tématu prostřednictvím kolekce [autorizačních pravidel](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) v příslušném [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) nebo [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription).
+Pomocí knihoven Service Bus .NET Framework můžete přistupovat k objektu [Microsoft. ServiceBus. Messaging. SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) nakonfigurovanému ve frontě Service Bus nebo tématu prostřednictvím kolekce [autorizačních pravidel](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) v odpovídajícím [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) nebo [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription).
 
 Následující kód ukazuje, jak přidat autorizační pravidla pro frontu.
 
@@ -191,7 +191,7 @@ V předchozí části jste viděli, jak použít token SAS s požadavkem HTTP PO
 
 Předtím, než začnete odesílat data do Service Bus, musí vydavatel odeslat token SAS v rámci zprávy AMQP do dobře definovaného uzlu AMQP s názvem **$CBS** (můžete ho zobrazit jako "speciální" frontu, kterou služba používá k získání a ověření všech tokenů SAS. Vydavatel musí ve zprávě AMQP zadat pole **ReplyTo** ; Jedná se o uzel, ve kterém služba reaguje na vydavatele s výsledkem ověření tokenu (jednoduchý vzor žádosti a odpovědi mezi vydavatelem a službou). Tento uzel odpovědi se vytvoří průběžně, mluví o dynamickém vytváření vzdáleného uzlu, jak je popsáno ve specifikaci AMQP 1,0. Po kontrole platnosti tokenu SAS může vydavatel přejít do služby a začít posílat data.
 
-Následující kroky ukazují, jak odeslat token SAS pomocí protokolu AMQP pomocí knihovny [AMQP.NET Lite](https://github.com/Azure/amqpnetlite) . To je užitečné, pokud nemůžete použít oficiální sadu Service Bus SDK (například na WinRT, prostředí .NET Compact Framework, .NET Micro Framework a mono) vývoj v\#jazyce C. Tato knihovna je samozřejmě užitečná pro pochopení, jak funguje zabezpečení založené na deklaracích na úrovni AMQP, jak jste viděli, jak funguje na úrovni HTTP (s požadavkem HTTP POST a tokenem SAS odesílaným v hlavičce "Authorization"). Pokud nepotřebujete takové hloubkové znalosti o AMQP, můžete použít oficiální sadu Service Bus SDK s .NET Framework aplikacemi, které to provede za vás.
+Následující kroky ukazují, jak odeslat token SAS pomocí protokolu AMQP pomocí knihovny [AMQP.NET Lite](https://github.com/Azure/amqpnetlite) . To je užitečné, pokud nemůžete použít oficiální sadu Service Bus SDK (například na WinRT, prostředí .NET Compact Framework, .NET Micro Framework a mono) vývoj v jazyce C\#. Tato knihovna je samozřejmě užitečná pro pochopení, jak funguje zabezpečení založené na deklaracích na úrovni AMQP, jak jste viděli, jak funguje na úrovni HTTP (s požadavkem HTTP POST a tokenem SAS odesílaným v hlavičce "Authorization"). Pokud nepotřebujete takové hloubkové znalosti o AMQP, můžete použít oficiální sadu Service Bus SDK s .NET Framework aplikacemi, které to provede za vás.
 
 ### <a name="c35"></a>C&#35;
 
@@ -244,7 +244,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-Metoda přijímá *připojení* (instance třídy připojení AMQP, která je poskytována [knihovnou AMQP .NET Lite](https://github.com/Azure/amqpnetlite)), která představuje připojení TCP ke službě a parametr sasToken, který je token SAS k odeslání. `PutCbsToken()`
+Metoda `PutCbsToken()` přijímá *připojení* (instance třídy připojení AMQP, jak je poskytována [knihovnou AMQP .NET Lite](https://github.com/Azure/amqpnetlite)), která představuje připojení TCP ke službě a parametr *sasToken* , který je tokenem SAS k odeslání.
 
 > [!NOTE]
 > Je důležité, aby se připojení vytvořilo pomocí **mechanismu ověřování SASL nastaveného na anonymní** (a ne jako výchozí jednoduché s uživatelským jménem a heslem, které se používá, pokud nepotřebujete odeslat token SAS).
@@ -253,7 +253,7 @@ Metoda přijímá *připojení* (instance třídy připojení AMQP, která je po
 
 V dalším kroku vytvoří Vydavatel dvě AMQP odkazy pro odeslání tokenu SAS a příjem odpovědi (výsledek ověření tokenu) ze služby.
 
-Zpráva AMQP obsahuje sadu vlastností a další informace než jednoduchá zpráva. Token SAS je tělo zprávy (pomocí jejího konstruktoru). Vlastnost **"ReplyTo"** je nastavená na název uzlu pro příjem výsledku ověření na odkazu přijímače (jeho název můžete změnit, pokud chcete, a dynamicky ho vytvoří služba). Poslední tři vlastnosti aplikace nebo vlastní aplikace jsou službou používány k označení toho, jaký druh operace je nutné provést. Jak je popsáno ve specifikaci konceptu CBS, musí se jednat o **název operace** ("Put-token"), **typ tokenu** (v tomto `servicebus.windows.net:sastoken`případě a) a **"název" cílové skupiny** , na kterou se vztahuje token (celá entita).
+Zpráva AMQP obsahuje sadu vlastností a další informace než jednoduchá zpráva. Token SAS je tělo zprávy (pomocí jejího konstruktoru). Vlastnost **"ReplyTo"** je nastavená na název uzlu pro příjem výsledku ověření na odkazu přijímače (jeho název můžete změnit, pokud chcete, a dynamicky ho vytvoří služba). Poslední tři vlastnosti aplikace nebo vlastní aplikace jsou službou používány k označení toho, jaký druh operace je nutné provést. Jak je popsáno ve specifikaci konceptu CBS, musí se jednat o **název operace** ("Put-token"), **typ tokenu** (v tomto případě `servicebus.windows.net:sastoken`) a **"název" cílové skupiny** , na kterou se vztahuje token (celá entita).
 
 Po odeslání tokenu SAS na odkaz odesílatele musí vydavatel přečíst odpověď na odkazu příjemce. Odpověď je jednoduchá AMQP zpráva s vlastností aplikace s názvem **"stavový kód"** , která může obsahovat stejné hodnoty jako stavový kód HTTP.
 
@@ -264,18 +264,18 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 | Operace | Požadovaná deklarace identity | Rozsah deklarací identity |
 | --- | --- | --- |
 | **Namespace** | | |
-| Konfigurace autorizačního pravidla pro obor názvů |Spravovat |Libovolná adresa oboru názvů |
+| Konfigurace autorizačního pravidla pro obor názvů |Spravujte |Libovolná adresa oboru názvů |
 | **Registr služby** | | |
-| Zobrazení výčtu privátních zásad |Spravovat |Libovolná adresa oboru názvů |
+| Zobrazení výčtu privátních zásad |Spravujte |Libovolná adresa oboru názvů |
 | Zahájení naslouchání na oboru názvů |Naslouchat |Libovolná adresa oboru názvů |
-| Odesílání zpráv do naslouchacího procesu v oboru názvů |Poslat |Libovolná adresa oboru názvů |
-| **Provedených** | | |
-| Vytvoření fronty |Spravovat |Libovolná adresa oboru názvů |
-| Odstranění fronty |Spravovat |Libovolná platná adresa fronty |
-| Zobrazení výčtu front |Spravovat |/Queues $Resources |
-| Získat popis fronty |Spravovat |Libovolná platná adresa fronty |
-| Konfigurace autorizačního pravidla pro frontu |Spravovat |Libovolná platná adresa fronty |
-| Odeslat do fronty |Poslat |Libovolná platná adresa fronty |
+| Odesílání zpráv do naslouchacího procesu v oboru názvů |Odeslat |Libovolná adresa oboru názvů |
+| **Fronta** | | |
+| Vytvoření fronty |Spravujte |Libovolná adresa oboru názvů |
+| Odstranění fronty |Spravujte |Libovolná platná adresa fronty |
+| Zobrazení výčtu front |Spravujte |/Queues $Resources |
+| Získat popis fronty |Spravujte |Libovolná platná adresa fronty |
+| Konfigurace autorizačního pravidla pro frontu |Spravujte |Libovolná platná adresa fronty |
+| Odeslat do fronty |Odeslat |Libovolná platná adresa fronty |
 | Přijímání zpráv z fronty |Naslouchat |Libovolná platná adresa fronty |
 | Opuštění nebo ukončení zpráv po přijetí zprávy v režimu prohlížení zámku |Naslouchat |Libovolná platná adresa fronty |
 | Odložit zprávu pro pozdější načtení |Naslouchat |Libovolná platná adresa fronty |
@@ -284,28 +284,28 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 | Nastavení stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Naplánování zprávy pro pozdější doručení; například [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Naslouchat | Libovolná platná adresa fronty
 | **Téma** | | |
-| Vytvoření tématu |Spravovat |Libovolná adresa oboru názvů |
-| Odstranění tématu |Spravovat |Jakákoli platná adresa tématu |
-| Vyčíslení výčtu témat |Spravovat |/Topics $Resources |
-| Získat popis tématu |Spravovat |Jakákoli platná adresa tématu |
-| Konfigurace autorizačního pravidla pro téma |Spravovat |Jakákoli platná adresa tématu |
-| Odeslat do tématu |Poslat |Jakákoli platná adresa tématu |
+| Vytvoření tématu |Spravujte |Libovolná adresa oboru názvů |
+| Odstranění tématu |Spravujte |Jakákoli platná adresa tématu |
+| Vyčíslení výčtu témat |Spravujte |/Topics $Resources |
+| Získat popis tématu |Spravujte |Jakákoli platná adresa tématu |
+| Konfigurace autorizačního pravidla pro téma |Spravujte |Jakákoli platná adresa tématu |
+| Odeslat do tématu |Odeslat |Jakákoli platná adresa tématu |
 | **Předplatné** | | |
-| Vytvoření odběru |Spravovat |Libovolná adresa oboru názvů |
-| Odstranit předplatné |Spravovat |.. /myTopic/Subscriptions/mySubscription |
-| Zobrazení výčtu předplatných |Spravovat |.. /myTopic/Subscriptions |
-| Získat popis předplatného |Spravovat |.. /myTopic/Subscriptions/mySubscription |
+| Vytvoření odběru |Spravujte |Libovolná adresa oboru názvů |
+| Odstranění předplatného |Spravujte |.. /myTopic/Subscriptions/mySubscription |
+| Zobrazení výčtu předplatných |Spravujte |.. /myTopic/Subscriptions |
+| Získat popis předplatného |Spravujte |.. /myTopic/Subscriptions/mySubscription |
 | Opuštění nebo ukončení zpráv po přijetí zprávy v režimu prohlížení zámku |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | Odložit zprávu pro pozdější načtení |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | Zpráva nedoručených zpráv |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | Získání stavu přidruženého k relaci tématu |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | Nastavení stavu přidruženého k relaci tématu |Naslouchat |.. /myTopic/Subscriptions/mySubscription |
 | **pravidla** | | |
-| Vytvoření pravidla |Spravovat |.. /myTopic/Subscriptions/mySubscription |
-| Odstranění pravidla |Spravovat |.. /myTopic/Subscriptions/mySubscription |
+| Vytvoření pravidla |Spravujte |.. /myTopic/Subscriptions/mySubscription |
+| Odstranění pravidla |Spravujte |.. /myTopic/Subscriptions/mySubscription |
 | Zobrazení výčtu pravidel |Spravovat nebo naslouchat |.. /myTopic/Subscriptions/mySubscription/Rules
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se o přenosu zpráv přes Service Bus chcete dozvědět víc, pročtěte si následující témata.
 

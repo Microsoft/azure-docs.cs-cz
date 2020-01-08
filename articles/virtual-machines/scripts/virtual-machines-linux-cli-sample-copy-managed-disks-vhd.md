@@ -1,6 +1,6 @@
 ---
-title: Azure CLI ukázkový – kopírování spravovaných disků do účtu úložiště
-description: Azure CLI ukázkový – Export nebo kopírování spravovaných disků do účtu úložiště.
+title: Kopírování spravovaných disků do účtu úložiště – ukázka rozhraní příkazového řádku
+description: Ukázka Azure CLI – export nebo kopírování spravovaných disků do účtu úložiště
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 05/09/2019
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: c5055860df007d0f009bd08c2b211ffeeaad711f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 242af0c1dcec13f449cea8e37a60f00c1e87561b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458502"
 ---
-# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Export nebo kopírování spravovaného disku do účtu úložiště pomocí Azure CLI
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Export/zkopírování spravovaného disku do účtu úložiště pomocí Azure CLI
 
-Tento skript exportuje základní virtuální pevný disk spravovaného disku do účtu úložiště ve stejné nebo jiné oblasti. Nejprve vygeneruje identifikátor URI SAS spravovaného disku a pak pomocí něj zkopíruje virtuální pevný disk do účtu úložiště. Tento skript můžete použít ke zkopírování spravovaných disků do jiné oblasti za účelem regionálního rozšíření. Pokud chcete soubor virtuálního pevného disku spravovaného disku publikovat na webu Azure Marketplace, můžete tento skript zkopírujte soubor virtuálního pevného disku do účtu úložiště a pak vygenerovat identifikátor URI SAS zkopírovaného virtuálního pevného disku pro publikování na webu Marketplace.   
+Tento skript exportuje základní virtuální pevný disk spravovaného disku do účtu úložiště ve stejné nebo jiné oblasti. Nejprve vygeneruje identifikátor URI SAS spravovaného disku a pak pomocí něj zkopíruje virtuální pevný disk do účtu úložiště. Tento skript můžete použít ke zkopírování spravovaných disků do jiné oblasti za účelem regionálního rozšíření. Pokud chcete publikovat soubor VHD se spravovaným diskem v Azure Marketplace, můžete tento skript použít ke zkopírování souboru VHD do účtu úložiště a pak vygenerovat identifikátor URI SAS zkopírovaného virtuálního pevného disku pro publikování na webu Marketplace.   
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -46,7 +46,7 @@ Tento skript k vygenerování identifikátoru URI SAS spravovaného disku a zkop
 | [az disk grant-access](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-grant-access) | Vygeneruje sdílený přístupový podpis jen pro čtení, který se použije ke zkopírování základního souboru VHD do účtu úložiště nebo jeho stažení do místního prostředí.  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | Asynchronně zkopíruje objekt blob z jednoho účtu úložiště do jiného. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvoření spravovaného disku z virtuálního pevného disku](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 

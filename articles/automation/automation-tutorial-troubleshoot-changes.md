@@ -2,28 +2,24 @@
 title: Řešení potíží se změnami na virtuálním počítači Azure | Dokumentace Microsoftu
 description: Potíže se změnami na virtuálním počítači Azure můžete řešit pomocí řešení Change Tracking.
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
 keywords: change, tracking, automation
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 92f25d956bc8f1f930ae6ebbf7ee48c144bf8a30
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420635"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
 V tomto kurzu zjistíte, jak řešit potíže se změnami na virtuálním počítači Azure. Když povolíte řešení Change Tracking, můžete sledovat změny softwaru, souborů, linuxových procesů démon, služeb systému Windows a klíčů registru Windows na vašich počítačích.
 Identifikace těchto změn konfigurace vám může pomoct přesně určit provozní problémy v celém prostředí.
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Připojení virtuálního počítače k řešení Change Tracking a Inventory
@@ -42,7 +38,7 @@ Pro absolvování tohoto kurzu potřebujete:
 * [Účet Automation](automation-offering-get-started.md), který bude obsahovat sledovací proces, runbooky akcí a úlohu sledovacího procesu.
 * [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) pro připojení.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -62,14 +58,14 @@ Během připojování se virtuální počítač zřídí s agentem Microsoft Mon
 Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
 
 Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče.
-Po povolení řešení informace o nainstalovaném softwaru a změny ve virtuálním počítači jsou přenášeny do protokoly Azure monitoru.
+Po povolení řešení budou informace o nainstalovaném softwaru a změnách na virtuálním počítači toky Azure Monitor protokoly.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="using-change-tracking-in-azure-monitor-logs"></a>Použití řešení Change tracking v protokoly Azure monitoru
+## <a name="using-change-tracking-in-azure-monitor-logs"></a>Použití sledování změn v Azure Monitorch protokolech
 
-Řešení Change tracking generuje data protokolu, která se odešle protokoly Azure monitoru.
+Sledování změn generuje data protokolu, která se odesílají do protokolů Azure Monitor.
 Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Change Tracking** vyberte **Log Analytics**.
 Data řešení Change Tracking se ukládají jako typ **ConfigurationChange** (Změna konfigurace).
 Následující ukázka dotazu Log Analytics vrátí všechny zastavené služby systému Windows.
@@ -79,7 +75,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Další informace o provozu a prohledávání souborů protokolů v protokoly Azure monitoru, najdete v článku [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md).
+Další informace o spouštění a hledání souborů protokolu v protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="configure-change-tracking"></a>Konfigurace řešení Change Tracking
 
@@ -104,7 +100,7 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Povoleno     | Určuje, jestli se nastavení používá.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
 |Skupina     | Název skupiny pro logické seskupení souborů        |
-|Klíč registru systému Windows   | Cesta ke kontrole souboru: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Klíč registru systému Windows   | Cesta, ve které se má soubor hledat. Například: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
 
 ### <a name="add-a-windows-file"></a>Přidání souboru Windows
 
@@ -119,7 +115,7 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Skupina     | Název skupiny pro logické seskupení souborů        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.         |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
-|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **Hodnota TRUE** nebo **False**.|
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
 ### <a name="add-a-linux-file"></a>Přidání souboru Linuxu
 
@@ -137,7 +133,7 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
 |Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – Ignoruje symbolické odkazy a nezahrnuje odkazované soubory ani adresáře.<br>**Sledovat** – Během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – Sleduje symbolické odkazy a umožňuje zpracování vráceného obsahu.      |
-|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **Hodnota TRUE** nebo **False**.|
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
    > [!NOTE]
    > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
@@ -179,11 +175,11 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 Pokud chcete přidat upozornění na zastavení služby, přejděte na webu Azure Portal do části **Monitorování**. Pak v části **Sdílené služby** vyberte **Upozornění** a klikněte na **+ Nové pravidlo upozornění**.
 
-Klikněte na tlačítko **vyberte** k výběru prostředku. Na **vyberte prostředek** stránce **Log Analytics** z **filtrovat podle typu prostředku** rozevíracího seznamu. Vyberte váš pracovní prostor služby Log Analytics a pak vyberte **Hotovo**.
+Pro výběr prostředku klikněte na **Vybrat** . Na stránce **Vybrat prostředek** vyberte v rozevíracím seznamu **filtrovat podle typu prostředku** **Log Analytics** . Vyberte váš pracovní prostor služby Log Analytics a pak vyberte **Hotovo**.
 
 ![Výběr prostředku](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-Klikněte na tlačítko **přidat podmínku**na **konfigurovat logiku signálů** v tabulce, vyberte na stránce **prohledávání protokolů vlastní**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
+Klikněte na **Přidat podmínku**, na stránce **Konfigurovat logiku signálu** v tabulce vyberte **vlastní prohledávání protokolu**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -195,9 +191,9 @@ V části **Logika upozornění** jako **Prahová hodnota** zadejte **0**. Jakmi
 
 ![Konfigurace logiky signálů](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-V části **skupiny akcí**vyberte **vytvořit nový**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
+V části **skupiny akcí**vyberte **vytvořit novou**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
 
-V části **podrobnosti výstrahy**, zadejte název a popis pro výstrahu. Nastavte **Závažnost** na **Informativní (záv. 2)** , **Upozornění (záv. 1)** nebo **Kritické (záv. 0)** .
+V části **Podrobnosti výstrahy**zadejte název a popis výstrahy. Nastavte **Závažnost** na **Informativní (záv. 2)** , **Upozornění (záv. 1)** nebo **Kritické (záv. 0)** .
 
 Do pole **Název skupiny akcí** zadejte název a krátký název upozornění. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 
@@ -213,7 +209,7 @@ Následující obrázek ukazuje příklad e-mailu přijatého po zastavení slu�
 
 ![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

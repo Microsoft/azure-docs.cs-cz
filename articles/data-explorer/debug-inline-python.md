@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: f0bf81ce6392e1650d9986d81a55eac9c416c24d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822900"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444474"
 ---
 # <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Ladění Kusto dotazovacího jazyka vložené Pythonu pomocí VS Code
 
@@ -23,7 +23,7 @@ Nástroje dotazovacího jazyka Kusto nejsou vhodné pro vývoj a ladění algori
 > [!NOTE]
 > Tento pracovní postup se dá použít jenom k ladění relativně malých vstupních tabulek (až pár MB). Proto možná budete muset omezit vstup pro ladění.  Pokud potřebujete zpracovat velkou tabulku, omezte ji pro ladění pomocí `| take`, `| sample`nebo `where rand() < 0.x`.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Instalace [distribuce Python Anaconda](https://www.anaconda.com/distribution/#download-section) V okně **Upřesnit možnosti**vyberte **Přidat Anaconda do proměnné prostředí moje cesta**.
 2. Instalace [Visual Studio Code](https://code.visualstudio.com/Download)

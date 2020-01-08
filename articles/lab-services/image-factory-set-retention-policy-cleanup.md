@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1c18fc799014ad862c93076d695f2516c6363d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5c407edfedd6eb1156a0fec5719cc9435858bd4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456928"
 ---
-# <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Vytvoření vlastní továrny imagí v Azure DevTest Labs
+# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Nastavení zásad uchovávání informací v Azure DevTest Labs
 Tento článek popisuje, jak nastavit zásady uchovávání informací, vyčistit továrnu a vyřazení starých imagí ze všech ostatních DevTest Labs v organizaci. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než budete pokračovat, ujistěte se, že jste postupovali podle těchto článků:
 
 - [Vytvoření objektu pro vytváření imagí](image-factory-create.md)

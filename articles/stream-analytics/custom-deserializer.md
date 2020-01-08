@@ -1,19 +1,18 @@
 ---
 title: Kurz – vlastní deserializace rozhraní .NET pro cloudové úlohy Azure Stream Analytics
 description: Tento kurz ukazuje, jak vytvořit vlastní deserializátor .NET pro cloudovou úlohu Azure Stream Analytics pomocí sady Visual Studio.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
-ms.openlocfilehash: f5fa0a4398c904113dbce5d80844b42b6e775df0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443695"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Kurz: vlastní deserializace rozhraní .NET pro Azure Stream Analytics
 
@@ -29,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Nakonfigurujte svou úlohu Stream Analytics, aby používala vlastní deserializaci.
 > * Spusťte úlohu Stream Analytics místně a otestujte vlastní deserializaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b4e78db9f3aa3a8f678212c7fcd1b97ed4834b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378207"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
 
@@ -121,7 +121,7 @@ Služba Syslog, protokoly Docker, deník a dmesg se zpracovávají pomocí sprav
 
 ## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Jak může zákazník získat přístup k metrikám, jako je CPU/paměť na úrovni uzlu, aby bylo možné provést akci škálování, problémů ladění atd. Nemohu spustit `kubectl top` v clusteru ARO.
 
-`kubectl top` není na Red Hat OpenShift k dispozici. Vyžaduje záložní zdroj metrik, buď Heapster (nepoužívané), nebo metriky-Server (inkubace nebo alfa), ani ty, které nejsou zahrnuté v zásobníku monitorování OpenShift.
+Zákazníci mohou získat přístup k metrikám CPU nebo paměti na úrovni uzlu pomocí příkazu `oc adm top nodes` nebo `kubectl top nodes` pomocí clusterrole Customer-Administrator.  Zákazníci můžou ke metrikám CPU nebo paměti `pods` také přistupovat pomocí příkazového `oc adm top pods` nebo `kubectl top pods`
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Jaká je výchozí konfigurace plánovače pro ARO společnosti?
 
@@ -137,7 +137,7 @@ Další podrobnosti najdete [v tématu Volba správného počtu domén selhání
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>Existuje způsob, jak spravovat umístění pod.
 
-Díky chystané aktualizaci pro správce zákazníků budou mít zákazníci možnost získat popisky uzlů a zobrazení.  Díky tomu bude možné cílit na libovolný virtuální počítač v sadě škálování.
+Zákazníci mají možnost získávat uzly a zobrazovat popisky jako správce zákazníka.  Díky tomu bude možné cílit na libovolný virtuální počítač v sadě škálování.
 
 Při použití určitých popisků se musí použít upozornění:
 
@@ -147,7 +147,7 @@ Při použití určitých popisků se musí použít upozornění:
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Jaký je maximální počet lusků v clusteru ARO?  Jaký je maximální počet lusků na jeden uzel v ARO společnosti?
 
-Další podrobnosti najdete v tématu [OpenShift docs pro odesílání](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) . Red Hat OpenShift 3,11 má limit 250 nebo uzlů, zatímco [ARO má omezení 20 výpočetních uzlů](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), takže maximální počet lusků, které jsou podporované v clusteru ARO na 250 × 20 = 5000.
+ Služba Azure Red Hat OpenShift 3,11 má limit 50 na uzel pod na jeden uzel s [limitem 20 výpočetních uzlů](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), aby nedošlo k omezení maximálního počtu lusků podporovaných v clusteru ARO na 50 * 20 = 1000.
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Můžeme zadat rozsahy IP adres pro nasazení na privátní virtuální síti a vyhnout se konfliktům s ostatními podnikovými virtuální sítě po sobě partnerských vztahů?
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452426"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -50,7 +50,7 @@ V této části se dozvíte, jak pomocí PowerShellu vytvořit aplikaci Azure Ac
 >[!NOTE]
 >Oprávnění rozhraní API jsou virtuální počítače s Windows, Log Analytics a Microsoft Graph rozhraní API se do aplikace Azure Active Directory přidala oprávnění.
 
-1. Otevřete PowerShell jako správce.
+1. Otevřete Powershell jako správce.
 2. Přihlaste se k Azure pomocí účtu, který má oprávnění vlastníka nebo přispěvatele v předplatném Azure, které byste chtěli použít pro nástroj pro diagnostiku:
    ```powershell
    Login-AzAccount
@@ -185,7 +185,7 @@ Nastavení identifikátoru URI přesměrování:
 4.  Na levém panelu v části spravovat oddíl vyberte **ověřování**.
 5.  Do textového pole **identifikátor URI pro přesměrování** zadejte požadovaný identifikátor URI pro přesměrování a pak v levém horním rohu nabídky vyberte **Save (Uložit** ).
 6. V rozevírací nabídce Typ vyberte **Web** .
-7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Příklad: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Zadejte adresu URL na stránce Přehled aplikace a na konec této stránky přidejte **/Security/SignIn-callback** . Například: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    ![Stránka s identifikátorem URI pro přesměrování](media/redirect-uri-page.png)
 
@@ -256,3 +256,8 @@ Můžete také interagovat s uživateli na hostiteli relace:
 - [Zpoždění vstupu uživatele na relaci (\*)\\maximálního zpoždění vstupu](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Prahová hodnota: vyšší než 2000 MS je označeno jako není v pořádku.
+
+## <a name="next-steps"></a>Další kroky
+
+- Naučte se monitorovat protokoly aktivit [pomocí Log Analytics diagnostiky](diagnostics-log-analytics.md).
+- Přečtěte si o běžných scénářích chyb a o tom, jak je opravit při [identifikaci a diagnostikování problémů](diagnostics-role-service.md).

@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: c1f9a9248494344cd6577ca2bf743a4c80730cda
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bc4eea53c026eef9dc8f390976442426e2ba1067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837998"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427529"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Moduly PowerShellu pro Azure Machine Learning Studio (klasické)
 
 Pomocí modulů prostředí PowerShell můžete programově spravovat prostředky studia (Classic) a prostředky, jako jsou pracovní prostory, datové sady a webové služby.
 
-S klasickou verzí prostředků studia můžete pracovat pomocí tří modulů PowerShellu:
+S prostředky studia (Classic) můžete pracovat pomocí tří modulů PowerShellu:
 
 * [Azure PowerShell AZ](#az-rm) vydaná v 2018 zahrnuje všechny funkce AzureRM, ale s různými názvy rutin.
 * [AzureRM](#az-rm) vydaná v 2016, nahrazeno prostředím PowerShell AZ
@@ -51,7 +51,7 @@ PowerShell Classic se dá nainstalovat současně buď AZ, nebo AzureRM, aby se 
 ## <a name="support-table"></a>Tabulka podpory PowerShellu
 
 
-| | **AZ** |  **PowerShell – Classic** |
+| | **Az** |  **PowerShell – Classic** |
 | --- | --- | --- |
 | Vytváření a odstraňování pracovních prostorů | [Šablony Resource Manageru](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | Správa plánů závazku pracovního prostoru | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |

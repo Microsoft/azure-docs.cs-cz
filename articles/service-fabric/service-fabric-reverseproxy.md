@@ -1,171 +1,162 @@
 ---
-title: Azure Service Fabric reverzní proxy server | Dokumentace Microsoftu
-description: Použijte reverzní proxy Service Fabric pro komunikaci na mikroslužby z zevnitř i zvenčí clusteru.
-services: service-fabric
-documentationcenter: .net
+title: Reverzní proxy server Azure Service Fabric
+description: Pomocí reverzního proxy serveru Service Fabric můžete komunikovat s mikroslužbami zevnitř a mimo cluster.
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464292"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
-Reverzní proxy server, které jsou integrované do Azure Service Fabric pomáhá mikroslužeb spouštěných v clusteru Service Fabric, zjistit a komunikovat s ostatními službami, které mají koncových bodů http.
+Reverzní proxy server integrovaný do Azure Service Fabric pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http.
 
-## <a name="microservices-communication-model"></a>Komunikační model Mikroslužeb
-Mikroslužby v Service Fabric spusťte v podmnožině uzlů v clusteru a provést migraci mezi uzly z různých důvodů. Koncové body pro mikroslužby v důsledku toho můžete dynamicky měnit. Pokud chcete zjistit a komunikovat s dalšími službami v clusteru, mikroslužbách musí projít následující kroky:
+## <a name="microservices-communication-model"></a>Komunikační model mikroslužeb
+Mikroslužby v Service Fabric běží na podmnožině uzlů v clusteru a můžou migrovat mezi uzly z různých důvodů. V důsledku toho se koncové body pro mikroslužby můžou dynamicky měnit. Pro zjišťování a komunikaci s dalšími službami v clusteru musí mikroslužba projít následujícími kroky:
 
-1. Přeložit umístění služby ve službě pojmenování.
-2. Připojení ke službě.
-3. Zabalení předchozí kroky ve smyčce, který implementuje překlad služby a opakujte zásady uplatnit na chyby připojení
+1. Vyřešte umístění služby prostřednictvím názvové služby.
+2. Připojte se ke službě.
+3. Zabalte předchozí kroky ve smyčce, které implementují řešení služeb a zásady opakování, které se použijí při selhání připojení.
 
-Další informace najdete v tématu [připojit a komunikace se službami](service-fabric-connect-and-communicate-with-services.md).
+Další informace najdete v tématu [připojení a komunikace se službami](service-fabric-connect-and-communicate-with-services.md).
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>Komunikace pomocí reverzního proxy serveru
-Reverzní proxy server je služba, která běží na všech uzlech a zpracovává rozlišení koncového bodu, automatické opakování a jiné chyby připojení jménem služby klienta. Reverzní proxy server je možné nakonfigurovat jako zpracovává požadavky od klientů služby použít různé zásady. Pomocí reverzního proxy serveru umožňuje službě klienta pomocí libovolné knihovny komunikace protokolu HTTP na straně klienta a nevyžadují speciální řešení a logika opakování v službě. 
+Reverzní proxy je služba, která běží na všech uzlech a zpracovává překlad koncových bodů, automatické opakování a další selhání připojení jménem služeb klienta. Reverzní proxy server je možné nakonfigurovat tak, aby při zpracovávání požadavků od služeb klienta mohl používat různé zásady. Použití reverzního proxy umožňuje, aby služba klienta používala jakékoli komunikační knihovny HTTP na straně klienta a nevyžadovala ve službě speciální rozlišení a logiku opakování. 
 
-Reverzní proxy server vystavuje jeden nebo více koncových bodů na místním uzlu pro klienta služby pro odesílání požadavků na jiné služby.
+Reverzní proxy zpřístupňuje jeden nebo více koncových bodů v místním uzlu pro klientské služby, které se použijí pro odesílání požadavků do jiných služeb.
 
 ![Interní komunikace][1]
 
 > [!NOTE]
 > **Podporované platformy**
 >
-> Reverzní proxy server v Service Fabric v současné době podporuje tyto platformy
-> * *Windows Cluster*: Windows 8 a novějším nebo Windows Server 2012 a novější
-> * *Linux Cluster*: Reverzní proxy server není aktuálně k dispozici pro clustery s Linuxem
+> Reverzní proxy server v Service Fabric aktuálně podporuje následující platformy
+> * *Cluster Windows*: Windows 8 a novější nebo Windows Server 2012 a novější
+> * *Cluster se systémem Linux*: reverzní proxy server není aktuálně k dispozici pro clustery se systémem Linux
 >
 
-## <a name="reaching-microservices-from-outside-the-cluster"></a>Dosažení mikroslužeb z mimo cluster
-Výchozí model externí komunikace pro mikroslužby je model opt-in kde každá služba nelze přistupovat přímo z externích klientů. [Nástroj Azure Load Balancer](../load-balancer/load-balancer-overview.md), což je hranice sítě mezi mikroslužbami a externí klienti provádí překlad síťových adres a předává externí požadavky do koncových bodů IP: interní port. Zpřístupnit koncový bod mikroslužeb přímo do externích klientů, musíte nejprve nakonfigurovat nástroj pro vyrovnávání zatížení směrují provoz na každý z portů, který službu používá v clusteru. Kromě toho většina mikroslužeb, zejména stavových mikroslužeb, není živé na všech uzlech clusteru. Mikroslužby, můžou přesouvat mezi uzly na převzetí služeb při selhání. V takovém případě nástroj pro vyrovnávání zatížení nelze určit efektivně umístění cílový uzel repliky, ke kterým předávat provoz.
+## <a name="reaching-microservices-from-outside-the-cluster"></a>Dosahování mikroslužeb mimo cluster
+Výchozí externí komunikační model pro mikroslužby je model souhlasu, ve kterém se ke každé službě nedá získat přímý pøístup z externích klientů. [Azure Load Balancer](../load-balancer/load-balancer-overview.md), což je hranice sítě mezi mikroslužbami a externími klienty, provádí překlad síťových adres a předávají externí požadavky do interní IP adresy: koncové body portů. Aby byl koncový bod mikroslužeb přímo přístupný pro externí klienty, je nutné nejprve nakonfigurovat Load Balancer pro přenos provozu na každý port, který služba používá v clusteru. Kromě toho většina mikroslužeb, zejména stavové mikroslužby, není na všech uzlech clusteru živá. Mikroslužby se můžou přesouvat mezi uzly při převzetí služeb při selhání. V takových případech Load Balancer nemůže efektivně určit umístění cílového uzlu replik, na které by měl přesměrovat provoz.
 
-### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Dosažení přes reverzní proxy server mimo cluster z mikroslužeb
-Namísto konfigurace portu jednotlivé služby v nástroji pro vyrovnávání zatížení, můžete nakonfigurovat pouze port reverzního proxy serveru v nástroji pro vyrovnávání zatížení. Tato konfigurace umožňuje klientům mimo cluster používat služby v clusteru pomocí reverzního proxy serveru bez další konfigurace.
+### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Dosažení mikroslužeb prostřednictvím reverzního proxy serveru mimo cluster
+Místo konfigurace portu jednotlivých služeb v Load Balancer můžete nakonfigurovat pouze port reverzního proxy serveru v Load Balancer. Tato konfigurace umožňuje klientům mimo cluster dosáhnout služeb v clusteru pomocí reverzního proxy serveru bez další konfigurace.
 
 ![Externí komunikace][0]
 
 > [!WARNING]
-> Když nakonfigurujete v nástroji pro vyrovnávání zatížení port reverzního proxy, všechny mikroslužby v clusteru, která zpřístupňují koncový bod HTTP adresovatelných z mimo cluster. To znamená, že mikroslužeb má být interní může být zjistitelné pomocí určené uživatel se zlými úmysly. To představuje potenciálně závažné ohrožení zabezpečení, které je někdo zneužije; Příklad:
+> Když nakonfigurujete port reverzního proxy serveru v Load Balancer, všechny mikroslužby v clusteru, které zveřejňují koncový bod HTTP, se budou adresovat mimo cluster. To znamená, že mikroslužby, které mají být interní, mohou být zjistitelné zjištěným uživatelem se zlými úmysly. To potenciálně představuje závažné chyby zabezpečení, které je možné zneužít; například:
 >
-> * Uživatel se zlými úmysly může spustit útoku DoS opakovaně voláním interní služba, která nemá dostatečně odolné útoky.
-> * Uživatel se zlými úmysly může poskytovat chybně formovaným paketům interní služba následek nežádoucí chování.
-> * Služba má být interní může vrátit privátní nebo citlivé informace, které nejsou určeny zpřístupní ke službám mimo cluster, tak vystavení citlivých informací k uživateli se zlými úmysly. 
+> * Uživatel se zlými úmysly může spustit útok s cílem odepření služby Opakovaným voláním interní služby, která nemá dostatečně posílenou plochu pro útoky.
+> * Uživatel se zlými úmysly může doručovat poškozené pakety do interní služby, což vede k neúmyslnému chování.
+> * Služba, která má být interní, může vracet soukromé nebo citlivé informace, které nejsou určené k zpřístupnění službám mimo cluster, takže tyto citlivé informace vystavuje uživatel se zlými úmysly. 
 >
-> Ujistěte se, že plně pochopit a zmírnění potenciální bezpečnostní důsledky pro váš cluster a aplikace spuštěny, před zahájením zveřejnit port reverzního proxy. 
+> Ujistěte se, že plně rozumíte a zmírnit potenciální důsledky zabezpečení pro váš cluster a aplikace, které jsou v něm spuštěné, a teprve potom zajistěte veřejný port reverzního proxy serveru. 
 >
 
 
-## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>Formát identifikátoru URI pro adresování pomocí reverzního proxy serveru
-Reverzní proxy server používá k identifikaci oddíl služby, ke které se mají předávat příchozího požadavku. Formát identifikátoru URI konkrétní URI:
+## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>Formát identifikátoru URI pro adresování služeb pomocí reverzního proxy serveru
+Reverzní proxy server používá specifický formát identifikátoru URI (Uniform Resource Identifier) k identifikaci oddílu služby, do nějž má být příchozí požadavek předán:
 
 ```
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http(s):** Reverzní proxy server můžete nakonfigurovat tak, aby přijímal provoz protokolu HTTP nebo HTTPS. Předávání protokolu HTTPS, najdete v tématu [připojení k službě zabezpečené pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md) až budete mít nastavení reverzní proxy server tak, aby naslouchala na HTTPS.
-* **Cluster plně kvalifikovaný název domény (FQDN) | interní IP adresa:** Pro externí klienty můžete nakonfigurovat reverzní proxy server tak, aby byl dostupný prostřednictvím doména clusteru, jako je například mycluster.eastus.cloudapp.azure.com. Ve výchozím nastavení reverzní proxy server spouští na všech uzlech. Pro vnitřní provoz reverzní proxy server dostupný v místním hostiteli nebo na jakékoli IP adresy interní uzlu, například 10.0.0.1.
-* **Port:** Toto je port, např. 19081, který byl zadán pro reverzní proxy server.
-* **ServiceInstanceName:** Toto je plně kvalifikovaný název, který se pokoušíte získat přístup bez instance nasazená služba "fabric: /" schéma. Například chcete-li dosáhnout *fabric: / myapp/Moje_služba/* služby, můžete využít *myapp/Moje_služba*.
+* **http (s):** Reverzní proxy server je možné nakonfigurovat tak, aby přijímal přenos HTTP nebo HTTPS. V případě předávání HTTPS se [pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md) přihlaste k zabezpečené službě, jakmile budete mít nastavení reverzního proxy serveru naslouchat na https.
+* **Plně kvalifikovaný název domény clusteru (FQDN) | interní IP adresa:** U externích klientů můžete nakonfigurovat reverzní proxy server tak, aby byl dosažitelný prostřednictvím domény clusteru, například mycluster.eastus.cloudapp.azure.com. Ve výchozím nastavení se reverzní proxy spouští na všech uzlech. U interních přenosů můžete reverzní proxy dosáhnout na localhost nebo na jakékoli interní IP adresy uzlu, například 10.0.0.1.
+* **Port:** Toto je port, například 19081, který byl zadán pro reverzní proxy.
+* **ServiceInstanceName:** Toto je plně kvalifikovaný název nasazené instance služby, ke které se snažíte získat přístup bez "Fabric:/". programu. Například pro dosažení *prostředku Fabric:/MyApp/mojesluzba/* Service byste měli použít *MyApp/mojesluzba*.
 
-    Název instance služby rozlišuje velká a malá písmena. Použití různých malých a velkých písmen pro název instance služby v adrese URL způsobí, že žádostí se nezdaří s 404 (Nenalezeno).
-* **Přípona cesty:** Toto je skutečná cesta URL, jako *myapi/hodnoty/přidání/3*, služby, který chcete připojit.
-* **PartitionKey:** U oddílů služby jedná se o počítaný oddíl klíč oddílu, který chcete dosáhnout. Všimněte si, že toto je *není* ID identifikátoru GUID oddílu. Tento parametr není vyžadováno pro služby, které používají schéma oddílu typu singleton.
-* **PartitionKind:** Toto je schéma oddílu služby. To může být "Int64Range" nebo "S názvem". Tento parametr není vyžadováno pro služby, které používají schéma oddílu typu singleton.
-* **ListenerName** koncové body služby jsou ve tvaru {"Koncové body": {"Listener1": "Koncovém bodě 1", "Listener2": "Endpoint2"...}}. Když služba zveřejňuje několik koncových bodů, Určuje koncový bod, který požadavek klienta by měl být předán. To lze vynechat, pokud má služba pouze jeden naslouchací proces.
-* **TargetReplicaSelector** to určuje, jak by měl vybrat cíl replik nebo instancí.
-  * Když Cílová služba je stavový, může být TargetReplicaSelector jednu z následujících:  "PrimaryReplica", 'RandomSecondaryReplica' nebo "RandomReplica". Pokud není tento parametr zadán, výchozí hodnota je "PrimaryReplica".
-  * Po bezstavové cílovou službu reverzního proxy serveru vybere instanci náhodné oddílu služby k předání požadavku.
-* **Časový limit:**  Určuje časový limit požadavku HTTP vytvořené reverzní proxy ke službě jménem žádost klienta. Výchozí hodnota je 60 sekund. Toto je volitelný parametr.
+    V názvu instance služby se rozlišují velká a malá písmena. Použití různých malých a velkých písmen v názvu instance služby v adrese URL způsobuje selhání požadavků s 404 (Nenalezeno).
+* **Cesta k příponě:** Jedná se o skutečnou cestu URL, například *MyAPI/Values/Add/3*, pro službu, ke které se chcete připojit.
+* **PartitionKey:** U dělené služby se jedná o vypočtený klíč oddílu oddílu, ke kterému chcete získat přístup. Všimněte si, že *se nejedná o identifikátor* GUID ID oddílu. Tento parametr není vyžadován pro služby, které používají schéma oddílu singleton.
+* **PartitionKind:** Toto je schéma oddílu služby. Může to být "Int64Range" nebo "pojmenovaný". Tento parametr není vyžadován pro služby, které používají schéma oddílu singleton.
+* **Naslouchací proces** Koncové body služby jsou ve formátu {"Endpoints": {"Listener1": "Endpoint1", "Listener2": "pro endpoint2 u"...}}. Když služba vystaví více koncových bodů, identifikuje koncový bod, na který se má klientský požadavek přeslat. Tato možnost může být vynechána, pokud má služba pouze jeden naslouchací proces.
+* **TargetReplicaSelector** Tím se určuje, jak by měla být vybraná cílová replika nebo instance.
+  * Když je cílová služba stavová, může být TargetReplicaSelector jedna z následujících: "PrimaryReplica", "RandomSecondaryReplica" nebo "RandomReplica". Pokud tento parametr není zadán, výchozí hodnota je ' PrimaryReplica '.
+  * Pokud je cílová služba Bezstavová, reverzní proxy server vybere náhodnou instanci oddílu služby, aby předal požadavek.
+* **Časový limit:**  Určuje časový limit pro požadavek HTTP vytvořený reverzním proxy serverem jménem žádosti klienta. Výchozí hodnota je 60 sekund. Toto je volitelný parametr.
 
 ### <a name="example-usage"></a>Příklad použití
-Jako příklad, Pojďme se *fabric: / MyApp/Moje_služba* služba, která se otevře při naslouchání protokolu HTTP na následující adrese URL:
+Příklad: Pojďme využít službu *Fabric:/MyApp/mojesluzba* , která otevře NASLOUCHACÍ proces http na následující adrese URL:
 
 ```
 http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 
-Prostředky pro službu jsou následující:
+Níže jsou uvedené prostředky pro službu:
 
 * `/index.html`
 * `/api/users/<userId>`
 
-Pokud služba používá schéma, vytváření oddílů singleton *PartitionKey* a *PartitionKind* parametrů řetězce dotazu nejsou vyžadovány a můžete získat přístup ke službě s použitím brány jako:
+Pokud služba používá schéma dělení na oddíly singleton, parametry řetězce dotazu *PartitionKey* a *PartitionKind* se nevyžadují a služba může být dostupná pomocí brány jako:
 
 * Externě: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
 * Interně: `http://localhost:19081/MyApp/MyService`
 
-Pokud služba používá schéma rozdělení oddílů jednotné Int64, *PartitionKey* a *PartitionKind* parametrů řetězce dotazu musí být použité k dosažení oddílu služby:
+Pokud služba používá jednotné schéma dělení na oddíly (Int64), musí se pro přístup k oddílu služby použít parametry řetězce dotazu *PartitionKey* a *PartitionKind* :
 
 * Externě: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 * Interně: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
-K dosažení prostředky, které poskytuje službu, stačí umístíte cestu prostředku po názvu služby v adrese URL:
+Pokud chcete dosáhnout prostředků, které služba zpřístupňuje, jednoduše umístěte cestu prostředku za název služby v adrese URL:
 
 * Externě: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
 * Interně: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
-Brány se potom přesměrovávala tyto žádosti na adresu URL služby:
+Brána pak tyto požadavky přepošle na adresu URL služby:
 
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
-## <a name="special-handling-for-port-sharing-services"></a>Zvláštní zacházení sdílení portů služby
-Reverzní proxy Service Fabric se pokusí přeložit adresu služby znovu a zkuste požadavek zopakovat, pokud služba není dostupný. Obecně platí Pokud služba není dostupný, instance služby nebo repliky se přesunul na jiný uzel jako součást své normální životního cyklu. Pokud k tomu dojde, reverzní proxy server může zobrazit chyba připojení sítě označující, že koncový bod je již otevřen v původně přeložit adresu.
+## <a name="special-handling-for-port-sharing-services"></a>Speciální zpracování pro služby pro sdílení portů
+Service Fabric reverzní proxy server se znovu pokusí znovu přeložit adresu služby a pokusit se o tuto žádost znovu, pokud není dostupná služba. Obecně platí, že pokud nelze získat přístup k službě, instance služby nebo replika byla přesunuta do jiného uzlu v rámci normálního životního cyklu. V takovém případě může reverzní proxy obdržet chybu připojení k síti, což znamená, že koncový bod již není otevřen na původně přeložené adrese.
 
-Ale replik nebo instancí služby můžou sdílet hostitelského procesu a můžou sdílet také port, když jsou hostované na základě ovladače http.sys web server, včetně:
+Repliky nebo instance služby ale můžou sdílet hostitelský proces a můžou taky sdílet port, pokud je hostovaný webovým serverem založeným na http. sys, včetně těchto:
 
 * [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
-* [WebListener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
+* [ASP.NET Core weblisten](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-V takovém případě je pravděpodobné, že webový server je k dispozici v hostitelského procesu a reagování na žádosti, ale instance přeložit služby nebo replika již není k dispozici na hostiteli. V takovém případě brány se zobrazí odpověď HTTP 404 z webového serveru. Odpověď HTTP 404 proto může mít dvě různé významy:
+V takové situaci je pravděpodobný, že webový server je dostupný v hostitelském procesu a reaguje na požadavky, ale vyřešená instance služby nebo replika už není na hostiteli dostupná. V takovém případě brána dostane odpověď HTTP 404 od webového serveru. Proto odpověď HTTP 404 může mít dvě odlišná význam:
 
-- Případ #1: Adresa služby je správný, ale prostředek, který uživatel si vyžádal neexistuje.
-- Případ #2: Adresa služby není správná a na prostředek, který uživatel si vyžádal mohou existovat na jiném uzlu.
+- Případ #1: adresa služby je správná, ale prostředek, který uživatel požaduje, neexistuje.
+- Případ #2: adresa služby je nesprávná a prostředek, který uživatel požadoval, může existovat na jiném uzlu.
 
-Prvním případě je normální HTTP 404, která se považují za chybu uživatele. Nicméně v druhém případě uživatel požaduje prostředek, který neexistuje. Reverzní proxy server se nepodařilo najít, protože samotnou službu přesunula. Reverzní proxy server je potřeba znovu přeložit adresu a opakujte žádost.
+První případ je normální protokol HTTP 404, který se považuje za chybu uživatele. Ve druhém případě však uživatel požadoval prostředek, který existuje. Reverzní proxy server nebyl schopen najít, protože služba byla přesunuta. Reverzní proxy server musí tuto adresu znovu přeložit a opakovat požadavek.
 
-Reverzní proxy server tedy v případě potřeby způsob k rozlišení mezi těmito dvěma případy. Chcete-li Ujistěte se, že rozdíl, je potřeba Nápověda ze serveru.
+Reverzní proxy server tak potřebuje způsob, jak rozlišovat mezi těmito dvěma případy. Aby se tento rozdíl rozvedl, je nutné zadat nápovědu ze serveru.
 
-* Ve výchozím nastavení reverzní proxy server předpokládá případ #2 a pokusí přeložit a vydejte žádost znovu.
-* K označení případ #1 pro reverzní proxy server, služba by měl vrátit následující hlavičku HTTP odpovědi:
+* Ve výchozím nastavení předpokládá reverzní proxy případ #2 a pokusí se požadavek vyřešit a vydat znovu.
+* Chcete-li určit velikost písmen #1 reverznímu proxy, služba by měla vrátit následující hlavičku HTTP odpovědi:
 
   `X-ServiceFabric : ResourceNotFound`
 
-Tuto hlavičku HTTP odpovědi označuje normální HTTP 404 situaci, ve kterém požadovaný prostředek neexistuje, a reverzní proxy server se nepokusí problém znovu vyřešit adresu služby.
+Tato hlavička HTTP odpovědi označuje normální situaci HTTP 404, ve které požadovaný prostředek neexistuje, a reverzní proxy server se nebude pokoušet znovu přeložit adresu služby.
 
-## <a name="special-handling-for-services-running-in-containers"></a>Zvláštní zacházení služby spuštěné v kontejnerech
+## <a name="special-handling-for-services-running-in-containers"></a>Speciální zpracování pro služby běžící v kontejnerech
 
-Služby uvnitř kontejnerů, můžete použít proměnnou prostředí `Fabric_NodeIPOrFQDN` k sestavení kompletních [zpětná adresa URL proxy serveru](#uri-format-for-addressing-services-by-using-the-reverse-proxy) stejně jako v následujícím kódu:
+Pro služby běžící uvnitř kontejnerů můžete použít proměnnou prostředí `Fabric_NodeIPOrFQDN` k vytvoření [adresy URL reverzního proxy serveru](#uri-format-for-addressing-services-by-using-the-reverse-proxy) , jak je uvedeno v následujícím kódu:
 
 ```csharp
     var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
-Pro místní cluster `Fabric_NodeIPOrFQDN` je ve výchozím nastavení "localhost". Spusťte místní cluster s `-UseMachineName` parametr Ujistěte se, že kontejnery dosáhnout reverzní proxy server běží na uzlu. Další informace najdete v tématu [nakonfigurovat prostředí pro vývojáře k ladění kontejnery](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+Pro místní cluster je ve výchozím nastavení `Fabric_NodeIPOrFQDN` nastavena na "localhost". Spusťte místní cluster s parametrem `-UseMachineName` a ujistěte se, že kontejnery budou mít přístup k reverznímu proxy serveru běžícímu na uzlu. Další informace najdete v tématu [Konfigurace vývojového prostředí pro ladění kontejnerů](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
-Služby Service Fabric, na kterých běží v kontejnerech Docker Compose vyžadují speciální docker-compose.yml *porty části* http: nebo https: konfigurace. Další informace najdete v tématu [podpora nasazení Docker Compose v Azure Service Fabric](service-fabric-docker-compose.md).
+Service Fabric služby, které běží v kontejnerech Docker Compose, vyžadují speciální *část portů* Docker-Compose. yml http: nebo https: Configuration. Další informace najdete v tématu [Podpora nasazení Docker Compose ve službě Azure Service Fabric](service-fabric-docker-compose.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nastavení a konfigurace reverzního proxy serveru v clusteru](service-fabric-reverseproxy-setup.md).
-* [Nastavení předávání do zabezpečené služba HTTP přes reverzní proxy](service-fabric-reverseproxy-configure-secure-communication.md)
-* [Diagnostika reverzního proxy serveru události](service-fabric-reverse-proxy-diagnostics.md)
-* Podívejte se příklad komunikaci pomocí protokolu HTTP mezi službami v [ukázkového projektu na Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
-* [Volání vzdálených procedur pomocí vzdálené komunikace modelu Reliable Services](service-fabric-reliable-services-communication-remoting.md)
-* [Webové rozhraní API, která používá OWIN v modelu Reliable Services](service-fabric-reliable-services-communication-webapi.md)
-* [WCF komunikace s využitím Reliable Services](service-fabric-reliable-services-communication-wcf.md)
+* [Nastavení přesměrování na zabezpečenou službu HTTP pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md)
+* [Diagnostika událostí reverzního proxy serveru](service-fabric-reverse-proxy-diagnostics.md)
+* Podívejte se na příklad komunikace HTTP mezi službami ve [vzorovém projektu na GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
+* [Vzdálená volání procedur s Reliable Services Vzdálená komunikace](service-fabric-reliable-services-communication-remoting.md)
+* [Webové rozhraní API, které používá OWIN v Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Komunikace WCF pomocí Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

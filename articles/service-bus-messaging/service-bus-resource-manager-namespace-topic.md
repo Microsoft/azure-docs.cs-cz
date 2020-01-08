@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: a43b945ce11736b16e8e11edbe988a3c48f62d51
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 661edf94fd0c505968fc78a367ceda6a93afe401
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426880"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření oboru názvů Service Bus s použitím tématu a předplatného pomocí šablony Azure Resource Manager
 
@@ -154,7 +154,7 @@ Teď, když jste vytvořili a nasadili prostředky pomocí Azure Resource Manage
 * [Správa služby Service Bus pomocí PowerShellu](service-bus-manage-with-ps.md)
 * [Správa prostředků Service Bus pomocí Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md

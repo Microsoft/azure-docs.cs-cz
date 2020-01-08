@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425371"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ Následující tabulka obsahuje přehled scénářů pro každý typ cílového 
 
 | Cílový prostředek | Scénář |
 |:---|:---|
-|Azure Storage| Tento cíl by měl být použit v případě, že vaše primární potřeba ukládá události auditu zabezpečení pro účely archivace. Pro účely archivace lze použít jiné cíle, ale tyto cíle poskytují možnosti nad rámec hlavní potřeby archivace. Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte účet úložiště Azure](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
+|Azure Storage| Tento cíl by měl být použit v případě, že vaše primární potřeba ukládá události auditu zabezpečení pro účely archivace. Pro účely archivace lze použít jiné cíle, ale tyto cíle poskytují možnosti nad rámec hlavní potřeby archivace. Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte nejdřív Azure Storage účet](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Tento cíl by měl být použit v případě, že je potřeba, aby se události auditu zabezpečení sdílely pomocí dalšího softwaru, jako je například software pro analýzu dat & nebo software pro správu událostí (SIEM). Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte centrum událostí pomocí Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Pracovní prostor Azure Log Analytics| Tento cíl by měl být použit, pokud je vaše primární potřeba analyzovat a kontrolovat zabezpečené audity přímo z Azure Portal. Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte v Azure Portal pracovní prostor Log Analytics.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 

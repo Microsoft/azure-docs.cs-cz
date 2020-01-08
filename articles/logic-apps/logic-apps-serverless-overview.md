@@ -1,6 +1,6 @@
 ---
-title: Přehled – bez serveru Azure
-description: Vytvářejte výkonné řešení v cloudu, aniž byste se museli starat o infrastrukturu.
+title: Přehled – Azure bez serveru pro cloudové aplikace a řešení
+description: Naučte se vytvářet cloudové aplikace a řešení, aniž byste se museli starat o infrastrukturu pomocí Azure Logic Apps a Azure Functions
 services: logic-apps
 ms.suite: integration
 author: jeffhollan
@@ -8,14 +8,14 @@ ms.author: jehollan
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: d658efd278425358a2a931fe976827c3bae4247d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792823"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666546"
 ---
-# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Přehled: Azure bez serveru s Azure Logic Apps a Azure Functions
+# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure bez serveru: Přehled vytváření cloudových aplikací a řešení s využitím Azure Logic Apps a Azure Functions
 
 Aplikace bez [serveru](https://azure.microsoft.com/solutions/serverless/) nabízejí výhody, jako je zvýšená rychlost vývoje, snížený kód, jednoduchost a škálování. Tento článek popisuje různé atributy řešení bez serveru a nabídky bez serveru Azure.
 
@@ -25,7 +25,7 @@ Bez serveru se neznamená, že neexistují žádné servery, ale vývojáři se 
 
 Základní služby Azure pro bez serveru jsou [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) a [Azure Functions](https://azure.microsoft.com/services/functions/). Obě řešení se řídí dříve popsanými principy a můžou vývojářům přispět k vytváření robustních cloudových aplikací s minimálním kódem.
 
-## <a name="what-is-azure-logic-apps"></a>Co je Azure Logic Apps?
+## <a name="what-is-azure-logic-apps"></a>Co je služba Azure Logic Apps?
 
 [Azure Logic Apps](logic-apps-overview.md) poskytuje způsob, jak zjednodušit a implementovat škálovatelné integrace a pracovní postupy v cloudu. Tato služba poskytuje vizuálního návrháře pro modelování a automatizaci procesu jako série kroků označovaných jako pracovní postup. Existuje mnoho [konektorů](../connectors/apis-list.md) napříč Cloud Services a místními systémy, které rychle připojují aplikace bez serveru k jiným rozhraním API. Každá aplikace logiky začíná triggerem, například "když je účet přidán do Dynamics CRM". Po aktivování triggeru může pracovní postup spustit kombinace akcí, převodů a podmíněné logiky. Logic Apps je skvělou volbou při orchestraci různých Azure Functions v procesu, zejména v případě, že proces vyžaduje interakci s externím systémem nebo rozhraním API.
 

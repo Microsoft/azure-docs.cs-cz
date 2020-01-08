@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6f2159ddf3e3039dc0c38fc8f942c508ac177f06
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460358"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -23,7 +23,7 @@ Tento kurz ukazuje základy používání .NET k vývoji aplikací a služeb, kt
 
 * Získá obsah souboru.
 * Nastavte maximální velikost nebo *kvótu* pro sdílenou složku.
-* Vytvořte sdílený přístupový podpis (klíč SAS) pro soubor, který používá zásady sdíleného přístupu definované ve sdílené složce.
+* Vytvořte sdílený přístupový podpis (klíč SAS) pro soubor, který používá zásady uloženého přístupu definované ve sdílené složce.
 * Zkopírujte soubor do jiného souboru ve stejném účtu úložiště.
 * Zkopírujte soubor do objektu blob ve stejném účtu úložiště.
 * Pro řešení potíží použijte Azure Storage metriky.
@@ -36,7 +36,7 @@ Další informace o službě soubory Azure najdete v tématu [co je Azure Files?
 
 Soubory Azure poskytuje dva přístupy ke klientským aplikacím: protokol SMB (Server Message Block) a REST. V rozhraní .NET rozhraní API `System.IO` a `WindowsAzure.Storage` tyto přístupy abstraktní.
 
-Rozhraní API | When to use | Poznámky:
+API | When to use | Poznámky
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Vaše aplikace: <ul><li>Musí číst/zapisovat soubory pomocí protokolu SMB.</li><li>Je spuštěná v zařízení, které má prostřednictvím portu 445 přístup k vašemu účtu služby Soubory Azure.</li><li>Nemusí spravovat žádná nastavení pro správu sdílené složky.</li></ul> | I/O souborů implementovaných pomocí služby Azure Files přes SMB je obvykle stejné jako u vstupu a výstupu pomocí libovolné síťové sdílené složky nebo místního úložného zařízení. Úvod do řady funkcí v rozhraní .NET, včetně vstupně-výstupních operací se soubory, najdete v kurzu [konzolové aplikace](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) .
 [Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Vaše aplikace: <ul><li>K souborům Azure nelze přistupovat pomocí protokolu SMB na portu 445 z důvodu omezení brány firewall nebo poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `Microsoft.Azure.Storage.File` pro vstupně-výstupní operace se soubory pomocí REST místo SMB a správy sdílené složky.
@@ -192,9 +192,9 @@ if (share.Exists())
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Vygenerování sdíleného přístupového podpisu pro soubor nebo sdílenou složku
 
-Klientská knihovna pro úložiště Azure od verze 5.x umožňuje vygenerovat sdílený přístupový podpis (SAS) pro sdílenou složku nebo konkrétní soubor. Můžete taky vytvořit sdílené zásady přístupu pro sdílenou složku ke správě sdílených přístupových podpisů. Doporučujeme vytvořit zásadu sdíleného přístupu, protože umožňuje odvolat SAS, pokud dojde k ohrožení zabezpečení.
+Klientská knihovna pro úložiště Azure od verze 5.x umožňuje vygenerovat sdílený přístupový podpis (SAS) pro sdílenou složku nebo konkrétní soubor. Můžete také vytvořit uložené zásady přístupu pro sdílenou složku pro správu podpisů sdíleného přístupu. Doporučujeme vytvořit zásadu uloženého přístupu, protože umožňuje odvolat SAS, pokud dojde k ohrožení zabezpečení.
 
-Následující příklad vytvoří zásadu sdíleného přístupu pro sdílenou složku. Tento příklad používá tuto zásadu k poskytnutí omezení pro SAS v souboru ve sdílené složce.
+Následující příklad vytvoří uloženou zásadu přístupu pro sdílenou složku. Tento příklad používá tuto zásadu k poskytnutí omezení pro SAS v souboru ve sdílené složce.
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -212,7 +212,7 @@ if (share.Exists())
 {
     string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-    // Create a new shared access policy and define its constraints.
+    // Create a new stored access policy and define its constraints.
     SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
         {
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
@@ -222,7 +222,7 @@ if (share.Exists())
     // Get existing permissions for the share.
     FileSharePermissions permissions = share.GetPermissions();
 
-    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    // Add the stored access policy to the share's policies. Note that each policy must have a unique name.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     share.SetPermissions(permissions);
 
@@ -491,16 +491,16 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 
 ### <a name="tooling-support-for-file-storage"></a>Podpora nástrojů pro úložiště File
 
-* [Začínáme s AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Začínáme s nástrojem AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Použití Azure CLI s Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Řešení potíží se službou Azure Files ve Windows](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Referenční informace
 
-* [Rozhraní API pro Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
-* [REST API souborové služby](/rest/api/storageservices/File-Service-REST-API)
+* [Rozhraní API služby Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
+* [Rozhraní REST API služby File Service](/rest/api/storageservices/File-Service-REST-API)
 
-### <a name="blog-posts"></a>Příspěvky na blozích
+### <a name="blog-posts"></a>Blogové příspěvky
 
 * [Azure File Storage, teď všeobecně dostupné](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Uvnitř Azure File Storage](https://azure.microsoft.com/blog/inside-azure-file-storage/)

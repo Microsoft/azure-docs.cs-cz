@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 71a0d18669ea2c5fc9e0548e195c3df0145f6cb0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1eb68f527bd764189459d454f929def0fd71d987
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967792"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561129"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -42,7 +42,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
 | **Australská vláda** | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
-| **Evropa** | Francie – střed, Francie – jih, Severní Evropa, Západní Evropa, Velká Británie – západ, Velká Británie – jih |Amsterdam, Amsterdam2, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych, Mnichov |
+| **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych, Mnichov |
 | **Severní Amerika** | Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střední USA, Středojižní USA, Středoseverní USA, Středozápadní USA, Střední Kanada, Východní Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto |
 | **Asie** | Východní Asie, Jihovýchodní Asie |Hongkong – zvláštní správní oblast, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Indie** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
@@ -94,15 +94,15 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | Spojené arabské emiráty – sever | – | Etisalat Spojené arabské emiráty |
 | **Dubai2** | [du dataměna](http://datamena.com/solutions/data-centre) | 3 | Spojené arabské emiráty – sever | – | du dataměna, Megaport, Orixcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1\. místo | Severní Evropa | 10G, 100G | Colt, eir, Equinix, Interxion, Megaport |
-| **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1\. místo | Německo – středozápad | 10G, 100G | Colt, DE-CIX, GEANT, Interxion, oranžová, Telia Carrier |
-| **Ženevě** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1\. místo | Švýcarsko – západ | 10G, 100G | |
+| **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1\. místo | Německo – středozápad | 10G, 100G | Colt, DE-CIX, GEANT, Interxion, Megaport, oranžová, Telia Carrier |
+| **Ženevě** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1\. místo | Švýcarsko – západ | 10G, 100G | Equinix |
 | **Hongkong – zvláštní správní oblast** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Východní Asie | – | Aryaka Networks sítě, British Telecom, CenturyLink Cloud Connect, generální Telecom, Čína Telecom Global, Equinix, Cloud, Megaport, NTT Communications, oranžová, PCCW s globálním omezením, Tata Communications, Telia Carrier, Verizon |
 | **Jakarta** | Telkom Indonésie | 4 | – | 10G | |
-| **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Jižní Afrika – sever | – | British Telecom, Internet Solutions – Cloud Connect, Liquid Telecom, oranžová, teraco |
+| **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Jižní Afrika – sever | 10G | British Telecom, Internet Solutions – Cloud Connect, Liquid Telecom, oranžová, teraco |
 | **Kuala Lumpur** | [DotCom cíle Menara na čas](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | – | – | TIME dotCom |
 | **Las Vegas** | [Přepínač LV](https://www.switch.com/las-vegas) | 1\. místo | – | – | CenturyLink Cloud Connect, Megaport |
-| **Londýn** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1\. místo | Velká Británie – jih | 10G, 100G | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
-| **London2** | [Pokojová USA – 2](https://www.telehouse.com/global-data-centers/emea/london-data-centers/telehouse-north-two/) | 1\. místo | Velká Británie – jih | 10G, 100G | Colt, IX dosah, Equinix, Megaport, House-KDDI |
+| **Londýn** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1\. místo | Spojené království – jih | 10G, 100G | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
+| **London2** | [Pokojová USA – 2](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1\. místo | Spojené království – jih | 10G, 100G | Colt, IX dosah, Equinix, Megaport, House-KDDI |
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1\. místo | – | – | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Transtelco, Zayo |
 | **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1\. místo | Francie – jih | – | DE-CIX, GEANT, Interxion, Jaguar síť |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Austrálie – jihovýchod | 10G, 100G | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
@@ -114,11 +114,11 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Mnichov** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1\. místo | – | 10G, 100G | |
 | **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1\. místo | – | – | CenturyLink Cloud Connect, Colt, Coresite, Equinix, spolucloud, Megaport, Packet, Zayo |
 | **Newport(Wales)** | [Brána firewall příští generace](https://www.nextgenerationdata.co.uk) | 1\. místo | Velká Británie – západ | – | British Telecom, Colt, Level 3 Communications, data nové generace |
-| **Ósaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Japonsko – západ | – | Colt, Equinix, Internet Initiative Japonska Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
+| **Ósaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Japonsko – západ | 10G, 100G | Colt, Equinix, Internet Initiative Japonska Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
 | **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1\. místo | Norsko – východ | 10G, 100G | Telenor |
 | **Paříž** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1\. místo | Francie – střed | – | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | – | 10G | Megaport, NextDC |
-| **Québec** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1\. místo | Kanada – východ | – | Bell Canada, Megaport |
+| **Québec** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1\. místo | Východní Kanada | – | Bell Canada, Megaport |
 | **San Antonio** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | 1\. místo | Středojižní USA | 10G, 100G | CenturyLink Cloud Connect, Megaport |
 | **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | 3 | Brazílie – jih | – | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | 1\. místo | Západní USA 2 | 10G, 100G | Aryaka Networks, Equinix, Level 3 Communications, Megaport, Telus, Zayo |
@@ -127,16 +127,16 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Silicon Valley2** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1\. místo | Západní USA | 10G, 100G | Colt, Coresite | 
 | **Singapur** | [Equinix sz1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | Jihovýchodní Asie | 10G, 100G | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
 | **Singapur2** | [Globální přepínač – Tai Seng](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | Jihovýchodní Asie | 10G, 100G | Colt, Epsilon Global Communications, Megaport, SingTel |
-| **Stavanger** | [Zelený horská oblast DC1](https://greenmountain.no/dc1-stavanger/) | 1\. místo | – | 10G, 100G | |
+| **Stavanger** | [Zelený horská oblast DC1](https://greenmountain.no/dc1-stavanger/) | 1\. místo | Norsko – západ | 10G, 100G | |
 | **Stockholm** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1\. místo | – | 10G | Equinix, Telia dopravce |
 | **Sydney** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | Austrálie – východ | 10G, 100G | Equinix, v & T NetBond, British Telecom, Devoli, Equinix, Kordia, Megaport, NEXTDC, NTT Communications, Optus, oranžová, Spark NZ, Telstra Corporation, TPG Telecom, Verizon, Vocus Group NZ |
 | **Sydney2** | [NextDC S1](https://www.nextdc.com/data-centres/s1-sydney-data-centre) | 2 | Austrálie – východ | 10G, 100G | NextDC |
 | **WAN** | Hlavní telekomunikační systémy | 2 | – | 10G | Generální telekomunikace, FarEasTone |
 | **Tokio** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | Japonsko – východ | 10G, 100G | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japonsko Inc.-IIJ, Megaport, NTT Communications, NTT východní, oranžová, Softbank, Verizon |
-| **Toronto** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1\. místo | Kanada – střed | 10G, 100G | AT&T NetBond, Bell Canada, CenturyLink Cloud Connect, Cologix, Equinix, IX Reach Megaport, Telus, Verizon, Zayo |
-| **Washington, D.C.** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1\. místo | Východní USA Východní USA 2 | 10G, 100G | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Cologix, Comcastu, Coresite, Equinix, Internet2, spolucloud, Level 3 Communications, Megaport, Neutrona Networks, NTT Communications, pomeranče, PacketFabric, SES, Sprint, Tata Komunikace, Telia dopravce, Verizon, Zayo |
+| **Toronto** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1\. místo | Střední Kanada | 10G, 100G | AT&T NetBond, Bell Canada, CenturyLink Cloud Connect, Cologix, Equinix, IX Reach Megaport, Telus, Verizon, Zayo |
+| **Washington, D.C.** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1\. místo | Východní USA Východní USA 2 | 10G, 100G | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Cologix, Colt, Comcastu, Coresite, Equinix, Internet2, spolucloud, Level 3 Communications, Megaport, Neutrona Networks, NTT Communications, pomeranče, PacketFabric, SES, Sprint, Tata komunikace, Telia dopravce, Verizon, Zayo |
 | **Washington DC2** | [Coresite Restonu](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1\. místo | Východní USA Východní USA 2 | 10G, 100G | CenturyLink Cloud Connect, Coresite, Viasat, Zayo | 
-| **Curych** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1\. místo | – | – | Spolucloud, Interxion, Megaport, Swisscom |
+| **Curych** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1\. místo | Švýcarsko – sever | – | Spolucloud, Interxion, Megaport, Swisscom |
 
  **+** označuje brzké uvedení.
 
@@ -152,7 +152,7 @@ Národní cloudy Azure jsou oddělené od sebe navzájem a z globálního Commer
 | **New York** | [Equinix NY5](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny5/) | – | 10G, 100G | Equinix, CenturyLink Cloud Connect, Verizon |
 | **Phoenix** | [CyrusOne Chandler](https://cyrusone.com/locations/arizona/phoenix-arizona-chandler/) | US Gov – Arizona | – | V & T NetBond, CenturyLink Cloud Connect, Megaport |
 | **San Antonio** | [CyrusOne SA2](https://cyrusone.com/locations/texas/san-antonio-texas-ii/) | US Gov – Texas | – | CenturyLink Cloud Connect, Megaport |
-| **Silicon Valley** | [Equinix SV4](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv4/) | – | 10G, 100G | Equinix, Level 3 Communications, Verizon |
+| **Silicon Valley** | [Equinix SV4](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv4/) | – | 10G, 100G | V & T, Equinix, Level 3 Communications, Verizon |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | – | – | Equinix, Megaport |
 | **Washington, D.C.** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | US DoD – východ US Gov – Virginie | 10G, 100G | AT&T NetBond, CenturyLink Cloud Connect, Equinix, Level 3 Communications, Megaport, Verizon |
 
@@ -182,7 +182,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
   * [InterXion](https://www.interxion.com/)
   * [NextDC](https://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
-  * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)
+  * [PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)
   
 * Rozšířil váš poskytovatel připojení vaši síť ke zvolenému umístění partnerského vztahu?
   * Ujistěte se, že poskytovatel připojení rozšiřuje vaše připojení vysoce dostupným způsobem tak, aby neexistovaly žádné jediné body selhání.

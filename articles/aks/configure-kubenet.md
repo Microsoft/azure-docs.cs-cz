@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 382895c1b5a4cb2bc88ff2371cec59267ea4e176
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442943"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -22,6 +22,15 @@ Ve výchozím nastavení clustery AKS používají [kubenet][kubenet]a pro vás 
 Díky [rozhraní CNI (Azure Container Networking Interface)][cni-networking]každý z nich získá IP adresu z podsítě a dá se k nim získat přímý pøístup. Tyto IP adresy musí být v rámci vašeho síťového prostoru jedinečné a musí být plánovány předem. Každý uzel má parametr konfigurace maximálního počtu lusků, které podporuje. Pro tento uzel je pak rezervovaný i ekvivalentní počet IP adres na uzel. Tento přístup vyžaduje více plánování a často vede k vyčerpání IP adres nebo k nutnosti opětovnému sestavení clusterů ve větší podsíti, dokud vaše aplikace požaduje růst.
 
 V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít podsíť virtuální sítě pro cluster AKS. Další informace o možnostech a požadavcích sítě najdete v tématu [Koncepty sítě pro Kubernetes a AKS][aks-network-concepts].
+
+## <a name="prerequisites"></a>Požadavky
+
+* Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
+* Nevytvářejte více než jeden cluster AKS ve stejné podsíti.
+* Clustery AKS nemůžou používat `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`nebo `192.0.2.0/24` pro rozsah adres služby Kubernetes.
+* Instanční objekt používaný clusterem AKS musí mít alespoň oprávnění [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
+  * `Microsoft.Network/virtualNetworks/subnets/join/action`
+  * `Microsoft.Network/virtualNetworks/subnets/read`
 
 > [!WARNING]
 > Pokud chcete používat fondy uzlů Windows serveru (v současnosti ve verzi Preview v AKS), musíte použít Azure CNI. Použití kubenet jako síťového modelu není k dispozici pro kontejnery Windows serveru.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 50cb61394043bb8d0e67cae2aea8be4285f3432c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f6a0a2631c3f7458548a2ff435c3e565e744f41
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926266"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660204"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -71,7 +71,7 @@ Load Balancer podporuje skladové položky Basic i Standard. Tyto SKU se liší 
 Konfigurace kompletního scénáře se může mírně lišit v závislosti na SKU. V dokumentaci k Load Balanceru najdete upozornění, pokud se článek týká pouze určité skladové položky. Porovnání a vysvětlení rozdílů najdete v následující tabulce. Další informace najdete v tématu [Přehled služby Azure Standard Load Balancer](load-balancer-standard-overview.md).
 
 >[!NOTE]
-> Microsoft reccomends Standard Load Balancer.
+> Společnost Microsoft doporučuje Standard Load Balancer.
 Samostatné virtuální počítače, skupiny dostupnosti a škálovací sady virtuálních počítačů je možné připojit pouze k jedné skladové položce, nikdy k oběma. Load Balancer a SKU veřejné IP adresy se musí shodovat, když je používáte s veřejnými IP adresami. Load Balancer a veřejné SKU IP nejsou proměnlivé.
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 75490edfd30541aa641656a2ccc17a259bfbe927
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f9a04d767ffeb5112e2b06ed319a3c28f3b7f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406522"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -164,7 +164,8 @@ Vytvoření nového souboru. JSON – Pojďme ho v tomto příkladu volat `templ
                 "location": "[parameters('appLocation')]",
                 "tags": {},
                 "properties": {
-                    "ApplicationId": "[parameters('appName')]"
+                    "ApplicationId": "[parameters('appName')]",
+                    "retentionInDays": "[parameters('retentionInDays')]"
                 },
                 "dependsOn": []
             },
@@ -178,7 +179,6 @@ Vytvoření nového souboru. JSON – Pojďme ho v tomto příkladu volat `templ
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
-                    "retentionInDays": "[parameters('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -394,7 +394,7 @@ Chcete-li automatizovat vytváření jakýchkoli dalších prostředků jakéhok
     `"apiVersion": "2015-05-01",`
 
 ### <a name="parameterize-the-template"></a>Parametrizovat šablonu
-Nyní musíte nahradit konkrétní názvy parametry. Chcete-li [parametrizovat šablonu](../../azure-resource-manager/resource-group-authoring-templates.md), zapište výrazy pomocí [sady pomocných funkcí](../../azure-resource-manager/resource-group-template-functions.md). 
+Nyní musíte nahradit konkrétní názvy parametry. Chcete-li [parametrizovat šablonu](../../azure-resource-manager/templates/template-syntax.md), zapište výrazy pomocí [sady pomocných funkcí](../../azure-resource-manager/resource-group-template-functions.md). 
 
 Nemůžete parametrizovat pouze část řetězce, takže použijte `concat()` k sestavení řetězců.
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffe0773c943983fc098d41f56b21b898682b2a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb09228b561718819c0c48aac4fc66d8205fe384
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843984"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424619"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v clo
 
 Centralizovaný poskytovatel identity je ještě důležitější pro aplikace, které mají uživatele na celém světě, kteří se nemusí nutně přihlašovat ze sítě v podniku. Azure AD ověřuje uživatele a poskytuje přístupové tokeny. Přístupový token je token zabezpečení, který je vydaný autorizačním serverem. Obsahuje informace o uživateli a aplikaci, pro kterou je token určený, který je možné použít pro přístup k webovým rozhraním API a dalším chráněným prostředkům.
 
-Platforma Microsoft Identity usnadňuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open-source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
+Platforma Microsoft Identity usnadňuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open-source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
 
 ### <a name="tenants"></a>Klienti
 
@@ -165,6 +165,7 @@ Ve výchozím nastavení používá nástroj MSAL prohlížeč systému s výjim
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s běžnými podmínkami na [webu Microsoft Identity Platform Developer Glosář](developer-glossary.md) .
-Další informace o dalších scénářích pro ověřování uživatelů, které podporuje platforma Microsoft identity, najdete v tématu [toky ověřování a scénáře aplikací](authentication-flows-app-scenarios.md) .
-V tématu [knihovny MSAL](msal-overview.md) najdete informace o knihovnách Microsoftu, které vám pomůžou vyvíjet aplikace, které pracují s účty Microsoft, účty Azure AD a Azure AD B2C uživatelů v jednom, zjednodušeném programovacím modelu.
+- Seznamte se s běžnými podmínkami na [webu Microsoft Identity Platform Developer Glosář](developer-glossary.md) .
+- Další informace o dalších scénářích pro ověřování uživatelů, které podporuje platforma Microsoft identity, najdete v tématu [toky ověřování a scénáře aplikací](authentication-flows-app-scenarios.md) .
+- V tématu [knihovny MSAL](msal-overview.md) najdete informace o knihovnách Microsoftu, které vám pomůžou vyvíjet aplikace, které pracují s účty Microsoft, účty Azure AD a Azure AD B2C uživatelů v jednom, zjednodušeném programovacím modelu.
+- Informace o tom, jak nakonfigurovat ověřování pro App Service aplikaci, najdete v tématu věnovaném [integraci App Service s platformou identity Microsfot](/azure/app-service/configure-authentication-provider-aad) .

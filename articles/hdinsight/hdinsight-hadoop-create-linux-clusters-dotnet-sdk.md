@@ -2,23 +2,22 @@
 title: Vytváření clusterů Apache Hadoop pomocí .NET – Azure HDInsight
 description: Naučte se vytvářet Apache Hadoop, Apache HBA, Apache Storm nebo Apache Spark clustery na platformě Linux pro HDInsight pomocí sady SDK HDInsight .NET.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: fccb29167dc04bf75a85935eeb57b0420b151f64
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 928955adbc5ced7c693407d6c8d3643f9f094d82
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916489"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612270"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Vytváření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
-
 
 Naučte se vytvořit cluster [Apache Hadoop](https://hadoop.apache.org/) v clusteru Azure HDInsight pomocí sady .NET SDK.
 
@@ -27,20 +26,22 @@ Naučte se vytvořit cluster [Apache Hadoop](https://hadoop.apache.org/) v clust
 >
 > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="prerequisites"></a>Požadavky
-
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Účet služby Azure Storage**. Zobrazit [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md).
-* **Visual Studio**.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Účet úložiště Azure. Zobrazit [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md).
+
+* Sadu [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 
-1. Otevřít Visual Studio.
-2. Vytvořte novou aplikaci vizuální C# konzoly.
-3. V nabídce **nástroje** klikněte na **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
-4. Spuštěním následujícího příkazu v konzole nainstalujte balíčky:
+1. Otevřete sadu Visual Studio.
+1. Vytvořte novou C# konzolovou aplikaci.
+1. Vyberte **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
+1. Spuštěním následujícího příkazu v konzole nainstalujte balíčky:
 
     ```powershell
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -49,7 +50,7 @@ Naučte se vytvořit cluster [Apache Hadoop](https://hadoop.apache.org/) v clust
     ```
 
     Tyto příkazy přidávají knihovny .NET a odkazy na aktuální projekt sady Visual Studio.
-5. Z Průzkumník řešení otevřete dvojitým kliknutím na **program.cs** , vložte následující kód a zadejte hodnoty pro proměnné:
+1. Z Průzkumník řešení otevřete dvojitým kliknutím na **program.cs** , vložte následující kód a zadejte hodnoty pro proměnné:
 
     ```csharp
     using System;
@@ -184,8 +185,9 @@ Naučte se vytvořit cluster [Apache Hadoop](https://hadoop.apache.org/) v clust
     }
     ```
 
-6. Nahraďte hodnoty členů třídy.
-7. Stisknutím klávesy **F5** spusťte aplikaci. Okno konzoly by mělo otevřít a zobrazit stav aplikace. Zobrazí se výzva k zadání přihlašovacích údajů k účtu Azure. Vytvoření clusteru HDInsight může trvat několik minut, obvykle přibližně 15.
+1. Nahraďte hodnoty členů třídy.
+
+1. Stisknutím klávesy **F5** spusťte aplikaci. Okno konzoly by mělo otevřít a zobrazit stav aplikace. Zobrazí se výzva k zadání přihlašovacích údajů k účtu Azure. Vytvoření clusteru HDInsight může trvat několik minut, obvykle přibližně 15.
 
 ## <a name="use-bootstrap"></a>Použít Bootstrap
 
@@ -366,14 +368,13 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-hadoop-create-linux-clusters-portal.md).
+Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste úspěšně vytvořili cluster HDInsight, se dozvíte, jak pracovat s clusterem pomocí následujícího postupu. 
+## <a name="next-steps"></a>Další kroky
+Teď, když jste úspěšně vytvořili cluster HDInsight, se dozvíte, jak pracovat s clusterem pomocí následujícího postupu.
 
 ### <a name="apache-hadoop-clusters"></a>Clustery Apache Hadoop
 * [Použití Apache Hive se službou HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití Apache prasete se službou HDInsight](hadoop/hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Clustery Apache HBA
@@ -388,11 +389,10 @@ Teď, když jste úspěšně vytvořili cluster HDInsight, se dozvíte, jak prac
 ### <a name="apache-spark-clusters"></a>Clustery Apache Spark
 * [Vytvoření samostatné aplikace pomocí Scala](spark/apache-spark-create-standalone-application.md)
 * [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI.](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](spark/apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="run-jobs"></a>Spouštění úloh
 * [Spuštění úloh Apache Hive ve službě HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [Spouštění úloh Apache Sqoop v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 * [Spouštění úloh Apache Oozie v HDInsight](hdinsight-use-oozie-linux-mac.md)
-

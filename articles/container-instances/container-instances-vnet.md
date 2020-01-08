@@ -2,13 +2,14 @@
 title: Nasazení skupiny kontejnerů do služby Azure Virtual Network
 description: Naučte se nasazovat skupiny kontejnerů do nové nebo existující virtuální sítě Azure.
 ms.topic: article
-ms.date: 07/11/2019
-ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533273"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442257"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do služby Azure Virtual Network
 
@@ -45,8 +46,8 @@ Omezení prostředků kontejneru se mohou lišit od omezení pro instance kontej
 ### <a name="unsupported-networking-scenarios"></a>Nepodporované scénáře sítě 
 
 * **Azure Load Balancer** – umístění Azure Load Balancer před instancemi kontejnerů v síťové skupině kontejnerů se nepodporuje.
-* **Partnerský vztah virtuální sítě** : nemůžete vytvořit partnerský vztah k virtuální síti obsahující podsíť delegovanou na Azure Container Instances do jiné virtuální sítě.
-* **Směrovací tabulky** – uživatelsky definované trasy nemůžou být nastavené v podsíti delegované na Azure Container Instances
+* **Partnerský vztah virtuální sítě** – partnerský vztah virtuálních sítí nebude fungovat pro ACI, pokud síť, ke které se virtuální síť ACI nachází z partnerských vztahů, používá veřejný prostor IP adres. Aby partnerské vztahy fungovaly, musí síť s partnerským vztahem RFC1918 místo pro privátní IP adresu. Kromě toho můžete aktuálně vytvořit partnerský vztah pouze k jedné virtuální síti.
+* **Směrování provozu virtuální sítě** – trasy zákazníků nelze nastavit kolem veřejných IP adres. Trasy je možné nastavit v privátním IP prostoru delegované podsítě, ve které jsou nasazené prostředky ACI. 
 * **Skupiny zabezpečení sítě** – odchozí pravidla zabezpečení v skupin zabezpečení sítě použitá pro podsíť delegovaná na Azure Container Instances se momentálně neuplatňují. 
 * **Veřejná IP adresa nebo popisek DNS** – skupiny kontejnerů nasazené ve virtuální síti aktuálně nepodporují vystavování kontejnerů přímo na internetu s použitím veřejné IP adresy nebo plně kvalifikovaného názvu domény.
 * **Interní překlad adres IP** – překlad názvů pro prostředky Azure ve virtuální síti prostřednictvím interního Azure DNS není podporovaný.
@@ -63,7 +64,7 @@ Virtuální síť definuje adresní prostor, ve kterém vytvoříte jednu nebo v
 
 ### <a name="subnet-delegated"></a>Podsíť (delegovaný)
 
-Podsítě segmentují virtuální síť do samostatných adresních prostorů použitelných prostředky Azure, které do nich umístíte. Vytvoříte jednu nebo několik podsítí v rámci virtuální sítě.
+Podsítě virtuální sítě rozdělit do samostatné adresní prostory použitelné Azure prostředky, které umístíte do nich. Vytvoříte jednu nebo několik podsítí v rámci virtuální sítě.
 
 Podsíť, kterou použijete pro skupiny kontejnerů, může obsahovat pouze skupiny kontejnerů. Když nasadíte skupinu kontejnerů do podsítě poprvé, Azure deleguje tuto podsíť Azure Container Instances. Po delegování se podsíť dá použít jenom pro skupiny kontejnerů. Pokud se pokusíte nasadit jiné prostředky než skupiny kontejnerů na delegovanou podsíť, operace se nezdaří.
 
@@ -94,7 +95,7 @@ Předpony adresy virtuální sítě a podsítě určují adresní prostory pro v
 
 Po nasazení první skupiny kontejnerů pomocí této metody můžete nasadit do stejné podsítě zadáním virtuální sítě a názvů podsítí nebo síťového profilu, který vám Azure pro vás automaticky vytvoří. Vzhledem k tomu, že Azure deleguje podsíť k Azure Container Instances, můžete do podsítě nasadit *jenom* skupiny kontejnerů.
 
-### <a name="existing-virtual-network"></a>Existující virtuální síť
+### <a name="existing-virtual-network"></a>Stávající virtuální síť
 
 Nasazení skupiny kontejnerů do existující virtuální sítě:
 
@@ -248,7 +249,7 @@ appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-hel
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-### <a name="delete-container-instances"></a>Odstranit instance kontejnerů
+### <a name="delete-container-instances"></a>Odstranit instance kontejneru
 
 Až budete pracovat s instancemi kontejnerů, které jste vytvořili, odstraňte je pomocí následujících příkazů:
 

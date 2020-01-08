@@ -1,90 +1,81 @@
 ---
-title: Rozhraní API klienta Azure Service Fabric Java | Dokumentace Microsoftu
-description: Vygenerování a použití klientských rozhraní API Service Fabric v Javě pomocí specifikace rozhraní REST API služby Service Fabric klienta
-services: service-fabric
-documentationcenter: java
+title: Klientská rozhraní API pro Azure Service Fabric Java
+description: Generování a použití Service Fabric rozhraní API klienta Java pomocí Service Fabric specifikace REST API klienta
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 97bba87331965b0f7ce20ec2ee089e0e18f72457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451669"
 ---
-# <a name="azure-service-fabric-java-client-apis"></a>Rozhraní API klienta Azure Service Fabric Java
+# <a name="azure-service-fabric-java-client-apis"></a>Klientská rozhraní API pro Azure Service Fabric Java
 
-Service Fabric klientských rozhraní API umožňuje nasazení a správu mikroslužeb založený na aplikace tak kontejnery v clusteru Service Fabric v Azure, místně, v místním vývojovém počítači nebo v jiný cloud. Tento článek popisuje, jak vygenerovat a použít Service Fabric v Javě klientských rozhraní API nad Service Fabric klienta REST API
+Rozhraní API klienta Service Fabric umožňují nasazovat a spravovat aplikace a kontejnery založené na mikroslužbách v clusteru Service Fabric v Azure, místně, na místním vývojovém počítači nebo v jiném cloudu. Tento článek popisuje, jak vygenerovat a používat Service Fabric rozhraní API klienta Java nad Service Fabric rozhraní REST API klienta.
 
-## <a name="generate-the-client-code-using-autorest"></a>Generování kódu klienta pomocí AutoRest
+## <a name="generate-the-client-code-using-autorest"></a>Generování kódu klienta pomocí programu AutoRest
 
-[AutoRest](https://github.com/Azure/autorest) je nástroj, který generuje klientské knihovny pro přístup k rozhraní RESTful webových služeb. Vstup pro AutoRest je specifikace, které popisují rozhraní REST API ve formátu specifikace OpenAPI. [Service Fabric klienta REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) postupujte podle téhle specifikaci.
+[AutoRest](https://github.com/Azure/autorest) je nástroj, který generuje klientské knihovny pro přístup k RESTful webovým službám. Vstup do AutoRest je specifikace, která popisuje REST API pomocí formátu specifikace OpenAPI. [Service Fabric rozhraní REST API klienta](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) dodržujte tuto specifikaci.
 
-Postupujte podle pokynů uvedených níže pro generování kódu klienta Service Fabric v Javě pomocí nástroje AutoRest.
+Použijte následující postup, chcete-li vygenerovat Service Fabric kód klienta Java pomocí nástroje AutoRest.
 
 1. Instalace nodejs a NPM na počítači
 
-    Pokud používáte Linux pak:
+    Pokud používáte Linux, pak:
     ```bash
     sudo apt-get install npm
     sudo apt install nodejs
     ```
-    Pokud používáte Mac OS X klikněte:
+    Pokud používáte Mac OS X pak:
     ```bash
     brew install node
     ```
 
-2. Nainstalujte pomocí NPM AutoRest.
+2. Nainstalujte AutoRest pomocí NPM.
     ```bash
     npm install -g autorest
     ```
 
-3. Rozvětvení a klonování [azure rest api specifikace](https://github.com/Azure/azure-rest-api-specs) úložiště v místním počítači a přejděte do naklonovaného umístění z terminálu vašeho počítače.
+3. Rozvětvení a klonování úložiště [specifikací Azure-REST-API](https://github.com/Azure/azure-rest-api-specs) v místním počítači a přechod do klonovaného umístění z terminálu počítače.
 
 
-4. Přejdete na umístění uvedená níže v naklonovaného úložiště.
+4. Přejít do umístění uvedeného níže v klonovaném úložišti.
     ```bash
     cd specification\servicefabric\data-plane\Microsoft.ServiceFabric\stable\6.0
     ```
 
     > [!NOTE]
-    > Pokud se vaší verze clusteru není 6.0. * přejděte do příslušného adresáře ve složce stabilní.
+    > Pokud vaše verze clusteru není 6,0. *, potom v části stabilní složku otevřete příslušný adresář.
     >   
 
-5. Spusťte následující příkaz autorest ke generování kódu klienta jazyka java.
+5. Spuštěním následujícího příkazu AutoRest vygenerujte kód klienta Java.
     
     ```bash
     autorest --input-file= servicefabric.json --java --output-folder=[output-folder-name] --namespace=[namespace-of-generated-client]
     ```
-   Níže je příklad ukazující využití autorest.
+   Níže je uveden příklad, který demonstruje použití AutoRest.
    
     ```bash
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Zadáním následujícího příkazu trvá ``servicefabric.json`` specifikace souboru jako vstup a vygeneruje kód klienta java v ``java-rest-api-     code`` složky a vloží kód v ``servicefabricrest`` oboru názvů. Po provedení tohoto kroku ekvivalent byste našli dvě složky ``models``, ``implementation`` a dva soubory ``ServiceFabricClientAPIs.java`` a ``package-info.java`` vygenerované v ``java-rest-api-code`` složky.
+   Následující příkaz přebírá soubor specifikace ``servicefabric.json`` jako vstup a generuje kód klienta Java v ``java-rest-api-     code`` složce a uzavře kód do ``servicefabricrest`` obor názvů. Po provedení tohoto kroku najdete dvě složky ``models````implementation`` a dva soubory ``ServiceFabricClientAPIs.java`` a ``package-info.java`` vygenerované ve složce ``java-rest-api-code``.
 
 
-## <a name="include-and-use-the-generated-client-in-your-project"></a>Zahrnout a pomocí generovaného klienta ve vašem projektu
+## <a name="include-and-use-the-generated-client-in-your-project"></a>Zahrnutí a použití vygenerovaného klienta v projektu
 
-1. Přidáte generovaný kód odpovídajícím způsobem ve vašem projektu. Doporučujeme vytvořit knihovny pomocí vygenerovaného kódu a zahrnout tuto knihovnu do projektu.
-2. Pokud vytváříte knihovnu, zahrnout do své knihovny projektu následující závislost. Pokud postupujete jiný přístup pak uvést závislost odpovídajícím způsobem.
+1. Přidejte do projektu generovaný kód odpovídajícím způsobem. Doporučujeme vytvořit knihovnu pomocí generovaného kódu a zahrnout tuto knihovnu do projektu.
+2. Pokud vytváříte knihovnu, potom do projektu knihovny přidejte následující závislost. Pokud budete postupovat podle různých přístupů, zahrňte odpovídajícím způsobem závislost.
 
     ```
         GroupId:  com.microsoft.rest
         Artifactid: client-runtime
         Version: 1.2.1
     ```
-    Například, pokud používáte Maven systém sestavení patří do vašeho ``pom.xml`` souboru:
+    Například pokud používáte sestavovací systém Maven, zahrnuje následující soubory ``pom.xml``:
 
     ```xml
         <dependency>
@@ -94,7 +85,7 @@ Postupujte podle pokynů uvedených níže pro generování kódu klienta Servic
         </dependency>
     ```
 
-3. Vytvoření RestClient pomocí následujícího kódu:
+3. Vytvořte RestClient pomocí následujícího kódu:
 
     ```java
         RestClient simpleClient = new RestClient.Builder()
@@ -104,8 +95,8 @@ Postupujte podle pokynů uvedených níže pro generování kódu klienta Servic
             .build();
         ServiceFabricClientAPIs client = new ServiceFabricClientAPIsImpl(simpleClient);
     ```
-4. Pomocí objektu klienta a volat odpovídající podle potřeby. Tady je několik příkladů, které ukazují použití objektu klienta. Předpokládáme, že je balíček aplikace sestavena a nahrána do úložiště imagí před použitím nižší než rozhraní API.
-    * Zřídit aplikace
+4. Použijte objekt klienta a proveďte odpovídající volání podle potřeby. Zde je několik příkladů, které ukazují použití objektu klienta. Před použitím rozhraní API níže předpokládáme, že je balíček aplikace sestavený a nahraný do úložiště imagí.
+    * Zřízení aplikace
     
         ```java
             ApplicationTypeImageStorePath imageStorePath = new ApplicationTypeImageStorePath();
@@ -122,17 +113,17 @@ Postupujte podle pokynů uvedených níže pro generování kódu klienta Servic
             client.createApplication(applicationDescription);
         ```
 
-## <a name="understanding-the-generated-code"></a>Principy generovaného kódu
-Pro každé rozhraní API najdete čtyři přetížení implementace. Pokud jsou volitelné parametry by najít čtyři další změny, včetně těchto volitelné parametry. Představme si třeba rozhraní API ``removeReplica``.
- 1. **public void removeReplica (řetězec nodeName, UUID partitionId, replicaId řetězec, logická forceRemove, dlouhý časový limit)**
-    * Toto je synchronní variant volání removeReplica rozhraní API
- 2. **veřejné ServiceFuture\<Void > removeReplicaAsync (řetězec nodeName, UUID partitionId, replicaId řetězec, logická forceRemove, dlouhý časový limit, finální ServiceCallback\<Void > serviceCallback)**
-    * Tato varianta volání rozhraní API je možné, pokud chcete použít budoucí založené na asynchronní programování a použít zpětná volání
- 3. **veřejné pozorovat\<Void > removeReplicaAsync (nodeName řetězec, ID oddílu UUID, replicaId řetězec)**
-    * Tato varianta volání rozhraní API lze použít, pokud chcete použít reaktivní asynchronní programování
- 4. **veřejné pozorovat\<ServiceResponse\<Void >> removeReplicaWithServiceResponseAsync (nodeName řetězec, ID oddílu UUID, replicaId řetězec)**
-    * Tato varianta volání rozhraní API je možné, pokud chcete použít reaktivní asynchronní programování a řešil odpověď NEZPRACOVANÁ rest
+## <a name="understanding-the-generated-code"></a>Princip vygenerovaného kódu
+Pro každé rozhraní API najdete čtyři přetížení implementace. Pokud jsou k dispozici volitelné parametry, najdete čtyři další variace včetně těchto volitelných parametrů. Zvažte například ``removeReplica``rozhraní API.
+ 1. **Public void removeReplica (řetězcový uzel, UUID, identifikátor UUID, identifikátor replicaId řetězce, Boolean forceRemove, dlouhý časový limit)**
+    * Toto je synchronní varianta volání rozhraní removeReplica API.
+ 2. **Public ServiceFuture\<void > removeReplicaAsync (řetězec Node, UUID, identifikátor replicaId řetězce, logická forceRemove, dlouhý časový limit, konečné ServiceCallback\<void > serviceCallback)**
+    * Tato varianta volání rozhraní API se dá použít, pokud chcete použít budoucí asynchronní programování a používat zpětná volání.
+ 3. **Veřejná pozorovatelná\<void > removeReplicaAsync (řetězec Node, UUID, identifikátor replicaId řetězce)**
+    * Tato varianta volání rozhraní API se dá použít, pokud chcete použít reaktivní asynchronní programování.
+ 4. **Veřejná pozorovatelná\<ServiceResponse\<void > > removeReplicaWithServiceResponseAsync (řetězec Node, UUID partitionId, identifikátor replicaId řetězce)**
+    * Tato varianta volání rozhraní API se dá použít, pokud chcete použít reaktivní asynchronní programování a pracovat s nezpracovanými odpověďmi REST.
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [Service Fabric rozhraní REST API](https://docs.microsoft.com/rest/api/servicefabric/)
+## <a name="next-steps"></a>Další kroky
+* Další informace o [rozhraních REST api Service Fabric](https://docs.microsoft.com/rest/api/servicefabric/)
 

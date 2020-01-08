@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4a5ab0b0ae76f3c646df42953c1602c63a274824
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457390"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se soubory Azure v systému Windows
 
@@ -151,7 +151,7 @@ Nemáte přístup.
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
-Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí Access Control na základě rolí (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klikněte na **řízení přístupu (IAM)** a ověřte, jestli má uživatelský účet přístup k účtu úložiště. Další informace najdete v tématu [zabezpečení účtu úložiště pomocí Access Control na základě rolí (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Příčina 2: v účtu úložiště jsou povolená pravidla virtuální sítě nebo brány firewall.
 

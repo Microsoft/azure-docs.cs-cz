@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6e46965442e3f95c98a7d55a645b237c22740ff4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bfe786405ad32f68af33fcea1131fe856c9f38d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929834"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440039"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlý Start: vytvoření datové továrny Azure a kanálu pomocí REST API
 
@@ -30,9 +30,9 @@ Azure Data Factory je cloudová služba pro integraci dat umožňující vytvá�
 
 Tento rychlý start popisuje použití rozhraní REST API k vytvoření datové továrny Azure. Kanál v této datové továrně kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -190,7 +190,7 @@ Tady je ukázkový výstup:
 ```
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-Definujete datovou sadu, která představuje data pro kopírování ze zdroje do jímky. V tomto příkladu vytvoříte dvě datové sady: InputDataset a OutputDataset. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (Input) a soubor (EMP. txt) obsahující zdrojová data. Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (výstup) a soubor, do kterého se data zkopírují.
+Nadefinujete datovou sadu, která představuje data ke kopírování ze zdroje do jímky. V tomto příkladu vytvoříte dvě datové sady: InputDataset a OutputDataset. Odkazují na propojenou službu Azure Storage, kterou jste vytvořili v předchozí části. Vstupní datová sada představuje zdrojová data ve vstupní složce. V definici vstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (Input) a soubor (EMP. txt) obsahující zdrojová data. Výstupní datová sada představuje data kopírovaná do cíle. V definici výstupní datové sady určíte kontejner objektů BLOB (adftutorial), složku (výstup) a soubor, do kterého se data zkopírují.
 
 **Vytvořit InputDataset**
 
@@ -494,7 +494,7 @@ Tady je ukázkový výstup:
 Pomocí nástroje Azure Storage Explorer ověřte, zda je soubor zkopírován do "outputPath" z "inputPath", jak jste určili při vytváření spuštění kanálu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete odstranit [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md), což zahrnuje odstranění všech prostředků v této skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze datovou továrnu, kterou jste vytvořili v tomto kurzu.
+Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete vyčistit dvěma způsoby. Můžete odstranit [skupinu prostředků Azure](../azure-resource-manager/management/overview.md), což zahrnuje odstranění všech prostředků v této skupině prostředků. Pokud chcete ostatní prostředky zachovat beze změny, odstraňte pouze datovou továrnu, kterou jste vytvořili v tomto kurzu.
 
 Spuštěním následujícího příkazu odstraníte celou skupinu prostředků:
 ```powershell
@@ -508,4 +508,4 @@ Remove-AzDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<Name
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.
+Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

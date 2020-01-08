@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/09/2018
-ms.openlocfilehash: e248c7f37c062fc69e5e42ae7d33e275c4b0aa19
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: db069571258bce8b79d223ce3115737061685b78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439372"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -35,7 +35,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Vytvoření kanálu pomocí nástroje pro kopírování dat
 > * Monitorování spuštění aktivit a kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -123,14 +123,14 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků. 
         
-     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).
 1. Jako **Verzi** vyberte **V2**.
 1. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních nebo oblastech.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 1. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
   
-     ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
+     ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
 1. Výběrem dlaždice **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory. 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat

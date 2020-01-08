@@ -1,29 +1,20 @@
 ---
-title: Automatické škálování, kterým je aplikace spuštěná ve službě Azure Service Fabric mřížky | Dokumentace Microsoftu
+title: Automatické škálování aplikace běžící v Azure Service Fabric sítě
 description: Zjistěte, jak nakonfigurovat zásady automatického škálování služby Service Fabric mřížky aplikace.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461974"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Vytvořit zásady automatického škálování pro aplikaci Service Fabric mřížky
-Jednou z hlavních výhod nasazení aplikací do služby Service Fabric Mesh je možnost snadného horizontálního snížení nebo navýšení kapacity služeb. Tuto možnost byste měli používat ke zvládnutí různých objemů zatížení vašich služeb nebo ke zlepšení dostupnosti. Můžete ručně škálovat služby snížení nebo navýšení kapacity nebo nastavení zásad pro automatické škálování.
+Jednou z hlavních výhod nasazení aplikací do Service Fabric sítě je možnost snadného škálování služeb v systému nebo. Tato služba by se měla používat ke zpracování proměnlivých objemů zatížení vašich služeb nebo ke zlepšení dostupnosti. Můžete ručně škálovat služby snížení nebo navýšení kapacity nebo nastavení zásad pro automatické škálování.
 
 [Automatické škálování](service-fabric-mesh-scalability.md#autoscaling-service-instances) umožňuje dynamicky škálovat počet instancí služby (horizontální škálování). Automatické škálování poskytuje skvělé pružnost a umožňuje zřizování nebo odebrání instancí služby na základě využití procesoru nebo paměti.
 
@@ -123,5 +114,5 @@ application:
           ...
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Zjistěte, jak [ruční škálování služby](service-fabric-mesh-tutorial-template-scale-services.md)

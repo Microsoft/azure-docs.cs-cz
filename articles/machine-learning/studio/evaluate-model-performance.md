@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b37844ff93ed1cfb631c2d8da12d0729f61f44ed
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427647"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Postup vyhodnocení výkonu modelu v Azure Machine Learning Studio (Classic)
 
 Tento článek ukazuje, jak vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic) a poskytuje stručné vysvětlení metrik dostupných pro tuto úlohu. K dispozici jsou tři běžné scénáře učení s dohledem: 
 
-* Nevýhody
-* Binární klasifikace 
-* klasifikace s více třídami
+* nevýhody
+* binární klasifikace 
+* Klasifikace s více třídami
 
 
 
@@ -41,10 +41,10 @@ Alternativně můžete použít křížové ověřování k provedení několika
 V následujících částech sestavíme jednoduché modely regrese a klasifikace a vyhodnocujeme jejich výkon pomocí [modelu vyhodnocení][evaluate-model] i modulů [modelu křížové validace][cross-validate-model] .
 
 ## <a name="evaluating-a-regression-model"></a>Vyhodnocení regresního modelu
-Předpokládejme, že chceme předpovědět cenu auta pomocí funkcí, jako jsou dimenze, aut, specifikace stroje atd. Toto je typický problém regrese, kde Cílová proměnná (*Price*) je souvislá číselná hodnota. Můžeme přizpůsobit lineární regresní model, který s ohledem na hodnoty funkcí určitého automobilu může odhadnout cenu tohoto auta. Tento model regrese se dá použít k určení skóre stejné datové sady, kterou jsme si vyškole. Jakmile budeme mít předpovězené ceny za automobil, můžeme vyhodnotit výkon modelu tím, že si vyhledáte, kolik předpovědi se odchyluje od skutečných cen v průměru. K tomu je potřeba použít *datovou sadu dat auto (RAW)* , která je k dispozici v části **uložené datové sady** v ml Studio (Classic).
+Předpokládejme, že chceme předpovědět cenu auta pomocí funkcí, jako jsou dimenze, aut, specifikace stroje atd. Toto je typický problém regrese, kde Cílová proměnná (*Price*) je souvislá číselná hodnota. Můžeme přizpůsobit lineární regresní model, který s ohledem na hodnoty funkcí určitého automobilu může odhadnout cenu tohoto auta. Tento model regrese se dá použít k určení skóre stejné datové sady, kterou jsme si vyškole. Jakmile budeme mít předpovězené ceny za automobil, můžeme vyhodnotit výkon modelu tím, že si vyhledáte, kolik předpovědi se odchyluje od skutečných cen v průměru. K tomu je potřeba použít *datovou sadu dat auto (RAW)* , která je k dispozici v části **uložené datové sady** v Machine Learning Studio (Classic).
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
-Do svého pracovního prostoru přidejte následující moduly v klasické verzi Azure Machine Learning Studio:
+Přidejte do svého pracovního prostoru následující moduly v Azure Machine Learning Studio (Classic):
 
 * Údaje o cenách automobilu (RAW)
 * [Lineární regrese][linear-regression]
@@ -56,7 +56,7 @@ Připojte porty, jak je znázorněno na obrázku 1, a nastavte sloupec popisek m
 
 ![Vyhodnocení regresního modelu](./media/evaluate-model-performance/1.png)
 
-Obrázek 1. Vyhodnocení regresního modelu.
+Obrázek 1: Vyhodnocení regresního modelu.
 
 ### <a name="inspecting-the-evaluation-results"></a>Kontrola výsledků hodnocení
 Po spuštění experimentu můžete kliknout na výstupní port modulu [vyhodnocení modelu][evaluate-model] a vybrat *vizualizovat* a zobrazit výsledky vyhodnocení. K dispozici jsou metriky vyhodnocení pro regresní modely: *střední absolutní chyba*, *absolutní absolutní*chyba, *relativní absolutní chyba*, *relativní čtvercová chyba*a *koeficient určení*.
@@ -83,10 +83,10 @@ Po spuštění experimentu můžete zkontrolovat výsledky vyhodnocení kliknut�
 Obrázek 4. Výsledky křížového ověřování modelu regrese.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Vyhodnocení binárního klasifikačního modelu
-V binárním scénáři klasifikace má cílová proměnná pouze dva možné výsledky, například: {0, 1} nebo {false, true}, {negatived, kladný}. Předpokládejme, že máte datovou sadu zaměstnanců z dospělého s některými demografickými a pracovními proměnnými a že jste požádáni o předpověď úrovně příjmů, binární proměnnou s hodnotami {"< = 50 K", "> 50 K"}. Jinými slovy, záporná třída představuje zaměstnance, kteří činí méně než nebo rovno 50 K za rok, a kladná třída reprezentuje všechny ostatní zaměstnance. Stejně jako ve scénáři regrese by bylo potřeba vytvořit model, určit skóre dat a vyhodnotit výsledky. Hlavní rozdíl je v tomto případě volbou metriky klasické verze Azure Machine Learning Studio COMPUTE a výstupy. K ilustraci scénáře předpovědi úrovně příjmů použijeme datovou sadu pro [dospělé](https://archive.ics.uci.edu/ml/datasets/Adult) k vytvoření studia (klasického) a vyhodnocení výkonu pro model logistické regrese se dvěma třídami, což je běžně používaný binární klasifikátor.
+V binárním scénáři klasifikace má cílová proměnná pouze dva možné výsledky, například: {0, 1} nebo {false, true}, {negatived, kladný}. Předpokládejme, že máte datovou sadu zaměstnanců z dospělého s některými demografickými a pracovními proměnnými a že jste požádáni o předpověď úrovně příjmů, binární proměnnou s hodnotami {"< = 50 K", "> 50 K"}. Jinými slovy, záporná třída představuje zaměstnance, kteří činí méně než nebo rovno 50 K za rok, a kladná třída reprezentuje všechny ostatní zaměstnance. Stejně jako ve scénáři regrese by bylo potřeba vytvořit model, určit skóre dat a vyhodnotit výsledky. Hlavní rozdíl je v tomto případě volbou metriky Azure Machine Learning Studio (Classic) výpočetních hodnot a výstupů. K ilustraci scénáře předpovědi úrovně příjmů použijeme datovou sadu pro [dospělé](https://archive.ics.uci.edu/ml/datasets/Adult) k vytvoření studia (klasického) a vyhodnocení výkonu pro model logistické regrese se dvěma třídami, což je běžně používaný binární klasifikátor.
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
-Do svého pracovního prostoru přidejte následující moduly v klasické verzi Azure Machine Learning Studio:
+Přidejte do svého pracovního prostoru následující moduly v Azure Machine Learning Studio (Classic):
 
 * Datová sada klasifikace binárního výnosu pro dospělé
 * [Logistická regrese dvou tříd][two-class-logistic-regression]
@@ -105,7 +105,7 @@ Po spuštění experimentu můžete kliknout na výstupní port modulu [vyhodnoc
 
 Přesnost je pouze poměr správně klasifikovaných instancí. Obvykle je první metrikou, kterou se zobrazí při vyhodnocování klasifikátoru. Nicméně, pokud jsou testovací data nevyvážená (kde většina instancí patří do jedné z tříd), nebo máte více zajímat výkon v obou třídách, přesnost nezachycuje efektivitu klasifikátoru. V případě klasifikace na úrovni příjmů se předpokládá, že testujete data, kde 99% instancí představuje lidi, kteří získají méně než 50 tis za rok. Je možné dosáhnout přesnosti 0,99, protože pro všechny instance odhadnete třídu "< = 50 tis". Třídění v tomto případě zdá se, že se jedná o dobrý úkol, ale ve skutečnosti se nepovede klasifikovat žádné fyzické jednotlivce (1%). správně.
 
-Z tohoto důvodu je vhodné vypočítat další metriky, které zachycují konkrétnější aspekty vyhodnocení. Než se pustíte do podrobností o takových metrikách, je důležité pochopit nejasnou matrici binárního vyhodnocení klasifikace. Popisky tříd v sadě školení mohou převzít pouze dvě možné hodnoty, které obvykle odkazujete na kladné nebo záporné. Kladné a záporné instance, které jsou v klasifikátoru předpověď správně, se nazývají true pozitivních hodnot (TP) a pravdivé záporné hodnoty (TN), v uvedeném pořadí. Podobně nesprávně klasifikované instance se nazývají falešně pozitivní (FP) a falešně negativní (FN). Nejasná matice je jednoduše Tabulka zobrazující počet instancí spadajících do každé z těchto čtyř kategorií. Klasická verze Azure Machine Learning Studio automaticky rozhoduje o tom, která ze dvou tříd v datové sadě je pozitivní třída. Pokud jsou popisky třídy logické nebo celé číslo, přiřadí se kladné třídě instance "true" nebo "1" popsaných instancí. Pokud jsou popisky řetězce, například s datovou datovou hodnotou, popisky jsou seřazeny abecedně a první úroveň je zvolena jako záporná třída, zatímco druhá úroveň je pozitivní třída.
+Z tohoto důvodu je vhodné vypočítat další metriky, které zachycují konkrétnější aspekty vyhodnocení. Než se pustíte do podrobností o takových metrikách, je důležité pochopit nejasnou matrici binárního vyhodnocení klasifikace. Popisky tříd v sadě školení mohou převzít pouze dvě možné hodnoty, které obvykle odkazujete na kladné nebo záporné. Kladné a záporné instance, které jsou v klasifikátoru předpověď správně, se nazývají true pozitivních hodnot (TP) a pravdivé záporné hodnoty (TN), v uvedeném pořadí. Podobně nesprávně klasifikované instance se nazývají falešně pozitivní (FP) a falešně negativní (FN). Nejasná matice je jednoduše Tabulka zobrazující počet instancí spadajících do každé z těchto čtyř kategorií. Azure Machine Learning Studio (Classic) automaticky rozhoduje o tom, která ze dvou tříd v datové sadě je pozitivní třída. Pokud jsou popisky třídy logické nebo celé číslo, přiřadí se kladné třídě instance "true" nebo "1" popsaných instancí. Pokud jsou popisky řetězce, například s datovou datovou hodnotou, popisky jsou seřazeny abecedně a první úroveň je zvolena jako záporná třída, zatímco druhá úroveň je pozitivní třída.
 
 ![Nejasná matice binární klasifikace](./media/evaluate-model-performance/6a.png)
 
@@ -136,7 +136,7 @@ Obrázek 9. Výsledky křížového ověřování binárního třídění.
 V tomto experimentu použijeme oblíbenou datovou sadu [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") , která obsahuje instance tří různých typů (tříd) Iris. Pro každou instanci jsou k dispozici čtyři hodnoty funkcí (sepal Length/Width a Petal Length/Width). V předchozích experimentech jsme provedli a otestovali modely pomocí stejných datových sad. V tomto příkladu použijeme modul [rozdělení dat][split] k vytvoření dvou podmnožiny dat, výuku prvního a skóre a vyhodnocení za sekundu. Datová sada Iris je veřejně dostupná v [úložišti UCI Machine Learning](https://archive.ics.uci.edu/ml/index.html)a je možné ji stáhnout pomocí modulu [Import dat][import-data] .
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
-Do svého pracovního prostoru přidejte následující moduly v klasické verzi Azure Machine Learning Studio:
+Přidejte do svého pracovního prostoru následující moduly v Azure Machine Learning Studio (Classic):
 
 * [Importovat data][import-data]
 * [Více tříd – rozhodovací doménová struktura][multiclass-decision-forest]

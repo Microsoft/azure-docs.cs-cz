@@ -2,19 +2,15 @@
 title: Použití dynamických skupin s Azure Update Management
 description: Tento článek popisuje, jak dynamické skupiny pracují s Azure Automation Update Management.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 022c2061febb54666acee1cfed4ec595421660a3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 678b3f361e4456a2c482896f7d7dc20d530b917b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420399"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Použití dynamických skupin s Update Managementem
 

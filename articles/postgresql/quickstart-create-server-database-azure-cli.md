@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: 54e31f206057207a9ed396c8980c6a3986d5ece4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ed78d3dd4e6fbde10c69403cc3dcff24072dc676
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358036"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL-Single pomocí rozhraní příkazového řádku Azure
 
@@ -22,7 +22,7 @@ ms.locfileid: "74766918"
 
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak vytvořit server Azure Database for PostgreSQL ve [skupině prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rozhraní CLI Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md) pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Měli byste zadat jedinečný název. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
+Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Měli byste zadat jedinečný název. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
@@ -72,7 +72,7 @@ Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generac
 
 Vysvětlení platných hodnot pro jednotlivé oblasti a úrovně najdete v dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md).
 
-Následující příklad vytvoří server PostgreSQL 9.6 v umístění Západní USA, pojmenovaný `mydemoserver` ve vaší skupině prostředků `myresourcegroup` přihlášením správce serveru `myadmin`. Jedná se o **Univerzální** server **4. generace** se 2 **virtuálními jádry**. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
+Následující příklad vytvoří server PostgreSQL 9.6 v umístění Západní USA, pojmenovaný `mydemoserver` ve vaší skupině prostředků `myresourcegroup` přihlášením správce serveru `myadmin`. Toto je **pro obecné účely** server **Gen 4** s **2 virtuální jádra**. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
 ```
@@ -85,7 +85,7 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 
 Pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) vytvořte pravidlo brány firewall na úrovni serveru Azure PostgreSQL. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je třeba [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) nebo [PgAdmin](https://www.pgadmin.org/), aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure PostgreSQL. 
 
-Pokud se chcete připojovat ze své sítě, můžete nastavit pravidlo brány firewall, které pokrývá rozsah IP adres. Následující příklad vytvoří pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) pravidlo brány firewall `AllowMyIP` pro jednu IP adresu.
+Abyste se mohli připojit z vaší sítě, můžete nastavit pravidlo brány firewall, které pokrývá rozsah IP adres. Následující příklad vytvoří pomocí příkazu [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) pravidlo brány firewall `AllowMyIP` pro jednu IP adresu.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
@@ -188,7 +188,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
     Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
     Režim SSL | *Vyžadovat* | Režim SSL můžete nastavit na kartě SSL v pgAdmin. Ve výchozím nastavení jsou všechny servery Azure Database for PostgreSQL vytvořené se zapnutým vynucováním SSL. Pokud chcete vynucování SSL vypnout, přečtěte si téma popisující [vynucování SSL](./concepts-ssl-connection-security.md).
     
-5. Vyberte **Save** (Uložit).
+5. Vyberte **Uložit**.
 
 6. V levém podokně **Prohlížeč** rozbalte uzel **Servery**. Vyberte server, například **mydemoserver**. Kliknutím se k němu připojte.
 
@@ -211,7 +211,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Všechny prostředky, které jste v rychlém startu vytvořili, můžete vyčistit odstraněním [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+Všechny prostředky, které jste v rychlém startu vytvořili, můžete vyčistit odstraněním [skupiny prostředků Azure](../azure-resource-manager/management/overview.md).
 
 > [!TIP]
 > Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky, které jste v tomto rychlém startu vytvořili na webu Azure Portal.

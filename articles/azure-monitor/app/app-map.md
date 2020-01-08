@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887752"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407692"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
@@ -45,7 +45,7 @@ Kliknutím na libovolnou komponentu zobrazíte související přehledy a přejde
 
 ![Ukotven](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Prozkoumat selhání
+### <a name="investigate-failures"></a>Prověřit chyby
 
 Vyberte možnost **prozkoumat selhání** a spusťte tak podokno selhání.
 
@@ -53,7 +53,7 @@ Vyberte možnost **prozkoumat selhání** a spusťte tak podokno selhání.
 
 ![Snímek obrazovky s problémy s chybami](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Prozkoumat výkon
+### <a name="investigate-performance"></a>Prověřit výkon
 
 Pokud chcete řešit problémy s výkonem, vyberte **prozkoumat výkon**.
 
@@ -69,13 +69,13 @@ Vyberte **Přejít k podrobnostem** a prozkoumejte koncové prostředí transakc
 
 ![Snímek obrazovky s podrobnostmi o transakci od začátku do konce](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Zobrazit v analýzách
+### <a name="view-logs-analytics"></a>Zobrazit protokoly (Analytics)
 
-Pokud chcete svá data aplikací dotazovat a prozkoumat dál, klikněte na **Zobrazit v analýze**.
+Pokud chcete svá data aplikací dotazovat a prozkoumat dál, klikněte na **Zobrazit v protokolech (Analytics)** .
 
-![Snímek obrazovky s tlačítkem zobrazit v analýze](media/app-map/view-in-analytics.png)
+![Snímek obrazovky s tlačítkem zobrazit v analýze](media/app-map/view-logs.png)
 
-![Snímek obrazovky s možností analýzy](media/app-map/analytics.png)
+![Snímek obrazovky s možností analýzy Spojnicový graf shrnující průměrnou dobu trvání žádosti za posledních 12 hodin.](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>Výstrahy
 
@@ -116,7 +116,7 @@ namespace CustomInitializer.Telemetry
 
 **Aplikace ASP.NET: inicializátor zatížení pro aktivní TelemetryConfiguration**
 
-V souboru ApplicationInsights. config:
+In ApplicationInsights.config :
 
 ```xml
     <ApplicationInsights>
@@ -230,7 +230,7 @@ V případě této aplikace všechny názvy cloudových rolí také představuj�
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Alternativně může být **instance cloudové** role užitečná ve scénářích, kde **název cloudové role** oznamuje, že k problému dochází ve webovém front-endu, ale může se jednat o webový front-end na více serverech s vyrovnáváním zatížení, aby bylo možné Podrobné zobrazení ve vrstvě je hlubší prostřednictvím dotazů Kusto a s vědomím, jestli problém má vliv na všechny webové front-end servery/instance nebo jenom na jeden z nich může být mimořádně důležitý.
+Případně **instance cloudové** role může být užitečná ve scénářích, kde **název cloudové role** oznamuje, že se jedná o problém umístěný na front-endu webu, ale může být spuštěný webový front-end na více serverech s vyrovnáváním zatížení, aby bylo možné přejít do vrstvy hlouběji prostřednictvím dotazů Kusto a s vědomím, jestli problém nemá vliv na všechny webové front-end servery/instance nebo jenom na jeden
 
 Situaci, kdy byste mohli chtít přepsat hodnotu pro instanci cloudové role, může být, pokud vaše aplikace běží v prostředí s kontejnerem, kde stačí jenom vědět, že jednotlivý server nemusí být k dispozici dostatek informací, aby mohl najít daný problém.
 

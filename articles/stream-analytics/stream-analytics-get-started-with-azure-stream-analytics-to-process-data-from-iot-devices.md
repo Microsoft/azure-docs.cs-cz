@@ -1,25 +1,24 @@
 ---
 title: Zpracování datových proudů IoT v reálném čase pomocí Azure Stream Analytics
 description: Zařízení SensorTag pro IoT, proudy dat, analytické funkce pro analýzu proudů dat a zpracování dat v reálném čase
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: 1cc9c6dbb700664e732a67245563e9a211456767
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559903"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426246"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Zpracování datových proudů IoT v reálném čase pomocí Azure Stream Analytics
 
 V tomto článku se dozvíte, jak vytvořit logiku zpracování datového proudu pro shromažďování dat ze zařízení Internet věcí (IoT). Pomocí případu použití Real-World Internet věcí (IoT) můžete předvést, jak rychle a ekonomicky sestavovat řešení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte si bezplatné [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Stáhněte si ukázkový dotaz a datové soubory z [GitHubu](https://aka.ms/azure-stream-analytics-get-started-iot).
@@ -63,7 +62,7 @@ Stáhněte si [HelloWorldASA-InputStream. JSON](https://github.com/Azure/azure-s
 
 V nabídce vlevo vyberte **dotaz** v části **topologie úlohy** . Pak vyberte **nahrát vzorový vstup**. Nahrajte soubor `HelloWorldASA-InputStream.json` a vyberte **OK**.
 
-![Dlaždice dotazů na řídicím panelu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Dlaždice dotazu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 Všimněte si, že náhled dat se vyplní automaticky v tabulce **input Preview** .
 
@@ -84,11 +83,11 @@ FROM
 
 Vyberte **test Query** a podívejte se na výsledky v tabulce **výsledky testu** .
 
-![Výsledky testu pro dotaz Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+![Výsledky dotazu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Dotaz: Filtrování dat na základě podmínky
 
-Zkusíme filtrovat výsledky na základě podmínky. Chtěli bychom zobrazit výsledky jenom pro události, které pocházejí z "senzoru".
+Zkusíme filtrovat výsledky na základě podmínky. Rádi bychom se zobrazit výsledky pouze pro události, které pocházejí z "sensorA."
 
 ```sql
 SELECT 

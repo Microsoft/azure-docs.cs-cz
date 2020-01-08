@@ -1,57 +1,53 @@
 ---
-title: Oprávnění ve službě Azure Advisor
-description: Advisor oprávnění a jak může zablokovat možnost konfigurace odběrů nebo odložit nebo zavřít doporučení.
-services: advisor
-author: kasparks
-ms.service: advisor
+title: Oprávnění v Azure Advisor
+description: Oprávnění služby Advisor a jejich způsob, jak můžou zablokovat možnost konfigurovat předplatná nebo odložit nebo zrušit doporučení.
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: kasparks
-ms.openlocfilehash: cbd2e456c96dbf8ca01387f0c7c17a1541dbfe55
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422321"
 ---
-# <a name="permissions-in-azure-advisor"></a>Oprávnění ve službě Azure Advisor
+# <a name="permissions-in-azure-advisor"></a>Oprávnění v Azure Advisor
 
-Azure Advisor poskytuje doporučení v závislosti na využití a na konfiguraci vašich prostředků Azure a předplatných. Využívá služby Advisor [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) poskytované [řízení přístupu na základě Role](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) pro správu přístup k doporučení a funkce služby Advisor. 
+Azure Advisor poskytuje doporučení v závislosti na využití a konfiguraci vašich předplatných a prostředků Azure. Služba Advisor používá [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) poskytované [Access Control na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) ke správě přístupu k doporučením a funkcím poradce. 
 
 ## <a name="roles-and-their-access"></a>Role a jejich přístup
 
-Následující tabulka definuje role a přístupu, které mají v rámci služby Advisor:
+Následující tabulka definuje role a přístup, které mají v rámci služby Advisor:
 
-| **Role** | **Zobrazit doporučení** | **Upravit pravidla** | **Upravit konfigurace předplatného** | **Upravit konfigurace skupin prostředků**| **Zavřít a odložit doporučení**|
+| **Role** | **Zobrazit doporučení** | **Upravit pravidla** | **Upravit konfiguraci předplatného** | **Upravit konfiguraci skupiny prostředků**| **Přeskočit a odložit doporučení**|
 |---|:---:|:---:|:---:|:---:|:---:|
 |Vlastník předplatného|**X**|**X**|**X**|**X**|**X**|
 |Přispěvatel předplatného|**X**|**X**|**X**|**X**|**X**|
-|Čtenář předplatného s oprávněním|**X**|--|--|--|--|
-|Skupina prostředků vlastníka|**X**|--|--|**X**|**X**|
-|Skupina prostředků, přispěvatele|**X**|--|--|**X**|**X**|
-|Skupina prostředků čtečky|**X**|--|--|--|--|
+|Čtečka předplatných|**X**|--|--|--|--|
+|Vlastník skupiny prostředků|**X**|--|--|**X**|**X**|
+|Přispěvatel skupiny prostředků|**X**|--|--|**X**|**X**|
+|Čtenář skupiny prostředků|**X**|--|--|--|--|
 |Vlastník prostředku|**X**|--|--|--|**X**|
 |Přispěvatel prostředků|**X**|--|--|--|**X**|
 |Čtečka prostředků|**X**|--|--|--|--|
 
 > [!NOTE]
-> Přístup k zobrazení doporučení je závislá na váš přístup k ovlivněný prostředek toto doporučení.
+> Přístup k doporučením pro zobrazení je závislý na vašem přístupu k ovlivněnému prostředku doporučení.
 
-## <a name="permissions-and-unavailable-actions"></a>Oprávnění a akcí, není k dispozici
+## <a name="permissions-and-unavailable-actions"></a>Oprávnění a nedostupné akce
 
-Nedostatečná správná oprávnění, můžete zablokovat možnost provádět akce v Advisoru. Toto jsou některé běžné problémy.
+Nedostatek řádných oprávnění může blokovat schopnost provádět akce v Advisoru. Níže jsou uvedeny některé běžné problémy.
 
-### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>Nejde nakonfigurovat předplatná nebo skupiny prostředků
+### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>Nepovedlo se nakonfigurovat předplatné nebo skupiny prostředků.
 
-Při pokusu o konfiguraci předplatných nebo skupinách prostředků v Advisoru, může se zobrazit, že je zakázána možnost zahrnout nebo vyloučit. Tento stav indikuje, že nemáte dostatečné oprávnění pro tuto skupinu prostředků nebo předplatného. Chcete-li tento problém vyřešit, přečtěte si postup [udělit přístup uživatelům](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Při pokusu o konfiguraci předplatných nebo skupin prostředků v Advisoru se může zobrazit, že možnost zahrnout nebo vyloučit je zakázaná. Tento stav označuje, že nemáte dostatečná úroveň oprávnění pro danou skupinu prostředků nebo předplatné. Pokud chcete tento problém vyřešit, přečtěte si, jak [udělit uživateli přístup](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
 
-### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>Nelze odložit nebo zavřít doporučení
+### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>Nepovedlo se odložit ani zavřít doporučení.
 
-Pokud obdržíte chybu při pokusu o posunout nebo zavřít doporučení, pravděpodobně nemáte dostatečná oprávnění. Ujistěte se, že máte alespoň přístup přispěvatele k ovlivněný prostředek doporučení jsou odložení nebo zavření. Chcete-li tento problém vyřešit, přečtěte si postup [udělit přístup uživatelům](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Pokud při pokusu o odložení nebo zrušení doporučení dojde k chybě, možná nemáte dostatečná oprávnění. Ujistěte se, že máte alespoň přístup Přispěvatel k ovlivněnému prostředku doporučení, které odkládáte nebo kdy chybí. Pokud chcete tento problém vyřešit, přečtěte si, jak [udělit uživateli přístup](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek poskytla přehled používání RBAC služby Advisor na ovládací prvek uživatelských oprávnění a jak řešit běžné problémy. Další informace o službě Advisor najdete v tématu:
+Tento článek obsahuje přehled o tom, jak Advisor používá RBAC k řízení uživatelských oprávnění a k řešení běžných problémů. Další informace o službě Advisor najdete v těchto tématech:
 
 - [Co je Azure Advisor?](https://docs.microsoft.com/azure/advisor/advisor-overview)
-- [Začínáme s využitím Azure Advisoru](https://docs.microsoft.com/azure/advisor/advisor-get-started)
+- [Začínáme s Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-get-started)

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f113366363de40f8934a9db6cb3a82cc477f03
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430017"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Vytvoření, vypsání a odstranění spravované identity přiřazené uživatelem pomocí Azure Resource Manager
 
@@ -33,7 +33,7 @@ Pomocí šablony Azure Resource Manager není možné vypsat a odstranit spravov
 
 - [Výpis spravované identity přiřazené uživatelem](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
 - [Odstranit spravovanou identitu přiřazenou uživatelem](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
-  ## <a name="prerequisites"></a>Předpoklady
+  ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -42,10 +42,10 @@ Pomocí šablony Azure Resource Manager není možné vypsat a odstranit spravov
 
 Stejně jako u Azure Portal a skriptování poskytují Azure Resource Manager šablony možnost nasazení nových nebo upravených prostředků definovaných skupinou prostředků Azure. K dispozici je několik možností pro úpravu a nasazení šablony, včetně místních i na portálu, včetně:
 
-- Použití [vlastní šablony z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), což vám umožňuje vytvořit zcela novou šablonu, nebo ji založit na stávající společné nebo [rychlé šabloně](https://azure.microsoft.com/documentation/templates/).
-- Odvození z existující skupiny prostředků exportováním šablony z [původního nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)nebo z [aktuálního stavu nasazení](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+- Použití [vlastní šablony z Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), což vám umožňuje vytvořit zcela novou šablonu, nebo ji založit na stávající společné nebo [rychlé šabloně](https://azure.microsoft.com/documentation/templates/).
+- Odvození z existující skupiny prostředků exportováním šablony z [původního nasazení](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)nebo z [aktuálního stavu nasazení](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates).
 - Použití místního [editoru JSON (například vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a následného nahrávání a nasazování pomocí PowerShellu nebo rozhraní příkazového řádku.
-- Použití [projektu skupiny prostředků Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) sady Visual Studio k vytvoření a nasazení šablony. 
+- Použití [projektu skupiny prostředků Azure](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) sady Visual Studio k vytvoření a nasazení šablony. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem 
 

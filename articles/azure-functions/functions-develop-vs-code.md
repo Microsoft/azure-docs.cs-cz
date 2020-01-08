@@ -3,12 +3,12 @@ title: Vývoj Azure Functions pomocí Visual Studio Code
 description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšíření Azure Functions pro Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975580"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667545"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -38,7 +38,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat rozšíření
 > [!IMPORTANT]
 > Nekombinujte vývoj místních vývojových a portálů pro jednu aplikaci Function App. Při publikování z místního projektu do aplikace Function App proces nasazení přepíše všechny funkce, které jste vytvořili na portálu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nainstalujete a spustíte rozšíření [Azure Functions rozšíření][rozšíření azure functions pro visual studio code], musíte splnit tyto požadavky:
 
@@ -94,10 +94,6 @@ V tomto okamžiku můžete přidat vstupní a výstupní vazby do funkce [úprav
 
 S výjimkou triggerů HTTP a Timer jsou vazby implementovány v balíčcích rozšíření. Je nutné nainstalovat balíčky rozšíření pro aktivační události a vazby, které je potřebují. Proces pro instalaci rozšíření vazby závisí na jazyku vašeho projektu.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Spuštěním příkazu [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) v okně terminálu nainstalujete balíčky rozšíření, které v projektu potřebujete. Následující příkaz nainstaluje rozšíření Azure Storage, které implementuje vazby pro úložiště objektů blob, front a tabulek.
@@ -105,6 +101,10 @@ Spuštěním příkazu [dotnet Add Package](/dotnet/core/tools/dotnet-add-packag
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -114,13 +114,13 @@ Novou funkci můžete přidat do existujícího projektu pomocí jedné z předd
 
 Výsledky této akce závisí na jazyku vašeho projektu:
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-V projektu se vytvoří nová složka. Složka obsahuje nový soubor Functions. JSON a nový soubor kódu JavaScriptu.
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Do projektu C# se přidá nový soubor knihovny tříd (. cs).
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+V projektu se vytvoří nová složka. Složka obsahuje nový soubor Functions. JSON a nový soubor kódu JavaScriptu.
 
 ---
 
@@ -129,6 +129,24 @@ Do projektu C# se přidá nový soubor knihovny tříd (. cs).
 Funkci můžete rozšířit přidáním vstupních a výstupních vazeb. Proces přidávání vazeb závisí na jazyku vašeho projektu. Další informace o vazbách naleznete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
 Následující příklady se připojují k frontě úložiště s názvem `outqueue`, kde je připojovací řetězec pro účet úložiště nastavený v nastavení aplikace `MyStorageConnection` v souboru Local. Settings. JSON.
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+Aktualizujte metodu funkce a přidejte následující parametr do definice metody `Run`:
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+Tento kód vyžaduje, abyste přidali následující příkaz `using`:
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+Parametr `msg` je `ICollector<T>` typ, který představuje kolekci zpráv zapsaných do výstupní vazby po dokončení funkce. Do kolekce přidáte jednu nebo více zpráv. Tyto zprávy se po dokončení funkce odesílají do fronty.
+
+Další informace najdete v dokumentaci [výstupní vazby úložiště ve frontě](functions-bindings-storage-queue.md#output---c-example) .
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -144,7 +162,7 @@ V následujícím příkladu se zobrazí výzva k definování nové výstupní 
 | **Výběr vazby se směrováním** | `Azure Queue Storage` | Vazba je vazba fronty Azure Storage. |
 | **Název, který slouží k identifikaci této vazby v kódu** | `msg` | Název, který identifikuje parametr vazby, na který se odkazuje v kódu. |
 | **Fronta, do které bude odeslána zpráva** | `outqueue` | Název fronty, do které vazba zapisuje. Pokud pole *Queue* neexistuje, vytvoří ho při prvním použití. |
-| **Vyberte nastavení z místní. nastavení. JSON.** | `MyStorageConnection` | Název nastavení aplikace, které obsahuje připojovací řetězec pro účet úložiště. Nastavení `AzureWebJobsStorage` obsahuje připojovací řetězec pro účet úložiště, který jste vytvořili pomocí aplikace Function App. |
+| **Vyberte nastavení z Local. Settings. JSON.** | `MyStorageConnection` | Název nastavení aplikace, které obsahuje připojovací řetězec pro účet úložiště. Nastavení `AzureWebJobsStorage` obsahuje připojovací řetězec pro účet úložiště, který jste vytvořili pomocí aplikace Function App. |
 
 V tomto příkladu je do pole `bindings` v souboru Function. JSON přidána následující vazba:
 
@@ -168,25 +186,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Další informace najdete v referenčních odkazech na [výstupní vazbu úložiště fronty](functions-bindings-storage-queue.md#output---javascript-example) .
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-Aktualizujte metodu funkce a přidejte následující parametr do definice metody `Run`:
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-Tento kód vyžaduje, abyste přidali následující příkaz `using`:
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-Parametr `msg` je `ICollector<T>` typ, který představuje kolekci zpráv zapsaných do výstupní vazby po dokončení funkce. Do kolekce přidáte jednu nebo více zpráv. Tyto zprávy se po dokončení funkce odesílají do fronty.
-
-Další informace najdete v dokumentaci [výstupní vazby úložiště ve frontě](functions-bindings-storage-queue.md#output---c-example) .
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 

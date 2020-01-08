@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: dd2c29632d70da64251c5e1736a9cb7d82f5d0dc
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440967"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>K připojení databází v Azure Průzkumník dat použít databázi sledování
 
@@ -26,7 +26,7 @@ Připojení databáze k jinému clusteru pomocí schopnosti sledování se použ
 * Jeden cluster může následovat po databázích z více vedoucích clusterů. 
 * Cluster může obsahovat i databáze a vedoucí databáze pro následnou instalaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 1. [Vytvořte cluster a databázi](/azure/data-explorer/create-cluster-database-portal) pro vedoucího a následného.
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Připojení databáze pomocí šablony Azure Resource Manager
 
-V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Manager šablony](../azure-resource-manager/resource-group-overview.md). 
+V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Manager šablony](../azure-resource-manager/management/overview.md). 
 
 ```json
 {
@@ -212,7 +212,7 @@ V této části se dozvíte, jak připojit databázi pomocí [Azure Resource Man
 
 Šablonu Azure Resource Manager můžete nasadit [pomocí Azure Portal](https://portal.azure.com) nebo pomocí PowerShellu.
 
-   ![nasazení šablony](media/follower/template-deployment.png)
+   ![Nasazení šablony](media/follower/template-deployment.png)
 
 
 |**Nastavení**  |**Popis**  |
@@ -233,7 +233,7 @@ Chcete-li ověřit, zda byla databáze úspěšně připojena, vyhledejte v [Azu
 
     ![Databáze následného sledování jen pro čtení](media/follower/read-only-follower-database.png)
 
-Jinou
+Další možností:
 
 1. Přejděte do clusteru vedoucího a vyberte **databáze** .
 2. Ověřte, že jsou příslušné databáze označené jako **sdílené s ostatními** > **Ano** .
@@ -377,12 +377,12 @@ Při připojování databáze zadejte **"výchozí druh úprav objektů zabezpe�
 |**Plnění** |**Popis**  |
 |---------|---------|
 |**Sjednocovací**     |   Připojené objekty databáze budou vždycky zahrnovat původní objekty zabezpečení databáze a další nové objekty zabezpečení přidané do databáze následného objektu.      |
-|**Náhrady**   |    Žádná dědičnost objektů zabezpečení z původní databáze. Pro připojenou databázi je nutné vytvořit nové objekty zabezpečení.     |
-|**NTato**   |   Připojené objekty zabezpečení databáze obsahují pouze objekty zabezpečení původní databáze bez dalších objektů zabezpečení.      |
+|**nahradit**   |    Žádná dědičnost objektů zabezpečení z původní databáze. Pro připojenou databázi je nutné vytvořit nové objekty zabezpečení.     |
+|**Žádné**   |   Připojené objekty zabezpečení databáze obsahují pouze objekty zabezpečení původní databáze bez dalších objektů zabezpečení.      |
 
 Další informace o použití příkazů pro řízení ke konfiguraci autorizovaných objektů zabezpečení najdete v tématu [Řídicí příkazy pro správu clusteru následného](/azure/kusto/management/cluster-follower)řízení.
 
-### <a name="manage-permissions"></a>Spravovat oprávnění
+### <a name="manage-permissions"></a>Správa oprávnění
 
 Správa oprávnění databáze jen pro čtení je stejná jako u všech typů databáze. Viz téma [Správa oprávnění v Azure Portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 

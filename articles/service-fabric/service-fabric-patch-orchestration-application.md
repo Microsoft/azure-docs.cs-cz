@@ -1,9 +1,9 @@
 ---
-title: Opravte operační systém Windows v clusteru Service Fabric | Microsoft Docs
+title: Oprava operačního systému Windows v clusteru Service Fabric
 description: Tento článek popisuje, jak automatizovat opravy operačního systému na Service Fabric clusteru pomocí aplikace Orchestration.
 services: service-fabric
 documentationcenter: .net
-author: khandelwalbrijeshiitr
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
-ms.author: brkhande
-ms.openlocfilehash: a02228593a9d8efc9fb363232da1cede3c80a8b3
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.author: atsenthi
+ms.openlocfilehash: 3115c65c7027f5624b7b60b9be702ee4192d8cb6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592534"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464448"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
@@ -63,7 +63,7 @@ POA se skládá z následujících podsoučástí:
 > [!NOTE]
 > POA používá službu Service Fabric Repair Manager k zakázání nebo povolení uzlu a provádění kontrol stavu. Úloha opravy vytvořená v POA sleduje průběh web Windows Update pro každý uzel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!NOTE]
 > Požadovaná minimální verze .NET Framework je 4,6.
@@ -157,15 +157,15 @@ Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Př
 
 | Parametr        | Typ                          | Podrobnosti |
 |:-|-|-|
-|MaxResultsToCache    |Dlouhé                              | Maximální počet web Windows Update výsledků, které by měly být uloženy do mezipaměti. <br><br>Výchozí hodnota je 3000 za předpokladu, že: <br> &nbsp; &nbsp; – počet uzlů je 20. <br> &nbsp; &nbsp; – počet aktualizací pro uzel za měsíc je 5. <br> &nbsp; &nbsp; – počet výsledků na operaci může být 10. <br> &nbsp; &nbsp; – výsledky za poslední tři měsíce by měly být uloženy. |
-|TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy určuje zásadu, kterou má služba koordinátora použít k instalaci aktualizací Windows v uzlech clusteru Service Fabric.<br><br>Povolené hodnoty jsou: <br>*NodeWise*: aktualizace systému Windows jsou nainstalovány vždy po jednom uzlu. <br> *UpgradeDomainWise*: aktualizace systému Windows jsou nainstalovány v jednu chvíli po doméně aktualizace. (Na maximum můžou všechny uzly patřící k doméně aktualizace přejít ke službě Windows Update.)<br><br> V části [Nejčastější dotazy](#frequently-asked-questions) vám pomůžou určit, které zásady jsou pro váš cluster nejvhodnější.
+|MaxResultsToCache    |Dlouhé                              | Maximální počet web Windows Update výsledků, které by měly být uloženy do mezipaměti. <br><br>Výchozí hodnota je 3000 za předpokladu, že: <br> &nbsp;&nbsp;– počet uzlů je 20. <br> &nbsp;&nbsp;– počet aktualizací pro uzel za měsíc je 5. <br> &nbsp;&nbsp;– počet výsledků na operaci může být 10. <br> &nbsp;&nbsp;– výsledky za poslední tři měsíce by měly být uloženy. |
+|TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy určuje zásadu, kterou má služba koordinátora použít k instalaci aktualizací Windows v uzlech clusteru Service Fabric.<br><br>Povolené hodnoty jsou následující: <br>*NodeWise*: aktualizace systému Windows jsou nainstalovány vždy po jednom uzlu. <br> *UpgradeDomainWise*: aktualizace systému Windows jsou nainstalovány v jednu chvíli po doméně aktualizace. (Na maximum můžou všechny uzly patřící k doméně aktualizace přejít ke službě Windows Update.)<br><br> V části [Nejčastější dotazy](#frequently-asked-questions) vám pomůžou určit, které zásady jsou pro váš cluster nejvhodnější.
 |LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: *1024*)               | Maximální velikost protokolů aplikace orchestrace oprav v MB, které je možné trvale uchovat místně na uzlech.
 | WUQuery               | string<br>(Výchozí: *IsInstalled = 0*)                | Dotaz pro získání aktualizací Windows Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | *Datového* <br> (výchozí: NEPRAVDA)                 | Pomocí tohoto příznaku můžete řídit, které aktualizace se mají stáhnout a nainstalovat. Jsou povoleny následující hodnoty. <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace na počítač.          |
-| WUOperationTimeOutInMinutes | Hmot <br>(Výchozí: *90*)                   | Určuje časový limit pro jakoukoliv operaci web Windows Update (hledání nebo stažení nebo instalace). Pokud operace není dokončena v rámci zadaného časového limitu, je přerušena.       |
-| WURescheduleCount     | Hmot <br> (Výchozí: *5*)                  | Maximální počet, kolikrát služba aktualizuje službu Windows Update, pokud se operace trvale nezdařila.          |
-| WURescheduleTimeInMinutes | Hmot <br>(Výchozí: *30*) | Interval, ve kterém služba aktualizuje aktualizace systému Windows, pokud chyba přetrvává. |
-| WUFrequency           | Textový řetězec s oddělovači (výchozí: *týdně, středa, 7:00:00*)     | Frekvence pro instalaci aktualizací systému Windows. Formáty a možné hodnoty jsou následující: <br>&nbsp; &nbsp; měsíčně: DD, HH: MM: SS (například *měsíčně, 5, 12:22:32*)<br>Povolené hodnoty pro pole DD (den) jsou čísla od 1 do 28 do "Last". <br> &nbsp; &nbsp;-týdně, den, HH: MM: SS (například *týdně, úterý, 12:22:32*)  <br> &nbsp; &nbsp;-denně, HH: MM: SS (například *denně, 12:22:32*)  <br> &nbsp; &nbsp; -  *none* znamená, že aktualizace systému Windows by se neměly provádět.  <br><br> Časy jsou ve formátu UTC.|
+| InstallWindowsOSOnlyUpdates | *Datový typ Boolean* <br> (výchozí: NEPRAVDA)                 | Pomocí tohoto příznaku můžete řídit, které aktualizace se mají stáhnout a nainstalovat. Jsou povoleny následující hodnoty. <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace na počítač.          |
+| WUOperationTimeOutInMinutes | Int <br>(Výchozí: *90*)                   | Určuje časový limit pro jakoukoliv operaci web Windows Update (hledání nebo stažení nebo instalace). Pokud operace není dokončena v rámci zadaného časového limitu, je přerušena.       |
+| WURescheduleCount     | Int <br> (Výchozí: *5*)                  | Maximální počet, kolikrát služba aktualizuje službu Windows Update, pokud se operace trvale nezdařila.          |
+| WURescheduleTimeInMinutes | Int <br>(Výchozí: *30*) | Interval, ve kterém služba aktualizuje aktualizace systému Windows, pokud chyba přetrvává. |
+| WUFrequency           | Textový řetězec s oddělovači (výchozí: *týdně, středa, 7:00:00*)     | Frekvence pro instalaci aktualizací systému Windows. Formáty a možné hodnoty jsou následující: <br>&nbsp;&nbsp;měsíčně: DD, HH: MM: SS (například *měsíčně, 5, 12:22:32*)<br>Povolené hodnoty pro pole DD (den) jsou čísla od 1 do 28 do "Last". <br> &nbsp;&nbsp;-týdně, den, HH: MM: SS (například *týdně, úterý, 12:22:32*)  <br> &nbsp;&nbsp;-denně, HH: MM: SS (například *denně, 12:22:32*)  <br> &nbsp;&nbsp;-  *none* znamená, že aktualizace systému Windows by se neměly provádět.  <br><br> Časy jsou ve formátu UTC.|
 | AcceptWindowsUpdateEula | Logická hodnota <br>(Výchozí: *pravda*) | Nastavením tohoto příznaku aplikace přijme licenční smlouvu s koncovým uživatelem pro web Windows Update jménem vlastníka počítače.              |
 
 > [!TIP]
@@ -239,7 +239,7 @@ Pole | Hodnoty | Podrobnosti
 -- | -- | --
 Výsledek operace uvnitř | 0 – úspěšné<br> 1 – úspěšné s chybami<br> 2 – chyba<br> 3 – přerušeno<br> 4 – přerušeno s časovým limitem | Označuje výsledek celkové operace, která obvykle zahrnuje instalaci jedné nebo více aktualizací.
 ResultCode | Stejné jako výsledek operace uvnitř | Toto pole indikuje výsledek operace instalace pro jednotlivou aktualizaci.
-Typem operace OperationType | 1\. instalace<br> 0 – Hledat a stáhnout| Ve výchozím nastavení je instalace jedinou typem operace OperationType, která se zobrazuje ve výsledcích.
+OperationType | 1\. instalace<br> 0 – Hledat a stáhnout| Ve výchozím nastavení je instalace jedinou typem operace OperationType, která se zobrazuje ve výsledcích.
 WindowsUpdateQuery | Výchozí hodnota je "IsInstalled = 0" | Web Windows Update dotaz, který se použil k hledání aktualizací. Další informace najdete v tématu [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
 RebootRequired | true – byl vyžadován restart.<br> false – restart nebyl požadován. | Určuje, zda byl pro dokončení instalace aktualizací požadován restart.
 OperationStartTime | Datum a čas | Určuje čas, kdy byla spuštěna operace (stažení a instalace).
@@ -248,7 +248,7 @@ HResult | 0 – úspěšné<br> jiné – selhání| Označuje důvod selhání 
 
 Pokud ještě není naplánována žádná aktualizace, je výsledek JSON prázdný.
 
-Přihlaste se ke clusteru a Dotazujte web Windows Update výsledků. Zjistěte IP adresu repliky pro primární adresu služby koordinátora a otevřete následující adresu URL z prohlížeče: http://&lt;REPLICA-IP &gt;: &lt;ApplicationPort &gt;/PatchOrchestrationApplication/v1/ GetWindowsUpdateResults.
+Přihlaste se ke clusteru a Dotazujte web Windows Update výsledků. Zjistěte IP adresu repliky pro primární adresu služby koordinátora a otevřete následující adresu URL z prohlížeče: http://&lt;REPLICE-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
 
 Koncový bod REST pro službu koordinátora má dynamický port. Pokud chcete vyhledat přesnou adresu URL, přečtěte si téma Service Fabric Explorer. Například výsledky jsou k dispozici na *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* .
 
@@ -256,7 +256,7 @@ Koncový bod REST pro službu koordinátora má dynamický port. Pokud chcete vy
 
 Pokud je reverzní proxy server povolený v clusteru, můžete k adrese URL přistupovat mimo cluster i z nich.
 
-Koncový bod, který je třeba stisknout, je *http://&lt;SERVERURL &gt;: &lt;REVERSEPROXYPORT &gt;/patchorchestrationapplication/coordinatorservice/v1/getwindowsupdateresults*.
+Koncový bod, který je třeba stisknout, je *http://&lt;SERVERURL&gt;:&lt;REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
 
 Pokud chcete povolit reverzní proxy server v clusteru, postupujte podle pokynů v [reverzní proxy serveru v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
 
@@ -277,7 +277,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
 1. NodeAgentNTService běžící na každém uzlu vyhledá dostupné aktualizace Windows v naplánovaném čase. Pokud jsou aktualizace k dispozici, stáhne je na uzel.
 
-1. Po stažení aktualizací agent Node NTService vytvoří odpovídající úlohu opravy pro uzel s názvem *POS___ \<unique_id >* . Tyto úlohy opravy můžete zobrazit pomocí rutiny [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) nebo pomocí SFX v části Podrobnosti uzlu. Po vytvoření úlohy opravy se rychle přesune do [ *přihlášeného* stavu](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Po stažení aktualizací agent Node NTService vytvoří odpovídající úlohu opravy pro uzel s názvem *POS___\<unique_id >* . Tyto úlohy opravy můžete zobrazit pomocí rutiny [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) nebo pomocí SFX v části Podrobnosti uzlu. Po vytvoření úlohy opravy se rychle přesune do [ *přihlášeného* stavu](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
 1. Služba koordinátora pravidelně hledá úlohy opravy v *deklarovaném* stavu a pak je *aktualizuje na základě* TaskApprovalPolicy. Pokud je TaskApprovalPolicy nakonfigurovaná tak, aby NodeWise, je úloha opravy, která odpovídá uzlu, připravená jenom v případě, že se v současné době neprovádí *Příprava*, *schválení*, *spuštění*nebo *obnovení* stavu žádné jiné úlohy opravy. 
 
@@ -285,7 +285,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
    POA verze 1.4.0 a později odesílá události s vlastností ClusterPatchingStatus v CoordinatorService pro zobrazení uzlů, které jsou opraveny. Aktualizace se instalují na _poanode_0, jak je znázorněno na následujícím obrázku:
 
-    [![Image stav opravy clusteru](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+    [![obrázek stavu opravy clusteru](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
 
 1. Po deaktivaci uzlu je úloha opravy přesunuta do stavu *spuštěno* . 
    
@@ -294,15 +294,15 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
 1. Pokud je úloha opravy v *vykonávajícím* stavu, bude zahájena instalace opravy v tomto uzlu. Po instalaci opravy se uzel může nebo nemusí restartovat v závislosti na opravě. V dalším kroku je úloha opravy přesunuta do stavu *obnovování* , čímž se uzel znovu aktivuje. Úloha opravy je pak označena jako dokončená.
 
-   V části POA verze 1.4.0 a novější můžete zjistit stav aktualizace zobrazením událostí stavu v NodeAgentService s vlastností WUOperationStatus-\<NodeName >. Zvýrazněné části na následujících obrázcích ukazují stav aktualizací Windows na uzlech *poanode_0* a *poanode_2*:
+   V oblasti POA verze 1.4.0 a novější můžete zjistit stav aktualizace zobrazením událostí stavu v NodeAgentService s vlastností WUOperationStatus-\<Node >. Zvýrazněné části na následujících obrázcích ukazují stav aktualizací Windows na uzlech *poanode_0* a *poanode_2*:
 
-   [![Image stav operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![obrázek stavu operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Image stav operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![obrázek stavu operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    Podrobnosti můžete získat také pomocí prostředí PowerShell. Provedete to tak, že se připojíte ke clusteru a načtete stav úlohy opravit pomocí [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
    
-   V následujícím příkladu je úloha "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" v *DownloadComplete* stavu. To znamená, že aktualizace byly staženy do uzlu *poanode_2* a při přechodu úlohy do stavu *spuštění* bude proveden pokus o instalaci.
+   V následujícím příkladu je úloha "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" v *DownloadComplete* stavu. To znamená, že aktualizace byly staženy na *poanode_2* uzlu a při přechodu úlohy do stavu *spuštění* bude proveden pokus o instalaci.
 
    ``` powershell
     D:\service-fabric-poa-bin\service-fabric-poa-bin\Release> $k = Get-ServiceFabricRepairTask -TaskId "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15"
@@ -317,20 +317,20 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
     -- | -- 
       Žádné = 1 |  Znamená, že na uzlu neexistují žádné probíhající operace. Stav může být v přechodném stavu.
       DownloadCompleted = 2 | Znamená, že operace stahování byla dokončena se úspěchem, částečnou chybou nebo selháním.
-      InstallationApproved = 3 | Znamená, že operace stahování byla dokončena dříve a Repair Manager schválila instalaci.
-      InstallationInProgress = 4 | Odpovídá stavu provádění úlohy opravy.
-      InstallationCompleted = 5 | Znamená, že instalace byla dokončena se úspěchem, částečnou úspěchem nebo selháním.
-      RestartRequested = 6 | Znamená, že se instalace opravy dokončila a že je na uzlu nedokončená akce restartování.
-      RestartNotNeeded = 7 |  Znamená, že restart nebyl po dokončení instalace opravy potřeba.
-      RestartCompleted = 8 | Znamená, že restart byl úspěšně dokončen.
-      Volána OperationCompleted = 9 | Operace web Windows Update byla úspěšně dokončena.
-      OperationAborted = 10 | Znamená, že operace web Windows Update byla přerušena.
+      InstallationApproved=3 | Znamená, že operace stahování byla dokončena dříve a Repair Manager schválila instalaci.
+      InstallationInProgress=4 | Odpovídá stavu provádění úlohy opravy.
+      InstallationCompleted=5 | Znamená, že instalace byla dokončena se úspěchem, částečnou úspěchem nebo selháním.
+      RestartRequested=6 | Znamená, že se instalace opravy dokončila a že je na uzlu nedokončená akce restartování.
+      RestartNotNeeded=7 |  Znamená, že restart nebyl po dokončení instalace opravy potřeba.
+      RestartCompleted=8 | Znamená, že restart byl úspěšně dokončen.
+      OperationCompleted=9 | Operace web Windows Update byla úspěšně dokončena.
+      OperationAborted=10 | Znamená, že operace web Windows Update byla přerušena.
 
 1. V rodu POA verze 1.4.0 a novější, když se dokončí pokus o aktualizaci uzlu, se na NodeAgentService pošle událost s vlastností WUOperationStatus-[Název_uzlu], která vás upozorní, když začne další pokus o stažení a instalaci aktualizací Windows. Zobrazuje se na následujícím obrázku:
 
-     [![Image stav operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![obrázek stavu operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
-### <a name="diagnostics-logs"></a>Diagnostické protokoly
+### <a name="diagnostics-logs"></a>Protokoly diagnostiky
 
 Protokoly aplikací orchestrace oprav se shromažďují jako součást protokolů Service Fabric runtime.
 
@@ -478,13 +478,13 @@ Správce musí zasáhnout a zjistit, proč se aplikace nebo cluster stala špatn
 >[!NOTE]
 > Pro POA verze 1.4.0 a novější můžete najít poznámky k verzi a vydání na [stránce verze orchestrace oprav](https://github.com/microsoft/Service-Fabric-POA/releases/) na GitHubu.
 
-### <a name="version-110"></a>1\.1.0 verze
+### <a name="version-110"></a>Verze 1.1.0
 - Veřejná verze
 
 ### <a name="version-111"></a>Verze 1.1.1
 - Opravili jsme chybu v SetupEntryPoint NodeAgentService, která zabránila instalaci NodeAgentNTService.
 
-### <a name="version-120"></a>1\.2.0 verze
+### <a name="version-120"></a>Verzi 1.2.0
 
 - Opravy chyb kolem pracovního postupu pro restartování systému.
 - Oprava chyb při vytváření úloh služby RM v důsledku kontroly stavu během přípravy úloh opravy neprobíhá podle očekávání.
@@ -500,7 +500,7 @@ Správce musí zasáhnout a zjistit, proč se aplikace nebo cluster stala špatn
 - Binární soubory jsou nyní podepsány.
 - Přidání odkazu sfpkg pro aplikaci
 
-### <a name="version-130"></a>1\.3.0 verze
+### <a name="version-130"></a>Verze 1.3.0
 
 - Nastavením InstallWindowsOSOnlyUpdates na hodnotu false nyní nainstalujete všechny dostupné aktualizace.
 - Změnila se logika zakázání automatických aktualizací. Tím se vyřeší chyba, kdy se na serveru 2016 a novějších neaktivovaly automatické aktualizace.

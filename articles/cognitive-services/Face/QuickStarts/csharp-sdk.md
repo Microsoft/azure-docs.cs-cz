@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Klientská knihovna pro tvář pro .NET | Microsoft Docs'
-description: Začínáme s klientskou knihovnou obličeje pro .NET
+title: 'Rychlý Start: Klientská knihovna pro tvář pro .NET'
+description: V tomto rychlém startu můžete začít s klientskou knihovnou pro .NET.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5602e26e2e1b327d65d411f8e92f264f1bf9fb91
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 269f2c9a2cf8578438971e8ad75fec1379a21c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448186"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Rychlý Start: Klientská knihovna pro tvář pro .NET
 
@@ -31,12 +31,12 @@ Pomocí klientské knihovny obličeje pro .NET:
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [Ukázka](https://docs.microsoft.com/samples/browse/?products=azure&term=face) | [ukázka zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
-## <a name="setting-up"></a>Probíhá nastavení
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-face-azure-resource"></a>Vytvoření prostředku Azure FACET
 

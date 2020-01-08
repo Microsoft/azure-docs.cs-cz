@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – Vytvoření škálovací sady virtuálních počítačů pomocí Azure CLI | Microsoft Docs
-description: Zjistěte, jak rychle vytvořit škálovací sadu virtuálních počítačů pomocí Azure CLI.
+title: Rychlý Start – vytvoření sady škálování virtuálních počítačů pomocí Azure CLI
+description: Začněte s nasazeními a Naučte se, jak rychle vytvořit sadu škálování virtuálního počítače pomocí Azure CLI.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 414ed5ea34c6f59a980e57ae0056782760b2e87b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 60120f145ad4bbf11605321603382237fc34cf54
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66149252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351154"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů pomocí Azure CLI
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí Azure CLI.
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
@@ -111,7 +111,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste vytvořili základní škálovací sadu a pomocí rozšíření vlastních skriptů jste na instance virtuálních počítačů nainstalovali základní webový server NGINX. Další informace najdete v kurzu věnovaném vytváření a správě škálovacích sad virtuálních počítačů Azure.
 
 > [!div class="nextstepaction"]

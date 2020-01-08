@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/13/2019
-ms.openlocfilehash: ad802521fe4202b8c5e27a82e0adf142dfa69228
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/13/2019
+ms.openlocfilehash: 7ef28933dc7d10817982690aa3c7bc866c33eb03
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440692"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure SQL Database pomocí Azure Data Factory
 
@@ -61,7 +61,7 @@ Tyto vlastnosti jsou podporovány pro propojenou službu Azure SQL Database:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** musí být nastavená na **AzureSqlDatabase**. | Ano |
-| connectionString | Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost **ConnectionString** . <br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Do Azure Key Vault také můžete vložit heslo nebo hlavní klíč služby. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectionString | Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost **ConnectionString** . <br/>Do Azure Key Vault také můžete vložit heslo nebo hlavní klíč služby. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | tenant | Zadejte informace o tenantovi, jako je název domény nebo ID tenanta, pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
@@ -86,10 +86,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-            }
+            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -107,10 +104,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-            },
+            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -163,10 +157,7 @@ Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založ
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
-            },
+            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -212,10 +203,7 @@ Pokud chcete použít spravované ověřování identity, postupujte podle těch
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
-            }
+            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -573,7 +561,45 @@ Následující příklad ukazuje, jak použít uloženou proceduru k provedení 
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
-Přečtěte si podrobnosti o [transformaci zdrojového kódu](data-flow-source.md) a [transformaci jímky](data-flow-sink.md) v mapování toku dat.
+Při transformaci dat v toku mapování dat můžete číst a zapisovat do tabulek z Azure SQL Database. Další informace najdete v tématu transformace [zdroje](data-flow-source.md) a [transformace jímky](data-flow-sink.md) v tématu mapování toků dat.
+
+### <a name="source-transformation"></a>Transformace zdroje
+
+Nastavení specifická pro Azure SQL Database jsou k dispozici na kartě **Možnosti zdroje** ve zdrojové transformaci. 
+
+**Vstup:** Vyberte, zda chcete nasměrovat zdroj v tabulce (ekvivalent ```Select * from <table-name>```), nebo zadejte vlastní dotaz SQL.
+
+**Dotaz**: Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání. 
+
+* Příklad SQL: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
+
+**Velikost dávky**: zadejte velikost dávky pro velké objemy dat v čtení.
+
+**Úroveň izolace**: ve výchozím nastavení pro zdroje SQL v toku dat mapování je čtení nepotvrzené. Úroveň izolace můžete změnit tady na jednu z těchto hodnot:
+* Čtení potvrzeno
+* Čtení nepotvrzených
+* Opakované čtení
+* Serializovatelný
+* Žádné (ignorovat úroveň izolace)
+
+![Úroveň izolace](media/data-flow/isolationlevel.png "Úroveň izolace")
+
+### <a name="sink-transformation"></a>Transformace jímky
+
+Nastavení specifická pro Azure SQL Database jsou k dispozici na kartě **Nastavení** transformace jímky.
+
+**Metoda aktualizace:** Určuje, jaké operace jsou pro cíl databáze povolené. Ve výchozím nastavení je povolen pouze vkládání. Chcete-li aktualizovat, Upsert nebo odstranit řádky, je pro označení řádků pro tyto akce nutná transformace ALTER Row. V případě aktualizací upsertuje a DELETE musí být klíčový sloupec nebo sloupce nastaveny k určení, který řádek má být změněn.
+
+**Akce tabulky:** Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.
+* Žádné: v tabulce se neprovede žádná akce.
+* Znovu vytvořit: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.
+* Zkrátit: všechny řádky z cílové tabulky se odeberou.
+
+**Velikost dávky**: Určuje, kolik řádků je v jednotlivých intervalech zapisováno. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti.
+
+**Skripty před a po SQL**: zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky.
+
+![skripty pro zpracování před a po SQL](media/data-flow/prepost1.png "Skripty pro zpracování SQL")
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Mapování datových typů pro Azure SQL Database
 

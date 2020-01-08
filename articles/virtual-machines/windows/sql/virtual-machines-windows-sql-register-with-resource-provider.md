@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2430b5135a5d3f7ad1f9ef0bd17d9149bf48ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b59470a187fe060bd5e9a2c1bd84e63f598770df
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793449"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690786"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -57,12 +57,12 @@ Další informace o výhodách použití poskytovatele prostředků virtuálníc
 <iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Výhody od poskytovatele prostředků SQL VM při samoobslužné instalaci SQL Server na Azure – Microsoft Channel 9 video"></iframe>
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat: 
 
-- [Předplatné Azure](https://azure.microsoft.com/free/).
-- Model prostředků Azure [SQL Server virtuální počítač](virtual-machines-windows-portal-sql-server-provision.md) nasazený ve veřejném cloudu. 
+- [Předplatného Azure](https://azure.microsoft.com/free/).
+- Model prostředků Azure [SQL Server virtuální počítač](virtual-machines-windows-portal-sql-server-provision.md) nasazený do veřejného nebo Azure Governmentho cloudu. 
 - Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [PowerShellu](/powershell/azure/new-azureps-module-az). 
 
 ## <a name="management-modes"></a>Režimy správy
@@ -286,8 +286,7 @@ Ověřte aktuální SQL Server stav registrace virtuálního počítače pomocí
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
-  Get-AzResource -ResourceName <vm_name> -ResourceGroupName <resource_group> `
-  -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines
+  Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
   ```
 
 ---
@@ -349,7 +348,7 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 
 Poskytovatel prostředků virtuálního počítače SQL podporuje jenom:
 - SQL Server virtuální počítače nasazené prostřednictvím Azure Resource Manager. SQL Server virtuální počítače nasazené prostřednictvím klasického modelu se nepodporují. 
-- SQL Server virtuální počítače nasazené ve veřejném cloudu. Nasazení do privátního nebo státního cloudu se nepodporuje. 
+- SQL Server virtuální počítače nasazené do veřejného nebo Azure Governmentho cloudu. Nasazení do jiných privátních nebo státních cloudů se nepodporuje. 
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy 
@@ -447,7 +446,7 @@ Názvy těchto dvou služeb:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících článcích: 
+Další informace najdete v těchto článcích: 
 
 * [Přehled SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-overview.md)
 * [Nejčastější dotazy k SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-faq.md)

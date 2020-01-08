@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457021"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X. 509 ve službě Azure IoT Hub
 
@@ -97,9 +97,9 @@ V dalším kroku vám ukážeme, jak vytvořit C# aplikaci, která simuluje zař
 
     Tento krok stáhne a nainstaluje balíček NuGet sady SDK pro zařízení Azure IoT a jeho závislosti a přidá se na něj odkaz.
 
-1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
-    ```CSharp
+    ```csharp
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using System.Security.Cryptography.X509Certificates;
@@ -107,7 +107,7 @@ V dalším kroku vám ukážeme, jak vytvořit C# aplikaci, která simuluje zař
 
 1. Do třídy **program** přidejte následující pole:
 
-    ```CSharp
+    ```csharp
         private static int MESSAGE_COUNT = 5;
         private const int TEMPERATURE_THRESHOLD = 30;
         private static String deviceId = "<your-device-id>";
@@ -120,7 +120,7 @@ V dalším kroku vám ukážeme, jak vytvořit C# aplikaci, která simuluje zař
 
 1. Přidejte následující funkci pro vytvoření náhodných čísel pro teplotu a vlhkost a odeslání těchto hodnot do centra:
 
-    ```CSharp
+    ```csharp
     static async Task SendEvent(DeviceClient deviceClient)
     {
         string dataBuffer;
@@ -142,7 +142,7 @@ V dalším kroku vám ukážeme, jak vytvořit C# aplikaci, která simuluje zař
 
 1. Nakonec do funkce **Main** přidejte následující řádky kódu, kterým nahradíte zástupné symboly _ID zařízení_, _název-IoT-Hub-Name_a _absolutní cesta k souboru_ .
 
-    ```CSharp
+    ```csharp
     try
     {
         var cert = new X509Certificate2(@"<absolute-path-to-your-device-pfx-file>", "1234");

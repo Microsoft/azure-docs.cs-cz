@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8fb121999176e43f07283e970d7336a7c569eaca
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688707"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422057"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace ve App Service Environment v1
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak vytvořit plány Web Apps a App Service v [App Se
 > 
 > 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Pokud jste to ještě neudělali, přečtěte si téma [vytvoření App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
@@ -52,9 +52,9 @@ V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Po
     Pokud chcete použít plán App Service, který již v App Service Environment existuje, vyberte tento plán. Pokud chcete vytvořit nový plán App Service, přečtěte si následující část tohoto kurzu a [vytvořte App Service plán v App Service Environment](#createplan).
 5. Zadejte název vaší webové aplikace a pak klikněte na **vytvořit**. 
    
-    Pokud vaše pomocné služby používá externí VIP, adresa URL aplikace v pomocném mechanismu je: [*název_webu*]. [*název App Service Environment*]. p.azurewebsites.NET místo [*název_webu*]. azurewebsites.NET
+    Pokud vaše App Service Environment používá externí VIP adresa URL aplikace v App Service Environment je: [*sitename*]. [ *název služby App Service Environment*]. p.azurewebsites.net místo [*sitename*]. azurewebsites.net
    
-    Pokud vaše pomocné služby používá interní virtuální IP adresu, adresa URL aplikace v tomto pomocném programu je: [*název_webu*]. [*subdoména zadaná během vytváření POmocného mechanismu*řízení]   
+    Pokud vaše App Service Environment používá interní VIP adresu URL aplikace, jsou App Service Environment: [*sitename*]. [ *subdomény zadané během vytváření App Service Environment*]   
     Po výběru stránky ASP během vytváření pomocného mechanismu se zobrazí aktualizace subdomény pod **názvem** .
 
 ## <a name="createplan"></a>Vytvoření plánu App Service
@@ -104,5 +104,5 @@ Po vytvoření webové aplikace a plánu App Service je vhodné ji škálovat.  
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
-[ResourceGroups]: ../../azure-resource-manager/resource-group-overview.md
+[ResourceGroups]: ../../azure-resource-manager/management/overview.md
 [AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/

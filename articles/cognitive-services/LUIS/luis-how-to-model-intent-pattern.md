@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4432aecee882ff2e312587baa543dd66c0372a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448050"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Postup přidání vzorů pro zlepšení přesnosti předpovědi
 Jakmile aplikace LUIS přijme koncový bod projevy, použijte [vzorek](luis-concept-patterns.md) , který vylepšit přesnost předpovědi pro projevy, která odhalí vzor v textovém pořadí a v textovém výběru. Vzory používají specifickou [syntaxi](luis-concept-patterns.md#pattern-syntax) k označení umístění: [entity](luis-concept-entity-types.md), [role](luis-concept-roles.md)entit a volitelného textu.
@@ -26,7 +26,27 @@ Jakmile aplikace LUIS přijme koncový bod projevy, použijte [vzorek](luis-conc
 > [!CAUTION]
 > Vzory zahrnují pouze nadřazené entity, které se strojově naučily, ne subsoučásti.
 
-## <a name="add-template-utterance-to-create-pattern"></a>Přidat utterance šablony k vytvoření vzorku
+## <a name="adding-example-utterances-as-pattern"></a>Přidání příkladu projevy jako vzoru
+
+Pokud chcete přidat vzor pro entitu, _nejjednodušší_ způsob je vytvořit vzor ze stránky s podrobnostmi záměru. Tím se zaručí, že syntaxe odpovídá příkladu utterance.
+
+1. Na [portálu Luis Preview](https://preview.luis.ai)vyberte aplikaci ze stránky **Moje aplikace** .
+1. Na stránce seznam **záměrů** vyberte název záměru ukázkového utteranceu, ze kterého chcete vytvořit šablonu utterance.
+1. Na stránce Podrobnosti záměru vyberte řádek pro příklad utterance, který chcete použít jako šablonu utterance, a pak vyberte **+ Přidat jako vzorek** z panelu nástrojů kontextu.
+
+    > [!div class="mx-imgBorder"]
+    > ![snímek obrazovky s výběrem příkladu utterance jako vzoru šablony na stránce s podrobnostmi záměru.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
+
+1. V místním okně vyberte na stránce **Potvrdit vzorce** možnost **Hotovo** . Nemusíte definovat dílčí komponenty, omezení nebo popisovače entit. Potřebujete jenom vypsat entitu získanou počítačem.
+
+    > [!div class="mx-imgBorder"]
+    > ![snímek obrazovky s potvrzením příkladu utterance jako vzoru šablony na stránce s podrobnostmi záměru.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+
+1. Pokud potřebujete upravit šablonu, jako je například výběr textu jako volitelné, v závorkách `[]` (hranaté závorky) je nutné vytvořit tuto úpravu formuláře na stránce **vzory** .
+
+1. V navigačním panelu vyberte možnost **výuka** pro výuku aplikace s novým vzorem.
+
+## <a name="add-template-utterance-using-correct-syntax"></a>Přidat šablonu utterance pomocí správné syntaxe
 
 1. Otevřete aplikaci tak, že vyberete jeho název na **Moje aplikace** stránce a pak vyberte **vzory** v levém panelu klikněte v části **zvýšit výkon aplikace**.
 

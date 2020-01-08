@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření podrobného plánu na portálu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů prostřednictvím Azure Portal.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436616"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
@@ -22,7 +22,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. V tomto příkladu vytvořte nový podrobný plán s názvem **MyBlueprint** , ve kterém nakonfigurujete přiřazení rolí a zásad pro předplatné. Pak přidejte novou skupinu prostředků a vytvořte Správce prostředků šablonu a přiřazení role pro novou skupinu prostředků.
 
-1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
 1. Na stránce vlevo vyberte **definice** podrobného plánu a v horní části stránky vyberte tlačítko **+ vytvořit podrobný plán** .
 
@@ -268,7 +268,9 @@ Po přiřazení podrobného plánu k předplatnému ověřte průběh nasazení:
 
 1. Na stránce **přiřazení** podrobného plánu ověřte, zda byly všechny artefakty úspěšně nasazeny a zda během nasazení nedošlo k chybám. Pokud došlo k chybám, přečtěte si téma [řešení potíží s](./troubleshoot/general.md) podrobnými kroky pro určení, co se stalo.
 
-## <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+### <a name="unassign-a-blueprint"></a>Zrušení přiřazení podrobného plánu
 
 Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předplatného. Podrobný plán mohl být nahrazen novějším plánem s aktualizovanými vzorci, zásadami a návrhy. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Pokud chcete odebrat přiřazení podrobného plánu, postupujte následovně:
 
@@ -278,7 +280,7 @@ Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předpla
 
 1. Přečtěte si potvrzovací zprávu a pak vyberte **OK**.
 
-## <a name="delete-a-blueprint"></a>Smazání podrobného plánu
+### <a name="delete-a-blueprint"></a>Odstranění podrobného plánu
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 

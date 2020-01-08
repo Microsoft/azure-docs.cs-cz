@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure PowerShellu – Připojení a použití datových disků | Microsoft Docs
-description: Ukázky Azure PowerShellu
+title: Ukázky Azure PowerShell – připojení a použití datových disků
+description: Tento skript vytvoří sadu škálování virtuálního počítače Azure a připojí a připraví datové disky pomocí prostředí PowerShell.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf7f86deb71aabfb8e06ce30abac92fc1777aae9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7098808837b9fd0206323fca03da4c98096d3c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350961"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Připojení a použití datových disků se škálovací sadou virtuálních počítačů pomocí PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů a připojí a připraví datové disky.
@@ -52,7 +52,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss) | Aktualizuje model škálovací sady virtuálních počítačů, aby se použilo rozšíření virtuálního počítače. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
 Další ukázkové skripty PowerShellu pro škálovací sady virtuálních počítačů najdete v [dokumentaci ke škálovacím sadám virtuálních počítačů Azure](../powershell-samples.md).

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d0a1f56624314ff0cebe93a46027d3ca5b6a838
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e6c4e5d90704e847b3bcd033a20311cc6c69cfe7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424904"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Podmíněný přístup: vyžadovat MFA pro správu Azure
 
@@ -57,5 +57,7 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
 ## <a name="next-steps"></a>Další kroky
 
 [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+
+[Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)

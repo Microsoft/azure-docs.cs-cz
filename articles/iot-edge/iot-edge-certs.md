@@ -4,18 +4,18 @@ description: Azure IoT Edge používá certifikát k ověření zařízení, mod
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 09/13/2018
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0aa70e591c7aac977fe13ed638f8ee56b88e4bd1
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9e4fd0203d68ef1f39d6efbb9d17d3e517969bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982915"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457274"
 ---
-# <a name="azure-iot-edge-certificate-usage-detail"></a>Podrobnosti o použití certifikátu Azure IoT Edge
+# <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
 K ověření identity a legitimity modulu runtime [centra IoT Edge](iot-edge-runtime.md#iot-edge-hub) , ke kterému se připojují, se IoT Edge certifikáty používají pro moduly a podřízená zařízení IoT. Tyto ověřování povolit protokol TLS (zabezpečení transportní vrstvy) zabezpečené připojení mezi modul runtime, moduly a zařízení IoT. Jako služby IoT Hub, sama IoT Edge vyžaduje zabezpečené a šifrované připojení z IoT směru server-klient (listy) zařízení a moduly IoT Edge. Aby bylo možné vytvořit zabezpečené připojení TLS, modul IoT Edge hub prezentuje řetěz certifikátů serveru pro připojení klientů, aby ověřil jeho identitu.
 
@@ -51,7 +51,7 @@ Výrobce v každém případě používá k podepisování certifikátu certifik
 
 ### <a name="device-ca-certificate"></a>Certifikát certifikační Autority zařízení
 
-Certifikát certifikační Autority zařízení je generují z a podepíše konečné certifikát zprostředkující certifikační Autority v procesu. Tento certifikát se instaluje do samotného IoT Edge zařízení, nejlépe v zabezpečeném úložišti, jako je modul hardwarového zabezpečení (HSM). Kromě toho certifikátu certifikační Autority zařízení jednoznačně identifikuje zařízení IoT Edge. V případě IoT Edge může certifikát certifikační autority zařízení vydávat další certifikáty. Například certifikát certifikační autority zařízení vystavuje certifikáty zařízení, které se používají k ověřování zařízení ve [službě Azure IoT Device](../iot-dps/about-iot-dps.md)Provisioning.
+Certifikát certifikační Autority zařízení je generují z a podepíše konečné certifikát zprostředkující certifikační Autority v procesu. Tento certifikát se instaluje do samotného IoT Edge zařízení, nejlépe v zabezpečeném úložišti, jako je modul hardwarového zabezpečení (HSM). Kromě toho certifikátu certifikační Autority zařízení jednoznačně identifikuje zařízení IoT Edge. Certifikát certifikační autority zařízení může podepsat jiné certifikáty. 
 
 ### <a name="iot-edge-workload-ca"></a>Úlohy IoT Edge certifikační Autority
 
@@ -78,29 +78,7 @@ Vzhledem k tomu, že jsou výrobní a provozní procesy oddělené, zvažte nás
 
 ## <a name="devtest-implications"></a>Důsledky pro vývoj/testování
 
-Pro vývoj a testování scénářů, společnost Microsoft poskytuje sadu [pohodlí skripty](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) pro generování-li se o neprodukční certifikátů vhodných pro IoT Edge ve scénáři transparentní brány. Příklady, jak tyto skripty fungují, najdete v části [nakonfigurovat nastavení zařízení IoT Edge tak, aby fungoval jako transparentní brána](how-to-create-transparent-gateway.md).
-
-Tyto skripty vygenerujete certifikáty, které vycházet ze struktury řetěz certifikátů popsaných v tomto článku. Následující příkazy Generovat "kořenový certifikát certifikační Autority" a jedné "certifikát zprostředkující certifikační Autority".
-
-```bash
-./certGen.sh create_root_and_intermediate 
-```
-
-```Powershell
-New-CACertsCertChain rsa 
-```
-
-Tyto příkazy, generovat "Certifikační Autorita certifikátu zařízení".
-
-```bash
-./certGen.sh create_edge_device_ca_certificate "<gateway device name>"
-```
-
-```Powershell
-New-CACertsEdgeDeviceCA "<gateway device name>"
-```
-
-* **Názevzařízení\> brány předaný do těchto skriptů by neměl být stejný jako parametr HostName v souboru config. yaml. \<** Tyto skripty vám pomůžou zabránit jakýmkoli problémům připojením řetězce ". ca" k  **\<\> názvu zařízení brány** , aby se zabránilo kolizi názvů pro případ, že uživatel nastaví IoT Edge se stejným názvem na obou místech. Je však dobré se vyhnout použití stejného názvu.
+Pro vývoj a testování scénářů, společnost Microsoft poskytuje sadu [pohodlí skripty](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) pro generování-li se o neprodukční certifikátů vhodných pro IoT Edge ve scénáři transparentní brány. Příklady fungování skriptů najdete v tématu [Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení](how-to-create-test-certificates.md).
 
 >[!Tip]
 > Připojit zařízení IoT "typu list" zařízení a aplikací, které používají naše sada SDK zařízení IoT pomocí IoT Edge, je nutné přidat volitelný parametr GatewayHostName ke konci připojovací řetězec zařízení. Při generování certifikátu serveru Edge Hub je založen na verzi nižší malými a velkými písmeny názvu hostitele z config.yaml, proto pro názvy shody a ověřovací certifikát TLS proběhla úspěšně, měli byste zadat parametr GatewayHostName malými písmeny.
@@ -120,8 +98,8 @@ Zobrazí se hierarchie certifikátů hloubky reprezentované na snímku obrazovk
 | Certifikát pracovního vytížení certifikační Autority     | certifikační autorita iotedge pracovního vytížení                                                                                       |
 | Certifikát serveru IoT Edge hub | iotedgegw.Local (shoduje s názvem "hostitele" z config.yaml)                                                |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md)
 
-[Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge](how-to-create-transparent-gateway.md)
+[Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána](how-to-create-transparent-gateway.md)

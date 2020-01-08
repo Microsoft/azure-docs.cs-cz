@@ -1,18 +1,14 @@
 ---
 title: Konfigurace Azure Monitor pro shromažďování dat agenta kontejnerů | Microsoft Docs
 description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers pro řízení kolekce protokolů stdout/stderr a proměnných prostředí.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 0d654dc05668a71b0fe69de32e5c09f8936951f8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951577"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405683"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro Azure Monitor pro kontejnery
 
@@ -40,6 +36,7 @@ Níže jsou uvedené nastavení, které lze nakonfigurovat pro řízení shroma�
 |`[log_collection_settings.stderr] enabled =` |Logická hodnota | true nebo false |Tyto ovládací prvky, pokud je povoleno shromažďování protokolů kontejneru stderr. Když se nastaví `true` a žádné obory názvů nejsou vyloučené pro shromažďování protokolů stdout (nastavení`log_collection_settings.stderr.exclude_namespaces`), budou se shromažďovat protokoly stderr ze všech kontejnerů napříč všemi lusky nebo uzly v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
 |`[log_collection_settings.stderr] exclude_namespaces =` |Řetězec |Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které nebudou shromažďovány protokoly stderr Toto nastavení platí pouze v případě, že je parametr `log_collection_settings.stdout.enabled` nastaven na hodnotu `true`. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí kolekci proměnných prostředí ve všech luskech/uzlech v clusteru a ve výchozím nastavení je `enabled = true`, když není zadáno v ConfigMaps. Pokud je kolekce proměnných prostředí globálně povolená, můžete ji pro konkrétní kontejner zakázat nastavením proměnné prostředí `AZMON_COLLECT_ENV` na **hodnotu false** buď pomocí nastavení souboru Dockerfile, nebo v [konfiguračním souboru pro](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) pod oddílem **ENV:** . Pokud je kolekce proměnných prostředí globálně zakázaná, nemůžete povolit shromažďování pro konkrétní kontejner (to znamená, že jediné přepsání, které může být použito na úrovni kontejneru, je zakázat shromažďování, pokud je již povoleno globálně). |
+| `[log_collection_settings.enrich_container_logs] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí rozšíření protokolu kontejneru, aby se naplnily hodnoty vlastností název a obrázek každého záznamu protokolu zapsaného do tabulky ContainerLog pro všechny protokoly kontejnerů v clusteru. Výchozím nastavením je `enabled = false`, když není zadáno v ConfigMap. |
 
 ConfigMaps je globální seznam a v agentovi může být použit pouze jeden ConfigMap. Nemůžete mít k dispozici další ConfigMaps pro kolekce.
 

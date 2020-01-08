@@ -1,25 +1,18 @@
 ---
-title: Service Fabric nasazení Azure Resource Manager guardrails | Microsoft Docs
+title: Service Fabric nasazení Azure Resource Manager guardrails
 description: Tento článek poskytuje přehled běžných chyb provedených při nasazení Service Fabric clusteru prostřednictvím Azure Resource Manager a jejich předcházení.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: gamonroy
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/30/2019
 ms.author: pepogors
-ms.openlocfilehash: 3ea6f850685a695644cfc3073fc939a58901658c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426738"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 Při nasazování clusteru Service Fabric jsou zavedeny guardrails, což způsobí selhání nasazení Azure Resource Manager v případě neplatné konfigurace clusteru. V následujících částech najdete přehled běžných potíží s konfigurací clusteru a kroky potřebné k tomu, abyste tyto problémy zmírnili. 

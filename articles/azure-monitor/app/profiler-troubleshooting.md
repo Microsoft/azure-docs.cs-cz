@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží se službou Azure Application Insights Profiler | Microsoft Docs
+title: Řešení potíží s Azure Application Insights Profiler
 description: Tento článek představuje postup řešení potíží a informace, které vývojářům umožňují problémy s povolením nebo používáním Application Insights Profiler.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432387"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Řešení potíží s povolením nebo zobrazením Application Insights Profiler
 
@@ -69,7 +69,7 @@ Pro správné fungování profileru postupujte takto:
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey pro prostředek Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
 * Webová úloha **ApplicationInsightsProfiler3** musí být spuštěná. Postup kontroly webové úlohy:
@@ -77,12 +77,12 @@ Pro správné fungování profileru postupujte takto:
    1. V nabídce **nástroje** vyberte možnost **řídicí panel WebJobs**.  
       Otevře se podokno webové **úlohy** . 
    
-      ![Profiler – webová úloha]   
+      ![profiler-webjob]   
    
    1. Chcete-li zobrazit podrobnosti webové úlohy, včetně protokolu, vyberte odkaz **ApplicationInsightsProfiler3** .  
      Otevře se podokno **Podrobnosti nepřetržité úlohy WebJob** .
 
-      ![Profiler-webová úloha – protokol]
+      ![profiler-webjob-log]
 
 Pokud nemůžete zjistit, proč Profiler nefunguje za vás, můžete si stáhnout protokol a odeslat ho do našeho týmu, abyste mohli pomoct serviceprofilerhelp@microsoft.com. 
     
@@ -101,17 +101,17 @@ Při konfiguraci profileru se aktualizace provedou v nastavení webové aplikace
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey pro prostředek Application Insights    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>Příliš mnoho aktivních relací profilování
 
 V současné době můžete profiler povolit na maximálně čtyři webové aplikace Azure a sloty nasazení, které běží ve stejném plánu služeb. Pokud máte více než čtyři webové aplikace spuštěné v jednom plánu služby App Service, může Profiler vyvolat *Microsoft. ServiceProfiler. Exceptions. TooManyETWSessionException*. Profiler se spouští samostatně pro každou webovou aplikaci a pokusy o spuštění relace trasování událostí pro Windows (ETW) pro každou aplikaci. V jednom okamžiku může být aktivní jenom omezený počet relací ETW. Pokud webová úloha profileru hlásí příliš mnoho aktivních relací profilování, přesuňte některé webové aplikace na jiný plán služby.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Chyba nasazení: adresář není prázdný. d:\\Home\\lokality\\wwwroot\\App_Data\\Jobs.
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Chyba nasazení: adresář není prázdný:\\domovské\\lokality\\wwwroot\\App_Data\\Jobs.
 
 Pokud znovu nasazujete webovou aplikaci do prostředku Web Apps s povoleným profilerem, může se zobrazit následující zpráva:
 
-*Adresář není prázdný. d:\\domovské\\lokality\\wwwroot\\App_Data\\Jobs.*
+*Adresář není prázdný:\\domovské\\lokality\\wwwroot\\App_Data\\Jobs.*
 
 K této chybě dojde, pokud spouštíte Nasazení webu ze skriptů nebo z kanálu nasazení Azure DevOps. Řešením je přidání následujících dalších parametrů nasazení do úlohy Nasazení webu:
 
@@ -143,7 +143,7 @@ Chcete-li kontrolovat nastavení, která byla použita pro konfiguraci Azure Dia
     ```
     c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
-    nebo
+    – nebo –
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
@@ -165,9 +165,14 @@ Chcete-li kontrolovat nastavení, která byla použita pro konfiguraci Azure Dia
     Při nahrávání trasování se zobrazí následující zpráva: *Spustit trasování*. 
 
 
+## <a name="edit-network-proxy-or-firewall-rules"></a>Upravit pravidla proxy nebo brány firewall sítě
+
+Pokud se vaše aplikace připojuje k Internetu prostřednictvím proxy serveru nebo brány firewall, možná budete muset upravit pravidla, aby aplikace mohla komunikovat se službou Application Insights Profiler. IP adresy, které používá Application Insights Profiler, jsou součástí značky služby Azure Monitor.
+
+
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[Profiler – webová úloha]:./media/profiler-troubleshooting/Profiler-webjob.png
-[Profiler-webová úloha – protokol]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

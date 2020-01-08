@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22efe84826684e37abee65d64df13d63081aa79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425457"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -59,7 +59,7 @@ Když rozšíření NPS pro Azure je integrována se serverem NPS a Brána vzdá
 1. Server NPS, kde je nainstalovaná rozšíření, odešle zprávu přijmout přístup protokolu RADIUS pro zásady CAP ke vzdálené ploše na serveru brány vzdálené plochy.
 1. Uživateli je udělen přístup k prostředku požadovaná síť prostřednictvím brány VP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato část podrobně popisuje předpoklady nezbytné před integrace Azure MFA s bránou vzdálení plochy. Než začnete, musíte mít splněné následující požadavky na místě.  
 
@@ -120,11 +120,11 @@ Tato část obsahuje pokyny ke konfiguraci vzdálené plochy infrastruktury pro 
 Jako součást konfigurace rozšíření serveru NPS budete muset zadat přihlašovací údaje správce a Azure AD ID pro vašeho tenanta Azure AD. Následující kroky ukazují, jak získat ID tenanta.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) jako globální správce tenanta Azure.
-1. V levém navigačním panelu vyberte **Azure Active Directory** ikonu.
+1. V nabídce Azure Portal vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
 1. Vyberte **Vlastnosti**.
 1. V okně Vlastnosti vedle ID adresáře, klikněte na tlačítko **kopírování** ikonu, jak je znázorněno níže, ID zkopírovat do schránky.
 
-   ![Získává se ID adresáře z Azure Portal.](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Získává se ID adresáře z Azure Portal.](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Instalace rozšíření serveru NPS
 
@@ -193,7 +193,7 @@ Zásady autorizace připojení ke vzdálené ploše (CAP k vzdálené ploše) za
 
    ![Zadejte název nebo IP adresu vašeho serveru NPS.](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. Klikněte na tlačítko **Přidat**.
+1. Klikněte na tlačítko **Add** (Přidat).
 1. V **sdílený tajný klíč** dialogové okno, zadejte sdílený tajný klíč a potom klikněte na tlačítko **OK**. Zkontrolujte záznam sdílený tajný klíč a bezpečně uložit záznam.
 
    >[!NOTE]

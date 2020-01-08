@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: dcd75cfefd53b3c9104052146607869515e1c86e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 596f8334b647daf6fe3a15521f7caeecb0c0e303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534283"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462603"
 ---
-# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití rozhraní příkazového řádku Azure pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
 V tomto článku se dozvíte, jak pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají hierarchický obor názvů. 
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak pomocí [rozhraní příkazového řádku Azur
 > Rozšíření `storage-preview`, které je vybrané v tomto článku, je momentálně ve verzi Public Preview.
 
 [Ukázka](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 na mapování Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [poskytnutí zpětné vazby](https://github.com/Azure/azure-cli-extensions/issues)
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -42,7 +42,7 @@ V tomto článku se dozvíte, jak pomocí [rozhraní příkazového řádku Azur
    ```
    Pokud je vaše verze rozhraní příkazového řádku Azure nižší než `2.0.67`, nainstalujte novější verzi. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. Nainstalujte rozšíření `storage-preview`.
+3. Nainstalujete rozšíření `storage-preview`.
 
    ```azurecli
    az extension add -n storage-preview
@@ -198,7 +198,7 @@ Tento příklad odstraní soubor s názvem `my-file.txt`
 az storage blob delete -c my-file-system -b my-file.txt --account-name mystorageaccount 
 ```
 
-## <a name="manage-permissions"></a>Spravovat oprávnění
+## <a name="manage-permissions"></a>Správa oprávnění
 
 Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů.
 

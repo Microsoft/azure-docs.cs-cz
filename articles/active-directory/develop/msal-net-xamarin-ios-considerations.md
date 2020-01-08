@@ -3,7 +3,7 @@ title: Předpoklady pro Xamarin iOS (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních doporučeních pro použití Xamarin iOS s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f74c1f515df23a89af7cf50a208a9965865f6edf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921462"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424116"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Otázky specifické pro Xamarin iOS s MSAL.NET
 V systému Xamarin iOS je při používání MSAL.NET potřeba vzít v úvahu několik důležitých informací.
@@ -30,18 +30,11 @@ V systému Xamarin iOS je při používání MSAL.NET potřeba vzít v úvahu n�
 - [Povolit sdílení mezipaměti tokenů](#enable-token-cache-sharing-across-ios-applications)
 - [Povolit přístup k řetězci klíčů](#enable-keychain-access)
 
-## <a name="known-issues-with-ios-12-and-authentication"></a>Známé problémy se systémem iOS 12 a ověřováním
-Společnost Microsoft vydala [informační zpravodaj zabezpečení](https://github.com/aspnet/AspNetCore/issues/4647) , který poskytuje informace o nekompatibilitě mezi iOS12 a některými typy ověřování. Nekompatibilita přeruší sociální, WSFed a OIDC přihlášení. Tento informační zpravodaj také poskytuje pokyny k tomu, jak můžou vývojáři odebrat aktuální omezení zabezpečení přidaná ASP.NET do svých aplikací, aby se staly kompatibilními s iOS12.  
-
-Při vývoji aplikací MSAL.NET na platformě Xamarin iOS se může při pokusu o přihlášení k webům ze systému iOS 12 zobrazit nekonečná smyčka (podobně jako tento [problém ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329). 
-
-Můžete se také setkat s přerušením v ASP.NET Core ověřování OIDC se systémem iOS 12 Safari, jak je popsáno v tomto [problému WebKit](https://bugs.webkit.org/show_bug.cgi?id=188165).
-
 ## <a name="implement-openurl"></a>Implementovat OpenUrl
 
 Nejprve je třeba přepsat metodu `OpenUrl` `FormsApplicationDelegate` odvozené třídy a volat `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 {
     AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
@@ -56,40 +49,28 @@ Budete taky muset definovat schéma adresy URL, vyžadovat oprávnění, aby va�
 Aby bylo možné povolit přístup pomocí řetězce klíčů, musí mít vaše aplikace přístupovou skupinu pro řetězce klíčů.
 Přístupovou skupinu pro řetězce klíčů můžete nastavit pomocí rozhraní `WithIosKeychainSecurityGroup()` API při vytváření aplikace, jak je znázorněno níže:
 
-Pokud chcete povolit jednotné přihlašování, musíte nastavit vlastnost `PublicClientApplication.iOSKeychainSecurityGroup` na stejnou hodnotu ve všech aplikacích.
+Pokud chcete využít výhod mezipaměti a jednotného přihlašování, musíte nastavit přístupovou skupinu pro řetězce klíčů na stejnou hodnotu ve všech vašich aplikacích.
 
-Příkladem použití MSAL v3. x bude:
+Příkladem je použití MSAL v4. x:
 ```csharp
 var builder = PublicClientApplicationBuilder
      .Create(ClientId)
-     .WithIosKeychainSecurityGroup("com.microsoft.msalrocks")
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
      .Build();
 ```
-
-Oprávnění. plist by se měla aktualizovat tak, aby vypadala jako následující fragment kódu XML:
 
 Tato změna je *navíc* k povolení přístupu k řetězci klíčů v souboru `Entitlements.plist`, a to buď pomocí níže uvedené skupiny přístupu, nebo podle vlastního:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
 <dict>
   <key>keychain-access-groups</key>
   <array>
-    <string>$(AppIdentifierPrefix)com.microsoft.msalrocks</string>
+    <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
   </array>
 </dict>
-</plist>
 ```
 
-Příkladem je použití MSAL v4. x:
-
-```csharp
-PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
-```
-
-Když použijete rozhraní `WithIosKeychainSecurityGroup()` API, MSAL automaticky připojí skupinu zabezpečení na konec ID týmu aplikace (AppIdentifierPrefix), protože když sestavíte aplikaci pomocí Xcode, bude to mít stejnou. [Další podrobnosti najdete v dokumentaci k oprávněním pro iOS](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). To je důvod, proč potřebujete aktualizovat oprávnění, aby zahrnoval $ (AppIdentifierPrefix) před přístupovou skupinou pro řetězce klíčů v oprávněních. plist.
+Když použijete rozhraní `WithIosKeychainSecurityGroup()` API, MSAL automaticky připojí skupinu zabezpečení na konec *ID týmu* aplikace (AppIdentifierPrefix), protože když sestavíte aplikaci pomocí Xcode, bude to mít stejnou. Další informace najdete v [dokumentaci k oprávněním pro iOS](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). To je důvod, proč musí nároky zahrnovat `$(AppIdentifierPrefix)` před přístupovou skupinou pro řetězce klíčů v `Entitlements.plist`.
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Povolit sdílení mezipaměti tokenů napříč aplikacemi pro iOS
 
@@ -128,3 +109,10 @@ Ukázka | Platforma | Popis
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Jednoduchá aplikace Xamarin Forms předvádí, jak pomocí MSAL ověřovat MSA a Azure AD prostřednictvím koncového bodu Azure AD V 2.0 a přistupovat k Microsoft Graph s výsledným tokenem.
 
 <!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->
+
+## <a name="known-issues-with-ios-12-and-authentication"></a>Známé problémy se systémem iOS 12 a ověřováním
+Společnost Microsoft vydala [informační zpravodaj zabezpečení](https://github.com/aspnet/AspNetCore/issues/4647) , který poskytuje informace o nekompatibilitě mezi iOS12 a některými typy ověřování. Nekompatibilita přeruší sociální, WSFed a OIDC přihlášení. Tento informační zpravodaj také poskytuje pokyny k tomu, jak můžou vývojáři odebrat aktuální omezení zabezpečení přidaná ASP.NET do svých aplikací, aby se staly kompatibilními s iOS12.  
+
+Při vývoji aplikací MSAL.NET v Xamarin iOS se může při pokusu o přihlášení k webům z iOS 12 zobrazit nekonečná smyčka (podobně jako tento [problém ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)). 
+
+Můžete se také setkat s přerušením v ASP.NET Core ověřování OIDC se systémem iOS 12 Safari, jak je popsáno v tomto [problému WebKit](https://bugs.webkit.org/show_bug.cgi?id=188165).

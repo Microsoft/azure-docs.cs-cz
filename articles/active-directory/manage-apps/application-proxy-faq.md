@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443417"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -53,9 +53,9 @@ Doporučení najdete v tématu [Vysoká dostupnost a vyrovnávání zatížení 
 
 Ne, tento scénář se nepodporuje. Jenom konektory a služby aktualizací se dají nakonfigurovat tak, aby pro odchozí přenosy do Azure používaly předaný proxy server. Zobrazit [práci se stávajícími místními proxy servery](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)
 
-### <a name="is-ssl-termination-sslhhtps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Podporuje se v provozu přenosů SSL (SSL/HHTPS kontrola nebo akcelerace) na provoz ze serverů konektoru do Azure?
+### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Je u provozu z konektorových serverů do Azure podporováno ukončení protokolu SSL (kontrola nebo akcelerace SSL/HTTPS)?
 
-Konektor proxy aplikací provádí ověřování pomocí certifikátů v Azure. Ukončení protokolu SSL (kontrola SSL/HHTPS nebo zrychlení) ruší tuto metodu ověřování a nepodporuje se. Přenos z konektoru do Azure musí obejít všechna zařízení, která provádí ukončení protokolu SSL.  
+Konektor proxy aplikací provádí ověřování pomocí certifikátů v Azure. Ukončení protokolu SSL (kontrola SSL/HTTPS) ruší tuto metodu ověřování a nepodporuje se. Přenos z konektoru do Azure musí obejít všechna zařízení, která provádí ukončení protokolu SSL.  
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Mám vytvořit vyhrazený účet pro registraci konektoru s využitím Azure Proxy aplikací služby AD?
 
@@ -63,7 +63,7 @@ Neexistuje žádný důvod. Bude fungovat jakýkoli účet správce globálních
 
 ### <a name="how-can-i-monitor-the-performance-of-the-azure-ad-application-proxy-connector"></a>Jak můžu monitorovat výkon konektoru služby Azure Proxy aplikací služby AD?
 
-K dispozici jsou čítače sledování výkonu, které jsou nainstalovány spolu s konektorem. K jejich zobrazení:  
+K dispozici jsou čítače sledování výkonu, které jsou nainstalovány spolu s konektorem. Postup při jejich zobrazení:  
 
 1. Vyberte **Start**, zadejte "perfmon" a stiskněte klávesu ENTER.
 2. Vyberte **sledování výkonu** a klikněte na ikonu zeleného **+** .

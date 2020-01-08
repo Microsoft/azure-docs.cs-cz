@@ -1,26 +1,25 @@
 ---
 title: Úlohy Azure Stream Analytics Edge v aplikaci Visual Studio
 description: Tento článek popisuje, jak vytvářet, ladit a vytvářet Stream Analytics v úlohách IoT Edge pomocí nástrojů Stream Analytics Tools for Visual Studio.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec4a4041378ce94ae70ba7a88b3fef80f7dcd193
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354569"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Vývoj úloh Stream Analytics Edge pomocí nástrojů sady Visual Studio
 
 V tomto kurzu se naučíte používat nástroje pro Stream Analytics pro Visual Studio. Naučíte se, jak vytvářet, ladit a vytvářet úlohy Stream Analytics Edge. Až úlohu vytvoříte a otestujete, můžete přejít na Azure Portal a nasadit ji do svých zařízení. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující předpoklady:
 
@@ -45,7 +44,7 @@ Po vytvoření projektu přejděte na **Průzkumník řešení** a zobrazte hier
 
 2. Klikněte pravým tlačítkem na **Azure** > vyberte **připojit k předplatnému Microsoft Azure** > a pak se přihlaste pomocí svého účtu Azure.
 
-## <a name="define-inputs"></a>Definování vstupů
+## <a name="define-inputs"></a>Definice vstupů
 
 1. V **Průzkumník řešení**rozbalte uzel **vstupy** , měli byste vidět vstup s názvem **EdgeInput. JSON**. Dvojitým kliknutím zobrazíte její nastavení.  
 
@@ -68,7 +67,7 @@ Stream Analytics úlohy nasazené v prostředích Stream Analytics IoT Edge podp
 
 |**Kategorie**  | **Příkaz**  |
 |---------|---------|
-|Jiné operátory | <ul><li>ROZDĚLIT PODLE</li><li>ČASOVÉ RAZÍTKO PODLE</li><li>JavaScript UDF</li><li>Uživatelsky definované agregace (UDA)</li><li>GetMetadataPropertyValue</li><li>Použití více než 14 agregací v jednom kroku</li></ul>   |
+|Jiné operátory | <ul><li>ODDÍL</li><li>ČASOVÉ RAZÍTKO PODLE</li><li>JavaScript UDF</li><li>Uživatelsky definované agregace (UDA)</li><li>GetMetadataPropertyValue</li><li>Použití více než 14 agregací v jednom kroku</li></ul>   |
 
 Když na portálu vytvoříte úlohu Stream Analytics Edge, kompilátor vás automaticky upozorní, pokud nepoužíváte podporovaný operátor.
 
@@ -123,5 +122,5 @@ Okno zobrazení úlohy poskytuje operace, jako je například aktualizace úlohy
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o Azure IoT Edge](../iot-edge/about-iot-edge.md)
-* [Kurz k ASA v IoT Edge](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [Azure Stream Analytics na hraničních zařízeních IoT kurz](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Odeslat zpětnou vazbu týmu pomocí tohoto průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

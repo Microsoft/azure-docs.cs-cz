@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382119"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Střední s vlastními seznamy podmínek v konzole API
 
 Výchozí globální seznam výrazů v Azure Content Moderatoru je dostačující pro většinu potřeb z hlediska moderování obsahu. Možná ale budete potřebovat vyhledat výrazy, které jsou specifické pro vaši organizaci. Například můžete chtít označit názvy konkurentů k další kontrole. 
 
-Pomocí [rozhraní API pro správu seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) můžete vytvořit vlastní seznamy podmínek, které se použijí v rozhraní API pro moderování textu. Operace **textové obrazovky** kontroluje text pro vulgární výrazy a také porovná text s vlastními a sdílenými zakázanými akcemi.
+Pomocí [rozhraní API pro správu seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) můžete vytvořit vlastní seznamy podmínek, které se použijí v rozhraní API pro moderování textu. Operace **text-Screen** vyhledá text na základě vulgárních výrazů a také porovná text s vlastním a sdíleným adres.
 
 > [!NOTE]
 > Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů**.

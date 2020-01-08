@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8265bad5b756ee2ac23bc41c9c58452251ce0717
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 48362b269f38928fec8b1987ea21397b74e7dfb2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368024"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Rychlý start – Nastavení přihlášení pro desktopovou aplikaci pomocí služby Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
 - Účet sociální sítě z Facebooku, Google nebo Microsoft.
@@ -77,9 +77,9 @@ Azure AD B2C poskytuje funkci, která uživatelům umožňuje aktualizovat své 
 
 Kliknutím na **Call API** (Zavolat rozhraní API) vytvořte žádost na chráněný prostředek.
 
-    ![Call API](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
+![Volání rozhraní API](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 
-    The application includes the Azure AD access token in the request to the protected web API resource. The web API sends back the display name contained in the access token.
+Aplikace do požadavku na chráněný prostředek webového rozhraní API zahrne přístupový token Azure AD. Webové rozhraní API odešle zpět zobrazované jméno obsažené v přístupovém tokenu.
 
 Úspěšně jste pomocí svého uživatelského účtu Azure AD B2C provedli autorizované zavolání webového rozhraní API chráněného službou Azure AD B2C.
 

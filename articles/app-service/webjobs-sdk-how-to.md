@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684005"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421966"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat sadu SDK Azure WebJobs pro zpracování na pozadí založené na událostech
 
@@ -84,7 +84,7 @@ Proces povolení režimu vývoje závisí na verzi sady SDK.
 Verze 3. *x* používá standardní rozhraní ASP.NET Core API. V instanci [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) volejte metodu [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) . Předejte řetězec s názvem `development`, jako v tomto příkladu:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.UseEnvironment("development");
@@ -95,7 +95,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -236,7 +236,7 @@ Proces pro instalaci a správu typů vazeb závisí na tom, zda používáte ver
 Ve verzi 3. *x*jsou vazby úložiště zahrnuté v balíčku `Microsoft.Azure.WebJobs.Extensions.Storage`. V metodě `ConfigureWebJobs` volejte metodu rozšíření `AddAzureStorage`, jak je znázorněno zde:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -247,7 +247,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -255,7 +255,7 @@ static void Main()
 Chcete-li použít jiné typy triggerů a vazeb, nainstalujte balíček NuGet, který obsahuje, a zavolejte metodu rozšíření `Add<binding>` implementovanou v rozšíření. Například pokud chcete použít Azure Cosmos DB vazby, nainstalujte `Microsoft.Azure.WebJobs.Extensions.CosmosDB` a volání `AddCosmosDB`, například:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -266,7 +266,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -318,7 +318,7 @@ Proces vytvoření vazby na [`ExecutionContext`] závisí na vaší verzi sady S
 V metodě `ConfigureWebJobs` volejte metodu rozšíření `AddExecutionContextBinding`, jak je znázorněno zde:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -329,7 +329,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -373,7 +373,7 @@ Můžete nakonfigurovat následující vazby:
 Tento příklad ukazuje, jak nakonfigurovat aktivační událost Azure Cosmos DB:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -390,8 +390,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -403,7 +402,7 @@ Další podrobnosti najdete v článku věnovaném [vazbám Azure CosmosDB](../a
 Tento příklad ukazuje, jak nakonfigurovat aktivační událost Event Hubs:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -419,8 +418,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -434,7 +432,7 @@ Tyto příklady ukazují, jak nakonfigurovat aktivační událost fronty pro úl
 #### <a name="version-3x"></a>Verze 3. *x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -450,8 +448,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -480,7 +477,7 @@ Další podrobnosti najdete v referenčních informacích k [hostiteli. JSON v1.
 Tento příklad ukazuje, jak nakonfigurovat výstupní vazbu SendGrid:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -495,8 +492,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -508,7 +504,7 @@ Další podrobnosti najdete v článku věnovaném [vazbě SendGrid](../azure-fu
 Tento příklad ukazuje, jak nakonfigurovat aktivační událost Service Bus:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -523,8 +519,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -538,7 +533,7 @@ Některé typy triggerů a vazeb definují vlastní typy konfigurace. Napříkla
 #### <a name="version-3x"></a>Verze 3. *x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -549,8 +544,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -827,7 +821,7 @@ Doporučujeme rozhraní protokolování, které bylo vyvinuto pro ASP.NET. V čl
 
 Každý protokol vytvořený instancí `ILogger` má přidruženou `Category` a `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a celočíselný kód označuje relativní důležitost:
 
-|LogLevel    |Kód|
+|ÚroveňProtokolu    |kód|
 |------------|---|
 |Trasování       | 0 |
 |Ladění       | 1\. místo |
@@ -924,7 +918,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 Chcete-li přidat vlastní [`ITelemetryInitializer`] do kanálu, zavolejte [`ConfigureServices`] v tvůrci.
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -951,8 +945,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -1004,9 +997,9 @@ config.LoggerFactory = new LoggerFactory()
 
 V tomto článku jsou uvedené fragmenty kódu, které ukazují, jak zpracovávat běžné scénáře pro práci se sadou WebJobs SDK. Kompletní ukázky najdete v tématu [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
-[ExecutionContext]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-['ITelemetryInitializer']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-['TelemetryConfiguration']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-['JobHostConfiguration']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+[`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+[`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+[`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+[`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430199"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurace pracovního postupu pro vyjádření souhlasu správce (Preview)
 
@@ -42,14 +42,14 @@ Pokud chcete povolit pracovní postup souhlasu správce a zvolit kontrolory:
 
    ![Konfigurovat nastavení pracovního postupu pro vyjádření souhlasu správce](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
-6. Nakonfigurujte následující nastavení:
+6. Nakonfigurujte tahle nastavení:
 
    * **Vyberte možnost Uživatelé a zkontrolujte požadavky na souhlas správce**. Vyberte kontrolory pro tento pracovní postup ze skupiny uživatelů, kteří mají role Globální správce, správce cloudové aplikace a Správce aplikací.
    * **Vybraní uživatelé budou dostávat e-mailová oznámení pro žádosti**. Povolit nebo zakázat e-mailová oznámení kontrolorům, když je žádost vytvořena.  
    * **Vybraní uživatelé budou dostávat připomenutí vypršení platnosti žádosti**. Umožňuje povolit nebo zakázat e-mailová oznámení připomenutí kontrolorům, když žádost brzy vyprší.  
    * **Platnost žádosti o souhlas vyprší po (dny)** . Zadejte, jak dlouho zůstanou požadavky platné.
 
-7. Vyberte **Save** (Uložit). Může trvat až hodinu, než se funkce aktivuje.
+7. Vyberte **Uložit**. Může trvat až hodinu, než se funkce aktivuje.
 
 > [!NOTE]
 > Revidující pro tento pracovní postup můžete přidat nebo odebrat tak, že upravíte seznam **kontroloři žádosti o souhlas správce** . Všimněte si, že aktuální omezení této funkce je, že Recenzenti mohou zachovat možnost kontrolovat žádosti, které byly provedeny v době, kdy byly označeny jako kontrolor.
@@ -153,8 +153,10 @@ Pokud máte obavy o udělení souhlasu správce a povolení používání aplika
 
 Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azure Active Directory souhlasu Framework](../develop/consent-framework.md).
 
-[Souhlas a integrace aplikací do AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+[Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
 
-[Souhlas a oprávnění pro sblížené aplikace AzureAD v 2.0](../develop/active-directory-v2-scopes.md)
+[Udělení souhlasu správce na úrovni tenanta pro aplikaci](grant-admin-consent.md)
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
+
+[Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

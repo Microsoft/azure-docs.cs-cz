@@ -1,19 +1,18 @@
 ---
 title: Rychlý Start – vytvoření Stream Analytics úlohy pomocí Azure PowerShell
 description: Tento rychlý Start ukazuje, jak použít modul Azure PowerShell k nasazení a spuštění úlohy Azure Stream Analytics.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 44fe16caf6805819b0d942a02f5138fe766ae99c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431508"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell
 
@@ -306,7 +305,7 @@ New-AzStreamAnalyticsTransformation `
 
 3. Klikněte na **Run** (Spustit). Výstup by měl ukazovat data a zprávy snímače, které se odesílají do vašeho IoT Hub.
 
-    ![Simulátor Azure IoT online pro maliny PI](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
+    ![Online simulátor Raspberry Pi Azure IoT](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 

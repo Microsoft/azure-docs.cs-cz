@@ -1,5 +1,6 @@
 ---
-title: Přizpůsobení stylu stránky na webu Azure API Management starší verze portálu pro vývojáře | Microsoft Docs
+title: Přizpůsobení stylu stránky na API Management starší verze portálu pro vývojáře
+titleSuffix: Azure API Management
 description: Podle kroků v tomto rychlém startu můžete přizpůsobit styl elementů na portálu pro vývojáře ve službě Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 779d1228393cdc88f88820d8a335cb2e32424c14
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430738"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Přizpůsobení stylu stránek portálu pro vývojáře
 
@@ -36,7 +37,7 @@ V tomto článku se dozvíte, jak přizpůsobit styl prvků na stránkách star�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).

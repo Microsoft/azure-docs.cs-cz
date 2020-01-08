@@ -1,5 +1,5 @@
 ---
-title: Použití jazyka Java pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+title: Azure Data Lake Storage Gen2 Java SDK for Files & seznamy řízení přístupu (Preview)
 description: Pomocí knihoven Azure Storage pro jazyk Java můžete spravovat adresáře a seznamy řízení přístupu (ACL) souborů a adresářů v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 0a57e87cc408d111893cbb2beaf4fc5afee2eca2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5a08a1f104e1820755f231ae6d1248ccc21ce330
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930791"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431843"
 ---
-# <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Použití jazyka Java pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java (Preview)
 
 V tomto článku se dozvíte, jak pomocí jazyka Java vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště s povoleným hierarchickým oborem názvů (HNS). 
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak pomocí jazyka Java vytvářet a spravovat adr
 
 [Package (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 na mapování Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [poskytnutí zpětné vazby](https://github.com/Azure/azure-sdk-for-java/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).

@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: a197f95963e5a4138136f5d336e276ec1c7f7af7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769026"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407634"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
 
-Tento článek poskytuje informace o pokrytí Azure Maps [povětrnostní služby](https://aka.ms/AzureMapsWeatherService). Azure Maps datové služby počasí můžou vracet podrobnosti, jako jsou radarové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
+Tento článek poskytuje informace o pokrytí Azure Maps [povětrnostní služby](https://aka.ms/AzureMapsWeatherService). Azure Maps datové služby počasí mohou vracet podrobnosti, jako jsou například paprskové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
 
 Azure Maps nemá stejnou úroveň informací a přesnost pro všechny země a oblasti.
 
 Následující tabulka poskytuje informace o tom, jaký druh informací o počasí si můžete vyžádat od každé země nebo oblasti.
 
-| Písmeno | Význam |
+| Symbol | Význam |
 |--------|---------|
 |*       |Pokrývá počasí v rámci trasy, aktuální podmínky, hodinovou prognózu, předpovědi čtvrtletních dnů a rozhraní API pro denní prognózy. |
 
@@ -77,16 +77,16 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Svatý Bartoloměj                         | ✓ |   |  ✓| 
 | Svatý Kryštof a Nevis                    | ✓ |   |  ✓| 
 | Svatá Lucie                              | ✓ |   |  ✓| 
-| Svatý Martin                             | ✓ |   |  ✓| 
+| Svatý Martin (Francie)                             | ✓ |   |  ✓| 
 | Saint-Pierre a Miquelon                | ✓ |   |  ✓| 
 | Svatý Vincenc a Grenadiny         | ✓ |   |  ✓| 
 | Svatý Eustach                           | ✓ |   |  ✓|  
-| Svatý Martin                             | ✓ |   |  ✓| 
+| Svatý Martin (Nizozemsko)                             | ✓ |   |  ✓| 
 | Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ |   |  ✓| 
 | Surinam                                 | ✓ |   |  ✓| 
 | Trinidad a Tobago                      | ✓ |   |  ✓| 
 | Turks a Caicos                 | ✓ |   |  ✓| 
-| Odlehlé ostrovy USA                    | ✓ |   |  ✓| 
+| Menší odlehlé ostrovy USA                    | ✓ |   |  ✓| 
 | Americké Panenské ostrovy                      | ✓ |   |  ✓| 
 | Spojené státy                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
@@ -124,7 +124,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Ghana                       | ✓               |                              |        ✓| 
 | Guinea                      | ✓               |                              |        ✓| 
 | Guinea-Bissau               | ✓               |                              |        ✓| 
-| Írán                        | ✓               |                              |        ✓| 
+| Iran                        | ✓               |                              |        ✓| 
 | Irák                        | ✓               |                              |        ✓| 
 | Izrael                      | ✓               |                              |        ✓| 
 | Jordánsko                      | ✓               |                              |        ✓| 
@@ -154,7 +154,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Svatý Tomáš a Princův ostrov       | ✓               |                              |        ✓| 
 | Saúdská Arábie                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
-| Seychel                  | ✓               |                              |        ✓| 
+| Seychely                  | ✓               |                              |        ✓| 
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Somálsko                     | ✓               |                              |        ✓| 
 | Jihoafrická republika                | ✓               |                              |        ✓| 
@@ -183,11 +183,11 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Bangladéš                        | ✓ |   |  ✓| 
 | Bhútán                            | ✓ |   |  ✓| 
 | Britské území v Indickém oceánu    | ✓ |   |  ✓| 
-| Sultanát                            | ✓ |   |  ✓| 
+| Brunej                            | ✓ |   |  ✓| 
 | Kambodža                          | ✓ |   |  ✓| 
 | Čína                             | ✓ | ✓ |  ✓| 
 | Vánoční ostrov                  | ✓ |   |  ✓| 
-| Kokosové (Keelingovy) ostrovy           | ✓ |   |  ✓| 
+| Kokosové ostrovy           | ✓ |   |  ✓| 
 | Cookovy ostrovy                      | ✓ |   |  ✓| 
 | Fidži                              | ✓ |   |  ✓| 
 | Francouzská Polynésie                  | ✓ |   |  ✓| 
@@ -201,8 +201,8 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Kiribati                          | ✓ |   |  ✓| 
 | Korea                             | ✓ | ✓ |  ✓| 
 | Kyrgyzstán                        | ✓ |   |  ✓| 
-| Laoská                              | ✓ |   |  ✓| 
-| Macao – zvláštní správní oblast                         | ✓ |   |  ✓| 
+| Laos                              | ✓ |   |  ✓| 
+| Macao – zvláštní administrativní oblast                         | ✓ |   |  ✓| 
 | Malajsie                          | ✓ |   |  ✓| 
 | Maledivy                          | ✓ |   |  ✓| 
 | Marshallovy ostrovy                  | ✓ |   |  ✓| 
@@ -214,12 +214,12 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Nová Kaledonie                     | ✓ |   |  ✓| 
 | Nový Zéland                       | ✓ |   |  ✓| 
 | Niue                              | ✓ |   |  ✓| 
-| Ostrov Norfolk                    | ✓ |   |  ✓| 
+| Norfolk                    | ✓ |   |  ✓| 
 | Severní Korea                       | ✓ |   |  ✓| 
 | Severní Mariany          | ✓ |   |  ✓| 
 | Pákistán                          | ✓ |   |  ✓| 
 | Palau                             | ✓ |   |  ✓| 
-| Papua – Nová Guinea                  | ✓ |   |  ✓| 
+| Papua-Nová Guinea                  | ✓ |   |  ✓| 
 | Filipíny                       | ✓ |   |  ✓| 
 | Pitcairnovy ostrovy                  | ✓ |   |  ✓| 
 | Samoa                             | ✓ |   |  ✓| 
@@ -287,7 +287,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Portugalsko               | ✓ | ✓ |  ✓| 
 | Rumunsko                | ✓ | ✓ |  ✓| 
 | Rusko                 | ✓ |   |  ✓| 
-| Síť San Marino             | ✓ |   |  ✓| 
+| San Marino             | ✓ |   |  ✓| 
 | Srbsko                 | ✓ | ✓ |  ✓| 
 | Slovensko               | ✓ | ✓ |  ✓| 
 | Slovinsko               | ✓ | ✓ |  ✓| 

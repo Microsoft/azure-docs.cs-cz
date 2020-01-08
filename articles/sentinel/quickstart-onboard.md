@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: e8625b1d81db5b3ec90a177f426d05bd84bd10dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426951"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
@@ -41,12 +41,14 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
  
 ## Povolit službu Azure Sentinel<a name="enable"></a>
 
-1. Přejít do Azure Portal.
-2. Ujistěte se, že je zaškrtnuté předplatné, ve kterém je Azure Sentinel vytvořeno. 
-3. Vyhledejte Sentinel Azure. 
+1. Přihlaste se k portálu Azure. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
+
+1. Vyhledejte a vyberte **Azure Sentinel**.
+
    ![search](./media/quickstart-onboard/search-product.png)
 
-1. Klikněte na **+ Přidat**.
+1. Vyberte **Přidat**.
+
 1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 
    ![search](./media/quickstart-onboard/choose-workspace.png)
@@ -55,7 +57,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
    > - Výchozí pracovní prostory vytvořené nástrojem Azure Security Center se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.
    > - Azure Sentinel může běžet v pracovních prostorech v libovolné [oblasti GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína, německo a Azure Government. Data generovaná službou Azure Sentinel (jako jsou incidenty, záložky a pravidla výstrah, která mohou obsahovat data zákaznická z těchto pracovních prostorů), se ukládají v Západní Evropa (pro pracovní prostory umístěné v Evropě) nebo Východní USA (pro všechny pracovní prostory založené na USA a také na jakákoli jiná oblast s výjimkou Evropy).
 
-6. Klikněte na **Přidat Sentinel Azure**.
+1. Vyberte **Přidat Sentinel Azure**.
   
 
 ## <a name="connect-data-sources"></a>Připojení zdrojů dat

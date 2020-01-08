@@ -1,24 +1,24 @@
 ---
-title: Přehled spravovaného disku Azure Disk Storage pro virtuální počítače se systémem Linux
+title: Přehled Azure Disk Storage pro virtuální počítače se systémem Linux
 description: Přehled služby Azure Managed disks, které zpracovávají účty úložiště při používání virtuálních počítačů se systémem Linux
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: overview
-ms.date: 11/06/2019
+ms.date: 12/02/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7e9a5e1b1e1b0c879a1264573e7073e70a1e95fc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2b25da174399b092fe821a46b235d7a2bd14572b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355886"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Seznámení se službou Azure Managed disks
 
-Spravovaný disk Azure je virtuální pevný disk (VHD). Můžete si to představit jako fyzický disk na místním serveru, ale virtualizované. Služby Azure Managed disks se ukládají jako objekty blob stránky, které jsou v Azure náhodným objektem úložiště v/v. Zavoláme spravovaný spravovaný disk, protože se jedná o abstrakci přes objekty blob stránky, kontejnery objektů BLOB a účty Azure Storage. U spravovaných disků stačí zřídit disk a Azure se postará o zbytek.
+Azure Managed disks jsou svazky úložiště na úrovni bloku, které spravuje Azure a používají se s Azure Virtual Machines. Managed disks je jako fyzický disk na místním serveru, ale virtualizuje se. U spravovaných disků stačí, když zadáte velikost disku, typ disku a zřídíte disk. Po zřízení disku Azure zpracuje zbytek.
 
-Když vyberete použití Azure Managed disks s vašimi úlohami, Azure vytvoří a spravuje disk za vás. Dostupné typy disků jsou ultra disk, Premium Solid State Drive (SSD), SSD úrovně Standard a standardní jednotka pevného disku (HDD). Další informace o jednotlivých typech jednotlivých disků najdete v tématu [Výběr typu disku pro virtuální počítače s IaaS](disks-types.md).
+Dostupné typy disků jsou disky Ultra, Premium SSD (Solid-State Drive), Standard SSD a standardní jednotky pevného disku (HDD). Informace o jednotlivých typech jednotlivých disků najdete v tématu [Výběr typu disku pro virtuální počítače s IaaS](disks-types.md).
 
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
 

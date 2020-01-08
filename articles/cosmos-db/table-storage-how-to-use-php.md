@@ -1,5 +1,5 @@
 ---
-title: Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
+title: Použití Azure Storage Table service nebo Azure Cosmos DB rozhraní API pro tabulky z PHP
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 author: wmengmsft
 ms.author: wmeng
@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 1dbf5b02c99c8baca7c0b4f918cb392ddaf37c96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130496"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444766"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Přehled
-Tato příručka ukazuje, jak provádět běžné scénáře pomocí služby Azure Table Storage a rozhraní Table API služby Azure Cosmos DB. Ukázky jsou napsané v PHP a využívají [klientskou knihovnu služby Azure Table Storage pro PHP][download]. Popsané scénáře zahrnují **vytvoření a odstranění tabulky** a **vkládání, odstraňování a dotazování entit v tabulce**. Další informace o službě Azure Table Storage najdete v části [Další kroky](#next-steps).
+Tato příručka ukazuje, jak provádět běžné scénáře pomocí služby Azure Table Storage a rozhraní Table API služby Azure Cosmos DB. Ukázky jsou napsané v PHP a používají [knihovnu klienta PHP Azure Storage Table][download]. Popsané scénáře zahrnují **vytvoření a odstranění tabulky** a **vkládání, odstraňování a dotazování entit v tabulce**. Další informace o službě Azure Table Storage najdete v části [Další kroky](#next-steps).
 
 
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
@@ -62,7 +62,7 @@ V této příručce budete používat funkce služby Table Storage nebo Azure Co
 ## <a name="add-required-references"></a>Přidání požadovaných odkazů
 Pokud chcete používat službu Table Storage nebo rozhraní API služby Azure Cosmos DB, musíte:
 
-* Přidat odkaz na soubor automatického načítání pomocí příkazu [require_once][require_once].
+* Odkazování na soubor automatického zavaděče pomocí příkazu [require_once][require_once] a
 * Přidat odkazy na všechny třídy, které používáte.
 
 Následující příklad ukazuje vložení souboru automatického načítání a odkazu na třídu **TableRestProxy**.
@@ -113,7 +113,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
-Objekt **TableRestProxy** umožňuje vytvořit tabulku pomocí metody **createTable**. Při vytváření tabulky můžete nastavit časový limit služby Table Storage. (Další informace o časovém limitu služby Table Storage najdete v tématu [Nastavení časových limitů pro operace služby Table Storage][table-service-timeouts].)
+Objekt **TableRestProxy** umožňuje vytvořit tabulku pomocí metody **createTable**. Při vytváření tabulky můžete nastavit časový limit služby Table Storage. (Další informace o vypršení časového limitu Table service najdete v tématu [Nastavení časových limitů pro operace služby Table Service][table-service-timeouts].)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -137,10 +137,10 @@ catch(ServiceException $e){
 }
 ```
 
-Další informace o omezeních a názvech tabulek najdete v tématu [Vysvětlení datového modelu služby Table Storage][table-data-model].
+Informace o omezeních názvů tabulek najdete v tématu [Princip datového modelu služby Table Service][table-data-model].
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
-Pokud chcete do tabulky přidat entitu, vytvořte nový objekt **Entity** a předejte ho do metody **TableRestProxy->insertEntity**. Nezapomeňte, že při vytváření entity musíte zadat `PartitionKey` a `RowKey`. Jedná se o jedinečné identifikátory entity a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti entity. Systém používá `PartitionKey` k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou `PartitionKey` se ukládají na stejném uzlu. (Operace s více entitami uloženými na stejném uzlu se provádějí rychleji než s entitami uloženými na různých uzlech.) `RowKey` představuje jedinečné ID entity v rámci oddílu.
+Pokud chcete do tabulky přidat entitu, vytvořte nový objekt **Entity** a předejte ho do metody **TableRestProxy->insertEntity**. Nezapomeňte, že při vytváření entity musíte zadat `PartitionKey` a `RowKey`. Jedná se o jedinečné identifikátory entity a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti entity. Systém používá `PartitionKey` k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou `PartitionKey` se ukládají na stejném uzlu. (Operace s více entitami uloženými ve stejném uzlu mají lepší výkon než u entit uložených v různých uzlech.) `RowKey` je jedinečné ID entity v rámci oddílu.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -174,7 +174,7 @@ catch(ServiceException $e){
 }
 ```
 
-Další informace o typech a vlastnostech služby Table Storage najdete v tématu [Vysvětlení datového modelu služby Table Storage][table-data-model].
+Informace o vlastnostech a typech tabulek najdete v tématu [Principy datového modelu služby Table Service][table-data-model].
 
 Třída **TableRestProxy** nabízí dvě alternativní metody pro vkládání entit: **insertOrMergeEntity** a **insertOrReplaceEntity**. Pokud chcete tyto metody použít, vytvořte nový objekt **Entity** a předejte ho jako parametr do jedné z těchto metod. Obě metody vloží entitu, pokud ještě neexistuje. Pokud entita již existuje, metoda **insertOrMergeEntity** aktualizuje hodnoty vlastností, pokud vlastnosti již existují, a přidá nové vlastnosti, pokud ještě neexistují, zatímco metoda **insertOrReplaceEntity** zcela nahradí existující entitu. Následující příklad ukazuje použití metody **insertOrMergeEntity**. Pokud entita s `PartitionKey` s hodnotou tasksSeattle a `RowKey` s hodnotou 1 ještě neexistuje, vloží se. Pokud se však vložila dříve (jak je znázorněno v předchozím příkladu), vlastnost `DueDate` se aktualizuje a přidá se vlastnost `Status`. Vlastnosti `Description` a `Location` se také aktualizují, ale s použitím hodnot, které je prakticky ponechají beze změny. Pokud by se tyto dvě vlastnosti nepřidaly, jak je znázorněno v příkladu, ale existovaly by v cílové entitě, jejich stávající hodnoty by zůstaly beze změny.
 
@@ -248,7 +248,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Načtení všech entit v oddílu
-Dotazy na entity se vytvářejí pomocí filtrů (další informace najdete v tématu [Dotazování tabulek a entit][filters]). Pokud chcete načíst všechny entity v oddílu, použijte filtr "PartitionKey eq *název_oddílu*". Následující příklad ukazuje načtení všech entit v oddílu `tasksSeattle` předáním filtru do metody **queryEntities**.
+Dotazy na entity jsou vytvořené pomocí filtrů (Další informace najdete v tématu [dotazování tabulek a entit][filters]). Pokud chcete načíst všechny entity v oddílu, použijte filtr "PartitionKey eq *název_oddílu*". Následující příklad ukazuje načtení všech entit v oddílu `tasksSeattle` předáním filtru do metody **queryEntities**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -281,7 +281,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Načtení podmnožiny entit v oddílu
-Stejným způsobem, jako se použil v předchozím příkladu, je možné načíst jakoukoli podmnožinu entit v oddílu. Podmnožinu načtených entit určuje použitý filtr (další informace najdete v tématu [Dotazování tabulek a entit][filters]). Následující příklad ukazuje použití filtru k načtení všech entit s konkrétní hodnotou `Location` a hodnotou `DueDate` nižší než zadané datum.
+Stejným způsobem, jako se použil v předchozím příkladu, je možné načíst jakoukoli podmnožinu entit v oddílu. Podmnožina entit, které načtete, je určena použitým filtrem (Další informace najdete v tématu [dotazování tabulek a entit][filters]). Následující příklad ukazuje, jak použít filtr k načtení všech entit s konkrétním `Location` a `DueDate` menší než zadané datum.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -472,7 +472,7 @@ catch(ServiceException $e){
 }
 ```
 
-Další informace o dávkování operací s tabulkou najdete v tématu [Provádění transakcí skupin entit][entity-group-transactions].
+Další informace o dávkování operací tabulek najdete v tématu [provádění transakcí skupin entit][entity-group-transactions].
 
 ## <a name="delete-a-table"></a>Odstranění tabulky
 A konečně, pokud chcete odstranit tabulku, předejte název tabulky do metody **TableRestProxy->deleteTable**.
@@ -500,7 +500,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznámili jste se se základy služby Azure Table Storage a Azure Cosmos DB. Další informace najdete na následujících odkazech.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

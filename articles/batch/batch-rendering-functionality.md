@@ -1,18 +1,18 @@
 ---
 title: Možnosti vykreslování – Azure Batch
-description: Konkrétní možnosti vykreslování v Azure Batch
+description: Pro spouštění úloh vykreslování a aplikací se používají standardní Azure Batch možnosti. Batch zahrnuje konkrétní funkce pro podporu vykreslování úloh.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350043"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449712"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Možnosti vykreslování Azure Batch
 
@@ -30,10 +30,10 @@ K dispozici je bitová kopie systému Windows 2016 a bitová kopie CentOS.  V [A
 
 Příklad konfigurace fondu najdete v [kurzu vykreslování Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Azure Portal a Batch Explorer poskytují nástroje grafického uživatelského rozhraní pro výběr image virtuálního počítače při vytváření fondu.  Pokud používáte rozhraní API služby Batch, zadejte pro [element imagereference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) při vytváření fondu následující hodnoty vlastností:
 
-| Vydavatel | Nabídka | Skladová jednotka (SKU) | Version |
+| Vydavatel | Nabídka | SKU | Verze |
 |---------|---------|---------|--------|
-| dávka | rendering-centos73 | vykreslování | latest |
-| dávka | rendering-windows2016 | vykreslování | latest |
+| batch | rendering-centos73 | vykreslení | latest |
+| batch | rendering-windows2016 | vykreslení | latest |
 
 Další možnosti jsou k dispozici, pokud jsou na virtuálních počítačích fondu požadovány další aplikace:
 
@@ -48,15 +48,15 @@ Další možnosti jsou k dispozici, pokud jsou na virtuálních počítačích f
 
 V konfiguraci fondu je nutné zadat aplikace, které budou použity, a mít licenční poplatek.
 
-* Zadejte vlastnost při [vytváření fondu.](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) `applicationLicenses`  V poli řetězců lze zadat následující hodnoty: "Vray", "Arnold", "3dsmax", "Maya".
+* Při [vytváření fondu](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)zadejte vlastnost `applicationLicenses`.  V poli řetězců lze zadat následující hodnoty: "Vray", "Arnold", "3dsmax", "Maya".
 * Když zadáte jednu nebo více aplikací, náklady na tyto aplikace se přidají do nákladů na virtuální počítače.  Ceny za aplikace jsou uvedené na [stránce s cenami Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 > [!NOTE]
-> Pokud se místo toho připojíte k licenčnímu serveru, abyste mohli používat aplikace pro vykreslování, `applicationLicenses` nezadávejte vlastnost.
+> Pokud se místo toho připojíte k licenčnímu serveru, abyste mohli používat aplikace pro vykreslování, nezadávejte vlastnost `applicationLicenses`.
 
 Pomocí Azure Portal nebo Batch Explorer můžete vybrat aplikace a zobrazit ceny aplikací.
 
-Pokud dojde k pokusu o použití aplikace, ale aplikace nebyla zadána ve `applicationLicenses` vlastnosti konfigurace fondu nebo nedorazila k licenčnímu serveru, spuštění aplikace se nezdaří s chybou licencování a nenulovým ukončovacím kódem.
+Pokud se pokusíte použít aplikaci, ale aplikace nebyla zadána ve vlastnosti `applicationLicenses` konfigurace fondu nebo nedorazila k licenčnímu serveru, spuštění aplikace se nezdaří s chybou licencování a nenulovým ukončovacím kódem.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Proměnné prostředí pro předem nainstalované aplikace
 

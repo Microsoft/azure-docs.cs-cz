@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/09/2019
-ms.openlocfilehash: e8029b957fedc07ba571b61f1211c020b706bea3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f1eb8644faf6693a2a33ded489830cf4106df222
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444402"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database spravované instance pomocí Azure Data Factory
 
@@ -44,7 +44,7 @@ Konkrétně tato Azure SQL Database konektor spravované instance podporuje:
 >[!NOTE]
 >Tento konektor aktuálně nepodporuje objekt služby a ověřování spravované identity. Chcete-li se vyhnout, vyberte konektor Azure SQL Database a ručně zadejte server vaší spravované instance.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete získat přístup k [veřejnému koncovému bodu](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)spravované instance Azure SQL Database, můžete použít Azure Data Factory spravované prostředí Azure Integration runtime. Ujistěte se, že jste povolili veřejný koncový bod a zároveň povolili provoz veřejného koncového bodu ve skupině zabezpečení sítě, aby se Azure Data Factory mohl připojit k vaší databázi. Další informace najdete v [těchto pokynech](../sql-database/sql-database-managed-instance-public-endpoint-configure.md).
 
@@ -63,7 +63,7 @@ Pro propojenou službu Azure SQL Database spravované instance jsou podporovány
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na **AzureSqlMI**. | Ano |
-| connectionString |Tato vlastnost určuje informace **připojovacího řetězce** potřebné pro připojení ke spravované instanci pomocí ověřování SQL. Další informace najdete v následujících příkladech. <br/>Výchozí port je 1433. Pokud používáte Azure SQL Database spravovanou instanci s veřejným koncovým bodem, explicitně zadejte port 3342.<br>Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| connectionString |Tato vlastnost určuje informace **připojovacího řetězce** potřebné pro připojení ke spravované instanci pomocí ověřování SQL. Další informace najdete v následujících příkladech. <br/>Výchozí port je 1433. Pokud používáte Azure SQL Database spravovanou instanci s veřejným koncovým bodem, explicitně zadejte port 3342.<br> Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD s instančním objektem |
 | tenant | Zadejte informace o tenantovi, jako je název domény nebo ID tenanta, pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano, pokud používáte ověřování Azure AD s instančním objektem |
@@ -85,10 +85,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
-            }
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -106,10 +103,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
-            },
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -167,10 +161,7 @@ Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založ
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
-            },
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -222,10 +213,7 @@ Pokud chcete použít spravované ověřování identity, postupujte podle těch
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
-            }
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

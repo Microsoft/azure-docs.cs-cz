@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření účtu Batch – Předplatné uživatele | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření účtu Batch v režimu předplatného uživatele
+title: Ukázkový skript Azure CLI – vytvoření účtu Batch – předplatné uživatele
+description: Tento skript vytvoří účet Azure Batch v režimu předplatného uživatele. Tento účet přiděluje výpočetní uzly do předplatného.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: a22bd7a2ab4e3a9c0d56aa9f4a2137881b6216af
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 55429e0aafe978cfa6861d73b132ebcee26de493
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449696"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>Příklad rozhraní příkazového řádku: Vytvoření účtu Batch v režimu předplatného uživatele
 
@@ -55,6 +55,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).

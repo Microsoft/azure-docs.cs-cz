@@ -3,22 +3,22 @@ title: Nasazení Azure Policy k delegovaným předplatným ve velkém měřítku
 description: Přečtěte si, jak vám Správa delegovaných prostředků v Azure umožňuje nasazení definice zásady a přiřazení zásad napříč více klienty.
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456838"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Nasazení Azure Policy k delegovaným předplatným ve velkém měřítku
 
 Jako poskytovatel služeb můžete mít k dispozici více zákazníků pro správu delegovaných prostředků Azure. [Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty najednou, což usnadňuje úlohy správy.
 
-V tomto tématu se dozvíte, jak použít [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) k nasazení definice zásady a přiřazení zásad napříč více klienty pomocí příkazů PowerShellu. V tomto příkladu definice zásad zajišťuje zabezpečení účtů úložiště tím, že povoluje jenom přenosy HTTPS.
+V tomto tématu se dozvíte, jak použít [Azure Policy](../../governance/policy/index.yml) k nasazení definice zásady a přiřazení zásad napříč více klienty pomocí příkazů PowerShellu. V tomto příkladu definice zásad zajišťuje zabezpečení účtů úložiště tím, že povoluje jenom přenosy HTTPS.
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Použití Azure Resource graphu k dotazování napříč klienty zákazníka
 
-Pomocí [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/) se můžete dotazovat napříč všemi předplatnými v klientech zákazníků, které spravujete. V tomto příkladu zjistíme všechny účty úložiště v těchto předplatných, které aktuálně nevyžadují provoz HTTPS.  
+Pomocí [Azure Resource graphu](../../governance/resource-graph/index.yml) se můžete dotazovat napříč všemi předplatnými v klientech zákazníků, které spravujete. V tomto příkladu zjistíme všechny účty úložiště v těchto předplatných, které aktuálně nevyžadují provoz HTTPS.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
+- Přečtěte si o [Azure Policy](../../governance/policy/index.yml).
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).

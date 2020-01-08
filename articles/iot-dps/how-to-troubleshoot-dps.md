@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974815"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646468"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Řešení potíží s Azure IoT Hub Device Provisioning Service
 
@@ -81,5 +81,5 @@ Pomocí této tabulky můžete pochopit a řešit běžné chyby.
 | 401 | Autorizační token se nedá ověřit. například vypršela platnost nebo se nevztahuje na identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | 401 Neautorizováno|
 | 404 | Instance služby Device Provisioning nebo prostředek (například registrace) neexistuje. |404 – Nenalezeno |
 | 412 | Značka ETag v žádosti se neshoduje s ETagm existujícího prostředku, jak na RFC7232. | Předběžná podmínka 412 se nezdařila |
-| 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 příliš mnoho požadavků |
+| 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 příliš mnoho požadavků |
 | 500 | Došlo k vnitřní chybě. | 500 – Interní chyba serveru|

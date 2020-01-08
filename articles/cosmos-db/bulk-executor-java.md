@@ -1,6 +1,6 @@
 ---
-title: Použití knihovny Java prováděcí modul hromadného hromadně importovat a aktualizovat operace ve službě Azure Cosmos DB
-description: Hromadný import a aktualizace pomocí hromadné prováděcí modul Java knihovna dokumenty Azure Cosmos DB.
+title: Použití hromadného vykonavatele Java Library v Azure Cosmos DB k provádění hromadných operací importu a aktualizace
+description: Hromadný import a aktualizace Azure Cosmos DBch dokumentů pomocí hromadné prováděcí knihovny Java
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445708"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
 
@@ -26,7 +26,7 @@ V současné době je knihovna hromadných prováděcích modulů podporovaná j
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.  
 
-* Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) u `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
+* Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s koncovým bodem `https://localhost:8081`. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
 
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
   - Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.  
@@ -118,7 +118,7 @@ Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate
    |int getNumberOfDocumentsImported()  |   Celkový počet dokumentů, které byly úspěšně naimportovány z dokumentů zadaný pro hromadného importu volání rozhraní API.      |
    |dvojité getTotalRequestUnitsConsumed()   |  Jednotky celkový počet žádostí (RU) využívaný hromadného importu volání rozhraní API.       |
    |Doba trvání getTotalTimeTaken()   |    Celková doba, za kterou hromadný import volání rozhraní API k dokončení provádění.     |
-   |Vypsat\<výjimku > GetErrors () |  Získá seznam chyb, pokud některé dokumenty ze služby batch, zadaný do hromadného importu se nepodařilo získat vložit volání rozhraní API.       |
+   |\<vypsat výjimku > GetErrors () |  Získá seznam chyb, pokud některé dokumenty ze služby batch, zadaný do hromadného importu se nepodařilo získat vložit volání rozhraní API.       |
    |Seznam\<objektů > getBadInputDocuments ()  |    Seznam chybný formát dokumenty, které nebyly úspěšně naimportovány hromadně importovat volání rozhraní API. Uživatel musí opravit vrácených dokumentů a zkuste import zopakovat. Dokumenty ve formátu chybný obsahovat dokumenty, jejichž ID hodnota není řetězec (datový typ null nebo jakékoli jiné se považuje za neplatný).     |
 
 5. Až budete mít hromadného importu aplikace připravené, sestavení pomocí příkazu 'mvn čisté balíčku' nástroj příkazového řádku ze zdroje. Tento příkaz vygeneruje v cílové složce soubor jar:  
@@ -182,7 +182,7 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
    |int getNumberOfDocumentsUpdated()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány mimo dokumenty zadaný pro hromadné aktualizace volání rozhraní API.      |
    |dvojité getTotalRequestUnitsConsumed() |  Jednotky celkový počet žádostí (RU) využívaný hromadné aktualizace volání rozhraní API.       |
    |Doba trvání getTotalTimeTaken()  |   Celková doba, za kterou hromadného aktualizujte volání rozhraní API k dokončení provádění.      |
-   |Vypsat\<výjimku > GetErrors ()   |    Získá seznam chyb, pokud hromadné aktualizace volání rozhraní API se nepodařilo získat vloží některé dokumenty ze služby batch.      |
+   |\<vypsat výjimku > GetErrors ()   |    Získá seznam chyb, pokud hromadné aktualizace volání rozhraní API se nepodařilo získat vloží některé dokumenty ze služby batch.      |
 
 3. Až budete mít hromadné aktualizace aplikace připravené, sestavení pomocí příkazu 'mvn čisté balíčku' nástroj příkazového řádku ze zdroje. Tento příkaz vygeneruje v cílové složce soubor jar:  
 
@@ -211,7 +211,7 @@ Zvažte následující body pro zajištění lepšího výkonu při použití hr
 * Protože spuštění operace rozhraní API jednou hromadnou spotřebovává velké blok klientského počítače procesoru a sítě vstupně-výstupních operací. To se stane, vytvořením více úkolů interně, vyhněte se vytváření podřízeného procesu více souběžných úloh v rámci procesu aplikace, které volá každé rozhraní API provádění hromadné operace. Pokud volání jednou hromadnou operaci rozhraní API běžící na jeden virtuální počítač nemůže využívat propustnosti celého kontejneru (Pokud se váš kontejner propustnost > 1 milion RU/s), je vhodnější k vytvoření samostatných virtuálních počítačů současně provést hromadné volání operace rozhraní API.
 
     
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o podrobnosti balíčku maven a knihovny Java prováděcí modul hromadného poznámky k verzi najdete v tématu[hromadně podrobnosti o sadě SDK prováděcí modul](sql-api-sdk-bulk-executor-java.md).
 
 

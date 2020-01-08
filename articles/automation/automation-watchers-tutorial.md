@@ -2,18 +2,15 @@
 title: Vytvoření úlohy sledovacího procesu v účtu Azure Automation
 description: Naučte se, jak vytvořit úlohu sledovacího procesu v účtu Azure Automation ke sledování nových souborů vytvořených ve složce.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5dc6145940883ff6f4446ad67c399cdf4931d38e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419744"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Vytvoření úloh sledovacího procesu Azure Automation ke sledování změn souborů v místním počítači
 
@@ -54,7 +51,7 @@ Tento Runbook můžete také naimportovat do účtu Automation z portálu pomoc�
 1. Otevřete svůj účet Automation a klikněte na stránku sady **Runbook** .
 2. Klikněte na tlačítko **Procházet galerii** .
 3. Vyhledejte "Runbook sledovacího procesu", vyberte **Runbook sledovacího procesu, který vyhledá nové soubory v adresáři** a vyberte **importovat**.
-  ![Import Runbooku Automation z uživatelského rozhraní](media/automation-watchers-tutorial/importsourcewatcher.png)
+  ![importu sady Automation Runbook z uživatelského rozhraní](media/automation-watchers-tutorial/importsourcewatcher.png)
 1. Dejte Runbooku název a popis a vyberte **OK** , aby se Runbook naimportoval do svého účtu Automation.
 1. Vyberte **Upravit** a pak klikněte na **publikovat**. Po zobrazení výzvy vyberte **Ano** pro publikování Runbooku.
 
@@ -81,7 +78,7 @@ Tento Runbook můžete také naimportovat do účtu Automation z portálu pomoc�
 1. Přejděte do svého účtu Automation a v kategorii **Automatizace procesu** vyberte **Runbooky** .
 1. Klikněte na tlačítko **Procházet galerii** .
 1. Vyhledejte "akce sledovacího procesu" a vyberte **akci sledovacího procesu, která zpracovává události aktivované sadou sledovacích procesů,** a vyberte **importovat**.
-  ![Importovat Runbook akce z uživatelského rozhraní](media/automation-watchers-tutorial/importsourceaction.png)
+  ![importovat Runbook akce z uživatelského rozhraní](media/automation-watchers-tutorial/importsourceaction.png)
 1. Dejte Runbooku název a popis a vyberte **OK** , aby se Runbook naimportoval do svého účtu Automation.
 1. Vyberte **Upravit** a pak klikněte na **publikovat**. Po zobrazení výzvy vyberte **Ano** pro publikování Runbooku.
 
@@ -99,7 +96,7 @@ Tento Runbook můžete také naimportovat do účtu Automation z portálu pomoc�
 
    * **FOLDERPATH** – složka hybridního pracovního procesu, kde se vytvoří nové soubory. d:\examplefiles
    * **Rozšíření** – ponechte prázdné pro zpracování všech přípon souborů.
-   * Rekurze – ponechte tuto hodnotu jako výchozí.
+   * **REkurze** – ponechte tuto hodnotu jako výchozí.
    * **Nastavení spuštění** – vyberte hybridní pracovní proces.
 
 1. Klikněte na OK a pak vyberte, abyste se vrátili na stránku sledovacího procesu.
@@ -154,7 +151,7 @@ Message is Process new file...
 Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

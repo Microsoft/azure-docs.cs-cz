@@ -1,43 +1,34 @@
 ---
-title: Správa stavu Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak získat přístup, uložení a odstranění stavu Service Fabric Reliable Actors.
-services: service-fabric
-documentationcenter: .net
+title: Správa stavu Azure Service Fabric
+description: Přečtěte si informace o přístupu, uložení a odebrání stavu pro Azure Service Fabric Reliable actor a důležitých informací při návrhu aplikace.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 7c10d00916ef65767c98616c7337bfa444c339a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725393"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645629"
 ---
-# <a name="access-save-and-remove-reliable-actors-state"></a>Přístup, uložení a odstranění stavu Reliable Actors
-[Reliable Actors](service-fabric-reliable-actors-introduction.md) jsou objekty s jedním vláknem, které lze zapouzdřit logiky a stavových a spolehlivě zachovat stav. Každá instance objektu actor má vlastní [správce stavu](service-fabric-reliable-actors-state-management.md): slovníku jako datová struktura, která je spolehlivě uchová dvojic klíč/hodnota. Správce stavu představuje obálku kolem zprostředkovatele stavu. Můžete ho použít k ukládání dat bez ohledu na to, které [nastavení trvalosti](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) se používá.
+# <a name="access-save-and-remove-reliable-actors-state"></a>Přístup, uložení a odebrání stavu Reliable Actors
+[Reliable Actors](service-fabric-reliable-actors-introduction.md) jsou objekty s jedním vláknem, které mohou spolehlivě zapouzdřovat logiku i stav a udržovat stav spolehlivě. Každá instance objektu actor má svého vlastního [správce stavu](service-fabric-reliable-actors-state-management.md): datová struktura, která spolehlivě ukládá páry klíč/hodnota. Správce stavu je Obálka kolem poskytovatele stavu. Můžete ho použít k ukládání dat bez ohledu na to, jaké [nastavení trvalosti](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) se používá.
 
-Správce stavu klíče musejí být řetězce. Hodnoty jsou obecné a může být libovolný typ, včetně vlastních typů. Hodnoty uložené v správce stavu musí být serializovatelný kontraktu dat, protože může přenést přes síť do jiných uzlů během replikace a může být zapsaný na disk, v závislosti na nastavení trvalého stavu prvek "actor".
+Klíče správce stavu musí být řetězce. Hodnoty jsou obecné a můžou být libovolného typu, včetně vlastních typů. Hodnoty uložené ve Správci stavů musí být serializovatelné kontrakty dat, protože můžou být přenášeny přes síť do jiných uzlů během replikace a můžou být zapsané na disk v závislosti na nastavení trvalosti stavu objektu actor.
 
-Správce stavu uvádí běžné metody slovníku pro správu stavu, podobné těm v spolehlivého slovníku.
+Správce stavů zveřejňuje běžné Slovníkové metody pro správu stavu, podobně jako u těch, které se nacházejí ve spolehlivém slovníku.
 
 Informace najdete v tématu [osvědčené postupy při správě stavu objektu actor](service-fabric-reliable-actors-state-management.md#best-practices).
 
 ## <a name="access-state"></a>Stav přístupu
-Stav je přístupný prostřednictvím Správce stavu podle klíče. Metody správce stavu jsou všechny asynchronní, protože při actors trvalé stavu se můžou vyžadovat vstup/výstup disku. Při prvním přístupu jsou uložená v mezipaměti stavu objektů. Opakujte přístup operace přístup k objektům přímo z paměti a synchronně vrátit, aniž by došlo k vstupně-výstupních operací disku nebo asynchronní přepínání kontextu režie. Stav objektu se odebere z mezipaměti v následujících případech:
+Stav je k dispozici prostřednictvím Správce stavu pomocí klíče. Metody správce stavu jsou všechny asynchronní, protože v případě trvalého stavu objektů actor můžou vyžadovat vstupně-výstupní operace disku. Při prvním přístupu jsou objekty stavu ukládány do mezipaměti v paměti. Opakujte přístup k objektům přístup k objektům přímo z paměti a vraťte se synchronně, aniž by došlo k vstupně-výstupním operacím disku nebo asynchronnímu přepínání kontextu. Stavový objekt je odstraněn z mezipaměti v následujících případech:
 
-* Metoda objektu actor vyvolá neošetřenou výjimku po načte objekt z správce stavu.
-* Prvek "actor" je znovu aktivovat, po právě deaktivována nebo po selhání.
-* Poskytovatel stavu stránky stavu na disk. Toto chování závisí na implementaci zprostředkovatele stavu. Výchozí zprostředkovatel stavu pro `Persisted` nastavení je toto chování.
+* Metoda actor vyvolá neošetřenou výjimku poté, co načte objekt ze Správce stavu.
+* Objekt actor se znovu aktivuje buď po deaktivaci, nebo po selhání.
+* Stav stránek poskytovatele stavu na disk. Toto chování závisí na implementaci zprostředkovatele stavu. Toto chování má výchozí zprostředkovatel stavu pro nastavení `Persisted`.
 
-Stav můžete načíst pomocí standardního *získat* operace, která vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), pokud záznam neexistuje pro klíč:
+Stav můžete načíst pomocí standardní operace *Get* , která vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), pokud pro tento klíč neexistuje položka:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -70,7 +61,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Můžete také načíst stav pomocí *TryGet* metodu, která nebude vyvolána výjimka, pokud záznam neexistuje pro klíč:
+Stav lze také načíst pomocí metody *TryGet* , která nevyvolává, pokud položka neexistuje pro klíč:
 
 ```csharp
 class MyActor : Actor, IMyActor
@@ -113,9 +104,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ## <a name="save-state"></a>Uložit stav
-Metody načtení stavu správce vrátí odkaz na objekt v místní paměti. Úprava tento objekt v místní paměti samostatně nezpůsobí, je možné trvale uložit. Pokud objekt je načten ze Správce stavu a upravit, musíte znovu vloženy do správce stavů trvale uložit.
+Metody načítání správce stavu vracejí odkaz na objekt v místní paměti. Změna tohoto objektu pouze v místní paměti nezpůsobí uložení trvale. Když je objekt načten z správce stavu a upraven, musí být znovu vložen do Správce stavu, aby jej bylo možné uložit trvale.
 
-Stav můžete vložit pomocí Nepodmíněný *nastavit*, což je ekvivalent `dictionary["key"] = value` syntaxi:
+Můžete vložit stav pomocí nepodmíněné *sady*, která je ekvivalentem `dictionary["key"] = value` syntaxe:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -148,7 +139,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Stav můžete přidat pomocí *přidat* metody. Tato metoda vyvolá `InvalidOperationException`(C#) nebo `IllegalStateException`(Java) při pokusu o přidání klíče, který již existuje.
+Můžete přidat stav pomocí metody *Add* . Tato metoda vyvolá `InvalidOperationException`(C#) nebo `IllegalStateException`(Java), když se pokusí přidat klíč, který již existuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -181,7 +172,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Můžete také přidat stav pomocí *TryAdd* metody. Tato metoda nebude vyvolána výjimka při pokusu o přidání klíče, který již existuje.
+Můžete také přidat stav pomocí metody *TryAdd* . Tato metoda nevyvolá, když se pokusí přidat klíč, který už existuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -224,9 +215,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Na konci metody objektu actor uloží správce stavu žádné hodnoty, které byly přidány nebo změněny podle operace insert nebo update. "save" může obsahovat uchování na disk a replikace v závislosti na nastavení. Hodnoty, které nebyly upraveny nejsou zachována nebo replikovat. Pokud byly změněny žádné hodnoty, ukládání operace nemá žádný účinek. Pokud uložíte selže, se zahodí změny stavu a opětovném načtení nástroje původního stavu.
+Na konci metody objektu actor správce stavu automaticky uloží všechny hodnoty, které byly přidány nebo změněny operací INSERT nebo Update. Možnost Save (Uložit) může zahrnovat zachování na disk a replikaci v závislosti na použitém nastavení. Hodnoty, které se nezměnily, nejsou trvalé ani replikované. Pokud se nezměnily žádné hodnoty, operace uložení neprovede žádnou akci. Pokud se ukládání nepovede, změněný stav se zahodí a původní stav se znovu načte.
 
-Můžete také uložit stav ručně voláním `SaveStateAsync` metodu v základní třídě objektu actor:
+Stav lze také uložit ručně voláním metody `SaveStateAsync` na bázi objektu actor:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -247,8 +238,8 @@ interface MyActor {
 }
 ```
 
-## <a name="remove-state"></a>Odstranit stav
-Můžete odebrat stavu trvale ze Správce stavu prvek "actor" voláním *odebrat* metody. Tato metoda vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java) při pokusu o odebrání klíče, který neexistuje.
+## <a name="remove-state"></a>Odebrat stav
+Stav můžete trvale odebrat ze Správce stavu objektu actor voláním metody *Remove* . Tato metoda vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), když se pokusí odebrat klíč, který neexistuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -281,7 +272,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Můžete také odebrat stavu trvale pomocí *TryRemove* metody. Tato metoda nebude vyvolána výjimka při pokusu o odebrání klíče, který neexistuje.
+Stav lze také trvale odebrat pomocí metody *TryRemove* . Tato metoda nevyvolá, když se pokusí odebrat klíč, který neexistuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -324,8 +315,8 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Stav, který je uložen v Reliable Actors musí serializovat. před jeho zapsané na disk a replikovaný pro zajištění vysoké dostupnosti. Další informace o [serializaci typu Actor](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Stav, který je uložen v Reliable Actors musí být serializován před zapsáním na disk a replikován pro zajištění vysoké dostupnosti. Přečtěte si další informace o [serializaci typu objektu actor](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
-V dalším kroku Další informace o [objektu Actor Diagnostika a sledování výkonu](service-fabric-reliable-actors-diagnostics.md).
+V dalším kroku se dozvíte další informace o [diagnostice objektu actor a monitorování výkonu](service-fabric-reliable-actors-diagnostics.md).

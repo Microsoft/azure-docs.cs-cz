@@ -3,12 +3,12 @@ title: Doporučené postupy zabezpečení
 description: Při použití správy delegovaných prostředků Azure je důležité vzít v úvahu zabezpečení a řízení přístupu.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 18decc337722c1dc64fac94679d783dd55915ee6
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456883"
 ---
 # <a name="recommended-security-practices"></a>Doporučené postupy zabezpečení
 
@@ -28,9 +28,9 @@ Při vytváření struktury oprávnění nezapomeňte postupovat podle principu 
 
 Například můžete chtít použít strukturu, jako je tato:
 
-|Název skupiny  |Typ  |principalId  |Definice role  |ID definice role  |
+|název skupiny  |Typ  |principalId  |Definice role  |ID definice role  |
 |---------|---------|---------|---------|---------|
-|Architekty     |Uživatelská skupina         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Architekti     |Uživatelská skupina         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Posouzení     |Uživatelská skupina         |\<principalId\>         |Čtenář         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |Specialisty virtuálních počítačů     |Uživatelská skupina         |\<principalId\>         |Přispěvatel virtuálních počítačů         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
 |Automation     |Hlavní název služby (SPN)         |\<principalId\>         |Přispěvatel         |b24988ac-6180-42a0-ab88-20f7382dd24c  |

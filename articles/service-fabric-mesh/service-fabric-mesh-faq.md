@@ -1,20 +1,15 @@
 ---
-title: Běžné otázky pro síť Azure Service Fabric Microsoft Docs
+title: Běžné otázky pro síť Azure Service Fabric
 description: Seznamte se s nejčastějšími dotazy a odpověďmi na Azure Service Fabric sítě.
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461996"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy týkající se Service Fabric sítě
 
@@ -47,9 +42,9 @@ Ano. Kvóty pro každé předplatné jsou:
 
 V současné době jsme omezili životnost aplikace na dva dny. Je to kvůli maximalizaci používání volných jader přidělených ve verzi Preview. V důsledku toho je povoleno spouštět dané nasazení nepřetržitě po dobu 48 hodin, po uplynutí této doby bude ukončena.
 
-Pokud se to zobrazí, můžete ověřit, že se systém ukončí, spuštěním příkazu `az mesh app show` v rozhraní příkazového řádku Azure CLI. Zkontrolujte, jestli vrací `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."`. 
+Pokud se to zobrazí, můžete ověřit, že se systém ukončí, spuštěním příkazu `az mesh app show` v rozhraní příkazového řádku Azure CLI. Zkontrolujte, jestli vrací `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Například: 
+Příklad: 
 
 ```cli
 ~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -86,7 +81,6 @@ Pokud vyvíjíte na počítači se systémem Windows Update Creators Update (ver
 Pokud vyvíjíte na počítači s Windows 10. dubna 2018 Update (verze 1803), můžete použít image Windows verze 1709 nebo Windows verze 1803 Docker.
 
 K nasazení služeb je možné použít následující image operačního systému kontejnerů:
-
 - Windows – windowsservercore a nanoserver
     - Windows Server 1709
     - Windows Server 1803
@@ -110,7 +104,7 @@ Odchozí dotazy DNS z kontejneru do služby Service Fabric DNS za určitých oko
 
 - Použijte Windows Update Creators Update (verze 1709) nebo vyšší jako základní image kontejneru.
 - Pokud název služby samotný nefunguje, zkuste plně kvalifikovaný název: ServiceName. ApplicationName.
-- V souboru Docker pro vaši službu přidejte `EXPOSE <port>`, kde port je port, na kterém službu zveřejňujete. Například:
+- V souboru Docker pro vaši službu přidejte `EXPOSE <port>`, kde port je port, na kterém službu zveřejňujete. Příklad:
 
 ```Dockerfile
 EXPOSE 80
@@ -130,7 +124,7 @@ Další známé problémy se službou DNS při spuštění Service Fabric vývoj
 
 NAT sítě ServiceFabric může zmizet při používání aplikace na vašem místním počítači. Chcete-li diagnostikovat, zda k tomu došlo, spusťte z příkazového řádku následující příkaz:
 
-`docker network ls` a Všimněte si, zda je uvedena `servicefabric_nat`.  Pokud ne, spusťte následující příkaz: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls` a Všimněte si, zda jsou uvedeny `servicefabric_nat`.  Pokud ne, spusťte následující příkaz: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Tím se problém vyřeší i v případě, že je aplikace už nasazená místně a ve stavu není v pořádku.
 
@@ -138,7 +132,7 @@ Tím se problém vyřeší i v případě, že je aplikace už nasazená místn�
 
 Můžete narazit na dostupnost procesoru a omezení, které jsou ve všech aplikacích vyřešené. Pro zmírnění:
 - Vytvořte cluster s pěti uzly.
-- Snižte využití CPU ve službách napříč nasazenou aplikací. Například v souboru Service. yaml vaší služby změňte `cpu: 1.0` na `cpu: 0.5`.
+- Snižte využití CPU ve službách napříč nasazenou aplikací. Například v souboru Service. yaml vaší služby změňte `cpu: 1.0` na `cpu: 0.5`
 
 Do clusteru s jedním uzlem nelze nasadit více aplikací. Pro zmírnění:
 - Při nasazování více aplikací do místního clusteru použijte cluster s pěti uzly.

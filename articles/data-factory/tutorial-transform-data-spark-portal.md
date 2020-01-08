@@ -10,12 +10,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 34c2a27d047888d1e763a0a99461e7eb4b9fb203
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ddc5032da415ebee9920556d3168d30bdae4a158
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925101"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439214"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu vytvoříte pomocí webu Azure Portal kanál služby Azure Data Factory. Tento kanál transformuje data pomocí aktivity Sparku a propojené služby Azure HDInsight na vyžádáni. 
@@ -30,7 +30,7 @@ V tomto kurzu provedete následující kroky:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -99,13 +99,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
-   Některé kroky v tomto rychlém startu vychází z předpokladu, že pro skupinu prostředků použijete název **ADFTutorialResourceGroup**. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-1. Jako **Verzi** vyberte **V2**.
+   Některé kroky v tomto rychlém startu vychází z předpokladu, že pro skupinu prostředků použijete název **ADFTutorialResourceGroup**. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
+1. V poli **Verze** vyberte **V2**.
 1. Jako **Umístění** vyberte umístění datové továrny. 
 
    Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 1. Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
 
@@ -230,7 +230,7 @@ Ověřte, že se ve složce spark/otuputfiles/wordcount kontejneru adftutorial v
 
 ![Umístění výstupního souboru](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-Tento soubor by měl obsahovat všechna slova ze vstupního textového souboru a počet výskytů těchto slov v souboru. Například: 
+Tento soubor by měl obsahovat všechna slova ze vstupního textového souboru a počet výskytů těchto slov v souboru. Příklad: 
 
 ```
 (u'This', 1)

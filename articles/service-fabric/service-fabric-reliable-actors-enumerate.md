@@ -1,28 +1,19 @@
 ---
-title: Zobrazení výčtu objektů actor na platformě Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit výčet Reliable Actors a jejich metadat.
-services: service-fabric
-documentationcenter: .net
+title: Zobrazení výčtu objektů actor v Azure Service Fabric
+description: Seznamte se s výčtem Reliable Actors a jejich metadaty v aplikaci Azure Service Fabric pomocí příkladů.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 04e2c32b18e6897d6443fea68587aba9ae294be5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729133"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645595"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Zobrazení výčtu Service Fabric Reliable Actors
-Služby Reliable Actors umožňuje klientovi výčet metadata o objektů actor, které je hostitelem služby. Protože je služba objektu actor do dělené stavové služby, výčet se provádí na oddíl. Protože každý oddíl může obsahovat mnoho objektů actor, výčet se vrátí jako sadu stránkových výsledků. Na stránkách se odkazuje přes, dokud se číst všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech aktivních objektů actor v jednom oddílu služby objektu actor:
+Služba Reliable Actors umožňuje klientovi vytvořit výčet metadat objektů Actor, které služba hostuje. Vzhledem k tomu, že je služba objektu actor rozdělená stavová služba, je výčet proveden na oddíl. Vzhledem k tomu, že každý oddíl může obsahovat mnoho objektů Actor, je výčet vrácen jako sada stránkovaných výsledků. Na stránky se přeskočí, dokud nebudou načteny všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech aktivních objektů actor v jednom oddílu služby objektu actor:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -67,10 +58,10 @@ while (continuationToken != null);
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Správa stavu objektu actor](service-fabric-reliable-actors-state-management.md)
-* [Životní cyklus a uvolňování paměti kolekce objektu actor](service-fabric-reliable-actors-lifecycle.md)
-* [Referenční dokumentace rozhraní API objektů actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Životní cyklus objektu actor a uvolňování paměti](service-fabric-reliable-actors-lifecycle.md)
+* [Referenční dokumentace k rozhraní actor API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Vzorový kód .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

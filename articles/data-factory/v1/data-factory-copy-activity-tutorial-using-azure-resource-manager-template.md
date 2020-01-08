@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a4f1c2d128e41e13a6e57732e8f97ff4c250d0a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dd559a8dd0bd59b50f4a3fa663f57874d948bf71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438858"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Kurz: Použití šablony Azure Resource Manageru k vytvoření kanálu Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 
 * Projděte si [Přehled a požadavky kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) a proveďte **nutné** kroky.
 * Podle pokynů v článku [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) si na počítač nainstalujte nejnovější verzi prostředí Azure PowerShell. V tomto kurzu použijete prostředí PowerShell k nasazení entit služby Data Factory. 
-* (volitelné) Informace o šablonách Azure Resource Manageru najdete v tématu [Vytváření šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md).
+* (volitelné) Informace o šablonách Azure Resource Manageru najdete v tématu [Vytváření šablon Azure Resource Manageru](../../azure-resource-manager/templates/template-syntax.md).
 
 ## <a name="in-this-tutorial"></a>V tomto kurzu
 V tomto kurzu vytvoříte datovou továrnu s následujícími entitami služby Data Factory:

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 12/19/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e8e1fd51e0190e0f8889112b17b58680ed9329e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443452"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Vytváření pracovních prostorů na portálu moje aplikace (Preview)
 
@@ -45,7 +45,7 @@ Uživatelé můžou pomocí portálu moje aplikace (Preview) zobrazovat a spouš
    ![Funkce ve verzi Preview uživatele](media/access-panel-workspaces/user-preview-features.png)
 
 > [!NOTE]
-> K otevření portálu moje aplikace můžou uživatelé použít odkaz `https://myapps.microsoft.com` nebo vlastní odkaz pro vaši organizaci, jako je například `https://myapps.microsoft.com/contoso.com`. Pokud uživatelé nebudou přesměrováni na verzi Preview moje aplikace, uživatelé by se měli pokusit `https://myapplications.microsoft.com` nebo `https://myapplications.microsoft.com/contoso.com`.
+> K otevření portálu moje aplikace můžou uživatelé použít odkaz `https://myapps.microsoft.com` nebo vlastní odkaz pro vaši organizaci, jako je například `https://myapps.microsoft.com/contoso.com`. Po povolení prostředí nové moje aplikace se v horní části stránky Moje aplikace zobrazí nápis **aktualizované moje prostředí moje aplikace** a uživatelé si **můžou vybrat, že si budou** moct zobrazit nové prostředí. Pokud chcete přestat používat nové prostředí, uživatelé můžou v horní části stránky vybrat **Ano** v nápisu **opustit nové prostředí** .
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
@@ -88,7 +88,7 @@ Pokud chcete vytvořit pracovní prostor, musíte mít licenci Azure AD Premium 
 Protokoly auditu zaznamenávají operace s pracovními prostory moje aplikace, včetně akcí vytváření pracovních prostorů koncových uživatelů. Z mých aplikací se generují tyto události:
 
 * Vytvoření pracovního prostoru
-* Upravit pracovní prostor
+* Úprava pracovního prostoru
 * Odstranit pracovní prostor
 * Spuštění aplikace (koncový uživatel)
 * Samoobslužné přidávání aplikací (koncový uživatel)
@@ -98,6 +98,15 @@ Protokoly auditu můžete získat v [Azure Portal](https://portal.azure.com) tak
 
    ![Přiřazení rolí uživatelům a skupinám](media/access-panel-workspaces/audit-log-myapps.png)
 
+## <a name="get-support-for-my-account-pages"></a>Získat podporu pro stránky Můj účet
+
+Na stránce Moje aplikace může uživatel vybrat **můj účet** > **Zobrazit můj účet** a otevřít jeho nastavení účtu. Na stránce **můj účet** Azure AD můžou uživatelé spravovat svoje bezpečnostní údaje, zařízení, hesla a další. Můžou také přistupovat ke svým nastavením účtu Office.
+
+V případě, že potřebujete odeslat žádost o podporu k problému na stránce účtu Azure AD nebo na stránce účtu Office, postupujte podle těchto kroků, aby se vaše žádost správně směrovala: 
+
+* Pokud máte problémy se stránkou **můj účet služby Azure AD** , otevřete žádost o podporu v rámci Azure Portal. Přejít na **Azure Portal** > **Azure Active Directory** > **nové žádosti o podporu**.
+
+* Pokud máte problémy se stránkou **Office můj účet** , otevřete žádost o podporu v centru pro správu Microsoft 365. Přejít na **Centrum pro správu Microsoft 365** > **podporu**. 
 
 ## <a name="next-steps"></a>Další kroky
 [Prostředí koncových uživatelů pro aplikace v Azure Active Directory](end-user-experiences.md)

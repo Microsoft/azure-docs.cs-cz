@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 30234758761e06c65e621c7f512ed8cafa02e090
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382646"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Java
 
@@ -59,7 +59,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
     }
     ```
 
-3. Vytvořte novou metodu s názvem `SearchVideos()` s proměnnými pro hostitele koncového bodu rozhraní API a cestu, klíč předplatného a hledaný výraz. Vrátí objekt `SearchResults`. 
+3. Vytvořte novou metodu s názvem `SearchVideos()` s proměnnými pro hostitele koncového bodu rozhraní API a cestu, klíč předplatného a hledaný výraz. Vrátí objekt `SearchResults`. `host` může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -248,6 +248,6 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 > [!div class="nextstepaction"]
 > [Sestavení webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

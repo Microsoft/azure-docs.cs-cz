@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835887"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446701"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3,0: BreakSentence
 
@@ -37,7 +37,7 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>verze API-Version</td>
+    <td>api-version</td>
     <td>*Požadovaný parametr dotazu*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
@@ -60,15 +60,15 @@ Hlavičky požadavku zahrnují:
     <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
   </tr>
   <tr>
-    <td>Typ obsahu</td>
+    <td>Content-Type</td>
     <td>*Požadovaná hlavička žádosti*<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`.</td>
   </tr>
   <tr>
-    <td>Content-Length</td>
+    <td>Délka obsahu</td>
     <td>*Požadovaná hlavička žádosti*<br/>Délka textu žádosti</td>
   </tr>
   <tr>
-    <td>X – ClientTraceId</td>
+    <td>X-ClientTraceId</td>
     <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Všimněte si, že tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
   </tr>
 </table> 
@@ -90,7 +90,7 @@ Platí následující omezení:
 * Celý text zahrnutý v požadavku nesmí být delší než 50 000 znaků včetně mezer.
 * Pokud je zadán parametr dotazu `language`, všechny prvky pole musí být ve stejném jazyce. V opačném případě se automatické zjišťování jazyka aplikuje na každý prvek pole nezávisle.
 
-## <a name="response-body"></a>Tělo odpovědi
+## <a name="response-body"></a>Text odpovědi
 
 Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
 
@@ -109,7 +109,7 @@ Příklad odpovědi JSON:
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401

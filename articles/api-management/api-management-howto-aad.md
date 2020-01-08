@@ -1,5 +1,6 @@
 ---
-title: Autorizace vývojářských účtů pomocí Azure Active Directory – Azure API Management | Microsoft Docs
+title: Autorizace vývojářských účtů pomocí Azure Active Directory
+titleSuffix: Azure API Management
 description: Naučte se, jak autorizovat uživatele pomocí Azure Active Directory v API Management.
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 067d4488b064ede572a4b3ad94c94fb1552c827d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454451"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442799"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory v Azure API Management
 
@@ -32,7 +33,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorizace vývojářských účtů pomocí Azure AD
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 2. Vyberte ![šipka](./media/api-management-howto-aad/arrow.png).
 3. Do vyhledávacího pole zadejte **API** .
 4. Vyberte **API Management Services**.
@@ -49,7 +50,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
    ![Postup přidání poskytovatele identity v Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. V prohlížeči otevřete jinou kartu. 
 11. Pokud chcete aplikaci zaregistrovat ve službě Active Directory, přejděte k [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-12. V části **Spravovat**vyberte **Registrace aplikací**.
+12. V části **Spravovat** vyberte **Registrace aplikací**.
 13. Vyberte **Nová registrace**. Na stránce **zaregistrovat aplikaci** nastavte následující hodnoty:
     
 * Nastavte **název** na smysluplný název. např. *vývojář – portál*
@@ -73,7 +74,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 > [!NOTE]
 > V části **Povolení klienti** můžete zadat více domén. Předtím, než se uživatel může přihlásit z jiné domény, než je původní doména, ve které byla aplikace zaregistrována, musí globální správce jiné domény udělit oprávnění aplikaci pro přístup k datům adresáře. Aby bylo možné udělit oprávnění, globální správce by měl: a. Přejít na `https://<URL of your developer portal>/aadadminconsent` (například https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Zadejte název domény tenanta Azure AD, kterému chcete udělit přístup.
-> c. Vyberte **Odeslat**. 
+> c. Vyberte **odeslat**. 
 
 20.  Po zadání požadované konfigurace vyberte **Přidat**.
 

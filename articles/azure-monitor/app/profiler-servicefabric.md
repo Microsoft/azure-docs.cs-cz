@@ -1,5 +1,5 @@
 ---
-title: Profilování živých aplikací Service Fabric Azure pomocí Application Insights | Microsoft Docs
+title: Profilování živých aplikací Service Fabric Azure pomocí Application Insights
 description: Povolení profileru pro aplikaci Service Fabric
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a7a64be3c73ea82c6bf3d905772f3278f9bda5df
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 162a8c3f90b7adab356ebb07c80b8de283fd818d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432405"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profilování živých aplikací Service Fabric Azure pomocí Application Insights
 

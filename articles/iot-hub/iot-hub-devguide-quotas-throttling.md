@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: daeb09acd11d727b11ad8a7b98d97ff90fddc6d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228264"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457063"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -22,7 +22,7 @@ Tento článek vysvětluje kvóty pro IoT Hub a poskytuje informace, které vám
 
 Každé předplatné Azure může mít maximálně 50 IoT Hub a maximálně 1 bezplatné centrum.
 
-Každé centrum IoT se zřizuje s určitým počtem jednotek na konkrétní úrovni. Úroveň a počet jednotek určují maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, která se používá k výpočtu denní kvóty, je 0,5 KB pro rozbočovač úrovně Free a 4KB pro všechny ostatní úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+Každé centrum IoT se zřizuje s určitým počtem jednotek na konkrétní úrovni. Tato úroveň a počet jednotek určují maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, která se používá k výpočtu denní kvóty, je 0,5 KB pro rozbočovač úrovně Free a 4KB pro všechny ostatní úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Vrstva také určuje omezení omezování, která IoT Hub vynutila pro všechny operace.
 
@@ -93,7 +93,7 @@ Pokud například koupíte jednu jednotku S1, získáte omezení 100 připojení
 
 IoT Hub vynutila jiné provozní limity:
 
-| Operace | Omezení |
+| Operace | škálování |
 | --------- | ----- |
 | Zařízení | Celkový počet zařízení plus modulů, které se dají zaregistrovat do jednoho centra IoT Hub, je omezené na 1 000 000. Jediným způsobem, jak tento limit zvýšit, je kontaktovat [Podpora Microsoftu](https://azure.microsoft.com/support/options/).|
 | Nahrání souborů | 10 souběžných nahrávání souborů na zařízení. |
@@ -101,11 +101,11 @@ IoT Hub vynutila jiné provozní limity:
 | Další koncové body | Placené rozbočovače SKU můžou mít 10 dalších koncových bodů. Rozbočovače volných SKU můžou mít jeden další koncový bod. |
 | Dotazy směrování zpráv | Placené rozbočovače SKU můžou mít 100 dotazů na směrování. Rozbočovače volných SKU můžou mít pět dotazů směrování. |
 | Obohacení zpráv | Placené rozbočovače SKU můžou mít až 10 rozšíření zpráv. Bezplatné rozbočovače SKU můžou mít až 2 rozšíření zpráv.|
-| Zasílání zpráv ze zařízení do cloudu | Maximální velikost zprávy 256 KB |
+| Zasílání zpráv zařízení-cloud | Maximální velikost zprávy 256 KB |
 | Zasílání zpráv z cloudu na zařízení<sup>1</sup> | Maximální velikost zprávy 64 KB. Maximální počet nevyřízených zpráv pro doručení je 50 na jedno zařízení. |
 | Přímá metoda<sup>1</sup> | Maximální velikost datové části přímé metody je 128 KB. |
-| Automatická konfigurace zařízení<sup>1</sup> | Konfigurace 100 na placené centrum SKU 20 konfigurací na rozbočovač volných SKU |
-| IoT Edge automatické nasazení<sup>1</sup> | 20 modulů na nasazení. 100 nasazení na placené centrum SKU 10 nasazení na rozbočovač volných SKU |
+| Automatická konfigurace zařízení a modulů<sup>1</sup> | Konfigurace 100 na placené centrum SKU 20 konfigurací na rozbočovač volných SKU |
+| IoT Edge automatické nasazení<sup>1</sup> | 20 modulů na nasazení. 100 nasazení (včetně vrstev nasazení) na placené centrum SKU 10 nasazení na rozbočovač volných SKU |
 | Dvojitá vlákna<sup>1</sup> | Maximální velikost požadovaných vlastností a sekcí hlášených vlastností jsou 32 KB. Oddíl maximální velikost značek je 8 KB. |
 
 <sup>1</sup> Tato funkce není k dispozici na úrovni Basic IoT Hub. Další informace najdete v tématu [Jak zvolit správnou IoT Hub](iot-hub-scaling.md).

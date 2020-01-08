@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 582e0c6b9f6a51f97e8d4990634ceac61c6d9f23
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440383"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Přepnout aktivitu v Azure Data Factory
 
@@ -69,11 +69,11 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 jméno | Název aktivity Switch | Řetězec | Ano
 type | Musí být nastavené na *Switch** | Řetězec | Ano
-vyjádření | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
+expression | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
 věcech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí obsahovat alespoň jeden případ. Maximální velikost je 25 případů. | Pole objektů Case | Ano
 defaultActivities | Sada aktivit, které se spustí, když se nesplní vyhodnocení výrazu. | Pole aktivit | Ano
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 
 Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection.
 
@@ -236,10 +236,7 @@ Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní slož
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -285,7 +282,7 @@ Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr *
 }
 ```
 
-### <a name="powershell-commands"></a>Příkazy PowerShellu
+### <a name="powershell-commands"></a>Příkazy prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

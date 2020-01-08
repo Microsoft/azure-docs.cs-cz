@@ -1,5 +1,5 @@
 ---
-title: Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
+title: Plánování migrace z modelu Classic na Azure Resource Manager
 description: Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 8dc1ee85b9d17824898de80562ea5bfb251a2c41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4c7bdf33ed1a35e7b27eed8baa3b96066d25dd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369021"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 I když Azure Resource Manager nabízí spoustu úžasnéch funkcí, je důležité naplánovat cestu k migraci, abyste měli jistotu, že bude docházet k plynulé práci. Doba útraty při plánování zajistí, že při provádění aktivit migrace dojde k problémům. 
@@ -31,7 +31,7 @@ Existují čtyři obecné fáze cesty migrace:
 
 ![Fáze migrace](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plánování
+## <a name="plan"></a>Plánujte
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technické požadavky a kompromisy
 
@@ -105,7 +105,7 @@ Následující byly problémy zjištěné v řadě větších migrací. Nejedná
 
 - **Skupiny dostupnosti** – pro virtuální síť (vNet), která se má migrovat na Azure Resource Manager, musí mít nasazení Classic (tj. cloudová služba) všechny virtuální počítače v jedné skupině dostupnosti, jinak musí být virtuální počítače v žádné skupině dostupnosti. Používání více než jedné skupiny dostupnosti v cloudové službě není kompatibilní s Azure Resource Manager a zastaví migraci.  Kromě toho nemůžou být některé virtuální počítače ve skupině dostupnosti a některé virtuální počítače nejsou v sadě dostupnosti. Pokud to chcete vyřešit, budete muset svou cloudovou službu opravit nebo ji můžete znovu vymezit.  Naplánujte odpovídajícím způsobem, protože to může být časově náročné. 
 
-- **Nasazení rolí webu nebo pracovní role** – Cloud Services obsahující webové a pracovní role nelze migrovat na Azure Resource Manager. Aby bylo možné spustit migraci, musí být nejprve z virtuální sítě odebrány role Web/Worker.  Typickým řešením je jednoduše přesunout instance rolí web/Worker do samostatné klasické virtuální sítě, která je také propojena s okruhem ExpressRoute, nebo migrovat kód do novějšího PaaS App Services (Tato diskuze je nad rámec tohoto dokumentu). V bývalém případě opětovného nasazení vytvořte novou klasickou virtuální síť, přesuňte nebo znovu nasaďte webové a pracovní role do této nové virtuální sítě a pak odstraňte nasazení z virtuální sítě, která se přesouvá. Nevyžadují se žádné změny kódu. Novou funkci [partnerského vztahu Virtual Network](../../virtual-network/virtual-network-peering-overview.md) lze použít pro partnerský vztah mezi klasickou virtuální sítí, která obsahuje webové a pracovní role a jiné virtuální sítě ve stejné oblasti Azure, jako je například migrace virtuální sítě (**po virtuální síti). migrace je dokončená, protože virtuální sítě s partnerským vztahem nelze migrovat**), a proto poskytují stejné možnosti bez ztráty výkonu a žádné pokuty týkající se latence a šířky pásma. Vzhledem k tomu, že se přidávají [Virtual Network partnerských vztahů](../../virtual-network/virtual-network-peering-overview.md), je teď možné snadno zmírnit omezení nasazení webových nebo pracovních rolí a neblokovat migraci do Azure Resource Manager.
+- **Nasazení rolí webu nebo pracovní role** – Cloud Services obsahující webové a pracovní role nelze migrovat na Azure Resource Manager. Aby bylo možné spustit migraci, musí být nejprve z virtuální sítě odebrány role Web/Worker.  Typickým řešením je jednoduše přesunout instance rolí web/Worker do samostatné klasické virtuální sítě, která je také propojena s okruhem ExpressRoute, nebo migrovat kód do novějšího PaaS App Services (Tato diskuze je nad rámec tohoto dokumentu). V bývalém případě opětovného nasazení vytvořte novou klasickou virtuální síť, přesuňte nebo znovu nasaďte webové a pracovní role do této nové virtuální sítě a pak odstraňte nasazení z virtuální sítě, která se přesouvá. Nevyžadují se žádné změny kódu. Novou funkci [partnerského vztahu Virtual Network](../../virtual-network/virtual-network-peering-overview.md) lze použít pro partnerský vztah mezi klasickými virtuálními sítěmi, které obsahují webové a pracovní role a jiné virtuální sítě ve stejné oblasti Azure, jako je například migrace virtuální sítě (**po dokončení migrace virtuální sítě, jako je třeba migrace**virtuální sítě), a proto poskytují stejné možnosti bez jakýchkoli ztrát výkonu a jejich zpoždění ani pokuty šířky pásma. Vzhledem k tomu, že se přidávají [Virtual Network partnerských vztahů](../../virtual-network/virtual-network-peering-overview.md), je teď možné snadno zmírnit omezení nasazení webových nebo pracovních rolí a neblokovat migraci do Azure Resource Manager.
 
 - **Kvóty Azure Resource Manager** – oblasti Azure mají samostatné kvóty a omezení pro klasické i Azure Resource Manager. I když ve scénáři migrace není spotřebován nový hardware *(odstraňujeme stávající virtuální počítače z klasického na Azure Resource Manager)* , Azure Resource Manager kvóty stále musí být na dosah dostatečně vysoké kapacity, aby bylo možné spustit migraci. Níže jsou uvedené hlavní limity, které jsme zjistili, že způsobují problémy.  Otevřete lístek podpory kvóty pro zvýšení limitu. 
 
@@ -118,7 +118,7 @@ Následující byly problémy zjištěné v řadě větších migrací. Nejedná
   - Veřejné IP adresy
   - Statické veřejné IP adresy
   - Jádra
-  - Network Security Groups (Skupiny zabezpečení sítě)
+  - Skupiny zabezpečení sítě
   - Směrovací tabulky
 
     Aktuální kvóty Azure Resource Manager můžete kontrolovat pomocí následujících příkazů s nejnovější verzí Azure CLI.
@@ -179,7 +179,7 @@ Neúplné testování může způsobit problémy a zpoždění migrace.
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technické požadavky a kompromisy
 
-Teď, když jste v Azure Resource Manager, maximalizujte platformu.  Přečtěte si [přehled Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) a zjistěte další výhody.
+Teď, když jste v Azure Resource Manager, maximalizujte platformu.  Přečtěte si [přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md) a zjistěte další výhody.
 
 Co je potřeba vzít v úvahu:
 

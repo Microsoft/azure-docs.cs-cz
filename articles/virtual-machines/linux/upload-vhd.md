@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350684"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak nahrát přizpůsobený virtuální pevný dis
 Pokud chcete vytvořit víc virtuálních počítačů z přizpůsobeného disku, nejdřív vytvořte image z virtuálního počítače nebo virtuálního pevného disku. Další informace najdete v tématu [Vytvoření vlastní image virtuálního počítače Azure pomocí rozhraní](tutorial-custom-images.md)příkazového řádku (CLI).
 
 Máte dvě možnosti, jak vytvořit vlastní disk:
-* Nahrání virtuálního pevného disku
+* Nahrávání virtuálního pevného disku
 * Kopírovat existující virtuální počítač Azure
 
 
@@ -53,7 +53,7 @@ K provedení následujících kroků budete potřebovat:
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami, například `myResourceGroup`, `mystorageaccount`a `mydisks`.
 
-<a id="prepimage"> </a>
+<a id="prepimage"></a>
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 
@@ -134,4 +134,4 @@ az vm create \
 Měli byste být schopni se k virtuálnímu počítači přihlásit přes SSH pomocí přihlašovacích údajů ze zdrojového virtuálního počítače. 
 
 ## <a name="next-steps"></a>Další kroky
-Po přípravě a nahrání vlastního virtuálního disku si můžete přečíst další informace o [používání Správce prostředků a šablon](../../azure-resource-manager/resource-group-overview.md). Na nové virtuální počítače můžete také [přidat datový disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Pokud máte aplikace spuštěné na virtuálních počítačích, ke kterým potřebujete přístup, nezapomeňte [otevřít porty a koncové body](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Po přípravě a nahrání vlastního virtuálního disku si můžete přečíst další informace o [používání Správce prostředků a šablon](../../azure-resource-manager/management/overview.md). Na nové virtuální počítače můžete také [přidat datový disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Pokud máte aplikace spuštěné na virtuálních počítačích, ke kterým potřebujete přístup, nezapomeňte [otevřít porty a koncové body](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

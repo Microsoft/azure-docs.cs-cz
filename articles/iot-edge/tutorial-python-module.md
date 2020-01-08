@@ -10,12 +10,12 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c37d778fe9ad7d21943ed92452fae34b4b8771e7
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 8f937bcfb1bd03c970f21263c1cd09a1c3baba0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429422"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Python IoT Edge pro zařízení se systémem Linux
 
@@ -34,9 +34,6 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> Následující příručka je určena pro sadu SDK V1 Python, která je od té doby zastaralá. V současné době pracujeme na tom, aby tato příručka byla kompatibilní s 2. Podívejte se prosím na tento prostor na aktualizace.
-
 ## <a name="solution-scope"></a>Obor řešení
 
 Tento kurz ukazuje, jak vytvořit modul v **Pythonu** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Pythonu pro zařízení s Windows. 
@@ -48,7 +45,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | **Linux AMD64** | ![Použití VS Code pro moduly Pythonu v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro moduly Pythonu na platformě Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky: 
 
@@ -85,7 +82,7 @@ Použijte VS Code k vytvoření šablony řešení Python, kterou můžete vytvo
    | Pole | Hodnota |
    | ----- | ----- |
    | Vyberte složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
-   | Zadejte název řešení | Zadejte popisný název vašeho řešení nebo přijměte výchozí **EdgeSolution**. |
+   | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
    | Vyberte šablonu modulu | Zvolte **Modul Python**. |
    | Zadejte název modulu | Pojmenujte modul **PythonModule**. |
    | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Konečné úložiště imagí vypadá jako \<název registru\>. azurecr.io/pythonmodule. |
@@ -196,7 +193,7 @@ Každá šablona obsahuje vzorový kód, který přijímá Simulovaná data senz
        }
    ```
 
-   ![Přidat nevlákenný modul do šablony nasazení](./media/tutorial-python-module/module-twin.png)
+   ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-python-module/module-twin.png)
 
 10. Uložte soubor Deployment. template. JSON.
 

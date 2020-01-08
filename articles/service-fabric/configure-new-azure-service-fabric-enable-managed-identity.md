@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric – nasazení nového clusteru Azure Service Fabric s podporou pro spravovanou identitu | Microsoft Docs
+title: Nasazení nového clusteru Service Fabric se spravovanou identitou
 description: V tomto článku se dozvíte, jak vytvořit nový cluster Service Fabric se zapnutou spravovanou identitou.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cb32251c2507f3def7f5e830af15828ff2f04c29
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 4893fe47de78445a7dccb4f5800498b30cd6c1f2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640726"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614855"
 ---
 # <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>Vytvoření nového clusteru Azure Service Fabric s podporou spravované identity (Preview)
 
@@ -38,7 +34,7 @@ Pokud chcete povolit službu spravovaných tokenů identity při vytváření cl
 ]
 ```
 
-## <a name="errors"></a>Chyby
+## <a name="errors"></a>chyby
 
 Pokud se nasazení v této zprávě nepovede, znamená to, že cluster není na požadované verzi Service Fabric (Minimální podporovaný modul runtime je 6,5 CU2):
 
@@ -57,7 +53,7 @@ Pokud se nasazení v této zprávě nepovede, znamená to, že cluster není na 
 
 * [Povolení podpory spravovaných identit v existujícím clusteru Azure Service Fabric](./configure-existing-cluster-enable-managed-identity-token-service.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Nasazení aplikace Azure Service Fabric s uživatelem přiřazenou spravovanou identitou](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Využití spravované identity Service Fabric aplikace z kódu služby](./how-to-managed-identity-service-fabric-app-code.md)

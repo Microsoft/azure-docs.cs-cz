@@ -1,26 +1,17 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace Java v Azure Service Fabric'
 description: V tomto rychlém startu vytvoříte aplikaci v Javě pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4ef0db5f72f5849942bb043261f1166cf7c046b1
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 257fd02c2f7ec2aff9d55b91b2cbd54b6eb55431
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464396"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Rychlý Start: nasazení aplikace Java do Azure Service Fabric v systému Linux
 
@@ -38,9 +29,9 @@ V tomto rychlém startu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+K dokončení tohoto rychlého startu je potřeba:
 
-1. [Nainstalovat sadu Service Fabric SDK a rozhraní příkazového řádku (CLI) Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods).
+1. [Nainstalovat sadu Service Fabric SDK a rozhraní příkazového řádku (CLI) Service Fabric.](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
 2. [Nainstalovat Git](https://git-scm.com/).
 3. [Nainstalovat Eclipse](https://www.eclipse.org/downloads/).
 4. [Nastavit prostředí Java](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) a provést volitelné kroky pro instalaci modulu plug-in pro Eclipse.

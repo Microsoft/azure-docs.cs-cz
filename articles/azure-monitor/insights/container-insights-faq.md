@@ -1,26 +1,63 @@
 ---
 title: Azure Monitor pro kontejnery často kladené dotazy | Microsoft Docs
 description: Azure Monitor for Containers je řešení, které monitoruje stav clusterů AKS a Container Instances v Azure. Tento článek obsahuje odpovědi na běžné dotazy.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477414"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405071"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor pro kontejnery často kladené dotazy
 
-Toto je seznam nejčastějších dotazů týkajících se Azure Monitor kontejnerů. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
+Toto je seznam nejčastějších dotazů týkajících se Azure Monitor kontejnerů. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
+
+## <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Nezobrazuje se při dotazování tabulky ContainerLog vyplněné hodnoty vlastností image a Name.
+
+U agenta verze ciprod12042019 a novějších se ve výchozím nastavení tyto dvě vlastnosti neplní pro každou řádek protokolu, aby se minimalizovaly náklady vzniklé shromážděnými daty protokolů. Existují dvě možnosti, jak zadat dotaz na tabulku, která obsahuje tyto vlastnosti s jejich hodnotami:
+
+### <a name="option-1"></a>Možnost 1 
+
+Připojte další tabulky, abyste tyto hodnoty vlastností zahrnuli do výsledků.
+
+Upravte dotazy tak, aby zahrnovaly vlastnosti Image a ImageTag z tabulky ```ContainerInventory``` připojením k vlastnosti ContainerID. Můžete zahrnout vlastnost Name (jako dříve se zobrazila v ```ContainerLog``` tabulce) z pole ContaineName tabulky KubepodInventory spojením s vlastností ContainerID. Toto je doporučená možnost.
+
+Následující příklad je ukázkový podrobný dotaz, který vysvětluje, jak tyto hodnoty polí získat pomocí spojení.
+
+```
+//lets say we are querying an hour worth of logs
+let startTime = ago(1h);
+let endTime = now();
+//below gets the latest Image & ImageTag for every containerID, during the time window
+let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
+//below gets the latest Name for every containerID, during the time window
+let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
+let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+ContainerLog
+| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| join kind= leftouter (
+   ContainerData
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
+
+```
+
+### <a name="option-2"></a>Možnost 2
+
+Znovu povolit shromažďování pro tyto vlastnosti pro každý řádek protokolu kontejneru.
+
+Pokud první možnost není vhodná, protože došlo ke změnám dotazů, můžete tato pole znovu povolit tak, že povolíte nastavení ```log_collection_settings.enrich_container_logs``` v mapě konfigurace agenta, jak je popsáno v [nastavení konfigurace shromažďování dat](./container-insights-agent-config.md).
+
+> [!NOTE]
+> Druhá možnost není doporučena pro velké clustery, které mají více než 50 uzlů, protože generuje volání serveru rozhraní API z každého uzlu > v clusteru, aby bylo možné toto rozšíření provést. Tato možnost také zvyšuje velikost dat pro všechny shromážděné řádky protokolu.
 
 ## <a name="can-i-view-metrics-collected-in-grafana"></a>Můžu zobrazit metriky shromážděné v Grafana?
 
-Azure Monitor for Containers podporuje zobrazování metrik uložených v pracovním prostoru Log Analytics v řídicích panelech Grafana. K dispozici je šablona, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, abyste mohli začít s odkazem na Další informace, které vám pomůžou s postupem dotazování dalších dat ze sledovaných clusterů na vizualizaci ve vlastních Grafana jde. 
+Azure Monitor for Containers podporuje zobrazování metrik uložených v pracovním prostoru Log Analytics v řídicích panelech Grafana. K dispozici je šablona, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, abyste mohli začít s odkazem na pomoc s postupem, jak se dotazovat na další data z monitorovaných clusterů, aby je bylo možné vizualizovat ve vlastních řídicích panelech Grafana. 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Můžu monitorovat cluster AKS s Azure Monitor pro kontejnery?
 
@@ -76,7 +113,7 @@ Podrobný přehled tohoto problému najdete v následujícím [odkazu na GitHub]
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Návody vyřešit chyby Azure AD, když povolíte živé protokoly? 
 
-Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: ' < ID aplikace \> '** . Řešení, které se má vyřešit, najdete v článku [jak zobrazit data kontejneru v reálném čase s Azure monitor pro kontejnery](container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: ' < ID aplikace\>'** . Řešení, které se má vyřešit, najdete v článku [jak zobrazit data kontejneru v reálném čase s Azure monitor pro kontejnery](container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Proč není možné upgradovat cluster po registraci?
 
@@ -88,4 +125,4 @@ Podívejte se na [požadavky na bránu firewall sítě](container-insights-onboa
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít monitorovat cluster AKS, přečtěte si [článek Jak připojit Azure monitor pro kontejnery](container-insights-onboard.md) , abyste pochopili požadavky a dostupné metody pro povolení monitorování. 
+Chcete-li zahájit monitorování clusteru AKS, přečtěte si téma [Azure připojit jak monitorovat pro kontejnery](container-insights-onboard.md) vám pomohou pochopit požadavky a dostupné metody, které chcete povolit monitorování. 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: aa14854807727506f5d697d7871c97e219c096a3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 7822045d4b3ce1feb1bfb43fbf1c2fc5a9a1c7fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950880"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425635"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
@@ -61,6 +61,43 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do REST API. N
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před odesláním do REST API.
 
+## <a name="send-a-json-payload"></a>Odeslat datovou část JSON
+
+REST API Technical profil vám umožní poslat do koncového bodu složitou datovou část JSON.
+
+Chcete-li odeslat složitou datovou část JSON:
+
+1. Pomocí transformace deklarací [GenerateJson](json-transformations.md) Sestavte datovou část JSON.
+1. V REST API Technical profil:
+    1. Přidejte transformaci vstupních deklarací identity s odkazem na `GenerateJson` transformaci deklarací identity.
+    1. Nastavte možnost metadata `SendClaimsIn` na `body`
+    1. Nastavte možnost metadata `ClaimUsedForRequestPayload` na název deklarace identity obsahující datovou část JSON.
+    1. Ve vstupní deklaraci identity přidejte odkaz na vstupní deklaraci, která obsahuje datovou část JSON.
+
+Následující příklad `TechnicalProfile` odešle ověřovací e-mail pomocí e-mailové služby jiného výrobce (v tomto případě SendGrid).
+
+```XML
+<TechnicalProfile Id="SendGrid">
+  <DisplayName>Use SendGrid's email API to send the code the the user</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://api.sendgrid.com/v3/mail/send</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="ClaimUsedForRequestPayload">sendGridReqBody</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_SendGridApiKey" />
+  </CryptographicKeys>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="GenerateSendGridRequestBody" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="sendGridReqBody" />
+  </InputClaims>
+</TechnicalProfile>
+```
+
 ## <a name="output-claims"></a>Deklarace výstupů
 
 Element **OutputClaims** obsahuje seznam deklarací vrácených REST API. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v REST API. Můžete také zahrnout deklarace identity, které nejsou vraceny zprostředkovatelem REST API identity, pokud nastavíte atribut `DefaultValue`.
@@ -87,9 +124,10 @@ Technický profil také vrací deklarace identity, které nejsou vraceny zprost�
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | serviceUrl | Ano | Adresa URL koncového bodu REST API. |
-| AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None`, `Basic`nebo `ClientCertificate`. Hodnota `None` označuje, že REST API není anonymní. Hodnota `Basic` označuje, že REST API je zabezpečeno pomocí základního ověřování HTTP. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. Hodnota `ClientCertificate` (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vaší službě mají přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. |
+| AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None`, `Basic`, `Bearer`nebo `ClientCertificate`. Hodnota `None` označuje, že REST API není anonymní. Hodnota `Basic` označuje, že REST API je zabezpečeno pomocí základního ověřování HTTP. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. Hodnota `ClientCertificate` (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. Hodnota `Bearer` označuje, že REST API omezuje přístup pomocí OAuth2 nosného tokenu klienta. |
 | SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je vstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. |
 | ClaimsFormat | Ne | Určuje formát pro výstupní deklarace identity. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je výstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je výstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je výstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je výstupní deklarace, která je odeslána v řetězci dotazu požadavku. |
+| ClaimUsedForRequestPayload| Ne | Název deklarace identity řetězce, která obsahuje datovou část, která se má odeslat do REST API. |
 | DebugMode | Ne | Spustí technický profil v režimu ladění. V režimu ladění může REST API vrátit více informací. Přečtěte si část vracení chybové zprávy. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
@@ -154,6 +192,27 @@ Pokud je typ ověřování nastaven na `ClientCertificate`, element **Cryptograp
 </TechnicalProfile>
 ```
 
+Pokud je typ ověřování nastaven na `Bearer`, element **CryptographicKeys** obsahuje následující atribut:
+
+| Atribut | Požaduje se | Popis |
+| --------- | -------- | ----------- |
+| BearerAuthenticationToken | Ne | Nosný token OAuth 2,0. |
+
+```XML
+<TechnicalProfile Id="REST-API-SignUp">
+  <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2cRestClientAccessToken" />
+  </CryptographicKeys>
+</TechnicalProfile>
+```
+
 ## <a name="returning-error-message"></a>Vracení chybové zprávy
 
 Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživatel nebyl nalezen v systému CRM '. V případě chyby by REST API měla vrátit chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt) s následujícími atributy:
@@ -197,24 +256,11 @@ public class ResponseContent
 }
 ```
 
-## <a name="examples"></a>Příklady:
+## <a name="next-steps"></a>Další kroky
+
+Příklady použití technického profilu RESTful najdete v následujících článcích:
+
 - [Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako ověření vstupu uživatele](active-directory-b2c-custom-rest-api-netfw.md)
 - [Zabezpečte své služby RESTful pomocí ověřování HTTP Basic.](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [Zabezpečte službu RESTful pomocí klientských certifikátů.](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 - [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu uživatele](active-directory-b2c-rest-api-validation-custom.md)
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

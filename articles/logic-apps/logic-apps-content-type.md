@@ -1,17 +1,17 @@
 ---
 title: Zpracování typů obsahu
-description: Přečtěte si, jak Logic Apps zpracovává typy obsahu v době návrhu a čase spuštění.
+description: Naučte se zvládnout různé typy obsahu v pracovních postupech během doby návrhu a dobu běhu v Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 75d9285c4a838c2057c0f23841c3a2f465789c7c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791531"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666869"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Zpracování typů obsahu v Azure Logic Apps
 
@@ -59,7 +59,7 @@ Logic Apps poskytuje možnost generovat uživatelsky přívětivé tokeny, kter�
   
   1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.  
   
-  2. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte ukázkovou datovou část a pak zvolte **Hotovo**. Například: 
+  2. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte ukázkovou datovou část a pak zvolte **Hotovo**. Příklad: 
 
      ![Poskytnout ukázkovou datovou část JSON](./media/logic-apps-content-type/request-trigger.png)
 
@@ -107,11 +107,11 @@ Logic Apps poskytuje možnost generovat uživatelsky přívětivé tokeny, kter�
   Pak můžete tyto vlastnosti snadno odkazovat a používat v rámci pracovního postupu vaší aplikace logiky. Podobně jako u triggeru žádosti můžete zadat nebo vygenerovat schéma JSON, které popisuje obsah JSON, který chcete analyzovat. 
   Tímto způsobem můžete snadněji využívat data z Azure Service Bus, Azure Cosmos DB a tak dále.
 
-  ![Analyzovat JSON](./media/logic-apps-content-type/parse-json.png)
+  ![Parsovat JSON](./media/logic-apps-content-type/parse-json.png)
 
 <a name="text-plain"></a>
 
-## <a name="textplain"></a>Text/prostý
+## <a name="textplain"></a>text/plain
 
 Když vaše aplikace logiky obdrží zprávy HTTP s hlavičkou `Content-Type` nastavenou na `text/plain`, vaše aplikace logiky tyto zprávy ukládá v nezpracované podobě. Pokud zahrnete tyto zprávy do následujících akcí bez přetypování, žádosti dostanou s hlavičkou `Content-Type` nastavenou na `text/plain`. 
 

@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop & Excelu pomocí ovladače ODBC – Azure HDInsight
 description: Naučte se, jak nastavit a použít ovladač ODBC pro podregistr Microsoft pro Excel k dotazování na data v clusterech HDInsight z Microsoft Excelu.
-keywords: Hadoop Excel, excelový podregistr, podregistr ODBC
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 37cb05c4bf3822c9dc21b1fa9cd0ea4a2ba6d933
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/11/2019
+ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435818"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení Excelu k Apache Hadoop v Azure HDInsight pomocí ovladače Microsoft podregistr ODBC Driver
 
@@ -24,7 +23,7 @@ ms.locfileid: "73177344"
 
 Také je možné připojit data přidružená k clusteru HDInsight a dalším zdrojům dat, včetně jiných clusterů Hadoop (mimo HDInsight), z Excelu pomocí doplňku Microsoft Power Query pro Excel. Informace o instalaci a použití Power Query najdete v tématu [připojení Excelu k HDInsight pomocí Power Query](../hdinsight-connect-excel-power-query.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento článek, musíte mít následující položky:
 
@@ -52,9 +51,9 @@ Následující kroky ukazují, jak vytvořit zdroj dat pro podregistr ODBC.
    | Vlastnost | Popis |
    | --- | --- |
    |  Název zdroje dat |Zadejte název zdroje dat. |
-   |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. Například `myHDICluster.azurehdinsight.net`. |
+   |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. Například, `myHDICluster.azurehdinsight.net`. Poznámka: `HDInsightClusterName-int.azurehdinsight.net` se podporuje, pokud je klientský virtuální počítač v partnerském vztahu ke stejné virtuální síti. |
    |  Port |Použijte **443**. (Tento port se změnil z 563 na 443.) |
-   |  Databáze |Použijte **výchozí nastavení**. |
+   |  databáze |Použijte **výchozí nastavení**. |
    |  Mechanismus |Výběr **služby Windows Azure HDInsight** |
    |  Uživatelské jméno |Zadejte uživatelské jméno uživatele clusteru HDInsight HTTP. Výchozí uživatelské jméno **admin**. |
    |  Heslo |Zadejte uživatelské heslo pro cluster HDInsight. Zaškrtněte políčko **Uložit heslo (šifrované)** .|
@@ -83,7 +82,7 @@ Následující kroky popisují způsob, jak importovat data z tabulky podregistr
 
 1. V Excelu otevřete nový nebo existující sešit.
 
-2. Na kartě **data** přejděte na příkaz **získat data** > **z jiných zdrojů** > **z rozhraní ODBC** a spusťte z okna **rozhraní ODBC** .
+2. Na kartě **data** přejděte k části **získání dat** > **z jiných zdrojů** > **z rozhraní ODBC** a spusťte z okna **rozhraní ODBC** .
 
     ![Průvodce otevřením datového připojení aplikace Excel](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Průvodce otevřením datového připojení aplikace Excel")
 

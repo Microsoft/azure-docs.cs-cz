@@ -1,5 +1,5 @@
 ---
-title: Použití aplikace Internet Explorer se MSAL. js | Azure
+title: Problémy v Internet Exploreru (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Použijte Microsoft Authentication Library pro JavaScript (MSAL. js) v prohlížeči Internet Explorer.
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e92a10ca0b4cbe38119931bc66d36c3b9259a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4de918d87abca521f3b573f831f8bfd6a7e17728
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424297"
 ---
-# <a name="use-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Použití prohlížeče Internet Explorer a Microsoft Edge pro MSAL. js
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy v prohlížečích Internet Explorer a Microsoft Edge (MSAL. js)
 
 Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) se vygeneruje pro [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) , aby ji bylo možné spustit v Internet Exploreru. Existuje však několik věcí, které je třeba znát.
 

@@ -1,18 +1,14 @@
 ---
-title: Service Fabric úložiště tajných klíčů | Microsoft Docs
+title: Service Fabric úložiště tajných kódů
 description: Tento článek popisuje, jak používat Service Fabricho úložiště tajných klíčů.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5315a8806f45e40204e8500e97c3440bfa9ab8b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077346"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457503"
 ---
 #  <a name="service-fabric-secrets-store"></a>Service Fabric úložiště tajných kódů
 Tento článek popisuje, jak vytvářet a používat tajné klíče v aplikacích Service Fabric s využitím Service Fabricho úložiště tajných klíčů (CSS). CSS je místní mezipaměť úložiště v tajných klíčích, která slouží k uchovávání citlivých dat, jako je například heslo, tokeny a klíče šifrované v paměti.
@@ -24,8 +20,8 @@ Tento článek popisuje, jak vytvářet a používat tajné klíče v aplikacíc
     [
         ...
     {
+        "name":  "CentralSecretService",
         "parameters":  [
-            "name":  "CentralSecretService"
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -46,6 +42,9 @@ Tento článek popisuje, jak vytvářet a používat tajné klíče v aplikacíc
                 ],
             },
             ]
+     }
+        ...
+     ]
 ```
 ## <a name="declare-secret-resource"></a>Deklarovat prostředek tajného kódu
 Tajný prostředek můžete vytvořit buď pomocí šablony Správce prostředků, nebo pomocí REST API.

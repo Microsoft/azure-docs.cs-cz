@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 3301c43aa71f041de1c53fb4083de73b6d2e4450
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381099"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Rychlý Start: připojení k aplikaci Custom Commands pomocí sady Speech SDK (Preview)
 
@@ -26,7 +26,7 @@ V tomto článku:
 - Publikování vlastní aplikace příkazů a získání identifikátoru aplikace (ID aplikace)
 - Vytvoření klientské aplikace pomocí sady Speech SDK, která vám umožní komunikovat s aplikacemi pro vlastní příkazy
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste ještě nevytvořili aplikaci Custom Commands, můžete to udělat v těchto předchozích rychlých startech:
 
@@ -36,7 +36,7 @@ K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste
 Budete také potřebovat:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Klíč předplatného Azure pro službu Speech Service. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
+- Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
 
 ## <a name="optional-get-started-fast"></a>Volitelné: rychlý začátek
 
@@ -309,7 +309,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
    const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
    const string region = "YourServiceRegion"; // The subscription service region. Note: only 'westus2' is currently supported
 
-   var speechCommandsConfig = DialogServiceConfig.FromSpeechCommandsAppId(speechCommandsApplicationId, speechSubscriptionKey, region);
+   var speechCommandsConfig = CustomCommandsConfig.FromSubscription(speechCommandsApplicationId, speechSubscriptionKey, region);
    speechCommandsConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-us");
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```

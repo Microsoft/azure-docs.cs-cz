@@ -1,58 +1,49 @@
 ---
-title: Nastavit šifrovací certifikát a šifrování tajných kódů v clusterech Windows Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit šifrovací certifikát a šifrování tajných kódů v clusterech Windows.
-services: service-fabric
-documentationcenter: .net
+title: Nastavení certifikátu šifrování v clusterech Windows
+description: Naučte se, jak nastavit šifrovací certifikát a šifrovat tajné klíče v clusterech Windows.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 3d324c54d10433520a73f2bd836c26bd79f1b3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d9413a37be221adc375836719dc1f467a5571fa0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615257"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610178"
 ---
-# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Nastavit šifrovací certifikát a šifrování tajných kódů v clusterech Windows
-Tento článek popisuje, jak nastavit šifrovací certifikát a jeho použití k šifrování tajných kódů v clusterech Windows. Linuxové clustery, naleznete v tématu [nastavit až šifrovací certifikát a šifrování tajných kódů na clusterech s Linuxem.][secret-management-linux-specific-link]
+# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech Windows
+V tomto článku se dozvíte, jak nastavit šifrovací certifikát a použít ho k šifrování tajných klíčů v clusterech Windows. Clustery se systémem Linux najdete v tématech [Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech se systémem Linux.][secret-management-linux-specific-link]
 
-[Služba Azure Key Vault] [ key-vault-get-started] zde slouží jako umístění úložiště pro bezpečné pro certifikáty a jako způsob, jak získat certifikátů nainstalovaných na clustery Service Fabric v Azure. Pokud nenasazujete do Azure, není potřeba pomocí služby Key Vault pro správu tajných kódů aplikace Service Fabric. Ale *pomocí* tajných kódů v aplikaci je cloud více platforem, aby umožňovala nasadit do clusteru už jsou hostované kdekoli. 
+[Azure Key Vault][key-vault-get-started] se tady používá jako bezpečné umístění úložiště pro certifikáty a jako způsob, jak získat certifikáty nainstalované v clusterech Service Fabric v Azure. Pokud neprovádíte nasazení do Azure, nemusíte používat Key Vault ke správě tajných kódů v aplikacích Service Fabric. *Používání* tajných klíčů v aplikaci je ale cloudová platforma – nezávislá umožňuje nasazení aplikací do clusteru hostovaného kdekoli. 
 
-## <a name="obtain-a-data-encipherment-certificate"></a>Získat certifikát pro šifrování dat
-Certifikát pro šifrování dat se používá výhradně pro šifrování a dešifrování [parametry] [ parameters-link] v služby Settings.xml a [proměnné prostředí] [ environment-variables-link] v souboru ServiceManifest.xml služby. Není použit pro ověření nebo podepisování šifrovaného textu. Certifikát musí splňovat následující požadavky:
+## <a name="obtain-a-data-encipherment-certificate"></a>Získání certifikátu pro zakódování dat
+Certifikát zašifrování dat se používá výhradně pro šifrování a dešifrování [parametrů][parameters-link] v nastavení služby. XML a [proměnných prostředí][environment-variables-link] v souboru ServiceManifest. XML služby. Nepoužívá se k ověřování nebo podepisování šifrovacího textu. Certifikát musí splňovat následující požadavky:
 
 * Certifikát musí obsahovat privátní klíč.
-* Certifikát musí být vytvořen pro výměnu klíčů, musí umožňovat export do souboru Personal Information Exchange (.pfx).
-* Použití klíče certifikátu musí obsahovat šifrování dat (10) a nesmí obsahovat ověření serveru nebo klienta. 
+* Certifikát musí být vytvořen pro výměnu klíčů, který lze exportovat do souboru. pfx (Personal Information Exchange).
+* Použití klíče certifikátu musí zahrnovat zašifrování dat (10) a nemělo by zahrnovat ověřování serveru nebo ověřování klientů. 
   
-  Při vytváření certifikátu podepsaného svým držitelem pomocí Powershellu, například `KeyUsage` příznak musí být nastaveno na `DataEncipherment`:
+  Například při vytváření certifikátu podepsaného svým držitelem pomocí PowerShellu musí být příznak `KeyUsage` nastaven na `DataEncipherment`:
   
   ```powershell
   New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
   ```
 
-## <a name="install-the-certificate-in-your-cluster"></a>Instalace certifikátu ve vašem clusteru
-Tento certifikát musí být nainstalována na každém uzlu v clusteru. Zobrazit [vytvoření clusteru pomocí Azure Resource Manageru] [ service-fabric-cluster-creation-via-arm] pokyny pro instalaci. 
+## <a name="install-the-certificate-in-your-cluster"></a>Instalace certifikátu do clusteru
+Tento certifikát musí být nainstalovaný na každém uzlu v clusteru. Pokyny k instalaci najdete v tématu [Postup vytvoření clusteru pomocí Azure Resource Manager][service-fabric-cluster-creation-via-arm] . 
 
-## <a name="encrypt-application-secrets"></a>Šifrování tajných klíčů aplikací
-Následující příkaz Powershellu se používá k šifrování tajného kódu. Tento příkaz šifruje pouze hodnotu parametru. provádí **není** podepsat šifrovaného textu. Je nutné použít stejný certifikát šifrování, která je nainstalovaná ve vašem clusteru k vytvoření šifrovaného textu pro hodnoty tajných kódů:
+## <a name="encrypt-application-secrets"></a>Šifrování tajných klíčů aplikace
+Následující příkaz prostředí PowerShell slouží k šifrování tajného klíče. Tento příkaz zašifruje pouze hodnotu. **nepodepisuje** šifrovaný text. Ke generování šifrovaného textu pro tajné hodnoty musíte použít stejný certifikát zašifrování, který je nainstalovaný ve vašem clusteru:
 
 ```powershell
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-Výsledný řetězec base-64 kódovaných obsahuje šifrovaného textu tajného kódu i informace o certifikátu, který byl použit k šifrování.
+Výsledný řetězec s kódováním Base-64 obsahuje tajný šifrovaný text i informace o certifikátu, který se použil k zašifrování.
 
-## <a name="next-steps"></a>Další postup
-Zjistěte, jak [zadejte šifrované tajné klíče v aplikaci.][secret-management-specify-encrypted-secrets-link]
+## <a name="next-steps"></a>Další kroky
+Naučte se, jak [zadat šifrované tajné klíče v aplikaci.][secret-management-specify-encrypted-secrets-link]
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/key-vault-overview.md

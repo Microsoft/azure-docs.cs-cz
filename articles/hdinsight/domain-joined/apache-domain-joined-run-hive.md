@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 9005b2e01cdb17d6aa6c630ec8be3d702d5b138c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688112"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435874"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
 
 Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro Apache Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad se pomocí aplikace Excel a ovladače ODBC připojte k tabulkám podregistru v HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster HDInsight se Balíček zabezpečení podniku. Viz téma [konfigurace clusterů HDInsight s](apache-domain-joined-configure.md)protokolem ESP.
 * Pracovní stanice s Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
@@ -40,11 +40,11 @@ Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro Apache Hive. V tomt
 
 ## <a name="create-domain-users"></a>Vytvoření uživatelů domén
 
-Informace o tom, jak vytvářet hiveruser1 a hiveuser2, najdete v tématu [Vytvoření clusteru HDInsight s](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)protokolem ESP. V tomto článku použijete dva uživatelské účty.
+Informace o tom, jak vytvářet hiveruser1 a hiveuser2, najdete v tématu [Vytvoření clusteru HDInsight s](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)protokolem ESP. V tomto článku použijete dva uživatelské účty.
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
 
-V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Oba uživatelé byli vytvořeni pomocí [Vytvoření clusteru HDInsight s](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)protokolem ESP. V další části budete testovat tyto dvě zásady v Excelu.
+V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable. Udělíte oprávnění Vybrat na různé sady sloupců. Oba uživatelé byli vytvořeni pomocí [Vytvoření clusteru HDInsight s](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)protokolem ESP. V další části budete testovat tyto dvě zásady v Excelu.
 
 **Vytvoření zásad Ranger**
 
@@ -56,10 +56,10 @@ V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable.
     |---|---|
     |Název zásady|Read-hivesampletable – vše|
     |Databáze podregistru|default|
-    |stolní|hivesampletable|
+    |table|hivesampletable|
     |Sloupec podregistr|*|
     |Vybrat uživatele|hiveuser1|
-    |Oprávnění|vybrali|
+    |Oprávnění|vyberte|
 
     ![Konfigurace zásad podregistru HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
@@ -74,10 +74,10 @@ V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable.
     |---|---|
     |Název zásady|Read-hivesampletable-devicemake|
     |Databáze podregistru|default|
-    |stolní|hivesampletable|
+    |table|hivesampletable|
     |Sloupec podregistr|ClientID, devicemake|
     |Vybrat uživatele|hiveuser2|
-    |Oprávnění|vybrali|
+    |Oprávnění|vyberte|
 
 ## <a name="create-hive-odbc-data-source"></a>Vytvoření zdroje dat Hive ODBC
 
@@ -88,7 +88,7 @@ Pokyny najdete v tématu [Vytvoření zdroje dat Hive ODBC](../hadoop/apache-had
  | Název zdroje dat | Zadejte název zdroje dat. |
  | Hostitel | Zadejte CLUSTERNAME.azurehdinsight.net. Například mujHDICluster.azurehdinsight.net. |
  | Port | Použijte **443**. (Tento port se změnil z 563 na 443.) |
- | Databáze | Použijte **Výchozí**. |
+ | databáze | Použijte **Výchozí**. |
  | Typ serveru Hive | Vyberte **Hive Server 2**. |
  | Mechanismus | Vyberte **Služba Azure HDInsight** |
  | Cesta HTTP | Ponechte prázdné. |

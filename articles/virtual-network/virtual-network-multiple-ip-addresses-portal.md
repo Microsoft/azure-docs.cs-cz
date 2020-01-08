@@ -1,6 +1,6 @@
 ---
-title: Několik IP adres pro Azure virtual machines – portál | Dokumentace Microsoftu
-description: Zjistěte, jak přiřadit několik IP adres pro virtuální počítač pomocí webu Azure portal | Resource Manager.
+title: Několik IP adres pro virtuální počítače Azure – portál | Microsoft Docs
+description: Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí Azure Portal | Správce prostředků.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,95 +15,95 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
-ms.openlocfilehash: fcb9cc817128bce9498312d3fb016761b6382634
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612742"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646381"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřadit několik IP adres pro virtuální počítače pomocí webu Azure portal
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřazení více IP adres k virtuálním počítačům pomocí Azure Portal
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> Tento článek vysvětluje, jak vytvořit virtuální počítač (VM) prostřednictvím modelu nasazení Azure Resource Manageru pomocí webu Azure portal. Několik IP adres nelze přiřadit k prostředkům vytvořeným prostřednictvím modelu nasazení classic. Další informace o modelech nasazení Azure najdete v článku [vysvětlení modelů nasazení](../resource-manager-deployment-model.md) článku.
+> Tento článek vysvětluje, jak pomocí Azure Portal vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager. K prostředkům vytvořeným prostřednictvím modelu nasazení Classic nelze přiřadit více IP adres. Další informace o modelech nasazení Azure najdete v článku [Principy modelů nasazení](../resource-manager-deployment-model.md) .
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Vytvoření virtuálního počítače s několika IP adresami
 
-Pokud chcete vytvořit virtuální počítač s několika IP adresami nebo statickou privátní IP adresu, musíte vytvořit pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure. Další informace jak, klikněte na možnosti prostředí PowerShell nebo rozhraní příkazového řádku v horní části tohoto článku. Vytvoření virtuálního počítače pomocí jedné dynamickou privátní IP adresu a (volitelně) jedna veřejná IP adresa. Použití portálu podle následujících kroků v [vytvoření virtuálního počítače s Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) nebo [vytvoření virtuálního počítače s Linuxem](../virtual-machines/linux/quick-create-portal.md) článků. Po vytvoření virtuálního počítače můžete změnit typ IP adresy z dynamické na statickou a přidejte další IP adresy pomocí portálu podle následujících kroků v [přidat IP adresy k virtuálnímu počítači](#add) části tohoto článku.
+Pokud chcete vytvořit virtuální počítač s několika IP adresami nebo statickou privátní IP adresou, musíte ho vytvořit pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI. Pokud se chcete dozvědět, jak, klikněte na možnosti PowerShellu nebo rozhraní příkazového řádku v horní části tohoto článku. Můžete vytvořit virtuální počítač s jednou dynamickou privátní IP adresou a (volitelně) jedinou veřejnou IP adresou. Použijte portál podle kroků uvedených v části [Vytvoření virtuálního počítače s Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) nebo [Vytvoření článků pro virtuální počítače se systémem Linux](../virtual-machines/linux/quick-create-portal.md) . Po vytvoření virtuálního počítače můžete změnit typ IP adresy z možností Dynamic na statickou a přidat další IP adresy pomocí portálu podle kroků v části [Přidání IP adres do virtuálního počítače](#add) v tomto článku.
 
-## <a name="add"></a>Přidejte IP adresy virtuálního počítače
+## <a name="add"></a>Přidání IP adres k virtuálnímu počítači
 
-Privátní a veřejné IP adresy Azure síťovému rozhraní můžete přidat provedením následujících kroků. Příklady v následujících částech Předpokládejme, že máte již virtuální počítač s tři konfigurace protokolu IP je popsáno v [scénář](#scenario), ale to není nutné.
+K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy, a to provedením následujících kroků. V příkladech v následujících oddílech se předpokládá, že už máte virtuální počítač se třemi konfiguracemi protokolu IP, které jsou popsané ve [scénáři](#scenario), ale není to potřeba.
 
 ### <a name="coreadd"></a>Základní kroky
 
-1. Přejděte na webu Azure portal na https://portal.azure.com a v případě potřeby se přihlaste do ní.
-2. Na portálu klikněte na tlačítko **další služby** > typ *virtuálních počítačů* pole filtru, a pak klikněte na **virtuálních počítačů**.
-3. V **virtuálních počítačů** podokně, klikněte na virtuální počítač, které chcete přidat IP adres. Klikněte na tlačítko **síťová rozhraní** ve virtuálním počítači, které se zobrazí a pak vyberte síťové rozhraní, které chcete přidat IP adres. V tomto příkladu je znázorněno na následujícím obrázku s názvem síťového adaptéru *myNIC* z virtuálního počítače s názvem *myVM* je vybrán:
+1. V případě potřeby vyhledejte Azure Portal v https://portal.azure.com a přihlaste se k ní.
+2. Na portálu klikněte na **Další služby** > do pole Filtr zadejte *virtuální počítače* a potom klikněte na **virtuální počítače**.
+3. V podokně **virtuální počítače** klikněte na virtuální počítač, do kterého chcete přidat IP adresy. V podokně virtuální počítač klikněte na **Síťová rozhraní** , která se zobrazí, a pak vyberte síťové rozhraní, do kterého chcete přidat IP adresy. V příkladu zobrazeném na následujícím obrázku je vybrána síťová karta s názvem *myNIC* z virtuálního počítače s názvem *myVM* :
 
     ![Síťové rozhraní](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-4. V podokně se zobrazí pro vybrané síťové rozhraní, klikněte na tlačítko **konfigurací protokolu IP**.
+4. V podokně, které se zobrazí pro vybraný síťový adaptér, klikněte na **Konfigurace protokolu IP**.
 
-Proveďte kroky v jednom z částí, které následují, na základě typu IP adresu, kterou chcete přidat.
+V závislosti na typu IP adresy, kterou chcete přidat, proveďte kroky v jedné z následujících částí.
 
-### <a name="add-a-private-ip-address"></a>**Přidejte privátní IP adresy**
+### <a name="add-a-private-ip-address"></a>**Přidat privátní IP adresu**
 
-Proveďte následující kroky pro přidání nové privátní IP adresy:
+Chcete-li přidat novou privátní IP adresu, proveďte následující kroky:
 
-1. Proveďte kroky v [základní kroky](#coreadd) části tohoto článku.
-2. Klikněte na **Přidat**. V **přidat IP adresu konfigurace** podokno, které se zobrazí, vytvořte konfiguraci IP adresy s názvem *IPConfig 4* s *10.0.0.7* jako *statické* privátní IP adresu a pak klikněte na **OK**.
+1. Proveďte kroky v části [základní kroky](#coreadd) tohoto článku.
+2. Klikněte na tlačítko **Add** (Přidat). V podokně **Přidat konfiguraci protokolu IP** , které se zobrazí, vytvořte konfiguraci protokolu IP s názvem *ipconfig-4* s *10.0.0.7* jako se *statickou* privátní IP adresou a pak klikněte na **OK**.
 
     > [!NOTE]
-    > Při přidávání statickou IP adresu, musíte zadat nevyužité, platná adresa v podsíti, ve které je síťové rozhraní připojené k. Pokud není k dispozici adresu, kterou jste vybrali, na portálu se zobrazí X pro IP adresu a je nutné vybrat jiný.
+    > Když přidáváte statickou IP adresu, musíte v podsíti, ke které je připojená síťová karta, zadat nepoužitou platnou adresu. Pokud vybraná adresa není k dispozici, portál zobrazí X pro IP adresu a Vy musíte vybrat jinou.
 
-3. Po kliknutí na OK, podokno se zavře a zobrazí nová konfigurace IP uvedené. Klikněte na tlačítko **OK** zavřete **přidat IP adresu konfigurace** podokně.
-4. Můžete kliknout na **přidat** přidat další konfigurace protokolu IP, nebo zavřete všechna otevřená okna mohli dokončit přidávání IP adresy.
-5. Přidat privátních IP adres do operačního systému virtuálního počítače pomocí kroků v [přidat IP adresy na operační systém virtuálního počítače](#os-config) části tohoto článku.
+3. Po kliknutí na tlačítko OK se podokno zavře a zobrazí se nová konfigurace protokolu IP. Kliknutím na tlačítko **OK** zavřete podokno **Přidat konfiguraci protokolu IP** .
+4. Kliknutím na **Přidat** můžete přidat další konfigurace protokolu IP nebo zavřít všechna otevřená okna a dokončit přidávání IP adres.
+5. Doplněním kroků v části [Přidání IP adres do operačního systému](#os-config) virtuálního počítače v tomto článku přidejte privátní IP adresy do operačního systému virtuálního počítače.
 
-### <a name="add-a-public-ip-address"></a>Přidání veřejné IP adresy
+### <a name="add-a-public-ip-address"></a>Přidat veřejnou IP adresu
 
-Veřejná IP adresa se přidá tím, že přidružíte prostředek veřejné IP adresy pro novou konfiguraci protokolu IP nebo existující konfigurace protokolu IP.
+Veřejná IP adresa se přidá pomocí přidružení prostředku veřejné IP adresy k nové konfiguraci protokolu IP nebo existující konfiguraci protokolu IP.
 
 > [!NOTE]
-> Veřejné IP adresy mají nominální poplatek. Další informace o cenách IP adres, [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) stránky. Platí omezení na počet veřejné IP adresy, které je možné v rámci předplatného. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md#networking-limits).
+> Veřejné IP adresy mají nominální poplatek. Pokud se chcete dozvědět víc o cenách IP adres, přečtěte si stránku [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses) . Počet veřejných IP adres, které se dají použít v předplatném, je omezený. Další informace o omezeních najdete v článku o [omezeních Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 > 
 
-### <a name="create-public-ip"></a>Vytvořte prostředek veřejné IP adresy
+### <a name="create-public-ip"></a>Vytvoření prostředku veřejné IP adresy
 
-Veřejná IP adresa je jedním z nastavení prostředku veřejné IP adresy. Pokud máte prostředek veřejné IP adresy, který není aktuálně přidružen ke konfiguraci IP, kterou chcete přidružit ke konfiguraci IP, přeskočte následující kroky a dokončete kroky v jednom z částí, které následují, podle potřeby. Pokud nemáte k dispozici prostředek veřejné IP adresy, proveďte následující kroky pro jeho vytvoření:
+Veřejná IP adresa je jedno nastavení pro prostředek veřejné IP adresy. Pokud máte prostředek veřejné IP adresy, který není aktuálně přidružený ke konfiguraci protokolu IP, kterou chcete přidružit ke konfiguraci protokolu IP, přeskočte následující postup a proveďte kroky uvedené v jedné z následujících částí, jak budete potřebovat. Pokud nemáte dostupný prostředek veřejné IP adresy, proveďte následující kroky, abyste ho vytvořili:
 
-1. Přejděte na webu Azure portal na https://portal.azure.com a v případě potřeby se přihlaste do ní.
-3. Na portálu klikněte na tlačítko **vytvořit prostředek** > **sítě** > **veřejnou IP adresu**.
-4. V **vytvoření veřejné IP adresy** podokno, které se zobrazí, zadejte **název**vyberte **přiřazení IP adresy** typ, **předplatné**, **Skupiny prostředků**a **umístění**, pak klikněte na tlačítko **vytvořit**, jak je znázorněno na následujícím obrázku:
+1. V případě potřeby vyhledejte Azure Portal v https://portal.azure.com a přihlaste se k ní.
+3. Na portálu klikněte na **vytvořit prostředek** > **síti** > **veřejnou IP adresou**.
+4. V podokně **vytvořit veřejnou IP adresu** , která se zobrazí, zadejte **název**, vyberte typ **přiřazení IP adresy** , **předplatné**, **skupinu prostředků**a **umístění**a pak klikněte na **vytvořit**, jak je znázorněno na následujícím obrázku:
 
-    ![Vytvořte prostředek veřejné IP adresy](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
+    ![Vytvoření prostředku veřejné IP adresy](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
-5. Proveďte kroky v jednom z následující části pro přidružení prostředek veřejné IP adresy pro konfiguraci IP.
+5. Provedením kroků v jedné z následujících částí přidružte prostředek veřejné IP adresy k konfiguraci protokolu IP.
 
-#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Přidružte prostředek veřejné IP adresy na novou konfiguraci protokolu IP
+#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Přidružte prostředek veřejné IP adresy k nové konfiguraci protokolu IP.
 
-1. Proveďte kroky v [základní kroky](#coreadd) části tohoto článku.
-2. Klikněte na **Přidat**. V **přidat IP adresu konfigurace** podokno, které se zobrazí, vytvořte konfiguraci IP adresy s názvem *IPConfig 4*. Povolit **veřejnou IP adresu** a vyberte existující, k dispozici prostředek veřejné IP adresy z **zvolte veřejnou IP adresu** podokno, které se zobrazí.
+1. Proveďte kroky v části [základní kroky](#coreadd) tohoto článku.
+2. Klikněte na tlačítko **Add** (Přidat). V podokně **Přidat konfiguraci protokolu IP** , které se zobrazí, vytvořte konfiguraci protokolu IP s názvem *ipconfig-4*. Povolte **veřejnou IP adresu** a vyberte existující dostupný prostředek veřejné IP adresy z podokna **zvolit veřejnou IP adresu** , které se zobrazí.
 
-    Po výběru prostředku veřejné IP adresy, klikněte na tlačítko **OK** a podokno se zavře. Pokud nemáte stávající veřejnou IP adresu, můžete vytvořit jednu podle postupu uvedeného v [vytvořte prostředek veřejné IP adresy](#create-public-ip) části tohoto článku. 
+    Po výběru prostředku veřejné IP adresy klikněte na **OK** a zavře se podokno. Pokud nemáte existující veřejnou IP adresu, můžete ji vytvořit provedením kroků v části [vytvoření prostředku veřejné IP adresy](#create-public-ip) v tomto článku. 
 
-3. Projděte si novou konfiguraci protokolu IP. I v případě, že privátní IP adresa se přiřazuje explicitně, jeden byl automaticky přiřazen ke konfiguraci IP adresy, protože všechny konfigurace protokolu IP, musí mít privátní IP adresu.
-4. Můžete kliknout na **přidat** přidat další konfigurace protokolu IP, nebo zavřete všechna otevřená okna mohli dokončit přidávání IP adresy.
-5. Přidejte privátní IP adresu v operačním systému virtuálního počítače pomocí kroků pro váš operační systém v [přidat IP adresy na operační systém virtuálního počítače](#os-config) části tohoto článku. Nepřidávejte veřejnou IP adresu do operačního systému.
+3. Zkontrolujte novou konfiguraci protokolu IP. I když privátní IP adresa nebyla explicitně přiřazena, jedna byla automaticky přiřazena ke konfiguraci protokolu IP, protože všechny konfigurace IP adres musí mít privátní IP adresu.
+4. Kliknutím na **Přidat** můžete přidat další konfigurace protokolu IP nebo zavřít všechna otevřená okna a dokončit přidávání IP adres.
+5. Dokončete kroky pro operační systém v části [Přidání IP adres do operačního systému](#os-config) virtuálního počítače v tomto článku a přidejte tak privátní IP adresu do operačního systému virtuálního počítače. Nepřidejte veřejnou IP adresu k operačnímu systému.
 
-#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Přidružte prostředek veřejné IP adresy do existující konfigurace IP
+#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Přidružte prostředek veřejné IP adresy k existující konfiguraci protokolu IP.
 
-1. Proveďte kroky v [základní kroky](#coreadd) části tohoto článku.
-2. Klikněte na možnost konfigurace protokolu IP, které chcete přidat prostředek veřejné IP adresy na.
-3. V podokně IPConfig, který se zobrazí, klikněte na tlačítko **IP adresu**.
-4. V **zvolte veřejnou IP adresu** podokno, které se zobrazí, vyberte veřejnou IP adresu.
-5. Klikněte na tlačítko **Uložit** a podokna zavřete. Pokud nemáte stávající veřejnou IP adresu, můžete vytvořit jednu podle postupu uvedeného v [vytvořte prostředek veřejné IP adresy](#create-public-ip) části tohoto článku.
-3. Projděte si novou konfiguraci protokolu IP.
-4. Můžete kliknout na **přidat** přidat další konfigurace protokolu IP, nebo zavřete všechna otevřená okna mohli dokončit přidávání IP adresy. Nepřidávejte veřejnou IP adresu do operačního systému.
+1. Proveďte kroky v části [základní kroky](#coreadd) tohoto článku.
+2. Klikněte na konfiguraci protokolu IP, do které chcete přidat prostředek veřejné IP adresy.
+3. V podokně IPConfig, které se zobrazí, klikněte na **IP adresa**.
+4. V podokně **Zvolte veřejnou IP adresu** , které se zobrazí, vyberte veřejnou IP adresu.
+5. Klikněte na **Uložit** a zavřete podokna. Pokud nemáte existující veřejnou IP adresu, můžete ji vytvořit provedením kroků v části [vytvoření prostředku veřejné IP adresy](#create-public-ip) v tomto článku.
+3. Zkontrolujte novou konfiguraci protokolu IP.
+4. Kliknutím na **Přidat** můžete přidat další konfigurace protokolu IP nebo zavřít všechna otevřená okna a dokončit přidávání IP adres. Nepřidejte veřejnou IP adresu k operačnímu systému.
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

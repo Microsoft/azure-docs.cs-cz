@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: e23bf7b3e111d9945ac3eaab942fa77ddba9d9ed
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b64b0f32b7e8d94115facf43646a5a030697d80f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444413"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat z a do úložiště tabulek v Azure pomocí Azure Data Factory
 
@@ -54,7 +54,7 @@ Propojenou službu Azure Storage můžete vytvořit pomocí klíče účtu. Posk
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na **AzureTableStorage**. |Ano |
-| connectionString | Zadejte informace potřebné pro připojení k úložišti pro vlastnost připojovací řetězec. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také umístit klíč účtu do Azure Key Vault a načíst `accountKey` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. |Ano |
+| connectionString | Zadejte informace potřebné pro připojení k úložišti pro vlastnost připojovací řetězec. <br/>Můžete také umístit klíč účtu do Azure Key Vault a načíst `accountKey` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. |Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
@@ -68,10 +68,7 @@ Propojenou službu Azure Storage můžete vytvořit pomocí klíče účtu. Posk
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -89,10 +86,7 @@ Propojenou službu Azure Storage můžete vytvořit pomocí klíče účtu. Posk
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;"
-            },
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
             "accountKey": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

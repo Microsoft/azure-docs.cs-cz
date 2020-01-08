@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461537"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: nastavení Synchronizace dat SQL mezi Azure SQL Database a SQL Server místním prostředím
 
@@ -33,14 +33,20 @@ Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat S
 
 ## <a name="create-sync-group"></a>Vytvořit skupinu synchronizace
 
-1. V prohlížeči přejděte na Azure Portal. Vyhledejte databázi SQL z řídicího panelu nebo vyberte ikonu **databáze SQL** na panelu nástrojů a na stránce **databáze SQL** vyberte databázi, kterou chcete použít jako databázi centra pro synchronizaci dat.
+1. Pro vyhledání databáze SQL použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **databáze SQL**.
+
+    ![Vyhledejte databáze SQL, portál Microsoft Azure](media/sql-database-get-started-sql-data-sync/search-for-sql-databases.png)
+
+1. Vyberte databázi, kterou chcete použít jako databázi centra pro synchronizaci dat.
+
+    ![Vyberte ze seznamu SQL Database portál Microsoft Azure](media/sql-database-get-started-sql-data-sync/select-sql-database.png)
 
     > [!NOTE]
-    > Databáze centra centrální koncový bod topologie synchronizace, ve kterém má skupina synchronizace více koncových bodů databáze. Všechny ostatní členské databáze s koncovými body ve skupině synchronizace se synchronizují s databází centra.
+    > Databáze centra je centrální koncový bod synchronizační topologie, ve kterém má skupina synchronizace více koncových bodů databáze. Všechny ostatní členské databáze s koncovými body ve skupině synchronizace se synchronizují s databází centra.
 
-1. Na stránce **databáze SQL** pro vybranou databázi vyberte možnost **synchronizovat s ostatními databázemi**.
+1. V nabídce **databáze SQL** pro vybranou databázi vyberte možnost **synchronizovat s ostatními databázemi**.
 
-    ![Možnost synchronizace s ostatními databázemi](media/sql-database-get-started-sql-data-sync/datasync-overview.png)
+    ![Synchronizace s ostatními databázemi, SQL Database, portál Microsoft Azure](media/sql-database-get-started-sql-data-sync/sync-to-other-databases.png)
 
 1. Na stránce **synchronizovat s ostatními databázemi** vyberte **Nová skupina synchronizace**. Otevře se stránka **Nová skupina synchronizace** s zvýrazněnou možností **vytvořit skupinu synchronizace (krok 1)** .
 
@@ -80,7 +86,7 @@ V části **databáze členů** můžete volitelně přidat Azure SQL Database d
   | ----------------------------- | ------------------------------------------------- |
   | **Název člena synchronizace** | Zadejte název nového člena synchronizace. Tento název se liší od samotného názvu databáze. |
   | **Předplatné** | Vyberte přidružené předplatné Azure pro účely fakturace. |
-  | **SQL Server Azure** | Vyberte existující server SQL Database. |
+  | **Azure SQL Server** | Vyberte existující server SQL Database. |
   | **Azure SQL Database** | Vyberte existující databázi SQL. |
   | **Pokyny pro synchronizaci** | Vyberte **obousměrnou synchronizaci**, **do centra**nebo **z centra**. |
   | **Uživatelské jméno** a **heslo** | Zadejte existující pověření pro server SQL Database, na kterém je umístěna členský databáze. Nezadávejte *nové* přihlašovací údaje v této části. |
@@ -163,7 +169,7 @@ Po vytvoření a nasazení nových členů skupiny synchronizace se na stránce 
 
     ![Ruční synchronizace](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Jak často může synchronizace dat synchronizovat moje data?**
 

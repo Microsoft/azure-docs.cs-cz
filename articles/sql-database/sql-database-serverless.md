@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372326"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database – bezserverová úroveň
 
@@ -177,30 +177,27 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Vytvořit novou databázi na výpočetní úrovni bez serveru 
 
+V následujících příkladech se vytvoří nová databáze na výpočetní úrovni bez serveru. Příklady explicitně určují minimální zpoždění virtuální jádra, Max virtuální jádra a prodleva při autopauze.
+
 #### <a name="use-azure-portal"></a>Použití webu Azure Portal
 
 Informace najdete [v tématu rychlý Start: vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal](sql-database-single-database-get-started.md).
 
+
 #### <a name="use-powershell"></a>Použití PowerShellu
-
-Následující příklad vytvoří novou databázi na výpočetní úrovni bez serveru.  V tomto příkladu je explicitně určen minimální prodleva virtuální jádra, Max virtuální jádra a interval pro autopauzu.
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+#### <a name="use-azure-cli"></a>Použití Azure CLI
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```powershell
+```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
   -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Použití jazyka Transact-SQL (T-SQL)
 
@@ -215,11 +212,10 @@ Podrobnosti najdete v tématu [Vytvoření databáze](/sql/t-sql/statements/crea
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Přesunout databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru
 
+V následujících příkladech přesunete databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru. Příklady explicitně určují minimální zpoždění virtuální jádra, Max virtuální jádra a prodleva při autopauze.
+
 #### <a name="use-powershell"></a>Použití PowerShellu
 
-Následující příklad přesune databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru. V tomto příkladu je explicitně určen minimální prodleva virtuální jádra, Max virtuální jádra a interval pro autopauzu.
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
@@ -227,14 +223,13 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Použití Azure CLI
 
-```powershell
+```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Použití jazyka Transact-SQL (T-SQL)
 
@@ -253,15 +248,14 @@ Databáze bez serveru se dá přesunout do zřízené výpočetní vrstvy stejn�
 
 ## <a name="modifying-serverless-configuration"></a>Úprava konfigurace bez serveru
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="use-powershell"></a>Použití PowerShellu
 
 Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy automatického pozastavení se provádí pomocí příkazu [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) v prostředí PowerShell pomocí argumentů `MaxVcore`, `MinVcore`a `AutoPauseDelayInMinutes`.
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="use-azure-cli"></a>Použití Azure CLI
 
 Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí argumentů `capacity`, `min-capacity`a `auto-pause-delay`.
 
-* * *
 
 ## <a name="monitoring"></a>Sledování
 
@@ -296,22 +290,21 @@ Metriky pro monitorování využití prostředků balíčku aplikace a fondu už
 
 V Azure Portal se stav databáze zobrazí v podokně přehledu serveru, kde jsou uvedeny databáze, které obsahuje. Stav databáze je také zobrazen v podokně Přehled pro databázi.
 
-Pomocí následujícího příkazu PowerShellu můžete zadat dotaz na stav pozastavení a obnovení databáze:
+Pomocí následujících příkazů můžete zadat dotaz na stav pozastavení a obnovení databáze:
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="use-powershell"></a>Použití PowerShellu
 
 ```powershell
 Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Použití Azure CLI
 
-```powershell
+```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
 
-* * *
 
 ## <a name="resource-limits"></a>Omezení prostředků
 

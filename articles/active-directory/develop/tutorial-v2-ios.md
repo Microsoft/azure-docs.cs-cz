@@ -1,6 +1,6 @@
 ---
-title: Začínáme s iOS & macOS – Microsoft Identity Platform | Azure
-description: Jak aplikace iOS a macOS (SWIFT) můžou volat rozhraní API, které vyžaduje přístupové tokeny pomocí platformy Microsoft Identity Platform.
+title: Kurz MSAL for iOS & macOS – Microsoft Identity Platform | Azure
+description: Přečtěte si, jak aplikace iOS a macOS (SWIFT) můžou volat rozhraní API, které vyžaduje přístupové tokeny s využitím platformy Microsoft Identity Platform.
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a0aa97f2cb54295d9403ec332eb9c0ada684df12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964664"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423405"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro iOS nebo macOS.
 
@@ -45,7 +45,7 @@ Tato ukázka implementuje ověřování pomocí knihovny Microsoft Authenticatio
 
 Tento kurz se týká aplikací pro iOS i macOS. Všimněte si, že některé kroky se mezi těmito dvěma platformami liší. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - K sestavení aplikace v této příručce se vyžaduje XCode verze 10. x nebo vyšší. XCode si můžete stáhnout z [webu iTunes](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Adresa URL pro stažení XCode").
 - Microsoft Authentication Library ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Můžete použít Správce závislostí nebo přidat knihovnu ručně. Níže uvedené pokyny vám ukážou, jak.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ce6459dd65c75c6fcff5591d4e4667e4b0c75fa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 56194bcfb9531def87a9918ad442a2927413c964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928481"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432965"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Najít adresu pomocí služby Azure Maps Search Service
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Informace o vytvoření účtu najdete v pokynech v tématu [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a postup pro získání primárního klíče předplatného pro váš účet pomocí kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) .
+Pokud chcete volat rozhraní API služby Maps, potřebujete účet a klíč mapy. Podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) vytvořte předplatné Azure Maps účtu a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 V tomto článku se k sestavení volání REST používá [aplikace pro publikování](https://www.getpostman.com/apps) . Můžete použít libovolné vývojové prostředí API, které dáváte přednost.
 
@@ -48,9 +48,9 @@ Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro
 
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
-    | HTTP – metoda | GET |
+    | Metoda HTTP | GET |
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Autorizace | Bez ověřování |
+    | Autorizace | No Auth |
 
     Atribut **JSON** v cestě URL určuje formát odpovědi. V celém tomto článku používáte JSON, abyste usnadnili používání a čitelnost. Dostupné formáty odezvy najdete v definici **přibližné vyhledávání** v [referenci rozhraní API pro funkce Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
@@ -60,9 +60,9 @@ Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro
 
     | Klíč | Hodnota |
     |------------------|-------------------------|
-    | verze API-Version | 1.0 |
+    | api-version | 1.0 |
     | předplatné – klíč | \<Azure Maps Key\> |
-    | query | Pizza |
+    | query | pizza |
 
 4. Klikněte na **Odeslat** a zkontrolujte text odpovědi.
 
@@ -74,7 +74,7 @@ Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro
 
     | Klíč | Hodnota |
     |------------------|-------------------------|
-    | countrySet | USA |
+    | countrySet | Spojené státy |
   
     Výsledky jsou nyní ohraničeny kódem země a dotaz vrátí Pizza restaurací ve USA.
   
@@ -100,9 +100,9 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
-    | HTTP – metoda | GET |
+    | Metoda HTTP | GET |
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Autorizace | Bez ověřování |
+    | Autorizace | No Auth |
 
 3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
   
@@ -110,7 +110,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
   
     | Klíč | Hodnota |
     |------------------|-------------------------|
-    | verze API-Version | 1.0 |
+    | api-version | 1.0 |
     | předplatné – klíč | \<Azure Maps Key\> |
     | query | 400, široká, Praha, WA 98109 |
   
@@ -127,7 +127,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
 
     | Klíč | Hodnota |
     |-----|------------|
-    | typeahead | true (pravda) |
+    | typeahead | true |
 
     Příznak **typeahead** oznamuje rozhraní API pro vyhledávání adres, aby se dotaz považoval za částečný vstup a vrátil pole prediktivních hodnot.
 
@@ -141,9 +141,9 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
-    | HTTP – metoda | GET |
+    | Metoda HTTP | GET |
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Autorizace | Bez ověřování |
+    | Autorizace | No Auth |
   
 3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
   
@@ -151,7 +151,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
   
     | Klíč | Hodnota |
     |------------------|-------------------------|
-    | verze API-Version | 1.0 |
+    | api-version | 1.0 |
     | předplatné – klíč | \<Azure Maps Key\> |
     | query | 47.591180,-122,332700 |
   
@@ -163,7 +163,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
 
     | Klíč | Hodnota |
     |-----|------------|
-    | číslo | true (pravda) |
+    | číslo | true |
 
     Pokud je parametr dotazu [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) odeslán s požadavkem, může odpověď zahrnovat stranu ulice (vlevo/vpravo) a také pozici posunu pro toto číslo.
   
@@ -171,7 +171,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
 
     | Klíč | Hodnota |
     |-----|------------|
-    | returnSpeedLimit | true (pravda) |
+    | returnSpeedLimit | true |
   
     Pokud je nastaven parametr dotazu [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) , vrátí se odpověď na odeslaný limit.
 
@@ -179,7 +179,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
 
     | Klíč | Hodnota |
     |-----|------------|
-    | returnRoadUse | true (pravda) |
+    | returnRoadUse | true |
 
     Pokud je nastaven parametr dotazu [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) , vrátí odpověď pole pro použití pro reverzní mikrokódování na úrovni ulice.
 
@@ -187,7 +187,7 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
 
     | Klíč | Hodnota |
     |-----|------------|
-    | roadUse | true (pravda) |
+    | roadUse | true |
 
     Můžete omezit dotaz na reverzní mikrokódování na konkrétní typ cesty pomocí parametru dotazu [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) .
   
@@ -201,15 +201,15 @@ Do rozhraní API pro hledání adresy můžete předat úplnou nebo částečnou
   
     | Parametr | Navrhovaná hodnota |
     |---------------|------------------------------------------------|
-    | HTTP – metoda | GET |
+    | Metoda HTTP | GET |
     | Adresa URL požadavku | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Autorizace | Bez ověřování |
+    | Autorizace | No Auth |
   
 3. Klikněte na **parametry**a zadejte následující páry klíč/hodnota, které se použijí jako parametry dotazu nebo cesty v adrese URL požadavku:
   
     | Klíč | Hodnota |
     |------------------|-------------------------|
-    | verze API-Version | 1.0 |
+    | api-version | 1.0 |
     | předplatné – klíč | \<Azure Maps Key\> |
     | query | 47.591180,-122,332700 |
   

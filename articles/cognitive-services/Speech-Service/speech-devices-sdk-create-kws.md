@@ -1,48 +1,27 @@
 ---
-title: Vytvoření vlastního klíčového slova – služba Speech
+title: Vytvořit vlastní klíčová slova – služba Speech
 titleSuffix: Azure Cognitive Services
 description: Zařízení vždycky naslouchá klíčovému slovu (nebo frázi). Když uživatel uvede klíčové slovo, zařízení pošle veškeré následné zvukové nahrávky do cloudu, dokud uživatel nepřestane mluvit. Přizpůsobení klíčového slova je efektivní způsob, jak odlišit vaše zařízení a posílit vaše branding.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.author: erhopf
-ms.openlocfilehash: 42bcc336bfeb325a08c3d65438d66690c0b35100
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/11/2019
+ms.author: dapine
+ms.openlocfilehash: 5bd7352230d4d9daaed219f654be51dc528bea8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380180"
 ---
-# <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Vytvoření vlastního klíčového slova pomocí služby Speech
+# <a name="create-a-custom-keyword-using-speech-studio"></a>Vytvoření vlastního klíčového slova pomocí řeči Studio
 
 Zařízení vždycky naslouchá klíčovému slovu (nebo frázi). Například "Hey Cortana" je klíčové slovo pro pomocníka Cortana. Když uživatel uvede klíčové slovo, zařízení pošle veškeré následné zvukové nahrávky do cloudu, dokud uživatel nepřestane mluvit. Přizpůsobení klíčového slova je efektivní způsob, jak odlišit vaše zařízení a posílit vaše branding.
 
 V tomto článku se dozvíte, jak vytvořit vlastní klíčové slovo pro vaše zařízení.
-
-## <a name="choose-an-effective-keyword"></a>Zvolit efektivní klíčové slovo
-
-Při volbě klíčového slova Vezměte v úvahu následující pokyny:
-
-* Klíčové slovo by mělo být anglické slovo nebo fráze. By měla trvat delší než 2 sekundy říct.
-
-* Slova 4 až 7 slabik fungují nejlépe. Například "Hey, Computer" je klíčové slovo dobrý. Právě "Hey" je nízký.
-
-* Klíčová slova by měla dodržovat běžná pravidla pro výslovnost angličtiny.
-
-* Jedinečný nebo dokonce zhotovené slovo, které následuje běžných pravidel anglické výslovnost může snížit počet falešně pozitivních výsledků. Například "computerama" může být dobrým klíčovým slovem.
-
-* Nevybírejte běžné slovo. Například "jíst" a "přejděte" jsou slova, které lidé často říkají v běžném konverzace. Mohou být false aktivační události pro vaše zařízení.
-
-* Vyhněte se použití klíčového slova, které může mít alternativní výslovnost. Uživatelé museli vědět, výslovnost "vpravo" zařízení reagovat. Například "509" se mohou projevit "pět nula devíti," "pět ale devět," nebo "pět set a devět." "R.E.I." se mohou projevit "r-e – i" nebo "ray." "Live" se mohou projevit "/līv/" nebo "/liv/".
-
-* Nepoužívejte speciální znaky, symboly nebo číslic. Například "jít #" a "20 + kočky" by nepředstavovala správná klíčová slova. Ale "Přejít sharp" nebo "dvacet plus kočky" mohou fungovat. Stále můžete použít symboly v brandingu a můžete posílit správné výslovnost uvádění na trh a dokumentace.
-
-> [!NOTE]
-> Pokud zvolíte klíčové slovo jako klíčové slovo, ujistěte se, že vlastníte tuto ochrannou známku nebo že máte oprávnění od vlastníka ochranné známky, abyste mohli toto slovo použít. Společnost Microsoft není odpovědná za žádné právní problémy, které mohou nastat podle vašeho výběru klíčového slova.
 
 ## <a name="create-your-keyword"></a>Vytvoření klíčového slova
 
@@ -62,17 +41,17 @@ Než budete moct použít vlastní klíčové slovo, budete muset vytvořit klí
 
 1. Chcete-li spustit nový model klíčového slova, klikněte na možnost **model výuky**.
 
-1. Zadejte **název** modelu klíčového slova a volitelný **Popis** , zadejte **klíčové slovo** podle vlastního výběru a klikněte na **Další**. Máme nějaké [pokyny](#choose-an-effective-keyword) , které vám pomůžou zvolit efektivní klíčové slovo.
+1. Zadejte **název** modelu klíčového slova a volitelný **Popis** , zadejte **klíčové slovo** podle vlastního výběru a klikněte na **Další**. Máme nějaké [pokyny](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) , které vám pomůžou zvolit efektivní klíčové slovo.
 
-    ![Zadejte své klíčové slovo](media/custom-keyword/custom-kws-portal-new-model.png) 
+    ![Zadejte své klíčové slovo](media/custom-keyword/custom-kws-portal-new-model.png)
 
 1. Portál teď pro klíčové slovo vytvoří kandidáty na kandidáty. Naslouchat každému kandidátovi kliknutím na tlačítko Přehrát a odebrat kontroly u všech nesprávných výslovností. Jakmile budou kontrolovány pouze dobré výslovnosti, klikněte na možnost **výuka** a začněte vygenerovat klíčové slovo. 
 
-    ![Kontrola klíčového slova](media/custom-keyword/custom-kws-portal-choose-prons.png) 
+    ![Kontrola klíčového slova](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
 1. Generování modelu může trvat až deset minut. Po dokončení modelu se seznam klíčových slov změní ze **zpracování** na **dokončeno** . Pak můžete soubor stáhnout.
 
-    ![Kontrola klíčového slova](media/custom-keyword/custom-kws-portal-download-model.png) 
+    ![Kontrola klíčového slova](media/custom-keyword/custom-kws-portal-download-model.png)
 
 1. Uložte soubor .zip na vašem počítači. Tento soubor budete potřebovat k nasazení vašeho vlastního klíčového slova do zařízení.
 

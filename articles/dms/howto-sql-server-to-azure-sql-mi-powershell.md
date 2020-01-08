@@ -1,6 +1,7 @@
 ---
-title: Migrace SQL Server do Azure SQL Database spravované instance pomocí Database Migration Service a PowerShellu | Microsoft Docs
-description: Naučte se migrovat z místního SQL Server do spravované instance Azure SQL DB pomocí Azure PowerShell.
+title: 'PowerShell: migrace SQL Server do spravované instance SQL'
+titleSuffix: Azure Database Migration Service
+description: Naučte se migrovat z místního SQL Server do Azure SQL Database spravované instance pomocí Azure PowerShell a Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,24 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/29/2019
-ms.openlocfilehash: 426285340a9401aa6c84a7ee07f172eee6791d9e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 227ef72b53b7334cffcb485e23c3e4227613b344
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437918"
 ---
-# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrace SQL Server místně do spravované instance Azure SQL Database pomocí Azure PowerShell
+# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Migrace SQL Server do SQL Database spravované instance pomocí prostředí PowerShell & Azure Database Migration Service
 V tomto článku migrujete databázi **Adventureworks2016** obnovenou do místní instance SQL Server 2005 nebo vyšší do Azure SQL Database spravované instance pomocí Microsoft Azure PowerShell. Databáze z místní instance SQL Server můžete migrovat do Azure SQL Database spravované instance pomocí modulu `Az.DataMigration` v Microsoft Azure PowerShell.
 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 >
 > * Vytvořte skupinu prostředků.
-> * Vytvořte instanci Azure Database Migration Service.
+> * Vytvořte instanci služby Azure Database Migration Service.
 > * Vytvořte projekt migrace v instanci Azure Database Migration Service.
 > * Spuštění migrace
 
@@ -33,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Tento článek obsahuje podrobné informace o tom, jak provádět online i offline migrace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení těchto kroků potřebujete:
 
@@ -44,7 +45,7 @@ K provedení těchto kroků potřebujete:
 * Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Azure SQL Database spravovaná instance. Azure SQL Database spravovanou instanci můžete vytvořit podle podrobností v článku [Vytvoření spravované instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
 * Stažení a instalace [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 nebo novějších verzích.
-* Služba Azure Virtual Network (VNet) vytvořená pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k vašim místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Služba Azure Virtual Network (VNet) vytvořená pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k vašim místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * Dokončili jste vyhodnocení místní migrace databáze a schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
 * Pokud chcete stáhnout a nainstalovat modul `Az.DataMigration` (verze 0.7.2 nebo novější) z Galerie prostředí PowerShell pomocí [rutiny Install-Module prostředí PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
 * Aby bylo zajištěno, že přihlašovací údaje použité pro připojení ke zdrojové SQL Server instance mají oprávnění [Control Server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) .
@@ -77,7 +78,7 @@ Tato rutina očekává následující požadované parametry:
 * *Název skupiny prostředků Azure*. Pomocí příkazu [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) můžete vytvořit skupinu prostředků Azure, jak je uvedeno výše, a zadat její název jako parametr.
 * *Název služby* Řetězec, který odpovídá požadovanému jedinečnému názvu služby pro Azure Database Migration Service.
 * *Umístění*. Určuje umístění služby. Zadejte umístění datového centra Azure, například Západní USA nebo jihovýchodní Asie.
-* *SKU*. Tento parametr odpovídá názvu SKU DMS. V současné době jsou podporovány názvy SKU *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
+* *SKU*. Tento parametr odpovídá názvu SKU DMS. V současné době jsou podporovány názvy SKU *Basic_1vCore*, *Basic_2vCores* *GeneralPurpose_4vCores*.
 * *Identifikátor virtuální podsítě*. K vytvoření podsítě můžete použít rutinu [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) .
 
 Následující příklad vytvoří službu s názvem *MyDMS* ve skupině prostředků *MyDMSResourceGroup* nacházející se v *východní USA* oblasti pomocí virtuální sítě s názvem *MyVNET* a podsítě s názvem *MySubnet*.

@@ -3,16 +3,18 @@ title: Osvědčené postupy registru
 description: Zjistěte, jak pomocí těchto osvědčených postupů efektivně používat službu Azure Container Registry.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445788"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Osvědčené postupy pro službu Azure Container Registry
 
 Když se budete řídit těmito osvědčenými postupy, můžete maximalizovat výkon a nákladově efektivní používání svého privátního registru Dockeru v Azure.
+
+V tématu také najdete [doporučení pro označování a image kontejnerů](container-registry-image-tag-version.md) pro strategie pro označení a verze imagí v registru. 
 
 ## <a name="network-close-deployment"></a>Nasazení blízko sítě
 
@@ -31,7 +33,7 @@ Informace o použití geografické replikace najdete v třídílném kurzu [Geog
 
 S využitím oborů názvů úložiště můžete umožnit sdílení jednoho registru napříč několika skupinami v rámci vaší organizace. Registry se můžou sdílet napříč nasazeními a týmy. Azure Container Registry podporuje vnořené obory názvů a díky tomu umožňuje izolaci skupin.
 
-Představte si například následující značky image kontejneru. Image používané v rámci celého podniku, například `aspnetcore`, jsou umístěné v kořenovém oboru názvů, zatímco jednotlivé image kontejnerů vlastněné produkčními a marketingovými skupinami používají svůj vlastní obor názvů.
+Představte si například následující značky image kontejneru. Image používané v rámci podnikové sítě, jako je `aspnetcore`, jsou umístěné v kořenovém oboru názvů, zatímco image kontejneru vlastněné produkty a marketingovými skupinami používají své vlastní obory názvů.
 
 ```
 contoso.azurecr.io/aspnetcore:2.0
@@ -46,7 +48,7 @@ Vzhledem k tomu, že registry kontejnerů jsou prostředky, které se používaj
 
 I když můžete experimentovat s konkrétním typem hostitele, jako je služba Azure Container Instances, pravděpodobně budete chtít instanci kontejneru odstranit, jakmile budete hotovi. Můžete však také chtít zachovat kolekci imagí, které jste nasdíleli do služby Azure Container Registry. Umístěním registru do vlastní skupiny prostředků minimalizujete riziko nechtěného odstranění kolekce imagí v registru při odstraňování skupiny prostředků instance kontejneru.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 
 Při ověřování ve službě Azure Container Registry existují dva primární scénáře: jednotlivé ověření a ověření služby (neboli bezobslužné ověření). Následující tabulka obsahuje stručný přehled těchto scénářů a doporučenou metodu ověřování pro každý z nich.
 

@@ -1,5 +1,6 @@
 ---
-title: Získání typu účtu úložiště a názvu SKU pomocí .NET-Azure Storage
+title: Získání typu účtu úložiště a názvu SKU pomocí .NET
+titleSuffix: Azure Storage
 description: Naučte se, jak získat Azure Storage typ účtu a název SKU pomocí klientské knihovny .NET.
 services: storage
 author: mhopkins-msft
@@ -8,12 +9,12 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0008d8fa9a33db95b0695ce998d4fc267d6222da
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457485"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Získání typu účtu úložiště a názvu SKU pomocí .NET
 
@@ -23,9 +24,9 @@ Informace o účtu jsou k dispozici pro verze služby od verze 2018-03-28.
 
 ## <a name="about-account-type-and-sku-name"></a>Informace o typu účtu a názvu SKU
 
-**Typ účtu**: Platné typy účtů zahrnují `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage` a.`StorageV2` [Přehled účtu Azure Storage](storage-account-overview.md) obsahuje další informace, včetně popisů různých účtů úložiště.
+**Typ účtu**: platné typy účtů zahrnují `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage`a `StorageV2`. [Přehled účtu Azure Storage](storage-account-overview.md) obsahuje další informace, včetně popisů různých účtů úložiště.
 
-**Název SKU**: Platné názvy SKU zahrnují `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, ,`Standard_RAGRS` a`Standard_ZRS`. `Standard_RAGZRS` V názvech SKU jsou rozlišována velká a malá písmena a jsou řetězcová pole ve [třídě SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
+**Název SKU**: platné názvy sku zahrnují `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`a `Standard_ZRS`. V názvech SKU jsou rozlišována velká a malá písmena a jsou řetězcová pole ve [třídě SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
 
 ## <a name="retrieve-account-information"></a>Načíst informace o účtu
 
@@ -59,10 +60,8 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o dalších operacích, které můžete provádět na účtu úložiště prostřednictvím [Azure Portal](https://portal.azure.com) a REST API Azure.
 
-- [Správa účtu úložiště](storage-account-manage.md)
-- [Upgrade účtu úložiště](storage-account-upgrade.md)
 - [Operace získání informací o účtu (REST)](/rest/api/storageservices/get-account-information)

@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 9/17/2019
-ms.openlocfilehash: 5d8bbe493887c5340f0943a585eb6ff250bd3728
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453060"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Škálování skupiny serverů Citus (Scale-Scale)
 
-Azure Database for PostgreSQL – Citus () zajišťuje škálování samoobslužných služeb pro řešení zvýšeného zatížení. Azure Portal usnadňuje přidávání nových pracovních uzlů a zvýšení kapacity existujících uzlů.
+Azure Database for PostgreSQL – Citus () zajišťuje škálování samoobslužných služeb pro řešení zvýšeného zatížení. Azure Portal usnadňuje přidávání nových pracovních uzlů a zvýšení virtuální jádra stávajících uzlů.
 
 ## <a name="add-worker-nodes"></a>Přidat pracovní uzly
 
@@ -38,9 +38,9 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 Funkce `rebalance_table_shards` znovu vyrovnává všechny tabulky ve skupině [kolocation](concepts-hyperscale-colocation.md) v tabulce s názvem v argumentu. Proto nemusíte volat funkci pro každou distribuovanou tabulku, stačí ji volat na reprezentativní tabulku z každé skupiny kolokace.
 
-## <a name="increase-vcores-or-storage-space"></a>Zvýšení virtuální jádra nebo úložného prostoru
+## <a name="increase-vcores"></a>Zvýšit virtuální jádra
 
-Kromě přidávání nových uzlů můžete zvýšit možnosti existujících uzlů. Přejděte na kartu **Konfigurovat** ve skupině serverů Citus () a Přetáhnutím posuvníku pro **virtuální jádra** a **úložiště** změňte tyto hodnoty pro všechny pracovní uzly. Nezapomeňte použít změny kliknutím na **Uložit** .
+Kromě přidávání nových uzlů můžete zvýšit možnosti existujících uzlů. Tato funkce je aktuálně ve verzi Preview – Pokud chcete požádat o zvýšení virtuální jádra pro uzly ve skupině serverů, obraťte se prosím na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>Další kroky
 

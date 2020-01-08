@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 529c2a453bade8745a596b5cd2e374907a66f613
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1c308243e3dfebb3622ebbe346771fe781b97cc5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443312"
 ---
 # <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>Kurz: integrace productboard s Azure Active Directory
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat productboard s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -68,7 +68,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte PRODUCTBOARD SSO](#configure-productboard-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    * **[Vytvořte productboard Test User](#create-productboard-test-user)** -to, abyste měli protějšek B. Simon v EZOfficeInventory, která je propojená s reprezentací uživatele v Azure AD.
+    * **[Vytvořte productboard Test User](#create-productboard-test-user)** -to, abyste měli protějšek B. Simon v productboard, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD

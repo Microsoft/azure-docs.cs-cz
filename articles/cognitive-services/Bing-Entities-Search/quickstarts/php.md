@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 2328313e15fafb3c0f96fdb77f3023afc1e4774f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 41fa0b469d0d86b8c1d9234455ade0395fa86f3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323585"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383936"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí PHP
 
@@ -31,12 +31,13 @@ I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTfu
 
 ## <a name="search-entities"></a>Vyhledávání entit
 
-Pokud chcete tuto aplikaci spustit, postupujte následujícím způsobem.
+Tuto aplikaci spustíte následujícím postupem.
 
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 2. Přidejte níže uvedený kód.
 3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+4. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+5. Spusťte program.
 
 ```php
 <?php

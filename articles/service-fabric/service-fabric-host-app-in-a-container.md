@@ -1,27 +1,16 @@
 ---
-title: Nasazení aplikace .NET v kontejneru do Azure Service Fabric | Microsoft Docs
+title: Nasazení aplikace .NET v kontejneru do Azure Service Fabric
 description: Podívejte se, jak kontejnerizovat existující aplikaci .NET pomocí sady Visual Studio a jak místně ladit kontejnery v Service Fabricu. Kontejnerizovaná aplikace se odešle do registru kontejneru Azure a nasadí se do clusteru Service Fabricu. Po nasazení do Azure používá aplikace k uchovávání dat databázi SQL Azure.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 6e088d9ae201dc5a09de45b2a528b77400d8a111
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d1602d292af24d8c0bc9139debb3967aa7183a06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232388"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463062"
 ---
-# <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabric
+# <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
 V tomto kurzu se dozvíte, jak kontejnerizovat existující aplikaci ASP.NET a pak ji zabalit jako aplikaci Service Fabricu.  Ve vývojovém clusteru Service Fabricu spustíte kontejnery nejdřív místně a pak aplikaci nasadíte do Azure.  Aplikace uchovává data ve službě [Azure SQL Database](/azure/sql-database/sql-database-technical-overview). 
 
@@ -42,7 +31,7 @@ V tomto kurzu se naučíte:
 2. Nainstalujte [Docker CE pro Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), abyste mohli spouštět kontejnery ve Windows 10.
 3. Nainstalujte [modul runtime Service Fabric 6.2 nebo novější](service-fabric-get-started.md) a [sadu Service Fabric SDK 3.1](service-fabric-get-started.md) nebo novější.
 4. Nainstalujte [Visual Studio 2019 verze 16,1](https://www.visualstudio.com/) nebo novější s úlohami vývoje pro vývoj a **ASP.NET a webový vývoj** pro **Azure** .
-5. Nainstalovat [Azure PowerShell][link-azure-powershell-install]
+5. Nainstalujte [Azure PowerShell][link-azure-powershell-install].
  
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Stažení a spuštění aplikace Fabrikam Fiber CallCenter
@@ -129,7 +118,7 @@ Vraťte se do projektu **FabrikamFiber.Web** a aktualizujte připojovací řetě
 ## <a name="run-the-containerized-application-locally"></a>Místní spuštění kontejnerizované aplikace
 Když stisknete klávesu **F5**, proběhne ladění a spuštění aplikace v kontejneru v místním vývojovém clusteru Service Fabricu. Pokud se vám zobrazí okno se zprávou žádající o udělení oprávnění ke čtení a spouštění vašeho adresáře projektu sady Visual Studio pro skupinu ServiceFabricAllowedUsers, klikněte na **Ano**.
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 Teď, když aplikace běží místně, začněte s přípravou nasazení do Azure.  Image kontejneru musí být uložené v registru kontejneru.  Pomocí následujícího skriptu vytvořte [registr kontejneru Azure](/azure/container-registry/container-registry-intro). Název registru kontejneru mohou zobrazovat jiná předplatná Azure, a proto musí být jedinečný.
 Než aplikaci nasadíte do Azure, odešlete do tohoto registru image kontejneru.  Jakmile je aplikace nasazená v clusteru v Azure, image kontejneru se z tohoto registru odebere.
 
@@ -169,9 +158,9 @@ Při vytváření clusteru
 
     b. Volitelné: Můžete upravit počet uzlů. Ve výchozím nastavení máte tři uzly, což je požadované minimum pro testovací scénáře pro Service Fabric.
 
-    c. Vyberte kartu **Certifikát**. Na této kartě zadejte heslo, které se použije k zabezpečení certifikátu vašeho clusteru. Tento certifikát pomáhá zabezpečit váš cluster. Můžete také upravit cestu, kam chcete certifikát uložit. Sada Visual Studio může také importovat certifikát za vás, protože se jedná o požadovaný krok pro publikování aplikace do clusteru.
+    c. Vyberte kartu **certifikát** . Na této kartě zadejte heslo, které chcete použít k zabezpečení certifikátu vašeho clusteru. Tento certifikát pomáhá zabezpečit váš cluster. Můžete také upravit cestu, kam chcete certifikát uložit. Sada Visual Studio může také importovat certifikát za vás, protože se jedná o požadovaný krok pro publikování aplikace do clusteru.
 
-    d. Vyberte kartu **Podrobnosti virtuálního počítače**. Zadejte heslo, které chcete použít pro virtuální počítače, které tvoří cluster. Pomocí uživatelského jména a hesla je možné se vzdáleně připojit k virtuálním počítačům. Musíte také vybrat velikost virtuálních počítačů a v případě potřeby změnit image virtuálního počítače. 
+    d. Vyberte kartu **Podrobnosti o virtuálním počítači** . Zadejte heslo, které chcete použít pro Virtual Machines (virtuální počítač), který tvoří cluster. Pomocí uživatelského jména a hesla je možné se vzdáleně připojit k virtuálním počítačům. Musíte také vybrat velikost virtuálních počítačů a v případě potřeby změnit image virtuálního počítače. 
 
     > [!IMPORTANT]
     >Vyberte SKLADOVOU položku, která podporuje spuštěné kontejnery. Operační systém Windows Server v uzlech clusteru musí být kompatibilní s operačním systémem Windows Server vašeho kontejneru. Další informace najdete v článku o [kompatibilitě operačního systému kontejneru a operačního systému hostitele s Windows Serverem](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Tento kurz ve výchozím nastavení vytvoří image Dockeru založenou na Windows Serveru 2016 LTSC. Kontejnery založené na této imagi budou fungovat v clusterech vytvořených pomocí edice Windows Server 2016 Datacenter s produktem Containers. Pokud ale vytvoříte cluster nebo použijete existující cluster založený na edici Windows Server Datacenter Core 1709 s produktem Containers, musíte změnit image operačního systému Windows Server, na které je kontejner založený. Otevřete soubor **Dockerfile** v projektu **FabrikamFiber.Web**, okomentujte stávající příkaz `FROM` (založený na `windowsservercore-ltsc`) a zrušte komentář u příkazu `FROM` založeného na `windowsservercore-1709`. 
@@ -235,12 +224,12 @@ Aplikace je teď připravená a můžete ji nasadit do clusteru v Azure přímo 
 
 ![Publikování aplikace][publish-app]
 
-Postupujte podle pokynů k nasazení v okně výstupu.  Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například http:\//fabrikamfibercallcenter.southcentralus.cloudapp.Azure.com:8659/.
+Postupujte podle pokynů k nasazení v okně výstupu.  Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například http:\//fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![Ukázka webu Fabrikam][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Nastavení průběžné integrace a nasazování (CI/CD) s využitím clusteru Service Fabric
-Informace o tom, jak pomocí Azure DevOps nakonfigurovat nasazení aplikace CI/CD do clusteru Service Fabric, najdete v [tématu Kurz: Nasaďte aplikaci s CI/CD do clusteru](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)Service Fabric. Postup popsaný v tomto kurzu je stejný i pro tento projekt (FabrikamFiber), stačí přeskočit stažení ukázky Voting a místo názvu úložiště Voting použít FabrikamFiber.
+Informace o použití Azure DevOps ke konfiguraci nasazení aplikace s CI/CD do clusteru Service Fabric najdete v článku [Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Postup popsaný v tomto kurzu je stejný i pro tento projekt (FabrikamFiber), stačí přeskočit stažení ukázky Voting a místo názvu úložiště Voting použít FabrikamFiber.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Po skončení nezapomeňte odebrat všechny prostředky, které jste vytvořili.  Nejjednodušší způsob, jak to udělat, je odebrat skupiny prostředků, které obsahují cluster Service Fabricu, databázi SQL Azure a Azure Container Registry.

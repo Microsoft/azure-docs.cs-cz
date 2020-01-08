@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření webové aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB'
+title: 'Kurz: Vytvoření webové aplikace v Node. js pomocí Azure Cosmos DB JavaScript SDK pro správu dat rozhraní SQL API'
 description: Tento kurz k Node. js popisuje, jak pomocí Microsoft Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace Node. js Express hostované na Web Apps funkce Microsoft Azure App Service.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a67870cc2494321aa739d6f59f18651013b7403b
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995945"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441263"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Node. js pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
 

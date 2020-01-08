@@ -3,19 +3,19 @@ title: Co je nástroj pro rozpoznávání rukopisu? – Rozhraní API pro rozpoz
 titleSuffix: Azure Cognitive Services
 description: Integrujte Nástroj pro rozpoznávání rukopisu do aplikací, webů, nástrojů a dalších řešení, aby bylo možné identifikovat a používat data tahů perem jako vstup.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448152"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Co je rozhraní API pro rozpoznávání rukopisu?
 
@@ -35,7 +35,7 @@ Pomocí rozhraní API pro rozpoznávání rukopisu můžete snadno rozpoznat ruk
 | Rozpoznávání obrazců | Při pořizování poznámek rozpoznáváme nejčastěji používané [geometrické obrazce](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) . |
 | Kombinované tvary a rozpoznávání textu | Rozpoznat, které tahy perem patří k obrazcům nebo ručnímu obsahu, a samostatně je klasifikovat.|
 
-## <a name="workflow"></a>Pracovní postup
+## <a name="workflow"></a>Pracovní postupy
 
 Rozhraní API pro rozpoznávání rukopisu je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON.
 
@@ -52,7 +52,7 @@ Po registraci:
 Vyzkoušejte si rychlý Start v následujících jazycích, abyste mohli začít volat rozhraní API pro rozpoznávání rukopisu.
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:
 * [C# a Univerzální platforma Windows (UPW)](https://go.microsoft.com/fwlink/?linkid=2089803)  

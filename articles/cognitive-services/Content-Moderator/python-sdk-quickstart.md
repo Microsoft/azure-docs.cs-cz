@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Content Moderator klientskou knihovnu pro Python | Microsoft Docs'
+title: 'Rychlý Start: Content Moderator klientskou knihovnu pro Python'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak začít s Azure Cognitive Services Content Moderator klientské knihovně pro Python.
+description: V tomto rychlém startu se dozvíte, jak začít s Azure Cognitive Services Content Moderator klientské knihovně pro Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: ee3f59bc9e9f8c7950d005b16433cde9267fea9a
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 931e6e35df520f4a0ab35dfb6067654f9d08ed9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539002"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448274"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Rychlý Start: Content Moderator klientskou knihovnu pro Python
 
@@ -31,10 +31,10 @@ Použití klientské knihovny Content Moderator pro Python pro:
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) |  | [ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* [Python 3. x](https://www.python.org/)
+* [Python 3.x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -132,7 +132,7 @@ Přidejte odkaz na složku, pokud jste ji ještě nedefinovali.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
-### <a name="create-a-list"></a>Vytvoří seznam.
+### <a name="create-a-list"></a>Vytvořit seznam
 
 Do skriptu Pythonu přidejte následující kód, který vytvoří vlastní seznam podmínek a uloží jeho hodnotu ID.
 
@@ -356,4 +356,4 @@ V tomto rychlém startu jste zjistili, jak pomocí Content Moderator knihovny Py
 >[Koncepty moderování obrázků](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Co je Azure Content Moderator?](./overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py).
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)

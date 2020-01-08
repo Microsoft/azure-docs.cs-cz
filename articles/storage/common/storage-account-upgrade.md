@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e7228556659a7a4a9f01ea31f61e75b5e870d50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892222"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457433"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely v2
 
@@ -168,4 +168,3 @@ Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v p
 ## <a name="next-steps"></a>Další kroky
 
 * [vytvořit účet úložiště](storage-quickstart-create-account.md)
-* [Správa účtů služby Azure Storage](storage-account-manage.md)

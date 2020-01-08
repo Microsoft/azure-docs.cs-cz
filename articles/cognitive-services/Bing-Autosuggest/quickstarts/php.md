@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a PHP'
+title: 'Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a PHP'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 7c9c12cd1097ab4a2b7138efd169e4e7a7f03720
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64874791be62ec1ed5c1c5874fb055efa4b44dc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384711"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Rychlý start: Návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a PHP
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a PHP
 
 Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace PHP pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. I když je tato aplikace napsaná v PHP, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
@@ -32,7 +32,8 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 2. Přidejte níže uvedený kód.
 3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+4. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+5. Spusťte program.
 
 ```php
 <?php
@@ -152,7 +153,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [!div class="nextstepaction"]
 > [Kurz rozhraní API pro automatické návrhy Bingu](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
 - [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

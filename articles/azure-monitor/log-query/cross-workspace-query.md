@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak se můžete dotazovat na prostředky z
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/05/2019
-ms.openlocfilehash: e74c81956ab0590b8b7237d3ecf60ae242a43b73
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0eaaf1157bf49068958bc07d17a23fc31dd99de0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894493"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365491"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Provádění dotazů protokolu pro více prostředků v Azure Monitor  
 
@@ -24,7 +24,7 @@ Nyní se můžete dotazovat nejen na více Log Analytics pracovních prostorů, 
 
 * Počet Application Insightsch prostředků a Log Analytics pracovních prostorů, které můžete zahrnout do jednoho dotazu, je omezený na 100.
 * Dotaz mezi prostředky není v Návrháři zobrazení podporován. Dotaz můžete v Log Analytics vytvořit a připnout na řídicí panel Azure a [vizualizovat dotaz protokolu](../learn/tutorial-logs-dashboards.md). 
-* Dotaz na více prostředků v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pomocí [šablony Azure Resource Manager pro rozhraní API pro scheduledQueryRules](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) můžete vytvořit pravidla upozornění protokolu pro více prostředků, aniž byste museli provést přepínač, ale toto pravidlo upozornění lze spravovat i přes [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal .
+* Dotaz na více prostředků v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pomocí [šablony Azure Resource Manager pro rozhraní API pro scheduledQueryRules](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) můžete vytvořit pravidla upozornění protokolu pro více prostředků, aniž byste museli provést tento přepínač, ale toto pravidlo výstrah lze spravovat i přes [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč Log Analyticsmi pracovními prostory a z Application Insights
@@ -53,7 +53,7 @@ Určení pracovního prostoru lze provést jedním z několika způsobů:
 
 * ID prostředku Azure – jedinečná identita pracovního prostoru definovaná v Azure ID prostředku použijete, pokud je název prostředku dvojznačný.  U pracovních prostorů je ve formátu: */Subscriptions/SubscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/pracovní prostory/součásti*.  
 
-    Například:
+    Příklad:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -84,7 +84,7 @@ Určení aplikace v Application Insights lze provést pomocí výrazu *aplikace 
 
 * ID prostředku Azure – jedinečná identita aplikace definovaná pro Azure ID prostředku použijete, pokud je název prostředku dvojznačný. Formát je: */Subscriptions/SubscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/Components/* Component.  
 
-    Například:
+    Příklad:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```

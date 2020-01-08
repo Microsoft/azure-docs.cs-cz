@@ -1,7 +1,7 @@
 ---
 title: 'Doporučení pro výukový SVD: odkaz na modul'
-titleSuffix: Azure Machine Learning service
-description: Naučte se, jak ve službě Azure Machine Learning použít modul doporučeného učení SVD, abyste mohli bayesovského rozhodování doporučit pomocí algoritmu SVD.
+titleSuffix: Azure Machine Learning
+description: Naučte se používat Azure Machine Learning modul SVD, který je doporučený pro výuku, ke školení bayesovského rozhodování doporučit pomocí algoritmu SVD.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428420"
 ---
-# <a name="train-svd-recommender"></a>Doporučení pro výuku SVD
+# <a name="train-svd-recommender"></a>Trénování doporučovacího systému SVD
 
 Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučených postupů pro vlak SVD (Preview). Tento modul slouží ke školení modelu doporučení založeného na algoritmu dekompozice s jednou hodnotou (SVD).  
 
@@ -50,7 +50,7 @@ Před použitím modulu musí být vstupní data ve formátu, který očekává 
 
 Datová sada **hodnocení restaurace** v Návrháři Azure Machine Learning (výběr **uložených datových sad** a pak **ukázek**) předvádí očekávaný formát:
 
-|UserID|placeID|rating|
+|ID uživatele|placeID|rating|
 |------------|-------------|------------|
 |U1077|135085|2|
 |U1077|135038|2|
@@ -76,4 +76,4 @@ Z této ukázky vidíte, že jeden uživatel má hodnocení dvou různých resta
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

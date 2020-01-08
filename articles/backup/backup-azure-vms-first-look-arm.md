@@ -3,12 +3,12 @@ title: Zálohování virtuálního počítače Azure z nastavení virtuálního 
 description: V tomto článku se dozvíte, jak zálohovat jeden virtuální počítač Azure nebo několik virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391439"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
 
@@ -31,7 +31,7 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
 
 ## <a name="back-up-from-azure-vm-settings"></a>Zálohování z nastavení virtuálního počítače Azure
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **všechny služby** a ve filtru zadejte **virtuální počítače**a potom klikněte na **virtuální počítače**.
 3. V seznamu virtuálních počítačů vyberte virtuální počítač, který chcete zálohovat.
 4. V nabídce VM (virtuální počítač) klikněte na **zálohovat**.
@@ -61,10 +61,6 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
 10. Po povolení zálohování se spustí prvotní zálohování. Počáteční zálohu můžete spustit okamžitě nebo počkat, až začne v souladu s plánem zálohování.
     - Až do dokončení počáteční zálohy se **Stav poslední zálohy** zobrazí jako **varování (čeká se na prvotní zálohování)** .
     - Pokud chcete zjistit, kdy se spustí další naplánované zálohování, klikněte na název zásady zálohování.
-
-> [!NOTE]
-> Služba Azure Backup vytvoří samostatnou skupinu prostředků (jinou než skupinu prostředků virtuálního počítače) k uložení snímku s formátem názvů **AzureBackupRG_geography_number** (příklad: AzureBackupRG_northeurope_1). Data v této skupině prostředků se uchovávají po dobu ve dnech, jak je uvedeno v části uchování snímku okamžitého obnovení v zásadách zálohování virtuálních počítačů Azure. Použití zámku u této skupiny prostředků může způsobit selhání zálohování.<br>
-Tato skupina prostředků by se měla taky vyloučit z omezení podle názvů nebo značek, protože zásady omezení by zablokovaly vytváření kolekcí bodů prostředků v takovém případě, že způsobí selhání zálohování.
 
 ## <a name="run-a-backup-immediately"></a>Okamžitě spustit zálohování
 

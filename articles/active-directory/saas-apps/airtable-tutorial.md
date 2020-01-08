@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f43d965e2c1d706097c9cc2c432ca77e16f162c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b4c8e254b2ceb040b487de1cfaac6e4d8670d8b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-airtable"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím tabulky
 
@@ -107,12 +107,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Vyberte **nového uživatele** v horní části obrazovky.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -134,7 +134,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování po
 
 ## <a name="configure-airtable-sso"></a>Konfigurovat jednotné přihlašování pro tabulku
 
-Chcete-li konfigurovat jednotné přihlašování **na straně služby** na bázi služby na úrovni služby, je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory](mailto:azure-ad-marketplace@airtable.com)pro služby pro vzdálení tabulku. Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Podle pokynů uvedených v [odkazu](https://support.airtable.com/hc/articles/360037475234) můžete nakonfigurovat jednotné přihlašování na straně vzhlasových **tabulek** .
 
 ### <a name="create-airtable-test-user"></a>Vytvořit testovacího uživatele pro tabulku
 
@@ -146,7 +146,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Když na přístupovém panelu kliknete na dlaždici vzdálení, měli byste se automaticky přihlásit ke službě v tabulce, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849326"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613754"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -93,7 +93,7 @@ Tato část se zabývá následujícími aspekty plánování:
 * [Integrace s více doménami služby Active Directory](#integrating-with-multiple-active-directory-domains)
 * [Plánování mapování a transformací atributů uživatele z Workday na službu Active Directory](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -120,7 +120,7 @@ Pro usnadnění zřizování pracovních postupů mezi Workday a službou Active
 > Běžná aplikace "Workday" se používá k nastavení jednotného přihlašování mezi Workday a Azure Active Directory.
 
 Pomocí níže uvedeného diagramu rozhodnutí určete, které aplikace pro zřizování Workday jsou relevantní pro váš scénář.
-    ![Vývojový diagram rozhodování](./media/workday-inbound-tutorial/wday_app_flowchart.png "DecisIon – vývojový diagram)
+    ![Vývojový diagram rozhodování](./media/workday-inbound-tutorial/wday_app_flowchart.png "Vývojový diagram rozhodování")
 
 Pomocí obsahu můžete přejít k příslušné části tohoto kurzu.
 
@@ -366,9 +366,9 @@ Tato část popisuje kroky pro zřizování uživatelských účtů z Workday do
 
 **Konfigurace pracovního dne pro zřizování služby Active Directory:**
 
-1. Přejděte na <https://portal.azure.com>.
+1. Přejděte do části <https://portal.azure.com> (Soubor > Nový > Jiné).
 
-2. V levém navigačním panelu vyberte **Azure Active Directory**
+2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
 3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
 
@@ -376,9 +376,9 @@ Tato část popisuje kroky pro zřizování uživatelských účtů z Workday do
 
 5. Vyhledejte ve **službě Active Directory zřizování Workday**a přidejte tuto aplikaci z galerie.
 
-6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování** .
+6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
-7. Změnit režim **zřizování** na **automaticky**
+7. Změňte režim **zřizování** na **automaticky**.
 
 8. Pokud chcete stáhnout agenta pro zřizování, klikněte na zobrazený informační banner. 
 
@@ -468,7 +468,7 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
    * **E-mail s oznámením –** Zadejte svou e-mailovou adresu a zaškrtněte políčko Odeslat e-mail, pokud dojde k chybě.
 
      > [!NOTE]
-     > Služba zřizování Azure AD pošle e-mailové oznámení, pokud úloha zřizování přejde do stavu [karantény](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) .
+     > Služba zřizování Azure AD pošle e-mailové oznámení, pokud úloha zřizování přejde do stavu [karantény](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) .
 
    * Klikněte na tlačítko **Testovat připojení** . Pokud je test připojení úspěšný, klikněte na tlačítko **Uložit** v horní části. Pokud se to nepovede, dvakrát Ověřte platnost přihlašovacích údajů pracovního dne a přihlašovacích údajů služby AD nakonfigurovaných v instalaci agenta.
 
@@ -549,7 +549,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
 | ATRIBUT WORKDAY | ATRIBUT SLUŽBY ACTIVE DIRECTORY |  ID SPÁROVÁNÍ? | VYTVOŘIT NEBO AKTUALIZOVAT |
 | ---------- | ---------- | ---------- | ---------- |
-| **WorkerID**  |  ID zaměstnance | **Ano** | Zapsáno pouze při vytvoření |
+| **WorkerID**  |  EmployeeID | **Ano** | Zapsáno pouze při vytvoření |
 | **PreferredNameData**    |  CN    |   |   Zapsáno pouze při vytvoření |
 | **SelectUniqueValue (Join ("\@"; Join ("."; \[FirstName\]; \[LastName\]), "contoso.com"), Join ("\@", Join (".", Mid (\[FirstName\]; 1; 1), \[LastName\]), "contoso.com"), Join ("\@", Join (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName (Hlavní název uživatele)     |     | Zapsáno pouze při vytvoření 
 | **Nahraďte(Mid(Nahraďte(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapsáno pouze při vytvoření |
@@ -570,7 +570,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 | **PostalCode**  |   PSČ  |     | Vytvořit a aktualizovat |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Vytvořit a aktualizovat |
 | **Fax**      | facsimileTelephoneNumber     |     |    Vytvořit a aktualizovat |
-| **Mobilní verze**  |    Mobilní zařízení       |     |       Vytvořit a aktualizovat |
+| **Mobilní**  |    Mobilní zařízení       |     |       Vytvořit a aktualizovat |
 | **LocalReference** |  preferredLanguage  |     |  Vytvořit a aktualizovat |                                               
 | **Přepínač (\[obec\]OU = standardní uživatelé, OU = Uživatelé, OU = výchozí, OU = umístění, DC = contoso, DC = com,, "Praha", "OU = Standard Users, OU = Users, OU = Praha, OU = Locations = contoso, DC = com", "Austin", "OU = Standard Users, OU = Users, OU = Austin, OU = umístění, DC = contoso, DC = com", "Seattle", "OU = standardní uživatelé, OU = Uživatelé, OU = Seattle, OU = umístění, DC = contoso, DC = com", "Londýn", "OU = contoso, DC = com")**  | parentDistinguishedName     |     |  Vytvořit a aktualizovat |
 
@@ -593,7 +593,7 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 1. Přejděte do části <https://portal.azure.com> (Soubor > Nový > Jiné).
 
-2. V levém navigačním panelu vyberte **Azure Active Directory**
+2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
 3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
 
@@ -601,9 +601,9 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 5. Vyhledejte v **Workday zřizování služby Azure AD**a přidejte tuto aplikaci z galerie.
 
-6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování** .
+6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
-7. Změnit režim **zřizování** na **automaticky**
+7. Změňte režim **zřizování** na **automaticky**.
 
 8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 
@@ -688,9 +688,9 @@ Podle těchto pokynů nakonfigurujte zpětný zápis e-mailových adres a uživa
 
 **Konfigurace konektoru pro zápis do Workday:**
 
-1. Přejděte na <https://portal.azure.com>.
+1. Přejděte do části <https://portal.azure.com> (Soubor > Nový > Jiné).
 
-2. V levém navigačním panelu vyberte **Azure Active Directory**
+2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
 3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
 
@@ -698,9 +698,9 @@ Podle těchto pokynů nakonfigurujte zpětný zápis e-mailových adres a uživa
 
 5. Vyhledejte **zpětný zápis do Workday**a přidejte tuto aplikaci z galerie.
 
-6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování** .
+6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
-7. Změnit režim **zřizování** na **automaticky**
+7. Změňte režim **zřizování** na **automaticky**.
 
 8. Dokončete část **přihlašovací údaje správce** následujícím způsobem:
 
@@ -737,7 +737,7 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
-2. Klikněte na **Uložit**.
+2. Klikněte na možnost **Uložit**.
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi pracovního dne. 
 
@@ -905,7 +905,7 @@ Ano, jeden zřizovací Agent se dá nakonfigurovat tak, aby zpracovával víc do
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* Ze seznamu agentů, které se zobrazí – Zkopírujte hodnotu pole ID z tohoto prostředku, jehož hodnota *resourceName* se rovná názvu domény služby Active Directory.
+* Ze seznamu agentů, které se zobrazí – Zkopírujte hodnotu pole `id` z tohoto prostředku, jehož název *se shoduje s* názvem domény služby Active Directory.
 * Vložte hodnotu ID do tohoto příkazu a spusťte příkaz v PowerShellu.
 
   ```powershell
@@ -1191,7 +1191,7 @@ Tato část se zabývá často zaznamenanými chybami při zřizování uživate
 |#|Chybový scénář |Pravděpodobné příčiny|Doporučené řešení|
 |--|---|---|---|
 |1.| Při instalaci agenta zřizování došlo k chybě. chybová zpráva: *spuštění služby Microsoft Azure AD Connect zřizování Agent (AADConnectProvisioningAgent) se nezdařilo. Ověřte, zda máte dostatečná oprávnění ke spuštění systému.* | Tato chyba se obvykle zobrazuje, pokud se pokoušíte nainstalovat agenta zřizování na řadič domény a zásady skupiny zabraňují spuštění služby.  Zobrazuje se také v případě, že máte spuštěnou předchozí verzi agenta a před zahájením nové instalace jste ho nenainstalovali.| Nainstalujte agenta zřizování na server, který není řadičem domény. Před instalací nového agenta zajistěte, aby byly předchozí verze agenta odinstalovány.|
-|2.| Služba Windows Microsoft Azure AD Connect zřizuje Agent je ve *výchozím* stavu a nepřepne na *běžící* stav. | V rámci instalace vytvoří průvodce agentem místní účet (**NT Service\\AADConnectProvisioningAgent**) na serveru a jedná se o účet pro **přihlášení** , který se používá ke spuštění služby. Pokud zásady zabezpečení na Windows serveru zabrání místním účtům ve spouštění služeb, dojde k této chybě. | Otevřete *konzolu služby*. Klikněte pravým tlačítkem na službu Windows Microsoft Azure AD připojit zřizovací agent a na kartě přihlášení zadejte účet správce domény, ve kterém chcete službu spustit. Restartujte službu. |
+|2.| Služba Windows Microsoft Azure AD Connect zřizuje Agent je ve *výchozím* stavu a nepřepne na *běžící* stav. | V rámci instalace vytvoří průvodce agentem na serveru místní účet (**NT Service\\AADConnectProvisioningAgent**) a jedná se o účet pro přihlášení, který se používá ke spuštění služby. Pokud zásady zabezpečení na Windows serveru zabrání místním účtům ve spouštění služeb, dojde k této chybě. | Otevřete *konzolu služby*. Klikněte pravým tlačítkem na službu Windows Microsoft Azure AD připojit zřizovací agent a na kartě přihlášení zadejte účet správce domény, ve kterém chcete službu spustit. Restartujte službu. |
 |3.| Při konfiguraci zřizovacího agenta s doménou služby AD v kroku *připojení služby Active Directory*trvá Průvodce dlouhou dobu pokusu o načtení schématu AD a nakonec vyprší časový limit. | K této chybě obvykle dojde v případě, že se průvodce kvůli problémům s bránou firewall nemůže spojit se serverem řadiče domény AD. | Při zadání přihlašovacích údajů k doméně služby Active Directory na obrazovce průvodce *připojením služby Active Directory* existuje možnost s názvem *Vybrat prioritu řadiče domény*. Tuto možnost použijte, pokud chcete vybrat řadič domény, který je ve stejné lokalitě jako server agenta, a zajistit, aby komunikace neblokovala žádná pravidla brány firewall. |
 
 #### <a name="connectivity-errors"></a>Chyby připojení

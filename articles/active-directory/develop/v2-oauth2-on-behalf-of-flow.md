@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa58f63e70c09e17328b849e7728604a65cb7ae1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 811fc7a4fc5d8ffba894bad837e95d6b27ecc8c3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964315"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689413"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
@@ -35,12 +35,12 @@ Tento článek popisuje, jak programovat přímo s protokolem ve vaší aplikaci
 
 > [!NOTE]
 >
-> - Koncový bod platformy Microsoft Identity Platform nepodporuje všechny scénáře a funkce. Pokud chcete zjistit, jestli byste měli použít koncový bod platformy Microsoft identity, přečtěte si informace o [omezeních platformy Microsoft Identity](active-directory-v2-limitations.md). Pro aplikace s účet Microsoft (MSA) a cílovými skupinami Azure AD se konkrétně nepodporují známé klientské aplikace. Proto společný vzor souhlasu pro OBO nebude fungovat pro klienty, kteří přihlásí osobní i pracovní nebo školní účty. Další informace o tom, jak zpracovat tento krok toku, najdete v tématu [získání souhlasu pro aplikaci střední vrstvy](#gaining-consent-for-the-middle-tier-application).
+> - Koncový bod platformy Microsoft Identity Platform nepodporuje všechny scénáře a funkce. Pokud chcete zjistit, jestli byste měli použít koncový bod platformy Microsoft identity, přečtěte si informace o [omezeních platformy Microsoft Identity](active-directory-v2-limitations.md). 
 > - Od května 2018 se v OBO toku nedá použít nějaký `id_token` odvozený z implicitního toku. Jednostránkové aplikace (jednostránkové) by měly předat **přístupovému** klientovi střední vrstvy přístupový token, aby se místo toho prováděly OBO toky. Další informace o tom, kteří klienti můžou provádět volání OBO, najdete v tématu [omezení](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
-Předpokládejme, že uživatel byl ověřený v aplikaci pomocí [toku udělení autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md). V tomto okamžiku má aplikace přístupový token *pro rozhraní API a* (token A) s deklaracemi identity uživatele a souhlasem pro přístup k webovému rozhraní API střední vrstvy (API a). Rozhraní API nyní potřebuje ověřený požadavek webového rozhraní API pro příjem dat (API B).
+Předpokládejme, že uživatel byl ověřený v aplikaci pomocí [toku udělení autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md) nebo jiného toku přihlášení. V tomto okamžiku má aplikace přístupový token *pro rozhraní API a* (token A) s deklaracemi identity uživatele a souhlasem pro přístup k webovému rozhraní API střední vrstvy (API a). Rozhraní API nyní potřebuje ověřený požadavek webového rozhraní API pro příjem dat (API B).
 
 Následující kroky představují tok OBO a jsou vysvětleny pomocí následujícího diagramu.
 
@@ -48,9 +48,9 @@ Následující kroky představují tok OBO a jsou vysvětleny pomocí následuj�
 
 1. Klientská aplikace vytvoří požadavek na rozhraní API A s tokenem A (s `aud` deklarací API A).
 1. Rozhraní API A ověřuje koncový bod vystavování tokenu platformy Microsoft identity a požaduje token pro přístup k rozhraní API B.
-1. Koncový bod vystavení tokenu platformy Microsoft Identity ověřuje přihlašovací údaje A pověření k rozhraní API s tokenem a a vydá přístupový token pro API B (token B).
-1. V autorizační hlavičce požadavku na rozhraní API B je nastaven token B.
-1. Rozhraní API B vrátí data z zabezpečeného prostředku.
+1. Koncový bod vystavování tokenu platformy Microsoft Identity ověřuje přihlašovací údaje A pověření rozhraní API spolu s tokenem a a vydá přístupový token pro rozhraní API B (token B) k rozhraní API A.
+1. Token B je nastaven rozhraním API A v autorizační hlavičce požadavku na rozhraní API B.
+1. Data z zabezpečeného prostředku jsou vrácena rozhraním API B do rozhraní API a a odtud na klienta.
 
 > [!NOTE]
 > V tomto scénáři nemá služba střední vrstvy žádnou interakci s uživatelem, aby získala souhlas uživatele s přístupem k rozhraní API pro příjem dat. Proto možnost udělení přístupu k rozhraní API pro příjem dat se při ověřování prezentuje jako součást kroku souhlasu. Informace o tom, jak tuto aplikaci nastavit, najdete v tématu [získání souhlasu pro aplikaci střední vrstvy](#gaining-consent-for-the-middle-tier-application).
@@ -74,7 +74,7 @@ Při použití sdíleného tajného klíče obsahuje požadavek na přístupový
 | `grant_type` | Požaduje se | Typ žádosti o token Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
 | `client_id` | Požaduje se | ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
 | `client_secret` | Požaduje se | Tajný kód klienta, který jste vygenerovali pro vaši aplikaci na stránce Azure Portal-Registrace aplikací. |
-| `assertion` | Požaduje se | Hodnota tokenu použitého v požadavku. |
+| `assertion` | Požaduje se | Hodnota tokenu použitého v požadavku.  Tento token musí mít cílovou skupinu aplikace, která tuto žádost OBO (aplikace označuje pole `client-id`). |
 | `scope` | Požaduje se | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md). |
 | `requested_token_use` | Požaduje se | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavená na `on_behalf_of`. |
 
@@ -161,7 +161,7 @@ Následující příklad ukazuje odpověď na úspěch na žádost o přístupov
 ```
 
 > [!NOTE]
-> Výše přístupový token je ve formátu tokenu v 1.0. Důvodem je to, že token je k dispozici na základě dostupného prostředku. Tokeny Microsoft Graph požadavků v 1.0, takže platforma Microsoft Identity Platform generuje přístupové tokeny v 1.0, když klient požaduje tokeny pro Microsoft Graph. V tokenech přístupu by se měly zobrazit jenom aplikace. Klienti by je neměli potřebovat kontrolovat.
+> Výše přístupový token je ve formátu tokenu v 1.0. Důvodem je to, že token je k dispozici na základě dostupného **prostředku** . Microsoft Graph je instalační program, který přijímá tokeny v 1.0, takže platforma Microsoft Identity Platform generuje přístupové tokeny v 1.0, když klient požaduje tokeny pro Microsoft Graph. V tokenech přístupu by se měly zobrazit jenom aplikace. Klienti je **nesmí** kontrolovat.
 
 ### <a name="error-response-example"></a>Příklad chybové odpovědi
 
@@ -193,29 +193,24 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Získání souhlasu pro aplikaci střední vrstvy
 
-V závislosti na cílové skupině vaší aplikace můžete zvážit různé strategie pro zajištění úspěšnosti OBO toku. Ve všech případech je konečným cílem zajistit, aby byl poskytnut správný souhlas. Jak k tomu dojde, ale závisí na tom, kteří uživatelé vaše aplikace podporuje.
+V závislosti na architektuře nebo využití vaší aplikace můžete zvážit různé strategie pro zajištění úspěšnosti OBO toku. Ve všech případech je konečným cílem zajistit, aby klientská aplikace mohla zavolat aplikaci střední vrstvy a aplikace střední vrstvy má oprávnění k volání prostředku back-endu. 
 
-### <a name="consent-for-azure-ad-only-applications"></a>Souhlas s aplikacemi jenom pro Azure AD
+> [!NOTE]
+> Dřív účet Microsoft systém (osobní účty) nepodporoval pole známá klientská aplikace, ani by nemohl zobrazit kombinovaný souhlas.  Přidaná a všechny aplikace na platformě Microsoft Identity můžou používat k gettign souhlasu s aplikací známý klient přístup k OBO. 
 
-#### <a name="default-and-combined-consent"></a>/.Default a kombinovaný souhlas
+### <a name="default-and-combined-consent"></a>/.Default a kombinovaný souhlas
 
-Pro aplikace, které potřebují jenom přihlašovat pracovní nebo školní účty, stačí přístup k tradičním známým klientským aplikacím. Aplikace střední vrstvy přidá klienta do seznamu známých klientských aplikací ve svém manifestu a klient může aktivovat kombinovaný postup souhlasu pro sebe i pro aplikaci střední vrstvy. Na koncovém bodu Microsoft Identity Platform se to dělá pomocí [oboru`/.default`](v2-permissions-and-consent.md#the-default-scope). Při aktivaci obrazovky pro vyjádření souhlasu pomocí známých klientských aplikací a `/.default`se na obrazovce pro vyjádření souhlasu zobrazí oprávnění pro klienta i k rozhraní API střední vrstvy. také si vyžádají všechna oprávnění, která jsou vyžadována rozhraním API střední vrstvy. Uživatel poskytne souhlas obou aplikací a OBO tok funguje.
+Aplikace střední vrstvy přidá klienta do seznamu známých klientských aplikací ve svém manifestu a klient může aktivovat kombinovaný postup souhlasu pro sebe i pro aplikaci střední vrstvy. Na koncovém bodu Microsoft Identity Platform se to dělá pomocí [oboru`/.default`](v2-permissions-and-consent.md#the-default-scope). Při aktivaci obrazovky pro vyjádření souhlasu pomocí známých klientských aplikací a `/.default`se na obrazovce pro vyjádření souhlasu zobrazí oprávnění pro klienta **i** k rozhraní API střední vrstvy. také si vyžádají všechna oprávnění, která jsou vyžadována rozhraním API střední vrstvy. Uživatel poskytne souhlas obou aplikací a OBO tok funguje.
 
-V současné době osobní účet Microsoft systém nepodporuje kombinovaný souhlas, takže tento přístup nefunguje u aplikací, které se chtějí výslovně přihlašovat k osobním účtům. Osobní účty Microsoft, které se používají jako účty hostů v tenantovi, se zpracovávají pomocí systému Azure AD a můžou přecházet prostřednictvím kombinovaného souhlasu.
+### <a name="pre-authorized-applications"></a>Předem autorizované aplikace
 
-#### <a name="pre-authorized-applications"></a>Předem autorizované aplikace
+Prostředky mohou indikovat, že daná aplikace má vždy oprávnění přijímat určité obory. To je primárně užitečné pro zajištění bezproblémového propojení mezi front-end klientem a prostředkem back-endu. Prostředek může deklarovat několik předem autorizovaných aplikací – každá taková aplikace může požadovat tato oprávnění v OBO toku a přijímat je bez souhlasu uživatele.
 
-Funkce portálu Application Portal je "předem autorizovanými aplikacemi". Tímto způsobem může prostředek indikovat, že daná aplikace má vždy oprávnění přijímat určité obory. To je primárně užitečné pro zajištění bezproblémového propojení mezi front-end klientem a prostředkem back-endu. Prostředek může deklarovat několik předem autorizovaných aplikací – každá taková aplikace může požadovat tato oprávnění v OBO toku a přijímat je bez souhlasu uživatele.
-
-#### <a name="admin-consent"></a>Souhlas správce
+### <a name="admin-consent"></a>Souhlas správce
 
 Správce tenanta může zaručit, že aplikace mají oprávnění volat požadovaná rozhraní API poskytnutím souhlasu správce pro aplikaci střední vrstvy. Pokud to chcete udělat, správce může ve svém tenantovi najít aplikaci střední vrstvy, otevřít stránku požadovaná oprávnění a rozhodnout, že aplikaci udělíte oprávnění. Další informace o souhlasu správce najdete v [dokumentaci k souhlasu a oprávnění](v2-permissions-and-consent.md).
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Souhlas pro aplikace Azure AD + účet Microsoft
-
-Z důvodu omezení v modelu oprávnění pro osobní účty a chybějícího tenanta řízení se požadavky na souhlas pro osobní účty liší od služby Azure AD. Není k dispozici žádný tenant, který by mohl poskytnout souhlas na úrovni tenanta, ani není možné kombinovat souhlas. Proto si jiné strategie prezentují samy – Pamatujte na to, že aplikace, které potřebují jenom k podpoře účtů Azure AD, jsou také k dispozici.
-
-#### <a name="use-of-a-single-application"></a>Použití jedné aplikace
+### <a name="use-of-a-single-application"></a>Použití jedné aplikace
 
 V některých scénářích můžete mít jenom jednu dvojici klienta střední vrstvy a klienta front-end. V tomto scénáři může být jednodušší vytvořit tuto jednu aplikaci, která bude mít na starosti nutnost použití střední vrstvy zcela. K ověření mezi front-end a webovým rozhraním API můžete použít soubory cookie, id_token nebo přístupový token, který je požadován pro samotnou aplikaci. Pak žádost o souhlas z této jediné aplikace na prostředek back-endu.
 

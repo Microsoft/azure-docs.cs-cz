@@ -1,25 +1,14 @@
 ---
-title: Vzdálené připojení k uzlu clusteru Azure Service Fabric | Microsoft Docs
+title: Vzdálené připojení k uzlu clusteru Azure Service Fabric
 description: Naučte se vzdáleně připojit k instanci sady škálování (Service Fabric uzel clusteru).
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 12508fd5297691f06bce46e056527672083c3a91
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458317"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení k instanci sady škálování virtuálního počítače nebo uzlu clusteru
 V clusteru Service Fabric spuštěném v Azure každý typ uzlu clusteru, který definujete, [Nastaví samostatné škálování virtuálního počítače](service-fabric-cluster-nodetypes.md).  Můžete se vzdáleně připojit ke konkrétním instancím sady škálování (uzly clusteru).  Na rozdíl od virtuálních počítačů s jednou instancí nemají instance sady škálování vlastní virtuální IP adresy. To může být náročné, pokud hledáte IP adresu a port, které můžete použít ke vzdálenému připojení k určité instanci.
@@ -28,9 +17,9 @@ Pokud chcete najít IP adresu a port, které můžete použít ke vzdálenému p
 
 1. Získat pravidla příchozího překladu adres (NAT) pro protokol RDP (Remote Desktop Protocol) (RDP)
 
-    Každý typ uzlu definovaný v clusteru má obvykle vlastní virtuální IP adresu a vyhrazený Nástroj pro vyrovnávání zatížení. Ve výchozím nastavení má nástroj pro vyrovnávání zatížení pro typ uzlu název v následujícím formátu: *Dis9,1-{název clusteru}-{Node-Type}* ; například: *9,1-mycluster-front-endu*. 
+    Každý typ uzlu definovaný v clusteru má obvykle vlastní virtuální IP adresu a vyhrazený Nástroj pro vyrovnávání zatížení. Ve výchozím nastavení má nástroj pro vyrovnávání zatížení pro typ uzlu název v následujícím formátu: *9,1-{cluster-Name}-{Node-Type}* ; například: *9,1-mycluster-front-endu*. 
     
-    Na stránce nástroje pro vyrovnávání zatížení v Azure Portal vyberte **Nastavení** > **pravidla příchozího překladu adres (NAT)** : 
+    Na stránce nástroje pro vyrovnávání zatížení v Azure Portal vyberte **nastavení** > **příchozí pravidla NAT**: 
 
     ![Příchozí pravidla NAT pro vyrovnávání zatížení](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -40,7 +29,7 @@ Pokud chcete najít IP adresu a port, které můžete použít ke vzdálenému p
 
     Pro každý uzel se IP adresa zobrazí ve sloupci **cíl** , **cílový** sloupec vytvoří instanci sady škálování a sloupec **služby** poskytne číslo portu. Pro vzdálené připojení se porty přiřazují každému uzlu ve vzestupném pořadí počínaje portem 3389.
 
-    Pravidla příchozího překladu adres (NAT) najdete taky `Microsoft.Network/loadBalancers` v části šablony Správce prostředků pro svůj cluster.
+    Pravidla příchozího překladu adres (NAT) najdete taky v části `Microsoft.Network/loadBalancers` Správce prostředků šabloně pro svůj cluster.
     
 2. Pokud chcete potvrdit příchozí port pro mapování portu pro uzel, můžete kliknout na jeho pravidlo a podívat se na hodnotu **cílového portu** . Následující snímek obrazovky ukazuje pravidlo příchozího překladu adres (NAT) pro uzel **front-end (instance 1)** v předchozím kroku. Všimněte si, že i když je číslo portu (příchozí) 3390, je cílový port namapován na port 3389 a port pro službu RDP v cíli.  
 

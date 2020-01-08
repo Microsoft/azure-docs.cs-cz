@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure PowerShellu – Vytvoření úplné škálovací sady virtuálních počítačů | Microsoft Docs
-description: Ukázky Azure PowerShellu
+title: Ukázky Azure PowerShell – vytvoření kompletní sady škálování virtuálních počítačů
+description: Tento skript vytvoří sadu škálování virtuálního počítače s Windows serverem 2016, kde se nakonfigurují a vytvoří jednotlivé prostředky.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,21 +16,21 @@ ms.workload: na
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ebbc47739b2be72d0dd98c0659bfcaba512e79e9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b116a6cb4266b5ec05abd2b3210ebc772bac9868
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350940"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Vytvoření úplné škálovací sady virtuálních počítačů pomocí PowerShellu
 
-Tento skript vytvoří škálovací sadu virtuálních počítačů s Windows Serverem 2016. Jednotlivé prostředky jsou nakonfigurovaná a vytvořená, místo použití [vytvoření vestavěné prostředku možnosti k dispozici tady v New-AzVmss](powershell-sample-create-simple-scale-set.md). Po spuštění skriptu můžete k instancím virtuálních počítačů přistupovat přes SSH.
+Tento skript vytvoří škálovací sadu virtuálních počítačů s Windows Serverem 2016. Místo použití [integrovaných možností vytváření prostředků, které jsou k dispozici v New-AzVmss](powershell-sample-create-simple-scale-set.md), se nakonfigurují a vytvoří jednotlivé prostředky. Po spuštění skriptu můžete k instancím virtuálních počítačů přistupovat přes SSH.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -67,7 +67,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [New-AzVmss](/powershell/module/az.Compute/New-azVmss) | Vytvořte škálovací sadu na základě informací zadaných v konfiguraci škálovací sady. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
 Další ukázkové skripty PowerShellu pro škálovací sady virtuálních počítačů najdete v [dokumentaci ke škálovacím sadám virtuálních počítačů Azure](../powershell-samples.md).

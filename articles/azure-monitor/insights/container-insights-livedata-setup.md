@@ -1,24 +1,14 @@
 ---
 title: Nastavení Azure Monitor pro kontejnery živá data (Preview) | Microsoft Docs
 description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejnerů v reálném čase (stdout/stderr) a událostí bez použití kubectl s Azure Monitor for Containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/16/2019
-ms.author: magoedte
-ms.openlocfilehash: 596c5ad378d471c6c98616a48f44e96c365ee0bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404704"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Jak nastavit funkci živých dat (Preview)
 
@@ -26,8 +16,8 @@ Chcete-li zobrazit živá data (Preview) s Azure Monitor pro kontejnery z cluste
 
 Tato funkce podporuje tři různé metody řízení přístupu k protokolům, událostem a metrikám:
 
-- AKS bez povoleného ověřování RBAC Kubernetes
-- AKS povolený s autorizací Kubernetes RBAC
+- Bez povolené oprávnění Kubernetes RBAC AKS
+- Povolené s autorizací Kubernetes RBAC AKS
 - AKS povolený pomocí jednotného přihlašování založené na Azure Active Directory (AD) založeného na SAML
 
 Tyto pokyny vyžadují přístup pro správu ke clusteru Kubernetes a pokud se konfigurace používá Azure Active Directory (AD) pro ověřování uživatelů, přístup pro správu k Azure AD.  
@@ -43,7 +33,7 @@ Tento článek vysvětluje, jak nakonfigurovat ověřování pro řízení pří
 >[!NOTE]
 >Tato funkce je dostupná ve všech oblastech Azure, včetně Azure Čína. V tuto chvíli není dostupná ve službě Azure USA pro státní správu.
 
-## <a name="authentication-model"></a>Model ověřování
+## <a name="authentication-model"></a>Režim ověřování
 
 Funkce Live data (Preview) využívá rozhraní Kubernetes API, které je stejné jako nástroj příkazového řádku `kubectl`. Koncové body rozhraní API Kubernetes využívají certifikát podepsaný svým držitelem, který se nedá ověřit v prohlížeči. Tato funkce využívá interní proxy server k ověření certifikátu se službou AKS, která zajišťuje důvěryhodnost provozu.
 
@@ -55,17 +45,17 @@ Azure Portal vás vyzve k ověření přihlašovacích údajů pro cluster Azure
 >[!IMPORTANT]
 >Uživatelé těchto funkcí ke clusteru vyžadují [roli uživatele clusteru Azure Kubernetes](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) , aby mohli stáhnout `kubeconfig` a používat tuto funkci. K využití této funkce uživatelé **nevyžadují přístup** Přispěvatel ke clusteru. 
 
-## <a name="kubernetes-cluster-without-rbac-enabled"></a>Cluster Kubernetes bez RBAC povolen
+## <a name="kubernetes-cluster-without-rbac-enabled"></a>Cluster Kubernetes bez povolené RBAC
 
-Pokud máte cluster Kubernetes, který není nakonfigurovaný s autorizací Kubernetes RBAC nebo se integruje s jednotným přihlašováním k Azure AD, nemusíte postupovat podle těchto kroků. Důvodem je to, že ve výchozím nastavení máte v konfiguraci jiného typu než RBAC oprávnění správce.
+Pokud máte cluster Kubernetes, který není nakonfigurovaný s Kubernetes RBAC se podařilo autorizovat nebo integrované s Azure AD jednotného přihlašování, není nutné postupovat podle následujících kroků. Důvodem je to, že ve výchozím nastavení máte v konfiguraci jiného typu než RBAC oprávnění správce.
 
 ## <a name="configure-kubernetes-rbac-authentication"></a>Konfigurace ověřování RBAC Kubernetes
 
 Když povolíte autorizaci Kubernetes RBAC, používají se dva uživatelé: **clusterUser** a **clusterAdmin** pro přístup k rozhraní Kubernetes API. To se podobá spuštění `az aks get-credentials -n {cluster_name} -g {rg_name}` bez možnosti správy. To znamená, že **clusterUser** musí mít udělen přístup k koncovým bodům v rozhraní Kubernetes API.
 
-Následující příklady kroků ukazují, jak nakonfigurovat vazbu role clusteru z této šablony konfigurace YAML.
+Následující příklady postupu ukazují, jak nakonfigurovat vazby role clusteru z této šablony konfigurace yaml.
 
-1. Zkopírujte a vložte soubor YAML a uložte ho jako LogReaderRBAC. yaml.  
+1. Zkopírujte a vložte soubor yaml a uložte ho jako LogReaderRBAC.yaml.  
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1 
@@ -119,7 +109,7 @@ Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v
 
 2. V levém podokně vyberte **ověřování** . 
 
-3. Do tohoto seznamu přidejte dvě adresy URL pro přesměrování jako typy **webových** aplikací. První základní hodnota URL by měla být `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+3. Do tohoto seznamu přidejte dvě adresy URL pro přesměrování jako typy **webových** aplikací. První základní hodnota URL by měla být `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota adresy URL by měla být `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
 
     >[!NOTE]
     >Pokud tuto funkci používáte v Azure Čína, měla by být první základní hodnota URL `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`. 
@@ -127,7 +117,7 @@ Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v
 4. Po registraci adres URL pro přesměrování vyberte v části **Rozšířená nastavení**možnost **přístupové tokeny** a **tokeny ID** a uložte změny.
 
 >[!NOTE]
->Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování se dá provést jenom při počátečním nasazení nového clusteru AKS. Nemůžete nakonfigurovat jednotné přihlašování pro cluster AKS, který je už nasazený.
+>Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování se dá provést jenom při počátečním nasazení nového clusteru AKS. Nelze nakonfigurovat jednotné přihlašování v pro cluster AKS, už nasazená.
   
 >[!IMPORTANT]
 >Pokud jste překonfigurovali službu Azure AD pro ověřování uživatelů pomocí aktualizovaného identifikátoru URI, vymažte mezipaměť prohlížeče, aby se zajistilo stažení a použití aktualizovaného ověřovacího tokenu.

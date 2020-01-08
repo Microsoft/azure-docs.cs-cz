@@ -1,6 +1,6 @@
 ---
 title: Posílání a přijímání zpráv AS2 pro B2B
-description: Zprávy Exchange AS2 pro scénáře integrace B2B Enterprise pomocí Azure Logic Apps
+description: Zprávy Exchange AS2 pro scénáře integrace B2B Enterprise pomocí Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b2d7c8840da3bb44f9e220f2963dc4fee63176e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790715"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666699"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange AS2 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
@@ -49,7 +49,7 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
 > [!IMPORTANT]
 > Původní konektor AS2 bude zastaralý, takže se místo toho použije konektor **AS2 (v2)** . Tato verze poskytuje stejné možnosti jako původní verze, je nativní pro modul runtime Logic Apps a přináší významná vylepšení výkonu z hlediska propustnosti a velikosti zpráv. Nativní konektor v2 také nevyžaduje, abyste vytvořili připojení k účtu pro integraci. Místo toho, jak je popsáno v části požadavky, nezapomeňte propojit účet pro integraci do aplikace logiky, ve které plánujete konektor používat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -88,7 +88,7 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
    | **AS2 na** | Identifikátor příjemce zprávy, jak Určuje smlouva AS2 |
    |||
 
-   Například:
+   Příklad:
 
    ![Vlastnosti kódování zprávy](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

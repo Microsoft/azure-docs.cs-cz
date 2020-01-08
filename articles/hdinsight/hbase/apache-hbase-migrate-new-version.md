@@ -2,32 +2,31 @@
 title: Migrace clusteru HBA do nové verze – Azure HDInsight
 description: Postup Migrace clusterů Apache HBA do novější verze ve službě Azure HDInsight.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: ashishth
-ms.openlocfilehash: b03bbc7aacd3bfa2a8e29296a5fafed7d4e7e37a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: 30cda7a83feddaeb41385252a61d1dc68a881a47
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931537"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646502"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBA na novou verzi
 
 Tento článek popisuje kroky potřebné k aktualizaci clusteru Apache HBA v Azure HDInsight na novější verzi.
 
-> [!NOTE]  
-> Výpadek během upgradu by měl být v řádu minut minimální. Toto výpadky je způsobené kroky pro vyprázdnění všech dat v paměti a pak čas konfigurace a restartování služeb v novém clusteru. Vaše výsledky se budou lišit v závislosti na počtu uzlů, množství dat a dalších proměnných.
+Výpadek během upgradu by měl být v řádu minut minimální. Toto výpadky je způsobené kroky pro vyprázdnění všech dat v paměti a pak čas konfigurace a restartování služeb v novém clusteru. Vaše výsledky se budou lišit v závislosti na počtu uzlů, množství dat a dalších proměnných.
 
 ## <a name="review-apache-hbase-compatibility"></a>Kontrola kompatibility Apache HBA
 
 Před upgradem serverů Apache HBA ověřte, zda jsou verze adaptérů HBA na zdrojovém a cílovém clusteru kompatibilní. Další informace najdete v tématu [Apache Hadoop součásti a verze, které jsou k dispozici v HDInsight](../hdinsight-component-versioning.md).
 
 > [!NOTE]  
-> Důrazně doporučujeme, abyste si přečtěte matrici kompatibility verzí v [knize HBA](https://hbase.apache.org/book.html#upgrading).
+> Důrazně doporučujeme, abyste si přečtěte matrici kompatibility verzí v [knize HBA](https://hbase.apache.org/book.html#upgrading). V poznámkách k verzi HBA by se měly popsat případné nekompatibility.
 
 Tady je příklad matice kompatibility verzí. Y značí kompatibilitu a N označuje potenciální nekompatibilitu:
 
@@ -45,20 +44,17 @@ Tady je příklad matice kompatibility verzí. Y značí kompatibilitu a N ozna�
 | Kompatibilita závislostí | N | Ano | Ano |
 | Provozní kompatibilita | N | N | Ano |
 
-> [!NOTE]  
-> V poznámkách k verzi HBA by se měly popsat případné nekompatibility.
-
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Upgradovat se stejnými hlavními verzemi Apache HBA
 
 Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následující kroky:
 
 1. Ujistěte se, že je aplikace kompatibilní s novou verzí, jak je znázorněno v matrici kompatibility HBA a v poznámkách k verzi. Otestujte aplikaci v clusteru s cílovou verzí HDInsight a HBA.
 
-2. [Nastavte nový cílový cluster HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) pomocí stejného účtu úložiště, ale s jiným názvem kontejneru:
+1. [Nastavte nový cílový cluster HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) pomocí stejného účtu úložiště, ale s jiným názvem kontejneru:
 
     ![Použijte stejný účet úložiště, ale vytvořte jiný kontejner.](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
-3. Vyprázdněte svůj zdrojový cluster HBA, což je cluster, který upgradujete. HBA zapisuje příchozí data do úložiště v paměti, které se označuje jako _setSize paměťového úložiště_. Jakmile setSize paměťového úložiště dosáhne určité velikosti, HBA ji vyprázdní na disk pro dlouhodobé uložení v účtu úložiště clusteru. Při odstraňování starého clusteru se memstores recykluje, potenciálně ztratí data. Chcete-li ručně vyprázdnit setSize paměťového úložiště pro každou tabulku na disk, spusťte následující skript. Nejnovější verzi tohoto skriptu je na [GitHubu](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)Azure.
+1. Vyprázdněte svůj zdrojový cluster HBA, což je cluster, který upgradujete. HBA zapisuje příchozí data do úložiště v paměti, které se označuje jako _setSize paměťového úložiště_. Jakmile setSize paměťového úložiště dosáhne určité velikosti, HBA ji vyprázdní na disk pro dlouhodobé uložení v účtu úložiště clusteru. Při odstraňování starého clusteru se memstores recykluje, potenciálně ztratí data. Chcete-li ručně vyprázdnit setSize paměťového úložiště pro každou tabulku na disk, spusťte následující skript. Nejnovější verzi tohoto skriptu je na [GitHubu](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)Azure.
 
     ```bash
     #!/bin/bash
@@ -175,41 +171,47 @@ Pokud chcete upgradovat cluster Apache HBA v Azure HDInsight, proveďte následu
     ...
     
     ```
-    
-4. Zastavte ingestování starému clusteru HBA.
-5. Pokud chcete mít jistotu, že všechna poslední data v setSize paměťového úložiště jsou vyprázdněná, spusťte předchozí skript znovu.
-6. Přihlaste se k [Apache Ambari](https://ambari.apache.org/) v původním clusteru (https://OLDCLUSTERNAME.azurehdidnsight.net) a zastavte služby HBA. Po zobrazení výzvy k potvrzení, že chcete zastavit služby, zaškrtněte políčko pro zapnutí režimu údržby pro adaptéry HBA. Další informace o připojení a používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
+
+1. Zastavte ingestování starému clusteru HBA.
+
+1. Pokud chcete mít jistotu, že všechna poslední data v setSize paměťového úložiště jsou vyprázdněná, spusťte předchozí skript znovu.
+
+1. Přihlaste se k [Apache Ambari](https://ambari.apache.org/) v původním clusteru (`https://OLDCLUSTERNAME.azurehdidnsight.net`) a zastavte služby HBA. Po zobrazení výzvy k potvrzení, že chcete zastavit služby, zaškrtněte políčko pro zapnutí režimu údržby pro adaptéry HBA. Další informace o připojení a používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
 
     ![V Ambari klikněte na služby > HBA > zastavit v části akce služby](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
     ![Zaškrtněte políčko Zapnout režim údržby pro adaptéry HBA a pak potvrďte](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-7. Přihlaste se k Ambari na novém clusteru HDInsight. Změňte nastavení `fs.defaultFS` HDFS tak, aby odkazovalo na název kontejneru používaného původním clusterem. Toto nastavení je uvedené v části **HDFS > config > advanced > Advanced Core-site**.
+1. Přihlaste se k Ambari na novém clusteru HDInsight. Změňte nastavení `fs.defaultFS` HDFS tak, aby odkazovalo na název kontejneru používaného původním clusterem. Toto nastavení je uvedené v části **HDFS > config > advanced > Advanced Core-site**.
 
     ![V Ambari klikněte na služby > HDFS > Konfigurace > Upřesnit.](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
     ![V Ambari změňte název kontejneru.](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. **Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro clustery clusterů s funkcí rozšířené zápisy.**
-   
+1. Pokud nepoužíváte clustery HBA s funkcí Vylepšené zápisy, přeskočte tento krok. Je potřeba jenom pro clustery clusterů s funkcí rozšířené zápisy.
+
    Změňte `hbase.rootdir` cestu tak, aby odkazovala na kontejner původního clusteru.
 
     ![V Ambari změňte název kontejneru pro adaptéry HBA RootDir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+
 1. Pokud upgradujete HDInsight 3,6 na 4,0, postupujte podle následujících kroků, jinak přejděte ke kroku 10:
     1. V Ambari restartujte všechny požadované služby, a to tak, že vyberete **služby** > **restart všech požadovaných**.
     1. Zastavte službu HBA.
     1. Pomocí SSH na uzel Zookeeper a spuštěním příkazu [zkCli](https://github.com/go-zkcli/zkcli) `rmr /hbase-unsecure` odebrat adaptéry HBA root Znode z Zookeeper.
     1. Restartujte HBA.
+
 1. Pokud upgradujete na jinou verzi HDInsight kromě 4,0, postupujte následovně:
     1. Uložte provedené změny.
     1. Restartujte všechny požadované služby, které jsou označeny nástrojem Ambari.
+
 1. Nasměrujte svoji aplikaci na nový cluster.
 
     > [!NOTE]  
     > Statická služba DNS pro vaši aplikaci se při upgradu změní. Místo hardwarového kódování tohoto DNS můžete nakonfigurovat CNAME v nastavení DNS názvu domény, které odkazuje na název clusteru. Další možností je použít pro vaši aplikaci konfigurační soubor, který můžete aktualizovat bez opětovného nasazení.
 
-12. Spusťte ingestování, abyste viděli, jestli všechno funguje podle očekávání.
-13. Pokud je nový cluster uspokojivý, odstraňte původní cluster.
+1. Spusťte ingestování, abyste viděli, jestli všechno funguje podle očekávání.
+
+1. Pokud je nový cluster uspokojivý, odstraňte původní cluster.
 
 ## <a name="next-steps"></a>Další kroky
 

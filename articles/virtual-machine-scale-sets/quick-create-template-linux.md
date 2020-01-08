@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Vytvoření škálovací sady virtuálních počítačů s Linuxem pomocí šablony Azure | Microsoft Docs
+title: Rychlý Start – vytvoření sady škálování virtuálních počítačů se systémem Linux pomocí šablony Azure
 description: Zjistěte, jak rychle vytvořit škálovací sadu virtuálních počítačů s Linuxem pomocí šablony Azure Resource Manageru, která nasadí ukázkovou aplikaci a nakonfiguruje pravidla automatického škálování.
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: aa1aca6a1c47e486e0630e779c975b699a193d41
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 34cc269bc9355fa6744c7d31fff7e986baf1e049
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351114"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů s Linuxem pomocí šablony Azure
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí šablony Azure Resource Manageru.
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 
 ## <a name="define-a-scale-set-in-a-template"></a>Definice škálovací sady v šabloně
@@ -43,8 +43,8 @@ Pokud chcete vytvořit škálovací sadu pomocí šablony, nadefinujete odpovíd
 | Vlastnost                     | Popis vlastnosti                                  | Příklad hodnoty v šabloně                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | Typ prostředku Azure, který se má vytvořit                            | Microsoft.Compute/virtualMachineScaleSets |
-| name                         | Název škálovací sady                                       | myScaleSet                                |
-| location                     | Umístění, ve kterém se škálovací sada vytvoří                     | East US                                   |
+| jméno                         | Název škálovací sady                                       | myScaleSet                                |
+| location                     | Umístění, ve kterém se škálovací sada vytvoří                     | Východní USA                                   |
 | sku.name                     | Velikost virtuálního počítače pro všechny instance škálovací sady                  | Standard_A1                               |
 | sku.capacity                 | Počet instancí virtuálních počítačů, které se mají zpočátku vytvořit           | 2                                         |
 | upgradePolicy.mode           | Režim upgradů instance virtuálního počítače, kdy dochází ke změnám              | Automaticky                                 |
@@ -174,7 +174,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste pomocí šablony Azure vytvořili škálovací sadu s Linuxem a pomocí rozšíření vlastních skriptů jste na instance virtuálních počítačů nainstalovali základní webový server Python. Další informace najdete v kurzu věnovaném vytváření a správě škálovacích sad virtuálních počítačů Azure.
 
 > [!div class="nextstepaction"]

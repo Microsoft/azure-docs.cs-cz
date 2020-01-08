@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 6046ab98e657cd14a2ac883cd32709c9a1b5da57
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ba65c8ed30bce1f0128e1a1f8604744a732384c1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721478"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646825"
 ---
 # <a name="security-groups"></a>Skupiny zabezpečení
 <a name="network-security-groups"></a>
@@ -29,11 +29,11 @@ Tento článek vysvětluje koncepty skupin zabezpečení sítě, které vám pom
 
 ## <a name="security-rules"></a>Pravidla zabezpečení
 
-Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může podle potřeby obsahovat libovolný počet pravidel v rámci [omezení](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) předplatného Azure. Každé pravidlo určuje následující vlastnosti:
+Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může podle potřeby obsahovat libovolný počet pravidel v rámci [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) předplatného Azure. Každé pravidlo určuje následující vlastnosti:
 
 |Vlastnost  |Vysvětlení  |
 |---------|---------|
-|Název|Jedinečný název v rámci skupiny zabezpečení sítě.|
+|Name (Název)|Jedinečný název v rámci skupiny zabezpečení sítě.|
 |Priorita | Číslo v rozsahu od 100 do 4096. Pravidla se zpracovávají v pořadí podle priority, přičemž nižší čísla, která mají vyšší prioritu, se zpracovávají před vyššími čísly. Jakmile provoz odpovídá pravidlu, zpracování se zastaví. V důsledku toho se nezpracují žádná existující pravidla s nižší prioritou (vyšší čísla), která mají stejné atributy jako pravidla s vyšší prioritou.|
 |Zdroj nebo cíl| Všechny nebo určitá IP adresa, blok CIDR (například 10.0.0.0/24), [značka služby](service-tags-overview.md) nebo [skupina zabezpečení aplikace](#application-security-groups). Pokud zadáváte adresu prostředku Azure, zadejte privátní IP adresu přiřazenou k tomuto prostředku. Skupiny zabezpečení sítě se zpracovávají poté, co Azure přeloží veřejnou IP adresu na privátní IP adresu pro příchozí provoz, a před tím, než Azure přeloží privátní IP adresu na veřejnou IP adresu pro odchozí provoz. Další informace o [IP adresách](virtual-network-ip-addresses-overview-arm.md) Azure. Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. Možnost zadat v pravidlu několik jednotlivých IP adres a rozsahů (není možné zadat více značek služeb ani skupin aplikací) se označuje jako [rozšířená pravidla zabezpečení](#augmented-security-rules). Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat více IP adres ani rozsahů IP adres. Další informace o [modelech nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |Protocol (Protokol)     | TCP, UDP, ICMP nebo Any.|
@@ -44,11 +44,11 @@ Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může pod
 Pravidla zabezpečení skupin zabezpečení sítě se vyhodnocují podle priority s použitím informací o řazené kolekci 5 členů (zdroj, zdrojový port, cíl, cílový port a protokol) a určují, jestli se má provoz povolit nebo odepřít. Pro stávající připojení se vytvoří záznam toku. Komunikace se povoluje nebo odepírá na základě stavu připojení v záznamu toku. Záznam toku umožňuje, aby skupina zabezpečení sítě byla stavová. Pokud zadáte odchozí pravidlo zabezpečení pro všechny adresy například přes port 80, není potřeba zadávat příchozí pravidlo zabezpečení pro reakci na odchozí provoz. Příchozí pravidlo zabezpečení je potřeba zadat pouze v případě, že se komunikace zahajuje externě. Opačně to platí také. Pokud je přes port povolený příchozí provoz, není potřeba zadávat odchozí pravidlo zabezpečení pro reakci na provoz přes tento port.
 Pokud odeberete pravidlo zabezpečení, které povolilo tok, nesmí se přerušit žádné stávající připojení. Toky provozu se přeruší v případě zastavení připojení a toku provozu oběma směry po dobu alespoň několika minut.
 
-Počet pravidel zabezpečení, která můžete ve skupině zabezpečení sítě vytvořit, je omezený. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Počet pravidel zabezpečení, která můžete ve skupině zabezpečení sítě vytvořit, je omezený. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="augmented-security-rules"></a>Rozšířená pravidla zabezpečení
 
-Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro virtuální sítě tím, že umožňují definovat větší a složitější zásady zabezpečení sítě při použití menšího počtu pravidel. Můžete zkombinovat více portů a explicitních IP adres a rozsahů do jediného, snadno pochopitelného pravidla zabezpečení. Rozšířená pravidla používejte v polích pravidla pro zdroj, cíl a port. Pokud chcete zjednodušit údržbu definice pravidla zabezpečení, zkombinujte rozšířená pravidla zabezpečení se [značkami služeb](service-tags-overview.md) nebo [skupinami zabezpečení aplikací](#application-security-groups). Existují omezení počtu adres, rozsahů a portů, které lze zadat v pravidle. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro virtuální sítě tím, že umožňují definovat větší a složitější zásady zabezpečení sítě při použití menšího počtu pravidel. Můžete zkombinovat více portů a explicitních IP adres a rozsahů do jediného, snadno pochopitelného pravidla zabezpečení. Rozšířená pravidla používejte v polích pravidla pro zdroj, cíl a port. Pokud chcete zjednodušit údržbu definice pravidla zabezpečení, zkombinujte rozšířená pravidla zabezpečení se [značkami služeb](service-tags-overview.md) nebo [skupinami zabezpečení aplikací](#application-security-groups). Existují omezení počtu adres, rozsahů a portů, které lze zadat v pravidle. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="service-tags"></a>Značky služeb
 
@@ -78,7 +78,7 @@ Azure v každé skupině zabezpečení sítě, kterou vytvoříte, vytvoří ná
 
 |Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol (Protokol)|Přístup|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Všechny|Odepřít|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Všechny|Zamítnout|
 
 ### <a name="outbound"></a>Odchozí
 
@@ -98,9 +98,9 @@ Azure v každé skupině zabezpečení sítě, kterou vytvoříte, vytvoří ná
 
 |Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Přístup |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Všechny | Odepřít |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Všechny | Zamítnout |
 
-Ve sloupcích **Zdroj** a **Cíl** jsou hodnoty *VirtualNetwork*, *AzureLoadBalancer* a *Internet* [značky služeb](service-tags-overview.md), a nikoli IP adresy. Ve sloupci Protocol zahrnuje **všechny** protokoly TCP, UDP a ICMP. Při vytváření pravidla můžete zadat TCP, UDP, ICMP nebo Any. Hodnota *0.0.0.0/0* ve sloupcích **Zdroj** a **Cíl** představuje všechny adresy. Klienti, jako je Azure Portal, Azure CLI nebo PowerShell, můžou pro tento výraz použít * nebo Any.
+Ve sloupcích **Zdroj** a **Cíl** jsou hodnoty *VirtualNetwork*, *AzureLoadBalancer* a *Internet*[značky služeb](service-tags-overview.md), a nikoli IP adresy. Ve sloupci Protocol zahrnuje **všechny** protokoly TCP, UDP a ICMP. Při vytváření pravidla můžete zadat TCP, UDP, ICMP nebo Any. Hodnota *0.0.0.0/0* ve sloupcích **Zdroj** a **Cíl** představuje všechny adresy. Klienti, jako je Azure Portal, Azure CLI nebo PowerShell, můžou pro tento výraz použít * nebo Any.
  
 Výchozí pravidla nemůžete odebrat, ale můžete je přepsat vytvořením pravidel s vyšší prioritou.
 
@@ -110,7 +110,7 @@ Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě ja
 
 ![Skupiny zabezpečení aplikací](./media/security-groups/application-security-groups.png)
 
-Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplikace *AsgWeb*. *NIC3* je členem skupiny zabezpečení aplikace *AsgLogic*. *NIC4* je členem skupiny zabezpečení aplikace *AsgDb*. Přestože jsou všechna síťová rozhraní v tomto příkladu členy pouze jedné skupiny zabezpečení aplikace, síťové rozhraní může být členem více skupin zabezpečení aplikací, a to až do limitu daného [omezeními Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Žádné ze síťových rozhraní nemá přidruženou skupinu zabezpečení sítě. Skupina *NSG1* je přidružená k oběma podsítím a obsahuje následující pravidla:
+Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplikace *AsgWeb*. *NIC3* je členem skupiny zabezpečení aplikace *AsgLogic*. *NIC4* je členem skupiny zabezpečení aplikace *AsgDb*. Přestože jsou všechna síťová rozhraní v tomto příkladu členy pouze jedné skupiny zabezpečení aplikace, síťové rozhraní může být členem více skupin zabezpečení aplikací, a to až do limitu daného [omezeními Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Žádné ze síťových rozhraní nemá přidruženou skupinu zabezpečení sítě. Skupina *NSG1* je přidružená k oběma podsítím a obsahuje následující pravidla:
 
 ### <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
 
@@ -126,7 +126,7 @@ Vzhledem k tomu, že výchozí pravidlo zabezpečení [AllowVNetInBound](#allowv
 
 |Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Přístup |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Všechny | Odepřít |
+| 120 | * | * | AsgDb | 1433 | Všechny | Zamítnout |
 
 ### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 
@@ -140,7 +140,7 @@ Pravidla určující skupinu zabezpečení aplikace jako zdroj nebo cíl se pou�
 
 Pro skupiny zabezpečení aplikací platí následující omezení:
 
--   Počet skupin zabezpečení aplikací, které můžete mít v předplatném, je omezený. V souvislosti se skupinami zabezpečení aplikací platí také další omezení. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+-   Počet skupin zabezpečení aplikací, které můžete mít v předplatném, je omezený. V souvislosti se skupinami zabezpečení aplikací platí také další omezení. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Jako zdroj a cíl můžete v pravidlu zabezpečení zadat jednu skupinu zabezpečení aplikace. Více skupin zabezpečení aplikací ve zdroji ani cíli zadat nemůžete.
 - Všechna síťová rozhraní přiřazená ke skupině zabezpečení aplikace musí existovat ve stejné virtuální síti jako první síťové rozhraní přiřazené ke skupině zabezpečení aplikace. Pokud se například první síťové rozhraní přiřazené ke skupině zabezpečení aplikace *AsgWeb* nachází ve virtuální síti *VNet1*, pak všechna další síťová rozhraní přiřazená ke skupině zabezpečení aplikace *ASGWeb* musí existovat ve virtuální síti *VNet1*. Do stejné skupiny zabezpečení aplikace nemůžete přidat síťová rozhraní z různých virtuálních sítí.
 - Pokud zadáte skupinu zabezpečení aplikací jako zdroj a cíl v pravidle zabezpečení, síťová rozhraní v obou skupinách zabezpečení aplikací musí existovat ve stejné virtuální síti. Kdyby například skupina *AsgLogic* obsahovala síťová rozhraní z virtuální sítě *VNet1* a skupina *AsgDb* obsahovala síťová rozhraní z virtuální sítě *VNet2*, nemohli byste v pravidle přiřadit skupinu *AsgLogic* jako zdroj a skupinu *AsgDb* jako cíl. Všechna síťová rozhraní pro zdrojové i cílové skupiny zabezpečení aplikací musí existovat ve stejné virtuální síti.

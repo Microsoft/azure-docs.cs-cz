@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 9d6e441adeb7025e09b8d73764d2defab439dd90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 043a21aec5753dd16f558ad29d2300ada7a35d72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350898"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431781"
 ---
 # <a name="azure-storage-samples-using-net"></a>Ukázky Azure Storage pomocí .NET
 
 Následující tabulka poskytuje přehled našich ukázek úložiště a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
 
+> [!NOTE]
+> Tyto ukázky používají knihovnu Azure Storage .NET v11. V12 Code najdete v tématu [ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples) v úložišti GitHub.
+
 ## <a name="blob-samples"></a>Ukázky objektů BLOB
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
-| Objekt blob připojení | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
+| Doplňovací objekt BLOB | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
 | Objekt blob bloku | [Webová aplikace Fotogalerie pro Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
 | Šifrování na straně klienta | [Ukázky šifrování objektů BLOB](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs) |
 | Zkopírování objektu Blob | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
@@ -41,7 +44,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="file-samples"></a>Ukázky souborů
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Vytváření sdílených složek, adresářů a souborů | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
 | Odstranit sdílené složky/adresáře/soubory | [Začínáme se službou Azure File Service v .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs) |
@@ -55,7 +58,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="queue-samples"></a>Ukázky front
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
 | Přidat zprávu | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
 | Šifrování na straně klienta | [Azure Storage šifrování na straně klienta .NET Queue](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs) |
@@ -68,9 +71,9 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="table-samples"></a>Ukázky tabulek
 
-| **Scénář** | **Vzorový kód** |
+| **Scénář** | **Ukázkový kód** |
 |--------------|-----------------|
-| Vytvořit tabulku | [Správa souběžnosti pomocí Azure Storage ukázkové aplikace](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
+| Create Table | [Správa souběžnosti pomocí Azure Storage ukázkové aplikace](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 | Odstranit entitu/tabulku | [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
 | Vložit/sloučit/nahradit entitu | [Správa souběžnosti pomocí Azure Storage ukázkové aplikace](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 | Entity dotazu | [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
@@ -97,7 +100,7 @@ Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure 
 
 Informace o ukázkách pro jiné jazyky:
 
-* Java: [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
-* JavaScript/Node. js: [Ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
-* Python: [Ukázky Azure Storage pomocí Pythonu](storage-samples-python.md)
-* Všechny ostatní jazyky: [Ukázky Azure Storage](../storage-samples.md)
+* Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
+* JavaScript/Node. js: [Azure Storage ukázky pomocí JavaScriptu](storage-samples-javascript.md)
+* Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
+* Všechny ostatní jazyky: [ukázky Azure Storage](../storage-samples.md)

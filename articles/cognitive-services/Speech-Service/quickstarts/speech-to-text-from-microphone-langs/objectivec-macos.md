@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 12/23/2019
 ms.author: chlandsi
-ms.openlocfilehash: be5f62a75d9a3998d843e9865768b46658b8386c
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c2f0fbe66b26c6eca6e0c0b2530efacba9bae958
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815030"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380588"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v cíli-C v macOS pomocí sady Speech SDK
 
@@ -23,7 +23,7 @@ K dispozici jsou také rychlé starty pro [syntézu řeči](~/articles/cognitive
 
 V tomto článku se dozvíte, jak vytvořit aplikaci macOS v cíli-C pomocí sady Azure Cognitive Services Speech SDK pro přepisovat řeči zaznamenané z mikrofonu na text.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat:
 

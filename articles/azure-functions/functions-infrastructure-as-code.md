@@ -1,21 +1,21 @@
 ---
-title: Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
+title: Automatizace nasazení prostředků aplikace Function App do Azure
 description: Naučte se, jak vytvořit šablonu Azure Resource Manager, která nasadí vaši aplikaci Function App.
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 9c222937831c0e8017a390b16ef192783e9e564a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10efe5d09771f4c5f3a2564ef99ff9cae8cf06c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433140"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
 K nasazení aplikace Function App můžete použít šablonu Azure Resource Manager. V tomto článku najdete informace o požadovaných prostředcích a parametrech. Možná budete muset nasadit další prostředky v závislosti na [triggerech a vazbách](functions-triggers-bindings.md) ve vaší aplikaci Function App.
 
-Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+Další informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md).
 
 Ukázkové šablony naleznete zde:
 - [Aplikace Function App v plánu spotřeby]
@@ -27,10 +27,10 @@ Nasazení Azure Functions se typicky skládá z těchto prostředků:
 
 | Prostředek                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Aplikace Function App                                                                     | Požaduje se    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |   |
-| Účet [Azure Storage](../storage/index.yml)                                   | Požaduje se    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Nepovinné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |   |
-| [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Aplikace Function App                                                                     | Požaduje se    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| Účet [Azure Storage](../storage/index.yml)                                   | Požaduje se    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Volitelné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |   |
+| [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup> Plán hostování se vyžaduje jenom v případě, že se rozhodnete spustit aplikaci Function App na [plánu Premium](./functions-premium-plan.md) (ve verzi Preview) nebo v [plánu App Service](../app-service/overview-hosting-plans.md).
 
@@ -139,7 +139,7 @@ Aplikace Function App musí zahrnovat tato nastavení aplikace:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime Functions pro vnitřní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node`, `java`nebo `python` |
+| FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node`, `java` nebo `python` |
 | WEBSITE_NODE_DEFAULT_VERSION | Je potřeba jenom v případě, že používáte sadu `node`ho jazyka, určuje verzi, která se má použít.              | `10.14.1`                             |
 
 Tyto vlastnosti jsou uvedené v kolekci `appSettings` ve vlastnosti `siteConfig`:
@@ -462,7 +462,7 @@ Aplikace funkcí v plánu App Service musí mít vlastnost `serverFarmId` nastav
 
 Aplikace pro Linux by měly také zahrnovat vlastnost `linuxFxVersion` v části `siteConfig`. Pokud právě nasazujete kód, hodnota pro tuto hodnotu je určena požadovaným zásobníkem Runtime:
 
-| vrstvě            | Příklad hodnoty                                         |
+| Zásobník            | Příklad hodnoty                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |

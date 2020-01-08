@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 654787c34c6ceae51f1e1ce500193f73189f8935
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427078"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
+
+>Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` do čtečky kanálů RSS.
 
 Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
 
@@ -33,6 +35,40 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte [REST API](https://aka.ms/ams-v3-rest-sdk), CLI nebo jednu z podporovaných sad SDK.
 
 Další informace najdete v tématu [pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="november-2019"></a>Listopad 2019
+
+### <a name="live-transcription-preview"></a>Živý přepis Preview
+
+Živý přepis je teď ve verzi Public Preview a dostupný pro použití v oblasti Západní USA 2.
+
+Živý přepis je navržený tak, aby fungoval ve spojení s živými událostmi jako doplňkovou funkcí.  Podporuje se u živých událostí předávacího a standardního kódování nebo Premium.  Když je tato funkce povolená, služba použije funkci [řeči k textu](../../cognitive-services/speech-service/speech-to-text.md) Cognitive Services k přepisovat mluveného slova v příchozím zvukovém textu. Tento text je pak k dispozici pro doručování s videem a zvukem v protokolech MPEG-POMLČKy a HLS. Fakturace je založena na novém doplňkovém měřiči, který má za následek dodatečné náklady, když je ve stavu spuštěno.  Podrobnosti o živém přepisu a fakturaci najdete v tématu [živý přepis](live-transcription.md) .
+
+> [!NOTE]
+> V současné době je živý přepis dostupný jenom jako funkce Preview v oblasti Západní USA 2. V tuto chvíli podporuje přepis mluvených slov v angličtině (EN-US).
+
+### <a name="content-protection"></a>Ochrana obsahu
+
+Funkce *Prevence opětovného přehrání tokenu* , která byla vydaná v omezených oblastech zpátky v září, je teď dostupná ve všech oblastech.
+Media Services zákazníci teď můžou nastavit limit počtu, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Další informace najdete v tématu [Prevence opětovného přehrání tokenu](content-protection-overview.md#token-replay-prevention).
+
+### <a name="new-recommended-live-encoder-partners"></a>Noví doporučení partneři pro živé kodéry
+
+Přidání podpory pro následující nové doporučené partnerské kodéry pro živé streamování RTMP:
+
+- [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
+- [Kamery GoPro Hero7/8 a Max Action](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>Vylepšení kódování souborů
+
+- Vylepšený výkon a multithreading pro opětovné Sizer v Media Encoder Standard. Za určitých podmínek by měl zákazník vidět zvýšení výkonu mezi 5-40% kódováním VOD. Obsah s nízkou složitostí kódovaný do více přenosových rychlostí uvidí nejvyšší zvýšení výkonu. 
+- Kódování standard teď při použití nastavení skupinu GOP založeného na čase udržuje regulární skupinu GOP tempo pro obsah VFR (Variable snímkové frekvence) během kódování VOD.  To znamená, že zákazník, který posílá smíšený obsah snímků, který se mezi 15-30 FPS může zobrazit například, by měl vidět normální skupinu GOP vzdálenosti vypočítané na výstupu pro streamování souborů MP4 s adaptivní přenosovou rychlostí. Tím se zvýší schopnost plynule přepínat mezi stopami při doručování přes HLS nebo POMLČKy. 
+-  Vylepšená synchronizace AV pro VFR (variabilní snímková frekvence) zdrojového obsahu
+
+### <a name="video-indexer-video-analytics"></a>Video Indexer, analýza videa
+
+- Klíčové snímky extrahované pomocí přednastavené VideoAnalyzer jsou teď v původním rozlišení videa, místo aby se změnila velikost. Extrakce klíčových snímků s vysokým rozlišením poskytuje originální kvalitní image a umožňuje využívat modely umělých inteligentních analýz založené na obrázcích, které poskytuje Microsoft Počítačové zpracování obrazu a Custom Vision, aby bylo možné získat ještě více informací z vašeho videa.
 
 ## <a name="september-2019"></a>Září 2019
 
@@ -74,7 +110,7 @@ Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](https://
 
 Při streamování obsahu chráněného omezením tokenu musí koncoví uživatelé získat token, který se odešle jako součást žádosti o doručení klíče. Funkce *Prevence opětovného přehrání tokenu* umožňuje Media Services zákazníkům nastavit limit, kolikrát se dá stejný token použít k vyžádání klíče nebo licence. Další informace najdete v tématu [Prevence opětovného přehrání tokenu](content-protection-overview.md#token-replay-prevention).
 
-Tato funkce je aktuálně dostupná v USA – střed a USA – středozápad.
+Od července byla funkce Preview dostupná jenom v USA – střed a USA – středozápad.
 
 ## <a name="june-2019"></a>Červen 2019
 

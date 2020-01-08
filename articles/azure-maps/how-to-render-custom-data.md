@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408903"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Vykreslovat vlastní data na rastrové mapě
 
@@ -22,12 +22,14 @@ V tomto článku se dozvíte, jak používat funkci [statické Image Service](ht
 
 Chcete-li vykreslit vlastní špendlíky, popisky a překryvy geometrie, můžete použít aplikaci post. [Rozhraní API služby Azure Maps data Service](https://docs.microsoft.com/rest/api/maps/data) můžete použít k ukládání a vykreslování překryvů.
 
+> [!Tip]
+> Použití Azure Maps webové sady SDK je často mnohem výhodnější k zobrazení jednoduché mapy na webové stránce, než aby používala službu statických imagí. Webová sada SDK používá dlaždice mapy a pokud uživatel neposouvá a nezvětšuje mapu, často generuje pouze zlomek transakce na zatížení mapy. Všimněte si, že Azure Maps Web SDK obsahuje možnosti pro vypnutí posouvání a zvětšování. Azure Maps webová sada SDK navíc poskytuje bohatší sadu možností vizualizace dat než webová služba statické mapy.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
-Pokud chcete dokončit postupy v tomto článku, musíte nejdřív vytvořit účet Azure Maps podle pokynů v části [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) a pomocí kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) načíst primární klíč předplatného pro váš účet.
+Pokud chcete dokončit postupy v tomto článku, musíte nejdřív vytvořit účet Azure Maps a získat účet pro mapování klíčů. Podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) vytvořte předplatné Azure Maps účtu a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Vykreslení připínáček s popisky a vlastní imagí

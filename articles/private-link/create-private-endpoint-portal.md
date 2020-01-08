@@ -2,17 +2,17 @@
 title: Rychlý Start – Správa privátních koncových bodů v Azure
 description: Naučte se vytvořit privátní koncový bod pomocí Azure Portal v tomto rychlém startu.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899866"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459936"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure Portal
 
@@ -20,9 +20,6 @@ Privátní koncový bod je základním stavebním blokem privátního propojení
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-
-> [!NOTE]
-> Ve spojení s koncovými body služby ve stejné podsíti nejsou povolené privátní koncové body.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -65,7 +62,7 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Oblast | Vyberte **WestCentralUS**. |
+    | Region (Oblast) | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
     | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
@@ -145,7 +142,7 @@ V této části vytvoříte SQL Server a přidáte do něj privátní koncový b
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
     | Name (Název) | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
-    |Oblast|Vyberte **WestCentralUS**.|
+    |Region (Oblast)|Vyberte **WestCentralUS**.|
     |||
 5. Vyberte **Další: prostředek**.
 6. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:

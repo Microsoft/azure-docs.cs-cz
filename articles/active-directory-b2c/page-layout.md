@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 108d86e35422e1dc1d10aeb6b2c9488f5067232e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425645"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Výběr rozložení stránky v Azure Active Directory B2C pomocí vlastních zásad
 
@@ -30,9 +30,9 @@ Tento článek popisuje, jak vybrat rozložení stránky v Azure AD B2C konfigur
 > [!NOTE]
 > Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [verze JavaScriptu a rozložení stránky v Azure Active Directory B2C](user-flow-javascript-overview.md).
 
-## <a name="replace-datauri-values"></a>Nahradit hodnoty DataUri
+## <a name="replace-datauri-values"></a>Nahraďte parametr hodnoty
 
-Ve vašich vlastních zásadách můžete mít [ContentDefinitions](contentdefinitions.md) , které definují šablony HTML použité v cestě uživatele. **ContentDefinition** obsahuje **DataUri** , který odkazuje na prvky stránky, které poskytuje Azure AD B2C. **LoadUri** je relativní cesta k obsahu HTML a CSS, který zadáte.
+Ve vaší vlastní zásady, můžete mít [ContentDefinitions](contentdefinitions.md) , které definují HTML šablony použité v cestě uživatele. **ContentDefinition** obsahuje **parametr** , který odkazuje na prvky stránky poskytuje Azure AD B2C. **LoadUri** je relativní cesta k obsahu HTML a CSS, který zadáte.
 
 ```XML
 <ContentDefinition Id="api.idpselections">
@@ -46,11 +46,11 @@ Ve vašich vlastních zásadách můžete mít [ContentDefinitions](contentdefin
 </ContentDefinition>
 ```
 
-Pokud chcete vybrat rozložení stránky, změňte hodnoty **DataUri** ve vašich [ContentDefinitions](contentdefinitions.md) ve svých zásadách. Přepnutím ze starých hodnot **DataUri** na nové hodnoty vybíráte neměnné balíčky. Výhodou použití tohoto balíčku je, že víte, že se nemění a nezpůsobí neočekávané chování na stránce.
+Pokud chcete vybrat rozložení stránky, změňte hodnoty **DataUri** ve vašich [ContentDefinitions](contentdefinitions.md) ve svých zásadách. Přepnutím ze starého **parametr** hodnoty na nové hodnoty, vybíráte nezměnitelný balíček. Výhodou použití tohoto balíčku je, že víte, že se nezmění a nezpůsobí neočekávané chování na stránce.
 
-Chcete-li nastavit rozložení stránky, použijte následující tabulku k vyhledání hodnot **DataUri** .
+Chcete-li určit rozložení stránky ve vlastních zásadách, které používají starou hodnotu **DataUri** , vložte `contract` mezi `elements` a typem stránky (například `selfasserted`) a zadejte číslo verze. Příklad:
 
-| Stará hodnota DataUri | Nová hodnota DataUri |
+| Původní hodnota parametr | Nová hodnota pro parametr |
 | ----------------- | ----------------- |
 | `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
@@ -68,17 +68,23 @@ Chcete-li nastavit rozložení stránky, použijte následující tabulku k vyhl
 
 Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly opravy a vylepšení jejich prvků stránky. Následující protokol změn určuje změny zavedené v každé verzi.
 
-### <a name="120"></a>1.2.0 
+### <a name="200"></a>2.0.0
+
+- Stránka s vlastním kontrolním výrazem (`selfasserted`)
+  - Přidali jsme podporu pro [ovládací prvky zobrazení](display-controls.md) ve vlastních zásadách.
+
+### <a name="120"></a>1.2.0
+
 - Všechny stránky
   - Opravy usnadnění
   - Nyní můžete přidat atribut `data-preload="true"` do značek jazyka HTML pro řízení pořadí načítání pro šablony stylů CSS a JavaScript. Mezi scénáře patří:
-      - Použijte tento odkaz na CSS pro načtení šablony stylů CSS ve stejnou dobu jako HTML tak, aby při načítání souborů nebliká.
-      - Tento atribut umožňuje řídit pořadí, ve kterém jsou značky skriptu načteny a provedeny před načtením stránky.
+    - Použijte tento odkaz na CSS pro načtení šablony stylů CSS ve stejnou dobu jako HTML tak, aby při načítání souborů nebliká.
+    - Tento atribut umožňuje řídit pořadí, ve kterém jsou značky skriptu načteny a provedeny před načtením stránky.
   - Pole e-mail je nyní `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
   - Podpora překladu pro Chrome
 - Sjednocená a samoobslužná stránka
   - Pole uživatelské jméno, e-mail a heslo nyní používají prvek HTML Form.  Tím se teď umožní, aby Edge a IE tyto informace správně uložily.
-  
+
 ### <a name="110"></a>1.1.0
 
 - Stránka výjimky (globalexception)
@@ -107,4 +113,4 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak můžete přizpůsobit uživatelské rozhraní svých aplikací, najdete v tématu [přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+Další informace o tom, jak můžete přizpůsobit uživatelského rozhraní aplikací v [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

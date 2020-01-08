@@ -11,12 +11,12 @@ ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5b33d8fc804d339d3808e5231998fbba41cd4ee9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8a7da1bf80025cfe9b59c42f3338254b86f2ff05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376337"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: načtení dat New York taxislužby města do Azure SQL Data Warehouse
 
@@ -41,11 +41,11 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Vytvořit prázdnou SQL Data Warehouse
 
-Vytvoří se Azure SQL Data Warehouse s definovanou sadou [COMPUTE sources] Memory-Concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
+Vytvoří se Azure SQL Data Warehouse s definovanou sadou [COMPUTE sources] Memory-Concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
 
 Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse. 
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse.
 
     ![konfigurace výkonu](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Klikněte na **Použít**.
+8. Klikněte na tlačítko **Použít**.
 9. Na stránce služby SQL Data Warehouse vyberte **kolaci** pro prázdnou databázi. Pro účely tohoto kurzu použijte výchozí hodnotu. Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
 
 11. Po vyplnění formuláře pro SQL Database klikněte na **Vytvořit** a databázi zřiďte. Zřizování trvá několik minut. 
@@ -120,7 +120,7 @@ Služba SQL Data Warehouse vytvoří bránu firewall na úrovni serveru, aby zab
 
 4. Klikněte na **Přidat IP adresu klienta** na panelu nástrojů a přidejte svoji aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-5. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
+5. Klikněte na možnost **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
 
 6. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 
@@ -133,7 +133,7 @@ Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým
 
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **SQL Data Warehouse** a klikněte na svou databázi na stránce **SQL Data Warehouse** . 
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20180430.database.windows.net. 
 
@@ -151,8 +151,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
     | ------------ | --------------- | ----------- | 
     | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
     | Název serveru | Plně kvalifikovaný název serveru | Název by měl být podobný tomuto: **MyNewServer-20180430.Database.Windows.NET**. |
-    | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
-    | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
+    | Ověření | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
+    | Přihlášení | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 
     ![Připojení k serveru](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)

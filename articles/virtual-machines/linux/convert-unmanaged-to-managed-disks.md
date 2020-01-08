@@ -1,5 +1,5 @@
 ---
-title: Převod virtuálního počítače se systémem Linux v Azure z nespravovaných disků na Managed disks – Azure Managed Disks
+title: Převod virtuálního počítače se systémem Linux z nespravovaných disků na Managed disks
 description: Jak převést virtuální počítač Linux z nespravovaných disků na Managed disks pomocí rozhraní příkazového řádku Azure v modelu nasazení Správce prostředků
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5464dd2ab2ab7c783945cc068a1347d7ef9ad3ab
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 24024bc66e10937f1ae2fdc5130ffcd8c76c1763
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430996"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače se systémem Linux z nespravovaných disků na Managed disks
 
@@ -94,7 +94,7 @@ Před převodem skupiny dostupnosti je nutné uvolnit všechny virtuální poč�
 
 Nespravované disky můžete také převést na spravované disky pomocí Azure Portal.
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač ze seznamu virtuálních počítačů na portálu.
 3. V okně pro virtuální počítač vyberte z nabídky **disky** .
 4. V horní části okna **disky** vyberte **migrovat na Managed disks**.

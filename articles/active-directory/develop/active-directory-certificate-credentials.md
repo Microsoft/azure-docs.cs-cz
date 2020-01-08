@@ -1,5 +1,5 @@
 ---
-title: Přihlašovací údaje certifikátu Azure AD
+title: Přihlašovací údaje k certifikátu platformy Microsoft Identity Platform
 titleSuffix: Microsoft identity platform
 description: Tento článek popisuje registraci a použití přihlašovacích údajů certifikátu pro ověřování aplikací.
 services: active-directory
@@ -10,27 +10,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a44d89e19a1efc54e2c3c49053ec9badc91ba97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424708"
 ---
-# <a name="azure-ad-application-authentication-certificate-credentials"></a>Přihlašovací údaje k certifikátu ověřování aplikací Azure AD
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform
 
-Azure Active Directory (Azure AD) umožňuje aplikaci používat pro ověřování vlastní přihlašovací údaje, například v toku udělení přihlašovacích údajů klienta OAuth 2,0 ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) a v toku za běhu ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
+Platforma Microsoft Identity umožňuje aplikaci používat pro ověřování vlastní přihlašovací údaje, například v [přihlašovacích údajích klienta OAuth 2,0 udělení flowv 2.0](v2-oauth2-client-creds-grant-flow.md) a [tok](v2-oauth2-on-behalf-of-flow.md)za běhu).
 
 Jedna forma přihlašovacích údajů, kterou může aplikace použít k ověřování, je kontrolní výraz JSON Web Token (JWT) podepsaný certifikátem, který vlastní aplikace.
 
 ## <a name="assertion-format"></a>Formát kontrolního výrazu
-
-Chcete-li vypočítat kontrolní výraz, můžete použít jednu z mnoha knihoven [JSON web token](https://jwt.ms/) v jazyce podle vašeho výběru. Tato informace je převedená tímto tokenem:
+Platforma Microsoft identity pro výpočet kontrolního výrazu, můžete použít jednu z mnoha knihoven [JSON web token](https://jwt.ms/) v jazyce podle vašeho výběru. Tato informace je převedená tímto tokenem:
 
 ### <a name="header"></a>Hlavička
 
@@ -89,16 +88,16 @@ Následující řetězec je příkladem kódovaného kontrolního výrazu. Pokud
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-azure-ad"></a>Registrace certifikátu pomocí Azure AD
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Registrace certifikátu s platformou Microsoft identity
 
-Přihlašovací údaje certifikátu můžete přidružit k klientské aplikaci v Azure AD prostřednictvím Azure Portal pomocí kterékoli z následujících metod:
+Přihlašovací údaje certifikátu můžete přidružit k klientské aplikaci na platformě Microsoft identity prostřednictvím Azure Portal pomocí kterékoli z následujících metod:
 
 ### <a name="uploading-the-certificate-file"></a>Nahrává se soubor certifikátu.
 
 V registraci aplikace Azure pro klientskou aplikaci:
 1. Vyberte **certifikáty & tajných**kódů. 
 2. Klikněte na **nahrát certifikát** a vyberte soubor certifikátu, který se má nahrát.
-3. Klikněte na tlačítko **Přidat**.
+3. Klikněte na tlačítko **Add** (Přidat).
   Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti. 
 
 ### <a name="updating-the-application-manifest"></a>Aktualizace manifestu aplikace
@@ -125,7 +124,7 @@ V registraci aplikace Azure pro klientskou aplikaci:
        }
    ]
    ```
-3. Uložte úpravy manifestu aplikace a pak nahrajte manifest do Azure AD. 
+3. Uložte úpravy manifestu aplikace a pak nahrajte manifest na platformu Microsoft identity. 
 
    Vlastnost `keyCredentials` je vícehodnotový, takže můžete nahrát více certifikátů pro bohatší správu klíčů.
    
@@ -134,4 +133,4 @@ V registraci aplikace Azure pro klientskou aplikaci:
 > [!NOTE]
 > Hlavičku X5T je nutné vypočítat pomocí hodnoty hash certifikátu a převést ji na řetězec base64. V C# takovém případě by vypadala podobně jako u: `System.Convert.ToBase64String(cert.GetCertHash());`
 
-Ukázka kódu při [ověřování ve službě Azure AD v aplikacích démon s certifikáty](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) ukazuje, jak aplikace používá vlastní přihlašovací údaje pro ověřování. Také ukazuje, jak můžete [vytvořit certifikát podepsaný svým držitelem](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) pomocí příkazu `New-SelfSignedCertificate` PowerShellu. Můžete také využít a použít [skripty pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) k vytvoření certifikátů, výpočtů kryptografických otisků a tak dále.
+Ukázka kódu při [ověřování na platformě Microsoft identity v aplikacích démon pomocí certifikátů](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) ukazuje, jak aplikace používá vlastní přihlašovací údaje pro ověřování. Také ukazuje, jak můžete [vytvořit certifikát podepsaný svým držitelem](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) pomocí příkazu `New-SelfSignedCertificate` PowerShellu. Můžete také využít a použít [skripty pro vytváření aplikací](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) k vytvoření certifikátů, výpočtů kryptografických otisků a tak dále.

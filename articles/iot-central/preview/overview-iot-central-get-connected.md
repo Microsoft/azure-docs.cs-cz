@@ -3,17 +3,17 @@ title: Připojení zařízení v Azure IoT Central | Microsoft Docs
 description: Tento článek představuje klíčové koncepty týkající se připojení zařízení v Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ef0e4c9070733266349a37e863c48901eae90c16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 412a678465589da87c713a55a7b67193b254bf96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894588"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434934"
 ---
 # <a name="get-connected-to-azure-iot-central-preview-features"></a>Připojit se k Azure IoT Central (funkce ve verzi Preview)
 
@@ -196,7 +196,7 @@ Když se reálné zařízení připojí k vaší aplikaci IoT Central, změní s
     - Zařízení, která nejsou zaregistrovaná ručně na stránce **zařízení** připojená s platnými přihlašovacími údaji, ale bez zadání ID šablony během registrace.  
 Operátor může přidružit zařízení k šabloně ze stránky **zařízení** pomocí tlačítka **migrovat** .
 
-## <a name="sdk-support"></a>Podpora sady SDK
+## <a name="sdk-support"></a>Podpora SDK
 
 Sady SDK pro zařízení Azure nabízí nejjednodušší způsob implementace kódu zařízení. K dispozici jsou následující sady SDK pro zařízení:
 
@@ -217,7 +217,7 @@ Následující tabulka shrnuje, jak se funkce IoT Central zařízení Azure nama
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Měření: telemetrie | Zasílání zpráv ze zařízení do cloudu |
+| Měření: telemetrie | Zasílání zpráv zařízení-cloud |
 | Vlastnosti zařízení | Nedokončené hlášené vlastnosti zařízení |
 | Nastavení | Požadované a hlášené vlastnosti vlákna zařízení |
 

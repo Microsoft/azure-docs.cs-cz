@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449007"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled Azure Cloud Shell
 Azure Cloud Shell je interaktivní, ověřené prostředí přístupné pro prohlížeč pro správu prostředků Azure.
-Nabízí flexibilitu při výběru prostředí, které nejlépe vyhovuje způsobu práce, a to buď bash nebo PowerShell.
+Umožňuje flexibilně zvolit prostředí, které nejlépe vyhovuje vašemu stylu práce – Bash nebo PowerShell.
 
 Vyzkoušejte si shell.azure.com Kliknutím níže.
 
-[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spustit Azure Cloud Shell")](https://shell.azure.com)
+[![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
 Zkuste z Azure Portal pomocí ikony Cloud Shell.
 
@@ -70,9 +70,12 @@ Cloud Shell je flexibilní nástroj, který lze použít z:
 * [Visual Studio Code rozšíření účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Připojení úložiště Microsoft Azurech souborů
-Cloud Shell počítače jsou dočasné, ale soubory se chovají dvěma způsoby: prostřednictvím bitové kopie disku a prostřednictvím připojené sdílené složky s názvem `clouddrive`.  Při prvním spuštění Cloud Shell vyzve k vytvoření skupiny prostředků, účtu úložiště a sdílené složky Azure Files vaším jménem. Jedná se o jednorázový krok, který se automaticky připojí pro všechny relace. Jedna sdílená složka může být namapovaná a v Cloud Shell bude používat jak bash, tak i PowerShell.
+Cloud Shell počítače jsou dočasné, ale soubory se chovají dvěma způsoby: prostřednictvím bitové kopie disku a prostřednictvím připojené sdílené složky s názvem `clouddrive`.  Při prvním spuštění Cloud Shell zobrazí výzvu k vytvoření skupiny prostředků, účtu úložiště a sdílené složky Azure Files pod vaším účtem. Jedná se o jednorázový krok, který se automaticky připojí pro všechny relace. Jedna sdílená složka může být namapovaná a v Cloud Shell bude používat jak bash, tak i PowerShell.
 
 Přečtěte si další informace o tom, jak připojit [Nový nebo existující účet úložiště](persisting-shell-storage.md) , nebo se dozvíte o [mechanismech trvalosti používaných v Cloud Shell](persisting-shell-storage.md#how-cloud-shell-storage-works).
+
+> [!NOTE]
+> Brána firewall služby Azure Storage není podporovaná pro účty úložiště Cloud Shell.
 
 ## <a name="concepts"></a>Koncepty
 * Cloud Shell běží na dočasném hostiteli, který je zadaný na jednotlivých relacích, podle jednotlivých uživatelů.

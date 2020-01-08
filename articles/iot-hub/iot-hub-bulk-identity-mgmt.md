@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429259"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Hromadné import a export identit zařízení IoT Hub
 
@@ -91,7 +91,7 @@ U všech IoT Hub vrstev je současně povolena pouze 1 úloha importu nebo expor
 
 ## <a name="export-devices"></a>Exportovat zařízení
 
-Pomocí metody **ExportDevicesAsync** exportujte celý registr identit služby IoT hub do [Azure Storage](../storage/index.yml) kontejneru objektů BLOB pomocí [sdíleného přístupového podpisu](../storage/common/storage-security-guide.md#authorization).
+Pomocí metody **ExportDevicesAsync** exportujte celý registr identit služby IoT Hub do kontejneru Azure Storage objektů BLOB pomocí sdíleného přístupového podpisu (SAS). Další informace o sdílených přístupových podpisech najdete v článku [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../storage/common/storage-sas-overview.md).
 
 Tato metoda umožňuje vytvářet spolehlivé zálohy informací o zařízení v kontejneru objektů blob, který ovládáte.
 
@@ -261,7 +261,7 @@ Použijte volitelnou vlastnost **importMode** v části Import dat serializace p
 | --- | --- |
 | **createOrUpdate** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, stávající informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
 | **vytvoření** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, zapíše se do souboru protokolu chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
-| **Update** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
+| **update** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
 | **updateIfMatchETag** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. |
 | **createOrUpdateIfMatchETag** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
 | **odstranění** |Pokud zařízení se zadaným **ID**už existuje, odstraní se bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |

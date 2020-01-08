@@ -1,24 +1,24 @@
 ---
 title: Připojení k Azure Event Hubs
-description: Správa a monitorování událostí s využitím Azure Event Hubs a Azure Logic Apps
+description: Vytváření automatizovaných úloh a pracovních postupů, které sledují a spravují události pomocí Azure Event Hubs a Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 77ff24f3af77e012b9ae9bc702d6a5a2639a5b11
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446169"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorování, příjem a posílání událostí s využitím Azure Event Hubs a Azure Logic Apps
 
 V tomto článku se dozvíte, jak můžete monitorovat a spravovat události odeslané do [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) z aplikace logiky pomocí konektoru Azure Event Hubs. Můžete tak vytvářet aplikace logiky, které automatizují úlohy a pracovní postupy kontroly, odesílání a příjmu událostí z centra událostí. Technické informace specifické pro konektor najdete v [referenčních</a>ch konektoru Azure Event Hubs](https://docs.microsoft.com/connectors/eventhubs/) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -155,10 +155,10 @@ V seznamu akce vyberte tuto akci: **Odeslat událost – Event Hubs**
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
-   | **Obor názvů Event Hubs** | Ano | <*Event-Centers – obor názvů*> | Vyberte obor názvů Event Hubs, který chcete použít. |
+   | **Obor názvů Event Hubs** | Ano | <*event-hubs-namespace*> | Vyberte obor názvů Event Hubs, který chcete použít. |
    |||||  
 
-   Například:
+   Příklad:
 
    ![Vytvořit připojení centra událostí](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 

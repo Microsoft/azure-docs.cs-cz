@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 433a813fe3dd9e829a6e1c92d80590806a22732e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8e721b3dc2f2dca12ae7983676c7a090cf053893
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926871"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440610"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Kopírování dat z MariaDB pomocí Azure Data Factory
 
@@ -35,7 +35,7 @@ Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factor
 
 Tento konektor v současné době podporuje MariaDB verze 10.0 k 10.2.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -52,7 +52,7 @@ Pro MariaDB propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **MariaDB** | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení k MariaDB. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectionString | ODBC připojovací řetězec služby pro připojení k MariaDB. <br/>Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
@@ -63,10 +63,7 @@ Pro MariaDB propojené služby jsou podporovány následující vlastnosti:
     "properties": {
         "type": "MariaDB",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -84,10 +81,7 @@ Pro MariaDB propojené služby jsou podporovány následující vlastnosti:
     "properties": {
         "type": "MariaDB",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;"
-            },
+            "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

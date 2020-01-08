@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823299"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691005"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s databázemi s jednou, sdruženými a instancemi v Azure SQL Database
 
@@ -37,7 +37,7 @@ Klíčové komponenty v transakční replikaci jsou uvedené na následujícím 
 
 **Vydavatel** je instance nebo server, který publikuje změny provedené v některých tabulkách (články) odesláním aktualizací distributorovi. Publikování do jakékoli databáze SQL Azure z místního SQL Server podporuje následující verze SQL Server:
 
-- SQL Server 2019 (Preview)
+- SQL Server 2019 (preview)
 - SQL Server 2016 na SQL 2017
 - SQL Server 2014 SP1 CU3 nebo vyšší (12.00.4427)
 - SQL Server 2014 RTM CU10 (12.00.2556)
@@ -80,13 +80,14 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Matice podpory pro databáze instancí a místní systémy
   Matice podpory replikace pro databáze instancí je stejná jako ta pro SQL Server v místním prostředí. 
   
-  | **Publisher**   | **Rozdělovač** | **Roli** |
+| **Publisher**   | **Rozdělovač** | **Roli** |
 | :------------   | :-------------- | :------------- |
-| SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
-| SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
-| SQL Server 2014 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
-| SQL Server 2012 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
-| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
+| SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
+| SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
+| SQL Server 2016 | SQL Server 2019 <br/>SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2019 <br/> SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
+| SQL Server 2014 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
+| SQL Server 2012 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
+| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |  SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="requirements"></a>Požadavky
@@ -95,11 +96,13 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 - Sdílená složka účtu Azure Storage pro pracovní adresář používaný replikací. 
 - Port 445 (odchozí TCP) musí být otevřený v pravidlech zabezpečení podsítě spravované instance pro přístup ke sdílené složce Azure. 
 - Port 1433 (odchozí TCP) je nutné otevřít, pokud je Vydavatel nebo distributor na spravované instanci a předplatitelem v místním prostředí.
+- Všechny typy účastníků replikace (vydavatel, distributor, předplatitelé pro vyžádání obsahu a nabízený předplatitelé) se dají umístit na spravované instance, ale Vydavatel a distributor musí být buď v cloudu, nebo v místním prostředí.
+- Pokud má Vydavatel, distributor a/nebo předplatitele v různých virtuálních sítích, musí být mezi jednotlivými entitami navázán partnerský vztah sítě VPN, aby bylo možné vytvořit partnerský vztah VPN mezi vydavatelem a distributorem a/nebo že mezi distributorem a předplatitelem existuje partnerský vztah VPN. 
 
 
 >[!NOTE]
 > - Při připojování k souboru Azure Storage se může zobrazit chyba 53, pokud je v případě, že je distributor instancí databáze a předplatitelem instance, zablokovaný port 445 pro skupinu zabezpečení sítě (NSG). Pokud chcete tento problém vyřešit, [aktualizujte NSG virtuální](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) sítě. 
-> - Pokud databáze vydavatele a distributora ve spravovaných instancích používá [automatické převzetí služeb při selhání](sql-database-auto-failover-group.md), musí správce spravované instance [Odstranit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání je znovu nakonfigurovat na nové primární](sql-database-managed-instance-transact-sql-information.md#replication)úrovni.
+
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Porovnání synchronizace dat s transakční replikací
 
@@ -137,13 +140,53 @@ Vydavatel a distributor jsou nakonfigurovány na dvou spravovaných instancích.
  
 V této konfiguraci je Azure SQL Database (jedna, sdružená a databáze instance) předplatitel. Tato konfigurace podporuje migraci z místního prostředí do Azure. Pokud se odběratel nachází v jedné nebo sdružené databázi, musí být v režimu push.  
 
+## <a name="with-failover-groups"></a>Se skupinami převzetí služeb při selhání
+
+Pokud je geografická replikace povolená u **vydavatele** nebo instance **distributora** ve [skupině převzetí služeb při selhání](sql-database-auto-failover-group.md), musí správce spravované instance vyčistit všechny publikace na staré primární primární úrovni a po převzetí služeb při selhání je znovu nakonfigurovat na nové primární úrovni. V tomto scénáři jsou potřeba následující aktivity:
+
+1. Zastavte všechny úlohy replikace běžící v databázi, pokud existují.
+2. Z vydavatele vyřaďte metadata odběru spuštěním následujícího skriptu v databázi vydavatele:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. Odkládací metadata odběru od odběratele. Spusťte následující skript v databázi předplatného na instanci předplatitele:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. Vynuceně vyřaďte všechny replikační objekty od vydavatele spuštěním následujícího skriptu v publikované databázi:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. Nuceně odstranit starého distributora z původní primární instance (Pokud dojde k převzetí služeb při selhání do staré primární služby, která se použila k distributorovi). Spusťte následující skript v hlavní databázi v původní spravované instanci distributora:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
+
+Pokud je geografická replikace povolená u instance **předplatitele** ve skupině převzetí služeb při selhání, měla by se tato publikace nakonfigurovat pro připojení ke koncovému bodu naslouchacího procesu skupiny převzetí služeb při selhání pro spravovanou instanci odběratele. V případě převzetí služeb při selhání závisí následná akce správce spravované instance na typu převzetí služeb při selhání, ke kterému došlo: 
+
+- V případě převzetí služeb při selhání bez ztráty dat bude replikace po převzetí služeb při selhání pokračovat v práci. 
+- V případě převzetí služeb při selhání se ztrátou dat bude replikace fungovat také. Bude znovu replikován ztracené změny. 
+- V případě převzetí služeb při selhání se ztrátou dat, ale ztráta dat je mimo dobu uchování distribuční databáze, bude muset správce spravované instance znovu inicializovat databázi odběrů. 
 
 ## <a name="next-steps"></a>Další kroky
 
-1. [Nakonfigurujte replikaci mezi dvěma spravovanými instancemi](replication-with-sql-database-managed-instance.md). 
-1. [Vytvořte publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-1. [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru Azure SQL Database jako předplatitele (například `N'azuresqldbdns.database.windows.net` a Azure SQL Database název jako cílovou databázi (například **AdventureWorks**). )
-1. Přečtěte si o [omezeních transakční replikace pro spravovanou instanci](sql-database-managed-instance-transact-sql-information.md#replication) .
+- [Konfigurace replikace mezi vydavatelem a předplatitelem MI](replication-with-sql-database-managed-instance.md)
+- [Konfigurace replikace mezi vydavatelem MI, distributorem v mi a předplatitelem SQL Server](sql-database-managed-instance-configure-replication-tutorial.md)
+- [Vytvořte publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
+- [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru Azure SQL Database jako předplatitele (například `N'azuresqldbdns.database.windows.net` a Azure SQL Database název jako cílovou databázi (například **AdventureWorks**). )
+
+
+Další informace o konfiguraci transakční replikace najdete v následujících kurzech:
 
 
 

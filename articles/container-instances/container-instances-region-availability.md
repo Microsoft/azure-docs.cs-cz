@@ -2,13 +2,14 @@
 title: Dostupnost prostředků podle oblasti
 description: Dostupnost výpočetních a paměťových prostředků pro službu Azure Container Instances v různých oblastech Azure.
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445841"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -25,24 +26,23 @@ Informace o kvótách a dalších omezeních v nasazeních najdete v tématu [kv
 
 Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery Windows Server 2016 jsou k dispozici následující oblasti a prostředky.
 
-| Umístění | OS | Procesor | Paměť (GB) |
+| Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní USA | Linux | 4 | 16 |
-| Západní Evropa Západní USA 2 | Linux | 4 | 14 |
+| Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa, Západní USA, Západní USA 2 | Linux | 4 | 16 |
 | Austrálie – východ, Japonsko – východ | Linux | 2 | 8 |
-| Střed USA – sever Jižní Indie | Linux | 2 | 3,5 |
-| Západní Evropa | Windows | 4 | 16 |
-| Východní USA Západní USA | Windows | 4 | 14 |
-| Austrálie – východ, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA 2, Japonsko – východ, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní USA 2 | Windows | 2 | 3,5 |
+| Středoseverní USA | Linux | 2 | 3,5 |
+| Brazílie – jih, Japonsko – východ, Západní Evropa | Windows | 4 | 16 |
+| USA – východ, USA – západ | Windows | 4 | 14 |
+| Austrálie – východ, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA 2, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní USA 2 | Windows | 2 | 3,5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostupnost – Windows Server 2019 LTSC, 1809 nasazení (Preview)
 
 Následující oblasti a prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
 
-| Umístění | OS | Procesor | Paměť (GB) |
+| Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) |
 | -------- | -- | :---: | :-----------: |
-| Jihovýchodní Asie, Severní Evropa, Západní Evropa, Střed USA, Východní USA, Západní USA západní USA 2 | Windows | 4 | 16 |
-| Východ USA 2 | Windows | 2 | 3,5 |
+| Austrálie – východ, Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Japonsko – východ, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa | Windows | 4 | 16 |
+| Východní USA 2 Západní USA 2 | Windows | 2 | 3,5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>Dostupnost – nasazení virtuální sítě (Preview)

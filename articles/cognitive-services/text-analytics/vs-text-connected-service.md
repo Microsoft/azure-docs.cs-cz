@@ -1,21 +1,21 @@
 ---
 title: 'Kurz: připojení ke službě Analýza textu s připojenými službami v aplikaci Visual Studio'
 titleSuffix: Azure Cognitive Services
-description: Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio pro službu Analýza textu.
+description: Naučte se používat funkci připojené služby sady Visual Studio pro službu Analýza textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 317a5f4ae642dc2306ae84c42a042206b9059ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446142"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Kurz: připojení ke službě Analýza textu s připojenými službami v aplikaci Visual Studio
 
@@ -193,7 +193,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
     }
     ```
 
-1. Přidejte zobrazení pro zobrazení analyzovaného textu, určovaný jazyk a skóre, které reprezentuje úroveň spolehlivosti analýzy. To uděláte tak, že pravým tlačítkem myši kliknete na složku **Zobrazení** a zvolíte **Přidat** a potom **Zobrazení**. V zobrazeném dialogovém okně zadejte název _TextAnalyzeResult_, ve složce _Zobrazení_ potvrďte výchozí hodnoty pro přidání nového souboru s názvem **TextAnalyzeResult.cshtml** a zkopírujte do něj tento obsah:
+1. Přidejte zobrazení pro zobrazení analyzovaného textu, určovaný jazyk a skóre, které reprezentuje úroveň spolehlivosti analýzy. To uděláte tak, že pravým tlačítkem myši kliknete na složku **Zobrazení** a zvolíte **Přidat** a potom **Zobrazení**. V zobrazeném dialogovém okně zadejte název _TextAnalyzeResult_, ve složce **Zobrazení** potvrďte výchozí hodnoty pro přidání nového souboru s názvem _TextAnalyzeResult.cshtml_ a zkopírujte do něj tento obsah:
     
     ```cshtml
     @using System

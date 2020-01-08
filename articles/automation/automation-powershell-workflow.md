@@ -2,19 +2,15 @@
 title: Školicí pracovní postup prostředí PowerShell pro Azure Automation
 description: Tento článek je určený jako Rychlá lekce pro autory, kteří znají prostředí PowerShell, aby porozuměli konkrétním rozdílům mezi PowerShellem a pracovním postupem PowerShellu a koncepty platnými pro Runbooky Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/14/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d656e97448bebe7019a63824b9de6e322b787a92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850733"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421554"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Principy konceptu pracovního postupu prostředí Windows PowerShell pro výuku pro Runbooky služby Automation
 

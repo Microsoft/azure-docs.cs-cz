@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 3feadaca361950df2a09f8da33fe380fc3763763
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442903"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro správu image kontejnerů a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -25,6 +25,8 @@ Tento článek se zaměřuje na tom, jak zabezpečit své kontejnery ve službě
 > * Automaticky aktivovat a opětovné nasazení imagí kontejnerů, když dojde k aktualizaci základní image
 
 Můžete si také přečíst osvědčené postupy pro [zabezpečení clusteru][best-practices-cluster-security] a [zabezpečení pod][best-practices-pod-security].
+
+V Security Center můžete také použít [zabezpečení kontejnerů][security-center-containers] , které vám pomůžou zkontrolovat ohrožení zabezpečení v kontejnerech.  K ochraně imagí a registru před chybami zabezpečení se taky [Azure Container Registry integrace][security-center-acr] s Security Center.
 
 ## <a name="secure-the-images-and-run-time"></a>Zabezpečení Image a čas spuštění
 
@@ -61,3 +63,5 @@ Tento článek se zaměřuje na tom, jak zabezpečit vaše kontejnery. K provede
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: /azure/security-center/container-security
+[security-center-acr]: /azure/security-center/azure-container-registry-integration

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: faeb4df915cc5c56e21d1857fe75a956d419c46e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397280"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
-V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) nakonfigurovat upozornění metrik Azure. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.
+V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat upozornění metrik Azure. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.
 
 > [!NOTE]
 > 
@@ -182,7 +182,7 @@ Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte 
 Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Šablona Správce prostředků pro prostředek s klasickou výstrahou metriky
-Výstraha na Správce prostředků šabloně je nejčastěji užitečná při vytváření výstrahy při vytváření prostředku. Například může být vhodné zajistit, aby bylo pravidlo "CPU% > 80" nastaveno při každém nasazení virtuálního počítače. Chcete-li to provést, přidejte pravidlo výstrahy jako prostředek do pole prostředků pro šablonu virtuálního počítače a přidejte závislost pomocí `dependsOn` vlastnosti do ID prostředku virtuálního počítače. Tady je úplný příklad, který vytvoří virtuální počítač s Windows a přidá výstrahu, která upozorní správce předplatného, když využití procesoru překročí 80%.
+Výstraha na Správce prostředků šabloně je nejčastěji užitečná při vytváření výstrahy při vytváření prostředku. Například může být vhodné zajistit, aby bylo pravidlo "CPU% > 80" nastaveno při každém nasazení virtuálního počítače. Chcete-li to provést, přidejte pravidlo výstrahy jako prostředek do pole prostředků pro šablonu virtuálního počítače a přidejte závislost pomocí vlastnosti `dependsOn` do ID prostředku virtuálního počítače. Tady je úplný příklad, který vytvoří virtuální počítač s Windows a přidá výstrahu, která upozorní správce předplatného, když využití procesoru překročí 80%.
 
 ```json
 {

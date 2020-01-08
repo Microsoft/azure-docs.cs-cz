@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření účtu Batch – Služba Batch | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření účtu Batch v režimu služby Batch
+title: Ukázkový skript Azure CLI – vytvoření účtu Batch – služba Batch
+description: Tento skript vytvoří účet Azure Batch v režimu služby Batch a předvede dotazování a aktualizaci různých vlastností účtu.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: 038cea1aa8d72d46d028873fb4be19887b83d787
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ee733b492e1d89c58336003bcb4be72f79b9e403
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322233"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449741"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>Příklad rozhraní příkazového řádku: Vytvoření účtu Batch v režimu služby Batch
 
@@ -56,6 +56,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Provede ověření v zadaném účtu Batch pro další práci s rozhraním příkazového řádku.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).

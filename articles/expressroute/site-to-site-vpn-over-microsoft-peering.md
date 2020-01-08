@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436813"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurace VPN typu site-to-site přes partnerský vztah ExpressRoute Microsoftu
 
@@ -130,7 +130,7 @@ Následující diagram znázorňuje abstrahovanou přehled sítě příkladu:
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>O Příklady šablon Azure Resource Manageru
 
-V příkladech ukončení tunelu IPsec a brány VPN jsou nakonfigurované pomocí šablony Azure Resource Manageru. Pokud začínáte pomocí šablon Resource Manageru, nebo pochopit základy šablony Resource Manageru, najdete v článku [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). Šablona v této části se vytvoří úplně nové prostředí Azure (VNet). Nicméně pokud máte existující virtuální síť, můžete na něj mohli odkazovat v šabloně. Pokud nejste obeznámeni s konfigurací site-to-site protokolu IPsec/IKE VPN gateway, přečtěte si téma [vytvoření připojení site-to-site](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
+V příkladech ukončení tunelu IPsec a brány VPN jsou nakonfigurované pomocí šablony Azure Resource Manageru. Pokud začínáte pomocí šablon Resource Manageru, nebo pochopit základy šablony Resource Manageru, najdete v článku [Princip struktury a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/templates/template-syntax.md). Šablona v této části se vytvoří úplně nové prostředí Azure (VNet). Nicméně pokud máte existující virtuální síť, můžete na něj mohli odkazovat v šabloně. Pokud nejste obeznámeni s konfigurací site-to-site protokolu IPsec/IKE VPN gateway, přečtěte si téma [vytvoření připojení site-to-site](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 >[!NOTE]
 >Nemusíte pomocí šablon Azure Resource Manageru k vytvoření této konfigurace. Můžete vytvořit tuto konfiguraci pomocí webu Azure portal nebo Powershellu.

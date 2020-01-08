@@ -1,5 +1,5 @@
 ---
-title: Co je správa nároků Azure AD? -Azure Active Directory
+title: Co je správa nároků? – Azure AD
 description: Získejte přehled o Azure Active Directory správě nároků a o tom, jak ho můžete používat ke správě přístupu ke skupinám, aplikacím a webům SharePointu Online pro interní a externí uživatele.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422578"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -114,16 +114,16 @@ Přístupové balíčky nenahrazují jiné mechanismy pro přiřazení přístup
 
 Chcete-li lépe pochopit správu nároků a její dokumentaci, můžete se vrátit k následujícímu seznamu podmínek.
 
-| Označení | Popis |
+| Doba účinnosti | Popis |
 | --- | --- |
 | přístup k balíčku | Sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupový balíček je vždycky obsažený v katalogu. Vytvořili jste nový balíček pro přístup pro scénář, ve kterém uživatelé potřebují požádat o přístup.  |
 | žádost o přístup | Žádost o přístup k prostředkům v balíčku pro přístup Požadavek obvykle prochází schvalovacím pracovním postupem.  V případě schválení obdrží žádající uživatel přiřazení balíčku přístupu. |
 | přiřazení | Přiřazení balíčku přístupu uživateli zajistí, že uživatel bude mít všechny role prostředků tohoto balíčku přístupu.  Přístup k přiřazením balíčků má obvykle časový limit před vypršením platnosti. |
-| zařazení | Kontejner souvisejících prostředků a přístupových balíčků.  Katalogy se používají pro delegování, aby nesprávci mohli vytvářet vlastní balíčky přístupu. Vlastníci katalogu můžou přidat prostředky, které vlastní, do katalogu. |
+| catalog | Kontejner souvisejících prostředků a přístupových balíčků.  Katalogy se používají pro delegování, aby nesprávci mohli vytvářet vlastní balíčky přístupu. Vlastníci katalogu můžou přidat prostředky, které vlastní, do katalogu. |
 | Tvůrce katalogu | Kolekce uživatelů, kteří mají oprávnění vytvořit nové katalogy.  Když uživatel bez oprávnění správce, který je autorizován jako tvůrce katalogu, vytvoří nový katalog, stane se automaticky vlastníkem tohoto katalogu. |
 | připojená organizace | Externí adresář nebo doména služby Azure AD, se kterou máte relaci. Uživatelé z připojené organizace můžou být v zásadách uvedeni tak, aby si vyžádali přístup. |
 | policy | Sada pravidel definujících životní cyklus přístupu, například způsob, jakým uživatelé získávají přístup, kteří můžou schvalovat a jak dlouho mají uživatelé přístup prostřednictvím přiřazení. Zásada je propojená s balíčkem přístupu. Přístupový balíček může například mít dvě zásady – jeden pro zaměstnance, kteří požadují přístup a druhý pro externí uživatele, aby si vyžádali přístup. |
-| Partner | Asset, jako je například skupina Office, skupina zabezpečení, aplikace nebo web SharePointu Online, s rolí, pro kterou může uživatel udělit oprávnění. |
+| resource | Asset, jako je například skupina Office, skupina zabezpečení, aplikace nebo web SharePointu Online, s rolí, pro kterou může uživatel udělit oprávnění. |
 | Adresář prostředků | Adresář, který obsahuje jeden nebo více prostředků ke sdílení. |
 | role prostředku | Kolekce oprávnění přidružených k prostředku a definovanému prostředkem. Skupina má dvě role – člena a vlastníka. Weby SharePointu mají obvykle 3 role, ale mohou mít další vlastní role. Aplikace mohou mít vlastní role. |
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 934fe2219ccca917999cf49cb9c9826276545e73
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432924"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
@@ -24,7 +24,9 @@ Azure Maps Android SDK je knihovna vektorových map pro Android. Tento článek 
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
-Chcete-li dokončit postupy v tomto článku, musíte nejprve [vytvořit účet Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) v cenové úrovni S1.
+Pokud chcete dokončit postupy v tomto článku, musíte nejdřív [vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-account-with-azure-maps) v cenové úrovni S1 a získat pro svůj účet [primární klíč](quick-demo-map-app.md#get-the-primary-key-for-your-account) .
+
+Další podrobnosti o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 ### <a name="download-android-studio"></a>Stáhnout Android Studio
 
@@ -36,8 +38,8 @@ Nejprve vytvořte nový projekt s prázdnou aktivitou. Chcete-li vytvořit proje
 
 1. V části **zvolit projekt**vyberte **telefon a tablet**. Vaše aplikace se spustí v tomto faktoru formuláře.
 2. Na kartě **telefon a tablet** vyberte **prázdná aktivita**a pak vyberte **Další**.
-3. V části **Konfigurovat projekt**vyberte `API 21: Android 5.0.0 (Lollipop)` jako minimální sadu SDK. Toto je nejstarší verze, kterou podporuje Azure Maps Android SDK.
-4. Přijměte výchozí `Activity Name` nastavení `Layout Name` a klikněte na **Dokončit**.
+3. V části **Konfigurovat projekt**vyberte jako minimální sadu SDK možnost `API 21: Android 5.0.0 (Lollipop)`. Toto je nejstarší verze, kterou podporuje Azure Maps Android SDK.
+4. Přijměte výchozí `Activity Name` a `Layout Name` a vyberte **Dokončit**.
 
 Další nápovědu k instalaci Android Studio a vytvoření nového projektu najdete v [dokumentaci k Android Studio](https://developer.android.com/studio/intro/) .
 
@@ -45,11 +47,11 @@ Další nápovědu k instalaci Android Studio a vytvoření nového projektu naj
 
 ## <a name="set-up-a-virtual-device"></a>Nastavení virtuálního zařízení
 
-Android Studio umožňuje na počítači nastavit virtuální zařízení s Androidem. To vám může pomáhat při testování aplikace během vývoje. Pokud chcete nastavit virtuální zařízení, vyberte ikonu správce virtuálního zařízení (AVD) Android v pravém horním rohu obrazovky projektu a pak vyberte **vytvořit virtuální zařízení**. Do AVD Manageru se můžete dostat taky tak, že na panelu nástrojů vyberete **nástroje** > pro**Android** > **AVD Manager** . V kategorii **telefony** vyberte **Nexus pětinásobné**a pak vyberte **Další**.
+Android Studio umožňuje na počítači nastavit virtuální zařízení s Androidem. To vám může pomáhat při testování aplikace během vývoje. Pokud chcete nastavit virtuální zařízení, vyberte ikonu správce virtuálního zařízení (AVD) Android v pravém horním rohu obrazovky projektu a pak vyberte **vytvořit virtuální zařízení**. Do AVD Manageru se můžete dostat taky tak, že na panelu nástrojů vyberete **nástroje** > **Android** > **AVD Manager** . V kategorii **telefony** vyberte **Nexus pětinásobné**a pak vyberte **Další**.
 
 Další informace o nastavení AVD najdete v [dokumentaci k Android Studio](https://developer.android.com/studio/run/managing-avds).
 
-![Android Emulator](./media/how-to-use-android-map-control-library/android-emulator.png)
+![Emulátor Androidu](./media/how-to-use-android-map-control-library/android-emulator.png)
 
 ## <a name="install-the-azure-maps-android-sdk"></a>Instalace Azure Maps Android SDK
 
@@ -80,11 +82,9 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
-
-    > [!Note]
-    > Android SDK Azure Maps se pravidelně upgradují a zvyšují. Nejnovější Azure Maps číslo verze implementace můžete získat v dokumentaci [Začínáme s nástrojem pro mapování Androidu](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) . Můžete také nastavit číslo verze z "0,2" na "0 +" tak, aby vždy odkazovalo na nejnovější verzi.
-
-3. Upravte > rozloženíres > **activity_main. XML** a nahraďte ho kódem:
+    
+    4. Přejděte na **soubor** na panelu nástrojů a pak klikněte na **synchronizovat projekt se soubory Gradle**.
+3. Přidejte do hlavní aktivity fragment mapy (res \> layout \> Activity\_Main. XML):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -109,7 +109,7 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
     * Nastavení ověřovacích informací Azure Maps
     * získání instance mapového ovládacího prvku v metodě **Create**
 
-    Nastavení ověřovacích informací `AzureMaps` třídy globálně `setSubscriptionKey` pomocí metod nebo `setAadProperties` ji vytvoří, takže nebudete muset přidávat informace o ověřování do každého zobrazení. 
+    Nastavení ověřovacích informací pro třídu `AzureMaps` globálně pomocí metod `setSubscriptionKey` nebo `setAadProperties` ji vytvoří, takže nebudete muset přidávat informace o ověřování do každého zobrazení. 
 
     Mapový ovládací prvek obsahuje vlastní metody životního cyklu pro správu životního cyklu OpenGL pro Android, které musí být volány přímo z obsažené aktivity. Aby mohla vaše aplikace správně fungovat, zavolejte metody životního cyklu mapového ovládacího prvku, je nutné přepsat následující metody životního cyklu v aktivitě, která obsahuje mapový ovládací prvek a volat příslušnou metodu mapového ovládacího prvku. 
 
@@ -201,30 +201,29 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
             mapControl.onSaveInstanceState(outState);
         }
     }
-
     ```
 
 ## <a name="import-classes"></a>Importovat třídy
 
-Po dokončení předchozích kroků se pravděpodobně zobrazí upozornění od Android Studio o některém z kódů. Chcete-li tato upozornění vyřešit, importujte třídy, `MainActivity.java`které jsou odkazovány v.
+Po dokončení předchozích kroků se pravděpodobně zobrazí upozornění od Android Studio o některém z kódů. Chcete-li vyřešit tato upozornění, importujte třídy, na které se odkazuje v `MainActivity.java`.
 
 Tyto třídy můžete automaticky importovat tak, že vyberete ALT + ENTER (možnost + návrat na Macu).
 
 Vyberte tlačítko Spustit, jak je znázorněno na následujícím obrázku (nebo stiskněte CTRL + R na Macu) a sestavte aplikaci.
 
-![Klikněte na spustit.](./media/how-to-use-android-map-control-library/run-app.png)
+![Klikněte na Run (Spustit).](./media/how-to-use-android-map-control-library/run-app.png)
 
 Sestavení aplikace bude trvat několik sekund Android Studio. Po dokončení sestavení můžete aplikaci otestovat v emulovaném zařízení se systémem Android. Měla by se zobrazit mapa, jako je tato:
 
 <center>
 
-![Mapa Androidu](./media/how-to-use-android-map-control-library/android-map.png)</center>
+![](./media/how-to-use-android-map-control-library/android-map.png)</center> mapy pro Android
 
 ## <a name="localizing-the-map"></a>Lokalizace mapy
 
 Azure Maps Android SDK poskytuje tři různé způsoby nastavení jazyka a regionálního zobrazení mapy. Následující kód ukazuje, jak nastavit jazyk na francouzštinu ("fr-FR") a místní zobrazení na "auto". 
 
-První možností je předat jazyk a zobrazit regionální informace do `AzureMaps` třídy pomocí globálně statických `setLanguage` a `setView` metod. Tím se nastaví výchozí jazyk a místní zobrazení ve všech Azure Mapsch ovládacích prvcích načtených ve vaší aplikaci.
+První možností je předat jazyk a zobrazit regionální informace do třídy `AzureMaps` pomocí statických metod `setLanguage` a `setView` globálně. Tím se nastaví výchozí jazyk a místní zobrazení ve všech Azure Mapsch ovládacích prvcích načtených ve vaší aplikaci.
 
 ```Java
 static {
@@ -251,7 +250,7 @@ Druhou možností je předat jazyk a zobrazit informace do XML mapového ovláda
     />
 ```
 
-Třetí možností je programově nastavit jazyk a regionální zobrazení mapy pomocí metody map `setStyle` . To lze provést kdykoli, chcete-li změnit jazyk a regionální zobrazení mapy.
+Třetí možností je programově nastavit jazyk a regionální zobrazení mapy pomocí metody map `setStyle`. To lze provést kdykoli, chcete-li změnit jazyk a regionální zobrazení mapy.
 
 ```Java
 mapControl.onReady(map -> {
@@ -264,12 +263,12 @@ Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a místní
 
 <center>
 
-![Obrázek mapy znázorňující popisky ve francouzštině](./media/how-to-use-android-map-control-library/android-localization.png)
+Obrázek mapy ![znázorňující popisky ve francouzštině](./media/how-to-use-android-map-control-library/android-localization.png)
 </center>
 
 Úplný seznam podporovaných jazyků a regionálních zobrazení je popsán [zde](supported-languages.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak přidat překryvná data na mapu:
 

@@ -1,5 +1,6 @@
 ---
-title: Co dělat v případě výpadku služby Azure, který má dopad na Azure Cloud Services | Microsoft Docs
+title: Zpracování přerušení služby Azure, které ovlivňuje Azure Cloud Services
+titleSuffix: Azure Cloud Services
 description: Seznamte se s tím, co dělat v případě výpadku služby Azure, který ovlivňuje Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -9,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: a014c3d5ada2024609e9262d8943090ac7b205c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f65b61d7265268b33d2c9a113503cc1b5a87db8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361207"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co dělat v případě výpadku služby Azure, který má dopad na Azure Cloud Services
 V Microsoftu pracujeme na tom, abychom zajistili, že naše služby jsou vždycky k dispozici, až je budete potřebovat. Síly nad rámec našeho ovládacího prvku někdy ovlivňují způsob, jakým způsobují neplánované výpadky služeb.

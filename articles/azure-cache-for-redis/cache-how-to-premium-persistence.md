@@ -1,17 +1,17 @@
 ---
-title: Jak nakonfigurovat Trvalost dat pro mezipaměť Azure Premium pro Redis
+title: Konfigurace trvalosti dat – Premium Azure cache pro Redis
 description: Naučte se konfigurovat a spravovat Trvalost dat v mezipaměti Azure úrovně Premium pro instance Redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: yegu
-ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122735"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412832"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Trvalost dat pro mezipaměť Azure Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu pro výběr velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat trvalost v mezipaměti Azure úrovně Premium pro instanci Redis.
@@ -160,7 +160,7 @@ Další informace o škálování najdete v tématu [co se stane, když se šká
 
 Data uložená v souborech AOF se dělí na několik objektů blob stránky na jeden uzel, aby se zvýšil výkon ukládání dat do úložiště. Následující tabulka uvádí, kolik objektů blob stránky se používá pro každou cenovou úroveň:
 
-| Úroveň Premium | Objekty blob |
+| Úroveň Premium | Bloby |
 |--------------|-------|
 | P1           | 4 na horizontálních oddílů    |
 | P2           | 8 per horizontálních oddílů    |

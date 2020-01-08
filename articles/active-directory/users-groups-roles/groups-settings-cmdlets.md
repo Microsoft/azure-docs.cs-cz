@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430859"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 
@@ -36,7 +36,7 @@ Rutiny jsou součástí modulu Azure Active Directory PowerShell v2. Pokyny ke s
 
 ## <a name="install-powershell-cmdlets"></a>Instalace rutin PowerShellu
 
-Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny starší verze modulu Azure Active Directory PowerShell pro Graph pro Windows PowerShell a nainstalovat [Azure Active Directory PowerShell pro Graph – Verze Public Preview 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+Před spuštěním příkazů PowerShellu si nezapomeňte odinstalovat všechny starší verze modulu Azure Active Directory PowerShellu pro modul Graph pro prostředí Windows PowerShell a nainstalovat [Azure Active Directory prostředí PowerShell pro Public Preview verzi graphu (novější než 2.0.0.137)](https://www.powershellgallery.com/packages/AzureADPreview) .
 
 1. Otevřete aplikaci Windows PowerShell jako správce.
 2. Odinstalujte všechny předchozí verze AzureADPreview.
@@ -53,7 +53,7 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Vytvoření nastavení na úrovni adresáře
-Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechny skupiny Office 365 v adresáři. Rutina Get-AzureADDirectorySettingTemplate je k dispozici pouze v [modulu Azure AD PowerShell Preview pro graf](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechny skupiny Office 365 v adresáři. Rutina Get-AzureADDirectorySettingTemplate je k dispozici pouze v [modulu Azure AD PowerShell Preview pro graf](https://www.powershellgallery.com/packages/AzureADPreview).
 
 1. V rutinách DirectorySettings je nutné zadat ID SettingsTemplate, které chcete použít. Pokud toto ID neznáte, vrátí tato rutina seznam všech šablon nastavení:
   
@@ -76,12 +76,13 @@ Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechn
 2. Chcete-li přidat adresu URL pokynů pro použití, nejprve potřebujete získat objekt SettingsTemplate, který definuje hodnotu adresy URL směrnice o použití. To znamená, že šablona Group. Unified:
   
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
    ```
 3. Dále vytvořte nový objekt nastavení na základě této šablony:
   
    ```powershell
-   $Setting = $template.CreateDirectorySetting()
+   $Setting = $Template.CreateDirectorySetting()
    ```  
 4. Pak aktualizujte hodnotu směrnice o využití:
   
@@ -91,22 +92,57 @@ Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechn
 5. Pak použijte nastavení:
   
    ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   New-AzureADDirectorySetting -DirectorySetting $Setting
    ```
 6. Hodnoty můžete číst pomocí:
 
    ```powershell
    $Setting.Values
-   ```  
+   ```
+   
 ## <a name="update-settings-at-the-directory-level"></a>Aktualizovat nastavení na úrovni adresáře
-Pokud chcete v šabloně nastavení aktualizovat hodnotu UsageGuideLinesUrl, jednoduše upravte adresu URL pomocí kroku 4 a pak proveďte krok 5 a nastavte novou hodnotu.
+Pokud chcete aktualizovat hodnotu UsageGuideLinesUrl v šabloně nastavení, přečtěte si aktuální nastavení z Azure AD, jinak jsme mohli vymezit přepsání stávajících nastavení kromě UsageGuideLinesUrl.
 
-Pokud chcete hodnotu UsageGuideLinesUrl odebrat, upravte adresu URL tak, aby byla prázdným řetězcem, a to pomocí kroku 4 výše:
-
+1. Získá aktuální nastavení ze skupiny. Unified SettingsTemplate:
+   
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+   ```  
+2. Ověřte aktuální nastavení:
+   
+   ```powershell
+   $Setting.Values
+   ```
+   
+   Výstup:
+   ```powershell
+    Name                          Value
+    ----                          -----
+    EnableMIPLabels               false
+    CustomBlockedWordsList
+    EnableMSStandardBlockedWords  False
+    ClassificationDescriptions
+    DefaultClassification
+    PrefixSuffixNamingRequirement
+    AllowGuestsToBeGroupOwner     False
+    AllowGuestsToAccessGroups     True
+    GuestUsageGuidelinesUrl
+    GroupCreationAllowedGroupId
+    AllowToAddGuests              True
+    UsageGuidelinesUrl            https://guideline.example.com
+    ClassificationList
+    EnableGroupCreation           True
+    ```
+3. Pokud chcete hodnotu UsageGuideLinesUrl odebrat, upravte adresu URL tak, aby byla prázdným řetězcem:
+   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-Pak proveďte krok 5 a nastavte novou hodnotu.
+4. Uložit aktualizaci do adresáře:
+   
+   ```powershell
+   Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+   ```  
 
 ## <a name="template-settings"></a>Nastavení šablony
 Tady jsou nastavení definovaná ve skupině. Unified SettingsTemplate. Pokud není uvedeno jinak, tyto funkce vyžadují licenci Azure Active Directory Premium P1. 

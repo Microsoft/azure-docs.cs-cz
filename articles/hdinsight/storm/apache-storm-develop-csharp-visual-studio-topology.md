@@ -1,19 +1,19 @@
 ---
 title: Apache Storm topologie se sadou Visual Studio C# a – Azure HDInsight
 description: Naučte se vytvářet topologie zaplavení v C#. Vytvořte topologii počtu slov v aplikaci Visual Studio pomocí nástrojů Hadoop pro Visual Studio.
-ms.service: hdinsight
+ROBOTS: NOINDEX
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f59328c5894a53b6337ecc04e3daebb2ef180c59
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 12/31/2019
+ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927926"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612287"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj C# topologií pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
 
@@ -21,20 +21,17 @@ Naučte se vytvářet C# Apache Storm topologii pomocí nástrojů Azure Data La
 
 Naučíte se také, jak vytvořit hybridní topologie, C# které používají komponenty a součásti Java.
 
-> [!NOTE]  
-> I když postup v tomto dokumentu spoléhá na vývojové prostředí Windows se sadou Visual Studio, zkompilovaný projekt lze odeslat do clusteru HDInsight se systémem Linux nebo Windows. Pouze clustery se systémem Linux vytvořené po 28. říjnu 2016 podporují topologie SCP.NET.
-
-Pokud chcete použít C# topologii s clusterem se systémem Linux, je nutné aktualizovat balíček NuGet `Microsoft.SCP.Net.SDK` používaný vaším projektem na verzi 0.10.0.6 nebo novější. Verze balíčku se zároveň musí shodovat s hlavní verzí Stormu nainstalovanou ve službě HDInsight.
+C#topologie používají .NET 4,5 a ke spuštění v clusteru HDInsight použijte mono. Informace o možných nekompatibilitách najdete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/). Pokud chcete použít C# topologii, musíte aktualizovat balíček NuGet `Microsoft.SCP.Net.SDK`, který váš projekt používá, na verzi 0.10.0.6 nebo novější. Verze balíčku se zároveň musí shodovat s hlavní verzí Stormu nainstalovanou ve službě HDInsight.
 
 | Verze HDInsight | Verze Apache Storm | Verze SCP.NET | Výchozí verze mono |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3,3 |0.10. x |0.10. x. x</br>(pouze v HDInsight se systémem Windows) | Není k dispozici |
-| 3.4 | 0.10.0. x | 0.10.0. x | 3.2.8 |
-| 3,5 | 1.0.2. x | 1.0.0. x | 4.2.1 |
-| 3,6 | 1.1.0. x | 1.0.0. x | 4.2.8 |
+| 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
+| 3,5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
+| 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
 
-> [!IMPORTANT]  
-> Topologie jazyka C# v clusterech založených na Linuxu musí používat technologii .NET 4.5. a pro spuštění v clusteru HDInsight musí používat Mono. Informace o možných nekompatibilitách najdete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/).
+## <a name="prerequisite"></a>Požadavek
+
+Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
 
 ## <a name="install-visual-studio"></a>Instalace sady Visual Studio
 
@@ -52,7 +49,7 @@ Při odeslání topologie negenerovaného toku ze sady Visual Studio vygeneruje 
 
 2. Nastavte proměnnou prostředí `JAVA_HOME` na adresář, který obsahuje Java.
 
-3. Nastavte proměnnou prostředí `PATH` tak, aby zahrnovala adresář *% JAVA_HOME% \ bin* .
+3. Nastavte proměnnou prostředí `PATH` tak, aby zahrnovala `%JAVA_HOME%\bin` adresář.
 
 Můžete sestavit a spustit následující C# konzolovou aplikaci, abyste ověřili, že Java a JDK jsou správně nainstalované:
 
@@ -92,9 +89,9 @@ namespace ConsoleApplication2
 
 Nástroje pro Data Lake pro Visual Studio poskytují následující šablony:
 
-| Typ projektu | Monstr |
+| Typ projektu | Demonstruje |
 | --- | --- |
-| Aplikace s více aplikacemi |Prázdný projekt topologie naplnění. |
+| Aplikace Stormu |Prázdný projekt topologie naplnění. |
 | Ukázka funkce pro vyplavení Azure SQL Writer |Jak zapisovat do Azure SQL Database. |
 | Ukázka Azure Cosmos DBho čtecího modulu pro čtení |Jak číst z Azure Cosmos DB. |
 | Ukázka funkce pro zápis Azure Cosmos DBho zápisu |Jak zapisovat do Azure Cosmos DB. |
@@ -102,8 +99,8 @@ Nástroje pro Data Lake pro Visual Studio poskytují následující šablony:
 | Ukázka zapisovače nástroje pro vyplavení EventHub |Jak zapisovat do Azure Event Hubs. |
 | Ukázka čtecího modulu pro vyplavování HBA |Jak číst z adaptérů HBA v clusterech HDInsight. |
 | Ukázka zapisovače pro vyplavování HBA |Jak zapisovat do adaptérů HBA v clusterech HDInsight. |
-| Hybridní ukázka s více podprocesy |Jak používat komponentu Java. |
-| Ukázka obplavení |Základní topologie počtu slov. |
+| Hybridní ukázka Stormu |Jak používat komponentu Java. |
+| Ukázka Stormu |Základní topologie počtu slov. |
 
 > [!WARNING]  
 > Ne všechny šablony pracují se systémem Linux HDInsight. Balíčky NuGet používané šablonami nemusí být kompatibilní s mono. Pokud chcete zjistit možné problémy, přečtěte si téma [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/) a použijte [analyzátor přenositelnosti .NET](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis).
@@ -144,8 +141,6 @@ Po vytvoření projektu byste měli mít následující soubory:
 * *Bolt.cs*: příklad typu, který udržuje počet čísel generovaných Spout.
 
 Při vytváření projektu NuGet stáhne nejnovější [balíček SCP.NET](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
-
-[!INCLUDE [scp.net version important](../../../includes/hdinsight-storm-scpdotnet-version.md)]
 
 ### <a name="implement-the-spout"></a>Implementace rozhraní Spout
 
@@ -410,12 +405,13 @@ return topologyBuilder;
 
 Nyní jste připraveni odeslat topologii do clusteru HDInsight.
 
+1. Přejděte k **zobrazení** > **Průzkumník serveru**.
+
+1. Klikněte pravým tlačítkem myši na **Azure**, vyberte **připojit k Microsoft Azure předplatnému...** a dokončete proces přihlašování.
+
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Odeslat pro**zaplavení v HDInsight.
 
-    > [!NOTE]  
-    > Pokud se zobrazí výzva, zadejte přihlašovací údaje k vašemu předplatnému Azure. Pokud máte více než jedno předplatné, přihlaste se k počítači, který obsahuje vaše navýšení na clusteru HDInsight.
-
-2. V dialogovém okně **Odeslat topologii** v rozevíracím seznamu cluster nenáročného **clusteru** zvolte své zaplavení na clusteru HDInsight a pak vyberte **Odeslat**. Můžete ověřit, zda je odeslání úspěšné, zobrazením podokna **výstup** .
+1. V dialogovém okně **Odeslat topologii** v rozevíracím seznamu cluster nenáročného **clusteru** zvolte své zaplavení na clusteru HDInsight a pak vyberte **Odeslat**. Můžete ověřit, zda je odeslání úspěšné, zobrazením podokna **výstup** .
 
     Po úspěšném odeslání topologie by se měla zobrazit okno **zobrazení topologií** vyplavení pro daný cluster. Vyberte topologii **WORDCOUNT** ze seznamu a zobrazte informace o spuštěné topologii.
 
@@ -426,7 +422,7 @@ Nyní jste připraveni odeslat topologii do clusteru HDInsight.
 
     Chcete-li zobrazit informace o součástech v topologii, vyberte součást v diagramu.
 
-3. V části **Souhrn topologie** vyberte možnost **Kill** a zastavte topologii.
+1. V části **Souhrn topologie** vyberte možnost **Kill** a zastavte topologii.
 
     > [!NOTE]  
     > Topologie zaplavování se nadále spouštějí, dokud nejsou deaktivovány, nebo když se cluster odstraní.
@@ -492,7 +488,7 @@ SCP.NET verze 0.9.4.203 zavádí novou třídu a metodu specificky pro práci s 
 > [!NOTE]  
 > K serializaci dat vytvořených v Spout je nutné stále používat `CustomizedInteropJSONSerializer`.
 
-## <a id="configurationmanager"></a>Použití ConfigurationManager
+## <a name="use-configurationmanager"></a>Použití ConfigurationManager
 
 Nepoužívejte **ConfigurationManager** k načtení hodnot konfigurace ze součástí šroubů a Spout. V takovém případě může dojít k výjimce ukazatele s hodnotou null. Místo toho předejte konfiguraci pro váš projekt do topologie pro zaplavení jako dvojici klíč a hodnota v kontextu topologie. Každá komponenta, která závisí na hodnotách konfigurace, musí být při inicializaci načítána z kontextu.
 
@@ -552,9 +548,9 @@ Pokud používáte C# topologii s clusterem HDInsight se systémem Linux, musí 
 
 Konfigurace pro váš projekt je předána do topologie přetvoření jako dvojice klíč a hodnota v kontextu topologie. Dá se načíst z objektu Dictionary, který se předává komponentám při inicializaci.
 
-Další informace najdete v části [použití ConfigurationManager](#configurationmanager) tohoto dokumentu.
+Další informace najdete v části [použití ConfigurationManager](#use-configurationmanager) tohoto dokumentu.
 
-### <a name="systemtypeloadexception"></a>System. TypeLoadException
+### <a name="systemtypeloadexception"></a>System.TypeLoadException
 
 Při použití C# topologie s clusterem HDInsight se systémem Linux může docházet k následující chybě:
 
@@ -725,7 +721,7 @@ Chcete-li zobrazit chyby, ke kterým došlo ve spuštěné topologii, použijte 
 
 Pokud provedete chyby při odesílání topologie do HDInsight, můžete najít protokoly pro serverové komponenty, které zpracovávají odesílání topologie v clusteru HDInsight. Chcete-li stáhnout tyto protokoly, použijte následující příkaz z příkazového řádku:
 
-```shell
+```cmd
 scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 ```
 

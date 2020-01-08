@@ -1,17 +1,17 @@
 ---
-title: Práce s Geoprostorová data v účtu rozhraní SQL API služby Azure Cosmos DB
+title: Použití geoprostorových dat v Azure Cosmos DB účtu rozhraní SQL API
 description: Naučte se vytvářet, indexování a dotazovat Prostorové objekty s Azure Cosmos DB a rozhraní SQL API.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e48f6c52aa2d633ea20fd0dae70c7aa1380bb50d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616846"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441891"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Použití geoprostorových a GeoJSON umístění dat pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -94,7 +94,7 @@ Kromě Point, LineString a mnohoúhelník GeoJSON také určuje vyjádření zp�
 ### <a name="coordinate-reference-systems"></a>Souřadnice referenčních systémů
 Protože je nestandardní tvar všech koutech světa, souřadnice Geoprostorová data jsou reprezentovány v řadě systémů souřadnic odkaz (CRS), každá má své vlastní referenčním snímků a měrné jednotky. Například "National mřížky z Británie" je referenční systém je přesné pro Spojené království, ale ne mimo něj. 
 
-Nejoblíbenější CRS používá dnes je systém geodetické World [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). GPS zařízení a mnoho služeb mapování, včetně mapy Google a rozhraní API map Bing použijte WGS 84. Azure Cosmos DB podporuje indexování a dotazování prostřednictvím CRS WGS 84 pouze. 
+Nejoblíbenější CRS používá dnes je systém geodetické World [WGS 84](https://earth-info.nga.mil/GandG/update/index.php). GPS zařízení a mnoho služeb mapování, včetně mapy Google a rozhraní API map Bing použijte WGS 84. Azure Cosmos DB podporuje indexování a dotazování prostřednictvím CRS WGS 84 pouze. 
 
 ## <a name="creating-documents-with-spatial-data"></a>Vytváření dokumentů s prostorovými daty formátu
 Při vytváření dokumentů, které obsahují hodnoty GeoJSON se automaticky indexují se prostorový index podle zásady indexování kontejneru. Pokud pracujete s využitím Azure Cosmos DB SDK v dynamicky psaný jazyk, jako je Python nebo Node.js, je nutné vytvořit platný GeoJSON.
@@ -365,7 +365,7 @@ A tady je, jak můžete upravit existující kolekci výhod prostorového indexo
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili, jak začít pracovat s podporuje geoprostorové funkce ve službě Azure Cosmos DB, dále můžete:
 
 * Pusťte se do programování se [geoprostorové .NET ukázky kódu na Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 068747fd51779bd8a20636355a9ce2b032f6151d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8a371f902703287ed3105ed53a57d6341b9528d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415115"
 ---
 # <a name="get-help-with-your-system"></a>Získejte pomoc s vaším systémem.
 
@@ -19,15 +19,15 @@ Pokud potřebujete pomoc s avere vFXT pro Azure, najdete tady různé způsoby, 
 
 * **Avere vFXT problém** – pomocí Azure Portal otevřete lístek podpory pro avere vFXT, jak je popsáno [níže](#open-a-support-ticket-for-your-avere-vfxt).
 * **Kvóta** – Pokud máte problém související s kvótou, [požádejte o zvýšení kvóty](#request-a-quota-increase) .
-* **Dokumentace a příklady** – Pokud najdete problémy s touto dokumentací nebo příklady, posuňte se k dolnímu okraji stránky a v případě potřeby můžete v části **Zpětná vazba** vyhledat existující problémy a vytvořit nové soubory.  
+* **Dokumentace a příklady** – Pokud najdete problémy s touto dokumentací nebo příklady, posuňte se k dolnímu okraji stránky a v případě potřeby můžete v části **Zpětná vazba** vyhledat existující problémy a vytvořit nové soubory.
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Otevření lístku podpory pro avere vFXT
 
-Pokud narazíte na problémy při nasazování nebo používání avere vFXT, požádejte o technickou podporu Azure Portal.  
+Pokud narazíte na problémy při nasazování nebo používání avere vFXT, požádejte o technickou podporu Azure Portal.
 
-Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený prostředkem z vašeho clusteru. Označení lístku vám pomůže nám ho směrovat na správný prostředek podpory. 
+Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený prostředkem z vašeho clusteru. Označení lístku vám pomůže nám ho směrovat na správný prostředek podpory.
 
-1. V [https://portal.azure.com](https://portal.azure.com)vyberte **skupiny prostředků**.
+1. Z [https://portal.azure.com](https://portal.azure.com)vyberte **skupiny prostředků**.
 
    ![snímek obrazovky levé nabídky Azure Portal se skupinami prostředků v kruhu](media/avere-vfxt-ticket-rg.png)
 
@@ -43,7 +43,7 @@ Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený pro
 
     ![snímek obrazovky nové žádosti o podporu v Azure Portal s hlavičkou "Základy" a kruhem kolem položky "služba". Je vybráno tlačítko všechny služby a pole rozevírací nabídky má hodnotu "avere vFXT".](media/avere-vfxt-ticket-service.png)
 
-1. Na stránce druhá klikněte na typ problému a kategorii, které nejlépe odpovídají vašemu problému. Přidejte krátký název a popis, který obsahuje čas výskytu problému. 
+1. Na stránce druhá klikněte na typ problému a kategorii, které nejlépe odpovídají vašemu problému. Přidejte krátký název a popis, který obsahuje čas výskytu problému.
 
    ![snímek obrazovky s novou žádostí o podporu s hlavičkou "problém", která obsahuje mnoho polí, která se musí dokončit](media/avere-vfxt-ticket-problem.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Klientská knihovna pro rozpoznávání formulářů pro .NET | Microsoft Docs'
-description: Začínáme s klientskou knihovnou pro rozpoznávání formulářů pro .NET pro školení, extrakci, analýzu a získání strukturovaného výstupu dat.
+title: 'Rychlý Start: Klientská knihovna pro rozpoznávání formulářů pro .NET'
+description: Začínáme s klientskou knihovnou pro rozpoznávání formulářů pro .NET pro výuku, extrakci, analýzu a získání strukturovaného výstupu dat pomocí tohoto rychlého startu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 018371f4c188d05d92a5fd3fd81511d941a359a6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8fd938e685c712cda60c171ccf9092ff42e6037e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446495"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Rychlý Start: Klientská knihovna pro rozpoznávání formulářů pro .NET
 
@@ -28,16 +28,16 @@ Použijte klientskou knihovnu pro rozpoznávání formulářů pro .NET pro:
 * [Získat seznam vlastních modelů](#get-a-list-of-custom-models)
 * [Odstranění vlastního modelu](#delete-a-custom-model)
 
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) |  | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) |  | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/FormRecognizer) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
 * Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení vašich školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451).
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
-## <a name="setting-up"></a>Probíhá nastavení
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-form-recognizer-azure-resource"></a>Vytvoření prostředku Azure pro rozpoznávání formulářů
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: fab3b919ee3ecb1f8e76b70bada57a5380aaeab8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 20df41ce6fe2bd6e18445877da4cb4de3c9c3d5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444206"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopírování dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -36,7 +36,7 @@ Data z databáze PostgreSQL můžete kopírovat do libovolného podporovaného �
 
 Konkrétně tento konektor PostgreSQL podporuje PostgreSQL **verze 7,4 a vyšší**.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -55,7 +55,7 @@ Pro propojenou službu PostgreSQL jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na: **PostgreSql** . | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení ke službě Azure Database for PostgreSQL. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a stáhnout `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectionString | ODBC připojovací řetězec služby pro připojení ke službě Azure Database for PostgreSQL. <br/>Můžete také do Azure Key Vault umístit heslo a stáhnout `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 Připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Další vlastnosti, které můžete nastavit na váš případ:
@@ -73,10 +73,7 @@ Připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=
     "properties": {
         "type": "PostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
-            }
+            "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -94,10 +91,7 @@ Připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=
     "properties": {
         "type": "PostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

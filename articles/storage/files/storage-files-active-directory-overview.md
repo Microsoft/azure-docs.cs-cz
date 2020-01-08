@@ -1,17 +1,17 @@
 ---
-title: Přehled Azure Active Directory ověřování pomocí protokolu SMB pro soubory Azure – Azure Storage
+title: Přehled – Azure AD Domain Services autorizaci – soubory Azure
 description: Služba soubory Azure podporuje ověřování založené na identitách přes protokol SMB (Server Message Block) prostřednictvím služby Azure Active Directory (Azure AD) Domain Services. Virtuální počítače s Windows připojené k doméně pak můžou přistupovat ke sdíleným složkám Azure pomocí přihlašovacích údajů Azure AD.
 author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 93db726a2cac14109e542972ce851943b290962f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460299"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Přehled podpory ověřování služby Azure Files Azure Active Directory Domain Service (Azure služba AD DS) pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -32,7 +32,7 @@ Je užitečné pochopit některé klíčové podmínky týkající se ověřová
 
 -   **Ověřování protokolu Kerberos**
 
-    Kerberos je ověřovací protokol, který se používá k ověření identity uživatele nebo hostitele. Další informace o protokolu Kerberos najdete v tématu [Přehled ověřování protokolu Kerberos](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview).
+    Kerberos je ověřovací protokol, který se používá k ověření identity uživatele nebo hostitele. Další informace o protokolu Kerberos najdete v tématu [Přehled ověřování protokolu Kerberos](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview).
 
 -  **Protokol SMB (Server Message Block)**  
     SMB je standardní protokol pro sdílení souborů v síti. SMB se označuje také jako Common Internet File System nebo CIFS. Další informace o protokolu SMB najdete v tématu [Přehled protokolu SMB a protokolu CIFS](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview).
@@ -78,12 +78,12 @@ Uživatel, který má klíč účtu úložiště, má přístup k souborům Azur
 > V rámci osvědčených postupů pro zabezpečení nepoužívejte sdílení klíčů účtu úložiště a využijte oprávnění služby Azure AD, kdykoli je to možné.
 
 ### <a name="preserve-directory-and-file-acls-for-data-import-to-azure-file-shares"></a>Zachování seznamů ACL adresářů a souborů pro import dat do sdílených složek Azure
-Soubory Azure teď při kopírování dat do sdílených složek Azure podporují zachovávání seznamů ACL adresáře nebo souborů. Do souborů Azure můžete zkopírovat seznamy řízení přístupu (ACL) do adresáře nebo souboru. Pomocí příkazu [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) s příznakem `/copy:s` můžete například zkopírovat data a seznamy ACL do sdílené složky Azure. Uchovávání seznamů ACL je ve výchozím nastavení zapnuté a není nutné explicitně povolit funkci ověřování služby Azure AD Domain Service v účtu úložiště. 
+Soubory Azure teď při kopírování dat do sdílených složek Azure podporují zachovávání seznamů ACL adresáře nebo souborů. Do souborů Azure můžete zkopírovat seznamy řízení přístupu (ACL) do adresáře nebo souboru. Pomocí nástroje [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) s příznakem `/copy:s` můžete například zkopírovat data a seznamy ACL do sdílené složky Azure. Uchovávání seznamů ACL je ve výchozím nastavení zapnuté a není nutné explicitně povolit funkci ověřování služby Azure AD Domain Service v účtu úložiště. 
 
 ## <a name="pricing"></a>Ceny
 Pro povolení ověřování Azure AD přes protokol SMB v účtu úložiště není k dispozici žádný další poplatek za službu. Další informace o cenách najdete v tématu ceny za [Azure Files](https://azure.microsoft.com/pricing/details/storage/files/) a [Azure AD Domain Services cenové](https://azure.microsoft.com/pricing/details/active-directory-ds/) stránky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o souborech Azure a ověřování Azure AD přes protokol SMB najdete v těchto zdrojích informací:
 
 - [Seznámení se soubory Azure](storage-files-introduction.md)

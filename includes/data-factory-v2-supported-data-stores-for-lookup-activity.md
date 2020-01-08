@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 527114adbe2422148605fd878723ae74fa7c3304
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440487"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |
@@ -28,7 +28,7 @@ ms.locfileid: "72958521"
 | &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Spravovaná instance Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
-| &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
+| &nbsp; |[Analýza Azure synapse (dříve SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
@@ -75,12 +75,12 @@ ms.locfileid: "72958521"
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Google AdWords](../articles/data-factory/connector-google-adwords.md) |
 | &nbsp; |[HubSpot (Preview)](../articles/data-factory/connector-hubspot.md) |
-| &nbsp; |[JIRA](../articles/data-factory/connector-jira.md) |
+| &nbsp; |[Jira](../articles/data-factory/connector-jira.md) |
 | &nbsp; |[Magento (Preview)](../articles/data-factory/connector-magento.md) |
 | &nbsp; |[Marketo (Preview)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (Preview)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (Preview)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Cloud služby Oracle (Preview)](../articles/data-factory/connector-oracle-service-cloud.md) |
+| &nbsp; |[Oracle Cloud Service (Preview)](../articles/data-factory/connector-oracle-service-cloud.md) |
 | &nbsp; |[PayPal (Preview)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (Preview)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |

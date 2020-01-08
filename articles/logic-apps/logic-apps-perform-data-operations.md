@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793111"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666733"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
 
@@ -50,7 +50,7 @@ Tyto akce vám pomůžou pracovat s daty ve formátu JavaScript Object Notation 
 
 Chcete-li vytvořit složitější transformace JSON, přečtěte si téma [provádění pokročilých TRANSFORMACÍ JSON pomocí tekutých šablon](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -200,7 +200,7 @@ V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci 
 
    `item()?['<array-property-name>']`
 
-   Například:
+   Příklad:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -232,7 +232,7 @@ V definici JSON akce v poli `columns` nastavte vlastnost `header` na prázdný �
    }
    ```
 
-   Například:
+   Příklad:
 
    ```json
    "Create_CSV_table": {
@@ -351,7 +351,7 @@ V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci 
 
    `item()?['<array-property-name>']`
 
-   Například:
+   Příklad:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
@@ -383,7 +383,7 @@ V definici JSON akce v poli `columns` nastavte vlastnost `header` na prázdný �
    }
    ```
 
-   Například:
+   Příklad:
 
    ```json
    "Create_HTML_table": {
@@ -443,6 +443,9 @@ Chcete-li vytvořit menší pole, které obsahuje položky, které splňují ur�
 > Libovolný text filtru, který používáte ve vaší podmínce, rozlišuje velká a malá písmena. Tato akce také nemůže změnit formát nebo součásti položek v poli. 
 > 
 > Pro akce, které mají použít výstup pole z akce **filtrovat pole** , musí buď tyto akce přijmout pole jako vstup, nebo může být nutné transformovat výstupní pole do jiného kompatibilního formátu.
+> 
+> Pokud voláte koncový bod HTTP a dostanete odpověď JSON, použijte akci **analyzovat JSON** pro zpracování odpovědi JSON. 
+> V opačném případě může akce **pole filtru** číst pouze tělo odpovědi a nikoli strukturu datové části JSON.
 
 Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat příklad **pole filtru** a inicializovat definice akcí **proměnných** z tohoto článku do své vlastní definice pracovního postupu aplikace logiky: [Příklady kódu operací s daty – pole filtru](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 

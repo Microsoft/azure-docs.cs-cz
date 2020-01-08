@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 24777c0b14bc6bb16a5f9c5c8213a9f3d524833e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827273"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408671"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Použití modulu služby Azure Maps Services
 
@@ -29,17 +29,17 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - Případně můžete zdrojový kód Azure Maps Web SDK načíst místně pomocí balíčku [Azure-Maps-REST](https://www.npmjs.com/package/azure-maps-rest) npm a potom ho hostovat s vaší aplikací. Tento balíček obsahuje také definice TypeScript. Použijte tento příkaz:
+    - Případně můžete modul služby pro Azure Maps zdrojového kódu sady web SDK načíst místně pomocí balíčku [Azure-Maps-REST](https://www.npmjs.com/package/azure-maps-rest) npm a potom ho hostovat s vaší aplikací. Tento balíček obsahuje také definice TypeScript. Použijte tento příkaz:
     
-        > **NPM instalace Azure – Maps – REST**
+        > **npm install azure-maps-rest**
     
         Pak přidejte odkaz na skript do prvku `<head>` souboru:
 
          ```html
-        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
-1. Vytvořte kanál ověřování. Kanál je nutné vytvořit předtím, než bude možné inicializovat koncový bod klienta adresy URL služby. Pomocí vlastního klíče účtu Azure Maps nebo přihlašovacích údajů Azure Active Directory (Azure AD) můžete ověřit klienta služby Azure Maps Search. V tomto příkladu se vytvoří klient URL vyhledávací služby. 
+1. Vytvořte kanál ověřování. Aby bylo možné inicializovat koncový bod klienta adresy URL služby, musí být kanál vytvořen. Pomocí vlastního klíče účtu Azure Maps nebo přihlašovacích údajů Azure Active Directory (Azure AD) můžete ověřit klienta služby Azure Maps Search. V tomto příkladu se vytvoří klient URL vyhledávací služby. 
 
     Pokud pro ověřování používáte klíč předplatného:
 
@@ -162,6 +162,28 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
 <iframe height="500" style="width: 100%;" scrolling="no" title="Použití modulu služby" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>pomocí modulu služby</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+<br/>
+
+## <a name="azure-government-cloud-support"></a>Podpora cloudu Azure Government
+
+Sada Azure Maps Web SDK podporuje cloud Azure Government. Všechny adresy URL JavaScriptu a CSS použité pro přístup k sadě Azure Maps Web SDK zůstávají stejné, ale následující úlohy se musí udělat pro připojení k Azure Government cloudové verzi Azure Maps platformy.
+
+Při použití interaktivního ovládacího prvku mapy přidejte následující řádek kódu před vytvořením instance třídy `Map`. 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+Při ověřování map a služeb nezapomeňte použít podrobnosti ověřování Azure Maps z Azure Government cloudové platformy.
+
+Při použití modulu služeb musí být při vytváření instance koncového bodu adresy URL rozhraní API nastavena doména pro služby. Například následující kód vytvoří instanci třídy `SearchURL` a nasměruje doménu do cloudu Azure Government.
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+Pokud máte přímý přístup ke službě Azure Maps REST, změňte doménu adresy URL na `atlas.azure.us`. Pokud například používáte službu rozhraní API pro hledání, změňte doménu adresy URL z `https://atlas.microsoft.com/search/` na `https://atlas.azure.us/search/`.
 
 ## <a name="next-steps"></a>Další kroky
 
